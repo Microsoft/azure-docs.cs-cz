@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b13eb6f61aed37344e0df3c864e021f68a4ca85b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736482"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900292"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Kurz: Použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Kurz: Vytvoření Apache Spark aplikací pro cluster HDInsight pomocí Azure Toolkit for IntelliJ
 
 V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for IntelliJ k vývoji Apache Spark aplikací napsaných v [Scala](https://www.scala-lang.org/)a pak je odeslat do clusteru HDInsight Spark přímo z integrovaného vývojového prostředí (IDE) IntelliJ. Modul plug-in můžete použít několika způsoby:
 
@@ -135,27 +135,27 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
 
 1. V řádku nabídek přejděte k **zobrazení** > **nástrojů Windows** > **Azure Explorer**.
        
-   ![Odkaz na Průzkumníka Azure](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+   ![Zobrazit Průzkumníka Azure](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
 2. V Průzkumníku Azure klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **Přihlásit**se.
    
-   ![Odkaz na Průzkumníka Azure](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   ![Průzkumník klikněte pravým tlačítkem myši na Azure](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. V dialogovém okně **přihlášení do Azure** zvolte přihlášení k **zařízení**a pak vyberte **Přihlásit**se.
 
-    ![Dialogové okno přihlášení do Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![Zobrazit Průzkumníka 2](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
 4. V dialogovém okně **přihlášení k zařízení Azure** klikněte na **Kopírovat & otevřít**.
    
-   ![Dialogové okno přihlášení do Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
+   ![Zobrazit Průzkumníka 5](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
 
 5. V rozhraní prohlížeče vložte kód a potom klikněte na tlačítko **Další**.
    
-   ![Dialogové okno přihlášení do Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
+   ![Zobrazit Průzkumníka 6](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
 
 6. Zadejte svoje přihlašovací údaje Azure a pak zavřete prohlížeč.
    
-   ![Dialogové okno přihlášení do Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
+   ![Zobrazit Průzkumníka 7](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
 
 7. Po přihlášení se v dialogovém okně **Vybrat odběry** zobrazí všechna předplatná Azure, která jsou přidružená k přihlašovacím údajům. Vyberte své předplatné a pak vyberte tlačítko **Vybrat** .
 
@@ -163,7 +163,7 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
 
 8. V **Azure Exploreru**rozbalte **HDInsight** , abyste viděli clustery HDInsight Spark, které jsou ve vašich předplatných.
 
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
+    ![Průzkumník zobrazení 3](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
 9.  Chcete-li zobrazit prostředky (například účty úložiště), které jsou přidruženy ke clusteru, můžete dále rozšířit uzel název clusteru.
 
@@ -213,7 +213,7 @@ Cluster HDInsight můžete propojit pomocí spravovaného uživatelského jména
 
 2. Cluster taky můžete odpojit od **Azure Exploreru**.
 
-   ![nepropojený cluster](./media/apache-spark-intellij-tool-plugin/unlink.png)
+   ![nepropojený cluster](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Spuštění aplikace Spark Scala v clusteru HDInsight Spark
 
@@ -377,17 +377,17 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
        
 2. V **Azure Exploreru**rozbalte **HDInsight** pro zobrazení clusterů HDInsight, které jsou ve vašem předplatném. Clustery označené jako **role: čtenář** mají pouze oprávnění role jen pro čtení.
 
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
+    ![Zobrazit Průzkumníka 15](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
 
 3. Klikněte pravým tlačítkem na cluster s oprávněním role jen pro čtení. Pokud chcete propojit cluster, vyberte **propojit tento cluster** z kontextové nabídky. Zadejte uživatelské jméno a heslo pro Ambari.
 
   
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
+    ![Zobrazit Průzkumníka 11](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
 
 4. Pokud je cluster úspěšně propojený, služba HDInsight se aktualizuje.
    Fáze clusteru se stane propojená.
   
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
+    ![Zobrazit Průzkumníka 8](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Propojení clusteru rozbalením uzlu úlohy
 
@@ -395,7 +395,7 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
    
 2. Kliknutím na **propojit tento cluster** propojíte cluster.
    
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
+    ![Zobrazit Průzkumníka 9](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>Propojit cluster s oknem konfigurace spuštění/ladění
 
@@ -403,21 +403,21 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
    
 2. Vyberte cluster, který má oprávnění jen pro čtení pro **Clustery Spark (pouze Linux)** . Zpráva upozornění se zobrazí. Kliknutím na **propojit tento cluster** můžete propojit cluster.
    
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
+   ![vytvořit konfiguraci 1](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
    
 ### <a name="view-storage-accounts"></a>Zobrazit účty úložiště
 
 * U clusterů s oprávněním role jen pro čtení klikněte na uzel **účty úložiště** , na okno **přístup k úložišti** se zobrazí stavová zařízení. Pro otevření Průzkumník služby Storage můžete kliknout na **otevřít Průzkumník služby Azure Storage** .
      
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
+   ![Zobrazit Průzkumníka 14](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
+   ![Zobrazit Průzkumníka 10](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
 
 * U propojených clusterů klikněte na uzel **účty úložiště** , na okno **přístup k úložišti** se zobrazí stavová aplikace. Pro otevření Průzkumník služby Storage můžete kliknout na **otevřít Azure Storage** .
      
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
+   ![Zobrazit Průzkumníka 13](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
+   ![Zobrazit Průzkumníka 12](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Převod stávajících IntelliJ NÁPADových aplikací na použití Azure Toolkit for IntelliJ
 

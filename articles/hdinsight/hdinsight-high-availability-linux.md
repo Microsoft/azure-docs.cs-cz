@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405988"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879773"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
@@ -94,7 +94,7 @@ K uzlům, které nejsou přímo přístupné přes Internet, se můžete připoj
 
 * **Tunel SSH**: Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které nejsou přístupné pro Internet, musíte použít tunel SSH. Další informace najdete v tématu [použití tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md) v dokumentu HDInsight.
 
-* **Azure Virtual Network**: Pokud je cluster HDInsight součástí Virtual Network Azure, může libovolný prostředek na stejném Virtual Network mít přímý přístup ke všem uzlům v clusteru. Další informace najdete v tématu Naplánování [virtuálního síťového dokumentu HDInsight](hdinsight-plan-virtual-network-deployment.md) .
+* **Azure Virtual Network**: Pokud je cluster HDInsight součástí Virtual Network Azure, může libovolný prostředek na stejném Virtual Network mít přímý přístup ke všem uzlům v clusteru. Další informace najdete v tématu [Naplánování virtuálního síťového dokumentu HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
 ## <a name="how-to-check-on-a-service-status"></a>Postup kontroly stavu služby
 
@@ -106,7 +106,7 @@ Webové uživatelské rozhraní Ambari je možné zobrazit `https://CLUSTERNAME.
 
 Po přijetí na stránku Ambari jsou nainstalované služby uvedeny na levé straně stránky.
 
-![Nainstalované služby](./media/hdinsight-high-availability-linux/services.png)
+![Nainstalované služby](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle služby. Jakékoli výstrahy týkající se služby lze zobrazit pomocí odkazu **výstrahy** v horní části stránky.  Ambari nabízí několik předdefinovaných výstrah.
 
@@ -153,13 +153,13 @@ Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
 Můžete vybrat každou službu a zobrazit další informace.
 
-I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace, použijte odkaz hostitelé v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
+I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace, použijte odkaz **hostitelé** v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
 
-![Seznam hostitelů](./media/hdinsight-high-availability-linux/hosts.png)
+![Seznam hostitelů](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Výběr odkazu pro jeden z hlavních uzlů zobrazí služby a komponenty běžící v tomto uzlu.
 
-![Stav součásti](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Stav součásti](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Další informace o použití Ambari najdete v tématu [monitorování a Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -171,11 +171,11 @@ Pomocí následujícího příkazu můžete kontrolovat stav služby prostředni
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Heslo účtu uživatele protokolu HTTP (admin **) nahraďte** heslem.
+* Heslo účtu uživatele protokolu HTTP (admin **) nahraďte heslem.**
 * Místo **CLUSTERNAME** zadejte název vašeho clusteru.
 * Místo **ServiceName** nahraďte názvem služby, jejíž stav chcete zjistit.
 
-Pokud například chcete ověřit stav služby **HDFS** v clusteru s názvem **mycluster**s heslem **hesla, použijte**následující příkaz:
+Pokud například chcete ověřit stav služby **HDFS** v clusteru s názvem **mycluster** **s heslem hesla, použijte**následující příkaz:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -192,7 +192,7 @@ Odpověď je podobná následujícímu kódu JSON:
 
 Adresa URL oznamuje, že služba je aktuálně spuštěná na hlavním uzlu s názvem **hn0-název_clusteru**.
 
-Stav oznamuje, že je služba aktuálně spuštěná nebo spuštěná.
+Stav oznamuje, že je služba aktuálně spuštěná nebo **spuštěná**.
 
 Pokud si nejste jisti, jaké služby jsou v clusteru nainstalovány, můžete k načtení seznamu použít následující příkaz:
 
@@ -241,7 +241,7 @@ Seznam dostupných příkazů zobrazíte zadáním `help` `sftp>` na příkazov�
 
 Z webového uživatelského rozhraní Ambari vyberte službu, pro kterou chcete zobrazit protokoly (například PŘÍZe). Pak použijte **Rychlé odkazy** k výběru hlavního uzlu, pro který chcete zobrazit protokoly.
 
-![Použití rychlých odkazů k zobrazení protokolů](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Použití rychlých odkazů k zobrazení protokolů](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Konfigurace velikosti uzlu
 
@@ -249,9 +249,9 @@ Velikost uzlu lze vybrat pouze při vytváření clusteru. Seznam různých veli
 
 Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal][preview-portal], [Azure PowerShell modulu AZ][azure-powershell]a [Azure CLI][azure-cli]:
 
-* **Azure Portal**: Při vytváření clusteru můžete nastavit velikost uzlů používaných clusterem:
+* **Azure Portal:** Při vytváření clusteru můžete nastavit velikost uzlů používaných clusterem:
 
-    ![Obrázek Průvodce vytvořením clusteru s výběrem velikosti uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Obrázek Průvodce vytvořením clusteru s výběrem velikosti uzlu](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**: Při použití příkazu [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `--headnode-size`parametrů, `--workernode-size`a `--zookeepernode-size` .
 

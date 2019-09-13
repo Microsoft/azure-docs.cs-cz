@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240714"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910537"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Připojení z místního prostředí k CloudSimple pomocí ExpressRoute
 
@@ -23,7 +23,7 @@ Pokud už máte připojení Azure ExpressRoute z externího umístění (třeba 
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Pro navázání Global Reachho připojení z místního prostředí se vyžaduje blok adres sítě a **/29** .  Adresní prostor/29 se používá pro tranzitní síť mezi okruhy ExpressRoute.  Tranzitní síť by se neměla překrývat s žádnými virtuálními sítěmi Azure, místními sítěmi ani CloudSimple privátních cloudových sítí.
+Pro navázání Global Reachho připojení z místního prostředí se vyžaduje blok adres sítě a **/29** .  Adresní prostor/29 se používá pro tranzitní síť mezi okruhy ExpressRoute.  Tranzitní síť by se neměla překrývat s žádnou z vašich virtuálních sítí Azure, místními sítěmi ani CloudSimple privátních cloudových sítí.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Pro navázání Global Reachho připojení z místního prostředí se vyžaduje
 
 ## <a name="scenarios"></a>Scénáře
 
-Připojení místní sítě k síti privátního cloudu umožňuje používat privátní cloud různými způsoby, včetně následujících:
+Připojení místní sítě k síti privátního cloudu umožňuje používat privátní cloud různými způsoby, včetně následujících scénářů:
 
 * Přístup k síti privátního cloudu bez vytvoření připojení VPN typu Site-to-site.
 * Použijte místní službu Active Directory jako zdroj identity v privátním cloudu.
@@ -43,6 +43,7 @@ Připojení místní sítě k síti privátního cloudu umožňuje používat pr
 ## <a name="connecting-expressroute-circuits"></a>Propojení okruhů ExpressRoute
 
 K navázání připojení ExpressRoute musíte vytvořit autorizaci na okruhu ExpressRoute a poskytnout informace o autorizaci CloudSimple.
+
 
 ### <a name="create-expressroute-authorization"></a>Vytvořit autorizaci ExpressRoute
 
@@ -70,7 +71,12 @@ K navázání připojení ExpressRoute musíte vytvořit autorizaci na okruhu Ex
     * Podtyp problému: **Vytvoření připojení ExpressRoute k místnímu prostředí**
     * Zadejte ID prostředku a autorizační klíč, který jste zkopírovali a uložili v podokně podrobností.
     * Zadejte adresní prostor sítě/29 pro tranzitní síť.
+    * Odesíláte výchozí trasu prostřednictvím ExpressRoute?
+    * Má provoz privátního cloudu používat výchozí trasu odeslanou prostřednictvím ExpressRoute?
 
-## <a name="next-steps"></a>Další kroky
+    > [!IMPORTANT]
+    > Odesílání výchozí trasy vám umožní odesílat veškerý internetový provoz z privátního cloudu pomocí místního připojení k Internetu.  Pokud chcete zakázat výchozí trasu nakonfigurovanou v privátním cloudu a použít výchozí trasu místní připojení, zadejte podrobnosti v lístku podpory.
+
+## <a name="next-steps"></a>Další postup
 
 * [Další informace o síťových připojeních Azure](cloudsimple-azure-network-connection.md)  

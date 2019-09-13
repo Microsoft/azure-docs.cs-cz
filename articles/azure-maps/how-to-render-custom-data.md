@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638794"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915758"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -27,7 +27,8 @@ Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžet
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Chcete-li dokončit postupy v tomto článku, musíte nejprve [vytvořit účet Azure Maps](how-to-manage-account-keys.md) v cenové úrovni S1.
+Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit účet Azure Maps podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) načíst primární klíč předplatného pro váš účet.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Vykreslení připínáček s popisky a vlastní imagí
 
@@ -204,7 +205,7 @@ Pomocí těchto kroků můžete vykreslit kružnici a špendlíky s vlastními p
 
     ![Vykreslení kruhu s vlastními špendlíky](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 
 * Prozkoumejte dokumentaci k [rozhraní API pro Image mapy Azure Maps získat](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .

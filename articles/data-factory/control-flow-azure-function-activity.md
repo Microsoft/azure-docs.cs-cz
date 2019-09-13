@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142513"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931866"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure v Azure Data Factory
 
@@ -43,8 +43,8 @@ Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, �
 | --- | --- | --- | --- |
 | name  | Název aktivity v kanálu  | Řetězec | ano |
 | type  | Typ aktivity je "AzureFunctionActivity". | Řetězec | ano |
-| propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
-| název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
+| Propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
+| Název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
 | – metoda  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
 | záhlaví  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
 | hlavní část  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
@@ -62,13 +62,13 @@ Aktivita funkce Azure také podporuje **dotazy**. Dotaz musí být zahrnut jako 
 
 Azure Functions časový limit po 230 sekundách bez ohledu na `functionTimeout` nastavení, které jste nakonfigurovali v nastavení. Další informace najdete v [tomto článku](../azure-functions/functions-versions.md#timeout). Chcete-li toto chování obejít, postupujte podle asynchronního vzoru nebo použijte Durable Functions. Výhodou Durable Functions je, že nabízí vlastní mechanismus pro sledování stavu, takže nebudete muset implementovat své vlastní.
 
-Přečtěte si další informace o Durable Functions v [tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivitu funkce Azure můžete nastavit tak, aby volala trvalou funkci, která vrátí odpověď s jiným identifikátorem URI, jako je například [Tento příklad](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Vzhledem `statusQueryGetUri` k tomu, že vrátí stav HTTP 202, když je funkce spuštěná, můžete dotazovat stav funkce pomocí webové aktivity. Jednoduše nastavte aktivitu webu s `url` polem nastaveným na. `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` Po dokončení trvalé funkce bude výstupem funkce výstup webové aktivity.
+Přečtěte si další informace o Durable Functions v [tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivitu funkce Azure můžete nastavit tak, aby volala trvalou funkci, která vrátí odpověď s jiným identifikátorem URI, jako je například [Tento příklad](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery). Vzhledem `statusQueryGetUri` k tomu, že vrátí stav HTTP 202, když je funkce spuštěná, můžete dotazovat stav funkce pomocí webové aktivity. Jednoduše nastavte aktivitu webu s `url` polem nastaveným na. `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` Po dokončení trvalé funkce bude výstupem funkce výstup webové aktivity.
 
 
 ## <a name="sample"></a>Ukázka
 
 Ukázku Data Factory, který používá funkci Azure k extrakci obsahu souboru tar, najdete [tady](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o aktivitách v Data Factory v prokanálech [a aktivitách v Azure Data Factory](concepts-pipelines-activities.md).

@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036125"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918996"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
 V tomto článku jsou uvedeni partneři pro virtuální počítače s Windows v abecedním pořadí.
-
-## <a name="active-cypher"></a>Aktivní šifrováním
-
-![Logo aktivní šifrováním](./media/partners/active-cypher.png)
-
-Aktivní šifrováním je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který ho vybaví technologií šifrování, aby chránil podnik před narušením a ztrátou dat. S aktivním šifrováním, inovativní šifrovací technologie podporuje celkovou strategii ochrany souborů pro spuštění virtuální plochy Windows v Azure.
-
-Služba Active šifrováním při použití s virtuálním počítačem s Windows poskytuje další možnosti, které umožňují přístupnost a mobilitu uživatelských dat a současně brání nechtěné ztrátě dat. S aktivním šifrováním se dají využít existující zásady zabezpečení skupiny a oprávnění v Azure Information Protection k šifrování uživatelských souborů při použití virtuálního klienta Windows.
-
-- [Podívejte se na stručné řešení.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [Přejít na web partnera.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

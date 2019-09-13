@@ -1,7 +1,7 @@
 ---
 title: Jak monitorovat dostupnost clusteru pomocí protokolů Ambari a Azure Monitor
-description: Další informace o použití protokoly Ambari a Azure Monitor k monitorování stavu clusteru a dostupnost.
-keywords: ambari, monitorování, log analytics, upozornění, dostupnost, stav monitorování
+description: Naučte se používat protokoly Ambari a Azure Monitor ke sledování stavu a dostupnosti clusteru.
+keywords: monitorování, Ambari, monitorování, Log Analytics, výstrahy, dostupnost, stav
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -9,188 +9,188 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 07b82f475074f5b55a2a5a93f7a59008476233c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786564"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934245"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Ambari a Azure Monitor
 
-Clustery HDInsight zahrnují Apache Ambari, který poskytuje informace o stavu na první pohled a předdefinované výstrahy, i integraci protokolů Azure Monitor, která poskytuje dotazovatelné metriky a protokoly a konfigurovatelných upozornění.
+Clustery HDInsight zahrnují jak Apache Ambari, která poskytuje informace o stavu na první pohled a předdefinované výstrahy, a také Azure Monitor protokoly, které poskytují Queryable metriky a protokoly a také konfigurovatelné výstrahy.
 
-Tento dokument ukazuje, jak pomocí těchto nástrojů pro monitorování clusteru a provede několik příkladů, pro konfiguraci Ambari upozornění, monitorování míry dostupnosti uzlu a vytvoření výstrahy monitorování Azure, který se aktivuje při z jednoho nebo více uzlů nebyl přijat prezenční signál za pět hodin.
+V tomto dokumentu se dozvíte, jak pomocí těchto nástrojů monitorovat cluster a provedou některé příklady konfigurace Ambari výstrahy, monitorování míry dostupnosti uzlu a vytvoření výstrahy Azure Monitor, která se aktivuje při přijetí prezenčního signálu z jednoho nebo více uzlů. za pět hodin.
 
 ## <a name="ambari"></a>Ambari
 
 ### <a name="dashboard"></a>Řídicí panel
 
-Řídicí panel Ambari je přístupná po kliknutí **Ambari domácí** odkaz v **řídicí panely clusteru** část HDInsight okno Přehled na webu Azure portal, jak je znázorněno níže. Alternativně můžete přistupovat zadáním následující adresy URL v prohlížeči [https://\<clustername\>. azurehdinsight.net](https://clustername.azurehdinsight.net/)
+Na řídicí panel Ambari se dostanete tak, že kliknete na odkaz **Ambari domů** v části **řídicí panely clusteru** v okně přehled služby HDInsight v Azure Portal, jak je znázorněno níže. Případně můžete k němu přistupovat zadáním následující adresy URL v prohlížeči [https://\<název_clusteru\>. azurehdinsight.NET.](https://clustername.azurehdinsight.net/)
 
-![Zobrazení portálu prostředků HDInsight](media/hdinsight-cluster-availability/portal-overview.png)
+![Zobrazení portálu prostředků HDInsight](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
-Pak zobrazí výzva pro uživatelské jméno přihlášení clusteru a heslo. Zadejte přihlašovací údaje jste zvolili při vytváření clusteru.
+Pak se zobrazí výzva k zadání uživatelského jména a hesla pro přihlášení ke clusteru. Zadejte přihlašovací údaje, které jste zvolili při vytváření clusteru.
 
-Pak přejdete na řídicí panel Ambari, který obsahuje pomůcek, které ukazují na několik metrik získáte rychlý přehled o stavu vašeho clusteru HDInsight. Tyto pomůcky zobrazit metriky, jako je počet skutečných DataNodes (pracovní uzly) a JournalNodes (uzel zookeeper), dostupnost NameNodes (hlavní uzly), jako zdroj metriky, které jsou specifické pro určité typy clusterů, jako jsou YARN ResourceManager dostupnost clusterů Spark a Hadoop.
+Pak přejdete na řídicí panel Ambari, který obsahuje widgety, které znázorňují několik metriky, které vám poskytnou rychlý přehled o stavu clusteru HDInsight. Tyto pomůcky ukazují metriky, jako je počet aktivních datanodes (pracovních uzlů) a dostupných deníkových uzlů (Zookeeper Node), NameNodes (hlavní uzly) v čase a metriky specifické pro určité typy clusterů, jako je například doba provozu PŘÍZového správce pro clustery Spark a Hadoop.
 
-![Řídicí panel Ambari](media/hdinsight-cluster-availability/ambari-dashboard.png)
+![Řídicí panel Ambari](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
-### <a name="hosts--view-individual-node-status"></a>Hostitelé – zobrazení stavu jednotlivých uzlů
+### <a name="hosts--view-individual-node-status"></a>Hostitelé – zobrazit stav jednotlivých uzlů
 
-Můžete také zobrazit informace o stavu pro jednotlivé uzly. Klikněte na tlačítko **hostitele** kartu k zobrazení seznamu všech uzlů v clusteru a si zobrazili základní informace o každém uzlu. Zelená značka zaškrtnutí nalevo od názvu každého uzlu označuje, že jsou všechny součásti na uzlu. Pokud komponenta nefunguje v uzlu, zobrazí se červený výstrah trojúhelník místo zelená značka zaškrtnutí.
+Můžete také zobrazit informace o stavu pro jednotlivé uzly. Kliknutím na kartu **hostitelé** zobrazíte seznam všech uzlů v clusteru a zobrazíte základní informace o jednotlivých uzlech. Zelená šipka vlevo od každého názvu uzlu znamená, že všechny komponenty jsou v uzlu. Pokud je komponenta na uzlu mimo provoz, zobrazí se místo zelené kontroly červený trojúhelník.
 
-![Hostitelé zobrazení Ambari](media/hdinsight-cluster-availability/ambari-hosts.png)
+![Zobrazení hostitelů Ambari](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
-Potom můžete kliknout na **název** uzlu, chcete-li zobrazit podrobnější metriky hostitele pro tento konkrétní uzel. Toto zobrazení uvádí stav a dostupnost jednotlivých součástí.
+Pak můžete kliknout na **název** uzlu a zobrazit tak podrobnější metriky hostitele pro daný uzel. Toto zobrazení ukazuje stav/dostupnost každé jednotlivé součásti.
 
-![Hostitelé Ambari jednotné zobrazení uzlů](media/hdinsight-cluster-availability/ambari-hosts-node.png)
+![Ambari hostuje zobrazení jednoho uzlu.](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
 ### <a name="ambari-alerts"></a>Ambari výstrahy
 
-Ambari také nabízí několik konfigurovatelných upozornění, které poskytují oznámení o určité události. Když se aktivují upozornění, zobrazí se v levém horním rohu Ambari v red znaku obsahující počet výstrah. Kliknutím na toto oznámení "BADGE" zobrazí seznam aktuální výstrahy.
+Ambari také nabízí několik konfigurovatelných výstrah, které mohou poskytnout oznámení o určitých událostech. Když se aktivují výstrahy, zobrazují se v levém horním rohu Ambari červeným znakem, který obsahuje počet výstrah. Po kliknutí na tento odkaz se zobrazí seznam aktuálních výstrah.
 
-![Počet výstrah Ambari](media/hdinsight-cluster-availability/ambari-alerts.png)
+![Počet výstrah Ambari](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
-Chcete-li zobrazit seznam definic upozornění a jejich stavy, klikněte na tlačítko **výstrahy** kartu, jak je znázorněno níže.
+Pokud chcete zobrazit seznam definic upozornění a jejich stavů, klikněte na kartu **výstrahy** , jak vidíte níže.
 
-![Zobrazení definice upozornění Ambari](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
+![Zobrazení definic upozornění Ambari](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
 
 Ambari nabízí mnoho předdefinovaných výstrah souvisejících s dostupností, včetně:
 
 | Název výstrahy                        | Popis                                                                                                                                                                           |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Souhrn stavu DataNode           | Tato úroveň služby výstraha se aktivuje, pokud není v pořádku DataNodes                                                                                                                |
-| Stav NameNode vysoké dostupnosti | Tato úroveň služby výstraha se aktivuje, pokud nejsou spuštěné na aktivní NameNode nebo NameNode pohotovostní režim.                                                                              |
-| Procento JournalNodes k dispozici    | Tato výstraha se aktivuje, pokud počet dolů JournalNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol JournalNode procesu. |
-| Procento DataNodes k dispozici       | Tato výstraha se aktivuje, pokud počet dolů DataNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol DataNode procesu.       |
+| Shrnutí stavu datauzel           | Tato výstraha na úrovni služby se aktivuje, pokud existují chybné datauzly.                                                                                                                |
+| Stav vysoké dostupnosti NameNode | Tato výstraha na úrovni služby se aktivuje v případě, že aktivní NameNode nebo pohotovostní NameNode nejsou spuštěné.                                                                              |
+| Procento dostupných dostupných deníkových uzlů    | Tato výstraha se aktivuje, pokud je počet vypnutých dostupných deníkových uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu JournalNode. |
+| Procento dostupných datanode       | Tato výstraha se aktivuje, pokud je počet nefunkčních uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesů datanode.       |
 
-Úplný seznam Ambari výstrahy monitoru pomoc najdete dostupnost clusteru [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui),
+Úplný seznam upozornění Ambari, které vám pomůžou monitorovat dostupnost clusteru, najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui).
 
-Chcete-li zobrazit podrobnosti o výstraze nebo upravit kritéria, klikněte na tlačítko **název** výstrahy. Využijte **souhrn stavu DataNode** jako příklad. Zobrazí se popis výstrahy a také konkrétní kritéria, která se aktivuje upozornění na "varování" nebo "kritický" a intervalu kontroly pro kritéria. Chcete-li upravit konfiguraci, klikněte na tlačítko **upravit** tlačítko v pravém horním rohu konfigurační pole.
+Chcete-li zobrazit podrobnosti výstrahy nebo upravit kritéria, klikněte na **název** výstrahy. Jako příklad Vezměte v úvahu **souhrn stavu datauzel** . Můžete zobrazit popis výstrahy a také specifická kritéria, která aktivují upozornění "upozornění" nebo "kritická" a interval kontroly pro kritéria. Chcete-li upravit konfiguraci, klikněte na tlačítko **Upravit** v pravém horním rohu pole konfigurace.
 
-![Konfigurace výstrah Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Konfigurace upozornění Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
-Tady můžete upravit popis a důležitější je, kontrola interval a prahové hodnoty pro upozornění nebo kritickou výstrahu.
+Tady můžete popis upravit a důležitější, což je důležitější interval a prahové hodnoty pro upozornění nebo kritické výstrahy.
 
-![Zobrazení pro úpravy konfigurace výstrah Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
+![Zobrazení pro úpravy konfigurace upozornění Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
 
-V tomto příkladu může provést 2 není v pořádku DataNodes aktivují kritickou výstrahu a není v pořádku DataNode pouze aktivačních událostí: 1 upozornění. Klikněte na tlačítko **Uložit** po dokončení úprav.
+V tomto příkladu můžete nastavit 2 chybné datauzly, které aktivují kritickou výstrahu, a 1 špatný datauzel aktivuje pouze upozornění. Po dokončení úprav klikněte na **Uložit** .
 
 ### <a name="email-notifications"></a>E-mailová oznámení
 
-Také v případě potřeby můžete nakonfigurovat e-mailová oznámení pro výstrahy Ambari. K tomu, kdy na **výstrahy** klikněte na tlačítko **akce** tlačítko v levém horním rohu, pak **spravovat oznámení.**
+Volitelně můžete také nakonfigurovat e-mailová oznámení pro Ambari výstrahy. Pokud to chcete provést, klikněte na kartě **výstrahy** v levém horním rohu na tlačítko **Akce** a potom na **spravovat oznámení.**
 
-![Ambari spravovat akce oznámení](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
+![Akce spravovat oznámení Ambari](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Otevře se dialogové okno pro správu oznámení výstrah. Klikněte na tlačítko **+** v dolní části dialogového okna a zadejte požadovaná pole k poskytování Ambari pomocí e-mailu podrobnosti o serveru, ze kterého chcete odeslat e-mailů.
+Otevře se dialogové okno pro správu oznámení výstrah. **+** Klikněte v dolní části dialogového okna a vyplňte požadovaná pole a poskytněte Ambari podrobnosti e-mailového serveru, ze kterých se mají posílat e-maily.
 
 > [!TIP]
-> Nastavení Ambari e-mailová oznámení může být dobrým způsobem, jak dostávat upozornění na jednom místě, při správě mnoha clusterů HDInsight.
+> Nastavení e-mailových oznámení Ambari může být dobrým způsobem, jak přijímat výstrahy na jednom místě při správě mnoha clusterů HDInsight.
 
 ## <a name="azure-monitor-logs-integration"></a>Integrace protokolů Azure Monitor
 
-Azure Monitor protokolů umožňuje dat vygenerovaných vašimi více zdrojů, jako je například clustery HDInsight, shromažďování a agregovat na jednom místě pro zajištění unifikovaného prostředí monitorování.
+Protokoly Azure Monitor umožňují shromažďování a agregaci dat vygenerovaných několika prostředky, jako jsou clustery HDInsight, na jednom místě, abyste dosáhli jednotného prostředí pro monitorování.
 
-Předpokladem je budete potřebovat pracovní prostor Log Analytics pro ukládání shromážděných dat. Pokud jste jednu ještě nevytvořili, můžete postupujte podle pokynů tady: [Vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládání shromážděných dat. Pokud jste ho ještě nevytvořili, můžete postupovat podle pokynů: [Vytvořte pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů HDInsight Azure Monitor
+### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů Azure Monitor HDInsight
 
-Na stránce prostředků clusteru HDInsight na portálu klikněte na tlačítko **Operations Management Suite** okno. Potom klikněte na **povolit** a vyberte pracovní prostor Log Analytics z rozevíracího seznamu.
+Na stránce prostředek clusteru HDInsight na portálu klikněte na okno **Operations Management Suite** . Pak klikněte na **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
 
-![Okno HDInsight Operations Management Suite](media/hdinsight-cluster-availability/portal-enable-oms.png)
+![Okno HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
 
-### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>Dotazování tabulky metrik a protokolů v okně protokoly
+### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>Dotazování metrik a protokolů do tabulek v okně protokoly
 
-Po povolení integrace protokolů Azure Monitor (to může trvat několik minut), přejděte do vaší **pracovní prostor Log Analytics** prostředek a klikněte na kartu **protokoly** okno
+Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do svého prostředku **pracovního prostoru Log Analytics** a klikněte na okno **protokoly** .
 
-![Okno protokoly pracovního prostoru log Analytics](media/hdinsight-cluster-availability/portal-logs.png)
+![Okno protokolů Log Analytics pracovního prostoru](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
 
-**Protokoly** okno uvádí několik ukázkových dotazů, jako například:
+V okně **protokoly** se zobrazuje počet ukázkových dotazů, například:
 
 | Název dotazu                      | Popis                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
-| Dostupnost počítače ještě dnes    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
-| Seznam prezenční signály                 | Seznam všech počítačů prezenční signály poslední hodina                           |
-| Poslední prezenční signál jednotlivých počítačů | Zobrazit poslední prezenční signál odesílaných každý počítač                             |
-| Není k dispozici počítače           | Seznam všech známých počítačů, které se nepovedlo odeslat prezenční signál za posledních 5 hodin |
-| Míra dostupnosti               | Vypočítat sazbu dostupnost všech připojených počítačů                |
+| Dostupnost počítačů v dnešní době    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
+| Zobrazit prezenční signály                 | Zobrazit seznam všech prezenčních signálů počítače za poslední hodinu                           |
+| Poslední prezenční signál každého počítače | Zobrazit poslední prezenční signál odeslaný jednotlivými počítači                             |
+| Nedostupné počítače           | Zobrazí seznam všech známých počítačů, které neodeslaly prezenční signál za posledních 5 hodin. |
+| Míra dostupnosti               | Vypočítat míru dostupnosti každého připojeného počítače                |
 
-Jako příklad, spusťte **míry dostupnosti** ukázkový dotaz kliknutím **spustit** na daný dotaz, jak je znázorněno na snímku obrazovky výše. Míry dostupnosti každého uzlu v clusteru zobrazí v procentech. Pokud jste povolili více clusterů HDInsight k odeslání metrik do stejného pracovního prostoru Log Analytics, zobrazí se míra dostupnosti pro všechny uzly na těchto clusterech zobrazí.
+Příklad: Spusťte dotaz ukázka **míry dostupnosti** kliknutím na **Spustit** u tohoto dotazu, jak je znázorněno na snímku obrazovky výše. Tím se v procentech zobrazí míra dostupnosti jednotlivých uzlů v clusteru. Pokud jste povolili více clusterů HDInsight, aby odesílaly metriky do stejného pracovního prostoru Log Analytics, zobrazí se sazba dostupnosti všech uzlů v těchto clusterech.
 
-![Analytics pracovní prostor protokolů okno "sazby dostupnosti" Ukázkový dotaz protokolu](media/hdinsight-cluster-availability/portal-availability-rate.png)
+![Vzorový dotaz sazby dostupnosti v okně Log Analytics v pracovním prostoru](media/hdinsight-cluster-availability/portal-availability-rate.png)
 
 > [!NOTE] 
-> Dostupnost rychlost se měří po dobu 24 hodin, tak váš cluster potřebuje ke spuštění pro nejméně 24 hodin, než uvidíte přesný dostupnost sazby.
+> Míra dostupnosti se měří v průběhu 24 hodin, takže cluster bude muset běžet aspoň 24 hodin, než uvidíte správné sazby dostupnosti.
 
-V této tabulce na sdílený řídicí panel můžete připnout kliknutím **Pin** v pravém horním rohu. Pokud nemáte žádné zapisovatelné sdílené řídicí panely, můžete zjistit, jak ho vytvořit tady: [Vytvářejte a sdílejte řídicí panely na webu Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Tuto tabulku můžete připnout na sdílený řídicí panel tak, že kliknete na **připnout** v pravém horním rohu. Pokud nemáte žádné zapisovatelné řídicí panely, uvidíte, jak ho vytvořit: [Vytváření a sdílení řídicích panelů v Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
-### <a name="azure-monitor-alerts"></a>Azure Monitor výstrah
+### <a name="azure-monitor-alerts"></a>Výstrahy Azure Monitor
 
-Můžete také nastavit výstrahy monitorování Azure, které se aktivuje při hodnota metriky nebo výsledky dotazu splnění určitých podmínek. Jako příklad, Pojďme vytvořit výstrahu pro odeslání e-mailu, když jeden nebo více uzlů neodeslal prezenční signál za 5 hodin (například se předpokládá, že nebudou k dispozici).
+Můžete také nastavit výstrahy Azure Monitor, které se aktivují, když hodnota metriky nebo výsledky dotazu splňují určité podmínky. Můžete například vytvořit upozornění k odeslání e-mailu, když jeden nebo více uzlů neodeslal prezenční signál během 5 hodin (tzn. že se předpokládá, že není k dispozici).
 
-Z **protokoly** okno, spusťte **nedostupnými počítači** ukázkový dotaz kliknutím **spustit** na daný dotaz, jak je znázorněno níže.
+V okně **protokoly** Spusťte ukázkový dotaz **nedostupné počítače** kliknutím na **Spustit** u tohoto dotazu, jak je znázorněno níže.
 
-![Analytics pracovní prostor protokolů okno "není k dispozici počítače" Ukázkový dotaz protokolu](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Ukázkový dotaz nedostupného počítače v okně protokolů Log Analytics pracovního prostoru](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
-Pokud jsou k dispozici všechny uzly, tento dotaz by měl vrátit 0 výsledků teď. Klikněte na tlačítko **nové pravidlo upozornění** chcete začít konfigurovat upozornění pro tento dotaz.
+Pokud jsou k dispozici všechny uzly, tento dotaz by nyní měl vracet 0 výsledků. Kliknutím na **nové pravidlo výstrahy** zahajte konfiguraci upozornění pro tento dotaz.
 
-![Log Analytics pracovní prostor nové pravidlo upozornění](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
+![Nové pravidlo výstrahy Log Analytics pracovního prostoru](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
 
-Existují tři komponenty na upozornění služby: *prostředků* pro který chcete vytvořit pravidlo (pracovnímu prostoru Log Analytics v tomto případě), *podmínku* pro aktivaci upozornění a *skupiny akcí*  , které definují, co se stane, když se aktivuje upozornění.
+Existují tři komponenty výstrahy: *prostředek* , pro který chcete vytvořit pravidlo (Log Analytics pracovní prostor v tomto případě), *podmínku* pro aktivaci výstrahy a *skupiny akcí* , které určují, co se stane, když je výstraha aktivuje.
 
-Klikněte na tlačítko **podmínka vyhodnocena jako nadpis**, jak je znázorněno níže, k dokončení konfigurace logiku signálů.
+Klikněte na **název podmínky**, jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
 
-![Podmínka pro pravidlo výstrahy](media/hdinsight-cluster-availability/portal-condition-title.png)
+![Podmínka pravidla výstrahy](media/hdinsight-cluster-availability/portal-condition-title.png)
 
-Tím se otevře **konfigurovat logiku signálů** okno.
+Tím se otevře okno **Konfigurovat logiku signálu** .
 
-Nastavte **upozornění logiky** části následujícím způsobem:
+Nastavte oddíl **Alert Logic** následujícím způsobem:
 
-*Na základě: Počet výsledků, podmínka: Větší než prahová hodnota: 0.*
+*Založené na: Počet výsledků, podmínka: Větší než, prahová hodnota: 0,8.*
 
-Vzhledem k tomu, že tento dotaz vrátí pouze uzly není k dispozici jako výsledky, pokud počet výsledků, které je stále větší než 0, by měly aktivovat upozornění.
+Vzhledem k tomu, že tento dotaz vrátí nedostupné uzly jako výsledky, pokud je počet výsledků stále větší než 0, výstraha by se měla aktivovat.
 
-V **Evaluated na základě** nastavte **období** a **frekvence** podle jak často chcete vyhledávat uzly není k dispozici.
+V části **vyhodnocováno na základě** oddílu nastavte **dobu** a **četnost** podle toho, jak často chcete kontrolovat nedostupné uzly.
 
-Všimněte si, že pro účely této výstrahy chcete Ujistěte se, že **období = četnost.** Najdete další informace o období, četnost a další výstrahy parametry [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
+Všimněte si, že pro účely této výstrahy se chcete ujistit, že **perioda = frekvence.** Další informace o období, četnosti a dalších parametrech výstrahy najdete [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
 
-Klikněte na tlačítko **provádí** po dokončení konfigurace logiku signálů.
+Po dokončení konfigurace logiky signálu klikněte na **Hotovo** .
 
-![Pravidlo výstrahy konfigurovat logiku signálů](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
+![Pravidlo výstrahy konfigurace logiky signálů](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
 
-Pokud již nemáte existující skupiny akcí, klikněte na tlačítko **vytvořit nový** pod **skupiny akcí** oddílu.
+Pokud ještě nemáte existující skupinu akcí, klikněte na **vytvořit nový** v části **skupiny akcí** .
 
-![Pravidlo výstrahy nová skupina akcí](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Pravidlo upozornění – nová skupina akcí](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
-Tím se otevře **přidat skupinu akcí** okno. Zvolte **název skupiny akcí**, **krátký název**, **předplatné**, a **skupinu prostředků.** V části **akce** zvolte **název akce** a vyberte **e-mailu/SMS nebo nabízená/hlasové** jako **typ akce.**
+Tím se otevře okno **Přidat skupinu akcí** . Vyberte **název skupiny akcí**, **krátké jméno**, **předplatné**a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
 
 > [!NOTE]
-> Nejsou k dispozici několik akcí, které kromě e-mailu/SMS/nabízených oznámení/Voice, třeba funkce Azure Functions, aplikaci LogicApp, Webhooku, ITSM a Automation Runbook můžete aktivovat výstrahu. [Víc se uč.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
+> K dispozici je několik dalších akcí, které se můžou aktivovat kromě e-mailu, SMS/nabízeného/hlasu, jako je Azure Functions, LogicApp, Webhook, ITSM a Automation Runbook. [Víc se uč.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-Tím se otevře **e-mailu/SMS nebo nabízená/hlasové** okno. Zvolte **název** pro příjemce, **zkontrolujte** **e-mailu** a zadejte e-mailovou adresu, na kterou chcete výstrahu odesílat. Klikněte na tlačítko **OK** v **e-mailu/SMS nebo nabízená/hlasové** okno, pak v **přidat skupinu akcí** okno a dokončete konfiguraci vaší skupiny akcí.
+Tím se otevře okno **e-mail/SMS/Push/Voice** . Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. Klikněte na **OK** v okně **e-mail/SMS/Push/Voice** a potom v okně **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
 
 ![Pravidlo výstrahy přidat skupinu akcí](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
-Po zavření těchto oknech, měli byste vidět vaše skupiny akcí, které jsou uvedené v části **skupiny akcí** oddílu. Nakonec dokončí **podrobnosti výstrahy** zadáním **název pravidla upozornění** a **popis** a zvolíte **závažnost**.
-Klikněte na tlačítko **vytvořit pravidlo upozornění** na dokončení.
+Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti**.
+Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
 
-![Vytvořit pravidlo upozornění dokončit](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![Dokončit vytvoření pravidla výstrahy](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
-> Možnost určit **závažnost** je výkonný nástroj, který se dá použít při vytváření více výstrah. Například můžete vytvořit jednu výstrahu pro vyvolání upozornění (závažnost 1) Pokud se nepovede jeden hlavní uzel dolů a další výstrahu, která vyvolá kritické (záv. 0) v nepravděpodobném případě, že oba hlavním uzlům, přestanou fungovat.
+> Možnost určit **závažnost** je výkonný nástroj, který se dá použít při vytváření více výstrah. Můžete například vytvořit jednu výstrahu, která vyvolá upozornění (závažnost 1) v případě, že dojde k výpadku jednoho hlavního uzlu, a další výstrahu, která vyvolává kritické (závažnost 0) v nepravděpodobném případě, že oba hlavní uzly vycházejí dolů.
 
-Když je splněna podmínka pro tuto výstrahu, výstraha se aktivuje a obdržíte e-mailu v detailech výstrahy takto:
+Pokud je splněna podmínka této výstrahy, výstraha se aktivuje a obdržíte e-mail s podrobnostmi výstrahy, jako je tato:
 
-![Azure Monitor e-mailové upozornění](media/hdinsight-cluster-availability/alert-email.png)
+![Azure Monitor e-mailová výstraha](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
-Můžete také zobrazit všechny výstrahy, které mají aktivováno, seskupené podle závažnosti, tak, že přejdete **výstrahy** okna ve vaší **pracovní prostor Log Analytics**.
+Kliknutím na okno **výstrahy** v **pracovním prostoru Log Analytics**můžete zobrazit také všechny výstrahy, které byly aktivovány, seskupené podle závažnosti.
 
-![Upozornění pracovní prostor analýzy protokolů](media/hdinsight-cluster-availability/portal-alerts.png)
+![Výstrahy Log Analytics pracovního prostoru](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
 
-Kliknutím na seskupení závažnosti (to znamená **závažnost 1** jako zvýrazněné výše) se zobrazí záznamy pro všechny výstrahy, které tento závažnost, které se mají aktivována jako níže:
+Kliknutím na seskupení závažnosti (tj. **závažnost 1, jak je** zvýrazněné výše) se zobrazí záznamy pro všechny výstrahy této závažnosti, které byly aktivovány níže:
 
-![Upozornění závažnost 1 pracovní prostor analýzy protokolů](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
+![Závažnost upozornění na pracovní prostor Log Analytics 1](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
 ## <a name="next-steps"></a>Další postup
-- [Dostupnost a spolehlivost clusterů systému Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)
+- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)

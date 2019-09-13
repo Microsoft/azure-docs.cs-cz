@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734307"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933427"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
-Trvalé orchestrace funkcí je implementována v kódu a může používat funkce pro zpracování chyb v programovacím jazyce. V takovém případě nemusíte mít žádné nové koncepty, které byste se měli seznámit s zahrnutím zpracování chyb a kompenzací do orchestrace. Existuje však několik chování, o kterých byste měli vědět.
+Trvalé orchestrace funkcí je implementována v kódu a může používat integrované funkce pro zpracování chyb v programovacím jazyce. V některých nových konceptech nemusíte se učit, jak přidat zpracování chyb a kompenzace do orchestrace. Existuje však několik chování, o kterých byste měli vědět.
 
 ## <a name="errors-in-activity-functions"></a>Chyby v aktivitách funkcí
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Pokud se volání funkce **CreditAccount** u cílového účtu nepovede, funkce Orchestrator tuto náhradu kompenzuje tím, že prostředky přepíše na účet zpět do zdrojového účtu.
+Pokud se první volání funkce **CreditAccount** nepovede, funkce Orchestrator se kompenzuje tím, že se prostředky přepíší kreditem zpět na zdrojový účet.
 
 ## <a name="automatic-retry-on-failure"></a>Automaticky opakovat při selhání
 
@@ -192,14 +192,14 @@ module.exports = df.orchestrator(function*(context) {
 
 Rozhraní API `callActivityWithRetry` (.NET`RetryOptions` ) nebo (JavaScript) přebírá parametr. `CallActivityWithRetryAsync` Pomocí rozhraní API (.NET) `CallSubOrchestratorWithRetryAsync` nebo `callSubOrchestratorWithRetry` (JavaScript) můžete stejné zásady opakování použít k podorchestraci.
 
-K dispozici je několik možností přizpůsobení zásady automatického opakování. Jsou to tyto země:
+K dispozici je několik možností přizpůsobení zásady automatického opakování:
 
 * **Maximální počet pokusů**: Maximální počet opakovaných pokusů.
 * **Interval prvního opakování**: Doba, po kterou se má čekat před prvním pokusem.
 * **Omezení rychlosti koeficient**: Koeficient použitý k určení míry zvýšení omezení rychlosti. Výchozí hodnota je 1.
 * **Maximální interval opakování**: Maximální doba, po kterou se má čekat mezi opakovanými pokusy
 * **Časový limit opakování**: Maximální doba, po kterou se stráví opakované pokusy. Výchozí chování je opakovat po neomezenou dobu.
-* **Popisovač**: Je možné zadat uživatelem definované zpětné volání, které určuje, zda má být volání funkce opakováno.
+* **Popisovač**: K určení, zda by měla být funkce opakována, lze zadat uživatelem definované zpětné volání.
 
 ## <a name="function-timeouts"></a>Vypršení časových limitů funkcí
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 Pokud funkce Orchestrator dojde k chybě s neošetřenou výjimkou, budou zaprotokolovány podrobnosti o výjimce a instance se dokončí se `Failed` stavem.
 
 ## <a name="next-steps"></a>Další postup
+
+> [!div class="nextstepaction"]
+> [Další informace o orchestraci externí](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak diagnostikovat problémy.](durable-functions-diagnostics.md)

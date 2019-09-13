@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z hybridního počítače se systémem Linux pomocí Azure Monitor | Microsoft Docs
+title: 'Rychlý start: Shromažďování dat z hybridního počítače se systémem Linux pomocí Azure Monitor'
 description: V tomto rychlém startu se dozvíte, jak nasadit agenta Log Analytics pro počítače se systémem Linux běžící mimo Azure a povolit shromažďování dat pomocí protokolů Azure Monitor.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991758"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933033"
 ---
 # <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
@@ -161,7 +161,7 @@ Pokud chcete pracovní prostor odstranit, vyberte pracovní prostor Log Analytic
 
 ![Odstranění prostředku Log Analytics](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když shromažďujete data o provozu a výkonu z místního počítače s Linuxem, můžete jednoduše a *zdarma* začít zkoumat a analyzovat shromážděná data a provádět na jejich základě akce.  
 

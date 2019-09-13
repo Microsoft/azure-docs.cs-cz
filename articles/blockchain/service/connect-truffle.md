@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240896"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932593"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Rychlý start: Použití Truffle pro připojení k uzlu transakce
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Rychlý start: Použití rozšíření Truffle pro připojení k transakčnímu uzlu
 
 Truffle je blockchain vývojové prostředí, které můžete použít pro připojení k uzlu transakce služby Azure blockchain.
 
@@ -25,7 +25,7 @@ Truffle je blockchain vývojové prostředí, které můžete použít pro přip
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Vytvoření člena Azure blockchain](create-member.md)
+* Kompletní [rychlé spuštění: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvoření členu blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md)
 * Nainstalujte [Truffle](https://github.com/trufflesuite/truffle). Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Pro Web3 je potřeba Python.
 
@@ -120,11 +120,11 @@ Pomocí *Web3* se připojte k uzlu transakce.
     .exit
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili projekt Truffle pro připojení ke svému výchozímu uzlu transakce služby Azure blockchain.
 
-Vyzkoušejte si další kurz pro použití Azure blockchain Development Kit pro Ethereem a Truffle ke spuštění funkce inteligentního kontraktu prostřednictvím transakce v síti konsorcia blockchain.
+Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem a Truffle k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
 
 > [!div class="nextstepaction"]
-> [Použití inteligentních kontraktů ve službě Azure blockchain](send-transaction.md)
+> [Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md)

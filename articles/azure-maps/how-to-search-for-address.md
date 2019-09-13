@@ -1,6 +1,6 @@
 ---
-title: Jak hledat adresu pomocí služby Azure Maps Search | Dokumentace Microsoftu
-description: Zjistěte, jak vyhledat adresu pomocí služby Azure Search mapy
+title: Hledání adresy pomocí služby Azure Maps Search | Microsoft Docs
+description: Naučte se hledat adresu pomocí služby Azure Maps Search Service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/05/2019
@@ -8,213 +8,213 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572386"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914472"
 ---
-# <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby vyhledávání Azure Maps
+# <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby Azure Maps Search Service
 
-Search service map je sada rozhraní RESTful API navržené pro vývojářům vyhledávat adresy, místa, body zájmu, výpisy firem a jiných zeměpisných údajů. Služba přiřadí zeměpisné šířky a délky na konkrétní adresu, křížové ulici, geografické funkci nebo bodu zájmu (POI). Hodnoty zeměpisné šířky a délky vrácenou při hledání může používat jako parametry v jiných mapy služeb, třeba toku provozu a trasách.
+Vyhledávací služba Maps je sada rozhraní RESTful API navržená vývojářům, kteří hledají adresy, místa, body zájmu, obchodní výpisy a další geografické informace. Služba přiřadí zeměpisnou šířku ke konkrétní adrese, mezinárodní ulici, geografické funkci nebo zájmu v oblasti zájmu (POI). Hodnoty zeměpisné šířky a délky vrácené hledáním se dají použít jako parametry v jiných službách Maps, jako je směrování a přenosový tok.
 
-V tomto článku se dozvíte jak:
+V tomto článku se dozvíte, jak:
 
-* Hledat adresy [Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
-* Hledání adresy společně s vlastností a souřadnice
-* Ujistěte se, [reverzního vyhledávání adresu](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro hledání adresy
-* Hledání napříč ulice pomocí [adresu Reverse napříč ulice rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
+* Hledání adresy pomocí [rozhraní API pro přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* Hledání adresy spolu s vlastnostmi a souřadnicemi
+* Chcete-li vyhledat ulici, vyhledejte adresu v [obráceném pořadí](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
+* Hledání mezi ulici pomocí [hledané adresy rozhraní API pro reverzní Meziulici](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby všechna volání do rozhraní API služby Maps, potřebujete účet Maps a klíč. Informace o vytváření účtu a klíč načítání, najdete v části [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md).
+Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
 
-Tento článek používá [aplikaci Postman](https://www.getpostman.com/apps) vytvářet volání REST. Můžete použít všechny vývojové prostředí rozhraní API, které dáváte přednost.
+V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
-## <a name="using-fuzzy-search"></a>Použití vyhledávání přibližných shod
+## <a name="using-fuzzy-search"></a>Použití vyhledávání s fuzzy logikou
 
-Výchozí rozhraní API pro službu search je [vyhledávání přibližných shod](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a je užitečné, pokud si nejste jisti uživatelské vstupy jsou vyhledávacího dotazu. Rozhraní API kombinuje POI vyhledávání a geokódování do canonical "jednořádkový vyhledávání. Například rozhraní API může zpracovávat vstupy žádné adresy nebo kombinaci POI token. Můžete ho také váha kontextové pozici (tabulky lat./fyzický pevný disk. dvojice), plně omezeny souřadnic a poloměru nebo obecně provést bez jakékoli geograficky usměrnění údajů bodu ukotvení.
+Výchozí rozhraní API pro vyhledávací službu je [přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a je užitečné, Pokud nevíte, jaké jsou uživatelské vstupy pro vyhledávací dotaz. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického víceřádkového vyhledávání. Rozhraní API může například zpracovat vstupy libovolné kombinace adres nebo POI tokenu. Může být také vážená s kontextovou polohou (lat./lon. párové), plně omezená souřadnicí a poloměrem nebo bez jakýchkoli geografických posunutí bodu ukotvení.
 
-Většinu vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` získat výkon a snížit neobvyklé výsledky. Toto výchozí nastavení můžete přepsat, podle potřeby předáním parametru dotazu na požadavek `maxFuzzyLevel=2` nebo `3`.
+Většina vyhledávacích dotazů je `maxFuzzyLevel=1` ve výchozím nastavení tak, aby získala výkon a snížila neobvyklé výsledky. Tato výchozí hodnota se dá přepsat podle potřeby na žádost předáním parametru `maxFuzzyLevel=2` dotazu nebo. `3`
 
-### <a name="search-for-an-address-using-fuzzy-search"></a>Hledání adresy použití vyhledávání přibližných shod
+### <a name="search-for-an-address-using-fuzzy-search"></a>Hledání adresy pomocí hledání přibližných výsledků
 
-1. Otevřete aplikaci Postman, klikněte na nový | Vytvořte nový a vyberte **požadavek GET**. Zadejte název žádosti o **vyhledávání přibližných shod**, vyberte příslušnou kolekci nebo složce a uložit ho. tím, klikněte na tlačítko **Uložit**.
+1. Otevřete aplikaci po kliknutí na nový | Vytvořte nové a vyberte **získat žádost**. Zadejte název žádosti přibližného **hledání**, vyberte kolekci nebo složku, do které se má uložit, a klikněte na **Uložit**.
 
-2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte adresu URL žádosti pro koncový bod rozhraní API.
 
-    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autorizace | Bez ověřování |
+    | Authorization | Bez ověřování |
 
-    **Json** Určuje atribut v cestě adresy URL, formát odpovědi. Json v celém tomto článku využívají pro snadné použití a čitelnost. Můžete najít formátů dostupné odpovědi v **získat vyhledávání přibližných shod** definice [funkční rozhraní API map odkaz](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
+    Atribut **JSON** v cestě URL určuje formát odpovědi. V celém tomto článku používáte JSON, abyste usnadnili používání a čitelnost. Dostupné formáty odezvy najdete v definici přibližné **vyhledávání** v [referenci rozhraní API pro funkce Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
-3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
 
-    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | klíč předplatného | \<klíč Azure Maps\> |
+    | předplatné – klíč | \<váš Azure Maps klíč\> |
     | query | pizza |
 
-4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
+4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
-    Vrátí řetězec dotazu nejednoznačný "pizza" 10 [bodu zájmu výsledek](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) výsledky (POI) s kategorií, které spadají do "pizza" a "restaurace". Každý výsledek vrátí adresu, zeměpisné šířky / délky hodnoty view portu a vstupní bod pro umístění.
+    Nejednoznačný řetězec dotazu "pizza" vrátil 10 [bodů výsledku úroku](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) výsledky s kategoriemi, které jsou v oblasti "pizza" a "restaurace". Každý výsledek vrátí adresu ulice, hodnoty zeměpisné šířky a délky, zobrazit port a vstupní body pro dané umístění.
   
-    Výsledky jsou nastaveny pro tento dotaz nejsou vázané na libovolný odkaz na konkrétní umístění. Můžete použít **countrySet** parametr zadat jenom v zemích nebo oblastech u kterých vaše aplikace potřebuje pokrytí, jako je výchozí chování pro celý svět, vrací potenciálně zbytečné výsledky hledání.
+    Výsledky jsou pro tento dotaz různé, nevázané na žádné konkrétní referenční místo. Pomocí parametru **countrySet** můžete zadat jenom země nebo oblasti, pro které vaše aplikace potřebuje pokrytí, protože výchozí chování je hledání celého světa, který může vracet zbytečné výsledky.
 
-5. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+5. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |------------------|-------------------------|
     | countrySet | USA |
   
-    Výsledky jsou nyní ohraničené směrové číslo země a dotaz vrátí pizza restaurace ve Spojených státech.
+    Výsledky jsou nyní ohraničeny kódem země a dotaz vrátí Pizza restaurací ve USA.
   
-    K poskytování výsledků pro umístění, můžete dotazovat bodu zájmu a použít vrácené zeměpisná šířka a zeměpisná délka hodnoty ve volání do služby vyhledávání přibližných shod. V tomto případě používá službu Search nevrátilo umístění ručička místo Seattle a použít tabulky lat. / fyzický pevný disk. hodnoty k orientaci hledání.
+    K poskytnutí výsledků pro umístění můžete zadat dotaz na bod zájmu a použít vrácenou zeměpisnou šířku a délku ve volání služby pro vyhledávání přibližných hodnot. V tomto případě jste použili službu Search, která vrátí umístění ručičky prostoru Seattle a použila lat. / lon. hodnoty pro orientaci hledání
   
-6. Parametry, zadejte následující klíč / páry hodnot a klikněte na tlačítko **odeslat**:
+6. V části params zadejte následující páry klíč/hodnota a klikněte na **Odeslat**:
 
-    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | LAT | 47.620525 |
-    | fyzický pevný disk | -122.349274 |
+    | připojí | 47,620525 |
+    | lon | -122,349274 |
 
-## <a name="search-for-address-properties-and-coordinates"></a>Vyhledat vlastnosti adresy a souřadnice
+## <a name="search-for-address-properties-and-coordinates"></a>Hledání vlastností adresy a souřadnic
 
-Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní API a přijetí odpovědi, který obsahuje adresu podrobné vlastnosti, jako je magistrát nebo dělení, jakož i poziční hodnoty v zeměpisné šířky a délky.
+Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou ulici a získat odpověď, která obsahuje podrobné vlastnosti adresy, jako je například obec nebo pododdíl, a také poziční hodnoty v zeměpisné šířce a délce.
 
-1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **hledání adresy**.
-2. Na kartě tvůrce, vyberte **získat** metodu HTTP, zadejte adresu URL požadavku pro koncový bod rozhraní API a vyberte autorizační protokol, pokud existuje.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **Vyhledat**.
+2. Na kartě tvůrce vyberte metodu **Get** http, zadejte adresu URL žádosti pro koncový bod rozhraní API a vyberte autorizační protokol (pokud nějaký existuje).
 
-    ![Hledání adresy](./media/how-to-search-for-address/address_search_url.png)
+    ![Hledání adres](./media/how-to-search-for-address/address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorizace | Bez ověřování |
+    | Authorization | Bez ověřování |
 
-3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
-    ![Hledání adresy](./media/how-to-search-for-address/address_search_params.png)
+    ![Hledání adres](./media/how-to-search-for-address/address_search_params.png)
   
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | klíč předplatného | \<klíč Azure Maps\> |
-    | query | 400 Broad St, Seattle, WA 98109 |
+    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | query | 400, široká, Praha, WA 98109 |
   
-4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
+4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
   
-    V tomto případě zadaný dotaz úplnou adresu a zobrazit jeden výsledek v textu odpovědi.
+    V tomto případě jste zadali kompletní dotaz na adresu a v těle odpovědi přijali jeden výsledek.
   
-5. V parametrech upravte řetězec dotazu, který má následující hodnotu:
+5. V parametrech param řetězec dotazu upravte na následující hodnotu:
     ```plaintext
         400 Broad, Seattle
     ```
 
-6. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+6. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | typeahead | true (pravda) |
+    | typeahead | true |
 
-    **Typeahead** příznak říká rozhraní API pro vyhledávání adresu považovat za částečné vstup dotazu a vrátí pole hodnot, prediktivní.
+    Příznak **typeahead** oznamuje rozhraní API pro vyhledávání adres, aby se dotaz považoval za částečný vstup a vrátil pole prediktivních hodnot.
 
-## <a name="search-for-a-street-address-using-reverse-address-search"></a>Vyhledejte adresu pomocí reverzního hledání adresy
+## <a name="search-for-a-street-address-using-reverse-address-search"></a>Hledání adresy ulice pomocí zpětného vyhledávání adres
 
-1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **reverzního vyhledávání adresu**.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho pro **zpětné vyhledávání adres**.
 
-2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte adresu URL žádosti pro koncový bod rozhraní API.
   
-    ![Zpětná adresa URL vyhledávání](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Adresa URL pro hledání zpětné adresy](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autorizace | Bez ověřování |
+    | Authorization | Bez ověřování |
   
-3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
-    ![Zpětná adresa parametry hledání](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![Parametry vyhledávání zpětné adresy](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | klíč předplatného | \<klíč Azure Maps\> |
-    | query | 47.591180,-122.332700 |
+    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | query | 47.591180,-122,332700 |
   
-4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
+4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
-    Odpověď obsahuje informace o adrese klíče o Safeco Field.
+    Odpověď obsahuje klíčová informace o adrese pole Safeco Field.
   
-5. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+5. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | číslo | true (pravda) |
+    | number | true |
 
-    Pokud [číslo](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu se odešle s požadavkem, odpověď může obsahovat straně ulice (doleva nebo doprava) a také posunutí pozice za daný počet.
+    Pokud je parametr dotazu [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) odeslán s požadavkem, může odpověď zahrnovat stranu ulice (vlevo/vpravo) a také pozici posunu pro toto číslo.
   
-6. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+6. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | returnSpeedLimit | true (pravda) |
+    | returnSpeedLimit | true |
   
-    Když [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu je nastavena, odpověď vrácení odeslaných omezení rychlosti.
+    Pokud je nastaven parametr dotazu [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , vrátí se odpověď na odeslaný limit.
 
-7. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+7. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | returnRoadUse | true (pravda) |
+    | returnRoadUse | true |
 
-    Když [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu je nastavena, odpověď se vrátí silniční použijte pole pro reverzní geocodes ulice na úrovni.
+    Pokud je nastaven parametr dotazu [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , vrátí odpověď pole pro použití pro reverzní mikrokódování na úrovni ulice.
 
-8. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+8. Do oddílu param přidejte následující dvojici klíč /hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |-----|------------|
-    | roadUse | true (pravda) |
+    | roadUse | true |
 
-    Dotaz zpětné geokód můžete omezit na určitý typ pomocí použití silniční [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu.
+    Můžete omezit dotaz na reverzní mikrokódování na konkrétní typ cesty pomocí parametru dotazu [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
   
-## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Hledání napříč ulice pomocí reverzního ulice hledání různé adresy
+## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Hledání příčné ulice pomocí zpětného vyhledávání přes meziulici
 
-1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **zpětná adresa pro různé ulice hledání**.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **obrátit na hledání mezi ulice**.
 
-2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte adresu URL žádosti pro koncový bod rozhraní API.
   
-    ![Reverse hledání napříč ulici adresy](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Hledání zpětné adresy v meziulici](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autorizace | Bez ověřování |
+    | Authorization | Bez ověřování |
   
-3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | klíč předplatného | \<klíč Azure Maps\> |
-    | query | 47.591180,-122.332700 |
+    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | query | 47.591180,-122,332700 |
   
-4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
+4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [vyhledávací služby Azure Maps](https://docs.microsoft.com/rest/api/maps/search) dokumentace k rozhraní API.
+- Prozkoumejte dokumentaci k rozhraní API [služby Azure Maps Search Service](https://docs.microsoft.com/rest/api/maps/search) .

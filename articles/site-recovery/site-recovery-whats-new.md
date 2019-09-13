@@ -1,18 +1,18 @@
 ---
-title: Co je nového v Azure Site Recovery | Microsoft Docs
+title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí zavedených v Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146902"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933939"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -24,16 +24,56 @@ V kanálu [aktualizací Azure](https://azure.microsoft.com/updates/?product=site
 
 Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydaná verze. Tyto jsou shrnuté v následující tabulce.
 
-**Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services** 
---- | --- | --- | --- | ---
+**Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
+--- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Kumulativní aktualizace 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [Kumulativní aktualizace 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[Kumulativní aktualizace 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
+
+
+## <a name="updates-september-2019"></a>Aktualizace (září 2019)
+
+### <a name="update-rollup-40"></a>Kumulativní aktualizace 40
+
+[Kumulativní aktualizace 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) poskytuje následující aktualizace.
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
+
+Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+**Vyčištění po navrácení služeb po obnovení** | Po převzetí služeb při selhání sekundárním Azure a následné navrácení služeb po obnovení do primární oblasti Site Recovery automaticky vyčistí počítače v sekundární oblasti. Nemusíte ručně odstraňovat virtuální počítače a síťové karty.
+**Testovací převzetí služeb při selhání zachovává IP adresu** | IP adresu zdrojového virtuálního počítače teď můžete zachovat během postupu zotavení po havárii a vybrat statickou IP adresu testovacího převzetí služeb při selhání.
+
+## <a name="vmwarephysical-server-disaster-recovery"></a>Zotavení po havárii VMware/fyzický server
+
+Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+Výstrahy nového procesového serveru | Přidali jsme nové výstrahy procesového serveru. [Další informace](vmware-physical-azure-monitor-process-server.md). 
+
+## <a name="hyper-v-disaster-recovery"></a>Zotavení po havárii technologie Hyper-V
+
+Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+Účet úložiště | Site Recovery teď podporuje použití účtu úložiště s povoleným řízením přístupu na základě role (RBAC). [Přečtěte si další informace](../storage/common/storage-account-manage.md#access-control) o řízení přístupu pro účty úložiště. 
 
 
 ## <a name="updates-august-2019"></a>Aktualizace (srpen 2019)
@@ -338,7 +378,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 **Funkce** | **Podrobnosti**
 --- | ---
-**Podpora Linux** | Byla přidána podpora pro RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Virtuální počítače se systémem Linux, které používají styl oddílu tabulka oddílů GUID (GPT) v režimu kompatibility se starším systémem BIOS, jsou nyní podporovány. Další informace najdete v tématu [Nejčastější dotazy](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) k virtuálním počítačům Azure. 
+**Podpora Linux** | Byla přidána podpora pro RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Virtuální počítače se systémem Linux, které používají styl oddílu tabulka oddílů GUID (GPT) v režimu kompatibility se starším systémem BIOS, jsou nyní podporovány. Další informace najdete v tématu [Nejčastější dotazy k virtuálním počítačům Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) . 
 **Zotavení po havárii pro virtuální počítače po migraci** | Podpora pro povolení zotavení po havárii do sekundární oblasti pro místní virtuální počítač VMware migrované do Azure, aniž byste před povolením replikace museli odinstalovat službu mobility na virtuálním počítači.
 **Windows Server 2008** | Podpora pro migraci počítačů se systémem Windows Server 2008 R2/2008 64-bit a 32-bit.<br/><br/> Jenom migrace (replikace a převzetí služeb při selhání). Navrácení služeb po obnovení se nepodporuje.
 

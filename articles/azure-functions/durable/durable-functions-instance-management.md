@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735180"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933322"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -31,9 +31,6 @@ Je důležité, abyste mohli spustit instanci orchestrace. To se obvykle provád
 Metoda [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) na [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) `startNew` `DurableOrchestrationClient` nebo na (JavaScript) spouští novou instanci. Instance této třídy získáte pomocí `orchestrationClient` vazby. Interně Tato metoda zařadí zprávu do fronty ovládacích prvků, která pak aktivuje začátek funkce se zadaným názvem, který používá `orchestrationTrigger` aktivační vazbu.
 
 Tato asynchronní operace se dokončí při úspěšném naplánování procesu orchestrace. Proces orchestrace by měl začínat do 30 sekund. Pokud bude trvat déle, zobrazí se `TimeoutException`.
-
-> [!WARNING]
-> Při vývoji místně v `WEBSITE_HOSTNAME` jazyce JavaScript nastavte proměnnou `localhost:<port>` prostředí (například `localhost:7071`) na použití metod v `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Odesílání událostí do instancí
 
-V některých scénářích je důležité, aby funkce nástroje Orchestrator dokázala počkat a naslouchat externím událostem. To zahrnuje [funkce](durable-functions-concepts.md#monitoring) a funkce monitorování, které čekají na [lidskou interakci](durable-functions-concepts.md#human).
+V některých scénářích je důležité, aby funkce nástroje Orchestrator dokázala počkat a naslouchat externím událostem. To zahrnuje [funkce](durable-functions-overview.md#monitoring) a funkce monitorování, které čekají na [lidskou interakci](durable-functions-overview.md#human).
 
 Odesílání oznámení o událostech na spuštěné instance pomocí metody [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) třídy [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET `raiseEvent` ) nebo metody `DurableOrchestrationClient` třídy (JavaScript). Instance, které mohou zpracovávat tyto události, jsou ty, které čekají na volání [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) nebo `waitForExternalEvent` (JavaScript).
 
@@ -539,9 +536,9 @@ Pokud dojde k selhání orchestrace z neočekávaného důvodu, můžete instanc
 > [!NOTE]
 > Toto rozhraní API není určeno jako náhrada za správné zpracování chyb a zásady opakování. Místo toho je určeno pro použití pouze v případě, že instance Orchestration selžou z neočekávaných důvodů. Další informace o zpracování chyb a zásadách opakování najdete v tématu o [zpracování chyb](durable-functions-error-handling.md) .
 
-K umístění orchestrace zpátky do *běžícího* stavu použijte rozhraní API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) nebo `rewindAsync` (JavaScript). Znovu spusťte činnost nebo selhání provádění suborchestrace, které způsobily selhání orchestrace.
+K umístění orchestrace zpátky do běžícího stavu použijte rozhraní API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) nebo `rewindAsync` (JavaScript ). Znovu spusťte činnost nebo selhání provádění suborchestrace, které způsobily selhání orchestrace.
 
-Řekněme například, že máte pracovní postup zahrnující řadu [lidských schválení](durable-functions-concepts.md#human). Předpokládejme, že existuje řada funkcí aktivity, které upozorní uživatele, že je potřeba jejich schválení, a vyčkejte na odpověď v reálném čase. Po přijetí odpovědí nebo vypršení časového limitu u všech aktivit schválení dojde k chybě z důvodu nesprávné konfigurace aplikace, jako je například Neplatný připojovací řetězec databáze. Výsledkem je selhání orchestrace hluboko do pracovního postupu. S rozhraním API `rewindAsync` (.NET)nebo(JavaScript)můžesprávceaplikaceopravitchybukonfiguraceapřevinoutneúspěšnouorchestracizpátkydostavuhnedpředselháním.`RewindAsync` Žádný z kroků interakce mezi lidmi není nutné znovu schválit a orchestraci je teď možné úspěšně dokončit.
+Řekněme například, že máte pracovní postup zahrnující řadu [lidských schválení](durable-functions-overview.md#human). Předpokládejme, že existuje řada funkcí aktivity, které upozorní uživatele, že je potřeba jejich schválení, a vyčkejte na odpověď v reálném čase. Po přijetí odpovědí nebo vypršení časového limitu u všech aktivit schválení dojde k chybě z důvodu nesprávné konfigurace aplikace, jako je například Neplatný připojovací řetězec databáze. Výsledkem je selhání orchestrace hluboko do pracovního postupu. S rozhraním API `rewindAsync` (.NET)nebo(JavaScript)můžesprávceaplikaceopravitchybukonfiguraceapřevinoutneúspěšnouorchestracizpátkydostavuhnedpředselháním.`RewindAsync` Žádný z kroků interakce mezi lidmi není nutné znovu schválit a orchestraci je teď možné úspěšně dokončit.
 
 > [!NOTE]
 > Funkce *Rewind* nepodporuje převíjení instancí orchestrace, které používají trvalé časovače.
@@ -658,7 +655,10 @@ Následující příkaz odstraní všechna data služby Azure Storage přidruže
 func durable delete-task-hub --task-hub-name UserTest
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Naučte se používat rozhraní API HTTP pro správu instancí.](durable-functions-http-api.md)
+> [Informace o tom, jak zpracovávat správu verzí](durable-functions-versioning.md)
+
+> [!div class="nextstepaction"]
+> [Reference k integrovanému HTTP API pro správu instancí](durable-functions-http-api.md)

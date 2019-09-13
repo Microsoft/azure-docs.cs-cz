@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2019
+ms.date: 09/11/2019
 ms.author: magoedte
-ms.openlocfilehash: d2aa25af4ebf721d04ada46ffab37107bf73113b
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: bd4016d91000ee23023eaa64872bff9a057058d1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861113"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916047"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -93,10 +93,10 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 |Windows 8 | X | X | |
 |Windows 7 SP1 | X | X | |
 |Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
-|Ubuntu 14,04, 16,04, 18,04 | X | X | X |
-|CentOS Linux 6, 7 | X | X | X |
+|Ubuntu 18,04, 16,04 | X | X | X |
+|Linux centOS 7, 6 | X | X | X |
 |SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Debian 8, 9,4 | X<sup>1</sup> | | X |
+|Debian 9.4, 8 | X<sup>1</sup> | | X |
 
 <sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače je k dispozici pouze ze služby Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 
@@ -110,45 +110,51 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 > - Používá se nestandardní jádra vyjde nová verze, jako například rozšíření fyzické adresy (PAE) a Xen, nejsou podporovány pro libovolnou distribuci Linuxu. Například systém s řetězec verze *2.6.16.21-0.8-xen* se nepodporuje.
 > - Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
 > - Jádro CentOSPlus je podporováno.
+> - Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 7.4 | 3.10.0-693 |
-| 7.5 | 3.10.0-862 |
 | 7,6 | 3.10.0-957 |
+| 7.5 | 3.10.0-862 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
+
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
-| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
+| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| Ubuntu 18.04 | jádro 4,15.\*<br>4,18 * |
-| Ubuntu 16.04.3 | jádra 4.15. * |
-| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
-| 14.04 | 3.13.\*<br>4.4.\* |
+| 18,04 | 5,0 (zahrnuje jádro Azure vyladěné)<br>4,18 *<br>4,15* |
+| 16.04.3 | 4,15. * |
+| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
-| Verze operačního systému | Verze jádra
+| Verze operačního systému | Verze jádra |
 |:--|:--|
-|12 SP2 | 4.4. * |
+|12 SP4 | 4,12. * (zahrnuje jádro Azure s vyladěnými jádry) |
 |12 SP3 | 4.4. * |
-|12 SP4 | 4.4. * |
-|12 SP4 | Jádro Azure – vyladěné |
+|12 SP2 | 4.4. * |
+
+#### <a name="debian"></a>Debian 
+
+| Verze operačního systému | Verze jádra |
+|:--|:--|
+| 9 | 4,9 | 
 
 ### <a name="the-microsoft-dependency-agent"></a>Agent Microsoft Dependency
 
@@ -252,6 +258,6 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou informace o monitorování k dispozici pro analýzu v Azure Monitor pro virtuální počítače.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

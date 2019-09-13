@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Analýza dat Apache Spark v Azure HDInsight pomocí Power BI '
-description: Kurz – použití Microsoft Power BI k vizualizaci dat Apache Spark uložené clustery HDInsight
+title: 'Kurz: Analýza Apache Spark dat pomocí Power BI ve službě Azure HDInsight '
+description: Kurz – použití Microsoft Power BI k vizualizaci Apache Spark uložených clusterů HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: d5296fe19cef9e8881d39bd9e59eb4c40d049959
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296191"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885173"
 ---
-# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza Apache Spark dat pomocí Power BI ve službě HDInsight
 
-V tomto kurzu se dozvíte, jak používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark v [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
+V tomto kurzu se naučíte používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark ve [službě Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončení článku [kurzu: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight](./apache-spark-load-data-run-query.md).
+* Dokončete kurz [k článku: Načtěte data a spouštějte dotazy na Apache Sparkm clusteru v Azure](./apache-spark-load-data-run-query.md)HDInsight.
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* Volitelné: [Power BI zkušební verze předplatného](https://app.powerbi.com/signupredirect?pbi_source=web).
+* Volitelné: [Předplatné Power BI zkušební verze](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Ověření dat
 
-[Poznámkový blok Jupyter](https://jupyter.org/) , kterou jste vytvořili v [předchozí kurz o službě](apache-spark-load-data-run-query.md) obsahuje kód pro vytvoření `hvac` tabulky. Tato tabulka je založen na souboru CSV, k dispozici na všech clusterech HDInsight Spark na `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Pomocí následujícího postupu ověřte data.
+[Jupyter notebook](https://jupyter.org/) , který jste vytvořili v [předchozím kurzu](apache-spark-load-data-run-query.md) , obsahuje kód `hvac` pro vytvoření tabulky. Tato tabulka je založená na souboru CSV, který je k dispozici ve všech `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`clusterech HDInsight Spark na adrese. Pomocí následujícího postupu ověřte data.
 
 1. Do poznámkového bloku Jupyter vložte následující kód a pak stiskněte **SHIFT + ENTER**. Kód ověří existenci tabulek.
 
@@ -74,25 +74,25 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 > [!NOTE]  
 > Konektor ukázaný v tomto článku je aktuálně ve verzi Preview. Případnou zpětnou vazbu můžete poskytnout přes web [komunity Power BI](https://community.powerbi.com/) nebo na fóru [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) (Nápady ohledně Power BI).
 
-1. Otevřete Power BI Desktop. Pokud se otevře, zavřete spouštění úvodní obrazovka.
+1. Otevřete Power BI Desktop. Pokud se otevře úvodní obrazovka pro spuštění, zavřete ji.
 
-2. Z **Domů** kartu, přejděte na **získat Data** > **více...** .
+2. Na kartě **Domů** přejděte na **získat data** >  **..** .
 
     ![Načtení dat do Power BI Desktopu z Apache Sparku ve službě HDInsight](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
 
-3. Zadejte `Spark` do vyhledávacího pole, vyberte **Azure HDInsight Spark**a pak vyberte **připojit**.
+3. Do `Spark` vyhledávacího pole zadejte, vyberte **Azure HDInsight Spark**a pak vyberte **připojit**.
 
     ![Načtení dat do Power BI z Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Načtení dat do Power BI z Apache Spark BI")
 
-4. Zadejte adresu URL vašeho clusteru (ve formě `mysparkcluster.azurehdinsight.net`) v **Server** textového pole.
+4. Do textového pole **Server** zadejte adresu URL clusteru `mysparkcluster.azurehdinsight.net`(ve formuláři).
 
 5. V části **režim připojení dat**vyberte **DirectQuery**. Pak vyberte **OK**.
 
     V případě Sparku můžete použít jakýkoli režim připojení dat. Pokud použijete DirectQuery, změny se v sestavách projeví bez nutnosti aktualizace celé datové sady. Pokud data importujete, musíte datovou sadu aktualizovat, aby se změny projevily. Další informace o tom, jak a kdy použít DirectQuery, najdete v tématu [Použití DirectQuery v Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. Zadejte přihlašovací údaje účtu HDInsight a pak vyberte **připojit**. Výchozí název účtu je *admin*.
+6. Zadejte informace o přihlašovacím účtu HDInsight a pak vyberte **připojit**. Výchozí název účtu je *admin*.
 
-7. Vyberte `hvac` tabulky, počkejte zobrazíte náhled dat a pak vyberte **zatížení**.
+7. Vyberte tabulku, počkejte, než se zobrazí náhled dat, a pak vyberte načíst. `hvac`
 
     ![Uživatelské jméno a heslo clusteru Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Uživatelské jméno a heslo clusteru Spark")
 
@@ -104,23 +104,23 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
     2. Přetáhněte pole **BuildingID** (ID budovy) do části **Osa** a pole **ActualTemp** (Skutečná teplota) a **TargetTemp** (Cílová teplota) do části **Hodnota**.
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![Přidat sloupce hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Přidat sloupce hodnot")
 
         Diagram vypadá takto:
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![součet plošného grafu](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "součet plošného grafu")
 
-        Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. Vyberte šipku dolů vedle **ActualTemp** a **TragetTemp** v podokně vizualizace, můžete zobrazit **součet** zaškrtnuto.
+        Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. V podokně vizualizace vyberte šipku dolů vedle **ActualTemp** a **TragetTemp** , kde vidíte, že je vybraná možnost **Sum** .
 
-    3. Vyberte šipku dolů vedle **ActualTemp** a **TragetTemp** v podokně vizualizace vyberte **průměrné** získáte průměr skutečné a teploty cíl pro každý sestavování.
+    3. V podokně vizualizace vyberte šipky dolů vedle **ActualTemp** a **TragetTemp** . Pokud chcete získat průměr skutečných a cílových teplot pro každé sestavení, vyberte **průměr** .
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![průměr hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "průměr hodnot")
 
         Vaše vizualizace dat by měla vypadat podobně jako na následujícím snímku obrazovky. Přesunutím kurzoru nad vizualizaci zobrazte popisky s relevantními daty.
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![plošný graf](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "plošný graf")
 
-9. Přejděte do **souboru** > **Uložit**, zadejte název `BuildingTemperature` souboru, vyberte **Uložit**.
+9. Přejděte do **souboru** > **Save (Uložit**), `BuildingTemperature` zadejte název souboru a pak vyberte **Uložit**.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Publikování sestavy ve službě Power BI (volitelné)
 
@@ -169,17 +169,17 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 10. V sestavě klikněte na **Přejít na řídicí panel**. 
 
-Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. Další informace o sestavách a řídicích panelů najdete v tématu [sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) a [řídicí panely v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. Další informace o sestavách a řídicích panelech najdete v tématu [sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) a [řídicích panelech v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Po dokončení kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark v [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). V dalším článku se dozvíte, jak můžete data zaregistrovaná ve Sparku přetáhnout do nástroje pro analýzu BI, jako je Power BI.
+V tomto kurzu jste zjistili, jak používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark ve [službě Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). V dalším článku se dozvíte, jak můžete data zaregistrovaná ve Sparku přetáhnout do nástroje pro analýzu BI, jako je Power BI.
 
 > [!div class="nextstepaction"]
 > [Spuštění úlohy streamování Apache Spark](apache-spark-eventhub-streaming.md)

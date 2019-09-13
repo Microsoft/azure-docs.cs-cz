@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092670"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918801"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření systému Linux
 
@@ -59,10 +59,10 @@ Konfigurace ke stažení je pouze příklad. upravte ji tak, aby vyhovovala vaš
 
 ### <a name="sample-installation"></a>Ukázková instalace
 
-Vyplňte správné parametry na prvních třech řádcích a potom tento skript spusťte jako kořenový adresář:
+Před spuštěním Vyplňte správné hodnoty proměnných v první části:
 
 ```bash
-# Set your Azure VM diagnostic parameters correctly below
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -431,7 +431,7 @@ Třída procesoru metrik nabízí informace o využití procesoru ve virtuální
 counter | Význam
 ------- | -------
 PercentIdleTime | Procento času během okna agregace, které procesory prováděly nečinný cyklus jádra
-PercentProcessorTime | Procento času spuštění vlákna, které není nečinné
+percentProcessorTime | Procento času spuštění vlákna, které není nečinné
 PercentIOWaitTime | Procento času čekání na dokončení vstupně-výstupních operací
 PercentInterruptTime | Procento času provádění hardwarových a softwarových přerušení a DPC (odložená volání procedur)
 PercentUserTime | Doba nečinnosti v průběhu okna agregace, procento času stráveného uživatelem s normální prioritou
@@ -539,7 +539,7 @@ V závislosti na předchozích definicích najdete ukázkovou konfiguraci rozš�
 
 Konfigurace těchto privátních nastavení:
 
-* účet úložiště
+* Účet úložiště
 * token SAS odpovídajícího účtu
 * několik umyvadel (JsonBlob nebo EventHubs s tokeny SAS)
 
@@ -703,7 +703,7 @@ Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vyge
 
 V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-what-is-event-hubs.md) se dozvíte, jak využívat zprávy publikované do koncového bodu EventHubs.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vytvořte výstrahy metriky v [Azure monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) pro metriky, které shromažďujete.
 * Vytvořte [grafy monitorování](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) pro vaše metriky.

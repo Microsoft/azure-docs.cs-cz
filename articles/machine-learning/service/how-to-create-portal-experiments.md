@@ -1,7 +1,7 @@
 ---
 title: Použití automatizovaného rozhraní ML Azure ke školení & nasazení modelů
 titleSuffix: Azure Machine Learning service
-description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení v Azure Portal
+description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení na úvodní stránce pracovního prostoru Azure Machine Learning (Preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,19 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/02/2019
-ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/09/2019
+ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860484"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910425"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení s využitím úvodní stránky pracovního prostoru Azure Machine Learning (Preview).
 
- V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované experimenty strojového učení v Azure Portal bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+ V tomto článku se dozvíte, jak vytvářet, zkoumat a nasazovat automatizované experimenty strojového učení na úvodní stránce pracovního prostoru Azure Machine Learning bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,23 +32,26 @@ ms.locfileid: "70860484"
 
 ## <a name="get-started"></a>Začínáme
 
-Přejděte do levého podokna pracovního prostoru. V části vytváření obsahu (Preview) vyberte automatizované Machine Learning.
 
-![Azure Portal navigační podokno](media/how-to-create-portal-experiments/nav-pane.png)
+1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/workspaceportal/). 
 
- Pokud se jedná o vaše první experimenty, uvidíte **úvodní obrazovku pro automatizované Machine Learning** . 
+1. Vyberte své předplatné a pracovní prostor. 
+
+1. Přejděte do levého podokna. V části **vytváření obsahu** vyberte možnost **automatizovaná ml** .
+
+[![Azure Portal navigační podokno](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+
+ Pokud se jedná o vaše první experimenty, zobrazí se **obrazovka Začínáme.** 
 
 V opačném případě uvidíte na **automatizovaném** řídicím panelu Machine Learning přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
 
-K automatizovaným Machine Learning se můžete dostat taky z [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
+## <a name="create-and-run-experiment"></a>Vytvoření a spuštění experimentu
 
-## <a name="create-an-experiment"></a>Vytvoření experimentu
-
-Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatické experimenty Machine Learning** .
+1. Vyberte **vytvořit experiment** a vyplňte formulář.
 
 1. Zadejte jedinečný název experimentu.
 
-1. Pro úlohu profilace a školení pro data vyberte výpočetní prostředky. V rozevíracím seznamu jsou k dispozici seznam vašich stávajících výpočtů. Pokud chcete vytvořit nový výpočetní výkon, postupujte podle pokynů v kroku 3.
+1. Pro úlohu profilace a školení pro data vyberte výpočetní prostředky. V rozevíracím seznamu jsou k dispozici seznam vašich stávajících výpočtů. Pokud chcete vytvořit nový výpočetní výkon, postupujte podle pokynů v kroku 4.
 
 1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
@@ -58,32 +60,40 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
     Název výpočetních prostředků služby Machine Learning| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Další nastavení| *Minimální uzel*: Zadejte minimální počet uzlů pro výpočetní výkon. Minimální počet uzlů pro výpočetní výkon AML je 0. Chcete-li povolit profilaci dat, je nutné mít nejméně jeden uzel. <br> *Maximální počet uzlů*: Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
+    
+    Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
-      Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
+    >[!NOTE]
+    > Váš název COMPUTE určí, jestli je povolená možnost *profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
 
-      >[!NOTE]
-      > Váš název COMPUTE určí, jestli je povolená možnost *profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
+1. Vyberte datovou sadu z kontejneru úložiště nebo ji vytvořte tak, že do kontejneru nahrajete soubor z místního počítače. Verze Public Preview podporuje pouze místní nahrávání souborů a účty úložiště Azure Blob.
 
-1. Vyberte účet úložiště pro vaše data. 
-
-1. Vyberte kontejner úložiště.
-
-1. Vyberte datový soubor z kontejneru úložiště nebo nahrajte soubor z místního počítače do kontejneru. Verze Public Preview podporuje jenom místní nahrávání souborů a účty Azure Blob Storage.
     >[!Important]
     > Požadavky na školicí data:
     >* Data musí být v tabulkovém formátu.
     >* Hodnota, kterou chcete odhadnout (cílový sloupec), musí být k dispozici v datech.
 
-    [![Vybrat datový soubor](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
+    1. Pokud chcete vytvořit novou datovou sadu ze souboru na vašem místním výpočetním prostředí, vyberte **Procházet** a pak vyberte soubor. 
 
-1. Pomocí karet náhled a profil můžete dále konfigurovat data pro tento experiment.
+    1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
-    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných **tlačítek přepínače v** jednotlivých sloupcích funkce.
+    1. Vyberte možnost **Další** a nahrajte ji do výchozího kontejneru úložiště, který se automaticky vytvoří s vaším pracovním prostorem, nebo zvolte kontejner úložiště, který chcete pro experiment použít. 
 
-    1. Na kartě **profil** můžete zobrazit [datový profil](#profile) podle funkcí a také rozdělení, typ a souhrn statistik (střední, střední, Max/min atd.) každého.
+    1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
-        >[!NOTE]
-        > Pokud váš výpočetní **kontext není** profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
+        Pole| Popis
+        ----|----
+        Formát souboru| Definuje rozložení a typ dat uložených v souboru.
+        Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
+        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
+    
+        Vyberte **Další**.
+
+    1. Formulář **schématu** se inteligentně vyplní na základě výběrů ve formuláři **nastavení a náhled** . Tady můžete nakonfigurovat datový typ pro každý sloupec, zkontrolovat názvy sloupců a vybrat, které sloupce nechcete pro svůj experiment **Zahrnout** . 
+            
+        Vyberte **Další.**
 
 1. Vyberte typ úlohy školení: klasifikace, regrese nebo prognózování.
 
@@ -94,7 +104,7 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
 
     1. Vybrat horizont předpovědi: Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět budoucímu. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
 
-1. Volitelné Rozšířená nastavení: Další nastavení, která můžete použít k lepšímu řízení úlohy školení.
+1. Volitelné Rozšířená nastavení: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
     Pokročilá nastavení|Popis
     ------|------
@@ -165,7 +175,7 @@ Po dokončení fáze přípravy experimentu se zobrazí obrazovka s podrobnostmi
 
 Projděte si podrobné informace o všech výstupních modelech a podívejte se na podrobnosti o školicích běhůch, jako jsou metriky výkonu a distribuční grafy. [Přečtěte si další informace o grafech](how-to-understand-automated-ml.md).
 
-![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)
+[![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Nasazení modelu
 
@@ -178,7 +188,8 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     + Možnost 1: Pokud chcete nasadit nejlepší model (podle definovaných kritérií metriky), vyberte nasadit nejlepší model ze stránky podrobností o spuštění.
 
     + Možnost 2: Chcete-li nasadit konkrétní model iterace z tohoto experimentu, přejděte k podrobnostem v modelu a otevřete stránku s podrobnostmi o spuštění a vyberte nasadit model.
-1. Naplnit podokno **nasazení modelu**
+
+1. Naplňte podokno **nasazení modelu** .
 
     Pole| Value
     ----|----

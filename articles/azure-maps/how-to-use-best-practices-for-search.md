@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348179"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915565"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Osvědčené postupy pro použití Azure Maps Search Service
 
@@ -27,7 +27,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obs
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu a získání klíče najdete v tématu [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md).
+Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
 
 > [!Tip]
 > Pokud chcete zadat dotaz na vyhledávací službu, můžete k sestavení volání REST použít [aplikaci pro odesílání](https://www.getpostman.com/apps) nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.
@@ -496,7 +496,7 @@ Pokud chcete načíst jenom POI výsledky kolem konkrétního umístění, můž
 
 ## <a name="understanding-the-responses"></a>Porozumění odpovědím
 
-Pojďme na [službu Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) udělat požadavek na hledání adresy v Seattlu. Pokud se vám podíváme na adresu URL žádosti níže, nastavili `countrySet` jsme **parametr na hledání** adresy v USA Americe.
+Pojďme na [službu Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) udělat požadavek na hledání adresy v Seattlu. Pokud se vám podíváme na adresu URL žádosti níže, nastavili `countrySet` jsme parametr na hledání adresy v USA Americe.
 
 **Ukázkový dotaz:**
 
@@ -700,7 +700,7 @@ Pokud je typ odpovědi **geometrie**, může obsahovat ID geometrie, které je v
 } 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte [se vytvářet žádosti o služby Azure Maps Search](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address).
 * Prozkoumejte [dokumentaci k rozhraní API služby Azure Maps Search Service](https://docs.microsoft.com/rest/api/maps/search). 

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d624f6a1711bf2c2bad5ebc252d00c299ebca225
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872672"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909834"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -716,6 +716,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
     ```
 
 7. Vložení rozšíření ADE
+   Pokud nejsou vložená rozšíření ADE, budou se datové disky označovat jako nešifrované, takže je povinná pro provedení následujících kroků:
 
    * **Pro virtuální počítač s Azure AD** – k ručnímu povolení šifrování pro datové disky použijte následující příkaz.  
 
@@ -746,6 +747,8 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+> [!NOTE]
+> Zajistěte ruční odstranění souborů JASON vytvořených v rámci šifrovaného procesu disku pro obnovení virtuálního počítače.
 
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure

@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716752"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880783"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
-Možnost brandingu a přizpůsobení uživatelského rozhraní (UI), které Azure Active Directory (Azure AD) B2C slouží k zajištění bezproblémového prostředí pro zákazníky, je důležité pro vaše aplikace. Mezi tyto prostředí patří registrace, přihlašování, úpravy profilu a resetování hesla. Tento článek poskytuje informace, které vám pomůžou přizpůsobit uživatelské rozhraní svých aplikací.
+Možnost brandingu a přizpůsobení uživatelského rozhraní (UI), které Azure Active Directory B2C (Azure AD B2C) slouží k zajištění bezproblémového prostředí pro zákazníky, je důležité. Mezi tyto prostředí patří registrace, přihlašování, úpravy profilu a resetování hesla. Tento článek poskytuje informace, které vám pomůžou přizpůsobit uživatelské rozhraní svých aplikací.
 
 V závislosti na vašich potřebách, když k nim dojde, přizpůsobíte uživatelské rozhraní aplikace různými způsoby. Příklad:
 
@@ -118,7 +118,7 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Registrace místního účtu | Obsahuje formulář pro registraci místního účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, vstupní pole pro heslo, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
 | Registrace účtu sociální sítě | Může se zobrazit při registraci pomocí existujícího účtu od poskytovatele sociální identity, jako je Facebook nebo Google. Používá se, když je potřeba shromáždit další informace od zákazníka pomocí registračního formuláře. |
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
-| Vícefaktorové ověřování | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
+| Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
 
@@ -134,6 +134,9 @@ Příklady úprav si můžete stáhnout a zkontrolovat v těchto [ukázkových s
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud používáte toky uživatelů, můžete začít přizpůsobovat uživatelské rozhraní pomocí tohoto kurzu: [Přizpůsobení uživatelského rozhraní aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
-- Pokud používáte vlastní zásady, můžete začít přizpůsobovat uživatelské rozhraní pomocí článku: [Přizpůsobte uživatelské rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Pokud používáte **toky uživatelů**, můžete začít přizpůsobovat uživatelské rozhraní pomocí tohoto kurzu:
 
+    [Přizpůsobení uživatelského rozhraní aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
+- Pokud používáte **vlastní zásady**, můžete začít přizpůsobovat uživatelské rozhraní pomocí článku:
+
+    [Přizpůsobte uživatelské rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

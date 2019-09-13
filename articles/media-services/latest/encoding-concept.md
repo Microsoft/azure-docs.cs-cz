@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/08/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 590b84acd57199b291aa44f7120507023ffd026a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389758"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910409"
 ---
 # <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
 
@@ -30,7 +30,7 @@ Videa se většinou doručují do zařízení a aplikací pomocí [postupného s
 
 Následující diagram znázorňuje pracovní postup pro kódování na vyžádání s dynamickým balením.
 
-![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
 
@@ -139,7 +139,7 @@ V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Def
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nahrávání, kódování a streamování pomocí služby Media Services](stream-files-tutorial-with-api.md)
 * [Kódování z adresy URL HTTPS pomocí integrovaných přednastavení](job-input-from-http-how-to.md)

@@ -1,5 +1,5 @@
 ---
-title: Přehled HDInsight 4.0 – Azure
+title: Přehled HDInsight 4,0 – Azure
 description: Porovnání funkcí a omezení mezi HDInsight 3.6 a HDInsight 4.0 a doporučení k upgradu
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,22 +7,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 77260eaa2e19135586e438576397b4647afe7ece
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483978"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879332"
 ---
-# <a name="hdinsight-40-overview"></a>Přehled HDInsight 4.0
+# <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
-Azure HDInsight je jedním z nejoblíbenějších služeb mezi podnikovými zákazníky pro open source Apache Hadoop a Apache Sparku a analýzy v Azure. HDInsight 4.0 je Cloudová distribuce komponent Apache Hadoop. Tento článek obsahuje informace o nejnovější verzi Azure HDInsight a pokyny k upgradu.
+Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure. HDInsight 4,0 je cloudová distribuce komponent Apache Hadoop. Tento článek obsahuje informace o nejnovější verzi Azure HDInsight a pokyny k upgradu.
 
-## <a name="whats-new-in-hdinsight-40"></a>Co je nového v HDInsight 4.0?
+## <a name="whats-new-in-hdinsight-40"></a>Co je nového ve službě HDInsight 4,0?
 
-### <a name="apache-hive-30-and-llap"></a>Apache Hive, 3.0 a LLAP
+### <a name="apache-hive-30-and-llap"></a>Apache Hive 3,0 a LLAP
 
-Apache Hive analytické zpracování vyžadují nízkou latenci (LLAP) využívá trvalý dotaz, že servery a poskytovat rychlé SQL ukládání do mezipaměti dotazování výsledků s daty v vzdálené cloudového úložiště. LLAP pro Hive využívá sadu trvalých procesů démonů, kteří provádějí fragmenty dotazů Hive. Provádění dotazu s LLAP se podobá Hive bez LLAP, přičemž úlohy pracovních procesů neběží v kontejnerech, ale uvnitř procesů démonů LLAP.
+Apache Hive Analytical Processing (LLAP) s nízkou latencí () využívá trvalé servery dotazů a ukládání do mezipaměti k doručování rychlých výsledků dotazů SQL na data ve vzdáleném cloudovém úložišti. LLAP pro Hive využívá sadu trvalých procesů démonů, kteří provádějí fragmenty dotazů Hive. Provádění dotazu s LLAP se podobá Hive bez LLAP, přičemž úlohy pracovních procesů neběží v kontejnerech, ale uvnitř procesů démonů LLAP.
 
 Mezi výhody LLAP pro Hive patří:
 
@@ -67,7 +67,7 @@ Apache Spark v HDInsight 4.0 podporuje následující scénáře:
 * Spuštění streamovací úlohy Spark v kanálu změn ze streamovací tabulky Hive
 * Vytváření souborů ORC přímo z úlohy strukturovaného streamu Sparku
 
-Už nemusíte mít obavy, když se nechtěně pokusíte o přístup k transakčním tabulkám Hive přímo ze Sparku, kdy docházelo k nekonzistentním výsledkům, duplicitním datům nebo poškození dat. V HDInsight 4.0 Spark tabulky a tabulek Hive jsou uchovávány v samostatných Metaúložiště. K explicitní registraci transakčních tabulek Hive jako externích tabulek Sparku použijte Hive Data Warehouse Connector.
+Už nemusíte mít obavy, když se nechtěně pokusíte o přístup k transakčním tabulkám Hive přímo ze Sparku, kdy docházelo k nekonzistentním výsledkům, duplicitním datům nebo poškození dat. V HDInsight 4,0 jsou tabulky Spark a tabulky podregistru uloženy v samostatných Metaúložiště. K explicitní registraci transakčních tabulek Hive jako externích tabulek Sparku použijte Hive Data Warehouse Connector.
 
 Přečtěte si další informace o [Apache Sparku](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
@@ -82,22 +82,22 @@ Apache Oozie 4.3.1 je součástí HDI 4.0 s následujícími změnami:
 
 Přečtěte si další informace o [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html).
 
-## <a name="how-to-upgrade-to-hdinsight-40"></a>Postup upgradu na HDInsight 4.0
+## <a name="how-to-upgrade-to-hdinsight-40"></a>Postup upgradu na HDInsight 4,0
 
-Stejně jako u jakékoli hlavní verze je před implementací nejnovější verze do produkčního prostředí důležité důkladně otestovat komponenty. HDInsight 4.0 je k dispozici pro vámi na zahájení procesu upgradu, ale je výchozí možnost, aby se zabránilo nechtěnému nehody HDInsight 3.6.
+Stejně jako u jakékoli hlavní verze je před implementací nejnovější verze do produkčního prostředí důležité důkladně otestovat komponenty. HDInsight 4,0 je k dispozici pro zahájení procesu upgradu, ale HDInsight 3,6 je výchozí možnost, která brání nechtěnému mishaps.
 
-Neexistuje žádný způsob upgradu z předchozích verzí aplikace HDInsight do HDInsight 4.0. Protože datových formátů Metastore a objektů blob změnily, HDInsight 4.0 není kompatibilní s předchozími verzemi. Je důležité, abyste nové prostředí HDInsight 4.0 nezávisle na aktuální produkčním prostředí. Pokud nasadíte na svém místním zdrojovém prostředí HDInsight 4.0, vaše Metastore se upgraduje a nejde ho vrátit.  
+Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight do HDInsight 4,0. Vzhledem k tomu, že se změnily metastore a formáty dat objektů blob, HDInsight 4,0 není kompatibilní s předchozími verzemi. Je důležité, abyste zachovali nové prostředí HDInsight 4,0, které je oddělené od aktuálního produkčního prostředí. Pokud nasadíte HDInsight 4,0 do vašeho aktuálního prostředí, metastore se upgraduje a nebude možné ho vrátit zpět.  
 
 ## <a name="limitations"></a>Omezení
 
-* HDInsight 4.0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
-* HDInsight 4.0 nepodporuje Apache Storm. 
-* Zobrazení Hive už nejsou k dispozici v HDInsight 4.0. 
+* HDInsight 4,0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
+* HDInsight 4,0 nepodporuje Apache Storm. 
+* Zobrazení podregistru už není dostupné v HDInsight 4,0. 
 * Překladač prostředí v Apache Zeppelin není podporovaný v clusterech Spark a Interactive Query.
 * V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.
 * Azure Data Lake Storage Gen2 nemůže v clusteru Spark ukládat poznámkové bloky Jupyter.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Dokumentace k Azure HDInsight](index.yml)
 * [Poznámky k verzi](hdinsight-release-notes.md)

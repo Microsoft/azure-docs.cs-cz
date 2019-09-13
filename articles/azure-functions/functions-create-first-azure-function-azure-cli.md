@@ -1,8 +1,6 @@
 ---
 title: Vytvoření první funkce pomocí Azure CLI
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí Azure CLI bez serveru a Azure Functions Core Tools.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
@@ -10,14 +8,13 @@ ms.date: 11/13/2018
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 4e65abdb500d61aa72b142f598a17e4cb8fb05f8
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+manager: gwallace
+ms.openlocfilehash: 82fbaa35d8d06cdb1999a76a36fb4a1dade017e9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950000"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883886"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Vytvoření první funkce z příkazového řádku
 

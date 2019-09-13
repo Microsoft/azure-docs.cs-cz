@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326611"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883588"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s Application Gateway
 
@@ -95,7 +95,7 @@ Ověřovací certifikáty jsou zastaralé a v SKU Application Gateway v2 byly na
    
 > [!NOTE] 
 >
-> Aby byl certifikát SSL důvěryhodný, musí být tento certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště brány applicatin. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou, bude Application Gateway pak kontrolovat Podívejte se, jestli certifikát vydávající certifikační autority vystavila důvěryhodná certifikační autorita, a tak dále, dokud nenalezne důvěryhodnou certifikační autoritu (v takovém případě bude navázáno důvěryhodné připojení) nebo nenalezne žádnou důvěryhodnou certifikační autoritu (v takovém případě označí bránu applicatin back-end unhe. althy). Proto se doporučuje certifikát back-end serveru, který obsahuje kořenové i intermidiate certifikační autority.
+> Aby byl certifikát SSL důvěryhodný, musí být tento certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou, bude Application Gateway zkontrolován Chcete-li zjistit, zda certifikát vydávající certifikační autority vystavila důvěryhodná certifikační autorita, a tak dále, dokud nenalezne důvěryhodnou certifikační autoritu (v takovém případě se naváže důvěryhodné připojení) nebo nenalezne žádnou důvěryhodnou certifikační autoritu (v tomto okamžiku Application Gateway označí back-end není v pořádku). Proto se doporučuje certifikát back-end serveru, který obsahuje kořenové i intermidiate certifikační autority.
 
 - Pokud je certifikát podepsaný svým držitelem nebo je podepsaný neznámými zprostředkujícími zprostředkovateli, pak se musí definovat důvěryhodný kořenový certifikát v části v2 SKU. Application Gateway bude komunikovat jenom s back-endy, jejichž kořenový certifikát serveru se shoduje s jedním ze seznamů důvěryhodných kořenových certifikátů v nastavení http back-endu přidružené k tomuto fondu.
 

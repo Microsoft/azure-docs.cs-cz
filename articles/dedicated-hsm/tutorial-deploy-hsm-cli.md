@@ -3,8 +3,8 @@ title: Kurz nasazení do existující virtuální sítě pomocí Azure CLI – v
 description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 1d8649fc271801748723f484515f5fd2f708f95e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688367"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881047"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Kurz: Nasazení HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 
@@ -38,7 +38,7 @@ Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal. Všechny interakce s služba bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu se pomocí rozhraní příkazového řádku (CLI) ve službě Azure Cloud Shell. Pokud jste ještě na rozhraní příkazového řádku Azure, postupujte podle Začínáme pokynů tady: [Azure CLI 2.0 Začínáme](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal. Všechny interakce s služba bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu se pomocí rozhraní příkazového řádku (CLI) ve službě Azure Cloud Shell. Pokud začínáte s rozhraním příkazového řádku Azure, postupujte podle pokynů v části Začínáme: [Azure CLI 2,0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)Začínáme.
 
 Předpoklady:
 
@@ -177,7 +177,7 @@ Toto nasazení zabere přibližně 25 – 30 minut pomocí hromadné této doby 
 
 ![Stav zřizování](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Po dokončení nasazení úspěšně "provisioningState": "Bylo dokončeno" se zobrazí. Můžete připojit k existující virtuální počítač a pomocí SSH k zajištění dostupnosti zařízení HSM.
+Po úspěšném dokončení nasazení se provisioningState: Zobrazí se zpráva "úspěch". Můžete připojit k existující virtuální počítač a pomocí SSH k zajištění dostupnosti zařízení HSM.
 
 ## <a name="verifying-the-deployment"></a>Ověření nasazení
 

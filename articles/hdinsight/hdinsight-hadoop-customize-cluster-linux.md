@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809921"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935275"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -165,11 +165,11 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
 3. V části __Upřesnit nastavení__ vyberte __akce skriptu__. V části __akce skriptu__ vyberte __+ Odeslat novou__.
 
-    ![Odeslat novou akci skriptu](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Odeslat novou akci skriptu](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
-    ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Následující tabulka popisuje prvky ve formuláři:
 
@@ -185,7 +185,7 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
 5. Vyberte __vytvořit__ a skript se uloží. Potom můžete k přidání dalšího skriptu použít možnost __+ Odeslat novou__ .
 
-    ![Několik akcí skriptů](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![Několik akcí skriptů](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Až budete s přidáváním skriptů hotovi, vyberte tlačítko __Vybrat__ a potom klikněte na tlačítko __Další__ a vraťte se do části __Souhrn clusteru__ .
 
@@ -251,7 +251,7 @@ Přejít na [Azure Portal](https://portal.azure.com):
 
 4. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
-    ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Následující tabulka popisuje prvky ve formuláři:
 
@@ -356,7 +356,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 6. Můžete také vybrat tři tečky, **...** vpravo od položek v oddílu akce skriptu k provedení akcí.
 
-    ![Akce skriptu, tři tečky](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Akce skriptu, tři tečky](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -438,11 +438,11 @@ K zobrazení informací protokolovaných akcemi skriptů můžete použít webov
 
 2. Na panelu v horní části stránky vyberte položku **OPS** . V seznamu se zobrazí aktuální a předchozí operace prováděné na clusteru prostřednictvím Ambari.
 
-    ![Panel webového uživatelského rozhraní Ambari s vybranou operací Operations](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Panel webového uživatelského rozhraní Ambari s vybranou operací Operations](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. Vyhledá položky, které mají ve sloupci **Operations** **customscriptaction běžet\_** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
 
-    ![Snímek obrazovky s operacemi](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![Snímek obrazovky s operacemi](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Chcete-li zobrazit výstup **stdout** a **stderr** , vyberte položku **run\customscriptaction** a přejděte k podrobnostem prostřednictvím odkazů. Tento výstup se generuje při spuštění skriptu a může mít užitečné informace.
 
@@ -452,7 +452,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
 * Protokoly úložiště jsou k dispozici `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`na adrese.
 
-    ![Protokoly akcí skriptů](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Protokoly akcí skriptů](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu**, **pracovní uzel**a **Zookeeper uzel**. Podívejte se na následující příklady:
 
@@ -514,10 +514,10 @@ Existují dvě výjimky:
 
     V tomto clusteru se nedají spouštět žádné nové akce skriptu kvůli konfliktům názvů skriptů v existujících skriptech. Názvy skriptů zadané při vytváření clusteru musí být jedinečné. Existující skripty jsou spouštěny při změně velikosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Instalace a použití Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Přidání dalšího úložiště do clusteru HDInsight](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Fáze při vytváření clusteru"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Fáze při vytváření clusteru"

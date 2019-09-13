@@ -1,6 +1,6 @@
 ---
 title: Monitorování webové aplikace v ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
-description: Pokyny pro rychlé nastavení webové aplikace ASP.NET pro monitorování pomocí Application Insights
+description: Poskytuje pokyny pro rychlé nastavení webové aplikace v ASP.NET pro monitorování pomocí Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,30 +10,30 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1edb83fcbe03fd113c59986bdbb6afcf2a0970bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442209"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916130"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
 Azure Application Insights umožňuje snadné monitorování webové aplikace z hlediska dostupnosti, výkonu a využití.  Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé.  Na základě informací o výkonu a efektivitu vaší aplikace, které získáte ze služby Application Insights, můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
 
-V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud webovou aplikaci ASP.NET, můžete si ji vytvořit [vytvořit rychlý start webové aplikaci ASP.NET](../../app-service/app-service-web-get-started-dotnet-framework.md).
+V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud nemáte webovou aplikaci ASP.NET, můžete si ji vytvořit v rychlém startu [Vytvoření webové aplikace ASP.NET](../../app-service/app-service-web-get-started-dotnet-framework.md).
 
 ## <a name="prerequisites"></a>Požadavky
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="enable-application-insights"></a>Povolení Application Insights
+## <a name="enable-application-insights"></a>Povolit Application Insights
 
 1. Otevřete projekt v aplikaci Visual Studio 2019.
 2. V nabídce Projekt vyberte **Nakonfigurovat Application Insights**. Visual Studio přidá Application Insights SDK do vaší aplikace.
@@ -47,7 +47,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 4. Vyberte své předplatné a klikněte na **Zaregistrovat**.
 
-5. Aplikaci spusťte výběrem příkazu **Spustit ladění** z nabídky **Ladit** nebo stisknutím klávesy F5.
+5. Vyberte **projekt** > **Spravovat balíčky balíčků** > NuGet**Zdroj: NuGet.org** > **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
+
+6. Aplikaci spusťte výběrem příkazu **Spustit ladění** z nabídky **Ladit** nebo stisknutím klávesy F5.
 
 ## <a name="confirm-app-configuration"></a>Potvrzení konfigurace aplikace
 
@@ -61,7 +63,7 @@ Application Insights shromažďuje telemetrická data pro vaši aplikaci bez ohl
 
 Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout si různé podrobnosti o spuštěné aplikaci.
 
-1. Rozbalte **připojené služby** složky (ikona cloudu a moduly) v Průzkumníku řešení klikněte pravým tlačítkem myši na **Application Insights** složky a klikněte na tlačítko **otevřít portál Application Insights** .  Zobrazí se informace o vaší aplikaci a řada různých možností.
+1. Rozbalte složku **připojené služby** (ikona cloudu a modul plug-in) v Průzkumník řešení potom klikněte pravým tlačítkem na složku **Application Insights** a pak klikněte na **otevřít Application Insights portál**.  Zobrazí se informace o vaší aplikaci a řada různých možností.
 
     ![Mapa aplikace](media/quick-monitor-portal/04-overview.png)
 
@@ -69,11 +71,11 @@ Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout
 
     ![Mapa aplikace](media/quick-monitor-portal/05-appmap.png)
 
-3. Klikněte na **analýzy aplikací** ikonu ![Mapa aplikace](media/quick-monitor-portal/app-viewinlogs-icon.png) **zobrazit v protokolech (Analytics)** na jednotlivé součásti aplikace. Tím se otevře **protokoly (Analytics)** , která poskytuje Bohatý dotazovací jazyk pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na ![ikonu **analýzy aplikace** zobrazení mapa](media/quick-monitor-portal/app-viewinlogs-icon.png) aplikace **v části protokoly (Analytics)** na jednu z komponent aplikace. Tím se otevře **protokol (Analytics)** , který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
     ![Analýzy](media/quick-monitor-portal/6viewanalytics.png)
 
-4. Klikněte na **Live Metrics Stream** na levé straně v části prozkoumat. Zobrazí se provozní statistika vaší aplikace, protože je spuštěná. Zahrnují mimo jiné údaje o počtu příchozích požadavků, době jejich trvání a všech chybách, ke kterým došlo. Můžete také prohlížet nejdůležitější metriky výkonu, jako je procesor a paměť.
+4. Na levé straně v části prozkoumat klikněte na **Live Metrics Stream** . Zobrazí se provozní statistika vaší aplikace, protože je spuštěná. Zahrnují mimo jiné údaje o počtu příchozích požadavků, době jejich trvání a všech chybách, ke kterým došlo. Můžete také prohlížet nejdůležitější metriky výkonu, jako je procesor a paměť.
 
     ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
@@ -104,15 +106,15 @@ Další informace najdete v úložišti naší [open source sady JavaScript SDK]
 
 ## <a name="video"></a>Video
 
-* Externí krok za krokem videu o [konfigurace Application Insights s .NET aplikace od začátku](https://www.youtube.com/watch?v=blnGAVgMAfA).
+* Externí video o [konfiguraci Application Insights s aplikací .NET od začátku](https://www.youtube.com/watch?v=blnGAVgMAfA)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.
+Až budete s testováním hotovi, můžete odstranit skupinu prostředků a všechny související prostředky. Provedete to podle následujících kroků.
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste povolili monitorování pomocí Azure Application Insights vaší aplikace.  Pokud chcete zjistit, jak ji používat k monitorování statistik a detekování potíží ve vaší aplikaci, přejděte k dalším kurzům.
+V tomto rychlém startu jste povolili aplikaci pro monitorování pomocí služby Azure Application Insights.  Pokud chcete zjistit, jak ji používat k monitorování statistik a detekování potíží ve vaší aplikaci, přejděte k dalším kurzům.
 
 > [!div class="nextstepaction"]
 > [Kurzy k Azure Application Insights](tutorial-runtime-exceptions.md)

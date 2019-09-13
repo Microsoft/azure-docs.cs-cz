@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: ba3a30328df488dfe79bf445da550b5c96019081
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383108"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933488"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
 Rozšíření [Durable Functions](durable-functions-overview.md) zavádí dvě nové aktivační vazby, které ovládají provádění funkcí Orchestrator a Activity. Zavádí také výstupní vazbu, která funguje jako klient pro modul runtime Durable Functions.
 
-## <a name="orchestration-triggers"></a>Aktivační události orchestrace
+## <a name="orchestration-trigger"></a>Aktivační událost orchestrace
 
-Aktivační událost orchestrace umožňuje vytvářet trvalé funkce nástroje Orchestrator. Tato aktivační událost podporuje spouštění nových instancí funkcí Orchestrator a obnovení stávajících instancí funkcí Orchestrator, které čekají na úkol.
+Aktivační událost orchestrace umožňuje vytvářet [trvalé funkce nástroje Orchestrator](durable-functions-types-features-overview.md#orchestrator-functions). Tato aktivační událost podporuje spouštění nových instancí funkcí Orchestrator a obnovení stávajících instancí funkcí Orchestrator, které čekají na úkol.
 
 Když použijete nástroje sady Visual Studio pro Azure Functions, aktivační událost orchestrace se nakonfiguruje pomocí atributu .NET [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .
 
@@ -60,12 +60,12 @@ Tady jsou některé poznámky k triggeru orchestrace:
 
 Aktivační vazba Orchestration podporuje vstupy i výstupy. Zde je několik věcí, které je potřeba znát při zpracování vstupu a výstupu:
 
-* **vstupy** – funkce orchestrace .NET podporují jako typ parametru jenom [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) . Deserializace vstupů přímo v signatuře funkce není podporována. Aby bylo možné načíst vstupy funkcí nástroje Orchestrator, kód musí použít `getInput` metodu [\<GetInput T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) nebo (JavaScript). Tyto vstupy musí být typy serializovatelných hodnot JSON.
+* **vstupy** – funkce orchestrace .NET podporují jako typ parametru jenom [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) . Deserializace vstupů přímo v signatuře funkce není podporována. Aby bylo možné načíst vstupy funkcí nástroje Orchestrator, kód musí použít `getInput` metodu [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) nebo (JavaScript). Tyto vstupy musí být typy serializovatelných hodnot JSON.
 * **výstupy** – triggery orchestrace podporují výstupní hodnoty a také vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnoty a musí být serializovatelný pomocí formátu JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` uloží se jako výstup hodnota.
 
 ### <a name="trigger-sample"></a>Ukázka triggeru
 
-Tady je příklad toho, jak by nejjednodušší funkce "Hello World" Orchestrator vypadala takto:
+Následující příklad kódu ukazuje, jak by nejjednodušší funkce "Hello World" Orchestrator vypadala takto:
 
 #### <a name="c"></a>C#
 
@@ -122,9 +122,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="activity-triggers"></a>Aktivační události aktivit
+## <a name="activity-trigger"></a>Aktivační událost aktivity
 
-Aktivační událost aktivity umožňuje vytvářet funkce, které jsou volány funkcemi Orchestrator.
+Aktivační událost aktivity umožňuje vytvářet funkce, které jsou volány funkcemi Orchestrator, známé jako [funkce aktivity](durable-functions-types-features-overview.md#activity-functions).
 
 Pokud používáte aplikaci Visual Studio, je aktivační událost aktivity nakonfigurována pomocí atributu [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET.
 
@@ -139,7 +139,7 @@ Pokud používáte vs Code nebo Azure Portal pro vývoj, aktivační událost ak
 }
 ```
 
-* `activity`je název aktivity. Toto je hodnota, kterou funkce Orchestrator používají k vyvolání této funkce aktivity. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
+* `activity`je název aktivity. Tato hodnota je název, který funkce Orchestrator používá k vyvolání této funkce aktivity. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
 
 Interně se tato triggerová vazba dotazuje fronty ve výchozím účtu úložiště pro aplikaci Function App. Tato fronta představuje interní podrobnosti implementace rozšíření, což je důvod, proč není explicitně nakonfigurován ve vlastnostech vazby.
 
@@ -159,13 +159,13 @@ Zde jsou některé poznámky týkající se triggeru aktivity:
 
 Vazba triggeru aktivity podporuje vstupy i výstupy, stejně jako Trigger orchestrace. Zde je několik věcí, které je potřeba znát při zpracování vstupu a výstupu:
 
-* **vstupy** – funkce aktivity .NET nativně používají [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Alternativně lze funkci aktivity deklarovat s libovolným typem parametru, který je serializovatelný pomocí JSON. Při použití `DurableActivityContext`můžete volat [\<GetInput T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) pro načtení a deserializaci vstupu funkce Activity.
+* **vstupy** – funkce aktivity .NET nativně používají [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Alternativně lze funkci aktivity deklarovat s libovolným typem parametru, který je serializovatelný pomocí JSON. Při použití `DurableActivityContext`můžete volat GetInput [\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) pro načtení a deserializaci vstupu funkce Activity.
 * **výstupy** – funkce aktivity podporují výstupní hodnoty a také vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnoty a musí být serializovatelný pomocí formátu JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` uloží se jako výstup hodnota.
-* funkce **aktivit rozhraní .NET** může vytvořit vazby k `string instanceId` parametru, aby získala ID instance nadřazené orchestrace.
+* funkce aktivit rozhraní .NET může vytvořit vazby k `string instanceId` parametru, aby získala ID instance nadřazené orchestrace.
 
 ### <a name="trigger-sample"></a>Ukázka triggeru
 
-Tady je příklad toho, co může jednoduchá funkce aktivity Hello World vypadat takto:
+Následující příklad kódu ukazuje, jak může vypadat jednoduchá "Hello World" funkce aktivity "", například:
 
 #### <a name="c"></a>C#
 
@@ -204,43 +204,6 @@ module.exports = async function(context, name) {
 };
 ```
 
-### <a name="passing-multiple-parameters"></a>Předávání více parametrů
-
-Není možné předat více parametrů funkci Activity přímo. Doporučení v tomto případě je nutné předat v poli objektů nebo použít objekty [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) v rozhraní .NET.
-
-Následující ukázka používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidané s [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
-
-```csharp
-[FunctionName("GetCourseRecommendations")]
-public static async Task<dynamic> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
-{
-    string major = "ComputerScience";
-    int universityYear = context.GetInput<int>();
-
-    dynamic courseRecommendations = await context.CallActivityAsync<dynamic>("CourseRecommendations", (major, universityYear));
-    return courseRecommendations;
-}
-
-[FunctionName("CourseRecommendations")]
-public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContext inputs)
-{
-    // parse input for student's major and year in university
-    (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
-
-    // retrieve and return course recommendations by major and university year
-    return new {
-        major = studentInfo.Major,
-        universityYear = studentInfo.UniversityYear,
-        recommendedCourses = new []
-        {
-            "Introduction to .NET Programming",
-            "Introduction to Linux",
-            "Becoming an Entrepreneur"
-        }
-    };
-}
-```
 
 ### <a name="using-input-and-output-bindings"></a>Použití vstupních a výstupních vazeb
 
@@ -273,7 +236,7 @@ module.exports = async function (context) {
 
 ## <a name="orchestration-client"></a>Klient Orchestration
 
-Vazba klienta Orchestration umožňuje napsat funkce, které komunikují s funkcemi nástroje Orchestrator. Například můžete pracovat na instancích orchestrace následujícími způsoby:
+Vazba klienta Orchestration umožňuje psát funkce, které komunikují s funkcemi nástroje Orchestrator. Tyto funkce jsou někdy označovány jako [klientské funkce](durable-functions-types-features-overview.md#client-functions). Například můžete pracovat na instancích orchestrace následujícími způsoby:
 
 * Spusťte je.
 * Dotaz na jejich stav
@@ -281,9 +244,9 @@ Vazba klienta Orchestration umožňuje napsat funkce, které komunikují s funkc
 * Posílat do nich události při jejich spuštění.
 * Vyprázdnit historii instance
 
-Pokud používáte aplikaci Visual Studio, můžete vytvořit propojení s klientem Orchestration pomocí atributu [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET.
+Pokud používáte aplikaci Visual Studio, můžete vytvořit propojení s klientem Orchestration pomocí atributu [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .net pro Durable Functions 1,0. Počínaje verzí Durable Functions 2,0 Preview můžete vytvořit propojení s klientem Orchestration pomocí `DurableClientAttribute` atributu .NET.
 
-Pokud pro vývoj používáte skriptovací jazyky (například soubory. *CSX* nebo *. js* ), aktivační událost orchestrace je definována následujícím `bindings` objektem JSON v poli *Function. JSON*:
+Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* nebo *. js* ), aktivační událost orchestrace je definována následujícím `bindings` objektem JSON v poli *Function. JSON*:
 
 ```json
 {
@@ -303,20 +266,17 @@ Pokud pro vývoj používáte skriptovací jazyky (například soubory. *CSX* ne
 
 ### <a name="client-usage"></a>Využití klienta
 
-Ve funkcích .NET se obvykle vytváří vazba na `DurableOrchestrationClient`, která poskytuje úplný přístup ke všem klientským rozhraním API, která podporuje Durable Functions. V jazyce JavaScript jsou stejná rozhraní API vystavena `DurableOrchestrationClient` objektem vráceným z. `getClient` Mezi rozhraní API u objektu klienta patří:
+Ve funkcích .NET se obvykle vytváří vazba na `DurableOrchestrationClient`, která poskytuje úplný přístup ke všem klientským rozhraním API, která podporuje Durable Functions. Počínaje Durable Functions 2,0 se místo toho svážete s `IDurableOrchestrationClient` rozhraním. V jazyce JavaScript jsou stejná rozhraní API vystavena objektem vráceným `getClient`z. Mezi rozhraní API u objektu klienta patří:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
 * [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
-* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (pouze aktuálně .NET)
+* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_)
 
 Alternativně mohou funkce .NET navazovat `IAsyncCollector<T>` vazby `T` na [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) WHERE je `JObject`StartOrchestrationArgs nebo.
 
-Další podrobnosti o těchto operacích najdete v dokumentaci k rozhraní [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API.
-
-> [!WARNING]
-> Při vývoji místně v JavaScriptu budete muset nastavit proměnnou `WEBSITE_HOSTNAME` prostředí na `localhost:<port>`, ex. `localhost:7071`pro použití metod v `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+Další informace o těchto operacích najdete v dokumentaci k rozhraní [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API.
 
 ### <a name="client-sample-visual-studio-development"></a>Ukázka klienta (vývoj v aplikaci Visual Studio)
 
@@ -385,6 +345,206 @@ module.exports = async function (context) {
 
 Další podrobnosti o počátečních instancích najdete ve [správě instancí](durable-functions-instance-management.md).
 
+## <a name="entity-trigger"></a>Aktivační událost entity
+
+Triggery entit umožňují vytvářet [funkce entit](durable-functions-entities.md). Tato aktivační událost podporuje zpracování událostí pro konkrétní instanci entity.
+
+Když použijete nástroje sady Visual Studio pro Azure Functions, je aktivační událost entity nakonfigurovaná pomocí `EntityTriggerAttribute` atributu .NET.
+
+> [!NOTE]
+> Aktivační procedury entit jsou k dispozici v Durable Functions 2,0 a vyšších. Triggery entit ještě nejsou k dispozici pro JavaScript.
+
+Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
+
+### <a name="trigger-behavior"></a>Chování triggeru
+
+Tady jsou některé poznámky k triggeru entit:
+
+* **Jeden podproces**: Jedno dispečerský podproces se používá ke zpracování operací konkrétní entity. Pokud je jedna entita souběžně odeslána více zpráv, operace budou zpracovávány po jednom čase.
+* **Zpracování nezpracovatelných zpráv** – v aktivačních událostech entit se nepodporují žádné nepoškozené zprávy.
+* **Viditelnost zprávy** – zprávy triggerů entit se odřadí do fronty a jsou pro konfigurovatelnou dobu neviditelné. Viditelnost těchto zpráv se automaticky obnoví, pokud je aplikace Function App spuštěná a v pořádku.
+* **Návratové hodnoty** – funkce entity nepodporují návratové hodnoty. K dispozici jsou konkrétní rozhraní API, která lze použít k uložení stavu nebo předávat hodnoty zpět do orchestrace.
+
+Všechny změny stavu provedené v entitě během jejího spuštění budou automaticky uchovány po dokončení spuštění.
+
+### <a name="trigger-usage-net"></a>Využití triggeru (.NET)
+
+Každá funkce entity má typ `IDurableEntityContext`parametru, který má následující členy:
+
+* **EntityName**: Získá název aktuálně spuštěné entity.
+* **EntityKey**: Získá klíč aktuálně vykonávané entity.
+* **EntityId**: Získá ID aktuálně vykonávané entity.
+* **Operace**: Získá název aktuální operace.
+* **IsNewlyConstructed**: vrátí `true` , pokud entita neexistovala před touto operací.
+* **GetState\<TState > ()** : Získá aktuální stav entity. `TState` Parametr musí být primitivního typu nebo typu serializace JSON.
+* **Setstate (objekt)** : aktualizuje stav entity. `object` Parametr musí být primitivní objekt nebo objekt JSON, který lze serializovat.
+* **GetInput\<TInput > ()** : Získá vstup pro aktuální operaci. Parametr `TInput` typu musí představovat primitivní typ nebo typ, který je serializován jako JSON.
+* **Return (objekt)** : vrátí hodnotu orchestrace, která volala operaci. `object` Parametr musí být primitivní objekt nebo objekt JSON, který lze serializovat.
+* **DestructOnExit ()** : odstraní entitu po dokončení aktuální operace.
+* **SignalEntity (EntityId, String, Object)** : pošle jednosměrnou zprávu entitě. `object` Parametr musí být primitivní objekt nebo objekt JSON, který lze serializovat.
+
+Při použití režimu `IDurableEntityContext` programování entit založených na třídě lze objekt odkazovat `Entity.Current` pomocí vlastnosti vlákna-static.
+
+### <a name="trigger-sample---entity-function"></a>Ukázka triggeru – funkce entity
+
+Následující kód je příkladem jednoduché entity *čítače* implementované jako standardní funkce. Tato funkce definuje tři *operace*, `add` `reset`, a `get`, `currentValue`každý z nich pracuje s hodnotou celočíselného stavu.
+
+```csharp
+[FunctionName(nameof(Counter))]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+
+    switch (ctx.OperationName.ToLowerInvariant())
+    {
+        case "add":
+            int amount = ctx.GetInput<int>();
+            currentValue += operand;
+            break;
+        case "reset":
+            currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+### <a name="trigger-sample---entity-class"></a>Trigger Sample – Třída entity
+
+Následující příklad je ekvivalentní implementace předchozí `Counter` entity pomocí tříd a metod .NET.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
+}
+```
+
+> [!NOTE]
+> Metoda vstupního bodu funkce s `[FunctionName]` atributem *musí* být deklarována `static` při použití tříd entit. Nestatické metody vstupního bodu mohou způsobit inicializaci více objektů a potenciálně jiné nedefinované chování.
+
+Třídy entit mají zvláštní mechanismy pro interakci s vazbami a vkládání závislostí .NET. Další informace najdete v článku [trvalé entity](durable-functions-entities.md) .
+
+## <a name="entity-client"></a>Klient entit
+
+Vazba klienta entit umožňuje asynchronně aktivovat [funkce entit](#entity-trigger). Tyto funkce jsou někdy označovány jako [klientské funkce](durable-functions-types-features-overview.md#client-functions).
+
+Pokud používáte aplikaci Visual Studio, můžete vytvořit propojení s klientem entity pomocí `DurableClientAttribute` atributu .NET.
+
+> [!NOTE]
+> Lze také použít pro vytvoření vazby na [klienta Orchestration.](#orchestration-client) `[DurableClientAttribute]`
+
+Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* nebo *. js* ), aktivační událost entity je definována následujícím `bindings` objektem JSON v poli *Function. JSON*:
+
+```json
+{
+    "name": "<Name of input parameter in function signature>",
+    "taskHub": "<Optional - name of the task hub>",
+    "connectionName": "<Optional - name of the connection string app setting>",
+    "type": "durableClient",
+    "direction": "out"
+}
+```
+
+* `taskHub`– Používá se ve scénářích, kdy více aplikací Function App sdílí stejný účet úložiště, ale musí být izolované od sebe navzájem. Pokud není zadaný, použije se výchozí hodnota `host.json` z. Tato hodnota musí odpovídat hodnotě používané funkcemi cílové entity.
+* `connectionName`– Název nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště. Účet úložiště reprezentovaný tímto připojovacím řetězcem musí být stejný, jaký používá funkce cílové entity. Pokud tento parametr nezadáte, použije se výchozí připojovací řetězec účtu úložiště pro aplikaci Function App.
+
+> [!NOTE]
+> Ve většině případů doporučujeme vynechat volitelné vlastnosti a spoléhat se na výchozí chování.
+
+### <a name="entity-client-usage"></a>Využití klienta entit
+
+Ve funkcích .NET se obvykle vytváří vazba na `IDurableEntityClient`, která poskytuje úplný přístup ke všem klientským rozhraním API podporovaným trvalými entitami. Můžete také vytvořit `IDurableClient` připojení k rozhraní, které poskytuje přístup k klientským rozhraním API pro entity i orchestrace. Mezi rozhraní API u objektu klienta patří:
+
+* **ReadEntityStateAsync\<T >** : přečte stav entity.
+* **SignalEntityAsync**: pošle jednosměrnou zprávu entitě a počká, až se zazařazuje do fronty.
+* **SignalEntityAsync\<TEntityInterface >** : totéž jako `SignalEntityAsync` , ale používá vygenerovaný objekt proxy typu `TEntityInterface`.
+* **CreateEntityProxy\<TEntityInterface >** : dynamicky generuje dynamický proxy typ `TEntityInterface` pro zajištění typově bezpečných volání entit.
+
+> [!NOTE]
+> Je důležité pochopit, že předchozí operace "signál" jsou všechny asynchronní. Není možné vyvolat funkci entity a vrátit návratovou hodnotu z klienta. Podobně `SignalEntityAsync` může vrátit zpět, aby entita spustila provádění operace. Pouze funkce Orchestrator mohou vyvolat funkce entit synchronně a zpracovávat návratové hodnoty.
+
+Rozhraní API vyžadují zadání jedinečného identifikátoru entity `EntityId`jako. `SignalEntityAsync` Tato rozhraní API také volitelně přebírají název operace entity jako `string` a datovou část operace jako `object`serializaci JSON. Pokud cílová entita neexistuje, vytvoří se automaticky se zadaným ID entity.
+
+### <a name="client-sample-untyped"></a>Ukázka klienta (netypové)
+
+Tady je příklad funkce aktivované frontou, která vyvolá entitu "Counter".
+
+```csharp
+[FunctionName("AddFromQueue")]
+public static Task Run(
+    [QueueTrigger("durable-function-trigger")] string input,
+    [DurableClient] IDurableEntityClient client)
+{
+    // Entity operation input comes from the queue message content.
+    var entityId = new EntityId(nameof(Counter), "myCounter");
+    int amount = int.Parse(input);
+    return client.SignalEntityAsync(entityId, "Add", amount);
+}
+```
+
+### <a name="client-sample-typed"></a>Ukázka klienta (typované)
+
+Pro typově bezpečný přístup k operacím entit je možné vygenerovat objekt proxy. Chcete-li vygenerovat typ proxy bezpečného typu, musí být pro typ entity implementováno rozhraní. Předpokládejme například, že `Counter` entita zmíněná dříve `ICounter` implementovala rozhraní, které je definováno následujícím způsobem:
+
+```csharp
+public interface ICounter
+{
+    void Add(int amount);
+    void Reset();
+    int Get();
+}
+
+public class Counter : ICounter
+{
+    // ...
+}
+```
+
+Klientský kód pak může použít `SignalEntityAsync<TEntityInterface>` a `ICounter` zadat rozhraní jako parametr typu pro vygenerování proxy typu s bezpečným typem. Toto použití typu proxy bezpečného typu je znázorněno v následující ukázce kódu:
+
+```csharp
+[FunctionName("UserDeleteAvailable")]
+public static async Task AddValueClient(
+    [QueueTrigger("my-queue")] string message,
+    [DurableClient] IDurableEntityClient client)
+{
+    var target = new EntityId(nameof(Counter), "myCounter");
+    int amount = int.Parse(message);
+    await client.SignalEntityAsync<ICounter>(target, proxy => proxy.Add(amount));
+}
+```
+
+V předchozím příkladu `proxy` je parametr dynamicky generovanou `ICounter`instancí, která interně `Add` překládá volání do do `SignalEntityAsync`ekvivalentního (netypového) volání.
+
+Pro definování rozhraní entit je k dispozici několik pravidel:
+
+* Parametr `TEntityInterface` typu v `SignalEntityAsync<TEntityInterface>` musí být rozhraní.
+* Rozhraní entit musí definovat pouze metody.
+* Metody rozhraní entit nesmí definovat více než jeden parametr.
+* Metody rozhraní entit musí vracet `void`, `Task`nebo `Task<T>` , kde `T` je některá návratová hodnota.
+* Rozhraní entit musí mít přesně jednu konkrétní implementační třídu v rámci stejného sestavení (tj. Třída entity).
+
+V případě porušení `InvalidOperationException` některého z těchto pravidel bude vyvolána za běhu. Zpráva o výjimce bude vysvětlit, které pravidlo bylo přerušeno.
+
+> [!NOTE]
+> `SignalEntityAsync` Rozhraní API označují jednosměrné operace. Pokud rozhraní entit vrátí `Task<T>`, bude mít hodnota `T` parametru vždycky hodnotu null nebo `default`.
+
 <a name="host-json"></a>
 
 ## <a name="hostjson-settings"></a>nastavení Host.JSON
@@ -394,4 +554,4 @@ Další podrobnosti o počátečních instancích najdete ve [správě instancí
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o chování kontrolního bodu a přehrání](durable-functions-checkpointing-and-replay.md)
+> [Reference k integrovanému HTTP API pro správu instancí](durable-functions-http-api.md)

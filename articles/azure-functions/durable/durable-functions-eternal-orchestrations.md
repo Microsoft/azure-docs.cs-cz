@@ -2,19 +2,19 @@
 title: Externí orchestrace v Durable Functions – Azure
 description: Naučte se implementovat orchestraci externí pomocí rozšíření Durable Functions pro Azure Functions.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 788693698e75a24269e29c54e03af35c1853f1f6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735211"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933365"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ ms.locfileid: "70735211"
 
 ## <a name="orchestration-history"></a>Historie orchestrace
 
-Jak je vysvětleno v tématu vytvoření [kontrolního bodu a přehrání](durable-functions-checkpointing-and-replay.md), trvalá architektura úlohy sleduje historii každé orchestrace funkcí. Tato historie se průběžně rozroste, dokud funkce Orchestrator nadále plánuje novou práci. Pokud se funkce Orchestrator dostane do nekonečné smyčky a průběžně plánuje práci, může tato historie značně růst a způsobovat významné problémy s výkonem. Koncept *orchestrace externí* je navržený tak, aby zmírnil tyto druhy problémů pro aplikace, které potřebují nekonečné smyčky.
+Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrations.md#orchestration-history) , trvalá architektura pro úlohy sleduje historii každé orchestrace funkcí. Tato historie se průběžně rozroste, dokud funkce Orchestrator nadále plánuje novou práci. Pokud se funkce Orchestrator dostane do nekonečné smyčky a průběžně plánuje práci, může tato historie značně růst a způsobovat významné problémy s výkonem. Koncept *orchestrace externí* je navržený tak, aby zmírnil tyto druhy problémů pro aplikace, které potřebují nekonečné smyčky.
 
 ## <a name="resetting-and-restarting"></a>Resetování a restartování
 
@@ -94,7 +94,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, `ContinueAsNew` *Nevolejte vše* , co je potřeba udělat, a nechejte funkci ukončit.
+Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, Nevolejte `ContinueAsNew` vše, co je potřeba udělat, a nechejte funkci ukončit.
 
 Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení metodu [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) . Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 

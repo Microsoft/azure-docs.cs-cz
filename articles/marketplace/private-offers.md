@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013637"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885872"
 ---
 # <a name="private-offers"></a>Soukromé nabídky
 
@@ -29,11 +29,11 @@ Podnikoví zákazníci budou k hledání, zkoušení a nákupu cloudových řeš
 
 Soukromé nabídky umožňují vydavatelům využít výhod škálování a globální dostupnosti veřejného webu Marketplace s flexibilitou a kontrolou potřebnou k vyjednání a doručování vlastních obchodů a konfigurací. Tyto funkce společně otevřou dvířka pro silné podnikové přijetí cloudových tržišť.  Podniky si teď můžou koupit a prodávat způsobem, který očekávají a požadují.
 
-Pro virtuální počítač jsou nyní k dispozici soukromé nabídky, aplikace Azure (implementované jako šablony řešení nebo spravované aplikace) a nabídky aplikací SaaS. Podobně jako veřejné nabídky lze soukromé nabídky vytvářet a spravovat prostřednictvím [portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Zákazníkům lze udělit nebo odvolat přístup k soukromým nabídkám během několika minut.
+Pro virtuální počítač jsou nyní k dispozici soukromé nabídky, aplikace Azure (implementované jako šablony řešení nebo spravované aplikace) a nabídky aplikací SaaS. Podobně jako veřejné nabídky lze soukromé nabídky vytvářet a spravovat prostřednictvím [portál partnerů cloudu](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  Zákazníkům lze udělit nebo odvolat přístup k soukromým nabídkám během několika minut.
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>Vytváření privátních nabídek pomocí SKU a plánů
 
-Pro *nové nebo stávající nabídky s veřejnými SKU nebo plány*můžou vydavatelé snadno vytvořit nové a soukromé odchylky vytvořením nových SKU nebo plánů a jejich označením jako soukromé.  [Soukromé SKU](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) a plány jsou komponenty nabídky a jsou viditelné pouze cílovými zákazníky. Soukromé SKU a plány můžou znovu použít základní Image nebo metadata nabídky, která už jsou publikovaná pro veřejnou SKU nebo plán. Tato možnost umožňuje vydavatelům vytvořit několik soukromých variant veřejné nabídky bez nutnosti publikování více verzí stejné základní image a metadat nabídky. Pro virtuální počítače a aplikace Azure nabízí, když soukromá SKU sdílí základní image s veřejnou SKU, všechny změny základní image nabídky se šíří napříč všemi veřejnými a soukromými SKU pomocí této základní image.
+Pro *nové nebo stávající nabídky s veřejnými SKU nebo plány*můžou vydavatelé snadno vytvořit nové a soukromé odchylky vytvořením nových SKU nebo plánů a jejich označením jako soukromé.  [Soukromé SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) a plány jsou komponenty nabídky a jsou viditelné pouze cílovými zákazníky. Soukromé SKU a plány můžou znovu použít základní Image nebo metadata nabídky, která už jsou publikovaná pro veřejnou SKU nebo plán. Tato možnost umožňuje vydavatelům vytvořit několik soukromých variant veřejné nabídky bez nutnosti publikování více verzí stejné základní image a metadat nabídky. Pro virtuální počítače a aplikace Azure nabízí, když soukromá SKU sdílí základní image s veřejnou SKU, všechny změny základní image nabídky se šíří napříč všemi veřejnými a soukromými SKU pomocí této základní image.
 
 Pro *nové nabídky, které zahrnují jenom soukromé SKU nebo plány*, můžou vydavatelé vytvořit své nabídky jako jakoukoli jinou nabídku a pak označit SKU nebo plány jako soukromé. Nabídky, které mají pouze soukromé SKU nebo plány, nebudou zjistitelné nebo přístupné prostřednictvím [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo [Azure Portal](https://azure.microsoft.com/features/azure-portal/) zákazníky, kteří nejsou přidruženi k této nabídce.
 
@@ -52,4 +52,4 @@ Ve výsledcích hledání se zobrazí také soukromé nabídky. Stačí vyhledat
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud byste chtěli využít tyto nové funkce, můžete začít s prodejem na [Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+Chcete-li začít používat soukromé nabídky, postupujte podle kroků v průvodci [soukromými SKU a plány](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) .

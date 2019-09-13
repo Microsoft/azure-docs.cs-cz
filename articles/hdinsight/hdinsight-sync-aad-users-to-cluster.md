@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e6534026bef139a94d2784be42025f8ea8b096ef
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811786"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879377"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
@@ -47,7 +47,7 @@ Následující metoda používá POST s REST API Ambari. Další informace najde
 
 1. [Připojte se ke clusteru pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md). V podokně Přehled pro váš cluster v Azure Portal vyberte tlačítko **Secure Shell (SSH)** .
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Zkopírujte zobrazený `ssh` příkaz a vložte ho do svého klienta ssh. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
@@ -139,7 +139,7 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 
 3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` `Local`místo.
 
-    ![Stránka Uživatelé](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![Stránka Uživatelé](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Přihlaste se k Ambari jako nový uživatel.
 

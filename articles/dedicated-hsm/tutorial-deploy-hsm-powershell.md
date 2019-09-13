@@ -3,8 +3,8 @@ title: Kurz nasazení do existující virtuální sítě s použitím prostřed�
 description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující virtuální sítě pomocí Powershellu
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 581ce6d75df8f42bb72bbfc93e85684d97620e3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158989"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881001"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí Powershellu
 
@@ -40,7 +40,7 @@ Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal, proto veškerou interakci se službou bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu pomocí prostředí PowerShell ve službě Azure Cloud Shell. Pokud jste ještě do prostředí PowerShell, postupujte podle Začínáme pokynů tady: [Azure PowerShell Get Started](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal, proto veškerou interakci se službou bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu pomocí prostředí PowerShell ve službě Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Předpoklady:
 
@@ -190,7 +190,7 @@ Tento příkaz by měl trvat přibližně 20 minut. "-Verbose" možnost použít
 
 ![Stav zřizování](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Po úspěšném dokončení zobrazené "provisioningState": "Úspěšné", můžete přihlásit do existujícího virtuálního počítače a pomocí SSH k zajištění dostupnosti zařízení HSM.
+Po úspěšném dokončení se zobrazí jako "provisioningState": "Úspěch", můžete se přihlásit ke stávajícímu virtuálnímu počítači a použít SSH k zajištění dostupnosti zařízení HSM.
 
 ## <a name="verifying-the-deployment"></a>Ověření nasazení
 
@@ -217,7 +217,7 @@ Ssh nástroj se používá k připojení k virtuálnímu počítači. Bude podob
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Heslo pro použití je v souboru parametrů.
-Po přihlášení k virtuálního počítače s Linuxem se můžete přihlásit k modulu hardwarového zabezpečení pomocí privátní IP adresy nalézt v portálu pro prostředek \<předpony > hsm_vnic.
+Po přihlášení k virtuálnímu počítači se systémem Linux se můžete přihlásit k modulu HSM pomocí privátní IP adresy, kterou najdete na portálu, pro \<předponu prostředku > hsm_vnic.
 
 ```powershell
 

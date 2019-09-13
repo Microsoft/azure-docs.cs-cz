@@ -8,14 +8,14 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c6bd2040cb90f7a837efdf11d33a6e6999bc944
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965494"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932799"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování Azure Cosmos DB pomocí rozhraní SQL API
 
 Rozhraní [SQL API](documentdb-introduction.md) služby Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL. Tento článek obsahuje ukázkový dokument a dva ukázkové dotazy SQL a jejich výsledky.
 
@@ -61,7 +61,7 @@ Dotazy SQL v tomto článku využívají následující ukázkový dokument.
 Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prostřednictvím [rozhraní REST API a sad SDK](sql-api-sdk-dotnet.md) a dokonce i pomocí [Query Playground](https://www.documentdb.com/sql/demo), kde se spouští dotazy na existující sadu ukázkových dat.
 
 Další informace o dotazech SQL najdete tady:
-* [Dotazy a syntaxe SQL](how-to-sql-query.md)
+* [Dotazy a syntaxe SQL](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -121,7 +121,7 @@ Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpov
 
 **Results**
 
-[{"jméno": "Jesse"}, {"jméno": "Lisa"}]
+[{"jméno daného typu": "Jesse"}, {"křestní jméno": "Lisa"}]
 
 
 ## <a name="next-steps"></a>Další postup

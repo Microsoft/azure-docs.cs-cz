@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1ecdb80263efda4cbbb43caaa4e27a04b261f81
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989806"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931248"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -49,6 +49,15 @@ Pokud chcete používat monitorované sešity, potřebujete:
 
 - [Log Analytics pracovní prostor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
+## <a name="roles"></a>Role
+Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
+-   Globální správce
+-   Správce zabezpečení
+-   Čtenář zabezpečení
+-   Čtečka sestav
+-   Správce aplikace
+
+
 ## <a name="workbook-access"></a>Přístup k sešitu 
 
 Přístup k sešitům:
@@ -57,7 +66,7 @@ Přístup k sešitům:
 
 2. V levém navigačním podokně vyberte **Azure Active Directory**.
 
-3. V části **monitorování** vyberte sešity. 
+3. V části **monitorování** vyberte **sešity**. 
 
     ![Vybrat přehledy](./media/howto-use-azure-monitor-workbooks/41.png)
 

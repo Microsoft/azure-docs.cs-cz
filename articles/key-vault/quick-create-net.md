@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 8bc1e4d5eae76796e82195b4ef34ddefc54302b9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
-ms.translationtype: HT
+ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910332"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934910"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Rychlý start: Klientská knihovna Azure Key Vault pro .NET
 
@@ -118,7 +118,7 @@ Tato operace vrátí řadu párů klíč/hodnota.
 }
 ```
 
-Poznamenejte si clientId, clientSecret, subscriptionId a tenantId, jak je budeme používat v níže uvedeném kroku [ověření do trezoru klíčů](#authenticate-to-your-key-vault) .
+Poznamenejte si clientId a clientSecret, jak je budeme používat v níže uvedeném kroku [ověření do trezoru klíčů](#authenticate-to-your-key-vault) .
 
 Budete také potřebovat appID objektu služby. Můžete ji najít spuštěním [AZ AD SP list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) s `--show-mine` parametrem:
 
@@ -164,10 +164,6 @@ Před sestavením a spuštěním aplikace `setx` použijte příkaz pro `akvClie
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Pokaždé, když `setx`zavoláte, byste měli získat odpověď na úspěch: Zadaná hodnota byla uložena. "
@@ -178,7 +174,7 @@ Přiřaďte tyto proměnné prostředí řetězcům v kódu a pak ověřte svoji
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
 
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , která vyžaduje adresu URL vašeho trezoru klíčů, který je ve formuláři `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Také vyžaduje název tajného kódu – používáme "mySecret".  Tyto řetězce možná budete chtít přiřadit proměnným pro resue.
+Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , která vyžaduje adresu URL vašeho trezoru klíčů, který je ve formuláři `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Také vyžaduje název tajného kódu – používáme "mySecret".  Tyto řetězce možná budete chtít přiřadit proměnným pro opakované použití.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

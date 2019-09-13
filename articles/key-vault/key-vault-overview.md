@@ -1,25 +1,25 @@
 ---
-title: Přehled služby Azure Key Vault – Azure Key Vault | Dokumentace Microsoftu
+title: Přehled Azure Key Vault – Azure Key Vault | Microsoft Docs
 description: Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 456f828f09a710009d30e1c0a669cde658318ae0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: mbaldwin
+ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789373"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883216"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
-Služba Azure Key Vault vám pomůže vyřešit následující problémy:
+Azure Key Vault pomáhá vyřešit následující problémy:
 
 - **Správa tajných klíčů** – Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
@@ -30,9 +30,9 @@ Služba Azure Key Vault vám pomůže vyřešit následující problémy:
 
 ### <a name="centralize-application-secrets"></a>Centralizace tajných klíčů aplikací
 
-Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Key Vault výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Není potřeba ukládat informace o zabezpečení v aplikacích eliminuje potřeba zahrnout tyto informace kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace, můžete ho uložit bezpečně ve službě Key Vault.
+Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Key Vault výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Není nutné ukládat informace o zabezpečení v aplikacích eliminuje nutnost udělat si tuto část kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace ho můžete bezpečně uložit do Key Vault.
 
-Vaše aplikace může zabezpečený přístup k informacím, stačí pomocí identifikátorů URI. Tyto identifikátory URI povolit aplikace, které chcete načíst konkrétní verzi tajného kódu. Není nutné psát vlastní kód pro zajištění ochrany tajných informací uložených v Key Vault.
+Vaše aplikace můžou zabezpečeně přistupovat k informacím, které potřebují, pomocí identifikátorů URI. Tyto identifikátory URI umožňují aplikacím načíst konkrétní verze tajného kódu. Není nutné psát vlastní kód pro ochranu jakýchkoli tajných informací uložených v Key Vault.
 
 ### <a name="securely-store-secrets-and-keys"></a>Bezpečné ukládání tajných klíčů a klíčů
 
@@ -42,7 +42,7 @@ Pro přístup k trezoru klíčů se vyžaduje řádné ověření a autorizace v
 
 Ověření se provádí prostřednictvím Azure Active Directory. Autorizace se může provádět prostřednictvím řízení přístupu na základě role (RBAC) nebo zásad přístupu trezoru klíčů. RBAC se používá při správě trezorů a zásady přístupu trezoru klíčů se používají při pokusu o přístup k datům uloženým v trezoru.
 
-Trezory klíčů Azure můžou být chráněné softwarovým nebo hardwarovým modulem HSM. Pro situace, kdy potřebujete lepší kontrolu, můžete v modulech hardwarového zabezpečení (HSM) importovat nebo generovat klíče, které nikdy neopustí hranice HSM. Společnost Microsoft používá nCipher modulů hardwarového zabezpečení. NCipher nástroje slouží k přesunu klíče z modulu HSM do služby Azure Key Vault.
+Trezory klíčů Azure můžou být chráněné softwarovým nebo hardwarovým modulem HSM. Pro situace, kdy potřebujete lepší kontrolu, můžete v modulech hardwarového zabezpečení (HSM) importovat nebo generovat klíče, které nikdy neopustí hranice HSM. Microsoft používá moduly hardwarového zabezpečení podpůrný software nCipher. Pomocí nástrojů podpůrný software nCipher můžete přesunout klíč ze svého modulu HARDWAROVÉho zabezpečení do Azure Key Vault.
 
 Služba Azure Key Vault je navržená tak, aby Microsoft vaše data neviděl ani je nemohl extrahovat.
 
@@ -52,32 +52,32 @@ Po vytvoření několika trezorů klíčů budete chtít monitorovat, jak a kdy 
 
 - Archivace do účtu úložiště
 - Streamování do centra událostí
-- Protokoly můžete odeslat protokoly Azure monitoru.
+- Odešle protokoly do protokolů Azure Monitor.
 
 Máte kontrolu nad svými protokoly, které můžete zabezpečit prostřednictvím omezení přístupu, a můžete také odstranit protokoly, které už nepotřebujete.
 
 ### <a name="simplified-administration-of-application-secrets"></a>Zjednodušená správa tajných klíčů aplikací
 
-Pokud ukládáte cenná data, musíte provést několik kroků. Informace o zabezpečení musí být zabezpečená, musí podstoupit životní cyklus, musí být vysoce dostupný. Služba Azure Key Vault zjednodušuje celý proces od splnění těchto požadavků:
+Pokud ukládáte cenná data, musíte provést několik kroků. Bezpečnostní informace musí být zabezpečené, musí být v rámci životního cyklu, musí být vysoce dostupné. Azure Key Vault zjednodušuje proces splnění těchto požadavků:
 
 - Odstraňuje potřebu interní znalosti modulů hardwarového zabezpečení.
 - Rychle vertikálně navyšuje kapacitu s ohledem na špičky využití ve vaší organizaci.
-- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. Replikace dat zajišťuje vysokou dostupnost a eliminuje potřebu jakékoli akce od správce k aktivaci převzetí služeb při selhání.
+- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. Replikace dat zajišťuje vysokou dostupnost a trvá od správce k aktivaci převzetí služeb při selhání potřebnou akci.
 - Poskytuje standardní možnosti správy Azure prostřednictvím portálu, Azure CLI nebo PowerShellu.
 - Automatizuje určité úlohy prováděné s certifikáty, které jste zakoupili od veřejných certifikačních autorit, třeba jejich registraci a obnovení.
 
-Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů aplikací. Aplikace můžou přistupovat pouze k trezoru, můžou získat přístup, a je možné provádět pouze určité operace. Službu Azure Key Vault můžete vytvořit pro jednotlivé aplikace a omezit přístup k tajným klíčům uloženým ve službě Key Vault na konkrétní aplikaci a tým vývojářů.
+Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů aplikací. Aplikace mohou přistupovat pouze k trezoru, ke kterému mají povolen přístup, a mohou být omezeny pouze na provádění konkrétních operací. Službu Azure Key Vault můžete vytvořit pro jednotlivé aplikace a omezit přístup k tajným klíčům uloženým ve službě Key Vault na konkrétní aplikaci a tým vývojářů.
 
 ### <a name="integrate-with-other-azure-services"></a>Integrace s ostatními službami Azure
 
-Jako zabezpečené úložiště v Azure Key Vault používá k zjednodušení scénářů, jako jsou:
+V Azure se jako zabezpečené úložiště používá Key Vault k zjednodušení podobných scénářů:
 -  [Azure Disk Encryption](../security/azure-security-disk-encryption.md)
--  [s funkcí always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkce v systému SQL server a Azure SQL Database
+-  Funkce [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) na SQL serveru a Azure SQL Database
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 
 Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a analytikou protokolů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Rychlé zprovoznění: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku](quick-create-cli.md)
+- [Rychlé zprovoznění: Vytvoření Azure Key Vault pomocí rozhraní příkazového řádku](quick-create-cli.md)
 - [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md)

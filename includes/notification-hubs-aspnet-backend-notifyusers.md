@@ -5,23 +5,23 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227776"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934106"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
 Následující části popisují vytvoření nového back-endu ASP.NET WebAPI. Tento proces má tři hlavní účely:
 
-- **Ověřování klientů**: Přidáte obslužné rutiny zpráv pro ověření žádostí klienta a přidružit uživatele k žádosti.
-- **Registrace k oznámením pomocí back-endu WebAPI**: Můžete přidat kontroler zpracovávat nové registrace klientských zařízení k přijímání oznámení. Ověřené uživatelské jméno se automaticky přidá do registrace jako [značka](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
-- **Odesílání oznámení klientům**: Přidání kontroleru poskytují způsob, jak uživatelům aktivovat zabezpečené nabízení do zařízení a klientů přidružených značky.
+- **Ověřování klientů**: Přidáte obslužnou rutinu zpráv pro ověřování požadavků klientů a k žádosti přiřadíte uživatele.
+- **Zaregistrujte se na oznámení pomocí back-endu WebApi**: Přidáte kontroler, který bude zpracovávat nové registrace pro klientské zařízení, aby přijímal oznámení. Ověřené uživatelské jméno se automaticky přidá do registrace jako [značka](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
+- **Odesílat oznámení klientům**: Přidáte kontroler, který umožní uživatelům aktivovat zabezpečené nabízení oznámení zařízením a klientům přidruženým k této značce.
 
 Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
@@ -59,7 +59,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
     ![Okno Konfigurovat webovou aplikaci Microsoft Azure][B5]
 
-    Pokud se tato stránka pro konfiguraci plánu služby app service, pokračujte kurz. Můžete ho nakonfigurovat při publikování aplikace později. 
+    Pokud nevidíte tuto stránku pro konfiguraci plánu služby App Service, pokračujte v tomto kurzu. Můžete ji nakonfigurovat při pozdějším publikování aplikace. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ověřování klientů v back-endu WebAPI
 
@@ -185,6 +185,9 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
         }
     }
     ```
+    > [!IMPORTANT]
+    > Než budete pokračovat, zadejte **název** a **DefaultFullSharedAccessSignature** svého rozbočovače. 
+    
 7. Dále vytvořte nový kontroler **RegisterController**. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
 8. Vyberte **Kontroler Web API 2 – prázdný** a pak vyberte **Přidat**.

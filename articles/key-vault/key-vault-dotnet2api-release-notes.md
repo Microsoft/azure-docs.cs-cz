@@ -3,18 +3,18 @@ title: Key Vault poznámky k verzi rozhraní .NET 2. x API | Microsoft Docs
 description: Vývojáři rozhraní .NET budou používat toto rozhraní API k kódování pro Azure Key Vault
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 editor: bryanla
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260431"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883265"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
 Následující informace pomáhají při migraci na verzi 2,0 knihovny Azure Key Vault pro C# rozhraní a .NET.  Aplikace napsané pro starší verze se musí aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plnému podpoře nových a vylepšených funkcí, jako jsou **Key Vault certifikáty**.
@@ -35,7 +35,7 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 * **.NET Framework 4.5.2** podporuje verze 2,0 knihovny Azure Key Vault .NET.
 * Verze 2,0 Azure Key Vault knihovny .NET podporuje **.NET Standard 1,4** .
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Názvové prostory
 
 * Obor názvů pro **modely** se změnil z **Microsoft. Azure.** webtrezoru na **Microsoft. Azure.** webtrezor. Models.
 * **Microsoft. Azure. webtrezor. Internal** obor názvů je vyřazený.

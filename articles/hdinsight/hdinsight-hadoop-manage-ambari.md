@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442057"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885325"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -74,15 +74,15 @@ Následující seznam obsahuje běžné stavy výstrah, které používá Ambari
 
 Jiné výstrahy než **OK** způsobí, že položka **# výstrahy** v horní části stránky zobrazuje počet výstrah. Výběrem této položky se zobrazí upozornění a jejich stav.
 
-Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazit na stránce  s výstrahami.
+Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazit na stránce s **výstrahami** .
 
-![Stránka s výstrahami](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Stránka s výstrahami](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spravovat skupiny výstrah**.
 
 ![dialog spravovat skupiny výstrah](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
 
-Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení výstrah__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí** skupině příze nastaví na **kritickou**.
+Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení výstrah__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
 
 ![Dialog vytvořit výstrahu](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -92,13 +92,13 @@ Nakonec vyberte __možnost spravovat nastavení výstrah__ z nabídky __Akce__ a
 
 Karta **metriky** řídicího panelu obsahuje řadu widgetů, které usnadňují sledování stavu vašeho clusteru na první pohled. Několik widgetů, jako je například **využití procesoru**, poskytují další informace při kliknutí.
 
-![řídicí panel s metrikami](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![Řídicí panel s metrikami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Karta **Heat mapy** zobrazuje metriky jako barevné Heat mapyy z zelené na červenou.
 
-![řídicí panel s Heat mapy](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![řídicí panel s Heat mapy](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Chcete-li získat další informace o uzlech v clusteru , vyberte možnost hostitelé. Pak vyberte konkrétní uzel, který vás zajímá.
+Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, který vás zajímá.
 
 ![Podrobnosti o hostiteli](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
@@ -133,16 +133,16 @@ Výběrem kteréhokoli z těchto odkazů otevřete v prohlížeči novou kartu, 
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari uživatelé, skupiny a oprávnění
 
-Práce s uživateli, skupinami a oprávněními se podporuje při použití clusteru HDInsight připojeného k [doméně](./domain-joined/hdinsight-security-overview.md) . Informace o používání uživatelského rozhraní pro správu Ambari na clusteru připojeném k doméně najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md).
+Práce s uživateli, skupinami a oprávněními se podporuje při použití clusteru HDInsight [připojeného k doméně](./domain-joined/hdinsight-security-overview.md) . Informace o používání uživatelského rozhraní pro správu Ambari na clusteru připojeném k doméně najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Neměňte heslo sledovacího zařízení Ambari (hdinsightwatchdog) v clusteru HDInsight se systémem Linux. Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
 
 ### <a name="hosts"></a>Hostitelé
 
-Na  stránce hostitelé jsou uvedeni všichni hostitelé v clusteru. Chcete-li spravovat hostitele, postupujte podle těchto kroků.
+Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-li spravovat hostitele, postupujte podle těchto kroků.
 
-![Stránka hostitelé](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Stránka hostitelé](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Přidání, vyřazení z provozu a reřazování z provozu hostitele by se nemělo používat s clustery HDInsight.
@@ -195,7 +195,7 @@ Ke konfiguraci služby použijte následující postup:
 
 2. Vyberte **Configs** kartu. Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
 
-    ![konfiguračních](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![Konfiguračních](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
 3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
 

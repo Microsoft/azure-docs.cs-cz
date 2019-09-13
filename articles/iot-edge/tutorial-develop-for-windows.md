@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541923"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915137"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -194,13 +194,13 @@ Vzorový C# kód, který je součástí šablony projektu, používá [třídu M
 
 6. Vyhledejte vlastnost **modulů** $edgeAgent požadovaných vlastností. 
 
-   Tady by měly být uvedené dva moduly. První je **tempSensor**, který je ve výchozím nastavení součástí všech šablon, aby poskytovala Simulovaná data o teplotě, která můžete použít k otestování modulů. Druhým je modul **IotEdgeModule1** , který jste vytvořili jako součást tohoto projektu.
+   Tady by měly být uvedené dva moduly. První je **SimulatedTemperatureSensor**, který je ve výchozím nastavení součástí všech šablon, aby poskytovala Simulovaná data o teplotě, která můžete použít k otestování modulů. Druhým je modul **IotEdgeModule1** , který jste vytvořili jako součást tohoto projektu.
 
    Tato vlastnost modulů deklaruje, které moduly by měly být součástí nasazení do zařízení nebo zařízení. 
 
 7. Vyhledejte vlastnost **routes** $edgeHub požadovaných vlastností. 
 
-   Jedna z funkcí, pokud je modul IoT Edge hub směrování zpráv mezi všemi moduly v nasazení. Zkontrolujte hodnoty ve vlastnosti Routes. První trasa **IotEdgeModule1ToIoTHub**používá zástupný znak ( **\*** ) k zahrnutí jakékoli zprávy přicházející z libovolné výstupní fronty v modulu IotEdgeModule1. Tyto zprávy se přejdou do *$upstream*, což je vyhrazený název, který označuje IoT Hub. Druhá trasa, **sensorToIotEdgeModule1**, přebírá zprávy z modulu tempSensor a směruje je do vstupní fronty *input1* modulu IotEdgeModule1. 
+   Jedna z funkcí, pokud je modul IoT Edge hub směrování zpráv mezi všemi moduly v nasazení. Zkontrolujte hodnoty ve vlastnosti Routes. První trasa **IotEdgeModule1ToIoTHub**používá zástupný znak ( **\*** ) k zahrnutí jakékoli zprávy přicházející z libovolné výstupní fronty v modulu IotEdgeModule1. Tyto zprávy se přejdou do *$upstream*, což je vyhrazený název, který označuje IoT Hub. Druhá trasa, **sensorToIotEdgeModule1**, přebírá zprávy z modulu SimulatedTemperatureSensor a směruje je do vstupní fronty *input1* modulu IotEdgeModule1. 
 
    ![Kontrola tras v nasazení. template. JSON](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -227,7 +227,7 @@ Poskytněte přihlašovací údaje registru kontejneru do Docker na svém vývoj
 
 Váš vývojový počítač má teď přístup k vašemu registru kontejnerů a vaše IoT Edgeá zařízení budou taky. Je čas převést kód projektu na Image kontejneru. 
 
-1. Klikněte pravým tlačítkem na složku projektu **CSharpTutorialApp** a vyberte sestavování **a nabízených IoT Edgech modulů**. 
+1. Klikněte pravým tlačítkem na složku projektu **CSharpTutorialApp** a vyberte **sestavování a nabízených IoT Edgech modulů**. 
 
    ![Sestavování a nabízených IoT Edgech modulů](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
@@ -248,7 +248,7 @@ Váš vývojový počítač má teď přístup k vašemu registru kontejnerů a 
 
 6. Uložte změny do souboru Module. JSON.
 
-7. Znovu klikněte pravým tlačítkem na složku projektu **CSharpTutorialApp** a znovu vyberte sestavování **a IoT Edge moduly pro vložení** . 
+7. Znovu klikněte pravým tlačítkem na složku projektu **CSharpTutorialApp** a znovu vyberte **sestavování a IoT Edge moduly pro vložení** . 
 
 8. Otevřete soubor **nasazení. Windows-amd64. JSON** znovu. Všimněte si, že nový soubor nebyl vytvořen při opětovném spuštění příkazu Build a push. Místo toho byl stejný soubor aktualizován tak, aby odrážel změny. Obrázek IotEdgeModule1 nyní odkazuje na verzi 0.0.2 kontejneru. Tato změna v manifestu nasazení je způsob, jakým zařízení IoT Edge, že existuje nová verze modulu, který se má načíst. 
 
@@ -284,14 +284,14 @@ Ověřili jste, že jsou sestavené image kontejneru uložené v registru kontej
 
 4. Rozbalením podrobností pro zařízení IoT Edge v Průzkumníkovi cloudu zobrazíte moduly na svém zařízení.
 
-5. Pomocí tlačítka **aktualizovat** aktualizujte stav zařízení, abyste viděli, že moduly TempSensor a IotEdgeModule1 se nasazují na vaše zařízení. 
+5. Pomocí tlačítka **aktualizovat** aktualizujte stav zařízení, abyste viděli, že moduly SimulatedTemperatureSensor a IotEdgeModule1 se nasazují na vaše zařízení. 
 
 
    ![Zobrazit moduly běžící na zařízení IoT Edge](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Zobrazit zprávy ze zařízení
 
-Kód IotEdgeModule1 přijímá zprávy přes vstupní frontu a předává je spolu s její výstupní frontou. Manifest nasazení deklaroval trasy, které předaly zprávy z tempSensor do IotEdgeModule1, a pak přesměrují zprávy od IotEdgeModule1 do IoT Hub. Nástroje Azure IoT Edge pro Visual Studio umožňují zobrazovat zprávy při doručování IoT Hub z jednotlivých zařízení. 
+Kód IotEdgeModule1 přijímá zprávy přes vstupní frontu a předává je spolu s její výstupní frontou. Manifest nasazení deklaroval trasy, které předaly zprávy z SimulatedTemperatureSensor do IotEdgeModule1, a pak přesměrují zprávy od IotEdgeModule1 do IoT Hub. Nástroje Azure IoT Edge pro Visual Studio umožňují zobrazovat zprávy při doručování IoT Hub z jednotlivých zařízení. 
 
 1. V Průzkumníku cloudu sady Visual Studio vyberte název zařízení IoT Edge, které jste nasadili na. 
 
@@ -315,7 +315,7 @@ Příkazy v této části jsou pro vaše zařízení IoT Edge, ne pro váš výv
    iotedge list
    ```
 
-   Měli byste vidět čtyři moduly: dva moduly IoT Edge runtime, tempSensor a IotEdgeModule1. Všechny čtyři by měly být uvedeny jako spuštěné.
+   Měli byste vidět čtyři moduly: dva moduly IoT Edge runtime, SimulatedTemperatureSensor a IotEdgeModule1. Všechny čtyři by měly být uvedeny jako spuštěné.
 
 * Zkontrolujte protokoly konkrétního modulu:
 
@@ -325,7 +325,7 @@ Příkazy v této části jsou pro vaše zařízení IoT Edge, ne pro váš výv
 
    V IoT Edgech modulech se rozlišují malá a velká písmena. 
 
-   V protokolech tempSensor a IotEdgeModule1 by se měly zobrazovat zprávy, které zpracovávají. Modul edgeAgent je zodpovědný za spouštění jiných modulů, takže jeho protokoly budou mít informace o implementaci manifestu nasazení. Pokud některý z modulů není v seznamu nebo není spuštěný, budou pravděpodobně chyby v protokolech edgeAgent. Modul edgeHub zodpovídá za komunikaci mezi moduly a IoT Hub. Pokud jsou moduly v provozu, ale zprávy nepřicházejí do služby IoT Hub, budou pravděpodobně chyby v protokolech edgeHub. 
+   V protokolech SimulatedTemperatureSensor a IotEdgeModule1 by se měly zobrazovat zprávy, které zpracovávají. Modul edgeAgent je zodpovědný za spouštění jiných modulů, takže jeho protokoly budou mít informace o implementaci manifestu nasazení. Pokud některý z modulů není v seznamu nebo není spuštěný, budou pravděpodobně chyby v protokolech edgeAgent. Modul edgeHub zodpovídá za komunikaci mezi moduly a IoT Hub. Pokud jsou moduly v provozu, ale zprávy nepřicházejí do služby IoT Hub, budou pravděpodobně chyby v protokolech edgeHub. 
 
 ## <a name="next-steps"></a>Další postup
 

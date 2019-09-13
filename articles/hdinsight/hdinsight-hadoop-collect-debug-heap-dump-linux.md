@@ -1,6 +1,6 @@
 ---
-title: Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight – Azure
-description: Povolení výpisů paměti haldy pro služby Apache Hadoop v clusterech HDInsight založených na Linuxu pro ladění a analýzu.
+title: Povolit výpisy haldy pro Apache Hadoop služby ve službě HDInsight – Azure
+description: Povolte výpisy haldy pro Apache Hadoop služby z clusterů HDInsight se systémem Linux pro účely ladění a analýzy.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,117 +8,117 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62c9dcc039c68b0b6c8b8bf29ed9f13f88936723
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059512"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879957"
 ---
-# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Výpisů paměti haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. Takže se hodí pro diagnostiku problémů, ke kterým dochází za běhu.
+Výpisy haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. To je užitečné pro diagnostiku problémů, ke kterým dochází v době běhu.
 
-## <a name="whichServices"></a>Služby
+## <a name="whichServices"></a>Orgány
 
-Můžete povolit výpisů paměti haldy pro následující služby:
+Můžete povolit výpisy paměti haldy pro následující služby:
 
-* **Apache hcatalog** -tempelton
-* **Apache hive** -hiveserver2, metastore, derbyserver
-* **mapreduce** -jobhistoryserver
-* **Apache yarn** – správce prostředků, nodemanager, timelineserver
-* **Apache hdfs** -datanode secondarynamenode, namenode
+* **Apache hcatalog** – tempelton
+* **Apache podregistr** – hiveserver2, metastore, derbyserver
+* **MapReduce** – jobhistoryserver
+* **Apache nitě** -ResourceManager, NodeManager, timelineserver
+* **Apache HDFS** – datanode, secondarynamenode, namenode
 
-Můžete také povolení výpisů paměti haldy pro mapy a snížit procesy spuštěné prostřednictvím HDInsight.
+Můžete také povolit výpisy paměti haldy pro mapu a snížit procesy spuštěné službou HDInsight.
 
 ## <a name="configuration"></a>Principy konfigurace výpisu paměti haldy
 
-Předáním možnosti jsou povolené výpisů paměti haldy (někdy označované jako požádá o, nebo parametry) na JVM při spuštění služby. Pro většinu [Apache Hadoop](https://hadoop.apache.org/) služby, můžete upravit skript prostředí, používá ke spuštění služby k předání těchto možností.
+Výpisy haldy jsou povolené předáním možností (někdy označované jako výslovný nebo parametry) do JVM při spuštění služby. U většiny [Apache Hadoop](https://hadoop.apache.org/) Services můžete upravit skript prostředí používaný ke spuštění služby a předat tyto možnosti.
 
-Do každého skriptu se export pro  **\* \_OPTS**, který obsahuje možnosti předané JVM. Například v **hadoop env.sh** řádek, který začíná skriptu `export HADOOP_NAMENODE_OPTS=` obsahuje možnosti pro službu NameNode.
+V každém skriptu je k dispozici export pro  **\* \_výslovný**, který obsahuje možnosti předané do JVM. Například ve skriptu **Hadoop-env.sh** má řádek, který začíná `export HADOOP_NAMENODE_OPTS=` , obsahuje možnosti pro službu NameNode.
 
-Mapovací a redukční procesy se mírně liší, jak tyto operace jsou podřízený proces služby MapReduce. Každý mapování nebo snižte proces běží v kontejneru podřízené a existují dvě položky, které obsahují možnosti JVM. Obě součástí **mapred-site.xml**:
+Mapování a snížení procesů se mírně liší, protože tyto operace jsou podřízeným procesem služby MapReduce. Každá mapa nebo omezení procesu běží v podřízeném kontejneru a existují dvě položky, které obsahují JVM možnosti. Obojí je obsaženo v **souboru mapred-site. XML**:
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
-> Doporučujeme používat [Apache Ambari](https://ambari.apache.org/) upravit skripty a nastavení mapred-site.xml, jako Ambari zpracování replikace změn napříč uzly v clusteru. Zobrazit [pomocí Apache Ambari](#using-apache-ambari) najdete konkrétní kroky.
+> K úpravě nastavení skriptů a mapred-site. XML doporučujeme použít [Apache Ambari](https://ambari.apache.org/) , protože Ambari zpracovává replikaci změn napříč uzly v clusteru. Konkrétní postup najdete v části [použití Apache Ambari](#using-apache-ambari) .
 
 ### <a name="enable-heap-dumps"></a>Povolení výpisů paměti haldy
 
-Tato možnost umožňuje výpisů paměti haldy, dojde OutOfMemoryError:
+Následující možnost povolí výpisy paměti haldy, když dojde k OutOfMemoryError:
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** Označuje, že tato možnost je povolená. Ve výchozím nastavení je tato možnost zakázána.
+**+** Označuje, že je tato možnost povolená. Ve výchozím nastavení je tato možnost zakázána.
 
 > [!WARNING]  
-> Jako soubory s výpisem paměti mohou být velké výpisů paměti haldy nejsou povolené pro služby Hadoop v HDInsight. Pokud je povolit pro odstraňování potíží, nezapomeňte po reprodukovat problém a shromážděné soubory s výpisem paměti je zakázat.
+> Ve výchozím nastavení nejsou ve výchozím nastavení pro služby Hadoop ve službě HDInsight povoleny výpisy haldy, protože soubory s výpisem paměti můžou být velké. Pokud je povolíte pro řešení potíží, zakažte je po reprodukování problému a shromáždění souborů výpisu paměti.
 
-### <a name="dump-location"></a>Umístění s výpisem paměti
+### <a name="dump-location"></a>Umístění výpisu paměti
 
-Výchozí umístění pro soubor s výpisem paměti je aktuální pracovní adresář. Můžete určit, kde je soubor uložen pomocí následující možnosti:
+Výchozím umístěním pro soubor s výpisem paměti je aktuální pracovní adresář. Můžete určit, kde je soubor uložený, pomocí následující možnosti:
 
     -XX:HeapDumpPath=/path
 
-Například použití `-XX:HeapDumpPath=/tmp` způsobí, že se výpisy paměti, který bude uložen v adresáři TMP.
+Například použití `-XX:HeapDumpPath=/tmp` způsobí, že se výpisy paměti ukládají do adresáře adresáře/TMP.
 
 ### <a name="scripts"></a>Scripts
 
-Můžete také spustit skript po **OutOfMemoryError** vyvolá. Například aktivuje oznámení, abyste věděli, že došlo k chybě. Použijte možnost pro spuštění skriptu na __OutOfMemoryError__:
+Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Například spuštění oznámení, abyste věděli, že došlo k chybě. Pro aktivaci skriptu na __OutOfMemoryError__použijte následující možnost:
 
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]  
-> Apache Hadoop je distribuovaný systém, libovolný skript, které musí být umístěn na všech uzlech v clusteru, který služba běží na.
+> Vzhledem k tomu, že Apache Hadoop je distribuovaný systém, musí být všechny použité skripty umístěné na všech uzlech v clusteru, na kterém je služba spuštěná.
 > 
-> Skript musí také být v umístění, které je přístupný pro účet služby spouští jako a musíte zadat spustit oprávnění. Například můžete chtít uložit skripty v `/usr/local/bin` a použít `chmod go+rx /usr/local/bin/filename.sh` pro čtení a oprávnění ke spouštění.
+> Skript musí být také v umístění, které je přístupné pro účet, ve kterém služba běží, a musí poskytovat oprávnění k provedení. Můžete například chtít, aby se skripty ukládaly do `/usr/local/bin` a používaly `chmod go+rx /usr/local/bin/filename.sh` pro udělení oprávnění ke čtení a spuštění.
 
-## <a name="using-apache-ambari"></a>Pomocí nástroje Apache Ambari
+## <a name="using-apache-ambari"></a>Použití Apache Ambari
 
-Pokud chcete upravit konfiguraci pro službu, postupujte následovně:
+Chcete-li upravit konfiguraci služby, použijte následující postup:
 
 1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa URL je https://YOURCLUSTERNAME.azurehdinsight.net.
 
-    Po zobrazení výzvy ověřování k webu pomocí názvu účtu HTTP (výchozí: správce) a heslo pro váš cluster.
+    Po zobrazení výzvy proveďte ověření v lokalitě pomocí názvu účtu HTTP (výchozí: admin) a hesla pro váš cluster.
 
    > [!NOTE]  
-   > Můžete být vyzváni podruhé pomocí Ambari pro uživatelské jméno a heslo. Pokud ano, zadejte stejný název účtu a heslo.
+   > K uživatelskému jménu a heslu se může Ambari považovat za druhý čas. Pokud ano, zadejte stejný název účtu a heslo.
 
-2. Pomocí seznamu na levé straně vyberte oblast služeb, které chcete upravit. Například **HDFS**. V oblasti System center, vyberte **Configs** kartu.
+2. Pomocí seznamu na levé straně vyberte oblast služby, kterou chcete upravit. Příklad: **HDFS**. V prostřední oblasti vyberte kartu **Konfigurace** .
 
-    ![Obrázek Ambari web s vybranou kartou HDFS Configs](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
+    ![Obrázek webu Ambari s vybranou kartou HDFS Configurations](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
-3. Použití **filtr...**  položku, zadejte **požádá o**. Se zobrazují pouze položky obsahující tento text.
+3. Pomocí položky **Filter...** entry zadejte **výslovný**. Zobrazí se pouze položky, které obsahují tento text.
 
-    ![Filtrovaný seznam](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
+    ![Filtrovaný seznam](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Najít  **\* \_OPTS** záznam pro službu, kterou chcete povolení výpisů paměti haldy pro a přidat tyto možnosti, které si přejete povolit. Na následujícím obrázku jsme přidali `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` k **HADOOP\_NAMENODE\_OPTS** položky:
+4. Vyhledejte položku výslovný pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit.  **\* \_** Na následujícím obrázku jsem přidaný `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP\_NAMENODE\_výslovný** :
 
-    ![HADOOP_NAMENODE_OPTS s - XX: + HeapDumpOnOutOfMemoryError - XX: = HeapDumpPath/tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
-
-   > [!NOTE]  
-   > Při povolení haldy vypíše mapy nebo snižte podřízený proces, hledejte pro pole s názvem **mapreduce.admin.map.child.java.opts** a **mapreduce.admin.reduce.child.java.opts**.
-
-    Použití **Uložit** tlačítko Uložit změny. Můžete zadat krátký poznámka popisující změny.
-
-5. Jakmile změny se použily, **vyžaduje restartování** Ikona vedle jednu nebo víc služeb.
-
-    ![Restartujte požadované ikonu a restartujte tlačítko](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
-
-6. Vyberte každou službu, která potřebuje restartovat počítač a použijte **akce služby** tlačítko **zapnout v režimu údržby**. Režim údržby zabraňuje výstrahy při opětovném generování ze služby.
-
-    ![Zapnout nabídky režim údržby](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
-
-7. Po povolení režimu údržby použít **restartovat** tlačítko pro službu **restartujte všechny to týká**
-
-    ![Restartujte všechny ovlivněné položky](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
+    ![HADOOP_NAMENODE_OPTS with-XX: + HeapDumpOnOutOfMemoryError-XX: HeapDumpPath =/TMP/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
-   > položky **restartovat** tlačítko se může lišit pro ostatní služby.
+   > Při povolování výpisů paměti haldy pro mapu nebo omezení podřízeného procesu vyhledejte pole s názvem **MapReduce. admin. map. Child. Java. výslovný** a **MapReduce. admin. redukovat. Child. Java. výslovný**.
 
-8. Po restartování služby použijte **akce služby** tlačítko **zapnout vypnout režim údržby**. Chcete-li pokračovat v monitorování výstrah pro službu tento Ambari.
+    Pomocí tlačítka **Uložit** uložte změny. Můžete zadat krátkou poznámku popisující změny.
+
+5. Po použití změn se vedle jedné nebo více služeb zobrazí ikona **požadovaná k restartování** .
+
+    ![ikona požadovaného restartování a tlačítko pro restartování](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+
+6. Vyberte každou službu, která vyžaduje restart, a pomocí tlačítka **Akce služby** **zapněte režim údržby**. Režim údržby zabraňuje generování výstrah ze služby, když ji restartujete.
+
+    ![Zapnout nabídku režimu údržby](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+
+7. Po povolení režimu údržby použijte k **restartování** služby tlačítko **restartovat** .
+
+    ![Restartovat všechny ovlivněné položky](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+
+   > [!NOTE]  
+   > Položky tlačítka pro **restartování** se mohou lišit pro jiné služby.
+
+8. Po restartování služeb můžete **režim údržby**vypnout pomocí tlačítka **Akce služby** . Tento Ambari obnoví monitorování výstrah pro službu.
 

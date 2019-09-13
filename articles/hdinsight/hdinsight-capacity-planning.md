@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734668"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916559"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -96,9 +96,6 @@ Můžete škálovat cluster tak, aby splňoval požadavky na nejvyšší zatíž
 
 K chybám může dojít v důsledku paralelního spouštění více map a snížení počtu komponent v clusteru s více uzly. Chcete-li tento problém izolovat, zkuste distribuované testování spuštěním souběžných úloh v jednom clusteru pracovních uzlů a pak tento přístup rozbalte, pokud chcete spustit více úloh současně na clusterech, které obsahují více než jeden uzel. Pokud chcete v Azure vytvořit cluster HDInsight s jedním uzlem, použijte možnost *vlastní (velikost, nastavení, aplikace)* a při zřizování nového clusteru na portálu použijte hodnotu 1 pro *počet uzlů pracovního procesu* v části **Velikost clusteru** .
 
-V místním počítači můžete také nainstalovat vývojové prostředí s jedním uzlem a vyzkoušet řešení. Hortonworks poskytuje místní vývojové prostředí s jedním uzlem pro řešení založená na systému Hadoop, které je užitečné pro počáteční vývoj, testování konceptu a testování. Další informace najdete v tématu [izolovaný prostor (Hortonworks)](https://hortonworks.com/products/hortonworks-sandbox/).
-
-Chcete-li identifikovat problém v místním clusteru s jedním uzlem, můžete znovu spustit neúspěšné úlohy a upravit vstupní data nebo použít menší datové sady. Způsob spouštění těchto úloh závisí na platformě a typu aplikace.
 
 ## <a name="quotas"></a>Kvóty
 
@@ -126,7 +123,7 @@ Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.micr
 
 Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Spark, Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md): Naučte se, jak nastavit a nakonfigurovat clustery v HDInsight pomocí Apache Hadoop, Spark, Kafka, interaktivního podregistru, adaptérů HBA, služeb ML nebo přetvořenosti.
 * [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Seznamte se s klíčovými scénáři pro monitorování clusteru HDInsight, který může mít vliv na kapacitu clusteru.

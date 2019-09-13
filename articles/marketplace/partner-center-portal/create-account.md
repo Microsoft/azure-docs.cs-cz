@@ -1,36 +1,27 @@
 ---
-title: Postup vytvoření účtu obchodního tržiště v partnerském centru
+title: Vytvoření účtu obchodního tržiště v partnerském centru
 description: Přečtěte si, jak vytvořit účet komerčního obchodu v partnerském centru.
 author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
-ms.date: 07/05/2019
-ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.date: 09/10/2019
+ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383247"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898682"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
-Pokud chcete publikovat své nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), budete muset vytvořit účet v programu komerčního obchodu v partnerském centru.
-
-## <a name="create-a-partner-center-account"></a>Vytvořit účet partnerského centra
-
-V tomto článku se dozvíte, jak vytvořit účet partnerského centra, včetně postupu:
-
-- [Registrace pomocí stránky pro registraci v partnerském centru](#to-create-a-commercial-marketplace-account-in-partner-center)
-- [Přihlášení pomocí pracovního účtu](#sign-in-with-a-work-account)
-- [Vyjádřit souhlas s podmínkami a ujednáními](#agree-to-terms-and-conditions) 
-- [Zadejte svůj profil vydavatele.](#provide-your-publisher-profile)
+Pokud chcete publikovat své nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), budete muset vytvořit účet v programu komerčního obchodu v partnerském centru. V tomto článku se dozvíte, jak vytvořit účet partnerského centra a jak přidat nové vydavatele do programu komerčního tržiště.
 
 >[!Important]
->Pokud máte účet v [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace naleznete v tématu [vydavatelé přesunutí z cpp](#publishers-moving-from-cpp) . 
+>Pokud máte účet v [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace naleznete v tématu [vydavatelé přesunutí z cpp](#publishers-moving-from-cpp) .
 
-### <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud chcete vytvořit účet v partnerském centru, ujistěte se, že máte následující:
 
@@ -39,22 +30,39 @@ Pokud chcete vytvořit účet v partnerském centru, ujistěte se, že máte ná
 
 Tyto informace Ověřujeme během procesu vytváření účtu.
 
-### <a name="to-create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
+Existují dva způsoby, jak vytvořit účet:
+
+- Pokud s partnerským centrem začínáte a nemáte účet Microsoft, vytvořte svůj účet pomocí [stránky vytvořit účet pomocí stránky pro registraci v partnerském centru](#create-an-account-using-the-partner-center-enrollment-page).
+- Pokud jste už zaregistrovali Microsoft Partner Network, vytvořte účet přímo z partnerského centra pomocí [Vytvoření účtu pomocí registrace Microsoft Partner Network](#create-an-account-using-your-microsoft-partner-network-enrollment).
+
+## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>Vytvoření účtu pomocí stránky pro registraci v partnerském centru
+
+Tuto metodu použijte, pokud už nejste partnerem partnerského centra a nezapsali jste se do Microsoft Partner Network. Tato část obsahuje informace o tom, jak vytvořit nový účet partnerského centra, včetně postupu:
+
+- [Zaregistrovat na stránce pro registraci v partnerském centru](#register-on-the-partner-center-enrollment-page)
+- [Přihlášení pomocí pracovního účtu](#sign-in-with-a-work-account)
+- [Vyjádřit souhlas s podmínkami a ujednáními](#agree-to-terms-and-conditions)
+- [Zadejte svůj profil vydavatele.](#provide-your-publisher-profile)
+
+>[!Important]
+>Pokud máte účet v [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace naleznete v tématu [vydavatelé přesunutí z cpp](#publishers-moving-from-cpp) .
+
+### <a name="register-on-the-partner-center-enrollment-page"></a>Zaregistrovat na stránce pro registraci v partnerském centru
 
 Přečtěte si informace na stránce [**Vítá vás Microsoft Partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) pro registraci a potom si zaregistrujte účet.
 
-#### <a name="sign-in-with-a-work-account"></a>Přihlášení pomocí pracovního účtu
+### <a name="sign-in-with-a-work-account"></a>Přihlášení pomocí pracovního účtu
 
-Takže můžete doménu firemního e-mailového účtu propojit s novým účtem partnerského centra. Díky přidružení těchto účtů se zaměstnanci vaší společnosti mohou přihlašovat do partnerského centra pomocí uživatelských jmen a hesel pracovního účtu.
+Přihlaste se pomocí pracovního účtu, abyste mohli propojit doménu firemního e-mailového účtu s novým účtem partnerského centra. Díky přidružení těchto účtů se zaměstnanci vaší společnosti mohou přihlašovat do partnerského centra pomocí uživatelských jmen a hesel pracovního účtu.
 
 >[!Note]
->Pokud chcete zjistit, jestli vaše společnost už má pracovní účet, jak vytvořit nový pracovní účet, nebo jak nastavit víc pracovních účtů pro použití s partnerským centrem, přejděte na [pracovní účet společnosti a partnerské Centrum](./company-work-accounts.md). 
+>Pokud chcete zjistit, jestli vaše společnost už má pracovní účet, jak vytvořit nový pracovní účet, nebo jak nastavit víc pracovních účtů pro použití s partnerským centrem, přejděte na [pracovní účet společnosti a partnerské Centrum](./company-work-accounts.md).
 
-#### <a name="agree-to-terms-and-conditions"></a>Vyjádřit souhlas s podmínkami a ujednáními
+### <a name="agree-to-terms-and-conditions"></a>Vyjádřit souhlas s podmínkami a ujednáními
 
 Bude nutné souhlasit s podmínkami a ujednáními v rámci [smlouvy Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560).
 
-#### <a name="provide-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
+### <a name="provide-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
 
 Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste to ještě neudělali, musíte se připojit k [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po připojení k Microsoft Partner Network budete mít k dispozici ID MPN.
 
@@ -67,37 +75,71 @@ Po potvrzení informací o profilu vydavatele vyjádřete souhlas s podmínkami 
 
 Děkujeme, že jste si vytvořili účet na partnerském centru. Teď přejdete na stránku [Přehled komerčního tržiště](./commercial-marketplace-overview.md) .
 
-### <a name="publishers-moving-from-cpp"></a>Vydavatelé, kteří se přesouvá z CPP
+## <a name="create-an-account-using-your-microsoft-partner-network-enrollment"></a>Vytvoření účtu pomocí registrace Microsoft Partner Network
 
-Pokud jste svůj účet migrovali z [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com), nemusíte vytvářet nový účet partnerského centra, ale přizpůsobili jste mu přizpůsobený odkaz na nový účet partnerského centra prostřednictvím e-mailu a v oznámení banneru zobrazené po Přihlaste se ke stávajícímu účtu CPP.
+Pokud už jste zaregistrovaní v Microsoft Partner Network, použijte tuto část k vytvoření účtu přímo z partnerského centra pomocí těchto kroků:
+
+- [Přihlaste se k partnerskému centru pomocí pracovního účtu](#sign-into-partner-center-with-your-work-account)
+- [Zadejte svůj profil vydavatele.](#enter-your-publisher-profile)
+
+Ujistěte se, že máte informace o svém účtu Microsoft Partner Network.
+
+>[!Important]
+>Pokud máte účet v [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace naleznete v tématu [vydavatelé přesunutí z cpp](#publishers-moving-from-cpp) .
+
+### <a name="sign-into-partner-center-with-your-work-account"></a>Přihlaste se k partnerskému centru pomocí pracovního účtu
+
+Přihlaste se k [partnerskému centru](https://partner.microsoft.com/) pomocí účtu Microsoft Partner Network, abyste doménu firemního e-mailového účtu propojíte s novým účtem partnerského centra. Díky přidružení těchto účtů se zaměstnanci vaší společnosti můžou přihlašovat do partnerského centra pomocí uživatelských jmen a hesel pracovního účtu.
+
+>[!Note]
+>Pokud chcete zjistit, jestli vaše společnost už má pracovní účet partnerského centra, jak vytvořit nový pracovní účet, nebo jak nastavit víc pracovních účtů pro použití s partnerským centrem, přejděte na [pracovní účet společnosti a partnerské Centrum](./company-work-accounts.md).
+
+### <a name="enter-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
+
+Po přihlášení použijte postup v této části k dokončení nastavování účtu.
+
+>[!NOTE]
+> Abyste se mohli přihlásit k Microsoft Partner Network, musíte mít roli správce účtu nebo globální správce.
+
+1. V partnerském centru vyberte **Nastavení** > **partner nastavení** > **programy** > **Začínáme.**
+2. Microsoft Partner Network zjistí vaše předplatné a zobrazí stránku s profilem vydavatele, kde můžete zadat název vaší společnosti a ID MPN.
+3. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** pro dokončení registrace.
+
+Po registraci přejdete na stránku Přehled komerčního tržiště. Na levém navigačním panelu se zobrazí **komerční tržiště** . Pokud vyberete **Nastavení** > **partnerských nastavení** > **programy**, uvidíte, že je komerční web Marketplace uvedený jako zaregistrovaný.
+
+Děkujeme, že jste si vytvořili účet na partnerském centru. Nápovědu najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do programu komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
+
+## <a name="publishers-moving-from-cpp"></a>Vydavatelé, kteří se přesouvá z CPP
+
+Pokud jste svůj účet migrovali z [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com), nemusíte vytvářet nový účet partnerského centra. Měli byste mít přizpůsobený odkaz na nový účet partnerského centra v e-mailu a v oznámení banner po přihlášení ke stávajícímu účtu CPP.
 
 Po povolení nového účtu partnerského centra na základě tohoto přizpůsobeného odkazu se můžete vrátit ke svému účtu na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v partnerském centru.
 
-Informace o smlouvě o publikování a profilu společnosti budou migrovány na nový účet partnerského centra spolu s dříve nastavenými informacemi o profilu výběr účtu, uživatelskými účty a oprávněními a aktivními nabídkami přidruženými k vašemu účtu CPP. 
+Informace o smlouvě o publikování a profilu společnosti budou migrovány na nový účet partnerského centra spolu s dříve nastavenými informacemi o profilu výběr účtu, uživatelskými účty a oprávněními a aktivními nabídkami přidruženými k vašemu účtu CPP.
 
 Po přesunu informací o účtu z CPP na partnerské Centrum už nebudete pomocí CPP dělat aktualizace účtu ani spravovat uživatele, oprávnění a fakturaci. V případě omezené doby se všechny aktualizace účtu, které provedete v partnerském centru, automaticky aktualizují v účtu CPP, který je jen pro čtení, dokud nebude portál CPP nakonec zastaralý.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Přidání nových vydavatelů do programu komerčního tržiště
 
-Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení do partnerského centra, a to tak, že vyberete **Nastavení** -> účtu**vydavatelé** -> **Přidat vydavatele**.
+Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení do partnerského centra výběrem **Nastavení** > účtu**vydavatelů** > **Přidat vydavatele**.
 
 >[!Note]
->Před přidáním nového vydavatele můžete prověřit své stávající vydavatele přihlášením do partnerského centra a vybrat **Nastavení** -> účtu**vydavatelé** a zobrazit seznam existujících vydavatelů.
+>Než přidáte nového vydavatele, Projděte si stávající vydavatele tak, že se přihlásíte do partnerského centra a vyberete možnost**vydavatelé** **Nastavení** > účtu, kde se zobrazí seznam existujících vydavatelů.
 
 Jiný uživatel ze stejného Azure Active Directory tenant může přidat nového vydavatele pomocí následujících kroků:
 
 1. Zastavte si registrační tok na [partnerském centru Microsoftu](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
-1. Vyberte možnost **Přihlásit se pomocí pracovního účtu** a zadejte svou pracovní e-mailovou adresu.
-1. Klikněte na tlačítko **Přidat vydavatele** .
-1. Vyberte ID MPN, které chcete přidružit k vydavateli.
-1. Aktualizuje **Podrobnosti vydavatele** na formuláři. <br>
+2. Vyberte možnost **Přihlásit se pomocí pracovního účtu** a zadejte svou pracovní e-mailovou adresu.
+3. Klikněte na tlačítko **Přidat vydavatele** .
+4. Vyberte ID MPN, které chcete přidružit k vydavateli.
+5. Aktualizuje **Podrobnosti vydavatele** na formuláři.
 
-   1. **Název vydavatele**: Název, který se zobrazí v Azure Marketplace nebo AppSource s nabídkou <br>
-   1. **PublisherID**: Identifikátor používaný partnerským centrem k jedinečné identifikaci vašeho vydavatele. Výchozí hodnota tohoto pole je mapována na existující a jedinečný `PublisherID` v systému, který nelze znovu použít, a proto je nutné toto pole aktualizovat. <br>
+   1. **Název vydavatele**: Název, který se zobrazí v Azure Marketplace nebo AppSource s nabídkou
+   1. **PublisherID**: Identifikátor používaný partnerským centrem k jedinečné identifikaci vašeho vydavatele. Výchozí hodnota tohoto pole je mapována na existující a jedinečný `PublisherID` v systému, který nelze znovu použít, a proto je nutné toto pole aktualizovat.
    1. **Kontaktní údaje**: V případě potřeby aktualizujte kontaktní údaje.
 
-1. Po dokončení procesu můžete spravovat nově vytvořeného vydavatele tak, že v levém navigačním panelu najdeme do programu pro **komerční Marketplace** . Pokud nevidíte komerční program pro **Marketplace** , aktualizujte stránku.  Nový Vydavatel se zobrazí v seznamu **vydavatelé** .
+Po dokončení procesu můžete spravovat nově vytvořeného vydavatele tak, že v levém navigačním panelu najdeme do programu pro **komerční Marketplace** . Pokud nevidíte komerční program pro **Marketplace** , aktualizujte stránku. Nový Vydavatel se zobrazí v seznamu **vydavatelé** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-step"></a>Další krok
 
-- [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md) 
+- [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md)

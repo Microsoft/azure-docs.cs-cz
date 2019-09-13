@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276848"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883642"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -125,7 +125,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Protokol HTTP pro korelaci také deklaruje `Correlation-Context` hlavičku. Pro zjednodušení je však tady vynecháno.
 
 ## <a name="queue-instrumentation"></a>Instrumentace fronty
-I když existuje [protokol HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) , ke kterému by korelace dala předat podrobnosti korelace s požadavkem http, musí každý protokol fronty definovat, jak se mají stejné podrobnosti předávat společně se zprávou fronty. Některé protokoly front (například AMQP) umožňují předat další metadata a jiné (takové Azure Storage fronty) vyžadují, aby byl kontext kódovaný do datové části zprávy.
+I když existuje [kontext trasování W3C](https://www.w3.org/TR/trace-context/) a [protokol HTTP, aby korelace](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vyhověla podrobnostem korelace s požadavkem http, každý protokol fronty musí definovat, jak se budou stejné podrobnosti předávat společně se zprávou fronty. Některé protokoly front (například AMQP) umožňují předat další metadata a jiné (takové Azure Storage fronty) vyžadují, aby byl kontext kódovaný do datové části zprávy.
+
+> [!NOTE]
+> * **Pro fronty se ještě nepodporuje trasování mezi komponentami** . Pokud váš producent a zákazník odesílají telemetrii do různých prostředků Application Insights, prostředí pro diagnostiku transakcí a mapa aplikací v případě protokolu HTTP zobrazí kompletní a mapový postup. V případě front to ještě není podporováno. 
 
 ### <a name="service-bus-queue"></a>Fronta Service Bus
 Application Insights sleduje volání zasílání zpráv Service Bus pomocí nového [klienta Microsoft Azure ServiceBus pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) verze 3.0.0 a vyšší.
@@ -142,7 +145,8 @@ public async Task Enqueue(string payload)
     // StartOperation is a helper method that initializes the telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
-    operation.Telemetry.Type = "Queue";
+    
+    operation.Telemetry.Type = "Azure Service Bus";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
@@ -179,7 +183,7 @@ public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
     // It might also make sense to get the name from the message.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
@@ -228,7 +232,7 @@ Tato `Enqueue` operace je podřízenou položkou nadřazené operace (napříkla
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
-    operation.Telemetry.Type = "Queue";
+    operation.Telemetry.Type = "Azure queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
@@ -267,45 +271,25 @@ public async Task Enqueue(CloudQueue queue, string message)
 
 Chcete-li snížit množství telemetrie v sestavách aplikace nebo pokud nechcete sledovat operaci `Enqueue` z jiných důvodů, `Activity` použijte rozhraní API přímo:
 
-- Vytvořte (a začněte) novou `Activity` místo spuštění operace Application Insights. *Nemusíte* jim přiřazovat žádné vlastnosti s výjimkou názvu operace.
+- Vytvořte (a začněte) novou `Activity` místo spuštění operace Application Insights. Nemusíte jim přiřazovat žádné vlastnosti s výjimkou názvu operace.
 - Serializovat `yourActivity.Id` do datové části zprávy `operation.Telemetry.Id`místo. Můžete také použít `Activity.Current.Id`.
 
 
 #### <a name="dequeue"></a>Odstranění z fronty
 Podobně platí `Enqueue`, že skutečný požadavek HTTP na frontu úložiště se automaticky sleduje pomocí Application Insights. `Enqueue` Operace se však předpokládá v nadřazeném kontextu, jako je například příchozí kontext požadavku. Application Insights sady SDK automaticky korelují takovou operaci (a její část HTTP) s nadřazeným požadavkem a další telemetrie hlášenou ve stejném oboru.
 
-`Dequeue` Operace je obtížné. Sada SDK pro Application Insights automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud se zpráva neanalyzuje. Není možné sladit požadavek HTTP a získat zprávu se zbytkem telemetrie.
-
-V mnoha případech může být užitečné také korelovat požadavek HTTP do fronty s dalšími trasováními. Následující příklad ukazuje, jak to provést:
+`Dequeue` Operace je obtížné. Sada SDK pro Application Insights automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud se zpráva neanalyzuje. Není možné sladit požadavek protokolu HTTP a získat zprávu se zbytkem telemetrie zvlášť, pokud je přijata více než jedna zpráva.
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
-    var telemetry = new DependencyTelemetry
-    {
-        Type = "Queue",
-        Name = "Dequeue " + queue.Name
-    };
-
-    telemetry.Start();
-
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>("dequeue " + queue.Name);
+    operation.Telemetry.Type = "Azure queue";
+    operation.Telemetry.Data = "Dequeue " + queue.Name;
+    
     try
     {
         var message = await queue.GetMessageAsync();
-
-        if (message != null)
-        {
-            var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
-
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
-            telemetry.Context.Operation.Id = payload.RootId;
-            telemetry.Context.Operation.ParentId = payload.ParentId;
-
-            // Delete the message.
-            return payload;
-        }
     }
     catch (StorageException e)
     {
@@ -317,8 +301,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     finally
     {
         // Update status code and success as appropriate.
-        telemetry.Stop();
-        telemetryClient.TrackDependency(telemetry);
+        telemetryClient.StopOperation(operation);
     }
 
     return null;
@@ -333,7 +316,8 @@ V následujícím příkladu je příchozí zpráva sledována podobným způsob
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
+    
     // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
@@ -368,8 +352,15 @@ Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili iden
 - Zastavte `Activity`.
 - Použijte `Start/StopOperation`nebo zavolejte `Track` telemetrii ručně.
 
+### <a name="dependency-types"></a>Typy závislostí
+
+Application Insights používá typ závislosti k cusomize prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](/azure-monitor/app/transaction-diagnostics):
+- `Azure queue`pro Azure Storage fronty
+- `Azure Event Hubs`pro Azure Event Hubs
+- `Azure Service Bus`pro Azure Service Bus
+
 ### <a name="batch-processing"></a>Dávkové zpracování
-U některých front můžete vyřadit více zpráv s jednou žádostí. Zpracování takových zpráv je pravděpodobně nezávislé a patří do různých logických operací. V tomto případě není možné provést korelaci `Dequeue` operace s konkrétním zpracováním zpráv.
+U některých front můžete vyřadit více zpráv s jednou žádostí. Zpracování takových zpráv je pravděpodobně nezávislé a patří do různých logických operací. Tuto `Dequeue` operaci není možné korelovat s konkrétní zpracovávanou zprávou.
 
 Každá zpráva by měla být zpracována ve vlastním asynchronním toku řízení. Další informace najdete v části [odchozí sledování závislostí](#outgoing-dependencies-tracking) .
 
@@ -442,7 +433,7 @@ public async Task RunMyTaskAsync()
 
 Operace disposing způsobí zastavení operace, takže ji můžete použít místo volání `StopOperation`.
 
-*Upozornění*: v některých případech [je možné,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` že v některých případech není zavolána výjimka, takže operace nemusí být sledovány.
+*Upozornění*: v některých případech je možné, že [](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` v některých případech není zavolána výjimka, takže operace nemusí být sledovány.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralelní zpracování a sledování operací
 
@@ -492,10 +483,11 @@ Aktivity jsou občany první třídy v Application Insights a Automatická závi
 
 Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Activity` – při `StartOperation` volání funkce se vytvoří aktivita pod ní. `StartOperation`je doporučeným způsobem, jak ručně sledovat telemetrií požadavků nebo závislostí, a zajistit, aby vše bylo korelujé.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Seznamte se se základy [korelace telemetrie](correlation.md) v Application Insights.
-- Seznamte se s [datovým modelem](../../azure-monitor/app/data-model.md) pro Application Insights typy a datový model.
+- Podívejte se, jak [prostředí pro diagnostiku transakcí](/azure-monitor/app/transaction-diagnostics) a datovou [mapu aplikace](/azure-monitor/app/app-map)jsou v relaci.
+- Seznamte [](../../azure-monitor/app/data-model.md) se s datovým modelem pro Application Insights typy a datový model.
 - Vykázat vlastní [události a metriky](../../azure-monitor/app/api-custom-events-metrics.md) na Application Insights.
 - Podívejte se na standardní [konfiguraci](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) pro kolekci vlastností kontextu.
 - Podívejte se na [uživatelskou příručku System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde zjistíte, jak korelace telemetrie.

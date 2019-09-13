@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 03/26/2019
+ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854773"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934861"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -72,10 +72,15 @@ Po registraci:
 
 ## <a name="algorithms"></a>Algoritmy
 
-* Podívejte se prosím na tento technický blog, který [zavádí rozhraní API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) pro detekci anomálií Azure o algoritmech v digestoři.
-* Informace o algoritmech SR-CNN, které vyvinul Microsoft, najdete v této [službě](https://arxiv.org/abs/1906.03821) pro detekci anomálií pro konference KDD 2019.
+* Podívejte se prosím na tento technický blog, který [zavádí rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) o algoritmech v digestoři.
+* Informace o algoritmech SR-CNN, které vyvinul Microsoft, najdete v této [službě pro detekci anomálií](https://arxiv.org/abs/1906.03821) pro konference KDD 2019.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="join-the-anomaly-detector-community"></a>Připojte se ke komunitě detektoru anomálií.
+
+* Připojit se ke [skupině poradců pro detekci anomálií v Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
+* Zobrazit vybraný [obsah generovaný uživatelem](user-generated-content.md)
 
 ## <a name="next-steps"></a>Další kroky
 

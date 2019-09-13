@@ -13,20 +13,20 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cdd43f6892f1932803bb965897d4af8c4cab481e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227791"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934119"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Kurz: Nabízení oznámení uživatelům konkrétní aplikace pro Android pomocí Azure Notification Hubs
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Kurz: Nabízené oznámení konkrétním uživatelům aplikace pro Android pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. K ověřování klientů a generování oznámení se používá back-end ASP.NET WebAPI, jak je znázorněno v článku s doprovodnými materiály popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). V tomto kurzu vychází z centra oznámení, které jste vytvořili [kurzu: Nabízená oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. K ověřování klientů a generování oznámení se používá back-end ASP.NET WebAPI, jak je znázorněno v článku s doprovodnými materiály popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Tento kurz sestaví v centru oznámení, které jste vytvořili v [tomto kurzu: Nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase cloudového zasílání zpráv.
 
 V tomto kurzu provedete následující kroky:
 
@@ -37,15 +37,15 @@ V tomto kurzu provedete následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončení [kurzu: Nabízená oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md) před tímto kurzem.
+Dokončete [kurz: Před provedením tohoto kurzu můžete nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md) .
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Vytvoření projektu Android
 
-Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabízená oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v tomto [kurzu: Nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase cloudového zasílání zpráv.
 
-1. Otevřete váš `res/layout/activity_main.xml` souboru, nahraďte následující obsah definice:
+1. `res/layout/activity_main.xml` Otevřete soubor a nahraďte následující definice obsahu:
 
     Tím se přidají ovládací prvky textových polí umožňující přihlášení uživatele. Přidá se také pole pro značku uživatelského jména, která bude součástí oznámení, která odešlete:
 
@@ -136,7 +136,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
         />
     </RelativeLayout>
     ```
-2. Otevřete váš `res/values/strings.xml` soubor a nahradit `send_button` definice s následujícími řádky, které předefinuje řetězec pro `send_button` a přidejte řetězce pro ostatní ovládací prvky:
+2. Otevřete soubor a `send_button` Nahraďte definici následujícími řádky, které `send_button` předefinují řetězec pro a přidejte řetězce pro jiné ovládací prvky: `res/values/strings.xml`
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -147,10 +147,10 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    Vaše `main_activity.xml` grafické rozložení by teď měl vypadat jako na následujícím obrázku:
+    Vaše `main_activity.xml` grafické rozložení by teď mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte novou třídu s názvem `RegisterClient` ve stejném balíčku jako vaše `MainActivity` třídy. Pro soubor s novou třídou použijte následující kód.
+3. Vytvořte novou třídu s názvem `RegisterClient` ve stejném balíčku jako svou `MainActivity` třídou. Pro soubor s novou třídou použijte následující kód.
 
     ```java
   
@@ -258,8 +258,8 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     }
     ```
 
-    Tato komponenta implementuje volání REST nutné kontaktovat back-endu aplikace k registraci pro nabízená oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Používá autorizační token uložené v místním úložišti, když kliknete **přihlášení** tlačítko.
-4. Ve vaší `MainActivity` třídu a přidejte pole pro `RegisterClient` třídy a řetězec pro koncový bod back-endu ASP.NET. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
+    Tato součást implementuje volání REST potřebné ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Když kliknete na tlačítko **Přihlásit** , použije se autorizační token uložený v místním úložišti.
+4. Ve své `MainActivity` třídě a přidejte pole `RegisterClient` pro třídu a řetězec pro koncový bod back-endu ASP.NET. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -320,7 +320,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Potom přidejte následující metody pro zpracování **přihlášení** událostí a odesílání nabízených oznámení, klikněte na tlačítko.
+9. Pak přidejte následující metody pro zpracování události kliknutí na tlačítko pro **přihlášení** a odesílání nabízených oznámení.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -410,7 +410,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     }
     ```
 
-    `login` Obslužné rutiny pro **přihlášení** tlačítko vytvoří základní ověřování tokenu použitím vstupních uživatelské jméno a heslo (představuje žádný token používá schéma ověřování) a pak ho pomocí `RegisterClient` volat back-endu pro registraci.
+    Obslužná rutina tlačítka pro **přihlášení** generuje základní token ověřování pomocí vstupního uživatelského jména a hesla (představuje všechny tokeny, které vaše schéma ověřování používá), pak používá `RegisterClient` k volání back-end pro registraci. `login` .
 
     Metoda `sendPush` zavolá back-end za účelem aktivace zabezpečeného oznámení pro uživatele na základě značky uživatele. Systém oznámení platformy, na který metoda `sendPush` cílí, závisí na předaném řetězci `pns`.
 
@@ -465,18 +465,25 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
         }
     }
     ```
-12. V `build.gradle` přidejte následující řádek, který `android` části po `buildTypes` oddílu.
+12. V souboru přidejte následující řádek `android` do části za `buildTypes` sekcí. `build.gradle`
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Sestavte projekt.
+13. Pokud je vaše aplikace cílena na rozhraní API úrovně 28 (Android 9,0) nebo vyšší, zahrňte do `<application>` `AndroidManifest.xml`elementu. následující deklaraci.
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. Sestavte projekt.
 
 ## <a name="test-the-app"></a>Testování aplikace
 
 1. Pomocí Android Studia spusťte aplikaci na zařízení nebo v emulátoru.
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.
-3. V aplikaci pro Android, klikněte na tlačítko **přihlášení**. Počkejte zobrazí informační zpráva **podpisu v a registrované**. Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
+3. V aplikaci pro Android klikněte na **Přihlásit**se. Počkejte na informační zprávu oznamující, že se **zaregistrovali a zaregistrovali**. Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
 
     ![][A2]
 4. Kliknutím na přepínací tlačítko povolte všechny platformy, na kterých jste aplikaci spustili a zaregistrovali uživatele.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844907"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933201"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementace prostorové analýzy IoT pomocí Azure Maps
 
@@ -104,7 +104,7 @@ Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu 
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
-Aby bylo možné implementovat obchodní logiku na základě Azure Maps prostorových analýz, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys) Vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a v části [Podrobnosti o ověřování](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) se dozvíte, jak získat klíč předplatného.
+Aby bylo možné implementovat obchodní logiku na základě Azure Maps prostorových analýz, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) Získejte primární klíč předplatného pro váš účet.
 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
@@ -167,7 +167,7 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
     
     Hodnota "\ JSON" na `dataFormat` parametru v cestě URL představuje formát dat, která se nahrávají.
 
-3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Hodnotu klíče předplatného nahraďte klíčovým předplatným Azure Maps.
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíč předplatného klíčem Azure Maps primární klíč předplatného.
    
     ![Post – parametry klíč-hodnota](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions je výpočetní služba bez serveru, která nám umožňuje spus
 6. Zkopírujte [kód jazyka c#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkce a klikněte na **Uložit**.
  
 7. V skriptu jazyka c# nahraďte následující parametry:
-    * Nahraďte **SUBSCRIPTION_KEY** klíčem předplatného účtu Azure Maps.
+    * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného vašeho účtu Azure Maps.
     * Nahraďte **udId** UDIDou geograficky, kterou jste nahráli. 
     * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. **ACCESS_KEY**, **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** nahraďte přístupovým klíčem účtu úložiště a názvem účtu a kontejnerem úložiště dat.
 
@@ -280,7 +280,7 @@ Níže uvedená mapa znázorňuje čtyři body, ve kterých bylo vozidlo mimo ge
 
 ![Mapa porušení](./media/tutorial-iot-hub-maps/violation-map.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete prozkoumat rozhraní API Azure Maps použitá v tomto kurzu, přečtěte si:
 

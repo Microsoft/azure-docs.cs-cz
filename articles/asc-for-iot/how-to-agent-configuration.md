@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596338"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933887"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
 
@@ -87,28 +87,28 @@ Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu ko
 
 1. V IoT Hub vyhledejte a vyberte zařízení, které chcete změnit.
 
-2. Klikněte na zařízení a pak na modul **azureiotsecurity** .
+1. Klikněte na zařízení a pak na modul **azureiotsecurity** .
 
-3. Klikněte na možnost nevlákenovaná **Identita modulu**.
+1. Klikněte na možnost nevlákenovaná **Identita modulu**.
 
-4. Upravte vlastnosti, které chcete změnit v modulu zabezpečení.
+1. Upravte vlastnosti, které chcete změnit v modulu zabezpečení.
    
    Pokud například chcete konfigurovat události připojení s vysokou prioritou a shromažďovat události s vysokou prioritou každých 7 minut, použijte následující konfiguraci.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 ### <a name="using-a-default-value"></a>Použití výchozí hodnoty
 
@@ -118,7 +118,7 @@ Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu ko
 
 Následující tabulka obsahuje ovladatelné vlastnosti Azure Security Center pro agenty zabezpečení IoT.
 
-Výchozí hodnoty jsou k dispozici ve správném schématu [](https\://aka.ms/iot-security-module-default)v GitHubu.
+Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
 | Name| Stav | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|

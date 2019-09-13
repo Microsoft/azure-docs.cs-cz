@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844767"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932833"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -35,7 +35,8 @@ Například pokud máte 2 typy aplikací LUIS, které vytváříte, s různými 
 
 Migrace zahrnuje:
 
-* **Všechny** aplikace vlastníka.
+* Všichni uživatelé LUIS, vlastníci a přispěvatelé.
+* **Všechny** aplikace
 * **Jednosměrná** migrace.
 
 Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratný. 
@@ -87,13 +88,17 @@ Přispěvatele můžete přidat do prostředku vytváření z _Azure Portal_na s
 
 ## <a name="migration-for-the-app-contributor"></a>Migrace pro přispěvatele aplikací
 
+Každý uživatel LUIS musí migrovat, včetně spolupracovníků a přispěvatelů. 
+
 ### <a name="before-the-app-is-migrated"></a>Před migrací aplikace
 
 Můžete zvolit export aplikace, kterou jste spolupracovníka, a pak aplikaci importovat zpátky do LUIS. Proces importu vytvoří novou aplikaci s novým ID aplikace, pro kterou jste vlastníkem.
 
 ### <a name="after-the-app-is-migrated"></a>Po migraci aplikace
 
-Pokud potřebujete přístup k původní aplikaci, musíte po dokončení migrace přidat do prostředku pro vytváření Azure jako spolupracovníka vlastníka aplikace.  
+Vlastník aplikace musí [Přidat váš e-mail do prostředku pro tvorbu Azure jako spolupracovníka](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+
+Po dokončení procesu migrace budou všechny aplikace, které vlastníte, k dispozici na stránce **Moje aplikace** na portálu Luis.  
 
 ## <a name="next-steps"></a>Další postup
 

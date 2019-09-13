@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f9dbddcba1545e0a110faa9fbf8e3de9ff189525
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736218"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879494"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
 
@@ -50,31 +50,31 @@ Po použití clusteru ML Services ve službě HDInsight k dokončení modelován
 
 1. Zobrazí se možnosti, ze kterých si můžete vybrat. Vyberte první možnost, jak je znázorněno na následujícím snímku obrazovky, abyste **nakonfigurovali ml Server pro provozuschopnost**.
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![OP1 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Nyní máte k dispozici možnost zvolit způsob, jakým se má zprovoznění ML Server. Z prezentovaných možností vyberte **první zadáním.**
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![OP2 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Po zobrazení výzvy zadejte a znovu zadejte heslo pro místního uživatele s oprávněními správce.
 
 1. Měli byste vidět výstupy naznačující, že operace byla úspěšná. Také se zobrazí výzva, abyste v nabídce vybrali jinou možnost. Vyberte E a vraťte se do hlavní nabídky.
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![op3 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. Volitelně můžete provádět diagnostické kontroly spuštěním diagnostického testu následujícím způsobem:
 
     a. V hlavní nabídce vyberte **6** a spusťte diagnostické testy.
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/diagnostic-1.png)
 
     b. **V nabídce diagnostické testy vyberte.** Po zobrazení výzvy zadejte heslo, které jste zadali pro místního uživatele s oprávněními správce.
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/diagnostic-2.png)
 
     c. Ověřte, že výstup ukazuje, že celkový stav je Pass.
 
-    ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/diagnostic-3.png)
 
     d. V zobrazených možnostech nabídky zadejte **E** pro návrat do hlavní nabídky a pak zadáním **8** ukončete nástroj pro správu.
 
@@ -189,7 +189,7 @@ Jakmile budou všechny vyřazené pracovní uzly nakonfigurované tak, aby spou�
          ]
        }
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa clusteru služby ML Services v HDInsight](r-server-hdinsight-manage.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)

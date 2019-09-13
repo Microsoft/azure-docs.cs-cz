@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088408"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914922"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování
 
@@ -28,11 +28,9 @@ ms.locfileid: "70088408"
 
 Při používání hesel aplikací je důležité pamatovat:
 
-- Hesla aplikací se generují automaticky a pro každou aplikaci se zadávají jenom jednou.
+- Hesla aplikací se generují automaticky a je třeba je vytvořit a zadat jednou pro každou aplikaci.
 
 - Pro každého uživatele je povolený limit 40 hesel. Pokud se po uplynutí tohoto limitu pokusíte jeden vytvořit, budete vyzváni k odstranění existujícího hesla, než bude povoleno vytvoření nového.
-
-- Použijte jedno heslo aplikace na zařízení, ne na aplikaci. Můžete například vytvořit jedno heslo pro všechny aplikace na přenosném počítači a další jedno heslo pro všechny aplikace na ploše.
 
     >[!Note]
     >Klienti Office 2013 (včetně Outlooku) podporují nové ověřovací protokoly a dají se použít se dvěma kroky ověřování. Tato podpora znamená, že po zapnutí dvoustupňové ověřování už nebudete potřebovat hesla aplikací pro klienty Office 2013. Další informace najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
@@ -125,7 +123,7 @@ Pokud ke svému pracovnímu nebo školnímu účtu a vašim aplikacím Office 36
 
 Ujistěte se, že jste správně zadali heslo. Pokud jste si jisti, že jste zadali heslo správně, můžete se pokusit o opětovné přihlášení a vytvořit nové heslo aplikace. Pokud ani jedna z těchto možností problém nevyřeší, obraťte se na oddělení technické podpory vaší organizace, aby mohla odstranit stávající hesla aplikací, a umožní vám vytvořit novou značku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Správa nastavení dvou kroků ověřování](multi-factor-authentication-end-user-manage-settings.md)
 

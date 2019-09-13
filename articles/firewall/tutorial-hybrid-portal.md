@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: f7dce448b01c211441fd1e0fd530ff6ad062c303
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114873"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918790"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -102,7 +102,7 @@ Nyní vytvořte virtuální síť:
 4. Jako **název**zadejte **VNet-paprsek**.
 5. V případě **adresního prostoru**zadejte **10.6.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
-7. V případě **skupiny prostředků**vyberte **test-FW-RG**.
+7. Jako **skupinu prostředků**vyberte **FW-Hybrid-test**.
 8. V části **Umístění** vyberte dříve použité umístění.
 9. V části **Podsíť** jako **Název** zadejte **SN-Workload**.
 10. Pro **Rozsah adres**zadejte **10.6.0.0/24**.
@@ -209,7 +209,7 @@ Rozbočovač a místní virtuální sítě se připojují prostřednictvím bran
 Nyní vytvořte bránu VPN pro virtuální síť centrální sítě. Konfigurace sítě na síť vyžadují RouteBased VpnType. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
-2. Do textového pole Hledat zadejte bránu **virtuální sítě** a stiskněte klávesu **ENTER**.
+2. Do textového pole Hledat zadejte **bránu virtuální sítě** a stiskněte klávesu **ENTER**.
 3. Vyberte **Brána virtuální sítě**a vyberte **vytvořit**.
 4. Jako **název**zadejte **GS-hub**.
 5. V poli **oblast**vyberte stejnou oblast, kterou jste použili dříve.
@@ -226,7 +226,7 @@ Nyní vytvořte bránu VPN pro virtuální síť centrální sítě. Konfigurace
 Teď vytvořte bránu VPN pro místní virtuální síť. Konfigurace sítě na síť vyžadují RouteBased VpnType. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
-2. Do textového pole Hledat zadejte bránu **virtuální sítě** a stiskněte klávesu **ENTER**.
+2. Do textového pole Hledat zadejte **bránu virtuální sítě** a stiskněte klávesu **ENTER**.
 3. Vyberte **Brána virtuální sítě**a vyberte **vytvořit**.
 4. Jako **název**zadejte **GS-OnPrem**.
 5. V poli **oblast**vyberte stejnou oblast, kterou jste použili dříve.
@@ -269,7 +269,7 @@ Vytvořte připojení k virtuální síti z místního prostředí k rozbočova�
 
 Po asi pěti minutách se musí **připojit**stav obou připojení.
 
-![Připojení brány](media/tutorial-hybrid-portal/gateway-connections.png)
+![připojení brány](media/tutorial-hybrid-portal/gateway-connections.png)
 
 ## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
 
@@ -286,7 +286,7 @@ Nyní můžete vytvořit partnerský vztah mezi virtuálními sítěmi hub a pap
 
 ### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>Konfigurace dalších nastavení pro partnerský vztah SpoketoHub
 
-V partnerském vztahu SpoketoHub budete muset povolit **předaný přenos** s povoleným přenosem.
+V partnerském vztahu SpoketoHub budete muset povolit **předaný přenos s povoleným přenosem** .
 
 1. Otevřete skupinu prostředků **FW-Hybrid-test** a vyberte virtuální síť **VNet-paprsek** .
 2. V levém sloupci vyberte **partnerské vztahy**.
@@ -369,7 +369,7 @@ Vytvořte virtuální počítač ve virtuální síti paprsků a spusťte služb
 3. Zadejte pro virtuální počítač tyto hodnoty:
     - **Skupina prostředků** – vyberte **FW-Hybrid-test**.
     - **Název virtuálního počítače**: *Virtuální počítač-paprsek-01*.
-    - Oblast se stejnou oblastí, kterou jste použili dříve.
+    - **Oblast se** stejnou oblastí, kterou jste použili dříve.
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: *Azure123456!*
 4. Vyberte **Další: disky**.
@@ -407,7 +407,7 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 3. Zadejte pro virtuální počítač tyto hodnoty:
     - **Skupina prostředků** – vyberte existující a pak vyberte **FW-Hybrid-test**.
     - **Virtuální počítač název** - *VM-OnPrem*.
-    - Oblast se stejnou oblastí, kterou jste použili dříve.
+    - **Oblast se** stejnou oblastí, kterou jste použili dříve.
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: *Azure123456!* .
 4. Vyberte **Další: disky**.
@@ -454,7 +454,7 @@ Před testováním změněných pravidel ukončete všechna existující připoj
 
 Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete odstraněním skupiny prostředků **FW-Hybrid-Test** odstranit všechny prostředky související z bránou firewall, pokud už je nepotřebujete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 

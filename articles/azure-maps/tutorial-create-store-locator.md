@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478856"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933068"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -35,7 +35,7 @@ Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesam
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív [vytvořit účet Azure Maps](./tutorial-search-location.md#createaccount) a [získat pro svůj účet klíč](./tutorial-search-location.md#getkey)předplatného.
+Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív [vytvořit účet Azure Maps](./tutorial-search-location.md#createaccount) a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) získat primární klíč předplatného pro váš účet.
 
 ## <a name="design"></a>Návrh
 
@@ -417,7 +417,7 @@ V tomto okamžiku je vše nastaveno v uživatelském rozhraní. Teď potřebujem
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600615"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933905"
 ---
 # <a name="security-agent-event-aggregation"></a>Agregace událostí agenta zabezpečení
 
@@ -28,7 +28,7 @@ Azure Security Center pro agenty zabezpečení IoT shromažďují data a systém
 
 Pokud chcete snížit další kvótu a náklady a zachovat chráněná zařízení, Azure Security Center pro agenty IoT agregovat tyto typy událostí.
 
-Agregace událostí je ve výchozím nastavení zapnutá a i když se nedoporučuje, dá se v jakémkoli okamžiku ručně **vypnout** .
+Agregace událostí je ve výchozím nastavení **zapnutá** a i když se nedoporučuje, dá se v jakémkoli okamžiku ručně **vypnout** .
 
 Agregace je aktuálně k dispozici pro následující typy událostí:
 * ProcessCreate
@@ -59,6 +59,7 @@ Po analýze Azure Security Center pro IoT vytvoří výstrahy zabezpečení pro 
 
 Čas zahájení agregace, čas ukončení a počet průchodů pro každou událost jsou protokolovány v poli Event **ExtraDetails** v rámci Log Analytics pro použití během šetření. 
 
+Každá agregovaná událost představuje dobu 24 hodin shromážděných výstrah. Pomocí nabídky možnosti události v levém horním rohu každé události můžete **Zavřít** každou jednotlivou agregovanou událost.    
 
 ## <a name="event-aggregation-twin-configuration"></a>Konfigurace zdvojené agregace událostí
 Proveďte změny v konfiguraci Azure Security Center pro agregaci událostí IoT uvnitř [objektu konfigurace agenta](how-to-agent-configuration.md) s doplněním identity modulu **azureiotsecurity** .
@@ -85,7 +86,7 @@ Proveďte změny v konfiguraci Azure Security Center pro agregaci událostí IoT
 | aggregationIntervalProcessTerminate | PT1H|
 |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste se seznámili s Azure Security Center pro agregaci agenta zabezpečení IoT a dostupných možností konfigurace událostí.
 

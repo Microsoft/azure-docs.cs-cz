@@ -3,18 +3,18 @@ title: Metody vytvoření certifikátu
 description: Způsoby vytvoření certifikátu v Key Vault.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63768b83baafe00348a28c5c9c99e5f16619ac99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815919"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884156"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -88,7 +88,7 @@ Vytvoření certifikátu lze provést ručně nebo pomocí vystavitele "samotný
 
 Všimněte si, že když je objednávka umístěná u poskytovatele vystavitele, může přijmout nebo přepsat rozšíření certifikátu x509 a období platnosti certifikátu na základě typu certifikátu.  
 
- Udělován Vyžaduje oprávnění certifikáty/vytvořit.
+ udělován Vyžaduje oprávnění certifikáty/vytvořit.
 
 ## <a name="see-also"></a>Viz také
  - [Informace o klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)

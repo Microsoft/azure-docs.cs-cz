@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 9471ca3047090753c30c758f4f41c8558cdf4dd2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70744061"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933479"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první trvalé funkce v JavaScriptu
 
@@ -157,9 +157,9 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Použili jste Visual Studio Code k vytvoření a publikování aplikace s trvalou funkcí JavaScriptu.
 
 > [!div class="nextstepaction"]
-> [Další informace o běžných vzorech trvalých funkcí](durable-functions-concepts.md)
+> [Další informace o běžných vzorech trvalých funkcí](durable-functions-overview.md#application-patterns)

@@ -1,22 +1,22 @@
 ---
-title: Vytvoření služby Azure Search na portálu – Azure Search
+title: 'Rychlý start: Vytvoření služby Azure Search na portálu – Azure Search'
 description: Zřídí prostředek Azure Search v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649950"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883845"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Rychlý start: Vytvoření služby Azure Search na portálu
 
 Azure Search je samostatný prostředek, který slouží k připojení vyhledávacího prostředí ve vlastních aplikacích. I když se Azure Search snadno integruje s jinými službami Azure, můžete ho použít také jako samostatnou součást nebo ji integrovat s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 

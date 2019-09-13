@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858852"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932683"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci
 
@@ -84,6 +84,18 @@ Postup zobrazení rozhraní **informací o zařízení** v vs Code:
 1. V úložišti veřejného modelu vyberte kartu **rozhraní** , vyberte ikonu filtru a do pole Filtr zadejte **informace o zařízení** .
 
 1. Pokud chcete vytvořit místní kopii rozhraní **informací o zařízení** , vyberte ji v seznamu filtrovaných a pak vyberte **Stáhnout**. VS Code zobrazí soubor rozhraní.
+
+Postup zobrazení rozhraní **informací o zařízení** pomocí rozhraní příkazového řádku Azure:
+
+1. [Nainstalujte rozšíření Azure IoT CLI](howto-install-pnp-cli.md).
+
+1. Pomocí následujícího příkazu rozhraní příkazového řádku Azure zobrazíte rozhraní s ID rozhraní informací o zařízení:
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+Další informace najdete v tématu [instalace a použití rozšíření Azure IoT pro Azure CLI](howto-install-pnp-cli.md).
 
 ## <a name="update-device-code"></a>Aktualizovat kód zařízení
 

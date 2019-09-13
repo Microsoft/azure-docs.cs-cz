@@ -1,5 +1,5 @@
 ---
-title: Správa instancí upozornění
+title: Správa instancí výstrah v Azure Monitor
 description: Správa instancí výstrah napříč Azure
 author: anantr
 services: monitoring
@@ -8,42 +8,51 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: dbc7d37ce311d203ee051b5a23632d2bf401e27a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f97fa69926cd9c59a0617f409c72610336120333
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034828"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916014"
 ---
-# <a name="manage-alert-instances"></a>Správa instancí upozornění
-Díky [jednotnému prostředí výstrah](https://aka.ms/azure-alerts-overview) v Azure monitor teď můžete v rámci Azure Zobrazit všechny vaše různé typy výstrah, a to s více předplatnými, a to v jednom podokně skla. Tento článek vás seznámí s tím, jak si můžete zobrazit instance výstrah a jak hluboko podrobně na portálu najít konkrétní instance výstrahy pro řešení potíží.
+# <a name="manage-alert-instances-with-unified-alerts"></a>Správa instancí výstrah pomocí sjednocených výstrah
+Díky [jednotnému prostředí upozornění](https://aka.ms/azure-alerts-overview) v Azure monitor uvidíte všechny vaše různé typy výstrah v rámci Azure. To zahrnuje více předplatných v jednom podokně. V tomto článku se dozvíte, jak můžete zobrazit instance výstrah a jak najít konkrétní instance výstrahy pro řešení potíží.
 
 > [!NOTE]
-   >  V uživatelském rozhraní nebo prostřednictvím rozhraní REST API můžete mít k dispozici jenom výstrahy vygenerované za posledních 30 dní.
+   >  Můžete přistupovat jenom k výstrahám generovaným za posledních 30 dní.
 
-1. Existují tři způsoby, jak obložit na stránce s výstrahami.
+## <a name="go-to-the-alerts-page"></a>Přejít na stránku s výstrahami
 
-   + Na [portálu](https://portal.azure.com/)vyberte **monitorování** a v části Monitorování – zvolte **výstrahy**.  
-     ![Monitorování](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+Na stránku výstrahy můžete přejít některým z následujících způsobů:
+
+   + V [Azure Portal](https://portal.azure.com/)vyberte **monitorovat** > **výstrahy**.  
+     ![Snímek obrazovky s výstrahami monitorování](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + Můžete přejít na výstrahy z kontextu určitého **prostředku**. Po otevření prostředku přejděte přes jeho obsah do části monitorování a vyberte možnost **výstrahy**a u cílové stránky předem filtrované výstrahy na konkrétní prostředek.
+   + Použijte kontext konkrétního prostředku. Otevřete prostředek, v části **monitorování** a vyberte **výstrahy**. Cílová stránka je předem filtrována pro výstrahy tohoto konkrétního prostředku.
    
-     ![Monitorování](media/alerts-managing-alert-instances/alert-resource.JPG)
+     ![Snímek obrazovky s výstrahami monitorování prostředků](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + V rámci konkrétní **skupiny prostředků**můžete přejít na výstrahy. Po otevření skupiny prostředků přejděte přes její obsah do části monitorování a vyberte možnost **výstrahy**, u cílové stránky předem filtrované pro výstrahy v této konkrétní skupině prostředků.    
+   + Použijte kontext konkrétní skupiny prostředků. Otevřete skupinu prostředků, v části **monitorování** a vyberte **výstrahy**. Cílová stránka je předem filtrována pro výstrahy v příslušné skupině prostředků.    
    
-     ![Monitorování](media/alerts-managing-alert-instances/alert-rg.JPG)
+     ![Snímek obrazovky s výstrahami monitorování skupiny prostředků](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. Vydáte stránku souhrnu **výstrah** , která vám poskytne přehled o všech instancích upozornění v rámci Azure. Souhrnné zobrazení můžete upravit tak, že vyberete **více** předplatných (maximálně 5) nebo filtrování napříč **skupinami prostředků**, konkrétními **prostředky**nebo **časovými rozsahy**. Kliknutím na celkový počet výstrah nebo na kterýkoli z pásem závažnosti přejdete do zobrazení seznamu výstrah.     
-   ![Souhrn výstrah](media/alerts-managing-alert-instances/alerts-summary.jpg)
+## <a name="find-alert-instances"></a>Najít instance výstrah
+
+Stránka **Souhrn výstrah** poskytuje přehled všech instancí upozornění v rámci Azure. Souhrnné zobrazení můžete upravit tak, že vyberete **více předplatných** (maximálně 5), nebo filtrováním mezi **skupinami prostředků**, konkrétními **prostředky**nebo **časovými rozsahy**. Výběrem možnosti **Celkový počet výstrah**nebo kteréhokoli pásma závažnosti přejdete do zobrazení seznamu výstrah.     
+   ![Snímek stránky se souhrnem výstrah](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. Na stránce **všechny výstrahy** budete mít na místě, kde uvidíte všechny instance výstrah v rámci Azure vypsané na maximum. Pokud přejdete na portál z oznámení výstrahy, můžete použít filtry, které jsou k dispozici pro zúžení v konkrétní instanci výstrahy. (**Poznámka**: Pokud jste na stránku dostali kliknutím na kterýkoli ze pásem závažnosti, seznam se při svém využití předem vyfiltruje.) Kromě filtrů dostupných na předchozí stránce teď můžete také filtrovat na základě služby monitorování (například platformy pro metriky), podmínky monitorování (aktivované nebo vyřešené), závažnosti, stavu výstrahy (nové/potvrzené/uzavřené) nebo ID inteligentní skupiny.
+Na stránce **všechny výstrahy** jsou uvedeny všechny instance výstrah v rámci Azure. Pokud přejdete na portál z oznámení výstrahy, můžete použít filtry, které jsou k dispozici pro zúžení v konkrétní instanci výstrahy.
 
-   ![Všechny výstrahy](media/alerts-managing-alert-instances/all-alerts.jpg)
+> [!NOTE]
+>  Pokud jste na stránku dostali výběr kteréhokoli pásma závažnosti, seznam se pro tuto závažnost předem vyfiltruje.
+
+Kromě filtrů dostupných na předchozí stránce můžete také filtrovat na základě služby monitorování (například platformy pro metriky), podmínky monitorování (aktivováno nebo Vyřešeno), závažnosti, stavu výstrahy (nové/potvrzené/uzavřené) nebo ID inteligentní skupiny.
+
+   ![Snímek stránky všech výstrah](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  Pokud jste na stránku dostali kliknutím na kterékoli z pásem závažnosti, seznam se při obstání na této stránce předem vyfiltruje.
+   >  Pokud jste na stránku dostali výběr kteréhokoli pásma závažnosti, seznam se pro tuto závažnost předem vyfiltruje.
  
-1. Kliknutím na libovolnou instanci výstrahy otevřete stránku **Podrobnosti výstrahy** , která vám umožní podrobné podrobně informace o konkrétní instanci výstrahy.   
-   ![Podrobnosti výstrahy](media/alerts-managing-alert-instances/alert-details.jpg)  
+Výběrem libovolné instance výstrahy otevřete stránku **Podrobnosti výstrahy** , která vám umožní zobrazit další podrobnosti o konkrétní instanci výstrahy.   
+   ![Snímek stránky s podrobnostmi výstrahy](media/alerts-managing-alert-instances/alert-details.jpg)  
 

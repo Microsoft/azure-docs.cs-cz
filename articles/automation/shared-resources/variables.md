@@ -1,6 +1,6 @@
 ---
-title: Proměnných assetů ve službě Azure Automation
-description: Proměnných assetů jsou hodnoty, které jsou k dispozici pro všechny runbooky a konfigurace DSC ve službě Azure Automation.  Tento článek vysvětluje podrobnosti proměnné a jak pracovat s nimi v textové a grafické vytváření obsahu.
+title: Variabilní prostředky v Azure Automation
+description: Proměnné assets jsou hodnoty, které jsou k dispozici pro všechny Runbooky a konfigurace DSC v Azure Automation.  V tomto článku se dozvíte o podrobnostech proměnných a o tom, jak s nimi pracovat v textovém i grafickém vytváření.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,68 +9,68 @@ ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478069"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910070"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Proměnných assetů ve službě Azure Automation
+# <a name="variable-assets-in-azure-automation"></a>Variabilní prostředky v Azure Automation
 
-Proměnných assetů jsou hodnoty, které jsou k dispozici pro všechny runbooky a konfigurace DSC ve vašem účtu automation. Je možné spravovat z portálu Azure portal, prostředí PowerShell v runbooku nebo konfigurace DSC. Proměnné služeb automatizace jsou užitečné v následujících scénářích:
+Proměnné assets jsou hodnoty, které jsou k dispozici pro všechny Runbooky a konfigurace DSC v účtu Automation. Je možné je spravovat z Azure Portal, PowerShellu, v rámci sady Runbook nebo konfigurace DSC. Proměnné služeb automatizace jsou užitečné v následujících scénářích:
 
-- Sdílení hodnoty mezi několika runbooky a konfigurace DSC.
+- Sdílení hodnoty mezi několika Runbooky nebo konfiguracemi DSC.
 
-- Sdílení hodnoty mezi několika úlohami stejné runbooku nebo konfigurace DSC.
+- Sdílení hodnoty mezi několika úlohami ze stejné konfigurace sady Runbook nebo DSC.
 
-- Správa hodnoty z portálu nebo z příkazového řádku Powershellu, který používá runbooky a konfigurace DSC, jako je například sada běžné položky konfigurace jako konkrétního seznamu názvy virtuálních počítačů, konkrétní skupině prostředků, název domény služby AD a dalších.  
+- Spravujte hodnotu z portálu nebo z příkazového řádku PowerShellu, který používají Runbooky nebo konfigurace DSC, jako je například sada běžných položek konfigurace, například konkrétní seznam názvů virtuálních počítačů, konkrétní skupiny prostředků, název domény služby AD a další.  
 
-Protože proměnné služeb automatizace jsou trvalé, jsou k dispozici i v případě, runbooku nebo konfigurace DSC se nezdaří. Toto chování umožňuje hodnotu nastavení jedné sady runbook, který se pak použije v jiném, nebo se používá ve stejném runbooku nebo konfigurace DSC při příštím spuštění.
+Vzhledem k tomu, že proměnné automatizace jsou trvalé, jsou k dispozici i v případě, že dojde k chybě Runbooku nebo konfigurace DSC. Toto chování umožňuje nastavit hodnotu pomocí jedné sady Runbook, která je pak používána jiným systémem, nebo ji používá stejná sada Runbook nebo konfigurace DSC při příštím spuštění.
 
-Při vytváření proměnné je můžete zadat, že je uložen šifrované. Zašifrované proměnné jsou bezpečně uložené ve službě Azure Automation a jeho hodnotu nelze načíst z [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) rutinu, která je dodávána jako součást modulu Azure PowerShell. Jediným způsobem, že je možné načíst hodnotu zašifrovaných je z **Get-AutomationVariable** aktivitu v runbooku nebo konfigurace DSC. Pokud chcete změnit nezašifrované zašifrovaná proměnná, můžete je odstranit a znovu vytvořit proměnnou jako nezašifrované.
+Při vytvoření proměnné můžete určit, že je uložený zašifrovaný. Šifrované proměnné jsou bezpečně uložené v Azure Automation a její hodnota se nedá načíst z rutiny [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) , která se dodává jako součást modulu Azure PowerShell. Jediný způsob, jak lze načíst šifrovanou hodnotu, je z aktivity **Get-AutomationVariable** v sadě Runbook nebo v konfiguraci DSC. Pokud chcete změnit šifrovanou proměnnou tak, aby byla zašifrovaná, můžete tuto proměnnou odstranit a znovu vytvořit jako nešifrované.
 
 >[!NOTE]
->Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.
+>Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Tento klíč je uložený v Key Vault spravovaném systémem. Před uložením zabezpečeného prostředku se klíč načte z Key Vault a pak se použije k zašifrování assetu. Tento proces je spravovaný pomocí Azure Automation.
 
-## <a name="variable-types"></a>Tyto typy proměnných
+## <a name="variable-types"></a>Typy proměnných
 
-Při vytváření proměnné pomocí webu Azure portal, musíte zadat datový typ z rozevíracího seznamu, tak na portálu může zobrazit příslušný ovládací prvek pro zadání hodnoty proměnné. Proměnná není pro tento typ dat s omezeným přístupem. Je nutné nastavit proměnnou pomocí Windows Powershellu, pokud chcete zadat hodnotu jiného typu. Pokud zadáte **není definována**, hodnotu proměnné se nastaví **$null**, a hodnota se musí nastavit [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) rutiny nebo **Set-AutomationVariable** aktivity. Nejde vytvořit nebo změnit hodnotu pro proměnnou komplexní typ na portálu, ale můžete zadat hodnotu libovolného typu pomocí Windows Powershellu. Komplexní typy jsou vrácena jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
+Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z rozevíracího seznamu, aby portál mohl zobrazit příslušný ovládací prvek pro zadání hodnoty proměnné. Proměnná není omezena na tento datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud zadáte **nedefinované**, pak hodnota proměnné nastaví na **$null**a musíte nastavit hodnotu pomocí rutiny [set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) nebo aktivity **set-AutomationVariable** . V portálu nemůžete vytvořit nebo změnit hodnotu komplexního typu proměnné, ale můžete zadat hodnotu libovolného typu pomocí Windows PowerShellu. Komplexní typy jsou vraceny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
-Vytvořením pole nebo zatřiďovací tabulky a uložení do proměnné můžete ukládat víc hodnot do jedné proměnné.
+Můžete uložit více hodnot do jedné proměnné tak, že vytvoříte pole nebo zatřiďovací tabulku a uložíte ji do proměnné.
 
-Následuje seznam dostupných ve službě Automation proměnné typů:
+Níže jsou uvedeny typy proměnných, které jsou k dispozici v automatizaci:
 
-* String
+* Řetězec
 * Integer
 * DateTime
-* Boolean
+* Logická hodnota
 * Null
 
-## <a name="azurerm-powershell-cmdlets"></a>Rutiny AzureRM Powershellu
+## <a name="azurerm-powershell-cmdlets"></a>Rutiny PowerShellu pro AzureRM
 
-Pro AzureRM rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell. Se dodávají jako součást [modulu Azure RM.Automation](/powershell/azure/overview), která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
+Rutiny v následující tabulce pro AzureRM slouží k vytváření a správě assetů přihlašovacích údajů automatizace pomocí Windows PowerShellu. Dodávají se jako součást [modulu AzureRM. Automation](/powershell/azure/overview), který je k dispozici pro použití v sadách Automation a konfiguracích DSC.
 
 | Rutiny | Popis |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Načte hodnotu existující proměnné.|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Vytvoří novou proměnnou a nastaví její hodnotu.|
-|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Odebere existující proměnnou.|
+|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Odstraní existující proměnnou.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Nastaví hodnotu existující proměnné.|
 
-## <a name="activities"></a>Činnosti
+## <a name="activities"></a>Aktivity
 
-Aktivity v následující tabulce se používají pro přístup k přihlašovacím údajům v runbooku a konfiguracích DSC.
+Aktivity v následující tabulce se používají pro přístup k proměnným v sadě Runbook a konfiguracích DSC. Rozdíl mezi rutinami Get-AzureRmAutomationVariable a Get-AutomationVariable se na začátku tohoto dokumentu upřesňuje výše.
 
-| Činnosti | Popis |
+| Aktivity | Popis |
 |:---|:---|
 |Get-AutomationVariable|Načte hodnotu existující proměnné.|
 |Set-AutomationVariable|Nastaví hodnotu existující proměnné.|
 
 > [!NOTE]
-> Měli byste se vyhnout používání proměnných v parametru – Name **Get-AutomationVariable** v runbooku nebo konfigurace DSC, protože to může zkomplikovat zjišťování závislostí mezi runbooky nebo konfigurace DSC a automatizace proměnné v době návrhu.
+> Měli byste se vyhnout používání proměnných v parametru – name v sadě Runbook nebo konfiguraci DSC, protože to může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a proměnných automatizace v době návrhu.
 
-Funkce v následující tabulce se používají pro přístup a získání proměnné v sadě runbook Python2.
+Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python2 a k jejich načítání.
 
 |Funkce Python2|Popis|
 |:---|:---|
@@ -78,21 +78,21 @@ Funkce v následující tabulce se používají pro přístup a získání prom�
 |automationassets.set_automation_variable|Nastaví hodnotu existující proměnné. |
 
 > [!NOTE]
-> Je nutné naimportovat modul "automationassets" v horní části stránky sady Python runbook pro přístup k funkce asset.
+> Aby bylo možné získat přístup k funkcím assetu, musíte naimportovat modul "automationassets" v horní části Runbooku sady Python.
 
-## <a name="creating-a-new-automation-variable"></a>Vytváří se nová proměnná služby Automation
+## <a name="creating-a-new-automation-variable"></a>Vytváří se nová proměnná automatizace.
 
-### <a name="to-create-a-new-variable-with-the-azure-portal"></a>Chcete-li vytvořit nové proměnné pomocí webu Azure portal
+### <a name="to-create-a-new-variable-with-the-azure-portal"></a>Vytvoření nové proměnné pomocí Azure Portal
 
-1. Ve svém účtu Automation, klikněte na tlačítko **prostředky** dlaždici a potom na **prostředky** okně vyberte **proměnné**.
-2. Na **proměnné** dlaždice, vyberte **přidat proměnnou**.
-3. Dokončete výběr možností na **novou proměnnou** okna a kliknutím na **vytvořit** uložení nové proměnné.
+1. V účtu Automation klikněte na dlaždici **assety** a potom v okně **Assety (prostředky** ) vyberte **proměnné**.
+2. Na dlaždici **proměnné** vyberte **přidat proměnnou**.
+3. V okně **Nová proměnná** dokončete možnosti a klikněte na **vytvořit** Uložit novou proměnnou.
 
 ### <a name="to-create-a-new-variable-with-windows-powershell"></a>Vytvoření nové proměnné pomocí prostředí Windows PowerShell
 
-[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) rutina vytvoří novou proměnnou a nastavuje její počáteční hodnotu. Můžete načíst hodnotu pomocí [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable). Pokud je hodnota jednoduchého typu, je vrácena stejného typu. Pokud se jedná o komplexní typ, o **PSCustomObject** je vrácena.
+Rutina [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) vytvoří novou proměnnou a nastaví její počáteční hodnotu. Hodnotu můžete načíst pomocí [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable). Pokud je hodnota jednoduchý typ, je vrácen stejný typ. Pokud se jedná o komplexní typ, vrátí se **PSCustomObject** .
 
-Následující vzorové příkazy ukazují, jak vytvořit proměnnou řetězcového typu a vrátíte se jeho hodnota.
+Následující vzorové příkazy ukazují, jak vytvořit proměnnou typu String a pak vrátit její hodnotu.
 
 ```powershell
 New-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" 
@@ -102,7 +102,7 @@ $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Následující vzorové příkazy ukazují, jak vytvořit proměnnou s komplexní typ a vrátíte se jeho vlastnosti. V takovém případě objektu virtuálního počítače z **Get-AzureRmVm** se používá.
+Následující vzorové příkazy ukazují, jak vytvořit proměnnou se složitým typem a jak pak vracet své vlastnosti. V takovém případě se použije objekt virtuálního počítače z **Get-AzureRmVm** .
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName "ResourceGroup01" –Name "VM01"
@@ -114,15 +114,15 @@ $vmName = $vmValue.Name
 $vmIpAddress = $vmValue.IpAddress
 ```
 
-## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Použití proměnné v runbooku nebo konfigurace DSC
+## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Použití proměnné v sadě Runbook nebo konfiguraci DSC
 
-Použití **Set-AutomationVariable** aktivitu pro nastavení hodnoty proměnné Automation v Powershellovém runbooku nebo konfigurace DSC a **Get-AutomationVariable** ji moct načíst. Neměli byste používat **Set-AzureRMAutomationVariable** nebo **Get-AzureRMAutomationVariable** rutiny v runbooku nebo konfigurace DSC, protože jsou míň efektivní než aktivity pracovního postupu. Také nelze načíst hodnotu zabezpečené proměnné s **Get-AzureRMAutomationVariable**. Jediný způsob, jak vytvořit novou proměnnou z v rámci runbooku nebo konfigurace DSC se má používat [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) rutiny.
+Aktivitu **set-AutomationVariable** můžete použít k nastavení hodnoty proměnné automatizace v Runbooku PowerShellu nebo v konfiguraci DSC a rutině **Get-AutomationVariable** pro její načtení. Rutiny **set-AzureRMAutomationVariable** nebo **Get-AzureRMAutomationVariable** byste neměli používat v sadě RUNBOOK nebo v konfiguraci DSC, protože jsou méně efektivní než aktivity pracovního postupu. Nemůžete také načíst hodnotu zabezpečení proměnných pomocí **Get-AzureRMAutomationVariable**. Jediným způsobem, jak vytvořit novou proměnnou v rámci sady Runbook nebo konfigurace DSC, je použít rutinu [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) .
 
 ### <a name="textual-runbook-samples"></a>Ukázky textových runbooků
 
-#### <a name="setting-and-retrieving-a-simple-value-from-a-variable"></a>Nastavení nebo načtení jednoduchých hodnot z proměnné
+#### <a name="setting-and-retrieving-a-simple-value-from-a-variable"></a>Nastavení a načtení jednoduché hodnoty z proměnné
 
-Následující vzorové příkazy ukazují, jak nastavit a načíst proměnnou v textové sady runbook. V této ukázce se předpokládá, že proměnné celočíselného typu s názvem *NumberOfIterations* a *NumberOfRunnings* a proměnná řetězcového typu nazvaná *SampleMessage* mít byla vytvořena.
+Následující vzorové příkazy ukazují, jak nastavit a načíst proměnnou v textovém Runbooku. V této ukázce se předpokládá, že byly vytvořeny proměnné typu Integer s názvem *NumberOfIterations* a *NumberOfRunnings* a proměnná typu String s názvem *SampleMessage* .
 
 ```powershell
 $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
@@ -137,9 +137,9 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-#### <a name="setting-and-retrieving-a-variable-in-python2"></a>Nastavení nebo načtení proměnnou v Python2
+#### <a name="setting-and-retrieving-a-variable-in-python2"></a>Nastavení a načtení proměnné v Python2
 
-Následující ukázkový kód ukazuje, jak použít proměnné, nastavit proměnnou a zpracování výjimky pro neexistující proměnnou v sadě runbook Python2.
+Následující vzorový kód ukazuje, jak použít proměnnou, nastavit proměnnou a zpracovat výjimku pro neexistující proměnnou v sadě Python2 Runbook.
 
 ```python
 import automationassets
@@ -161,19 +161,19 @@ except AutomationAssetNotFound:
     print "variable not found"
 ```
 
-### <a name="graphical-runbook-samples"></a>Ukázky grafického runbooku
+### <a name="graphical-runbook-samples"></a>Ukázky grafického Runbooku
 
-V grafický runbook, přidáte **Get-AutomationVariable** nebo **Set-AutomationVariable** kliknutím pravým tlačítkem na proměnnou v podokně knihovna grafickém editoru a výběr aktivity, které Chcete.
+V grafickém Runbooku přidáte pomocí příkazu **Get-AutomationVariable** nebo **set-AutomationVariable** kliknutím pravým tlačítkem myši na proměnnou v podokně Knihovna v grafickém editoru a vyberete aktivitu, kterou požadujete.
 
-![Přidání proměnné na plátno](../media/variables/runbook-variable-add-canvas.png)
+![Přidat proměnnou na plátno](../media/variables/runbook-variable-add-canvas.png)
 
-#### <a name="setting-values-in-a-variable"></a>Nastavení hodnoty v proměnné
+#### <a name="setting-values-in-a-variable"></a>Nastavení hodnot v proměnné
 
-Následující obrázek ukazuje ukázkové aktivity se aktualizovat proměnnou s jednoduchou hodnotou v grafický runbook. V této ukázce **Get-AzureRmVM** načte jednoho virtuálního počítače Azure s názvem počítače uloží do existující automatizace proměnné typu řetězec. Nezáleží, jestli [odkaz je kanál nebo pořadí](../automation-graphical-authoring-intro.md#links-and-workflow) od očekáváte pouze jeden objekt ve výstupu.
+Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s jednoduchou hodnotou v grafickém Runbooku. V této ukázce **Get-AzureRmVM** načte jeden virtuální počítač Azure a název počítače uloží do existující proměnné Automation s typem řetězce. Nezáleží na tom, zda [se jedná o kanál nebo sekvenci](../automation-graphical-authoring-intro.md#links-and-workflow) , protože očekáváte pouze jeden objekt ve výstupu.
 
-![Jednoduchá proměnná set](../media/variables/runbook-set-simple-variable.png)
+![Nastavit jednoduchou proměnnou](../media/variables/runbook-set-simple-variable.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o propojení aktivit ve vytváření grafického obsahu najdete v tématu [odkazy v vytváření grafického obsahu](../automation-graphical-authoring-intro.md#links-and-workflow)
+- Další informace o propojení aktivit společně s grafickým vytvářením najdete v tématu [odkazy v grafickém vytváření](../automation-graphical-authoring-intro.md#links-and-workflow) .
 - První kroky s grafickými runbooky najdete v článku [Můj první grafický runbook](../automation-first-runbook-graphical.md).

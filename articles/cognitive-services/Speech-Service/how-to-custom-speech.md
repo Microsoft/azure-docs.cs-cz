@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d697cd49363139cfeae2753a4f1ae40fca6e6b2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802490"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881525"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -25,7 +25,7 @@ ms.locfileid: "70802490"
 
 Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech Services. Jakmile budete mít účet, můžete si nechat data, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
 
-Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https://speech.microsoft.com/customspeech). Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
+Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https://aka.ms/customspeech). Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
 
 ![Zvýrazní různé komponenty, které tvoří portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 

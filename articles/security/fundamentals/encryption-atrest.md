@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873191"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918873"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -39,7 +39,7 @@ Microsoft Azure obsahuje nástroje pro ochranu dat v souladu s požadavky vaší
 - Symetrický šifrovací klíč se používá k šifrování dat při zápisu do úložiště.
 - Stejný šifrovací klíč se používá k dešifrování těchto dat, protože jsou připravená k použití v paměti.
 - Data mohou být rozdělena na oddíly a pro každý oddíl lze použít různé klíče.
-- Klíče musí být uloženy v zabezpečeném umístění s řízením přístupu na základě identity a zásadami auditování. Šifrovací klíče dat se často šifrují s asymetrickým šifrováním pro další omezení přístupu.
+- Klíče musí být uloženy v zabezpečeném umístění s řízením přístupu na základě identity a zásadami auditování. Šifrovací klíče dat se často šifrují pomocí klíčového šifrovacího klíče v Azure Key Vault k dalšímu omezení přístupu.
 
 V praxi jsou scénáře správy a řízení klíčů a také zajištění škálování a dostupnosti vyžadovat další konstrukce. Šifrování Microsoft Azure v konceptech a součástech REST jsou popsány níže.
 
@@ -71,12 +71,12 @@ Oprávnění k použití klíčů uložených v Azure Key Vault, a to buď pro s
 
 ### <a name="key-hierarchy"></a>Hierarchie klíčů
 
-Při implementaci neaktivního šifrování se používá více než jeden šifrovací klíč. Asymetrické šifrování je užitečné pro vytvoření vztahu důvěryhodnosti a ověřování potřebného pro přístup a správu klíčů. Symetrické šifrování je efektivnější pro hromadné šifrování a dešifrování, což umožňuje silnější šifrování a lepší výkon. Omezení použití jediného šifrovacího klíče snižuje riziko ohrožení bezpečnosti klíče a náklady na opakované šifrování, když je nutné klíč nahradit. Šifrování Azure v modelech REST používá klíčovou hierarchii, která se skládá z následujících typů klíčů:
+Při implementaci neaktivního šifrování se používá více než jeden šifrovací klíč. Uložení šifrovacího klíče v Azure Key Vault zajišťuje zabezpečený přístup k klíčům a centrální správu klíčů. Místní přístup k šifrovacím klíčům je ale efektivnější pro hromadné šifrování a dešifrování než při práci s Key Vault pro každou datovou operaci, což umožňuje silnější šifrování a lepší výkon. Omezení použití jediného šifrovacího klíče snižuje riziko ohrožení bezpečnosti klíče a náklady na opakované šifrování, když je nutné klíč nahradit. Šifrování Azure v modelech REST používá klíčovou hierarchii, která se skládá z následujících typů klíčů za účelem vyřešení všech těchto potřeb:
 
 - **Šifrovací klíč dat (klíč DEK)** – symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat.  Jeden prostředek může mít mnoho oddílů a mnoho datových šifrovacích klíčů. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Pokud je klíč DEK nahrazen novým klíčem, je nutné znovu zašifrovat pomocí nového klíče pouze data v jeho přidruženém bloku.
-- Klíč **šifrovacího klíče (KEK)** – asymetrický šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče umožňuje šifrování a řízení šifrovacích klíčů. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Entita může zprostředkovatelům přístup k klíč DEK omezit přístup ke každému klíč dek na konkrétní oddíl. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
+- Klíč **šifrovacího klíče (KEK)** – šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče, který nikdy neopouští Key Vault umožňuje šifrování a řízení šifrovacích klíčů dat. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Entita může zprostředkovatelům přístup k klíč DEK omezit přístup ke každému klíč dek na konkrétní oddíl. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
 
-Šifrovací klíče dat šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a jenom entita s přístupem ke klíčovým šifrovacím klíčům může získat všechny šifrovací klíče zašifrované s tímto klíčem. Podporují se různé modely úložiště klíčů. Každý model se podrobněji probere dále v další části.
+Šifrovací klíče dat šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a k dešifrování těchto šifrovacích klíčů může použít jenom entita s přístupem ke klíčovým šifrovacím klíčem. Podporují se různé modely úložiště klíčů. Každý model se podrobněji probere dále v další části.
 
 ## <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -150,7 +150,9 @@ Pokud se používá šifrování na straně serveru pomocí klíčů spravovaný
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v Azure Key Vault
 
-U scénářů, kde požadavek slouží k šifrování uložených dat a řízení uživatelů šifrovacích klíčů, můžou používat šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v Key Vault. Některé služby můžou ukládat jenom šifrovací klíč kořenového klíče v Azure Key Vault a uložit šifrovaný šifrovací klíč dat do interního umístění blíže k datům. V takovém scénáři můžou zákazníci přinášet vlastní klíče Key Vault (BYOK – Bring Your Own Key) nebo generovat nové a použít je k zašifrování požadovaných prostředků. I když poskytovatel prostředků provádí operace šifrování a dešifrování, používá nakonfigurovaný klíč jako kořenový klíč pro všechny operace šifrování.
+U scénářů, kde požadavek slouží k šifrování uložených dat a řízení uživatelů šifrovacích klíčů, můžou používat šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v Key Vault. Některé služby můžou ukládat jenom šifrovací klíč kořenového klíče v Azure Key Vault a uložit šifrovaný šifrovací klíč dat do interního umístění blíže k datům. V takovém scénáři můžou zákazníci přinášet vlastní klíče Key Vault (BYOK – Bring Your Own Key) nebo generovat nové a použít je k zašifrování požadovaných prostředků. I když poskytovatel prostředků provádí operace šifrování a dešifrování, používá nakonfigurovaný klíč šifrování klíče jako kořenový klíč pro všechny operace šifrování.
+
+Ztráta klíčového šifrovacího klíče znamená ztrátu dat. Z tohoto důvodu by klíče neměly být odstraněny. Klíče by se měly zálohovat vždy, když se vytvoří nebo otočí. [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) by mělo být povolené v jakémkoli trezoru, který ukládá šifrovací klíče klíčů. Místo odstranění klíče nastavte možnost povoleno na hodnotu NEPRAVDA nebo nastavte datum vypršení platnosti.
 
 ##### <a name="key-access"></a>Přístup ke klíči
 

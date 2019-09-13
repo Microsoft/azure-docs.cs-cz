@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: c7d8b946fc587d58f13e16c1d7d806390e712104
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879549"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932475"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -83,7 +83,7 @@ Dvojitým kliknutím na zařízení na stránce Přehled zobrazíte další úro
 
 ### <a name="device"></a>Zařízení
 
-Tato část obsahuje karty **Identita zařízení**, **telemetrie**a vyzdvojené **zařízení** .
+Tato část obsahuje karty **Identita zařízení**, **telemetrie**a **vyzdvojené zařízení** .
 
 - Informace o identitě zařízení můžete zobrazit a aktualizovat na kartě **Identita zařízení** .
 - Pokud je zařízení připojené a aktivně odesílá data, můžete zobrazit telemetrii na kartě **telemetrie** .
@@ -103,7 +103,7 @@ Vlastnosti určené jen pro čtení můžete zobrazit na stránce **vlastností*
 1. Zobrazte si náhled datové části, která se má odeslat do zařízení.
 1. Odešlete změnu.
 
-Po odeslání změny můžete sledovat stav aktualizace: **synchronizace**, **úspěch**nebo **Chyba**. Po dokončení synchronizace se zobrazí nová hodnota vlastnosti ve sloupci nahlášená **vlastnost** . Pokud přejdete na jiné stránky před dokončením synchronizace, nástroj vás po dokončení aktualizace stále upozorní. Historii oznámení můžete zobrazit také pomocí Centra oznámení nástroje.
+Po odeslání změny můžete sledovat stav aktualizace: **synchronizace**, **úspěch**nebo **Chyba**. Po dokončení synchronizace se zobrazí nová hodnota vlastnosti ve sloupci **nahlášená vlastnost** . Pokud přejdete na jiné stránky před dokončením synchronizace, nástroj vás po dokončení aktualizace stále upozorní. Historii oznámení můžete zobrazit také pomocí Centra oznámení nástroje.
 
 #### <a name="commands"></a>Příkazy
 
@@ -118,6 +118,6 @@ Pokud chcete odeslat příkaz do zařízení, otevřete stránku **příkazy** :
 
 Chcete-li zobrazit telemetrii pro vybrané rozhraní, přejdete na stránku **telemetrie** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku se naučíte, jak nainstalovat a používat Azure IoT Explorer k interakci s technologie Plug and Playmi zařízeními IoT. Navržený další krok se naučíte, jak [Spravovat modely](./howto-manage-models.md).
+V tomto článku se naučíte, jak nainstalovat a používat Azure IoT Explorer k interakci s technologie Plug and Playmi zařízeními IoT. Navržený další krok se naučíte, jak [nainstalovat a používat rozšíření Azure CLI](./howto-install-pnp-cli.md).

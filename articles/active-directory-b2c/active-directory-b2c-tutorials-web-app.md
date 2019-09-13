@@ -1,21 +1,21 @@
 ---
-title: Kurz – povolení ověřování v rámci webové aplikace – Azure Active Directory B2C | Microsoft Docs
+title: Kurz – povolení ověřování ve webové aplikaci – Azure Active Directory B2C
 description: Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů ve webové aplikaci ASP.NET.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464760"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914206"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -32,8 +32,8 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
-- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
+* [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Následující dva projekty jsou v ukázkovém řešení:
 
-- **TaskWebApp** – vytvoření a úprava seznamu úkolů V ukázce se k registraci nebo přihlašování uživatelů používá tok uživatelů **registrace nebo přihlašování** .
+- **TaskWebApp** – vytvoření a úprava seznamu úkolů Ukázka používá k registraci a přihlašování uživatelů tok uživatelů **registrace nebo přihlašování** .
 - **TaskService** – podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Rozhraní API je chráněno pomocí Azure AD B2C a volá ho TaskWebApp.
 
-Tuto ukázku změníte tak, aby používala aplikaci, která je zaregistrovaná ve vašem tenantovi, což zahrnuje ID aplikace a klíč, který jste předtím nahráli. Také nakonfigurujete toky uživatelů, které jste vytvořili. Ukázka definuje konfigurační hodnoty jako nastavení v souboru Web. config. Postup změny nastavení:
+Tuto ukázku změníte tak, aby používala aplikaci, která je zaregistrovaná ve vašem tenantovi, což zahrnuje ID aplikace a klíč, který jste předtím nahráli. Také nakonfigurujete toky uživatelů, které jste vytvořili. Ukázka definuje konfigurační hodnoty jako nastavení v souboru *Web. config* .
+
+Aktualizujte nastavení v souboru Web. config tak, aby fungovala s vaším uživatelským tokem:
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
-2. V projektu **TaskWebApp** otevřete soubor **Web. config** . Nahraďte hodnotu `ida:Tenant` názvem tenanta, kterého jste vytvořili. Nahraďte hodnotu `ida:ClientId` za ID aplikace, které jste si poznamenali. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Před přidáním tajného klíče klienta do souboru Web. config je nutné kód XML zakódovat.
-3. V souboru **Web.config** nahraďte hodnotu `ida:SignUpSignInPolicyId` za `b2c_1_signupsignin1`. Nahraďte hodnotu `ida:EditProfilePolicyId` za `b2c_1_profileediting1`. Nahraďte hodnotu `ida:ResetPasswordPolicyId` za `b2c_1_passwordreset1`.
-
+1. V projektu **TaskWebApp** otevřete soubor **Web. config** .
+    1. Nahraďte hodnotu `ida:Tenant` a `ida:AadInstance` názvem tenanta, který jste vytvořili.
+    1. Nahraďte hodnotu hodnotou `ida:ClientId` ID aplikace, kterou jste si poznamenali.
+    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Před přidáním tajného klíče klienta do souboru Web. config je nutné kód XML zakódovat.
+    1. Hodnotu nahraďte hodnotou `ida:SignUpSignInPolicyId`. `b2c_1_signupsignin1`
+    1. Hodnotu nahraďte hodnotou `ida:EditProfilePolicyId`. `b2c_1_profileediting1`
+    1. Hodnotu nahraďte hodnotou `ida:ResetPasswordPolicyId`. `b2c_1_passwordreset1`
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 

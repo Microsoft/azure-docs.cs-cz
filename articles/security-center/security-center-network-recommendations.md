@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101016"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910464"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrana síťových prostředků v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -128,9 +128,9 @@ Tato tabulka obsahuje název koncového bodu, internetovou IP adresu a aktuáln�
 
 Tato tabulka je seřazená podle závažnosti (virtuální počítače a podsítě).
 
-V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druhý displej má podsítě a třetí úroveň zobrazuje virtuální počítače, které patří do těchto podsítí. V pravém sloupci se zobrazuje aktuální stav doporučení skupiny zabezpečení sítě pro tyto prostředky.
+V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druhý zobrazí podsítě a třetí úroveň zobrazí virtuální počítače, které patří do těchto podsítí. V pravém sloupci se zobrazuje aktuální stav doporučení skupiny zabezpečení sítě pro tyto prostředky.
 
-Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít potřebný ovládací prvek zabezpečení nebo konfiguraci.
+Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít požadovaný ovládací prvek zabezpečení nebo konfiguraci.
 
 ## <a name="network-recommendations"></a>Doporučení pro síť
 
@@ -143,7 +143,7 @@ Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, c
 |Přístup k App Services by měl být omezený.|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.|Vysoká|10|App Service|
 |Porty pro správu by měly být uzavřeny na virtuálních počítačích|Posílení skupiny zabezpečení sítě virtuálních počítačů pro omezení přístupu k portům pro správu.|Vysoká|10|Virtuální počítač|
 Měla by být povolená DDoS Protection Standard.|Chraňte virtuální sítě obsahující aplikace s veřejnými IP adresami tím, že povolíte službu DDoS Protection Service Standard. DDoS Protection umožňuje zmírnit snižování objemu sítě a útoků protokolu.|Vysoká|10|Virtuální síť|
-|Předávání IP na virtuálním počítači by mělo být zakázané.|Zakažte předávání IP. Když je na síťové kartě virtuálního počítače povolené předávání IP, může tento počítač přijímat přenosy adresované do jiných cílů. Předávání IP adres se vyžaduje jen zřídka (například při použití virtuálního počítače jako síťového virtuálního zařízení), a proto by ho měl zkontrolovat tým zabezpečení sítě.|Střední|10|Virtuální počítač|
+|Předávání IP na virtuálním počítači by mělo být zakázané.|Zakažte předávání IP. Když je na síťové kartě virtuálního počítače povolené předávání IP, může tento počítač přijímat přenosy adresované do jiných cílů. Předávání IP adres se nevyžaduje zřídka (například při použití virtuálního počítače jako síťového virtuálního zařízení), a proto by mělo být přezkoumáno týmem zabezpečení sítě.|Střední|10|Virtuální počítač|
 |Webová aplikace by měla být přístupná jen přes HTTPS|Povolí přístup pouze HTTPS k webovým aplikacím. Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.|Střední|20|Webová aplikace|
 |Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu|Použijte řízení přístupu k virtuálnímu počítači JIT (just-in-time) k trvalému uzamčení přístupu k vybraným portům a povolte oprávněným uživatelům, aby je mohli otevřít přes JIT, jenom po omezené množství času.|Vysoká|20|Virtuální počítač|
 |Aplikace Function app by měly být přístupné jenom přes HTTPS|Povolte přístup pouze HTTPS pro aplikace Function App. Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.|Střední|20|Function App|

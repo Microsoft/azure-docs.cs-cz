@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 226862c51417e311bc39feefa9f5e860d55b7dc1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 51f0e223abd7103663fddd8c06dcdf0be549c671
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034111"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930810"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -56,7 +56,7 @@ Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, p
 
 2. V zobrazení **Průzkumník** vyberte složku **HDexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
-   ![Nový soubor](./media/hdinsight-for-vscode/new-file.png)
+   ![Nový soubor](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. Pojmenujte nový soubor tak, že `.hql` použijete buď příponu souboru ( `.py` dotazy na podregistr) nebo (skript Spark). V tomto příkladu se používá **HelloWorld. HQL**.
 
@@ -131,7 +131,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 3. Zkontrolujte zobrazení **výstup** . Toto zobrazení ukazuje váš propojený cluster (nebo clustery) a všechny clustery v rámci vašeho předplatného Azure:
 
-    ![Nastavení výchozí konfigurace clusteru](./media/hdinsight-for-vscode/list-cluster-result.png)
+    ![Nastavení výchozí konfigurace clusteru](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Nastavení výchozího clusteru
 
@@ -280,7 +280,7 @@ Odešlete soubor a Všimněte si, že složka. VSCode je automaticky přidána d
 
 + Nastavení projektu:
 
-    ![Konfigurace Livy](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+    ![Konfigurace Livy](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
     >Pro nastavení **driverMemory** a **executorMemory** nastavte hodnotu a jednotku. Příklad: 1G nebo 1024m.
@@ -292,19 +292,19 @@ Odešlete soubor a Všimněte si, že složka. VSCode je automaticky přidána d
 
     | name | description | type | 
     | :- | :- | :- | 
-    | file | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
+    | file | Soubor obsahující aplikaci, která se má provést | cesta (povinné) |
     | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
     | NázevTřídy | Application – hlavní třída Java/Spark | Řetězec |
-    | args | Argumenty příkazového řádku pro aplikaci | Seznam řetězců |
-    | jars | JAR, která se má použít v této relaci | Seznam řetězců | 
-    | pyFiles | Soubory Pythonu, které se mají použít v této relaci | Seznam řetězců |
-    | files | Soubory, které se mají použít v této relaci | Seznam řetězců |
+    | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců |
+    | jars | JAR, která se má použít v této relaci | seznam řetězců | 
+    | pyFiles | Soubory Pythonu, které se mají použít v této relaci | seznam řetězců |
+    | files | soubory, které se mají použít v této relaci | seznam řetězců |
     | driverMemory | Velikost paměti, která se má použít pro proces ovladače | Řetězec |
     | driverCores | Počet jader, které se mají použít pro proces ovladače | Int |
     | executorMemory | Velikost paměti, která se má použít pro proces prováděcího modulu | Řetězec |
     | executorCores | Počet jader, které se mají použít pro každý prováděcí modul | Int |
     | numExecutors | Počet prováděcích modulů, které se mají spustit pro tuto relaci | Int |
-    | archives | Archivy, které se mají použít v této relaci | Seznam řetězců |
+    | archives | Archivy, které se mají použít v této relaci | seznam řetězců |
     | queue | Název fronty PŘÍZe, která se má odeslat| Řetězec |
     | name | Název této relace | Řetězec |
     | výrobku | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
@@ -317,7 +317,7 @@ Odešlete soubor a Všimněte si, že složka. VSCode je automaticky přidána d
     | id | ID relace | Int | 
     | appId | ID aplikace této relace | Řetězec |
     | appInfo | Podrobné informace o aplikaci | Mapa klíče = Val |
-    | protokol | Řádky protokolu | Seznam řetězců |
+    | protokol | Řádky protokolu | seznam řetězců |
     | state |Stav dávky | Řetězec |
 
     >[!NOTE]
@@ -409,7 +409,7 @@ Při odesílání úlohy do clusteru HDInsight budete vyzváni k propojení clus
   >
   >V případě, `Spark / Hive: List Cluster` že se chcete podívat na propojený cluster, můžete použít:
   >
-  >![Připojené nástroje pro Visual Studio Code Reader pro Spark &](./media/hdinsight-for-vscode/list-cluster-result.png)
+  >![Připojené nástroje pro Visual Studio Code Reader pro Spark &](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 

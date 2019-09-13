@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114764"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932746"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -150,6 +150,9 @@ Pokud nakonfigurujete * **. contoso.com**, povolí *anyvalue*. contoso.com, ale 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Co stav *zřizování: Neúspěšný* význam?
 
 Pokaždé, když se použije Změna konfigurace, Azure Firewall se pokusí aktualizovat všechny své základní back-end instance. Ve výjimečných případech se může stát, že jedna z těchto back-end instancí selže při aktualizaci s novou konfigurací a proces aktualizace se zastaví se stavem zřizování. Vaše Azure Firewall je stále v provozu, ale použitá konfigurace může být v nekonzistentním stavu, kde některé instance mají předchozí konfiguraci, kde ostatní mají aktualizovanou sadu pravidel. Pokud k tomu dojde, zkuste aktualizovat konfiguraci ještě jednou, dokud se operace nezdaří a vaše brána firewall je v *úspěšném* stavu zřizování.
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Jak Azure Firewall zvládnout plánované údržby a neplánovaných selhání?
+Azure Firewall se skládá z několika back-end uzlů v konfiguraci aktivní-aktivní.  U jakékoli plánované údržby máme připojení k dispozici pro bezproblémové aktualizace uzlů.  Aktualizace se plánují během nepracovních hodin pro každou oblast Azure, abyste mohli dále omezit riziko přerušení.  Pro neplánované problémy vytvoříme instanci nového uzlu, který nahradí uzel, který selhal.  Připojení k novému uzlu se obvykle znovu vytvoří během 10 sekund od doby selhání.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Je pro název brány firewall nějaký limit znaků?
 

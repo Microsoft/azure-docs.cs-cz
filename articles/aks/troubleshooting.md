@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844260"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932662"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -141,3 +141,9 @@ Použijte následující alternativní řešení:
 1. Použijte existující instanční objekt, který už je šířený v různých oblastech a existuje k předání do AKS v době vytváření clusteru.
 2. Pokud používáte skripty pro automatizaci, přidejte časovou prodlevu mezi vytvořením instančního objektu a vytvořením clusteru AKS.
 3. Pokud používáte Azure Portal, vraťte se do nastavení clusteru během vytváření a zkuste stránku ověření zopakovat po několika minutách.
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
+
+Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, možná nebudete moci spustit určité `kubectl` příkazy. Při vytváření clusteru AKS můžete také zobrazit chyby.
+
+Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599640"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931177"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete v clusteru povolit a zjišťovat tak další služby pomocí protokolu DNS. 
@@ -179,7 +179,7 @@ Dotazy DNS, které cílí na oddíl, jsou formátovány takto:
 Kde:
 
 - *First-Label-* --partition-------------------------
-- *PartitionPrefix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je "-". Další informace najdete v tématu věnovaném [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionPrefix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je "--". Další informace najdete v tématu věnovaném [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Target-partition-Name* je název oddílu. 
 - *PartitionSuffix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je prázdný řetězec. Další informace najdete v tématu věnovaném [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Zbytek-partition-Service-DnsName* je zbývající část názvu DNS služby.
@@ -257,6 +257,6 @@ public class ValuesController : Controller
 
 * Služba DNS pro službu Service Fabric Services ještě není v systému Linux podporována. Služba DNS je podporovaná pro kontejnery v systému Linux. K dispozici je ruční řešení pomocí nástroje Fabric Client/ServicePartitionResolver.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o komunikaci služby v rámci clusteru s [připojením a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)
 

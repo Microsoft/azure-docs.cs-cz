@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: bded3ac97732a7cd18411cc9f4ef1707dbdf68e3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735821"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917488"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
@@ -59,7 +59,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 6. Pokud chcete spustit stejný dotaz v režimu **dávky** , přepněte rozevírací seznam z **Interactive** do **Batch**. Všimněte si, že tlačítko spuštění se změní z příkazu **Spustit** na **odeslání**.
 
-    ![Snímek odesílání dotazu Hive](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![Snímek odesílání dotazu Hive](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
 
@@ -71,7 +71,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
    Pokud jste použili možnost rozšířeného odeslání, nakonfigurujte pro skript **Název úlohy**, **Argumenty**, **Další konfigurace** a **Stavový adresář**:
 
-    ![Snímek obrazovky s dotazem Hive v HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Odeslání dotazů")
+    ![Snímek obrazovky s dotazem Hive v HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Odeslání dotazů")
 
 ### <a name="hive-application"></a>Aplikace podregistru
 
@@ -115,11 +115,11 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 6. Na panelu nástrojů vyberte **cluster HDInsight** , který chcete použít pro tento dotaz. Vyberte **Odeslat** a spusťte příkazy jako úlohu podregistru.
 
-   ![Odeslat panel](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Odeslat panel](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Zobrazí se **Souhrn úlohy podregistr** a zobrazí se informace o běžící úloze. Pomocí odkazu **aktualizovat** aktualizujte informace úlohy, dokud se **stav úlohy** nezmění na **dokončeno**.
 
-   ![Souhrn úlohy znázorňující dokončenou úlohu](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![Souhrn úlohy znázorňující dokončenou úlohu](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. Výstup této úlohy můžete zobrazit pomocí odkazu **výstup úlohy** . Zobrazuje `[ERROR] 3`se hodnota vrácená tímto dotazem.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844894"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918821"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -211,13 +211,16 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Austrálie – východ |LRS     |Ne    |Ano|
 |Austrálie – jihovýchod|LRS     |Ne    |Zatím ne|
 |Střed Indie  |LRS     |Ne    |Zatím ne|
+|East US        |LRS     |Ne    |Zatím ne|
 |Francie – střed |LRS, ZRS|Ne    |LRS-Yes, ZRS – zatím ne|
 |Francie – jih   |LRS     |Ne    |Ano|
 |Jižní Indie    |LRS     |Ne    |Zatím ne|
 |Jihovýchodní Asie |LRS, ZRS|Ne    |Ano|
 |Západní střed USA|LRS     |Ne    |Zatím ne|
 |Západní Evropa    |LRS, ZRS|Ne    |Ano|
+|USA – západ        |LRS     |Ne    |Zatím ne|
 |USA – západ 2      |LRS, ZRS|Ne    |Ano|
+
 
 \* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Případně můžete vytvořit novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 

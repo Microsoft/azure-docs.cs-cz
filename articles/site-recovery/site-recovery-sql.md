@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742327"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934837"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
@@ -111,7 +111,7 @@ Některé technologie BCDR, například SQL Always On, nativně nepodporují tes
 
     ![Snímek obrazovky s označeným Content_AGm okna se zobrazenými názvy a stavy serveru](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Vytvořte Nástroj pro vyrovnávání zatížení. U každého naslouchacího procesu skupiny dostupnosti vytvořte jednu IP adresu z front-endového fondu IP adres. Přidejte taky SQL Server virtuální počítač do fondu back-end.
+1. Ujistěte se, že nástroj pro vyrovnávání zatížení v síti s podporou převzetí služeb při selhání má jednu IP adresu z fondu front-end IP adres, která odpovídá všem naslouchací proces skupiny dostupnosti, a s SQL Server virtuálním počítačem ve fondu back-endu.
 
      ![Snímek obrazovky okna s názvem SQL-AlwaysOn-9,1-front-endové IP fond](./media/site-recovery-sql/create-load-balancer1.png)
 

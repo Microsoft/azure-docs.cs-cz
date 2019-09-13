@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019040"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934763"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -141,12 +141,38 @@ Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstr
 
    ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
+
+## <a name="modify-policy"></a>Upravit zásadu
+Upravte zásadu pro změnu četnosti zálohování nebo rozsahu uchovávání.
+
+> [!NOTE]
+> Jakákoli změna v období uchování se použije zpět na všechny starší body obnovení kromě nových.
+
+Na řídicím panelu trezoru klikněte na **Spravovat** > **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
+
+  ![Spravovat zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Upravit zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+Změna zásad ovlivní všechny přidružené zálohované položky a spustí odpovídající úlohy **Konfigurace ochrany** . 
+
+#### <a name="inconsistent-policy"></a>Nekonzistentní zásady 
+
+V některých případech může operace upravit zásady vést k **nekonzistentní** verzi zásad pro některé zálohované položky. K tomu dojde v případě, že se po aktivaci operace Upravit zásadu pro zálohovanou položku nezdařila odpovídající úloha **Konfigurace ochrany** . V zobrazení zálohovaná položka se zobrazí takto:
+ 
+  ![Nekonzistentní zásady](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+Verzi zásad můžete u všech ovlivněných položek opravit jedním kliknutím:
+
+  ![Opravit nekonzistentní zásady](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
+
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 
 V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo na druhý. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného registrace znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly.  <br>
 
 Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda [](backup-sql-server-azure-troubleshoot.md#re-registration-failures) některé z těchto symptomů existuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu [řešení potíží s zálohami v databázi SQL Server](backup-sql-server-azure-troubleshoot.md).

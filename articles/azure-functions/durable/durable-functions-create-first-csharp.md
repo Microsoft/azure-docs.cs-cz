@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e34d000f77ca5a5ac75fadab61b4280d528c6805
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735297"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933975"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
@@ -139,9 +139,9 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí sady Visual Studio jste vytvořili a publikovali C# trvalou aplikaci Function App.
 
 > [!div class="nextstepaction"]
-> [Přečtěte si o běžných vzorech trvalých funkcí.](durable-functions-concepts.md)
+> [Další informace o běžných vzorech trvalých funkcí](durable-functions-overview.md#application-patterns)

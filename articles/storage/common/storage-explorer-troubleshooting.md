@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934988"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935343"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -30,7 +30,7 @@ Pokud máte problémy s přístupem k prostředkům úložiště pomocí RBAC, m
 
 Pokud si nejste jistí, že máte příslušné role nebo oprávnění, obraťte se na správce účtu Azure.
 
-#### <a name="read-listget-storage-accounts"></a>Oprávnění Vypsat nebo získat účty úložiště
+#### <a name="read-listget-storage-accounts"></a>Oprávnění Vypsat/získat účty úložiště
 
 Musíte mít oprávnění k vypsání účtů úložiště. Toto oprávnění můžete získat tak, že přiřadíte roli Čtenář.
 
@@ -71,7 +71,7 @@ Chyby certifikátu jsou způsobeny jednou ze dvou následujících situací:
 Když Průzkumník služby Storage uvidí certifikát podepsaný svým držitelem nebo nedůvěryhodným certifikátem, nemůže už zjistit, jestli se přijatá zpráva HTTPS nezměnila. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete mu dát Průzkumník služby Storage důvěřovat pomocí následujících kroků:
 
 1. Získejte kopii certifikátu X. 509 (. cer) s kódováním Base-64.
-2. Klikněte na **Upravit** > **certifikáty** > SSL**importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
+2. Klikněte na upravit **certifikáty → SSL** → **Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
 
 Tento problém může být také výsledkem více certifikátů (root a Intermediate). K překonání chyby je nutné přidat oba certifikáty.
 
@@ -86,7 +86,7 @@ Pokud si nejste jistí, odkud certifikát pochází, můžete zkusit najít tent
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, hledejte všude, `("s:")` kde je `("i:")` váš předmět a vydavatel stejné.
 5. Po nalezení libovolných certifikátů podepsaných svým držitelem si pro každý z nich zkopírujte a vložte všechno z a včetně **-----Spustit certifikát-----** , aby se **-----koncovým certifikátem-----** do nového souboru. cer.
-6. Otevřete Průzkumník služby Storage, klikněte na **Upravit** > **certifikáty** > SSL**importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
+6. Otevřete Průzkumník služby Storage klikněte na **Upravit** **certifikáty → SSL** → **Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
 
 Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomocí předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu, kde najdete další informace. Můžete také zvolit spuštění Průzkumník služby Storage z příkazového řádku s `--ignore-certificate-errors` příznakem. Při spuštění s tímto příznakem Průzkumník služby Storage bude ignorovat chyby certifikátu.
 
@@ -215,6 +215,58 @@ Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná opr�
 
 Pokud se zobrazí klíče účtu, založte problém na GitHubu, abychom vám mohli pomohli tento problém vyřešit.
 
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Při přidávání nového připojení došlo k chybě: TypeError Nejde číst vlastnost Version nedefinovaného typu.
+
+Pokud se zobrazí tato chybová zpráva při pokusu o přidání vlastního připojení, je možné, že data připojení uložená v místním Správci přihlašovacích údajů jsou poškozená.
+Pokud chcete tento problém obejít, můžete zkusit odstranit poškozená místní připojení a pak je znovu přidat.
+
+1. Spusťte Průzkumník služby Storage. V horní nabídce přejděte na help → přepnout Vývojářské nástroje.
+2. V otevřeném okně Přejít na kartu aplikace → místní úložiště (levá strana) → file://
+3. V závislosti na typu připojení, se kterými máte potíže, vyhledejte svůj klíč a zkopírujte jeho hodnotu do textového editoru. Hodnota je pole vašich vlastních názvů připojení.
+    * Účty úložiště
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * Kontejnery objektů BLOB
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * Sdílené složky
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * Fronty
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * Tabulky
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. Po uložení aktuálních názvů připojení nastavte hodnotu v Vývojářské nástroje `[]`.
+
+Pokud chcete zachovat nepoškozená připojení, můžete k vyhledání poškozených připojení použít následující postup. Pokud si nejste vědomi ztrátu všech existujících připojení, můžete přeskočit následující kroky a podle pokynů pro konkrétní platformu vymazat data o připojení.
+
+1. V textovém editoru znovu přidejte název každého připojení zpátky do Vývojářské nástroje a ověřte, zda připojení stále funguje.
+2. Pokud připojení funguje správně, není poškozeno a můžete ho bezpečně opustit. Pokud připojení nefunguje, odeberte jeho hodnotu z Vývojářské nástroje a zaznamenejte si ho, abyste ho mohli později přidat zpátky.
+3. Opakujte, dokud nezkontrolovali všechna připojení.
+
+Po prozatím všech připojeních se u všech názvů připojení, které se nepřidaly, musíte vymazat poškozená data (pokud existují) a přidat je zpátky pomocí běžných kroků pomocí Průzkumník služby Storage.
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. Otevřete Správce přihlašovacích údajů tak, že otevřete nabídku Start a vyhledáte správce přihlašovacích údajů.
+2. V otevřeném okně Přejít na přihlašovací údaje systému Windows.
+3. V části Obecné přihlašovací údaje vyhledejte položky s klíčem `<connection_type_key>/<corrupted_connection_name>` ( `StorageExplorer_CustomConnections_Accounts_v1/account1`například).
+4. Odeberte tyto položky a přidejte připojení zpátky.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+
+1. Otevřete Spotlight (panel příkazů příkazového řádku) a vyhledejte řetězec přístup k řetězci.
+2. Vyhledejte položky s klíčem `<connection_type_key>/<corrupted_connection_name>` ( `StorageExplorer_CustomConnections_Accounts_v1/account1`například).
+3. Odstraňte tyto položky a přidejte připojení zpátky.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+Správa místních přihlašovacích údajů se liší v závislosti na distribuci systému Linux. Pokud vaše distribuce systému Linux neposkytuje integrovaný nástroj grafického uživatelského rozhraní pro správu místních přihlašovacích údajů, můžete nainstalovat nástroj třetí strany pro správu místních přihlašovacích údajů. Můžete například použít Open source nástroj [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)pro správu místních přihlašovacích údajů pro Linux.
+
+1. Otevřete nástroj pro správu místních přihlašovacích údajů, najděte uložené přihlašovací údaje.
+2. Vyhledejte položky s klíčem `<connection_type_key>/<corrupted_connection_name>` ( `StorageExplorer_CustomConnections_Accounts_v1/account1`například).
+3. Odstraňte tyto položky a přidejte připojení zpátky.
+
+Pokud k této chybě dochází i po provedení těchto kroků, nebo pokud byste chtěli sdílet, co si myslíte, že jsou připojení poškozená, [otevřete problém](https://github.com/microsoft/AzureStorageExplorer/issues) na naší stránce GitHubu.
+
 ## <a name="issues-with-sas-url"></a>Problémy s adresou URL SAS
 
 Pokud se připojujete ke službě pomocí adresy URL SAS a dochází k této chybě:
@@ -233,15 +285,15 @@ Pokud omylem připojíte neplatnou adresu URL SAS a nemůžete se odpojit, postu
 
 ## <a name="linux-dependencies"></a>Závislosti Linux
 
-<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
+Průzkumník služby Storage 1.10.0 a novější je k dispozici jako modul snap z obchodu s modulem snap-in. Průzkumník služby Storage přichycení automaticky nainstaluje všechny závislosti a aktualizuje, když je k dispozici nová verze modulu snap-in. Instalace modulu snap-in Průzkumník služby Storage je doporučovanou metodou instalace.
 
-Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+Průzkumník služby Storage vyžaduje použití Správce hesel, který může být nutné ručně připojit, jinak bude Průzkumník služby Storage fungovat správně. Pomocí následujícího příkazu se můžete připojit Průzkumník služby Storage k správci hesel vašeho systému:
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+Aplikaci můžete také stáhnout jako soubor. tar. gz, ale budete muset nainstalovat závislosti ručně.
 
 > [!IMPORTANT]
 > Průzkumník služby Storage, jak je uvedeno v souborech. tar. gz, jsou podporovány pouze pro distribuce Ubuntu. Jiné distribuce nebyly ověřeny a mohou vyžadovat alternativní nebo další balíčky.

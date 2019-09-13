@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679113"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913975"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -140,7 +140,10 @@ Třída [EventProcessorHost][] taky implementuje mechanismus vytváření kontro
 
 ## <a name="publisher-revocation"></a>Odvolání zdroje
 
-Kromě pokročilých funkcí za běhu [EventProcessorHost][], umožňuje Služba Event Hubs odvolání zdroje, aby bylo možné blokovat konkrétním zdrojům možnost odesílat události do centra událostí. Tyto funkce jsou užitečné, pokud došlo k napadení tokenu zdroje nebo aktualizace softwaru je příčinou chovat nevhodně. V těchto situacích může být pro identitu zdroje, která je součástí jeho tokenu SAS, zablokováno publikování událostí.
+Kromě pokročilých běhových funkcí pro hostitele procesoru událostí umožňuje služba Event Hubs [odvolání vydavatele](/rest/api/eventhub/revoke-publisher) , aby bylo možné zablokovat konkrétním vydavatelům odeslání události do centra událostí. Tyto funkce jsou užitečné, pokud došlo k napadení tokenu zdroje nebo aktualizace softwaru je příčinou chovat nevhodně. V těchto situacích může být pro identitu zdroje, která je součástí jeho tokenu SAS, zablokováno publikování událostí.
+
+> [!NOTE]
+> V současné době tato funkce podporuje jenom REST API ([odvolání vydavatele](/rest/api/eventhub/revoke-publisher)).
 
 Další informace o odvolání zdroje a o tom, jak jako zdroj odesílat do centra událostí, najdete v ukázce [zabezpečeného publikování ve velkém rozsahu u služby Event Hubs](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab).
 

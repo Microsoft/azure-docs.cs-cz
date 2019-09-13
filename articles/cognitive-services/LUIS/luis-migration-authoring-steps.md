@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898861"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935205"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Postup migrace do prostředku pro vytváření obsahu Azure
 
@@ -94,6 +94,13 @@ Pokud jste vlastníkem libovolných aplikací LUIS, je proces migrace k dispozic
 1. Než budete mít přístup k vašim aplikacím, vyberte prostředek pro vytváření obsahu a LUIS, abyste viděli aplikace, které může vytvořit.
 
     ![Pokud chcete zobrazit aplikace, které může vytvořit, vyberte předplatné a LUIS Authoring Resource.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+
+
+## <a name="app-contributor-begins-the-migration-process"></a>Přispěvatel aplikace zahájí proces migrace.
+
+Použijte stejný postup jako u vlastníka aplikace pro migraci. Proces vytvoří nový zdroj `LUIS.Authoring`obsahu typu. 
+
+Abyste se mohli přidat jako přispěvatel do migrovaných aplikací vlastněných ostatními, musíte svůj účet migrovat.  
 
 ## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Po dokončení procesu migrace přidejte přispěvatele do prostředku pro vytváření obsahu.
 

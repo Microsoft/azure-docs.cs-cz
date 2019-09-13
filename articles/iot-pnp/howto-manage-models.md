@@ -8,12 +8,12 @@ services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: yahajiza
-ms.openlocfilehash: ec36bef9c2b65a5c88a52621bbf3a1db708c235c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880498"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932855"
 ---
 # <a name="manage-models-in-the-repository"></a>Správa modelů v úložišti
 
@@ -41,7 +41,7 @@ Na [portálu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI nabízí příkazy pro správu modelů a rozhraní funkcí zařízení v úložištích IoT technologie Plug and Play veřejných a podnikových modelů.
+Azure CLI nabízí příkazy pro správu modelů a rozhraní funkcí zařízení v úložištích IoT technologie Plug and Play veřejných a podnikových modelů. Další informace najdete v tématu [instalace a používání rozšíření Azure IoT pro Azure CLI](./howto-install-pnp-cli.md) – příručka.
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 

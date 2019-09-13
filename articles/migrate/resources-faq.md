@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279507"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934923"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Nejčastější dotazy
 
@@ -26,6 +26,37 @@ Podívejte se na [seznam pro VMware](https://docs.microsoft.com/azure/migrate/mi
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Jaký je rozdíl mezi Azure Migrate a Azure Site Recovery?
 
 Azure Migrate poskytuje centralizované centrum pro zahájení migrace, spouštění a sledování zjišťování a hodnocení počítačů a zatížení a provádění a sledování migrace počítačů a úloh do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) je řešení zotavení po havárii. Migrace Azure Migrate serveru používá Azure Site Recovery na back-endu k povolení migračních scénářů migrace místních počítačů pomocí přebírání a posunutí.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Návody odstranit projekt Azure Migrate
+
+Pokud chcete odstranit Azure Migrate projekt a jeho přidružené prostředky, včetně webů, trezorů služby Recovery Services, migrovat trezory, trezory klíčů, projekty vyhodnocení atd. Přejít na stránku skupiny prostředků na Azure Portal, vyberte skupinu prostředků, ve které se migruje projekt. bylo vytvořeno a vyberte možnost Zobrazit skryté typy. Pak vyberte níže uvedený projekt migrace a jeho přidružené prostředky a odstraňte je. Případně, pokud se skupina prostředků používá výhradně projektem migrace a přidruženými prostředky, můžete odstranit celou skupinu prostředků. Všimněte si, že tento seznam je vyčerpávající seznam všech typů prostředků vytvořených pro všechny scénáře (zjišťování, vyhodnocení a migrace). Vyhledáte jenom prostředky, které se pro váš scénář vytvořily ve skupině prostředků.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>Prostředky vytvořené pro zjištěné, vyměřené nebo migrované servery na VMware nebo fyzických serverech [prostředek (typ)]:
+
+- "Zařízení" kV (Trezor klíčů)
+- Web "zařízení" (Microsoft. OffAzure/VMwareSites)
+- ProjectName (Microsoft. migruje/migrateprojects)
+- Projekt ProjectName (Microsoft. migruje/assessmentProjects)
+- "ProjectName" rsvault (Recovery Services trezor)
+- "ProjectName"-MigrateVault-* (Recovery Services trezor)
+- migrateappligwsa * (účet úložiště)
+- migrateapplilsa * (účet úložiště)
+- migrateapplicsa * (účet úložiště)
+- migrateapplikv * (Trezor klíčů)
+- migrateapplisbns16041 (obor názvů Service Bus)
+
+Poznámka: Odstraňte účty úložiště a trezory klíčů opatrně, protože můžou obsahovat data aplikace a bezpečnostní klíče v uvedeném pořadí.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Prostředky vytvořené pro zjištěné, vyměřené nebo migrované servery na Hyper-V [prostředek (typ)]:
+
+- ProjectName (Microsoft. migruje/migrateprojects)
+- Projekt ProjectName (Microsoft. migruje/assessmentProjects)
+- HyperV * kV (Trezor klíčů)
+- Web HyperV * (Microsoft. OffAzure/HyperVSites)
+- "ProjectName"-MigrateVault-* (Recovery Services trezor) 
+
+Poznámka: Odstraňte Trezor klíčů s upozorněním, že může obsahovat zabezpečovací klíče.
+
 
 ## <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -189,7 +220,7 @@ Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazen
 Zobrazí seznam [operačních systémů Windows a Linux, které Azure monitor pro virtuální počítače podporuje](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Je možné vizualizovat závislosti v Azure Migrate po dobu delší než hodinu?
-Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k dotazování na [data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
 
 ### <a name="can-i-use-dependency-visualization-for-groups-that-contain-more-than-10-vms"></a>Můžu použít vizualizaci závislostí pro skupiny, které obsahují více než 10 virtuálních počítačů?
 Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které obsahují až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
@@ -200,5 +231,5 @@ Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure
 
 Migrace Azure Migrate serveru používá modul replikace Site Recovery pro migraci virtuálních počítačů VMware založenou na agentech, migraci virtuálních počítačů Hyper-V a migraci fyzických serverů do Azure. Možnost bez agenta pro migraci virtuálních počítačů VMware je nativně integrovaná do migrace serveru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

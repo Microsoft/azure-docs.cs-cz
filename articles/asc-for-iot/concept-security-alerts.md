@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597241"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933919"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
 
@@ -85,11 +85,11 @@ Další podrobnosti najdete v tématu [Vytvoření vlastních výstrah](quicksta
 | Střední   | Certifikát se odstranil z IoT Hub.                                    | Certifikát s názvem \'% {DescCertificateName}\' se odstranil z IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.| 1. Ujistěte se, že certifikát byl odebrán autorizovaným účastníkem. <br> 2. Pokud certifikát neodebrala příslušná strana, přidejte ho zpátky a upozorněte ho do organizačního týmu zabezpečení. |
 | Střední   | Zjistil se neúspěšný pokus o přidání certifikátu do IoT Hub.     | Došlo k neúspěšnému pokusu o přidání certifikátu \'% {DescCertificateName}\' do IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.|   Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.  |
 | Střední   | Zjistil se neúspěšný pokus o odstranění certifikátu z IoT Hub. | Došlo k neúspěšnému pokusu o odstranění certifikátu \'% {DescCertificateName}\' z IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.
-| Nízká      | Pokus o přidání nebo úpravu nastavení diagnostiky zjištěného IoT Hub    | Byl zjištěn pokus o přidání nebo úpravu nastavení diagnostiky IoT Hub. Nastavení diagnostiky umožňují znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu.  |
-| Nízká      | Došlo k pokusu o odstranění nastavení diagnostiky ze zjištěného IoT Hub.       | Byl proveden pokus o přidání nebo\' úpravu nastavení \'diagnostiky% {DescDiagnosticSettingName}\' IoT Hub \'% {DescIoTHubName}\',% {DescAttemptStatusMessage}. Nastavení diagnostiky umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu. |1. Ujistěte se, že certifikát byl odebrán autorizovaným účastníkem.<br> 2. Pokud certifikát neodebrala příslušná strana, přidejte ho zpátky a upozorněte ho do svého týmu zabezpečení informací.
+| Nízká      | Pokus o přidání nebo úpravu nastavení diagnostiky zjištěného IoT Hub    | Byl zjištěn pokus o přidání nebo úpravu nastavení diagnostiky IoT Hub. Nastavení diagnostiky umožňují znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu.  |1. Ujistěte se, že certifikát byl odebrán autorizovaným účastníkem.<br> 2. Pokud certifikát neodebrala příslušná strana, přidejte ho zpátky a upozorněte ho do svého týmu zabezpečení informací.
+| Nízká      | Došlo k pokusu o odstranění nastavení diagnostiky ze zjištěného IoT Hub.       | Byl proveden pokus o přidání nebo\' úpravu nastavení \'diagnostiky% {DescDiagnosticSettingName}\' IoT Hub \'% {DescIoTHubName}\',% {DescAttemptStatusMessage}. Nastavení diagnostiky umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně nastavení diagnostiky jsou udělována pouze oprávněným stranám.
 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled](overview.md) služby Azure Security Center for IoT
 - Informace o [přístupu k datům zabezpečení](how-to-security-data-access.md)

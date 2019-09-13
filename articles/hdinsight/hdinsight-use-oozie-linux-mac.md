@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811680"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900605"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Hadoop k definování a spuštění pracovního postupu pro Azure HDInsight se systémem Linux
 
@@ -301,7 +301,7 @@ Definice úlohy popisuje, kde najít soubor Workflow. XML. Popisuje také místo
     |Hodnota zástupného textu| Nahrazená hodnota|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Hodnota přijatá z kroku 1.|
-    |správ| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
+    |Správ| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
     |název_serveru| Název serveru služby Azure SQL Database.|
     |sqlLogin| Přihlášení k serveru služby Azure SQL Database.|
     |sqlPassword| Přihlašovací heslo serveru Azure SQL Database.|
@@ -510,29 +510,29 @@ Chcete-li získat přístup k webovému uživatelskému rozhraní Oozie, proveď
 
 3. Na levé straně stránky vyberte **Oozie** > **Rychlé odkazy** > **Oozie web UI**.
 
-    ![Obrázek nabídek](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Obrázek nabídek](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Webové uživatelské rozhraní Oozie ve výchozím nastavení zobrazuje spuštěné úlohy pracovního postupu. Chcete-li zobrazit všechny úlohy pracovního postupu, vyberte možnost **všechny úlohy**.
 
-    ![Všechny zobrazené úlohy](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Všechny zobrazené úlohy](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. Chcete-li zobrazit další informace o úloze, vyberte úlohu.
 
-    ![Informace o úloze](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Informace o úloze](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. Na kartě **informace o úloze** můžete zobrazit základní informace o úloze a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **Konfigurace úlohy**, přístupu k **protokolu úlohy**nebo zobrazení orientovaného acyklického grafu (DAG) úlohy v rámci **úlohy DAG**.
 
    * **Protokol úlohy**: Vyberte tlačítko **získat protokoly** , abyste získali všechny protokoly pro úlohu, nebo použijte pole **zadat vyhledávací filtr** k filtrování protokolů.
 
-       ![Protokol úlohy](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![Protokol úlohy](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **DAG úlohy**: DAG je grafický přehled cest k datům pořízených prostřednictvím pracovního postupu.
 
-       ![DAG úlohy](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![DAG úlohy](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. Pokud vyberete jednu z akcí na kartě **informace o úloze** , zobrazí se informace o akci. Vyberte například akci **RunSqoopExport** .
 
-    ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. Můžete zobrazit podrobnosti o akci, jako je například odkaz na **adresu URL konzoly**. Pomocí tohoto odkazu můžete zobrazit informace o sledování úloh pro úlohu.
 
@@ -632,18 +632,18 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
 7. Pokud přejdete na webové uživatelské rozhraní Oozie a vyberete kartu **úlohy koordinátora** , zobrazí se vám informace, jako na následujícím obrázku:
 
-    ![Karta úlohy koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Karta úlohy koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     **Další položka Vymaterializování** obsahuje při příštím spuštění úlohy.
 
 8. Podobně jako u předchozí úlohy pracovního postupu, pokud vyberete položku úlohy ve webovém uživatelském rozhraní, zobrazí se informace o úloze:
 
-    ![Informace o úloze koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Informace o úloze koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > Tento obrázek zobrazuje pouze úspěšné běhy úlohy, nikoli jednotlivé akce v rámci naplánovaného pracovního postupu. Chcete-li zobrazit jednotlivé akce, vyberte jednu z položek **Akce** .
 
-    ![Informace o akci koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Informace o akci koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -706,7 +706,7 @@ Například pro úlohu v tomto dokumentu použijte následující postup:
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak spustit úlohu Oozie. Další informace o tom, jak pracovat se službou HDInsight, najdete v následujících článcích:
 
@@ -747,7 +747,7 @@ V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak spust
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

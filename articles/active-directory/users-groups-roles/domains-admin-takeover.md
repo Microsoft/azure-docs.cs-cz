@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872208"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914782"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -43,7 +43,7 @@ Některé produkty, které zahrnují SharePoint a OneDrive, jako je například 
 
 3. V e-mailu s potvrzením od Power BI vyberte **Ano, to jsem já**.
 
-4. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí uživatelského účtu Power BI. Zobrazí se zpráva, která vám dává pokyn, abyste se **stali správcem** názvu domény, který už byl ověřený v nespravovaném tenantovi. Vyberte možnost **Ano, chci být správcem**.
+4. Přihlaste se k [centru pro správu Microsoft 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Zobrazí se zpráva, která vám dává pokyn, abyste se **stali správcem** názvu domény, který už byl ověřený v nespravovaném tenantovi. Vyberte možnost **Ano, chci být správcem**.
   
    ![první snímek obrazovky, který se stane správcem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -176,7 +176,7 @@ rutiny | Použití
 
 Úspěšná výzva vás vrátí do výzvy bez chyby.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
 * [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)

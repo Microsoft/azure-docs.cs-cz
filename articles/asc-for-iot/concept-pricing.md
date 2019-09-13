@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596511"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933792"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -66,9 +66,10 @@ Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jedn
 | **Log Analytics úložiště** |  |
 | Doporučení a výstrahy zařízení| Doporučení a výstrahy zabezpečení vygenerované službou | Nenepovinné |
 | Nezpracovaná data zabezpečení| Nezpracovaná data zabezpečení ze zařízení IoT shromažďovaných agenty zabezpečení | Zakázat _události zabezpečení úložiště nezpracovaného zařízení_ |
+|
 
 >[!Important]
-> Vypnutí má závažné důsledky pro dostupné funkce zabezpečení.
+> Možnost vyzkoušení má vážný dopad na Azure Security Center dostupnosti funkcí zabezpečení IoT. 
   
 | Odhlásit | Důsledky |
 | --- | --- |

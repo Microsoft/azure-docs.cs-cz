@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření, načtení a dotazování indexu pomocí Azure Portal-Azure Search'
+title: 'Rychlý start: Vytvoření indexu vyhledávání pomocí Azure Portal-Azure Search'
 description: Průvodce importem dat v Azure Portal slouží k vytvoření, načtení a dotazování prvního indexu v Azure Search.
 author: lobrien
 manager: nitinme
@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656351"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884559"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Rychlý start: Vytvoření indexu Azure Search pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Tento krok prozatím přeskočíme a přejdete přímo na, abyste mohli **přizp
    ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Můžete si projít příkladem indexování AI v rychlém startu [](cognitive-search-quickstart-blob.md) nebo [kurzu](cognitive-search-tutorial-blob.md).
+> Můžete si projít příkladem indexování AI v [rychlém](cognitive-search-quickstart-blob.md) startu nebo [kurzu](cognitive-search-tutorial-blob.md).
 
 ### <a name="step-3---configure-index"></a>Krok 3 – konfigurace indexu
 
@@ -219,7 +219,7 @@ Zvýrazňování shod označuje formátování textu odpovídajícího klíčov�
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Příklad (zvýraznění): `search=beach&highlight=Description`
 
-* V tomto příkladu je ve formátovaných slovech snazší místo v poli Popis.
+* V tomto příkladu je ve formátovaných *slovech* snazší místo v poli Popis.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Příklad (lingvistická analýza): `search=beaches&highlight=Description`
 
@@ -273,7 +273,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Můžete prozkoumat další funkce služby Azure Search s použitím programových nástrojů:
 

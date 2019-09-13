@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608581"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931267"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,7 +59,7 @@ V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou 
 
 ### <a name="securing-data-store-credentials"></a>Zabezpečení přihlašovacích údajů úložiště dat
 
-- **Uloží šifrované přihlašovací údaje do spravovaného úložiště Azure Data Factory**. Data Factory pomáhá chránit přihlašovací údaje úložiště dat jejich šifrováním pomocí certifikátů spravovaných Microsoftem. Tyto certifikáty se otočí každé dva roky (včetně obnovení certifikátu a migrace přihlašovacích údajů). Šifrované přihlašovací údaje jsou bezpečně uložené v účtu úložiště Azure spravovaném službou Azure Data Factory Management Services. Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/fundamentals/storage-overview.md).
+- **Uloží šifrované přihlašovací údaje do spravovaného úložiště Azure Data Factory**. Data Factory pomáhá chránit přihlašovací údaje úložiště dat jejich šifrováním pomocí certifikátů spravovaných Microsoftem. Tyto certifikáty se otočí každé dva roky (včetně obnovení certifikátu a migrace přihlašovacích údajů). Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/fundamentals/storage-overview.md).
 - **Ukládat přihlašovací údaje v Azure Key Vault**. Přihlašovací údaje úložiště dat můžete také uložit v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory načítá přihlašovací údaje během provádění aktivity. Další informace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Šifrování dat při přenosu
@@ -108,14 +108,15 @@ Hybridní scénáře vyžadují instalaci místního prostředí Integration run
 Kanál příkazů umožňuje komunikaci mezi službami přesunu dat v Data Factory a v místním prostředí Integration runtime. Tato komunikace obsahuje informace související s aktivitou. Datový kanál se používá k přenosu dat mezi místními úložišti dat a cloudových úložišť dat.    
 
 ### <a name="on-premises-data-store-credentials"></a>Přihlašovací údaje místního úložiště dat
-Přihlašovací údaje pro vaše místní úložiště dat se vždycky šifrují a ukládají. Můžou být buď uložené místně na místním prostředí Integration runtime, nebo se ukládají do Azure Data Factory spravovaného úložiště (stejně jako přihlašovací údaje cloudového úložiště). 
+Přihlašovací údaje mohou být uloženy v rámci objektu pro vytváření dat nebo na [ně odkazovat pomocí služby Data Factory](store-credentials-in-key-vault.md) za běhu z Azure Key Vault. Pokud ukládáte přihlašovací údaje v rámci služby Data Factory, je vždy uložen šifrovaný v místním prostředí Integration runtime. 
+ 
+- **Ukládat přihlašovací údaje lokálně**. Pokud přímo použijete rutinu **set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji, které jsou vložené ve formátu JSON, bude propojená služba zašifrovaná a uložená v místním prostředí Integration runtime.  V takovém případě přihlašovací údaje přes back-end službu Azure, která je geograficky zabezpečená, na integrační počítač v místním prostředí, kde je konečně encrpted a uložený. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) .
 
-- **Ukládat přihlašovací údaje lokálně**. Pokud chcete místně šifrovat a ukládat přihlašovací údaje v místním prostředí Integration runtime, postupujte podle kroků v části [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Tato možnost podporuje všechny konektory. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) . 
+- **Ukládat přihlašovací údaje v Azure Key Vault**. Přihlašovací údaje úložiště dat můžete také uložit v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory načítá přihlašovací údaje během provádění aktivity. Další informace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md).
+
+- **Ukládat přihlašovací údaje místně bez přetečení přihlašovacích údajů prostřednictvím back-endu Azure do místního prostředí Integration runtime**. Pokud chcete místně šifrovat a ukládat přihlašovací údaje v místním prostředí Integration runtime, aniž byste museli procházet přihlašovací údaje prostřednictvím back-endu služby Data Factory, postupujte podle kroků v části [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Tato možnost podporuje všechny konektory. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) . 
 
    Použijte rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** k šifrování přihlašovacích údajů propojené služby a citlivých podrobností v propojené službě. Pak můžete pomocí rutiny **set-AzDataFactoryV2LinkedService** použít vrácený kód JSON (s elementem **EncryptedCredential** v připojovacím řetězci) a vytvořit propojenou službu.  
-
-- **Ukládejte v Azure Data Factory spravovaném úložišti**. Pokud přímo použijete rutinu **set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji, které jsou vložené ve formátu JSON, bude propojená služba zašifrovaná a uložená v Azure Data Factory spravovaném úložišti. Citlivé informace jsou pořád šifrované pomocí certifikátu a společnost Microsoft tyto certifikáty spravuje.
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Porty používané při šifrování propojené služby v místním prostředí Integration runtime
@@ -137,9 +138,9 @@ Následující tabulka shrnuje doporučení konfigurace sítě a místního pros
 
 | Source      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Místní | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
 
 Následující obrázky ukazují použití prostředí Integration runtime v místním prostředí pro přesun dat mezi místní databází a službami Azure pomocí ExpressRoute a IPSec VPN (s využitím Azure Virtual Network):
 

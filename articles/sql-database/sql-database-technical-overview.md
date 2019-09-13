@@ -12,20 +12,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812191"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913993"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database Service
 
-Azure SQL Database je spravovaná služba relační databáze pro obecné účely, která umožňuje vytvořit vysoce dostupnou a vysoce výkonnou vrstvu úložiště dat pro aplikace a řešení v cloudu Microsoft Azure. SQL Database může být správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje používat výkonné funkce pro zpracování relačních dat i [nerelačních struktur](sql-database-multi-model-features.md) , jako jsou grafy, JSON, prostorová data a XML. Vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) a umožňuje používat bohatou sadu pokročilých funkcí pro zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](sql-database-in-memory.md) a [Inteligentní zpracování dotazů. ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
+Azure SQL Database je spravovaná služba relační databáze pro obecné účely, která umožňuje vytvořit vysoce dostupnou a vysoce výkonnou vrstvu úložiště dat pro aplikace a řešení v cloudu Microsoft Azure. SQL Database může být správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje používat výkonné funkce pro zpracování relačních dat i nerelačních [struktur](sql-database-multi-model-features.md) , jako jsou grafy, JSON, prostorová data a XML. Vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) a umožňuje používat bohatou sadu pokročilých funkcí pro zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](sql-database-in-memory.md) a [Inteligentní zpracování dotazů. ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
 V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md) a [nákupní model založený na DTU](sql-database-service-tiers-dtu.md). SQL Database je plně spravovaná služba, která má integrované vysoce dostupnosti, zálohy a další běžné operace údržby. Microsoft zpracovává veškerou opravu a aktualizaci kódu SQL a operačního systému plynule a předchází všem správám základní infrastruktury.
 
 > [!NOTE]
 > Glosář termínů v Azure SQL Database naleznete v tématu [SQL Database terms Glosář](sql-database-glossary-terms.md)
+
+## <a name="deployment-models"></a>Modely nasazení
 
 Azure SQL Database poskytuje následující možnosti nasazení databáze Azure SQL:
 
@@ -51,11 +53,19 @@ Svou první aplikaci můžete vytvořit na malé a izolované databázi s nízk�
 
 Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Samostatná databáze podporuje ruční dynamickou škálovatelnost, ale ne automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují však skripty, které mohou přispět k automatizaci škálovatelnosti pro jedinou databázi. Příklad najdete v tématu [použití PowerShellu pro monitorování a škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Nákup modelů, úrovní služeb, velikostí výpočtů a částek úložiště
+### <a name="purchasing-models"></a>Nákupní modely
 
 SQL Database nabízí dva nákupní modely:
-- [Nákupní model založený na vCoreech](sql-database-service-tiers-vcore.md) umožňuje zvolit počet virtuální jádra, velikost paměti a velikost a rychlost úložiště. Nákupní model založený na vCoreech vám také umožní použít [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) k získání úspory nákladů. Další informace o Zvýhodněné hybridní využití Azure najdete v tématu [Nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
+- [Nákupní model založený na vCoreech](sql-database-service-tiers-vcore.md) umožňuje zvolit počet virtuální jádra, velikost paměti a velikost a rychlost úložiště. Nákupní model založený na vCoreech vám také umožní použít **[Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)** k získání úspory nákladů. Další informace o Zvýhodněné hybridní využití Azure najdete v tématu [Nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí kombinaci výpočetních, paměťových a vstupně-výstupních prostředků ve třech úrovních služeb, aby se podporovaly odlehčené a těžké databázové úlohy. Výpočetní velikosti v rámci jednotlivých vrstev poskytují různé kombinace těchto prostředků, do kterých můžete přidat další prostředky úložiště.
+- [Model bez serveru](sql-database-serverless.md) , který automaticky škáluje výpočetní výkon na základě požadavků na zatížení a faktur za množství výpočetní služby využité za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
+
+### <a name="service-tiers"></a>Úrovně služby
+
+Azure SQL Database nabízí tři úrovně služeb, které jsou navrženy pro různé typy aplikací:
+- [Pro obecné účely/standardní](sql-database-service-tier-general-purpose.md) úroveň služeb navržená pro běžné úlohy. Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.
+- Úroveň služby [pro důležité obchodní informace/Premium](sql-database-service-tier-business-critical.md) navržená pro aplikace OLTP s vysokou mírou transakcí a nejnižší latencí v/v. Nabízí nejvyšší odolnost proti chybám při použití několika izolovaných replik.
+- Úroveň služby s velkým [měřítkem](sql-database-service-tier-hyperscale.md) navržená pro velmi rozsáhlou databázi OLTP a možnost automatického škálování úložiště a škálování výpočetních prostředků. 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -169,7 +179,7 @@ Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce za
 
 ### <a name="data-encryption"></a>Šifrování dat
 
-SQL Database zabezpečuje vaše data tím, že poskytuje šifrování pro data v pohybu pomocí [Transport Layer Security](https://support.microsoft.com/kb/3135244), pro neaktivní a šifrovaná data a pro [data, která](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)se používají s [Always šifrovaným](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)šifrováním.
+SQL Database zabezpečuje vaše data tím, že poskytuje šifrování pro data v pohybu pomocí [Transport Layer Security](https://support.microsoft.com/kb/3135244), pro neaktivní a šifrovaná [](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)data a pro data, která se používají s [Always šifrovaným](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)šifrováním.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
@@ -242,7 +252,7 @@ K Zvýhodněné hybridní využití Azure pro SQL Server budou mít zákazníci 
 - [Zpětná vazba](https://aka.ms/sqlfeedback): Hlášení chyb a funkcí žádosti
 - [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze SQL Server
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) najdete cenové kalkulačky a srovnání cen izolovaných databází a elastických fondů.
 - Tyto rychlé starty vám pomůžou začít:

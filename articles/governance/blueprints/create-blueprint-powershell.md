@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231906"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910038"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý start: Definování a přiřazení Azure Blueprint pomocí prostředí PowerShell
 
@@ -28,12 +28,16 @@ Seznamte se s principy vytváření a přiřazování podrobných plánů, abyst
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě není nainstalovaná, nainstalujte a ověřte modul **AZ. detail** z Galerie prostředí PowerShell podle pokynů v tématu [Přidání modulu AZ. detail](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) .
+
 ## <a name="create-a-blueprint"></a>Vytvořit podrobný plán
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. Vytvoříme podrobný plán MyBlueprint, který pro předplatné nakonfiguruje přiřazení rolí a zásad. Potom přidáme skupinu prostředků, šablonu Resource Manageru a přiřazení role ke skupině prostředků.
 
 > [!NOTE]
-> Při použití PowerShellu se vytvoří nejprve objekt podrobného plánu. Pro každý přidávaný _artefakt_, který má parametry, je potřeba předem definovat parametry v počátečním _podrobném plánu_.
+> Při použití PowerShellu se _vytvoří nejprve objekt_ podrobného plánu. Pro každý přidávaný _artefakt_, který má parametry, je potřeba předem definovat parametry v počátečním _podrobném plánu_.
 
 1. Vytvořte počáteční objekt _blueprint_. Parametr **BlueprintFile** má soubor JSON, který obsahuje vlastnosti týkající se podrobného plánu, všech skupin prostředků, které se mají vytvořit, a všech parametrů úrovně podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
 
@@ -311,7 +315,7 @@ Hodnota `{BlueprintVersion}` představuje řetězec složený z písmen, čísli
 
 ## <a name="assign-a-blueprint"></a>Přiřazení podrobného plánu
 
-Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému. Parametr podrobného plánu určuje plán, který se má přiřadit. K zadání parametrů název, umístění, identita, Lock a podrobného plánu použijte odpovídajícího parametru PowerShellu v `New-AzBlueprintAssignment` rutině nebo je poskytněte v souboru JSON s parametrem **AssignmentFile** .
+Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému. Parametr podrobného plánu **určuje plán,** který se má přiřadit. K zadání parametrů název, umístění, identita, Lock a podrobného plánu použijte odpovídajícího parametru PowerShellu v `New-AzBlueprintAssignment` rutině nebo je poskytněte v souboru JSON s parametrem **AssignmentFile** .
 
 1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Jelikož parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) pro shromáždění identifikátorů objectID pro použití v **AssignmentFile** pro vlastní uživatelé, skupiny nebo instanční objekty.
 
@@ -395,9 +399,9 @@ assignMyBlueprint
 Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o [životním cyklu](./concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)

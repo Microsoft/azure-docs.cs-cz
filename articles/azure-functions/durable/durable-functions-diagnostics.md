@@ -2,19 +2,19 @@
 title: Diagnostika v Durable Functions – Azure
 description: Naučte se diagnostikovat problémy s rozšířením Durable Functions pro Azure Functions.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734494"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933506"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -28,16 +28,16 @@ Azure Functions trvalá přípona také generuje *sledovací události* , které
 
 ### <a name="tracking-data"></a>Sledování dat
 
-Každá událost životního cyklu instance orchestrace způsobí, že se do kolekce **Traces** v Application Insights zapisuje událost sledování. Tato událost obsahuje datovou část **customDimensions** s několika poli.  Všechny názvy polí jsou společně s `prop__`předponou.
+Každá událost životního cyklu instance orchestrace způsobí, že se do kolekce Traces v Application Insights zapisuje událost sledování. Tato událost obsahuje datovou část **customDimensions** s několika poli.  Všechny názvy polí jsou společně s `prop__`předponou.
 
 * **hubName**: Název centra úloh, ve kterém jsou orchestrace spuštěny.
 * **appName**: Název aplikace Function App To je užitečné v případě, že máte více aplikací funkcí, které sdílejí stejnou instanci Application Insights.
-* **slotName**: [Slot pro nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) , ve kterém je spuštěná aktuální aplikace Function App To je užitečné v případě, že použijete sloty nasazení na verzi vašich orchestrací.
+* **slotName**: [Slot pro nasazení](../functions-deployment-slots.md) , ve kterém je spuštěná aktuální aplikace Function App To je užitečné v případě, že použijete sloty nasazení na verzi vašich orchestrací.
 * **funkce Function**: Název funkce Orchestrator nebo Activity.
 * **functionType**: Typ funkce, například **Orchestrator** nebo **aktivita**.
 * **instanceId**: Jedinečné ID instance Orchestration.
 * **stav**: Stav provádění životního cyklu instance. Platné hodnoty jsou:
-  * **Naplánovalo**se: Funkce byla naplánována na spuštění, ale ještě nebyla spuštěna.
+  * Naplánovalo se: Funkce byla naplánována na spuštění, ale ještě nebyla spuštěna.
   * **Zahájeno**: Funkce začala běžet, ale ještě nebyla očekávána nebo dokončena.
   * **Očekáváno**: Nástroj Orchestrator naplánoval nějakou práci a čeká na její dokončení.
   * **Naslouchání**: Nástroj Orchestrator naslouchá externímu oznámení o události.
@@ -107,7 +107,7 @@ Chcete-li povolit generování podrobných událostí opětovného přehrání o
 
 ### <a name="single-instance-query"></a>Dotaz s jednou instancí
 
-Následující dotaz ukazuje historické údaje o sledování pro jednu instanci orchestrace funkce [sekvence Hello](durable-functions-sequence.md) . Je napsaný pomocí [jazyka AIQL (Application Insights Query Language)](https://aka.ms/LogAnalyticsLanguageReference). Vyfiltruje provádění opakovaného přehrání, aby se zobrazila pouze cesta *logického* spuštění. Události lze seřadit podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následujícím dotazu:
+Následující dotaz ukazuje historické údaje o sledování pro jednu instanci orchestrace funkce [sekvence Hello](durable-functions-sequence.md) . Je napsaný pomocí [jazyka AIQL (Application Insights Query Language)](https://aka.ms/LogAnalyticsLanguageReference). Vyfiltruje provádění opakovaného přehrání, aby se zobrazila pouze cesta logického spuštění. Události lze seřadit podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následujícím dotazu:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -349,12 +349,13 @@ Klienti získají následující odpověď:
 
 Azure Functions podporuje přímo ladění kódu funkce a tato podpora přenáší do Durable Functions, ať už běží v Azure nebo lokálně. Existuje však několik chování, která je potřeba znát při ladění:
 
-* **Přehrát**znovu: Funkce nástroje Orchestrator se pravidelně přehrávají při přijetí nových vstupů. To znamená, že jediné *logické* spuštění funkce Orchestrator může způsobit, že se stejnou zarážku zavede několikrát, zejména pokud je nastavená na začátku v kódu funkce.
-* **Očekává**se: Pokaždé `await` , když dojde k nějakému, vrátí řízení k trvalému dispečeru rozhraní úloh. Pokud se jedná o první zjištění určitého konkrétního `await` úkolu, přidružený úkol nebude *nikdy* obnoven. Vzhledem k tomu, že úloha nikdy nepokračuje *, krokování* na await (F10 v aplikaci Visual Studio) není ve skutečnosti možné. Krokování funguje pouze při opětovném přehrání úkolu.
-* **Vypršení časových limitů zasílání zpráv**: Durable Functions interně používá zprávy ve frontě k řízení provádění funkcí Orchestrator i funkcí aktivit. V prostředí s více virtuálními počítači může rozdělení do ladění po dlouhou dobu způsobit, že jiný virtuální počítač tuto zprávu vybere a bude mít za následek duplicitní provádění. Toto chování existuje i u běžných funkcí triggeru fronty, ale je důležité, abyste v tomto kontextu odkazovali, protože fronty představují podrobnosti implementace.
+* **Přehrát**znovu: Funkce nástroje Orchestrator se pravidelně [přehrávají](durable-functions-orchestrations.md#reliability) při přijetí nových vstupů. To znamená, že jediné *logické* spuštění funkce Orchestrator může způsobit, že se stejnou zarážku zavede několikrát, zejména pokud je nastavená na začátku v kódu funkce.
+* **Očekává**se: Pokaždé, když se ve funkci Orchestrator narazí, vrátí řízení k trvalému dispečeru rozhraní úloh. `await` Pokud se jedná o první zjištění určitého konkrétního `await` úkolu, přidružený úkol nebude *nikdy* obnoven. Vzhledem k tomu, že úloha nikdy nepokračuje, krokování na await (F10 v aplikaci Visual Studio) není ve skutečnosti možné. Krokování funguje pouze při opětovném přehrání úkolu.
+* **Vypršení časových limitů zasílání zpráv**: Durable Functions interně používá zprávy ve frontě k řízení provádění funkcí Orchestrator, Activity a entity. V prostředí s více virtuálními počítači může rozdělení do ladění po dlouhou dobu způsobit, že jiný virtuální počítač tuto zprávu vybere a bude mít za následek duplicitní provádění. Toto chování existuje i u běžných funkcí triggeru fronty, ale je důležité, abyste v tomto kontextu odkazovali, protože fronty představují podrobnosti implementace.
+* **Zastavování a spouštění**: Zprávy v trvalých funkcích přetrvávají mezi relacemi ladění. Pokud zastavíte ladění a ukončíte proces místního hostitele, zatímco je vykonávána trvalá funkce, tato funkce se může v budoucí ladicí relaci znovu spustit automaticky. To může být matoucí, pokud neočekáváte. Pro zamezení tohoto chování je mazání všech zpráv z [interních front úložiště](durable-functions-perf-and-scale.md#internal-queue-triggers) mezi relacemi ladění jedním způsobem.
 
 > [!TIP]
-> Pokud chcete při nastavování zarážek provést pouze přerušení při neopakovaném spuštění, můžete nastavit podmíněnou zarážku, která bude rozdělena `false`pouze v případě `IsReplaying` , že je.
+> Pokud při nastavování zarážek ve funkcích nástroje Orchestrator chcete provést pouze přerušení při neopakovaném spuštění, můžete nastavit podmíněný bod přerušení, který je rozdělen pouze `IsReplaying` v `false`případě, že je.
 
 ## <a name="storage"></a>Storage
 
@@ -367,7 +368,7 @@ To je užitečné pro ladění, protože vidíte přesně to, ve kterém stavu m
 > [!WARNING]
 > I když je praktické zobrazit historii spouštění v úložišti tabulek, vyhněte se pořizování jakékoli závislosti na této tabulce. Může se změnit, jak se vyvíjí rozšíření Durable Functions.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Naučte se používat odolné časovače.](durable-functions-timers.md)
+> [Další informace o monitorování v Azure Functions](../functions-monitoring.md)

@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.openlocfilehash: 3fb958b446c3f1e78f78f40f112d8d55d37b0986
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/11/2019
+ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141552"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915552"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření triggeru, který spouští kanál v bubnovém okně
 Tento článek popisuje kroky pro vytvoření, spuštění a monitorování aktivační události bubnového okna. Obecné informace o aktivačních událostech a podporovaných typech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md).
@@ -25,11 +25,14 @@ Aktivační události pro přeskakující okno jsou typem aktivačních událost
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
-Chcete-li vytvořit aktivační událost bubnového okna v Azure Portal, vyberte možnost **trigger > okno bubnu > další**a poté nakonfigurujte vlastnosti, které definují okno bubnu.
+1. Chcete-li vytvořit aktivační událost bubnového okna v uživatelském rozhraní Data Factory, vyberte kartu **triggery** a pak vyberte možnost **Nový**. 
+1. Po otevření podokna konfigurace aktivační události vyberte **okno bubnu**a pak definujte vlastnosti aktivační události pro bubnové okno. 
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
 ![Vytvoření aktivační události bubnového okna v Azure Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Vlastnosti typu triggeru bubnového okna
+
 Okno bubnu má následující vlastnosti typu triggeru:
 
 ```
@@ -94,7 +97,7 @@ Následující tabulka poskytuje podrobný přehled hlavních elementů JSON, kt
 | **type** | Typ triggeru Typ je pevná hodnota "TumblingWindowTrigger". | String | "TumblingWindowTrigger" | Ano |
 | **runtimeState** | Aktuální stav doby spuštění triggeru.<br/>**Poznámka:** Tento element je \<> jen pro čtení. | String | "Spuštěno, zastaveno", "zakázáno" | Ano |
 | **frequency** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve které se aktivační událost opakuje. Pokud jsou hodnoty data **čas_spuštění** lépe podrobnější než hodnota **frekvence** , jsou při výpočtu hranic okna zvážena data **StartTime** . Pokud má například hodnota **frekvence** hodinu a hodnota **StartTime** je 2017-09-01T10:10:10z, první okno je (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | String | "Minute", "hodina"  | Ano |
-| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. | Integer | Kladné celé číslo. | Ano |
+| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka:** Minimální interval okna je 15 minut. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**,**interval** **čas_spuštění** + ). | DateTime | Hodnota DateTime | Ano |
 | **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | Hodnota DateTime | Ano |
 | **delay** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Timespan<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | Ne |

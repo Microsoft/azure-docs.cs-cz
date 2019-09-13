@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596339"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933643"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -43,8 +43,8 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 
 |     | Agent zabezpečení založený na jazyce C | C#Agent zabezpečení založený na bázi |
 | --- | ----------- | --------- |
-| Open Source | K dispozici v rámci [](https://aka.ms/iot-security-github-cs) [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na GitHubu | K dispozici v rámci [](https://aka.ms/iot-security-github-c) [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na GitHubu |
-| Jazyk vývoje    | C | C# |
+| Open Source | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) |
+| Vývojářský jazyk    | C | C# |
 | Podporované platformy Windows? | Ne | Ano |
 | Požadavky Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Podporované platformy Linux? | Ano, x64 a x86 | Ano, pouze x64 |
@@ -78,7 +78,7 @@ Odpovězte na následující otázky týkající se zařízení IoT a vyberte sp
 
 - Používáte distribuci systému Linux s architekturou x64?
 
-    Můžete použít buď charakter agenta. <br>
+    Lze použít jak charakter agenta. <br>
     [Nasazení agenta zabezpečení založeného na jazyce C pro Linux](how-to-deploy-linux-c.md) nebo [nasazení C#agenta zabezpečení založeného na systému Linux](how-to-deploy-linux-cs.md).
 
 Charakter obou agentů nabízí stejnou sadu funkcí a podporují podobné možnosti konfigurace.
@@ -97,7 +97,7 @@ Následující seznam obsahuje všechny aktuálně podporované platformy.
 |C#|Ubuntu 18.04    |x64|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT Core Build 17763 |x64|
+|C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
 ## <a name="next-steps"></a>Další postup

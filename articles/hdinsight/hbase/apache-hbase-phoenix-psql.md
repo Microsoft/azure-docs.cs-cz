@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 15bb65e004de916862297f91278328cddb16487d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810410"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917275"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
@@ -29,7 +29,7 @@ Hromadné načítání pomocí MapReduce se používá pro mnohem větší objem
 
 Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a že nastavení časového limitu dotazu jsou očekávaná.  Přejděte na řídicí panel [Apache Ambari](https://ambari.apache.org/) clusteru HDInsight, vyberte adaptéry HBA a pak kartu konfigurace.  Posuňte se dolů a ověřte, že Apache Phoenix `enabled` je nastavená na jak je znázorněno níže:
 
-![Apache Phoenix nastavení clusteru HDInsight](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix nastavení clusteru HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Použít `psql` k hromadnému načítání tabulek
 
@@ -138,7 +138,7 @@ Pro nahrání vyšší propustnosti distribuované přes cluster použijte nást
 
 * Vyhněte se hotspotům serveru oblastí. Pokud je váš klíč řádku rovnoměrně zvětšujícíý, můžou se sekvenční zápisy vyvolávat v oblasti Server hotspotting. *Nasolení* klíče řádku zkracuje sekvenční zápis. Phoenix poskytuje způsob, jak transparentně nasolete klíč řádku s použitím dvoubajtového bajtu pro konkrétní tabulku, jak je odkazováno níže.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Hromadné načítání dat pomocí Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
 * [Použití Apache Phoenix s clustery Apache HBA založenými na systému Linux v HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)

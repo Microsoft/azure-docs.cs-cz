@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: fbd86698438e09a0c94c06e0e79800b8d38b57c1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544842"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883691"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Rychlý start: Přizpůsobení klientské knihovny pro Node. js
 
@@ -46,6 +46,9 @@ Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte 
 
 * `PERSONALIZER_KEY`pro klíč prostředku.
 * `PERSONALIZER_ENDPOINT`pro koncový bod prostředku.
+
+V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
+
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -153,7 +156,7 @@ Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a už
 
 Aby bylo možné dokončit požadavek na odměnu, program získá výběr uživatele z příkazového řádku, přiřadí číselné hodnoty každému výběru a pak pošle jedinečné ID události klasifikace a číselnou hodnotu k metodě odměňování.
 
-V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má [](concept-rewards.md) být odesláno volání odměna, v závislosti na konkrétních potřebách netriviální povahy. 
+V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy. 
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

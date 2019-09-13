@@ -1,0 +1,67 @@
+---
+title: Řízení zabezpečení pro Azure Service Fabric
+description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Service Fabric Azure
+services: service-fabric
+documentationcenter: ''
+author: msmbaldwin
+manager: rkarlin
+ms.service: service-fabric
+ms.topic: conceptual
+ms.date: 09/04/2019
+ms.author: mbaldwin
+ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886705"
+---
+# <a name="security-controls-for-azure-service-fabric"></a>Řízení zabezpečení pro Azure Service Fabric
+
+Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Service Fabric. 
+
+[!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
+
+## <a name="network"></a>Síť
+
+| Řízení zabezpečení | Ano/Ne | Poznámky |
+|---|---|--|
+| Podpora koncového bodu služby| Ano |  |
+| Podpora vkládání virtuální sítě| Ano |  |
+| Izolace sítě a podpora brány firewall| Ano | Používání skupin zabezpečení sítě (NSG). |
+| Podpora vynuceného tunelování| Ano | Sítě Azure poskytují vynucené tunelové propojení. |
+
+## <a name="monitoring--logging"></a>Monitorování protokolování &
+
+| Řízení zabezpečení | Ano/Ne | Poznámky|
+|---|---|--|
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Používání Azure Monitoring support a podpory třetích stran. |
+| Protokolování a audit roviny řízení a správy| Ano | Všechny operace roviny ovládacího prvku se spouštějí prostřednictvím procesů pro auditování a schválení. |
+| Protokolování a audit roviny dat| Není k dispozici | Zákazník vlastní cluster.  |
+
+## <a name="identity"></a>Identita
+
+| Řízení zabezpečení | Ano/Ne | Poznámky|
+|---|---|--|
+| Ověřování| Ano | Ověřování probíhá prostřednictvím Azure Active Directory. |
+| Authorization| Ano | Správa identit a přístupu (IAM) pro volání prostřednictvím SFRP. Volání přímo do koncového bodu clusteru podporují dvě role: Uživatel a správce. Zákazník může namapovat rozhraní API na jednu roli. |
+
+## <a name="data-protection"></a>Ochrana dat
+
+| Řízení zabezpečení | Ano/Ne | Poznámky |
+|---|---|--|
+| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft | Ano | Zákazník vlastní cluster a sadu škálování virtuálního počítače, na kterých je cluster sestaven. V sadě škálování virtuálního počítače můžete povolit službu Azure Disk Encryption. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Zákazník vlastní cluster a sadu škálování virtuálního počítače, na kterých je cluster sestaven. V sadě škálování virtuálního počítače můžete povolit službu Azure Disk Encryption. |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici |  |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano |  |
+| Zašifrovaná volání rozhraní API| Ano | Service Fabric volání rozhraní API se provádí prostřednictvím Azure Resource Manager. Vyžaduje se platný webový token JSON (JWT). |
+
+## <a name="configuration-management"></a>Správa konfigurace
+
+| Řízení zabezpečení | Ano/Ne | Poznámky|
+|---|---|--|
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | |
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

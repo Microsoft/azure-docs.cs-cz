@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: d6127d4fba3d2255dee28cd41179f16394545328
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 859e830483ac959f6f55ba27b5657779ac16d2fb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207230"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934145"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co je Apache Hadoop ve službě Azure HDInsight?
 
@@ -31,9 +31,9 @@ Apache Hadoop MapReduce je softwarové rozhraní pro psaní úloh, které zpraco
 
 * **Redukce**: Spotřebovává řazené kolekce členů generované mapovačem a provádí souhrnnou operaci, která vytváří menší, kombinovaný výsledek z dat mapovače.
 
-Příkladem MapReduce úlohy Basic Count (počet slov) je znázorněný v následujícím diagramu:
+Příkladem MapReduce úlohy Basic Count (počet slov) je znázorněný v následujícím diagramu:   
 
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
+ ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
 Výstupem této úlohy je počet, kolikrát se každé slovo v textu objevilo.
 
@@ -44,7 +44,7 @@ MapReduce je možné implementovat v různých jazycích. Java je nejběžnějš
 
 ## <a name="development-languages"></a>Vývojové jazyky
 
-Jazyky nebo architektury založené na jazyce Java a prostředí Java Virtual Machine mohou být spuštěny přímo jako úloha MapReduce. Příkladem použitým v tomto dokumentu je aplikace Java MapReduce. Jazyky mimo jazyk Java, například C#Python nebo samostatné spustitelné soubory, musí využívat streamování **Hadoop**.
+Jazyky nebo architektury založené na jazyce Java a prostředí Java Virtual Machine mohou být spuštěny přímo jako úloha MapReduce. Příkladem použitým v tomto dokumentu je aplikace Java MapReduce. Jazyky mimo jazyk Java, například C#Python nebo samostatné spustitelné soubory, musí využívat **streamování Hadoop**.
 
 Streamování Hadoop komunikuje s mapovačem a redukcí přes STDIN a STDOUT. Mapovač a zmenšování čtou data na řádek ze standardního vstupu a zápis výstupu do STDOUT. Každý řádek načtený nebo vygenerovaný mapovačem a redukcí musí být ve formátu dvojice klíč/hodnota, oddělený znakem tabulátoru:
 
@@ -59,5 +59,3 @@ Příklady použití streamování Hadoop v HDInsight najdete v tomto dokumentu:
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření clusteru Apache Hadoop v HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

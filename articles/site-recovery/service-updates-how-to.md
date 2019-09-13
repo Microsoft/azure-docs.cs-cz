@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828609"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910482"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizace služby v Site Recovery
 
@@ -103,8 +103,7 @@ Pokud chcete ručně spravovat aktualizace, udělejte toto:
 
 1. Na základě vaší aktuální verze a [příkazu podpory](#support-statement-for-azure-site-recovery)nainstalujte nejprve aktualizaci na místní konfigurační server, a [to podle těchto pokynů](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
 2. Pokud máte procesní servery se škálováním na více instancí, aktualizujte je dále pomocí [těchto pokynů](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. Chcete-li aktualizovat agenta mobility na každém chráněném počítači, otevřete **chráněné** > položky**replikované položky**.
-4. Vyberte virtuální počítač a klikněte na tlačítko **aktualizovat agenta** , které se zobrazí v dolní části stránky pro každý virtuální počítač. Tím se aktualizuje agent služby mobility na všech chráněných virtuálních počítačích.
+3. Pokud chcete aktualizovat agenta mobility na každém chráněném počítači, přečtěte si [Tento](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) článek.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Po upgradu služby mobility restartujte počítač
 

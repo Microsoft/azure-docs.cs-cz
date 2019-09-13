@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348084"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899517"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme s Log Analytics v Azure Monitor
 
@@ -162,7 +162,7 @@ V případě, že je v timechart náhlé špička nebo krok, může se na řádk
 ![Inteligentní Diagnostika](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Připnout na řídicí panel
-Pokud chcete připnout diagram nebo tabulku na některý ze sdílených řídicích panelů Azure, klikněte na ikonu připnutí.
+Pokud chcete připnout diagram nebo tabulku na některý ze sdílených řídicích panelů Azure, klikněte na ikonu připnutí. Všimněte si, že tato ikona se přesunula na horní část okna Log Analytics, která se liší od obrazovky níže.
 
 ![Připnout na řídicí panel](media/get-started-portal/pin-dashboard.png)
 

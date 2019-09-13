@@ -8,15 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sstein
+ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173433"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934206"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -72,7 +72,8 @@ Chcete-li vytvořit kopii databáze, budete muset být v následujících rolíc
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft. SQL/servery/databáze/číst Microsoft. SQL/servery/databáze/zapisovat
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Pokud chcete kopii databáze zrušit, budete muset být v následujících rolích.
 
@@ -80,7 +81,23 @@ Pokud chcete kopii databáze zrušit, budete muset být v následujících rolí
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft. SQL/servery/databáze/číst Microsoft. SQL/servery/databáze/zapisovat
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+   
+Pokud chcete spravovat kopii databáze pomocí Azure Portal, budete potřebovat taky následující oprávnění:
+
+&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Read   
+&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Write   
+&nbsp;&nbsp; Microsoft.Resources&nbsp; /nasazení/čtení   
+&nbsp;&nbsp; Microsoft.Resources&nbsp; /nasazení/zápis   
+&nbsp;&nbsp; Microsoft.Resources/Deployments&nbsp; /operationstatuses/Read    
+
+Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tyto další role RBAC: 
+
+&nbsp;&nbsp; Microsoft.Resources/Subscriptions/ResourceGroups/&nbsp; nasazení/operace/čtení   
+&nbsp;&nbsp; Microsoft.Resources/Subscriptions/ResourceGroups/Deployments&nbsp; /operationstatuses/Read
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopírování databáze pomocí jazyka Transact-SQL
 
@@ -140,7 +157,7 @@ Všichni uživatelé v nové databázi si uchovávají oprávnění, která měl
 
 Další informace o správě uživatelů a přihlášení po zkopírování databáze na jiný SQL Database Server najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o přihlášeních najdete v tématech [Správa přihlášení](sql-database-manage-logins.md) a [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 * Informace o exportu databáze najdete v tématu [Export databáze do BacPac](sql-database-export.md).

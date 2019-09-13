@@ -7,12 +7,12 @@ ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d02dca4438b55d51cccb5cc1b55679eb72b73991
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232797"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918693"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -21,8 +21,8 @@ Následující článek podrobně popisuje, jak se vzorový test služby Azure m
 Následující mapování jsou uvedená v doporučeních **1.1.0 Foundation v rámci testu služby Microsoft Azure CI v** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování doporučení.
 Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost  **\[\] auditovat audit CIS Microsoft Azure Foundation srovnávací testy v 1.1.0 a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit na** integrovanou iniciativu zásad.
 
-> [!NOTE]
-> Brzo se připravuje kompletní ukázka podrobného plánu. Přidružená iniciativa Azure Policy je nyní k dispozici.
+> [!IMPORTANT]
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
 
 ## <a name="11-ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>1,1 Zajistěte, aby bylo u všech privilegovaných uživatelů povoleno Multi-Factor Authentication
 
@@ -209,7 +209,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 - Webová aplikace by měla být přístupná jen přes HTTPS
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plán služby CIS Microsoft Azure Foundation, přečtěte si následující článek, kde najdete informace o podrobném plánu nebo návštěvě Azure Policy v Azure Portal k přiřazení iniciativy:
 
@@ -219,7 +219,7 @@ Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plá
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

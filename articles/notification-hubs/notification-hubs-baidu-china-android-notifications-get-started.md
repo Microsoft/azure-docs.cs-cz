@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: android
 author: jwargo
 manager: patniko
-editor: spelluru
-ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: conceptual
@@ -14,19 +12,19 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7a3a9affc0fd5e83c7f6046e70d198cce08cb3e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274901"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886038"
 ---
-# <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
+# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>Zastaralé Začínáme s použitím Notification Hubs pomocí Baidu
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!IMPORTANT]
-> V tomto kurzu je zastaralý. 
+> Tento kurz je zastaralý. 
 
 Nabídka cloudu Baidu představuje čínskou cloudovou službu, kterou můžete použít k zasílání nabízených oznámení na mobilní zařízení.
 
@@ -122,9 +120,9 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
     ![Azure Notification Hubs – Nový projekt Baidu](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2. Zadejte název aplikace a zkontrolujte, že minimální požadovaná verze sady SDK je nastavená na API 16: Android 4.1. **Ověřte prosím také, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
+2. Zadejte název aplikace a ujistěte se, že minimální požadovaná verze sady SDK je nastavená na rozhraní API 16: Android 4,1. **Ověřte prosím také, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
 
-    ![Azure Notification Hubs – Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Klikněte na Další a pokračujte podle pokynů průvodce, dokud se nezobrazí okno Vytvořit aktivitu. Ujistěte se, že je zvolena možnost Prázdná aktivita, a nakonec vyberte Dokončit a vytvořte novou aplikaci pro Android.
 
@@ -149,7 +147,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
     }
     ```
 
-    Aby nedošlo ke konfliktu seznamu, přidejte následující kód v projektu `Manifest.xml` souboru:
+    Chcete-li se vyhnout konfliktu seznamu, přidejte do `Manifest.xml` souboru projektu následující kód:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -168,11 +166,11 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
     ![Azure Notification Hubs – Knihovny sady Baidu SDK](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. V projektu `libs` složku, klikněte pravým tlačítkem na `pushervice-x.y.z.jar` souboru; vyberte **přidat jako knihovna** včetně tuto knihovnu v projektu.
+7. Ve `libs` složce projektu klikněte pravým tlačítkem `pushervice-x.y.z.jar` na soubor; vyberte **Přidat jako knihovnu** , která zahrnuje tuto knihovnu v projektu.
 
     ![Azure Notification Hubs – Přidání jako knihovny pro Baidu](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Otevřete projekt Android `AndroidManifest.xml` a přidejte oprávnění vyžadované Baidu SDK. **Nahraďte `YOURPACKAGENAME` názvem vašeho balíčku.**
+8. Otevřete `AndroidManifest.xml` soubor projektu Android a přidejte oprávnění požadovaná sadou Baidu SDK. **Nahraďte `YOURPACKAGENAME` názvem vašeho balíčku.**
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -480,11 +478,11 @@ Tento kurz pro zjednodušení používá konzolovou aplikaci jako ukázku odesl�
 
 Tady jsou různé přístupy k odesílání oznámení:
 
-* **Rozhraní REST**:  Oznámení můžete podporovat na jakékoli backend platformě pomocí [rozhraní REST](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
-* **Microsoft Azure Notification Hubs sady .NET SDK**: Spustit v Správce balíčků Nuget pro Visual Studio, [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js**: [Jak používat Notification Hubs z Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Mobilní aplikace**: Příklad odesílání oznámení z back-endu Azure App Service Mobile Apps, které jsou integrovány v centrech oznámení najdete v tématu [přidání nabízených oznámení do mobilní aplikace](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
-* **Java / PHP**: Pro příklad odesílání oznámení pomocí rozhraní REST API najdete v tématu "Jak používat Notification Hubs z Javy/PHP" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+* **Rozhraní REST**:  Oznámení můžete podporovat na jakékoli back-end platformě pomocí [rozhraní REST](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **Microsoft Azure Notification Hubs .NET SDK**: Ve Správci balíčků NuGet pro Visual Studio spusťte [Install-Package Microsoft. Azure. NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+* **Node.js**: [Způsob použití Notification Hubs z Node. js](notification-hubs-nodejs-push-notification-tutorial.md).
+* **Mobile Apps**: Příklad odesílání oznámení z Azure App Service Mobile Apps back-endu, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do mobilní aplikace](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+* **Java/php**: Příklad odesílání oznámení pomocí rozhraní REST API najdete v části "jak používat Notification Hubs z Java/php" ([Java](notification-hubs-java-push-notification-tutorial.md) | [php](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(Volitelné) Odesílání oznámení z konzoly aplikace .NET.
 

@@ -3,18 +3,18 @@ title: Doprovodné materiály k omezování služby Azure Key Vault
 description: Omezení služby Key Vault omezuje počet souběžných volání, aby se zabránilo nadměrnému využití prostředků.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: ''
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06b96ac6ea0202b74638b9331d754c0e0cc28ad0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695250"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883046"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 
@@ -31,7 +31,7 @@ Pokud budete mít obchodní případ pro vyšší omezení limity, kontaktujte n
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení vaší aplikace v reakci na omezení služby
 
-Následují **osvědčené postupy** , měli byste po omezené služby:
+Níže jsou uvedené **osvědčené postupy** , které byste měli implementovat, když je vaše služba omezená:
 - Snížit počet operací na požadavek.
 - Snižte frekvenci požadavků.
 - Vyhněte se okamžité opakování. 
@@ -112,7 +112,7 @@ Kód, který implementuje exponenciální regresí je uveden níže.
 ```
 
 
-Pomocí tohoto kódu v klientovi C\# aplikací je jednoduché. Následující příklad ukazuje, jak pomocí třídy HttpClient.
+Použití tohoto kódu v klientské aplikaci jazyka\# C je jednoduché. Následující příklad ukazuje, jak pomocí třídy HttpClient.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)
@@ -131,7 +131,7 @@ public async Task<Cart> GetCartItems(int page)
 }
 ```
 
-Mějte na paměti, že tento kód je vhodný pouze jako testování konceptu. 
+Mějte na paměti, že tento kód je vhodný jenom jako zkušební koncept. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Doporučenou metodou omezování na straně klienta
 

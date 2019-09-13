@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810658"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934652"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurací clusteru HDInsight pomocí Apache Ambari
 
@@ -23,7 +23,7 @@ HDInsight poskytuje [Apache Hadoop](https://hadoop.apache.org/) clusterů pro ap
 
 Přihlaste se k `https://CLUSTERNAME.azurehdidnsight.net` Ambari s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled.
 
-![Řídicí panel Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Řídicí panel Ambari](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 Webové uživatelské rozhraní Ambari lze použít ke správě hostitelů, služeb, výstrah, konfigurací a zobrazení. Ambari se nedá použít k vytvoření clusteru HDInsight, upgradu služeb, správě zásobníků a verzí, vyřazení hostitelů nebo přeřazení z provozu nebo k přidání služeb do clusteru.
 
@@ -31,7 +31,7 @@ Webové uživatelské rozhraní Ambari lze použít ke správě hostitelů, slu�
 
 Nastavení konfigurace pomůžou ladit konkrétní službu. Chcete-li upravit nastavení konfigurace služby, vyberte službu na postranním panelu **služby** (vlevo) a pak přejděte na kartu **Konfigurace** na stránce s podrobnostmi o službě.
 
-![Boční panel služeb](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Boční panel služeb](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Úprava velikosti haldy Java NameNode
 
@@ -41,15 +41,15 @@ Velikost haldy Java NameNode závisí na mnoha faktorech, jako je zatížení cl
 
 1. Z bočního panelu služeb vyberte **HDFS** a přejděte na kartu **Konfigurace** .
 
-    ![Konfigurace HDFS](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
+    ![Konfigurace HDFS](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. Najděte nastavení **Velikost haldy Java NameNode**. K zadání a vyhledání konkrétního nastavení můžete použít také textové pole **Filtr** . Vyberte ikonu **pera** vedle názvu nastavení.
 
-    ![Velikost haldy Java NameNode](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![Velikost haldy Java NameNode](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Do textového pole zadejte novou hodnotu a stisknutím klávesy **ENTER** změny uložte.
 
-    ![Upravit size1 haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![Upravit size1 haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. Velikost haldy Java NameNode se změní na 1 GB ze 2 GB.
 
@@ -57,7 +57,7 @@ Velikost haldy Java NameNode závisí na mnoha faktorech, jako je zatížení cl
 
 1. Uložte změny kliknutím na zelené tlačítko **Uložit** v horní části obrazovky konfigurace.
 
-    ![Uložit změny](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Uložit změny](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Optimalizace Apache Hive
 
@@ -72,11 +72,11 @@ Podregistr poskytuje dva spouštěcí moduly: [Apache Hadoop MapReduce](https://
 
 1. Na kartě **Konfigurace** podregistru zadejte **spouštěcí modul** do pole Filtr.
 
-    ![Spouštěcí modul hledání](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Spouštěcí modul hledání](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. Výchozí hodnota vlastnosti **optimalizace** je **tez**.
 
-    ![Optimalizace – tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optimalizace – tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Ladit mapovače
 
@@ -93,7 +93,7 @@ Pokud třeba chcete nastavit čtyři úlohy mapovače pro velikost dat 128 MB, n
 
 1. Nastavte oba parametry na **33 554 432** bajtů (32 MB).
 
-    ![Velikosti seskupení tez](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![Velikosti seskupení tez](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
  
 Tyto změny mají vliv na všechny úlohy tez napříč serverem. Chcete-li získat optimální výsledek, vyberte příslušné hodnoty parametrů.
 
@@ -109,7 +109,7 @@ Ve výchozím nastavení je tento příklad 4 reduktorů.
 
 1. Chcete-li změnit parametr, přejděte na kartu **Konfigurace** podregistru a na stránce nastavení vyhledejte parametr **data na omezení** .
 
-    ![Data na zmenšení](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Data na zmenšení](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
  
 1. Vyberte **Upravit** pro úpravu hodnoty na 128 MB (134 217 728 bajtů) a pak stiskněte **ENTER** pro uložení.
 
@@ -127,7 +127,7 @@ Dotaz na podregistr se spustí v jedné nebo několika fázích. Pokud je možn�
  
 1.  Chcete-li omezit počet úloh, které mají být spuštěny paralelně, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
 
-    ![Podregistr exec Parallel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Podregistr exec Parallel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 
 ### <a name="enable-vectorization"></a>Povolit vektorování
@@ -146,7 +146,7 @@ Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jed
 
 Pokud chcete povolit CBO, přejděte na kartu **Konfigurace** podregistru a vyhledejte `parameter hive.cbo.enable`a pak přepněte přepínací tlačítko na **zapnuto**.
 
-![CBO konfigurace](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO konfigurace](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Následující dodatečné parametry konfigurace zvyšují výkon dotazů na podregistr, pokud je povolená možnost CBO:
 
@@ -373,7 +373,7 @@ Velikost haldy HBA určuje maximální velikost haldy, která bude použita v me
 
 1. Změňte výchozí hodnotu na 5 000 MB.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
+    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 
 ### <a name="optimize-read-heavy-workloads"></a>Optimalizace úloh pro čtení a vysoké zatížení

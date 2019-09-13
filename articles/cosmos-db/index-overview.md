@@ -4,14 +4,14 @@ description: Pochopte, jak funguje indexování v Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479292"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914197"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování v Azure Cosmos DB – přehled
 
@@ -25,6 +25,7 @@ Pokaždé, když je položka uložená v kontejneru, její obsah se prochází j
 
 Zvažte například tuto položku:
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Zvažte například tuto položku:
             { "city": "Athens" }
         ]
     }
+```
 
 Bude reprezentovaná následujícím stromem:
 
@@ -70,13 +72,13 @@ Typ indexu **rozsahu** se používá pro:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - Dotazy na rozsah:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   (funguje pro `>`, `<`, `>=` ,`<=`, )`!=`
 
 - `ORDER BY`odešle
@@ -107,15 +109,27 @@ Druh **prostorového** indexu se používá pro:
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Prostorové indexy lze použít na správně formátovaných objektech typu [injson](geospatial.md) . Body, LineStrings a mnohoúhelníky se momentálně podporují.
+Prostorové indexy lze použít na správně formátovaných objektech typu [injson](geospatial.md) . V současné době se podporují body, LineStrings, mnohoúhelníky a další mnohoúhelníky.
 
 Typ **složeného** indexu se používá pro:
 
-- `ORDER BY`dotazy na více vlastností: 
+- `ORDER BY`dotazy na více vlastností:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využít složený index, pokud je do `ORDER BY` klauzule přidána vlastnost Filter.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- Dotazy s filtrem na dvou nebo více vlastnostech, kde nejméně jedna vlastnost je filtr rovnosti
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
@@ -126,7 +140,7 @@ Zvažte například následující dotaz: `SELECT location FROM location IN comp
 ![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzule, která má ORDER by jedna vlastnost, vždy potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu.  `ORDER BY` Podobně dotaz s více `ORDER BY` dotazy *vždy* potřebuje složený index.
+> Klauzule, která má ORDER by jedna vlastnost, vždy potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. `ORDER BY` Podobně `ORDER BY` dotaz, který ORDER by má více vlastností, *vždy* potřebuje složený index.
 
 ## <a name="next-steps"></a>Další postup
 

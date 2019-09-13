@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142618"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932533"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -44,6 +44,11 @@ ms.locfileid: "70142618"
 
 > [!NOTE]
 > Pokud používáte .NET Core, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* Přidání PortReusePolicy k ConnectionPolicy
+* Opraveno Ntdll! RtlGetVersion TypeLoadException problém, když se v aplikaci pro UWP používá sada SDK
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -267,6 +272,7 @@ Všechny požadavky na Azure Cosmos DB s využitím vyřazené sady SDK jsou slu
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |30. srpna 2019 |--- |
 | [2.5.1](#2.5.1) |2\. července 2019 |--- |
 | [2.4.1](#2.4.1) |20. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |

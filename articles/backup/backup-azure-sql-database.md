@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534225"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934433"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -24,7 +24,7 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 
 * Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úlohy pomocí přípony názvu `AzureBackupWindowsWorkload` .
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
-* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet `NT SERVICE\AzureWLBackupPluginSvc`vytvoří. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Azure Backup využívá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](backup-azure-sql-database.md).
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet `NT SERVICE\AzureWLBackupPluginSvc`vytvoří. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Azure Backup využívá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
@@ -52,14 +52,13 @@ Než začnete, ověřte následující:
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Podpora SQL Server 2008 a SQL Server 2008 R2
 
-Azure Backup nedávno oznámila podporu EOSch [SQL severs](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) – SQL Server 2008 a SQL Server 2008 R2. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje následující konfiguraci:
+Azure Backup nedávno oznámila podporu [EOSch SQL severs](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) – SQL Server 2008 a SQL Server 2008 R2. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje následující konfiguraci:
 
 1. SQL Server 2008 a SQL Server 2008 R2 spuštěné v systému Windows 2008 R2 SP1
 2. Na virtuálním počítači musí být nainstalovaný .NET Framework 4.5.2 a novější.
 3. Zálohování pro FCI a zrcadlené databáze se nepodporuje.
 
-Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dostupná. Všechny ostatní [požadavky a omezení funkcí](#feature-consideration-and-limitations) se vztahují také na tyto verze. Před konfigurací ochrany na SQL serverech 2008 a 2008 R2 odkazují na [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) , které zahrnují nastavení [klíče registru](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (Tento krok se nepožaduje, pokud je funkce všeobecně dostupná).
-
+Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dostupná. Všechny ostatní [požadavky a omezení funkcí](#feature-consideration-and-limitations) se vztahují také na tyto verze. Před konfigurací ochrany na SQL serverech 2008 a 2008 R2 si zajděte na [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) .
 
 ## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
 
