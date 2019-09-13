@@ -294,7 +294,7 @@ Odešlete soubor a Všimněte si, že složka. VSCode je automaticky přidána d
     | :- | :- | :- | 
     | file | Soubor obsahující aplikaci, která se má provést | cesta (povinné) |
     | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
-    | NázevTřídy | Application – hlavní třída Java/Spark | Řetězec |
+    | className | Application – hlavní třída Java/Spark | Řetězec |
     | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců |
     | jars | JAR, která se má použít v této relaci | seznam řetězců | 
     | pyFiles | Soubory Pythonu, které se mají použít v této relaci | seznam řetězců |
@@ -307,7 +307,7 @@ Odešlete soubor a Všimněte si, že složka. VSCode je automaticky přidána d
     | archives | Archivy, které se mají použít v této relaci | seznam řetězců |
     | queue | Název fronty PŘÍZe, která se má odeslat| Řetězec |
     | name | Název této relace | Řetězec |
-    | výrobku | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
+    | conf | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
 
     Text odpovědi   
     Vytvořený objekt Batch.
