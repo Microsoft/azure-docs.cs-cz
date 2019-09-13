@@ -85,14 +85,14 @@ Všechny události mají stejné nejvyšší úrovně následující data:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
-| data | objekt | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
+| data | object | Data události specifické pro poskytovatele prostředků. |
+| dataVersion | string | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
 
