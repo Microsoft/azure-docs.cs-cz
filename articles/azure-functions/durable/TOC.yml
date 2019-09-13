@@ -21,6 +21,8 @@
       href: quickstart-js-vscode.md
 - name: Kurzy
   items:
+    - name: Řetězení funkcí
+      href: durable-functions-sequence.md
     - name: Scénář fan-in/fan-out
       href: durable-functions-cloud-backup.md
     - name: Monitory
@@ -37,46 +39,56 @@
       href: ../functions-cli-samples.md
 - name: Koncepty
   items:
-    - name: Vzory a koncepty
-      href: durable-functions-concepts.md
     - name: Typy funkcí
       href: durable-functions-types-features-overview.md
-    - name: Vazby
-      href: durable-functions-bindings.md
+    - name: Orchestrace
+      href: durable-functions-orchestrations.md
+    - name: Omezení kódu orchestrátoru
+      href: durable-functions-code-constraints.md
+    - name: Dílčí orchestrace
+      href: durable-functions-sub-orchestrations.md
+    - name: Stav vlastní orchestrace
+      href: durable-functions-custom-orchestration-status.md
     - name: Časovače
       href: durable-functions-timers.md
     - name: Externí události
       href: durable-functions-external-events.md
-    - name: Dílčí orchestrace
-      href: durable-functions-sub-orchestrations.md
+    - name: Zpracování chyb
+      href: durable-functions-error-handling.md
+    - name: Externí orchestrace
+      href: durable-functions-eternal-orchestrations.md
+    - name: Orchestrace s jedním prvkem
+      href: durable-functions-singletons.md
+    - name: Funkce protokolu HTTP
+      href: durable-functions-http-features.md
+    - name: Stavové entity
+      href: durable-functions-entities.md
     - name: Centra úloh
       href: durable-functions-task-hubs.md
-    - name: Spolehlivé provádění
-      href: durable-functions-checkpointing-and-replay.md
+    - name: Správa instancí
+      href: durable-functions-instance-management.md
     - name: Správa verzí
       href: durable-functions-versioning.md
+    - name: Výkon a škálování
+      href: durable-functions-perf-and-scale.md
+    - name: Vysoká dostupnost
+      href: durable-functions-disaster-recovery-geo-distribution.md
+- name: Referenční informace
+  items:
+    - name: Nastavení Host.json
+      href: 'durable-functions-bindings.md#host-json'
+    - name: Vazby
+      href: durable-functions-bindings.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
 - name: Návody
   items:
-    - name: Plánování a návrh
-      items:
-        - name: Řetězení funkcí
-          href: durable-functions-sequence.md
-        - name: Externí orchestrace
-          href: durable-functions-eternal-orchestrations.md
-        - name: Orchestrace s jedním prvkem
-          href: durable-functions-singletons.md
-        - name: Výkon a škálování
-          href: durable-functions-perf-and-scale.md
-        - name: Vysoká dostupnost
-          href: durable-functions-disaster-recovery-geo-distribution.md
     - name: Vývoj
       items:
         - name: Vytvoření na webu Azure Portal
           href: durable-functions-create-portal.md
         - name: Správa připojení
           href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Zpracování chyb
-          href: durable-functions-error-handling.md
         - name: Testování částí
           href: durable-functions-unit-testing.md
         - name: Vytvoření jako WebJobs
@@ -89,24 +101,14 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Spuštění z balíčku
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Spravovat
-      items:
-        - name: Správa instancí
-          href: durable-functions-instance-management.md
     - name: Monitorování
-      items:
-        - name: Monitorování funkcí
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Stav vlastní orchestrace
-          href: durable-functions-custom-orchestration-status.md
-    - name: Řešení potíží
       items:
         - name: Diagnostika
           href: durable-functions-diagnostics.md
-- name: Referenční informace
-  items:
-    - name: HTTP API
-      href: durable-functions-http-api.md
+        - name: Monitorování
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Ceny
+          href: durable-functions-billing.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

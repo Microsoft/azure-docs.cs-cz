@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: Návody
   items:
-    - name: Využití aplikace Workbench pro zařízení IoT
-      href: howto-use-iot-device-workbench.md
+    - name: Vývoj pomocí sady Visual Studio a Visual Studio Code
+      href: howto-develop-with-vs-vscode.md
     - name: Instalace průzkumníka IoT
       href: howto-install-iot-explorer.md
+    - name: Instalace rozšíření Azure CLI
+      href: howto-install-pnp-cli.md
     - name: Onboarding na portál IoT
       href: howto-onboard-portal.md
     - name: Správa modelů

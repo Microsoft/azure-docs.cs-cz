@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Upozornění s využitím služby Logic Apps
           href: tutorial-facilities-events.md
-        - name: Vizualizace událostí s využitím TSI
+        - name: Vizualizace událostí s využitím Time Series Insights
           href: tutorial-facilities-analyze.md
 - name: Koncepty
   items:

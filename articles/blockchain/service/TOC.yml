@@ -13,6 +13,8 @@
       href: create-member-cli.md
     - name: Připojení k transakčnímu uzlu
       items:
+        - name: Použití VS Code
+          href: connect-vscode.md
         - name: Využití rozšíření MetaMask
           href: connect-metamask.md
         - name: Využití rozšíření Geth

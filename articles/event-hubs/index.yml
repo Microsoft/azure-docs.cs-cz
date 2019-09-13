@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/05/2019
-  ms.openlocfilehash: bd96fbc12285faa7c18f9fcd09638ec8816865c8
-  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.openlocfilehash: 8a4d99c195cd1341e491e5112a4f58013b074115
+  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70773186"
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70915437"
 landingContent:
 - title: Informace o službě Event Hubs
   linkLists:

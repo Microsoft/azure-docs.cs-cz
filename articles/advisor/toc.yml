@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: Oprávnění a blokované akce
       href: permissions.md
+    - name: Konfigurace výstrah pro doporučení
+      href: advisor-alerts.md
 - name: Referenční informace
   items:
     - name: Security Center
