@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404541"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918544"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -67,7 +67,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
   
 2. V nabídce vlevo přejděte na **+ vytvořit Resource** > **COMPUTE** > **Ubuntu Server 18,04 LTS**.
 
-    ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Na kartě __základy__ zadejte následující informace:  
   
@@ -84,7 +84,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     |Heslo nebo veřejný klíč SSH | Dostupné pole je určeno podle vaší volby pro **typ ověřování**.  Zadejte odpovídající hodnotu.|
     |Veřejné příchozí porty|Vyberte možnost **Povolení vybraných portů**. Pak v rozevíracím seznamu **vybrat příchozí porty** vyberte **SSH (22)** .|
 
-    ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/vm-basics.png)
+    ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Ponechte výchozí hodnoty na další položky a pak vyberte kartu **síť** .
 
@@ -109,7 +109,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
 
 2. Poznamenejte si hodnoty pro **veřejnou IP adresu/název DNS popisek** a **privátní IP adresu** pro pozdější použití.
 
-   ![Veřejné a privátní IP adresy](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Veřejné a privátní IP adresy](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Instalace a konfigurace služby BIND (software DNS)
 
@@ -177,7 +177,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    Text je přípona DNS pro tuto virtuální síť.  `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Uložte tuto hodnotu, bude se hodit později.
+    Text je __přípona DNS__ pro tuto virtuální síť. `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Uložte tuto hodnotu, bude se hodit později.
 
 5. Pokud chcete nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, jako obsah `/etc/bind/named.conf.local` souboru použijte následující text:
 

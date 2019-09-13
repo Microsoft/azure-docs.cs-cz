@@ -1,86 +1,86 @@
 ---
-title: Koncové body služeb virtuální sítě pro Azure Key Vault – Azure Key Vault | Dokumentace Microsoftu
-description: Přehled koncových bodů služby virtuální sítě pro službu Key Vault
+title: Koncové body služby virtuální sítě pro Azure Key Vault-Azure Key Vault | Microsoft Docs
+description: Přehled koncových bodů služby virtuální sítě pro Key Vault
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: barbkess
+manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 45499dac3cc50e2b6e79f9ebcb1bc3e7b4330beb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165856"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883239"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služeb virtuální sítě pro Azure Key Vault
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
 
-Koncové body služeb virtuální sítě pro Azure Key Vault umožňují omezit přístup k zadané virtuální sítě. Koncové body umožňují omezit přístup k seznamu rozsahů adres IPv4 (internet protocol verze 4). Každý uživatel, připojení k vašemu trezoru klíčů z mimo tyto zdroje je odepřen přístup.
+Koncové body služby virtuální sítě pro Azure Key Vault umožňují omezit přístup k zadané virtuální síti. Koncové body také umožňují omezit přístup k seznamu rozsahů adres protokolu IPv4 (Internet Protocol verze 4). Přístup všem uživatelům, kteří se připojují k trezoru klíčů mimo tyto zdroje, má odepřený přístup.
 
-Existuje jedna důležitá výjimka tohoto omezení. Pokud se uživatel přihlásí k povolit důvěryhodným službám Microsoftu, se přes bránu firewall umožňují připojení z těchto služeb. Například tyto služby patří služby Office 365 Exchange Online, Office 365 SharePoint Online, Azure compute, Azure Resource Manageru a Azure Backup. Stále potřeba, předložit platný token Azure Active Directory a musí mít oprávnění (konfigurovaná jako zásad přístupu) k provedení požadované operace. Další informace najdete v tématu [koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
+Toto omezení má jednu důležitou výjimku. Pokud se uživatel rozhodl Povolit důvěryhodné služby Microsoftu, umožní připojení z těchto služeb přes bránu firewall. Mezi tyto služby patří například Office 365 Exchange Online, Office 365 SharePoint Online, COMPUTE Azure, Azure Resource Manager a Azure Backup. Tito uživatelé ještě potřebují mít platný token Azure Active Directory a k provedení požadované operace musí mít oprávnění (nakonfigurovaná jako zásady přístupu). Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="usage-scenarios"></a>Scénáře použití
 
-Můžete nakonfigurovat [virtuální sítí a bran firewall služby Key Vault](key-vault-network-security.md) k odepření přístupu k provozu ze všech sítí (včetně přenosů z Internetu) ve výchozím nastavení. Můžete udělit přístup provoz z konkrétní služby Azure virtual networks a veřejným Internetem IP adresy rozsahů, což umožňuje vytvořit zabezpečené ohraničení sítě pro vaše aplikace.
+Ve výchozím nastavení můžete nakonfigurovat [Key Vault brány firewall a virtuální sítě](key-vault-network-security.md) tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 > [!NOTE]
-> Key Vault brány firewall a pravidla virtuální sítě platí jenom pro [rovina dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) služby Key Vault. Operace roviny řízení služby Key Vault (například vytváření, odstraňování a změny operace, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě) nejsou ovlivněny brány firewall a pravidla virtuální sítě.
+> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidel virtuální sítě).
 
 Tady je několik příkladů použití koncových bodů služby:
 
-* Používáte služby Key Vault pro ukládání šifrovacích klíčů, tajných kódů aplikace a certifikáty, a chcete zablokovat přístup k vašemu trezoru klíčů z veřejného Internetu.
-* Chcete zamezit přístup k trezoru klíčů tak, aby pouze svou aplikaci nebo krátký seznam určených hostitelů, můžete připojit k vašemu trezoru klíčů.
-* Máte aplikaci spuštěnou ve službě Azure virtual network a této virtuální sítě je uzamčena pro veškerý příchozí a odchozí provoz. Vaše aplikace stále potřebuje k připojení do služby Key Vault načíst tajné kódy a certifikáty, nebo použít kryptografických klíčů.
+* Používáte Key Vault k ukládání šifrovacích klíčů, tajných klíčů aplikací a certifikátů a chcete zablokovat přístup k trezoru klíčů z veřejného Internetu.
+* Chcete uzamknout přístup k trezoru klíčů, aby se k vašemu trezoru klíčů mohli připojit jenom vaše aplikace nebo krátký seznam určených hostitelů.
+* Máte aplikaci spuštěnou ve službě Azure Virtual Network a tato virtuální síť je u všech příchozích a odchozích přenosů uzamčena. Vaše aplikace se pořád potřebuje připojit k Key Vault k načtení tajných klíčů nebo certifikátů nebo k používání kryptografických klíčů.
 
-## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace bran firewall služby Key Vault a virtuální sítě
+## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Key Vault bran firewall a virtuálních sítí
 
-Tady jsou kroky potřebnými ke konfiguraci brány firewall a virtuální sítě. Tento postup platí, ať už používáte PowerShell, rozhraní příkazového řádku Azure nebo na webu Azure portal.
+Tady jsou kroky nutné ke konfiguraci bran firewall a virtuálních sítí. Tento postup platí bez ohledu na to, jestli používáte PowerShell, rozhraní příkazového řádku Azure nebo Azure Portal.
 
-1. Povolit [protokolování v Key Vault](key-vault-logging.md) zobrazíte podrobné zobrazení protokolů. To pomáhá v diagnostice, když brány firewall a pravidla virtuální sítě zabránit přístupu k trezoru klíčů. (Tento krok je volitelný, ale důrazně doporučujeme.)
-2. Povolit **koncové body pro trezor klíčů služby** pro cílový virtuální sítě a podsítě.
-3. Nastavení brány firewall a pravidla virtuální sítě pro službu key vault k omezení přístupu k této služby key vault z konkrétní virtuální sítě, podsítě a rozsahy adres IPv4.
-4. Pokud tento trezor klíčů musí být přístupné pro všechny důvěryhodné služby Microsoftu, povolte tuto možnost a povolíte **důvěryhodným službám Azure** k připojení do služby Key Vault.
+1. Povolte [protokolování Key Vault](key-vault-logging.md) pro zobrazení podrobných protokolů přístupu. To pomáhá diagnostikovat, pokud pravidla brány firewall a virtuální sítě brání přístupu k trezoru klíčů. (Tento krok je volitelný, ale důrazně se doporučuje.)
+2. Povolte **koncové body služby pro Trezor klíčů** pro cílové virtuální sítě a podsítě.
+3. Nastavte brány firewall a pravidla virtuální sítě pro Trezor klíčů, abyste omezili přístup k tomuto trezoru klíčů z konkrétních virtuálních sítí, podsítí a rozsahů IPv4 adres.
+4. Pokud tento trezor klíčů potřebuje přístup k jakýmkoli důvěryhodným službám Microsoftu, povolte možnost povolit **důvěryhodným službám Azure** připojení k Key Vault.
 
-Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Key Vault](key-vault-network-security.md).
+Další informace najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](key-vault-network-security.md).
 
 > [!IMPORTANT]
-> Po pravidla brány firewall jsou aktivní, uživatelé mohou provádět pouze služby Key Vault [rovina dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) povolené operace při jejich požadavky pocházejí z virtuální sítě nebo rozsahy adres IPv4. To platí i pro přístup k trezoru klíčů z portálu Azure portal. I když můžou uživatelé procházet k trezoru klíčů z portálu Azure portal, se nebudou moct vypsat klíče, tajné kódy nebo certifikáty Pokud klientském počítači se nenachází v seznamu povolených aplikací. To ovlivňuje také výběr Key Vault pomocí dalších služeb Azure. Uživatelé možná půjde zobrazit seznam trezorů klíčů, ale v seznamu klíčů, je-li zabránit pravidla brány firewall na klientském počítači.
+> Po uplatnění pravidel brány firewall můžou uživatelé provádět jenom Key Vault operace [roviny dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) , když jejich požadavky pocházejí z povolených virtuálních sítí nebo rozsahů IPv4 adres. To platí také pro přístup k Key Vault z Azure Portal. I když uživatelé můžou přejít k trezoru klíčů z Azure Portal, nemusí být schopni zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud jejich klientský počítač není v seznamu povolených. To má vliv také na Key Vault pro výběr jinými službami Azure. Uživatelé můžou zobrazit seznam trezorů klíčů, ale ne seznam klíčů, pokud pravidla brány firewall brání jejich klientskému počítači.
 
 
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
-> * Jsou povoleny maximálně 127 pravidla virtuální sítě a 127 pravidla IPv4. 
-> * Rozsahy, které využívají malé adres "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adresu.
-> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami **10.** , **172.16-31**, a **192.168.** . 
-> * V současnosti jsou podporované jenom adresy IPv4.
+> * Povoluje se maximálně 127 pravidel virtuální sítě a 127 pravidel IPv4. 
+> * Rozsahy malých adres, které používají předpony "/31" nebo "/32", nejsou podporovány. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adres.
+> * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.** , **172.16-31**a **192,168.** . 
+> * V tuto chvíli se podporují jenom IPv4 adresy.
 
 ## <a name="trusted-services"></a>Důvěryhodné služby
 
-Tady je seznam důvěryhodných služeb, které můžou přistupovat k trezoru klíčů, pokud **povolit důvěryhodným službám** je povolená možnost.
+Tady je seznam důvěryhodných služeb, které mají povolený přístup k trezoru klíčů, pokud je povolená možnost **Povolit důvěryhodné služby** .
 
 |Důvěryhodná služba|Scénáře použití|
 | --- | --- |
-|Služba nasazení Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů z trezoru klíčů spravovaných zákazníkem](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Služba nasazení šablon Azure Resource Manageru|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
-|Služba šifrování svazků Azure Disk Encryption|Povolit přístup k klíč nástroje BitLocker (virtuální počítač Windows) nebo heslo DM (virtuální počítač s Linuxem) a šifrovací klíč klíče, během nasazení virtuálních počítačů. Díky tomu [Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
-|Azure Backup|Povolit zálohování a obnovení relevantní klíčů a tajných kódů při zálohování virtuálních počítačů Azure s použitím [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
-|Exchange Online a SharePoint Online|Povolit přístup k klíč zákazníka pro šifrování služby Azure Storage s [klíč zákazníka](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
-|Azure Information Protection|Povolit přístup ke klíči tenanta pro [služby Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
-|Azure App Service|[Nasaďte certifikát pro Azure Web App přes Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL Database|[Transparentní šifrování dat s podporou vlastního klíče pro Azure SQL Database a Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Storage|[Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
-|Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) pomocí klíče spravovaného zákazníkem.|
-|Azure databricks|[Rychlá, snadná a spolupráci založené na Apache Sparku analytická služba](../azure-databricks/what-is-azure-databricks.md)|
-|Azure API Management|[Nasazení certifikátů pro vlastní doménu služby Key Vault pomocí MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Služba nasazení Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
+|Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
+|Služba šifrování svazků Azure Disk Encryption|Povolte přístup k klíči nástroje BitLocker (Windows VM) nebo k přístupovému heslu DM (virtuální počítač Linux) a šifrovacímu klíči během nasazování virtuálního počítače. To umožňuje [Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
+|Azure Backup|Povolí zálohování a obnovení důležitých klíčů a tajných kódů během zálohování Azure Virtual Machines pomocí [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
+|Exchange Online & SharePoint Online|Povolí přístup ke klíči zákazníka pro šifrování Azure Storage služby s [klíčem zákazníka](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
+|Azure Information Protection|Povolí přístup ke klíči tenanta pro [Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
+|Azure App Service|[Nasaďte certifikát webové aplikace Azure prostřednictvím Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
+|Azure SQL Database|[Transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
+|Azure Storage|[Šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
+|Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) s klíčem spravovaným zákazníkem.|
+|Datacihly Azure|[Služba analýzy založená na rychlé, jednoduché a Apache Spark spolupráci](../azure-databricks/what-is-azure-databricks.md)|
+|Azure API Management|[Nasazení certifikátů pro vlastní doménu z Key Vault pomocí MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 
 
 
 > [!NOTE]
-> Musíte nastavit příslušné zásady přístupu trezoru klíčů, aby odpovídající služby, chcete-li získat přístup k trezoru klíčů.
+> Aby mohly příslušné služby získat přístup k Key Vault, musíte nastavit příslušné zásady přístupu Key Vault.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md)
-* [Konfigurace bran firewall služby Azure Key Vault a virtuální sítě](key-vault-network-security.md)
+* [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](key-vault-network-security.md)

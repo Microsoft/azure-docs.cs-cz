@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382927"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915978"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Správa hesel aplikací ze stránky informace o zabezpečení (Preview)
 
@@ -30,11 +30,9 @@ Některé aplikace, jako je například Outlook 2010, nepodporují dvoustupňov�
 
 Při používání hesel aplikací je důležité pamatovat:
 
-- Hesla aplikací se generují automaticky a pro každou aplikaci se zadávají jenom jednou.
+- Hesla aplikací se generují automaticky a je třeba je vytvořit a zadat jednou pro každou aplikaci.
 
 - Pro každého uživatele je povolený limit 40 hesel. Pokud se po uplynutí tohoto limitu pokusíte jeden vytvořit, budete vyzváni k odstranění existujícího hesla, než bude povoleno vytvoření nového.
-
-- Použijte jedno heslo aplikace na zařízení, ne na aplikaci. Můžete například vytvořit jedno heslo pro všechny aplikace na přenosném počítači a další jedno heslo pro všechny aplikace na ploše.
 
     >[!Note]
     >Klienti Office 2013 (včetně Outlooku) podporují nové ověřovací protokoly a dají se použít se dvěma kroky ověřování. Tato podpora znamená, že po zapnutí dvoustupňové ověřování už nebudete potřebovat hesla aplikací pro klienty Office 2013. Další informace najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .

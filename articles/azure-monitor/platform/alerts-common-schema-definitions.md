@@ -1,6 +1,6 @@
 ---
-title: Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky
-description: Porozumění běžným definicím schématu výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky
+title: Běžné definice schématu výstrah pro Azure Monitor
+description: Principy běžných definic schémat výstrah pro Azure Monitor
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034806"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916036"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
-Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Webhooky/Runbooky Logic Apps/Azure Functions/Automation. 
+Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
 
-## <a name="overview"></a>Přehled
+Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a příčinu výstrahy. Tyto instance jsou popsané ve společném schématu v následujících částech:
+* **Základy**: Sada standardizovaných polí společných pro všechny typy výstrah, které popisují, k čemu je tato výstraha zapnutá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
+* **Kontext výstrahy**: Sada polí, která popisují příčinu výstrahy, s poli, která se liší v závislosti na typu výstrahy. Například výstraha metriky obsahuje pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit obsahuje informace o události, která vygenerovala výstrahu. 
 
-Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a **příčinu výstrahy**. tyto instance jsou popsány v běžném schématu v následujících částech:
-* **Základy**: Sada standardizovaných **polí**společných pro všechny typy výstrah, které popisují, k **jakým prostředkům** se tato výstraha používá společně s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
-* **Kontext výstrahy**: Sada polí, která popisují příčinu **výstrahy**, s poli, která se liší **v závislosti na typu výstrahy**. Například výstraha metriky by měla obsahovat pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit by měla obsahovat informace o události, která výstrahu vygenerovala. 
-
-##### <a name="sample-alert-payload"></a>Ukázková datová část výstrahy
+**Ukázková datová část výstrahy**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-## <a name="essentials-fields"></a>Pole Essentials
+## <a name="essentials"></a>Essentials
 
 | Pole | Popis|
 |:---|:---|
-| alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy |
+| alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
-| severity | Závažnost výstrahy Možné hodnoty: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: Metrika, protokol, protokol aktivit |
-| monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na aktivováno. Pokud je podkladová podmínka, která způsobila výstrahu, vyhodnocena jako nejasná, je stav monitorování nastaven na hodnotu "Vyřešeno".   |
+| severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
+| signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: Protokol metriky, protokolu nebo aktivity. |
+| monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na **aktivováno**. Pokud je podkladová podmínka, která způsobila výstrahu, **vyhodnocena**jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno.   |
 | monitoringService | Služba monitorování nebo řešení, které výstrahu vygenerovalo. Pole pro kontext výstrahy určuje služba monitorování. |
-| alertTargetIds | Seznam ID ARM všech ovlivněných cílů výstrahy. Pro výstrahu protokolu definovanou v Log Analytics pracovním prostoru nebo v Application Insights instance se jedná o příslušný pracovní prostor nebo aplikaci. |
-| originAlertId | ID instance výstrahy vygenerované službou monitorování, kterou vygenerovala. |
-| firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v UTC |
-| resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu vyřešený v UTC. V současné době platí jenom pro výstrahy metriky.|
-| description | Popis definovaný v pravidle výstrahy |
-|essentialsVersion| Číslo verze oddílu základy|
-|alertContextVersion | Číslo verze oddílu alertContext |
+| alertTargetIds | Seznam ID Azure Resource Manager, které jsou ovlivněny cíli výstrahy. Pro výstrahu protokolu definovanou v Log Analytics pracovním prostoru nebo v Application Insights instance se jedná o příslušný pracovní prostor nebo aplikaci. |
+| originAlertId | ID instance výstrahy vygenerované službou monitorování. |
+| firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v koordinovaném univerzálním čase (UTC). |
+| resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu **Vyřešeno** ve formátu UTC. V současné době platí jenom pro výstrahy metriky.|
+| description | Popis definovaný v pravidle výstrahy. |
+|essentialsVersion| Číslo verze oddílu základy.|
+|alertContextVersion | Číslo `alertContext` verze oddílu |
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-## <a name="alert-context-fields"></a>Pole kontext výstrahy
+## <a name="alert-context"></a>Kontext výstrahy
 
-### <a name="metric-alerts"></a>Upozornění metriky
+### <a name="metric-alerts"></a>Upozornění metrik
 
-#### <a name="monitoringservice--platform"></a>monitoringService = Platform
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -154,12 +152,11 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 ### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> + V případě výstrah protokolu, kde byla definována vlastní datová část JSON, je povolením společného schématu obnoveno schéma datové části na hodnotu, která je popsána níže.
-> + Výstrahy s povoleným společným schématem mají omezení horní velikosti 256KB na výstrahu. **Výsledky hledání nejsou vloženy do datové části upozornění protokolu, pokud způsobí velikost výstrahy pro překročení této prahové hodnoty.** To lze určit zaškrtnutím příznaku ' IncludedSearchResults '. Ve scénářích, kdy nejsou zahrnuty výsledky hledání, doporučujeme použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Pro výstrahy protokolu, které mají vlastní datovou část JSON, se povolením společného schématu vrátí schéma datové části na ten, který je popsaný níže. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím příznaku `IncludedSearchResults`. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = ' Log Analytics '
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = ' Application Insights '
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -289,9 +286,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 
 ### <a name="activity-log-alerts"></a>Upozornění protokolu aktivit
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = ' protokol aktivit – Správa '
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -316,9 +313,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = ' protokol aktivit – zásada '
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -349,9 +346,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = ' protokol aktivit – automatické škálování '
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -379,9 +376,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---security"></a>monitoringService = ' protokol aktivit – zabezpečení '
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -412,9 +409,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = ' ServiceHealth '
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -456,9 +453,9 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = ' Resource Health '
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>Ukázkové hodnoty
+**Ukázkové hodnoty**
 ```json
 {
   "alertContext": {
@@ -485,8 +482,8 @@ Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a 
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- [Další informace o běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs)
-- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- Přečtěte si další informace o [běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
+- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
 

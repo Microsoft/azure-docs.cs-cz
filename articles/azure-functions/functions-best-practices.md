@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097544"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933057"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
@@ -36,7 +36,7 @@ Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, kter�
 
 ### <a name="cross-function-communication"></a>Komunikace mezi funkcemi
 
-[Durable Functions](durable/durable-functions-concepts.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou sestaveny pro správu přechodů stavu a komunikaci mezi více funkcemi.
+[Durable Functions](durable/durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou sestaveny pro správu přechodů stavu a komunikaci mezi více funkcemi.
 
 Pokud při integraci s více funkcemi nepoužíváte Durable Functions nebo Logic Apps, je obecně osvědčeným postupem použít pro komunikaci mezi funkcemi fronty úložiště.  Hlavním důvodem je, že fronty úložiště mají levnější a mnohem snazší zřízení. 
 

@@ -1,6 +1,6 @@
 ---
-title: Optimalizace prostředí služby Active Directory prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
-description: Kontrola stavu služby Active Directory řešení můžete použít k vyhodnocení v pravidelných intervalech rizika a stav různých prostředí.
+title: Optimalizujte prostředí Active Directory pomocí Azure Monitor | Microsoft Docs
+description: Řešení kontroly stavu služby Active Directory můžete použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,182 +11,204 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/27/2017
+ms.date: 09/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60919753"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883080"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory ve službě Azure Monitor
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí Active Directory pomocí řešení kontroly stavu služby Active Directory v Azure Monitor
 
-![Symbol kontroly stavu AD](./media/ad-assessment/ad-assessment-symbol.png)
+![Symbol kontroly stavu služby AD](./media/ad-assessment/ad-assessment-symbol.png)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Kontrola stavu služby Active Directory řešení můžete použít k vyhodnocení v pravidelných intervalech rizika a stav různých prostředí serveru. Tento článek vám pomůže nainstalovat a mohli řešení používat, takže můžete provést opravné akce pro potenciální problémy.
+Řešení pro kontrolu stavu služby Active Directory můžete použít k vyhodnocení rizik a stavu prostředí serveru v pravidelných intervalech. Tento článek vám pomůže s instalací a používáním řešení, abyste mohli provádět nápravné akce pro potenciální problémy.
 
-Toto řešení poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury. Doporučení jsou rozdělené mezi čtyři oblasti zaměření, které vám pomohou rychle vědomi rizika a provést akci.
+Toto řešení poskytuje prioritní seznam doporučení specifických pro vaši nasazenou serverovou infrastrukturu. Doporučení jsou rozdělená do kategorií v rámci čtyř oblastí fokusu, které vám pomůžou rychle pochopit rizika a provádět akce.
 
-Doporučení jsou založeny na znalosti a zkušenosti získané z návštěvě tisíců zákaznických odborníky z Microsoftu. Každé doporučení obsahuje pokyny k proč k problému může být na kterých vám záleží a jak implementovat navrhované změny.
+Doporučení jsou založená na znalostech a zkušenostech získaných odborníky Microsoftu z tisíců návštěv zákazníků. Každé doporučení poskytuje pokyny týkající se toho, proč k problému může dojít, a postup implementace navrhovaných změn.
 
-Můžete vybrat konkrétní oblasti, které jsou nejdůležitější pro vaši organizaci a sledovat svůj postup směrem ke spuštění prostředí pro riziko free a v dobrém stavu.
+Můžete vybrat oblasti, které jsou pro vaši organizaci nejdůležitější, a sledovat svůj pokrok směrem k provozu bezplatného a zdravého prostředí.
 
-Poté, co jste přidali řešení a kontrola je dokončené a souhrnné informace pro konkrétní oblasti se zobrazí na **kontroly stavu AD** řídicí panel infrastruktury ve vašem prostředí. Následující části popisují, jak pomocí informací na **kontroly stavu AD** řídicí panel, kde můžete zobrazit a pak provést doporučené akce pro serverové infrastruktury služby Active Directory.  
+Po přidání řešení a dokončení kontroly se na řídicím panelu **kontroly stavu služby AD** zobrazí souhrnné informace pro infrastrukturu ve vašem prostředí. Následující části popisují, jak používat informace na řídicím panelu **kontroly stavu služby** Active Directory, kde můžete zobrazit a následně provést doporučené akce pro infrastrukturu serveru služby Active Directory.  
 
-![Obrázek kontroly stavu AD dlaždice](./media/ad-assessment/ad-healthcheck-summary-tile.png)
+![Obrázek dlaždice kontroly stavu služby AD](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
-![Obrázek řídicího panelu AD kontroly stavu](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
+![Obrázek řídicího panelu kontroly stavu služby AD](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kontrola stavu služby Active Directory řešení vyžaduje podporovanou verzi rozhraní .NET Framework 4.5.2 nebo nad nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a Azure Monitor.
-* Řešení podporuje řadiče domény se systémem Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows serveru 2016.
-* Pracovní prostor Log Analytics můžete přidat Kontrola stavu služby Active Directory řešení z Azure marketplace na webu Azure Portal.  Není nutná žádná další konfigurace.
+* Řešení kontroly stavu služby Active Directory vyžaduje podporovanou verzi .NET Framework 4.5.2 nebo novější na každém počítači, který má agenta Log Analytics pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
+* Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
+* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z webu Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
 
   > [!NOTE]
-  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a následně odesílána do Azure monitoru v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
+  > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
   >
   >
 
-Provádění kontroly stavu proti řadiči domény, které jsou členy domény, který se má vyhodnotit, vyžadují agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
+Aby bylo možné provést kontrolu stavu proti řadičům domény, které jsou členy domény, který se má vyhodnotit, vyžaduje každý řadič domény v této doméně agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Pokud řadič domény není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
-2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná s Azure Monitor, může být řadič domény s více adresami pomocí Azure monitoru pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
-3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
+1. Nainstalujte [agenta Log Analytics pro systém Windows](../../azure-monitor/platform/agent-windows.md) , pokud řadič domény ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
+2. Pokud je monitorovaná pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2 a skupina pro správu není integrována s Azure Monitor, může být řadič domény s Azure Monitor pro shromažďování dat a přeposílání do služby s více adresami a stále Monitorujte Operations Manager.  
+3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je třeba přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení v stejných.  
 
-Agent na vašem řadiči domény, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu Azure Monitor.  Data není zapsána do databáze nástroje Operations Manager.  
+Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations Manager, shromažďuje data, přepošle jim přiřazenou management server a pak se pošle přímo z management server do Azure Monitor.  Data nejsou zapsána do databází Operations Manager.  
 
-## <a name="active-directory-health-check-data-collection-details"></a>Active Directory zkontrolujte stav podrobnosti dat kolekce
+## <a name="active-directory-health-check-data-collection-details"></a>Podrobnosti shromažďování dat kontroly stavu služby Active Directory
 
-Kontrola stavu služby Active Directory shromažďuje data z následujících zdrojů pomocí agenta, který jste povolili:
+Při kontrole stavu služby Active Directory se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
 - Registru
 - LDAP
 - .NET Framework
 - Protokol událostí
-- Služba Active Directory rozhraní (ADSI)
+- Rozhraní ADSI (Active Directory Service Interfaces)
 - Windows PowerShell
 - Data souborů
-- Windows Management Instrumentation (WMI)
-- Nástroj DCDIAG rozhraní API
-- Rozhraní API služby (NTFRS) replikace souborů
+- Rozhraní WMI (Windows Management Instrumentation) (WMI)
+- Rozhraní API nástroje DCDIAG
+- Rozhraní API služby replikace souborů (NTFRS)
 - Vlastní C# kód
 
-Data se shromažďují na řadiči domény a předávaných do Azure monitoru každých sedm dní.  
+Data se shromažďují na řadiči domény a předají se Azure Monitor každých 7 dní.  
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Vysvětlení, jak mají určenou prioritu doporučení
-Každé doporučení je přiřazena hodnota váhu, která identifikuje relativní důležitost doporučení. Zobrazí jenom 10 nejdůležitější doporučení.
+## <a name="understanding-how-recommendations-are-prioritized"></a>Princip určování priorit doporučení
+
+Každé provedené doporučení je předána hodnota váhy, která identifikuje relativní důležitost doporučení. Zobrazuje se jenom 10 nejdůležitějších doporučení.
 
 ### <a name="how-weights-are-calculated"></a>Jak se počítají váhy
-Váhy jsou agregované hodnoty, které jsou založené na tři klíčové faktory:
 
-* *Pravděpodobnost* , identifikovat problém způsobuje problémy. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
-* *Dopad* problému ve vaší organizaci, pokud ho způsobovat problémy. Vyšší dopad odpovídá větší celkové skóre pro doporučení.
-* *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí odpovídá menší celkové skóre pro doporučení.
+Váhy jsou agregované hodnoty založené na třech klíčových faktorech:
 
-Váhu pro jednotlivá doporučení je vyjádřené jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast zaměření. Například pokud doporučení v oblasti zabezpečení a dodržování předpisů zaměření má skóre % 5, implementaci tohoto doporučení zvýší vaše celkové skóre podle 5 % zabezpečení a dodržování předpisů.
+* *Pravděpodobnost* , že problém identifikuje, způsobuje problémy. Vyšší pravděpodobnost odpovídá většímu celkovému skóre pro doporučení.
+* *Dopad* problému ve vaší organizaci, pokud dojde k problému. Vyšší dopad odpovídá většímu celkovému skóre pro doporučení.
+* *Úsilí* potřebné k implementaci doporučení. Vyšší úsilí se rovná menšímu celkovému skóre pro doporučení.
 
-### <a name="focus-areas"></a>Konkrétní oblasti
-**Zabezpečení a dodržování předpisů** – zobrazuje tuto oblast zaměření doporučení ohledně potenciálních bezpečnostních hrozeb a porušení, podnikové zásady a technických, právních i regulačních požadavků.
+Váha pro každé doporučení se vyjádří jako procento z celkového skóre dostupného pro každou oblast zaměření. Pokud například doporučení v oblasti zaměření zabezpečení a dodržování předpisů má skóre 5%, implementace tohoto doporučení zvyšuje celkové zabezpečení a skóre dodržování předpisů o 5%.
 
-**Dostupnost a plynulost obchodních procesů** -tuto oblast zaměření ukazuje doporučení pro služby dostupnost, odolnost vaší infrastruktury a ochrany firmy.
+### <a name="focus-areas"></a>Oblasti fokusu
 
-**Výkon a škálovatelnost** – zobrazuje tuto oblast zaměření doporučení, která vaší organizaci pomoct IT infrastruktury růst, ujistěte se, že splňuje aktuální požadavky na výkon vašeho IT prostředí a je schopný reagovat na měnící se infrastruktury potřebuje.
+**Zabezpečení a dodržování předpisů** – tato oblast pro výběr obsahuje doporučení pro potenciální bezpečnostní hrozby a porušení zabezpečení, podnikové zásady a požadavky na dodržování předpisů v souladu s právními předpisy.
 
-**Upgrade, migrace a nasazení** – zobrazuje tuto oblast zaměření doporučení, která vám pomohou upgrade, migrace a nasazení služby Active Directory vaší stávající infrastruktuře.
+**Dostupnost a provozní kontinuita** – tato oblast pro výběr zobrazuje doporučení pro dostupnost služby, odolnost vaší infrastruktury a obchodní ochranu.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>By měl být cílem stanovení skóre 100 % v každé oblasti zaměření?
-Ne nutně. Doporučení jsou založeny na znalosti a zkušenosti získané v Microsoftu přes návštěvě tisíců zákaznických. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší pro vás relevantní. Některá doporučení zabezpečení může být například méně relevantní, pokud vaše virtuální počítače nejsou zveřejněné na Internetu. Některá doporučení dostupnosti může být méně důležité pro služby, které poskytují shromažďování dat ad hoc s nízkou prioritou a generování sestav. Problémy, které jsou důležité pro až po zralé podnikání, může být méně důležité spouštěcí. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak v průběhu času měnit skóre.
+**Výkon a škálovatelnost** – tato oblast pro výběr obsahuje doporučení, která vám pomohou zvýšit infrastrukturu IT vaší organizace, zajistit, že vaše IT prostředí splňuje aktuální požadavky na výkon a je schopné reagovat na měnící se potřeby infrastruktury.
 
-Každé doporučení obsahuje pokyny o tom, proč je důležité. Měli byste použít tento návod k vyhodnocení, jestli implementace doporučení je vhodné, vzhledem k povaze služeb IT a obchodní potřeby vaší organizace.
+**Upgrade, migrace a nasazení** – tato oblast pro výběr vám ukáže doporučení, která vám pomůžou s upgradem, migrací a nasazením služby Active Directory na stávající infrastrukturu.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Kontroly stavu použijte doporučení oblasti zaměření
-Po instalaci, zobrazí se přehled doporučení pomocí kontroly stavu dlaždice na stránce řešení na webu Azure Portal.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Měli byste se zaměřit na skóre 100% v každé oblasti výběru?
 
-Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
+Ne nutně. Doporučení jsou založená na znalostech a zkušenostech získaných odborníky Microsoftu v různých tisících návštěv zákazníků. Nicméně žádné dvě serverové infrastruktury nejsou stejné a specifická doporučení můžou být pro vás méně důležitá. Některá doporučení zabezpečení mohou být například méně důležitá, pokud vaše virtuální počítače nejsou vystaveny pro Internet. Některá doporučení k dostupnosti mohou být méně důležitá pro služby, které poskytují nízkou prioritu shromažďování a generování dat ad hoc. Problémy, které jsou důležité pro vyspělou firmu, můžou být pro spuštění méně důležité. Možná budete chtít určit, které oblasti fokusu jsou vašimi prioritami, a pak se podívat, jak se vaše skóre v průběhu času mění.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
+Každé doporučení obsahuje pokyny k tomu, proč je důležité. Tyto pokyny byste měli použít k vyhodnocení, jestli je implementace doporučení vhodná pro vás, a to s ohledem na povahu vašich IT služeb a obchodních potřeb vaší organizace.
+
+## <a name="use-health-check-focus-area-recommendations"></a>Použít doporučení oblasti pro kontrolu stavu
+
+Po instalaci můžete zobrazit souhrn doporučení pomocí dlaždice kontroly stavu na stránce řešení v Azure Portal.
+
+Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infrastrukturu a pak na doporučení pro přechod k podrobnostem.
+
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Chcete-li zobrazit doporučení pro oblast zaměření a provést nápravná opatření
+
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. Na **přehled** stránky, klikněte na tlačítko **Kontrola stavu služby Active Directory** dlaždici.
-1. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
-1. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu doporučení](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-1. Můžete provést opravné akce navržený v **doporučené akce**. Když položka vyřeší, novější posouzení záznamy, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
+1. Na stránce **Přehled** klikněte na dlaždici **kontroly stavu služby Active Directory** .
 
-## <a name="ignore-recommendations"></a>Ignorujte doporučení
-Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který zabránit doporučení povolí, nebude vaše výsledky posouzení bude používat Azure Monitor.
+2. Na stránce **Kontrola stavu** zkontrolujte souhrnné informace v jednom z oken detailní oblasti a potom klikněte na jednu pro zobrazení doporučení pro tuto oblast výběru.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>K identifikaci doporučení, která se bude ignorovat.
+3. Na kterékoli stránce oblasti pro zaměření si můžete prohlédnout doporučení s prioritou vytvořená pro vaše prostředí. Kliknutím na doporučení v části **Ovlivněné objekty** zobrazíte podrobnosti o tom, proč se doporučení udělalo.
+
+    ![Obrázek doporučení pro kontrolu stavu](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+
+4. V **navrhovaných akcích**můžete provést opravné akce. Po vyřešení této položky si později vyhodnotí, že byly provedeny doporučené akce a vaše skóre dodržování předpisů se zvýší. Opravené položky se zobrazí jako **předané objekty**.
+
+## <a name="ignore-recommendations"></a>Ignorovat doporučení
+
+Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový soubor, který Azure Monitor použít k tomu, aby se předešlo zobrazování doporučení ve výsledcích hodnocení.
+
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>Určení doporučení, která budete ignorovat
+
 [!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
+K vypsání doporučení, která se pro počítače ve vašem prostředí nezdařila, použijte následující dotaz.
 
 ```
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-Zde je snímek protokolu dotazu:<br><br> ![doporučení se nezdařilo](media/ad-assessment/ad-failed-recommendations.png)
+Tady je snímek obrazovky, který ukazuje dotaz protokolu: <
 
-Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
+![neúspěšná doporučení](media/ad-assessment/ad-failed-recommendations.png)
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
-1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Azure Monitor ignorovat na samostatném řádku a potom uložte a zavřete soubor.
-3. Uložte soubor v následující složce na každém počítači místo, kam chcete ignorujte doporučení Azure Monitor.
-   * Na počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations managera) - *systemdrive % musí být*: \Program Files\Microsoft Monitoring Agent\Agent
-   * Na serveru pro správu Operations Manageru 2012 R2 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
-   * Na serveru pro správu Operations Manageru 2016 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2016\Operations Manager\Server
+Vyberte doporučení, která chcete ignorovat. V dalším postupu použijete hodnoty pro RecommendationId.
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že jsou ignorovány doporučení
-Až dalšího naplánovaného spuštění kontroly stavu, ve výchozím nastavení každých sedm dní, jsou označené zadanou doporučení *ignorováno* a nezobrazí se na řídicím panelu.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations. txt
 
-1. Můžete použít následující dotazy protokolu do seznamu ignorovaných doporučení.
+1. Vytvořte soubor s názvem IgnoreRecommendations. txt.
+
+2. Vložte nebo zadejte jednotlivé RecommendationIdy pro každé doporučení, které chcete, Azure Monitor ignorovat na samostatném řádku a pak soubor uložte a zavřete.
+
+3. Uložte soubor do následující složky na každém počítači, na kterém chcete ignorovat doporučení Azure Monitor.
+
+   * V počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations Manager) – *systémová_jednotka*: \Program Files\Microsoft monitoring Agent\Agent
+   * V Operations Manager 2012 R2 management server- *systemdrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * V Operations Manager 2016 management server- *systémová_jednotka*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
+
+### <a name="to-verify-that-recommendations-are-ignored"></a>Ověření, že se doporučení ignorují
+
+Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uvedená doporučení označena jako ignorovaná a na řídicím panelu se nezobrazí.
+
+1. Pomocí následujících dotazů protokolu můžete zobrazit seznam všech ignorovaných doporučení.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Pokud se později rozhodnete, že chcete zobrazit ignorované doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
+2. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny soubory IgnoreRecommendations. txt nebo z nich můžete RecommendationIDs odebrat.
 
-## <a name="ad-health-check-solutions-faq"></a>AD Health Kontrola řešení – nejčastější dotazy
-*Jak často Kontrola stavu spouštět?*
+## <a name="ad-health-check-solutions-faq"></a>Nejčastější dotazy k řešení kontroly stavu služby AD
 
-* Kontrola proběhne každých sedm dní.
+*Jak často se spouští kontroly stavu?*
 
-*Existuje způsob, jak konfigurovat, jak často se kontrola stavu spouštět?*
+* Tato kontroler se spustí každých 7 dní.
+
+*Existuje způsob, jak nakonfigurovat, jak často se má kontrolovat stav spouštění?*
 
 * V tuto chvíli to není možné.
 
-*Pokud jiný server pro zjištění po přidali jsme řešení kontroly stavu, bude kontrolován*
+*Pokud je po přidání řešení kontroly stavu zjištěn jiný server pro, bude zkontrolován*
 
-* Ano, jakmile je zjištěna zkontroluje z té, každých sedm dní.
+* Ano, jakmile je zjištěno, že se bude kontrolovat, každých 7 dní.
 
-*Pokud dojde k deaktivaci na serveru, když ho se odebere z kontroly stavu?*
+*Pokud je server vyřazený z provozu, když ho odeberete z kontroly stavu?*
 
-* Pokud server není odesílání dat po dobu 3 týdnů, bude odebrán.
+* Pokud server neodesílá data po dobu 3 týdnů, dojde k jejímu odebrání.
 
-*Jaký je název procesu, která provádí sběr dat?*
+*Jaký je název procesu, který provádí shromažďování dat?*
 
 * AdvisorAssessment.exe
 
 *Jak dlouho trvá shromažďování dat?*
 
-* Skutečná data kolekce na serveru trvá přibližně 1 hodinu. Může trvat delší dobu na serverech, které mají velký počet serverů služby Active Directory.
+* Skutečná shromažďování dat na serveru trvá přibližně 1 hodinu. Může to trvat déle na serverech, které mají velký počet serverů služby Active Directory.
 
-*Existuje způsob, jak konfigurovat, když se shromažďují data?*
+*Existuje způsob, jak nakonfigurovat, kdy se data shromažďují?*
 
 * V tuto chvíli to není možné.
 
-*Proč zobrazit pouze prvních 10 doporučení?*
+*Proč zobrazit jenom 10 nejčastějších doporučení?*
 
-* Místo získáte vyčerpávající seznam náročné úkoly, doporučujeme vám zaměřit nejprve adresování prioritizovaných doporučení. Po jejich řešení, budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení pomocí protokolu dotazu.
+* Místo toho, abyste vám pomohli vyčerpávající úplný seznam úkolů, doporučujeme nejprve se zaměřit na doporučení přednostních doporučení. Po vyřešení těchto adres budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení pomocí dotazu protokolu.
 
-*Existuje způsob, jak ignorujte doporučení?*
+*Existuje způsob, jak ignorovat doporučení?*
 
-* Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
+* Ano, podívejte se na část [Ignorovat doporučení](#ignore-recommendations) výše.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [dotazů na protokoly Azure monitoru](../log-query/log-query-overview.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.
+
+Pomocí [Azure Monitorch dotazů protokolu](../log-query/log-query-overview.md) se dozvíte, jak analyzovat podrobné údaje o kontrole stavu a doporučení služby AD.

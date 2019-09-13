@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694293"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916168"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -34,12 +34,11 @@ Toto chování je záměrné, což umožňuje vyhnout se zbytečné kolekci osob
 
 ## <a name="overriding-default-behavior"></a>Přepsání výchozího chování
 
-I když je výchozím chováním minimalizace shromažďování osobních údajů, stále nabízíme flexibilitu pro shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, že se neruší žádné požadavky na dodržování předpisů ani místní předpisy, na které se může vztahovat. Další informace o zpracování osobních údajů v Application Insights najdete v pokynech [k osobním údajům](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
+I když je výchozím chováním minimalizace shromažďování osobních údajů, stále nabízíme flexibilitu pro shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, že se neruší žádné požadavky na dodržování předpisů ani místní předpisy, na které se může vztahovat. Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
 
-## <a name="storing-partial-ip-address-data"></a>Ukládání dat s částečnou IP adresou
+## <a name="storing-ip-address-data"></a>Ukládání dat IP adresy
 
-Aby bylo možné povolit částečné shromažďování a ukládání IP adres, `DisableIpMasking` musí být vlastnost Application Insights komponenty nastavena na. `true` Tuto vlastnost lze nastavit buď prostřednictvím Azure Resource Manager šablon, nebo voláním REST API. IP adresy se budou zaznamenávat s posledním oktetem nula.
-
+Aby bylo možné povolit shromažďování a ukládání IP adres, `DisableIpMasking` musí být vlastnost Application Insights komponenty nastavena na. `true` Tuto vlastnost lze nastavit buď prostřednictvím Azure Resource Manager šablon, nebo voláním REST API. 
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -86,13 +85,13 @@ Pokud potřebujete pouze změnit chování pro jeden Application Insights prost�
     > [!WARNING]
     > Pokud dojde k chybě, která říká: **_Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
 
-5. Vyberte **Souhlasím**s nákupem. >  
+5. Vyberte Souhlasím s**nákupem**. >  
 
     ![Upravit šablonu](media/ip-collection/purchase.png)
 
     V tomto případě se nic nekupuje, jenom aktualizujeme konfiguraci existujícího prostředku Application Insights.
 
-6. Po dokončení nasazení se budou zaznamenávat nová data telemetrie s prvními tři oktety naplněné IP adresou a poslední oktet vypočítáno.
+6. Po dokončení nasazení se budou zaznamenávat nová data telemetrie.
 
     Pokud byste chtěli znovu vybrat a upravit šablonu, měli byste zobrazit jenom výchozí šablonu a nevidíte nově přidanou vlastnost a její přidruženou hodnotu. Pokud nevidíte data IP adresy a chcete potvrdit, že `"DisableIpMasking": true` je nastavená. Spusťte následující PowerShell: (Nahraďte `Fabrikam-dev` odpovídajícím názvem prostředku a skupiny prostředků.)
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Inicializátor telemetrie
 
-Pokud potřebujete zaznamenat celou IP adresu a nikoli jenom první tři oktety, můžete použít [inicializátor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) ke zkopírování IP adresy do vlastního pole, které se nebude maskovat.
+Pokud potřebujete pružnější alternativu než `DisableIpMasking` při zaznamenávání všech nebo částí IP adres, můžete pomocí [inicializátoru telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) zkopírovat veškerou nebo část IP adresy do vlastního pole. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 

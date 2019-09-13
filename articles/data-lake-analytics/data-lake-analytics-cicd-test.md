@@ -1,6 +1,6 @@
 ---
-title: Tom, jak testovat kód Azure Data Lake Analytics
-description: Zjistěte, jak přidat testovací případy pro U-SQL a rozšířené kód jazyka C# pro Azure Data Lake Analytics.
+title: Postup testování kódu Azure Data Lake Analytics
+description: Naučte se, jak přidat testovací případy pro U-SQL C# a Rozšířený kód pro Azure Data Lake Analytics.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,64 +9,63 @@ ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/03/2018
-ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/30/2019
+ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630062"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913962"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
 
-Azure Data Lake nabízí jazyka U-SQL, který spojuje deklarativní SQL pomocí imperativního jazyka C# pro zpracování dat v libovolném měřítku. V tomto dokumentu se dozvíte, jak vytvořit testovací případy pro U-SQL a rozšířeného kódu C# UDO (uživatelem definovaný operátor).
+Azure Data Lake poskytuje jazyk [U-SQL](data-lake-analytics-u-sql-get-started.md) . U-SQL kombinuje deklarativní SQL s imperativně C# pro zpracování dat v libovolném měřítku. V tomto dokumentu se dozvíte, jak vytvořit testovací případy pro kód U-SQL a C# rozšířený uživatelem definovaný operátor (Udo).
 
 ## <a name="test-u-sql-scripts"></a>Testování skriptů U-SQL
 
-Skript U-SQL je zkompilován a optimalizovaná pro spustitelný kód pro spuštění na počítačích v cloudu nebo na místním počítači. Proces kompilace a optimalizace zpracovává celý skript U-SQL jako celek. Nelze provést tradiční "unit test" pro každý příkaz. Ale testování pomocí U-SQL SDK a místní spuštění sady SDK, můžete provést testy úroveň skriptu.
+Skript U-SQL je zkompilován a optimalizován pro spuštění spustitelného kódu v Azure nebo na místním počítači. Proces kompilace a optimalizace zpracovává celý skript U-SQL jako celek. Pro každý příkaz nelze provést tradiční test jednotek. Pomocí sady testů U-SQL test SDK a místního běhu sady SDK ale můžete provádět testy na úrovni skriptů.
 
 ### <a name="create-test-cases-for-u-sql-script"></a>Vytvoření testovacích případů pro skript U-SQL
 
-Azure Data Lake Tools pro Visual Studio umožňuje vytvářet testovací případy skript U-SQL.
+Nástroje Azure Data Lake pro Visual Studio umožňuje vytvořit testovací případy skriptu U-SQL.
 
-1.  Klikněte pravým tlačítkem na skript U-SQL v Průzkumníku řešení a pak vyberte **vytvoření testu jednotek**.
-2.  Vytvořit nový testovací projekt nebo vložit testovací případ do existujícího projektu testů.
+1. V Průzkumník řešení klikněte pravým tlačítkem na skript U-SQL a pak vyberte **vytvořit test jednotek**.
 
-    ![Data Lake Tools pro Visual Studio – vytvořte testovací projekt U-SQL](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project.png) 
+1. Vytvořte nový testovací projekt nebo vložte testovací případ do existujícího testovacího projektu.
 
-    ![Data Lake Tools pro Visual Studio – vytvořit konfigurace projektu testů U-SQL](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png) 
+   ![Data Lake Tools for Visual Studio – vytvoření konfigurace testovacího projektu U-SQL](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png)
 
-### <a name="manage-the-test-data-source"></a>Správa zdroje dat testu
+### <a name="manage-the-test-data-source"></a>Správa zdroje testovacích dat
 
-Při testování skriptů U-SQL, potřebujete testovací vstupních souborů. Testovací data můžete spravovat pomocí konfigurace **zdroj dat otestovat** vlastnosti projektu v U-SQL. 
+Když testujete skripty U-SQL, budete potřebovat testovací vstupní soubory. Chcete-li spravovat testovací data, v **Průzkumník řešení**klikněte pravým tlačítkem na projekt U-SQL a vyberte **vlastnosti**. Do **zdroje testovacích dat**můžete zadat zdroj.
 
-Při volání `Initialize()` rozhraní v testu U-SQL SDK, kořenové složky místní dočasných dat je vytvořené v rámci pracovního adresáře projektu testu a všechny soubory a podsložky (a soubory v podsložkách) ve zdrojové složce testovací data se zkopírují do dočasný místní data kořenová složka předtím, než spustíte testovací případy skript U-SQL. Můžete přidat další složky zdroje dat testu rozdělením test cestu ke složce data oddělte středníkem.
+![Data Lake Tools for Visual Studio – konfigurace zdroje testovacích dat projektu](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-![Nástroje data Lake pro Visual Studio – konfigurace zdroje dat projektu testu](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
+Při volání `Initialize()` rozhraní v sadě SDK testu U-SQL se vytvoří dočasná kořenová složka místních dat v pracovním adresáři testovacího projektu. Všechny soubory a složky ve složce zdroje testovacích dat se zkopírují do dočasné kořenové složky místních dat před spuštěním testovacích případů skriptu U-SQL. Můžete přidat další zdroje testovacích dat tak, že rozdělujete cestu ke složce testovacích dat středníkem.
 
-### <a name="manage-the-database-environment-for-testing"></a>Správa databáze prostředí pro testování
+### <a name="manage-the-database-environment-for-testing"></a>Správa databázového prostředí pro testování
 
-Případně skripty U-SQL pomocí dotazu s objekty databáze U-SQL (například při volání uložené procedury) je nutné pro inicializaci prostředí databáze před spuštěním U-SQL testovací případy. `Initialize()` Rozhraní v testu U-SQL SDK vám pomůže nasadit všechny databáze, které se odkazuje projekt U-SQL ke kořenové složce dočasných dat místní v pracovním adresáři testovacího projektu. 
+Pokud vaše skripty U-SQL používají nebo se dotazují s objekty databáze U-SQL, je nutné před spuštěním testovacích případů U-SQL inicializovat prostředí databáze. Tento přístup může být nutný při volání uložených procedur. `Initialize()` Rozhraní v sadě SDK testu u-SQL vám pomůže nasadit všechny databáze, na které se odkazuje v projektu u-SQL, do dočasné místní složky místních dat v pracovním adresáři testovacího projektu.
 
-Další informace o [Správa odkazů projektu databáze U-SQL pro projekt v U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
+Další informace o tom, jak spravovat odkazy na projekt U-SQL Database pro projekt U-SQL, najdete v tématu [Referenční dokumentace k databázovému projektu u](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)-SQL.
 
-### <a name="verify-test-results"></a>Zkontrolujte výsledky testu
+### <a name="verify-test-results"></a>Ověřit výsledky testu
 
-`Run()` Rozhraní vrátí výsledek provedení úlohy. 0 znamená úspěch a 1 znamená selhání. Vyhodnocení funkcí jazyka C# můžete také ověřit výstupy. 
+`Run()` Rozhraní vrátí výsledek provedení úlohy. *0* znamená úspěch a *1* znamená selhání. Můžete také použít C# funkce Assert k ověření výstupů.
 
-### <a name="run-test-cases-in-visual-studio"></a>Spouštění testovacích případů v sadě Visual Studio
+### <a name="run-test-cases-in-visual-studio"></a>Spuštění testovacích případů v aplikaci Visual Studio
 
-Projekt testů skript U-SQL je nástavbou C# testovacího rozhraní jednotky. Po sestavení projektu, můžete si projít všechny testovací případy **Průzkumníka testů > seznam stop**. Alternativně klikněte pravým tlačítkem na soubor .cs a pak vyberte **spustit testy**.
+Projekt testů skriptu U-SQL je postaven nad rámec testování C# částí. Po sestavení projektu vyberte **test** > **Windows** > **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
 
 ## <a name="test-c-udos"></a>Test C# UDOs
 
-### <a name="create-test-cases-for-c-udos"></a>Vytvoření testovacích případů pro C# UDO
+### <a name="create-test-cases-for-c-udos"></a>Vytvoření testovacích případů C# pro Udo
 
-C# rámce jednotkových testů můžete použít k testování vašich C# UDO (operátory definované uživatelem). Při testování UDO, je nutné připravit odpovídající **IRowset** objekty jako vstupy.
+K otestování C# uživatelem C# definovaných operátorů (Udo) můžete použít systém testování částí. Při testování Udo je třeba připravit odpovídající objekty **IRowset** jako vstupy.
 
-Existují dva způsoby, jak vytvořit objekt IRowset:
+Existují dva způsoby, jak vytvořit objekt **IRowset** :
 
-- Načtení dat ze souboru k vytvoření IRowset:
+- Načtení dat ze souboru pro vytvoření **IRowset**:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -82,7 +81,7 @@ Existují dva způsoby, jak vytvořit objekt IRowset:
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- Data ze sběru dat použijte k vytvoření IRowset:
+- K vytvoření **IRowset**použijte data z kolekce dat:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -103,49 +102,54 @@ Existují dva způsoby, jak vytvořit objekt IRowset:
     IRowset rowset = UnitTestHelper.GetRowsetFromCollection(rows, output.AsReadOnly());
     ```
 
-### <a name="verify-test-results"></a>Zkontrolujte výsledky testu
+### <a name="verify-test-results"></a>Ověřit výsledky testu
 
-Po zavolání funkce UDO můžete ověřit výsledky prostřednictvím schématu a sady řádků hodnota ověření pomocí vyhodnocení funkce jazyka C#. Můžete použít ukázkový kód v projektu vzorku testů jednotek U-SQL C# UDO prostřednictvím **soubor > Nový > projekt** v sadě Visual Studio.
+Po volání funkcí UDO můžete ověřit výsledky prostřednictvím schématu a ověření hodnoty sady řádků pomocí C# funkcí Assert. Do svého řešení můžete přidat **projekt testu C# jednotek U-SQL Udo** . Provedete to tak, že vyberete **soubor > nový > projekt** v aplikaci Visual Studio.
 
-### <a name="run-test-cases-in-visual-studio"></a>Spouštění testovacích případů v sadě Visual Studio
+### <a name="run-test-cases-in-visual-studio"></a>Spuštění testovacích případů v aplikaci Visual Studio
 
-Po vytvoření testovacího projektu můžete spustit všechny Testové případy ale **Průzkumníka testů > seznam stop**, nebo klikněte pravým tlačítkem na soubor .cs a zvolte **spustit testy**.
+Po sestavení projektu vyberte **test** > **Windows** > **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
 
-## <a name="run-test-cases-in-azure-devops"></a>Spouštění testovacích případů v Azure DevOps
+## Spuštění testovacích případů v Azure Pipelines<a name="run-test-cases-in-azure-devops"></a>
 
-Obě **projektů testování skriptů U-SQL** a **testovacích projektů C# UDO** dědit projektů testů jednotek C#. [Úlohy test sady Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) v Azure DevOps můžete spustit tyto testovací případy. 
+Projekty testů **skriptu U-SQL** a  **C# projekty testů Udo** dědí C# projekty testů jednotek. [Úkol testu sady Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) v Azure Pipelines může spustit tyto testovací případy.
 
-### <a name="run-u-sql-test-cases-in-azure-devops"></a>Spouštění testovacích případů U-SQL v Azure DevOps
+### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů U-SQL v Azure Pipelines
 
-Pro testování U-SQL, ujistěte se, že načtete `CPPSDK` na sestavovacím počítači a pak je předat `CPPSDK` cestu k USqlScriptTestRunner (cppSdkFolderFullPath: \@"").
+U testu u-SQL Zajistěte, aby se `CPPSDK` načetly do počítače sestavení, a pak `CPPSDK` předejte `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`cestu k.
 
-**Co je CPPSDK?**
+#### <a name="what-is-cppsdk"></a>Co je CPPSDK?
 
-CPPSDK je balíček, který zahrnuje Microsoft Visual C++ 14 a sada Windows SDK 10.0.10240.0. Toto je prostředí, který je nezbytný modulem runtime U-SQL. Můžete získat tento balíček v Azure Data Lake Tools pro Visual Studio Instalační složka:
+CPPSDK je balíček, který obsahuje Microsoft Visual C++ 14 a Windows SDK 10.0.10240.0. Tento balíček zahrnuje prostředí, které je potřeba pro modul runtime U-SQL. Tento balíček můžete získat v instalační složce Nástroje Azure Data Lake pro Visual Studio:
 
-- Pro sadu Visual Studio 2015 je v části `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- Pro Visual Studio 2017 je v části `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2015 je`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- V případě sady Visual Studio 2017 je`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2019 je`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
-**Příprava CPPSDK v agentovi sestavení Azure DevOps**
+#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Příprava CPPSDK v agentovi sestavení Azure Pipelines
 
-Nejběžnější způsob přípravy CPPSDK závislost v Azure DevOps je následujícím způsobem:
+Nejběžnější způsob, jak připravit závislost CPPSDK v Azure Pipelines, je následující:
 
-1.  Složky, která obsahuje knihovny CPPSDK ZIP.
-2.  Zkontrolujte v souboru .zip do systému správy zdrojů. (Soubor .zip zajišťuje změnami všechny knihovny ve složce CPPSDK tak, že některé soubory nejsou ignoruje ".gitignore".)   
-3.  Rozbalte soubor ZIP v kanálu sestavení.
-4.  Bod `USqlScriptTestRunner` do této složky rozbaleny v počítači sestavení.
+1. PSČ složky, která obsahuje knihovny CPPSDK.
 
-### <a name="run-c-udo-test-cases-in-azure-devops"></a>Spouštění jazyka C# UDO testovacích případů v Azure DevOps
+1. Soubor. zip vraťte do systému správy zdrojového kódu. Soubor. zip zajišťuje kontrolu všech knihoven ve složce CPPSDK, aby se soubory neignorovaly kvůli `.gitignore` souboru.
 
-Pro C# UDO test Ujistěte se, že chcete-li odkazovat na následující sestavení, které jsou potřeba pro UDO. Pokud se budete odkazovat na ně prostřednictvím [balíček Nuget Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), ujistěte se, že ve vašem kanálu sestavení přidáte úlohu obnovení NuGet.
+1. Rozbalte soubor. zip v kanálu sestavení.
 
-* Microsoft.Analytics.Interfaces
-* Microsoft.Analytics.Types
-* Microsoft.Analytics.UnitTest
+1. Najeďte `USqlScriptTestRunner` na tuto složku unzip v počítači sestavení.
+
+### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Spuštění C# testovacích případů UDO v Azure Pipelines
+
+Pro test C# Udo se ujistěte, že odkazujete na následující sestavení, která jsou potřeba pro Udo.
+
+- Microsoft.Analytics.Interfaces
+- Microsoft.Analytics.Types
+- Microsoft.Analytics.UnitTest
+
+Pokud na ně odkazujete pomocí [balíčku NuGet Microsoft. Azure. datalake. USQL. Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), ujistěte se, že jste do kanálu sestavení přidali úlohu obnovení NuGet.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
-- [Spusťte skript U-SQL na místním počítači](data-lake-analytics-data-lake-tools-local-run.md)
-- [Vývoj databáze U-SQL pomocí databázový projekt U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md)
-
+- [Jak nastavit kanál CI/CD pro Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [Spuštění skriptu U-SQL na místním počítači](data-lake-analytics-data-lake-tools-local-run.md)
+- [Použití projektu U-SQL Database pro vývoj databáze U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md)

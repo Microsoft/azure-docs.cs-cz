@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872910"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934847"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -36,8 +36,7 @@ Před zálohováním SQL Server databáze ověřte následující kritéria:
 1. Identifikujte nebo vytvořte [Recovery Services trezor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) ve stejné oblasti nebo národním prostředí jako virtuální počítač, který je hostitelem instance SQL Server.
 2. Ověřte, že virtuální počítač má [připojení k síti](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 3. Ujistěte se, že SQL Server databáze dodržují [pravidla pro pojmenovávání databází pro Azure Backup](#database-naming-guidelines-for-azure-backup).
-4. Konkrétně pro SQL 2008 a 2008 R2 [přidejte klíč registru](#add-registry-key-to-enable-registration) , který umožní registraci serveru. Tento krok se nebude vyžadovat, pokud je funkce všeobecně dostupná.
-5. Ověřte, že nemáte pro databázi povolená žádná další zálohovací řešení. Před zálohováním databáze zakažte všechny ostatní SQL Server zálohy.
+4. Ověřte, že nemáte pro databázi povolená žádná další zálohovací řešení. Před zálohováním databáze zakažte všechny ostatní SQL Server zálohy.
 
 > [!NOTE]
 > Můžete povolit Azure Backup pro virtuální počítač Azure a také pro SQL Server databáze běžící na virtuálním počítači bez konfliktu.
@@ -98,22 +97,6 @@ Vyhněte se použití následujících prvků v názvech databází:
 
 Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme je vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
-### <a name="add-registry-key-to-enable-registration"></a>Přidání klíče registru pro povolení registrace
-
-1. Otevřít regedit
-2. Vytvořte cestu k adresáři registru: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (budete muset vytvořit klíč ' TestHook ' v WorkloadBackup, který je potřeba vytvořit v rámci společnosti Microsoft).
-3. V části cesta k adresáři registru vytvořte novou hodnotu řetězce s názvem řetězce **AzureBackupEnableWin2K8R2SP1** a hodnotou: **Podmínka**
-
-    ![Regedit pro povolení registrace](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-Případně můžete tento krok automatizovat spuštěním souboru. reg pomocí následujícího příkazu:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -175,7 +158,7 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
    Pro optimalizaci zátěže zálohování Azure Backup nastaví maximální počet databází v jedné úloze zálohování na 50.
 
      * Chcete-li chránit více než 50 databází, nakonfigurujte více záloh.
-     * Pokud chcete [Povolit](#enable-auto-protection) celou instanci nebo skupinu dostupnosti Always On, vyberte v rozevíracím seznamu automaticky **chránit** možnost Zapnuto apak vyberte **OK**.
+     * Pokud chcete [Povolit](#enable-auto-protection) celou instanci nebo skupinu dostupnosti Always On, vyberte v rozevíracím seznamu automaticky **chránit** možnost **zapnuto**a pak vyberte **OK**.
 
     > [!NOTE]
     > Funkce [automatické ochrany](#enable-auto-protection) umožňuje nejen ochranu na všech existujících databázích najednou, ale také automaticky chrání všechny nové databáze přidané do této instance nebo do skupiny dostupnosti.  
@@ -262,18 +245,6 @@ Vytvoření zásady zálohování:
 
 14. Po dokončení úprav zásad zálohování vyberte **OK**.
 
-
-### <a name="modify-policy"></a>Upravit zásadu
-Upravte zásadu pro změnu četnosti zálohování nebo rozsahu uchovávání.
-
-> [!NOTE]
-> Jakákoli změna v období uchování se použije zpět na všechny starší body obnovení kromě nových.
-
-Na řídicím panelu trezoru klikněte na **Spravovat** > **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
-
-  ![Spravovat zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy.png)
-
-
 ## <a name="enable-auto-protection"></a>Povolit automatickou ochranu  
 
 Automatickou ochranu můžete povolit, pokud chcete automaticky zálohovat všechny stávající a budoucí databáze na samostatnou instanci SQL Server nebo do skupiny dostupnosti Always On.
@@ -285,7 +256,7 @@ Automatickou ochranu můžete povolit, pokud chcete automaticky zálohovat všec
 Povolení automatické ochrany:
 
   1. V části **položky k zálohování**vyberte instanci, pro kterou chcete povolit automatickou ochranu.
-  2. Vyberte rozevírací seznam v části AutoProtect, zvolte Zapnutoa pak vyberte **OK**.
+  2. Vyberte rozevírací seznam v části **AutoProtect**, zvolte **zapnuto**a pak vyberte **OK**.
 
       ![Povolení automatické ochrany ve skupině dostupnosti](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -296,7 +267,7 @@ Pokud potřebujete vypnout automatickou ochranu, vyberte název instance v čás
 ![Zakázat automatickou ochranu u této instance](./media/backup-azure-sql-database/disable-auto-protection.png)
 
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučte se:
 

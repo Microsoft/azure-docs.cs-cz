@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
-ms.translationtype: MT
+ms.openlocfilehash: 40caabc08b08e4c9268bf60d588819ce81717986
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061833"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900271"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -33,19 +33,42 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte. V tématu [Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem použijte Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity). Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](hdinsight-managed-identities.md).
+Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte. 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V levém horním rohu klikněte na **vytvořit prostředek**.
+1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
+1. Klikněte na možnost **Vytvořit**.
+1. Zadejte název spravované identity, vyberte správné předplatné, skupinu prostředků a umístění.
+1. Klikněte na možnost **Vytvořit**.
+
+Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](hdinsight-managed-identities.md).
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Vytvoření účtu Data Lake Storage Gen2
 
-Vytvořte účet úložiště Azure Data Lake Storage Gen2. Ujistěte se, že je povolená možnost **hierarchický obor názvů** . Další informace najdete v tématu [rychlý Start: Vytvořte účet](../storage/blobs/data-lake-storage-quickstart-create-account.md)úložiště Azure Data Lake Storage Gen2.
+Vytvořte účet úložiště Azure Data Lake Storage Gen2. 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V levém horním rohu klikněte na **vytvořit prostředek**.
+1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
+1. Klikněte na možnost **Vytvořit**.
+1. Na obrazovce **vytvořit účet úložiště** :
+    1. Vyberte správné předplatné a skupinu prostředků.
+    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o pojmenování účtů úložiště convetions najdete v tématu zásady [vytváření názvů pro prostředky Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Klikněte na kartu **Upřesnit** .
+    1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
+    1. Klikněte na **Zkontrolovat a vytvořit**.
+    1. Klikněte na **Vytvořit**.
+
+Další informace o dalších možnostech při vytváření účtu úložiště najdete v tématu [rychlý Start: Vytvořte účet](../storage/blobs/data-lake-storage-quickstart-create-account.md)úložiště Azure Data Lake Storage Gen2.
 
 ![Snímek obrazovky, který ukazuje vytvoření účtu úložiště v Azure Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2
 
-Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiště** v účtu úložiště. Další informace najdete v tématu [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC (Preview)](../storage/common/storage-auth-aad-rbac.md).
+Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiště** v účtu úložiště.
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 1. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro tento účet. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
@@ -147,7 +170,7 @@ Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a při
 
 Pokud chcete nastavit oprávnění pro uživatele k dotazování na data, použijte skupiny zabezpečení Azure AD jako přiřazený objekt zabezpečení v seznamech ACL. Nepřiřazujte přímo jednotlivým uživatelům nebo instančním objektům oprávnění k přístupu k souborům. Když používáte skupiny zabezpečení Azure AD k řízení toku oprávnění, můžete přidávat a odebírat uživatele nebo instanční objekty bez nutnosti znovu použít seznamy ACL pro celou adresářovou strukturu. Stačí přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděné, takže při opakovaném použití seznamů ACL je potřeba aktualizovat seznam ACL u všech souborů a podadresářů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Integrace Azure HDInsight s Data Lake Storage Gen2 Preview – seznam ACL a aktualizace zabezpečení](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035589"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915870"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Přesun portálu OMS do Azure
 
@@ -50,7 +50,7 @@ I když většina funkcí bude i nadále fungovat bez provedení migrace, musít
 Přečtěte si [Nejčastější dotazy k přechodu z portálu OMS na Azure Portal pro Log Analytics uživatele](oms-portal-faq.md) , kde najdete informace o tom, jak přejít na Azure Portal. 
 
 ## <a name="user-access-and-role-migration"></a>Přístup uživatelů a migrace rolí
-Správa přístupu Azure Portal je bohatší a výkonnější než Správa přístupu na portálu OMS. Podrobnosti o správě přístupu v Log Analytics najdete v tématu [návrh pracovního prostoru Azure Monitorch protokolů] návrh-protokoly-deployment.md).
+Správa přístupu Azure Portal je bohatší a výkonnější než Správa přístupu na portálu OMS. Podrobnosti o správě přístupu v Log Analytics najdete v tématu věnovaném [navrhování Azure monitor v pracovním prostoru protokoly](design-logs-deployment.md) .
 
 > [!NOTE]
 > Předchozí verze tohoto článku uvedly, že oprávnění by se automaticky převedla z portálu OMS na Azure Portal. Tento automatický převod již není plánován a je nutné provést převod sami.
@@ -76,7 +76,7 @@ Pomocí portálu OMS už nebudete moct vytvářet nové pracovní prostory. Podl
 
 ### <a name="alert-extension"></a>Rozšíření výstrahy  
 
-Výstrahy se rozšířily na [Azure Portal](alerts-extend.md) existující výstrahy budou dál uvedené na portálu OMS, ale můžete je spravovat jenom v Azure Portal. Pokud k upozorněním přistupujete programově pomocí Log Analytics výstrahy REST API nebo šablony prostředků výstrah Log Analytics, budete muset místo akcí v volání rozhraní API, šablonách Azure Resource Manager a příkazech PowerShellu používat skupiny akcí.
+Výstrahy se [rozšířily na Azure Portal](alerts-extend.md) existující výstrahy budou dál uvedené na portálu OMS, ale můžete je spravovat jenom v Azure Portal. Pokud k upozorněním přistupujete programově pomocí Log Analytics výstrahy REST API nebo šablony prostředků výstrah Log Analytics, budete muset místo akcí v volání rozhraní API, šablonách Azure Resource Manager a příkazech PowerShellu používat skupiny akcí.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
 V rámci změny z předchozího oznámení bude [řešení pro správu výstrah](alert-management-solution.md) dál dostupné a plně podporované v Azure Portal. Řešení můžete dál instalovat z Azure Marketplace.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510315"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919661"
 ---
 # <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 
@@ -79,7 +79,7 @@ Teď, když víte, kterou zónu nasadit do, postupujte podle kroků nasazení v 
 
 Nejprve určete velikost virtuálního počítače k nasazení. V současné době podporují jenom rodiny virtuálních počítačů DsV3 a EsV3. Další podrobnosti o těchto velikostech virtuálních počítačů najdete v druhé tabulce na tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
 
-Pokud chcete vytvořit virtuální počítač s více disky Ultra, přečtěte si v ukázce [Vytvoření virtuálního počítače s několika disky Ultra](https://aka.ms/UltraSSDTemplate).
+Pokud chcete vytvořit virtuální počítač s více disky Ultra, přečtěte si v ukázce [Vytvoření virtuálního počítače s několika disky Ultra](https://aka.ms/ultradiskArmTemplate).
 
 Pokud máte v úmyslu použít vlastní šablonu, ujistěte se, že apiVersion `Microsoft.Compute/virtualMachines` pro `Microsoft.Compute/Disks` a je nastavená jako `2018-06-01` (nebo novější).
 
@@ -214,6 +214,6 @@ $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud se chcete pokusit vyzkoušet nový typ disku, který bude [vyžadovat přístup k tomuto průzkumu](https://aka.ms/UltraDiskSignup).

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443339"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933011"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
-[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights [](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) sad SDK s Azure Diagnosticsmi daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
+[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
@@ -84,8 +84,9 @@ Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a př�
 
     ![Application Insights podokno](./media/cloudservices/01-new.png)
 
-1. V rozevíracím seznamu **Typ aplikace** vyberte možnost **Webová aplikace ASP.NET**.  
-    Jednotlivé prostředky identifikuje klíč instrumentace. Tento klíč možná budete potřebovat později, pokud chcete ručně nakonfigurovat nebo ověřit konfiguraci sady SDK.
+1. V rozevíracím seznamu **Typ aplikace** vyberte možnost **Webová aplikace ASP.NET**.
+
+Jednotlivé prostředky identifikuje klíč instrumentace. Tento klíč možná budete potřebovat později, pokud chcete ručně nakonfigurovat nebo ověřit konfiguraci sady SDK.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
@@ -133,8 +134,9 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
     * [Role pracovního procesu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Pro webové stránky](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Nastavte soubor *ApplicationInsights. config* tak, aby se zkopíroval vždy do výstupního adresáře.  
-    Zpráva v souboru *. config* vás vyzve k zadání klíče instrumentace do tohoto umístění. Pro cloudové aplikace je ale lepší je nastavit ze souboru *. cscfg* . Tento přístup zajišťuje správnou identifikaci role na portálu.
+1. Nastavte soubor *ApplicationInsights. config* tak, aby se zkopíroval vždy do výstupního adresáře.
+
+   Zpráva v souboru *. config* vás vyzve k zadání klíče instrumentace do tohoto umístění. Pro cloudové aplikace je ale lepší je nastavit ze souboru *. cscfg* . Tento přístup zajišťuje správnou identifikaci role na portálu.
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Nastavení Monitorování stavu pro shromažďování úplných dotazů SQL (volitelné)
 
@@ -171,16 +173,19 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
 
 1. Spusťte aplikaci a přihlaste se k Azure. 
 
-1. Otevřete Application Insights prostředky, které jste vytvořili.  
-    V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)se zobrazí jednotlivé [](../../azure-monitor/app/diagnostic-search.md)datové body a agregovaná data se zobrazí. 
+1. Otevřete Application Insights prostředky, které jste vytvořili.
+
+   V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)se zobrazí jednotlivé [][diagnostic]datové body a agregovaná data se zobrazí.
 
 1. Přidejte další telemetrii (podívejte se na další části) a pak publikujte aplikaci, abyste získali živou diagnostiku a používání zpětné vazby. 
 
 Pokud žádná data neexistují, udělejte toto:
+
 1. Chcete-li zobrazit jednotlivé události, otevřete dlaždici [hledání][diagnostic] .
 1. V aplikaci otevřete různé stránky, aby se vygenerovala nějaká telemetrie.
 1. Počkejte několik sekund a potom klikněte na tlačítko **aktualizovat**.  
-    Další informace naleznete v tématu [Poradce při potížích][qna].
+
+Další informace naleznete v tématu [Poradce při potížích][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Zobrazit Azure Diagnostics události
 Informace o [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) v Application Insights najdete v následujících umístěních:

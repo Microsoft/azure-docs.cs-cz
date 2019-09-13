@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990973"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918968"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testování úlohy Azure Stream Analytics s ukázkovými daty
 
-V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Můžete testovat dotazy na příchozí data ze vstupní jímky nebo nahraná ukázková data z místního souboru.
+V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) a [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run). 
 
 ## <a name="sample-incoming-data-from-input"></a>Ukázková příchozí data ze vstupu
 
@@ -34,7 +34,7 @@ Azure Stream Analytics automaticky načte události ze vstupu streamování. Mů
 
    a. Typ serializace pro vaše data se automaticky rozpozná, pokud je jeho JSON nebo CSV. Můžete ji ručně změnit i na formát JSON, CSV a AVRO změnou možnosti v rozevírací nabídce.
     
-   b. Pomocí selektoru můžete zobrazit data v **tabulce** nebo v nezpracovaném formátu.
+   b. Pomocí selektoru můžete zobrazit data v **tabulce** nebo v **nezpracovaném** formátu.
     
    c. Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události.
 
@@ -42,7 +42,7 @@ Azure Stream Analytics automaticky načte události ze vstupu streamování. Mů
 
    ![Azure Stream Analytics ukázkový vstup ve formátu tabulky](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   V následující tabulce je příklad dat v nezpracovaném **formátu**:
+   V následující tabulce je příklad dat v **nezpracovaném formátu**:
 
    ![Azure Stream Analytics ukázkový vstup v nezpracovaném formátu](./media/stream-analytics-test-query/asa-sample-raw.png)
 

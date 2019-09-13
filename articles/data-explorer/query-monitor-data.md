@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172693"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933995"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 
@@ -107,7 +107,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ![Vzájemný dotaz z proxy serveru Azure Průzkumník dat](media/adx-proxy/cross-query-adx-proxy.png)
 
-Použití operátoru místo sjednocení může vyžadovat nápovědu pro jeho spuštění v nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). [ `join` ](/azure/kusto/query/joinoperator) 
+Použití operátoru namísto sjednocení může vyžadovat [`hint`](/azure/kusto/query/joinoperator#join-hints) , aby se spustilo na nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). [ `join` ](/azure/kusto/query/joinoperator) 
 
 ## <a name="additional-syntax-examples"></a>Další příklady syntaxe
 
@@ -120,6 +120,6 @@ K dispozici jsou následující možnosti syntaxe při volání Application Insi
 |Cluster, který obsahuje všechny aplikace/pracovní prostory v rámci předplatného a jsou členy této skupiny prostředků    |   cluster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
 |Cluster, který obsahuje jenom definovaný prostředek v tomto předplatném      |    cluster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Zápis dotazů](write-queries.md)

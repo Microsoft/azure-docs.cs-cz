@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C | Microsoft Docs
-description: Spusťte ukázkovou desktopovou aplikaci ASP.NET využívající Azure Active Directory B2C k zajištění přihlášení k účtu.
+title: Rychlý Start – Nastavení přihlášení pro desktopovou aplikaci pomocí Azure Active Directory B2C
+description: Spusťte ukázkovou desktopovou aplikaci WPF, která používá Azure Active Directory B2C k poskytnutí přihlášení k účtu.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 636e47c1d0c689dd9660f8bf01ada571d3824961
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 98d312dbafd399cc8b92e2c4fb70499853c214b5
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835465"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914258"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro desktopovou aplikaci pomocí Azure Active Directory B2C
 
 Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro zajištění ochrany vašich aplikací, firmy a zákazníků. Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích a podnikových účtů s využitím protokolů s otevřenými standardy. V tomto rychlém startu použijete desktopovou aplikaci WPF (Windows Presentation Foundation) k přihlášení pomocí zprostředkovatele sociální identity a zavolání webového rozhraní API chráněného službou Azure AD B2C.
 
@@ -26,8 +26,8 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) s **vývoj pro ASP.NET a web** pracovního vytížení.
-- Účet na sociální síti Facebook, Google, Microsoft nebo Twitter.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
+- Účet sociální sítě z Facebooku, Google nebo Microsoft.
 - [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
 
     ```
@@ -45,14 +45,14 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
     ![Snímek obrazovky ukázkové aplikace WPF](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    Ukázka podporuje několik možností registrace. Mezi tyto možnosti patří pomocí zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailovou adresu. Pro účely tohoto rychlého startu použijte účet zprostředkovatele sociální identity Facebook, Google, Microsoft nebo Twitter.
+    Ukázka podporuje několik možností registrace. Mezi tyto možnosti patří použití zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailové adresy. Pro tento rychlý Start použijte účet poskytovatele sociální identity z Facebooku, Google nebo Microsoftu.
 
 
-2. Azure AD B2C zobrazí v ukázkové webové aplikaci vlastní přihlašovací stránku pro fiktivní značku Wingtip Toys. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele sociální identity, kterého chcete použít.
+2. Azure AD B2C zobrazí přihlašovací stránku pro fiktivní společnost nazvanou Fabrikam pro ukázkovou webovou aplikaci. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele sociální identity, kterého chcete použít.
 
-    ![Přihlásit nebo zaregistrovat stránky zobrazující zprostředkovatelů identity](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+    ![Stránka pro přihlášení nebo přihlášení zobrazující zprostředkovatele identity](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    Ověřování (přihlášení) se pomocí přihlašovacích údajů vašeho účtu na sociální síti a autorizujete aplikaci ke čtení informací z vašeho účtu na sociální síti. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město.
+    Ověříte (přihlásíte) pomocí přihlašovacích údajů účtu sociální sítě a autorizujete aplikaci, aby četla informace z účtu sociální sítě. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město.
 
 2. Dokončete proces přihlašování příslušného zprostředkovatele identity.
 
@@ -60,13 +60,13 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 ## <a name="edit-your-profile"></a>Úprava profilu
 
-Azure AD B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své profily. Ukázková webová aplikace používá tok Azure AD B2C upravit profil uživatele pro pracovní postup.
+Azure AD B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své profily. Ukázková webová aplikace používá pro pracovní postup profil uživatele Azure AD B2Cho úpravy profilu.
 
 1. Na řádku nabídek aplikace klikněte na **Edit profile** (Upravit profil), abyste mohli upravit svůj vytvořený profil.
 
-    ![Upravit profil tlačítkem v ukázkové aplikaci WPF](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+    ![Tlačítko Upravit profil zvýrazněné v ukázkové aplikaci WPF](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. Zvolte zprostředkovatele identity přidruženého k účtu, který jste vytvořili. Pokud jste například při vytváření účtu jako zprostředkovatele identity použili Twitter, zvolte Twitter a upravte podrobnosti o přidruženém profilu.
+2. Zvolte zprostředkovatele identity přidruženého k účtu, který jste vytvořili. Pokud jste například při vytváření účtu použili Facebook jako poskytovatele identity, klikněte na Facebook a upravte přidružené podrobnosti o profilu.
 
 3. Změňte **Display name** (Zobrazované jméno) nebo **City** (Město) a pak klikněte na **Continue** (Pokračovat).
 
@@ -88,12 +88,12 @@ Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili ukázkové desktopové aplikace pro:
+V tomto rychlém startu jste použili ukázkovou desktopovou aplikaci k těmto akcím:
 
-* Přihlaste se pomocí vlastní přihlašovací stránky
-* Přihlaste se pomocí zprostředkovatele sociální identity
-* Vytvoření účtu služby Azure AD B2C
-* Volání webového rozhraní API chráněného službou Azure AD B2C
+* Přihlaste se pomocí vlastní přihlašovací stránky.
+* Přihlášení pomocí zprostředkovatele sociální identity
+* Vytvoření účtu Azure AD B2C
+* Volání webového rozhraní API chráněného Azure AD B2C
 
 Začněte s vytvářením vlastního tenanta Azure AD B2C.
 

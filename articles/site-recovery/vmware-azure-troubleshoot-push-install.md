@@ -1,189 +1,189 @@
 ---
-title: Řešení potíží se selháním instalace služby Mobility nabízených oznámení při povolení replikace pro zotavení po havárii | Dokumentace Microsoftu
-description: Řešení chyb při instalaci služby Mobility, při povolení replikace pro zotavení po havárii
+title: Řešení selhání nabízené instalace služby mobility při povolování replikace pro zotavení po havárii | Microsoft Docs
+description: Řešení chyb při instalaci služby mobility při povolování replikace pro zotavení po havárii
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/27/2019
-ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/11/2019
+ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925565"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910638"
 ---
-# <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
+# <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby mobility
 
-Instalace služby Mobility je klíče krokem při povolení replikace. Úspěch tento krok závisí výhradně na splnění požadavků a práci s podporovanou konfigurací. Většina běžných chyb, které se zabývají během instalace služby Mobility se z důvodu:
+Instalace služby mobility je klíčový krok během povolování replikace. Úspěch tohoto kroku závisí výhradně na požadavcích na schůzku a na práci s podporovanými konfiguracemi. Mezi nejběžnější chyby, které čelíte během instalace služby mobility, patří:
 
-* [Přihlašovací údaje nebo oprávnění chyby](#credentials-check-errorid-95107--95108)
+* [Chyby přihlašovacích údajů/oprávnění](#credentials-check-errorid-95107--95108)
 * [Neúspěšná přihlášení](#login-failures-errorid-95519-95520-95521-95522)
 * [Chyby připojení](#connectivity-failure-errorid-95117--97118)
 * [Chyby sdílení souborů a tiskáren](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [Chyby rozhraní WMI](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
-* [Nepodporovaný operační systémy](#unsupported-operating-systems)
+* [Selhání WMI](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Nepodporované operační systémy](#unsupported-operating-systems)
 * [Nepodporované konfigurace spuštění](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
 * [Selhání instalace VSS](#vss-installation-failures)
-* [Název zařízení v konfiguraci GRUB, takže nemusíte zařízení UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [Svazek LVM](#lvm-support-from-920-version)
-* [Restartovat upozornění](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
+* [Název zařízení v konfiguraci GRUB namísto UUID zařízení](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [LVM svazek](#lvm-support-from-920-version)
+* [Upozornění na restartování](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže.
+Když povolíte replikaci, Azure Site Recovery se pokusí nainstalovat agenta služby mobility na virtuálním počítači. V rámci této funkce se konfigurační server pokusí připojit k virtuálnímu počítači a zkopírovat agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podle pokynů v části Postup řešení potíží uvedených níže.
 
-## <a name="credentials-check-errorid-95107--95108"></a>Zkontrolujte přihlašovací údaje (ID chyby: 95107 & 95108)
+## <a name="credentials-check-errorid-95107--95108"></a>Kontrolu přihlašovacích údajů (ErrorID: 95107 & 95108)
 
-* Ověřte, jestli uživatelský účet vybrána při povolení replikace **platný, přesné**.
-* Azure Site Recovery vyžaduje **KOŘENOVÉ** účet nebo uživatelský účet s **oprávnění správce** k provedení nabízené instalace. V opačném nabízené instalace se zablokuje na zdrojovém počítači.
-  * Pro Windows (**chyba 95107**), ověření, pokud uživatelský účet nemá přístup pro správu, místní nebo doméně na zdrojovém počítači.
-  * Pokud nepoužíváte účet domény, je nutné zakázat vzdálené řízení přístupu uživatele v místním počítači.
-    * Zakázání vzdálené řízení přístupu uživatele, pod klíčem registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidáte novou hodnotu DWORD: LocalAccountTokenFilterPolicy. Nastavte hodnotu na 1. K provedení tohoto kroku, spusťte následující příkaz z příkazového řádku:
+* Ověřte, zda je uživatelský účet vybraný během povolování replikace **platný, přesný**.
+* Azure Site Recovery vyžaduje k provedení nabízené instalace **kořenový** účet nebo uživatelský účet s **oprávněními správce** . V opačném případě bude nabízená instalace na zdrojovém počítači blokovaná.
+  * V případě systému Windows (**chyba 95107**) Zkontrolujte, zda uživatelský účet má na zdrojovém počítači oprávnění správce, a to buď místní, nebo doména.
+  * Pokud nepoužíváte doménový účet, je nutné zakázat řízení přístupu vzdáleného uživatele v místním počítači.
+    * Pokud chcete zakázat řízení přístupu ke vzdálenému uživateli, přidejte do klíče registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System novou hodnotu DWORD: LocalAccountTokenFilterPolicy. Nastavte hodnotu na 1. Chcete-li provést tento krok, spusťte z příkazového řádku následující příkaz:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Pro Linux (**chyba 95108**), je nutné vybrat kořenový účet pro úspěšnou instalaci agenta mobility. Kromě toho by měl běžet služba SFTP. Pokud chcete povolit SFTP subsystému a ověřování heslem v souboru sshd_config:
-    1. Přihlaste se jako uživatel root.
-    2. Přejděte k souboru /etc/ssh/sshd_config, vyhledejte řádek, který začíná PasswordAuthentication.
-    3. Zrušte na řádku komentář a změňte hodnotu na Ano.
-    4. Vyhledejte řádek, který začíná subsystému a zrušte komentář na řádku.
+  * Pro Linux (**chyba 95108**) musíte zvolit kořenový účet pro úspěšnou instalaci agenta mobility. Navíc by měly být spuštěny služby SFTP. Postup povolení subsystému SFTP a ověřování hesla v souboru sshd_config:
+    1. Přihlaste se jako kořenový adresář.
+    2. Do souboru/etc/ssh/sshd_config Najděte řádek, který začíná na PasswordAuthentication.
+    3. Odkomentujte řádek a změňte hodnotu na Ano.
+    4. Vyhledejte řádek, který začíná na subsystému, a odkomentujte řádek.
     5. Restartujte službu sshd.
 
-Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+Pokud chcete změnit přihlašovací údaje zvoleného uživatelského účtu, postupujte podle pokynů uvedených [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="insufficient-privileges-failure-errorid-95517"></a>Selhání dostatečná oprávnění (ID chyby: 95517)
+## <a name="insufficient-privileges-failure-errorid-95517"></a>Selhání nedostatečných oprávnění (ErrorID: 95517)
 
-Když uživatel zvolili k instalaci agenta mobility nemá oprávnění správce, konfigurační server/horizontální navýšení kapacity procesového serveru nebude moci kopírovat softwaru agenta mobility do zdrojového počítače. Tato chyba je tedy výsledkem chyba odepření přístupu. Ujistěte se, že uživatelský účet má oprávnění správce.
+Pokud uživatel, který zvolil instalaci agenta mobility, nemá oprávnění správce, konfigurační server nebo procesový Server se škálováním na více instancí nebude moct zkopírovat software agenta mobility na zdrojový počítač. Tato chyba je způsobena tím, že dojde k chybě odepření přístupu. Ujistěte se, že uživatelský účet má oprávnění správce.
 
-Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+Pokud chcete změnit přihlašovací údaje zvoleného uživatelského účtu, postupujte podle pokynů uvedených [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="insufficient-privileges-failure-errorid-95518"></a>Selhání dostatečná oprávnění (ID chyby: 95518)
+## <a name="insufficient-privileges-failure-errorid-95518"></a>Selhání nedostatečných oprávnění (ErrorID: 95518)
 
-Když zařízení vztah důvěryhodnosti domény mezi primární doménou a pracovní stanice se nezdaří při pokusu o přihlášení ke zdrojovému počítači, instalace agenta mobility se nezdaří s ID chyby 95518. Ano Ujistěte se, že uživatelský účet použitý k instalaci agenta mobility má oprávnění správce k přihlášení pomocí primární domény zdrojového počítače.
+Když při pokusu o přihlášení ke zdrojovému počítači dojde k chybě při vyvazování vztahu důvěryhodnosti domény mezi primární doménou a pracovní stanicí, instalace agenta mobility se nezdařila s ID chyby 95518. Ujistěte se, že uživatelský účet použitý k instalaci agenta mobility má oprávnění správce pro přihlášení prostřednictvím primární domény zdrojového počítače.
 
-Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+Pokud chcete změnit přihlašovací údaje zvoleného uživatelského účtu, postupujte podle pokynů uvedených [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Neúspěšná přihlášení (ID chyby: 95519, 95520, 95521, 95522)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Neúspěšné přihlášení (ErrorID: 95519, 95520, 95521, 95522)
 
-### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Přihlašovací údaje uživatelského účtu se zakázaly. (ID chyby: 95519)
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Přihlašovací údaje uživatelského účtu jsou zakázané (ErrorID: 95519)
 
-Uživatelský účet vybrána při povolení replikace se zakázalo. Chcete-li uživatelský účet, najdete v článku [tady](https://aka.ms/enable_login_user) nebo spusťte následující příkaz tak, že nahradíte text *uživatelské jméno* s skutečné uživatelské jméno.
+Uživatelský účet vybraný během povolování replikace byl zakázán. Pokud chcete uživatelský účet povolit, přečtěte si tento [](https://aka.ms/enable_login_user) článek nebo spusťte následující příkaz, který nahradí textové *uživatelské* jméno skutečným uživatelským jménem.
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Přihlašovací údaje uzamčen kvůli více neúspěšných pokusů o přihlášení (ID chyby: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Pověření byla uzamčena z důvodu více nezdařených pokusů o přihlášení (ErrorID: 95520)
 
-Více neúspěšných opakování úsilí pro přístup k počítači dojde k uzamčení uživatelského účtu. Selhání možné příčiny:
+Několik neúspěšných pokusů o přístup k počítači bude uzamknout uživatelský účet. Příčinou chyby může být:
 
-* Při konfiguraci nastavení zadané přihlašovací údaje jsou nesprávné nebo
-* Uživatelský účet vybrána při povolení replikace není správné
+* Přihlašovací údaje zadané během nastavení konfigurace nejsou správné nebo
+* Uživatelský účet vybraný během povolování replikace není správný.
 
-Ano, měnit přihlašovací údaje zvolí podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) a zkuste operaci zopakovat za nějakou dobu.
+Proto upravte pověření zvolená podle pokynů uvedených [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) a po nějaké době operaci opakujte.
 
-### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Přihlašovací servery nejsou k dispozici na zdrojovém počítači (ID chyby: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Na zdrojovém počítači nejsou k dispozici přihlašovací servery (ErrorID: 95521)
 
-K této chybě dochází, pokud nejsou k dispozici na zdrojovém počítači přihlašovací servery. Nedostupnost přihlašovací servery povede k selhání žádosti o přihlášení, a proto není možné nainstalovat agenta mobility. Pro úspěšné přihlášení Ujistěte se, že přihlašovací servery jsou k dispozici na zdrojovém počítači a spuštění služby přihlašování. Podrobné pokyny najdete v článku KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) chybová zpráva: K dispozici aktuálně žádné přihlašovací servery.
+K této chybě dojde, pokud na zdrojovém počítači nejsou přihlašovací servery k dispozici. Nedostupnost přihlašovacích serverů povede k selhání žádosti o přihlášení, takže agenta mobility nejde nainstalovat. Pro úspěšné přihlášení zajistěte, aby byly na zdrojovém počítači k dispozici přihlašovací servery, a spusťte přihlašovací službu. Podrobné pokyny najdete v článku KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) Err Msg: V tuto chvíli nejsou k dispozici žádné přihlašovací servery.
 
-### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Na zdrojovém počítači neběží služba přihlášení (ID chyby: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Na zdrojovém počítači není spuštěná přihlašovací služba (ErrorID: 95522)
 
-Přihlášení služby na zdrojovém počítači není spuštěná a způsobila chybu při žádosti o přihlášení. Proto nelze nainstalovat agenta mobility. Pokud chcete vyřešit, ujistěte se, že je pro úspěšné přihlášení přihlašovací služba běží na zdrojovém počítači. Spustit službu přihlášení, spusťte příkaz "net start přihlášení" z příkazového řádku nebo službu "NetLogon" spustit Správce úloh.
+Přihlašovací služba není na zdrojovém počítači spuštěná a způsobila selhání žádosti o přihlášení. Proto nejde nainstalovat agenta mobility. Pokud chcete řešení vyřešit, ujistěte se, že je na zdrojovém počítači spuštěná přihlašovací služba pro úspěšné přihlášení. Přihlašovací službu spustíte spuštěním příkazu "net start Logon" z příkazového řádku nebo spuštěním služby NetLogon ze Správce úloh.
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>**Chyba připojení (ID chyby: 95117 & 97118)**
+## <a name="connectivity-failure-errorid-95117--97118"></a>**Chyba připojení (ErrorID: 95117 & 97118)**
 
-Konfigurační server / procesový server horizontální navýšení kapacity se pokusí připojit k zdrojový virtuální počítač pro instalaci agenta Mobility. Tato chyba nastane, pokud zdrojový počítač není dosažitelný kvůli problémům se síťovým připojením. Pokud chcete vyřešit,
+Konfigurační server/procesový Server se škálováním na více instancí se pokusí připojit ke zdrojovému virtuálnímu počítači a nainstalovat agenta mobility. K této chybě dochází, pokud není zdrojový počítač dosažitelný z důvodu problémů s připojením k síti. Chcete-li vyřešit,
 
-* Ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z konfiguračního serveru. Pokud jste vybrali horizontální navýšení kapacity procesového serveru při povolení replikace, ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z procesového serveru.
-  * Ze zdrojového serveru počítače příkazového řádku pomocí Telnetu odešlete zprávu ping konfigurační server / horizontální navýšení kapacity procesového serveru s portem https (135), jak vidíte níže, jestli jsou všechny problémy se síťovým připojením nebo brány firewall portu blokující problémy.
+* Ujistěte se, že se na zdrojovém počítači můžete z konfiguračního serveru připojit pomocí testu. Pokud jste během povolování replikace zvolili procesový Server se škálováním na více instancí, ujistěte se, že máte možnost odeslat z procesového serveru svůj zdrojový počítač.
+  * Z příkazového řádku počítač zdrojového serveru pomocí programu Telnet otestujte konfigurační server nebo procesový Server se škálováním na více instancí pomocí portu HTTPS (135), jak je uvedeno níže, a zjistěte, jestli nedochází k problémům se síťovým připojením nebo blokování portů brány firewall.
 
      `telnet <CS/ scale-out PS IP address> <135>`
-* Kromě toho **virtuálního počítače s Linuxem**,
-  * Zkontrolujte, jestli jsou nainstalovaná nejnovější balíčky openssh, openssh-server a openssl.
-  * Zkontrolujte a ujistěte se, že Secure Shell (SSH) zapnutá a běží na portu 22.
-  * By měl běžet služba SFTP. Pokud chcete povolit ověřování SFTP subsystému a heslo v souboru sshd_config
-    * Přihlaste se jako uživatel root.
-    * Přejděte k souboru /etc/ssh/sshd_config, vyhledejte řádek, který začíná PasswordAuthentication.
-    * Zrušte na řádku komentář a změňte hodnotu na hodnotu Ano
-    * Vyhledejte řádek, který začíná subsystému a zrušte na řádku komentář
+* Pro **virtuální počítače se systémem Linux**navíc
+  * Ověřte, jestli jsou nainstalované nejnovější balíčky OpenSSH, OpenSSH-server a OpenSSL.
+  * Zkontrolujte a zajistěte, aby byl povolený Secure Shell (SSH) a běžel na portu 22.
+  * Služby SFTP by měly být spuštěné. Pokud chcete povolit podsystém SFTP a ověřování hesla v souboru sshd_config,
+    * Přihlaste se jako kořenový adresář.
+    * Do souboru/etc/ssh/sshd_config Najděte řádek, který začíná na PasswordAuthentication.
+    * Odkomentujte řádek a změňte hodnotu na Ano.
+    * Najde řádek, který začíná na subsystému, a odkomentujte řádek.
     * Restartujte službu sshd.
-* Pokus o připojení může mít se nezdařilo, pokud neexistuje žádná správná odpověď po určitou dobu nebo navázané připojení se nezdařila, protože připojený hostitel se nepodařilo odpovědět.
-* Připojení/sítě nebo domény může být problém související s. Může být také způsobena název DNS, které řeší problém nebo problém vyčerpání portů TCP. Zkontrolujte, jestli jsou ve vaší doméně všech známých problémů.
+* Pokus o připojení se nezdařil, pokud po určitém časovém intervalu neexistuje žádná řádná odpověď nebo navázání připojení selhalo, protože se nepovedlo odpovědět připojenému hostiteli.
+* Může se jednat o problém související s připojením/sítí nebo doménou. Důvodem může být taky název DNS, který řeší problém nebo vyčerpání portů TCP. Ověřte, zda jsou ve vaší doméně žádné známé problémy.
 
-## <a name="connectivity-failure-errorid-95523"></a>Chyba připojení (ID chyby: 95523)
+## <a name="connectivity-failure-errorid-95523"></a>Chyba připojení (ErrorID: 95523)
 
-Tato chyba nastane, pokud síť, ve kterém se nachází zdrojový počítač nebyl nalezen nebo mohla být odstraněna nebo již není k dispozici. Tím zajistíte, že existuje síť je jediný způsob, jak tuto chybu napravíme.
+K této chybě dojde, když síť, ve které se nachází zdrojový počítač, nebyla nalezena nebo byla odstraněna nebo již není k dispozici. Jediným způsobem, jak chybu vyřešit, je zajištění existence sítě.
 
-## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Kontrola služby Sdílení souborů a tiskáren (ID chyby: 95105 & 95106)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Kontroluje se služba sdílení souborů a tiskáren (ErrorID: 95105 & 95106)
 
-Po kontrole připojení Ujistěte se, že je ve vašem virtuálním počítači povolit služby Sdílení souborů a tiskáren. Tato nastavení jsou nutné ke kopírování agenta Mobility na zdrojový počítač.
+Po kontrole připojení zkontrolujte, jestli je ve vašem virtuálním počítači povolená služba sdílení souborů a tiskáren. Tato nastavení jsou nutná ke zkopírování agenta mobility do zdrojového počítače.
 
-Pro **windows 2008 R2 a v předchozích verzích**,
+Pro **windows 2008 R2 a předchozí verze**
 
-* Povolit sdílení souborů a tiskáren přes bránu Windows Firewall
-  * Otevřete ovládací panely -> systém a zabezpečení -> Brána Windows Firewall. -> v levém podokně, klikněte na tlačítko Upřesnit nastavení -> klikněte ve stromu konzoly na příchozí pravidla.
-  * Vyhledejte pravidla a sdílení tiskáren (NB-Session-In) a soubor sdílení souborů a tiskáren (SMB-In). Pro každé pravidlo, klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **Povolit pravidlo**.
-* Povolit sdílení pomocí zásad skupiny souborů
-  * Přejít na začátek zadejte gpmc.msc a hledání.
-  * V navigačním podokně otevřete následující složky: Zásady místního počítače, konfigurace uživatele, šablony pro správu, součásti Windows a sdílení v síti.
-  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace najdete v tématu [povolení nebo zakázání sdílení souborů pomocí zásad skupiny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
+* Pokud chcete povolit sdílení souborů a tiskáren přes bránu Windows Firewall,
+  * Otevřete ovládací panely – > systém a zabezpečení > bránu Windows Firewall – > v levém podokně klikněte na Upřesnit nastavení – > klikněte na příchozí pravidla ve stromu konzoly.
+  * Vyhledejte pravidla sdílení souborů a tiskáren (NB-Session-in) a sdílení souborů a tiskáren (SMB-in). U každého pravidla klikněte pravým tlačítkem na pravidlo a pak klikněte na **Povolit pravidlo**.
+* Pokud chcete povolit sdílení souborů s Zásady skupiny,
+  * Vyberte Start, zadejte GPMC. msc a vyhledejte.
+  * V navigačním podokně otevřete následující složky: Zásady místního počítače, konfigurace uživatele, Šablony pro správu, součásti systému Windows a sdílení sítě.
+  * V podokně podrobností poklikejte na **zabránit uživatelům v sdílení souborů v rámci svého profilu**. Pokud chcete nastavení Zásady skupiny zakázat a povolit uživatelům sdílení souborů, klikněte na Disabled (zakázáno). Změny uložíte kliknutím na OK. Další informace najdete v tématu [Povolení nebo zakázání sdílení souborů s Zásady skupiny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Pro **novější verze**, postupujte podle pokynů uvedených v [instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů](vmware-azure-install-mobility-service.md) umožňující sdílení souborů a tiskáren.
+Pro **pozdější verze**postupujte podle pokynů uvedených v tématu [instalace služby mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů](vmware-azure-install-mobility-service.md) a povolte sdílení souborů a tiskáren.
 
-## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Kontrola konfigurace Windows Management Instrumentation (WMI) (kód chyby: 95103)
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Rozhraní WMI (Windows Management Instrumentation) (WMI) – kontrolu konfigurace (kód chyby: 95103)
 
-Po kontrole služby souborů a tiskáren, povolení služby WMI pro privátní, veřejná a domény profily přes bránu firewall. Tato nastavení jsou nutné k dokončení vzdálené spuštění na zdrojovém počítači. Pokud chcete povolit,
+Po kontrole souborové a tiskové služby povolte službu WMI pro privátní, veřejné a doménové profily prostřednictvím brány firewall. Tato nastavení jsou nutná k dokončení vzdáleného spuštění na zdrojovém počítači. Chcete-li povolit,
 
-* Přejděte do ovládacích panelů, klikněte na tlačítko zabezpečení a pak klikněte na možnost Brána Windows Firewall.
-* Klikněte na změnit nastavení a potom klikněte na kartu výjimky.
-* V okně Výjimky zaškrtněte políčko pro Windows Management Instrumentation (WMI) pro povolení provozu služby WMI přes bránu firewall. 
+* Přejděte na ovládací panely, klikněte na zabezpečení a pak klikněte na brána Windows Firewall.
+* Klikněte na změnit nastavení a pak klikněte na kartu výjimky.
+* V okně výjimky Zaškrtněte políčko pro rozhraní WMI (Windows Management Instrumentation) (WMI), aby se povolil provoz rozhraní WMI přes bránu firewall. 
 
-Můžete také povolit provoz WMI přes bránu firewall na příkazovém řádku. Pomocí následujícího příkazu `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
-Další články pro řešení problémů WMI nelze nalézt v následujících článcích.
+Provoz rozhraní WMI můžete povolit také přes bránu firewall na příkazovém řádku. Použijte následující příkaz`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Další články týkající se řešení potíží s rozhraním WMI najdete v následujících článcích.
 
 * [Základní testování služby WMI](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [Řešení problémů WMI](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
-* [Poradce při potížích se skripty WMI a služby rozhraní WMI](https://technet.microsoft.com/library/ff406382.aspx#H22)
+* [Řešení potíží s rozhraním WMI](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
+* [Řešení potíží se skripty WMI a službami WMI](https://technet.microsoft.com/library/ff406382.aspx#H22)
 
-## <a name="unsupported-operating-systems"></a>Nepodporovaný operační systémy
+## <a name="unsupported-operating-systems"></a>Nepodporované operační systémy
 
-Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility. Vyhněte se použití privátní opravy.
-Chcete-li zobrazit seznam operační systémy a verze jádra, které Azure Site Recovery podporuje, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
+Dalším nejběžnějším důvodem selhání může být nepodporovaný operační systém. Abyste mohli úspěšně nainstalovat službu mobility, ujistěte se, že jste v podporovaném operačním systému/verzi jádra. Vyhněte se použití soukromé opravy.
+Pokud chcete zobrazit seznam operačních systémů a verzí jádra podporovaných nástrojem Azure Site Recovery, přečtěte si náš [dokument s maticí podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nepodporované konfigurace spouštěcího disku (ID chyby: 95309, 95310, 95311)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nepodporované konfigurace spouštěcího disku (ErrorID: 95309, 95310, 95311)
 
-### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou stejném disku (ID chyby: 95309)
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou na stejném disku (ErrorID: 95309)
 
-Před 9.20 verze, spouštěcí a systémové oddíly nebo svazky na různých discích was má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
+Před verzí 9,20 byla Nepodporovaná konfigurace spouštěcích a systémových oddílů/svazků na různých discích. Tato konfigurace je dostupná od [verze 9,20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery). Pro tuto podporu použijte nejnovější verzi.
 
-### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Spouštěcí disk není k dispozici (ID chyby: 95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Spouštěcí disk není k dispozici (ErrorID: 95310)
 
-Virtuální počítač bez spouštěcí disk nejde chránit. To je zajistit hladký průběh obnovení virtuálního počítače během operace převzetí služeb při selhání. Neexistence spouštěcí disk má za následek selhání ke spuštění počítače po převzetí služeb při selhání. Ujistěte se, že virtuální počítač obsahuje spouštěcí disk a operaci opakujte. Všimněte si také, že se nepodporuje více spouštěcích disků na stejném počítači.
+Virtuální počítač bez spouštěcího disku nelze chránit. K zajištění hladkého obnovení virtuálního počítače během operace převzetí služeb při selhání. Nepřítomnost spouštěcího disku způsobí selhání spuštění počítače po převzetí služeb při selhání. Zajistěte, aby virtuální počítač obsahoval spouštěcí disk, a operaci opakujte. Všimněte si také, že více spouštěcích disků ve stejném počítači není podporováno.
 
-### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Na zdrojovém počítači k dispozici více spouštěcích disků (ID chyby: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Na zdrojovém počítači existuje víc spouštěcích disků (ErrorID: 95311)
 
-Virtuální počítač s více spouštěcí disk není [podporované konfigurace](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
+Virtuální počítač s několika spouštěcími disky není podporovanou [konfigurací](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
-## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systémový oddíl na více discích (ID chyby: 95313)
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systémový oddíl na více discích (ErrorID: 95313)
 
-Dříve než ve verzi 9.20 kořenovém oddílu nebo svazku rozdělený na několik disků se má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
+Před verzí 9,20 byl kořenový oddíl nebo svazek na více discích nepodporovanou konfigurací. Tato konfigurace je dostupná od [verze 9,20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery). Pro tuto podporu použijte nejnovější verzi.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Povolení ochrany se nezdařila, protože podle konfigurace GRUB místo UUID název zařízení (ID chyby: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Ochranu se nepovedlo zapnout, protože název zařízení uvedený v konfiguraci GRUB místo UUID (ErrorID: 95320)
 
-**Možné příčiny:** </br>
-Konfigurační soubory GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub") může obsahovat hodnotu pro parametry **kořenové** a **obnovit** jako zařízení skutečné názvy místo UUID. Site Recovery určuje UUID přístup podle názvu zařízení můžou změnit napříč restartování virtuálního počítače, protože virtuální počítač nemusí přijde up se stejným názvem na převzetí služeb při selhání, což vede k problémům. Příklad: </br>
+**Možná příčina:** </br>
+Konfigurační soubory GRUB ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" nebo "/etc/default/GRUB") můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení namísto UUID. Site Recovery přístup k identifikátorům UUID, protože název zařízení se může změnit v průběhu restartování virtuálního počítače, protože virtuální počítač nemusí při převzetí služeb při selhání přijít se stejným názvem, což způsobí problémy. Příklad: </br>
 
 
 - Následující řádek je ze souboru GRUB **/boot/grub2/grub.cfg**. <br>
-  *Linux /boot/vmlinuz-3.12.49-11-default **root = / dev/sda2** ${extra_cmdline} **obnovit = / dev/sda1** splash = silent bezobslužný showopts*
+  *Linux/Boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1** Úvod = tiché tiché showopts*
 
 
 - Následující řádek je ze souboru GRUB **/boot/grub/menu.lst** 
   *jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 
-Pokud zjistíte tučné řetězec výše, GRUB má skutečné zařízení názvy parametrů "root" a "obnovit" místo UUID.
+Pokud si vyberete tučný řetězec uvedený výše, GRUB má skutečné názvy zařízení pro parametry "root" a "Resume" místo UUID.
  
-**Jak vyřešit:**<br>
-Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<br>
+**Jak opravit:**<br>
+Názvy zařízení by měly být nahrazeny odpovídajícím identifikátorem UUID.<br>
 
 
-1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid \<název zařízení >". Příklad:<br>
+1. Vyhledejte UUID zařízení spuštěním příkazu "blkid \<Device Name >". Příklad:<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,107 +191,109 @@ Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<b
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =\<UUID >". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádky v souborech vypadat. <br>
-   *jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
-3. Opětné spuštění ochrany znovu
+2. Nyní nahraďte název zařízení identifikátorem UUID ve formátu jako "root = UUID =\<UUID >". Pokud například nahradíte názvy zařízení identifikátorem UUID pro kořen a parametr Resume uvedené výše v souborech "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" nebo "/etc/default/grub: řádky v souborech vypadají jako. <br>
+   *jádro/Boot/vmlinuz-3.0.101-63-default **root = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** úvodní = tichá crashkernel = 256M-: 128M showopts VGA = 0x314*
+3. Znovu znovu spusťte ochranu.
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Nainstalovat službu Mobility dokončeno s upozorněním restartování (ID chyby: 95265 & 95266)
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Instalace služby mobility byla dokončena s upozorněním na restartování (ErrorID: 95265 & 95266)
 
-Službu mobility Site Recovery má spoustu součástí, z nichž jeden je volána ovladač filtru. Ovladač filtru získá načtou do systémové paměti pouze po jednom restartování systému. To znamená, že opravy ovladač filtru pouze se dají realizovat nový ovladač filtru je načtena; které může dojít pouze v době restartování systému.
+Služba Site Recovery mobility má mnoho komponent, z nichž jedna se nazývá ovladač filtru. Ovladač filtru se načte do systémové paměti pouze v době restartování systému. To znamená, že opravy ovladače filtru lze realizovat pouze při načtení nového ovladače filtru. k tomu může dojít pouze v době restartování systému.
 
-**Mějte prosím na paměti** , toto je upozornění a stávající replikaci budou fungovat i po nová aktualizace agenta. Je možné restartovat, kdykoli budete chtít získat výhody nový ovladač filtru, ale pokud nemáte restartovat staré udržuje ovladač filtru o práci. Ano, po aktualizaci bez restartování, kromě ovladač filtru **získá realizované výhody další vylepšení a oprav ve službě mobility**. Takže i když doporučuje, není to povinné restartování po každém upgradu. Informace o tom, kdy je povinný restart, nastavte [restartování zdrojového počítače po upgradu agenta mobility ](https://aka.ms/v2a_asr_reboot) oddílu služby aktualizací ve službě Azure Site Recovery.
+**Všimněte si** , že se jedná o upozornění a stávající replikace bude fungovat i po novém aktualizace agenta. Můžete se rozhodnout, že budete chtít kdykoli restartovat, abyste získali výhody nového ovladače filtru, ale Pokud nerestartujete původní ovladač filtru, zůstane v provozu. Takže po aktualizaci bez restartování od ovladače filtru jsou **realizované výhody dalších vylepšení a oprav ve službě mobility**. I když se to doporučuje, není po každém upgradu nutné restartovat počítač. Informace o tom, kdy je restartování povinné, nastavíte tak, že v části aktualizace služby v Azure Site Recovery zadáte [restart zdrojového počítače po upgradu agenta mobility](https://aka.ms/v2a_asr_reboot) .
 
 > [!TIP]
->Doporučených postupech ohledně plánování upgrady období údržby, najdete v článku [podporu pro nejnovější verze operačního systému nebo jádra](https://aka.ms/v2a_asr_upgrade_practice) v aktualizacích ve službě Azure Site Recovery.
+>Osvědčené postupy při plánování upgradu během časového období údržby najdete v tématu [Podpora nejnovějších verzí operačního systému a jádra](https://aka.ms/v2a_asr_upgrade_practice) v článku aktualizace služby v Azure Site Recovery.
 
-## <a name="lvm-support-from-920-version"></a>Podpora LVM z 9.20 verze
+## <a name="lvm-support-from-920-version"></a>Podpora LVM z verze 9,20
 
-Dříve než ve verzi 9.20 LVM je podporován pouze datových disků. Boot by měl být na disku oddílu a nesmí být svazku LVM.
+Před verzí 9,20 byl LVM podporován pouze pro datové disky. /Boot by měl být na disku a nesmí být svazkem LVM.
 
-Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), [disk s operačním systémem na LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) je podporována. Tato podpora používali nejnovější verzi.
+Na LVM je podporovaná [verze 9,20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) [disku s operačním systémem](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) . Pro tuto podporu použijte nejnovější verzi.
 
-## <a name="insufficient-space-errorid-95524"></a>Nedostatek místa (ID chyby: 95524)
+## <a name="insufficient-space-errorid-95524"></a>Nedostatek místa (ErrorID: 95524)
 
-Při kopírování agenta Mobility na zdrojový počítač se vyžaduje aspoň 100 MB volného místa. Ano Ujistěte se, že zdrojový počítač má požadované volné místo a zkuste operaci zopakovat.
+Když se na zdrojový počítač zkopíruje agent mobility, vyžaduje se aspoň 100 MB volného místa. Ujistěte se, že na zdrojovém počítači je vyžadováno volné místo, a zkuste operaci zopakovat.
 
-## <a name="vss-installation-failures"></a>Selhání instalace služby VSS
+## <a name="vss-installation-failures"></a>Selhání instalace VSS
 
-Instalace služby VSS je součástí instalace agenta Mobility. Tato služba se používá při generování body obnovení konzistentní vzhledem k aplikaci. K selhání během instalace služby VSS může dojít z několika důvodů. Chcete-li zjistit přesný chyby, přečtěte si **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**. V následující části jsou zvýrazněny několik běžných chyb a kroků pro řešení.
+Instalace služby Stínová kopie svazku je součástí instalace agenta mobility. Tato služba se používá v procesu generování bodů obnovení konzistentních vzhledem k aplikacím. Selhání při instalaci VSS může nastat z několika důvodů. Chcete-li identifikovat přesné chyby, podívejte se na **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**. Několik běžných chyb a postup řešení je zvýrazněn v následující části.
 
-### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Došlo k chybě VSS-2147023170 [0x800706BE] - ukončovací kód 511
+### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Chyba služby VSS – 2147023170 [0x800706BE] – ukončovací kód 511
 
-Tento problém většinou dochází, když antivirový software blokuje provoz služby Azure Site Recovery. K vyřešení tohoto problému:
+K tomuto problému dochází hlavně v případě, že antivirový software blokuje operace služby Azure Site Recovery Services. K vyřešení tohoto problému:
 
-1. Vyloučit všechny složky, které jsou uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
-2. Postupujte podle pokynů publikovaných poskytovatelem antivirový program odblokujete registrace knihovny DLL ve Windows.
+1. Vylučte všechny složky, které jsou [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)uvedené.
+2. Podle pokynů publikovaných poskytovatelem antivirové ochrany odblokujte registraci knihovny DLL ve Windows.
 
-### <a name="vss-error-7-0x7---exit-code-511"></a>Došlo k chybě VSS 7 [0x7] - ukončovací kód 511
+### <a name="vss-error-7-0x7---exit-code-511"></a>Chyba služby VSS 7 [0x7] – ukončovací kód 511
 
-Toto je chyba za běhu a příčinou je nedostatek paměti k instalaci aplikace VSS. Nezapomeňte zvětšete místo na disku pro úspěšné dokončení této operace.
+Jedná se o chybu za běhu a příčinou je nedostatek paměti pro instalaci služby VSS. Zajistěte, aby bylo možné zvětšit místo na disku pro úspěšné dokončení této operace.
 
-### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>Došlo k chybě VSS-2147023824 [0x80070430] - ukončovací kód. 517
+### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>Chyba služby VSS – 2147023824 [0x80070430] – ukončovací kód 517
 
-Tato chyba nastane, pokud je služba Azure Site Recovery VSS Provider [označená k odstranění](https://msdn.microsoft.com/library/ms838153.aspx). Pokus nainstalovat VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
-
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
-
-### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>Došlo k chybě VSS-2147023841 [0x8007041F] - ukončovací kód 512
-
-Tato chyba nastane, pokud je databáze služby Azure Site Recovery VSS Provider [uzamčen](https://msdn.microsoft.com/library/ms833798.aspx). Pokus nainstalovat VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
+K této chybě dochází, když je Azure Site Recovery služba poskytovatele VSS [označena k odstranění](https://msdn.microsoft.com/library/ms838153.aspx). Pokuste se ručně nainstalovat VSS na zdrojový počítač spuštěním následujícího příkazového řádku.
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-### <a name="vss-exit-code-806"></a>VSS ukončovací kód 806
+### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>Chyba služby VSS – 2147023841 [0x8007041F] – ukončovací kód 512
 
-Tato chyba nastane, pokud uživatelský účet použitý k instalaci nemá oprávnění k provedení příkazu CSScript. Zadejte potřebná oprávnění pro uživatelský účet pro spuštění skriptu a operaci opakujte.
+K této chybě dojde, pokud je Azure Site Recovery databáze služby [](https://msdn.microsoft.com/library/ms833798.aspx)poskytovatele VSS uzamčena. Pokuste se ručně nainstalovat VSS na zdrojový počítač spuštěním následujícího příkazového řádku.
 
-### <a name="other-vss-errors"></a>Další chyby VSS.
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Pokus nainstalovat poskytovatele služby VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
+V případě selhání ověřte, zda je nějaký antivirový program nebo jiné služby zablokovaný ve stavu "spouštění". To může zachovat zámek u databázových služeb. Dojde k selhání při instalaci poskytovatele služby VSS. Zajistěte, aby ve stavu "spouštění" nejsou žádné služby, a operaci opakujte.
+
+### <a name="vss-exit-code-806"></a>Ukončovací kód VSS 806
+
+K této chybě dochází, pokud uživatelský účet použitý k instalaci nemá oprávnění ke spuštění příkazu CSScript. Poskytněte uživatelskému účtu potřebná oprávnění ke spuštění skriptu a operaci opakujte.
+
+### <a name="other-vss-errors"></a>Další chyby VSS
+
+Pokuste se ručně nainstalovat službu poskytovatele VSS na zdrojový počítač spuštěním následujícího příkazového řádku.
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 
 
-## <a name="vss-error---0x8004e00f"></a>Chyba VSS - 0x8004E00F
+## <a name="vss-error---0x8004e00f"></a>Chyba služby VSS – 0x8004E00F
 
-K této chybě obvykle dochází během instalace agenta mobility kvůli problémům v modelu DCOM a DCOM je v kritickém stavu.
+K této chybě obvykle dochází během instalace agenta mobility, protože problémy v modelu DCOM a DCOM jsou v kritickém stavu.
 
-Použijte následující postup a zjistěte příčinu chyby.
+K určení příčiny chyby použijte následující postup.
 
-**Zkontrolujte protokoly instalace**
+**Kontrola protokolů instalace**
 
-1. Otevřete umístění c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log protokolu instalace.
-2. Přítomnost následující chybu označuje potíže:
+1. Otevřete Instalační protokol umístěný na adrese c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+2. Následující chyba indikuje tento problém:
 
-    Zrušení registrace existující aplikaci...  Vytvořit objekt katalogu získat kolekci aplikací 
+    Ruší se registrace existující aplikace...  Vytvoření objektu katalogu získání kolekce aplikací 
 
-    CHYBA:
+    CHYBA
 
     - Kód chyby:-2147164145 [0x8004E00F]
     - Ukončovací kód: 802
 
-Řešení tohoto problému:
+Problém vyřešíte takto:
 
-Obraťte se [tým platformy Microsoft Windows](https://aka.ms/Windows_Support) získat pomoc s řešením problému modelu DCOM.
+Obraťte se na [tým platformy Microsoft Windows](https://aka.ms/Windows_Support) , kde získáte pomoc při řešení problému s modelem DCOM.
 
-Pokud je model DCOM problém vyřešen, přeinstalujte Azure Site Recovery VSS Provider ručně pomocí následujícího příkazu:
+Po vyřešení problému modelu DCOM přeinstalujte Azure Site Recovery zprostředkovatele služby VSS ručně pomocí následujícího příkazu:
  
-**C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent > "C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+**C:\Program Files (x86) \Microsoft Azure Site Recovery\agent > "C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
   
-Pokud není konzistence aplikace důležité pro vaše požadavky na zotavení po havárii, můžete obejít instalace zprostředkovatele služby VSS. 
+Pokud není konzistence aplikací zásadní pro požadavky na zotavení po havárii, můžete instalaci poskytovatele služby VSS obejít. 
 
-Instalace zprostředkovatele Azure Site Recovery VSS obejít a ručně nainstalujte zprostředkovatele Azure Site Recovery VSS po instalaci:
+Postup při obejít instalaci poskytovatele služby VSS Azure Site Recovery a ručně nainstalovat Azure Site Recovery po instalaci zprostředkovatele služby VSS:
 
-1. Instalace služby mobility. 
+1. Nainstalujte službu mobility. 
    > [!Note]
    > 
-   > Instalace se nezdaří v kroku "Poinstalační konfigurace". 
-2. Obejít instalace služby VSS:
-   1. Otevřete v instalačním adresáři Azure Site Recovery Mobility Service:
+   > Instalace se nezdaří v kroku "po instalaci konfigurace". 
+2. Postup při obejít instalaci stínové kopie svazku:
+   1. Otevřete instalační adresář služby Azure Site Recovery mobility v umístění:
    
-      C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent
-   2. Upravit skripty instalace zprostředkovatele Azure Site Recovery VSS **nMageVSSProvider_Install** a **InMageVSSProvider_Uninstall.cmd** vždy úspěšné tak, že přidáte následující řádky:
+      C:\Program Files (x86) \Microsoft Azure Site Recovery\agent
+   2. Upravte Azure Site Recovery instalační skripty poskytovatele služby VSS **nMageVSSProvider_Install** a **InMageVSSProvider_Uninstall. cmd** tak, aby se vždy úspěšně zdařily, a to přidáním následujících řádků:
     
       ```     
       rem @echo off
@@ -299,49 +301,49 @@ Instalace zprostředkovatele Azure Site Recovery VSS obejít a ručně nainstalu
       exit /B 0
       ```
 
-3. Znovu spusťte ruční instalace agenta Mobility. 
-4. Po úspěšné instalaci a přesune k dalšímu kroku, **konfigurovat**, odebrání řádků, které jste přidali.
-5. Pokud chcete nainstalovat poskytovatele služby VSS, otevřete příkazový řádek jako správce a spusťte následující příkaz:
+3. Znovu spusťte ruční instalaci agenta mobility. 
+4. Po úspěšné instalaci a přechodu k dalšímu kroku **nakonfigurujte**a odeberte přidané řádky.
+5. Chcete-li nainstalovat poskytovatele služby VSS, otevřete příkazový řádek jako správce a spusťte následující příkaz:
    
-    **C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
+    **C:\Program Files (x86) \Microsoft Azure Site Recovery\agent > .\InMageVSSProvider_Install.cmd**
 
-9. Ověřte, zda je nainstalován Azure Site Recovery VSS Provider jako služba ve Windows Services a otevřete konzolu MMC komponenty Service k ověření, že je uvedena Azure Site Recovery VSS Provider.
-10. Pokud poskytovatel služby VSS nainstalovat i nadále nezdaří, pracovat s CX vyřeší chyby oprávnění v CAPI2.
+9. Ověřte, že je zprostředkovatel VSS pro automatické obnovení systému nainstalovaný jako služba ve službách Windows, a otevřete konzolu MMC Service pro ověření, že je v seznamu uveden poskytovatel služby ASR.
+10. Pokud se instalace poskytovatele služby VSS stále nezdařila, pracujte s CX pro řešení chyb oprávnění v CAPI2.
 
-## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalace zprostředkovatele služby VSS se nepovedlo kvůli služby clusteru se povoluje na počítači bez clusteru
+## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalace poskytovatele služby Stínová kopie svazku se nezdařila, protože Clusterová služba je povolena v počítači bez clusteru.
 
-Tento problém způsobuje selhání během kroku instalace zprostředkovatele služby VSS RecoveryR Site ASAzure kvůli problému s modelu COM +, která zabrání instalaci zprostředkovatele služby VSS instalace agenta služby Mobility Azure Site Recovery.
+Tento problém způsobí selhání instalace agenta Azure Site Recovery mobility během instalace poskytovatele VSS ASAzure Site Recovery z důvodu problému s COM+, který brání instalaci poskytovatele služby VSS.
  
-### <a name="to-identify-the-issue"></a>Chcete-li identifikovat problém
+### <a name="to-identify-the-issue"></a>Identifikace problému
 
-V protokolu umístěný na konfiguračním serveru v C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum a čas > UA_InstallLogFile.log, najdete následující výjimku:
+V protokolu, který se nachází na konfiguračním serveru\<v C:\ProgramData\ASRSetupLogs\UploadedLogs data a času > UA_InstallLogFile. log, se zobrazí následující výjimka:
 
-COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator (výjimka z HRESULT: 0x8004E00F)
+COM+ se nepovedlo komunikovat se službou Microsoft DTC (Distributed Transaction Coordinator) (výjimka z HRESULT: 0x8004E00F)
 
-Řešení tohoto problému:
+Problém vyřešíte takto:
 
-1.  Ověřte, že tento počítač hostuje bez clusteru a že součásti clusteru nejsou používány.
-3.  Pokud součásti nejsou používány, odeberte z počítače součásti clusteru.
+1.  Ověřte, zda je tento počítač počítač bez clusteru a zda nejsou používány součásti clusteru.
+3.  Pokud se komponenty nepoužívají, odeberte z počítače součásti clusteru.
 
-## <a name="drivers-are-missing-on-the-source-server"></a>Ovladače nebyly nalezeny na zdrojovém serveru
+## <a name="drivers-are-missing-on-the-source-server"></a>Na zdrojovém serveru chybí ovladače.
 
-V případě selhání instalace agenta Mobility, zkontrolujte protokoly v rámci C:\ProgramData\ASRSetupLogs určí, jestli je v některých kontrolních sadách chybí některé požadované ovladače.
+Pokud se instalace agenta mobility nezdařila, zkontrolujte protokoly v části C:\ProgramData\ASRSetupLogs a zjistěte, jestli některé z požadovaných ovladačů v některých sadách ovládacích prvků chybí.
  
-Řešení tohoto problému:
+Problém vyřešíte takto:
   
-1. V editoru registru například regedit.msc, otevřete registr.
+1. Pomocí Editoru registru, jako je regedit. msc, otevřete registr.
 2. Otevřete uzel HKEY_LOCAL_MACHINE\SYSTEM.
-3. V uzlech systému, vyhledejte ovládací prvek sady.
-4. Otevřete každou sada ovládacích prvků a ověřte, zda jsou k dispozici následující ovladače Windows:
+3. V uzlu systém vyhledejte sady ovládacích prvků.
+4. Otevřete jednotlivé sady ovládacích prvků a ověřte, zda jsou k dispozici následující ovladače systému Windows:
 
-   - ATAPI
-   - Vmbus
+   - ovladač
+   - VMBus
    - storflt
    - storvsc
    - Intelide
  
-Znovu nainstalujte všechny chybějící ovladače.
+Přeinstalujte všechny chybějící ovladače.
 
 ## <a name="next-steps"></a>Další postup
 
-[Zjistěte, jak](vmware-azure-tutorial.md) nastavit zotavení po havárii pro virtuální počítače VMware.
+[Přečtěte si, jak](vmware-azure-tutorial.md) nastavit zotavení po havárii pro virtuální počítače VMware.

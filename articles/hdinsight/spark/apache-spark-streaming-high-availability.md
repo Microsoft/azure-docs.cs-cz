@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: dcd9095a1e5010a3d0dd5ea7ad884e36e24c7c1d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814004"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915381"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
 
@@ -29,7 +29,7 @@ Streamování Spark představuje souvislý datový proud dat pomocí *datového 
 
 Spark Core používá *odolné distribuované datové sady* (RDD). RDD distribuuje data napříč několika uzly v clusteru, kde každý uzel obecně udržuje svá data v paměti, aby se dosáhlo co nejlepšího výkonu. Každý RDD představuje události shromážděné v intervalu dávky. Po uplynutí intervalu dávky vytvoří streamování Spark nové RDD obsahující všechna data v tomto intervalu. Tato nepřetržitá sada RDD je shromažďována do DStream. Aplikace pro streamování Spark zpracovává data uložená v RDD každé dávky.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Strukturované úlohy streamování Sparku
 
