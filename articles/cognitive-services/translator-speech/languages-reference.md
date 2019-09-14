@@ -1,46 +1,46 @@
 ---
-title: Translator Speech API jazyků – metoda
+title: Metoda Translator Speech API jazyků
 titleSuffix: Azure Cognitive Services
-description: Použijte metodu Translator Speech API jazyků.
+description: Použijte metodu Translator Speech API jazyky.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446956"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966410"
 ---
-# <a name="translator-speech-api-languages"></a>Translator Speech API: Jazyky
+# <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Translator Speech neustále rozšiřuje seznam jazyků podporovaných jeho služeb. Zjistit skupinu jazyků, které jsou aktuálně k dispozici pro použití ve službě Translator Speech pomocí tohoto rozhraní API.
+Translator Speech průběžně rozšiřuje seznam jazyků podporovaných jeho službami. Pomocí tohoto rozhraní API můžete zjistit sadu jazyků, které jsou aktuálně k dispozici pro použití se službou Translator Speech.
 
-Ukázky kódu pro demonstraci použití rozhraní API za účelem získání dostupné jazyky jsou k dispozici [webu Microsoft Translator GitHub](https://github.com/MicrosoftTranslator).
+Ukázky kódu, které demonstrují použití rozhraní API k získání dostupných jazyků, jsou k dispozici na [webu Microsoft Translator GitHub](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
 
-### <a name="get-languages"></a>ZÍSKAT /languages
+### <a name="get-languages"></a>ZÍSKAT/languages
 
-Široké škále jazycích je k dispozici pro zpracování řeči, můžete přeložit text přepisu a k vytvoření řečového překladu přepisy.
+K dispozici je celá sada jazyků pro přepisovat rozpoznávání řeči, překladu přepisu textu a k tvorbě syntetizového řeči překladu.
 
-Klient použije `scope` parametr k definování, který nastaví jazyky ho zajímají dotazu.
+Klient používá `scope` parametr dotazu k definování množiny jazyků, které vás zajímají.
 
-* **Převod řeči na text:** Použijte parametr dotazu `scope=speech` načíst skupinu jazyků, které jsou k dispozici pro přepisy řeči na text.
-* **Překlad textu:** Použijte parametr dotazu `scope=text` načíst sadu jazyků můžete přeložit text přepisu.
-* **Převod textu na řeč:**  Použijte parametr dotazu `scope=tts` načíst sadu jazyků a hlasy tak, aby odpovídaly přeloženého textu zpátky na řeč k dispozici.
+* **Převod řeči na text:** Pomocí parametru `scope=speech` dotazu načtěte sadu jazyků, které jsou k dispozici pro přepisovat řeči na text.
+* **Překlad textu:** Pomocí parametru `scope=text` dotazu načtěte sadu jazyků, které jsou k dispozici pro překlad textu přepisu.
+* **Převod textu na řeč:**  Pomocí parametru `scope=tts` dotazu můžete načíst sadu jazyků a hlasy, které jsou k dispozici pro syntetizování přeloženého textu zpět na řeč.
 
-Klienta můžete současně načíst více sad zadáním čárkou oddělený seznam voleb. Například, `scope=speech,text,tts`.
+Klient může získat více sad současně tak, že určí čárkami oddělený seznam voleb. Například, `scope=speech,text,tts`.
 
-Úspěšná odpověď je objekt JSON s vlastností pro každou požadovaná nastavení.
+Úspěšná odpověď je objekt JSON s vlastností pro každou požadovanou sadu.
 
 ```
 {
@@ -56,17 +56,17 @@ Klienta můžete současně načíst více sad zadáním čárkou oddělený sez
 }
 ```
 
-Vzhledem k tomu může klient používat `scope` parametr dotazu, který nastaví podporované jazyky vybrat by měla být vrácena, skutečné odpovědi může obsahovat pouze podmnožinu všech vlastností, které jsou uvedené výše.
+Vzhledem k tomu, že klient `scope` může použít parametr dotazu k výběru, které sady podporovaných jazyků by měly být vráceny, může skutečná odpověď zahrnovat pouze podmnožinu všech výše uvedených vlastností.
 
-Zadaná hodnota s každou vlastnost je následujícím způsobem.
+Hodnota zadaná u jednotlivých vlastností je následující.
 
-### <a name="speech-to-text-speech"></a>Převod řeči na text (řeči)
+### <a name="speech-to-text-speech"></a>Převod řeči na text (řeč)
 
-Hodnota přidružená vlastnost speech to text `speech`, je slovník (klíče, hodnota) dvojice. Každý klíč identifikuje podporován pro převod řeči na text. Klíč je identifikátor tohoto klienta předá do rozhraní API. Hodnotu přiřazenou klíči je objekt s následujícími vlastnostmi:
+Hodnota přidružená k vlastnosti `speech`převod řeči na text je slovník dvojic (klíč, hodnota). Každý klíč identifikuje jazyk podporovaný pro převod řeči na text. Klíč je identifikátor, který klient předává do rozhraní API. Hodnota přidružená ke klíči je objekt s následujícími vlastnostmi:
 
-* `name`: Zobrazovaný název jazyka.
-* `language`: Značka jazyka přidruženého napsané jazyka. Níže naleznete v tématu "Transakce Text".
-Příkladem je:
+* `name`: Zobrazovaný název jazyka
+* `language`: Značka jazyka přidruženého napsaného jazyka. Viz "textová transakce" níže.
+Příklad:
 
 ```
 {
@@ -76,14 +76,14 @@ Příkladem je:
 }
 ```
 
-### <a name="text-translation-text"></a>Text translation (text)
+### <a name="text-translation-text"></a>Překlad textu (text)
 
-Hodnota přidružená k `text` vlastnost je také slovníku, kde každý klíč identifikuje jazyk pro překlad textu podporovány. Hodnotu přiřazenou klíči popisuje jazyk:
+Hodnota přidružená `text` k vlastnosti je také slovník, ve kterém každý klíč identifikuje jazyk podporovaný pro překlad textu. Hodnota přidružená ke klíči popisuje jazyk:
 
-* `name`: Zobrazovaný název jazyka.
-* `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
+* `name`: Zobrazovaný název jazyka
+* `dir`: Směrová orientace, `rtl` která je určena pro jazyky zprava doleva `ltr` nebo pro jazyky zleva doprava.
 
-Příkladem je:
+Příklad:
 
 ```
 {
@@ -95,16 +95,16 @@ Příkladem je:
 
 ### <a name="text-to-speech-tts"></a>Převod textu na řeč
 
-Hodnota přidružená vlastnost převod textu na řeč, převodu textu na řeč, je také slovník, ve kterém každý klíč identifikuje podporované hlasový vstup. Atributy objektu hlasové jsou:
+Hodnota přidružená k vlastnosti převod textu na řeč je také slovník, ve kterém každý klíč identifikuje podporovaný hlas. Atributy hlasového objektu jsou:
 
-* `displayName`: Zobrazovaný název hlasu.
-* `gender`: Pohlaví hlasu (kolík nebo Ženský).
-* `locale`: Značka jazyka hlasu podznačku primárního jazyka a oblasti podznačku.
-* `language`: Značka jazyka přidruženého napsané jazyka.
-* `languageName`: Zobrazovaný název jazyka.
-* `regionName`: Zobrazovaný název oblasti pro tento jazyk.
+* `displayName`: Zobrazovaný název hlasu
+* `gender`: Pohlaví hlasu (muž nebo žena).
+* `locale`: Značka jazyka hlasu s primárním jazykem případě a region případě
+* `language`: Značka jazyka přidruženého napsaného jazyka.
+* `languageName`: Zobrazovaný název jazyka
+* `regionName`: Zobrazovaný název oblasti pro tento jazyk
 
-Příkladem je:
+Příklad:
 
 ```
 {
@@ -121,35 +121,35 @@ Příkladem je:
 ```
 
 ### <a name="localization"></a>Lokalizace
-Tato služba vrátí všechny názvy v jazyce, který hlavičku 'Accept-Language' pro všechny jazyky podporované v překlady textů.
+Služba vrátí všechny názvy v jazyce hlavičky ' Accept-Language ' pro všechny jazyky, které jsou v překladu textu podporovány.
 
-### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
-Objekt, který popisuje sadu podporované jazyky.
+### <a name="response-class-status-200"></a>Response – třída (stav 200)
+Objekt popisující sadu podporovaných jazyků.
 
-Hodnota ModelExample:
+ModelExample hodnota:
 
-Langagues {řeči (object, volitelné), text (object, volitelné), převod textu na řeč (object, volitelné)}
+Langagues {Speech (Object, Optional); text (Object; Optional); TTS (Object, Optional)}
 
-### <a name="headers"></a>Hlavičky
+### <a name="headers"></a>Záhlaví
 
-|Záhlaví|Popis|Type|
+|Záhlaví|Popis|type|
 :--|:--|:--|
-X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pro účely odstraňování potíží.|string|
+X-RequestId|Hodnota vygenerovaná serverem k identifikaci žádosti a používaná pro účely řešení potíží.|řetězec|
 
 ### <a name="parameters"></a>Parametry
 
 |Parametr|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|
-|api-version    |Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query|string|
-|scope  |Nastaví podporované jazyky nebo hlasy vrácena klientovi. Tento parametr zadán jako čárkou oddělený seznam klíčových slov. Následující klíčová slova jsou k dispozici:<ul><li>`speech`: Poskytuje sadu jazyky podporované pro přepisy řeči.</li><li>`tts`: Poskytuje sadu podporuje pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyky podporované pro překlad textu.</li></ul>Pokud není zadána hodnota, hodnota `scope` výchozí hodnota je `text`.|query|string|
-|X-ClientTraceId    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Usnadňuje řešení potíží se musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.|záhlaví|string|
-|Přijměte jazyka    |Některá pole v odpovědi jsou názvy jazyků nebo oblastech. Použijte tento parametr se definuje jazyk, ve kterém se vrátí názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Vyberte značku ze seznamu identifikátorů jazyka se vrátil s `text` oboru. U nepodporovaných jazyků názvy jsou k dispozici v angličtině.<br/>Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.|záhlaví|string|
+|api-version    |Verze rozhraní API, kterou klient požaduje. Povolené hodnoty jsou: `1.0`.|query|řetězec|
+|scope  |Sady podporovaných jazyků nebo hlasů, které se mají vrátit do klienta. Tento parametr je zadán jako čárkami oddělený seznam klíčových slov. K dispozici jsou následující klíčová slova:<ul><li>`speech`: Poskytuje sadu jazyků podporovaných pro přepisovat řeč.</li><li>`tts`: Poskytuje sadu hlasů podporovaných pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyků podporovaných pro překlad textu.</li></ul>Není-li zadána hodnota, je `scope` `text`použita výchozí hodnota.|query|řetězec|
+|X-ClientTraceId    |Identifikátor GUID generovaný klientem, který se používá pro trasování požadavku. Aby se usnadnilo řešení potíží, klienti by měli pro každou žádost zadat novou hodnotu a zaznamenat ji.|záhlaví|řetězec|
+|Přijmout – jazyk    |Některá pole v odpovědi jsou názvy jazyků nebo oblastí. Pomocí tohoto parametru můžete definovat jazyk, ve kterém se mají vracet názvy. Jazyk je určen tak, že poskytuje značku jazyka BCP 47 ve správném formátu. Vyberte značku ze seznamu identifikátorů jazyka vrácených s `text` oborem. Pro nepodporované jazyky jsou názvy k dispozici v anglickém jazyce.<br/>Použijte například hodnotu `fr` pro vyžádání názvů ve francouzštině nebo použijte hodnotu `zh-Hant` pro vyžádání názvů v tradiční čínštině.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Reason|
+|Stavový kód HTTP|Reason|
 |:--|:--|
-|400|Chybný požadavek. Zkontrolujte vstupní parametry k zajištění, že jsou platné. Objekt odpovědi obsahuje podrobnější popis chyby.|
+|400|Chybný požadavek. Zkontrolujte vstupní parametry a ujistěte se, že jsou platné. Objekt Response obsahuje podrobnější popis chyby.|
 |429|Příliš mnoho požadavků.|
-|500|Došlo k chybě. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|
-|503|Server je dočasně nedostupný. Zkuste prosím požadavek. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|
+|500|Došlo k chybě. Pokud chyba přetrvává, ohlaste ji pomocí identifikátoru trasování klienta (X-ClientTraceId) nebo identifikátoru žádosti (X-RequestId).|
+|503|Server je dočasně nedostupný. Opakujte prosím požadavek. Pokud chyba přetrvává, ohlaste ji pomocí identifikátoru trasování klienta (X-ClientTraceId) nebo identifikátoru žádosti (X-RequestId).|

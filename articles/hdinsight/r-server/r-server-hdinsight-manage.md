@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900012"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967770"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Az
 
 Můžete povolit více souběžných uživatelů pro cluster služeb ML v HDInsight přidáním dalších uživatelů pro hraniční uzel, na kterém je spuštěná verze komunity RStudio. Při vytváření clusteru HDInsight musíte zadat dva uživatele – uživatele HTTP a uživatele SSH:
 
-![Souběžný uživatel 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![Souběžný uživatel 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Uživatelské jméno přihlášení clusteru:** Uživatel HTTP pro ověřování prostřednictvím brány HDInsight, která slouží k ochraně vytvořených clusterů HDInsight. Tento uživatel HTTP slouží k přístupu k uživatelskému rozhraní Apache Ambari, uživatelskému rozhraní Apache Hadoop nitě a dalším součástem uživatelského rozhraní.
 - **Uživatelské jméno Secure Shell (SSH):** Uživatel SSH sloužící k přístupu ke clusteru přes Secure Shell. Tento uživatel je uživatel v systému Linux pro všechny hlavní uzly, pracovní uzly a hraniční uzly. Proto můžete použít Secure Shell pro přístup k jakémukoli uzlu ve vzdáleném clusteru.
@@ -66,7 +66,7 @@ Pokud chcete přidat uživatele na hraničním uzlu, spusťte následující př
 
 Na následujícím snímku obrazovky vidíte výstupy.
 
-![Souběžný uživatel 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![Souběžný uživatel 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", stačí stisknout klávesu **ENTER** , aby se ignorovala. Možnost `-m` v příkazu `useradd` označuje, že systém pro uživatele vytvoří domovskou složku, kterou vyžaduje komunitní verze RStudia.
 
@@ -213,7 +213,7 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
 
 4. Vyberte **Vytvořit** a spusťte skript. Po dokončení skriptu jsou balíčky R k dispozici na všech pracovních uzlech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zprovoznění clusteru služby ML Services v HDInsight](r-server-operationalize.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML v HDInsight](r-server-compute-contexts.md)

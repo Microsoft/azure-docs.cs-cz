@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 419505404214d60a2c928770a34384f80c8446cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935870"
+ms.locfileid: "70961464"
 ---
 # <a name="entity-functions-preview"></a>Funkce entit (Preview)
 
@@ -32,7 +32,7 @@ Entity (někdy označované jako *instance*entit) jsou k dispozici prostřednict
 
 Například funkce entita *čítače* může být použita k udržení skóre v online hře. Každá instance hry bude mít jedinečné ID entity, například `@Counter@Game1`, `@Counter@Game2`a tak dále. Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
 
-## <a name="programing-models"></a>Modely programování
+## <a name="programming-models"></a>Programovací modely
 
 Trvalé entity podporují dva různé programovací modely. Prvním modelem je dynamický model "funkční", kde je entita definovaná jedinou funkcí. Druhý model je objektově orientovaný model, kde je entita definována třídou a metodami. Tyto modely a programovací modely pro interakci s entitami jsou popsány v následujících částech.
 

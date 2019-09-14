@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872906"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983775"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 [Službu Azure Backup](backup-overview.md) můžete použít k zálohování místních počítačů a úloh a virtuálních počítačů Azure. Tento článek shrnuje nastavení a omezení podpory při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -180,7 +180,7 @@ Několik rezervovaných IP adres |    Podporuje se. <br/><br/> [Přečtěte si d
 Virtuální počítače s několika síťovými adaptéry  | Podporuje se. <br/><br/> [Přečtěte si další informace](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) o obnovení virtuálních počítačů se speciálním nastavením sítě.
 Virtuální počítače s veřejnými IP adresami    | Podporuje se.<br/><br/> Přidružte existující veřejnou IP adresu k síťovému rozhraní nebo vytvořte adresu a přidružte ji k síťovému rozhraní po dokončení obnovení.
 Skupina zabezpečení sítě (NSG) na síťové kartě nebo podsíti. |   Podporuje se.
-Adresa Vyhrazená IP adresa (statická) | Nepodporuje se.<br/><br/> Nemůžete zálohovat virtuální počítač s rezervovanou IP adresou a bez definovaného koncového bodu.
+Statická IP adresa | Nepodporuje se.<br/><br/> K novému virtuálnímu počítači vytvořenému z bodu obnovení je přiřazena dynamická IP adresa.<br/><br/> U klasických virtuálních počítačů nemůžete zálohovat virtuální počítač pomocí rezervované IP adresy a žádného definovaného koncového bodu.
 Dynamická IP adresa |    Podporuje se.<br/><br/> Pokud síťová karta na zdrojovém virtuálním počítači používá dynamické přidělování IP adres, použije se ve výchozím nastavení síťové rozhraní na obnoveném virtuálním počítači.
 Azure Traffic Manager   | Podporuje se.<br/><br/>Pokud je zálohovaný virtuální počítač v Traffic Manager, ručně přidejte obnovený virtuální počítač do stejné instance Traffic Manager.
 Azure DNS | Podporuje se.

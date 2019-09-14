@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563319"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984866"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -310,9 +310,9 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Azure tématu služby Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejný jako počet oddílů tématu výstup.  |
 | Fronty Azure Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejný jako počet oddílů ve výstupní frontě. |
 | Azure Cosmos DB | Ano | Na základě klauzule PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
-| Azure Functions | Ne | Žádný | Není k dispozici. |
+| Azure Functions | Ano | Na základě klauzule PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
 
-Počet výstupních zapisovačů lze také ovládat pomocí `INTO <partition count>` klauzule (viz [](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)v tématu) v dotazu, což může být užitečné při dosahování požadované topologie úlohy. Pokud adaptér pro výstup není rozdělena na oddíly, chybějící data v jednom oddílu vstupní způsobí zpoždění až pozdní doručení množství času. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md).
+Počet výstupních zapisovačů lze také ovládat pomocí `INTO <partition count>` klauzule (viz [v](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)tématu) v dotazu, což může být užitečné při dosahování požadované topologie úlohy. Pokud adaptér pro výstup není rozdělena na oddíly, chybějící data v jednom oddílu vstupní způsobí zpoždění až pozdní doručení množství času. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Velikost dávky výstupu
 Azure Stream Analytics používá dávky variabilní velikosti pro zpracování událostí a zápis do výstupů. Modul Stream Analytics obvykle nezapisuje jednu zprávu najednou a využívá dávky k efektivitě. Když je vysoká míra příchozích i odchozích událostí, Stream Analytics využívá větší počet dávek. Po nízká frekvence odchozího přenosu dat se používá po menších dávkách zachovat s nízkou latencí.

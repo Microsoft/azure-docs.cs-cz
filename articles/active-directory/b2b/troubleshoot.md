@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s B2B collaboration – Azure Active Directory | Dokumentace Microsoftu
-description: Řešení běžných problémů se spoluprací Azure Active Directory s B2B
+title: Řešení potíží se spoluprací B2B – Azure Active Directory | Microsoft Docs
+description: Náprava pro běžné problémy s Azure Active Directory spolupráce B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,86 +12,86 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767160"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983396"
 ---
-# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
+# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
-Tady jsou některé nápravná opatření pro běžné problémy se spoluprací B2B Azure Active Directory (Azure AD).
+Tady je několik oprav pro běžné problémy s spoluprací B2B Azure Active Directory (Azure AD).
 
-## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Přidání externího uživatele, ale nevidíte v globálním adresáři nebo výběr osob
+## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Přidal (a) jsem externího uživatele, ale nevidí ho v globálním adresáři nebo v rámci výběru osob.
 
-V případech, kdy nejsou naplněny externí uživatele v seznamu objekt může trvat několik minut, než replikaci.
+V případech, kdy v seznamu nejsou naplněny externí uživatelé, může replikace trvat několik minut.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Uživatel typu Host B2B se nezobrazuje v Sharepointu Online a Onedrivu výběr osob
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Uživatel typu Host B2B se nezobrazuje na SharePointu Online/na OneDrivu pro výběr osob.
 
-Možnost vyhledat existující uživatele typu Host v Sharepointu Online (SPO) výběr osob je vypnuto ve výchozím nastavení tak, aby odpovídaly starší verzi chování.
+Možnost Hledat stávající uživatele typu Host ve výběru osob v SharePointu Online (SPO) je ve výchozím nastavení VYPNUTá, aby odpovídala staršímu chování.
 
-Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForGuestUsers" na úrovni kolekce klienta a serveru. Můžete nastavit funkci pomocí rutiny Set-SPOTenant a Set-SPOSite, který umožní členům hledat všechny existující uživatele typu Host do adresáře. Změny v rámci tenanta neovlivní již zřízených SPO webů.
+Tuto funkci můžete povolit pomocí nastavení ' ShowPeoplePickerSuggestionsForGuestUsers ' na úrovni tenanta a kolekce webů. Funkci můžete nastavit pomocí rutin set-SPOTenant a set-SPOSite, které umožní členům Hledat v adresáři všechny existující uživatele typu Host. Změny v oboru tenanta neovlivňují již zřízené SPO lokality.
 
-## <a name="invitations-have-been-disabled-for-directory"></a>Pozvánky jsou zakázané pro adresář
+## <a name="invitations-have-been-disabled-for-directory"></a>Pozvánky byly pro adresář zakázané.
 
-Pokud se zobrazí oznámení, že nemáte oprávnění pozvat uživatele, ujistěte se, že je váš uživatelský účet oprávnění k pozvání externího uživatele v části Nastavení uživatele:
+Pokud jste upozorněni, že nemáte oprávnění pozvat uživatele, ověřte, zda je uživatelský účet autorizován pro pozvání externích uživatelů v části Azure Active Directory > nastavení uživatele > externích uživatelů > Spravovat nastavení externí spolupráce:
 
-![Snímek obrazovky zobrazující nastavení externí uživatele](media/troubleshoot/external-user-settings.png)
+![Snímek obrazovky zobrazující nastavení externích uživatelů](media/troubleshoot/external-user-settings.png)
 
-Pokud jste naposledy upravili tato nastavení nebo uživateli přiřadit roli odesílatel pozvánky hostů, může existovat zpoždění 15 až 60 minut předtím, než se změny projevily.
+Pokud jste tato nastavení nedávno změnili nebo přiřadili k uživateli roli pozvat hosta, může se stát, že se změny projeví 15-60 minut.
 
-## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Uživatel, který pozváni je dochází k chybě při uplatnění.
+## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Uživatel, kterého jsem pozval, obdrží při uplatnění chyby chybu
 
 Běžné chyby patří:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Pozvaného uživatele správce zakázal uživatelům EmailVerified bránit vytváření v rámci jejich tenanta
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Správce pozvání nepovolil, aby se EmailVerified uživatelé ve svém tenantovi vytvořili.
 
-Když pozvání uživatele, jejichž organizace používá Azure Active Directory, ale pokud neexistuje konkrétní uživatelský účet (například uživatel neexistuje v doméně contoso.com Azure AD). Správce contoso.com může mít zásadu na místě, aby bránil uživatelům ve vytváření. Uživatel musí obraťte se na svého správce určit, pokud jsou povoleny externí uživatele. Možná bude nutné správce externího uživatele umožňuje uživatelům ověřit e-mailu z vlastní domény (najdete v tomto [článku](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na umožnit uživatelům ověřit e-mailu).
+Při pozvání uživatelů, jejichž organizace používá Azure Active Directory, ale pokud účet konkrétního uživatele neexistuje (například uživatel v Azure AD contoso.com neexistuje). Správce contoso.com může mít zavedenou zásadu zabraňující vytváření uživatelů. Uživatel musí u svého správce zjistit, jestli je povolený externí uživatel. Správce externího uživatele může potřebovat povolit e-mailem ověřeným uživatelům ve své doméně (viz tento [článek](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) , který umožňuje ověřeným uživatelům poslat e-mail).
 
-![Chyba oznamující, že tenant neumožňuje e-mailu uživatele ověřené.](media/troubleshoot/allow-email-verified-users.png)
+![Chyba informující, že tenant nepovoluje uživatelům ověřené e-maily](media/troubleshoot/allow-email-verified-users.png)
 
-### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Externí uživatel ještě neexistuje ve federované domény
+### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Externí uživatel už v federované doméně neexistuje.
 
-Pokud používáte ověřování federace a uživatele ve službě Azure Active Directory ještě neexistuje, nejde pozvat uživatele.
+Pokud používáte ověřování federace a uživatel již v Azure Active Directory neexistuje, nelze uživatele pozvat.
 
-Pokud chcete tento problém vyřešit, musí správce externího uživatele synchronizovat uživatelského účtu do služby Azure Active Directory.
+Aby bylo možné tento problém vyřešit, musí správce externího uživatele synchronizovat účet uživatele s Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak se fakturuje se u\#", která obvykle není platný znak, synchronizovat s Azure AD?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>\#Jak je, což není obvykle platný znak, se synchronizuje se službou Azure AD?
 
-"\#" je rezervovaným znakem v UPN pro spolupráci B2B ve službě Azure AD nebo externí uživatele, protože pozvaného účtu user@contoso.com stane user_contoso.com#EXT#@fabrikam.onmicrosoft.com. Proto \# v UPN pocházející z místní nejsou povoleny pro přihlášení k webu Azure portal. 
+je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvaný účet user@contoso.com se user_contoso. com # ext #@fabrikam.onmicrosoft.com.\# Proto se \# v UPN přicházejících z místního prostředí nemůžete přihlásit k Azure Portal. 
 
-## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Při přidávání externích uživatelů do skupiny synchronizované se zobrazí chyba
+## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Při přidávání externích uživatelů do synchronizované skupiny se zobrazí chyba
 
-Externí uživatelé lze přidat pouze do "přiřazeno" nebo "Zabezpečení" skupiny a ne do skupiny, které jsou standardní místně.
+Externí uživatele je možné přidat pouze do skupin přiřazených nebo zabezpečení, nikoli do skupin, které jsou v místním prostředí.
 
-## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Moje externího uživatele nepřijala e-mailu pro uplatnění
+## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Můj externí uživatel nedostal e-mail k uplatnění.
 
-Pozvaný potřeba zkontrolovat u svého poskytovatele internetových služeb nebo nevyžádané pošty filtru zajistěte, aby se na následující adresu: Invites@microsoft.com
+Pozvánka by měla zkontrolovat pomocí filtru poskytovatele internetových služeb nebo spamu, aby bylo zajištěno, že je povolena následující adresa:Invites@microsoft.com
 
-## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Všimnu si toho, že vlastní zprávu nezíská součástí pozvání čas od času
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Všimněte si, že vlastní zpráva nezahrnuje zprávy pozvánky v časech
 
-Pro dosažení souladu se zákony o ochraně osobních údajů, rozhraní API neumožňují vkládání vlastních zpráv v e-mailovou pozvánku při:
+V rámci dodržování zákonů na ochranu osobních údajů naše rozhraní API do e-mailové pozvánky neobsahují vlastní zprávy v těchto případech:
 
-- Odesílající uživatel nemá e-mailovou adresu ve zvoucí tenantovi
-- Když pozvánku odesílá instančního objektu služby App Service
+- Pozvánka nemá v tenantovi pro pozvánku e-mailovou adresu.
+- Když objekt zabezpečení AppService odešle pozvánku
 
-Pokud tento scénář je pro vás důležité, můžete potlačit e-mailová pozvánka naše rozhraní API a odeslat e-mailu mechanismem podle svého výběru. Poraďte se vaše organizace právním poradcem pro Ujistěte se, že všechny e-maily, které odesíláte, že tímto způsobem souladu se zákony o ochraně osobních údajů.
+Pokud je tento scénář pro vás důležitý, můžete potlačit e-mail s pozvánkami rozhraní API a poslat ho e-mailovým mechanismem podle vašeho výběru. Projděte si právní poradce pro organizaci a ujistěte se, že všechny e-maily, které odesíláte tímto způsobem, jsou také v souladu s zákony
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Zobrazí chybová zpráva "AADSTS65005" při pokusu o přihlášení k prostředku Azure
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Při pokusu o přihlášení k prostředku Azure se zobrazí chyba "AADSTS65005".
 
-Uživatel, který má účet guest nemůžete se přihlásit a přijímá následující chybová zpráva:
+Uživatel, který má účet Guest, se nemůže přihlásit a přijímá následující chybovou zprávu:
 
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 
-Uživatel má Azure uživatelský účet a virálního tenanta, který byla opuštěna nebo nespravovaných. Kromě toho nejsou žádné globální nebo společnosti správci v tenantovi.
+Uživatel má uživatelský účet Azure a je to virového tenanta, který byl opuštěn nebo nespravovaný. Kromě toho neexistují žádní globální správci nebo správci společnosti v tenantovi.
 
-Chcete-li tento problém vyřešit, je nutné provést přes opuštěné tenanta. Odkazovat na [převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). Musíte také přístup k DNS směřujících k Internetu pro tuto příponu domény dotyčný negace přímé důkaz, že máte pod kontrolou oboru názvů. Po tenanta se vrátí do spravovaného stavu, prosím, jestli byste museli opustit uživatelé popisují u zákazníka a ověřený název domény je nejvhodnější volbou pro svoji organizaci.
+Chcete-li tento problém vyřešit, musíte převzít klienta, který se zrušil. Přečtěte si, jak [přebírat nespravovaný adresář jako správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). K tomu, aby bylo možné poskytnout přímý důkaz, který ovládáte v oboru názvů, musíte mít také přístup k internetovému serveru DNS pro příslušnou příponu domény. Až se klient vrátí do spravovaného stavu, poradí se se zákazníkem, ať už se jedná o nejlepší možnost pro svou organizaci.
 
-## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Uživatel typu Host s tenantem just-in-time nebo "virální" není schopen resetování hesla
+## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Uživatel typu host s klientem za běhu nebo virového tenanta nemůže resetovat heslo.
 
-Pokud je identity tenant just-in-time (JIT) nebo virálního tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
+Pokud je tenant identity za běhu (JIT) nebo virového tenanta (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
 
 ## <a name="next-steps"></a>Další postup
 
-[Získat podporu pro spolupráci B2B](get-support.md)
+[Získejte podporu pro spolupráci B2B.](get-support.md)

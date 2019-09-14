@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 49fa2cd53ebefa811673ea25a1851081f8cfa415
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883691"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958916"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Rychlý start: Přizpůsobení klientské knihovny pro Node. js
 
@@ -177,7 +177,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 >[Jak přizpůsobovat práci](how-personalizer-works.md)

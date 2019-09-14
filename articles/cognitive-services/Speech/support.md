@@ -1,32 +1,32 @@
 ---
-title: Podpora zpracování řeči Bingu | Dokumentace Microsoftu
+title: Podpora Zpracování řeči Bingu | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Podpora pro zpracování řeči Bingu.
+description: Podpora pro Zpracování řeči Bingu.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/08/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3bd996f23c7253dde0a55198068d8535a62bf127
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1b185cf6f69a547c50c8d2cf0e8b5f0da39444e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60514937"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965623"
 ---
 # <a name="support"></a>Podpora
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Pokud máte otázky zpětnou vazbu a návrhy pro zpracování řeči Bingu, které můžete kontaktujte nás prostřednictvím Githubu.
- - [Otázky týkající se rozhraní API REST](https://github.com/Azure-Samples/SpeechToText-REST/issues)
+Pokud máte dotazy, zpětnou vazbu nebo návrhy týkající se Zpracování řeči Bingu, můžete nás kontaktovat přes GitHub.
+ - [Otázky související s REST API](https://github.com/Azure-Samples/SpeechToText-REST/issues)
  - [Knihovna JavaScript](https://github.com/Azure-Samples/Cognitive-Speech-STT-JavaScript/issues)
- - [C# klasické pracovní plochy související s knihovnou dotazy](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
- - [C# služby související s knihovnou dotazy](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
- - [Knihovna Java na dotazy související s Androidem](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
- - [Knihovna jazyka Objective-C v iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
- - Obecné dotazy: [Fórum pro kognitivní služby UserVoice](https://cognitive.uservoice.com/)
+ - [C#otázky související s knihovnou desktopu](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
+ - [C#dotazy související s knihovnou služeb](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
+ - [Knihovny Java na dotazech týkajících se Androidu](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
+ - [Cíl – knihovna C v systému iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
+ - Obecné otázky: [Fórum služby UserVoice Cognitive Services](https://cognitive.uservoice.com/)

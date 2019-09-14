@@ -3,20 +3,20 @@ title: 'Rychlý start: Translator Speech API Python'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9426514853d58db1aa43eb42ee054b7bd931ae62
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7189563ebbcc5ae1a167f99ff8704aff16d0feac
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356916"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966483"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>Rychlý start: Translator Speech API s Pythonem
 <a name="HOLTop"></a>

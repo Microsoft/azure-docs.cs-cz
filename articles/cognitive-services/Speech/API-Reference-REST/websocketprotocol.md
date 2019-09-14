@@ -1,34 +1,34 @@
 ---
-title: Protokol WebSocket pro zpracování řeči Bingu | Dokumentace Microsoftu
+title: Protokol Zpracování řeči Bingu protokolu WebSocket | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Dokumentace k protokolu pro zpracování řeči Bingu podle WebSockets
+description: Dokumentace k protokolu pro Zpracování řeči Bingu založená na WebSockets
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515323"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966891"
 ---
-# <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
+# <a name="bing-speech-websocket-protocol"></a>Protokol Zpracování řeči Bingu protokolu WebSocket
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Pro zpracování řeči Bingu je Cloudová platforma, která nabízí nejpokročilejší algoritmy, které jsou k dispozici pro převod mluvené slovo zvuku na text. Protokol pro zpracování řeči Bingu definuje [nastavení připojení](#connection-establishment) mezi klientské aplikace a služby a zpráv rozpoznávání řeči vyměňovaných mezi jejich protějšky ([klientského vznikla zprávy](#client-originated-messages) a [zprávy služby pochází](#service-originated-messages)). Kromě toho [telemetrických zpráv](#telemetry-schema) a [zpracování chyb](#error-handling) jsou popsány.
+Zpracování řeči Bingu je cloudová platforma, která nabízí nejběžnější algoritmy, které jsou k dispozici pro převod mluveného zvuku na text. Protokol Zpracování řeči Bingu definuje [nastavení připojení](#connection-establishment) mezi klientskými aplikacemi a službou a zprávami pro rozpoznávání řeči vyměňované mezi protějšky ([zprávy na straně klienta](#client-originated-messages) a zprávy, které byly [vytvořeny podle služby](#service-originated-messages) ). ). Kromě toho jsou popsány [zprávy telemetrie](#telemetry-schema) a [zpracování chyb](#error-handling) .
 
-## <a name="connection-establishment"></a>Navazování připojení
+## <a name="connection-establishment"></a>Vytváření připojení
 
-Speech Service protokol dodržuje standardní specifikace protokolu WebSocket [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Připojení soketu WebSocket je na začátku jako požadavek HTTP, který obsahuje hlavičky protokolu HTTP, které označují klienta chce upgradovat připojení protokolu WebSocket namísto použití sémantikou HTTP. Server určuje jeho připravenost k účasti na připojení soketu WebSocket vrácením HTTP `101 Switching Protocols` odpovědi. Po výměně této metody handshake klient a služba ponechat otevřené soketu a začít používat protokol založenou na zprávách odesílat a přijímat informace.
+Protokol služby Speech následuje Standard specifikace protokolu WebSocket [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Připojení protokolu WebSocket se spouští jako požadavek HTTP, který obsahuje hlavičky HTTP, které označují přání klienta upgradovat připojení k objektu WebSocket namísto použití sémantiky protokolu HTTP. Server označuje, že se jeho ochota zapojit do připojení protokolu WebSocket, a `101 Switching Protocols` to vrácením odpovědi HTTP. Po výměně této metody handshake ponechá klient i služba soket otevřený a začne používat protokol založený na zprávách k posílání a přijímání informací.
 
-Pokud chcete začít metodu handshake protokolu WebSocket, klientská aplikace odešle požadavek HTTPS GET ke službě. Obsahuje standardní záhlaví upgrade objektu websocket na straně společně s další hlavičky, které jsou specifické pro zpracování řeči.
+Pokud chcete spustit metodu handshake protokolu WebSocket, klientská aplikace odešle službě požadavek HTTPS GET. Obsahuje standardní hlavičky pro upgrade WebSocket spolu s jinými hlavičkami, které jsou specifické pro řeč.
 
 ```HTTP
 GET /speech/recognition/interactive/cognitiveservices/v1 HTTP/1.1
@@ -42,7 +42,7 @@ X-ConnectionId: A140CAF92F71469FA41C72C7B5849253
 Origin: https://speech.platform.bing.com
 ```
 
-Služba jako odpověď vrátí:
+Služba reaguje na:
 
 ```HTTP
 HTTP/1.1 101 Switching Protocols
@@ -53,50 +53,50 @@ Set-Cookie: SpeechServiceToken=AAAAABAAWTC8ncb8COL; expires=Wed, 17 Aug 2016 15:
 Date: Wed, 17 Aug 2016 15:03:52 GMT
 ```
 
-Vyžadovat všechny hlasové požadavky [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) šifrování. Použijte nezašifrované hlasové požadavky se nepodporuje. Následující verze TLS se nepodporuje:
+Všechny požadavky na řeč vyžadují šifrování [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) . Použití nešifrovaných požadavků na řeč není podporováno. Podporuje se následující verze TLS:
 
 * TLS 1.2
 
 ### <a name="connection-identifier"></a>Identifikátor připojení
 
-Speech Service vyžaduje, že všichni klienti obsahovat jedinečné ID pro identifikaci připojení. Klienti *musí* zahrnout *X ConnectionId* záhlaví při spuštění metody handshake protokolu WebSocket. *X ConnectionId* záhlaví musí být [univerzálně jedinečným identifikátorem](https://en.wikipedia.org/wiki/Universally_unique_identifier) hodnotu (UUID). WebSocket upgradu požadavků, které neobsahují *X ConnectionId*, nezadávejte hodnotu pro *X ConnectionId* záhlaví, nebo neobsahují platná hodnota identifikátoru UUID odmítají službou pomocí protokolu HTTP `400 Bad Request` odpovědi.
+Služba Speech vyžaduje, aby všichni klienti měli k identifikaci připojení jedinečný identifikátor. Při spuštění metody handshake pro WebSocket *musí* klienti zahrnovat hlavičku *X-ConnectionID* . Hlavičkou *X-ConnectionID* musí být hodnota UUID ( [Universal Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) ). Požadavky na upgrade protokolu WebSocket, které neobsahují *x-ConnectionID*, nezadávejte hodnotu pro hlavičku *x-ConnectionID* , nebo nezahrnují platnou hodnotu UUID, kterou služba odmítla s odpovědí HTTP `400 Bad Request` .
 
-### <a name="authorization"></a>Autorizace
+### <a name="authorization"></a>Authorization
 
-Kromě standardní záhlaví handshake protokolu WebSocket, hlasové požadavky vyžadují *autorizace* záhlaví. Požadavky na připojení bez této hlavičky odmítají službou pomocí protokolu HTTP `403 Forbidden` odpovědi.
+Kromě standardních hlaviček ověřování pomocí protokolu handshake vyžadují požadavky na zadání řeči hlavičku *autorizace* . Žádosti o připojení bez této hlavičky jsou službou odmítnuty pomocí odpovědi HTTP `403 Forbidden` .
 
-*Autorizace* záhlaví musí obsahovat přístupového tokenu JSON Web Token (JWT).
+*Autorizační* hlavička musí obsahovat přístupový token JSON web token (Jwt).
 
-Informace o tom, jak odběru a získání klíče rozhraní API, které slouží k načtení platné přístupové tokeny JWT, najdete v článku [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky.
+Informace o tom, jak se přihlásit k odběru a získat klíče rozhraní API, které se používají k načtení platných přístupových tokenů JWT, najdete na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) .
 
-Klíč rozhraní API je předán do tokenu služby. Příklad:
+Klíč rozhraní API se předává službě tokenů. Příklad:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-Následující informace záhlaví jsou nezbytné k tokenu přístupu.
+Pro přístup k tokenu jsou vyžadovány následující informace hlavičky.
 
 | Name | Formát | Popis |
 |----|----|----|
-| OCP-Apim-Subscription-Key | ASCII | Klíč předplatného. |
+| OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného |
 
-Vrátí token služby přístupový token JWT jako `text/plain`. Pak tokenů JWT je předán jako `Base64 access_token` k ověření typu handshake jako *autorizace* záhlaví s předponou řetězec `Bearer`. Příklad:
+Tokenová služba vrátí přístupový token JWT jako `text/plain`. Pak se token JWT předává jako `Base64 access_token` k metodě handshake jako *autorizační* hlavička s předponou s řetězcem `Bearer`. Příklad:
 
 `Authorization: Bearer [Base64 access_token]`
 
 ### <a name="cookies"></a>Soubory cookie
 
-Klienti *musí* podporují soubory cookie protokolu HTTP, jak je uvedeno v [RFC 6265](https://tools.ietf.org/html/rfc6265).
+Klienti *musí* podporovat soubory cookie protokolu HTTP, jak jsou uvedeny v [dokumentu RFC 6265](https://tools.ietf.org/html/rfc6265).
 
 ### <a name="http-redirection"></a>Přesměrování protokolu HTTP
 
-Klienti *musí* podporují standardní přesměrování mechanismy určené [specifikace protokolu HTTP](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
+Klienti *musí* podporovat standardní mechanismy přesměrování určené [specifikací protokolu HTTP](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
 
 ### <a name="speech-endpoints"></a>Koncové body řeči
 
-Klienti *musí* použít příslušný koncový bod služby řeči. Koncový bod se odvíjí režim rozpoznávání a jazyk. V tabulce jsou uvedeny některé příklady.
+Klienti *musí* používat příslušný koncový bod služby Speech. Koncový bod je založený na režimu rozpoznávání a jazyku. V tabulce jsou uvedeny některé příklady.
 
 | Režim | `Path` | Identifikátor URI služby |
 | -----|-----|-----|
@@ -104,91 +104,91 @@ Klienti *musí* použít příslušný koncový bod služby řeči. Koncový bod
 | Konverzace | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | Diktování | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
-Další informace najdete v tématu [identifikátor URI služby](../GetStarted/GetStartedREST.md#service-uri) stránky.
+Další informace najdete na stránce s [identifikátorem URI služby](../GetStarted/GetStartedREST.md#service-uri) .
 
-### <a name="report-connection-problems"></a>Problémy s připojením typu sestavy
+### <a name="report-connection-problems"></a>Nahlásit problémy s připojením
 
-Klienti měli okamžitě hlásí všechny problémy vzniklé při navazování připojení. Zpráva protokolu pro generování sestav se nezdařilo připojení je popsána v [telemetrie selhání připojení](#connection-failure-telemetry).
+Klienti by měli hned ohlásit všechny problémy, ke kterým došlo při navazování připojení. Protokol zpráv pro oznamování neúspěšných připojení je popsán v tématu [telemetrie selhání připojení](#connection-failure-telemetry).
 
-### <a name="connection-duration-limitations"></a>Doba trvání omezení připojení
+### <a name="connection-duration-limitations"></a>Omezení doby trvání připojení
 
-Ve srovnání s běžné webové služby HTTP připojení, poslední připojení pomocí protokolu WebSocket *dlouhé* čas. Speech Service umístí omezení na době trvání připojení pomocí protokolu WebSocket ke službě:
+Ve srovnání s typickými připojeními HTTP webové služby se připojení protokolu WebSocket po *dlouhou* dobu. Služba rozpoznávání řeči umístí omezení doby trvání připojení protokolu WebSocket ke službě:
 
- * Maximální doba trvání pro všechny aktivní připojení soketu WebSocket je 10 minut. Připojení je aktivní, pokud služba nebo klient odesílá zprávy pomocí protokolu WebSocket přes toto připojení. Služba ukončuje připojení bez upozornění při dosažení limitu. Klienti měli vytvořit uživatelské scénáře, které nevyžadují připojení k aktivní na nebo blízko ní životnost maximální připojení.
+ * Maximální doba trvání aktivního připojení protokolu WebSocket je 10 minut. Připojení je aktivní, pokud služba nebo klient odesílá zprávy protokolu WebSocket prostřednictvím tohoto připojení. Služba ukončí připojení bez upozornění, když je dosaženo limitu. Klienti by měli vyvíjet uživatelské scénáře, které nevyžadují, aby připojení zůstalo aktivní při maximálním trvání připojení nebo téměř.
 
- * Maximální doba trvání pro všechny aktivní připojení soketu WebSocket je 180 sekund. Připojení je neaktivní, pokud služby ani klienta odeslal zprávu pomocí protokolu WebSocket přes dané připojení. Po dosažení maximální doba života neaktivní služba ukončuje neaktivní připojení soketu WebSocket.
+ * Maximální doba trvání neaktivního připojení protokolu WebSocket je 180 sekund. Připojení je neaktivní, pokud ani služba ani klient neodeslali v rámci připojení zprávu protokolu WebSocket. Po dosažení maximální aktivní životnosti ukončí služba neaktivní připojení protokolu WebSocket.
 
 ## <a name="message-types"></a>Typy zpráv
 
-Po vytvoření objektu websocket na straně připojení mezi klientem a službu Klient a služba odesílat zprávy. Tato část popisuje formátu tyto zprávy pomocí protokolu WebSocket.
+Po navázání připojení protokolu WebSocket mezi klientem a službou může klient i služba odesílat zprávy. Tato část popisuje formát těchto zpráv protokolu WebSocket.
 
-[Sdružení IETF RFC 6455](https://tools.ietf.org/html/rfc6455) Určuje, že zprávy protokolu WebSocket můžou přenášet data pomocí textový nebo binární kódování. Dvě kódování používají různé formáty v přenosu. Každý formát je optimalizovaná pro efektivní kódování, přenosu a dekódování datovou část zprávy.
+[IETF RFC 6455](https://tools.ietf.org/html/rfc6455) určuje, zda zprávy protokolu WebSocket mohou přenášet data buď pomocí textu, nebo binárního kódování. Tato dvě kódování používají jiné formáty přenosů. Každý formát je optimalizován pro efektivní kódování, přenos a dekódování datové části zprávy.
 
-### <a name="text-websocket-messages"></a>Text zprávy protokolu WebSocket
+### <a name="text-websocket-messages"></a>Textové zprávy protokolu WebSocket
 
-Text zprávy protokolu WebSocket provádět datovou část textové informace, které se skládá z část záhlaví a text oddělené pár známé double návrat nového řádku pro zprávy HTTP. A stejně jako zprávy protokolu HTTP, zadejte text zprávy protokolu WebSocket záhlaví v *název: hodnota* formátu oddělené pár jeden CR znaku nového řádku. Jakýkoli text součástí textovou zprávu pomocí protokolu WebSocket *musí* použít [UTF-8](https://tools.ietf.org/html/rfc3629) kódování.
+Textové zprávy protokolu WebSocket přenášejí datovou část textových informací, které se skládají z části záhlaví a textu odděleného dvojici řádků s dvojitým návratem na konci používané pro zprávy HTTP. A podobně jako zprávy protokolu HTTP, textové zprávy WebSocket určují záhlaví v *názvu: formát hodnoty* oddělený dvojicí s návratovou hodnotou s jedním koncem řádku. Libovolný text obsažený v textové zprávě WebSocket *musí* používat kódování [UTF-8](https://tools.ietf.org/html/rfc3629) .
 
-Text zprávy protokolu WebSocket musíte zadat cestu zprávu v hlavičce *cesta*. Hodnotu této hlavičky musí být jeden z typů zpráv protokolu řeči definované dále v tomto dokumentu.
+Textové zprávy protokolu WebSocket musí v *cestě*k záhlaví určovat cestu k této zprávě. Hodnota této hlavičky musí být jedním z typů zpráv protokolu řeči definovaných dále v tomto dokumentu.
 
 ### <a name="binary-websocket-messages"></a>Binární zprávy protokolu WebSocket
 
-Binární zprávy protokolu WebSocket provádět binární datové části. V protokolu Speech Service je zvuk předány a přijal od služby pomocí binární zprávy protokolu WebSocket. Všechny ostatní zprávy jsou textové zprávy pomocí protokolu WebSocket.
+Binární datová část zprávy protokolu WebSocket je binární. V protokolu služby Speech se ke službě přenáší a přijímá zvuk pomocí binárních zpráv protokolu WebSocket. Všechny ostatní zprávy jsou textové zprávy protokolu WebSocket.
 
-Stejně jako textové zprávy pomocí protokolu WebSocket binární zprávy protokolu WebSocket sestávají z hlavičky a tělo oddílu. Zadejte první 2 bajty binární zprávy protokolu WebSocket, [formát big-endian](https://en.wikipedia.org/wiki/Endianness) velikost 16bitové celé číslo oddílu záhlaví objednávky. Velikost oddílu minimální záhlaví je 0 bajtů. Maximální velikost je 8 192 bajtů. Text v záhlaví binární zprávy protokolu WebSocket *musí* použít [US-ASCII](https://tools.ietf.org/html/rfc20) kódování.
+Podobně jako textové zprávy protokolu WebSocket se zprávy binárního protokolu WebSocket skládají z záhlaví a části těla. První 2 bajty binární zprávy protokolu WebSocket určují v pořadí [big-endian](https://en.wikipedia.org/wiki/Endianness) 16bitové celočíselnou velikost oddílu záhlaví. Minimální velikost oddílu hlavičky je 0 bajtů. Maximální velikost je 8 192 bajtů. Text v hlavičkách binárních zpráv protokolu WebSocket *musí* používat kódování [US-ASCII](https://tools.ietf.org/html/rfc20) .
 
-Záhlaví ve zprávě protokolu WebSocket binární jsou kódovány ve stejném formátu jako v textových zpráv protokolu WebSocket. *Názvu a hodnoty* formátu jsou oddělené oddělovačem CR jednoho znaku nového řádku pár. Binární zprávy protokolu WebSocket musí určovat cestu zprávy v hlavičce *cesta*. Hodnotu této hlavičky musí být jeden z typů zpráv protokolu řeči definované dále v tomto dokumentu.
+Hlavičky v binární zprávě protokolu WebSocket jsou kódované ve stejném formátu jako v textových zprávách protokolu WebSocket. Formát *Název: hodnota* se oddělí dvojicí nového řádku s návratovou hodnotou s jedním znakem. Binární zprávy protokolu WebSocket musí v *cestě*záhlaví určovat cestu k této zprávě. Hodnota této hlavičky musí být jedním z typů zpráv protokolu řeči definovaných dále v tomto dokumentu.
 
-Textové a binární zprávy protokolu WebSocket se používají v protokolu Speech Service.
+V protokolu služby Speech se používají textové i binární zprávy protokolu WebSocket.
 
-## <a name="client-originated-messages"></a>Vytvoří se klient zprávy
+## <a name="client-originated-messages"></a>Zprávy pocházející od klienta
 
-Po navázání připojení klienta a službu můžete spustit pro odesílání zpráv. Tato část popisuje formátu a datovou část zprávy, které klientské aplikace odesílají Speech Service. V části [zprávy služby pochází](#service-originated-messages) uvede zprávy, které pocházejí z Speech Service a odesílají do klientské aplikace.
+Po navázání připojení může klient i služba spustit odesílání zpráv. Tato část popisuje formát a datovou část zpráv, které klientské aplikace odesílají službě Speech. V části [Služba – zprávy](#service-originated-messages) , které pocházejí z hlasové služby a jsou odesílány klientským aplikacím.
 
-Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `telemetry` zprávy. Před považujeme za každou zprávu podrobně, společné požadované záhlaví zpráv pro tyto zprávy jsou popsány.
+Hlavní zprávy odesílané klientem do služeb jsou `speech.config`zprávy, `audio`a `telemetry` . Předtím, než se podíváme na každou zprávu, jsou popsána společná požadovaná záhlaví zpráv pro všechny tyto zprávy.
 
-### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
+### <a name="required-message-headers"></a>Požadovaná záhlaví zpráv
 
-Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
+Pro všechny zprávy z klienta jsou vyžadovány následující hlavičky.
 
-| Záhlaví | Hodnota |
+| Záhlaví | Value |
 |----|----|
-| `Path` | Cesta zprávy, jak je uvedeno v tomto dokumentu |
-| X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
+| `Path` | Cesta ke zprávě, jak je uvedeno v tomto dokumentu |
+| X-RequestId | UUID ve formátu "bez čárek" |
+| X-Timestamp | Časové razítko času UTC klienta ve formátu ISO 8601 |
 
 #### <a name="x-requestid-header"></a>Hlavička X-RequestId
 
-Požadavky na klienta pochází se jednoznačně identifikují pomocí *X-RequestId* záhlaví zprávy. Tato hlavička se vyžaduje pro všechny zprávy klienta pochází. *X-RequestId* hodnota záhlaví musí UUID být v podobě "no-dash", například *123e4567e89b12d3a456426655440000*. To *nelze* být v kanonickém tvaru *123e4567-e89b-12d3-a456-426655440000*. Požadavky bez *X-RequestId* záhlaví nebo s hodnotu hlavičky, která používá má nesprávný formát pro identifikátory UUID způsobit služby k ukončení připojení soketu WebSocket.
+Požadavky na klienta jsou jedinečně identifikovány hlavičkou zprávy *X-RequestId* . Tato hlavička je vyžadována pro všechny zprávy z klienta. Hodnota hlavičky *X-RequestId* musí být identifikátor UUID ve tvaru "No-spojovník", například *123e4567e89b12d3a456426655440000*. *Nemůže* být ve formě kanonického tvaru *123e4567-e89b-12d3-A456-426655440000*. Požadavky bez hlavičky *X-RequestId* nebo s hodnotou hlavičky, která používá nesprávný formát pro identifikátory UUID způsobí, že služba ukončí připojení protokolu WebSocket.
 
-#### <a name="x-timestamp-header"></a>Hlavička X-časové razítko
+#### <a name="x-timestamp-header"></a>Záhlaví X – časové razítko
 
-Každá zpráva odeslaná do Speech Service používá klientská aplikace *musí* patří *X časové razítko* záhlaví. Pro toto záhlaví hodnotu čas, kdy klient odešle zprávu. Požadavky bez *X časové razítko* záhlaví nebo s hodnotu hlavičky, která používá má nesprávný formát způsobit, že služba ukončit připojení soketu WebSocket.
+Každá zpráva odeslaná službě Speech pomocí klientské aplikace *musí* obsahovat hlavičku *X-timestamp* . Hodnota tohoto záhlaví je čas, kdy klient zprávu pošle. Požadavky bez záhlaví *X-timestamp* nebo s hodnotou hlavičky, která používá nesprávný formát, způsobí ukončení připojení protokolu WebSocket službou.
 
-*X časové razítko* hodnota záhlaví musí být ve formátu "yyyy'-'MM'-'dd'T' HH': 'mm':'ss '." fffffffZ "kde"fffffff"představuje zlomek sekundy. Například "12,5" znamená "12 + 5/10 sekund a"12.526"znamená, že 12 plus 526/1 000 sekund". Tento formát je v souladu s [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a na rozdíl od standardní HTTP *datum* záhlaví, může poskytnout překlad milisekund. Klientské aplikace může být zaokrouhlit časová razítka na nejbližší milisekundu. Potřeba zajistit, že hodiny zařízení přesně sleduje dobu pomocí klientské aplikace [Protokol NTP (Network Time) server](https://en.wikipedia.org/wiki/Network_Time_Protocol).
+Hodnota záhlaví *X-timestamp* musí být ve formátu ' yyyy-yyyy '-DD 't ': ' mm ': ' ss '. ' fffffffZ "je-li" fffffff "zlomkem sekundy. Například ' 12,5 ' znamená ' 12 + 5/10 sekund ' a ' 12,526 ' znamená ' 12 Plus 526/1000 sekund '. Tento formát vyhovuje normě [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a na rozdíl od standardního záhlaví *data* protokolu HTTP může poskytovat řešení milisekund. Klientské aplikace mohou zaokrouhlit časová razítka na nejbližší milisekundu. Klientské aplikace musí zajistit, aby zařízení přesně sleduje čas pomocí [serveru NTP (Network Time Protocol)](https://en.wikipedia.org/wiki/Network_Time_Protocol).
 
-### <a name="message-speechconfig"></a>Zpráva `speech.config`
+### <a name="message-speechconfig"></a>Zpráva`speech.config`
 
-Speech Service je potřeba vědět vlastnostech vaší aplikace zajistit nejlepší možné řeči. Požadované vlastnosti data zahrnují informace o zařízení a operační systém, který využívá aplikaci. Zadejte tyto informace `speech.config` zprávy.
+Služba Speech potřebuje znát charakteristiky vaší aplikace, aby poskytovala nejlepší možné rozpoznávání řeči. Údaje o požadovaných vlastnostech obsahují informace o zařízení a operačním systému, které vaši aplikaci využívají. Tyto informace zadáte do `speech.config` zprávy.
 
-Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připojení k Speech Service a před odesláním žádné `audio` zprávy. Je nutné odeslat `speech.config` zprávy pouze jednou za připojení.
+Klienti *musí* poslat `speech.config` zprávu hned po navázání připojení ke službě Speech Service a před odesláním jakýchkoli `audio` zpráv. Pro každé připojení je potřeba `speech.config` poslat zprávu jenom jednou.
 
 | Pole | Popis |
 |----|----|
 | Kódování zpráv protokolu WebSocket | Text |
-| Tělo | Datová struktura JSON |
+| Tělo | Datová část jako struktura JSON |
 
-#### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
+#### <a name="required-message-headers"></a>Požadovaná záhlaví zpráv
 
-| Název hlavičky | Hodnota |
+| Název hlavičky | Value |
 |----|----|
 | `Path` | `speech.config` |
-| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Content-Type | Application/json; charset = utf-8 |
+| X-Timestamp | Časové razítko času UTC klienta ve formátu ISO 8601 |
+| Typ obsahu | aplikace/JSON; charset = UTF-8 |
 
-Stejně jako všechny zprávy v protokolu Speech Service klientského vznikla `speech.config` zpráva *musí* patří *X časové razítko* hlavičku, která zaznamenává klient UTC Čas odeslání zprávy ke službě. `speech.config` Zpráva *nemá* vyžadují *X-RequestId* záhlaví vzhledem k tomu, že tato zpráva není přidružený k žádosti o konkrétní řeči.
+Stejně jako u všech zpráv pocházejících od klienta v protokolu `speech.config` služby Speech *musí* zpráva obsahovat hlavičku *X-timestamp* , která zaznamenává časovou dobu času UTC klienta při odeslání zprávy do služby. Zpráva nevyžaduje záhlaví *X-RequestId* , protože tato zpráva není přidružena k konkrétnímu požadavku na řeč. `speech.config`
 
-#### <a name="message-payload"></a>Datovou část zprávy
-Datová část `speech.config` zprávy je struktura JSON, který obsahuje informace o aplikaci. Následující příklad zobrazuje tyto informace. Informace o kontextu klienta a zařízení je součástí *kontextu* element struktuře JSON.
+#### <a name="message-payload"></a>Datová část zprávy
+Datová část `speech.config` zprávy je struktura JSON, která obsahuje informace o aplikaci. Následující příklad ukazuje tyto informace. Informace o kontextu klienta a zařízení jsou obsaženy v elementu *kontextu* struktury JSON.
 
 ```JSON
 {
@@ -211,67 +211,67 @@ Datová část `speech.config` zprávy je struktura JSON, který obsahuje inform
 }
 ```
 
-##### <a name="system-element"></a>System – element
+##### <a name="system-element"></a>Systémový element
 
-Prvek system.version `speech.config` zpráva obsahuje verzi řeči SDK software používaný klientská aplikace nebo zařízení. Hodnota je ve formě *major.minor.build.branch*. Můžete vynechat *větev* komponenty, pokud se nedá použít.
+Element System. Version `speech.config` zprávy obsahuje verzi softwaru sady Speech SDK, kterou používá klientská aplikace nebo zařízení. Hodnota je ve formátu *hlavní. podverze. sestavení. větev*. Komponentu *větve* můžete vynechat, pokud není k dispozici.
 
-##### <a name="os-element"></a>OS element
+##### <a name="os-element"></a>Element OS
 
-| Pole | Popis | Využití |
+| Pole | Popis | Použití |
 |-|-|-|
-| os.platform | Operační systém platformy, který je hostitelem aplikace, například, Windows, Android, iOS nebo Linuxu |Požaduje se |
-| os.name | Název produktu operačního systému, například systému Debian nebo Windows 10 | Požaduje se |
-| os.version | Verze operačního systému ve formě *major.minor.build.branch* | Požaduje se |
+| OS. Platform | Platforma operačního systému, která hostuje aplikaci, například Windows, Android, iOS nebo Linux |Požadováno |
+| os.name | Název produktu operačního systému, například Debian nebo Windows 10 | Požadováno |
+| OS. Version | Verze operačního systému ve formátu *hlavní. podverze. sestavení. větev* | Požadováno |
 
-##### <a name="device-element"></a>Element zařízení
+##### <a name="device-element"></a>Prvek zařízení
 
-| Pole | Popis | Využití |
+| Pole | Popis | Použití |
 |-|-|-|
-| device.manufacturer | Výrobce zařízení | Požaduje se |
-| device.model | Model zařízení | Požaduje se |
-| device.version | Verze softwaru zařízení dodané výrobcem zařízení. Tato hodnota určuje verzi, která lze sledovat výrobce zařízení. | Požaduje se |
+| zařízení. Manufacturer | Výrobce hardwaru zařízení | Požadováno |
+| device.model | Model zařízení | Požadováno |
+| verze zařízení. verze | Verze softwaru zařízení poskytovaná výrobcem zařízení. Tato hodnota určuje verzi zařízení, kterou může výrobce sledovat. | Požadováno |
 
-### <a name="message-audio"></a>Zpráva `audio`
+### <a name="message-audio"></a>Zpráva`audio`
 
-Podporou hlasových klientské aplikace odesílat zvuku Speech Service převedením zvukový datový proud do řady zvuku bloků. Každý blok zvuk přenáší segment mluveného slova, které má být přepsána službou. Maximální velikost jediný neodkazovaný blok zvuku je 8 192 bajtů. Zvukový datový proud zprávy jsou *zprávy protokolu WebSocket binární*.
+Klientské aplikace s podporou řeči odesílají zvuk do služby Speech převodem zvukového datového proudu na řadu zvukových bloků dat. Každý blok zvuku přináší segment mluveného zvuku, který je přepisu službou. Maximální velikost jednoho zvukového bloku je 8 192 bajtů. Zprávy o zvukovém streamu jsou *binární zprávy protokolu WebSocket*.
 
-Klienti používají `audio` zpráva k odeslání zvuku bloků dat do služby. Klienti číst zvuk, mikrofon v blocích a odesílat tyto bloky Speech Service pro přepis. První `audio` zpráva může obsahovat hlavičku ve správném formátu, který správně Určuje, že zvuk odpovídá jedné z kódování formátů podporovaných službou. Další `audio` zprávy obsahují pouze binární zvuk Streamovat data načtená z mikrofon.
+Klienti používají `audio` zprávu k odeslání zvukového bloku do služby. Klienti čtou zvuk z mikrofonu v blocích a odesílají tyto bloky do služby Speech pro přepis. První `audio` zpráva musí obsahovat správné záhlaví, které správně určuje, že zvuk vyhovuje jednomu z formátů kódování, které služba podporuje. Další `audio` zprávy obsahují jenom data binárního zvukového proudu načtená z mikrofonu.
 
-Klienti mohou volitelně odesílají `audio` zprávu s nulovou délkou text. Tato zpráva, že služba, která klient ví, že uživatel zastavil mluvený, dokončení utterance a mikrofonu je vypnuté.
+Klienti mohou volitelně odeslat `audio` zprávu s textem s nulovou délkou. Tato zpráva oznamuje službě, že klient ví, že uživatel přestal mluvit, že utterance je dokončený a mikrofon je vypnutý.
 
-Speech Service používá první `audio` zprávu, která obsahuje identifikátor jedinečný požadavek na signál start nový cyklus žádostí a odpovědí nebo *zapnout*. Poté, co služba přijímá `audio` zprávu s identifikátorem novou žádost o zahodí zařazených do fronty nebo unsent zpráv, které jsou přidruženy žádné předchozí zapnout.
+Služba Speech používá první `audio` zprávu, která obsahuje jedinečný identifikátor požadavku k signalizaci začátku nového cyklu žádosti nebo odpovědi nebo *vypnutí*. Jakmile služba obdrží `audio` zprávu s novým identifikátorem žádosti, zahodí všechny zprávy ve frontě nebo neodeslaných zprávách, které jsou přidruženy k jakékoli předchozí zapínání.
 
 | Pole | Popis |
 |-------------|----------------|
-| Kódování zpráv protokolu WebSocket | Binární hodnota |
-| Tělo | Binární data pro zvuk bloku. Maximální velikost je 8 192 bajtů. |
+| Kódování zpráv protokolu WebSocket | Binary |
+| Tělo | Binární data zvukového bloku Maximální velikost je 8 192 bajtů. |
 
-#### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
+#### <a name="required-message-headers"></a>Požadovaná záhlaví zpráv
 
-Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
+Pro všechny `audio` zprávy jsou vyžadovány následující hlavičky.
 
-| Záhlaví         |  Hodnota     |
+| Záhlaví         |  Value     |
 | ------------- | ---------------- |
 | `Path` | `audio` |
-| X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Content-Type | Typ zvukové obsahu. Typ musí být buď *audio/x-wav* (PCM) nebo *audio/silk* (SILK). |
+| X-RequestId | UUID ve formátu "bez čárek" |
+| X-Timestamp | Časové razítko času UTC klienta ve formátu ISO 8601 |
+| Typ obsahu | Typ zvukového obsahu. Typ musí být *audio/x-WAV* (PCM) nebo *audio/hedvábí* (hedvábí). |
 
 #### <a name="supported-audio-encodings"></a>Podporovaná kódování zvuku
 
-Tato část popisuje zvukových kodeků podporované službou řeči.
+Tato část popisuje zvukové kodeky podporované službou Speech.
 
 ##### <a name="pcm"></a>PCM
 
-Speech Service přijímá nekomprimované pulse zvuk modulace (PCM) kód. Zvuk se odesílají službě v [WAV](https://en.wikipedia.org/wiki/WAV) formátu, tak první zvuk bloku dat *musí* obsahovat platný [formát Resource Interchange File Format](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) záhlaví (RIFF). Pokud klient zahájí zapnout s zvuku bloků dat, která provádí *není* obsahovat platnou hlavičku RIFF, služba zamítne žádost a ukončí připojení soketu WebSocket.
+Služba Speech přijímá nekomprimovaný zvuk PCM (Pulse Code modulace). Zvuk se pošle do služby ve formátu [WAV](https://en.wikipedia.org/wiki/WAV) , takže první zvukový blok *musí* obsahovat platný nadpis formátu RIFF ( [Resource Interchange File Format](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) ). Pokud klient zahájí zapínání zvukového bloku, *který neobsahuje platnou* hlavičku riff, služba žádost odmítne a ukončí připojení protokolu WebSocket.
 
-Zvuk PCM *musí* odeberou na 16 kHz s 16 bitů na ukázky a jeden kanál (*riff – 16khz – 16 bitů-mono-pcm*). Speech Service nepodporuje stereo audiostreamy a odmítne zvukové datové proudy, které nepoužívají zadaný přenosové rychlosti, vzorkovací frekvence nebo počtu kanálů.
+Zvuk PCM se *musí* nacházet ve 16 kHz a 16 bitech na vzorek a jeden kanál (*RIFF-16khz-16bitový-mono-PCM*). Služba Speech nepodporuje streamy stereofonních zvuků a odmítá zvukové streamy, které nepoužívají zadanou přenosovou rychlost, vzorkovací frekvenci nebo počet kanálů.
 
-##### <a name="opus"></a>Díle
+##### <a name="opus"></a>Opus
 
-Díle je otevřené, nezpoplatněná a vysoce všestranný zvukový kodek. Speech Service podporuje díle konstantní přenosovou rychlostí `32000` nebo `16000`. Pouze `OGG` kontejner pro díle momentálně se podporuje, která je zadána `audio/ogg` typ mime.
+Opus je otevřený, vysoce všestranný zvukový kodek bez licenčních práv. Služba Speech podporuje Opus konstantní přenosovou rychlostí `32000` nebo. `16000` V současné době je podporován pouze `audio/ogg` kontejnerproOpus,kterýjeurčentypemMIME.`OGG`
 
-Chcete-li použít díle, upravte [ukázkový JavaScript](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) a změnit `RecognizerSetup` metoda vrátí.
+Chcete-li použít Opus, upravte [ukázku JavaScriptu](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) a změňte `RecognizerSetup` metodu, která se má vrátit.
 
 ```javascript
 return SDK.CreateRecognizerWithCustomAudioSource(
@@ -289,50 +289,50 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 #### <a name="detect-end-of-speech"></a>Zjištění konce řeči
 
-Lidé nevydá signál explicitně po jejich skončení mluvit. Každou aplikaci, která přijímá řeči, jako vstup má dvě možnosti pro zpracování konec řeči v zvukový datový proud: Služba end řeči zjišťování a zjišťování klienta end řeči. Z těchto dvou možností detekce end řeči služby obvykle poskytuje lepší uživatelské prostředí.
+Lidé po dokončení mluvení nesignalizují explicitně. Všechny aplikace, které přijímají rozpoznávání řeči jako vstup, mají dvě možnosti pro zpracování konce řeči ve zvukovém streamu: rozpoznávání koncových znaků a zjišťování konce řeči klienta. Z těchto dvou možností rozpoznávání koncových řeči služby obvykle nabízí lepší uživatelské prostředí.
 
-##### <a name="service-end-of-speech-detection"></a>Detekce end speech Service
+##### <a name="service-end-of-speech-detection"></a>Zjišťování konce řeči služby
 
-Aplikace k vytváření prostředí ideální bezobslužné řeči, povolte službě zjistit, že uživatel dokončil mluvit. Klienti odesílají zvuk, mikrofon jako *zvuku* chunks dokud služba detekuje nečinnosti a jako odpověď vrátí zpět `speech.endDetected` zprávy.
+Aby bylo možné vytvořit ideální prostředí pro hlasový vstup bez obsluhy, aplikace umožní, aby služba zjišťoval, kdy uživatel dokončí domluvu. Klienti odesílají zvuk z mikrofonu jako *zvukového* bloku, dokud služba nedetekuje tichou `speech.endDetected` zprávu a odpoví zpátky zprávou.
 
-##### <a name="client-end-of-speech-detection"></a>Zjišťování klienta end řeči
+##### <a name="client-end-of-speech-detection"></a>Zjišťování konce řeči klienta
 
-Klientské aplikace, které uživateli umožňují signalizuje, že na konec řeči nějakým způsobem také poskytnete službě, která signálu. Klientská aplikace může například mít "Stop" nebo "Ztlumit" tlačítko, které může uživatel stisknout. Signalizuje, že koncový řeči, pošlete klientské aplikace *zvuku* bloku dat zpráv s nulovou délkou text. Speech Service interpretuje tuto zprávu jako konec příchozí zvukový datový proud.
+Služba, která signalizuje, může také klientským aplikacím umožnit uživateli signál ke konci řeči. Například klientská aplikace může mít tlačítko Zastavit nebo ztlumit, které může uživatel stisknout. K signalizaci ukončení řeči klientské aplikace odesílají zprávu *zvukového* bloku s textem s nulovou délkou. Služba Speech tuto zprávu interpretuje jako konec příchozího zvukového streamu.
 
-### <a name="message-telemetry"></a>Zpráva `telemetry`
+### <a name="message-telemetry"></a>Zpráva`telemetry`
 
-Klientské aplikace *musí* potvrdit konec každého zapnout odesláním telemetrie o zapnutí Speech Service. Zapnout end potvrzení umožňuje Speech Service k zajištění, že všechny zprávy, které jsou nezbytné pro dokončení požadavku a odpovědi byly přijaty správně klientem. Zapnout end potvrzení také umožňuje Speech Service k ověření, že klientské aplikace fungují podle očekávání. Tyto informace je neocenitelný při řízení, pokud potřebujete pomoc s řešením potíží vaší aplikace s podporou řeči.
+Klientské aplikace *musí* na konci každé z nich potvrdit odeslání telemetrie o službě rozpoznávání řeči. Změna koncového oznámení umožňuje službě Speech Service zajistit, aby byly všechny zprávy potřebné k dokončení požadavku a jeho odpověď správně přijaty klientem. Potvrzení na konci taky umožňuje službě Speech Service ověřit, jestli jsou klientské aplikace prováděné podle očekávání. Tyto informace jsou nevýznamné, pokud potřebujete pomoc při řešení potíží s aplikací podporujícími rozpoznávání řeči.
 
-Klienty, musíte potvrdit konec zapněte odesláním `telemetry` krátce po přijetí zprávy `turn.end` zprávy. Klienti se má pokusit o potvrzení `turn.end` co nejdříve. Pokud klientská aplikace selže potvrďte end na řadě vy, Speech Service může ukončit připojení s chybou. Klienti musí odesílat pouze jeden `telemetry` zprávu pro každý požadavek a odpověď identifikován *X-RequestId* hodnotu.
+Klienti musí na konci zaslat `telemetry` zprávu odesláním zprávy hned po `turn.end` přijetí zprávy. Klienti by se měli pokusit `turn.end` co nejdříve o potvrzení. Pokud klientská aplikace nemůže potvrdit ukončení, služba řeči může ukončit připojení s chybou. Klienti musí poslat jenom jednu `telemetry` zprávu pro každý požadavek a odpověď identifikovanou hodnotou *X-RequestId* .
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `telemetry` |
-| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Content-Type | `application/json` |
-| Tělo | Struktura JSON obsahující klientské informace o zapnutí |
+| X-Timestamp | Časové razítko času UTC klienta ve formátu ISO 8601 |
+| Typ obsahu | `application/json` |
+| Tělo | Struktura JSON, která obsahuje informace o klientech o zapnutí |
 
-Schéma pro text `telemetry` zpráv je definována v [Telemetrie schématu](#telemetry-schema) části.
+Schéma pro tělo `telemetry` zprávy je definováno v části [schéma telemetrie](#telemetry-schema) .
 
-#### <a name="telemetry-for-interrupted-connections"></a>Telemetrie pro přerušené připojení
+#### <a name="telemetry-for-interrupted-connections"></a>Telemetrie pro přerušená připojení
 
-Pokud připojení k síti z nějakého důvodu selže během důsledku a klient *není* přijímat `turn.end` zpráv ze služby, klient odešle `telemetry` zprávy. Tato zpráva popisuje neúspěšných požadavků, které se klient připojí ke službě. Klienti nemají okamžitě pokusu o připojení k odeslání `telemetry` zprávy. Zpráva může být ukládány do vyrovnávací paměti na straně klienta a odeslány prostřednictvím budoucí – uživatel si vyžádal připojení. `telemetry` Zprávu pro neúspěšné žádosti *musí* použít *X-RequestId* hodnota z požadavku se nezdařilo. Může být odeslána ke službě co nejdříve po navázání připojení, aniž byste museli čekat na odeslání nebo přijetí další zprávy.
+Pokud dojde k chybě síťového připojení z jakéhokoli důvodu a klient `turn.end` *neobdrží zprávu* od služby, klient pošle `telemetry` zprávu. Tato zpráva popisuje neúspěšný požadavek při dalším připojení klienta k této službě. Klienti se nemusí hned pokusit o připojení k odeslání `telemetry` zprávy. Zpráva může být v klientovi ukládána do vyrovnávací paměti a odeslána v budoucím připojení požadovaného uživatelem. Zpráva pro požadavek, který selhal, *musí* používat hodnotu *X-RequestId* z neúspěšné žádosti. `telemetry` Může se odeslat službě, jakmile se naváže připojení, a to bez čekání na odeslání nebo přijetí dalších zpráv.
 
-## <a name="service-originated-messages"></a>Vytvoří se služba zprávy
+## <a name="service-originated-messages"></a>Zprávy, které pocházejí ze služby
 
-Tato část popisuje zprávy, které pocházejí z Speech Service a posílají se do klienta. Speech Service udržuje registr možnosti klienta a generuje zprávy vyžaduje každý klient, tedy ne že všichni klienti obdrželi všechny zprávy, které jsou zde popsány. Jako stručný výtah zprávy je odkazováno dle hodnoty *cesta* záhlaví. Například označujeme textovou zprávu pomocí protokolu WebSocket s *cesta* hodnota `speech.hypothesis` jako speech.hypothesis zprávu.
+Tato část popisuje zprávy, které pocházejí z hlasové služby a jsou odesílány klientovi. Služba Speech Service udržuje registr funkcí klienta a generuje zprávy vyžadované jednotlivými klienty, takže ne všichni klienti obdrží všechny zprávy, které jsou zde popsány. V případě zkrácení jsou zprávy odkazovány hodnotou záhlaví *path* . Například odkazujeme na textovou zprávu WebSocket s hodnotou `speech.hypothesis` *cesty* jako na řeč. hypotéza.
 
-### <a name="message-speechstartdetected"></a>Zpráva `speech.startDetected`
+### <a name="message-speechstartdetected"></a>Zpráva`speech.startDetected`
 
-`speech.startDetected` Zpráva znamená, že v zvukový datový proud zjištěn řeči Speech Service.
+`speech.startDetected` Zpráva označuje, že služba rozpoznávání řeči zjistila rozpoznávání řeči ve zvukovém streamu.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `speech.startDetected` |
-| Content-Type | Application/json; charset = utf-8 |
-| Tělo | Struktura JSON, který obsahuje informace o podmínkách, při spuštění řeči byla zjištěna. *Posun* pole v této struktuře určuje posun (v jednotkách 100 nanosekund) při rozpoznávání řeči zjistil v zvukový datový proud, vzhledem k začátku datového proudu. |
+| Typ obsahu | aplikace/JSON; charset = UTF-8 |
+| Tělo | Struktura JSON obsahující informace o podmínkách, kdy byl zjištěn začátek rozpoznávání řeči. Pole *posun* v této struktuře určuje posun (v jednotkách 100 – nanosekund), kdy byl ve zvukovém streamu zjištěn řeč vzhledem k začátku streamu. |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -346,19 +346,19 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechhypothesis"></a>Zpráva `speech.hypothesis`
+### <a name="message-speechhypothesis"></a>Zpráva`speech.hypothesis`
 
-Při rozpoznávání řeči Speech Service pravidelně generuje hypotézy o slova služba rozpoznán. Speech Service odešle tyto hypotézy klientovi přibližně každých 300 milisekund. `speech.hypothesis` Vhodný *pouze* pro zlepšení uživatelského prostředí řeči. V těchto zprávách nesmí trvat závislost na obsah nebo přesnost textu.
+Při rozpoznávání řeči služba Speech Service pravidelně generuje hypotézu o slovech, které služba rozpoznala. Služba Speech odesílá tyto hypotézy klientovi přibližně každých 300 milisekund. Je vhodný jenom pro vylepšení uživatelského prostředí pro rozpoznávání řeči. `speech.hypothesis` Nemusíte mít žádnou závislost na obsahu ani přesnosti textu v těchto zprávách.
 
- `speech.hypothesis` Zprávy se vztahuje na klienty, kteří mají určité možnosti vykreslování textu a chcete poskytnout zpětnou vazbu téměř v reálném čase rozpoznávání probíhá na ten, kdo to mluví.
+ Tato `speech.hypothesis` zpráva se vztahuje na klienty, kteří mají některé možnosti vykreslování textu, a chtějí poskytnout zpětnou vazbu k převádění v reálném čase na osobu, která je mluví.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `speech.hypothesis` |
-| X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| Content-Type | application/json |
-| Tělo | Předpoklad řeči strukturu JSON |
+| X-RequestId | UUID ve formátu "bez čárek" |
+| Typ obsahu | application/json |
+| Tělo | Struktura rozpoznávání JSON pro řeč |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -374,24 +374,24 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-*Posun* prvek určuje posun (v jednotkách 100 nanosekund) když bylo rozpoznáno frázi, vzhledem k začátku zvukový datový proud.
+Element *offset* určuje posun (v jednotkách 100 – nanosekund), kdy byla fráze rozpoznána vzhledem k začátku zvukového datového proudu.
 
-*Doba trvání* prvek určuje dobu trvání (v jednotkách 100 nanosekund) Tato fráze řeči.
+Element *Duration* určuje dobu trvání (v jednotkách 100 – nanosekund) této fráze řeči.
 
-Klienti nesmí jakkoli předpokládat frekvence, časování nebo součástí hypotézy řeči nebo konzistence textu v jakékoli dvě řeči hypotézy text. Tyto hypotézy jsou pouze snímky do procesu určené k transkripci ve službě. Reprezentují stabilní hromadění určené k transkripci. Například první hypotézy řeči může obsahovat slova "jemné zábavu" a druhá hypotézu může obsahovat slova "najít věc." Speech Service neprovádí žádné následné zpracování (například malá a velká písmena, interpunkční znaménka) na text v hypotézu řeči.
+Klienti nesmí dělat žádné předpoklady o četnosti, časování ani textu, který je obsažený v řeči hypotéza nebo konzistenci textu v jakékoli dvou příslovnících hypotéza. Hypotéza je pouze snímky do procesu přepisu ve službě. Nepředstavují stabilní akumulaci přepisu. Například první funkce řeči hypotéza může obsahovat slova "jemné zábavné" a druhá hypotéza může obsahovat slova "Find Funny". Služba Speech Service neprovádí žádné následné zpracování (například velká a interpunkční znaménka) textu ve Speech hypotéze.
 
-### <a name="message-speechphrase"></a>Zpráva `speech.phrase`
+### <a name="message-speechphrase"></a>Zpráva`speech.phrase`
 
-Když Speech Service určuje, že obsahuje dostatek informací k vygenerování výsledku rozpoznávání, který se nezmění, vytvoří službu `speech.phrase` zprávy. Speech Service vytvoří tyto výsledky po zjištění, že uživatel dokončil věty nebo fráze.
+Pokud služba rozpoznávání řeči zjistí, že má dostatek informací pro vytvoření výsledku rozpoznávání, který se nezmění, služba vytvoří `speech.phrase` zprávu. Služba Speech vytvoří tyto výsledky poté, co zjistí, že uživatel dokončil větu nebo frázi.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `speech.phrase` |
-| Content-Type | application/json |
-| Tělo | Fráze řeči strukturu JSON |
+| Typ obsahu | application/json |
+| Tělo | Struktura JSON fráze pro rozpoznávání řeči |
 
-Schéma JSON frázi řeči obsahuje následující pole: `RecognitionStatus`, `DisplayText`, `Offset`, a `Duration`. Další informace o těchto polích naleznete v tématu [určené k transkripci odpovědi](../concepts.md#transcription-responses).
+Schéma JSON fráze pro rozpoznávání řeči obsahuje následující pole: `RecognitionStatus`, `DisplayText`, `Offset` `Duration`a. Další informace o těchto polích naleznete v tématu [přepisovat odpovědi](../concepts.md#transcription-responses).
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -408,16 +408,16 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechenddetected"></a>Zpráva `speech.endDetected`
+### <a name="message-speechenddetected"></a>Zpráva`speech.endDetected`
 
-`speech.endDetected` Zprávy určuje, že klientská aplikace by se měla zastavit streamování zvuku ve službě.
+`speech.endDetected` Zpráva určuje, že klientská aplikace by měla zastavit streamování zvuku do služby.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `speech.endDetected` |
-| Tělo | Struktura JSON obsahující posun, když byl zjištěn konec řeči. Posun je reprezentován v jednotkách 100 nanosekund posun od začátku zvuk, který se používá k rozpoznávání. |
-| Content-Type | Application/json; charset = utf-8 |
+| Tělo | Struktura JSON, která obsahuje posun po zjištění konce řeči. Posun je reprezentován v 100 jednotek nanosekund posun od začátku zvuku, který se používá pro rozpoznávání. |
+| Typ obsahu | aplikace/JSON; charset = UTF-8 |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -431,17 +431,17 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-*Posun* prvek určuje posun (v jednotkách 100 nanosekund) když bylo rozpoznáno frázi, vzhledem k začátku zvukový datový proud.
+Element *offset* určuje posun (v jednotkách 100 – nanosekund), kdy byla fráze rozpoznána vzhledem k začátku zvukového datového proudu.
 
-### <a name="message-turnstart"></a>Zpráva `turn.start`
+### <a name="message-turnstart"></a>Zpráva`turn.start`
 
-`turn.start` Signály start zapnout z hlediska služby. `turn.start` Zprávy je vždy první zprávy s odpovědí se zobrazí u všech žádostí. Pokud nemáte `turn.start` zprávy, se předpokládá, že stav připojení služby je neplatný.
+`turn.start` Signalizuje začátek z perspektivy služby. `turn.start` Zpráva je vždy první zpráva odpovědi, kterou dostanete pro libovolný požadavek. Pokud neobdržíte `turn.start` zprávu, Předpokládejme, že stav připojení služby není platný.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `turn.start` |
-| Content-Type | Application/json; charset = utf-8 |
+| Typ obsahu | aplikace/JSON; charset = UTF-8 |
 | Tělo | Struktura JSON |
 
 #### <a name="sample-message"></a>Ukázková zpráva
@@ -458,17 +458,17 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-Text `turn.start` zprávy je struktura JSON obsahující kontext pro začátek zapnout. *Kontextu* obsahuje element *serviceTag* vlastnost. Tato vlastnost určuje hodnotu značky služby přiřazené k zapnutí. Tuto hodnotu je možné od Microsoftu, pokud potřebujete pomoc, řešení potíží se selháním ve vaší aplikaci.
+Tělo `turn.start` zprávy je struktura JSON, která obsahuje kontext pro začátek odbočení. *Kontextový* prvek obsahuje vlastnost *serviceTag* . Tato vlastnost určuje hodnotu značky, kterou služba přidruží k funkci zapnout. Tuto hodnotu může společnost Microsoft využít, pokud potřebujete pomoc při řešení potíží s chybami ve vaší aplikaci.
 
-### <a name="message-turnend"></a>Zpráva `turn.end`
+### <a name="message-turnend"></a>Zpráva`turn.end`
 
-`turn.end` Signalizuje konec zapnout z hlediska služby. `turn.end` Zprávy je vždy poslední zprávy s odpovědí se zobrazí u všech žádostí. Klienti mohou používat přijetí této zprávy jako signál pro vyčištění aktivity a přechodu do stavu nečinnosti. Pokud nemáte `turn.end` zprávy, se předpokládá, že stav připojení služby je neplatný. V těchto případech se existující připojení ke službě zavřete a znovu připojit.
+`turn.end` Signalizuje konec tahu od perspektivy služby. `turn.end` Zpráva je vždy poslední zprávou odpovědi, kterou dostanete pro všechny žádosti. Klienti mohou používat příjem této zprávy jako signál pro aktivity vyčištění a přechod do stavu nečinnosti. Pokud neobdržíte `turn.end` zprávu, Předpokládejme, že stav připojení služby není platný. V těchto případech zavřete existující připojení ke službě a znovu se připojte.
 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `turn.end` |
-| Tělo | Žádný |
+| Tělo | Žádné |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -479,13 +479,13 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 ## <a name="telemetry-schema"></a>Schéma telemetrie
 
-Text *telemetrie* zprávy je struktura JSON, který obsahuje informace o klientovi vypněte nebo pokusu o připojení. Struktura se skládá z klienta časová razítka, které zaznamenávají, když dojde k události klienta. Každý časového razítka musí být ve formátu ISO 8601, jak je popsáno v části s názvem "Hlavička X-časové razítko." *Telemetrie* zprávy všechna povinná pole ve struktuře JSON, který není zadán, nebo nepoužívejte formát správné časového razítka může způsobit, že služba ukončit připojení ke klientovi. Klienti *musí* zadat platné hodnoty pro všechna požadovaná pole. Klienti *by měl* zadat hodnoty pro volitelná pole pokaždé, když je to vhodné. Hodnoty zobrazené v vzorků v této části slouží pouze pro ilustraci.
+Tělo zprávy *telemetrie* je struktura JSON, která obsahuje informace o klientovi o zapnutí nebo pokusu o připojení. Struktura se skládá z časových razítek klienta, která se zaznamenávají, když dojde k událostem klienta. Každé časové razítko musí být ve formátu ISO 8601, jak je popsáno v části s názvem "X-timestamp header". Zprávy *telemetrie* , které neurčují všechna povinná pole ve struktuře JSON nebo které nepoužívají správný formát časového razítka, mohou způsobit ukončení připojení ke klientovi. Klienti *musí* zadat platné hodnoty pro všechna povinná pole. Klienti *musí* zadat hodnoty pro volitelná pole, kdykoli to bude vhodné. Hodnoty uvedené v ukázkách v této části jsou pouze pro ilustraci.
 
-Telemetrická data schématu je rozdělen do následujících částí: přijatá zpráva časová razítka a metriky. Formát a využití každé části je zadán v následujících částech.
+Schéma telemetrie je rozdělené do následujících částí: přijatá časová razítka zpráv a metriky. Formát a použití jednotlivých částí jsou uvedeny v následujících částech.
 
-### <a name="received-message-time-stamps"></a>Přijaté zprávy Časová razítka
+### <a name="received-message-time-stamps"></a>Přijatá časová razítka zpráv
 
-Klienti musí obsahovat čas přijetí hodnot pro všechny zprávy, která bude mít po úspěšném připojení ke službě. Tyto hodnoty musíte zaznamenat čas při klienta *přijatých* každou zprávu ze sítě. Hodnota by neměla zaznamenat kdykoli. Například Klient by neměl zaznamenání času při jeho *zachovali* ve zprávě. Časová razítka přijaté zprávy jsou určené v poli *názvu a hodnoty* dvojice. Určuje název páru *cesta* hodnotu zprávy. Hodnota, které odpovídá páru určuje klienta čas, kdy byla zpráva přijata. Nebo, pokud byl přijat více než jednu zprávu se zadaným názvem, které odpovídá páru licencí hodnotu pole časová razítka, která určuje, kdy byly přijaty zprávy.
+Klienti musí zahrnovat hodnoty času příjmu pro všechny zprávy, které obdrží po úspěšném připojení ke službě. Tyto hodnoty musí zaznamenávat čas, kdy klient *přijal* každou zprávu ze sítě. Hodnota by neměla zaznamenávat jiné časy. Klient by například neměl zaznamenávat čas, kdy se zpráva *jednala* o zprávu. Časová razítka přijaté zprávy jsou uvedena v poli *Název: hodnoty* . Název páru Určuje hodnotu *cesty* zprávy. Hodnota páru určuje čas klienta, kdy byla zpráva přijata. Nebo, pokud byla přijata více než jedna zpráva zadaného názvu, hodnota páru je pole časových razítek, která určují, kdy byly tyto zprávy přijaty.
 
 ```JSON
   "ReceivedMessages": [
@@ -496,86 +496,86 @@ Klienti musí obsahovat čas přijetí hodnot pro všechny zprávy, která bude 
   ]
 ```
 
-Klienti *musí* potvrdit přijetí všech zpráv odeslaných službou včetně časová razítka těchto zpráv v textu JSON. Pokud klient nebude obdržel zprávu, může služba ukončit připojení.
+Klienti *musí* potvrdit přijetí všech zpráv odesílaných službou zahrnutím časových razítek pro tyto zprávy v těle JSON. Pokud klient nepotvrdí přijetí zprávy, služba může připojení ukončit.
 
 ### <a name="metrics"></a>Metriky
 
-Klienti musí obsahovat informace o událostech, ke kterým došlo během životního cyklu požadavku. Jsou podporovány následující metriky: `Connection`, `Microphone`, a `ListeningTrigger`.
+Klienti musí obsahovat informace o událostech, ke kterým došlo během životnosti žádosti. Podporují se tyto metriky: `Connection`, `Microphone` `ListeningTrigger`a.
 
-### <a name="metric-connection"></a>Metrika `Connection`
+### <a name="metric-connection"></a>Metriky`Connection`
 
-`Connection` Metrika určuje podrobnosti o pokusy o připojení klienta. Pokud připojení soketu WebSocket bylo spuštění a dokončení, musí zahrnovat metriku časovými razítky. `Connection` Metrika je povinné *jenom pro první zapněte připojení*. Následné zapne není nutné zahrnout tyto informace. Pokud klient zadává víc pokusy o připojení, předtím, než se vytvoří připojení, informace o *všechny* pokusy o připojení by měly být zahrnuty. Další informace najdete v tématu [telemetrie selhání připojení](#connection-failure-telemetry).
+`Connection` Metrika určuje podrobnosti o pokusůch o připojení klienta. Metrika musí zahrnovat časová razítka při spuštění a dokončení připojení protokolu WebSocket. Metrika se vyžaduje *jenom při prvním zapnutí připojení.* `Connection` Následující povýšení není nutné k zahrnutí těchto informací. Pokud klient provede více pokusů o připojení před navázáním připojení, musí být zahrnuty informace o *všech* pokusůch o připojení. Další informace najdete v tématu [telemetrie selhání připojení](#connection-failure-telemetry).
 
-| Pole | Popis | Využití |
+| Pole | Popis | Použití |
 | ----- | ----------- | ----- |
-| Name | `Connection` | Požaduje se |
-| ID | Hodnota identifikátoru připojení, která byla použita v *X ConnectionId* záhlaví pro tento požadavek na připojení | Požaduje se |
-| Start | Čas, kdy klient odešle požadavek na připojení | Požaduje se |
-| End | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
-| Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud připojení úspěšné, klienti měli vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
+| Name | `Connection` | Požadováno |
+| Id | Hodnota identifikátoru připojení, která se použila v hlavičce *X-ConnectionID* pro tento požadavek na připojení | Požadováno |
+| Spustit | Čas, kdy klient odeslal požadavek na připojení | Požadováno |
+| End | Čas, kdy klient obdržel oznámení, že připojení bylo úspěšně navázáno, nebo v případě chyb, zamítnutí, zamítnutí nebo selhání | Požadováno |
+| Chyba | Popis chyby, ke které došlo, pokud existuje. Pokud bylo připojení úspěšné, klienti by měli toto pole vynechat. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro chybové případy, vynechává se jinak. |
 
-Popis chyby musí být maximálně 50 znaků a v ideálním případě by měla být jedna z hodnot uvedených v následující tabulce. Pokud chybového stavu neodpovídá jednu z těchto hodnot, klientů můžete použít výstižný popis chybovou podmínku s použitím [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez mezer. Umožňuje odeslat *telemetrie* zprávy vyžaduje připojení ke službě, takže pouze přechodný nebo dočasné chybové stavy můžete oznámený v *telemetrie* zprávy. Chybové stavy, *trvale* blok klienta v navázání připojení ke službě ochranu klienta v odesílání jakékoli zprávy do služby, včetně *telemetrie* zprávy.
+Popis chyby by měl být nejvýše 50 znaků a v ideálním případě by měl být jednou z hodnot uvedených v následující tabulce. Pokud chybový stav neodpovídá jedné z těchto hodnot, klienti mohou použít výstižný popis chybové podmínky pomocí [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez mezer. Schopnost odeslat zprávu *telemetrie* vyžaduje připojení ke službě, takže ve zprávě *telemetrie* můžou být nahlášené jenom přechodné nebo dočasné chybové stavy. Chybové stavy, které *trvale* blokují klienta od navázání připojení ke službě, brání klientovi v posílání jakékoli zprávy službě, včetně zpráv *telemetrie* .
 
-| Chyba | Využití |
+| Chyba | Použití |
 | ----- | ----- |
-| DNSfailure | Klient nemohl připojit ke službě kvůli chybě DNS v síťových protokolů. |
-| NoNetwork | Klient pokus o připojení, ale síťový zásobník oznámila, že žádné fyzické síti k dispozici. |
-| NoAuthorization | Při pokusu získat autorizační token pro připojení se nezdařilo připojení klienta. |
-| NoResources | Klient nemá dostatek některých místních prostředků (například paměť) při pokusu o připojení. |
-| Zakázáno | Klient nemohl připojit ke službě, protože služba vrátila HTTP `403 Forbidden` stavový kód na požadavek na upgrade objektu WebSocket. |
-| Neautorizováno | Klient nemohl připojit ke službě, protože služba vrátila HTTP `401 Unauthorized` stavový kód na požadavek na upgrade objektu WebSocket. |
-| Chybného požadavku | Klient nemohl připojit ke službě, protože služba vrátila HTTP `400 Bad Request` stavový kód na požadavek na upgrade objektu WebSocket. |
-| ServerUnavailable | Klient nemohl připojit ke službě, protože služba vrátila HTTP `503 Server Unavailable` stavový kód na požadavek na upgrade objektu WebSocket. |
-| ServerError | Klient nemohl připojit ke službě, protože služba vrátila `HTTP 500` vnitřní chyba stavový kód na požadavek na upgrade objektu WebSocket. |
-| Vypršení časového limitu | Požadavek na připojení klienta vypršel časový limit bez odpověď ze služby. *End* pole obsahuje čas vypršení časového limitu klienta a zastavení čeká na připojení. |
-| ClientError | Klient ukončil připojení kvůli chybě vnitřní klienta. |
+| DNSfailure | Klient se nemohl připojit ke službě z důvodu selhání DNS v zásobníku sítě. |
+| Síť v síti | Klient se pokusil o připojení, ale síťový zásobník ohlásil, že nebyla k dispozici žádná fyzická síť. |
+| Nevytvářet autory | Při pokusu o získání autorizačního tokenu pro připojení došlo k chybě připojení klienta. |
+| Neprostředky | Při pokusu o připojení došlo k chybě klienta z nějakého místního prostředku (například paměti). |
+| Zakázáno | Klient se nemohl připojit ke službě, protože služba vrátila stavový kód HTTP `403 Forbidden` v žádosti o upgrade protokolu WebSocket. |
+| Neautorizováno | Klient se nemohl připojit ke službě, protože služba vrátila stavový kód HTTP `401 Unauthorized` v žádosti o upgrade protokolu WebSocket. |
+| BadRequest | Klient se nemohl připojit ke službě, protože služba vrátila stavový kód HTTP `400 Bad Request` v žádosti o upgrade protokolu WebSocket. |
+| ServerUnavailable | Klient se nemohl připojit ke službě, protože služba vrátila stavový kód HTTP `503 Server Unavailable` v žádosti o upgrade protokolu WebSocket. |
+| ServerError | Klient se nemohl připojit ke službě, protože služba vrátila `HTTP 500` stavový kód vnitřní chyby v žádosti o upgrade protokolu WebSocket. |
+| časový limit | Časový limit požadavku na připojení klienta vypršel bez odpovědi služby. Pole *konec* obsahuje čas, kdy vypršel časový limit pro vypršení platnosti klienta, a přestal čekat na připojení. |
+| ClientError | Klient ukončil připojení z důvodu některé interní chyby klienta. |
 
-### <a name="metric-microphone"></a>Metrika `Microphone`
+### <a name="metric-microphone"></a>Metriky`Microphone`
 
-`Microphone` Metrika je nezbytné pro všechny zapne řeči. Tato metrika měří čas na straně klienta, během které zvukového vstupu se aktivně používá pro žádost o rozpoznávání řeči.
+Tato `Microphone` metrika se vyžaduje pro zapnutí rozpoznávání řeči. Tato metrika měří čas v klientovi, během kterého se pro požadavek na řeč aktivně používá zvukový vstup.
 
-Použít následující příklady pouze jako vodítka pro záznam *Start* časové hodnoty pro `Microphone` metriky v klientské aplikaci:
+Následující příklady použijte jako vodítko pro nahrávání hodnot *počátečního* času pro `Microphone` metriku v klientské aplikaci:
 
-* Klientská aplikace vyžaduje, že uživatel musí stisknutím fyzického tlačítka Spustit mikrofon. Po stisknutí tlačítka klientská aplikace načte vstup mikrofon a posílá ji do služby řeči. *Start* hodnota `Microphone` metrika zaznamená čas po stisknutí tlačítka, když mikrofon je inicializována a připravena k zadávání vstupních dat. *End* hodnota `Microphone` metrika zaznamená čas, když klientská aplikace zastavena, po jakou přijala, vysílání datového proudu zvuku ve službě `speech.endDetected` zpráv ze služby.
+* Klientská aplikace vyžaduje, aby uživatel musel stisknout fyzické tlačítko ke spuštění mikrofonu. Po stisknutí tlačítka klientská aplikace přečte vstup z mikrofonu a odešle ho do služby Speech. *Počáteční* hodnota `Microphone` metriky zaznamenává čas po vysdílení tlačítka při inicializaci mikrofonu a připraven k zadání vstupu. *Koncová* hodnota `Microphone` metriky zaznamenává čas, kdy klientská aplikace zastavila streamování zvuku do služby `speech.endDetected` po přijetí zprávy ze služby.
 
-* Klientská aplikace bude používat spotter – klíčové slovo, které naslouchá "always". Až poté, co spotter – klíčové slovo zjistí frázi mluvené slovo aktivační událost klientská aplikace shromažďovat vstup mikrofon a odeslat do Speech Service. *Start* hodnota `Microphone` metrika zaznamená čas, kdy spotter – klíčové slovo oznámení klienta, pokud chcete začít používat vstup mikrofon. *End* hodnota `Microphone` metrika zaznamená čas, když klientská aplikace zastavena, po jakou přijala, vysílání datového proudu zvuku ve službě `speech.endDetected` zpráv ze služby.
+* Klientská aplikace používá klíčové slovo spotter, které je "vždy" naslouchá. Jenom za klíčovým slovem spotter detekuje hlasovou frázi, kterou klientská aplikace vyfiltruje a odešle ji do služby Speech. *Počáteční* hodnota `Microphone` metriky zaznamenává čas, kdy se klíčové slovo spotter upozorní klientovi na zahájení používání vstupu z mikrofonu. *Koncová* hodnota `Microphone` metriky zaznamenává čas, kdy klientská aplikace zastavila streamování zvuku do služby `speech.endDetected` po přijetí zprávy ze služby.
 
-* Klientská aplikace má přístup do konstantní zvukový datový proud a provádí tento zvukový datový proud v nečinnosti/řeči detekce *modul pro zjišťování řeči*. *Start* hodnota `Microphone` metrika zaznamená čas při *modul pro zjišťování řeči* oznámení klienta, pokud chcete začít používat vstup z datového proudu zvuku. *End* hodnota `Microphone` metrika zaznamená čas, když klientská aplikace zastavena, po jakou přijala, vysílání datového proudu zvuku ve službě `speech.endDetected` zpráv ze služby.
+* Klientská aplikace má přístup ke konstantnímu zvukovému streamu a v tomto zvukovém streamu v modulu rozpoznávání *řeči*provádí detekci tichého nebo hlasového zvuku. *Počáteční* hodnota `Microphone` metriky zaznamenává čas, kdy se modul rozpoznávání *řeči* upozorní klienta na zahájení používání vstupu ze zvukového datového proudu. *Koncová* hodnota `Microphone` metriky zaznamenává čas, kdy klientská aplikace zastavila streamování zvuku do služby `speech.endDetected` po přijetí zprávy ze služby.
 
-* Klientská aplikace zpracovává druhý zapnout žádosti více zapnout a informován zprávu odpovědi služby zapnout mikrofon, shromažďovat vstup pro druhý zapnout. *Start* hodnota `Microphone` metrika zaznamená čas, kdy klientská aplikace umožňuje mikrofon a spustí pomocí vstup z tohoto zdroje zvuku. *End* hodnota `Microphone` metrika zaznamená čas, když klientská aplikace zastavena, po jakou přijala, vysílání datového proudu zvuku ve službě `speech.endDetected` zpráv ze služby.
+* Klientská aplikace zpracovává druhou funkci vícenásobného vypínání žádosti a je informována zprávou s odpovědí na službu, aby zapnula vstup na mikrofon za účelem získání vstupu pro druhý tah. *Počáteční* hodnota `Microphone` metriky zaznamenává čas, kdy klientská aplikace povolí mikrofon a začne používat vstup z tohoto zdroje zvukového záznamu. *Koncová* hodnota `Microphone` metriky zaznamenává čas, kdy klientská aplikace zastavila streamování zvuku do služby `speech.endDetected` po přijetí zprávy ze služby.
 
-*End* čas hodnotu `Microphone` metrika zaznamená čas, kdy klientská aplikace zastavit streamování zvukového vstupu. Ve většině situací, dojde k této události krátce po klient přijal `speech.endDetected` zpráv ze služby. Klientské aplikace může ověřit, že se už správně odpovídají protokol tím, že zajišťuje, že *koncové* čas hodnotu `Microphone` metrika dojde později než časová hodnota přijetí pro `speech.endDetected` zprávy. A vzhledem k tomu obvykle dochází ke zpoždění mezi koncem jednoho zapnutí a spuštění další na řadě vy, klienti můžou ověřit udržování souladu s protokoly tak zajistit, aby *Start* čas `Microphone` metriky pro všechny další na řadě vy správně zaznamená čas při klienta *spuštění* používat mikrofon. do datového proudu zvukového vstupu do služby.
+Hodnota *koncového* času pro `Microphone` metriku zaznamenává čas, kdy klientská aplikace zastavila zvukový vstup streamování. Ve většině případů k této události dochází krátce poté, co klient obdrží `speech.endDetected` zprávu od služby. Klientské aplikace mohou ověřit, že správně vyhovují protokolu tím, že zajišťují, že hodnota *koncového* času pro `Microphone` metrika nastane později než hodnota `speech.endDetected` času příjmu pro zprávu. A vzhledem k tomu, že je obvykle prodleva mezi koncem jednoho a začátkem jiné zapínání, mohou klienti ověřit shodu protokolu tím, že zajistí, že *počáteční* čas `Microphone` metriky pro jakékoli následné správně zaznamenává čas, kdy se klient *začal* používat mikrofon ke streamování zvukového vstupu do služby.
 
-| Pole | Popis | Využití |
+| Pole | Popis | Použití |
 | ----- | ----------- | ----- |
-| Name | Mikrofon | Požaduje se |
-| Start | Čas, kdy klient začít používat zvukového vstupu z mikrofon nebo jiných zvukový datový proud nebo aktivační událost poslal spotter – klíčové slovo | Požaduje se |
-| End | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
-| Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Operace mikrofon byly úspěšné, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
+| Name | Odpovídající | Požadováno |
+| Spustit | Čas, kdy klient začal používat zvukový vstup z mikrofonu nebo jiného zvukového datového proudu nebo obdržel Trigger z klíčového slova spotter | Požadováno |
+| End | Čas, kdy se klient zastavil pomocí mikrofonu nebo zvukového streamu | Požadováno |
+| Chyba | Popis chyby, ke které došlo, pokud existuje. Pokud byly operace mikrofonu úspěšné, klienti by měli toto pole vynechat. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro chybové případy, vynechává se jinak. |
 
-### <a name="metric-listeningtrigger"></a>Metrika `ListeningTrigger`
-`ListeningTrigger` Metrika měří čas, kdy uživatel provede akci, která inicializuje hlasový vstup. `ListeningTrigger` Metrika je volitelné, ale klientů, které můžete zadat tato metrika se vyskytnou Uděláte to tak.
+### <a name="metric-listeningtrigger"></a>Metriky`ListeningTrigger`
+`ListeningTrigger` Metrika měří čas, kdy uživatel provede akci, která spustí vstup řeči. `ListeningTrigger` Metrika je volitelná, ale je doporučována pro klienty, kteří můžou tuto metriku poskytnout.
 
-Použít následující příklady pouze jako vodítka pro záznam *Start* a *End* časové hodnoty pro `ListeningTrigger` metriky v klientské aplikaci.
+Následující příklady použijte jako vodítko pro nahrávání `ListeningTrigger` hodnot *počátečního* a *koncového* času pro metriku v klientské aplikaci.
 
-* Klientská aplikace vyžaduje, že uživatel musí stisknutím fyzického tlačítka Spustit mikrofon. *Start* hodnotu pro tuto metriku zaznamená čas stisknutí tlačítka. *End* hodnotu zaznamená čas dokončení nabízené tlačítko.
+* Klientská aplikace vyžaduje, aby uživatel musel stisknout fyzické tlačítko ke spuštění mikrofonu. *Počáteční* hodnota této metriky zaznamenává čas vložení tlačítka. *Koncová* hodnota zaznamenává čas, kdy se dokončí Vložení tlačítka.
 
-* Klientská aplikace bude používat spotter – klíčové slovo, které naslouchá "always". Po klíčovém slovu spotter zjistí fráze mluvené slovo aktivační událost, klientská aplikace načte vstup mikrofon a odesílá je do Speech Service. *Start* hodnotu pro tuto metriku zaznamená čas, kdy spotter – klíčové slovo přijal zvuk, který pak detekovala jako aktivační událost frázi. *End* hodnotu zaznamená čas, kdy byl poslední slovo nebo frázi aktivační událost používaný tímto uživatelem.
+* Klientská aplikace používá klíčové slovo spotter, které je "vždy" naslouchá. Jakmile klíčové slovo spotter detekuje hlasovou frázi, přečte ji vstup z mikrofonu a odešle ji do služby Speech. *Počáteční* hodnota této metriky zaznamenává čas, kdy klíčové slovo spotter přijalo zvuk, který byl následně zjištěn jako spouštěcí fráze. *Koncová* hodnota zaznamenává čas, kdy uživatel použil poslední slovo spouštěcí fráze.
 
-* Klientská aplikace má přístup do konstantní zvukový datový proud a provádí tento zvukový datový proud v nečinnosti/řeči detekce *modul pro zjišťování řeči*. *Start* hodnotu pro tuto metriku zaznamená čas, který *modul pro zjišťování řeči* přijatých zvuk, který pak detekovala jako řeči. *End* hodnotu zaznamená čas při *modul pro zjišťování řeči* zjistil řeči.
+* Klientská aplikace má přístup ke konstantnímu zvukovému streamu a v tomto zvukovém streamu v modulu rozpoznávání *řeči*provádí detekci tichého nebo hlasového zvuku. *Počáteční* hodnota této metriky zaznamenává čas, po který *modul rozpoznávání řeči* přijal zvuk, který byl zjištěn jako řeč. *Koncová* hodnota zaznamenává čas, kdy *modul rozpoznávání řeči* zjistil rozpoznávání řeči.
 
-* Klientská aplikace zpracovává druhý zapnout žádosti více zapnout a informován zprávu odpovědi služby zapnout mikrofon, shromažďovat vstup pro druhý zapnout. Klientská aplikace by měla *není* zahrnout `ListeningTrigger` metrik pro tento na řadě vy.
+* Klientská aplikace zpracovává druhou funkci vícenásobného vypínání žádosti a je informována zprávou s odpovědí na službu, aby zapnula vstup na mikrofon za účelem získání vstupu pro druhý tah. Klientská *aplikace by neměla* obsahovat `ListeningTrigger` metriku pro tuto funkci.
 
-| Pole | Popis | Využití |
+| Pole | Popis | Použití |
 | ----- | ----------- | ----- |
-| Name | ListeningTrigger | Nepovinné |
-| Start | Čas zahájení aktivační událost pro naslouchání klienta | Požaduje se |
-| End | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
-| Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud operace aktivační události byl úspěšný, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
+| Name | ListeningTrigger | volitelná, |
+| Spustit | Čas spuštění triggeru naslouchání klienta | Požadováno |
+| End | Čas, kdy klient naslouchá triggeru dokončen | Požadováno |
+| Chyba | Popis chyby, ke které došlo, pokud existuje. Pokud byla operace triggeru úspěšná, klienti by měli toto pole vynechat. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro chybové případy, vynechává se jinak. |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
-Následující příklad ukazuje telemetrické zprávy s částmi ReceivedMessages a metriky:
+Následující ukázka ukazuje zprávu telemetrie s částmi ReceivedMessages a metrikami:
 
 ```HTML
 Path: telemetry
@@ -613,98 +613,98 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Tato část popisuje typy chybové zprávy a podmínky, které vaše aplikace potřebuje ke zpracování.
+Tato část popisuje druhy chybových zpráv a podmínek, které vaše aplikace potřebuje zpracovat.
 
 ### <a name="http-status-codes"></a>Stavové kódy HTTP
 
-Během požadavek na upgrade objektu WebSocket, Speech Service může vrátit všechny standardní stavové kódy HTTP, jako například `400 Bad Request`atd. Vaše aplikace musí správně zpracovat tyto chybové stavy.
+V rámci žádosti o upgrade protokolu WebSocket může služba Speech vracet všechny standardní stavové kódy HTTP, například `400 Bad Request`atd. Vaše aplikace musí správně zpracovat tyto chybové stavy.
 
 #### <a name="authorization-errors"></a>Chyby autorizace
 
-Pokud nesprávné autorizace je k dispozici během upgrade objektu websocket na straně Speech Service vrátí HTTP `403 Forbidden` stavový kód. Mezi podmínky, které můžete spustit tento kód chyby je:
+Pokud během upgradu protokolu WebSocket dojde k nesprávnému ověření, služba Speech vrátí `403 Forbidden` stavový kód HTTP. Mezi podmínky, které mohou aktivovat tento kód chyby, patří:
 
-* Chybí *autorizace* záhlaví
+* Chybí *autorizační* hlavička.
 
-* Neplatný ověřovací token
+* Neplatný autorizační token
 
 * Vypršela platnost autorizačního tokenu
 
-`403 Forbidden` Neukazuje, chybová zpráva problém s Speech Service. Tato chybová zpráva znamená problém s klientskou aplikací.
+`403 Forbidden` Chybová zpráva neindikuje problém se službou Speech. Tato chybová zpráva indikuje problém s klientskou aplikací.
 
-### <a name="protocol-violation-errors"></a>Chyby porušení protokolu
+### <a name="protocol-violation-errors"></a>Chyby narušení protokolu
 
-Pokud služba Speech zjistí porušení protokolu z klienta, služba ukončuje připojení soketu websocket bylo po návratu *stavový kód* a *důvod* pro ukončení. Klientské aplikace můžete použít tyto informace k řešení potíží a opravit porušení zásad.
+Pokud služba rozpoznávání řeči detekuje jakékoli porušení protokolu z klienta, služba ukončí připojení protokolem WebSocket poté, co vrátí *stavový kód* a *důvod* ukončení. Klientské aplikace mohou tyto informace použít k řešení potíží a k nápravě porušení.
 
-#### <a name="incorrect-message-format"></a>Nesprávný formát
+#### <a name="incorrect-message-format"></a>Nesprávný formát zprávy
 
-Pokud klient odešle text nebo binární zprávy do služby, který není ve správném formátu, které jsou uvedeny v téhle specifikaci kódování, služba zavře připojení *1007 Neplatná datová část Data* stavový kód.
+Pokud klient pošle do služby text nebo binární zprávu, která není kódovaná ve správném formátu uvedeném v této specifikaci, služba ukončí připojení s *1007 neplatným stavovým kódem dat datové části* .
 
-Tato služba vrátí tímto stavovým kódem pro celou řadu důvodů, jak je znázorněno v následujícím příkladu:
+Služba vrátí tento stavový kód z nejrůznějších důvodů, jak je znázorněno v následujících příkladech:
 
-* "Formát správné zprávy. Zprávy v binární má neplatnou hlavičku velikost předpony". Klient odešle binární zprávu, která má předponu velikost neplatnou hlavičku.
+* "Nesprávný formát zprávy. Binární zpráva má neplatnou předponu velikosti hlavičky. Klient odeslal binární zprávu s neplatnou předponou velikosti hlavičky.
 
-* "Formát správné zprávy. Zprávy v binární má neplatnou hlavičku velikost". Klient odešle binární zpráva, že zadaná velikost neplatnou hlavičku.
+* "Nesprávný formát zprávy. Binární zpráva má neplatnou velikost hlavičky. Klient odeslal binární zprávu, která zadala neplatnou velikost hlavičky.
 
-* "Formát správné zprávy. Záhlaví zprávy v binární dekódování na UTF-8 se nezdařilo." Klient odešle binární zprávu, která obsahuje hlavičky, které nebyly správně kódovaný ve formátu UTF-8.
+* "Nesprávný formát zprávy. Při dekódování binárních hlaviček zpráv do UTF-8 došlo k chybě. Klient odeslal binární zprávu, která obsahuje hlavičky, které nejsou správně kódované v kódování UTF-8.
 
-* "Formát správné zprávy. Textová zpráva neobsahuje žádná data." Klient poslali textovou zprávu, která neobsahuje žádná data subjektu.
+* "Nesprávný formát zprávy. Textová zpráva neobsahuje žádná data. " Klient odeslal textovou zprávu, která neobsahuje žádná data těla.
 
-* "Formát správné zprávy. Dekódování na UTF-8 textovou zprávu se nepodařilo." Klient poslali textovou zprávu, která nebyla správně kódovaný ve formátu UTF-8.
+* "Nesprávný formát zprávy. Textová zpráva dekódování do kódování UTF-8 se nezdařila. " Klient odeslal textovou zprávu, která nebyla správně kódována v kódování UTF-8.
 
-* "Formát správné zprávy. Žádný oddělovač záhlaví obsahuje textové zprávy." Klient poslali textovou zprávu, která neobsahovala oddělovač záhlaví nebo použít oddělovač záhlaví nesprávné.
+* "Nesprávný formát zprávy. Textová zpráva neobsahuje žádné oddělovače záhlaví. Klient odeslal textovou zprávu, která neobsahovala oddělovač záhlaví, nebo použila nesprávný oddělovač záhlaví.
 
-#### <a name="missing-or-empty-headers"></a>Záhlaví chybí nebo je prázdný
+#### <a name="missing-or-empty-headers"></a>Chybějící nebo prázdné hlavičky
 
-Pokud klient odešle zprávu, která nemá požadované záhlaví *X-RequestId* nebo *cesta*, služba uzavře připojení s *došlo k chybě protokolu 1002* stavový kód. Zpráva je "záhlaví chybí nebo je prázdný. {Název hlavičky}."
+Pokud klient pošle zprávu, která nemá požadovaná záhlaví *X-RequestId* nebo *cesta*, služba ukončí připojení pomocí kódu stavu *chyby protokolu 1002* . Zpráva je "chybějící/prázdné záhlaví". {Header Name}. "
 
-#### <a name="requestid-values"></a>ID žádosti hodnoty
+#### <a name="requestid-values"></a>Hodnoty RequestId
 
-Pokud klient odešle zprávu, která určuje, *X-RequestId* záhlaví s nesprávným formátem, služba uzavře připojení a vrátí *došlo k chybě protokolu 1002* stav. Zpráva je "Neplatný požadavek. Hodnota hlavičky X-RequestId nebyla zadána ve formátu UUID dash č."
+Pokud klient pošle zprávu, která určuje hlavičku *X-RequestId* s nesprávným formátem, služba ukončí připojení a vrátí chybový stav *protokolu 1002* . Zpráva je "neplatný požadavek. Hodnota hlavičky X-RequestId nebyla zadána ve formátu UUID bez čárek.
 
-#### <a name="audio-encoding-errors"></a>Zvukový chyby kódování
+#### <a name="audio-encoding-errors"></a>Chyby kódování zvuku
 
-Pokud klient odešle zvuku bloků dat, který iniciuje vypněte a zvukový formát nebo kódování nesplňuje požadovanou specifikaci, služba uzavře připojení a vrátí *1007 Neplatná datová část Data* stavový kód. Zpráva ve formátu kódování zdroj chyby.
+Pokud klient pošle zvukovou stopu, která zahájí zapínání a formát zvuku nebo kódování nevyhovuje požadované specifikaci, služba ukončí připojení a vrátí *1007 neplatný* stavový kód datové dávky. Zpráva indikuje zdroj chyby kódování formátu.
 
-#### <a name="requestid-reuse"></a>Opakované použití ID žádosti
+#### <a name="requestid-reuse"></a>Použít RequestId
 
-Po dokončení zapněte, pokud klient odešle zprávu, která opakovaně používá identifikátor žádosti z tohoto zapnout, služba uzavře připojení a vrátí *došlo k chybě protokolu 1002* stavový kód. Zpráva je "Neplatný požadavek. Opakované použití identifikátorů požadavku není povoleno."
+Pokud klient odešle zprávu, která znovu používá identifikátor požadavku, po dokončení zapínání služby ukončí připojení a vrátí stavový kód *chyby protokolu 1002* . Zpráva je "neplatný požadavek. Opakované použití identifikátorů požadavků není povoleno. "
 
 ## <a name="connection-failure-telemetry"></a>Telemetrie selhání připojení
 
-K zajištění nejlepší uživatelské prostředí, klienti musí informovat Speech Service časová razítka pro důležité kontrolní body v rámci určitého připojení s použitím *telemetrie* zprávy. Je stejně důležité, aby klienti informovat službu připojení, které byly pokus nezdařil.
+Aby bylo zajištěno nejlepší možné uživatelské prostředí, musí klienti informovat službu Speech pro časová razítka pro důležité kontrolní body v rámci připojení pomocí zprávy *telemetrie* . Je stejně důležité, aby klienti informovali o službě, u které došlo k pokusu o připojení, ale nedošlo k chybě.
 
-Pro každý pokus o připojení, která selhala, klientů vytvořit *telemetrie* zprávu s jedinečným *X-RequestId* hodnota hlavičky. Protože klient nebyl schopen navázat připojení, *ReceivedMessages* pole v datové části JSON může vynechat. Pouze `Connection` položku *metriky* pole je součástí. Tato položka obsahuje počáteční a koncové časová razítka, jakož i chybový stav, který byl zjištěn.
+U každého pokusu o připojení, který selhal, vytvoří klienti zprávu *telemetrie* s jedinečnou hodnotou hlavičky *X-RequestId* . Vzhledem k tomu, že klient nemohl navázat připojení, pole *ReceivedMessages* v těle JSON může být vynecháno. Je zahrnutá jenom položkavpolimetriky`Connection` . Tato položka zahrnuje časová razítka začátku a konce a také chybový stav, ke kterému došlo.
 
-### <a name="connection-retries-in-telemetry"></a>Opakování připojení v telemetrii
+### <a name="connection-retries-in-telemetry"></a>Opakované pokusy o připojení v telemetrii
 
-Klienti musí rozlišovat *opakování* z *více pokusů připojení* událost, která aktivuje pokus o připojení. Pokusy o připojení, které se provádějí prostřednictvím kódu programu žádné akce uživatele jsou opakované pokusy. Více pokusy o připojení, které jsou provedeny v reakci na vstup uživatele jsou více pokusů o připojení. Klientům poskytnout každý pokus o připojení uživatele aktivuje jedinečný *X-RequestId* a *telemetrie* zprávy. Znovu použít klienti *X-RequestId* programový opakování. Pokud více opakované pokusy byly provedeny při pokusu o jedno připojení, je jako opakovanými žádostmi `Connection` položku v *telemetrie* zprávy.
+Klienti by měli rozlišovat *opakování* z *několika pokusů o připojení* událostmi, které aktivují pokus o připojení. Pokusy o připojení, které se provedou programově bez zásahu uživatele, se zopakují. Více pokusů o připojení, které jsou prováděny v reakci na vstup uživatele, je více pokusů o připojení. Klienti přidávají každé uživatelem aktivované připojení pokus o jedinečnou zprávu *X-RequestId* a *telemetrie* . Klienti znovu znovu *narequestid* pro programové pokusy. Pokud bylo provedeno více opakovaných pokusů pro jeden pokus o připojení, bude každý pokus o opakování zahrnut `Connection` jako položka ve zprávě *telemetrie* .
 
-Například předpokládejme, že uživatel mluví – klíčové slovo triggeru pro spuštění připojení a první pokus o připojení selže z důvodu chyby DNS. Druhý pokus, který je prostřednictvím kódu programu k klientem však úspěšné. Protože klient opakovat připojení bez nutnosti další vstupy od uživatele, klient použije jeden *telemetrie* zprávu s několika `Connection` položky k popisu připojení.
+Předpokládejme například, že uživatel představí aktivační událost s klíčovým slovem ke spuštění připojení a první pokus o připojení se nezdaří z důvodu chyb služby DNS. Druhý pokus provedený programově klientem je však úspěšný. Vzhledem k tomu, že klient znovu vyzkoušel připojení bez nutnosti dalšího vstupu od uživatele, klient použije jednu zprávu *telemetrie* s několika `Connection` záznamy pro popis připojení.
 
-Další příklad předpokládejme, že uživatel mluví – klíčové slovo triggeru pro spuštění připojení a tento pokus o připojení selže po třech opakovaných pokusů. Klient pak poskytuje, přestane při pokusu o připojení ke službě a informuje uživatele, že došlo k chybě. Uživatel pak mluví aktivační události – klíčové slovo znovu. Tuto chvíli Předpokládejme, že se že klient připojí ke službě. Po připojení se okamžitě klient odešle *telemetrie* zpráv ve službě, která obsahuje tři `Connection` položky, které popisují selhání připojení. Po přijetí `turn.end` zprávu, klient odešle jiného *telemetrie* zprávu s popisem úspěšné připojení.
+Další příklad předpokládá, že uživatel mluví s triggerem klíčová slova ke spuštění připojení a pokus o připojení se nezdaří po třech opakovaných pokusech. Klient pak zaznamená, ukončí se pokus o připojení ke službě a informuje uživatele o tom, že se něco pokazilo. Uživatel pak znovu vysloví aktivační proceduru klíčového slova. Tentokrát Předpokládejme, že se klient připojí ke službě. Po připojení klient okamžitě pošle zprávu *telemetrie* službě, která obsahuje tři `Connection` položky popisující selhání připojení. Po přijetí `turn.end` zprávy pošle klient další zprávu *telemetrie* , která popisuje úspěšné připojení.
 
-## <a name="error-message-reference"></a>Zprávy o chybách
+## <a name="error-message-reference"></a>Odkaz na chybovou zprávu
 
 ### <a name="http-status-codes"></a>Stavové kódy HTTP
 
 | Stavový kód HTTP | Popis | Řešení potíží |
 | - | - | - |
-| 400 – Chybný požadavek | Klient odešle žádost o připojení pomocí protokolu WebSocket, který byl nesprávný. | Zkontrolujte, že jste zadali požadované parametry a hlavičky protokolu HTTP a hodnoty jsou správné. |
-| 401 Neautorizováno | Klienta neobsahuje informace o vyžaduje ověření. | Zkontrolujte, jestli posíláte *autorizace* záhlaví v připojení soketu WebSocket. |
-| 403 Zakázáno | Klient odešle informace o ověření, ale je neplatný. | Zkontrolujte, že jste neodesílají vypršela platnost, nebo neplatnou hodnotu *autorizace* záhlaví. |
-| 404 – Nenalezeno | Klient došlo k pokusu o přístup k cestě adresy URL, která není podporována. | Zkontrolujte, že používáte správnou adresu URL pro připojení soketu WebSocket. |
-| Chyba 500 | Služba došlo k interní chybě a nemůže vyhovět požadavku. | Ve většině případů se tato chyba je přechodná. Zkuste požadavek. |
-| 503 – Nedostupná služba | Službu nebylo k dispozici pro zpracování požadavku. | Ve většině případů se tato chyba je přechodná. Zkuste požadavek. |
+| 400 Chybný požadavek | Klient odeslal požadavek na připojení soketu WebSocket, který nebyl správný. | Ověřte, zda jste zadali všechny požadované parametry a hlavičky HTTP a zda jsou hodnoty správné. |
+| 401 Neautorizováno | Klient neobsahoval požadované autorizační údaje. | Ověřte, že posíláte *autorizační* hlavičku v připojení protokolu WebSocket. |
+| 403 zakázané | Klient odeslal informace o autorizaci, ale neplatný. | Ověřte, že v *autorizační* hlavičce neposíláte neplatnou nebo neplatnou hodnotu. |
+| 404 Nenalezeno | Klient se pokusil o přístup k cestě URL, která není podporována. | Ověřte, že používáte správnou adresu URL pro připojení protokolu WebSocket. |
+| Chyba serveru 500 | Služba zjistila vnitřní chybu a nemohla požadavek splnit. | Ve většině případů je tato chyba přechodný. Opakujte požadavek. |
+| 503 – Nedostupná služba | Služba nebyla pro zpracování požadavku k dispozici. | Ve většině případů je tato chyba přechodný. Opakujte požadavek. |
 
 ### <a name="websocket-error-codes"></a>Kódy chyb protokolu WebSocket
 
-| WebSocketsStatus kódu | Popis | Řešení potíží |
+| WebSocketsStatus kód | Popis | Řešení potíží |
 | - | - | - |
-| Normální ukončení 1000 | Služba ukončila připojení protokolu WebSocket bez chyby. | Pokud na neočekávaném ukončení protokolu WebSocket, znovu načíst v dokumentaci k zajištění, že chápete, jak a kdy službu lze ukončit připojení soketu WebSocket. |
-| Chyba protokolu 1002 | Dodržovat požadavky protokolu klienta se nezdařilo. | Zajistěte pochopit dokumentace k protokolu a jsou jasně o požadavcích. Přečtěte si předchozí dokumentaci o z důvodů chyby zobrazíte, pokud jste už bychom při tom porušili požadavky protokolu. |
-| 1007 Neplatná datová část dat | Klient zaslal Neplatná datová část v zprávu protokolu. | Zkontrolujte poslední zprávy, který jste odeslali do služby pro chyby. Přečtěte si předchozí dokumentaci o datovou část chyby. |
-| Chyba serveru 1011 | Služba došlo k interní chybě a nemůže vyhovět požadavku. | Ve většině případů se tato chyba je přechodná. Zkuste požadavek. |
+| Normální ukončení 1000 | Služba ukončila připojení protokolu WebSocket bez chyby. | Pokud se ukončení protokolu WebSocket neočekávalo, přečtěte si dokumentaci a ujistěte se, že rozumíte tomu, jak a kdy může služba ukončit připojení protokolu WebSocket. |
+| Chyba protokolu 1002 | Klientovi se nepovedlo dodržovat požadavky protokolu. | Ujistěte se, že rozumíte dokumentaci k protokolu a že jsou tyto požadavky jasné. Přečtěte si předchozí dokumentaci k chybám, abyste viděli, jestli jste porušili požadavky na protokoly. |
+| 1007 neplatná data datové části | Klient odeslal do zprávy protokolu neplatnou datovou část. | Ověřte poslední zprávu, kterou jste službě odeslali, kvůli chybám. Přečtěte si předchozí dokumentaci o chybách datových částí. |
+| Chyba serveru 1011 | Služba zjistila vnitřní chybu a nemohla požadavek splnit. | Ve většině případů je tato chyba přechodný. Opakujte požadavek. |
 
 ## <a name="related-topics"></a>Související témata
 
-Najdete v článku [JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) , který je implementace protokolu služeb na základě protokolu WebSocket řeči.
+Viz [sada JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) , která je implementací protokolu hlasových služeb založených na protokolu WebSocket.

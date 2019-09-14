@@ -1,27 +1,27 @@
 ---
-title: Začínáme s Microsoft Speech Service | Dokumentace Microsoftu
+title: Začínáme se službou Microsoft Speech Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Pomocí služby Microsoft řeči.
+description: Použijte službu Microsoft Speech.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7b7a286bb3f38982f6c55e37e186c524a8a92266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847d9f53e725ef2edc92dadf08ecb167528b6fd9
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515274"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965908"
 ---
-# <a name="get-started-with-bing-speech"></a>Začínáme s pro zpracování řeči Bingu
+# <a name="get-started-with-bing-speech"></a>Začínáme s Zpracování řeči Bingu
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Převod zvuku na text pomocí Microsoft službu rozpoznávání řeči, najdete v článku rozpoznávání řeči [rozhraní REST API](GetStartedREST.md) nebo [klientské knihovny](GetStartedClientLibraries.md).
+Pokud chcete použít službu rozpoznávání řeči od Microsoftu k převedení zvuku na text, přečtěte si téma [rozhraní REST API](GetStartedREST.md) pro rozpoznávání řeči nebo [klientské knihovny](GetStartedClientLibraries.md).
 
-Pokud chcete použít převod textu na řeč služby Microsoftu, najdete v článku [odkaz na převod textu na řeč rozhraní API](../api-reference-rest/bingvoiceoutput.md).
+Chcete-li použít službu převodu textu na řeč od společnosti Microsoft, přečtěte si [odkaz rozhraní API pro převod textu na řeč](../api-reference-rest/bingvoiceoutput.md).

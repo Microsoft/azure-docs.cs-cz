@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: d45842a4c61f871a479c91f7b192de8e567f9821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862015"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962640"
 ---
 # <a name="animated-character-detection-preview"></a>Animovaná detekce znaků (Preview)
 
@@ -91,8 +91,7 @@ Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit úč
     1. Po zadání nového názvu klikněte na ikonu zaškrtnutí vedle nového názvu. Tím se nový název uloží do modelu ve Video Indexer.
     1. Po dokončení úprav všech požadovaných názvů budete muset vyškolit model.
 
-        * Zkušební účty: Otevřete stránku přizpůsobení a klikněte na kartu animované znaky a potom klikněte na požadovaný model tlačítek s **výukou** .
-        * Placené účty: Otevřete stránku vlastní nastavení a klikněte na kartu animované znaky. Pro příslušný model klikněte na odkaz **Upravit v Custom Vision** . Pak budete přesměrováni na stránku modelu v Custom Vision. Klikněte na tlačítko "vlak" tam, kde můžete vyškolit model. 
+        Otevřete stránku přizpůsobení a klikněte na kartu **animované znaky** . Pro příslušný model klikněte na odkaz **Upravit v Custom Vision** . Pak budete přesměrováni na stránku modelu v Custom Vision. Kliknutím na tlačítko s **výukou** vytvoříte model. 
     1. Po vyškolení budou všechny videozáznamy, které budou indexovány nebo přeindexovány pomocí tohoto modelu, rozpoznány jako vyškolené znaky. 
     Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
@@ -172,6 +171,6 @@ Podívejte se na animované znaky ve vygenerovaném souboru JSON.
 * Znaky, které se zdají být malé nebo daleko ve videu, nemusí být správně identifikovány, pokud kvalita videa není nízká.
 * Doporučení je použití modelu na sadu animovaných znaků (například na animovanou řadu).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Přehled Video Indexeru](video-indexer-overview.md)

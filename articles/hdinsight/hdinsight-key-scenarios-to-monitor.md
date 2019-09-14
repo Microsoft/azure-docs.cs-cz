@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 936307399b658b75962e6969820215f9808d053f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879694"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961069"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -36,11 +36,11 @@ Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načít
 
 Zobrazí se také sloupce zobrazující počet jader a velikost paměti RAM pro každého hostitele a využití disku a průměr zatížení.
 
-![Karta hostitelé](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Karta hostitelé](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Pro podrobný pohled na komponenty běžící na daném hostiteli a jejich metrikách vyberte libovolný název hostitele. Metriky se zobrazují jako vybraná časová osa využití procesoru, zatížení, využití disku, využití paměti, využití sítě a počet procesů.
 
-![Podrobnosti o hostiteli](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Podrobnosti o hostiteli](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Podrobnosti o nastavení výstrah a zobrazování metrik najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) .
 
@@ -56,7 +56,7 @@ Pokud více tenantů sdílí velký cluster, existuje konkurence pro prostředky
 
 PŘÍZe nám umožňuje přidělit prostředky těmto frontám a zjistit, jestli jsou přiřazené všechny dostupné prostředky. Chcete-li zobrazit informace o frontách, přihlaste se k webovému uživatelskému rozhraní Ambari a pak v horní nabídce vyberte možnost **správce fronty příze** .
 
-![Správce fronty PŘÍZ](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Správce fronty PŘÍZ](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 Stránka správce fronty PŘÍZe zobrazuje seznam front na levé straně a procento kapacity, která je jim přiřazena.
 
@@ -64,11 +64,11 @@ Stránka správce fronty PŘÍZe zobrazuje seznam front na levé straně a proce
 
 Podrobnější pohled na vaše fronty získáte tak, že na řídicím panelu Ambari vyberete ze seznamu na levé straně službu **příze** . Pak v rozevírací nabídce **Rychlé odkazy** vyberte **Správce prostředků uživatelské rozhraní** pod aktivním uzlem.
 
-![Odkaz na nabídku uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Odkaz na nabídku uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyberte **Scheduler** . Zobrazí se seznam front pod *frontami aplikací*. Tady vidíte kapacitu, která se používá pro každou frontu, jak dobře jsou úlohy distribuované mezi nimi a jestli jsou nějaké úlohy omezené na prostředky.
 
-![Nabídka uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Nabídka uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Omezování úložiště
 
@@ -82,7 +82,7 @@ Pokud je úložiště záložního clusteru Azure Data Lake Storage (ADLS), je p
 * [Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Pokyny k ladění výkonu pro Apache Storm ve službě HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o řešení potíží a monitorování clusterů najdete na následujících odkazech:
 

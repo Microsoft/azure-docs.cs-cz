@@ -9,18 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 55e8121152aa281ab1025f1e8ded53c4b00c3d44
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef19d22b5c47c51f5ee3f74a4d7ab06725f7ed41
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566937"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968337"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
 V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve verzi Public Preview. SQL Database aktualizacích a vylepšeních najdete v článku [aktualizace služby SQL Database](https://azure.microsoft.com/updates/?product=sql-database). Aktualizace a vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
+
+### <a name="single-databasetabsingle-database"></a>[Samostatná databáze](#tab/single-database)
 
 | Funkce | Podrobnosti |
 | ---| --- |
@@ -43,6 +45,19 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 | Transparentní šifrování dat (TDE) s Bring Your Own Key (BYOK) se spravovanými instancemi |Informace najdete v tématu [Azure SQL transparentní šifrování dat s klíči spravovanými zákazníky v Azure Key Vault: Podpora](transparent-data-encryption-byok-azure-sql.md)Bring Your Own Key.|
 | &nbsp; |
 
+### <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
+
+| Funkce | Podrobnosti |
+| ---| --- |
+| <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
+| <a href="https://aka.ms/managed-instance-tde-byok">Přineste si vlastní šifrovací klíče</a> | Migrujte databázi z místního prostředí, která už je povolená transparentní šifrování dat (TDE) s existujícími klíči TDE. |
+| <a href="https://aka.ms/managed-instance-failover-groups">Geografické skupiny distribuovaných převzetí služeb při selhání</a> | Ponechte kopii instance v jiné oblasti a ujistěte se, že budou data dostupná i v případě scénáře regionální havárie. |
+| <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
+| [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Změny v tabulkách replikujte do jiných databází umístěných na spravovaných instancích, v izolovaných databázích nebo instancích SQL Server, nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných spravovaných instancích nebo instanci SQL Server. |
+| &nbsp; |
+
+---
+
 ## <a name="updates"></a>Aktuální zprávy
 
 Seznam SQL Database aktualizací a vylepšení najdete v tématu [aktualizace služby SQL Database](https://azure.microsoft.com/updates/?product=sql-database).
@@ -51,4 +66,4 @@ Aktualizace a vylepšení pro všechny služby Azure najdete v tématu [aktualiz
 
 ## <a name="contribute-to-content"></a>Přispívat k obsahu
 
-Pokud chcete přispět k dokumentaci Azure SQL Database, přečtěte si příručku pro [přispěvatele docs](https://docs.microsoft.com/contribute/).
+Pokud chcete přispět k dokumentaci Azure SQL Database, přečtěte si [příručku pro přispěvatele docs](https://docs.microsoft.com/contribute/).

@@ -1,110 +1,110 @@
 ---
-title: Začínáme s API pro rozpoznávání řeči Bingu pomocí klasické pracovní plochy knihovny jazyka C# | Dokumentace Microsoftu
+title: Začínáme s rozhraním API pro rozpoznávání Zpracování řeči Bingu pomocí C# desktopové knihovny | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Vyvíjejte základní aplikace Windows, které převést mluvené slovo na text pomocí rozhraní API pro rozpoznávání řeči Bingu.
+description: Vývoj základních aplikací pro Windows, které používají rozhraní API pro rozpoznávání Zpracování řeči Bingu k převedení mluveného zvuku na text.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5f3b70a2dd9816210ed61280be38504a3980d205
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3160ccc1c8741d87fcee94a6face48551a79052d
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515346"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966906"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní API v jazyce C&#35; pro .NET pro Windows
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Rychlý start: Použití rozhraní API pro rozpoznávání Zpracování řeči Bingu v&#35; jazyce C pro .NET v systému Windows
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Na této stránce ukazuje, jak vytvořit základní aplikaci Windows, který používá rozhraní API pro rozpoznávání řeči do převést mluvené slovo na text. Pomocí klientské knihovny umožňují streamování v reálném čase, což znamená, že pokud klientská aplikace odešle zvuku ve službě, asynchronně a současně přijme částečné výsledky rozpoznávání zpět.
+Na této stránce se dozvíte, jak vyvíjet základní aplikaci pro Windows, která používá rozhraní API pro rozpoznávání řeči k převedení mluveného zvuku na text. Použití klientské knihovny umožňuje streamování v reálném čase, což znamená, že když klientská aplikace pošle zvuk do služby, současně a asynchronně obdrží výsledky částečného rozpoznávání zpět.
 
-Vývojáři, kteří chtějí používat Speech Service z aplikací, které běží na libovolném zařízení můžete použít knihovnu klasické pracovní plochy jazyka C#. Použití knihovny, nainstalujte [balíček NuGet Microsoft.ProjectOxford.SpeechRecognition x86](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x86/) pro 32bitové platformě a [balíček NuGet Microsoft.ProjectOxford.SpeechRecognition x64](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x64/) pro 64bitové platformě. Klientská knihovna reference k rozhraní API najdete v části [klasické pracovní plochy knihovny Microsoft řeči C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html).
+Vývojáři, kteří chtějí používat službu Speech z aplikací, které běží na jakémkoli zařízení, můžou C# používat desktopovou knihovnu. Pokud chcete použít knihovnu, nainstalujte [balíček NuGet Microsoft. ProjectOxford. SpeechRecognition-x86](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x86/) pro 32 platformu a [balíček NuGet Microsoft. ProjectOxford. SpeechRecognition-x64](https://www.nuget.org/packages/Microsoft.ProjectOxford.SpeechRecognition-x64/) pro 64 bitovou platformu. Referenční informace k rozhraní API klientské knihovny najdete v tématu [Knihovna Microsoft Speech C# Desktop Library](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html).
 
-Následující části popisují, jak nainstalovat, sestavení a spuštění ukázkové aplikace C# s použitím knihovny klasické pracovní plochy jazyka C#.
+Následující části popisují, jak nainstalovat, sestavit a spustit C# ukázkovou aplikaci pomocí C# desktopové knihovny.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Následující ukázka byla vyvinuta pro Windows 8 + a rozhraní .NET Framework 4.5 + pomocí [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
+Následující ukázka byla vyvinuta pro systém Windows 8 + a .NET Framework 4.5 + pomocí sady [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
 ### <a name="get-the-sample-application"></a>Získat ukázkovou aplikaci
 
-Naklonujte ukázku z [ukázka klasické pracovní plochy knihovny řeči C#](https://github.com/microsoft/cognitive-speech-stt-windows) úložiště.
+Naklonujte ukázku z [ukázkového úložiště knihovny C# řeč pro stolní počítače](https://github.com/microsoft/cognitive-speech-stt-windows) .
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k rozhraní API pro rozpoznávání řeči odběru a získání klíče bezplatné předplatné zkušební verze
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k odběru rozhraní API pro rozpoznávání řeči a získejte bezplatný zkušební klíč předplatného.
 
-Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
+Rozhraní API pro rozpoznávání řeči je součástí Cognitive Services (dříve projekt Oxford). Můžete získat bezplatný zkušební odběr klíčů na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) . Po výběru rozhraní API pro rozpoznávání řeči vyberte **získat klíč rozhraní API** a získejte klíč. Vrátí primární a sekundární klíč. Oba klíče jsou vázané na stejnou kvótu, takže můžete použít kteroukoli z těchto klíčů.
 
 > [!IMPORTANT]
-> * Získáte klíč předplatného. Než použijete klientské knihovny pro zpracování řeči, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
+> * Získejte klíč předplatného. Než použijete klientské knihovny pro rozpoznávání řeči, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Použijte váš klíč předplatného. Pomocí zadaného jazyka C# klasické pracovní plochy ukázkové aplikace vložte váš klíč předplatného do textového pole při spuštění ukázky. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
+> * Použijte svůj klíč předplatného. Pomocí poskytnuté C# ukázkové aplikace pro stolní počítače vložte klíč předplatného do textového pole při spuštění ukázky. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1: Nainstalovat ukázkovou aplikaci
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Instalace ukázkové aplikace
 
-1. Spusťte Visual Studio 2015 a vyberte **souboru** > **otevřít** > **projekt či řešení**.
+1. Spusťte Visual Studio 2015 a vyberte **soubor** > **otevřít** > **projekt/řešení**.
 
-2. Přejděte do složky, kam jste uložili stažené soubory rozhraní API pro rozpoznávání řeči. Vyberte **řeči** > **Windows**a potom vyberte složku ukázkové webové části.
+2. Přejděte do složky, kam jste uložili stažené soubory rozhraní API pro rozpoznávání řeči. Vyberte možnost**okna**pro **rozpoznávání řeči** > a potom vyberte složku Sample-wp.
 
-3. Dvojitým kliknutím otevřete soubor řešení sady Visual Studio 2015 (.sln) s názvem SpeechToText. WPF Samples.sln. Řešení se otevře v sadě Visual Studio.
+3. Dvojím kliknutím otevřete soubor řešení Visual Studio 2015 (. sln) s názvem SpeechToText-WPF-Samples. sln. Řešení se otevře v aplikaci Visual Studio.
 
-## <a name="step-2-build-the-sample-application"></a>Krok 2: Vytvoření ukázkové aplikace
+## <a name="step-2-build-the-sample-application"></a>Krok 2: Sestavení ukázkové aplikace
 
-1. Pokud chcete použít *využijte záměr*, musíte nejprve zaregistrovat [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). Pak nastavte hodnotu klíče pomocí adresu URL koncového bodu aplikace LUIS `LuisEndpointUrl` v souboru app.config ve složce samples/SpeechRecognitionServiceExample. Další informace o adresu URL koncového bodu aplikace LUIS, naleznete v tématu [svou aplikaci můžete publikovat](../../luis/luis-get-started-create-app.md#publish-your-app).
+1. Pokud chcete použít *rozpoznávání s záměrem*, nejprve se musíte zaregistrovat [Language Understanding Intelligent Service (Luis)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). Pak použijte adresu URL koncového bodu aplikace Luis a nastavte hodnotu klíče `LuisEndpointUrl` v souboru App. config ve složce Samples/SpeechRecognitionServiceExample. Další informace o adrese URL koncového bodu aplikace LUIS najdete v tématu [publikování aplikace](../../luis/luis-get-started-create-app.md#publish-your-app).
 
    > [!TIP]
-   > Nahradit `&` znak adresu URL koncového bodu služby LUIS s `&amp;` zajistit, že adresa URL je správně interpretována analyzátoru XML.
+   > Nahraďte `&amp;` znak v adrese URL koncového bodu Luis pomocí, abyste zajistili, že adresa URL je správně interpretována analyzátorem XML. `&`
 
-2. Stiskněte kombinaci kláves Ctrl + Shift + B nebo vyberte **sestavení** na pásu karet. Potom vyberte **sestavit řešení**.
+2. Stiskněte kombinaci kláves CTRL + SHIFT + B nebo vyberte možnost **sestavit** v nabídce pásu karet. Pak vyberte **Sestavit řešení**.
 
 ## <a name="step-3-run-the-sample-application"></a>Krok 3: Spuštění ukázkové aplikace
 
-1. Po dokončení sestavení, stiskněte klávesu F5 nebo vyberte **Start** na pásu karet ke spuštění ukázky.
+1. Po dokončení sestavení stiskněte klávesu F5 nebo vyberte **Spustit** v nabídce pásu karet a spusťte ukázku.
 
-2. Přejděte **Project Oxford převod řeči na Text ukázka** okna. Vložte váš klíč předplatného do **vložte klíč předplatného. Spusťte** textového pole, jak je znázorněno. Chcete-li zachovat klíč předplatného. na počítači nebo přenosném počítači, vyberte **uložit klíč**. Odstranit klíč předplatného ze systému, vyberte **odstranit klíč** ho neodeberete z počítače nebo přenosném počítači.
+2. Přejít do okna **Ukázka projektu Oxford řeč na text** . Vložte klíč předplatného do pole **Vložit klíč předplatného, abyste mohli začít** s textovým polem. Pokud chcete zachovat klíč předplatného na počítači nebo přenosném počítači, vyberte **Uložit klíč**. Pokud chcete odstranit klíč předplatného ze systému, vyberte **Odstranit klíč** a odeberte ho z počítače nebo přenosného počítače.
 
-   ![Klíč vložení v rozpoznávání řeči](../Images/SpeechRecog_paste_key.PNG)
+   ![Klíč pro vložení rozpoznávání řeči](../Images/SpeechRecog_paste_key.PNG)
 
-3. V části **zdroj rozpoznávání řeči**, zvolte jednu z šesti řeči zdrojů, které spadají do dvou hlavních kategorií vstupu:
+3. V části **zdroj rozpoznávání řeči**vyberte jeden ze šesti zdrojů řeči, který patří do dvou hlavních kategorií vstupu:
 
-   * K zachycení řeči použijte mikrofon počítače nebo připojené mikrofon.
+   * K zachycení řeči použijte mikrofon počítače nebo připojeného mikrofonu.
    * Přehrání zvukového souboru.
 
    Každá kategorie má tři režimy rozpoznávání:
 
-    * **Režim ShortPhrase**: Utterance až do 15 sekund. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
-    * **Režim LongDictation**: Utterance až dvě minuty dlouho. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
-    * **Rozpoznávání záměru**: Server vrací další strukturovaných informace o řeči vstup. Používání záměru detekce, budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+    * **ShortPhrase režim**: Utterance až 15 sekund dlouho. Když se data odesílají na server, klient obdrží několik částečných výsledků a jeden konečný výsledek s více než nejlepší možností.
+    * **LongDictation režim**: Utterance může trvat až dvě minuty. Po odeslání dat na server klient obdrží více částečných výsledků a více konečných výsledků na základě toho, kde server indikuje pozastavení vět.
+    * **Detekce záměru**: Server vrátí další strukturované informace o vstupu řeči. Chcete-li použít detekci záměrů, je třeba nejprve vytvořit model pomocí [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-Ukázka zvukové soubory pomocí této ukázkové aplikaci. Najdete soubory v úložišti, které jste stáhli s touto ukázkou ve složce samples/SpeechRecognitionServiceExample. Tyto ukázkové zvukové soubory spouštěny automaticky, pokud vyberete nebyly vybrány žádné soubory **použít souborů wav Shortphrase režimu** nebo **použít souborů wav pro režim Longdictation** jako řeč vstup. V současné době je podporována pouze WAV zvukový formát.
+Použijte ukázkové zvukové soubory s touto ukázkovou aplikací. Vyhledejte soubory v úložišti, které jste si stáhli pomocí této ukázky, do složky Samples/SpeechRecognitionServiceExample. Tyto ukázkové zvukové soubory jsou spouštěny automaticky, pokud nevyberete žádné jiné soubory, pokud vyberete možnost **použít soubor WAV pro režim Shortphrase** nebo **použít soubor WAV pro režim Longdictation** jako vstup řeči. V současné době je podporován pouze zvukový formát WAV.
 
-![Převod řeči na Text rozhraní](../Images/HelloJones.PNG)
+![Speech to text Interface](../Images/HelloJones.PNG)
 
-## <a name="samples-explained"></a>Vysvětlení ukázky
+## <a name="samples-explained"></a>Vysvětlení ukázek
 
-### <a name="recognition-events"></a>Rozpoznávání události
+### <a name="recognition-events"></a>Události rozpoznávání
 
-* **Částečné výsledky události**: Tato událost volána pokaždé, když Speech Service předpovídá, co vám může být říká, ještě předtím, než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`).
-* **Události chyb**: Volá se, když služba zjistí chybu.
-* **Záměru události**: Volá se na klientech "WithIntent" (pouze v režimu ShortPhrase) po posledním rozpoznávání výsledek je analyzován do strukturovaného formátu JSON záměr.
-* **Výsledek události**:
-  * V `ShortPhrase` režimu, tato událost se nazývá a vrátí výsledky n-best po dokončení čtení.
-  * V `LongDictation` režimu, obslužná rutina události je volána více než jednou, podle kde službu identifikuje pozastaví věty.
-  * **Pro každou z možností n-best**, je vrácena hodnota spolehlivosti a několik různých forem rozpoznaný text. Další informace najdete v tématu [výstupní formát](../Concepts.md#output-format).
+* **Události částečných výsledků**: Tato událost se volá pokaždé, když služba rozpoznávání řeči předpovídá, co můžete vyjádřit, dokonce i před tím, než dokončíte práci `MicrophoneRecognitionClient`nebo dokončete odesílání dat (Pokud `DataRecognitionClient`používáte).
+* **Chybové události**: Volá se, když služba detekuje chybu.
+* **Události záměru**: Volá se na klientech WithIntent (jenom v režimu ShortPhrase), až se výsledek výsledku rozpoznávání analyzuje do strukturovaného záměru JSON.
+* **Události výsledku**:
+  * V `ShortPhrase` režimu se tato událost volá a po dokončení mluvení vrátí nejlepší výsledky n.
+  * V `LongDictation` režimu je obslužná rutina události volána vícekrát, na základě toho, kde služba identifikuje podobu pozastavení.
+  * **Pro každou z těchto n-nejlepších možností**se vrátí hodnota spolehlivosti a několik různých forem rozpoznaného textu. Další informace naleznete v tématu [Output Format](../Concepts.md#output-format).
 
-Obslužné rutiny událostí jsou již uvedli v kódu ve formě komentářů ke kódu.
+Obslužné rutiny událostí jsou již v kódu ukázány ve formě komentářů kódu.
 
 ## <a name="related-topics"></a>Související témata
 
-* [Microsoft Speech klasické pracovní plochy knihovna – referenční informace](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html)
-* [Začínáme s API pro rozpoznávání řeči Microsoft v jazyce Java v Androidu](GetStartedJavaAndroid.md)
-* [Začínáme s API pro rozpoznávání řeči Microsoft v Objective-C v iOS](Get-Started-ObjectiveC-iOS.md)
-* [Začínáme s API pro rozpoznávání řeči Microsoft v jazyce JavaScript](GetStartedJSWebsockets.md)
-* [Začínáme s API pro rozpoznávání řeči Microsoft přes REST](GetStartedREST.md)
+* [Referenční dokumentace knihovny Microsoft Speech Desktop](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-Windows/master/docs/SpeechSDK/index.html)
+* [Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu v Java v Androidu](GetStartedJavaAndroid.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu v cíli – C v iOS](Get-Started-ObjectiveC-iOS.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu v JavaScriptu](GetStartedJSWebsockets.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu přes REST](GetStartedREST.md)

@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: seo-java-august2019
-ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172334"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965387"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Rychlý start: Vytvořte konzolovou aplikaci pomocí Java a rozhraní MongoDB API v Azure Cosmos DB
 
@@ -27,7 +27,7 @@ ms.locfileid: "70172334"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB. 
+V tomto rychlém startu použijete rozhraní Azure Cosmos DB API pro Mongo DB a Java SDK k vytvoření webové aplikace konzoly. Azure Cosmos DB vám umožňuje rychle vytvořit a dotazovat databáze typu klíč/hodnota a graf, které využívají výhod globální distribuce a možností horizontálního škálování v jádru Cosmos DB.
 
 Tento rychlý Start ukazuje, jak vytvořit účet Cosmos s [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md). Pak sestavíte a nasadíte konzolovou aplikaci vytvořenou pomocí [ovladače MongoDB Java](https://docs.mongodb.com/ecosystem/drivers/java/). 
 

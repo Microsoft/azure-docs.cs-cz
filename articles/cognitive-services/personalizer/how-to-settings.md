@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559090"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962528"
 ---
 # <a name="personalizer-settings"></a>Nastavení přizpůsobení
 
@@ -67,7 +67,7 @@ Poslední model, který je z každé aktivní události vyškolený z volání r
 
 Vysoké frekvence aktualizací modelu jsou užitečné v situacích, kdy chcete pozorně sledovat změny chování uživatelů. Mezi příklady patří weby, které běží na aktivních novinkách, Virovém obsahu nebo živých nabídkách produktů. V těchto scénářích můžete použít frekvenci na 15 minut. Pro většinu případů použití je nižší frekvence aktualizace platná. Jednorázová frekvence aktualizace je užitečná při ladění kódu aplikace pomocí přizpůsobeného, provádění demo ukázek nebo interaktivního testování aspektů strojového učení.
 
-![Frekvence aktualizace modelu nastavuje, jak často se nový model přizpůsobování přeučení.](media/settings/configure-model-update-frequency-settings.png)
+![Frekvence aktualizace modelu nastavuje, jak často se nový model přizpůsobování přeučení.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 Po změně tohoto nastavení nezapomeňte vybrat **Uložit**.
 

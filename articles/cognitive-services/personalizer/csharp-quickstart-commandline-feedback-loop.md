@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 2fc9e91a34975642a666aa794694cfcc3321c93f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207354"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962545"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Rychlý start: Přizpůsobení klientské knihovny pro .NET
 
@@ -47,6 +47,8 @@ Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte 
 
 * `PERSONALIZER_RESOURCE_KEY`pro klíč prostředku.
 * `PERSONALIZER_RESOURCE_ENDPOINT`pro koncový bod prostředku.
+
+V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
 ### <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
@@ -98,7 +100,7 @@ Klient pro přizpůsobování je objekt [PersonalizerClient](https://docs.micros
 
 Chcete-li se zeptat na rozměr obsahu, vytvořte [RankRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest?view=azure-dotnet-preview)a pak ho předejte [klientovi. Rank](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank?view=azure-dotnet-preview) – metoda Metoda Rank vrátí RankResponse, který obsahuje seřazený obsah. 
 
-Pokud chcete odeslat odměnu pro přizpůsobení, vytvořte [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)a pak ho předejte [klientovi. ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview)Metoda odměňování. 
+Pokud chcete odeslat odměnu pro přizpůsobení, vytvořte [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)a pak ho předejte [klientovi. Metoda odměňování](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) . 
 
 Stanovení odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. To by mělo být jedno z primárních rozhodnutí o návrhu v architektuře pro přizpůsobování. 
 
@@ -236,7 +238,7 @@ Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a už
 
 Aby bylo možné dokončit požadavek na odměnu, program získá výběr uživatele z příkazového řádku, přiřadí číselné hodnoty každému výběru a pak pošle jedinečné ID události klasifikace a číselnou hodnotu k metodě odměňování.
 
-V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má [](concept-rewards.md) být odesláno volání odměna, v závislosti na konkrétních potřebách netriviální povahy. 
+V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy. 
 
 [!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
 

@@ -11,21 +11,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813443"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961545"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
 Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](https://www.xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek vyžaduje existující virtuální počítač s Ubuntu 16,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
+Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
 - Rozhraní příkazového [řádku Azure](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
@@ -34,7 +34,7 @@ Tento článek vyžaduje existující virtuální počítač s Ubuntu 16,04 LTS 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalace desktopového prostředí na VIRTUÁLNÍm počítači se systémem Linux
 Většina virtuálních počítačů se systémem Linux v Azure nemá ve výchozím nastavení nainstalované desktopové prostředí. Virtuální počítače se systémem Linux se běžně spravují pomocí připojení SSH, nikoli desktopové prostředí. V systému Linux jsou k dispozici různé desktopové prostředí, které si můžete vybrat. V závislosti na vaší volbě desktopového prostředí může aplikace využívat jednu až 2 GB místa na disku a instalaci a konfiguraci všech požadovaných balíčků trvá 5 až 10 minut.
 
-Následující příklad nainstaluje zjednodušené desktopové prostředí [Xfce4](https://www.xfce.org/) na virtuální počítač s Ubuntu 16,04 LTS. Příkazy pro ostatní distribuce se mírně liší (použijte `yum` k instalaci na Red Hat Enterprise Linux a ke konfiguraci `selinux` vhodných pravidel nebo použijte `zypper` k instalaci na SUSE).
+Následující příklad nainstaluje zjednodušené desktopové prostředí [Xfce4](https://www.xfce.org/) na virtuální počítač s Ubuntu 18,04 LTS. Příkazy pro ostatní distribuce se mírně liší (použijte `yum` k instalaci na Red Hat Enterprise Linux a ke konfiguraci `selinux` vhodných pravidel nebo použijte `zypper` k instalaci na SUSE).
 
 Nejdřív k vašemu VIRTUÁLNÍmu počítači připojte SSH. Následující příklad se připojí k virtuálnímu počítači s názvem *myvm.westus.cloudapp.Azure.com* s uživatelským jménem *azureuser*. Použijte vlastní hodnoty:
 

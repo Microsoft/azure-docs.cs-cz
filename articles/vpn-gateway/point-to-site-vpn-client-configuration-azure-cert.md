@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07d48ed195f74c9aef5d34de1925ab8fc2a3ae21
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899864"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961604"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -149,7 +149,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
 7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Potom klikněte na **přidat**.
 
    ![požádat o vnitřní IP adresu](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
-8. Zapněte připojení.
+8. Zapněte připojení **.**
 
 ## <a name="linuxinstallcli"></a>Linux (rozhraní příkazového řádku klient strongswan)
 
@@ -199,7 +199,7 @@ Pokud jste ještě vygenerovali certifikáty, použijte následující postup:
    # ipsec up azure
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vraťte se k článku a [dokončete konfiguraci P2S](vpn-gateway-howto-point-to-site-rm-ps.md).
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565760"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967056"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -71,10 +71,10 @@ Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňuj�
 
 Stejně jako u všech Cognitive Services by měli vývojáři, kteří používají Počítačové zpracování obrazu službu, znát zásady Microsoftu pro zákaznická data. Další informace najdete na [stránce Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) v centru zabezpečení Microsoftu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte s Počítačové zpracování obrazu pomocí příručky pro rychlý Start:
 
-- [Rychlé zprovoznění: Analýza obrázku](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Rychlé zprovoznění: Extrahování ručně psaného textu](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Rychlé zprovoznění: Vygenerovat miniaturu](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Rychlé zprovoznění: Sada Počítačové zpracování obrazu .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Rychlé zprovoznění: Počítačové zpracování obrazu Python SDK](quickstarts-sdk/python-sdk.md)
+- [Rychlé zprovoznění: Počítačové zpracování obrazu Java SDK](quickstarts-sdk/java-sdk.md)

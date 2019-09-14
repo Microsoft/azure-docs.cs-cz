@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910218"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984519"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -99,7 +99,8 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
         Formát souboru| Oddělených
         Oddělovač| Čárka
         Kódování| UTF-8
-        Záhlaví sloupců| Všechny soubory mají stejné hlavičky, které přeskočí řádky. | Žádné
+        Záhlaví sloupců| Všechny soubory mají stejná záhlaví.
+        Přeskočit řádky | Žádné
 
         >[!NOTE]
         > Pokud se některé nastavení v tomto formuláři aktualizuje, verze Preview se odpovídajícím způsobem aktualizuje.

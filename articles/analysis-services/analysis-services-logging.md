@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 357e7975b1c4fe44d86b7e29e96a9abb6ab63c35
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932255"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959073"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -67,7 +67,7 @@ Výběr **modul** všechny protokoly [xEvents](https://docs.microsoft.com/analys
 
 ### <a name="all-metrics"></a>Všechny metriky
 
-Kategorie metriky protokoly stejné [metrik serveru](analysis-services-monitor.md#server-metrics) zobrazí v metrikách.
+Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.md#server-metrics) do tabulky AzureMetrics. Pokud používáte [škálování](analysis-services-scale-out.md) dotazů a potřebujete pro každou repliku čtení oddělit metriky, použijte místo toho tabulku AzureDiagnostics, kde **OperationName** se rovná **LogMetric**.
 
 ## <a name="setup-diagnostics-logging"></a>Nastavení protokolování diagnostiky
 
@@ -161,27 +161,53 @@ Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru ot
 
 V Tvůrci dotazů rozbalte položku **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události stroj a služby. Všimněte si, že je dotaz vytvořen průběžně. EventClass\_s pole obsahuje událost xEvent s názvy, které může vypadat povědomě, pokud jste použili xEvents pro místní protokolování. Klikněte **na\_EventClass s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor stále sestavuje dotaz. Nezapomeňte uložit své dotazy pro pozdější použití.
 
-### <a name="example-query"></a>Příklad dotazu
-Tento dotaz vypočítá a vrátí procesor pro každou koncovou událost ukončení/aktualizace dotazu pro modelovou databázi a Server:
+### <a name="example-queries"></a>Příklady dotazů
+
+#### <a name="example-1"></a>Příklad 1
+
+Následující dotaz vrátí dobu trvání každé události konce a aktualizace dotazu pro modelovou databázi a Server. Při horizontálním navýšení kapacity jsou výsledky rozdělené replikou, protože číslo repliky je zahrnuté v ServerName_s. Seskupení podle RootActivityId_g snižuje počet řádků načtený z Azure Diagnostics REST API a pomáhá zůstat v rámci omezení, jak je popsáno v části [Omezení četnosti Log Analytics](https://dev.loganalytics.io/documentation/Using-the-API/Limits).
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>Příklad 2
+
+Následující dotaz vrátí paměťovou a QPU spotřebu pro server. Při horizontálním navýšení kapacity jsou výsledky rozdělené replikou, protože číslo repliky je zahrnuté v ServerName_s.
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>Příklad 3
+
+Následující dotaz vrátí čítače výkonu Analysis Services pro daný server v řádcích.
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 Existují stovky dotazy, které můžete použít. Další informace o dotazech najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
 

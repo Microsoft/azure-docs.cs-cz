@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 8f10e3d3fd7c67d1e803e8f85c9918c91bb81d59
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517459"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967821"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
-Pokud chcete zjistit stav sítě pro [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a spravovat Logic Apps, připojení, účty pro integraci a vlastní konektory, které existují ve vaší ISE, postupujte podle kroků v tomto tématu.
+Pokud chcete zjistit stav sítě pro [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a spravovat Logic Apps, připojení, účty pro integraci a konektory, které existují ve vaší ISE, postupujte podle kroků v tomto tématu. Pokud chcete přidat tyto artefakty do svého ISEu, přečtěte si téma [Přidání artefaktů do prostředí integrační služby](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Zobrazení ISE
 
@@ -46,31 +46,49 @@ V nabídce ISE v části **Nastavení**vyberte **stav sítě**. V tomto podokně
 
 ## <a name="manage-your-logic-apps"></a>Správa aplikací logiky
 
+Můžete zobrazit a spravovat aplikace logiky, které jsou ve vaší ISE.
+
 1. V nabídce ISE v části **Nastavení**vyberte **Logic Apps**.
 
-   ![Hledání aplikací logiky](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Zobrazit Logic Apps](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Pokud už nepotřebujete aplikace logiky odebrat z ISE, vyberte je a pak vyberte **Odstranit**.
+1. Pokud chcete odebrat Logic Apps, které už v ISE nepotřebujete, vyberte tyto aplikace logiky a pak vyberte **Odstranit**. Pokud chcete potvrdit, že chcete odstranit, vyberte **Ano**.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>Správa připojení rozhraní API
 
-1. Pokud chcete zobrazit připojení rozhraní API vytvořená aplikace logiky, která běží ve vašem ISE, v nabídce ISE v části **Nastavení**vyberte **připojení rozhraní API**.
+Můžete zobrazit a spravovat připojení, která vytvořila aplikace logiky spuštěné v ISE.
 
-   ![Najít připojení rozhraní API](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+1. V nabídce ISE v části **Nastavení**vyberte **připojení rozhraní API**.
 
-1. Pokud už je nepotřebujete, chcete připojení z ISE odebrat, vyberte Tato připojení a pak vyberte **Odstranit**.
+   ![Zobrazit připojení rozhraní API](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+
+1. Pokud chcete odebrat připojení, která už nepotřebujete v ISE, vyberte Tato připojení a pak vyberte **Odstranit**. Pokud chcete potvrdit, že chcete odstranit, vyberte **Ano**.
+
+<a name="manage-api-connectors"></a>
+
+## <a name="manage-ise-connectors"></a>Správa konektorů ISE
+
+Můžete zobrazit a spravovat konektory rozhraní API, které jsou nasazené do vaší ISE.
+
+1. V nabídce ISE v části **Nastavení**vyberte **spravované konektory**.
+
+   ![Zobrazit spravované konektory](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+
+1. Pokud chcete odebrat konektory, které nechcete mít k dispozici ve vašem ISE, vyberte tyto konektory a pak vyberte **Odstranit**. Pokud chcete potvrdit, že chcete odstranit, vyberte **Ano**.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Správa vlastních konektorů
 
-1. Pokud chcete zobrazit vlastní konektory, které jste vytvořili v ISE, v nabídce ISE v části **Nastavení**vyberte **vlastní konektory**.
+Můžete zobrazit a spravovat vlastní konektory, které jste nasadili do ISE.
+
+1. V nabídce ISE v části **Nastavení**vyberte **vlastní konektory**.
 
    ![Vyhledání vlastních konektorů](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Pokud už je nepotřebujete, můžete z ISE odebrat vlastní konektory, vybrat tyto konektory a pak vybrat **Odstranit**.
+1. Pokud chcete z ISE odebrat vlastní konektory, které už nepotřebujete, vyberte tyto konektory a pak vyberte **Odstranit**. Pokud chcete potvrdit, že chcete odstranit, vyberte **Ano**.
 
 <a name="find-integration-accounts"></a>
 

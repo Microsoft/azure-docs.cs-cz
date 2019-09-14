@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a32177280361bb0c2a433af0cb5dd3cfc6b9d3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821534"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967593"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Pomocí nástroje MirrorMaker Kafka s Event Hubs pro Apache Kafka
 
@@ -85,7 +85,7 @@ Aktualizovat konfigurační soubor příjemce `source-kafka.config`, který dáv
 
 ##### <a name="source-kafkaconfig"></a>Zdroj kafka.config
 
-```xml
+```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
 group.id=example-mirrormaker-group
 exclude.internal.topics=true
@@ -98,7 +98,7 @@ Nyní aktualizovat konfigurační soubor producent `mirror-eventhub.config`, kte
 
 ##### <a name="mirror-eventhubconfig"></a>eventhub.config zrcadlový svazek
 
-```xml
+```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
 client.id=mirror_maker_producer
 
@@ -121,10 +121,10 @@ Pokud chcete ověřit, že události jsou tam dostupné pro Centrum událostí K
 Při spuštění nástroje MirrorMaker žádné události odeslané do clusteru Kafka zdroje jsou přijímány clusteru Kafka a zrcadlených Kafka povolena služby Azure event hub. Pomocí nástroje MirrorMaker a koncový bod Event Hubs Kafka můžete migrovat existující kanál Kafka do spravované služby Azure Event Hubs bez změny stávajícího clusteru nebo by bylo třeba přerušit všechny probíhající datový tok.
 
 ## <a name="samples"></a>Ukázky kódu
-Najdete v následujících ukázkách na Githubu:
+Podívejte se na následující ukázky na GitHubu:
 
-- [Ukázkový kód pro účely tohoto kurzu na Githubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
-- [Azure Event Hubs Kafka nástroje MirrorMaker spuštěné v instanci kontejneru Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
+- [Ukázkový kód pro tento kurz na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Azure Event Hubs Kafka nástroje MirrorMaker běžící na instanci kontejneru Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Další postup
 

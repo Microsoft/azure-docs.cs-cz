@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 6877595f191c326ed73b347d46cb1aeb404702b5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232228"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984468"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
 
@@ -31,7 +31,6 @@ Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následu
 
 | Komponenta | HDInsight 4.0 | HDInsight 3,6 (výchozí) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Datová platforma Hortonworks | 3.0 | 2.6 | 2.5 | 2.4 | 2.3 | 2.2 |
 | Apache Hadoop a PŘÍZe | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache Tez | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
@@ -83,7 +82,7 @@ V následující tabulce jsou uvedeny verze HDInsight, které jsou k dispozici v
 
 ### <a name="retired-versions"></a>Vyřazené verze
 
-V následující tabulce jsou uvedeny verze HDInsight, které nejsou k dispozici v Azure Portal.
+V následující tabulce jsou uvedeny verze HDInsight, **které nejsou k dispozici v** Azure Portal.
 
 | Verze HDInsight | Verze HDP | OPERAČNÍ SYSTÉM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost na Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -168,7 +167,7 @@ V části najdete odkazy na poznámky k verzi pro distribuce datových platforem
   * [Poznámky k verzi Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) jsou k dispozici na webu Apache.
 * Cluster HDInsight verze 3,2 používá distribuci Hadoop, která je založená na [Hortonworks datové platformě 2,2][hdp-2-2].
 
-  * Poznámky k verzi pro konkrétní součásti Apache jsou k dispozici následujícím způsobem: [Podregistr 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [prasat 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBA 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), příze [2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)a [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Poznámky k verzi pro konkrétní součásti Apache jsou k dispozici následujícím způsobem: [Podregistr 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [prasat 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBA 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [příze 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)a [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * Cluster HDInsight verze 3,1 používá distribuci Hadoop, která je založená na [Hortonworks datové platformě 2.1.7][hdp-2-1-7]. Clustery HDInsight 3,1 vytvořené před listopadu 2014 7. listopadu jsou založené na [Hortonworks datové platformě 2.1.1][hdp-2-1-1].
 * Cluster HDInsight verze 3,0 používá distribuci Hadoop, která je založená na [Hortonworks datové platformě 2,0][hdp-2-0-8].
 * Cluster HDInsight verze 2,1 používá distribuci Hadoop, která je založená na [Hortonworks datové platformě 1,3][hdp-1-3-0].
@@ -178,7 +177,7 @@ V části najdete odkazy na poznámky k verzi pro distribuce datových platforem
 
 Další informace o tom, které SKU virtuálních počítačů vybrat pro váš cluster, najdete v tématu [Podrobnosti o konfiguraci clusteru Azure HDInsight](hdinsight-supported-node-configuration.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Nastavení clusteru pro Apache Hadoop, Spark a další funkce v HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Práce v Apache Hadoop ve službě HDInsight z počítače s Windows](hdinsight-hadoop-windows-tools.md)
 

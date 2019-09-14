@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: de11db64ed67872380b665f4839d406fd06bc9c8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882886"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959393"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Rychlý start: Přizpůsobení klientské knihovny pro Python
 
@@ -161,7 +161,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 >[Jak přizpůsobovat práci](how-personalizer-works.md)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 7a278196b2f4edc35ebc8c4dc77116363e9f7901
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811812"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960930"
 ---
-# <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
+# <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
 Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato flexibilita umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků.
 
@@ -37,7 +37,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Azure CLI](hdinsight-administer-use-command-line.md)|cluster Azure HDInsight změnil \<velikost clusteru > \<cílový počet instancí > |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
-![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během několika minut nahoru nebo dolů.
 
@@ -112,7 +112,7 @@ Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použ
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
 4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **uživatelské rozhraní ResourceManager**.
 
-    ![Uživatelské rozhraní ResourceManager](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![Uživatelské rozhraní ResourceManager](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 K uživatelskému rozhraní ResourceManager můžete přistupovat přímo `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`pomocí.
 

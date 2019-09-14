@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899935"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967865"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -55,7 +55,8 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 5. `1-Getting Started with R.R` Otevřete soubor `A first look at R` ve složce řešení.
 6. V horní části souboru stiskněte kombinaci kláves CTRL + ENTER pro odeslání každého řádku, a to po jednom, do okna Interaktivní R. Některé řádky můžou při instalaci balíčků chvíli trvat.
     * Případně můžete vybrat všechny řádky v souboru R (CTRL + A), pak buď provést vše (CTRL + ENTER), nebo na panelu nástrojů vybrat ikonu spustit interaktivní.
-        ![Spustit jako interaktivní](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Spustit jako interaktivní](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Po spuštění všech řádků ve skriptu byste měli vidět výstup podobný tomuto:
 
@@ -82,20 +83,20 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![Nastavení kontextu Spark](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![Nastavení kontextu Spark](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. V okně Interaktivní R spusťte následující příkazy:
 
@@ -107,13 +108,12 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
 
     Zobrazený výstup by měl vypadat přibližně takto:
 
-    ![Úspěšné provedení příkazu RX](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Úspěšné provedení](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) příkazu RX a
 1. Ověřte, že `rxHadoopCopy` se `people.json` soubor úspěšně zkopíroval z ukázkové složky dat do nově vytvořené `/user/RevoShare/newUser` složky:
 
     1. Z podokna clusteru služby HDInsight ML v Azure v nabídce vlevo vyberte **účty úložiště** .
 
-        ![Účty úložiště](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Účty úložiště](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Vyberte výchozí účet úložiště pro váš cluster a poznamenejte si název kontejneru nebo adresáře.
 
@@ -123,7 +123,7 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
 
     4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. Soubor by měl být zobrazen `newUser` ve složce. `people.json`
 
-        ![Zkopírovaný soubor](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Zkopírovaný soubor](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Po dokončení používání aktuálního kontextu Apache Spark je nutné ho zastavit. Nelze spustit více kontextů najednou.
 
@@ -131,7 +131,7 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Možnosti výpočetního kontextu pro služby ML v HDInsight](r-server-compute-contexts.md)
 * [Kombinování škály a Sparku](../hdinsight-hadoop-r-scaler-sparkr.md) poskytuje příklad zpoždění leteckého letu předpovědi.

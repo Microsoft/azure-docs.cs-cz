@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515846"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984011"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -36,7 +36,7 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |  Počet svazků na fond kapacity     |    500   |    Ano     |
 |  Počet snímků na svazek       |    255     |    Ne        |
 |  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
-|  Počet souběžných IP adres ve virtuální síti (včetně partnerských virtuální sítě), které mají přístup k Azure NetApp Files   |    1000   |    Ne   |
+|  Počet IP adres ve virtuální síti (včetně partnerských virtuální sítě), které mají přístup k Azure NetApp Files   |    1000   |    Ano   |
 |  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
 |  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
@@ -53,7 +53,7 @@ Z Azure Portal rovina navigace:
 2. Klikněte na **+ Nová žádost o podporu**.
 3. Na kartě základy zadejte následující informace: 
     1. Typ problému: Vyberte **omezení služby a předplatné (kvóty)** .
-    2. Předplatná: Vyberte předplatné pro prostředek, u kterého potřebujete kvótu zvýšit.
+    2. Odběru Vyberte předplatné pro prostředek, u kterého potřebujete kvótu zvýšit.
     3. Typ kvóty: Vyberte **úložiště: Omezení**Azure NetApp Files.
     4. Klikněte **na další: Řešení**.
 4. Na kartě Podrobnosti:

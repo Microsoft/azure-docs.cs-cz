@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844870"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984384"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Použití klíčů prostředků pro vytváření obsahu a modulu runtime
 
@@ -56,7 +56,7 @@ Až budete připraveni k publikování koncového bodu předpovědi, vytvořte a
 1. Vyberte **+ Vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte `Language understanding`.
 1. Vyberte **Vytvořit** a spusťte proces vytváření. 
-1. Vytvořte **obojí** , chcete-li vytvořit vytváření obsahu a předpředpověď klíč runtime koncového bodu. 
+1. Vyberte **obojí** , pokud chcete vytvořit vytváření obsahu a předpředpověď koncový bod koncového bodu. 
 1. Zadejte informace požadované k vytvoření prostředku a potom vyberte **vytvořit** a proces dokončete.
 
     ![Vytvoření prostředku pro porozumění jazyku](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
@@ -215,7 +215,7 @@ Pokud chcete vědět, kdy jste dosáhli určitou transakci prahovou hodnotu, nap
 
 Přidat upozornění metriky pro **celkový počet volání** metriky pro určité časové období. Přidáte e-mailové adresy lidí, kteří měli obdržet upozornění. Přidání webhooků pro všechny systémy, které by měla přijímat oznámení. Aplikace logiky můžete spustit také při aktivaci tohoto upozornění. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Naučte se [používat verze](luis-how-to-manage-versions.md) k řízení životního cyklu aplikace.
 * Seznamte se s koncepty, včetně [prostředků pro vytváření](luis-concept-keys.md#authoring-key) a [přispěvatelů](luis-concept-keys.md#contributions-from-other-authors) na tomto prostředku.

@@ -1,272 +1,272 @@
 ---
-title: Koncepty zpracování řeči Bingu | Dokumentace Microsoftu
+title: Pojmy Zpracování řeči Bingu | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Základní koncepty používané v Microsoft Speech Service.
+description: Základní pojmy používané ve službě Microsoft Speech Service.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba1bbdeaf68bdd45524b336011627a27cd024da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954521"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965717"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Tato stránka popisuje některé základní pojmy v Microsoft službu rozpoznávání řeči. Doporučujeme vám přečíst si téma na této stránce než začnete používat rozhraní API pro rozpoznávání řeči Microsoft ve vaší aplikaci.
+Tato stránka popisuje několik základních konceptů ve službě rozpoznávání řeči od společnosti Microsoft. Před použitím rozhraní API pro rozpoznávání řeči společnosti Microsoft ve vaší aplikaci doporučujeme tuto stránku přečíst.
 
-## <a name="understanding-speech-recognition"></a>Principy rozpoznávání řeči
+## <a name="understanding-speech-recognition"></a>Porozumění rozpoznávání řeči
 
-Pokud je to poprvé, vytváříte aplikaci podporou řeči nebo pokud je prvním přidáváte možnosti zpracování řeči do stávající aplikace, tato část vám pomůže začít pracovat. Pokud už máte nějaké zkušenosti s podporou hlasových aplikace, můžete se rozhodnout k popisům pouze této části nebo může přeskočit, úplně, pokud jste staré úplného zpracování řeči a chcete získat právo na podrobnosti protokolu.
+Při prvním vytváření aplikace s podporou rozpoznávání řeči nebo při prvním přidání funkcí pro rozpoznávání řeči do existující aplikace vám tato část pomůže začít. Pokud už máte nějaké zkušenosti s aplikacemi s podporou řeči, můžete se rozhodnout jenom skim této části, nebo ji můžete přeskočit úplně, pokud jste při rozpoznávání řeči starí a chcete získat právo k podrobnostem protokolu.
 
-### <a name="audio-streams"></a>Zvukové datové proudy
+### <a name="audio-streams"></a>Zvukové streamy
 
-Přední mezi základními koncepty řeči je *zvukový datový proud*. Na rozdíl od stisknutí klávesy, která nastane v jednom okamžiku v čase a obsahuje informace o každé, žádost o mluvené slovo je rozdělena do stovek milisekund a obsahuje mnoho kilobajtů informace. Doba trvání mluvené slovo projevy představuje určité potíže vývojářům, kteří chtějí poskytovat jednoduchý a elegantní řeči pro svou aplikaci. Dnešní počítače a algoritmy provést před spuštěním akce určené k transkripci řeči na přibližně polovinu doby trvání utterance, tak 2sekundové utterance může být přepsána v přibližně 1 sekundu, ale všechny aplikace, ke které dojde 1 sekundu zpoždění při zpracování uživatele zjednodušené ani elegantní.
+*Zvukovým datovým proudem*je základní koncepce řeči. Na rozdíl od klávesových zkratek, ke kterým dochází v jednom bodě v čase a obsahuje jednu část informací, mluvený požadavek se rozprostře po stovkách milisekund a obsahuje mnoho kilobajtů informací. Doba trvání mluveného projevyu předkládá vývojářům možnost využít pro své aplikace zjednodušené a elegantní prostředí pro rozpoznávání řeči. Dnešní počítače a algoritmy provádějí rozpoznávání řeči v přibližně polovině doby trvání utterance, takže 2 sekundová utterance může být přepisu přibližně 1 sekundu, ale každá aplikace, která je v průběhu 1 sekundové prodlevy při zpracování uživatele, je. není jednodušší ani elegantní.
 
-Naštěstí způsoby "skrytí" určené k transkripci času prováděním určené k transkripci v jedné části utterance zatímco uživatel to mluví jiné části. Například rozdělením utterance 1 sekundu do 10 bloků 100 milisekund a provedením určené k transkripci na každý blok zase více než 450 celkem 500 milisekund vyžadované pro přepis může být "hidden" tak, aby uživatel neví, určené k transkripci je provádí při jejich čtení. Při přemýšlet o tom, v tomto příkladu mějte na paměti, že služba provádí určené k transkripci na předchozí 100 milisekund zvuk zatímco uživatel to mluví další 100, proto když uživatel zastaví vzato službu pouze muset přepisy zhruba 100 milisekundy zvuk k vygenerování výsledku.
+Naštěstí existuje několik způsobů, jak "skrývat" dobu přepisu, a to tak, že provedete přepis jednoho dílu utterance a uživatel mluví o jiné části. Například rozdělením utterance o 1 sekundu na 10 bloků po 100 milisekund a provedením přepisu na každém bloku v důsledku toho může být více než 450 celkové 500 milisekund potřebných pro přepis "skryté", aby uživatel nevědom přepisu byl "skrytý". provádí se při mluvení. Při zvažování tohoto příkladu Pamatujte na to, že služba provádí přepis předchozích 100 milisekund zvuků, zatímco uživatel mluví o další 100, takže když uživatel přestane mluvit, služba bude muset přepisovat zhruba 100. milisekundy zvukového výsledku, které vytvoří výsledek.
 
-K dosažení této uživatelské prostředí, je mluvené slovo zvuku informace shromážděné v blocích a přepisována jako uživatel mluví. Tyto zvukové bloky souhrnně z *zvukový datový proud*, a proces odesílání tyto zvukové bloků dat ve službě se nazývá *zvukový datový proud.* Zvukový datový proud je důležitou součástí jakékoli aplikace s podporou řeči; velikost deduplikačního bloku dat ladění a optimalizaci implementace streamování jsou některé z jejich činnost nejvíc ohrožují způsoby komfort uživatelů vaší aplikace.
+Pro dosažení tohoto uživatelského prostředí se mluvené zvukové informace shromažďují v blocích a přepisu, když uživatel mluví. Tyto zvukové bloky se souhrnně ze *zvukového datového proudu*shromažďují a proces odesílání těchto zvukových bloků do služby se nazývá *streamování zvuku.* Streamování zvuku je důležitou součástí jakékoli aplikace s podporou rozpoznávání řeči. vyladění velikosti bloku dat a optimalizace implementace streamování jsou některé z nejvýznamnějších způsobů, jak zlepšit uživatelské prostředí vaší aplikace.
 
-### <a name="microphones"></a>Mikrofony
+### <a name="microphones"></a>Mikrofonů
 
-Lidé proces mluvené pomocí jejich uší ale inanimate hardware používá mikrofon. Povolit rozpoznávání řeči do jakékoli aplikace, budete muset integraci s mikrofon poskytuje zvukový datový proud pro vaši aplikaci.
+Lidé zpracovávají mluvený zvuk pomocí jejich EARS, ale inanimace hardwaru používá mikrofony. Pokud chcete povolit rozpoznávání řeči v libovolné aplikaci, je třeba se zapojit do mikrofonu, který poskytuje zvukový stream pro vaši aplikaci.
 
-Rozhraní API pro mikrofonu musí umožňují spustit a zastavit příjem zvuku bajtů mikrofon. Musíte se rozhodnout, co bude akce uživatele aktivovat mikrofon zahájit naslouchání pro rozpoznávání řeči. Může zvolit, aby stisknutí tlačítka aktivovat začátku naslouchání, nebo můžete mít *klíčové slovo* nebo *probuzení slovo* spotter vždy naslouchání mikrofon a používají výstup tohoto modulu aktivační událost posílání zvuku ke službě Microsoft řeči.
+Rozhraní API pro váš mikrofon musí umožňovat spuštění a zastavení příjmu zvukových bajtů z mikrofonu. Musíte rozhodnout, jaké akce uživatele aktivují mikrofon, aby bylo možné začít naslouchat rozpoznávání řeči. Můžete zvolit, aby stisknutí tlačítka aktivovalo spuštění naslouchání, nebo můžete zvolit *klíčové slovo* nebo *probuzení slovem* spotter, které vždycky naslouchá mikrofonu a využívalo výstup tohoto modulu, aby se mohl aktivovat odesílání zvuků na řeč Microsoftu. Službám.
 
 ### <a name="end-of-speech"></a>Konec řeči
 
-Zjišťování *při* mluvčího má *zastavena* mluvený pro člověka zdá být dostatečně jednoduchá, ale spíše obtížné problému mimo laboratorních podmínek. Nestačí jednoduše hledat čistě nečinnosti po utterance, protože často dochází k mnoha hluk k zkomplikovat věci. Microsoft Speech Service provádí úlohu vynikající rychle zjistit, když uživatel zastavil, mluvit a služba může informovat aplikaci o této skutečnosti, ale toto uspořádání znamená, že vaše aplikace je poslední vědět, kdy uživatel přestat předčítat. Tato akce není vůbec stejně jako jiné formy vstup ve kterém je vaše aplikace *první* vědět, kdy se uživatelovo zadání spustí *a* skončí.
+Zjištění *, že se* mluvčí *přestane* mluvit, je pro člověka dostatečně snadné, ale jedná se o obtížně problém mimo laboratorní podmínky. Po utterance nestačí jednoduše najít čistý ticho, protože je často hodně okolního hluku, které by bylo možné zkomplikovat. Služba Microsoft Speech Service nabízí skvělou úlohu rychlého zjištění, kdy uživatel přestala mluvit, a služba může tuto skutečnost informovat. Toto uspořádání ale znamená, že vaše aplikace je poslední, aby znala, že uživatel přestane mluvit. To se vůbec nelíbí jako u jiných forem vstupu, kde je vaše aplikace *první* , co je třeba znát, když se vstup uživatele spustí *a* skončí.
 
-### <a name="asynchronous-service-responses"></a>Odpovědi na asynchronní služby
+### <a name="asynchronous-service-responses"></a>Asynchronní odpovědi služby
 
-Skutečnost, že vaše aplikace potřebuje být informováni o dokončení uživatelského vstupu neurčuje žádné snížení výkonu nebo programovací vyřešit potíže se na svou aplikaci, ale vyžadují, pokud si myslíte o hlasové požadavky odlišně od vstupní požadavek / odpověď vzorce, se kterými jste se seznámili. Vzhledem k tomu, že vaše aplikace nebude vědět, když uživatel zastaví čtení, musí aplikace dál datového proudu zvuku ve službě při současně a asynchronně čeká na odpověď ze služby. Tento model je na rozdíl od dalších žádostí a odpovědí webových protokolů jako jsou HTTP. V těchto protokolech musíte dokončit žádost o před přijetím odpovědi; v protokolu Microsoft Speech Service obdržíte odpovědi *zatímco jsou stále vysílání datového proudu zvuku pro požadavek*.
-
-> [!NOTE]
-> Tato funkce není podporována při použití rozhraní HTTP REST API řeči.
-
-### <a name="turns"></a>Zapne
-
-Rozpoznávání řeči je dopravce informací. Když hovoříte, se snažíte sdělit informace, které jsou ve vašem vlastnictví někomu, kdo naslouchá tuto informaci. Při předávání informací obvykle trvá zapne mluvený a naslouchá. Podobně vaše aplikace s podporou řeči komunikuje s uživateli střídavě naslouchání a reakcí, i když vaše aplikace obvykle probíhá většina naslouchání. Mluvené slovo vstup uživatele a služby odpověď na tento vstup je volán *zapnout*. A *zapnout* spustí, když uživatel mluví a končí, když aplikace dokončí zpracování řeči odezvy služby.
-
-### <a name="telemetry"></a>Telemetrická data
-
-Vytváření podporou hlasových zařízení nebo aplikace může být náročné, dokonce i pro zkušené vývojáře. Protokoly založené na Stream často vypadá to, že na první pohled složitý a důležité podrobnosti, jako je detekce nečinnosti může být úplně nové. S tolika zprávy museli být úspěšně odeslané a přijaté dokončete dvojici jednu žádost odpověď, je *velmi* důležité shromažďovat úplné a přesné údaje o těchto zprávách. Protokol Microsoft Speech Service poskytuje pro kolekci tato data. Ujistěte se, veškeré úsilí, aby co nejpřesněji; zadejte požadovaná data zadáním úplných a přesných dat je bude možné pomáhá sami – byste někdy potřebovali pomoc od týmu služby řeči Microsoft při řešení potíží s vaší implementace klienta, kvalitu telemetrických dat, které jste shromáždili bude velmi důležité pro problém analýzy.
+Skutečnost, že vaše aplikace musí být informována o dokončení vstupu uživatele, nevede ke snížení výkonu ani programování problémů aplikace, ale vyžaduje, abyste si myslíte, že se požadavky na řeč liší od vstupních požadavků/ vzory odpovědí, se kterými jste obeznámeni. Vzhledem k tomu, že vaše aplikace nebude znát, kdy uživatel přestane mluvit, musí aplikace dál streamovat zvuk do služby a současně i asynchronně čekat na odpověď služby. Tento model se na rozdíl od jiných webových protokolů požadavků a odpovědí, jako je HTTP, nelíbí. V těchto protokolech je nutné před přijetím odpovědi dokončit žádost. v protokolu služby Microsoft Speech Service obdržíte odpovědi, *dokud budete pro požadavek dál streamovat zvuk*.
 
 > [!NOTE]
-> Tato funkce není podporována při použití rozhraní REST API pro rozpoznávání řeči.
+> Tato funkce není podporována při použití REST API řeči HTTP.
 
-### <a name="speech-application-states"></a>Stavy aplikace řeči
+### <a name="turns"></a>Zčerná
 
-Postup, jak povolit hlasový vstup v aplikaci se trochu liší od pokynů pro jiné formy vstup například kliknutí myší nebo klepnutí prstem. Je nutné sledovat, jestli aplikace naslouchá na mikrofon a odesílání dat do služby řeči při čekání odpověď od služby a až bude ve stavu nečinnosti. Vztah mezi těmito stavy je znázorněn v následujícím diagramu.
+Řeč je dopravcem informací. Při mluvení se snažíte předat informace, které jsou ve vašem vlastnictví, pro někoho, kdo na tyto informace naslouchá. Při předávání informací obvykle nebudete mluvit a naslouchat. Stejně tak vaše aplikace podporující rozpoznávání řeči komunikuje s uživateli tím, že střídavě naslouchá a reaguje, i když vaše aplikace většinou provádí většinu poslechu. Mluvený vstup uživatele a odpověď služby na tento vstup se označuje jako *zapínání*. Spustí *se, když* uživatel mluví a končí, když aplikace dokončí zpracování odpovědi služby Speech.
 
-![Diagram stavu aplikace řeči](Images/speech-application-state-diagram.png)
+### <a name="telemetry"></a>Telemetrie
 
-Protože služba Speech podílí na některé stavy, protokol služby definuje zprávy, které pomůžou vaše aplikace přechod mezi stavy. Vaše aplikace potřebuje jak interpretovat a zpracovat tyto zprávy protokolu pro sledování a správu stavů aplikace řeči.
+Vytvoření zařízení nebo aplikace s podporou rozpoznávání řeči může být náročné i u zkušených vývojářů. Protokoly založené na streamech se často zdají těžké na první pohled a důležité podrobnosti, jako je detekce tichého navýšení, můžou být zcela nové. Aby bylo možné úspěšně odeslat a přijmout mnoho zpráv, aby bylo možné dokončit jednu dvojici požadavků a odpovědí, je *velmi* důležité shromáždit pro tyto zprávy úplná a přesná data. Pro shromažďování těchto dat poskytuje protokol služby Microsoft Speech Service. Měli byste zajistit, aby co nejlépe poskytovala požadovaná data. poskytnutím kompletních a přesných dat vám pomůžeme – měli byste při řešení potíží s implementací klientů potřebovat pomoc tým služby Microsoft Speech Service, protože kvalita dat telemetrie, kterou jste shromáždili, bude pro problém zásadní. výsledcích.
 
-## <a name="using-the-speech-recognition-service-from-your-apps"></a>Pomocí služby rozpoznávání řeči z vašich aplikací
+> [!NOTE]
+> Tato funkce není podporována při použití REST API rozpoznávání řeči.
 
-Službu rozpoznávání řeči Microsoft poskytuje dva způsoby, jak vývojáři přidat rozpoznávání řeči do svých aplikací.
+### <a name="speech-application-states"></a>Stavy aplikace Speech
 
-- [Rozhraní REST API](GetStarted/GetStartedREST.md): Vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
-- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): Pro pokročilé funkce můžete vývojáři stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC).
+Kroky, které provedete při povolování vstupu řeči ve vaší aplikaci, se trochu liší od kroků pro jiné formy vstupu, jako je kliknutí myší nebo klepnutí na prst. Je nutné sledovat, kdy aplikace naslouchá mikrofonu a odesílá data do služby pro rozpoznávání řeči, když čeká na odpověď služby a když je ve stavu nečinnosti. Vztah mezi těmito stavy je zobrazený v diagramu níže.
+
+![Diagram stavu aplikace Speech](Images/speech-application-state-diagram.png)
+
+Vzhledem k tomu, že je služba Microsoft Speech Service zapojena do některých stavů, protokol služby definuje zprávy, které pomůžou přechod aplikace mezi stavy. Vaše aplikace musí interpretovat a reagovat na tyto zprávy protokolu pro sledování a správu stavů aplikace pro rozpoznávání řeči.
+
+## <a name="using-the-speech-recognition-service-from-your-apps"></a>Používání služby rozpoznávání řeči z vašich aplikací
+
+Služba rozpoznávání řeči od Microsoftu nabízí dva způsoby, jak vývojářům přidávat do svých aplikací řeč.
+
+- [Rozhraní REST API](GetStarted/GetStartedREST.md): Vývojáři můžou použít volání HTTP ze svých aplikací do služby pro rozpoznávání řeči.
+- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): V případě pokročilých funkcí můžou vývojáři stahovat klientské knihovny Microsoft Speech a propojit je s aplikacemi.  Klientské knihovny jsou k dispozici na různých platformách (Windows, Android, iOS) pomocí různýchC#jazyků (, Java, JavaScript, ObjectiveC).
 
 | Případy použití | [Rozhraní REST API](GetStarted/GetStartedREST.md) | [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Převést krátké mluvené, například příkazy (s zvuku délka < 15) bez prozatímní výsledky | Ano | Ano |
-| Převod dlouhé zvuku (> 15 s) | Ne | Ano |
-| Zvukový Stream s prozatímní požadované výsledky | Ne | Ano |
-| Vysvětlení text převést z zvuk pomocí služby LUIS | Ne | Ano |
+| Převeďte krátký mluvený zvuk, například příkazy (velikost zvuku < 15 s) bez dočasných výsledků. | Ano | Ano |
+| Převod dlouhého zvuku (> 15 s) | Ne | Ano |
+| Streamování zvuku s požadovanými průběžnými výsledky | Ne | Ano |
+| Pochopení textu převedeného ze zvuku pomocí LUIS | Ne | Ano |
 
- Pokud váš jazyk nebo platformu ještě nemá žádné sady SDK, můžete vytvořit vlastní implementaci na základě [protokol dokumentaci](API-Reference-REST/websocketprotocol.md).
+ Pokud váš jazyk nebo platforma ještě nemá sadu SDK, můžete vytvořit vlastní implementaci založenou na [dokumentaci k protokolu](API-Reference-REST/websocketprotocol.md).
 
-## <a name="recognition-modes"></a>Rozpoznávání režimy
+## <a name="recognition-modes"></a>Režimy rozpoznávání
 
-Existují tři režimy rozpoznávání: `interactive`, `conversation`, a `dictation`. Režim rozpoznávání upraví na základě toho, jak se uživatelé mohou mluvit rozpoznávání řeči. Zvolte odpovídající rozpoznávání režim pro vaši aplikaci.
+Existují tři režimy rozpoznávání: `interactive`, `conversation` `dictation`a. Režim rozpoznávání upraví rozpoznávání řeči na základě toho, jak se uživatelé budou muset mluvit. Vyberte pro svou aplikaci vhodný režim rozpoznávání.
 
 > [!NOTE]
-> Rozpoznávání režimy může mít různé chování v protokolu REST, než v protokolu WebSocket. Například rozhraní REST API nepodporuje průběžné rozpoznávání i v režimu takovou konverzaci či diktování.
+> Režimy rozpoznávání můžou mít v protokolu REST jiné chování než v protokolu WebSocket. REST API například nepodporuje nepřetržité rozpoznávání, a to ani v režimu konverzace nebo diktování.
 > [!NOTE]
-> Tyto režimy platí při přímo použít protokol REST nebo pomocí protokolu WebSocket. [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) použít jiné parametry pro určení režimu rozpoznávání. Další informace najdete v klientské knihovně podle vašeho výběru.
+> Tyto režimy se použijí, pokud přímo používáte protokol REST nebo WebSocket. [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) používají jiné parametry pro určení režimu rozpoznávání. Další informace najdete v klientské knihovně podle vašeho výběru.
 
-Microsoft Speech Service vrátí pouze jeden výsledek rozpoznání fráze ve všech režimech rozpoznávání. Platí limit 15 sekund pro jakékoli jedné utterance.
+Služba Microsoft Speech vrátí pro všechny režimy rozpoznávání pouze jeden výsledek fráze pro rozpoznávání. Pro všechny jednotlivé utterance se omezuje 15 sekund.
 
 ### <a name="interactive-mode"></a>Interaktivní režim
 
-V `interactive` režimu, uživatel provede krátký požadavků a očekává, že aplikace provádět akce v reakci.
+V `interactive` režimu provádí uživatel krátké požadavky a očekává, že aplikace provede akci v reakci.
 
-Následující vlastnosti jsou běžně aplikací interaktivní režim:
+Následující vlastnosti jsou typické pro aplikace v interaktivním režimu:
 
-- Uživatelé věděli, že jsou mluvený k počítači a ne do jiného lidské.
-- Uživatelům aplikace vědět předem chce říct, založené na to, co chtějí aplikace provést.
-- Projevy obvykle o poslední 2-3 sekundy.
+- Uživatelé ví, že mluví na počítači, a ne na jiný člověk.
+- Uživatelé aplikace znají čas, co chtějí, na základě toho, co chtějí aplikace dělat.
+- Projevy obvykle poslední asi 2-3 sekund.
 
 ### <a name="conversation-mode"></a>Režim konverzace
 
-V `conversation` režim, uživatelé se zabývají lidských lidských konverzace.
+V `conversation` režimu se uživatelé účastní konverzace mezi lidmi.
 
 Následující vlastnosti jsou typické pro aplikace v režimu konverzace:
 
-- Uživatelé vědí, jsou někým jiným osobně.
-- Rozpoznávání řeči rozšiřuje tím, že jedno nebo obě účastníci mluvené slovo text zobrazí lidské konverzace.
-- Uživatelé vždy nezamýšlíte chce říct.
-- Uživatelé často používají slang a dalších neformální řeči.
+- Uživatelé ví, že mluví s jinou osobou.
+- Rozpoznávání řeči vylepšuje konverzace pro člověka tím, že umožňuje jednomu nebo oběma účastníkům zobrazit mluvený text.
+- Uživatelé neplánují vždycky, co chtějí vyslovit.
+- Uživatelé často používají slangem a další neformální řeč.
 
-### <a name="dictation-mode"></a>Diktování
+### <a name="dictation-mode"></a>Režim diktování
 
-V `dictation` režim, uživatelé vyslovení projevy delší do aplikace pro další zpracování.
+V `dictation` režimu uživatelé přebírají po delší dobu projevy do aplikace pro další zpracování.
 
-Následující vlastnosti jsou běžně diktování režim aplikací:
+Následující vlastnosti jsou typické pro aplikace v režimu diktování:
 
-- Uživatelé vědí, že jsou kdekoliv na počítač.
-- Uživatelům se zobrazí textové výsledky rozpoznávání řeči.
-- Uživatelé často plánování, co chtějí Řekněme, že a použít formálnější jazyk.
-- Uživatelé využívají úplné věty, posledních 5 až 8 sekund.
+- Uživatelé ví, že mluví k počítači.
+- Uživatelům se zobrazí výsledky textu rozpoznávání řeči.
+- Uživatelé často plánují, co chtějí a používají další formální jazyk.
+- Uživatelé používají úplné věty s poslední 5-8 sekundami.
 
 > [!NOTE]
-> V režimech diktování a konverzace Microsoft Speech Service vracet částečné výsledky. Místo toho službu vrátí výsledky stabilní frázi po nečinnosti hranice v zvukový datový proud. Microsoft může vylepšovat protokolu řeči vylepšit uživatelské prostředí v těchto režimech průběžné rozpoznávání.
+> V režimech diktování a konverzace služba Microsoft Speech nevrací částečné výsledky. Místo toho vrátí služba výsledky stabilní fráze po hranicích ticha ve zvukovém streamu. Společnost Microsoft může vylepšit protokol řeči pro zlepšení uživatelského prostředí v těchto režimech nepřetržitého rozpoznávání.
 
-## <a name="recognition-languages"></a>Rozpoznávání jazyků
+## <a name="recognition-languages"></a>Jazyky rozpoznávání
 
-*Rozpoznávání jazyka* Určuje jazyk, který přednáší uživatel vaší aplikace. Zadejte *rozpoznávání jazyka* s *jazyk* parametr dotazu adresy URL pro připojení. Hodnota *jazyk* dotazu parametr používá značky jazyka IETF [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag), a **musí** být jeden z těchto jazyků, které podporují rozhraní API pro rozpoznávání řeči. Úplný seznam jazyků podporovaných službou Speech najdete na stránce [podporované jazyky](API-Reference-REST/supportedlanguages.md).
+*Jazyk rozpoznávání* určuje jazyk, ve kterém uživatel aplikace mluví. Zadejte *jazyk rozpoznávání* s parametrem dotazu adresa URL *jazyka* v připojení. Hodnota parametru dotazu *jazyka* používá značku jazyka IETF [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag)a **musí** být jedním z jazyků podporovaných rozhraním API pro rozpoznávání řeči. Úplný seznam jazyků podporovaných službou Speech Service najdete na stránce [podporované jazyky](API-Reference-REST/supportedlanguages.md).
 
-Microsoft Speech Service odmítá požadavky neplatné připojení zobrazením `HTTP 400 Bad Request` odpovědi. Neplatný požadavek je jeden, který:
+Služba Microsoft Speech Service odmítne neplatné požadavky na připojení zobrazením `HTTP 400 Bad Request` odpovědi. Neplatná žádost je jedna z těchto akcí:
 
-- Nezahrnuje *jazyk* hodnotu parametru.
-- Zahrnuje *jazyk* parametr, který je nesprávně naformátováno dotazu.
-- Zahrnuje *jazyk* parametr, který není jeden z těchto jazyků podporu dotazu.
+- Nezahrnuje hodnotu parametru dotazu *jazyka* .
+- Obsahuje parametr dotazu *jazyka* , který je nesprávně naformátován.
+- Obsahuje parametr dotazu *jazyka* , který není jedním z jazyků podpory.
 
-Můžete vytvářet aplikace, která podporuje jednu nebo všechny jazyky, které jsou podporovány službou.
+Můžete se rozhodnout sestavit aplikaci, která podporuje jeden nebo všechny jazyky, které služba podporuje.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-V následujícím příkladu se aplikace používá *konverzace* režimu rozpoznávání řeči pro anglickou mluvčího USA.
+V následujícím příkladu aplikace používá režim rozpoznávání řeči v *konverzaci* pro anglickou verzi mluvčího.
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-## <a name="transcription-responses"></a>Přepis odpovědi
+## <a name="transcription-responses"></a>Přepisující odpovědi
 
-Odpovědi na určené k transkripci vrátí text převedený od zvuk klientům. Přepis odpovědí obsahuje následující pole:
+Přepisující odpovědi vrátí převedený text ze zvuk do klientů. Odpověď přepisu obsahuje následující pole:
 
-- `RecognitionStatus` Určuje stav uznání. Možné hodnoty jsou uvedeny v následující tabulce.
+- `RecognitionStatus`Určuje stav rozpoznávání. Možné hodnoty jsou uvedeny v následující tabulce.
 
-| Status | Popis |
+| Stav | Popis |
 | ------------- | ---------------- |
-| Úspěch | Rozpoznávání byla úspěšná a ZobrazenýText pole je k dispozici |
-| NoMatch | V zvukový datový proud byl zjištěn řeči, ale žádná slova v cílovém jazyce se shoda našla. [Status(#nomatch-recognition-status) rozpoznávání NoMatch součásti pro další podrobnosti naleznete v tématu  |
-| InitialSilenceTimeout | Začátek zvukový datový proud obsahovala pouze nečinnosti a službu vypršel časový limit čekání na řeč |
-| BabbleTimeout | Začátek zvukový datový proud obsažené pouze šum a službu vypršel časový limit čekání na řeč |
-| Chyba | Rozpoznávání služby došlo k interní chybě a nemůže pokračovat |
+| Úspěch | Rozpoznávání bylo úspěšné a pole zobrazenýtext je k dispozici. |
+| Neshoda | V zvukový datový proud byl zjištěn řeči, ale žádná slova v cílovém jazyce se shoda našla. Další podrobnosti najdete v článku [stav rozpoznávání neshody (#nomatch-Recognition-status).  |
+| InitialSilenceTimeout | Začátek zvukového datového proudu obsahoval pouze tiché a při čekání na řeč vypršel časový limit služby. |
+| BabbleTimeout | Začátek zvukového streamu obsahoval jenom šum a služba vypršel časový limit při čekání na řeč. |
+| Chyba | Služba pro rozpoznávání zjistila vnitřní chybu a nemůže pokračovat. |
 
-- `DisplayText` představuje rozpoznanou frázi poté, co se použily malá a velká písmena, interpunkce a inverzní. text normalizace a vulgárních výrazů má byla maskována hvězdičkami. Je k dispozici pole ZobrazenýText *pouze* Pokud `RecognitionStatus` pole má hodnotu `Success`.
+- `DisplayText`představuje rozpoznanou frázi, která je použita pro normalizaci, interpunkci a inverzní text – byly aplikovány a vulgární znaky byly maskovány hvězdičkami. Pole zobrazenýtext je k dispozici *pouze* v `RecognitionStatus` případě, že pole `Success`má hodnotu.
 
-- `Offset` Určuje posun (v jednotkách 100 nanosekund), ve kterém byl rozpoznán frázi, vzhledem k začátku zvukový datový proud.
+- `Offset`Určuje posun (v jednotkách 100 – nanosekund), na kterých byla fráze rozpoznaná, vzhledem k začátku zvukového datového proudu.
 
-- `Duration`Určuje dobu (v jednotkách 100 nanosekund) Tato fráze řeči.
+- `Duration`Určuje dobu trvání (v jednotkách 100 – nanosekund) této fráze řeči.
 
-V případě potřeby, vrátí odpověď určené k transkripci Další informace. Zobrazit [výstupní formát](#output-format) jak vrátit podrobnější výstupy.
+V případě potřeby vrátí odpověď přepisu více informací. Podrobnosti o tom, jak vracet podrobnější výstupy, najdete v tématu [výstupní formát](#output-format) .
 
-Microsoft Speech Service podporuje další určené k transkripci proces, který zahrnuje přidání malá a velká písmena a interpunkční znaménka, maskování vulgárních výrazů a normalizace text, který se běžné formuláře. Například pokud uživatel mluví slovní spojení reprezentována slova "připomenout si chcete koupit šest Iphony", hlasových služeb od Microsoftu se vrátí přepisována text "Připomenout si chcete koupit 6 Iphony." Proces, který převádí slovo "šest" číslo "6" se nazývá *inverzní normalizace Text* (*není* zkráceně).
+Služba Microsoft Speech Service podporuje další přepisný proces, který zahrnuje přidávání velkých a malých písmen, vkládání vulgárních výrazů a normalizaci textu do běžných forem. Pokud uživatel například vystupuje frázi, která se připomínat k nákupu šesti iPhone, služba Microsoft Speech Services vrátí přepisu text s upozorněním na nákup 6 iPhone. Proces, který převede slovo "6" na číslo "6", se nazývá *normalizace textu s inverzními texty* (*vytvořené* pro krátké).
 
-### <a name="nomatch-recognition-status"></a>Stav NoMatch rozpoznávání
+### <a name="nomatch-recognition-status"></a>Nerozlišovat stav rozpoznávání
 
-Vrátí odpověď určené k transkripci `NoMatch` v `RecognitionStatus` při Microsoft Speech Service zjistí řeči v zvukový datový proud, ale není schopen odpovídat tento převod řeči na jazyk gramatiky se používají pro žádost. Například *NoMatch* situaci může dojít, pokud uživatel řekne něco v němčině, když rozlišovač očekává Americkou angličtinu jako mluvený jazyk. Vzor zvukového průběhu utterance by být indikována přítomnost lidské řeči, ale žádná slova, kterým se mluví by neodpovídá anglické lexikonu USA používá nástroj pro rozpoznávání.
+Odpověď přepisu se `NoMatch` vrátí `RecognitionStatus` v případě, že služba Microsoft Speech detekuje rozpoznávání řeči ve zvukovém datovém proudu, ale není schopna porovnat tento hlas s jazykovou gramatikou použitou pro danou žádost. Například podmínka *neshody* může nastat, pokud uživatel uvede něco v němčině, když nástroj pro rozpoznávání očekává angličtinu jako mluvený jazyk. Vzorek signálu utterance by znamenal přítomnost lidského řeči, ale žádné z mluvených slov by se neshodovalo s anglickým lexikonem používaným nástrojem pro rozpoznávání.
 
-Jiné *NoMatch* podmínka nastane, pokud je algoritmus rozpoznávání nebyla nalezena přesná shoda pro zvuky součástí zvukový datový proud. Pokud dojde k tomuto stavu může vést Microsoft Speech Service *speech.hypothesis* zprávy, které obsahují *hodnoty text* vytvoří, ale *speech.phrase*zprávu, ve kterém *RecognitionStatus* je *NoMatch*. Tato podmínka je normální; provedete nesmí nevyvozujte předpoklady o přesnost nebo věrnost textu *speech.hypothesis* zprávy. Kromě toho můžete nesmí se předpokládá, že vzhledem k tomu, že Microsoft Speech Service vytvoří *speech.hypothesis* zprávy, které služba je schopná vytvořit *speech.phrase* zprávy s  *RecognitionStatus* *úspěch*.
+Pokud algoritmus rozpoznávání nedokáže najít přesnou shodu zvuků obsažených ve zvukovém datovém proudu, dojde k dalšímu stavu *neshody* . Pokud k tomuto stavu dojde, může služba Microsoft Speech Service vytvořit *hlasové zprávy. hypotézy* , které obsahují *hypotetické text* , ale vytvoří zprávu *Speech. phrase* , na které se *RecognitionStatus* *neshoduje.* . Tato podmínka je normální. nemusíte dělat žádné předpoklady týkající se přesnosti nebo věrnosti textu ve zprávě *Speech. hypotéz* . Kromě toho nesmíte předpokládat, že protože služba Microsoft Speech vytvoří zprávy *Speech. hypotéz* , které služba dokáže vytvořit *řeč.* zpráva s *RecognitionStatus* *úspěchem*.
 
 ## <a name="output-format"></a>Výstupní formát
 
-Microsoft Speech Service může vrátit různé formáty datových částí v určené k transkripci odpovědi. Struktury JSON jsou všechny datové části.
+Služba Microsoft Speech Service může vracet nejrůznější formáty datových částí v rámci odpovědí v přepisu. Všechny datové části jsou struktury JSON.
 
-Výsledný formát frázi můžete řídit tak, že zadáte `format` parametr dotazu adresy URL. Ve výchozím nastavení, tato služba vrátí `simple` výsledky.
+Můžete řídit formát výsledku fráze zadáním `format` parametru dotazu URL. Ve výchozím nastavení vrátí `simple` služba výsledky.
 
 | Formát | Popis |
 |-----|-----|
-| `simple` | Výsledkem zjednodušené frázi obsahující stav rozpoznávání a rozpoznaný text v zobrazení formuláře. |
-| `detailed` | Stav rozpoznávání a N-best seznam výsledků frázi, kde každou frázi výsledek obsahuje všechny čtyři způsoby rozpoznávání a skóre spolehlivosti. |
+| `simple` | Zjednodušený výsledek fráze obsahující stav rozpoznávání a rozpoznaný text ve formě zobrazení |
+| `detailed` | Stav rozpoznávání a N-nejlepších výsledků fráze, kde každý výsledek fráze obsahuje všechny čtyři formuláře pro rozpoznávání a hodnocení spolehlivosti. |
 
-`detailed` Formát obsahuje [hodnoty N-best](#n-best-values), kromě `RecognitionStatus`, `Offset`, a `duration`, v odpovědi.
+`Offset` `duration` [](#n-best-values) `RecognitionStatus`Formát obsahuje N-nejlepších hodnot kromě, a v odpovědi. `detailed`
 
-### <a name="n-best-values"></a>N-best hodnoty
+### <a name="n-best-values"></a>N-nejlepší hodnoty
 
-Naslouchacích procesů, zda překladatelem nebo strojově, mohl nikdy být jistý, že jsou vyslyšeni *přesně* co je slyšet. Můžete přiřadit naslouchací proces *pravděpodobnost* jenom na konkrétní výklad utterance.
+Naslouchací procesy, ať už jde o člověka nebo počítač, nikdy nemusejí mít jistotu, že se jim *přesně* dozvěděly, co se hovoří. Naslouchací proces může přiřadit *pravděpodobnost* pouze konkrétnímu výkladu utterance.
 
-Za běžných podmínek, když mluvíme ostatním uživatelům se kterými často interagují mají uživatelé vysoká pravděpodobnost rozpoznávání slova, která se používá. Naslouchacích procesů založených na počítačích řeči snažit dosáhnout podobné úrovně přesnosti a správné podmínek [jejich dosažení parity s člověka](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
+V běžných podmínkách platí, že při komunikaci s dalšími uživateli, se kterými často pracují, mají lidé vysokou pravděpodobnost rozpoznat slova, která byla mluvené řeči. Procesy rozpoznávání řeči založené na počítačích se snaží dosáhnout podobných úrovní přesnosti a za správných podmínek [dosahují parity pomocí člověka](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
-Algoritmy, které se používají v rozpoznávání řeči prozkoumat alternativní interpretace utterance při normálním zpracování. Obvykle tyto možnosti se zahodí, jak se stává legitimaci a místo toho použití jedné interpretace náročný. V méně než optimální podmínky ale modulu pro rozpoznávání řeči skončí se seznam možných alternativních interpretace. Horní *N* alternativy v tomto seznamu se nazývají *seznamu N-best*. Každý alternativu je přiřazen [skóre spolehlivosti](#confidence). Spolehlivosti skóre rozsahu od 0 do 1. Skóre 1 představuje nejvyšší úroveň spolehlivosti. Skóre 0 představuje nejnižší úroveň spolehlivosti.
-
-> [!NOTE]
-> Počet položek v seznamu N-best lišit napříč více projevy. Počet položek, které se může lišit napříč více rozpoznávání z *stejné* utterance. Tato varianta je fyzická a očekávaný výsledek pravděpodobnostní povahy algoritmus rozpoznávání řeči.
-
-Obsahuje každou položku v seznamu N-best
-
-- `Confidence`, která představuje [skóre spolehlivosti](#confidence) této položky.
-- `Lexical`, což je [lexikální formuláře](#lexical-form) rozpoznaný textu.
-- `ITN`, což je [není formuláře](#itn-form) rozpoznaný textu.
-- `MaskedITN`, což je [maskované není formuláře](#masked-itn-form) rozpoznaný textu.
-- `Display`, což je [formulář pro zobrazení](#display-form) rozpoznaný textu.
-
-### Skóre spolehlivosti <a id="confidence"></a>
-
-Skóre spolehlivosti jsou nedílnou součástí systémů rozpoznávání řeči. Microsoft Speech Service obdrží hodnocení spolehlivosti od *spolehlivosti třídění*. Microsoft trénovat třídění důvěru v rámci sady funkcí, které jsou určeny k lze uchovávat rozlišit správné a nesprávné rozpoznávání. Skóre spolehlivosti jsou vyhodnocovány pro jednotlivá slova a celý projevy.
-
-Pokud se rozhodnete použít skóre spolehlivosti, které jsou vrácené službou, mějte na paměti následující chování:
-
-- Skóre spolehlivosti lze porovnat pouze v rámci stejné režim rozpoznávání a jazyk. Není výsledkem porovnání skóre mezi různé jazyky nebo rozpoznávání různé režimy. Skóre spolehlivosti v režimu interaktivního rozpoznávání má například *žádné* spojitost s míněním skóre spolehlivosti v režimu diktování.
-- Skóre spolehlivosti jsou nejvhodnější na omezenou sadu projevy. Je přirozeně vysoký stupeň proměnlivé skóre pro velké sady projevy.
-
-Pokud se rozhodnete použít hodnotu skóre spolehlivosti jako *prahová hodnota* na který vaše aplikace funguje, používat k navázání prahové hodnoty rozpoznávání řeči.
-
-- Spusťte rozpoznávání řeči na reprezentativní vzorek projevy pro vaši aplikaci.
-- Shromážděte skóre spolehlivosti pro každý rozpoznávání v ukázkové sadě.
-- Základní prahovou hodnotu na některé percentilu výrazné zvýšení sebedůvěry pro tuto ukázku.
-
-Žádná hodnota jednoduchá prahová hodnota není vhodná pro všechny aplikace. Přijatelné jistoty pro jednu aplikaci může nepřijatelné pro jinou aplikaci.
-
-### <a name="lexical-form"></a>Lexikální formuláře
-
-Lexikální formuláře je rozpoznaný text, přesně jak k němu utterance a bez interpunkce nebo malá a velká písmena. Například by být lexikální formulář na adresu "1020 Enterprise způsob" *deset dvacet enterprise způsob*, za předpokladu, že to byla používaný tímto způsobem. Lexikální formu větu "připomenout si chcete koupit 5 tužky" je *připomenout si chcete koupit pět tužky*.
-
-Lexikální formuláře je nejvhodnější pro aplikace, které potřebují k provedení normalizace nestandardní text. Lexikální formulář je také vhodné pro aplikace, které potřebují nezpracované rozpoznávání slova.
-
-Ve formuláři lexikální nikdy maskovaná vulgárních výrazů.
-
-### <a name="itn-form"></a>NENÍ formuláře
-
-Normalizace text je proces převodu textu z jednoho formuláře do jiného "canonical" formuláře. Například telefonní číslo "555-1212" může být převedena na kanonický tvar *pět pěti pět jeden dvě jeden dvě*. *Inverzní* normalizace text (není) vrátí tento proces převodu slova "pět pěti pět jeden dvě jeden dvě" pro obrácenou kanonický tvar *555-1212*. NENÍ formu výsledek rozpoznání nezahrnuje malá a velká písmena nebo interpunkční znaménka.
-
-Formulář není je nejvhodnější pro aplikace, které působí na rozpoznaný text. Například aplikace, která umožňuje uživateli mluvit hledané termíny a pak používá tyto podmínky v dotazu webové by formulář není. Ve formuláři není nikdy maskovaná vulgárních výrazů. Maskovat vulgárních výrazů, použijte *maskované není formuláře*.
-
-### <a name="masked-itn-form"></a>Maskované není formuláře
-
-Protože vulgárních výrazů je přirozeně součástí mluvený jazyk, Microsoft Speech Service rozpozná taková slova a slovní spojení, se kterým se mluví. Vulgárních výrazů může však být vhodný pro všechny aplikace, zejména aplikací s cílovou skupinou uživatelů s omezeným přístupem, dospělá osoba.
-
-Maskované formulář není platí vulgárních výrazů maskování na formulář normalizace inverzní textu. Maskovat vulgárních výrazů, nastavte hodnotu vlastnosti hodnotu parametru vulgárních výrazů `masked`. Když maskované vulgární slova, které jsou rozpoznány jako součást slovníku vulgárních výrazů jazyce jsou nahrazeny hvězdičkami. Příklad: *připomenout si chcete koupit 5 *** tužky*. Maskované není formu výsledek rozpoznání nezahrnuje malá a velká písmena nebo interpunkční znaménka.
+Algoritmy používané v rozpoznávání řeči prozkoumat alternativní interpretace utterance jako součást normálního zpracování. Obvykle se tyto alternativy zahodí, protože legitimace, která je ve prospěch jediného výkladu, se stává zahlcením. V méně než optimálních podmínkách se ale nástroj pro rozpoznávání řeči dokončí se seznamem alternativních možných interpretací. Horních *n* alternativních možností v tomto seznamu se nazývají *N-nejlepší seznam*. Každé Alternative je přiřazeno [skóre spolehlivosti](#confidence). Výsledky spolehlivosti jsou v rozsahu od 0 do 1. Skóre 1 představuje nejvyšší úroveň důvěry. Skóre 0 představuje nejnižší úroveň důvěry.
 
 > [!NOTE]
-> Pokud hodnota parametru dotazu vulgárních výrazů nastavená na `raw`, maskované není formuláře je stejný jako formulář není. Vulgárních výrazů je *není* zakryté hvězdičkami.
+> Počet položek v seznamu N-nejlepších se liší v několika projevy. Počet položek se může v různých rozlišeních *stejného* utterance lišit. Tato variace je přirozeným a očekávaným výsledkem pravděpodobnostní povahy algoritmu pro rozpoznávání řeči.
+
+Každá položka vrácená v seznamu N-nejlepších obsahuje
+
+- `Confidence`, který představuje [skóre spolehlivosti](#confidence) této položky.
+- `Lexical`, což je [lexikální forma](#lexical-form) rozpoznaného textu.
+- `ITN`, což je [vytvořené forma](#itn-form) rozpoznaného textu.
+- `MaskedITN`, což je [MASKOVANÝ vytvořené tvar](#masked-itn-form) rozpoznaného textu.
+- `Display`, což je [formulář pro zobrazení](#display-form) rozpoznaného textu.
+
+### Hodnocení spolehlivosti<a id="confidence"></a>
+
+Hodnocení spolehlivosti je nedílnou součástí systémů rozpoznávání řeči. Služba Microsoft Speech získává hodnocení spolehlivosti od *klasifikátoru spolehlivosti*. Microsoft napomáhá klasifikátoru spolehlivosti pro sadu funkcí, které jsou určené k maximálnímu rozlišení mezi správným a nesprávným rozpoznáváním. Hodnocení spolehlivosti se vyhodnocuje pro jednotlivá slova a celá projevya.
+
+Pokud se rozhodnete použít hodnocení spolehlivosti, která jsou vrácena službou, pamatujte na následující chování:
+
+- Hodnocení spolehlivosti lze porovnat pouze v rámci stejného režimu a jazyka rozpoznávání. Neporovnávání výsledků mezi různými jazyky nebo různými režimy rozpoznávání. Například hodnocení spolehlivosti v interaktivním režimu *rozpoznávání nemá korelaci k* skóre spolehlivosti v režimu diktování.
+- Hodnocení spolehlivosti se nejlépe využije u omezené sady projevy. V hodnoceních pro velkou sadu projevy je přirozeně vynikající stupeň proměnlivosti.
+
+Pokud se rozhodnete použít hodnotu skóre spolehlivosti jako *prahovou* hodnotu, na které vaše aplikace funguje, vytvořte prahové hodnoty pomocí rozpoznávání řeči.
+
+- Provede rozpoznávání řeči na reprezentativní vzorek projevy pro vaši aplikaci.
+- Shromážděte hodnocení spolehlivosti pro každé rozpoznávání v sadě ukázek.
+- Základ prahové hodnoty pro určitý percentil v určité ukázce.
+
+Žádná jedna prahová hodnota není vhodná pro všechny aplikace. Přijatelné hodnocení spolehlivosti pro jednu aplikaci může být pro jinou aplikaci nepřijatelné.
+
+### <a name="lexical-form"></a>lexikální formulář
+
+Lexikální formulář je rozpoznaný text, přesně jak k němu došlo v utterance a bez interpunkce nebo kapitalizace. Například lexikální tvar adresy "1020 Enterprise Way" by byl *10 20 podnikového způsobu*za předpokladu, že byl tímto způsobem vymluvené. Lexikální forma věty "připomenout mě k nákupu 5 tužky" *vám umožní koupit si pět tužk*.
+
+Lexikální formulář je nejvhodnější pro aplikace, které potřebují provádět normalizaci nestandardních textů. Lexikální formulář je také vhodný pro aplikace, které potřebují nezpracované výrazy rozpoznávání.
+
+Vulgární výrazy nejsou nikdy maskovány v lexikálním formuláři.
+
+### <a name="itn-form"></a>Formulář vytvořené
+
+Normalizace textu je proces převodu textu z jednoho formuláře do jiného kanonického tvaru. Například telefonní číslo "555-1212" může být převedeno na kanonický tvar *5 5 5 1 2 1 2*. Normalizace *inverzního* textu (vytvořené) obrátí tento proces a převede slova "5 5 5 1 2 1 2" na obrácený kanonický tvar *555-1212*. VYTVOŘENÉ forma výsledku rozpoznávání nezahrnuje velká a malá písmena.
+
+Formulář vytvořené je nejvhodnější pro aplikace, které fungují na rozpoznaném textu. Například aplikace, která umožňuje uživateli mluvit se vyhledávanými výrazy a pak tyto podmínky používá ve webovém dotazu, by používala formu vytvořené. Vulgární výrazy nejsou ve formuláři vytvořené nikdy maskovány. K maskování vulgárních výrazů použijte *vytvořené formulář s maskou*.
+
+### <a name="masked-itn-form"></a>Maskovaný vytvořené formulář
+
+Vzhledem k tomu, že vulgární fráze je přirozeně součástí mluveného jazyka, služba Microsoft Speech při jejich mluveném rozpoznání tato slova a fráze rozpozná. Vulgární výrazy ale nemusí být vhodné pro všechny aplikace, zejména pro aplikace s omezenou, nedospělý cílovou skupinou uživatelů.
+
+VYTVOŘENÉový formulář používá maskování vulgárních výrazů u formy normalizace inverzního textu. Chcete-li maskovat vulgární výrazy, nastavte hodnotu parametru vulgárních výrazů na `masked`. Při maskování vulgárních výrazů se slova rozpoznaná jako součást slovníku vulgárního jazyka nahrazují hvězdičkami. Například: *připomenout mi k nákupu 5 ** * * * tužky. Maskovaný vytvořené tvar výsledku rozpoznávání nezahrnuje velká a malá písmena.
+
+> [!NOTE]
+> Pokud je hodnota parametru dotazu vulgárních výrazů nastavená `raw`na, je vytvořené tvar s maskou stejný jako formulář vytvořené. Vulgární výrazy *nejsou* maskovány.
 
 ### <a name="display-form"></a>Formulář pro zobrazení
 
-Interpunkce a malá a velká písmena signál, kam chcete umístit důraz, pokud chcete pozastavit a tak dále, což usnadňuje pochopení textu. Formulář pro zobrazení přidá do výsledky rozpoznávání, takže formuláři nejvhodnější pro aplikace, které se zobrazí text mluvené slovo interpunkce a malá a velká písmena.
+Interpunkční znaménka a velká písmena, kde se má zdůraznit zdůraznění, kde se mají porušit a tak dále, což usnadňuje pochopení textu. Formulář pro zobrazení přidá interpunkci a kapitalizace do výsledků rozpoznávání, takže je nejvhodnějším formulářem pro aplikace, které zobrazují mluvený text.
 
-Protože formulář pro zobrazení rozšiřuje maskované formulář není, můžete nastavit hodnotu parametru vulgárních výrazů `masked` nebo `raw`. Pokud je hodnota nastavena na `raw`, rozpoznávání výsledky budou zahrnovat všechny vulgárních výrazů používaný tímto uživatelem. Pokud je hodnota nastavena na `masked`, slova rozpoznán jako část slovníku vulgárních výrazů jazyce jsou nahrazeny hvězdičkami.
+Vzhledem k tomu, že formulář pro zobrazení rozšiřuje maskovaný formulář vytvořené, můžete nastavit hodnotu parametru vulgárních `masked` výrazů `raw`na nebo. Pokud je hodnota nastavena na `raw`, výsledky rozpoznávání budou zahrnovat jakékoli vulgární výrazy, které uživatel používá. Pokud je hodnota nastavená na `masked`, nahradí se slova rozpoznaná jako součást slovníku vulgárních výrazů v podobě hvězdiček.
 
 ### <a name="sample-responses"></a>Ukázkové odpovědi
 
-Struktury JSON jsou všechny datové části.
+Všechny datové části jsou struktury JSON.
 
-Formát datové části `simple` frázi výsledek:
+Formát datové části výsledku `simple` fráze:
 
 ```json
 {
@@ -277,7 +277,7 @@ Formát datové části `simple` frázi výsledek:
 }
 ```
 
-Formát datové části `detailed` frázi výsledek:
+Formát datové části výsledku `detailed` fráze:
 
 ```json
 {
@@ -303,28 +303,28 @@ Formát datové části `detailed` frázi výsledek:
 }
 ```
 
-## <a name="profanity-handling-in-speech-recognition"></a>Zpracování vulgárních výrazů v rozpoznávání řeči
+## <a name="profanity-handling-in-speech-recognition"></a>Rozpoznávání řeči – zpracování vulgárních výrazů
 
-Microsoft Speech Service rozpozná všechny formy lidské řeči, včetně slova a slovní spojení, které by mnoho lidí klasifikovat jako "neuctivosti." Můžete řídit, jak služba zpracovává pomocí vulgárních výrazů *vulgárních výrazů* parametr dotazu. Ve výchozím nastavení, služby zakrývá vulgárních výrazů v *speech.phrase* výsledky a nevrací *speech.hypothesis* zprávy, které obsahují vulgárních výrazů.
+Služba Microsoft Speech Service rozpoznává všechny formy lidského hlasu, včetně slov a frází, které by řada lidí mohla klasifikovat jako "vulgárních výrazů". Pomocí parametru dotazu *vulgárních výrazů* můžete řídit, jak služba zpracovává vulgární výrazy. Ve výchozím nastavení neexistují vulgární výrazy v *rozpoznávání řeči. výsledky fráze* a nevrací *Speech. hypotézové* zprávy, které obsahují vulgární výrazy.
 
-| *Vulgárních výrazů* hodnota | Popis |
+| Hodnota *vulgárních výrazů* | Popis |
 | - | - |
-| `masked` | Masky vulgárních výrazů hvězdičkami. Toto chování je výchozí nastavení. |
-| `removed` | Zruší všechny výsledky vulgárních výrazů. |
-| `raw` | Rozpozná a vrátí vulgárních výrazů v všechny výsledky. |
+| `masked` | Vulgární výrazy masek hvězdičkami. Toto chování je výchozí. |
+| `removed` | Odstraní vulgární výrazy ze všech výsledků. |
+| `raw` | Rozpoznává a vrátí vulgární výrazy ve všech výsledcích. |
 
-### <a name="profanity-value-masked"></a>Hodnota vulgárních výrazů `Masked`
+### <a name="profanity-value-masked"></a>Hodnota vulgárních výrazů`Masked`
 
-Maskovat vulgárních výrazů, nastavte *vulgárních výrazů* parametr na hodnotu dotazu *maskované*. Když *vulgárních výrazů* parametr dotazu má tuto hodnotu, nebo není zadaná pro žádost službu *masky* vulgárních výrazů. Služba provádí maskování nahrazením vulgárních výrazů v výsledky rozpoznávání hvězdičkami. Při zadávání vulgárních výrazů maskování zpracování služby nevrací *speech.hypothesis* zprávy, které obsahují vulgárních výrazů.
+Pro maskování vulgárních výrazů nastavte parametr dotazu *vulgárních výrazů* na hodnotu *maskovaná*. Pokud parametr dotazu *vulgárních výrazů* má tuto hodnotu nebo není pro požadavek zadán, je vulgárních výrazů *Maska* služby. Služba provádí maskování nahrazením vulgárních výrazů ve výsledcích rozpoznávání hvězdičkami. Když zadáváte práci s maskou, služba nevrací *Speech. hypotézové* zprávy, které obsahují vulgární výrazy.
 
-### <a name="profanity-value-removed"></a>Hodnota vulgárních výrazů `Removed`
+### <a name="profanity-value-removed"></a>Hodnota vulgárních výrazů`Removed`
 
-Když *vulgárních výrazů* dotazu parametr má hodnotu *odebrat*, služba vulgárních výrazů odebere z obou *speech.phrase* a *speech.hypothesis* zprávy. Výsledky jsou stejné *jakoby nebyly slyšet vulgární slova*.
+Pokud parametr dotazu na *vulgární* text má *odstraněnou*hodnotu, služba odstraňuje vulgární výrazy z *hlasu.* zprávy s *mluveným* slovem. Výsledky jsou stejné *, jako by slova vulgárních slov nebyla mluvené*.
 
-#### <a name="profanity-only-utterances"></a>Projevy pouze vulgárních výrazů
+#### <a name="profanity-only-utterances"></a>Projevy jenom pro vulgární výrazy
 
-Uživatel může přečíst *pouze* vulgárních výrazů, když aplikace má nakonfigurovanou službu vulgárních výrazů. Pro tento scénář, pokud je režim rozpoznávání *diktování* nebo *konverzace*, nesmí vracet služby *speech.result*. Pokud je režim rozpoznávání *interaktivní*, služba vrátí hodnotu *speech.result* se stavovým kódem *NoMatch*.
+Uživatel může hovořit *jenom* o vulgárních událostech, když aplikace nakonfigurovala tuto službu, aby odstranila vulgární výrazy. V případě tohoto scénáře, pokud je režim rozpoznávání *Diktování* nebo *konverzace*, služba nevrátí *řeč. výsledek*. Pokud je režim rozpoznávání *interaktivní*, služba vrátí *řeč. výsledek* se stavovým kódem se *neshoduje*.
 
-### <a name="profanity-value-raw"></a>Hodnota vulgárních výrazů `Raw`
+### <a name="profanity-value-raw"></a>Hodnota vulgárních výrazů`Raw`
 
-Při *vulgárních výrazů* dotazu parametr má hodnotu *nezpracovaná*, služba neodebere ani nezablokuje maskování vulgárních výrazů v buď *speech.phrase* nebo  *Speech.hypothesis* zprávy.
+Pokud parametr dotazu *vulgárních výrazů* má hodnotu *raw*, služba neodebere ani nemaskuje vulgární výrazy buď ve zprávách *Speech. frázi* , nebo *Speech. hypotéz* .

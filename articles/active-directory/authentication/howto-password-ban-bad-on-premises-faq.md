@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879265"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959884"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
 
@@ -77,6 +77,13 @@ Další informace najdete v následujících článcích:
 [Případ migrace replikace adresáře SYSVOL do DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
 [Konec je Nigh pro službu FRS.](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+
+Pokud vaše doména již nepoužívá službu DFSR, je nutné ji před instalací ochrany hesel služby Azure AD migrovat na používání služby DFSR. Další informace najdete na následujícím odkazu:
+
+[Průvodce migrací replikace SYSVOL: Služba FRS pro Replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Software agenta řadiče domény Azure AD pro ochranu heslem se v tuto chvíli nainstaluje na řadičích domény v doménách, které ještě používají FRS pro replikaci SYSVOL, ale software v tomto prostředí fungovat nebude správně. Mezi další negativní vedlejší účinky patří neúspěšná replikace jednotlivých souborů a procedury obnovení adresáře SYSVOL, které jsou úspěšné, ale tiché selhání při replikaci všech souborů. Vaši doménu byste měli migrovat tak, aby používala službu DFSR co nejdříve, a to jak z hlediska výhod, tak i z důvodu odblokování nasazení ochrany heslem služby Azure AD. Budoucí verze softwaru budou automaticky zakázány při spuštění v doméně, která stále používá službu replikace souborů (FRS).
 
 **Otázka: Kolik místa na disku vyžaduje funkce ve sdílené složce SYSVOL v doméně?**
 

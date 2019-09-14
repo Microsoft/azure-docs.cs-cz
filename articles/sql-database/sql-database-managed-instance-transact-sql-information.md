@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858559"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984972"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -339,7 +339,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 - `ALTER ASSEMBLY`nejde odkazovat na soubory. Viz [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Databázová pošta (db_mail)
- - `sp_send_dbmail`přílohy nelze odeslat pomocí @file_attachments parametru. Tento postup nelze vytvořit v místním systému souborů a v jeho rozsahu nebo úložišti objektů BLOB v Azure.
+ - `sp_send_dbmail`přílohy nelze odeslat pomocí @file_attachments parametru. Tento postup mohou vytvořit místní systém souborů a sdílené složky Extertal nebo úložiště objektů BLOB v Azure.
  - Podívejte se na známé problémy související `@query` s parametrem a ověřením.
  
 ### <a name="dbcc"></a>DBCC
@@ -479,9 +479,12 @@ Určitá
 - Obnovení souboru databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu ( `FILESTREAM` například nebo `FILETABLE` objekty), nelze obnovit ve spravované instanci. `.BAK`
 - `.BAK`soubory, které obsahují víc zálohovacích skladů, se nedají obnovit. 
 - `.BAK`soubory, které obsahují více souborů protokolu, nelze obnovit.
-- Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo více než 280 souborů nemohou být obnoveny v instanci Pro obecné účely. 
+- Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo počet souborů, které by překročily 280 souborů na instanci, nelze obnovit v Pro obecné účely instanci. 
 - Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
 Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
+
+ > [!IMPORTANT]
+ > Stejné omezení platí pro předdefinovanou operaci obnovení k bodu v čase. Například Pro obecné účely databáze větší než 4 TB nemůže být v instanci Pro důležité obchodní informace obnovena. Pro důležité obchodní informace databáze s OLTP soubory v paměti nebo více než 280 souborů nelze v Pro obecné účely instanci obnovit.
 
 ### <a name="service-broker"></a>Služba Service Broker
 

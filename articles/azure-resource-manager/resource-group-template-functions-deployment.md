@@ -4,14 +4,14 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194349"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983996"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
@@ -24,8 +24,6 @@ Správce prostředků poskytuje následující funkce pro získání hodnot z č
 Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -136,18 +134,6 @@ Předchozí příklad vrátí následující objekt:
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
 Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)předplatného. Je nasazen s `az deployment create` příkazy nebo `New-AzDeployment` .
 
 <a id="parameters" />
@@ -254,21 +240,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | Řetězec | možnost 1 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
 
 <a id="variables" />
 
-## <a name="variables"></a>proměnné
+## <a name="variables"></a>Proměnné
 `variables(variableName)`
 
 Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v oddílu Variables šablony.
@@ -356,17 +332,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | exampleOutput3 | Řetězec | MojePromenna |
 | exampleOutput4 |  Object | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
 
 ## <a name="next-steps"></a>Další postup
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: b7672ff83dac31968dff7ef7a66ff40b36b69d59
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 502975df94fb61371dfa688806dfe1e1cc5aac70
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845187"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967128"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -157,7 +157,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporováno |Podporováno |Praha, + Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporováno |Podporováno |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Hongkong – zvláštní správní oblast, Londýn, Bombaj, Silicon sedla, Singapur, Sydney, Tokio, Toronto, Washington DC |
-| **Viasat** | Podporováno | Podporováno | Washington DC2 |
+| **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Podporováno | Podporováno | Washington DC2 |
 | **[Vocus skupina NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Podporováno | Podporováno | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporováno |Podporováno |Amsterdam2, Londýn, Singapur |
 | **Vodafone Idea** | Podporováno | Podporováno | Bombaj, Mumbai2 |
@@ -221,7 +221,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 
 * Intelsat
 * [ŠETŘENÍ](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
-* Viasat
+* [Viasat](http://www.directcloud.viasatbusiness.com/)
 
 ## <a name="connectivity-through-additional-service-providers"></a>Připojení prostřednictvím dalších poskytovatelů služeb
 
@@ -344,7 +344,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Jižní Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Austrálie |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

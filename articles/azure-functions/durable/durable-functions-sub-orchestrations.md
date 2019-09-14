@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 74f33a1ce1026424a6cdb97699223aeb5ff8277f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933132"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983623"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí orchestrace v Durable Functions (Azure Functions)
 
@@ -22,7 +22,10 @@ Kromě volání funkcí aktivity mohou funkce Orchestrator volat jiné funkce n�
 
 Funkce Orchestrator může volat jinou funkci nástroje Orchestrator voláním metody [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) nebo [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) v rozhraní .NET nebo `callSubOrchestrator` metod nebo `callSubOrchestratorWithRetry` v jazyce JavaScript. Další informace o automatickém opakování najdete v článku o [zpracování chyb & kompenzaci](durable-functions-error-handling.md#automatic-retry-on-failure) .
 
-Funkce dílčího nástroje Orchestrator se chovají stejně jako funkce aktivity z perspektivy volajícího. Mohou vracet hodnotu, vyvolat výjimku a může být očekávána nadřazenou funkcí Orchestrator.
+Funkce dílčího nástroje Orchestrator se chovají stejně jako funkce aktivity z perspektivy volajícího. Mohou vracet hodnotu, vyvolat výjimku a může být očekávána nadřazenou funkcí Orchestrator. 
+
+> [!NOTE]
+> V současné době je nutné zadat `instanceId` hodnotu argumentu rozhraní API pro podorchestraci v JavaScriptu.
 
 ## <a name="example"></a>Příklad
 
@@ -107,9 +110,12 @@ module.exports = df.orchestrator(function*(context) {
 
     // Run multiple device provisioning flows in parallel
     const provisioningTasks = [];
+    var id = 0;
     for (const deviceId of deviceIds) {
-        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId);
+        const child_id = context.df.instanceId+`:${id}`;
+        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId, child_id);
         provisioningTasks.push(provisionTask);
+        id++;
     }
 
     yield context.df.Task.all(provisioningTasks);

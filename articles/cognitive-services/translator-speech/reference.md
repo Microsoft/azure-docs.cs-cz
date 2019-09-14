@@ -1,81 +1,81 @@
 ---
-title: Translator Speech API Reference
+title: Odkaz na Translator Speech API
 titleSuffix: Azure Cognitive Services
-description: Referenční dokumentace pro rozhraní Translator Speech API.
+description: Referenční dokumentace pro Translator Speech API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9d2f78d05de6b966dd872e0b57a90d1c8e890975
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446904"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965379"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Tato služba nabízí rozhraní API pro streamování na přepisy konverzační řeči z jednoho jazyka do textu z jiného jazyka. Rozhraní API se také integruje možnosti převod textu na řeč k přečtení přeloženého textu. Rozhraní Translator Speech API umožňuje scénáře, jako jsou překlad v reálném čase konverzací, jak je vidět v Skype Translator.
+Tato služba nabízí rozhraní API pro streamování, které přepisovat konverzaci hlasu z jednoho jazyka do textu jiného jazyka. Rozhraní API se také integruje možnosti převod textu na řeč k přečtení přeloženého textu. Translator Speech API umožňuje scénáře jako překlady konverzací v reálném čase, jak je vidět ve službě Skype Translator.
 
-S rozhraním Translator Speech API klientské aplikace Streamovat zvuk řeči ve službě a získávejte zpět o textové výsledky, které zahrnují rozpoznaný text v Zdrojový jazyk a překladu v cílovém jazyce. Výsledný text se vytváří tak, že se pro příchozí zvukový stream použije automatické rozpoznávání řeči (ASR) na bázi neuronových sítí. Nezpracovaného výstupu Azure Site Recovery je dál vylepšit nové techniky označované jako TrueText, aby bylo možné lépe odrážejí záměru uživatele. Například TrueText odebere disfluencies (hmms a coughs) a interpunkční znaménka správné obnovení a malá a velká písmena. K dispozici je také možnost maskování nebo vyloučení neslušných slov. Moduly pro rozpoznávání a překlad jsou speciálně natrénované tak, aby zvládly zpracování hovorové řeči. Překlad řeči služba používá nečinnosti detekce k určení konce utterance. Po pauze v hlasové aktivitě začne služba streamovat zpět konečný výsledek pro skončenou promluvu. Služba může odesílat zpět také částečné výsledky, které poskytují rozpoznávání a překlady částí probíhající promluvy. Pro konečných výsledků služba poskytuje možnost tak, aby odpovídaly řeči (převod textu na řeč) z mluveného textu v cílovém jazyce. Zvuk se při převodu textu na řeč vytváří ve formátu určeném klientem. K dispozici jsou formáty WAV a MP3.
+V Translator Speech API klientské aplikace streamují zvuk řeči do služby a přijímají zpět proud textových výsledků, které obsahují rozpoznaný text ve zdrojovém jazyce, a jeho překlad v cílovém jazyce. Výsledný text se vytváří tak, že se pro příchozí zvukový stream použije automatické rozpoznávání řeči (ASR) na bázi neuronových sítí. Nezpracovaný výstup ASR je dále vylepšený novou technikou nazvanou TrueText, aby lépe odrážela záměr uživatele. Například TrueText odebere disfluencies (HMMs and coughs) a obnoví správnou interpunkci a kapitalizace. K dispozici je také možnost maskování nebo vyloučení neslušných slov. Moduly pro rozpoznávání a překlad jsou speciálně natrénované tak, aby zvládly zpracování hovorové řeči. Služba překladu řeči používá zjišťování tichosti k určení konce utterance. Po pauze v hlasové aktivitě začne služba streamovat zpět konečný výsledek pro skončenou promluvu. Služba může odesílat zpět také částečné výsledky, které poskytují rozpoznávání a překlady částí probíhající promluvy. Pro konečné výsledky služba poskytuje možnost syntetizovat řeč (převod textu na řeč) z mluveného textu v cílových jazycích. Zvuk se při převodu textu na řeč vytváří ve formátu určeném klientem. K dispozici jsou formáty WAV a MP3.
 
-Translator Speech API využívá protokol WebSocket poskytnout plně duplexní komunikační kanál mezi klientem a serverem. Aplikace vyžaduje tyto kroky k používání služby:
+Translator Speech API využívá protokol WebSocket k zajištění plně duplexního komunikačního kanálu mezi klientem a serverem. Aplikace bude vyžadovat, aby služba používala tyto kroky:
 
 ## <a name="1-getting-started"></a>1. Začínáme
-Pro přístup k rozhraní Translator Text API je potřeba [zaregistrovat do Microsoft Azure](translator-speech-how-to-signup.md).
+Pokud chcete získat přístup k Translator Text API, budete se muset [zaregistrovat Microsoft Azure](translator-speech-how-to-signup.md).
 
-## <a name="2-authentication"></a>2. Authentication
+## <a name="2-authentication"></a>2. Ověřování
 
-Klíč předplatného se používají k ověření. Translator Speech API podporuje dva režimy ověřování:
+K ověření použijte klíč předplatného. Translator Speech API podporuje dva režimy ověřování:
 
-* **Pomocí přístupového tokenu:** Ve vaší aplikaci získáte přístupový token od služby tokenů. Pomocí svého klíče předplatné Translator Speech API k získání přístupového tokenu z Azure Cognitive Services ověřovací služby. Přístupový token je platný 10 minut. Získejte nový přístupový token každých 10 minut a mohli dál využívat stejný přístup token pro opakované požadavky v rámci těchto 10 minut.
+* **Pomocí přístupového tokenu:** Ve své aplikaci Získejte přístupový token ze služby tokenu. K získání přístupového tokenu ze služby Azure Cognitive Services Authentication použijte svůj klíč předplatného Translator Speech API. Přístupový token je platný po dobu 10 minut. Získejte nový přístupový token každých 10 minut a používejte stejný přístupový token pro opakované žádosti v těchto 10 minutách.
 
-* **Klíč předplatného přímo pomocí:** Ve vaší aplikaci, předejte klíč předplatného. jako hodnotu v `Ocp-Apim-Subscription-Key` záhlaví.
+* **Přímý použití klíče předplatného:** V aplikaci předejte klíč předplatného jako hodnotu v `Ocp-Apim-Subscription-Key` hlavičce.
 
-Považovat za váš klíč předplatného a přístupovým tokenem tajné kódy, které by měl být skryta.
+Považovat klíč předplatného a přístupový token jako tajné klíče, které by měly být skryté ze zobrazení.
 
-## <a name="3-query-languages"></a>3. Dotazovací jazyky
-**Dotaz na prostředek jazyky pro aktuální sadu podporované jazyky.** [Jazyky prostředků](languages-reference.md) zveřejňuje sadu jazyků a hlasů pro rozpoznávání řeči, pro překlad textu a převod textu na řeč k dispozici. Každý jazyk nebo hlasu je přiřazena identifikátor, který rozhraní Translator Speech API používá k identifikaci stejný jazyk nebo hlasu.
+## <a name="3-query-languages"></a>3. Jazyky dotazů
+**Dotaz na prostředek jazyky pro aktuální sadu podporovaných jazyků.** [Prostředek jazyky](languages-reference.md) zveřejňuje sadu jazyků a hlasů, které jsou k dispozici pro rozpoznávání řeči, pro překlad textu a pro převod textu na řeč. Každému jazyku nebo hlasu je uveden identifikátor, který Translator Speech API používá k identifikaci stejného jazyka nebo hlasu.
 
-## <a name="4-stream-audio"></a>4. Zvukový Stream
-**Otevřete připojení a začít Streamovat zvuku ve službě.** Adresa URL služby je `wss://dev.microsofttranslator.com/speech/translate`. Parametry a formáty zvuku očekává službou jsou popsány níže v `/speech/translate` operace. Jeden z parametrů slouží k předání přístupový token z kroku 2 výše.
+## <a name="4-stream-audio"></a>4. Streamovat zvuk
+**Otevřete připojení a začněte streamovat zvuk do služby.** Adresa URL služby je `wss://dev.microsofttranslator.com/speech/translate`. Parametry a zvukové formáty očekávané službou jsou popsány níže v rámci `/speech/translate` operace. Jeden z parametrů se používá k předání přístupového tokenu z kroku 2 výše.
 
 ## <a name="5-process-the-results"></a>5. Zpracování výsledků
-**Zpracování výsledků streamovaných ze služby.** Formát částečných výsledků, konečných výsledků a převod textu na řeč zvuku segmenty jsou popsány v dokumentaci `/speech/translate` operace níže.
+**Zpracujte výsledky streamování zpátky ze služby.** Formát částečných výsledků, konečné výsledky a zvukové segmenty pro převod textu na řeč jsou popsány v dokumentaci `/speech/translate` k následující operaci.
 
-Ukázky kódu pro demonstraci použití rozhraní Translator Speech API jsou k dispozici [webu Microsoft Translator GitHub](https://github.com/MicrosoftTranslator).
+Ukázky kódu, které demonstrují použití Translator Speech API, jsou k dispozici na [webu Microsoft Translator GitHub](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
 
-ZÍSKAT /speech/translate Establishes relace pro překlad řeči
+ZÍSKÁNÍ/Speech/Translate vytváří relaci pro překlad řeči
 
-### <a name="connecting"></a>Připojení
-Před připojením ke službě, přečtěte si seznam parametrů uvedených dále v této části. Příklad žádosti je:
+### <a name="connecting"></a>Připojování
+Než se připojíte ke službě, Projděte si seznam parametrů uvedených dále v této části. Příkladem požadavku je:
 
 `GET wss://dev.microsofttranslator.com/speech/translate?from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa&api-version=1.0`
 `Ocp-Apim-Subscription-Key: {subscription key}`
 `X-ClientTraceId: {GUID}`
 
-Žádost Určuje, že mluvené slovo angličtina bude možné streamovali do služby a přeloženy do italština. Každý rozpoznávání konečný výsledek bude generovat převod textu na řeč zvuku odpověď s Ženský hlas s názvem grafické karty Elsa. Všimněte si, že žádost obsahuje přihlašovací údaje `Ocp-Apim-Subscription-Key header`. Požadavek také řídí osvědčený postup tak, že nastavíte globálně jedinečný identifikátor v hlavičce `X-ClientTraceId`. Klientská aplikace by měla protokolovat ID trasování tak, aby ho můžete použít při řešení problémů při jejich výskytu.
+Požadavek určuje, že mluvený hlas bude ve službě streamované a přeložený do italštiny. Každý konečný výsledek rozpoznávání vygeneruje zvukovou reakci textu na řeč s použitím ženského hlasu s názvem Elsa. Všimněte si, že požadavek obsahuje přihlašovací údaje `Ocp-Apim-Subscription-Key header`v. Požadavek také dodržuje osvědčené postupy nastavením globálně jedinečného identifikátoru v hlavičce `X-ClientTraceId`. Klientská aplikace by měla protokolovat ID trasování, aby ji bylo možné použít k řešení problémů, když k nim dojde.
 
-### <a name="sending-audio"></a>Posílání zvuku
-Po připojení se naváže, začne klient, vysílání datového proudu zvuku ve službě. Klient odešle zvuku v blocích. Každý blok se přenáší pomocí protokolu Websocket zprávy typu Binary.
+### <a name="sending-audio"></a>Odesílání zvuku
+Po navázání připojení zahájí klient streamování zvuku do služby. Klient odesílá zvuk do bloků dat. Každý blok se přenáší pomocí zprávy protokolu WebSocket typu Binary.
 
-Zvukový vstup je ve formátu souboru zvuk zvukového průběhu (WAVE nebo více obvykle označuje jako WAV z důvodu jeho příponu názvu souboru). Klientská aplikace by měl datový proud jeden kanál, odebírána data v 16 kHz zvuk PCM podepsaný 16 bitů. První sada bajtů streamuje klientovi bude zahrnovat hlavičku WAV. Záhlaví 44 bajtů pro jeden kanál podepsané 16 bitů PCM stream odebírána data v 16 kHz je:
+Zvukový vstup je ve formátu zvukového souboru Wave (WAVE nebo častěji označovaný jako WAV), protože jeho přípona názvu souboru je. Klientská aplikace by měla streamovat Single Channel, podepsaná 16bitový PCM audio Sample ve 16 kHz. První sada bajtů streamovaná klientem bude obsahovat hlavičku WAV. Hlavička 44-Byte pro jeden kanál se znaménkem 16bitového streamu PCM ve 16 kHz je:
 
-|Offset|Hodnota|
+|Offset|Value|
 |:---|:---|
 |0 - 3|"RIFF"|
 |4 - 7|0|
-|8 - 11|"WAVE"|
-|12 - 15|"fmt"|
+|8 - 11|WAVE|
+|12 - 15|Formát|
 |16 - 19|16|
 |20 - 21|1|
 |22 - 23|1|
@@ -84,30 +84,30 @@ Zvukový vstup je ve formátu souboru zvuk zvukového průběhu (WAVE nebo více
 |32 - 33|2|
 |34 - 35|16|
 |36 - 39|"data"|
-|40 - 43|0|
+|40 – 43|0|
 
-Všimněte si, že velikost celkový počet souborů (bajty 4-7) a velikost "data" (v bajtech 40-43) jsou nastaveny na hodnotu nula. To je v pořádku pro scénář streamování, ve kterém je celková velikost není znám nutně předem.
+Všimněte si, že celková velikost souboru (bajty 4-7) a velikost dat (bajty 40-43) jsou nastaveny na hodnotu nula. To je v pořádku pro scénář streamování, kde celková velikost není nutně známá dopředu.
 
-Po odeslání hlaviček WAV (RIFF), klient odešle bloky zvuková data. Klient bude obvykle datový proud pevnou velikost bloků dat představující pevnou platnost (například datový proud 100 MS zvuku současně).
+Po odeslání hlavičky WAV (RIFF) odešle klient bloky dat zvuku. Klient obvykle bude streamovat pevné velikosti datových bloků, které představují pevnou dobu trvání (např. Stream 100 MS audio v čase).
 
-### <a name="signal-the-end-of-the-utterance"></a>Signalizuje, že na konec utterance
-Translator Speech API vrátí přepisu a překladu zvukový datový proud jako e-mail posíláte zvuku. Konečné přepisu, konečný překlad a přeložený zvuk se vrátí, až po konec utterance. V některých případech můžete chtít vynutit ukončení utterance. Odešlete 2,5 sekundách nečinnosti vynutit ukončení utterance.
+### <a name="signal-the-end-of-the-utterance"></a>Signalizuje konec utterance
+Translator Speech API vrátí přepis a překlad zvukového datového proudu při posílání zvuku. Konečný přepis, konečný překlad a přeložený zvuk se vám vrátí až po skončení utterance. V některých případech možná budete chtít vynutit konec utterance. Počkejte prosím, než 2,5 sekund ticha pro vynucení konce utterance.
 
 ### <a name="final-result"></a>Konečný výsledek
-Na konci utterance se vygeneruje výsledek rozpoznání řeči finální. Výsledkem je ze služby předány klienta pomocí protokolu WebSocket zpráva typu Text. Obsah zprávy se serializací JSON objektu s následujícími vlastnostmi:
+Konečný výsledek rozpoznávání řeči se vygeneruje na konci utterance. Z důvodu přenáší služba klientovi do klienta pomocí zprávy protokolu WebSocket typu text. Obsah zprávy je serializace JSON objektu s následujícími vlastnostmi:
 
-* `type`: Řetězec konstanty k označení typu výsledku. Hodnota je konečný konečných výsledků.
-* `id`: Identifikátor přiřazený k rozpoznávání výsledek řetězce.
-* `recognition`: Rozpoznaný text v Zdrojový jazyk. Text může být prázdný řetězec v případě false rozpoznávání.
-* `translation`: Textové rozpoznaných přeložit v cílovém jazyce.
-* `audioTimeOffset`: Posun času zahájení rozpoznávání v taktech (1 značek = 100 nanosekund). Posun je relativní vzhledem k začátku streamování.
-* `audioTimeSize`: Doba trvání v taktech (100 nanosekund) uznání.
-* `audioStreamPosition`: Posun bajtů zahájení uznání. Posun je relativní vzhledem k začátku datového proudu.
-* `audioSizeBytes`: Velikost v bajtech uznání.
+* `type`: Řetězcová konstanta určující typ výsledku. Hodnota je finální pro konečné výsledky.
+* `id`: Identifikátor řetězce přiřazený výsledku rozpoznávání.
+* `recognition`: Rozpoznaný text ve zdrojovém jazyce. Text může být prázdný řetězec v případě nepravdivého rozpoznávání.
+* `translation`: Rozpoznaný text přeložený v cílovém jazyce
+* `audioTimeOffset`: Časový posun začátku rozpoznávání v impulzech (1 Tick = 100 nanosekund). Posun je relativní vzhledem ke začátku streamování.
+* `audioTimeSize`: Doba trvání rozpoznávání v taktech (100 nanosekund).
+* `audioStreamPosition`: Posun bajtů začátku rozpoznávání. Posun je relativní vzhledem k začátku datového proudu.
+* `audioSizeBytes`: Velikost v bajtech pro rozpoznávání
 
-Všimněte si, že umístění rozpoznávání na zvukový datový proud není zahrnut ve výsledcích ve výchozím nastavení. `TimingInfo` Funkce musí být určen klienta (viz `features` parametr).
+Všimněte si, že umístění rozpoznávání ve zvukovém streamu není ve výchozím nastavení součástí výsledků. Tato `TimingInfo` funkce musí být vybrána klientem (viz `features` parametr).
 
-Ukázka konečný výsledek je následující:
+Konečný výsledek ukázky je následující:
 
 ```
 {
@@ -123,22 +123,22 @@ Ukázka konečný výsledek je následující:
 ```
 
 ### <a name="partial-result"></a>Částečný výsledek
-Výsledky rozpoznávání řeči částečné nebo zprostředkující nejsou streamuje klientovi ve výchozím nastavení. Klienta můžete použít parametr dotazu funkcí na vyžádání.
+Částečné nebo mezilehlé výsledky rozpoznávání řeči nejsou ve výchozím nastavení přenášeny do klienta. Klient může k vyžádání požádat použít parametr dotazu funkce.
 
-Částečný výsledek se přenášejí ze služby do klienta pomocí protokolu WebSocket zpráva typu Text. Obsah zprávy se serializací JSON objektu s následujícími vlastnostmi:
+Částečný výsledek se z této služby přenáší klientovi pomocí zprávy protokolu WebSocket typu text. Obsah zprávy je serializace JSON objektu s následujícími vlastnostmi:
 
-* `type`: Řetězec konstanty k označení typu výsledku. Hodnota je částečně pro částečné výsledky.
-* `id`: Identifikátor přiřazený k rozpoznávání výsledek řetězce.
-* `recognition`: Rozpoznaný text v Zdrojový jazyk.
-* `translation`: Textové rozpoznaných přeložit v cílovém jazyce.
-* `audioTimeOffset`: Posun času zahájení rozpoznávání v taktech (1 značek = 100 nanosekund). Posun je relativní vzhledem k začátku streamování.
-* `audioTimeSize`: Doba trvání v taktech (100 nanosekund) uznání.
-* `audioStreamPosition`: Posun bajtů zahájení uznání. Posun je relativní vzhledem k začátku datového proudu.
-* `audioSizeBytes`: Velikost v bajtech uznání.
+* `type`: Řetězcová konstanta určující typ výsledku. Hodnota je částečně pro částečné výsledky.
+* `id`: Identifikátor řetězce přiřazený výsledku rozpoznávání.
+* `recognition`: Rozpoznaný text ve zdrojovém jazyce.
+* `translation`: Rozpoznaný text přeložený v cílovém jazyce
+* `audioTimeOffset`: Časový posun začátku rozpoznávání v impulzech (1 Tick = 100 nanosekund). Posun je relativní vzhledem ke začátku streamování.
+* `audioTimeSize`: Doba trvání rozpoznávání v taktech (100 nanosekund).
+* `audioStreamPosition`: Posun bajtů začátku rozpoznávání. Posun je relativní vzhledem k začátku datového proudu.
+* `audioSizeBytes`: Velikost v bajtech pro rozpoznávání
 
-Všimněte si, že umístění rozpoznávání na zvukový datový proud není zahrnut ve výsledcích ve výchozím nastavení. Funkce TimingInfo vybrány klientem (viz parametr funkce).
+Všimněte si, že umístění rozpoznávání ve zvukovém streamu není ve výchozím nastavení součástí výsledků. Funkce TimingInfo musí být vybrána klientem (viz parametr funkcí).
 
-Ukázka konečný výsledek je následující:
+Konečný výsledek ukázky je následující:
 
 ```
 {
@@ -154,43 +154,43 @@ Ukázka konečný výsledek je následující:
 ```
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
-Pokud je povoleno funkci pro převod textu na řeč (naleznete v tématu `features` parametr níže), konečný výsledek je následována zvuk mluvené slovo přeloženého textu. Zvukových dat je rozdělený do bloků dat a odeslané ze služby ke klientovi jako pořadí zpráv protokolu Websocket typu Binary. Klient dokáže detekovat konce datového proudu kontrolou bitu dokončení každé zprávy. Poslední zprávy v binární bude mít jeho dokončení bit nastaven na jednu k označení konce datového proudu. Formát datový proud závisí na hodnotě `format` parametru.
+Když je funkce převodu textu na řeč povolená (viz `features` parametr níže), za konečným výsledkem se domluví zvuk mluveného přeloženého textu. Zvuková data jsou ve formě bloků dat a posílána ze služby do klienta jako sekvence zpráv protokolu WebSocket typu Binary. Klient může detekovat konec datového proudu kontrolou modulu pro každou zprávu. Poslední binární zpráva bude mít svůj bit v typu FIN nastaven na hodnotu 1, aby označovala konec datového proudu. Formát datového proudu závisí na hodnotě `format` parametru.
 
-### <a name="closing-the-connection"></a>Probíhá ukončování připojení
-Když klientská aplikace dokončení vysílání datového proudu zvuku, obdržela na poslední konečný výsledek ji by měl ukončit připojení pomocí inicializace uzavírací handshake protokolu WebSocket. Existují podmínky, které způsobí, že server k ukončení připojení. Následující kódy zavření protokolu WebSocket může přijmout klienta:
+### <a name="closing-the-connection"></a>Uzavírání připojení
+Když klientská aplikace dokončí streamování zvuku a obdržela poslední konečný výsledek, měl by připojení ukončit tím, že inicializuje WebSocket, který ukončuje metodu handshake. Existují podmínky, které způsobí, že server ukončí připojení. Klient může přijmout tyto uzavřené kódy protokolu WebSocket:
 
-* `1003 - Invalid Message Type`: Serveru se ukončuje připojení, protože datový typ, který obdržel nemůže přijmout. Běžně se to stane, když příchozí zvuk nezačíná řetězcem správné záhlaví.
-* `1000 - Normal closure`: Připojení uzavřeno po požadavku byla splněna. Server připojení zavře: při přijetí zvuk z klienta delší dobu času; Když se streamuje nečinnosti delší dobu času; dosáhne-li relaci maximální dobu trvání povolené (přibližně 90 minut).
-* `1001 - Endpoint Unavailable`: Označuje, že server nebude k dispozici. Klientská aplikace může pokusí znovu připojit se limitu počtu opakování.
-* `1011 - Internal Server Error`: Připojení bude ukončeno serverem kvůli chybě na serveru.
+* `1003 - Invalid Message Type`: Server ukončuje připojení, protože nemůže přijmout datový typ, který přijal. K tomu obvykle dochází, když příchozí zvuk nezačíná správnou hlavičkou.
+* `1000 - Normal closure`: Po splnění žádosti bylo připojení ukončeno. Server ukončí připojení: Pokud klient po delší dobu neobdrží žádný zvuk z klienta. Když je netiché streamování po delší dobu; Když relace dosáhne maximální povolené doby trvání (přibližně 90 minut).
+* `1001 - Endpoint Unavailable`: Indikuje, že server přestane být k dispozici. Klientská aplikace se může pokusit znovu připojit s omezením počtu opakovaných pokusů.
+* `1011 - Internal Server Error`: Připojení bude serverem zavřeno, protože na serveru došlo k chybě.
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:---|:---|:---|:---|:---|
-|api-version|1.0|Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query   |string|
-|from|(prázdné)   |Určuje jazyk příchozí řeči. Hodnota je jeden z identifikátorů jazyka z `speech` oboru v odpovědi z rozhraní API pro jazyky.|query|string|
-|na|(prázdné)|Určuje jazyk, který chcete přeložit text přepisu do. Hodnota je jeden z identifikátorů jazyka z `text` oboru v odpovědi z rozhraní API pro jazyky.|query|string|
-|Database|(prázdné)   |Exportovaná sadu funkcí zvolila klienta. Mezi dostupné funkce patří:<ul><li>`TextToSpeech`: Určuje, že služba musí vrátit přeložené zvuk na finální přeloženou větu.</li><li>`Partial`: Určuje, že služba musí vracet výsledky zprostředkující rozpoznávání při streamování zvuku ve službě.</li><li>`TimingInfo`: Určuje, že služba musí vracet informace o časování, které jsou spojené s každou rozpoznávání.</li></ul>Jako příklad klienta zadáte `features=partial,texttospeech` přijímat částečné výsledky a převod textu na řeč, ale žádné informace o časování. Všimněte si, že konečných výsledků se vždy streamují do klienta.|query|string|
-|Hlasu|(prázdné)|Určuje co hlasu pro převod textu na řeč vykreslování přeloženého textu. Hodnota je jeden z identifikátorů hlasové z oboru převod textu na řeč v odpovědi z rozhraní API pro jazyky. Pokud hlasový vstup není zadán, že systém bude automaticky zvolte jeden, pokud je povolena funkce Převod textu na řeč.|query|string|
-|format|(prázdné)|Určuje formát převod textu na řeč zvukový stream vrácený poskytovatelem služby. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukového průběhu zvukový datový proud. Klient musí použít hlavičku WAV správně interpretovat zvukový formát. Zvuk WAV pro převod textu na řeč je 16 bitů, jeden kanál PCM s vzorkovací frekvenci 24kHz nebo 16kHz.</li><li>`audio/mp3`: MP3 zvukový datový proud.</li></ul>Výchozí hodnota je `audio/wav`.|query|string|
-|ProfanityAction    |(prázdné)    |Určuje způsob, jakým služba pracovat profanities rozpoznán v řeči. Jsou platné akce:<ul><li>`NoAction`: Profanities je ponechán beze změny.</li><li>`Marked`: Profanities jsou nahrazeny značku. Zobrazit `ProfanityMarker` parametru.</li><li>`Deleted`: Profanities se odstraní. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a .".`</li></ul>Výchozí hodnota je označen.|query|string|
-|ProfanityMarker|(prázdné)    |Určuje, jak zjištěné profanities jsou zpracovány při `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Profanities se nahradí řetězcem `***`. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a ***.".`</li><li>`Tag`: Podle značky XML vulgárních výrazů jsou obklopené vulgárních výrazů. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stanou `"He is a <profanity>jackass</profanity>."`.</li></ul>Výchozí formát je `Asterisk`.|query|string|
-|Authorization|(prázdné)  |Určuje hodnotu klienta nosný token. Použijte předponu `Bearer` za nímž následuje hodnotu `access_token` hodnoty vrácené službou tokenu ověřování.|záhlaví   |string|
-|OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `Authorization` není zadána hlavička.|záhlaví|string|
-|access_token|(prázdné)   |Alternativní způsob, jak předat platný přístupový token OAuth. Nosný token je obvykle poskytují s hlavičkou `Authorization`. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `access_token` parametr předat platný token dotazu. Při použití přístupového tokenu pro ověření, pokud `Authorization` není nastavena hlavička, pak `access_token` musí být nastavena. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jedna metoda předat token.|query|string|
-|klíč předplatného|(prázdné)   |Alternativní způsob, jak předat klíč předplatného. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `subscription-key` parametr předejte platné předplatné klíč dotazu. Pokud používáte klíč předplatného k ověření, `Ocp-Apim-Subscription-Key` není nastavena hlavička, pak musí být nastaven klíč předplatného. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jednu metodu k předání `subscription key`.|query|string|
-|X-ClientTraceId    |(prázdné)    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Pro správné řešení potíží, musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-ClientTraceId`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|string|
-|X-CorrelationId|(prázdné)    |Klientem generovaná identifikátor použité pro sladění více kanálů v konverzaci. Konverzace mezi uživateli povolit lze vytvořit více relací překladu řeči. V takovém scénáři všechny relace překlad řeči pomocí stejné ID korelace spojovat kanály. To usnadňuje trasování a Diagnostika. Musí odpovídat identifikátoru: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-CorrelationId`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|string|
-|X-ClientVersion|(prázdné)    |Určuje verzi klientská aplikace. Příklad: "2.1.0.123".<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-ClientVersion`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|string|
-|X-OsPlatform|(prázdné)   |Určuje název a verzi operačního systému, které klientská aplikace běží na. Příklady: "S androidem 5.0", "iOs 8.1.3", "Windows 8.1".<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-OsPlatform`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|string|
+|api-version|1.0|Verze rozhraní API, kterou klient požaduje. Povolené hodnoty jsou: `1.0`.|query   |řetězec|
+|from|obsahovat   |Určuje jazyk příchozího rozpoznávání řeči. Hodnota je jeden z identifikátorů jazyka z `speech` oboru v odpovědi z rozhraní API jazyků.|query|řetězec|
+|na|obsahovat|Určuje jazyk, do kterého se má překládat přepisu text. Hodnota je jeden z identifikátorů jazyka z `text` oboru v odpovědi z rozhraní API jazyků.|query|řetězec|
+|Database|obsahovat   |Sada funkcí, které jsou vybrány klientem, oddělenou čárkou. K dispozici jsou tyto funkce:<ul><li>`TextToSpeech`: Určuje, zda musí služba vracet přeložený zvuk finální přeložené věty.</li><li>`Partial`: Určuje, že služba musí vracet mezilehlé výsledky rozpoznávání, zatímco zvuk streamuje služby.</li><li>`TimingInfo`: Určuje, zda musí služba vracet informace o časování přidružené k jednotlivým rozlišením.</li></ul>Klient například určí `features=partial,texttospeech` , že má přijímat částečné výsledky a převod textu na řeč, ale neobsahuje informace o časování. Všimněte si, že konečné výsledky jsou vždycky streamované klientovi.|query|řetězec|
+|Telefonní|obsahovat|Určuje, který hlas se má použít pro vykreslování textu na řeč pro přeložený text. Hodnota je jeden z identifikátorů hlasu z oboru TTS v odpovědi z rozhraní API jazyků. Pokud není zadán hlasový vstup, systém jej automaticky zvolí, pokud je funkce převodu textu na řeč povolena.|query|řetězec|
+|format|obsahovat|Určuje formát datového proudu zvukového převodu textu na řeč vrácený službou. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukový stream Wave. Klient by měl použít hlavičku WAV ke správné interpretaci formátu zvuku. Zvuk WAV pro převod textu na řeč je 16 bitů, s jedním kanálem se vzorkovací frekvencí 24kHz nebo 16kHz.</li><li>`audio/mp3`: Zvukový stream MP3.</li></ul>Výchozí hodnota je `audio/wav`.|query|řetězec|
+|ProfanityAction    |obsahovat    |Určuje, jak má služba zpracovávat vulgární výrazy rozpoznané ve Speech. Platné akce:<ul><li>`NoAction`: Vulgární výrazy jsou ponechány tak, jak jsou.</li><li>`Marked`: Vulgární výrazy jsou nahrazeny značkou. Viz `ProfanityMarker` parametr.</li><li>`Deleted`: Vulgární výrazy jsou odstraněny. Pokud se například slovo `"jackass"` považuje za vulgární výrazy, bude se tato fráze `"He is a jackass."``"He is a .".`</li></ul>Výchozí hodnota je označena.|query|řetězec|
+|ProfanityMarker|obsahovat    |Určuje způsob zpracování vulgárních výrazů, pokud `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Vulgární výrazy jsou nahrazeny řetězcem `***`. Pokud se například slovo `"jackass"` považuje za vulgární výrazy, bude se tato fráze `"He is a jackass."``"He is a ***.".`</li><li>`Tag`: Vulgární výrazy jsou obklopeny značkou XML vulgárních výrazů. Pokud se například slovo `"jackass"` považuje za vulgární výrazy, stane `"He is a <profanity>jackass</profanity>."`se tato fráze `"He is a jackass."` .</li></ul>Výchozí hodnota je `Asterisk`.|query|řetězec|
+|Authorization|obsahovat  |Určuje hodnotu tokenu nosiče klienta. Použijte předponu `Bearer` následovaný hodnotou `access_token` hodnoty vrácenou službou tokenu ověřování.|záhlaví   |řetězec|
+|OCP-Apim-Subscription-Key|obsahovat|Vyžaduje se, `Authorization` Pokud není Zadaná hlavička.|záhlaví|řetězec|
+|access_token|obsahovat   |Alternativní způsob předání platného přístupového tokenu OAuth Token nosiče se obvykle poskytuje s hlavičkou `Authorization`. Některé knihovny WebSocket neumožňují, aby kód klienta nastavil hlavičky. V takovém případě může klient použít `access_token` parametr dotazu k předání platného tokenu. Pokud použijete přístupový token k ověření, pokud `Authorization` není nastavená hlavička `access_token` , musí být nastavená. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje. Klienti by měli k předání tokenu použít jenom jednu metodu.|query|řetězec|
+|předplatné – klíč|obsahovat   |Alternativní způsob, jak předat klíč předplatného Některé knihovny WebSocket neumožňují, aby kód klienta nastavil hlavičky. V takovém případě může klient použít `subscription-key` parametr dotazu k předání platného klíče předplatného. Pokud použijete klíč předplatného k ověření `Ocp-Apim-Subscription-Key` , pokud není nastavená hlavička, musí se nastavit klíč předplatného. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje. Klienti by měli použít jenom jednu metodu k předání `subscription key`.|query|řetězec|
+|X-ClientTraceId    |obsahovat    |Identifikátor GUID generovaný klientem, který se používá pro trasování požadavku. Pro řádné řešení potíží by klienti měli pro každou žádost zadat novou hodnotu a zaznamenat ji.<br/>Namísto použití záhlaví lze tuto hodnotu předat parametru `X-ClientTraceId`dotazu. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje.|záhlaví|řetězec|
+|X-CorrelationId|obsahovat    |Identifikátor generovaný klientem, který slouží ke korelaci více kanálů v konverzaci. Pro umožnění konverzace mezi uživateli je možné vytvořit více relací překladu řeči. V takovém scénáři používají všechny relace překladu řeči stejné ID korelace, aby se kanály vzájemně propojují. To usnadňuje trasování a diagnostiku. Identifikátor by měl splňovat tyto požadavky:`^[a-zA-Z0-9-_.]{1,64}$`<br/>Namísto použití záhlaví lze tuto hodnotu předat parametru `X-CorrelationId`dotazu. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje.|záhlaví|řetězec|
+|X-ClientVersion|obsahovat    |Určuje verzi klientské aplikace. Příklad: "2.1.0.123".<br/>Namísto použití záhlaví lze tuto hodnotu předat parametru `X-ClientVersion`dotazu. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje.|záhlaví|řetězec|
+|X-OsPlatform|obsahovat   |Určuje název a verzi operačního systému, ve kterém je spuštěná klientská aplikace. Příklady: "Android 5,0", "iOs 8.1.3", "Windows 8.1".<br/>Namísto použití záhlaví lze tuto hodnotu předat parametru `X-OsPlatform`dotazu. Pokud je nastavená hlavička i parametr dotazu, parametr dotazu se ignoruje.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Reason|Model odpovědi|Hlavičky|
+|Stavový kód HTTP|Reason|Model odpovědi|Záhlaví|
 |:--|:--|:--|:--|
-|101    |Upgrade objektu WebSocket.|Příklad hodnoty modelu <br/> objekt {}|X-RequestId<br/>Hodnota identifikaci požadavků pro účely odstraňování potíží.<br/>string|
-|400    |Chybný požadavek. Zkontrolujte vstupní parametry k zajištění, že jsou platné. Objekt odpovědi obsahuje podrobnější popis chyby.|||
-|401    |Neoprávněný přístup. Ujistěte se, že se přihlašovací údaje nastavené, že jsou platné a že vaše předplatné Azure Tržiště dat je v pořádku s dostupné vyrovnávání.|||
-|500    |Došlo k chybě. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||
-|503    |Server je dočasně nedostupný. Zkuste prosím požadavek. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||
+|101    |Upgrade protokolu WebSocket.|Ukázková hodnota modelu <br/> Předmětů{}|X-RequestId<br/>Hodnota identifikující požadavek pro účely řešení potíží.<br/>řetězec|
+|400    |Chybný požadavek. Zkontrolujte vstupní parametry a ujistěte se, že jsou platné. Objekt Response obsahuje podrobnější popis chyby.|||
+|401    |Přístupu. Ujistěte se, že jsou nastavené přihlašovací údaje, že jsou platné a že vaše předplatné Azure Data Marketo je v dobrém postavení s dostupným zůstatkem.|||
+|500    |Došlo k chybě. Pokud chyba přetrvává, ohlaste ji pomocí identifikátoru trasování klienta (X-ClientTraceId) nebo identifikátoru žádosti (X-RequestId).|||
+|503    |Server je dočasně nedostupný. Opakujte prosím požadavek. Pokud chyba přetrvává, ohlaste ji pomocí identifikátoru trasování klienta (X-ClientTraceId) nebo identifikátoru žádosti (X-RequestId).|||

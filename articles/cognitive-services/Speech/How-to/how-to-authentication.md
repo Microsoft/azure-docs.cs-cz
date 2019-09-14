@@ -1,45 +1,45 @@
 ---
-title: Ověření pro zpracování řeči Bingu | Dokumentace Microsoftu
+title: Ověřování pro Zpracování řeči Bingu | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Žádosti o ověření použití rozhraní API pro zpracování řeči Bingu
+description: Požádat o ověření, aby používal rozhraní API pro zpracování řeči Bingu
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1e708ff29293b87935d0d191ba44ad4a11917a0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515053"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965660"
 ---
-# <a name="authenticate-to-the-speech-api"></a>Ověření rozhraním Speech API
+# <a name="authenticate-to-the-speech-api"></a>Ověřování pro rozhraní API pro rozpoznávání řeči
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Pro zpracování řeči Bingu podporuje ověřování pomocí:
+Zpracování řeči Bingu podporuje ověřování pomocí:
 
 - Klíč předplatného.
-- Autorizační token.
+- Autorizační token
 
-## <a name="use-a-subscription-key"></a>Použijte klíč předplatného
+## <a name="use-a-subscription-key"></a>Použít klíč předplatného
 
-Speech Service použít, musíte nejprve odběru rozhraní Speech API, která je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
+Pokud chcete používat službu Speech, musíte se nejdřív přihlásit k odběru rozhraní API pro rozpoznávání řeči, které je součástí Cognitive Services (dříve projekt Oxford). Můžete získat bezplatný zkušební odběr klíčů na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) . Po výběru rozhraní API pro rozpoznávání řeči vyberte **získat klíč rozhraní API** a získejte klíč. Vrátí primární a sekundární klíč. Oba klíče jsou vázané na stejnou kvótu, takže můžete použít kteroukoli z těchto klíčů.
 
-Dlouhodobé používání a zvýšené kvóty, zaregistrujte si [účtu Azure](https://azure.microsoft.com/free/).
+V případě dlouhodobého využití nebo zvýšené kvóty si zaregistrujte [účet Azure](https://azure.microsoft.com/free/).
 
-Pokud chcete používat rozhraní REST API pro rozpoznávání řeči, je potřeba předat klíč předplatného v `Ocp-Apim-Subscription-Key` pole v hlavičce požadavku.
+Chcete-li použít REST API řeči, je nutné předat klíč předplatného do `Ocp-Apim-Subscription-Key` pole v hlavičce požadavku.
 
-Název| Formát| Popis
+Name| Formát| Popis
 ----|-------|------------
 OCP-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 
-Následuje příklad hlavičky požadavku:
+Následuje příklad hlavičky žádosti:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -52,26 +52,26 @@ Expect: 100-continue
 ```
 
 > [!IMPORTANT]
-> Pokud používáte [klientské knihovny](../GetStarted/GetStartedClientLibraries.md) ve vaší aplikaci, ověřte, že můžete získat ověřovací token, který s klíči předplatného, jak je popsáno v následující části. Tyto klientské knihovny klíč předplatného můžete získat autorizační token a pak pomocí tokenu pro ověření.
+> Pokud používáte [klientské knihovny](../GetStarted/GetStartedClientLibraries.md) ve své aplikaci, ověřte, že je možné získat autorizační token pomocí klíče předplatného, jak je popsáno v následující části. Klientské knihovny používají klíč předplatného k získání autorizačního tokenu a pak používají token pro ověřování.
 
-## <a name="use-an-authorization-token"></a>Použití autorizační token
+## <a name="use-an-authorization-token"></a>Použití autorizačního tokenu
 
-Alternativně můžete autorizační token pro ověření jako důkaz o ověřování/autorizace. Chcete-li získat tento token, je nutné nejprve získat klíč předplatného z rozhraní API pro rozpoznávání řeči, jak je popsáno v [předchozí části](#use-a-subscription-key).
+Alternativně můžete použít autorizační token pro ověřování jako kontrolu ověřování nebo autorizace. Chcete-li získat tento token, je nutné nejprve získat klíč předplatného z rozhraní API pro rozpoznávání řeči, jak je popsáno v [předchozí části](#use-a-subscription-key).
 
-### <a name="get-an-authorization-token"></a>Získat autorizační token
+### <a name="get-an-authorization-token"></a>Získání autorizačního tokenu
 
-Až budete mít klíč platné předplatné, odešlete požadavek POST do tokenu služby Cognitive Services. V odpovědi obdržíte ověřovací token, který jako JSON Web Token (token JWT).
+Až budete mít platný klíč předplatného, odešlete požadavek POST do služby tokenu Cognitive Services. V odpovědi obdržíte autorizační token jako JSON Web Token (JWT).
 
 > [!NOTE]
-> Token, který má vypršení platnosti 10 minut. K obnovení tokenu, najdete v následující části.
+> Platnost tokenu vypršela 10 minut. Postup obnovení tokenu najdete v následující části.
 
-Identifikátor URI tokenu služby se nachází tady:
+Identifikátor URI služby tokenu je umístěný tady:
 
 ```
 https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Následující příklad kódu ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného:
+Následující ukázka kódu ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` vlastním klíčem předplatného:
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -89,9 +89,9 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dostupný na vaší platformě, může být potřeba nainstalovat nástroj curl. Tento příklad funguje taky na Cygwin na Windows, Git Bash, zsh a jiné prostředí.
+V příkladu se používá oblé v systému Linux s bash. Pokud není na vaší platformě k dispozici, může být nutné nainstalovat kudrlinkou. Příklad funguje také na Cygwin ve Windows, Gitu bash, zsh a dalších prostředích.
 
 ```
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
@@ -138,7 +138,7 @@ curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Co
 
 ---
 
-Následuje ukázka požadavku POST:
+Následuje ukázka žádosti POST:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken HTTP/1.1
@@ -149,16 +149,16 @@ Content-Length: 0
 Connection: Keep-Alive
 ```
 
-Když zrovna o autorizační token od služby tokenů, zkontrolujte, zda váš klíč předplatného je stále platný. Pokud používáte bezplatné zkušební verze klíče, přejděte [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky, klikněte na "Přihlášení" přihlásit se pomocí účtu, který jste použili k použití bezplatné zkušební verze klíče a zkontrolujte, jestli klíč předplatného vypršela, nebo přesahuje kvóta.
+Pokud ze služby tokenu nemůžete získat autorizační token, ověřte, jestli je klíč předplatného stále platný. Pokud používáte bezplatný zkušební klíč, přejděte na stránku [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) , klikněte na Přihlásit se a přihlaste se pomocí účtu, který jste použili pro použití bezplatného zkušebního klíče, a ověřte, jestli vypršela platnost klíče předplatného, nebo překračuje kvótu.
 
-### <a name="use-an-authorization-token-in-a-request"></a>Použití autorizační token v požadavku
+### <a name="use-an-authorization-token-in-a-request"></a>Použití autorizačního tokenu v žádosti
 
-Pokaždé, když volání rozhraní API pro rozpoznávání řeči, je nutné předat ověřovací token, který v `Authorization` záhlaví. `Authorization` Záhlaví musí obsahovat přístupový token JWT.
+Pokaždé, když zavoláte rozhraní API pro rozpoznávání řeči, musíte v `Authorization` hlavičce předat autorizační token. `Authorization` Hlavička musí obsahovat přístupový token JWT.
 
-Následující příklad ukazuje způsob použití autorizační token při volání rozhraní REST API pro rozpoznávání řeči.
+Následující příklad ukazuje, jak použít autorizační token při volání REST API řeči.
 
 > [!NOTE]
-> Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku. Nahraďte `YOUR_ACCESS_TOKEN` autorizačním tokenem, který jste získali v předchozím kroku [získat autorizační token](#get-an-authorization-token).
+> Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku. Nahraďte `YOUR_ACCESS_TOKEN` autorizačním tokenem, který jste získali v předchozím kroku [získání autorizačního tokenu](#get-an-authorization-token).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -184,7 +184,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -231,11 +231,11 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ---
 
-### <a name="renew-an-authorization-token"></a>Obnovit autorizační token
+### <a name="renew-an-authorization-token"></a>Obnovení autorizačního tokenu
 
-Ověřovací token, který vyprší po určité časové období (aktuálně 10 minut). Potřebujete k obnovení tokenu autorizace, než vyprší její platnost.
+Platnost autorizačního tokenu vyprší po určitém časovém období (aktuálně 10 minut). Než vyprší platnost autorizačního tokenu, musíte ho prodloužit.
 
-Následující kód představuje příklad implementace v jazyce C#, jak obnovit ověřovací token, který:
+Následující kód je příklad implementace v C# tématu Postup obnovení autorizačního tokenu:
 
 ```cs
     /*

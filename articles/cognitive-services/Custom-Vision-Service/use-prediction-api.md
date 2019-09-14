@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883966"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966944"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Použití modelu s prediktivním rozhraním API
 
@@ -26,7 +26,7 @@ Po vytvoření výukového modelu můžete image testovat programově jejich ode
 
 ## <a name="publish-your-trained-iteration"></a>Publikování vyškolené iterace
 
-Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__ .
+Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__.
 
 Chcete-li odesílat obrázky do prediktivního rozhraní API, budete nejprve muset publikovat iteraci pro předpověď, což lze provést výběrem možnosti __publikovat__ a zadáním názvu publikované iterace. Díky tomu bude model dostupný pro předpovědi rozhraní API Custom Vision prostředku Azure.
 
@@ -38,22 +38,20 @@ Po úspěšném publikování modelu se vedle vaší iterace na levém bočním 
 
 ## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a klíče předpovědi
 
-Po publikování modelu můžete požadované informace načíst výběrem možnosti __Adresa URL předpovědi__ . Tím se otevře dialogové okno s informacemi pro použití prediktivního rozhraní API, včetně __předpovědi URL__ a __předpovědi-Key__ .
+Po publikování modelu můžete požadované informace načíst výběrem možnosti __Adresa URL předpovědi__. Tím se otevře dialogové okno s informacemi pro použití prediktivního rozhraní API, včetně __předpovědi URL__ a __předpovědi-Key__.
 
 ![Karta výkon se zobrazí s červeným obdélníkem obklopujícím tlačítko adresy URL předpovědi.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![Karta výkon se zobrazí s červeným obdélníkem, který obklopuje hodnotu adresy URL předpovědi pro použití souboru obrázku a hodnoty předpovědi-Key.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> Váš __předpověď – klíč__ najdete taky na stránce [Azure Portal](https://portal.azure.com) pro Custom Vision prostředek Azure přidružený k vašemu projektu v okně __klíče__ .
 
-V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu URL v části **Pokud máte soubor** s obrázkem do dočasného umístění. Zkopírujte také odpovídající hodnotu __pro předpověď a klíč__ .
+V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu URL v části **Pokud máte soubor s obrázkem** do dočasného umístění. Zkopírujte také odpovídající hodnotu __pro předpověď a klíč__ .
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 
 1. V aplikaci Visual Studio vytvořte novou C# konzolovou aplikaci.
 
-1. Použijte následující kód jako obsah souboru __Program.cs__ .
+1. Použijte následující kód jako obsah souboru __Program.cs__.
 
     ```csharp
     using System;

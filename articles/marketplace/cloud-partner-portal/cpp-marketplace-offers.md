@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884454"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962857"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Nabídky Azure a AppSource Marketplace
 
@@ -36,7 +36,7 @@ Proces vytvoření nové nabídky se výrazně liší v různých typech nabíde
 
 *Test Drive* je funkce Marketplace, která zákazníkům poskytuje možnost "vyzkoušet si", jak si můžete koupit pro každou nabídku.  Funkce testovacích jednotek je omezená na následující podmnožinu typů nabídek: [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro finance a provoz](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS aplikace](./saas-app/cpp-saas-offer.md)a [virtuální počítače](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje, aby Vydavatel vytvořil šablonu testovacího disku přizpůsobenou pro svou nabídku.  Další informace najdete v části [testovací jednotka](./test-drive/what-is-test-drive.md).
 
-Pomocí [filtru testovacích jednotek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)můžete procházet stávající nabídky na webu Marketplace, které obsahují ukázky zkušebních jednotek. 
+Pomocí [filtru testovacích jednotek](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)můžete procházet stávající nabídky na webu Marketplace, které obsahují ukázky zkušebních jednotek. 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Typy nabídek Azure Marketplace a AppSource
@@ -60,6 +60,6 @@ V následující tabulce jsou uvedeny typy aktuálních nabídek, které [portá
 Další informace najdete v tématu [Průvodce publikováním podle typu nabídky](../publisher-guide-by-offer-type.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dozvíte se o obecných operacích, které můžete provádět na nabídkách Marketplace a jejich běžných technických atributech a prostředcích v článku [Správa nabídek](./manage-offers/cpp-manage-offers.md).

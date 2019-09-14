@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206835"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961532"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Získání analýz pro znalostní bázi
 
@@ -26,9 +26,7 @@ Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-u
 
     ![Vyberte prostředek Application Insights.](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Vyberte **Analytics**. Otevře se nové okno, kde se můžete dotazovat QnA Maker telemetrie.
-
-    ![Výběr analýzy](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. Vyberte **protokol (Analytics)** . Otevře se nové okno, kde se můžete dotazovat QnA Maker telemetrie.
 
 3. Vložte následující dotaz a spusťte ho.
 
@@ -48,7 +46,7 @@ Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-u
 
     Vyberte **Spustit** a spusťte dotaz.
 
-    ![Spustit dotaz](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![Spustit dotaz pro určení otázek, odpovědí a skóre uživatelů](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Spouštění dotazů pro další analýzy na QnA Maker znalostní bázi Knowledge Base
 
@@ -101,7 +99,7 @@ Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-u
     | summarize count() by performanceBucket, KbId
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zvolit capactiy](../tutorials/choosing-capacity-qnamaker-deployment.md)

@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309624"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984936"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
 *Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikaci. které se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se nevztahuje na nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [koncovým bodem služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, na které se má odkazovat.
 
@@ -244,7 +244,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 3. Nastavte řízení **Povolení přístupu ke službám Azure** na vypnuto.
 
     > [!IMPORTANT]
-    > Pokud ovládací prvek necháte nastaven na ZAPNUTo, server Azure SQL Database akceptuje komunikaci ze všech podsítí. Ponechání ovládacího prvku na ZAPNUTo může být nadměrný přístup z hlediska zabezpečení. Funkce koncového bodu služby Microsoft Azure Virtual Network, v koordinaci s funkcí pravidla virtuální sítě SQL Database, společně může snížit oblast zabezpečení.
+    > Pokud ovládací prvek necháte nastavený na ZAPNUTo, váš Azure SQL Database server přijme komunikaci z jakékoli podsítě v rámci hranice Azure, tj. pocházející z jedné z IP adres, která je rozpoznaná jako ta v oblastech definovaných pro datová centra Azure. Ponechání ovládacího prvku na ZAPNUTo může být nadměrný přístup z hlediska zabezpečení. Funkce koncového bodu služby Microsoft Azure Virtual Network, v koordinaci s funkcí pravidla virtuální sítě SQL Database, společně může snížit oblast zabezpečení.
 
 4. Klikněte na tlačítko **+ Přidat existující** ovládací prvek v části **virtuální sítě** .
 
@@ -280,7 +280,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 Funkce pravidla virtuální sítě pro Azure SQL Database se stala k dispozici v 2017. září.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Pomocí PowerShellu vytvořte koncový bod služby virtuální sítě a potom pravidlo virtuální sítě pro Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Pravidla Virtual Network: Operace][rest-api-virtual-network-rules-operations-862r] s rozhraními REST API

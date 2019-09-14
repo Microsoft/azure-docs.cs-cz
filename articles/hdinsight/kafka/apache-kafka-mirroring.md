@@ -1,6 +1,6 @@
 ---
-title: Zrcadlení témat Apache Kafka – Azure HDInsight
-description: Další informace o použití zrcadlení funkce platformy Apache Kafka udržovat zrcadlením témata, které cluster sekundární repliky Kafka v clusteru HDInsight.
+title: Zrcadlení Apache Kafka témata – Azure HDInsight
+description: Naučte se používat funkci zrcadlení Apache Kafka k údržbě repliky Kafka v clusteru HDInsight tím, že rozzrcadlí témata do sekundárního clusteru.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,56 +8,56 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: bdc393d041bd40fd27493ccc8f3c4f39adfa35b2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657153"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960219"
 ---
-# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikace témat Apache Kafka s využitím Kafka v HDInsight pomocí Mirrormakeru
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci Apache Kafkach témat pomocí Kafka ve službě HDInsight
 
-Další informace o použití zrcadlení funkce platformy Apache Kafka pro replikaci do sekundární clusteru témata. Zrcadlení lze spustili jako nepřetržitý proces, nebo použít přerušovaně jako metoda migrace dat z jednoho clusteru do jiného.
+Naučte se používat funkci zrcadlení Apache Kafka k replikaci témat do sekundárního clusteru. Zrcadlení může být spuštěno jako nepřetržitý proces nebo občasně používáno jako metoda migrace dat z jednoho clusteru do jiného.
 
-V tomto příkladu je zrcadlení používanou k replikaci témata mezi dvěma clustery HDInsight. Oba clustery jsou v různých virtuálních sítí v různých datových centrech.
+V tomto příkladu se zrcadlení používá k replikaci témat mezi dvěma clustery HDInsight. Oba clustery jsou v různých datových centrech v různých virtuálních sítích.
 
 > [!WARNING]  
-> Zrcadlení by neměly být zahrnuté jako prostředek k dosažení odolnost proti chybám. Posun na položky v rámci tématu se liší mezi primárním a sekundárním clustery, takže klienti nemohou použít dva Zaměnitelně.
+> Pro zajištění odolnosti proti chybám by se nemělo brát v úvahu zrcadlení. Posun k položkám v rámci tématu se liší mezi primárním a sekundárním clusterem, takže klienti nemohou použít obě tato dvě zaměnitelné.
 >
-> Pokud máte obavy o odolnosti proti chybám, byste měli nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
+> Pokud máte obavy o odolnost proti chybám, měli byste nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
 ## <a name="how-apache-kafka-mirroring-works"></a>Jak funguje zrcadlení Apache Kafka
 
-Zrcadlení s využitím funguje [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) nástroj (součást platformy Apache Kafka) konzumovat záznamy z témat ve primárního clusteru a pak vytvořit místní kopii na sekundární clusteru. Nástroje MirrorMaker používá (nejméně jeden) *příjemci* , čtení z primárního clusteru a *producent* , která zapisuje do místního clusteru (sekundární).
+Zrcadlení funguje pomocí nástroje [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (součást Apache Kafka) pro využívání záznamů z témat v primárním clusteru a pak vytvořit místní kopii v sekundárním clusteru. Nástroje MirrorMaker používá jednoho nebo více *uživatelů* , kteří se čtou z primárního clusteru, a *producent* , který zapisuje do místního (sekundárního) clusteru.
 
-Nejužitečnější zrcadlení nastavení pro zotavení po havárii využívá clustery Kafka v různých oblastech Azure. Za tím účelem virtuálních sítí, kde jsou umístěny clustery vytvoření partnerského vztahu společně.
+Nejužitečnější nastavení zrcadlení pro zotavení po havárii využívá clustery Kafka v různých oblastech Azure. Chcete-li toho dosáhnout, virtuální sítě, ve kterých jsou umístěny clustery, jsou propojeny partnerským vztahem.
 
-Následující diagram znázorňuje proces zrcadlení a tok komunikace mezi clustery:
+Následující diagram znázorňuje proces zrcadlení a způsob komunikace mezi clustery:
 
 ![Diagram procesu zrcadlení](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
 
-Primární a sekundární clustery se může lišit v počtu používaných uzlů a oddíly a posun v rámci témata se také liší. Zrcadlení uchovává hodnotu klíče, který se používá pro dělení, tak zachování pořadí záznamů na základě-key.
+Primární a sekundární clustery se mohou lišit v počtu uzlů a oddílů a posuny v rámci těchto témat jsou také jiné. Zrcadlení uchovává klíčovou hodnotu, která se používá pro dělení na oddíly, takže pořadí záznamů je zachováno po jednotlivých klíčích.
 
-### <a name="mirroring-across-network-boundaries"></a>Zrcadlení napříč síťovými hranicemi
+### <a name="mirroring-across-network-boundaries"></a>Zrcadlení napříč hranicemi sítě
 
-Pokud potřebujete pro zrcadlení mezi clustery Kafka v různých sítích, existují následující další aspekty:
+Pokud potřebujete zrcadlit mezi clustery Kafka v různých sítích, existují tyto další předpoklady:
 
 * **Brány**: Sítě musí být schopné komunikovat na úrovni protokolu TCP/IP.
 
-* **Server adresování**: Můžete řešit pomocí jejich IP adresy nebo plně kvalifikované názvy domény uzlů clusteru.
+* **Adresování serveru**: Můžete se rozhodnout, že budete uzly clusteru adresovat pomocí jejich IP adres nebo plně kvalifikovaných názvů domén.
 
-    * **IP adresy**: Při konfiguraci vašich clusterů Kafka použít IP adresu reklamy, vám pokračujte zrcadlení instalaci pomocí IP adresy zprostředkovatelské uzly a uzly zookeeper.
+    * **IP adresy**: Pokud nakonfigurujete clustery Kafka pro použití inzerce IP adres, můžete pokračovat v instalaci zrcadlení pomocí IP adres uzlů služby Broker a uzlů Zookeeper.
     
-    * **Názvy domén**: Pokud nenakonfigurujete vašich clusterů Kafka pro reklamní účely IP adresu, clustery musí být schopný se připojit k sobě navzájem pomocí plně kvalifikované názvy domény (FQDN). To vyžaduje server systému DNS (Domain Name) v každé sítě nakonfigurovaný tak, aby směrovala požadavky k jiným sítím. Při vytváření služby Azure Virtual Network, místo použití automatické DNS, opatřeného sítě, je nutné zadat vlastní server DNS a IP adresu serveru. Po vytvoření virtuální sítě můžete musí pak vytvořte virtuální počítač Azure, která používá tuto IP adresu, pak instalace a konfigurace DNS softwaru na něj.
+    * **Názvy domén**: Pokud nekonfigurujete clustery Kafka pro inzerování IP adres, clustery musí být schopné se vzájemně připojit pomocí plně kvalifikovaných názvů domény (FQDN). To vyžaduje server DNS (Domain Name System) v každé síti, který je nakonfigurován pro přeposílání požadavků do jiných sítí. Při vytváření Virtual Network Azure místo použití automatické služby DNS, která se poskytuje v síti, musíte zadat vlastní server DNS a IP adresu pro tento server. Po vytvoření Virtual Network musíte vytvořit virtuální počítač Azure, který tuto IP adresu používá, a pak na něj nainstalovat a nakonfigurovat software DNS.
 
     > [!WARNING]  
-    > Vytvoření a konfigurace vlastního serveru DNS. před instalací HDInsight do virtuální sítě. Neexistuje žádná další konfigurace požadované pro HDInsight použít server DNS nakonfigurovaný pro virtuální síť.
+    > Před instalací HDInsight do Virtual Network vytvořte a nakonfigurujte vlastní server DNS. Pro HDInsight není nutná žádná další konfigurace pro použití serveru DNS nakonfigurovaného pro Virtual Network.
 
-Další informace o propojení dvou virtuálních sítích Azure najdete v tématu [konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+Další informace o propojení dvou virtuálních sítí Azure najdete v tématu [Konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="mirroring-architecture"></a>Zrcadlení architektury
+## <a name="mirroring-architecture"></a>Architektura zrcadlení
 
-Tato architektura obsahuje dva clustery v různých skupinách prostředků a virtuální sítě: **primární** a **sekundární**.
+Tato architektura nabízí dva clustery v různých skupinách prostředků a virtuálních sítích: **primární** a **sekundární**.
 
 ### <a name="creation-steps"></a>Postup vytvoření
 
@@ -65,31 +65,31 @@ Tato architektura obsahuje dva clustery v různých skupinách prostředků a vi
 
     |Skupina prostředků | Location |
     |---|---|
-    | kafka-primary-rg | Střední USA |
-    | kafka-secondary-rg | Středoseverní USA |
+    | kafka-primary-rg | Střed USA |
+    | kafka-secondary-rg | Střed USA – sever |
 
-1. Vytvořit novou virtuální síť **kafka-primary-vnet** v **kafka-primary-rg**. Ponechejte výchozí nastavení.
-1. Vytvořit novou virtuální síť **kafka sekundární vnet** v **kafka – sekundární rg**, také s výchozím nastavením.
+1. Vytvořte novou virtuální síť **Kafka-Primary-VNet** v **Kafka-Primary-RG**. Ponechte výchozí nastavení.
+1. Vytvořte novou virtuální síť **Kafka-Secondary-VNet** v **Kafka-Secondary-RG**, ale také s výchozím nastavením.
 
-1. Vytvoření dvou nových clusterů Kafka:
+1. Vytvořte dva nové clustery Kafka:
 
     | Název clusteru | Skupina prostředků | Virtuální sítě | Účet úložiště |
     |---|---|---|---|
-    | kafka-primary-cluster | kafka-primary-rg | kafka-primary-vnet | kafkaprimarystorage |
+    | Kafka-Primary-cluster | kafka-primary-rg | Kafka-Primary-VNet | kafkaprimarystorage |
     | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
-1. Vytvořte partnerské vztahy virtuálních sítí. Tento krok vytvoří dvě partnerské vztahy: jeden z **kafka-primary-vnet** k **kafka sekundární vnet** a jeden zpět z **kafka sekundární vnet** k  **kafka-primary-vnet**.
-    1. Vyberte **kafka-primary-vnet** virtuální sítě.
-    1. Klikněte na tlačítko **partnerské vztahy** pod **nastavení**.
+1. Vytvořte partnerské vztahy virtuálních sítí. V tomto kroku vytvoříte dvě partnerské vztahy: jednu z **Kafka-Primary-** VNet na **Kafka-Secondary-VNet** a jednu zpět od **Kafka-Secondary-VNet** až **Kafka-Primary-VNet**.
+    1. Vyberte virtuální síť **Kafka-Primary-VNet** .
+    1. V části **Nastavení**klikněte na **partnerské vztahy** .
     1. Klikněte na **Přidat**.
-    1. Na **přidat partnerský vztah** obrazovky, zadejte podrobnosti, jak je znázorněno v následujícím snímku obrazovky.
+    1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
-        ![Přidat partnerský vztah virtuální sítě](./media/apache-kafka-mirroring/add-vnet-peering.png)
+        ![Přidat partnerský vztah virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. Nakonfigurujte inzerování protokolu IP:
-    1. Přejděte na řídicí panel Ambari pro primární cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Klikněte na tlačítko **služby** > **Kafka**. Klikněte na tlačítko **Configs** kartu.
-    1. Přidejte následující řádky config do dolní části **kafka env šablony** oddílu. Klikněte na **Uložit**.
+1. Konfigurace inzerce protokolu IP:
+    1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`
+    1. Klikněte na **služby** > **Kafka**. Klikněte na kartu **Konfigurace** .
+    1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Klikněte na **Uložit**.
     
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
@@ -99,52 +99,52 @@ Tato architektura obsahuje dva clustery v různých skupinách prostředků a vi
         echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
         ```
 
-    1. Zadání poznámky **uložit konfiguraci** obrazovku a klikněte na tlačítko **Uložit**.
-    1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte na tlačítko **i přesto pokračovat**.
-    1. Klikněte na tlačítko **Ok** na **uložit změny konfigurace**.
-    1. Klikněte na tlačítko **restartovat** > **restartujte všechny ovlivněné** v **vyžaduje restartování** oznámení. Klikněte na tlačítko **potvrďte restartování všech**.
+    1. Na obrazovce **Uložit konfiguraci** zadejte poznámku a klikněte na **Uložit**.
+    1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte **přesto na pokračovat**.
+    1. Klikněte na **OK** a **uložte změny konfigurace**.
+    1. Klikněte na **restartovat** > restart**všech ovlivněných** v oznámení **požadovaná k restartování** . Klikněte na **Potvrdit restart vše**.
 
-        ![Restartujte uzly kafka](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![restartovat Kafka uzly](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-1. Nakonfigurujte Kafka tak, aby naslouchala na všech síťových rozhraních.
-    1. Zůstaňte na **Configs** kartu **služby** > **Kafka**. V **zprostředkovatelem Kafka** části sada **naslouchacích procesů** vlastnost `PLAINTEXT://0.0.0.0:9092`.
+1. Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
+    1. Zůstat na kartě **Konfigurace** v části **služby** > **Kafka**. V části **Kafka Broker** nastavte vlastnost **Listeners** na `PLAINTEXT://0.0.0.0:9092`.
     1. Klikněte na **Uložit**.
-    1. Klikněte na tlačítko **restartovat**, a **potvrďte restartování všech**.
+    1. Klikněte na **restartovat**a **potvrďte restart vše**.
 
-1. Zprostředkovatel IP adresy a adresy primárního clusteru Zookeeper si poznamenejte.
-    1. Klikněte na tlačítko **hostitele** na řídicím panelu Ambari.
-    1. Poznamenejte si IP adresy můžou být zprostředkovatelé a Zookeeper. Zprostředkovatelské uzly mají **wn** jako první dvě písmena názvu hostitele a zookeeper uzly měly **zk** jako první dvě písmena názvu hostitele.
+1. Zaznamenání IP adres zprostředkovatele a adres Zookeeper pro primární cluster.
+    1. V řídicím panelu Ambari klikněte na **hostitelé** .
+    1. Poznamenejte si IP adresy pro zprostředkovatele a uzly Zookeeper. Uzly zprostředkovatele **mají jako první** dvě písmena názvu hostitele a uzly Zookeeper mají **ZK** jako první dvě písmena názvu hostitele.
 
-        ![zobrazení ip adres](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Zobrazit IP adresy](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
-1. Opakujte předchozí tři kroky pro druhý cluster **clusteru kafka sekundární**: Konfigurace IP reklamy, nastavte naslouchacích procesů a poznamenejte si zprostředkovatele a Zookeeper IP adres.
+1. Opakujte předchozí tři kroky pro druhý cluster **Kafka-Secondary-cluster**: Nakonfigurujte reklamu protokolu IP, nastavte naslouchací procesy a poznamenejte si IP adresy zprostředkovatele a Zookeeper.
 
-## <a name="create-topics"></a>Vytvářejte témata
+## <a name="create-topics"></a>Vytváření témat
 
-1. Připojte se k **primární** clusteru pomocí SSH:
+1. Připojte se k **primárnímu** clusteru pomocí SSH:
 
     ```bash
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Nahraďte **sshuser** s uživatelským jménem SSH při vytváření clusteru. Nahraďte **BASENAME** se základním názvem používá při vytváření clusteru.
+    Nahraďte **sshuser** uživatelským jménem SSH použitým při vytváření clusteru. Nahraďte **základ** základním názvem, který se používá při vytváření clusteru.
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Následujícím příkazem Vytvořte proměnnou s Apache Zookeeper hostitelů pro primární cluster. Řetězce, jako jsou `ZOOKEEPER_IP_ADDRESS1` musí být nahrazen skutečné IP adresy poznamenali dříve, jako například `10.23.0.11` a `10.23.0.7`. Pokud používáte překlad plně kvalifikovaného názvu domény pomocí vlastního serveru DNS, postupujte podle [tyto kroky](apache-kafka-get-started.md#getkafkainfo) získat zprostředkovatele a zookeeper názvy.:
+2. Pomocí následujícího příkazu vytvořte proměnnou s hostiteli Apache Zookeeper pro primární cluster. Řetězce jako `ZOOKEEPER_IP_ADDRESS1` musí být nahrazeny skutečnými IP adresami zaznamenanými dříve, `10.23.0.11` například a `10.23.0.7`. Pokud používáte překlad plně kvalifikovaného názvu domény s vlastním serverem DNS, použijte [následující postup](apache-kafka-get-started.md#getkafkainfo) , kterým získáte názvy pro Broker a Zookeeper.:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. Chcete vytvořit téma s názvem `testtopic`, použijte následující příkaz:
+3. Chcete-li vytvořit téma `testtopic`s názvem, použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. Chcete-li ověřit, zda byl vytvořen v tématu použijte následující příkaz:
+3. K ověření, zda bylo téma vytvořeno, použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -152,110 +152,110 @@ Tato architektura obsahuje dva clustery v různých skupinách prostředků a vi
 
     Odpověď obsahuje `testtopic`.
 
-4. Použijte následující postup k zobrazení informací o hostiteli Zookeeper to ( **primární**) clusteru:
+4. K zobrazení informací o hostiteli Zookeeper pro tento ( **primární**) cluster použijte následující postup:
 
     ```bash
     echo $PRIMARY_ZKHOSTS
     ```
 
-    To vrátit informace podobné následujícímu textu:
+    Vrátí informace podobné následujícímu textu:
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
-    Tyto informace uložte. Používá se v další části.
+    Uložte tyto informace. Používá se v další části.
 
 ## <a name="configure-mirroring"></a>Konfigurace zrcadlení
 
-1. Připojte se k **sekundární** clusteru s použitím jiné relaci SSH:
+1. Připojte se k **sekundárnímu** clusteru pomocí jiné relace SSH:
 
     ```bash
     ssh sshuser@SECONDARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Nahraďte **sshuser** s uživatelským jménem SSH při vytváření clusteru. Nahraďte **SECONDARYCLUSTER** s názvem používá při vytváření clusteru.
+    Nahraďte **sshuser** uživatelským jménem SSH použitým při vytváření clusteru. Nahraďte **SECONDARYCLUSTER** názvem použitým při vytváření clusteru.
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A `consumer.properties` soubor se používá ke komunikaci s konfiguraci **primární** clusteru. K vytvoření souboru, použijte následující příkaz:
+2. Soubor se používá ke konfiguraci komunikace s primárním clusterem. `consumer.properties` Chcete-li vytvořit soubor, použijte následující příkaz:
 
     ```bash
     nano consumer.properties
     ```
 
-    Použijte následující text jako obsah `consumer.properties` souboru:
+    Jako obsah `consumer.properties` souboru použijte následující text:
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
     group.id=mirrorgroup
     ```
 
-    Nahraďte **PRIMARY_ZKHOSTS** s IP adresami Zookeeper z **primární** clusteru.
+    Nahraďte **PRIMARY_ZKHOSTS** IP adresami Zookeeper z **primárního** clusteru.
 
-    Tento soubor popisuje příjemce informace používat při čtení z primárního clusteru Kafka. Další informace o příjemce konfigurace, najdete v článku [příjemce Configs](https://kafka.apache.org/documentation#consumerconfigs) na webu kafka.apache.org.
+    Tento soubor popisuje informace o uživateli, které se mají použít při čtení z primárního clusteru Kafka. Další informace o konfiguraci příjemce najdete v tématu Konfigurace [příjemců](https://kafka.apache.org/documentation#consumerconfigs) na adrese Kafka.Apache.org.
 
-    Chcete-li uložit soubor, použijte **Ctrl + X**, **Y**a potom **Enter**.
+    Pokud chcete soubor uložit, použijte **CTRL + X**, **Y**a pak **Zadejte**.
 
-3. Před konfigurací výrobce, který komunikuje s sekundární clusteru, nastavte proměnnou pro IP adresy zprostředkovatele **sekundární** clusteru. Chcete-li vytvořit tuto proměnnou použijte následující příkazy:
+3. Před konfigurací producenta, který komunikuje se sekundárním clusterem, nastavte proměnnou pro IP adresy zprostředkovatele **sekundárního** clusteru. K vytvoření této proměnné použijte následující příkazy:
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
     ```
 
-    Příkaz `echo $SECONDARY_BROKERHOSTS` by měl vrátit informace podobné následujícímu textu:
+    Příkaz `echo $SECONDARY_BROKERHOSTS` by měl vracet informace podobné následujícímu textu:
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. A `producer.properties` soubor se používá ke komunikaci **sekundární** clusteru. K vytvoření souboru, použijte následující příkaz:
+4. Soubor se používá ke komunikaci **sekundárního clusteru.** `producer.properties` Chcete-li vytvořit soubor, použijte následující příkaz:
 
     ```bash
     nano producer.properties
     ```
 
-    Použijte následující text jako obsah `producer.properties` souboru:
+    Jako obsah `producer.properties` souboru použijte následující text:
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
     compression.type=none
     ```
 
-    Nahraďte **SECONDARY_BROKERHOSTS** pomocí zprostředkovatele IP adresy použité v předchozím kroku.
+    Nahraďte **SECONDARY_BROKERHOSTS** IP adresami zprostředkovatele, které jste použili v předchozím kroku.
 
-    Konfigurace výrobce další informace najdete v části [producent Configs](https://kafka.apache.org/documentation#producerconfigs) na webu kafka.apache.org.
+    Další informace o konfiguraci výrobců najdete v tématu Konfigurace [výrobců](https://kafka.apache.org/documentation#producerconfigs) na adrese Kafka.Apache.org.
 
-5. Vytvořte proměnnou prostředí s IP adresami pro sekundární cluster hostitelů Zookeeper použijte následující příkazy:
+5. Pomocí následujících příkazů Vytvořte proměnnou prostředí s IP adresami hostitelů Zookeeper pro sekundární cluster:
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. Výchozí konfigurace pro systém Kafka na HDInsight automatického vytváření témat týkajících se nepovoluje. Před zahájením procesu zrcadlení musíte použít některý z následujících možností:
+7. Výchozí konfigurace pro Kafka ve službě HDInsight nepovoluje automatické vytváření témat. Před spuštěním procesu zrcadlení je nutné použít jednu z následujících možností:
 
-    * **Vytvoření témata na sekundární clusteru**: Tato možnost umožňuje nastavit počet oddílech a faktor replikace.
+    * **Vytvořte témata v sekundárním clusteru**: Tato možnost také umožňuje nastavit počet oddílů a faktor replikace.
 
-        Témata předem můžete vytvořit pomocí následujícího příkazu:
+        Témata můžete vytvořit předem pomocí následujícího příkazu:
 
         ```bash
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        Nahraďte `testtopic` s názvem tématu, které chcete vytvořit.
+        Nahraďte `testtopic` názvem tématu, které se má vytvořit.
 
-    * **Konfigurace clusteru pro vytvoření tématu Automatické**: Tato možnost umožňuje nástroje MirrorMaker pro automatické vytvoření témata, ale může ho vytvořit s různým počtem oddílů nebo faktor replikace než primární tématu.
+    * **Konfigurace clusteru pro automatické vytváření témat**: Tato možnost umožňuje, aby nástroje MirrorMaker automaticky vytvářela témata, ale mohla by jim vytvořit jiný počet oddílů nebo faktor replikace než primární téma.
 
-        Konfigurace sekundární clusteru mohla automaticky vytvářet témata, proveďte tyto kroky:
+        Chcete-li nakonfigurovat sekundární cluster tak, aby automaticky vytvářel témata, proveďte tyto kroky:
 
-        1. Přejděte na řídicí panel Ambari pro sekundární clusteru: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
-        1. Klikněte na tlačítko **služby** > **Kafka**. Klikněte na tlačítko **Configs** kartu.
-        5. V __filtr__ pole, zadejte hodnotu `auto.create`. Tím vyfiltrujete seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
-        6. Změňte hodnotu vlastnosti `auto.create.topics.enable` na hodnotu true a pak vyberte __Uložit__. Přidat poznámku a potom vyberte __Uložit__ znovu.
-        7. Vyberte __Kafka__ služby, vyberte __restartovat__a pak vyberte __restartování všech ovlivněných__. Po zobrazení výzvy vyberte __potvrdit restartujte všechny__.
+        1. Pro sekundární cluster přejít na řídicí panel Ambari: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`
+        1. Klikněte na **služby** > **Kafka**. Klikněte na kartu **Konfigurace** .
+        5. Do pole __Filtr__ zadejte hodnotu `auto.create`. Tím se vyfiltruje seznam vlastností a zobrazí `auto.create.topics.enable` se nastavení.
+        6. Změňte hodnotu `auto.create.topics.enable` na true a pak vyberte __Save (Uložit__). Přidejte poznámku a pak znovu vyberte __Uložit__ .
+        7. Vyberte službu __Kafka__ , vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-        ![Konfigurace automatického vytvoření tématu](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![konfigurovat automatické vytváření témat](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
-## <a name="start-mirrormaker"></a>Spuštění nástroje MirrorMaker
+## <a name="start-mirrormaker"></a>Spustit nástroje MirrorMaker
 
-1. V rámci připojení SSH k **sekundární** clusteru, použijte následující příkaz pro spuštění procesu nástroje MirrorMaker:
+1. Z připojení SSH k **sekundárnímu** clusteru spusťte pomocí následujícího příkazu proces nástroje MirrorMaker:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
@@ -263,45 +263,45 @@ Tato architektura obsahuje dva clustery v různých skupinách prostředků a vi
 
     Parametry použité v tomto příkladu jsou:
 
-    * **--consumer.config**: Určuje soubor, který obsahuje vlastnosti příjemce. Tyto vlastnosti se používají k vytváření, která čte z příjemce *primární* clusteru Kafka.
+    * **--consumer.config**: Určuje soubor, který obsahuje vlastnosti příjemce. Tyto vlastnosti slouží k vytvoření příjemce, který čte z *primárního* clusteru Kafka.
 
-    * **--producer.config**: Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti se používají k vytváření producenta, který zapisuje do *sekundární* clusteru Kafka.
+    * **--producer.config**: Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti slouží k vytvoření producenta, který zapisuje do *sekundárního* clusteru Kafka.
 
-    * **--whitelist**: Seznam témat, která replikuje nástroje MirrorMaker z clusteru primární do sekundární.
+    * **--seznam povolených**: Seznam témat, která nástroje MirrorMaker replikují z primárního clusteru do sekundárního.
 
-    * **--num.streams**: Počet vláken příjemce pro vytvoření.
+    * **--počet datových proudů**: Počet uživatelských vláken, která se mají vytvořit
 
-    Příjemce na sekundárním uzlu je nyní čekání na příjem zprávy.
+    Příjemce v sekundárním uzlu nyní čeká na příjem zpráv.
 
-2. V rámci připojení SSH k **primární** clusteru, použijte následující příkaz ke spuštění výrobce a odesílání zpráv do tématu:
+2. Z připojení SSH k **primárnímu** clusteru spusťte pomocí následujícího příkazu producenta a odešlete zprávy do tématu:
 
     ```bash
     export PRIMARY_BROKERHOSTS=BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-     Až přijedete prázdný řádek s kurzorem, zadejte několik textových zpráv. Zprávy jsou odeslány do tématu **primární** clusteru. Až budete hotovi, použijte **Ctrl + C** ukončit proces výrobce.
+     Po zadání prázdného řádku se kurzorem zadejte několik textových zpráv. Zprávy jsou odesílány do tématu v **primárním** clusteru. Po dokončení použijte **kombinaci kláves CTRL + C** a ukončete proces výrobce.
 
-3. V rámci připojení SSH k **sekundární** clusteru, použijte **Ctrl + C** ukončit proces nástroje MirrorMaker. Může trvat několik sekund se má ukončit proces. Pokud chcete ověřit, že zprávy se replikují do sekundární, použijte následující příkaz:
+3. Z připojení SSH k **sekundárnímu** clusteru ukončete proces nástroje MirrorMaker **stisknutím kombinace kláves CTRL + C** . Ukončení procesu může trvat několik sekund. Chcete-li ověřit, zda byly zprávy replikovány do sekundárního, použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    Teď obsahuje seznam témat `testtopic`, který je vytvořen při MirrorMaster zrcadlí téma z clusteru primární na sekundární. Zprávy načtené z tématu jsou stejné jako ty, které jste zadali na primární clusteru.
+    Seznam témat nyní zahrnuje `testtopic`, který se vytvoří, když MirrorMaster zrcadlí téma z primárního clusteru do sekundárního. Zprávy načtené z tématu jsou stejné jako ty, které jste zadali v primárním clusteru.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-Kroky v tomto dokumentu Vytvoření clusterů ve skupinách různých prostředků Azure. Pokud chcete odstranit všechny prostředky vytvořené, můžete odstranit vytvořené skupiny prostředků dva: **kafka-primary-rg** a **kafka secondary_rg**. Odstranění skupiny prostředků odstraní všechny prostředky vytvořené podle tohoto dokumentu, včetně clusterů, virtuální sítě a účty úložiště.
+Kroky v tomto dokumentu vytvořily clustery v různých skupinách prostředků Azure. Pokud chcete odstranit všechny vytvořené prostředky, můžete odstranit dvě vytvořené skupiny prostředků: **Kafka-Primary-RG** a **Kafka-secondary_rg**. Odstraněním skupin prostředků se odstraní všechny prostředky vytvořené pomocí následujícího dokumentu, včetně clusterů, virtuálních sítí a účtů úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak používat [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) k vytvoření repliky [Apache Kafka](https://kafka.apache.org/) clusteru. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
+V tomto dokumentu jste zjistili, jak pomocí [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) vytvořit repliku clusteru [Apache Kafka](https://kafka.apache.org/) . Pomocí následujících odkazů můžete zjistit další způsoby práce s Kafka:
 
-* [Dokumentace Apache Kafka nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
+* [Apache Kafka dokumentaci k nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na adrese cwiki.Apache.org.
 * [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
-* [Použití Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Použití Apache Stormu s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
-* [Připojení k Apache Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
+* [Použití Apache Spark s Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Použití Apache Storm s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Připojení k Apache Kafka prostřednictvím Azure Virtual Network](apache-kafka-connect-vpn-gateway.md)

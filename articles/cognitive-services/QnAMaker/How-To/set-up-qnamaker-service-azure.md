@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277598"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984366"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -87,6 +87,8 @@ Klíče předplatného můžete zobrazit a obnovit z Azure Portal, kde jste vytv
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Hledání klíčů koncových bodů na portálu QnA Maker
 
+Koncový bod je ve stejné oblasti jako prostředek, protože klávesy koncových bodů slouží k volání znalostní báze.
+
 Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnamaker.ai).
 
 1. Přihlaste se k [portálu QnA maker](https://qnamaker.ai), otevřete svůj profil a vyberte **nastavení služby**:
@@ -111,6 +113,8 @@ QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň 
 |App Service|X|Není možné podle návrhu|
 |Application Insights|✔|Může být sdíleno|
 |Služba vyhledávání|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. Mapování synonym podle názvu `synonym-map` je vyhrazeno pro službu qnamakerem.<br>3. Počet publikovaných základů znalostí je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
+
+Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 
 ### <a name="using-a-single-search-service"></a>Použití jedné vyhledávací služby
 
@@ -201,7 +205,9 @@ Aktuální verzi můžete zjistit na adrese https://www.qnamaker.ai/UserSettings
 
 Služba správy QnA Maker se používá jenom pro QnA Maker portál a pro počáteční zpracování dat. Tato služba je k dispozici pouze v Západní USA oblasti. V této Západní USA službě se neukládají žádná zákaznická data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
+Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
 > [Vytvoření a publikování znalostní báze](../Quickstarts/create-publish-knowledge-base.md)

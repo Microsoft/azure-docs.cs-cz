@@ -1,7 +1,7 @@
 ---
 title: Filtrování síťového provozu – kurz – Azure Portal
 titlesuffix: Azure Virtual Network
-description: V tomto kurzu se dozvíte, jak filtrovat síťový provoz do podsítě se skupinou zabezpečení sítě pomocí webu Azure portal.
+description: V tomto kurzu se naučíte filtrovat síťový provoz do podsítě s použitím skupiny zabezpečení sítě pomocí Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242722"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984907"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrování síťového provozu se skupinou zabezpečení sítě pomocí webu Azure portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrovat síťový provoz pomocí skupiny zabezpečení sítě pomocí Azure Portal
 
 Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, která filtrují síťový provoz podle IP adresy, portu a protokolu. Pravidla zabezpečení se vztahují na prostředky nasazené v podsíti. V tomto kurzu se naučíte:
 
@@ -35,7 +35,7 @@ K dokončení tohoto kurzu můžete použít [Azure CLI](tutorial-filter-network
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -45,12 +45,12 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
-    | Nastavení                 | Hodnota                                              |
+    | Nastavení                 | Value                                              |
     | ---                     | ---                                                |
-    | Název                    | myVirtualNetwork                                   |
+    | Name                    | myVirtualNetwork                                   |
     | Adresní prostor           | 10.0.0.0/16                                        |
-    | Předplatné            | Vyberte své předplatné.                          |
-    | Skupina prostředků          | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*. |
+    | Subscription            | Vyberte své předplatné.                          |
+    | Resource group          | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*. |
     | Location                | Vyberte **USA – východ**.                                |
     | Podsíť – Název            | mySubnet                                           |
     | Podsíť – Rozsah adres  | 10.0.0.0/24                                        |
@@ -63,21 +63,21 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
 2. Do pole **Hledat na Marketplace** zadejte *Skupina zabezpečení aplikace*. Jakmile se ve výsledcích hledání zobrazí **Skupina zabezpečení aplikace**, vyberte ji. V části **Všechno** vyberte **Skupina zabezpečení aplikace** a pak vyberte **Vytvořit**.
 3. Zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
 
-    | Nastavení        | Hodnota                                                         |
+    | Nastavení        | Value                                                         |
     | ---            | ---                                                           |
-    | Název           | myAsgWebServers                                               |
-    | Předplatné   | Vyberte své předplatné.                                     |
-    | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Location       | USA – východ                                                       |
+    | Name           | myAsgWebServers                                               |
+    | Subscription   | Vyberte své předplatné.                                     |
+    | Resource group | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 4. Zopakujte 3. krok s použitím následujících hodnot:
 
-    | Nastavení        | Hodnota                                                         |
+    | Nastavení        | Value                                                         |
     | ---            | ---                                                           |
-    | Název           | myAsgMgmtServers                                              |
-    | Předplatné   | Vyberte své předplatné.                                     |
-    | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Location       | USA – východ                                                       |
+    | Name           | myAsgMgmtServers                                              |
+    | Subscription   | Vyberte své předplatné.                                     |
+    | Resource group | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -85,12 +85,12 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
 2. Vyberte **Sítě** a pak **Skupina zabezpečení sítě**.
 3. Zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|myNsg|
-    |Předplatné| Vyberte své předplatné.|
-    |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Location|USA – východ|
+    |Name|myNsg|
+    |Subscription| Vyberte své předplatné.|
+    |Resource group | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Přidružení skupiny zabezpečení sítě k podsíti
 
@@ -109,22 +109,22 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
 
 2. Vytvořte pravidlo zabezpečení, které skupině zabezpečení aplikace **myAsgWebServers** povolí porty 80 a 443. V části **Přidat příchozí pravidlo zabezpečení** zadejte nebo vyberte následující hodnoty, potvrďte zbývající výchozí hodnoty a vyberte **Přidat**:
 
-    | Nastavení                 | Hodnota                                                                                                           |
+    | Nastavení                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Cíl             | Vyberte **Skupina zabezpečení aplikace** a pak v položce **Skupina zabezpečení aplikace** vyberte **myAsgWebServers**.  |
     | Rozsahy cílových portů | Zadejte 80, 443.                                                                                                    |
     | Protocol                | Vyberte TCP.                                                                                                      |
-    | Název                    | Allow-Web-All                                                                                                   |
+    | Name                    | Allow-Web-All                                                                                                   |
 
 3. Zopakujte 2. krok s použitím následujících hodnot:
 
-    | Nastavení                 | Hodnota                                                                                                           |
+    | Nastavení                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Cíl             | Vyberte **Skupina zabezpečení aplikace** a pak v položce **Skupina zabezpečení aplikace** vyberte **myAsgMgmtServers**. |
     | Rozsahy cílových portů | Zadejte 3389.                                                                                                      |
     | Protocol                | Vyberte TCP.                                                                                                      |
-    | Priorita                | Zadejte 110.                                                                                                       |
-    | Název                    | Allow-RDP-All                                                                                                   |
+    | Priority                | Zadejte 110.                                                                                                       |
+    | Name                    | Allow-RDP-All                                                                                                   |
 
     V tomto kurzu je z internetu přístupný protokol RDP (port 3389) pro virtuální počítač, který je zařazený do skupiny zabezpečení aplikace *myAsgMgmtServers*. V produkčním prostředí se místo portu 3389 přístupného z internetu doporučuje použít pro připojení k prostředkům Azure, které chcete spravovat, síť VPN nebo privátní síťové připojení.
 
@@ -140,27 +140,29 @@ Vytvořte ve virtuální síti dva virtuální počítače.
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**.
-3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
+3. Zadejte nebo vyberte následující informace a přijměte výchozí hodnoty pro zbývající nastavení:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
-    |Název|myVmWeb|
+    |Subscription| Vyberte své předplatné.|
+    |Resource group| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
+    |Name|myVmWeb|
+    |Location| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Předplatné| Vyberte své předplatné.|
-    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Location| Vyberte **USA – východ**.|
+
+   
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
-5. V části **Nastavení** vyberte následující hodnoty, potvrďte zbývající výchozí hodnoty a vyberte **OK**:
+5. V části **sítě**vyberte následující hodnoty a přijměte zbývající výchozí hodnoty:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Virtuální síť |Vyberte **myVirtualNetwork**.|
-    |Skupina zabezpečení sítě | Vyberte **Upřesnit**.|
-    |Skupina zabezpečení sítě (brána firewall)| Vyberte **(new) myVmWeb-nsg** a pak v části **Vyberte skupinu zabezpečení sítě** vyberte **Žádná**. |
+    |Skupina zabezpečení sítě NIC |Vyberte **Upřesnit**.|
+    |Veřejné příchozí porty|Vyberte **žádné**. |
 
-6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
+6. V dolním levém rohu vyberte **zkontrolovat + vytvořit** , vyberte **vytvořit** a spusťte nasazení virtuálního počítače.
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
@@ -217,7 +219,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili skupinu zabezpečení sítě a přidružili jste ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
 

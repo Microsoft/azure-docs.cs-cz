@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 8e8a48620a8591dee7fc98b06f37bc073b0ead2a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f0e587fc39fa2cc6f5275ae16834372a206b37d2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051297"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966739"
 ---
-### <a name="run-container-example-of-docker-run-command"></a>Příklad spuštění kontejneru příkazu Docker run
+Chcete-li spustit kontejner *Analýza mínění* , spusťte následující `docker run` příkaz.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

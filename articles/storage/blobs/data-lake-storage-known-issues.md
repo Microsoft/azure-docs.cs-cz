@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991812"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959116"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -100,7 +100,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|
 | **Průzkumník systému souborů** | Omezená podpora |
-| **Protokolování diagnostiky** |Diagnostické protokoly se podporují jenom v případě, že se zaregistrujete do [protokolu pro přístup k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu `-ServiceType` parametru, jak je znázorněno v tomto příkladu. 
+| **Protokolování diagnostiky** |Diagnostické protokoly se podporují jenom v případě, že se zaregistrujete do [protokolu pro přístup k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu `-ServiceType` parametru, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
 | **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Vrstvy na úrovni objektů** |Studené a archivní úrovně se podporují jenom v případě, že se zaregistrujete do [přístupu k více protokolům](data-lake-storage-multi-protocol-access.md) ve službě Data Lake Storage Preview. <br><br> Všechny ostatní úrovně přístupu ještě nejsou podporované.|
 | **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Podporují se operace správy, jako je vytváření účtu. Operace roviny dat, jako je například nahrávání a stahování souborů, jsou ve verzi Public Preview v rámci [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |

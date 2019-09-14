@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305480"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984231"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -48,7 +48,7 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | arabština      | `ar`          |           |             | ✔ \*                     | |
 | Čeština       | `cs`          |           |             | ✔ \*                     | |
-| Čínština (zjednodušená) | `zh-CN`|           |             | ✔         |    |
+| Čínština (zjednodušená) | `zh-CN`| ✔ \***     |             | ✔         |    |
 | dánština      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Holandština       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Angličtina     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
@@ -58,7 +58,7 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 | Řečtina       | `el`          | ✔ \*     |             |            |     |
 | Maďarština   | `hu`          |           |             |  ✔ \*          |     | 
 | italština     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Japonština    | `ja`          |          | ✔           |  ✔ \*          |     |
+| Japonština    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Korejština      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norština (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | polština      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +71,9 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 
 \*Podpora jazyků je ve verzi Preview.
 
-\*\*[Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) a [propojení entit](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) jsou k dispozici pro tento jazyk.    
+\*\*[Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) a [propojení entit](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) jsou k dispozici pro tento jazyk.  
+
+\** * K dispozici v [Analýza mínění V3 Public Preview](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
 
 ## <a name="see-also"></a>Viz také:
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879377"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960851"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
@@ -31,11 +31,11 @@ Chcete-li zobrazit hostitele, otevřete webové uživatelské rozhraní Ambari. 
 
 2. V nabídce na levé straně vyberte **Všichni uživatelé** a pak vyberte **Nový uživatel**.
 
-    ![Podokno všech uživatelů](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Podokno všech uživatelů](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Dokončete formulář nového uživatele. Vyberte skupiny, které jste vytvořili pro přiřazení oprávnění na základě clusteru. V tomto příkladu vytvořte skupinu s názvem "HiveUsers", do které můžete přiřadit nové uživatele. [Příklady pokynů](hdinsight-domain-joined-configure.md) pro vytvoření clusteru ESP zahrnují přidání dvou skupin `HiveUsers` a. `AAD DC Administrators`
 
-    ![Nové podokno uživatele](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Nové podokno uživatele](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. Vyberte **Vytvořit**.
 
@@ -131,11 +131,11 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 
 1. Z řídicího panelu Ambari v nabídce **správce** vyberte **Spravovat Ambari** .
 
-    ![Správa Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Správa Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. Na levé straně stránky vyberte **Uživatelé** ve skupině nabídky **uživatel + Správa skupiny** .
 
-    ![Položka nabídky uživatelé](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![Položka nabídky uživatelé](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` `Local`místo.
 

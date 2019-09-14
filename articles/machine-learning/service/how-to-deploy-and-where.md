@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 358cbfb80da03d20475e591f0fd0c5b907b83b22
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390576"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984703"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -221,7 +221,7 @@ Tyto typy jsou aktuálně podporovány:
 * `pandas`
 * `numpy`
 * `pyspark`
-* Standardní objekt Pythonu
+* standardní objekt Pythonu
 
 Chcete-li použít generování schématu, `inference-schema` zahrňte balíček do vašeho souboru prostředí conda.
 
@@ -805,6 +805,19 @@ Další ukázkové projekty a příklady najdete v těchto ukázkových úloži�
 * [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="download-a-model"></a>Stažení modelu
+Pokud chcete svůj model stáhnout, abyste ho mohli použít ve svém vlastním prostředí pro spouštění, můžete to udělat pomocí následujících příkazů sady SDK/CLI:
+
+SADĚ
+```python
+model_path = Model(ws,'mymodel').download()
+```
+
+CLI
+```azurecli-interactive
+az ml model download --model-id mymodel:1 --target-dir model_folder
+```
+
 ## <a name="package-models"></a>Modely balíčků
 
 V některých případech můžete chtít vytvořit bitovou kopii Docker bez nasazení modelu (Pokud například plánujete [nasazení nasadit do Azure App Service](how-to-deploy-app-service.md)). Nebo můžete chtít stáhnout image a spustit ji v místní instalaci Docker. Můžete dokonce chtít stáhnout soubory používané k sestavení obrázku, zkontrolovat je, upravit je a sestavit bitovou kopii ručně.
@@ -945,7 +958,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

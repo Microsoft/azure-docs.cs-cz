@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 334d277370bb8d6678679c887f6a2b89d65652c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569474"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958447"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -77,8 +77,8 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | server_principal_sid | server_principal_sid_s | Identifikátor SID aktuálního přihlášení | Varbinary | řetězec |
 | session_id | session_id_d | ID relace, ve které došlo k události | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Objekt zabezpečení serveru pro relaci | musí | řetězec |
-| vydá | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | řetězec |
-| úspěchu | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | bit | řetězec |
+| Vydá | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | řetězec |
+| Úspěchu | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | bit | řetězec |
 | target_database_principal_id | target_database_principal_id_d | Objekt zabezpečení databáze: operace udělení/ZAMÍTNUTí/odvolání se provádí. 0, pokud není k dispozici | int | int |
 | target_database_principal_name | target_database_principal_name_s | Cílový uživatel akce NULL, pokud není k dispozici | řetězec | řetězec |
 | target_server_principal_id | target_server_principal_id_d | Objekt zabezpečení serveru, na kterém je prováděna operace GRANT/DENY/REVOKE. Vrátí 0, pokud není k dispozici. | int | int |

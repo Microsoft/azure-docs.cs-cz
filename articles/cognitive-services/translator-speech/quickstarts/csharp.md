@@ -3,20 +3,20 @@ title: 'Rychlý start: Translator Speech APIC#'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 04/26/2019
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5cca3d5d02f9618e99f122bf3fc2a7d2874e1cdf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444510"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965427"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Translator Speech API sC#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k př
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2019](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux můžete také použít textový editor [Visual Studio Code](https://code.visualstudio.com/Download) jako alternativu.
+Pro spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2019](https://www.visualstudio.com/downloads/) . (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux, můžete také použít textový editor [Visual Studio Code](https://code.visualstudio.com/Download) jako alternativu.
 
 Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM.
 
@@ -158,7 +158,7 @@ namespace TranslateSpeechQuickStart
 > [!div class="nextstepaction"]
 > [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Přehled služby Translator Speech](../overview.md)
 [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

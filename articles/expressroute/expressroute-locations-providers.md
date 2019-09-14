@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3bae365692b2165e4944becbe5081bb69bef98b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 69226cafc31771ae5307999e921cec4ae7841f8c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846112"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967141"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -190,7 +190,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 
 * Intelsat
 * [ŠETŘENÍ](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
-* Viasat
+* [Viasat](http://www.directcloud.viasatbusiness.com/)
 
 ## <a name="c1partners"></a>Připojení prostřednictvím dalších poskytovatelů služeb
 | **Location** | **Exchange** | **Poskytovatelé připojení** |

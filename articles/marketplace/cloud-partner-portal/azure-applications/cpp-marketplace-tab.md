@@ -1,134 +1,134 @@
 ---
-title: Nabídka Azure aplikace Marketplace kartu
-description: Na kartě Marketplace k identifikaci marketingové prostředky pro nabídku aplikací Azure.
+title: Karta tržiště nabídky aplikací Azure
+description: Kartu Marketplace použijte k identifikaci marketingových prostředků nabídky aplikace Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 7ea6e6be0597a114b02fad8c41e37d21ce1f6028
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942972"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962867"
 ---
-# <a name="azure-application-marketplace-tab"></a>Karta aplikace Azure Marketplace
+# <a name="azure-application-marketplace-tab"></a>Karta Azure Application Marketplace
 
-Na kartě Marketplace k popisu aplikace Azure a poskytnout marketingové prostředky. Tato karta obsahuje následujících forem: Přehled, artefakty Marketing, vedoucí správy a právní.
+Kartu Marketplace použijte k popisu vaší aplikace Azure a poskytování marketingových prostředků. Tato karta obsahuje následující formuláře: Přehled, artefakty marketingu, řízení vedoucích a právní.
 
-## <a name="overview-form"></a>Formulář přehledu
+## <a name="overview-form"></a>Formulář s přehledem
 
-Přehled formulář má pole povinné a nepovinné znázorňuje následující snímek obrazovky. Povinná pole jsou uvést hvězdičkou (*).
+Formulář s přehledem má požadovaná a volitelná pole zobrazená v následujícím snímku obrazovky. Požadovaná pole jsou indicted hvězdičkou (*).
 
-![Formulář přehledu](./media/azureapp-marketplace-overview.png)
+![Formulář s přehledem](./media/azureapp-marketplace-overview.png)
 
-Následující tabulka popisuje nastavení se použije pro vytvoření výkladní skříň pro tuto nabídku.   Pole s hvězdičkou jsou povinná.
-
-|      Pole         |    Popis    |
-|  ---------------   |  ---------------  |
-| **Název\***        | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace. Maximální délka je 50 znaků. |
-| **Souhrn\***      | Krátký popis nabídky Maximální délka je 100 znaků.           |
-| **Dlouhé shrnutí\*** | Už souhrn nabídky (i když může být stejný jako souhrn). Maximální délka je 256 znaků.           |
-| **Popis\***  | Popis nabídky. Maximální délka je 3000 znaků. Jednoduché formátování HTML je povolený, včetně &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; hlavičky značky a žádné jiné.  |
-| **Identifikátor marketing\*** | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků. Zvolte krátký, popisný marketingové identifikátor pro vaši službu. Ten se použije v marketplace adresy URL pro tuto nabídku. Například pokud je vaše ID vydavatele "contoso" a marketingové identifikátor "Ukázková aplikace", adresa URL pro nabídky na webu Azure Marketplace bude https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp  
-| **ID předplatných ve verzi Preview\*** | Přidejte jednu až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné bude mít přístup k vaší nabídce po publikování dříve, než přejde za provozu je dostupná ve verzi preview.          |
-| **Užitečné odkazy**    | Volitelně můžete zadat odkazy na různé zdroje pro uživatele vaší nabídky, jako je podpora, dokumentaci, fóra atd.  Doporučujeme přidat alespoň jeden odkaz na dokumentaci.            |
-| **Navrhované kategorie (max. 5)\*** | Výběr jedné do pěti kategorií. Vybrané kategorie se používají pro mapování vaší nabídky na kategorie produktů, k dispozici v Azure Marketplace a webu Azure Portal. Že se zobrazí na stránkách Procházet a na vaší stránce s podrobnostmi o produktu. |
-|  |  |
-
-
-## <a name="marketing-artifacts"></a>Artefakty marketing
-
-Marketingové artefakty formulář obsahuje povinné a nepovinné pole zobrazená v další snímek obrazovky. Povinná pole jsou uvést hvězdičkou (*).
-
-![Marketing artefakty formuláře](./media/azureapp-marketplace-artifacts.png)
-
-Následující tabulka popisuje marketingové artefakty.
+Následující tabulka popisuje nastavení, která se použijí pro vytvoření prezentace pro nabídku.   Pole připojená pomocí hvězdičky jsou povinná.
 
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
-| **Malé\***        | Malé logo: 40 x 40 pixelů ve formátu PNG     |
-| **Střední\***       | Střední loga: 90 x 90 pixelech ve formátu PNG    |
-| **Velké\***        | Velké logo: 115 x 115 pixelů ve formátu PNG   |
-| **Široký\***         | Široké logo: 255 x 115 pixelů ve formátu PNG    |
-| **Hero**           | Logo volitelné hero: 815 x 290 pixelů ve formátu PNG. **Poznámka:** Ikona hero nelze odstranit po nahrání. |
-| **Snímky obrazovky (max. 5)** |        Snímky obrazovky se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou to dobrý způsob, jak vizuálně komunikovat, co aplikace dělá a jak to funguje. Můžete například zobrazit diagramy architektury nebo použít případu obrázky. Snímky obrazovky jsou volitelné a omezeno na 5 za skladové položky. Chcete-li přidat snímek obrazovky:<ul><li>Vyberte **+ přidat snímek obrazovky** otevřete okno snímek obrazovky</li><li>**Název** – zadejte název nebo název (maximální délku 100 znaků.)</li><li>**Nahrát** – nahrání obrázku. Musí být ve formátu PNG a velikost je 533 x 324 pixelů.</li></ul>           |
-| **Přidat video**      | Volitelné, videa se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou to dobrý způsob, jak vizuálně komunikovat, co aplikace dělá a jak to funguje. Chcete-li přidat video: <ul><li>Vyberte **+ přidat video** otevřete okno Video</li><li>**Název** – zadejte název nebo název (maximální délku 100 znaků.)</li><li>**Odkaz** – zadejte adresu URL pro web, který je hostitelem videa (YouTube nebo Vimeo)</li><li>**Miniatura** – nahrání miniatury. Musí být ve formátu PNG a velikost je 533 x 324 pixelů.</li></ul>          |
+| **Hlava\***        | Název nabídky Bude se zobrazovat na webu Marketplace na místě. Maximální délka je 50 znaků. |
+| **Shrnut\***      | Krátké shrnutí nabídky Maximální délka je 100 znaků.           |
+| **Dlouhý souhrn\*** | Delší souhrn nabídky (i když by to bylo stejné jako u souhrnu). Maximální délka je 256 znaků.           |
+| **Název\***  | Popis nabídky Maximální délka je 3000 znaků. Je povoleno jednoduché formátování HTML, včetně &lt;značek&gt;p &lt;&gt; &lt;&gt;, em&gt;, ul, li,&lt;ol&gt;aHeader. &lt;  |
+| **Identifikátor marketingu\*** | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků. Vyberte krátký a popisný identifikátor marketingu pro vaši službu. Tato nabídka bude použita v adresách URL webu Marketplace. Pokud je například vaším vydavatelem ID "contoso" a váš marketingový identifikátor je "dotazů", adresa URL vaší nabídky v Azure Marketplace bude https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Náhled ID předplatných\*** | Přidat z jednoho až 100 identifikátorů předplatného pro náhledy. Tyto bílé odběry budou mít přístup k vaší nabídce, pokud jsou po publikování dostupné ve verzi Preview a teprve potom budou aktivní.          |
+| **Užitečné odkazy**    | Volitelně můžete poskytnout odkazy na různé prostředky pro uživatele vaší nabídky, jako je podpora, dokumentace, fóra atd.  Doporučuje se přidat aspoň jeden odkaz na svou dokumentaci.            |
+| **Navrhované kategorie (max. 5)\*** | Vyberte jednu až pět kategorií. Vybrané kategorie se používají k mapování vaší nabídky na kategorie produktů dostupné v Azure Marketplace a na webu Azure Portal. Budou zobrazeny na stránkách pro procházení a na stránce s informacemi o produktu. |
 |  |  |
 
 
-### <a name="artifact-examples-in-azure-marketplace"></a>Příklady artefaktů na webu Azure Marketplace
+## <a name="marketing-artifacts"></a>Marketingové artefakty
 
-Následující snímek obrazovky ukazuje příklad výsledků na vyhledávacím webu Marketplace.
+Formulář artefaktů marketingu má požadovaná a volitelná pole zobrazená v následujícím snímku obrazovky. Požadovaná pole jsou indicted hvězdičkou (*).
+
+![Formulář artefaktů marketingu](./media/azureapp-marketplace-artifacts.png)
+
+V následující tabulce jsou popsány marketingové artefakty.
+
+|      Pole         |    Popis    |
+|  ---------------   |  ---------------  |
+| **Nejmenší\***        | Malé logo: 40x40 pixelů ve formátu PNG     |
+| **Úrovně\***       | Střední logo: 90x90 pixelů ve formátu PNG    |
+| **Celou\***        | Velké logo: 115x115 pixelů ve formátu PNG   |
+| **Rozlehlý\***         | Logo ve světě: 255x115 pixelů ve formátu PNG    |
+| **Hero**           | Volitelné logo Hero: 815x290 pixelů ve formátu PNG. **Poznámka:** Po nahrání nelze ikonu Hero odstranit. |
+| **Snímky obrazovky (max. 5)** |        Snímky obrazovky se zobrazí na stránce s informacemi o produktu. Představují dobrý způsob, jak vizuálně sdělit, co vaše aplikace dělá a jak funguje. Můžete například zobrazit diagramy architektury nebo ilustrace případu použití. Snímky obrazovky jsou volitelné a omezené na 5 na SKU. Přidání snímku obrazovky:<ul><li>Výběr **+ Přidat snímek obrazovky** pro otevření okna snímku obrazovky</li><li>**Název** – zadejte název nebo název (maximální délka je 100 znaků).</li><li>**Nahrání** – nahrání obrázku Musí být ve formátu PNG a velikost je 533 × 324 pixelů.</li></ul>           |
+| **Přidat video**      | Volitelná, videa se zobrazí na stránce s podrobnostmi o produktu. Představují dobrý způsob, jak vizuálně sdělit, co vaše aplikace dělá a jak funguje. Přidání videa: <ul><li>Vyberte **+ přidat video** a otevřete okno video.</li><li>**Název** – zadejte název nebo název (maximální délka je 100 znaků).</li><li>**Odkaz** – zadejte adresu URL pro web, který je hostitelem videa (YouTube nebo Vimeo).</li><li>**Miniatura** – nahrajte miniaturu. Musí být ve formátu PNG a velikost je 533 × 324 pixelů.</li></ul>          |
+|  |  |
+
+
+### <a name="artifact-examples-in-azure-marketplace"></a>Příklady artefaktů v Azure Marketplace
+
+Následující snímek obrazovky ukazuje příklad výsledku hledání na webu Marketplace.
 
 ![Výsledek hledání nabídky Marketplace](./media/azureapp-marketplace-example-browse.png)
 
-Následující obrázek ukazuje, jak se nabídky zobrazí na webu Marketplace po zákazník klikne na dlaždici nabídky ve výsledcích hledání.
+Následující obrázek ukazuje, jak se nabídka zobrazuje na webu Marketplace poté, co zákazník klikne na dlaždici nabídky ve výsledku hledání.
 
-![Podrobnosti výsledku hledání nabídky Marketplace](./media/azureapp-marketplace-example-details.png)
+![Podrobnosti o výsledku hledání nabídky Marketplace](./media/azureapp-marketplace-example-details.png)
 
 
 ### <a name="artifact-examples-in-azure-portal"></a>Příklady artefaktů na webu Azure Portal
 
-Na následující obrazovce zaznamená zobrazit zobrazení nabídky na webu Azure Portal. Nabídky aplikace v tomto příkladu je najít procházením **Marketplace > vše > vývoj + testování > Jenkins**. Nabídka Jenkins zobrazuje logo, název a zobrazovaný název vydavatele.
+Následující snímek obrazovky ukazuje, jak se nabídka zobrazuje na webu Azure Portal. Nabídka aplikace v tomto příkladu je k dispozici tak, že přejdete na **web Marketplace > vše > Dev + Test > Jenkinse**. V nabídce Jenkinse se zobrazuje logo, název a zobrazované jméno vydavatele.
 
-![Procházet nabízí na webu Azure portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+![Procházet nabídky v Azure Portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
 
-Následující snímek obrazovky ukazuje podrobné informace o aplikaci, když uživatel vybere Jenkinse.
+Další snímek obrazovky zobrazuje podrobné informace o aplikaci, když uživatel vybere Jenkinse.
 
-![Podrobnosti nabídky na webu Azure portal](./media/azureapp-portal-artifacts-jenkins-details.png)
+![Podrobnosti o nabídce v Azure Portal](./media/azureapp-portal-artifacts-jenkins-details.png)
 
 
 ### <a name="logo-guidelines"></a>Pokyny pro použití loga
 
-Všechny loga nahráli na portál Cloud Partner postupujte podle pokynů:
+Všechna loga odeslaná na portál partnerů cloudu by měla postupovat podle pokynů:
 
-- Design Azure má jednoduchou paletu barev. Zachovat počet primární a sekundární barvy na vaše logo nízké.
-- Jsou bílé barvy motivu na webu Azure Portal a černé. Vyhněte se použití tyto barvy jako barva pozadí pro vašeho loga. Použijte barvu, která způsobí, že vaše loga viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledným pozadím, ujistěte se, že nejsou loga/text bílé, černá a modrá.
-- Nepoužívejte barevného přechodu pozadí na vaše logo.
-- Předejde text, dokonce i vaše společnost nebo název značky, loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.
-- Logo není stretch.
+- Design Azure má jednoduchou paletu barev. Ponechte počet primárních a sekundárních barev v logu nízký.
+- Barvy motivu webu Azure Portal jsou bílé a černé. Vyhněte se použití těchto barev jako barvy pozadí pro vaše loga. Použijte barvu, která bude mít v Azure Portal výrazným logem. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledné pozadí, zajistěte, aby se loga/text nepoužívala bílá, černá nebo modrá.
+- Nepoužívejte na svém logu pozadí přechodu.
+- Vyhněte se umístění textu, dokonce i názvu společnosti nebo značky, na logo. Vzhled a chování loga by mělo být "ploché" a mělo by se vyhnout přechodu.
+- Nepřizpůsobujte logo.
 
 
 #### <a name="hero-logo"></a>Hero logo
 
-Hero logo je volitelné.
+Logo Hero je volitelné.
 
 >[!IMPORTANT]
->Hero logo nelze odstranit po nahrání.
+>Po nahrání se logo Hero nedá odstranit.
 
-Pomocí následujících pokynů pro Hero logo:
+Pro logo Hero použijte následující pokyny:
 
-- Nejsou povoleny černou, bílou a průhledné pozadí.
-- Vyhněte se použití jakékoli světlé barevné jako pozadí loga. Vydavatel zobrazovaný název, plán nadpis a nabídky, dlouhé shrnutí se zobrazují Barva písma bílé a musí být pozadí.
-- Vyhněte se použití Většina textu při navrhování loga. Název vydavatele, název plánu, nabídky, dlouhé shrnutí a tlačítko Vytvořit jsou vložené prostřednictvím kódu programu uvnitř logo při jejím uvedené.
-- Patří nevyužité obdélníkové místo na pravé straně hero logo. Toto prázdné místo je 415 × 100 pixelů a posun od levé 370 pixelů.
+- Černá, bílá a průhledná pozadí nejsou povoleny.
+- Vyhněte se použití jakékoli světlé barvy jako pozadí loga. Zobrazované jméno vydavatele, název plánu a celková doba nabídky se zobrazují v barvě bílého písma a musí se vystupovat na pozadí.
+- Nepoužívejte většinu textu při navrhování loga. V případě, že je nabídka uvedena, jsou do loga vložena pole název vydavatele, název plánu, dlouhý souhrn nabídky a tlačítko vytvořit.
+- Zahrňte nepoužívané obdélníkové místo na pravé straně loga Hero. Toto prázdné místo je 415x100 pixelů a posun od levého po 370 pixelů.
 
 
-## <a name="lead-management"></a>Průběžná správa
+## <a name="lead-management"></a>Správa zájemců
 
-Formulář vést Management má volitelné pole můžete nakonfigurovat správu potenciálních zákazníků. Pokud chcete nakonfigurovat Správa potenciálních zákazníků, vyberte cíl potenciálních zákazníků z rozevíracího seznamu. Následující snímek obrazovky ukazuje dostupné cíle.
+Formulář pro správu potenciálních zákazníků má volitelné pole pro konfiguraci správy zájemců. Chcete-li nakonfigurovat správu zájemců, vyberte cíl zájemce z rozevíracího seznamu. Následující snímek obrazovky zobrazuje dostupné cíle.
 
-![Cíl správy vyberte zájemce](./media/azureapp-marketplace-leadmgmt.png)
+![Vybrat cíl správy potenciálních zákazníků](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Výběrem ikony informace zobrazí tato zpráva: "Vyberte systému, kam se budou ukládat vaše potenciálních zákazníků. Zjistěte, jak se připojit k systému CRM [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) . "
+>Výběrem informační ikony zobrazíte tuto zprávu: Vyberte systém, ve kterém budou vaše potenciální zákazníci ukládat. [Tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) se dozvíte, jak se připojit k systému CRM. "
 
-Další informace najdete v tématu [konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
+Další informace najdete v tématu [Konfigurace zákaznických zájemců](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
 
 
 ## <a name="legal"></a>Právní informace
 
-Právní formulář slouží k poskytování právní dokumentace, vyžaduje se pro každou nabídku.
+K poskytnutí právní dokumentace vyžadované pro každou nabídku použijte právní formu.
 
 Zadejte tyto informace:
 
-- **Adresa URL zásad ochrany osobních údajů\***  – zadejte odkaz na zásady ochrany osobních údajů vaší aplikace.
-- **Podmínky použití\***  – zadejte podmínky použití pro vaši aplikaci. Zákazníkům je potřeba přijmout tyto podmínky předtím, než se pokusí vaší aplikace.
+- **Adresa URL\* zásad ochrany osobních údajů** – zadejte odkaz na zásady ochrany osobních údajů vaší aplikace.
+- **Podmínkypoužití\***  – zadejte podmínek použití vaší aplikace. Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet.
 
-![Platný tvar](./media/azureapp-marketplace-legal.png)
+![Právní forma](./media/azureapp-marketplace-legal.png)
 
 
 ## <a name="next-steps"></a>Další postup

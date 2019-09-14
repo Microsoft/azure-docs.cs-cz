@@ -1,84 +1,84 @@
 ---
-title: Převod textu na řeč rozhraní API služby Microsoft řeči | Dokumentace Microsoftu
+title: rozhraní API pro převod textu na řeč služby Microsoft Speech Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Převod textu na řeč rozhraní API používat k poskytování převodu převod textu na řeč v reálném čase v různých hlasy a jazyky
+description: Použití rozhraní API pro převod textu na řeč k zajištění převodu textu na řeč v reálném čase v různých hlasů a jazycích
 services: cognitive-services
-author: priyaravi20
-manager: yanbo
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: priyar
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee9b0b47fb88cba948bc06db6eb83fe9c076fe40
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515426"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966868"
 ---
-# <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
+# <a name="bing-text-to-speech-api"></a>ROZHRANÍ Bing pro převod textu na řeč
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="Introduction"></a>Úvod
 
-Vaše aplikace se Bingu převod textu na řeč rozhraní API, můžete odeslat požadavky HTTP cloudovými servery, kde text okamžitě syntetizovat do mluvené řeči lidských to nezní a vrátí jako zvukový soubor. Toto rozhraní API můžete použít v mnoha různých kontextech kvůli převodu převod textu na řeč v reálném čase v řadě různých hlasy a jazyky.
+S textem Bingu pro Speech API může vaše aplikace odesílat požadavky HTTP na cloudový server, kde se text rychle vysyntetizuje pomocí lidského zvukového rozpoznávání řeči a vrátí se jako zvukový soubor. Toto rozhraní API je možné použít v mnoha různých kontextech k zajištění převodu textu na řeč v reálném čase v nejrůznějších různých hlasů a jazycích.
 
-## <a name="VoiceSynReq"></a>Žádost o syntézu hlasu
+## <a name="VoiceSynReq"></a>Požadavek na hlasovou syntézu
 
 ### <a name="Subscription"></a>Autorizační token
 
-Každý hlas syntézu požadavek vyžaduje přístupového tokenu JSON Web Token (JWT). Přístupový token JWT se předává v hlavičce žádosti řeči. Token, který má čas vypršení platnosti 10 minut. Informace o odběru a získání klíče rozhraní API, které slouží k načtení platné přístupové tokeny JWT, naleznete v tématu [předplatné služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
+Každá žádost o zpracování hlasové syntézy vyžaduje přístupový token JSON Web Token (JWT). Přístupový token JWT se předává v hlavičce žádosti o řeč. Platnost tokenu vypršela po dobu 10 minut. Informace o přihlášení k odběru a získání klíčů rozhraní API, které se používají k načtení platných přístupových tokenů JWT, najdete v tématu [Cognitive Services Subscription](https://azure.microsoft.com/try/cognitive-services/).
 
-Klíč rozhraní API je předán do tokenu služby. Příklad:
+Klíč rozhraní API se předává službě tokenů. Příklad:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-Informace o požadované záhlaví pro přístup pomocí tokenu je následujícím způsobem.
+Následující informace hlavičky pro přístup k tokenu jsou následující.
 
-Název| Formát | Popis
+Name| Formát | Popis
 ----|----|----
-OCP-Apim-Subscription-Key | ASCII | Klíč předplatného.
+OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
 
-Vrátí token služby přístupový token JWT jako `text/plain`. Pak tokenů JWT je předán jako `Base64 access_token` ke koncovému bodu řeči jako hlavičku autorizace řetězec s předponou `Bearer`. Příklad:
+Tokenová služba vrátí přístupový token JWT jako `text/plain`. Pak se token JWT předává jako `Base64 access_token` koncový bod řeči jako autorizační hlavička s předponou a řetězcem. `Bearer` Příklad:
 
 `Authorization: Bearer [Base64 access_token]`
 
-Následující koncový bod musí ho klienti používat pro přístup k převod textu na řeč služby:
+Klienti musí pro přístup ke službě převod textu na řeč použít následující koncový bod:
 
 `https://speech.platform.bing.com/synthesize`
 
 >[!NOTE]
->Dokud jste získali přístupový token s klíči předplatného, jak je popsáno výše, generuje tento odkaz `403 Forbidden` Chyba odpovědi.
+>Dokud nezískáte přístupový token s klíčem předplatného, jak je popsáno dříve, tento odkaz `403 Forbidden` vygeneruje chybu odpovědi.
 
 ### <a name="Http"></a>Hlavičky protokolu HTTP
 
-V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové požadavky syntézu.
+Následující tabulka uvádí hlavičky protokolu HTTP, které se používají pro požadavky hlasové syntézy.
 
-Záhlaví |Hodnota |Komentáře
+Záhlaví |Value |Komentáře
 ----|----|----
-Content-Type | aplikace/ssml + xml | Vstupní typ obsahu.
-X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
-X-Search-AppId | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště pro aplikace. Pokud není k dispozici, může být ID uživatele vygenerované aplikace.
-X-Search-ClientID | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
-User-Agent | Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
-Authorization | Autorizační token |  Zobrazit <a href="#Subscription">autorizační token</a> oddílu.
+Typ obsahu | Application/SSML + XML | Vstupní typ obsahu.
+X-Microsoft-OutputFormat | **1.** SSML-16khz-16bitový-mono-TTS <br> **2.** RAW-16khz-16bitový-mono-PCM <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** RIFF-16khz-16bitový-mono-PCM <br> **6.** audio-16khz-128kbitrate-mono-MP3 <br> **7.** audio-16khz-64kbitrate-mono-MP3 <br> **8.** audio-16khz-32kbitrate-mono-MP3 | Výstupní zvukový formát.
+X-Search-AppId | GUID (jenom šestnáctkově, žádné pomlčky) | ID, které jedinečně identifikuje klientskou aplikaci. Může to být ID obchodu pro aplikace. Pokud není k dispozici, ID může být pro aplikaci vygenerované uživatelem.
+X-Search-ClientID | GUID (jenom šestnáctkově, žádné pomlčky) | IDENTIFIKÁTOR, který jednoznačně identifikuje instanci aplikace pro každou instalaci.
+User-Agent | Název aplikace | Název aplikace je povinný a musí mít méně než 255 znaků.
+Authorization | Autorizační token |  Podívejte se na část <a href="#Subscription">autorizační token</a> .
 
 ### <a name="InputParam"></a>Vstupní parametry
 
-Požadavky na textu na řeč Bingu rozhraní API se provedou pomocí volání HTTP POST. Hlavičky jsou určené v předchozí části. Vstup řeči syntézu Markup Language (SSML), který představuje text, který se má syntetizovat obsahuje text. Popis kódu použít k řízení aspektů řeči, jako je například jazyk a pohlaví mluvčího, najdete v článku [specifikaci W3C SSML](https://www.w3.org/TR/speech-synthesis/).
+Požadavky na rozhraní Bing text na Speech API se provádějí pomocí volání HTTP POST. Hlavičky jsou uvedené v předchozí části. Tělo obsahuje vstup SSML (Speech Shrnutí Markup Language), který představuje text, který se má syntetizovat. Popis značek používaných k řízení aspektů řeči, jako je například jazyk a pohlaví mluvčího, najdete v článku [specifikace W3C pro SSML](https://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
->Maximální velikost, která je podporována vstup SSML je 1 024 znaků, včetně všech značek.
+>Maximální velikost podporovaného vstupu SSML je 1 024 znaků, včetně všech značek.
 
-###  <a name="SampleVoiceOR"></a>Příklad: hlasový výstup žádosti
+###  <a name="SampleVoiceOR"></a>Příklad: požadavek na výstup hlasu
 
-Příklad žádosti hlasový výstup vypadá takto:
+Příkladem požadavku na výstup hlasu je následující:
 
 ```HTTP
 POST /synthesize
@@ -94,13 +94,13 @@ Authorization: Bearer [Base64 access_token]
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>Microsoft Bing Voice Output API</voice></speak>
 ```
 
-## <a name="VoiceOutResponse"></a>Hlasový výstup odezvy
+## <a name="VoiceOutResponse"></a>Reakce na výstup hlasu
 
-Text na řeč Bingu rozhraní API používá HTTP POST k odesílání zvuku zpět do klienta. Odpověď rozhraní API obsahuje zvukový datový proud a kodek a odpovídá požadovaný výstupní formát. Zvuk vrátil pro danou žádost nesmí překročit 15 sekund.
+Rozhraní text Bingu API pro rozpoznávání řeči používá HTTP POST k odesílání zvuku zpátky klientovi. Odpověď rozhraní API obsahuje zvukový stream a kodek a odpovídá požadovanému výstupnímu formátu. Zvuk vrácený pro daný požadavek nesmí být delší než 15 sekund.
 
-### <a name="SuccessfulRecResponse"></a>Příklad: syntézu úspěšné odpovědi
+### <a name="SuccessfulRecResponse"></a>Příklad: úspěšná syntéza – odpověď
 
-Následující kód je příkladem odpověď ve formátu JSON na žádost o syntézu úspěšné hlasu. Komentáře a formátování kódu jsou pro účely tohoto příkladu pouze a jsou vynechány z skutečné odpovědi.
+Následující kód je příkladem odpovědi JSON na úspěšný požadavek na syntézu hlasu. Komentáře a formátování kódu jsou pouze pro účely tohoto příkladu a jsou vynechány ze skutečné odpovědi.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -110,9 +110,9 @@ Content-Type: audio/x-wav
 Response audio payload
 ```
 
-### <a name="RecFailure"></a>Příklad: syntézu selhání
+### <a name="RecFailure"></a>Příklad: Chyba syntézy
 
-Následující příklad kódu ukazuje odpověď ve formátu JSON k selhání dotazu syntézu hlasu:
+Následující příklad kódu ukazuje odpověď JSON na selhání dotazu na hlasovou syntézu:
 
 ```HTTP
 HTTP/1.1 400 XML parser error
@@ -124,12 +124,12 @@ Content-Length: 0
 
 Chyba | Popis
 ----|----
-Chybný požadavek HTTP/400 | Je povinný parametr chybí, je prázdný nebo null, nebo hodnotu předanou buď povinný nebo volitelný parametr je neplatný. Jedním z důvodů pro získání "neplatná" odpověď je předání hodnotu řetězce, která přesahuje povolenou délku. Stručný popis problematické parametru je součástí.
-HTTP/zobrazuje chyba 401 Neautorizováno | Požadavek není autorizovaný.
-HTTP/413 RequestEntityTooLarge  | Vstup SSML je větší, než co je podporováno.
-HTTP/502 BadGateway | Existuje problém související se sítí nebo o problém na straně serveru.
+Chybný požadavek HTTP/400 | Povinný parametr chybí, je prázdný nebo má hodnotu null nebo hodnota předaná buď požadovanému nebo volitelnému parametru není platná. Jedním z důvodů, proč je získání "neplatné" odpovědi předání řetězcové hodnoty delší než povolená délka. K dispozici je stručný popis problematického parametru.
+HTTP/401 Neautorizováno | Požadavek není autorizovaný.
+HTTP/413 RequestEntityTooLarge  | Vstup SSML je větší, než je podporováno.
+HTTP/502 BadGateway | Došlo k potížím souvisejícím se sítí nebo k problému na straně serveru.
 
-Příklad chybová odpověď vypadá takto:
+Příklad chybové odpovědi je následující:
 
 ```HTTP
 HTTP/1.0 400 Bad Request
@@ -139,11 +139,11 @@ Content-Type: text/plain; charset=UTF-8
 Voice name not supported
 ```
 
-## <a name="ChangeSSML"></a>Změna hlasového výstup prostřednictvím SSML
+## <a name="ChangeSSML"></a>Změna hlasového výstupu prostřednictvím SSML
 
-Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3C [řeči syntézu Markup Language (SSML) verze 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). V této části jsou uvedeny příklady změny některých vlastností výstupu generovaného hlasové, jako jsou mluvený přenosové rychlosti, výslovnost atd. pomocí značek SSML.
+ROZHRANÍ Microsoft pro převod textu na řeč podporuje SSML 1,0, jak je definované ve [verzi SSML (W3C Speech Markup Language) 1,0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). V této části jsou uvedeny příklady měnící se určité charakteristiky vygenerovaného hlasového výstupu, jako je například míra speaking, výslovnost atd. pomocí značek SSML.
 
-1. Přidání přerušení
+1. Přidávání přerušení
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
@@ -173,26 +173,26 @@ Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
    ```
 
-6. Změna prosody obrysu
+6. Změnit Prosody Rozvrh
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
    ```
 
 > [!NOTE]
-> Poznámka: zvukových dat musí být 8 kB nebo 16 kB wav zaznamenaná v následujícím formátu: **Kód CRC** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binární tělo**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
+> Všimněte si, že zvuková data musí být 8k nebo 16. wav zaznamenaná v následujícím formátu: **Kód CRC** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Příznak zvukového formátu**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binárního textu**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
 
-## <a name="SampleApp"></a>Ukázkové aplikace
+## <a name="SampleApp"></a>Ukázková aplikace
 
-Podrobnosti implementace, najdete v článku [Visual C# .NET převod textu na řeč ukázkovou aplikaci](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
+Podrobné informace o implementaci najdete v [tématu C#ukázková aplikace pro převod textu na řeč v aplikaci Visual .NET](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
 
-## <a name="SupLocales"></a>Podporovaná národní prostředí a hlasová písma
+## <a name="SupLocales"></a>Podporovaná místní a hlasová písma
 
-V následující tabulce jsou uvedeny některé z podporovaných národních prostředí a související hlasová písma.
+Následující tabulka uvádí některé z podporovaných národních prostředí a související hlasová písma.
 
 Národní prostředí | Pohlaví | Název mapování služby
 ---------|--------|------------
-ar-EG* | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
+ar – EG * | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
 ar-SA | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
 bg-BG | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
 ES certifikační autority | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
@@ -200,11 +200,11 @@ cs-CZ | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
 da-DK | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)"
 de-AT | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)"
 de-CH | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)"
-de-DE | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, Hedda)"
+de-DE | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (de-DE, Hedda)
 de-DE | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, HeddaRUS)"
-de-DE | Muž | "Microsoft serveru řeči Text na řeč hlas (de-DE, Stefan, Apollo)"
+de-DE | Muž | Hlasový Převod textu na řeč pro Microsoft Server Speech (de-DE, Stefan, Apollo)
 el-GR | Muž | "Microsoft serveru řeči Text na řeč hlas (el-GR, Stefanos)"
-cs AU | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, Catherine)"
+cs AU | Žena | Microsoft Server Speech Převod textu na řeč Voice (EN-AU, Catherine)
 cs AU | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, HayleyRUS)"
 cs CA | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, Lenka)"
 cs CA | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, HeatherRUS)"
@@ -271,15 +271,15 @@ zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apo
 zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)"
 zh-TW | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)"
 
- \* ar – třeba podporuje moderní standardní Arabština (MSA).
+ \* ar-EG podporuje moderní standardní arabštinu (MSA).
 
 > [!NOTE]
-> Všimněte si, že předchozí názvy služeb **Microsoft Server řeči Text na řeč hlas (cs-CZ, Vit)** a **Microsoft serveru řeči Text na řeč hlas (en-IE, Shaun)** se přestanou používat po 3/31. ledna 2018, v pořadí pro optimalizaci funkcí rozhraní Bing Speech API. Aktualizujte prosím váš kód s aktualizované názvy.
+> Všimněte si, že předchozí služba pojmenování **Microsoft Server speech převod textu na řeč Voice (cs-cz, vit)** a **microsoft Server Speech převod textu na řeč Voice (EN-IE, Shaun)** se po 3/31/2018 zastaralá za účelem optimalizace rozhraní API pro zpracování řeči Bingu vestavěn. Aktualizujte prosím svůj kód s aktualizovanými názvy.
 
 ## <a name="TrouNSupport"></a>Řešení potíží a podpora
 
-Publikujte všechny dotazy a problémy, které [Speech Service Bingu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) fórum na webu MSDN. Úplné podrobnosti, patří například:
+Publikujte všechny otázky a problémy do fóra [služby zpracování řeči Bingu Service](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) na webu MSDN. Uveďte kompletní podrobnosti, jako například:
 
-* Příkladem řetězce úplná.
-* Pokud je k dispozici, přihlaste se celý výstup z neúspěšného požadavku, která zahrnuje ID.
-* Procentuální podíl neúspěšných požadavků.
+* Příklad úplného řetězce požadavku
+* V případě potřeby úplný výstup neúspěšné žádosti, včetně ID protokolů.
+* Procento neúspěšných požadavků.

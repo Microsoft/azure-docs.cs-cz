@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309067"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962693"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -74,7 +74,7 @@ Všem partnerům, kteří mají živou nabídku, se dostanou pracovat s vyhrazen
 
 Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 
-Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dynamics publikovaná na Microsoft AppSource mají k dispozici další programování prostřednictvím [ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview). To zahrnuje technickou, marketingovou a prodejní podporu, která je specializovaná na potřeby partnerů obchodních aplikací.
+Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dynamics publikovaná na Microsoft AppSource mají k dispozici další programování prostřednictvím [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). To zahrnuje technickou, marketingovou a prodejní podporu, která je specializovaná na potřeby partnerů obchodních aplikací.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Požadavky a omezení pro Marketplace
 
@@ -99,11 +99,11 @@ Tato nabídka je prováděna v angličtině pro všechny partnery s živou nabí
 
 Transakce, které jsou ověřené jako podvodné, se nepočítají směrem k [prodejní úrovni programu v programu](https://aka.ms/marketplacepublisherrewards)Publisher, jak je uvedeno v části [seznam, zkušební verze, konzultace](#list-trial-and-consulting-benefits) , [výhody pro partnery](#marketplace-rewards-for-transact-partners) v programu Transact a [podrobný programový balíček. ](https://aka.ms/marketplacepublisherrewards). Po odebrání podvodu bude Microsoft přidělovat partnerům nárok na úrovně způsobilosti na základě jejich skutečného účtovaného prodeje. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud jste nabídku vytvořili v portál partnerů cloudu, přihlaste se, abyste mohli vytvořit nebo nakonfigurovat vaši nabídku.
+Pokud jste nabídku vytvořili v [portál partnerů cloudu](https://cloudpartner.azure.com), přihlaste se, abyste mohli vytvořit nebo nakonfigurovat vaši nabídku.
 
-Pokud jste nabídku vytvořili v partnerském centru, přihlaste se a vytvořte nebo nakonfigurujte vaši nabídku.
+Pokud jste nabídku vytvořili v [partnerském centru](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview), přihlaste se a vytvořte nebo nakonfigurujte vaši nabídku.
 
 Prohlédněte si [samoobslužné prostředky, které máte k dispozici](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 

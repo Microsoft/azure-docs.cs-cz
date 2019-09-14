@@ -1,40 +1,40 @@
 ---
-title: Podporovat své podnikání díky Microsoft Go-To-Market Services - | Azure
-description: Go-To-Market Services - vydavatelé můžou zjistěte, jak podpořit své podnikání díky Microsoft v této části.
+title: Služby pro uvedení na trh – propagovat svoji firmu pomocí Microsoftu | Azure
+description: Služby pro uvedení na trh – vydavatelé se můžou dozvědět, jak v této části propagovat vaši firmu s Microsoftem.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 8bb064deae87e6545d003ffb1fa85058926f5dee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9549e40ea3b79c356867c2fe36dc336e69795c8b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688953"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962846"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Propagace vašeho podnikání s Microsoftem
 
-Partneři Marketplace musí být součástí programu Microsoft Partner Network (MPN). Jako členy programu MPN můžete přístup k dalším výhodám obchodně zaměřenou. Navštivte [partner.microsoft.com](https://partner.microsoft.com) zobrazíte, jak můžete v síti pro přístup:
+Partneři webu Marketplace musí být součástí Microsoft Partner Network (MPN). Jako člen programu MPN máte přístup k dalším výhodám zaměřeným na podnikání. Navštivte [partner.Microsoft.com](https://partner.microsoft.com) a zjistěte, jak můžete používat síť pro přístup k:
 
 * Nové obchodní příležitosti.
-* Propojení s týmy nebo partnery.
-* Řešení a školení, které pomůžou rozvíjet vaše dovednosti.
+* Připojení k týmům nebo partnerům.
+* Řešení a školení, které vám pomůžou rozšířit vaši dovednosti.
 
-## <a name="benefits-and-resources"></a>Výhody a materiály
+## <a name="benefits-and-resources"></a>Výhody a prostředky
 
-Propagace vaší aplikace nebo nabídky, a pro přístup k více výhod a prostředků, použijte následující tabulku:
+Chcete-li zvýšit úroveň nabídky nebo aplikace a získat přístup k více výhodám a prostředkům, použijte následující tabulku:
 
 | Výhody | Zdroje a prostředky |
 |:--- |:--- |
-| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které dokáže šetřit čas i peníze. Výhody vám může pomoct <ul> <li> posílit vaše dovednosti </li> <li> poskytovat lepší služby zákazníkům, a </li> <li> Vytvoření připojení k dosažení potenciální podnikání. </li> </ul> Další informace o základní výhody [základní výhody a požadavky](https://partner.microsoft.com/en-US/membership/core-benefits#tab-content-1). |
-| Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí vám umožní <ul> <li> Odlišíte se mezi ostatními partnery Microsoftu. </li> <li> Předvedení technické znalosti a zákazníka úspěch na trhu. </li> </ul> S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je například společný prodej. Zobrazit [kompetenci pro Cloudovou platformu](https://partner.microsoft.com/reach-customers/selling-with-microsoft) Další informace. |
-| Budou připravené společný prodej IP | Můžete mít nárok na IP společný prodej připravené programu.  Tento program umožňuje: <ul> <li> Spolupracujte přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. </li> <li> Řešení pro zviditelnění na prodejci Microsoftu v katalogu řešení prodejce. </li> <li> Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi. </li> </ul> Zobrazit [programu společného prodeje připravené a zvýšit vaši firmu](https://partner.microsoft.com/reach-customers/selling-with-microsoft) Další informace včetně požadavky zakládající nárok. |
+| Využijte své základní výhody | V rámci Microsoft Partner Network obdržíte sadu základních výhod, které vám pomůžou ušetřit čas i peníze. Výhody vám můžou <ul> <li> posílit možnosti, </li> <li> lépe poskytovat zákazníkům a </li> <li> Sestavujte připojení, abyste dosáhli plného obchodního potenciálu. </li> </ul> Další informace o základních výhodách najdete v [základních výhodách a požadavcích](https://partner.microsoft.com/membership/core-benefits#tab-content-1). |
+| Získání kompetence pro cloudovou platformu | Při obdržíní kompetence vám pomůže <ul> <li> Rozlišit si je mezi ostatními partnery Microsoftu. </li> <li> Demonstrujte technické zkušenosti a úspěšnost zákazníků na trhu. </li> </ul> Kompetence je předpokladem pro mnoho klíčových partnerských programů, jako je například společný prodej. Další informace najdete v tématu věnovaném [kompetenci cloudové platformy](https://partner.microsoft.com/reach-customers/selling-with-microsoft) . |
+| Příprava na prodej v rámci IP adres | Můžete mít nárok na vlastní přidaný program IP.  Tento program vám umožní: <ul> <li> Přímo spolupracujte s prodejci Microsoftu a dalšími partnery na cílových zákaznických příležitostech a na plánování účtů. </li> <li> Zpřístupnění vašeho řešení pro prodejce Microsoftu v katalogu řešení prodejce </li> <li> Prodejci Microsoftu se neúčtují za spolupráci a výhru s vámi. </li> </ul> Další informace, včetně požadavků na způsobilost, najdete v tématu věnovaném programu pro spoluprodejní [práci a propagaci vaší firmy](https://partner.microsoft.com/reach-customers/selling-with-microsoft) . |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o marketplace služby GTM, přejděte na [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm).
+Další informace o službách GTM na webu Marketplace najdete na webu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 
 Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření a konfiguraci nabídky.
 

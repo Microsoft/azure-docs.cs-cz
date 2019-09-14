@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: 5f5123624b5b9388baf799b48127b5b796eec21b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568210"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959136"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Omezení funkcí Azure SQL Database
 
@@ -66,7 +66,7 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 | Název sloupce | Datový typ | Popis |
 |-------------|-----------|-------------|
 | třída       | nvarchar (128) | Třída objektu, na kterou se vztahuje omezení |
-| objekt      | nvarchar(256) | Název objektu, na který se vztahuje omezení |
+| object      | nvarchar(256) | Název objektu, na který se vztahuje omezení |
 | funkce     | nvarchar (128) | Funkce, která je omezená |
 
 ## <a name="feature-restrictions"></a>Omezení funkcí

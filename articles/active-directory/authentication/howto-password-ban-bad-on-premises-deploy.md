@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389759"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959924"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -38,7 +38,7 @@ Je taky možné, že se silnější ověřování hesla bude týkat stávající
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete *Vynutit* , aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
+Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete vynutit, aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
 
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
@@ -65,6 +65,14 @@ Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete
 * Účet globálního správce pro registraci proxy služby pro ochranu heslem a doménovou strukturu s Azure AD.
 * Účet, který má oprávnění správce domény služby Active Directory v kořenové doméně doménové struktury k registraci doménové struktury služby Active Directory Windows serveru v Azure AD.
 * Doména služby Active Directory, která spouští software agenta řadiče domény, musí používat replikaci systém souborů DFS (Distributed File System) (DFSR) pro replikaci adresáře SYSVOL.
+
+  Pokud vaše doména již nepoužívá službu DFSR, je nutné ji před instalací ochrany hesel služby Azure AD migrovat na používání služby DFSR. Další informace najdete na následujícím odkazu:
+
+  [Průvodce migrací replikace SYSVOL: Služba FRS pro Replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Software agenta řadiče domény Azure AD pro ochranu heslem se v tuto chvíli nainstaluje na řadičích domény v doménách, které pořád využívají službu replikace souborů (DFSR) pro replikaci SYSVOL, ale software v tomto prostředí nebude správně fungovat. Mezi další negativní vedlejší účinky patří neúspěšná replikace jednotlivých souborů a procedury obnovení adresáře SYSVOL, které jsou úspěšné, ale tiché selhání při replikaci všech souborů. Vaši doménu byste měli migrovat tak, aby používala službu DFSR co nejdříve, a to jak z hlediska výhod, tak i z důvodu odblokování nasazení ochrany heslem služby Azure AD. Budoucí verze softwaru budou automaticky zakázány při spuštění v doméně, která stále používá službu replikace souborů (FRS).
+
 * Služba distribuce klíčů musí být povolená na všech řadičích domény v doméně, která běží na Windows Serveru 2012. Ve výchozím nastavení je tato služba povolená přes ruční spuštění aktivační události.
 
 ## <a name="single-forest-deployment"></a>Nasazení s jednou doménovou strukturou

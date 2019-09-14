@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402778"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960432"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight prostřednictvím Azure Virtual Network
 
@@ -60,7 +60,7 @@ Další informace o používání služby HDInsight ve virtuální síti najdete
 
 ## <a id="on-premises"></a>Připojení k Apache Kafka z místní sítě
 
-Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v části [připojení HDInsight k](./../connect-on-premises-network.md) místní síťovému dokumentu.
+Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v části [připojení HDInsight k místní síťovému](./../connect-on-premises-network.md) dokumentu.
 
 > [!IMPORTANT]  
 > Při vytváření clusteru HDInsight vyberte typ clusteru __Kafka__ .
@@ -252,7 +252,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 3. Pokud chcete zobrazit konfiguraci Kafka, v horním __rohu vyberte konfigurace__ .
 
-    ![Odkazy konfigurace pro Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Odkazy konfigurace pro Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Pokud chcete najít konfiguraci __Kafka-ENV__ , zadejte `kafka-env` do pole __filtru__ v pravém horním rohu.
 
@@ -274,7 +274,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
-    ![Tlačítko Uložit konfiguraci](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Tlačítko Uložit konfiguraci](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Chcete-li zabránit chybám při restartování Kafka, použijte tlačítko __Akce služby__ a vyberte __zapnout režim údržby__. Kliknutím na tlačítko OK dokončete tuto operaci.
 
@@ -282,7 +282,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 10. Pokud chcete restartovat Kafka, použijte tlačítko __restartovat__ a vyberte __restartovat všechny ovlivněné__. Potvrďte restartování a potom po dokončení operace použijte tlačítko __OK__ .
 
-    ![Tlačítko restartovat s zvýrazněnou možností restartovat všechny ovlivněné](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Tlačítko restartovat s zvýrazněnou možností restartovat všechny ovlivněné](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
 11. Chcete-li zakázat režim údržby, použijte tlačítko __Akce služby__ a vyberte možnost __vypnout režim údržby__. Kliknutím na **tlačítko OK** dokončete tuto operaci.
 

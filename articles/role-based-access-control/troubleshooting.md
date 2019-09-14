@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982721"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967103"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -148,7 +148,7 @@ Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředk�
 
 * Certifikáty a vazby SSL (certifikáty SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
 * Pravidla výstrah  
-* Nastavení automatického škálování  
+* nastavení automatického škálování  
 * Komponenty Application Insights  
 * Webové testy  
 
@@ -182,6 +182,8 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 Čtenář může kliknout na kartu **funkce platformy** a potom kliknout na **všechna nastavení** a zobrazit některá nastavení týkající se aplikace Function App (podobně jako u webové aplikace), ale nemůžou upravovat žádná z těchto nastavení. Pro přístup k těmto funkcím budete potřebovat roli [Přispěvatel](built-in-roles.md#contributor) .
 
 ## <a name="next-steps"></a>Další kroky
-* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
-* [Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure](change-history-report.md)
+
+- [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
+- [Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure](change-history-report.md)
 

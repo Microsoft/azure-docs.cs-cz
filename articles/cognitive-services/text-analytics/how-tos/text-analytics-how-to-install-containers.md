@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051281"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966758"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýza textu
 
@@ -40,7 +40,7 @@ Před použitím kontejnerů pro analýzu textu, musí splňovat následující 
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>Hostitelský počítač
+## <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
@@ -48,15 +48,15 @@ Před použitím kontejnerů pro analýzu textu, musí splňovat následující 
 
 Následující tabulka popisuje minimální a doporučené Procesorových jader a aspoň 2.6 gigahertz (GHz) nebo rychlejší a paměti v gigabajtech (GB), přidělit pro každý kontejner pro analýzu textu.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -67,21 +67,41 @@ Následující tabulka popisuje minimální a doporučené Procesorových jader 
 
 Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 
-[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Microsoft.
 
-#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
-[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Vyžádané čtení Docker pro kontejnery Analýza textu
+
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+
+# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+***
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
@@ -96,15 +116,15 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 K dispozici jsou [Příklady](../text-analytics-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -149,7 +169,10 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro analýzu textu. Souhrn:
 
-* Rozhraní text Analytics poskytuje tři kontejnery Linuxu pro Docker, zapouzdření extrakce klíčových frází, rozpoznávání jazyka a analýzy subjektivního hodnocení.
+* Analýza textu poskytuje pro Docker tři kontejnery pro Linux, které zapouzdřují různé možnosti:
+   * *Extrakce klíčových frází*
+   * *Rozpoznávání jazyka*
+   * *Analýza subjektivního hodnocení*
 * Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
 * Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech rozhraní Text Analytics tak, že zadáte identifikátor URI kontejneru hostitele.

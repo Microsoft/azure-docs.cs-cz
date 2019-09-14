@@ -1,6 +1,6 @@
 ---
-title: Vizualizace dat ze služby Azure Monitor | Dokumentace Microsoftu
-description: Poskytuje přehled dostupných metod můžete vizualizovat metriky a protokolování dat uložených ve službě Azure Monitor.
+title: Vizualizace dat z Azure Monitor | Microsoft Docs
+description: Poskytuje souhrn dostupných metod pro vizualizaci dat metrik a protokolů uložených v Azure Monitor.
 author: bwren
 manager: carmonm
 editor: ''
@@ -12,135 +12,135 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61088227"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984186"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
-Tento článek obsahuje přehled dostupných metod, která bude vizualizovat data protokolů a metrik uložené ve službě Azure Monitor.
+# <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitor
+Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
 
-Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monitorování k procházení podrobností podle problémů a identifikaci vzorů. V závislosti na nástroj, který používáte může mít také možnost sdílení vizualizací s ostatními uživateli uvnitř i mimo vaši organizaci.
+Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorování, aby bylo možné rozlišit problémy a identifikovat vzory. V závislosti na nástroji, který použijete, můžete také sdílet vizualizace s ostatními uživateli v rámci vaší organizace i mimo ni.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-dashboards"></a>Řídicích panelů Azure
-[Řídicích panelů Azure](../azure-portal/azure-portal-dashboards.md) jsou primární mnoha technologie pro Azure. Jsou zvláště užitečné při poskytování najednou přes infrastrukturu Azure a služby, která umožňuje rychle identifikovat důležité problémy.
+## <a name="azure-dashboards"></a>Řídicí panely Azure
+[Řídicí panely Azure](../azure-portal/azure-portal-dashboards.md) jsou primární technologie pro řídicí panely pro Azure. Jsou zvláště užitečné v případě, že máte v infrastruktuře a službách Azure samostatné podokno, které vám umožní rychle identifikovat důležité problémy.
 
 ![Řídicí panel](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Výhody
-- Těsnou integraci s Azure. Vizualizace můžete připnout na řídicí panely z více stránek Azure včetně Průzkumníka metrik, Log Analytics a Application Insights.
-- Podporuje metrik a protokolů.
-- Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](platform/metrics-charts.md), [protokolu dotazy](log-query/log-query-overview.md), a [mapuje](app/app-map.md) a dostupnost ve službě Application Insights.
-- Možnost pro osobní nebo sdílené řídicí panely. Díky integraci s Azure [ověřování na základě role (RBAC)](../role-based-access-control/overview.md).
-- Automatická aktualizace. Aktualizace metrik závisí na časový rozsah s minimálně pět minut. Aktualizovat protokoly na jednu minutu.
-- Podle řídicí panely metriky s časovým razítkem a vlastní parametry.
-- Možnosti flexibilní rozložení.
+- Hluboká integrace do Azure Vizualizace je možné připnout na řídicí panely z více stránek Azure, včetně Průzkumník metrik, Log Analytics a Application Insights.
+- Podporuje obě metriky a protokoly.
+- Kombinovat data z různých zdrojů, včetně výstupu z [Průzkumníka metrik](platform/metrics-charts.md), [dotazů protokolu](log-query/log-query-overview.md)a [map](app/app-map.md) a dostupnosti v Application Insights.
+- Možnost pro osobní nebo sdílené řídicí panely. Integrováno s [ověřováním na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
+- Automatická aktualizace Aktualizace metrik závisí na časovém rozsahu, který je minimálně pět minut. Protokoly se aktualizují každou hodinu s možností ruční aktualizace na vyžádání kliknutím na ikonu aktualizovat v dané vizualizaci nebo aktualizací úplného řídicího panelu.
+- Parametry a řídicí panely metriky s parametry s časovým razítkem a vlastními parametry.
+- Flexibilní možnosti rozložení.
 - Režim zobrazení na celé obrazovce.
 
 
 ### <a name="limitations"></a>Omezení
-- Omezené možnosti kontroly nad vizualizací protokolu prvkem bez podpory pro data tabulky. Celkový počet datových řad je omezené na 10 s další datové řady seskupené pod nadpisem _jiných_ kontejneru.
-- Žádné vlastní parametry podporu protokolu grafy.
-- Protokol grafy jsou omezené na posledních 30 dní.
-- Grafy protokolu můžete připnout jenom na sdílené řídicí panely.
-- Žádná interakce s daty řídicího panelu.
-- Omezené kontextové procházení.
+- Omezená kontrola nad vizualizacemi protokolu bez podpory tabulek dat. Celkový počet datových řad je omezený na 10 s další datovou řadou seskupenou v _jiném_ intervalu.
+- Nepodporují se žádné vlastní parametry pro grafy protokolů.
+- Grafy protokolů jsou omezené na posledních 30 dní.
+- Grafy protokolů je možné připnout pouze na sdílené řídicí panely.
+- Žádná interaktivita s daty řídicího panelu
+- Omezené kontextové procházení
 
-## <a name="azure-monitor-views"></a>Azure Monitor Views
-[Zobrazení ve službě Azure Monitor](platform/view-designer.md) vám umožňují vytvářet vlastní vizualizace se data protokolu. Jsou používány [řešení monitorování](insights/solutions.md) data můžete prezentovat tak jejich shromažďování.
+## <a name="azure-monitor-views"></a>Zobrazení Azure Monitor
+[Zobrazení v Azure monitor](platform/view-designer.md) umožňují vytvářet vlastní vizualizace s daty protokolu. Používají se pro [monitorování řešení](insights/solutions.md) k prezentaci shromažďovaných dat.
 
 ![Zobrazení](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Výhody
-- Bohaté vizualizace pro data protokolu.
-- Export a import zobrazení přenést do jiné skupiny prostředků a předplatných.
-- Integruje se s Azure Monitor správy modelu s pracovními prostory a monitorování řešení.
+- Bohatá vizualizace pro data protokolu.
+- Export a import zobrazení pro přenos do jiných skupin prostředků a předplatných.
+- Integruje se do modelu správy Azure Monitor s pracovními prostory a monitorovacími řešeními.
 - [Filtry](platform/view-designer-filters.md) pro vlastní parametry.
-- Interaktivní, podporuje víceúrovňové procházení v (zobrazení, která přechází do jiného zobrazení)
+- Interactive, podporuje přechod na více úrovní (zobrazení, které se podrobněji rozchází do jiného zobrazení)
 
 ### <a name="limitations"></a>Omezení
-- Podporuje protokoly ne však metriky.
-- K dispozici žádná osobní zobrazení. K dispozici všem uživatelům přístup k pracovnímu prostoru.
-- Žádná automatická aktualizace.
+- Podporuje protokoly, ale ne metriky.
+- Žádná osobní zobrazení. K dispozici všem uživatelům s přístupem k pracovnímu prostoru.
+- Bez automatické aktualizace.
 - Omezené možnosti rozložení.
-- Bez podpory pro dotazování napříč několika pracovními prostory nebo aplikací služby Application Insights.
-- Dotazy mají omezenou velikost odpovědi 8MB a dotaz čas spuštění 110 sekund.
+- Žádná podpora pro dotazování napříč několika pracovními prostory nebo Application Insights aplikacemi.
+- Dotazy jsou omezené na velikost odpovědi na 8MB a čas provedení dotazu 110 sekund.
 
 
-## <a name="workbooks"></a>Workbooks
-[Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich dat, prozkoumání a spolupráci v týmu. Konkrétní příklady, kde jsou užitečné sešity jsou řešení potíží s pokyny a incident postmortem.
+## <a name="workbooks"></a>Sešity
+[Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
 ![Sešit](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Výhody
-- Podporuje metrik a protokolů.
-- Podporuje parametry umožňující interaktivní sestavy, ve kterém výběr elementu v tabulce se dynamicky aktualizovat přidružené grafů a vizualizací.
-- Dokumenty toku.
+- Podporuje obě metriky a protokoly.
+- Podporuje parametry umožňující interaktivní sestavy, ve kterých se při výběru prvku v tabulce dynamicky aktualizují přidružené grafy a vizualizace.
+- Tok podobný tomuto dokumentu.
 - Možnost pro osobní nebo sdílené sešity.
-- Jednoduchý a spolupráci přívětivá prostředí pro vytváření.
-- Šablony podporují Galerie veřejné šablony založené na Githubu.
+- Jednoduché a uživatelsky přívětivé prostředí pro vytváření.
+- Šablony podporují galerii šablon založených na GitHubu.
 
 ### <a name="limitations"></a>Omezení
-- Žádná automatická aktualizace.
-- Žádné kompaktní rozložení, jako jsou řídicí panely, které sešity méně užitečné jako podokně ze skla. Další možnosti pro zajištění hlubších poznatků určené.
+- Bez automatické aktualizace.
+- Žádná zhuštěná rozložení, jako jsou řídicí panely, což vede k tomu, že sešity jsou méně užitečné jako samostatné podokno skla. Pro poskytování hlubších poznatků je zamýšleno více.
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je zvláště užitečná pro vytváření napjaté řídicí panely a sestavy, jakož i sestavy analýza dlouhodobé trendy klíčových ukazatelů výkonu. Je možné [importovat výsledky dotazu log](platform/powerbi.md) do datové sady Power BI, takže můžete využít jeho funkce, jako je kombinování dat z různých zdrojů a sdílení sestav na webu a mobilních zařízeních.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je zvláště užitečné pro vytváření řídicích panelů a sestav orientovaných na firmy a také sestav, které analyzují dlouhodobé trendy klíčových ukazatelů výkonu. [Výsledky dotazu protokolu můžete importovat](platform/powerbi.md) do Power BI datové sady, abyste mohli využít jeho funkce, jako je například kombinování dat z různých zdrojů a sdílení sestav na webových a mobilních zařízeních.
 
 ![Power BI](media/visualizations/power-bi.png)
 
 ### <a name="advantages"></a>Výhody
-- Bohaté vizualizace.
-- Extenzivní interaktivita, včetně přiblížení a křížové filtrování.
-- Dají se snadno sdílet v rámci vaší organizace.
-- Integrace s ostatními daty z více zdrojů dat.
-- Lepší výkon s výsledky z mezipaměti v datové krychli.
+- Bohatá vizualizace.
+- Rozsáhlá interaktivita, včetně přiblížení a křížového filtrování.
+- Snadné sdílení v celé organizaci.
+- Integrace s dalšími daty z více zdrojů dat.
+- Lepší výkon s výsledky uloženými v mezipaměti v datové krychli.
 
 
 ### <a name="limitations"></a>Omezení
-- Podporuje protokoly ne však metriky.
-- Bez integrace s Azure. Nelze spravovat řídicí panely a modelů prostřednictvím Azure Resource Manageru.
-- Výsledky dotazu musí být importován do modelu Power BI ke konfiguraci. Omezení velikosti výsledek a aktualizace.
-- Omezená data aktualizovat osm časy za den.
+- Podporuje protokoly, ale ne metriky.
+- Žádná Integrace Azure Řídicí panely a modely nejde spravovat prostřednictvím Azure Resource Manager.
+- Aby bylo možné konfigurovat výsledky dotazu, je nutné je importovat do modelu Power BI. Omezení velikosti a aktualizace výsledku
+- Aktualizace dat s omezeným počtem osmi časů za den.
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) je otevřená platforma, která vyniká v operační řídicí panely. Je to užitečné zejména pro zjištění a izolace a třídění provozní incidenty. Můžete přidat [modulu plug-in zdroje dat monitorování Azure Grafana](platform/grafana-plugin.md) ke svému předplatnému Azure její vizualizace dat metriky Azure.
+[Grafana](https://grafana.com/) je otevřená platforma, kterou aplikace Excel v provozních řídicích panelech. Je zvláště užitečné pro zjišťování a izolaci provozních incidentů a jejich třídění. Do předplatného Azure můžete přidat [modul plug-in Grafana Azure monitor dat](platform/grafana-plugin.md) , který bude vizualizovat vaše data metrik Azure.
 
 ![Grafana](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Výhody
-- Bohaté vizualizace.
-- Bohatý ekosystém datových zdrojů.
-- Přiblížení data včetně interaktivitu.
+- Bohatá vizualizace.
+- Bohatý ekosystém zdrojů dat.
+- Interakce dat včetně přiblížení.
 - Podporuje parametry.
 
 ### <a name="limitations"></a>Omezení
-- Bez integrace s Azure. Nelze spravovat řídicí panely a modelů prostřednictvím Azure Resource Manageru.
-- Náklady na podporu cloudu Grafana další infrastrukturu Grafana nebo další poplatky.
+- Žádná Integrace Azure Řídicí panely a modely nejde spravovat prostřednictvím Azure Resource Manager.
+- Náklady na podporu další infrastruktury Grafana nebo dalších nákladů pro Cloud Grafana
 
 
 ## <a name="build-your-own-custom-application"></a>Sestavení vlastní aplikace
-Data v protokolech a data metriky ve službě Azure Monitor můžete přistupovat prostřednictvím svých rozhraní API z libovolného klienta REST, které vám umožní vytvářet své vlastní weby a aplikace.
+K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhraní API můžete přistupovat pomocí libovolného klienta REST, který umožňuje vytvářet vlastní weby a aplikace.
 
 ### <a name="advantages"></a>Výhody
-- Naprostou flexibilitu uživatelského rozhraní, vizualizaci, interakce a funkce.
-- Kombinujte metriky a protokolování dat s jinými zdroji dat.
+- Kompletní flexibilita v uživatelském rozhraní, vizualizaci, interaktivitě a funkcích.
+- Kombinovat metriky a data protokolů s ostatními zdroji dat.
 
 ### <a name="disadvantages"></a>Nevýhody
-- Významné technického úsilí, které jsou povinné.
+- Vyžaduje se významné technické úsilí.
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [data shromážděná službou Azure Monitor](platform/data-platform.md).
-- Další informace o [řídicích panelů Azure](../azure-portal/azure-portal-dashboards.md).
-- Další informace o [zobrazení ve službě Azure Monitor](platform/view-designer.md).
-- Další informace o [sešity](../azure-monitor/app/usage-workbooks.md).
-- Další informace o [importovat do Power BI data protokolu](../azure-monitor/platform/powerbi.md).
-- Další informace o [modulu plug-in zdroje dat monitorování Azure Grafana](../azure-monitor/platform/grafana-plugin.md).
+- Seznamte se s [daty shromažďovanými nástrojem Azure monitor](platform/data-platform.md).
+- Přečtěte si o [řídicích panelech Azure](../azure-portal/azure-portal-dashboards.md).
+- Přečtěte si o [zobrazeních v Azure monitor](platform/view-designer.md).
+- Seznamte [](../azure-monitor/app/usage-workbooks.md)se se sešity.
+- Přečtěte si informace o [importu dat protokolu do Power BI](../azure-monitor/platform/powerbi.md).
+- Seznamte se s [modulem plug-in zdroje dat Grafana Azure monitor](../azure-monitor/platform/grafana-plugin.md).
 

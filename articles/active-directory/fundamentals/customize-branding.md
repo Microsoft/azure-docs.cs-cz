@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561709"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959042"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -29,7 +29,7 @@ Pomocí loga vaší organizace a vlastní barevná schémata poskytují konziste
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
 Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například\.webová Office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
+Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například\.webová Office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí. Až se uživatel přihlásí, branding může trvat 15 minut nebo déle. 
 
 > [!NOTE]
 > Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.

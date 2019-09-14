@@ -1,67 +1,67 @@
 ---
-title: Začínáme s API pro rozpoznávání řeči Microsoft v jazyce Java v Androidu | Dokumentace Microsoftu
+title: Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu v Java v Androidu | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Pomocí rozhraní Speech API Microsoftu pro vývoj aplikací pro Android, které převést mluvené slovo na text.
+description: Rozhraní API pro rozpoznávání řeči od Microsoftu slouží k vývoji aplikací pro Android, které převádějí mluvený zvuk na text.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 77fee2ecee9cfabe3fad9c1df2c41c7803c3367e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515183"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966830"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní API v jazyce Java v Androidu
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Rychlý start: Použití rozhraní API pro rozpoznávání Zpracování řeči Bingu v jazyce Java v Androidu
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-API pro rozpoznávání řeči Bingu vám umožní vytvářet aplikace pro Android, které můžete převést mluvené slovo na text Speech Service Bingu založené na cloudu. Rozhraní API podporuje streamování v reálném čase, takže vaše aplikace může současně a asynchronně přijímat částečné výsledky rozpoznávání ve stejnou dobu, kterou je posílání zvuku ve službě.
+Pomocí rozhraní API pro rozpoznávání Zpracování řeči Bingu můžete vyvíjet aplikace pro Android, které využívají cloudovou Zpracování řeči Bingu službu pro převod mluveného zvuku na text. Rozhraní API podporuje streamování v reálném čase, takže vaše aplikace může současně a asynchronně přijímat částečné výsledky rozpoznávání ve stejnou dobu, kdy posílá zvuk do služby.
 
-Tento článek provádí ukázková aplikace předvádí způsob použití knihovny řečového klienta pro Android pro vývoj aplikací speech to text v jazyce Java pro zařízení s Androidem.
+Tento článek používá ukázkovou aplikaci, která předvádí, jak používat klientská knihovna služby Speech pro Android k vývoji aplikací využívajících řeč pro text v Java pro zařízení s Androidem.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Ukázka je vyvinutý [Android Studio](https://developer.android.com/sdk/index.html) pro Windows v jazyce Java.
+Ukázka je vyvíjena [Android Studio](https://developer.android.com/sdk/index.html) pro systém Windows v jazyce Java.
 
-### <a name="get-the-client-library-and-sample-application"></a>Získání klienta knihovny a ukázkové aplikace
+### <a name="get-the-client-library-and-sample-application"></a>Získat klientskou knihovnu a ukázkovou aplikaci
 
-Jsou k dispozici v knihovny řečového klienta a ukázky pro Android [řeči Klientská sada SDK pro Android](https://github.com/microsoft/cognitive-speech-stt-android). Můžete najít sestavitelnou vzorku samples/SpeechRecoExample adresáři. Můžete vyhledat dvě knihovny, budete muset použít ve vlastních aplikacích v SpeechSDK/knihovny pod armeabi a x86 složky. Velikost souboru libandroid_platform.so je 22 MB, ale je omezená na 4 MB v době nasazení.
+Klientská knihovna služby Speech a ukázky pro Android jsou dostupné v [sadě Speech Client SDK pro Android](https://github.com/microsoft/cognitive-speech-stt-android). Ukázku, kterou lze sestavit, najdete v adresáři Samples/SpeechRecoExample. Dvě knihovny, které ve svých aplikacích potřebujete použít, můžete najít ve složce SpeechSDK/knihovny pod složkou armeabi a x86. Velikost souboru libandroid_platform. proto je 22 MB, ale v době nasazení se zkracuje na 4 MB.
 
-#### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k rozhraní API pro rozpoznávání řeči odběru a získejte klíč bezplatné předplatné zkušební verze
+#### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k odběru rozhraní API pro rozpoznávání řeči a Stáhněte si bezplatný zkušební klíč předplatného.
 
-Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
+Rozhraní API pro rozpoznávání řeči je součástí Cognitive Services (dříve projekt Oxford). Můžete získat bezplatný zkušební odběr klíčů na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) . Po výběru rozhraní API pro rozpoznávání řeči vyberte **získat klíč rozhraní API** a získejte klíč. Vrátí primární a sekundární klíč. Oba klíče jsou vázané na stejnou kvótu, takže můžete použít kteroukoli z těchto klíčů.
 
-Pokud chcete použít *využijte záměr*, budete také muset zaregistrovat [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Pokud chcete použít *rozpoznávání s záměrem*, musíte si také zaregistrovat [Language Understanding Intelligent Service (Luis)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 > [!IMPORTANT]
->* Získáte klíč předplatného. Než budete moct použít klientské knihovny pro zpracování řeči, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
+>* Získejte klíč předplatného. Předtím, než budete moci použít klientské knihovny řeči, je nutné mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Použijte váš klíč předplatného. Pomocí poskytnutý Androidem ukázkové aplikace aktualizujte soubor samples/SpeechRecoExample/res/values/strings.xml klíče předplatného. Další informace najdete v tématu [sestavení a spuštění ukázky](#build-and-run-samples).
+>* Použijte svůj klíč předplatného. S poskytnutou ukázkovou aplikací pro Android aktualizujte soubory Samples/SpeechRecoExample/res/Values. XML pomocí klíčů předplatného. Další informace najdete v tématu [sestavení a spuštění ukázek](#build-and-run-samples).
 
-## <a name="use-the-speech-client-library"></a>Použití knihovny řečového klienta
+## <a name="use-the-speech-client-library"></a>Použití klientská knihovna služby Speech
 
-Chcete-li použít klientskou knihovnu pro ve vaší aplikaci, postupujte [pokyny](https://github.com/microsoft/cognitive-speech-stt-android#the-client-library).
+Chcete-li použít knihovnu klienta v aplikaci, postupujte podle [pokynů](https://github.com/microsoft/cognitive-speech-stt-android#the-client-library).
 
-Najdete klienta knihovna – referenční informace pro Android ve složce dokumentace [řeči Klientská sada SDK pro Android](https://github.com/microsoft/cognitive-speech-stt-android).
+Odkaz na knihovnu klienta pro Android najdete ve složce Docs sady [SDK pro sadu Speech klienta pro Android](https://github.com/microsoft/cognitive-speech-stt-android).
 
 ## <a name="build-and-run-samples"></a>Sestavení a spuštění ukázek
 
-Informace o sestavení a spuštění ukázek, najdete v tomto [stránce README](https://github.com/microsoft/cognitive-speech-stt-android#the-sample).
+Informace o tom, jak sestavit a spustit ukázky, najdete na této [stránce Readme](https://github.com/microsoft/cognitive-speech-stt-android#the-sample).
 
-## <a name="samples-explained"></a>Vysvětlení ukázky
+## <a name="samples-explained"></a>Vysvětlení ukázek
 
-### <a name="create-recognition-clients"></a>Vytvoření klientů rozpoznávání
+### <a name="create-recognition-clients"></a>Vytváření klientů pro rozpoznávání
 
-Kód v následujícím příkladu ukazuje, jak vytvořit třídy klienta rozpoznávání podle uživatelských scénářů:
+Kód v následující ukázce ukazuje, jak vytvořit třídy klienta pro rozpoznávání na základě scénářů uživatele:
 
 ```java
 void initializeRecoClient()
@@ -115,39 +115,39 @@ void initializeRecoClient()
 
 ```
 
-Klientská knihovna poskytuje předem implementované rozpoznávání třídy klienta pro typické scénáře v rozpoznávání řeči:
+Klientská knihovna poskytuje pro typické scénáře rozpoznávání řeči předem implementované klientské třídy pro rozpoznávání:
 
-* `DataRecognitionClient`: Rozpoznávání řeči pomocí PCM data (například ze zdrojového souboru nebo ve zvukovém souboru). Data je rozdělený do vyrovnávací paměti a každý vyrovnávací paměti se odesílají službě řeči. Žádné úpravy se provádí do vyrovnávací paměti, tak v případě potřeby může uživatel použít vlastní detekce nečinnosti. Pokud data ze souborů WAV můžete odeslat data ze souboru přímo na Speech Service. Pokud máte nezpracovaná data, například zvukový procházející přes Bluetooth, nejdřív odešlete hlavičku formátu Speech Service, za nímž následuje data.
-* `MicrophoneRecognitionClient`: Rozpoznávání řeči pomocí zvuk přicházející z mikrofon. Ujistěte se, že je zapnutý mikrofon a mikrofon se odešlou do služby rozpoznávání řeči. Integrované "nečinnosti detektoru s" se použije na mikrofon data před odesláním do služby rozpoznávání.
-* `DataRecognitionClientWithIntent` a `MicrophoneRecognitionClientWithIntent`: Tito klienti vrátit, kromě rozpoznávání textu strukturovaných informací o záměr mluvčího, který slouží k řízení další akce aplikace. Pokud chcete používat "Záměr", budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Rozpoznávání řeči s daty PCM (například ze zdroje souboru nebo zvuku). Data jsou rozdělena do vyrovnávacích pamětí a každá vyrovnávací paměť je odeslána službě Speech. Vyrovnávací paměti se neprovádí bez úprav, takže uživatel může v případě potřeby použít vlastní detekci tichého nečinnosti. Pokud jsou data poskytována ze souborů WAV, můžete odesílat data ze souboru přímo do služby Speech. Pokud máte nezpracovaná data, například zvuk přidaný přes Bluetooth, nejdřív odešlete hlavičku formátu ke službě Speech následovanými daty.
+* `MicrophoneRecognitionClient`: Rozpoznávání řeči pomocí zvukového přenosu, který přichází z mikrofonu. Ujistěte se, že je mikrofon zapnutý a že se data z mikrofonu odesílají službě rozpoznávání řeči. Pro data mikrofonu se před odesláním do služby pro rozpoznávání použije vestavěný "detektor tichého běhu".
+* `DataRecognitionClientWithIntent`a `MicrophoneRecognitionClientWithIntent`: Tito klienti vrátí kromě textu rozpoznávání i strukturované informace o záměru mluvčího, které lze použít k řízení dalších akcí v aplikacích. Chcete-li použít "záměr", musíte nejprve vytvořit model pomocí [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-### <a name="recognition-language"></a>Rozpoznávání jazyka
+### <a name="recognition-language"></a>Jazyk rozpoznávání
 
-Při použití `SpeechRecognitionServiceFactory` pro vytvoření klienta, musíte vybrat jazyk. Úplný seznam jazyků podporovaných službou Speech Service, najdete v části [podporované jazyky](../API-Reference-REST/supportedlanguages.md).
+Když použijete `SpeechRecognitionServiceFactory` k vytvoření klienta, musíte vybrat jazyk. Úplný seznam jazyků podporovaných službou Speech Service najdete v části [podporované jazyky](../API-Reference-REST/supportedlanguages.md).
 
 ### `SpeechRecognitionMode`
 
-Budete taky muset zadat `SpeechRecognitionMode` při vytváření klienta se `SpeechRecognitionServiceFactory`:
+Musíte také určit `SpeechRecognitionMode` , kdy se má `SpeechRecognitionServiceFactory`klient vytvořit:
 
-* `ShortPhrase`: Utterance až do 15 sekund. Odeslání dat službě, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
-* `LongDictation`: Utterance až dvě minuty dlouho. Odeslání dat službě, obdrží klient několik částečných výsledků a několik konečných výsledků podle kde službu identifikuje pozastaví věty.
+* `ShortPhrase`: Utterance až 15 sekund dlouho. Jakmile se data odešlou do služby, klient obdrží několik částečných výsledků a jeden konečný výsledek s více než nejlepší možností.
+* `LongDictation`: Utterance může trvat až dvě minuty. Jakmile se data odešlou do služby, klient obdrží několik částečných výsledků a několik konečných výsledků na základě toho, kde služba identifikuje větu pozastavena.
 
-### <a name="attach-event-handlers"></a>Připojte obslužné rutiny událostí
+### <a name="attach-event-handlers"></a>Připojit obslužné rutiny událostí
 
-Různé obslužných rutin událostí můžete připojit ke klientovi jste vytvořili:
+K vytvořenému klientovi můžete připojit různé obslužné rutiny událostí:
 
-* **Částečné výsledky události**: Tato událost volána pokaždé, když Speech Service předpovídá, co vám může být říká, ještě předtím, než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`).
-* **Události chyb**: Volá se, když služba zjistí chybu.
-* **Záměru události**: Volá se na klientech "WithIntent" (pouze v `ShortPhrase` režimu) po rozpoznávání konečný výsledek je analyzován do strukturovaného formátu JSON záměr.
-* **Výsledek události**:
-  * V `ShortPhrase` režimu, tato událost se nazývá a vrátí výsledky, n-best po dokončení čtení.
-  * V `LongDictation` režimu, obslužná rutina události je volána více než jednou, podle kde službu identifikuje pozastaví věty.
-  * **Pro každou z možností n-best**, je vrácena hodnota spolehlivosti a několik různých forem rozpoznaný text. Další informace najdete v tématu [výstupní formát](../Concepts.md#output-format).
+* **Události částečných výsledků**: Tato událost se volá pokaždé, když služba rozpoznávání řeči předpovídá, co můžete vyjádřit, dokonce i před tím, než dokončíte práci `MicrophoneRecognitionClient`nebo dokončete odesílání dat (Pokud `DataRecognitionClient`používáte).
+* **Chybové události**: Volá se, když služba detekuje chybu.
+* **Události záměru**: Volá se na klientech "WithIntent" ( `ShortPhrase` pouze v režimu) po tom, co konečný výsledek rozpoznávání se analyzuje do strukturovaného záměru JSON.
+* **Události výsledku**:
+  * V `ShortPhrase` režimu se tato událost volá a po dokončení mluvení vrátí n nejlepších výsledků.
+  * V `LongDictation` režimu je obslužná rutina události volána vícekrát, na základě toho, kde služba identifikuje podobu pozastavení.
+  * **Pro každou z těchto n-nejlepších možností**se vrátí hodnota spolehlivosti a několik různých forem rozpoznaného textu. Další informace naleznete v tématu [Output Format](../Concepts.md#output-format).
 
 ## <a name="related-topics"></a>Související témata
 
-* [Klientská knihovna – referenční informace pro Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/tree/master/docs)
-* [Začínáme s Microsoft Speech API v jazyce C# pro Windows v prostředí .NET](GetStartedCSharpDesktop.md)
-* [Začínáme s rozhraním API pro rozpoznávání řeči Microsoft v Objective-C v iOS](Get-Started-ObjectiveC-iOS.md)
-* [Začínáme s Microsoft Speech API v jazyce JavaScript](GetStartedJSWebsockets.md)
-* [Začínáme s Microsoft Speech API prostřednictvím REST](GetStartedREST.md)
+* [Reference klientské knihovny pro Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/tree/master/docs)
+* [Začínáme s rozhraním API pro rozpoznávání řeči C# Microsoftu v pro Windows v .NET](GetStartedCSharpDesktop.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu v cíli – C v iOS](Get-Started-ObjectiveC-iOS.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči Microsoftu v JavaScriptu](GetStartedJSWebsockets.md)
+* [Začínáme s rozhraním Speech API od Microsoftu přes REST](GetStartedREST.md)

@@ -4,15 +4,16 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache K
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 399d1146dc71f4670ee0c9bfa497f34911ade638
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e3c8111cee688625ef2002d16f66644bec6fd6ec
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811467"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960178"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony Správce prostředků
 
@@ -34,7 +35,7 @@ Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsig
 
 1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. K vytvoření clusteru Kafka použijte tyto hodnoty:
 
@@ -245,7 +246,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Použití Apache Spark s Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

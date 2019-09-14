@@ -1,45 +1,51 @@
 ---
-title: Vykreslení podpora manager – Azure Batch
-description: Používání Azure pro vykreslování pomocí integrace služby Azure Batch vykreslení manager
+title: Podpora správce vykreslování – Azure Batch
+description: Použití Azure k vykreslování pomocí integrace správce vykreslování Azure Batch
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436166"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983670"
 ---
-# <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch pomocí vykreslení správci farmy
+# <a name="using-azure-batch-with-render-farm-managers"></a>Použití Azure Batch s vykreslováním manažerů farmy
 
-Pokud používáte existující místní vykreslení farmy, pak je vysoce pravděpodobné, že správce vykreslení Určuje kapacitu vykreslovací farmy a úlohy vykreslování.
+Pokud používáte existující místní farmu vykreslování, je velmi pravděpodobnější, že správce vykreslování řídí kapacitu a úlohy vykreslování farmy vykreslování.
 
-Azure poskytuje integrovanou podporu nebo doplňky pro oblíbené vykreslení správci. Pak můžete přidávat a odebírat virtuální počítače Azure, včetně virtuálních počítačů s licencováním platby pro použití aplikací a virtuálních počítačů s nízkou prioritou.
+Azure poskytuje integrovanou podporu nebo doplňky pro oblíbené správce vykreslování. Pak můžete přidat a odebrat virtuální počítače Azure, včetně virtuálních počítačů s licencováním aplikací pro platby za použití s nízkou prioritou.
 
-Podporují se následující správci vykreslování:
+Podporují se následující správce vykreslování:
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Královská vykreslení](https://www.royalrender.de/)
+* [Královská vykreslování](https://www.royalrender.de/)
 * [Konečný termín Thinkbox](https://deadline.thinkboxsoftware.com/)
 
-## <a name="using-azure-with-pipelinefx-qube"></a>Používání Azure PipelineFX Qube
+## <a name="azure-render-hub"></a>Centrum vykreslování Azure
 
-Skripty a pokyny pro povolení služby Azure Batch fondu virtuálních počítačů, který se má použít jako Qube pracovních procesů v [úložiště GitHub](https://github.com/Azure/azure-qube).
+Centrum vykreslování Azure zjednodušuje vytváření a správu Farm pro vykreslování Azure.  Centrum vykreslování má nativní podporu pro PipelineFx Qube a konečný termín 10.  Další informace a podrobné pokyny najdete [v úložišti GitHub](https://github.com/Azure/azure-render-hub).
 
-## <a name="using-azure-with-royal-render"></a>Používání Royal vykreslování v Azure
+## <a name="using-azure-with-pipelinefx-qube"></a>Používání Azure s PipelineFX Qube
 
-Královská vykreslení integrovaná Azure a Azure Batch integrované, umožňuje rozšířit na vykreslovací farmě pomocí virtuálních počítačů Azure. Souhrn, naleznete v tématu [soubory nápovědy](https://www.royalrender.de/help8/index.html?Cloudrendering.html).
+Centrum vykreslování Azure podporuje oblíbené správce vykreslování včetně termínu.  Pokyny k nasazení a použití centra vykreslování najdete v [úložišti GitHub](https://github.com/Azure/azure-render-hub).
 
-Příklad Royal vykreslení zákazníka pomocí integrace s Azure, najdete v článku [příběh a obrázky Jellyfish](https://customers.microsoft.com/story/jellyfishpictures).
+Skripty a pokyny pro povolení použití virtuálních počítačů fondu Azure Batch jako Qube pracovní procesy jsou k dispozici také v [úložišti GitHub](https://github.com/Azure/azure-qube).
 
-## <a name="using-azure-with-thinkbox-deadline"></a>Pomocí Azure s termínem Thinkbox
+## <a name="using-azure-with-royal-render"></a>Použití Azure s vykreslováním královská
 
-Skripty a pokyny pro povolení služby Azure Batch fondu virtuálních počítačů, který se má použít jako podřízené servery konečný termín v [úložiště GitHub](https://github.com/Azure/azure-deadline).
+Královská vykreslování má integrovanou integraci Azure a Azure Batch, která umožňuje rozšiřování farmy vykreslování pomocí virtuálních počítačů založených na Azure. Souhrn najdete [v souborech s nápovědu](https://www.royalrender.de/help8/index.html?Cloudrendering.html).
 
-## <a name="next-steps"></a>Další postup
+Příklad zákazníka vykrálovská vykreslit pomocí Integrace Azure najdete v článku o příběhi [Jellyfish snímků](https://customers.microsoft.com/story/jellyfishpictures).
 
-Vyzkoušejte si integrace služby Azure Batch pro správce vykreslování pomocí odpovídající modulu plug-in a pokyny, Githubu, kde je to možné.
+## <a name="using-azure-with-thinkbox-deadline"></a>Používání Azure s konečným termínem Thinkbox
+
+Centrum vykreslování Azure podporuje oblíbené správce vykreslování včetně termínu.  Pokyny k nasazení a použití centra vykreslování najdete v [úložišti GitHub](https://github.com/Azure/azure-render-hub).
+
+## <a name="next-steps"></a>Další kroky
+
+Vyzkoušejte integraci Azure Batch pro správce vykreslování pomocí vhodného modulu plug-in a pokynů na GitHubu, kde je to možné.

@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573710"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961702"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop NITĚmi pomocí Azure HDInsight
 
@@ -33,27 +33,27 @@ V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou
 
 1. Vyberte **zobrazení Ambari** ikonu a pak vyberte vzor mřížky. V dalším kroku vyberte **správce fronty YARN**.
 
-    ![Vyberte ikonu zobrazení Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Vyberte ikonu zobrazení Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Vyberte **výchozí** fronty.
 
-    ![Vyberte výchozí fronta](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Vyberte výchozí fronta](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Pro **výchozí** fronty, změnit **kapacity** z 50 %, 25 %. Pro **thriftsvr** fronty, změnit **kapacity** 25 %.
 
-    ![Změňte kapacitu na 25 % pro výchozí web a thriftsvr fronty](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![Změňte kapacitu na 25 % pro výchozí web a thriftsvr fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Chcete-li vytvořit novou frontu, vyberte **přidat frontu**.
 
-    ![Výběr možnosti Přidat frontu](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Výběr možnosti Přidat frontu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Pojmenujte novou frontu.
 
-    ![Název fronty Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Název fronty Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Nechte **kapacity** hodnoty na 50 % a pak vyberte **akce** tlačítko.
 
-    ![Výběr akce tlačítka](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Výběr akce tlačítka](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Vyberte **uložte a aktualizujte stránku fronty**.
 
-    ![Vyberte Uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Vyberte Uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
@@ -133,7 +133,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN koncepty a aplikace](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

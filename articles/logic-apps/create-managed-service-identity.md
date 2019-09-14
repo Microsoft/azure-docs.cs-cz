@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934041"
+ms.locfileid: "70959974"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům se spravovanými identitami v Azure Logic Apps
 
@@ -23,7 +23,7 @@ Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active 
 > [!NOTE]
 > Vaše aplikace logiky může používat spravované identity pouze s konektory, které podporují spravované identity. V současné době pouze konektor HTTP podporuje spravované identity.
 >
-> V každém předplatném Azure můžete v současnosti mít až 10 pracovních postupů aplikací logiky se spravovanými identitami přiřazenými systémem.
+> V současné době máte v každém předplatném Azure až 100 pracovních postupů Logic Apps se spravovanými identitami přiřazenými systémem.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -168,7 +168,7 @@ Po nastavení aplikace logiky pomocí spravované identity přiřazené systéme
    > 
    > Hodnota ID prostředku ve vlastnosti **cílové skupiny** se musí přesně shodovat s tím, co očekává služba Azure AD, včetně všech požadovaných koncových lomítek. 
    > Tyto hodnoty ID prostředků najdete v této [tabulce popisující služby Azure, které podporují Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   > Pokud například používáte ID prostředku Azure prostředků Manageru, ujistěte se, že identifikátor URI má koncové lomítko.
+   > Pokud například používáte ID prostředku Azure Resource Manager, ujistěte se, že identifikátor URI má koncové lomítko.
 
 1. Pokračujte v sestavování aplikace logiky způsobem, který požadujete.
 
@@ -202,6 +202,6 @@ Pokud jste vytvořili spravovanou identitu přiřazenou systémem aplikace logik
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zabezpečený přístup a data v Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md)

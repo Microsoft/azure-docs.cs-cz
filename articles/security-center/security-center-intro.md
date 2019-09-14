@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 762ab2800193aa084b771b7d000b383a7004097e
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882849"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984921"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -38,7 +38,7 @@ Azure Security Center řeší tři naléhavé problémy se zabezpečením:
 
 Abychom vám pomohli chránit před těmito výzvami, Security Center poskytuje nástroje pro:
 
--   **Posílit zabezpečení stav**: Security Center posuzuje vaše prostředí a umožňuje pochopit stav vašich prostředků, jsou zabezpečené nebo ne?
+-   **Posílit zabezpečení stav**: Security Center posuzuje vaše prostředí a umožňuje pochopit stav svých prostředků a to, jestli jsou zabezpečené.
 
 -   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy detekce hrozeb.
 
@@ -80,7 +80,7 @@ Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepře
 
 ![Mapa Security Center sítě](media/security-center-intro/sc-net-map.png)
 
-Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kroku přidáním zabezpečeného **skóre**. Pro každé doporučení, které obdržíte, se teď přiřadí bezpečnostní skóre, které vám pomohou pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení. To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
+Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kroku přidáním **zabezpečeného skóre**. Pro každé doporučení, které obdržíte, se teď přiřadí bezpečnostní skóre, které vám pomohou pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení. To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
 
 ![Security Center zabezpečeného skóre](media/security-center-intro/sc-secure-score.png)
 

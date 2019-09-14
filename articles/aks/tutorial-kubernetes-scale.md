@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019192"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965135"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s kurzem [1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
+V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
 Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Následující příklad používá příkaz [kubectl AutoScale][kubectl-autoscale] k automatickému škálování počtu lusků v nasazení v *Azure – hlasování* . Pokud využití procesoru překročí 50%, přidaný modul automatického škálování zvyšuje lusky až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
+Následující příklad používá příkaz [kubectl AutoScale][kubectl-autoscale] k automatickému škálování počtu lusků v nasazení v *Azure – hlasování* . Pokud průměrné využití procesoru napříč všemi lusky překročí 50% jejich vyžádaného využití, přizpůsobuje se automatické škálování až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -139,7 +139,7 @@ Po úspěšném škálování clusteru se výstup podobá následujícímu pří
   }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se tyto postupy:
 

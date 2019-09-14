@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094673"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983753"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -45,16 +45,18 @@ Všechny propagační nebo ukázkové velikosti virtuálních počítačů, kter
 | Av2-series | Všechny velikosti | Any |
 | B-Series | Žádné | Není dostupné |
 | Řada DC | Žádné | Není dostupné |
-| Dv2, Dsv2-Series | Všechny velikosti | Any |
+| Dv2, DSv2-Series | Všechny velikosti | Any |
 | Dv3, Dsv3-Series | Všechny velikosti | Any |
-| [Paměť optimalizované velikosti](../virtual-machines/linux/sizes-memory.md) | Žádné | Není dostupné |
+| Ev3, Esv3-Series | Všechny velikosti | Any |
 | Fsv2-series | Všechny velikosti | Any |
 | H-series | Všechny velikosti | Any |
 | Řada 2 –<sup>2</sup> | Všechny velikosti | Any |
 | HC – řada<sup>2</sup> | Všechny velikosti | Any |
 | Řada Ls | Všechny velikosti | Any |
 | Řada Lsv2 | Žádné | Není dostupné |
-| M-Series | Standard_M64ms (jenom s nízkou prioritou), Standard_M128s (jenom s nízkou prioritou) | Any |  
+| M-Series | Standard_M64ms (jenom s nízkou prioritou), Standard_M128s (jenom s nízkou prioritou) | Any |
+| Řada Mv2 | Žádné | Není dostupné |
+| NC-Series | Všechny velikosti | Any |
 | NCv2-Series<sup>2</sup> | Všechny velikosti | Any |
 | NCv3-Series<sup>2</sup> | Všechny velikosti | Any |
 | ND-Series<sup>2</sup> | Všechny velikosti | Any |
@@ -90,7 +92,7 @@ Fondy dávek v konfiguraci cloudové služby podporují všechny [velikosti virt
 
 * **Konfigurace fondu** – obecně platí více možností velikosti virtuálních počítačů při vytváření fondu v konfiguraci virtuálního počítače v porovnání s konfigurací cloudové služby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
 * Informace o použití velikosti virtuálních počítačů náročných na výpočetní výkon najdete [v tématu použití instancí s podporou RDMA nebo GPU ve fondech služby Batch](batch-pool-compute-intensive-sizes.md).

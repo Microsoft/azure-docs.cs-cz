@@ -3,16 +3,17 @@ title: Povolit automatické vytváření témat v Apache Kafka – Azure HDInsig
 description: Naučte se, jak nakonfigurovat Apache Kafka ve službě HDInsight pro automatické vytváření témat. Kafka můžete nakonfigurovat nastavením auto. Create. témats. Enable na hodnotu true prostřednictvím Ambari nebo během vytváření clusteru prostřednictvím šablon PowerShellu nebo Správce prostředků.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900433"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960666"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytváření témat
 
@@ -34,11 +35,11 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 3. V seznamu na levé straně stránky vyberte službu Kafka.
 
-    ![Seznam služeb](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Seznam služeb](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. V polovině stránky vyberte konfigurace.
 
-    ![Karta konfigurace služby](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Karta konfigurace služby](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
 5. Do pole Filtr zadejte hodnotu `auto.create`. 
 

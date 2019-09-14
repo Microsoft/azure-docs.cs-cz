@@ -1,7 +1,7 @@
 ---
-title: Zjišťování objektu - pro počítačové zpracování obrazu
+title: Detekce objektu – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Další koncepty související s funkcí zjišťování objektu z rozhraní API pro počítačové zpracování obrazu – využití a omezení.
+description: Přečtěte si o konceptech souvisejících s funkcí detekce objektu rozhraní API pro počítačové zpracování obrazu-Usage a Limits.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0625d8371b9ecaaadd05e302413054948fd4b27b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368033"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967042"
 ---
-# <a name="detect-common-objects-in-images"></a>Zjištění běžně používané objekty v obrázcích
+# <a name="detect-common-objects-in-images"></a>Zjistit běžné objekty v obrázcích
 
-Detekce objektů je podobný [označování](concept-tagging-images.md), ale rozhraní API Vrátí souřadnice ohraničujícího pole (v pixelech) pro každý objekt se nenašel. Například pokud image obsahuje pes, cat a osoby, rozpoznat operace se zobrazí seznam těchto objektů spolu s jejich souřadnice na obrázku. Tato funkce slouží ke zpracování vztahy mezi objekty v obrázku. Můžete ho taky určit, zda existuje více instancí stejné značky v obraze.
+Detekce objektu je podobná [označování](concept-tagging-images.md), ale rozhraní API vrací Souřadnice ohraničovacího pole (v pixelech) pro každý nalezený objekt. Pokud například obrázek obsahuje pes, Cat a osobu, operace zjišťování zobrazí tyto objekty spolu s jejich souřadnicemi v obrázku. Tuto funkci můžete použít ke zpracování vztahů mezi objekty v imagi. Také umožňuje určit, zda je v obrázku více instancí stejné značky.
 
-Rozhraní API pro detekci se vztahuje na základě objektů nebo věci živých identifikovat na obrázku značky. Aktuálně neexistuje žádné formální vztah mezi taxonomii značek a taxonomie zjišťování objektu. Na koncepční úroveň rozhraní API pro detekci pouze vyhledá objekty a živých věcí, zatímco rozhraní API pro značku použít také jako "vnitřních" kontextové podmínkami, které nelze lokalizovat s funkcí ohraničování polí.
+Rozhraní API pro detekci používá značky založené na objektech nebo živých akcích identifikovaných na obrázku. V současné době neexistuje žádný formální vztah mezi taxonomií značek a taxonomií detekce objektu. Na koncepční úrovni detekuje rozhraní API pouze objekty a živé věci, zatímco rozhraní API značek může také zahrnovat kontextové výrazy, jako je "interiér", které nelze lokalizovat pomocí ohraničujících polí.
 
-## <a name="object-detection-example"></a>Příklad zjištění objektu
+## <a name="object-detection-example"></a>Příklad detekce objektu
 
-Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při zjišťování objektů v na obrázku.
+Následující odpověď JSON ukazuje, co Počítačové zpracování obrazu vrátí při detekci objektů v ukázkovém obrázku.
 
-![Žena kuchyně pomocí zařízení Microsoft Surface](./Images/windows-kitchen.jpg)
+![Žena využívající zařízení Microsoft Surface v kuchyni](./Images/windows-kitchen.jpg)
 
 ```json
 {
@@ -89,15 +89,15 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 
 ## <a name="limitations"></a>Omezení
 
-Je důležité si uvědomit omezení objektu zjišťování můžete vyhnout nebo důsledky falešně negativní (chybějící objekty) a omezené podrobnosti.
+Je důležité poznamenat omezení detekce objektů, abyste se vyhnuli nebo zmírnit dopadům falešně negativních hodnot (nezmeškaných objektů) a omezenými podrobnostmi.
 
-* Objekty nejsou zjištěny obecně v případě, že jsou malé (méně než 5 % obrázku).
-* Objekty nejsou zjištěny obecně, pokud jsou uspořádané pod úzce spolupracují (stoh talířů shora, například).
-* Objekty nejsou rozlišené pomocí značky nebo názvy produktů (různé druhy sodovky na polici úložiště, například). Však můžete získat značku informace z bitové kopie pomocí [vytvoření detekce](concept-brand-detection.md) funkce.
+* Obecně se nedetekuje objekty, pokud jsou malé (méně než 5% bitové kopie).
+* Obecně se nedetekuje objekty, pokud jsou uspořádány blízko sebe (například zásobník talířů).
+* Objekty se neliší podle značky nebo názvů produktů (například různých typů sodasů na police úložiště). Z obrázku ale můžete získat informace o značce pomocí funkce pro [detekci značky](concept-brand-detection.md) .
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Zahrnout `Objects` v **visualFeatures** parametr dotazu. Potom, když dostanete úplnou odpověď JSON, jednoduše analýzu řetězce pro obsah `"objects"` oddílu.
+Funkce detekce objektu je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do `Objects` parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"objects"` oddílu.
 
-* [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Rychlé zprovoznění: Sada Počítačové zpracování obrazu .NET SDK)](./quickstarts-sdk/csharp-sdk.md)
 * [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811538"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960508"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
 
@@ -58,7 +58,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 
         b. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
 
-        ![Vygenerovat název klíče](./media/apache-kafka-byok/kafka-create-a-key.png "Vygenerovat název klíče")
+        ![Vygenerovat název klíče](./media/apache-kafka-byok/apache-kafka-create-key.png "Vygenerovat název klíče")
 
         c. Vyberte klíč, který jste vytvořili ze seznamu klíčů.
 
@@ -103,7 +103,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 
    Chcete-li otočit klíč, je nutné mít úplnou adresu URL nového klíče (viz krok 3 [nastavení Key Vault a klíčů](#setup-the-key-vault-and-keys)). Až to budete mít, přejděte do části vlastnosti clusteru Kafka na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
 
-   ![Kafka otočit šifrovací klíč disku](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka otočit šifrovací klíč disku](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Nejčastější dotazy k Apache Kafka BYOK
 
@@ -144,7 +144,7 @@ Pokud cluster ztratí přístup k tomuto klíči, zobrazí se na portálu Apache
 
    Kafka BYOK je k dispozici ve všech veřejných cloudech.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault](../../key-vault/key-vault-whatis.md)?
 * Pokud chcete začít pracovat s Azure Key Vault, přečtěte si téma [Začínáme with Azure Key Vault](../../key-vault/key-vault-overview.md).

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69893799"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983938"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -204,6 +204,6 @@ Pokud vaše šablona obsahuje parametr se stejným názvem jako jeden z parametr
 
 ## <a name="next-steps"></a>Další postup
 
-- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [parametry v šablonách Azure Resource Manager](template-parameters.md).
 - Další informace o použití hodnot z trezoru klíčů najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](resource-manager-keyvault-parameter.md).
-
+- Další informace o parametrech naleznete [v tématu Parameters in Azure Resource Manager Templates](template-parameters.md).

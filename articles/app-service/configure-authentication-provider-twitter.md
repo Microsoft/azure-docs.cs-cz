@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232047"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983603"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Postup konfigurace aplikace App Service pro použití služby Twitter Login
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,7 +31,7 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet na Twitteru s ov
 ## <a name="register"> </a>Registrace aplikace na Twitteru
 1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**. Budete ho používat ke konfiguraci aplikace Twitter.
 2. Přejděte na web pro [Vývojáři na Twitteru] na Twitteru, přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a klikněte na **vytvořit novou aplikaci**.
-3. Zadejte **název** a **Popis** nové aplikace. Do **adresy URL** vaší aplikace vložte hodnotu **Web** . Potom pro **adresu URL zpětného volání**zadejte adresu url vaší App Service aplikace a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
+3. Zadejte **název** a **Popis** nové aplikace. Do **adresy URL** vaší aplikace vložte hodnotu **Web** . Potom pro **adresu URL zpětného volání**zadejte adresu url vaší App Service aplikace a přidejte cestu `/.auth/login/twitter/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
 4. V dolní části stránky si přečtěte a přijměte podmínky. Pak klikněte na **vytvořit aplikaci Twitter**. Zobrazí se podrobnosti o aplikaci.
 5. Klikněte na kartu **Nastavení** , zaškrtněte políčko **povolí použití této aplikace pro přihlášení**k Twitteru a pak klikněte na **aktualizovat nastavení**.
 6. Vyberte kartu **klíče a přístupové tokeny** . Poznamenejte si hodnoty **klíč příjemce (klíč rozhraní API)** a tajného kódu **příjemce (tajný klíč rozhraní API)** .

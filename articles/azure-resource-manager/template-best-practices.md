@@ -1,22 +1,17 @@
 ---
 title: Osvědčené postupy pro šablony Azure Resource Manager
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812900"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983831"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Doporučené postupy pro šablonu Azure Resource Manager
 
@@ -47,7 +42,8 @@ Když nasadíte prostředky do skupiny prostředků, skupina prostředků ulož�
 Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Pokud chcete minimalizovat riziko, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
 
 ## <a name="parameters"></a>Parametry
-Informace v této části mohou být užitečné při práci s [parametry](resource-group-authoring-templates.md#parameters).
+
+Informace v této části mohou být užitečné při práci s [parametry](template-parameters.md).
 
 ### <a name="general-recommendations-for-parameters"></a>Obecná doporučení pro parametry
 
@@ -149,7 +145,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
 
 ## <a name="variables"></a>Proměnné
 
-Následující informace můžou být užitečné při práci s [proměnnými](resource-group-authoring-templates.md#variables):
+Následující informace můžou být užitečné při práci s proměnnými [](template-variables.md):
 
 * Pro názvy proměnných použijte ve stylu CamelCase Case.
 
@@ -159,7 +155,7 @@ Následující informace můžou být užitečné při práci s [proměnnými](r
 
 * Nepoužívejte proměnné pro `apiVersion` prostředek. Verze rozhraní API Určuje schéma prostředku. Často nemůžete změnit verzi, aniž byste museli měnit vlastnosti prostředku.
 
-* V části **proměnné** v šabloně nemůžete použít [odkazovou](resource-group-template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v **části** **Resources** nebo Outputs šablony.
+* V části **proměnné** v šabloně nemůžete použít [odkazovou](resource-group-template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v části Resources nebo Outputs šablony.
 
 * Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
 
@@ -200,7 +196,7 @@ Následující informace můžou být užitečné při práci s [prostředky](re
    ]
    ```
 
-* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), *neprovádějte pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
+* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), neprovádějte *pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
    
    ```json
    "diagnosticsProfile": {
@@ -286,7 +282,7 @@ Následující informace můžou být užitečné při práci s [prostředky](re
 
 ## <a name="outputs"></a>Výstupy
 
-Pokud k vytvoření veřejných IP adres použijete šablonu, zahrňte [část výstupy](resource-group-authoring-templates.md#outputs) , která vrátí podrobnosti o IP adrese a plně kvalifikovaném názvu domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
+Pokud k vytvoření veřejných IP adres použijete šablonu, zahrňte [část výstupy](template-outputs.md) , která vrátí podrobnosti o IP adrese a plně kvalifikovaném názvu domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
 
 ```json
 "outputs": {

@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC | Dokumentace Microsoftu
-description: Další informace o správě přístupu k prostředkům Azure pro uživatele mimo organizaci, která používá řízení přístupu na základě role (RBAC).
+title: Správa přístupu k prostředkům Azure pro externí uživatele typu Host pomocí RBAC | Microsoft Docs
+description: Naučte se spravovat přístup k prostředkům Azure pro uživatele mimo organizaci pomocí řízení přístupu na základě role (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,123 +12,197 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952204"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967352"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele typu Host pomocí RBAC
 
-Řízení přístupu na základě role (RBAC) umožňuje lepší zabezpečení správy pro velké organizace a pro SMB práce s externími spolupracovníky, dodavatelům nebo freelancers, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně celý všechny obory, týkající se účtování nebo infrastruktury. RBAC umožňuje flexibilitu vlastnící jedno předplatné Azure, které spravuje správce účtu (role Správce služby na úrovni předplatného) a pro práci v rámci stejného předplatného, ale nemají žádné oprávnění pro správu pro něj pozvali více uživatelů .
+Řízení přístupu na základě role (RBAC) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale nemusí nutně odpovídat celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít RBAC a udělit pouze oprávnění, která uživatelé v prostředí potřebují.
 
-> [!NOTE]
-> Předplatná Office 365 nebo licence Azure Active Directory (například: Přístup k Azure Active Directory) zajištěného z Microsoft 365, centra pro správu nejde použít pro pomocí RBAC.
+## <a name="when-would-you-invite-guest-users"></a>Kdy byste mohli pozvat uživatele typu Host?
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Přiřadíte role RBAC v oboru předplatného
+Tady je několik ukázkových scénářů, kdy můžete pozvat uživatele typu Host do vaší organizace a udělit oprávnění:
 
-Existují dva běžné příklady při RBAC je použít (to však není omezeno na):
+- Umožněte externímu nezávislému dodavateli, který má jenom e-mailový účet pro přístup k prostředkům Azure pro projekt.
+- Umožněte externímu partnerovi spravovat určité prostředky nebo celé předplatné.
+- Umožněte pracovníkům podpory, kteří nejsou ve vaší organizaci (například podpora Microsoftu), dočasný přístup k vašemu prostředku Azure, abyste mohli řešit problémy.
 
-* Ke správě určitých prostředků nebo předplatného celý s externím uživatelům z organizace pozvaný (není součástí uživatele správce tenanta Azure Active Directory)
-* Práce s uživateli uvnitř organizace (jsou součástí tenanta Azure Active Directory uživatele), ale součást různými týmy a skupiny, které potřebují granulární přístup pro celé předplatné nebo pro určité skupiny prostředků nebo prostředek obory v prostředí
+## <a name="permission-differences-between-member-users-and-guest-users"></a>Rozdíly v oprávněních mezi členskými uživateli a uživateli typu Host
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udělení přístupu na úrovni předplatného pro uživatele mimo službu Azure Active Directory
+Nativní členové adresáře (členové uživatelů) mají různá oprávnění, než uživatelé pozvaní z jiného adresáře jako host spolupráce B2B (uživatelé typu Host). Členové mohou například číst téměř všechny informace o adresáři, zatímco uživatelé typu Host mají omezená oprávnění k adresáři. Další informace o členských uživatelích a uživatelích typu Host najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
-Role RBAC lze udělit pouze **vlastníky** předplatného. Proto správce musíte být přihlášení jako uživatel, který má tuto roli předem přiřazenou nebo vytvoření předplatného Azure.
+## <a name="add-a-guest-user-to-your-directory"></a>Přidání uživatele typu host do adresáře
 
-Na webu Azure Portal vyberte po přihlášení jako správce "Předplatné" a vyberte možnost použít.
-![okno předplatné na webu Azure portal](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s rolí správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, to se role předplatného. Další informace o rolích předplatné Azure, najdete v části [přidat nebo změnit správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
+Pomocí těchto kroků přidáte uživatele typu Host do adresáře pomocí stránky Azure Active Directory.
 
-V tomto příkladu, uživateli "alflanigan@outlook.com" je **vlastníka** "Bezplatné zkušební verze" tenant "Výchozí tenanta Azure" předplatného v AAD. Jelikož tento uživatel je Tvůrce předplatné Azure s počáteční Account Microsoft "Aplikace Outlook" (Account Microsoft = Outlook, Live atd.) budou mít výchozí název domény pro všechny uživatele v tomto tenantovi přidán **"\@ alflaniganuoutlook.onmicrosoft.com"** . Standardně je vytvořen syntaxe nové domény sestavení název uživatelské jméno a doménu uživatele, který vytvořil tenanta a přidáním rozšíření **". onmicrosoft.com"** .
-Navíc uživatelé můžou přihlásit se pomocí vlastního názvu domény v tenantovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v tenantovi Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře služby](../active-directory/fundamentals/add-custom-domain.md).
+1. Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../active-directory/b2b/delegate-invitations.md).
 
-V tomto příkladu adresáři "Výchozímu tenantu Azure" obsahuje pouze uživatele s názvem domény "\@alflanigan.onmicrosoft.com".
+1. V Azure Portal klikněte na **Azure Active Directory** > **Uživatelé** > **Nový uživatel typu Host**.
 
-Po výběru předplatného, musíte kliknout na uživatele s rolí správce **řízení přístupu (IAM)** a potom **přidat novou roli**.
+    ![Nová funkce uživatele typu Host v Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-![Funkce IAM řízení přístupu na webu Azure portal](./media/role-assignments-external-users/1.png)
+1. Pokud chcete přidat nového uživatele typu Host, postupujte podle pokynů. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
 
-![Přidání nového uživatele v IAM funkce řízení přístupu na webu Azure portal](./media/role-assignments-external-users/2.png)
+Po přidání uživatele typu Host do adresáře můžete buď Odeslat uživateli typu Host přímý odkaz na sdílenou aplikaci, nebo uživatel typu Host může kliknout na adresu URL pro uplatnění v e-mailu s pozvánkou.
 
-Dalším krokem je vybrat roli, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídka správce uživateli se zobrazí pouze předdefinované role RBAC, které jsou dostupné v Azure. Podrobnější vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v článku [předdefinované role pro prostředky Azure](built-in-roles.md).
+![E-mail pro pozvání uživatele typu Host](./media/role-assignments-external-users/invite-email.png)
 
-Uživatele s rolí správce je pak potřeba přidat e-mailovou adresu externího uživatele. Chování je očekávané pro externí uživatele není uveden v existujícího tenanta. Jakmile externí uživatel byl pozván, budou viditelné v rámci **předplatná > řízení přístupu (IAM)** s aktuálním uživateli, které momentálně nejsou přiřazené roli RBAC v oboru předplatného.
+Aby mohl uživatel typu Host získat přístup k adresáři, musí dokončit proces pozvání.
 
-![Přidejte oprávnění do nové role RBAC](./media/role-assignments-external-users/3.png)
+![Oprávnění pro kontrolu pozvání uživatele typu Host](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![seznam rolí RBAC na úrovni předplatného](./media/role-assignments-external-users/4.png)
+Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
 
-Uživatel "chessercarlton@gmail.com" má být pozvánku **vlastníka** pro předplatné "Bezplatné zkušební verze". Po odeslání e-mailové pozvánce, obdrží externího uživatele potvrzení e-mailu s odkazem k aktivaci.
-![e-mailové pozvánky pro RBAC role](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>Udělení přístupu uživateli typu Host
 
-Jsou externí vůči organizaci, nový uživatel a nemá žádné atributy existující v adresáři "Výchozímu tenantu Azure". Budou vytvořeny po externí uživatel udělil souhlas mají být zaznamenány do adresáře, který je přidružený k předplatnému, byla přiřazena role k.
+Pokud chcete udělit přístup, přiřaďte roli ve RBAC. Pokud chcete udělit přístup k uživateli typu Host, použijte [stejný postup](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity. Pomocí těchto kroků udělíte přístup k uživateli typu Host v různých oborech.
 
-![e-mailovou pozvánku zprávu pro RBAC role](./media/role-assignments-external-users/6.png)
+1. Na webu Azure Portal klikněte na **Všechny služby**.
 
-Zobrazuje externí uživatele v tenantovi Azure Active Directory od této chvíle jako externího uživatele, což lze zobrazit na webu Azure Portal.
+1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, předplatná, **skupiny prostředků**nebo prostředek.
 
-![uživatelé okno azure active directory Azure portal](./media/role-assignments-external-users/7.png)
+1. Klikněte na konkrétní prostředek.
 
-V **uživatelé** zobrazení, externí uživatele můžete rozpoznat podle typu jinou ikonu na webu Azure Portal.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
-Ale udělení **vlastníka** nebo **Přispěvatel** přístup k externím uživatelem na **předplatné** oboru, neumožňuje přístup k adresáři uživatele správce, není-li **Globálního správce** umožňuje. Ve vlastnosti uživatele **typ uživatele**, která má dvě společné parametry, **člen** a **hosta** lze identifikovat. Člen je uživatel, který je registrován v adresáři hosta je uživatele pozvat do adresáře z externího zdroje. Další informace najdete v tématu [jak správci služby Azure Active Directory přidat uživatele spolupráce B2B](../active-directory/active-directory-b2b-admin-add-users.md).
+    Následující snímek obrazovky ukazuje příklad okna řízení přístupu (IAM) pro skupinu prostředků. Pokud tady uděláte nějaké změny řízení přístupu, budou platit jenom pro skupinu prostředků.
 
-> [!NOTE]
-> Ujistěte se, že po zadání přihlašovacích údajů na portálu, externí uživatel vybere na správný adresář pro přihlášení k aplikaci. Stejný uživatel můžete mít přístup k více adresářů můžete kliknutím na uživatelské jméno v pravém horním na webu Azure Portal vyberte jednu z nich a pak zvolte příslušného adresáře z rozevíracího seznamu.
+    ![Okno řízení přístupu (IAM) pro skupinu prostředků](./media/role-assignments-external-users/access-control-resource-group.png)
 
-Při zachování Host v adresáři, externí uživatel může spravovat všechny prostředky pro předplatné Azure, ale nemůže získat přístup k adresáři.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 
-![omezit přístup pouze k azure active directory a Azure portal](./media/role-assignments-external-users/9.png)
+1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
 
-Azure Active Directory a předplatným Azure nemají vztah podřízený nadřazený stejně jako ostatní prostředky Azure (Příklad: virtuální počítače, virtuální sítě, webových aplikací, úložiště atd.) mít s předplatným Azure. Všechny tyto je vytvořen, spravované a účtují v rámci předplatného Azure předplatné Azure se používá ke správě přístupu k adresáři služby Azure. Další informace najdete v tématu [předplatné jak Azure má vztah k Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-Ze všech předdefinované role RBAC **vlastníka** a **Přispěvatel** nabízejí úplné správy přístup ke všem prostředkům v prostředí, rozdíl, že se přispěvatelem nelze vytvářet a odstraňovat nové role RBAC . Předdefinované role, jako jsou **Přispěvatel virtuálních počítačů** nabízejí úplné řízení přístup jenom k prostředkům označen názvem, bez ohledu na to **skupiny prostředků** jsou vytvářeny do.
+    ![Přidat nabídku](./media/role-assignments-external-users/add-menu.png)
 
-Přiřazení předdefinované role RBAC **Přispěvatel virtuálních počítačů** na úrovni předplatného, znamená to, že uživatel s rolí:
+1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
-* Můžete zobrazit všechny virtuální počítače bez ohledu na jejich data nasazení a skupiny prostředků, které jsou součástí
-* Má úplná správu přístupu k virtuálním počítačům v rámci předplatného
-* Nelze zobrazit další typy prostředků v předplatném
-* Nejde použít změny z hlediska fakturace
+1. V seznamu **Vybrat** vyberte uživatele typu Host. Pokud uživatele v seznamu nevidíte, můžete zadat do pole **Vybrat** a vyhledat tak zobrazované názvy, e-mailové adresy a identifikátory objektů v adresáři.
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Přiřazení předdefinované role RBAC pro externí uživatele
+   ![Přidat podokno přiřazení role](./media/role-assignments-external-users/add-role-assignment.png)
 
-Pro jiný scénář v tomto testu, externí uživatele "alflanigan@gmail.com" se přidá jako **Přispěvatel virtuálních počítačů**.
+1. Kliknutím na **Save (Uložit** ) přiřaďte roli ve vybraném oboru.
 
-![Předdefinovaná role Přispěvatel virtuálních počítačů](./media/role-assignments-external-users/11.png)
+    ![Přiřazení role pro přispěvatele virtuálních počítačů](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-Normálního chování pro tuto externí uživatel s touto předdefinovaných rolí je vidět a spravovat jenom virtuální počítače a jejich sousední prostředky Resource Manageru pouze nezbytné při nasazování. Návrh nabízí omezené pracovníci v těchto rolích přístup pouze k jejich příslušné prostředky vytvořené v rámci webu Azure portal.
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Udělení přístupu k uživateli typu Host ještě není ve vašem adresáři
 
-![Přehled role Přispěvatel virtuálních počítačů na webu Azure portal](./media/role-assignments-external-users/12.png)
+Pokud chcete udělit přístup, přiřaďte roli ve RBAC. Pokud chcete udělit přístup k uživateli typu Host, použijte [stejný postup](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity.
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Udělení přístupu na úrovni předplatného pro uživatele ve stejném adresáři
+Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatele pozvat přímo z podokna přidat přiřazení role.
 
-Tok procesu je stejný jako přidání externího uživatele, i z pohledu správce, udělíte roli RBAC, stejně jako uživatel udělením přístupu k roli. Rozdíl spočívá v tom, že pozvaného uživatele nebude přijímat žádné e-mailové pozvánky jako všechny obory prostředků v rámci předplatného bude dostupný na řídicím panelu po přihlášení.
+1. Na webu Azure Portal klikněte na **Všechny služby**.
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Přiřadíte role RBAC v oboru skupiny prostředků
+1.  Vyberte sadu prostředků, na které se vztahuje přístup, označovaný také jako obor. Můžete například vybrat **skupiny pro správu**, předplatná, **skupiny prostředků**nebo prostředek.
 
-Přiřazení roli RBAC v **skupiny prostředků** obor má stejné proces pro přiřazení role na úrovni předplatného, pro oba typy uživatelů – externí nebo interní (součástí stejného adresáře). Uživatelé, kteří mají přiřazenou roli RBAC je chcete zobrazit ve svém prostředí pouze pro skupiny prostředků byl klientům přiřazen přístup z **skupiny prostředků** ikonu na webu Azure Portal.
+1. Klikněte na konkrétní prostředek.
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>Přiřadíte role RBAC v oboru prostředků
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
-Přiřazení roli RBAC v oboru prostředků v Azure má stejné proces pro přiřazení role na úrovni předplatného nebo na úrovni skupiny prostředků podle stejného pracovního postupu pro oba scénáře. Znovu, můžete uživatele, kteří mají přiřazenou roli RBAC se zobrazí pouze položky, které se mají přiřazený přístup k buď **všechny prostředky** kartu nebo přímo v řídicím panelu.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 
-Důležitou pro RBAC, jak v oboru skupiny prostředků nebo prostředek rozsahu je pro uživatele, ujistěte se, že se přihlásit ke správnému adresáři.
+1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
 
-![adresář přihlášení na webu Azure portal](./media/role-assignments-external-users/13.png)
+    ![Přidat nabídku](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Přiřadíte role RBAC pro skupiny služby Azure Active Directory
+1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
-Všechny scénáře pomocí RBAC na tří různých oborů v Azure nabízí oprávnění aplikace, nasazení a správě různým prostředkům jako přiřazeného uživatele bez nutnosti spravovat osobní předplatného. Bez ohledu na to přiřazení RBAC role pro předplatné, skupinu prostředků nebo prostředek oboru, všechny prostředky vytvořené dále přiřazení uživatelé se účtují v rámci jednoho předplatného Azure, kde uživatelé mají přístup k. Díky tomu uživatelé, kteří mají oprávnění správce pro toto předplatné celý Azure billing má úplný přehled o spotřebě, bez ohledu na to kdo spravuje prostředky.
+1. V seznamu **Vybrat** zadejte e-mailovou adresu osoby, kterou chcete pozvat, a vyberte tuto osobu.
 
-Pro větší organizace můžete použít role RBAC stejně jako u skupin Azure Active Directory vzhledem k tomu, že uživatel s rolí správce chce granulární přístup pro týmy nebo celé oddělení, nikoli jednotlivě pro každého uživatele, takže vzhledem k tomu perspektivy je velmi čas a správu efektivní možnost. Pro ilustraci v tomto příkladu **Přispěvatel** role je přidaný do jedné ze skupin v tenantovi na úrovni předplatného.
+   ![Pozvat uživatele typu Host v podokně Přidat přiřazení role](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![Přidání role RBAC pro skupiny AAD](./media/role-assignments-external-users/14.png)
+1. Kliknutím na **Uložit** přidáte uživatele typu Host do adresáře, přiřadíte roli a odešlete pozvánku.
 
-Tyto skupiny jsou skupiny zabezpečení, které jsou zřízené a spravují pouze v rámci Azure Active Directory.
+    Po chvíli se vám zobrazí oznámení o přiřazení role a informace o pozvánce.
 
+    ![Přiřazení role a oznámení pozvaní uživatelů](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. Pokud chcete uživatele typu Host pozvat ručně, klikněte na něj pravým tlačítkem a zkopírujte odkaz na pozvánku v oznámení. Neklepejte na odkaz na pozvánku, protože spustí proces pozvánky.
+
+    Odkaz na pozvánku bude mít následující formát:
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. Odešlete odkaz na pozvánku uživateli typu Host, aby bylo možné dokončit proces pozvánky.
+
+    Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
+
+## <a name="remove-a-guest-user-from-your-directory"></a>Odebrání uživatele typu host z adresáře
+
+Před odebráním uživatele typu host z adresáře byste nejdřív měli odebrat všechna přiřazení rolí pro tohoto uživatele typu Host. Pomocí těchto kroků odeberte uživatele typu host z adresáře.
+
+1. Otevřete **řízení přístupu (IAM)** v oboru, jako je například skupina pro správu, předplatné, skupina prostředků nebo prostředek, kde uživatel typu host má přiřazení role.
+
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí.
+
+1. V seznamu přiřazení rolí přidejte zaškrtnutí vedle uživatele typu host s přiřazením role, kterou chcete odebrat.
+
+   ![Odebrat přiřazení role](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. Klikněte na **Odebrat**.
+
+   ![Zpráva Odebrání přiřazení role](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. Ve zprávě odebrat přiřazení role, která se zobrazí, klikněte na **Ano**.
+
+1. V levém navigačním panelu klikněte na **Azure Active Directory** > **Uživatelé**.
+
+1. Klikněte na uživatele typu Host, kterého chcete odebrat.
+
+1. Klikněte na tlačítko **odstranit**.
+
+   ![Odstranit uživatele typu Host](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. Ve zprávě odstranit, která se zobrazí, klikněte na tlačítko **Ano**.
+
+## <a name="troubleshoot"></a>Řešení potíží
+
+### <a name="guest-user-cannot-browse-the-directory"></a>Uživatel typu Host nemůže procházet adresář
+
+Uživatelé typu Host mají omezená oprávnění k adresáři. Uživatel typu Host nemůže například procházet adresář a nemůže Hledat skupiny nebo aplikace. Další informace najdete v tématu [co jsou výchozí uživatelská oprávnění v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+
+![Uživatel typu Host nemůže procházet uživatele v adresáři.](./media/role-assignments-external-users/directory-no-users.png)
+
+Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete uživateli typu Host přiřadit roli adresáře. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+![Přiřadit roli čtenářů adresáře](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Uživatel typu Host nemůže procházet role uživatelů, skupin nebo objektů služby.
+
+Uživatelé typu Host mají omezená oprávnění k adresáři. I v případě, že uživatel typu Host je [vlastníkem](built-in-roles.md#owner) v oboru, pokud se pokusí vytvořit přiřazení role pro udělení přístupu někomu jinému, nemůže procházet seznam uživatelů, skupin ani objektů služby.
+
+![Uživatel typu Host nemůže procházet objekty zabezpečení a přiřazovat role.](./media/role-assignments-external-users/directory-no-browse.png)
+
+Pokud uživatel typu Host ví v adresáři přesně přihlašovací jméno uživatele, může udělit přístup. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Uživatel typu Host nemůže registrovat aplikace nebo vytvářet instanční objekty.
+
+Uživatelé typu Host mají omezená oprávnění k adresáři. Pokud uživatel typu Host potřebuje mít možnost Registrovat aplikace nebo vytvářet instanční objekty, můžete přidat uživatele typu Host do role [vývojář aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+![Uživatel typu Host nemůže registrovat aplikace.](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>Uživatel typu Host nevidí nový adresář
+
+Pokud má uživatel typu Host přístup k adresáři, ale nevidí nový adresář uvedený v Azure Portal, když se pokusí přepnout v podokně **adresáře a předplatného** , ujistěte se, že uživatel typu Host dokončil proces pozvánky. Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/b2b/redemption-experience.md).
+
+### <a name="guest-user-does-not-see-resources"></a>Uživatel typu Host nevidí prostředky.
+
+Pokud uživateli typu Host byl udělen přístup k adresáři, ale nevidí jim prostředky, kterým byl udělen přístup v Azure Portal, ujistěte se, že uživatel typu host vybral správný adresář. Uživatel typu Host může mít přístup k několika adresářům. Chcete-li přepnout adresáře, klikněte v levém horním rohu na **adresář + předplatné**a pak klikněte na příslušný adresář.
+
+![Podokno adresáře a odběry v Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](../active-directory/b2b/add-users-administrator.md)
+- [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../active-directory/b2b/user-properties.md)
+- [Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)

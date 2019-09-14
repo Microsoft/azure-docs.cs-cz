@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 90ccd6c827371d9bf72391e2b24c7dcef31f36c9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8d42395bc4f813fecf3820024539999a1129921b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844629"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983801"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -52,7 +52,7 @@ Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
    - Vytvořte nový instanční objekt tím, že zachováte pole **instanční objekt** s **výchozím instančním objektem (nový)** . Případně můžete zvolit možnost *Konfigurovat instanční objekt* pro použití existujícího objektu. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
    - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tím zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
 
-    Ve výchozím nastavení se používá *základní* sítě a Azure monitor pro kontejnery jsou povoleny. Po dokončení ověřování klikněte na **zkontrolovat + vytvořit** a pak **vytvořit** .
+Ve výchozím nastavení se používá *základní* sítě a Azure monitor pro kontejnery jsou povoleny. Po dokončení ověřování klikněte na **zkontrolovat + vytvořit** a pak **vytvořit** .
 
 Vytvoření clusteru AKS trvá několik minut. Po dokončení nasazení klikněte na **Přejít k prostředku**nebo přejděte do skupiny prostředků clusteru AKS, jako je třeba *myResourceGroup*, a vyberte prostředek AKS, jako je třeba *myAKSCluster*. Zobrazí se řídicí panel clusteru AKS, jako v tomto příkladu:
 

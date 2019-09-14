@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376136"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966914"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý start: Klientská knihovna obličeje pro Python
 
@@ -285,7 +285,7 @@ Pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro jazyk Java k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
 > [!div class="nextstepaction"]
 > [Odkaz na Face API (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)

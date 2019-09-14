@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164858"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966991"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Rychlý start: Klientská knihovna Počítačové zpracování obrazu pro Java
 
@@ -25,7 +25,7 @@ Pomocí klientské knihovny Počítačové zpracování obrazu pro jazyk Java:
 
 * Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
 
-[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) artefaktu Referenční dokumentace[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
+[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [artefaktu Referenční dokumentace (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +106,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce Poč�
 |Name|Popis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Tato třída pochází z objektu klienta a přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Tato třída pochází z objektu klienta a přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.|
 |[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot VisualFeatureTypes. |
 
 ## <a name="code-examples"></a>Příklady kódu
@@ -143,7 +143,7 @@ Nejprve vytvořte **prostředky/** složky v **Src/Main/** složce projektu a p�
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
 > [!NOTE]
-> Můžete také analyzovat vzdálenou bitovou kopii pomocí adresy URL. Scénáře týkající se vzdálených imagí [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) najdete v ukázkovém kódu na GitHubu.
+> Můžete také analyzovat vzdálenou bitovou kopii pomocí adresy URL. Scénáře týkající se vzdálených imagí najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) .
 
 ### <a name="specify-visual-features"></a>Zadat vizuální funkce
 
@@ -176,13 +176,13 @@ Následující kód získá sadu zjištěných značek v obrázku. Další podro
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
-### <a name="get-faces"></a>Získat obličeje
+### <a name="detect-faces"></a>Rozpoznávání tváří
 
 Následující kód vrátí zjištěné plošky v obrázku s jejich souřadnicemi obdélníku a vyberte možnost atributy obličeje. Další podrobnosti najdete v tématu [rozpoznávání tváře](../concept-detecting-faces.md) .
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="get-adult-or-racy-content"></a>Získat obsah pro dospělé nebo pikantní
+### <a name="detect-adult-or-racy-content"></a>Zjištění obsahu pro dospělé nebo pikantní
 
 Následující kód vytiskne zjištěnou přítomnost obsahu pro dospělé nebo pikantní v imagi. Další podrobnosti najdete v tématu [obsah pro dospělé a pikantní](../concept-detecting-adult-content.md) .
 
@@ -206,6 +206,12 @@ Následující kód analyzuje data o zjištěných orientačních seznamech v ob
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
+### <a name="get-the-image-type"></a>Získat typ obrázku
+
+Následující kód Vytiskne informace o typu obrázku&mdash;, ať už se jedná o Klipart nebo kreslení čáry.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Aplikaci můžete vytvořit pomocí:
@@ -227,7 +233,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak provádět základní úlohy pomocí Počítačové zpracování obrazu knihovny Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 

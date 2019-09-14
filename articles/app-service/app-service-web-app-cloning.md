@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 0f4915add76ce21064b7a79ae110f608592263bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067148"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983691"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service klonování aplikace pomocí PowerShellu
 
@@ -50,7 +50,7 @@ New-AzAppServicePlan -Location "North Central US" -ResourceGroupName Destination
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít `IncludeSourceWebAppSlots` parametr. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru s `New-AzWebApp` příkazem:
+Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít `IncludeSourceWebAppSlots` parametr.  Všimněte si, `IncludeSourceWebAppSlots` že parametr je podporován pouze pro klonování celé aplikace včetně všech slotů. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru s `New-AzWebApp` příkazem:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots

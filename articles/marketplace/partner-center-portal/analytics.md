@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880171"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962736"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
 
@@ -26,7 +26,6 @@ Pokud chcete získat přístup k analytickým nástrojům partnerského centra, 
 |[Fakt](#orders-dashboard)|Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení|
 |[Klientů](#customer-dashboard)|Informace o vašich zákaznících, včetně trendů růstu, prezentovaných ve formátu grafického a ke stažení|
 |[Soubory](#downloads-dashboard)|Seznam žádostí o stažení za posledních 30 dní|
-|[Hodnocení a recenze](#ratings-and-reviews)| Informace o hodnocení a přezkoumání vašich zákazníků pro nabídky, které získali
 
 ## <a name="summary-dashboard"></a>Řídicí panel souhrnu
 
@@ -286,38 +285,3 @@ Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místn
 | Název poskytovatele| Zákazníka| Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
 | SKU| Pořadí| Název SKU, jak je definovaný během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce.||
 | Datum ukončení zkušební verze| Pořadí| Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí.||
-
-## <a name="ratings-and-reviews"></a>Hodnocení a recenze
-
-V případě, že zákazníci na webu Marketplace procházejí, hledají a kupují nabídky, můžou pro nabídky, které získali, vynechávat hodnocení a recenze. Můžou odesílat nové hodnocení nebo recenze a aktualizovat nebo odstraňovat hodnocení nebo recenze, které už byly odeslány. Recenze se publikují na webu Azure Marketplace nebo AppSource na kartě recenze stránky zobrazení produktu nabídky. Zákazníci můžou zahrnout jejich názvy do hodnocení nebo revizí nebo můžou publikovat anonymně.  
-
-> [!NOTE]
-> Zákazníci mohou měnit pouze hodnocení a recenze, které vlastní.
-
-**Hodnocení & kontrole řídicího panelu** zobrazuje trendy a přehledy aktivit zákazníků. Poskytuje grafické reprezentace:
-
-- Hodnocení & recenze  
-- Revidovat komentáře
-
-### <a name="marketplace-storefront-tabs"></a>Karty prezentace na webu Marketplace
-
-Vydavatelé mohou své metriky nabídky zobrazit samostatně na kartách & AppSource Azure Marketplace. Chcete-li zobrazit konkrétní metriky nabídky, vyberte z rozevíracího seznamu **nabídku** :
-
-![Rozevírací seznam nabídky pro analýzu partnerského centra](./media/analyze-offer-dropdown.png)
-
-### <a name="ratings-and-reviews-summary"></a>Shrnutí hodnocení a recenzí
-
-V části hodnocení & Recenze – Souhrn zobrazuje níže uvedené metriky pro vybraný rozsah dat:
-
-- **Průměrné hodnocení:** Vážené průměrné hodnocení hvězdiček všech hodnocení odeslaných zákazníky pro vybranou nabídku
-- **Rozpis hodnocení:** Rozpis hodnocení hvězdičkami podle počtu zákazníků, kteří poslali hodnocení. Pruhový graf je skládaný o skutečné a revidované hodnocení (aktualizovaný počet hodnocení).
-- **Celkem hodnocení:** Celkový počet odeslaných hodnocení Tento počet zahrnuje také hodnocení s recenzemi a bez nich.
-- **Hodnocení s recenzemi:** Počet odeslaných revizí.
-
-![Shrnutí hodnocení a recenzí pro partnerský centrum](./media/analyze-ratings-summary.png)
-
-### <a name="review-comments"></a>Revidovat komentáře
-
-Recenze se zobrazují v chronologickém pořadí při odeslání. Ve výchozím zobrazení se zobrazí všechny recenze. Pomocí **filtru** v rozevírací nabídce můžete filtrovat recenze pomocí hodnocení hvězdičkami. Můžete také vyhledat klíčová slova, která se zobrazí v revizi.  
-
-![Analyzovat revizní komentáře partnerského centra](./media/analyze-reviews.png)

@@ -1,87 +1,87 @@
 ---
-title: Instalace a použití Giraphu na Azure HDInsight
-description: Zjistěte, jak nainstalovat Giraph u clusterů HDInsight pomocí skriptových akcí. Použití Giraphu provedete grafu zpracování v Apache Hadoop v cloudu Azure.
+title: Instalace a použití Giraph ve službě Azure HDInsight
+description: Naučte se instalovat Giraph na clustery HDInsight pomocí akcí skriptů. Pomocí Giraph můžete provádět zpracování grafů v Apache Hadoop v cloudu Azure.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1ca536ffa2166df4ef6cf51654b7b410e72ea66
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697607"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962076"
 ---
-# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalovat Apache Giraph v clusterech HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalujte Apache Giraph do clusterů HDInsight Hadoop a používejte Giraph ke zpracování rozsáhlých grafů.
 
-Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akce skriptu HDInsight umožňuje přizpůsobit cluster spuštěním skriptu bash. Skripty slouží k přizpůsobení clusterů, během a po vytvoření clusteru.
+Přečtěte si, jak nainstalovat Apache Giraph v clusteru HDInsight. Funkce skriptu HDInsight umožňuje přizpůsobit cluster spuštěním skriptu bash. Skripty lze použít k přizpůsobení clusterů během a po vytvoření clusteru.
 
 ## <a name="whatis"></a>Co je Giraph
 
-[Apache Giraph](https://giraph.apache.org/) je možné provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight. Grafy modelovat vztahy mezi objekty. Například připojení mezi směrovači ve velké síti, jako je Internet nebo vztahy mezi uživateli v sociálních sítích. Zpracování grafů umožňuje argumentovat o vztahy mezi objekty v grafu, jako například:
+[Apache Giraph](https://giraph.apache.org/) vám umožňuje provádět zpracování grafů pomocí Hadoop a dá se použít s Azure HDInsight. Grafy modelů vztahů mezi objekty. Například připojení mezi směrovači ve velké síti, jako je například Internet, nebo vztahy mezi lidmi v sociálních sítích. Zpracování grafů vám umožňuje důvodné vztahy mezi objekty v grafu, například:
 
-* Určení potenciální přátel podle aktuální relace.
+* Identifikace potenciálních přátel na základě aktuálních relací.
 
-* Identifikace nejkratší mezi dvěma počítači v síti.
+* Identifikace nejkratší trasy mezi dvěma počítači v síti.
 
-* Výpočet hodnocení stránky webových stránek.
+* Výpočet pořadí stránek webových stránek.
 
 > [!WARNING]  
-> Součásti, které jsou součástí clusteru HDInsight jsou plně podporované – Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
+> Součásti dodávané s clusterem HDInsight jsou plně podporované – podpora Microsoftu pomáhají izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty, jako je například Giraph, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Microsoft Support pravděpodobně možné do vyřešení problému. V opačném případě musí konzultovat opensourcové komunity, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
+> Vlastní komponenty, jako je Giraph, přijímají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Podpora Microsoftu možná bude možné problém vyřešit. Pokud ne, musíte se obrátit na open source komunitu, kde najdete hloubkové znalosti pro tuto technologii. Například existuje mnoho webů komunity, které lze použít, například: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
 
-## <a name="what-the-script-does"></a>Co dělá skriptu
+## <a name="what-the-script-does"></a>Co skript dělá
 
 Tento skript provede následující akce:
 
-* Giraph k instalaci `/usr/hdp/current/giraph`
+* Nainstaluje Giraph do`/usr/hdp/current/giraph`
 
-* Kopie `giraph-examples.jar` souboru do výchozí storage (WASB) pro váš cluster: `/example/jars/giraph-examples.jar`
+* `giraph-examples.jar` Zkopíruje soubor do výchozího úložiště (WASB) pro váš cluster:`/example/jars/giraph-examples.jar`
 
-## <a name="install"></a>Nainstalovat Giraph pomocí akcí skriptů
+## <a name="install"></a>Instalace Giraph pomocí akcí skriptů
 
-Ukázkový skript do clusteru služby HDInsight nainstalovat Giraph je k dispozici v následujícím umístění:
+Vzorový skript pro instalaci Giraph v clusteru HDInsight je k dispozici v tomto umístění:
 
     https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytváření clusteru pomocí webu Azure portal.
+V této části najdete pokyny, jak použít vzorový skript při vytváření clusteru pomocí Azure Portal.
 
 > [!NOTE]  
-> Akce skriptu můžete použít některou z následujících metod:
+> Akci skriptu lze použít pomocí kterékoli z následujících metod:
 > * Azure PowerShell
-> * Azure CLI
-> * Sady HDInsight .NET SDK
+> * Rozhraní příkazového řádku Azure
+> * Sada HDInsight .NET SDK
 > * Šablony Azure Resource Manageru
 > 
-> Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
+> Můžete také použít akce skriptů pro již spuštěné clustery. Další informace najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
 
-1. Začněte s vytvářením clusteru pomocí kroků v [clusterech HDInsight založených na Linuxu vytvořit](hdinsight-hadoop-create-linux-clusters-portal.md), ale dokončí vytváření.
+1. Začněte vytvářet cluster pomocí kroků v části [Vytvoření clusterů HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md), ale neprovádějte vytváření.
 
-2. V **volitelná konfigurace** vyberte **akcí skriptů**a zadejte následující informace:
+2. V části **volitelný konfigurační** oddíl vyberte **akce skriptu**a zadejte následující informace:
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
 
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **HLAVNÍ**: Zkontrolujte tuto položku.
+   * **POZICE**: Podívejte se na tuto položku.
 
-   * **PRACOVNÍK**: Tato položka nechte nezaškrtnuté.
+   * **PRACOVNÍ PROCES**: Tuto položku nechte nezaškrtnutou.
 
-   * **ZOOKEEPER**: Tato položka nechte nezaškrtnuté.
+   * **ZOOKEEPER**: Tuto položku nechte nezaškrtnutou.
 
-   * **PARAMETRY**: Toto pole nechte prázdné.
+   * **PARAMETRY**: Ponechte toto pole prázdné.
 
-3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **vyberte** tlačítko v dolní části **volitelná konfigurace** části a uložte informace o konfiguraci volitelné.
+3. V dolní části **akcí skriptu**uložte konfiguraci pomocí tlačítka pro **Výběr** . Nakonec použijte tlačítko **Vybrat** v dolní části **volitelné konfiguračního** oddílu a uložte volitelné informace o konfiguraci.
 
-4. Pokračovat ve vytváření clusteru, jak je popsáno v [clusterech HDInsight založených na Linuxu vytvořit](hdinsight-hadoop-create-linux-clusters-portal.md).
+4. Pokračujte v vytváření clusteru, jak je popsáno v tématu [vytváření clusterů HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="usegiraph"></a>Použití Giraph v HDInsight
+## <a name="usegiraph"></a>Návody používat Giraph v HDInsight?
 
-Po vytvoření clusteru použijte následující kroky ke spuštění příkladu SimpleShortestPathsComputation součástí Giraph. Tento příklad používá na úrovni basic [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) implementace pro nalezení nejkratší cesty mezi objekty v grafu.
+Po vytvoření clusteru pomocí následujících kroků spusťte příklad SimpleShortestPathsComputation, který je součástí Giraph. Tento příklad používá základní implementaci [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) k nalezení nejkratší cesty mezi objekty v grafu.
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
 
@@ -91,7 +91,7 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Pomocí následujícího příkazu vytvořte soubor s názvem **tiny_graph.txt**:
+2. Pomocí následujícího příkazu vytvořte soubor s názvem **tiny_graph. txt**:
 
     ```bash
     nano tiny_graph.txt
@@ -107,15 +107,15 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
     [4,0,[[3,4],[2,4]]]
     ```
 
-    Tato data popisuje vztah mezi objekty v řízeném grafu ve formátu `[source_id, source_value,[[dest_id], [edge_value],...]]`. Každý řádek představuje vztah mezi `source_id` objekt a jeden nebo více `dest_id` objekty. `edge_value` Si lze představit jako sílu nebo vzdálenost připojení mezi `source_id` a `dest\_id`.
+    Tato data popisují vztah mezi objekty v řízeném grafu pomocí formátu `[source_id, source_value,[[dest_id], [edge_value],...]]`. Každý řádek představuje vztah mezi `source_id` objektem a jedním nebo více `dest_id` objekty. Lze `edge_value` si představit jako sílu nebo vzdálenost připojení mezi `source_id` a `dest\_id`.
 
-    Vleklým, a pomocí hodnoty (nebo váha) jako vzdálenosti mezi objekty, data může vypadat jako na následujícím diagramu:
+    Tato data mohou vypadat podobně jako v následujícím diagramu, přičemž se použije hodnota (nebo váhy) jako vzdálenost mezi objekty.
 
-    ![tiny_graph.txt vykreslen jako kroužky s různou vzdálenost mezi řádky](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+    ![tiny_graph. txt vykreslený jako kruhy s čarami s různou vzdáleností mezi](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph.png)
 
-3. Chcete-li uložit soubor, použijte **Ctrl + X**, pak **Y**a nakonec **Enter** tak, aby přijímal název souboru.
+3. Pokud chcete soubor uložit, použijte **kombinaci kláves CTRL + X**, pak **Y**a nakonec **Zadejte** , abyste potvrdili název souboru.
 
-4. Použijte následující postupy k uložení dat do primární úložiště pro váš cluster HDInsight:
+4. K uložení dat do primárního úložiště pro cluster HDInsight použijte následující:
 
     ```bash
     hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
@@ -127,29 +127,29 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
     yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
     ```
 
-    Parametry tohoto příkazu jsou popsány v následující tabulce:
+    Parametry používané s tímto příkazem jsou popsány v následující tabulce:
 
    | Parametr | Co dělá |
    | --- | --- |
-   | `jar` |Soubor jar obsahující příklady. |
-   | `org.apache.giraph.GiraphRunner` |Třída sloužící ke spuštění příkladů. |
-   | `org.apache.giraph.examples.SimpleShortestPathsCoputation` |V příkladu, který se používá. V tomto příkladu vrací nejkratší cesty mezi ID 1 a všechny ostatní identifikátory v grafu. |
-   | `-ca mapred.job.tracker` |Hlavní uzel clusteru. |
-   | `-vif` |Vstupní formát pro vstupní data. |
+   | `jar` |Soubor JAR obsahující příklady |
+   | `org.apache.giraph.GiraphRunner` |Třída použitá ke spuštění příkladů. |
+   | `org.apache.giraph.examples.SimpleShortestPathsCoputation` |Příklad, který je použit. V tomto příkladu vypočítá nejkratší cestu mezi ID 1 a všemi ostatními identifikátory v grafu. |
+   | `-ca mapred.job.tracker` |Hlavnímu uzlu pro cluster. |
+   | `-vif` |Vstupní formát, který se má použít pro vstupní data |
    | `-vip` |Vstupní datový soubor. |
-   | `-vof` |Výstupní formát. V tomto příkladu, ID a hodnotu jako prostý text. |
+   | `-vof` |Výstupní formát. V tomto příkladu ID a hodnota jako prostý text. |
    | `-op` |Umístění výstupu. |
-   | `-w 2` |Počet pracovních procesů, které chcete použít. V tomto příkladu 2. |
+   | `-w 2` |Počet pracovních procesů, které se mají použít. V tomto příkladu 2. |
 
-    Další informace o těchto a dalších parametrů použitých s ukázkami Giraph, najdete v článku [Giraph quickstart](https://giraph.apache.org/quick_start.html).
+    Další informace o těchto a dalších parametrech, které se používají s ukázkami Giraph, najdete v tématu [rychlý Start Giraph](https://giraph.apache.org/quick_start.html).
 
-6. Po dokončení úlohy se mají výsledky ukládat do **/example/out/shortestpaths** adresáře. Názvů výstupních souborů začínat **část-m -** a končit číslo označující první, druhý, soubor atd. Následujícím příkazem zobrazíte výstup:
+6. Po dokončení úlohy se výsledky uloží do adresáře **/example/out/shortestpaths** . Názvy výstupních souborů začínají **částí-m** a končí číslem, který označuje první, druhý atd. soubor. Výstup zobrazíte pomocí následujícího příkazu:
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*
     ```
 
-    Zobrazí výstup podobný následujícímu textu:
+    Výstup se zobrazí podobně jako následující text:
 
         0    1.0
         4    5.0
@@ -157,12 +157,12 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
         1    0.0
         3    1.0
 
-    SimpleShortestPathComputation příklad je obtížné programového začít s objektu ID 1 a nalezení nejkratší cesty na jiné objekty. Výstup je ve formátu `destination_id` a `distance`. `distance` Je hodnota (nebo váha) okraje mezi objektem ID 1 a ID cílové cesty
+    SimpleShortestPathComputation příklad je pevně zakódovaný pro začátek s ID objektu 1 a vyhledá nejkratší cestu k ostatním objektům. Výstup je ve formátu `destination_id` a. `distance` `distance` Je hodnota (nebo váha) hran, které se cestují mezi objekty s ID 1 a cílovým ID.
 
-    Vizualizace dat, můžete ověřit výsledky tak cestování nejkratší cesty mezi ID 1 a všechny ostatní objekty. Nejkratší cesty mezi ID 1 a ID 4 je 5. Tato hodnota je celkový počet vzdálenost mezi <span style="color:orange">ID 1 a 3</span>a potom <span style="color:red">ID 3 a 4</span>.
+    Vizualizace těchto dat můžete ověřit výsledky na cestách nejkratší cesty mezi ID 1 a všemi ostatními objekty. Nejkratší cesta mezi ID 1 a ID 4 je 5. Tato hodnota je celková vzdálenost mezi <span style="color:orange">ID 1 a 3</span>a pak s <span style="color:red">ID 3 a 4</span>.
 
-    ![Vykreslení objektů jako kroužky s nejkratší cesty mezi](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
+    ![Vykreslování objektů jako kruhů s nejkratšími cestami nakreslenými mezi](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph-out.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md).
+* [Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md).

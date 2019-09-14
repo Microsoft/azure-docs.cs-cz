@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876627"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961474"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Jazyková podpora obsahu znalostní báze pro QnA Maker
 
@@ -29,23 +29,15 @@ Jazyk je automaticky rozpoznán z obsahu extrahovaných zdrojů dat. Po vytvoře
 
     ![Vybrat prostředek Azure Search](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. Vyberte **Testkb** index. Tento index Azure Search je vždy první vytvořený a obsahuje uložený obsah všech znalostní báze v této službě. 
+1. Vyberte **indexy**a pak vyberte index **Testkb** . Toto je první vytvořený index Azure Search a obsahuje uložený obsah všech základů znalostí v dané službě. 
 
-    ![Vyberte test KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. Vyberte **pole** , chcete-li zobrazit pole v indexu.
 
-1. V části Výběr **polí** se zobrazí podrobnosti _Testkb_ .
-
-    ![Vybrat pole](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. Pokud chcete zobrazit podrobnosti o jazyku, zaškrtněte políčko u analyzátoru.
-
-    ![Vybrat analyzátor](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. Měli byste zjistit, že je _analyzátor_ nastavený na konkrétní jazyk. Tento jazyk byl automaticky zjištěn během kroku vytvoření znalostní báze z importovaných souborů a adres URL. Po vytvoření prostředku nelze tento jazyk změnit.
+1. `answer` Sloupec _analyzátoru_ pro pole ajenastavennakonkrétníjazyk.`questions` Tento jazyk byl automaticky zjištěn během kroku vytvoření znalostní báze z importovaných souborů a adres URL. Po vytvoření prostředku nelze tento jazyk změnit.
 
     ![Vybraný analyzátor](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření QnA robota pomocí Azure Bot Service](../Tutorials/create-qna-bot.md)

@@ -1,5 +1,5 @@
 ---
-title: Web Analytics
+title: Webové analýzy
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
@@ -8,97 +8,97 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943161"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962881"
 ---
-<a name="web-analytics"></a>Web Analytics
+<a name="web-analytics"></a>Webové analýzy
 =============
 
-Tento článek obsahuje, že jste s pokyny o tom, jak učí a používají Web Analytics pro co nejlepší rozvíjet vaše podnikání. Tato karta Insights je aktuálně dostupná pro všechny nabídky AppSource.
+V tomto článku najdete pokyny k tomu, jak se naučit a používat webové analýzy k tomu, aby co nejlépe vzrostly vaše podnikání. Tato karta Insights je aktuálně dostupná pro všechny nabídky AppSource.
 
-Teď, když jste vytvořili a publikování vaší nabídky, je další část vaší cesty ke sledování a měřit její\' úspěch. S **Web Analytics**, přidali jsme možnost zobrazit, přesně jak dobře provádí každé z nabídek na webu marketplace. Začněte svou cestu, přejděte na stránce Přehled na levé straně portál Cloud Partner zobrazit nová karta Analytics.
+Teď, když jste vytvořili a publikovali vaši nabídku, je další částí vaší cesty sledování a měření\' úspěšnosti. Díky **webovým analýzám**jsme přidali možnost přesně vidět, jak dobře vaše nabídky na webu Marketplace dělají. Pokud chcete začít svoji cestu, přejděte na stránku přehledy na levé straně portál partnerů cloudu a podívejte se na novou kartu Analytics.
 
-![WebAnalytics stránky](./media/si-getting-started/WebAnalytics1.png)
+![Stránka WebAnalytics](./media/si-getting-started/WebAnalytics1.png)
 
-Zobrazí se panel s bohatými funkcemi pro vaše ID vydavatele, která byla vytvořena pomocí Microsoft Power BI a umožní vám prohlédnout všechny svoje nabídky\' data, která se aktualizují každý den.
+Zobrazí se řídicí panel s bohatou sadou pro ID vašeho vydavatele, který je sestavený pomocí Microsoft Power BI, a umožňuje zobrazit každou z\' vašich nabídek data, která se denně aktualizují.
 
-<a name="microsoft-campaigns"></a>**Microsoft Campaigns**
+<a name="microsoft-campaigns"></a>**Kampaně Microsoftu**
 -----------------------
 
-Abyste mohli rozvíjet vaše nabídky a sledovat růstu vaší nabídky, zavedli jsme možnost používat **kampaně Microsoftu** na portál partnerů cloudu. Kampaní jsou nově podporované funkce pro web marketplace, které vám umožní si můžete sledovat různé kanály, které odesílají zákazníky na stránce s podrobnostmi o vaší aplikaci.
+Abychom mohli rozšířit vaše nabídky a sledovat růst vašich nabídek, povolili jsme možnost používat na portál partnerů cloudu **kampaně Microsoftu** . Kampaně jsou nově podporovanou funkcí pro Marketplace, která vám umožní sledovat různé kanály, které odesílají zákazníky na stránku s podrobnostmi o vaší aplikaci.
 
-### <a name="how-to-make-a-campaign"></a>**Jak je nechat kampaně**
+### <a name="how-to-make-a-campaign"></a>**Postup vytvoření kampaně**
 
-Nejjednodušší způsob, jak popisují kampaní je, že přidáte vlastní slovo nebo termín k adrese URL, které jsou na stránce podrobností aplikace na webu Marketplace. Google, Bing, LinkedIn a řadu dalších lokalit doporučujeme vytvářet reklamy, propojení z jejich webu do požadovaného webu.
+Nejjednodušší způsob, jak popsat kampaně, je přidání vlastního slova nebo termínu na adresu URL, které se nachází na stránce s podrobnostmi o vaší aplikaci na webu Marketplace. Google, Bing, LinkedIn a spousta dalších webů vám pomůžete vytvořit inzerci a propojit z jejich webu s požadovaným webem.
 
-Obecně platí pomáhá zákazníkům nové jednotky do produktu se tyto aktivity dál rozšiřuji a je nutné měřit její úspěšnost. jak je to všech kanálů. Je to, odkud pochází kampaní.
+Obecně platí, že tyto snahy vám pomůžou s tím, že vám budou pomáhat s novým zákazníkům na váš produkt a je důležité změřit úspěšnost jednotlivých kanálů. Tady jsou kampaně.
 
-Existují dva způsoby, jak generovat vlastní kampaně.
+Existují dva způsoby, jak vytvořit vlastní kampaň.
 
-1. Přidat parametr dotazu k adrese URL **mktcmpid** , který popisuje, co je kampaně a jaké stránky nebo události tito zákazníci přicházející ze zařízení.
+1. Do adresy URL přidejte parametr dotazu **mktcmpid** , který popisuje, co je kampaň a na jakou stránku nebo událost pocházejí.
 
-Například můžete použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Rozšířené): Použijte jednu z našich podporovaných, obecný kampaně ID v adrese URL. Chceme narážely s další ref značky, které je třeba použít, aby podporujeme konvence automaticky rozpoznat tyto další značky:
+1. (Rozšířené): V adrese URL použijte jedno z našich podporovaných ID obecných kampaní. Chceme se dopracovat s dalšími značkami ref, které potřebujete použít, Proto podporujeme konvenci pro automatické rozpoznávání těchto dalších značek:
     
-    1. **UTM\_kampaně**
-    2. **UTM\_zdroje**
-    3. **ref**
+    1. **UTM\_kampaň**
+    2. **UTM\_zdroj**
+    3. **odkazů**
     4. **src**
 
-Například můžete použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
-Můžete mít kombinaci více těchto ID kampaně dále určit více zdrojů řízení provozu u kampaně, jako je například zákazník, odkud (e-mailu, blogu, zdroje sociálních médií, atd.).
+Můžete si vybrat, že budete mít kombinaci několika těchto ID kampaně k dalšímu určení více zdrojů provozního provozu pro kampaň, jako je například místo, odkud zákazník pochází (e-mail, blog, zdroj sociálních médií atd.).
 
 Příklad:
 
-1. Bulletin odkazující server:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. Odkazující server LinkedIn:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Odkazující na Bulletin:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. Odkazující na LinkedIn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
-### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zajistit, že kampaně předávání všech stránek**
+### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zajištění toho, aby kampaně prošly všemi vašimi stránkami**
 
-Můžou existovat scénáře, kdy vaše kampaně mají zprostředkující stránku, která řídí provoz, který pak pokračuje k odeslání zákazníků na webu Marketplace. Je důležité předávání kampaň počáteční ID do konečná adresa URL, která posíláte na webu Marketplace.
+Může se jednat o scénář, ve kterém vaše kampaně mají zprostředkující stránku, na kterou právě nasazujete provoz, aby se zákazníci mohli na webu Marketplace odeslat. Počáteční ID kampaně je důležité předat do konečné adresy URL, kterou odešlete na web Marketplace.
 
 Zde naleznete příklad:
 
-1. Marketing zaměstnance nakoupí služby Active Directory z Googlu přesměrovat provoz na společnost\'s cílovou stránkou <https://contoso.com>. Cílová stránka má \"zkuste produkt\" odkaz na <https://appsource.com>.
-2. Uživatel klikne na ad a jsou ve své společnosti\'s cílovou stránkou.
-    1.  Adresa URL referenčního seznamu = google.com
-    2.  Adresa URL cílové stránky = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Uživatel klikne \"zkuste produkt\" propojit a přejde do AppSource.
-    1. Adresa URL referenčního seznamu =  <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Adresa URL cílové stránky (**zajistěte, aby tuto adresu URL utm\_kampaně a utm\_přidán na tuto adresu URL zdroje**) = [ https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername? **utm\_ kampaně = MyCampaignAdName & utm\_ zdroje = MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+1. Zaměstnanci marketingu koupí reklamy z Google na provoz na cílové stránce\' <https://contoso.com>společnosti. Tato cílová stránka obsahuje \"odkaz na svůj produkt\" , na <https://appsource.com>který odkazuje.
+2. Uživatel klikne na reklamu a rozmístění na\'svou cílovou stránku společnosti.
+    1.  Adresa URL odkazu = google.com
+    2.  Adresa URL cílové stránky =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Uživatel klikne na \"odkaz vyzkoušet můj\" produkt a přejde do AppSource.
+    1. Adresa URL odkazu =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Adresa URL cílové stránky (**Ujistěte se, že tato\_adresa URL má\_utmou kampaň a zdroj UTM do této adresy URL**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **\_ UTM\_ kampaň = MyCampaignAdName & UTM source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
-<a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak vyhodnotit úspěšnosti kampaně
+<a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak vyhodnotit úspěch kampaně
 -----------------------------------------
 
-### <a name="page-visits-by-campaign"></a>**Stránka počty návštěv podle kampaně**
+### <a name="page-visits-by-campaign"></a>**Návštěvy stránky podle kampaně**
 
 ![WebAnalytics2](./media/si-getting-started/WebAnalytics2.png)
 
-Toto je rozpis jednotlivých váš denní návštěv stránky podle kampaně, které pocházejí.
+Toto je rozpis každé z každodenních návštěv na stránce kampaně, ze kterých pochází.
 
-### <a name="conversion-rate-by-campaign"></a>**Konverzní poměr kampaní**
+### <a name="conversion-rate-by-campaign"></a>**Konverzní poměr podle kampaně**
 
 ![WebAnalytics3](./media/si-getting-started/WebAnalytics3.png)
 
-Podobně jako ukážeme, jak konverzní poměr celý nabídky, v tomto grafu můžete zobrazit rozpis jak pracují různé kampaní. Tento graf by měl pomoci identifikovat, odkud jsou vyšší míra kampaní převodu.
+Podobně jako u zobrazení míry převodu celé nabídky můžete v tomto grafu zobrazit rozpis toho, jak vaše různé kampaně dělají. Tento graf by vám měl přispět k tomu, abyste určili, odkud vaše služby pro převod z vyšších sazeb přicházejí.
 
 ### <a name="distribution-by-campaign"></a>**Distribuce podle kampaně**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Podobně jako u podíváme, jak domén vašich zákazníků, tento graf vám umožní vidět rozdělení dat na kampaň, která uživatelé přicházejí na webu Marketplace v části. \_NoCampaign znamená, že zákazník neměl kampaně ID v adrese url při jejich přejde na webu marketplace.
+Podobně jako v tom, jak se podíváme na domény zákazníků, vám tento graf umožní zobrazit distribuci vašich dat na kampaň, kterou uživatelé přijdou na Marketplace v části. \_Nekampaň znamená, že zákazník neměl při přechodu na web Marketplace v adrese URL ID kampaně.
 
 <a name="next-steps"></a>**Další kroky**
 --------------
 
-Teď, když budete mít možnost sledovat úspěch vaší nabídky, chceme vám doporučujeme vytvářet vlastní kampaně.
+Teď, když máte možnost sledovat úspěch vašich nabídek, chceme vám povzbudit, abyste si mohli vytvořit vlastní kampaně.
 
-Pokud máte dotazy nebo požadavky, můžete je sdílejte prostřednictvím zpětnou vazbu, nachází v pravém horním rohu.
+Pokud máte dotazy nebo požadavky na funkce, sdílejte je prostřednictvím zpětné vazby, která se nachází v pravém horním rohu.
 
-![Zpětnou vazbu v portál Cloud Partner](./media/si-getting-started/WebAnalytics5.png)
+![Zpětná vazba v portál partnerů cloudu](./media/si-getting-started/WebAnalytics5.png)

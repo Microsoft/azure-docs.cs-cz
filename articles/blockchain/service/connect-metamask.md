@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 5b46c5b2e8f613d351442fdf3c8ae5ee2198f2da
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933989"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966547"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý start: Připojení a nasazení inteligentního kontraktu pomocí MetaMask
 
@@ -62,20 +62,13 @@ Pro připojení k síti blockchain potřebujete adresu koncového bodu služby A
 Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a Remix společně můžete nasadit a provádět akce s inteligentními kontrakty.
 
 1. V prohlížeči přejděte na adresu `https://remix.ethereum.org`.
-1. Vyberte **Run** (Spustit). 
-
-    MetaMask nastaví **prostředí** pro **vložení Web3** a **účtu** do vaší sítě.
-
-    ![Karta spustit](./media/connect-metamask/injected-web3.png)
-
-1. Vyberte **vytvořit nový soubor**.
+1. Na kartě **Domů** v části **soubor**vyberte **nový soubor** .
 
     Pojmenujte nový `simple.sol`soubor.
 
     ![Vytvořit soubor](./media/connect-metamask/create-file.png)
 
     Vyberte **OK**.
-
 1. V editoru Remix vložte do následujícího **jednoduchého kódu inteligentního kontraktu** .
 
     ```solidity
@@ -99,14 +92,18 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
     ```
 
     **Jednoduchá smlouva** deklaruje stavovou proměnnou s názvem **Zůstatek**. Jsou definovány dvě funkce. Funkce **Add** přidá číslo k **vyvážení**. Funkce **Get** vrátí hodnotu **zůstatku**.
-
-1. Chcete-li zkompilovat kontrakt, vyberte **kompilovat > začněte kompilovat**. V případě úspěchu se zobrazí zelený rámeček s názvem kontraktu.
+1. Chcete-li zkompilovat kontrakt, nejprve vyberte podokno kompilátor nehustoty a pak vyberte možnost **zkompilovat jednoduchý. Sol**. 
 
     ![Kompilace](./media/connect-metamask/compile.png)
 
-1. Chcete-li provést kontrakt, vyberte kartu **Spustit** . Vyberte **jednoduchý** kontrakt a pak **nasazení**.
+1. Vyberte podokno **nasazení & spuštění** a pak nastavte **prostředí** na **vložené Web3** pro připojení prostřednictvím MetaMask k vašemu členovi blockchain.
 
-    ![Vlastní RPC](./media/connect-metamask/deploy.png)
+    ![Karta spustit](./media/connect-metamask/injected-web3.png)
+
+1. Vyberte **jednoduchý** kontrakt a pak **nasazení**.
+
+    ![Nasazení](./media/connect-metamask/deploy.png)
+
 
 1. Zobrazí se upozornění MetaMask s nedostatečnými prostředky k provedení transakce.
 
@@ -125,13 +122,13 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 
     Existují dvě akce **Přidat** a **získat** tuto mapu do funkcí definovaných ve smlouvě.
 
-1. Chcete-li provést transakci **Přidání** na blockchain, zadejte číslo, které chcete přidat, a pak vyberte **Přidat**.
+1. Chcete-li provést transakci **Přidání** na blockchain, zadejte číslo, které chcete přidat, a pak vyberte **Přidat**. Může se zobrazit zpráva o selhání odhadu plynu z Remix. Transakci posíláte do privátního blockchain, který nevyžaduje plyn. Vyberte **Odeslat transakci** pro vynucení transakce.
 1. Podobně jako při nasazení kontraktu se zobrazí oznámení MetaMask upozorňující na nedostatečné prostředky k provedení transakce.
 
     Vzhledem k tomu, že se jedná o soukromou síť v konsorciu, můžeme nastavit cenu za plyn na nulu.
 
 1.  Vyberte **poplatek za plyn > upravit > Upřesnit**, nastavte **cenu plynu** na 0 a vyberte **Uložit**.
-1. Vyberte **Potvrdit** a proveďte transakci na blockchain.
+1. Vyberte **Potvrdit** a odešlete transakci do blockchain.
 1. Vyberte **získat** akci. Toto je volání pro dotazování na data uzlu. Transakce není potřebná.
 1. V podokně ladění Remix můžete zobrazit podrobnosti o transakcích na blockchain.
 
@@ -142,7 +139,7 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 1. Historii transakcí můžete zobrazit také v MetaMask. Otevřete rozšíření prohlížeče MetaMask.
 1. V části **Historie** vidíte protokol nasazených kontraktů a transakcí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste použili rozšíření prohlížeče MetaMask pro připojení k uzlu transakce služby Azure blockchain, nasazení inteligentní smlouvy a odeslání transakce do blockchain. Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem a Truffle k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
 

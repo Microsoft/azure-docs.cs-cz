@@ -1,7 +1,7 @@
 ---
-title: Metriky protokolu během školicích běhů
+title: Experimenty protokolu ML & metriky
 titleSuffix: Azure Machine Learning service
-description: Můžete sledovat experimenty a monitorovat metriky a zlepšit tak proces vytváření modelů. Naučte se, jak přidat protokolování do školicího skriptu, jak odeslat experiment, jak kontrolovat průběh spuštěné úlohy a jak zobrazit zaznamenané výsledky spuštění.
+description: Sledujte experimenty Azure ML a sledujte metriky spuštění, abyste vylepšili proces vytváření modelů. Přidání protokolování do školicího skriptu a zobrazení protokolovaných výsledků spuštění.  Použijte run. log, spusťte. start_logging nebo ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858716"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959947"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Sledování metrik školení pro Machine Learning pomocí Azure Machine Learning
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 
-Vylepšete proces vytváření modelů sledováním experimentů a metrik monitorování. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, odeslat experiment, monitorovat a zkontrolovat výsledky ve službě Azure Machine Learning.
+Vylepšete proces vytváření modelů sledováním experimentů a monitorováním metrik spuštění. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, odeslat experiment, monitorovat a zkontrolovat výsledky ve službě Azure Machine Learning.
 
 > [!NOTE]
 > Služba Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je automatické spuštění strojového učení nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.

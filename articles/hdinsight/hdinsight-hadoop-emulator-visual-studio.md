@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9fba32c9c21faa6e02c8b48b3907ab67e47036d5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885516"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962312"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks
 
@@ -41,7 +41,7 @@ Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujt
 
 2. Z **Průzkumník serveru**klikněte pravým tlačítkem na položku **HDInsight** a pak vyberte **připojit k emulátoru HDInsight**.
 
-    ![Snímek obrazovky Průzkumník serveru se zvýrazněnou možností připojit k emulátoru HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![Snímek obrazovky Průzkumník serveru se zvýrazněnou možností připojit k emulátoru HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. V dialogovém okně **připojit k emulátoru HDInsight** zadejte heslo, které jste nakonfigurovali pro Ambari.
 
@@ -51,19 +51,19 @@ Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujt
 
 4. Pomocí pole **heslo** zadejte heslo, které jste nakonfigurovali pro `root` účet. U ostatních polí ponechte výchozí hodnotu.
 
-    ![Snímek obrazovky dialogového okna se zvýrazněným textovým polem pro kořenové heslo](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Snímek obrazovky dialogového okna se zvýrazněným textovým polem pro kořenové heslo](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
     Pokračujte výběrem tlačítka **Next** (Další).
 
 5. Počkejte, až se dokončí ověřování služeb. V některých případech se může stát, že se ověření nezdaří a zobrazí se výzva k aktualizaci konfigurace. Pokud se ověření nepovede, vyberte **aktualizovat**a počkejte na dokončení konfigurace a ověření služby.
 
-    ![Snímek obrazovky dialogového okna se zvýrazněným tlačítkem aktualizovat](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![Snímek obrazovky dialogového okna se zvýrazněným tlačítkem aktualizovat](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update-window.png)
 
     > [!NOTE]  
     > Proces aktualizace používá Ambari ke změně konfigurace izolovaného prostoru Hortonworks na to, co se očekává pomocí nástrojů Data Lake Tools for Visual Studio.
 
 6. Po dokončení ověření vyberte **Dokončit** a dokončete konfiguraci.
-    ![Snímek obrazovky dialogového okna s zvýrazněným tlačítkem Dokončit](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+    ![Snímek obrazovky dialogového okna s zvýrazněným tlačítkem Dokončit](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > V závislosti na rychlosti vývojového prostředí a množství paměti přidělené virtuálnímu počítači může trvat několik minut, než se nakonfiguruje a ověří služby.
@@ -76,7 +76,7 @@ Podregistr poskytuje dotazovací jazyk HiveQL (SQL like) pro práci se strukturo
 
 1. V **Průzkumník serveru**klikněte pravým tlačítkem myši na položku pro místní cluster, který jste dříve přidali, a pak vyberte **zapsat dotaz na podregistr**.
 
-    ![Snímek obrazovky Průzkumník serveru se zvýrazněným zápisem dotazu na podregistr](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![Snímek obrazovky Průzkumník serveru se zvýrazněným zápisem dotazu na podregistr](./media/hdinsight-hadoop-emulator-visual-studio/write-apache-hive-query.png)
 
     Zobrazí se nové okno dotazu. Tady můžete rychle napsat a odeslat dotaz do místního clusteru.
 
@@ -86,15 +86,15 @@ Podregistr poskytuje dotazovací jazyk HiveQL (SQL like) pro práci se strukturo
 
     Chcete-li spustit dotaz, vyberte v horní části okna možnost **Odeslat** . Ostatní hodnoty (název**Batch** a Server) ponechte na výchozích hodnotách.
 
-    ![Snímek obrazovky s oknem dotazů s zvýrazněným tlačítkem Odeslat](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![Snímek obrazovky s oknem dotazů s zvýrazněným tlačítkem Odeslat](./media/hdinsight-hadoop-emulator-visual-studio/query-window-submit-hive.png)
 
     Můžete také použít rozevírací nabídku vedle možnosti **Odeslat** a vybrat **Upřesnit**. Rozšířené možnosti umožňují při odeslání úlohy zadat další možnosti.
 
-    ![Snímek obrazovky s podoknem pro odeslání skriptu dialog box](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![Snímek obrazovky s podoknem pro odeslání skriptu dialog box](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
 
 3. Po odeslání dotazu se zobrazí stav úlohy. Stav úlohy zobrazuje informace o úloze, která se zpracovává pomocí Hadoop. Stav **úlohy** poskytuje stav úlohy. Stav se pravidelně aktualizuje nebo můžete ručně aktualizovat stav pomocí ikony aktualizovat.
 
-    ![Snímek obrazovky s dialogovým oknem zobrazení úlohy se zvýrazněným stavem úlohy](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![Snímek obrazovky s dialogovým oknem zobrazení úlohy se zvýrazněným stavem úlohy](./media/hdinsight-hadoop-emulator-visual-studio/job-view-dialog-box1.png)
 
     Jakmile se **stav úlohy** změní na **dokončený**, zobrazí se SMĚROVANÝ acyklického graf (DAG). Tento diagram popisuje cestu spuštění, která byla určena nástrojem tez při zpracování dotazu na podregistr. Tez je výchozí spouštěcí modul pro podregistr v místním clusteru.
 
@@ -105,14 +105,14 @@ Podregistr poskytuje dotazovací jazyk HiveQL (SQL like) pro práci se strukturo
 
 4. Úlohy podregistru můžete také spustit interaktivně tím, že změníte pole **Batch** na **interaktivní**. Pak vyberte **provést**.
 
-    ![Snímek obrazovky s zvýrazněnými tlačítky pro interaktivní a spouštěné](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
+    ![Snímek obrazovky s zvýrazněnými tlačítky pro interaktivní a spouštěné](./media/hdinsight-hadoop-emulator-visual-studio/hdi-interactive-query.png)
 
     Interaktivní dotaz streamuje výstupní protokol generovaný během zpracování do okna **výstupu HiveServer2** .
 
     > [!NOTE]  
     > Tyto informace jsou stejné, jaké jsou k dispozici v odkazu **protokolu úlohy** po dokončení úlohy.
 
-    ![Snímek obrazovky s výstupním protokolem](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    ![Snímek obrazovky s výstupním protokolem](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Vytvoření projektu podregistru
 
@@ -122,7 +122,7 @@ Můžete také vytvořit projekt, který obsahuje více skriptů podregistru. Po
 
 2. V seznamu projektů rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **podregistr (HDInsight)** . V seznamu šablon vyberte možnost **Ukázka podregistru**. Zadejte název a umístění a pak vyberte **OK**.
 
-    ![Snímek obrazovky s novým projektem s Azure Data Lake, podregistrem, ukázkou podregistru a zvýrazněnou možností OK](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![Snímek obrazovky s novým projektem s Azure Data Lake, podregistrem, ukázkou podregistru a zvýrazněnou možností OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Ukázkový projekt podregistru** obsahuje dva skripty: **WebLogAnalysis. HQL** a **SensorDataAnalysis. HQL**. Tyto skripty můžete odeslat pomocí stejného tlačítka pro **odeslání** v horní části okna.
 
@@ -132,7 +132,7 @@ I když podregistr poskytuje jazyk podobný jazyku SQL pro práci se strukturova
 
 1. Otevřete Visual Studio a vyberte **soubor**, **Nový**a pak **projekt**. V seznamu projektů rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **prase (HDInsight)** . V seznamu šablon vyberte možnost **aplikace prasete**. Zadejte název, umístění a pak vyberte **OK**.
 
-    ![Snímek obrazovky s novým projektem s Azure Data Lake, vepřovým prasetem, aplikací pro vepřové prase a zvýrazněnou možností OK](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![Snímek obrazovky s novým projektem s Azure Data Lake, vepřovým prasetem, aplikací pro vepřové prase a zvýrazněnou možností OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
 
 2. Jako obsah souboru **skriptu. prase** , který byl vytvořen pomocí tohoto projektu, zadejte následující text.
 
@@ -149,11 +149,11 @@ I když podregistr poskytuje jazyk podobný jazyku SQL pro práci se strukturova
 
     I když prase používá jiný jazyk než podregistr, jak spouštění úloh je konzistentní mezi oběma jazyky, a to prostřednictvím tlačítka **Odeslat** . Po výběru rozevíracího seznamu vedle položky **Odeslat** se zobrazí dialogové okno pro zobrazení pro prase s rozšířeným odesláním.
 
-    ![Snímek obrazovky s dialogovým oknem pro odeslání skriptu pro vepřové okno](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![Snímek obrazovky s dialogovým oknem pro odeslání skriptu pro vepřové okno](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
 
 3. Zobrazí se také stav a výstup úlohy, stejně jako dotaz na podregistr.
 
-    ![Snímek obrazovky dokončené úlohy prasete](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![Snímek obrazovky dokončené úlohy prasete](./media/hdinsight-hadoop-emulator-visual-studio/completed-apache-pig.png)
 
 ## <a name="view-jobs"></a>Zobrazit úlohy
 
@@ -161,11 +161,11 @@ Nástroje Data Lake také umožňují snadno zobrazit informace o úlohách, kte
 
 1. Z **Průzkumník serveru**klikněte pravým tlačítkem myši na místní cluster a pak vyberte **Zobrazit úlohy**. Zobrazí se seznam úloh, které byly odeslány do clusteru.
 
-    ![Snímek obrazovky Průzkumník serveru se zvýrazněnými zobrazeními úloh](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![Snímek obrazovky Průzkumník serveru se zvýrazněnými zobrazeními úloh](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-view-jobs.png)
 
 2. V seznamu úloh vyberte jednu pro zobrazení podrobností o úloze.
 
-    ![Snímek obrazovky prohlížeče úloh s jednou zvýrazněnou úlohou](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![Snímek obrazovky prohlížeče úloh s jednou zvýrazněnou úlohou](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-job-details.png)
 
     Zobrazené informace se podobají tomu, co vidíte po spuštění dotazů na podregistr nebo na základě vepřového dotazu, včetně odkazů na zobrazení výstupů a informací o protokolu.
 
@@ -175,11 +175,11 @@ Nástroje Data Lake také umožňují snadno zobrazit informace o úlohách, kte
 
 1. V **Průzkumník serveru**rozbalte položku **místní cluster HDInsight** a potom rozbalte možnost **databáze podregistru**. Zobrazí se **výchozí** databáze a databáze **xademo** v místním clusteru. Rozbalením databáze se zobrazí tabulky v databázi.
 
-    ![Snímek obrazovky Průzkumník serveru s rozbalenými databázemi](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![Snímek obrazovky Průzkumník serveru s rozbalenými databázemi](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases-view.png)
 
 2. Rozbalením tabulky se zobrazí sloupce pro tuto tabulku. Data můžete rychle zobrazit tak, že kliknete pravým tlačítkem na tabulku a vyberete **Zobrazit prvních 100 řádků**.
 
-    ![Snímek obrazovky Průzkumník serveru s vybranými tabulkami rozbalenými a zobrazenými horními 100 řádky](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![Snímek obrazovky Průzkumník serveru s vybranými tabulkami rozbalenými a zobrazenými horními 100 řádky](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Vlastnosti databáze a tabulky
 
@@ -191,11 +191,11 @@ Můžete zobrazit vlastnosti databáze nebo tabulky. Výběr **vlastností** zob
 
 Tabulku vytvoříte tak, že kliknete pravým tlačítkem na databázi a pak vyberete **vytvořit tabulku**.
 
-![Snímek obrazovky Průzkumník serveru s zvýrazněnou možností vytvořit tabulku](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![Snímek obrazovky Průzkumník serveru s zvýrazněnou možností vytvořit tabulku](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-create-table.png)
 
 Tabulku pak můžete vytvořit pomocí formuláře. V dolní části následujícího snímku obrazovky vidíte nezpracovaná HiveQL, která se používá k vytvoření tabulky.
 
-![Snímek obrazovky formuláře použitého k vytvoření tabulky](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![Snímek obrazovky formuláře použitého k vytvoření tabulky](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form-box.png)
 
 ## <a name="next-steps"></a>Další postup
 

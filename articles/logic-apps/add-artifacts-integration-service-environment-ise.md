@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517654"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967239"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání artefaktů do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
-Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte artefakty, jako jsou Logic Apps, integrační účty a vlastní konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network.
+Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte artefakty, jako jsou Logic Apps, integrační účty a konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +28,7 @@ Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>Vytváření aplikací logiky v ISE
+## <a name="create-logic-apps"></a>Vytváření aplikací logiky
 
 Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí ISE (Integration Service Environment), postupujte podle následujících kroků:
 
@@ -57,7 +57,7 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Vytváření účtů pro integraci v ISE
+## <a name="create-integration-accounts"></a>Vytváření účtů pro integraci
 
 V závislosti na [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) vybrané při vytváření vaše ISE zahrnuje konkrétní využití účtu pro integraci bez dalších nákladů. Logic Apps, které existují v prostředí ISE (Integration Service Environment), můžou odkazovat jenom na účty pro integraci, které existují ve stejném ISE. Aby mohl účet pro integraci spolupracovat s Logic Apps v ISE, musí účet pro integraci i aplikace logiky používat *stejné prostředí* jako jejich umístění. Další informace o integračních účtech a ISEs najdete v [tématu účty pro integraci](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )s ISE.
@@ -84,9 +84,25 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
 1. Pokud chcete spravovat účty pro integraci v ISE, přečtěte si téma [Správa prostředí integrační služby](../logic-apps/ise-manage-integration-service-environment.md).
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>Přidat konektory ISE
+
+Můžete přidat konektory spravované Microsoftem, které jsou k dispozici pro použití ve vašem ISE, ale nejsou nasazeny ve vašich ISE.
+
+1. V nabídce ISE v části **Nastavení**vyberte **spravované konektory**. Na panelu nástrojů vyberte **Přidat**.
+
+   ![Zobrazit spravované konektory](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. V podokně **Přidat nový spravovaný konektor** otevřete seznam **najít konektor** . Pokud je požadovaný konektor k dispozici, vyberte tento konektor a pak vyberte **vytvořit**.
+
+   V seznamu se zobrazují jenom konektory, které mají nárok, ale nejsou nasazené v ISE. Konektory, které jsou už nasazené ve vašem ISE, nejsou dostupné pro výběr.
+
+   ![Vybrat způsobilý konektor](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>Vytváření vlastních konektorů v ISE
+## <a name="create-custom-connectors"></a>Vytváření vlastních konektorů
 
 Pokud chcete používat vlastní konektory v ISE, vytvářejte tyto vlastní konektory přímo v rámci vaší ISE.
 

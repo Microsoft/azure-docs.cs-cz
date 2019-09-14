@@ -9,14 +9,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095276"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958794"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
 
@@ -48,7 +48,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Název účtu Batch, ke kterému úkol patří                  | Všechny úlohy.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adresa URL účtu Batch. | Všechny úlohy. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Předpona všech proměnných prostředí balíčku aplikace. Například pokud je aplikace "foo" verze "1" nainstalována do fondu, je proměnná prostředí AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 odkazuje na umístění, do kterého se balíček stáhl (složka). | Libovolný úkol s přidruženým balíčkem aplikace. K dispozici také pro všechny úlohy, pokud uzel obsahuje balíčky aplikací. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Předpona všech proměnných prostředí balíčku aplikace. Například pokud je aplikace "foo" verze "1" nainstalována do fondu, je proměnná prostředí AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 odkazuje na umístění, do kterého se balíček stáhl (složka). Při použití výchozí verze balíčku aplikace použijte proměnnou prostředí AZ_BATCH_APP_PACKAGE bez čísel verzí. | Libovolný úkol s přidruženým balíčkem aplikace. K dispozici také pro všechny úlohy, pokud uzel obsahuje balíčky aplikací. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Ověřovací token, který uděluje přístup k omezené sadě operací služby Batch. Tato proměnná prostředí je přítomna pouze v případě, že je [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) nastavena při [Přidání úkolu](/rest/api/batchservice/task/add#request-body). Hodnota tokenu se používá v rozhraních API dávky jako přihlašovací údaje k vytvoření klienta Batch, jako je například v rozhraní [.NET API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Všechny úlohy. | Přístupový token OAuth2 |
 | AZ_BATCH_CERTIFICATES_DIR       | Adresář v [pracovním adresáři úkolu][files_dirs] , ve kterém jsou uloženy certifikáty pro výpočetní uzly Linux. Tato proměnná prostředí se nevztahuje na výpočetní uzly Windows.                                                  | Všechny úlohy.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | Seznam uzlů, které jsou přiděleny úloze s [více instancemi][multi_instance] ve formátu `nodeIP,nodeIP`. | Primární a dílčí úkoly s více instancemi. | `10.0.0.4,10.0.0.5` |

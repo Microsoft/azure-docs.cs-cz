@@ -17,12 +17,12 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129806"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983507"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -30,7 +30,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 - **Aktivita** 
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - Protokoly auditu protokoly auditu poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.[](concept-audit-logs.md)  - 
+    - **Protokoly auditu protokoly**auditu poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.[](concept-audit-logs.md)  - 
     - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
 
 - **Zabezpečení** 
@@ -50,7 +50,7 @@ Toto téma vám poskytne přehled o zřizovacích sestavách.
 
 Aby se váš tenant mohl podívat na veškerou sestavu aktivity zřizování, musí mít přidruženou licenci Azure AD Premium. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . 
 
-## <a name="provisioning-logs"></a>Zřizování protokolů
+## <a name="provisioning-logs"></a>Protokoly zřizování
 
 Protokoly zřizování poskytují odpovědi na následující otázky:
 
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/detailed-information.png "Podrobné informace")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování

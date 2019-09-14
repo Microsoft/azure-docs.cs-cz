@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935343"
+ms.locfileid: "70959003"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -264,6 +264,7 @@ Správa místních přihlašovacích údajů se liší v závislosti na distribu
 1. Otevřete nástroj pro správu místních přihlašovacích údajů, najděte uložené přihlašovací údaje.
 2. Vyhledejte položky s klíčem `<connection_type_key>/<corrupted_connection_name>` ( `StorageExplorer_CustomConnections_Accounts_v1/account1`například).
 3. Odstraňte tyto položky a přidejte připojení zpátky.
+---
 
 Pokud k této chybě dochází i po provedení těchto kroků, nebo pokud byste chtěli sdílet, co si myslíte, že jsou připojení poškozená, [otevřete problém](https://github.com/microsoft/AzureStorageExplorer/issues) na naší stránce GitHubu.
 
@@ -365,7 +366,7 @@ Pokud na Azure Portal nefunguje tlačítko otevřít v Průzkumníkovi, ujistět
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud žádná z řešení nefunguje za vás, [otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues). K GitHubu se můžete také rychle dostat pomocí tlačítka "nahlásit problém do GitHubu" v levém dolním rohu.
 

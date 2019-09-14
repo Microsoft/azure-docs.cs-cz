@@ -1,71 +1,71 @@
 ---
-title: Azure Marketplace a AppSource Průvodce publikováním
-description: Přehled webu Azure Marketplace a Microsoft AppSource pro vydavatele aplikace a služby.
+title: Příručka pro publikování Azure Marketplace a AppSource
+description: Přehled Azure Marketplace a Microsoft AppSource pro vydavatele aplikací a služeb.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956742"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962609"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
+# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Příručka pro publikování Azure Marketplace a AppSource
 
-Průvodce publikováním na webu Marketplace je určen pro nové a stávající vydavatelé Další informace o použití prodejních míst v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) k rozvoji podnikání v partnerství u Microsoftu nejpozději do aplikací a služeb.
+Příručka pro publikování na Marketplace je navržená tak, aby pomáhala novým a stávajícím vydavatelům Naučte se používat prodejní místa v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) k rozvoji jejich podnikání ve spolupráci s Microsoftem prostřednictvím výpisu aplikací a orgány.
 
 >[!Note]
->Na webu Marketplace odkazuje na Azure Marketplace a AppSource.  Zobrazit [Marketplace jeden, dva prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) Další informace.
+>Marketplace tady odkazuje jak na Azure Marketplace, tak i na AppSource.  Další informace najdete [na jednom webu prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
 
-Tato příručka obsahuje následující témata: 
-*   Co je na webu Marketplace a jak to funguje 
-*   Rozdíl mezi Azure Marketplace a AppSource prodejních míst 
-*   Výhody účasti na webu Marketplace 
-*   Jak se stát vydavatelem a seznamu vaše aplikace nebo služba 
-*   Jak rozvíjet vaše podnikání 
+Tato příručka se zabývá následujícími tématy: 
+*   Co je Marketplace a jak to funguje 
+*   Rozdíl mezi Azure Marketplace a AppSource prodejní místa 
+*   Výhody účasti na Marketplace 
+*   Jak se stát vydavatelem a seznamem vaší aplikace nebo služby 
+*   Jak rozšířit vaši firmu 
 
-Tato příručka obsahuje technické a podnikové informace o krocích, které musíte provést před seznam aplikací a služeb. Přejít na jiné části v průvodci a přejít přímo k hlavním tématům, použijte obsah.
+Tato příručka obsahuje technickou i firemní informace o krocích, které je třeba provést před uvedením svých aplikací a služeb. Pomocí obsahu můžete přejít k různým částem příručky a přejít přímo ke klíčovým tématům.
 
-Dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v rámci **typ problému** > **Marketplace připojování**.  Náš Onboardingový tým vydavatele Marketplace rádi pomohou! 
+Pokud máte dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v části **typ** > problému**připojování Marketplace**.  Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže! 
 
-## <a name="benefits-of-participating-in-the-marketplace"></a>Výhody účasti na webu Marketplace 
+## <a name="benefits-of-participating-in-the-marketplace"></a>Výhody účasti na Marketplace 
 
-Na webu Marketplace je launchpadu pro společné aktivity uvedení na trh s Microsoftem, který vám pomůže posílit firemní růst. Pomocí spuštění povýšení, generování poptávky a společný prodej a marketing nabídky na webu Marketplace může být základem vašeho cloudového byznysu. Neexistují žádné poplatky za účast na webu Marketplace.
+Marketplace je panel pro spuštění pro společné aktivity pro uvedení na trh s Microsoftem, které vám pomůžou zrychlit váš obchodní růst. Vaše nabídky na webu Marketplace můžou být centerpieceem vašeho cloudového obchodního modulu pomocí spuštění povýšení, generace poptávky a společného prodeje a marketingu. Pro účast na webu Marketplace se neúčtují žádné poplatky.
 
-Naším cílem je nejvhodnější řešení, které nabízí náš partnerský ekosystém připojení zákazníků společnosti Microsoft. K tomuto účelu jsme vám podporu v celé vaší cesty, od onboarding k publikování a růstu. 
+Naším cílem je propojit zákazníky Microsoftu s nejlepšími řešeními, která nabízí náš partnerský ekosystém. Abychom to mohli udělat, podporujeme vám celou cestu, od zprovoznění po publikování a rozšiřování. 
 
-Využijte výhod funkcí na webu Marketplace na rozvoj vašeho podnikání.
+Využijte výhod schopností na webu Marketplace a Rozšiřte své podnikání.
 
-### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Rozšířit na nové trhy a segmentů a generování nových prodejních příležitostí.
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Rozbalte nové trhy a segmenty a vygenerujte nové prodejní příležitosti.
 
-Použijte na webu Marketplace jako kanál pro přístup k nové trhy, segmentů a uživatelům Microsoft cloudu s portfolio řešení. Vytvořte nové zájemce marketing a pečovat o stávající nové zájemce, prodejní příležitosti. Výhody společného marketingu a prodeje aktivity získat větší počet zákazníků.
+Využijte web Marketplace jako kanál pro přístup k novým trhům, segmentům a uživatelům cloudu Microsoftu pomocí portfolia řešení. Vygenerujte nové marketingové zájemce a nurture nové potenciální zákazníky k prodejním příležitostem. Využijte výhod společných marketingových a prodejních aktivit a získejte větší zákazníky.
 
-### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Vylepšení přidanou hodnotu a zvětšení velikosti zakázek díky stávající i nové zákazníky 
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Vylepšení obchodních hodnot a zvýšení velikosti koupě pomocí stávajících a nových zákazníků 
 
-Prodeje a následného prodeje svá řešení podle můžeme problémy zákazníků po přesunu úlohy do cloudu. Pokud prodáváte nebo nasazení prostřednictvím webu Marketplace, může snížit prodejní cykly, zrychlit projekty a zvýšit ziskovost zakázky prodejem kompletní řešení, které cíl konkrétní úlohy a scénáře odvětví. 
+Přeprodat a prodávejte řešení problémů zákazníků po přesunutí úloh do cloudu, a to tak, že vyřešíte problémy zákazníka. Pokud obchodujete nebo nasazujete prostřednictvím webu Marketplace, můžete snížit prodejní cykly, zrychlit projekty a zvýšit ziskovost obchodu díky prodeji kompletních řešení, která cílí na konkrétní úlohy a průmyslové scénáře. 
 
 ### <a name="get-actionable-insights"></a>Získání užitečných přehledů 
 
-Získáte přehled o výkonu vaší výpisy přes přehledů a analýz, které jsou k dispozici prostřednictvím webu Marketplace. Získejte další informace o výkonnosti kampaně, objednávky a výplaty a jak maximalizovat na kampaň pro vaše řešení.
+Získejte přehled o výkonu svých seznamů prostřednictvím přehledů a analýz, které máte k dispozici na webu Marketplace. Získejte další informace o výkonu, objednávkách a výběrech kampaně a o tom, jak maximalizovat aktivity kampaně pro vaše řešení.
 
-### <a name="marketplace-go-to-market-benefits"></a>Výhody pro uvedení na trh Marketplace 
+### <a name="commercial-marketplace-benefits"></a>Výhody komerčního tržiště 
 
-Novým položkám na webu Marketplace jsou způsobilé pro širokou škálu různých bezplatné výhody pro partnerů, rozvíjejte své podnikání na webu Marketplace. Mezi tyto výhody spadají do následujících kategorií: 
+Nové výpisy na webu Marketplace mají nárok na nejrůznější sadu bezplatných výhod, které pomůžou partnerům rozšířit svou firmu na webu Marketplace. Tyto výhody spadají do následujících kategorií: 
 
-*   Technické: Všechno, co je potřeba získat připraveno ke spuštění vaší aplikace. Technickou podporu, návrhu aplikace a návrh architektury, kredity Azure pro vývoj a testování. 
+*   Odbornou Vše, co potřebujete, abyste aplikaci mohli začít spouštět. Od technické podpory, návrhu aplikací a návrhu architektury až po kredity Azure pro vývoj a testování. 
 
-*   Marketingové: Všechno, co potřebujete ke spuštění vaší nabídky. Přístup k bezplatným Microsoft Go-To-Market spuštění základy můžete spustit a propagace vašeho řešení. Může být také nárok na další zahrnutí marketingové kampaně Microsoftu a příležitostí, které chcete doporučit na webu Marketplace.
+*   Společný marketing: Vše, co potřebujete ke spuštění vaší nabídky. Získejte přístup k bezplatným základům pro uvedení na trh od Microsoftu, které vám pomůžou spustit a propagovat vaše řešení. Můžete mít také nárok na další zařazení do marketingové kampaně Microsoftu a příležitosti na webu Marketplace.
 
-*   Společný prodej: Zahájit nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podporu k společnému prodeji s Microsoft teams.
+*   Společný prodej: Začněte nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podpoře pro zajištění společného prodeje pomocí Microsoft Teams
 
-Poté co [odeslání vašeho řešení](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) na webu Marketplace, kontaktuje náš onboardingový tým podporu prostředí pro publikování.  Zobrazit [jak vytvořit účet v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Další informace.
+Po [odeslání řešení](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) na Marketplace vás náš tým připojuje k podpoře vašeho prostředí pro publikování.  Další informace najdete v tématu [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
 
-Další informace o výhodách Microsoft Go-To-Market a způsobech rozvoje vašeho podnikání na Marketplace najdete v tématu [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
 ## <a name="next-steps"></a>Další postup
 
-Zkontrolujte podrobné informace o tématech cloudové Tržiště, ve kterých obsahu vlevo. 
+Projděte si podrobné informace o tématech cloudového tržiště a prozkoumejte obsah vlevo. 

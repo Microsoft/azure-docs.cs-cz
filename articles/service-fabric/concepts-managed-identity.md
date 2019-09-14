@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3e95412675100043eb21f50c8f93aa0ec0b6b7e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963986"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968285"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Spravovaná identita pro aplikaci Service Fabric (Preview)
 
@@ -64,7 +64,6 @@ Následující scénáře nejsou podporovány nebo nejsou doporučovány. Všimn
 
    - Umožňuje odebrat nebo změnit identity přiřazené k aplikaci. Pokud je nutné provést změny, odešlete samostatné nasazení, abyste přidali nové přiřazení identity a pak odebrali dříve přiřazenou identitu. Odebrání identity z existující aplikace může mít nežádoucí účinky, včetně ukončení aplikace ve stavu, který nelze upgradovat. Zcela odstraní aplikaci, pokud je nutné odebrat identitu. Všimněte si, že se odstraní identita přiřazená systémem (Pokud je definována) přidružená k aplikaci a odstraní všechna přidružení s uživatelsky přiřazenými identitami přiřazenými k aplikaci.
 
-   - Nedoporučujeme kombinovat identity přiřazené systémem a uživatelem ve stejné aplikaci.
 >
 > [!NOTE]
 >

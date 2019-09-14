@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084326"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958832"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozšíření a funkce virtuálních počítačů Azure
 Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. můžete použít existující image a pak je přizpůsobit jako součást nasazení. dostanete se k vlastnímu podnikání. vytváření obrázků.
@@ -49,6 +49,30 @@ K instalaci nebo odstranění tohoto rozšíření se nemusíte připojovat k vi
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Něco jiného, co by mělo být v souvislosti s rozšířeními uvažujete?
 Rozšíření instalují aplikace, stejně jako u všech aplikací, pro rozšíření existuje seznam podporovaných systémů Windows a Linux operačních systémech a musíte mít nainstalované agenty virtuálních počítačů Azure. Některé aplikace rozšíření virtuálních počítačů můžou mít své vlastní požadavky na životní prostředí, jako je třeba přístup ke koncovému bodu.
+
+## <a name="troubleshoot-extensions"></a>Poradce při potížích s rozšířeními
+
+Informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. Tady je seznam informací o řešení problémů, které jsou k dispozici:
+
+| Obor názvů | Řešení potíží |
+|-----------|-----------------|
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Závislost Azure Monitor pro Linux](agent-dependency-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor závislost pro Windows](agent-dependency-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryptionforlinux | [Azure Disk Encryption pro Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryption | [Azure Disk Encryption pro Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| Microsoft. Compute. CustomScriptExtension | [Vlastní skript pro Windows](custom-script-windows.md#troubleshoot-and-support) |
+| Microsoft. ostcextensions. customscriptforlinux | [Konfigurace požadovaného stavu pro Linux](dsc-linux.md#troubleshoot-and-support) |
+| Microsoft. PowerShell. DSC | [Konfigurace požadovaného stavu pro Windows](dsc-windows.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverlinux | [Rozšíření ovladače NVIDIA GPU pro Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverwindows | [Rozšíření ovladače NVIDIA GPU pro Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. iaasantimalware | [Antimalwarové rozšíření pro Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| Microsoft. enterprisecloud. Monitoring. omsagentforlinux | [Azure Monitor pro Linux](oms-linux.md#troubleshoot-and-support)
+| Microsoft. enterprisecloud. Monitoring. microsoftmonitoringagent | [Azure Monitor pro Windows](oms-windows.md#troubleshoot-and-support) |
+| Stackify. linuxagent. extension. stackifylinuxagentextension | [Stackify přetrasování pro Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. Microsoft. ostcextensions | [Resetování hesla (VMAccess) pro Linux](vmaccess.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Snímek pro Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Snímek pro Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o fungování agenta a rozšíření pro Linux najdete v tématu [rozšíření a funkce virtuálních počítačů Azure pro Linux](features-linux.md).

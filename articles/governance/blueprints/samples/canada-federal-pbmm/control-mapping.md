@@ -3,16 +3,16 @@ title: Ukázka – federální PBMM podrobného plánu v Kanadě – mapování 
 description: Mapování ovládacího prvku pro ukázku federálního PBMM podrobného plánu pro Kanadu na Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 068e3253dbcb7ef8d0a5c0191ac1a0b75bd8c0e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 18c098263a4760c8b4b48f6799bcb263aa9709a9
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918765"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968288"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Mapování ovládacích prvků pro ukázku federálního PBMM podrobného plánu pro Kanadu
 
@@ -309,7 +309,13 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 > [!NOTE]
 > Dostupnost konkrétních definic Azure Policy se může v Azure Government a dalších národních cloudech lišit. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
+Zkontrolovali jste mapování ovládacího prvku pro ukázku Federal PBMM details. Další informace o přehledu a způsobu nasazení této ukázky najdete v následujících článcích:
+
+> [!div class="nextstepaction"]
+> [Kanada – federální PBMM podrobný plán – přehled](./control-mapping.md)
+> [Kanady federální PBMM podrobný plán – postup nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

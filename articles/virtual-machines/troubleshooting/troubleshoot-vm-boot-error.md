@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 14bf7b289f3d03dd1437a18b0b5bd35fdec567ea
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143307"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984828"
 ---
 # <a name="vm-boot-error"></a>Chyba spuštění virtuálního počítače
 
@@ -48,7 +48,7 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
     2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * `/boot/grub/menu.lst`Pokud je chybějící soubor, tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže příkazy mohou odložit. Abyste měli jistotu, že jsou k dispozici správné příkazy, budete muset spustit starý server a otestovat test.
+   * `/boot/grub/menu.lst`Pokud je chybějící soubor, tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže se příkazy mohou lišit. Abyste měli jistotu, že jsou k dispozici správné příkazy, budete muset spustit starý server a otestovat test.
 
 ### <a name="error---no-such-partition"></a>Chyba – žádný takový oddíl
 

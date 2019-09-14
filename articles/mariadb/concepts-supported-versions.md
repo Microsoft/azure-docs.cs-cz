@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/12/2019
+ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897291"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962924"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Podporované verze serveru Azure Database for MariaDB
 
@@ -20,21 +20,21 @@ Azure Database for MariaDB bylo vyvinuto z open-source [serveru MariaDB](https:/
 MariaDB používá schéma pojmenování X. Y. Z. X je hlavní verze, Y je dílčí verze a Z je verze opravy.
 
 > [!NOTE]
-> V rámci služby se k přesměrování připojení k instancím serveru používá brána. Po navázání připojení zobrazí klient MySQL v bráně verzi MariaDB sady, ne skutečnou verzi spuštěnou v instanci serveru MariaDB. K určení verze instance serveru MariaDB použijte `SELECT VERSION();` příkaz.
+> V rámci služby se k přesměrování připojení na instance serveru používá brána. Po navázání připojení zobrazí klient MySQL v bráně verzi MariaDB sady, ne skutečnou verzi spuštěnou v instanci serveru MariaDB. K určení verze instance serveru MariaDB použijte `SELECT VERSION();` příkaz.
 
 Azure Database for MariaDB aktuálně podporuje následující verzi:
 
 ## <a name="mariadb-version-102"></a>MariaDB verze 10,2
 
-Verze opravy: 10.2.23
+Verze opravy: 10.2.25
 
-Další informace o vylepšeních a opravách v MariaDB 10.2.23 najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) .
+Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) .
 
 ## <a name="mariadb-version-103"></a>MariaDB verze 10,3
 
-Verze opravy: 10.3.14
+Verze opravy: 10.3.16
 
-Další informace o vylepšeních a opravách v MariaDB 10.3.14 najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) .
+Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) .
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 Služba automaticky spravuje upgrady pro aktualizace oprav. Například 10.2.21 na 10.2.23.  

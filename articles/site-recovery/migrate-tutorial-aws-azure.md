@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873305"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984986"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -117,6 +117,7 @@ Na stránce **Cíl ochrany** vyberete následující hodnoty:
 |---------|-----------|
 | Kde se vaše počítače nachází? |Vyberte možnost pro **místní řešení**.|
 | Kam chcete své počítače replikovat? |Vyberte možnost **připojení k Azure**.|
+| Provádíte migraci? | Vyberte **Ano**a potom zaškrtněte políčko vedle **underdstand, ale přejete si pokračovat v Azure Site Recovery.**
 | Jsou vaše počítače virtualizované? |Vyberte **Nevirtualizované nebo jiné**.|
 
 Jakmile to budete mít, přejděte zvolením **OK** na další krok.
@@ -258,7 +259,7 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste se naučili, jak migrovat instance ES2 AWS do virtuálních počítačů Azure. Další informace o virtuálních počítačích Azure najdete v kurzech pro virtuální počítače s Windows.
 

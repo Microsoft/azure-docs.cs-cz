@@ -1,46 +1,46 @@
 ---
-title: Začínáme s využitím klientské knihovny s rozhraní API pro rozpoznávání řeči Bingu | Dokumentace Microsoftu
+title: Začínáme s rozhraním API pro rozpoznávání Zpracování řeči Bingu pomocí klientských knihoven | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Použití klientské knihovny pro zpracování řeči Bingu ve službě Microsoft Cognitive Services k vývoji aplikací, které převést mluvené slovo na text.
+description: Pomocí Zpracování řeči Bingu klientských knihoven v Microsoft Cognitive Services můžete vyvíjet aplikace, které převádějí mluvený zvuk na text.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 89eb18a2b4af76f6489442dc66ab12d0840e92c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ea0c9e7104b29456749c7f1af2a671b32a8fde2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515226"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966850"
 ---
-# <a name="get-started-with-bing-speech-service-client-libraries"></a>Začínáme s klientskými knihovnami Speech Service Bingu
+# <a name="get-started-with-bing-speech-service-client-libraries"></a>Začínáme s klientskými knihovnami služby Zpracování řeči Bingu
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Kromě toho, s přímým přístupem požadavky HTTP přes rozhraní REST API, Speech Service Bingu poskytuje vývojářům klientské knihovny pro rozpoznávání řeči v různých jazycích. Klientské knihovny pro zpracování řeči:
+Kromě přímého zpracování požadavků HTTP prostřednictvím REST API služba Zpracování řeči Bingu poskytuje vývojářům hlasové knihovny řeči v různých jazycích. Knihovny klienta pro řeč:
 
-- Podporuje rozšířené možnosti v rozpoznávání řeči, jako je například mezilehlých výsledků v reálném čase, long zvukový datový proud (až 10 minut) a průběžné rozpoznávání.
-- Poskytují jednoduché a idiomatickou rozhraní API v jazyce dle požadavků.
-- Skryjete podrobnosti nízké úrovně komunikace.
+- Podporují pokročilejší funkce rozpoznávání řeči, jako jsou mezilehlé výsledky v reálném čase, dlouhý datový proud (až 10 minut) a průběžné rozpoznávání.
+- Poskytněte jednoduché a idiomatickou rozhraní API v jazyce vaší předvolby.
+- Skrýt podrobnosti o komunikaci na nízké úrovni.
 
-V současné době jsou k dispozici následujících klientských knihoven pro zpracování řeči Bingu:
+V současné době jsou k dispozici následující klientské knihovny Zpracování řeči Bingu:
 
-- [Klasické pracovní plochy knihovny jazyka C#](GetStartedCSharpDesktop.md)
-- [Knihovna služby jazyka C#](GetStartedCSharpServiceLibrary.md)
+- [C#Desktopová knihovna](GetStartedCSharpDesktop.md)
+- [C#Knihovna služeb](GetStartedCSharpServiceLibrary.md)
 - [Knihovna JavaScript](GetStartedJSWebsockets.md)
 - [Knihovna Java pro Android](GetStartedJavaAndroid.md)
-- [Knihovna jazyka Objective-C pro iOS](Get-Started-ObjectiveC-iOS.md)
+- [Cíl – knihovna C pro iOS](Get-Started-ObjectiveC-iOS.md)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Ukázky](../samples.md) stránka poskytuje kompletní ukázky použití klientské knihovny pro rozpoznávání řeči.
-- Pokud potřebujete klientskou knihovnu, která ještě není podporovaný, můžete vytvořit vlastní sadu SDK. Implementace [protokol WebSocket řeči](../API-Reference-REST/websocketprotocol.md) na platformy a použití jazyka podle vašeho výběru.
+- Na stránce [ukázek](../samples.md) najdete kompletní ukázky pro používání knihoven klienta Speech.
+- Pokud potřebujete klientskou knihovnu, která zatím není podporovaná, můžete vytvořit vlastní sadu SDK. Implementujte na platformě [protokol WebSocket pro rozpoznávání řeči](../API-Reference-REST/websocketprotocol.md) a použijte jazyk podle vašeho výběru.
 
 ## <a name="license"></a>Licence
 
-Všechny Cognitive Services SDK a ukázky jsou licencovány s licencí MIT. Další informace najdete v tématu [licence](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Všechny sady SDK a ukázky pro Cognitive Services jsou licencované pomocí licence MIT. Další informace najdete v tématu [License](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

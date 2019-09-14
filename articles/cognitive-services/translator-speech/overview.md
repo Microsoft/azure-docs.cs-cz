@@ -3,20 +3,20 @@ title: Co je služba Translator Speech?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní Translator Speech API se používá k přidání překladu řeči na řeč a řeči na text do aplikací.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed425cd6545d85cdf3b2f76038b381a0f09045f9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eaa6e9a7e8e7edd4241594ad7c2188c3fb50295e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449657"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966435"
 ---
 # <a name="what-is-translator-speech-api"></a>Co je rozhraní Translator Speech API?
 
@@ -59,7 +59,7 @@ Zobrazit podporované jazyky na [Microsoft.com](https://www.microsoft.com/en-us/
 
 Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zaregistrovat se](translator-speech-how-to-signup.md)
@@ -67,7 +67,7 @@ Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/trans
 > [!div class="nextstepaction"]
 > [Pustit se do psaní kódu](quickstarts/csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 - [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Informace o řešení a cenách](https://www.microsoft.com/en-us/translator/home.aspx)

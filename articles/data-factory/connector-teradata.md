@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Teradata pomocí Azure Data Factory | Microsoft Docs
-description: Konektor Teradata služby Data Factory umožňuje kopírovat data z databáze Teradata do úložišť dat, která aplikace Data Factory podporuje jako jímky.
+title: Kopírování dat z Teradata Vantage pomocí Azure Data Factory | Microsoft Docs
+description: Konektor Teradata služby Data Factory umožňuje kopírovat data z Teradata Vantage do úložišť dat, která aplikace Data Factory podporuje jako jímky.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,26 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232495"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959009"
 ---
-# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
+# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuální verze](connector-teradata.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze Teradata. Sestaví se na [Přehled aktivit kopírování](copy-activity-overview.md).
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z Teradata Vantage. Sestaví se na [Přehled aktivit kopírování](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Data z databáze Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z Teradata Vantage můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor Teradata podporuje:
 
@@ -45,7 +45,7 @@ Konkrétně tento konektor Teradata podporuje:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Modul runtime integrace poskytuje integrovaný ovladač Teradata od verze 3,18. Nemusíte ručně instalovat žádný ovladač. Ovladač vyžaduje "Visual C++ Redistributable 2012 Update 4" na počítači místního prostředí Integration runtime. Pokud ho ještě nemáte nainstalovanou, Stáhněte si ho odsud [](https://www.microsoft.com/en-sg/download/details.aspx?id=30679).
+Modul runtime integrace poskytuje integrovaný ovladač Teradata od verze 3,18. Nemusíte ručně instalovat žádný ovladač. Ovladač vyžaduje "Visual C++ Redistributable 2012 Update 4" na počítači místního prostředí Integration runtime. Pokud ho ještě nemáte nainstalovanou, [Stáhněte si ho odsud.](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
 
 Pro všechny verze prostředí Integration runtime v místním prostředí, která je starší než 3,18, nainstalujte na počítači prostředí Integration runtime [rozhraní .net zprostředkovatel dat pro Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), verze 14 nebo novější. 
 
@@ -62,8 +62,8 @@ Propojená služba Teradata podporuje následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavena na **Teradata**. | Ano |
-| connectionString | Určuje informace potřebné pro připojení k instanci databáze Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z připojovacího řetězce si `password` vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
-| username | Zadejte uživatelské jméno pro připojení k databázi Teradata. Platí při použití ověřování systému Windows. | Ne |
+| connectionString | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z připojovacího řetězce si `password` vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
+| username | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | Ne |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ano |
 
@@ -142,8 +142,8 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavena na `TeradataTable`hodnotu. | Ano |
-| database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "query") |
-| table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "query") |
+| database | Název instance Teradata. | Ne (když je zadán zdroj aktivity "query") |
+| table | Název tabulky v instanci Teradata. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad:**
 
@@ -197,7 +197,7 @@ Chcete-li kopírovat data z Teradata, v části **zdroj** aktivity kopírování
 |:--- |:--- |:--- |
 | type | Vlastnost Type zdroje aktivity kopírování musí být nastavena na `TeradataSource`hodnotu. | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne (Pokud je zadaná tabulka v datové sadě) |
-| partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **Žádné** (výchozí), **hash** a **DynamicRange**.<br>Pokud je možnost oddílu povolena (tj. ne `None`), stupeň paralelismu na souběžně načtená data z databáze Teradata se řídí [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. | Ne |
+| partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **Žádné** (výchozí), **hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (tj. ne `None`), stupeň paralelismu na souběžně načtená data z Teradata se řídí [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není `None`možnost oddílu. | Ne |
 | partitionColumnName | Zadejte název zdrojového sloupce, který bude použit oddíl rozsahu nebo oddíl hash pro paralelní kopírování. Pokud není zadaný, primární index tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je `Hash` možnost oddílu nebo. `DynamicRange` Použijete-li dotaz k načtení zdrojových dat, vidlice `?AdfHashPartitionCondition` nebo `?AdfRangePartitionColumnName` klauzule WHERE. Viz příklad v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`možnost oddílu. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionUpbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
@@ -245,9 +245,9 @@ Konektor Data Factory Teradata poskytuje integrované datové oddíly pro kopír
 
 ![Snímek obrazovky s možnostmi oddílů](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Pokud povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj Teradata pro načtení dat podle oddílů. Paralelní míra je řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Například pokud nastavíte `parallelCopies` na čtyři, Data Factory souběžně generuje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Teradata.
+Pokud povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj Teradata pro načtení dat podle oddílů. Paralelní míra je řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně generuje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z Teradata.
 
-Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, zejména při načítání velkého množství dat z databáze Teradata. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
+Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, zejména při načítání velkého množství dat z Teradata. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -330,5 +330,5 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | Xml |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

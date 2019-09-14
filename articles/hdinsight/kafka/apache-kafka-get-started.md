@@ -4,15 +4,16 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache K
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779529"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960255"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal
 
@@ -38,18 +39,18 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
 2. V nabídce vlevo přejděte na **+ vytvořit Resource** > **Analytics** > **HDInsight**.
    
-    ![Vytvoření clusteru HDInsight](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![Vytvoření clusteru HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. V části **Základy** zadejte nebo vyberte následující informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | --- | --- |
     | Název clusteru | Jedinečný název clusteru HDInsight. |
     | Subscription | Vyberte své předplatné. |
     
    Vyberte __Typ clusteru__ a zobrazte **Konfiguraci clusteru**.
    
-   ![Základní konfigurace clusteru Apache Kafka ve službě HDInsight](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![Základní konfigurace clusteru Apache Kafka ve službě HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. V části __Konfigurace clusteru__vyberte následující hodnoty:
 
@@ -60,7 +61,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
     Výběrem **možnosti vybrat** uložte nastavení typu clusteru a vraťte se k __základům__.
 
-    ![Vybrat typ clusteru](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Vybrat typ clusteru](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. V části __Základy__ zadejte nebo vyberte následující informace:
 
@@ -98,7 +99,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
     Položka **Počet disků na pracovní uzel** konfiguruje škálovatelnost systému Apache Kafka ve službě HDInsight. Apache Kafka ve službě HDInsight používá k ukládání dat místní disky virtuálních počítačů v clusteru. Platforma Apache Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md). Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Apache Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky.
 
-   ![Nastavení velikosti clusteru Apache Kafka](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Nastavení velikosti clusteru Apache Kafka](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. Pokud chcete pokračovat s výchozím nastavením, v části __Upřesňující nastavení__ vyberte __Další__.
 

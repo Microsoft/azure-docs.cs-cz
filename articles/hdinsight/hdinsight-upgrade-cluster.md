@@ -4,15 +4,16 @@ description: Přečtěte si pokyny, jak upgradovat cluster Azure HDInsight na no
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811641"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960706"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Pro využití nejnovějších funkcí HDInsight doporučujeme, aby clustery HDInsight byly upgradovány na nejnovější verzi. Pokud chcete upgradovat verze clusteru HDInsight, postupujte podle pokynů níže.
@@ -23,7 +24,7 @@ Pro využití nejnovějších funkcí HDInsight doporučujeme, aby clustery HDIn
 ## <a name="upgrade-tasks"></a>Úkoly upgradu
 Postup upgradu clusteru HDInsight je následující.
 
-![Diagram pracovního postupu upgradu](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Diagram pracovního postupu upgradu](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Přečtěte si jednotlivé části tohoto dokumentu, abyste pochopili změny, které mohou být požadovány při upgradu clusteru HDInsight.
 2. Vytvořte cluster jako prostředí pro testování/zajištění kvality. Další informace o vytvoření clusteru najdete v tématu [informace o vytváření clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md) .

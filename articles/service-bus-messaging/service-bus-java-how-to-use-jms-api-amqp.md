@@ -14,20 +14,20 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 3639eef1e95b354298b718af24217a8fbefb3a74
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173370"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967968"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Použití JMS (Java Message Service) s Azure Service Bus a AMQP 1,0
+V tomto článku se dozvíte, jak používat funkce Azure Service Bus zasílání zpráv (fronty a témata pro publikování a odběr) z aplikací Java pomocí oblíbeného standardu rozhraní API pro JMS (Java Message Service). K dispozici je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak to samé provést pomocí rozhraní API Azure Service Bus .NET. Tyto dvě příručky můžete použít společně a získat další informace o zasílání zpráv mezi různými platformami pomocí AMQP 1,0.
+
 Rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který můžete použít k vytváření robustních aplikací zasílání zpráv pro různé platformy.
 
-Podpora AMQP 1,0 v Service Bus znamená, že můžete používat funkce řazení a publikování zprostředkovaných zpráv z různých platforem pomocí efektivního binárního protokolu. Kromě toho můžete sestavovat aplikace tvořené komponentami sestavenými pomocí kombinace jazyků, platforem a operačních systémů.
-
-V tomto článku se dozvíte, jak používat funkce Service Bus zasílání zpráv (fronty a témata pro publikování a odběr) z aplikací Java pomocí oblíbeného standardu rozhraní API pro JMS (Java Message Service). K dispozici je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak to samé provést pomocí rozhraní API Service Bus .NET. Tyto dvě příručky můžete použít společně a získat další informace o zasílání zpráv mezi různými platformami pomocí AMQP 1,0.
+Podpora AMQP 1,0 v Azure Service Bus znamená, že můžete používat funkce řazení a publikování zprostředkovaných zpráv z různých platforem pomocí efektivního binárního protokolu. Kromě toho můžete sestavovat aplikace tvořené komponentami sestavenými pomocí kombinace jazyků, platforem a operačních systémů.
 
 ## <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
 V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsahující frontu s názvem **basicqueue**. Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty](service-bus-dotnet-get-started-with-queues.md).
@@ -372,7 +372,7 @@ Navíc Azure Service Bus rozdělí rovinu ovládacího prvku z roviny dat, a pro
 | createTemporaryTopic        | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
 | createTopic                 | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           |
 | Odhlásit odběr                 | Odstranění rozhraní API/nástrojů/portálu pro správu tématu                                             |
-| createBrowser               | neplatné. Použití funkce prohlížet () rozhraní API pro Service Bus                         |
+| createBrowser               | Neplatné. Použití funkce prohlížet () rozhraní API pro Service Bus                         |
 | createQueue                 | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           | 
 | createTemporaryQueue        | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
 | receiveNoWait               | využití metody Receive () poskytované sadou Service Bus SDK a určení velmi nízkého nebo nulového časového limitu |

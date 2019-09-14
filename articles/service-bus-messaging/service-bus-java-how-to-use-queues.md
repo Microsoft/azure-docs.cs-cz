@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 84f035a55256ab22c823b2aaed9c9c2400eebf5b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173411"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967857"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Service Bus. 
+V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Azure Service Bus. 
 
 > [!NOTE]
 > Ukázky Java můžete najít na GitHubu v [úložišti Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 
     2. Vytvořte **obor názvů**Service Bus. 
     3. Získá **připojovací řetězec**.
-    4. Vytvořte frontuService Bus.
+    4. Vytvořte **frontu**Service Bus.
 3. Nainstalujte [sadu Azure SDK pro jazyk Java][Azure SDK for Java]. 
 
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390260"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984266"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -47,7 +47,6 @@ Použití propojení entit v různých jazycích vyžaduje použití odpovídaj�
 | Množství      | Číslo        | "6", "šest"     |
 | Množství      | Procento    | "50 %", "padesát procent"|
 | Množství      | Pořadí       | "2.", "druhý"     |
-| Množství      | Číselný rozsah   | "4 až 8"     |
 | Množství      | Věk           | "90 den starý", "30 let starý"    |
 | Množství      | Currency      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
@@ -59,7 +58,6 @@ Použití propojení entit v různých jazycích vyžaduje použití odpovídaj�
 | DateTime      | Časový rozsah     | "18:00 až 19:00"     |
 | DateTime      | Trvání      | "1 minuta a 45 sekund"   |
 | DateTime      | Sada           | "každé úterý"     |
-| DateTime      | časové pásmo      |    |
 | URL           | NENÍ K DISPOZICI\*         | "https:\//www.Bing.com"    |
 | Email         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
 

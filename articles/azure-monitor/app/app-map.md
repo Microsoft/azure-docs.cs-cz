@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126960"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983766"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -270,8 +270,8 @@ Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
 
 ![Obrázek MapLink-1](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak korelace funguje v Application Insights, najdete v článku [korelace telemetrie] (https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Další informace o tom, jak korelace funguje v Application Insights, najdete v [článku korelace telemetrie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
 * [Koncové prostředí pro diagnostiku transakcí](transaction-diagnostics.md) koreluje telemetrie na straně serveru ze všech vašich Application Insights monitorovaných komponent do jednoho zobrazení.
 * Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .

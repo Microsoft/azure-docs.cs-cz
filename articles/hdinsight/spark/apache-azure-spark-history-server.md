@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736460"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968122"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -47,23 +47,23 @@ Vyberte ID úlohy a potom v nabídce Nástroje klikněte na **data** , aby se zo
 
 + Zkontrolujte **vstupy**a **výstupy**a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
 
-    ![Karty dat](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![Karty dat](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + Kliknutím na tlačítko **Kopírovat**zkopírujte všechny řádky.
 
-    ![Kopírování dat](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![Kopírování dat](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + Uložte všechna data jako soubor CSV kliknutím na tlačítko **CSV**.
 
-    ![Uložení dat](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![Uložení dat](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + Hledání je prováděno zadáním klíčových slov do pole **hledání**, výsledek hledání se zobrazí okamžitě.
 
-    ![Hledání dat](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![Hledání dat](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + Kliknutím na záhlaví sloupce seřadíte tabulku, kliknutím na znaménko plus rozbalíte řádek a zobrazíte další podrobnosti, nebo kliknutím na znaménko mínus řádek sbalíte.
 
-    ![Tabulka dat](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![Tabulka dat](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + Stažení jednoho souboru kliknutím na tlačítko **částečné stažení** , které je napravo, pak bude vybraný soubor stažen do místního umístění, pokud soubor již neexistuje, otevře novou kartu pro zobrazení chybových zpráv.
 
@@ -75,7 +75,7 @@ Vyberte ID úlohy a potom v nabídce Nástroje klikněte na **data** , aby se zo
 
 + Kliknutím na číslo pod tabulkou můžete procházet stránky, když se na jedné stránce zobrazí příliš mnoho řádků. 
 
-    ![Datová stránka](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![Datová stránka](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + Poklikáním na otazník vedle položky data zobrazíte popis tlačítka nebo kliknutím na otazník získáte další informace.
 
@@ -93,7 +93,7 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
 
 + Ve výchozím nastavení se zobrazí všechny úlohy a můžete je filtrovat podle **ID úlohy**.
 
-    ![ID úlohy grafu](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![ID úlohy grafu](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + Ve výchozím nastavení je vybraná možnost **průběh** . uživatel může kontrolu toku dat vybrat v rozevíracím seznamu **Zobrazit** **nebo zapsat** .
 
@@ -211,15 +211,15 @@ Chcete-li se vrátit k verzi komunity, proveďte následující kroky:
 5. Vlastnost nastaví na **hodnotu false** nyní.
 6. Kliknutím na **Uložit** uložte konfiguraci.
 
-    ![funkce se vypne.](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![funkce se vypne.](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. Klikněte na **Spark2** na levém panelu a na kartě **Souhrn** klikněte na **Server historie Spark2**.
 
-    ![restartovat Server1](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![restartovat Server1](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. Kliknutím na **restartovat** **Server historie Spark2**restartujte server historie.
 
-    ![restartovat Server2](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![restartovat Server2](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. Aktualizuje webové uživatelské rozhraní serveru historie Sparku, bude se vrátit na verzi komunity.
 
@@ -236,7 +236,7 @@ Pokud se při spuštění do historie serveru zobrazí chyba, postupujte podle p
 
 3. Zadejte název a popis chyby, přetáhněte soubor zip do pole upravit a pak klikněte na **Odeslat nový problém**.
 
-    ![problém se souborem](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![problém se souborem](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Upgrade souboru jar pro scénář oprav hotfix
@@ -314,7 +314,7 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
    + Podívejte se na **vedoucí** a **pracovní proces**.
    + **Parametry**: Nastavte parametry podle bash využití.
 
-     ![Odeslat protokol nebo upgradovat opravu hotfix](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![Odeslat protokol nebo upgradovat opravu hotfix](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>Známé problémy
@@ -323,7 +323,7 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
 
 2.  Vstupní/výstupní data pomocí RDD se nezobrazí na kartě data.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
 * [Konfigurace nastavení Apache Spark](apache-spark-settings.md)

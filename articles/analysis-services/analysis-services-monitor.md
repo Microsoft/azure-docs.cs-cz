@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596102"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958972"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
 
@@ -55,14 +55,18 @@ Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář m
 |MemoryLimitLow|Paměť: Limit paměti – nízká|B|Average|Omezení nedostatku paměti, z konfiguračního souboru.|
 |MemoryLimitVertiPaq|Paměť: Limit paměti VertiPaq|B|Average|Limit v paměti, z konfiguračního souboru.|
 |MemoryUsage|Paměť: Využití paměti|B|Average|Využití paměti procesu serveru, které se používá při výpočtu ceny čisticí paměti. Je rovno čítači Process\PrivateBytes a velikosti paměti, která je namapovaná na paměť, která byla namapována nebo přidělena pomocí analytického stroje v paměti (VertiPaq), nad rámec limitu paměti stroje.|
+|private_bytes_metric|Privátní bajty |B|Average|Celková velikost paměti, kterou proces Analysis Services modulu a procesu kontejneru hybridních webových aplikací přidělil, a ne včetně paměti sdílené s jinými procesy.|
+|virtual_bytes_metric|Virtuální bajty |B|Average|Aktuální velikost virtuálního adresního prostoru, který používá procesy procesu Analysis Services Engine a hybridní aplikace.|
+|mashup_engine_private_bytes_metric|Počet privátních bajtů modulu M |B|Average|Celkový objem paměťových procesů kontejneru hybridní webové aplikace, včetně paměti, která je sdílena s jinými procesy.|
+|mashup_engine_virtual_bytes_metric|Virtuální bajty motoru M |B|Average|Aktuální velikost procesů kontejneru hybridního adresního prostoru virtuálního adresáře.|
 |Kvóta|Paměť: Kvóta|B|Average|Aktuální kvóta paměti (v bajtech). Kvóta paměti je také známá jako přidělení paměti nebo rezervace paměti.|
 |QuotaBlocked|Paměť: Kvóta blokována|Count|Average|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nebudou uvolněny jiné kvóty paměti.|
 |VertiPaqNonpaged|Paměť: VertiPaq – nestránkované|B|Average|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|
 |VertiPaqPaged|Paměť: VertiPaq na straně|B|Average|Počet bajtů stránkované paměti používaných pro data v paměti.|
 |ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Count|Average|Počet nevstupně-výstupních úloh ve frontě fondu vláken zpracování.|
-|RowsConvertedPerSec|Zpracování: Počet převedených řádků za sekundu|CountPerSecond|Average|Rychlost převodu řádků během zpracování.|
-|RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Average|Rychlost čtení řádků ze všech relačních databází.|
-|RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Average|Rychlost zápisu řádků během zpracování.|
+|RowsConvertedPerSec|Zpracováván Počet převedených řádků za sekundu|CountPerSecond|Average|Rychlost převodu řádků během zpracování.|
+|RowsReadPerSec|Zpracováván Počet přečtených řádků za sekundu|CountPerSecond|Average|Rychlost čtení řádků ze všech relačních databází.|
+|RowsWrittenPerSec|Zpracováván Počet zapsaných řádků za sekundu|CountPerSecond|Average|Rychlost zápisu řádků během zpracování.|
 |qpu_metric|QPU|Count|Average|QPU. Rozsah 0-100 pro S1, 0-200 pro S2 a 0-400 pro S4|
 |QueryPoolBusyThreads|Zaneprázdněná vlákna fondu dotazů|Count|Average|Počet zaneprázdněných vláken ve fondu vláken dotazů.|
 |SuccessfullConnectionsPerSec|Úspěšná připojení za sekundu|CountPerSecond|Average|Frekvence úspěšných dokončení připojení.|

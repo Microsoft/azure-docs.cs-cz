@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f2621abcb2bac55ff123a11efa0ae9a082a1acbd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640919"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968269"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
 
@@ -68,8 +68,6 @@ Následující příklad ukazuje udělení přístupu k trezoru prostřednictví
 
 Další podrobnosti najdete v tématu [trezory – zásady přístupu pro aktualizaci](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>Další kroky
-
+## <a name="next-steps"></a>Další postup
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

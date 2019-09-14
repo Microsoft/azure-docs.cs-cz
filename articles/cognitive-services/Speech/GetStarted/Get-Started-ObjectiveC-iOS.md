@@ -1,67 +1,67 @@
 ---
-title: Začínáme s API pro rozpoznávání řeči Bingu v Objective-C v iOS | Dokumentace Microsoftu
+title: Začínáme s rozhraním API pro rozpoznávání Zpracování řeči Bingu v cíli – C v iOS | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Vývoj aplikací pro iOS, které převést mluvené slovo na text pomocí rozhraní API pro rozpoznávání řeči Bingu.
+description: Rozhraní API pro rozpoznávání Zpracování řeči Bingu slouží k vývoji aplikací pro iOS, které převádějí mluvený zvuk na text.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42784e6d2751f7e76aec8caf1d6e1f9f09a9fd1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515297"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965940"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Rychlý start: Použití rozhraní API pro rozpoznávání řeči Bingu v systému iOS v Objective-C
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Rychlý start: Použití rozhraní API pro rozpoznávání Zpracování řeči Bingu v cíli – C v iOS
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Rozhraní API pro rozpoznávání řeči vám umožní vytvářet aplikace pro iOS, které Cloudová služba Speech umožňuje převést mluvené slovo na text. Rozhraní API podporuje streamování v reálném čase, takže vaše aplikace může současně a asynchronně přijímat částečné výsledky rozpoznávání ve stejnou dobu, kterou je posílání zvuku ve službě.
+Pomocí rozhraní API pro rozpoznávání řeči můžete vyvíjet aplikace pro iOS, které využívají cloudovou službu pro hlasové rozpoznávání řeči, a převést mluvený zvuk na text. Rozhraní API podporuje streamování v reálném čase, takže vaše aplikace může současně a asynchronně přijímat částečné výsledky rozpoznávání ve stejnou dobu, kdy posílá zvuk do služby.
 
-Tento článek používá ukázkovou aplikaci k předvedení základní informace o tom, jak začít pracovat s rozhraním API pro rozpoznávání řeči pro vývoj aplikací pro iOS. Kompletní reference k rozhraní API najdete v článku [sadou SDK pro řeč Klientská knihovna – referenční informace](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+Tento článek používá ukázkovou aplikaci k předvedení základních informací o tom, jak začít s rozhraním API pro rozpoznávání řeči při vývoji aplikace pro iOS. Úplný referenční informace k rozhraní API najdete v [referenčních informacích k klientské knihovně pro sadu Speech SDK](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Ujistěte se, že je nainstalované integrované vývojové prostředí XCode Mac.
+Ujistěte se, že je nainstalované rozhraní IDE pro Mac XCode.
 
-### <a name="get-the-client-library-and-examples"></a>Získat klienta knihovny a příklady
+### <a name="get-the-client-library-and-examples"></a>Získat klientskou knihovnu a příklady
 
-Klientská knihovna pro zpracování řeči a příklady pro iOS jsou k dispozici na [řeči Klientská sada SDK pro iOS](https://github.com/microsoft/cognitive-speech-stt-ios).
+Klientská knihovna služby Speech a příklady pro iOS jsou k dispozici v [sadě Speech Client SDK pro iOS](https://github.com/microsoft/cognitive-speech-stt-ios).
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k rozhraní API pro rozpoznávání řeči odběru a získání klíče bezplatné předplatné zkušební verze
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k odběru rozhraní API pro rozpoznávání řeči a získejte bezplatný zkušební klíč předplatného.
 
-Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
+Rozhraní API pro rozpoznávání řeči je součástí Cognitive Services (dříve projekt Oxford). Můžete získat bezplatný zkušební odběr klíčů na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) . Po výběru rozhraní API pro rozpoznávání řeči vyberte **získat klíč rozhraní API** a získejte klíč. Vrátí primární a sekundární klíč. Oba klíče jsou vázané na stejnou kvótu, takže můžete použít kteroukoli z těchto klíčů.
 
-Pokud chcete použít *využijte záměr*, budete také muset zaregistrovat [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Pokud chcete použít *rozpoznávání s záměrem*, musíte si také zaregistrovat [Language Understanding Intelligent Service (Luis)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 > [!IMPORTANT]
-> * Získáte klíč předplatného. Než budete moct použít klientské knihovny pro zpracování řeči, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
+> * Získejte klíč předplatného. Předtím, než budete moci použít klientské knihovny řeči, je nutné mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Použijte váš klíč předplatného. Pomocí ukázkové aplikace pro iOS zadaný budete muset aktualizovat soubor Samples/SpeechRecognitionServerExample/settings.plist váš klíč předplatného. Další informace najdete v tématu [sestavení a spuštění ukázky](#build-and-run-samples).
+> * Použijte svůj klíč předplatného. S poskytnutou ukázkovou aplikací pro iOS musíte aktualizovat soubor Samples/SpeechRecognitionServerExample/Settings. plist pomocí vašeho klíče předplatného. Další informace najdete v tématu [sestavení a spuštění ukázek](#build-and-run-samples).
 
-## <a name="use-the-speech-client-library"></a>Použití knihovny řečového klienta
+## <a name="use-the-speech-client-library"></a>Použití klientská knihovna služby Speech
 
-Chcete-li přidat klientské knihovny do projektu XCode, postupujte podle těchto [pokyny](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
+Chcete-li přidat knihovnu klienta do projektu XCode, postupujte podle těchto [pokynů](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
 
-Klient knihovna – referenční informace pro iOS, najdete v tématu to [webová stránka](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+Informace o klientské knihovně pro iOS najdete na této [webové stránce](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
 ## <a name="build-and-run-samples"></a>Sestavení a spuštění ukázek
 
-Informace o tom, jak sestavení a spuštění ukázky, naleznete v tomto [stránce README](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
+Informace o tom, jak sestavit a spustit ukázky, najdete na této [stránce Readme](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
 
-## <a name="samples-explained"></a>Vysvětlení ukázky
+## <a name="samples-explained"></a>Vysvětlení ukázek
 
-### <a name="create-recognition-clients"></a>Vytvoření klientů rozpoznávání
+### <a name="create-recognition-clients"></a>Vytváření klientů pro rozpoznávání
 
-Následující kód v ukázce ukazuje, jak vytvořit třídy klienta rozpoznávání podle uživatelských scénářů:
+Následující kód v ukázce ukazuje, jak vytvořit třídy klienta pro rozpoznávání na základě scénářů uživatele:
 
 ```
 {
@@ -112,38 +112,38 @@ Následující kód v ukázce ukazuje, jak vytvořit třídy klienta rozpoznáv�
 
 ```
 
-Klientská knihovna poskytuje předem implementované rozpoznávání třídy klienta pro typické scénáře v rozpoznávání řeči:
+Klientská knihovna poskytuje pro typické scénáře rozpoznávání řeči předem implementované klientské třídy pro rozpoznávání:
 
-* `DataRecognitionClient`: Rozpoznávání řeči pomocí PCM data (například ze zdrojového souboru nebo ve zvukovém souboru). Data je rozdělený do vyrovnávací paměti a každý vyrovnávací paměti se odesílají službě řeči. Žádné úpravy se provádí do vyrovnávací paměti, takže v případě potřeby můžou uživatelé používat vlastní detekce nečinnosti. Pokud data ze souborů WAV můžete odeslat data ze souboru přímo na serveru. Pokud máte nezpracovaná data, například zvukový procházející přes Bluetooth, nejdřív odešlete formát hlavičky serveru, za nímž následuje data.
-* `MicrophoneRecognitionClient`: Rozpoznávání řeči pomocí zvuk přicházející z mikrofon. Ujistěte se, že mikrofonu je zapnuté a mikrofon tato data se odesílají službě rozpoznávání řeči. Integrované "nečinnosti detektoru s" se použije na mikrofon data před odesláním do služby rozpoznávání.
-* `DataRecognitionClientWithIntent` a `MicrophoneRecognitionClientWithIntent`: Kromě rozpoznávání textu vrátí tyto klienty strukturovaných informací o záměr mluvčího, které vaše aplikace můžete použít k řízení další akce. Pokud chcete používat "Záměr", budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Rozpoznávání řeči s daty PCM (například ze zdroje souboru nebo zvuku). Data jsou rozdělena do vyrovnávacích pamětí a každá vyrovnávací paměť je odeslána službě Speech. Vyrovnávací paměti se neprovádí bez úprav, takže uživatelé můžou v případě potřeby použít vlastní detekci ticha. Pokud jsou data poskytována ze souborů WAV, můžete odeslat data ze souboru přímo na server. Pokud máte nezpracovaná data, například zvuk přidaný přes Bluetooth, nejprve na server odešlete hlavičku formátu a potom data.
+* `MicrophoneRecognitionClient`: Rozpoznávání řeči pomocí zvukového přenosu, který přichází z mikrofonu. Ujistěte se, že je mikrofon zapnutý a že se data z mikrofonu odesílají službě rozpoznávání řeči. Pro data mikrofonu se před odesláním do služby pro rozpoznávání použije vestavěný "detektor tichého běhu".
+* `DataRecognitionClientWithIntent`a `MicrophoneRecognitionClientWithIntent`: Kromě textu rozpoznávání vrátí tito klienti strukturované informace o záměru mluvčího, který vaše aplikace může použít k řízení dalších akcí. Chcete-li použít "záměr", musíte nejprve vytvořit model pomocí [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-### <a name="recognition-language"></a>Rozpoznávání jazyka
+### <a name="recognition-language"></a>Jazyk rozpoznávání
 
-Při použití `SpeechRecognitionServiceFactory` pro vytvoření klienta, musíte vybrat jazyk. Úplný seznam jazyků podporovaných službou Speech Service, najdete v části [podporované jazyky](../API-Reference-REST/supportedlanguages.md).
+Když použijete `SpeechRecognitionServiceFactory` k vytvoření klienta, musíte vybrat jazyk. Úplný seznam jazyků podporovaných službou Speech Service najdete v části [podporované jazyky](../API-Reference-REST/supportedlanguages.md).
 
 ### <a name="speechrecognitionmode"></a>SpeechRecognitionMode
 
-Budete taky muset zadat `SpeechRecognitionMode` při vytváření klienta se `SpeechRecognitionServiceFactory`:
+Musíte také určit `SpeechRecognitionMode` , kdy se má `SpeechRecognitionServiceFactory`klient vytvořit:
 
-* `SpeechRecognitionMode_ShortPhrase`: Utterance až do 15 sekund. Odeslání dat službě, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
-* `SpeechRecognitionMode_LongDictation`: Utterance až dvě minuty dlouho. Odeslání dat službě, obdrží klient několik částečných výsledků a několik konečných výsledků podle kde serveru identifikuje pozastaví věty.
+* `SpeechRecognitionMode_ShortPhrase`: Utterance až 15 sekund dlouho. Jakmile se data odešlou do služby, klient obdrží několik částečných výsledků a jeden konečný výsledek s více než nejlepší možností.
+* `SpeechRecognitionMode_LongDictation`: Utterance může trvat až dvě minuty. Po odeslání dat službě klient obdrží více částečných výsledků a více konečných výsledků na základě toho, kde Server identifikuje větu pozastavena.
 
-### <a name="attach-event-handlers"></a>Připojte obslužné rutiny událostí
+### <a name="attach-event-handlers"></a>Připojit obslužné rutiny událostí
 
-Různé obslužných rutin událostí můžete připojit ke klientovi jste vytvořili:
+K vytvořenému klientovi můžete připojit různé obslužné rutiny událostí:
 
-* **Částečné výsledky události**: Tato událost volána pokaždé, když se tento Speech Service predicts vám může být názory, ještě než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`).
-* **Události chyb**: Volá se, když služba zjistí chybu.
-* **Záměru události**: Volá se na klientech "WithIntent" (pouze v režimu ShortPhrase) po posledním rozpoznávání výsledek je analyzován do strukturovaného formátu JSON záměr.
-* **Výsledek události**:
-  * V `SpeechRecognitionMode_ShortPhrase` režimu, tato událost se nazývá a vrátí výsledky, n-best po dokončení čtení.
-  * V `SpeechRecognitionMode_LongDictation` režimu, obslužná rutina události je volána více než jednou, podle kde službu identifikuje pozastaví věty.
-  * **Pro každou z možností n-best**, je vrácena hodnota spolehlivosti a několik různých forem rozpoznaný text. Další informace najdete v tématu [výstupní formát](../Concepts.md#output-format).
+* **Události částečných výsledků**: Tato událost se volá pokaždé, když služba rozpoznávání řeči předpovídá, co můžete vyjádřit, dokonce i před tím, než dokončíte práci `MicrophoneRecognitionClient`nebo dokončete odesílání dat (Pokud `DataRecognitionClient`používáte).
+* **Chybové události**: Volá se, když služba detekuje chybu.
+* **Události záměru**: Volá se na klientech WithIntent (jenom v režimu ShortPhrase), až se výsledek výsledku rozpoznávání analyzuje do strukturovaného záměru JSON.
+* **Události výsledku**:
+  * V `SpeechRecognitionMode_ShortPhrase` režimu se tato událost volá a po dokončení mluvení vrátí n nejlepších výsledků.
+  * V `SpeechRecognitionMode_LongDictation` režimu je obslužná rutina události volána vícekrát, na základě toho, kde služba identifikuje podobu pozastavení.
+  * **Pro každou z těchto n-nejlepších možností**se vrátí hodnota spolehlivosti a několik různých forem rozpoznaného textu. Další informace naleznete v tématu [Output Format](../Concepts.md#output-format).
 
 ## <a name="related-topics"></a>Související témata
 
-* [Klientská knihovna – referenční informace pro iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
-* [Začínáme s Microsoft rozpoznávání řeči a/nebo záměr v jazyce Java v Androidu](GetStartedJavaAndroid.md)
-* [Začínáme s Microsoft Speech API v jazyce JavaScript](GetStartedJSWebsockets.md)
-* [Začínáme s Microsoft Speech API prostřednictvím REST](GetStartedREST.md)
+* [Reference klientské knihovny pro iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
+* [Začínáme s rozpoznáváním řeči od Microsoftu nebo záměrem v jazyce Java v Androidu](GetStartedJavaAndroid.md)
+* [Začínáme s rozhraním API pro rozpoznávání řeči Microsoftu v JavaScriptu](GetStartedJSWebsockets.md)
+* [Začínáme s rozhraním Speech API od Microsoftu přes REST](GetStartedREST.md)

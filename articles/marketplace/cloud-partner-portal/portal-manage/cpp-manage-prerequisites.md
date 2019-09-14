@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 62269490355414a6b75759361cd574ac7e90e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598684"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962800"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Předpoklady pro správu účtů na portál partnerů cloudu 
 
@@ -21,7 +21,7 @@ Předtím, než budete moci použít [portál partnerů cloudu](https://cloudpar
 
 ## <a name="account-terms-and-guidelines"></a>Podmínky a pokyny pro účet
 
-Před vytvořením účtu pečlivě zkontrolujte svá práva a zodpovědnosti v rámci [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement) a [podmínky použití Microsoftu](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx) .  
+Před vytvořením účtu pečlivě zkontrolujte svá práva a zodpovědnosti v rámci [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement) a [podmínky použití Microsoftu](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx) .  
 
 Pečlivě vyberte název účtu.  Představuje vaši organizaci, takže by neměl obsahovat žádná chráněná nebo contentious slova.  Microsoft například v názvech účtů zakazuje používání svých autorských podmínek, jako je například Azure a Microsoft.  Další informace najdete v tématu [pokyny pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
 
@@ -44,6 +44,6 @@ V následující tabulce jsou uvedeny kroky nutné k úplné registraci jako Mic
 \*Tyto kroky jsou nezbytné pro Azure Marketplace nabídky Transact, ale velmi doporučené pro všechny nabídky.  Jakmile vytvoříte účet Microsoft a zaregistrujete se jako vývojář Microsoftu, budete mít přístup k dalším prostředkům Microsoftu a vývojářům Microsoftu a také k volitelným partnerským nabídkám.  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po dokončení postupu registrace byste měli být schopni se přihlásit [portál partnerů cloudu](https://cloudpartner.azure.com/).  Pomocí tohoto portálu můžete spravovat profily vydavatelů a spravovat uživatelské účty.

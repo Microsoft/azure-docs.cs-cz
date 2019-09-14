@@ -1,146 +1,146 @@
 ---
-title: Začínáme s rozhraním API pro rozpoznávání řeči Microsoftu pomocí služby knihovny jazyka C# | Dokumentace Microsoftu
+title: Začínáme s rozhraním API pro rozpoznávání řeči od Microsoftu pomocí C# knihovny služeb | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Převádějte mluvený jazyk na text pomocí knihovny služby rozpoznávání řeči Bingu.
+description: Pomocí knihovny služby rozpoznávání Zpracování řeči Bingu můžete převést mluvený jazyk na text.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 71c3e471a8844eb6c6b70921e40c94338a084a8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515240"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965847"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Rychlý start: Použít knihovnu pro zpracování řeči Bingu rozpoznávání služby v jazyce C&#35; pro Windows rozhraní .NET
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Rychlý start: Použití knihovny služeb rozpoznávání Zpracování řeči Bingu v jazyce C&#35; pro Windows .NET
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Knihovna služby je pro vývojáře, kteří mají své vlastní cloudovou službu a chcete volat Speech Service z příslušnou službu. Pokud chcete volat službu rozpoznávání řeči z aplikace vázané na zařízení, nepoužívejte tuto sadu SDK. (Použít dalších knihoven klienta nebo rozhraní REST API pro daný.)
+Knihovna služeb je určená pro vývojáře, kteří mají vlastní cloudovou službu a chtějí volat službu Speech Service ze své služby. Pokud chcete volat službu rozpoznávání řeči z aplikací vázaných na zařízení, nepoužívejte tuto sadu SDK. (Pro to použijte další klientské knihovny nebo rozhraní REST API.)
 
-Použití služby knihovny jazyka C#, nainstalujte [balíček NuGet Microsoft.Bing.Speech](https://www.nuget.org/packages/Microsoft.Bing.Speech/). Knihovna reference k rozhraní API najdete v článku [knihovna služby Microsoft řeči C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+Pokud chcete použít C# knihovnu služeb, nainstalujte [balíček NuGet Microsoft. Bing. Speech](https://www.nuget.org/packages/Microsoft.Bing.Speech/). Referenční informace k rozhraní API knihovny najdete v [knihovně služby C# Microsoft Speech Service](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
-Následující části popisují, jak nainstalovat, sestavení a spuštění ukázkové aplikace C# s použitím knihovny služby jazyka C#.
+Následující části popisují, jak nainstalovat, sestavit a spustit C# ukázkovou aplikaci pomocí knihovny C# služby.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-V následujícím příkladu byla vyvinuta pro Windows 8 + a .NET 4.5 + Framework pomocí [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
+Následující příklad byl vyvinut pro systémy Windows 8 + a .NET 4.5 + Framework pomocí sady [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
 ### <a name="get-the-sample-application"></a>Získat ukázkovou aplikaci
 
-Naklonujte ukázku z [ukázka knihovny služby řeči C#](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) úložiště.
+Naklonujte ukázku z [ukázkového úložiště knihovny služby pro rozpoznávání řeči C# ](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) .
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k rozhraní API pro rozpoznávání řeči odběru a získání klíče bezplatné předplatné zkušební verze
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k odběru rozhraní API pro rozpoznávání řeči a získejte bezplatný zkušební klíč předplatného.
 
-Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
+Rozhraní API pro rozpoznávání řeči je součástí Cognitive Services (dříve projekt Oxford). Můžete získat bezplatný zkušební odběr klíčů na stránce [Cognitive Services předplatné](https://azure.microsoft.com/try/cognitive-services/) . Po výběru rozhraní API pro rozpoznávání řeči vyberte **získat klíč rozhraní API** a získejte klíč. Vrátí primární a sekundární klíč. Oba klíče jsou vázané na stejnou kvótu, takže můžete použít kteroukoli z těchto klíčů.
 
 > [!IMPORTANT]
-> * Získáte klíč předplatného. Než budete moct použít klientské knihovny pro zpracování řeči, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
+> * Získejte klíč předplatného. Předtím, než budete moci použít klientské knihovny pro rozpoznávání řeči, je nutné mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Použijte váš klíč předplatného. U zadané služby knihovny ukázkové aplikace v C# je třeba jako jeden z parametrů příkazového řádku zadejte klíč předplatného. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
+> * Použijte svůj klíč předplatného. Pomocí zadané C# ukázkové aplikace knihovny služeb musíte zadat klíč předplatného jako jeden z parametrů příkazového řádku. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1: Nainstalovat ukázkovou aplikaci
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Instalace ukázkové aplikace
 
-1. Spusťte Visual Studio 2015 a vyberte **souboru** > **otevřít** > **projekt či řešení**.
+1. Spusťte Visual Studio 2015 a vyberte **soubor** > **otevřít** > **projekt/řešení**.
 
-2. Dvojitým kliknutím otevřete soubor řešení sady Visual Studio 2015 (.sln) s názvem SpeechClient.sln. Řešení se otevře v sadě Visual Studio.
+2. Dvojím kliknutím otevřete soubor řešení Visual Studio 2015 (. sln) s názvem SpeechClient. sln. Řešení se otevře v aplikaci Visual Studio.
 
-## <a name="step-2-build-the-sample-application"></a>Krok 2: Vytvoření ukázkové aplikace
+## <a name="step-2-build-the-sample-application"></a>Krok 2: Sestavení ukázkové aplikace
 
-Stiskněte kombinaci kláves Ctrl + Shift + B nebo vyberte **sestavení** na pásu karet. Potom vyberte **sestavit řešení**.
+Stiskněte kombinaci kláves CTRL + SHIFT + B nebo vyberte možnost **sestavit** v nabídce pásu karet. Pak vyberte **Sestavit řešení**.
 
 ## <a name="step-3-run-the-sample-application"></a>Krok 3: Spuštění ukázkové aplikace
 
-1. Po dokončení sestavení, stiskněte klávesu F5 nebo vyberte **Start** na pásu karet pro spuštění příkladu.
+1. Po dokončení sestavení stiskněte klávesu F5 nebo vyberte **Spustit** v nabídce pásu karet a spusťte příklad.
 
-2. Otevřete výstupní adresář pro ukázky, například SpeechClientSample\bin\Debug. Stiskněte Shift + šipka vpravo klikněte a vyberte **tady Otevřete příkazové okno**.
+2. Otevřete výstupní adresář pro ukázku, například SpeechClientSample\bin\Debug. Stiskněte Shift + klikněte pravým tlačítkem myši a vyberte **otevřít příkazové okno**.
 
-3. Spustit `SpeechClientSample.exe` s následujícími argumenty:
+3. Spusťte `SpeechClientSample.exe` s následujícími argumenty:
 
-   * Arg [0]: Určení vstupního zvuku WAV souboru.
-   * Arg [1]: Určete zvuku národní prostředí.
-   * Argument [2]: Zadejte režimy rozpoznávání: *Krátký* pro `ShortPhrase` režimu a *dlouhé* pro `LongDictation` režimu.
-   * Argument [3]: Zadejte klíč předplatného pro přístup ke službě rozpoznávání řeči.
+   * ARG [0]: Zadejte vstupní zvukový soubor WAV.
+   * ARG [1]: Určete národní prostředí zvuku.
+   * ARG [2]: Určete režimy rozpoznávání: *Krátké* pro `ShortPhrase` režim *a Long* pro režim.`LongDictation`
+   * ARG [3]: Zadejte klíč předplatného pro přístup ke službě rozpoznávání řeči.
 
-## <a name="samples-explained"></a>Vysvětlení ukázky
+## <a name="samples-explained"></a>Vysvětlení ukázek
 
-### <a name="recognition-modes"></a>Rozpoznávání režimy
+### <a name="recognition-modes"></a>Režimy rozpoznávání
 
-* `ShortPhrase` režim: Utterance až do 15 sekund. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek nejlepší.
-* `LongDictation` režim: Utterance až 10 minut dlouhé. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
+* `ShortPhrase`Mode Utterance až 15 sekund dlouho. Když se data odesílají na server, klient obdrží několik částečných výsledků a jeden konečný nejlepší výsledek.
+* `LongDictation`Mode Utterance až po dobu 10 minut. Po odeslání dat na server klient obdrží více částečných výsledků a více konečných výsledků na základě toho, kde server indikuje pozastavení vět.
 
 ### <a name="supported-audio-formats"></a>Podporované formáty zvuku
 
-Rozhraní Speech API podporuje audio/WAV pomocí následující kodeky:
+Rozhraní API pro rozpoznávání řeči podporuje zvuk/WAV pomocí následujících kodeků:
 
-* PCM jeden kanál
+* Jeden kanál PCM
 * Siren
 * SirenSR
 
 ### <a name="preferences"></a>Předvolby
 
-K vytvoření SpeechClient, musíte nejprve vytvořit objekt předvolby. Objekt předvolby je sadu parametrů, které konfiguruje chování služby řeči. Skládá se z těchto polí:
+Chcete-li vytvořit SpeechClient, musíte nejprve vytvořit objekt Preferences. Objekt Preferences je sada parametrů, která konfiguruje chování služby Speech. Skládá se z následujících polí:
 
-* `SpeechLanguage`: Národní prostředí zvuk zaslané službě řeči.
-* `ServiceUri`: Koncový bod používá k volání služby řeči.
-* `AuthorizationProvider`: Implementace IAuthorizationProvider slouží k načtení tokeny pro přístup ke službě řeči. I když tento vzorový zprostředkovatele autorizace služby Cognitive Services, důrazně doporučujeme vytvořit vlastní implementaci pro zpracování, ukládání tokenu do mezipaměti.
-* `EnableAudioBuffering`: Upřesňující možnosti. Zobrazit [správu připojení](#connection-management).
+* `SpeechLanguage`: Národní prostředí zvukového přenosu odeslaného službě Speech Service.
+* `ServiceUri`: Koncový bod, který se používá k volání služby řeči.
+* `AuthorizationProvider`: Implementace IAuthorizationProvider, která se používá k načtení tokenů za účelem přístupu ke službě Speech. I když ukázka poskytuje zprostředkovatele autorizace Cognitive Services, důrazně doporučujeme vytvořit vlastní implementaci pro zpracování mezipaměti tokenů.
+* `EnableAudioBuffering`: Pokročilá možnost. Viz téma [Správa připojení](#connection-management).
 
-### <a name="speech-input"></a>Hlasový vstup
+### <a name="speech-input"></a>Vstup řeči
 
 Objekt SpeechInput se skládá ze dvou polí:
 
-* **Zvuk**: Datový proud provádění podle vašeho výběru, ze kterého stáhne sada SDK zvuku. Může být kterýkoli [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , který podporuje čtení.
+* **Zvuk**: Implementace datového proudu podle vašeho výběru, ze které sada SDK vyžádá zvuk. Může to být libovolný [datový proud](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , který podporuje čtení.
    > [!NOTE]
-   > Sada SDK rozpozná konce datového proudu, pokud vrací datový proud **0** ve čtení.
+   > Sada SDK detekuje konec streamu, když datový proud vrátí hodnotu **0** v režimu čtení.
 
-* **RequestMetadata**: Metadata o požadavek řeči. Další informace najdete v tématu [odkaz](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+* **RequestMetadata**: Metadata žádosti o řeč Další informace najdete v [referenčních](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)informacích.
 
-### <a name="speech-request"></a>Žádost o rozpoznávání řeči
+### <a name="speech-request"></a>Požadavek na řeč
 
-Po instance SpeechClient a SpeechInput objekty pomocí RecognizeAsync vytvořte žádost na Speech Service.
+Po vytvoření instance objektů SpeechClient a SpeechInput použijte RecognizeAsync k vytvoření žádosti o službu Speech.
 
 ```cs
     var task = speechClient.RecognizeAsync(speechInput);
 ```
 
-Po dokončení žádosti se dokončí úkol vrácený RecognizeAsync. Poslední RecognitionResult je konec uznání. Úkol může selhat, pokud služba nebo sady SDK dojde k neočekávanému selhání.
+Po dokončení žádosti se úloha vrácená nástrojem RecognizeAsync dokončí. Poslední RecognitionResult je koncem rozpoznávání. Úkol může selhat, pokud se služba nebo sada SDK neočekávaně nezdaří.
 
 ### <a name="speech-recognition-events"></a>Události rozpoznávání řeči
 
-#### <a name="partial-results-event"></a>Událost částečné výsledky.
+#### <a name="partial-results-event"></a>Událost částečných výsledků
 
-Tato událost volána pokaždé, když Speech Service předpovídá, co vám může být říká, ještě předtím, než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`). Můžete se přihlásit k události pomocí `SpeechClient.SubscribeToPartialResult()`. Nebo můžete použít metodu předplatné obecné události `SpeechClient.SubscribeTo<RecognitionPartialResult>()`.
+Tato událost se volá pokaždé, když služba rozpoznávání řeči předpovídá, co můžete vyjádřit, dokonce i před tím, než dokončíte práci `MicrophoneRecognitionClient`nebo dokončete odesílání dat (Pokud `DataRecognitionClient`používáte). K odběru události se můžete přihlásit pomocí `SpeechClient.SubscribeToPartialResult()`. Nebo můžete použít metodu `SpeechClient.SubscribeTo<RecognitionPartialResult>()`předplatného pro obecné události.
 
-**Vrátí formát** | Popis |
+**Návratový formát** | Popis |
 ------|------
-**LexicalForm** | Tento formulář je ideální pro použití u aplikací, které je třeba výsledky rozpoznávání řeči a nezpracované.
-**DisplayText** | Rozpoznaný fráze s inverzní text normalizace, malá a velká písmena, interpunkce a maskování vulgárních výrazů, které jsou použity. Vulgárních výrazů je maskována hvězdičkami po počátečním znaku, například "d ***." Tento formulář je ideální pro použití u aplikací, které zobrazují výsledky rozpoznávání řeči pro uživatele.
-**spolehlivosti** | Úroveň spolehlivosti rozpoznanou frázi představuje pro přidružené zvuk serverem rozpoznávání řeči.
-**MediaTime** | Aktuální čas vzhledem k začátku zvukový datový proud (v časových jednotkách 100 nanosekund).
-**MediaDuration** | Aktuální frázi doba trvání/délka vzhledem k zvuku segment (v časových jednotkách 100 nanosekund).
+**LexicalForm** | Tento formulář je optimální pro použití aplikacemi, které potřebují nezpracované výsledky rozpoznávání řeči.
+**DisplayText** | Rozpoznaná fráze, která má použitu normalizaci textu, Velká písmena, interpunkční znaménko a vulgární výrazy Vulgární výrazy jsou maskovány hvězdičkami za úvodní znak, například "d * * *". Tento formulář je optimální pro použití aplikacemi, které zobrazují výsledky rozpoznávání řeči uživateli.
+**Jistotou** | Úroveň jistoty, kterou rozpoznaná fráze představuje pro přidružený zvuk definovaný serverem pro rozpoznávání řeči.
+**MediaTime** | Aktuální čas relativní ke spuštění zvukového datového proudu (v 100 jednotek času).
+**MediaDuration** | Doba trvání a délka aktuální fráze vzhledem ke segmentu zvuku (v 100 – nanosekund jednotek času).
 
-#### <a name="result-event"></a>Výsledek události
-Po dokončení čtení (v `ShortPhrase` režimu), tato událost je volána. Možnosti pro n-best jste už zadali pro výsledek. V `LongDictation` režimu události může být volána více než jednou, podle označuje, kde server pozastaví věty. Můžete se přihlásit k události pomocí `SpeechClient.SubscribeToRecognitionResult()`. Nebo můžete použít metodu předplatné obecné události `SpeechClient.SubscribeTo<RecognitionResult>()`.
+#### <a name="result-event"></a>Událost výsledku
+Po dokončení mluvení (v `ShortPhrase` režimu) se tato událost zavolá. K dispozici máte s n-nejlepší možností pro výsledek. V `LongDictation` režimu je možné událost volat víckrát, na základě toho, kde server indikuje pozastavení vět. K odběru události se můžete přihlásit pomocí `SpeechClient.SubscribeToRecognitionResult()`. Nebo můžete použít metodu `SpeechClient.SubscribeTo<RecognitionResult>()`předplatného pro obecné události.
 
-**Vrátí formát** | Popis |
+**Návratový formát** | Popis |
 ------|------|
-**RecognitionStatus** | Stav vytváření uznání. Například ho vznikla jako důsledek úspěšného rozpoznávání, nebo v důsledku zrušení připojení atd.
-**Fráze** | Sada n-best rozpoznaný věty bez obav rozpoznávání.
+**RecognitionStatus** | Stav způsobu, jakým bylo rozpoznávání vyrobeno. Například byl vytvořen jako výsledek úspěšného rozpoznávání nebo v důsledku zrušení připojení atd.
+**Větách** | Sada n-nejlepších rozpoznaných frází s jistotou pro rozpoznávání.
 
-Další informace o rozpoznávání výsledky, naleznete v tématu [výstupní formát](../Concepts.md#output-format).
+Další informace o výsledcích rozpoznávání naleznete v tématu [Output Format](../Concepts.md#output-format).
 
-### <a name="speech-recognition-response"></a>Odpověď rozpoznávání řeči
+### <a name="speech-recognition-response"></a>Odpověď na rozpoznávání řeči
 
-Příklad odpovědi řeči:
+Příklad odpovědi na řeč:
 ```
 --- Partial result received by OnPartialResult  
 ---what  
@@ -157,15 +157,15 @@ What's the weather like? (Confidence:High)
 
 ## <a name="connection-management"></a>Správa připojení
 
-Rozhraní API využívá jedno připojení pomocí protokolu WebSocket každý požadavek. Sada SDK se pro zajištění optimálního uživatelského prostředí, pokusí znovu připojit ke službě řeči a rozpoznávání spusťte z poslední RecognitionResult přijatou. Například pokud zvuku žádost o dvou minut dlouhé, sady SDK přijme RecognitionEvent na minutu trvající značce a po pěti sekundách došlo k chybě sítě, sady SDK spustí nové připojení, který začíná na značku jedné minuty.
+Rozhraní API využívá jedno připojení WebSocket na jednu žádost. Pro zajištění optimálního uživatelského prostředí se sada SDK pokusí znovu připojit ke službě Speech a zahájit rozpoznávání z poslední RecognitionResult, kterou obdržela. Například pokud je požadavek na zvuk 2 minuty, sada SDK obdržela RecognitionEvent na jednosměrnou značku a po pěti sekundách dojde k selhání sítě, sada SDK spustí nové připojení, které začíná od první minuty.
 
 >[!NOTE]
->Sada SDK nepodporuje hledání zpět na značku jedné minuty vzhledem k tomu, že datový proud nepodporuje vyhledávání. Místo toho sada SDK sleduje vnitřní vyrovnávací paměti, že používá k přechodnému zvuk a vymaže vyrovnávací paměti, když přijímá události RecognitionResult.
+>Sada SDK se nevrátí zpět na jednosměrovou značku, protože datový proud nemusí podporovat hledání. Místo toho sada SDK uchovává vnitřní vyrovnávací paměť, kterou používá k ukládání zvuku do vyrovnávací paměti a vymazání vyrovnávací paměti při přijímání RecognitionResultch událostí.
 
-## <a name="buffering-behavior"></a>Chování ukládání do vyrovnávací paměti
+## <a name="buffering-behavior"></a>Chování při ukládání do vyrovnávací paměti
 
-Ve výchozím nastavení sady SDK vyrovnávacích pamětí zvuk tak, aby ji můžete obnovit, když dojde k přerušení sítě. Ve scénáři, kde je vhodnější než zahodit zvuk přijdete při odpojení sítě a restartujte připojení, je nejvhodnější zakázat zvuku ukládání do vyrovnávací paměti tak, že nastavíte `EnableAudioBuffering` objektu Předvolby `false`.
+Sada SDK ve výchozím nastavení ukládá zvuk do vyrovnávací paměti tak, aby se mohla zotavit, když dojde k síťovému přerušení. Ve scénáři, ve kterém je vhodnější zrušit zvuk během odpojení sítě a restartovat připojení, je nejlepší zakázat ukládání zvuku do vyrovnávací paměti `EnableAudioBuffering` nastavením v objektu Preferences na. `false`
 
 ## <a name="related-topics"></a>Související témata
 
-[Referenční dokumentace knihoven služby Microsoft řeči C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)
+[Referenční informace C# ke knihovně služby Microsoft Speech Service](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)

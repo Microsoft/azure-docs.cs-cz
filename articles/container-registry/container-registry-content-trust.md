@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172312"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959187"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
@@ -43,7 +43,7 @@ Důvěryhodnost obsahu se spravuje prostřednictvím používání sady kryptogr
 
 Prvním krokem je povolení důvěryhodnosti obsahu na úrovni registru. Jakmile povolíte důvěryhodnost obsahu, klienti (uživatelé nebo služby) budou do vašeho registru moct odesílat podepsané image. Po povolení důvěryhodnosti obsahu v registru nedojde k omezení možnosti využívat registr pouze na zákazníky s povolenou důvěryhodností obsahu. Příjemci bez povolené důvěryhodnosti obsahu můžou váš registr normálně využívat i nadále. Příjemcům, kteří ve svých klientech povolili důvěryhodnost obsahu, se však zobrazí *pouze* podepsané image ve vašem registru.
 
-Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost**Uložit** **povolený** >  **vztah důvěryhodnosti** > obsahu.
+Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost**Uložit** **povolený** >  **vztah důvěryhodnosti** > obsahu. V Azure CLI taky můžete použít příkaz [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] .
 
 ![Povolení důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>Udělení oprávnění k podepisování imagí
 
 Do vašeho registru můžou odesílat důvěryhodné image pouze uživatelé nebo systémy, kterým k tomu udělíte oprávnění. Pokud chcete uživateli (nebo systému prostřednictvím instančního objektu) udělit oprávnění k odesílání důvěryhodných imagí, udělte příslušné identitě Azure Active Directory roli `AcrImageSigner`. To je kromě role (nebo `AcrPush` ekvivalentní), která je nutná pro vkládání imagí do registru. Podrobnosti najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).
+
+> [!NOTE]
+> [Účtu správce](container-registry-authentication.md#admin-account) služby Azure Container Registry nemůžete udělit oprávnění k odesílání důvěryhodných imagí.
 
 Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a v Azure CLI.
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 Hodnota `<service principal ID>` může být **ID aplikace**, **ID objektu** nebo jeden z **hlavních názvů služby** instančního objektu. Další informace o práci s instančními objekty a službou Azure Container Registry najdete v tématu [Ověřování ve službě Azure Container Registry pomocí instančních objektů](container-registry-auth-service-principal.md).
 
-Po změně jakékoli role spusťte příkaz `az acr login` a aktualizujte místní token identity pro rozhraní příkazového řádku Azure CLI tak, aby se nové role mohly projevit.
+> [!IMPORTANT]
+> Po změně jakékoli role spusťte příkaz `az acr login` a aktualizujte místní token identity pro rozhraní příkazového řádku Azure CLI tak, aby se nové role mohly projevit. Informace o ověřování rolí pro identitu najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md) a [řešení potíží s funkcí RBAC pro prostředky Azure](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Odeslání důvěryhodné image
 
@@ -214,3 +218,4 @@ Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do to
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

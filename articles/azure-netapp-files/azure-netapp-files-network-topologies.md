@@ -3,7 +3,7 @@ title: Pokyny pro Azure NetApp Files plánování sítě | Microsoft Docs
 description: Popisuje pokyny, které vám mohou pomoci při návrhu efektivní síťové architektury pomocí Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383502"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984121"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -36,13 +36,13 @@ Při plánování Azure NetApp Files sítě byste měli pochopit několik důle�
 Následující funkce jsou aktuálně pro Azure NetApp Files nepodporované: 
 
 * Skupiny zabezpečení sítě (skupin zabezpečení sítě) použité pro delegovanou podsíť
-* Trasy definované uživatelem (udr) s dalším segmentem směrování jako podsíť souborů Azure NetApp
+* Trasy definované uživatelem (udr) s předponou adresy jako podsíť souborů Azure NetApp
 * Zásady Azure (například vlastní zásady pojmenování) na rozhraní Azure NetApp Files
 * Nástroje pro vyrovnávání zatížení pro Azure NetApp Files provoz
 
 Následující omezení sítě platí pro Azure NetApp Files:
 
-* Počet IP adres, které se používají ve virtuální síti s Azure NetApp Files (včetně partnerských virtuální sítě), nesmí překročit 1000.
+* Počet IP adres, které se používají ve virtuální síti s Azure NetApp Files (včetně partnerských virtuální sítě), nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, aby se splnily požadavky na škálování zákazníka. Pokud požadujete další IP adresy, kontaktujte tým podpory s vaším případem použití a požadovaným limitem v provizorním případě.
 * V každé službě Azure Virtual Network (VNet) je možné delegovat Azure NetApp Files jenom jednu podsíť.
 
 
@@ -54,7 +54,7 @@ Následující tabulka popisuje síťové topologie podporované nástrojem Azur
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Připojení ke svazku v místní síti VNet    |    Ano    |         |
 |    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Ano    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    Ne    |    Žádný    |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    Ne    |    Žádné    |
 |    Připojení ke svazku přes ExpressRoute bránu    |    Ano    |         |
 |    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |        |
 |    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Ano    |         |

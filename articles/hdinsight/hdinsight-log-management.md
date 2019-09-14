@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879467"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960993"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -79,11 +79,11 @@ Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDIns
 
 Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
 
-![Zásobník a verze](./media/hdinsight-log-management/stack-versions.png)
+![Zásobník a verze](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta**. 
+Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta**.
 
-![Konfigurace klientů hostitele](./media/hdinsight-log-management/client-configs.png)
+![Konfigurace klientů hostitele](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>Zobrazit protokoly akcí skriptů
 
