@@ -76,7 +76,7 @@ V modelech vytvořených pomocí knihovny serializátoru jsou podporovány násl
 | int64\_t |bitové celé číslo 64 |
 | bool |boolean |
 | ascii\_char\_ptr |Řetězec ASCII |
-| POSUN\_DATA\_AČASU\_EDM |posun data a času |
+| EDM\_DATE\_TIME\_OFFSET |posun data a času |
 | EDM\_GUID |GUID |
 | EDM\_BINARY |binary |
 | DECLARE\_STRUCT |komplexní datový typ |
