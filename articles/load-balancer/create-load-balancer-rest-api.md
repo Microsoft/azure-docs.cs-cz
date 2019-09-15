@@ -35,10 +35,10 @@ Pomocí následující požadavek HTTP PUT můžete vytvořit nový Azure Load b
 
 |Název  |V  |Požaduje se |Typ |Popis |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   řetězec      |  Přihlašovací údaje předplatného, které jedinečně identifikují předplatné Microsoft Azure. ID předplatného je součástí identifikátoru URI pro každé volání služby.      |
-|resourceGroupName     |     path    | True        |  řetězec       |   Název skupiny prostředků.     |
-|loadBalancerName     |  path       |      True   |    řetězec     |    Název nástroje pro vyrovnávání zatížení.    |
-|api-version    |   query     |  True       |     řetězec    |  Verze rozhraní API klienta.      |
+|subscriptionId   |  path       |  True       |   string      |  Přihlašovací údaje předplatného, které jedinečně identifikují předplatné Microsoft Azure. ID předplatného je součástí identifikátoru URI pro každé volání služby.      |
+|resourceGroupName     |     path    | True        |  string       |   Název skupiny prostředků.     |
+|loadBalancerName     |  path       |      True   |    string     |    Název nástroje pro vyrovnávání zatížení.    |
+|api-version    |   query     |  True       |     string    |  Verze rozhraní API klienta.      |
 
 
 
@@ -48,7 +48,7 @@ Jediný požadovaný parametr `location`. Pokud nedefinujete *SKU* verze, zákla
 
 | Název | Typ | Popis |
 | :--- | :--- | :---------- |
-| location | řetězec | Umístění prostředku. Získat aktuální seznam umístění s využitím [seznamu umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operace. |
+| location | string | Umístění prostředku. Získat aktuální seznam umístění s využitím [seznamu umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operace. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Příklad: Vytvoření a aktualizace základního Load Balancer
