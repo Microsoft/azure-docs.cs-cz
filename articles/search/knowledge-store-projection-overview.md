@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186228"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004007"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Práce s projekcemi v úložišti znalostí v Azure Search
 
@@ -34,7 +34,7 @@ Znalostní databáze podporuje dva typy projekce:
 
 + **Objekty**: Když budete potřebovat reprezentaci dat a rozšíření JSON, jsou objekty projekce uloženy jako objekty blob.
 
-Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md) .
+Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md).
 
 ## <a name="projection-groups"></a>Skupiny projekce
 
@@ -66,6 +66,9 @@ Jeden dokument v indexu můžete promítnout do několika tabulek a zachovat vzt
 ### <a name="defining-a-table-projection"></a>Definování projekce tabulky
 
 Při definování projekce tabulky v rámci `knowledgeStore` prvku dovednosti začněte mapováním uzlu ve stromu rozšíření na zdroj tabulky. Obvykle je tento uzel výstupem **Shaper** dovednosti, kterou jste přidali do seznamu dovedností k vytvoření konkrétního tvaru, který potřebujete k Projectu v tabulkách. Uzel, který se rozhodnete pro projekt, lze rozdělit na více tabulek. Definice tabulek je seznam tabulek, které chcete projektovat. 
+
+#### <a name="projection-slicing"></a>Průřez projekce
+Při definování skupiny projekce tabulky lze jeden uzel ve stromu rozšíření rozřezat na více souvisejících tabulek. Přidání tabulky se zdrojovou cestou, která je podřízenou položkou existující projekce tabulky, způsobí, že bude podřízený uzel rozložen mimo nadřazený uzel a bude promítnut do nové tabulky, která je ještě v relaci. Díky tomu můžete v Shaper dovednosti definovat jeden uzel, který může být zdrojem pro všechny vaše projekce tabulek.
 
 Každá tabulka vyžaduje tři vlastnosti:
 
@@ -154,7 +157,7 @@ Generování projekce objektu vyžaduje několik atributů specifických pro obj
 
 + storageContainer: Kontejner, do kterého budou objekty uloženy
 + Zdrojová Cesta k uzlu stromu obohacení, který je kořenem projekce
-+ zkrat Cesta, která představuje jedinečný klíč pro objekt, který má být uložen. Použije se k vytvoření názvu objektu BLOB v kontejneru.
++ Zkrat Cesta, která představuje jedinečný klíč pro objekt, který má být uložen. Použije se k vytvoření názvu objektu BLOB v kontejneru.
 
 ## <a name="projection-lifecycle"></a>Životní cyklus projekce
 

@@ -1,6 +1,6 @@
 ---
 title: Neuronové síť s hloubkovým učením pomocí PyTorch
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se spouštět školicí skripty PyTorch v podnikovém měřítku pomocí třídy PyTorch Estimator v Azure Machine Learning.  Ukázkové skripty klasifikují obrázky od kuřecích a Turecka a vytvářejí neuronovéou síť s hloubkovým učením na základě kurzu přenosu PyTorch.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966788"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002574"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Naučte se škálovat modely Pytorch hloubkového učení s využitím Azure Machine Learning
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor služby Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
 Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
@@ -93,7 +93,7 @@ Datová sada se skládá z přibližně 120 školicích snímků každého pro k
 
 ### <a name="prepare-training-scripts"></a>Příprava školicích skriptů
 
-V tomto kurzu už je k dispozici `pytorch_train.py`školicí skript. V praxi můžete použít libovolný vlastní školicí skript, jak je, a spustit ho pomocí Azure Machine Learning služby.
+V tomto kurzu už je k dispozici `pytorch_train.py`školicí skript. V praxi můžete použít libovolný vlastní školicí skript, jak je, a spustit ho pomocí Azure Machine Learning.
 
 Nahrajte školicí skript Pytorch, `pytorch_train.py`.
 
@@ -101,7 +101,7 @@ Nahrajte školicí skript Pytorch, `pytorch_train.py`.
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Pokud ale chcete použít možnosti sledování a metriky služby Azure Machine Learning, budete muset do školicího skriptu přidat malý kód. Příklady sledování metrik najdete v `pytorch_train.py`části.
+Pokud ale chcete použít Azure Machine Learning sledování a metriky, budete muset do školicího skriptu přidat malý kód částky. Příklady sledování metrik najdete v `pytorch_train.py`části.
 
 ## <a name="create-a-compute-target"></a>Vytvořte cílové výpočetní prostředí
 
@@ -158,7 +158,7 @@ run.wait_for_completion(show_output=True)
 
 Po spuštění se spustí v následujících fázích:
 
-- Připravuje se: Obrázek Docker se vytvoří podle PyTorch Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Připravuje**se: Obrázek Docker se vytvoří podle PyTorch Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
 - **Škálování:** Cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Distribuované trénování
 
-[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy PyTorch a služba Azure Machine Learning bude orchestrace spravovat za vás.
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy PyTorch a Azure Machine Learning bude orchestrace spravovat za vás.
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) je open source, což snižuje rámec pro distribuované školení vyvinuté pomocí Uber. Nabízí snadnou cestu k distribuovaným úlohám PyTorch GPU.
@@ -222,7 +222,7 @@ Chcete-li optimalizovat odvození s [modulem runtime ONNX](concept-onnx.md), př
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste si naučili a zaregistrovali neuronové síť s hloubkovým učením pomocí PyTorch ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
+V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí PyTorch na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)

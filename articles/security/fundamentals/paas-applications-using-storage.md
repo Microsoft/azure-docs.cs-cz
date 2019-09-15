@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726767"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999165"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage
 V tomto článku se zabýváme kolekcí Azure Storage osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
@@ -71,14 +71,14 @@ Další informace o RBAC najdete v těchto tématech:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Použití šifrování na straně klienta pro data s vysokou hodnotou
 Šifrování na straně klienta umožňuje programově šifrovat data při přenosu před odesláním do Azure Storage a programově dešifrovat data při jejich načítání. Díky tomu je zajištěno šifrování přenášených dat, ale zároveň je zajištěno šifrování v klidovém režimu. Šifrování na straně klienta představuje nejbezpečnější metodu šifrování dat, ale vyžaduje, abyste v rámci aplikace napravili programové změny a zavedli procesy správy klíčů na místo.
 
-Šifrování na straně klienta také umožňuje mít jedinou kontrolu nad šifrovacími klíči. Můžete generovat a spravovat vlastní šifrovací klíče. Používá techniku obálky, kde Klientská knihovna služby Azure Storage generuje šifrovací klíč obsahu (CEK), který je pak zabalené (šifrovaný) pomocí klíče šifrování klíčů (KEK). KEK je identifikován identifikátorem klíče a může se jednat o asymetrický klíč nebo symetrický klíč a lze ho spravovat místně nebo uložit v [Azure Key Vault](/azure/key-vault/key-vault-whatis).
+Šifrování na straně klienta také umožňuje mít jedinou kontrolu nad šifrovacími klíči. Můžete generovat a spravovat vlastní šifrovací klíče. Používá techniku obálky, kde Klientská knihovna služby Azure Storage generuje šifrovací klíč obsahu (CEK), který je pak zabalené (šifrovaný) pomocí klíče šifrování klíčů (KEK). KEK je identifikován identifikátorem klíče a může se jednat o asymetrický klíč nebo symetrický klíč a lze ho spravovat místně nebo uložit v [Azure Key Vault](/azure/key-vault/key-vault-overview).
 
 Šifrování na straně klienta je integrováno do klientských knihoven Java a .NET Storage. Další informace o šifrování dat v klientských aplikacích a vytváření a správě vlastních šifrovacích klíčů najdete v tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) .
 
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Povolit Šifrování služby Storage pro neaktivní neaktivní data
 Když je povolená [šifrování služby Storage](/azure/storage/common/storage-service-encryption) pro úložiště souborů, data se šifrují automaticky pomocí šifrování AES-256. Microsoft zpracovává veškerá šifrování, dešifrování a správu klíčů. Tato funkce je k dispozici pro typy redundance LRS a GRS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek vás zavedl do kolekce Azure Storage osvědčené postupy zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
 

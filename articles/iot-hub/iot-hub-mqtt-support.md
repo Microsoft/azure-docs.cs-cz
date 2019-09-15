@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946350"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004126"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -48,7 +48,7 @@ Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples) |IoTHubTransportProvider. MQTT |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Ve výchozím nastavení vždycky podporuje MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrace aplikace zařízení z AMQP do MQTT
 
@@ -59,6 +59,8 @@ V takovém případě nezapomeňte zkontrolovat následující položky:
 * AMQP vrací chyby pro mnoho podmínek, zatímco MQTT ukončí připojení. V důsledku toho může logika zpracování výjimek vyžadovat nějaké změny.
 
 * MQTT nepodporuje operace *odmítnutí* při přijímání [zpráv z cloudu na zařízení](iot-hub-devguide-messaging.md). Pokud vaše back-end aplikace potřebuje přijmout odpověď z aplikace zařízení, zvažte použití [přímých metod](iot-hub-devguide-direct-methods.md).
+
+* AMQP se v sadě Python SDK nepodporuje.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Přímé použití protokolu MQTT (jako zařízení)
 
@@ -362,7 +364,7 @@ Další informace najdete v tématu [Průvodce pro vývojáře Direct Method](io
 
 Pokud potřebujete přizpůsobit chování protokolu MQTT na straně cloudu, měli byste si prohlédnout [bránu protokolu Azure IoT](iot-hub-protocol-gateway.md). Tento software vám umožní nasadit vysoce výkonnou bránu vlastního protokolu, kterou rozhraní přímo s IoT Hub. Brána protokolu Azure IoT umožňuje přizpůsobit protokol zařízení tak, aby vyhovoval nasazením brownfield MQTT nebo jiným vlastním protokolům. Tento přístup ale vyžaduje, abyste spustili a provozoval vlastní bránu protokolu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/documentation).
 

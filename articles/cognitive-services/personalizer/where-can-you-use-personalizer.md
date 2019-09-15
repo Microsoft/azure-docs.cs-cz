@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663641"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999650"
 ---
 # <a name="where-can-you-use-personalizer"></a>Kde se dá služba Personalizace využít?
 
@@ -58,7 +58,7 @@ Efektivitu přizpůsobeného přizpůsobování můžete pravidelně monitorovat
 
 Mnohé společnosti využívají moduly doporučení, marketingové a týmové nástroje, segmentování skupin a clusteringu, filtrování pro spolupráci a další způsoby, jak doporučit produkty od velkého katalogu zákazníkům.
 
-Úložiště GitHubu, které [doporučuje Microsoft](https://github.com/Microsoft/Recommenders) , poskytuje příklady a osvědčené postupy pro vytváření systémů doporučení, které se poskytují jako Jupyter poznámkové bloky. Poskytuje pracovní příklady pro přípravu dat, sestavování modelů, vyhodnocování, ladění a zprovozňováníí pro doporučení pro mnohé běžné přístupy, včetně xDeepFM, správní rady, ALS, MKP, DKN.
+[Úložiště GitHubu, které doporučuje Microsoft](https://github.com/Microsoft/Recommenders) , poskytuje příklady a osvědčené postupy pro vytváření systémů doporučení, které se poskytují jako Jupyter poznámkové bloky. Poskytuje pracovní příklady pro přípravu dat, sestavování modelů, vyhodnocování, ladění a zprovozňováníí pro doporučení pro mnohé běžné přístupy, včetně xDeepFM, správní rady, ALS, MKP, DKN.
 
 Přizpůsobování může pracovat s modulem doporučení, když je přítomen.
 

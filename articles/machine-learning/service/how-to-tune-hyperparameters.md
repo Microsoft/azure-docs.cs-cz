@@ -1,7 +1,7 @@
 ---
 title: Optimalizovat pro váš model hyperparameters
-titleSuffix: Azure Machine Learning service
-description: Efektivně vylaďte hyperparameters pro obsáhlý learning / machine learning modelu pomocí služby Azure Machine Learning. Naučíte se, jak definovat místo pro hledání parametrů, určit primární metriku, která se optimalizuje, a brzké ukončení nedostatečně výkonného spuštění.
+titleSuffix: Azure Machine Learning
+description: Efektivní ladění parametrů pro model hloubkového učení a strojového učení pomocí Azure Machine Learning. Naučíte se, jak definovat místo pro hledání parametrů, určit primární metriku, která se optimalizuje, a brzké ukončení nedostatečně výkonného spuštění.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873071"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999393"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Vyladění hyperparameters pro modelu pomocí služby Azure Machine Learning
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Vyladění parametrů pro model pomocí Azure Machine Learning
 
-Efektivně vylaďte hyperparameters pro model pomocí služby Azure Machine Learning.  Hyperparametrů zahrnuje následující kroky:
+Efektivní ladění parametrů pro váš model pomocí Azure Machine Learning.  Hyperparametrů zahrnuje následující kroky:
 
 * Definování prostor parametr hledání
 * Zadejte primární metriku pro optimalizaci  
@@ -45,7 +45,7 @@ Automaticky vylaďte hyperparameters prozkoumáním rozsah hodnot definovaných 
 
 ### <a name="types-of-hyperparameters"></a>Typy hyperparametrů
 
-Každý parametr může být buď diskrétní, nebo souvislý a má distribuci hodnot popsaných výrazem [parametru](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py).
+Každý parametr může být buď diskrétní, nebo souvislý a má distribuci hodnot popsaných [výrazem parametru](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py).
 
 #### <a name="discrete-hyperparameters"></a>Diskrétní hyperparameters 
 
@@ -94,7 +94,7 @@ Tento kód definuje prostoru pro hledání se dvěma parametry - `learning_rate`
 
 ### <a name="sampling-the-hyperparameter-space"></a>Vzorkování hyperparameter místa
 
-Můžete také zadat parametr metody vzorkování na používání přes definici hyperparameter místa. Služba Azure Machine Learning podporuje výběrová, vzorkování mřížky a Bayesova vzorkování.
+Můžete také zadat parametr metody vzorkování na používání přes definici hyperparameter místa. Azure Machine Learning podporuje náhodné vzorkování, vzorkování mřížky a vzorkování bayesovského rozhodování.
 
 #### <a name="random-sampling"></a>Náhodný vzorkování
 
@@ -186,7 +186,7 @@ Při použití zásady předčasné ukončení, můžete nakonfigurovat, které 
 * `evaluation_interval`: frekvence k uplatnění zásad. Pokaždé, když cvičný skript protokoluje primární metrika se počítá jako jeden interval. Proto `evaluation_interval` 1 uplatní zásady pokaždé, když se skript školení hlásí primární metriku. `evaluation_interval` 2 se dané zásady používaly jiné pokaždé cvičný skript hlásí primární metriku. Pokud není zadán, `evaluation_interval` je standardně nastavená na hodnotu 1.
 * `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů o délce. Je volitelný parametr, který umožňuje všechny konfigurace spuštění pro počáteční minimální počet intervalů, jak se vyhnout předčasné ukončení školení, které běží. Je-li zadána, se zásady vztahují každých několik evaluation_interval, který je větší než nebo rovna hodnotě delay_evaluation.
 
-Služba Azure Machine Learning podporuje následující zásady předčasné ukončení.
+Azure Machine Learning podporuje následující zásady prvotního ukončení.
 
 ### <a name="bandit-policy"></a>Bandit zásad
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` je název přiřadit vaše hyperparameter ladění experiment a `workspace` je pracovní prostor, ve kterém chcete vytvořit experiment (Další informace o experimenty, naleznete v tématu [jak funguje služba Azure Machine Learning?](concept-azure-machine-learning-architecture.md))
+`experiment_name`je název, který jste přiřadili experimentu ladění vašich parametrů, `workspace` a je pracovní prostor, ve kterém chcete vytvořit experiment (Další informace o experimentech najdete v tématu [jak Azure Machine Learning funguje?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Vizualizujte experimentu
 
@@ -351,6 +351,6 @@ Další informace najdete v poznámkách k vlakovým parametrům-* v této slož
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Sledovat experimentu](how-to-track-experiments.md)
 * [Nasazení trénovaného modelu](how-to-deploy-and-where.md)

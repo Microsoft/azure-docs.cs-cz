@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915166"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003810"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj C# topologií pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -135,7 +135,7 @@ Příklad topologie, která používá tuto součást a pracuje se zachováním 
 
 2. V okně **Nový projekt** rozbalte položku **nainstalované** > **šablony**a vyberte možnost **Azure Data Lake**. V seznamu šablon vyberte možnost zaplavit **aplikaci**. V dolní části obrazovky jako název aplikace zadejte **WORDCOUNT** .
 
-    ![Snímek obrazovky okna s novým projektem](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Snímek obrazovky okna s novým projektem](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. Po vytvoření projektu byste měli mít následující soubory:
 
@@ -338,7 +338,7 @@ Příklad topologie, která používá tuto součást a pracuje se zachováním 
 
 Spoutů a šrouby jsou uspořádány do grafu, který definuje způsob toku dat mezi komponentami. V této topologii je graf následující:
 
-![Diagram uspořádání komponent](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Diagram uspořádání komponent](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 Věty jsou vydávány z Spout a jsou distribuovány do instancí rozdělovače. Šroubce přerušuje věty na slova, která jsou distribuována do čítače čítačů.
 
@@ -461,7 +461,6 @@ Příklad hybridní topologie získáte tak, že vytvoříte projekt a vyberete 
   > [!NOTE]  
   > Tato verze také ukazuje, jak použít kód Clojure z textového souboru jako součást Java.
 
-
 Chcete-li přepnout topologii, která se používá při odeslání projektu, přesuňte `[Active(true)]` příkaz do topologie, kterou chcete použít, před odesláním do clusteru.
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
    > [!NOTE]
    > Nezapomeňte změnit **Typ výstupu** zpátky do **knihovny tříd** před nasazením topologie do clusteru.
 
-2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat** > **novou položku**. Vyberte **Třída**a jako název třídy zadejte **LocalTest.cs** . Nakonec klikněte na tlačítko **Přidat**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat** > **novou položku**. Vyberte **Třída**a jako název třídy zadejte **LocalTest.cs** . Nakonec klikněte na tlačítko **Přidat**.
 
-3. Otevřete **LocalTest.cs**a přidejte následující příkaz **using** v horní části:
+1. Otevřete **LocalTest.cs**a přidejte následující příkaz **using** v horní části:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Jako obsah třídy **LocalTest** použijte následující kód:
+1. Jako obsah třídy **LocalTest** použijte následující kód:
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
     Console.ReadKey();
     ```
 
-2. Uložte změny a pak klikněte na **F5** nebo vyberte **ladit** > **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Po zobrazení **dokončených testů** stiskněte libovolnou klávesu pro zavření okna.
+1. Uložte změny a pak klikněte na **F5** nebo vyberte **ladit** > **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Po zobrazení **dokončených testů** stiskněte libovolnou klávesu pro zavření okna.
 
-3. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. Příklad: **C:\Users\<your_user_name > \Documents\Visual Studio 2013 \ Projects\WordCount\WordCount**. V tomto adresáři otevřete **přihrádku**a klikněte na tlačítko **ladit**. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: věty. txt, Counter. txt a rozdělovač. txt. Otevřete každý textový soubor a zkontrolujte data.
+1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. Příklad: **C:\Users\<your_user_name > \Documents\Visual Studio 2013 \ Projects\WordCount\WordCount**. V tomto adresáři otevřete **přihrádku**a klikněte na tlačítko **ladit**. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: věty. txt, Counter. txt a rozdělovač. txt. Otevřete každý textový soubor a zkontrolujte data.
 
    > [!NOTE]  
    > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například \[[97 103 111]] v souboru **rozdělovače. txt** je slovo *a*.
@@ -736,7 +735,7 @@ Odesílání může selhat z několika důvodů:
 * JDK není v cestě k vývojovému prostředí. Ověřte, že je JDK nainstalovaný ve vývojovém prostředí a že `%JAVA_HOME%/bin` je v cestě.
 * Chybí závislost Java. Ujistěte se, že jako součást odeslání budete zahrnovat všechny požadované soubory. jar.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Příklad zpracování dat z Event Hubs najdete v tématu [zpracování událostí z Azure Event Hubs se](apache-storm-develop-csharp-event-hub-topology.md)zaplavou v HDInsight.
 

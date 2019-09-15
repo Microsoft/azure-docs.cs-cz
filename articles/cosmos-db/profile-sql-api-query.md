@@ -1,31 +1,31 @@
 ---
-title: Získat metriky výkonu a spuštění dotazu SQL
-description: Zjistěte, jak načíst metriky spouštění dotazů SQL a profil výkon dotazů SQL žádostí o služby Azure Cosmos DB.
+title: Získat výkon dotazu SQL & metriky spuštění
+description: Naučte se, jak načíst metriky spouštění dotazů SQL a Profilovat výkon dotazů SQL pro žádosti Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: b4017666956d0e01ea19781fb4f1ce2dde15fff5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481561"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998369"
 ---
-# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Získat metriky spouštění dotazů SQL a analýza výkonu dotazů pomocí sady .NET SDK
+# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Získat metriky spouštění dotazů SQL a analyzovat výkon dotazů pomocí sady .NET SDK
 
-Tento článek představuje, jak chcete-li Profilovat výkon dotazů SQL ve službě Azure Cosmos DB. Tato profilování lze provést pomocí `QueryMetrics` načten ze sady .NET SDK a je podrobně popsán tady. [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) je silně typovaných objektů s informacemi o spuštění dotazu back-endu. Tyto metriky jsou popsány podrobněji [ladění výkonu dotazů](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) článku.
+Tento článek ukazuje, jak Profilovat výkon dotazů SQL na Azure Cosmos DB. Tato profilace se dá provést pomocí `QueryMetrics` načtení ze sady .NET SDK a je tady popsána. [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) je objekt silného typu s informacemi o spuštění dotazu back-endu. Tyto metriky jsou podrobněji popsány v článku o [výkonu dotazů ladění](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) .
 
-## <a name="set-the-feedoptions-parameter"></a>Nastavte parametr FeedOptions
+## <a name="set-the-feedoptions-parameter"></a>Nastavení parametru FeedOptions
 
-Všechna přetížení pro [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) trvat, než se volitelně [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) parametru. Tato možnost je, co umožňuje vyladění a parametry v provádění dotazu. 
+Všechna přetížení pro [DocumentClient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) přebírají volitelný parametr [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) . Tato možnost umožňuje vyladit a parametrizovanit provádění dotazů. 
 
-Ke shromažďování metrik spouštění dotazů Sql, je nutné nastavit parametr [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) v [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) k `true`. Nastavení `PopulateQueryMetrics` na hodnotu true filtrovacího řetězce se tak, aby `FeedResponse` bude obsahovat příslušnou `QueryMetrics`. 
+Chcete-li shromáždit metriky spuštění dotazu SQL, je nutné nastavit parametr [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) v [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) na `true`. Nastavením `PopulateQueryMetrics` na hodnotu true se nastaví tak `FeedResponse` , aby obsahovala relevantní `QueryMetrics`. 
 
-## <a name="get-query-metrics-with-asdocumentquery"></a>Získat metriky dotazu s AsDocumentQuery()
-Následující příklad kódu ukazuje, jak načíst metriky, při použití [AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) metody:
+## <a name="get-query-metrics-with-asdocumentquery"></a>Získat metriky dotazů pomocí AsDocumentQuery ()
+Následující ukázka kódu ukazuje, jak načíst metriky při použití metody [AsDocumentQuery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) :
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -60,9 +60,9 @@ while (documentQuery.HasMoreResults)
     }
 }
 ```
-## <a name="aggregating-querymetrics"></a>Agregování QueryMetrics
+## <a name="aggregating-querymetrics"></a>Agregace QueryMetrics
 
-V předchozí části, Všimněte si, že byla více volání [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) metody. Každé volání vrátilo `FeedResponse` objekt, který obsahuje slovník `QueryMetrics`; jeden pro každý pokračování dotazu. Následující příklad ukazuje, jak agregovat tyto `QueryMetrics` pomocí jazyka LINQ:
+V předchozí části si všimněte, že existuje více volání metody [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) . Každé volání vrátilo `FeedResponse` objekt, který má slovník typu `QueryMetrics`; jeden pro každé pokračování dotazu. Následující příklad ukazuje, jak je agregovat `QueryMetrics` pomocí LINQ:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -82,9 +82,9 @@ QueryMetrics aggregatedQueryMetrics = queryMetricsList.Aggregate((curr, acc) => 
 Console.WriteLine(aggregatedQueryMetrics);
 ```
 
-## <a name="grouping-query-metrics-by-partition-id"></a>Metriky dotazu seskupení podle ID oddílu
+## <a name="grouping-query-metrics-by-partition-id"></a>Seskupení metrik dotazů podle ID oddílu
 
-Můžete seskupit `QueryMetrics` podle ID oddílu. Seskupení podle ID oddílu umožňuje zobrazit, pokud konkrétního oddílu způsobuje problémy s výkonem ve srovnání s ostatními. Následující příklad ukazuje, jak seskupit `QueryMetrics` s dotazy LINQ:
+Můžete seskupovat `QueryMetrics` podle ID oddílu. Seskupení podle ID oddílu vám umožní zjistit, jestli konkrétní oddíl způsobuje problémy s výkonem ve srovnání s ostatními. Následující příklad ukazuje, jak seskupit `QueryMetrics` pomocí LINQ:
 
 ```csharp
 List<KeyValuePair<string, QueryMetrics>> partitionedQueryMetrics = new List<KeyValuePair<string, QueryMetrics>>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>LINQ na DocumentQuery
 
-Můžete získat také `FeedResponse` pomocí dotazu LINQ `AsDocumentQuery()` metody:
+Můžete také získat `FeedResponse` dotaz z dotazu LINQ `AsDocumentQuery()` pomocí metody:
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -127,9 +127,9 @@ FeedResponse<Document> feedResponse = await linqQuery.ExecuteNextAsync<Document>
 IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetrics;
 ```
 
-## <a name="expensive-queries"></a>Nákladným dotazům
+## <a name="expensive-queries"></a>Nákladné dotazy
 
-Můžete zaznamenat jednotky žádostí spotřebováno jednotlivými dotazy k prozkoumání nákladných dotazy nebo dotazy, které využívají vysokou propustnost. Poplatek za žádost lze získat pomocí [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) vlastnost `FeedResponse`. Další informace o tom, jak získat zátěž žádostí pomocí webu Azure portal a různé sady SDK najdete v tématu [najít poplatek za jednotky žádosti](find-request-unit-charge.md) článku.
+Můžete zachytit jednotky žádostí spotřebované jednotlivými dotazy a prozkoumat nákladné dotazy nebo dotazy, které využívají vysokou propustnost. Poplatek za žádost můžete získat pomocí vlastnosti [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) v `FeedResponse`. Další informace o tom, jak získat poplatek za požadavek pomocí Azure Portal a různých sad SDK, najdete v článku [vyhledání poplatků za jednotku žádosti](find-request-unit-charge.md) .
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -146,9 +146,9 @@ while (documentQuery.HasMoreResults)
 }
 ```
 
-## <a name="get-the-query-execution-time"></a>Získání doby provádění dotazu
+## <a name="get-the-query-execution-time"></a>Získat čas provedení dotazu
 
-Při výpočtu čas potřebný k provedení dotazu na straně klienta, ujistěte se, že obsahovat jenom čas volání `ExecuteNextAsync` metoda a ne na ostatní části vašeho základu kódu. Právě tato volání vám pomůžou při výpočtu, jak dlouho trvalo provádění dotazů, jak je znázorněno v následujícím příkladu:
+Při výpočtu času potřebného pro spuštění dotazu na straně klienta, nezapomeňte zahrnout pouze čas pro volání `ExecuteNextAsync` metody a jiné části vašeho základu kódu. Pouze tyto hovory vám pomůžou vypočítat dobu trvání spuštění dotazu, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -166,11 +166,11 @@ while (documentQuery.HasMoreResults)
 DoSomeLogging(queryExecutionTimeEndToEndTotal.Elapsed);
 ```
 
-## <a name="scan-queries-commonly-slow-and-expensive"></a>Kontrola dotazů (obvykle pomalé a drahé)
+## <a name="scan-queries-commonly-slow-and-expensive"></a>Kontrolovat dotazy (obvykle pomalu a nákladné)
 
-Kontrola dotaz odkazuje na dotaz, který nebyl obsluhuje index, kvůli které, mnoho dokumenty jsou načteny před vrácením sadu výsledků dotazu.
+Dotaz na skenování odkazuje na dotaz, který nebyl poskytnut indexem, protože bylo načteno mnoho dokumentů před vrácením sady výsledků dotazu.
 
-Níže je příklad dotazu prohledávání:
+Níže je příklad dotazu prověřování:
 
 ```sql
 SELECT VALUE c.description 
@@ -178,7 +178,7 @@ FROM   c
 WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-Filtr tento dotaz používá funkci systému velká, což není obsloužit z indexu. Následující dotaz metriky pro první pokračování spouštějící tento dotaz proti kolekci velké vytvořen:
+Filtr tohoto dotazu používá funkci System UPPER v horní části, která není obsluhována z indexu. Spuštění tohoto dotazu proti velké kolekci vytvořilo následující metriky dotazu pro první pokračování:
 
 ```
 QueryMetrics
@@ -206,22 +206,22 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-Všimněte si následujících hodnot z výstupu dotazu metriky:
+Všimněte si, že výstup metriky dotazů má následující hodnoty:
 
 ```
 Retrieved Document Count                 :          60,951
 Retrieved Document Size                  :     399,998,938 bytes
 ```
 
-Tento dotaz načíst 60,951 dokumenty, které sečteny 399,998,938 bajtů. Načítá se počet bajtů za následek vysoké náklady nebo abychom si vyžádali poplatku za jednotku. Také trvá dlouhou dobu k provedení dotazu, což je vymazat s vlastností celkového času stráveného:
+Tento dotaz načetl 60 951 dokumentů, které celkem 399 998 938 bajtů. Načtení tohoto počtu bajtů má za následek vysoké náklady nebo poplatky za jednotku žádosti. Spuštění dotazu trvá také dlouhou dobu, což je jasné jako celková trvání vlastnosti:
 
 ```
 Total Query Execution Time               :        4,500.34 milliseconds
 ```
 
-To znamená, který dotaz trval 4.5 sekundy (a to bylo pouze jedno pokračování).
+To znamená, že dotaz byl spuštěn na 4,5 sekund (a byl to pouze jeden pokračování).
 
-Pokud chcete optimalizovat tento příklad dotaz, nepoužívejte horní ve filtru. Místo toho, kdy dokumenty jsou vytvořeny nebo aktualizovány, `c.description` hodnoty musí být vložen do všechna velká písmena. Dotaz se pak stane: 
+Chcete-li optimalizovat tento příklad dotazu, vyhněte se použití HORNÍho pole ve filtru. Místo toho se při vytváření nebo aktualizaci `c.description` dokumentů musí hodnoty vkládat do všech velkých písmen. Dotaz pak bude: 
 
 ```sql
 SELECT VALUE c.description 
@@ -229,9 +229,9 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-Tento dotaz je teď možné obsloužit z indexu.
+Tento dotaz je nyní možné zpracovat z indexu.
 
-Další informace o ladění výkonu dotazů, najdete v článku [ladění výkonu dotazů](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) článku.
+Další informace o ladění výkonu dotazů najdete v článku o [výkonu dotazů ladění](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) .
 
 ## <a id="References"></a>Odkazy
 
@@ -243,5 +243,5 @@ Další informace o ladění výkonu dotazů, najdete v článku [ladění výko
 ## <a name="next-steps"></a>Další postup
 
 - [Ladění výkonu dotazů](sql-api-query-metrics.md)
-- [Indexování – přehled](index-overview.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Přehled indexování](index-overview.md)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e2e730c623b6ee802938b930c4874f6c4920cc64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934406"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003322"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Kurz: Použití Azure Key Vault s virtuálním počítačem s Windows v .NET
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Povolte [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač.
 > * Přiřaďte oprávnění k identitě virtuálního počítače.
 
-Než začnete, přečtěte si téma [Key Vault Basic koncepty](key-vault-whatis.md#basic-concepts). 
+Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md). 
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,7 +47,7 @@ Pro Windows, Mac a Linux:
 
 Azure Key Vault ukládá pověření bezpečně, takže se ve vašem kódu nezobrazují. K načtení klíčů ale musíte ověřit, Azure Key Vault. K ověření Key Vault budete potřebovat přihlašovací údaje. Je to klasický spouštěcí dilematem. Identita spravované služby (MSI) Tento problém řeší tím, že poskytuje _identitu_ spuštění, která zjednodušuje proces.
 
-Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure App Service nebo Azure Functions, vytvoří [Služba Azure instanční objekt](key-vault-whatis.md#basic-concepts). Služba MSI to provede pro instanci služby v Azure Active Directory (Azure AD) a vloží do této instance přihlašovací údaje instančního objektu. 
+Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure App Service nebo Azure Functions, vytvoří [Služba Azure instanční objekt](basic-concepts.md). Služba MSI to provede pro instanci služby v Azure Active Directory (Azure AD) a vloží do této instance přihlašovací údaje instančního objektu. 
 
 ![MSI](media/MSI.png)
 
@@ -84,7 +84,7 @@ Vytvořte Trezor klíčů ve skupině prostředků zadáním příkazu AZ Key [t
 
 * Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (a-z, A-Z) a spojovníky (-).
 * Název skupiny prostředků
-* Umístění: **Západní USA**
+* Oblasti **Západní USA**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -237,7 +237,7 @@ Předchozí kód ukazuje, jak provádět operace s Azure Key Vault na virtuáln�
 
 Pokud už je nepotřebujete, odstraňte virtuální počítač a trezor klíčů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

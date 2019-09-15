@@ -1,5 +1,5 @@
 ---
-title: TechnicalProfiles | Dokumentace Microsoftu
+title: TechnicalProfiles | Microsoft Docs
 description: Zadejte element TechnicalProfiles vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1192c8d0057d77306a1ffb06dd9bae12b7634ca
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512286"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998743"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje zprostředkovatel deklarací identity. Každý zprostředkovatele deklarací identity, musí mít nejmíň jeden technické profily, které určují koncových bodů a protokolů potřebných ke komunikaci se zprostředkovateli deklarací identity. Zprostředkovatel deklarací může mít více technické profily.
+Element **TechnicalProfiles** obsahuje sadu technických profilů, které podporuje zprostředkovatel deklarací identity. Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů.
 
 ```XML
 <ClaimsProvider>
@@ -72,180 +72,180 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 </ClaimsProvider>
 ```
 
-**Technický profil** prvek obsahuje následující atribut:
+Element **TechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 |---------|---------|---------|
-| ID | Ano | Jedinečný identifikátor technický profil. Technický profil může být odkazováno pomocí tohoto identifikátoru z dalších prvků v souboru zásad. Například **OrchestrationSteps** a **ValidationTechnicalProfile**. |
+| Id | Ano | Jedinečný identifikátor technického profilu. Na technický profil se dá odkazovat pomocí tohoto identifikátoru z dalších prvků v souboru zásad. Například **OrchestrationSteps** a **ValidationTechnicalProfile**. |
 
-**Technický profil** obsahuje následující prvky:
+**TechnicalProfile** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Domain (Doména) | 0:1 | Název domény pro technický profil. Například pokud váš technický profil určuje zprostředkovatele identity Facebook, název domény je Facebook.com. |
-| displayName | 0:1 | Název technický profil, který může být zobrazen uživatelům. |
-| Popis | 0:1 | Popis technický profil, který může být zobrazen uživatelům. |
+| Doména | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
+| DisplayName | 0:1 | Název technického profilu, který se může zobrazit uživatelům |
+| Popis | 0:1 | Popis technického profilu, který se může zobrazit uživatelům |
 | Protocol | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
-| Metadata | 0:1 | Kolekce dvojic klíč/hodnota, které využívají protokol pro komunikaci s koncovým bodem v rámci transakce. |
-| InputTokenFormat | 0:1 | Formát vstupu tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. `JWT` Hodnota představuje webového tokenu JSON podle specifikaci IETF. `SAML11` Hodnota představuje token SAML 1.1 zabezpečení podle specifikace OASIS.  `SAML2` Hodnota představuje token SAML 2.0 zabezpečení podle specifikace OASIS. |
-| OutputTokenFormat | 0:1 | Formát tokenu výstup. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. |
-| CryptographicKeys | 0:1 | Seznam kryptografických klíčů, které se používají v technickém profilu. |
-| InputClaimsTransformations | 0:1 | Seznam dříve definované odkazy na transformace deklarací, které budou spuštěny před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. |
-| InputClaims | 0:1 | Seznam dříve definované odkazy na typy, které jsou použity jako vstup v technickém profilu. |
-| PersistedClaims | 0:1 | Seznam dříve definované odkazy na typy, které jsou trvalé zprostředkovatelem deklarací identity, který se týká technického profilu deklarací identity. |
-| OutputClaims | 0:1 | Seznam dříve definované odkazy na typy, které jsou použity jako výstup v technickém profilu deklarací identity. |
-| OutputClaimsTransformations | 0:1 | Seznam dříve definované odkazy na transformace deklarací identity, které má být provedena po přijetí deklarace identity od zprostředkovatele deklarací. |
-| ValidationTechnicalProfiles | 0: n | Seznam odkazů na jiné technické profily, které používá technického profilu pro účely ověření. Další informace najdete v tématu [technický profil ověření](validation-technical-profile.md)|
-| SubjectNamingInfo | 0:1 | Určuje produkční název subjektu v tokenech, kde je v názvu subjektu zadávají samostatně z deklarací identity. Například, OAuth nebo SAML.  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | Identifikátor technického profilu, ze kterého mají být všechny vstupní a výstupní deklarace identity mají být přidány do tohoto technický profil. Odkazované technického profilu musí být definován ve stejném souboru zásad. |
-| IncludeTechnicalProfile |0:1 | Identifikátor technického profilu, ze kterého chcete všechna data mají být přidány do tohoto technický profil. Odkazované technického profilu musí existovat ve stejném souboru zásad. |
-| UseTechnicalProfileForSessionManagement | 0:1 | Různé technický profil pro správu relací. |
-|EnabledForUserJourneys| 0:1 |Určuje, zda technickém profilu je proveden v cestě uživatele.  |
+| Metadata | 0:1 | Kolekce párů klíč/hodnota, které jsou využívány protokolem pro komunikaci s koncovým bodem v průběhu transakce. |
+| InputTokenFormat | 0:1 | Formát vstupního tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. `JWT` Hodnota představuje JSON web token podle specifikace IETF. `SAML11` Hodnota představuje token zabezpečení SAML 1,1 podle specifikace pro Oasis.  `SAML2` Hodnota představuje token zabezpečení SAML 2,0 podle specifikace pro Oasis. |
+| OutputTokenFormat | 0:1 | Formát výstupního tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. |
+| CryptographicKeys | 0:1 | Seznam kryptografických klíčů, které jsou používány v technickém profilu. |
+| InputClaimsTransformations | 0:1 | Seznam dříve definovaných odkazů na transformace deklarací identity, které by měly být provedeny před odesláním jakýchkoli deklarací do zprostředkovatele deklarací nebo předávající strany. |
+| InputClaims | 0:1 | Seznam dříve definovaných odkazů na typy deklarací identity, které jsou pořízeny jako vstup v technickém profilu. |
+| PersistedClaims | 0:1 | Seznam dříve definovaných odkazů na typy deklarací, které jsou trvale zachované zprostředkovatelem deklarací identity, který souvisí s technickým profilem. |
+| OutputClaims | 0:1 | Seznam dříve definovaných odkazů na typy deklarací, které jsou pořízeny jako výstup v technickém profilu. |
+| OutputClaimsTransformations | 0:1 | Seznam dříve definovaných odkazů na transformace deklarací identity, které by měly být provedeny po přijetí deklarací identity od zprostředkovatele deklarací identity. |
+| ValidationTechnicalProfiles | 0: n | Seznam odkazů na jiné technické profily, které technický profil používá pro účely ověření. Další informace najdete v tématu [technický profil ověření](validation-technical-profile.md) .|
+| SubjectNamingInfo | 0:1 | Řídí produkci názvu subjektu v tokenech, kde je název subjektu zadán nezávisle na deklaracích identity. Například protokol OAuth nebo SAML.  |
+| IncludeClaimsFromTechnicalProfile | 0:1 | Identifikátor technického profilu, ze kterého chcete přidat všechny deklarace identity vstupu a výstupu do tohoto technického profilu. Odkazovaný technický profil musí být definován ve stejném souboru zásad. |
+| IncludeTechnicalProfile |0:1 | Identifikátor technického profilu, ze kterého chcete přidat všechna data do tohoto technického profilu. Odkazovaný technický profil musí existovat ve stejném souboru zásad. |
+| UseTechnicalProfileForSessionManagement | 0:1 | Jiný technický profil, který se má použít pro správu relací. |
+|EnabledForUserJourneys| 0:1 |Řídí, jestli se technický profil spustí na cestě uživatele.  |
 
 ### <a name="protocol"></a>Protocol
 
-**Protokol** prvek obsahuje následující atributy:
+Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Name | Ano | Název platný protokol podporovaný službou Azure AD B2C, který se používá jako součást technický profil. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, nebo `None`. |
-| Obslužná rutina | Ne | Pokud název protokolu nastavená na `Proprietary`, zadejte plně kvalifikovaný název sestavení, které se službou Azure AD B2C používá k určení obslužná rutina protokolu. |
+| Name | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, ,`Proprietary` ,`self-asserted`,nebo `None`. `session management` |
+| Popisovač | Ne | Pokud je název protokolu nastaven na `Proprietary`, zadejte plně kvalifikovaný název sestavení, které je používáno Azure AD B2C k určení obslužné rutiny protokolu. |
 
 ### <a name="metadata"></a>Metadata
 
-A **metadat** prvek obsahuje následující prvky:
+Element **metadata** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Položka | 0: n | Metadata, která se týká technického profilu. Každý typ technický profil má jinou sadu položky metadat. V části technický profil typů, další informace. |
+| Položka | 0: n | Metadata vztahující se k technickému profilu. Každý typ technického profilu má jinou sadu položek metadat. Další informace najdete v části typy technických profilů. |
 
 #### <a name="item"></a>Položka
 
-**Položky** elementu **metadat** prvek obsahuje následující atributy:
+Element **Item** elementu **metadata** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Ano | Klíč metadat. Zobrazit jednotlivé typy profilů technické, seznam položky metadat. |
+| Klíč | Ano | Klíč metadat. Seznam položek metadat najdete u každého typu technického profilu. |
 
 ### <a name="cryptographickeys"></a>CryptographicKeys
 
-**CryptographicKeys** prvek obsahuje následující element:
+Element **CryptographicKeys** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Klíč | 1: n | Kryptografický klíč používaný v tomto technickém profilu. |
+| Klíč | 1: n | Kryptografický klíč použitý v tomto technickém profilu. |
 
 #### <a name="key"></a>Klíč
 
-**Klíč** prvek obsahuje následující atribut:
+**Klíčový** element obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ID | Ne | Jedinečný identifikátor konkrétní pár klíčů na něj odkazovat z jiných prvků v souboru zásad. |
-| StorageReferenceId | Ano | Identifikátor kontejneru klíčů úložiště na něj odkazovat z jiných prvků v souboru zásad. |
+| Id | Ne | Jedinečný identifikátor konkrétního páru klíčů, na který se odkazuje z dalších prvků v souboru zásad. |
+| StorageReferenceId | Ano | Identifikátorem kontejneru klíčů úložiště, na který odkazuje jiný element v souboru zásad. |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
-**InputClaimsTransformations** prvek obsahuje následující element:
+Element **InputClaimsTransformations** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| InputClaimsTransformation | 1: n | Identifikátor deklarace identity transformace, která má být provedena před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
+| InputClaimsTransformation | 1: n | Identifikátor transformace deklarací identity, který by měl být proveden před odesláním jakýchkoli deklarací do zprostředkovatele deklarací nebo předávající strany. Transformaci deklarací identity lze použít k úpravě stávajících deklarací ClaimsSchema nebo k vygenerování nových. |
 
 #### <a name="inputclaimstransformation"></a>InputClaimsTransformation
 
-**InputClaimsTransformation** prvek obsahuje následující atribut:
+Element **InputClaimsTransformation** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
+| ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
 ### <a name="inputclaims"></a>InputClaims
 
-**InputClaims** prvek obsahuje následující element:
+Element **InputClaims** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
+| InputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
 #### <a name="inputclaim"></a>InputClaim
 
-**InputClaim** prvek obsahuje následující atributy:
+Element **InputClaim** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
-| Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
-| PartnerClaimType | Ne | Identifikátor typu deklarace identity externí partnera, že zásady zadaný typ deklarace identity odpovídá. Pokud není zadán atribut PartnerClaimType, konkrétní typ deklarace identity se mapuje na typ deklarace partnera se stejným názvem. Tuto vlastnost používejte, když název typu deklarace identity se liší od druhé strany. Například název pro první deklaraci identity je "jméno", zatímco partnera používá deklaraci identity s názvem "křestní_jméno". |
+| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace identity je "daný", zatímco partner používá deklaraci s názvem Křestní_jméno. |
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** prvek obsahuje následující prvky:
+Element **PersistedClaims** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| PersistedClaim | 1: n | Typ deklarace k uchování. |
+| PersistedClaim | 1: n | Typ deklarace identity, který se má zachovat |
 
 #### <a name="persistedclaim"></a>PersistedClaim
 
-**PersistedClaim** prvek obsahuje následující atributy:
+Element **PersistedClaim** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
-| Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
-| PartnerClaimType | Ne | Identifikátor typu deklarace identity externí partnera, že zásady zadaný typ deklarace identity odpovídá. Pokud není zadán atribut PartnerClaimType, konkrétní typ deklarace identity se mapuje na typ deklarace partnera se stejným názvem. Tuto vlastnost používejte, když název typu deklarace identity se liší od druhé strany. Například název pro první deklaraci identity je "jméno", zatímco partnera používá deklaraci identity s názvem "křestní_jméno". |
+| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace identity je "daný", zatímco partner používá deklaraci s názvem Křestní_jméno. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** prvek obsahuje následující element:
+Element **OutputClaims** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| outputClaim | 1: n | Typ deklarace identity očekávaný výstup. |
+| OutputClaim | 1: n | Očekával se výstupní typ deklarace identity. |
 
-#### <a name="outputclaim"></a>outputClaim
+#### <a name="outputclaim"></a>OutputClaim
 
-**OutputClaim** prvek obsahuje následující atributy:
+Element **OutputClaim** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
-| Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
-|AlwaysUseDefaultValue |Ne |Vynutí použití výchozí hodnoty.  |
-| PartnerClaimType | Ne | Identifikátor typu deklarace identity externí partnera, že zásady zadaný typ deklarace identity odpovídá. Pokud není zadán atribut PartnerClaimType, konkrétní typ deklarace identity se mapuje na typ deklarace partnera se stejným názvem. Tuto vlastnost používejte, když název typu deklarace identity se liší od druhé strany. Například název pro první deklaraci identity je "jméno", zatímco partnera používá deklaraci identity s názvem "křestní_jméno". |
+| ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+|AlwaysUseDefaultValue |Ne |Vynutit použití výchozí hodnoty.  |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace identity je "daný", zatímco partner používá deklaraci s názvem Křestní_jméno. |
 
 ### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
-**OutputClaimsTransformations** prvek obsahuje následující element:
+Element **OutputClaimsTransformations** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| OutputClaimsTransformation | 1: n | Identifikátory transformace deklarací, které budou spuštěny před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
+| OutputClaimsTransformation | 1: n | Identifikátory transformací deklarací identity, které se mají provést před odesláním deklarací do zprostředkovatele deklarací nebo předávající strany. Transformaci deklarací identity lze použít k úpravě stávajících deklarací ClaimsSchema nebo k vygenerování nových. |
 
 #### <a name="outputclaimstransformation"></a>OutputClaimsTransformation
 
-**OutputClaimsTransformation** prvek obsahuje následující atribut:
+Element **OutputClaimsTransformation** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
+| ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
-**ValidationTechnicalProfiles** prvek obsahuje následující element:
+Element **ValidationTechnicalProfiles** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1: n | Identifikátory technické profily, které se používají ověřit některé nebo všechny výstupní deklarace identit odkazující technického profilu. Všechny mezi vstupními deklaracemi identity odkazovaného technického profilu musí být uvedena v výstupní deklarace identit odkazující technického profilu. |
+| ValidationTechnicalProfile | 1: n | Identifikátory technických profilů, které se používají, ověřují některé nebo všechny výstupní deklarace identity odkazujícího technického profilu. Všechny vstupní deklarace odkazovaného technického profilu se musí objevit ve výstupních deklaracích referenčního technického profilu. |
 
 #### <a name="validationtechnicalprofile"></a>ValidationTechnicalProfile
 
-**ValidationTechnicalProfile** prvek obsahuje následující atribut:
+Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -253,36 +253,36 @@ A **metadat** prvek obsahuje následující prvky:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ClaimType | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad. |
+| ClaimType | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad. |
 
 ### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
-**IncludeTechnicalProfile** prvek obsahuje následující atribut:
+Element **IncludeTechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
-**UseTechnicalProfileForSessionManagement** prvek obsahuje následující atribut:
+Element **UseTechnicalProfileForSessionManagement** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
-**ClaimsProviderSelections** uživatele cesty definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. S **EnabledForUserJourneys** element můžete filtrovat, které zprostředkovatel deklarací identity je k dispozici pro uživatele. **EnabledForUserJourneys** element obsahuje jeden z následujících hodnot:
+**ClaimsProviderSelections** v cestě uživatele definuje seznam možností výběru zprostředkovatele deklarací a jejich pořadí. Pomocí filtrovaného prvku **EnabledForUserJourneys** , který je k dispozici pro uživatele. Element **EnabledForUserJourneys** obsahuje jednu z následujících hodnot:
 
-- **Vždy**, provedení technického profilu.
+- **Vždy**spusťte technický profil.
 - **Nikdy**, přeskočte technický profil.
-- **OnClaimsExistence** spustit pouze v případě, že existuje určitá deklarace identity, zadaná v technickém profilu.
-- **OnItemExistenceInStringCollectionClaim**, spustit, jenom když položka existuje v deklaraci identity kolekce řetězců.
-- **OnItemAbsenceInStringCollectionClaim** provést, pouze pokud položka neexistuje v deklaraci identity kolekce řetězec.
+- **OnClaimsExistence** se spustí jenom v případě, že existuje určitá deklarace identity zadaná v technickém profilu.
+- **OnItemExistenceInStringCollectionClaim**spustí se pouze v případě, že položka existuje v deklaraci kolekce řetězců.
+- **OnItemAbsenceInStringCollectionClaim** provést pouze v případě, že položka v deklaraci kolekce řetězců neexistuje.
 
-Pomocí **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** nebo **OnItemAbsenceInStringCollectionClaim**, je potřeba zadat následující metadata: **ClaimTypeOnWhichToEnable** Určuje typ deklarace identity, který se má vyhodnotit, **ClaimValueOnWhichToEnable** Určuje hodnotu, která se má porovnat.
+Pomocí **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** nebo **OnItemAbsenceInStringCollectionClaim**musíte zadat následující metadata: **ClaimTypeOnWhichToEnable** určuje typ deklarace identity, který se má vyhodnotit, **ClaimValueOnWhichToEnable** Určuje hodnotu, která se má porovnat.
 
-Následující technický profil provádí pouze v případě, **identityProviders** kolekce řetězců obsahuje hodnotu `facebook.com`:
+Následující technický profil se spustí pouze v případě, že kolekce řetězců **identityProviders** obsahuje hodnotu `facebook.com`:
 
 ```XML
 <TechnicalProfile Id="UnLink-Facebook-OAUTH">

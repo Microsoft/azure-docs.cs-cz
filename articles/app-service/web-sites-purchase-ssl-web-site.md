@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074037"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001212"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Koupit a nakonfigurovat certifikát SSL pro Azure App Service
 
-V tomto kurzu se dozvíte, jak zabezpečit svou aplikaci [App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikace Functions](https://docs.microsoft.com/azure/azure-functions/) tím, že vytvoříte (nakupujete) certifikát App Service v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) a pak ho navážetete na App Service aplikaci.
+V tomto kurzu se dozvíte, jak zabezpečit svou aplikaci [App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikace Functions](https://docs.microsoft.com/azure/azure-functions/) tím, že vytvoříte (nakupujete) certifikát App Service v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) a pak ho navážetete na App Service aplikaci.
 
 > [!TIP]
 > App Service certifikáty se dají použít pro jakékoli služby Azure nebo mimo Azure a není omezené na App Services. K tomu je potřeba vytvořit místní kopii PFX certifikátu App Service, kterou můžete použít kdekoli, kde chcete. Další informace najdete v tématu [Vytvoření místní kopie PFX App Service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
@@ -50,7 +50,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Nastavení | Popis |
 |-|-|
 | Name | Popisný název certifikátu App Service. |
-| Naked Domain Host Name | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou doménu `www` i subdoménu. V vystaveném certifikátu obsahuje pole běžný název kořenovou doménu a pole Alternativní název subjektu obsahuje `www` doménu. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény (například `mysubdomain.contoso.com`).|
+| Naked Domain Host Name | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou `www` *doménu i* subdoménu. V vystaveném certifikátu obsahuje pole běžný název kořenovou doménu a pole Alternativní název subjektu obsahuje `www` doménu. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény (například `mysubdomain.contoso.com`).|
 | Subscription | Datacentrum, které je hostitelem webové aplikace. |
 | Resource group | Skupina prostředků, která obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
 | SKU certifikátu | Určuje typ certifikátu, který se má vytvořit, zda se jedná o standardní certifikát nebo [certifikát](https://wikipedia.org/wiki/Wildcard_certificate)se zástupným znakem. |
@@ -64,7 +64,7 @@ Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.
 
 ![Vložit obrázek připraveného k uložení v KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Je to úložiště, které je vhodné pro App Service certifikátů.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Je to úložiště, které je vhodné pro App Service certifikátů.
 
 Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvořte nový trezor nebo vyberte existující trezor. Pokud se rozhodnete vytvořit nový trezor, použijte následující tabulku, která vám pomůžete nakonfigurovat trezor a kliknout na vytvořit. Další informace najdete v tématu Vytvoření nové Key Vault v rámci stejného předplatného a skupiny prostředků.
 

@@ -1,7 +1,7 @@
 ---
 title: Neuronové síť s hloubkovým učením pomocí Keras
-titleSuffix: Azure Machine Learning service
-description: Naučte se naučit a registrovat model klasifikace Keras hloubkové neuronové sítě běžící na TensorFlow pomocí služby Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Naučte se naučit a registrovat model klasifikace Keras hloubkové neuronové sítě běžící na TensorFlow pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966823"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999375"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Školení a registrace modelu klasifikace Keras pomocí služby Azure Machine Learning
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
 
-V tomto článku se dozvíte, jak pomocí Azure Machine Learning služby naučit a registrovat model klasifikace Keras sestavený na TensorFlow. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [Keras Python Library](https://keras.io) běžící nad [TensorFlow](https://www.tensorflow.org/overview).
+V tomto článku se dozvíte, jak vytvořit model klasifikace Keras sestavený na TensorFlow pomocí Azure Machine Learning. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [Keras Python Library](https://keras.io) běžící nad [TensorFlow](https://www.tensorflow.org/overview).
 
-Keras je neuronové síťové rozhraní API, které se dá používat v horní části dalších oblíbených DNN architektur pro zjednodušení vývoje. Pomocí služby Azure Machine Learning můžete rychle škálovat školicí úlohy pomocí výpočetních prostředků elastického cloudu. Můžete také sledovat vaše školicí běhy, modely verzí, nasazovat modely a mnohem víc.
+Keras je neuronové síťové rozhraní API, které se dá používat v horní části dalších oblíbených DNN architektur pro zjednodušení vývoje. Pomocí Azure Machine Learning můžete rychle škálovat školicí úlohy pomocí výpočetních prostředků elastického cloudu. Můžete také sledovat vaše školicí běhy, modely verzí, nasazovat modely a mnohem víc.
 
-Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte stávající model do cloudu, Azure Machine Learning služba vám může pomáhat při sestavování modelů připravených pro produkční prostředí.
+Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte existující model do cloudu, vám Azure Machine Learning může pomáhat při sestavování modelů připravených pro produkční prostředí.
 
 Informace o rozdílech mezi strojovým učením a obsáhlým učením najdete v [koncepčním článku](concept-deep-learning-vs-machine-learning.md) .
 
@@ -68,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor služby Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
 Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
@@ -172,7 +172,7 @@ run.wait_for_completion(show_output=True)
 
 Po spuštění se spustí v následujících fázích:
 
-- Připravuje se: Obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Připravuje**se: Obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
 - **Škálování:** Cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
@@ -203,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste si vyškole a zaregistrovali model Keras ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
+V tomto článku jste si vyškole a zaregistrovali Keras model na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)

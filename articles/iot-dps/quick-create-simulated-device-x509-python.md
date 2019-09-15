@@ -10,14 +10,15 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 12ccff3676cb35ac27126360dbcf5a1b9b3e131f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3474d30d051e88d0e9150ea649958caa460932c7
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65914146"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001300"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows simulovat zařízení X.509 a pomocí vzorového kódu Pythonu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT. 
@@ -25,16 +26,19 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Použít k registraci více související zařízení.
-- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Použitý k registraci jedno zařízení.
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Používá se k registraci více souvisejících zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Používá se k registraci jednoho zařízení.
 
 V tomto článku si předvedeme jednotlivé registrace.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> Tato příručka se vztahuje pouze na aktuálně nepoužívané sady v1 Python SDK. Simulovaná zařízení X. 509 ještě nejsou v v2 podporovaná. V současné době je tým v průběhu práce přinášejí v2 do parity funkcí.
+
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že jste si nainstalovali buď [sady Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, se "vývoj desktopových aplikací pomocí C++" úloh pro instalaci sady Visual Studio povoleno.
+1. Ujistěte se, že máte nainstalovanou [aplikaci Visual studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, a pro instalaci sady C++Visual Studio je povolená úloha vývoj desktopových aplikací s názvem.
 
 2. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/).
 
@@ -88,7 +92,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
     ![Aplikace pro registraci zařízení Dice](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  
-4. Na svém počítači s Windows vytvořte soubor **_X509testcertificate.pem_**, otevřete ho v libovolném editoru a zkopírujte do něj obsah schránky. Uložte soubor. 
+4. Na svém počítači s Windows vytvořte soubor **_X509testcertificate.pem_** , otevřete ho v libovolném editoru a zkopírujte do něj obsah schránky. Uložte soubor. 
 
 5. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu zřizování.
 
@@ -164,7 +168,7 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Otevřete okno **Správa registrací** pro vaši službu a pak klikněte na kartu **Jednotlivé registrace**. Vyberte *ID REGISTRACE* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části. 
 3. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V rámci tohoto rychlého startu jste na svém počítači s Windows vytvořili simulované zařízení X.509 a pomocí služby Azure IoT Hub Device Provisioning na portálu jste ho zřídili pro své centrum IoT. Pokud chcete zjistit, jak zaregistrovat zařízení X.509 prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení X.509 prostřednictvím kódu programu. 
 

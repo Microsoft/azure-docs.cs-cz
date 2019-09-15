@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2b5f44471187f4031642fd674381e672453b7197
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 677ff7ffab22eebdace67151d703ba83c2146602
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884259"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998611"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -71,7 +71,7 @@ Při příjmu zprávy, zaregistrujte zpětné volání, která zpracovává zpr�
    await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
 
-Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C a Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování se definují v cloudu a přepnula se na IoT Edge hub v zařízení. Podle stejné syntaxe pro službu IoT Hub trasy se používá k definování tras mezi moduly ve službě Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).   
 
@@ -87,7 +87,7 @@ Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu, 
 
 * **Settings. Image** – bitová kopie kontejneru, kterou agent IoT Edge používá ke spuštění modulu. Pokud je bitová kopie chráněná heslem, musí být agent IoT Edge nakonfigurovaný s přihlašovacími údaji pro Registry kontejneru. Přihlašovací údaje pro registr kontejneru je možné nakonfigurovat vzdáleně pomocí manifestu nasazení nebo na zařízení IoT Edge samotném aktualizací `config.yaml` souboru ve složce IoT Edge programu.
 * **Settings. CreateOptions** – řetězec, který je předán přímo procesu démona kontejneru Moby při spuštění kontejneru modulu. Přidání možností v této vlastnosti umožňuje pokročilé konfigurace, jako je přesměrování portu nebo připojování svazků do kontejneru modulu.  
-* **stav** – stav, ve kterém agent IoT Edge umístí modul. Tato hodnota je obvykle nastavená tak , aby se spouštěla co nejvíce lidí, aby agent IoT Edge hned na zařízení spouštěl všechny moduly. Můžete ale zadat počáteční stav modulu, který se má zastavit, a počkat na budoucí čas, aby se agentovi IoT Edge mohl spustit modul. Agent IoT Edge hlásí stav každého modulu zpátky do cloudu v hlášených vlastnostech. Rozdíl mezi požadované vlastnosti a ohlášených vlastností je indikátorem identifikovala zařízení. Podporované stavy jsou:
+* **stav** – stav, ve kterém agent IoT Edge umístí modul. Tato hodnota je obvykle nastavená tak, aby se *spouštěla* co nejvíce lidí, aby agent IoT Edge hned na zařízení spouštěl všechny moduly. Můžete ale zadat počáteční stav modulu, který se má zastavit, a počkat na budoucí čas, aby se agentovi IoT Edge mohl spustit modul. Agent IoT Edge hlásí stav každého modulu zpátky do cloudu v hlášených vlastnostech. Rozdíl mezi požadované vlastnosti a ohlášených vlastností je indikátorem identifikovala zařízení. Podporované stavy jsou:
    * Stahuje se
    * Spuštěno
    * Není v pořádku
@@ -115,6 +115,6 @@ Agenta IoT Edge hraje důležitou roli v zabezpečení zařízení IoT Edge. Nap
 
 Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](iot-edge-security-manager.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)

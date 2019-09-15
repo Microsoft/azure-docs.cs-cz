@@ -1,7 +1,7 @@
 ---
 title: Nastavení Application Insights Azure pro monitorování modelů ML
-titleSuffix: Azure Machine Learning service
-description: Monitorování webových služeb nasazených pomocí služby Azure Machine Learning pomocí Azure Application Insights
+titleSuffix: Azure Machine Learning
+description: Monitorování webových služeb nasazených pomocí Azure Machine Learning pomocí Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff9261e2720ed80fc96131cea69d2985c8e0883e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858752"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002870"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
-V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši službu Azure Machine Learning. Application Insights nabízí možnost monitorovat:
+V tomto článku se dozvíte, jak nastavit Application Insights Azure pro Azure Machine Learning. Application Insights nabízí možnost monitorovat:
 * Požádat o sazby, doby odezvy a míra selhání.
 * Míra závislosti, doby odezvy a míra selhání.
 * Výjimky.
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovnímu prostoru Azure Machine Learning, místní adresář, který obsahuje skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách, najdete v článku [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md).
 * Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.
@@ -111,7 +111,7 @@ Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
  
 
 ## <a name="evaluate-data"></a>Vyhodnocení dat
-Vaše služba data se ukládají v účtu služby Application Insights ve stejné skupině prostředků jako službu Azure Machine Learning.
+Data vaší služby se ukládají do účtu Application Insights ve stejné skupině prostředků jako Azure Machine Learning.
 Chcete-li zobrazit ho:
 1. Přejděte do pracovního prostoru služby Machine Learning v [webu Azure portal](https://portal.azure.com) a klikněte na odkaz Application Insights.
 

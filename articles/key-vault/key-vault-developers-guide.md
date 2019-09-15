@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881604"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000797"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault příručka pro vývojáře
 
@@ -24,7 +24,7 @@ Key Vault umožňuje zabezpečený přístup k citlivým informacím v rámci sv
 - Vaše aplikace může používat klíče pro podepisování a šifrování. zatím udržuje klíčovou správu externí z vaší aplikace, takže vaše řešení bude vhodné jako geograficky distribuované aplikace.
 - Od verze 2016 Key Vault můžou vaše aplikace spravovat certifikáty Key Vault. Další informace najdete v tématu [o klíčích, tajných klíčích a certifikátech](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
-Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](key-vault-whatis.md).
+Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](key-vault-overview.md).
 
 ## <a name="public-previews"></a>Veřejné náhledy
 

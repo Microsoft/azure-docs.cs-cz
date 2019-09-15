@@ -1,25 +1,25 @@
 ---
-title: Parametrizované dotazy ve službě Azure Cosmos DB
-description: Další informace o dotazech SQL s parametry
+title: Parametrizované dotazy v Azure Cosmos DB
+description: Přečtěte si o dotazech parametrizovaných SQL
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 2bfc22346c1dd43d7d3c2937ffc286e48ae774d0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342902"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003599"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>Parametrizované dotazy ve službě Azure Cosmos DB
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Parametrizované dotazy v Azure Cosmos DB
 
-Cosmos DB podporuje dotazy s parametry vyjádřena pomocí známé @ zápis. Parametrizované dotazy SQL poskytuje robustní zpracování a uvození vstupu uživatele a zabraňuje náhodnou expozici dat prostřednictvím útoku prostřednictvím injektáže SQL.
+Cosmos DB podporuje dotazy s parametry vyjádřenými známým znakem @ Notation. Parametrizované SQL poskytují robustní zpracování a uvozovací znaky vstupu uživatele a zabraňují nechtěnému úniku dat prostřednictvím injektáže SQL.
 
 ## <a name="examples"></a>Příklady
 
-Můžete například napsat dotaz, který přebírá `lastName` a `address.state` jako parametry a proveďte jej pro různé hodnoty `lastName` a `address.state` na základě uživatelského zadání.
+Můžete například napsat dotaz `lastName` , který přebírá a `address.state` jako parametry a provede `lastName` ho pro různé hodnoty a `address.state` na základě vstupu uživatele.
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ Můžete například napsat dotaz, který přebírá `lastName` a `address.state
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Můžete pak odeslat tuto žádost do služby Cosmos DB jako parametrický dotaz JSON podobný tomuto:
+Tuto žádost pak můžete odeslat Cosmos DB jako parametrizovaný dotaz JSON, jako je například následující:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Můžete pak odeslat tuto žádost do služby Cosmos DB jako parametrický dotaz
     }
 ```
 
-Následující příklad nastaví argument TOP s parametrizovaného dotazu: 
+Následující příklad nastaví horní argument s parametrizovaným dotazem: 
 
 ```sql
     {
@@ -50,10 +50,10 @@ Následující příklad nastaví argument TOP s parametrizovaného dotazu:
     }
 ```
 
-Hodnoty parametru může být libovolný platný kód JSON: řetězce, čísla, logické hodnoty null, dokonce i pole nebo vnořené JSON. Cosmos DB je bez schématu, parametry nejsou ověřovat na libovolného typu.
+Hodnoty parametrů můžou být jakékoli platné JSON: řetězce, čísla, logické hodnoty, hodnoty null, sudé pole nebo vnořené JSON. Vzhledem k tomu, že Cosmos DB je bez schématu, parametry nejsou ověřeny proti žádnému typu.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelování dat dokumentů](modeling-data.md)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Data modelu dokumentu](modeling-data.md)

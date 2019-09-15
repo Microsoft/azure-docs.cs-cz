@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6a3be3733c5041576d5db49256056ac4f0c03a7f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355022"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003011"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -34,22 +34,6 @@ Rychlý start používá dvě předem napsané aplikace Python:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Pythonu. V současné době Microsoft Azure sady IoT SDK pro Python podporovat pouze konkrétní verze Pythonu pro každou platformu. Další informace najdete v [souboru Readme pro Python SDK](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-V tomto rychlém startu se předpokládá použití vývojového počítače s Windows. Pro systémy Windows je podporována pouze [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je architektura procesoru systému 32 bitů, Stáhněte instalační program x86. v případě 64bitové architektury si stáhněte instalační program X86-64. Dále se ujistěte, že je pro vaši architekturu (x86 nebo x64) nainstalována [aplikace Microsoft Visual C++ Redistributable pro Visual Studio 2015, 2017 a 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
-
-Python můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
-
-Aktuální verzi Pythonu na počítači používaném pro vývoj můžete ověřit pomocí jednoho z následujících příkazů:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
@@ -73,9 +57,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
+    **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
-    **MyPythonDevice** : Toto je název zadaný pro registrované zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
+    **MyPythonDevice**: Toto je název zadaný pro registrované zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
@@ -83,7 +67,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
+    **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -97,7 +81,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 3. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
+    **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -114,7 +98,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="listen-for-direct-method-calls"></a>Naslouchání voláním přímé metody
 
-Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení odešle po spuštění přímé metody zpět do centra potvrzení.
+Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
 1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu Python. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -140,7 +124,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
-Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
+Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
 1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Python. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
@@ -160,7 +144,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
     python BackEndApplication.py
     ```
 
-    Následující snímek obrazovky ukazuje výstup, zatímco aplikace provádí volání přímé metody na zařízení a obdrží potvrzení:
+    Následující snímek obrazovky ukazuje výstup, ve kterém aplikace představuje přímé volání metody do zařízení a přijímá potvrzení:
 
     ![Spuštění back-endové aplikace](./media/quickstart-control-device-python/BackEndApplication.png)
 
@@ -172,7 +156,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpovídali na volání přímé metody v aplikaci simulovaného zařízení.
 

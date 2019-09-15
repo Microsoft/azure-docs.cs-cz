@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839541"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001103"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
@@ -34,9 +34,12 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+> [!NOTE]
+> Následující příručka je určena pro sadu SDK V1 Python, která je od té doby zastaralá. V současné době pracujeme na tom, aby tato příručka byla kompatibilní s 2. Podívejte se prosím na tento prostor na aktualizace.
+
 ## <a name="solution-scope"></a>Obor řešení
 
-Tento kurz ukazuje, jak vytvořit modul v Pythonu pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Pythonu pro zařízení s Windows. 
+Tento kurz ukazuje, jak vytvořit modul v **Pythonu** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Pythonu pro zařízení s Windows. 
 
 Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů Pythonu pro Linux: 
 
@@ -242,7 +245,7 @@ V manifestu nasazení jsme použili vláken Module PythonModule, které nastaví
 
 1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly. 
 
-2. Klikněte pravým tlačítkem na **PythonModule** a vyberte **Upravit modul**s dvojitou čárkou. 
+2. Klikněte pravým tlačítkem na **PythonModule** a vyberte **Upravit modul s dvojitou**čárkou. 
 
 3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě. 
 
@@ -260,7 +263,7 @@ V opačném případě můžete odstranit místní konfigurace a prostředky Azu
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814097"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001789"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight 
 
@@ -51,17 +51,19 @@ Webové uživatelské rozhraní serveru historie Sparku vypadá takto:
 ![Server historie HDInsight Spark](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>Otevřete uživatelské rozhraní příze.
+
 Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které jsou aktuálně spuštěny v clusteru Spark.
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **panelu Rychlé odkazy**klikněte na **řídicí panel clusteru**a pak klikněte na **příze**.
 
-    ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, klikněte na **řídicí panel clusteru**a pak klikněte na **řídicí panel clusteru HDInsight**. V uživatelském rozhraní Ambari klikněte na **příze**, klikněte na **Rychlé odkazy**, klikněte na aktivní Správce prostředků a potom klikněte na **Správce prostředků uživatelské rozhraní**.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optimalizace clusterů pro aplikace Spark
+
 Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace jsou `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.
 
 Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru), nebo je lze zadat také pro každou jednotlivou aplikaci.
@@ -76,7 +78,7 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
 
 3. Kliknutím na **Uložit** uložte změny konfigurace. V horní části stránky se zobrazí výzva k restartování všech ovlivněných služeb. Klikněte na **Restartovat**.
 
-    ![Restartovat služby](./media/apache-spark-resource-manager/restart-services.png)
+    ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
 Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete provést změny `%%configure` konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
@@ -135,21 +137,21 @@ Z důvodu dynamického přidělování Spark jsou jediné prostředky, které js
 ## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
 Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně klikněte na **Jupyter**, klikněte na **Akce služby**a pak klikněte na **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
 
-![Restartovat Jupyter](./media/apache-spark-resource-manager/restart-jupyter.png "Restartovat Jupyter")
+![Restartovat Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartovat Jupyter")
 
 ## <a name="monitor-resources"></a>Sledování prostředků
 Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku článku. V tabulce metriky clusteru v horní části obrazovky ověřte hodnoty **využité paměti** a **Celkový počet sloupců paměti** . Pokud jsou tyto dvě hodnoty blízko, nemusí být k dispozici dostatek prostředků ke spuštění další aplikace. Totéž platí pro sloupce **virtuální jádra použité** a **virtuální jádra celkem** . Pokud je v hlavním zobrazení aplikace nechali v **přijatém** stavu a nepřechází do stavu **spuštěno** nebo **selhání** , může to také znamenat, že není dostatek prostředků ke spuštění.
 
-![Omezení prostředků](./media/apache-spark-resource-manager/resource-limit.png "Omezení prostředků")
+![Omezení prostředků](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Omezení prostředků")
 
 ## <a name="kill-running-applications"></a>Ukončit běžící aplikace
 1. V uživatelském rozhraní příze na levém panelu klikněte na **Spustit**. V seznamu spuštěných aplikací určete aplikaci, kterou chcete ukončit, a klikněte na **ID**.
 
-    ![Kill app1](./media/apache-spark-resource-manager/kill-app1.png "Kill app1")
+    ![Kill app1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Kill app1")
 
 2. Klikněte na tlačítko **ukončit aplikaci** v pravém horním rohu a pak klikněte na **OK**.
 
-    ![Kill app2](./media/apache-spark-resource-manager/kill-app2.png "Kill app2")
+    ![Kill app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kill app2")
 
 ## <a name="see-also"></a>Viz také:
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

@@ -1,6 +1,6 @@
 ---
-title: Kurz – použití virtuálního počítače s Linuxem a aplikace v Pythonu ukládat tajné kódy ve službě Azure Key Vault | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak nakonfigurovat aplikaci Python k čtení tajného klíče ze služby Azure Key Vault.
+title: Kurz – použití virtuálního počítače se systémem Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault | Microsoft Docs
+description: V tomto kurzu se naučíte konfigurovat aplikaci v Pythonu pro čtení tajného klíče z Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -9,28 +9,28 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876710"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003887"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: Tajné kódy ukládat v Azure Key Vault pomocí virtuálního počítače s Linuxem a aplikace v Pythonu
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: Použití virtuálního počítače Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault
 
-Služba Azure Key Vault pomáhá chránit tajné kódy jako jsou klíče rozhraní API a databázové připojovací řetězce, které jsou potřebné pro přístup k aplikacím, služby a prostředky IT.
+Azure Key Vault vám pomůže s ochranou tajných kódů, jako jsou klíče rozhraní API a databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
-V tomto kurzu se nastavení webové aplikace Azure ke čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. Získáte informace o těchto tématech:
+V tomto kurzu nastavíte webovou aplikaci Azure pro čtení informací z Azure Key Vault pomocí spravovaných identit pro prostředky Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořte trezor klíčů
-> * Store tajný klíč v trezoru klíčů
-> * Vytvoření virtuálního počítače s Linuxem
-> * Povolit [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač
-> * Přidělení požadovaných oprávnění pro konzolovou aplikaci pro čtení dat ze služby key vault
-> * Získání tajného klíče z trezoru klíčů
+> * Uložení tajného klíče do trezoru klíčů
+> * Vytvořit virtuální počítač s Linuxem
+> * Povolit [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač
+> * Udělte aplikaci konzoly požadovaná oprávnění ke čtení dat z trezoru klíčů.
+> * Načtení tajného kódu z trezoru klíčů
 
-Před pokračováním, ujistěte se, že rozumíte [základnímu konceptu služby Key Vault](key-vault-whatis.md#basic-concepts).
+Než budete pokračovat, ujistěte se, že rozumíte [základním konceptům o Key Vault](basic-concepts.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,19 +40,19 @@ Před pokračováním, ujistěte se, že rozumíte [základnímu konceptu služb
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="understand-managed-service-identity"></a>Vysvětlení služby Managed Service Identity
+## <a name="understand-managed-service-identity"></a>Pochopení Identita spravované služby
 
-Služba Azure Key Vault můžete bezpečně ukládat přihlašovací údaje, proto nejsou ve vašem kódu. Je načítat, musíte pro ověření do služby Azure Key Vault. Však k ověření do služby Key Vault, budete potřebovat přihlašovací údaje. Je classic bootstrap problém. Pomocí Azure a Azure Active Directory (Azure AD) Identity spravované služby (MSI) poskytuje bootstrap identitou, která zjednodušuje začněte tím.
+Azure Key Vault můžou přihlašovací údaje ukládat bezpečně, takže nejsou ve vašem kódu. Pokud je chcete načíst, je nutné ověřit, že Azure Key Vault. K ověření Key Vault ale potřebujete přihlašovací údaje. Jedná se o klasický problém při zavádění. Prostřednictvím Azure a Azure Active Directory (Azure AD) poskytuje Identita spravované služby (MSI) identitu pro spuštění, která usnadňuje zprovoznění vašich věcí.
 
-Při povolení MSI pro službu Azure, jako jsou virtuální počítače, služby App Service nebo funkce, Azure vytvoří službu instanční objekt pro instanci služby ve službě Azure AD. Přihlašovací údaje pro instanční objekt se vkládá do instance služby.
+Když povolíte MSI pro službu Azure, například Virtual Machines, App Service nebo Functions, Azure vytvoří instanční objekt pro instanci služby ve službě Azure AD. Vloží pověření pro instanční objekt do instance služby.
 
 ![MSI](media/MSI.png)
 
-V dalším kroku váš kód volá místních metadat služba k dispozici u prostředku Azure získat přístupový token. Váš kód používá přístupový token, který získá z místního koncového bodu MSI pro ověření do služby Azure Key Vault.
+Dál váš kód volá místní službu metadat dostupnou v prostředku Azure a získá přístupový token. Váš kód používá přístupový token, který získává z místního koncového bodu MSI k ověření pro službu Azure Key Vault.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
+Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
 
 ```azurecli-interactive
 az login
@@ -62,22 +62,22 @@ az login
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků s použitím `az group create` v umístění západní USA s následujícím kódem. Nahraďte `YourResourceGroupName` s názvem podle vašeho výběru.
+Vytvořte skupinu prostředků pomocí `az group create` příkazu v umístění západní USA s následujícím kódem. Nahraďte `YourResourceGroupName` názvem, který jste si zvolili.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-Tato skupina prostředků v rámci tohoto kurzu použijete.
+Tuto skupinu prostředků použijete v průběhu tohoto kurzu.
 
 ## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-V dalším kroku vytvoříte trezor klíčů ve skupině prostředků, kterou jste vytvořili v předchozím kroku. Zadejte tyto informace:
+Potom ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte Trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a pomlčky (-).
+* Název trezoru klíčů: Název musí být řetězec 3-24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a spojovníky (-).
 * Název skupiny prostředků.
-* Umístění: **USA – západ**.
+* Oblasti **Západní USA**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -87,7 +87,7 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Přidání tajného klíče do trezoru klíčů
 
-Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Můžete chtít uložit připojovací řetězec SQL nebo nějakých jiných informací, které je potřeba nastavit na obojí udržovat zabezpečených a dostupných pro vaši aplikaci.
+Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Je možné, že budete chtít uložit připojovací řetězec SQL nebo jakékoli jiné informace, které musí být udržovány v bezpečí a k dispozici pro vaši aplikaci.
 
 Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč *AppSecret*. V tomto tajném klíči bude uložená hodnota **MySecret**.
 
@@ -95,11 +95,11 @@ Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
 
-Vytvoření virtuálního počítače pomocí `az vm create` příkazu.
+Vytvořte virtuální počítač pomocí `az vm create` příkazu.
 
-Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. `--generate-ssh-keys` Parametr automaticky vygeneruje klíče SSH a vloží je ve výchozím umístění klíčů ( **~/.ssh**). Chcete-li místo toho vytvořit konkrétní sadu klíčů, použijte `--ssh-key-value` možnost.
+Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. Parametr automaticky vygeneruje klíč SSH a umístí ho do výchozího umístění klíče ( **~/.ssh**). `--generate-ssh-keys` Pokud chcete místo toho vytvořit konkrétní sadu klíčů, použijte `--ssh-key-value` možnost.
 
 ```azurecli-interactive
 az vm create \
@@ -125,17 +125,17 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 }
 ```
 
-Poznamenejte si vlastní `publicIpAddress` ve výstupu z vašeho virtuálního počítače. Tuto adresu budete používat pro přístup k virtuálnímu počítači v dalších krocích.
+Poznamenejte si si vlastní `publicIpAddress` výstup z virtuálního počítače. Tuto adresu použijete pro přístup k virtuálnímu počítači v pozdějších krocích.
 
-## <a name="assign-an-identity-to-the-vm"></a>Přiřadit identitu virtuálního počítače
+## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
-Vytvoření identity systém přiřadil k virtuálnímu počítači spuštěním následujícího příkazu:
+Spuštěním následujícího příkazu vytvořte identitu přiřazenou systémem k virtuálnímu počítači:
 
 ```azurecli-interactive
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Výstup příkazu je následujícím způsobem.
+Výstup příkazu je následující.
 
 ```azurecli
 {
@@ -144,17 +144,17 @@ Výstup příkazu je následujícím způsobem.
 }
 ```
 
-Poznamenejte si, `systemAssignedIdentity`. Můžete ji použít na další krok.
+Poznamenejte `systemAssignedIdentity`si. Použijete ho v dalším kroku.
 
-## <a name="give-the-vm-identity-permission-to-key-vault"></a>Udělit oprávnění identity virtuálního počítače do služby Key Vault
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>Udělte identitě virtuálního počítače oprávnění k Key Vault
 
-Nyní můžete udělit oprávnění služby Key Vault k identitě, kterou jste vytvořili. Spusťte následující příkaz:
+Nyní můžete pro vytvořenou identitu udělit Key Vault oprávnění. Spusťte následující příkaz:
 
 ```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-in-to-the-vm"></a>Přihlaste se k virtuálnímu počítači
+## <a name="log-in-to-the-vm"></a>Přihlaste se k virtuálnímu počítači.
 
 Přihlaste se k virtuálnímu počítači pomocí terminálu.
 
@@ -162,15 +162,15 @@ Přihlaste se k virtuálnímu počítači pomocí terminálu.
 ssh azureuser@<PublicIpAddress>
 ```
 
-## <a name="install-python-library-on-the-vm"></a>Nainstalujte knihovnu Pythonu ve virtuálním počítači
+## <a name="install-python-library-on-the-vm"></a>Instalace knihovny Pythonu na virtuálním počítači
 
-Stáhněte a nainstalujte [požadavky](https://pypi.org/project/requests/2.7.0/) knihovna Python pro volání HTTP GET.
+Stáhněte a nainstalujte knihovnu Pythonu [žádosti](https://pypi.org/project/requests/2.7.0/) , abyste mohli volat volání http.
 
-## <a name="create-edit-and-run-the-sample-python-app"></a>Vytvořit, upravit a spustit ukázkovou aplikaci v Pythonu
+## <a name="create-edit-and-run-the-sample-python-app"></a>Vytvoření, úprava a spuštění ukázkové aplikace v Pythonu
 
 Vytvořte soubor Pythonu s názvem **Sample.py**.
 
-Sample.py otevřít a upravit ji tak, aby obsahovala následující kód:
+Otevřete Sample.py a upravte jej tak, aby obsahoval následující kód:
 
 ```python
 # importing the requests library
@@ -192,24 +192,24 @@ Sample.py otevřít a upravit ji tak, aby obsahovala následující kód:
 print(kvSecret.json()["value"])
 ```
 
-Předchozí kód provede dvoustupňový proces:
+Předchozí kód provádí proces se dvěma kroky:
 
-   1. Načte token z koncového bodu místní MSI ve virtuálním počítači. Koncový bod potom načte token ze služby Azure Active Directory.
-   1. Token, který předá do služby key vault a načte váš tajný klíč.
+   1. Načte token z místního koncového bodu MSI na virtuálním počítači. Koncový bod potom načte token z Azure Active Directory.
+   1. Předá token do trezoru klíčů a načte váš tajný klíč.
 
-Spusťte následující příkaz. Měli byste vidět tajná hodnota.
+Spusťte následující příkaz. Měla by se zobrazit tajná hodnota.
 
 ```console
 python Sample.py
 ```
 
-V tomto kurzu jste zjistili, jak používat Azure Key Vault pomocí aplikace v Pythonu běží na virtuálním počítači s Linuxem.
+V tomto kurzu jste zjistili, jak používat Azure Key Vault s aplikací Python běžícím na virtuálním počítači se systémem Linux.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už je budete potřebovat, odstraňte skupinu prostředků, virtuálního počítače a všech souvisejících prostředků. Uděláte to tak, vyberte skupinu prostředků příslušného virtuálního počítače a vyberte **odstranit**.
+Odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky, pokud je už nepotřebujete. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**.
 
-Odstranění trezoru klíčů pomocí `az keyvault delete` příkaz:
+Odstraňte Trezor klíčů pomocí `az keyvault delete` příkazu:
 
 ```azurecli-interactive
 az keyvault delete --name
@@ -220,4 +220,4 @@ az keyvault delete --name
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rozhraní REST API služby Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

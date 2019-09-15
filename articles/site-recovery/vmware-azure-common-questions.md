@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959151"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002277"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné dotazy týkající se replikace z VMware do Azure
 
@@ -231,7 +231,7 @@ Zkontrolujte [požadavky](vmware-azure-deploy-configuration-server.md#prerequisi
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Můžu ručně nastavit konfigurační server, místo abyste použili šablonu?
 
-Doporučujeme [vytvořit virtuální počítač konfiguračního serveru](vmware-azure-deploy-configuration-server.md) pomocí nejnovější verze šablony Open Virtual Machine Format (OVF). Pokud šablonu nemůžete použít (například pokud nemáte přístup k serveru VMware), [Stáhněte](physical-azure-set-up-source.md) si instalační soubor z portálu a nastavte konfigurační server.
+Doporučujeme [vytvořit virtuální počítač konfiguračního serveru](vmware-azure-deploy-configuration-server.md) pomocí nejnovější verze šablony Open Virtualization Format (OVF). Pokud šablonu nemůžete použít (například pokud nemáte přístup k serveru VMware), [Stáhněte](physical-azure-set-up-source.md) si instalační soubor z portálu a nastavte konfigurační server.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Může být konfigurační server replikován do více než jedné oblasti?
 
@@ -361,7 +361,7 @@ Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní RE
 
 Ano. [Další informace](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zkontrolujte](vmware-physical-azure-support-matrix.md) požadavky na podporu.
 - [Nastavit](vmware-azure-tutorial.md) Replikace z VMware do Azure

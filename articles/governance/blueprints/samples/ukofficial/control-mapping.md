@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 43848e99f679e306747c4cb7b31a4d4692c888cc
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 654ae2da9bcdb6d73de47730aff6870c2e3dfaeb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918343"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001523"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
@@ -161,7 +161,7 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Při vytváření virtuálních sítí nasadit sledovací proces sítě
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zkontrolovali mapování ovládacího prvku OFICIÁLNÍch a NHSch plánů UK, najdete v následujících článcích informace o přehledu a způsobu nasazení této ukázky:
 

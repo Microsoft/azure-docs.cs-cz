@@ -1,6 +1,6 @@
 ---
 title: Spuštění, monitorování a zrušení školicích běhů v Pythonu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se, jak začít, nastavit stav, označit a uspořádat experimenty pro strojové učení.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376300"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002732"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -33,9 +33,9 @@ Tento článek ukazuje příklady následujících úloh:
 
 Budete potřebovat následující položky:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* [Pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md).
+* [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
 * Sada SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější). Chcete-li nainstalovat nebo aktualizovat nejnovější verzi sady SDK, přečtěte si téma [instalace nebo aktualizace sady SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -45,7 +45,7 @@ Budete potřebovat následující položky:
     print(azureml.core.VERSION)
     ```
 
-* Rozšíření [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a rozhraní příkazového [řádku pro službu Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Rozšíření [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a rozhraní příkazového [řádku pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
 ## <a name="start-a-run-and-its-logging-process"></a>Spuštění běhu a jeho procesu protokolování
 
@@ -79,7 +79,7 @@ Pro spuštění experimentu použijte následující postup:
     az login
     ```
 
-1. Připojte konfiguraci pracovního prostoru ke složce, která obsahuje váš školicí skript. Nahraďte `myworkspace` pracovním prostorem služby Azure Machine Learning. Nahraďte `myresourcegroup` skupinou prostředků Azure, která obsahuje váš pracovní prostor:
+1. Připojte konfiguraci pracovního prostoru ke složce, která obsahuje váš školicí skript. Nahraďte `myworkspace` pracovním prostorem Azure Machine Learning. Nahraďte `myresourcegroup` skupinou prostředků Azure, která obsahuje váš pracovní prostor:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>Označení a hledání spuštění
 
-Ve službě Azure Machine Learning můžete pomocí vlastností a značek lépe organizovat a dotazovat vaše běhy na důležité informace.
+V Azure Machine Learning můžete použít vlastnosti a značky, které vám pomůžou organizovat a dotazovat vaše běhy na důležité informace.
 
 ### <a name="add-properties-and-tags"></a>Přidat vlastnosti a značky
 
@@ -337,7 +337,7 @@ Následující poznámkové bloky ukazují koncepty v tomto článku:
 
 * Další informace o rozhraních API pro protokolování najdete v [poznámkovém bloku rozhraní API pro protokolování](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
 
-* Další informace o správě běžících v sadě Azure Machine Learning SDK najdete v [poznámkovém bloku spravovat běhy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
+* Další informace o správě běžících v sadě Azure Machine Learning SDK najdete v poznámkovém [bloku spravovat běhy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
 
 ## <a name="next-steps"></a>Další postup
 

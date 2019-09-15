@@ -9,12 +9,12 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ca155763109dbf4292738354244dc397272d06f4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036619"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002237"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "69036619"
 V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure CLI.
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a Nemazat. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 > Podporují se jenom klíče RSA a velikost klíče 2048.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
@@ -45,7 +45,7 @@ Další informace o konfiguraci spravovaných identit přiřazených systémem p
 
 ## <a name="create-a-new-key-vault"></a>Vytvořit nový trezor klíčů
 
-Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro Azure Storage šifrování, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a nemazatelné. Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu nebo Azure CLI s povoleným nastavením, spusťte následující příkazy. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
+Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro Azure Storage šifrování, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a **nemazatelné**. Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu nebo Azure CLI s povoleným nastavením, spusťte následující příkazy. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami. 
 
 Chcete-li vytvořit nový trezor klíčů pomocí rozhraní příkazového řádku Azure, zavolejte volání [AZ datatrezor Create](/cli/azure/keyvault#az-keyvault-create). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
@@ -120,4 +120,4 @@ Když vytváříte novou verzi klíče, budete muset aktualizovat účet úloži
 ## <a name="next-steps"></a>Další postup
 
 - [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md) 
-- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

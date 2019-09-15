@@ -1,19 +1,19 @@
 ---
-title: Konstanty SQL ve službě Azure Cosmos DB
-description: Další informace o konstanty SQL ve službě Azure Cosmos DB
+title: Konstanty SQL v Azure Cosmos DB
+description: Přečtěte si o konstantách SQL v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ed337c8330eb8b3e4ad97c92cca1d0c5977f9588
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342432"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002046"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL dotazu konstanty  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
 
  Konstanta, označované také jako literál nebo skalární hodnota, je symbol, který reprezentuje hodnotu konkrétního data. Formát konstantě závisí na datový typ, který představuje.  
   
@@ -26,10 +26,10 @@ ms.locfileid: "67342432"
 |**Datový typ Boolean**|Hodnoty: **false**, **true**.|  
 |**Číslo**|Číslo dvojité přesnosti s plovoucí desetinnou čárkou, standardní IEEE 754.|  
 |**řetězec**|Posloupnost nula nebo více znaků Unicode. Řetězce musí být uzavřen v jednoduchých nebo dvojitých uvozovkách.|  
-|**Pole**|Posloupnost nula nebo více prvků. Každý prvek může být hodnota libovolného skalární datového typu, s výjimkou **Nedefinováno**.|  
+|**Pole**|Posloupnost nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
 |**objekt**|Neuspořádanou sadu párů název/hodnota nula nebo více. Název je řetězec znaků Unicode, hodnota může být libovolného skalární datového typu, s výjimkou **Nedefinováno**.|  
   
-## <a name="bk_syntax"></a>Syntaxe
+## <a name="bk_syntax"></a>Syntaktick
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "67342432"
   
 ```  
   
-##  <a name="bk_arguments"></a> argumenty
+##  <a name="bk_arguments"></a>Náhodné
   
 * `<undefined_constant>; Undefined`  
   
@@ -107,7 +107,7 @@ ms.locfileid: "67342432"
 |-|-|-|  
 |\\'|apostrof (')|U+0027|  
 |\\"|dvojité uvozovky (")|U+0022|  
-|\\\ |zpětné lomítko (\\)|U+005C|  
+|\\\ |obrácené lomítko (\\)|U+005C|  
 |\\/|lomítko (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
 |\f|Posun strany|U + 000C|  
@@ -118,5 +118,5 @@ ms.locfileid: "67342432"
 
 ## <a name="next-steps"></a>Další postup
 
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelování dat dokumentů](modeling-data.md)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Data modelu dokumentu](modeling-data.md)

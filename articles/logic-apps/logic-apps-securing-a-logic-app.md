@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845434"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004097"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -185,7 +185,7 @@ Pokud chcete ostatním uživatelům zabránit v změně nebo odstranění vaší
 
 Během provádění aplikace logiky jsou všechna data během přenosu zašifrovaná pomocí [protokolu TLS (Transport Layer Security)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) a v [klidovém](../security/fundamentals/encryption-atrest.md)stavu. Až se vaše aplikace logiky dokončí, můžete zobrazit historii pro toto spuštění, včetně kroků, které byly spuštěny spolu se stavem, dobou trvání, vstupy a výstupy pro každou akci. Tato bohatá podrobnosti poskytuje přehled o tom, jak vaše aplikace logiky běžela a kde můžete začít řešit problémy, ke kterým dojde.
 
-Když přistupujete k historii spuštění aplikace logiky, Logic Apps ověří váš přístup a poskytne odkazy na vstupy a výstupy z požadavků a odpovědí v běhu vaší aplikace logiky. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z [Azure Key Vault](../key-vault/key-vault-whatis.md) , který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
+Když přistupujete k historii spuštění aplikace logiky, Logic Apps ověří váš přístup a poskytne odkazy na vstupy a výstupy z požadavků a odpovědí v běhu vaší aplikace logiky. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z [Azure Key Vault](../key-vault/key-vault-overview.md) , který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
 
 K řízení přístupu k vstupům a výstupům v historii spuštění aplikace logiky máte tyto možnosti:
 
@@ -370,7 +370,7 @@ Další informace najdete v části [zabezpečené parametry v definicích praco
 
 Při automatizaci nasazení pomocí [šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters)můžete definovat zabezpečené parametry šablony, které jsou vyhodnocovány při nasazení, pomocí `securestring` typů a. `secureobject` Chcete-li definovat parametry šablony, použijte sekci nejvyšší úrovně `parameters` šablony, která je oddělená a odlišná od `parameters` oddílu definice pracovního postupu. Chcete-li zadat hodnoty parametrů šablony, použijte samostatný [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Pokud například používáte tajné kódy, můžete definovat a používat zabezpečené parametry šablony, které tyto tajné kódy načítají z [Azure Key Vault](../key-vault/key-vault-whatis.md) při nasazení. Pak můžete odkazovat na Trezor klíčů a tajný kód v souboru parametrů. Další informace najdete v těchto tématech:
+Pokud například používáte tajné kódy, můžete definovat a používat zabezpečené parametry šablony, které tyto tajné kódy načítají z [Azure Key Vault](../key-vault/key-vault-overview.md) při nasazení. Pak můžete odkazovat na Trezor klíčů a tajný kód v souboru parametrů. Další informace najdete v těchto tématech:
 
 * [Pomocí Azure Key Vault předat hodnoty zabezpečeného parametru při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * [Parametry zabezpečení v šablonách Azure Resource Manager](#secure-parameters-deployment-template) dále v tomto tématu.
@@ -425,7 +425,7 @@ Pokud chcete chránit citlivé informace v definici pracovního postupu vaší a
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Zabezpečené parametry v šablonách Azure Resource Manager
 
-Šablona správce prostředků pro aplikaci logiky obsahuje několik `parameters` oddílů. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí `securestring` typu nebo. `secureobject` Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-whatis.md) a použít [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečených hodnot parametrů při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Šablona správce prostředků pro aplikaci logiky obsahuje několik `parameters` oddílů. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí `securestring` typu nebo. `secureobject` Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a použít [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečených hodnot parametrů při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 Zde jsou další informace o těchto `parameters` oddílech:
 

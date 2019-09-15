@@ -1,7 +1,7 @@
 ---
 title: Nasazení modelu pro odvození pomocí GPU
-titleSuffix: Azure Machine Learning service
-description: V tomto článku se naučíte, jak používat službu Azure Machine Learning k nasazení modelu hloubkového učení s povoleným grafickým procesorem jako webové služby. požadavky na odvození služby a skóre.
+titleSuffix: Azure Machine Learning
+description: V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model hloubkového učení s povoleným GPU jako webovou službu. požadavky na odvození služby a skóre.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844986"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002769"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 
-V tomto článku se naučíte, jak používat službu Azure Machine Learning k nasazení modelu s povoleným grafickým procesorem jako webové služby. Informace v tomto článku jsou založené na nasazení modelu ve službě Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který používá model pro odvození.
+V tomto článku se naučíte, jak použít Azure Machine Learning k nasazení modelu s povoleným grafickým procesorem jako webové služby. Informace v tomto článku jsou založené na nasazení modelu ve službě Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který používá model pro odvození.
 
 Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
 
@@ -34,7 +34,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 * Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -51,7 +51,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 Pokud se chcete připojit k existujícímu pracovnímu prostoru, použijte následující kód:
 
 > [!IMPORTANT]
-> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a Správa pracovních prostorů služby Azure Machine Learning](how-to-manage-workspace.md).   Další informace o ukládání konfigurace do souboru najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
+> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a Správa pracovních prostorů Azure Machine Learning](how-to-manage-workspace.md).   Další informace o ukládání konfigurace do souboru najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure vám bude účtovat, dokud cluster AKS existuje. Až s tím budete hotovi, nezapomeňte cluster AKS odstranit.
 
-Další informace o používání AKS se službou Azure Machine Learning najdete v tématu [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
+Další informace o použití AKS s Azure Machine Learning najdete v tématu [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Zápis vstupního skriptu
 
@@ -282,7 +282,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení modelu na FPGA](../service/how-to-deploy-fpga-web-service.md)
 * [Nasazení modelu pomocí ONNX](../service/concept-onnx.md#deploy-onnx-models-in-azure)

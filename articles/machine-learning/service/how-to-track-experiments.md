@@ -1,6 +1,6 @@
 ---
 title: Experimenty protokolu ML & metriky
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Sledujte experimenty Azure ML a sledujte metriky spuštění, abyste vylepšili proces vytváření modelů. Přidání protokolování do školicího skriptu a zobrazení protokolovaných výsledků spuštění.  Použijte run. log, spusťte. start_logging nebo ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959947"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002708"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 
-Vylepšete proces vytváření modelů sledováním experimentů a monitorováním metrik spuštění. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, odeslat experiment, monitorovat a zkontrolovat výsledky ve službě Azure Machine Learning.
+Vylepšete proces vytváření modelů sledováním experimentů a monitorováním metrik spuštění. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, jak odeslat experiment, monitorovat tento běh a zkontrolovat výsledky v Azure Machine Learning.
 
 > [!NOTE]
-> Služba Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je automatické spuštění strojového učení nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
+> Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je automatické spuštění strojového učení nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
 
 ## <a name="available-metrics-to-track"></a>Dostupné metriky ke sledování
 
@@ -65,7 +65,7 @@ Před přidáním protokolování a odeslání experimentu, musíte nastavit pra
 
 **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
 
-Následující příklad trénovat jednoduchý model skriptu sklearn Ridge místně v místní aplikace Jupyter notebook. Další informace o odesílání experimentů do různých prostředí najdete v tématu [nastavení cílových výpočetních prostředí pro trénování modelu s využitím služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Následující příklad trénovat jednoduchý model skriptu sklearn Ridge místně v místní aplikace Jupyter notebook. Další informace o odesílání experimentů do různých prostředí najdete v tématu [Nastavení výpočetních cílů pro školení modelů s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
 1. Vytvoření trénovací skript v místní aplikace Jupyter notebook. 
 
@@ -91,7 +91,7 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Přidat sledování experimentu pomocí sady SDK služby Azure Machine Learning a nahrajte trvalý modelu do experimentu, spusťte záznam. Následující kód přidá značky, protokoly a nahraje soubor modelu pro běh experimentu.
+2. Přidejte sledování experimentů pomocí Azure Machine Learning SDK a nahrajte trvalý model do záznamu experimentálního spuštění. Následující kód přidá značky, protokoly a nahraje soubor modelu pro běh experimentu.
 
    ```python
     # Get an experiment object from Azure Machine Learning

@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Key Vault se spravovanými aplikacemi | Dokumentace Microsoftu
-description: Ukazuje způsob použití tajné přístupové kódy ve službě Azure Key Vault při nasazení spravované aplikace
+title: Použití Azure Key Vault se spravovanými aplikacemi | Microsoft Docs
+description: Ukazuje, jak používat přístupové tajné kódy v Azure Key Vault při nasazování spravovaných aplikací.
 services: managed-applications
 author: tfitzmac
 ms.service: managed-applications
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a87066425845a7f1043576a858a361e601ba9cc8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588232"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003415"
 ---
-# <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Tajný kód trezoru klíčů přístup při nasazení spravované aplikace Azure
+# <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Přístup Key Vault tajného klíče při nasazení Azure Managed Applications
 
-Pokud potřebujete předat jako parametr zabezpečenou hodnotu (jako jsou hesla) během nasazení, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Pro přístup k trezoru klíčů při nasazování spravovaných aplikací, je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Služba spravované aplikace používá tuto identitu pro spouštění operací. K úspěšnému načtení hodnoty ze služby Key Vault během nasazení, musí být instanční objekt moci přistupovat k trezoru klíčů.
+Pokud během nasazení potřebujete předat zabezpečenou hodnotu (třeba heslo) jako parametr, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-overview.md). Pro přístup k Key Vault při nasazování spravovaných aplikací musíte udělit přístup k instančnímu objektu **poskytovatele prostředků zařízení** . Služba spravovaných aplikací používá tuto identitu ke spuštění operací. Chcete-li úspěšně načíst hodnotu z Key Vault během nasazení, instanční objekt musí být schopný získat přístup k Key Vault.
 
-Tento článek popisuje postup konfigurace služby Key Vault pro práci s spravované aplikace.
+Tento článek popisuje, jak nakonfigurovat Key Vault pro práci se spravovanými aplikacemi.
 
 ## <a name="enable-template-deployment"></a>Povolit nasazení šablony
 
-1. Na portálu vyberte služby Key Vault.
+1. Na portálu vyberte svůj Key Vault.
 
 1. Vyberte **Zásady přístupu**.   
 
-   ![Vyberte zásady přístupu](./media/key-vault-access/select-access-policies.png)
+   ![Vybrat zásady přístupu](./media/key-vault-access/select-access-policies.png)
 
 1. Vyberte **Kliknutím zobrazíte pokročilé zásady přístupu**.
 
-   ![Zobrazit pokročilé zásady přístupu.](./media/key-vault-access/advanced.png)
+   ![Zobrazit pokročilé zásady přístupu](./media/key-vault-access/advanced.png)
 
-1. Vyberte **povolit přístup k Azure Resource Manageru pro nasazení šablony**. Potom vyberte **Uložit**.
+1. **Pro nasazení šablony vyberte Povolit přístup k Azure Resource Manager**. Potom vyberte **Uložit**.
 
    ![Povolit nasazení šablony](./media/key-vault-access/enable-template.png)
 
-## <a name="add-service-as-contributor"></a>Přidání služby jako přispěvatele
+## <a name="add-service-as-contributor"></a>Přidat službu jako přispěvatele
 
 1. Vyberte **řízení přístupu (IAM)** .
 
-   ![Vyberte řízení přístupu](./media/key-vault-access/access-control.png)
+   ![Vybrat řízení přístupu](./media/key-vault-access/access-control.png)
 
 1. Vyberte **přidat přiřazení role**.
 
-   ![Výběr možnosti Přidat](./media/key-vault-access/add-access-control.png)
+   ![Vyberte Přidat](./media/key-vault-access/add-access-control.png)
 
-1. Vyberte **Přispěvatel** pro danou roli. Vyhledejte **poskytovatele prostředků zařízení** a vyberte ho z dostupných možností.
+1. Jako role vyberte **Přispěvatel** . Vyhledejte **poskytovatele prostředků zařízení** a vyberte ho z dostupných možností.
 
-   ![Vyhledejte poskytovatele](./media/key-vault-access/search-provider.png)
+   ![Hledat poskytovatele](./media/key-vault-access/search-provider.png)
 
 1. Vyberte **Uložit**.
 
-## <a name="reference-key-vault-secret"></a>Odkaz na tajný kód trezoru klíčů
+## <a name="reference-key-vault-secret"></a>Reference Key Vault tajný klíč
 
-K předání tajného klíče ze služby Key Vault do šablony v aplikaci spravované, je nutné použít [propojené šablony](../azure-resource-manager/resource-group-linked-templates.md) a odkazovat na parametry šablony propojené službě Key Vault. Zadejte ID prostředku služby Key Vault a název tajného klíče.
+Chcete-li předat tajný kód z Key Vault do šablony ve spravované aplikaci, je nutné použít propojenou [šablonu](../azure-resource-manager/resource-group-linked-templates.md) a odkazovat na Key Vault v parametrech pro propojenou šablonu. Zadejte ID prostředku Key Vault a název tajného klíče.
 
 ```json
 "resources": [{
@@ -85,10 +85,10 @@ K předání tajného klíče ze služby Key Vault do šablony v aplikaci spravo
 }],
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nakonfigurujete služby Key Vault má být přístupné během nasazení spravované aplikace.
+Nakonfigurovali jste Key Vault, aby byly dostupné během nasazování spravované aplikace.
 
-* Informace o předáním hodnoty ze služby Key Vault jako parametr šablony najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
-* Spravované aplikace příklady najdete v tématu [ukázkových projektů Azure spravované aplikace](sample-projects.md).
+* Informace o předání hodnoty z Key Vault jako parametru šablony naleznete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+* Příklady spravovaných aplikací najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
 * Pokud chcete zjistit, jak vytvořit definiční soubor uživatelského rozhraní pro spravovanou aplikaci, přečtěte si téma [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).

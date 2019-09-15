@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883058"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000539"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Azure Key Vault a Azure CLI 
 
@@ -158,7 +158,7 @@ Existují tři způsoby, jak ověřit Key Vault:
 - Použijte instanční objekt a certifikát. 
 - Použijte instanční objekt a heslo. Tento přístup se nedoporučuje.
 
-Další informace najdete v tématu [Azure Key Vault: Základní koncepty](key-vault-whatis.md#basic-concepts).
+Další informace najdete v tématu [Azure Key Vault: Základní koncepty](basic-concepts.md).
 
 Následující příklad ukazuje, jak načíst tokeny sdíleného přístupového podpisu. Tokeny se načítají po vytvoření definice sdíleného přístupového podpisu. 
 
@@ -194,7 +194,7 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 Informace o příkazech rozhraní příkazového řádku Azure CLI, které jsou relevantní pro spravované účty úložiště, najdete v referenční dokumentaci k [úložišti klíčů AZ klíčů trezor](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si další informace o [klíčích, tajných klíčích a certifikátech](https://docs.microsoft.com/rest/api/keyvault/).
 - Projděte si články na [blogu Azure Key Vault týmu](https://blogs.technet.microsoft.com/kv/).

@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ed668f744716b062fd70d2f63d89152f6fc8a902
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914034"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999126"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -44,7 +44,7 @@ Po přípravě sady Visual Studio 2019 budete potřebovat také následující n
 
 - Stáhněte a nainstalujte si [Docker Community Edition](https://docs.docker.com/install/) do vývojového počítače, abyste mohli sestavovat a spouštět image modulu. Je potřeba nastavit Docker CE tak, aby běžel v režimu kontejnerů Linux nebo v režimu kontejnerů systému Windows.
 
-- Nastavte své místní vývojové prostředí pro ladění, spouštění a testování řešení IoT Edge instalací [vývojářského nástroje Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Nainstalujte [Python (2.7/3.6) a PIP](https://www.python.org/) a pak nainstalujte balíček **iotedgehubdev** spuštěním následujícího příkazu v terminálu. Ujistěte se, že váš nástroj pro vývojáře služby Azure IoT EdgeHub verze je větší než 0.3.0.
+- Nastavte své místní vývojové prostředí pro ladění, spouštění a testování řešení IoT Edge instalací [vývojářského nástroje Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Nainstalujte [Python (2.7/3.6 +) a PIP](https://www.python.org/) a pak nainstalujte balíček **iotedgehubdev** spuštěním následujícího příkazu v terminálu. Ujistěte se, že váš nástroj pro vývojáře služby Azure IoT EdgeHub verze je větší než 0.3.0.
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -240,6 +240,6 @@ V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT E
 
 1. Chcete-li zastavit sledování dat, vyberte zařízení v seznamu a potom v okně **Akce** vyberte možnost **Zastavit sledování vestavěného koncového bodu události** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pro vývoj vlastních modulů pro IoT Edge zařízení, [pochopení a používání sady Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md).

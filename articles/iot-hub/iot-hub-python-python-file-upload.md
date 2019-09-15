@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 37ea126952451eae81c548a11f70b9a258808d34
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147359"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001124"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Python)
 
@@ -35,6 +35,9 @@ Na konci tohoto kurzu spustíte konzolovou aplikaci v Pythonu:
 * **FileUpload.py**, který nahraje soubor do úložiště pomocí sady SDK pro zařízení Python.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+> [!NOTE]
+> Tato příručka používá nepoužívané sady v1 Python SDK, protože funkce nahrávání souborů ještě nebyla v nové sadě SDK v2 implementovaná.
 
 ## <a name="prerequisites"></a>Požadavky
 

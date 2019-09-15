@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614437"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999915"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB provádění dotazů SQL
 
@@ -21,7 +21,7 @@ Následující příklady ukazují, jak vytvořit dotaz a odeslat ho proti Cosmo
 
 ## <a id="REST-API"></a>ROZHRANÍ REST API
 
-Cosmos DB nabízí otevřete programovací model RESTful přes HTTP. Model prostředků se skládá ze sady prostředků v rámci databázového účtu, který obsahuje podmínky pro předplatné Azure. Databázový účet se skládá ze sady *databází*, z nichž každá může obsahovat více kontejnerů, které zase obsahují *položky*, UDF a další typy prostředků. Každý prostředek Cosmos DB je adresovatelný pomocí logického a stabilního identifikátoru URI. Sada prostředků se nazývá *informační kanál*. 
+Cosmos DB nabízí otevřete programovací model RESTful přes HTTP. Model prostředků se skládá ze sady prostředků v rámci databázového účtu, který obsahuje podmínky pro předplatné Azure. Databázový účet se skládá ze sady *databází*, z nichž každá může obsahovat více *kontejnerů*, které zase obsahují *položky*, UDF a další typy prostředků. Každý prostředek Cosmos DB je adresovatelný pomocí logického a stabilního identifikátoru URI. Sada prostředků se nazývá *informační kanál*. 
 
 Základní model interakce s těmito prostředky `GET`je prostřednictvím operací HTTP, `PUT`, `POST`a `DELETE`, s jejich standardními interpretací. Použijte `POST` k vytvoření nového prostředku, spuštění uložené procedury nebo vystavení dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádným vedlejším účinkům.
 
@@ -245,7 +245,7 @@ Klient rozhraní .NET automaticky projde všechny stránky výsledků dotazu v `
 
 Můžete také explicitně řídit stránkování `IDocumentQueryable` vytvořením `IQueryable` pomocí objektu a potom přečtením `ResponseContinuationToken` hodnot a jejich předáním zpátky jako `RequestContinuationToken` v `FeedOptions`. Můžete nastavit `EnableScanInQuery` , aby se povolily kontroly, když není dotaz podporovaný nakonfigurovanou zásadou indexování. V případě kontejnerů rozdělených do oddílů `PartitionKey` můžete použít ke spuštění dotazu na jeden oddíl, i když ho Azure Cosmos DB může automaticky extrahovat z textu dotazu. Můžete použít `EnableCrossPartitionQuery` ke spouštění dotazů proti více oddílům.
 
-Další ukázky .NET s dotazy najdete v ukázkách [Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet) v GitHubu.
+Další ukázky .NET s dotazy najdete v [ukázkách Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3) v GitHubu.
 
 ## <a id="JavaScript-server-side-API"></a>Rozhraní API pro JavaScript na straně serveru
 
@@ -285,8 +285,8 @@ Následující příklad ukazuje, jak používat `queryDocuments` v rozhraní AP
     }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Úvod do Azure Cosmos DB](introduction.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB úrovně konzistence](consistency-levels.md)

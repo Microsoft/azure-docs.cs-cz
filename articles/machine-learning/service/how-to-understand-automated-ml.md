@@ -1,6 +1,6 @@
 ---
 title: Vysvětlení automatizovaných výsledků na ML
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se zobrazovat a pochopit grafy a metriky pro každé z automatizovaných běhů strojového učení.
 services: machine-learning
 author: nilesha
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860560"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999435"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení automatizovaných výsledků strojového učení
 
@@ -28,7 +28,7 @@ Další informace pro:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pomocí sady SDK můžete v Azure Portal nebo na cílové stránce pracovního prostoru (Preview) vytvořit automatizovaný experiment strojového učení.
 
@@ -214,7 +214,7 @@ Můžete zkontrolovat skóre význam funkce pro model celkové stejně jako na t
 
 Další informace o povolení funkcí pro interpretaci najdete [v tématu Konfigurace automatizovaných experimentů ml v Pythonu](how-to-configure-auto-train.md#explain-the-model-interpretability).  Příklad, který vysvětluje nejlepší model, naleznete v tématu [nejlepší vysvětlení modelu](how-to-auto-train-remote.md#explain).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
 + Vyzkoušejte ukázkový Poznámkový blok pro [automatizovaný Machine Learning model vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) .

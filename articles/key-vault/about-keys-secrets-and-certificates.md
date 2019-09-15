@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773125"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000586"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
@@ -25,7 +25,7 @@ Azure Key Vault umožňuje aplikacím a uživatelům Microsoft Azure ukládat a 
 - Certifikáty Podporuje certifikáty, které jsou postavené na klíčích a tajných klíčích a přidávají funkci automatického obnovení.
 - Azure Storage: Může spravovat klíče účtu Azure Storage za vás. Interně Key Vault možné vypsat (synchronizovat) klíče s účtem Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. 
 
-Obecnější informace o Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+Obecnější informace o Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
@@ -48,7 +48,7 @@ V tématu Specifikace JOSE najdete relevantní datové typy pro klíče, šifrov
 -   **šifrovaný text-hodnota** – oktety textu šifry, kódované pomocí Base64URL  
 -   **Digest-Value** – výstup algoritmu hash, kódovaný pomocí Base64URL  
 -   **typ klíče** – jeden z podporovaných typů klíčů, například RSA (Rivest-Shamir-Adleman).  
--   oktety ve formátu **prostého** textu a prostého textu kódované pomocí Base64URL  
+-   oktety ve formátu prostého textu a prostého textu kódované pomocí Base64URL  
 -   **Signatura-hodnota** – výstup algoritmu podpisu kódovanýho pomocí Base64URL  
 -   **base64URL** – binární hodnota kódovaná v BASE64URL [RFC4648]  
 -   **Boolean** – buď true, nebo false  
@@ -168,7 +168,7 @@ Další informace o objektech JWK naleznete v tématu [JSON web Key (JWK)](https
 
 Kromě klíčového materiálu lze zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
 
-- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno s*expem* *NBF* / se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
+- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno s expem *NBF* / se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
 - *NBF*: IntDate, volitelné, výchozí nastavení je nyní. Atribut *NBF* (nikoli před) určuje dobu, po jejímž uplynutí nesmí být klíč použit pro kryptografické operace, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *NBF* vyžaduje, aby aktuální datum a čas musel být pozdější nebo rovno datu a času, které je uvedené v atributu *NBF* . Key Vault může poskytovat některé malé Leeway, obvykle ne více než několik minut, aby se zohlednila časová zkosená část. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 - *exp*: IntDate, volitelné, výchozí nastavení je "navždy". Atribut *exp* (čas vypršení platnosti) identifikuje čas vypršení platnosti nebo po jehož uplynutí se klíč nesmí používat pro kryptografickou operaci s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *exp* vyžaduje, aby aktuální datum a čas musely být před datem a časem vypršení platnosti uvedené v atributu *exp* . Key Vault může poskytovat malým leewayům, obvykle ne více než několik minut, pro účet pro časové zkosení. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 
@@ -181,7 +181,7 @@ Další informace o IntDate a dalších datových typech najdete v tématu [dato
 
 #### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Neplatných klíčů a klíčů s vypršenou platností / mimo okno*exp exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, zakázáno). K tomu, aby bylo možné použít neplatný stav, je povolení testování klíče před použitím v produkčním prostředí. Odůvodnění použití stavu s vypršenou platností je povolení operací obnovení u dat, která byla vytvořena při platnosti klíče. Můžete také zakázat přístup k klíči pomocí zásad Key Vault nebo aktualizací atributu *Enabled* Key na **hodnotu false (NEPRAVDA**).
+Neplatných klíčů a klíčů s vypršenou platností / mimo okno*exp exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, zakázáno). K tomu, aby bylo možné použít neplatný stav, je povolení testování klíče před použitím v produkčním prostředí. Odůvodnění použití stavu s vypršenou platností je povolení operací obnovení u dat, která byla vytvořena při platnosti klíče. Můžete také zakázat přístup k klíči pomocí zásad Key Vault nebo aktualizací atributu *Enabled* Key na **hodnotu false**(NEPRAVDA).
 
 Další informace o typech dat najdete v tématu [datové typy](#data-types).
 
@@ -220,7 +220,7 @@ Následující oprávnění se dají udělit na základě jednotlivých uživate
   - *podpis*: Použijte klíč k podepsání výtahů.
     
 - Oprávnění pro privilegované operace
-  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný klíč
+  - vyprázdnit: Vymazat (trvale odstranit) odstraněný klíč
 
 Další informace o práci s klíči naleznete v tématu [klíčové operace v odkazu Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -238,8 +238,8 @@ Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou u
 
 Kromě tajných dat lze zadat následující atributy:  
 
-- *exp*: IntDate, volitelné, výchozí nastavení je **trvale**. Atribut *exp* (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům, protože informuje uživatele služby trezoru klíčů, že není možné použít konkrétní tajný klíč. Jeho hodnota musí být číslo obsahující hodnotu IntDate.   
-- *NBF*: IntDate, volitelné, výchozí nastavení je **nyní**. Atribut *NBF* (nikoli dřív) určuje čas, před kterým by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům. Jeho hodnota musí být číslo obsahující hodnotu IntDate. 
+- *exp*: IntDate, volitelné, výchozí nastavení je **trvale**. Atribut *exp* (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k informativním účelům, protože informuje uživatele služby trezoru klíčů, že není možné použít konkrétní tajný klíč. Jeho hodnota musí být číslo obsahující hodnotu IntDate.   
+- *NBF*: IntDate, volitelné, výchozí nastavení je **nyní**. Atribut *NBF* (nikoli dřív) určuje čas, před kterým by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k informativním účelům. Jeho hodnota musí být číslo obsahující hodnotu IntDate. 
 - *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Tento atribut určuje, zda mohou být načtena tajná data. Atribut enabled se používá ve spojení s *NBF* a *exp* , pokud dojde k operaci mezi *NBF* a *exp*, ale bude povolená jenom v případě, že je povolená možnost nastavená na **hodnotu true**. Operace mimo okno *NBF* a *exp* se automaticky nepovolují, s výjimkou [zvláštních situací](#date-time-controlled-operations).  
 
 Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odpovědi, která obsahuje tajné atributy:  
@@ -269,7 +269,7 @@ Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, 
   - *obnovit*: Obnovení zálohovaného tajného klíče do trezoru klíčů
 
 - Oprávnění pro privilegované operace
-  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný tajný kód
+  - vyprázdnit: Vymazat (trvale odstranit) odstraněný tajný kód
 
 Další informace o práci s tajnými kódy naleznete [v tématu tajné operace v odkazu na Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -306,7 +306,7 @@ Když se vytvoří certifikát Key Vault, dá se načíst z adresního tajemstv�
 
 Adresovatelný klíč se bude důležitější s neexportovatelnými certifikáty KV. Operace s adresovatelnými klávesami se mapují z pole *použití* zásad certifikátu KV, které slouží k vytvoření certifikátu kV.  
 
-Podporovány jsou dva typy klíčů – modul *hardwarového* zabezpečení *RSA* nebo RSA s certifikáty. Exportovatelné je povolené jenom s šifrováním RSA, které nepodporuje modul HARDWAROVÉho zabezpečení RSA.  
+Podporovány jsou dva typy klíčů – modul HARDWAROVÉho zabezpečení *RSA* nebo *RSA* s certifikáty. Exportovatelné je povolené jenom s šifrováním RSA, které nepodporuje modul HARDWAROVÉho zabezpečení RSA.  
 
 ### <a name="certificate-attributes-and-tags"></a>Atributy a značky certifikátů
 
@@ -434,7 +434,7 @@ Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na
   - *deleteissuers*: Odstranění autorit/vystavitelů certifikátu Key Vault  
  
 - Oprávnění pro privilegované operace
-  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný certifikát
+  - vyprázdnit: Vymazat (trvale odstranit) odstraněný certifikát
 
 Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -469,7 +469,7 @@ Následující oprávnění se dají použít při autorizaci objektu zabezpeče
   - *setsas*: Vytvoří nebo aktualizuje novou definici nebo atributy SAS pro účet úložiště.
 
 - Oprávnění pro privilegované operace
-  - *vyprázdnit*: Vyprázdnit (trvale odstranit) spravovaný účet úložiště
+  - vyprázdnit: Vyprázdnit (trvale odstranit) spravovaný účet úložiště
 
 Další informace najdete v referenčních informacích o [operacích účtu úložiště v Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 

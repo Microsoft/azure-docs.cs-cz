@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976961"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000666"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -35,7 +35,7 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault. Vytvoří
 > Tento článek poskytuje Azure PowerShell pokyny pro aktualizaci protokolování diagnostiky. Můžete také aktualizovat diagnostické protokolování pomocí Azure Monitor v části **diagnostické protokoly** v Azure Portal. 
 >
 
-Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-whatis.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/).
+Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -1,6 +1,6 @@
 ---
 title: Interpretovatelnost modelů
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se vysvětlit, proč model předpovědi pomocí sady SDK Azure Machine Learning. Dá se použít během školení a odvození, abyste porozuměli tomu, jak model dělá předpovědi.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872390"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002357"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>Interpretace modelu pomocí služby Azure Machine Learning
+# <a name="model-interpretability-with-azure-machine-learning"></a>Interpretace modelu pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, proč váš model provedl předpovědi s různými balíčky pro interpretaci Azure Machine Learning Python SDK.
 
@@ -63,7 +63,7 @@ __Přímí vysvětlujícíi__ přicházejí z integrovaných knihoven. Sada SDK 
 * **SHAP stromové struktury**: SHAP na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro stromy a komplety stromů.
 * **SHAP hluboký vysvětlující**: Na základě vysvětlení z SHAP je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v dokumentu SHAP NIPS. TensorFlow modely a modely Keras používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).
 * **SHAP jádra pro jádro**: SHAP vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro libovolný model.
-* Nepodobující se **vysvětlení**: Nepodobná vysvětlení jsou založená na nápadu z globálních náhradních modelů. Globální náhradní model je vnitřně interpretně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi model černého pole. Odborník na data může interpretovat náhradní model, aby vykreslil závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících typů, které lze interpretovat: LightGBM (LinearExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na vysvětlené (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).
+* **Nepodobující se vysvětlení**: Nepodobná vysvětlení jsou založená na nápadu z globálních náhradních modelů. Globální náhradní model je vnitřně interpretně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi model černého pole. Odborník na data může interpretovat náhradní model, aby vykreslil závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících typů, které lze interpretovat: LightGBM (LinearExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na vysvětlené (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).
 
 
 * **Vysvětlení důležitosti funkce permutace**: Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu, které se v zájmu sníží. Čím větší je tato změna, tím důležitější je funkce.
@@ -219,7 +219,7 @@ Funkce vysvětlení přijímají jako vstup oba modely i kanály. Pokud je k dis
 
 ### <a name="train-and-explain-remotely"></a>Dálková analýza a vysvětlení
 
-I když můžete vyškolit různé výpočetní cíle podporované službou Azure Machine Learning, v příkladu v této části se dozvíte, jak to udělat pomocí Azure Machine Learningho cíle služby Compute.
+I když můžete vyškolit různé cíle výpočetní služby, které podporuje Azure Machine Learning, v příkladu v této části se dozvíte, jak to udělat pomocí Azure Machine Learningho cíle služby Compute.
 
 1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku (například run_explainer. py).
 
@@ -474,7 +474,7 @@ Tento vysvětlující se dá nasadit společně s původním modelem a dá se po
 
 1. Nasaďte bitovou kopii na cíl výpočtů:
 
-   1. Vytvořte soubor hodnocení (před tímto krokem použijte postup v části [nasazení modelů pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) k registraci původního modelu předpovědi).
+   1. Vytvořte soubor bodování (před tímto krokem, postupujte podle kroků v části [nasazení modelů s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) k zaregistrování původního modelu předpovědi).
 
         ```python
         %%writefile score.py

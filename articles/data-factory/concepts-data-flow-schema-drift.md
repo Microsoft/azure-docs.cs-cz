@@ -1,83 +1,72 @@
 ---
-title: Azure Data Factory – posun schématu toku dat
+title: Posun schématu v mapování toku dat | Azure Data Factory
 description: Vytváření odolných toků dat v Azure Data Factory s využitím posunu schématu
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/12/2019
+ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640226"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003738"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>Mapování posunu schématu toku dat
+# <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Koncept posunu schématu je případ, kdy zdroje často mění metadata. Pole, sloupce, typy atd. lze v průběhu práce přidat, odebrat nebo změnit. Bez manipulace se započetím schématu se váš tok dat bude zranitelný vůči změnám v nadřazených zdrojích dat. Když se změní příchozí sloupce a pole, typické vzory ETL se nezdaří, protože by mohly být vázané na tyto názvy zdrojů.
+Posun schématu je případ, kdy zdroje často mění metadata. Pole, sloupce a typy lze průběžně přidávat, odebírat nebo měnit. Bez manipulace se započetím schématu se váš tok dat bude zranitelný proti změnám nadřazeného zdroje dat. Typické vzory ETL selžou, když se změní příchozí sloupce a pole, protože by měly být vázány na tyto názvy zdrojů.
 
-Aby bylo možné chránit proti posunu schématu, je důležité mít zařízení v nástroji pro tok dat, který vám jako datovou inženýry umožní:
+Pro zajištění ochrany proti posunu schématu je důležité mít zařízení v nástroji pro tok dat, který vám jako datovou inženýru umožní:
 
 * Definování zdrojů, které mají proměnlivé názvy polí, datové typy, hodnoty a velikosti
 * Definování parametrů transformace, které mohou pracovat se vzorci dat místo pevně zakódovaných polí a hodnot
 * Definujte výrazy, které porozumět vzorům, aby se shodovaly se vstupními poli namísto použití pojmenovaných polí
 
-## <a name="how-to-implement-schema-drift-in-adf-mapping-data-flows"></a>Postup implementace posunu schématu v Tokůch dat mapování ADF
-ADF nativně podporuje flexibilní schémata, která se mění z provádění na spouštění, takže můžete vytvořit obecnou logiku transformace dat bez nutnosti překompilovat toky dat.
+Azure Data Factory nativně podporuje flexibilní schémata, která se mění z provádění na spouštění, aby bylo možné vytvořit obecnou logiku transformace dat bez nutnosti překompilovat toky dat.
 
-* Volba "povolení posunu schématu" ve zdrojové transformaci
+V toku dat musíte učinit rozhodnutí o architektuře, abyste mohli přijímat v celém toku posun schématu. Když to uděláte, můžete se chránit proti změnám schématu ze zdrojů. Ztratíte ale počáteční vazbu sloupců a typů v rámci toku dat. Azure Data Factory zachází s Flowy ze schémat jako s pozdní vazbou, takže při sestavování transformací nebudete mít k dispozici v zobrazeních schématu v průběhu toku sloupce s nezpracovanými názvy.
 
-<img src="media/data-flow/schemadrift001.png" width="400">
+## <a name="schema-drift-in-source"></a>Odtenatových schématu ve zdroji
 
-* Pokud jste vybrali tuto možnost, všechna příchozí pole budou načtena ze zdroje při každém spuštění toku dat a budou předána celým tokem do jímky.
+Ve zdrojové transformaci je na posunu schématu definovaná jako sloupce pro čtení, které nedefinují vaše schéma datové sady. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** ve zdrojové transformaci.
 
-* Všechny nově zjištěné sloupce (sloupce ve sloupci) budou ve výchozím nastavení doručeny jako datový typ String. Ve zdrojové transformaci vyberte možnost "odvoditelné typy sloupců", pokud chcete, aby ADF automaticky odvodit datové typy ze zdroje.
+![Zdroj posunu schématu](media/data-flow/schemadrift001.png "Zdroj posunu schématu")
 
-* Nezapomeňte použít "automatické mapování" pro mapování všech nových polí v transformaci jímky, aby se všechna nová pole vybrala a vyložila ve vašem cíli a v jímky také nastavila možnost "povolení posunu schématu".
+Když je zapnutý posun schématu, všechna příchozí pole se během provádění načtou ze zdroje a předají se celému toku do jímky. Ve výchozím nastavení se všechny nově zjištěné sloupce, označované jako *sloupce*s datovým typem, dorazí jako datový typ String. Pokud chcete, aby tok dat automaticky odvodit datové typy sloupců se sloupci, zrušte ve svém nastavení zdroje možnost **odvodit typy** vydaných sloupců.
 
-<img src="media/data-flow/automap.png" width="400">
+## <a name="schema-drift-in-sink"></a>Posunování schématu v jímky
 
-* Vše bude fungovat, když jsou v tomto scénáři zavedena nová pole s jednoduchým mapováním > jímka na zdrojovém kódu.
+Při transformaci jímky je posun schématu při psaní dalších sloupců nad tím, co je definováno ve schématu dat jímky. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** při transformaci jímky.
 
-* Chcete-li do tohoto pracovního postupu přidat transformace, které zpracovávají posun schématu, můžete použít porovnávání vzorů pro porovnávání sloupců podle názvu, typu a hodnoty.
+![Nedigitalizační jímka schématu](media/data-flow/schemadrift002.png "Nedigitalizační jímka schématu")
 
-* Pokud chcete vytvořit transformaci, která pochopení "posunu schématu", klikněte na tlačítko "přidat vzor sloupce" v odvozeném sloupci nebo v agregační transformaci.
+Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **automatického mapování** na kartě mapování. Pomocí tohoto posuvníku na jsou všechny příchozí sloupce zapsány do vašeho cíle. V opačném případě je nutné použít mapování na základě pravidel k zápisu vydaných sloupců.
 
-<img src="media/data-flow/columnpattern.png" width="400">
+![Automatické mapování jímky](media/data-flow/automap.png "Automatické mapování jímky")
 
-> [!NOTE]
-> V toku dat musíte učinit rozhodnutí o architektuře, abyste mohli přijímat v celém toku posun schématu. Když to uděláte, můžete se chránit proti změnám schématu ze zdrojů. Ztratíte ale počáteční vazbu sloupců a typů v rámci toku dat. Azure Data Factory považuje v průběhu toku k dispozici špičky schématu jako proudy s pozdní vazbou, takže při sestavování transformací nebudou mít názvy sloupců k dispozici v zobrazeních schématu v průběhu toku.
+## <a name="transforming-drifted-columns"></a>Transformace vydaných sloupců
 
-<img src="media/data-flow/taxidrift1.png" width="400">
+Když datový tok obsahuje sloupce, můžete k nim přistupovat v transformacích pomocí následujících metod:
 
-V toku ukázkových dat ukázky taxislužby se v dolním toku dat se zdrojem TripFare posune vzorové schéma. V agregační transformaci si všimněte, že pro pole agregace používáme návrh "vzor sloupců". Místo pro pojmenování určitých sloupců nebo hledání sloupců podle pozice předpokládáme, že se data můžou změnit a nemusí se zobrazovat ve stejném pořadí mezi běhy.
+* Použijte výrazy `byName` a k explicitnímu odkazu na sloupec podle názvu nebo čísla pozice. `byPosition`
+* Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci podle libovolné kombinace názvu, datového proudu, pozice nebo typu.
+* Přidání mapování založeného na pravidlech v transformaci SELECT nebo Sink tak, aby se shodovaly se sloupci s aliasy přes vzor
 
-V tomto příkladu Azure Data Factory zpracování posunu schématu toku dat jsme sestavili a agregaci, která vyhledává sloupce typu "Double" s vědomím, že datová doména obsahuje ceny za každou cestu. Pak můžeme provádět agregační matematický výpočet ve všech dvojitých polích ve zdroji bez ohledu na to, kde sloupec je, a bez ohledu na pojmenování sloupce.
+Další informace o implementaci vzorů sloupců najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md).
 
-Syntaxe toku dat Azure Data Factory používá $ $ k vyjádření každého odpovídajícího sloupce z odpovídajícího vzoru. Můžete se také shodovat s názvy sloupců pomocí funkcí vyhledávání složitých řetězců a regulárních výrazů. V tomto případě vytvoříme nový agregovaný název pole založený na každé shodě typu "Double" (sloupec) a připojíte text ```_total``` ke každému z těchto odpovídajících názvů: 
+### <a name="map-drifted-columns-quick-action"></a>Rychlá akce mapování vydaných sloupců
 
-```concat($$, '_total')```
+Chcete-li explicitně odkazovat na sloupce, můžete pro tyto sloupce rychle vygenerovat mapování pomocí rychlé akce Náhled dat. Jakmile je [režim ladění](concepts-data-flow-debug-mode.md) zapnutý, přejděte na kartu náhled dat a kliknutím na **aktualizovat** načtěte data Preview. Pokud objekt pro vytváření dat zjistí, že sloupce existují, můžete kliknout na tlačítko **Mapa se posunem** a vygenerovat odvozený sloupec, který vám umožní odkazovat na všechny sloupce v zobrazení schématu pro podřízené.
 
-Potom budeme zaokrouhlovat a sčítat hodnoty pro každý z těchto odpovídajících sloupců:
+![Mapa s posunem](media/data-flow/mapdrifted1.png "Mapa s posunem")
 
-```round(sum ($$))```
+Ve vygenerované transformaci odvozeného sloupce je každý sloupec s rovným sloupcem namapován na jeho zjištěné názvy a datový typ. Ve výše uvedeném náhledu dat je sloupec ' movieId ' zjištěn jako celé číslo. Po kliknutí na **mapu** se movieId je v odvozeném sloupci definována jako `toInteger(byName('movieId'))` a obsažená v zobrazeních schématu v části s transformacemi na navazujících typech.
 
-Tuto funkci funkce posunu schématu můžete sledovat v práci s ukázkou toku dat Azure Data Factory ukázka "taxislužby demo". Přepněte se na relaci ladění pomocí přepínače ladění v horní části návrhové plochy toku dat, abyste viděli výsledky interaktivně:
+![Mapa s posunem](media/data-flow/mapdrifted2.png "Mapa s posunem")
 
-<img src="media/data-flow/taxidrift2.png" width="800">
-
-## <a name="access-new-columns-downstream"></a>Přístup k novým sloupcům pro příjem dat
-Když generujete nové sloupce se vzorci sloupců, budete mít k těmto novým sloupcům později přístup v rámci transformace toku dat pomocí těchto metod:
-
-* Pomocí příkazu "byPosition" Identifikujte nové sloupce podle čísla pozice.
-* Pomocí příkazu "byName" Identifikujte nové sloupce podle jejich názvu.
-* V vzorcích sloupců použijte "název", "Stream", "Position" nebo "Type" nebo libovolnou kombinaci těchto hodnot, aby odpovídaly novým sloupcům.
-
-## <a name="rule-based-mapping"></a>Mapování na základě pravidel
-Transformace Select a jímka podporuje vzorové porovnávání prostřednictvím mapování založeného na pravidlech. To vám umožní vytvořit pravidla, která mapují sloupce po sloupcích na aliasy sloupců a zajímky těchto sloupců do cíle.
-
-## <a name="next-steps"></a>Další postup
-V [jazyce výrazu toku dat](data-flow-expression-functions.md) najdete další možnosti pro vzorce sloupců a posun schématu, včetně "byName" a "byPosition".
+## <a name="next-steps"></a>Další kroky
+V [jazyce výrazu toku dat](data-flow-expression-functions.md)najdete další informace o vzorcích sloupců a posunu schématu včetně možností "byName" a "byPosition".

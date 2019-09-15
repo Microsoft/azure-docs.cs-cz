@@ -1,6 +1,6 @@
 ---
 title: Použití MLflow s
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Nastavte MLflow s Azure Machine Learning k protokolování metrik & artefakty a nasaďte modely z datacihly, místního prostředí nebo prostředí virtuálních počítačů.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860454"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999290"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Sledování metrik a nasazení modelů pomocí služby MLflow a Azure Machine Learning (Preview)
+# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik a nasazení modelů pomocí MLflow a Azure Machine Learning (Preview)
 
-V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), pomocí služby Azure Machine Learning. V takovém případě vám umožní:
+V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), s Azure Machine Learning. V takovém případě vám umožní:
 
-+ Sledujte a protokolujte metriky experimentů a artefakty v [pracovním prostoru služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Pokud jste už MLflow sledování pro vaše experimenty, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
++ Sledujte a protokolujte metriky experimentů a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Pokud jste už MLflow sledování pro vaše experimenty, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
 
 + Nasaďte MLflow experimenty jako webovou službu Azure Machine Learning. Nasazením jako webové služby můžete v produkčních modelech použít funkce monitorování Azure Machine Learning a detekce posunu dat. 
 
@@ -34,7 +34,7 @@ Následující obrázek znázorňuje, že se sledováním MLflow můžete prové
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Porovnání klientů MLflow a Azure Machine Learning
 
- Níže uvedená tabulka shrnuje různé klienty, kteří můžou používat službu Azure Machine Learning, a jejich příslušné funkce.
+ Níže uvedená tabulka shrnuje různé klienty, kteří můžou použít Azure Machine Learning a jejich příslušné funkce.
 
  MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
@@ -59,7 +59,7 @@ Následující obrázek znázorňuje, že se sledováním MLflow můžete prové
 
 ## <a name="track-local-runs"></a>Sledovat místní běhy
 
-MLflow sledování pomocí služby Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z místních běhů do pracovního prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z místních běhů do pracovního prostoru Azure Machine Learning.
 
 `azureml-contrib-run` Nainstalujte balíček, aby používal sledování MLflow s Azure Machine Learning v pokusůch místně spuštěné v editoru Jupyter notebook nebo kódu.
 
@@ -98,7 +98,7 @@ with mlflow.start_run():
 
 ## <a name="track-remote-runs"></a>Sledovat vzdálené běhy
 
-MLflow sledování pomocí služby Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty ze vzdálených běhů do pracovního prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty ze vzdálených běhů do pracovního prostoru Azure Machine Learning.
 
 Vzdálené spuštění vám umožní naučit vaše modely s výkonnějšími výpočetními prostředky, jako jsou virtuální počítače s podporou GPU nebo Výpočetní prostředky služby Machine Learning clustery. Další informace o různých možnostech výpočtů najdete v tématu [nastavení cílových výpočetních prostředků pro školení modelů](how-to-set-up-training-targets.md) .
 
@@ -141,7 +141,7 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Sledování spuštění Azure Databricks
 
-MLflow sledování pomocí služby Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z vašich datacihlů, které běží ve vašem pracovním prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat zaznamenané metriky a artefakty z vašich datacihlů, které běží ve vašem pracovním prostoru Azure Machine Learning.
 
 Pokud chcete Mlflow experimenty spustit pomocí Azure Databricks, musíte nejdřív vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
 
@@ -375,6 +375,6 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

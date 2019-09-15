@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928078"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000971"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -149,13 +149,13 @@ Modelování hrozeb je proces identifikace potenciálních bezpečnostních hroz
 
 Abychom vám usnadnili proces modelování hrozeb, navrhli jsme [Threat Modeling Tool SDL](threat-modeling-tool.md) s ohledem na nebezpečnostní odborníky. Tento nástroj usnadňuje modelování hrozeb všem vývojářům tím, že poskytuje jasné pokyny, jak vytvářet a analyzovat modely hrozeb.
 
-Modelování návrhu aplikace a vytváření výčtu hrozeb [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) a jejich výčet – falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení oprávnění – napříč všemi hranicemi vztahů důvěryhodnosti byl prověřen účinný způsob, jak zachytit chyby návrhu. od začátku. V následující tabulce jsou uvedeny hrozby pro rozteč a poskytuje několik ukázkových rizik, která využívají funkce poskytované Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
+Modelování návrhu aplikace a vytváření [výčtu hrozeb a](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) jejich výčet – falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení oprávnění – napříč všemi hranicemi vztahů důvěryhodnosti byl prověřen účinný způsob, jak zachytit chyby návrhu. od začátku. V následující tabulce jsou uvedeny hrozby pro rozteč a poskytuje několik ukázkových rizik, která využívají funkce poskytované Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
 
 | Nebezpečí | Vlastnost zabezpečení | Potenciální omezení pro platformu Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulace              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
-| Popírání odpovědnosti            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
+| Popírání odpovědnosti            | Neodmítnutí       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
 | Zpřístupnění informací | Chovávat       | Šifrování citlivých dat v [klidovém umístění](../fundamentals/encryption-atrest.md) a [přenosu](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
 | Odepření služby      | Dostupnost          | Monitoruje metriky výkonu pro potenciální odepření podmínek poskytování služeb. Implementujte filtry připojení. [Ochrana Azure DDoS](../../virtual-network/ddos-protection-overview.md#next-steps)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje ochranu před útoky DDoS.|
 | Zvýšení oprávnění | Authorization         | Použijte Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
@@ -203,7 +203,7 @@ Věci, které můžete využít k vývoji přístupu zaměřeného na identitu p
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Vynutilit službu Multi-Factor Authentication pro uživatele
 
-Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože se vyhne slabým a bezpečnostním omezením vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (Azure Portal/vzdáleným PowerShellu) a službám orientovaným na zákazníky by měly být navržené a nakonfigurované pro použití [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože se vyhne slabým a bezpečnostním omezením vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (Azure Portal/vzdáleným PowerShellu) a službám orientovaným na zákazníky by měly být navržené a nakonfigurované tak, aby používaly [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Použití silných ověřovacích a autorizačních platforem
 
@@ -215,7 +215,7 @@ Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané 
 
 #### <a name="apply-the-principle-of-least-privilege"></a>Použít princip nejnižších oprávnění
 
-Koncept nejnižších [oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) znamená, že uživatelé budou mít přesnou úroveň přístupu a ovládají jejich úlohy a ještě nic dalšího.
+Koncept [nejnižších oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) znamená, že uživatelé budou mít přesnou úroveň přístupu a ovládají jejich úlohy a ještě nic dalšího.
 
 Potřebuje vývojář softwaru práva správce domény? Má asistent pro správu přístup k administrativním ovládacím prvkům na svém osobním počítači? Vyhodnocení přístupu k softwaru se neliší. Pokud používáte [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) , abyste uživatelům poskytli různé možnosti a autority v aplikaci, nebudete mít přístup ke všemu všem. Omezením přístupu na to, co je potřeba pro jednotlivé role, můžete omezit riziko výskytu potíží se zabezpečením.
 
@@ -242,11 +242,11 @@ Nejlepším způsobem, jak chránit před tímto druhem útoku, je požádat už
 
 Ztráta klíčů a přihlašovacích údajů je běžný problém. Jediná věc, kterou neztratí vaše klíče a přihlašovací údaje, má přístup k nim neoprávněná osoba. Útočníci můžou využít automatizovaných a ručních technik k nalezení klíčů a tajných kódů, které jsou uložené v úložištích kódu jako GitHub. Neumísťujte klíče a tajné klíče do těchto veřejných úložišť kódu ani na žádný jiný server.
 
-Klíče, certifikáty, tajné kódy a připojovací řetězce vždy umístěte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém klíče a tajné klíče jsou uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul HARDWAROVÉho zabezpečení v cloudu s [Azure Key Vault](../../key-vault/key-vault-whatis.md).
+Klíče, certifikáty, tajné kódy a připojovací řetězce vždy umístěte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém klíče a tajné klíče jsou uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul HARDWAROVÉho zabezpečení v cloudu s [Azure Key Vault](../../key-vault/key-vault-overview.md).
 
 Key Vault je *tajné úložiště*: Jedná se o centralizovanou cloudovou službu pro ukládání tajných klíčů aplikací. Key Vault udržuje bezpečí důvěrných dat tím, že zachovává tajné klíče aplikace v jediném, centrálním umístění a poskytuje zabezpečený přístup, řízení oprávnění a přístup k protokolování.
 
-Tajné kódy jsou uložené vjednotlivých trezorech. Každý trezor má vlastní konfiguraci a zásady zabezpečení pro řízení přístupu. K datům získáte přístup pomocí REST API nebo prostřednictvím klientské sady SDK, která je dostupná pro většinu programovacích jazyků.
+Tajné kódy jsou uložené v jednotlivých *trezorech*. Každý trezor má vlastní konfiguraci a zásady zabezpečení pro řízení přístupu. K datům získáte přístup pomocí REST API nebo prostřednictvím klientské sady SDK, která je dostupná pro většinu programovacích jazyků.
 
 > [!IMPORTANT]
 > Azure Key Vault je navržená tak, aby ukládala konfigurační tajné klíče pro serverové aplikace. Není určený pro ukládání dat, která patří uživatelům aplikace. To se projeví ve vlastnostech výkonu, rozhraní API a modelu nákladů.
@@ -277,7 +277,7 @@ Při vložení komentářů do kódu se ujistěte, že neuložíte žádné citl
 
 V podstatě předpokládáme, že vše ve vývojovém projektu bude při nasazení veřejné. Vyhněte se zahrnutí citlivých dat jakéhokoli druhu v projektu.
 
-Dříve jsme probrali [Azure Key Vault](../../key-vault/key-vault-whatis.md). Key Vault můžete použít k ukládání tajných kódů, jako jsou klíče a hesla, místo jejich hardwarového kódování. Když použijete Key Vault v kombinaci se spravovanými identitami pro prostředky Azure, vaše webová aplikace Azure může snadno a bezpečně přistupovat k hodnotám konfigurace tajných klíčů bez uložení tajných kódů v konfiguraci nebo správě zdrojového kódu. Další informace najdete v tématu [Správa tajných klíčů ve vašich serverových aplikacích pomocí Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Dříve jsme probrali [Azure Key Vault](../../key-vault/key-vault-overview.md). Key Vault můžete použít k ukládání tajných kódů, jako jsou klíče a hesla, místo jejich hardwarového kódování. Když použijete Key Vault v kombinaci se spravovanými identitami pro prostředky Azure, vaše webová aplikace Azure může snadno a bezpečně přistupovat k hodnotám konfigurace tajných klíčů bez uložení tajných kódů v konfiguraci nebo správě zdrojového kódu. Další informace najdete v tématu [Správa tajných klíčů ve vašich serverových aplikacích pomocí Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Implementace opatření v bezpečí selhání
 

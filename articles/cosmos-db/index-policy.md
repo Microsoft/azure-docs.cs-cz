@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996669"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000325"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexování zásad v Azure Cosmos DB
 
@@ -26,8 +26,11 @@ V některých situacích může být vhodné toto automatické chování přepsa
 
 Azure Cosmos DB podporuje dva režimy indexování:
 
-- **Konzistentní**: Pokud je zásada indexování kontejneru nastavená na konzistentní, index se při vytváření, aktualizaci nebo odstraňování položek aktualizuje synchronně. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
-- **Žádný**: Pokud je zásada indexování kontejneru nastavená na hodnotu žádné, indexování je v tomto kontejneru efektivně zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Může také urychlit operace hromadného vložení.
+- **Konzistentní**: Index se při vytváření, aktualizaci nebo odstraňování položek aktualizuje synchronně. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
+- **Žádný**: Indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) , dokud nebude dokončen.
+
+> [!NOTE]
+> Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Kromě toho použití opožděného indexování namísto None pro hromadné operace také neposkytuje žádné výhody, protože žádná změna v režimu indexu způsobí, že se index vynechá a znovu vytvoří. Z těchto důvodů doporučujeme pro zákazníky, kteří ho používají. Chcete-li zlepšit výkon pro hromadné operace, nastavte režim indexu na hodnotu None a pak se vraťte do konzistentního režimu a sledujte `IndexTransformationProgress` vlastnost kontejneru, až do dokončení.
 
 Ve výchozím nastavení je zásada indexování nastavena na `automatic`. Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na. `true` Nastavením této vlastnosti umožníte, aby `true` Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 31273105c2f4de6950eae6a66c50264803197642
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 39427ac12dc6214630d6c3e5ace62692b1ea30b6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981881"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003070"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Striim
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí Striim migrovat data z **databáze Ora
 
 * Pokud ještě nemáte [předplatné Azure](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-* Databáze Oracle běžící v místním počítači s některými daty.
+* Databáze Oracle běžící v místním prostředí s některými daty.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Nasazení řešení Striim Marketplace
 
@@ -155,7 +155,17 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    ![Připojit k cíli](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Zadejte do vlastností konfigurace vaší cílové instance Azure Cosmos DB a pokračujte výběrem možnosti **Uložit** .
+1. Před konfigurací cíle se ujistěte, že jste přidali [kořenový certifikát Baltimore do prostředí Java Striim](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store).
+
+1. Zadejte vlastnosti konfigurace vaší cílové instance Azure Cosmos DB a pokračujte výběrem možnosti **Uložit** . Tady jsou klíčové parametry k označení:
+
+   * **Adaptér** – použijte **DatabaseWriter**. Při zápisu do Azure Cosmos DB rozhraní API Cassandra se vyžaduje DatabaseWriter. Cassandra ovladač 3.6.0 je součástí sady Striim. Pokud DatabaseWriter překročí počet Ruů zřízených v kontejneru Azure Cosmos, aplikace selže.
+
+   * **Uživatelské jméno** – zadejte název svého účtu Azure Cosmos.
+   
+   * **Heslo** – zadejte primární klíč svého účtu Azure Cosmos.
+
+   * **Tabulky** – cílové tabulky musí mít primární klíče a primární klíče nelze aktualizovat.
 
    ![Konfigurovat vlastnosti cíle](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png)
 
@@ -178,8 +188,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
 1. Nakonec se přihlásíme k Azure a přejdeme k vašemu účtu Azure Cosmos. Aktualizujte Průzkumník dat a uvidíte, že data dorazila. 
 
-Pomocí řešení Striim v Azure můžete průběžně migrovat data do Azure Cosmos DB z různých zdrojů, jako jsou Oracle, Cassandra, MongoDB a různé další Azure Cosmos DB. V případě jakýchkoli problémů při nastavování cesty migrace pomocí Striim si zaregistrujte žádost o podporu na [webu Striim](https://go2.striim.com/request-support-striim).
-
+Pomocí řešení Striim v Azure můžete průběžně migrovat data do Azure Cosmos DB z různých zdrojů, jako jsou Oracle, Cassandra, MongoDB a různé další Azure Cosmos DB. Další informace najdete na [webu Striim](https://www.striim.com/), [Stažení bezplatné 30Denní zkušební verze Striim](https://go2.striim.com/download-free-trial)a při jakémkoli problému při nastavování cesty migrace pomocí Striimu uložte [žádost o podporu.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Další postup
 

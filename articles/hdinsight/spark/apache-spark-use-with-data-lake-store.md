@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813919"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002494"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
@@ -25,7 +25,6 @@ V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s
 
 * Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v [části rychlý Start: Nastavte clustery v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    
 ## <a name="prepare-the-data"></a>Příprava dat
 
 > [!NOTE]  
@@ -57,7 +56,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark s Data Lake Storage Gen1
 
-1. Na webu [Azure Portal](https://portal.azure.com/)klikněte v úvodní panel na dlaždici pro váš cluster Apache Spark (Pokud jste ho připnuli k úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
+1. Z [Azure Portal](https://portal.azure.com/)klikněte na dlaždici pro cluster Apache Spark (Pokud jste ho připnuli k úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
 
 2. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
@@ -120,12 +119,12 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
      Výsledky můžete také zobrazit v dalších vizualizacích. Například plošný graf pro stejný výstup bude vypadat následovně.
 
-     ![Plošný graf výsledku dotazu](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "Plošný graf výsledku dotazu")
+     ![Plošný graf výsledku dotazu](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Plošný graf výsledku dotazu")
 
 8. Po dokončení spuštění aplikace byste měli poznámkový blok vypnout a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Dojde k vypnutí a zavření poznámkového bloku.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytvoření samostatné aplikace v Scala ke spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
 * [Použití nástrojů HDInsight v Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro cluster HDInsight Spark Linux](apache-spark-intellij-tool-plugin.md)

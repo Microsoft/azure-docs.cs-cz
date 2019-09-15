@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036040"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003561"
 ---
 # <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překladu
 
@@ -322,7 +322,7 @@ Vnořený dotaz aplikuje vnitřní dotaz na každý element vnějšího kontejne
   ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Data modelu dokumentu](modeling-data.md)

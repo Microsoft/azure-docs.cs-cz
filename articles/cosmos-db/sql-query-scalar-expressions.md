@@ -1,21 +1,21 @@
 ---
-title: Skalární výrazy v dotazech SQL služby Azure Cosmos DB
-description: Další informace o syntaxi SQL skalární výraz pro službu Azure Cosmos DB.
+title: Skalární výrazy v Azure Cosmos DBch dotazech SQL
+description: Seznamte se s syntaxí skalárního výrazu SQL pro Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4464c39a45c47c680a13f3ebc34841b47ee0d7c6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342851"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003535"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v dotazech SQL služby Azure Cosmos DB
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v Azure Cosmos DBch dotazech SQL
 
-[Klauzule SELECT](sql-query-select.md) podporuje skalární výrazy. Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Příklady skalární výrazy: konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Skalární výrazy je možné kombinovat do složité výrazy pomocí operátorů.
+[Klauzule SELECT](sql-query-select.md) podporuje skalární výrazy. Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Příklady skalárních výrazů: konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na aliasy nebo volání funkcí. Skalární výrazy lze kombinovat do složitých výrazů pomocí operátorů.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -59,11 +59,11 @@ ms.locfileid: "67342851"
   
 - `<scalar_expression>.property_name`  
   
-   Reprezentuje hodnotu vlastnosti objektu. Pokud neexistuje vlastnost nebo vlastnost se odkazuje na hodnotu, která není objekt, pak je výraz vyhodnocen **nedefinované** hodnotu.  
+   Reprezentuje hodnotu vlastnosti objektu. Pokud vlastnost neexistuje nebo se na vlastnost odkazuje na hodnotu, která není objekt, je výraz vyhodnocen jako **nedefinovaná** hodnota.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Reprezentuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexem `array_index` pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
+   Představuje hodnotu vlastnosti s názvem `property_name` nebo prvkem pole s indexem `array_index` pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ ms.locfileid: "67342851"
   
 ## <a name="remarks"></a>Poznámky
   
-  Při volání skalární funkce vestavěný nebo uživatelem definované, musí být definovány všechny argumenty. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
+  Při volání předdefinované nebo uživatelsky definované skalární funkce musí být definovány všechny argumenty. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
   
   Při vytvoření objektu, bude přeskočen a není součástí vytvořený objekt jakákoli vlastnost, která je přiřazena hodnota undefined.  
   
@@ -119,7 +119,7 @@ Výsledky jsou:
     }]
 ```
 
-V následujícím dotazem výsledkem skalární výraz, který je logická hodnota:
+V následujícím dotazu je výsledkem skalárního výrazu logická hodnota:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
@@ -141,6 +141,6 @@ Výsledky jsou:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úvod do služby Azure Cosmos DB](introduction.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Úvod do Azure Cosmos DB](introduction.md)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Poddotazy](sql-query-subquery.md)

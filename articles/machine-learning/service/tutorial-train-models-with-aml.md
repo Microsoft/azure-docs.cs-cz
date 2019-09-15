@@ -1,7 +1,7 @@
 ---
 title: 'Kurz k klasifikaci obrázků: Trénování modelů'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak vytvořit model klasifikace obrázků pomocí scikit-učení v poznámkovém bloku Python Jupyter with Azure Machine Learning Service. Tento kurz je první částí z dvoudílné série.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak vytvořit model klasifikace obrázků pomocí scikit-učení v poznámkovém bloku Python Jupyter s Azure Machine Learning. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cf639a290067e71b562e0df844ee01d018a7557
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170579"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001668"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: Analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 
-V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Školení a pracovní postup nasazení budete používat pro službu Azure Machine Learning v poznámkovém bloku Jupyter pro Python.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
+V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Pracovní postup školení a nasazení budete používat pro Azure Machine Learning v Jupyter poznámkovém bloku Pythonu.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
-V tomto kurzu se učí jednoduchá Logistická regrese s využitím datové sady [mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) a [scikit-učení](https://scikit-learn.org) s Azure Machine Learning službou. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o 28 × 28 pixelech, která představuje číslo od 0 do 9. Cílem je vytvořit klasifikátor s více třídami, který identifikuje číslici, kterou daný obrázek představuje.
+V tomto kurzu se učí jednoduchá Logistická regrese s využitím datové sady [mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) a [scikit-učení](https://scikit-learn.org) s Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o 28 × 28 pixelech, která představuje číslo od 0 do 9. Cílem je vytvořit klasifikátor s více třídami, který identifikuje číslici, kterou daný obrázek představuje.
 
 Přečtěte si, jak provést následující akce:
 
@@ -33,7 +33,7 @@ Přečtěte si, jak provést následující akce:
 
 Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-deploy-models-with-aml.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.57 verze.
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 * Po spuštění řídicího panelu poznámkového bloku Jupyter otevřete Poznámkový blok **kurzy/img-Classification-part1-Training. ipynb** .
 
-Kurz a doprovodný soubor **utils.py** je také k dispozici [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) na GitHubu, pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí.
+Kurz a doprovodný soubor **utils.py** je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí.
 
 
 ## <a name="start"></a>Nastavení vývojového prostředí
@@ -434,9 +434,9 @@ Můžete také odstranit pouze výpočetní cluster Azure Machine Learning. Auto
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu Azure Machine Learning služby jste použili Python pro následující úlohy:
+V tomto Azure Machine Learning kurzu jste použili Python pro následující úlohy:
 
 > [!div class="checklist"]
 > * Nastavte vývojové prostředí.

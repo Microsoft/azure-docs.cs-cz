@@ -1,7 +1,7 @@
 ---
 title: Modely vlakových ML pomocí odhady
-titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak provést jeden uzel nebo pro distribuované trénování tradiční strojové učení a obsáhlý learning modely s využitím Azure Machine Learning services Estimator třídy
+titleSuffix: Azure Machine Learning
+description: Naučte se provádět jednoduché a distribuované školení tradičních modelů strojového učení a hloubkového učení pomocí Azure Machine Learning třídy Estimator
 ms.author: maxluk
 author: maxluk
 services: machine-learning
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 041f80937e3ebae15dd5bd64858ccbd8269104a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815913"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002579"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 

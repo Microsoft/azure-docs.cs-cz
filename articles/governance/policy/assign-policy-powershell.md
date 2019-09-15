@@ -7,16 +7,16 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bcdac2635c9d40bcd0f7605fad7479d5b8cdddba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239205"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000855"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure PowerShell
 
-Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. V tomto rychlém startu vytvoříte přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky. Po dokončení budete identifikovat virtuální počítače, které *nedodržují předpisy*.
+Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. V tomto rychlém startu vytvoříte přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky. Po dokončení budete identifikovat virtuální počítače, které nedodržují *předpisy*.
 
 Modul Azure PowerShell se používá ke správě prostředků Azure z příkazového řádku nebo ve skriptech.
 V této příručce se dozvíte, jak pomocí funkce AZ Module vytvořit přiřazení zásady.
@@ -59,7 +59,7 @@ Předchozí příkazy používají následující informace:
 - **Definition** – Definice zásady, kterou používáte k vytvoření tohoto přiřazení. V takovém případě je ID definice zásady *Audit virtuálních počítačů, které nepoužívají spravované disky*.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
 
-Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy, abyste porozuměli stavu dodržování předpisů ve vašem prostředí.
+Nyní můžete identifikovat nekompatibilní prostředky, abyste pochopili stav dodržování předpisů vašeho prostředí.
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 

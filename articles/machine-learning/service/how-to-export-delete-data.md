@@ -1,7 +1,7 @@
 ---
 title: Exportovat nebo odstraňovat data pracovního prostoru
-titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak exportovat nebo odstranění pracovního prostoru pomocí webu Azure portal, rozhraní příkazového řádku, sady SDK a ověřené rozhraní REST API.
+titleSuffix: Azure Machine Learning
+description: Naučte se exportovat nebo odstranit svůj pracovní prostor pomocí rozhraní Azure Portal, CLI, sady SDK a ověřovaných rozhraní REST API.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023976"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002843"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportovat nebo odstraňovat data pracovní prostor služby Machine Learning 
 
@@ -27,9 +27,9 @@ Ve službě Azure Machine Learning můžete exportovat nebo odstranit pracovní 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Ovládejte svá data pracovního prostoru
-V rámci produktu data uložená pomocí služby Azure Machine Learning je dostupná pro exportu a odstranění na webu Azure portal, rozhraní příkazového řádku, sady SDK a ověřil rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. 
+Data v produktu uložená pomocí Azure Machine Learning jsou k dispozici pro export a odstranění prostřednictvím rozhraní API Azure Portal, CLI, SDK a ověřených rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. 
 
-Osobní údaje se skládá z informací o uživateli v historii spuštění dokumenty a telemetrie záznamy některé interakcí uživatelů ve službě ve službě Azure Machine Learning Services.
+V Azure Machine Learning osobní údaje sestávají z informací o uživatelích v historii spouštění a záznamů telemetrie některých interakcí uživatelů se službou.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Odstranit pracovní prostor dat pomocí rozhraní REST API 
 
@@ -232,28 +232,28 @@ Je možné získat zdroje dat:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Odstranit prostředky grafické rozhraní
+## <a name="delete-visual-interface-assets"></a>Odstranit prostředky vizuálního rozhraní
 
-Ve vizuální rozhraní, ve které jste vytvořili experimentu odstraňte jednotlivé prostředky:
+V vizuálním rozhraní, kde jste vytvořili experiment, odstraňte jednotlivé prostředky:
 
-1. Na levé straně vyberte typ prostředku, který chcete odstranit.
+1. Na levé straně vyberte typ assetu, který chcete odstranit.
 
     ![Odstranění prostředků](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. V seznamu vyberte jednotlivé prostředky odstranit.
+1. V seznamu vyberte jednotlivé prostředky, které chcete odstranit.
 
-1. V dolní části, vyberte **odstranit**.
+1. V dolní části vyberte **Odstranit**.
 
-## <a name="export-visual-interface-data"></a>Export dat vizuální rozhraní
+## <a name="export-visual-interface-data"></a>Exportovat data vizuálního rozhraní
 
-V vizuální rozhraní, ve které jste vytvořili experimentu exportujte data, která jste přidali:
+V vizuálním rozhraní, kde jste vytvořili experiment, exportujte data, která jste přidali:
 
-1. Na levé straně vyberte **Data**.
+1. Na levé straně vyberte **data**.
 
-1. V horní části vyberte **Moje datové sady** nebo **ukázky** vyhledejte data, kterou chcete exportovat.
+1. V horní části vyberte **Moje datové sady** nebo **ukázky** a vyhledejte data, která chcete exportovat.
 
     ![Stáhnout data](media/how-to-export-delete-data.md/download-data.png)
 
-1. V seznamu vyberte jednotlivé datové sady pro export.
+1. V seznamu vyberte jednotlivé datové sady, které chcete exportovat.
 
-1. V dolní části, vyberte **Stáhnout**.
+1. V dolní části vyberte **Stáhnout**.

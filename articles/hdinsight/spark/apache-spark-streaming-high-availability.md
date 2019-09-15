@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915381"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002943"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
 
@@ -21,7 +21,7 @@ ms.locfileid: "70915381"
 
 Streamování Spark vytvoří dlouhotrvající úlohy, během kterých můžete použít transformace na data a pak výsledky vložit do systému souborů, databází, řídicích panelů a konzoly. Streamování Sparku zpracovává mikrodávkování dat tím, že nejprve shromažďuje dávky událostí v rámci definovaného časového intervalu. V dalším kroku se tato dávka pošle na zpracování a výstup. Časové intervaly dávky jsou obvykle definovány ve zlomcích sekundy.
 
-![Streamování Sparku](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Streamování Sparku](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -57,7 +57,7 @@ Chcete-li vytvořit aplikaci, která každou událost zpracuje jednou (a pouze j
 
 V HDInsight je práce clusteru koordinována *ještě jiným vyjednáváním prostředků* (příze). Návrh vysoké dostupnosti pro streamování Spark zahrnuje techniky pro streamování Sparku a také pro PŘÍZové komponenty.  Příklad konfigurace pomocí PŘÍZe je uveden níže. 
 
-![Architektura PŘÍZe](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![Architektura PŘÍZe](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 Následující části popisují faktory návrhu této konfigurace.
 
@@ -117,7 +117,7 @@ Pokud chcete vytvořit souhrn pomocí kontrolního bodu a spolehlivých přijím
     // to be able to recover on restart, store all offsets in an external database
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled streamování Apache Spark](apache-spark-streaming-overview.md)
 * [Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí](apache-spark-streaming-exactly-once.md)

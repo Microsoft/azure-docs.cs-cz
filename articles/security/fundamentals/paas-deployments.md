@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098629"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999043"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -88,7 +88,7 @@ Zásady a vzory pro hraniční sítě byly k dispozici po desetiletí. V takové
 Níže jsou uvedené osvědčené postupy pro správu hraničního řízení identity.
 
 **Osvědčené postupy**: Zabezpečte své klíče a přihlašovací údaje a zabezpečte nasazení PaaS.   
-**Podrobnosti**: Ztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/key-vault-whatis.md) chrání klíče a tajné kódy tím, že šifruje ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla pomocí klíčů chráněných pomocí HSM.
+**Podrobnosti**: Ztráta klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Azure Key Vault](../../key-vault/key-vault-overview.md) chrání klíče a tajné kódy tím, že šifruje ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla pomocí klíčů chráněných pomocí HSM.
 
 **Osvědčené postupy**: Neumísťujte přihlašovací údaje a další tajné kódy do zdrojového kódu nebo GitHubu.   
 **Podrobnosti**: Jediná věc, kterou neztratí vaše klíče a přihlašovací údaje, má přístup k nim neoprávněná osoba. Útočníci můžou využívat výhod technologií robota k nalezení klíčů a tajných kódů uložených v úložištích kódu, jako je GitHub. Neumísťujte klíč a tajné klíče do těchto veřejných úložišť kódu.
@@ -133,7 +133,7 @@ Níže jsou uvedené osvědčené postupy pro používání App Service.
 **Podrobnosti**: Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Pomocí RBAC můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [Začínáme se správou přístupu](/azure/role-based-access-control/overview).
 
 **Osvědčené postupy**: Chraňte své klíče.   
-**Podrobnosti**: Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Další informace najdete v tématu [Azure Key Vault](/azure/key-vault/key-vault-whatis) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
+**Podrobnosti**: Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Další informace najdete v tématu [Azure Key Vault](/azure/key-vault/key-vault-overview) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
 
 **Osvědčené postupy**: Omezte příchozí IP adresy příchozích zdrojů.   
 **Podrobnosti**: [App Service Environment](/azure/app-service/environment/intro) má funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě. Virtuální sítě umožňují umístit prostředky Azure do sítě, ve které není Internet, směrovatelný síť, ke které budete řídit přístup. Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet).

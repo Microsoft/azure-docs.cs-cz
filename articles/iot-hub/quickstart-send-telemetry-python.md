@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360193"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998489"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Rychlý start: Odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (Python)
 
@@ -30,22 +30,6 @@ V tomto rychlém startu se k odesílání telemetrických dat používá předem
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Ukázková aplikace, kterou spustíte v tomto rychlém startu, je napsaná pomocí Pythonu. V současné době Microsoft Azure sady IoT SDK pro Python podporovat pouze konkrétní verze Pythonu pro každou platformu. Další informace najdete v [souboru Readme pro Python SDK](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-V tomto rychlém startu se předpokládá použití vývojového počítače s Windows. Pro systémy Windows je podporována pouze [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je architektura procesoru systému 32 bitů, Stáhněte instalační program x86. pro 64 bitovou architekturu si stáhněte instalační program X86-64. Dále se ujistěte, že je pro vaši architekturu nainstalována [aplikace Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (x86 nebo x64).
-
-Python můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
-
-Aktuální verzi Pythonu na počítači používaném pro vývoj můžete ověřit pomocí jednoho z následujících příkazů:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
@@ -100,7 +84,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. Spuštěním následujících příkazů v okně místního terminálu spusťte aplikaci simulovaného zařízení:
@@ -112,13 +96,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
     ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-    
-### <a name="to-avoid-the-import-iothubclient-error"></a>Pokud se chcete vyhnout chybě importu iothub_client
-Aktuální verze sady Azure IoT SDK pro Python je obálkou v [naší sadě C SDK](https://github.com/azure/azure-iot-sdk-c). Je vygenerována pomocí knihovny pro [zvýšení úrovně](https://www.boost.org/) . Z toho důvodu přináší několik významných omezení. Další podrobnosti najdete [tady](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) .
 
-1. Ověřte, zda máte správnou verzi Pythonu [](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues). Mějte na paměti, že pro tuto ukázku fungují jenom některé verze. 
-2. Ověřte, že máte správnou verzi C++ modulu runtime [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). (Doporučujeme nejnovější).
-3. Ověřte, zda jste nainstalovali klienta iothub: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 

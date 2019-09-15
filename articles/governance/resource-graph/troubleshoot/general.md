@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900011"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000524"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 
@@ -36,7 +36,7 @@ Azure CLI a PowerShell předávají jenom prvních 1000 předplatných do Azure 
 
 #### <a name="resolution"></a>Řešení
 
-Dávkové zpracování požadavků pro dotaz s podmnožinou předplatných, které mají zůstat v rámci limitu předplatného 1000. Řešení používá parametr předplatného v prostředí PowerShell.
+Dávkové zpracování požadavků pro dotaz s podmnožinou předplatných, které mají zůstat v rámci limitu předplatného 1000. Řešení používá parametr **předplatného** v prostředí PowerShell.
 
 ```azurepowershell-interactive
 # Replace this query with your own

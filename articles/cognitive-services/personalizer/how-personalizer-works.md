@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034380"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002896"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
@@ -89,31 +89,6 @@ Přizpůsobování vychází z špičkové vědy a výzkumu v oblasti [posílen�
 * Roboty & tónové znaky: pro roboty, které se můžou lišit ve stylu tónů, podrobností a psaní, zvažte, že se tyto vlastnosti upraví různými způsoby.
 * Obsah upozornění & oznámení: Rozhodněte, jaký text se má použít pro výstrahy, aby bylo možné uživatele zapojit.
 * Oznámení & časování výstrah: máte přizpůsobené informace o tom, kdy posílat oznámení uživatelům, aby je mohli zapojit.
-
-## <a name="checklist-for-applying-personalizer"></a>Kontrolní seznam pro použití přizpůsobeného přizpůsobování
-
-Přizpůsobené přizpůsobování můžete použít v situacích:
-
-* Pro vaši aplikaci máte cíl pro podnikání nebo použitelnost.
-* V aplikaci máte místo, kde se pro účely kontextového rozhodování o tom, co Ukázat uživatelům, tento cíl vylepší.
-* Nejlepší volba může a měla by se poznat z kolektivního chování uživatelů a celkové skóre odměňování.
-* Používání strojového učení pro přizpůsobení se řídí [pokyny pro použití](ethics-responsible-use.md) a možnostmi pro váš tým.
-* Rozhodnutí může být vyjádřeno jako hodnocení nejlepší možnosti ([Akce](concepts-features.md#actions-represent-a-list-of-options) z omezené sady možností.
-* To, jak dobře fungovala možnost volby, je možné vypočítat pomocí obchodní logiky, měřením určitého aspektu chování uživatelů a jejich vyjádřením v čísle od-1 do 1.
-* Skóre odměňování nepřináší příliš mnoho nenalezených nebo externích faktorů, konkrétně doba trvání experimentu je dostatečně nízká, aby bylo možné vypočítat skóre odměňování, zatímco je stále relevantní.
-* Můžete vyjádřit kontext pro řazení jako slovník o nejméně 5 funkcích, o kterých byste si myslíte, že by vám pomohly vytvořit správnou volbu a že neobsahují osobně identifikovatelné osobní údaje.
-* Máte informace o jednotlivých akcích, které jsou ve slovníku nejméně 5 atributů nebo funkcí, které si myslíte, že přizpůsobíte správnou volbu.
-* Můžete uchovávat data dostatečně dlouho a shromažďovat tak historii nejméně 100 000 interakcí.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Požadavky na strojové učení pro použití přizpůsobení
-
-Přizpůsobování je založeno na posílení učení, přístupu ke strojovém učení, které získá výuku na základě zpětné vazby, kterou udělíte. 
-
-Přizpůsobené aplikace se seznámí nejlépe v situacích, kdy:
-* V případě, že je problém v průběhu času (například předvolby zprávy nebo způsobu), existuje dostatek událostí, aby zůstaly nad optimálním přizpůsobením. Přizpůsobený modul se přizpůsobí nepřetržité změně reálného světa, ale výsledky nebudou optimální, pokud není dostatek událostí a data, která by se dala zjistit a usadit na nové vzory. Měli byste zvolit případ použití, který je často k dispozici. Zvažte možnost Hledat případy použití, které se vyskytují minimálně 500 časů za den.
-* Kontext a akce mají dostatek funkcí pro usnadnění učení.
-* Pro pořadí podle volání je k dispozici méně než 50 akcí.
-* Nastavení uchovávání dat umožňují přizpůsobování shromažďování dostatečného množství dat, aby bylo možné provádět vyhodnocení a optimalizaci zásad offline. Obvykle se jedná o minimálně 50 000 datových bodů.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Použití přizpůsobení ve webové aplikaci
 

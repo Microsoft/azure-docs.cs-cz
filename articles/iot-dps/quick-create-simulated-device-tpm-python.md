@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c302b18e34533a564904562ed39879bbe37b82ca
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: df12acad5fa9287f43cc256bfcc89fa6775c3e3b
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908194"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001308"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -26,16 +26,19 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Použít k registraci více související zařízení.
-- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Použitý k registraci jedno zařízení.
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Používá se k registraci více souvisejících zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Používá se k registraci jednoho zařízení.
 
 V tomto článku si předvedeme jednotlivé registrace.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> Tato příručka se vztahuje pouze na aktuálně nepoužívané sady v1 Python SDK. Simulovaná zařízení TPM ještě nejsou v v2 podporovaná. V současné době je tým v průběhu práce přinášejí v2 do parity funkcí.
+
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že jste si nainstalovali buď [sady Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, se "vývoj desktopových aplikací pomocí C++" úloh pro instalaci sady Visual Studio povoleno.
+1. Ujistěte se, že máte nainstalovanou [aplikaci Visual studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, a pro instalaci sady C++Visual Studio je povolená úloha vývoj desktopových aplikací s názvem.
 
 1. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/).
 
@@ -44,7 +47,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. Otevřete příkazový řádek nebo Git Bash. Naklonujte úložiště GitHub se vzorovým kódem pro simulaci zařízení:
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
+    git clone --single-branch --branch v1-deprecated https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
 
 1. V lokální kopii tohoto úložiště GitHub vytvořte složku pro proces sestavení CMake. 

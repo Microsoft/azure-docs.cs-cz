@@ -7,12 +7,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231952"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004078"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -169,7 +169,7 @@ Vytváření **statických parametrů** na artefaktu je podobné, ale přebírá
 
 ### <a name="dynamic-parameters"></a>Dynamické parametry
 
-Opakem statického parametru je **dynamický parametr**. Tento parametr není definován v podrobném plánu, ale je definován během každého přiřazení podrobného plánu. V příkladu skupiny prostředků použití **dynamického parametru** dává smysl pro název skupiny prostředků. Pro každé přiřazení podrobného plánu poskytuje jiný název. Seznam funkcí podrobných plánů najdete v referenčních [](../reference/blueprint-functions.md) informacích k funkcím podrobného plánu.
+Opakem statického parametru je **dynamický parametr**. Tento parametr není definován v podrobném plánu, ale je definován během každého přiřazení podrobného plánu. V příkladu skupiny prostředků použití **dynamického parametru** dává smysl pro název skupiny prostředků. Pro každé přiřazení podrobného plánu poskytuje jiný název. Seznam funkcí podrobných plánů najdete v referenčních informacích k [funkcím](../reference/blueprint-functions.md) podrobného plánu.
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamických parametrů na portálu
 
@@ -236,10 +236,10 @@ Nastavení **dynamických parametrů** během přiřazování je provedeno pří
   }
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na seznam [funkcí](../reference/blueprint-functions.md)podrobného plánu.
-- Přečtěte si informace o [životním cyklu](lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)

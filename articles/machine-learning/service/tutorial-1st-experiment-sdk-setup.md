@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Vytvořte svůj první experiment ML: Instalace'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: V této sérii kurzů dokončíte kompletní kroky, které vám pomohou začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter.  První část pokrývá vytvoření prostředí serveru cloudového poznámkového bloku a vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: d968d6e799b75940d1fb73aa31c22eb84068df7d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860424"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004071"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 
@@ -27,11 +27,11 @@ V tomto kurzu se naučíte:
 > * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
 > * Vytvořte cloudový virtuální počítač Azure Machine Learning s Jupyter poznámkovým blokem s nainstalovanou a předem nakonfigurovanou sadou Python SDK.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu v sadě SDK. Pokud již máte pracovní prostor služby Azure Machine Learning, přejděte k [Další části](#azure). V opačném případě vytvořte nyní.
+Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu v sadě SDK. Pokud již máte pracovní prostor Azure Machine Learning, přejděte k [Další části](#azure). V opačném případě vytvořte nyní.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -39,7 +39,7 @@ Azure Machine Learning pracovní prostor je základní prostředek v cloudu, kte
 
 V tomto příkladu se v pracovním prostoru používá cloudový notebook pro instalaci bez předkonfigurovaného a předem nakonfigurovaného prostředí. Použijte [vlastní prostředí](how-to-configure-environment.md#local) , pokud dáváte přednost kontrole prostředí, balíčků a závislostí.
 
-Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít používat Jupyter poznámkové bloky. Tento prostředek je cloudový virtuální počítač se systémem Linux, který je předem nakonfigurován se všemi potřebnými ke spuštění služby Azure Machine Learning.
+Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít používat Jupyter poznámkové bloky. Tento prostředek je cloudový virtuální počítač se systémem Linux předem nakonfigurovaný se všemi potřebnými ke spuštění Azure Machine Learning.
 
 1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  Pokud si nejste jistí, jak váš pracovní prostor najít na portálu, přečtěte si téma Jak [Najít pracovní prostor](how-to-manage-workspace.md#view).
 
@@ -69,7 +69,7 @@ Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít p
 
 V tomto kurzu jste dokončili tyto úkoly:
 
-* Byl vytvořen pracovní prostor služby Azure Machine Learning Service.
+* Byl vytvořen Azure Machine Learning pracovní prostor.
 * Vytvořili a nakonfigurovali jste v pracovním prostoru Server cloudového poznámkového bloku.
 
 Ve **druhé části** kurzu spouštíte kód v `tutorial-1st-experiment-sdk-train.ipynb` nástroji pro výuku modelu strojového učení. 

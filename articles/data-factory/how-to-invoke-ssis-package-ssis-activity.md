@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d2fe8da1c4d49f5b57f907a5940ec9c445d0d1f7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 9057cefa5108924c57dbc85bbb895b31e804a51c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984325"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000643"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivitou spustit balíček SSIS v Azure Data Factory
 Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory (ADF) pomocí aktivity balíčku Execute SSIS. 
@@ -269,7 +269,7 @@ V tomto kroku vytvoříte kanál s aktivitou spustit SSIS s balíčkem. Aktivita
    }
    ```
 
-Pokud chcete spouštět balíčky uložené v souborové systémy/sdílené složky/soubory Azure, můžete zadat hodnoty pro vlastnosti umístění balíčku nebo protokolu následujícím způsobem.
+   Pokud chcete spouštět balíčky uložené v souborové systémy/sdílené složky/soubory Azure, můžete zadat hodnoty pro vlastnosti umístění balíčku nebo protokolu následujícím způsobem.
 
    ```json
    {
@@ -318,7 +318,7 @@ Pokud chcete spouštět balíčky uložené v souborové systémy/sdílené slo�
    }
    ```
 
-Pokud chcete spouštět balíčky v projektech uložených v souborové systémy/sdílené složky/soubory Azure, můžete zadat hodnoty pro vlastnost umístění balíčku následujícím způsobem.
+   Pokud chcete spouštět balíčky v projektech uložených v souborové systémy/sdílené složky/soubory Azure, můžete zadat hodnoty pro vlastnost umístění balíčku následujícím způsobem.
 
    ```json
    {
@@ -470,6 +470,6 @@ V předchozím kroku jste kanál spustili na vyžádání. Můžete také vytvo�
    select * from catalog.executions
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podívejte se na tento příspěvek na blogu:
 -   [Modernizovat a rozšíří pracovní postupy ETL/ELT s aktivitami SSIS v kanálech ADF.](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

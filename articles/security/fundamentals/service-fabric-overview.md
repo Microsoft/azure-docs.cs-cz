@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934573"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998951"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric řeší problémy při vývoji a správě cloudových aplikací. Vývojáři a správci se můžou vyhnout složitým problémům s infrastrukturou a soustředit se na implementaci klíčových a náročných úloh, které jsou škálovatelné a spolehlivé.
@@ -84,7 +84,7 @@ Z hlediska zabezpečení jsou hlavní cíle monitorování a diagnostiky:
 
 Pracovní postup monitorování a diagnostiky se skládá ze tří kroků:
 
-1.  **Generování události**: Generování událostí zahrnuje události (protokoly, trasování, vlastní události) na úrovni infrastruktury (clusteru) i na úrovni aplikace nebo služby. Přečtěte si další informace o událostech na úrovni [infrastruktury](../../service-fabric/service-fabric-diagnostics-event-generation-infra.md) a událostech na [úrovni aplikace](../../service-fabric/service-fabric-diagnostics-event-generation-app.md) a zjistěte, co je k dispozici a jak přidat další instrumentaci.
+1.  **Generování události**: Generování událostí zahrnuje události (protokoly, trasování, vlastní události) na úrovni infrastruktury (clusteru) i na úrovni aplikace nebo služby. Přečtěte si další informace o [událostech](../../service-fabric/service-fabric-diagnostics-event-generation-infra.md) na úrovni infrastruktury a [událostech na úrovni aplikace](../../service-fabric/service-fabric-diagnostics-event-generation-app.md) a zjistěte, co je k dispozici a jak přidat další instrumentaci.
 
 2.  **Agregace událostí**: Vygenerované události musí být shromažďovány a agregovány předtím, než mohou být zobrazeny. Typicky doporučujeme použít [Azure Diagnostics](../../service-fabric/service-fabric-diagnostics-event-aggregation-wad.md) (podobně jako shromáždění protokolů založeného na agentech) nebo [využitím eventflow](../../service-fabric/service-fabric-diagnostics-event-aggregation-eventflow.md) (vnitroprocesové shromažďování protokolů).
 
@@ -109,7 +109,7 @@ V následující tabulce jsou uvedené certifikáty, které v instalaci clusteru
 |ServerCertificate| Tento certifikát se zobrazí klientovi, když se pokusí připojit k tomuto clusteru. Můžete použít dva certifikáty serveru: primární certifikát a sekundární pro upgrade.|
 |ClientCertificateThumbprints|  Toto je sada certifikátů, které se mají nainstalovat na ověřených klientech.|
 |ClientCertificateCommonNames|  Toto je běžný název prvního klientského certifikátu pro CertificateCommonName. CertificateIssuerThumbprint je kryptografický otisk vystavitele tohoto certifikátu.|
-|ReverseProxyCertificate|   Toto je volitelný certifikát, který můžete použít k zabezpečení reverzního [proxy serveru](../../service-fabric/service-fabric-reverseproxy.md).|
+|ReverseProxyCertificate|   Toto je volitelný certifikát, který můžete použít k zabezpečení [reverzního proxy serveru](../../service-fabric/service-fabric-reverseproxy.md).|
 
 Další informace o zabezpečení certifikátů najdete v tématu [Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509](../../service-fabric/service-fabric-windows-cluster-x509-security.md).
 
@@ -132,7 +132,7 @@ Zabezpečení klienta na Node můžete nakonfigurovat pomocí ClientIdentities. 
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Správa tajných kódů v aplikacích Service Fabric
 Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
 
-Ke správě klíčů a tajných kódů můžete použít [Azure Key Vault](../../key-vault/key-vault-whatis.md) . Použití tajných klíčů v aplikaci se ale nespoléhá na konkrétní cloudovou platformu. Aplikace můžete nasadit do clusteru, který je hostovaný kdekoli. Tento tok obsahuje čtyři hlavní kroky:
+Ke správě klíčů a tajných kódů můžete použít [Azure Key Vault](../../key-vault/key-vault-overview.md) . Použití tajných klíčů v aplikaci se ale nespoléhá na konkrétní cloudovou platformu. Aplikace můžete nasadit do clusteru, který je hostovaný kdekoli. Tento tok obsahuje čtyři hlavní kroky:
 
 1.  Získejte certifikát pro zakódování dat.
 2.  Nainstalujte certifikát do clusteru.
@@ -155,6 +155,6 @@ Mezi úlohy týkající se konfigurace zásad zabezpečení patří:
 ## <a name="secure-communication-for-services"></a>Zabezpečená komunikace pro služby
 Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Další informace najdete v tématu [Zabezpečená komunikace vzdálené služby pro službu](../../service-fabric/service-fabric-reliable-services-secure-communication.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Koncepční informace o zabezpečení clusteru najdete v tématu [Vytvoření clusteru Service Fabric pomocí Azure Resource Manager](../../service-fabric/service-fabric-cluster-creation-via-arm.md) a [Vytvoření clusteru Service Fabric pomocí Azure Portal](../../service-fabric/service-fabric-cluster-creation-via-portal.md).
 - Další informace o zabezpečení clusteru v Service Fabric najdete v tématu [Service Fabric scénáře zabezpečení clusteru](../../service-fabric/service-fabric-cluster-security.md).

@@ -1,21 +1,21 @@
 ---
-title: SELECT – klauzule ve službě Azure Cosmos DB
-description: Další informace o SQL klauzule SELECT pro službu Azure Cosmos DB. Použití SQL jako dotazovací jazyk Azure Cosmos DB JSON.
+title: Klauzule SELECT v Azure Cosmos DB
+description: Seznamte se s klauzulí SELECT jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: 84d0212f7f212b4554b506726e027fe51f795eea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342694"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003516"
 ---
 # <a name="select-clause"></a>Klauzule SELECT
 
-Každý dotaz obsahuje klauzuli SELECT a volitelné [FROM](sql-query-from.md) a [kde](sql-query-where.md) klauzule podle standardů ANSI SQL. Obvykle je vypočten zdroji v klauzuli FROM a klauzuli WHERE aplikuje filtr na zdroj k načtení podmnožiny položky formátu JSON. Klauzule SELECT a projekty požadované hodnoty JSON v seznamu select.
+Každý dotaz se skládá z klauzule SELECT a volitelné klauzule [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je uveden výčet zdroje v klauzuli FROM a klauzule WHERE aplikuje filtr na zdroj, aby získal podmnožinu položek JSON. Klauzule SELECT potom v seznamu Select vyžádá projekty požadované hodnoty JSON.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -52,7 +52,7 @@ SELECT <select_specification>
  
 - `DISTINCT`
   
-  Určuje, zda by měly být odstraněny duplicity projektovaných vlastností.  
+  Určuje, že se mají odebrat duplicity vlastností projektu.  
 
 - `<scalar_expression>`  
 
@@ -78,7 +78,7 @@ Obě `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být
   
 ## <a name="examples"></a>Příklady
 
-Vyberte následující dotaz vrací hodnotu příklad `address` z `Families` jehož `id` odpovídá `AndersenFamily`:
+Následující příklad dotazu Select se vrátí `address` `id` z `Families` jeho shody `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -98,8 +98,8 @@ Výsledky jsou:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Přistupující objekt vlastnosti v uvozovkách
-Můžete přistupovat k vlastnosti pomocí vlastností v uvozovkách operator []. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečné k uvození vlastnost, která obsahuje mezery, speciální znaky, nebo má stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
+### <a name="quoted-property-accessor"></a>Přístup k vlastnostem v uvozovkách
+K vlastnostem můžete přistupovat pomocí operátoru vlastnosti v uvozovkách []. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečná pro řídicí znak, který obsahuje mezery, speciální znaky nebo má stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ Můžete přistupovat k vlastnosti pomocí vlastností v uvozovkách operator []
 
 ### <a name="nested-properties"></a>Vnořené vlastnosti
 
-Následující příklad projekty dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
+Následující příklad projekty jsou dvě vnořené vlastnosti `f.address.state` a. `f.address.city`
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Výsledky jsou:
     }]
 ```
 
-V předchozím příkladu klauzule SELECT potřebuje k vytvoření objektu JSON, a protože ukázka poskytuje žádný klíč, v klauzuli používá název proměnné implicitní argument `$1`. Následující dotaz vrátí dvě proměnné implicitní argument: `$1` a `$2`.
+V předchozím příkladu musí klauzule SELECT vytvořit objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá název `$1`proměnné implicitního argumentu. Následující dotaz vrátí dvě proměnné implicitního argumentu `$1` : `$2`a.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -173,5 +173,5 @@ Výsledky jsou:
 ## <a name="next-steps"></a>Další postup
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzule WHERE](sql-query-where.md)

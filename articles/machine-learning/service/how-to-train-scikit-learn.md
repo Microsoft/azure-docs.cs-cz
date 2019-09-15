@@ -1,6 +1,6 @@
 ---
 title: Výuka modelů strojového učení pomocí scikit
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se spouštět scikit výukové skripty v podnikovém měřítku pomocí třídy skriptu sklearn Estimator v Azure Machine Learning. Ukázkové skripty klasifikují obrázky v sadě Iris pro sestavení modelu strojového učení na základě datové sady Iris scikit-učení.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963003"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002540"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Sestavování scikitch modelů s využitím škálování pomocí služby Azure Machine Learning
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, jak spustit školicí skripty scikit v podnikovém měřítku pomocí třídy [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) v Azure Machine Learning. 
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor služby Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
 Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 Po spuštění se spustí v následujících fázích:
 
-- Připravuje se: Obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Připravuje**se: Obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
 - **Škálování:** Cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
@@ -193,7 +193,7 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 ## <a name="next-steps"></a>Další postup
 
 
-V tomto článku jste si vyškole a zaregistrovali model Keras ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
+V tomto článku jste si vyškole a zaregistrovali Keras model na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
 
 > [!div class="nextstepaction"]
 > [Jak a kde nasadit modely](how-to-deploy-and-where.md)

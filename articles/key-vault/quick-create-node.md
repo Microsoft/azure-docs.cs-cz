@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259233"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003510"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče z Azure Key Vault pomocí webové aplikace Node 
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak uložit tajný kód v Azure Key Vault a
 * Povolení [spravované identity](../active-directory/managed-service-identity/overview.md) pro webovou aplikaci
 * Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
 
-Než budete pokračovat, ujistěte se, že jste obeznámeni se [základními koncepty pro Key Vault](key-vault-whatis.md#basic-concepts).
+Než budete pokračovat, ujistěte se, že jste obeznámeni se [základními koncepty pro Key Vault](basic-concepts.md).
 
 > [!NOTE]
 > Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace a uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. V souladu s osvědčenými postupy zabezpečení je nutné tento první tajný klíč pravidelně střídat. 
@@ -194,7 +194,7 @@ git push azure master
 
 Po přechodu na `https://<app_name>.azurewebsites.net`adresu vidíte tajnou hodnotu. Ujistěte se, že jste nahradili `<YourKeyVaultName>` název názvem vašeho trezoru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 

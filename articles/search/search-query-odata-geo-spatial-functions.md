@@ -1,7 +1,7 @@
 ---
 title: Referenční informace o funkcích geografické územní funkce OData – Azure Search
 description: Funkce v geografickém prostoru OData, geografická vzdálenost a geografická. průniky v Azure Searchch dotazech.
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647568"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003452"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Search- `geo.distance` a`geo.intersects`
 
 Azure Search podporuje geografické prostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `geo.distance` funkcí `geo.intersects` a. `geo.distance` Funkce vrátí vzdálenost v kilometrech mezi dvěma body, jedno je pole nebo proměnná rozsahu a jedna se jako součást filtru předává jako součást. `geo.intersects` Funkce vrátí`true` , zda je daný bod v rámci daného mnohoúhelníku, kde je bod pole nebo proměnná rozsahu a mnohoúhelník je zadán jako součást filtru jako konstanta.
 
 Funkci lze také použít v [parametru **$OrderBy** ](search-query-odata-orderby.md) k řazení výsledků hledání podle vzdálenosti od daného bodu. `geo.distance` Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí pole, na které se vztahuje, být typu `Edm.GeographyPoint` a musí být také možné jej **Seřadit**.
+
+> [!NOTE]
+> Při použití `geo.distance` v parametru **$OrderBy** musí pole, které předáte funkci, obsahovat pouze jeden geografický bod. Jinými slovy, musí být typu `Edm.GeographyPoint` a ne. `Collection(Edm.GeographyPoint)` Pro pole kolekce v Azure Search není možné řadit.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -64,7 +67,7 @@ K dispozici je také diagram interaktivní syntaxe:
 > [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
+> Kompletní EBNF najdete v [referenčních informacích k syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
 
 ### <a name="geodistance"></a>Geografická vzdálenost
 

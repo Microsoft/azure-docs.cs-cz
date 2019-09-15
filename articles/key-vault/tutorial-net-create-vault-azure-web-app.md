@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934356"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003363"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Použití Azure Key Vault s webovou aplikací Azure v .NET
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Přiřaďte oprávnění pro webovou aplikaci.
 > * Spusťte webovou aplikaci v Azure.
 
-Než začnete, přečtěte si téma [Key Vault Basic koncepty](key-vault-whatis.md#basic-concepts). 
+Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md). 
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -50,7 +50,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure
 
 Azure Key Vault ukládá pověření bezpečně, takže se ve vašem kódu nezobrazují. K načtení klíčů ale musíte ověřit, Azure Key Vault. K ověření Key Vault budete potřebovat přihlašovací údaje. Je to klasický spouštěcí dilematem. Identita spravované služby (MSI) Tento problém řeší tím, že poskytuje _identitu_ spuštění, která zjednodušuje proces.
 
-Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure App Service nebo Azure Functions, vytvoří [Služba Azure instanční objekt](key-vault-whatis.md#basic-concepts). Služba MSI to provede pro instanci služby v Azure Active Directory (Azure AD) a vloží do této instance přihlašovací údaje instančního objektu.
+Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure App Service nebo Azure Functions, vytvoří [Služba Azure instanční objekt](basic-concepts.md). Služba MSI to provede pro instanci služby v Azure Active Directory (Azure AD) a vloží do této instance přihlašovací údaje instančního objektu.
 
 ![Diagram MSI](media/MSI.png)
 
@@ -85,7 +85,7 @@ Pokud chcete vytvořit Trezor klíčů ve skupině prostředků, zadejte násled
 
 * Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (a-z, A-Z) a spojovníky (-).
 * Název skupiny prostředků
-* Umístění: **Západní USA**
+* Oblasti **Západní USA**
 
 V rozhraní příkazového řádku Azure CLI zadejte tento příkaz:
 

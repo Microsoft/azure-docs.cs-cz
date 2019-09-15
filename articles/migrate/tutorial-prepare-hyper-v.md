@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952086"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003096"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -99,7 +99,7 @@ Při přípravě na posouzení technologie Hyper-V postupujte následovně:
 1. Ověřte nastavení hostitele Hyper-V.
 2. Nastavte pro každého hostitele vzdálenou komunikaci PowerShellu, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy PowerShellu přes připojení WinRM.
 3. Pokud se disky virtuálních počítačů nacházejí ve vzdálených úložištích SMB, je nutné delegování přihlašovacích údajů. 
-    - Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele. T
+    - Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele.
     - Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení, jak je popsáno níže.
     - Později při nastavení zařízení budete na zařízení umožňovat delegování.
 4. Zkontrolujte požadavky na zařízení a přístup k adrese URL/portu potřebný pro dané zařízení.
@@ -113,7 +113,7 @@ Tato nastavení můžete nakonfigurovat ručně pomocí níže uvedených postup
 
 Tento skript ověří hostitele Hyper-V a nakonfiguruje nastavení, která potřebujete ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V. Tady je postup:
 
-- Kontroluje, zda jste na skriptu spuštěni v podporované verzi prostředí PowerShell.
+- Kontroluje, zda spouštíte skript v podporované verzi prostředí PowerShell.
 - Ověřuje, že jste (uživatel, který spouští skript), má oprávnění správce na hostiteli Hyper-V.
 - Umožňuje vytvořit místní uživatelský účet (nikoli správce), který se používá pro službu Azure Migrate ke komunikaci s hostitelem Hyper-V. Tento uživatelský účet se přidá do těchto skupin na hostiteli:
     - Uživatelé vzdálené správy

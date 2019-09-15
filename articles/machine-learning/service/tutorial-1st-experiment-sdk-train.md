@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Výuka prvního modelu ML'
-titleSuffix: Azure Machine Learning service
-description: V tomto kurzu se naučíte základní vzory návrhu ve službě Azure Machine Learning Service a naučíte se jednoduchý model scikit-učení založený na diabetes sadě dat.
+titleSuffix: Azure Machine Learning
+description: V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241294"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004033"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
-Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu ve službě Azure Machine Learning Service a naučíte se jednoduchý model scikit-učení založený na diabetes sadě dat. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
+Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
 V tomto kurzu se seznámíte s následujícími úlohami:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning služby.
+Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 

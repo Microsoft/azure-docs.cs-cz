@@ -1,6 +1,6 @@
 ---
 title: Správa a požádat o kvóty prostředků
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Tato příručka vysvětluje různé kvóty pro prostředky Azure Machine Learning a postup zobrazení a požádat o navýšení kvóty.
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278070"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002690"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 
-Jako s ostatními službami Azure, se vztahují omezení určitých prostředků ve službě Azure Machine Learning. Tato omezení vymezují rozsah od Cap k počtu pracovních prostorů, které můžete vytvořit, a omezuje se tak skutečné základní výpočetní prostředky, které se používají pro školení modelů nebo odvozování/bodování. 
+Stejně jako u ostatních služeb Azure platí omezení pro určité prostředky spojené s Azure Machine Learning. Tato omezení vymezují rozsah od Cap k počtu pracovních prostorů, které můžete vytvořit, a omezuje se tak skutečné základní výpočetní prostředky, které se používají pro školení modelů nebo odvozování/bodování. 
 
 Tento článek obsahuje další podrobnosti o předem nakonfigurované limity pro různé prostředky, které jsou pro vaše předplatné Azure a také obsahuje vylepšení žádost o kvótu pro každý typ prostředku a nápomocných odkazů. Tato omezení jsou umístěny v místě, aby se zabránilo rozpočtu překračující z důvodu možných podvodů a případném dalším sdílení dodržovat omezení kapacity Azure.
 
-Při návrhu a navýšení kapacity prostředků služby Azure Machine Learning pro produkční úlohy mějte na paměti tyto kvóty. Pokud například váš cluster nedosáhne cílového počtu uzlů, které jste zadali, možná jste dosáhli limitu Azure Machine Learning výpočetních jader pro vaše předplatné. Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení, otevřete žádost o podporu online zákazníků bez poplatků. Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistuje žádný sloupec maximálního limitu, prostředek nemá nastavitelná omezení.
+Při návrhu a škálování prostředků Azure Machine Learning pro produkční úlohy mějte na paměti tyto kvóty. Pokud například váš cluster nedosáhne cílového počtu uzlů, které jste zadali, možná jste dosáhli limitu Azure Machine Learning výpočetních jader pro vaše předplatné. Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení, otevřete žádost o podporu online zákazníků bez poplatků. Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistuje žádný sloupec maximálního limitu, prostředek nemá nastavitelná omezení.
 
 ## <a name="special-considerations"></a>Zvláštní upozornění
 
 + Kvóta je kreditního limitu záruku kapacity. Pokud máte velkou kapacitu, obraťte se na podporu Azure.
 
-+ Kvótu se sdílí napříč všemi službami v rámci vašich předplatných, včetně služby Azure Machine Learning. Jedinou výjimkou je Azure Machine Learning výpočetní prostředí, které má samostatnou kvótu od základní výpočetní kvóty. Je potřeba Vypočítat využití kvót ve všech službách při vyhodnocení potřeb kapacity.
++ Vaše kvóta se sdílí mezi všemi službami ve vašich předplatných, včetně Azure Machine Learning. Jedinou výjimkou je Azure Machine Learning výpočetní prostředí, které má samostatnou kvótu od základní výpočetní kvóty. Je potřeba Vypočítat využití kvót ve všech službách při vyhodnocení potřeb kapacity.
 
 + Výchozí omezení se liší podle typu kategorie nabídky, jako jsou bezplatné zkušební verze, s průběžnými platbami a řady, jako je Dv2, F, G a tak dále.
 

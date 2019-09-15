@@ -1,6 +1,6 @@
 ---
 title: Vytvoření prvního automatizovaného experimentu machine learningu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí automatizovaného strojového učení na úvodní stránce pracovního prostoru Azure Machine Learning vytvořit klasifikační model a nasadit model klasifikace (Preview).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984519"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001852"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -26,7 +26,7 @@ Pomocí automatizovaného strojového učení můžete automatizovat časově n�
 V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Vytvořte pracovní prostor služby Azure Machine Learning.
+> * Vytvoření pracovního prostoru Azure Machine Learning.
 > * Spusťte automatizovaný experiment strojového učení.
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu.
@@ -186,7 +186,7 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu automatizovaného strojového učení jste pomocí cílové stránky pracovního prostoru vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 

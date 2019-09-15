@@ -1,7 +1,7 @@
 ---
-title: Povolit protokolování ve službě Azure Machine Learning
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak povolit protokolování ve službě Azure Machine Learning pomocí výchozího balíčku protokolování Pythonu i pomocí funkcí specifických pro sadu SDK.
+title: Povolit přihlašování Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak povolit protokolování Azure Machine Learning pomocí výchozího balíčku protokolování Pythonu i pomocí funkcí specifických pro sadu SDK.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847938"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002755"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Povolit protokolování ve službě Azure Machine Learning
+# <a name="enable-logging-in-azure-machine-learning"></a>Povolit přihlašování Azure Machine Learning
 
 Sada SDK Azure Machine Learning Pythonu vám umožňuje povolit protokolování pomocí výchozího protokolovacího balíčku Pythonu i pomocí funkce specifické pro sadu SDK jak pro místní protokolování, tak pro protokolování do vašeho pracovního prostoru na portálu. Protokoly poskytují vývojářům informace o stavu aplikace v reálném čase a můžou vám pomáhat s diagnostikou chyb nebo upozornění. V tomto článku se seznámíte s různými způsoby, jak povolit protokolování v následujících oblastech:
 
@@ -27,7 +27,7 @@ Sada SDK Azure Machine Learning Pythonu vám umožňuje povolit protokolování 
 > * Nasazené modely
 > * Nastavení `logging` Pythonu
 
-[Vytvořte pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md). Pro další informace o sadě SDK použijte [Průvodce](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+[Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md). Pro další informace o sadě SDK použijte [Průvodce](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Školicí modely a protokolování cílů výpočtů
 

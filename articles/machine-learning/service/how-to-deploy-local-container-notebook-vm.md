@@ -1,7 +1,7 @@
 ---
 title: Postup nasazení modelů na virtuální počítače poznámkových bloků
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak nasadit modely služby Azure Machine Learning jako webovou službu pomocí virtuálních počítačů poznámkových bloků.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou službu pomocí virtuálních počítačů poznámkových bloků.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947757"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002828"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Nasazení modelu do virtuálních počítačů poznámkových bloků
 
-Naučte se používat službu Azure Machine Learning k nasazení modelu jako webové služby na VIRTUÁLNÍm počítači poznámkového bloku. Virtuální počítače poznámkového bloku použijte, pokud je splněná jedna z následujících podmínek:
+Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby na VIRTUÁLNÍm počítači poznámkového bloku. Virtuální počítače poznámkového bloku použijte, pokud je splněná jedna z následujících podmínek:
 
 - Potřebujete k rychlému nasazení a ověření modelu.
 - Testování modelu, který je ve vývoji.
 
 > [!TIP]
-> Nasazení modelu z Jupyter Notebook na virtuálním počítači poznámkového bloku do webové služby na stejném virtuálním počítači je _místní nasazení_. V tomto případě je místní počítač VIRTUÁLNÍm počítačem poznámkového bloku. Další informace o nasazeních najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+> Nasazení modelu z Jupyter Notebook na virtuálním počítači poznámkového bloku do webové služby na stejném virtuálním počítači je _místní nasazení_. V tomto případě je místní počítač VIRTUÁLNÍm počítačem poznámkového bloku. Další informace o nasazeních najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pracovní prostor služby Azure Machine Learning se spuštěným virtuálním počítačem s poznámkovým blokem. Další informace najdete v tématu [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+- Pracovní prostor Azure Machine Learning se spuštěným virtuálním počítačem s poznámkovým blokem. Další informace najdete v tématu [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-notebook-vms"></a>Nasazení na virtuální počítače poznámkových bloků
 

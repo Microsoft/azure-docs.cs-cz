@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233127"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000221"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Podpora fondu uzlů serveru oken zahrnuje některá omezení, která jsou souč�
 
 Kubernetes je historicky zaměřený na Linux. Mnohé příklady, které se používají na webu [Kubernetes.IO][kubernetes] pro odesílání dat, jsou určené pro použití v uzlech se systémem Linux. Při vytváření nasazení, která používají kontejnery Windows serveru, platí následující požadavky na úrovni operačního systému:
 
-- **Identita** – Linux používá UserID (UID) a GROUPID (GID), reprezentované jako typ Integer. Názvy uživatelů a skupin nejsou kanonické – jedná se pouze o alias v */etc/Groups* nebo */etc/PASSWD* zpět na UID + GID.
+- **Identita** – Linux identifikuje uživatele pomocí celočíselného identifikátoru (UID). Uživatel má také alfanumerické uživatelské jméno pro přihlášení, které Linux překládá na UID uživatele. Podobně Linux identifikuje skupinu uživatelů pomocí identifikátoru celočíselné skupiny (GID) a překládá název skupiny na odpovídající GID.
     - Windows Server používá větší binární identifikátor zabezpečení (SID), který je uložený v databázi SAM (Windows Security Access Manager). Tato databáze není sdílená mezi hostitelem a kontejnery nebo mezi kontejnery.
 - **Oprávnění k souborům** – Windows Server používá seznam řízení přístupu založený na identifikátorech SID, nikoli bitovou masku oprávnění a UID + GID.
 - **Cesty k souborům** – konvence ve Windows serveru slouží jako místo/.
@@ -94,7 +94,7 @@ Podpora skupinových účtů spravované služby (gMSA) není v současné době
 
 V AKS pracujeme na zprovoznění všech funkcí, které v systému Windows potřebujete, ale pokud se setkáte, je open source projekt [AKS-Engine][aks-engine] jednoduchý a plně přizpůsobitelný způsob, jak spustit Kubernetes v Azure, včetně podpory Windows. Ujistěte se prosím, že máte přehled o funkcích, které připravujeme pro [AKS][aks-roadmap].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, na kterém běží Windows Server v AKS][windows-node-cli].
 

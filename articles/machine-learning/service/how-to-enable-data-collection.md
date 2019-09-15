@@ -1,6 +1,6 @@
 ---
 title: Shromažďování dat v produkčních modelech
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Zjistěte, jak shromažďovat data o vstupním modelu Azure Machine Learning v Azure Blob storage.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860515"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002862"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat modelů v produkčním prostředí
 
-V tomto článku se dozvíte, jak ke shromažďování dat vstupním modelu ze služby Azure Machine Learning, které jste nasadili do služby Azure Kubernetes Cluster (AKS) do služby Azure Blob storage. 
+V tomto článku se dozvíte, jak shromažďovat data vstupního modelu z Azure Machine Learning jste nasadili do clusteru Azure Kubernetes (AKS) do úložiště objektů BLOB v Azure. 
 
 Po povolení tohoto data o vám pomůže:
 * [Monitorování posunu dat](how-to-monitor-data-drift.md) jako provozních dat do modelu
@@ -50,9 +50,9 @@ Cesta k výstupní data v objektu blob odpovídá této syntaxi:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-- Azure service pracovního prostoru Machine Learning, místní adresář obsahující skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
+- Azure Machine Learning pracovní prostor, místní adresář obsahující vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
 
 - Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS). Pokud ho nemáte, přečtěte si článek [trénování modelů klasifikace image](tutorial-train-models-with-aml.md) kurzu.
 
@@ -61,7 +61,7 @@ Cesta k výstupní data v objektu blob odpovídá této syntaxi:
 - [Nastavení prostředí](how-to-configure-environment.md) a nainstalujte [monitorování SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Povolení shromažďování dat
-Shromažďování dat může být povoleno bez ohledu na model nasazení prostřednictvím služby Azure Machine Learning nebo jiných nástrojů. 
+Shromažďování dat lze povolit bez ohledu na model, který je nasazen prostřednictvím Azure Machine Learning nebo jiných nástrojů. 
 
 Ho Pokud chcete povolit, je potřeba:
 

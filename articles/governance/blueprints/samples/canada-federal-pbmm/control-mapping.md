@@ -7,12 +7,12 @@ ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 18c098263a4760c8b4b48f6799bcb263aa9709a9
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: baafb0fbcf1dba1cadfff1d5f5e02e2df4f34a25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968288"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002914"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Mapování ovládacích prvků pro ukázku federálního PBMM podrobného plánu pro Kanadu
 
@@ -309,7 +309,7 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 > [!NOTE]
 > Dostupnost konkrétních definic Azure Policy se může v Azure Government a dalších národních cloudech lišit. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zkontrolovali jste mapování ovládacího prvku pro ukázku Federal PBMM details. Další informace o přehledu a způsobu nasazení této ukázky najdete v následujících článcích:
 

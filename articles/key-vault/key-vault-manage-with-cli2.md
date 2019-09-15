@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976351"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000622"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa Key Vault pomocí Azure CLI 
 
@@ -35,7 +35,7 @@ Azure Key Vault je dostupný ve většině oblastí. Další informace najdete n
 > Tento článek neobsahuje pokyny, jak napsat aplikaci Azure, kterou zahrnuje některý z kroků, který ukazuje, jak autorizovat aplikaci pro použití klíče nebo tajného klíče v trezoru klíčů.
 >
 
-Přehled Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-whatis.md)
+Přehled Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md)
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky

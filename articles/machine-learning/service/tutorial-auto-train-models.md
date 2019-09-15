@@ -1,7 +1,7 @@
 ---
 title: 'Kurz regresního modelu: Automatizované strojové učení'
-titleSuffix: Azure Machine Learning service
-description: Naučte se generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů. Konečný model se pak nasadí pomocí služby Azure Machine Learning Service.
+titleSuffix: Azure Machine Learning
+description: Naučte se generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů. Pak je finální model nasazený s Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036252"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003974"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Předpověď taxislužby tarifů pomocí automatizovaného strojového učení
 
-V tomto kurzu pomocí automatizovaného strojového učení ve službě Azure Machine Learning vytvoříte regresní model pro předpověď cen za taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
+V tomto kurzu pomocí automatizovaného strojového učení v Azure Machine Learning vytvoříte regresní model, který předpovídá ceny NYC taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
 
 ![Diagram toku](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 > * Výuka automatizovaného modelu Machine Learning
 > * Vypočítat přesnost modelu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) služby Azure Machine Learning dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte pracovní prostor služby Azure Machine Learning nebo virtuální počítač s poznámkovým blokem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
+* Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok **kurzy/Regression-Automated-ml. ipynb** pomocí stejného serveru poznámkového bloku.
 
 Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Spusťte `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` , abyste získali požadované balíčky.
@@ -983,7 +983,7 @@ local_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-the-results"></a>Kontrola výsledků
 
-Prozkoumejte výsledky automatického školení pomocí widgetu [Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Pomůcka vám umožní zobrazit graf a tabulku všech jednotlivých iterací spuštění spolu s metrikami přesnosti školení a metadaty. Kromě toho můžete filtrovat různé metriky přesnosti, než je vaše primární metrika, pomocí rozevíracího selektoru.
+Prozkoumejte výsledky automatického školení pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Pomůcka vám umožní zobrazit graf a tabulku všech jednotlivých iterací spuštění spolu s metrikami přesnosti školení a metadaty. Kromě toho můžete filtrovat různé metriky přesnosti, než je vaše primární metrika, pomocí rozevíracího selektoru.
 
 ```python
 from azureml.widgets import RunDetails
@@ -1057,7 +1057,7 @@ Tradiční strojového učení proces vývoje modelu je velmi náročná a vyža
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning služby.
+Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
@@ -1088,4 +1088,4 @@ V tomto kurzu automatizovaného strojového učení jste provedli následující
 > * Vyškoleno pomocí automatizovaného regresního modelu místně s vlastními parametry.
 > * Prozkoumání a přezkoumání výsledků školení.
 
-[Nasaďte model](tutorial-deploy-models-with-aml.md) pomocí služby Azure Machine Learning.
+[Nasazení modelu](tutorial-deploy-models-with-aml.md) službou Azure Machine Learning.

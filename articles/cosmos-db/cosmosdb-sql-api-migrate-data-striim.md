@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981842"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003274"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB účtu rozhraní SQL API pomocí Striim
  
@@ -24,7 +24,7 @@ Tento článek popisuje, jak pomocí Striim migrovat data z **databáze Oracle**
 
 * Pokud ještě nemáte [předplatné Azure](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-* Databáze Oracle běžící v místním počítači s některými daty.
+* Databáze Oracle běžící v místním prostředí s některými daty.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Nasazení řešení Striim Marketplace
 
@@ -193,9 +193,9 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
    ![Ověření migrovaných dat v Azure](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Pomocí řešení Striim v Azure můžete průběžně migrovat data do Azure Cosmos DB z různých zdrojů, jako jsou Oracle, Cassandra, MongoDB a různé další Azure Cosmos DB. V případě jakýchkoli problémů při nastavování cesty migrace pomocí Striim si zaregistrujte žádost o podporu na [webu Striim](https://go2.striim.com/request-support-striim).
+Pomocí řešení Striim v Azure můžete průběžně migrovat data do Azure Cosmos DB z různých zdrojů, jako jsou Oracle, Cassandra, MongoDB a různé další Azure Cosmos DB. Další informace najdete na [webu Striim](https://www.striim.com/), [Stažení bezplatné 30Denní zkušební verze Striim](https://go2.striim.com/download-free-trial)a při jakémkoli problému při nastavování cesty migrace pomocí Striimu uložte [žádost o podporu.](https://go2.striim.com/request-support-striim)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pokud migrujete data na Azure Cosmos DB SQL API, přečtěte si [článek jak migrovat data na účet rozhraní API Cassandra pomocí Striim](cosmosdb-cassandra-api-migrate-data-striim.md) .
 

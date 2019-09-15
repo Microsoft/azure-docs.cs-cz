@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073011"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000562"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
-Klasifikace & Discovery dat poskytuje pokročilé funkce integrované do Azure SQL Database prozjišťování, **klasifikaci** & a označování**ochrany** citlivých dat ve vašich databázích.
+Klasifikace & Discovery dat poskytuje pokročilé funkce integrované do **Azure SQL Database pro zjišťování**, **klasifikaci** & a označování**ochrany** citlivých dat ve vašich databázích.
 
 Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, identifikovatelné osobní údaje) a podobně.) mohou hrát pivotovou roli ve vaší organizaci stature Information Protection. Může sloužit jako infrastruktura pro:
 
@@ -137,6 +137,8 @@ Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst vše
 - Přidat nebo aktualizovat klasifikaci jednoho nebo více sloupců: [PŘIDAT KLASIFIKACI CITLIVOSTI](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Odeberte klasifikaci z jednoho nebo více sloupců: [KLASIFIKACE CITLIVOSTI PŘETAŽENÍ](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazit všechny klasifikace v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>Správa klasifikací pomocí rozhraní REST API
 
 Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Publikovaná rozhraní REST API podporují následující operace:
 

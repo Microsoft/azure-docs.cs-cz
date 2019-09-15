@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9d983dc4a2623e7f2a272ea2a320d2658d784dee
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698567"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003586"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
 
@@ -60,7 +60,7 @@ Připojení k místní Centrum IoT Edge z modulu zahrnuje dva kroky:
 1. Vytvořte v aplikaci instanci ModuleClient.
 2. Zajistěte, aby že vaše aplikace přijímá certifikát předložený Centrum IoT Edge na tomto zařízení.
 
-Vytvořte instanci ModuleClient pro připojení modulu k rozbočovači IoT Edge běžícímu na zařízení, podobně jako instance DeviceClient připojují zařízení IoT k IoT Hub. Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C a Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Vytvořte instanci ModuleClient pro připojení modulu k rozbočovači IoT Edge běžícímu na zařízení, podobně jako instance DeviceClient připojují zařízení IoT k IoT Hub. Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 ## <a name="language-and-architecture-support"></a>Podpora jazyků a architektur
 
@@ -70,7 +70,7 @@ IoT Edge podporuje různé operační systémy, architektury zařízení a vývo
 
 Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 a ARM32 Linux. 
 
-| Jazyk vývoje | Vývojové nástroje |
+| Vývojářský jazyk | Vývojové nástroje |
 | -------------------- | ----------------- |
 | C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
@@ -85,7 +85,7 @@ Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zař�
 
 Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zařízení AMD64 s Windows.
 
-| Jazyk vývoje | Vývojové nástroje |
+| Vývojářský jazyk | Vývojové nástroje |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (žádné možnosti ladění)<br>Visual Studio 2017/2019 |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727354"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003940"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
@@ -61,7 +61,7 @@ Tři modely šifrování na straně serveru nabízejí různé charakteristiky s
 
 Virtuální počítače s Windows a Linuxem můžete chránit pomocí služby [Azure Disk Encryption](/azure/security/azure-security-disk-encryption), která využívá technologii [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) k ochraně disků a datových disků operačního systému pomocí úplného šifrování svazku.
 
-Šifrovací klíče a tajné kódy jsou v předplatném [Azure Key Vault](../../key-vault/key-vault-whatis.md)chráněny. Pomocí služby Azure Backup můžete zálohovat a obnovovat šifrované virtuální počítače, které používají konfiguraci klíčového šifrovacího klíče (KEK).
+Šifrovací klíče a tajné kódy jsou v [předplatném Azure Key Vault](../../key-vault/key-vault-overview.md)chráněny. Pomocí služby Azure Backup můžete zálohovat a obnovovat šifrované virtuální počítače, které používají konfiguraci klíčového šifrovacího klíče (KEK).
 
 ### <a name="azure-storage-service-encryption"></a>Šifrování služby Azure Storage
 

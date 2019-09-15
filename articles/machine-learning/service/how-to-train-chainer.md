@@ -1,6 +1,6 @@
 ---
 title: Výuková neuronovéá síť pomocí zřetězení
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se spouštět PyTorch školicí skripty v podnikovém měřítku pomocí třídy Estimator zřetězení pro Azure Machine Learning.  Ukázkový skript klasifikuje ručně psané obrázky číslic, aby se vytvořila neuronové síť s hloubkovým učením pomocí knihovny Pythonu pro zřetězení, která běží nad numpy.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966837"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002723"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Škálujte a Registrujte modely řetězení ve velkém měřítku pomocí Azure Machine Learning
 
-V tomto článku se dozvíte, jak spustit [](https://chainer.org/) školicí skripty pro řetězení v podnikovém měřítku pomocí třídy [Estimator zřetězení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) pro Azure Machine Learning. Ukázkový skript pro školení v tomto článku používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě (DNN) vytvořené pomocí knihovny Pythonu v chainu, která běží na [numpy](https://www.numpy.org/).
+V tomto článku se dozvíte, jak spustit školicí skripty pro [řetězení](https://chainer.org/) v podnikovém měřítku pomocí třídy [Estimator zřetězení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) pro Azure Machine Learning. Ukázkový skript pro školení v tomto článku používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě (DNN) vytvořené pomocí knihovny Pythonu v chainu, která běží na [numpy](https://www.numpy.org/).
 
 Bez ohledu na to, jestli provedete výukový model služby hloubkového učení z provozu nebo přenášíte existující model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh s využitím elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 
 Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor služby Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
 Vytvořte objekt pracovního prostoru načtením `config.json` souboru vytvořeného v [části požadavky](#prerequisites):
 
@@ -172,7 +172,7 @@ run.wait_for_completion(show_output=True)
 
 Po spuštění se spustí v následujících fázích:
 
-- Připravuje se: Obrázek Docker se vytvoří podle Estimator zřetězení. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Připravuje**se: Obrázek Docker se vytvoří podle Estimator zřetězení. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
 - **Škálování:** Cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí chainer ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
+V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí zřetězení na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 
 * [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 

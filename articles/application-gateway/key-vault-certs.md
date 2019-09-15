@@ -1,60 +1,60 @@
 ---
-title: Ukončení protokolu SSL s využitím certifikátů Azure Key Vault
-description: Zjistěte, jak integrovat Azure Application Gateway s využitím služby Key Vault pro certifikáty serveru, které jsou připojeny k naslouchacích procesů s povolenou komunikací HTTPS.
+title: Ukončení protokolu SSL s certifikáty Azure Key Vault
+description: Přečtěte si, jak můžete integrovat Azure Application Gateway s Key Vault pro certifikáty serveru, které jsou připojené k posluchačům s povoleným protokolem HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 18af315c58c838a7237acfbcc32f622a0edbd3b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 725a9d67e6a6412fc48a4278b5a8a163272e5133
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827624"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000987"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Ukončení protokolu SSL s využitím služby Key Vault certifikátů
+# <a name="ssl-termination-with-key-vault-certificates"></a>Ukončení protokolu SSL s certifikáty Key Vault
 
-[Služba Azure Key Vault](../key-vault/key-vault-whatis.md) je spravované platformy tajného klíče úložiště, můžete použít k ochraně tajných klíčů, klíče a certifikáty SSL. Azure Application Gateway podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchacích procesů s povolenou komunikací HTTPS. Tato podpora je omezena na v2 SKU služby Application Gateway.
+[Azure Key Vault](../key-vault/key-vault-overview.md) je úložiště tajné databáze spravované platformou, které můžete použít k ochraně tajných klíčů, klíčů a certifikátů SSL. Azure Application Gateway podporuje integraci s Key Vault (ve verzi Public Preview) pro certifikáty serveru, které jsou připojené k naslouchacím procesům s povoleným protokolem HTTPS. Tato podpora je omezená na SKU v2 Application Gateway.
 
 > [!IMPORTANT]
-> Integrace Application Gateway s využitím služby Key Vault je aktuálně ve verzi public preview. V této verzi preview je k dispozici bez smlouvu o úrovni služeb (SLA) a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Integrace Application Gateway s Key Vault je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb (SLA) a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato veřejná Předběžná verze nabízí dva modely pro ukončení protokolu SSL:
+Tato veřejná verze Preview nabízí dva modely pro ukončení protokolu SSL:
 
-- Můžete explicitně uvést certifikáty SSL, které jsou připojené k naslouchacímu procesu. Tento model je tradičním způsobem předat službě Application Gateway certifikáty SSL pro ukončení protokolu SSL.
-- Volitelně můžete zadat odkaz na existující certifikát služby Key Vault nebo tajného klíče při vytváření naslouchací proces s povolenou komunikací HTTPS.
+- Můžete explicitně poskytnout certifikáty SSL připojené k naslouchacímu procesu. Tento model je tradiční způsob, jak předat certifikáty SSL Application Gateway pro ukončení protokolu SSL.
+- Volitelně můžete zadat odkaz na existující Key Vault certifikát nebo tajný kód při vytváření naslouchacího procesu s povoleným protokolem HTTPS.
 
-Integrace brány aplikací se službou Key Vault nabízí řadu výhod, včetně:
+Application Gateway integrace s Key Vault nabízí spoustu výhod, včetně:
 
-- Silnější zabezpečení, protože certifikáty SSL nezabývá přímo vývojovým týmem aplikace. Integrace umožňuje samostatné bezpečnostní tým na:
-  * Nastavení služby application Gateway.
-  * Řízení životního cyklu aplikací brány.
-  * Udělení oprávnění pro vybrané aplikační brány pro přístup k certifikáty, které jsou uložené v trezoru klíčů.
-- Podpora pro import existujících certifikátů do trezoru klíčů. Nebo vytvářet a spravovat nové certifikáty s některou z důvěryhodných partnerů služby Key Vault pomocí rozhraní API Key Vault.
-- Podpora při automatickém prodlužování platnosti certifikátů, které jsou uložené v trezoru klíčů.
+- Silnější zabezpečení, protože certifikáty SSL nejsou přímo zpracovávány týmem vývoje aplikace. Integrace umožňuje samostatnému bezpečnostnímu týmu:
+  * Nastavte aplikační brány.
+  * Řízení životního cyklu brány Application Gateway.
+  * Udělte oprávnění vybraným aplikačním branám přístup k certifikátům uloženým v trezoru klíčů.
+- Podpora importu existujících certifikátů do trezoru klíčů. Nebo můžete použít rozhraní Key Vault API k vytváření a správě nových certifikátů s některým z důvěryhodných partnerů Key Vault.
+- Podpora automatického obnovování certifikátů uložených v trezoru klíčů.
 
-Služba Application Gateway aktuálně podporuje ověřené software jenom certifikáty. Modul hardwarového zabezpečení (HSM)-ověřené certifikáty nejsou podporovány. Po Application Gateway je konfigurován pro použití služby Key Vault certifikáty, její instance načtení certifikátu ze služby Key Vault a nainstalovat místně pro ukončení protokolu SSL. Instance také dotazovat služby Key Vault každých 24 hodin k načtení obnovené verzi certifikátu, pokud existuje. Pokud aktualizovaný certifikát není nalezen, je automaticky otočit certifikát SSL, který je aktuálně přidružený naslouchací proces HTTPS.
+Application Gateway aktuálně podporuje jenom certifikáty ověřované softwarem. Certifikáty ověřované modulem hardwarového zabezpečení (HSM) nejsou podporovány. Po nakonfigurování Application Gateway k používání certifikátů Key Vault jejich instance načtou certifikát z Key Vault a lokálně je nainstalují pro ukončení protokolu SSL. Instance také dotazují Key Vault ve 24hodinovém intervalu pro načtení obnovené verze certifikátu, pokud existuje. Pokud se najde aktualizovaný certifikát, automaticky se otočí certifikát SSL, který je aktuálně přidružený k naslouchacímu procesu HTTPS.
 
 ## <a name="how-integration-works"></a>Jak funguje integrace
 
-Integrace brány aplikací se službou Key Vault vyžaduje proces konfigurace třech krocích:
+Application Gateway integrace s Key Vault vyžaduje proces konfigurace se třemi kroky:
 
-1. **Vytvoření uživatelsky přiřazené identity spravované**
+1. **Vytvoření spravované identity přiřazené uživatelem**
 
-   Vytvořit nebo znovu použít existující uživatelsky přiřazené spravovaná identita, která Application Gateway používá k načtení certifikátů ze služby Key Vault za vás. Další informace najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md). Tento krok vytvoří novou identitu v tenantovi Azure Active Directory. Identita je důvěryhodný pro předplatné, které se používá k vytvoření identity.
+   Můžete vytvořit nebo znovu použít existující spravovanou identitu přiřazenou uživatelem, kterou Application Gateway používá k načtení certifikátů od Key Vault vaším jménem. Další informace najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md). Tento krok vytvoří novou identitu v tenantovi Azure Active Directory. Identita je důvěryhodná pro předplatné, které se používá k vytvoření identity.
 
 1. **Konfigurace trezoru klíčů**
 
-   Můžete pak buď naimportujte existující certifikát, nebo vytvořte novou v trezoru klíčů. Certifikát se používá aplikací spouštěných prostřednictvím application gateway. V tomto kroku můžete také použít tajný kód trezoru klíčů, který je uložen jako bez hesla, základní kódováním base64 souboru PFX. Doporučujeme používat typ certifikátu z důvodu možnosti automatické obnovení, který je k dispozici s objekty typu certifikátu ve službě key vault. Po vytvoření certifikátu nebo tajného kódu, definovat zásady přístupu ve službě key vault umožňuje identitě, kterou chcete udělit *získat* přístup k tajný kód.
+   Pak buď importujte existující certifikát, nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží přes Aplikační bránu. V tomto kroku můžete také použít tajný klíč trezoru klíčů, který je uložený jako soubor PFX s kódováním bez hesla, Base 64. Pro možnost autorecovery, která je k dispozici pro objekty typu certifikátu v trezoru klíčů, doporučujeme použít typ certifikátu. Po vytvoření certifikátu nebo tajného klíče v trezoru klíčů Definujte zásady přístupu, aby bylo možné udělení identity *získat* přístup k tajnému kódu.
 
-1. **Nakonfigurujte aplikační bránu**
+1. **Konfigurace služby Application Gateway**
 
-   Po dokončení předchozí dva kroky, můžete nastavit nebo upravit stávající aplikační brány pro použití spravované identity přiřazené uživateli. Můžete taky nakonfigurovat certifikát SSL pro naslouchací proces protokolu HTTP tak, aby odkazoval na úplný identifikátor URI služby Key Vault certifikát nebo ID tajného kódu.
+   Po dokončení obou předchozích kroků můžete nastavit nebo upravit existující Aplikační bránu tak, aby používala uživatelsky přiřazenou spravovanou identitu. Certifikát SSL naslouchacího procesu HTTP můžete také nakonfigurovat tak, aby odkazoval na úplný identifikátor URI Key Vault certifikátu nebo tajného ID.
 
-   ![Certifikátů trezor klíčů](media/key-vault-certs/ag-kv.png)
+   ![Certifikáty trezoru klíčů](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Konfiguraci ukončení protokolu SSL s využitím certifikátů služby Key Vault pomocí Azure Powershellu](configure-keyvault-ps.md)
+[Konfigurace ukončení SSL pomocí Key Vault certifikátů pomocí Azure PowerShell](configure-keyvault-ps.md)

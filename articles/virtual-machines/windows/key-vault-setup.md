@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: e92ccacbcdc49ae5ea9496c9c8ac7fa90a05e20c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079234"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999353"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení Key Vault pro virtuální počítače v Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-V Azure Resource Managerovém zásobníku se tajné klíče a certifikáty modelují jako prostředky poskytované poskytovatelem prostředků Key Vault. Další informace o Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md)
+V Azure Resource Managerovém zásobníku se tajné klíče a certifikáty modelují jako prostředky poskytované poskytovatelem prostředků Key Vault. Další informace o Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
 > [!NOTE]
 > 1. Aby bylo možné Key Vault použít s Azure Resource Manager virtuálními počítači, musí být vlastnost **EnabledForDeployment** v Key Vault nastavena na hodnotu true. To můžete provést v různých klientech.

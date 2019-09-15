@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910229"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999068"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -61,7 +61,7 @@ K sestavení a nasazení image modulu potřebujete Docker pro sestavení image m
     > [!TIP]
     > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru.
 
-Pokud nevyvíjíte modul v jazyce C, budete také potřebovat nástroj pro vývoj [Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) v Pythonu, aby bylo možné nastavit místní vývojové prostředí pro ladění, spouštění a testování vašeho řešení IoT Edge. Pokud jste to ještě neudělali, nainstalujte [Python (2.7/3.6) a PIP](https://www.python.org/) a pak **iotedgehubdev** Nainstalujte spuštěním tohoto příkazu v terminálu.
+Pokud nevyvíjíte modul v jazyce C, budete také potřebovat nástroj pro vývoj [Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) v Pythonu, aby bylo možné nastavit místní vývojové prostředí pro ladění, spouštění a testování vašeho řešení IoT Edge. Pokud jste to ještě neudělali, nainstalujte [Python (2.7/3.6 +) a PIP](https://www.python.org/) a pak **iotedgehubdev** Nainstalujte spuštěním tohoto příkazu v terminálu.
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -269,22 +269,22 @@ Při ladění modulů pomocí této metody jsou moduly spuštěny na IoT Edge mo
       ptvsd.break_into_debugger()
       ```
 
-     Například pokud chcete `receive_message_callback` metodu ladit, vložte tento řádek kódu, jak je znázorněno níže:
+     Například pokud chcete `receive_message_listener` funkci ladit, vložte tento řádek kódu, jak je znázorněno níže:
 
       ```python
-      def receive_message_callback(message, hubManager):
+      def receive_message_listener(client):
           ptvsd.break_into_debugger()
-          global RECEIVE_CALLBACKS
-          message_buffer = message.get_bytearray()
-          size = len(message_buffer)
-          print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode ('utf-8'), size) )
-          map_properties = message.properties()
-          key_value_pair = map_properties.get_internals()
-          print ( "    Properties: %s" % key_value_pair )
-          RECEIVE_CALLBACKS += 1
-          print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-          hubManager.forward_event_to_output("output1", message, 0)
-          return IoTHubMessageDispositionResult.ACCEPTED
+          global RECEIVED_MESSAGES
+          while True:
+              message = client.receive_message_on_input("input1")   # blocking call
+              RECEIVED_MESSAGES += 1
+              print("Message received on input1")
+              print( "    Data: <<{}>>".format(message.data) )
+              print( "    Properties: {}".format(message.custom_properties))
+              print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+              print("Forwarding message to output1")
+              client.send_message_to_output(message, "output1")
+              print("Message successfully forwarded")
       ```
 
 1. Na paletě příkazu Visual Studio Code:
@@ -358,7 +358,7 @@ Díky nedávným změnám v Docker i modulech Moby pro podporu připojení SSH a
 
 Další informace a podrobné pokyny najdete v této [položce blogu vývojář pro IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření modulu se naučíte, jak [nasadit Azure IoT Edge moduly z Visual Studio Code](how-to-deploy-modules-vscode.md).
 

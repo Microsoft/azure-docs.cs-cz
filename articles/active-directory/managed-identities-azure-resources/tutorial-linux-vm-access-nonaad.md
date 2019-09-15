@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a4ce0419e3a5615cc5a6d57fe2f1cfecad2f09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26d434069870fbfa52687a3abc7913fd121687a1
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66228575"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000061"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu 
 
@@ -70,7 +70,7 @@ K dokončení tohoto postupu potřebujete klienta SSH.  Pokud používáte Wind
  
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**. 
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu pomocí příkazu CURL, ujistěte se, požadavek na místní spravovaných identit pro koncový bod prostředků Azure získat přístupový token pro Azure Key Vault.  
+3. V okně terminálu pomocí technologie KUDRLINKOU vytvořte požadavek na koncový bod prostředků místní spravované identity pro prostředky Azure, abyste získali přístupový token pro Azure Key Vault.  
  
     Žádost CURL o přístupový token je níže.  
     
@@ -105,12 +105,12 @@ K dokončení tohoto postupu potřebujete klienta SSH.  Pokud používáte Wind
     
 Jakmile z Key Vault načtete tajný kód, můžete ho použít k ověření přístupu ke službě, která vyžaduje jméno a heslo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu.  Další informace o Azure Key Vault:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-whatis)
+>[Azure Key Vault](/azure/key-vault/key-vault-overview)
 
 
 

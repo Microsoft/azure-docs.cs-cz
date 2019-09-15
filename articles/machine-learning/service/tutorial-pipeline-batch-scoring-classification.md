@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Kanály Azure ML pro dávkové vyhodnocování'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Vytvořte kanál ML pro spuštění dávkového vyhodnocování pro model klasifikace obrázků. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, abyste se mohli soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 039dbc435cbffed9fe2a9e9be0053d5eb663e9bb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997352"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001623"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování
 
-V tomto kurzu použijete Azure Machine Learning kanály služby ke spuštění vyhodnocování dávky nebo odvození úlohy. Tato příklad úlohy používá předem [vyškolený](https://arxiv.org/abs/1512.00567) model konvoluční neuronové Network Tensorflow pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, abyste mohli kanál aktivovat z libovolné knihovny HTTP na libovolné platformě.
+V tomto kurzu použijete Azure Machine Learning kanály ke spuštění bodování dávky nebo odvození úlohy. Tato příklad úlohy používá předem [vyškolený](https://arxiv.org/abs/1512.00567) model konvoluční neuronové Network Tensorflow pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, abyste mohli kanál aktivovat z libovolné knihovny HTTP na libovolné platformě.
 
 Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, abyste se mohli soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci. [Přečtěte si další informace o kanálech ml](concept-ml-pipelines.md).
 
@@ -33,11 +33,11 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 > * Sestavování, spouštění a publikování kanálu
 > * Povolit koncový bod REST pro kanál
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte pracovní prostor služby Azure Machine Learning nebo virtuální počítač s poznámkovým blokem, vyplňte [část 1 kurzu instalace](tutorial-1st-experiment-sdk-setup.md) .
+* Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo poznámkovým blokem, vyplňte [část 1 kurzu instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok **kurzy/tutorial-Pipeline-Batch-scoring-Classification. ipynb** pomocí stejného serveru poznámkového bloku.
 
 Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` , abyste získali požadované balíčky.
@@ -512,7 +512,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning služby.
+Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
@@ -534,7 +534,7 @@ Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, 
 
 Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu strojového učení se provedly následující úlohy:
 

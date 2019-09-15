@@ -1,7 +1,7 @@
 ---
 title: 'Kurz k klasifikaci obrázků: Modely nasazení'
-titleSuffix: Azure Machine Learning service
-description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning nasadit model klasifikace obrázků s využitím scikit-learn v poznámkovém bloku Python Jupyter. Tento kurz je druhým z řad se dvěma částmi.
+titleSuffix: Azure Machine Learning
+description: V tomto kurzu se dozvíte, jak použít Azure Machine Learning k nasazení modelu klasifikace image s scikit-učení v poznámkovém bloku Python Jupyter. Tento kurz je druhým z řad se dvěma částmi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036206"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003057"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasazení modelu klasifikace imagí v Azure Container Instances
 
@@ -23,7 +23,7 @@ Tento kurz je **druhou částí z dvoudílné série kurzů**. V [předchozím k
 
 Nyní jste připraveni model nasadit jako webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Webová služba je image, v tomto případě image Docker. Zapouzdřuje logiku bodování a model sám sebe. 
 
-V této části kurzu používáte službu Azure Machine Learning pro následující úlohy:
+V této části kurzu použijete Azure Machine Learning pro následující úlohy:
 
 > [!div class="checklist"]
 > * Nastavte testovací prostředí.
@@ -376,9 +376,9 @@ service.delete()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-+ Přečtěte si o všech [možnostech nasazení Azure Machine Learning služby](how-to-deploy-and-where.md).
++ Přečtěte si o všech [možnostech nasazení Azure Machine Learning](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).
 +  [Provádějte asynchronní předpovědi velké množství dat](how-to-run-batch-predictions.md) .
 + Monitorujte Azure Machine Learning modely pomocí [Application Insights](how-to-enable-app-insights.md).

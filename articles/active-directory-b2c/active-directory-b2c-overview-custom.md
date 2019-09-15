@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716827"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998422"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
@@ -55,7 +55,7 @@ Služba CIAM (Customer identity and Access Management) v Azure zahrnuje:
 
 Azure AD B2C vzájemně spolupracuje s poskytovateli identity, uživateli, jinými systémy a s adresářem místního uživatele v sekvenci, aby dosáhli úkolu identity. Přihlaste se například uživateli, zaregistrujte nového uživatele nebo resetujte heslo. Architektura prostředí identit a zásady (označované také jako cesta uživatele nebo zásada architektury pro vztahy důvěryhodnosti) vytváří vztah důvěryhodnosti více stran a explicitně definují objekty actor, akce, protokoly a posloupnost kroků k dokončení.
 
-Architektura prostředí identit je plně konfigurovatelná cloudová platforma Azure založená na zásadách, která orchestruje vztah důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako jsou OpenID Connect, OAuth, SAML, WSFed a několik nestandardních, například REST. Výměny deklarací identity od systému založeného na rozhraní API. Rozhraní vytváří uživatelsky přívětivé prostředí s označením, které podporuje HTML a CSS.
+Architektura prostředí identit je plně konfigurovatelná cloudová platforma Azure založená na zásadách, která orchestruje vztahy důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako je OpenID Connect, OAuth, SAML a několik nestandardních, například REST. Výměny deklarací identity od systému založeného na rozhraní API. Rozhraní vytváří uživatelsky přívětivé prostředí s označením, které podporuje HTML a CSS.
 
 Vlastní zásada je vyjádřena jako jeden nebo více souborů ve formátu XML, které odkazují na sebe navzájem v hierarchickém řetězu. Prvky XML definují schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací, technické profily a kroky orchestrace cest uživatelů mimo jiné prvky. Vlastní zásada je přístupná jako jeden nebo několik souborů XML, které jsou spouštěny architekturou prostředí identity při vyvolání předávající stranou. Vývojáři, kteří konfigurují vlastní zásady, musí podrobná nastavení důvěryhodných vztahů za účelem zahrnutí koncových bodů metadat, přesných definic deklarací identity a konfigurací tajných kódů, klíčů a certifikátů podle potřeby u každého poskytovatele identity.
 

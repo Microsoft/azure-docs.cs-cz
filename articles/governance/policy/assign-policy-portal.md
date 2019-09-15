@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6db0879152dfcfd37719c8d22f836da6db7ed79d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231577"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000898"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -64,7 +64,7 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit v
 
 1. Klikněte na **Přiřadit**.
 
-Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy, abyste porozuměli stavu dodržování předpisů ve vašem prostředí.
+Nyní můžete identifikovat nekompatibilní prostředky, abyste pochopili stav dodržování předpisů vašeho prostředí.
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
@@ -74,7 +74,7 @@ Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audi
 
 Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
-Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zjistí hodnotu True, takové prostředky se označí jako nekompatibilní s příslušnou zásadou. Následující tabulka ukazuje, jak různé účinky zásad pracují s vyhodnocením podmínek pro zjištění výsledného stavu dodržování předpisů. Přestože se logika vyhodnocení na webu Azure Portal nezobrazuje, výsledné stavy dodržování předpisů se zobrazují. Výsledný stav je buď kompatibilní, nebo nekompatibilní.
+Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zjistí hodnotu True, takové prostředky se označí jako nekompatibilní s příslušnou zásadou. Následující tabulka ukazuje, jak různé účinky zásad pracují s vyhodnocením podmínek pro zjištění výsledného stavu dodržování předpisů. I když se v Azure Portal logika hodnocení nezobrazuje, zobrazí se výsledky stavu dodržování předpisů. Výsledný stav je buď kompatibilní, nebo nekompatibilní.
 
 | **Stav prostředku** | **Účinek** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
 | --- | --- | --- | --- |
@@ -96,7 +96,7 @@ Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
    ![Odstranění přiřazení ze stránky dodržování předpisů](./media/assign-policy-portal/delete-assignment.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste přiřadili definici zásady k oboru prostředků a vyhodnotili jste její sestavu dodržování předpisů.
 Definice zásad ověří, že všechny prostředky v příslušném oboru jsou kompatibilní a určuje ty, které nejsou.

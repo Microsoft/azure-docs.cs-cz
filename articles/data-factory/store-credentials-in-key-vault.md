@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 735013046f65a9dba345c52db883df0b114ba7f2
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3f46c54edff2bc765e75742848f83d30e7aa7c09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892050"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003395"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
 
-Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukládat [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory načte pověření při provádění aktivity, která používá úložiště nebo výpočetní prostředky.
+Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukládat [Azure Key Vault](../key-vault/key-vault-overview.md). Azure Data Factory načte pověření při provádění aktivity, která používá úložiště nebo výpočetní prostředky.
 
 V současné době všechny typy aktivit kromě vlastní aktivity podporují tuto funkci. Pro konfiguraci konektoru se konkrétně podívejte na podrobnosti v části Vlastnosti propojené služby v [jednotlivých tématech](copy-activity-overview.md#supported-data-stores-and-formats) .
 
@@ -77,7 +77,7 @@ Následující vlastnosti jsou podporované při konfiguraci pole v propojené s
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type pole musí být nastavena na: **AzureKeyVaultSecret**. | Ano |
-| secretName | Název tajného klíče v Azure Key Vault. | Ano |
+| SecretName | Název tajného klíče v Azure Key Vault. | Ano |
 | secretVersion | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
 | store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
 

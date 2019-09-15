@@ -1,7 +1,7 @@
 ---
 title: Vytváření pracovních prostorů pomocí Azure CLI
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat rozhraní příkazového řádku Azure a vytvořit nový pracovní prostor služby Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat rozhraní příkazového řádku Azure a vytvořit nový pracovní prostor Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873497"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002637"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Vytvoření pracovního prostoru pro službu Azure Machine Learning pomocí Azure CLI
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
-V tomto článku se dozvíte, jak vytvořit pracovní prostor služby Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s prostředky služby Azure Machine Learning.
+V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s Azure Machine Learning prostředky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Pracovní prostor služby Azure Machine Learning spoléhá na tyto služby nebo entity Azure:
+Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity Azure:
 
 > [!IMPORTANT]
 > Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků.
@@ -68,10 +68,10 @@ Pracovní prostor služby Azure Machine Learning spoléhá na tyto služby nebo 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pracovní prostor služby Azure Machine Learning se musí vytvořit v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
+Pracovní prostor Azure Machine Learning musí být vytvořený v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
 > [!TIP]
-> Vyberte oblast, ve které je služba Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Vyberte oblast, ve které je Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Aby bylo možné používat službu Azure Machine Learningho pracovního prostoru služby, musí mít v registru kontejneru povolený [účet správce](/azure/container-registry/container-registry-authentication#admin-account) .
+    > V registru kontejneru musí být povolen [účet správce](/azure/container-registry/container-registry-authentication#admin-account) , aby jej bylo možné použít s pracovním prostorem Azure Machine Learning.
 
 Jakmile budete mít ID prostředků, které chcete používat s pracovním prostorem, použijte základní `az workspace create -w <workspace-name> -g <resource-group-name>` příkaz a přidejte parametry a ID pro existující prostředky. Například následující příkaz vytvoří pracovní prostor, který používá existující registr kontejnerů:
 
@@ -302,7 +302,7 @@ Pokud chcete sdílet pracovní prostor s jiným uživatelem v předplatném, pou
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Další informace o řízení přístupu na základě rolí (RBAC) pomocí služby Azure Machine Learning Service najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
+Další informace o řízení přístupu na základě rolí (RBAC) s Azure Machine Learning najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
 
 Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) .
 

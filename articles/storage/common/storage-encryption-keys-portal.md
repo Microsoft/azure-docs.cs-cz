@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 892cbe66222626a6847ad7a5b6c990d23991c182
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030951"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002258"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure Portal
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíč�
 
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a Nemazat. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 > Podporují se jenom klíče RSA a velikost klíče 2048.
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
@@ -73,4 +73,4 @@ Když vytváříte novou verzi klíče, budete muset aktualizovat účet úloži
 ## <a name="next-steps"></a>Další postup
 
 - [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
-- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

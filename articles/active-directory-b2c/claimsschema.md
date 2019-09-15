@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847052"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999107"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,12 +48,12 @@ Element **ClaimType** obsahuje následující atribut:
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí typy deklarací partnerů, které se mají použít pro zadaný protokol. Hodnota může být přepsána v **PartnerClaimType** určeném v elementech **InputClaim** nebo **OutputClaim** . Tento prvek slouží k určení výchozího názvu protokolu.  |
-| Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
+| Maska | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
 | UserInputType | 0:1 | Typ vstupního ovládacího prvku, který má být uživateli k dispozici, když ručně zadáte data deklarace pro daný typ deklarace identity. Podívejte se na typy vstupu uživatele definované dále na této stránce. |
 | Omezení | 0:1 | Omezení hodnoty pro tuto deklaraci identity, například regulární výraz (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizována](localization.md). |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
@@ -71,10 +71,10 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Name | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou:  OAuth1, OAuth2, typu Saml2, OpenIdConnect, WsFed nebo WsTrust. |
+| Name | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou:  OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
-V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je přidaná deklarace  identity namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, s OpenIdConnect a OAuth2, deklarace je namapovaná na `family_name` .
+V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je přidaná deklarace identity namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, s OpenIdConnect a OAuth2, deklarace je namapovaná na `family_name` .
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ V následujícím příkladu, když architektura prostředí identity komunikuje
 </ClaimType>
 ```
 
-Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho vygeneruje jméno typu "název deklarace identity".
+Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho vygeneruje jméno typu "názevdeklarace identity".
 
 ```JSON
 {
@@ -100,7 +100,7 @@ Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho 
 }
 ```
 
-### <a name="mask"></a>Zrušit
+### <a name="mask"></a>Maska
 
 Element **Maske** obsahuje následující atributy:
 
@@ -150,7 +150,7 @@ Element **omezení** může obsahovat následující atribut:
 
 Element **omezení** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Enumeration | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
@@ -220,7 +220,7 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="textbox"></a>TextBox
 
-Textové  pole pro zadání uživatelského rozhraní slouží k zadání jednořádkového textového pole.
+Textové pole pro zadání uživatelského rozhraní slouží k zadání jednořádkového textového pole.
 
 ![Textové pole zobrazující vlastnosti zadané v typu deklarace](./media/claimsschema/textbox.png)
 
@@ -354,7 +354,7 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
 ```
 
 
-### <a name="paragraph"></a>Pododstavec
+### <a name="paragraph"></a>Odstavec
 
 **Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text/p&lt;.&gt;
 
