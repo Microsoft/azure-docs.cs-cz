@@ -1,6 +1,6 @@
 ---
 title: 'Ukázka vizuálního rozhraní #5: Klasifikace pro předpověď změn + appetency + up-proprodej'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Tento vzorový experiment mezi vizuálními rozhraními ukazuje, jak často předpověď třídění změn, což je běžný úkol pro řízení vztahů se zákazníky (CRM).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 054ac3ea5224a4ffea2e7bae9da329ba7bc81233
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016471"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997137"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Ukázka 5 – klasifikace: Předpověď změn, appetencyí a prodejů 
 
 Naučte se vytvářet složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní.
 
-Tento experiment vlaků tři, **dvě třídy** rozappetencyější klasifikátory rozhodovacího stromu pro předpověď běžných úloh pro systémy řízení vztahů se zákazníky (CRM): změny, a prodej. Hodnoty dat a popisky jsou rozdělené do několika zdrojů dat a zakódované tak, aby anonymizovat informace o zákaznících, ale přesto můžeme použít vizuální rozhraní ke kombinování datových sad a výukou modelu pomocí kódovaných hodnot.
+Tento experiment vlaků tři, dvě třídy rozappetencyější klasifikátory **rozhodovacího stromu** pro předpověď běžných úloh pro systémy řízení vztahů se zákazníky (CRM): změny, a prodej. Hodnoty dat a popisky jsou rozdělené do několika zdrojů dat a zakódované tak, aby anonymizovat informace o zákaznících, ale přesto můžeme použít vizuální rozhraní ke kombinování datových sad a výukou modelu pomocí kódovaných hodnot.
 
 Vzhledem k tomu, že se snažíme odpovědět na otázku, kterou máte? označuje se jako problém klasifikace. Stejný postup v tomto experimentu ale můžete použít k tomu, abyste mohli řešit jakýkoli typ problému strojového učení bez ohledu na to, jestli jde o regresi, klasifikaci, clusteringu a tak dále.
 

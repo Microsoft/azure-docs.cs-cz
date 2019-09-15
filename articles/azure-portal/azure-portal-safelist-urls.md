@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 07/29/2019
+ms.date: 08/29/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3747ca7504e1a8a6bbeb6237c1b3cb2e5e4afb5b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5b279a86df2024828044c32b7d188fa1d9545271
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667477"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995074"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
 
@@ -22,36 +22,66 @@ Pro zajištění dobrého výkonu a připojení mezi vaší místní sítí a cl
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal adresy URL pro obejití proxy serveru
 
-Do proxy server nebo brány firewall přidejte následující seznam adres URL, které umožní síťovému přenosu do těchto koncových bodů obejít omezení:
+Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické pro cloud Azure, ve kterém je vaše organizace nasazená. Vyberte svůj Cloud a pak přidejte seznam adres URL do proxy server nebo brány firewall, aby síťový provoz těchto koncových bodů mohl obejít omezení.
 
-* *.aadcdn.microsoftonline-p.com
-* *.aimon.applicationinsights.io
-* *.azure.com
-* *.azuredatalakestore.net
-* *.azureedge.net
-* *.exp.azure.com
-* *.ext.azure.com
-* *.gfx.ms
-* *.account.microsoft.com
-* *.hosting.portal.azure.net
-* *.marketplaceapi.microsoft.com
-* *.microsoftonline.com
-* *.msauth.net
-* *.msftauth.net
-* *.portal.azure.com
-* *.portalext.visualstudio.com
-* *.sts.microsoft.com
-* *.vortex.data.microsoft.com
-* *.vscommerce.visualstudio.com
-* *.vssps.visualstudio.com
-* *.windows.net
-* *.wpc.azureedge.net
+#### <a name="public-cloudtabpublic-cloud"></a>[Veřejný cloud](#tab/public-cloud)
+```
+*.aadcdn.microsoftonline-p.com
+*.aka.ms
+*.applicationinsights.io
+*.azure.com
+*.azure.net
+*.azureafd.net
+*.azure-api.net
+*.azuredatalakestore.net
+*.azureedge.net
+*.loganalytics.io
+*.microsoft.com
+*.microsoftonline.com
+*.microsoftonline-p.com
+*.msauth.net
+*.msftauth.net
+*.trafficmanager.net
+*.visualstudio.com
+*.windows.net
+*.windows-int.net
+```
+
+#### <a name="us-government-cloudtabus-government-cloud"></a>[STÁTŮ Cloud pro státní správu](#tab/us-government-cloud)
+```
+*.azure.us
+*.loganalytics.us
+*.microsoft.us
+*.microsoftonline.us
+*.msauth.net
+*.usgovcloudapi.net
+*.usgovtrafficmanager.net
+*.windowsazure.us
+```
+
+#### <a name="china-government-cloudtabchina-government-cloud"></a>[Čína – Cloud pro státní správu](#tab/china-government-cloud)
+```
+*.azure.cn
+*.microsoft.cn
+*.microsoftonline.cn
+*.chinacloudapi.cn
+*.trafficmanager.cn
+*.chinacloudsites.cn
+*.windowsazure.cn
+```
+---
 
 > [!NOTE]
 > Provoz do těchto koncových bodů používá standardní porty TCP pro protokol HTTP (80) a HTTPS (443).
 >
 >
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Potřebujete Safelist IP adresy? Stáhněte si seznam [rozsahů IP adres datového centra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* Další služby Microsoftu používají pro připojení další adresy URL a IP adresy. Informace o optimalizaci síťového připojení pro Microsoft 365 Services najdete v tématu [nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).
+Potřebujete Safelist IP adresy? Stáhněte si seznam rozsahů IP adres datového centra Microsoft Azure pro svůj Cloud:
+
+* [Po celém světě](https://www.microsoft.com/download/details.aspx?id=56519)
+* [STÁTŮ Schod](http://www.microsoft.com/download/details.aspx?id=57063)
+* [Německo](http://www.microsoft.com/download/details.aspx?id=57064)
+* [Čína](http://www.microsoft.com/download/details.aspx?id=57062)
+
+Další služby Microsoftu používají pro připojení další adresy URL a IP adresy. Informace o optimalizaci síťového připojení pro Microsoft 365 Services najdete v tématu [nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).

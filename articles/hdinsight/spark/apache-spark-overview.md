@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476859"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993820"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co je Apache Spark ve službě Azure HDInsight
 
@@ -25,7 +25,7 @@ Apache Spark je paralelní procesor pro zpracování, který podporuje zpracová
 
 Spark poskytuje primitivy pro clusterové výpočty v paměti. Úloha Spark může načítat data, ukládat je do paměti a opakovaně je dotazovat. Výpočetní prostředí je mnohem rychlejší než aplikace založené na discích, jako je Hadoop, které sdílí data prostřednictvím systému Hadoop Distributed File System (HDFS). Spark se také integruje do programovacího jazyka Scala a díky tomu umožňuje pracovat s distribuovanými datovými sadami stejně jako s místními kolekcemi. Není nutné strukturovat všechno jako mapovací a redukční operace.
 
-![Tradiční MapReduce vs. Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![Tradiční MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 Clustery Spark ve službě HDInsight nabízejí plně spravovanou službu Spark. Tady najdete výhody, které přináší vytvoření clusteru Spark ve službě HDInsight.
 
@@ -57,7 +57,7 @@ Clustery Spark ve službě HDInsight také poskytují [ovladač ODBC](https://go
 
 ## <a name="spark-cluster-architecture"></a>Architektura clusteru Spark
 
-![Architektura HDInsight Sparku](./media/apache-spark-overview/spark-architecture.png)
+![Architektura HDInsight Sparku](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 Komponenty Sparku snadno pochopíte, když porozumíte způsobu, jakým se Spark spouští na clusterech HDInsight.
 

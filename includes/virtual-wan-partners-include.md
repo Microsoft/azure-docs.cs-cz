@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/08/2019
+ms.date: 09/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e95000f068d2ab36292a7c5d0440fab01cb44bb5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8899a6933c7941332d3d633b0360568eef9c64d7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879311"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996348"
 ---
 V odkazech v této části najdete další informace o službách, které nabízejí partneři. Pokud vaše pobočka zařízení není uvedená v následující části, obraťte se na svého poskytovatele firemního zařízení. Můžou nás kontaktovat odesláním e-mailu azurevirtualwan@microsoft.comna adresu.
 
@@ -26,4 +26,5 @@ V odkazech v této části najdete další informace o službách, které nabíz
 |[Netfoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |
 |[Riverbed technologie](https://www.riverbed.com/go/steelconnect-azurewan.html)|
+| [Naopak](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) |
 |[technologie 128](https://www.128technology.com/partners/azure) |

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934910"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996643"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Rychlý start: Klientská knihovna Azure Key Vault pro .NET
 
@@ -26,7 +26,6 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
 [Dokumentace k referenční dokumentaci](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | knihovny[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -120,24 +119,12 @@ Tato operace vrátí řadu párů klíč/hodnota.
 
 Poznamenejte si clientId a clientSecret, jak je budeme používat v níže uvedeném kroku [ověření do trezoru klíčů](#authenticate-to-your-key-vault) .
 
-Budete také potřebovat appID objektu služby. Můžete ji najít spuštěním [AZ AD SP list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) s `--show-mine` parametrem:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-`appID` Zobrazí se ve vráceném formátu JSON:
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
-
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Udělte instančnímu objektu přístup k vašemu trezoru klíčů.
 
-Vytvořte zásady přístupu pro váš Trezor klíčů, které udělí oprávnění instančnímu objektu. Uděláte to tak, že použijete příkaz [AZ datatrezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . K získání, zobrazení seznamu a nastavení oprávnění pro klíče a tajné kódy budeme poskytovat instanční objekt.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění vašemu instančnímu objektu předáním příkazu [AZ klíčového trezoru set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Udělte instančnímu objektu získání, seznam a nastavení oprávnění pro klíče a tajné kódy.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Objektový model
@@ -204,7 +191,7 @@ az group delete -g "myResourceGroup" -l "EastUS"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Podívejte se na [celou konzolovou aplikaci v GitHubu](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: f5025c71a16626c714c4256cbc1d52d655a71a45
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: 02513d0596588b4e6ba05edf5342769e78c24242
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906284"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996659"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý start: Odeslání dotazu do rozhraní API Bingu pro vyhledávání v místním obchodu pomocí Node. js
 

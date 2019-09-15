@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6b62bee2a6159cfd1aa1d7278f0b1ffa744f3a87
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124009"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996418"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -50,7 +50,7 @@ Dokumentaci k sériové konzole pro Linux najdete v tématu věnovaném [sériov
 > Pokud nevidíte cokoli v konzole sériového portu, ujistěte se, že je na vašem VIRTUÁLNÍm počítači nebo v sadě škálování virtuálního počítače povolená Diagnostika spouštění.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Povolit konzole sériového portu v obrázcích vlastní nebo starší
-Novější Image Windows serveru v Azure mají [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7).
+Novější image Windows serveru v Azure mají ve výchozím nastavení povolenou [Speciální konzolu pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC). SAC je podporováno ve verzích Windows na serveru ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7).
 
 Pro starší Image Windows serveru (vytvořeny před únorem 2018) můžete automaticky povolí konzole sériového portu pomocí webu Azure portal spusťte příkaz funkce. V Azure Portal vyberte **Spustit příkaz**a potom ze seznamu vyberte příkaz s názvem **EnableEMS** .
 
@@ -184,7 +184,7 @@ Jsme si vědomi některé problémy s konzole sériového portu. Tady je seznam 
 Problém                             |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
 Stisknutím klávesy **Enter** po připojení banner nezpůsobí výzvě přihlášení má být zobrazen. | Další informace najdete v tématu [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K této chybě může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo spouštěcí konfigurace, který způsobí, že Windows nepodaří správně připojit do sériového portu. K této chybě dojde také v případě, že používáte virtuální počítač s Windows 10, protože u virtuálních počítačů se systémem Windows Server jsou povoleny pouze EMS.
-Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| K této chybě dochází, pokud Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [povolit konzole sériového portu v obrázcích vlastní nebo starší](#enable-the-serial-console-in-custom-or-older-images) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další informace najdete v tématu [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
+Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| K této chybě dojde, pokud pro vaši image Windows není povolená Speciální konzola pro správu. Zobrazit [povolit konzole sériového portu v obrázcích vlastní nebo starší](#enable-the-serial-console-in-custom-or-older-images) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další informace najdete v tématu [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nelze zadat v SAC řádku, pokud je povoleno ladění jádra. | Připojení RDP k virtuálnímu počítači a spusťte `bcdedit /debug {current} off` z příkazového řádku se zvýšenými oprávněními. Pokud to není možné protokol RDP, můžete místo toho připojit disk s operačním systémem k jinému virtuálnímu počítači Azure a upravit ho během připojený jako datový disk spuštěním `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, pak Výměna disku zpět.
 Pokud původní obsah měli opakující se znak, vkládání do prostředí PowerShell ve výsledcích SAC ve třetí znaku. | Alternativní řešení spustit `Remove-Module PSReadLine` uvolnění modulu PSReadLine z aktuální relace. Tato akce neodstraní ani odinstalace modulu.
 Některé klávesnice vstupy generovat výstup strangeová SAC (například **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) řídicí sekvence nejsou podporovány SAC řádku.
@@ -218,7 +218,7 @@ A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke 
 
 A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual Machine Scale Sets](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Podrobný průvodce příkazy cmd a PowerShellu, které můžete použít v konzole Windows SAC, najdete v tématu [příkazy Windows: CMD a PowerShell](serial-console-cmd-ps-commands.md).
 * Je taky dostupná ke konzole sériového portu [Linux](serial-console-linux.md) virtuálních počítačů.
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md).

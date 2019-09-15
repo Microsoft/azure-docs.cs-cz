@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814181"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994010"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH
 
@@ -77,7 +77,7 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 1. Otevřete skript **SparkCore_wasbloTest** , klikněte pravým tlačítkem myši na editor skriptů a potom vyberte možnost **Spustit [Spark Job] XXX** a proveďte místní spuštění.
 1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního **__Nastavení__** **dat** > Průzkumníka projektu.
 
-    ![Výsledek místního spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![Výsledek místního spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. Naše nástroje automaticky nastavily výchozí konfiguraci místního spuštění, když provedete místní spuštění a místní ladění. Otevřete konfiguraci **[Spark v HDInsight] XXX** v pravém horním rohu, kde se zobrazí **[Spark v HDInsight] XXX** , která už je vytvořená v **Apache Spark v HDInsight**. Přepněte na **místně spouštěnou** kartu.
 
     ![Konfigurace místního spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,20 +114,18 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 
 1. Po dokončení nastavení konfigurace můžete spustit projekt proti vzdálenému clusteru nebo provést vzdálené ladění.
    
-   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. Klikněte na tlačítko **Odpojit** , které se v levém panelu nezobrazí protokoly odeslání. Pořád ale běží na back-endu.
 
-   ![Výsledek vzdáleného spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![Výsledek vzdáleného spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>Scénář 2: Provést vzdálené ladění
 1. Nastavte body přerušení a pak klikněte na ikonu **vzdáleného ladění** . Rozdíl se vzdáleným odesláním spočívá v tom, že je nutné nakonfigurovat uživatelské jméno/heslo SSH.
 
    ![Výběr ikony ladění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-1. Když program dosáhne bodu přerušení, zobrazí se karta **ovladače** a dvě karty **prováděcího** modulu v podokně **ladicího programu** . Vyberte ikonu **pokračovat v programu** pro pokračování v běhu kódu, který pak dosáhne další zarážky. Pro vyhledání cílového prováděcího modulu pro ladění musíte přejít na správnou kartu **vykonavatele** . Protokoly spouštění můžete zobrazit na příslušné kartě **konzoly** .
+1. Když program dosáhne bodu přerušení, zobrazí se karta **ovladače** a dvě karty prováděcího modulu v podokně ladicího **programu** . Vyberte ikonu **pokračovat v programu** pro pokračování v běhu kódu, který pak dosáhne další zarážky. Pro vyhledání cílového prováděcího modulu pro ladění musíte přejít na správnou kartu vykonavatele. Protokoly spouštění můžete zobrazit na příslušné kartě **konzoly** .
 
    ![Karta ladění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
@@ -148,7 +146,7 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 
 1. Klikněte pravým tlačítkem na cíl na kartě **ladění** a pak vyberte **nastavit hodnotu**. Potom zadejte novou hodnotu proměnné. Pak vyberte **zadat** a uložte hodnotu. 
 
-   ![Nastavit hodnotu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Nastavit hodnotu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. Vyberte ikonu **pokračovat v programu** a pokračujte v spouštění programu. Tentokrát není zachycena žádná výjimka. Můžete vidět, že projekt se úspěšně spouští bez jakýchkoli výjimek.
 

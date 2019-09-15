@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915840"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996901"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
 * Více fondů uzlů je k dispozici pouze pro clustery vytvořené po úspěšné registraci funkce *MultiAgentpoolPreview* pro vaše předplatné. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tato funkce úspěšně zaregistrovala.
-* Nemůžete odstranit první fond uzlů.
+* Výchozí fond uzlů (první) nelze odstranit.
 * Nelze použít doplněk směrování aplikace HTTP.
-* Nemůžete přidat nebo aktualizovat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
+* Nemůžete přidat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
 
 I když je tato funkce ve verzi Preview, platí následující další omezení:
 
@@ -89,6 +89,8 @@ I když je tato funkce ve verzi Preview, platí následující další omezení:
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.13.10* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
+
+Při využití více fondů uzlů se důrazně doporučuje použít nástroj pro vyrovnávání zatížení Standard SKU. Přečtěte si [Tento dokument](load-balancer-standard.md) , kde najdete další informace o používání služby Vyrovnávání zatížení úrovně Standard pro AKS.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 Vytvoření clusteru bude trvat několik minut.
@@ -578,7 +581,7 @@ Aktualizace clusteru AKS může trvat několik minut v závislosti na nastavení
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Přiřazení veřejné IP adresy na uzel v rámci fondu uzlů
 
 > [!NOTE]
-> Během období Preview existuje omezení používání této funkce s *Standard Load BALANCER SKU v AKS (Preview) v* důsledku toho, že pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. I když je ve verzi Preview, použijte *skladové položky Basic Load Balancer* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
+> V rámci verze Preview přiřazení veřejné IP adresy na uzel nejde použít s *Standard Load BALANCER SKU v AKS* , protože pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. I když je ve verzi Preview, použijte *skladové položky Basic Load Balancer* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
 
 AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Některé scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů měly své vlastní veřejné IP adresy. Příkladem je hraní her, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. To je možné dosáhnout registrací pro samostatnou funkci verze Preview, veřejnou IP adresou uzlu (Preview).
 

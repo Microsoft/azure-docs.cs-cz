@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764317"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996498"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -173,4 +173,4 @@ Po odstranění hlavního serveru se všechny jeho repliky pro čtení stanou sa
 
 ## <a name="next-steps"></a>Další postup
 * Naučte se [vytvářet a spravovat repliky pro čtení v Azure Portal](howto-read-replicas-portal.md).
-* Naučte se [vytvářet a spravovat repliky pro čtení v rozhraní příkazového řádku Azure CLI](howto-read-replicas-cli.md).
+* Naučte se [vytvářet a spravovat repliky pro čtení v Azure CLI a REST API](howto-read-replicas-cli.md).

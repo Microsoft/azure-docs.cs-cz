@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624437"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996269"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -49,17 +49,51 @@ Výstup bude vypadat takto:
 provisioningState       : Succeeded
 ```
 
-Pokud by místo toho integrace s existující pracovní prostor, použijte následující příkaz k zadání tohoto pracovního prostoru.
+### <a name="integrate-with-an-existing-workspace"></a>Integrace s existujícím pracovním prostorem
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+Pokud byste místo toho museli provést integraci s existujícím pracovním prostorem, proveďte následující kroky, abyste nejprve identifikovali úplné ID prostředku Log Analytics pracovního `--workspace-resource-id` prostoru požadovaného pro daný parametr, a pak spuštěním příkazu povolíte doplněk monitorování pro zadaný pracovní prostor.  
 
-Výstup bude vypadat takto:
+1. Seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    Výstup bude vypadat takto:
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    Zkopírujte hodnotu pro **SubscriptionId**.
+
+2. Přepněte do předplatného hostujícího Log Analytics pracovní prostor pomocí následujícího příkazu:
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. Následující příklad zobrazí seznam pracovních prostorů v předplatných ve výchozím formátu JSON. 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
+ 
+4. Spuštěním následujícího příkazu povolte doplněk monitorování a nahraďte hodnotu `--workspace-resource-id` parametru. Řetězcová hodnota musí být v uvozovkách:
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    Výstup bude vypadat takto:
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>Povolení s využitím Terraformu
 

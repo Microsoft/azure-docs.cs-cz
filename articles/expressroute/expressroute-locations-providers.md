@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69226cafc31771ae5307999e921cec4ae7841f8c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 17d1a8e2e98f1b2967b4f2e33e14ee187a765190
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967141"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995728"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 ### <a name="production-azure"></a>Produkční prostředí Azure
 | **Location** | **Vlastník a adresa** | **Místní oblasti Azure** | **Poskytovatelé služeb** |
 | --- | --- | --- | --- |
-| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Západní Evropa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
+| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Západní Evropa | Aryaka Networks sítě, v & T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, spolucloudu, Interxion, KPN, IX dosáhnou, Level 3 Communications, Megaport, NTT Communications, oranžová, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Západní Evropa | CenturyLink Cloud Connect, DE-CIX, Colt, Interxion, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | neuvedeno | Equinix, Megaport |
 | **Auckland** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | neuvedeno | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
@@ -195,16 +195,16 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 ## <a name="c1partners"></a>Připojení prostřednictvím dalších poskytovatelů služeb
 | **Location** | **Exchange** | **Poskytovatelé připojení** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Interxion,, Level 3 Communications, měst | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, mezinárodní most v Perském zálivu, Kalaam Telecom Bahrajn B. S. C, MainOne, Nianet, POST Telecom Lucemburska, Proximus, ORS Erhverv, Telecom Italia Sparkle, Telekom Deutschland GmbH, Telia |
+| **Amsterdam** | Komunikace Equinix, Interxion, Level 3 | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, mezinárodní most v Perském zálivu, Kalaam Telecom Bahrajn B. S. C, MainOne, Nianet, POST Telecom Lucemburska, Proximus, ORS Erhverv, Telecom Italia Sparkle, Telekom Deutschland GmbH, Telia |
 | **Atlanta** | Equinix| Castle na koruna
 | **Kapské město** | Teraco | MTN |
 | **Chicago** | Equinix| Koruna Castle, spektrum Enterprise, Windstream |
 | **Dallas** | Equinix, Megaport | AXTEL, C3ntro Telecom, Cox Business, koruna Castle, data slévárenské, spektrum Enterprise, Transtelco |
-| **Frankfurt** | Interxion, měst | BICS, Cinia, Nianet, QSC AG, Telekom Deutschland GmbH |
+| **Frankfurt** | Interxion | BICS, Cinia, Nianet, QSC AG, Telekom Deutschland GmbH |
 | **Hamburk** | Equinix | Cinia |
 | **Hongkong – zvláštní správní oblast** | Equinix | Hlavní Macroview Telecom |
 | **Johannesburg** | Teraco | MTN |
-| **Londýn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon – omezené, exponenciální E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zajn |
+| **Londýn** | BICS, Equinix, euNetworks| Bezeq International Ltd., CoreAzure, Epsilon – omezené, exponenciální E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zajn |
 | **Los Angeles** | Equinix |Koruna Castle, spektrum Enterprise, Transtelco |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Technologie APTUM, Rogers, Zirro |
@@ -231,7 +231,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

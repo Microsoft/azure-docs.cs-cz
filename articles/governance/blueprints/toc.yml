@@ -32,9 +32,15 @@
       href: ./samples/index.md
     - name: Canada Federal PBMM
       items:
+        - name: Přehled
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/index.md
         - name: Mapování kontrol
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/deploy.md
     - name: Srovnávací test CIS Microsoft Azure Foundations
       items:
         - name: Přehled

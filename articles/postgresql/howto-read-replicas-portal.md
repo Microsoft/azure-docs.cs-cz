@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309313"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995453"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
@@ -171,7 +171,7 @@ Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce v 
 
 1. V Azure Portal vyberte Azure Database for PostgreSQL replice pro čtení.
 
-2. Vyberte **Metriky**. V okně **metriky** vyberte **prodlevu repliky**.
+2. Vyberte **Metriky**. V okně **metriky** vyberte prodlevu **repliky**.
 
    ![Sledování prodlevy repliky](./media/howto-read-replicas-portal/select-replica-lag.png)
  
@@ -179,4 +179,4 @@ Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce v 
  
 ## <a name="next-steps"></a>Další postup
 * Přečtěte si další informace o [replikách pro čtení v Azure Database for PostgreSQL](concepts-read-replicas.md).
-* Naučte se [vytvářet a spravovat repliky pro čtení v rozhraní příkazového řádku Azure CLI](howto-read-replicas-cli.md).
+* Naučte se [vytvářet a spravovat repliky pro čtení v Azure CLI a REST API](howto-read-replicas-cli.md).

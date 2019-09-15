@@ -1,7 +1,7 @@
 ---
 title: Známé problémy & řešení potíží
-titleSuffix: Azure Machine Learning service
-description: Získat seznam známých problémů, řešení a řešení potíží pro službu Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Seznam známých problémů, řešení a řešení potíží pro Azure Machine Learning.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96af61089f2b7b85d58a8a2ab61936459cef158b
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ffbc919333c43c04f461498a513d098ce8fe628f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858687"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996597"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
-Tento článek vám pomůže najít a opravit chyby nebo při použití služby Azure Machine Learning došlo k selhání.
+Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým došlo při použití Azure Machine Learning.
 
 ## <a name="visual-interface-issues"></a>Problémy s vizuálním rozhraním
 
@@ -87,7 +87,7 @@ Problémy s Databricks a Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
-Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě SDK služby Azure Machine Learning. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -143,7 +143,7 @@ Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK n
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Pokud chcete zobrazit některé protokoly, navštivte [Azure Portal](https://portal.azure.com) a přejděte do svého pracovního prostoru a vyberte **pracovní prostor > Experiment > Run > log**.  Tyto informace můžete najít také v části **experimenty** na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
 
 > [!NOTE]
-> Služba Azure Machine Learning Service protokoluje informace z nejrůznějších zdrojů během školení, jako je AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
+> Azure Machine Learning v průběhu školení protokolovat informace z nejrůznějších zdrojů, jako je například AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 

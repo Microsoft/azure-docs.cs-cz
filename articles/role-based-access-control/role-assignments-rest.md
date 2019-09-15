@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API – Azure | Dokumentace Microsoftu
-description: Další informace o správě přístupu k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a rozhraní REST API. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Správa přístupu k prostředkům Azure pomocí RBAC a REST API – Azure | Microsoft Docs
+description: Naučte se spravovat přístup k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a REST API. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,59 +12,58 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ee030e8c97cf3033b9d2d76b8125c64ecf8065
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472733"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996474"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Správa přístupu k prostředkům Azure pomocí RBAC a REST API
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a rozhraní REST API.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a REST API.
 
 ## <a name="list-access"></a>Výpis přístupu
 
-V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li seznam přiřazení rolí, použijte jednu z [přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků, zadejte obor a volitelný filtr.
+V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí. K vypsání přiřazení rolí použijte jedno ze [seznamu přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků zadáte obor a volitelný filtr.
 
-1. Začněte s následující žádosti:
+1. Začněte s následujícím požadavkem:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam přiřazení rolí.
+1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení rolí.
 
-    | Scope | Type |
+    | Scope | type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-    
-       
-     > [!NOTE]
-     > Ve výše uvedeném příkladu Microsoft.web je, že se používá poskytovatele prostředků, které odkazuje na instanci App service. Podobně můžete použít jakýkoli jiný poskytovatel prostředků a vytvořit identifikátor URI oboru. Chcete-li pochopit více najdete [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) a podporovaných [operace poskytovatele prostředků Azure RM](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations).  
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
+    | `subscriptions/{subscriptionId1}` | Předplatné |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+
+    V předchozím příkladu je Microsoft. Web poskytovatelem prostředků, který odkazuje na instanci App Service. Podobně můžete použít jiné poskytovatele prostředků a zadat obor. Další informace najdete v tématech [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md) a podporované [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md).  
      
-1. Nahraďte *{filter}* splňující podmínku, kterou chcete použít k filtrování seznamu přiřazení role.
+1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení role.
 
     | Filtr | Popis |
     | --- | --- |
-    | `$filter=atScope()` | Zobrazí seznam přiřazení rolí pro pouze zadaný obor, bez zahrnutí přiřazení rolí na subscopes. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Zobrazí seznam přiřazení rolí pro konkrétního uživatele, skupinu nebo instanční objekt služby. |
-    | `$filter=assignedTo('{objectId}')` | Zobrazí seznam přiřazení rolí pro zadaného uživatele nebo instanční objekt služby. Pokud je uživatel členem skupiny, které má přiřazení role, je uvedený také přiřazení role. Tento filtr je přenositelný pro skupiny, což znamená, že pokud uživatel je členem skupiny a skupiny je členem jiné skupiny, která má přiřazení role, přiřazení role je uvedený také. Tento filtr přijímá pouze id objektu uživatele nebo instanční objekt služby. Id objektu nemůže předat pro skupinu. |
+    | `$filter=atScope()` | Vypíše přiřazení rolí jenom pro zadaný obor, včetně přiřazení rolí v podoborech. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Vypisuje přiřazení rolí pro zadaného uživatele, skupinu nebo instanční objekt. |
+    | `$filter=assignedTo('{objectId}')` | Vypisuje přiřazení rolí pro zadaného uživatele nebo instanční objekt. Pokud je uživatel členem skupiny, která má přiřazení role, zobrazí se také toto přiřazení role. Tento filtr je přenosný pro skupiny, což znamená, že pokud je uživatel členem skupiny a tato skupina je členem jiné skupiny, která má přiřazení role, bude toto přiřazení role také uvedené. Tento filtr přijímá pouze ID objektu uživatele nebo instančního objektu. Nelze předat ID objektu pro skupinu. |
 
-## <a name="grant-access"></a>Udělení přístupu
+## <a name="grant-access"></a>Udělit přístup
 
-V RBAC se přístup uděluje vytvořením přiřazení role. Chcete-li vytvořit přiřazení role, použijte [vytvořit přiřazení Role –](/rest/api/authorization/roleassignments/create) rozhraní REST API a zadat objekt zabezpečení, definice role a obor. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` operace. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) je udělen přístup k této operace.
+V RBAC se přístup uděluje vytvořením přiřazení role. K vytvoření přiřazení role použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definici role a obor. K volání tohoto rozhraní API musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` této operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 
-1. Použití [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API nebo vyhledejte další [předdefinované role](built-in-roles.md) získat identifikátor pro definici role, kterou chcete přiřadit.
+1. Použijte REST API [Definice rolí – seznam](/rest/api/authorization/roledefinitions/list) , nebo se podívejte na [předdefinované role](built-in-roles.md) , abyste získali identifikátor definice role, kterou chcete přiřadit.
 
-1. Generovat jedinečný identifikátor, který se použije pro identifikátor přiřazení role pomocí nástroje identifikátor GUID. Tento identifikátor má následující formát: `00000000-0000-0000-0000-000000000000`
+1. Pomocí nástroje GUID vygenerujte jedinečný identifikátor, který se použije pro identifikátor přiřazení role. Identifikátor má formát:`00000000-0000-0000-0000-000000000000`
 
-1. Začněte s následující žádosti a text:
+1. Začněte s následujícím požadavkem a textem:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
@@ -73,52 +72,61 @@ V RBAC se přístup uděluje vytvořením přiřazení role. Chcete-li vytvořit
     ```json
     {
       "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+        "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
         "principalId": "{principalId}"
       }
     }
     ```
-    
-1. V rámci identifikátoru URI nahradit *{oboru}* s oborem pro přiřazení role.
 
-    | Scope | Type |
+1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro přiřazení role.
+
+    | Scope | type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
+    | `subscriptions/{subscriptionId1}` | Předplatné |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
+1. Nahraďte *{roleAssignmentName}* identifikátorem GUID přiřazení role.
 
-1. V těle požadavku nahradit *{subscriptionId}* identifikátorem předplatného.
+1. V textu žádosti nahraďte *{Scope}* oborem pro přiřazení role.
 
-1. Nahraďte *{roleDefinitionId}* s identifikátorem definice role.
+    | Scope | type |
+    | --- | --- |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
+    | `subscriptions/{subscriptionId1}` | Předplatné |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Nahraďte *{principalId}* s identifikátorem objektu uživatele, skupiny nebo instanční objekt, který bude mít přiřazenou roli.
+1. Nahraďte *{roleDefinitionId}* identifikátorem definice role.
 
-## <a name="remove-access"></a>Odebrání přístupu
+1. Nahraďte *{principalId}* identifikátorem objektu uživatele, skupiny nebo instančního objektu, ke kterému se má přiřadit role.
 
-V RBAC se přístup odebírá odebrání přiřazení role. Pokud chcete odebrat přiřazení role, použít [odstranit přiřazení rolí –](/rest/api/authorization/roleassignments/delete) rozhraní REST API. K volání tohoto rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` operace. Předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) je udělen přístup k této operace.
+## <a name="remove-access"></a>Odebrat přístup
 
-1. Získáte přiřazení role identifikátor (GUID). Tento identifikátor je vrácena, pokud nejprve vytvořit přiřazení role nebo ho můžete získat seznam přiřazení rolí.
+V RBAC se přístup odebírá odebrání přiřazení role. K odebrání přiřazení role použijte [přiřazení rolí – odstranit](/rest/api/authorization/roleassignments/delete) REST API. K volání tohoto rozhraní API musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` této operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 
-1. Začněte s následující žádosti:
+1. Získejte identifikátor přiřazení role (GUID). Tento identifikátor se vrátí při prvním vytvoření přiřazení role nebo ho můžete získat pomocí seznamu přiřazení rolí.
+
+1. Začněte s následujícím požadavkem:
 
     ```http
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
     ```
 
-1. V rámci identifikátoru URI nahradit *{oboru}* s oborem pro odebrání přiřazení role.
+1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro odebrání přiřazení role.
 
-    | Scope | Type |
+    | Scope | type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
+    | `subscriptions/{subscriptionId1}` | Předplatné |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
+1. Nahraďte *{roleAssignmentName}* identifikátorem GUID přiřazení role.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Reference k rozhraní Azure REST API](/rest/api/azure/)
-- [Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API](custom-roles-rest.md)
+- [Vytváření vlastních rolí pro prostředky Azure pomocí REST API](custom-roles-rest.md)

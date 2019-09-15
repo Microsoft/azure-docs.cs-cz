@@ -4,14 +4,14 @@ description: Zobrazuje, které typy prostředků Azure podporují značky. Posky
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bcbd7b14de497cb6a8bb5cf12de4ec8c555b97b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983908"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996828"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -151,6 +151,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -1820,6 +1821,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/restorableDroppedDatabases | Ne | Ne |
 > | servery/serviceobjectives | Ne | Ne |
 > | servery/tdeCertificates | Ne | Ne |
+> | virtualClusters | Ne | Ne |
 
 <a id="sqlnote" />
 
@@ -2021,6 +2023,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Monitor | Ne |Ne |
 > | notificationSettings | Ne |Ne |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak používat značky pro prostředky, najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).

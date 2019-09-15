@@ -1,6 +1,6 @@
 ---
 title: 'Ukázka vizuálního rozhraní #6: Klasifikace pro předpověď zpoždění letů'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí vizuálního rozhraní přetažení a vlastního kódu jazyka R.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3d1363d24aa6e5f8875ba90513a8d9d5b951c9db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990027"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997108"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: Předpověď zpoždění letu pomocí R
 
@@ -106,18 +106,18 @@ Chcete-li vytvořit model, můžete použít všechny dostupné funkce nebo vybr
 
 Vytvořte model pomocí modulu **logistické regrese dvou tříd** a prohlaste ho v datové sadě školení. 
 
-Výsledkem modulu vlakového **modelu** je vyškolený model klasifikace, který se dá použít ke stanovení skóre nových vzorků, aby bylo možné předpovědiovat. Pomocí sady testů můžete vygenerovat skóre z vycvičených modelů. Pak pomocí modulu **vyhodnocení modelu** Analyzujte a porovnejte kvalitu modelů.
+Výsledkem modulu **vlakového modelu** je vyškolený model klasifikace, který se dá použít ke stanovení skóre nových vzorků, aby bylo možné předpovědiovat. Pomocí sady testů můžete vygenerovat skóre z vycvičených modelů. Pak pomocí modulu **vyhodnocení modelu** Analyzujte a porovnejte kvalitu modelů.
 
 Po spuštění experimentu můžete zobrazit výstup z modulu **skóre modelu** kliknutím na výstupní port a výběrem možnosti **vizualizovat**. Výstup obsahuje popisky s skóre a pravděpodobnosti pro popisky.
 
-Nakonec pro otestování kvality výsledků přidejte modul vyhodnotit **model** na plátno experimentu a propojte levý vstupní port s výstupem modulu určení skóre modelu. Spusťte experiment a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
+Nakonec pro otestování kvality výsledků přidejte modul **vyhodnotit model** na plátno experimentu a propojte levý vstupní port s výstupem modulu určení skóre modelu. Spusťte experiment a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
 
 ## <a name="evaluate"></a>Vyhodnotit
 Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/ui-sample-classification-predict-flight-delay/evaluate.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

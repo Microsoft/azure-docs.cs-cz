@@ -1,6 +1,6 @@
 ---
 title: 'Ukázka vizuálního rozhraní #3: Klasifikace pro předpověď úvěrového rizika'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se sestavovat třídění strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990053"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997042"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Ukázka 3 – klasifikace: Predikce úvěrového rizika
 
-Naučte se sestavovat třídění strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Tato ukázka nakládá se dvěma třídami posíleného **rozhodovacího stromu** pro předpověď úvěrového rizika (vysoké nebo nízké) na základě informací o kreditních aplikacích, jako je historie kreditů, stáří a počet platebních karet.
+Naučte se sestavovat třídění strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Tato ukázka nakládá se **dvěma třídami posíleného rozhodovacího stromu** pro předpověď úvěrového rizika (vysoké nebo nízké) na základě informací o kreditních aplikacích, jako je historie kreditů, stáří a počet platebních karet.
 
 Vzhledem k tomu, že se snažíme odpovědět na otázku, kterou máte? označuje se jako problém klasifikace. Stejný základní postup se ale dá použít k tomu, abyste mohli řešit jakýkoli typ problému strojového učení bez ohledu na to, jestli jde o regresi, klasifikaci, clusteringu a tak dále.
 
@@ -70,7 +70,7 @@ Ve výsledcích hodnocení uvidíte, že AUC modelu je 0,776. U prahové hodnoty
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

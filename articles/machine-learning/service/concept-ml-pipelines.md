@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858817"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993285"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co jsou kanály ML ve službě Azure Machine Learning Service?
 
@@ -86,7 +86,7 @@ K dispozici jsou dva balíčky Pythonu pro kanály s Azure Machine Learning: [Az
 
 + Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
 
-+ Naučte se [spouštět Batch předpovědi pro velké objemy dat](how-to-run-batch-predictions.md).
++ Naučte se [spouštět Batch předpovědi pro velké objemy dat](tutorial-pipeline-batch-scoring-classification.md).
 
 + Prohlédněte si [Referenční dokumentace k sadě SDK pro kanály](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py).
 

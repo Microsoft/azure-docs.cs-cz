@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Předpověď ceny automobilu pomocí vizuálního rozhraní'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí vizuálního rozhraní přetáhnout, bodování a nasadit model strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891661"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996775"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Kurz: Předpověď ceny automobilu pomocí vizuálního rozhraní
 
-V tomto kurzu se dozvíte, jak pomocí vizuálního rozhraní služby Azure Machine Learning vyvíjet a nasazovat prediktivní analytické řešení, které předpovídá cenu každého auta. 
+V tomto kurzu se dozvíte, jak pomocí vizuálního rozhraní Azure Machine Learning vyvíjet a nasazovat prediktivní analytické řešení, které předpovídá cenu každé auta. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ Pokud ho chcete najít, vyberte na **stránce experimenty**možnost **Přidat no
 
 ## <a name="create-a-new-experiment"></a>Vytvoření nového experimentu
 
-Pokud chcete vytvořit experiment vizuálního rozhraní, budete nejdřív potřebovat pracovní prostor služby Azure Machine Learning. V této části se dozvíte, jak vytvořit oba tyto prostředky.
+Chcete-li vytvořit experiment vizuálního rozhraní, budete nejprve potřebovat pracovní prostor služby Azure Machine Learning. V této části se dozvíte, jak vytvořit oba tyto prostředky.
 
 ### <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
-Pokud máte pracovní prostor služby Azure Machine Learning, přejděte k další části.
+Pokud máte pracovní prostor Azure Machine Learning, přejděte k další části.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -251,7 +251,7 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodn
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V první části tohoto kurzu jste dokončili tyto kroky:
 

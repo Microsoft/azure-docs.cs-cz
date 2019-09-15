@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914176"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996669"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexování zásad v Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Azure Cosmos DB podporuje dva režimy indexování:
 - **Konzistentní**: Pokud je zásada indexování kontejneru nastavená na konzistentní, index se při vytváření, aktualizaci nebo odstraňování položek aktualizuje synchronně. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
 - **Žádný**: Pokud je zásada indexování kontejneru nastavená na hodnotu žádné, indexování je v tomto kontejneru efektivně zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Může také urychlit operace hromadného vložení.
 
-Kromě toho byste měli nastavit **automatickou** vlastnost v zásadě indexování na **hodnotu true**. Nastavení této vlastnosti na hodnotu true umožňuje Azure Cosmos DB automatické indexování dokumentů při jejich zápisu.
+Ve výchozím nastavení je zásada indexování nastavena na `automatic`. Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na. `true` Nastavením této vlastnosti umožníte, aby `true` Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 
 ## <a name="including-and-excluding-property-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 

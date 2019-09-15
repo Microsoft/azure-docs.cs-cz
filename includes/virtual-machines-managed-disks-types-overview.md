@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512688"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997594"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
@@ -29,11 +29,11 @@ V následující tabulce najdete porovnání disků Ultra, Premium Solid-State-D
 |Scénář   |Úlohy náročné na v/v, jako jsou SAP HANA, databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
 |Velikost disku   |65 536 gibibajt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maximální propustnost   |soubory MiB 2 000/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20,000   |6,000   |2 000   |
+|Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20,000   |6,000   |2 000   |
 
 ## <a name="ultra-disk"></a>Ultra disk
 
-Disky Azure Ultra poskytují vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Mezi další výhody prostředí Ultra disks patří schopnost dynamicky měnit výkon disku společně s vašimi úlohami, aniž by bylo nutné restartovat virtuální počítače. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou SAP HANA, databáze nejvyšší úrovně a zatížení náročné na transakce. Disky Ultra se dají používat jenom jako datové disky. Jako disky s operačním systémem doporučujeme používat prémiové SSD.
+Disky Azure Ultra poskytují vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Mezi další výhody prostředí Ultra disks patří schopnost dynamicky měnit výkon disku společně s vašimi úlohami, aniž by bylo potřeba restartovat virtuální počítač. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou SAP HANA, databáze nejvyšší úrovně a zatížení náročné na transakce. Disky Ultra se dají používat jenom jako datové disky. Jako disky s operačním systémem doporučujeme používat prémiové SSD.
 
 ### <a name="performance"></a>Výkon
 
@@ -42,9 +42,9 @@ Když zřizujete disk Ultra, můžete nezávisle konfigurovat kapacitu a výkon 
 Mezi klíčové funkce Ultra diskù patří:
 
 - Kapacita disku: Kapacita disků v oblasti Ultra je 4 GiB až 64 TiB.
-- IOPS disku: Disky Ultra podporují limity IOPS 300 IOPS/GiB až do maximálního počtu 160 000 IOPS na disk. Abyste dosáhli IOPS, které jste zřídili, zajistěte, aby byl vybraný disk IOPS menší než limit počtu IOPS virtuálních počítačů. Minimální počet vstupně-výstupních operací na disk je 2 IOPS/GiB, přičemž celkové minimální hodnoty jsou 100 IOPS. Pokud byste například měli 4 GiB disk Ultra, budete mít minimálně 100 IOPS, ale ne 8 IOPS.
+- IOPS disku: Disky Ultra podporují limity IOPS 300 IOPS/GiB až do maximálního počtu 160 000 IOPS na disk. Abyste dosáhli IOPS, které jste zřídili, zajistěte, aby byl vybraný disk IOPS menší než limit počtu IOPS virtuálních počítačů. Minimální počet vstupně-výstupních operací na disk je 2 IOPS/GiB, přičemž celkové minimální hodnoty jsou 100 IOPS. Pokud byste například měli 4 GiB disk Ultra, budete mít minimálně 100 IOPS, ale ne osm IOPS.
 - Propustnost disku: U Ultra disks je limit propustnosti jednoho disku 256 KiB/s pro každý zřízený IOPS, maximálně 2000 MB/s na disk (kde MB/s = 10 ^ 6 bajtů za sekundu). Minimální propustnost na disk je 4KiB/s pro každý zřízený IOPS, přičemž celkové minimální hodnoty jsou 1 MB/s.
-- Disky Ultra podporují úpravu atributů výkonu disku (IOPS a propustnosti) za běhu bez odpojení disku od virtuálního počítače. Jakmile se na disku vystavila operace změny velikosti výkonu disku, může trvat až hodinu, než se změna projeví.
+- Disky Ultra podporují úpravu atributů výkonu disku (IOPS a propustnosti) za běhu bez odpojení disku od virtuálního počítače. Jakmile se na disku vystavila operace změny velikosti výkonu disku, může trvat až hodinu, než se změna projeví. V průběhu 24 hodin je omezeno čtyři operace změny velikosti výkonu. Je možné, že operace změny velikosti výkonu selže z důvodu nedostatečné kapacity šířky pásma výkonu.
 
 ### <a name="disk-size"></a>Velikost disku
 
@@ -53,12 +53,12 @@ Mezi klíčové funkce Ultra diskù patří:
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9 600         |2 000         |
-|64     |19 200         |2 000         |
-|128     |38 400         |2 000         |
-|256     |76 800         |2 000         |
+|32     |9 600         |2 000         |
+|64     |19 200         |2 000         |
+|128     |38 400         |2 000         |
+|256     |76 800         |2 000         |
 |512     |80,000         |2 000         |
-|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
+|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
 
 ### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 
@@ -71,3 +71,4 @@ V současnosti mají extrémně disky další omezení, jsou následující:
 - Dá se vytvořit jenom jako prázdné disky.  
 - Ještě nepodporují snímky disků, image virtuálních počítačů, skupiny dostupnosti, sady škálování virtuálních počítačů a Azure Disk Encryption.
 - Ještě nepodporují integraci s Azure Backup ani Azure Site Recovery
+- Aktuální maximální limit pro IOPS na virtuálních počítačích GA je 80 000.

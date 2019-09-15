@@ -5,15 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 58deb4fff4cee21acbf99d3c4035a9941697bed4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ea2c56e35741a49d057f2261f7b53fb754a43f8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231839"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967986"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -23,7 +23,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 
 |  |  |
 |---------|---------|
-| [Canada Federal PBMM](./canada-federal-pbmm/control-mapping.md) | Poskytuje ochranné mantinely pro dodržování předpisů Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM). |
+| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM). |
 | [Srovnávací test CIS Microsoft Azure Foundations](./cis-azure-1.1.0/index.md)| Poskytuje sadu zásad, které pomáhají dodržovat doporučení srovnávacího testu CIS Microsoft Azure Foundations. |
 | [IRS 1075](./irs-1075/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů IRS 1075.|
 | [ISO 27001](./iso27001/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů ISO 27001. |

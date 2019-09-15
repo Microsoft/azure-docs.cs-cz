@@ -1,6 +1,6 @@
 ---
 title: 'Příklad vizuálního rozhraní #1: regrese pro předpověď ceny'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet model strojového učení pro předpověď ceny automobilu bez nutnosti psát jediný řádek kódu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 0c86955e0b10111bf9b6db0d884b73867a4467c5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4d41efcaeb93c0843686f9e8ef1b62da5367e071
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990411"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996541"
 ---
 # <a name="sample-1---regression-predict-price"></a>Ukázka 1 – regrese: Predikce ceny
 
@@ -66,7 +66,7 @@ Modul **rozdělit data** používáme k náhodnému rozdělení vstupních dat, 
 
  Datovou sadu rozdělíme a použijeme různé datové sady ke školení a testování modelu, aby bylo vyhodnocení modelu více objektivně.
 
-Po vyzkoušení modelu používáme **model skóre** a vyhodnocujeme moduly **modelů** pro generování předpokládaných výsledků a vyhodnocení modelů.
+Po vyzkoušení modelu používáme **model skóre** a **vyhodnocujeme moduly modelů** pro generování předpokládaných výsledků a vyhodnocení modelů.
 
 **Model skóre** generuje předpovědi pro testovací datovou sadu pomocí trained model. Pro kontrolu výsledku vyberte výstupní port **modelu skóre** a pak vyberte **vizualizovat**.
 

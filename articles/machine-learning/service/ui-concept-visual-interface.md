@@ -1,7 +1,7 @@
 ---
 title: Vizuální rozhraní
-titleSuffix: Azure Machine Learning service
-description: Přečtěte si o pojmech, konceptech a pracovních postupech, které tvoří vizuální rozhraní (Preview) pro službu Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Přečtěte si o pojmech, konceptech a pracovním postupu, které tvoří vizuální rozhraní (Preview) pro Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860396"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996524"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Jaké je vizuální rozhraní pro službu Azure Machine Learning? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Jaké je vizuální rozhraní pro Azure Machine Learning? 
 
-Rozhraní Visual Interface (Preview) pro službu Azure Machine Learning umožňuje přípravu dat, výuku, testování, nasazení, správu a sledování modelů strojového učení bez psaní kódu.
+Rozhraní Visual (Preview) pro Azure Machine Learning umožňuje přípravu dat, výuku, testování, nasazení, správu a sledování modelů strojového učení bez psaní kódu.
 
 Není nutné žádné programování, vizuálně propojit [datové sady](#dataset) a [moduly](#module) a vytvořit model.
 
-Vizuální rozhraní používá [pracovní prostor](concept-workspace.md) služby Azure Machine Learning k těmto akcím:
+Toto vizuální rozhraní používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k těmto akcím:
 
 + Do pracovního prostoru se napíší artefakty [experimentu](#experiment) .
 + Přístup k [datovým sadám](#dataset).
@@ -91,7 +91,7 @@ Webové služby poskytují rozhraní mezi aplikací a modelem bodování. Extern
 
 Informace o tom, jak model nasadit, najdete [v tématu Kurz: Nasaďte model strojového učení pomocí vizuálního](ui-tutorial-automobile-price-deploy.md)rozhraní.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Seznamte se se základy prediktivní analýzy a strojového učení [s využitím kurzu: Předpověď ceny automobilu pomocí vizuálního rozhraní](ui-tutorial-automobile-price-train-score.md)
 * Použijte jednu z ukázek a upravte ji tak, aby vyhovovala vašim potřebám:

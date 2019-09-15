@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142844"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996440"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -213,16 +213,18 @@ Oprávnění určuje operace s daty, které jsou vyloučeny z povolených `DataA
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` Vlastnost určuje obory (předplatná, skupiny prostředků nebo prostředky), které mají tuto definici role k dispozici. Role může být k dispozici pro přiřazení pouze v předplatných nebo ve skupinách prostředků, které to vyžadují, a nemusí mít za následek uživatelské prostředí pro zbytek předplatných nebo skupin prostředků. Musíte použít aspoň jedno předplatné, skupinu prostředků nebo ID prostředku.
+`AssignableScopes` Vlastnost určuje obory (skupiny pro správu, předplatná, skupiny prostředků nebo prostředky), které mají tuto definici role k dispozici. Role může být k dispozici pro přiřazení pouze v rámci skupin pro správu, předplatných nebo skupin prostředků, které to vyžadují. Je nutné použít alespoň jednu skupinu pro správu, předplatné, skupinu prostředků nebo ID prostředku.
 
 Předdefinované role jsou `AssignableScopes` nastaveny na kořenový obor (`"/"`). Kořenový obor určuje, že role je k dispozici pro přiřazení ve všech oborech. Mezi platné obory přiřazení patří:
 
-| Scénář | Příklad |
+| Role je k dispozici pro přiřazení. | Příklad |
 |----------|---------|
-| Role je k dispozici pro přiřazení v rámci jednoho předplatného. | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| Role je k dispozici pro přiřazení ve dvou předplatných. | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| Role je dostupná jenom pro přiřazení ve skupině síťových prostředků. | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Role je k dispozici pro přiřazení ve všech oborech (platí pouze pro předdefinované role). | `"/"` |
+| Jedno předplatné | `"/subscriptions/{subscriptionId1}"` |
+| Dvě předplatná | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Skupina síťových prostředků | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Jedna skupina pro správu | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Skupina pro správu a předplatné | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Všechny obory (platí jenom pro předdefinované role) | `"/"` |
 
 Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
 

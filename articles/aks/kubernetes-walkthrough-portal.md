@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8d42395bc4f813fecf3820024539999a1129921b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 0df60cac241151b5968c5ddfc01ca9c0515a5e6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983801"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996976"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -236,7 +236,7 @@ Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje násl
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Pokud chcete zobrazit protokoly pro `azure-vote-front` pod, vyberte v rozevíracím seznamu kontejnery možnost **Zobrazit protokoly kontejnerů** . Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
 ![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

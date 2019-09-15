@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129198"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996454"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -395,6 +395,18 @@ K této chybě dochází, protože agent Azure File Sync nemá přístup ke sdí
     ```
 2. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
 3. [Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované (pokud jsou povolené).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Při přístupu k účtu úložiště došlo k neznámé chybě.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8308a |
+| **HRESULT (desetinné číslo)** | -2134364022 |
+| **Řetězec chyby** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Požadována náprava** | Ano |
+
+1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
+2. [Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované (pokud jsou povolené).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816513"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996601"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -85,6 +85,7 @@ Jednou z možných příčin tohoto je nedostatečná podpora více kanálů SMB
 
 - Získání virtuálního počítače s větším jádrem vám může pomoci zlepšit propustnost.
 - Při spuštění klientské aplikace z více virtuálních počítačů se zvýší propustnost.
+
 - Pokud je to možné, použijte rozhraní REST API.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Při porovnání s klienty se systémem Windows výrazně snižuje propustnost klientů se systémem Linux.
@@ -97,6 +98,7 @@ Jedná se o známý problém s implementací klienta SMB v systému Linux.
 
 - Rozprostře zatížení mezi více virtuálních počítačů.
 - Ve stejném virtuálním počítači použijte více přípojných bodů s možností **nosharesock** a rozprostřete zatížení mezi tyto přípojné body.
+- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání Fsync. U souborů Azure Tato možnost neovlivňuje consistentcy dat, ale může mít za následek zastaralá metadata souborů v seznamu adresářů (příkaz**ls-l** ). Přímo se dotazování na metadata souboru (**stat** Command) vrátí nejaktuálnější metadata souborů.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro silná zatížení metadat, která zahrnují rozsáhlé operace otevření/zavření.
 

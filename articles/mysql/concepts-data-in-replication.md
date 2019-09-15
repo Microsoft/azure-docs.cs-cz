@@ -5,23 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 889c2e75e9eee0586c709b032dbb6d1c58d45102
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142056"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993050"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
-Replikace vstupních dat umožňuje synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Replikace dat umožňuje synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
-## <a name="when-to-use-data-in-replication"></a>Kdy použít Replikace vstupních dat
-V hlavních scénářích, které je potřeba zvážit, je použití Replikace vstupních dat:
+## <a name="when-to-use-data-in-replication"></a>Kdy použít replikaci dat
+V hlavních scénářích, které je potřeba zvážit při replikaci dat, jsou tyto:
 
-- **Synchronizace hybridních dat:** Pomocí Replikace vstupních dat můžete udržovat data synchronizovaná mezi místními servery a Azure Database for MySQL. Tato synchronizace je užitečná pro vytváření hybridních aplikací. Tato metoda je odvolání, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
-- **Synchronizace více cloudů:** Pro komplexní cloudová řešení použijte Replikace vstupních dat k synchronizaci dat mezi Azure Database for MySQL a různými poskytovateli cloudu, včetně virtuálních počítačů a databázových služeb hostovaných v těchto cloudech.
+- **Synchronizace hybridních dat:** Díky replikaci dat můžete udržovat data synchronizovaná mezi místními servery a Azure Database for MySQL. Tato synchronizace je užitečná pro vytváření hybridních aplikací. Tato metoda je odvolání, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
+- **Synchronizace více cloudů:** V případě komplexních cloudových řešení můžete pomocí replikace dat synchronizovat data mezi Azure Database for MySQL a různými poskytovateli cloudu, včetně virtuálních počítačů a databázových služeb hostovaných v těchto cloudech.
+ 
+Pro scénáře migrace použijte [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
 ## <a name="limitations-and-considerations"></a>Omezení a požadavky
 
@@ -37,7 +39,7 @@ V hlavních scénářích, které je potřeba zvážit, je použití Replikace v
 - Pokud má hlavní server povolený protokol SSL, ujistěte se, že je v `mysql.az_replication_change_master` uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu. Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
 - Ujistěte se, že se IP adresa hlavního serveru přidala do pravidel brány firewall serveru repliky Azure Database for MySQL. Pomocí webu [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) nebo [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který je hostitelem hlavního serveru, umožňuje příchozí i odchozí provoz na portu 3306.
-- Ujistěte se, že hlavní server má **veřejnou IP adresu** nebo že je server DNS přístupný veřejnosti.
+- Ujistěte se, že hlavní server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
 ### <a name="other"></a>Ostatní
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
@@ -46,3 +48,4 @@ V hlavních scénářích, které je potřeba zvážit, je použití Replikace v
 ## <a name="next-steps"></a>Další postup
 - Přečtěte si, jak [nastavit replikaci dat](howto-data-in-replication.md) .
 - Další informace o [replikaci v Azure s replikami pro čtení](concepts-read-replicas.md)
+- Přečtěte si, jak [migrovat data s minimálními výpadky pomocí DMS](howto-migrate-online.md) .

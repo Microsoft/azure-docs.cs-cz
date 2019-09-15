@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814111"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995538"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
 
@@ -29,14 +29,14 @@ Musíte mít následující:
 ## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v uživatelském rozhraní PŘÍZe
 1. Spusťte uživatelské rozhraní PŘÍZe. Klikněte na položku **příze** v části **řídicí panely clusteru**.
    
-    ![Spustit rozhraní PŘÍZe](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![Spustit rozhraní PŘÍZe](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, klikněte na **Ambari domů** v části **řídicí panely clusteru**. V uživatelském rozhraní Ambari klikněte na **příze**, klikněte na **Rychlé odkazy**, klikněte na aktivní Správce prostředků a potom klikněte na **Správce prostředků uživatelské rozhraní**. 
 
 2. Vzhledem k tomu, že jste spustili úlohu Spark pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (Toto je název pro všechny aplikace, které jsou spouštěny z poznámkových bloků). Další informace o úloze získáte kliknutím na ID aplikace v názvu aplikace. Tím se spustí zobrazení aplikace.
    
-    ![Najít ID aplikace Spark](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Najít ID aplikace Spark](./media/apache-spark-job-debugging/find-application-id1.png)
    
     U takových aplikací, které se spouštějí z notebooků Jupyter, je stav vždycky **spuštěný** , dokud neukončíte Poznámkový blok.
 3. V zobrazení aplikace můžete podrobněji přejít k části informace o kontejnerech přidružených k aplikaci a protokolech (stdout/stderr). Uživatelské rozhraní Spark můžete také spustit kliknutím na propojení odpovídající **adrese URL pro sledování**, jak je znázorněno níže. 
@@ -48,13 +48,13 @@ V uživatelském rozhraní Spark můžete přejít k podrobnostem úloh Spark, k
 
 1. Chcete-li spustit uživatelské rozhraní Spark, v zobrazení aplikace klikněte na odkaz na **adresu URL pro sledování**, jak je znázorněno na snímku obrazovky výše. Zobrazí se všechny úlohy Sparku spouštěné aplikací běžícími na poznámkovém bloku Jupyter.
    
-    ![Zobrazení úloh Sparku](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Zobrazení úloh Sparku](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Klikněte na kartu **vykonavatelé** a zobrazte informace o zpracování a uložení pro každý prováděcí modul. Můžete také načíst zásobník volání kliknutím na odkaz **Výpis paměti vlákna** .
    
     ![Zobrazit vykonavatele Spark](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. Kliknutím na kartu **fáze** zobrazíte fáze spojené s aplikací.
    
-    ![Zobrazit fáze Sparku](./media/apache-spark-job-debugging/view-spark-stages.png "Zobrazit fáze Sparku")
+    ![Zobrazit fáze Sparku](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Zobrazit fáze Sparku")
    
     Každá fáze může mít několik úloh, pro které můžete zobrazit statistiku spuštění, jak je znázorněno níže.
    

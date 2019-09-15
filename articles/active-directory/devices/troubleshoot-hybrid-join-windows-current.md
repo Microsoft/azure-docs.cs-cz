@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297572"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995218"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
 
@@ -404,6 +404,9 @@ Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure 
 - Alternativní ID přihlášení
 - Proxy server HTTP se nenašel.
 
+## <a name="known-issues"></a>Známé problémy
+- V části Nastavení-> účty – > přístup do práce nebo do školy můžou zařízení připojená k hybridní službě Azure AD zobrazovat dva různé účty, jednu pro Azure AD a jednu pro místní službu AD, když jsou připojeni k mobilním hotspotům nebo externím sítím Wi-Fi. Toto je jenom problém s uživatelským rozhraním a nemá žádný vliv na funkčnost. 
+ 
 ## <a name="next-steps"></a>Další postup
 
 Pokračování [v řešení potíží pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)

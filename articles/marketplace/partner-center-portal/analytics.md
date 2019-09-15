@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962736"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993723"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
 
@@ -244,7 +244,7 @@ Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místn
 | Název instance cloudu: Azure Government | Pořadí| Cloudy Microsoftu pro konkrétní státní správu pro jednu z následujících vlád: Čína, Německo nebo USA Amerika| |
 | Město zákazníka| Zákazníka| Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka.||
 | Jazyk zákaznické komunikace  | Zákazníka| Jazyk upřednostňovaný zákazníkem pro komunikaci.||
-| Název společnosti zákazníka | Zákazník, objednávka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka.|  |
+| Název společnosti zákazníka | Zákazník, objednávka | Název společnosti poskytnutý zákazníkem Název může být jiný než název v předplatném Azure zákazníka.|  |
 | Země zákazníka | Zákazník, objednávka | Název země, kterou zadal zákazník. Země by mohla být jiná než země v předplatném Azure zákazníka.|  |
 | E-mail zákazníka| Zákazníka| E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka.||
 | Křestní jméno zákazníka| Zákazníka| Název zadaný zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka.| |

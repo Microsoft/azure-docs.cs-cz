@@ -1,6 +1,6 @@
 ---
 title: 'Příklad vizuálního rozhraní #3: regrese na ceny a porovnávání algoritmů'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2c45ccf55b1adde7150dee17fd562b24ee4777ba
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990008"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997105"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: Předpověď cen a porovnávání algoritmů
 
@@ -70,7 +70,7 @@ Modul **rozdělit data** používáme k náhodnému rozdělení vstupních dat, 
 
 K učení a otestování modelu používáme dvě různé sady náhodně zvolených dat, jak je popsáno v předchozí části. Datovou sadu rozdělíme a použijeme různé datové sady ke školení a testování modelu, aby bylo vyhodnocení modelu více objektivně.
 
-Po vyzkoušení modelu používáme **model skóre** a vyhodnocujeme moduly **modelů** pro generování předpokládaných výsledků a vyhodnocení modelů. **Model skóre** generuje předpovědi pro testovací datovou sadu pomocí trained model. Pak předáte skóre k **vyhodnocení modelu** pro generování metrik vyhodnocení.
+Po vyzkoušení modelu používáme **model skóre** a **vyhodnocujeme moduly modelů** pro generování předpokládaných výsledků a vyhodnocení modelů. **Model skóre** generuje předpovědi pro testovací datovou sadu pomocí trained model. Pak předáte skóre k **vyhodnocení modelu** pro generování metrik vyhodnocení.
 
 V tomto experimentu používáme dvě instance **vyhodnocení modelu** k porovnání dvou párů modelů.
 
@@ -80,7 +80,7 @@ Tady jsou výsledky:
 
 ![Porovnat výsledky](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Tyto výsledky ukazují, že model sestavený s regresí pro **zvýšení rozhodovacího stromu** má nižší hlavní střední chybu než model sestavený na **regresi rozhodovací doménové struktury**.
+Tyto výsledky ukazují, že model sestavený s **regresí pro zvýšení rozhodovacího stromu** má nižší hlavní střední chybu než model sestavený na **regresi rozhodovací doménové struktury**.
 
 Oba algoritmy mají v datové sadě školení nižší chybu než v datové sadě nepřesných testů.
 
@@ -88,7 +88,7 @@ Oba algoritmy mají v datové sadě školení nižší chybu než v datové sad�
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

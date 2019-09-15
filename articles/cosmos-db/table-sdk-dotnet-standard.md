@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034587"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996216"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Rozhraní API pro Azure Cosmos DB .NET Standard tabulky: Poznámky ke stažení a verzi
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ ms.locfileid: "70034587"
 
 ## <a name="release-notes-for-100-series"></a>Poznámky k verzi pro řady 1.0.0
 1.0.0 Series přebírá závislost na [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* Zaveďte novou konfiguraci v části TableClientConfiguration, která bude používat vykonavatele REST ke komunikaci s Cosmos DB rozhraní API pro tabulky
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5 – Preview
 * Opravy chyb
@@ -92,6 +95,7 @@ Tato knihovna .NET Standard knihovně [Microsoft. Azure. Cosmos. Table](https://
 ### <a name="100-series"></a>řada 1.0.0
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [1.0.5](#1.0.5) |13. září 2019 |--- |
 | [1.0.5 – Preview](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4 – Preview](#1.0.4-preview) |26. července 2019 |--- |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030795"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995103"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Model nákladů pro Azure NetApp Files 
 
@@ -73,7 +73,7 @@ Následující diagram znázorňuje tyto koncepty:
     * K svazkům 1 až 8 je přiřazena kvóta 60 TiB.  Celková využitá kapacita je 480 TiB.  
         Každý svazek má omezení QoS 3,75 GiB/s propustnost (60 TiB * 64 MiB/s).  
     * Na jednotce 9 je přiřazena kvóta 20 TiB.  
-        Svazek 9 má omezení QoS 1,25 GiB/s propustnost (60 TiB * 64 MiB/s).
+        Svazek 9 má omezení QoS 1,25 GiB/s propustnost (20 TiB * 64 MiB/s).
 * Svazek 9 je nadlimitní scénář. Má 25 TiB se skutečnou spotřebou.  
     * Po hodinové odkladné době se velikost fondu kapacity změní na 505 TiB.  
         To znamená, že celková využitá kapacita = 8 × 60-TiB kvóta pro svazky 1 až 8 a 25 TiB skutečné spotřeby pro svazek 9.

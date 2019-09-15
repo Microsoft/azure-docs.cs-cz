@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: cc94f2705f044c3674432f31b63d630be8afbf7d
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 0d8d1b37e7f5ebb6eef1c76e4324041c48ab8986
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035885"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995746"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
 Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autoriz
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel nebo aplikace) pokusí o přístup k prostředku Event Hubs, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
- 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. 
+ 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/`.
  1. V dalším kroku se token předává jako součást požadavku služby Event Hubs k autorizaci přístupu k zadanému prostředku.
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Event Hubs službu, najdete v tématu [ověření přístupu k prostředkům azure Event Hubs pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](authenticate-managed-identity.md). 
@@ -58,7 +58,7 @@ Následující seznam popisuje úrovně, na jejichž základě můžete nastavit
 
 Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [vysvětlení definic rolí](../role-based-access-control/role-definitions.md#management-and-data-operations). Informace o vytváření vlastních rolí RBAC najdete v tématu [Vytvoření vlastních rolí pro Azure založené na rolích Access Control](../role-based-access-control/custom-roles.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Přečtěte si, jak přiřadit k objektu zabezpečení integrovanou roli RBAC, najdete v tématu [ověření přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authenticate-application.md).
 - Naučte [se vytvářet vlastní role pomocí RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
 - Naučte [se používat Azure Active Directory s eh](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK) .

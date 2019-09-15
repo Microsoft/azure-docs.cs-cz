@@ -4,17 +4,15 @@ description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určen
 services: managed-applications
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.date: 08/06/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7682670131b0ef50a1480285bc379b634169e49e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b8c5a99a74446fcd126606b34135bba315ca1473
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840615"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995412"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Publikování definice aplikace spravované Azure
 
@@ -61,7 +59,7 @@ az managedapp definition create \
   --display-name "Managed Storage Account" \
   --description "Managed Azure Storage Account" \
   --authorizations "$userid:$roleid" \
-  --package-file-uri "https://raw.githubusercontent.com/Azure/azure-managedapp-samples/master/samples/201-managed-storage-account/managedstorage.zip"
+  --package-file-uri "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account/managedstorage.zip"
 ```
 
 Po dokončení příkazu máte definici spravované aplikace ve vaší skupině prostředků. 
@@ -73,7 +71,7 @@ Některé z parametrů použitých v předchozím příkladu:
 * **autorizace**: V této části najdete popis ID objektu zabezpečení a ID definice role, které slouží k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pokud je potřeba zadat více hodnot, zadejte je ve formátu `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
 * **package-file-uri**: Umístění balíčku. zip, který obsahuje požadované soubory. Balíček musí obsahovat soubory **mainTemplate.json** a **createUiDefinition.json**. Soubor **mainTemplate.json** definuje prostředky Azure, které se mají vytvořit jako součást spravované aplikace. Šablona se nijak neliší od běžné šablony Resource Manageru. **createUiDefinition.json** generuje uživatelské rozhraní pro uživatele, kteří vytvářejí spravované aplikace prostřednictvím portálu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Publikovali jste definici spravované aplikace. Teď se dozvíte, jak nasadit instanci této definice.
 

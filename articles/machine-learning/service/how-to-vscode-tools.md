@@ -1,6 +1,6 @@
 ---
 title: Použití Visual Studio Code pro Machine Learning
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se, jak nainstalovat Azure Machine Learning pro Visual Studio Code a vytvořit jednoduchý experiment v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,24 +10,24 @@ ms.author: ronglu
 author: ronglums
 ms.date: 7/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1d18006e6ec3ff1659f8fb80f8cf6766797d76b
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114435"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997176"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
 V tomto článku se dozvíte, jak používat rozšíření Azure Machine Learning pro Visual Studio Code ke školení a nasazení modelů pro strojové učení a hloubkové učení.
 
-[Služba Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje podporu pro experimenty, které spouštíte místně, a na vzdálené výpočetní cíle. Každý experimentu je můžete udržovat přehled o různých spuštění často potřebujete zavádět postupně vyzkoušet s různými technikami, hyperparameters a další. Azure Machine Learning slouží ke sledování vlastní metriky a experimentovat spuštění, aktivace reprodukovatelnost datové vědy a umožňuje audity.
+[Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje podporu pro experimenty spouštěné místně a na vzdálených výpočetních cílech. Každý experimentu je můžete udržovat přehled o různých spuštění často potřebujete zavádět postupně vyzkoušet s různými technikami, hyperparameters a další. Azure Machine Learning slouží ke sledování vlastní metriky a experimentovat spuštění, aktivace reprodukovatelnost datové vědy a umožňuje audity.
 
 Tyto modely můžete nasadit i pro potřeby testování a produkce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
++ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 + Visual Studio Code musí být nainstalované. Visual Studio Code je jednoduchý, ale výkonný editor zdrojového kódu, který běží na vašem počítači. Obsahuje integrovanou podporu Pythonu a dalších programovacích jazyků. Pokud jste ještě nenainstalovali Visual Studio Code, přečtěte si, [jak](https://code.visualstudio.com/docs/setup/setup-overview).
 
@@ -69,13 +69,13 @@ Instalace rozšíření Azure Machine Learning:
 
    ![Výběr interpretu](./media/vscode-tools-for-ai/python.png)
 
-1. V pravém dolním rohu okna se zobrazí oznámení oznamující, že se automaticky instaluje [sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . Nově vytvořené prostředí Pythonu je místní a soukromé a má Visual Studio Code předpoklady pro práci se službou Azure Machine Learning.
+1. V pravém dolním rohu okna se zobrazí oznámení oznamující, že se automaticky instaluje [sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . Nově vytvořené prostředí Pythonu je místní a soukromé a má Visual Studio Code předpoklady pro práci s Azure Machine Learning.
 
    ![Instalace sady Azure Machine Learning SDK pro Python](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
 
-Před zahájením školení a nasazení modelů strojového učení v Visual Studio Code musíte vytvořit [pracovní prostor služby Azure Machine Learning](concept-workspace.md) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky. 
+Před zahájením školení a nasazení modelů strojového učení v Visual Studio Code musíte vytvořit [pracovní prostor Azure Machine Learning](concept-workspace.md) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky. 
 
 Vytvoření pracovního prostoru a přidání prvního experimentu:
 
@@ -117,7 +117,7 @@ Postup vytvoření cíle výpočtů:
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-2. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. V následujícím příkladu obrázku je název odběru **bezplatný zkušební verze**a pracovní prostor je **TeamWorkspace**. 
+2. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. V následujícím příkladu obrázku je název odběru **bezplatný zkušební verze**a pracovní prostor je **TeamWorkspace**. 
 
 3. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **Compute** uzlu a zvolte **vytvořit výpočetní**.
 
@@ -147,7 +147,7 @@ Chcete-li experiment spustit místně pomocí Azure Machine Learning:
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. 
+1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. 
 
 1. Pod uzlem pracovní prostor rozbalte **výpočetní** uzel a klikněte pravým tlačítkem na **konfiguraci spuštění** výpočetního prostředí, které chcete použít. 
 
@@ -196,7 +196,7 @@ Spuštění experimentu s Azure Machine Learning ve vzdáleném cílovém výpo�
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. 
+1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. 
 
 1. V okně Editoru klikněte pravým tlačítkem na skript Python a vyberte **AML: Spouštějte jako experiment v Azure**. 
 
@@ -224,7 +224,7 @@ Postup registrace modelu:
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning.
+1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning.
 
 1. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **modely** a zvolte **zaregistrujte Model**.
 
@@ -247,13 +247,13 @@ V Visual Studio Code můžete nasadit webovou službu do:
 + Azure Container Instances (ACI) pro testování.
 + Služba Azure Kubernetes (AKS) pro produkční prostředí.
 
-Nemusíte vytvářet kontejner ACI k testování předem, protože se vytvářejí kontejnery ACI za běhu. Je ale potřeba nakonfigurovat clustery AKS předem. Další informace najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+Nemusíte vytvářet kontejner ACI k testování předem, protože se vytvářejí kontejnery ACI za běhu. Je ale potřeba nakonfigurovat clustery AKS předem. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 Nasazení webové služby:
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-1. Ve stromovém zobrazení rozbalte vaše předplatné Azure a váš pracovní prostor služby Azure Machine Learning.
+1. Ve stromovém zobrazení rozbalte své předplatné Azure a pracovní prostor Azure Machine Learning.
 
 1. V části pracovní prostor uzlu, rozbalte položku **modely** uzlu.
 

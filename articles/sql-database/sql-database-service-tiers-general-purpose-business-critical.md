@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934227"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995427"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database úrovní služeb
 
@@ -46,8 +46,6 @@ Následující tabulka popisuje klíčové rozdíly mezi úrovněmi služeb pro 
 | | Spravovaná instance  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
 | **Velikost databáze TempDB** | Izolovaná databáze/elastický fond | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Spravovaná instance  | [24 GB na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není k dispozici | Až 4 TB – [omezeno velikostí úložiště](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **Propustnost vstupně-výstupních operací** | Izolovaná databáze | [500 vstupně-výstupních operací na vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Platnost IOPs bude záviset na zatížení. | [4000 vstupně-výstupních operací na vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
-| | Spravovaná instance | [100 – 250MB/s a 500-7500 vstupně-výstupních operací na soubor](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není k dispozici | [1375 vstupně-výstupních operací na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Propustnost zápisu protokolu** | Izolovaná databáze | [1,875 MB/s na vCore (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Spravovaná instance | [3 MB/s na vCore (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není k dispozici | [4 MB/s na Vcore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**Dostupnost**|Vše| 99,99 % |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
@@ -92,7 +90,7 @@ Chcete-li monitorovat aktuální celkovou velikost souborů MDF a LDF, použijte
 - **PITR**: Jednotlivé zálohy databáze se zkopírují do [úložiště s přístupem pro čtení geograficky redundantního úložiště (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md) . Velikost úložiště se dynamicky zvětšuje při vytváření nových záloh. Úložiště používá týdenní úplné zálohování, denní rozdílové zálohy a zálohy transakčních protokolů, které se zkopírují každých 5 minut. Spotřeba úložiště závisí na četnosti změn databáze a na době uchovávání záloh. Pro každou databázi můžete nastavit samostatné období uchování mezi 7 a 35 dny. Minimální velikost úložiště rovnající se 100% (1x) velikosti databáze se poskytuje bez dalších poplatků. U většiny databází je tato velikost dostačující pro ukládání 7 dnů zálohování.
 - **LTR**: SQL Database nabízí možnost konfigurace dlouhodobého uchovávání úplných záloh po dobu až 10 let. Pokud nastavíte zásadu LTR, budou se tyto zálohy ukládat do úložiště RA-GRS automaticky, ale můžete určit, jak často se mají zálohy kopírovat. Pro splnění různých požadavků na dodržování předpisů můžete pro týdenní, měsíční nebo roční zálohy vybrat jiné doby uchování. Konfigurace, kterou zvolíte, určuje, kolik úložiště se bude používat pro zálohy LTR. K odhadu nákladů na úložiště LTR můžete použít cenovou kalkulačku LTR. Další informace najdete v tématu [SQL Database dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobnosti o specifických velikostech a velikostech úložiště, které jsou dostupné pro izolovanou databázi, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md).
 - Podrobnosti o specifických velikostech a velikostech úložiště, které jsou dostupné pro elastické fondy, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).

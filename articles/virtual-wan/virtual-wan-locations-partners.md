@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: d9f0bb7d3817b943b71715eb080dd0b060efa025
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a4a4eefc1b31e8412392f5ffed404201b98e0386
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990332"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996359"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -40,7 +40,7 @@ Někteří partneři pro připojení můžou automatizovat automatizaci, aby zah
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři se v blízké budoucnosti plánované na náš plán: Arista, F5 Networks, Fortinet, stříbrné špičky, Velocloud, naopak, Nuage Nokia.
+Následující partneři se v blízké budoucnosti plánované na náš plán: Arista, F5 Networks, Fortinet, stříbrné špičky, Velocloud, Nuage Nokia.
 
 ## <a name="locations"></a>Polohy
 

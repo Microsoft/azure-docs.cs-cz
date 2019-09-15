@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní'
-titleSuffix: Azure Machine Learning service
-description: Naučte se vytvářet řešení prediktivní analýzy ve vizuálním rozhraní služby Azure Machine Learning. Naučte se, vyhodnocovat a nasazují model strojového učení pomocí přetažení modulů. Tento kurz je druhou částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
+titleSuffix: Azure Machine Learning
+description: Naučte se vytvářet řešení prediktivní analýzy v vizuálním rozhraní Azure Machine Learning. Naučte se, vyhodnocovat a nasazují model strojového učení pomocí přetažení modulů. Tento kurz je druhou částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858631"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997017"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní
 
@@ -105,7 +105,7 @@ Přejděte na kartu **API doc** , kde najdete další podrobnosti o rozhraní AP
 
 ## <a name="manage-models-and-deployments"></a>Správa modelů a nasazení
 
-Nasazení modelů a webových služeb, která vytvoříte v rámci vizuálního rozhraní, lze spravovat také z pracovního prostoru služby Azure Machine Learning.
+Nasazení modelů a webových služeb, která vytvoříte v rámci vizuálního rozhraní, lze spravovat také z pracovního prostoru Azure Machine Learning.
 
 1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  
 

@@ -1,6 +1,6 @@
 ---
 title: 'Ukázka vizuálního rozhraní #4: Klasifikace pro předpověď úvěrového rizika (citlivé na náklady)'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 977ff101b0f697a48b3e5595834c98fef0f1119a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990430"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997030"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)
 
@@ -50,7 +50,7 @@ V tomto experimentu porovnáme dva různé přístupy k vygenerování modelů p
 
 Oba přístupy vyhodnotí modely pomocí testovací datové sady s replikací, aby bylo zajištěno, že výsledky budou zarovnány s funkcí cost. Testujeme dva třídění podle obou přístupů: **Podpora dvou tříd – vektorový počítač** a se **dvěma třídami se zvyšuje rozhodovací strom**.
 
-Náklady na chybnou klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1 a náklady na neklasifikaci vysoce rizikového příkladu, který je nízký, je 5. Pro tyto náklady na nesprávnou klasifikaci používáme modul vykonávání **skriptu Pythonu** .
+Náklady na chybnou klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1 a náklady na neklasifikaci vysoce rizikového příkladu, který je nízký, je 5. Pro tyto náklady na nesprávnou klasifikaci používáme modul **vykonávání skriptu Pythonu** .
 
 Tady je graf experimentu:
 
@@ -95,7 +95,7 @@ Modul **vektorového stroje podpory dvou tříd** zpracovává řetězcové funk
 
 ## <a name="models"></a>Modely
 
-Vzhledem k tomu, že použijeme dva klasifikátory, mezitřídní **vektorový počítač** (SVM) a **dvakrát rozhodovací strom se dvěma třídami**a použijeme také dvě datové sady, vygenerujeme celkem čtyři modely:
+Vzhledem k tomu, že použijeme dva klasifikátory, **Mezitřídní vektorový počítač** (SVM) a **dvakrát rozhodovací strom se dvěma třídami**a použijeme také dvě datové sady, vygenerujeme celkem čtyři modely:
 
 - SVM se vyškolená s původními daty.
 - SVM je vyškolená pro replikovaná data.
@@ -150,13 +150,13 @@ První sloupec uvádí algoritmus strojového učení, který se používá k vy
 Druhý sloupec indikuje typ sady školení.
 Třetí sloupec obsahuje hodnotu přesnosti citlivou na náklady.
 
-Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vytvořeným se dvěma třídami pro **vektorový stroj podpory** a vyškolenou na replikovanou datovou sadu školení.
+Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vytvořeným se **dvěma třídami pro vektorový stroj podpory** a vyškolenou na replikovanou datovou sadu školení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 

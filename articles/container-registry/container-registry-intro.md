@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310673"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994363"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -31,7 +31,7 @@ Stažení imagí z registru kontejnerů Azure na různé cíle nasazení:
 * **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) a [Dockeru Swarm](https://docs.docker.com/swarm/).
 * **Služby Azure**, které podporují vytváření a spouštění škálovaných aplikací, včetně [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) a dalších.
 
-Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Můžete například cílit do registru kontejneru z nástroje pro průběžnou integraci a doručování, jako je například [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) nebo [Jenkinse](https://jenkins.io/).
+Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Můžete například cílit do registru kontejneru z nástroje pro průběžnou integraci a doručování, jako je například [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) nebo [Jenkinse](https://jenkins.io/).
 
 Nakonfigurujte úlohy ACR k automatickému opětovnému sestavení imagí aplikace, když jsou aktualizovány jejich základní obrázky, nebo Automatizujte sestavení imagí, když váš tým potvrdí kód do úložiště Git. Vytvářejte úlohy s více kroky pro automatizaci sestavování, testování a opravování více imagí kontejnerů paralelně v cloudu.
 

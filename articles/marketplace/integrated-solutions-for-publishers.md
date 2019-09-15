@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860305"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993688"
 ---
 # <a name="publishing-integrated-solutions"></a>Publikování integrovaných řešení
 
@@ -89,5 +89,9 @@ I když je k dispozici pět typů služeb pro nabídky konzultačních služeb, 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Přesměrovat na trh s integrovaným řešením 
 
 Jakmile je vaše řešení živé v Azure Marketplace nebo AppSource, budete chtít zvýšit povědomí a vyžádat si zatížení prostřednictvím marketingových aktivit. Projděte si aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc), včetně aktivit, které partneři můžou řídit v rámci svých týmů, a druhý. Pak můžete využívat [výhody pro uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) poskytované partnerům, kteří si publikovali na webu Marketplace. Všechny nabídky integrovaných řešení jsou způsobilé pro výhody na úrovni zkušební verze.
+
+## <a name="next-steps"></a>Další kroky
+
+Informace o nákupu integrovaného řešení na webu Marketplace najdete v tématu [integrovaná řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions) .
 
 ---

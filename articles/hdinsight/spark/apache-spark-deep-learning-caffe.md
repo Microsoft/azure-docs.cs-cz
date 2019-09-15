@@ -3,16 +3,17 @@ title: Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové u�
 description: Pro distribuované hloubkové učení ve službě Azure HDInsight použijte Caffe na Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814198"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995653"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové učení
 
@@ -65,7 +66,7 @@ Druhým krokem je stažení, kompilování a instalace protobuf 2.5.0 pro Caffe 
 
 Chcete-li začít, stačí spustit tuto akci skriptu pro váš cluster na všechny uzly pracovních procesů a hlavní uzly (pro HDInsight 3,5). Můžete buď spustit akce skriptu pro existující cluster, nebo použít akce skriptu během vytváření clusteru. Další informace o akcích skriptu najdete v dokumentaci [zde](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-![Akce skriptů pro instalaci závislostí](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Akce skriptů pro instalaci závislostí](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Sestavování Caffe na Apache Spark pro HDInsight na hlavní uzel
@@ -175,7 +176,8 @@ V tomto příkladu, protože používáte procesor spíše než GPU, byste měli
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe Config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe Config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 Podle potřeby můžete změnit další řádky.
 
@@ -184,7 +186,7 @@ Druhý soubor ($ {CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definuj
 - Změňte "File:/Users/mridul/bigml/demodl/mnist_train_lmdb" na "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - Změňte "File:/Users/mridul/bigml/demodl/mnist_test_lmdb/" na "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Caffe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Další informace o tom, jak definovat síť, najdete v [dokumentaci k Caffe v datové sadě mnist ručně zapsaných](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) .
 
@@ -204,15 +206,15 @@ Pokud chcete zjistit, co se stalo, je obvykle potřeba získat protokol ovladač
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![ROZHRANÍ PŘÍZE](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![ROZHRANÍ PŘÍZE](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Můžete si prohlédnout, kolik prostředků je pro tuto konkrétní aplikaci přiděleno. Můžete kliknout na odkaz Scheduler (Plánovač) a potom uvidíte, že pro tuto aplikaci jsou spuštěné devět kontejnerů. požádáte o PŘÍZi, aby poskytovala osm prováděcích modulů, a další kontejner pro proces ovladače. 
 
-![Plánovač PŘÍZe](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![Plánovač PŘÍZe](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Pokud dojde k selhání, můžete chtít ověřit protokoly ovladačů nebo protokoly kontejnerů. V případě protokolů ovladačů můžete kliknout na ID aplikace v uživatelském rozhraní PŘÍZe a potom kliknout na tlačítko protokoly. Protokoly ovladačů se zapisují do stderr.
 
-![PŘÍZOVÉ UŽIVATELSKÉ ROZHRANÍ 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![PŘÍZOVÉ UŽIVATELSKÉ ROZHRANÍ 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Například se může zobrazit některá z následujících chyb z protokolů ovladačů, což značí, že přidělíte příliš mnoho prováděcích modulů.
 

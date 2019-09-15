@@ -1,7 +1,7 @@
 ---
 title: Příklad aplikace Jupyter notebook
-titleSuffix: Azure Machine Learning service
-description: Vyhledejte a použijte příklady Jupyter poznámkových bloků k prozkoumání sady SDK služby Azure Machine Learning Service Python.
+titleSuffix: Azure Machine Learning
+description: Vyhledejte a použijte příklady Jupyter poznámkových bloků pro zkoumání Azure Machine Learning Pythonu pro sadu SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860395"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997065"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning službu pomocí poznámkových bloků Jupyter
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
 
 [Ukázkové Azure Machine Learning úložiště poznámkových bloků](https://github.com/azure/machinelearningnotebooks) obsahuje nejnovější ukázky sady SDK pro Azure Machine Learning Python. Tyto poznámkové bloky Juypter jsou navržené tak, aby vám pomohly prozkoumat sadu SDK a sloužit jako modely pro vlastní projekty machine learningu.
 
@@ -55,7 +55,7 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co může služba Azure Machine Learning provést, nebo vyzkoušejte tyto kurzy:
+Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co Azure Machine Learning může dělat, nebo vyzkoušejte tyto kurzy:
 
 - [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Vytváření, používání a Správa prostředí pro školení a nasazení modelu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Vytvářejte a spravujte prostředí pro školení a nasazení modelů. Spravujte balíčky Pythonu a další nastavení pro prostředí.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098958"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996624"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Vytváření a Správa prostředí pro školení a nasazení
 
 V tomto článku se dozvíte, jak vytvářet a spravovat Azure Machine Learning [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , abyste mohli sledovat a reprodukuje závislosti softwaru projektů při jejich vývojech.
 
-Správa závislostí softwaru je běžným úkolem pro vývojáře. Chcete mít jistotu, že sestavení jsou reprodukovatelná bez velkého množství ruční konfigurace softwaru. Díky řešení pro místní vývoj, jako je PIP a Conda, třída prostředí služby Azure Machine Learning Service nabízí řešení pro vývoj místních i distribuovaných cloudů.
+Správa závislostí softwaru je běžným úkolem pro vývojáře. Chcete mít jistotu, že sestavení jsou reprodukovatelná bez velkého množství ruční konfigurace softwaru. Díky řešení pro místní vývoj, jako je PIP a Conda, poskytuje třída prostředí Azure Machine Learning řešení pro vývoj místních i distribuovaných cloudů.
 
 Příklady v tomto článku ukazují, jak:
 
@@ -52,7 +52,7 @@ Prostředí spravovaná systémem se používají, když chcete, aby [conda](htt
 ## <a name="prerequisites"></a>Požadavky
 
 * Sada Azure Machine Learning SDK pro Python je [nainstalována](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* [Pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md).
+* [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 

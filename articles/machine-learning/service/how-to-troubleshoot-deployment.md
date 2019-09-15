@@ -1,7 +1,7 @@
 ---
 title: Průvodce řešením problémů s nasazením
-titleSuffix: Azure Machine Learning service
-description: Naučte se řešit, řešit a řešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances pomocí služby Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Naučte se řešit, řešit a řešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183535"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997163"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
-Naučte se, jak vyřešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí služby Azure Machine Learning.
+Naučte se, jak obejít nebo vyřešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
-Při nasazení modelu ve službě Azure Machine Learning, systém provádí řadu úloh. Úkoly nasazení jsou:
+Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh. Úkoly nasazení jsou:
 
 1. Zaregistrujte model v registru pracovního prostoru modelu.
 
@@ -346,7 +346,7 @@ V některých případech možná budete muset interaktivně ladit kód Pythonu 
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ V tomto příkladu se jedná o název `myregistry` registru a na obrázek se jme
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Pokud chcete připojit VS Code k PTVSD uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __službu Azure Machine Learning: Konfigurace ladění__ Docker. Můžete také vybrat ikonu ladění na bočním panelu, __Azure Machine Learning službu: Položku ladění__ Docker z rozevírací nabídky ladění a pak použijte zelenou šipku pro připojení ladicího programu.
+1. Pokud chcete připojit VS Code k PTVSD uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __Azure Machine Learning: Konfigurace ladění__ Docker. Můžete také vybrat ikonu ladění z bočního panelu, __Azure Machine Learning: Položku ladění__ Docker z rozevírací nabídky ladění a pak použijte zelenou šipku pro připojení ladicího programu.
 
     ![Ikona ladění, tlačítko Spustit ladění a selektor konfigurace](media/how-to-troubleshoot-deployment/start-debugging.png)
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885100"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995560"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimalizace úloh Apache Spark v HDInsight
 
@@ -96,7 +96,7 @@ Pro referenci se v dalším obrázku zobrazí struktura paměti Spark a někter�
 
 Pokud používáte [Apache HADOOP nitě](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), pak nitě řídí maximální součet paměti využívané všemi kontejnery na jednotlivých uzlech Spark.  Následující diagram znázorňuje klíčové objekty a jejich vztahy.
 
-![Správa paměti PŘÍZe Spark](./media/apache-spark-perf/yarn-spark-memory.png)
+![Správa paměti PŘÍZe Spark](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 
@@ -210,7 +210,7 @@ Klíčem k výkonu dotazů Spark 2. x je modul Tungsten, který závisí na gene
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight](apache-spark-job-debugging.md)
 * [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
