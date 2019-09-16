@@ -1,5 +1,5 @@
 ---
-title: Integrovaných řešení | Azure
+title: Integrovaná řešení | Azure
 description: Integrovaná řešení v Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
@@ -7,38 +7,40 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515615"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993627"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrovaná řešení v Azure Marketplace a AppSource
 
-Integrované řešení spojuje druhu nejlepších technologií od partnerů Microsoftu, spolu s konzultaci, nasazení a podporuje poskytované odborníky systémy integrátoři.
+Integrované řešení přináší společně špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou, které nabízí integrátory s odborníky (SI).
 
-Tato řešení jsou postavené na adresu, třeba konkrétního zákazníka nebo scénář, který začíná znalost odvětví challenge nebo problémové body. Dva nebo více technologií nejlépe druhu jsou pak integrované podle SI vytvořit jednotný a opakovatelné nasazování prostředí pro zákazníky je zprovoznit a rychlé spuštění. Systémy, které integrátor také poskytuje jediný bod kontaktujte zákazník, a poskytuje relevantní přizpůsobení a poradenství a podporují ohledně řešení.  Výsledkem je integrované řešení, včetně technologií a služeb.
+Tato řešení jsou navržená tak, aby se vyrozuměla konkrétním zákaznickým potřebám nebo scénářům, který začíná pochopit otázky v oboru nebo složité. Dvě nebo více nejlepších technologií je pak integrováno v rámci, kde SI vytvoříme pro zákazníky sjednocené a opakované nasazení, abyste je mohli rychle začít používat. Integrátor systému také poskytuje jediný kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení a konzultace a podporu řešení.  Výsledkem je integrované řešení, včetně technologií a služeb.
 
 ## <a name="advantages"></a>Výhody
 
-Výhody integrované přístupu jsou:
+Mezi výhody integrovaného přístupu patří:
 
-* *Zkušenostmi*: Poskytuje řešení pro konkrétní odvětví a znalostní báze systémových integrátorů
-* *Zhodnocení*: Integrované nasazovací přístup při realizaci okamžitě přináší výhody
-* *Druhu nejlepších řešení*: Zjistit snadnost integrované možnosti nákupu a implementace
+* *Specializace v oboru*: Integrátory systémů poskytující řešení specifická pro konkrétní odvětví a znalosti
+* *Čas do hodnoty*: Přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
+* *Nejlepší řešení*: Seznamte se s integrovaným prostředím pro nákup a implementaci
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete zjistit integrovaná řešení a spojte se s těmito hodnotami partnery návštěvou jejich výpisy tady:
+Můžete zjišťovat integrovaná řešení a spojit se s těmito oceněnými partnery, a to návštěvou svých seznamů:
 
-* [Zákazník využívající Zero2Hero 360](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
-* [Rychlé Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Kredit Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Zásobník zabezpečení poskytující zdravotní péči cloudu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
-* [Modul akcelerace DevOps](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server End podporovat](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Zákazník 360, který využívá Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Rychlý obchod](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Kreditová analýza](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Sada zabezpečení zdravotnictví v cloudu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Modul pro akceleraci DevOps](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Konec podpory pro Windows Server](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
 
-a také návštěvou Consulting Services část [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+a také návštěvou části konzultačních služeb v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+
+Další informace najdete v tématu [publikování integrovaných řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers) .
 
 ---

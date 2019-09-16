@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963496"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993584"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Postup modelování relačních dat SQL pro import a indexování v Azure Search
 
@@ -150,13 +150,13 @@ Následující příklad je podobný příkladu v tématu [jak modelovat komplex
 
 Vzhledem k předchozí sadě výsledků a výše uvedenému schématu indexu máte všechny požadované součásti pro úspěšnou operaci indexování. Sloučená datová sada splňuje požadavky na indexování, které ještě zachovává podrobné informace. V indexu Azure Search se výsledky hledání snadno zařadí do hotelových entit a zároveň zachovává kontext jednotlivých místností a jejich atributů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pomocí [Průvodce importem dat](search-import-data-portal.md) můžete indexovat sadu řádků podobnou té, která je popsána v tomto článku. Průvodce detekuje vloženou kolekci JSON v *místnostech* a odvodí schéma indexu, které poskytuje příslušnou kolekci komplexních typů. 
+Pomocí vlastní datové sady můžete index vytvořit a načíst pomocí [Průvodce importem dat](search-import-data-portal.md) . Průvodce detekuje vloženou kolekci JSON, jako je ta obsažená v *místnostech*, a odvodí schéma indexu, které obsahuje kolekci komplexních typů. 
 
   ![Index odvozený pomocí Průvodce importem dat](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index odvozený pomocí Průvodce importem dat")
 
-Chcete-li dokončit import a vytvořit použitelný index, je nutné vybrat klíč a nastavit atributy sami. Pokud tento průvodce neznáte, Projděte si základní kroky v následujícím rychlém startu.
+Pokud se chcete seznámit se základními kroky Průvodce importem dat, zkuste použít následující rychlý Start.
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Vytvoření indexu vyhledávání pomocí Azure Portal](search-get-started-portal.md)

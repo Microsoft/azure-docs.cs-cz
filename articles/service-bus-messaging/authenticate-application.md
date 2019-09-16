@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 0860b1d621d2df5f371638bb48a03fdd8474d12d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014539"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996992"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autori
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k Service Bus entitě, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
- 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. 
+ 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu `https://servicebus.azure.net`.
  1. V dalším kroku se token předává jako součást požadavku služby Service Bus k autorizaci přístupu k zadanému prostředku.
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Service Bus službu, najdete v tématu [ověření přístupu k prostředkům Azure Service Bus pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](service-bus-managed-service-identity.md). 
@@ -48,7 +48,7 @@ Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, kt
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu**nebo předplatného: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
+- **Zařazení do fronty**, **tématu**nebo **předplatného**: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
 - **Obor názvů Service Bus**: Přiřazení role zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny příjemců, která je k ní přidružená.
 - **Skupina prostředků**: Přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
 - **Předplatné:** Přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.
@@ -154,7 +154,7 @@ Předtím, než můžete spustit ukázku, upravte soubor **App. config** a v zá
 Když spustíte konzolovou aplikaci, zobrazí se výzva k výběru scénáře. Vyberte **interaktivní uživatelské přihlášení** zadáním jeho čísla a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, požádá o souhlas s přístupem k Service Bus a potom službu použije ke spuštění prostřednictvím scénáře odeslání a přijetí pomocí identity přihlášení.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md)?
 - Další informace o tom, jak přiřadit a spravovat přiřazení rolí RBAC pomocí Azure PowerShell, Azure CLI nebo REST API, najdete v těchto článcích:
     - [Správa řízení přístupu na základě role (RBAC) pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  

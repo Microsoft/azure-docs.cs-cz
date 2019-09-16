@@ -1,7 +1,7 @@
 ---
 title: Co je nového ve verzi?
-titleSuffix: Azure Machine Learning service
-description: Přečtěte si o nejnovějších aktualizacích služby Azure Machine Learning a strojovém učení a sadách Python SDK pro přípravu dat.
+titleSuffix: Azure Machine Learning
+description: Seznamte se s nejnovějšími aktualizacemi pro Azure Machine Learning a sady SDK pro strojové učení a přípravu dat v Pythonu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930746"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993432"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
+# <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
-V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
+V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
@@ -557,7 +557,7 @@ V Azure Portal teď můžete:
 + Aktualizace živého grafu a metriky v sestavách spuštění a na stránkách podrobností
 + Byl aktualizován prohlížeč souborů pro protokoly, výstupy a snímky na stránkách podrobností o spuštění.
 + Nové a vylepšené prostředí pro vytváření sestav na kartě experimenty. 
-+ Byla přidána možnost stáhnout soubor config. JSON ze stránky přehled pracovního prostoru služby Azure Machine Learning.
++ Byla přidána možnost stáhnout soubor config. JSON ze stránky přehled v pracovním prostoru Azure Machine Learning.
 + Podpora vytvoření pracovního prostoru Machine Learning služby z pracovního prostoru Azure Databricks 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +576,7 @@ Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hosti
 + [Rychle aktivujte předem nakonfigurovaný virtuální počítač](tutorial-1st-experiment-sdk-setup.md) s poznámkovým blokem, který má nejnovější verzi sady Azure Machine Learning SDK a související balíčky.
 + Přístup je zabezpečený prostřednictvím prověřených technologií, jako je protokol HTTPS, Azure Active Directory ověřování a autorizace.
 + Spolehlivé cloudové úložiště poznámkových bloků a kódu v účtu služby pracovní prostor Azure Machine Learning BLOB Storage. Virtuální počítač poznámkového bloku můžete bezpečně odstranit, aniž byste ztratili práci.
-+ Předinstalované ukázkové poznámkové bloky k prozkoumávání a experimentování s funkcemi Azure Machine Learning služby.
++ Předinstalované ukázkové poznámkové bloky k prozkoumávání a experimentování s funkcemi Azure Machine Learning.
 + Úplné možnosti přizpůsobení virtuálních počítačů Azure, všech typů virtuálních počítačů, všech balíčků a všech ovladačů. 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +873,7 @@ Poznámka: Sada SDK pro přípravu dat nebude nadále instalovat `numpy` a `pand
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: Všeobecná dostupnost
 
-Služba Azure Machine Learning je teď obecně dostupná.
+Azure Machine Learning je teď všeobecně dostupná.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 V této verzi oznamujeme nové spravované výpočetní prostředí prostřednictvím [výpočetní technologie Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute). Tento cíl výpočtů nahrazuje Azure Batch AI COMPUTE pro Azure Machine Learning. 
@@ -985,7 +985,7 @@ Další informace o sadě SDK pro Data Prep načtením [referenční dokumentace
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>portál Azure 
-Na webu Azure portal pro službu Azure Machine Learning má následující aktualizace:
+Azure Portal pro Azure Machine Learning má následující aktualizace:
   * Nový **kanály** kartu pro publikované kanály.
   * Přidání podpory pro připojení k existujícímu clusteru HDInsight jako cílové výpočetní prostředí.
 
@@ -1098,4 +1098,4 @@ Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další inform
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).
+Přečtěte si přehled služby [Azure Machine Learning](../service/overview-what-is-azure-ml.md).

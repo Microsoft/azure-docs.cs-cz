@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k rozhraní API Detektoru anomálií
+summary: Seznamte se s tím, jak se rozhraní API Detektoru anomálií dá využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.
 metadata:
-  title: 'Rozhraní API Detektoru anomálií – kurzy, rychlá zprovoznění, referenční informace k rozhraní API'
+  title: Rozhraní API Detektoru anomálií – kurzy, rychlá zprovoznění, referenční informace k rozhraní API
   titleSuffix: Azure Cognitive Services
-  description: 'Rozhraní API Detektoru anomálií můžete využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.'
+  description: Rozhraní API Detektoru anomálií můžete využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,62 +12,102 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 'Rozhraní API Detektoru anomálií vám pomůže snadno vložit možnosti detekce anomálií do své aplikace, takže vaši uživatelé mohou rychle identifikovat problémy. Minimalizují se tak ztráty i negativní dopad na zákazníka. Nejsou potřeba žádné zkušenosti se strojovým učením. Prostřednictvím jednoho volání rozhraní API můžete aktivovat předem natrénovaný model AI, který ingestuje data časových řad libovolného typu a objemu, pro zajištění vysoké přesnosti vybere nejvhodnější model detekce anomálií pro vaše data a automaticky zobrazí incidenty, jakmile k nim dojde. Tuto službu můžete upravit pro detekci anomálií libovolné velikosti.  Detektor anomálií se dá využít ke zjišťování obchodních incidentů, monitorování provozu zařízení IoT, reakcím na měnící se trhy a dalším účelům.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>Další informace o rozhraní API Detektoru anomálií</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co je rozhraní API Detektoru anomálií?
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>Optimalizace výsledků detekce anomálií využitím osvědčených postupů pro API</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Osvědčené postupy při používání rozhraní API Detektoru anomálií
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: '<p>Můžete upravit citlivost detekce anomálií, použít jiné režimy detekce a nejenom to.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Použití rozhraní API pro detekci anomálií
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'K detekci anomálií v datech časových řad můžete využít:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Rozhraní API Detektoru anomálií</a></p>'
-          - title: Sady SDK
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Rozhraní příkazového řádku
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: 61db0fe16557b582ad43cd2eddbe8e421a0b743a
+  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/13/2019
+  ms.locfileid: "70967072"
+landingContent:
+- title: Informace o rozhraní API Detektoru anomálií
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API Detektoru anomálií?
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Ukázka Detektoru anomálií
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Představujeme rozhraní API Detektoru anomálií
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Algoritmy používané rozhraním API detekce anomálií
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: Algoritmy používané při detekci anomálií (dokument white paper)
+      url: https://arxiv.org/abs/1906.03821
+- title: Detekce anomálií ve vašich datech
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Pomocí C#
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: Pomocí Pythonu
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: Vizualizace anomálií s využitím dávkového zjišťování a Power BI
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: Optimalizace výsledků detekce
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Upravte režimy detekce anomálií a parametry pro vaše data.
+      url: how-to/identify-anomalies.md
+    - text: K optimalizaci výsledků detekce anomálií využijte osvědčené postupy.
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Osvědčené postupy Detektoru anomálií
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Použití kontejnerů Dockeru
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalace a spuštění kontejnerů Detektoru anomálií
+      url: anomaly-detector-container-howto.md
+    - text: Konfigurace kontejnerů Detektoru anomálií
+      url: anomaly-detector-container-configuration.md
+    - text: Nasazení instance kontejneru do Azure
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: Přenesení Detektoru anomálií do místního prostředí s podporou kontejnerů
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Zapojení do komunity Detektoru anomálií
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Zapojte se skupiny poradců k Detektoru anomálií v Microsoft Teams
+      url: https://aka.ms/adadvisorsjoin
+    - text: Doporučený obsah generovaný uživateli
+      url: user-generated-content.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list

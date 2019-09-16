@@ -614,6 +614,12 @@
       items:
         - name: Zpracování textových souborů s pevnou šířkou
           href: how-to-fixed-width.md
+    - name: Migrace SSIS z místního prostředí
+      items:
+        - name: Přehled migrace SSIS
+          href: scenario-ssis-migration-overview.md
+        - name: Migrace SSISDB do spravované instance Azure SQL Database
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referenční informace
   items:
     - name: .NET

@@ -1,163 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k zasílání zpráv služby Azure Service Bus
+summary: Zjistěte, jak nastavit až zasílání zpráv, které spojuje aplikace a služby mezi místními i cloudovými prostředí.
 metadata:
-  document_id: ''
-  title: 'Dokumentace k zasílání zpráv služby Azure Service Bus – kurzy, šablony Rychlý start, reference k rozhraní API'
-  meta.description: Learn how to set up messaging that connects applications and services across on-premises and cloud environments.
+  title: Dokumentace k zasílání zpráv služby Azure Service Bus
+  description: Zjistěte, jak nastavit až zasílání zpráv, které spojuje aplikace a služby mezi místními i cloudovými prostředí.
   services: service-bus-messaging
-  author: spelluru
-  manager: femila
   ms.service: service-bus-messaging
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 05/16/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: 'Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, kterou můžete využít k odesílání informací mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru.<p>Naučte se používat zasílání zpráv služby Azure Service Bus k odesílání a příjmu zpráv ve frontách a k publikování a odběru zpráv s využitím témat a předplatných.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/service-bus-messaging/media/index/azure-messaging-and-event-based-architecture.png'
-      width: 250
-    title: 'Zasílání zpráv v Azure Messaging a architektura založená na událostech (1:24:32)'
-    href: 'https://azure.microsoft.com/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se odesílat a přijímat zprávy ve <b>frontách</b> služby Service Bus:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: portál Azure
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-      - type: paragraph
-        text: 'Naučte se publikovat a odebírat zprávy s využitím <b>témat a předplatných</b> služby Service Bus:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_php.svg
-            text: PHP
-            href: /azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: portál Azure
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Další informace o vytváření, správě a odesílání a přijímání zpráv pomocí služby Azure Service Bus'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-cli">Použití témat a předplatných k aktualizaci uspořádání inventáře pomocí Azure CLI</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-portal">Použití témat a předplatných k aktualizaci uspořádání inventáře pomocí webu Azure Portal</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-powershell">Použití témat a předplatných k aktualizaci uspořádání inventáře pomocí Azure PowerShellu</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Implementace pracovních postupů komunikace na základě zpráv s využitím služby Azure Service Bus
-            href: /learn/modules/implement-message-workflows-with-service-bus/
-            image:
-              src: /learn/achievements/implement-message-workflows-with-service-bus.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-service-bus">Další interaktivní výuka...</a>
-  - title: Bezplatné školicí video od Pluralsightu
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Vývoj s .NET v Azure
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Vyhledání skriptů pro správu běžných úkolů
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure PowerShell</a>'
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure CLI</a>'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.servicebus/">Azure PowerShell</a></p><p><a href="/cli/azure/servicebus">Azure CLI</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p><p><a href="/java/api/overview/azure/servicebus">Java</a></p><p><a href="/javascript/api/overview/azure/service-bus">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicebus/">Reference k rozhraní REST API</a></p>
+  ms.date: 09/12/2019
+  ms.openlocfilehash: e1104c8caf1080aab3b6c5300dcbe4cd04d6b61a
+  ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70962500"
+landingContent:
+- title: Další informace o zasílání zpráv služby Service Bus
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je zasílání zpráv Service Bus?
+      url: service-bus-messaging-overview.md
+  - linkListType: concept
+    links:
+    - text: Porovnání služeb Azure pro zasílání zpráv
+      url: ../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json
+    - text: Porovnání front Azure a front Service Bus
+      url: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - text: Fronty, témata a odběry
+      url: service-bus-queues-topics-subscriptions.md
+- title: Vytvoření fronty služby Service Bus
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: portál Azure
+      url: service-bus-quickstart-portal.md
+    - text: Azure CLI
+      url: service-bus-quickstart-cli.md
+    - text: Azure PowerShell
+      url: service-bus-quickstart-powershell.md
+    - text: Šablona Azure Resource Manageru
+      url: service-bus-resource-manager-namespace-queue.md
+- title: Vytváření témata a předplatných služby Service Bus
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: portál Azure
+      url: service-bus-quickstart-topics-subscriptions-portal.md
+    - text: Šablona Azure Resource Manageru
+      url: service-bus-resource-manager-namespace-topic.md
+- title: Odesílání a příjem zpráv – fronty
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-get-started-with-queues.md
+    - text: Java
+      url: service-bus-java-how-to-use-queues.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-queues-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-queues.md
+    - text: PHP
+      url: service-bus-php-how-to-use-queues.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-queues.md
+- title: Publikování a přihlášení k odběru zpráv
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-how-to-use-topics-subscriptions.md
+    - text: Java
+      url: service-bus-java-how-to-use-topics-subscriptions.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-topics-subscriptions.md
+    - text: PHP
+      url: service-bus-php-how-to-use-topics-subscriptions.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-topics-subscriptions.md
+- title: Monitorování a správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití PowerShellu ke zřizování entit
+      url: service-bus-manage-with-ps.md
+    - text: Monitorování služby Service Bus s využitím Azure Monitoru
+      url: service-bus-metrics-azure-monitor.md
+    - text: Nastavení diagnostických protokolů
+      url: service-bus-diagnostic-logs.md
+    - text: Pozastavení a opětovná aktivace entit zasílání zpráv
+      url: entity-suspend.md
+    - text: Použití šablon Azure Resource Manageru
+      url: service-bus-resource-manager-overview.md
+    - text: Řešení potíží s výjimkami
+      url: service-bus-messaging-exceptions.md
+- title: Zabezpečení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ověřování a autorizace
+      url: service-bus-authentication-and-authorization.md
+    - text: Ověřování s využitím sdíleného přístupového podpisu
+      url: service-bus-sas.md
+    - text: Ověřování spravovaných identit s využitím Azure Active Directory
+      url: service-bus-managed-service-identity.md
+    - text: Ověření aplikace s využitím Azure Active Directory
+      url: authenticate-application.md

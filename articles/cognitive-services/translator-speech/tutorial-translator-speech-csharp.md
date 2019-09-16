@@ -3,20 +3,20 @@ title: 'Kurz: Translator Speech APIC#'
 titleSuffix: Azure Cognitive Services
 description: Rozhraní Translator Speech API můžete použít k překladu textu v reálném čase.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445589"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965283"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Translator Speech aplikace vC#
 
@@ -34,13 +34,13 @@ Soubor řešení sady Visual Studio pro tuto aplikaci je [dostupný na GitHubu](
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro účely tohoto kurzu potřebujete libovolná edice Visual Studio 2019, včetně Community Edition.
+Pro účely tohoto kurzu potřebujete jakoukoli edici sady Visual Studio 2019, včetně edice Community.
 
 Toto řešení sady Visual Studio také vytvoří instalační program pro aplikaci. Kvůli podpoře této funkce potřebujete [WiX Toolset](http://wixtoolset.org/) a rozšíření [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 
 Potřebujete rovněž klíč předplatného pro službu Translator Speech, který si můžete opatřit na řídicím panelu Microsoft Azure. K dispozici je cenová úroveň Free, která umožňuje bezplatný překlad až 10 hodin řeči za měsíc. Tato úroveň je pro účely tohoto kurzu dostačující.
 
-Třetí strany [JSON.NET knihovny](https://www.newtonsoft.com/json) (z Newtonsoft) je také nutný. NuGet toto sestavení nainstaluje automaticky, pokud jsou v možnostech sady Visual Studio zaškrtnutá obě políčka pro obnovení balíčku.
+Vyžaduje se také [knihovna JSON.NET](https://www.newtonsoft.com/json) třetí strany (z Newtonsoft). NuGet toto sestavení nainstaluje automaticky, pokud jsou v možnostech sady Visual Studio zaškrtnutá obě políčka pro obnovení balíčku.
 
 ## <a name="trying-the-translation-app"></a>Vyzkoušení aplikace pro překlad
 

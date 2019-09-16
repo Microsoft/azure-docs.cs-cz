@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Materializované zobrazení
           items:
+            - name: Průvodce optimalizací výkonu
+              href: performance-tuning-materialized-views.md
             - name: Vytvořit
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Příkaz Alter
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Uspořádaný clusterovaný index columnstore
+          items:
+            - name: Průvodce optimalizací výkonu
+              href: performance-tuning-ordered-CCI.md
         - name: Ukládání sady výsledků dotazu do mezipaměti
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabulky

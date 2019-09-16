@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: cdcb4832408b9e26e692a055e06bfb55e2fdfe96
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773323"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993104"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -155,4 +155,4 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 ## <a name="next-steps"></a>Další postup
 
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
-- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI](howto-read-replicas-cli.md) .
+- Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)

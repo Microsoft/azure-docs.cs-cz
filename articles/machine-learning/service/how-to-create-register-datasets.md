@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 215660b0f0b8748461849f20e65a3585f939085e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858797"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993345"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -76,7 +76,12 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
+
 ### <a name="create-tabulardatasets"></a>Vytvořit TabularDatasets
+
+TabularDatasets se dá vytvořit prostřednictvím sady SDK nebo pomocí cílové stránky pracovního prostoru (Preview).
+
+#### <a name="sdk"></a>Sada SDK 
 
 `from_delimited_files()` Použijte`TabularDatasetFactory` metodu třídy pro čtení souborů ve formátu CSV nebo TSV a vytvořte neregistrované TabularDataset. Pokud čtete z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění.
 
@@ -103,7 +108,18 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||ne
 
+#### <a name="workspace-landing-page"></a>Cílová stránka pracovního prostoru 
+
+Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com) , abyste mohli vytvořit datovou sadu přes webové prostředí. V současné době cílová stránka pracovního prostoru podporuje pouze vytváření TabularDatasets.
+
+Následující animace ukazuje, jak vytvořit datovou sadu na úvodní stránce pracovního prostoru. 
+
+Nejprve v levém podokně vyberte v části **assets (prostředky) datové** **sady** . Pak vyberte **+ vytvořit datovou sadu** a zvolte zdroj vaší datové sady; může to být buď místní soubory, úložiště dat nebo veřejné webové adresy URL. Formuláře **nastavení a verze Preview** a **schématu** se inteligentně vyplní podle typu souboru. Vyberte **Další** , abyste je zkontrolovali nebo chcete ještě před vytvořením datovou sadu nakonfigurovat. Pokud chcete dokončit vytváření datové sady, vyberte **Hotovo** . 
+
+![Vytvoření datové sady pomocí uživatelského rozhraní](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
 ### <a name="create-filedatasets"></a>Vytvoření datových sad
+
 `from_files()` Použijte`FileDatasetFactory` metodu třídy pro načtení souborů v jakémkoli formátu a vytvořte neregistrovanou datovou sadu souborů.
 
 ```Python
@@ -134,6 +150,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data')
 ```
 
+>[!Note]
+> Datové sady vytvořené prostřednictvím cílové stránky pracovního prostoru jsou automaticky registrovány v pracovním prostoru. 
+
 ## <a name="version-datasets"></a>Datové sady verze
 
 Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nové verze. Verze datové sady je způsob, jak můžete založit stav dat, abyste mohli použít určitou verzi datové sady pro experimentování nebo budoucí rozmnožování. Typické scénáře použití správy verzí: 
@@ -141,7 +160,7 @@ Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nov�
 * Při použití různých přístupů k přípravě dat nebo analýze funkcí.
 
 ```Python
-# create a TabularDataset from new Titanic training data
+# create a TabularDataset from Titanic training data
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
@@ -177,7 +196,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pomocí automatizovaného strojového učení [se TabularDatasets naučíte](https://aka.ms/automl-dataset).
 * Další příklady školení k datovým sadám najdete v [ukázkových poznámkových blocích](https://aka.ms/dataset-tutorial).

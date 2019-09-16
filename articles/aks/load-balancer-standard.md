@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9cfced0860b206e41b3e9f82f1ed2b92867e6b39
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 42323af40ee18a965363321196a04aa75c00aa40
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914843"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996941"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -277,6 +277,8 @@ V prohlížeči přejděte na veřejnou IP adresu a ověřte, že vidíte ukázk
 
 Pokud používáte nástroj pro vyrovnávání zatížení *standardní* skladové položky se spravovanými odchozími veřejnými IP adresami, které se ve výchozím nastavení vytvoří, můžete škálovat počet spravovaných odchozích veřejných IP adres pomocí parametru *Vyrovnávání zatížení – spravovaná-IP-Count* .
 
+Chcete-li aktualizovat existující cluster, spusťte následující příkaz. Tento parametr je také možné nastavit v době vytvoření clusteru a mít několik spravovaných odchozích veřejných IP adres.
+
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
@@ -284,11 +286,15 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-Výše uvedený příklad nastaví počet spravovaných odchozích veřejných IP adres na *2* pro cluster *myAKSCluster* v *myResourceGroup*. K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru můžete použít taky parametr *Managed-IP-Count nástroje pro vyrovnávání zatížení* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
+Výše uvedený příklad nastaví počet spravovaných odchozích veřejných IP adres na *2* pro cluster *myAKSCluster* v *myResourceGroup*. 
+
+K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru `--load-balancer-managed-outbound-ip-count` a jeho nastavení na požadovanou hodnotu můžete použít taky parametr Managed- *IP-Count nástroje pro vyrovnávání zatížení* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Volitelné – Poskytněte vlastní veřejné IP adresy nebo předpony pro odchozí přenosy
 
-Při použití *standardního* nástroje pro vyrovnávání zatížení SKU cluster AKS automaticky vytvoří veřejnou IP adresu ve stejné skupině prostředků vytvořené pro cluster AKS a přiřadí veřejnou IP adresu k nástroji pro vyrovnávání zatížení *Standard* SKU. Případně můžete přiřadit vlastní veřejnou IP adresu.
+Při použití *standardního* nástroje pro vyrovnávání zatížení SKU cluster AKS automaticky vytvoří veřejnou IP adresu ve stejné skupině prostředků vytvořené pro cluster AKS a přiřadí veřejnou IP adresu k nástroji pro vyrovnávání zatížení *Standard* SKU. Alternativně můžete přiřadit vlastní veřejnou IP adresu při vytváření clusteru nebo můžete aktualizovat vlastnosti nástroje pro vyrovnávání zatížení existujícího clusteru.
+
+Když nasazujete víc IP adres nebo předpon, můžete při definování IP adresy za jediným objektem nástroje pro vyrovnávání zatížení definovat více služeb. Koncový bod odchozího přenosu konkrétních uzlů bude záviset na službě, ke které jsou přidruženy.
 
 > [!IMPORTANT]
 > Pro odchozí přenosy s vaší *standardní* SKU nástroje pro vyrovnávání zatížení musíte použít veřejné IP adresy *Standard* SKU. SKU svých veřejných IP adres můžete ověřit pomocí příkazu [AZ Network Public-IP show][az-network-public-ip-show] :
@@ -324,8 +330,6 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 Výše uvedený příkaz zobrazuje ID předpony veřejné IP adresy *myPublicIPPrefix* ve skupině prostředků *myResourceGroup* .
 
-Pomocí příkazu *AZ AKS Update* použijte parametr pro *Vyrovnávání zatížení – odchozí-IP-předpony* s ID z předchozího příkazu.
-
 V následujícím příkladu se používá parametr *Vyrovnávání zatížení-odchozí-IP-předpony* s ID z předchozího příkazu.
 
 ```azurecli-interactive
@@ -338,6 +342,36 @@ az aks update \
 > [!IMPORTANT]
 > Veřejné IP adresy a předpony IP adres musí být ve stejné oblasti a v rámci stejného předplatného jako cluster AKS.
 
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Definování vlastní veřejné IP adresy nebo předpon v době vytvoření clusteru
+
+Možná budete chtít uvést vlastní IP adresy nebo předpony IP pro výstup v době vytváření clusteru pro podporu scénářů, jako je například povolený koncový bod odchozích dat. Přidejte stejné parametry uvedené výše do vašeho kroku vytvoření clusteru a definujte vlastní veřejné IP adresy a předpony IP adres na začátku životního cyklu clusteru.
+
+Pomocí příkazu *AZ AKS Create* s parametrem *Load Balancer-Outbound-IPS* vytvořte nový cluster s vašimi veřejnými IP adresami na začátku.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+Pomocí příkazu *AZ AKS Create* s parametrem *Load Balance-Outbound-IP-prefixs* vytvořte nový cluster s předponami veřejné IP adresy na začátku.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
+
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Vyčištění konfigurace nástroje pro vyrovnávání zatížení Standard SKU
 
 Pokud chcete odebrat ukázkovou aplikaci a konfiguraci nástroje pro vyrovnávání zatížení, použijte [kubectl Delete][kubectl-delete]:
@@ -347,7 +381,7 @@ kubectl delete -f sample.yaml
 kubectl delete -f standard-lb.yaml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službách Kubernetes Services najdete v [dokumentaci ke službám Kubernetes][kubernetes-services].
 

@@ -40,6 +40,8 @@
       items:
         - name: Portál
           href: role-assignments-portal.md
+        - name: Portál – uživatelé typu host
+          href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
@@ -72,8 +74,6 @@
       href: change-history-report.md
     - name: Zvýšení úrovně přístupu pro správu všech předplatných
       href: elevate-access-global-admin.md
-    - name: Správa přístupu pro externí uživatele
-      href: role-assignments-external-users.md
     - name: Klasičtí správci
       href: classic-administrators.md
     - name: Řešení potíží
