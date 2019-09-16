@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991565"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984957"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI
 
@@ -28,7 +28,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 > * Účet úložiště, který má hierarchický obor názvů. Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
 > V tomto článku se předpokládá, že jste vytvořili účet `myadlsg2`s názvem.
 > * Ukázkový datový soubor s názvem `Drivers.txt` umístěný ve vašem účtu úložiště.
-> Tuto ukázku si můžete stáhnout z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt)a pak tento soubor nahrát do svého účtu úložiště.
+> Tuto ukázku si můžete stáhnout z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)a pak tento soubor nahrát do svého účtu úložiště.
 > * **Power BI Desktop**. Můžete si ho stáhnout z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu

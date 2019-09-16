@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8877c29341c95d5cd0fe8e35887c44594e0b6d41
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231760"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000139"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
@@ -36,7 +36,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 - [Zásady Azure](../../../policy/overview.md) k pevnému určení služeb, které je možné v tomto prostředí nasadit, a zamítnutí vytváření libovolných prostředků veřejných IP adres (PIP)
 - Virtuální síť obsahující jednu podsíť, která je propojená k předem připravenému prostředí [sdílených služeb](../iso27001-shared/index.md) a vynucuje průchod veškerého provozu bránou firewall [sdílených služeb](../iso27001-shared/index.md). Tato virtuální síť je hostitelem pro tyto prostředky:
   - [Prostředí Azure App Service Environment](../../../../app-service/environment/intro.md), která se dají využít k hostování jedné nebo několika webových aplikací, webových rozhraní API nebo služeb
-  - Instance služby [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) využívající koncový bod služby virtuální sítě, a to pro ukládání tajných kódů využívaných aplikacemi, které jsou spuštěné v prostředí příslušné úlohy
+  - Instance služby [Azure Key Vault](../../../../key-vault/key-vault-overview.md) využívající koncový bod služby virtuální sítě, a to pro ukládání tajných kódů využívaných aplikacemi, které jsou spuštěné v prostředí příslušné úlohy
   - Instance serveru [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) využívající koncový bod služby virtuální sítě, a to pro hostování databází využívaných pro aplikace v prostředí příslušné úlohy
 
 ## <a name="next-steps"></a>Další kroky

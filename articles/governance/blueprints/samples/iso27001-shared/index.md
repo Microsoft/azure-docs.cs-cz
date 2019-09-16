@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b590eeb86972a8e769fc240b1935c6c8ed32530a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231736"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000514"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -38,7 +38,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
   - Jumpbox nebo hostitele typu bašta (bastion host) používaného pro účely správy, který je přístupný jenom přes službu [Azure Firewall](../../../../firewall/overview.md) nasazenou v podsíti stacku příchozího přenosu dat
   - Dva virtuální počítače, na kterých běží Active Directory Domain Services (ADDS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
   - Použití [Azure Net Watcheru](../../../../network-watcher/network-watcher-monitoring-overview.md) a standardní ochrany před útoky DDoS
-- Instance služby [Azure Key Vault](../../../../key-vault/key-vault-whatis.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
+- Instance služby [Azure Key Vault](../../../../key-vault/key-vault-overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 
 Všechny tyto prvky dodržují prověřené postupy publikované v článku zaměřeném na [Centrum architektury Azure – referenční architektury](/azure/architecture/reference-architectures/).
 
