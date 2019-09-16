@@ -56,7 +56,7 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu so
 | Název elementu | Požadováno? | Popis |
 | --- | --- | --- |
 | $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON můžete testovat platnost definičního souboru. |
-| název |Ano |Název artefaktu, který se zobrazí v testovacím prostředí. |
+| title |Ano |Název artefaktu, který se zobrazí v testovacím prostředí. |
 | description |Ano |Popis artefaktu, který se zobrazí v testovacím prostředí. |
 | iconUri |Ne |Identifikátor URI Ikona zobrazená v testovacím prostředí. |
 | targetOsType |Ano |Operační systém virtuálního počítače, kde je nainstalován artefakt. Podporované možnosti jsou Windows a Linux. |
