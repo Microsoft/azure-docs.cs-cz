@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: Koncepty
   items:
+    - name: Základní koncepty
+      href: basic-concepts.md
     - name: Zabezpečení
       items:
         - name: Přehled zabezpečení
@@ -68,8 +70,6 @@
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpečení trezoru klíčů
           href: key-vault-secure-your-key-vault.md
-    - name: Co je Key Vault?
-      href: key-vault-whatis.md
     - name: Obnovitelné odstranění
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -92,6 +92,8 @@
           href: create-certificate-scenarios.md
 - name: Návody
   items:
+    - name: Použití spravované identity služby App Service
+      href: managed-identity.md
     - name: Protokolování v Azure Key Vaultu
       href: key-vault-logging.md
     - name: Přístup přes bránu firewall

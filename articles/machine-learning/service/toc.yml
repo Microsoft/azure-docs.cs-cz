@@ -3,7 +3,7 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je služba Azure Machine Learning?
+    - name: Co je Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Architektura a podmínky
@@ -31,6 +31,11 @@
             - name: Automatické trénování modelu ML
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Dávkové vyhodnocování s využitím kanálů (pokročilé)
+          items:
+            - name: Dávkové vyhodnocování klasifikačního modelu
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Vizuální rozhraní
       items:
         - name: 1. Trénování regresního modelu
@@ -122,7 +127,7 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "Nastavení vývojového prostředí\_"
+    - name: Nastavení vývojového prostředí
       items:
         - name: Konfigurace vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

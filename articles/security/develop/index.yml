@@ -7,13 +7,13 @@ metadata:
   meta.description: Learn how to develop secure apps on Azure.
   services: security
   author: TerryLanfear
-  manager: barbkess
+  manager: rkarlin
   ms.service: security
   ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 08/29/2019
+  ms.date: 09/14/2019
   ms.author: terrylan
 abstract:
   description: 'Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.'
@@ -27,12 +27,12 @@ sections:
           - href: /azure/security/develop/secure-dev-overview
             html: <p>Vývoj zabezpečené webové aplikace v Azure</p>
             image:
-              src: /media/common/i_get-started.svg
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
             title: Začínáme
           - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
             html: <p>Pět hlavních položek zabezpečení pro webové aplikace</p>
             image:
-              src: /media/common/i_learn-about.svg
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
             title: Získávání dovedností pomocí Microsoft Learn
   - title: Zabezpečení ukázkových aplikací
     items:
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Webová aplikace v linuxovém kontejneru</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Odvětví platebních karet</a>
   - title: Koncepty
     items:
       - type: list

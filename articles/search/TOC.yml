@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Kognitivní hledání
       href: cognitive-search-concept-intro.md
+    - name: Sady dovedností
+      href: cognitive-search-working-with-skillsets.md
     - name: Knowledge Store
       href: knowledge-store-concept-intro.md
     - name: Projekce
@@ -166,9 +168,7 @@
         - name: Modelování komplexních datových typů
           href: search-howto-complex-data-types.md
         - name: Modelování relačních dat
-          href: search-example-adventureworks-modeling.md
-        - name: Modelování omezujících vlastností na více úrovních
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: Načtení dat
       items:
         - name: Přehled importu dat
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: Knowledge Store (Preview)
       items:
-        - name: Připojení s využitím Power BI
-          href: knowledge-store-connect-powerbi.md
+        - name: Vytvoření znalostní databáze na webu Azure Portal
+          href: knowledge-store-create-portal.md
         - name: Vytvoření s využitím architektury REST a Postman
           href: knowledge-store-howto.md
+        - name: Zobrazení s využitím Průzkumníka služby Storage
+          href: knowledge-store-view-storage-explorer.md
+        - name: Propojení s Power BI
+          href: knowledge-store-connect-power-bi.md
     - name: Dotazování dat
       items:
         - name: Vytvoření základního dotazu
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Vysvětlení filtrů kolekcí
           href: search-query-understand-collection-filters.md
+        - name: Příklad omezujících vlastností na více úrovních
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: Zpracování výsledků
       items:
         - name: Funkce související se stránkou

@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Dokumentace Azure Data Lake Analytics
+summary: Data Lake Analytics umožňuje spouštět analytické úlohy pro velké objemy dat, které se přizpůsobí obrovským datovým sadám.
+metadata:
+  title: Azure Data Lake Analytics
+  description: Data Lake Analytics umožňuje spouštět analytické úlohy pro velké objemy dat, které se přizpůsobí obrovským datovým sadám.
+  services: service
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70997243"
+landingContent:
+- title: Informace o Data Lake Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Data Lake Analytics?
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytváření úloh U-SQL na webu Azure Portal
+      url: data-lake-analytics-get-started-portal.md
+    - text: Vytváření úloh U-SQL s využitím Azure CLI
+      url: data-lake-analytics-get-started-cli.md
+    - text: Vytváření úloh U-SQL v editoru Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: Seznámení s jazykem U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Začínáme s U-SQL
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: Referenční informace k jazyku U-SQL
+      url: https://docs.microsoft.com/u-sql/
+    - text: Začínáme s katalogem U-SQL
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: Použití uživatelsky definovaných operátorů
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: Vývoj programů U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití nástrojů Data Lake pro Visual Studio
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: Použití projektu databáze U-SQL v sadě Visual Studio
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: Použití prohlížeče úloh a zobrazení úloh
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: Ladění uživatelsky definovaného kódu C#
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: Použití nástrojů Azure Data Lake pro Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Použití vlastního kódu s U-SQL v editoru Visual Studio Code
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: Plánování úloh s využitím SSIS
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: Správa služby Data Lake Analytics
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa s využitím webu Azure Portal
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Správa s využitím Azure CLI
+      url: data-lake-analytics-manage-use-cli.md
+    - text: Správa s využitím aplikace v .NET
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Přidání uživatele na webu Azure Portal
+      url: data-lake-analytics-add-users.md
+    - text: Správa Azure Data Lake Analytics s využitím zásad
+      url: data-lake-analytics-policies.md
+- title: Průběžná integrace a průběžné nasazování
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení kanálu CI/CD
+      url: data-lake-analytics-cicd-overview.md
+    - text: Správa sestavení U-SQL
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: Testování skriptů U-SQL
+      url: data-lake-analytics-cicd-test.md
+    - text: Použití U-SQL SDK
+      url: data-lake-analytics-u-sql-sdk.md

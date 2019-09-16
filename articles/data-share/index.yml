@@ -1,63 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Azure Data Share Preview
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Data Share (Preview)
+summary: Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi.
 metadata:
-  title: 'Dokumentace ke službě Azure Data Share Preview – kurzy, praktičtí průvodci'
-  description: Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi.
-  author: joannapea
-  ms.author: joanpo
+  title: Azure Data Share (Preview)
+  description: Azure Data Share (Preview) je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi.
+  services: service
   ms.service: data-share
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/10/2019
-abstract:
-  description: '<p>Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi. Vyberte datové sady, kterou chcete sdílet, přidejte příjemce a začněte sdílet data. Budete přitom mít možnost řídit, monitorovat a kontrolovat relace sdílení dat. </p><p>Naučte se prostřednictvím našich kurzů a praktických průvodců využívat Azure Data Share.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/azure-friday.png
-      width: 250
-    title: Azure Data Share v pořadu Azure Friday
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
-    width: 250
-sections:
-  - title: Návody
-    items:
-      - type: paragraph
-        text: 'Prostřednictvím jednoho z následujících praktických průvodců se naučíte monitorovat vaši sdílenou datovou složku, konfigurovat mapování datových sad, přidávat příjemce a využívat další funkce:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Monitorování služby Azure Data Share
-            href: /azure/data-share/how-to-monitor
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Konfigurace mapování datové sady
-            href: /azure/data-share/how-to-configure-mapping
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Řešení potíží se službou Azure Data Share
-            href: /azure/data-share/data-share-troubleshoot
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se sdílet vaše data s využitím služby Azure Data Share
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="share-your-data">Sdílení dat s využitím služby Azure Data Share</a>
-          - html: <a href="subscribe-to-data-share">Přijetí a získání dat prostřednictvím služby Azure Data Share</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/datashare">REST API</a></p>
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70993941"
+landingContent:
+- title: Informace o službě Azure Data Share
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Data Share?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Koncepty služby Azure Data Share
+      url: terminology.md
+    - text: Role a požadavky pro Azure Data Share
+      url: concepts-roles-permissions.md
+- title: Sdílení dat
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Sdílení dat s využitím služby Azure Data Share
+      url: share-your-data.md
+    - text: Přijetí a získání dat prostřednictvím služby Azure Data Share
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace mapování datové sady
+      url: how-to-configure-mapping.md
+    - text: Přidání datových sad
+      url: how-to-add-datasets.md
+- title: Monitorování a správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování služby Azure Data Share
+      url: how-to-monitor.md
+    - text: Řešení běžných potíží
+      url: data-share-troubleshoot.md
+    - text: Přidání datových sad
+      url: how-to-add-datasets.md
+    - text: Odstranění pozvánky
+      url: how-to-delete-invitation.md
+    - text: Odvolání předplatného sdílené složky
+      url: how-to-revoke-share-subscription.md

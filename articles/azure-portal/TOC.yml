@@ -4,6 +4,8 @@
   items:
     - name: Informace o webu Azure Portal
       href: azure-portal-overview.md
+    - name: Začínáme s centrem rychlého startu Azure
+      href: azure-portal-quickstart-center.md
     - name: Podporované prohlížeče a zařízení
       href: azure-portal-supported-browsers-devices.md
 - name: Koncepty
@@ -25,7 +27,7 @@
     - name: Export nebo odstranění uživatelských nastavení
       href: azure-portal-export-delete-settings.md
     - name: Série videí s postupy pro Azure Portal
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Referenční informace
   items:
     - name: Klávesové zkratky

@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: Předpona veřejné IP adresy
           href: manage-public-ip-address-prefix.md
+    - name: Přesun mezi oblastmi
+      items:
+        - name: Virtuální sítě – portál
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s partnerskými vztahy virtuálních sítí

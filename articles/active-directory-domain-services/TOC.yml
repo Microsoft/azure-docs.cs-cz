@@ -89,7 +89,7 @@
       items:
         - name: Nasazení proxy aplikace služby Azure AD
           href: deploy-azure-app-proxy.md
-        - name: Konfigurace podpory pro synchronizaci profilu pro SharePoint Server
+        - name: Povolení synchronizace profilu pro SharePoint Server
           href: deploy-sp-profile-sync.md
     - name: Řešení potíží
       items:

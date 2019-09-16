@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Úprava profilu
       href: billing-how-to-change-azure-account-profile.md
+    - name: Otevřené bankovnictví a silné ověřování zákazníků
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Řešení zůstatku po splatnosti
+      href: billing-azure-subscription-past-due-balance.md
     - name: Udělení přístupu k fakturaci
       href: billing-manage-access.md
     - name: Role smlouvy se zákazníkem Microsoftu v Azure
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Organizace nákladů pomocí oddílů faktury
       href: billing-mca-section-invoice.md
+    - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+      href: billing-mca-enterprise-operations.md
     - name: Správa EA
       items:
         - name: Začínáme na portálu Azure EA
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
           href: billing-mca-enterprise-operations.md
-    - name: Řešení zůstatku po splatnosti
-      href: billing-azure-subscription-past-due-balance.md
     - name: Nastavení fakturačních účtů pro smlouvu se zákazníkem Microsoftu
       href: billing-mca-setup-account.md
     - name: Registrace s použitím účtu Office 365
