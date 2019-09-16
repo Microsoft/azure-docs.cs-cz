@@ -254,7 +254,7 @@ V **autorizace** oddílu, zahrňte tento řádek:
 | Element | Požaduje se | Popis | 
 | ------- | -------- | ----------- | 
 | type | Ano | Typ ověřování, který chcete použít. Pro základní ověřování, musí být hodnota `Basic`. | 
-| username jméno | Ano | Uživatelské jméno, které chcete použít pro ověřování | 
+| username | Ano | Uživatelské jméno, které chcete použít pro ověřování | 
 | password | Ano | Heslo, které chcete použít pro ověřování | 
 |||| 
 
