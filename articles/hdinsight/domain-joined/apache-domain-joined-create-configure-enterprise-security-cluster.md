@@ -306,7 +306,7 @@ Ověřte, že je certifikát nainstalovaný v osobním úložišti\'počítače 
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | Cíl | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
