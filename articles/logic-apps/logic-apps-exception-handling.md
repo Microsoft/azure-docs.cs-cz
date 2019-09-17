@@ -72,8 +72,8 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 | Value | type | Popis |
 |-------|------|-------------|
-| <*retry-policy-type*> | Řetězec | Typ zásady opakování, který chcete použít: `default`, `none`, `fixed`nebo`exponential` | 
-| <*retry-interval*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je. `PT1D` Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. | 
+| <*retry-policy-type*> | String | Typ zásady opakování, který chcete použít: `default`, `none`, `fixed`nebo`exponential` | 
+| <*retry-interval*> | String | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je. `PT1D` Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. | 
 | <*retry-attempts*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. | 
 ||||
 
