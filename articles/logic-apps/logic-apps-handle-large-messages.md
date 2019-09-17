@@ -119,7 +119,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
    | Logic Apps pole s hlavičkou žádosti | Value | type | Popis |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | blokové | Řetězec | Indikuje, že se obsah nahrává do bloků dat. |
+   | **x-ms-transfer-mode** | blokové | String | Indikuje, že se obsah nahrává do bloků dat. |
    | **x-ms-content-length** | <*content-length*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
    ||||
 
@@ -128,7 +128,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
    | Pole hlavičky odpovědi koncového bodu | type | Povinné | Popis |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
-   | **Location** | Řetězec | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
+   | **Location** | String | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
    ||||
 
 3. Vaše aplikace logiky vytvoří a pošle následné zprávy opravy HTTP – každou s těmito informacemi:
