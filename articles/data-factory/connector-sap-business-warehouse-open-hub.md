@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cfe2767b3725378bc88fe97203c7f1622558aa39
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a42b31a1392dd11638bae195b039a15a81d12897
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813545"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010541"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 
@@ -27,6 +27,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento SAP Business Warehouse prostřednictvím konektoru open hub se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z SAP Business Warehouse můžete kopírovat prostřednictvím otevřeného centra pro všechna podporovaná úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -179,7 +184,7 @@ Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** akt
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
 | excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
-| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
+| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId větším, **než** je hodnota této vlastnosti.  | Ne |
 
 >[!TIP]
 >Pokud vaše otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo pokud pro test spustíte jenom DTP jenom jednou, nezapomeňte zrušit kontrolu možnosti "excludeLastRequest", aby bylo možné zkopírovat d. ATA.
@@ -234,5 +239,10 @@ Při kopírování dat z SAP BW otevřeném centru, se z SAP BW datových typů 
 | N (NUMC) | Řetězec |
 | X (Binary and Raw) | Řetězec |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

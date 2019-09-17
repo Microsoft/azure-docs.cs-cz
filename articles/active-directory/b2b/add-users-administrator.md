@@ -1,6 +1,6 @@
 ---
-title: Na webu Azure Portal – Azure Active Directory přidat uživatele spolupráce B2B | Dokumentace Microsoftu
-description: Ukazuje, jak správce můžete přidat uživatele typu Host do jejich adresáře z partnerské organizace pomocí spolupráce B2B ve službě Azure Active Directory (Azure AD).
+title: Přidat uživatele spolupráce B2B do Azure Portal-Azure Active Directory | Microsoft Docs
+description: Ukazuje, jak může správce přidat uživatele typu Host do adresáře z partnerské organizace pomocí spolupráce B2B služby Azure Active Directory (Azure AD).
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,116 +11,116 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812832"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018200"
 ---
-# <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal
+# <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal
 
-Jako uživatel, který se přiřadí role adresáře správce s omezením můžete na webu Azure portal se pozvat uživatele spolupráce B2B. Můžete pozvat uživatele typu Host do adresáře, skupinu nebo aplikaci. Po pozvat uživatele prostřednictvím některé z těchto metod, pozvaný uživatel účet se přidá do služby Azure Active Directory (Azure AD), mají typ uživatel *hosta*. Uživatel typu Host musíte pak uplatňovat svou pozvánku k přístupu k prostředkům.
+Jako uživatel, kterému je přiřazena kterákoli z omezených rolí adresáře správce, můžete použít Azure Portal k pozvání uživatelů pro spolupráci B2B. Uživatele typu Host můžete pozvat do adresáře, do skupiny nebo do aplikace. Po pozvání uživatele prostřednictvím kterékoli z těchto metod je účet pozvaného uživatele přidán do Azure Active Directory (Azure AD) s uživatelským typem *hosta*. Uživatel typu Host musí následně uplatnit své pozvání k přístupu k prostředkům. Pozvání uživatele nevyprší.
 
-Po přidání uživatele typu Host do adresáře, můžete buď poslat uživateli typu Host přímý odkaz do sdílené aplikace, nebo uživatel typu Host můžete kliknout na adresu URL uplatnění v e-mailová pozvánka. Další informace o uplatnění procesu, naleznete v tématu [uplatnění pozvání spolupráce B2B](redemption-experience.md).
+Po přidání uživatele typu Host do adresáře můžete buď Odeslat uživateli typu Host přímý odkaz na sdílenou aplikaci, nebo uživatel typu Host může kliknout na adresu URL pro uplatnění v e-mailu s pozvánkou. Další informace o procesu uplatnění, najdete v tématu věnovaném [uplatnění pozvánky B2B pro spolupráci](redemption-experience.md).
 
 > [!IMPORTANT]
-> Postupujte podle kroků v [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement) přidejte adresu URL prohlášení o ochraně osobních údajů vaší organizace. Jako součást procesu uplatnění pozvání první čas musí pozvaný uživatel vyjádřit souhlas. na vaše zásady ochrany osobních údajů, abyste mohli pokračovat. 
+> Měli byste postupovat podle kroků [v tématu Postupy: Přidejte do Azure Active Directory](https://aka.ms/adprivacystatement) informace o ochraně osobních údajů vaší organizace a přidejte adresu URL prohlášení o zásadách ochrany osobních údajů vaší organizace. V rámci prvního procesu uplatnění pozvánky musí pozvaní uživatelé před pokračováním vyjádřit souhlas s vaším podmínkami ochrany osobních údajů. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Ujistěte se, že nastavení externí spolupráce vaší organizace jsou nakonfigurovány tak, že budete moct zvát hosty. Ve výchozím nastavení budou všichni uživatelé a správci můžou zvát hosty. Ale zabránit určité typy uživatelé nebo správci pozval hostů můžou být nakonfigurované zásady externí spolupráce vaší organizace. Postup zobrazení a nastavovat tyto zásady, najdete v tématu [povolit externí spolupráce B2B a spravovat, kdo může zvát hosty](delegate-invitations.md).
+Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Ve výchozím nastavení mohou všichni uživatelé a správci pozvat hosty. Ale externí zásady spolupráce vaší organizace můžou být nakonfigurované tak, aby se zabránilo určitým typům uživatelů nebo správců v pozvání hostům. Pokud chcete zjistit, jak tyto zásady zobrazit a nastavit, přečtěte si téma [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](delegate-invitations.md).
 
 ## <a name="add-guest-users-to-the-directory"></a>Přidat uživatele typu Host do adresáře
 
-Chcete-li přidat uživatele spolupráce B2B do adresáře, postupujte podle těchto kroků:
+Pokud chcete do adresáře přidat uživatele spolupráce B2B, postupujte takto:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako uživatel, který má přiřazenou roli adresáře správce s omezením nebo roli odesílatel pozvánky hostů.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako uživatel, kterému je přiřazena omezená role adresáře správce nebo role pozvánky hosta.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat** vyberte **Uživatele**.
 4. Vyberte **Nový uživatel typu host**.
 
-   ![Ukazuje, kde je nový uživatel typu Host v uživatelském rozhraní](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![Zobrazuje, kde je nový uživatel typu Host v uživatelském rozhraní.](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
    > [!NOTE]
-   > **Nový uživatel typu Host** možnost je také k dispozici na **organizační vztahy** stránky. V **Azure Active Directory**v části **spravovat**vyberte **organizační vztahy**.
+   > **Nová možnost uživatele typu Host** je k dispozici také na stránce **vztahy organizace** . V **Azure Active Directory**v části **Spravovat**vyberte **vztahy organizace**.
 
 5. V části **Uživatelské jméno** zadejte e-mailovou adresu externího uživatele. Volitelně můžete zahrnout uvítací zprávu. Příklad:
 
-   ![Ukazuje, kde je nový uživatel typu Host v uživatelském rozhraní](./media/add-users-administrator/InviteGuest.png) 
+   ![Zobrazuje, kde je nový uživatel typu Host v uživatelském rozhraní.](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > Skupiny e-mailové adresy nejsou podporovány. Zadejte e-mailovou adresu pro jednotlivce. Kromě toho některé poskytovateli e-mailu umožňují uživatelům přidat plus symbol (+) a další text pro jejich e-mailové adresy, které vám pomůžou s věci, jako je filtrování doručené pošty. Nicméně, Azure AD nepodporuje aktuálně plus symboly v e-mailové adresy. Abyste předešli problémům s doručování, vynechejte na symbol plus a všechny znaky následující až @ symbol.
+    > E-mailové adresy skupin se nepodporují; Zadejte e-mailovou adresu jednotlivce. Někteří poskytovatelé e-mailu navíc umožňují uživatelům přidávat symbol plus (+) a další text na své e-mailové adresy, které vám pomůžou s akcemi jako filtrování doručené pošty. Azure AD ale v současné době nepodporuje symboly plus v e-mailových adresách. Aby nedocházelo k problémům s doručováním, vynechejte symbol plus a všechny znaky, které následují až po symbol @.
 
 6. Výběrem možnosti **Pozvat** automaticky odešlete uživateli typu host pozvánku. 
  
 Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
 
-![Zobrazí uživatele B2B uživatele typu Host](./media/add-users-administrator/GuestUserType.png)  
+![Zobrazuje uživatele B2B s uživatelem typu Host.](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>Přidat uživatele typu Host do skupiny
-Pokud je potřeba ručně přidat uživatele spolupráce B2B do skupiny, postupujte podle těchto kroků:
+Pokud potřebujete ručně přidat uživatele spolupráce B2B do skupiny, postupujte takto:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. V části **spravovat**vyberte **skupiny**.
-4. Vyberte skupinu (nebo klikněte na tlačítko **novou skupinu** vytvořit nový). Je vhodné zahrnout do popisu skupiny, tato skupina obsahuje hosty B2B.
+3. V části **Spravovat**vyberte **skupiny**.
+4. Vyberte skupinu (nebo kliknutím na **Nová skupina** vytvořte novou). Je vhodné zahrnout do popisu skupiny, že skupina obsahuje uživatele typu Host B2B.
 5. Vyberte **členy**. 
 6. Udělejte jednu z těchto věcí:
-   - Pokud uživatel typu Host už existuje v adresáři, vyhledejte uživatele B2B. Vyberte uživatele a potom klikněte na tlačítko **vyberte** přidejte uživatele do skupiny.
-   - Pokud uživatel typu Host ještě neexistuje v adresáři, pozvánku do skupiny do vyhledávacího pole zadáte e-mailová adresa, zadáním volitelnou osobní zprávu a pak levým na **vyberte**. E-mailové pozvánce automaticky nedostane mimo pozvaného uživatele.
+   - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele a kliknutím na tlačítko **Vybrat** přidejte uživatele do skupiny.
+   - Pokud uživatel typu Host ještě v adresáři neexistuje, Pozvěte ho do skupiny zadáním jejich e-mailové adresy do vyhledávacího pole, zadáním volitelné osobní zprávy a kliknutím na **Vybrat**. Pozvánka se automaticky přehraje pozvánému uživateli.
      
-     ![Přidejte tlačítko pozvat můžete přidat členy typu Host](./media/add-users-administrator/GroupInvite.png)
+     ![Přidat tlačítko pozvat pro přidání členů typu Host](./media/add-users-administrator/GroupInvite.png)
    
-Můžete také použít dynamické skupiny se spoluprací Azure AD B2B. Další informace najdete v tématu [dynamické skupiny a spolupráce Azure Active Directory s B2B](use-dynamic-groups.md).
+Dynamické skupiny můžete použít také při spolupráci Azure AD B2B. Další informace najdete v tématu [dynamické skupiny a Azure Active Directory spolupráce B2B](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Přidat uživatele typu Host do aplikace
+## <a name="add-guest-users-to-an-application"></a>Přidání uživatelů typu Host do aplikace
 
-Chcete-li přidat uživatele spolupráce B2B do aplikace, postupujte podle těchto kroků:
+Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. V části **spravovat**vyberte **podnikové aplikace** > **všechny aplikace**.
-4. Vyberte aplikaci, ke kterému chcete přidat uživatele typu Host.
-5. Na řídicím panelu aplikace, vyberte **celkový počet uživatelů** otevřít **uživatelů a skupin** podokně.
+3. V části **Spravovat**vyberte **podnikové aplikace** > **všechny aplikace**.
+4. Vyberte aplikaci, do které chcete přidat uživatele typu Host.
+5. Na řídicím panelu aplikace vyberte **celkem uživatelů** a otevřete podokno **Uživatelé a skupiny** .
 
-    ![Celkový počet uživatelů tlačítko pro přidání otevřete uživatelé a skupiny](./media/add-users-administrator/AppUsersAndGroups.png)
+    ![Tlačítko celkem uživatelů pro přidání otevřených uživatelů a skupin](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. Vyberte **přidat uživatele**.
-7. V části **přidat přiřazení**vyberte **uživatele a skupiny**.
+6. Vyberte **Přidat uživatele**.
+7. V části **Přidat přiřazení**vyberte **uživatele a skupiny**.
 8. Udělejte jednu z těchto věcí:
-   - Pokud uživatel typu Host už existuje v adresáři, vyhledejte uživatele B2B. Vyberte uživatele, klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **přiřadit** přidejte uživatele k aplikaci.
-   - Pokud uživatel typu Host ještě neexistuje v adresáři, v části **vyberte člena nebo Pozvěte externího uživatele**, zadejte e-mailovou adresu uživatele. V okně se zprávou Zadejte volitelnou zprávu osobní. V okně se zprávou, klikněte na možnost **pozvat**.
+   - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele, klikněte na **Vybrat**a pak kliknutím na **přiřadit** přidejte uživatele do aplikace.
+   - Pokud uživatel typu Host ještě v adresáři neexistuje, zadejte e-mailovou adresu uživatele v části **Vybrat člena nebo Pozvěte externího uživatele**. Do pole zpráva zadejte volitelnou osobní zprávu. V okně se zprávou klikněte na **pozvat**.
            
-       ![Přidejte tlačítko pozvat můžete přidat členy typu Host](./media/add-users-administrator/AppInviteUsers.png)
+       ![Přidat tlačítko pozvat pro přidání členů typu Host](./media/add-users-administrator/AppInviteUsers.png)
    
-      Klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **přiřadit** přidejte uživatele k aplikaci. Pozvánka se automaticky dostane k pozvaného uživatele.
+      Klikněte na **Vybrat**a potom kliknutím na **přiřadit** přidejte uživatele do aplikace. Pozvánka se automaticky přehraje pozvánému uživateli.
 
-9. Uživatel typu Host se zobrazí v aplikačním **uživatelů a skupin** seznamu s přiřazenou rolí **výchozího přístupu k**. Pokud chcete změnit roli, postupujte takto:
-   - Vyberte uživatele typu Host a pak vyberte **upravit**. 
-   - V části **upravit přiřazení**, klikněte na tlačítko **vybrat roli**a vyberte roli, kterou chcete přiřadit vybranému uživateli.
-   - Klikněte na **Vybrat**.
+9. Uživatel typu Host se zobrazí v seznamu **Uživatelé a skupiny** aplikace s přiřazenou rolí **výchozí přístup**. Pokud chcete změnit roli, udělejte toto:
+   - Vyberte uživatele typu Host a pak vyberte **Upravit**. 
+   - V části **Upravit přiřazení**klikněte na **Vybrat roli**a vyberte roli, kterou chcete vybranému uživateli přiřadit.
+   - Klikněte na tlačítko **vyberte**.
    - Klikněte na **Přiřadit**.
  
-## <a name="resend-invitations-to-guest-users"></a>Znovu odeslat pozvánky uživatelů typu Host
+## <a name="resend-invitations-to-guest-users"></a>Znovu poslat pozvánky uživatelům typu Host
 
-Pokud uživatel typu Host ještě uplatnit ještě pozvánku nepřijal, můžete znovu poslat e-mailová pozvánka.
+Pokud uživatel typu Host ještě nepoužil své pozvání, můžete znovu odeslat e-mail s pozvánkou.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat** vyberte **Uživatele**.
 5. Vyberte uživatelský účet.
-6. V části **spravovat**vyberte **profilu**.
-7. Pokud uživatel ještě nepřijal pozvání **znovu odeslat pozvánku** možnost je k dispozici. Klikněte na toto tlačítko znovu odeslat.
+6. V části **Spravovat**vyberte **profil**.
+7. Pokud uživatel pozvánku ještě nepřijal, je k dispozici možnost **opětovného odeslání pozvánky** . Kliknutím na toto tlačítko se znovu odešlete.
 
-   ![Možnost znovu odeslat pozvánku do profilu uživatele](./media/add-users-administrator/Resend-Invitation.png)
+   ![Možnost opětovného odeslání pozvánky v profilu uživatele](./media/add-users-administrator/Resend-Invitation.png)
 
 > [!NOTE]
-> Pokud jste znovu odeslat pozvánku původně přesměruje uživatele na konkrétní aplikaci, Pochopte, že na odkaz v nové pozvánky uživatel přejde na přístupovém panelu nejvyšší úrovně místo.
+> Pokud znovu odešlete pozvánku, která původně nasměrovala uživatele na konkrétní aplikaci, poznáte, že odkaz v nové pozvánce převezme uživatele do přístupového panelu na nejvyšší úrovni.
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o tom, jak správci mimo Azure AD můžete přidat uživatele typu Host B2B, naleznete v tématu [jak informačních pracovníků vynutit přidat uživatele spolupráce B2B?](add-users-information-worker.md)
-- Informace o e-mailovou pozvánku, najdete v části [prvky B2B spolupráce e-mailová pozvánka](invitation-email-elements.md).
+- Informace o tom, jak mohou správci služby Azure AD přidat uživatele typu Host B2B, najdete v tématu [jak informační pracovníci přidávají uživatele spolupráce B2B?](add-users-information-worker.md)
+- Informace o e-mailu s pozvánkou najdete v tématu o [prvcích e-mailu s pozvánkou B2B pro spolupráci](invitation-email-elements.md).
 

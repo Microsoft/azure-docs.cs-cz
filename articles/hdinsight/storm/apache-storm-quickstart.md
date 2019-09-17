@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytváření a monitorování topologií Apache Storm v Azure HDInsight'
-description: V tomto rychlém startu zjistěte, jak vytvořit a monitorovat topologií Apache Storm v Azure HDInsight.
+title: 'Rychlý start: Vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight'
+description: V rychlém startu se dozvíte, jak vytvořit a monitorovat topologii Apache Storm v Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,34 +8,34 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 12001aef970d3b465a7f5c8e0c7af072b8f4ec80
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428448"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018585"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý start: Vytvořit a monitorovat topologií Apache Storm v Azure HDInsight
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý start: Vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
 
 Apache Storm je škálovatelný výpočetní systém v reálném čase odolný proti chybám, distribuovaný určený pro zpracování datových proudů. Pomocí Storm v Azure HDInsight můžete vytvořit cloudový cluster Storm, který bude provádět analýzy velkých objemů dat v reálném čase.
 
-V tomto rychlém startu použijete příkladem Apache [topologie storm starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt můžete vytvořit a monitorovat Apache Storm topologie do existujícího clusteru Apache Storm.
+V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) k vytvoření a monitorování Apache Storm topologie do existujícího clusteru Apache Storm.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Clustery Apache Storm v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Storm** pro **typ clusteru**.
+* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-topology"></a>Vytvoření topologie
 
-1. Připojte ke clusteru Storm. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem Storm cluster a potom zadejte příkaz:
+1. Připojte se ke clusteru nevlastníce. Níže uvedený příkaz upravte nahrazením `CLUSTERNAME` názvem vašeho clusteru pro zaplavení a zadáním příkazu:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. **WordCount** příklad je zahrnuta v clusteru HDInsight na `/usr/hdp/current/storm-client/contrib/storm-starter/`. Topologie generuje náhodné věty a počítá kolikrát slova vyskytovat. Pomocí následujícího příkazu spusťte **wordcount** topologie v clusteru:
+2. **WORDCOUNT** příklad je součástí vašeho clusteru HDInsight na adrese `/usr/hdp/current/storm-client/contrib/storm-starter/`. Tato topologie vygeneruje náhodné věty a spočítá, kolikrát se slova vyskytují. K zahájení topologie **WORDCOUNT** v clusteru použijte následující příkaz:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -43,42 +43,42 @@ V tomto rychlém startu použijete příkladem Apache [topologie storm starter](
 
 ## <a name="monitor-the-topology"></a>Monitorování topologie
 
-Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je zahrnuté ve vašem clusteru HDInsight.
+Funkce poskytuje webové rozhraní pro práci s běžícími topologiemi a je součástí clusteru HDInsight.
 
 Ke sledování topologie pomocí uživatelského rozhraní Storm použijte následující kroky:
 
 1. Pokud chcete zobrazit uživatelské rozhraní Storm, otevřete ve webovém prohlížeči adresu `https://CLUSTERNAME.azurehdinsight.net/stormui`. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 
-2. V části **souhrn topologie**, vyberte **wordcount** položku **název** sloupec. Zobrazí se další informace o topologii.
+2. V části **Souhrn topologie**vyberte položku **WORDCOUNT** ve sloupci **název** . Zobrazí se další informace o topologii.
 
-    ![Řídicí panel Storm s informacemi o topologii Storm Starter WordCount.](./media/apache-storm-quickstart/topology-summary.png)
+    ![Řídicí panel Storm s informacemi o topologii Storm Starter WordCount.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 
-    Nová stránka obsahuje následující informace:
+    Na nové stránce najdete následující informace:
 
     |Vlastnost | Popis |
     |---|---|
     |Statistiky topologie|Základní informace o výkonu topologie uspořádané do časových oken. Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.|
-    |Spoutů|Základní informace o funkcích spouts, včetně poslední chyby vrácené každou funkcí spout.|
-    |Bolty|Základní informace o funkcích bolts.|
-    |Konfigurace topologie|Podrobné informace o konfiguraci topologie.|
+    |Součásti Spout|Základní informace o spoutů, včetně poslední chyby vrácené jednotlivými Spout.|
+    |Procesy Bolt|Základní informace o šrouby.|
+    |Konfigurace topologie|Podrobné informace o konfiguraci topologie|
     |Aktivovat|Obnoví zpracování deaktivované topologie.|
-    |Deaktivace|Pozastaví spuštěné topologie.|
-    |Obnovení rovnováhy|Upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
-    |Kill|Ukončí topologii Storm po zadaný časový limit.|
+    |Deaktivace|Pozastaví běžící topologii.|
+    |Obnovit rovnováhu|Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [Princip paralelismu Apache Storm topologie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
+    |Kill|Ukončí topologii nečinnosti po zadaném časovém limitu.|
 
 3. Na této stránce vyberte položku z oddílu **Spouts** nebo **Bolts**. Zobrazí se informace o vybrané komponentě.
 
-    ![Řídicí panel Storm s informacemi o vybraných součástech.](./media/apache-storm-quickstart/component-summary.png)
+    ![Řídicí panel Storm s informacemi o vybraných součástech.](./media/apache-storm-quickstart/hdi-component-summary.png)
 
-    Nová stránka zobrazí následující informace:
+    Na nové stránce se zobrazí následující informace:
 
     |Vlastnost | Popis |
     |---|---|
-    |Funkcí spout/Bolt statistiky|Základní informace o výkonu komponenty uspořádané do časových oken. Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.|
-    |Statistika vstupu (pouze bolt)|Informace o komponentech, které vytváří dat využívaná funkcí bolt.|
-    |Statistika výstupu|Informace o datech vysílaných touto funkcí bolt.|
-    |Prováděcí moduly|Informace o instancích této komponenty.|
-    |Chyby|Chyby vytvořené touto komponentou.|
+    |Statistiky Spout/šroubů|Základní informace o výkonu komponenty uspořádané do časových oken. Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.|
+    |Vstupní statistiky (jenom šroub)|Informace o součástech, které vytváří data spotřebovaná šroubem.|
+    |Statistiky výstupu|Informace o datech emitovaných tímto šroubem.|
+    |Prováděcí moduly|Informace o instancích této součásti.|
+    |Chyby|Chyby, které tato součást vytvořila.|
 
 4. Chcete-li zobrazit podrobnosti pro konkrétní instanci komponenty, při zobrazení podrobností o funkcích spout nebo bolt vyberte položku ze sloupce **Port** v oddílu **Vykonavatelé**.
 
@@ -99,13 +99,13 @@ Vraťte se na stránku **Souhrn topologie**, kde naleznete topologii počtu slov
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili příkladem Apache [topologie storm starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt můžete vytvořit a monitorovat Apache Storm topologie do existujícího clusteru Apache Storm. Přejděte k dalším článku se dozvíte základní informace o správě a monitorování topologií Apache Storm.
+V tomto rychlém startu jste použili příklad z projektu Apache [-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) k vytvoření a monitorování Apache Storm topologie do existujícího clusteru Apache Storm. V dalším článku se naučíte základy správy a monitorování topologií Apache Storm.
 
 > [!div class="nextstepaction"]
->[Nasazení a správa topologií Apache Storm v Azure HDInsight](./apache-storm-deploy-monitor-topology-linux.md)
+>[Nasazení a Správa topologií Apache Storm v Azure HDInsight](./apache-storm-deploy-monitor-topology-linux.md)

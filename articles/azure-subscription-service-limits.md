@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698291"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018517"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
@@ -89,8 +89,9 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
-  * [Veřejná IP adresa](#publicip-address)
   * [Network Watcher](#network-watcher-limits)
+  * [Veřejná IP adresa](#publicip-address)
+  * [Privátní odkaz](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
 * [Notification Hubs](#notification-hubs-limits)
@@ -168,6 +169,9 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 #### <a name="network-watcher-limits"></a>Omezení Network Watcher
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Omezení privátních odkazů
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Omezení Traffic Manager
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

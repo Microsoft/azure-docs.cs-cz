@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 625f31252942c3d8dea9ca9b4772af19f60e17ab
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720709"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010517"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -27,6 +27,12 @@ ms.locfileid: "68720709"
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Salesforce. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Salesforce se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
+
 
 Data z Salesforce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do Salesforce. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
@@ -239,7 +245,7 @@ Pokud chcete kopírovat data do Salesforce, nastavte typ jímky v aktivitě kop�
 | writeBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **INSERT** a **Upsert**. | Ne (výchozí je vložení) |
 | externalIdFieldName | Název pole externího ID pro operaci Upsert Zadané pole musí být definováno jako pole externího ID v objektu Salesforce. V odpovídajících vstupních datech nesmí mít hodnoty NULL. | Ano pro "Upsert" |
 | writeBatchSize | Počet řádků dat zapsaných do Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
-| ignoreNullValues | Určuje, zda se během operace zápisu mají ignorovat hodnoty NULL ze vstupních dat.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota true**: Když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **NEPRAVDA**: Aktualizujte data v cílovém objektu na hodnotu NULL, když provedete operaci Upsert nebo Update. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
+| ignoreNullValues | Určuje, zda se během operace zápisu mají ignorovat hodnoty NULL ze vstupních dat.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **True**: Když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **NEPRAVDA**: Aktualizujte data v cílovém objektu na hodnotu NULL, když provedete operaci Upsert nebo Update. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
 
 **Příklad: Jímka Salesforce v aktivitě kopírování**
 
@@ -334,7 +340,12 @@ Při kopírování dat ze služby Salesforce se z datových typů Salesforce pou
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |String |
+| URL |Řetězec |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

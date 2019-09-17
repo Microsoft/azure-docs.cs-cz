@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5d5db9e837846a20bf4b68f7dc5c39ad587f4de9
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813541"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009979"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory
 
@@ -27,6 +27,12 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 >V případě scénáře migrace dat z Netezza do Azure se dozvíte víc o tom, jak [pomocí Azure Data Factory migrovat data z místního serveru Netezza do Azure](data-migration-guidance-netezza-azure-sqldw.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Netezza je podporován pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
+
 
 Kopírování dat z Netezza do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -159,9 +165,9 @@ Ke zkopírování dat z Netezza, nastavte **zdroj** typ v aktivitě kopírován�
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **NetezzaSource**. | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ne (když je "tableName" v datové sadě zadán) |
-| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Netezza. <br>Povolené hodnoty jsou: **Žádné** (výchozí), **dataslice** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None`), stupeň paralelismu na souběžně načtená data z databáze Netezza se [`parallelCopies`](copy-activity-performance.md#parallel-copy) řídí nastavením aktivity kopírování. | Ne |
+| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Netezza. <br>Povolené hodnoty jsou: **Žádné** (výchozí), **dataslice**a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None`), stupeň paralelismu na souběžně načtená data z databáze Netezza se [`parallelCopies`](copy-activity-performance.md#parallel-copy) řídí nastavením aktivity kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není `None`možnost oddílu. | Ne |
-| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je `DynamicRange`parametr partition. Pokud použijete dotaz k načtení zdrojových dat, `?AdfRangePartitionColumnName` zapojte v klauzuli WHERE. Viz příklad v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky detekuje a použije se jako sloupec partition. <br>Použijte, pokud je `DynamicRange`parametr partition. Pokud použijete dotaz k načtení zdrojových dat, `?AdfRangePartitionColumnName` zapojte v klauzuli WHERE. Viz příklad v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`možnost oddílu. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionUpbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
 | partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`parametr partition. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionLowbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
 
@@ -238,6 +244,11 @@ Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů da
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

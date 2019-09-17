@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
+ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001623"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005397"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování
 
-V tomto kurzu použijete Azure Machine Learning kanály ke spuštění bodování dávky nebo odvození úlohy. Tato příklad úlohy používá předem [vyškolený](https://arxiv.org/abs/1512.00567) model konvoluční neuronové Network Tensorflow pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, abyste mohli kanál aktivovat z libovolné knihovny HTTP na libovolné platformě.
+V tomto kurzu použijete Azure Machine Learning kanály ke spuštění úlohy vyhodnocování dávek. V tomto příkladu se používá předem [vyškolený](https://arxiv.org/abs/1512.00567) model konvoluční neuronové Network Tensorflow pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, abyste mohli kanál aktivovat z libovolné knihovny HTTP na libovolné platformě.
 
 Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, abyste se mohli soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci. [Přečtěte si další informace o kanálech ml](concept-ml-pipelines.md).
 

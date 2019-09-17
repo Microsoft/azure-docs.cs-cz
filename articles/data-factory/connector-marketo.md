@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 37634a76b0c8e08d7a4688a7ba3fd913391cd408
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 47ba7277cd9e95fd81456a6500e3277e942a4028
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726139"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007817"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat ze služby Marketo pomocí Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 > Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a sdělte nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Marketo se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírovat data ze služby Marketo pro jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -83,7 +88,7 @@ Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **MarketoObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -146,6 +151,11 @@ Pro kopírování dat ze služby Marketo, nastavte typ zdroje v aktivitě kopír
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

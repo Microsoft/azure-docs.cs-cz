@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840213"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018620"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
@@ -149,7 +149,7 @@ Přidejte závislost pro součásti pro zaplavení. V `pom.xml`přidejte do `<de
 V době kompilace Maven používá tyto informace k vyhledání `storm-core` v úložišti Maven. Nejprve se podíváme na úložiště v místním počítači. Pokud tam soubory nejsou, Maven je stáhne z veřejného úložiště Maven a uloží je do místního úložiště.
 
 > [!NOTE]  
-> Všimněte si `<scope>provided</scope>` , že řádek v této části. Toto nastavení určuje, že Maven vyloučí ze všech vytvořených souborů JAR, aby nedošlo k tomu, že je k dispozici v systému.
+> Všimněte si `<scope>provided</scope>` , že řádek v této části. Toto nastavení určuje, že Maven **vyloučí ze** všech vytvořených souborů JAR, aby nedošlo k tomu, že je k dispozici v systému.
 
 ## <a name="build-configuration"></a>Konfigurace sestavení
 
@@ -328,7 +328,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Šrouby zpracuje zpracování dat. Šrouby může dělat cokoli, například výpočet, trvalost nebo vzmluvit s externími součástmi. Tato topologie používá dvě šrouby:
 
-* **SplitSentence**: Rozdělí věty vypouštěné RandomSentenceSpoutmi do jednotlivých slov.
+* **SplitSentence**: Rozdělí věty vypouštěné **RandomSentenceSpoutmi** do jednotlivých slov.
 
 * **WordCount**: Spočítá počet výskytů jednotlivých slov.
 
@@ -487,7 +487,7 @@ Topologie spojuje spoutů a šrouby dohromady do grafu, který definuje způsob 
 
 Následující obrázek je základní diagram grafu komponent pro tuto topologii.
 
-![Diagram znázorňující uspořádání spoutů a šrouby](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![Diagram znázorňující uspořádání spoutů a šrouby](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
 Chcete-li implementovat topologii, zadejte následující příkaz pro vytvoření a otevření nového souboru `WordCountTopology.java`:
 

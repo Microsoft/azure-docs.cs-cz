@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití sady SDK pro vyhledávání na webu BinguC#'
+title: 'Rychlý start: Použití sady Vyhledávání na webu Bingu SDK proC#'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
-ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498861"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018212"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady SDK pro vyhledávání na webu BinguC#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady Vyhledávání na webu Bingu SDK proC#
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
@@ -39,7 +39,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 > [!TIP]
 > Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) nejnovější verzi kódu jako řešení sady Visual Studio.
 
-V prvním kroku vytvoříme nový projekt konzoly. Pokud potřebujete pomoc s nastavením projekt konzoly, přečtěte si téma [Hello World!--váš první Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
+V prvním kroku vytvoříme nový projekt konzoly. Pokud potřebujete nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (C# Průvodce programováním)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
 
 [Balíček sady SDK webového vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) také nainstaluje:
 
@@ -243,7 +243,7 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
     {
         try
         {
-            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20);
             Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
 
             if (webData?.WebPages?.Value?.Count > 0)
@@ -303,7 +303,7 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
         try
         {
             IList<string> responseFilterstrings = new List<string>() { "news" };
-            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings);
             Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
 
             if (webData?.News?.Value?.Count > 0)
@@ -366,7 +366,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
         try
         {
             IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict);
             Console.WriteLine("\r\nSearching for \"Music Videos\"");
 
             if (webData?.Videos?.Value?.Count > 0)

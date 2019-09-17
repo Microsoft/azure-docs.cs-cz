@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930627"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010189"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
-Tento článek poskytuje přehled omezení prostředků Azure SQL Database spravované instance a poskytuje informace o tom, jak požádat o zvýšení těchto limitů.
+Tento článek poskytuje přehled technických charakteristik a omezení prostředků pro Azure SQL Database spravovanou instanci a poskytuje informace o tom, jak požádat o zvýšení těchto limitů.
 
 > [!NOTE]
-> Rozdíly v podporovaných funkcích a příkazech T-SQL najdete v tématu [rozdíly](sql-database-features.md) ve funkcích a [Podpora příkazů t-SQL](sql-database-managed-instance-transact-sql-information.md).
+> Rozdíly v podporovaných funkcích a příkazech T-SQL najdete v tématu [rozdíly](sql-database-features.md) ve funkcích a [Podpora příkazů t-SQL](sql-database-managed-instance-transact-sql-information.md). Obecný rozdíl mezi úrovněmi služeb v izolovaných databázích a spravované instanci najdete v tématu [porovnání úrovně služby](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="instance-level-resource-limits"></a>Omezení prostředků na úrovni instance
 
@@ -36,18 +36,18 @@ Azure SQL Database spravovanou instanci lze nasadit na dvě generace hardwaru: C
 |   | **COMPUTE GEN4 –** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
-| Počet virtuální jádra | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| Počet virtuálních jader | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost paměti (poměr paměti/jádra) | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální paměť OLTP v paměti | Limit instance: 3 GB na vCore<br/>Omezení databáze:<br/> – 8 – jádro: 8 GB na databázi<br/> – 16 jader: 20 GB na databázi<br/> -24 – jádro: 36 GB na databázi | Limit instance: 2,5 GB na vCore<br/>Omezení databáze:<br/> – 8 – jádro: 13 GB na databázi<br/> – 16 jader: 32 GB na databázi |
 | Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
 > - Probíhá fáze COMPUTE GEN4 – hardwaru. Doporučuje se nasadit nové spravované instance na Gen5 hardware.
-> - COMPUTE GEN4 – hardware je v tuto chvíli k dispozici v následujících oblastech: Severní Evropa, Západní Evropa, Východní USA, Střed USA – jih, Střed USA – sever, Západní USA 2, Střed USA, Kanada – střed, Jižní Indie, jihovýchodní Asie a Korea – střed.
+> - COMPUTE GEN4 – hardware je v tuto chvíli stále k dispozici pouze v následujících oblastech: Severní Evropa, Západní Evropa, Východní USA, Střed USA – jih, Střed USA – sever, Západní USA 2, Střed USA, Kanada – střed, Jižní Indie, jihovýchodní Asie a Korea – střed.
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
 
-Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důležité obchodní informace. Tyto úrovně poskytují různé možnosti, jak je popsáno v následující tabulce:
+Spravovaná instance má dvě úrovně služeb: [Pro obecné účely](sql-database-service-tier-general-purpose.md) a [pro důležité obchodní informace](sql-database-service-tier-business-critical.md). Tyto úrovně poskytují [různé možnosti](sql-database-service-tiers-general-purpose-business-critical.md), jak je popsáno v následující tabulce:
 
 | **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důle�
 > - Propustnost a IOPS závisí také na velikosti stránky, která není explicitně omezená pomocí spravované instance.
 > Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
 
+> [!NOTE]
+> Další informace o [omezeních prostředků ve fondech spravované instance v tomto článku](sql-database-instance-pools.md#instance-pools-resource-limitations).
+
 ## <a name="supported-regions"></a>Podporované oblasti
 
 Spravované instance lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance).
@@ -93,7 +96,7 @@ Spravovaná instance aktuálně podporuje nasazení pouze u následujících typ
 Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení pro každou oblast Azure v závislosti na typu typu předplatného:
 
 - **Omezení podsítě**: Maximální počet podsítí, ve kterých jsou spravované instance nasazeny v jedné oblasti.
-- **limit Vcore**: Maximální počet virtuální jádra, které se dají nasadit napříč všemi instancemi v jedné oblasti.
+- **limit Vcore**: Maximální počet virtuální jádra, které se dají nasadit napříč všemi instancemi v jedné oblasti. Celkový počet instancí není omezený, pokud se nachází v rámci limitu vCore.
 
 > [!Note]
 > Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) , pokud v aktuální oblasti potřebujete víc spravovaných instancí. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.

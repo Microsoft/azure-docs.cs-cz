@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951847"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018689"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -79,7 +79,7 @@ Azure Backup převezme snímky podle plánu zálohování.
 
 Následující tabulka vysvětluje různé typy konzistence snímků:
 
-**Snímek** | **Podrobnosti** | **Pohledávky** | **Úvahu**
+**Snímek** | **Podrobnosti** | **Pohledávky** | **Aspekty**
 --- | --- | --- | ---
 **Konzistentní vzhledem k aplikacím** | Zálohování konzistentní s aplikací zaznamenává obsah paměti a nedokončené vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají zapisovač VSS (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikace před tím, než dojde k zálohování. | Při obnovování virtuálního počítače pomocí snímku konzistentního vzhledem k aplikacím se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace se spustí v konzistentním stavu. | Windows: Všechny zapisovače VSS byly úspěšné.<br/><br/> Linux: Před/po jsou nakonfigurovány a úspěšně spouštěny skripty.
 **Konzistentní se systémem souborů** | Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování virtuálního počítače pomocí snímku konzistentního se systémem souborů se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace potřebují implementovat vlastní mechanizmus "opravování", aby se zajistila konzistence obnovených dat. | Windows: Některé zapisovače VSS selhaly. <br/><br/> Linux: Výchozí (pokud nejsou nakonfigurované nebo neúspěšné skripty předem)
@@ -87,7 +87,7 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 
 ## <a name="backup-and-restore-considerations"></a>Předpoklady pro zálohování a obnovení
 
-**Úvahu** | **Podrobnosti**
+**Aspekty** | **Podrobnosti**
 --- | ---
 **Disk** | Zálohování disků virtuálních počítačů je paralelní. Pokud například virtuální počítač obsahuje čtyři disky, Služba Backup se pokusí zálohovat všechny čtyři disky paralelně. Zálohování je přírůstkové (pouze změněná data).
 **Plánuje** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
@@ -140,48 +140,13 @@ Datový disk 2 | 4095 GB | 0 GB
 Skutečná velikost virtuálního počítače v tomto případě je 17 GB + 30 GB + 0 GB = 47 GB. Tato chráněná velikost instance (47 GB) se bude základem pro měsíční faktura. Vzhledem k nárůstu množství dat ve virtuálním počítači se velikost chráněné instance, která se používá pro fakturaci, změní na odpovídající.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Omezené Public Preview: Zálohování virtuálního počítače s velikostí disků až do 30 TB
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Verze Public Preview: Zálohování virtuálního počítače s velikostí disků až do 30 TB
 
-Azure Backup teď podporuje omezené veřejné verze Public Preview větší a výkonnější [Azure Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o velikosti až 30 TB. Tato verze Preview poskytuje podporu pro spravované virtuální počítače na úrovni produkce.
+Azure Backup teď podporuje verzi Public Preview větší a výkonnější [Azure Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o velikosti až 30 TB. Tato verze Preview poskytuje podporu pro spravované virtuální počítače na úrovni produkce.
 
-Bez jakéhokoli dopadu na probíhající zálohování se můžete bezproblémově zaregistrovat ve verzi Preview. Po registraci předplatného ve verzi Preview musí být všechny virtuální počítače s velikostí disků až 30 TB úspěšně zálohovány. Pro registraci ve verzi Preview:
- 
-Z terminálu PowerShellu se zvýšenými oprávněními spusťte následující rutiny:
+Zálohy pro virtuální počítače s každou velikostí disku až do 30TB a 256TB kombinované pro všechny disky ve virtuálním počítači by měly fungovat bez problémů, aniž by to mělo vliv na stávající zálohy. Není nutná žádná akce uživatele, aby bylo možné získat zálohy na discích s velkým množstvím, pokud je virtuální počítač již nakonfigurován pomocí Azure Backup.
 
-1. Přihlaste se ke svému účtu Azure.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Vyberte předplatné, které chcete zaregistrovat pro upgrade:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Zaregistrovat toto předplatné v programu Preview: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Počkejte 30 minut, než se předplatné zaregistruje ve verzi Preview. 
-
- 4. Chcete-li zjistit stav, spusťte následující rutiny:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Když se odběr zobrazí jako zaregistrované, spusťte následující příkaz:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> V této verzi Preview se nepodporují šifrované virtuální počítače s disky většími než 4 TB.
-
-
+Všechny služby Azure Virtual Machines s velkými disky, které mají nakonfigurovanou zálohu, by měly být úspěšně zálohovány.
 
 ## <a name="next-steps"></a>Další postup
 

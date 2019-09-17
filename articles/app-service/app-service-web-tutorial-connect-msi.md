@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743385"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018285"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečené Azure SQL Database připojení z App Service pomocí spravované identity
 
@@ -83,10 +83,22 @@ Další informace o přidání správce služby Active Directory najdete v téma
 
 ## <a name="set-up-visual-studio"></a>Nastavení sady Visual Studio
 
-Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual Studio tak, že v nabídce vyberete**nastavení účet** **soubor** > a kliknete na **Přidat účet**.
+### <a name="windows"></a>Windows
+Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual Studio tak, že v nabídce vyberete**nastavení účet** **soubor** > a kliknete na **Přidat účet**.
 
 Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v nabídce vyberte**Možnosti** **nástrojů** > a pak vyberte**Výběr účtu** >  **ověřování služby Azure**. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
 
+Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
+
+### <a name="macos"></a>MacOS
+
+Visual Studio pro Mac není integrovaný s ověřováním Azure AD. Knihovna [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) , kterou použijete později, ale může používat tokeny z Azure CLI. Aby bylo možné povolit vývoj a ladění v aplikaci Visual Studio, nejprve je třeba nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) do místního počítače.
+
+Po instalaci rozhraní příkazového řádku Azure na místní počítač se přihlaste ke službě Azure CLI pomocí následujícího příkazu pomocí uživatele Azure AD:
+
+```bash
+az login --allow-no-subscriptions
+```
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
 
 ## <a name="modify-your-project"></a>Úprava projektu

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811960"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018745"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall (Preview)
 
@@ -63,7 +63,8 @@ Na obrazovce **přidat kolekci pravidel aplikací** proveďte následující kro
    | **Název** | **Zdrojová adresa** | **Protocol:Port** | **Cílové plně kvalifikované názvy domén** | **Poznámky** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
-   | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Pokud je váš cluster zálohovaný pomocí WASB, přidejte pravidlo pro WASB. Pokud chcete použít jenom připojení HTTPS, ujistěte se, že je v účtu úložiště povolený [požadovaný zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
+   | Rule_3 | * | https:443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
+   | Rule_4 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Pokud je váš cluster zálohovaný pomocí WASB, přidejte pravidlo pro WASB. Pokud chcete použít jenom připojení HTTPS, ujistěte se, že je v účtu úložiště povolený [požadovaný zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
 
 1. Klikněte na **Přidat**.
 

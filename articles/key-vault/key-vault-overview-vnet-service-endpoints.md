@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883239"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017255"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
 
@@ -60,7 +60,7 @@ Další informace najdete v tématu [konfigurace Azure Key Vault bran firewall a
 
 Tady je seznam důvěryhodných služeb, které mají povolený přístup k trezoru klíčů, pokud je povolená možnost **Povolit důvěryhodné služby** .
 
-|Důvěryhodná služba|Scénáře použití|
+|Důvěryhodná služba|Podporované scénáře použití|
 | --- | --- |
 |Služba nasazení Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
@@ -80,7 +80,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 > [!NOTE]
 > Aby mohly příslušné služby získat přístup k Key Vault, musíte nastavit příslušné zásady přístupu Key Vault.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md)
 * [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](key-vault-network-security.md)

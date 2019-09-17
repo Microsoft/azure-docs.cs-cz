@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 891fff203fbec8433793d3f3873e985dfebc31b0
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a8180094c0155e64a91ff9aeb94ac65e29a1f0f9
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277622"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008553"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenixu s využitím Azure Data Factory 
 
 Tento článek ukazuje, jak použít aktivitu kopírování ke zkopírování dat z Phoenix ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor pro Phoenix se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z Phoenix do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -158,6 +163,10 @@ Ke zkopírování dat z Phoenix, nastavte typ zdroje v aktivitě kopírování d
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873510"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010297"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -32,7 +32,7 @@ Azure SQL Database spravuje vaše databáze a zaručuje jejich vysokou dostupnos
 
 V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje informace o tom, jestli je funkce částečně nebo plně podporovaná ve spravované instanci nebo v Izolovaná databáze a elastických fondech, s odkazem na Další informace o této funkci.
 
-| **Funkce SQL** | **Izolované databáze a elastické fondy** | **Spravované instance** |
+| **Funkce SQL** | **Izolované databáze a elastické fondy** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
 | [Funkce Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [Trezor klíčů](sql-database-always-encrypted-azure-key-vault.md) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [Trezor klíčů](sql-database-always-encrypted-azure-key-vault.md) |
 | [Skupiny dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Každá databáze obsahuje [vysokou dostupnost](sql-database-high-availability.md) . Zotavení po havárii je popsáno v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databáze a [nemůže ji spravovat uživatel](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Zotavení po havárii je popsáno v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md) |
@@ -112,7 +112,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 
 Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardních databázových funkcí jako další hodnota. Existuje řada externích služeb, které lze použít s Azure SQL Database služby. 
 
-| **Funkce platformy** | **Izolované databáze a elastické fondy** | **Spravované instance** |
+| **Funkce platformy** | **Izolované databáze a elastické fondy** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
 | [Aktivní geografická replikace](sql-database-active-geo-replication.md) | Ano – všechny úrovně služeb jiné než měřítko | Ne, další informace najdete v tématu [skupiny automatického převzetí služeb při selhání (Preview)](sql-database-auto-failover-group.md) . |
 | [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) | Ano – všechny úrovně služeb jiné než měřítko | Ano, ve [verzi Public Preview](sql-database-auto-failover-group.md)|
@@ -131,7 +131,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Správa založená na zásadách](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Ne | Ne |
 | Veřejná IP adresa | Ano. Přístup je možné omezit pomocí brány firewall nebo koncových bodů služby.  | Ano. Musí být explicitně povolen a v pravidlech NSG musí být povolený port 3342. Veřejná IP adresa může být v případě potřeby zakázaná. Další podrobnosti najdete ve [veřejném koncovém bodu](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Obnovení databáze bodu v čase](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ano – všechny úrovně služeb jiné než škálování – viz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ano – viz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Fondy zdrojů | Ano, jako [elastické fondy](sql-database-elastic-pool.md) | Ne. Jedna spravovaná instance může mít více databází, které sdílejí stejný fond prostředků. Spravované instance nemůžou sdílet prostředky. |
+| Fondy zdrojů | Ano, jako [elastické fondy](sql-database-elastic-pool.md) | Ano. Jedna spravovaná instance může mít více databází, které sdílejí stejný fond prostředků. Kromě toho můžete nasadit více spravovaných instancí ve [fondech instancí (Preview)](sql-database-instance-pools.md) , které mohou sdílet prostředky. |
 | Horizontální navýšení nebo snížení kapacity (online) | Ano, můžete buď změnit DTU nebo rezervované virtuální jádra nebo max. úložiště s minimálními prostoji. | Ano, můžete změnit rezervované úložiště virtuální jádra nebo Max a minimální prostoje. |
 | Alias SQL | Ano, viz [alias DNS](dns-alias-overview.md) | Ne |
 | [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
@@ -146,7 +146,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 ## <a name="tools"></a>Nástroje
 Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se správou vašich dat.
 
-| **Nástroj** | **Izolované databáze a elastické fondy** | **Spravované instance** |
+| **Nástroj** | **Izolované databáze a elastické fondy** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
 | portál Azure | Ano | Ano |
 | Azure CLI | Ano | Ano|
@@ -167,7 +167,7 @@ Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se
 
 K přesunu dat mezi SQL Server, Izolovaná databáze a databázemi spravované instance můžete použít různé metody migrace. Některé metody jsou **online** a vybírání všech změn provedených ve zdroji během provádění migrace, zatímco v **offline** metodách potřebujete zastavit úlohu, která upravuje data ve zdroji, zatímco probíhá migrace.
 
-| **Zdroj** | **Izolovaná databáze a elastický fond** | **Spravovaná instance** |
+| **Zdroj** | **Izolovaná databáze a elastický fond** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
 | SQL Server (on-Prem, AzureVM, Amazon RDS) | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Nativní zálohování a obnovování, [BacPac soubor (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
 | Izolovaná databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
@@ -183,3 +183,4 @@ Společnost Microsoft nadále přidává funkce do Azure SQL Database. Navštivt
 Další informace o Azure SQL Database charakteru naleznete zde:
 - [Co je SQL Database?](sql-database-technical-overview.md)
 - [Co je spravovaná instance?](sql-database-managed-instance.md)
+- [Co jsou fondy spravovaných instancí?](sql-database-instance-pools.md)

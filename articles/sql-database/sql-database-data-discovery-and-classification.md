@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000562"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009990"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
@@ -144,8 +144,11 @@ Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Pub
 
 - [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje popisek citlivosti daného sloupce.
 - [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) – odstraní popisek citlivosti daného sloupce.
+- [Zakázat doporučení](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) – zakáže doporučení citlivosti na daném sloupci.
+- [Povolit doporučení](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) – povolí u daného sloupce doporučení citlivosti (ve výchozím nastavení jsou u všech sloupců povolené doporučení).
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) – získá popisek citlivosti daného sloupce.
 - [List Current by Database](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – získá aktuální popisky citlivosti dané databáze.
+
 - [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – získá Doporučené popisky citlivosti dané databáze.
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Správa zjišťování a klasifikace dat pomocí Azure PowerShell

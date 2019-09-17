@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 69848f1c43265ecfdb512a6fca143db5a4953b8b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: b502823ea19cd8bbdab73c78fa3afdab2267940e
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275461"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009436"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopírování dat z procházení pomocí Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 > Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a sdělte nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor pro procházení se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z přechod do libovolné podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -178,5 +183,9 @@ Ke zkopírování dat z procházení, nastavte typ zdroje v aktivitě kopírová
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

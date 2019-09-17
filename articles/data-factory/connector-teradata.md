@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b91ec46d47814418de21e9afe3e6e5534473c921
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959009"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008969"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -28,6 +28,11 @@ ms.locfileid: "70959009"
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z Teradata Vantage. Sestaví se na [Přehled aktivit kopírování](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Teradata se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z Teradata Vantage můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -328,6 +333,11 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | VarChar |Řetězec |
 | VarGraphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
 | Xml |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další postup

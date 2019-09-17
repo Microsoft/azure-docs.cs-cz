@@ -1,17 +1,17 @@
 ---
-title: Osvědčené postupy pro vytváření posouzení pomocí Azure Migrate posouzení serveru | Microsoft Docs
+title: Osvědčené postupy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru
 description: Poskytuje tipy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234304"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007719"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
@@ -33,8 +33,8 @@ Pokud máte například místní virtuální počítač se čtyřmi jádry na 20
 
 - **Posouzení na základě výkonu**:
     - Identifikuje efektivní jádra a paměť na základě jádra (4 x 0,20 = 0,8) a paměti (8 GB × 0,10 = 0,8).
-    - Použije faktor pohodlí určený ve vlastnostech posouzení (le'ts vyslovit 1.3 x) k získání hodnot, které se mají použít pro určení velikosti. 
-    - Doporučuje nejbližší velikost virtuálního počítače v Azure, která může podporovat ~ 1,4 jader (0,8 × 1,3) a ~ 1,4 GB (0,8 x 1,3).
+    - Použije faktor pohodlí určený ve vlastnostech posouzení (řekněme 1,3 x) a získá hodnoty, které se použijí pro určení velikosti. 
+    - Doporučuje nejbližší velikost virtuálního počítače v Azure, která může podporovat ~ 1,04 jader (0,8 × 1,3) a ~ 1,04 GB (0,8 x 1,3).
 
 - **Vyhodnocení, jak je (jako místní) posouzení**:
     -  Doporučuje virtuální počítač se čtyřmi jádry. 8 GB paměti.
@@ -85,12 +85,12 @@ Posouzení nemusí mít všechny datové body z několika důvodů:
 
 - Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Pokud například vytváříte *hodnocení založené na výkonu* s dobou trvání trvání nastavenou na jeden týden, budete muset po zahájení zjišťování všech datových bodů, které se mají shromáždit, počkat aspoň na týden. Kdykoli můžete kliknout na **Přepočítat** a zobrazit nejnovější použitelné hodnocení spolehlivosti. Hodnocení spolehlivosti se dá použít jenom v případě, že vytvoříte hodnocení *založené na výkonu* .
 
-- Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud některé virtuální počítače byly po určitou dobu vypnuté, vyhodnocování serveru nebude moct shromažďovat data o výkonu za tuto dobu.
+- Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nástroj Hodnocení serverů nebude schopen za toto období shromáždit data o výkonu.
 
-- Po spuštění posouzení serveru bylo vytvořeno několik virtuálních počítačů po zjištění. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou údaje o výkonu pro nové virtuální počítače k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké.
+- Po zahájení zjišťování v nástroji Hodnocení serverů se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Přečtěte si](concepts-assessment-calculation.md) , jak se počítají vyhodnocení.
 - [Přečtěte si](how-to-modify-assessment.md) , jak přizpůsobit posouzení.

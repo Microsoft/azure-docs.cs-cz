@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: 681a99d31e7ededda74aa186ff36cc837125bbda
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a496b91ab8ec14ce859df0da93e0ad5d87c50982
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052209"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019019"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Propojení Azure s veřejnými cloudy
 
@@ -36,7 +36,7 @@ Při připojování prostřednictvím poskytovatele Layer3 společnost Microsoft
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-Poskytovatel může být vydaný každým poskytovatelem cloudu v samostatné VRF. Pokud budou přenosy ze všech poskytovatelů cloudu proběhnout ve směrovači zákazníka. Pokud zákazník používá protokol BGP s poskytovatelem služeb, pak se tyto trasy ve výchozím nastavení znovu inzerují jiným poskytovatelům cloudu. 
+Poskytovatel může vyčlenit každého poskytovatele cloudu v samostatném VRF, pokud přenosy ze všech poskytovatelů cloudu budou dostupné ve směrovači zákazníka. Pokud zákazník používá protokol BGP s poskytovatelem služeb, pak se tyto trasy ve výchozím nastavení znovu inzerují jiným poskytovatelům cloudu. 
 
 Pokud poskytovatel služeb vychází ze všech poskytovatelů cloudu ve stejném VRF, trasy budou od poskytovatele služeb inzerovány přímo poskytovatelům cloudu. To se předpokládá jako standardní operace protokolu BGP, kde jsou trasy eBGP inzerovány jiným sousedním sousedům eBGP ve výchozím nastavení.
 

@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 729ea0fa667a11f710fd815003bc0995cb08ae70
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ac9b12f07a27b3bb8ff66d8a5637cb656e06abc6
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842553"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010569"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopírování dat z a do cloudu služby Salesforce pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do cloudu služby Salesforce. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento cloudový konektor služby Salesforce se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z cloudu služby Salesforce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do cloudu služby Salesforce. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
@@ -230,7 +235,7 @@ Pokud chcete kopírovat data do cloudu služby Salesforce, v části **jímka** 
 | writeBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **INSERT** a **Upsert**. | Ne (výchozí je vložení) |
 | externalIdFieldName | Název pole externího ID pro operaci Upsert Zadané pole musí být definované jako pole externího ID v cloudovém objektu služby Salesforce. V odpovídajících vstupních datech nesmí mít hodnoty NULL. | Ano pro "Upsert" |
 | writeBatchSize | Počet řádků dat zapsaných do cloudu služby Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
-| ignoreNullValues | Určuje, zda se během operace zápisu mají ignorovat hodnoty NULL ze vstupních dat.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota true**: Když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **NEPRAVDA**: Aktualizujte data v cílovém objektu na hodnotu NULL, když provedete operaci Upsert nebo Update. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
+| ignoreNullValues | Určuje, zda se během operace zápisu mají ignorovat hodnoty NULL ze vstupních dat.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **True**: Když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **NEPRAVDA**: Aktualizujte data v cílovém objektu na hodnotu NULL, když provedete operaci Upsert nebo Update. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
 
 **Příklad:**
 
@@ -307,25 +312,30 @@ Při kopírování dat z cloudu služby Salesforce se z cloudových datových ty
 
 | Cloudový datový typ služby Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
-| Auto Number |Řetězec |
-| Checkbox |Logická hodnota |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
-| Email |Řetězec |
-| Id |Řetězec |
-| Lookup Relationship |Řetězec |
-| Multi-Select Picklist |Řetězec |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| Phone |Řetězec |
-| Picklist |Řetězec |
-| Text |Řetězec |
-| Text Area |Řetězec |
-| Text Area (Long) |Řetězec |
-| Text Area (Rich) |Řetězec |
-| Text (Encrypted) |Řetězec |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | URL |Řetězec |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

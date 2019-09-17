@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873340"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008831"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -132,8 +132,8 @@ Objekty blob bloku | Ne | Ne
 Šifrování v klidovém prostředí (SSE)| Ano | Ano
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
-Azure Storage brány firewall pro virtuální sítě nakonfigurované na cílovém účtu úložiště nebo mezipaměti (používá se k ukládání dat replikace) | Ne | Ne
-Upravuje se účet úložiště. | Ne. Cílový účet Azure Storage se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a následně znovu povolit zotavení po havárii. | Ne
+Účty úložiště Azure s povolenou bránou firewall | Ne  | Ano. Pro cílové úložiště a mezipaměť.
+Úprava účtu úložiště | Ne. Cílový účet Azure Storage se po povolení replikace nedá změnit. Chcete-li upravit, zakažte a znovu povolte zotavení po havárii. | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE

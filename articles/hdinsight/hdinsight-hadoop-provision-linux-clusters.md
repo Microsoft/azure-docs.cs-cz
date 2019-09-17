@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0f29df02e8242872311df3d4cb660d46bbc2cee3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733493"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018789"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
@@ -111,10 +111,21 @@ Nemusíte explicitně určovat umístění clusteru: Cluster je ve stejném umí
 
 ## <a name="storage-endpoints-for-clusters"></a>Koncové body úložiště pro clustery
 
-I když místní instalace systému Hadoop používá pro úložiště v clusteru systém souborů DFS (Distributed File System) Hadoop (HDFS), v cloudu použijete koncové body úložiště připojené ke clusteru. Clustery HDInsight používají [Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) nebo [objekty BLOB v Azure Storage](hdinsight-hadoop-use-blob-storage.md). Pomocí Azure Storage nebo Data Lake Storage znamená, že můžete bezpečně odstranit clustery HDInsight používané pro výpočty a přitom zachovat data. 
+I když místní instalace systému Hadoop používá pro úložiště v clusteru systém souborů DFS (Distributed File System) Hadoop (HDFS), v cloudu použijete koncové body úložiště připojené ke clusteru. Použití cloudového úložiště znamená, že můžete bezpečně odstranit clustery HDInsight používané pro výpočty a přitom zachovat data. 
+
+Clustery HDInsight můžou používat následující možnosti úložiště:
+
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
+* Azure Storage Pro obecné účely v2
+* Azure Storage Pro obecné účely v1
+* Objekt blob bloku Azure Storage (**podporuje se jenom jako sekundární úložiště**)
+
+Další informace o možnostech úložiště ve službě HDInsight najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](hdinsight-hadoop-compare-storage-options.md).
 
 > [!WARNING]  
 > Použití dalšího účtu úložiště v jiném umístění z clusteru HDInsight se nepodporuje.
+
 
 Během konfigurace pro výchozí koncový bod úložiště zadáte kontejner objektů blob Azure Storage účtu nebo Data Lake Storage. Výchozí úložiště obsahuje protokoly aplikací a systému. Volitelně můžete zadat další propojené účty Azure Storage a účty Data Lake Storage, ke kterým může cluster přistupovat. Cluster HDInsight a závislé účty úložiště musí být ve stejném umístění Azure.
 

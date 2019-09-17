@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003096"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010305"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -129,7 +129,7 @@ Spusťte skript následujícím způsobem:
 
 1. Ujistěte se, že na hostiteli Hyper-V máte nainstalovanou verzi prostředí PowerShell verze 4,0 nebo novější.
 2. Stáhněte si skript z webu [Microsoft Download Center](https://aka.ms/migrate/script/hyperv). Skript je kryptograficky podepsán společností Microsoft.
-3. Ověřte integritu skriptu buď pomocí souborů hash MD5, nebo SHA256. Spuštěním tohoto příkazu vygenerujte hodnotu hash pro tento skript:
+3. Ověřte integritu skriptu buď pomocí souborů hash MD5, nebo SHA256. Hodnoty hashtagu jsou uvedené níže. Spuštěním tohoto příkazu vygenerujte hodnotu hash pro tento skript:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -138,19 +138,20 @@ Spusťte skript následujícím způsobem:
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
     ```
-    
-    Hodnoty hash jsou:
-    Hash | Value
-    --- | ---
-    **ALGORITMY** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
-
 
 4.  Po ověření integrity skriptu spusťte skript na každém hostiteli Hyper-V pomocí tohoto příkazu PowerShellu:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
+#### <a name="hashtag-values"></a>Hodnoty hashtagu
+
+Hodnoty hash jsou:
+
+| **Hash** | **Hodnota** |
+| --- | --- |
+| **ALGORITMY** | 0ef418f31915d01f896ac42a80dc414e |
+| **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 ### <a name="verify-hyper-v-host-settings"></a>Ověřit nastavení hostitele Hyper-V
 
@@ -222,7 +223,7 @@ Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte n
 2. [Projděte si](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
 3. [Poznamenejte](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) si adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se naučíte:
  

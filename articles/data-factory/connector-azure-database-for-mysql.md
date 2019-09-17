@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: jingwang
-ms.openlocfilehash: b6d96ef2d2cdd79bec35f2581876823990e4a971
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c15a60b7329359ee8d3e429159eb178c0c9b4782
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172621"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018770"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat do a z Azure Database for MySQL pomocí Azure Data Factory
 
@@ -26,6 +26,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 Tento konektor je specializovaný pro [službu Azure Database for MySQL](../mysql/overview.md). K kopírování dat z obecné databáze MySQL v místním prostředí nebo v cloudu použijte [konektor MySQL](connector-mysql.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Azure Database for MySQL se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z Azure Database for MySQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Nebo můžete zkopírovat data z libovolného podporovaného zdrojového úložiště dat do Azure Database for MySQL. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -188,8 +193,7 @@ Chcete-li kopírovat data do Azure Database for MySQL, v části **jímka** akti
 | type | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **AzureMySqlSink** | Ano |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do Azure Database for MySQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
 | writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky Azure Database for MySQL.<br>Povolená hodnota je celé číslo představující počet řádků. | Ne (výchozí hodnota je 10 000) |
-| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br> 
-Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:00:30) |
+| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:00:30) |
 
 **Příklad:**
 
@@ -223,6 +227,10 @@ Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchoz
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Mapování datových typů pro Azure Database for MySQL
 

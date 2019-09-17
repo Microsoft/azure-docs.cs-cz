@@ -13,18 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5cb08ddafe2075ae27ced6d70894696025df0a86
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720808"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010258"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data do a z [Azure Průzkumník dat](../data-explorer/data-explorer-overview.md). Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Azure Průzkumník dat se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data můžete kopírovat z libovolného podporovaného zdrojového úložiště dat do Azure Průzkumník dat. Data z Azure Průzkumník dat taky můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md) tabulky.
 
@@ -56,7 +61,7 @@ Konektor služby Azure Průzkumník dat používá ověřování instančního o
     - Klíč aplikace
     - ID tenanta
 
-2. Udělte instančnímu objektu správné oprávnění ve službě Azure Průzkumník dat. Další informace o rolích a oprávněních a návodech ke správě oprávnění najdete v tématu [Správa oprávnění k databázi Azure Průzkumník dat](../data-explorer/manage-database-permissions.md) . Obecně je třeba
+2. Udělte instančnímu objektu správné oprávnění ve službě Azure Průzkumník dat. Přečtěte si téma [Správa oprávnění k databázi Azure Průzkumník dat](../data-explorer/manage-database-permissions.md) a podrobné informace o rolích a oprávněních a také o tom, jak spravovat oprávnění. Obecně je třeba
 
     - **Jako zdroj**udělte databázi aspoň roli **Database Viewer** .
     - **Jako jímky**udělte databázi aspoň roli ingestování **databáze** .
@@ -219,6 +224,10 @@ Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další postup
 

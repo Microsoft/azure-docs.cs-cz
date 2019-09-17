@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1096505a8789d722594cff13841e97930846ee53
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277634"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010642"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -27,6 +27,11 @@ ms.locfileid: "70277634"
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do úložiště dat ODBC. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor ODBC se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data ze zdroje ODBC můžete kopírovat do libovolného podporovaného úložiště dat jímky nebo je zkopírovat z libovolného podporovaného zdrojového úložiště dat do jímky rozhraní ODBC. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -278,6 +283,11 @@ Vytvořte propojenou službu ODBC, která propojí úložiště dat SAP HANA s o
 
 Přečtěte si článek na začátku, kde najdete podrobný přehled použití úložišť dat rozhraní ODBC jako zdroje dat nebo úložiště dat jímky v operaci kopírování.
 
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+
 ## <a name="troubleshoot-connectivity-issues"></a>Řešení potíží s připojením
 
 Pokud chcete řešit problémy s připojením, použijte kartu diagnostika **Integration runtime Configuration Manager**.
@@ -288,5 +298,5 @@ Pokud chcete řešit problémy s připojením, použijte kartu diagnostika **Int
 4. Zadejte **připojovací řetězec** , který se používá pro připojení k úložišti dat, vyberte **ověřování** a zadejte **uživatelské jméno**, **heslo**a/nebo **přihlašovací údaje**.
 5. Klikněte na **Test připojení** a otestujte připojení k úložišti dat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

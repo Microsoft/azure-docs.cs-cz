@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5ba530a614dd7eb064e1d9b5a59fc00b9280ef0a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814160"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008624"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,6 +33,7 @@ Tento konektor Azure Blob Connector se podporuje pro následující činnosti:
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Odstranit aktivitu](delete-activity.md)
 
 Konkrétně tento konektor úložiště objektů Blob podporuje:
 
@@ -638,6 +639,18 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
 Přečtěte si podrobnosti o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v mapování toku dat.
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>Vlastnosti aktivity GetMetadata
+
+Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMetadata](control-flow-get-metadata-activity.md) . 
+
+## <a name="delete-activity-properties"></a>Odstranit vlastnosti aktivity
+
+Další informace o vlastnostech najdete v části [Odstranění aktivity](delete-activity.md) .
 
 ## <a name="next-steps"></a>Další postup
 

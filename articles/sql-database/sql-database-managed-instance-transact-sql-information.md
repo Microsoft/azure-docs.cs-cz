@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984972"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018997"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -24,7 +24,7 @@ Tento článek shrnuje a vysvětluje rozdíly v syntaxi a chování mezi Azure S
 
 ![Migrace](./media/sql-database-managed-instance/migration.png)
 
-Existují některá omezení PaaS, která se zavádějí do spravované instance, a některé změny chování v porovnání s SQL Server. Rozdíly jsou rozděleny do následujících kategorií:<a name="Differences"></a>
+Existují některá omezení PaaS, která se zavádějí do spravované instance, a některé změny chování jsou v porovnání s SQL Server. Rozdíly jsou rozděleny do následujících kategorií:<a name="Differences"></a>
 
 - [Dostupnost](#availability) zahrnuje rozdíly v části [vždy zapnuto](#always-on-availability) a [zálohování](#backup).
 - [Zabezpečení](#security) zahrnuje rozdíly v [auditování](#auditing), [certifikáty](#certificates), [přihlašovací údaje](#credential), [zprostředkovatele kryptografických](#cryptographic-providers)služeb, [přihlášení a uživatele](#logins-and-users)a [klíč služby a hlavní klíč služby](#service-key-and-service-master-key).
@@ -339,14 +339,14 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 - `ALTER ASSEMBLY`nejde odkazovat na soubory. Viz [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Databázová pošta (db_mail)
- - `sp_send_dbmail`přílohy nelze odeslat pomocí @file_attachments parametru. Tento postup mohou vytvořit místní systém souborů a sdílené složky Extertal nebo úložiště objektů BLOB v Azure.
+ - `sp_send_dbmail`přílohy nelze odeslat pomocí @file_attachments parametru. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
  - Podívejte se na známé problémy související `@query` s parametrem a ověřením.
  
 ### <a name="dbcc"></a>DBCC
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
 
-- Podporován je pouze omezený počet globálních `Trace flags` hodnot. Úroveň `Trace flags` relace není podporována. Viz [příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Podporován je pouze omezený počet globálních příznaků trasování. Úroveň `Trace flags` relace není podporována. Viz [příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF kterým](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) a [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) fungují s omezeným počtem globálních příznaků Trace-Flags.
 - [Příkaz DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) s možnostmi REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST a REPAIR_REBUILD nelze použít, protože databázi nelze nastavit v `SINGLE_USER` režimu – viz téma [ALTER DATABASE rozdíl](#alter-database-statement). Potenciální poškození databáze zpracovává tým podpory Azure. Pokud všímáte poškození databáze, které by mělo být opraveno, obraťte se na podporu Azure.
 
@@ -415,7 +415,7 @@ Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se
 Informace o konfiguraci replikace najdete v [kurzu replikace](replication-with-sql-database-managed-instance.md).
 
 
-Pokud je replikace povolená v databázi ve [skupině převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární databázi. V tomto scénáři jsou potřeba následující aktivity:
+Pokud je replikace povolená v databázi ve [skupině převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na novém primárním počítači. V tomto scénáři jsou potřeba následující aktivity:
 
 1. Zastavte všechny úlohy replikace běžící v databázi, pokud existují.
 2. Z vydavatele vyřaďte metadata odběru spuštěním následujícího skriptu v databázi vydavatele:
@@ -479,7 +479,7 @@ Určitá
 - Obnovení souboru databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu ( `FILESTREAM` například nebo `FILETABLE` objekty), nelze obnovit ve spravované instanci. `.BAK`
 - `.BAK`soubory, které obsahují víc zálohovacích skladů, se nedají obnovit. 
 - `.BAK`soubory, které obsahují více souborů protokolu, nelze obnovit.
-- Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo počet souborů, které by překročily 280 souborů na instanci, nelze obnovit v Pro obecné účely instanci. 
+- Zálohy obsahující databáze větší než 8 TB, aktivní objekty OLTP v paměti nebo počet souborů, které by překročily 280 souborů na instanci, nelze obnovit v instanci Pro obecné účely. 
 - Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
 Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
 
@@ -544,6 +544,16 @@ Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispoz
 
 ## <a name="Issues"></a>Známé problémy
 
+### <a name="missing-validations-in-restore-process"></a>Chybějící ověřování v procesu obnovení
+
+**Datum** SEP 2019
+
+`RESTORE`příkaz a integrované obnovení k určitému bodu v čase neprovádí některé nessecary kontroly obnovené databáze:
+- **Příkaz DBCC CHECKDB**  -  `RESTORE` není v `DBCC CHECKDB` obnovené databázi proveden. Pokud je původní databáze poškozená nebo dojde k poškození záložního souboru při jeho kopírování do úložiště objektů BLOB v Azure, automatické zálohování se nespustí a podpora Azure se obrátí na zákazníka. 
+- Nekontroluje se integrovaný proces obnovení k bodu v čase, protože instance automatizovaného zálohování z Pro důležité obchodní informace obsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp). 
+
+**Alternativní řešení**: Před provedením zálohování se ujistěte `DBCC CHECKDB` , že pracujete na zdrojové databázi, a pomocí `WITH CHECKSUM` možnosti v části zálohování Vyhněte se potenciálním poškozením, která by mohla být obnovena na spravované instanci. Ujistěte se, že zdrojová databáze neobsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp) , pokud ji obnovujete na pro obecné účelyovou vrstvu.
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb
 
 **Datum** SEP 2019
@@ -552,19 +562,19 @@ Funkce [Správce prostředků](https://docs.microsoft.com/sql/relational-databas
 
 **Alternativní řešení**: Spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která spustí úlohu SQL při spuštění instance, pokud používáte [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověření proto k externím poštovním serverům pomocí zabezpečeného připojení (SSL).
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověřit u externích poštovních serverů pomocí zabezpečeného připojení (SSL).
 
 **Datum** Srpna 2019
 
 Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připojení (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) , se nemůže ověřit na některých e-mailových serverech mimo Azure. Jedná se o problém s konfigurací zabezpečení, který bude brzy vyřešen.
 
-**Odstraníte** Dočasné odebrání zabezpečeného připojení (SSL) vytvoří konfiguraci databázového e-mailu, dokud se problém nevyřeší. 
+**Odstraníte** Dočasné odebrání zabezpečeného připojení (SSL) z Konfigurace databázového e-mailu, dokud se problém nevyřeší. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.
 
 **Datum** Srpna 2019
 
-Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že `service_broke_guid` se hodnota v zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvoření pomocí příkazu [Begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, přestane předávat zprávy do cílové služby.
+Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že `service_broke_guid` se hodnota v zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvoření pomocí příkazu [Begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, přestane předávat zprávy cílové službě.
 
 **Odstraníte** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
 
@@ -592,7 +602,7 @@ Pokud je transakční replikace povolená v databázi ve skupině automatického
 
 **Datum** Leden 2019
 
-SQL Server Management Studio a SQL Server Data Tools Fuly podporují přihlášení a uživatele v Azure ACCT-Directory.
+Nástroje SQL Server Management Studio a SQL Server Data Tools plně nepodporují přihlášení a uživatele Azure Active Directory.
 - Používání objektů zabezpečení serveru Azure AD (přihlášení) a uživatelů (Public Preview) s nástroji SQL Server Data Tools aktuálně není podporováno.
 - V SQL Server Management Studio se nepodporuje skriptování pro objekty zabezpečení serveru Azure AD (přihlášení) a uživatele (ve verzi Public Preview).
 
@@ -612,7 +622,7 @@ Když se databáze na spravované instanci obnovuje, služba obnovení nejprve v
 
 Každá Pro obecné účely spravovaná instance má až 35 TB úložiště rezervovaného pro místo na disku Azure Premium. Každý databázový soubor je umístěn na samostatném fyzickém disku. Velikosti disků můžou být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikostí disků Azure Premium nesmí překročit 35 TB. V některých případech může spravovaná instance, která nepotřebuje 8 TB celkem, překročit 35 TB Azure na velikost úložiště kvůli vnitřní fragmentaci.
 
-Například Pro obecné účely spravovaná instance může mít jeden velký soubor o velikosti 1,2 TB umístěný na 4 TB disku. Může taky mít 248 souborů o velikosti 1 GB, které jsou umístěné na samostatných discích 128-GB. V tomto příkladu:
+Například Pro obecné účely spravovaná instance může mít jeden velký soubor o velikosti 1,2 TB umístěný na 4 TB disku. Může taky mít 248 souborů o velikosti 1 GB, která je umístěná na samostatných discích 128-GB. V tomto příkladu:
 
 - Celková přidělená velikost diskového úložiště je 1 × 4 TB + 248 × 128 GB = 35 TB.
 - Celkové rezervované místo pro databáze v instanci je 1 × 1,2 TB + 248 × 1 GB = 1,4 TB.
@@ -629,7 +639,7 @@ Několik systémových zobrazení, čítače výkonu, chybové zprávy, XEvents 
 
 ### <a name="error-logs-arent-persisted"></a>Protokoly chyb nejsou trvalé
 
-Protokoly chyb, které jsou k dispozici ve spravované instanci, nejsou trvale uložené a jejich velikost není zahrnuta v maximálním limitu úložiště. Pokud dojde k převzetí služeb při selhání, můžou se protokoly chyb automaticky vymazat. Historie protokolu chyb může obsahovat mezery, protože spravovaná instance byla na několika virtuálních počítačích přesunuta několikrát.
+Protokoly chyb, které jsou k dispozici ve spravované instanci, nejsou trvale uložené a jejich velikost není zahrnuta v maximálním limitu úložiště. Pokud dojde k převzetí služeb při selhání, můžou se protokoly chyb automaticky vymazat. V historii protokolu chyb můžou být mezery, protože se spravovaná instance na několika virtuálních počítačích přesunula několikrát.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.
 

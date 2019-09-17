@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 80d89914f33273fcb033ab47098a8864b11974c9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c345b31c218c4678e7811c36113c94e0c4d2ac03
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876153"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019055"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
 Integrace služeb Azure do služby Azure Virtual Network umožňuje privátní přístup ke službě z virtuálních počítačů nebo výpočetních prostředků ve virtuální síti.
 Služby Azure ve vaší virtuální síti můžete integrovat pomocí následujících možností:
 - Nasazení vyhrazených instancí služby do virtuální sítě. Služby pak mohou být soukromě přistupované v rámci virtuální sítě a z místních sítí.
-- Rozšíření virtuální sítě na službu prostřednictvím koncových bodů služby. Koncové body služby umožňují zabezpečit jednotlivé prostředky služby ve virtuální síti.
+- Použití [privátního odkazu](../private-link/private-link-overview.md) pro přístup k soukromě konkrétní instanci služby z vaší virtuální sítě a z místních sítí.
 
-Pokud chcete integrovat několik služeb Azure do vaší virtuální sítě, můžete zkombinovat jeden nebo více výše uvedených vzorů. Můžete například nasadit službu HDInsight do vaší virtuální sítě a zabezpečit účet úložiště do podsítě HDInsight prostřednictvím koncových bodů služby.
+Ke službě můžete také přistupovat pomocí veřejných koncových bodů rozšířením virtuální sítě na službu prostřednictvím [koncových bodů služby](virtual-network-service-endpoints-overview.md). Koncové body služby umožňují zabezpečit prostředky služby ve virtuální síti.
  
 ## <a name="deploy-azure-services-into-virtual-networks"></a>Nasazení služeb Azure do virtuálních sítí
 
@@ -50,19 +50,14 @@ Nasazení služeb v rámci virtuální sítě poskytuje následující možnosti
 
 |Kategorie|Služba| Vyhrazená podsíť 1
 |-|-|-|
-| Compute | Virtuální počítače: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloudová služba](https://msdn.microsoft.com/library/azure/jj156091): Jenom virtuální síť (Classic)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Ne <br/> Ne <br/> Ne <br/> Bez dalších
+| Compute | Virtuální počítače: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloudová služba](https://msdn.microsoft.com/library/azure/jj156091): Jenom virtuální síť (Classic)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Ne <br/> Ne <br/> Ne <br/> Bez dalších
 | Síť | [Application Gateway – WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Síťová virtuální zařízení](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ano <br/> Ano <br/> Ano <br/> Ne
 |Data|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Spravovaná Instance Azure SQL Database](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ano <br/> Ano <br/> 
 |Analýzy | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Bez dalších <br/> Bez dalších <br/> 
 | Identita | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Ne <br/>
 | Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container instance (ACI)](https://www.aka.ms/acivnet)<br/>Modul [Azure Container Service](https://github.com/Azure/acs-engine) s [modulem plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet) Azure Virtual Network CNI|Bez dalších<br/> Ano <br/><br/> Ne
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/> Ano
-| Hostova | [Vyhrazený modul HSM Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/>
+| Hostovaný | [Vyhrazený modul HSM Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/>
 | | |
 
 1 "vyhrazené" znamená, že v této podsíti můžou být nasazené jenom prostředky specifické pro službu a nejde je kombinovat s virtuálním počítačem/VMSSs zákazníka. <br/> doporučuje se, ale nejedná se o povinný požadavek, který služba ukládá.
-
-
-## <a name="service-endpoints-for-azure-services"></a>Koncové body služby pro služby Azure
-
-Některé služby Azure nejde nasadit ve virtuálních sítích. Pokud se rozhodnete povolit koncový bod služby virtuální sítě, můžete omezit přístup k některým prostředkům služby jenom na konkrétní podsítě virtuální sítě.  Přečtěte si další informace o [koncových bodech služby virtuální sítě](virtual-network-service-endpoints-overview.md)a službách, pro které lze koncové body povolit.

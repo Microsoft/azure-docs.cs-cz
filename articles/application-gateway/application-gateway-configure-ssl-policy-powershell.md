@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: e154b830df6b49855414563be8c740bfe513c85a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967894"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018247"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Nakonfigurujte verze zásad protokolu SSL a šifrovací sady na Application Gateway
 
@@ -116,13 +116,7 @@ Následující příklad nastaví vlastní zásadu protokolu SSL pro aplikační
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> Při konfiguraci vlastních zásad SSL musí být vybraná aspoň jedna šifrovací sada z následujícího seznamu. Aplikační brána používá šifrovací sady RSA SHA256 pro správu back-endu.
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-> * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_256_CBC_SHA256
-> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> Při konfiguraci vlastních zásad SSL musí být vybraná možnost TLS_RSA_WITH_AES_256_CBC_SHA256. Application Gateway používá tuto šifrovací sadu pro správu back-endu. Můžete ho použít v kombinaci s jinými sadami, ale toto musí být zaškrtnuté i jedna z nich. 
 
 ```powershell
 # get an application gateway resource
@@ -221,6 +215,6 @@ $AppGw = get-Azapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete zjistit, jak přesměrovat přenosy HTTP na koncový bod HTTPS, přejděte na [téma Přehled přesměrování Application Gateway](application-gateway-redirect-overview.md) .

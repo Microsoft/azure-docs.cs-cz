@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 84a82e5fae7c56a13aeb4603079e9378b38785cb
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2e1017192d57031c7b6f439a5cee46f3135415c
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277563"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008810"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -27,6 +27,11 @@ ms.locfileid: "70277563"
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze PostgreSQL. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor PostgreSQL je podporován pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z databáze PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -58,8 +63,8 @@ Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=
 
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda ovladač používá k šifrování dat posílaných mezi ovladač a databázový server. Například `EncryptionMethod=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** / 1 (SSL) / 6 (RequestSSL) | Ne |
-| ValidateServerCertificate (virtuální čipové karty) | Určuje, jestli ovladač ověřil certifikát, který je odesláno serverem databáze, když je povoleno šifrování protokolu SSL (metoda šifrování = 1). Například `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** / 1 (povoleno) | Ne |
+| EncryptionMethod (EM)| Metoda ovladač používá k šifrování dat posílaných mezi ovladač a databázový server. Např.:`EncryptionMethod=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** / 1 (SSL) / 6 (RequestSSL) | Ne |
+| ValidateServerCertificate (virtuální čipové karty) | Určuje, jestli ovladač ověřil certifikát, který je odesláno serverem databáze, když je povoleno šifrování protokolu SSL (metoda šifrování = 1). Např.:`ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** / 1 (povoleno) | Ne |
 
 **Příklad:**
 
@@ -219,6 +224,11 @@ Chcete-li kopírovat data z PostgreSQL, v části **zdroje** aktivity kopírová
 ```
 
 Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

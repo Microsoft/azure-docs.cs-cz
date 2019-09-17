@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 40c170575e0b6e6264eed8a464ac73012cbe8627
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276508"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018666"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
@@ -23,7 +23,7 @@ Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci 
 V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS.
 
 > [!NOTE]
-> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
+> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není zpětně kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -176,7 +176,7 @@ data:
           }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek ukázal několik ukázkových scénářů pro přizpůsobení CoreDNS. Informace o projektu CoreDNS najdete [na stránce projektu CoreDNS pro odesílání dat][coredns].
 
@@ -187,6 +187,8 @@ Další informace o konceptech základní sítě najdete v tématu [Koncepty sí
 [coredns]: https://coredns.io/
 [corednsk8s]: https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns
 [dnscache]: https://coredns.io/plugins/cache/
+[aks-quickstart-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
+[aks-quickstart-portal]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

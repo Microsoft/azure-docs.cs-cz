@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: d9e31c1c7decec159de9224f97edfcba15f93966
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445430"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007833"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopírování dat z platformy Xero pomocí Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 > Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Xero je podporován pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z platformy Xero do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -49,7 +54,7 @@ Xero propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Xero** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Xero** | Ano |
 | host | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
 | consumerKey | Uživatelský klíč přidružený k aplikaci Xero. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | privateKey | Privátní klíč ze souboru .pem, který byl vygenerován pro vaši aplikaci privátní Xero, naleznete v tématu [vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: **generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 se nepodporuje. Zahrnout veškerý text z soubor .pem, včetně endings(\n) řádku Unix, najdete v ukázce níže.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -95,7 +100,7 @@ Ke zkopírování dat z platformy Xero, nastavte vlastnost typ datové sady na *
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **XeroObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **XeroObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
@@ -105,11 +110,12 @@ Ke zkopírování dat z platformy Xero, nastavte vlastnost typ datové sady na *
     "name": "XeroDataset",
     "properties": {
         "type": "XeroObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Xero linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -124,7 +130,7 @@ Ke zkopírování dat z platformy Xero, nastavte typ zdroje v aktivitě kopírov
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **XeroSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Contacts"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -212,6 +218,11 @@ V následujících tabulkách se dá dotazovat jenom s kompletní schématu:
 - Complete.Receipt_Line_Items 
 - Complete.Receipt_Line_Item_Tracking 
 - Complete.Tracking_Category_Options
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných aktivitou kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

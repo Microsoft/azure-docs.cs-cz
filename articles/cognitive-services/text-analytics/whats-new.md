@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697068"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017754"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
 
-## <a name="sentiment-analysis-v3-public-preview---july-2019"></a>Verze Public Preview Analýza mínění V3 – červenec 2019
+## <a name="sentiment-analysis-v3-public-preview---september-2019"></a>Analýza mínění V3 Public Preview – září 2019
 
 Další verze Analýza mínění je teď dostupná ve verzi Public Preview a přináší významná vylepšení přesnosti a podrobností o kategorizaci a bodování textu rozhraní API. Navíc poskytuje:
 
 * Automatické označování pro různé zabarvení v textu
 * Mínění analýzy a výstupy na úrovni dokumentu a věty. 
 
-Podporuje angličtinu a je k dispozici ve třech oblastech: Střední Kanada, Východní Asie a Střed USA. Vyhledejte další jazyky a oblasti, které se mají přidat do dalších verzí.
+Podporuje angličtinu, japonštinu a zjednodušenou čínštinu a je k dispozici v následujících `Australia East`oblastech `Central Canada`: `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US` ,, , `UK South`, `West Europe`a .`West US 2`
 
 > [!div class="nextstepaction"]
 > [Další informace o Analýza mínění V3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 391ad5c6535d457c2df988cd29d21e481310b17f
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061758"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018173"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backupm: Problémy s agentem nebo rozšířením
 
@@ -105,12 +105,12 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Příčina 5: Služba zálohování nemá oprávnění odstranit staré body obnovení z důvodu zámku skupiny prostředků.** <br>
 **Příčina 6: [Virtuální počítač nemá přístup k Internetu.](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095-gb"></a>UserErrorUnsupportedDiskSize – aktuálně Azure Backup nepodporuje velikosti disků větší než 4095 GB.
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – Azure Backup aktuálně není podporována nakonfigurovaná velikost disku.
 
 **Kód chyby**: UserErrorUnsupportedDiskSize <br>
-**Chybová zpráva**: V současné době Azure Backup nepodporuje velikosti disků větší než 4095 GB. <br>
+**Chybová zpráva**: Nakonfigurované velikosti disků momentálně Azure Backup nepodporuje. <br>
 
-Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4095 GB. Pokud si chcete zaregistrovat omezené veřejné verze Preview Azure Backup podpora velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si tento [článek](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 30 TB. Zálohování šifrovaných disků větších než 4 TB se taky v současnosti nepodporuje. Zajistěte, aby velikost disku byla menší nebo rovna podporovanému limitu rozdělením disků.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože v tuto chvíli probíhá jiná operace zálohování.
 
@@ -122,12 +122,10 @@ Poslední úloha zálohování se nezdařila, protože probíhá existující ú
 1. Přihlaste se k Azure Portal klikněte na **všechny služby**. Zadejte Recovery Services a klikněte na **Trezory služby Recovery Services**. Objeví se seznam trezorů Recovery Services.
 2. V seznamu trezorů služby Recovery Services vyberte trezor, ve kterém je zálohování nakonfigurované.
 3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** . zobrazí se všechny úlohy zálohování.
-
-- Pokud úloha zálohování probíhá, počkejte, než se dokončí, nebo zrušte úlohu zálohování.
-  - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a kliknete na **Zrušit** nebo použijete [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
-- Pokud jste znovu nakonfigurovali zálohu v jiném trezoru, ujistěte se, že ve starém trezoru nejsou spuštěné žádné úlohy zálohování. Pokud existuje, zrušte úlohu zálohování.
-  - Pokud chcete zrušit úlohu zálohování, klikněte na ni pravým tlačítkem a pak klikněte na **Zrušit** nebo použijte [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
-
+   - Pokud úloha zálohování probíhá, počkejte, než se dokončí, nebo zrušte úlohu zálohování.
+     - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a kliknete na **Zrušit** nebo použijete [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+   - Pokud jste znovu nakonfigurovali zálohu v jiném trezoru, ujistěte se, že ve starém trezoru nejsou spuštěné žádné úlohy zálohování. Pokud existuje, zrušte úlohu zálohování.
+     - Pokud chcete zrušit úlohu zálohování, klikněte na ni pravým tlačítkem a pak klikněte na **Zrušit** nebo použijte [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
 4. Opakujte operaci zálohování.
 
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -156,8 +154,7 @@ Je možné, že agent virtuálního počítače je poškozený nebo se služba z
 4. Stáhněte a nainstalujte si [nejnovější verzi MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace musíte mít oprávnění správce.
 5. Ověřte, že se v části služby zobrazují služby agenta hosta systému Windows Azure.
 6. Spusťte zálohování na vyžádání:
-
-- Na portálu vyberte **Zálohovat nyní**.
+   - Na portálu vyberte **Zálohovat nyní**.
 
 Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Microsoft .net 4,5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Aby agent virtuálního počítače mohl komunikovat se službou, je vyžadován .NET 4,5.
 

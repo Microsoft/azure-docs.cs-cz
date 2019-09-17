@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918790"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018979"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -58,9 +58,9 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.
 
 >[!NOTE]
->Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu. Ve výchozím nastavení Azure Firewall nepodporuje vynucené tunelování v místní síti.
+>Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 >
->Pokud však vaše konfigurace vyžaduje vynucené tunelování v místní síti, společnost Microsoft je bude podporovat na základě případu. Obraťte se na podporu, abychom mohli zkontrolovat váš případ. V případě přijetí umožníme vašemu předplatnému a zajistíte, aby bylo zachováno požadované připojení k Internetu z brány firewall.
+>Azure Firewall v současné době nepodporuje vynucené tunelování. Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a můžete určit předpony cílových IP adres pro vaše internetové cíle, můžete tyto rozsahy nakonfigurovat v místní síti jako další segment směrování prostřednictvím uživatelsky definované trasy. AzureFirewallSubnet. Nebo můžete k definování těchto tras použít protokol BGP.
 
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
@@ -373,7 +373,7 @@ Vytvořte virtuální počítač ve virtuální síti paprsků a spusťte služb
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: *Azure123456!*
 4. Vyberte **Další: disky**.
-5. Přijměte výchozí hodnoty a vyberte **Další: sítě**.
+5. Přijměte výchozí hodnoty a **vyberte Další: Sítě**.
 6. Vyberte **VNet-hvězdicové** pro virtuální síť a podsíť je **sn-zatížení**.
 7. V případě **veřejné IP adresy**vyberte **žádné**.
 8. U **veřejných příchozích portů**vyberte **Povolit vybrané porty**a pak vyberte **http (80)** a **RDP (3389)** .

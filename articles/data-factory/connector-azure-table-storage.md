@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 30685e59f6f8318c66a8500f33e8200743e487aa
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061489"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009886"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat z a do úložiště tabulek v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -29,6 +29,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Azure Table Storage se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data můžete kopírovat z libovolného podporovaného zdrojového úložiště dat do tabulkového úložiště. Data z úložiště tabulek také můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -339,6 +344,10 @@ Když přesunete data do a z tabulky Azure, použijí se následující [mapová
 | Edm.Int32 |Int32 |32 celé číslo. |
 | Edm.Int64 |Int64 |64 celé číslo. |
 | Edm.String |String |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

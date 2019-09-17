@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983775"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018676"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 [Službu Azure Backup](backup-overview.md) můžete použít k zálohování místních počítačů a úloh a virtuálních počítačů Azure. Tento článek shrnuje nastavení a omezení podpory při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -158,13 +158,13 @@ Virtuální počítače s Gen2 | Podporováno <br> Azure Backup podporuje záloh
 
 **Komponenta** | **Podpora**
 --- | ---
-Datové disky virtuálních počítačů Azure | Zálohujte virtuální počítač s 16 nebo méně datovými disky. <br/><br/> Podporuje velikosti disků až do 4 TB.<br/><br/>Pokud si chcete zaregistrovat omezené veřejné verze Preview Azure Backup podpora velkých disků pro disky větší než 4 TB a velikost až 30 TB, přečtěte si tento [článek](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Velikost datového disku | Jednotlivý disk může mít až 4095 GB.<br/><br/>Pokud se chcete zaregistrovat k omezené veřejné verzi Preview Azure Backup podpora velkých disků pro disky větší než 4 TB až 30TB, přečtěte si tento [článek](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Datové disky virtuálních počítačů Azure | Zálohujte virtuální počítač s 16 nebo méně datovými disky. <br/><br/> Podporuje zálohování virtuálních počítačů s jednotlivými velikostmi disků až do 30TB a maximálně 256TB pro všechny disky ve virtuálním počítači.
+Velikost datového disku | Jednotlivé disky můžou být až 30TB.
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
 Šifrované disky | Podporuje se.<br/><br/> Virtuální počítače Azure s povoleným Azure Disk Encryption můžou být zálohované (s aplikací Azure AD nebo bez ní).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Musíte obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování u virtuálních počítačů, které už jsou chráněné pomocí Azure Backup.
 Disky s povoleným Akcelerátor zápisu | Nepodporuje se.<br/><br/> Azure Backup automaticky vyloučí disky s Akcelerátor zápisu povolenou během zálohování. Vzhledem k tomu, že nejsou zálohovány, nebudete moci obnovit tyto disky z bodů obnovení virtuálního počítače.
-Zálohování disků s odstraněnými duplicitními daty | Nepodporuje se.
+Zálohování & obnovení virtuálních počítačů nebo disků s odstraněnými duplicitními daty | Azure Backup nepodporuje odstranění duplicit. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) . <br/> <br/>  – Azure Backup neprovádí odstranění duplicit mezi virtuálními počítači v trezoru Recovery Services. <br/> <br/>  – Pokud během obnovování dojde k virtuálním počítačům ve stavu odstranění duplicitních dat, soubory nejde obnovit, protože trezor nerozumí formátu.
 Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílený svazek clusteru (CSV) nebo souborového serveru se škálováním na více systému se nedoporučuje. Při zálohování pravděpodobně dojde k chybě zapisovačů sdílených svazků clusteru. Při obnovení se nemusí nacházet disky obsahující svazky sdíleného svazku clusteru.
@@ -235,7 +235,7 @@ Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green
 Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md).
 - [Zálohování počítačů s Windows přímo](tutorial-backup-windows-server-to-azure.md)bez záložního serveru.

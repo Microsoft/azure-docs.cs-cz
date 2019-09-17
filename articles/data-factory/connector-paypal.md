@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: dcc54b0f67b9bf08df602c3eb9a4bcb0ea699ee7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 137430ebf009686c3533bece19e550cc53229c99
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405881"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009586"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopírování dat z PayPal pomocí Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 > Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a sdělte nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor služby PayPal se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z PayPal do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -44,7 +49,7 @@ PayPal propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **PayPal** | Ano |
+| type | Vlastnost Type musí být nastavená na: **PayPal** | Ano |
 | host | Adresa URL PayPal instance. (to znamená api.sandbox.paypal.com)  | Ano |
 | clientId | ID klienta přidružené k aplikaci PayPal.  | Ano |
 | clientSecret | Tajný kód klienta přidruženého k aplikaci PayPal. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -79,8 +84,8 @@ Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalO
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **PayPalObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| type | Vlastnost Type datové sady musí být nastavená na: **PayPalObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -89,11 +94,12 @@ Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalO
     "name": "PayPalDataset",
     "properties": {
         "type": "PayPalObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<PayPal linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +114,7 @@ Ke zkopírování dat z PayPal, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **PayPalSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PayPalSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Payment_Experience"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -142,6 +148,11 @@ Ke zkopírování dat z PayPal, nastavte typ zdroje v aktivitě kopírování do
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933939"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010247"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -59,7 +59,7 @@ Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shr
 **Vyčištění po navrácení služeb po obnovení** | Po převzetí služeb při selhání sekundárním Azure a následné navrácení služeb po obnovení do primární oblasti Site Recovery automaticky vyčistí počítače v sekundární oblasti. Nemusíte ručně odstraňovat virtuální počítače a síťové karty.
 **Testovací převzetí služeb při selhání zachovává IP adresu** | IP adresu zdrojového virtuálního počítače teď můžete zachovat během postupu zotavení po havárii a vybrat statickou IP adresu testovacího převzetí služeb při selhání.
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>Zotavení po havárii VMware/fyzický server
+### <a name="vmwarephysical-server-disaster-recovery"></a>Zotavení po havárii VMware/fyzický server
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
@@ -67,13 +67,13 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 --- | ---
 Výstrahy nového procesového serveru | Přidali jsme nové výstrahy procesového serveru. [Další informace](vmware-physical-azure-monitor-process-server.md). 
 
-## <a name="hyper-v-disaster-recovery"></a>Zotavení po havárii technologie Hyper-V
+### <a name="hyper-v-disaster-recovery"></a>Zotavení po havárii technologie Hyper-V
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 **Funkce** | **Podrobnosti**
 --- | ---
-Účet úložiště | Site Recovery teď podporuje použití účtu úložiště s povoleným řízením přístupu na základě role (RBAC). [Přečtěte si další informace](../storage/common/storage-account-manage.md#access-control) o řízení přístupu pro účty úložiště. 
+Účet úložiště | Site Recovery teď podporuje použití účtů úložiště s bránou firewall povolenou pro zotavení po havárii Hyper-V do Azure.  Můžete vybrat účty úložiště s podporou brány firewall jako cílový účet nebo úložiště mezipaměti. Pokud používáte účet s povolenou bránou firewall, ujistěte se, že jste povolili možnost Povolit důvěryhodné služby společnosti Microsoft.
 
 
 ## <a name="updates-august-2019"></a>Aktualizace (srpen 2019)

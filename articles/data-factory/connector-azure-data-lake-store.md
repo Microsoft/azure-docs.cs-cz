@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bb57190a310e1ea4b8e5c511f1acd90f53b8f09
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 968e356947e99c3b6c4fe9d5acd2efed264be5b0
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813461"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010116"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -30,10 +30,11 @@ Tento článek popisuje, jak kopírovat data do a z Azure Data Lake Storage Gen1
 
 Tento konektor Azure Data Lake Storage Gen1 se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovaným zdrojem nebo maticí jímky](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md) 
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Odstranit aktivitu](delete-activity.md)
 
 Konkrétně pomocí tohoto konektoru můžete:
 
@@ -74,7 +75,7 @@ Chcete-li použít ověřování instančního objektu, zaregistrujte entitu apl
 
 >[!IMPORTANT]
 > Udělte instančnímu objektu správné oprávnění v Data Lake Store:
->- **Jako zdroj**: V **Průzkumníku** > dat udělte**oprávnění k**vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
+>- **Jako zdroj**: V **Průzkumníku** > dat udělte oprávnění k vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
 >- **Jako jímka**: V okně**přístup k**aplikaci **data** > Access udělte oprávnění k vytváření podřízených položek ve složce alespoň pro **zápis + Execute** . Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Pokud používáte prostředí Azure Integration runtime ke kopírování (zdroj i jímka jsou v cloudu), udělte v IAM aspoň roli **Čtenář** , aby data Factory rozpoznat oblast pro data Lake Store. Pokud se chcete této roli IAM vyhnout, explicitně [vytvořte prostředí Azure Integration runtime](create-azure-integration-runtime.md#create-azure-ir) s umístěním Data Lake Store. Například pokud je vaše Data Lake Store v Západní Evropa, vytvořte prostředí Azure Integration runtime s umístěním nastaveným na "Západní Evropa". Přidružte je v propojené službě Data Lake Store, jak je znázorněno v následujícím příkladu.
 
 >[!NOTE]
@@ -128,7 +129,7 @@ Použití spravované identity pro ověřování prostředků Azure:
 
 >[!IMPORTANT]
 > Ujistěte se, že udělíte patřičná oprávnění pro spravovanou identitu pro datovou továrnu v Data Lake Store:
->- **Jako zdroj**: V **Průzkumníku** > dat udělte**oprávnění k**vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
+>- **Jako zdroj**: V **Průzkumníku** > dat udělte oprávnění k vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
 >- **Jako jímka**: V okně**přístup k**aplikaci **data** > Access udělte oprávnění k vytváření podřízených položek ve složce alespoň pro **zápis + Execute** . Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Pokud používáte prostředí Azure Integration runtime ke kopírování (zdroj i jímka jsou v cloudu), udělte v IAM aspoň roli **Čtenář** , aby data Factory rozpoznat oblast pro data Lake Store. Pokud se chcete této roli IAM vyhnout, explicitně [vytvořte prostředí Azure Integration runtime](create-azure-integration-runtime.md#create-azure-ir) s umístěním Data Lake Store. Přidružte je v propojené službě Data Lake Store, jak je znázorněno v následujícím příkladu.
 
 >[!NOTE]
@@ -491,6 +492,18 @@ Pokud chcete replikovat seznamy řízení přístupu (ACL) spolu s datovými sou
 
 Přečtěte si další informace o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v funkci toku dat mapování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>Vlastnosti aktivity GetMetadata
+
+Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMetadata](control-flow-get-metadata-activity.md) . 
+
+## <a name="delete-activity-properties"></a>Odstranit vlastnosti aktivity
+
+Další informace o vlastnostech najdete v části [Odstranění aktivity](delete-activity.md) .
+
+## <a name="next-steps"></a>Další postup
 
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914850"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018718"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Preview – automaticky škáluje cluster tak, aby splňoval požadavky aplikace ve službě Azure Kubernetes (AKS).
 
@@ -104,7 +104,7 @@ Vytvoření clusteru a konfigurace nastavení automatického škálování clust
 ## <a name="change-the-cluster-autoscaler-settings"></a>Změna nastavení automatického škálování clusteru
 
 > [!IMPORTANT]
-> Pokud máte ve svém předplatném povolenou funkci *více fondů agentů* , přejděte do [části Automatické škálování s více fondy agentů](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Clustery s povoleným více fondy agentů vyžadují `az aks nodepool` použití sady příkazů ke změně vlastností specifických pro fond uzlů `az aks`místo. Níže uvedené pokyny předpokládají, že jste nepovolili více fondů uzlů. Pokud chcete zjistit, jestli je povolená, `az feature  list -o table` spusťte příkaz a `Microsoft.ContainerService/multiagentpoolpreview`vyhledejte ho.
+> Pokud máte ve svém předplatném povolenou funkci *více fondů agentů* , přejděte do [části Automatické škálování s více fondy agentů](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Clustery s povoleným více fondy agentů vyžadují `az aks nodepool` použití sady příkazů ke změně vlastností specifických pro fond uzlů `az aks`místo. Níže uvedené pokyny předpokládají, že jste nepovolili více fondů uzlů. Pokud chcete zjistit, jestli je povolená, `az feature  list -o table` spusťte příkaz a `Microsoft.ContainerService/multiagentpoolpreview`vyhledejte ho.
 
 Pokud jste v předchozím kroku vytvořili cluster AKS nebo aktualizovali existující fond uzlů, byl minimální počet uzlů pro automatické škálování clusteru nastavený na *1*a maximální počet uzlů byl nastavený na *3*. Jak vaše aplikace vyžaduje změnu, možná budete muset upravit počet uzlů automatického škálování clusteru.
 

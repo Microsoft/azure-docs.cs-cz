@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932746"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018855"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -129,11 +129,9 @@ Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adre
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 
-Vynucené tunelování není ve výchozím nastavení podporováno, ale lze je povolit s podporou podpory.
+Vynucené tunelování není aktuálně podporováno. Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 
-Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu. Ve výchozím nastavení Azure Firewall nepodporuje vynucené tunelování v místní síti.
-
-Pokud však vaše konfigurace vyžaduje vynucené tunelování v místní síti, společnost Microsoft je bude podporovat na základě případu. Obraťte se na podporu, abychom mohli zkontrolovat váš případ. V případě přijetí umožníme vašemu předplatnému a zajistíte, aby bylo zachováno požadované připojení k Internetu z brány firewall.
+Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a můžete určit předpony cílových IP adres pro vaše internetové cíle, můžete tyto rozsahy nakonfigurovat v místní síti jako další segment směrování prostřednictvím uživatelsky definované trasy. AzureFirewallSubnet. Nebo můžete k definování těchto tras použít protokol BGP.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují nějaká omezení skupiny prostředků brány firewall?
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d75fce09f1f90e64463488bc1da8d8bb8c2f1d14
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277707"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009669"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -31,6 +31,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
+Tento konektor MySQL se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
+
 Data z databáze MySQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor MySQL podporuje MySQL **verze 5,6 a 5,7**.
@@ -41,7 +46,7 @@ Konkrétně tento konektor MySQL podporuje MySQL **verze 5,6 a 5,7**.
 
 Integration Runtime poskytuje integrovaný ovladač MySQL od verze 3,7, proto nemusíte ručně instalovat žádný ovladač.
 
-V případě, že je místní verze IR nižší než 3,7, je nutné nainstalovat [konektor MySQL/NET pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze mezi 6.6.5 a 6.10.7 na Integration runtime počítač. Tento ovladač 32 je kompatibilní s 64 bit IR.
+V případě, že je místní verze IR nižší než 3,7, je nutné nainstalovat [konektor MySQL/NET pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze mezi 6.6.5 a 6.10.7 na Integration runtime počítač. Tento 32 ovladač je kompatibilní s 64-bit IR.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -63,7 +68,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
 
 | Vlastnost | Popis | Možnosti | Požadováno |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování SSL a ověřování. Například `SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Ne |
+| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování SSL a ověřování. Např.:`SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Ne |
 | UseSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1)/zakázáno (0) **(výchozí)** | Ne |
 
 **Příklad:**
@@ -267,5 +272,10 @@ Při kopírování dat z MySQL se z datových typů MySQL používají následuj
 | `varchar` |`String` |
 | `year` |`Int` |
 
-## <a name="next-steps"></a>Další postup
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

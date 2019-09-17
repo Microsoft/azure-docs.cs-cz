@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67665973"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018827"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -28,11 +28,12 @@ Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 ## <a name="create-a-storage-class"></a>Vytvoření třídy úložiště
 
-Třída úložiště se používá k definování způsobu vytvoření sdílené složky Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure. Vyberte následující redundanci [úložiště Azure][storage-skus] pro *skuName*:
+Třída úložiště se používá k definování způsobu vytvoření sdílené složky Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure. Vyberte následující [redundanci úložiště Azure][storage-skus] pro *skuName*:
 
 * *Standard_LRS* – standardní místně redundantní úložiště (LRS)
 * *Standard_GRS* – standardní geograficky redundantní úložiště (GRS)
 * *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
+* *Premium_LRS* – místně redundantní úložiště (LRS)
 
 > [!NOTE]
 > Služba soubory Azure podporuje Premium Storage v clusterech AKS se systémem Kubernetes 1,13 nebo vyšším.
@@ -52,6 +53,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
@@ -101,7 +105,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Vytvoření deklarace identity trvalého svazku
 
-Deklarace trvalého svazku (PVC) používá objekt třídy úložiště k dynamickému zřízení sdílené složky Azure. Následující YAML se dají použít k vytvoření deklarace identity trvalého svazku *5 GB* ve velikosti s přístupem *ReadWriteMany* . Další informace o režimech přístupu najdete v dokumentaci k [trvalému svazku Kubernetes][access-modes] .
+Deklarace trvalého svazku (PVC) používá objekt třídy úložiště k dynamickému zřízení sdílené složky Azure. Následující YAML se dají použít k vytvoření deklarace identity trvalého objemu *5 GB* s přístupem *ReadWriteMany* . Další informace o režimech přístupu najdete v dokumentaci k [trvalému svazku Kubernetes][access-modes] .
 
 Teď vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte ho na následující YAML. Ujistěte se, že *storageClassName* odpovídá třídě úložiště vytvořené v posledním kroku:
 
@@ -118,6 +122,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!NOTE]
+> Pokud používáte skladové položky *Premium_LRS* pro třídu úložiště, musí být minimální hodnota *úložiště* *100Gi*.
 
 Pomocí příkazu [kubectl Apply][kubectl-apply] vytvořte deklaraci trvalého svazku:
 
@@ -196,17 +203,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Možnosti připojení
 
-Výchozí hodnoty *FileMode* a *dirMode* se mezi verzemi Kubernetes liší, jak je popsáno v následující tabulce.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 nebo vyšší | 0755 |
-| v1.9.0 | 0700 |
-| v 1.9.1 nebo vyšší | 0755 |
-
-Pokud používáte cluster verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete zadat možnosti připojení u objektu třídy úložiště. Následující příklad nastaví *0777*:
+Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
 
 ```yaml
 kind: StorageClass
@@ -219,6 +216,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```

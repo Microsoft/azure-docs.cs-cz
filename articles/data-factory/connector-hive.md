@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 40f97c3b31a7e49c9a5ecc790e3cc762572ecaa3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 120aed4277abfb2ea977670c107a4ee759bd3524
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276357"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009144"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 
 Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat z Hive ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor podregistru se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z Hive do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
@@ -46,14 +51,14 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **Hive** | Ano |
-| host | IP adresa nebo název hostitele serveru Hive, oddělených pomocí ';' u více hostitelů (pouze v případě serviceDiscoveryMode povolit).  | Ano |
+| host | IP adresa nebo název hostitele serveru pro podregistr, oddělený znakem '; ' pro více hostitelů (pouze v případě, že je povoleno serviceDiscoveryMode).  | Ano |
 | port | Port TCP, který používá Hive server k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
 | serverType | Typ serveru Hive. <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
 | thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binární**, **SASL**, **http** | Ne |
 | authenticationType. | Metoda ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | serviceDiscoveryMode | Hodnota TRUE označuje pomocí služby ZooKeeper false není.  | Ne |
 | zooKeeperNameSpace | Obor názvů na pod které Hive Server 2 jsou přidány uzly ZooKeeper.  | Ne |
-| useNativeQuery | Určuje, jestli používá nativní dotazy HiveQL ovladače, nebo převede na ekvivalentní formulář v nástrojích pro HiveQL.  | Ne |
+| useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | Ne |
 | username | Uživatelské jméno, který používáte pro přístup k serveru Hive.  | Ne |
 | password | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru Hive.  | Ne |
@@ -159,6 +164,11 @@ Ke zkopírování dat z Hive, nastavte typ zdroje v aktivitě kopírování do *
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

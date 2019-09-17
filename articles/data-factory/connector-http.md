@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 880f5624af03e08e3a91ec5b230e593025d979a5
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5a4aa1640de3a090deceea690b21a40e49f8ce4c
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813012"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009090"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -34,6 +34,11 @@ Rozdíl mezi tímto konektorem HTTP, [konektorem REST](connector-rest.md) a [kon
 - **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor HTTP se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data ze zdroje HTTP můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -220,7 +225,7 @@ Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC**, jsou podporován
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | Ne |
 | requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
 | additionalHeaders | Další hlavičky požadavku HTTP | Ne |
-| částmi | Tělo požadavku HTTP | Ne |
+| Částmi | Tělo požadavku HTTP | Ne |
 | format | Pokud chcete načíst data z koncového bodu HTTP, jak je bez jeho analýzy, a pak zkopírovat data do úložiště založeného na souborech, přeskočte oddíl **Formát** v definicích vstupní i výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP během kopírování, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát**nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v tématu [formát JSON](supported-file-formats-and-compression-codecs.md#json-format), formát [textu](supported-file-formats-and-compression-codecs.md#text-format), formát [Avro](supported-file-formats-and-compression-codecs.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs.md#orc-format)a [Formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
 | compression | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **Gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně:  **Optimální** a **nejrychlejší**. |Ne |
 
@@ -286,7 +291,7 @@ Chcete-li kopírovat data z **Parquet, oddělený text, JSON, Avro a binární f
 | type                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSetting**. | Ano      |
 | requestMethod            | Metoda HTTP. <br>Povolené hodnoty jsou **Get** (default) a **post**. | Ne       |
 | addtionalHeaders         | Další hlavičky požadavku HTTP                             | Ne       |
-| částmi              | Tělo požadavku HTTP                               | Ne       |
+| Částmi              | Tělo požadavku HTTP                               | Ne       |
 | requestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
 
@@ -374,6 +379,10 @@ Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC**, jsou v části *
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další postup
