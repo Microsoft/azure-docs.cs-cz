@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3082c568b3ce3fa5199c7a7d0d082db36720d293
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 561f383327738c9a2ab29f2907f00ace1eec6def
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233031"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010276"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) pomocí služby Azure Data Factory
 
@@ -31,6 +31,11 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 >Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. MongoDB API najdete v tématu [konektor pro rozhraní api Azure Cosmos DB pro MongoDB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API se teď nepodporují.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+
+Tento konektor Azure Cosmos DB (SQL API) se podporuje pro následující činnosti:
+
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data můžete kopírovat z Azure Cosmos DB (SQL API) do libovolného podporovaného úložiště dat jímky nebo kopírovat data z libovolného podporovaného zdrojového úložiště dat do Azure Cosmos DB (SQL API). Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -251,6 +256,9 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="import-or-export-json-documents"></a>Import a export dokumentů JSON
 

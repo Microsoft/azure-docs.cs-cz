@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentace k privátnímu propojení
+summary: Privátní propojení Azure umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database), partnerským službám a službám vlastněným zákazníky, které jsou hostované v Azure, prostřednictvím privátního koncového bodu ve vaší virtuální síti.  Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete si také vytvořit vlastní službu privátního propojení ve své virtuální síti a doručovat ji privátně vašim zákazníkům.
+metadata:
+  title: Dokumentace k privátnímu propojení – rychlá zprovoznění, praktičtí průvodci a referenční dokumentace k rozhraní API
+  description: Naučte se používat službu privátního propojení Azure. Rychlá zprovoznění a kurzy vám ukážou, jak nastavit službu privátního propojení.
+  ms.service: virtual-network
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71020207"
+landingContent:
+- title: Informace o privátním propojení Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je privátní propojení?
+      url: private-link-overview.md
+- title: Připojení ke službě Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co je privátní koncový bod?
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření privátního koncového bodu
+      url: create-private-endpoint-portal.md
+- title: Vytvoření vlastní služby privátního propojení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co je služba privátního propojení?
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření služby privátního propojení
+      url: create-private-link-service-powershell.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices

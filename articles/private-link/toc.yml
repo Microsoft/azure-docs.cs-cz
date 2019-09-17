@@ -1,0 +1,78 @@
+- name: Dokumentace k privátnímu propojení Azure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je privátní propojení Azure?
+      href: private-link-overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření privátního koncového bodu
+      items:
+        - name: portál Azure
+          href: create-private-endpoint-portal.md
+        - name: Azure CLI
+          href: create-private-endpoint-cli.md
+        - name: Azure PowerShell
+          href: create-private-endpoint-powershell.md
+    - name: Vytvoření služby privátního propojení
+      items:
+        - name: Azure PowerShell
+          href: create-private-link-service-powershell.md
+        - name: Azure CLI
+          href: create-private-link-service-cli.md
+- name: Koncepty
+  items:
+    - name: Privátní koncový bod
+      href: private-endpoint-overview.md
+    - name: Služba privátního propojení
+      href: private-link-service-overview.md
+- name: Postup
+  items:
+    - name: Privátní připojení k účtu úložiště
+      href: create-private-endpoint-storage-portal.md
+    - name: Zablokování síťových zásad pro privátní koncový bod
+      href: disable-private-endpoint-network-policy.md
+    - name: Zablokování síťových zásad pro službu privátního propojení
+      href: disable-private-link-service-network-policy.md
+    - name: Správa privátních koncových bodů
+      href: manage-private-endpoint.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: .NET
+      href: /api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/privateendpoints
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.network/allversions
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog o sítích
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Fórum o sítích
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Názory na sítě
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: Nejčastější dotazy
+      href: private-link-faq.md

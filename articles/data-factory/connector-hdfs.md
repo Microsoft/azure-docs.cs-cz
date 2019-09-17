@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a695f08f00b99fcd0bc634d12e30c0f3cfbd312
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d8773b330349356410589cf66e8f50636d92b601
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813091"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009173"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -30,7 +30,7 @@ Tento článek popisuje, jak kopírovat data ze HDFS serveru. Další informace 
 
 Tento konektor HDFS se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Konkrétně tento konektor HDFS podporuje:
@@ -331,7 +331,7 @@ Pokud chcete použít DistCp ke kopírování souborů z HDFS do Azure Blob (vč
 3. HDFS Server je integrovaný s vaším cílovým úložištěm dat – Azure Blob nebo Azure Data Lake Store:
 
     - Systém souborů BLOB v Azure je nativně podporovaný od Hadoop 2,7. Stačí zadat cestu jar v konfiguraci Hadoop env.
-    - Systém souborů Azure Data Lake Store je zabalený počínaje systémem Hadoop 3.0.0-Alpha1. Pokud je cluster Hadoop nižší než tato [verze, budete z něj](https://hadoop.apache.org/releases.html)muset ručně naimportovat adls balíčky jar (Azure-datalake-Store. jar) do clusteru a zadat cestu jar v konfiguraci Hadoop env.
+    - Systém souborů Azure Data Lake Store je zabalený počínaje systémem Hadoop 3.0.0-Alpha1. Pokud je cluster Hadoop nižší než tato verze, budete z něj muset ručně naimportovat ADLS balíčky jar (Azure-datalake-Store. jar) do clusteru [](https://hadoop.apache.org/releases.html)a zadat cestu jar v konfiguraci Hadoop env.
 
 4. Připravte dočasnou složku v HDFS. Tato dočasná složka se používá k uložení skriptu prostředí DistCp, takže bude zabírat místo na úrovni KB.
 5. Ujistěte se, že uživatelský účet, který je součástí HDFS, má oprávnění k odeslání aplikace v přízi; b) mít oprávnění k vytváření podsložek, čtení a zápisu souborů v rámci složky Temp.
@@ -481,6 +481,10 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 **V Azure Data Factory:**
 
 * Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s účtem domény nebo objektem Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [Vlastnosti propojené služby HDFS](#linked-service-properties) .
+
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další postup
