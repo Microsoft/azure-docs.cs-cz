@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142809"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057663"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Rychlý start: Klientská knihovna pro rozpoznávání formulářů pro .NET
 
@@ -22,9 +22,11 @@ Začínáme s klientskou knihovnou pro rozpoznávání formulářů pro .NET Ná
 
 Použijte klientskou knihovnu pro rozpoznávání formulářů pro .NET pro:
 
-* Výuka modelu rozpoznávání vlastního formuláře
-* Analýza formulářů pomocí vlastního modelu
-* Získat seznam vlastních modelů
+* [Výuka modelu rozpoznávání vlastního formuláře](#train-a-custom-model)
+* [Získat seznam extrahovaných klíčů](#get-a-list-of-extracted-keys)
+* [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
+* [Získat seznam vlastních modelů](#get-a-list-of-custom-models)
+* [Odstranění vlastního modelu](#delete-a-custom-model)
 
 [Dokumentace k referenční dokumentaci](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | knihovny[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 V adresáři projektu otevřete soubor _program.cs_ v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující příkazy `using`:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Pak do metody **Main** aplikace přidejte následující kód. Tuto asynchronní úlohu budete definovat později.
 
@@ -115,10 +110,12 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 
 * [Ověření klienta](#authenticate-the-client)
 * [Výuka modelu rozpoznávání vlastního formuláře](#train-a-custom-model)
+* [Získat seznam extrahovaných klíčů](#get-a-list-of-extracted-keys)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Získat seznam vlastních modelů](#get-a-list-of-custom-models)
+* [Odstranění vlastního modelu](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Definování proměnných
+## <a name="define-variables"></a>Definování proměnných
 
 Před definováním jakýchkoli metod přidejte do horní části třídy **programu** následující definice proměnných. Musíte vyplnit některé proměnné sami. 
 
@@ -127,13 +124,13 @@ Před definováním jakýchkoli metod přidejte do horní části třídy **prog
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>Ověření klienta
+## <a name="authenticate-the-client"></a>Ověření klienta
 
 Pod metodou definujte úkol, na který je odkazováno v `Main`. `Main` Tady ověříte objekt klienta pomocí proměnných předplatného, které jste definovali výše. Další metody budete definovat později.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Trénování vlastního modelu
+## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
 Následující metoda používá klientský objekt pro rozpoznávání formulářů k učení nového modelu rozpoznávání v dokumentech uložených v kontejneru objektů BLOB v Azure. Používá pomocnou metodu k zobrazení informací o nově školených modelech (reprezentovaných objektem [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) ) a vrací ID modelu.
 
@@ -143,9 +140,18 @@ Následující pomocná metoda zobrazí informace o modelu rozpoznávání formu
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
+## <a name="get-a-list-of-extracted-keys"></a>Získat seznam extrahovaných klíčů
+
+Po dokončení školení si vlastní model zachová seznam klíčů, které se extrahují z školicích dokumentů. Očekává, že budoucí dokumenty formuláře budou tyto klíče obsahovat, a extrahuje jejich odpovídající hodnoty v operaci analyzovat. Pomocí následující metody načtěte seznam extrahovaných klíčů a vytiskněte ho do konzoly. To je dobrý způsob, jak ověřit, že proces školení byl účinný.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
 
 Tato metoda používá klienta nástroje pro rozpoznávání formulářů a ID modelu k analýze dokumentu formuláře PDF a extrahování dat klíč/hodnota. Používá pomocnou metodu k zobrazení výsledků (reprezentovaných objektem [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) ).
+
+> [!NOTE]
+> Následující metoda analyzuje formulář PDF. Pro podobné metody, které analyzují formuláře JPEG a PNG, si přečtěte kompletní ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ Následující pomocná metoda zobrazí informace o operaci analýzy.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Získat seznam vlastních modelů
+## <a name="get-a-list-of-custom-models"></a>Získat seznam vlastních modelů
 
 Můžete vracet seznam všech vycvičených modelů, které patří k vašemu účtu, a můžete načíst informace o tom, kdy byly vytvořeny. Seznam modelů je reprezentován objektem [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Odstranění vlastního modelu
+
+Pokud chcete z účtu odstranit vlastní model, použijte následující metodu:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -174,9 +186,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Pokud jste navíc prohlédli vlastní model, který chcete z účtu odstranit, použijte následující metodu:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Pokud jste navíc prohlédli vlastní model, který chcete z účtu odstranit, spusťte metodu v části [odstranění vlastního modelu](#delete-a-custom-model).
 
 ## <a name="next-steps"></a>Další postup
 

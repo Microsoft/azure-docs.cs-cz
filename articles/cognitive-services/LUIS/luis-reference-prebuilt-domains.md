@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307432"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067596"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -27,7 +27,7 @@ V tomto materiálu najdete informace o [předem připravených domén](luis-how-
 
 Následující tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle více dokončena než jiné. 
 
-| Typ entity       | EN-US      | ZH-CN   | DE    | FR     | ES    | it      | PT – BR |  JP  |      KO |        NL |    TR |
+| Typ entity       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT – BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Kalendář](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Telecommunication](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -54,10 +54,10 @@ Kalendář je cokoli o osobních schůzkách a událostech, ne o veřejných ud�
 Název záměru | Popis | Příklady
 ---------|----------|---------------
  AcceptEventEntry | Přijme v kalendáři (n) událost/schůzku/událost/událost. | Přijmout schůzku <br> Přijmout událost <br> Přijměte dnešní schůzku.
- Zrušit | Zruší probíhající akci od virtuálního pomocníka, například zrušení procesu vytvoření schůzky. <br> ***Upozornění**: Tento záměr zahrnuje hlavně akci zrušit ve scénáři kalendáře. Pokud pro příkaz Cancel potřebujete obecný výraz, použijte možnost zrušit záměr v doméně **nástroje** . * | Je to v pořádku, stačí událost zrušit. <br> Ne, pouze zrušit schůzku.
+ Zrušit | Zruší probíhající akci od virtuálního pomocníka, například zrušení procesu vytvoření schůzky. <br> _**Upozornění**: Tento záměr zahrnuje hlavně akci zrušit ve scénáři kalendáře. Pokud pro příkaz Cancel potřebujete obecný výraz, použijte záměr "zrušit" v doméně **nástrojů** ._ | Je to v pořádku, stačí událost zrušit. <br> Ne, pouze zrušit schůzku.
  ChangeCalendarEntry | Změňte nebo znovu Naplánujte záznam v kalendáři. | Změnit plán na 6 dop. zítřejší událost zítra do 2 ODP. <br> Změnit plán události lékaře na 5 odp. <br> Naplánujte si oběd s tomash Olson do pátku. <br> Změna času události
  CheckAvailability | Zjistěte dostupnost pro událost nebo schůzku na uživatele nebo jinou osobu kalendáře. | Pokud je k dispozici podle Jima? <br> Zobrazit, kdy je Karolínu k dispozici zítra <br> Je Chris zdarma v sobotu?
- Potvrdit | Potvrďte, jestli se má provést operace nebo akce na základě předchozího záměru. <br> ***Upozornění**: Tento záměr zahrnuje hlavně akci potvrdit pro scénář kalendáře. Pokud potřebujete obecnější výrazy o "Confirm", využijte možnost potvrdit záměr v doméně **nástrojů** . *| To je správné, vytvořte prosím schůzku. <br> Ano, děkuji, připojovat se k schůzce.
+ Potvrdit | Potvrďte, jestli se má provést operace nebo akce na základě předchozího záměru. <br> _**Upozornění**: Tento záměr zahrnuje hlavně akci potvrdit pro scénář kalendáře. Pokud potřebujete obecnější výrazy o "Confirm", využijte možnost potvrdit záměr v doméně **nástrojů** ._| To je správné, vytvořte prosím schůzku. <br> Ano, děkuji, připojovat se k schůzce.
  ConnectToMeeting | Připojte se k schůzce. | Připojte mě k 11:00 konferenčnímu hovoru s Andy. <br> Přijměte volání rozpočtové schůzky.
  ContactMeetingAttendees | Kontaktujte účastníky schůzky. | Sdělte schůzi, kterou používám v souvislosti s 3:00 schůzkou. <br> Informování kolegů na 8 se doplněním, že musí začít od 8:30.
  CreateCalendarEntry | Přidáte novou položku jednorázové do kalendáře. | Vytvoří schůzku o diskuzi o problémech. <br> vytvořit schůzku sabc@microsoft.com
@@ -69,32 +69,32 @@ Název záměru | Popis | Příklady
  FindCalendarDetail | Zkontroluje a zobrazí podrobnosti o plánu. | Potřebuji, abyste si zobrazili podrobnosti o schůzce, kterou jsem naplánovali na moji Pavla.
  FindDuration | Ověřte dobu trvání. | Kolik času musím vyzvednutím nákupů? <br> Jak dlouho mám na oběd?
  FindMeetingRoom | Najděte dostupné místnosti pro schůzky. | Co mám v místnostech splňovat? <br> Nové umístění schůzky, najděte ho.
- GoBack | Vraťte se k poslednímu kroku nebo položce.  <br> ***Upozornění**: Další program GoBack General projevy najdete v tématu doména **nástroje** . * | Předchozí <br> Zpět k poslednímu e-mailu.
- Odmítnout | Uživatel odmítne, jaký je virtuální asistent navržený. <br> ***Upozornění**: Další informace o odmítnutí obecných projevy najdete v tématu věnovaném doméně **nástroje** . * | Není nutné nastavovat událost. <br> V tuto chvíli mám další věci.
-ShowNext | Podívejte se na další událost. <br> ***Upozornění**: Další ShowNext General projevy najdete v tématu doména **nástroje** . * | Dát mi další událost <br> Co je dál v kalendáři?
- ShowPrevious | Ověřte předchozí událost. <br> ***Upozornění**: Další ShowPrevious General projevy najdete v tématu doména **nástroje** . * | Co je plán před tím?
+ GoBack | Vraťte se k poslednímu kroku nebo položce.  <br> _**Upozornění**: Další program GoBack General projevy najdete v tématu doména **nástroje** ._ | Předchozí <br> Zpět k poslednímu e-mailu.
+ Odmítnout | Uživatel odmítne, jaký je virtuální asistent navržený. <br> _**Upozornění**: Další informace o odmítnutí obecných projevy najdete v tématu doména **nástrojů** k obsahu._ | Není nutné nastavovat událost. <br> V tuto chvíli mám další věci.
+ShowNext | Podívejte se na další událost. <br> _**Upozornění**: Další ShowNext General projevy najdete v tématu doména **nástroje** ._ | Dát mi další událost <br> Co je dál v kalendáři?
+ ShowPrevious | Ověřte předchozí událost. <br> _**Upozornění**: Další ShowPrevious General projevy najdete v tématu doména **nástroje** ._ | Co je plán před tím?
  TimeRemaining | Ověřte zbývající čas do další události. | Zobrazit, kolik času mám k dispozici před schůzkami <br> Zobrazuje dobu, po kterou mám čas od zahájení příští schůzky.
  
 ### <a name="entities"></a>**Podnikům**
 Název entity | Typ entity | Popis | Příklady | Přihrádky
 -------|-----------------------|-------------|---------|--------
 Jméno kontaktu | personName | Jméno účastníka kontaktu nebo schůzky. | Doplněním s **Betsy**. <br>  Splnění s **Aubrey** dne 3. července v 7. odp. | Betsy <br> Aubrey <br> Amy 
-DestinationCalendar | pouh | Název cílového kalendáře | oběd s MOM úterý 12 – úterý – **osobní** <br> Použijte můj kalendář **Google** jako výchozí kalendář. <br> Aktualizovat třídu Yoga na Mon St ve 3 hodiny seznam v **osobním** kalendáři | Google <br> individuální <br> nejdůležitější. <br> hlavní
+DestinationCalendar | Pouh | Název cílového kalendáře | oběd s MOM úterý 12 – úterý – **osobní** <br> Použijte můj kalendář **Google** jako výchozí kalendář. <br> Aktualizovat třídu Yoga na Mon St ve 3 hodiny seznam v **osobním** kalendáři | Google <br> Individuální <br> nejdůležitější. <br> Hlavní
 Trvání | datetime | Doba trvání schůzky, schůzky nebo zbývající čas. | Přidejte k pracovnímu kalendářnímu zasedání s Gary a prodiskutujte Scholarship podrobnosti zítra na **20 minut**. <br> Přidejte do kalendáře událost v Subway v pátek, kterou bude jídlo od Tomáše **po dobu 9** hodin. | hodinu <br> 2 dny <br> 20 minut 
 EndDate | datetime | Koncové datum schůzky nebo schůzky. | Kalendář – přidat vše v hloubce Marie 3 až **Marie 5** | Marie 5  
 EndTime | datetime | Čas ukončení schůzky nebo schůzky | můžete nastavit 2 30 na **tři** | tři 
-Location | pouh | Umístění položky kalendáře, schůzce nebo události.  Adresy, města a oblasti jsou dobrým příkladem umístění. | vložení schůzky do **Fremont** pro uvedení tabletu v Barmě <br> schůzka pro bono v **Edina** | 209 americkém Nashvillu Posilovně <br> 897 masopustní house <br> Garáži 
-MeetingRoom | pouh | Prostor pro schůzku nebo schůzku. | Přidat k pracovnímu kalendáři s Jake ve 2. odp. v **kanceláři** tento pátek | jeho kanceláře <br> konferenční místnost <br> Místnost 2
+Location | Pouh | Umístění položky kalendáře, schůzce nebo události.  Adresy, města a oblasti jsou dobrým příkladem umístění. | vložení schůzky do **Fremont** pro uvedení tabletu v Barmě <br> schůzka pro bono v **Edina** | 209 americkém Nashvillu Posilovně <br> 897 masopustní house <br> Garáži 
+MeetingRoom | Pouh | Prostor pro schůzku nebo schůzku. | Přidat k pracovnímu kalendáři s Jake ve 2. odp. v **kanceláři** tento pátek | jeho kanceláře <br> konferenční místnost <br> Místnost 2
 MoveEarlierTimeSpan | datetime | Čas, kdy uživatel chce přesunout schůzku nebo schůzku dříve | Přesuňte svoje datum obědu předem o **30 minut**. | 30 minut <br> dvě hodiny 
 MoveLaterTimeSpan |  datetime | Čas, kdy uživatel chce přesunout schůzku nebo schůzku později. | Přejít na moji schůzku s Orchidejová box a **4 hodinami** | 4 hodiny <br> 15 minut 
-OrderReference | pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Co má příští schůzka pro budoucnost? | další
+OrderReference | Pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Co má příští schůzka pro budoucnost? | další
 OriginalEndDate | datetime | Původní koncové datum schůzky nebo schůzky. | Změna moje dovolené od konce **pátek** do pondělí | Pátek 
 OriginalEndTime | datetime | Původní čas ukončení schůzky nebo schůzky. | Zajistěte, aby končil na **3** až 4 | 3
 OriginalStartDate | datetime | Původní počáteční datum schůzky nebo schůzky. | Změna události **zítřka**od 10 DOP. do středy – 9 dop.  | zítra 
 OriginalStartTime | datetime | Původní čas zahájení schůzky nebo schůzky. | Změna události zítřka od **10 DOP** . do středy – 9 dop. | 10 DOP.
 PositionReference | ordinal | Absolutní pozice v seznamu, která identifikuje položku, která se má načíst. | **Druhý** z nich | sekunda <br> Ne. 3 <br> číslo 5
 RelationshipName konstruktoru | list | Název vztahu kontaktu | Přidat oběd na 1:00. odp. s mým **manželem** | manželka <br> manžel <br> sesterské 
-SlotAttribute | pouh | Atribut uživatel chce dotazovat nebo upravit. | změnit **umístění** události <br> změnit **čas** na sedm hodin | location <br> time 
+SlotAttribute | Pouh | Atribut uživatel chce dotazovat nebo upravit. | změnit **umístění** události <br> změnit **čas** na sedm hodin | location <br> time 
 StartDate | datetime | Počáteční datum schůzky nebo schůzky. | Vytvořit schůzku ve **středu** ve 4 hodiny | Středa 
 StartTime | datetime | Čas zahájení schůzky nebo schůzky. | vytvořit schůzku ve středu ve **4 hodiny** | 4 hodiny
 Subject | jednoduchý vzor. Jakýmikoli | Předmět, například název schůzky nebo schůzky. | Jaká je doba **přípravy** schůzky? | Dentist <br> Oběd s Julia 
@@ -149,26 +149,26 @@ TurnSpeakerOn | Zapněte telefon mluvčího. | Režim sluchátek s mikrofonem. <
 ### <a name="entities"></a>**Podnikům**
 Název entity | Typ entity | Popis | Příklady | Přihrádky
 ------|-------|----------|--------------|---------------
-Attachment | pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
-AudioDeviceType | pouh | Typ zvukového zařízení (mluvčí, sluchátka, mikrofon atd.) | Odpovězte **na používání bez praktických rukou**. <br> Vytočit znovu na **telefonu mluvčího**. | mluvčího <br> bez praktických rukou <br> protokolu
-Kategorie | pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
-ContactAttribute | pouh | Atribut kontaktu s dotazem na uživatele| O každý **narozeniny** příští měsíc mám vědět? | narozeniny <br> adresa <br> telefonní číslo
+Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
+AudioDeviceType | Pouh | Typ zvukového zařízení (mluvčí, sluchátka, mikrofon atd.) | Odpovězte **na používání bez praktických rukou**. <br> Vytočit znovu na **telefonu mluvčího**. | mluvčího <br> bez praktických rukou <br> protokolu
+Kategorie | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
+ContactAttribute | Pouh | Atribut kontaktu s dotazem na uživatele| O každý **narozeniny** příští měsíc mám vědět? | narozeniny <br> adresa <br> Telefonní číslo
 Jméno kontaktu | personName  | Jméno kontaktu nebo zprávy příjemce. | Poslat e-mail na **Stevens** | Stevens
 Date/Time | datetime | Datum a čas přijatého e-mailu | Čtení **dnešního**e-mailu <br> Komu se e-mail **dnes**? <br> Komu telefon je **7 hodin**? | dnes <br> zítra
-DestinationPhone | pouh | Cílový uživatel chce zavolat nebo odeslat text. | telefonování <br> odeslat textovou zprávu **Domů** | doma <br> Domovská složka
-EmailAddress | email | Uživatel e-mailové adresy chce odeslat nebo dotazovat. | Odeslat e-mail naMegan.Flynn@MKF.com<br> abc@outlook.com 
+DestinationPhone | Pouh | Cílový uživatel chce zavolat nebo odeslat text. | telefonování <br> odeslat textovou zprávu **Domů** | doma <br> Domovská složka
+emailAddress | email | Uživatel e-mailové adresy chce odeslat nebo dotazovat. | Odeslat e-mail naMegan.Flynn@MKF.com<br> abc@outlook.com 
 EmailSubject | jednoduchý vzor. Jakýmikoli | Text použitý jako řádek předmětu e-mailu. | Vytváření e-mailů davidch s předmětem předmětu **Hey**  | RE: zajímavé scénář
-Klíč | pouh | Klíč uživatele chce stisknout. | Stiskněte klávesu **MEZERNÍK** . <br> stiskněte **9** | dokončíte <br> hvězd <br> 8
-Perokresba | pouh | Uživatel řádku chce použít k odeslání e-mailu nebo textu. | Přečtěte si poslední e-mail ze **služby Hotmail** . <br> Zavolejte Petra od **mobilního telefonu**. <br> Zavolejte Dád pomocí **pracovní** linky.| Služba <br> Skype <br> Britské buňky
+Klíč | Pouh | Klíč uživatele chce stisknout. | Stiskněte klávesu **MEZERNÍK** . <br> stiskněte **9** | dokončíte <br> hvězd <br> 8
+Perokresba | Pouh | Uživatel řádku chce použít k odeslání e-mailu nebo textu. | Přečtěte si poslední e-mail ze **služby Hotmail** . <br> Zavolejte Petra od **mobilního telefonu**. <br> Zavolejte Dád pomocí **pracovní** linky.| Služba <br> Skype <br> Britské buňky
 SenderName | personName | Jméno odesílatele. | Přečíst e-mail od **David** <br> E-maily z Chanda | David <br> Chanda
-FromRelationshipName | pouh | Název vztahu odesílatele. | Přečíst zprávu od **Dád**. <br> Můžete si přečíst všechny textové zprávy z **MOM**? | Dád <br> MOM 
+FromRelationshipName | Pouh | Název vztahu odesílatele. | Přečíst zprávu od **Dád**. <br> Můžete si přečíst všechny textové zprávy z **MOM**? | Dád <br> MOM 
 Message | jednoduchý vzor. Jakýmikoli |  Zpráva k odeslání e-mailu nebo text.  | Poslat e-mail s oznámením, že jsem**zaneprázdněn** | Zaneprázdněn
-OrderReference | pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Jaká byla **Poslední** odeslaná zpráva? <br> Přečtěte si **nejnovější** e-mail pro Nokia. <br> Přečtěte si **nové** textové zprávy. | posledního <br> latest <br> používané <br> nejnovějších
+OrderReference | Pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Jaká byla **Poslední** odeslaná zpráva? <br> Přečtěte si **nejnovější** e-mail pro Nokia. <br> Přečtěte si **nové** textové zprávy. | Posledního <br> latest <br> používané <br> nejnovějších
 PositionReference | jednoduché – pořadové číslo | Ordinální nebo relativní umístění v seznamu, určení položek k načtení.| Jaká byla **první** odeslaná zpráva? <br> Druhý **třetí** .| První <br> jiného
-phoneNumber | phoneNumber | Telefonní číslo, na které chce uživatel zavolat nebo odeslat text. | Odeslat text do **4 1 5 6 8 4 5 2 8 4** | 3525214446
-RelationshipName konstruktoru | pouh | Název vztahu kontaktu nebo příjemce zprávy. | Poslat e-mail mému **manželovi** | manželka
+PhoneNumber | PhoneNumber | Telefonní číslo, na které chce uživatel zavolat nebo odeslat text. | Odeslat text do **4 1 5 6 8 4 5 2 8 4** | 3525214446
+RelationshipName konstruktoru | Pouh | Název vztahu kontaktu nebo příjemce zprávy. | Poslat e-mail mému **manželovi** | manželka
 SearchTexts | jednoduchý vzor. any | Texty používané pro filtrování e-mailů nebo zpráv | Vyhledat všechny e-maily, které obsahují "**Surface pro**" | Plocha pro
-Telefonního | pouh | Rychlost vytáčení. | Zavolejte **3 4 5**. <br> Nastavte rychlost vytáčení **One**. | 345 <br> 5
+Telefonního | Pouh | Rychlost vytáčení. | Zavolejte **3 4 5**. <br> Nastavte rychlost vytáčení **One**. | 345 <br> 5
 
 ## <a name="email"></a>**E-mailu**
 E-mail je subdoménou domény *komunikace* . Hlavně obsahuje žádosti o posílání a přijímání zpráv prostřednictvím e-mailů.
@@ -194,21 +194,21 @@ QueryLastText | Dotaz na poslední e-mail | Komu se mi pošle e-mail? <br> Kdo m
 ### <a name="entities"></a>**Podnikům**
 Název entity | Typ entity | Popis | Příklady | Přihrádky
 ------|-------|----------|--------------|---------------
-Attachment | pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
+Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
 Jméno kontaktu | personName  | Jméno kontaktu nebo zprávy příjemce. | Poslat e-mail na **Stevens** | Stevens
 Date | datetime | Datum přijetí e-mailu | Čtení **dnešního**e-mailu <br> Komu se e-mail **dnes**? | dnes
-EmailAddress | email | Uživatel e-mailové adresy chce odeslat nebo dotazovat. | Odeslat e-mail naMegan.Flynn@MKF.com<br> abc@outlook.com 
+emailAddress | email | Uživatel e-mailové adresy chce odeslat nebo dotazovat. | Odeslat e-mail naMegan.Flynn@MKF.com<br> abc@outlook.com 
 EmailSubject | jednoduchý vzor. Jakýmikoli | Text použitý jako řádek předmětu e-mailu. | Vytváření e-mailů davidch s předmětem předmětu **Hey**  | RE: zajímavé scénář
 SenderName | personName | Jméno odesílatele. | Přečíst e-mail od **David** <br> E-maily z Chanda | David <br> Chanda
-FromRelationshipName | pouh | Název vztahu odesílatele. | Přečíst zprávu od **Dád**. <br> Můžete si přečíst všechny textové zprávy z **MOM**? | Dád <br> MOM 
+FromRelationshipName | Pouh | Název vztahu odesílatele. | Přečíst zprávu od **Dád**. <br> Můžete si přečíst všechny textové zprávy z **MOM**? | Dád <br> MOM 
 Message | jednoduchý vzor. Jakýmikoli |  Zpráva k odeslání e-mailu nebo text.  | Poslat e-mail s oznámením, že jsem**zaneprázdněn** | Zaneprázdněn
-Kategorie | pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
-OrderReference | pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Jaká byla **Poslední** odeslaná zpráva? <br> Přečtěte si **nejnovější** e-mail pro Nokia. <br> Přečtěte si **nové** textové zprávy. | posledního <br> latest <br> používané <br> nejnovějších
+Kategorie | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
+OrderReference | Pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Jaká byla **Poslední** odeslaná zpráva? <br> Přečtěte si **nejnovější** e-mail pro Nokia. <br> Přečtěte si **nové** textové zprávy. | Posledního <br> latest <br> používané <br> nejnovějších
 PositionReference | jednoduché – pořadové číslo | Ordinální nebo relativní umístění v seznamu, určení položek k načtení.| Jaká byla **první** odeslaná zpráva? <br> Druhý **třetí** .| První <br> jiného
-RelationshipName konstruktoru | pouh | Název vztahu kontaktu nebo příjemce zprávy. | Poslat e-mail mému **manželovi** | manželka
+RelationshipName konstruktoru | Pouh | Název vztahu kontaktu nebo příjemce zprávy. | Poslat e-mail mému **manželovi** | manželka
 Time | datetime | Time | odeslání e-mailu **Tonight**. | tonight
 SearchTexts | jednoduchý vzor. any | Texty používané pro filtrování e-mailů nebo zpráv | Vyhledat všechny e-maily, které obsahují "**Surface pro**" | Plocha pro 
-Perokresba | pouh | Uživatel řádku chce použít k odeslání e-mailu z. | Přečtěte si poslední e-mail ze **služby Hotmail** . <br> Odeslat e-mail ze svého **pracovního účtu**| Služba <br> pracovní účet 
+Perokresba | Pouh | Uživatel řádku chce použít k odeslání e-mailu z. | Přečtěte si poslední e-mail ze **služby Hotmail** . <br> Odeslat e-mail ze svého **pracovního účtu**| Služba <br> Pracovní účet 
 
 ## <a name="homeautomation"></a>**HomeAutomation**
 Doména HomeAutomation poskytuje záměry a entity týkající se řízení inteligentních domácích zařízení. Podporujeme hlavně Řídicí příkazy související s kvadranty a klimatizačním modulem. Ale má některé možnosti generalizace na jiných zařízeních elektrického zařízení.
@@ -236,8 +236,8 @@ Název entity | Typ entity | Popis | Příklady
 -------|----------|--------------|---------------
 Název zařízení | List | Uživatelem definovaný text pro svá zařízení. | Modrá<br> Upřímn <br> Helpdesku
 DeviceType | List | Podporovaná zařízení. | Světlomet <br> Klimatizace <br> nightlight
-Location | pouh | Umístění nebo místnost, ve které je zařízení. | Uspořádání<br> Downstairs <br> Bedroom
-NumericalChange | pouh | Hodnota, o kterou se nastavení zvýší nebo sníží. <br> <br> _Slot se zobrazí pouze s turn_up a turn_down záměry._ | 3<br> 50%<br>
+Location | Pouh | Umístění nebo místnost, ve které je zařízení. | Uspořádání<br> Downstairs <br> Bedroom
+NumericalChange | Pouh | Hodnota, o kterou se nastavení zvýší nebo sníží. <br> <br> _Slot se zobrazí pouze s turn_up a turn_down záměry._ | 3<br> 50%<br>
 OrderReference | ordinal | Účelem tohoto slotu je zachytit výběr položek. Označuje pozici položky v seznamu. | První<br> 2\.
 Kvantifikátor | List | Kvantifikátor určuje, kolik instancí konkrétní entity je odkazováno. Například "All", "každé" atd. | Vše<br> Vždy po<br> Vše
 Nastavení | Jednoduchý | Nastavení, na které si uživatel přeje nastavit své zařízení, včetně scény, úrovně, intenzity, barvy, režimu, teploty a stavu zařízení. | Modrá<br> 72 <br> Hork 
@@ -268,8 +268,8 @@ Název entity | Typ entity | Popis | Příklady
 Text | jednoduchý vzor. Jakýmikoli | Text poznámky nebo připomenutí. | roztažení před procházení <br> dlouho běžící zítra
 Název | jednoduchý vzor. Jakýmikoli | Název poznámky. | Nákup <br> uživatelům volání <br> úkol
 CreationDate | datetimeV2 | Tato pozice je určena v případě, kdy uživatel žádá o poznámky vytvořené v určitém časovém intervalu. | 
-Kvantifikátor | List | Když se uživatel zeptá, že provede akci na všech položkách ' All ', ' všechny ' nebo ' Any ' nebo na veškerý text v poznámce. | vše <br> libovolné <br> každé
-OrderReference | ordinal | Uživatel chce provádět akce s položkami First, Last, Next atd. | první <br> posledního
+Kvantifikátor | List | Když se uživatel zeptá, že provede akci na všech položkách ' All ', ' všechny ' nebo ' Any ' nebo na veškerý text v poznámce. | all <br> Jakýmikoli <br> každé
+OrderReference | ordinal | Uživatel chce provádět akce s položkami First, Last, Next atd. | První <br> Posledního
 
 
 ## <a name="places"></a>**Zadá**
@@ -293,19 +293,19 @@ AddFavoritePlace | Uživatel chce přidat umístění k oblíbeným položkám n
 ### <a name="entities"></a>**Podnikům**
 LUIS entity | Typ entity | Popis | Příklady | Příklady utterance
 --------------|-------------|-------------|----------|-------------------
-AbsoluteLocation | pouh | Umístění nebo adresu místo. | Palo Alto <br> 300 112th uložit SE <br> Seattle | **1020 Middlefield VP.** v **Palo Alto** <br> úložiště pro sadbu ptáků v **Seattlu** <br> Získejte vzdálenost od sem až **300 112Th Ave**.
-Vymoženosti | pouh | Objektivní charakteristiky a výhody na veřejném místě. | waterfront <br> parkovací zdarma | Kirkland **Waterfront** ryby v restauracích. <br> Existuje **zdarma zaparkování** v blízkosti mě?
-Kuchyni | pouh | Typ food, kuchyni nebo kuchyni příslušnosti. | Čínština <br> italština <br> Sushi <br> Noodle <br> | Potřebuji pomoc s vyhledáním **čínské** restaurace. <br> Jaké jsou otevírací hodiny **sushi** restaurace? <br> Kde je nejbližší **steak** House?
+AbsoluteLocation | Pouh | Umístění nebo adresu místo. | Palo Alto <br> 300 112th uložit SE <br> Seattle | **1020 Middlefield VP.** v **Palo Alto** <br> úložiště pro sadbu ptáků v **Seattlu** <br> Získejte vzdálenost od sem až **300 112Th Ave**.
+Vymoženosti | Pouh | Objektivní charakteristiky a výhody na veřejném místě. | waterfront <br> parkovací zdarma | Kirkland **Waterfront** ryby v restauracích. <br> Existuje **zdarma zaparkování** v blízkosti mě?
+Kuchyni | Pouh | Typ food, kuchyni nebo kuchyni příslušnosti. | Čínština <br> italština <br> Sushi <br> Noodle <br> | Potřebuji pomoc s vyhledáním **čínské** restaurace. <br> Jaké jsou otevírací hodiny **sushi** restaurace? <br> Kde je nejbližší **steak** House?
 Date | datetime | Datum a čas nebo doba trvání cílového umístění. | zítra <br> dnes <br> 6 hodin | Jak dlouho Aquarium zavřít **zítra**? <br> Nejbližší obchod s bicykly, který je otevřený po **6 hodin**
 Vzdálenost | Dimenze | Vzdálenost k veřejnému místu z currenct pozice uživatele. | 15 mil. <br> 10 mil | oděvní obchod do **15 mil** . <br> Restaurace na dětská, která je jenom **10 mil** .
 MealType | List | Typ jídla jako snídani nebo oběd. | Snídani <br> Společnost dinner | Hledat **snídani** Greenwood Seattle <br> Najděte si místo, kde máte svůj pracovní **oběd**.
 Novou | List | Popište okolní místo bez absolutního umístění nebo adresy. | místa <br> v této oblasti <br> od sebe | Najděte **nejbližší** indickou restauraci. <br> Kde je **místní** Wetherspoon? <br> Jakékoli **dobré restaurace?**
 OpenStatus | List | Určuje, zda místo, kde je otevřeno nebo Uzavřeno. | open (otevírá) <br> Uzavřeno | Jakou dobu Yogurt půda **uzavřela** ještě dnes? <br> Jaká jsou **otevírací** hodiny pro Costco?
-PlaceName | pouh | Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce. Název místa může obsahovat placetype, pokud se běžně používá. | Centrální Park <br> Safeway <br> Walmart| Jak dlouho je **Safeway** lékárna otevřená? <br> Je **Walmart** otevřené?
-PlaceType | pouh | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. | Restaurace <br> Opera <br> kina | **kino** v Cambridge <br> Je k dispozici **restaurace** v mém okolí?
-PriceRange | pouh | Cenový rozsah produktů nebo služeb na místě. | levný <br> cenově výhodné <br> nákladný | Najít **cenově dostupné** opravy zařízení <br> Co je **levné** pizza místo, které je teď otevřené?
-Produkt | pouh | Produkt nabízí na místě. | civilní <br> televizí | Kde je to nejlepší místo pro získání **jídla**? <br> Najděte mi východní Kilbride hledání **televizních pořadů**.
-Hodnocení | pouh | Hodnocení na místě. | 5 hvězdiček <br> vrchol <br> Dobré | Existují nějaké **dobré** místo, kde mě mám vyzkoušet a jíst zítra <br> **nejlepší** Amsterdam restaurací <br> **Seznamte** se třemi Pizza obchody.
+PlaceName | Pouh | Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce. Název místa může obsahovat placetype, pokud se běžně používá. | Centrální Park <br> Safeway <br> Walmart| Jak dlouho je **Safeway** lékárna otevřená? <br> Je **Walmart** otevřené?
+PlaceType | Pouh | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. | Restaurace <br> Opera <br> kina | **kino** v Cambridge <br> Je k dispozici **restaurace** v mém okolí?
+PriceRange | Pouh | Cenový rozsah produktů nebo služeb na místě. | levný <br> cenově výhodné <br> nákladný | Najít **cenově dostupné** opravy zařízení <br> Co je **levné** pizza místo, které je teď otevřené?
+Produkt | Pouh | Produkt nabízí na místě. | civilní <br> televizí | Kde je to nejlepší místo pro získání **jídla**? <br> Najděte mi východní Kilbride hledání **televizních pořadů**.
+Hodnocení | Pouh | Hodnocení na místě. | 5 hvězdiček <br> Vrchol <br> Dobré | Existují nějaké **dobré** místo, kde mě mám vyzkoušet a jíst zítra <br> **nejlepší** Amsterdam restaurací <br> **Seznamte** se třemi Pizza obchody.
 
 
 ## <a name="restaurantreservation"></a>**RestaurantReservation**
@@ -325,13 +325,13 @@ Odmítnout | Uživatel odmítne, jaký je virtuální asistent navržený ke spr
 ### <a name="entities"></a>**Podnikům**
 LUIS – entita | Typ entity | Popis | Příklady
 -------|------|---------|-------------------
-Adresa | pouh | Umístění události nebo adresy pro rezervaci. | Palo Alto<br>300 112th uložit SE<br>Seattle
+Adresa | Pouh | Umístění události nebo adresy pro rezervaci. | Palo Alto<br>300 112th uložit SE<br>Seattle
 Prostředí | List | Popis atmosféry restaurace. | Romantický<br>příležitostné<br>vhodné pro skupiny<br>Hezké
-Kuchyni | pouh | Typ food, kuchyni nebo kuchyni příslušnosti. | Čínština<br>italština<br>Mexické<br>Sushi<br>Noodle<br>steak
+Kuchyni | Pouh | Typ food, kuchyni nebo kuchyni příslušnosti. | Čínština<br>italština<br>Mexické<br>Sushi<br>Noodle<br>steak
 MealType | List | Typ jídla přidružené k rezervaci. | Snídani<br>Společnost dinner<br>Oběd<br>Supper
-PlaceName | pouh | Název restaurace | Zucca<br>Objekt pro vytváření cheesecake<br>červená severské
-Hodnocení | pouh | Hodnocení místa nebo restauraci. | 5 hvězdiček<br>3 hvězdičky<br>4 hvězdičky
-NumberPeople | pouh | Počet lidí pro rezervaci | 3<br>šest
+PlaceName | Pouh | Název restaurace | Zucca<br>Objekt pro vytváření cheesecake<br>červená severské
+Hodnocení | Pouh | Hodnocení místa nebo restauraci. | 5 hvězdiček<br>3 hvězdičky<br>4 hvězdičky
+NumberPeople | Pouh | Počet lidí pro rezervaci | 3<br>šest
 Time | datetime| Čas rezervace pro restaurace | zítra<br>tonight<br>7:00 hodin<br>Předvečer vánoční
 
 
@@ -352,9 +352,9 @@ ShowToDo | Zobrazí všechny položky v seznamu úkolů. | Zobrazit můj nákupn
 ### <a name="entities"></a>**Podnikům**
 LUIS – entita | Typ entity | Popis | Příklady
 -------|------|---------|-------------------
-ContainsAll | pouh | Reprezentuje všechny položky v seznamu úkolů. | vám může pomáhat odebrat **všechny** úlohy. <br> Dokončete **vše**.
+ContainsAll | Pouh | Reprezentuje všechny položky v seznamu úkolů. | vám může pomáhat odebrat **všechny** úlohy. <br> Dokončete **vše**.
 ordinal | ordinal | Pořadové číslo nebo číselná reference na položku. | Označte **třetí** ho jako dokončený. <br> Odstraňte **první** úlohu.
-ListType | pouh | Typ seznamu úkolů  | Přidejte obuv do seznamu **nakupování** .
+ListType | Pouh | Typ seznamu úkolů  | Přidejte obuv do seznamu **nakupování** .
 FoodOfGrocery | List | Zjištění seznamu položek stravy | Připomenout mi k nákupu **mléka** <br> Přidat **hovězí maso** do seznamu nenákupů
 TaskContent | jednoduchý vzor. any | Zjištění obsahu úlohy. | Připomenout mi, aby **volal moji matka** . <br> Přidat **narozeniny oslavy Jan** do seznamu úkolů
 
@@ -386,7 +386,7 @@ LUIS – entita | Typ entity | Popis | Příklady
 ------------|-------------|-------------|---------
 ordinal | ordinal | Pořadové číslo nebo číselná reference na položku. | **Druhý** . <br> **Druhý** .
 number | number | Počet položek, které uživatel potřebuje | Další **3** položky
-DirectionalReference | pouh | Referenční bod, kde na obrazovce se nachází položka. | Ten vpravo <br> umístit
+DirectionalReference | Pouh | Referenční bod, kde na obrazovce se nachází položka. | Ten vpravo <br> umístit
 
 ## <a name="weather"></a>**Před**
 V případě povětrnostních podmínek se zaměřuje na kontrolu povětrnostní podmínky a Advisory s využitím místa a času nebo při kontrole podle počasí.
@@ -402,15 +402,15 @@ Název záměru | Popis | Příklady
 ### <a name="entities"></a>**Podnikům**
 LUIS – entita | Typ entity | Popis | Příklady
 ------------|-------------|-------------|---------
-Location | geografické | Absolutní nebo implicitní umístění žádosti o počasí. | Palo Alto<br>Šanghaj<br>Seattle<br>Delvina<br>
+Location | Geografické | Absolutní nebo implicitní umístění žádosti o počasí. | Palo Alto<br>Šanghaj<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Datum a čas nebo doba trvání dotazu na počasí | Listopad<br>po hodinách<br>označení<br>Tento víkend<br>10 dní<br>
-AdditionalWeatherCondition | list | Další popis slova pro počasí, jako je například rychlost nebo směr větru. | direction<br>Rychlá<br>takt
-Historické | pouh | Popis slov historických povětrnostních podmínek, včetně průměrných vyberte joomlaých případů v minulém časovém období. | již<br>Historická/historická<br>sezón<br>Nejlepší čas<br>někdy zaznamenané
+AdditionalWeatherCondition | list | Další popis slova pro počasí, jako je například rychlost nebo směr větru. | direction<br>Rychlá<br>Takt
+Historické | Pouh | Popis slov historických povětrnostních podmínek, včetně průměrných vyberte joomlaých případů v minulém časovém období. | již<br>Historická/historická<br>sezón<br>Nejlepší čas<br>někdy zaznamenané
 PrecipitationUnit | Dimenze | Srážení pro sněhu nebo deště. | 5 palců<br>6 cm
-SuitableFor | pouh | Popis lidské aktivity pod povětrnostní podmínkou, která je společná, když uživatelé dotazují na doporučení aktivity, které závisí na povětrnostní situaci. | člena<br>sluneční<br>Swimming
+SuitableFor | Pouh | Popis lidské aktivity pod povětrnostní podmínkou, která je společná, když uživatelé dotazují na doporučení aktivity, které závisí na povětrnostní situaci. | člena<br>sluneční<br>Swimming
 TemperatureUnit |teplota | teplota | 18 Celsia<br>7 stupňů kelvinů
-WeatherRange | pouh | Konkrétní podmínka teploty, větru a dalších povětrnostních podmínek mezi časovým obdobím | maximum<br>maximální<br>nízká<br>Průměrná vysoká<br>Nejvyšší
-WeatherCondition | pouh | Popis podmínky počasí | Slunečné<br>zástěr<br>srážky<br>teplota<br>pohádk<br>za běhu
+WeatherRange | Pouh | Konkrétní podmínka teploty, větru a dalších povětrnostních podmínek mezi časovým obdobím | maximum<br>Maximální<br>nízká<br>Průměrná vysoká<br>Nejvyšší
+WeatherCondition | Pouh | Popis podmínky počasí | Slunečné<br>zástěr<br>srážky<br>teplota<br>pohádk<br>za běhu
 WindDirectionUnit | list | Směrová slova větru | severu<br>odtud<br>Atlantiku<br>– Západ<br>severovýchod
 
 

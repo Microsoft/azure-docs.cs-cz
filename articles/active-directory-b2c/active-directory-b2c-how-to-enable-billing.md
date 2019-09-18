@@ -1,5 +1,5 @@
 ---
-title: Jak propojit předplatné Azure – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Jak propojit předplatné Azure – Azure Active Directory B2C | Microsoft Docs
 description: Podrobný průvodce pro povolení fakturace pro tenanta Azure AD B2C do předplatného Azure.
 services: active-directory-b2c
 author: mmacy
@@ -10,17 +10,17 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 892f47b6acf22c62ce2290e2ede9d0bcd21eefc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835419"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065899"
 ---
-# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Propojit předplatné Azure s tenantem Azure Active Directory B2C
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Propojení předplatného Azure s klientem Azure Active Directory B2C
 
 > [!IMPORTANT]
-> Nejnovější informace o využití, fakturaci a cenách pro Azure Active Directory (Azure AD) B2C, najdete v části [ceny Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Nejnovější informace o fakturaci využití a cenách pro Azure Active Directory B2C (Azure AD B2C) najdete v tématu [Azure AD B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Účtují se poplatky za používání pro Azure AD B2C s předplatným Azure. Při vytvoření tenanta Azure AD B2C, musí správce klienta pro explicitní propojení tenanta Azure AD B2C s předplatným Azure. V tomto článku se dozvíte, jak.
 
@@ -29,7 +29,7 @@ ms.locfileid: "67835419"
 
 Odkaz pro předplatné se dosahuje vytvořením Azure AD B2C "prostředek" v rámci cílového předplatného Azure. Azure AD B2C mnoho "resources" se dají vytvořit v rámci jednoho předplatného Azure společně s další prostředky Azure (pro příklad, virtuální počítače, úložiště dat, LogicApps). Zobrazí se všechny prostředky v rámci předplatného tak, že přejdete do tenanta služby Azure AD, který je předplatné přidruženo.
 
-Předplatná Azure poskytovatele CSP (Cloud Solution) jsou podporované v Azure AD B2C. Funkce je k dispozici prostřednictvím rozhraní API nebo na webu Azure portal pro Azure AD B2C a pro všechny prostředky Azure. Správci předplatného poskytovatele CSP můžete propojit, přesunout a odstranit relace s Azure AD B2C stejným způsobem, který se má provést pro všechny prostředky Azure. Správa Azure AD B2C prostřednictvím řízení přístupu na základě rolí není ovlivněn přidružení tenanta Azure AD B2C s předplatným Azure CSP. Řízení přístupu na základě rolí se dosahuje prostřednictvím využití tenanta základní role, role není na základě předplatného.
+Předplatná poskytovatele Cloud Solution Provider (CSP) jsou podporovaná v Azure AD B2C. Tato funkce je dostupná pomocí rozhraní API nebo Azure Portal pro Azure AD B2C a pro všechny prostředky Azure. Správci předplatného CSP můžou relace propojit, přesunout a odstranit pomocí Azure AD B2C stejným způsobem, jakým je to hotové pro všechny prostředky Azure. Správa Azure AD B2C pomocí řízení přístupu na základě role není ovlivněna přidružením mezi klientem Azure AD B2C a předplatným CSP Azure. Řízení přístupu založené na rolích se dosahuje pomocí rolí pro tenanta, nikoli rolí založených na předplatném.
 
 Platné předplatné Azure, je potřeba pokračovat.
 
@@ -45,9 +45,9 @@ Přejděte do tenanta služby Azure AD, který zobrazuje vaše předplatné Azur
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Azure AD B2C můžete vyhledat v Azure Marketplace
 
-Klikněte na tlačítko **vytvořit prostředek** tlačítko. V **Hledat na Marketplace** zadejte `Active Directory B2C`.
+Klikněte na tlačítko **vytvořit prostředek** tlačítko. Do pole **Hledat na Marketplace** zadejte `Active Directory B2C`.
 
-![Portálu snímek obrazovky s "Active Directory B2C: ve vyhledávání na webu Marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Snímek obrazovky portálu s Active Directory B2C v hledání na Marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 V seznamu výsledků vyberte **Azure AD B2C**.
 
@@ -67,7 +67,7 @@ Pro předplatné vyberte aktivní předplatné Azure, která se na správce.
 
 Vyberte skupinu prostředků a umístění skupiny prostředků. Zvolený nemá žádný vliv na umístění tenanta Azure AD B2C, výkon nebo stav fakturace.
 
-![Stránce vytváření prostředku Azure AD B2C na webu Azure portal](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Stránka pro vytvoření prostředku Azure AD B2C v Azure Portal](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Správa prostředků tenanta Azure AD B2C
 
@@ -80,15 +80,15 @@ Můžete použít tento prostředek na:
 - Odeslání žádosti o podporu
 - Přesunutí prostředku tenanta Azure AD B2C do jiného předplatného Azure nebo do jiné skupiny prostředků.
 
-![Stránka nastavení prostředek B2C na webu Azure Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+![Stránka nastavení prostředků B2C v Azure Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
 
-## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Změna tenanta Azure AD B2C fakturace předplatného
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Změna předplatného fakturace klienta Azure AD B2C
 
-Klienty Azure AD B2C můžete přesunout do jiného předplatného, pokud zdrojové a cílové předplatné existuje ve stejném tenantovi Azure Active Directory.
+Pokud zdrojové a cílové odběry existují v rámci stejného Azure Active Directory tenanta, můžete Azure AD B2C klienty přesunout do jiného předplatného.
 
-Zjistěte, jak přesunout prostředky Azure, například vašeho tenanta Azure AD B2C do jiného předplatného, najdete v článku [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Informace o tom, jak přesunout prostředky Azure jako tenanta Azure AD B2C do jiného předplatného, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-Než spustíte funkci přesunu, nezapomeňte si přečíst celý článek, abyste úplně pochopili omezení a požadavky pro tyto přesunout. Kromě pokynů pro přesun prostředků obsahuje důležité informace, jako jsou kontrolní seznam před přesunutí a jak ověřovat v provádění operace přesunutí.
+Než začnete s přesunem, nezapomeňte si přečíst celý článek, abyste plně pochopili omezení a požadavky pro takové přesunutí. Kromě pokynů pro přesunutí prostředků obsahuje důležité informace, jako je například kontrolní seznam před přesunem a ověření operace přesunutí.
 
 ## <a name="known-issues"></a>Známé problémy
 

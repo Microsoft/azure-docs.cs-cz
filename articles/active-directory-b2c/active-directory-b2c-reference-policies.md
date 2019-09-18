@@ -1,6 +1,6 @@
 ---
-title: Toky uživatelů v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o rozhraní rozšiřitelných zásad Azure Active Directory B2C a jak vytvořit různé toky uživatelů.
+title: Toky uživatelů v Azure Active Directory B2C | Microsoft Docs
+description: Přečtěte si další informace o rozšiřitelném rozhraní zásad Azure Active Directory B2C a o tom, jak vytvářet různé toky uživatelů.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,30 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 54677dc0771f65b7636b4d1cac77f53f9c04a09d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08da04a8bf167c99ef2384a9714034ae1865bec1
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508938"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065374"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
 
-Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady plně popisují činnosti, jako registrace, přihlašování a úpravy profilu. Můžete nastavit zvládnout běžné úkoly identity, na portálu Azure AD B2C zahrnuje předdefinované, Konfigurovatelné zásady volá **toky uživatelů**. 
+Rozšiřitelná architektura zásad Azure Active Directory B2C (Azure AD B2C) je základní silo služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané **uživatelské toky**.
 
 ## <a name="what-are-user-flows"></a>Co jsou toky uživatelů?
 
-Tok uživatele umožňuje řídit chování ve svých aplikacích pomocí konfigurace následujících nastavení:
+Tok uživatele umožňuje řídit chování ve vašich aplikacích konfigurací následujících nastavení:
 
-- Účet používaný typy pro přihlašování, jako je například účtů na sociálních sítích, jako je Facebook nebo místní účty
-- Atributů shromážděných od uživatele, například křestní jméno, PSČ, a velikost bot
+- Typy účtů používané pro přihlašování, jako jsou účty sociálních sítí, jako je například Facebook nebo místní účet
+- Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ a velikost bot
 - Azure Multi-Factor Authentication
 - Přizpůsobení uživatelského rozhraní
-- Informace, které aplikace obdrží jako deklarace identity v tokenu 
+- Informace, které aplikace obdrží jako deklarace identity v tokenu
 
-Můžete vytvořit mnoho toky uživatelů z různých typů ve vašem tenantovi a podle potřeby využít ve svých aplikacích. Toky uživatelů můžete použít opakovaně napříč aplikacemi. Díky této flexibilitě umožňuje definovat a upravovat činnosti s minimálními nebo žádnými změnami kódu. Vaše aplikace spustí tok uživatele pomocí standardní ověřovací požadavek HTTP, která zahrnuje parametr tok uživatele. Přizpůsobené [token](active-directory-b2c-reference-tokens.md) bude přijata jako odpověď. 
+V tenantovi můžete vytvořit mnoho uživatelských toků různých typů a podle potřeby je používat ve svých aplikacích. Toky uživatelů se dají znovu použít napříč aplikacemi. Tato flexibilita umožňuje definovat a upravovat prostředí identity s minimálními nebo žádnými změnami kódu. Vaše aplikace spustí tok uživatele pomocí standardní žádosti o ověření protokolu HTTP, která obsahuje parametr toku uživatele. Přizpůsobený [token](active-directory-b2c-reference-tokens.md) se přijímá jako odpověď.
 
-Parametr řetězce dotazu "p", který určuje tok uživatele, který se má použít v následujících příkladech:
+Následující příklady znázorňují parametr řetězce dotazu "p", který určuje tok uživatele, který se má použít:
 
 ```
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
@@ -61,30 +61,30 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Verze toku uživatele
 
-Na webu Azure Portal, nový [verzích toky uživatelů](user-flow-versions.md) se neustále přidávají. Když začnete s Azure AD B2C, testovat uživatele, kterého toky se doporučují pro použití. Když vytvoříte nový tok uživatele, vyberte tok uživatele, který potřebujete, na základě **doporučená** kartu.
+V Azure Portal se neustále přidávají nové [verze uživatelských toků](user-flow-versions.md) . Až začnete s Azure AD B2C, doporučuje se testovat toky uživatelů, které můžete použít. Při vytváření nového toku uživatele si z **Doporučené** karty zvolíte tok uživatele, který potřebujete.
 
-Aktuálně se doporučují tyto toky uživatelů:
+V současné době jsou doporučeny následující toky uživatelů:
 
-- **Registrace a přihlášení** – zpracovává i prostředí registrace a přihlášení s konfigurací jedné. Uživatelé jsou vedla dolů správné cestě, v závislosti na kontextu. Je doporučeno používat tento tok uživatele přes **registrace** tok uživatele nebo **přihlášení** tok uživatele.
-- **Upravování profilu** – umožňuje uživatelům upravovat informace profilu.
-- **Resetování hesla** – umožňuje nakonfigurovat, jestli a jak uživatelé si můžou resetovat svoje heslo.
+- Zaregistrujte se a přihlaste se **a** Přihlaste se pomocí jediné konfigurace. Uživatelé mají v závislosti na kontextu správnou cestu. Doporučuje se používat tento tok uživatelů v uživatelském toku pro **registraci** nebo v uživatelském toku **přihlášení** .
+- **Úpravy profilu** – umožňuje uživatelům upravovat informace o profilu.
+- **Resetování hesla** – umožňuje nakonfigurovat, jestli a jak můžou uživatelé resetovat heslo.
 
-## <a name="linking-user-flows"></a>Toky uživatelů pro propojení
+## <a name="linking-user-flows"></a>Propojení toků uživatelů
 
-A **registrace nebo přihlašování** zahrnuje tok uživatele s místním účtům **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz nebude automaticky aktivační událost heslo resetovat tok uživatele. 
+Tok uživatelů **registrace nebo přihlašování** pomocí místních účtů zahrnuje **zapomenuté heslo** a odkaz na první stránce prostředí. Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
 
-Místo toho kód chyby: `AADB2C90118` se vrátí do vaší aplikace. Vaše aplikace potřebuje ke zpracování tomto kódu chyby spuštěním tok konkrétního uživatele, který může resetovat hesla. Pokud chcete zobrazit příklad, podívejte se na [jednoduchého ukázkového ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , který ukazuje propojení toky uživatelů.
+Místo toho se kód `AADB2C90118` chyby vrátí do vaší aplikace. Vaše aplikace potřebuje zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo. Příklad zobrazíte tak, že se podíváte na [jednoduchý vzorek ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , který ukazuje propojení uživatelských toků.
 
-## <a name="email-address-storage"></a>E-mailovou adresu úložiště
+## <a name="email-address-storage"></a>Úložiště e-mailových adres
 
-E-mailová adresa může být vyžadován jako součást toku uživatele. Pokud uživatel se ověřuje pomocí zprostředkovatele sociální identity, e-mailová adresa je uložen v **otherMails** vlastnost. Pokud místní účet je založen na uživatelské jméno, e-mailovou adresu uložená ve vlastnosti podrobností silné ověřování. Pokud místní účet podle e-mailovou adresu, e-mailová adresa není uložen v **signInNames** vlastnost.
- 
-E-mailová adresa není zaručeno, že se dá ověřit v každém z těchto případů. Správce tenanta můžete zakázat ověření e-mailu v základní zásady pro místní účty. I když je povoleno ověření e-mailové adresy, adresy neověří. Pokud pocházejí ze zprostředkovatele sociální identity a nebyly změněny.
- 
-Pouze **otherMails** a **signInNames** vlastnosti jsou vystaveny prostřednictvím Active Directory Graph API. E-mailovou adresu ve vlastnosti podrobností silné ověřování není k dispozici.
+E-mailová adresa může být vyžadována jako součást toku uživatele. Pokud se uživatel ověří pomocí zprostředkovatele sociální identity, e-mailová adresa se uloží do vlastnosti **otherMails** . Pokud je místní účet založen na uživatelském jménu, bude e-mailová adresa uložena ve vlastnosti detail silného ověřování. Pokud je místní účet založen na e-mailové adrese, uloží se tato e-mailová adresa do vlastnosti **signInNames** .
+
+Tato e-mailová adresa není v žádném z těchto případů ověřena. Správce klienta může zakázat ověřování e-mailů v základních zásadách pro místní účty. I když je povolené ověřování e-mailových adres, adresy se neověřují, pokud pocházejí od poskytovatele sociální identity a nezměnily se.
+
+Prostřednictvím Graph API Active Directory se zveřejňují jenom vlastnosti **otherMails** a **signInNames** . E-mailová adresa v vlastnosti detail silného ověřování není k dispozici.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete vytvářet toky doporučené uživatele, postupujte podle pokynů v [kurzu: Vytvořit tok uživatele](tutorial-create-user-flows.md).
+Pokud chcete vytvořit toky doporučeného uživatele, postupujte podle pokynů [v kurzu: Vytvořte tok](tutorial-create-user-flows.md)uživatele.
 
 

@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993432"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067731"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Sada SDK Azure Machine Learning pro Python v 1.0.62
+
++ **Nové funkce**
+  + Zavedli jste vlastnost časové řady na TabularDataset. Tento vlastnost umožňuje snadné filtrování časových razítek u dat a TabularDataset, jako je například pořízení všech dat mezi časovým obdobím nebo nejnovějšími daty. Další informace o tomto vlastnosti časové řady v TabularDataset https://aka.ms/azureml-data najdete v https://aka.ms/azureml-tsd-notebook dokumentaci k ukázkovému poznámkovém bloku. 
+  + Bylo povoleno školení s TabularDataset a datovou sadou. Navštivte https://aka.ms/dataset-tutorial prosím ukázkový Poznámkový blok. 
+  
+  + **azureml-train-core**
+    + Přidání podpory Nccl a Gloo v PyTorch Estimator
+  
++ **Opravy chyb a vylepšení**
+  + **AzureML-automl – jádro**
+    + Zastaralé nastavení AutoML ' lag_length ' a LaggingTransformer.
+    + Oprava správného ověření vstupních dat, jsou-li zadána ve formátu toku dat
+    + Upraveno fit_pipeline. py pro generování JSON grafu a nahrání do artefaktů. 
+    + Vykresluje se graf pod userrun pomocí Cytoscape.
+  + **azureml-core**
+    + Přečtěte si přečtěte si zpracování výjimek v kódu ADB a udělejte změny jako při zpracování nových chyb.
+    + Bylo přidáno automatické ověřování MSI pro virtuální počítače poznámkových bloků.
+    + Opravuje chybu, kde by mohly být nahrány poškozené nebo prázdné modely z důvodu neúspěšných pokusů o selhání.
+    + Opravena chyba, `DataReference` kde se název změní `DataReference` , když se změní režim (například `as_upload`při `as_download`volání, `as_mount`nebo).
+    + Nastavit `mount_point` a `target_path` volitelné pro `FileDataset.mount` a .`FileDataset.download`
+    + Výjimka, že sloupec časového razítka nejde najít, se zavolá, pokud se rozhraní API s časovými sériovými metodami volá bez dodaného sloupce časového razítka, nebo jsou vyřazené sloupce přiřazených časových razítek
+    + Sloupce s časovými intervaly by měly být přiřazeny sloupci, jehož typ je datum, jinak se očekává výjimka.
+    + Sloupce s časovými intervaly přiřazení rozhraní API with_timestamp_columns můžou mít hodnotu None nebo hrubou hodnotu sloupce časového razítka, která zruší dříve přiřazené sloupce časového razítka.
+    + Výjimka bude vyvolána, když je sloupec hrubých zrn a jemných časových razítek vyřazen s označením pro uživatele, který Vynecháváte, a to po vyřazení seznamu, nebo volání with_time_stamp s hodnotou None do časového razítka vydání verze. sloupcích
+    + Výjimka se vygeneruje, když se ve sloupci zachovat seznam sloupců s označením pro uživatele, který zadáte jako časový razítko v seznamu ponechat seznam sloupců, nebo volání with_time_stamp s žádným hodnota pro sloupce časového razítka verze
+    + Bylo přidáno protokolování pro velikost registrovaného modelu.
+  + **azureml-explain-model**
+    + Opravené upozornění vytištěné na konzolu, když není nainstalované balíček Pythonu pro balení: "Používáte starší verzi než lightgbm, upgradujte prosím na verzi vyšší než 2.2.1"
+    + Základní vysvětlení modelu stažení s horizontálního dělení pro globální vysvětlení s mnoha funkcemi
+    + Vysvětlené nevyřešené příklady inicializace pro vysvětlení výstupu
+    + Pevná neproměnlivá Chyba při nastavování vlastností při nahrávání s vysvětlením klienta pomocí dvou různých typů modelů
+    + Do bodování bodování byl přidán get_raw param. vysvětlit (), takže jeden vysvětlující bodování může vracet jak provedenou, tak nezpracované hodnoty.
+  + **azureml-train-automl**
+    + Zavedli jsme veřejná rozhraní API ze služby AutoML pro podporu vysvětlení z AutoML vysvětlené sady SDK – novější způsob podpory AutoML vysvětlení tím, že odpojujete AutoML featurization a vysvětlete podporu integrovaného vysvětlení sady SDK. vzor.
+    + Odebírají se výchozí hodnoty ze vzdálených školicích prostředí.
+    + Umístění úložiště výchozí mezipaměti bylo změněno z FileCacheStore na jednu na AzureFileCacheStore jednu pro AutoML v cestě kódu AzureDatabricks.
+    + Oprava správného ověření vstupních dat, jsou-li zadána ve formátu toku dat
+  + **azureml-train-core**
+    + Vyřazení source_directory_data_store se zrušilo.
+    + Byla přidána možnost přepsat verze balíčku po instalaci. 
+    + Přidala se podpora `environment_definition` souboru Dockerfile v parametru v odhady.
+    + Zjednodušené parametry distribuovaného školení v odhady.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 
@@ -1096,6 +1145,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si přehled služby [Azure Machine Learning](../service/overview-what-is-azure-ml.md).
