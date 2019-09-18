@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: Protokoly serveru
               href: concepts-server-logs.md
+            - name: Protokoly auditu
+              href: concepts-audit.md
             - name: Úložiště dotazů
               items:
                 - name: Úložiště dotazů

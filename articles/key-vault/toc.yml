@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: Nastavení a načtení tajného kódu – Node.js
       href: quick-create-node.md
-    - name: Nastavení a načtení tajného kódu – šablona Resource Manageru
+    - name: Nastavení a načtení tajného kódu – šablona
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Kurzy
