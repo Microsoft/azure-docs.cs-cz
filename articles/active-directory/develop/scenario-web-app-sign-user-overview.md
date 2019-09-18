@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852472"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056295"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scénář: Webová aplikace, která přihlašuje uživatele
 
@@ -55,11 +55,11 @@ V druhé fázi můžete také aplikaci povolit, aby vyvolala webová rozhraní A
 
 ## <a name="specifics"></a>Specifika
 
-- Při registraci aplikace budete muset zadat jednu nebo několik (Pokud aplikaci nasadíte do několika umístění) identifikátorů URI odpovědi. V některých případech (ASP.NET/ASP.NET Core) budete muset IDToken povolit. Nakonec budete chtít nastavit identifikátor URI pro odhlášení, aby se vaše aplikace znovu přihlásila k uživatelům.
+- Při registraci aplikace budete muset zadat jednu nebo několik (Pokud aplikaci nasadíte do několika umístění) identifikátorů URI odpovědi. V některých případech (ASP.NET/ASP.NET Core) budete muset token ID povolit. Nakonec budete chtít nastavit identifikátor URI pro odhlášení, aby se vaše aplikace znovu přihlásila k uživatelům.
 - V kódu vaší aplikace budete muset zadat autoritu, ke které se webová aplikace deleguje přihlašuje. Možná budete chtít přizpůsobit ověření tokenu (zejména ve scénářích ISV).
 - Webové aplikace podporují všechny typy účtů. Další informace najdete v tématu [podporované typy účtů](v2-supported-account-types.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](scenario-web-app-sign-user-app-registration.md)

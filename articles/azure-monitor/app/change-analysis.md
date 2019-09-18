@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849174"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033386"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -87,57 +87,39 @@ V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslu
 
 ### <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
 
-Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. V takovém případě postupujte podle těchto alternativních pokynů.
+Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. Spuštěním následujícího skriptu povolte všechny webové aplikace v rámci vašeho předplatného.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Zaregistrujte poskytovatele prostředků analýzy změn pro vaše předplatné.
+Požadavky:
+* PowerShell AZ Module. Postupujte podle pokynů v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) .
 
-1. Zaregistrujte příznak funkce změny analýzy (Preview). Vzhledem k tomu, že příznak funkce je ve verzi Preview, musíte ho zaregistrovat, aby bylo možné ho zviditelnit v rámci vašeho předplatného:
+Spusťte tento skript:
 
-   1. Otevřete službu [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![Snímek obrazovky se změnou Cloud Shell](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. Změňte typ prostředí na **PowerShell**.
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![Snímek obrazovky se změnou Cloud Shell](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. Spusťte následující příkaz PowerShellu:
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. Zaregistrujte poskytovatele prostředků analýzy změn pro toto předplatné.
+```
 
-   - Přejděte na **odběry**a vyberte předplatné, které chcete ve službě Change Service povolit. Pak vyberte poskytovatelé prostředků:
 
-        ![Snímek obrazovky s informacemi o tom, jak zaregistrovat poskytovatele prostředků pro změnu analýzy](./media/change-analysis/register-rp.png)
-
-       - Vyberte **Microsoft. ChangeAnalysis**. Pak v horní části stránky vyberte **Registrovat**.
-
-       - Jakmile je poskytovatel prostředků povolený, můžete na webové aplikaci nastavit skrytou značku a zjišťovat tak změny v úrovni nasazení. Chcete-li nastavit skrytou značku, postupujte podle pokynů v části **nelze načíst informace o analýze změn**.
-
-   - Případně můžete k registraci poskytovatele prostředků použít skript prostředí PowerShell:
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        Pokud chcete použít PowerShell k nastavení skryté značky na webové aplikaci, spusťte následující příkaz:
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > Po přidání skryté značky možná budete muset počkat až 4 hodiny, než začnete zobrazovat změny. Výsledky jsou zpožděny, protože analýza změn kontroluje webové aplikace pouze každé 4 hodiny. Plán na 4 hodiny omezí dopad kontroly na výkon.
 
 ## <a name="next-steps"></a>Další postup
 

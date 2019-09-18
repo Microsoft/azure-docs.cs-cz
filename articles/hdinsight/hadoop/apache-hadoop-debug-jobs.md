@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882432"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059204"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analýza protokolů Apache Hadoop ve službě Azure HDInsight
 
@@ -110,7 +110,7 @@ Další informace o protokolech aplikací naleznete v tématu [zjednodušení sp
 ### <a name="access-the-ambari-ui"></a>Přístup k uživatelskému rozhraní Ambari
 V Azure Portal kliknutím na název clusteru HDInsight otevřete podokno clusteru. V podokně clusteru klikněte na **řídicí panel**.
 
-![Spustit řídicí panel clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![Řídicí panel clusteru pro spuštění HDInsight](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Přístup k uživatelskému rozhraní příze
@@ -120,7 +120,7 @@ Pomocí uživatelského rozhraní PŘÍZe můžete provádět následující akc
 
 * **Získá stav clusteru**. V levém podokně rozbalte **cluster**a klikněte na **o**. Toto jsou podrobné informace o stavu clusteru, jako je celková přidělená paměť, používané jádra, stav Správce prostředků clusteru, verze clusteru atd.
   
-    ![Spustit přízi na řídicím panelu clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Spustit přízi na řídicím panelu clusteru")
+    ![Spuštění služby HDInsight – příze na řídicím panelu clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Spuštění služby HDInsight – příze na řídicím panelu clusteru")
 * **Získá stav uzlu**. V levém podokně rozbalte **cluster**a klikněte na **uzly**. Zobrazí se seznam všech uzlů v clusteru, adresa HTTP každého uzlu, prostředky přidělené každému uzlu atd.
 * **Monitorovat stav úlohy**. V levém podokně rozbalte **cluster**a potom klikněte na **aplikace** . zobrazí se seznam všech úloh v clusteru. Chcete-li se podívat na úlohy v určitém stavu (například nový, odesláno, spuštěno atd.), klikněte na příslušný odkaz v části **aplikace**. Další informace o úloze získáte tak, že kliknete na název úlohy, včetně výstupu, protokolů atd.
 
@@ -312,7 +312,7 @@ Některé z těchto chybových zpráv se taky můžou zobrazit ve Azure Portal, 
 * **Popis**: Neplatná konfigurace clusteru Požadovaná konfigurace účtu WASB se v externích účtech nenašla.  
 * **Omezení rizik**: Ověřte, že účet existuje a je správně zadaný v konfiguraci, a zkuste operaci zopakovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

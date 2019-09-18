@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967784"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036333"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -95,7 +95,7 @@ Pokud se chcete dozvědět, jak vytvořit prémiovou sdílenou složku, přečt�
 V současné době nemůžete přímo převádět mezi standardní sdílenou složkou souborů a prémiovou sdílenou složkou. Pokud byste chtěli přepnout na jednu vrstvu, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. Můžete to provést pomocí kteréhokoli z podporovaných nástrojů pro kopírování souborů Azure, jako je například Robocopy nebo AzCopy.
 
 > [!IMPORTANT]
-> Soubory úrovně Premium jsou dostupné jenom pro LRS a jsou dostupné ve většině oblastí, které nabízí účty úložiště. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure.
+> Soubory úrovně Premium jsou dostupné ve většině oblastí, které nabízí účty úložiště a ZRS v menší podmnožině oblastí. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure. Pokud chcete zjistit, které oblasti podporují ZRS, přečtěte si téma [Podpora pokrytí a regionální dostupnost](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 
 #### <a name="provisioned-shares"></a>Zřízené sdílené složky
 
@@ -157,7 +157,7 @@ Nové sdílené složky začínají úplným počtem kreditů v rámci svého sh
 
 Standardní sdílené složky Azure Files podporují čtyři možnosti redundance dat: místně redundantní úložiště (LRS), zóna redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště (GZRS) (Preview).
 
-Sdílené složky Azure Files Premium podporují jenom místně redundantní úložiště (LRS).
+Sdílené složky Azure Files Premium podporují LRS i ZRS, ale ZRS jsou momentálně dostupné v menší podmnožině oblastí.
 
 V následujících částech jsou popsány rozdíly mezi různými možnostmi redundance:
 
@@ -273,7 +273,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

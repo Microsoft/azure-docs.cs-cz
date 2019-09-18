@@ -35,8 +35,6 @@
   items:
     - name: Připojení zařízení
       items:
-        - name: Generování připojovacího řetězce zařízení
-          href: howto-generate-connection-string.md
         - name: Příprava a připojení aplikace v Node.js (generické)
           href: howto-connect-nodejs.md
         - name: Příprava a připojení sady MXChip IoT DevKit

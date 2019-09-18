@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100640"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036387"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání v Azure Virtual Machines
 
@@ -267,11 +267,22 @@ Pokud chcete vytvořit cluster s podporou převzetí služeb při selhání, bud
 - Název clusteru s podporou převzetí služeb při selhání
 - IP adresa pro cluster s podporou převzetí služeb při selhání. Můžete použít IP adresu, která se nepoužívá ve stejné virtuální síti Azure a podsíti jako uzly clusteru.
 
-Následující prostředí PowerShell vytvoří cluster s podporou převzetí služeb při selhání. Aktualizujte skript pomocí názvů uzlů (názvy virtuálních počítačů) a dostupné IP adresy z virtuální sítě Azure:
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+Následující PowerShell vytvoří cluster s podporou převzetí služeb při selhání pro **Windows Server 2008-2016**. Aktualizujte skript pomocí názvů uzlů (názvy virtuálních počítačů) a dostupné IP adresy z virtuální sítě Azure:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server. 2019
+
+Následující PowerShell vytvoří cluster s podporou převzetí služeb při selhání pro Windows Server 2019.  Další informace najdete v clusteru s podporou [převzetí služeb při selhání na blogu: Objekt](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)sítě s clustery.  Aktualizujte skript pomocí názvů uzlů (názvy virtuálních počítačů) a dostupné IP adresy z virtuální sítě Azure:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Vytvoření určujícího cloudu
 
@@ -445,7 +456,7 @@ V předchozím skriptu nastavte hodnoty pro vaše prostředí. Následující se
 
    - `<Cluster Network Name>`: Název clusteru převzetí služeb při selhání Windows serveru pro síť V **Správce clusteru s podporou převzetí služeb při selhání** > **sítě**klikněte pravým tlačítkem myši na síť a klikněte na **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** . 
 
-   - `<SQL Server FCI IP Address Resource Name>`: Název prostředku SQL Server FCI IP adresy V rolích **Správce clusteru s podporou převzetí služeb při selhání** > v části role SQL Server FCI v části **název serveru**klikněte pravým tlačítkem na prostředek IP adresy a klikněte na **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** . 
+   - `<SQL Server FCI IP Address Resource Name>`: Název prostředku SQL Server FCI IP adresy V**rolích** **Správce clusteru s podporou převzetí služeb při selhání** > v části role SQL Server FCI v části **název serveru**klikněte pravým tlačítkem na prostředek IP adresy a klikněte na **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** . 
 
    - `<ILBIP>`: INTERNÍHO nástroje IP adresa. Tato adresa je nakonfigurovaná v Azure Portal jako front-end adresa interního nástroje. To je taky SQL Server FCI IP adresa. Můžete ji najít v **Správce clusteru s podporou převzetí služeb při selhání** na stejné stránce vlastností, kde jste našli `<SQL Server FCI IP Address Resource Name>`.  
 

@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347130"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064730"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní API ASP.NET pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak volat chráněný prostředek webového rozhraní API v Azure Active Directory (Azure AD) B2C z webové aplikace ASP.NET.
+V tomto kurzu se dozvíte, jak volat chráněný prostředek webového rozhraní API v Azure Active Directory B2C (Azure AD B2C) z webové aplikace ASP.NET.
 
 V tomto kurzu se naučíte:
 
@@ -40,7 +40,7 @@ Proveďte kroky a požadavky v [kurzu: Povolte ověřování ve webové aplikaci
 Prostředky webového rozhraní API musí být ve vašem tenantovi zaregistrované, aby mohly přijímat a reagovat na požadavky na chráněné prostředky klientskými aplikacemi, které prezentují přístupový token.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikace**a pak vyberte **Přidat**.
 5. Zadejte název aplikace. Například *webapi1*.
@@ -89,7 +89,7 @@ Následující dva projekty jsou v ukázkovém řešení:
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 2. Otevřete soubor **Web.config** v projektu **TaskWebApp**.
-3. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem: 
+3. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
@@ -133,16 +133,16 @@ Následující dva projekty jsou v ukázkovém řešení:
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**. 
+Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Nastavit projekty po spuštění**. 
+1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Nastavit projekty po spuštění**.
 2. Vyberte **více projektů po spuštění**.
 3. U obou projektů změňte hodnotu **Akce** na **Spustit**.
 4. Nastavení uložíte kliknutím na **OK**.
 5. Stisknutím klávesy **F5** spusťte obě aplikace. Každá aplikace se otevře na vlastní kartě prohlížeče. `https://localhost:44316/` je webová aplikace.
     Na adrese `https://localhost:44332/` je webové rozhraní API.
 
-6. Ve webové aplikaci klikněte na **Registrace/přihlášení** a přihlaste se k webové aplikaci. Použijte účet, který jste vytvořili dříve. 
+6. Ve webové aplikaci klikněte na **Registrace/přihlášení** a přihlaste se k webové aplikaci. Použijte účet, který jste vytvořili dříve.
 7. Po přihlášení klikněte na **seznam úkolů** a vytvořte položku seznamu úkolů.
 
 Když vytvoříte položku seznamu úkolů, Webová aplikace odešle požadavek na webové rozhraní API, aby vygeneroval položku seznamu úkolů. Chráněná webová aplikace volá chráněné webové rozhraní API ve vašem tenantovi Azure AD B2C.

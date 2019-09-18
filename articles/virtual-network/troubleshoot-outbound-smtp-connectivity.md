@@ -3,7 +3,7 @@ title: Řešení potíží s odchozím připojením SMTP v Azure | Microsoft Doc
 description: Naučte se řešit potíže s odchozím připojením SMTP v Azure.
 services: virtual-network
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-network
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972477"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058938"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
 
@@ -54,4 +54,4 @@ Pokud používáte prostředky Azure prostřednictvím CSP, můžete požádat p
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
 
-Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém pomocí následujícího typu problému: **Správa** předplatných Typ problému: **Požadavek na povolení toku e-mailu portu 25**
+Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém pomocí následujícího typu problému: **Správa předplatných** Typ problému: **Požadavek na povolení toku e-mailu portu 25**

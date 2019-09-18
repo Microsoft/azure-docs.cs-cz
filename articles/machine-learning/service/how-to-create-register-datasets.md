@@ -1,6 +1,6 @@
 ---
 title: Vytvoření datových sad pro přístup k datům pomocí sad AzureML-DataSet
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet datové sady z různých zdrojů a registrovat datové sady s vaším pracovním prostorem.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 6c3a8d62bd6b3650f834540bd7bb13027792b091
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993345"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076972"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -34,9 +34,9 @@ S Azure Machine Learningmi datovými sadami můžete:
 
 K vytváření a práci s datovými sadami potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* [Pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md)
+* [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která zahrnuje balíček AzureML-DataSet Sets.
 
@@ -45,8 +45,10 @@ K vytváření a práci s datovými sadami potřebujete:
 
 ## <a name="dataset-types"></a>Typy datových sad
 
-Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. Seznam typů datových sad:
+Datové sady jsou rozdělené do dvou typů podle toho, jak je uživatelé využívají při školení. 
+
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do PANDAS dataframe. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší [dokumentaci](https://aka.ms/tabulardataset-api-reference).
+
 * Soubor [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Získáte tak možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Soubory můžou být libovolného formátu, což umožňuje rozšířit řadu scénářů strojového učení, včetně obsáhlého učení.
 
 Další informace o nadcházejících změnách rozhraní API najdete [tady](https://aka.ms/tabular-dataset).
@@ -55,7 +57,7 @@ Další informace o nadcházejících změnách rozhraní API najdete [tady](htt
 
 Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
 
-Aby byla data přístupná službou Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure datastores](how-to-access-data.md) nebo veřejných webových adresách URL.
+Aby data mohla být přístupná pomocí Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure datastores](how-to-access-data.md) nebo adres URL veřejných webů.
 
 Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md):
 
@@ -79,11 +81,11 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>Vytvořit TabularDatasets
 
-TabularDatasets se dá vytvořit prostřednictvím sady SDK nebo pomocí cílové stránky pracovního prostoru (Preview).
+TabularDatasets se dá vytvořit prostřednictvím sady SDK nebo pomocí cílové stránky pracovního prostoru (Preview). Časové razítko se dá určit ze sloupce v datech nebo se data vzoru cesty ukládají do, aby se povolila vlastnost časové řady, která umožňuje snadné a efektivní filtrování podle času. 
 
-#### <a name="sdk"></a>Sada SDK 
+#### <a name="using-the-sdk"></a>Použití sady SDK 
 
-`from_delimited_files()` Použijte`TabularDatasetFactory` metodu třídy pro čtení souborů ve formátu CSV nebo TSV a vytvořte neregistrované TabularDataset. Pokud čtete z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění.
+[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) Použijte`TabularDatasetFactory` metodu třídy pro čtení souborů ve formátu CSV nebo TSV a vytvořte neregistrované TabularDataset. Pokud čtete z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění.
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -108,7 +110,26 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||ne
 
-#### <a name="workspace-landing-page"></a>Cílová stránka pracovního prostoru 
+Použijte metodu pro `TabularDataset` třídu k umožnění snadného a efektivního filtrování podle času. [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) Další příklady a podrobnosti najdete [tady](http://aka.ms/azureml-tsd-notebook). 
+
+```Python
+# create a TabularDataset with timeseries trait
+datastore_paths = [(datastore, 'weather/*/*/*/data.parquet')]
+
+# get a coarse timestamp column from the path pattern
+dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_format='weather/{coarse_time:yyy/MM/dd}/data.parquet')
+
+# set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
+dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
+
+# filter with timeseries trait specific methods 
+data_slice = dataset.time_before(datetime(2019, 1, 1))
+data_slice = dataset.time_after(datetime(2019, 1, 1))
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+```
+
+#### <a name="using-the-workspace-landing-page"></a>Použití úvodní stránky pracovního prostoru 
 
 Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com) , abyste mohli vytvořit datovou sadu přes webové prostředí. V současné době cílová stránka pracovního prostoru podporuje pouze vytváření TabularDatasets.
 
@@ -120,7 +141,7 @@ Nejprve v levém podokně vyberte v části **assets (prostředky) datové** **s
 
 ### <a name="create-filedatasets"></a>Vytvoření datových sad
 
-`from_files()` Použijte`FileDatasetFactory` metodu třídy pro načtení souborů v jakémkoli formátu a vytvořte neregistrovanou datovou sadu souborů.
+[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) Použijte`FileDatasetFactory` metodu třídy pro načtení souborů v jakémkoli formátu a vytvořte neregistrovanou datovou sadu souborů.
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -138,11 +159,12 @@ web_paths = [
            ]          
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
+
 ## <a name="register-datasets"></a>Registrace datových sad
 
 Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem:
 
-`register()` Použijte metodu k registraci datových sad do vašeho pracovního prostoru, aby je bylo možné sdílet s ostatními a opakovaně používat v různých experimentech.
+[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) Použijte metodu k registraci datových sad do vašeho pracovního prostoru, aby je bylo možné sdílet s ostatními a opakovaně používat v různých experimentech.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,

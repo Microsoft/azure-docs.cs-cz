@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227168"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065698"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C je služba pro správu identit od firmy do spotřebitele. Tato služba umožňuje přizpůsobit a řídit, jak budou uživatelé zabezpečeně pracovat s webovými, stolními, mobilními nebo jednostránkovémi aplikacemi. Pomocí Azure AD B2C se uživatelé můžou zaregistrovat, přihlašovat, resetovat hesla a upravovat profily. Azure AD B2C implementuje formulář protokolů OpenID Connect a OAuth 2,0. Důležitým klíčem při implementaci těchto protokolů jsou tokeny zabezpečení a jejich deklarace identity, které umožňují poskytovat zabezpečený přístup k prostředkům.
+Azure Active Directory B2C (Azure AD B2C) je služba pro správu identit od firmy do spotřebitele. Tato služba umožňuje přizpůsobit a řídit, jak budou uživatelé zabezpečeně pracovat s webovými, stolními, mobilními nebo jednostránkovémi aplikacemi. Pomocí Azure AD B2C se uživatelé můžou zaregistrovat, přihlašovat, resetovat hesla a upravovat profily. Azure AD B2C implementuje formulář protokolů OpenID Connect a OAuth 2,0. Důležitým klíčem při implementaci těchto protokolů jsou tokeny zabezpečení a jejich deklarace identity, které umožňují poskytovat zabezpečený přístup k prostředkům.
 
 *Cesta uživatele* je požadavek, který určuje zásadu, která řídí chování způsobu, jakým uživatel a aplikace budou pracovat s Azure AD B2C. K dispozici jsou dvě cesty pro definování cest uživatelů v Azure AD B2C.
 
@@ -68,7 +68,7 @@ Vlastní zásady je možné změnit tak, aby prováděly řadu úloh. Vlastní z
 
 Vlastní zásady nebo uživatelské toky různých typů se ve vašem tenantovi Azure AD B2C používají podle potřeby a je možné je znovu použít napříč aplikacemi. Tato flexibilita umožňuje definovat a upravovat prostředí identity uživatelů s minimálními nebo žádnými změnami kódu. Zásady se používají tak, že se do žádostí o ověření pomocí protokolu HTTP přidá speciální parametr dotazu. Pokud chcete vytvořit vlastní zásadu, přečtěte si téma Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="identity-providers"></a>Zprostředkovatelé identit
+## <a name="identity-providers"></a>Zprostředkovatelé identity
 
 V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Zprostředkovatele identity, které jsou podporovány Azure AD B2C, můžete přidat pomocí Azure Portal.
 
@@ -127,7 +127,7 @@ Do aplikací v Azure AD B2C můžete přidat vlastní kód na straně klienta Ja
 
 Mnoho běžných úloh správy tenantů je potřeba provést programově. Primárním příkladem je Správa uživatelů. Je možné, že budete muset migrovat existující úložiště uživatelů na klienta Azure AD B2C. Je možné, že budete chtít hostovat registraci uživatele na vlastní stránce a vytvořit v adresáři Azure AD B2C uživatelské účty na pozadí. Tyto typy úloh vyžadují možnost vytvářet, číst, aktualizovat a odstraňovat uživatelské účty. Tyto úlohy můžete provádět pomocí [Graph API služby Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte konfigurovat svoji aplikaci pro prostředí registrace a přihlášení – pokračujte tímto kurzem.
 

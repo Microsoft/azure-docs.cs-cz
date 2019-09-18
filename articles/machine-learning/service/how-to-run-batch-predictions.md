@@ -1,7 +1,7 @@
 ---
 title: Spuštění dávkového předpovědiu pro velké objemy dat s kanály
-titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak k vytvoření predikcí dávky asynchronně velkých objemů dat pomocí služby Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Naučte se asynchronně předpovědi Batch na velkých objemech dat pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128251"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034293"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Spuštění dávkového předpovědiu pro velké datové sady s kanály Azure Machine Learning
 
-V tomto článku se dozvíte, jak pomocí Azure Machine Learning služby provádět asynchronní zpracování velkých objemů dat pomocí kanálů ML.
+V tomto článku se dozvíte, jak předpovědiovat velké objemy dat asynchronně pomocí kanálů ML s Azure Machine Learning.
 
 Předpovědi dávky (nebo vyhodnocování dávek) poskytuje nákladově efektivní odvození s využitím neparalelní propustnosti pro asynchronní aplikace. Kanály predikcí služby batch můžete škálovat provádět odvození na terabajty dat v produkčním prostředí. Předpověď dávky je optimalizovaná pro vysokou propustnost, předpovědi s požárem a zapomenout pro velkou kolekci dat.
 
@@ -30,7 +30,7 @@ V následujících krocích vytvoříte [kanál strojového učení](concept-ml-
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
+- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Konfigurace vývojového prostředí pro instalaci sady SDK Azure Machine Learning. Další informace najdete v tématu [nakonfigurovat prostředí pro vývoj pro Azure Machine Learning](how-to-configure-environment.md).
 
@@ -191,7 +191,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>Zápis hodnoticí skript
 
 >[!Warning]
->Následující kód je pouze ukázka toho, co je obsaženo v [batch_score. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) používané ukázkovým poznámkovým [blokem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Pro svůj scénář budete muset vytvořit vlastní hodnoticí skript.
+>Následující kód je pouze ukázka toho, co je obsaženo v [batch_score. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) používané [ukázkovým poznámkovým blokem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Pro svůj scénář budete muset vytvořit vlastní hodnoticí skript.
 
 `batch_score.py` Skript přijímá vstupní image *dataset_path*, které je předem vytrénované modelů v *model_dir,* a vypíše *výsledky label.txt* k *output_dir*.
 

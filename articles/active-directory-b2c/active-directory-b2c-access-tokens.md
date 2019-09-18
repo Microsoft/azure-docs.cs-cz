@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874098"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066126"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu v Azure Active Directory B2C
 
-*Přístupový token* obsahuje deklarace identity, které můžete použít v Azure Active Directory (Azure AD) B2C k identifikaci udělených oprávnění k vašim rozhraním API. Při volání serveru prostředků musí být v požadavku HTTP přítomen přístupový token. Přístupový token se označuje jako **access_token** v odpovědích od Azure AD B2C.
+*Přístupový token* obsahuje deklarace identity, které můžete použít v Azure Active Directory B2C (Azure AD B2C) k identifikaci udělených oprávnění k vašim rozhraním API. Při volání serveru prostředků musí být v požadavku HTTP přítomen přístupový token. Přístupový token se označuje jako **access_token** v odpovědích od Azure AD B2C.
 
 V tomto článku se dozvíte, jak požádat o přístupový token pro webovou aplikaci a webové rozhraní API. Další informace o tokenech v Azure AD B2C najdete v tématu [Přehled tokenů v Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
@@ -33,9 +33,9 @@ V tomto článku se dozvíte, jak požádat o přístupový token pro webovou ap
 
 ## <a name="scopes"></a>Obory
 
-Obory poskytují způsob, jak spravovat oprávnění k chráněným prostředkům. Po vyžádání přístupového tokenu musí klientská aplikace zadat požadovaná oprávnění v parametru **Scope** žádosti. Pokud například chcete zadat `read` **hodnotu oboru** pro rozhraní API s identifikátorem `https://contoso.onmicrosoft.com/api` **URI ID aplikace** , bude obor `https://contoso.onmicrosoft.com/api/read`.
+Obory poskytují způsob, jak spravovat oprávnění k chráněným prostředkům. Po vyžádání přístupového tokenu musí klientská aplikace zadat požadovaná oprávnění v parametru **Scope** žádosti. Pokud například chcete zadat `read` **hodnotu oboru** pro rozhraní API `https://contoso.onmicrosoft.com/api`s **identifikátorem URI ID aplikace** , bude obor. `https://contoso.onmicrosoft.com/api/read`
 
-Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. Chcete-li získat více oprávnění v rámci jedné žádosti, můžete přidat více položek v parametru s jedním oborem žádosti oddělené mezerami.
+Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. Chcete-li získat více oprávnění v rámci jedné žádosti, můžete přidat více položek v parametru s jedním **oborem** žádosti oddělené mezerami.
 
 Následující příklad ukazuje obory Dekódovatelné v adrese URL:
 

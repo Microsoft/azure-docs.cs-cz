@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: ed41ccea0754f3eeffdd0248bac567859db1492c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001506"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066811"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -26,6 +26,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 | Funkce | Podrobnosti |
 | ---| --- |
+| [Privátní odkaz Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Soukromý odkaz zjednodušuje architekturu sítě a zabezpečuje připojení mezi koncovými body v Azure tím, že udržuje data v síti Azure, čímž eliminuje expozici Internetu. Privátní odkaz také umožňuje vytvářet a vykreslovat vlastní služby v Azure. |
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](sql-database-accelerated-database-recovery.md).|
 |Přibližný počet DISTINCT|Informace najdete v tématu [přibližný počet jedinečných](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Režim dávky na Rowstore (pod úrovní kompatibility 150)|Informace najdete v tématu [režim dávky v Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
@@ -55,6 +56,24 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 | &nbsp; |
 
 ---
+
+## <a name="new-features"></a>Nové funkce
+
+### <a name="managed-instance-h2-2019-updates"></a>Aktualizace spravované instance H2 2019
+
+- Nakonfigurujte chování spravované instance pomocí [příznaků globálních trasování](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/).
+
+### <a name="managed-instance-h1-2019-updates"></a>Aktualizace spravované instance H1 2019
+
+V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následující funkce:
+  - Podpora předplatných s <a href="https://aka.ms/sql-mi-visual-studio-subscribers">měsíčním kreditem Azure pro předplatitele sady Visual Studio</a> a zvýšená [regionální omezení](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
+  - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
+  - Vytvořte instance s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni serveru</a> a <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovou zónou</a> dle vašeho výběru.
+  - Spravované instance jsou teď chráněné pomocí <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované brány firewall</a>.
+  - Nakonfigurujte instance tak, aby používaly [veřejné koncové body](sql-database-managed-instance-public-endpoint-configure.md), připojení [přepsání proxy serveru](/sql-database-connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až do 35 dnů</a> pro obnovení k bodu v čase. Dlouhodobé uchovávání záloh (až 10 let) není pořád povolené, takže můžete jako alternativu použít <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">zálohy jenom pro kopírování</a> .
+  - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](sql-database-managed-instance-delete-virtual-cluster.md).
+  - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
+  - Spravovaná instance je k dispozici v následujících oblastech Azure Government pro GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je k dispozici také v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika – sever, Jižní Afrika – západ
 
 ## <a name="fixed-known-issues"></a>Opravené známé problémy
 

@@ -1,240 +1,286 @@
 ---
-title: 'Azure Active Directory Domain Services: Připojení virtuálního počítače s Ubuntu ke spravované doméně | Microsoft Docs'
-description: Připojení virtuálního počítače s Ubuntu Linux k Azure AD Domain Services
+title: Připojte virtuální počítač Ubuntu k Azure AD Domain Services | Microsoft Docs
+description: Naučte se konfigurovat virtuální počítač Ubuntu Linux a připojit se k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990580"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075383"
 ---
-# <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Připojení virtuálního počítače s Ubuntu v Azure ke spravované doméně
-V tomto článku se dozvíte, jak připojit Ubuntu Linux virtuální počítač k Azure AD Domain Services spravované doméně.
+# <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače s Ubuntu Linux k spravované doméně Azure AD Domain Services
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům v Azure pomocí jediné sady přihlašovacích údajů, můžete připojit virtuální počítače k spravované doméně Azure Active Directory Domain Services (služba AD DS). Když připojíte virtuální počítač k spravované doméně Azure služba AD DS, můžete k přihlášení a správě serverů použít uživatelské účty a přihlašovací údaje z domény. Členství ve skupinách ze spravované domény Azure služba AD DS se taky používá, aby vám umožnila řídit přístup k souborům nebo službám na virtuálním počítači.
 
-## <a name="before-you-begin"></a>Před zahájením
-K provedení úkolů uvedených v tomto článku budete potřebovat:  
-1. Platné **předplatné Azure**.
-2. **Adresář služby Azure AD** – buď synchronizovaný s místním adresářem, nebo s adresářem jenom pro Cloud.
-3. **Azure AD Domain Services** musí být povolený pro adresář služby Azure AD. Pokud jste to ještě neudělali, postupujte podle všech úkolů popsaných v [průvodci Začínáme](tutorial-create-instance.md).
-4. Ujistěte se, že jste nakonfigurovali IP adresy spravované domény jako servery DNS pro virtuální síť. Další informace najdete v tématu [Postup aktualizace nastavení DNS pro virtuální síť Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) .
-5. Dokončete kroky potřebné k [synchronizaci hesel s Azure AD Domain Services spravované doméně](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
+V tomto článku se dozvíte, jak připojit Ubuntu Linux virtuální počítač k spravované doméně Azure služba AD DS.
 
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Zřízení virtuálního počítače s Ubuntu Linux
-Pomocí kterékoli z následujících metod zřídíte Ubuntu Linux virtuální počítač v Azure:
+K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
+
+* Aktivní předplatné Azure.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+
+## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Vytvoření virtuálního počítače s Ubuntu Linux a připojení k němu
+
+Pokud máte v Azure existující virtuální počítač Ubuntu Linux, připojte se k němu pomocí SSH a pak pokračujte k dalšímu kroku, abyste mohli [začít s konfigurací virtuálního počítače](#configure-the-hosts-file).
+
+Pokud potřebujete vytvořit Ubuntu Linux virtuální počítač nebo chcete vytvořit testovací virtuální počítač pro použití s tímto článkem, můžete použít jednu z následujících metod:
+
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-> [!IMPORTANT]
-> * Nasaďte virtuální počítač do **stejné virtuální sítě, ve které jste povolili Azure AD Domain Services**.
-> * Vyberte **jinou podsíť** , než kterou jste povolili Azure AD Domain Services.
->
+Když vytváříte virtuální počítač, věnujte pozornost nastavení virtuální sítě a ujistěte se, že virtuální počítač může komunikovat se spravovanou doménou Azure služba AD DS:
 
+* Nasaďte virtuální počítač do stejné nebo partnerské virtuální sítě, ve které jste povolili Azure AD Domain Services.
+* Virtuální počítač nasaďte do jiné podsítě, než je vaše instance Azure AD Domain Services.
 
-## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Vzdálené připojení k Ubuntu Linuxmu virtuálnímu počítači
-Virtuální počítač Ubuntu se zřídil v Azure. Dalším úkolem je vzdálené připojení k virtuálnímu počítači pomocí účtu místního správce vytvořeného při zřizování virtuálního počítače.
+Až se virtuální počítač nasadí, připojte se k virtuálnímu počítači pomocí SSH podle pokynů.
 
-Postupujte podle pokynů v článku [jak se přihlašovat k virtuálnímu počítači se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="configure-the-hosts-file"></a>Konfigurace souboru hostitelů
 
-
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Konfigurace souboru hostitelů na virtuálním počítači se systémem Linux
-V terminálu SSH upravte soubor/etc/hosts a aktualizujte IP adresu počítače a název hostitele.
+Abyste se ujistili, že je název hostitele virtuálního počítače správně nakonfigurovaný pro spravovanou doménu, upravte soubor */etc/hosts* a nastavte název hostitele:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-V souboru Hosts zadejte následující hodnotu:
+V souboru *hosts* aktualizujte adresu *localhost* . V následujícím příkladu:
+
+* *contoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
+* *Ubuntu* je název hostitele vašeho virtuálního počítače s Ubuntu, ke kterému se připojujete do spravované domény.
+
+Aktualizujte tyto názvy vlastními hodnotami:
 
 ```console
-127.0.0.1 contoso-ubuntu.contoso.com contoso-ubuntu
+127.0.0.1 ubuntu.contoso.com ubuntu
 ```
 
-Tady je "contoso.com" název domény DNS vaší spravované domény. contoso-Ubuntu je název hostitele virtuálního počítače s Ubuntu, ke kterému se připojujete, ke spravované doméně.
+Po dokončení uložte a zavřete soubor *hosts* pomocí `:wq` příkazu editoru.
 
+## <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Nainstalovat požadované balíčky na virtuálním počítači se systémem Linux
-Dále nainstalujte balíčky požadované pro připojení k doméně na virtuálním počítači. Proveďte následující kroky:
+Virtuální počítač potřebuje nějaké další balíčky, aby se připojil k virtuálnímu počítači do spravované domény Azure služba AD DS. Pokud chcete tyto balíčky nainstalovat a nakonfigurovat, aktualizujte a nainstalujte nástroje pro připojení k doméně pomocí`apt-get`
 
-1.  V terminálu SSH zadejte následující příkaz pro stažení seznamů balíčků z úložišť. Tento příkaz aktualizuje seznamy balíčků, aby získal informace o nejnovějších verzích balíčků a jejich závislostech.
+Během instalace protokolu Kerberos se balíček *krb5-User* vyzve k zadání názvu sféry velkými písmeny. Pokud je například název vaší spravované domény Azure služba AD DS *contoso.com*, jako sféru zadejte *contoso.com* . Instalace zapisuje `[realm]` oddíly a `[domain_realm]` v konfiguračním souboru */etc/krb5.conf* . Ujistěte se, že jste zadali celou sféru velkými PÍSMENy:
+
+```console
+sudo apt-get update
+sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
+```
+
+## <a name="configure-network-time-protocol-ntp"></a>Konfigurace protokolu NTP (Network Time Protocol)
+
+Aby mohla doménová komunikace správně fungovat, musí se datum a čas vašeho virtuálního počítače s Ubuntu synchronizovat se spravovanou doménou Azure služba AD DS. Do souboru */etc/NTP.conf* přidejte název hostitele NTP spravované domény Azure služba AD DS.
+
+1. Otevřete soubor *NTP. conf* pomocí editoru:
 
     ```console
-    sudo apt-get update
+    sudo vi /etc/ntp.conf
     ```
 
-2. Zadáním následujícího příkazu nainstalujte požadované balíčky.
+1. V souboru *NTP. conf* vytvořte řádek pro přidání názvu DNS spravované domény Azure služba AD DS. V následujícím příkladu je přidána položka pro *contoso.com* . Použijte vlastní název DNS:
 
     ```console
-      sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
+    server contoso.com
     ```
 
-3. Během instalace protokolu Kerberos se zobrazí růžová obrazovka. Instalace balíčku krb5-User se vyzve k zadání názvu sféry (všechna velká písmena). Instalace zapisuje oddíly [Realm] a [domain_realm] v/etc/krb5.conf.
+    Po dokončení uložte a zavřete soubor *NTP. conf* pomocí `:wq` příkazu v editoru.
 
-    > [!TIP]
-    > Pokud je název spravované domény contoso.com, jako sféru zadejte CONTOSO.COM. Nezapomeňte, že název sféry musí být zadaný velkými PÍSMENy.
+1. Abyste se ujistili, že je virtuální počítač synchronizovaný se spravovanou doménou Azure služba AD DS, je potřeba provést tyto kroky:
 
+    * Zastavení serveru NTP
+    * Aktualizuje datum a čas ze spravované domény.
+    * Spuštění služby NTP
 
-## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurace nastavení protokolu NTP (Network Time Protocol) na virtuálním počítači se systémem Linux
-Datum a čas vašeho virtuálního počítače s Ubuntu se musí synchronizovat se spravovanou doménou. Do souboru/etc/NTP.conf přidejte název hostitele NTP spravované domény.
+    Spusťte následující příkazy a proveďte tyto kroky. Pomocí `ntpdate` příkazu použijte vlastní název DNS:
 
-```console
-sudo vi /etc/ntp.conf
-```
+    ```console
+    sudo systemctl stop ntp
+    sudo ntpdate contoso.com
+    sudo systemctl start ntp
+    ```
 
-Do souboru NTP. conf zadejte následující hodnotu a soubor uložte:
+## <a name="join-vm-to-the-managed-domain"></a>Připojit virtuální počítač ke spravované doméně
 
-```console
-server contoso.com
-```
+Teď, když jsou na virtuálním počítači nainstalované požadované balíčky a je nakonfigurovaný protokol NTP, připojte virtuální počítač k spravované doméně Azure služba AD DS.
 
-Tady je "contoso.com" název domény DNS vaší spravované domény.
-
-Teď synchronizujete datum a čas virtuálního počítače Ubuntu se serverem NTP a potom spusťte službu NTP:
-
-```console
-sudo systemctl stop ntp
-sudo ntpdate contoso.com
-sudo systemctl start ntp
-```
-
-
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Připojit se k virtuálnímu počítači Linux ke spravované doméně
-Teď, když jsou na virtuálním počítači se systémem Linux nainstalované požadované balíčky, je dalším úkolem připojit se k virtuálnímu počítači do spravované domény.
-
-1. Seznamte se se spravovanou doménou služby AAD Domain Services. Do terminálu SSH zadejte následující příkaz:
+1. `realm discover` Pomocí příkazu můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *contoso.com*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   > [!NOTE]
-   > **Při** Pokud *Zjišťování sféry* nemůže najít spravovanou doménu:
-   >   * Zajistěte, aby byla doména dosažitelná z virtuálního počítače (zkuste použít test pomocí testu).
-   >   * Ověřte, zda je virtuální počítač skutečně nasazený do stejné virtuální sítě, ve které je dostupná spravovaná doména.
-   >   * Zkontrolujte, jestli jste aktualizovali nastavení serveru DNS pro virtuální síť tak, aby odkazovala na řadiče domény spravované domény.
+   `realm discover` Pokud příkaz nemůže najít spravovanou doménu služby Azure služba AD DS, přečtěte si následující postup řešení potíží:
 
-2. Inicializujte Kerberos. Do terminálu SSH zadejte následující příkaz:
+    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping contoso.com` zjistit, jestli je vrácená kladná odpověď.
+    * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná doména spravovaná v Azure služba AD DS.
+    * Ověřte, že se nastavení serveru DNS pro virtuální síť aktualizovala tak, aby odkazovala na řadiče domény spravované domény Azure služba AD DS.
 
-    > [!TIP]
-    > * Ujistěte se, že zadáváte uživatele, který patří do skupiny AAD DC Administrators. V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md) .
-    > * Zadejte název domény velkými písmeny, jinak kinit neproběhne.
-    >
+1. Nyní pomocí `kinit` příkazu inicializujte Kerberos. Zadejte uživatele, který patří do skupiny *Správci řadičů domény AAD* . V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+
+    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos `contosoadmin@contoso.com` používá účet s názvem. Zadejte vlastní uživatelský účet, který je členem skupiny *AAD DC Administrators* :
 
     ```console
-    kinit bob@CONTOSO.COM
+    kinit contosoadmin@CONTOSO.COM
     ```
 
-3. Připojte počítač k doméně. Do terminálu SSH zadejte následující příkaz:
-
-    > [!TIP]
-    > Použijte stejný uživatelský účet, který jste zadali v předchozím kroku (' kinit ').
-    >
-    > Pokud se váš virtuální počítač nemůže připojit k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
+1. Nakonec připojte počítač k spravované doméně Azure služba AD DS pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je členem skupiny *AAD DC Administrators* , kterou jste zadali v předchozím `kinit` `contosoadmin@CONTOSO.COM`příkazu, například:
 
     ```console
-    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
     ```
 
-Pokud se počítač úspěšně připojí ke spravované doméně, měla by se zobrazit zpráva ("úspěšně zaregistrovaný počítač ve sféře").
+Připojení virtuálního počítače k spravované doméně služby Azure služba AD DS vyžaduje chvíli. Následující příklad výstupu ukazuje, že se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS:
 
+```output
+Successfully enrolled machine in realm
+```
 
-## <a name="update-the-sssd-configuration-and-restart-the-service"></a>Aktualizujte konfiguraci SSSD a restartujte službu.
-1. Do terminálu SSH zadejte následující příkaz. Otevřete soubor SSSD. conf a proveďte následující změnu.
-    
+Pokud váš virtuální počítač nemůže úspěšně dokončit proces připojení k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
+
+## <a name="update-the-sssd-configuration"></a>Aktualizace konfigurace SSSD
+
+Jeden z balíčků nainstalovaných v předchozím kroku byl pro démona služby System Security Services (SSSD). Když se uživatel pokusí přihlásit k virtuálnímu počítači pomocí přihlašovacích údajů domény, SSSD přenáší požadavek poskytovateli ověřování. V tomto scénáři používá SSSD k ověření žádosti Azure služba AD DS.
+
+1. Otevřete soubor *SSSD. conf* pomocí editoru:
+
     ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-2. Odkomentujte řádek **use_fully_qualified_names = true** a uložte soubor.
-    
+1. Odkomentujte řádek pro *use_fully_qualified_names* následujícím způsobem:
+
     ```console
     # use_fully_qualified_names = True
     ```
 
-3. Restartujte službu SSSD.
-    
+    Po dokončení uložte a zavřete soubor *SSSD. conf* pomocí `:wq` příkazu v editoru.
+
+1. Chcete-li použít změnu, restartujte službu SSSD:
+
     ```console
     sudo service sssd restart
     ```
 
+## <a name="configure-user-account-and-group-settings"></a>Konfigurace uživatelského účtu a nastavení skupiny
 
-## <a name="configure-automatic-home-directory-creation"></a>Konfigurace automatického vytvoření domovského adresáře
-Pokud chcete po přihlášení uživatelů Povolit automatické vytváření domovského adresáře, zadejte v terminálu pro výstup následující příkazy:
+Když je virtuální počítač připojený k spravované doméně Azure služba AD DS a nakonfigurovaný pro ověřování, je potřeba provést několik možností konfigurace uživatelů. Tyto změny konfigurace zahrnují povolení ověřování na základě hesla a automatické vytváření domovských adresářů na místním virtuálním počítači při prvním přihlášení uživatele domény.
 
-```console
-sudo vi /etc/pam.d/common-session
-```
+### <a name="allow-password-authentication-for-ssh"></a>Povolení ověřování hesla pro SSH
 
-Do tohoto souboru přidejte následující řádek pod řádkem "session Optional pam_sss. so" a uložte ho:
+Ve výchozím nastavení se uživatelé můžou přihlásit jenom k virtuálnímu počítači pomocí ověřování založeného na veřejných klíčích SSH. Ověřování pomocí hesla se nezdařilo. Když připojíte virtuální počítač k spravované doméně Azure služba AD DS, musí tyto účty domény používat ověřování pomocí hesla. Aktualizujte konfiguraci SSH tak, aby umožňovala ověřování na základě hesla následujícím způsobem.
 
-```console
-session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
-```
+1. Otevřete soubor *sshd_conf* pomocí editoru:
 
-
-## <a name="verify-domain-join"></a>Ověření připojení k doméně
-Ověřte, jestli se počítač úspěšně připojil ke spravované doméně. Připojte se k virtuálnímu počítači Ubuntu připojenému k doméně pomocí jiného připojení SSH. Použijte účet uživatele domény a potom zkontrolujte, jestli je uživatelský účet správně vyřešený.
-
-1. Do terminálu SSH zadejte následující příkaz, který se připojí k doméně připojené k doméně Ubuntu pomocí SSH. Použijte doménový účet, který patří do spravované domény (napříkladbob@CONTOSO.COMv tomto případě).
-    
     ```console
-    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
+    sudo vi /etc/ssh/sshd_config
     ```
 
-2. V terminálu SSH zadejte následující příkaz, který zjistí, zda byl domovský adresář správně inicializován.
-    
+1. Aktualizujte řádek pro *PasswordAuthentication* na *Ano*:
+
     ```console
-    pwd
+    PasswordAuthentication yes
     ```
 
-3. V terminálu SSH zadejte následující příkaz, abyste viděli, jestli se členství ve skupině správně řeší.
-    
+    Po dokončení uložte a zavřete soubor *sshd_conf* pomocí `:wq` příkazu editoru.
+
+1. Pokud chcete změny použít a umožnit uživatelům, aby se přihlásili pomocí hesla, restartujte službu SSH:
+
     ```console
-    id
+    sudo systemctl restart ssh
     ```
 
+### <a name="configure-automatic-home-directory-creation"></a>Konfigurace automatického vytvoření domovského adresáře
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Udělte skupině AAD DC Administrators oprávnění sudo
-Na virtuálním počítači s Ubuntu můžete členům skupiny AAD DC Administrators udělit oprávnění správce. Soubor sudo se nachází na adrese/etc/sudoers. Členové skupin AD přidaní v sudoers mohou provádět sudo.
+Pokud chcete povolit automatické vytváření domovského adresáře, když se uživatel poprvé přihlásí, proveďte následující kroky:
 
-1. V terminálu SSH se ujistěte, že jste přihlášeni pomocí oprávnění naduživatelem. Můžete použít účet místního správce, který jste zadali při vytváření virtuálního počítače. Spusťte následující příkaz:
-    
+1. Otevřete soubor */etc/pam.d/Common-Session* v editoru:
+
     ```console
-    sudo vi /etc/sudoers
+    sudo vi /etc/pam.d/common-session
     ```
 
-2. Do souboru/etc/sudoers přidejte následující položku a uložte ji:
-    
+1. Do tohoto souboru přidejte následující řádek pod řádkem `session optional pam_sss.so`:
+
+    ```console
+    session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
+    ```
+
+    Až budete hotovi, uložte a zavřete soubor *běžné relace* pomocí `:wq` příkazu editoru.
+
+### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Udělte skupině AAD DC Administrators oprávnění sudo
+
+Pokud chcete členům skupiny *AAD DC Administrators* udělit na virtuálním počítači Ubuntu oprávnění správce, přidejte položku do */etc/sudoers*. Po přidání můžou členové skupiny *Správci AAD DC* použít `sudo` příkaz na virtuálním počítači s Ubuntu.
+
+1. Otevřete soubor *sudoers* pro úpravy:
+
+    ```console
+    sudo visudo
+    ```
+
+1. Do konce souboru */etc/sudoers* přidejte následující položku:
+
     ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-3. Nyní se můžete přihlásit jako člen skupiny AAD DC Administrators a mít oprávnění správce na virtuálním počítači.
+    Až budete hotovi, uložte a ukončete Editor pomocí `Ctrl-X` příkazu.
 
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Přihlaste se k virtuálnímu počítači pomocí účtu domény.
 
-## <a name="troubleshooting-domain-join"></a>Řešení potíží s připojením k doméně
-Informace najdete v článku [věnovaném řešení potíží s připojením k doméně](join-windows-vm.md#troubleshoot-domain-join-issues) .
+Pokud chcete ověřit, jestli se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS, spusťte nové připojení SSH pomocí účtu uživatele domény. Potvrďte, že byl vytvořen domovský adresář a že je použito členství ve skupině z domény.
 
+1. Vytvořte nové připojení SSH z konzoly. Pomocí `ssh -l` příkazu použijte doménový účet, který patří do spravované domény, `contosoadmin@contoso.com` a pak zadejte adresu vašeho virtuálního počítače, třeba *Ubuntu.contoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
 
-## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Průvodce Začínáme](tutorial-create-instance.md)
-* [Připojení virtuálního počítače s Windows serverem k spravované doméně Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Jak se přihlásit k virtuálnímu počítači se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    ```console
+    ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
+    ```
+
+1. Po úspěšném připojení k virtuálnímu počítači ověřte, zda byl domovský adresář správně inicializován:
+
+    ```console
+    pwd
+    ```
+
+    Měli byste být v adresáři */Home* s vlastním adresářem, který odpovídá uživatelskému účtu.
+
+1. Nyní ověřte, zda jsou členství ve skupině správně řešena:
+
+    ```console
+    id
+    ```
+
+    Měli byste vidět členství ve skupinách ze spravované domény Azure služba AD DS.
+
+1. Pokud jste se k virtuálnímu počítači přihlásili jako člen skupiny *AAD DC Administrators* , ověřte, že můžete správně použít `sudo` příkaz:
+
+    ```console
+    sudo apt-get update
+    ```
+
+## <a name="next-steps"></a>Další postup
+
+Pokud máte problémy s připojením k virtuálnímu počítači ke spravované doméně Azure služba AD DS nebo když se přihlašujete pomocí účtu domény, přečtěte si téma [řešení potíží s připojením k doméně](join-windows-vm.md#troubleshoot-domain-join-issues).
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md

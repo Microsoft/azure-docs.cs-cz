@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917738"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077014"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě HDInsight
 
@@ -34,7 +34,7 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
 
 3. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
-    ![Vybrané zobrazení podregistru](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Ambari, výběr zobrazení Apache Hive pro Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Stránka zobrazení podregistru je podobná následujícímu obrázku:
 
@@ -98,25 +98,25 @@ Zobrazení **vizuálního vysvětlujícího** dotazu může být užitečné př
 Pokud chcete zobrazit uživatelské rozhraní tez pro dotaz, vyberte kartu **uživatelské rozhraní tez** pod listem.
 
 > [!IMPORTANT]  
-> Tez se nepoužívá k vyřešení všech dotazů. Můžete vyřešit mnoho dotazů bez použití TEZ. 
+> Tez se nepoužívá k vyřešení všech dotazů. Můžete vyřešit mnoho dotazů bez použití TEZ.
 
 ## <a name="view-job-history"></a>Zobrazení historie úlohy
 
 Karta __úlohy__ zobrazuje historii dotazů na podregistr.
 
-![Obrázek historie úlohy](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Historie karty Apache Hive zobrazení úloh](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Tabulky databáze
 
 Kartu __tabulky__ můžete použít pro práci s tabulkami v rámci databáze podregistru.
 
-![Obrázek karty tabulky](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Obrázek karty Apache Hive tabulky](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Uložené dotazy
 
 Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz dá znovu použít na kartě __uložené dotazy__ .
 
-![Obrázek karty uložené dotazy](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta zobrazení uložených dotazů Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts`. Tyto soubory jsou uloženy jako soubory ve `.hql` formátu prostého textu.
@@ -129,7 +129,7 @@ Podregistr můžete roztáhnout prostřednictvím uživatelsky definovaných fun
 
 Deklarujete a uložte sadu UDF pomocí karty **UDF** v horní části zobrazení podregistru. Tyto UDF se dají použít spolu s **editorem dotazů**.
 
-![Obrázek karty UDF](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Zobrazení karty UDF zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Po přidání systému souborů UDF do zobrazení podregistru se v dolní části **Editoru dotazů**zobrazí tlačítko **Vložit UDF** . Výběrem této položky se zobrazí rozevírací seznam UDF definovaného v zobrazení podregistru. Když vyberete UDF, do dotazu se přidá příkazy HiveQL, které zapnete systém souborů UDF.
 

@@ -1,17 +1,18 @@
 ---
 title: 'Azure HDInsight: Ukázky Java'
-description: Najdete příkladů v jazyce Java na Githubu pro běžné úlohy pomocí sady HDInsight SDK pro Javu.
+description: Příklady jazyka Java na GitHubu pro běžné úlohy s využitím sady HDInsight SDK pro jazyk Java.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 90723afd8864bd7ec64f7b2e81e11644561cb52d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710156"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076840"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Ukázky Java
 
@@ -23,24 +24,24 @@ ms.locfileid: "64710156"
 
 Tento článek obsahuje:
 
-* Odkazy na ukázky pro úlohy vytváření clusteru.
-* Obsahuje odkazy na referenční obsah pro další úlohy správy.
+* Obsahuje odkazy na ukázky pro úlohy vytváření clusterů.
+* Odkazy na referenční obsah pro jiné úlohy správy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK pro Javu](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+- [Azure HDInsight SDK pro Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Správa clusteru – vytváření
+## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 
 * [Vytvoření clusteru Kafka](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateKafkaClusterSample.java)
 * [Vytvoření clusteru Spark](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateSparkClusterSample.java)
-* [Vytvoření clusteru Spark s Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
-* [Vytvoření clusteru Spark s Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
+* [Vytvoření clusteru Spark pomocí Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
+* [Vytvoření clusteru Spark pomocí Balíček zabezpečení podniku (ESP)](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
 
-Tyto ukázky pro jazyk Java můžete získat naklonováním [hdinsight-java-sdk-samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) úložiště GitHub.
+Tyto ukázky pro Java můžete získat klonováním úložiště GitHubu [HDInsight-Java-SDK-Samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) .
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tento další funkce sady SDK najdete v [HDInsight SDK for Java referenční dokumentaci](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview).
+Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro jazyk Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview).

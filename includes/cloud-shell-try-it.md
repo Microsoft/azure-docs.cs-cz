@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 75860e5f53c8a8539632d27dd6202c7fa53ad76a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047967"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055251"
 ---
 ## <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
@@ -19,9 +19,9 @@ Spuštění Azure Cloud Shell:
 
 | Možnost | Příklad nebo propojení |
 |-----------------------------------------------|---|
-| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. Při výběru možnosti **vyzkoušet** se kód automaticky nezkopíruje do Cloud Shell. | ![Příklad pokusu o Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| V prohlížeči otevřete Cloud Shell kliknutím na tlačítko **Spustit Cloud Shell.** [https://shell.azure.com](https://shell.azure.com) | [![Spustit Cloud Shell v novém okně](media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| Vyberte tlačítko **Cloud Shell** v pravém horním panelu nabídek v [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. Při výběru možnosti **vyzkoušet** se kód automaticky nezkopíruje do Cloud Shell. | ![Příklad pokusu o Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| V prohlížeči otevřete Cloud Shell kliknutím na tlačítko **Spustit Cloud Shell.** [https://shell.azure.com](https://shell.azure.com) | [![Spustit Cloud Shell v novém okně](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Vyberte tlačítko **Cloud Shell** v pravém horním panelu nabídek v [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 Chcete-li spustit kód v tomto článku v Azure Cloud Shell:
 

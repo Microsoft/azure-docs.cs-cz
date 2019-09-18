@@ -1,10 +1,10 @@
 ---
-title: Řešení potíží s síťové virtuální zařízení v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak řešit problémy síťové virtuální zařízení v Azure.
+title: Řešení potíží se síťovými virtuálními zařízení v Azure | Microsoft Docs
+description: Naučte se řešit potíže se síťovými virtuálními zařízení v Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 00393395745ca96ae14269ae80e4f3d25673fbfa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723003"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056839"
 ---
-# <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovým virtuálním zařízením v Azure
+# <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovými virtuálními zařízení v Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Může docházet virtuálního počítače nebo problémy s připojením VPN a chyb při použití třetí strany síťové virtuální zařízení (NVA) ve službě Microsoft Azure. Tento článek popisuje základní kroky pro ověření základní požadavky na platformu Azure pro konfigurace síťového virtuálního zařízení.
+Při použití síťového virtuálního zařízení (síťové virtuální zařízení) jiného výrobce v Microsoft Azure se může vyskytnout chyba a problémy s připojením k virtuálnímu počítači nebo k síti VPN. Tento článek popisuje základní kroky, které vám pomůžou ověřit základní požadavky na platformu Azure pro konfigurace síťové virtuální zařízení.
 
-Technická podpora pro dodavatelů síťových virtuálních zařízení a jejich integrace s platformou Azure je poskytován dodavatelem síťového virtuálního zařízení.
+Technickou podporu pro síťová virtuální zařízení třetích stran a jejich integraci s platformou Azure zajišťuje dodavatel síťové virtuální zařízení.
 
 > [!NOTE]
-> Pokud máte připojení nebo směrováním, která zahrnuje síťové virtuální zařízení, měli byste [obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) přímo.
+> Pokud máte potíže s připojením nebo směrováním, které zahrnuje síťové virtuální zařízení, měli byste [se obrátit na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) přímo.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>Kontrolní seznam pro řešení potíží s dodavatelem síťového virtuálního zařízení
+## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>Kontrolní seznam pro řešení potíží s dodavatelem síťové virtuální zařízení
 
-- Aktualizace softwaru pro virtuální počítač s NVA softwaru
-- Nastavení účtu služby a funkce
-- Trasy definované uživatelem (udr) v podsítích virtuální sítě, které směrovat provoz do síťových virtuálních zařízení
-- Trasy definované uživatelem v podsítích virtuální sítě, které směrování provozu od síťového virtuálního zařízení
-- Směrovací tabulky a pravidel v rámci síťové virtuální zařízení (např. z NIC1 k NIC2)
-- Trasování na síťových adaptérů síťové virtuální zařízení chcete ověřit přijímání a odesílání síťového provozu
-- Při použití standardní SKU a veřejné IP adresy, musí existovat skupina zabezpečení sítě vytvořené a explicitní pravidla provoz směrovat do síťového virtuálního zařízení.
+- Aktualizace softwaru pro software síťové virtuální zařízení VM
+- Nastavení a funkce účtu služby
+- Trasy definované uživatelem (udr) v podsítích virtuální sítě, které směrují provoz do síťové virtuální zařízení
+- Udr v podsítích virtuální sítě, které směrují provoz z síťové virtuální zařízení
+- Směrování tabulek a pravidel v rámci síťové virtuální zařízení (například z NIC1 na NIC2)
+- Trasování na síťových kartách síťové virtuální zařízení pro ověření příjmu a odesílání síťového provozu
+- Pokud používáte standardní SKU a veřejné IP adresy, musí se vytvořit NSG a explicitní pravidlo, které umožní směrování provozu do síťové virtuální zařízení.
 
-## <a name="basic-troubleshooting-steps"></a>Základní postup řešení potíží
+## <a name="basic-troubleshooting-steps"></a>Základní kroky pro řešení potíží
 
-- Zkontrolovat základní konfigurace
-- Kontrola výkonu síťového virtuálního zařízení
-- Řešení potíží s rozšířeného sítě
+- Zkontroluje základní konfiguraci.
+- Kontrolovat výkon síťové virtuální zařízení
+- Pokročilé řešení potíží se sítí
 
-## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Zkontrolujte požadavky na minimální konfiguraci pro síťová virtuální zařízení v Azure
+## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Ověřit minimální požadavky na konfiguraci pro síťová virtuální zařízení v Azure
 
-Každé síťové virtuální zařízení má požadavky na konfiguraci základní správné fungování v Azure. Následující část obsahuje kroky k ověření tyto základní konfigurace. Další informace najdete [obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Každý síťové virtuální zařízení má základní požadavky na konfiguraci pro správné fungování v Azure. Následující část uvádí postup ověření těchto základních konfigurací. Další informace získáte [od dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-**Zkontrolujte, jestli je povolené předávání IP na síťové virtuální zařízení**
+**Ověřte, jestli je v síťové virtuální zařízení povolené předávání IP.**
 
 Použití webu Azure Portal
 
-1. Vyhledejte prostředek síťového virtuálního zařízení v [webu Azure portal](https://portal.azure.com), vyberte sítě a pak vyberte síťové rozhraní.
-2. Na stránce rozhraní sítě vyberte konfigurace IP adresy.
-3. Ujistěte se, že je povolené předávání IP.
+1. Vyhledejte prostředek síťové virtuální zařízení v [Azure Portal](https://portal.azure.com), vyberte sítě a pak vyberte síťové rozhraní.
+2. Na stránce síťové rozhraní vyberte konfigurace protokolu IP.
+3. Ujistěte se, že je povoleno předávání IP.
 
 Použití prostředí PowerShell
 
 1. Otevřete PowerShell a pak se přihlaste ke svému účtu Azure.
-2. Spuštěním následujícího příkazu (s informacemi o nahraďte hodnoty v závorkách):
+2. Spusťte následující příkaz (nahraďte hodnoty v závorkách vašimi informacemi):
 
    ```powershell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. Zkontrolujte, **EnableIPForwarding** vlastnost.
-4. Pokud není povolené předávání IP, spusťte následující příkazy, aby je:
+3. Ověřte vlastnost **EnableIPForwarding** .
+4. Pokud nepovolíte předávání IP, spusťte následující příkazy:
 
    ```powershell
    $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
@@ -83,23 +83,23 @@ Použití prostředí PowerShell
    NetworkSecurityGroup : null
    ```
 
-**Zkontrolujte skupiny zabezpečení sítě při použití standardní SKU Pubilc IP** při použití standardní SKU a veřejné IP adresy, musí existovat skupina zabezpečení sítě vytvořené a explicitní pravidla umožňují provoz na síťové virtuální zařízení.
+**Kontrolovat NSG při použití Pubilc IP adresy Standard SKU** Pokud používáte standardní SKU a veřejné IP adresy, musí se vytvořit NSG a explicitní pravidlo pro povolení přenosu do síťové virtuální zařízení.
 
-**Zkontrolujte, zda je možné směrovat provoz do síťového virtuálního zařízení**
+**Ověřte, jestli je možné směrovat provoz do síťové virtuální ZAŘÍZENÍu.**
 
-1. Na [webu Azure portal](https://portal.azure.com), otevřete **Network Watcher**vyberte **dalšího segmentu směrování**.
-2. Zadejte virtuální počítač, který je nakonfigurovaný přesměrovat provoz na síťové virtuální zařízení a cílová IP adresa, na který chcete zobrazit další segment směrování. 
-3. Pokud síťové virtuální zařízení není nastavena **dalšího segmentu směrování**, zkontrolujte a aktualizujte směrovací tabulky Azure.
+1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher**vyberte **Další segment směrování**.
+2. Zadejte virtuální počítač, který je nakonfigurovaný pro přesměrování provozu do síťové virtuální zařízení, a cílovou IP adresu, na které se má zobrazit další segment směrování. 
+3. Pokud síťové virtuální zařízení není uveden jako **Další segment směrování**, ověřte a aktualizujte tabulky směrování Azure.
 
-**Zkontrolujte, jestli provoz se může spojit síťové virtuální zařízení**
+**Ověřte, jestli přenosy můžou dosáhnout pro síťové virtuální zařízení.**
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete **Network Watcher**a pak vyberte **IP tok ověřit**. 
-2. Zadejte virtuální počítač a IP adresu síťové virtuální zařízení a potom zkontrolujte, jestli provoz blokuje všechny skupiny zabezpečení sítě (NSG).
-3. Pokud je pravidlo NSG, které blokuje provoz, vyhledejte NSG v **efektivní zabezpečení** pravidla a pak aktualizujte ji, aby povolit průchod přenosů. Potom spusťte **IP tok ověřit** znovu a použijte **řešení potíží s připojením** otestovat komunikaci TCP z virtuálního počítače na interní nebo externí IP adresu.
+1. V [Azure Portal](https://portal.azure.com)otevřete **Network Watcher**a vyberte možnost **ověření toku IP**. 
+2. Zadejte virtuální počítač a IP adresu síťové virtuální zařízení a potom zkontrolujte, jestli jsou přenosy blokované všemi skupinami zabezpečení sítě (NSG).
+3. Pokud existuje pravidlo NSG, které blokuje provoz, najděte NSG v **platných pravidlech zabezpečení** a pak ho aktualizujte, aby bylo možné předávání provozu. Pak znovu spusťte **kontrolu protokolu IP** a pomocí **řešení potíží s připojením** otestujte komunikaci TCP z virtuálního počítače na svou interní nebo externí IP adresu.
 
-**Zkontrolujte, zda síťové virtuální zařízení a virtuální počítače naslouchají očekávaném provozu**
+**Ověřte, jestli síťové virtuální zařízení a virtuální počítače naslouchají očekávanému provozu.**
 
-1. Připojit k síťové virtuální zařízení pomocí protokolu RDP nebo SSH a pak spusťte následující příkaz:
+1. Připojte se k síťové virtuální zařízení pomocí protokolu RDP nebo SSH a potom spusťte následující příkaz:
 
     Ve Windows:
 
@@ -108,38 +108,38 @@ Použití prostředí PowerShell
     Pro Linux:
 
         netstat -an | grep -i listen
-2. Pokud nevidíte v portu TCP, který je používán síťové virtuální zařízení software, který je uvedený ve výsledcích musíte nakonfigurovat aplikaci na síťové virtuální zařízení a virtuální počítač přijímat a reagovat na provoz, kterou půjde používat tyto porty. [Požádejte o pomoc dodavatele síťové virtuální zařízení podle potřeby](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Pokud nevidíte port TCP, který je používán softwarem síťové virtuální zařízení, který je uvedený ve výsledcích, musíte nakonfigurovat aplikaci na síťové virtuální zařízení a virtuálním počítači, aby naslouchaly a reagovaly na provoz, který dosahuje těchto portů. Pokud potřebujete [pomoc, obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="check-nva-performance"></a>Kontrola výkonu síťového virtuálního zařízení
+## <a name="check-nva-performance"></a>Kontrolovat výkon síťové virtuální zařízení
 
-### <a name="validate-vm-cpu"></a>Ověření procesoru virtuálního počítače
+### <a name="validate-vm-cpu"></a>Ověřit procesor virtuálního počítače
 
-Pokud využití procesoru blíží 100 % jeho obsahu, může docházet k problémům, které ovlivňují drops síťových paketů. Sestavy virtuálního počítače průměrné využití procesoru pro konkrétní časové období na webu Azure Portal. Během špička využití procesoru prozkoumejte proces, který na hostovaný virtuální počítač je příčinou vysoké využití procesoru a zmírnit, pokud je to možné. Budete také muset změnit velikost virtuálního počítače na větší velikost SKU nebo pro škálovací sadu virtuálních počítačů, zvýšení počtu instancí nebo nastavení automatického škálování na využití procesoru. Pro žádnou z těchto problémů [požádat o pomoc dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), podle potřeby.
+Pokud se využití CPU blíží 100%, může docházet k problémům, které mají vliv na zahození síťového paketu. Váš virtuální počítač hlásí průměrný procesor za určité časové období v Azure Portal. Během špičky procesoru zkontrolujte, který proces na virtuálním počítači hosta způsobuje vysoký procesor, a pokud je to možné, omezte jeho dopad. Možná budete muset změnit velikost virtuálního počítače na větší velikost SKU nebo pro sadu škálování virtuálního počítače zvýšit počet instancí nebo nastavit automatické škálování podle využití procesoru. U každého z těchto problémů požádejte o [pomoc dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), jak je to potřeba.
 
-### <a name="validate-vm-network-statistics"></a>Ověření statistiky síť virtuálních počítačů
+### <a name="validate-vm-network-statistics"></a>Ověřit statistiku sítě virtuálních počítačů
 
-Pokud používáte síť virtuálních počítačů špičky nebo zobrazí období vysokého využití, že možná budete také muset zvýšit velikost SKU virtuálního počítače na získání vyšší propustnost možnosti. Můžete také znovu nasadit virtuální počítač tak, že Akcelerovanými síťovými službami povolena. Chcete-li ověřit, zda síťové virtuální zařízení podporuje akcelerované síťové funkce [požádat o pomoc dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), podle potřeby.
+Pokud síť virtuálních počítačů využívá špičky nebo zobrazuje období vysokého využití, může být také nutné zvýšit velikost SKU virtuálního počítače, aby se získaly možnosti vyšší propustnosti. Virtuální počítač můžete také znovu nasadit pomocí aktivovaného urychlení sítě. Pokud chcete ověřit, jestli síťové virtuální zařízení podporuje funkci urychlené sítě, požádejte o [pomoc dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), jak je potřeba.
 
-## <a name="advanced-network-administrator-troubleshooting"></a>Řešení potíží s správce rozšířeného sítě
+## <a name="advanced-network-administrator-troubleshooting"></a>Pokročilý poradce při potížích správce sítě
 
-### <a name="capture-network-trace"></a>Zachycení síťových trasování
-Zaznamenání současné trasování sítě do zdrojových virtuálních počítačů, síťové virtuální zařízení a cílového virtuálního počítače při spuštění **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** nebo **Nmap**a potom toto trasování zastavte.
+### <a name="capture-network-trace"></a>Zachytit trasování sítě
+Zaznamenejte si souběžnou síťovou trasu na zdrojovém virtuálním počítači, síťové virtuální zařízení a cílový virtuální počítač, zatímco spouštíte **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** nebo **nmap**, a pak trasování zastavte.
 
-1. K zachycení současné trasování sítě, spusťte následující příkaz:
+1. Pokud chcete zachytit síťové trasování, spusťte následující příkaz:
 
    **Pro Windows**
 
-   netsh trace start capture = yes tracefile=c:\server_IP.etl scenario = netconnection
+   netsh Trace Start capture = yes tracefile = c:\server_IP.etl scénář = NetConnection
 
    **Pro Linux**
 
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
-2. Použití **PsPing** nebo **Nmap** ze zdrojového virtuálního počítače na cílovém virtuálním počítači (například: `PsPing 10.0.0.4:80` nebo `Nmap -p 80 10.0.0.4`).
-3. Otevřete trasování sítě z cílového virtuálního počítače s použitím [sledování sítě](https://www.microsoft.com/download/details.aspx?id=4865) nebo tcpdump. Použijte filtr zobrazení pro IP adresu zdrojového virtuálního počítače jste spustili **PsPing** nebo **Nmap** , jako například `IPv4.address==10.0.0.4 (Windows netmon)` nebo `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
+2. Použijte **PsPing** nebo **nmap** ze zdrojového virtuálního počítače do cílového virtuálního počítače (například: `PsPing 10.0.0.4:80` nebo `Nmap -p 80 10.0.0.4`).
+3. Otevřete trasování sítě z cílového virtuálního počítače pomocí [Sledování sítě](https://www.microsoft.com/download/details.aspx?id=4865) nebo tcpdump. Použijte filtr zobrazení pro IP adresu zdrojového virtuálního počítače `IPv4.address==10.0.0.4 (Windows netmon)` , ze kterého jste spustili **PsPing** nebo **nmap** , jako je například nebo `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Analyzovat trasování
 
-Pokud nevidíte příchozí pakety pro trasování virtuálního počítače back-endu, pravděpodobně je skupina zabezpečení sítě nebo UDR překáží nebo směrovacích tabulek síťové virtuální zařízení jsou nesprávná.
+Pokud nevidíte příchozí pakety pro trasování virtuálního počítače back-endu, pravděpodobně došlo ke konfliktu NSG nebo UDR, nebo jsou tabulky směrování síťové virtuální zařízení nesprávné.
 
-Pokud se příchozí balíčky zobrazují, ale bezu odpovědi, pravděpodobně budete muset řešit potíže s bránou firewall nebo aplikací virtuálního počítače. Pro žádnou z těchto problémů [požádat o pomoc dodavatele síťové virtuální zařízení podle potřeby](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Pokud se příchozí balíčky zobrazují, ale bezu odpovědi, pravděpodobně budete muset řešit potíže s bránou firewall nebo aplikací virtuálního počítače. U každého z těchto problémů se [podle potřeby obraťte na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).

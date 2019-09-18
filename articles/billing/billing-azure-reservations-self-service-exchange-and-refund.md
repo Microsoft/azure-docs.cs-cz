@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné výměny a refundace pro Azure Reservations
-description: Přečtěte si, jak můžete Azure Reservations Exchange nebo refundace.
+title: Samoobslužné výměny a vrácení peněz za rezervace Azure
+description: Přečtěte si, jak postupovat při vrácení peněz za rezervace Azure nebo při jejich výměně.
 author: yashesvi
 manager: yashesvi
 ms.service: billing
@@ -11,90 +11,90 @@ ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
 ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69543018"
 ---
-# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a refundace pro Azure Reservations
+# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
-Azure Reservations poskytují flexibilitu, která vám umožní splnit vaše požadavky na vývoj. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok.
+Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok.
 
-Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporovány jsou i další typy předplatného pro státní správu USA včetně průběžných plateb a CSP.
+Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a předplatného CSP.
 
-Abyste mohli vyměnit nebo vrátit existující rezervaci, musíte mít přístup vlastníka k objednávce rezervace.
+Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte mít přístup vlastníka k příslušné objednávce rezervace.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Výměna stávající rezervované instance
 
-Rezervaci můžete vyměnit pomocí tří rychlých kroků v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+Na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) si můžete vyměnit rezervaci ve třech rychlých krocích.
 
-1. Vyberte rezervace, u kterých chcete refundaci, a klikněte na tlačítko **Exchange**.  
-    ![Příklad obrázku znázorňujícího vracené rezervace](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. Vyberte produkt virtuálního počítače, který chcete koupit, a zadejte množství. Ujistěte se, že je nový nákup celkem větší než celková hodnota. [Před nákupem určíte správnou velikost](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
-    ![Příklad obrázku znázorňujícího produkt pro virtuální počítače, který se má koupit pomocí Exchange](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+1. Vyberte rezervace, za které chcete vrátit peníze, a klikněte na **Vyměnit**.  
+    ![Příklad znázorňující rezervace k vrácení](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+2. Vyberte produkt virtuálního počítače, který chcete koupit, a zadejte množství. Ujistěte se, že celková hodnota nového nákupu je vyšší než celková částka k vrácení. [Před nákupem určete správnou velikost](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
+    ![Příklad znázorňující produkt virtuálního počítače, který se má koupit při výměně](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Zkontrolujte a dokončete transakci.  
-    ![Příklad obrázku znázorňujícího produkt pro virtuální počítače, který se má koupit v systému Exchange a dokončení návratu](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+    ![Příklad znázorňující produkt virtuálního počítače kupovaný při výměně během dokončování vrácení](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
-Pokud chcete rezervaci vrátit, přejděte na **podrobnosti rezervace** a kliknětena refundace.
+Pokud chcete vrátit peníze za rezervaci, přejděte do části **Podrobnosti o rezervaci** a klikněte na**Refundace**.
 
 ## <a name="how-transactions-are-processed"></a>Jak se zpracovávají transakce
 
-Nejprve společnost Microsoft zruší stávající rezervaci a refundace pro tuto rezervaci za hodnocenou částku. Pokud je v systému Exchange, bude zpracován nový nákup. Microsoft zpracovává náhrady pomocí jedné z následujících metod v závislosti na typu účtu a způsobu platby:
+Nejprve Microsoft zruší stávající rezervaci a vrátí za ni přepočítanou částku. Pokud zvolíte výměnu, zpracuje se nový nákup. Microsoft provede vrácení peněz pomocí jednoho ze způsobů uvedených níže na základě typu vašeho účtu a způsobu platby:
 
 ### <a name="enterprise-agreement-customers"></a>Zákazníci se smlouvou Enterprise
 
-Peníze se přidávají do peněžního závazku pro výměny a refundace, pokud byl původní nákup vytvořen pomocí jednoho. Jakékoli faktury za nadlimitní využití od původního nákupu se znovu otevřou a účtují se, aby se zajistilo použití peněžního závazku. Pokud se podmínky peněžního závazku, které používají rezervaci, už neaktivní, přidají se k vašemu aktuálnímu období peněžního závazku smlouvy Enterprise kredit.
+Částka se přidá do peněžního závazku pro výměny a refundace, a to v případě, že původní nákup byl takto proveden. Nadlimitní faktury vytvořené po původním nákupu se znovu otevřou a přepočítají, aby se zajistilo, že se peněžní závazek použije. Pokud už není období peněžního závazku využívajícího zakoupenou rezervaci aktivní, kredit se přidá do vašeho aktuálního období peněžního závazku při smlouvě Enterprise.
 
-Pokud byl původní nákup proveden jako nadlimitní využití, společnost Microsoft vydá dobropis.
+Pokud byl původní nákup nadlimitní, Microsoft vydá prodejní dobropis.
 
-### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Platby faktury s průběžnými platbami a program CSP
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Průběžné platby za faktury a program CSP
 
-Původní nákupní faktura pro rezervaci se zruší a pak se pro refundaci vytvoří nová faktura. Pro výměny se na nové faktuře zobrazí refundace a nové nákupy. Částka náhrady se upraví oproti nákupu. Pokud jste rezervaci překoupili jenom, zůstane poměrná částka u Microsoftu a ta se upraví oproti budoucímu nákupu rezervací.
+Faktura z původního nákupu rezervace se zruší a vytvoří se nová faktura pro refundaci. V případě výměny se v nové faktuře zobrazuje vrácená položka i nový nákup. Vrácená částka se upraví podle nákupu. Pokud jste zvolili vrácení peněz za rezervaci, přepočítaná částka zůstává na straně Microsoftu a upraví se při dalším nákupu rezervace.
 
-### <a name="pay-as-you-go-credit-card-customers"></a>Zákazníci s průběžnými platbami podle aktuálního využití
+### <a name="pay-as-you-go-credit-card-customers"></a>Zákazníci s platební kartou a průběžnými platbami
 
-Původní faktura se zruší a vytvoří se nová faktura. Peníze se vracejí na platební kartu, která se použila pro původní nákup. Pokud jste kartu změnili, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Původní faktura se zruší a následně se vytvoří nová faktura. Částka se vrátí na platební kartu, kterou jste použili při původním nákupu. Pokud jste kartu změnili, [obraťte se na podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="cancel-exchange-and-refund-policies"></a>Zásady zrušení, výměny a refundace
+## <a name="cancel-exchange-and-refund-policies"></a>Zásady pro zrušení, výměny a vrácení peněz
 
-Azure má následující zásady pro zrušení, výměny a refundace.
+Azure využívá při zrušení, výměně nebo refundaci následující zásady.
 
-**Zásady Exchange**
+**Zásady pro výměny**
 
-- Můžete vrátit více existujících rezervací pro zakoupení nové rezervace stejného typu. Nemůžete vyměnit rezervace jednoho typu pro jiný. Například nemůžete vrátit rezervaci virtuálního počítače a koupit rezervaci SQL.
-- Výměnu můžou zpracovat jenom vlastníci rezervace. [Naučte se, jak přidat nebo změnit uživatele, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Výměna je zpracována jako refundace a nového nákupu – pro zrušení a nové nákupy se vytvoří různé transakce. Částka průběžné rezervace je pro rezervace, které jste provedete, refinancovány. Za nový nákup se vám budeme účtovat. Částka poměrné rezervace je denní poměrná zůstatková hodnota vracené rezervace.
-- Rezervace můžete vyměňovat nebo vrátit, i když platnost smlouvy Enterprise, která se používá k nákupu rezervace, vypršela a byla obnovena jako nová smlouva.
-- Můžete změnit jakoukoli vlastnost rezervace, jako je velikost, oblast, množství a termín, pomocí výměny.
-- Hodnota nového nákupu by měla být větší nebo rovna vrácené hodnotě.
-- Nová rezervace zakoupená jako součást systému Exchange má nový termín od okamžiku výměny.
-- Pro výměny není k dispozici žádná pokuta ani roční omezení.
+- Můžete vrátit více stávajících rezervací za účelem nákupu nové rezervace stejného typu. Rezervace jednoho typu není možné měnit za jiný typ. Pro nákup rezervace SQL tak například nemůžete vrátit rezervaci virtuálního počítače.
+- Výměny mohou provádět jen vlastníci rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Výměna se zpracuje jako refundace a opětovný nákup (pro zrušení a nový nákup se vytváří odlišné transakce). Za rezervace, které jste dali na protiúčet, se vrátí přepočítaná částka za rezervaci. Za nový nákup se účtuje celá částka. Přepočítaná částka za rezervaci představuje zbývající hodnotu vrácené rezervace přepočítanou podle počtu dní.
+- Rezervace můžete vyměnit nebo refundovat i tehdy, pokud smlouvě Enterprise použité při nákupu rezervace vypršela platnost, a obnovila se jako nová smlouva.
+- Současně s výměnou můžete měnit jakékoli vlastnosti rezervace, jako je velikost, oblast, množství a období.
+- Celková hodnota nového nákupu by měla být stejná jako vrácená částka, nebo vyšší.
+- Pro novou rezervaci zakoupenou v rámci výměny platí nové období, které začíná okamžikem výměny.
+- Na výměny se nevztahují žádné pokuty ani roční limity.
 
-**Zásady refundace**
-- Pokud rezervaci zrušíte, může se jednat o 12% poplatek za předčasné ukončení.
-- Refundace, kterou obdržíte za zrušení, je zbývající poměr pro nominální částku minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
-- Celková částka náhrady nesmí překročit $50 000 USD v průběhu 12 měsíců.
-- Náhrady se počítají na základě nejnižší ceny nákupní ceny nebo aktuální ceny za rezervaci.
-- Refundaci mohou zpracovat pouze vlastníci rezervace. [Naučte se, jak přidat nebo změnit uživatele, kteří můžou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Společnost Microsoft si vyhrazuje právo účtovat pokutu 12% pro jakékoli vrácení. Pokuta se momentálně neúčtuje, ale bude se účtovat později.
+**Zásady pro refundace**
+- Pokud svou rezervaci zrušíte, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %.
+- Výše vrácených peněz představuje zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Zrušení provede tak, že na webu Azure Portal přejdete na danou rezervaci a vyberete možnost **Refundace**.
+- Celková vrácená částka nesmí překročit 50 000 UDS za rok.
+- Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
+- Refundace mohou provádět jen vlastníci rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Microsoft si vyhrazuje právo požadovat za jakékoli vrácení rezervace 12% poplatek. Ten se sice v současnosti ještě neúčtuje, bude tomu tak ale v budoucnu.
 
-## <a name="exchange-non-premium-storage-for-premium-storage"></a>Výměna nepremium Storage pro Storage úrovně Premium
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Výměna služby jiného typu než Premium Storage za službu Premium Storage
 
-Můžete si vyměnit rezervaci zakoupenou pro velikost virtuálního počítače, která nepodporuje Premium Storage na odpovídající velikost virtuálního počítače. Například _F1_ pro _f1s úrovně_. Pokud chcete Exchange udělat, přejděte na podrobnosti o rezervacích a klikněte na **Exchange**. Výměna neresetuje termín rezervované instance nebo vytvoří novou transakci.
+Rezervaci zakoupenou pro virtuální počítač, jehož velikost nepodporuje službu Premium Storage, můžete vyměnit za odpovídající virtuální počítač, jehož velikost tuto službu podporuje. Můžete například vyměnit _F1_ za _F1s_. Provedete to tak, že přejdete do části Podrobnosti o rezervaci a kliknete na **Vyměnit**. Při výměně nedojde k obnově období rezervované instance, ani k vytvoření nové transakce.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervaci, najdete v tématu [správa Azure reservations](billing-manage-reserved-vm-instance.md).
-- Další informace o Azure Reservations najdete v následujících článcích:
-    - [Co jsou Azure Reservations?](billing-save-compute-costs-reservations.md)
+- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](billing-manage-reserved-vm-instance.md).
+- Další informace o rezervacích Azure najdete v následujících článcích:
+    - [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
     - [Správa rezervací v Azure](billing-manage-reserved-vm-instance.md)
-    - [Vysvětlení způsobu použití slevy rezervace](billing-understand-vm-reservation-charges.md)
-    - [Vysvětlení využití rezervací pro předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
-    - [Vysvětlení použití rezervací pro podnikovou registraci](billing-understand-reserved-instance-usage-ea.md)
-    - [Náklady na software systému Windows, které nejsou součástí rezervací](billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations v programu partner Center pro Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
+    - [Vysvětlení způsobu uplatnění slevy za rezervaci](billing-understand-vm-reservation-charges.md)
+    - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+    - [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
+    - [Rezervace nezahrnují náklady na software Windows](billing-reserved-instance-windows-software-costs.md)
+    - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)

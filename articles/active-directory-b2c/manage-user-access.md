@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846781"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064130"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
-Tento článek popisuje, jak spravovat přístup uživatelů k aplikacím pomocí Azure Active Directory (Azure AD) B2C. Správa přístupu v aplikaci zahrnuje:
+Tento článek popisuje, jak spravovat přístup uživatelů k aplikacím pomocí Azure Active Directory B2C (Azure AD B2C). Správa přístupu v aplikaci zahrnuje:
 
 - Identifikace nezletilých a řízení přístupu uživatelů k vaší aplikaci.
 - Vyžadování souhlasu rodičů pro nezletilé aplikace pro používání vašich aplikací.
@@ -66,7 +66,7 @@ Přizpůsobený tok uživatele může shromažďovat informace o DOB a zemi/obla
 
 Následující kroky ukazují logiku, která se používá k výpočtu **ageGroup** z data narození uživatele:
 
-1. Zkuste v seznamu najít zemi podle kódu země. Pokud se země nenajde, vraťte se k výchozímu .
+1. Zkuste v seznamu najít zemi podle kódu země. Pokud se země nenajde, vraťte se k výchozímu.
 
 2. Pokud se uzel **MinorConsent** nachází v prvku země:
 
@@ -81,7 +81,7 @@ Následující kroky ukazují logiku, která se používá k výpočtu **ageGrou
 Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
 
 - Pokud je uživatel známý jako dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **dospělé**.
-- Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou podverze a  podle potřeby nastavte **consentProvidedForMinor**.
+- Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou podverze a podle potřeby nastavte **consentProvidedForMinor**.
 
 Další informace o shromažďování dat DOB najdete v tématu [použití omezení stáří v Azure AD B2C](basic-age-gating.md).
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5ecd5ee4a053d3ebb550b6f2387a0e915b3c2c23
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569404"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055228"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Ukázky v Azure CLI pro službu Azure SQL Database
 
@@ -28,7 +28,7 @@ Azure SQL Database můžete nakonfigurovat pomocí <a href="/cli/azure">Azure CL
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="single-database--elastic-pools"></a>Elastické fondy & jedné databáze
+## <a name="single-database--elastic-poolstabsingle-database"></a>[Elastické fondy & jedné databáze](#tab/single-database)
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure SQL Database.
 
@@ -46,7 +46,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro služ
 
 Přečtěte si další informace o [izolovaná databáze rozhraní příkazového řádku Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>MI
+## <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure SQL Database spravované instance.
 
@@ -58,3 +58,5 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure
 |||
 
 Přečtěte si další informace o [rozhraní Azure CLI API spravované instance](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) a [Další příklady najdete tady](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+
+---

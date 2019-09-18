@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 26f05e60761af0b8f0db9508488f28613b82293f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81e386be98f9c5684402c376372f43e90fefcb42
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880238"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066750"
 ---
 # <a name="device-connectivity-in-azure-iot-central-preview-features"></a>Připojení zařízení v Azure IoT Central (funkce ve verzi Preview)
 
@@ -34,15 +34,18 @@ Použití DPS umožňuje:
 
 Tento článek popisuje následující případy použití:
 
-1. [Rychlé připojení jednoho zařízení pomocí SAS](#connect-a-single-device)
-1. [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-sas)
-1. [Připojte zařízení ve velkém měřítku pomocí certifikátů X. 509](#connect-devices-using-x509-certificates) , což je doporučený postup pro produkční prostředí.
-1. [Připojit bez prvotní registrace zařízení](#connect-without-registering-devices)
-1. [Připojení zařízení pomocí funkcí technologie Plug and Play IoT](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+- [Rychlé připojení jednoho zařízení pomocí SAS](#connect-a-single-device)
+- [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-sas)
+- [Připojte zařízení ve velkém měřítku pomocí certifikátů X. 509](#connect-devices-using-x509-certificates) , což je doporučený postup pro produkční prostředí.
+- [Připojit bez prvotní registrace zařízení](#connect-without-registering-devices)
+- [Připojení zařízení pomocí funkcí technologie Plug and Play IoT](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 ## <a name="connect-a-single-device"></a>Připojení jednoho zařízení
 
-Tento přístup je užitečný při experimentování s IoT Central nebo testováním zařízení. K vygenerování připojovacího řetězce pro zařízení můžete použít informace o připojení zařízení z vaší aplikace IoT Central. Podrobný postup najdete v tématu [jak vygenerovat připojovací řetězec zařízení pro připojení k aplikaci Azure IoT Central](howto-generate-connection-string.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Tento přístup je užitečný při experimentování s IoT Central nebo testováním zařízení. K připojení zařízení k aplikaci IoT Central pomocí služby Device Provisioning (DPS) můžete použít informace o připojení zařízení z aplikace IoT Central. Ukázkový kód klienta zařízení DPS najdete v následujících jazycích:
+
+- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
+- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Připojení zařízení ve velkém měřítku pomocí SAS
 
@@ -140,7 +143,7 @@ Následující kroky popisují tento postup podrobněji. Postup se mírně liš�
 
 1. Pak zařízení zapněte, aby se připojovalo k vaší IoT Central aplikaci. Když přepnete zařízení do zařízení, nejprve se připojí k DPS, aby se načetly informace o registraci IoT Central.
 
-1. Připojené zařízení se zpočátku zobrazuje jako nepřidružená na stránce **zařízení** . Stav zřizování zařízení je zaregistrovaný. **Migrujte** zařízení do příslušné šablony zařízení a schvalte zařízení pro připojení k vaší IoT Central aplikaci. Zařízení pak může načíst připojovací řetězec z IoT Hub a začít odesílat data. Zřizování zařízení je teď hotové a stav zřizování se teď **zřídí**.
+1. Připojené zařízení se zpočátku zobrazuje jako **nepřidružená** na stránce **zařízení** . Stav zřizování zařízení je zaregistrovaný. **Migrujte** zařízení do příslušné šablony zařízení a schvalte zařízení pro připojení k vaší IoT Central aplikaci. Zařízení pak může načíst připojovací řetězec z IoT Hub a začít odesílat data. Zřizování zařízení je teď hotové a stav zřizování se teď **zřídí**.
 
 ## <a name="connect-devices-with-iot-plug-and-play"></a>Připojení zařízení pomocí technologie Plug and Play IoT
 
@@ -166,13 +169,13 @@ Další informace o připojení zařízení technologie Plug and Play IoT najdet
 
 Když se reálné zařízení připojí k vaší aplikaci IoT Central, změní se stav zařízení takto:
 
-1. Stav zařízení se zaregistruje jako první. Tento stav znamená, že se zařízení vytvoří v IoT Central a má ID zařízení. Zařízení je zaregistrováno v těchto případech:
+1. Stav zařízení se **zaregistruje**jako první. Tento stav znamená, že se zařízení vytvoří v IoT Central a má ID zařízení. Zařízení je zaregistrováno v těchto případech:
     - Na stránce **zařízení** se přidá nové reálné zařízení.
     - Na stránce **zařízení** se přidá sada zařízení pomocí **importu** .
 
 1. Stav zařízení se změní na **zřízený** , když se zařízení, které je připojené k vaší aplikaci IoT Central s platnými přihlašovacími údaji, dokončí krok zřizování. V tomto kroku zařízení načte připojovací řetězec z IoT Hub. Zařízení se teď může připojit k IoT Hub a začít odesílat data.
 
-1. Operátor může blokovat zařízení. Když je zařízení blokované, nemůže odesílat data do vaší aplikace IoT Central. Blokovaná zařízení mají stav blokováno. Předtím, než bude moct pokračovat v odesílání dat, musí operátor resetovat zařízení. Když operátor odblokuje zařízení, stav se vrátí do předchozí hodnoty, zaregistrováno nebo **zřízeno**.
+1. Operátor může blokovat zařízení. Když je zařízení blokované, nemůže odesílat data do vaší aplikace IoT Central. Blokovaná zařízení mají stav **blokováno**. Předtím, než bude moct pokračovat v odesílání dat, musí operátor resetovat zařízení. Když operátor odblokuje zařízení, stav se vrátí do předchozí hodnoty, **zaregistrováno** nebo **zřízeno**.
 
 1. Stav zařízení čeká na **schválení** , což znamená, že je možnost **automatického schvalování** zakázaná a vyžaduje, aby se všechna zařízení, která se připojují k IoT Central, explicitně schválila operátorem. Zařízení, která nejsou zaregistrovaná ručně na stránce **zařízení** , ale jsou připojená s platnými přihlašovacími údaji, budou mít stav zařízení **čekající na schválení**. Operátoři můžou tato zařízení schválit ze stránky **zařízení** pomocí tlačítka **schválit** .
 
@@ -190,8 +193,6 @@ Sady SDK pro zařízení Azure nabízí nejjednodušší způsob implementace k�
 - [Sada Azure IoT SDK pro Node. js](https://github.com/azure/azure-iot-sdk-node)
 - [Sada Azure IoT SDK pro jazyk Java](https://github.com/azure/azure-iot-sdk-java)
 - [Sada Azure IoT SDK pro .NET](https://github.com/azure/azure-iot-sdk-csharp)
-
-Každé zařízení se připojuje pomocí jedinečného připojovacího řetězce, který identifikuje zařízení. Zařízení se může připojit jenom ke službě IoT Hub, kde je zaregistrované. Při vytváření reálného zařízení v aplikaci Azure IoT Central vygeneruje aplikace informace potřebné k vytvoření připojovacího řetězce pomocí `dps-keygen`.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>Funkce sady SDK a připojení IoT Hub
 

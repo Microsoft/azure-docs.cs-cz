@@ -1,7 +1,7 @@
 ---
 title: Co je Automated ML/automl
-titleSuffix: Azure Machine Learning service
-description: Přečtěte si, jak Azure Machine Learning služba může pro vás automaticky vybrat algoritmus a vytvořit z něj model, který vám ušetří čas použitím parametrů a kritérií, které zadáte pro výběr nejlepšího algoritmu pro váš model.
+titleSuffix: Azure Machine Learning
+description: Přečtěte si, jak Azure Machine Learning může automaticky vybrat algoritmus a vytvořit z něj model, který vám umožní ušetřit čas pomocí parametrů a kritérií, které zadáte pro výběr nejlepšího algoritmu pro váš model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882030"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035711"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -39,7 +39,7 @@ Odborníci na data, analytici a vývojáři v rámci odvětví můžou používa
 
 ## <a name="how-automated-ml-works"></a>Jak automatizované ML funguje
 
-Pomocí **Azure Machine Learning služby**můžete navrhovat a spouštět experimenty automatizovaného školení na základě těchto kroků:
+Pomocí **Azure Machine Learning**můžete navrhovat a spouštět experimenty automatizovaného školení ml pomocí těchto kroků:
 
 1. **Určení problému ml** , který se má vyřešit: klasifikace, předpovědi nebo regrese
 
@@ -53,7 +53,7 @@ Pomocí **Azure Machine Learning služby**můžete navrhovat a spouštět experi
 
   ![Automatizované Machine Learning](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-Během školení vytvoří služba Azure Machine Learning řadu paralelních kanálů, které vyzkoušení různých algoritmů a parametrů. Dojde k zastavení, jakmile bude narazí na kritéria ukončení definovaná v experimentu.
+Během školení Azure Machine Learning vytvoří řadu paralelních kanálů, které vyzkoušení různých algoritmů a parametrů. Dojde k zastavení, jakmile bude narazí na kritéria ukončení definovaná v experimentu.
 
 Můžete také zkontrolovat protokolované informace o spuštění, které [obsahují metriky](how-to-understand-automated-ml.md) shromážděné během spuštění. Školicí běh vytvoří serializovaný objekt (`.pkl` soubor) Pythonu, který obsahuje model a předzpracování dat.
 

@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622788"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063252"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidejte do svých aplikací zprostředkovatele identity v Azure Active Directory B2C
 
-V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Zprostředkovatele identity, které jsou podporované službou Azure Active Directory (Azure AD) B2C, můžete přidat k [](active-directory-b2c-reference-policies.md) vašim uživatelským tokům pomocí Azure Portal.
+V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Můžete přidat zprostředkovatele identity, které jsou podporovány aplikací Azure Active Directory B2C (Azure AD B2C), do [toků uživatelů](active-directory-b2c-reference-policies.md) pomocí Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -45,7 +45,7 @@ Aplikace zprostředkovatele identity poskytují identifikátor a klíč, který 
 Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce kliknete na **Filtr adresář a odběr** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
 1. Zadejte název své aplikace. Například, `Azure AD B2C App`.
@@ -71,7 +71,7 @@ Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte 
 Chcete-li použít účet Facebook jako poskytovatele identity v Azure AD B2C, je nutné vytvořit aplikaci na Facebooku. Pokud ještě nemáte účet Facebook, můžete ho získat na adrese [https://www.facebook.com/](https://www.facebook.com/).
 
 1. Přihlaste se ke [službě Facebook pro vývojáře](https://developers.facebook.com/) s přihlašovacími údaji k účtu Facebook.
-1. Pokud jste to ještě neudělali, musíte se zaregistrovat jako vývojář Facebooku. Provedete to tak , že vyberete Začínáme v pravém horním rohu stránky, přijmete zásady Facebooku a dokončíte registrační kroky.
+1. Pokud jste to ještě neudělali, musíte se zaregistrovat jako vývojář Facebooku. Provedete to tak, **že vyberete Začínáme** v pravém horním rohu stránky, přijmete zásady Facebooku a dokončíte registrační kroky.
 1. Vyberte **Moje aplikace** a pak **vytvořit aplikaci**.
 1. Zadejte **Zobrazovaný název** a platný **kontaktní e-mail**.
 1. Klikněte na **vytvořit ID aplikace**. To může vyžadovat, abyste přijali zásady platformy Facebook a dokončili online kontrolu zabezpečení.
@@ -86,7 +86,7 @@ Chcete-li použít účet Facebook jako poskytovatele identity v Azure AD B2C, j
 1. Vyberte znaménko plus vedle položky **produkty**a potom v části **přihlášení na Facebooku**vyberte **nastavit**.
 1. V části **přihlášení do Facebooku** v nabídce vlevo vyberte **Nastavení**.
 1. Do **platného identifikátorů URI pro přesměrování OAuth**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` názvem vašeho tenanta. V dolní části stránky vyberte **Uložit změny** .
-1. Chcete-li zpřístupnit aplikaci Facebook Azure AD B2C, klikněte na selektor **stavu** v pravém horním rohu stránky a zapněte ji tak , aby byla aplikace veřejná, a pak klikněte na **Potvrdit**. V tomto okamžiku se stav změní z **vývoje** na **Live**.
+1. Chcete-li zpřístupnit aplikaci Facebook Azure AD B2C, klikněte na selektor **stavu** v pravém horním rohu stránky a zapněte **ji tak** , aby byla aplikace veřejná, a pak klikněte na **Potvrdit**. V tomto okamžiku se stav změní z **vývoje** na **Live**.
 
 ## <a name="add-the-identity-providers"></a>Přidat zprostředkovatele identity
 

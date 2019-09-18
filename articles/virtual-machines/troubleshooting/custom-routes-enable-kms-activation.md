@@ -4,7 +4,7 @@ description: Ukazuje, jak pomocí vlastních tras Azure povolit aktivaci pomocí
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090452"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058197"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
 
@@ -55,7 +55,7 @@ K přidání vlastní trasy použijte následující postup:
 > [!NOTE] 
 > Aktivace používá veřejné IP adresy a bude mít vliv na standardní SKU Load Balancer konfiguraci. Zkontrolujte pečlivě [odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , abyste se dozvěděli o požadavcích.
 
-1. Otevřete Azure PowerShell a přihlaste [se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -85,7 +85,7 @@ K přidání vlastní trasy použijte následující postup:
 
 ### <a name="for-classic-vms"></a>Pro klasické virtuální počítače
 
-1. Otevřete Azure PowerShell a přihlaste [se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell

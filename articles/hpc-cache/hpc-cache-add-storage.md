@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775257"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037220"
 ---
 # <a name="add-storage"></a>Přidání úložiště
 
@@ -27,13 +27,15 @@ Můžete přidat cíle úložiště při vytváření mezipaměti HPC Azure nebo
 
 Pomocí karty **cíle úložiště** v Průvodci vytvořením mezipaměti definujte úložiště ve stejnou dobu, kdy vytvoříte instanci mezipaměti.
 
-![snímek obrazovky se stránkou cílů úložiště](media/create-targets.png)
+![snímek obrazovky se stránkou cílů úložiště](media/hpc-cache-storage-targets-pop.png)
 
 Kliknutím na odkaz **Přidat cíl úložiště** přidejte úložiště.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Přidání cílů úložiště z mezipaměti
 
 Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikněte na možnost **cíle úložiště** . Stránka cíl úložiště obsahuje seznam všech stávajících cílů a obsahuje odkaz na přidání nového.
+
+![snímek obrazovky s odkazem na cíle úložiště na bočním panelu pod nadpisem konfigurovat, což je mezi záhlavími a nastaveními a monitorováním kategorie](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Přidat nový cíl úložiště objektů BLOB v Azure
 
@@ -52,15 +54,13 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 * **Cesta virtuálního oboru názvů** – nastavte cestu pro klientský přístup pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Přidání rolí řízení přístupu ke svému účtu
 
 Mezipaměť prostředí Azure HPC používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci aplikace mezipaměti pro přístup k vašemu účtu úložiště pro cíle služby Azure Blob Storage.
 
-Vlastník účtu úložiště musí explicitně přidat přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a [přispěvatele dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "StorageCache Resource Provider".
+Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "StorageCache Resource Provider".
 
 Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB.
 
@@ -123,7 +123,7 @@ Při vytváření cíle úložiště, který odkazuje na systém úložiště NF
 
 * Klienti obcházejí mezipaměť – tuto možnost vyberte, pokud budou vaši klienti zapisovat data přímo do systému úložiště bez předchozího zápisu do mezipaměti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
 

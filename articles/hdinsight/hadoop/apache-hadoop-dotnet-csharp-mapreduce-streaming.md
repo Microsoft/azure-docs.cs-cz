@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882324"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066942"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# se službou MapReduce streaming na Apache Hadoop ve službě HDInsight
 
@@ -162,7 +162,7 @@ Po vytvoření aplikace ji Sestavte, aby se `/bin/Debug/reducer.exe` soubor vytv
 
    * Pokud používáte __účet Azure Storage__, klikněte na ikonu nahrát a potom přejděte do složky **bin\Debug** pro projekt **Mapper** . Nakonec vyberte soubor **Mapper. exe** a klikněte na tlačítko **OK**.
 
-        ![nahrát ikonu](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        ![Ikona nahrání HDInsight pro mapovač](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a vyberte __Odeslat__. Nakonec vyberte soubor **Mapper. exe** a klikněte na **otevřít**.
 
@@ -237,7 +237,7 @@ Tento skript vás vyzve k zadání názvu a hesla přihlašovacího účtu clust
     yourselves      3
     youth   17
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o používání MapReduce se službou HDInsight najdete v tématu [použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md).
 

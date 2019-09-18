@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098772"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067867"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -343,7 +343,8 @@ V celém dokumentu používáme následující výrazy:
 * Prostředí SAP: jedna nebo víc komponent SAP se logicky seskupují tak, aby prováděly obchodní funkce, jako je vývoj, QAS, školení, DR nebo produkce.
 * SAP na šířku: Tento pojem odkazuje na celé prostředky SAP v zákaznickém oddělení IT. SAP na šířku zahrnuje všechna produkční a neprodukční prostředí.
 * Systém SAP: Kombinace vrstvy a aplikační vrstvy systému DBMS, například vývojového systému SAP ERP, SAP BW testovacího systému, SAP CRM produkčního systému atd. V nasazeních Azure není podpora rozdělují tyto dvě vrstvy mezi místními a Azure. Znamená, že systém SAP je buď nasazený místně, nebo je nasazený v Azure. Můžete ale nasadit různé systémy služby SAP na šířku do Azure nebo místního prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM v Azure, ale produkční systém SAP CRM v místním prostředí.
-* Mezi místními nebo hybridními: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo ExpressRoute, mezi místními datacentra a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi různými místními nebo hybridními scénáři. Důvodem připojení je rozšiřování místních domén, místní služby Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a můžou na těchto virtuálních počítačích spouštět služby (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Toto je nejběžnější a skoro exkluzivní případ nasazení prostředků SAP do Azure. Další informace najdete v [tomto][vpn-gateway-cross-premises-options] článku a v [][vpn-gateway-site-to-site-create]tomto článku.
+* Mezi místními nebo hybridními: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo ExpressRoute, mezi místními datacentra a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi různými místními nebo hybridními scénáři. Důvodem připojení je rozšiřování místních domén, místní služby Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a můžou na těchto virtuálních počítačích spouštět služby (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Toto je nejběžnější a skoro exkluzivní případ nasazení prostředků SAP do Azure. Další informace najdete v [tomto][vpn-gateway-cross-premises-options] [článku a v tomto článku][vpn-gateway-site-to-site-create].
+* Rozšíření monitorování Azure, rozšířené monitorování a rozšíření Azure pro SAP: Popište jednu a stejnou položku. Popisuje rozšíření virtuálního počítače, které je potřeba nasadit, abyste mohli poskytovat základní data o infrastruktuře Azure pro agenta hostitele SAP. Poznámky SAP v SAP se můžou odkazovat jako na rozšíření monitorování nebo rozšířené monitorování. V Azure odkazujeme na ni jako na **rozšíření Azure pro SAP**.
 
 > [!NOTE]
 > Mezi místní nebo hybridní nasazení systémů SAP, kde je Azure Virtual Machines běžící systémy SAP, jsou pro produkční systémy SAP podporovány členy místní domény. Mezi místními nebo hybridními konfiguracemi se podporuje nasazení částí nebo kompletní řešení SAP v Azure do Azure. I když v Azure běží kompletní prostředí SAP na pracovišti, je potřeba mít tyto virtuální počítače v rámci místní domény a reklamy/OpenLDAP. 
@@ -799,7 +800,7 @@ V takovém případě už bylo prostředí PowerShell (PS) v tomto případě v�
 Viz příklad zde:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
-Nasazení rozšíření Azure Monitoring pro SAP (viz kapitola [Řešení Azure Monitoring pro SAP][planning-guide-9.1] v tomto dokumentu) je možné jenom prostřednictvím PowerShellu nebo rozhraní příkazového řádku. Proto je nutné nastavit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku při nasazení nebo správě systému SAP NetWeaver v Azure.  
+Nasazení rozšíření Azure pro SAP (viz kapitola [Azure Extension for SAP][planning-guide-9.1] v tomto dokumentu) je možné jenom prostřednictvím PowerShellu nebo rozhraní příkazového řádku. Proto je nutné nastavit a nakonfigurovat prostředí PowerShell nebo rozhraní příkazového řádku při nasazení nebo správě systému SAP NetWeaver v Azure.  
 
 Jelikož Azure poskytuje další funkce, přidají se nové rutiny PS, které vyžadují aktualizaci rutin. Proto má smysl kontrolovat web Azure Download alespoň jednou měsíčně <https://azure.microsoft.com/downloads/> pro novou verzi rutin. Nová verze je nainstalovaná nad starší verzí.
 
@@ -816,7 +817,7 @@ Informace o instalaci, konfiguraci a způsobu použití příkazů rozhraní př
 * [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure] [../../linux/create-ssh-secured-vm-from-template.md]
 * [Použití rozhraní příkazového řádku Azure Classic pro Mac, Linux a Windows s Azure Resource Manager][xplat-cli-azure-resource-manager]
 
-Přečtěte si také kapitolu [Azure CLI pro virtuální počítače se systémem Linux][deployment-guide-4.5.2] v [Průvodci nasazením][planning-guide] , jak pomocí rozhraní příkazového řádku Azure nasadit rozšíření Azure Monitoring pro SAP.
+Přečtěte si také kapitolu [Azure CLI pro virtuální počítače se systémem Linux][deployment-guide-4.5.2] v [Průvodci nasazením][planning-guide] , jak pomocí rozhraní příkazového řádku Azure nasadit rozšíření Azure pro SAP.
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Různé způsoby nasazení virtuálních počítačů pro SAP v Azure
 
@@ -918,7 +919,7 @@ Pokud je virtuální počítač dostatečně připravený, aby byl obecný a nak
 > ![Windows][Logo_Windows] Windows
 >
 > Posledním krokem je přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete okno příkazového řádku systému Windows jako *správce*. Přejít na%windir%\Windows\System32\Sysprep a spustit Sysprep. exe.
-> Zobrazí se malé okno. Je důležité zaškrtnout možnost generalizace (výchozí nastavení je nezaškrtnuto) a změnit možnost vypnutí z výchozí hodnoty ' restartovat ' na ' vypínání '. Tento postup předpokládá, že se proces Sysprep v hostovaném operačním systému virtuálního počítače spustil místně.
+> Zobrazí se malé okno. Je důležité zaškrtnout možnost **generalizace** (výchozí nastavení je nezaškrtnuto) a změnit možnost vypnutí z výchozí hodnoty ' restartovat ' na ' vypínání '. Tento postup předpokládá, že se proces Sysprep v hostovaném operačním systému virtuálního počítače spustil místně.
 > Pokud chcete provést postup s virtuálním počítačem, který už běží v Azure, postupujte podle kroků popsaných v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
 >
 > ![Linux][Logo_Linux] Linux
@@ -1252,7 +1253,7 @@ Během nasazování nového virtuálního počítače se můžete rozhodnout, je
 
 V dalším kroku se musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk, nebo jestli chcete vybrat existující disk, který jste nahráli dříve, a měl by se teď připojit k virtuálnímu počítači.
 
-**DŮLEŽITÉ:** Nechcete používat ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
+**DŮLEŽITÉ:** Nechcete **používat** ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1302,7 +1303,7 @@ Geografická replikace Azure funguje lokálně na každém virtuálním pevném 
 ---
 ### <a name="final-deployment"></a>Konečné nasazení
 
-Poslední nasazení a přesný postup, zejména v souvislosti s nasazením rozšířeného monitorování SAP, najdete v [Průvodci nasazením][deployment-guide].
+Poslední nasazení a přesný postup, zejména v souvislosti s nasazením rozšíření Azure pro SAP, najdete v [Průvodci nasazením][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Přístup k systémům SAP běžícím v rámci virtuálních počítačů Azure
 
@@ -1775,29 +1776,29 @@ Instance SAP umístěné v Azure potřebují přístup ke sdíleným složkám, 
 
 ## <a name="supportability"></a>Možnosti podpory
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Řešení Azure Monitoring pro SAP
+### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Rozšíření Azure pro SAP
 
-Aby bylo možné sledovat důležité systémy SAP v Azure, SAPOSCOL nebo agent hostitele SAP získávají data z hostitele služby virtuálního počítače Azure pomocí rozšíření monitorování Azure pro SAP. Vzhledem k tomu, že požadavky podle SAP byly specifické pro aplikace SAP, společnost Microsoft se rozhodla, že do Azure neimplementuje obecně implementaci požadovaných funkcí, ale ponechá zákazníkům, aby nasadili potřebné monitorovací komponenty a konfigurace do jejich virtuálních Počítače běžící v Azure. Nasazení a správa životního cyklu pro součásti monitorování ale budou většinou automatizovaně automatizovány Azure.
+Aby bylo možné podávat určitou část informací o infrastruktuře Azure pro důležité systémy SAP do instancí agenta hostitele SAP instalovaných na virtuálních počítačích, musí být pro nasazené virtuální počítače nainstalovaná přípona Azure (VM) pro SAP. Vzhledem k tomu, že požadavky podle SAP byly specifické pro aplikace SAP, společnost Microsoft se rozhodla, že do Azure neimplementuje obecně implementaci požadovaných funkcí, ale ponechá zákazníkům, aby nasadili potřebné rozšíření a konfigurace virtuálního počítače na jejich Virtual Machines spuštěnou. v Azure. Nicméně Správa nasazení a životního cyklu rozšíření virtuálního počítače Azure pro SAP bude většinou automatizovaná Azure.
 
 #### <a name="solution-design"></a>Návrh řešení
 
-Řešení, které je vyvíjené pro povolení monitorování SAP, je založené na architektuře agenta virtuálního počítače Azure a architektury rozšíření. Cílem agenta virtuálního počítače Azure a rozhraní rozšíření je dovolit instalaci softwarových aplikací, které jsou k dispozici v galerii rozšíření virtuálních počítačů Azure v rámci virtuálního počítače. Principem tohoto konceptu je povolení (v případech, jako je například rozšíření Azure Monitoring pro SAP), nasazení zvláštních funkcí do virtuálního počítače a konfigurace takového softwaru v době nasazení.
+Řešení vyvinuté za účelem povolení agenta hostitele SAP získání požadovaných informací vychází z architektury agenta virtuálního počítače Azure a architektury rozšíření. Cílem agenta virtuálního počítače Azure a rozhraní rozšíření je dovolit instalaci softwarových aplikací, které jsou k dispozici v galerii rozšíření virtuálních počítačů Azure v rámci virtuálního počítače. Principem tohoto pojmu je povolení (v případech, jako je rozšíření Azure pro SAP), nasazení zvláštních funkcí do virtuálního počítače a konfigurace takového softwaru v době nasazení.
 
 Agent virtuálního počítače Azure, který umožňuje zpracování specifických rozšíření virtuálních počítačů Azure v rámci virtuálního počítače, se ve výchozím nastavení vloží do virtuálních počítačů s Windows při vytváření virtuálních počítačů v Azure Portal. V případě SUSE, Red Hat nebo Oracle Linux je agent virtuálního počítače už součástí Azure Marketplace image. V případě, že by jedna nahrála virtuální počítač Linux z místního prostředí do Azure, je nutné nainstalovat agenta virtuálního počítače ručně.
 
-Základní stavební bloky řešení monitorování v Azure pro SAP vypadají takto:
+Základní stavební bloky řešení, které poskytují informace o infrastruktuře Azure pro hostitele SAP v Azure, vypadají takto:
 
 ![Komponenty rozšíření Microsoft Azure][planning-guide-figure-2400]
 
-Jak je znázorněno na obrázku blokový diagram výše, je jedna část řešení monitorování pro SAP hostovaná v imagi virtuálního počítače Azure a v galerii rozšíření Azure, což je globálně replikované úložiště spravované operacemi Azure. Je zodpovědností společného týmu SAP/MS pracujícího na implementaci SAP pro Azure pro práci s operacemi Azure pro publikování nových verzí rozšíření Azure Monitoring pro SAP.
+Jak je znázorněno na obrázku blokový diagram výše, jedna část řešení je hostována v imagi virtuálního počítače Azure a v galerii rozšíření Azure, což je globálně replikované úložiště spravované operacemi Azure. Je zodpovědností společného týmu SAP/MS pracujícího na implementaci SAP pro Azure pro práci s operacemi Azure pro publikování nových verzí rozšíření Azure pro SAP.
 
-Když nasadíte nový virtuální počítač s Windows, agent virtuálního počítače Azure se automaticky přidá do virtuálního počítače. Funkce tohoto agenta slouží k koordinaci načítání a konfigurace rozšíření Azure pro monitorování systémů SAP NetWeaver. V případě virtuálních počítačů se systémem Linux je agent virtuálního počítače Azure již součástí bitové kopie Azure Marketplace operačního systému.
+Když nasadíte nový virtuální počítač s Windows, agent virtuálního počítače Azure se automaticky přidá do virtuálního počítače. Funkce tohoto agenta slouží k koordinaci načítání a konfigurace rozšíření Azure pro virtuální počítače. V případě virtuálních počítačů se systémem Linux je agent virtuálního počítače Azure již součástí bitové kopie Azure Marketplace operačního systému.
 
 Existuje však krok, který je stále potřeba provést zákazníkem. Toto je povolení a konfigurace shromažďování výkonu. Proces související s konfigurací je automatizovaný pomocí skriptu PowerShellu nebo příkazu CLI. Skript PowerShellu se dá stáhnout do centra skriptů Microsoft Azure, jak je popsáno v [Průvodci nasazením][deployment-guide].
 
-Celková architektura řešení Azure Monitoring pro SAP vypadá takto:
+Celková architektura rozšíření Azure pro SAP vypadá takto:
 
-![Řešení Azure Monitoring pro SAP NetWeaver][planning-guide-figure-2500]
+![Rozšíření Azure pro SAP ][planning-guide-figure-2500]
 
 **Přesný postup a podrobné pokyny k používání těchto rutin PowerShellu nebo příkazu CLI během nasazení najdete v pokynech uvedených v [Průvodci nasazením][deployment-guide].**
 
@@ -2063,11 +2064,11 @@ Klíčové body vysoké dostupnosti pro systémy SAP v Azure jsou:
   * Doporučuje se mít pro vrstvu DBMS systému SAP samostatnou skupinu dostupnosti.
   * Nedoporučuje se použít stejnou skupinu dostupnosti pro virtuální počítače s různými systémy SAP.
   * Doporučujeme použít Managed Disks Premium.
-* Pro účely zálohování vrstvy SAP DBMS si Projděte příručku pro [DBMS][dbms-guide].
+* Pro účely zálohování vrstvy SAP DBMS si Projděte [příručku pro DBMS][dbms-guide].
 * Zálohování instancí dialogových oken SAP má malý smysl, protože je obvykle rychlejší pro opětovné nasazení jednoduchých instancí dialogových oken.
 * Zálohování virtuálního počítače, který obsahuje globální adresář systému SAP a má všechny profily různých instancí, má smysl a měl by se provádět se zálohováním Windows, nebo například tar v systému Linux. Vzhledem k tomu, že existují rozdíly mezi systémy Windows Server 2008 (R2) a Windows Server 2012 (R2), které usnadňují zálohování pomocí novějších verzí Windows serveru, doporučujeme používat Windows Server 2012 (R2) jako hostovaný operační systém Windows.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si články:
 
 - [Nasazení Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)

@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624916"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037489"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou (Preview)
 
@@ -20,14 +20,14 @@ Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být a
 
 > [!NOTE] 
 > 
-> Aplikace, které nejsou nasazené jako prostředek Azure , nemůžou mít spravované identity. 
+> Aplikace, které nejsou nasazené jako prostředek Azure, **nemůžou** mít spravované identity. 
 >
 > Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze `"2019-06-01-preview"`rozhraní API. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
 >
 
 ## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
-Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli.
+Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### <a name="application-template"></a>Šablona aplikace
 
@@ -90,7 +90,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
       </ServiceManifestImport>
     ```
 
-3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části Resources ( **prostředky** ) s `ServiceIdentityRef` názvem, `IdentityBindingPolicy` který odpovídá názvu v manifestu aplikace:
+3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s `ServiceIdentityRef` názvem, `IdentityBindingPolicy` který odpovídá názvu v manifestu aplikace:
 
     **ServiceManifest. XML**
 

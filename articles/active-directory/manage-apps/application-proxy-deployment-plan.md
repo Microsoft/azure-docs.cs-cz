@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812830"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033633"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
 
@@ -64,7 +64,7 @@ Aby bylo možné konfigurovat a implementovat Azure Proxy aplikací služby AD, 
 
 *  **Připojování k Azure**: Před nasazením proxy aplikací je potřeba, aby se identity uživatelů synchronizovaly z místního adresáře nebo vytvořily přímo v klientech Azure AD. Synchronizace identity umožňuje službě Azure AD předem ověřit uživatele předtím, než jim udělí přístup k aplikacím publikovaným v proxy aplikaci, a bude mít potřebné informace o uživatelském identifikátoru k provedení jednotného přihlašování (SSO).
 
-* **Požadavky na podmíněný přístup**: Proxy aplikace nedoporučujeme používat pro přístup k intranetu, protože tím se zvyšuje latence, která bude mít vliv na uživatele. Pro vzdálený přístup z Internetu doporučujeme používat proxy aplikace s předběžným ověřením a zásadami podmíněného přístupu.  Přístup k zajištění podmíněného přístupu pro použití v intranetu je modernizovat aplikace, aby se mohly diretly ověřit pomocí AAD. Další informace najdete v tématu [zdroje pro migraci aplikací do AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
+* **Požadavky na podmíněný přístup**: Proxy aplikace nedoporučujeme používat pro přístup k intranetu, protože tím se zvyšuje latence, která bude mít vliv na uživatele. Pro vzdálený přístup z Internetu doporučujeme používat proxy aplikace s předběžným ověřením a zásadami podmíněného přístupu.  Přístup k zajištění podmíněného přístupu pro použití v intranetu je modernizovat aplikace, aby je bylo možné přímo ověřit pomocí AAD. Další informace najdete v tématu [zdroje pro migraci aplikací do AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
 
 * **Omezení služby**: Pro zajištění ochrany před zneužitím prostředků jednotlivými klienty jsou nastavené limity omezení pro jednotlivé aplikace a klienty. Pokud se chcete podívat na tato omezení, přečtěte si omezení [a omezení služby Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Tyto limity omezování jsou založené na testu výkonnosti mnohem nad běžným objemem využití a poskytují rozsáhlou vyrovnávací paměť pro většinu nasazení.
 
@@ -239,7 +239,7 @@ Ověřte, že je vaše aplikace přístupná prostřednictvím proxy aplikace, k
 
 3. V poli **před ověřením** vyberte v rozevíracím seznamu **Azure Active Directory**a vyberte **Uložit**.
 
-S povoleným předběžným ověřením služba Azure AD nejdřív vyzve uživatele k ověření a pokud je jednotné přihlašování configued, pak back-end aplikace taky ověří uživatele před tím, než se udělí přístup k aplikaci. Změna režimu předběžného ověřování z průchodu na Azure AD také nakonfiguruje externí adresu URL s protokolem HTTPS, takže všechny aplikace původně nakonfigurované pro protokol HTTP budou teď zabezpečené pomocí protokolu HTTPS.
+S povoleným předběžným ověřením služba Azure AD nejdřív vyzve uživatele k ověření a pokud je nakonfigurované jednotné přihlašování, pak back-end aplikace taky ověří uživatele před tím, než se udělí přístup k aplikaci. Změna režimu předběžného ověřování z průchodu na Azure AD také nakonfiguruje externí adresu URL s protokolem HTTPS, takže všechny aplikace původně nakonfigurované pro protokol HTTP budou teď zabezpečené pomocí protokolu HTTPS.
 
 ### <a name="enable-single-sign-on"></a>Povolit jednotné přihlašování
 
@@ -292,11 +292,11 @@ Uživatelé ale stále potřebují provádět privilegované operace, aby se vyn
 
 ### <a name="reporting-and-monitoring"></a>Vytváření sestav a monitorování
 
-Azure AD poskytuje další přehledy o využití aplikací a provozním stavu vaší organizace prostřednictvím [protokolů auditu a sestav](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs). Proxy aplikace také velmi usnadňuje monitorování konektorů z portálu Azure AD a protokolů událostí systému Windows.
+Azure AD poskytuje další přehledy o využití aplikací a provozním stavu vaší organizace prostřednictvím [protokolů auditu a sestav](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Proxy aplikace také velmi usnadňuje monitorování konektorů z portálu Azure AD a protokolů událostí systému Windows.
 
 #### <a name="application-audit-logs"></a>Protokoly auditu aplikací
 
-Tyto protokoly poskytují podrobné informace o přihlášení k aplikacím nakonfigurovaným pomocí proxy aplikací a zařízení a uživatele, který přistupuje k aplikaci. [Protokoly auditu](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) se nacházejí v Azure Portal a v [rozhraní audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) pro export. Navíc jsou k dispozici také [sestavy využití a přehled](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) pro vaši aplikaci.
+Tyto protokoly poskytují podrobné informace o přihlášení k aplikacím nakonfigurovaným pomocí proxy aplikací a zařízení a uživatele, který přistupuje k aplikaci. [Protokoly auditu](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) se nacházejí v Azure Portal a v [rozhraní audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) pro export. Navíc jsou k dispozici také [sestavy využití a přehled](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) pro vaši aplikaci.
 
 #### <a name="application-proxy-connector-monitoring"></a>Monitorování konektoru proxy aplikací
 

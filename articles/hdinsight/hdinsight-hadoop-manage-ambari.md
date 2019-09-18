@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885325"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035891"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -47,7 +47,7 @@ Při připojování k webovému uživatelskému rozhraní Ambari se zobrazí vý
 
 Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahuje následující informace a ovládací prvky:
 
-![ambari-nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![ambari-nav](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Položka |Popis |
 |---|---|
@@ -80,7 +80,7 @@ Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazi
 
 Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spravovat skupiny výstrah**.
 
-![dialog spravovat skupiny výstrah](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![dialog spravovat skupiny výstrah](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení výstrah__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
 
@@ -100,20 +100,20 @@ Karta **Heat mapy** zobrazuje metriky jako barevné Heat mapyy z zelené na čer
 
 Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, který vás zajímá.
 
-![Podrobnosti o hostiteli](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Podrobnosti o hostiteli](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Služby
 
 Postranní panel **služby** na řídicím panelu poskytuje rychlý přehled o stavu služeb spuštěných v clusteru. K označení stavu nebo akcí, které by měly být provedeny, se používají různé ikony. Například pokud je potřeba recyklovat službu, zobrazí se žlutý symbol recyklace.
 
-![Boční panel služeb](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![Boční panel služeb](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > Zobrazené služby se v různých typech a verzích clusteru HDInsight liší. Zobrazené služby se můžou lišit od služeb zobrazených pro váš cluster.
 
 Výběr služby zobrazí podrobnější informace o službě.
 
-![souhrnné informace o službě](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![souhrnné informace o službě](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Rychlé odkazy
 
@@ -168,7 +168,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
 
 Na stránce **řídicí panel** nebo **služby** pomocí tlačítka **Akce** v dolní části seznamu služeb zastavte a spusťte všechny služby.
 
-![akce služby](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![akce služby](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > Když je v této nabídce uvedená **Služba Add Service** , neměla by se používat k přidávání služeb do clusteru HDInsight. Nové služby by se měly přidat pomocí akce skriptu během zřizování clusteru. Další informace o použití akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
@@ -195,7 +195,7 @@ Ke konfiguraci služby použijte následující postup:
 
 2. Vyberte **Configs** kartu. Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
 
-    ![Konfiguračních](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![Konfiguračních](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
 

@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C.
+title: Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C | Microsoft Docs
+description: Naučte se konfigurovat tok přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,76 +10,76 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8de1d27d92ac57f478b7615144dba166f420d27
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807228"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064471"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
-Tok přihlašovacích údajů (ROPC) hesla vlastníka prostředku je tok, který standardní ověřování OAuth, kde aplikace, označované také jako přijímající strany vymění platné přihlašovací údaje, jako je například ID uživatele a heslo pro ID token, přístupový token a aktualizační token. 
+Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standardní tok ověřování OAuth, kde aplikace, označovaná také jako předávající strana, vyměňuje platné přihlašovací údaje, jako je třeba ID a heslo pro token ID, přístupový token a obnovovací token.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-V Azure Active Directory (Azure AD) B2C jsou podporovány následující možnosti:
+V Azure Active Directory B2C (Azure AD B2C) jsou podporovány následující možnosti:
 
-- **Nativní klient systému**: Interakce s uživatelem během ověřování se stane, když kód běží na uživatele na straně zařízení. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android, nebo v prohlížeči, třeba JavaScript.
-- **Tok veřejným klientem**: Pouze přihlašovací údaje uživatele, shromážděné aplikaci, která se odesílají v volání rozhraní API. Přihlašovací údaje aplikace neodešlou.
-- **Přidání nových deklarací identity**: ID tokenu obsah lze změnit pro přidání nových deklarací identity. 
+- **Nativní klient**: Interakce uživatele během ověřování probíhá, když je kód spuštěn na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android nebo spuštěná v prohlížeči, jako je například JavaScript.
+- **Tok veřejného klienta**: V volání rozhraní API se odešlou jenom uživatelská pověření shromážděná aplikací. Přihlašovací údaje aplikace se neodesílají.
+- **Přidat nové deklarace identity**: Obsah tokenu ID se dá změnit tak, aby se přidaly nové deklarace identity.
 
-Nejsou podporovány v následujících tocích:
+Následující toky nejsou podporovány:
 
-- **Server-to-server**: Systém ochrany identit musí shromážděných z volající (Nativní klient) jako součást interakce spolehlivé IP adresu. Ve volání rozhraní API na straně serveru je použít jenom IP adresa serveru. Pokud dojde k překročení dynamická prahová hodnota neúspěšné ověřování, může systém ochrany identit identifikovat opakované IP adresu jako útočník.
-- **Tok důvěrnému klientovi**: Ověřit ID klienta aplikace, ale neověří tajný klíč aplikace.
+- **Server-to-server**: Systém Identity Protection potřebuje jako součást interakce spolehlivou IP adresu získanou od volajícího (nativního klienta). V případě volání rozhraní API na straně serveru se používá jenom IP adresa serveru. Pokud dojde k překročení dynamické prahové hodnoty neúspěšných ověření, může systém Identity Protection identifikovat opakovanou IP adresu jako útočníka.
+- **Tok důvěrného klienta**: ID klienta aplikace je ověřeno, ale tajný klíč aplikace není ověřen.
 
-##  <a name="create-a-resource-owner-user-flow"></a>Vytvořit tok uživatele vlastníka prostředku
+##  <a name="create-a-resource-owner-user-flow"></a>Vytvoření toku uživatele vlastníka prostředku
 
-1. Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
-2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
-3. Klikněte na tlačítko **toky uživatelů**a vyberte **nový tok uživatele**.
-4. Klikněte na tlačítko **všechny** kartě a vyberte **Přihlaste se pomocí ROPC**.
-5. Zadejte název pro tok uživatele, jako třeba *ROPC_Auth*.
-6. V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více**.
-7. Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako je zobrazované jméno, e-mailovou adresu a zprostředkovatele Identity.
+1. Přihlaste se k Azure Portal jako globální správce vašeho tenanta Azure AD B2C.
+2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte v pravém horním rohu portálu adresář B2C.
+3. Klikněte na **toky uživatelů**a vyberte **Nový tok uživatele**.
+4. Klikněte na kartu **vše** a vyberte **Přihlásit se pomocí ROPC**.
+5. Zadejte název toku uživatele, například *ROPC_Auth*.
+6. V části **deklarace aplikací**klikněte na **Zobrazit více**.
+7. Vyberte deklarace identity aplikace, které potřebujete pro vaši aplikaci, například zobrazované jméno, e-mailovou adresu a poskytovatele identity.
 8. Vyberte **OK** a potom vyberte **Vytvořit**.
-9. Klikněte na tlačítko **spustit tok uživatele**.
+9. Klikněte na **Spustit tok uživatele**.
 
-   Zobrazí koncový bod jako je například v tomto příkladu:
+   Pak uvidíte koncový bod, jako je například tento příklad:
 
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Registrace aplikace
+## <a name="register-an-application"></a>Zaregistrovat aplikaci
 
-1. V nastavení B2C vyberte **aplikací**a pak vyberte **přidat**.
-2. Zadejte název aplikace, jako například *ROPC_Auth_app*.
-3. Vyberte **ne** pro **webová aplikace/webové rozhraní API**a pak vyberte **Ano** pro **nativního klienta**.
-4. Nechte ostatní hodnoty, jak jsou a pak vyberte **vytvořit**.
+1. V nastavení B2C vyberte **aplikace**a pak vyberte **Přidat**.
+2. Zadejte název aplikace, například *ROPC_Auth_app*.
+3. Pro **webovou aplikaci nebo webové rozhraní API**vyberte **ne** a pak pro nativního **klienta**vyberte **Ano** .
+4. Všechny ostatní hodnoty ponechte tak, jak jsou, a pak vyberte **vytvořit**.
 5. Vyberte novou aplikaci a poznamenejte si ID aplikace pro pozdější použití.
 
-## <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
+## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje aplikace a zkontrolujte odpověď na ladění vašeho toku uživatele. Sestavit podobné volání pomocí informací v následující tabulce jako text požadavku POST:
-- Nahraďte  *\<yourtenant.onmicrosoft.com >* s názvem vašeho tenanta B2C.
-- Nahraďte  *\<B2C_1A_ROPC_Auth >* úplným názvem zásady pověření heslo vlastníka prostředku.
+Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
+- Nahraďte  *\<yourtenant... Microsoft. com >* názvem vašeho tenanta B2C.
+- *\<B2C_1A_ROPC_Auth >* nahraďte úplným názvem zásad pro přihlašovací údaje hesla vlastníka prostředku.
 - Nahraďte  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z vaší registrace.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| response_type | Token požadavku id_token |
+| response_type | id_token tokenu |
 
-*Client_id* je hodnota, kterou jste si předtím poznamenali jako ID aplikace. *Offline_access* je volitelný, pokud chcete dostávat obnovovací token. Uživatelské jméno a heslo, které používáte, musí být přihlašovací údaje stávajícího uživatele ve vašem tenantovi Azure AD B2C.
+*Client_id* je hodnota, kterou jste dříve poznamenali jako ID aplikace. *Offline_access* je nepovinný, pokud chcete získat obnovovací token. Uživatelské jméno a heslo, které použijete, musí být přihlašovací údaje od stávajícího uživatele v Azure AD B2C tenantovi.
 
-Skutečné požadavek POST vypadá takto:
+Skutečný požadavek POST vypadá takto:
 
 ```
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
@@ -90,21 +90,21 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Úspěšná odpověď s offline přístupem bude vypadat jako v následujícím příkladu:
+Úspěšná odpověď s offline přístupem vypadá jako v následujícím příkladu:
 
 ```json
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJpc3MiOiJodHRwczovL3RlLmNwaW0ud2luZG93cy5uZXQvZjA2YzJmZTgtNzA5Zi00MDMwLTg1ZGMtMzhhNGJmZDllODJkL3YyLjAvIiwiZXhwIjoxNTEzMTMwMDc4LCJuYmYiOjE1MTMxMjY0NzgsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsIm9pZCI6IjNjM2I5NjljLThjNDktNGUxMS1hNGVmLWZkYjJmMzkyZjA0OSIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF6cCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsInZlciI6IjEuMCIsImlhdCI6MTUxMzEyNjQ3OH0.MSEThYZxCS4SevBw3-3ecnVLUkucFkehH-gH-P7SFcJ-MhsBeQEpMF1Rzu_R9kUqV3qEWKAPYCNdZ3_P4Dd3a63iG6m9TnO1Vt5SKTETuhVx3Xl5LYeA1i3Slt9Y7LIicn59hGKRZ8ddrQzkqj69j723ooy01amrXvF6zNOudh0acseszt7fbzzofyagKPerxaeTH0NgyOinLwXu0eNj_6RtF9gBfgwVidRy9OzXUJnqm1GdrS61XUqiIUtv4H04jYxDem7ek6E4jsH809uSXT0iD5_4C5bDHrpO1N6pXSasmVR9GM1XgfXA_IRLFU4Nd26CzGl1NjbhLnvli2qY4A", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6IjEuMCJ9.aJ_2UW14dh4saWTQ0jLJ7ByQs5JzIeW_AU9Q_RVFgrrnYiPhikEc68ilvWWo8B20KTRB_s7oy_Eoh5LACsqU6Oz0Mjnh0-DxgrMblUOTAQ9dbfAT5WoLZiCBJIz4YT5OUA_RAGjhBUkqGwdWEumDExQnXIjRSeaUBmWCQHPPguV1_5wSj8aW2zIzYIMbofvpjwIATlbIZwJ7ufnLypRuq_MDbZhJkegDw10KI4MHJlJ40Ip8mCOe0XeJIDpfefiJ6WQpUq4zl06NO7j8kvDoVq9WALJIao7LYk_x9UIT-3d0W0eDBHGSRcNgtMYpymaN9ltx6djcEesXNn4CFnWG3g.y6KKeA9EcsW9zW-g.TrTSgn4WBt18gezegxihBla9SLSTC3YfDROQsL9K4yX4400FKlTlf-2l9CnpGTEdWXVi7sIMHCl8S4oUiXd-rvY2mn_NfDrbbVJfgKp1j7Nnq9FFyeJEFcP_FtUXgsNTG9iwfzWox04B1d845qNRWiS9N8BhAAAIdz5N0ChHuOxsVOC0Y_Ly3DNe-JQyXcq964M6-jp3cgi4UqMxT837L6pLY5Ih_iPsSfyHzstsFeqyUIktnzt1MpTlyW-_GDyFK1S-SyV8PPQ7phgFouw2jho1iboHX70RlDGYyVmP1CfQzKE_zWxj3rgaCZvYMWN8fUenoiatzhvWkUM7dhqKGjofPeL8rOMkhl6afLLjObzhUg3PZFcMR6guLjQdEwQFufWxGjfpvaHycZSKeWu6-7dF8Hy_nyMLLdBpUkdrXPob_5gRiaH72KvncSIFvJLqhY3NgXO05Fy87PORjggXwYkhWh4FgQZBIYD6h0CSk2nfFjR9uD9EKiBBWSBZj814S_Jdw6HESFtn91thpvU3hi3qNOi1m41gg1vt5Kh35A5AyDY1J7a9i_lN4B7e_pknXlVX6Z-Z2BYZvwAU7KLKsy5a99p9FX0lg6QweDzhukXrB4wgfKvVRTo.mjk92wMk-zUSrzuuuXPVeg", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJleHAiOjE1MTMxMzAwNzgsIm5iZiI6MTUxMzEyNjQ3OCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly90ZS5jcGltLndpbmRvd3MubmV0L2YwNmMyZmU4LTcwOWYtNDAzMC04NWRjLTM4YTRiZmQ5ZTgyZC92Mi4wLyIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsImFjciI6ImIyY18xYV9yZXNvdXJjZW93bmVydjIiLCJpYXQiOjE1MTMxMjY0NzgsImF1dGhfdGltZSI6MTUxMzEyNjQ3OCwib2lkIjoiM2MzYjk2OWMtOGM0OS00ZTExLWE0ZWYtZmRiMmYzOTJmMDQ5IiwiYXRfaGFzaCI6Ikd6QUNCTVJtcklwYm9OdkFtNHhMWEEifQ.iAJg13cgySsdH3cmoEPGZB_g-4O8KWvGr6W5VzRXtkrlLoKB1pl4hL6f_0xOrxnQwj2sUgW-wjsCVzMc_dkHSwd9QFZ4EYJEJbi1LMGk2lW-PgjsbwHPDU1mz-SR1PeqqJgvOqrzXo0YHXr-e07M4v4Tko-i_OYcrdJzj4Bkv7ZZilsSj62lNig4HkxTIWi5Ec2gD79bPKzgCtIww1KRnwmrlnCOrMFYNj-0T3lTDcXAQog63MOacf7OuRVUC5k_IdseigeMSscrYrNrH28s3r0JoqDhNUTewuw1jx0X6gdqQWZKOLJ7OF_EJMP-BkRTixBGK5eW2YeUUEVQxsFlUg" 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJpc3MiOiJodHRwczovL3RlLmNwaW0ud2luZG93cy5uZXQvZjA2YzJmZTgtNzA5Zi00MDMwLTg1ZGMtMzhhNGJmZDllODJkL3YyLjAvIiwiZXhwIjoxNTEzMTMwMDc4LCJuYmYiOjE1MTMxMjY0NzgsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsIm9pZCI6IjNjM2I5NjljLThjNDktNGUxMS1hNGVmLWZkYjJmMzkyZjA0OSIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF6cCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsInZlciI6IjEuMCIsImlhdCI6MTUxMzEyNjQ3OH0.MSEThYZxCS4SevBw3-3ecnVLUkucFkehH-gH-P7SFcJ-MhsBeQEpMF1Rzu_R9kUqV3qEWKAPYCNdZ3_P4Dd3a63iG6m9TnO1Vt5SKTETuhVx3Xl5LYeA1i3Slt9Y7LIicn59hGKRZ8ddrQzkqj69j723ooy01amrXvF6zNOudh0acseszt7fbzzofyagKPerxaeTH0NgyOinLwXu0eNj_6RtF9gBfgwVidRy9OzXUJnqm1GdrS61XUqiIUtv4H04jYxDem7ek6E4jsH809uSXT0iD5_4C5bDHrpO1N6pXSasmVR9GM1XgfXA_IRLFU4Nd26CzGl1NjbhLnvli2qY4A",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6IjEuMCJ9.aJ_2UW14dh4saWTQ0jLJ7ByQs5JzIeW_AU9Q_RVFgrrnYiPhikEc68ilvWWo8B20KTRB_s7oy_Eoh5LACsqU6Oz0Mjnh0-DxgrMblUOTAQ9dbfAT5WoLZiCBJIz4YT5OUA_RAGjhBUkqGwdWEumDExQnXIjRSeaUBmWCQHPPguV1_5wSj8aW2zIzYIMbofvpjwIATlbIZwJ7ufnLypRuq_MDbZhJkegDw10KI4MHJlJ40Ip8mCOe0XeJIDpfefiJ6WQpUq4zl06NO7j8kvDoVq9WALJIao7LYk_x9UIT-3d0W0eDBHGSRcNgtMYpymaN9ltx6djcEesXNn4CFnWG3g.y6KKeA9EcsW9zW-g.TrTSgn4WBt18gezegxihBla9SLSTC3YfDROQsL9K4yX4400FKlTlf-2l9CnpGTEdWXVi7sIMHCl8S4oUiXd-rvY2mn_NfDrbbVJfgKp1j7Nnq9FFyeJEFcP_FtUXgsNTG9iwfzWox04B1d845qNRWiS9N8BhAAAIdz5N0ChHuOxsVOC0Y_Ly3DNe-JQyXcq964M6-jp3cgi4UqMxT837L6pLY5Ih_iPsSfyHzstsFeqyUIktnzt1MpTlyW-_GDyFK1S-SyV8PPQ7phgFouw2jho1iboHX70RlDGYyVmP1CfQzKE_zWxj3rgaCZvYMWN8fUenoiatzhvWkUM7dhqKGjofPeL8rOMkhl6afLLjObzhUg3PZFcMR6guLjQdEwQFufWxGjfpvaHycZSKeWu6-7dF8Hy_nyMLLdBpUkdrXPob_5gRiaH72KvncSIFvJLqhY3NgXO05Fy87PORjggXwYkhWh4FgQZBIYD6h0CSk2nfFjR9uD9EKiBBWSBZj814S_Jdw6HESFtn91thpvU3hi3qNOi1m41gg1vt5Kh35A5AyDY1J7a9i_lN4B7e_pknXlVX6Z-Z2BYZvwAU7KLKsy5a99p9FX0lg6QweDzhukXrB4wgfKvVRTo.mjk92wMk-zUSrzuuuXPVeg",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJleHAiOjE1MTMxMzAwNzgsIm5iZiI6MTUxMzEyNjQ3OCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly90ZS5jcGltLndpbmRvd3MubmV0L2YwNmMyZmU4LTcwOWYtNDAzMC04NWRjLTM4YTRiZmQ5ZTgyZC92Mi4wLyIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsImFjciI6ImIyY18xYV9yZXNvdXJjZW93bmVydjIiLCJpYXQiOjE1MTMxMjY0NzgsImF1dGhfdGltZSI6MTUxMzEyNjQ3OCwib2lkIjoiM2MzYjk2OWMtOGM0OS00ZTExLWE0ZWYtZmRiMmYzOTJmMDQ5IiwiYXRfaGFzaCI6Ikd6QUNCTVJtcklwYm9OdkFtNHhMWEEifQ.iAJg13cgySsdH3cmoEPGZB_g-4O8KWvGr6W5VzRXtkrlLoKB1pl4hL6f_0xOrxnQwj2sUgW-wjsCVzMc_dkHSwd9QFZ4EYJEJbi1LMGk2lW-PgjsbwHPDU1mz-SR1PeqqJgvOqrzXo0YHXr-e07M4v4Tko-i_OYcrdJzj4Bkv7ZZilsSj62lNig4HkxTIWi5Ec2gD79bPKzgCtIww1KRnwmrlnCOrMFYNj-0T3lTDcXAQog63MOacf7OuRVUC5k_IdseigeMSscrYrNrH28s3r0JoqDhNUTewuw1jx0X6gdqQWZKOLJ7OF_EJMP-BkRTixBGK5eW2YeUUEVQxsFlUg"
+}
 ```
 
-## <a name="redeem-a-refresh-token"></a>Uplatnění obnovovací token
+## <a name="redeem-a-refresh-token"></a>Uplatnění obnovovacího tokenu
 
-Vytvoření volání POST podobný tomu vidíte tady pomocí informací v následující tabulce jako text žádosti:
+Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v následující tabulce jako text požadavku:
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -116,9 +116,9 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 | resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* a *prostředků* jsou hodnoty, které jste si předtím poznamenali jako ID aplikace. *Refresh_token* je token, který jste obdrželi v ověřovacím hovoru, již bylo zmíněno dříve.
+*Client_id* a *Resource* jsou hodnoty, které jste dříve poznamenali jako ID aplikace. *Refresh_token* je token, který jste dostali ve výše zmíněném ověřovacím volání.
 
-Úspěšná odpověď bude vypadat jako v následujícím příkladu:
+Úspěšná odpověď vypadá jako v následujícím příkladu:
 
 ```json
 {
@@ -136,13 +136,13 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 }
 ```
 > [!NOTE]
-> Při vytváření uživatele přes rozhraní Graph API, aplikace musí mít "openid", "offline_access" a "profil" oprávnění v Microsoft Graphu.
+> Při vytváření uživatelů prostřednictvím Graph API musí aplikace mít oprávnění "OpenID", "offline_access" a "profil" z Microsoft Graph.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s upřednostňované nativní sadou SDK nebo použít ověřování aplikace
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s upřednostňovanou nativní sadou SDK nebo použití ověřování aplikací
 
-Azure AD B2C implementace splňuje standardy veřejným klientem přihlašovacího hesla vlastníka prostředku OAuth 2.0 a by měl být kompatibilní s většina klientské sady SDK. Tento tok mají často, testování v produkčním prostředí s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace najdete v tématu [Native App SDK pro OAuth 2.0 a OpenID Connect, implementace moderní osvědčené postupy](https://appauth.io/).
+Implementace Azure AD B2C splňuje předpisy OAuth 2,0 pro přihlašovací údaje k heslu veřejného klienta a měly by být kompatibilní s většinou klientských sad SDK. Tento tok jsme v produkčním prostředí důkladně otestovali s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace najdete v tématu [nativní sada App SDK pro OAuth 2,0 a OpenID Connect implementující moderní osvědčené postupy](https://appauth.io/).
 
-Stáhnout pracovní ukázky, které byly nakonfigurovány pro použití se službou Azure AD B2C z Githubu, [pro Android](https://aka.ms/aadb2cappauthropc) a [pro iOS](https://aka.ms/aadb2ciosappauthropc).
+Stáhněte si pracovní ukázky, které jsou nakonfigurované pro použití s Azure AD B2C z GitHubu, [pro Android](https://aka.ms/aadb2cappauthropc) a [iOS](https://aka.ms/aadb2ciosappauthropc).
 
 
 

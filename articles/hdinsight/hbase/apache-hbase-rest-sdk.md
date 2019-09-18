@@ -1,6 +1,6 @@
 ---
-title: Použití sady .NET SDK – Azure HDInsight
-description: Pomocí sady .NET SDK vytvářet a odstraňovat tabulky a číst a zapisovat data.
+title: Použití sady .NET SDK pro adaptéry HBA – Azure HDInsight
+description: Pomocí sady .NET SDK pro adaptéry HBA můžete vytvářet a odstraňovat tabulky a číst a zapisovat data.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,43 +8,43 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 707869880c5df619def2d707264b59e22e03c521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720295"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077171"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBA
 
-[Apache HBase](apache-hbase-overview.md) poskytuje dvě primární možnosti pro práci s daty: [Dotazy Apache Hive a volání rozhraní RESTful API HBase na](apache-hbase-tutorial-get-started-linux.md). Může spolupracovat přímo s použitím rozhraní REST API `curl` příkaz nebo podobného nástroje.
+[Apache HBA](apache-hbase-overview.md) poskytují dvě primární volby pro práci s daty: [Apache Hive dotazy a volání rozhraní RESTful API pro adaptéry HBA](apache-hbase-tutorial-get-started-linux.md). Pomocí `curl` příkazu nebo podobného nástroje můžete pracovat přímo s REST API.
 
-Pro aplikace C# a .NET [Microsoft HBase REST Client Library pro .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) poskytuje knihovna klienta nad HBase REST API.
+Pro C# aplikace a aplikace .NET poskytuje [Klientská knihovna REST Microsoft pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) knihovnu klienta na začátku REST API HBA.
 
 ## <a name="install-the-sdk"></a>Instalace sady SDK
 
-Sady .NET SDK je k dispozici jako balíček NuGet, který si můžete nainstalovat pomocí sady Visual Studio **Konzola správce balíčků NuGet** pomocí následujícího příkazu:
+Sada HBA sady .NET SDK je k dispozici jako balíček NuGet, který lze nainstalovat z **konzoly Správce balíčků NuGet** sady Visual Studio pomocí následujícího příkazu:
 
     Install-Package Microsoft.HBase.Client
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Vytvoření instance nového objektu HBaseClient
 
-Použití sady SDK pro vytvoření instance nového `HBaseClient` objekt předávajícího `ClusterCredentials` skládá z `Uri` váš cluster Hadoop uživatelské jméno a heslo.
+Chcete-li použít sadu SDK, vytvořte instanci `HBaseClient` nového objektu a `ClusterCredentials` předejte se složeným z rozhraní `Uri` do vašeho clusteru a uživatelské jméno a heslo Hadoop.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
 
-Nahraďte název clusteru s názvem clusteru HDInsight HBase a uživatelské jméno a heslo zadané při vytvoření clusteru Apache Hadoop přihlašovací údaje. Je výchozí uživatelské jméno Hadoop **správce**.
+Položku název_clusteru nahraďte názvem clusteru HDInsight HBA a uživatelské jméno a heslo s přihlašovacími údaji Apache Hadoop zadaným při vytváření clusteru. Výchozí uživatelské jméno Hadoop je **admin**.
 
 ## <a name="create-a-new-table"></a>Vytvořit novou tabulku
 
-HBase ukládá data v tabulkách. Tabulka se skládá z *Rowkey*, primární klíč a jednu nebo více skupin sloupců se říká *rodin sloupců*. Data v každé tabulce vodorovně distribuovaná podle rozsahu Rowkey do *oblastech*. Každá oblast má počáteční a koncové klíč. Tabulka může mít jednu nebo více oblastech. S růstem data v tabulce HBase velké oblasti rozdělí menší regiony. Oblasti jsou uloženy v *oblastní servery*, kde jeden server oblasti můžete ukládat víc oblastí.
+HBA ukládají data v tabulkách. Tabulka se skládá z *Rowkey*, primárního klíče a jedné nebo více skupin sloupců s názvem *rodin sloupců*. Data v každé tabulce jsou horizontálně distribuována Rowkey rozsahem do *oblastí*. Každá oblast má počáteční a koncový klíč. Tabulka může mít jednu nebo více oblastí. Při zvětšování dat v tabulce rozděluje adaptéry HBA velké oblasti do menších oblastí. Oblasti jsou uloženy v oblastech *servery*, kde jeden server oblasti může ukládat více oblastí.
 
-Jsou data uložená ve fyzicky *HFiles*. Jeden hfile – obsahuje data pro jednu tabulku, jedné oblasti a jedné rodiny sloupců. Řádky v hfile – ukládají, seřazená podle Rowkey. Má každý hfile – *B + stromu* index pro rychlé načítání řádků.
+Data se fyzicky ukládají do *HFiles*. Jeden HFile obsahuje data pro jednu tabulku, jednu oblast a jednu rodinu sloupců. Řádky v HFile jsou uloženy seřazené podle Rowkey. Každý HFile má index *B + stromu* pro urychlení načítání řádků.
 
-Chcete-li vytvořit novou tabulku, zadejte `TableSchema` a sloupce. Následující kód zkontroluje, zda je vytvořen v tabulce "RestSDKTable" již existuje – v opačném případě v tabulce.
+Chcete-li vytvořit novou tabulku, zadejte `TableSchema` sloupce a. Následující kód zkontroluje, zda tabulka ' RestSDKTable ' již existuje – Pokud není, tabulka je vytvořena.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -58,11 +58,11 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-Tato nová tabulka obsahuje dva sloupce rodiny, t1 a t2. Protože rodin sloupců jsou uloženy odděleně v různých HFiles, je vhodné mít samostatný sloupec řady pro data často poslal dotaz. V následujícím [dat vložte](#insert-data) například sloupce jsou přidány do rodiny sloupců t1.
+Tato nová tabulka má dvě rodiny sloupců, T1 a T2. Vzhledem k tomu, že rodin sloupců jsou uložené odděleně v různých HFiles, má smysl mít samostatnou rodinu sloupců pro často dotazovaná data. V následujícím příkladu [INSERT data](#insert-data) jsou sloupce přidány do rodiny sloupců T1.
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
 
-Pokud chcete odstranit tabulku:
+Odstranění tabulky:
 
 ```csharp
 await client.DeleteTableAsync("RestSDKTable");
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Vložení dat
 
-K vložení dat, můžete zadat klíč jedinečném řádku jako identifikátor řádku. Všechna data jsou uložená v `byte[]` pole. Následující kód definuje a přidá `title`, `director`, a `release_date` sloupce do rodiny sloupců t1 jako tyto sloupce jsou nejčastěji používaná. `description` a `tagline` sloupce jsou přidány do rodiny sloupců t2. Můžete svá data dělit do rodin sloupců podle potřeby.
+Chcete-li vložit data, zadejte jedinečný klíč řádku jako identifikátor řádku. Všechna data jsou uložena v `byte[]` poli. Následující kód definuje a přidá `title`sloupce, `director`a `release_date` do rodiny sloupců T1, protože tyto sloupce jsou nejčastěji používané. Sloupce `description` a`tagline` jsou přidány do rodiny sloupců T2. Data můžete podle potřeby rozdělit do rodin sloupců.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-Implementuje HBase [cloudu BigTable](https://cloud.google.com/bigtable/), tak, že formát dat vypadá nějak takto:
+HBA implementují [Cloud BigTable](https://cloud.google.com/bigtable/), takže formát dat vypadá následovně:
 
-![Uživatel s rolí uživatele clusteru](./media/apache-hbase-rest-sdk/table.png)
+![Výstup ukázkových dat Apache HBA](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Výběr dat
 
-Přečíst data z tabulky HBase, předejte klíč řádků a název tabulky do `GetCellsAsync` metodu pro návrat `CellSet`.
+Chcete-li načíst data z tabulky HBA, předejte název tabulky a klíč řádku do `GetCellsAsync` metody, která `CellSet`vrátí.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-V takovém případě vrátí kód pouze první odpovídající řádek, jak by měla existovat pouze jeden řádek pro jedinečný klíč. Vrácená hodnota se změní na `string` formátování z `byte[]` pole. Můžete také převést hodnotu na jiné typy, jako je například integer pro tento film datum vydání:
+V tomto případě kód vrátí pouze první vyhovující řádek, protože pro jedinečný klíč by měl být pouze jeden řádek. Vrácená hodnota se změní na `string` formát `byte[]` v poli. Tuto hodnotu můžete také převést na jiné typy, jako je například celé číslo pro datum vydání verze videa:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -147,9 +147,9 @@ Console.WriteLine(releaseDate);
 // Should return 1997
 ```
 
-## <a name="scan-over-rows"></a>Skenovat řádků
+## <a name="scan-over-rows"></a>Kontrolovat řádky
 
-Používá HBase `scan` načíst jeden nebo více řádků. Tento příklad žádosti více řádků v dávkách po 10 a načítá data, jejichž klíčové hodnoty jsou 25 až 35. Po načtení všech řádků, odstraňte skeneru pro vyčištění prostředků.
+HBA využívají `scan` k načtení jednoho nebo více řádků. Tento příklad vyžaduje více řádků v dávkách 10 a načítá data, jejichž klíčová hodnota jsou mezi 25 a 35. Po načtení všech řádků odstraňte skener a vyčistěte prostředky.
 
 ```csharp
 var tableName = "mytablename";
@@ -187,5 +187,5 @@ finally
 
 ## <a name="next-steps"></a>Další postup
 
-* [Začínáme s příkladem Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Sestavení aplikace začátku do konce se [analýza v reálném čase sentimentu Twitter s Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* [Začínáme s příkladem Apache HBA v HDInsight](apache-hbase-tutorial-get-started-linux.md)
+* Sestavení ucelené aplikace s [analýzou mínění na Twitteru v reálném čase pomocí Apache HBA](../hdinsight-hbase-analyze-twitter-sentiment.md)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918923"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034121"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 Seznamte se s uživateli a rolemi v HDInsight Balíček zabezpečení podniku (ESP) a Správa clusterů ESP.
@@ -21,69 +21,73 @@ Seznamte se s uživateli a rolemi v HDInsight Balíček zabezpečení podniku (E
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
 
 Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Apache Ambari, taky propojit cluster Apache Hadoop zabezpečení pomocí uživatelského jména domény (například: `user1@contoso.com`).
+
 1. Otevřete paletu příkazů tak, že vyberete **CTRL + SHIFT + P**a pak **zadáte HDInsight: Propojit cluster**.
 
-   ![příkaz propojit cluster](./media/apache-domain-joined-manage/link-cluster-command.png)
+   ![Paleta příkazů, propojení clusteru](./media/apache-domain-joined-manage/link-cluster-command.png)
 
 2. Zadejte adresu URL clusteru HDInsight – > vstupní uživatelské jméno – > zadávání hesla – > vybrat typ clusteru – > se zobrazí informace o úspěchu, pokud bylo ověření úspěšné.
-   
-   ![Dialogové okno propojit cluster](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   ![Dialogové okno propojit kroky procesu clusteru](./media/apache-domain-joined-manage/link-cluster-process.png)
 
    > [!NOTE]  
-   > Propojené uživatelské jméno a heslo se použijí, pokud se cluster přihlásí do předplatného Azure i v propojeném clusteru. 
-   
+   > Propojené uživatelské jméno a heslo se použijí, pokud se cluster přihlásí do předplatného Azure i v propojeném clusteru.
+
 3. Propojený cluster můžete zobrazit pomocí **clusteru seznamu**příkazů. Nyní můžete odeslat skript do tohoto odkazovaného clusteru.
 
-   ![propojený cluster](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "propojený cluster")
+   ![vypsat ověření výstupu příkazu clusteru](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "propojený cluster")
 
 4. Můžete také odpojit cluster pomocí zprovoznění **služby HDInsight: Odpojte cluster** od palety příkazů.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí IntelliJ
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`). 
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`).
+
 1. Klikněte na **propojit cluster** z **Azure Exploreru**.
 
    ![propojit kontextovou nabídku clusteru IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**. Pokud se ověření nezdaří, je nutné ověřit uživatelské jméno a heslo. Volitelně můžete přidat účet úložiště, klíč úložiště a pak vybrat kontejner z kontejneru úložiště. Informace o úložišti jsou pro Průzkumníka služby Storage v levém stromu.
-   
-   ![Dialogové okno propojit cluster IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   ![IntelliJ dialogového okna pro připojení clusteru Azure Explorer](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
-   > ![Průzkumník služby Storage v IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+   > 
+   > ![Účet úložiště Azure Explorer v IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
-   
 3. Pokud jsou zadané informace správné, můžete zobrazit propojený cluster v uzlu **HDInsight** . Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
-   ![propojený cluster IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "propojený cluster IntelliJ]")
+   ![IntelliJ propojeného clusteru Azure Explorer](./media/apache-domain-joined-manage/linked-cluster-intellij.png "propojený cluster IntelliJ]")
 
 4. Cluster taky můžete odpojit od **Azure Exploreru**.
-   
-   ![nepropojená IntelliJ clusteru](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+
+   ![Nepropojená IntelliJ clusteru v Průzkumníkovi Azure](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí Eclipse
 
 Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`).
+
 1. Klikněte na **propojit cluster** z **Azure Exploreru**.
 
    ![propojit kontextovou nabídku clusteru](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**a potom klikněte na tlačítko OK pro propojení clusteru. Volitelně můžete zadat účet úložiště, klíč úložiště a pak vybrat kontejner úložiště pro Průzkumníka služby Storage, aby fungoval v levém stromovém zobrazení.
-   
-   ![propojit cluster – zatmění](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
-   
+
+   ![Propojování clusterů v aplikaci Azure Explorer – zatmění](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
+
    > [!NOTE]  
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
-   > ![Průzkumník služby Storage v zatmění](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+   > 
+   > ![Účet úložiště Azure Explorer v zatmění](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
 3. Odkazovaný cluster můžete zobrazit v uzlu **HDInsight** po kliknutí na tlačítko OK, pokud jsou zadané informace správné. Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
-   ![odkaz na propojený cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![Zatmění propojených clusterů v Průzkumníkovi Azure](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Cluster taky můžete odpojit od **Azure Exploreru**.
    
-   ![nepropojený clusterový zatmění](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+   ![Odkaz na cluster nepropojený s Průzkumníkem Azure Explorer](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Přístup ke clusterům pomocí Balíček zabezpečení podniku.
 
@@ -104,8 +108,8 @@ Zabezpečení a izolace uživatelů jsou důležité pro cluster HDInsight s Bal
 
 Použití standardních rozhraní API pomáhá z hlediska zabezpečení. Kromě toho získáte následující výhody:
 
-1.  **Správa** – můžete spravovat kód a automatizovat úlohy pomocí standardních rozhraní API – LIVY, HS2 atd.
-2.  **Audit** – pomocí SSH neexistuje žádný způsob, jak auditovat uživatele SSH ke clusteru. To by nepředstavovalo případ, kdy se úlohy vytvářejí pomocí standardních koncových bodů, protože by byly spuštěny v kontextu uživatele. 
+- **Správa** – můžete spravovat kód a automatizovat úlohy pomocí standardních rozhraní API – LIVY, HS2 atd.
+- **Audit** – pomocí SSH neexistuje žádný způsob, jak auditovat uživatele SSH ke clusteru. To by nepředstavovalo případ, kdy se úlohy vytvářejí pomocí standardních koncových bodů, protože by byly spuštěny v kontextu uživatele. 
 
 
 
@@ -183,11 +187,11 @@ HDInsight Balíček zabezpečení podniku má následující role:
 4. Přihlaste se k Ambari pomocí uživatelského jména a hesla v doméně správce clusteru.
 5. V pravém horním rohu klikněte na rozevírací nabídku **správce** a pak klikněte na **Spravovat Ambari**.
 
-    ![Správa protokolu ESP HDInsight Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight spravovat Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     Uživatelské rozhraní vypadá takto:
 
-    ![ROZHRANÍ ESP pro správu Ambari HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ROZHRANÍ ESP pro správu protokolu HDInsight Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Seznam uživatelů domény synchronizovaných ze služby Active Directory
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).

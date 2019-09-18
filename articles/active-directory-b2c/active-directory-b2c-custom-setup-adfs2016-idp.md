@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899635"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066128"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidejte AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení k uživatelskému účtu ADFS pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C. Přihlášení povolíte přidáním [technického profilu SAML](saml-technical-profile.md) do vlastních zásad.
+V tomto článku se dozvíte, jak povolit přihlášení k uživatelskému účtu ADFS pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [technického profilu SAML](saml-technical-profile.md) do vlastních zásad.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak povolit přihlášení k uživatelskému účt
 Certifikát musíte uložit do svého tenanta Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
@@ -45,7 +45,7 @@ Certifikát musíte uložit do svého tenanta Azure AD B2C.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete, aby se uživatelé přihlásili pomocí účtu ADFS, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen. 
+Pokud chcete, aby se uživatelé přihlásili pomocí účtu ADFS, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
 Účet ADFS můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
@@ -138,7 +138,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
-    
+
     Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Contoso-SAML2`.
 
 3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
@@ -157,7 +157,7 @@ Nahraďte následující hodnoty:
 - **váš tenant** s názvem vašeho tenanta, například Your-tenant.onmicrosoft.com.
 - **vaše zásady** s názvem zásady. Například B2C_1A_signup_signin_adfs.
 - **váš** technický profil s názvem vašeho technického profilu zprostředkovatele identity SAML. Například contoso-typu Saml2.
- 
+
 Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali správnou adresu URL a máte přístup k souboru metadat XML. Pokud chcete přidat nový vztah důvěryhodnosti předávající strany pomocí modulu snap-in Správa služby AD FS a ručně nakonfigurovat nastavení, proveďte na federačním serveru následující postup. Tento postup **mohou provést pouze členové skupiny Administrators nebo uživatelé** s ekvivalentními oprávněními na místním počítači.
 
 1. V Správce serveru vyberte **nástroje**a pak vyberte Správa služby **AD FS**.
@@ -168,7 +168,7 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 6. Na stránce **Zvolte zásady Access Control** vyberte zásadu a pak klikněte na **Další**.
 7. Na stránce **připraveno k přidání vztahu důvěryhodnosti** zkontrolujte nastavení a potom kliknutím na tlačítko **Další** uložte informace o vztahu důvěryhodnosti předávající strany.
 8. Na stránce **Dokončit** klikněte na **Zavřít**. Tato akce automaticky zobrazí dialogové okno **upravit pravidla deklarací identity** .
-9. Vyberte **Přidat pravidlo**.  
+9. Vyberte **Přidat pravidlo**.
 10. V **šabloně pravidla deklarace identity**vyberte **Odeslat atributy LDAP jako deklarace identity**.
 11. Zadejte **název pravidla deklarace identity**. V případě **úložiště atributů**vyberte **možnost vybrat službu Active Directory**, přidejte následující deklarace identity a klikněte na tlačítko **Dokončit** a **OK**.
 
@@ -179,19 +179,19 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
     | Křestní jméno | given_name |
     | E-mailová adresa | email |
     | Zobrazované jméno | name |
-    
-    Všimněte si, že tyto názvy se nezobrazí v rozevíracím seznamu typ odchozí deklarace. Je nutné je ručně zadat v. (Rozevírací seznam je skutečně upravitelný). 
-    
-12.  V závislosti na typu certifikátu možná budete muset nastavit algoritmus HASH. V okně Vlastnosti vztahu důvěryhodnosti předávající strany (B2C demo) vyberte kartu **Upřesnit** a změňte **zabezpečený algoritmus hash** na `SHA-256`a klikněte na tlačítko **OK**.  
+
+    Všimněte si, že tyto názvy se nezobrazí v rozevíracím seznamu typ odchozí deklarace. Je nutné je ručně zadat v. (Rozevírací seznam je skutečně upravitelný).
+
+12.  V závislosti na typu certifikátu možná budete muset nastavit algoritmus HASH. V okně Vlastnosti vztahu důvěryhodnosti předávající strany (B2C demo) vyberte kartu **Upřesnit** a změňte **zabezpečený algoritmus hash** na `SHA-256`a klikněte na tlačítko **OK**.
 13. V Správce serveru vyberte **nástroje**a pak vyberte Správa služby **AD FS**.
-14. Vyberte vztah důvěryhodnosti předávající strany, který jste vytvořili, vyberte **aktualizovat z federačních metadat**a pak klikněte na **aktualizovat**. 
+14. Vyberte vztah důvěryhodnosti předávající strany, který jste vytvořili, vyberte **aktualizovat z federačních metadat**a pak klikněte na **aktualizovat**.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
 Komunikace se službou Azure AD B2C probíhá prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikace**a pak vyberte **Přidat**.
 5. Zadejte název aplikace, například *testapp1*.

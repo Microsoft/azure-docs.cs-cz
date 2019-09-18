@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207138"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057778"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegovat úlohy ve správě nároků Azure AD (Preview)
 
@@ -42,7 +42,7 @@ Předpokládejme, že vaše organizace má následující pět uživatelů:
 
 | Uživatel | Oddělení | Poznámky |
 | --- | --- | --- |
-| Alice | it | Globální správce |
+| Alice | IT | Globální správce |
 | Bob | Výzkum | Bob je také vlastníkem výzkumné skupiny. |
 | Carole | Výzkum |  |
 | Dave | Marketing |  |
@@ -69,7 +69,7 @@ Správa nároků má následující role, které jsou specifické pro správu n�
 
 | Role | Popis |
 | --- | --- |
-| Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem, nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. |
+| Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem, nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. Tvůrce katalogu nemůže spravovat ani zobrazovat katalogy, které nevlastní, a nemůže přidat prostředky, které nevlastní katalog. Pokud tvůrce katalogu potřebuje spravovat další katalog nebo přidat prostředky, které nevlastní, můžou požádat o spoluvlastníky tohoto katalogu nebo prostředku. |
 | Vlastník katalogu | Umožňuje upravovat a spravovat existující katalogy. Obvykle správce IT nebo vlastníci prostředků nebo uživatel, který určil vlastníka katalogu. |
 | Přístup ke Správci balíčků | Umožňuje upravovat a spravovat všechny existující balíčky přístupu v rámci katalogu. |
 
@@ -139,7 +139,15 @@ Pokud chcete delegovat vytváření katalogu, přidejte uživatele do role tvůr
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Přidat vlastníka katalogu nebo správce balíčků přístupu
 
-Pokud chcete delegovat správu katalogu nebo přistupovat k balíčkům v katalogu, přidejte uživatele do role vlastníka katalogu nebo přístup k rolím Správce balíčků. Ten vytvoří katalog jako prvního vlastníka katalogu. Pomocí těchto kroků přiřaďte uživatele k roli správce balíčků v katalogu.
+Chcete-li delegovat správu katalogu nebo přístupu k balíčkům v katalogu, přidejte uživatele do rolí vlastník katalogu nebo přístup k rolím Správce balíčků. Ten vytvoří katalog jako prvního vlastníka katalogu. 
+
+Přiřazený vlastník katalogu nebo správce balíčků přístupu musí být obeznámen s projektem. Tvůrce katalogu by měl vytvořit balíček přístupu, pokud je součástí každodenního provozu projektu a znal následující informace:
+- Jaké prostředky jsou potřeba
+- Kdo bude potřebovat přístup
+- Kdo potřebuje schválit přístup
+- doba, po kterou bude projekt naposledy
+
+Tvůrce katalogu by měl delegovat úkol vedoucímu projektu, který bude vytvářet a spravovat balíček přístupu, pokud se k němu nepodílel v každodenním provozu projektu. Pomocí těchto kroků přiřaďte uživatele k roli správce balíčků pro vlastníka nebo přístup k správci balíčků:
 
 **Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
 

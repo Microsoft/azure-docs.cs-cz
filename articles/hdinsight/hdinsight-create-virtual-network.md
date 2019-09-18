@@ -3,16 +3,17 @@ title: Vytváření virtuálních sítí pro clustery Azure HDInsight
 description: Naučte se, jak vytvořit Virtual Network Azure pro připojení HDInsight k ostatním cloudovým prostředkům nebo prostředkům ve vašem datovém centru.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2fd4c20e5c1cd0a8e1ee6f7c36d4b4a8b99d37ea
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442001"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073636"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
 
@@ -329,7 +330,7 @@ Tento příklad provede následující předpoklady:
     };
     ```
 
-    Nahraďte hodnotu příponou DNS druhé virtuální sítě.  `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` Tato položka směruje požadavky na příponu DNS vzdálené sítě do vlastního DNS v dané síti.
+    Nahraďte hodnotu příponou DNS druhé virtuální sítě. `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` Tato položka směruje požadavky na příponu DNS vzdálené sítě do vlastního DNS v dané síti.
 
 3. Na vlastních serverech DNS v obou virtuálních sítích použijte jako obsah `/etc/bind/named.conf.options` souboru následující text:
 

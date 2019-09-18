@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 1a1196da62b9d28280150dd1ddf1582db64a93d4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073794"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074961"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení importu rozhraní API a známé problémy
 
@@ -49,9 +49,6 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 -   Pokud je zadáno mnoho **serverů** , API Management se pokusí vybrat první adresu URL https. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
 -   **Příklady** nejsou podporované, ale **příklad** je.
 -   **Multipart/form-data** nejsou podporována.
-
-> [!IMPORTANT]
-> Důležité informace a tipy týkající se importu OpenAPI najdete v tomto [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/).
 
 ## <a name="wsdl"> </a>WSDL
 

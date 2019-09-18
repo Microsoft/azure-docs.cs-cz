@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306195"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057896"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -40,7 +40,7 @@ Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do b
 
 V portálu je stav back-end k dispozici automaticky. V existující aplikační bráně vyberte **monitorování** > **stavu back-endu**. 
 
-Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku** **, nejsou v pořádku a**nejsou **známy**.
+Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku**, nejsou v pořádku a nejsou **známy**.
 
 > [!NOTE]
 > Pokud vidíte stav back-endu **Neznámý**, zajistěte, aby byl přístup k back-endu zablokován pravidlem NSG, uživatelem definovanou trasou (udr) nebo vlastním DNS ve virtuální síti.
@@ -309,6 +309,8 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |details.data     | V žádosti, která se shodovala s pravidlem, se našla konkrétní data.         |
 |details. File     | Konfigurační soubor, který obsahoval pravidlo.        |
 |details. line     | Číslo řádku v konfiguračním souboru, který spustil událost.       |
+|název hostitele   | Název hostitele nebo IP adresa Application Gateway.    |
+|transactionId  | Jedinečné ID pro danou transakci, které pomáhá seskupovat více porušení pravidel, ke kterým došlo v rámci stejné žádosti.   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

@@ -4,7 +4,7 @@ description: Řešení potíží při nasazení virtuálních počítačů s Win
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080204"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058038"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží při nasazení virtuálních počítačů s Windows v Azure
 
@@ -34,7 +34,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Opakujte požadavek s menší velikostí virtuálního počítače.
 - Pokud velikost požadovaného virtuálního počítače nejde změnit:
-    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > zastavtevirtuální počítač >.
+    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > **zastavte**virtuální počítač >.
     - Až se všechny virtuální počítače zastaví, vytvořte virtuální počítač v požadované velikosti.
     - Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko Spustit.
 
@@ -118,7 +118,7 @@ Vyberte velikost podporovanou v clusteru skupiny dostupnosti. Doporučuje se př
 Ano. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/).
 
 Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

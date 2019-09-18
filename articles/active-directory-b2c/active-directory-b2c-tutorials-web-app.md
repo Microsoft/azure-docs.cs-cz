@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f6fa48ea1d98c8bc6e6a6bcdea7c0f1083952e49
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914206"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064715"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak pomocí Azure Active Directory (Azure AD) B2C přihlašovat a registrovat uživatele ve webové aplikaci ASP.NET. Azure AD B2C umožňuje vašim aplikacím ověřovat účty v sociálních sítích, podnikové účty a účty Azure Active Directory pomocí protokolů Open Standard.
+V tomto kurzu se dozvíte, jak pomocí Azure Active Directory B2C (Azure AD B2C) přihlašovat a zaregistrovat uživatele ve webové aplikaci v ASP.NET. Azure AD B2C umožňuje vašim aplikacím ověřovat účty v sociálních sítích, podnikové účty a účty Azure Active Directory pomocí protokolů Open Standard.
 
 V tomto kurzu se naučíte:
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 V kurzu, který jste dokončili v rámci požadavků, jste přidali webovou aplikaci do Azure AD B2C. Pokud chcete povolit komunikaci s ukázkou v tomto kurzu, musíte do aplikace v Azure AD B2C přidat identifikátor URI přesměrování.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
 5. V části **Adresa URL odpovědi**přidejte `https://localhost:44316`.

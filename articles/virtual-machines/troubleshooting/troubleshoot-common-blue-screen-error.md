@@ -4,7 +4,7 @@ description: Naučte se, jak řešit potíže, při kterých se při spouštěn�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 397f9f4de21ecb27435c132d80074ed442202448
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 921e97fa393a3005e3ba392502d291301df3d65c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089969"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058067"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Při spouštění virtuálního počítače Azure zobrazuje Windows chybou modrou obrazovku
 Tento článek popisuje chyby modré obrazovky, se kterými se můžete setkat při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky, které vám pomůžou shromáždit data pro lístek podpory. 
@@ -55,7 +55,7 @@ Chcete-li tento problém vyřešit, je třeba nejprve shromáždit soubor s výp
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Vyhledat soubor s výpisem paměti a odeslat lístek podpory
 
 1. Na virtuálním počítači pro obnovení otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem F, je nutné přejít na F:\Windows.
-2. Vyhledejte soubor Memory. dmp a pak odešlete [lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti. 
+2. Vyhledejte soubor Memory. dmp a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti. 
 
 Pokud soubor s výpisem paměti nemůžete najít, přejděte k dalšímu kroku a Povolte protokol výpisu a sériovou konzolu.
 

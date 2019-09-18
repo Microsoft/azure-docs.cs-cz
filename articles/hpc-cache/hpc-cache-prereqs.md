@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775335"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036856"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -22,7 +22,7 @@ Než použijete Azure Portal k vytvoření nové mezipaměti prostředí Azure H
 Doporučuje se placené předplatné.
 
 > [!NOTE]
-> V rámci verze Public Preview musí tým Azure HPC cache přidat vaše předplatné do seznamu přístupu, aby ho bylo možné použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, že každý zákazník získá vysoce kvalitní odezvu z testovacích mezipamětí. Vyplňte [Tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
+> Během vydání verze Preview musí tým Azure HPC cache přidat vaše předplatné do seznamu přístupu, aby ho bylo možné použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, že každý zákazník získá vysoce kvalitní odezvu z testovacích mezipamětí. Vyplňte [Tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
 
 ## <a name="network-infrastructure"></a>Síťová infrastruktura
 
@@ -88,6 +88,6 @@ Je vhodné použít účet úložiště ve stejném umístění jako mezipaměť
 
 Musíte taky dát aplikaci cache přístup k vašemu účtu úložiště Azure. Podle popisu v části [Přidání úložiště do mezipaměti](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) udělte mezipaměti účet úložiště role přispěvatel a přispěvatel dat objektů BLOB úložiště. Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytvoření instance mezipaměti prostředí Azure HPC](hpc-cache-create.md) z Azure Portal

@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 14aff313ece93feabc39194ba6859e3bca6be3bc
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622402"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065098"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účet Microsoft
 
-Pokud chcete použít účet Microsoft jako [poskytovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na adrese [https://www.live.com/](https://www.live.com/).
+Pokud chcete použít účet Microsoft jako [poskytovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na adrese [https://www.live.com/](https://www.live.com/).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr předplatného a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
 1. Zadejte **název** vaší aplikace. Například *MSAapp1*.

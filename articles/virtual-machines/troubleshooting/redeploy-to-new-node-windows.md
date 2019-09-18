@@ -4,7 +4,7 @@ description: Postup opětovného nasazení virtuálních počítačů s Windows 
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12488033448c7798690b3d6d68782baf2f76adf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090297"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058625"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Znovu nasadit virtuální počítač s Windows do nového uzlu Azure
 Pokud jste se setkali s řešením potíží s připojením vzdálené plochy (RDP) nebo aplikací k virtuálnímu počítači Azure se systémem Windows, může vám tento virtuální počítač znovu nasadit. Když znovu nasadíte virtuální počítač, Azure vypne virtuální počítač, přesune virtuální počítač do nového uzlu v rámci infrastruktury Azure a pak ho znovu zachová a uchová všechny možnosti konfigurace a přidružené prostředky. V tomto článku se dozvíte, jak nasadit virtuální počítač pomocí Azure PowerShell nebo Azure Portal.

@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073876"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033720"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: Konfigurace preferovaného umístění dat pro prostředky Office 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -141,7 +141,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
+    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | není zaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit příchozí pravidlo, vyberte **Přidat**.
 
@@ -172,13 +172,13 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | sourceObjectType | VÝŠI | Uživatel |
     | cloudMastered | NOTEQUAL | Pravda |
 
-    Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "odchozího pro AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
+    Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "out do Azure AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
 6. Přejít na kartu **transformace** a implementovat následující pravidlo transformace:
 
     | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Přímé | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
+    | Přímé | preferredDataLocation | preferredDataLocation | není zaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit odchozí pravidlo, zavřete **Přidat** .
 
@@ -249,7 +249,7 @@ Nyní je čas ověřit konfiguraci a povolit pro uživatele.
 Za předpokladu, že je váš tenant označený k tomu, aby mohl používat tuto funkci, se poštovní schránka přesune do správného geografického umístění. Můžete to ověřit tak, že si vyhledáte název serveru, kde se nachází poštovní schránka.
 4. Pokud chcete ověřit, že toto nastavení bylo v mnoha poštovních schránkách platné, použijte skript v [Galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Tento skript obsahuje taky seznam prefixů serveru pro všechna datová centra Office 365 a geografickou oblast, ve které se nachází. Dá se použít jako odkaz v předchozím kroku k ověření umístění poštovní schránky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o multi-geografické sadě Office 365:
 

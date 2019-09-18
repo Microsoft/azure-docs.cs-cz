@@ -1,7 +1,7 @@
 ---
 title: Nastavení vývojového prostředí v Pythonu
-titleSuffix: Azure Machine Learning service
-description: Naučte se konfigurovat vývojové prostředí při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
+titleSuffix: Azure Machine Learning
+description: Naučte se konfigurovat vývojové prostředí při práci s Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860572"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034875"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
-V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci s Azure Machine Learning služby. Služba Azure Machine Learning je nezávislá platformy. Jediným z požadavků pro vaše vývojové prostředí je Python 3. Doporučuje se také izolované prostředí, jako je Anaconda nebo virtualenv.
+V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci s Azure Machine Learning. Azure Machine Learning nezávislá platformy. Jediným z požadavků pro vaše vývojové prostředí je Python 3. Doporučuje se také izolované prostředí, jako je Anaconda nebo virtualenv.
 
 Následující tabulka uvádí každé vývojové prostředí popsané v tomto článku spolu s odborníky a nevýhody.
 
@@ -40,7 +40,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
+Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
 
 Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local), [Jupyter Notebook Server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
@@ -70,7 +70,7 @@ Virtuální počítač poznámkového bloku je:
   + Výběr architektur hloubkového učení
 
 
-  Pokud jste v kódu, obsahuje tento virtuální počítač kurzy a ukázky, které vám pomůžou prozkoumat a zjistit, jak používat službu Azure Machine Learning. Ukázkové poznámkové bloky se ukládají do účtu Azure Blob Storage ve vašem pracovním prostoru, aby je mohli sdílet napříč virtuálními počítači. Při spuštění mají také přístup k úložištím dat a výpočetním prostředkům vašeho pracovního prostoru.
+  Pokud jste přihlášeni do kódu, virtuální počítač obsahuje kurzy a ukázky, které vám pomůžou prozkoumat a naučit se, jak používat Azure Machine Learning. Ukázkové poznámkové bloky se ukládají do účtu Azure Blob Storage ve vašem pracovním prostoru, aby je mohli sdílet napříč virtuálními počítači. Při spuštění mají také přístup k úložištím dat a výpočetním prostředkům vašeho pracovního prostoru.
 
 + **Jednoduché nastavení**: Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v [tomto kurzu: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md)prostor.
 
@@ -145,7 +145,7 @@ Pokud chcete použít DSVM jako vývojové prostředí, udělejte toto:
     print(azureml.core.VERSION)
     ```
 
-1. Pokud chcete nakonfigurovat DSVM pro používání pracovního prostoru služby Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
+1. Pokud chcete nakonfigurovat DSVM pro použití vašeho pracovního prostoru Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
 
 Další informace najdete v tématu [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
@@ -255,7 +255,7 @@ Postup v části [místní počítač](#local) nainstaluje potřebné komponenty
     sys.path
     ```
     
-1. Pokud chcete nakonfigurovat Jupyter Notebook, aby používala pracovní prostor služby Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
+1. Pokud chcete nakonfigurovat Jupyter Notebook k používání pracovního prostoru Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
 
 
 ### <a id="vscode"></a>Visual Studio Code
@@ -287,7 +287,7 @@ Pokud chcete použít Visual Studio Code pro vývoj, udělejte toto:
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí pro spolupráci na bázi poznámkového bloku s PROCESORem nebo výpočetním clusterem založeným na GPU.
 
-Jak Azure Databricks spolupracuje se službou Azure Machine Learning:
+Jak Azure Databricks pracuje s Azure Machine Learning:
 + Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
 + Automatické funkce strojového [učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
 + Azure Databricks můžete použít jako cíl pro výpočetní prostředky z [kanálu Azure Machine Learning](concept-ml-pipelines.md).
@@ -355,7 +355,7 @@ Vyzkoušet:
 
 ## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
 
-Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning služby. Soubor má název *config. JSON*a má následující formát:
+Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning. Soubor má název *config. JSON*a má následující formát:
 
 ```json
 {

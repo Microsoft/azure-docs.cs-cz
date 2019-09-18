@@ -1,7 +1,7 @@
 ---
 title: Nasazení modelů ml do Azure App Service (Preview)
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat službu Azure Machine Learning k nasazení modelu do webové aplikace v Azure App Service.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat Azure Machine Learning k nasazení modelu do webové aplikace v Azure App Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147912"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034597"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 
-Naučte se, jak nasadit model z Azure Machine Learning služby jako webové aplikace v Azure App Service.
+Naučte se nasadit model z Azure Machine Learning jako webovou aplikaci v Azure App Service.
 
 > [!IMPORTANT]
-> I když jsou všeobecně k dispozici obě služby Azure Machine Learning i Azure App Service, možnost nasadit model ze služby Machine Learning na App Service je ve verzi Preview.
+> I když jsou všeobecně k dispozici Azure Machine Learning i Azure App Service, možnost nasadit model ze služby Machine Learning do App Service je ve verzi Preview.
 
-Pomocí Azure Machine Learning služby můžete vytvářet image Docker z školicích modelů strojového učení. Tato image obsahuje webovou službu, která přijímá data, odesílá je do modelu a pak vrátí odpověď. Azure App Service lze použít k nasazení bitové kopie a k dispozici jsou následující funkce:
+Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích modelů strojového učení. Tato image obsahuje webovou službu, která přijímá data, odesílá je do modelu a pak vrátí odpověď. Azure App Service lze použít k nasazení bitové kopie a k dispozici jsou následující funkce:
 
 * Rozšířené [ověřování](/azure/app-service/configure-authentication-provider-aad) pro rozšířené zabezpečení. Metody ověřování zahrnují Azure Active Directory i Multi-Factor auth.
 * [Automatické škálování](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) bez nutnosti opětovného nasazení.
@@ -48,7 +48,7 @@ Další informace o funkcích poskytovaných nástrojem Azure App Service najdet
     > * `model`– Registrovaný model, který se nasadí.
     > * `inference_config`– Odvození konfigurace pro model.
     >
-    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
@@ -66,7 +66,7 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
     >
     > Další alternativou, která může fungovat pro váš scénář, je [Batch předpovědi](how-to-run-batch-predictions.md), která poskytuje přístup k úložišti dat při bodování.
 
-    Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+    Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 * **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
@@ -89,7 +89,7 @@ Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvozen�
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
 
-Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Při nasazování do Azure App Service nemusíte vytvářet __konfiguraci nasazení__.
@@ -99,7 +99,7 @@ Další informace o konfiguraci odvození najdete v tématu [nasazení modelů p
 Chcete-li vytvořit bitovou kopii Docker, která je nasazena do Azure App Service, použijte [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Následující fragment kódu ukazuje, jak vytvořit novou bitovou kopii z modelu a odvozené konfigurace:
 
 > [!NOTE]
-> Fragment kódu předpokládá, že `model` obsahuje registrovaný model `inference_config` a obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+> Fragment kódu předpokládá, že `model` obsahuje registrovaný model `inference_config` a obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
     V tomto příkladu se používá cenová úroveň Basic`--sku B1`().
 
     > [!IMPORTANT]
-    > Bitové kopie vytvořené službou Azure Machine Learning používají systém Linux, takže je nutné použít `--is-linux` parametr.
+    > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít `--is-linux` parametr.
 
 1. Pokud chcete vytvořit webovou aplikaci, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. `<acrinstance>` Nahraďte `<imagename>` a hodnotami vrácenými `package.location` dříve:
 
@@ -266,7 +266,7 @@ print(response.json())
 ## <a name="next-steps"></a>Další postup
 
 * Naučte se konfigurovat webovou aplikaci v dokumentaci k [App Service v systému Linux](/azure/app-service/containers/) .
-* Další informace o škálování najdete v seznámení s automatickým [škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
+* Další informace o škálování najdete v [Seznámení s automatickým škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
 * [Použijte certifikát SSL v Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
 * [Nakonfigurujte aplikaci App Service, aby používala Azure Active Directory přihlášení](/azure/app-service/configure-authentication-provider-aad).
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

@@ -13,21 +13,21 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d9b9512df294b25fa73b890a646f29dfd0c3d88
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113623"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71057892"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Vytvoření aplikace App Service s průběžným nasazováním z GitHubu pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří aplikaci v App Service se souvisejícími prostředky a pak nastaví průběžné nasazování z úložiště GitHub. Pro nasazení GitHubu bez průběžného nasazování si přečtěte téma [Vytvoření aplikace a nasazení kódu z GitHubu](cli-deploy-github.md). Pro tuto ukázku potřebujete:
 
-* Úložiště GitHub s kódem aplikace, ke kterému máte oprávnění správce. Chcete-li získat automatické sestavení, sestavte úložiště podle připravenosti tabulky [úložiště](../deploy-continuous-deployment.md#prepare-your-repository) .
+* Úložiště GitHub s kódem aplikace, ke kterému máte oprávnění správce. Chcete-li získat automatické sestavení, sestavte úložiště podle [připravenosti tabulky úložiště](../deploy-continuous-deployment.md#prepare-your-repository) .
 * [Token PAT](https://help.github.com/articles/creating-an-access-token-for-command-line-use) pro váš účet GitHub.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -53,7 +53,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží aplikaci App Service k úložišti Git nebo Mercurial. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

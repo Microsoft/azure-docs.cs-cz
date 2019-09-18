@@ -1,6 +1,6 @@
 ---
-title: Principy rolí správců pro Enterprise v Azure | Microsoft Docs
-description: Přečtěte si informace o rolích podnikového správce v Azure.
+title: Principy rolí správce smlouvy Enterprise v Azure | Microsoft Docs
+description: Přečtěte si informace o rolích správce smlouvy Enterprise v Azure.
 services: billing
 documentationcenter: ''
 author: adpick
@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70034529"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu Azure smlouva Enterprise v Azure
+# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu smlouvy Azure Enterprise v Azure
 
-Zákazníkům Azure s smlouva Enterprise (EA) se může při správě využívání a útraty vaší organizace přiřadit pět různých administrativních rolí:
+Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různých rolí správce, které jim v organizaci usnadní spravovat využívání a výdaje:
 
 - Podnikový správce
 - Podnikový správce (jen pro čtení)
@@ -30,13 +30,13 @@ Zákazníkům Azure s smlouva Enterprise (EA) se může při správě využívá
 - Správce oddělení (jen pro čtení)
 - Vlastník účtu
  
-Tyto role jsou specifické pro správu smluv Azure Enterprise a navíc k předdefinovaným rolím Azure musí řídit přístup k prostředkům. Další informace najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
+Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
 
-V následujících částech jsou popsána omezení a možnosti jednotlivých rolí.
+Následující části popisují omezení a možnosti jednotlivých rolí.
 
-## <a name="user-limit-for-admin-roles"></a>Omezení počtu uživatelů pro role správců
+## <a name="user-limit-for-admin-roles"></a>Limit počtu uživatelů pro role správce
 
-|Role| Omezení počtu uživatelů|
+|Role| Limit počtu uživatelů|
 |---|---|
 |Podnikový správce|Unlimited|
 |Podnikový správce (jen pro čtení)|Unlimited|
@@ -44,65 +44,65 @@ V následujících částech jsou popsána omezení a možnosti jednotlivých ro
 |Správce oddělení (jen pro čtení)|Unlimited|
 |Vlastník účtu|1 na účet<sup>1</sup>|
 
-<sup>1</sup> každý účet vyžaduje jedinečný účet Microsoft nebo pracovní nebo školní účet.
+<sup>1</sup> Každý účet vyžaduje jedinečný účet Microsoft nebo pracovní či školní účet.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organizační struktura a oprávnění podle role
 
 |Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení)|Vlastník účtu|
 |---|---|---|---|---|---|
-|Zobrazit podnikové správce|✔|✔|✘|✘|✘|
+|Zobrazení podnikových správců|✔|✔|✘|✘|✘|
 |Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|
-|Zobrazit kontakty oznámení<sup>2</sup> |✔|✔|✘|✘|✘|
-|Přidat nebo odebrat kontakty oznámení<sup>2</sup> |✔|✘|✘|✘|✘|
-|Vytváření a Správa oddělení |✔|✘|✘|✘|✘|
-|Zobrazit Správce oddělení|✔|✔|✔|✔|✘|
-|Přidat nebo odebrat správce oddělení|✔|✘|✔|✘|✘|
-|Zobrazit účty v registraci |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|Přidání účtů k registraci a změna vlastníka účtu|✔|✘|✔<sup>3</sup>|✘|✘|
-|Vytváření a Správa předplatných a oprávnění k předplatnému|✘|✘|✘|✘|✔|
+|Zobrazení kontaktů pro oznámení<sup>2</sup> |✔|✔|✘|✘|✘|
+|Přidání nebo odebrání kontaktů pro oznámení<sup>2</sup> |✔|✘|✘|✘|✘|
+|Vytvoření a správa oddělení |✔|✘|✘|✘|✘|
+|Zobrazení správců oddělení|✔|✔|✔|✔|✘|
+|Přidání nebo odebrání správců oddělení|✔|✘|✔|✘|✘|
+|Zobrazení účtů v registraci |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
+|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>3</sup>|✘|✘|
+|Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> kontaktní oznámení odesílají e-mailovou komunikaci o smlouva Enterprise Azure.
-- <sup>3</sup> úloha je omezená na účty ve vašem oddělení.
+- <sup>2</sup> Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlouvy Azure Enterprise.
+- <sup>3</sup> Úloha je omezená na účty ve vašem oddělení.
 
 
-## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a náklady podle role
+## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a nákladům podle role
 
 |Úlohy| Podnikový správce|Podnikový správce (jen pro čtení)|Správce oddělení|Správce oddělení (jen pro čtení) |Vlastník účtu|
 |---|---|---|---|---|---|
 |Zobrazení zůstatku kreditu včetně peněžního závazku|✔|✔|✘|✘|✘|
-|Zobrazit kvóty útraty oddělení|✔|✔|✘|✘|✘|
-|Nastavení kvót útraty pro oddělení|✔|✘|✘|✘|✘|
-|Zobrazit Ceník ceny EA organizace|✔|✔|✘|✘|✘|
-|Zobrazit podrobnosti o využití a nákladech|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
-|Správa prostředků v Azure Portal|✘|✘|✘|✘|✔|
+|Zobrazení kvót útraty oddělení|✔|✔|✘|✘|✘|
+|Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|
+|Zobrazení ceníku EA v organizaci|✔|✔|✘|✘|✘|
+|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> vyžaduje, aby podnikový správce na portálu Enterprise povolil zásadu **zobrazení nákladů na zobrazení da** . Správce oddělení pak může zobrazit podrobnosti o nákladech oddělení.
-- <sup>5</sup> vyžaduje, aby podnikový správce na portálu Enterprise povolil možnost **Zobrazit poplatky za zobrazení Ao** . Vlastník účtu pak může zobrazit podrobnosti o nákladech účtu.
+- <sup>4</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **DA view charges** (Správce oddělení může zobrazit náklady). Správce oddělení pak může zobrazit podrobnosti o nákladech daného oddělení.
+- <sup>5</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **AO view charges** (Vlastník účtu může zobrazit náklady). Vlastník účtu pak může zobrazit podrobnosti o nákladech daného účtu.
 
 
-## <a name="pricing-in-azure-portal"></a>Ceny v Azure Portal
+## <a name="pricing-in-azure-portal"></a>Ceny na webu Azure Portal
 
-V závislosti na vaší roli správce a způsobu, jakým jsou zásady zobrazení poplatků nastavené podnikovým správcem, se vám můžou zobrazovat různé ceny Azure Portal. Tyto dvě zásady na portálu Enterprise mají vliv na ceny, které vidíte v Azure Portal:
+V závislosti na vaší roli pro správu a na tom, jak podnikový správce nastavil zásady zobrazování nákladů, se vám můžou na webu Azure Portal zobrazovat různé ceny. Na zobrazení cen na webu Azure Portal má vliv nastavení těchto dvou zásad na webu Enterprise Portal:
 
-- Poplatky za zobrazení DA
-- Poplatky za zobrazení AO
+- DA view charges (Správce oddělení může zobrazit náklady)
+- AO view charges (Vlastník účtu může zobrazit náklady)
 
-Informace o tom, jak tyto zásady nastavit, najdete v tématu [Správa přístupu k fakturačním informacím pro Azure](billing-manage-access.md).
+Informace o tom, jak tyto zásady nastavit, najdete v tématu [Správa přístupu k fakturačním informacím v Azure](billing-manage-access.md).
 
-V následující tabulce je uveden vztah mezi rolemi správce smlouva Enterprise, zásadou zobrazení poplatků, rolí řízení přístupu na základě role (RBAC) v Azure Portal a cenami, které vidíte v Azure Portal. Správce podnikové sítě vždycky uvidí podrobnosti o využití na základě cen EA v organizaci. Správce oddělení a vlastník účtu ale uvidí různé cenové pohledy na základě zásad pro poplatky za zobrazení a jejich role RBAC. Role správce oddělení uvedená v následující tabulce odkazuje na role správce oddělení a správce oddělení (jen pro čtení).
+V následující tabulce je uveden vztah mezi rolemi správce smlouvy Enterprise, zásadami zobrazování nákladů, rolí řízení přístupu na základě role (RBAC) na webu Azure Portal a cenami, které se zobrazují na webu Azure Portal. Podnikovému správci se vždycky zobrazují podrobnosti o využití na základě cen EA v organizaci. Správci oddělení a vlastníkovi účtu se ale zobrazují různé ceny podle nastavení zásad zobrazování nákladů a jejich role RBAC. Role Správce oddělení uvedená v následující tabulce se týká role Správce oddělení i role Správce oddělení (jen pro čtení).
 
-|Role správce smlouva Enterprise|Zobrazit zásady poplatků za roli|Role RBAC|Zobrazení cen|
+|Role správce smlouvy Enterprise|Zásady zobrazování nákladů pro roli|Role RBAC|Zobrazení cen|
 |---|---|---|---|
-|Vlastník účtu nebo správce oddělení|✔ Povoleno|Owner|Ceny smlouvy EA pro organizaci|
-|Vlastník účtu nebo správce oddělení|✘ Zakázané|Owner|Maloobchodní ceny|
-|Vlastník účtu nebo správce oddělení|✔ Povoleno |žádný|Žádné ceny|
-|Vlastník účtu nebo správce oddělení|✘ Zakázané |žádný|Žádné ceny|
-|Žádné|Nelze použít |Owner|Maloobchodní ceny|
+|Vlastník účtu nebo Správce oddělení|✔ Povoleno|Vlastník|Ceny EA v organizaci|
+|Vlastník účtu nebo Správce oddělení|✘ Zakázáno|Vlastník|Maloobchodní ceny|
+|Vlastník účtu nebo Správce oddělení|✔ Povoleno |Žádná|Žádné ceny|
+|Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
+|Žádný|Neuvedeno |Vlastník|Maloobchodní ceny|
 
-Role podnikového správce můžete nastavit a zobrazit zásady poplatků na portálu Enterprise. Role RBAC se dá aktualizovat v Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Role RBAC se dá aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Správa přístupu k fakturačních údajů pro Azure](billing-manage-access.md)
+- [Správa přístupu k fakturačním údajům v Azure](billing-manage-access.md)
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
 - [Předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md)

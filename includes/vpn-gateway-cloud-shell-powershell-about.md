@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 01358d13d30358a9950cbe35622df065fc5a6de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe7e617ae2263f1388feef3754f6cd16130ed436
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133746"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059626"
 ---
-Tento článek používá rutiny prostředí PowerShell. Ke spouštění rutin, můžete použít Azure Cloud Shell, interaktivní prostředí prostředí hostovaných v Azure a použít pomocí prohlížeče. Azure Cloud Shell se dodává s rutinami Azure Powershellu, které jsou předem nainstalované.
+Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell interaktivní prostředí prostředí hostované v Azure, které se používá v prohlížeči. Azure Cloud Shell obsahuje předem instalované rutiny Azure PowerShell.
 
-Pokud chcete spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci služby Cloud Shell, použijte **kopírování** tlačítko na bloku kódu pro kód zkopírujte a vložte ho do relace Cloud Shellu s __Ctrl + Shift + V__ na Windows a Linux, nebo __Cmd + Shift + V__ v systému macOS. Vložený text není spouštěny automaticky, takže stiskněte **Enter** pro spuštění kódu.
+Chcete-li spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci Cloud Shell, pomocí tlačítka **kopírování** na bloku kódu kód zkopírujte a vložte jej do relace Cloud shell s __kombinací kláves CTRL + SHIFT + v__ v systémech Windows a Linux nebo __Cmd + Shift + v__ v macOS. Vkládaný text není automaticky spuštěn, takže stiskněte klávesu **ENTER** pro spuštění kódu.
 
-Můžete spustit Azure Cloud Shell pomocí:
+Azure Cloud Shell můžete spustit pomocí:
 
 |  |   |
 |-----------------------------------------------|---|
-| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. To __nebude__ automaticky zkopírování textu do Cloud Shellu. | ![Příklad vyzkoušet pro Azure Cloud Shell.](./media/cloud-shell-try-it/cli-try-it.png) |
-| Otevřít [shell.azure.com](https://shell.azure.com) v prohlížeči. | [![Spusťte Azure Cloud Shell tlačítko](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| Zvolte **Cloud Shell** v nabídce v pravém horním rohu webu [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. Automaticky __se__ nekopíruje text na Cloud Shell. | ![Příklad pokusu o Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Otevřete [Shell.Azure.com](https://shell.azure.com) v prohlížeči. | [![Tlačítko pro spuštění Azure Cloud Shell](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Zvolte **Cloud Shell** v nabídce v pravém horním rohu webu [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
-**Místní použití Powershellu**
+**Místní spuštění PowerShellu**
 
-Můžete také nainstalovat a spustit rutiny prostředí Azure PowerShell místně ve vašem počítači. Rutiny Powershellu se často aktualizují. Pokud používáte nejnovější verzi, zadané v pokynech pro hodnoty nemusí fungovat. Chcete-li najít verze ve vašem počítači nainstalovaný Azure PowerShell, použijte `Get-Module -ListAvailable Az` rutiny. Pro instalaci nebo aktualizaci, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+V počítači můžete také nainstalovat a spustit rutiny Azure PowerShell místně. Rutiny PowerShellu se často aktualizují. Pokud nepoužíváte nejnovější verzi, hodnoty uvedené v pokynech mohou selhat. Pokud chcete najít verze Azure PowerShell nainstalované v počítači, použijte `Get-Module -ListAvailable Az` rutinu. Chcete-li nainstalovat nebo aktualizovat, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).

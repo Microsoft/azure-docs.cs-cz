@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073191"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055313"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -71,7 +71,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
     * Hodnota = *časové pásmo, které chcete*
 3. Vyberte **Uložit**.
 
-Přijaté hodnoty najdete ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) .
+Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ Database: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
@@ -96,7 +96,7 @@ Všimněte si, že pokud chcete použít vyhrazenou nebo rezervovanou IP adresu 
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Můžu exportovat App Service můj certifikát pro použití mimo Azure, například pro web hostující jinde? 
 
-Certifikáty App Service se považují za prostředky Azure. Nejsou určeny k používání mimo vaše služby Azure. Nemůžete je exportovat, abyste je mohli používat mimo Azure. Další informace najdete v tématu [Nejčastější dotazy týkající se App Service certifikátů a vlastních domén](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Ano, můžete je exportovat, abyste je mohli používat mimo Azure. Další informace najdete v tématu [Nejčastější dotazy týkající se App Service certifikátů a vlastních domén](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Můžu exportovat svůj App Service certifikát pro použití s dalšími Cloud Services Azure?
 

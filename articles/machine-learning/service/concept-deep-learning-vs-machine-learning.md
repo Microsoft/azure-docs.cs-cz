@@ -1,6 +1,6 @@
 ---
 title: Obsáhlý Learning a strojové učení
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Přečtěte si o hloubkovém učení a strojovém učení a o tom, jak se obě koncepce vztahují na umělou analýzu. Obsáhlý Learning se dá použít ve scénářích, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, analýza mínění a prognózování časových řad.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240957"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035509"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 
@@ -106,9 +106,9 @@ Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznáván
 
 ## <a name="next-steps"></a>Další postup
 
-Následující články ukazují, jak používat technologii pro hloubkové učení ve [službě Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
+Následující články ukazují, jak používat technologii pro hloubkové učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 
 - [Klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Klasifikace imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

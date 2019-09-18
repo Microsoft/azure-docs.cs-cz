@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017968"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057819"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -55,8 +55,8 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Služba privátního propojení** (Vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | Prázdná |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | (Microsoft. Storage/storageAccounts)    |  BLOB (objekt blob, blob_secondary)<BR> Table (tabulka; table_secondary)<BR> Queue (Queue; queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (Web; web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | (Microsoft. Storage/storageAccounts)    |  BLOB (objekt blob, blob_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)<BR> Table (tabulka; table_secondary)<BR> Queue (Queue; queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (Web; web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
@@ -127,7 +127,7 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 |Specializované úlohy nemůžou přistupovat k privátním koncovým bodům.    |   Následující služby nasazené do vaší virtuální sítě nemají přístup k jakémukoli prostředku privátního propojení pomocí privátních koncových bodů:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   Ve verzi Preview není žádné zmírnění.       |
 |  Portál nepodporuje vytváření privátních koncových bodů pomocí aliasu.  |   Portál povoluje vytváření privátních koncových bodů pomocí identifikátoru URI prostředku.      | Pro vyžádání připojení privátních koncových bodů použít identifikátor URI prostředku        |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí portálu](create-private-endpoint-portal.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)

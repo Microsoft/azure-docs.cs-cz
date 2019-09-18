@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276487"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058344"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Náhled – zabezpečený přístup k serveru rozhraní API pomocí povolených rozsahů IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak používat rozsahy IP adres autorizovaných se
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že pracujete s clustery, které používají [kubenet] [kubenet].  V případě clusterů založených na [CNI] [CNI-Networking] nebude k zabezpečení přístupu nutná požadovaná tabulka směrování.  Směrovací tabulku budete muset vytvořit ručně.  Další informace najdete v tématu [Správa směrovacích tabulek](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+Tento článek předpokládá, že pracujete s clustery, které používají [kubenet][kubenet].  S clustery založenými na [CNI (Azure Container Networking Interface)][cni-networking] nebudete mít potřebnou směrovací tabulku potřebnou k zabezpečení přístupu.  Směrovací tabulku budete muset vytvořit ručně.  Další informace najdete v tématu [Správa směrovacích tabulek](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 Schválené rozsahy IP adres serveru API fungují jenom pro nové clustery AKS, které vytvoříte. V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 
@@ -256,6 +256,8 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

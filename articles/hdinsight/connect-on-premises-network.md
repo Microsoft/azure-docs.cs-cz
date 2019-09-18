@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918544"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034134"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -40,7 +40,7 @@ Tato konfigurace umožňuje následující chování:
 
 V následujícím diagramu jsou zelenými řádky požadavky na prostředky, které končí příponou DNS virtuální sítě. Modré řádky jsou požadavky na prostředky v místní síti nebo na veřejném Internetu.
 
-![Diagram postupu při řešení požadavků DNS v konfiguraci použité v tomto dokumentu](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagram postupu při řešení požadavků DNS v konfiguraci](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +96,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     |Subnet | Vyberte výchozí podsíť pro virtuální síť, kterou jste vytvořili dříve. Nevybírejte __podsíť__ , kterou používá brána sítě VPN.|
     |Veřejná IP adresa | Použijte automaticky vyplněnou hodnotu.  |
 
-    ![Nastavení virtuální sítě](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![Nastavení virtuální sítě HDInsight](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Ponechte výchozí hodnoty na další položky a potom vyberte **zkontrolovat + vytvořit**.
 
@@ -332,7 +332,7 @@ Pokud se chcete ke službě HDInsight připojit přímo přes virtuální síť,
     >
     > Například Apache Ambari je aktivní jenom v jednom hlavní uzlu. Pokud se pokusíte získat přístup k Ambari na jednom hlavním uzlu a vrátí 404 chybu, bude spuštěna na druhém hlavním uzlu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md).
 

@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9015fa445c64bffa74509e84d90eb77508da6d9e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999375"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076452"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
 
@@ -55,13 +55,9 @@ Nejdřív importujte nezbytné knihovny Pythonu.
 
 ```Python
 import os
-import urllib
-import shutil
 import azureml
-
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
-
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
@@ -78,43 +74,36 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Vytvořte experiment a složku, do které se budou ukládat skripty pro školení. V tomto příkladu vytvořte experiment nazvaný "keras-mnist ručně zapsaných".
+V pracovním prostoru vytvořte experiment s názvem "keras-mnist ručně zapsaných".
 
 ```Python
-script_folder = './keras-mnist'
-os.makedirs(script_folder, exist_ok=True)
-
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Nahrát datovou sadu a skripty
+### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-[Úložiště](how-to-access-data.md) dat je místo, kde se můžou data ukládat a přistupovat jejich připojením k cíli výpočtů nebo jejich zkopírováním. Každý pracovní prostor poskytuje výchozí úložiště dat. Nahrajte data a školicí skripty do úložiště dat, aby k nim bylo možné snadno přistup během školení.
+`FileDataset` Objekt odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejných adresách URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete v průvodci `Dataset` [vytvořením](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) balíčku.
 
-1. Stáhněte si datovou sadu MNIST ručně zapsaných místně.
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+`register()` Pomocí metody zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními, znovu použít v různých experimentech a v rámci školicího skriptu, na které se odkazuje pomocí názvu.
 
-1. Nahrajte datovou sadu MNIST ručně zapsaných do výchozího úložiště dat.
-
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. Nahrajte školicí skript Keras, `keras_mnist.py`a `utils.py`soubor nápovědy.
-
-    ```Python
-    shutil.copy('./keras_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
+```
 
 ## <a name="create-a-compute-target"></a>Vytvořte cílové výpočetní prostředí
 
@@ -142,11 +131,22 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 [TensorFlow Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) poskytuje jednoduchý způsob spouštění školicích úloh TensorFlow v cíli výpočtů. Vzhledem k tomu, že Keras běží nad TensorFlow, můžete použít TensorFlow Estimator a importovat knihovnu Keras pomocí `pip_packages` argumentu.
 
+Nejprve Získejte data z úložiště dat pracovního prostoru pomocí `Dataset` třídy.
+
+```python
+dataset = Dataset.get_by_name(ws, 'mnist dataset')
+
+# list the files referenced by mnist dataset
+dataset.to_path()
+```
+
 TensorFlow Estimator je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Kromě toho vytvořte slovník `script_params` , který obsahuje nastavení DNN parametrů. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
-```Python
+```python
+from azureml.train.dnn import TensorFlow
+
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

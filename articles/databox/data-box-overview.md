@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551525"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067005"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -59,11 +59,11 @@ Zařízení Data Box má v této verzi následující funkce.
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 23 kg                |
-| Dimenze                                              | Zařízení – šířka: 309.0 mm Height: Hloubka 430.4 mm: 502.0 mm |            
+| Dimenze                                              | Šířka zařízení: Výška 309,0 mm: Hloubka 430,4 mm: 502,0 mm |            
 | Místo v racku                                              | 7U při umístění do racku na boku (montáž do racku není možná)|
 | Potřebné kabely                                         | 1 napájecí kabel (je součástí balení) <br> 2 kabely RJ45 <br> 2 měděné kabely SFP+ Twinax|
 | Kapacita úložiště                                        | 100TB zařízení má 80 TB využitelné kapacity po zapnutí ochrany RAID 5|
-| Napájení hodnocení                                            | Energie je označena jako pro 700 W. <br> Obvykle jednotka nakreslí 375 W.|
+| Hodnocení výkonu                                            | Jednotka zdroje napájení je ohodnocena za 700 W. <br> Jednotka obvykle vykresluje 375 W.|
 | Síťová rozhraní                                      | 2 rozhraní 1 GbE rozhraní – MGMT, DATA 3 <br> MGMT – pro správu, nemůžou konfigurovat uživatelé, používá se pro počáteční instalaci <br> DATA3 – pro data, můžou konfigurovat uživatelé, výchozí je dynamické nastavení <br> MGMT a DATA 3 fungují také jako 10 GbE <br> 2 rozhraní 10 GbE – DATA 1, DATA 2 <br> Oboje slouží pro data, dají se konfigurovat jako dynamická (výchozí) nebo statická |
 | Média pro přenos dat                                     | RJ45, měděný kabel SFP+ 10 GbE Ethernet  |
 | Zabezpečení                                                | Robustní obal zařízení se šroubky odolnými vůči neoprávněné manipulaci <br> Nálepky odhalující manipulaci na spodní straně zařízení|
@@ -109,16 +109,9 @@ Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách st
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Zařízení data Box můžou přenášet data založená na oblasti, ve kterém je služba nasazená, země/oblast, ke kterému zařízení se posílá a cílovým účtem úložiště Azure, ve kterém můžete přenést data. 
+Data Box může přenášet data na základě oblasti, ve které je služba nasazená, země/oblasti, do které se zařízení dodává, a cílového účtu Azure Storage, kam data přenášíte. 
 
-- **Dostupnost služby** – u této vydané verze je služba Data Box dostupná v následujících oblastech:
-    - Všechny oblasti ve Spojených státech amerických: USA – středozápad, Západní USA 2, Západní USA, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
-    - Evropská unie: západní a severní Evropa
-    - Spojené království: Velká Británie – jih a Velká Británie – západ
-    - Francie: Francie – střed a Francie – jih
-    - Japonsko – Japonsko – východ a Japonsko – západ.
-    - Austrálie – Austrálie – východ a Austrálie – jihovýchod.
-    - Kanada – Kanada – východ a Kanada – střed.
+- **Dostupnost služby** – informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.  
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc0d6b07e1e61baa28ceb8e7198ef15f0f831fb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe4a47161e86614807e69b613b49e8808a35e041
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078657"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077234"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA vysoké dostupnosti pro virtuální počítače Azure
 
@@ -58,10 +58,11 @@ Než se seznámíte s nasazením virtuálních počítačů v Azure, před defin
 
 Azure má různé SLA dostupnosti pro různé komponenty, jako jsou sítě, úložiště a virtuální počítače. Všechny SLA jsou zdokumentovány. Další informace najdete v tématu [Microsoft Azure smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/). 
 
-[Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) popisuje dvě různé SLA pro dvě různé konfigurace:
+[Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) popisuje tři různé SLA pro tři různé konfigurace:
 
-- Jeden virtuální počítač, který používá [Azure Premium SSD](../../windows/disks-types.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
+- Jeden virtuální počítač, který používá [Azure Premium SSD](../../wi https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/ows/disks-types.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
 - Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Tato možnost poskytuje měsíční dobu provozu 99,95 procent.
+- Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [zóny dostupnost](https://docs.microsoft.com/azure/availability-zones/az-overview). Tato možnost zadala za měsíc 99,99% dobu provozu.
 
 Změřte svůj požadavek na dostupnost proti SLA, kterou můžou součásti Azure poskytovat. Pak zvolte scénáře, které SAP HANA, abyste dosáhli požadované úrovně dostupnosti.
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060707"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067103"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Zálohování databáze SAP HANA do Azure
 
@@ -26,8 +26,8 @@ ms.locfileid: "70060707"
 **Podpora** | **Podrobnosti**
 --- | ---
 **Podporované zeměpisných oblastech** | Austrálie – jihovýchod, východní Austrálie <br> Brazílie – jih <br> Kanada – střed, Kanada – východ <br> Jižní Východní Asie Východní Asie <br> Východní USA, Východní USA 2, Středozápadní USA, Západní USA, Západní USA 2, Střed USA – sever, Střed USA, Střed USA – jih<br> Indie – střed, Indie – jih <br> Japonsko – západ, Japonsko – východ<br> Jižní Korea – střed, Jižní Korea – jih <br> Severní Evropa, Západní Evropa <br> Velká Británie – jih Velká Británie – západ
-**Podporované operační systémy virtuálních počítačů** | SLES 12 s aktualizací SP2 nebo SP3.
-**Podporované verze HANA** | SDC v HANA 1. x, MDC na HANA 2. x < = SPS03
+**Podporované operační systémy virtuálních počítačů** | SLES 12 s aktualizací SP2, SP3 nebo SP4.
+**Podporované verze HANA** | SDC v HANA 1. x, MDC na HANA 2. x < = SPS04 rev 42
 
 ### <a name="current-limitations"></a>Aktuální omezení
 
@@ -187,7 +187,7 @@ Pokud chráníte SAP HANA 1,0 databáze a chcete upgradovat na 2,0, proveďte kr
 - Klikněte na znovu zjistit databáze pro stejný virtuální počítač. Mělo by se zobrazit nové databáze v kroku 2 se správnými podrobnostmi (SYSTEMDB a databáze tenantů, ne SDC). 
 - Chraňte tyto nové databáze.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Přečtěte si](backup-azure-sap-hana-database-troubleshoot.md) , jak řešit běžné chyby při používání služby SAP HANA Backup na virtuálních počítačích Azure.
 [Přečtěte si informace o](backup-azure-arm-vms-prepare.md) zálohování virtuálních počítačů Azure.

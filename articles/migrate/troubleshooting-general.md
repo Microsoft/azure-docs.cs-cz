@@ -4,14 +4,14 @@ description: Poskytuje přehled známých problémů služby Azure Migrate a tak
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232420"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067814"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -78,7 +78,7 @@ Odstranění projektu v aktuální verzi Azure Migrate:
 2. Na stránce skupina prostředků vyberte **Zobrazit skryté typy**.
 3. Vyberte projekt migrace, který chcete odstranit. Typ prostředku je Microsoft. migruje/migrateprojects a odstraní ho.
 
-Odstranění projektu ve starší verzi Azure Migrate: 
+Odstranění projektu ve starší verzi Azure Migrate:
 
 1. Otevřete skupinu prostředků Azure, ve které se projekt vytvořil.
 2. Vyberte projekt migrace, který chcete odstranit. Typ prostředku je migrace projektu a jeho odstranění.
@@ -90,7 +90,7 @@ Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
 * Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci**posouzení serveru** **Essentials** > .
        ![Pracovní prostor LA](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>Chyba: požadavky musí obsahovat hlavičky identity uživatele.
@@ -153,7 +153,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
 
 ## <a name="error-appliance-might-not-be-registered"></a>Chyba: Zařízení možná není zaregistrované.
 
-- Chyba 60052: Pokud účet Azure, který se používá k registraci zařízení, nemá dostatečná oprávnění, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu". 
+- Chyba 60052: Pokud účet Azure, který se používá k registraci zařízení, nemá dostatečná oprávnění, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu".
     - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
     - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o požadovaných rolích a oprávněních Azure.
 - Chyba 60039, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu" může dojít v případě, že se registrace nezdaří, protože Azure Migrate projekt, který se použil k registraci zařízení, se nepovedlo najít.
@@ -162,7 +162,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
 
 ## <a name="error-key-vault-management-operation-failed"></a>Chyba: Operace správy Key Vault se nezdařila.
 
-Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto: 
+Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto:
 - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
 - Ujistěte se, že má účet přístup k trezoru klíčů, který je zadaný v chybové zprávě, a pak zkuste operaci zopakovat.
 - Pokud se problém nevyřeší, obraťte se na podporu Microsoftu.
@@ -187,7 +187,7 @@ Chyba 60025: Operace Azure AD se nezdařila. K chybě při vytváření nebo akt
 
 ## <a name="discovered-vms-not-in-portal"></a>Zjištěné virtuální počítače, které nejsou na portálu
 
-Pokud spustíte zjišťování, aby migrace **serveru** a **migraci serveru** zobrazovaly **probíhající zjišťování**, ale tyto virtuální počítače ještě nejsou na portálu zobrazeny, vezměte na vědomí následující informace: 
+Pokud spustíte zjišťování, aby migrace **serveru** a **migraci serveru** zobrazovaly **probíhající zjišťování**, ale tyto virtuální počítače ještě nejsou na portálu zobrazeny, vezměte na vědomí následující informace:
 
 - Po zahájení zjišťování ze zařízení trvá zjišťování virtuálních počítačů VMware přibližně za 15 minut a asi dvě minuty pro každého přidaného hostitele pro zjišťování virtuálních počítačů Hyper-V.
 - Pokud budete i nadále sledovat **probíhající zjišťování** i po těchto čekacích obdobích, vyberte **aktualizovat** na kartě **servery** . Mělo by se zobrazit počet zjištěných serverů v rámci **posouzení serveru** a **migrace serveru**.
@@ -202,7 +202,7 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 
     1. V Azure Migrate **servery** > **vyhodnocování serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
-    3. Vyberte **aktualizovat agenta**. 
+    3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 
 ## <a name="vm-information-isnt-in-the-portal"></a>Informace o virtuálním počítači nejsou na portálu.
@@ -212,7 +212,7 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 
     1. V Azure Migrate **servery** > **vyhodnocování serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
-    3. Vyberte **aktualizovat agenta**. 
+    3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 
 
@@ -259,10 +259,6 @@ Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. 
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>V posouzení nejde přidat smlouva Enterprise (EA).
-
-Hodnocení serveru Azure Migrate v současné době nepodporuje ceny smlouva Enterprise (EA). Pokud chcete toto omezení obejít, použijte jako nabídku Azure průběžné **platby** a pomocí vlastnosti **slevy** určete vlastní slevu, kterou dostanete. [Přečtěte si](https://aka.ms/migrate/selfhelp/eapricing) , jak přizpůsobit posouzení.
-
 ## <a name="linux-vms-are-conditionally-ready"></a>Virtuální počítače se systémem Linux jsou připravené pro přípravu.
 
 Posouzení serveru označí virtuální počítače se systémem Linux jako podmíněně připravené z důvodu známé mezery v posuzování serveru.
@@ -279,7 +275,7 @@ Posouzení serveru Azure Migrate může doporučit skladové položky Azure s v�
 
 
 - Doporučení SKU virtuálního počítače závisí na vlastnostech posouzení.
-- To je ovlivněno typem posouzení, které jste provedli při vyhodnocování serveru: *Založené na výkonu*nebo *jako místní*. 
+- To je ovlivněno typem posouzení, které jste provedli při vyhodnocování serveru: *Založené na výkonu*nebo *jako místní*.
 - U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Také přináší faktor pohodlí při určování efektivního využití.
 - Pro místní velikost se data o výkonu neberou v úvahu a cílová skladová jednotka se doporučuje na základě místního přidělení.
 
@@ -288,14 +284,14 @@ Pokud chcete vidět, jak to může ovlivnit doporučení, Podívejme se na pří
 Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a stanovený faktor komfortu 1,3.
 
 -  Pokud je posouzení **místní**, doporučuje se skladová položka virtuálního počítače Azure se 4 jádry a 8 GB paměti.
-- Pokud je hodnocení založené na výkonu, vychází z efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% z 8 GB paměti * 1,3 = 5,3-GB paměti), SKU nejlevnější virtuálních počítačů se čtyřmi jádry (nejbližší podporovaný počet jader) a osmi GB paměti (s nejbližším podporovaným velikost paměti) se doporučuje. 
+- Pokud je hodnocení založené na výkonu, vychází z efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% z 8 GB paměti * 1,3 = 5,3-GB paměti), SKU nejlevnější virtuálních počítačů se čtyřmi jádry (nejbližší podporovaný počet jader) a osmi GB paměti (s nejbližším podporovaným velikost paměti) se doporučuje.
 - [Přečtěte si další informace](concepts-assessment-calculation.md#sizing) o velikosti hodnocení.
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>Diskové jednotky Azure větší než místní
 
 Posouzení serveru Azure Migrate může doporučit větší disk na základě typu posouzení.
 - Velikost disku v posuzování serveru závisí na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
-- Pokud jsou kritéria změny velikosti **založená na výkonu**a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se posuzují hodnoty IOPS a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku. 
+- Pokud jsou kritéria změny velikosti **založená na výkonu**a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se posuzují hodnoty IOPS a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
 - Pokud jsou kritéria změny velikosti v **závislosti na výkonu**a typ úložiště je **Premium**, doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard**, **SSD úrovně Standard**nebo **Premium**.
 
 Příklad: Pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, vyhodnocování serveru doporučuje prémiový disk (kvůli vyššímu počtu požadavků IOPS) a potom doporučuje SKU disku, které může podporovat r. ezdrátovou IOPS a velikost. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). I když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje větší disk kvůli vysokému počtu požadavků na požadavky na místní disk.

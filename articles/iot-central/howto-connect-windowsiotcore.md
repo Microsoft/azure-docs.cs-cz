@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019820"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066334"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojení zařízení s Windows IoT Core k aplikaci Azure IoT Central
 
@@ -39,17 +39,31 @@ Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablo
 - Nastavení pro řízení **rychlosti ventilátoru**.
 - **Číslo** a **umístění**vlastnosti v zařízení, které je v cloudu.
 
-Úplné podrobnosti o konfiguraci šablony zařízení najdete v podrobnostech o [šabloně zařízení Windows IoT Core](#device-template-details).
+Úplné podrobnosti o konfiguraci šablony zařízení najdete v [podrobnostech o šabloně zařízení Windows IoT Core](#device-template-details).
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central můžete pomocí stránky **Device Explorer** přidat reálné zařízení ze šablony zařízení s **Windows 10 IoT Core** . Poznamenejte si podrobnosti o připojení zařízení (**ID oboru**, **ID zařízení**a **primární klíč**). Další informace najdete v tématu [získání informací o připojení](howto-generate-connection-string.md#get-connection-information).
+V aplikaci Azure IoT Central můžete pomocí stránky **Device Explorer** přidat reálné zařízení ze šablony zařízení s **Windows 10 IoT Core** . Poznamenejte si podrobnosti o připojení zařízení (**ID oboru**, **ID zařízení**a **primární klíč**).
 
 ## <a name="prepare-the-device"></a>Příprava zařízení
 
-Aby se zařízení mohlo připojit k IoT Central, potřebuje připojovací řetězec.
+Aby se zařízení mohlo připojit k IoT Central, potřebuje připojovací řetězec:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Použijte nástroj `dps-keygen` příkazového řádku pro vygenerování připojovacího řetězce:
+
+    Chcete-li nainstalovat [Nástroj Generátor klíčů](https://github.com/Azure/dps-keygen), spusťte následující příkaz:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Pokud chcete vygenerovat připojovací řetězec, spusťte následující příkaz s podrobnostmi připojení, které jste si poznamenali dříve:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Zkopírujte připojovací řetězec z `dps-keygen` výstupu, který chcete použít ve vašem kódu zařízení.
 
 Aby kód zařízení měl přístup k připojovacímu řetězci, uložte ho do souboru s názvem **Connection. String. iothub** ve složce `C:\Data\Users\DefaultAccount\Documents\` na zařízení s Windows 10 IoT Core.
 
@@ -108,9 +122,9 @@ Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablo
 
 | type            | Display name | Název pole | Datový typ |
 | --------------- | ------------ | ---------- | --------- |
-| Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
+| Vlastnost zařízení | Číslo Die   | dieNumber  | number    |
 | Text            | Location     | location   | Není k dispozici       |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili připojit zařízení Windows IoT Core k vaší aplikaci Azure IoT Central, je doporučený další krok, kde se dozvíte, jak [nastavit vlastní šablonu zařízení](howto-set-up-template.md) pro vlastní zařízení IoT.

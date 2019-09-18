@@ -1,10 +1,10 @@
 ---
-title: Navrhované komunitou třetích stran VPN nastavení brány firewall nebo zařízení pro službu Azure VPN gateway | Dokumentace Microsoftu
-description: Další informace o nastavení navrhované komunitou třetích stran brány firewall nebo VPN zařízení pro službu Azure VPN gateway.
+title: Nastavení zařízení VPN nebo brány firewall třetích stran pro komunitu pro Azure VPN Gateway | Microsoft Docs
+description: Přečtěte si o nastaveních zařízení brány firewall nebo brány firewall třetích stran pro komunitu pro Azure VPN Gateway.
 services: vpn-gateway
 documentationcenter: ''
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-vpn-gateway
 ms.assetid: ''
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457098"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058848"
 ---
-# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Navrhované komunitou třetích stran VPN nastavení brány firewall nebo zařízení pro službu Azure VPN gateway
+# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Nastavení zařízení VPN nebo brány firewall třetích stran, která jsou pro Azure VPN Gateway navržená komunitou
 
-Tento článek obsahuje několik doporučených postupů pro síť VPN třetích stran nebo zařízení brány firewall, které se používají s bránou Azure VPN.
+Tento článek poskytuje několik navrhovaných řešení pro zařízení VPN a brány firewall třetích stran, která se používají se službou Azure VPN Gateway.
 
 > [!Note]
-> Technická podpora pro zařízení brány firewall nebo VPN třetích stran je poskytován dodavatelem zařízení. 
+> Technickou podporu pro zařízení VPN a brány firewall třetích stran zajišťuje dodavatel zařízení. 
 
 ## <a name="more-information"></a>Další informace
 
-Následující tabulka uvádí několik běžných zařízení a související Nápověda:
+Následující tabulka uvádí několik běžných zařízení a související nápovědě:
 
-|Product    |Referenční informace                                                |
+|Produkt    |Reference                                                |
 |-----------|-----------------------------------------------------------|
-|Cisco ASA  |[Společenství navrhované řešení pro Azure VPN Cisco ASA](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
-|Cisco ISR  |[Společenství navrhované řešení pro ISR Cisco VPN Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
-|Cisco ASR  |[Společenství navrhované řešení pro Azure Site Recovery Cisco VPN Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
-|SonicWALL |Vyhledejte **Azure VPN** na [Sonicwall lokality](https://www.sonicwall.com/en-us/support) |
-| CheckPoint    |Vyhledejte **Azure VPN** na [kontrolního bodu lokality](https://supportcenter.checkpoint.com/supportcenter/portal) |
-|Juniper |Vyhledejte **Azure VPN** na [Juniper lokality]( https://www.juniper.net/search/public/)|
-|Barracuda  |[Společenství navrhované řešení pro Barracuda Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
-|F5         |[Společenství navrhované řešení pro F5 VPN Azure](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
-|Palo       |[Společenství navrhované řešení pro Azure VPN Palo](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
-|Watchguard |[Společenství navrhované řešení pro Watchguard Azure VPN](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
+|Cisco ASA  |[Navrhovaná řešení komunity pro Cisco ASA na Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
+|Cisco ISR  |[Navrhovaná řešení komunity Cisco ISR na Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
+|Cisco ASR  |[Navrhovaná komunita řešení Cisco ASR v Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
+|SonicWALL |Hledání **Azure VPN** na [webu SonicWALL](https://www.sonicwall.com/en-us/support) |
+| CheckPoint    |Vyhledat **Azure VPN** na [webu kontrolního bodu](https://supportcenter.checkpoint.com/supportcenter/portal) |
+|Juniper |Hledání **Azure VPN** na [webu Juniper]( https://www.juniper.net/search/public/)|
+|Barracuda  |[Navrhovaná řešení komunity pro Barracuda v Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
+|F5         |[Navrhovaná řešení komunity pro F5 v Azure VPN](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
+|Palo       |[Navrhovaná řešení komunity pro Palo v Azure VPN](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
+|Watchguard |[Navrhovaná řešení komunity pro WatchGuard v Azure VPN](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
 
 ## <a name="next-step"></a>Další krok
 
-[Nastavení brány služby Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Nastavení bran Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
-[Známých kompatibilních zařízení](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Známá kompatibilní zařízení](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 

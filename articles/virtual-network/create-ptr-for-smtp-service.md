@@ -1,10 +1,11 @@
 ---
-title: Konfigurace zóny zpětného vyhledávání pro kontrolu bannerů protokolu SMTP v Azure
+title: Konfigurace zón zpětného vyhledávání pro kontrolu bannerů protokolu SMTP v Azure
 titlesuffix: Azure Virtual Network
-description: Popisuje postup konfigurace zóny zpětného vyhledávání pro kontrolu bannerů protokolu SMTP v Azure
+description: Popisuje postup konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP v Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,35 +13,35 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 203c3c5f371af7de891f0949a35378294bb50a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713635"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059027"
 ---
-# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurace zóny zpětného vyhledávání pro kontrolu bannerů protokolu SMTP
+# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP
 
-Tento článek popisuje způsob použití zóny zpětného vyhledávání v Azure DNS a vytvořte záznam reverzní DNS (PTR) pro zkontrolujte Banner SMTP.
+Tento článek popisuje, jak používat reverzní zónu v Azure DNS a vytvořit reverzní záznam DNS (PTR) pro kontrolu banneru SMTP.
 
 ## <a name="symptom"></a>Příznak
 
-Pokud hostujete server SMTP v Microsoft Azure, může se zobrazit následující chybová zpráva při odeslání nebo přijetí zprávy ze serverů vzdálené e-mailu:
+Pokud v Microsoft Azure hostuje server SMTP, může se při odesílání nebo přijímání zprávy ze vzdálených poštovních serverů zobrazit následující chybová zpráva:
 
 **554: Žádný záznam PTR**
 
 ## <a name="solution"></a>Řešení
 
-Pro virtuální IP adresy v Azure jsou vytvořeny reverzních záznamů v aplikaci Microsoft vlastní domény zóny, zóny není vlastní doménu.
+V případě virtuální IP adresy v Azure se opačné záznamy vytvoří v zónách domény vlastněných společností Microsoft, nikoli v vlastních doménových zónách.
 
-Ke konfiguraci záznamů PTR v aplikaci Microsoft vlastněných zón, použijte vlastnost - ReverseFqdn prostředků PublicIpAddress. Další informace najdete v tématu [konfigurovat zpětné vyhledávání DNS pro služby hostované v Azure](../dns/dns-reverse-dns-for-azure-services.md).
+Ke konfiguraci záznamů PTR ve vlastněných zónách Microsoftu použijte vlastnost-ReverseFqdn v prostředku PublicIpAddress. Další informace najdete v tématu [Konfigurace reverzních DNS pro služby hostované v Azure](../dns/dns-reverse-dns-for-azure-services.md).
 
-Při konfiguraci záznamů PTR, ujistěte se, že IP adresa a zpětný plně kvalifikovaný název domény jsou vlastněné předplatné. Pokud se pokusíte nastavit zpětný plně kvalifikovaný název domény, který nepatří k předplatnému, zobrazí se následující chybová zpráva:
+Když nakonfigurujete záznamy PTR, ujistěte se, že předplatné vlastní IP adresa a reverzní plně kvalifikovaný název domény. Pokud se pokusíte nastavit reverzní plně kvalifikovaný název domény, který nepatří do předplatného, zobrazí se tato chybová zpráva:
 
     Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
                         
-    1) ReverseFqdn odpovídá plně kvalifikovaný název domény libovolný prostředek veřejné IP adresy v rámci předplatného;
-    2) ReverseFqdn překládá plně kvalifikovaný název domény (přes řetěz záznamů CName) libovolný prostředek veřejné IP adresy v rámci předplatného;
-    3) Se překládá na ip adresu (přes řetěz záznamů CName a A) prostředku statickou veřejnou IP adresu v rámci předplatného.
+    1) ReverseFqdn odpovídá plně kvalifikovanému názvu domény každého prostředku veřejné IP adresy v rámci předplatného;
+    2) ReverseFqdn se překládá na plně kvalifikovaný název domény (prostřednictvím řetězce záznamů CName) libovolného prostředku veřejné IP adresy v rámci předplatného.
+    3) V rámci předplatného se přeloží na IP adresu (prostřednictvím CName a řetězce záznamů) statického prostředku veřejné IP adresy.
 
-Pokud je ručně změnit váš bannerů protokolu SMTP tak, aby odpovídaly naší výchozí reverzní plně kvalifikovaný název domény, vzdálené poštovní server stále selhat, protože ho může předpokládat, že hostitel SMTP banner tak, aby odpovídaly záznam MX pro doménu.
+Pokud si hlavičku protokolu SMTP ručně změníte tak, aby odpovídala naší výchozí reverzní doméně, může se stát, že vzdálený poštovní server selže, protože by mohl očekávat, že hostitel banneru protokolu SMTP bude odpovídat záznamu MX pro doménu.

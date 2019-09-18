@@ -1,6 +1,6 @@
 ---
 title: Co jsou kanály ML
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: V tomto článku najdete informace o machine learningu kanály, které můžete sestavit s využitím Azure Machine Learning SDK for Python a výhody použití kanály. Machine learning (ML) kanály využívají odborníci přes data sestavení, optimalizovat a spravovat jejich strojového učení pracovních postupů.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993285"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035493"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co jsou kanály ML ve službě Azure Machine Learning Service?
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Co jsou kanály ML v Azure Machine Learning?
 
-Přečtěte si, jak můžete vytvářet a spravovat kanály strojového učení pomocí služby Azure Machine Learning. 
+Naučte se, jak vytvářet a spravovat kanály strojového učení, které můžete sestavovat a spravovat pomocí Azure Machine Learning. 
 
 Pomocí machine learning (ML) kanály, odborníci přes data, datovými architekty a odborníky v oblasti můžete spolupracovat na kroky:
 + Příprava dat, jako je například normalizations a transformace
@@ -30,7 +30,7 @@ Pomocí machine learning (ML) kanály, odborníci přes data, datovými architek
 
 Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
 
-![Kanály strojového učení ve službě Azure Machine Learning Service](./media/concept-ml-pipelines/pipeline-flow.png)
+![Kanály strojového učení v Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Kterou technologii kanálů Azure mám použít?

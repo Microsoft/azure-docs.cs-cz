@@ -4,16 +4,17 @@ description: Úvod do HDInsight a Apache Hadoop a Apache Spark technologický z�
 keywords: azure hadoop, hadoop azure, hadoop úvod, úvod hadoop, technologie hadoop, úvod do technologie hadoop, úvod k technologii hadoop, co je cluster hadoop, co je hadoop cluster, k čemu slouží hadoop
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 42de6277449b51eb51a13148504e7e9a5f6f5270
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208497"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076404"
 ---
 # <a name="what-is-azure-hdinsight"></a>Co je Azure HDInsight?
 
@@ -55,7 +56,7 @@ Extrakce, transformace a načítání (ETL) je proces, při kterém se nestruktu
 
 Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI. Další informace najdete v [tomto příběhu zákazníka](https://customers.microsoft.com/story/milliman). 
 
-![Architektura HDInsight: ]Architektura datových skladů(./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight") pro datové sklady
+![Architektura HDInsight: ]Architektura datových(./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "skladů HDInsight") pro datové sklady
 
 ### <a name="internet-of-things-iot"></a>Internet věcí (IoT)
 
@@ -133,6 +134,6 @@ Známé nástroje business intelligence (BI) načítají, analyzují a vykazují
 
 * [Použití služby SQL Server Reporting Services se službou HDInsight](https://docs.microsoft.com/previous-versions/msp-n-p/dn749856(v=pandp.10))
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření clusteru Apache Hadoop v HDInsight](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)

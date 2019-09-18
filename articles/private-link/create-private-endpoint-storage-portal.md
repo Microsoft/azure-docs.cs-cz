@@ -1,20 +1,20 @@
 ---
-title: Vytvoření privátního koncového bodu Azure pomocí Azure Portal | Microsoft Docs
-description: Seznamte se s privátním koncovým bodem Azure
+title: Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
+description: Naučte se připojit soukromě k účtu úložiště v Azure pomocí privátního koncového bodu.
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
-ms.topic: quickstart
+ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8a569f91a27884c320f4af5b1282bfe4dd9a5a99
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
-ms.translationtype: MT
+ms.openlocfilehash: 93ca3c8c4b7a4da0387d1302b301cf677b689281
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018942"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074977"
 ---
-# <a name="create-a-private-endpoint-using-the-azure-portal"></a>Vytvoření privátního koncového bodu pomocí Azure Portal
+# <a name="connect-privately-to-a-storage-account-using-an-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
 
 V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve službě Azure Virtual Network, účet úložiště s privátním koncovým bodem pomocí Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k účtu úložiště.

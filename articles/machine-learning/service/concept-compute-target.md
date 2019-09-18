@@ -1,7 +1,7 @@
 ---
 title: 'Cíle výpočetních prostředků: místo pro výuku a nasazení modelů'
-titleSuffix: Azure Machine Learning service
-description: Určete, kam chcete model vyškolit nebo nasadit pomocí služby Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Určete, kam chcete model vyškolit nebo nasadit pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860587"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035520"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Jaké jsou výpočetní cíle ve službě Azure Machine Learning? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
 **Cíl služby COMPUTE** je určený výpočetní prostředek nebo prostředí, ve kterém spouštíte školicí skript nebo hostuje nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek. Použití výpočetních cílů usnadňuje pozdější změnu prostředí COMPUTE, aniž byste museli měnit kód.  
 
@@ -29,7 +29,7 @@ Výpočetní prostředky, které používáte pro cíle výpočtů, jsou připoj
 
 ## <a name="train"></a>Školení výpočetních cílů
 
-Služba Azure Machine Learning má různou podporu v různých výpočetních prostředcích.  Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit.
+Azure Machine Learning má různou podporu v různých výpočetních prostředcích.  Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (spravované)
 
-Spravovaný výpočetní prostředek je vytvořený a spravovaný službou Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Azure Machine Learning COMPUTE je jediným spravovaným výpočetním prostředím 30. května 2019. V budoucnu může být přidáno více spravovaných výpočetních prostředků.
+Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Azure Machine Learning COMPUTE je jediným spravovaným výpočetním prostředím 30. května 2019. V budoucnu může být přidáno více spravovaných výpočetních prostředků.
 
 Můžete použít Azure Machine Learning COMPUTE pro školení a pro Batch Inferencing (Preview).  S tímto výpočetním prostředkem máte tyto:
 
@@ -59,9 +59,9 @@ Pomocí sady SDK nebo rozhraní příkazového řádku můžete vytvořit výpo�
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 
-Nespravovaný cílový výpočetní výkon není *spravovaný službou* Azure Machine Learning. Tento typ cíle výpočetní služby vytvoříte mimo Azure Machine Learning a pak ho připojíte k pracovnímu prostoru. Nespravované výpočetní prostředky můžou vyžadovat další kroky, abyste mohli udržovat nebo zvýšit výkon úloh strojového učení.
+Nespravovaný cíl výpočetní služby není *spravován nástrojem* Azure Machine Learning. Tento typ cíle výpočetní služby vytvoříte mimo Azure Machine Learning a pak ho připojíte k pracovnímu prostoru. Nespravované výpočetní prostředky můžou vyžadovat další kroky, abyste mohli udržovat nebo zvýšit výkon úloh strojového učení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se:
 * [Nastavení cílového výpočetního prostředí pro výuku modelu](how-to-set-up-training-targets.md)

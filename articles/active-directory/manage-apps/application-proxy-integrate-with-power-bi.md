@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bdb1e26d9f10ae9b9549421e72a99f2c4e5341c2
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035144"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056085"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
@@ -138,7 +138,7 @@ Předtím, než se může mobilní aplikace Power BI připojit a získat příst
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Krok 5: Konfigurace zásad Intune pro spravovaná zařízení (volitelné)
 
 > [!NOTE]
-> Tato funkce nebude k dispozici do 7/31/19.
+> Tato funkce je v tuto chvíli dostupná jenom pro iOS.
 
 Microsoft Intune můžete použít ke správě klientských aplikací, které používají zaměstnanci vaší společnosti. Intune umožňuje používat funkce, jako je šifrování dat a další požadavky na přístup. Další informace o správě aplikací přes Intune najdete v tématu Správa aplikací Intune. Pokud chcete povolit spolupráci Power BI mobilní aplikace se zásadami Intune, použijte následující postup.
 
@@ -155,7 +155,7 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 
 Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](https://docs.microsoft.com/power-bi/power-bi-reports-performance).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
 - [Zobrazení sestav na místních serverech sestav a klíčových ukazatelů výkonu v Power BI Mobile Apps](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

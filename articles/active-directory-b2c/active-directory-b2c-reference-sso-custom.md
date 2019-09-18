@@ -1,6 +1,6 @@
 ---
-title: Správa relací jednotné přihlašování pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat relace jednotného přihlašování pomocí vlastních zásad v Azure AD B2C.
+title: Správa relací jednotného přihlašování pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+description: Naučte se spravovat relace jednotného přihlašování pomocí vlastních zásad v Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,39 +10,39 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 246e00418c784ee463170d78543e4a9aae3d7da8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509058"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065379"
 ---
-# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotné přihlašování v Azure Active Directory B2C
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Jednotné přihlašování (SSO) Správa relací v Azure Active Directory (Azure AD) B2C umožňuje správci řízení interakce s uživatelem, až uživatel už provedl ověření. Správce může například řídit, určuje, zda je zobrazena škály zprostředkovatelů identity, nebo zda místní účet podrobnosti nutné znovu zadat. Tento článek popisuje, jak konfigurovat nastavení jednotného přihlašování pro Azure AD B2C.
+Správa relací jednotného přihlašování (SSO) v Azure Active Directory B2C (Azure AD B2C) umožňuje správci řídit interakci s uživatelem poté, co uživatel již ověřený. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu. Tento článek popisuje, jak nakonfigurovat nastavení jednotného přihlašování pro Azure AD B2C.
 
-Správa relací jednotného přihlašování má dvě části. První se zabývá interakce uživatele přímo s Azure AD B2C a jiné obchody s interakce uživatele s externími stranami, jako je Facebook. Azure AD B2C není přepsat nebo obejít relace jednotného přihlašování, které se můžou uchovávat externí strany. Místo toho směrovat přes Azure AD B2C se dostat k externí strany, která je "zapamatovaných", odpadá nutnost reprompt uživateli vybrat zprostředkovatele identity jejich podniku nebo sociální sítě. Ultimate rozhodnutí jednotného přihlašování zůstává třetí strana.
+Správa relace jednotného přihlašování má dvě části. První se zabývá interakcemi uživatele přímo s Azure AD B2C a dalšími obchody s interakcemi uživatele s externími stranami, jako je Facebook. Azure AD B2C nepřepisuje ani neobejde relace jednotného přihlašování, které mohou být uloženy externími stranami. Místo toho, aby se trasa mezi Azure AD B2C dostala na externí stranu, je "rememberd", takže není nutné znovu vyzvat uživatele k výběru poskytovatele identity pro sociální nebo podnikové prostředí. Konečné rozhodnutí SSO zůstává u externí strany.
 
-Správa relací jednotného přihlašování používá stejnou sémantiku jako ostatní technický profil ve vlastních zásad. Pokud je spuštěn na krok Orchestrace, technický profil přidruženého k tomuto kroku se dotazují pro `UseTechnicalProfileForSessionManagement` odkaz. Pokud takové existuje, odkazovaná poskytovatel relace jednotného přihlašování se pak zkontroluje, aby zjistit, zda uživatel je účastník relace. Pokud tedy poskytovatel relace jednotného přihlašování umožňuje znovu vytvořit relaci. Podobně po dokončení provádění na krok Orchestrace zprostředkovatele slouží k ukládání informací v relaci, pokud byl zadán poskytovatele relace jednotného přihlašování.
+Správa relací jednotného přihlašování používá stejnou sémantiku jako jakýkoliv jiný technický profil ve vlastních zásadách. Při spuštění kroku orchestrace se pro `UseTechnicalProfileForSessionManagement` referenci zobrazí dotaz na technický profil přidružený k tomuto kroku. Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
 
-Azure AD B2C má definovaný počet zprostředkovatelé relace jednotného přihlašování, které je možné:
+Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlašování, které se dají použít:
 
 * NoopSSOSessionProvider
 * DefaultSSOSessionProvider
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-Jednotné přihlašování správu třídy určeny pomocí `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` element technického profilu.
+Třídy správy jednotného přihlašování jsou určené `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` pomocí elementu technického profilu.
 
 ## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Jak určuje název tohoto zprostředkovatele nemá žádný účinek. Tento zprostředkovatel je možné pro potlačení chování jednotného přihlašování pro konkrétní technický profil.
+Když název určíte, tento zprostředkovatel neprovede žádnou akci. Tento zprostředkovatel se dá použít pro potlačení chování jednotného přihlašování pro konkrétní technický profil.
 
 ## <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Tento zprostředkovatel je možné pro ukládání deklarací identity v relaci. Tento zprostředkovatel je obvykle odkazuje v technickém profilu, který používá ke správě místních účtů. Při použití DefaultSSOSessionProvider k uložení deklarací identity v relaci, je potřeba zajistit, že všechny deklarace, které je potřeba vrátit do aplikace nebo používají předběžné podmínky v dalších krocích, jsou uloženy v relaci nebo rozšířen o čtení z profilu uživatele v adresář. Tím se zajistí, že svou cestu ověřování nebudou na chybějící deklarací identity.
+Tento zprostředkovatel se dá použít k ukládání deklarací identity v relaci. Na tohoto poskytovatele se obvykle odkazuje v technickém profilu, který se používá pro správu místních účtů. Při použití DefaultSSOSessionProvider k ukládání deklarací identity v relaci je potřeba zajistit, aby všechny deklarace identity, které je potřeba vrátit do aplikace nebo které používají podmínky v následujících krocích, jsou uložené v relaci nebo rozšířeny čtením z profilu uživatelů v nástroji. službě. Tím se zajistí, že v případě chybějících deklarací selže vaše cesta pro ověřování.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -59,11 +59,11 @@ Tento zprostředkovatel je možné pro ukládání deklarací identity v relaci.
 </TechnicalProfile>
 ```
 
-K přidávání deklarací identit v relaci, použijte `<PersistedClaims>` element technického profilu. Když poskytovatele umožňuje znovu vytvořit relaci, trvalé deklarace identity se nepřidají do kontejneru deklarací identity. `<OutputClaims>` slouží k načítání deklarace identity z relace.
+Pokud chcete v relaci přidat deklarace identity, použijte `<PersistedClaims>` element technického profilu. Pokud se k naplnění relace použije zprostředkovatel, budou trvalé deklarace identity přidány do kontejneru deklarací identity. `<OutputClaims>`slouží k načítání deklarací identity z relace.
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Tento zprostředkovatel umožňuje potlačit na obrazovce "Zvolte zprostředkovatele identity". Obvykle odkazuje v technickém profilu nakonfigurovaný pro externího zprostředkovatele identity, jako je Facebook. 
+Pomocí tohoto poskytovatele se potlačí obrazovka "zvolit zprostředkovatele identity". Obvykle se na něj odkazuje v technickém profilu nakonfigurovaném pro externího zprostředkovatele identity, jako je Facebook.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -74,7 +74,7 @@ Tento zprostředkovatel umožňuje potlačit na obrazovce "Zvolte zprostředkova
 
 ## <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá pro správu Azure AD B2C SAML relací mezi aplikací, jakož i externí zprostředkovatele identity SAML.
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikacemi a externími zprostředkovateli identity SAML.
 
 ```XML
 <TechnicalProfile Id="SM-Reflector-SAML">
@@ -87,12 +87,12 @@ Tento zprostředkovatel se používá pro správu Azure AD B2C SAML relací mezi
 </TechnicalProfile>
 ```
 
-Existují dvě položky metadat v technickém profilu:
+V technickém profilu existují dvě položky metadat:
 
 | Položka | Výchozí hodnota | Možné hodnoty | Popis
 | --- | --- | --- | --- |
-| IncludeSessionIndex | true (pravda) | True nebo false | K poskytovateli označuje, že index relace by měla být uložena. |
-| RegisterServiceProviders | true (pravda) | True nebo false | Označuje, že poskytovatel by měl registrace všech poskytovatelů služeb SAML, které byly vydány kontrolní výraz. |
+| IncludeSessionIndex | true | true nebo false | Indikuje poskytovateli, že by měl být uložen index relace. |
+| RegisterServiceProviders | true | true nebo false | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. |
 
-Při použití zprostředkovatele pro ukládání relace SAML zprostředkovatele identity, výše uvedené položky by měl být false. Při použití zprostředkovatele pro ukládání relace B2C SAML, výše uvedené položky musí být true nebo není uveden jako výchozí hodnoty jsou true. Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` dokončete.
+Při použití zprostředkovatele pro ukládání relace zprostředkovatele identity SAML by měly být výše uvedené položky nepravdivé. Při použití poskytovatele pro uložení relace SAML B2C by výše uvedené položky měly být pravda nebo vynechány, protože výchozí hodnoty jsou true. Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 

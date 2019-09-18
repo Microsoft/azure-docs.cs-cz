@@ -1,7 +1,7 @@
 ---
 title: Co je FPGA – jak nasadit
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak nasadit webovou službu s modelem spuštěným v FPGA s využitím služby Azure Machine Learning pro odvození nízké latence.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak nasadit webovou službu pomocí modelu běžícího na FPGA s využitím Azure Machine Learning pro odvození nízké latence.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860476"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034451"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 
-Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuje, jak nasadit vaše modely pomocí Azure Machine Learning služby do Azure FPGA. 
+Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuje, jak nasadit vaše modely pomocí Azure Machine Learning do Azure FPGA. 
 
 FPGA obsahují pole programovatelných logických bloků a hierarchii, kterou lze znovu nakonfigurovat. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu.
 
@@ -28,7 +28,7 @@ FPGA obsahují pole programovatelných logických bloků a hierarchii, kterou lz
 
 Následující diagram a tabulka ukazují, jak FPGA porovnává s ostatními procesory.
 
-![Diagram porovnání FPGA služby Azure Machine Learning](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Diagram porovnání Azure Machine Learning FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Procesor||Popis|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Model můžete nasadit jako webovou službu v FPGA s využitím Azure Machine Le
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure.  Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+- Předplatné Azure.  Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 - FPGA kvóta. K ověření, zda máte kvótu, použijte rozhraní příkazového řádku Azure.
 
@@ -112,7 +112,7 @@ Model můžete nasadit jako webovou službu v FPGA s využitím Azure Machine Le
 
     Pokud nemáte kvótu, odešlete žádost na [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
+- Je nainstalovaný Azure Machine Learning pracovní prostor a sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
  
 - Sada Python SDK pro hardwarové a akcelerované modely:
 

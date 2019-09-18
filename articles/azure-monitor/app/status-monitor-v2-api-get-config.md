@@ -3,7 +3,7 @@ title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Získat
 description: Reference k rozhraní API pro Monitorování stavu v2 Get-ApplicationInsightsMonitoringConfig. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 9e1b3242a96bfaadfe6f791e0ca9bf25262065e2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1da24a93a671b388c44d96711bc2fe007f33d197
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326328"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033154"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig"></a>Rozhraní API pro Monitorování stavu v2: Get-ApplicationInsightsMonitoringConfig
 
@@ -53,7 +53,7 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
  - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.

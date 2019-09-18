@@ -7,16 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi, ayolubek, jrasnick
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550655"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058565"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 
@@ -60,7 +60,7 @@ Následující vlastnosti se vztahují na všechny aliasy DNS pro váš SQL Data
   - Když vyřadíte SQL Database Server, systém Azure také zruší všechny aliasy DNS, které na server odkazují.
 - *Není svázána s žádnou oblastí:* Aliasy DNS nejsou svázané s oblastí. Jakékoli aliasy DNS je možné aktualizovat, aby odkazovaly na Azure SQL Database Server, který se nachází v libovolné geografické oblasti.
   - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném předplatném Azure.
-- *Nastaven* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
+- *Oprávnění:* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Správa aliasů DNS
 
@@ -112,6 +112,6 @@ V současné době má alias DNS tato omezení:
 
 - [Přehled provozní kontinuity s Azure SQL Database](sql-database-business-continuity.md), včetně zotavení po havárii.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [PowerShell pro Azure SQL Database aliasu DNS](dns-alias-powershell.md)

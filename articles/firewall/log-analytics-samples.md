@@ -1,50 +1,50 @@
 ---
-title: Ukázky log analytics v Azure brány Firewall
-description: Ukázky log analytics v Azure brány Firewall
+title: Azure Firewall ukázek Log Analytics
+description: Azure Firewall ukázek Log Analytics
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461505"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033980"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Ukázky log analytics v Azure brány Firewall
+# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ukázek Log Analytics
 
-Následující ukázky protokoly Azure monitoru lze použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení ve službě Azure Monitor [Návrhář zobrazení ve službě Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
+Následující příklady protokolů Azure Monitor lze použít k analýze protokolů Azure Firewall. Vzorový soubor je sestaven v Návrháři zobrazení v Azure Monitor, [Návrhář zobrazení v Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článku obsahuje další informace o konceptu zobrazení návrhu.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-monitor-logs-view"></a>Zobrazit protokoly Azure monitoru
+## <a name="azure-monitor-logs-view"></a>Zobrazení protokolů Azure Monitor
 
-Tady je konfigurace příklad vizualizace protokoly Azure monitoru. Můžete si stáhnout příklad vizualizace z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) úložiště. Nejjednodušší způsob je klikněte pravým tlačítkem na hypertextový odkaz na tuto stránku a zvolte *uložit jako* a zadejte název, například **AzureFirewall.omsview**. 
+Tady je postup, jak můžete nakonfigurovat příklad vizualizace protokolů Azure Monitor. Ukázkovou vizualizaci si můžete stáhnout z úložiště [ukázek Azure-docs-JSON](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) . Nejjednodušší způsob je kliknout pravým tlačítkem na tuto stránku na hypertextový odkaz a vybrat *Uložit jako* a zadat název jako **AzureFirewall. omsview**. 
 
-Proveďte následující kroky, chcete-li přidat zobrazení do pracovního prostoru Log Analytics:
+Provedením následujících kroků přidejte zobrazení do svého pracovního prostoru Log Analytics:
 
-1. Otevřete pracovní prostor Log Analytics na portálu Azure Portal.
-2. Otevřít **zobrazení návrháře** níže **Obecné**.
+1. Otevřete pracovní prostor Log Analytics na webu Azure Portal.
+2. Otevřete **návrháře zobrazení** v části **Obecné**.
 3. Klikněte na **Import**.
-4. Procházet a vybrat **AzureFirewall.omsview** souborů, které jste stáhli dříve.
+4. Vyhledejte a vyberte soubor **AzureFirewall. omsview** , který jste si stáhli dřív.
 5. Klikněte na **Uložit**.
 
-Zde je, jak vypadá v zobrazení pro data aplikací pravidlo protokolu:
+Tady je způsob, jak zobrazení vyhledává data protokolu pravidel aplikace:
 
-![Data protokolu pro pravidlo aplikace](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
+![Data protokolu pravidla aplikace](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
 
-A dat sítě pravidlo protokolu:
+A pro data protokolu síťových pravidel:
 
-![Data protokolu pravidla sítě]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
+![Data protokolu síťového pravidla]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Protokoly brány Firewall Azure následující AzureDiagnostics data s kategorií jako **AzureFirewallApplicationRule** nebo **AzureFirewallNetworkRule**. Data obsahující podrobnosti o je uloženo v poli msg_s. Použití [analyzovat](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor jsme z pole msg_s extrahovat různých zajímavé vlastnosti. Níže uvedené dotazy extrahovat informace o obou kategoriích.
+Azure Firewall do protokolu zapíše data níže AzureDiagnostics a kategorie buď **AzureFirewallApplicationRule** , nebo **AzureFirewallNetworkRule**. Data obsahující podrobnosti jsou uložena v poli msg_s. Pomocí operátoru pro [analýzu](https://docs.microsoft.com/azure/kusto/query/parseoperator) můžeme z pole msg_s extrahovat různé zajímavé vlastnosti. Níže uvedené dotazy extrahují informace pro obě kategorie.
 
-## <a name="application-rules-log-data-query"></a>Dotaz na data protokolu pravidla aplikace
+## <a name="application-rules-log-data-query"></a>Dotaz na data protokolu pro pravidla aplikace
 
-Následující dotaz analyzuje data aplikací pravidlo protokolu. V jednotlivých řádcích komentář je některé pokyny, jak byla sestavena dotazu:
+Níže uvedený dotaz analyzuje data protokolu pravidla aplikace. V různých řádcích komentáře jsou pokyny, jak byl vytvořen dotaz:
 
 ```Kusto
 AzureDiagnostics
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -80,7 +80,7 @@ Action1 = case(Action1 == "denied","Deny","Unknown Action")
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-Stejný dotaz ve více zhuštěnému formátu:
+Stejný dotaz v zhuštěném formátu:
 
 ```Kusto
 AzureDiagnostics
@@ -92,15 +92,15 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-## <a name="network-rules-log-data-query"></a>Dotaz na data protokolu pravidel sítě
+## <a name="network-rules-log-data-query"></a>Dotaz na data protokolů síťových pravidel
 
-Následující dotaz analyzuje data protokolů pravidlo sítě. V jednotlivých řádcích komentář je některé pokyny, jak byla sestavena dotazu:
+Následující dotaz analyzuje data protokolu síťových pravidel. V různých řádcích komentáře jsou pokyny, jak byl vytvořen dotaz:
 
 ```Kusto
 AzureDiagnostics
@@ -137,7 +137,7 @@ TargetPort = tostring(TargetPortInt)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-Stejný dotaz ve více zhuštěnému formátu:
+Stejný dotaz v zhuštěném formátu:
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>Dotaz na data protokolu Threat Intelligence
+## <a name="threat-intelligence-log-data-query"></a>Dotaz na data protokolu pro analýzu hrozeb
 
-Následující dotaz analyzuje data hrozeb pravidlo protokolu:
+Následující dotaz analyzuje data protokolu pravidla analýzy hrozeb:
 
 ```Kusto
 AzureDiagnostics
@@ -166,6 +166,6 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o Brána Firewall služby Azure, monitorování a diagnostice najdete v tématu [kurzu: Monitorujte metriky a protokoly brány Firewall Azure](tutorial-diagnostics.md).
+Další informace o Azure firewall monitorování a diagnostiku najdete [v tématu Kurz: Monitorujte protokoly Azure Firewall a metriky](tutorial-diagnostics.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347913"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076322"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -36,9 +36,9 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce** > funkcí **+ vytvořit** a přidejte následující příznaky funkcí:
+6. Vyberte **správce** > funkcí **+ Přidat** a přidejte následující příznaky funkcí:
 
-    | Klíč | Stav |
+    | Klíč | State |
     |---|---|
     | Betaverze | Vypnuto |
 
@@ -81,10 +81,11 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíčky `Microsoft.FeatureManagement.AspNetCore` a balíčky NuGet spuštěním následujících příkazů:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
@@ -199,7 +200,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otevřete *_Layout. cshtml* ve sdíleném \\ `<nav>`adresářiviews a nahraďte čárový kód `<body>` následujícím kódem:  >  `<header>`
+1. Otevřete *_Layout. cshtml* ve\\*sdíleném* `<nav>` `<body>` adresářiviewsanahraďtečárový >  kód následujícím`<header>` kódem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -262,9 +263,11 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | Stav |
+    | Klíč | State |
     |---|---|
     | Betaverze | Zapnuto |
+
+1. Restartujte aplikaci tak, že přepnete zpátky na příkazový řádek a `Ctrl-C` stisknutím klávesy zrušíte běžící `dotnet` proces a pak znovu spustíte `dotnet run`.
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 
@@ -274,10 +277,11 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
 
 - Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 - [Správa příznaků funkcí](./manage-feature-flags.md).
 - [Používání příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md).
+- [Použití dynamické konfigurace v aplikaci ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)

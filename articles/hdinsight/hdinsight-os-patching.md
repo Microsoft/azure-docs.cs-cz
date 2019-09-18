@@ -1,69 +1,70 @@
 ---
-title: Konfigurovat plán pro clustery založené na Linuxu HDInsight – Azure oprav operačního systému
-description: Zjistěte, jak nakonfigurovat plán pro clustery HDInsight založené na Linuxu oprav operačního systému.
+title: Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux – Azure
+description: Naučte se konfigurovat plán oprav operačního systému pro clustery HDInsight se systémem Linux.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: efe74618b269000749f7ba6c24d35903e540dcfb
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657060"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076860"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurovat plán pro clustery HDInsight založené na Linuxu oprav operačního systému 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux 
 
 > [!IMPORTANT]
-> K dispozici pro vytvoření nového clusteru Azure HDInsight do tří měsíců od publikování Image Ubuntu. Od ledna 2019 spuštěné clustery nejsou automaticky opravit. Zákazníkům musíte použít akce skriptů nebo jiných mechanismů o opravu spuštěný cluster. Nově vytvořený clustery bude mít vždy nejnovější dostupné aktualizace, včetně nejnovější opravy zabezpečení.
+> Image Ubuntu budou k dispozici pro nové vytvoření clusteru Azure HDInsight do tří měsíců od jejich publikování. Od ledna 2019 nejsou spuštěné clustery automaticky opraveny. Pokud chtějí zákazníci opravit běžící cluster, musí použít akce skriptu nebo jiné mechanismy. Nově vytvořené clustery budou mít vždycky nejnovější dostupné aktualizace, včetně nejnovějších oprav zabezpečení.
 
-V některých případech je nutné restartovat virtuální počítače (VM) v clusteru služby HDInsight nainstalovat důležité opravy.
+V některých případech je nutné restartovat virtuální počítače v clusteru HDInsight, aby se nainstalovaly důležité opravy zabezpečení.
 
-Pomocí akcí skriptů je popsáno v tomto článku můžete upravit následujícím způsobem plán oprav operačního systému:
+Pomocí akcí skriptu popsaných v tomto článku můžete upravit plán oprav operačního systému následujícím způsobem:
 
-1. Nainstalovat všechny aktualizace, nebo nainstalovat pouze jádra + aktualizacemi zabezpečení nebo aktualizace jádra.
-2. Provést okamžité restartování nebo schématu restartování ve virtuálním počítači.
+1. Nainstalujte všechny aktualizace nebo nainstalujte jenom aktualizace jádra a zabezpečení nebo aktualizace jádra.
+2. Proveďte okamžité restartování nebo naplánujte restartování virtuálního počítače.
 
 > [!NOTE]  
-> Akce skriptů je popsáno v tomto článku budou fungovat jenom s clustery HDInsight založené na Linuxu vytvořená po 1. srpna 2016. Opravy chyb jsou efektivní až po restartování virtuálních počítačů.
-> Akce skriptů nebude automaticky použít aktualizace pro všechny aktualizace budoucí cykly. Spuštěním skriptů pokaždé, když nové aktualizace je nutné použít na nainstalovat aktualizace a potom restartujte virtuální počítač.
+> Akce skriptu popsané v tomto článku budou fungovat jenom s clustery HDInsight se systémem Linux vytvořenými od 1. srpna 2016. Opravy jsou platné až po restartování virtuálních počítačů.
+> Akce skriptu nebudou automaticky používat aktualizace pro všechny budoucí aktualizační cykly. Spusťte skripty pokaždé, když se musí použít nové aktualizace, aby se nainstalovaly aktualizace, a pak se virtuální počítač restartuje.
 
-## <a name="add-information-to-the-script"></a>Přidejte informace o skriptu
+## <a name="add-information-to-the-script"></a>Přidání informací do skriptu
 
-Pomocí skriptu, který vyžaduje následující informace:
+Použití skriptu vyžaduje následující informace:
 
-- Umístění skriptu install aktualizace plán – restartování: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
+- Umístění skriptu install-Updates-Schedule-restarts: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
     
-   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačů v clusteru. Tento skript nabízí možnosti pro instalaci aktualizací a restartování virtuálního počítače.
+   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačích v clusteru. Tento skript poskytuje možnosti pro instalaci aktualizací a restartování virtuálního počítače.
   
-- Plán – restartování umístění skriptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
+- Umístění skriptu pro restartování nástroje Schedule: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
     
-   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačů v clusteru. Tento skript restartuje virtuální počítač.
+   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačích v clusteru. Tento skript restartuje virtuální počítač.
   
-- Typy uzlů clusteru, které skript se použije na jsou hlavního uzlu, workernode a zookeeper. Skript platí pro všechny typy uzlů v clusteru. Pokud skript není použité u typu uzlu, nebude aktualizovat nebo restartování virtuálních počítačů pro daný typ uzlu.
+- Typ uzlu clusteru, pro který je skript použit, je hlavnímu uzlu, workernode a Zookeeper. Použije skript pro všechny typy uzlů v clusteru. Pokud se skript nepoužije na typ uzlu, virtuální počítače pro tento typ uzlu se neaktualizují ani nerestartují.
 
-- Skript instalace aktualizace plánu restartování přijímá dva číselné parametry:
+- Skript Install-Updates-Schedule-restarts akceptuje dva číselné parametry:
 
     | Parametr | Definice |
     | --- | --- |
-    | Instalovat pouze aktualizace jádra / instalace všech aktualizací nebo instalace jádra + zabezpečení pouze aktualizace|0, 1 nebo 2. Hodnota 0 nainstaluje jenom aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze jádra a aktualizace zabezpečení. Pokud je k dispozici žádný parametr, výchozí hodnota je 0. |
-    | Bez okamžité restartování restartování nebo povolit plán restartování nebo povolit |0, 1 nebo 2. Hodnota 0 zakáže restartování. Hodnota 1 povolí plán restartování a 2 umožňuje okamžitý restart. Pokud je k dispozici žádný parametr, výchozí hodnota je 0. Uživatel bude muset změnit vstupní parametr 1 vstupní parametr 2. |
+    | Nainstalovat pouze aktualizace jádra/nainstalovat všechny aktualizace/instalovat pouze aktualizace jádra a zabezpečení|0, 1 nebo 2. Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
+    | Bez restartování/povolení restartování plánu/povolení okamžitého restartování |0, 1 nebo 2. Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |
    
- - Skript plánu restartování přijímá jeden číselný parametr:
+ - Skript pro restartování nástroje Schedule-restarts akceptuje jeden číselný parametr:
 
     | Parametr | Definice |
     | --- | --- |
-    | Povolit plán restartování nebo povolit okamžitý restart |1 nebo 2. Hodnota 1 povolí plán restart (naplánované v 12 až 24 hodin). Hodnota 2 umožňuje okamžitý restart (v 5 minut). Pokud není uveden žádný parametr, výchozí hodnota je 1. |  
+    | Povolit restart plánu/povolit okamžité restartování |1 nebo 2. Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
 
 > [!NOTE]
-> Skript je třeba označit jako trvalý po použití do existujícího clusteru. V opačném případě žádné nové uzly, které jsou vytvořené prostřednictvím operací škálování bude používat výchozí plán oprav. Pokud použijete skript jako součást procesu vytváření clusteru, obsahuje trvalé automaticky.
+> Po použití v existujícím clusteru musíte označit skript jako trvalý. Jinak budou všechny nové uzly vytvořené prostřednictvím operací škálování používat výchozí plán oprav. Použijete-li skript jako součást procesu vytváření clusteru, bude automaticky trvalý.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Konkrétní kroky pomocí akcí skriptů najdete v následujících částech [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
+Konkrétní kroky týkající se použití akcí skriptů najdete v následujících částech v tématu [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
 
-* [Použití akce skriptu při vytváření clusteru](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Použít akci skriptu spuštěného clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+* [Použití akce skriptu během vytváření clusteru](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+* [Použití akce skriptu u běžícího clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

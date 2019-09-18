@@ -3,16 +3,17 @@ title: Škálovatelné streamování ve službě Azure HDInsight
 description: Jak používat streamování dat s škálovatelnými clustery Apache ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 18f1c15f12295228dab971f2abfa612d2061ab5d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811927"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076791"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 

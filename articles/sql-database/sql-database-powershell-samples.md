@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567057"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059265"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázky v Azure PowerShellu pro službu Azure SQL Database
 
@@ -27,7 +27,7 @@ Azure SQL Database umožňuje konfigurovat databáze, instance a fondy pomocí A
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="single-database-and-elastic-pools"></a>Izolovaná databáze a elastické fondy
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[Izolovaná databáze a elastické fondy](#tab/single-database)
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro službu Azure SQL Database.
 
@@ -58,7 +58,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 
 Přečtěte si další informace o [rozhraní Izolovaná databáze Azure PowerShell API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>MI
+## <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure SQL Database spravovanou instanci.
 
@@ -73,6 +73,8 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 |||
 
 Přečtěte si další informace o [spravované instanci Azure PowerShell rozhraní API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
+
+---
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -1,6 +1,6 @@
 ---
-title: Informace o deklaraci identity překladače ve vlastních zásad Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o použití překladačů deklarace identity ve vlastních zásadách v Azure Active Directory B2C.
+title: Překladače deklarací identity v Azure Active Directory B2C vlastní zásady | Microsoft Docs
+description: Přečtěte si, jak se překladače deklarací identity používají ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511610"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064400"
 ---
-# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>O překladače deklarace identity v Azure Active Directory B2C vlastních zásad
+# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
-Deklarace identity v Azure Active Directory (Azure AD) B2C překladače [vlastní zásady](active-directory-b2c-overview-custom.md) poskytují kontextové informace o žádost o autorizaci, jako název zásady, ID korelace žádosti, jazyk uživatelského rozhraní a další.
+Překladače deklarací identity v Azure Active Directory B2C (Azure AD B2C) [vlastní zásady](active-directory-b2c-overview-custom.md) poskytují kontextové informace o žádosti o autorizaci, jako je název zásady, ID korelace požadavku, jazyk uživatelského rozhraní a další.
 
-Použití překladače deklarace identity ve vstupních nebo výstupních deklarací, definujte řetězec **typu deklarace identity**v části [ClaimsSchema](claimsschema.md) prvek a potom nastavíte **DefaultValue** k deklaraci překladač ve vstupní nebo výstupní deklarace elementu. Azure AD B2C přečte hodnotu deklarace identity překladače a použije se hodnota v technickém profilu. 
+Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType**a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
 
-V následujícím příkladu typ deklarace identity s názvem `correlationId` je definována s **datový typ** z `string`.  
+V následujícím příkladu je typ deklarace s názvem `correlationId` definován s **datovým** `string`typem.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -33,83 +33,83 @@ V následujícím příkladu typ deklarace identity s názvem `correlationId` je
 </ClaimType>
 ```
 
-V technickém profilu mapování překladače deklarací na typ deklarace identity. Azure AD B2C, naplní hodnoty deklarace identity překladač `{Context:CorrelationId}` do deklarace identity `correlationId` a odešle žádost technický profil.
+V technickém profilu namapujte překladač deklarací identity na typ deklarace identity. Azure AD B2C naplní hodnotu překladače `{Context:CorrelationId}` deklarací identity na deklaraci `correlationId` identity a pošle deklaraci do technického profilu.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
-## <a name="claim-resolver-types"></a>Překladač typů deklarací identity
+## <a name="claim-resolver-types"></a>Typy překladače deklarací identity
 
-Překladače deklarace identity k dispozici v následujících částech.
+Následující části uvádějí dostupné překladače deklarací identity.
 
 ### <a name="culture"></a>Jazyková verze
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------- | --------|
-| {Jazyková verze: LanguageName} | Dvě písmena kód ISO pro jazyk. | en |
-| {Jazyková verze: LCID}   | LCID kód jazyka. | 1033 |
-| {Culture:RegionName} | Dvě písmena kód ISO pro danou oblast. | USA |
-| {Jazyková verze: RFC5646} | Kód jazyka RFC5646. | en-US |
+| {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | cs-CZ |
+| {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
+| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
 
 ### <a name="policy"></a>Zásada
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------- | --------|
-| {Policy:PolicyId} | Název zásad přijímající strany. | B2C_1A_signup_signin |
-| {Policy:RelyingPartyTenantId} | ID tenanta předávající strana zásad. | vaše tenant.onmicrosoft.com |
-| {Policy:TenantObjectId} | ID objektu tenanta předávající strana zásad. | 00000000-0000-0000-0000-000000000000 |
-| {Policy:TrustFrameworkTenantId} | ID tenanta Framework vztah důvěryhodnosti. | vaše tenant.onmicrosoft.com |
+| {Policy:PolicyId} | Název zásady předávající strany | B2C_1A_signup_signin |
+| {Policy:RelyingPartyTenantId} | ID tenanta zásady předávající strany. | your-tenant.onmicrosoft.com |
+| {Policy: TenantObjectId} | ID objektu tenanta zásady předávající strany. | 00000000-0000-0000-0000-000000000000 |
+| {Policy:TrustFrameworkTenantId} | ID tenanta architektury vztahu důvěryhodnosti. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` Parametr řetězce dotazu. | neuvedeno |
-| {OIDC:ClientId} |`client_id` Parametr řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC:DomainHint} |`domain_hint` Parametr řetězce dotazu. | facebook.com |
-| {OIDC:LoginHint} |  `login_hint` Parametr řetězce dotazu. | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`. | neuvedeno |
-| {OIDC:Nonce} |`Nonce` Parametr řetězce dotazu. | defaultNonce |
-| {OIDC:Prompt} | `prompt` Parametr řetězce dotazu. | přihlášení |
-| {OIDC:Resource} |`resource` Parametr řetězce dotazu. | neuvedeno |
-| {OIDC:scope} |`scope` Parametr řetězce dotazu. | openid |
+| {OIDC:AuthenticationContextReferences} |Parametr `acr_values` řetězce dotazu. | Není k dispozici |
+| {OIDC: ClientId} |Parametr `client_id` řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC:DomainHint} |Parametr `domain_hint` řetězce dotazu. | facebook.com |
+| {OIDC:LoginHint} |  Parametr `login_hint` řetězce dotazu. | someone@contoso.com |
+| {OIDC:MaxAge} | Rozhraní `max_age`. | Není k dispozici |
+| {OIDC: nonce} |Parametr `Nonce` řetězce dotazu. | defaultNonce |
+| {OIDC:Prompt} | Parametr `prompt` řetězce dotazu. | přihlášení |
+| {OIDC: Resource} |Parametr `resource` řetězce dotazu. | Není k dispozici |
+| {OIDC:scope} |Parametr `scope` řetězce dotazu. | OpenID |
 
 ### <a name="context"></a>Kontext
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------- | --------|
-| {Kontextu: ČísloSestavení} | Verze rozhraní prostředí pro Identity (číslo sestavení).  | 1.0.507.0 |
+| {Context: BuildNumber} | Verze architektury rozhraní identity Experience Framework (číslo buildu).  | 1.0.507.0 |
 | {Context:CorrelationId} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
-| {Context:DateTimeInUtc} |Datum čas ve standardu UTC.  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |Režim nasazení zásady.  | Výroba |
-| {Context:IPAddress} | IP adresy uživatele. | 11.111.111.11 |
+| {Context:DateTimeInUtc} |Datum a čas ve standardu UTC.  | 10/10/2018 12:00:00 ODP. |
+| {Context: DeploymentMode} |Režim nasazení zásad.  | Provozní |
+| {Context: IPAddress} | IP adresa uživatele. | 11.111.111.11 |
 
 
 ### <a name="non-protocol-parameters"></a>Parametry bez protokolu
 
-Libovolný název parametru jako součást požadavku OIDC nebo OAuth2 lze mapovat na deklaraci identity v cestě uživatele. Žádost z aplikace může například obsahovat parametr řetězce dotazu s názvem `app_session`, `loyalty_number`, nebo všechny vlastní řetězec dotazu.
+Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, se dá namapovat na deklaraci identity uživatele. Například požadavek z aplikace může obsahovat parametr řetězce dotazu s názvem `app_session`, `loyalty_number`nebo libovolným vlastním řetězcem dotazu.
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Parametr řetězce dotazu. | hawaii |
-| {OAUTH-KV:app_session} | Parametr řetězce dotazu. | A3C5R |
-| {OAUTH-KV:loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH KV: všechny vlastní řetězec dotazu} | Parametr řetězce dotazu. | neuvedeno |
+| {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
+| {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
+| {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
 
 ### <a name="oauth2"></a>OAuth2
 
-| Deklarovat | Popis | Příklad: |
+| Deklarace identity | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Přístupový token. | neuvedeno |
+| {OAuth2: access_token} | Přístupový token | Není k dispozici |
 
-## <a name="how-to-use-claim-resolvers"></a>Použití překladačů deklarace identity
+## <a name="how-to-use-claim-resolvers"></a>Jak používat překladače deklarací identity
 
-### <a name="restful-technical-profile"></a>Technický profil rESTful
+### <a name="restful-technical-profile"></a>RESTful Technical Profile
 
-V [RESTful](restful-technical-profile.md) technický profil, můžete chtít odeslat jazyk uživatele, název zásady, oboru a ID klienta. Na základě těchto deklarací rozhraní REST API můžete spouštět vlastní obchodní logiky a v případě potřeby vyvolat lokalizované chybové zprávy. 
+V [RESTful](restful-technical-profile.md) Technical Profile můžete chtít odeslat uživatelský jazyk, název zásady, obor a ID klienta. Na základě těchto deklarací může REST API spustit vlastní obchodní logiku a v případě potřeby vyvolat lokalizovanou chybovou zprávu.
 
-Následující příklad ukazuje RESTful technický profil:
+Následující příklad ukazuje technický profil RESTful:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -132,13 +132,13 @@ Následující příklad ukazuje RESTful technický profil:
 
 ### <a name="direct-sign-in"></a>Přímé přihlášení
 
-Použití překladačů deklarace identity, můžete předem přihlašovacího jména nebo přímé přihlášení k poskytovateli konkrétní sociálních identit, jako je Facebook, LinkedIn nebo účtem Microsoft. Další informace najdete v tématu [nastavit přímé přihlášení pomocí Azure Active Directory B2C](direct-signin.md).
+Pomocí překladačů deklarací identity můžete předem naplnit přihlašovací jméno nebo přímé přihlášení ke konkrétnímu poskytovateli sociálních identit, jako je Facebook, LinkedIn nebo účet Microsoft. Další informace najdete v tématu [Nastavení přímého přihlašování pomocí Azure Active Directory B2C](direct-signin.md).
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definici obsahu HTML tak, aby se může dynamicky vykreslit obsah stránky. Můžete například změnit obrázek pozadí na Azure AD B2C registrace nebo přihlášení stránku založenou na vlastní parametr předat z vašich webových nebo mobilních aplikací. Další informace najdete v tématu [dynamicky konfigurovat uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Také je možné lokalizovat stránce HTML na základě parametru jazyk, nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML, aby bylo možné dynamicky vykreslovat obsah stránky. Obrázek pozadí můžete například změnit na stránce Azure AD B2C registrace nebo přihlášení na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
-Následující příklad předá v řetězci dotazu parametr s názvem **campaignId** s hodnotou `hawaii`, **jazyk** kód `en-US`, a **aplikace** představující ID klienta:
+Následující příklad předává do řetězce dotazu parametr s názvem **campaignId** s `hawaii`hodnotou, kód `en-US`jazyka a **aplikace** představující ID klienta:
 
 ```XML
 <UserJourneyBehaviors>
@@ -150,15 +150,15 @@ Následující příklad předá v řetězci dotazu parametr s názvem **campaig
 </UserJourneyBehaviors>
 ```
 
-V důsledku Azure AD B2C pošle výše uvedených parametrů na stránce obsahu HTML:
+V důsledku toho Azure AD B2C odesílá výše uvedené parametry na stránku obsahu HTML:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
 ```
 
-### <a name="application-insights-technical-profile"></a>Technický profil Application Insights
+### <a name="application-insights-technical-profile"></a>Application Insights technický profil
 
-Azure Application Insights a deklarace identity překladače umožňují získat přehledy o chování uživatelů. V technickém profilu Application Insights odešlete do služby Azure Application Insights vstupních deklarací identity, které jsou trvalé. Další informace najdete v tématu [jízdy sledovat chování uživatelů v Azure AD B2C s využitím Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Následující příklad odesílá ID zásad, ID korelace, jazyka a ID klienta do služby Azure Application Insights.
+Díky Azure Application Insights a překladačům deklarací identity můžete získat přehled o chování uživatelů. V Application Insights Technical profil odešlete vstupní deklarace identity, které jsou trvalé ve službě Azure Application Insights. Další informace najdete v tématu [sledování chování uživatelů v Azure AD B2Cch cestách pomocí Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Následující příklad odešle ID zásady, ID korelace, jazyk a ID klienta do Azure Application Insights.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

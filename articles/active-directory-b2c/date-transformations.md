@@ -1,6 +1,6 @@
 ---
-title: Datum deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
-description: Datum deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
+title: Příklady transformačních dat deklarací identity pro schéma prostředí Azure Active Directory B2C | Microsoft Docs
+description: Příklady transformačních dat deklarací identity pro schéma rozhraní Azure Active Directory B2C prostředí identit.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad4c6c78556f98e2905b3583910e498055257c36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511134"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064350"
 ---
-# <a name="date-claims-transformations"></a>Datum deklarace identity transformace
+# <a name="date-claims-transformations"></a>Transformace deklarací data
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady použití transformace deklarací identity data schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití transformací data ze schématu rozhraní identity Experience schématu v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
-Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je pozdější než druhý datum a čas deklarací (datový typ string) a vyvolá výjimku.
+Kontroluje, že jedna deklarace identity data a času (datový typ String) je pozdější než druhá deklarace identity data a času (datový typ String) a vyvolá výjimku.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | string | Typ první deklaraci identity, které by měly být pozdější než druhý deklarace identity. |
-| InputClaim | rightOperand | string | Druhý typ deklarace identity, který by měl být dřívější než první deklaraci identity. |
-| InputParameter | AssertIfEqualTo | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud levý operand je rovna pravého operandu. |
-| InputParameter | AssertIfRightOperandIsNotPresent | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud chybí pravého operandu. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | int | Určuje počet milisekund, aby mezi těmito dvěma data a času vzít v úvahu dobu je rovno (například účet pro posun hodin). |
+| InputClaim | leftOperand | řetězec | Typ první deklarace, který by měl být pozdější než druhá deklarace identity. |
+| InputClaim | rightOperand | řetězec | Typ druhé deklarace identity, který by měl být dřívější než první deklarace identity. |
+| InputParameter | AssertIfEqualTo | boolean | Určuje, zda má být tento kontrolní výraz splněn, je-li levý operand roven pravému operandu. |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Určuje, zda má být tento kontrolní výraz splněn, pokud chybí pravý operand. |
+| InputParameter | TreatAsEqualIfWithinMillseconds | int | Určuje počet milisekund, které mají být povoleny mezi dvěma hodnotami data a času, které mají být považovat za časy rovnající se (například pro účet pro časový posun). |
 
-**AssertDateTimeIsGreaterThan** transformaci deklarací identity je vždy spuštěn z [technický profil ověření](validation-technical-profile.md) , který je volán [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md). **DateTimeGreaterThan** technického profilu s vlastním potvrzením určuje chybovou zprávu, která se uživateli zobrazí technický profil.
+Transformace deklarací **AssertDateTimeIsGreaterThan** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md). Metadata technického profilu **DateTimeGreaterThan** s vlastním uplatněním řídí chybovou zprávu, kterou poskytuje technický profil uživateli.
 
-![AssertStringClaimsAreEqual execution](./media/date-transformations/assert-execution.png)
+![Spuštění AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-Následující příklad porovnává `currentDateTime` deklarace identity s `approvedDateTime` deklarací identity. Pokud je vyvolána chyba `currentDateTime` je pozdější než `approvedDateTime`. Transformace považuje za hodnoty rovny, pokud jsou v rámci rozdíl (30000 milisekund) 5 minut.
+Následující příklad porovnává `currentDateTime` deklaraci identity `approvedDateTime` s deklarací identity. Je-li vyvolána chyba `currentDateTime` , pokud je `approvedDateTime`pozdější než. Transformace považuje hodnoty za shodné, pokud jsou během 5 minut (30000 milisekund) rozdíl.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -55,7 +55,7 @@ Následující příklad porovnává `currentDateTime` deklarace identity s `app
 </ClaimsTransformation>
 ```
 
-`login-NonInteractive` Volání technický profil ověření `AssertApprovedDateTimeLaterThanCurrentDateTime` transformace deklarací identity.
+`AssertApprovedDateTimeLaterThanCurrentDateTime` Technický profil `login-NonInteractive` ověření volá transformaci deklarací identity.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -65,7 +65,7 @@ Následující příklad porovnává `currentDateTime` deklarace identity s `app
 </TechnicalProfile>
 ```
 
-Volání ověření s vlastním potvrzením technický profil **neinteraktivní přihlášení** technický profil.
+Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -78,23 +78,23 @@ Volání ověření s vlastním potvrzením technický profil **neinteraktivní 
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000Z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000Z
-- Výsledek: Vyvolána chyba
+    - **leftOperand**: 2018-10-01T15:00:00.0000000 Z
+    - **rightOperand**: 2018-10-01T14:00:00.0000000 Z
+- Vyústit Došlo k chybě
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-Převede **datum** typu deklarace identity k **data a času** typu deklarace identity. Transformace deklarací identity převede formát času a přičte 12:00:00 AM k datu.
+Převede hodnotu vlastnosti **Date** ClaimType na **typ DateTime** . Transformace deklarací převede formát času a přidá 12:00:00 k datu.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim | date | Typ ClaimType má být převeden. |
-| outputClaim | outputClaim | Datum a čas | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
+| InputClaim | InputClaim | date | Deklarace ClaimType, která má být převedena. |
+| OutputClaim | OutputClaim | Datum a čas | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
-Následující příklad ukazuje převod deklarace `dateOfBirth` (datový typ datum) do jiného deklarací `dateOfBirthWithTime` (datový typ dateTime).
+Následující příklad ukazuje převod deklarace identity `dateOfBirth` (datový typ Date) na jinou deklaraci identity `dateOfBirthWithTime` (datový typ DateTime).
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -107,20 +107,20 @@ Následující příklad ukazuje převod deklarace `dateOfBirth` (datový typ da
   </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **inputClaim**: 2019-06-01
-- Výstupní deklarace identit:
-    - **outputClaim**: 1559347200 (1 dne. května 2019 12:00:00 AM)
+- Deklarace výstupů:
+    - **outputClaim**: 1559347200 (1. června 2019 12:00:00 AM)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
-Získejte aktuální datum a čas UTC a přidá hodnotu typu deklarace identity.
+Získejte aktuální datum a čas UTC a přidejte hodnotu do ClaimType.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| outputClaim | currentDateTime | Datum a čas | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
+| OutputClaim | currentDateTime | Datum a čas | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -130,25 +130,25 @@ Získejte aktuální datum a čas UTC a přidá hodnotu typu deklarace identity.
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-* Výstupní deklarace identit:
-    * **currentDateTime**: 1534418820 (16 dne. května 2018 11:27:00 dop.)
+* Deklarace výstupů:
+    * **currentDateTime**: 1534418820 (16. srpna 2018 11:27:00 AM)
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Zjistit, zda jeden data a času je později, dřívější nebo roven jinému. Výsledkem je nová logická hodnota boolean typu deklarace identity s hodnotou `true` nebo `false`.
+Určete, zda je jedno datum a čas pozdější, dřívější nebo stejné jako jiné. Výsledkem je nová logická logická hodnota ClaimType s hodnotou `true` nebo. `false`
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | firstDateTime | Datum a čas | První datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než druhý data a času. Hodnota Null, dojde k výjimce. |
-| InputClaim | secondDateTime | Datum a čas | Druhý datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než první datum a čas. Aktuální datetTime je považován za hodnotu Null. |
-| InputParameter | – Operátor | string | Jeden z následujících hodnot: stejné, novější než nebo dřívější. |
-| InputParameter | timeSpanInSeconds | int | Přidáte časový interval pro první datum a čas. |
-| outputClaim | výsledek | Boolean | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
+| InputClaim | firstDateTime | Datum a čas | První hodnota dateTime pro porovnání, zda je dřívější nebo pozdější než druhá hodnota dateTime. Hodnota null vyvolá výjimku. |
+| InputClaim | secondDateTime | Datum a čas | Druhý typ dateTime pro porovnání, zda je dřívější nebo pozdější než první datum a čas. Hodnota null se považuje za aktuální datetTime. |
+| InputParameter | operator | řetězec | Jedna z následujících hodnot: totéž, později než nebo starší než. |
+| InputParameter | timeSpanInSeconds | int | Přidejte časové rozpětí do prvního data a času. |
+| OutputClaim | výsledek | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
-Použijte tato deklarace identity transformace, která určí, zda dva ClaimTypes jsou stejné, novější nebo starší než mezi sebou. Například může ukládat posledního uživatel přijal vaše podmínky služby (TOS). Po 3 měsících můžete požádat uživatele o přístup TOS znovu.
-Ke spuštění transformace deklarací identity, musíte nejprve získat aktuální datum a čas a také poslední čas uživatel přijme podmínky telekomunikací.
+Pomocí této transformace deklarací identity určíte, zda jsou dva ClaimTypes stejné, pozdější nebo dřívější. Můžete například uložit čas poslední přijetí podmínek služby (TOS) uživatelem. Po 3 měsících můžete požádat uživatele, aby znovu přistupují ke službě TOS.
+Chcete-li spustit transformaci deklarace identity, musíte nejprve získat aktuální datum a čas a také čas, kdy uživatel akceptuje TOS.
 
 ```XML
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
@@ -166,13 +166,13 @@ Ke spuštění transformace deklarací identity, musíte nejprve získat aktuál
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **firstDateTime**: 2018-01-01T00:00:00.100000Z
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - Vstupní parametry:
     - **operátor**: později než
-    - **timeSpanInSeconds**: 7776000 (90 dnů)
-- Výstupní deklarace identit:
-    - **výsledek**: true
+    - **timeSpanInSeconds**: 7776000 (90 dní)
+- Deklarace výstupů:
+    - **výsledek**: pravda

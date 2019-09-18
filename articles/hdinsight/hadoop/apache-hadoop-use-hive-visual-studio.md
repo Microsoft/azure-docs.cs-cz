@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917488"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076287"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
@@ -115,7 +115,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 6. Na panelu nástrojů vyberte **cluster HDInsight** , který chcete použít pro tento dotaz. Vyberte **Odeslat** a spusťte příkazy jako úlohu podregistru.
 
-   ![Odeslat panel](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   ![Odeslání na panelu nástrojů Azure HDInsight](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Zobrazí se **Souhrn úlohy podregistr** a zobrazí se informace o běžící úloze. Pomocí odkazu **aktualizovat** aktualizujte informace úlohy, dokud se **stav úlohy** nezmění na **dokončeno**.
 

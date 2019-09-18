@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a použití cílových výpočetních prostředí pro trénování modelu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Nakonfigurujte školicí prostředí (cíle výpočtů) pro školení modelů ve službě Machine Learning. Mezi školicími prostředími můžete snadno přepínat. Spusťte školení místně. Pokud potřebujete horizontální navýšení kapacity, přepněte na cloudový cíl výpočtů.
 services: machine-learning
 author: heatherbshapiro
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860537"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034418"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 
-Díky Azure Machine Learning službě můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
+Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
-Výpočetní cíl můžete vytvořit a spravovat pomocí sady Azure Machine Learning SDK, Azure Portal, cílové stránky pracovního prostoru (Preview), rozhraní příkazového řádku Azure CLI nebo rozšíření Azure Machine Learning VS Code. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
+Výpočetní cíl můžete vytvořit a spravovat pomocí sady Azure Machine Learning SDK, Azure Portal, cílové stránky pracovního prostoru (Preview), rozhraní příkazového řádku Azure CLI nebo rozšíření Azure Machine Learning VS Code. Pokud máte výpočetní cíle vytvořené prostřednictvím jiné služby (například cluster HDInsight), můžete je použít tak, že je připojíte k pracovnímu prostoru Azure Machine Learning.
  
 V tomto článku se dozvíte, jak používat různé výpočetní cíle pro školení modelů.  Postup pro všechny výpočetní cíle se řídí stejným pracovním postupem:
 1. Pokud ho ještě nemáte, __vytvořte__ cíl výpočtů.
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak používat různé výpočetní cíle pro ško
 
 ## <a name="compute-targets-for-training"></a>Výpočetní cíle pro školení
 
-Služba Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
+Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -45,7 +45,7 @@ Služba Azure Machine Learning má různou podporu napříč různými výpočet
 
 ## <a name="whats-a-run-configuration"></a>Co je konfigurace spuštění?
 
-Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí služby Azure Machine Learning můžete spustit skript na různých cílových výpočetních prostředích, aniž byste museli změnit svůj skript.
+Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí Azure Machine Learning můžete skript spustit na různých výpočetních cílech bez nutnosti změny skriptu.
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon. Podrobnosti o určení prostředí a jeho navázání ke spuštění konfigurace najdete v tématu [vytváření a Správa prostředí pro účely školení a nasazení](how-to-use-environments.md).
 
@@ -143,7 +143,7 @@ Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj bě
 
 ### <a id="vm"></a>Vzdálené virtuální počítače
 
-Azure Machine Learning podporuje také přináší vlastní výpočetních prostředků a připojíte ho do pracovního prostoru. Jedním z těchto typů prostředků je libovolný vzdálený virtuální počítač, pokud je dostupný z Azure Machine Learning služby. Prostředkem může být virtuální počítač Azure, vzdálený server ve vaší organizaci nebo místní. Konkrétně pro vzdálené spuštění s ohledem na IP adresu a přihlašovací údaje (uživatelské jméno a heslo nebo klíč SSH) můžete použít libovolný dostupný virtuální počítač.
+Azure Machine Learning podporuje také přináší vlastní výpočetních prostředků a připojíte ho do pracovního prostoru. Jedním z těchto typů prostředků je libovolný vzdálený virtuální počítač, pokud je dostupný z Azure Machine Learning. Prostředkem může být virtuální počítač Azure, vzdálený server ve vaší organizaci nebo místní. Konkrétně pro vzdálené spuštění s ohledem na IP adresu a přihlašovací údaje (uživatelské jméno a heslo nebo klíč SSH) můžete použít libovolný dostupný virtuální počítač.
 
 Můžete použít prostředí integrovaného systému conda, již existující prostředí Python nebo kontejneru Docker. Aby bylo možné provést v kontejneru Docker, je nutné mít na virtuálním počítači spuštěný modul Docker. Tato funkce je zvlášť užitečné, pokud chcete dev/experimentování flexibilnější a cloudové prostředí než místního počítače.
 
@@ -327,7 +327,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 ### <a id="portal-reuse"></a>Připojit cíle výpočtů
 
-Chcete-li použít výpočetní cíle vytvořené mimo pracovní prostor služby Azure Machine Learning, je nutné je připojit. Připojení k cílovému cíli zpřístupníte pracovnímu prostoru.
+Chcete-li použít výpočetní cíle vytvořené mimo Azure Machine Learning pracovní prostor, je nutné je připojit. Připojení k cílovému cíli zpřístupníte pracovnímu prostoru.
 
 Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí následujících kroků Připojte cíl výpočetních prostředků: 
 
@@ -356,7 +356,7 @@ Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí n
 
 ## <a name="set-up-with-cli"></a>Nastavení pomocí rozhraní příkazového řádku
 
-K cílovým cílům, které jsou přidruženy k pracovnímu prostoru, můžete přistupovat pomocí [rozšíření CLI](reference-azure-machine-learning-cli.md) pro službu Azure Machine Learning.  Rozhraní příkazového řádku můžete použít k těmto akcím:
+K cílovým cílům, které jsou přidruženy k vašemu pracovnímu prostoru, získáte přístup pomocí [rozšíření CLI](reference-azure-machine-learning-cli.md) pro Azure Machine Learning.  Rozhraní příkazového řádku můžete použít k těmto akcím:
 
 * Vytvoření spravovaného cílového výpočetního prostředí
 * Aktualizace spravovaného cíle výpočtů
@@ -366,7 +366,7 @@ Další informace najdete v tématu [Správa prostředků](reference-azure-machi
 
 ## <a name="set-up-with-vs-code"></a>Nastavení pomocí VS Code
 
-K pracovním prostorům, které jsou přidruženy k vašemu pracovnímu prostoru pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning službu, můžete přistupovat, vytvářet a spravovat výpočetní cíle.
+Pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning můžete získat přístup k cílovým cílům, které jsou přidruženy k vašemu pracovnímu prostoru, a vytvořit a spravovat je.
 
 ## <a id="submit"></a>Odeslání školicích běhů pomocí sady Azure Machine Learning SDK
 
@@ -515,4 +515,4 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
 * Zobrazit odkaz na sadu SDK [třídy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)
-* [Použití Azure Machine Learning služby s virtuálními sítěmi Azure](how-to-enable-virtual-network.md)
+* [Použití Azure Machine Learning s Azure Virtual Networks](how-to-enable-virtual-network.md)

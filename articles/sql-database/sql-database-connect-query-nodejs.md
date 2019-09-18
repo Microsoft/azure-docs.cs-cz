@@ -1,5 +1,5 @@
 ---
-title: Použití Node.js k dotazování služby Azure SQL Database | Dokumentace Microsoftu
+title: 'Rychlý start: Použití Node. js k dotazování Azure SQL Database'
 description: Jak pomocí Node. js vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947099"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059279"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze Azure SQL
 
@@ -150,7 +151,7 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Otevřete složku,
 
 1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Ovladač Microsoft Node.js pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
 

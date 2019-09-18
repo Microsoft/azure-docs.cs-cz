@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231996"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058315"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a použití vlastních pravidel pro webové aplikace firewall v2
 
@@ -179,7 +179,7 @@ Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ip
 
 ## <a name="example-3"></a>Příklad 3
 
-V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím se zajistí, že se obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.0/24 zablokují.
+V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím je zajištěno, že pokud se shodují obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.0/24, požadavek se zablokuje.
 
 Logic: p **a** q
 

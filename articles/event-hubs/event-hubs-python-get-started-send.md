@@ -7,14 +7,14 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 09/16/2019
 ms.author: shvija
-ms.openlocfilehash: 22726ed8acae69adc09389b8f5f28df594a570a3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5162c6359c4b6e6bdd53d2778ca247704e2f16be
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915436"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059145"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Odesílání událostí do nebo příjem událostí z Event Hubs pomocí Pythonu
 
@@ -69,11 +69,11 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
 
 try:
     if not ADDRESS:
@@ -87,7 +87,8 @@ try:
         start_time = time.time()
         for i in range(100):
             print("Sending message: {}".format(i))
-            sender.send(EventData(str(i)))
+            message = "Message {}".format(i)
+            sender.send(EventData(message))
     except:
         raise
     finally:
@@ -133,11 +134,12 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
+
 CONSUMER_GROUP = "$default"
 OFFSET = Offset("-1")
 PARTITION = "0"
@@ -152,9 +154,7 @@ try:
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):
-        last_offset = event_data.offset
-        last_sn = event_data.sequence_number
-        print("Received: {}, {}".format(last_offset, last_sn))
+        print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
         total += 1
 
     end_time = time.time()
@@ -176,7 +176,7 @@ Pro spuštění skriptu, otevřete příkazový řádek, který má Python v ces
 start python recv.py
 ```
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

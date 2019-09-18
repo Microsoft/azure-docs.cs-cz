@@ -1,19 +1,20 @@
 ---
-title: 'Azure HDInsight: Ukázky .NET'
-description: Najít C# příklady .NET na Githubu pro běžné úlohy pomocí sady HDInsight SDK pro .NET.
+title: 'Azure HDInsight: ukázky .NET'
+description: Příklady C# .NET najdete na GitHubu pro běžné úlohy pomocí sady HDInsight SDK pro .NET.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3e2cb0768701196515ace3f6ef0d475f8e3b0f79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688111"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076881"
 ---
-# <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: Ukázky .NET
+# <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: ukázky .NET
 
 > [!div class="op_single_selector"]
 > * [Příklady v .NET](hdinsight-sdk-dotnet-samples.md)
@@ -23,10 +24,10 @@ ms.locfileid: "64688111"
 
 Tento článek obsahuje:
 
-* Odkazy na ukázky pro úlohy vytváření clusteru.
-* Obsahuje odkazy na referenční obsah pro další úlohy správy.
+* Obsahuje odkazy na ukázky pro úlohy vytváření clusterů.
+* Odkazy na referenční obsah pro jiné úlohy správy.
 
-Je možné [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Vaše předplatné sady Visual Studio vám dává kredity každý měsíc, můžete použít k placení za služby Azure.
+Můžete [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Vaše předplatné sady Visual Studio vám každý měsíc dává kredity, které můžete použít pro placené služby Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,15 +35,15 @@ Je možné [aktivovat výhody pro předplatitele sady Visual Studio](https://azu
 
 - [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Správa clusteru – vytváření
+## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 
 * [Vytvoření clusteru Kafka](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateKafkaClusterSample.cs)
 * [Vytvoření clusteru Spark](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateSparkClusterSample.cs)
-* [Vytvoření clusteru Spark s Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
-* [Vytvoření clusteru Spark s Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
+* [Vytvoření clusteru Spark pomocí Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
+* [Vytvoření clusteru Spark pomocí Balíček zabezpečení podniku (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
 
-Tyto ukázky pro rozhraní .NET můžete získat pomocí klonování [hdinsight-dotnet-sdk-samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) úložiště GitHub.
+Tyto ukázky pro .NET můžete získat klonováním úložiště GitHub pro [HDInsight-dotnet-SDK-Samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) .
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tento další funkce sady SDK najdete v [sady HDInsight SDK pro .NET referenční dokumentaci](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).

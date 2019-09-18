@@ -1,6 +1,6 @@
 ---
-title: Začínáme s fakturačnímu účtu smlouvy zákazníků společnosti Microsoft – Azure
-description: Vysvětlení smlouvy zákazníka Microsoftu fakturační účet
+title: Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu – Azure
+description: Seznamte se se svým fakturačním účtem pro smlouvu se zákazníkem Microsoftu
 author: bandersmsft
 manager: amberbhargava
 ms.service: billing
@@ -8,87 +8,87 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 87483c967641489e9548f38c99eebbf121d0d252
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.openlocfilehash: 835686d639679cca7e9a83b5297b365953835e47
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490737"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880741"
 ---
-# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Začínáme s vaší fakturační účet smlouvy zákazníka se společností Microsoft
+# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu
 
-Fakturační účet se vytvoří při registraci k Azure můžete používat. Fakturační účet použít ke správě faktury, platby a sledování nákladů. Můžete mít přístup k několika účtům fakturace. Například může registraci pro Azure pro vaše osobní projekty. Také může mít přístup k Azure prostřednictvím smlouvy Enterprise nebo smlouvy zákazníka Microsoftu vaší organizace. Pro každý z těchto scénářů by mít samostatné fakturační účet.
+Fakturační účet se vytváří při registraci k Azure. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Je to například tehdy, když se zaregistrujete v Azure pro práci na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačních účtů smluv se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="your-billing-account"></a>Fakturační účet
+## <a name="your-billing-account"></a>Váš fakturační účet
 
-Fakturačnímu účtu zákazníka smlouva Microsoft obsahuje jeden nebo více fakturační profily, které umožňují spravovat způsoby platby a faktury. Každý fakturační profil obsahuje jednoho nebo více oddílů faktury, které umožňují uspořádat náklady na faktuře fakturační profil.
+Váš fakturační účet pro smlouvu se zákazníkem Microsoftu obsahuje jeden nebo několik fakturačních profilů, pomocí nichž můžete spravovat faktury a způsoby platby. Každý fakturační profil obsahuje nejméně jeden oddíl faktury, který vám umožňuje organizovat náklady na faktuře pro tento profil.
 
-Následující diagram znázorňuje vztah mezi fakturační účet, fakturace profily a části faktury.
+Následující diagram ukazuje vztah mezi fakturačním účtem, fakturačními profily a oddíly faktury.
 
-![Diagram znázorňující smlouvy zákazníka Microsoftu fakturace hierarchie](./media/billing-mca-overview/mca-billing-hierarchy.png)
+![Diagram znázorňující hierarchii fakturace smlouvy se zákazníkem Microsoftu](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
-Role na fakturační účet mít nejvyšší úroveň oprávnění. Ve výchozím nastavení jenom uživatele, kterému zaregistrovali službu Azure získá přístup k fakturačnímu účtu. Pracovníci v těchto rolích měla být přiřazena uživatelům, kteří potřebují zobrazení faktur a sledovat náklady pro celou organizaci, jako jsou finanční nebo správce IT. Další informace najdete v tématu [fakturační účet role a úlohy](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
+Role ve fakturačním účtu mají nejvyšší úroveň oprávnění. Ve výchozím nastavení získává přístup k tomuto účtu jen uživatel, který se zaregistroval v Azure. Role by se měly přidělovat uživatelům, kteří potřebují zobrazovat faktury a sledovat náklady pro celou organizaci, jako jsou manažeři financí nebo IT. Podrobnosti najdete v části [Role a úlohy související s fakturačním účtem](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
 
-## <a name="billing-profiles"></a>Profily fakturace
+## <a name="billing-profiles"></a>Fakturační profily
 
-Fakturační profil použijte ke správě faktury a platební metody. Měsíční faktuře se vygeneruje na začátku měsíce pro každý fakturační profil ve vašem účtu. Faktura obsahuje příslušné poplatky pro všechna předplatná Azure a další nákupy z předchozího měsíce.
+Fakturační profil slouží ke správě faktur a způsobů platby. Na začátku kalendářního měsíce se pro každý fakturační profil na vašem účtu vygeneruje měsíční faktura. Ta obsahuje příslušné poplatky za všechna předplatná Azure a další nákupy z předchozího měsíce.
 
-Fakturační profil se automaticky vytvoří pro váš fakturační účet. Ve výchozím nastavení obsahuje jeden oddíl faktury. Můžete vytvořit další sekce a snadno sledovat a organizovat náklady podle svých potřeb, jestli je na projektu, oddělení nebo vývojovém prostředí. Tyto části uvidíte na faktuře fakturační profil odráží využití každé předplatné a nákup, které jste přiřadili k němu.
+Fakturační profil se pro váš fakturační účet vytváří automaticky. Ve výchozím nastavení obsahuje jeden oddíl faktury. Můžete ale vytvářet další oddíly, které vám umožní snadno sledovat a organizovat náklady podle vašich potřeb, například pro jednotlivé projekty, oddělení nebo vývojová prostředí. Tyto oddíly se zobrazí na faktuře pro fakturační profil a budou odrážet využití jednotlivých předplatných a nákupy, které jste k nim přiřadili.
 
-Role na fakturační profily mají oprávnění k zobrazení a správa faktury a platby. Pracovníci v těchto rolích přiřadíte uživatelům, kteří platit faktury jako členy týmu účtárny ve vaší organizaci. Další informace najdete v tématu [fakturace profilu role a úlohy](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+K rolím ve fakturačních profilech se vážou oprávnění pro zobrazování a správu faktur a způsobů platby. Tyto role můžete přidělit uživatelům, kteří hradí faktury, například členům účetního týmu ve vaší organizaci. Podrobnosti najdete v části [Role a úlohy související s fakturačním profilem](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-### <a name="each-billing-profile-gets-a-monthly-invoice"></a>Každý fakturační profil získá měsíční faktuře
+### <a name="each-billing-profile-gets-a-monthly-invoice"></a>Měsíční faktura pro každý fakturační profil
 
-Měsíční faktuře se vygeneruje na začátku měsíce pro každý fakturační profil. Faktura obsahuje všechny poplatky za předchozí měsíc.
+Na začátku kalendářního měsíce se pro každý fakturační profil vygeneruje měsíční faktura. Tato faktura obsahuje všechny poplatky za předchozí měsíc.
 
-Můžete zobrazit fakturu, stáhněte si dokumenty a změnit nastavení, chcete-li získat budoucí faktury e-mailem, na webu Azure Portal. Další informace najdete v tématu [stahovat faktury zákaznické smlouvy Microsoft](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
+Zobrazit fakturu, stáhnout dokumenty nebo změnit nastavení tak, aby se vám další faktury zasílaly e-mailem, je možné webu Azure Portal. Podrobnosti najdete v tématu [Stahování faktur pro smlouvu se zákazníkem Microsoftu](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
-### <a name="invoice-payment-methods"></a>Způsoby platby faktura
+### <a name="invoice-payment-methods"></a>Způsoby platby faktur
 
-Každý fakturační profil má svůj vlastní způsoby platby, které se používají k platbám jeho faktury. Podporují se následující platby:
+Každý fakturační profil má vlastní způsoby plateb, pomocí kterých se hradí příslušné faktury. Podporují se následující způsoby:
 
-| Type             | Definice  |
+| Typ             | Definice  |
 |------------------|-------------|
-|Kredity Azure    |  Kredity se automaticky použijí pro oprávněné poplatky na faktuře, čímž snižuje velikost, která budete muset platit. Další informace najdete v tématu [zůstatek kreditu Azure pro váš fakturační profil sledovat](billing-mca-check-azure-credits-balance.md). |
-|Kontrola přenos při přenosu | Pokud váš účet je schválená pro platbu prostřednictvím přenosu kontrola/při přenosu. Můžete platit dobu vypršení platnosti fakturu přenos kontrola/při přenosu. Jsou uvedeny pokyny pro platbu na fakturu |
-|Platební karty | Zákazníci, kteří si pro Azure prostřednictvím webu Azure můžete zaplatit prostřednictvím platební karty. |
+|Kredity Azure    |  Kredity se automaticky použijí pro poplatky, které je možné jejich prostřednictvím pokrýt. Snižuje se tak částka, kterou bude potřeba zaplatit. Podrobnosti najdete v tématu věnovaném [sledování zůstatku kreditů Azure pro fakturační profil](billing-mca-check-azure-credits-balance.md). |
+|Šek nebo bezhotovostní převod | Pokud je na vašem účtu schválená tato možnost, můžete splatnou částku faktury uhradit pomocí šeku nebo převodu. Podrobnosti k platbě jsou uvedené na faktuře. |
+|Platební karta | Uživatelé, kteří se zaregistrují v Azure prostřednictvím webu Azure, mohou platit kreditní kartou. |
 
-### <a name="apply-policies-to-control-purchases"></a>Použít zásady, které určují nákupů
+### <a name="apply-policies-to-control-purchases"></a>Použití zásad pro řízení nákladů
 
-Použití zásad ke správě Azure Marketplace a nákup rezervace pomocí fakturační profil. Můžete nastavit zásady zakážete nákup rezervace Azure a produkty webu Marketplace. Když zásady se použijí, nelze tyto nákupy předplatná, která se fakturují na fakturační profil.
+Zásady slouží k řízení nákupů na Azure Marketplace a rezervací Azure prostřednictvím fakturačního profilu. Pomocí těchto zásad můžete nákupy rezervací Azure a produktů Marketplace zakázat. Jakmile je použijete, nebude možné k těmto nákupům používat předplatná účtovaná danému fakturačnímu profilu.
 
-### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Plány Azure určit cen a service smlouvu o úrovni pro předplatná
+### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Určování cen a smlouvy o úrovni služeb pro předplatná pomocí plánů Azure
 
-Plány Azure určete ceny a smlouvám o úrovni za odběr služeb Azure. Při vytváření fakturačního profilu jsou automaticky povoleny. Všechny oddíly faktury, které jsou spojeny s fakturační profil můžete použít tyto plány. Uživatelé s přístupem k části faktury pomocí plánů vytvářet předplatná Azure. Následující plány Azure jsou podporovány v účtování účty smlouvy zákazníků společnosti Microsoft:
+Plány Azure stanovují ceny a smlouvy o úrovni služeb pro předplatná Azure. Při vytvoření fakturačního profilu se povolí automaticky. Využívat je mohou všechny oddíly faktury, které jsou přidružené k fakturačnímu profilu. Uživatelé, kteří mají přístup k oddílu faktury, vytváří pomocí plánů předplatná Azure. Ve fakturačních účtech pro smlouvu se zákazníkem Microsoftu se podporují následující plány Azure:
 
 | Plánování             | Definice  |
 |------------------|-------------|
-|Microsoft Azure Plan   | Povolení uživatelům vytvářet předplatná, která můžete spouštět žádné úlohy. Další informace najdete v tématu [plánu Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Plán Microsoft Azure pro vývoj/testování | Povolit předplatitele Visual Studia vytvořit předplatné, které mohly probíhat jenom pro vývoj nebo testování zatížení. Tato předplatná, získáte výhody, jako je například nižší sazby a přístup k imagím virtuálních počítačů vylučuje na webu Azure Portal. Další informace najdete v tématu [Microsoft Azure plánování DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Plán Microsoft Azure   | Umožňuje uživatelům vytvářet předplatná, ve kterých lze spouštět jakékoli úlohy.  |
+|Plán Microsoft Azure pro vývoj a testování | Umožňuje předplatitelům sady Visual Studio vytvářet předplatná omezená jen na úlohy vývoje a testování. Výhodou těchto předplatných jsou nižší sazby a přístup k exkluzivním imagím virtuálních počítačů na webu Azure Portal. |
 
-## <a name="invoice-sections"></a>Části faktury
+## <a name="invoice-sections"></a>Oddíly faktury
 
-Vytvoření oddílů faktury náklady na vaší faktuře. Například může potřebovat jedné faktuře pro vaši organizaci, ale chcete uspořádat náklady podle oddělení, tým nebo projektu. V tomto scénáři máte jeden fakturační profil kde vytvořte oddíl faktury pro každé oddělení, týmu nebo projektu.
+Oddíly faktury slouží k organizaci nákladů na faktuře. Můžete je vytvářet například tehdy, když potřebujete jednu fakturu pro celou organizaci, na které mají být náklady uspořádané podle oddělení, týmu nebo projektu. V tomto scénáři tak máte jeden fakturační profil, v němž vytváříte oddíl pro každé oddělení, tým a projekt.
 
-Když se části faktury, můžete ostatním uživatelům oprávnění k vytvoření předplatného Azure, které se účtují do části. Do části pak účtovat žádné poplatky za využívání a nákup předplatných.
+Po vytvoření oddílu faktury můžete ostatním uživatelům udělit oprávnění k vytváření předplatných Azure účtovaných do daného oddílu. V něm se pak budou zobrazovat všechny poplatky za využití a nákupy v rámci daných předplatných.
 
-Role v části faktury mají oprávnění řídit, kdo vytváří předplatných Azure. Pracovníci v těchto rolích přiřadíte uživatelům, kteří nastavení prostředí Azure pro týmy v naší organizaci, jako je engineering potenciálních zákazníků a technické architekty. Další informace najdete v tématu [fakturovat část role a úlohy](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+Pro role v oddílu faktury jsou k dispozici oprávnění, pomocí kterých můžete určovat, kdo smí předplatná Azure vytvářet. Role přiřazujete uživatelům, kteří nastavují prostředí Azure pro týmy ve vaší organizaci, například technickým vedoucím nebo architektům. Podrobnosti najdete v části [Role a úlohy související s oddíly faktury](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Naleznete v následujících článcích se dozvíte o vašem fakturačním účtu:
+Informace o fakturačním účtu najdete v následujících článcích:
 
-- [Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure](billing-understand-mca-roles.md)
-- [Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka](billing-mca-create-subscription.md)
-- [Vytvořit oddíly na vaší faktuře uspořádat svoje náklady](billing-mca-section-invoice.md)
+- [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](billing-understand-mca-roles.md)
+- [Vytvoření dalšího předplatného Azure pro smlouvu se zákazníkem Microsoftu](billing-mca-create-subscription.md)
+- [Uspořádání nákladů na faktuře pomocí oddílů](billing-mca-section-invoice.md)

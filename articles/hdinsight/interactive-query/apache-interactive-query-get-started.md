@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811596"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076362"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co je interaktivní dotaz ve službě Azure HDInsight
 
@@ -28,6 +28,9 @@ Ke službě podregistru můžete přistupovat v clusteru interaktivních dotazů
 ## <a name="create-an-interactive-query-cluster"></a>Vytvoření clusteru interaktivních dotazů
 
 Informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytváření Apache Hadoop clusterů ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Vyberte typ clusteru interaktivní dotaz.
+
+> [!IMPORTANT]
+> Minimální hlavnímu uzlu velikost pro clustery interaktivních dotazů je Standard_D13_v2. Další informace najdete v [grafu o velikosti virtuálních počítačů Azure](../../cloud-services/cloud-services-sizes-specs.md#dv2-series).
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Spustit Apache Hive dotazy z interaktivního dotazu
 
@@ -65,7 +68,7 @@ Vyhledání připojovacího řetězce připojení k databázi Java (JDBC):
 
    ![Interaktivní dotaz Hadoop pro HDInsight LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte se [vytvářet clustery interaktivních dotazů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 * Naučte [se vizualizovat velké objemy dat pomocí Power BI ve službě Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).

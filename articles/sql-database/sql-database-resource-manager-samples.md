@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566883"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037432"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Šablony Azure Resource Manager pro Azure SQL Database
 
 Šablony Azure Resource Manager umožňují definovat infrastrukturu jako kód a nasadit vaše řešení do cloudu Azure.
 
-## <a name="single-database--elastic-pool"></a>Elastický fond pro izolovanou databázi &
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Elastický fond pro izolovanou databázi &](#tab/single-database)
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database.
 
@@ -41,7 +41,7 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Az
 | [Cluster HDInsight s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Tato šablona vám umožní vytvořit cluster HDInsight, SQL Database Server, SQL Database a dvě tabulky. Tato šablona se používá v [článku použití Sqoop se systémem Hadoop v HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) . |
 | [Aplikace logiky Azure, která spouští uloženou proceduru SQL podle plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Tato šablona vám umožní vytvořit aplikaci logiky, která spustí uloženou proceduru SQL podle plánu. Jakékoli argumenty pro proceduru lze umístit do části text v šabloně.|
 
-## <a name="managed-instance"></a>MI
+## <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database spravovanou instanci.
 
@@ -51,3 +51,5 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Az
 | [Síťové prostředí pro spravovanou instanci](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Toto nasazení vytvoří nakonfigurovanou Virtual Network Azure se dvěma podsítěmi – jednu, která bude vyhrazená pro vaše spravované instance, a další, kde můžete umístit další prostředky (například virtuální počítače, App Service prostředí atd.). Tato šablona vytvoří správně nakonfigurované síťové prostředí, ve kterém můžete nasadit spravované instance. |
 | [Spravovaná instance s připojením P2S](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Toto nasazení vytvoří Azure Virtual Network se dvěma podsítěmi `ManagedInstance` a. `GatewaySubnet` Spravovaná instance bude nasazena v ManagedInstance podsíti. Brána virtuální sítě se vytvoří v `GatewaySubnet` podsíti a nakonfiguruje pro připojení VPN typu Point-to-site. |
 | [Spravovaná instance s virtuálním počítačem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Toto nasazení vytvoří Azure Virtual Network se dvěma podsítěmi `ManagedInstance` a. `Management` Spravovaná instance bude nasazena v `ManagedInstance` podsíti. Virtuální počítač s nejnovější verzí SQL Server Management Studio (SSMS) bude nasazený v `Management` podsíti. |
+
+---

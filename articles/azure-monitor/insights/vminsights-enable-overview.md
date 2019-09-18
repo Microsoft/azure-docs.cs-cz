@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: bd4016d91000ee23023eaa64872bff9a057058d1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f3aca6f62ff529dc2ea8356e18a0162e7d9a85d8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916047"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067053"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -45,10 +45,13 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - Západní střed USA
 - Západní USA 2<sup>1</sup>
 - East US
+- Východ USA 2<sup>1</sup>
 - Kanada – střed
 - Velká Británie – jih
+- Severní Evropa<sup>1</sup>
 - Západní Evropa
 - Jihovýchodní Asie
+- Japonsko – východ<sup>1</sup>
 - Austrálie – východ<sup>1</sup>
 - Austrálie – jihovýchod<sup>1</sup>
 

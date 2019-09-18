@@ -1,6 +1,6 @@
 ---
-title: Ověřování službou Multi-Factor Authentication v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Postup povolení služby Multi-Factor Authentication v zákaznické aplikace, které jsou zabezpečené pomocí Azure Active Directory B2C.
+title: Multi-Factor Authentication v Azure Active Directory B2C | Microsoft Docs
+description: Jak povolit vícefaktorové ověřování v aplikacích určených pro uživatele, které jsou zabezpečené pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509315"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065566"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolení služby Multi-Factor authentication v Azure Active Directory B2C
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolit službu Multi-Factor Authentication v Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C se integruje přímo do [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) tak, že přidáte druhou vrstvu zabezpečení do prostředí registrace a přihlášení ve svých aplikacích. Povolení služby Multi-Factor authentication aniž byste museli napsat jediný řádek kódu. Pokud jste už vytvořili sign up a toky přihlášení uživatelů, můžete stále povolit ověřování službou Multi-Factor Authentication.
+Azure Active Directory B2C (Azure AD B2C) se přímo integruje s [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , takže můžete přidat druhou vrstvu zabezpečení pro registraci a přihlašování v aplikacích. Službu Multi-Factor Authentication povolíte bez psaní jediného řádku kódu. Pokud jste už vytvořili zápisy uživatelů pro registraci a přihlašování, můžete přesto povolit službu Multi-Factor Authentication.
 
-Tato funkce pomáhá aplikacím zpracovávat scénáře, jako je následující:
+Tato funkce pomáhá aplikacím zvládnout následující scénáře:
 
-- Nemusíte vyžadovat vícefaktorové ověřování pro přístup k jedné aplikaci, ale chcete, aby pro přístup k jiné. Například zákazník se můžete přihlásit automaticky pojištění aplikace sociálních sítí nebo místní účet, ale před přístup k domovské pojištění aplikaci registrované ve stejném adresáři, musíte ověřit telefonní číslo.
-- Nemusíte vyžadovat vícefaktorové ověřování pro přístup k aplikaci obecně platí, ale chcete, aby pro přístup k citlivým části v rámci něj. Například zákazník se můžete přihlásit k aplikaci bankovnictví s sociální sítě nebo místní účet a kontrola účet zůstatek, ale před pokusem o převod při přenosu musí ověřit tak telefonní číslo.
+- Pro přístup k jedné aplikaci nevyžadujete vícefaktorové ověřování, ale vyžadujete, aby k ní měl přístup jiný. Zákazník se například může přihlásit k aplikaci pro automatické pojištění pomocí sociálního nebo místního účtu, ale před přístupem k aplikaci pro domácí pojištění zaregistrovanou ve stejném adresáři musí ověřit telefonní číslo.
+- Službu Multi-Factor Authentication nevyžadujete pro přístup k aplikaci obecně, ale vyžadujete přístup k citlivým částem v rámci této aplikace. Zákazník se například může přihlásit k bankovní aplikaci pomocí sociálního nebo místního účtu a zkontrolovat zůstatek účtu, ale před pokusem o přenos do přenosu musí ověřit telefonní číslo.
 
-## <a name="set-multi-factor-authentication"></a>Nastavení služby Multi-Factor authentication
+## <a name="set-multi-factor-authentication"></a>Nastavit službu Multi-Factor Authentication
 
-Když vytvoříte tok uživatele, máte možnost povolit ověřování službou Multi-Factor Authentication.
+Při vytváření toku uživatele máte možnost povolit službu Multi-Factor Authentication.
 
-![Nastavení služby Multi-Factor authentication](./media/active-directory-b2c-reference-mfa/add-policy.png)
+![Nastavit službu Multi-Factor Authentication](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-Nastavte **Vícefaktorové ověřování** k **povoleno**.
+Nastavte vícefaktorové **ověřování** na **povoleno**.
 
-Můžete použít **spustit tok uživatele** ověřit prostředí. Zkontrolujte následující scénář:
+K ověření prostředí můžete použít **tok spuštění uživatele** . Potvrďte následující scénář:
 
-Účet zákazníka se vytvoří ve vašem tenantovi, než dojde k krok ověřování službou Multi-Factor Authentication. Během kroku zákazník se zobrazí výzva zadat telefonní číslo a ověřte ji. Pokud je ověření úspěšné, telefonní číslo je připojený k účtu pro pozdější použití. I v případě, že zákazník zruší nebo potlačení, Zákazník může být zobrazí výzva k potvrzení telefonní číslo znovu při dalším přihlášení s povoleným ověřováním službou Multi-Factor Authentication.
+Ve vašem tenantovi se vytvoří účet zákazníka před tím, než nastane krok služby Multi-Factor Authentication. V průběhu tohoto kroku se zákazník vyzve k zadání telefonního čísla a jeho ověření. Pokud je ověření úspěšné, je telefonní číslo připojeno k účtu pro pozdější použití. I v případě, že zákazník zruší nebo odmítá, může být zákazník požádán o ověření telefonního čísla znovu při příštím přihlášení s povoleným službou Multi-Factor Authentication.
 
-## <a name="add-multi-factor-authentication"></a>Přidat ověřování službou Multi-Factor Authentication
+## <a name="add-multi-factor-authentication"></a>Přidat Multi-Factor Authentication
 
-Je možné povolit vícefaktorové ověřování u uživatelů tok, který jste předtím vytvořili. 
+Službu Multi-Factor Authentication je možné povolit na toku uživatele, který jste vytvořili dříve.
 
-Pokud chcete povolit ověřování službou Multi-Factor Authentication:
+Chcete-li povolit službu Multi-Factor Authentication:
 
-1. Otevřít tok uživatele a pak vyberte **vlastnosti**. 
-2. Vedle položky **Vícefaktorové ověřování**vyberte **povoleno**.
+1. Otevřete tok uživatele a pak vyberte **vlastnosti**.
+2. Vedle **vícefaktorového ověřování**vyberte **povoleno**.
 3. Klikněte na **Uložit** v horní části stránky.
 
 

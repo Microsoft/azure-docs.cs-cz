@@ -14,62 +14,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 1a051f3a0c55e207e6a53955d1cb4b9ea7e54a4d
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9e5bdb574439378b91a243d5d36ebddeb8520d49
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544146"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037457"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
-Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby Azure Storage, stejně jako zpráva k vydání verze pro předchozí verze.
+Tento článek obsahuje poznámky k verzi pro verzi Průzkumník služby Azure Storage 1.10.0, jakož i poznámky k verzi pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
 
-## <a name="version-190"></a>Verze 1.9.0
-7/1/2019
+## <a name="version-1100"></a>1\.10.0 verze
+9/12/2019
 
-### <a name="download-azure-storage-explorer-190"></a>Stáhněte si Průzkumníka služby Azure Storage 1.9.0
-- [Průzkumník služby Azure Storage 1.9.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Průzkumník služby Azure Storage 1.9.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Průzkumník služby Azure Storage 1.9.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-1100"></a>Stáhnout Průzkumník služby Azure Storage 1.10.0
+- [Průzkumník služby Azure Storage 1.10.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.10.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.10.0 na obchod s modulem snap-in](https://snapcraft.io/storage-explorer)
+- [Průzkumník služby Azure Storage 1.10.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
 
-* Nyní můžete připojit kontejnery objektů Blob pomocí Azure AD (oprávnění RBAC nebo seznamu ACL). Tato funkce je určená k poskytování pomoci uživatelům, kteří mají přístup k kontejnery, ale ne účty úložiště, které kontejnery jsou v. Najdete v naší příručky Začínáme pro další informace o této funkci.
-* Získání a zrušit zapůjčení nyní pracují s RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
-* Správa zásad přístupu a nastavení úroveň veřejného přístupu jsou nyní pracovat RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
-* Odstranění složky objektů blob se teď fungují se RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
-* Změna úrovní přístupu objektu blob nyní pracují s RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
-* Nyní můžete rychle obnovit rychlý přístup prostřednictvím příkazu "Nápověda" → "Obnovit". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+* Průzkumník služby Storage má teď vyhrazené uživatelské rozhraní pro nastavení. Můžete k němu přistoupit buď z úpravy, nebo kliknutím na ikonu nastavení (ozubené kolo) na levém panelu nástrojů. Tato funkce je prvním krokem, který zabereme do poskytování nejrůznějších [nastavení požadovaných pro uživatele](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate). Od tohoto vydání jsou podporovaná následující nastavení:
+    * Motiv
+    * Proxy
+    * Odhlásit při ukončení [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
+    * Povolit přihlášení ke toku kódu zařízení
+    * Automaticky aktualizovat [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
+    * Povolit AzCopy
+    * Doba trvání SAS AzCopy
 
-### <a name="preview-features"></a>Preview – funkce
+    Pokud existují další nastavení, které byste chtěli přidat, [otevřete prosím problém na GitHubu s popisem nastavení, které chcete zobrazit](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
+* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
+    * Nahrání Prem virtuálního pevného disku na nový disk
+    * Stažení disku
+    * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
+    * Odstranit disky
+    * Vytvoření snímku disku
 
-* Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
-* Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
+    Nahrávání, stahování a kopírování disků v různých oblastech využívá AzCopy v10 za účelem.
+* Průzkumník služby Storage se teď dají instalovat přes modul snap-in pro Linux. Při instalaci prostřednictvím obchodu s modulem snap-in jsou pro vás nainstalovány všechny závislosti včetně .NET Core! V současné době jsme ověřili, že Průzkumník služby Storage správně funguje na Ubuntu a CentOS. Pokud narazíte na problémy s instalací z obchodu pro jiné Linux distribuce, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Další informace o instalaci z obchodu s modulem snap-in najdete v naší [příručce Začínáme](https://aka.ms/storageexplorer/snapinformation). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Byly provedeny dvě významné změny pro připojení k Azure Active Directory (Azure AD), které jsou určené k tomu, aby byla funkce užitečnější pro ADLS Gen2 uživatele: * nyní vyberete tenanta, ve kterém je prostředek, který chcete připojit. To znamená, že už nepotřebujete mít přístup ke službě RBAC v rámci předplatného prostředku.
+        * Pokud připojujete ADLS Gen2 kontejner objektů blob, můžete se teď připojit k určité cestě v kontejneru.
+* Při správě seznamů ACL pro ADLS Gen2 soubory a složky se teď Průzkumník služby Storage zobrazí popisné názvy entit v seznamu ACL. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* Když přidáváte identifikátor OID do seznamu ACL ADLS Gen2, Průzkumník služby Storage nyní ověří, že identifikátor OID patří platné entitě ve vašem tenantovi. [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* Klávesové zkratky pro navigaci mezi kartami teď používají kombinace standardních kláves. [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* Když kliknete na kartu, bude nyní zavřena. [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* Pokud přenos AzCopy obsahuje přeskočení a žádné chyby, Průzkumník služby Storage nyní zobrazí ikonu upozornění pro zvýraznění, že došlo k přeskočení. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* Integrovaná AzCopy byla aktualizována na verzi 10.2.1. Navíc teď můžete zobrazit verzi AzCopy nainstalovanou v dialogovém okně o produktu. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
 ### <a name="fixes"></a>Opravy
 
-* Opravili jsme se nepodařilo načíst více než 50 předplatných pro jeden účet. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
-* Oprava nefunguje na informační panel, který se zobrazí, když selže přímý odkaz na tlačítko "Sign in". [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
-* Oprava, že pokud chcete nahrát soubory .app v systému macOS. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
-* Opravili jsme "Opakujte vše" nefunguje pro přejmenování objektů blob selhalo. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
-* Oprava "Storno" nefunguje při otevírání objektu blob. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
-* Opravili jsme několik problémů pravopis a popisu v celém produktu. Mnoho díky všechny, kdo tyto problémy nahlášené! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+* Mnoho uživatelů se spouštělo v různých verzích "nelze číst nedefinované verze" nebo "při práci s připojenými účty úložiště nejde načíst nedefinované připojení". I když pořád pokračujeme v šetření hlavní příčiny tohoto problému, Vylepšili jsme zpracování chyb při načítání připojených účtů úložiště. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)a [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* Ve stromové struktuře Průzkumníka (levá strana) je možné přejít do stavu, ve kterém by fokus mohl opakovaně přejít na nejvyšší uzel. Tato chyba byla opravena. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* Při správě snímků objektu BLOB by screenreaders nečetl časové razítko přidružené ke snímku. Tato chyba byla opravena. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* Nastavení proxy serveru na macOS nebylo nastaveno v čase, aby ho proces ověřování mohl použít. Tato chyba byla opravena. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* Pokud byl účet úložiště v rámci svrchovaného cloudu připojený pomocí názvu a klíče, AzCopy nebude fungovat. Tato chyba byla opravena. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* Při připojování pomocí připojovacího řetězce Průzkumník služby Storage nyní odstraní koncové mezery. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stažení nástroje AzCopy Blob není ověření MD5 pro velké soubory. Toto je kvůli chybě v sadě SDK úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
-* Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Nastavení automatické aktualizace zatím neovlivňuje všechny operace v Průzkumníkovi objektů BLOB.
+* Funkce spravovaného disku nejsou v Azure Stack podporovány.
+* Pokud se odeslání nebo vložení disku nezdaří a před selháním byl vytvořen nový disk, Průzkumník služby Storage disk za vás neodstraní.
+* V závislosti na tom, kdy zrušíte nahrávání nebo vložení disku, je možné tento nový disk ponechat v poškozeném stavu. Pokud k tomu dojde, musíte odstranit nový disk nebo ručně zavolat rozhraní API disku, aby se nahradil obsah disku tak, aby se už nepoškodil.
+* Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -77,23 +97,25 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
    * Úrovně přístupu
    * Obnovitelné odstranění
    * ADLS Gen2
+   * Spravované disky
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="previous-releases"></a>Předchozí verze
 
-* [Verze 1.8.1](#version-181)
-* [Verze 1.8.0](#version-180)
-* [Verze 1.7.0](#version-170)
-* [Verze 1.6.2.](#version-162)
-* [Verze 1.6.1](#version-161)
-* [Verze 1.6.0](#version-160)
-* [Verze 1.5.0](#version-150)
+* [1.9.0 verze](#version-190)
+* [1.8.1 verze](#version-181)
+* [1.8.0 verze](#version-180)
+* [1.7.0 verze](#version-170)
+* [1.6.2 verze](#version-162)
+* [1.6.1 verze](#version-161)
+* [1.6.0 verze](#version-160)
+* [1.5.0 verze](#version-150)
 * [Verze 1.4.4](#version-144)
 * [Verze 1.4.3](#version-143)
 * [Verze 1.4.2](#version-142)
@@ -125,48 +147,50 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
 * [Verze 0.7.20160105.0](#version-07201601050)
 * [Verze 0.7.20151116.0](#version-07201511160)
 
-## <a name="version-181"></a>Verze 1.8.1
-5/13/2019
 
-### <a name="hotfixes"></a>Opravy hotfix
-* V některých případech se kliknutím na "Zatížení více" na úrovni prostředků by vrátit na další stránku prostředky. Tato chyba byla opravena. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
-* Na Windows soubory ke stažení AzCopy selže, pokud při stahování jednoho souboru nebo složky a název souboru nebo složky měl znakem, který byl neplatný pro cestu Windows. Tato chyba byla opravena. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
-* Ve velmi výjimečných případech při provádění přejmenování sdílené složky nebo přejmenování ve sdílené složce, pokud se nezdařilo kopie pro přejmenování nebo pokud prozkoumejte úložiště nebyl schopen potvrzení úspěšného kopie s Azure, se potenciál pro Průzkumníka služby Storage o odstranění soubory achovat předtím, než bylo dokončeno kopírování. Tato chyba byla opravena.
+## <a name="version-190"></a>1\.9.0 verze
+7/1/2019
+
+### <a name="download-azure-storage-explorer-190"></a>Stáhnout Průzkumník služby Azure Storage 1.9.0
+- [Průzkumník služby Azure Storage 1.9.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.9.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.9.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
 
-* Integrované AzCopy verze byla aktualizována na verzi 10.1.0.
-* CTRL / Cmd + R je teď možné aktualizovat editoru aktuálně nastavený fokus. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* Verze rozhraní API služby Azure Stack úložiště se změnil na 2017-04-17.
-* Dialogové okno přístup spravovat ADLS Gen2 bude nyní synchronizujte maska způsobem podobně jako jiné nástroje oprávnění POSIX. Uživatelské rozhraní vydá varování také tehdy, že pokud dojde ke změně, která způsobí, že oprávnění uživatele nebo skupiny překročí hranice masky. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* Kontejnery objektů BLOB teď můžete připojit přes Azure AD (oprávnění RBAC nebo ACL). Účelem této funkce je pomáhat uživatelům, kteří mají přístup k kontejnerům, ale nikoli k účtům úložiště, ve kterých jsou kontejnery. Další informace o této funkci najdete v našem průvodci Začínáme.
+* Získání a přerušení zapůjčení teď funguje s RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* Správa zásad přístupu a nastavení úrovně veřejného přístupu teď funguje s RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* Odstraňování složek objektů BLOB teď funguje s RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* Změna úrovně přístupu objektu BLOB teď funguje s RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* Rychlý přístup teď můžete rychle obnovit prostřednictvím "" " [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
 
+### <a name="preview-features"></a>Funkce Preview
 
-### <a name="preview-features"></a>Preview – funkce
-
-* Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
-* Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
+* Přihlášení toku kódu zařízení je teď dostupné ve verzi Preview. Pokud ho chcete povolit, přečtěte si "ve verzi Preview" → použít přihlášení ke toku kódu zařízení. Pro tuto funkci doporučujeme, aby všichni uživatelé, kteří mají potíže s prázdným systémem pro přihlášení, mohli tuto funkci vyzkoušet, protože se tak mohou považovat za spolehlivější způsob přihlašování.
+* Průzkumník služby Storage integrovaná s AzCopy je aktuálně k dispozici ve verzi Preview. Pokud ho chcete povolit, přečtěte si "Preview" → "použití AzCopy pro lepší nahrávání a stahování objektů blob". Přenosy objektů BLOB dokončené s AzCopy by měly být rychlejší a více výkonné.
 
 ### <a name="fixes"></a>Opravy
 
-* Dialogové okno zásad přístupu již nastaví datum vypršení platnosti na zásady přístupu úložiště, které nemají vypršení platnosti. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Byly provedeny některé změny do dialogového okna generovat SAS zajistit, aby že uložené zásady přístupu jsou správně použity při generování SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* Při pokusu o nahrání bez – 512 bajtů zarovnána soubor do objektu Blob stránky, zpřístupní Průzkumníka služby Storage teď relevantnější chyby. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Kopírování objektů Blob v kontejneru, který používá zobrazované jméno selže. Teď se používá skutečný název kontejneru objektů Blob. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Pokus o provedení určité akce na složku ADLS Gen2, která má ve svém názvu znaky znakové sady unicode selže. Všechny akce by měla nyní pracovat. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* Opraveno nemůže načíst více než 50 předplatných pro jeden účet. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* Opravili jsme, že tlačítko přihlásit nefunguje na informačním panelu, který se zobrazí, když se nezdařil přímý odkaz. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* Nemusíte nahrávat soubory aplikace na macOS. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* Opravená možnost opakovat vše nefunguje pro přejmenování objektu blob, který selhal. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* Opravená možnost zrušit nefunguje při otevírání objektu BLOB. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* Opravili jsme několik problémů s pravopisem a popisy v celém produktu. Spousta díky všem, kdo nahlásil tyto problémy! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stažení nástroje AzCopy Blob není ověření MD5 pro velké soubory. Toto je kvůli chybě v sadě SDK úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
-* Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -180,45 +204,102 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
-## <a name="version-180"></a>Verze 1.8.0
+## <a name="version-181"></a>1\.8.1 verze
+5/13/2019
+
+### <a name="hotfixes"></a>Opravy hotfix
+* V některých případech nevrátí kliknutí na tlačítko načíst více na úrovni prostředků další stránku prostředků. Tato chyba byla opravena. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* V systému Windows by stažení AzCopy nebylo úspěšné, pokud se stáhl jeden soubor nebo složka a název souboru nebo složky měl znak, který byl pro cestu Windows neplatný. Tato chyba byla opravena. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* Ve extrémně vzácných případech při provádění přejmenování sdílené složky nebo přejmenování ve sdílené složce, pokud se kopie pro přejmenování nepovedla nebo pokud se v úložišti nepovedlo potvrdit úspěch kopií pomocí Azure, bylo možné Průzkumník služby Storage odstranit. riginal soubory před dokončením kopírování. Tato chyba byla opravena.
+
+### <a name="new"></a>Nová
+
+* Integrovaná verze AzCopy byla aktualizována na verzi 10.1.0.
+* Ctrl/Cmd + R se teď dají použít k aktualizaci aktuálně zaměřeného editoru. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Verze rozhraní API úložiště Azure Stack se změnila na 2017-04-17.
+* Dialog spravovat přístup pro ADLS Gen2 teď zůstane maska synchronizovaná způsobem podobným ostatním nástrojům oprávnění POSIX. Uživatelské rozhraní vás také upozorní, pokud je provedena změna, která způsobí, že oprávnění uživatele nebo skupiny budou přesáhnout hranice masky. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Pro nahrávání AzCopy je teď povolený příznak pro výpočet a nastavení algoritmu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>Funkce Preview
+
+* Přihlášení toku kódu zařízení je teď dostupné ve verzi Preview. Pokud ho chcete povolit, přečtěte si "ve verzi Preview" → použít přihlášení ke toku kódu zařízení. Pro tuto funkci doporučujeme, aby všichni uživatelé, kteří mají potíže s prázdným systémem pro přihlášení, mohli tuto funkci vyzkoušet, protože se tak mohou považovat za spolehlivější způsob přihlašování.
+* Průzkumník služby Storage integrovaná s AzCopy je aktuálně k dispozici ve verzi Preview. Pokud ho chcete povolit, přečtěte si "Preview" → "použití AzCopy pro lepší nahrávání a stahování objektů blob". Přenosy objektů BLOB dokončené s AzCopy by měly být rychlejší a více výkonné.
+
+### <a name="fixes"></a>Opravy
+
+* V dialogu zásady přístupu už nebude nastaveno datum vypršení platnosti u zásad přístupu k úložišti, které nemají vypršení platnosti. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* V dialogovém okně generovat SAS byly provedeny nějaké změny, aby se zajistilo, že uložené zásady přístupu se při generování SAS použijí správně. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Při pokusu o nahrání souboru zarovnanýho se systémem, který není 512 bajtů, do objektu blob stránky Průzkumník služby Storage nyní vystaví relevantnější chybu. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Kopírování kontejneru objektů blob, který využíval zobrazované jméno, by nedošlo k chybě. Nyní je použit skutečný název kontejneru objektů BLOB. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Pokus o provedení určitých akcí ve složce ADLS Gen2, která obsahovala znaky Unicode, by se nezdařil. Všechny akce by nyní měly fungovat. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>Známé problémy
+
+* Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
+   * Sdílené složky
+   * Úrovně přístupu
+   * Obnovitelné odstranění
+   * ADLS Gen2
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
+
+## <a name="version-180"></a>1\.8.0 verze
 5/1/2019
 
 ### <a name="new"></a>Nová
 
-* Integrované AzCopy verze byla aktualizována na verzi 10.1.0.
-* CTRL / Cmd + R je teď možné aktualizovat editoru aktuálně nastavený fokus. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* Verze rozhraní API služby Azure Stack úložiště se změnil na 2017-04-17.
-* Dialogové okno přístup spravovat ADLS Gen2 bude nyní synchronizujte maska způsobem podobně jako jiné nástroje oprávnění POSIX. Uživatelské rozhraní vydá varování také tehdy, že pokud dojde ke změně, která způsobí, že oprávnění uživatele nebo skupiny překročí hranice masky. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* Integrovaná verze AzCopy byla aktualizována na verzi 10.1.0.
+* Ctrl/Cmd + R se teď dají použít k aktualizaci aktuálně zaměřeného editoru. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Verze rozhraní API úložiště Azure Stack se změnila na 2017-04-17.
+* Dialog spravovat přístup pro ADLS Gen2 teď zůstane maska synchronizovaná způsobem podobným ostatním nástrojům oprávnění POSIX. Uživatelské rozhraní vás také upozorní, pokud je provedena změna, která způsobí, že oprávnění uživatele nebo skupiny budou přesáhnout hranice masky. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Pro nahrávání AzCopy je teď povolený příznak pro výpočet a nastavení algoritmu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Preview – funkce
+### <a name="preview-features"></a>Funkce Preview
 
-* Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
-* Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
+* Přihlášení toku kódu zařízení je teď dostupné ve verzi Preview. Pokud ho chcete povolit, přečtěte si "ve verzi Preview" → použít přihlášení ke toku kódu zařízení. Pro tuto funkci doporučujeme, aby všichni uživatelé, kteří mají potíže s prázdným systémem pro přihlášení, mohli tuto funkci vyzkoušet, protože se tak mohou považovat za spolehlivější způsob přihlašování.
+* Průzkumník služby Storage integrovaná s AzCopy je aktuálně k dispozici ve verzi Preview. Pokud ho chcete povolit, přečtěte si "Preview" → "použití AzCopy pro lepší nahrávání a stahování objektů blob". Přenosy objektů BLOB dokončené s AzCopy by měly být rychlejší a více výkonné.
 
 ### <a name="fixes"></a>Opravy
 
-* Dialogové okno zásad přístupu již nastaví datum vypršení platnosti na zásady přístupu úložiště, které nemají vypršení platnosti. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Byly provedeny některé změny do dialogového okna generovat SAS zajistit, aby že uložené zásady přístupu jsou správně použity při generování SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* Při pokusu o nahrání bez – 512 bajtů zarovnána soubor do objektu Blob stránky, zpřístupní Průzkumníka služby Storage teď relevantnější chyby. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Kopírování objektů Blob v kontejneru, který používá zobrazované jméno selže. Teď se používá skutečný název kontejneru objektů Blob. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Pokus o provedení určité akce na složku ADLS Gen2, která má ve svém názvu znaky znakové sady unicode selže. Všechny akce by měla nyní pracovat. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* V dialogu zásady přístupu už nebude nastaveno datum vypršení platnosti u zásad přístupu k úložišti, které nemají vypršení platnosti. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* V dialogovém okně generovat SAS byly provedeny nějaké změny, aby se zajistilo, že uložené zásady přístupu se při generování SAS použijí správně. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Při pokusu o nahrání souboru zarovnanýho se systémem, který není 512 bajtů, do objektu blob stránky Průzkumník služby Storage nyní vystaví relevantnější chybu. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Kopírování kontejneru objektů blob, který využíval zobrazované jméno, by nedošlo k chybě. Nyní je použit skutečný název kontejneru objektů BLOB. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Pokus o provedení určitých akcí ve složce ADLS Gen2, která obsahovala znaky Unicode, by se nezdařil. Všechny akce by nyní měly fungovat. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stažení nástroje AzCopy Blob není ověření MD5 pro velké soubory. Toto je kvůli chybě v sadě SDK úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
-* Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Při provádění stahování bez AzCopy objektů BLOB se neověřuje algoritmus MD5 pro velké soubory. Důvodem je chyba v sadě SDK pro úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -232,50 +313,50 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
+* Spuštění Průzkumník služby Storage v systému Linux vyžaduje, aby byly nejprve nainstalovány určité závislosti. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) s Průzkumník služby Storage.
 
 ## <a name="version-170"></a>Verze 1.7.0
 3/5/2019
 
-### <a name="download-azure-storage-explorer-170"></a>Stáhněte si Průzkumníka služby Azure Storage 1.7.0
+### <a name="download-azure-storage-explorer-170"></a>Stáhnout Průzkumník služby Azure Storage 1.7.0
 - [Průzkumník služby Azure Storage 1.7.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Průzkumník služby Azure Storage 1.7.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Průzkumník služby Azure Storage 1.7.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
 
-* Nyní můžete změnit vlastníka a vlastnící skupinu při správě přístupu pro kontejner ADLS Gen2, soubor nebo složku.
-* Na Windows aktualizace Průzkumníka služby Storage z v rámci produktu je nyní přírůstkové instalace. Výsledkem by měl být rychlejší prostředí aktualizace. Pokud dáváte přednost čistou instalaci, pak si můžete stáhnout [instalační program](https://azure.microsoft.com/features/storage-explorer/) sami a pak nainstalujte ručně. #1089
+* Nově můžete změnit vlastníka a vlastnící skupinu při správě přístupu pro ADLS Gen2 kontejner, soubor nebo složku.
+* V systému Windows je teď aktualizace Průzkumník služby Storage v rámci produktu přírůstková instalace. To by mělo mít za následek rychlejší aktualizaci. Pokud dáváte přednost čisté instalaci, můžete si [instalační program](https://azure.microsoft.com/features/storage-explorer/) stáhnout sami a pak ručně nainstalovat. #1089
 
-### <a name="preview-features"></a>Preview – funkce
+### <a name="preview-features"></a>Funkce Preview
 
-* Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení. #938
-* Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
+* Přihlášení toku kódu zařízení je teď dostupné ve verzi Preview. Pokud ho chcete povolit, přečtěte si "ve verzi Preview" → použít přihlášení ke toku kódu zařízení. Pro tuto funkci doporučujeme, aby všichni uživatelé, kteří mají potíže s prázdným systémem pro přihlášení, mohli tuto funkci vyzkoušet, protože se tak mohou považovat za spolehlivější způsob přihlašování. #938
+* Průzkumník služby Storage integrovaná s AzCopy je aktuálně k dispozici ve verzi Preview. Pokud ho chcete povolit, přečtěte si "Preview" → "použití AzCopy pro lepší nahrávání a stahování objektů blob". Přenosy objektů BLOB dokončené s AzCopy by měly být rychlejší a více výkonné.
 
 ### <a name="fixes"></a>Opravy
 
-* Nyní můžete typ objektu blob, který chcete nahrát jako, pokud je povolena AzCopy. #1111
-* Dříve Pokud jste povolené statických webů pro účet ADLS Gen2 úložiště a pak připojili pomocí názvu a klíče, Průzkumníka služby Storage nebude mít zjistil, že tento hierarchický obor názvů byl povolen. Tato chyba byla opravena. #1081
-* V editoru objektů blob řazení podle zbývající počet dní uchovávání dat nebo stavu bylo přerušeno. Tato chyba byla opravena. #1106
-* Po 1.5.0 Průzkumníka služby Storage už čekalo se na kopií na straně serveru k dokončení a oznamuje se úspěch při přejmenování nebo zkopírujte a vložte. Tato chyba byla opravena. #976
-* Při použití experimentální funkce AzCopy příkaz zkopíruje po kliknutí na tlačítko "Zkopírujte do schránky příkaz" nebyl vždy spustitelných sama o sobě. Nyní budou zkopírovány všechny příkazy potřebné ke spuštění přenosu ručně. #1079
-* Objekty BLOB ADLS Gen2 dříve, nebyly dostupné v případě, že jste za proxy serverem. Důvodem byla chyba v knihovně nové sítě používané sadou Storage SDK. V 1.7.0 byl proveden pokus o problém zmírnit, ale někteří uživatelé mohou nadále podívejte se na problémy. Úplné oprava bude součástí budoucí aktualizace. #1090
-* V 1.7.0, uložit soubor dialogu nyní správně pamatuje poslední umístění, které jste uložili soubor, který chcete. #16
-* Na panelu Vlastnosti byla zobrazena úroveň skladové položky účtu úložiště jako typ účtu. Tato chyba byla opravena. #654
-* V některých případech je možné přerušit zapůjčení objektu blob, i v případě, že jste správně zadali název objektu blob. Tato chyba byla opravena. #1070
+* Teď můžete zvolit typ objektu blob, který chcete nahrát, když je povolený AzCopy. #1111
+* Pokud jste dříve povolili statické weby pro účet úložiště ADLS Gen2 a pak je připojili s názvem a klíčem, Průzkumník služby Storage by se nezjistilo, že byl povolen hierarchický obor názvů. Tato chyba byla opravena. #1081
+* V editoru objektů BLOB se sestavuje řazení podle dnů uchovávání dat nebo je stav přerušeno. Tato chyba byla opravena. #1106
+* Po 1.5.0 Průzkumník služby Storage už nečekat na dokončení kopií na straně serveru před tím, než se nahlásí po přejmenování nebo zkopírování & vložení. Tato chyba byla opravena. #976
+* Při použití experimentální funkce AzCopy se příkaz zkopíroval po kliknutí na možnost zkopírovat příkaz do schránky, který se vždycky spustitelný sám na sebe. Všechny příkazy potřebné k ručnímu spuštění přenosu se teď zkopírují. #1079
+* Dříve byly objekty blob ADLS Gen2 nedostupné, pokud jste za proxy. Důvodem byla chyba v nové síťové knihovně, kterou používá sada SDK pro úložiště. V 1.7.0 se provedl pokus o zmírnění tohoto problému, ale někteří lidé můžou dál sledovat problémy. Úplná Oprava bude vydána v budoucí aktualizaci. #1090
+* V 1.7.0 teď dialog Uložit soubor správně pamatuje poslední umístění, do kterého jste soubor uložili. #16
+* Na panelu Vlastnosti se jako typ účtu zobrazuje úroveň SKU účtu úložiště. Tato chyba byla opravena. #654
+* V některých případech nebylo možné přerušit zapůjčení objektu blob, a to i v případě, že jste správně zadali název objektu BLOB. Tato chyba byla opravena. #1070
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
-* Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Pokud používáte RBAC, Průzkumník služby Storage vyžaduje pro přístup k prostředkům úložiště některá oprávnění vrstvy správy. Další informace najdete v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* Pokus o přístup k objektům blob ADLS Gen2 v případě, že dojde k selhání za proxy serverem.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -304,50 +385,50 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-162"></a>Verze 1.6.2.
+## <a name="version-162"></a>1\.6.2 verze
 1/9/2019
 
 ### <a name="hotfixes"></a>Opravy hotfix
-* V 1.6.1 byly entit ADLS Gen2 seznamů řízení přístupu přidal ObjectId, které nebyly uživatelé vždy přidán jako skupiny. Nyní pouze skupiny, se přidají jako skupiny a entitami, jako je například andService podnikové aplikace, které objekty jsou přidány jako uživatelé. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
-* Pokud účet úložiště ADLS Gen2 měli žádné kontejnery a byl připojen pomocí názvu a klíče, pak Průzkumníka služby Storage by zjistit, že byl účet úložiště ADLS Gen2. Tato chyba byla opravena. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
-* 1\.6.0 by je v konfliktu během kopírování a vložení řádku, vyřešení tohoto problému. Místo toho konfliktních kopírování jednoduše selže. Teď na první konfliktu, vyzve vás jak byste chtěli být vyřešen. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
-* Z důvodu omezení rozhraní API byly zakázány všechny ověřovací objectid v dialogovém okně Spravovat přístup. Ověření se nyní vztahuje pouze na uživatele UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* V dialogovém okně ADLS Gen2 Správa přístupu se nepodařilo upravit oprávnění pro skupinu. Tato chyba byla opravena. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* Přidání operace přetažení nahrát do editoru ADLS Gen2 podpory. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* Byl někdy chybí vlastnost URL v dialogovém okně Vlastnosti ADLS Gen2 souborů a složek lomítkem (/). Tato chyba byla opravena. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Pokud aktuální oprávnění pro kontejner služby ADLS Gen2, soubor nebo složku selže a chyba je nyní neukončily správně zobrazeny v protokolu aktivit. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* Dočasná cesta vytvořené pro otevírání souborů byla zkrácena snížíte pravděpodobnost vzniku cesty, která je delší než MAX_PATH na Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Dialogové okno připojit nyní správně se zobrazí, když nejsou žádní uživatelé přihlášení a byly připojeny žádné prostředky. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* Ukládání vlastností HNS BLOB a souborů v 1.6.0, zakódujte by hodnotu každé vlastnosti. Kvůli tomu zbytečné kódování hodnoty, které obsahoval pouze znaky ASCII. Nyní bude se hodnoty kódovaný pouze případě, že obsahují ne ASCII znaky. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Nahrání složky do kontejneru HNS Blob by selhat, pokud byl použit SAS a SAS nemá oprávnění ke čtení. Tato chyba byla opravena. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* Ruší se přenosem AzCopy nebyla úspěšná. Tato chyba byla opravena. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* AzCopy selže při pokusu o stažení složky z kontejneru objektů Blob Gen2 ADLS, pokud složka obsahuje mezery ve svém názvu. Tato chyba byla opravena. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* Editor služby cosmos DB byla porušena v 1.6.0. Nyní je opraveno. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* V 1.6.1 se entity přidané do ADLS Gen2 ACL podle identifikátorů ObjectId, které nebyly uživateli přidány jako skupiny. Nyní se jako skupiny přidají jenom skupiny a entity jako například podnikové aplikace andService objekty zabezpečení se přidají jako uživatelé. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* Pokud účet úložiště ADLS Gen2 neobsahoval žádné kontejnery a byl připojen s názvem a klíčem, Průzkumník služby Storage by nerozpoznal, že byl účet úložiště ADLS Gen2. Tato chyba byla opravena. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* V 1.6.0 se konflikty při kopírování a vkládání nedotazují na řešení. Místo toho by mohlo dojít ke konfliktu kopírování. Teď budete požádáni o to, jak se má vyřešit. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* Z důvodu omezení rozhraní API byla všechna ověření identifikátorů ObjectId v dialogovém okně Spravovat přístup zakázána. K ověření dojde nyní pouze u uživatelských UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* V dialogovém okně ADLS Gen2 spravovat přístup nelze změnit oprávnění pro skupinu. Tato chyba byla opravena. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Přidání podpory přetažení do editoru ADLS Gen2. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* Vlastnost URL v dialogovém okně Vlastnosti pro ADLS Gen2 soubory a složky někdy postrádá znak "/". Tato chyba byla opravena. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Pokud se nepovede získat aktuální oprávnění pro ADLS Gen2 kontejner, soubor nebo složku, pak se tato chyba zobrazí v protokolu aktivit. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Dočasná cesta vytvořená pro otevírání souborů byla zkrácena, aby se snížila pravděpodobnost vytvoření cesty, která je delší než MAX_PATH ve Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Dialogové okno připojit se teď zobrazí správně, pokud nejsou přihlášeni žádní uživatelé a nebyli připojeni žádné prostředky. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* V 1.6.0 ukládá vlastnosti pro objekty blob, které nejsou a soubory třídy HNS, do kódování hodnoty každé vlastnosti. Výsledkem je nepotřebné kódování hodnot, které obsahují pouze znaky ASCII. Hodnoty se teď zakódují jenom v případě, že obsahují znaky, které nejsou ASCII. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Nahrání složky do kontejneru objektů BLOB bez rozhraní HNS by nebylo úspěšné, pokud se použilo SAS a SAS neměl oprávnění ke čtení. Tato chyba byla opravena. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Zrušení přenosu AzCopy nefungovalo. Tato chyba byla opravena. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy by nedošlo k chybě při pokusu o stažení složky z ADLS Gen2 kontejneru objektů blob, pokud v názvu složky byly mezery. Tato chyba byla opravena. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Editor CosmosDB byl v 1.6.0 poškozen. Nyní je opraven. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Nová
 
-* Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
-* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-  * Vytvářet a odstraňovat kontejnery
-  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-  * Vytvoření nové složky
-  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
+  * Vytváření a odstraňování kontejnerů
+  * Správa vlastností kontejneru a oprávnění (levá strana)
+  * Zobrazení a navigace dat v kontejnerech
+  * Vytvořit nové složky
+  * Nahrávání, stahování, přejmenování a odstraňování souborů a složek
+  * Správa vlastností a oprávnění k souborům a složkám (pravá strana).
     
-    Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
-* Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.
+    Jiné typické funkce objektů blob, například obnovitelné odstranění a snímky, nejsou aktuálně k dispozici. Správa oprávnění je dostupná i v případě, že se přihlásíte. Navíc při práci v účtu úložiště ADLS Gen2 Průzkumník služby Storage použije AzCopy pro všechna nahrávání a stahování a pro všechny operace, pokud jsou k dispozici, použití přihlašovacích údajů pro název a klíč.
+* Po poskytnutí silné zpětné vazby od uživatele se může přerušení zapůjčení znovu použít k přerušení zapůjčení více objektů BLOB najednou.
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stahování z účtu ADLS Gen2 úložiště, pokud jeden ze souborů přenášených již existuje, pak někdy dojde k chybě nástroje AzCopy. Tato chyba bude opravena v nadcházející hotfix.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Pokud přenášíte z ADLS Gen2 účtu úložiště, v případě, že některý ze souborů již existuje, AzCopy někdy dojde k chybě. Tato akce bude opravena v nadcházející opravě hotfix.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -376,47 +457,47 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-161"></a>Verze 1.6.1
+## <a name="version-161"></a>1\.6.1 verze
 12/18/2018
 
 ### <a name="hotfixes"></a>Opravy hotfix
-* Z důvodu omezení rozhraní API byly zakázány všechny ověřovací objectid v dialogovém okně Spravovat přístup. Ověření se nyní vztahuje pouze na uživatele UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* V dialogovém okně ADLS Gen2 Správa přístupu se nepodařilo upravit oprávnění pro skupinu. Tato chyba byla opravena. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* Přidání operace přetažení nahrát do editoru ADLS Gen2 podpory. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* Byl někdy chybí vlastnost URL v dialogovém okně Vlastnosti ADLS Gen2 souborů a složek lomítkem (/). Tato chyba byla opravena. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Pokud aktuální oprávnění pro kontejner služby ADLS Gen2, soubor nebo složku selže a chyba je nyní neukončily správně zobrazeny v protokolu aktivit. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* Dočasná cesta vytvořené pro otevírání souborů byla zkrácena snížíte pravděpodobnost vzniku cesty, která je delší než MAX_PATH na Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Dialogové okno připojit nyní správně se zobrazí, když nejsou žádní uživatelé přihlášení a byly připojeny žádné prostředky. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* Ukládání vlastností HNS BLOB a souborů v 1.6.0, zakódujte by hodnotu každé vlastnosti. Kvůli tomu zbytečné kódování hodnoty, které obsahoval pouze znaky ASCII. Nyní bude se hodnoty kódovaný pouze případě, že obsahují ne ASCII znaky. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Nahrání složky do kontejneru HNS Blob by selhat, pokud byl použit SAS a SAS nemá oprávnění ke čtení. Tato chyba byla opravena. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* Ruší se přenosem AzCopy nebyla úspěšná. Tato chyba byla opravena. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* AzCopy selže při pokusu o stažení složky z kontejneru objektů Blob Gen2 ADLS, pokud složka obsahuje mezery ve svém názvu. Tato chyba byla opravena. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* Editor služby cosmos DB byla porušena v 1.6.0. Nyní je opraveno. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* Z důvodu omezení rozhraní API byla všechna ověření identifikátorů ObjectId v dialogovém okně Spravovat přístup zakázána. K ověření dojde nyní pouze u uživatelských UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* V dialogovém okně ADLS Gen2 spravovat přístup nelze změnit oprávnění pro skupinu. Tato chyba byla opravena. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Přidání podpory přetažení do editoru ADLS Gen2. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* Vlastnost URL v dialogovém okně Vlastnosti pro ADLS Gen2 soubory a složky někdy postrádá znak "/". Tato chyba byla opravena. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Pokud se nepovede získat aktuální oprávnění pro ADLS Gen2 kontejner, soubor nebo složku, pak se tato chyba zobrazí v protokolu aktivit. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Dočasná cesta vytvořená pro otevírání souborů byla zkrácena, aby se snížila pravděpodobnost vytvoření cesty, která je delší než MAX_PATH ve Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Dialogové okno připojit se teď zobrazí správně, pokud nejsou přihlášeni žádní uživatelé a nebyli připojeni žádné prostředky. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* V 1.6.0 ukládá vlastnosti pro objekty blob, které nejsou a soubory třídy HNS, do kódování hodnoty každé vlastnosti. Výsledkem je nepotřebné kódování hodnot, které obsahují pouze znaky ASCII. Hodnoty se teď zakódují jenom v případě, že obsahují znaky, které nejsou ASCII. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Nahrání složky do kontejneru objektů BLOB bez rozhraní HNS by nebylo úspěšné, pokud se použilo SAS a SAS neměl oprávnění ke čtení. Tato chyba byla opravena. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Zrušení přenosu AzCopy nefungovalo. Tato chyba byla opravena. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy by nedošlo k chybě při pokusu o stažení složky z ADLS Gen2 kontejneru objektů blob, pokud v názvu složky byly mezery. Tato chyba byla opravena. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Editor CosmosDB byl v 1.6.0 poškozen. Nyní je opraven. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Nová
 
-* Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
-* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-  * Vytvářet a odstraňovat kontejnery
-  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-  * Vytvoření nové složky
-  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
+  * Vytváření a odstraňování kontejnerů
+  * Správa vlastností kontejneru a oprávnění (levá strana)
+  * Zobrazení a navigace dat v kontejnerech
+  * Vytvořit nové složky
+  * Nahrávání, stahování, přejmenování a odstraňování souborů a složek
+  * Správa vlastností a oprávnění k souborům a složkám (pravá strana).
     
-    Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
-* Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.
+    Jiné typické funkce objektů blob, například obnovitelné odstranění a snímky, nejsou aktuálně k dispozici. Správa oprávnění je dostupná i v případě, že se přihlásíte. Navíc při práci v účtu úložiště ADLS Gen2 Průzkumník služby Storage použije AzCopy pro všechna nahrávání a stahování a pro všechny operace, pokud jsou k dispozici, použití přihlašovacích údajů pro název a klíč.
+* Po poskytnutí silné zpětné vazby od uživatele se může přerušení zapůjčení znovu použít k přerušení zapůjčení více objektů BLOB najednou.
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stahování z účtu ADLS Gen2 úložiště, pokud jeden ze souborů přenášených již existuje, pak někdy dojde k chybě nástroje AzCopy. Tato chyba bude opravena v nadcházející hotfix.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Pokud přenášíte z ADLS Gen2 účtu úložiště, v případě, že některý ze souborů již existuje, AzCopy někdy dojde k chybě. Tato akce bude opravena v nadcházející opravě hotfix.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -445,33 +526,33 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-160"></a>Verze 1.6.0
+## <a name="version-160"></a>1\.6.0 verze
 5/12/2018
 
 ### <a name="new"></a>Nová
 
-* Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
-* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-  * Vytvářet a odstraňovat kontejnery
-  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-  * Vytvoření nové složky
-  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
+  * Vytváření a odstraňování kontejnerů
+  * Správa vlastností kontejneru a oprávnění (levá strana)
+  * Zobrazení a navigace dat v kontejnerech
+  * Vytvořit nové složky
+  * Nahrávání, stahování, přejmenování a odstraňování souborů a složek
+  * Správa vlastností a oprávnění k souborům a složkám (pravá strana).
     
-    Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
-* Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.
+    Jiné typické funkce objektů blob, například obnovitelné odstranění a snímky, nejsou aktuálně k dispozici. Správa oprávnění je dostupná i v případě, že se přihlásíte. Navíc při práci v účtu úložiště ADLS Gen2 Průzkumník služby Storage použije AzCopy pro všechna nahrávání a stahování a pro všechny operace, pokud jsou k dispozici, použití přihlašovacích údajů pro název a klíč.
+* Po poskytnutí silné zpětné vazby od uživatele se může přerušení zapůjčení znovu použít k přerušení zapůjčení více objektů BLOB najednou.
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při stahování z účtu ADLS Gen2 úložiště, pokud jeden ze souborů přenášených již existuje, pak někdy dojde k chybě nástroje AzCopy. Tato chyba bude opravena v nadcházející hotfix.
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Pokud přenášíte z ADLS Gen2 účtu úložiště, v případě, že některý ze souborů již existuje, AzCopy někdy dojde k chybě. Tato akce bude opravena v nadcházející opravě hotfix.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -512,12 +593,12 @@ Tento článek obsahuje poznámky k vydání verze 1.9.0 Průzkumníka služby A
 * Kromě toho při použití nástroje AzCopy:
    * Můžete zkopírovat příkaz AzCopy používaný k provedení převodu do schránky. Jednoduše klikněte na tlačítko "Kopírovat AzCopy příkaz do schránky" v protokolu aktivit.
    * Je potřeba ručně aktualizovat editor objektů blob po nahrání.
-   * Nahrávání souborů doplňovací objekty BLOB se nepodporuje a nahraje soubory virtuálního pevného disku jako objekty BLOB stránky a nahraje všechny ostatní soubory jako objekty BLOB bloku.
-   * Chyby a ke kterým mohlo dojít během nahrávání nebo stahování se zobrazí až po nahrání nebo stažení je dokončené.
+   * Nahrávání souborů do připojených objektů BLOB se nepodporuje a soubory VHD se nahrají jako objekty blob stránky a všechny ostatní soubory se nahrají jako objekty blob bloku.
+   * Chyby a konflikty, ke kterým dojde během nahrávání nebo stahování, se neprojeví až po dokončení nahrávání nebo stahování.
 
 Podpora pro použití nástroje AzCopy s využitím sdílených složek a konečně, bude dostupná v budoucnu.
 * Průzkumník služby Storage je teď používá elektronovým verze 2.0.11.
-* Přerušení zapůjčení můžete nyní provést pouze na jeden objekt blob najednou. Kromě toho je nutné zadat název objektu blob zapůjčení, jejichž jsou zásadní. Tato změna byla provedena snížit pravděpodobnost, že omylem přerušuje se zapůjčení, zejména u virtuálních počítačů. #394
+* Přerušení zapůjčení můžete nyní provést pouze na jeden objekt blob najednou. Kromě toho je nutné zadat název objektu blob zapůjčení, jejichž jsou zásadní. Tato změna byla provedena, aby se snížila pravděpodobnost náhodného přerušení zapůjčení, zejména pro virtuální počítače. #394
 * Pokud někdy narazíte na problémy s přihlašováním, můžete teď zkuste resetovat ověřování. Přejděte do nabídky "Nápověda" a klikněte na tlačítko "Obnovit" přístupu k této funkci. #419
 
 ### <a name="fix"></a>Napravit
@@ -529,13 +610,13 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
-* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud tomu tak není, můžete k tomuto problému přidat komentář.
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
-* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Pokud chcete tento problém obejít při nahrávání nebo stahování z kontejneru objektů blob, můžete použít funkci experimentálního AzCopy.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
@@ -569,7 +650,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 10/15/2018
 
 ### <a name="hotfixes"></a>Opravy hotfix
-* Verze rozhraní API Azure Resource Management byla vrácena zpět k odblokování uživatelů Azure US Government. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Verze rozhraní API pro správu prostředků Azure byla vrácena zpět na odblokování uživatelů státní správy Azure USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Načítání číselníky teď používají animace CSS a snížit množství GPU používané Průzkumníka služby Storage. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nová
@@ -595,7 +676,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -625,7 +706,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 10/11/2018
 
 ### <a name="hotfixes"></a>Opravy hotfix
-* Verze rozhraní API Azure Resource Management byla vrácena zpět k odblokování uživatelů Azure US Government. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Verze rozhraní API pro správu prostředků Azure byla vrácena zpět na odblokování uživatelů státní správy Azure USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Načítání číselníky teď používají animace CSS a snížit množství GPU používané Průzkumníka služby Storage. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nová
@@ -651,7 +732,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -681,7 +762,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 09/24/2018
 
 ### <a name="hotfixes"></a>Opravy hotfix
-* Aktualizujte verzi rozhraní API správy prostředků Azure na 2018-07-01 a přidat podporu pro nové typy účtu úložiště Azure. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+* Pokud chcete přidat podporu pro nové typy účtů Azure Storage, aktualizujte verzi rozhraní API pro správu prostředků Azure na 2018-07-01. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
 ### <a name="new"></a>Nová
 * Přílohy externího zdroje, například připojení SAS a emulátory, je výrazně Vylepšená. Nyní můžete:
@@ -706,7 +787,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -766,7 +847,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -799,7 +880,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Přístup k kontejnery $web používají statické webové stránky se teď podporuje. To umožňuje snadno nahrávat a spravovat soubory a složky, které používá váš web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * Na panelu aplikace v systému macOS se znovu uspořádat. Změny zahrnují nabídku souborů, některé změny klíčů místní a několik nových příkazů v nabídce aplikace. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Koncového bodu autority pro přihlášení k Azure US Government se změnil na https://login.microsoftonline.us/
-* Usnadnění: Když čtečka obrazovky je aktivní, navigaci pomocí klávesnice nyní funguje s tabulky použitý pro zobrazení položek na pravé straně. Klávesy se šipkami můžete použít k procházení řádků a sloupců, Enter k vyvolání akce výchozí kontext klávesy nabídky otevřete místní nabídku pro položku a Shift nebo ovládací prvek vícenásobného výběru. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Přístup Když je čtečka obrazovky aktivní, navigace klávesnicí teď funguje s tabulkami použitými pro zobrazení položek na pravé straně. Klávesy se šipkami můžete použít k procházení řádků a sloupců, Enter k vyvolání akce výchozí kontext klávesy nabídky otevřete místní nabídku pro položku a Shift nebo ovládací prvek vícenásobného výběru. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Opravy
 *  Na některých počítačích byly podřízené procesy trvá příliš dlouho spustit. Pokud by k tomu dojít, se zobrazí chybu "podřízený proces se nepodařilo spustit včas". Čas přidělený pro podřízený proces spustit nyní se zvýšil z 20 na 90 sekund. Pokud jsou stále postižené tímto problémem, komentovat prosím propojené problém Githubu. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -807,20 +888,20 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Nastavení úroveň veřejného přístupu pro kontejner odeberte všechny zásady přístupu a naopak. Nyní zásady veřejný přístup nebo přístup se zachová, i když nastavení buď z nich. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
 * V dialogovém okně Vlastnosti byl zkrácen "AccessTierChangeTime". Tato chyba byla opravena. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
 * "Microsoft Azure Storage Explorer-" předponu nebyl nalezen v dialogovém okně vytvořte nový adresář. Tato chyba byla opravena. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Usnadnění: Dialogové okno Přidat entitu bylo obtížné pro navigaci při použití VoiceOver. Vylepšili jsme. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Usnadnění: Barva pozadí tlačítka pro podokna akcí a vlastností pro rozbalení/sbalení byl konzistentní se podobně jako ovládací prvky uživatelského rozhraní v motivu Vysoký kontrast – černá. Barva se změnil. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Usnadnění: Vysoký kontrast – černá motivu nebyla fokus pro používání stylů pro tlačítko "X" v dialogovém okně Vlastnosti viditelné. Tato chyba byla opravena. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Usnadnění: Karty Akce a vlastnosti byly chybí několik aria hodnoty, které je v prostředí čtečky subpar obrazovky. Byl přidán chybějící hodnoty aria. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Usnadnění: Uzly sbalený stromu na levé straně nebyly se danou hodnotu rozbalit aria hodnotu false. Tato chyba byla opravena. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Přístup Při použití VoiceOver se dialogové okno Přidat entitu obtížně navigoval. Vylepšili jsme. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Přístup Barva pozadí tlačítka pro sbalení a rozbalení pro podokno akce a vlastnosti byla nekonzistentní s podobnými ovládacími prvky uživatelského rozhraní v Vysoký kontrast černém motivu. Barva se změnil. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Přístup V Vysoký kontrast černý motiv není styl fokusu pro tlačítko X v dialogovém okně Vlastnosti viditelný. Tato chyba byla opravena. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Přístup Na kartách akce a vlastnosti chybí několik hodnot ARIA, jejichž výsledkem bylo prostředí subpar Screen Reader. Byl přidán chybějící hodnoty aria. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Přístup Sbaleným uzlům stromové struktury na levé straně se nedostala hodnota NEPRAVDA rozbalené ve standardu ARIA. Tato chyba byla opravena. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Známé problémy
-* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Další informace.
+* Odpojení od prostředku připojeného pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání správnému zobrazení jiných příloh. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Další informace.
 * Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * Azure Stack nepodporuje následující funkce a pokus o použití při práci s Azure Stack může vést k neočekávaným chybám:
@@ -880,7 +961,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -934,7 +1015,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -1000,7 +1081,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 ### <a name="known-issues"></a>Známé problémy
 * Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
@@ -1036,7 +1117,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 ### <a name="known-issues"></a>Známé problémy
 * Průzkumník služby Storage nepodporuje účty služby AD FS.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit [](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Panel nastavení účtu může zobrazit, že budete muset znovu zadat přihlašovací údaje k filtrování předplatných.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
@@ -1085,7 +1166,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 ### <a name="known-issues"></a>Známé problémy
 * Průzkumník služby Storage nepodporuje účty služby AD FS.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Panel nastavení účtu může zobrazit, že budete muset znovu zadat přihlašovací údaje k filtrování předplatných.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
@@ -1132,7 +1213,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Průzkumník služby Storage nepodporuje účty služby AD FS.
 * Klávesové zkratky pro "Zobrazení Průzkumník" a "Správa účtů zobrazení" by měl být Ctrl / Cmd + Shift + E a Ctrl / Cmd + Shift + A v uvedeném pořadí.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Panel nastavení účtu může zobrazit, že budete muset znovu zadat přihlašovací údaje k filtrování předplatných.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
@@ -1196,7 +1277,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Průzkumník služby Storage nepodporuje účty služby AD FS.
 * Klávesové zkratky pro "Zobrazení Průzkumník" a "Správa účtů zobrazení" by měl být Ctrl / Cmd + Shift + E a Ctrl / Cmd + Shift + A v uvedeném pořadí.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Panel nastavení účtu může zobrazit, že budete muset znovu zadat přihlašovací údaje k filtrování předplatných.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
@@ -1252,7 +1333,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Průzkumník služby Storage nepodporuje účty služby AD FS.
 * Klávesové zkratky pro "Zobrazení Průzkumník" a "Správa účtů zobrazení" by měl být Ctrl / Cmd + Shift + E a Ctrl / Cmd + Shift + A v uvedeném pořadí.
 * Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že používáme popsanou práci filtru zrušit.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
 * Panel nastavení účtu může zobrazit, že budete muset znovu zadat přihlašovací údaje k filtrování předplatných.
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
@@ -1325,12 +1406,12 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 * Aktualizovaná verze elektronovým k 1.7.2, abyste mohli využívat několik důležité aktualizace zabezpečení
 * Můžete teď rychle získat online Průvodce odstraňováním potíží z nabídky Nápověda
-* Řešení potíží s Průzkumníka služby Storage [Průvodce][2]
-* [Pokyny][3] o připojení k předplatnému Azure Stack
+* [Průvodce][2] odstraňováním potíží s Průzkumník služby Storage
+* [Pokyny][3] pro připojení k předplatnému Azure Stack
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Tlačítka na potvrzovací dialogové okno Odstranit složku nezaregistrujete s myší v Linuxu. pracovní přibližně je použití klávesy Enter
+* Tlačítka na potvrzovací dialogové okno Odstranit složku nezaregistrujete s myší v Linuxu. Chcete-li použít klávesu ENTER, použijte alternativní postup.
 * Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta pak budete muset restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage
 * S více než 3 skupiny objektů BLOB nebo ve stejnou dobu ukládání souborů může způsobit chyby
 * Panel nastavení účtu se může zobrazit, že budete muset znovu zadat přihlašovací údaje, aby bylo možné filtrovat předplatná
@@ -1350,17 +1431,17 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 #### <a name="new"></a>Nová
 
-* Řešení potíží s Průzkumníka služby Storage [Průvodce][2]
-* [Pokyny][3] o připojení k předplatnému Azure Stack
+* [Průvodce][2] odstraňováním potíží s Průzkumník služby Storage
+* [Pokyny][3] pro připojení k předplatnému Azure Stack
 
 #### <a name="fixes"></a>Opravy
 
-* Opraveno: Nahrání souboru využili vysokou příležitost sestavení z důvodu nedostatku paměti
-* Opraveno: Můžete teď přihlášení pomocí PIN kódu nebo čipová karta
-* Opraveno: Otevřít na portálu teď funguje s Azure China 21Vianet, Azure Germany, Azure US Government a Azure Stack
-* Opraveno: Při nahrávání složky na kontejner objektů blob, "Neplatná operace" by někdy dojít k chybě
-* Opraveno: Vybrat vše zakázal při správě snímků
-* Opraveno: Metadata základní objekt blob může přepsat po zobrazení vlastností její snímky
+* Určí Při nahrávání souboru se stala vysoká pravděpodobnost, že by došlo k chybě při nedostatku paměti.
+* Určí Nyní se můžete přihlásit pomocí kódu PIN nebo čipové karty.
+* Určí Otevřít na portálu teď funguje s Azure Čína 21Vianet, Azure Německo, Azure US vládou a Azure Stack
+* Určí Při nahrávání složky do kontejneru objektů BLOB by někdy došlo k chybě "nedovolené operace"
+* Určí Při správě snímků byl zakázán výběr vše.
+* Určí Metadata základního objektu BLOB se můžou po zobrazení vlastností svých snímků přepsat.
 
 #### <a name="known-issues"></a>Známé problémy
 
@@ -1436,7 +1517,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Průzkumník služby Storage 0.8.9 automaticky stáhne nejnovější aktualizace.
 * Oprava hotfix: prostřednictvím portálu vygenerovaný identifikátor URI SAS pro připojení k účtu úložiště by dojít k chybě.
 * Nyní můžete vytvářet, spravovat a zvýšení úrovně se snímky objektů blob.
-* Můžete teď přihlášení pro účty Azure US Government, Azure Germany a Azure China 21Vianet.
+* Nyní se můžete přihlásit ke službě Azure Čína 21Vianet, Azure Německo a Azure pro státní správu USA.
 * Nyní můžete změnit úroveň zvětšení. Pomocí možností v nabídce Zobrazit přiblížit, oddálit a resetovat zvětšení.
 * Znaky Unicode jsou nyní podporovány uživatele metadat pro objekty BLOB a soubory.
 * Vylepšení přístupnosti.
@@ -1469,13 +1550,13 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 #### <a name="fixes"></a>Opravy
 
-* Opraveno: Průzkumník služby Storage je teď důvěryhodné aplikace na počítači Mac
-* Opraveno: Ubuntu 14.04 opět je podporována.
-* Opraveno: Někdy bliká přidat účet uživatelského rozhraní při načítání předplatných
-* Opraveno: Někdy všechny prostředky úložiště byly uvedené v navigačním podokně na levé straně
-* Opraveno: V podokně Akce někdy zobrazí prázdné akce
-* Opraveno: Nyní se uchovávají velikost okna z poslední relace uzavřeno
-* Opraveno: Můžete otevřít více karet pro stejný prostředek pomocí místní nabídky
+* Určí Průzkumník služby Storage je teď důvěryhodná aplikace na Macu.
+* Určí Ubuntu 14,04 se znovu podporuje.
+* Určí Někdy při načítání předplatných bliká uživatelské rozhraní pro přidání účtu
+* Určí Někdy nejsou všechny prostředky úložiště uvedené v levém navigačním podokně.
+* Určí V podokně akce se někdy zobrazují prázdné akce.
+* Určí Velikost okna z poslední uzavřené relace je nyní zachovaná.
+* Určí Pomocí místní nabídky můžete otevřít několik karet pro stejný prostředek.
 
 #### <a name="known-issues"></a>Známé problémy
 
@@ -1497,7 +1578,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Znovu zavedli jsme cíleně prohledejte s naší nové hledání dílčího řetězce rozšířené, takže Teď máte dvě možnosti pro hledání:
     * Globální vyhledávání – stačí do textového pole hledání zadejte hledaný termín
     * Cíleně prohledejte – klikněte na ikonu lupy vedle uzlu, pak přidat hledaný termín do konce cesty, nebo klikněte pravým tlačítkem a vyberte "Vyhledávání z tady"
-* Přidali jsme různé motivy: Světlý (výchozí), tmavý, vysoký kontrast – černá a Vysoký kontrast – bílá. Přejděte na Úpravy -&gt; motivy, chcete-li změnit vaši volbu motivů
+* Přidali jsme různé motivy: Světlá (výchozí), tmavě, Vysoký kontrastová, černá a Vysoký kontrast bílá. Přejděte na Úpravy -&gt; motivy, chcete-li změnit vaši volbu motivů
 * Můžete upravit vlastnosti objektů Blob a souborů
 * Nyní podporujeme kódovaný (base64) a nekódovaného jejich zprávy.
 * V Linuxu, OS 64-bit nyní je povinný. Pro tuto verzi se podporuje jenom 64bitová verze Ubuntu 16.04.1 LTS
@@ -1505,14 +1586,14 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 #### <a name="fixes"></a>Opravy
 
-* Opraveno: Obrazovka zmrazení problémy
-* Opraveno: Vylepšené zabezpečení
-* Opraveno: Může zobrazovat někdy duplicitní připojené účty
-* Opraveno: Objekt blob se Nedefinovaný typ obsahu může generovat výjimky
-* Opraveno: Otevření panelu dotazu na prázdnou tabulku nebylo možné
-* Opraveno: Se liší chyby ve službě Search
-* Opraveno: Zvýšit počet zdrojů načteny z 50 až 100 při kliknutí na "Načíst další"
-* Opraveno: Při prvním spuštění Pokud je přihlášení účtu, teď vybereme Všechna předplatná pro tento účet ve výchozím nastavení
+* Určí Problémy mrznutí obrazovky
+* Určí Vylepšené zabezpečení
+* Určí Někdy se můžou zobrazit duplicitní připojené účty.
+* Určí Objekt BLOB s nedefinovaným typem obsahu může generovat výjimku.
+* Určí Otevření panelu dotazů v prázdné tabulce nebylo možné.
+* Určí Při hledání se liší chyby.
+* Určí Zvýšení počtu prostředků načtených z 50 na 100 při kliknutí na načíst více
+* Určí Když se při prvním spuštění přihlásí účet, teď ve výchozím nastavení vybereme všechna předplatná pro tento účet.
 
 #### <a name="known-issues"></a>Známé problémy
 
@@ -1533,8 +1614,8 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 #### <a name="fixes"></a>Opravy
 
 * Opraveno: způsobila konflikt časování během vyhledávání někdy uzly stát bez rozšíření
-* Opraveno: "Pomocí protokolu HTTP" nefunguje při připojování k účtům úložiště pomocí názvu a klíče účtu
-* Opraveno: Klíče SAS (ty speciálně portálu vygeneruje) vrátí chybu "koncové lomítko"
+* Určí Při připojování k účtům úložiště s názvem účtu a klíčem nefunguje "použít protokol HTTP".
+* Určí Klíče SAS (speciálně generované portálem) vrátí chybu koncového lomítka.
 * Opraveno: importovat tabulku problémy
     * Někdy byly vráceny zpět klíče oddílu a klíč řádku
     * Nelze číst "null" klíči oddílů
@@ -1580,7 +1661,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 #### <a name="fixes"></a>Opravy
 
-* Opraveno: Microsoft Accounts vyžadovat opakované ověření každých 8 až 12 hodin
+* Určí Účty Microsoft vyžadují opakované ověření každých 8-12 hodin.
 
 #### <a name="known-issues"></a>Známé problémy
 
@@ -1588,7 +1669,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * macOS instalace může vyžadovat zvýšenou úroveň oprávnění
 * Panel nastavení účtu se může zobrazit, že budete muset znovu zadat přihlašovací údaje, aby bylo možné filtrovat předplatná
 * Přejmenování sdílené, kontejnerů objektů blob a tabulek nezachová metadat nebo jiné vlastnosti v kontejneru, jako je například kvóta pro sdílenou složku, úroveň veřejného přístupu nebo zásad přístupu
-* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadata pro objekty blob, soubory a entity se při přejmenování zachovají.
 * Kopírování nebo přejmenování zdroje nefunguje v rámci účty připojené sdíleným přístupovým Podpisem
 
 07/07/2016
@@ -1599,7 +1680,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 #### <a name="new"></a>Nová
 
 * Účty úložiště jsou seskupené podle předplatných; vývojovým úložištěm a prostředkům připojeným prostřednictvím klíč nebo SAS se zobrazí v uzlu (místní a připojené)
-* Odhlásit se z účtů v panelech "Nastavení účtu Azure"
+* Odhlášení z účtů na panelu "nastavení účtu Azure"
 * Konfigurace nastavení proxy serveru povolit a spravovat přihlášení
 * Vytvoření a zrušit zapůjčení objektu blob
 * Kontejnery otevřít objekt blob, fronty, tabulky a soubory s jedním kliknutím
@@ -1636,7 +1717,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 * Opraveno: stahování velkých objektů BLOB nebo může způsobit neúplné nahrávání a stahování
 * Opraveno: úpravy, přidáním nebo importováním entity s hodnotou číselný řetězec ("1") převede ho na double
-* Opraveno: Nelze rozbalit uzel tabulky v místním vývojovém prostředí
+* Určí Nejde rozšířit uzel tabulky v místním vývojovém prostředí.
 
 #### <a name="known-issues"></a>Známé problémy
 
@@ -1656,7 +1737,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 #### <a name="known-issues"></a>Známé problémy
 
-* Tabulky: Přidání, úprava nebo import entita, která má vlastnost ambiguously číselnou hodnotu, jako je například "1" nebo "1.0" a uživatel se pokusí odeslat ji jako `Edm.String`, hodnota bude vracet přes rozhraní API jako Edm.Double klienta
+* Tabulky Přidání, úprava nebo import entity, která má vlastnost s nejednoznačnou číselnou hodnotou, jako je "1" nebo "1,0" a uživatel se pokusí odeslat jako `Edm.String`, hodnota se vrátí pomocí klientského rozhraní API jako EDM. Double
 
 03/31/2016
 
@@ -1702,7 +1783,7 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 
 * Podpora Linuxu (parity funkcí na OSX)
 * Přidat kontejnery objektů blob pomocí klíče sdílených přístupových podpisů (SAS)
-* Přidání účtů úložiště pro Azure China 21Vianet
+* Přidání účtů úložiště pro Azure Čína 21Vianet
 * Přidání účtů úložiště s vlastní koncové body
 * Otevřít a zobrazit obsah textu a obrázku objekty BLOB
 * Zobrazit a upravit vlastnosti objektu blob a metadat

@@ -4,7 +4,7 @@ description: Tento článek vám pomůže s odkazy na články, které vám pom�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: ce51b462b17a7082fa7951aea8790e28e517401e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080506"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059169"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Řešení potíží s chybami při spuštění Azure Virtual Machines
 
@@ -26,14 +26,14 @@ V tomto článku jsou uvedené běžné chyby při spuštění, které se můžo
 ## <a name="boot-errors-and-solutions"></a>Chyby a řešení spouštění
 
 * [Chyby spuštění nástroje BitLocker](troubleshoot-bitlocker-boot-error.md) 
-* [Windows zobrazit při spuštění kontrolu systému souborů](troubleshoot-check-disk-boot-error.md)
+* [Ve Windows se při spouštění zobrazuje Kontrola systému souborů](troubleshoot-check-disk-boot-error.md)
 * [Chyby typu modrá obrazovka](troubleshoot-common-blue-screen-error.md)
-* [Spuštění virtuálního počítače se zablokuje při přípravě Windows.](troubleshoot-vm-boot-configure-update.md)
-* [Chyba KRITICKÉho selhání služby na modré obrazovce](troubleshoot-critical-service-failed-boot-error.md)
-* [Potíže se smyčkou pro restart](troubleshoot-reboot-loop.md)
-* [Spuštění virtuálního počítače se zablokuje ve fázi Windows Update.](troubleshoot-stuck-updating-boot-error.md)
+* [Spuštění virtuálního počítače se zaseklo na Probíhá příprava Windows](troubleshoot-vm-boot-configure-update.md)
+* [Chyba typu SELHÁNÍ KRITICKÉ SLUŽBY na modré obrazovce](troubleshoot-critical-service-failed-boot-error.md)
+* [Potíže se smyčkou restartování](troubleshoot-reboot-loop.md)
+* [Spuštění virtuálního počítače se zaseklo ve fázi aktualizace Windows](troubleshoot-stuck-updating-boot-error.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Diagnostika spouštění](boot-diagnostics.md)
 - [Sériová konzola virtuálních počítačů](../windows/serial-console.md)

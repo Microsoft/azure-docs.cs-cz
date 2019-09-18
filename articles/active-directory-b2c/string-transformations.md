@@ -1,6 +1,6 @@
 ---
-title: Řetězec deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
-description: Řetězec deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
+title: Příklady transformačních deklarací identity pro schéma architektury prostředí identity Azure Active Directory B2C | Microsoft Docs
+description: Příklady transformačních deklarací identity pro schéma rozhraní Azure Active Directory B2C prostředí identity
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,34 +10,34 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512589"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063444"
 ---
-# <a name="string-claims-transformations"></a>Řetězec deklarace identity transformace
+# <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady použití transformace deklarací identity řetězců schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití transformací deklarace identity schématu rozhraní identity v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
-Porovnat dvě deklarace identity a vyvolat výjimku, pokud nejsou stejné podle zadané porovnávací inputClaim1, inputClaim2 a stringComparison.
+Porovnejte dvě deklarace identity a vyvolejte výjimku, pokud se neshodují podle zadaného porovnání inputClaim1, inputClaim2 a stringComparison.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | string | Typ první deklaraci identity, který je k porovnání. |
-| InputClaim | inputClaim2 | string | Druhý typ deklarace identity, který má být porovnána. |
-| InputParameter | stringComparison | string | porovnání řetězců, použijte některou z hodnot: Pořadí, OrdinalIgnoreCase. |
+| InputClaim | inputClaim1 | řetězec | Typ první deklarace, který se má porovnat. |
+| InputClaim | inputClaim2 | řetězec | Typ druhé deklarace identity, který se má porovnat. |
+| InputParameter | stringComparison | řetězec | porovnání řetězců, jedna z hodnot: Ordinal, OrdinalIgnoreCase. |
 
-**AssertStringClaimsAreEqual** transformaci deklarací identity je vždy spuštěn z [technický profil ověření](validation-technical-profile.md) , který je volán [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationStringsAreNotEqual** technického profilu s vlastním potvrzením řídí, která se zobrazí uživateli chybovou zprávu.
+Transformace deklarací **AssertStringClaimsAreEqual** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md). Metadata technického profilu **UserMessageIfClaimsTransformationStringsAreNotEqual** s vlastním uplatněním řídí chybovou zprávu, která se zobrazí uživateli.
 
-![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
+![Spuštění AssertStringClaimsAreEqual](./media/string-transformations/assert-execution.png)
 
-Můžete použít tato deklarace identity transformace, abyste měli jistotu, dva ClaimTypes mají stejnou hodnotu. V opačném případě je vyvolána chybovou zprávu. Následující příklad kontroluje, zda **strongAuthenticationEmailAddress** typu deklarace identity rovná **e-mailu** typu deklarace identity. V opačném případě je vyvolána chybovou zprávu. 
+Pomocí této transformace deklarací identity se můžete ujistit, že dvě ClaimTypes mají stejnou hodnotu. V takovém případě je vyvolána chybová zpráva. Následující příklad zkontroluje, zda je **strongAuthenticationEmailAddress** ClaimType rovno hodnotě deklarace identity typu **e-mail** . V opačném případě je vyvolána chybová zpráva.
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -52,7 +52,7 @@ Můžete použít tato deklarace identity transformace, abyste měli jistotu, dv
 ```
 
 
-**Neinteraktivní přihlášení** volání technický profil ověření **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** transformace deklarací identity.
+Technický profil neinteraktivního ověření **přihlášení** volá transformaci deklarací **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** .
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -62,7 +62,7 @@ Můžete použít tato deklarace identity transformace, abyste měli jistotu, dv
 </TechnicalProfile>
 ```
 
-Volání ověření s vlastním potvrzením technický profil **neinteraktivní přihlášení** technický profil.
+Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -75,26 +75,26 @@ Volání ověření s vlastním potvrzením technický profil **neinteraktivní 
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
     - Vstupní parametry:
   - **stringComparison**: ordinalIgnoreCase
-- Výsledek: Vyvolána chyba
+- Vyústit Došlo k chybě
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
-Změní případ zadané deklarace identity ke snížení nebo velká písmena v závislosti na operátor.
+Změní velikost případu poskytnuté deklarace na nižší nebo velká písmena v závislosti na operátoru.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | string | Typu deklarace identity, který se změnil. |
-| InputParameter | toCase | string | Jeden z následujících hodnot: `LOWER` nebo `UPPER`. |
-| outputClaim | outputClaim | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
+| InputClaim | inputClaim1 | řetězec | Deklarace ClaimType, která se má změnit. |
+| InputParameter | toCase | řetězec | Jedna z následujících hodnot: `LOWER` nebo. `UPPER` |
+| OutputClaim | OutputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Pomocí této transformace deklarací identity můžete změnit libovolný řetězec typu deklarace identity ke snížení nebo velká písmena.  
+Pomocí této transformace deklarace identity změňte libovolný řetězec ClaimType na nižší nebo velká písmena.
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -110,25 +110,25 @@ Pomocí této transformace deklarací identity můžete změnit libovolný řet�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **e-mailu**: SomeOne@contoso.com
+  - **e-mail**:SomeOne@contoso.com
 - Vstupní parametry:
     - **toCase**: LOWER
-- Výstupní deklarace identit:
-  - **e-mailu**: someone@contoso.com
+- Deklarace výstupů:
+  - **e-mail**:someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
-Vytvoří deklaraci identity řetězec z zadaný vstupní parametr v zásadách.
+Vytvoří deklaraci řetězce ze zadaného vstupního parametru v zásadě.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | string | Řetězec, který má být nastavena |
-| outputClaim | createdClaim | string | Typ ClaimType, který je vytvořen po to transformace deklarací identity se vyvolala s hodnota zadaná jako vstupní parametr. |
+| InputParameter | value | řetězec | Řetězec, který má být nastaven |
+| OutputClaim | createdClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
-Použití, které tato deklarace identity transformace, která nastavit řetězec hodnotu typu deklarace identity.
+Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType typu String.
 
 ```XML
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
@@ -141,26 +141,26 @@ Použití, které tato deklarace identity transformace, která nastavit řetěze
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní parametr:
-    - **Hodnota**: Contoso podmínky služby...
-- Výstupní deklarace identit:
-    - **createdClaim**: Typ ClaimType TOS obsahuje hodnotu "Contoso podmínky služby...".
+    - **hodnota**: Podmínka služby společnosti Contoso...
+- Deklarace výstupů:
+    - **createdClaim**: Služba TOS ClaimType obsahuje "podmínkami služby společnosti Contoso..." osa.
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Určení, jestli jedna deklarace řetězec je roven jinému. Výsledkem je nový logický typ ClaimType s hodnotou `true` nebo `false`.
+Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem je nový logický typ ClaimType s hodnotou `true` nebo. `false`
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | string | První deklarace typu, který je k porovnání. |
-| InputClaim | inputClaim2 | string | Za druhé deklarace typu, který má být porovnána. |
-| InputParameter | – Operátor | string | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
-| InputParameter | IgnoreCase | Boolean | Určuje, zda toto porovnání by měl ignorovat velikost písmen řetězců, který se porovnává. |
-| outputClaim | outputClaim | Boolean | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
+| InputClaim | inputClaim1 | řetězec | První typ deklarace identity, který se má porovnat. |
+| InputClaim | inputClaim2 | řetězec | Druhý typ deklarace identity, který se má porovnat. |
+| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | ignoreCase | boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
+| OutputClaim | OutputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Použijte Tato transformace a zkontrolujte, zda deklarace identity rovná další deklarace identity deklarací identity. Například následující deklarace identity transformace kontroly Pokud hodnota **e-mailu** deklarace identity rovná **Verified.Email** deklarací identity.
+Pomocí této transformace deklarací identity zjistíte, jestli je deklarace identity rovna jiné deklaraci identity. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace **e-mailu** stejná jako ověřená deklarace identity **e-mailu** .
 
 ```XML
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
@@ -178,30 +178,30 @@ Použijte Tato transformace a zkontrolujte, zda deklarace identity rovná dalš�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
 - Vstupní parametry:
-    - **Operátor**:  NENÍ ROVNO
-    - **ignoreCase**: true
-- Výstupní deklarace identit:
+    - **operátor**:  NENÍ ROVNO
+    - **IgnoreCase**: pravda
+- Deklarace výstupů:
     - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
-Určuje, zda je hodnota deklarace identity rovná hodnotě vstupního parametru.
+Určuje, zda je hodnota deklarace identity shodná se vstupní hodnotou parametru.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | string | Typ deklarace identity, který je k porovnání. |
-| InputParameter | – Operátor | string | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
-| InputParameter | Metoda compareTo | string | porovnání řetězců, použijte některou z hodnot: Pořadí, OrdinalIgnoreCase. |
-| InputParameter | IgnoreCase | Boolean | Určuje, zda toto porovnání by měl ignorovat velikost písmen řetězců, který se porovnává. |
-| outputClaim | outputClaim | Boolean | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
+| InputClaim | inputClaim1 | řetězec | Typ deklarace identity, který se má porovnat. |
+| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | compareTo | řetězec | porovnání řetězců, jedna z hodnot: Ordinal, OrdinalIgnoreCase. |
+| InputParameter | ignoreCase | boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
+| OutputClaim | OutputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Můžete použít tato deklarace identity transformace, která zjistí, zda je deklarace identity rovná hodnotě, který jste zadali. Například následující deklarace identity transformace kontroly Pokud hodnota **termsOfUseConsentVersion** deklarace identity rovná `v1`.
+Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1`.
 
 ```XML
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
@@ -219,30 +219,30 @@ Můžete použít tato deklarace identity transformace, která zjistí, zda je d
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 - Vstupní deklarace identity:
-    - **inputClaim1**: v1
+    - **inputClaim1**: V1
 - Vstupní parametry:
     - **compareTo**: V1
-    - **Operátor**: ROVNO 
-    - **ignoreCase**: true
-- Výstupní deklarace identit:
+    - **operátor**: VÝŠI
+    - **IgnoreCase**: pravda
+- Deklarace výstupů:
     - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
-Vytvoří náhodný řetězec za použití generátor náhodných čísel. Pokud je generátor náhodných čísel typu `integer`, volitelně může zadat parametr počáteční hodnoty a maximální povolený počet. Parametr nepovinný řetězec formátu umožňuje výstup má být formátováno, jeho použití a jako base64 volitelný parametr určuje, zda výstup outputClaim randomGeneratorType [identifikátor guid, celé číslo] kódovanou jako base64 (řetězec).
+Vytvoří náhodný řetězec pomocí generátoru náhodných čísel. Je-li generátor náhodných čísel typu `integer`, volitelně lze zadat parametr počáteční hodnoty a maximální číslo. Volitelný parametr formátu řetězce umožňuje, aby výstup byl zformátován pomocí a volitelný parametr Base64 určuje, zda je výstupem kódování Base64 randomGeneratorType [GUID, Integer] outputClaim (String).
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | string | Určuje náhodnou hodnotu chcete vygenerovat, `GUID` (globální jedinečné ID) nebo `INTEGER` (číslo). |
-| InputParameter | stringFormat | string | [Volitelné] Formátování náhodnou hodnotu. |
-| InputParameter | base64 | Boolean | [Volitelné] Převeďte náhodnou hodnotu ve formátu Base64. Pokud je použit formát řetězce, hodnota po formát řetězce je zakódovaný ve formátu Base64. |
-| InputParameter | maximumNumber | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Určuje maximální počet. |
-| InputParameter | Počáteční hodnota  | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné počáteční hodnoty vrací stejnou posloupnost náhodných čísel. |
-| outputClaim | outputClaim | string | Zavolání ClaimTypes, který bude vytvořen poté, co to transformace deklarací identity. Náhodná hodnota. |
+| InputParameter | randomGeneratorType | řetězec | Určuje náhodnou hodnotu, `GUID` která má být generována (globální jedinečné ID) nebo `INTEGER` (číslo). |
+| InputParameter | StringFormat – | řetězec | Volitelné Naformátujte náhodnou hodnotu. |
+| InputParameter | Base | boolean | Volitelné Převeďte náhodnou hodnotu na base64. Pokud je použit formát řetězce, hodnota po formátu řetězce je zakódována na base64. |
+| InputParameter | maximumNumber | int | Volitelné Jenom `INTEGER` pro randomGeneratorType. Zadejte maximální číslo. |
+| InputParameter | sazení  | int | Volitelné Jenom `INTEGER` pro randomGeneratorType. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné osazení vrací stejnou sekvenci náhodných čísel. |
+| OutputClaim | OutputClaim | řetězec | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Náhodná hodnota. |
 
-Následující příklad generuje globální jedinečné ID. Tato deklarace identity transformace se používá k vytvoření náhodného UPN (hlavní název uživatele).
+Následující příklad generuje globální jedinečné ID. Tato transformace deklarací identity se používá k vytvoření náhodného názvu uživatele (UPN).
 
 ```XML
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
@@ -254,14 +254,14 @@ Následující příklad generuje globální jedinečné ID. Tato deklarace iden
   </OutputClaims>
 </ClaimsTransformation>
 ```
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní parametry:
     - **randomGeneratorType**: GUID
-- Výstupní deklarace identit: 
-    - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+- Deklarace výstupů:
+    - **outputClaim**: bc8bedd2-AAA3-411E-bdee-2f1810b73dfc
 
-Následující příklad generuje náhodné celočíselnou hodnotu od 0 do 1000. Hodnota je formátovaný, aby OTP_ {náhodnou hodnotu}.
+Následující příklad generuje celočíselnou náhodnou hodnotu mezi 0 a 1000. Hodnota je formátována na OTP_ {Random Value}.
 
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
@@ -277,28 +277,28 @@ Následující příklad generuje náhodné celočíselnou hodnotu od 0 do 1000.
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní parametry:
     - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
     - **stringFormat**: OTP_{0}
-    - **ve formátu Base64**: false
-- Výstupní deklarace identit: 
+    - **Base64**: false
+- Deklarace výstupů:
     - **outputClaim**: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
-Formát deklarace identity podle poskytnutý řetězec formátu. Tato transformace používá C# `String.Format` metody.
+Naformátuje deklaraci identity podle poskytnutého formátovacího řetězce. Tato transformace používá C# `String.Format` metodu.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim |string |Typ ClaimType, který funguje jako řetězec formátu {0} parametru. |
-| InputParameter | stringFormat | string | Řetězec formátu, včetně {0} parametru. |
-| outputClaim | outputClaim | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
+| InputClaim | InputClaim |řetězec |Deklarace ClaimType, která funguje jako parametr {0} formátu řetězce. |
+| InputParameter | StringFormat – | řetězec | Formát řetězce, včetně {0} parametru. |
+| OutputClaim | OutputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Použijte tato deklarace identity transformace na formát libovolné řetězce s jedním parametrem {0}. Následující příklad vytvoří **userPrincipalName**. Všechny identity v sociálních sítích zprostředkovatele technické profily, jako například `Facebook-OAUTH` volání **CreateUserPrincipalName** ke generování **userPrincipalName**.   
+Tuto transformaci deklarací použijte k formátování libovolného řetězce s jedním {0}parametrem. V následujícím příkladu je vytvořena hodnota **userPrincipalName**. Všechny technické profily zprostředkovatele sociální identity, jako `Facebook-OAUTH` je například volání **CreateUserPrincipalName** pro generování třídy **userPrincipalName**.
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -314,27 +314,27 @@ Použijte tato deklarace identity transformace na formát libovolné řetězce s
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Vstupní parametry:
-    - **stringFormat**: cpim_{0}@{RelyingPartyTenantId}
-- Výstupní deklarace identit:
-  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+    - **StringFormat –** : cpim_{0}@ {RelyingPartyTenantId}
+- Deklarace výstupů:
+  - **outputClaim**:cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-Formát dvě deklarace podle poskytnutý řetězec formátu. Tato transformace používá C# **String.Format** metody.
+Formátujte dvě deklarace podle poskytnutého formátovacího řetězce. Tato transformace používá C# metodu **String. Format** .
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim |string | Typ ClaimType, který funguje jako řetězec formátu {0} parametru. |
-| InputClaim | InputClaim | string | Typ ClaimType, který funguje jako řetězec formátu {1} parametru. |
-| InputParameter | stringFormat | string | Řetězec formátu, včetně {0} a {1} parametry. |
-| outputClaim | outputClaim | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
+| InputClaim | InputClaim |řetězec | Deklarace ClaimType, která funguje jako parametr {0} formátu řetězce. |
+| InputClaim | InputClaim | řetězec | Deklarace ClaimType, která funguje jako parametr {1} formátu řetězce. |
+| InputParameter | StringFormat – | řetězec | Formát řetězce včetně {0} parametrů a {1} . |
+| OutputClaim | OutputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Použijte tato deklarace identity transformace na formát některé řetězce se dvěma parametry {0} a {1}. Následující příklad vytvoří **displayName** pomocí určeného formátu:
+Tuto transformaci deklarací použijte k formátování řetězce se dvěma parametry, {0} a {1}. Následující příklad vytvoří **DisplayName** se zadaným formátem:
 
 ```XML
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -351,26 +351,26 @@ Použijte tato deklarace identity transformace na formát některé řetězce se
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim1**: Joe
+    - **inputClaim1**: Jana
     - **inputClaim2**: Fernando
 - Vstupní parametry:
-    - **stringFormat**: {0} {1}
-- Výstupní deklarace identit:
-    - **outputClaim**: Joe Fernando
+    - **StringFormat –** : {0}{1}
+- Deklarace výstupů:
+    - **outputClaim**: Jana Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
-Vyhledání položky v deklaraci identity **omezení** kolekce.
+Vyhledává se položka z kolekce **omezení** deklarace identity.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | string | Deklarace identity, který obsahuje text, který má být vyhledána v **restrictionValueClaim** deklarací s **omezení** kolekce.  |
-| outputClaim | restrictionValueClaim | string | Deklarace identity, která obsahuje **omezení** kolekce. Po zavolání transformace deklarací identity, hodnota této deklarace obsahuje hodnotu vybrané položky. |
+| InputClaim | mapFromClaim | řetězec | Deklarace identity obsahující text, který má být vyhledán v deklaracích **restrictionValueClaim** s kolekcí **omezení** .  |
+| OutputClaim | restrictionValueClaim | řetězec | Deklarace identity, která obsahuje kolekci **omezení** . Po vyvolání transformace deklarací bude hodnota této deklarace identity obsahovat hodnotu vybrané položky. |
 
-Následující příklad vyhledá popis chybové zprávy na základě klíče chyby. **ResponseMsg** deklarací identity obsahuje kolekci chybové zprávy pro koncového uživatele nebo k předávající straně odeslání.
+Následující příklad vyhledá popis chybové zprávy na základě chybového klíče. Deklarace identity **responseMsg** obsahuje kolekci chybových zpráv, které mají být k dispozici koncovému uživateli, nebo k odeslání do předávající strany.
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -384,7 +384,7 @@ Následující příklad vyhledá popis chybové zprávy na základě klíče ch
   </Restriction>
 </ClaimType>
 ```
-Transformace deklarací identity, vyhledá text položky a vrátí jeho hodnotu. Pokud je omezení lokalizovány pomocí `<LocalizedCollection>`, transformace deklarací identity vrátí lokalizované hodnoty.
+Transformace deklarací vyhledá text položky a vrátí její hodnotu. Pokud je omezení lokalizováno pomocí `<LocalizedCollection>`, transformace deklarací identity vrátí lokalizovanou hodnotu.
 
 ```XML
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
@@ -392,30 +392,30 @@ Transformace deklarací identity, vyhledá text položky a vrátí jeho hodnotu.
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **mapFromClaim**: B2C_V1_90001
-- Výstupní deklarace identit:
-    - **restrictionValueClaim**: Můžete nemůže přihlásit, protože jsou za.
+- Deklarace výstupů:
+    - **restrictionValueClaim**: Nemůžete se přihlásit, protože jste nezletilí.
 
 ## <a name="lookupvalue"></a>LookupValue
 
-Vyhledejte hodnotu deklarace identity v seznamu hodnot na základě hodnoty další deklarace identity.
+Vyhledá hodnotu deklarace ze seznamu hodnot na základě hodnoty jiné deklarace identity.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputParameterId | string | Deklarace identity, který obsahuje hodnotu vyhledávání |
-| InputParameter | |string | Kolekce vstupní parametry. |
-| InputParameter | errorOnFailedLookup | Boolean | Řízení, zda při žádné odpovídající vyhledávání, vrátí se chyba. |
-| outputClaim | inputParameterId | string | Zavolání ClaimTypes, který bude vytvořen poté, co to transformace deklarací identity. Hodnota odpovídající ID. |
+| InputClaim | inputParameterId | řetězec | Deklarace identity, která obsahuje hodnotu vyhledávání |
+| InputParameter | |řetězec | Kolekce parametry. |
+| InputParameter | errorOnFailedLookup | boolean | Řízení, zda je vrácena chyba, pokud není nalezeno žádné vyhledávání. |
+| OutputClaim | inputParameterId | řetězec | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Hodnota odpovídajícího ID. |
 
-Vyhledá v následujícím příkladu je název domény v jedné z kolekcí vstupní parametry. Transformace deklarací identity názvu domény v identifikátoru vyhledá a vrátí jeho hodnotu (ID aplikace).
+Následující příklad vyhledá název domény v jedné z kolekcí vstupní parametry. Transformace deklarací vyhledá název domény v identifikátoru a vrátí jeho hodnotu (ID aplikace).
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -431,10 +431,10 @@ Vyhledá v následujícím příkladu je název domény v jedné z kolekcí vstu
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **inputParameterId**: test.com
@@ -443,18 +443,18 @@ Vyhledá v následujícím příkladu je název domény v jedné z kolekcí vstu
     - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
-- Výstupní deklarace identit:
+- Deklarace výstupů:
     - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
-Odstraňte hodnotu daného deklarace identity.
+Vyčistěte hodnotu dané deklarace identity.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| outputClaim | claim_to_null | string | Deklarace identity její hodnotu na hodnotu NULL. |
+| OutputClaim | claim_to_null | řetězec | Deklarace identity má hodnotu NULL. |
 
-Pomocí této deklarace identity transformace odebrat nepotřebná data z kontejneru objektů a deklarace identity. Ano soubor cookie relace bude menší. Následující příklad odebere hodnotu `TermsOfService` typ deklarace identity.
+Pomocí této transformace deklarace identity můžete z kontejneru vlastností deklarací identity odebrat nepotřebná data. Soubory cookie relace tak budou menší. Následující příklad odebere hodnotu `TermsOfService` typu deklarace identity.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -465,20 +465,20 @@ Pomocí této deklarace identity transformace odebrat nepotřebná data z kontej
 ```
 
 - Vstupní deklarace identity:
-    - **outputClaim**: Vítá vás aplikace Contoso. Pokud budete pokračovat k procházení a použití tohoto webu, vyjadřujete tím následující podmínky a ujednání a v souladu s...
-- Výstupní deklarace identit:
+    - **outputClaim**: Vítá vás aplikace contoso. Pokud budete pokračovat v procházení a používání tohoto webu, souhlasíte s tím, že splníte následující podmínky a ujednání, které jsou vázány...
+- Deklarace výstupů:
     - **outputClaim**: NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
-Vrátí část domény e-mailovou adresu.
+Načte doménovou část e-mailové adresy.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | emailAddress | string | Typ ClaimType, který obsahuje e-mailovou adresu. |
-| outputClaim | Domény | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity - doméně. |
+| InputClaim | emailAddress | řetězec | Deklarace identity, která obsahuje e-mailovou adresu. |
+| OutputClaim | doména | řetězec | Deklarace ClaimType vytvořená po vyvolání této transformace deklarací – doména |
 
-Použijte tato deklarace identity transformace parsovat název domény po uživatele, symbol @. To může být užitečné při odebírání identifikovatelné osobní údaje (PII) z data auditu. Následující deklarace identity transformace ukazuje, jak analyzovat název domény z **e-mailu** deklarací identity.
+Pomocí této transformace deklarací identity můžete analyzovat název domény za symbolem @ uživatele. To může být užitečné v případě, že se z dat auditu odstraňují osobně identifikovatelné osobní údaje (PII). Následující transformace deklarací identity ukazuje, jak analyzovat název domény z deklarace **e-mailu** .
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -491,29 +491,29 @@ Použijte tato deklarace identity transformace parsovat název domény po uživa
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **emailAddress**: joe@outlook.com
-- Výstupní deklarace identit:
-    - **domény**: outlook.com
+  - **EmailAddress**:joe@outlook.com
+- Deklarace výstupů:
+    - **doména**: Outlook.com
 
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
-Kontroly, které deklarace identity řetězec a `matchTo` rovnají vstupní parametr a sady deklarací identity s hodnotou ve výstupu `stringMatchMsg` a `stringMatchMsgCode` vstupní parametry, společně s deklarací identity výsledek výstup porovnání, která má být nastavena jako `true` nebo `false` na základě výsledku porovnání.
+Kontroluje, zda deklarace identity a `matchTo` vstupní parametr jsou stejné, a nastaví výstupní deklarace identity s hodnotou přítomnou v `stringMatchMsg` a `stringMatchMsgCode` vstupními parametry společně s deklarací výsledek s výstupem porovnání výsledků, která se má `true` nastavit jako nebo .`false` na základě výsledku porovnání.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim | string | Typ deklarace identity, který je k porovnání. |
-| InputParameter | matchTo | string | Řetězec, který se má porovnat s `inputClaim`. |
-| InputParameter | stringComparison | string | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
-| InputParameter | stringMatchMsg | string | První hodnota pro lze nastavit, pokud jsou řetězce stejné. |
-| InputParameter | stringMatchMsgCode | string | Druhá hodnota pro lze nastavit, pokud jsou řetězce stejné. |
-| outputClaim | outputClaim1 | string | Pokud jsou řetězce equals, tato deklarace identity výstup obsahuje hodnotu `stringMatchMsg` vstupního parametru. |
-| outputClaim | outputClaim2 | string | Pokud jsou řetězce equals, tato deklarace identity výstup obsahuje hodnotu `stringMatchMsgCode` vstupního parametru. |
-| outputClaim | stringCompareResultClaim | Boolean | Výstup výsledku porovnání deklarace typu, který má být nastavena jako `true` nebo `false` na základě výsledku porovnání. |
+| InputClaim | InputClaim | řetězec | Typ deklarace, který se má porovnat. |
+| InputParameter | matchTo | řetězec | Řetězec, se `inputClaim`kterým se má porovnat. |
+| InputParameter | stringComparison | řetězec | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
+| InputParameter | stringMatchMsg | řetězec | První hodnota, která má být nastavena, pokud jsou řetězce stejné. |
+| InputParameter | stringMatchMsgCode | řetězec | Druhá hodnota, která má být nastavena, pokud jsou řetězce stejné. |
+| OutputClaim | outputClaim1 | řetězec | Pokud jsou řetězce stejné, obsahuje tato výstupní deklarace hodnotu `stringMatchMsg` vstupního parametru. |
+| OutputClaim | outputClaim2 | řetězec | Pokud jsou řetězce stejné, obsahuje tato výstupní deklarace hodnotu `stringMatchMsgCode` vstupního parametru. |
+| OutputClaim | stringCompareResultClaim | boolean | Typ deklarace výstup výsledku porovnání, který má být nastaven jako `true` nebo `false` založený na výsledku porovnání. |
 
-Můžete použít tato deklarace identity transformace, která zjistí, zda je deklarace identity rovná hodnotě jste zadali. Například následující deklarace identity transformace kontroly Pokud hodnota **termsOfUseConsentVersion** deklarace identity rovná `v1`. Pokud ano, změňte hodnotu na `v2`. 
+Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1`. Pokud ano, změňte hodnotu na `v2`.
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -533,34 +533,34 @@ Můžete použít tato deklarace identity transformace, která zjistí, zda je d
   </OutputClaims>
 </ClaimsTransformation>
 ```
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim**: v1
+    - **inputClaim**: V1
 - Vstupní parametry:
     - **matchTo**: V1
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg**:  B2C_V1_90005
-    - **stringMatchMsgCode**:  TOS se upgraduje na v2
-- Výstupní deklarace identit:
+    - **stringMatchMsgCode**:  Rozhraní TOS se upgraduje na v2.
+- Deklarace výstupů:
     - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: TOS se upgraduje na v2
+    - **outputClaim2**: Rozhraní TOS se upgraduje na v2.
     - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
-Kontroly, které deklarace identity řetězec a `matchTo` rovnají vstupní parametr a sady deklarací identity s hodnotou ve výstupu `outputClaimIfMatched` vstupní parametr, společně s deklarací identity výsledek výstup porovnání, která má být nastavena jako `true` nebo `false` na základě výsledek porovnání.
+Kontroluje, zda deklarace identity a `matchTo` vstupní parametr jsou stejné, a nastaví výstupní deklarace identity s hodnotou obsaženou ve `outputClaimIfMatched` vstupním parametru společně s deklarací výsledek s výstupem porovnání výsledků, která se má `true` nastavit `false` jako nebo na základě výsledek porovnání
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | claimToMatch | string | Typ deklarace identity, který je k porovnání. |
-| InputParameter | matchTo | string | Řetězec, který se má porovnat s inputClaim. |
-| InputParameter | stringComparison | string | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
-| InputParameter | outputClaimIfMatched | string | Hodnotu lze nastavit, pokud jsou řetězce stejné. |
-| outputClaim | outputClaim | string | Pokud jsou řetězce equals, tato deklarace identity výstup obsahuje hodnotu `outputClaimIfMatched` vstupního parametru. Nebo hodnota null, pokud se shoda řetězců. |
-| outputClaim | stringCompareResultClaim | Boolean | Výstup výsledku porovnání deklarace typu, který má být nastavena jako `true` nebo `false` na základě výsledku porovnání. |
+| InputClaim | claimToMatch | řetězec | Typ deklarace, který se má porovnat. |
+| InputParameter | matchTo | řetězec | Řetězec, který má být porovnán s inputClaim. |
+| InputParameter | stringComparison | řetězec | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
+| InputParameter | outputClaimIfMatched | řetězec | Hodnota, která má být nastavena, pokud jsou řetězce stejné. |
+| OutputClaim | OutputClaim | řetězec | Pokud jsou řetězce stejné, obsahuje tato výstupní deklarace hodnotu `outputClaimIfMatched` vstupního parametru. Nebo hodnotu null, pokud se řetězce neshodují. |
+| OutputClaim | stringCompareResultClaim | boolean | Typ deklarace výstup výsledku porovnání, který má být nastaven jako `true` nebo `false` založený na výsledku porovnání. |
 
-Například následující deklarace identity transformace kontroly Pokud hodnota **ageGroup** deklarace identity rovná `Minor`. Pokud ano, vrátí hodnotu, která `B2C_V1_90001`. 
+Například následující transformace deklarací identity kontroluje, zda je hodnota deklarace identity **ageGroup** rovna `Minor`. Pokud ano, vraťte hodnotu na `B2C_V1_90001`.
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -579,15 +579,15 @@ Například následující deklarace identity transformace kontroly Pokud hodnot
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **claimToMatch**: Podverze
 - Vstupní parametry:
     - **matchTo**: Podverze
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:  B2C_V1_90001
-- Výstupní deklarace identit:
+- Deklarace výstupů:
     - **isMinorResponseCode**: B2C_V1_90001
-    - **isMinor**: true
+    - podverze: true
 

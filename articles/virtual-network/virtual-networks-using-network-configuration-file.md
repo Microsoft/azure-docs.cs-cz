@@ -1,10 +1,10 @@
 ---
-title: Konfigurace služby Azure Virtual Network (classic) – soubor konfigurace sítě | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet a upravovat virtuální sítě (klasické) Export, změnou a import souboru konfigurace sítě.
+title: Konfigurace Azure Virtual Network (Classic) – soubor konfigurace sítě | Microsoft Docs
+description: Naučte se vytvářet a upravovat virtuální sítě (klasické) pomocí exportu, změny a importu konfiguračního souboru sítě.
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: c29b9059-22b0-444e-bbfe-3e35f83cde2f
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab4faa0f727469e27eb30af54f24036292ec3118
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108006"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058702"
 ---
-# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (classic) pomocí souboru konfigurace sítě
+# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (klasické) pomocí konfiguračního souboru sítě
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala model nasazení Správce prostředků.
 
-Můžete vytvořit a nakonfigurovat virtuální síť (klasická) s konfiguračním souboru sítě pomocí rozhraní příkazového řádku Azure classic (rozhraní příkazového řádku) nebo Azure Powershellu. Nejde vytvořit nebo upravit virtuální sítě pomocí modelu nasazení Azure Resource Manageru pomocí souboru konfigurace sítě. Na webu Azure portal k vytvoření nebo úpravě virtuální sítě (classic) pomocí souboru konfigurace sítě, ale můžete využívat na webu Azure portal k vytvoření virtuální sítě (classic), nelze použít bez použití konfiguračního souboru sítě.
+Můžete vytvořit a nakonfigurovat virtuální síť (Classic) pomocí konfiguračního souboru sítě pomocí rozhraní příkazového řádku (CLI) Azure Classic nebo Azure PowerShell. Pomocí konfiguračního souboru sítě nemůžete vytvořit nebo upravit virtuální síť pomocí modelu nasazení Azure Resource Manager. Azure Portal nelze použít k vytvoření nebo úpravě virtuální sítě (klasické) pomocí konfiguračního souboru sítě, můžete však použít Azure Portal k vytvoření virtuální sítě (Classic) bez použití konfiguračního souboru sítě.
 
-Vytvoření a konfigurace virtuální sítě (klasické) s konfiguračním souboru sítě vyžaduje export, změna a import souboru.
+Vytvoření a konfigurace virtuální sítě (Classic) se souborem konfigurace sítě vyžaduje export, změnu a import souboru.
 
-## <a name="export"></a>Exportovat soubor konfigurace sítě
+## <a name="export"></a>Export konfiguračního souboru sítě
 
-Prostředí PowerShell nebo rozhraní Azure CLI classic můžete exportovat soubor konfigurace sítě. Prostředí PowerShell exportuje soubor XML, zatímco Azure classic CLI exportuje do souboru json.
+K exportu konfiguračního souboru sítě můžete použít PowerShell nebo rozhraní příkazového řádku Azure Classic. PowerShell exportuje soubor XML, zatímco Azure Classic CLI exportuje soubor JSON.
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Instalace Azure Powershellu a přihlaste se k Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Změňte adresář (a zajistit existuje) a název souboru v následujícím příkazu podle potřeby, spusťte příkaz a exportujte soubor konfigurace sítě:
+1. [Nainstalujte Azure PowerShell a přihlaste se k Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
+2. Změňte adresář (a ujistěte se, že existuje) a v následujícím příkazu zadejte název souboru a potom spusťte příkaz pro export konfiguračního souboru sítě:
 
     ```powershell
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
@@ -46,28 +46,28 @@ Prostředí PowerShell nebo rozhraní Azure CLI classic můžete exportovat soub
 
 ### <a name="azure-classic-cli"></a>Azure Classic CLI
 
-1. [Instalace Azure classic CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dokončete zbývající kroky z klasického příkazového řádku CLI.
+1. [Nainstalujte rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dokončete zbývající kroky z klasického příkazového řádku CLI.
 2. Přihlaste se k Azure zadáním `azure login` příkazu.
-3. Zkontrolujte jestli pracujete v režimu asm tak, že zadáte `azure config mode asm` příkazu.
-4. Změňte adresář (a zajistit existuje) a název souboru v následujícím příkazu podle potřeby, spusťte příkaz a exportujte soubor konfigurace sítě:
+3. Zajistěte, abyste byli v režimu ASM `azure config mode asm` zadáním příkazu.
+4. Změňte adresář (a ujistěte se, že existuje) a v následujícím příkazu zadejte název souboru a potom spusťte příkaz pro export konfiguračního souboru sítě:
     
     ```azurecli
     azure network export c:\azure\networkconfig.json
     ```
 
-## <a name="create-or-modify-a-network-configuration-file"></a>Vytvořte nebo upravte konfigurační soubor sítě
+## <a name="create-or-modify-a-network-configuration-file"></a>Vytvoření nebo úprava konfiguračního souboru sítě
 
-Soubor konfigurace sítě je soubor XML (při použití prostředí PowerShell) nebo soubor json (při použití rozhraní příkazového řádku classic). Můžete upravit soubor v textu nebo editoru XML nebo json. [Síťová nastavení konfiguračního souboru schématu](https://msdn.microsoft.com/library/azure/jj157100.aspx) článek obsahuje podrobnosti pro všechna nastavení. Další vysvětlení nastavení najdete v tématu [zobrazit virtuální sítě a nastavení](manage-virtual-network.md#view-virtual-networks-and-settings). Změny provedené v souboru:
+Konfigurační soubor sítě je soubor XML (při použití PowerShellu) nebo soubor JSON (při použití klasického rozhraní příkazového řádku). Soubor můžete upravit v libovolném textovém editoru nebo editoru XML/JSON. Článek [Nastavení schématu soubor konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx) obsahuje podrobnosti o všech nastaveních. Další vysvětlení nastavení najdete v tématu [Zobrazení virtuálních sítí a nastavení](manage-virtual-network.md#view-virtual-networks-and-settings). Změny, které provedete v souboru:
 
-- Musíte dodržovat schématu nebo import, který soubor konfigurace sítě se nezdaří.
-- Přepsat všechny existující nastavení sítě pro vaše předplatné, takže buďte extrémně opatrní při provádění změn. Například odkazovat příklad konfigurační soubory sítě, které následují. Řekněme, že původní soubor obsahoval dvě **VirtualNetworkSite** instance můžete změnit a, jak je znázorněno v příkladu. Při importu souboru Azure odstraní virtuální sítě pro **VirtualNetworkSite** instance, které jste odebrali v souboru. Tento zjednodušený scénář předpokládá, že nebyly žádné prostředky ve virtuální síti, jako kdyby existovalo, virtuální síť se nepodařilo odstranit, a import selže.
+- Musí vyhovovat schématu nebo importovat konfigurační soubor sítě, se nezdaří.
+- Přepište všechna stávající nastavení sítě pro vaše předplatné, proto při provádění úprav používejte mimořádně opatrní. Například odkazují na příklady souborů konfigurace sítě, které následují. Řekněme, že původní soubor obsahoval dvě instance **VirtualNetworkSite** , a Vy jste ho změnili, jak je znázorněno v příkladech. Při importu souboru Azure odstraní virtuální síť pro instanci **VirtualNetworkSite** , kterou jste odebrali v souboru. Tento zjednodušený scénář předpokládá, že ve virtuální síti nebyly žádné prostředky, jako kdyby existovala, virtuální síť se nepovedlo odstranit a import by se nezdařil.
 
 > [!IMPORTANT]
-> Azure bude považovat za podsíť, která nabízí něco nasadili do ní jako **používá**. Pokud podsíť se používá, nelze změnit. Před úpravou informace o podsíti v konfiguračním souboru sítě, přesuňte cokoli, co jste nasadili do podsítě do jiné podsítě, která se nemění. Zobrazit [přesunutí virtuálního počítače nebo Role Instance k jiné podsíti](virtual-networks-move-vm-role-to-subnet.md) podrobnosti.
+> Azure považuje podsíť, která má něco nasazovat, jak se **používá**. Pokud se podsíť používá, nedá se změnit. Před úpravou informací o podsíti v konfiguračním souboru sítě přesuňte cokoliv, co jste nasadili do podsítě, do jiné podsítě, kterou neupravujete. Podrobnosti najdete v tématu [přesun virtuálního počítače nebo instance role do jiné podsítě](virtual-networks-move-vm-role-to-subnet.md) .
 
-### <a name="example-xml-for-use-with-powershell"></a>Ukázkový soubor XML pro použití s využitím Powershellu
+### <a name="example-xml-for-use-with-powershell"></a>Příklad XML pro použití s prostředím PowerShell
 
-Soubor konfigurace sítě následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s adresním prostorem *10.0.0.0/16* v *USA – východ* Azure oblast. Virtuální síť obsahuje jednu podsíť s názvem *mySubnet* s předponou adresy *10.0.0.0/24*.
+Následující ukázkový konfigurační soubor sítě vytvoří virtuální síť s názvem *myVirtualNetwork* s adresním prostorem *10.0.0.0/16* v oblasti *východní USA* Azure. Virtuální síť obsahuje jednu podsíť s názvem *mySubnet* s předponou adresy *10.0.0.0/24*.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,11 +90,11 @@ Soubor konfigurace sítě následující příklad vytvoří virtuální síť s
 </NetworkConfiguration>
 ```
 
-Obsahuje-li soubor konfigurace sítě, který jste exportovali žádný obsah, můžete zkopírovat kód XML v předchozím příkladu a vložte ho do nového souboru.
+Pokud soubor konfigurace sítě, který jste exportovali, neobsahuje žádný obsah, můžete zkopírovat kód XML v předchozím příkladu a vložit ho do nového souboru.
 
-### <a name="example-json-for-use-with-the-classic-cli"></a>Ukázkový soubor JSON pomocí rozhraní příkazového řádku classic
+### <a name="example-json-for-use-with-the-classic-cli"></a>Příklad formátu JSON pro použití s klasickým rozhraním CLI
 
-Soubor konfigurace sítě následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s adresním prostorem *10.0.0.0/16* v *USA – východ* Azure oblast. Virtuální síť obsahuje jednu podsíť s názvem *mySubnet* s předponou adresy *10.0.0.0/24*.
+Následující ukázkový konfigurační soubor sítě vytvoří virtuální síť s názvem *myVirtualNetwork* s adresním prostorem *10.0.0.0/16* v oblasti *východní USA* Azure. Virtuální síť obsahuje jednu podsíť s názvem *mySubnet* s předponou adresy *10.0.0.0/24*.
 
 ```json
 {
@@ -117,16 +117,16 @@ Soubor konfigurace sítě následující příklad vytvoří virtuální síť s
 }
 ```
 
-Obsahuje-li soubor konfigurace sítě, který jste exportovali žádný obsah, můžete zkopírujte json z předchozího příkladu a vložte ho do nového souboru.
+Pokud soubor konfigurace sítě, který jste exportovali, neobsahuje žádný obsah, můžete v předchozím příkladu zkopírovat JSON a vložit ho do nového souboru.
 
-## <a name="import"></a>Importujte soubor konfigurace sítě
+## <a name="import"></a>Import konfiguračního souboru sítě
 
-Chcete-li importovat soubor konfigurace sítě můžete použít PowerShell nebo rozhraní příkazového řádku classic. Powershellu importuje soubor XML, zatímco rozhraní příkazového řádku classic importuje soubor json. Pokud nebude import úspěšný, potvrďte, že soubor splňuje [schéma konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
+K importu konfiguračního souboru sítě můžete použít PowerShell nebo rozhraní příkazového řádku Classic. PowerShell importuje soubor XML, zatímco klasický CLI naimportuje soubor JSON. Pokud import neproběhne úspěšně, zkontrolujte, zda soubor odpovídá [schématu konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Instalace Azure Powershellu a přihlaste se k Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Změňte adresář a název souboru v následujícím příkazu podle potřeby, pomocí příkazu importujte soubor konfigurace sítě:
+1. [Nainstalujte Azure PowerShell a přihlaste se k Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
+2. Podle potřeby změňte v následujícím příkazu adresář a název souboru a potom spusťte příkaz pro import konfiguračního souboru sítě:
  
     ```powershell
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
@@ -134,10 +134,10 @@ Chcete-li importovat soubor konfigurace sítě můžete použít PowerShell nebo
 
 ### <a name="azure-classic-cli"></a>Azure Classic CLI
 
-1. [Instalace Azure classic CLI](/cli/azure/install-classic-cli). Dokončete zbývající kroky z klasického příkazového řádku CLI.
+1. [Nainstalujte rozhraní příkazového řádku Azure Classic](/cli/azure/install-classic-cli). Dokončete zbývající kroky z klasického příkazového řádku CLI.
 2. Přihlaste se k Azure zadáním `azure login` příkazu.
-3. Zkontrolujte jestli pracujete v režimu asm tak, že zadáte `azure config mode asm` příkazu.
-4. Změňte adresář a název souboru v následujícím příkazu podle potřeby, pomocí příkazu importujte soubor konfigurace sítě:
+3. Zajistěte, abyste byli v režimu ASM `azure config mode asm` zadáním příkazu.
+4. Podle potřeby změňte v následujícím příkazu adresář a název souboru a potom spusťte příkaz pro import konfiguračního souboru sítě:
 
     ```azurecli
     azure network import c:\azure\networkconfig.json

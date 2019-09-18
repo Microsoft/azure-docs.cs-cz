@@ -1,10 +1,10 @@
 ---
-title: Ovládací prvek v modelu Classic Azure Virtual Network – Powershellu – směrování | Dokumentace Microsoftu
-description: Zjistěte, jak řídit směrování do virtuální sítě s použitím prostředí PowerShell | Classic
+title: Řízení směrování v Azure Virtual Network – PowerShell – Classic | Microsoft Docs
+description: Naučte se řídit směrování v virtuální sítě pomocí PowerShellu | Standardním
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: d8d07c16-cbe5-4536-acd6-870269346fe3
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 1441ee9a3d4a563ab35cd9b01e8347d8f51b827a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743351"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058771"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řídit směrování a použití virtuálních zařízení (classic) pomocí Powershellu
+# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řízení směrování a používání virtuálních zařízení (Classic) pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
@@ -33,26 +33,26 @@ ms.locfileid: "60743351"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je důležité si uvědomit, že Azure aktuálně má dva modely nasazení: Azure Resource Manager a classic. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Dokumentaci k různým nástrojům můžete zobrazit výběrem možnosti v horní části tohoto článku. Tento článek se týká modelu nasazení Classic.
+> Než začnete pracovat s prostředky Azure, je důležité pochopit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Dokumentaci k různým nástrojům můžete zobrazit výběrem možnosti v horní části tohoto článku. Tento článek se týká modelu nasazení Classic.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Ukázky Azure Powershellu následující příkazy očekávat jednoduché prostředí už vytvořený podle výše uvedeného scénáře. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, vytvoření zobrazeného v prostředí [vytvoření virtuální sítě (classic) pomocí prostředí PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Následující ukázkové Azure PowerShell příkazy očekávají jednoduché prostředí již vytvořené v závislosti na výše uvedeném scénáři. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, vytvořte prostředí zobrazené v části [vytvoření virtuální sítě (Classic) pomocí PowerShellu](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro front-endové podsítě
-Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, který je založený na výše uvedeném scénáři, postupujte podle následujících kroků.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření UDR pro podsíť front-endu
+Pokud chcete vytvořit směrovací tabulku a trasu potřebnou pro podsíť front-endu na základě výše uvedeného scénáře, postupujte podle následujících kroků.
 
-1. Spuštěním následujícího příkazu vytvořte tabulku směrování pro front-endové podsítě:
+1. Spusťte následující příkaz, který vytvoří směrovací tabulku pro front-end podsíť:
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
     -Label "Route table for front end subnet"
     ```
 
-2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do back endové podsítě (192.168.2.0/24) k **FW1** virtuálního počítače (192.168.0.4):
+2. Spuštěním následujícího příkazu vytvořte trasu v tabulce směrování pro odeslání veškerého provozu určeného do back-endové podsítě (192.168.2.0/24) do virtuálního počítače **FW1** (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-FrontEnd `
@@ -61,7 +61,7 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spusťte následující příkaz k přidružení směrovací tabulky s **front-endu** podsítě:
+3. Spusťte následující příkaz k přidružení směrovací tabulky k podsíti front- **Endu** :
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -69,10 +69,10 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
     -RouteTableName UDR-FrontEnd
     ```
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro podsíť back-end
-Pokud chcete vytvořit směrovací tabulku a směrování pro podsíť back-endu na základě uvedeného scénáře potřeba, proveďte následující kroky:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření UDR pro back-endové podsítě
+Pokud chcete vytvořit směrovací tabulku a trasu potřebnou pro podsíť back-end založenou na tomto scénáři, proveďte následující kroky:
 
-1. Spuštěním následujícího příkazu vytvořte tabulku směrování pro podsíť back-end:
+1. Spusťte následující příkaz, který vytvoří směrovací tabulku pro back-endové podsítě:
 
     ```powershell
     New-AzureRouteTable -Name UDR-BackEnd `
@@ -80,7 +80,7 @@ Pokud chcete vytvořit směrovací tabulku a směrování pro podsíť back-endu
     -Label "Route table for back end subnet"
     ```
 
-2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do front-endové podsítě (. 192.168.1.0/24) k **FW1** virtuálního počítače (192.168.0.4):
+2. Spuštěním následujícího příkazu vytvořte trasu v tabulce směrování pro odeslání veškerého provozu určeného do front-endové podsítě (192.168.1.0/24) do virtuálního počítače **FW1** (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd
@@ -91,7 +91,7 @@ Pokud chcete vytvořit směrovací tabulku a směrování pro podsíť back-endu
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spusťte následující příkaz k přidružení směrovací tabulky s **back-endu** podsítě:
+3. Spusťte následující příkaz k přidružení směrovací tabulky k podsíti **back-endu** :
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -99,18 +99,18 @@ Pokud chcete vytvořit směrovací tabulku a směrování pro podsíť back-endu
     -RouteTableName UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Povolit předávání IP na virtuálním počítači FW1
+## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Povolení předávání IP na virtuálním počítači s FW1
 
-Pokud chcete povolit předávání ve virtuálním počítači FW1 IP, proveďte následující kroky:
+Pokud chcete povolit předávání IP adres na virtuálním počítači s FW1, proveďte následující kroky:
 
-1. Spusťte následující příkaz a zkontrolujte stav předávání IP:
+1. Spuštěním následujícího příkazu zkontrolujete stav předávání IP:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `
     | Get-AzureIPForwarding
     ```
 
-2. Spuštěním následujícího příkazu povolte pro předávání IP *FW1* virtuálního počítače:
+2. Spusťte následující příkaz, který povolí předávání IP pro virtuální počítač *FW1* :
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

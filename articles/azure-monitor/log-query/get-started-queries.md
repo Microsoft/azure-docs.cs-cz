@@ -1,6 +1,6 @@
 ---
-title: Začínáme s dotazy protokolu ve službě Azure Monitor | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro zahájení práce psaní dotazů protokolu ve službě Azure Monitor.
+title: Začínáme s dotazy protokolu v Azure Monitor | Microsoft Docs
+description: Tento článek popisuje kurz Začínáme s psaním dotazů protokolu v Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,118 +13,120 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296091"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076760"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu ve službě Azure Monitor
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) před tímto kurzem.
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
-V tomto kurzu se dozvíte, psaní dotazů protokolu ve službě Azure Monitor. To se dozvíte, jak do:
-
-- Zjistit strukturu dotazu
-- Řazení výsledků dotazu
-- Filtrování výsledků dotazu
-- Zadejte časový rozsah
-- Vyberte pole, která chcete zahrnout do výsledků
-- Definice a používání vlastních polí
-- Agregace a skupinových výsledky
-
-Kurz týkající se používat službu Log Analytics na portálu Azure portal, najdete v části [Začínáme s Azure Monitor Log Analytics](get-started-portal.md).<br>
-Podrobné informace o dotazech protokolu ve službě Azure Monitor, naleznete v tématu [přehled protokolu dotazů ve službě Azure Monitor](log-query-overview.md).
-
-## <a name="writing-a-new-query"></a>Napište nový dotaz
-Dotazy můžete spustit buď pomocí názvu tabulky nebo *hledání* příkazu. Měli byste začít s názvem tabulky, protože definuje vymazat obor pro dotaz a zvyšuje výkon dotazů a relevance výsledků.
+> Před dokončením tohoto kurzu byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) .
 
 > [!NOTE]
-> Jazyk dotaz Kusto používaný službou Azure Monitor je velká a malá písmena. Klíčová slova jazyka jsou obvykle napsány malé. Při použití názvy tabulek nebo sloupců v dotazu, ujistěte se, že chcete mít správnou velikost, jak je znázorněno v podokně schématu.
+> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://portal.loganalytics.io/demo), které obsahuje spoustu ukázkových dat.
 
-### <a name="table-based-queries"></a>Dotazy založené na tabulku
-Azure Monitor uspořádá data protokolu v tabulkách, každá skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku zajímá a potom se podívejte na části dat:
+
+V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se, jak:
+
+- Principy struktury dotazů
+- Seřadit výsledky dotazu
+- Filtrovat výsledky dotazu
+- Zadejte časový rozsah.
+- Vyberte pole, která chcete zahrnout do výsledků.
+- Definování a použití vlastních polí
+- Agregace a seskupení výsledků
+
+Kurz použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](get-started-portal.md).<br>
+Další podrobnosti o dotazech protokolu v Azure Monitor najdete v tématu [Přehled dotazů protokolu v Azure monitor](log-query-overview.md).
+
+## <a name="writing-a-new-query"></a>Zápis nového dotazu
+Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Měli byste začít s názvem tabulky, protože definuje pro dotaz jasný rozsah a zvyšuje výkon dotazů a relevanci výsledků.
+
+> [!NOTE]
+> Dotazovací jazyk Kusto používaný Azure Monitor rozlišuje velká a malá písmena. Klíčová slova jazyka se většinou zapisují do malých písmen. Při použití názvů tabulek nebo sloupců v dotazu se ujistěte, že používáte správný případ, jak je znázorněno v podokně schématu.
+
+### <a name="table-based-queries"></a>Dotazy založené na tabulkách
+Azure Monitor uspořádá data protokolu v tabulkách, z nichž každý se skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku, na kterou vás zajímáte, a pak se podívejte na bitovou část dat:
 
 ```Kusto
 SecurityEvent
 | take 10
 ```
 
-Dotaz je znázorněno výše vrátí 10 výsledky z *SecurityEvent* tabulky v žádné konkrétní pořadí. To je velmi běžné způsob, jak provést první pohled na tabulku a pochopit jeho strukturu a obsahu. Podívejme se, jak je sestavena:
+Výše uvedený dotaz vrátí 10 výsledků z tabulky *SecurityEvent* , a to bez konkrétního pořadí. To je velmi běžný způsob, jak se rychle podívat na tabulku a pochopit její strukturu a obsah. Pojďme se podívat, jak je sestavená:
 
-* Spustí dotaz s názvem tabulky *SecurityEvent* – Tato část definuje rozsah dotazu.
-* Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich ve vstupu následující příkaz. Můžete přidat libovolný počet potrubím elementy.
-* Po přesměrování je **trvat** příkaz, který vrátí určitý počet libovolného záznamy z tabulky.
+* Dotaz začíná názvem tabulky *SecurityEvent* – Tato část definuje rozsah dotazu.
+* Znak kanálu (|) odděluje příkazy, takže výstup prvního z nich se zadává do vstupu z následujícího příkazu. Můžete přidat libovolný počet prvků s potrubím.
+* Následující kanál je příkaz **přijmout** , který vrátí konkrétní počet libovolných záznamů z tabulky.
 
-Ve skutečnosti spouštět dotaz i bez přidání `| take 10` –, který by stále platná, ale můžou se zobrazovat výsledky až 10 000.
+Dotaz jsme mohli spustit i bez přidání `| take 10` -, který by byl stále platný, ale může vracet až 10 000 výsledků.
 
 ### <a name="search-queries"></a>Vyhledávací dotazy
-Vyhledávací dotazy jsou menší strukturované a obecně více vhodných pro hledání záznamů, které zahrnují určité hodnoty v některém ze svých sloupců:
+Vyhledávací dotazy jsou méně strukturované a obecně se hodí pro hledání záznamů, které obsahují konkrétní hodnotu v některém z jejich sloupců:
 
 ```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Tento dotaz vyhledá *SecurityEvent* tabulky pro záznamy obsahující frázi "Kryptografický". Tyto záznamy se vrátí a zobrazí 10 záznamů. Pokud jsme vynechat, nechte `in (SecurityEvent)` částečně a pouze spustit `search "Cryptographic"`, hledání se přenášejí prostřednictvím *všechny* tabulek, které by trvat déle a být méně efektivní.
+Tento dotaz vyhledá v tabulce *SecurityEvent* záznamy, které obsahují frázi "kryptografie". Z těchto záznamů se vrátí a zobrazí 10 záznamů. Pokud tuto `in (SecurityEvent)` část vynecháme a právě `search "Cryptographic"`ji spustíte, bude hledání probíhat na *všech* tabulkách, což by mohlo trvat déle a být méně efektivní.
 
 > [!WARNING]
-> Vyhledávací dotazy jsou obvykle pomalejší než dotazy založené na tabulku, protože mají zpracovávat další data. 
+> Vyhledávací dotazy jsou obvykle pomalejší než dotazy založené na tabulkách, protože musí zpracovávat více dat. 
 
-## <a name="sort-and-top"></a>Řazení a nahoře
-Zatímco **trvat** je užitečné získat o pár záznamů, výsledky jsou vybrané a zobrazí bez určitého pořadí. Získat seřazený zobrazení, může **řazení** podle preferované sloupce:
+## <a name="sort-and-top"></a>Seřadit a nahoru
+I když je užitečné získat pár záznamů, výsledky se vyberou a zobrazují se v žádném pořadí. Chcete-li získat seřazené zobrazení, můžete **Řadit** podle preferovaného sloupce:
 
 ```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
 
-Který může vrátit ale příliš mnoho výsledků a může trvat nějakou dobu. Seřadí výše uvedeném dotazu *celý* SecurityEvent tabulku podle sloupce TimeGenerated. Portál Analytics pak omezení zobrazení na Zobrazit pouze 10 000 záznamů. Tento přístup není samozřejmě optimální.
+To může vracet příliš mnoho výsledků, ale může také nějakou dobu trvat. Výše uvedený dotaz seřadí *celou* tabulku SecurityEvent podle sloupce TimeGenerated. Portál Analytics potom omezí zobrazení na zobrazení pouze záznamů 10 000. Tento přístup je samozřejmě neoptimální.
 
-Nejlepší způsob, jak získat jenom nejnovější 10 záznamů, je použití **horní**, který seřadí celou tabulku na straně serveru a pak vrátí prvních záznamů:
+Nejlepším způsobem, jak získat pouze nejnovější 10 záznamů, je použít **horní**, který seřadí celou tabulku na straně serveru a potom vrátí nejvyšší záznamy:
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-Sestupné pořadí, řazení, takže obvykle vynechat výchozí nastavení je **desc** argument. Výstup bude vypadat takto:
+Sestupnění je výchozí pořadí řazení, takže typicky vynecháme argument **DESC** . Výstup bude vypadat nějak takto:
 
 ![Prvních 10](media/get-started-queries/top10.png)
 
 
-## <a name="where-filtering-on-a-condition"></a>Kdy: filtrování na podmínce
-Filtry, jak je uvedeno podle názvu, filtrovat data podle určité podmínky. Toto je nejběžnější způsob, jak omezit výsledky dotazu na příslušné informace.
+## <a name="where-filtering-on-a-condition"></a>Kde: filtrování podmínky
+Filtry označené podle jejich názvu filtrují data podle konkrétní podmínky. Toto je nejběžnější způsob, jak omezit výsledky dotazu na relevantní informace.
 
-Přidání filtru do dotazu, použijte **kde** operátor za nímž následuje jedna nebo více podmínek. Například následující dotaz vrátí pouze *SecurityEvent* záznamy, jejichž _úroveň_ rovná _8_:
+Chcete-li přidat filtr do dotazu, použijte operátor **WHERE** následovaný jednou nebo více podmínkami. Například následující dotaz vrátí pouze záznamy *SecurityEvent* , kde _úroveň_ rovná _8_:
 
 ```Kusto
 SecurityEvent
 | where Level == 8
 ```
 
-Při psaní podmínky filtru, můžete použít následující výrazy:
+Při psaní podmínek filtrování můžete použít následující výrazy:
 
-| Výraz | Popis | Příklad: |
+| Výraz | Popis | Příklad |
 |:---|:---|:---|
-| == | Kontroly rovnosti<br>(malá a velká písmena) | `Level == 8` |
-| =~ | Kontroly rovnosti<br>(velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Kontrola nerovnosti<br>(i výraz je shodný s) | `Level != 4` |
-| *a*, *nebo* | Vyžaduje mezi podmínky| `Level == 16 or CommandLine != ""` |
+| == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
+| =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
+| !=, <> | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
+| *a*, *nebo* | Požadováno mezi podmínkami| `Level == 16 or CommandLine != ""` |
 
-Chcete-li filtrovat podle několika podmínek, můžete použít **a**:
+Chcete-li filtrovat podle více podmínek, můžete buď použít **, a**:
 
 ```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
-nebo kanálu více **kde** prvky jednu po druhé:
+nebo více kanálů **, kde** jeden po druhém je elementem:
 
 ```Kusto
 SecurityEvent
@@ -133,18 +135,18 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Hodnoty mohou mít různé typy, takže možná budete muset k provádění porovnání na správný typ přetypování. Například SecurityEvent *úroveň* sloupec je typu řetězec, proto musíte přetypovat na číselný typ, jako *int* nebo *dlouhé*, než budete moct použít na něm číselné operátory: `SecurityEvent | where toint(Level) >= 10`
+> Hodnoty mohou mít různé typy, takže je možná budete muset přetypovat na provedení porovnání se správným typem. Například sloupec *úrovně* SecurityEvent je typu String, takže je nutné jej přetypovat na číselný typ, jako je *int* nebo *Long*, předtím, než můžete použít numerické operátory:`SecurityEvent | where toint(Level) >= 10`
 
-## <a name="specify-a-time-range"></a>Zadejte časový rozsah
+## <a name="specify-a-time-range"></a>Zadejte časový rozsah.
 
 ### <a name="time-picker"></a>Výběr času
-Výběr času vedle tlačítka Spustit je a indikuje, že jsme při dotazování pouze záznamy z posledních 24 hodin. Toto je výchozí časový rozsah, použije na všechny dotazy. Chcete-li získat pouze záznamy z poslední hodina, vyberte _za poslední hodinu_ a spusťte dotaz znovu.
+Výběr času je vedle tlačítka Spustit a označuje, že dotazuje pouze záznamy za posledních 24 hodin. Toto je výchozí časový rozsah, který se použije u všech dotazů. Chcete-li získat pouze záznamy z poslední hodiny, vyberte možnost _poslední hodina_ a spusťte dotaz znovu.
 
 ![Výběr času](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Filtr času v dotazu
-Můžete také definovat vlastní časový rozsah tak, že přidáte filtr času v dotazu. Doporučujeme umístit filtr času bezprostředně za název tabulky: 
+Můžete také definovat svůj vlastní časový rozsah přidáním filtru času do dotazu. Nejvhodnější je umístit filtr času hned za název tabulky: 
 
 ```Kusto
 SecurityEvent
@@ -152,11 +154,11 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Ve výše uvedené filtr času `ago(30m)` znamená "30 minutami", takže tento dotaz vrátí pouze záznamy z posledních 30 minut. Jiné jednotky doby zahrnout dny (2d) (25 mil.) minut a sekund (10 s).
+Filtr `ago(30m)` ve výše uvedeném časovém intervalu znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
 
 
-## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířit: vyberte a výpočetní sloupce
-Použití **projektu** vybrat konkrétní sloupce se mají zahrnout do výsledků:
+## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířené: výběrové a výpočetní sloupce
+Pomocí **projektu** můžete vybrat konkrétní sloupce, které chcete zahrnout do výsledků:
 
 ```Kusto
 SecurityEvent 
@@ -164,15 +166,15 @@ SecurityEvent
 | project TimeGenerated, Computer, Activity
 ```
 
-Předchozí příklad generuje tento výstup:
+Předchozí příklad vygeneruje tento výstup:
 
-![Výsledky dotazu projektu](media/get-started-queries/project.png)
+![Dotaz na výsledky projektu](media/get-started-queries/project.png)
 
-Můžete také použít **projektu** přejmenování sloupců a definovat nové značky. Následující příklad používá projektu provést následující kroky:
+**Projekt** můžete také použít k přejmenování sloupců a definování nových. Následující příklad používá projekt k provedení následujících akcí:
 
-* Vyberte pouze *počítače* a *TimeGenerated* původní sloupce.
-* Přejmenovat *aktivity* sloupec *EventDetails*.
-* Vytvoří nový sloupec s názvem *EventCode*. **Substring()** funkce se používá ke stahování jenom první čtyři znaky z pole aktivity.
+* Vyberte pouze původní sloupce *počítač* a *TimeGenerated* .
+* Přejmenujte sloupec *aktivity* na *EventDetails*.
+* Vytvoří nový sloupec s názvem *kód události*. Funkce **substring ()** se používá k získání pouze prvních čtyř znaků z pole Activity.
 
 
 ```Kusto
@@ -181,7 +183,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**rozšíření** uchovává všechny původní sloupce sady výsledků dotazu a definuje další značky. Následující dotaz používá **rozšířit** přidáte *EventCode* sloupce. Všimněte si, že v tomto sloupci nemusí být zobrazeny na konci tabulka výsledků v takovém případě je třeba Rozbalit podrobnosti záznam k jeho zobrazení.
+**Rozšířené** zachová všechny původní sloupce v sadě výsledků a definuje další. Následující dotaz používá k přidání sloupce *kód události* sloupec **Extended** . Všimněte si, že tento sloupec se nemusí zobrazit na konci tabulky. v takovém případě budete muset rozbalit Podrobnosti záznamu a zobrazit ho.
 
 ```Kusto
 SecurityEvent
@@ -189,17 +191,17 @@ SecurityEvent
 | extend EventCode=substring(Activity, 0, 4)
 ```
 
-## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregační skupiny řádků
-Použití **shrnout** identifikovat skupinami záznamů, podle jednoho nebo více sloupců, a na ně vztahují agregace. Nejběžnější použití nástroje **shrnout** je *počet*, který vrátí počet výsledků v každé skupině.
+## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregované skupiny řádků
+Použijte **sumarizace** k identifikaci skupin záznamů, podle jednoho nebo více sloupců a použijte pro ně agregace. Nejběžnějším využitím **souhrnu** je *počet*, který vrací počet výsledků v každé skupině.
 
-Následující dotaz kontroluje všechny *výkonu* záznamy od poslední hodiny skupin je podle *ObjectName*a vrátí počet záznamů v každé skupině: 
+Následující dotaz zkontroluje všechny záznamy *výkonu* za poslední hodinu, seskupuje je podle *ObjectName*a spočítá záznamy v každé skupině: 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
 ```
 
-Někdy je vhodné definovat skupiny tak, že více dimenzí. Každá jedinečná kombinace těchto hodnot definuje samostatnou skupinu:
+Někdy je vhodné definovat skupiny podle více dimenzí. Každá jedinečná kombinace těchto hodnot definuje samostatnou skupinu:
 
 ```Kusto
 Perf
@@ -207,7 +209,7 @@ Perf
 | summarize count() by ObjectName, CounterName
 ```
 
-Dalším běžným způsobem použití je provést matematické a statistické výpočty s každou skupinu. Například následující vypočítá průměr *CounterValue* pro jednotlivé počítače:
+Dalším běžným použitím je provádět matematické nebo statistické výpočty na každé skupině. Například následující příkaz vypočítá průměrnou *CounterValue* pro každý počítač:
 
 ```Kusto
 Perf
@@ -215,7 +217,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-Bohužel nemají smysl výsledky tohoto dotazu, protože jsme kombinovat společně různých čítačů výkonu. Chcete-li to lépe vystihuje, byste měli vypočítat průměr odděleně pro každou kombinaci *CounterName* a *počítače*:
+Výsledky tohoto dotazu bohužel nejsou stejné, protože jsme provedli kombinaci různých čítačů výkonu. Aby bylo toto smysluplnější, doporučujeme vypočítat průměr zvlášť pro každou kombinaci *CounterName* a *počítače*:
 
 ```Kusto
 Perf
@@ -223,10 +225,10 @@ Perf
 | summarize avg(CounterValue) by Computer, CounterName
 ```
 
-### <a name="summarize-by-a-time-column"></a>Vytvořit souhrn podle sloupce pro čas
-Seskupování výsledků můžete také založené na sloupec času nebo jinou hodnotu. Jednoduše sumarizace `by TimeGenerated` ale by vytvořit skupiny pro každou jeden milisekund v příslušném časovém rozsahu, protože to jsou jedinečné hodnoty. 
+### <a name="summarize-by-a-time-column"></a>Shrnout podle sloupce s časem
+Seskupení výsledků může být také založeno na časovém sloupci nebo jiné průběžné hodnotě. Jednoduché Shrnutí `by TimeGenerated` byste ale mohli vytvořit skupiny pro každou dobu v milisekundách v časovém rozsahu, protože se jedná o jedinečné hodnoty. 
 
-Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu každé období 1 hodinu za posledních 7 dní:
+Chcete-li vytvořit skupiny založené na souvislých hodnotách, je nejlepší rozdělit rozsah na spravovatelné jednotky pomocí **přihrádky**. Následující dotaz analyzuje záznamy *výkonu* , které měří volnou paměť (*k dispozici v MB*) na určitém počítači. Vypočítá průměrnou hodnotu každé období 1 hodiny za posledních 7 dnů:
 
 ```Kusto
 Perf 
@@ -236,12 +238,12 @@ Perf
 | summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
-Aby byl srozumitelnější výstup, vyberete zobrazíte jako čas – graf, zobrazuje dostupné paměti v průběhu času:
+Chcete-li, aby byl výstup jasný, vyberte ho a zobrazte ho jako časový graf. zobrazí se dostupná paměť v čase:
 
-![Dotaz paměti v čase](media/get-started-queries/chart.png)
+![Dotazování paměti v čase](media/get-started-queries/chart.png)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [zápis vyhledávacích dotazů](search-queries.md)
+- Další informace o [psaní vyhledávacích dotazů](search-queries.md)

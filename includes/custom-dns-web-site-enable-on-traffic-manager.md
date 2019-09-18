@@ -4,40 +4,40 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ddeb46a2c7bc7f24f55c22f446926529cee7b598
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175584"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059635"
 ---
-Po rozšíření záznamů pro název domény, byste měli moct ověřit, že lze použít vlastní název domény pro přístup k vaší webové aplikace ve službě Azure App Service pomocí svého prohlížeče.
+Po rozšíření záznamů pro název domény byste měli být schopni použít prohlížeč k ověření, že se vlastní název domény dá použít pro přístup k webové aplikaci v Azure App Service.
 
 > [!NOTE]
-> Může trvat nějakou dobu vaše CNAME pro rozšíří v rámci systému DNS. Je třeba použít službu <a href="https://www.digwebinterface.com/"> https://www.digwebinterface.com/ </a> k ověření, že záznam CNAME je k dispozici.
+> Může trvat nějakou dobu, než se váš CNAME rozšíří přes systém DNS. Můžete použít službu <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> , jako je, k ověření, že je záznam CNAME k dispozici.
 > 
 > 
 
-Pokud jste ještě nepřidali vaší webové aplikace jako koncový bod služby Traffic Manager, musíte to provést před název řešení bude fungovat jako trasy název vlastní domény na Traffic Manager. Traffic Manager následně směruje do vaší webové aplikace. Pomocí informací v [přidat nebo odstranit koncové body](../articles/traffic-manager/traffic-manager-endpoints.md) přidat do webové aplikace jako koncový bod ve vašem profilu Traffic Manageru.
+Pokud jste svou webovou aplikaci ještě nepřidali jako koncový bod Traffic Manager, musíte to provést, než bude překlad názvů fungovat, protože vlastní název domény směruje na Traffic Manager. Traffic Manager potom trasy do vaší webové aplikace. Použijte informace v části [Přidání nebo odstranění koncových bodů](../articles/traffic-manager/traffic-manager-endpoints.md) k přidání webové aplikace jako koncového bodu v profilu Traffic Manager.
 
 > [!NOTE]
-> Pokud vaše webová aplikace není uveden, při přidání koncového bodu, ověřte, že je nakonfigurovaný pro **standardní** režimu plán služby App Service. Je nutné použít **standardní** režimu pro vaši webovou aplikaci, aby bylo možné pracovat s Traffic Managerem.
+> Pokud vaše webová aplikace není při přidávání koncového bodu uvedená, ověřte, že je nakonfigurovaná pro **standardní** režim App Serviceho plánu. Chcete-li pracovat s Traffic Manager, je nutné použít **standardní** režim pro vaši webovou aplikaci.
 > 
 > 
 
-1. V prohlížeči se otevře [webu Azure Portal](https://portal.azure.com).
-2. V **Web Apps** kartu, klikněte na název vaší webové aplikace, vyberte **nastavení**a pak vyberte **vlastní domény**
+1. V prohlížeči otevřete [Azure Portal](https://portal.azure.com).
+2. Na kartě **Web Apps** klikněte na název vaší webové aplikace, vyberte **Nastavení**a pak vyberte **vlastní domény** .
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. V **vlastní domény** okna, klikněte na tlačítko **přidat název hostitele**.
-4. Použití **Hostname** textových polí zadejte název domény Traffic Manageru pro přidružení k této webové aplikace.
+3. V okně **vlastní domény** klikněte na **Přidat název hostitele**.
+4. K zadání vlastního názvu domény, který se má přidružit k této webové aplikaci, použijte textová pole **název hostitele** .
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
-5. Klikněte na tlačítko **ověřit** uložíte název domény.
-6. Po kliknutí na tlačítko **ověřit** Azure bude aktivovat pracovní postup ověření domény. To bude kontrolovat vlastnictví domény i název hostitele dostupnost a sestavy úspěch nebo podrobné chybové s doporučený k vyřešení chyby.    
-7. Po úspěšném ověření **přidat název hostitele** tlačítko je aktivní a bude možné přiřadit název hostitele. Teď přejděte na název vlastní domény v prohlížeči. Teď byste měli vidět vaše aplikace spuštěná pomocí vlastního názvu domény. 
+5. Kliknutím na **ověřit** uložte konfiguraci názvu domény.
+6. Po kliknutí na **ověřit** , že Azure začne pracovat s pracovním postupem pro ověření domény. Provedete to tak, že provedete kontrolu vlastnictví domény i dostupnost názvu hostitele a podrobnou chybu s podrobnými pokyny, jak chybu opravit.    
+7. Po úspěšném ověření se tlačítko **Přidat název hostitele** stane aktivním a budete moci přiřadit název hostitele. Teď v prohlížeči přejděte na vlastní název domény. Teď by se měla zobrazit vaše aplikace s použitím vlastního názvu domény. 
    
-   Po dokončení konfigurace vlastního názvu domény nebude uvedené **názvy domén** část vaší webové aplikace.
+   Po dokončení konfigurace se vlastní název domény zobrazí v části **názvy domén** ve vaší webové aplikaci.
 
-V tomto okamžiku byste měli moct zadat název domény Traffic Manageru v prohlížeči a podívejte se, že je úspěšně přejdete do webové aplikace.
+V tuto chvíli byste měli být schopni zadat název domény Traffic Manager v prohlížeči a podívat se, jestli se k vaší webové aplikaci úspěšně dostanete.
 

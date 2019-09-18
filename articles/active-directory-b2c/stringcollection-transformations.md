@@ -1,6 +1,6 @@
 ---
-title: Třída StringCollection deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
-description: Třída StringCollection deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
+title: Příklady transformací deklarací řetězcové deklarace pro schéma rozhraní Azure Active Directory B2C pro prostředí identity Microsoft Docs
+description: Příklady transformací deklarací pro StringCollection pro schéma Azure Active Directory B2C rozhraní identity Framework.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,32 +10,32 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98453daeb34d093b49cdcc636f68c3d7ae017126
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512440"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063315"
 ---
-# <a name="stringcollection-claims-transformations"></a>Třída StringCollection deklarace identity transformace
+# <a name="stringcollection-claims-transformations"></a>Transformace deklarací řetězcové deklarace
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady použití transformace deklarací identity kolekce řetězců schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití transformací deklarace identity kolekce řetězců schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Přidá řetězec deklarace identity do nové třída stringCollection deklarace. 
+Přidá deklaraci identity řetězce do nové deklarace identitycollection řetězce.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Položka | string | Přidat do výstupu deklarace typu deklarace identity. |
-| InputClaim | Kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
-| outputClaim | Kolekce | stringCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. |
+| InputClaim | Položkami | řetězec | Deklarace ClaimType, která se má přidat do výstupní deklarace |
+| InputClaim | kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| OutputClaim | kolekce | stringCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. |
 
-Použijte Tato transformace přidat řetězec nové nebo existující třída stringCollection deklarací identity. Se běžně používá **AAD UserWriteUsingAlternativeSecurityId** technický profil. Před vytvořením nového účtu na sociální síti **CreateOtherMailsFromEmail** transformaci deklarací identity načte typ ClaimType a přidá hodnotu **otherMails** typu deklarace identity. 
+Tuto transformaci deklarací použijte k přidání řetězce do nové nebo existující řetězcové. Běžně se používá v technickém profilu **AAD-UserWriteUsingAlternativeSecurityId** . Před vytvořením nového účtu sociální sítě **CreateOtherMailsFromEmail** transformuje deklarace ClaimType a přidá hodnotu do **otherMails** ClaimType.
 
-Přidá následující transformace deklarací identity **e-mailu** typu deklarace identity k **otherMails** typu deklarace identity.
+Následující transformace deklarací identity přidá do **otherMails** ClaimType **e-mail** ClaimType.
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -49,25 +49,25 @@ Přidá následující transformace deklarací identity **e-mailu** typu deklara
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
   - **kolekce**: ["someone@outlook.com"]
-  - **Položka**: "admin@contoso.com"
-- Výstupní deklarace identit: 
-  - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
+  - **položka**: "admin@contoso.com"
+- Deklarace výstupů:
+  - **kolekce**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-Přidá novou deklaraci třída stringCollection parametr řetězce. 
+Přidá řetězcový parametr do nové deklarace identitycollection řetězce.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
-| InputParameter | Položka | string | Hodnota přidávaného do výstupní deklarací. |
-| outputClaim | Kolekce | stringCollection | ClaimTypes, který bude vytvořen po zavolání této ClaimsTransformation. |
+| InputClaim | kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| InputParameter | Položkami | řetězec | Hodnota, která se má přidat do výstupní deklarace |
+| OutputClaim | kolekce | stringCollection | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation. |
 
-Použijte Tato transformace přidat hodnotu řetězce nové nebo existující třída stringCollection deklarací identity. Následující příklad přidá konstanty e-mailovou adresu (admin@contoso.com) k **otherMails** deklarací identity. 
+Tuto transformaci deklarací použijte k přidání řetězcové hodnoty do nové nebo existující řetězcové. Následující příklad přidá konstantu e-mailovéadmin@contoso.comadresy () do **otherMails** deklarace identity.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -83,25 +83,25 @@ Použijte Tato transformace přidat hodnotu řetězce nové nebo existující t�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
   - **kolekce**: ["someone@outlook.com"]
-- Vstupní parametry 
-  - **Položka**: "admin@contoso.com"
-- Výstupní deklarace identit:
-  - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
+- Vstupní parametry
+  - **položka**: "admin@contoso.com"
+- Deklarace výstupů:
+  - **kolekce**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-Získá první položku z kolekce zadaný řetězec. 
+Získá první položku ze zadané kolekce řetězců.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Kolekce | stringCollection | ClaimTypes, které jsou používány transformace deklarací identity k získání položky. |
-| outputClaim | extractedItem | string | ClaimTypes vytvořený po zavolání této ClaimsTransformation. První položka v kolekci. |
+| InputClaim | kolekce | stringCollection | ClaimTypes, které jsou používány transformací deklarací k získání položky. |
+| OutputClaim | extractedItem | řetězec | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. První položka v kolekci |
 
-Následující příklad načte **otherMails** deklarace identity a vrátí první položku do **e-mailu** deklarací identity. 
+Následující příklad přečte deklaraci identity **otherMails** a vrátí první položku do deklarace **e-mailu** .
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -114,10 +114,10 @@ Následující příklad načte **otherMails** deklarace identity a vrátí prvn
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **kolekce**: ["someone@outlook.com","someone@contoso.com"]
-- Výstupní deklarace identit: 
+  - **kolekce**: ["someone@outlook.com", "someone@contoso.com"]
+- Deklarace výstupů:
   - **extractedItem**: "someone@outlook.com"
 

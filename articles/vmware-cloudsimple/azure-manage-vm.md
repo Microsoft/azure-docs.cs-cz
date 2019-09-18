@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7d09ebd9c6ef04aff4d750024216b51513c3cca
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576820"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037477"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Správa virtuálních počítačů privátního cloudu CloudSimple v Azure
 
-Pro správu virtuálních počítačů, které jste [vytvořili pro privátní cloud CloudSimple](azure-create-vm.md), se přihlásíte k [Azure Portal](http://portal.azure.com). Vyhledejte a vyberte virtuální (vyhledávání v části **všechny služby** nebo **Virtual Machines** v postranní nabídce).
+Pro správu virtuálních počítačů, které jste [vytvořili pro privátní cloud CloudSimple](azure-create-vm.md), se přihlásíte k [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte virtuální (vyhledávání v části **všechny služby** nebo **Virtual Machines** v postranní nabídce).
 
 ## <a name="control-virtual-machine-operation"></a>Kontrola operace virtuálního počítače
 
@@ -25,7 +25,7 @@ Následující ovládací prvky jsou k dispozici na stránce **Přehled** pro vy
 
 | Ovládací prvek | Popis |
 | ------------ | ------------- |
-| Připojení | Připojte se k zadanému virtuálnímu počítači.  |
+| Připojit | Připojte se k zadanému virtuálnímu počítači.  |
 | Spustit | Spusťte zadaný virtuální počítač.  |
 | Restart | Vypněte a pak zapněte zadaný virtuální počítač.  |
 | Zastavit | Vypněte konkrétní virtuální počítač.  |
@@ -67,7 +67,7 @@ Pokud chcete změnit kapacitu virtuálního počítače, otevřete stránku **Ve
 | Položka | Popis |
 | ------------ | ------------- |
 | Počet jader | Počet jader přiřazených k virtuálnímu počítači.  |
-| Virtualizace hardwaru | Zaškrtnutím políčka zpřístupníte hardwarovou virtualizaci hostovanému operačnímu systému. Podívejte se na článek o VMware vystavte [virtualizaci hardwaru VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)s asistencí. |
+| Virtualizace hardwaru | Zaškrtnutím políčka zpřístupníte hardwarovou virtualizaci hostovanému operačnímu systému. Podívejte se na článek o VMware [vystavte virtualizaci hardwaru VMware s asistencí](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html). |
 | Velikost paměti | Vyberte velikost paměti, která se má přidělit virtuálnímu počítači.  
 
 ## <a name="manage-network-interfaces"></a>Správa síťových rozhraní

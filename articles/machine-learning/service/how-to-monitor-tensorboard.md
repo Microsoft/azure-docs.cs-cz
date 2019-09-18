@@ -1,6 +1,6 @@
 ---
 title: Vizualizace experimentů s využitím TensorBoardu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Spusťte TensorBoard k vizualizaci historie spouštění experimentů a Identifikujte potenciální oblasti pro ladění a rekurzi parametrů.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856072"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034335"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 
-V tomto článku se dozvíte, jak zobrazit spuštění experimentů a metriky v TensorBoard pomocí [ `tensorboard` balíčku](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) v hlavní sadě SDK služby Azure Machine Learning. Po kontrole spuštění experimentů můžete lépe vyladit a přeškolovat modely strojového učení.
+V tomto článku se naučíte, jak zobrazit spuštění experimentů a metriky v TensorBoard pomocí [ `tensorboard` balíčku](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) v hlavní sadě SDK pro Azure Machine Learning. Po kontrole spuštění experimentů můžete lépe vyladit a přeškolovat modely strojového učení.
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) je sada webových aplikací pro kontrolu a porozumění vaší struktuře experimentů a výkonu.
 
@@ -37,13 +37,13 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
 
         * Dokončete [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md) prostor pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného pomocí sady SDK a ukázkového úložiště.
 
-        * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete do tohoto adresáře: **postupy-použití-azureml > školení – s**využitím hloubkového učení.
+        * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete do tohoto adresáře: **postupy-použití-azureml > školení – s využitím hloubkového učení**.
         * Export-Run-History-to-run-History. ipynb
         * tensorboard. ipynb
 
     * Váš vlastní server Juptyer notebook
           * [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) s `tensorboard` dalšími
-          * [Vytvořte pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md).  
+          * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).  
           * [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
@@ -71,7 +71,7 @@ if not path.exists(exp_dir):
 
 ### <a name="download-tensorflow-demo-experiment-code"></a>Stáhnout ukázkový kód experimentu TensorFlow
 
-Úložiště TensorFlow má ukázku MNIST ručně zapsaných s rozsáhlou instrumentací TensorBoard. Nepotřebujeme ani změnit žádný z těchto ukázkových kódu, aby fungoval se službou Azure Machine Learning. V následujícím kódu stáhneme kód MNIST ručně zapsaných a uložíme ho do naší nově vytvořené složky experimentů.
+Úložiště TensorFlow má ukázku MNIST ručně zapsaných s rozsáhlou instrumentací TensorBoard. Pro práci s Azure Machine Learning nepotřebujeme ani změnit žádný z těchto ukázkových kódu. V následujícím kódu stáhneme kód MNIST ručně zapsaných a uložíme ho do naší nově vytvořené složky experimentů.
 
 ```python
 import requests
@@ -282,7 +282,7 @@ Až budete hotovi, ujistěte se, že zavoláte metodu [stop ()](https://docs.mic
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto postupu jste vytvořili dvě experimenty a zjistili jste, jak spustit TensorBoard na svých historiích spuštění, abyste identifikovali oblasti pro možné vyladění a přeškolení. 
 

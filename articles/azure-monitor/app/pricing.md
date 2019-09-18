@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277012"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067018"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -108,7 +108,7 @@ Tady je několik věcí, které můžete udělat ke snížení objemu dat:
 * [Omezte počet volání AJAX, která mohou být uvedena](../../azure-monitor/app/javascript.md#configuration) v každém zobrazení stránky, nebo vypněte vytváření sestav AJAX.
 * [Úpravou souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) vypněte moduly shromažďování, které nepotřebujete. Můžete se třeba rozhodnout, že čítače výkonu nebo data závislostí jsou nepostradatelná.
 * Rozdělení telemetrie mezi samostatné klíče instrumentace. 
-* Předem agregované metriky. Pokud do své aplikace vložíte volání TrackMetric, můžete snížit provoz pomocí přetížení, které přijímá výpočet průměrné a směrodatné odchylky dávky měření. Nebo můžete použít [předagregaci balíčku](https://www.myget.org/gallery/applicationinsights-sdk-labs).
+* Předem agregované metriky. Pokud do své aplikace vložíte volání TrackMetric, můžete snížit provoz pomocí přetížení, které přijímá výpočet průměrné a směrodatné odchylky dávky měření. Nebo můžete použít předagregaci [balíčku](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
 ## <a name="manage-the-maximum-daily-data-volume"></a>Správa maximální denní objem dat
 
@@ -151,7 +151,7 @@ U každého uchovávaného záznamu `itemCount` označuje počet původních zá
 ## <a name="change-the-data-retention-period"></a>Změnit dobu uchování dat
 
 > [!NOTE]
-> Tuto funkci jsme dočasně odebrali, zatímco řešíme možný problém.  Budeme to mít zpátky od poloviny 2019.
+> Tuto funkci jsme dočasně odebrali, zatímco řešíme možný problém.  Budeme to mít zpátky první týden v říjnu 2019.
 
 Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro každý prostředek Application Insights lze vybrat různá období uchování. Úplná sada dostupných dob uchovávání dat je 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. 
 
@@ -181,7 +181,7 @@ Pro včasnou přihlášené služby Azure Application Insights stále existují 
 Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak [posoudit dopad přechodu na tento model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vašich způsobů používání a [jak se vyjádřit k novému modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model) .
+> V dubnu 2018 jsme zavedli nový cenový model pro monitorování Azure. [](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak [posoudit dopad přechodu na tento model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vašich způsobů používání a [jak se vyjádřit k novému modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model) .
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Nároky na úroveň a předplatné Operations Management Suite
 

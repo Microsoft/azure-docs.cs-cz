@@ -3,7 +3,7 @@ title: Řešení potíží se službou Azure Monitorování stavu v2 a známé p
 description: Známé problémy Monitorování stavu v2 a příklady řešení potíží. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424095"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058296"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Řešení potíží s Monitorování stavu v2
 
@@ -160,7 +160,7 @@ Podrobný popis způsobu použití této rutiny najdete v referenčních informa
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) , kde najdete informace o parametrech, které jste možná vynechali
 - Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat na GitHubu [](https://github.com/Microsoft/ApplicationInsights-Home/issues).

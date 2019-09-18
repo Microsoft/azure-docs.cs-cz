@@ -3,21 +3,21 @@ title: Přehled služby Azure Monitorování stavu v2 | Microsoft Docs
 description: Přehled Monitorování stavu v2. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333686"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057838"
 ---
 # <a name="status-monitor-v2"></a>Monitorování stavu v2
 
@@ -59,7 +59,15 @@ Monitorování stavu v2 se nachází zde: https://www.powershellgallery.com/pack
   *Ano*. Existuje několik způsobů, jak stáhnout Monitorování stavu v2. Pokud má počítač přístup k Internetu, můžete k Galerie prostředí PowerShell připojit pomocí `-Proxy` parametrů.
 Můžete také ručně stáhnout modul a buď ho nainstalovat do počítače, nebo ho použít přímo.
 Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
+
+- Podporuje Monitorování stavu v2 ASP.NET Core aplikace?
+
+  *Ne*. Pokyny k povolení monitorování ASP.NET Corech aplikací najdete v tématu [Application Insights pro ASP.NET Core aplikace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Pro ASP.NET Core aplikace není nutné instalovat StatusMonitor. Platí to i v případě, že je ASP.NET Core aplikace hostovaná ve službě IIS.
   
+Podporuje Monitorování stavu v2 ASP.NET Core aplikace? 
+
+  *Ne*. Pokud chcete povolit monitorování ASP.NET Corech aplikací, postupujte prosím podle [těchto](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) pokynů. Pro ASP.NET Core aplikace není nutné instalovat StatusMonitor. Platí to i v případě, že je ASP.NET Core aplikace hostovaná ve službě IIS.
+
 - Návody ověřit, zda bylo povolení úspěšné?
 
   - Pomocí rutiny [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) můžete ověřit, že je povolení úspěšné.

@@ -1,7 +1,7 @@
 ---
 title: Klíčové koncepty & architektury
-titleSuffix: Azure Machine Learning service
-description: Přečtěte si o architektuře, pojmech, konceptech a pracovních postupech, které tvoří službu Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Přečtěte si o architektuře, pojmech, konceptech a pracovních postupech, které tvoří Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845003"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035592"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: Architektura a koncepty
 
-Přečtěte si o architektuře, konceptech a pracovních postupech pro službu Azure Machine Learning. Hlavní součásti služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
+Přečtěte si o architektuře, konceptech a pracovním postupu pro Azure Machine Learning. Hlavní součásti služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
 
-![Architektura a pracovní postup služby Azure Machine Learning](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning architektura a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -47,10 +47,10 @@ Použijte tyto nástroje pro Azure Machine Learning:
 +  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Automatizujte své aktivity strojového učení pomocí [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
 + Psaní kódu v Visual Studio Code s [rozšířením Azure Machine Learning vs Code](how-to-vscode-tools.md)
-+ Použijte [rozhraní Visual Interface (Preview) pro službu Azure Machine Learning](ui-concept-visual-interface.md) k provedení kroků pracovního postupu bez psaní kódu.
++ Použijte [vizuální rozhraní (Preview) pro Azure Machine Learning](ui-concept-visual-interface.md) k provedení kroků pracovního postupu bez psaní kódu.
 
 > [!NOTE]
-> I když tento článek popisuje pojmy a koncepty, které používá služba Azure Machine Learning, nedefinuje pro platformu Azure pojmy a koncepty. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+> I když tento článek popisuje pojmy a koncepty, které používá Azure Machine Learning, nedefinuje pojmy a koncepty pro platformu Azure. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Glosář
 
@@ -75,7 +75,7 @@ Použijte tyto nástroje pro Azure Machine Learning:
 
 ### <a name="workspaces"></a>Pracovní prostory
 
-[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning služby. Pracovní prostor můžete sdílet s ostatními. Podrobný popis pracovních prostorů najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
+[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning. Pracovní prostor můžete sdílet s ostatními. Podrobný popis pracovních prostorů najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
 
 ### <a name="experiments"></a>Experimenty
 
@@ -87,13 +87,13 @@ Příklad použití experimentu najdete v tématu [kurz: Nahlaste svůj](tutoria
 
 V nejjednodušším model je část kódu, která přijímá vstup a výstup. Vytvoření modelu strojového učení zahrnuje výběr algoritmus, poskytuje s daty a ladění hyperparameters. Školení je iterativní proces, který vytváří trénovaného modelu, který zapouzdřuje modelu osvojené během procesu trénování.
 
-Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také použít model, který je vyškolen mimo Azure Machine Learning. Model můžete zaregistrovat v pracovním prostoru služby Azure Machine Learning.
+Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také použít model, který je vyškolen mimo Azure Machine Learning. Model můžete zaregistrovat v pracovním prostoru Azure Machine Learning.
 
-Služba Azure Machine Learning je nezávislá Framework. Při vytváření modelu můžete použít jakoukoli oblíbenou architekturu strojového učení, jako je Scikit-Learning, XGBoost, PyTorch, TensorFlow a chainer.
+Azure Machine Learning je nezávislá Framework. Při vytváření modelu můžete použít jakoukoli oblíbenou architekturu strojového učení, jako je Scikit-Learning, XGBoost, PyTorch, TensorFlow a chainer.
 
-Příklad školení modelu pomocí Scikit-učení a Estimator najdete v [kurzu: Školení modelu klasifikace obrázků pomocí služby](tutorial-train-models-with-aml.md)Azure Machine Learning.
+Příklad školení modelu pomocí Scikit-učení a Estimator najdete v [kurzu: Proveďte výuku modelu klasifikace obrázků pomocí](tutorial-train-models-with-aml.md)Azure Machine Learning.
 
-**Registr modelu** udržuje přehled o všech modelech v pracovním prostoru služby Azure Machine Learning.
+**Registr modelu** udržuje přehled o všech modelech v pracovním prostoru Azure Machine Learning.
 
 Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem, jako má stávající, registr předpokládá, že se jedná o novou verzi. Verze se zvýší a nový model se zaregistruje pod stejným názvem.
 
@@ -124,8 +124,8 @@ Další informace najdete v následujících článcích:
 
 * [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
 * [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.
-* [Pomocí Azure Machine Learning služby je škálovatelná a zaregistrujte modely TensorFlow ve velkém měřítku](how-to-train-tensorflow.md).
-* [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby](how-to-train-chainer.md).
+* [TensorFlow modely a zaregistrujte se ve velkém měřítku pomocí Azure Machine Learning](how-to-train-tensorflow.md).
+* [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Datové sady a úložiště dat
 
@@ -147,7 +147,7 @@ Přečtěte si další informace o [dostupných výpočetních cílech pro škol
 
 Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Zadejte také název experimentu, který se používá k ukládání informací shromážděných během školení. Během školení se celý adresář zkopíruje do školicího prostředí (cíl výpočtů) a spustí se skript, který je zadaný v konfiguraci spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
 
-Příklad najdete v tématu [kurz: Školení modelu klasifikace obrázků pomocí služby](tutorial-train-models-with-aml.md)Azure Machine Learning.
+Příklad najdete v tématu [kurz: Proveďte výuku modelu klasifikace obrázků pomocí](tutorial-train-models-with-aml.md)Azure Machine Learning.
 
 ### <a name="runs"></a>Spuštění
 
@@ -193,7 +193,7 @@ Azure Machine Learning může vytvořit dva typy imagí:
 * **Obrázek FPGA**: Používá se při nasazení do pole brány v Azure, které je programovatelné polem.
 * **Obrázek Docker**: Používá se při nasazení na jiné výpočetní cíle než FPGA. Příklady jsou Azure Container Instances a Azure Kubernetes Service.
 
-Služba Azure Machine Learning poskytuje základní image, která se používá ve výchozím nastavení. Můžete také zadat vlastní image.
+Azure Machine Learning poskytuje základní image, která se používá ve výchozím nastavení. Můžete také zadat vlastní image.
 
 ### <a name="image-registry"></a>Registru imagí
 
@@ -239,8 +239,8 @@ Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vaše
 
 ### <a name="next-steps"></a>Další postup
 
-Pokud chcete začít používat službu Azure Machine Learning, přečtěte si:
+Pokud chcete začít s Azure Machine Learning, přečtěte si:
 
-* [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Vytvořit pracovní prostor služby Azure Machine Learning](how-to-manage-workspace.md)
+* [Co je Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md)
 * [Kurz (část 1): Výuka modelu](tutorial-train-models-with-aml.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382990"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057725"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
@@ -46,7 +46,9 @@ Budete muset vytvořit prostředek Počítačové zpracování obrazu pro svůj 
 
 1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, které jste právě vytvořili. Zkopírujte adresu URL pod **koncovým bodem** , abyste ji mohli snadno načíst za chvíli. Pak klikněte na **Zobrazit přístupové klíče**.
 
-    ![Stránka Azure Portal s odkazem](../Images/copy-vision-endpoint.png) adresa URL koncového bodu a přístup k klávesovým zkratkám[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+    ![Stránka Azure Portal s odkazem adresa URL koncového bodu a přístup k klávesovým zkratkám](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 
 1. V dalším okně Zkopírujte hodnotu **klíče 1** do schránky.
@@ -139,7 +141,7 @@ Pokud chcete ve své webové aplikaci dál pracovat, přečtěte si část [Dal�
 
 Pokud chcete odstranit skupinu prostředků, otevřete okno **skupiny prostředků** na portálu, přejděte do skupiny prostředků, kterou jste použili pro tento projekt, a v horní části zobrazení klikněte na **Odstranit skupinu prostředků** . Budete vyzváni k zadání názvu skupiny prostředků, abyste potvrdili, že ji chcete odstranit, protože po jejím odstranění nebude možné obnovit skupinu prostředků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste do existující webové aplikace Počítačové zpracování obrazu službu Azure, která umožňuje automaticky vygenerovat titulky a klíčová slova pro obrázky objektů BLOB při jejich nahrávání. V dalším kroku se dozvíte, jak Azure Storage testovací prostředí, cvičení 6, abyste se dozvěděli, jak do své webové aplikace přidat funkce hledání. To využívá klíčová slova pro hledání, která služba Počítačové zpracování obrazu generuje.
 

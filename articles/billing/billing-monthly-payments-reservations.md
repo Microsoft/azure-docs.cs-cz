@@ -1,6 +1,6 @@
 ---
-title: Nákup rezervací Azure s využitím předem nebo měsíčních splátek
-description: Přečtěte si, jak si můžete koupit rezervace Azure s využitím předem nebo měsíčních plateb.
+title: Nákup rezervací Azure s platbami předem nebo měsíčními platbami
+description: Přečtěte si, jak můžete kupovat rezervace Azure s platbami předem nebo měsíčními platbami.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: banders
 ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806945"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Nákup rezervací s měsíčními platbami
 
-Až do této chvíle budou rezervace Azure vyžadovat platbu předem. Nyní můžete platit za rezervace s měsíčními platbami. Na rozdíl od průběžného nákupu, kde platíte celou částku, možnost měsíční platby rozdělí celkové náklady na rezervaci rovnoměrně za každý měsíc období. Celkové náklady na front-front-a měsíční rezervace jsou stejné a při výběru platby měsíčně neplatíte žádné další poplatky.
+Doposud vyžadovaly rezervace Azure platbu předem. Teď můžete za rezervace platit měsíčními platbami. Na rozdíl od nákupu předem, kdy zaplatíte celou částku najednou, se při měsíčních platbách rozdělí celkové náklady na rezervaci rovnoměrně na jednotlivé měsíce určeného období. Celkové náklady na rezervaci placenou předem a rezervaci s měsíčními platbami jsou stejné. Pokud tedy zvolíte měsíční platby, neplatíte žádné další poplatky.
 
-Měsíční částka platby se může lišit v závislosti na směnném kurzu na trhu v aktuálním měsíci pro vaši místní měnu.
+Částka měsíční platby se může měnit v závislosti na směnném kurzu vaší místní měny v aktuálním měsíci.
 
-K dispozici jsou měsíční platby pro:
+Měsíční platby jsou k dispozici pro:
 
 - Virtuální počítače
 - SQL Database
 - SQL Data Warehouse
 - Databáze Cosmos
-- App Service poplatky za razítko
+- Poplatek za kolek služby App Service
 
-Nákup rezervací v [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Rezervace zakoupíte na webu [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
 
-![Příklad zobrazení nákupu rezervací](./media/billing-monthly-payments-reservations/purchase-reservation.png)
+![Příklad ukazující nákup rezervací](./media/billing-monthly-payments-reservations/purchase-reservation.png)
 
-Při nákupu rezervací si můžete prohlédnout platební plán. Klikněte na **Zobrazit úplný platební plán**.
+Při nákupu rezervací můžete zobrazit platební kalendář. Klikněte na **Zobrazit úplný platební kalendář**.
 
-![Příklad znázorňující platební plán rezervací](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
+![Příklad ukazující platební kalendář rezervací](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
 
-Chcete-li zobrazit plán plateb po nákupu, vyberte rezervaci, klikněte na **ID objednávky rezervace**a pak klikněte na kartu **platby** .
+Pokud chcete zobrazit kalendář plateb po nákupu, vyberte rezervaci, klikněte na **ID objednávky rezervace** a pak klikněte na kartu **Platby**.
 
-## <a name="view-payments-made"></a>Zobrazit provedené platby
+## <a name="view-payments-made"></a>Zobrazení provedených plateb
 
-Můžete zobrazit platby vytvořené pomocí rozhraní API, data o využití a analýzy nákladů. U rezervací placených měsíčně se hodnota četnosti zobrazuje jako **opakovaná** v rozhraní API pro údaje o využití a za rezervované náklady. U rezervací placených předem je hodnota zobrazená jako **jednorázová**.
+Provedené platby můžete zobrazit pomocí rozhraní API, prostřednictvím dat o využití a v analýze nákladů. U měsíčně placených rezervací se hodnota četnosti zobrazuje v datech o využití a v rozhraní API poplatků za rezervaci jako **opakovaná**. U rezervací placených předem je tato hodnota zobrazená jako **jednorázová**.
 
-Analýza nákladů zobrazuje měsíční nákupy ve výchozím zobrazení. Použijte filtr **nákupu** pro **typ poplatků** a **Periodický** **pro zobrazení** všech nákupů. Chcete-li zobrazit pouze rezervace, použijte pro **rezervaci**filtr.
+Analýza nákladů zobrazuje měsíční nákupy ve výchozím zobrazení. Pokud chcete zobrazit všechny nákupy, nastavte filtr **Typ poplatku** na **nákup** a **Četnost** na **opakovaná**. Pokud chcete zobrazit jenom rezervace, nastavte filtr na **Rezervace**.
 
-![Příklad znázorňující náklady na nákup rezervací v analýze nákladů](./media/billing-monthly-payments-reservations/cost-analysis.png)
+![Příklad ukazující náklady na nákup rezervací v analýze nákladů](./media/billing-monthly-payments-reservations/cost-analysis.png)
 
-## <a name="switch-to-monthly-payments-at-renewal"></a>Přepnout na měsíční platby při obnovení
+## <a name="switch-to-monthly-payments-at-renewal"></a>Přechod na měsíční platby při prodloužení
 
-Po obnovení rezervace můžete změnit četnost fakturace na měsíčně.
+Když rezervaci prodlužujete, můžete změnit četnost fakturace na měsíční.
 
 ## <a name="exchange-and-refunds"></a>Výměna a refundace
 
-Podobně jako u jiných rezervací můžete vracet nebo vyměňovat rezervace zakoupené s měsíčním fakturací. V současné době můžete odeslat žádost o podporu a zahájit výměnu nebo refundaci pro rezervaci zakoupenou s měsíčním vyúčtováním.
+Podobně jako jiné rezervace můžete i rezervace zakoupené s měsíční fakturací vracet nebo vyměňovat. V současnosti můžete odeslat žádost o podporu a zahájit tak výměnu nebo refundaci pro rezervaci zakoupenou s měsíční fakturací.
 
-Když vyměňujete rezervaci, která je placená za měsíc, celkové náklady na nákup nového nákupu by měly být větší než zbyléé platby, které se pro vrácenou rezervaci zruší. Pro výměny nejsou k dispozici žádná další omezení ani poplatky. Můžete si vyměňovat rezervované platby, abyste si koupili novou rezervaci, která se účtuje měsíčně. Hodnota doby života nové rezervace by však měla být větší než poměrná hodnota vracené rezervace.
+Když vyměňujete měsíčně placenou rezervaci, celkové náklady na nový nákup by měly být větší než zbývající platby, které se pro vracenou rezervaci zruší. Pro výměny neexistují žádná další omezení ani poplatky. Předem placenou rezervaci si můžete vyměnit za nákup nové rezervace fakturované měsíčně. Celková hodnota nové rezervace by ale měla být větší než poměrná hodnota vracené rezervace.
 
-Pokud zrušíte rezervaci, která je vyplácena měsíčně, může společnost Microsoft použít poplatek za zrušení na budoucí potvrzené platby, které byly zrušeny. Zbývající potvrzené platby se budou započítávat k limitu refundace $50 000 USD.
+Pokud zrušíte měsíčně placenou rezervaci, může Microsoft za budoucí potvrzené platby, které jsou zrušeny, požadovat poplatek za zrušení. Zbývající potvrzené platby narůstají k limitu refundace 50 000 USD.
 
-Další informace o Exchangi a refundacích najdete v tématu [samoobslužné výměny a refundace pro Azure reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
+Další informace o výměně a refundacích najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
-Otázka: Nabízí Azure možnost částečných rezervací předem?<br>
-A. Ne. Vzhledem k tomu, že náklady na rezervace placené předem a měsíčně jsou stejné, Microsoft nepodporuje částečné platby předem.
+Otázka: Nabízí Azure možnost částečně předem placených rezervací?<br>
+Odpověď: Ne. Protože náklady na rezervace placené předem i na rezervace placené měsíčně jsou stejné, Microsoft nepodporuje částečné platby předem.
 
-Otázka: Jsou k dispozici měsíční platby pro Microsoft Cloud program poskytovatele řešení (CSP)?<br>
-A. Ano, partneři můžou zakoupit rezervace pro své zákazníky CSP v Azure Portal. Možnost nákupu rezervací s měsíčním účtováním není k dispozici v partnerském centru.
+Otázka: Jsou měsíční platby k dispozici pro program Microsoft Cloud Solution Provider (CSP)?<br>
+Odpověď: Ano, partneři můžou kupovat rezervace pro své zákazníky CSP na webu Azure Portal. Možnost nákupu rezervací s měsíční fakturací není v Partnerském centru k dispozici.
 
-Otázka: Jsem US Azure Government zákazníkem, můžu si za nákupy rezervací zaplatit měsíčně?<br>
-A. Momentálně ne.
+Otázka: Jsem zákazník služby Azure Government v USA. Můžu za nákupy rezervací platit měsíčně?<br>
+Odpověď: Momentálně ne.
 
-Otázka: Kdy je možné místo vytvoření lístku podpory na Azure Portal vyměnit nebo vrátit zpět?<br>
-A. Momentálně ne. Žádosti o výměnu a refundace s využitím měsíčních plateb jsou zpracovávány prostřednictvím podpory Azure.
+Otázka: Můžu výměnu nebo refundaci udělat přímo na webu Azure Portal – místo vytváření lístku podpory?<br>
+Odpověď: Momentálně ne. Žádosti o výměnu a refundaci rezervací s měsíčními platbami zpracovává podpora Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o rezervacích najdete v tématu [co jsou Azure reservations?](billing-save-compute-costs-reservations.md)
-- Další informace o úlohách, které byste měli provést před nákupem rezervace, najdete v tématu [určení správné velikosti virtuálních počítačů před nákupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy) .
+- Další informace o rezervacích najdete v tématu [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
+- Další informace o úlohách, které byste měli provést před nákupem rezervace, najdete v části o [určení správné velikosti virtuálního počítače před nákupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).

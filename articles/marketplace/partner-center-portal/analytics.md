@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993723"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036649"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
 
@@ -250,7 +250,7 @@ Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místn
 | Křestní jméno zákazníka| Zákazníka| Název zadaný zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka.| |
 | ID zákazníka | Zákazník, objednávka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných.|  |
 | Poštovní směrovací číslo zákazníka  | Zákazníka| Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka.| |
-| Stav zákazníka| Zákazníka| Stav (adresa) poskytovaný zákazníkem. Stav může být jiný než poslední název, který jste zadali v předplatném Azure zákazníka.| |
+| Stav zákazníka| Zákazníka| Stav (adresa) poskytovaný zákazníkem. Stav může být jiný než stav uvedený v předplatném Azure zákazníka.| |
 | Datum získání| Zákazníka| První datum, kdy si zákazník koupil jakoukoli nabídku publikovanou vámi| |
 | Datum ztráty| Zákazníka| Poslední datum, kdy zákazník zrušil poslední z předchozích nabídek, byl zakoupen.||
 | Je nový zákazník  | Pořadí| Tato hodnota identifikuje nového zákazníka, který získá jednu nebo více nabídek poprvé (nebo ne). Hodnota bude "Ano", pokud se nachází ve stejném kalendářním měsíci pro "datum získání". Pokud zákazník zakoupil nějaké nabídky před nahlášeným kalendářním měsícem, bude hodnota "ne". |

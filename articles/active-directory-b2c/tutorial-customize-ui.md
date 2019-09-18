@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849384"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063279"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
-Pro běžné uživatelské prostředí, jako je registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám pomůžou s postupem [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) těchto prostředí pomocí vlastních souborů HTML a CSS.
+Pro běžné uživatelské prostředí, jako je registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory B2C (Azure AD B2C). Informace v tomto kurzu vám pomůžou s postupem [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) těchto prostředí pomocí vlastních souborů HTML a CSS.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -43,7 +43,7 @@ Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístí
 I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
+2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
 3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
 4. Vyberte **Přidat**.
 5. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a pak klikněte na **OK**.
@@ -155,7 +155,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 
     ![Webový prohlížeč zobrazující přihlašovací stránku pro registraci nebo přihlášení s vlastními prvky uživatelského rozhraní](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak:
 

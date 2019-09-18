@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227130"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064185"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Pro vaše aplikace Azure Active Directory (Azure AD) B2C můžete přidat vlastní kód jazyka JavaScript na straně klienta. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
+Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní kód na straně klienta JavaScript. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
 
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).

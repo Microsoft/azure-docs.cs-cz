@@ -62,26 +62,6 @@ sections:
           - title: Pokročilé zabezpečení
             href: /azure/sql-database/sql-database-security-index
             html: <p>Zabezpečení vašich instancí a databází s využitím integrovaných funkcí zabezpečení databází Azure SQL<p>
-  - title: Nové funkce a funkce Preview
-    items:
-      - type: paragraph
-        text: 'Spravovanou instanci neustále vylepšujeme o nové funkce:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/sql-database/sql-database-instance-pools"> Fondy instancí</a> (Preview) – pohodlný a hospodárný způsob migrací menších instancí SQL do cloudu
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na hardwaru 5. generace</a>'
-          - html: 'Podpora pro předplatná s <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > měsíčním kreditem Azure pro předplatitele sady Visual Studio</a>'
-          - html: 'Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurace časového pásma</a> během vytváření instance'
-          - html: 'Vytváření instancí s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni serveru podle vaší volby</a>'
-          - html: 'Funkce geografického obnovení umožňující <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">obnovit databázi do jiného datového centra s využitím PowerShellu</a>'
-          - html: '<a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Opětovné vytvoření vyřazených databází s využitím PowerShellu</a> (Preview)'
-          - html: Ochrana spravovaných instancí pomocí <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované brány firewall</a>
-          - html: '<a href="https://aka.ms/managed-instance-tde-byok">Použití vlastních šifrovacích klíčů</a> při migraci místních databází, které mají povolené transparentní šifrování dat (Preview)'
-          - html: 'Použití <a href="https://aka.ms/managed-instance-failover-groups">geograficky distribuovaných skupin převzetí služeb při selhání</a> k uchování kopie instance v jiné oblasti a zajištění dostupnosti dat i v případě místní havárie (Preview)'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dnů</a> pro obnovení k určitému bodu v čase (Upozorňujeme, že dlouhodobé uchovávání záloh (až 10 let) ještě není aktivované, takže jako alternativu můžete využít <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">zálohování pouhým kopírováním</a>.)'
-          - html: 'Vytvoření <a href="https://aka.ms/managed-instance-aadlogins">objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> s využitím <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>'
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph

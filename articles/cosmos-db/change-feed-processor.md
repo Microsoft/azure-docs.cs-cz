@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018788"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073690"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -95,5 +95,6 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled kanálu změn](change-feed.md)
+* [Postup migrace z knihovny Change feed Processor](how-to-migrate-from-change-feed-library.md)
 * [Použití Estimator kanálu změn](how-to-use-change-feed-estimator.md)
 * [Změna počátečního času procesoru kanálu](how-to-configure-change-feed-start-time.md)

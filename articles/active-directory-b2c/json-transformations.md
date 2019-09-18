@@ -1,6 +1,6 @@
 ---
-title: JSON deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
-description: JSON deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
+title: Příklady transformací deklarací JSON pro schéma architektury prostředí identity Azure Active Directory B2C | Microsoft Docs
+description: Příklady transformací deklarací JSON pro schéma rozhraní Azure Active Directory B2C prostředí identity
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,30 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff70b2f54304c83f70ff578e1947d752aafb34a7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510752"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064167"
 ---
-# <a name="json-claims-transformations"></a>JSON deklarace identity transformace
+# <a name="json-claims-transformations"></a>Transformace deklarací JSON
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady použití transformace deklarací JSON schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití transformací deklarací JSON schématu rozhraní identity Experience schématu v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
-Získejte Zadaný prvek z dat JSON.
+Získá zadaný element z dat JSON.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | ClaimTypes, které jsou používány transformace deklarací identity k získání položky. |
-| InputParameter | claimToExtract | string | Název elementu JSON, který chcete extrahovat. |
-| outputClaim | extractedClaim | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity v zadaná hodnota elementu _claimToExtract_ vstupního parametru. |
+| InputClaim | inputJson | řetězec | ClaimTypes, které jsou používány transformací deklarací k získání položky. |
+| InputParameter | claimToExtract | řetězec | název elementu JSON, který se má extrahovat. |
+| OutputClaim | extractedClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, hodnota prvku zadaná ve vstupním parametru _claimToExtract_ . |
 
-V následujícím příkladu se extrahují transformace deklarací identity `emailAddress` element z JSON data: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+V následujícím příkladu transformace deklarací extrakci `emailAddress` prvek z dat JSON:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```XML
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -49,30 +49,30 @@ V následujícím příkladu se extrahují transformace deklarací identity `ema
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputJson**: {"email": "someone@example.com", "displayName": "Uživatel"}
+  - **inputJson**: {"EmailAddress": "someone@example.com", "DisplayName": "Někdo"}
 - Vstupní parametr:
-    - **claimToExtract**: emailAddress
-- Výstupní deklarace identit: 
-  - **extractedClaim**: someone@example.com
+    - **claimToExtract**: EmailAddress
+- Deklarace výstupů:
+  - **extractedClaim**:someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 
-Získání seznamu sad zadané elementy z dat Json.
+Získá seznam zadaných elementů z dat JSON.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | string | ClaimTypes, které používají deklarace identity transformace získat deklarace identity. |
-| InputParameter | errorOnMissingClaims | Boolean | Určuje, jestli se má vyvolat chybu, pokud chybí jedna z deklarací. |
-| InputParameter | includeEmptyClaims | string | Určete, zda obsahují prázdné deklarace. |
-| InputParameter | jsonSourceKeyName | string | Název klíče – element |
-| InputParameter | jsonSourceValueName | string | Hodnota názvu elementu |
-| outputClaim | Kolekce | řetězec, int, logická hodnota a datum a čas |Seznam deklarací identity k extrakci. Název deklarace by měl být roven zadanému v _jsonSourceClaim_ vstupní deklaraci identity. |
+| InputClaim | jsonSourceClaim | řetězec | ClaimTypes, které jsou používány transformací deklarací k získání deklarací identity. |
+| InputParameter | errorOnMissingClaims | boolean | Určuje, zda má být vyvolána chyba, pokud chybí jedna z deklarací. |
+| InputParameter | includeEmptyClaims | řetězec | Určete, jestli se mají zahrnout prázdné deklarace identity. |
+| InputParameter | jsonSourceKeyName | řetězec | Název klíče elementu |
+| InputParameter | jsonSourceValueName | řetězec | Název hodnoty prvku |
+| OutputClaim | Collection | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
 
-V následujícím příkladu transformace deklarací identity extrahuje následující deklarace: e-mailu (řetězec), displayName (řetězec), membershipNum (int), aktivní (logická hodnota) a datum narození (datetime) z dat JSON.
+V následujícím příkladu transformace deklarací extrahuje následující deklarace: e-mail (String), DisplayName (String), membershipNum (int), Active (Boolean) a DatumNarození (DateTime) z dat JSON.
 
 ```JSON
 [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
@@ -97,38 +97,38 @@ V následujícím příkladu transformace deklarací identity extrahuje následu
     <OutputClaim ClaimTypeReferenceId="birthdate" />
   </OutputClaims>
 </ClaimsTransformation>
-```    
+```
 
 - Vstupní deklarace identity:
   - **jsonSourceClaim**: [{"klíče": "email", "value": "someone@example.com"}, {"klíče": "displayName", "value": "Uživatel"}, {"klíče": "membershipNum", "value": 6353399}, {"klíče": "aktivní", "value": true}, {"klíče": "datum narození", "value": "1980-09-23T00:0 0:00Z"}]
 - Vstupní parametry:
     - **errorOnMissingClaims**: false
     - **includeEmptyClaims**: false
-    - **jsonSourceKeyName**: key
+    - **jsonSourceKeyName**: klíč
     - **jsonSourceValueName**: hodnota
-- Výstupní deklarace identit:
-  - **e-mailu**: "someone@example.com"
-  - **displayName**: "Uživatel"
+- Deklarace výstupů:
+  - **e-mail**: "someone@example.com"
+  - **displayName**: Uživatelé
   - **membershipNum**: 6353399
   - **aktivní**: true
   - **Datum narození**: 1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
-Získá Zadaný prvek číselné (dlouhé) z dat JSON.
+Získá zadaný numerický (dlouhý) prvek z dat JSON.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | ClaimTypes, které používají deklarace identity transformace získat deklarace identity. |
-| InputParameter | claimToExtract | string | Název elementu JSON, který chcete extrahovat. |
-| outputClaim | extractedClaim | long | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation, název elementu zadali v _claimToExtract_ vstupní parametry. |
+| InputClaim | inputJson | řetězec | ClaimTypes, který se používá při transformaci deklarací k získání deklarace identity. |
+| InputParameter | claimToExtract | řetězec | Název elementu JSON, který se má extrahovat. |
+| OutputClaim | extractedClaim | long | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformationu, hodnota elementu zadaná ve vstupních parametrech _claimToExtract_ . |
 
-V následujícím příkladu, extrahuje transformace deklarací identity `id` element z dat JSON.
+V následujícím příkladu transformace deklarací extrahuje `id` prvek z dat JSON.
 
 ```JSON
 {
-    "emailAddress": "someone@example.com", 
-    "displayName": "Someone", 
+    "emailAddress": "someone@example.com",
+    "displayName": "Someone",
     "id" : 6353399
 }
 ```
@@ -147,25 +147,25 @@ V následujícím příkladu, extrahuje transformace deklarací identity `id` el
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputJson**: {"email": "someone@example.com", "displayName": "Uživatel", "id": 6353399}
+  - **inputJson**: {"EmailAddress": "someone@example.com", "DisplayName": "Někdo", "ID": 6353399}
 - Vstupní parametry
-    - **claimToExtract**: id
-- Výstupní deklarace identit: 
+    - **claimToExtract**: ID
+- Deklarace výstupů:
     - **extractedClaim**: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
-Získá první prvek z pole data JSON.
+Získá první prvek z datového pole JSON.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | string | ClaimTypes, které jsou používány transformace deklarací identity k získání položky z pole JSON. |
-| outputClaim | extractedClaim | string | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation, první prvek v poli JSON. |
+| InputClaim | inputJsonClaim | řetězec | ClaimTypes, který se používá při transformaci deklarací k získání položky z pole JSON. |
+| OutputClaim | extractedClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation, první prvek v poli JSON. |
 
-V následujícím příkladu transformace deklarací identity extrahuje první prvek (e-mailovou adresu) z pole JSON `["someone@example.com", "Someone", 6353399]`.
+V následujícím příkladu transformace deklarací extrahuje první prvek (e-mailová adresa) z pole `["someone@example.com", "Someone", 6353399]`JSON.
 
 ```XML
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -178,21 +178,21 @@ V následujícím příkladu transformace deklarací identity extrahuje první p
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputJsonClaim**: ["someone@example.com", "Uživatel", 6353399]
-- Výstupní deklarace identit: 
-  - **extractedClaim**: someone@example.com
+  - **inputJsonClaim**: ["someone@example.com", "někoho", 6353399]
+- Deklarace výstupů:
+  - **extractedClaim**:someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
-Převede XML data do formátu JSON.
+Převede data XML do formátu JSON.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | string | ClaimTypes, které používají deklarace identity transformace převést data ze souboru XML do formátu JSON. |
-| outputClaim | json | string | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation, data ve formátu JSON. |
+| InputClaim | xml | řetězec | ClaimTypes, které jsou používány transformací deklarací k převodu dat z formátu XML na formát JSON. |
+| OutputClaim | json | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformationu, data ve formátu JSON. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
@@ -205,10 +205,10 @@ Převede XML data do formátu JSON.
 </ClaimsTransformation>
 ```
 
-Transformace deklarací identity v následujícím příkladu se převede následující data XML do formátu JSON.
+V následujícím příkladu transformace deklarací převede následující data XML do formátu JSON.
 
-#### <a name="example"></a>Příklad:
-Vstupní deklaraci identity:
+#### <a name="example"></a>Příklad
+Vstupní deklarace identity:
 
 ```XML
 <user>
@@ -217,7 +217,7 @@ Vstupní deklaraci identity:
 </user>
 ```
 
-Výstupní deklarací:
+Výstupní deklarace identity:
 
 ```JSON
 {

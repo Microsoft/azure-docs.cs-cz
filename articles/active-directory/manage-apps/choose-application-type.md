@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424251"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056065"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Výběr typu aplikace při přidávání aplikace v Azure Active Directory
 
@@ -45,7 +45,7 @@ Některé z předchozích čtyř typů aplikací v Azure AD podporují následuj
 
 - **Rychlý Start** – rychlé zprovoznění aplikací pomocí [jednoduchých kroků nasazení](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
 
-- **Správa obecných vlastností** – získat [přímý](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) odkaz na aplikaci, [přizpůsobit značku](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) aplikace nebo [Zakázat aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) pro všechny uživatele.
+- **Správa obecných vlastností** – získáte [přímý přímý odkaz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) na aplikaci, [přizpůsobení značky](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) aplikace nebo [zakázání aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) pro všechny uživatele.
 
 - **Správa uživatelů a skupin** – [přiřazení](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) nebo [Odebrání](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) uživatelů a skupin k aplikaci a volitelně přiřazení konkrétních aplikačních rolí, ke kterým mají tito uživatelé a skupiny přístup
 
@@ -63,7 +63,7 @@ Některé z předchozích čtyř typů aplikací v Azure AD podporují následuj
 
 V následující tabulce jsou popsány různé režimy jednotného přihlašování a zřizování podporované každým z předchozích typů aplikací. Tato tabulka vám pomůže pochopit, kterou aplikaci potřebujete přidat k podpoře konkrétního cíle.
 
-  ![Tabulka: Různé režimy jednotného přihlašování a zřizování, které podporuje každý typ aplikace](./media/choose-application-type/table1.png)
+  ![Stolní Různé režimy jednotného přihlašování a zřizování, které podporuje každý typ aplikace](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Jak zvolit režim jednotného přihlašování
 
@@ -71,16 +71,16 @@ Níže jsou uvedené podporované režimy **jednotného přihlašování** pro a
 
 - **Jednotné přihlašování Azure AD** – Pokud ještě nejste připraveni k integraci této aplikace s jednotným přihlašováním pomocí Azure AD, vyberte **režim** jednotného PŘIhlašování v Azure AD.
 
-- **Propojené** přihlašování – Pokud máte aplikaci [](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) , která je už připojená k existujícímu řešení jednotného přihlašování, vyberte **režim jednotného přihlašování** , pokud máte aplikaci, která už je propojená s existujícím řešením jednotného přihlašování, nebo pokud chcete jenom publikovat jednoduchý odkaz pro uživatele v jejich [ Panel pro přístup k aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) nebo [spouštěč aplikací Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+- **Propojené** [přihlašování –](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) Pokud máte aplikaci, která je už připojená k existujícímu řešení jednotného přihlašování, vyberte **režim jednotného přihlašování** , pokud máte aplikaci, která už je propojená s existujícím řešením jednotného přihlašování, nebo pokud chcete jenom publikovat jednoduchý odkaz pro uživatele v jejich [ Panel pro přístup k aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) nebo [spouštěč aplikací Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
-- **Přihlašování založené** na heslech – Pokud vaše aplikace vykreslí pole uživatelské jméno a heslo ve formátu HTML a chcete bezpečně uložit uživatelské jméno a heslo, aby bylo možné je [znovu](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) přehrát do, vyberte **režim jednotného přihlašování** založený na heslech. aplikace později
+- **Přihlašování založené na heslech** – Pokud vaše aplikace vykreslí pole uživatelské jméno a heslo ve formátu HTML a chcete bezpečně uložit uživatelské jméno a heslo, aby bylo možné je [znovu](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) přehrát do, vyberte **režim jednotného přihlašování** založený na heslech. aplikace později
 
 - **Přihlašování založené na SAML** – vyberte režim jednotného přihlašování [založený na SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) , pokud vaše aplikace podporuje protokoly SAML nebo OpenID Connect, nebo chcete, aby bylo možné mapovat uživatele na konkrétní aplikační role na základě pravidel definovaných ve vašem SAML. podpory
 
   >[!NOTE]
   >Tato možnost není k dispozici, pokud je proxy aplikace nakonfigurován pro aplikaci.
 
-- **Přihlášení založené** na hlavičkách – Pokud máte aplikaci využívající PingAccess, která podporuje ověřování založené na hlavičkách http, u kterého chcete provést jednotné přihlašování, vyberte tuto hlavičku jednotného přihlašování [založené](application-proxy-configure-single-sign-on-with-ping-access.md) na hlavičkách.
+- **Přihlášení založené na hlavičkách** – Pokud máte aplikaci využívající PingAccess, která podporuje ověřování založené na hlavičkách http, u kterého chcete provést jednotné přihlašování, vyberte tuto hlavičku jednotného přihlašování [založené na hlavičkách](application-proxy-configure-single-sign-on-with-ping-access.md) .
 
   >[!NOTE]
   >Tato možnost je dostupná jenom v případě, že proxy aplikace a PingAccess jsou nakonfigurované pro aplikaci.
@@ -121,12 +121,9 @@ Chcete-li nastavit režim jednotného přihlašování aplikace, postupujte podl
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>Jak zvolit režim zřizování
 
-- **Ruční zřizování** – Pokud máte existující [](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) účty nebo chcete spravovat účty pro tuto aplikaci mimo Azure AD, vyberte režim ručního zřizování.
+- **Ruční zřizování** – Pokud máte existující účty nebo chcete spravovat účty pro tuto aplikaci mimo Azure AD, vyberte režim [ručního](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) zřizování.
 
 - **Automatické zřizování** – vyberte režim [automatického](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **zřizování** , pokud chcete povolit Automatické zřizování na základě rozhraní API a/nebo zrušení zřizování uživatelských účtů pro tuto aplikaci. 
-
-  >[!NOTE]
-  >Tato možnost je dostupná jenom pro aplikace v rámci **vybrané** kategorie [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
 
 - **Automatické zřizování založené na SCIM** – pomocí [automatického zřizování založeného na SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) , pokud vaše aplikace podporuje protokol SCIM pro zjišťování změn uživatelů a skupin, které se automaticky generují pro změny v jakékoli integrované aplikaci s Azure AD 
 

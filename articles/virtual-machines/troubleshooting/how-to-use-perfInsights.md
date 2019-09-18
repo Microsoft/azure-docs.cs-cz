@@ -4,7 +4,7 @@ description: Naučte se používat PerfInsights k řešení problémů s výkone
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eace9c196ebd9f71b7a6f2bac7a59f581e6f313f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090461"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058180"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -191,7 +191,7 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
 
 1. Stáhněte si soubor [PerfInsights. zip](https://aka.ms/perfinsightsdownload).
 
-2. Odblokujte soubor PerfInsights. zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights. zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte Odblokovat a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
+2. Odblokujte soubor PerfInsights. zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights. zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte **odblokovat**a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
 
     ![Snímek obrazovky s vlastnostmi PerfInsights se zvýrazněným odblokem](media/how-to-use-perfInsights/pi-unlock-file.png)
 
@@ -262,7 +262,7 @@ Přečtěte si doporučení a odkazy pro všechna vysoká a střední zjištěn�
 
 ### <a name="storage-tab"></a>Karta úložiště
 
-V části nálezy se zobrazují různé závěry a doporučení týkající se úložiště.
+V části **nálezy** se zobrazují různé závěry a doporučení týkající se úložiště.
 
 Oddíly **Mapa disku** a **Mapa svazků** popisují, jak se vzájemně souvisí logické svazky a fyzické disky.
 

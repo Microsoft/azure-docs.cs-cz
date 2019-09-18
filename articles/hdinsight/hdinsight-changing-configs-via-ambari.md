@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7261aad8f42168449f2c892fe8aaaa6667964654
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934652"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076965"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurací clusteru HDInsight pomocí Apache Ambari
 
@@ -23,7 +23,7 @@ HDInsight poskytuje [Apache Hadoop](https://hadoop.apache.org/) clusterů pro ap
 
 Přihlaste se k `https://CLUSTERNAME.azurehdidnsight.net` Ambari s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled.
 
-![Řídicí panel Ambari](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
+![Zobrazuje se řídicí panel uživatele Apache Ambari](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 Webové uživatelské rozhraní Ambari lze použít ke správě hostitelů, služeb, výstrah, konfigurací a zobrazení. Ambari se nedá použít k vytvoření clusteru HDInsight, upgradu služeb, správě zásobníků a verzí, vyřazení hostitelů nebo přeřazení z provozu nebo k přidání služeb do clusteru.
 
@@ -31,25 +31,25 @@ Webové uživatelské rozhraní Ambari lze použít ke správě hostitelů, slu�
 
 Nastavení konfigurace pomůžou ladit konkrétní službu. Chcete-li upravit nastavení konfigurace služby, vyberte službu na postranním panelu **služby** (vlevo) a pak přejděte na kartu **Konfigurace** na stránce s podrobnostmi o službě.
 
-![Boční panel služeb](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
+![Boční panel služeb Apache Ambari Services](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Úprava velikosti haldy Java NameNode
 
-Velikost haldy Java NameNode závisí na mnoha faktorech, jako je zatížení clusteru, počet souborů a počet bloků. Výchozí velikost 1 GB funguje ve většině clusterů, i když některé úlohy můžou vyžadovat více nebo méně paměti. 
+Velikost haldy Java NameNode závisí na mnoha faktorech, jako je zatížení clusteru, počet souborů a počet bloků. Výchozí velikost 1 GB funguje ve většině clusterů, i když některé úlohy můžou vyžadovat více nebo méně paměti.
 
 Úprava velikosti haldy NameNode Java:
 
 1. Z bočního panelu služeb vyberte **HDFS** a přejděte na kartu **Konfigurace** .
 
-    ![Konfigurace HDFS](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
+    ![Konfigurace Apache Ambari HDFS](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. Najděte nastavení **Velikost haldy Java NameNode**. K zadání a vyhledání konkrétního nastavení můžete použít také textové pole **Filtr** . Vyberte ikonu **pera** vedle názvu nastavení.
 
-    ![Velikost haldy Java NameNode](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
+    ![Velikost haldy pro Apache Ambari NameNode Java](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Do textového pole zadejte novou hodnotu a stisknutím klávesy **ENTER** změny uložte.
 
-    ![Upravit size1 haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
+    ![Ambari upravit NameNode haldy Java size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. Velikost haldy Java NameNode se změní na 1 GB ze 2 GB.
 
@@ -57,7 +57,7 @@ Velikost haldy Java NameNode závisí na mnoha faktorech, jako je zatížení cl
 
 1. Uložte změny kliknutím na zelené tlačítko **Uložit** v horní části obrazovky konfigurace.
 
-    ![Uložit změny](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    ![Ambari Ambari Uložit konfigurace](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Optimalizace Apache Hive
 
@@ -72,11 +72,11 @@ Podregistr poskytuje dva spouštěcí moduly: [Apache Hadoop MapReduce](https://
 
 1. Na kartě **Konfigurace** podregistru zadejte **spouštěcí modul** do pole Filtr.
 
-    ![Spouštěcí modul hledání](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
+    ![Spouštěcí modul hledání Apache Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. Výchozí hodnota vlastnosti **optimalizace** je **tez**.
 
-    ![Optimalizace – tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
+    ![Optimalizace – modul Apache Tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Ladit mapovače
 
@@ -93,8 +93,8 @@ Pokud třeba chcete nastavit čtyři úlohy mapovače pro velikost dat 128 MB, n
 
 1. Nastavte oba parametry na **33 554 432** bajtů (32 MB).
 
-    ![Velikosti seskupení tez](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
- 
+    ![Velikosti seskupení tez Apache Ambari](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
+
 Tyto změny mají vliv na všechny úlohy tez napříč serverem. Chcete-li získat optimální výsledek, vyberte příslušné hodnoty parametrů.
 
 ### <a name="tune-reducers"></a>Vyladění reduktorů
@@ -109,11 +109,11 @@ Ve výchozím nastavení je tento příklad 4 reduktorů.
 
 1. Chcete-li změnit parametr, přejděte na kartu **Konfigurace** podregistru a na stránce nastavení vyhledejte parametr **data na omezení** .
 
-    ![Data na zmenšení](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
- 
+    ![Data Apache Ambari na zmenšení](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
+
 1. Vyberte **Upravit** pro úpravu hodnoty na 128 MB (134 217 728 bajtů) a pak stiskněte **ENTER** pro uložení.
 
-    ![Data na redukci – upraveno](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
+    ![Ambari data na redukci – upraveno](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     Při zadání velikosti 1 024 MB s 128 MB dat na redukci je 8 reduktorů (1024/128).
 
@@ -123,22 +123,21 @@ Ve výchozím nastavení je tento příklad 4 reduktorů.
 
 Dotaz na podregistr se spustí v jedné nebo několika fázích. Pokud je možné nezávislé fáze spustit paralelně, což zvýší výkon dotazů.
 
-1.  Chcete-li povolit paralelní provádění dotazů, přejděte na kartu **Konfigurace** podregistru a vyhledejte `hive.exec.parallel` vlastnost. Výchozí hodnota je false. Změňte hodnotu na true a potom stisknutím klávesy **ENTER** hodnotu uložte.
- 
-1.  Chcete-li omezit počet úloh, které mají být spuštěny paralelně, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
+1. Chcete-li povolit paralelní provádění dotazů, přejděte na kartu **Konfigurace** podregistru a vyhledejte `hive.exec.parallel` vlastnost. Výchozí hodnota je false. Změňte hodnotu na true a potom stisknutím klávesy **ENTER** hodnotu uložte.
 
-    ![Podregistr exec Parallel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
+1. Chcete-li omezit počet úloh, které mají být spuštěny paralelně, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
 
+    ![Apache Hive exec paralelní zobrazení](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 ### <a name="enable-vectorization"></a>Povolit vektorování
 
 Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregistr za účelem zpracování dat v blocích 1 024 řádků, nikoli v jednom řádku. Vektory lze použít pouze pro formát souboru ORC.
 
 1. Chcete-li povolit vektorové provádění dotazů, přejděte na kartu **Konfigurace** podregistru a vyhledejte `hive.vectorized.execution.enabled` parametr. Výchozí hodnota je true pro podregistr 0.13.0 nebo novější.
- 
+
 1. Chcete-li povolit `hive.vectorized.execution.reduce.enabled` parametrizované spouštění pro možnost zmenšení dotazu, nastavte parametr na hodnotu true. Výchozí hodnota je false.
 
-    ![Vykonání vektorového podregistru](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
+    ![Apache Hive vektorové spuštění](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
 ### <a name="enable-cost-based-optimization-cbo"></a>Povolit optimalizaci na základě nákladů (CBO)
 
@@ -146,7 +145,7 @@ Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jed
 
 Pokud chcete povolit CBO, přejděte na kartu **Konfigurace** podregistru a vyhledejte `parameter hive.cbo.enable`a pak přepněte přepínací tlačítko na **zapnuto**.
 
-![CBO konfigurace](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
+![Optimalizátor založený na cenách HDInsight](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Následující dodatečné parametry konfigurace zvyšují výkon dotazů na podregistr, pokud je povolená možnost CBO:
 
@@ -154,13 +153,13 @@ Následující dodatečné parametry konfigurace zvyšují výkon dotazů na pod
 
     Při nastavení na hodnotu true používá podregistr ve svých metastore statistiku k zodpovězení jednoduchých dotazů `count(*)`, jako je.
 
-    ![Statistiky CBO](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
+    ![Apache Hive výpočetní dotaz s použitím statistik](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
 
 * `hive.stats.fetch.column.stats`
 
     Statistiky sloupce se vytvoří, když je povolený CBO. Pro optimalizaci dotazů používá podregistr statistiku sloupce, které jsou uložené v metastore. Načtení statistiky sloupců pro každý sloupec trvá déle, pokud je počet sloupců vysoký. Když se nastaví na false, toto nastavení zakáže načítání statistik sloupce z metastore.
 
-    ![Statistiky podregistru sady statistik](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
+    ![Statistiky sloupce Apache Hive sady statistik](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
 
 * `hive.stats.fetch.partition.stats`
 
@@ -206,7 +205,7 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
 
     e. Klikněte na **Přidat**.
 
-    ![Vlastní vlastnost podregistru](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    ![Přidat vlastní vlastnost Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
     Tím se zkomprimuje mezilehlé soubory pomocí přichycení. Po přidání této vlastnosti se tato vlastnost zobrazí v podokně vlastní podregistr-Web.
 
@@ -221,7 +220,7 @@ Konečný výstup podregistru je také možné zkomprimovat.
 
 1. Chcete-li zvolit výstupní Kompresní kodek, přidejte `mapred.output.compression.codec` vlastní vlastnost do podokna vlastní web podregistr, jak je popsáno v kroku 3 v předchozí části.
 
-    ![Vlastní vlastnost podregistru](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
+    ![Add2 vlastní vlastnosti Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
 ### <a name="enable-speculative-execution"></a>Povolit spekulativní provádění
 
@@ -240,9 +239,9 @@ Podregistr umožňuje vytvářet dynamické oddíly při vkládání záznamů d
 1. Pro dynamické oddíly v `hive.exec.dynamic.partition` podregistru by měla být hodnota parametru true (výchozí).
 
 1. Změňte režim dynamického oddílu na *stricted*. V přísném režimu musí být alespoň jeden oddíl statický. To zabraňuje dotazům bez filtru oddílů v klauzuli WHERE, což znamená, že metoda *Strict* brání dotazům, které kontrolují všechny oddíly. Přejděte na kartu **Konfigurace** podregistru a nastavte na hodnotu `hive.exec.dynamic.partition.mode` **Strict**. Výchozí hodnota je **nestriktní**.
- 
+
 1. Chcete-li omezit počet dynamických oddílů, které mají být vytvořeny, `hive.exec.max.dynamic.partitions` upravte parametr. Výchozí hodnota je 5000.
- 
+
 1. Chcete-li omezit celkový počet dynamických oddílů na uzel, upravte `hive.exec.max.dynamic.partitions.pernode`. Výchozí hodnota je 2000.
 
 ### <a name="enable-local-mode"></a>Povolit místní režim
@@ -251,7 +250,7 @@ Místní režim umožňuje, aby podregistr prováděl všechny úlohy úlohy na 
 
 Chcete-li povolit místní režim, `hive.exec.mode.local.auto` přidejte parametr do panelu vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
 
-![Místní režim automatického režimu exec pro podregistr](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
+![Místní auto v režimu Apache Hive exec](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
 ### <a name="set-single-mapreduce-multigroup-by"></a>Nastavit jeden MapReduce pro více skupin podle
 
@@ -297,8 +296,8 @@ Vlastnosti pro [Apache prasete](https://pig.apache.org/) se dají upravit z webo
 
 1. V pravém horním rohu okna vyberte **Uložit** a uložte novou hodnotu. Některé vlastnosti mohou vyžadovat restartování služby.
 
-    ![Pokročilý prasečí – vlastnosti](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
- 
+    ![Rozšířené vlastnosti vepřového prasete pro Apache](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
+
 > [!NOTE]  
 > Všechna nastavení na úrovni relace přepíšou hodnoty vlastností v `pig.properties` souboru.
 
@@ -310,7 +309,6 @@ Ke spouštění skriptů prasete jsou k dispozici dva spouštěcí moduly: MapRe
 
 1. Výchozí hodnota je **MapReduce**. Změňte ji na **tez**.
 
-
 ### <a name="enable-local-mode"></a>Povolit místní režim
 
 Podobně jako u podregistru se používá místní režim k urychlení úloh s relativně menšími objemy dat.
@@ -318,7 +316,6 @@ Podobně jako u podregistru se používá místní režim k urychlení úloh s r
 1. Pokud chcete povolit místní režim, nastavte `pig.auto.local.enabled` na **true**. Výchozí hodnota je false.
 
 1. Úlohy, jejichž velikost vstupních dat je menší než `pig.auto.local.input.maxbytes` hodnota vlastnosti, se považují za malé úlohy. Výchozí hodnota je 1 GB.
-
 
 ### <a name="copy-user-jar-cache"></a>Kopírovat mezipaměť jar uživatele
 
@@ -328,7 +325,6 @@ Prase kopíruje soubory JAR vyžadované UDF do distribuované mezipaměti a zp�
 
 1. Chcete-li nastavit základní cestu jar uložených v mezipaměti, `pig.user.cache.location` nastavte na základní cestu. Výchozí hodnota je `/tmp`.
 
-
 ### <a name="optimize-performance-with-memory-settings"></a>Optimalizace výkonu s nastavením paměti
 
 Následující nastavení paměti může přispět k optimalizaci výkonu skriptu prasete.
@@ -336,7 +332,6 @@ Následující nastavení paměti může přispět k optimalizaci výkonu skript
 * `pig.cachedbag.memusage`: Množství paměti přidělené kontejneru. Penalta je kolekce řazených kolekcí členů. Řazená kolekce členů je uspořádaná sada polí a pole je částí dat. Pokud jsou data v kontejneru mimo přidělenou paměť, přechází na disk. Výchozí hodnota je 0,2, která představuje 20 procent dostupné paměti. Tato paměť se sdílí napříč všemi penaltami v aplikaci.
 
 * `pig.spill.size.threshold`: Penalty větší než tato prahová hodnota velikosti pro přesahy (v bajtech) se přecházejí na disk. Výchozí hodnota je 5 MB.
-
 
 ### <a name="compress-temporary-files"></a>Komprimovat dočasné soubory
 
@@ -350,16 +345,13 @@ Při provádění úlohy vygeneruje prase dočasné soubory. Při komprimaci do�
 
 Pokud je povoleno, malé soubory jsou zkombinovány pro méně úlohy mapy. Tím se zlepší efektivita úloh s mnoha malými soubory. Pokud ho chcete povolit `pig.noSplitCombination` , nastavte na true. Výchozí hodnota je false.
 
-
 ### <a name="tune-mappers"></a>Ladit mapovače
 
 Počet mapovačů je řízen úpravou vlastnosti `pig.maxCombinedSplitSize`. Určuje velikost dat, která mají být zpracována jednou mapou úlohy. Výchozí hodnota je výchozí velikost bloku systému souborů. Zvýšení této hodnoty vede ke snížení počtu úloh mapovače.
 
-
 ### <a name="tune-reducers"></a>Vyladění reduktorů
 
 Počet reduktorů se vypočítá na základě parametru `pig.exec.reducers.bytes.per.reducer`. Parametr určuje počet zpracovaných bajtů na redukci, ve výchozím nastavení 1 GB. Chcete-li omezit maximální počet reduktorů, nastavte `pig.exec.reducers.max` vlastnost ve výchozím nastavení 999.
-
 
 ## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Optimalizace pro Apache HBA s webovým uživatelským rozhraním Ambari
 
@@ -373,8 +365,7 @@ Velikost haldy HBA určuje maximální velikost haldy, která bude použita v me
 
 1. Změňte výchozí hodnotu na 5 000 MB.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
-
+    ![Velikost haldy Ambari HBA paměti Apache](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 ### <a name="optimize-read-heavy-workloads"></a>Optimalizace úloh pro čtení a vysoké zatížení
 
@@ -386,10 +377,9 @@ Bloková mezipaměť je mezipaměť pro čtení. Jeho velikost je ovládána `hf
 
 1. Chcete-li tento parametr změnit, přejděte na kartu **Nastavení** na kartě **Konfigurace** HBA a pak vyhledejte **% z RegionServer přidělených pro vyrovnávací paměti pro čtení**.
 
-    ![Velikost mezipaměti bloků HBA](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
- 
-1. Chcete-li změnit hodnotu, vyberte ikonu **Upravit** .
+    ![Velikost mezipaměti bloků paměti Apache HBA](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
 
+1. Chcete-li změnit hodnotu, vyberte ikonu **Upravit** .
 
 #### <a name="memstore-size"></a>Velikost setSize paměťového úložiště
 
@@ -401,30 +391,26 @@ Všechny úpravy jsou uloženy v vyrovnávací paměti, která se označuje jako
 
 Pro optimalizaci pro náhodná čtení můžete snížit horní a dolní limit setSize paměťového úložiště.
 
-
 #### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Počet řádků načtených při kontrole z disku
 
 Nastavení definuje počet řádků načtených z disku `next` při volání metody na skeneru. `hbase.client.scanner.caching`  Výchozí hodnota je 100. Čím vyšší je počet vzdálených volání z klienta na server oblasti, což vede k rychlejšímu prověřování. Tím se ale taky zvýší tlak paměti na klientovi.
 
-![Počet načtených řádků HBA](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
+![Apache HBA počet načtených řádků](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
 > Nenastavujte hodnotu tak, aby čas mezi voláním další metody na skeneru byl větší než časový limit skeneru. Doba trvání časového limitu skeneru je `hbase.regionserver.lease.period` definována vlastností.
-
 
 ### <a name="optimize-write-heavy-workloads"></a>Optimalizace náročných úloh pro zápis
 
 Následující konfigurace jsou důležité pro zlepšení výkonu náročných úloh.
 
-
 #### <a name="maximum-region-file-size"></a>Maximální velikost souboru oblasti
 
 HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost `hbase.hregion.max.filesize` definuje velikost jednoho HFile pro oblast.  Oblast je rozdělena do dvou oblastí, pokud je součet všech HFiles v oblasti větší než toto nastavení.
- 
-![HBA HRegion Max velikost souboru](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+
+![Apache HBA HRegion Max velikost souboru](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
 Čím větší je velikost souboru oblasti, tím menší je počet rozdělení. Velikost souboru můžete zvětšit a určit tak hodnotu, která bude mít za následek maximální výkon zápisu.
-
 
 #### <a name="avoid-update-blocking"></a>Vyhnout se blokování aktualizací
 
@@ -436,20 +422,17 @@ HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost 
 
     S výchozími hodnotami velikosti vyprázdnění a násobitele bloku jsou aktualizace zablokované, pokud setSize paměťového úložiště je 128 × 4 = 512 MB. Chcete-li snížit počet blokování aktualizací, zvyšte hodnotu `hbase.hregion.memstore.block.multiplier`.
 
-![Multiplikátor bloku pro oblasti HBA](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
-
+![Multiplikátor bloku oblasti Apache HBA](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 ### <a name="define-memstore-size"></a>Definovat velikost setSize paměťového úložiště
 
 Velikost setSize paměťového úložiště je definována `hbase.regionserver.global.memstore.UpperLimit` parametry a. `hbase.regionserver.global.memstore.LowerLimit` Nastavení těchto hodnot je stejné jako u každého dalšího, při zápisu dojde k pozastavení, což také způsobuje častější vyprazdňování a vede k vyššímu výkonu zápisu.
 
-
 ### <a name="set-memstore-local-allocation-buffer"></a>Nastavit místní vyrovnávací paměť pro přidělení setSize paměťového úložiště
 
 Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), zabrání se tím fragmentaci haldy během operace silného zápisu. Výchozí hodnota je true.
- 
-![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 ## <a name="next-steps"></a>Další postup
 

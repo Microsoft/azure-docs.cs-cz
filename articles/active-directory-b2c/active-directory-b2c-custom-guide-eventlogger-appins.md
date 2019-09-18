@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227233"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066189"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Pokud používáte službu Azure Active Directory (Azure AD) B2C společně s Azure Application Insights, můžete získat podrobné a přizpůsobené protokoly událostí pro vaše cesty uživatelů. V tomto článku získáte informace o těchto tématech:
+Pokud používáte Azure Active Directory B2C (Azure AD B2C) společně s Azure Application Insights, můžete získat podrobné a přizpůsobené protokoly událostí pro vaše cesty uživatelů. V tomto článku získáte informace o těchto tématech:
 
 * Získejte přehled o chování uživatelů.
 * Řešení potíží s vlastními zásadami ve vývoji nebo v produkčním prostředí.
@@ -45,7 +45,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-
 Pokud používáte Application Insights s Azure AD B2C, stačí vytvořit prostředek a získat klíč instrumentace.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure, a to tak, že v horní nabídce kliknete na **Filtr adresáře a** předplatného a zvolíte adresář, který obsahuje vaše předplatné. Tento tenant není vaším klientem Azure AD B2C.
+2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a vyberete adresář, který obsahuje vaše předplatné. Tento tenant není vaším klientem Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** a pak vyhledejte a vyberte **Application Insights**.
 4. Klikněte na možnost **Vytvořit**.
 5. Zadejte **název** prostředku.
@@ -111,10 +111,10 @@ Technické profily lze považovat za funkce v architektuře prostředí identity
 
 | Technický profil | Úloha |
 | ----------------- | -----|
-| AzureInsights-Common | Vytvoří společnou sadu parametrů, které se mají zahrnout do všech technických profilů AzureInsights. | 
-| AzureInsights-SignInRequest | Vytvoří událost přihlášení se sadou deklarací při přijetí žádosti o přihlášení. | 
-| AzureInsights-UserSignup | Vytvoří událost UserSignup, když uživatel aktivuje možnost registrace v cestě k registraci nebo přihlašování. | 
-| AzureInsights-SignInComplete | Zaznamenává úspěšné dokončení ověření při odeslání tokenu do aplikace předávající strany. | 
+| AzureInsights-Common | Vytvoří společnou sadu parametrů, které se mají zahrnout do všech technických profilů AzureInsights. |
+| AzureInsights-SignInRequest | Vytvoří událost přihlášení se sadou deklarací při přijetí žádosti o přihlášení. |
+| AzureInsights-UserSignup | Vytvoří událost UserSignup, když uživatel aktivuje možnost registrace v cestě k registraci nebo přihlašování. |
+| AzureInsights-SignInComplete | Zaznamenává úspěšné dokončení ověření při odeslání tokenu do aplikace předávající strany. |
 
 Přidejte profily do souboru *TrustFrameworkExtensions. XML* z úvodní sady. Přidejte tyto prvky do prvku **ClaimsProviders** :
 
@@ -224,17 +224,17 @@ Uložte a nahrajte soubor *TrustFrameworkExtensions. XML* . Pak zavolejte zásad
 
 1. Otevřete prostředek **Application Insights** ve vašem tenantovi Azure Active Directory.
 2. Vyberte**události** **využití** > .
-3. Nastaví se **během** **poslední hodiny** a  do **3 minut**.  Pro zobrazení výsledků může být nutné vybrat možnost **aktualizovat** .
+3. Nastaví se **během** **poslední hodiny** a do **3 minut**.  Pro zobrazení výsledků může být nutné vybrat možnost **aktualizovat** .
 
 ![VYUŽITÍ Application Insights – události Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Přidejte do cesty uživatele typy deklarací identity a události, aby vyhovovaly vašim potřebám. Můžete použít [překladače deklarací identity](claim-resolver-overview.md) nebo jakýkoli typ deklarace identity, přidat deklarace identity přidáním prvku **vstupní deklarace identity** do události Application Insights nebo do AzureInsights-Common Technical Profile. 
+Přidejte do cesty uživatele typy deklarací identity a události, aby vyhovovaly vašim potřebám. Můžete použít [překladače deklarací identity](claim-resolver-overview.md) nebo jakýkoli typ deklarace identity, přidat deklarace identity přidáním prvku **vstupní deklarace identity** do události Application Insights nebo do AzureInsights-Common Technical Profile.
 
 - **ClaimTypeReferenceId** je odkaz na typ deklarace identity.
-- **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}`, kde `NAME` je do události přidána vlastnost. 
-- **DefaultValue** používá libovolnou řetězcovou hodnotu nebo překladač deklarací identity. 
+- **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}`, kde `NAME` je do události přidána vlastnost.
+- **DefaultValue** používá libovolnou řetězcovou hodnotu nebo překladač deklarací identity.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

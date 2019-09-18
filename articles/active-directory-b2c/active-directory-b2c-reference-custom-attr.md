@@ -1,6 +1,6 @@
 ---
-title: Definování uživatelských atributů, které v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Definujte vlastní atributy pro vaši aplikaci v Azure Active Directory B2C ke shromažďování informací o vašich zákazníků.
+title: Definování vlastních atributů v Azure Active Directory B2C | Microsoft Docs
+description: Definujte vlastní atributy vaší aplikace v Azure Active Directory B2C, abyste mohli shromažďovat informace o vašich zákaznících.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9ac3800d60b063c620cfc774d7a0c642f6f6821
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e6b0eac0b8cf7f61d76f90a4f769ba11abab6999
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835397"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065682"
 ---
-# <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování uživatelských atributů, které v Azure Active Directory B2C
+# <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 
- Každá aplikace určených pro zákazníky má jedinečné požadavky, které je potřeba shromáždit informace. Váš tenant Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadou informací uložených v atributech, například křestní jméno, příjmení, Město a PSČ. S Azure AD B2C můžete rozšířit sadu atributů, které jsou uložené na každý účet zákazníka.
+ Každá aplikace směřující od zákazníka má jedinečné požadavky na informace, které je třeba shromáždit. Tenant Azure Active Directory B2C (Azure AD B2C) obsahuje integrovanou sadu informací uložených v atributech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD B2C můžete roztáhnout sadu atributů uložených na každém účtu zákazníka.
 
- Můžete vytvořit vlastní atributy [webu Azure portal](https://portal.azure.com/) a jejich použití v toky registraci uživatelů, toky registrace nebo přihlašování uživatelů nebo toky uživatelů pro upravování profilu. Může číst a zapisovat pomocí těchto atributů [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Použití vlastních atributů v Azure AD B2C [Azure AD Graph API adresáře schématu rozšíření](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+ Můžete vytvořit vlastní atributy v [Azure Portal](https://portal.azure.com/) a použít je v uživatelských tokůch registrace, registraci nebo přihlašování uživatelů nebo v profilech pro úpravu uživatelských toků. Tyto atributy můžete také číst a zapisovat pomocí [Graph API služby Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md). Vlastní atributy v Azure AD B2C používají [rozšíření schématu adresáře Graph API služby Azure AD](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 > [!NOTE]
-> Podpora pro novější [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) pro dotazování na Azure AD B2C tenanta je stále ve vývoji.
+> Podpora pro novější [Microsoft Graph rozhraní API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) pro dotazování Azure AD B2C tenanta je stále ve vývoji.
 >
 
 ## <a name="create-a-custom-attribute"></a>Vytvoření vlastního atributu
@@ -36,25 +36,25 @@ ms.locfileid: "67835397"
 
     Vyberte adresář, který obsahuje vašeho tenanta.
 
-    ![Tenant B2C zvýrazněno filtr adresářů a předplatných](./media/active-directory-b2c-reference-custom-attr/select-directory.PNG)
+    ![Tenant B2C se ve filtru adresářů a předplatných zvýrazní.](./media/active-directory-b2c-reference-custom-attr/select-directory.PNG)
 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **atributy uživatele**a pak vyberte **přidat**.
-5. Zadejte **název** pro vlastní atribut (například "ShoeSize")
-6. Zvolte **datový typ**. Pouze **řetězec**, **logická**, a **Int** jsou k dispozici.
-7. Volitelně můžete zadat **popis** k informačním účelům.
+4. Vyberte **atributy uživatele**a pak vyberte **Přidat**.
+5. Zadejte **název** vlastního atributu (například "ShoeSize").
+6. Vyberte **datový typ**. K dispozici je pouze **řetězec**, **logická hodnota**a **int** .
+7. Volitelně můžete zadat **Popis** pro informativní účely.
 8. Klikněte na možnost **Vytvořit**.
 
-Vlastní atribut je nyní k dispozici v seznamu **atributy uživatele** a pro použití ve svých tocích uživatelů. Vlastní atribut je jen pro vytvoří při prvním se používá v toku uživatele, a ne v případě, že ho přidáte do seznamu **atributy uživatele**.
+Vlastní atribut je teď k dispozici v seznamu **atributů uživatele** a pro použití ve vašich uživatelských tocích. Vlastní atribut je vytvořen pouze při prvním použití v uživatelském toku, a ne při jeho přidání do seznamu **atributů uživatele**.
 
 
-## <a name="use-a-custom-attribute-in-your-user-flow"></a>Použít vlastní atribut ve svém toku uživatele
+## <a name="use-a-custom-attribute-in-your-user-flow"></a>Použití vlastního atributu v toku uživatele
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
-2. Vyberte zásadu (například "B2C_1_SignupSignin") a otevřete ho.
+2. Vyberte zásadu (například "B2C_1_SignupSignin") a otevřete ji.
 4. Vyberte **atributy uživatele** a pak vyberte vlastní atribut (například "ShoeSize"). Klikněte na **Uložit**.
-5. Vyberte **deklarace identit aplikace** a pak vyberte vlastní atribut.
+5. Vyberte **deklarace identity aplikace** a pak vyberte vlastní atribut.
 6. Klikněte na **Uložit**.
 
-Po vytvoření nového uživatele pomocí tok uživatele, která využívá nově vytvořený vlastní atribut objektu může být dotazována v [Azure AD Graph Explorer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart). Případně můžete použít [ **spustit tok uživatele** ](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) funkci na tok uživatele. Chcete-li ověřit uživatelské prostředí. Teď byste měli vidět **ShoeSize** v seznam atributů shromážděných během registrace cesty a vidět ji v tokenu odesílaných zpět do aplikace.
+Jakmile vytvoříte nového uživatele pomocí toku uživatele, který používá nově vytvořený vlastní atribut, může se objekt dotazovat v [Průzkumníku Azure AD Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart). Případně můžete pomocí funkce [**tok**](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) uživatele v toku uživatelů ověřit činnost zákazníka. Teď byste měli vidět **ShoeSize** v seznamu atributů shromážděných během cesty pro registraci a zobrazit je v tokenu, který se pošle zpátky do vaší aplikace.
 

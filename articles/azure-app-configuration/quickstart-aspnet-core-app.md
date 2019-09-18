@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326631"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076313"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
@@ -57,9 +57,9 @@ K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijete [roz
 
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
-Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
+Chcete-li použít Správce tajných `UserSecretsId` klíčů, přidejte element do souboru *. csproj* .
 
-- Otevřete soubor *. csproj* . `UserSecretsId` Přidejte element, jak je znázorněno zde, a nahraďte jeho hodnotu vlastním, což obvykle je identifikátor GUID. Uložte soubor.
+- Otevřete soubor *. csproj* . `UserSecretsId` Přidejte element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními. Uložte soubor.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     </Project>
     ```
 
+Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu. Další informace o Správci tajných klíčů najdete v článku [bezpečné úložiště tajných kódů aplikací ve vývoji v tématu ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
 
@@ -94,6 +96,9 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+
+    > [!IMPORTANT]
+    > Některá prostředí zkrátí připojovací řetězec, pokud není uzavřen v uvozovkách. Ujistěte se, že výstup `dotnet user-secrets` příkazu zobrazuje celý připojovací řetězec. Pokud tomu tak není, spusťte příkaz znovu a uzavřete připojovací řetězec do uvozovek.
 
     Správce tajného klíče se používá jenom k místnímu testování webové aplikace. Při nasazení aplikace do [Azure App Service](https://azure.microsoft.com/services/app-service/web)například použijete pro uložení připojovacího řetězce nastavení aplikace **připojovací řetězce** v App Service místo u správce tajného klíče.
 
@@ -182,7 +187,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s ASP.NET Core webovou aplikací prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s ASP.NET Core webovou aplikací prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který ukazuje, jak nakonfigurovat webovou aplikaci tak, aby dynamicky aktualizovala nastavení konfigurace.
 
 > [!div class="nextstepaction"]
-> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)
+> [Použití dynamické konfigurace v aplikaci ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)

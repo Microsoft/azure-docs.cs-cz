@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606468"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036611"
 ---
 # <a name="heading"></a>Zpracování dat v SQL serveru na virtuálním počítači Azure
 Tento dokument popisuje, jak zkoumat data a vygenerovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure. To můžete udělat tahání dat pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
@@ -87,7 +87,7 @@ Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z
 * Znaménko manažerech, jestli se sever nebo – Jih, východní nebo – západ na celém světě.
 * Nenulový stovky číslice nám říká, že používáme zeměpisná délka a šířka není!
 * Desítkami číslic poskytuje schopen přibližně 1 000 kilometrů. Dává nám užitečné informace o jaké kontinentu nebo se na oceánských.
-* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). To můžete nám říct, zhruba jaké velké stát nebo země/oblasti, které jsme v.
+* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). Dá vám vědět, co je to stát, země nebo oblast, ve které se nacházíte.
 * Na jedno desetinné místo stojí až 11.1 km: ho odlišili pozice jedno město velké ze sousedních město velké.
 * Druhé desetinné stojí až 1.1 km: ho jeden vesnice nezávislá na další.
 * Můžete identifikovat velké zemědělská pole nebo institucionální campus které stojí za to, až 110 m: je třetí desetinné čárky.
@@ -116,7 +116,7 @@ Tyto funkce založená na poloze dále slouží ke generování dalších počet
 > 
 
 ### <a name="sql-aml"></a>Připojení k Azure Machine Learning
-Nově vygenerovaný funkce můžete přidat jako sloupec do existující tabulky nebo uložené do nové tabulky a spojen s původní tabulky pro službu machine learning. Můžete generovat ani přistupovat, pokud už vytvořili, pomocí funkce [Import dat] [ import-data] modulu ve službě Azure Machine Learning, jak je znázorněno níže:
+Nově vygenerovaný funkce můžete přidat jako sloupec do existující tabulky nebo uložené do nové tabulky a spojen s původní tabulky pro službu machine learning. Funkce se dají vygenerovat nebo zobrazit, pokud už je vytvořený, pomocí modulu [Import dat][import-data] v Azure Machine Learning, jak je znázorněno níže:
 
 ![čtenáři Azure ml][1] 
 

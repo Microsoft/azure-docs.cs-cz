@@ -1,10 +1,10 @@
 ---
-title: Řídit směrování v modelu Classic Azure Virtual Network - CLI - | Dokumentace Microsoftu
-description: Zjistěte, jak řídit směrování ve virtuálních sítích v modelu nasazení classic pomocí rozhraní příkazového řádku Azure
+title: Řízení směrování v Azure Virtual Network-CLI – Classic | Microsoft Docs
+description: Naučte se řídit směrování v virtuální sítě pomocí rozhraní příkazového řádku Azure v modelu nasazení Classic.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1193145b315175e6394db4caf93ab2e76a942ed9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743917"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058794"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Řídit směrování a použití virtuálních zařízení (classic) pomocí rozhraní příkazového řádku Azure
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Řízení směrování a používání virtuálních zařízení (Classic) pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
@@ -34,18 +34,18 @@ ms.locfileid: "60743917"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [řídit směrování a použití virtuálních zařízení v modelu nasazení Resource Manager](tutorial-create-route-table-cli.md).
+Tento článek se týká modelu nasazení Classic. Můžete také [řídit směrování a používat virtuální zařízení v modelu nasazení Správce prostředků](tutorial-create-route-table-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Ukázkové příkazy rozhraní příkazového řádku Azure níže očekávat jednoduché prostředí už vytvořeny podle výše uvedeného scénáře. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, vytvoření zobrazeného v prostředí [vytvoření virtuální sítě (classic) pomocí Azure CLI](virtual-networks-create-vnet-classic-cli.md).
+Ukázkové příkazy Azure CLI níže očekávají jednoduché prostředí, které už je vytvořené na základě výše uvedeného scénáře. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, vytvořte prostředí zobrazené v [části vytvoření virtuální sítě (Classic) pomocí Azure CLI](virtual-networks-create-vnet-classic-cli.md).
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro front-endové podsítě
-Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, který je založený na výše uvedeném scénáři, postupujte podle následujících kroků.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření UDR pro podsíť front-endu
+Pokud chcete vytvořit směrovací tabulku a trasu potřebnou pro podsíť front-endu na základě výše uvedeného scénáře, postupujte podle následujících kroků.
 
-1. Spusťte následující příkaz pro přepnutí do klasického režimu:
+1. Spusťte následující příkaz, který přepne do klasického režimu:
 
     ```azurecli
     azure config mode asm
@@ -55,7 +55,7 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
 
         info:    New mode is asm
 
-2. Spuštěním následujícího příkazu vytvořte tabulku směrování pro front-endové podsítě:
+2. Spusťte následující příkaz, který vytvoří směrovací tabulku pro front-end podsíť:
 
     ```azurecli
     azure network route-table create -n UDR-FrontEnd -l uswest
@@ -72,9 +72,9 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-l (nebo --location)** . Oblasti Azure, ve kterém se vytvoří nová skupina NSG. Pro náš scénář *westus*.
-   * **-n (nebo --name)** . Název nové skupiny NSG. Pro náš scénář *NSG front-endu*.
-3. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do back endové podsítě (192.168.2.0/24) k **FW1** virtuálního počítače (192.168.0.4):
+   * **-l (nebo --location)** . Oblast Azure, ve které se vytvoří nový NSG. Pro náš scénář *westus*.
+   * **-n (nebo --name)** . Název nové NSG. Pro náš scénář se *NSG-front-endu*.
+3. Spuštěním následujícího příkazu vytvořte trasu v tabulce směrování pro odeslání veškerého provozu určeného do back-endové podsítě (192.168.2.0/24) do virtuálního počítače **FW1** (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
@@ -89,11 +89,11 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-r (nebo--název směrovací tabulky)** . Název směrovací tabulka, ve kterém se trasa přidá. Pro náš scénář *uživatelem definovaná TRASA front-endu*.
-   * **-a (nebo --address-prefixes)** . Předpona pro podsíť, ve kterém jsou pakety směřující na adresy. Pro náš scénář *192.168.2.0/24*.
-   * **-t (nebo--další typ segmentu směrování)** . Typ objektu provozu se odešlou do. Možné hodnoty jsou *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, nebo *žádný*.
-   * **-p (nebo--další segment směrování ip adresy**). IP adresa dalšího segmentu směrování. Pro náš scénář *192.168.0.4*.
-4. Přidružení směrovací tabulky vytvořené pomocí následujícího příkazu spusťte **front-endu** podsítě:
+   * **-r (nebo--Route-Table-Name)** . Název směrovací tabulky, do které bude trasa přidána. Pro náš scénář se *udr-front-endu*.
+   * **-a (nebo --address-prefixes)** . Předpona adresy pro podsíť, na kterou mají být pakety určeny Pro náš scénář *192.168.2.0/24*.
+   * **-t (nebo--Next-Hop-Type)** . Typ provozu objektu bude odeslán do. Možné hodnoty jsou *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*nebo *none*.
+   * **-p (nebo--Next-Hop-IP-Address**). IP adresa pro další segment směrování. Pro náš scénář *192.168.0.4*.
+4. Spuštěním následujícího příkazu přidružte směrovací tabulku vytvořenou s podsítí front- **Endu** :
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -114,25 +114,25 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-t (nebo--vnet-name)** . Název sítě VNet, ve kterém se podsíť nachází. V našem scénáři je to *TestVNet*.
-   * **-n (nebo--subnet-name**. Název směrovací tabulky podsítě se přidají do. V našem scénáři je to *FrontEnd*.
+   * **-t (nebo--VNet-Name)** . Název virtuální sítě, ve které se podsíť nachází. V našem scénáři je to *TestVNet*.
+   * **-n (nebo--Subnet-Name**. Název podsítě, do které bude tabulka směrování přidána. V našem scénáři je to *FrontEnd*.
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro podsíť back-end
-Vytvoření směrovací tabulky a trasy potřebné pro back endové podsítě, v závislosti na scénáři, proveďte následující kroky:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření UDR pro back-endové podsítě
+Chcete-li vytvořit směrovací tabulku a trasu potřebnou pro back-endové podsíť na základě scénáře, proveďte následující kroky:
 
-1. Spuštěním následujícího příkazu vytvořte tabulku směrování pro podsíť back-end:
+1. Spusťte následující příkaz, který vytvoří směrovací tabulku pro back-endové podsítě:
 
     ```azurecli
     azure network route-table create -n UDR-BackEnd -l uswest
     ```
 
-2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do front-endové podsítě (. 192.168.1.0/24) k **FW1** virtuálního počítače (192.168.0.4):
+2. Spuštěním následujícího příkazu vytvořte trasu v tabulce směrování pro odeslání veškerého provozu určeného do front-endové podsítě (192.168.1.0/24) do virtuálního počítače **FW1** (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
     ```
 
-3. Spusťte následující příkaz k přidružení směrovací tabulky s **back-endu** podsítě:
+3. Spusťte následující příkaz k přidružení směrovací tabulky k podsíti **back-endu** :
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd

@@ -1,10 +1,11 @@
 ---
-title: Typy IP adres v Azure (klasické)
+title: Typy IP adres v Azure (Classic)
 titlesuffix: Azure Virtual Network
-description: Další informace o veřejné a privátní IP adresy (klasické) v Azure.
+description: Přečtěte si o veřejných a privátních IP adresách (Classic) v Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,167 +13,167 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60742113"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058930"
 ---
-# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělení (classic) v Azure
-Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres můžete použít v Azure: veřejné a soukromé.
+# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělování (Classic) v Azure
+Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres, které můžete použít v Azure: Public a Private.
 
-Veřejné IP adresy se používají ke komunikaci s Internetem, včetně veřejně přístupných služeb Azure.
+Veřejné IP adresy se používají ke komunikaci s internetem, včetně veřejně přístupných služeb Azure.
 
-Privátní IP adresy se používají ke komunikaci v rámci virtuální sítě Azure (VNet), cloudové služby a v místní síti, pokud použijete VPN gateway nebo okruh ExpressRoute můžete svoji síť rozšířit do Azure.
+Privátní IP adresy se používají ke komunikaci v rámci virtuální sítě Azure (VNet), cloudové služby a místní sítě, když k rozšiřování sítě do Azure používáte bránu VPN nebo okruh ExpressRoute.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala Resource Manageru. Další informace o IP adresách v Resource Manageru najdete [IP adresy](virtual-network-ip-addresses-overview-arm.md) článku.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala Správce prostředků. Další informace o IP adresách v Správce prostředků najdete v článku [IP adresy](virtual-network-ip-addresses-overview-arm.md) .
 
 ## <a name="public-ip-addresses"></a>Veřejné IP adresy
-Veřejné IP adresy umožňují prostředkům Azure komunikovat s Internetem a Azure veřejně přístupných služeb, jako [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [databází SQL](../sql-database/sql-database-technical-overview.md), a [služby Azure storage](../storage/common/storage-introduction.md).
+Veřejné IP adresy umožňují prostředkům Azure komunikovat s internetem a veřejnými službami Azure, jako je [Azure cache pro Redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [databáze SQL](../sql-database/sql-database-technical-overview.md)a [Azure Storage](../storage/common/storage-introduction.md).
 
-Veřejná IP adresa je přidružen následující typy prostředků:
+Veřejná IP adresa je přidružená k následujícím typům prostředků:
 
 * Cloud Services
-* Virtuální počítače IaaS (virtuální počítače)
+* IaaS Virtual Machines (virtuální počítače)
 * Instance rolí PaaS
-* VPN Gateway
+* Brány VPN Gateway
 * Application Gateway
 
 ### <a name="allocation-method"></a>Metoda přidělování
-Veřejná IP adresa je třeba přiřadit k prostředku Azure, je *dynamicky* přiděluje z fondu k dispozici veřejnou IP adresu v rámci umístění je prostředek vytvořený. Tato IP adresa se uvolní při zastavení prostředku. S cloudovou službou, to se stane, když všechny instance rolí jsou zastaveny, které se můžete vyhnout použitím *statické* (vyhrazená) IP adresa (naleznete v tématu [Cloud Services](#cloud-services)).
+Pokud musí být veřejná IP adresa přiřazena prostředku Azure, *dynamicky* se přiděluje z fondu dostupné veřejné IP adresy v umístění, ve kterém je prostředek vytvořený. Tato IP adresa se uvolní při zastavení prostředku. V případě cloudové služby k tomu dojde, když se zastaví všechny instance rolí, což se může vyhnout použitím *statické* (REZERVOVANÉ) IP adresy (viz [Cloud Services](#cloud-services)).
 
 > [!NOTE]
-> Seznam rozsahů IP adres, ze kterých jsou přidělené veřejné IP adresy k prostředkům Azure je zveřejněný na webu [rozsahy IP adres Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653).
+> Seznam rozsahů IP adres, ze kterých se k prostředkům Azure přiděluje veřejné IP adresy, se zveřejňuje v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 > 
 > 
 
 ### <a name="dns-hostname-resolution"></a>Překlad názvů hostitelů DNS
-Při vytváření cloudové služby nebo Virtuálním počítači IaaS, budete muset poskytnout název cloudové služby DNS, který je jedinečný ve všech prostředků v Azure. Tím se vytvoří mapování na serverech DNS spravovaných Azure pro *dnsname*. cloudapp.net na veřejnou IP adresu prostředku. Například při vytváření cloudové služby s názvem služby DNS cloud z **contoso**, plně kvalifikovaný název domény (FQDN) **contoso.cloudapp.net** se přeloží veřejnou IP adresu (VIP) v cloudu Služba. Tento plně kvalifikovaný název domény můžete použít k vytvoření vlastního záznamu CNAME domény odkazujícího na veřejnou IP adresu v Azure.
+Když vytváříte cloudovou službu nebo virtuální počítač s IaaS, musíte zadat název DNS cloudové služby, který je jedinečný pro všechny prostředky v Azure. Tím se vytvoří mapování na serverech DNS spravovaných Azure pro *DnsName*. cloudapp.NET na veřejnou IP adresu prostředku. Když například vytvoříte cloudovou službu s názvem DNS cloudové služby **Contoso**, bude plně kvalifikovaný název domény (FQDN) **contoso.cloudapp.NET** překládat na veřejnou IP adresu (VIP) cloudové služby. Tento plně kvalifikovaný název domény můžete použít k vytvoření vlastního záznamu CNAME domény odkazujícího na veřejnou IP adresu v Azure.
 
 ### <a name="cloud-services"></a>Cloud Services
-Cloudové služby má vždy veřejné IP adresy uvedené jako virtuální IP adresa (VIP). Vytvoření koncových bodů v cloudové službě přidružit jiné porty v virtuální IP adresy na vnitřních portech virtuálních počítačů a instancí rolí v rámci cloudové služby. 
+Cloudová služba má vždy veřejnou IP adresu, která se označuje jako virtuální IP adresa (VIP). V cloudové službě můžete vytvářet koncové body, které přiřadí různé porty v rámci virtuální IP adresy k interním portům virtuálních počítačů a instancí rolí v rámci cloudové služby. 
 
-Cloudové služby může obsahovat více virtuálních počítačů IaaS nebo instancí rolí PaaS, všechny vystavené prostřednictvím virtuálních IP adres stejné cloudové služby. Můžete také přiřadit [více virtuálních IP adres v cloudové službě](../load-balancer/load-balancer-multivip.md), která umožňuje scénáře s více virtuálních IP adres, jako je víceklientské prostředí s weby využívajícími SSL.
+Cloudová služba může obsahovat několik virtuálních počítačů s IaaS nebo instancí PaaS rolí, které jsou vystavené prostřednictvím stejné virtuální IP adresy cloudové služby. Cloudové službě můžete také přiřadit [více virtuálních IP](../load-balancer/load-balancer-multivip.md)adres, což umožňuje použití scénářů s více VIP, jako je víceklientské prostředí s weby využívajícími SSL.
 
-Můžete zajistit veřejnou IP adresu z cloudové služby zůstane stejný, i když se zastaví všechny instance rolí, pomocí *statické* veřejnou IP adresu, označuje jako [vyhrazenou IP adresu](virtual-networks-reserved-public-ip.md). Můžete vytvořit statická (vyhrazená) IP prostředku v konkrétním umístění a přiřaďte ho k jakékoli cloudové služby v daném umístění. Nelze určit vlastní IP adresu pro vyhrazenou IP adresu, se přiděluje z fondu dostupných IP adres v umístění, na které se vytvoří. Tuto IP adresu není všeobecně dostupné, dokud neodstraníte explicitně.
+Můžete zajistit, aby veřejná IP adresa cloudové služby zůstala stejná, i když se všechny instance rolí zastaví, a to pomocí *statické* veřejné IP adresy, která se označuje jako [vyhrazená IP adresa](virtual-networks-reserved-public-ip.md). Můžete vytvořit statický (rezervovaný) prostředek IP adresy v určitém umístění a přiřadit ho ke cloudové službě v tomto umístění. Nemůžete zadat skutečnou IP adresu rezervované IP adresy, která se přidělí z fondu dostupných IP adres v umístění, ve kterém je vytvořená. Tato IP adresa se uvolní, dokud ji explicitně neodstraníte.
 
-Statická (vyhrazená) veřejné IP adresy se obvykle používají ve scénářích, kde je Cloudová služba:
+Statické (vyhrazené) veřejné IP adresy se obvykle používají v situacích, kdy cloudová služba:
 
-* vyžaduje pravidla brány firewall pro nastavit tak, že koncoví uživatelé.
-* závisí na externí překlad názvů DNS, a zjišťování dynamických IP by vyžadovala aktualizace záznamů.
-* využívá externí webové služby, které používají model zabezpečení na základě IP adresy.
-* používá certifikáty SSL propojené k IP adrese.
-
-> [!NOTE]
-> Když vytvoříte klasického virtuálního počítače, kontejneru *Cloudová služba* se vytvoří v Azure, která má virtuální IP adresa (VIP). Po vytvoření se provádí prostřednictvím portálu, výchozí protokolu RDP nebo SSH *koncový bod* je nakonfigurován pomocí portálu, abyste se mohli připojit k virtuálnímu počítači přes virtuální IP adresa cloudové služby. Je možné vyhradit virtuální IP ADRESE této cloudové služby, která efektivně poskytuje vyhrazenou IP adresu pro připojení k virtuálnímu počítači. Otevřít další porty tím, že nakonfigurujete další koncové body.
-> 
-> 
-
-### <a name="iaas-vms-and-paas-role-instances"></a>Virtuální počítače IaaS a instance rolí PaaS
-Veřejnou IP adresu můžete přiřadit přímo k IaaS [VM](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo instance rolí PaaS v rámci cloudové služby. To se označuje jako veřejnou IP adresu na úrovni instance ([ILPIP](virtual-networks-instance-level-public-ip.md)). Tato veřejná IP adresa může být pouze dynamické.
+* vyžaduje, aby se pravidla brány firewall nastavila koncovými uživateli.
+* závisí na překladu externího názvu DNS a dynamická IP adresa by vyžadovala aktualizaci záznamů.
+* využívá externí webové služby, které používají model zabezpečení založený na IP adresách.
+* používá certifikáty SSL propojené s IP adresou.
 
 > [!NOTE]
-> Tím se liší od virtuálních IP adres cloudové služby, což je kontejner pro virtuální počítače IaaS nebo PaaS instance rolí, protože cloudové služby může obsahovat několik virtuálních počítačů IaaS nebo instancí rolí PaaS, všechny prostřednictvím virtuálních IP adres stejné cloudové služby.
+> Když vytvoříte klasický virtuální počítač, vytvoří se v Azure *cloudová služba* kontejneru, která má virtuální IP adresu (VIP). Když se vytváření provádí přes portál, na portálu se nastaví výchozí *koncový bod* RDP nebo SSH, abyste se mohli k virtuálnímu počítači připojit prostřednictvím virtuální IP adresy cloudové služby. Tato virtuální IP adresa cloudové služby se dá rezervovat, což efektivně poskytuje vyhrazenou IP adresu pro připojení k virtuálnímu počítači. Další porty můžete otevřít tak, že nakonfigurujete více koncových bodů.
 > 
 > 
 
-### <a name="vpn-gateways"></a>VPN Gateway
-A [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) je možné se připojit virtuální síti Azure k jiným virtuálním sítím Azure nebo místním sítím. Brána VPN je přiřazena veřejná IP adresa *dynamicky*, který umožňuje komunikaci se vzdálenou sítí.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS virtuální počítače a instance rolí PaaS
+Veřejnou IP adresu můžete přiřadit přímo k [virtuálnímu počítači](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) s IaaS nebo k instanci role PaaS v rámci cloudové služby. Tento postup se označuje jako veřejná IP adresa na úrovni instance ([ILPIP](virtual-networks-instance-level-public-ip.md)). Tato veřejná IP adresa může být pouze dynamická.
+
+> [!NOTE]
+> To se liší od virtuální IP adresy cloudové služby, což je kontejner pro IaaS virtuální počítače nebo instance role PaaS, protože cloudová služba může obsahovat víc virtuálních počítačů IaaS nebo instancí rolí PaaS, které jsou vystavené prostřednictvím stejné virtuální IP adresy cloudové služby.
+> 
+> 
+
+### <a name="vpn-gateways"></a>Brány VPN Gateway
+[Bránu VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) je možné použít k připojení virtuální sítě Azure k jiným službám Azure virtuální sítě nebo místním sítím. Bráně VPN je *dynamicky*PŘIŘAZENA veřejná IP adresa, která umožňuje komunikaci se vzdálenou sítí.
 
 ### <a name="application-gateways"></a>Application Gateway
-Azure [Application gateway](../application-gateway/application-gateway-introduction.md) lze použít pro vrstvy 7 Vyrovnávání zatížení směrovat síťový provoz založený na protokolu HTTP. Služba Application gateway přiřazena veřejná IP adresa *dynamicky*, který slouží jako virtuální IP adresy s vyrovnáváním zatížení.
+Služba Azure [Application Gateway](../application-gateway/application-gateway-introduction.md) se dá použít k vyrovnávání zatížení vrstvy 7 ke směrování síťového provozu na základě http. Aplikační bráně je *dynamicky*přiřazená veřejná IP adresa, která slouží jako virtuální IP adresa s vyrovnáváním zatížení.
 
-### <a name="at-a-glance"></a>První pohled
-Následující tabulka ukazuje, každý typ prostředku pomocí metody možné přidělení (dynamické/statické) a schopnost přiřadit několik veřejných IP adres.
+### <a name="at-a-glance"></a>Na první pohled
+V následující tabulce jsou uvedeny jednotlivé typy prostředků s možnými metodami přidělení (dynamické/statické) a možnost přiřadit více veřejných IP adres.
 
-| Resource | Dynamické | Statická | Několik IP adres |
+| Resource | Dynamické | Static | Několik IP adres |
 | --- | --- | --- | --- |
 | Cloudová služba |Ano |Ano |Ano |
-| Instance role virtuálních počítačů IaaS nebo PaaS |Ano |Ne |Ne |
-| VPN Gateway |Ano |Ne |Ne |
-| Application Gateway |Ano |Ne |Ne |
+| Instance role virtuálního počítače IaaS nebo PaaS |Ano |Ne |Ne |
+| Brána VPN Gateway |Ano |Ne |Ne |
+| Aplikační brána |Ano |Ne |Ne |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
-Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky v cloudové službě nebo [virtuální sítě](virtual-networks-overview.md)(VNet), nebo k místní síti (pomocí VPN gateway nebo okruh ExpressRoute), bez použití Internet dostupnou IP adresu.
+Privátní IP adresy umožňují prostředkům Azure komunikovat s dalšími prostředky v cloudové službě nebo [virtuální síti](virtual-networks-overview.md)nebo v místní síti (přes bránu VPN nebo okruh ExpressRoute) bez použití IP adresy dostupné pro Internet.
 
-V modelu nasazení Azure classic můžete přiřadit privátní IP adresu pro následující prostředky Azure:
+V modelu nasazení Azure Classic je možné přiřadit k následujícím prostředkům Azure privátní IP adresu:
 
-* Virtuální počítače IaaS a instance rolí PaaS
+* IaaS virtuální počítače a instance rolí PaaS
 * Interní nástroj pro vyrovnávání zatížení
-* Application Gateway
+* Aplikační brána
 
-### <a name="iaas-vms-and-paas-role-instances"></a>Virtuální počítače IaaS a instance rolí PaaS
-Virtuální počítače (VM) vytvořené pomocí modelu nasazení classic jsou vždy umístěny v cloudové službě, podobně jako instance rolí PaaS. Chování privátních IP adres je tedy podobně jako pro tyto prostředky.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS virtuální počítače a instance rolí PaaS
+Virtuální počítače vytvořené pomocí modelu nasazení Classic jsou vždycky umístěné v cloudové službě, podobně jako instance rolí PaaS. Chování privátních IP adres je proto pro tyto prostředky podobné.
 
-Je důležité si uvědomit, že cloudové služby je možné nasadit dvěma způsoby:
+Je důležité si uvědomit, že cloudovou službu je možné nasadit dvěma způsoby:
 
-* Jako *samostatné* Cloudová služba, kde není v rámci virtuální sítě.
-* V rámci virtuální sítě.
+* Jako *samostatná* cloudová služba, ve které se nenachází v rámci virtuální sítě.
+* Jako součást virtuální sítě.
 
 #### <a name="allocation-method"></a>Metoda přidělování
-V případě klíčových *samostatné* Cloudová služba, prostředky získání privátní IP adresa přiděluje *dynamicky* rozsah adres z privátní IP adresy datacentra Azure. Je možné pouze pro komunikaci s jiným virtuálním počítačům v rámci stejné cloudové službě. Tuto IP adresu můžete změnit, když zdroj je zastavit a spustit.
+V případě *samostatné* cloudové služby se prostředkům získají privátní IP adresa přidělená *dynamicky* z rozsahu privátních IP adres datacentra Azure. Dá se použít jenom pro komunikaci s jinými virtuálními počítači v rámci stejné cloudové služby. Tato IP adresa se může změnit při zastavení a spuštění prostředku.
 
-V případě cloudovou službu nasazenou v rámci virtuální sítě získání zdrojů privátní IP adresa přiděluje z rozsahu adres přidružené podsítě (jak je uvedeno v konfiguraci sítě). Tato privátní IP adresy lze použít pro komunikaci mezi všechny virtuální počítače ve virtuální síti.
+V případě cloudové služby nasazené ve virtuální síti prostředky získají privátní IP adresy přidělené z rozsahu adres přidružených podsítí (jak je uvedeno v konfiguraci sítě). Tato privátní IP adresa se dá použít ke komunikaci mezi všemi virtuálními počítači v rámci virtuální sítě.
 
-Kromě toho v případě cloudových služeb v rámci virtuální sítě, které je přiděleno privátní IP adresu *dynamicky* (pomocí protokolu DHCP) ve výchozím nastavení. Můžete změnit, když zdroj je zastavit a spustit. Aby IP adresa zůstávala stejná, je nutné nastavit metodu přidělování *statické*a zadejte platnou IP adresu odpovídající rozsahu adres.
+Kromě toho platí, že v případě cloudových služeb v rámci virtuální sítě se privátní IP adresa přiřazuje *dynamicky* (pomocí protokolu DHCP) ve výchozím nastavení. Může se změnit při zastavení a spuštění prostředku. Chcete-li zajistit, aby IP adresa zůstala stejná, je třeba nastavit metodu přidělení na *statickou*a zadat platnou IP adresu v rámci odpovídajícího rozsahu adres.
 
 Statické privátní IP adresy se obvykle používají pro:
 
 * Virtuální počítače, které slouží jako řadiče domény nebo servery DNS.
-* Virtuální počítače, které vyžadují pravidla brány firewall pomocí IP adresy.
-* Virtuální počítače, které přistupují jiné aplikace přes určitou IP adresu služby.
+* Virtuální počítače, které vyžadují pravidla brány firewall pomocí IP adres.
+* Virtuální počítače, na kterých běží služby, k nimž přistupovaly jiné aplikace prostřednictvím IP adresy.
 
 #### <a name="internal-dns-hostname-resolution"></a>Interní překlad názvů hostitelů DNS
-Všechny virtuální počítače Azure a instance rolí PaaS jsou nakonfigurovány s [servery DNS spravovanými Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) ve výchozím nastavení, pokud explicitně nenakonfigurujete vlastní servery DNS. Tyto servery DNS poskytují interní překlad adres pro virtuální počítače a instance rolí, které se nacházejí ve stejné virtuální sítě nebo cloudové služby.
+Všechny virtuální počítače Azure a instance rolí PaaS jsou ve výchozím nastavení nakonfigurované se [servery DNS spravovanými Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) , pokud explicitně nenakonfigurujete vlastní servery DNS. Tyto servery DNS poskytují interní překlad adres IP pro virtuální počítače a instance rolí, které se nacházejí ve stejné virtuální síti nebo cloudové službě.
 
-Když vytvoříte virtuální počítač, do serverů DNS spravovaných Azure se přidá mapování názvu hostitele na jeho IP adresu. K virtuálnímu počítači s více síťovými Kartami název hostitele se mapuje na privátní IP adresu primární síťové rozhraní Tyto informace o mapování však omezen na prostředky v rámci stejné cloudové službě nebo virtuální sítě.
+Když vytvoříte virtuální počítač, do serverů DNS spravovaných Azure se přidá mapování názvu hostitele na jeho IP adresu. S virtuálním počítačem s více síťovými kartami se název hostitele namapuje na privátní IP adresu primárního síťového rozhraní. Tyto informace o mapování jsou však omezeny na prostředky v rámci stejné cloudové služby nebo virtuální sítě.
 
-V případě klíčových *samostatné* cloudové služby, bude moct přeložit názvy hostitelů všech instancí virtuálních počítačů nebo rolí v rámci stejné cloudové službě pouze. V případě cloudové služby v rámci virtuální sítě budou moct přeložit názvy hostitelů všech instancí virtuálních počítačů nebo rolí v rámci virtuální sítě.
+V případě *samostatné* cloudové služby budete moct přeložit názvy hostitelů všech virtuálních počítačů nebo instancí rolí jenom v rámci stejné cloudové služby. V případě cloudové služby v rámci virtuální sítě budete moct přeložit názvy hostitelů všech instancí virtuálních počítačů nebo rolí v rámci virtuální sítě.
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Interní nástroje pro vyrovnávání a Application Gateway
-Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) nebo služby [Azure Application Gateway](../application-gateway/application-gateway-introduction.md). Tato privátní IP adresa slouží jako interní koncový bod, který je přístupný pouze pro prostředky v příslušné virtuální síti (VNet) a ve vzdálených sítích připojených k virtuální síti. Konfiguraci front-endu můžete přiřadit dynamickou nebo statickou privátní IP adresu. Můžete také přiřadit několik privátních IP adres umožňuje scénáře s více virtuálních IP adres.
+Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) nebo služby [Azure Application Gateway](../application-gateway/application-gateway-introduction.md). Tato privátní IP adresa slouží jako interní koncový bod, který je přístupný pouze pro prostředky v příslušné virtuální síti (VNet) a ve vzdálených sítích připojených k virtuální síti. Konfiguraci front-endu můžete přiřadit dynamickou nebo statickou privátní IP adresu. Můžete také přiřadit několik privátních IP adres a povolit tak scénáře s více VIP.
 
-### <a name="at-a-glance"></a>První pohled
-Následující tabulka ukazuje, každý typ prostředku se metody možné přidělení (dynamické/statické) a možnost přiřadit k více privátních IP adres.
+### <a name="at-a-glance"></a>Na první pohled
+V následující tabulce jsou uvedeny jednotlivé typy prostředků s možnými metodami přidělení (dynamické/statické) a možnost přiřazení více privátních IP adres.
 
-| Resource | Dynamické | Statická | Několik IP adres |
+| Resource | Dynamické | Static | Několik IP adres |
 | --- | --- | --- | --- |
-| Virtuální počítač (v *samostatné* cloudovou službu nebo virtuální sítě) |Ano |Ano |Ano |
-| PaaS role instance (v *samostatné* cloudovou službu nebo virtuální sítě) |Ano |Ne |Ne |
-| Interní služby load balancer front-endu |Ano |Ano |Ano |
-| Front-endu aplikace brány |Ano |Ano |Ano |
+| Virtuální počítač (v *samostatné* cloudové službě nebo virtuální síti) |Ano |Ano |Ano |
+| Instance role PaaS (v *samostatné* cloudové službě nebo virtuální síti) |Ano |Ne |Ne |
+| Front-end interního nástroje pro vyrovnávání zatížení |Ano |Ano |Ano |
+| Front-end aplikační brány |Ano |Ano |Ano |
 
-## <a name="limits"></a>Limits
-Následující tabulka uvádí omezení IP adresování v Azure na jedno předplatné. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+## <a name="limits"></a>Omezení
+V následující tabulce jsou uvedena omezení pro IP adresování v Azure na předplatné. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 |  | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Veřejné IP adresy (dynamické) |5 |kontaktovat podporu |
-| Vyhrazené veřejné IP adresy |20 |kontaktovat podporu |
-| Veřejné virtuální IP adresy na nasazení (Cloudová služba) |5 |kontaktovat podporu |
-| Privátní virtuální IP adresy (ILB) na nasazení (Cloudová služba) |1 |1 |
+| Veřejné IP adresy (dynamické) |5 |Kontaktujte podporu |
+| Vyhrazené veřejné IP adresy |20 |Kontaktujte podporu |
+| Veřejná VIP na nasazení (cloudová služba) |5 |Kontaktujte podporu |
+| Privátní VIP (interního nástroje) na nasazení (cloudová služba) |1 |1 |
 
-Nezapomeňte si přečíst úplnou sadu [omezení sítě](../azure-subscription-service-limits.md#networking-limits) v Azure.
+Ujistěte se, že jste si přečetli kompletní sadu [omezení pro sítě](../azure-subscription-service-limits.md#networking-limits) v Azure.
 
 ## <a name="pricing"></a>Ceny
-Ve většině případů veřejné IP adresy jsou zdarma. Zde se účtuje nominální poplatek používat další a/nebo statické veřejné IP adresy. Ujistěte se, že rozumíte [Cenová struktura pro veřejné IP adresy](https://azure.microsoft.com/pricing/details/ip-addresses/).
+Ve většině případů jsou veřejné IP adresy bezplatné. Pro použití dalších nebo statických veřejných IP adres se účtuje nominální poplatek. Ujistěte se, že rozumíte [cenové struktuře pro veřejné IP adresy](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="differences-between-resource-manager-and-classic-deployments"></a>Rozdíly mezi Resource Managerem a klasickými nasazeními
-Níže je uvedeno porovnání IP adresování funkcí v modelu nasazení classic a Resource Manageru.
+## <a name="differences-between-resource-manager-and-classic-deployments"></a>Rozdíly mezi Správce prostředků a klasickými nasazeními
+Níže je srovnání funkcí IP adresování v Správce prostředků a modelu nasazení Classic.
 
 |  | Resource | Classic | Resource Manager |
 | --- | --- | --- | --- |
-| **Veřejná IP adresa** |***VM*** |Označuje jako ILPIP (pouze dynamické) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
-|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přidružené k síťové karty Virtuálního počítače |
-|  |***Internet internetový nástroj pro vyrovnávání zatížení*** |Označuje jako virtuální IP adresy (dynamické) nebo rezervovaná IP adresa (staticky) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
-|  ||Přiřadit cloudové službě |Přidružené ke konfiguraci front-endu nástroje pro vyrovnávání zatížení |
+| **Veřejná IP adresa** |***VM*** |Odkazováno jako na ILPIP (pouze dynamické) |Označuje se jako veřejná IP adresa (dynamická nebo statická). |
+|  ||Přiřazeno k virtuálnímu počítači s IaaS nebo k instanci role PaaS |Přidruženo k síťovému adaptéru virtuálního počítače |
+|  |***Internetový nástroj pro vyrovnávání zatížení*** |Označuje se jako virtuální IP adresa (dynamická) nebo Vyhrazená IP adresa (static). |Označuje se jako veřejná IP adresa (dynamická nebo statická). |
+|  ||Přiřazeno ke cloudové službě |Přidruženo k konfiguraci front-endu nástroje pro vyrovnávání zatížení |
 |  | | | |
-| **Privátní IP adresa** |***VM*** |Uvedený jako vyhrazené IP adresy |Označuje jako privátní IP adresy |
-|  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přiřazené síťové rozhraní Virtuálního počítače |
-|  |***Interní služby load balancer (ILB)*** |Přiřazená ILB (dynamické nebo statické) |Přiřazené konfigurace front-endu ILB (dynamické nebo statické) |
+| **Privátní IP adresa** |***VM*** |Označuje se jako DIP. |Označuje se jako soukromá IP adresa. |
+|  ||Přiřazeno k virtuálnímu počítači s IaaS nebo k instanci role PaaS |Přiřazeno síťovému adaptéru virtuálního počítače |
+|  |***Interní nástroj pro vyrovnávání zatížení (interního nástroje)*** |Přiřazeno k interního nástroje (dynamická nebo statická) |Přiřazeno ke konfiguraci front-endu interního nástroje (dynamická nebo statická) |
 
 ## <a name="next-steps"></a>Další postup
-* [Nasazení virtuálního počítače se statickou privátní IP adresou](virtual-networks-static-private-ip-classic-pportal.md) pomocí webu Azure portal.
+* [Nasaďte virtuální počítač se statickou privátní IP adresou](virtual-networks-static-private-ip-classic-pportal.md) pomocí Azure Portal.
 

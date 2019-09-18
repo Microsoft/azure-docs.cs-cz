@@ -1,6 +1,6 @@
 ---
 title: Vysoce výkonná platforma pro odvození více platforem pomocí ONNX
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Přečtěte si o ONNX a modulu runtime ONNX pro zrychlení modelů.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d97e2d2698c482b75f037dbd8cde1027c472125
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534879"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035409"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: Vytváření a zrychlení modelů ML
 
@@ -28,14 +28,14 @@ Společnost Microsoft a komunitní partneři vytvořili ONNX jako open standard 
 
 [ONNX runtime](https://github.com/Microsoft/onnxruntime) je vysoce výkonný modul odvození pro nasazení modelů ONNX do produkčního prostředí. Je optimalizovaný pro Cloud i Edge a funguje v systémech Linux, Windows a Mac. Napsaný C++v, má také jazyk C, Python a C# rozhraní API. ONNX runtime poskytuje podporu pro veškerou specifikaci ONNX-ML a integruje se s akcelerátory na jiném hardwaru, jako je například TensorRT na grafickém rozhraní NVidia.
 
-Modul runtime ONNX se používá ve vysoce škálovatelných službách Microsoftu, jako je Bing, Office a Cognitive Services. Zvýšení výkonu závisí na několika faktorech, ale tyto služby společnosti Microsoft viděli průměrně __dvojnásobný výkon na procesoru__. Modul runtime ONNX se používá také jako součást Windows ML na stovkách milionů zařízení. Můžete použít modul runtime s Azure Machine Learning Services. Pomocí modulu runtime ONNX můžete využívat rozsáhlé Optimalizace produkčních funkcí, testování a průběžná vylepšení.
+Modul runtime ONNX se používá ve vysoce škálovatelných službách Microsoftu, jako je Bing, Office a Cognitive Services. Zvýšení výkonu závisí na několika faktorech, ale tyto služby společnosti Microsoft viděli __průměrně dvojnásobný výkon na procesoru__. Modul runtime ONNX se používá také jako součást Windows ML na stovkách milionů zařízení. Modul runtime lze použít s Azure Machine Learning. Pomocí modulu runtime ONNX můžete využívat rozsáhlé Optimalizace produkčních funkcí, testování a průběžná vylepšení.
 
 [![ONNX Flow diagram znázorňující školení, převaděče a nasazení](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Získat modely ONNX
 
 Můžete získat modely ONNX několika způsoby:
-+ Výuka nového modelu ONNX ve službě Azure Machine Learning (podívejte se na příklady na konci tohoto článku)
++ Výuka nového modelu ONNX v Azure Machine Learning (podívejte se na příklady na konci tohoto článku)
 + Převést existující model z jiného formátu na ONNX (viz [kurzy](https://github.com/onnx/tutorials)) 
 + Získejte předem vyškolený model ONNX z [modelu ONNX](https://github.com/onnx/models) (viz příklady v dolní části tohoto článku).
 + Generovat přizpůsobené modelu ONNX ze [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
@@ -44,7 +44,7 @@ Mnoho modelů, včetně klasifikace obrázků, detekce objektů a zpracování t
 
 ## <a name="deploy-onnx-models-in-azure"></a>Nasadit modely ONNX v Azure
 
-Pomocí služby Azure Machine Learning můžete nasadit, spravovat a monitorovat využijte modely ONNX. Pomocí standardní [pracovní postup nasazení](concept-model-management-and-deployment.md) a ONNX Runtime můžete vytvořit koncový bod REST hostované v cloudu. Další informace najdete v části Jupyter poznámkové bloky na konci tohoto článku. 
+Pomocí Azure Machine Learning můžete nasazovat, spravovat a monitorovat modely ONNX. Pomocí standardní [pracovní postup nasazení](concept-model-management-and-deployment.md) a ONNX Runtime můžete vytvořit koncový bod REST hostované v cloudu. Další informace najdete v části Jupyter poznámkové bloky na konci tohoto článku. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Instalace a použití modulu runtime ONNX v Pythonu
 

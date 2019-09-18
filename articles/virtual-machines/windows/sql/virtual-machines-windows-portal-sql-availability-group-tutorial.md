@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102361"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036529"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Ruční konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure
 
@@ -81,6 +81,9 @@ Po dokončení požadovaných součástí je prvním krokem vytvoření clusteru
    | Potvrzení |Použijte výchozí hodnoty, pokud nepoužíváte prostory úložiště. Podívejte se na poznámku za touto tabulkou. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Nastavit IP adresu clusteru s podporou převzetí služeb při selhání Windows serveru
+
+  > [!NOTE]
+  > V systému Windows Server 2019 vytvoří cluster místo **názvu sítě clusteru** **název distribuovaného serveru** . Pokud používáte Windows Server 2019, přeskočte všechny kroky, které v tomto kurzu odkazují na základní název clusteru. Název sítě clusteru můžete vytvořit pomocí [PowerShellu](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Zkontrolujte cluster s [podporou převzetí služeb při selhání blogu: Další informace najdete](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) v objektu sítě s clustery. 
 
 1. V **Správce clusteru s podporou převzetí služeb při selhání**přejděte dolů na **základní prostředky clusteru** a rozbalte podrobnosti o clusteru. Měl by se zobrazit **název** a prostředky **IP adresy** ve stavu **selhání** . Prostředek IP adresy nelze uvést do režimu online, protože cluster má přiřazenou stejnou IP adresu jako samotný počítač, proto je duplicitní adresa.
 
@@ -290,7 +293,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
    ![Průvodce novým AG, zadání replik](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
 5. Zobrazí se dialogové okno **připojit k serveru** . Do pole **název serveru**zadejte název druhého serveru. Klikněte na **Připojit**.
 
-   Zpátky na stránce **zadat repliky** by se teď měl zobrazit druhý server uvedený v replikách **dostupnosti**. Repliky nakonfigurujte následujícím způsobem.
+   Zpátky na stránce **zadat repliky** by se teď měl zobrazit druhý server uvedený v **replikách dostupnosti**. Repliky nakonfigurujte následujícím způsobem.
 
    ![Průvodce novým AG, zadání replik (dokončeno)](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/64-newagreplica.png)
 
@@ -298,7 +301,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
 
     ![Průvodce novým AG, výběr synchronizace počátečních dat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Na stránce **Vyberte počáteční synchronizaci dat** vyberte možnost **úplné** a zadejte sdílené síťové umístění. Pro toto umístění použijte sdílenou [složku zálohy, kterou jste vytvořili](#backupshare). V tomto příkladu byl  **\\ \\nejprveSQLServer\>\Backup.\\ \<** Klikněte na **Další**.
+8. Na stránce **Vyberte počáteční synchronizaci dat** vyberte možnost **úplné** a zadejte sdílené síťové umístění. Pro toto umístění použijte [sdílenou složku zálohy, kterou jste vytvořili](#backupshare). V tomto příkladu byl  **\\ \\nejprveSQLServer\>\Backup.\\ \<** Klikněte na **Další**.
 
    >[!NOTE]
    >Úplná synchronizace provede úplnou zálohu databáze na první instanci SQL Server a obnoví ji do druhé instance. U rozsáhlých databází se Úplná synchronizace nedoporučuje, protože může trvat dlouhou dobu. Tuto dobu můžete zkrátit ručním vytvořením zálohy databáze a jejím `NO RECOVERY`obnovením. Pokud je databáze již `NO RECOVERY` v druhém SQL Server obnovena před konfigurací skupiny dostupnosti, vyberte možnost **pouze připojit**. Pokud chcete zálohování provést po konfiguraci skupiny dostupnosti, vyberte možnost **Přeskočit počáteční synchronizaci dat**.
@@ -490,7 +493,7 @@ V SQL Server Management Studio nastavte port naslouchacího procesu.
 
 1. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-1. Přejděte | na**naslouchací procesy**skupin dostupnosti **AlwaysOn vysoké dostupnosti** | .
+1. Přejděte na**naslouchací procesy** **skupin dostupnosti** |  **AlwaysOn vysoké dostupnosti** | .
 
 1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a klikněte na **vlastnosti**.
 
@@ -521,6 +524,6 @@ Připojení SQLCMD se automaticky připojí k jakékoli instanci SQL Server host
 > [!TIP]
 > Ujistěte se, že port, který zadáte, je otevřený v bráně firewall obou serverů SQL. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [Přidání nebo úprava pravidla brány firewall](https://technet.microsoft.com/library/cc753558.aspx).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přidejte IP adresu do nástroje pro vyrovnávání zatížení pro druhou skupinu dostupnosti](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP).

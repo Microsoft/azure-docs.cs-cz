@@ -1,6 +1,6 @@
 ---
-title: Porovnání AppSource a na webu Azure Marketplace | Azure
-description: Tento článek popisuje prodejních míst v Microsoft AppSource a na webu Azure Marketplace.
+title: Porovnávání AppSource a Azure Marketplace | Azure
+description: Tento článek popisuje prodejní místa v Microsoft AppSource a Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
@@ -8,33 +8,33 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0de536f687272283b816e6724e41eb61e3a22cd0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b44d3b7a50de04900d47708ca76ca36092b5ad2e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442330"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066794"
 ---
-# <a name="comparing-appsource-and-the-azure-marketplace"></a>Porovnání AppSource a na webu Azure Marketplace
-Prodejní místa v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) sloužit jedinečných zákaznických požadavků. Podle role pomocí prodejní místa na cílové uživatele. Můžete nabízet vhodné řešení nebo službu, kterou vaše zákazníky.
+# <a name="comparing-appsource-and-the-azure-marketplace"></a>Porovnávání AppSource a Azure Marketplace
+Prodejní místa v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) zajišťovat jedinečné požadavky zákazníků. Použijte prodejní místa k zacílení na zákazníky podle role. Můžete nabízet správné řešení nebo službu na základě vašeho zákazníka.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Pochopení rozdílů mezi prodejních míst
-Vybrat storu, začněte určením cílovou skupinou pro vaši nabídku. Pokud na cílovou skupinou v několika prodejní místa, publikováním jednou Pokud chcete prodávat v několika prodejní místa.
+## <a name="understanding-the-differences-between-storefronts"></a>Princip rozdílů mezi prodejní místa
+Pokud chcete zvolit prezentace, začněte tím, že identifikujete cílovou skupinu pro vaši nabídku. Pokud cílíte na cílové skupiny ve více prodejní místa, můžete je publikovat ve více prodejní místa.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
-| IT specialisté a vývojáři | Podnikoví uživatelé a pracovníci s rozhodovací pravomocí |
+| IT specialisté a vývojáři | Obchodní uživatelé a tvůrci podnikových rozhodnutí |
  
-Následující tabulka popisuje výhody z prodejních míst:
+Následující tabulka popisuje výhody použití prezentace:
 
-| Výhody | AppSource | Azure Marketplace |
+| Výhody | Azure Marketplace | AppSource | 
 |:--- |:--- | :--- |
-| **Flexibilita fakturace** | Podporuje AppSource bezplatné a zkušební verze, BYOL a typy transactable nabídek. Jsou transactable nabídky předplatného produkty založené na SaaS, které může každý měsíc nebo rok na fakturaci na pracovní stanici nebo paušální sazba. nezáleží.| Azure Marketplace podporuje bezplatné a zkušební verze, BYOL a typy transactable nabídek. Transactable nabídky jsou založené na spotřebě nebo na základě předplatného. Založenou na skutečné spotřebě nabídky se účtují po použití HODINOVĚ a můžete zadat počáteční bezplatného období. Na základě předplatného služby se účtují měsíční nebo roční na pracovní stanici nebo paušální sazba. nezáleží.|
-|**Připojení s ostatními partnery** | Odkazy nezávislým výrobcům softwaru, systémovým integrátorům a poskytovatelům spravovaných služeb na konkrétní implementaci scénáře. Můžete spolupracovat Prodávejte ji novým zákazníkům. | V současné době nelze propojit partneři služeb poskytovatele nebo doručování pro vaši nabídku. | 
-| **Automation** | Odkazy nezávislým výrobcům softwaru, systémovým integrátorům a poskytovatelům spravovaných služeb na konkrétní implementaci scénáře. Můžete spolupracovat Prodávejte ji novým zákazníkům. | V současné době nelze propojit partneři služeb poskytovatele nebo doručování pro vaši nabídku. Využijte výhod automatizované software jako služba (SaaS) při zřizování doplněk. Pomocí aplikace Azure: Šablona řešení publikování možnost automatizovat scénářích nasazení a shromažďování dat založené na SaaS. |
-| **Více typy prostředí cloud** | V současné době nepodporuje Azure Stack, Azure Government nebo místní cloudy. | Publikování řešení pro veřejný cloud a místní pomocí následujících typů:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionální cloudů, včetně Číny a Německa</li></ul> |
-| **V kontextu prezentace na zákazníky** | Oslovte více zákazníků prostřednictvím prostředí v aplikaci pro produkty společnosti Microsoft, jako je Dynamics 365, Power BI a Office 365. | Zpřístupníte vaše řešení v prostředí Azure-portal pro kontextové vyhledávání. Použití aplikací virtuálního počítače a Azure: Možnosti publikování šablony řešení. |
+| **Flexibilita fakturace** | Azure Marketplace podporuje typy nabídek Free, Trial, BYOL a transacted. Nabídky s podporou transakcí jsou buď založené na spotřebě, nebo na základě předplatného. Nabídky na základě spotřeby se účtují podle hodinového využití a můžou poskytnout počáteční bezplatnou dobu. Služby založené na předplatném se účtují měsíčně nebo ročně na základě sazby za pracovní stanici nebo paušální sazbou.| AppSource podporuje typy nabídek Free, Trial, BYOL a transacted. Nabídky s podporou transakcí jsou SaaS produkty založené na předplatném, které se dají měsíčně nebo ročně vystavovat za pracovní stanici nebo paušální sazbu. |
+|**Připojení k ostatním partnerům**  | V současné době nemůžete propojit poskytovatele služeb od partnerů pro doručování s vaší nabídkou. | Propojí nezávislé výrobce softwaru, systémové integrátory a poskytovatele spravovaných služeb s konkrétními scénáři implementace. Můžete spolupracovat na nové zákazníky. |
+| **Automation** | V současné době nemůžete propojit poskytovatele služeb od partnerů pro doručování s vaší nabídkou. Využijte automatizovaný software jako službu (SaaS) se zřizováním doplňků. Použití aplikací Azure: Možnost publikování šablon řešení pro automatizaci scénářů shromažďování a nasazování dat založeného na SaaS. | Propojí nezávislé výrobce softwaru, systémové integrátory a poskytovatele spravovaných služeb s konkrétními scénáři implementace. Můžete spolupracovat na nové zákazníky. |
+| **Více typů cloudu** | Publikujte řešení pro veřejný i místní cloud pomocí následujících typů:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionální cloudy, včetně Číny a Německa</li></ul> | V současné době nepodporuje Azure Stack, Azure Government nebo regionální cloudy. |
+| **Prezentace v kontextu zákazníkům** | Zpřístupněte vaše řešení v prostředí Azure v rámci portálu pro kontextové hledání. Použijte virtuální počítač a aplikace Azure: Možnosti publikování šablon řešení | Využijte prostředí v aplikaci pro produkty Microsoftu, jako je Dynamics 365, Power BI a Office 365, můžete oslovit víc zákazníků. |
 
 ## <a name="next-steps"></a>Další postup
-*   Zkontrolujte [Průvodce publikováním webu Azure Marketplace a AppSource](./marketplace-publishers-guide.md).
+*   Přečtěte si příručku pro [publikování Azure Marketplace a AppSource](./marketplace-publishers-guide.md).
 

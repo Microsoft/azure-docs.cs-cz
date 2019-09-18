@@ -4,7 +4,7 @@ description: Popisuje integrace Azure gateway ověření služby RADIUS se serve
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666216"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058884"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 
@@ -41,9 +41,9 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 3. Vytvořte bránu virtuální sítě tak, že zadáte následující nastavení:
 
     - **Typ brány**: Vyberte **VPN**.
-    - **Typ sítě VPN**: Vyberte **založené na trasách**.
-    - **SKLADOVÁ POLOŽKA**: Vyberte typ skladové položky na základě vašich požadavků.
-    - **Virtuální síť**: Vyberte virtuální síť, ve kterém vytvoříte podsíť brány.
+    - **Typ sítě VPN**: Vyberte **směrování založené na trasách**.
+    - **SKU**: Vyberte typ skladové položky podle vašich požadavků.
+    - **Virtuální síť**: Vyberte virtuální síť, ve které jste vytvořili podsíť brány.
 
         ![Obrázek o nastavení brány virtuální sítě](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -52,18 +52,18 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 konfigurace serveru NPS pro Azure MFA
 
 1. Na serveru NPS [nainstalovat rozšíření NPS pro Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otevřete konzoly serveru NPS, klikněte pravým tlačítkem na **klientů RADIUS**a pak vyberte **nový**. Vytvořte klienta RADIUS zadáním následující nastavení:
+2. Otevřete konzolu NPS, klikněte pravým tlačítkem na **Klienti RADIUS**a pak vyberte **Nový**. Vytvořte klienta protokolu RADIUS zadáním následujících nastavení:
 
     - **Popisný název**: Zadejte libovolný název.
     - **Adresa (IP nebo DNS)** : Zadejte podsíť brány, kterou jste vytvořili v kroku 1.
     - **Sdílený tajný klíč**: Zadejte jakékoli tajný klíč a nezapomeňte ho pro pozdější použití.
 
-      ![Obrázek o nastavení klienta protokolu RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obrázek o nastavení klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **Upřesnit** kartu, nastavte název dodavatele **RADIUS Standard** a ujistěte se, že **další možnosti** není zaškrtnuté políčko.
 
-    ![Obrázek o pokročilé nastavení klienta protokolu RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![Obrázek o rozšířených nastaveních klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Přejděte na **zásady** > **zásady sítě**, dvakrát klikněte na panel **připojení k serveru Microsoft Routing a vzdálený přístup** zásad, vyberte  **Udělení přístupu**a potom klikněte na tlačítko **OK**.
 
@@ -74,7 +74,7 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 3. Klikněte na tlačítko **přejděte na konfigurace lokality** > **nakonfigurovat**a pak zadejte následující nastavení:
 
     - **Fond adres**: Zadejte podsíť brány, kterou jste vytvořili v kroku 1.
-    - **Typ ověřování**: Vyberte **ověřování pomocí protokolu RADIUS**.
+    - **Typ ověřování**: Vyberte **ověřování RADIUS**.
     - **IP adresa serveru**: Zadejte IP adresu serveru NPS.
 
       ![Obrázek o, přejděte na nastavení lokality](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)

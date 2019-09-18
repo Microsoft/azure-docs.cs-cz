@@ -1,6 +1,6 @@
 ---
-title: Použití Apache Hivu jako nástroje ETL – Azure HDInsight
-description: Pomocí Apache Hive extrakce, transformace a načítání (ETL) dat v Azure HDInsight.
+title: Použití Apache Hive jako nástroje ETL – Azure HDInsight
+description: Použijte Apache Hive k extrakci, transformaci a načítání dat (ETL) ve službě Azure HDInsight.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,31 +8,31 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: e21f3eed7e631c974d34f148b85843b055deaf60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706855"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076247"
 ---
-# <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hivu jako nástroj extrakce, transformace a načítání (ETL)
+# <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
 
-Je obvykle potřeba čištění a transformace příchozích dat před jejich načtením do cíle vhodný pro účely analýzy. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíl dat.  Apache Hive s HDInsight může číst v nestrukturovaných dat, zpracování dat podle potřeby a pak načíst data do relačního datového skladu pro podporu systémů rozhodnutí. V takovém případě jsou data extrahovaná ze zdroje a uložená v škálovatelné úložiště, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. Data se potom transformuje použití posloupnosti dotazů Hive a nakonec zpracováním v rámci Hive v rámci přípravy pro hromadné načítání do cílového úložiště dat.
+Obvykle je nutné vyčistit a transformovat příchozí data před jejich načtením do cíle vhodného pro analýzu. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíle dat.  Apache Hive ve službě HDInsight může číst v nestrukturovaných datech, zpracovávat data podle potřeby a následně data načíst do relačního datového skladu pro systémy podpory rozhodování. V tomto přístupu se data extrahují ze zdroje a ukládají se do škálovatelného úložiště, například Azure Storage objektů BLOB nebo Azure Data Lake Storage. Data se pak transformují pomocí sekvence dotazů na podregistr a v rámci tohoto podregistru se nakonec připravují pro hromadné načítání do cílového úložiště dat.
 
-## <a name="use-case-and-model-overview"></a>Přehled případu a modelů
+## <a name="use-case-and-model-overview"></a>Přehled případu a modelu použití
 
-Následující obrázek znázorňuje přehled o případu použití a model pro službu ETL automation. Generovat odpovídající výstup se transformuje vstupní data.  Při transformaci můžete změnit data obrazce, datový typ a dokonce i jazyk.  Procesy ETL můžete převést Imperial metriku, změnit časová pásma a zvýšit přesnost správně zarovnat s existujícími daty v cílovém umístění.  Procesy ETL můžete také kombinovat nová data s existujícími daty zachovat Reporting aktuální, nebo k poskytování dalších přehledů o existující data.  Aplikace, jako je vytváření sestav nástroje a služby, pak mohou využívat tato data v požadovaném formátu.
+Následující obrázek ukazuje přehled případu použití a modelu pro automatizaci ETL. Vstupní data jsou transformovaná tak, aby vygenerovala příslušný výstup.  Během této transformace mohou data měnit tvar, datový typ a dokonce i jazyk.  Procesy ETL můžete převést na možnost britské na metriky, změnit časová pásma a zlepšit přesnost správného zarovnání se stávajícími daty v cíli.  Procesy ETL mohou také kombinovat nová data se stávajícími daty, aby bylo možné sestavy stále aktuální, nebo poskytovat další přehled o stávajících datech.  Aplikace, jako jsou nástroje pro vytváření sestav a služby, pak mohou tato data spotřebovat v požadovaném formátu.
 
-![Apache Hivu jako ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+![Apache Hive jako architektura ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop se obvykle používá v ETL procesy, které importovat buď obrovské množství textové soubory (např. csv) nebo menší, ale často mění číslo textové soubory nebo obojí.  Hive je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Hive můžete vytvořit schéma přes sdílený svazek clusteru a generovat programů MapReduce, které pracují s daty pomocí jazyka typu SQL. 
+Hadoop se obvykle používá v procesech ETL, které importují buď obrovské množství textových souborů (například CSV), nebo menší, často se měnící počet textových souborů nebo obojí.  Podregistr je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Podregistr umožňuje vytvořit schéma přes sdílený svazek clusteru a použít jazyk podobný SQL ke generování MapReduce programů, které pracují s daty. 
 
-Typické postupy použití Hive k provedení ETL jsou následující:
+K provedení ETL jsou typické kroky pro použití podregistru:
 
-1. Načtení dat do služby Azure Data Lake Storage nebo Azure Blob Storage.
-2. Vytvoření databáze metadat Store (využívající Azure SQL Database) pro použití Hive v ukládání vašich schémata.
-3. Vytvoření clusteru HDInsight a připojte úložiště.
-4. Definice schématu pro použití při čtení dat v úložišti dat:
+1. Načte data do Azure Data Lake Storage nebo Azure Blob Storage.
+2. Vytvořte databázi úložiště metadat (pomocí Azure SQL Database), kterou použijete v podregistru při ukládání schémat.
+3. Vytvořte cluster HDInsight a připojte úložiště dat.
+4. Zadejte schéma, které se má použít pro dobu čtení dat v úložišti dat:
 
     ```
     DROP TABLE IF EXISTS hvac;
@@ -48,48 +48,48 @@ Typické postupy použití Hive k provedení ETL jsou následující:
     STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
-5. Transformace dat a jejich načtení do cíle.  Použití Hivu během transformace a načítání několika způsoby:
+5. Transformujte data a načtěte je do cíle.  Existuje několik způsobů, jak použít podregistr při transformaci a načítání:
 
-    * Dotazování a příprava dat pomocí Hivu a uložte ho jako sdíleného svazku clusteru v Azure Data Lake Storage nebo Azure blob storage.  Pak pomocí nástroje jako je integrace služby SSIS (SQL Server) k získání těchto sdílených svazků clusteru a načtení dat do cílové relační databáze jako je SQL Server.
-    * Dotaz na data přímo z aplikace Excel nebo C# pomocí ovladače Hive ODBC.
-    * Použití [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) číst připravené plochých souborů CSV a načíst je do cílové relační databáze.
+    * Dotazování a Příprava dat pomocí podregistru a jeho uložení ve formátu CSV do Azure Data Lake Storage nebo úložiště objektů BLOB v Azure.  Pak pomocí nástroje jako služba SSIS (SQL Server Integration Services) (SSIS) Získejte tyto CSV a načtěte data do cílové relační databáze, jako je například SQL Server.
+    * Dotazujte data přímo z Excelu nebo C# pomocí ovladače podregistr ODBC.
+    * Pomocí [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) si můžete přečíst připravené soubory CSV a načíst je do cílové relační databáze.
 
 ## <a name="data-sources"></a>Zdroje dat
 
-Zdroje dat jsou obvykle externí data, která by se shodovala se stávajícími daty v úložišti dat například:
+Zdroje dat jsou obvykle externí data, která se dají spárovat se stávajícími daty v úložišti dat, například:
 
-* Data sociálních médií, soubory protokolů, senzory a aplikací, které generují data souborů.
-* Datové sady ze zprostředkovatele dat, jako je například statistické údaje o počasí nebo dodavatele získat prodejní čísla.
-* Streamovaná data zachytit, filtrovat a zpracovává prostřednictvím vhodného nástroje nebo architektury.
+* Data sociálních médií, soubory protokolů, senzory a aplikace, které generují datové soubory.
+* Datové sady získané od zprostředkovatelů dat, jako jsou třeba statistiky počasí nebo prodejní čísla dodavatelů.
+* Streamovaná data zachycená, filtrovaná a zpracovaná prostřednictvím vhodného nástroje nebo architektury.
 
 <!-- TODO: (see Collecting and loading data into HDInsight). -->
 
-## <a name="output-targets"></a>Výstup cíle
+## <a name="output-targets"></a>Cíle výstupu
 
-Hive můžete použít k výstupní data do různých cílů, včetně:
+Můžete použít podregistr pro výstup dat do celé řady cílů, včetně:
 
-* Relační databáze, jako je například SQL Server nebo databázi SQL Azure.
-* Datový sklad, jako je Azure SQL Data Warehouse.
+* Relační databáze, například SQL Server nebo Azure SQL Database.
+* Datový sklad, například Azure SQL Data Warehouse.
 * Excel.
-* Azure table a blob storage.
-* Aplikace nebo služby, které vyžadují data ke zpracování do určité formáty, nebo jako soubory, které obsahují konkrétní typy struktury informace.
-* Store dokumentů JSON, jako jsou <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
+* Azure Table a BLOB Storage.
+* Aplikace nebo služby, které vyžadují zpracování dat do konkrétních formátů nebo jako soubory, které obsahují určité typy informačních struktur.
+* Úložiště dokumentů JSON, jako je <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
 
 ## <a name="considerations"></a>Požadavky
 
-ETL model se obvykle používá, když chcete:
+Model ETL se obvykle používá, pokud chcete:
 
-* Načíst data datového proudu nebo velké objemy nestrukturovaných nebo částečně strukturovaných dat z externích zdrojů do existující databáze nebo informace o systému.
-* Vyčistit, transformace a ověřit data před načtením, třeba pomocí více než jedna transformace předávání clusteru.
-* Generovat sestavy a vizualizace, které se pravidelně aktualizují.  Například pokud sestavy trvá příliš dlouho k vygenerování během dne, při plánování sestavy ke spuštění v noci.  Azure Scheduler a prostředí PowerShell můžete použít pro automatické spouštění dotazů Hive.
+* Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
+* Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
+* Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují.  Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci.  K automatickému spuštění dotazu na podregistr můžete použít Azure Scheduler a PowerShell.
 
-Pokud cíl pro data se nejedná o databázi, můžete generovat soubor v příslušném formátu v rámci dotazu, například sdíleného svazku clusteru. Tento soubor lze poté importovat do Excelu nebo Power BI.
+Pokud cíl pro data není databáze, můžete vygenerovat soubor v příslušném formátu v rámci dotazu, například CSV. Tento soubor je pak možné importovat do aplikace Excel nebo Power BI.
 
-Pokud je potřeba provést několik operací s daty jako součást procesu ETL, zvažte, jak spravovat. Pokud operace jsou řízeny externí program, spíše než jako pracovní postup v rámci řešení, musíte se rozhodnout, zda některé operace lze provádět paralelně a zjistit, kdy každá úloha dokončí. Pomocí mechanismu pracovní postup například Oozie v systému Hadoop může být jednodušší než se pokoušet o orchestraci pořadí operací pomocí externích skriptů nebo vlastních aplikací. Další informace o Oozie najdete v tématu [pracovního postupu a úlohy Orchestrace](https://msdn.microsoft.com/library/dn749829.aspx).
+Pokud v rámci procesu ETL potřebujete spustit několik operací s daty, zvažte, jak je spravovat. Pokud jsou operace ovládány externím programem, nikoli jako pracovní postup v rámci řešení, je nutné rozhodnout, zda lze některé operace provádět paralelně, a zjistit, kdy se Každá úloha dokončí. Použití mechanismu pracovního postupu, jako je Oozie v rámci Hadoop, může být jednodušší než pokus o orchestraci sekvence operací pomocí externích skriptů nebo vlastních programů. Další informace o Oozie najdete v článku [orchestrace pracovních postupů a úloh](https://msdn.microsoft.com/library/dn749829.aspx).
 
 ## <a name="next-steps"></a>Další postup
 
 * [ETL ve velkém měřítku](apache-hadoop-etl-at-scale.md)
-* [Zprovoznění kanálu dat](../hdinsight-operationalize-data-pipeline.md)
+* [Zprovoznění datového kanálu](../hdinsight-operationalize-data-pipeline.md)
 
 <!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->

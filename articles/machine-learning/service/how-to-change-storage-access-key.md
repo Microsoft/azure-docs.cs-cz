@@ -1,7 +1,7 @@
 ---
 title: Změna přístupových klíčů účtu úložiště
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak změnit přístupové klávesy pro účet Azure Storage používaný vaším pracovním prostorem. Služba Azure Machine Learning používá k ukládání dat a modelů Azure Storage účet. Po opětovném vygenerování přístupového klíče pro účet úložiště musíte aktualizovat službu Azure Machine Learning, aby používala nové klíče.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak změnit přístupové klávesy pro účet Azure Storage používaný vaším pracovním prostorem. Azure Machine Learning používá k ukládání dat a modelů účet Azure Storage. Po opětovném vygenerování přístupového klíče pro účet úložiště musíte aktualizovat Azure Machine Learning pro použití nových klíčů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558225"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034955"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
-Naučte se, jak změnit přístupové klávesy pro účty Azure Storage používané službou Azure Machine Learning. Azure Machine Learning můžou používat účty úložiště k ukládání dat nebo školených modelů.
+Naučte se, jak změnit přístupové klávesy pro účty Azure Storage používané v Azure Machine Learning. Azure Machine Learning můžou používat účty úložiště k ukládání dat nebo školených modelů.
 
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
@@ -35,7 +35,7 @@ Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy 
 
 ## <a name="what-needs-to-be-updated"></a>Co je potřeba aktualizovat
 
-Účty úložiště můžou použít pracovní prostor služby Azure Machine Learning (ukládání protokolů, modelů, snímků atd.) a jako úložiště dat. Proces aktualizace pracovního prostoru je jedním příkazem rozhraní příkazového řádku Azure a může být spuštěn po aktualizaci klíče úložiště. Proces aktualizace úložiště dat je více zapojen a vyžaduje zjištění, jaké úložiště dat aktuálně používá účet úložiště, a pak je znovu zaregistrujete.
+Účty úložiště můžou použít pracovní prostor Azure Machine Learning (ukládání protokolů, modelů, snímků atd.) a jako úložiště dat. Proces aktualizace pracovního prostoru je jedním příkazem rozhraní příkazového řádku Azure a může být spuštěn po aktualizaci klíče úložiště. Proces aktualizace úložiště dat je více zapojen a vyžaduje zjištění, jaké úložiště dat aktuálně používá účet úložiště, a pak je znovu zaregistrujete.
 
 > [!IMPORTANT]
 > Aktualizujte pracovní prostor pomocí Azure CLI a úložiště dat pomocí Pythonu ve stejnou dobu. Aktualizace pouze jednoho nebo druhého není dostačující a může způsobit chyby, dokud se obě aktualizují.
@@ -74,7 +74,7 @@ Pokud existuje položka pro účet úložiště, pro který plánujete znovu vyg
 
 ## <a name="update-the-access-key"></a>Aktualizace přístupového klíče
 
-Chcete-li aktualizovat službu Azure Machine Learning, aby používala nový klíč, použijte následující postup:
+Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, použijte následující postup:
 
 > [!IMPORTANT]
 > Proveďte všechny kroky, aktualizujte pracovní prostor pomocí rozhraní příkazového řádku a úložiště dat pomocí Pythonu. Aktualizace pouze jednoho nebo druhého může způsobit chyby, dokud se obě aktualizují.

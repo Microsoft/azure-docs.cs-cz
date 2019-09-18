@@ -4,7 +4,7 @@ description: Resetování hesla místního uživatelského účtu systému Windo
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 75d6c10ded4038297689835d5ff012f344540e6f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638852"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058652"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetovat místní heslo Windows pro virtuální počítač Azure offline
 Místní heslo pro Windows virtuálního počítače v Azure můžete resetovat pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) za předpokladu, že je nainstalovaný Agent hosta Azure. Tato metoda je hlavním způsobem, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na problémy s agentem hosta Azure nereaguje nebo se nedaří nainstalovat po nahrání vlastní image, můžete heslo pro Windows resetovat ručně. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením virtuálního disku zdrojového operačního systému k jinému virtuálnímu počítači. Kroky popsané v tomto článku se nevztahují na řadiče domény se systémem Windows. 
@@ -212,11 +212,11 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
 2. Z vzdálené relace k novému virtuálnímu počítači odeberte následující soubory pro vyčištění prostředí:
     
     * Výsledkem`%windir%\System32`
-      * odebrány`FixAzureVM.cmd`
+      * Odebrány`FixAzureVM.cmd`
     * Výsledkem`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * odebrány`scripts.ini`
+      * Odebrány`scripts.ini`
     * Výsledkem`%windir%\System32\GroupPolicy`
       * odebrat `gpt.ini` (Pokud `gpt.ini` existovalo dřív a přejmenovali jste `gpt.ini.bak` `.bak` ho na, přejmenujte `gpt.ini`soubor zpátky na)
 
 ## <a name="next-steps"></a>Další postup
-Pokud se stále nemůžete připojit pomocí vzdálené plochy, přečtěte si příručku pro [odstraňování potíží s RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný průvodce odstraňováním potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) protokolem RDP hledá místo konkrétních kroků postupy řešení potíží. Můžete také [otevřít žádost o podporu Azure](https://azure.microsoft.com/support/options/) pro praktickou pomoc.
+Pokud se stále nemůžete připojit pomocí vzdálené plochy, přečtěte si [příručku pro odstraňování potíží s RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný průvodce odstraňováním potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) protokolem RDP hledá místo konkrétních kroků postupy řešení potíží. Můžete také [otevřít žádost o podporu Azure](https://azure.microsoft.com/support/options/) pro praktickou pomoc.

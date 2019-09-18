@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852719"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056385"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: Aplikace démona, která volá webová rozhraní API
 
@@ -60,11 +60,11 @@ Aplikace, které získají token pro vlastní identity:
 Pro vývojáře mají koncová prostředí pro tento scénář následující aspekty:
 
 - Aplikace démona můžou pracovat jenom v klientech Azure AD. Nesmyslem je vytvořit aplikaci démona, která se pokusí manipulovat s osobními účty Microsoft. Pokud jste vývojář pro obchodní aplikace (LOB), vytvoříte v tenantovi aplikaci démona. Pokud jste nezávislý výrobce softwaru, možná budete chtít vytvořit aplikaci démona s více klienty. Bude muset být odsouhlasena každým správcem tenanta.
-- V průběhu [Registrace aplikace](./scenario-daemon-app-registration.md)není **identifikátor URI odpovědi** potřeba. Potřebujete sdílet tajné klíče nebo certifikáty s Azure AD a musíte požádat o oprávnění aplikací a udělit souhlas správce, aby tato oprávnění aplikace používal.
+- V průběhu [Registrace aplikace](./scenario-daemon-app-registration.md)není **identifikátor URI odpovědi** potřeba. Potřebujete sdílet tajné klíče, certifikáty nebo podepsané kontrolní výrazy s Azure AD a musíte požádat o oprávnění aplikací a udělit souhlas správce, aby tato oprávnění aplikace používal.
 - [Konfigurace aplikace](./scenario-daemon-app-configuration.md) musí při registraci aplikace zadat přihlašovací údaje klienta jako sdílené se službou Azure AD.
 - [Rozsah](scenario-daemon-acquire-token.md#scopes-to-request) použitý k získání tokenu s tokem pověření klienta musí být statickým oborem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Aplikace démona – registrace aplikace](./scenario-daemon-app-registration.md)

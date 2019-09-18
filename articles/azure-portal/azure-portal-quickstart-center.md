@@ -1,6 +1,6 @@
 ---
 title: Přehled webu Azure Portal | Dokumentace Microsoftu
-description: Začínáme s Azure pomocí prostředí s asistencí
+description: Začínáme s Azure pomocí Průvodce rychlým zprovozněním v Azure
 services: azure-portal
 keywords: ''
 author: kfollis
@@ -9,12 +9,12 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2dd34c11bc6a8d09c8a375cf73e5efad4fceff04
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5086198a4e4efafe3ac05f1f182f7f09d867a709
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004251"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076735"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Začínáme s centrem Azure pro rychlé zprovoznění
 
@@ -41,7 +41,7 @@ Podrobné informace o tom, co vám centrum rychlého startu Azure může za vás
 
 [Úvod do centra rychlý Start pro Azure](https://www.youtube.com/watch?v=0bSA7RXrbAg)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o nastavení a migraci Azure v [rozhraní Microsoft Cloud pro přijetí pro Azure](/azure/architecture/cloud-adoption/).
 * Využijte své cloudové dovednosti s dalšími kurzy od [Microsoft Learn](/learn/azure/).

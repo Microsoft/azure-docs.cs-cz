@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 011fb262ff91c56269c5b7dc9adf4aaeab9acbd5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229047"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063846"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Můžete povolit JavaScriptový kód na straně klienta v Azure Active Directory (Azure AD) zásady B2C, ať už používáte toky uživatelů nebo vlastní zásady. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat rozložení stránky a ve svých žádostech použít [b2clogin.com](b2clogin.md) .
+Můžete povolit JavaScriptový kód na straně klienta v zásadách Azure Active Directory B2C (Azure AD B2C) bez ohledu na to, jestli používáte toky uživatelů nebo vlastní zásady. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat rozložení stránky a ve svých žádostech použít [b2clogin.com](b2clogin.md) .
 
 Rozložení stránky je přidružení prvků, které Azure AD B2C poskytuje, a obsahu, který zadáte.
 

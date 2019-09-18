@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 57aed26fe2f2f03dca347836f21d1cad14a07642
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849399"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063351"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
-Než můžou vaše aplikace pracovat s Azure Active Directory (Azure AD) B2C, musí být zaregistrované v tenantovi, které spravujete.
+Než můžou vaše aplikace pracovat s Azure Active Directory B2C (Azure AD B2C), musí být zaregistrované v tenantovi, které spravujete.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné. V horní nabídce klikněte na **Filtr adresář a odběr** a pak vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který bude obsahovat vašeho tenanta Azure AD B2C.
+2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který bude obsahovat vašeho tenanta Azure AD B2C.
 
     ![Filtr adresářů a předplatných s vybraným klientem předplatného](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
 
@@ -51,9 +51,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     Vyberte tenanta, kterého jste vytvořili, a vyberte své předplatné.
 
     V případě skupiny prostředků vyberte **vytvořit novou**. Zadejte název skupiny prostředků, která bude obsahovat tenanta, vyberte umístění a pak klikněte na **vytvořit**.
-1. Pokud chcete začít používat nového tenanta, ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na **Filtr adresář a odběr** v horní nabídce a výběrem adresáře, který ho obsahuje.
+1. Pokud chcete začít používat nového tenanta, ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který ho obsahuje.
 
-    Pokud se v seznamu poprvé nezobrazuje nový tenant Azure B2C, aktualizujte okno prohlížeče a potom v horní nabídce vyberte znovu **adresář a filtr** předplatných.
+    Pokud se v seznamu nezobrazuje nový tenant Azure B2C, aktualizujte okno prohlížeče a potom v horní nabídce znovu vyberte filtr **adresář + odběr** .
 
     ![Filtr adresářů a předplatných s vybraným klientem B2C](./media/tutorial-create-tenant/switch-directories.PNG)
 

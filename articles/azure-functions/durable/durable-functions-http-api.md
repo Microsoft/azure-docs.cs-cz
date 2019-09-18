@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933386"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033956"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
 
@@ -28,7 +28,7 @@ Všechna rozhraní API HTTP implementovaná rozšířením vyžadují následuj�
 | **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadaný, předpokládá se výchozí připojovací řetězec pro aplikaci Function App. |
 | **`systemKey`**  | Řetězec dotazu    | Autorizační klíč vyžadovaný k vyvolání rozhraní API. |
 
-`systemKey`je autorizační klíč automaticky generovaný hostitelem Azure Functions. Konkrétně udělí přístup k rozhraním API rozšíření odolného úkolu a lze ho spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Nejjednodušší způsob, jak zjistit hodnotu `systemKey` , je `CreateCheckStatusResponse` pomocí výše zmíněného rozhraní API.
+`systemKey`je autorizační klíč automaticky generovaný hostitelem Azure Functions. Konkrétně udělí přístup k rozhraním API rozšíření odolného úkolu a lze ho spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Můžete generovat adresy URL, které obsahují správné `taskHub`hodnoty `connection`, a `systemKey` řetězce dotazu pomocí rozhraní API pro [vázání klienta Orchestration](durable-functions-bindings.md#orchestration-client) , `createCheckStatusResponse` jako jsou `CreateCheckStatusResponse` rozhraní `CreateHttpManagementPayload` API a v rozhraní .NET, nebo `createHttpManagementPayload` Rozhraní API v JavaScriptu.
 
 Několik dalších oddílů pokrývá konkrétní rozhraní HTTP API podporovaná rozšířením a poskytuje příklady, jak je lze použít.
 

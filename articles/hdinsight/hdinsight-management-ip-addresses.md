@@ -3,20 +3,21 @@ title: IP adresy pro správu Azure HDInsight
 description: Zjistěte, které IP adresy musíte povolit pro příchozí provoz, aby bylo možné správně nakonfigurovat skupiny zabezpečení sítě a uživatelem definované trasy pro virtuální sítě s Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479204"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076634"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP adresy správy HDInsight
 
-Pokud k řízení příchozího provozu do clusteru HDInsight používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo trasy definované uživatelem (udr), musíte zajistit, aby váš cluster mohl komunikovat s důležitými službami stavu a správy Azure.  Některé z těchto IP adres pro tyto služby jsou specifické pro jednotlivé oblasti a některé z nich se vztahují na všechny oblasti Azure. Pokud nepoužíváte vlastní server DNS, možná budete muset u služby Azure DNS taky vyžadovat provoz.
+Pokud k řízení příchozího provozu do clusteru HDInsight používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo trasy definované uživatelem (udr), musíte zajistit, aby váš cluster mohl komunikovat s důležitými službami stavu a správy Azure.  Některé z těchto IP adres pro tyto služby jsou specifické pro jednotlivé oblasti a některé z nich se vztahují na všechny oblasti Azure. Možná budete muset povolit provoz také ze služby Azure DNS, pokud nepoužíváte vlastní DNS.
 
 Následující části popisují konkrétní IP adresy, které musí být povoleny.
 
@@ -28,7 +29,7 @@ Pokud používáte službu DNS poskytovanou službou Azure, povolte přístup z 
 
 Povolte provoz z následujících IP adres pro služby Azure HDInsight Health a Management, které se vztahují na všechny oblasti Azure:
 
-| Zdrojová IP adresa | Cíl  | Direction |
+| Zdrojová IP adresa | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | Příchozí |
 | 23.99.5.239 | \*:443 | Příchozí |
@@ -68,10 +69,10 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*:443 | Příchozí
 | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*:443 | Příchozí |
 | &nbsp; | Velká Británie – jih | 51.140.47.39</br>51.140.52.16 | \*:443 | Příchozí |
-| Spojené státy | Střední USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
+| Spojené státy | Střed USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
-| &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
-| &nbsp; | Středozápadní USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
+| &nbsp; | Střed USA – sever | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
+| &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
 | &nbsp; | USA – západ | 13.64.254.98</br>23.101.196.19 | \*:443 | Příchozí |
 | &nbsp; | USA – západ 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Příchozí |
 
@@ -81,6 +82,6 @@ Další informace najdete v části [řízení síťového provozu](hdinsight-pl
 
 Pokud používáte uživatelsky definované trasy (udr), měli byste zadat trasu a pro odchozí přenosy z virtuální sítě na výše uvedené IP adresy nastavit další segment směrování na Internet.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md)

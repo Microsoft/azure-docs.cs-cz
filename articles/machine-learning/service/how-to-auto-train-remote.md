@@ -1,7 +1,7 @@
 ---
 title: Automatizované vzdálené výpočetní cíle pro automatizované na ML
-titleSuffix: Azure Machine Learning service
-description: Naučte se vytvářet modely pomocí automatizovaného strojového učení na Azure Machine Learning vzdálených výpočetních cílů pomocí služby Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Naučte se vytvářet modely pomocí automatizovaného strojového učení na Azure Machine Learning vzdálených výpočetních cílů s Azure Machine Learning
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858814"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034992"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -288,6 +288,6 @@ Poznámkový blok [How-to-use-AzureML/Automated-Machine-Learning/Remote-amlcompu
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si [jak nakonfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).

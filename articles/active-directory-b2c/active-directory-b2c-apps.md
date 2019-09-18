@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369398"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066147"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C podporuje ověřování pro celou řadu moderních architektur aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](active-directory-b2c-reference-protocols.md) nebo [OpenID Connect](active-directory-b2c-reference-protocols.md). Tento článek popisuje typy aplikací, které můžete sestavit, nezávisle na jazyku nebo platformě, které dáváte přednost. Pomůže vám také pochopit scénáře vysoké úrovně předtím, než začnete sestavovat aplikace.
+Azure Active Directory B2C (Azure AD B2C) podporuje ověřování pro celou řadu moderních architektur aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](active-directory-b2c-reference-protocols.md) nebo [OpenID Connect](active-directory-b2c-reference-protocols.md). Tento článek popisuje typy aplikací, které můžete sestavit, nezávisle na jazyku nebo platformě, které dáváte přednost. Pomůže vám také pochopit scénáře vysoké úrovně předtím, než začnete sestavovat aplikace.
 
 Každá aplikace, která používá Azure AD B2C, musí být zaregistrovaná v [Azure AD B2C tenant](active-directory-b2c-get-started.md) pomocí [Azure Portal](https://portal.azure.com/). Proces registrace aplikace shromažďuje a přiřazuje hodnoty, jako například:
 
@@ -132,12 +132,12 @@ Tento scénář zřetězených webových rozhraní API může být podporován p
 
 Neupravujte Azure AD B2C aplikace těmito způsoby:
 
-- Na jiných portálech pro správu aplikací, jako je [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
+- Na jiných portálech pro správu aplikací, jako je [portál pro registraci aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - Použití Graph API nebo PowerShellu.
 
 Pokud aplikaci Azure AD B2C upravíte mimo Azure Portal, stane se chybnou aplikací a již nebude použitelná s Azure AD B2C. Odstraňte aplikaci a znovu ji vytvořte.
 
-Pokud chcete aplikaci odstranit, použijte portál pro [registraci aplikací](https://apps.dev.microsoft.com/) a odstraňte aplikaci. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
+Pokud chcete aplikaci odstranit, použijte portál pro [registraci aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a odstraňte aplikaci. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
 
 ## <a name="next-steps"></a>Další postup
 

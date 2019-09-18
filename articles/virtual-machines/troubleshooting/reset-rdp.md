@@ -1,10 +1,10 @@
 ---
-title: Resetování služby Vzdálená plocha nebo jeho heslo správce virtuálního počítače s Windows | Dokumentace Microsoftu
-description: Zjistěte, jak obnovit heslo k účtu nebo služby Vzdálená plocha na virtuálním počítači s Windows pomocí webu Azure portal nebo Azure Powershellu.
+title: Resetování služby Vzdálená plocha nebo jejího hesla správce ve virtuálním počítači s Windows | Microsoft Docs
+description: Přečtěte si, jak resetovat heslo účtu nebo službu Vzdálená plocha na virtuálním počítači s Windows pomocí Azure Portal nebo Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 45c69812-d3e4-48de-a98d-39a0f5675777
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: caa0066f8020c19cecccaa0421f90188260c644b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710627"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058443"
 ---
-# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jeho heslo správce virtuálního počítače s Windows
-Pokud se nemůžete připojit k virtuálnímu počítači Windows (VM), můžete resetovat heslo místního správce nebo resetujte konfiguraci služby Vzdálená plocha (není podporováno ve Windows řadiče domény). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
-Pokud používáte PowerShell, ujistěte se, že máte [nejnovější modul Powershellu nainstalovanou a nakonfigurovanou](/powershell/azure/overview) a přihlášeni ke svému předplatnému Azure. Můžete také [provést tento postup určený pro virtuální počítače vytvořené pomocí modelu nasazení Classic](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jejího hesla správce ve virtuálním počítači s Windows
+Pokud se nemůžete připojit k virtuálnímu počítači s Windows (VM), můžete resetovat heslo místního správce nebo Resetovat konfiguraci služby Vzdálená plocha (nepodporuje se na řadičích domény se systémem Windows). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
+Pokud používáte PowerShell, ujistěte se, že máte [nainstalovaný a nakonfigurovaný nejnovější modul prostředí PowerShell](/powershell/azure/overview) a že jste přihlášeni ke svému předplatnému Azure. Můžete také [provést tento postup určený pro virtuální počítače vytvořené pomocí modelu nasazení Classic](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
 
-Vzdálená plocha a přihlašovací údaje můžete resetovat následujícími způsoby:
+Službu Vzdálená plocha a přihlašovací údaje můžete resetovat následujícími způsoby:
 
-- [Resetovat pomocí webu Azure portal](#reset-by-using-the-azure-portal)
+- [Resetování pomocí Azure Portal](#reset-by-using-the-azure-portal)
 
-- [Resetovat pomocí rozšíření VMAccess a prostředí PowerShell](#reset-by-using-the-vmaccess-extension-and-powershell)
+- [Resetování pomocí rozšíření VMAccess a PowerShellu](#reset-by-using-the-vmaccess-extension-and-powershell)
 
-## <a name="reset-by-using-the-azure-portal"></a>Resetovat pomocí webu Azure portal
+## <a name="reset-by-using-the-azure-portal"></a>Resetování pomocí Azure Portal
 
-Nejprve se přihlaste k [webu Azure portal](https://portal.azure.com) a pak vyberte **virtuálních počítačů** v nabídce vlevo. 
+Nejdřív se přihlaste k [Azure Portal](https://portal.azure.com) a v levé nabídce vyberte **virtuální počítače** . 
 
-### <a name="reset-the-local-administrator-account-password"></a>**Resetování hesla účtu místního správce**
+### <a name="reset-the-local-administrator-account-password"></a>**Resetovat heslo účtu místního správce**
 
-1. Vyberte svůj virtuální počítač Windows a pak vyberte **resetovat heslo** pod **podpora a řešení potíží**. **Resetovat heslo** se zobrazí okno.
+1. Vyberte svůj virtuální počítač s Windows a potom v části **Podpora a řešení potíží**vyberte **resetovat heslo** . Zobrazí se okno **resetovat heslo** .
 
-2. Vyberte **resetovat heslo**, zadejte uživatelské jméno a heslo a pak vyberte **aktualizace**. 
+2. Vyberte **resetovat heslo**, zadejte uživatelské jméno a heslo a pak vyberte **aktualizovat**. 
 
-3. Zkuste se znovu připojit k virtuálnímu počítači.
+3. Zkuste se znovu připojit ke svému VIRTUÁLNÍmu počítači.
 
-### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetovat konfiguraci služby Vzdálená plocha**
+### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetování konfigurace služby Vzdálená plocha**
 
-Tento proces povolí služby Vzdálená plocha ve virtuálním počítači a vytvořte pravidlo brány firewall pro port RDP 3389 výchozí.
+Tento proces povolí na virtuálním počítači službu Vzdálená plocha a vytvoří pravidlo brány firewall pro výchozí port RDP 3389.
 
-1. Vyberte svůj virtuální počítač Windows a pak vyberte **resetovat heslo** pod **podpora a řešení potíží**. **Resetovat heslo** se zobrazí okno. 
+1. Vyberte svůj virtuální počítač s Windows a potom v části **Podpora a řešení potíží**vyberte **resetovat heslo** . Zobrazí se okno **resetovat heslo** . 
 
-2. Vyberte **resetovat jenom konfiguraci** a pak vyberte **aktualizace**. 
+2. Vyberte možnost **resetovat jenom konfiguraci** a pak vyberte **aktualizovat**. 
 
-3. Zkuste se znovu připojit k virtuálnímu počítači.
+3. Zkuste se znovu připojit ke svému VIRTUÁLNÍmu počítači.
 
-## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetovat pomocí rozšíření VMAccess a prostředí PowerShell
+## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetování pomocí rozšíření VMAccess a PowerShellu
 
-Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou a nakonfigurovanou](/powershell/azure/overview) a přihlášeni ke svému předplatnému Azure pomocí [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) rutiny.
+Nejdřív se ujistěte, že máte [nainstalovaný a nakonfigurovaný nejnovější modul prostředí PowerShell](/powershell/azure/overview) a že jste ke svému předplatnému Azure přihlášení pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
-### <a name="reset-the-local-administrator-account-password"></a>**Resetování hesla účtu místního správce**
+### <a name="reset-the-local-administrator-account-password"></a>**Resetovat heslo účtu místního správce**
 
-- Obnovení správce heslo nebo uživatelské jméno s [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. `typeHandlerVersion` Nastavení musí být 2.0 nebo novější, protože verze 1 je zastaralý. 
+- Obnovte heslo nebo uživatelské jméno správce pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. `typeHandlerVersion` Nastavení musí být 2,0 nebo vyšší, protože verze 1 je zastaralá. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -73,28 +73,28 @@ Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou 
     ```
 
     > [!NOTE] 
-    > Pokud zadáte jiný název než aktuální účet místního správce na svém virtuálním počítači, bude rozšíření VMAccess přidejte účet místního správce s tímto názvem a přiřadit zadané heslo k tomuto účtu. Pokud existuje účet místního správce na svém virtuálním počítači, bude rozšíření VMAccess resetovat heslo. Pokud účet je zakázaný, rozšíření VMAccess ji povolit.
+    > Pokud zadáte jiný název, než je aktuální účet místního správce na VIRTUÁLNÍm počítači, rozšíření VMAccess přidá účet místního správce s tímto názvem a přiřadí zadané heslo k tomuto účtu. Pokud účet místního správce ve vašem VIRTUÁLNÍm počítači existuje, rozšíření VMAccess resetuje heslo. Pokud je účet zakázaný, rozšíření VMAccess ho umožní.
 
-### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetovat konfiguraci služby Vzdálená plocha**
+### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetování konfigurace služby Vzdálená plocha**
 
-1. Resetování vzdáleného přístupu k vašemu virtuálnímu počítači s [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. Následující příklad resetuje rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači s názvem `myVM` v `myResourceGroup` skupina prostředků:
+1. Obnovte vzdálený přístup k VIRTUÁLNÍmu počítači pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. V následujícím příkladu se obnoví rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači `myVM` s názvem `myResourceGroup` ve skupině prostředků:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > V libovolném bodě virtuální počítač může mít pouze jednoho agenta virtuálního počítače přístup. Chcete-li nastavit vlastnosti agenta přístup k virtuálním počítačům, použijte `-ForceRerun` možnost. Při použití `-ForceRerun`, používají stejný název pro přístup k agenta virtuálního počítače, který jste možná použili ve všech předchozích příkazů.
+    > Virtuální počítač může mít v jakémkoli okamžiku jenom jeden agent přístupu k virtuálnímu počítači. Pokud chcete nastavit vlastnosti agenta přístupu k virtuálnímu počítači `-ForceRerun` , použijte možnost. Když použijete `-ForceRerun`, ujistěte se, že používáte stejný název pro agenta přístupu k virtuálnímu počítači, který jste mohli použít v jakémkoli z předchozích příkazů.
 
-1. Pokud se pořád nemůžete připojit vzdáleně ke svému virtuálnímu počítači, přečtěte si téma [připojení řešení potíží s vzdálené plochy k virtuálnímu počítači s Windows v Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud ztratíte připojení k řadiči domény Windows, je potřeba ho obnovit ze zálohy řadiče domény.
+1. Pokud se stále nemůžete vzdáleně připojit k virtuálnímu počítači, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud ztratíte připojení k řadiči domény Windows, budete ho muset obnovit z zálohování řadiče domény.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Pokud nereaguje rozšíření přístupu virtuálních počítačů Azure a budete moct resetovat heslo, můžete [resetování místního hesla Windows do režimu offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato metoda je složitější a vyžaduje, abyste k jinému virtuálnímu počítači připojit virtuální pevný disk problematického virtuálního počítače. Postupujte podle kroků popsaných v tomto článku nejprve a pokusit se metoda offline heslo resetovat jenom v případě, že tyto kroky nefungují.
+- Pokud rozšíření přístupu k virtuálnímu počítači Azure nereaguje a nemůžete resetovat heslo, můžete [místní heslo systému Windows obnovit offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato metoda je pokročilejší a vyžaduje, abyste připojili virtuální pevný disk problematického virtuálního počítače k jinému virtuálnímu počítači. Postupujte podle kroků popsaných v tomto článku a pokuste se použít metodu resetování hesla offline pouze v případě, že tyto kroky nefungují.
 
-- [Další informace o rozšíření virtuálních počítačů Azure a funkce](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Přečtěte si o funkcích a rozšíření virtuálních počítačů Azure](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 - [Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
-- [Řešení potíží s připojeními vzdálené plochy k virtuálnímu počítači s Windows v Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Řešení potíží s připojením vzdálené plochy k virtuálnímu počítači Azure se systémem Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

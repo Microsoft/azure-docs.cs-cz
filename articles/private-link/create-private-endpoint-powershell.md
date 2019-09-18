@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: f9a2bd4c4ec176e018948a7a5a01603d075a7ea2
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018007"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067838"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
@@ -182,29 +182,42 @@ mstsc /v:<publicIpAddress>
 2. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
   > [!NOTE]
   > Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače. 
+  
 3. Vyberte **OK**. 
 4. Může se zobrazit upozornění certifikátu. Pokud ano, vyberte **Ano** nebo **pokračovat**. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
 1. Ve vzdálené ploše myVM otevřete PowerShell.
-2. Enternslookup myserver.database.windows.net obdržíte zprávu podobnou této:  Server Azure PowerShellCopy:  Neznámá adresa:  neautoritativní odpověď 168.63.129.16:  Název: myserver.privatelink.database.windows.net adresa:  10.0.0.5 aliasy: myserver.database.windows.net
-3. Nainstalovat SQL Server Management Studio
-4. V Connect to Server (připojit k serveru) zadejte nebo vyberte tyto informace: Nastavením hodnoty typ serveru vyberte možnost databázový stroj.
-      Název serveru vyberte myserver.database.windows.net uživatelské jméno zadejte uživatelské jméno zadané během vytváření.
-      Heslo zadejte heslo, které jste zadali při vytváření.
-      Zapamatování hesla vyberte Ano.
-5. Vyberte připojit.
-6. Procházet databáze z levé nabídky 
-7. Volitelně Vytvoření nebo dotazování informací z MyDatabase
-8. Zavřete připojení ke vzdálené ploše pro *myVM*. 
+2. Zadejte `nslookup myserver.database.windows.net`. 
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
-Po dokončení používání privátního koncového bodu, SQL Database serveru a virtuálního počítače, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) a odeberte skupinu prostředků a všechny prostředky, které obsahuje:
+    Zobrazí se zpráva podobná této:
+    ```azurepowershell
+    Server:  UnKnown
+    Address:  168.63.129.16
+    Non-authoritative answer:
+    Name:    myserver.privatelink.database.windows.net
+    Address:  10.0.0.5
+    Aliases:   myserver.database.windows.net
+3. Install SQL Server Management Studio
+4. In Connect to server, enter or select this information:
+    Setting Value
+      Server type   Select Database Engine.
+      Server name   Select myserver.database.windows.net
+      Username  Enter a username provided during creation.
+      Password  Enter a password provided during creation.
+      Remember password Select Yes.
+5. Select Connect.
+6. Browse Databases from left menu. 
+7. (Optionally) Create or query information from mydatabase
+8. Close the remote desktop connection to *myVM*. 
+
+## Clean up resources 
+When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [privátním propojení Azure](private-link-overview.md)

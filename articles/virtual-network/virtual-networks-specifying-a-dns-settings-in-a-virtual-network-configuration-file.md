@@ -1,10 +1,10 @@
 ---
-title: Zadání nastavení DNS v konfiguračním souboru virtuální sítě | Dokumentace Microsoftu
-description: Změna nastavení serveru DNS ve virtuální síti pomocí souboru konfigurace virtuální sítě v modelu nasazení classic
+title: Zadání nastavení DNS v konfiguračním souboru virtuální sítě | Microsoft Docs
+description: Postup změny nastavení serveru DNS ve virtuální síti pomocí konfiguračního souboru virtuální sítě v modelu nasazení Classic
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 tags: azure-service-management
 ms.assetid: a8905927-92ac-42b5-8c33-8e42c000692c
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60232866"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059098"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Zadání nastavení DNS v konfiguračním souboru virtuální sítě
-Soubor konfigurace sítě má dva prvky, které můžete použít k určení nastavení systému DNS (Domain Name): **DnsServers** a **DnsServerRef**. Můžete přidat seznam serverů DNS zadáním jejich adresy IP a názvů, které se odkazují **DnsServers** elementu. Pak můžete použít **DnsServerRef** elementu k určení, které položky serveru DNS z elementu DnsServers se používají pro jiné síťové lokality ve vaší virtuální síti.
+Konfigurační soubor sítě má dva prvky, které můžete použít k zadání nastavení DNS (Domain Name System): **DnsServers** a **DnsServerRef**. Seznam serverů DNS můžete přidat zadáním jejich IP adres a referenčních názvů **DnsServers** elementu. Pak můžete pomocí elementu **DnsServerRef** určit, které položky serveru DNS z prvku DnsServers se používají pro různé síťové lokality v rámci vaší virtuální sítě.
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
 Tento článek se týká modelu nasazení Classic.
 
-Soubor konfigurace sítě může obsahovat následující prvky. Název každého prvku je propojen s stránku, která poskytuje další informace o nastavení hodnoty prvku.
+Konfigurační soubor sítě může obsahovat následující prvky. Název každého prvku je propojen se stránkou, která poskytuje další informace o nastavení hodnoty prvku.
 
 > [!IMPORTANT]
-> Informace o tom, jak nakonfigurovat soubor konfigurace sítě najdete v tématu [konfigurace virtuální sítě pomocí souboru konfigurace sítě](virtual-networks-using-network-configuration-file.md). Informace o každého prvku obsažených v konfiguračním souboru sítě, naleznete v tématu [Azure schéma konfigurace virtuální sítě](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+> Informace o konfiguraci konfiguračního souboru sítě najdete v tématu [konfigurace Virtual Network pomocí konfiguračního souboru sítě](virtual-networks-using-network-configuration-file.md). Informace o jednotlivých prvcích obsažených v konfiguračním souboru sítě najdete v tématu věnovaném [schématu konfigurace pro Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 > 
 > 
 
-[DNS Element](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Element DNS](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -47,11 +47,11 @@ Soubor konfigurace sítě může obsahovat následující prvky. Název každéh
     </Dns>
 
 > [!WARNING]
-> **Název** atribut **serveru DNS** prvek slouží pouze jako reference pro **DnsServerRef** elementu. To nepředstavuje název hostitele pro DNS server. Každý **serveru DNS** hodnota atributu musí být jedinečný mezi celé předplatné Microsoft Azure
+> Atribut **Name** v elementu **serveru DNS** je použit pouze jako odkaz pro element **DnsServerRef** . Nepředstavuje název hostitele pro server DNS. Každá hodnota atributu **serveru DNS** musí být v rámci celého předplatného Microsoft Azure jedinečná.
 > 
 > 
 
-[Element Sites se virtuální sítě](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Element Virtual Networkch lokalit](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <DnsServersRef>
       <DnsServerRef name="ID1" />
@@ -60,12 +60,12 @@ Soubor konfigurace sítě může obsahovat následující prvky. Název každéh
     </DnsServersRef>
 
 > [!NOTE]
-> Pokud chcete toto nastavení použijte pro element virtuální síťové lokality, se musí být dříve definován v elementu DNS. DnsServerRef *název* ve virtuální síťové lokality elementu musí odkazovat na název hodnota zadaná pro serveru DNS v DNS elementu *název*.
+> Chcete-li zadat toto nastavení pro prvek Virtual Network lokality, musí být dříve definováno v elementu DNS. *Název* DnsServerRef v elementu Virtual Network lokality musí odkazovat na hodnotu názvu zadanou v elementu DNS pro *název*serveru DNS.
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-* Vysvětlení [schéma konfigurace Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
-* Vysvětlení [schématu konfigurace služby Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
-* [Konfigurace virtuální sítě pomocí konfiguračních souborech sítě](virtual-networks-using-network-configuration-file.md).
+* Pochopení [schématu konfigurace Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
+* Pochopení [schématu konfigurace služby Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
+* [Nakonfigurujte virtuální síť pomocí konfiguračních souborů sítě](virtual-networks-using-network-configuration-file.md).
 

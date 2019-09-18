@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ad2372f9a9f90e4502b304a08477771fd6ef385
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880381"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037422"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení privátního cloudu CloudSimple jako lokality pro zotavení po havárii pro místní úlohy VMware
 
 Privátní cloud CloudSimple je možné nastavit jako lokalitu pro obnovení místních aplikací, aby poskytoval provozní kontinuitu pro případ havárie. Řešení obnovení vychází z Zerto virtuální replikace jako platforma pro replikaci a orchestraci. Kritickou infrastrukturu a virtuální počítače aplikací je možné replikovat nepřetržitě z místního serveru vCenter do privátního cloudu. Privátní Cloud můžete použít pro testování převzetí služeb při selhání a zajištění dostupnosti aplikace během havárie. Podobný přístup se dá nastavit jako primární lokalita, která je chráněná lokalitou pro obnovení v jiném umístění.
 
 > [!NOTE]
-> Pokyny k určení velikosti prostředí pro zotavení po havárii najdete v tématu [požadavky na změnu velikosti dokumentu Zerto pro virtuální replikaci Zerto](http://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) .
+> Pokyny k určení velikosti prostředí pro zotavení po havárii najdete v tématu [požadavky na změnu velikosti dokumentu Zerto pro virtuální replikaci Zerto](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) .
 
 Řešení CloudSimple:
 

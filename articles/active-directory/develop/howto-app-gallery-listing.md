@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898513"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033755"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -48,12 +48,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 
 - V případě jednotného přihlašování k heslu zajistěte, aby vaše aplikace podporovala ověřování formuláře, aby bylo možné provést jednotné přihlašování podle očekávání.
 
-- Pro automatické požadavky na zřizování uživatelů by měla být aplikace uvedená v galerii s funkcí jednotného přihlašování, která je povolená pomocí SAML 2.0/WS. Pro jednotné přihlašování a zřizování uživatelů můžete požádat na portálu, pokud už není uvedený.
-
 - Je potřeba mít stálý účet pro testování s registrovanými alespoň 2 uživateli.
-
-> [!NOTE]
-> Používáme s vysokým počtem požadavků konektoru SCIM, takže jsme na našem portálu zastavili nové žádosti. Počkejte prosím na své žádosti, dokud neproběhne další oznámení. Omlouváme se za toto zpoždění a případné komplikace, které to mohly způsobovat.
 
 ## <a name="submit-the-request-in-the-portal"></a>Odeslat žádost na portálu
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882477"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058616"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hive prostřednictvím ovladače JDBC v HDInsight
 
@@ -67,7 +67,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 4. Z ikon v horní části dialogového okna **ovladače** vyberte **+** ikonu pro vytvoření ovladače.
 
-    ![Ikony ovladačů](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    ![SQuirreL – ikona ovladačů aplikace SQL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. V dialogovém okně Přidat ovladač přidejte následující informace:
 
@@ -76,13 +76,13 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     * **Cesta k nadbytečné třídě**: Pomocí tlačítka **Přidat** přidejte všechny soubory jar stažené dříve.
     * **Název třídy**: org. Apache. podregistr. JDBC. HiveDriver
 
-   ![Dialog Přidat ovladač](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   ![Dialog Přidat ovladač s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Kliknutím na **tlačítko OK** tato nastavení uložte.
 
 6. Na levé straně okna SQuirreL SQL vyberte **aliasy**. Pak vyberte **+** ikonu pro vytvoření aliasu připojení.
 
-    ![Přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![Dialog SQuirreL SQL přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. V dialogovém okně **Přidat alias** použijte následující hodnoty.
 
@@ -98,16 +98,16 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
     * **Heslo**: Heslo pro přihlašovací účet clusteru
 
-   ![Dialog Přidat alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+   ![Dialog Přidat alias s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
-    > [!IMPORTANT] 
+    > [!IMPORTANT]
     > K ověření, že připojení funguje, použijte tlačítko **test** . Při **připojování k: Zobrazí se dialogové** okno podregistr v HDInsight, vyberte **připojit** a proveďte test. Pokud je test úspěšný, zobrazí se dialogové okno **připojení bylo úspěšné** . Pokud dojde k chybě, přečtěte si téma [Poradce při potížích](#troubleshooting).
 
     Pokud chcete uložit alias připojení, použijte tlačítko **OK** v dolní části dialogu **Přidat alias** .
 
 8. Z rozevíracího seznamu **připojit k** v horní části SQuirreL SQL vyberte **podregistr v HDInsight**. Po zobrazení výzvy vyberte **připojit**.
 
-    ![Dialogové okno připojení](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![Dialogové okno připojení s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Po připojení zadejte následující dotaz do dialogového okna dotazu SQL a pak vyberte ikonu **Spustit** (spuštěná osoba). V oblasti výsledků by se měly zobrazit výsledky dotazu.
 

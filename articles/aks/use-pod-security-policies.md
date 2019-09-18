@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061839"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058330"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -67,7 +67,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-pod-security-policies"></a>Přehled zásad zabezpečení pod
 
-V clusteru Kubernetes se k zachycení požadavků na server rozhraní API používá řadič pro přístup, když se prostředek vytvoří. Řadič pro přijímání pak může *ověřit* požadavek prostředku na základě sady pravidel nebo podle prostředku změnit parametry nasazení.
+V clusteru Kubernetes se k zachycení požadavků na server rozhraní API používá řadič pro přístup, když se prostředek vytvoří. Řadič pro přijímání pak může *ověřit* požadavek prostředku na základě sady *pravidel nebo podle* prostředku změnit parametry nasazení.
 
 *PodSecurityPolicy* je řadič pro přijímání, který ověřuje specifikaci pod, splňuje vaše definované požadavky. Tyto požadavky mohou omezit použití privilegovaných kontejnerů, přístup k určitým typům úložiště nebo uživatele nebo skupiny, ve kterých může být kontejner spuštěn. Když se pokusíte nasadit prostředek, u kterého specifikace pod nesplňují požadavky uvedené v zásadách zabezpečení pod, požadavek se odepře. Tato možnost určuje, které lusky se můžou naplánovat v clusteru AKS, brání určitým možným chybám zabezpečení nebo zvýšení úrovně oprávnění.
 
@@ -95,37 +95,36 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Výchozí zásady AKS
 
-Když zapnete zásadu zabezpečení pod, AKS vytvoří dvě výchozí zásady s názvem Privileged a Restricted. Tyto výchozí zásady neupravujte ani neodstraňujte. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
+Když zapnete zásadu zabezpečení pod, AKS vytvoří jednu výchozí zásadu s názvem *Privileged*. Neupravujte ani neodstraňujte výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
 
-Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu. Jako součást výchozích zásad *s omezeným přístupem* má uživatel odepřené použití *priv* pro eskalaci s oprávněním pod a uživatele *MustRunAsNonRoot*.
+Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu.
 
 ```console
 $ kubectl get psp
 
 NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
-privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Zásada zabezpečení *s omezením* pod se aplikuje na každého ověřeného uživatele v clusteru AKS. Toto přiřazení se řídí ClusterRoles a ClusterRoleBindings. Použijte příkaz [kubectl Get clusterrolebindings][kubectl-get] a vyhledejte *výchozí:* Restricted: Binding:
+Zásady zabezpečení *Privileged* pod se aplikují na každého ověřeného uživatele v clusteru AKS. Toto přiřazení se řídí ClusterRoles a ClusterRoleBindings. Použijte příkaz [kubectl Get clusterrolebindings][kubectl-get] a vyhledejte *výchozí: privilegovaná:* Binding:
 
 ```console
-kubectl get clusterrolebindings default:restricted -o yaml
+kubectl get clusterrolebindings default:priviledged -o yaml
 ```
 
-Jak je znázorněno v následujícím zhuštěném výstupu, je k disClusterRolemu *systému* přiřazeno *omezení PSP:* Restricted Users. Tato možnost poskytuje základní úroveň omezení bez definování vlastních zásad.
+Jak je znázorněno v následujícím zhuštěném výstupu, je k disClusterRolemu *systému* přiřazeno *omezení PSP: Restricted* Users. Tato možnost poskytuje základní úroveň omezení bez definování vlastních zásad.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:restricted
+  name: default:priviledged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:restricted
+  name: psp:priviledged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -349,7 +348,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
 
 ## <a name="create-a-custom-pod-security-policy"></a>Vytvořit vlastní zásadu zabezpečení pod
 
-Teď, když jste se seznámili s chováním výchozích zásad zabezpečení pod, Pojďme dát nesprávci možnost, aby nedokázali naplánovat lusky.
+Teď, když jste se seznámili s chováním výchozích zásad zabezpečení pod, Pojďme dát *nesprávci* možnost, aby nedokázali naplánovat lusky.
 
 Pojďme vytvořit zásadu, která odmítne lusky, které požadují privilegovaný přístup. Další možnosti, například *runAsUser* nebo povolené *svazky*, nejsou výslovně omezeny. Tento typ zásady odepře požadavek na privilegovaný přístup, ale jinak umožňuje clusteru spustit požadované lusky.
 
@@ -387,8 +386,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted            false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Povolí uživatelskému účtu používat vlastní zásady zabezpečení pod.
@@ -500,7 +498,7 @@ Nakonec odstraňte obor názvů *PSP-AKS* :
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek ukazuje, jak vytvořit zásadu zabezpečení pod tím, abyste zabránili použití privilegovaného přístupu. Existuje spousta funkcí, které může zásada vyhovět, jako je například typ svazku nebo uživatel RunAs. Další informace o dostupných možnostech najdete v [referenční dokumentaci k zásadám zabezpečení Kubernetes pod][kubernetes-policy-reference].
 

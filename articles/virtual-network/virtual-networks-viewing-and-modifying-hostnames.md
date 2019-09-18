@@ -1,10 +1,10 @@
 ---
-title: Zobrazení a úpravy názvů hostitelů | Dokumentace Microsoftu
-description: Jak zobrazit a změnit názvy hostitelů pro virtuální počítače Azure, web a role pracovního procesu pro překlad názvů
+title: Zobrazení a úpravy názvů hostitelů | Microsoft Docs
+description: Jak zobrazit a změnit názvy hostitelů pro virtuální počítače Azure, webové a pracovní role pro překlad názvů
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cce248e2906f4a36737388e8cc7124b1bb19fbae
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122953"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058681"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Zobrazení a úpravy názvů hostitelů
-Pokud chcete povolit vaše instance rolí se nesmí odkazovat podle názvu hostitele, musíte nastavit hodnotu pro název hostitele v konfiguračním souboru služby pro každou roli. Můžete to udělat tak, že přidáte název požadovaného hostitele do **vmName** atribut **Role** elementu. Hodnota **vmName** atribut se používá jako základ pro název hostitele instance každé role. Například pokud **vmName** je *webrole* a existují tři instance dané role, budou se názvy hostitelů instancí *webrole0*, *webrole1*, a *webrole2*. Není potřeba zadat název hostitele pro virtuální počítače v konfiguračním souboru, protože název hostitele pro virtuální počítač se vyplní na základě názvu virtuálního počítače. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schématu konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
+Chcete-li, aby na instance role odkazoval název hostitele, je nutné nastavit hodnotu pro název hostitele v konfiguračním souboru služby pro každou roli. To uděláte tak, že přidáte požadovaný název hostitele do atributu **vmName** elementu **role** . Hodnota atributu **vmName** se používá jako základ pro název hostitele každé instance role. Například pokud **vmName** je webrole a existují tři instance této role, názvy hostitelů instancí budou *webrole0*, *webrole1*a *webrole2*. Nemusíte zadávat název hostitele pro virtuální počítače v konfiguračním souboru, protože název hostitele pro virtuální počítač je vyplněný na základě názvu virtuálního počítače. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schéma konfigurace služby Azure (soubor. cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx) .
 
 ## <a name="viewing-hostnames"></a>Zobrazení názvů hostitelů
-Názvy hostitelů virtuálních počítačů a instancí rolí v cloudové službě můžete zobrazit pomocí některé z nástrojů uvedených dole.
+Názvy hostitelů virtuálních počítačů a instancí rolí v cloudové službě můžete zobrazit pomocí kteréhokoli z následujících nástrojů.
 
 ### <a name="service-configuration-file"></a>Konfigurační soubor služby
-Můžete stáhnout konfigurační soubor služby pro službu nasazenou z **konfigurovat** okně služby na webu Azure Portal. Potom můžete hledat **vmName** atribut pro **název Role** element zobrazíte název hostitele. Uvědomte si, že tento název hostitele se používá jako základ pro název hostitele instance každé role. Například pokud **vmName** je *webrole* a existují tři instance dané role, budou se názvy hostitelů instancí *webrole0*, *webrole1*, a *webrole2*.
+Konfigurační soubor služby pro nasazenou službu si můžete stáhnout z okna **Konfigurace** služby v Azure Portal. Pak můžete vyhledat atribut **vmName** elementu **název role** , abyste viděli název hostitele. Mějte na paměti, že tento název hostitele se používá jako základ pro název hostitele každé instance role. Například pokud **vmName** je webrole a existují tři instance této role, názvy hostitelů instancí budou *webrole0*, *webrole1*a *webrole2*.
 
 ### <a name="remote-desktop"></a>Vzdálená plocha
-Po povolení vzdálené plochy (Windows), vzdálené komunikace Windows Powershellu (Windows) nebo připojení SSH (Linux a Windows) pro virtuální počítače nebo instance rolí, zobrazí se název hostitele z aktivní připojení ke vzdálené ploše v různé způsoby:
+Po povolení připojení vzdálené plochy (Windows), vzdálené komunikace Windows PowerShellu (Windows) nebo SSH (Linux a Windows) k virtuálním počítačům nebo instancím rolí můžete název hostitele zobrazit v aktivním připojení ke vzdálené ploše různými způsoby:
 
-* Zadejte název hostitele na příkazovém řádku nebo na terminál SSH.
-* Zadejte ipconfig/vše do příkazového řádku (jenom Windows).
-* Zobrazte název počítače v systémových nastaveních (jenom Windows).
+* Do příkazového řádku nebo terminálu SSH zadejte název hostitele.
+* Do příkazového řádku zadejte ipconfig/all (jenom Windows).
+* Zobrazí název počítače v nastavení systému (pouze Windows).
 
-### <a name="azure-service-management-rest-api"></a>Rozhraní REST API pro správu služeb Azure
+### <a name="azure-service-management-rest-api"></a>REST API správy služeb Azure
 Z klienta REST postupujte podle těchto pokynů:
 
-1. Ujistěte se, že máte certifikát klienta pro připojení k webu Azure portal. Získejte klientský certifikát, postupujte podle kroků v [jak: Stažení a Import nastavení a informace o předplatném publikování](https://msdn.microsoft.com/library/dn385850.aspx). 
-2. Nastavte položku záhlaví x-ms-version s hodnotou 2013-11-01 s názvem.
-3. Odeslat požadavek v následujícím formátu: https:\//management.core.windows.net/\<subscrition id\>/services/hostedservices/\<název služby\>? vložení podrobností = true
-4. Hledat **HostName** – element pro každé **instance role** elementu.
+1. Ujistěte se, že máte klientský certifikát pro připojení k Azure Portal. Pokud chcete získat certifikát klienta, postupujte podle kroků uvedených v [tématu Postupy: Stažení a import nastavení publikování a informací o](https://msdn.microsoft.com/library/dn385850.aspx)předplatném 
+2. Nastavte položku záhlaví s názvem x-MS-Version s hodnotou 2013-11-01.
+3. Odeslat žádost v následujícím\/formátu: https:/Management.Core.Windows.NET/\<vytvořilo-ID\>/Services/hostedservices/\<Service-Name\>? embed-detail = true
+4. Vyhledejte element **hostname** pro každý element **RoleInstance** .
 
 > [!WARNING]
-> Můžete také zobrazit příponu interní domény pro cloudovou službu z odpovědi volání REST kontrolou **InternalDnsSuffix** element, nebo spuštěním příkazu ipconfig/vše z příkazového řádku v relaci vzdálené plochy (Windows) nebo po spuštění cat /etc/resolv.conf z terminálu SSH (Linux).
+> Můžete také zobrazit interní příponu domény pro cloudovou službu z odpovědi na volání REST kontrolou prvku **InternalDnsSuffix** nebo spuštěním příkazu ipconfig/all z příkazového řádku v relaci vzdálené plochy (Windows) nebo spuštěním Cat/etc/. soubor resolv. conf z terminálu SSH (Linux).
 > 
 > 
 
 ## <a name="modifying-a-hostname"></a>Úprava názvu hostitele
-Název hostitele pro virtuální počítač nebo instanci role můžete upravit tak, že nahrajete soubor konfigurace upravené služby nebo při přejmenování počítače z relace vzdálené plochy.
+Můžete upravit název hostitele pro libovolný virtuální počítač nebo instanci role tak, že nahrajete upravený konfigurační soubor služby nebo přejmenujete počítač z relace vzdálené plochy.
 
 ## <a name="next-steps"></a>Další postup
 [Překlad názvů (DNS)](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
-[Schéma konfigurace služby Azure (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
+[Schéma konfigurace služby Azure (. cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure Virtual Network Configuration Schema](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Schéma konfigurace Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[Zadání nastavení DNS pomocí konfiguračních souborech sítě](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
+[Zadání nastavení DNS pomocí konfiguračních souborů sítě](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

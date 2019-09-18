@@ -1,7 +1,7 @@
 ---
 title: Postup nasazení modelů do služby Azure Kubernetes
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak nasadit modely služby Azure Machine Learning jako webovou službu pomocí služby Azure Kubernetes.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou službu pomocí služby Azure Kubernetes.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858736"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034630"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
-Naučte se používat službu Azure Machine Learning k nasazení modelu jako webové služby ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes je vhodná pro vysoce škálovatelná produkční nasazení. Použijte službu Azure Kubernetes, pokud potřebujete jednu nebo více z následujících možností:
+Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes je vhodná pro vysoce škálovatelná produkční nasazení. Použijte službu Azure Kubernetes, pokud potřebujete jednu nebo více z následujících možností:
 
 - __Rychlá doba odezvy__.
 - Automatické __škálování__ nasazené služby.
@@ -30,15 +30,15 @@ Naučte se používat službu Azure Machine Learning k nasazení modelu jako web
 
 Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Existují dva způsoby, jak připojit cluster AKS k vašemu pracovnímu prostoru:
 
-* Vytvořte cluster AKS pomocí sady SDK služby Azure Machine Learning Machine Learning CLI, [Azure Portal](https://portal.azure.com) nebo na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
-* Připojte existující cluster AKS k pracovnímu prostoru služby Azure Machine Learning. Cluster se dá připojit pomocí sady Azure Machine Learning Service SDK, Machine Learning CLI nebo Azure Portal.
+* Vytvořte cluster AKS pomocí sady Azure Machine Learning SDK, Machine Learning CLI, cílové stránky pro [Azure Portal](https://portal.azure.com) nebo [pracovní prostor (Preview)](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
+* Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster se dá připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Portal.
 
 > [!IMPORTANT]
 > Proces vytvoření nebo přílohy je jednorázovým úkolem. Jakmile je cluster AKS připojený k pracovnímu prostoru, můžete ho použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud ho už nepotřebujete. Jakmile Detatched nebo odstraníte, nebudete už moct nasadit do clusteru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md).
+- Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 - Model služby Machine Learning, který je zaregistrován ve vašem pracovním prostoru. Pokud nemáte registrovaný model, přečtěte si téma [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ Další informace najdete v tématu [AZ ml computetarget Create ASK](https://doc
 Pokud už máte v předplatném Azure cluster AKS a je to verze 1.12. # #, můžete ho použít k nasazení image.
 
 > [!TIP]
-> Stávající cluster AKS může být v oblasti Azure, než je váš pracovní prostor služby Azure Machine Learning.
+> Stávající cluster AKS může být v oblasti Azure, než je váš pracovní prostor Azure Machine Learning.
 >
 > Pokud chcete svůj cluster AKS zabezpečit pomocí Virtual Network Azure, musíte nejdřív vytvořit virtuální síť. Další informace najdete v tématu [zabezpečené experimenty a odvozování pomocí Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 

@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998805"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033826"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -92,12 +92,13 @@ Abyste povolili přístup k rozhraní API pro vytváření sestav Azure AD pomoc
 * Microsoft Graph
   * Aplikace: Číst všechna data protokolu auditu
 
-Tato oprávnění můžete povolit pro existující registraci aplikace v rámci vašeho tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
+Tato oprávnění můžete povolit pro existující registraci aplikace Azure Active Directory v rámci tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
 
 Pokud chcete vytvořit novou aplikaci, přiřaďte požadovaná oprávnění rozhraní API a vytvořte tajný klíč klienta, proveďte následující kroky:
 
-1. Zaregistrovat aplikaci
-    1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte do adresáře, který obsahuje vašeho Azure AD B2Cho tenanta, a pak přejděte do **Azure AD B2C**.
+1. Registrovat aplikaci v Azure Active Directory
+    1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do adresáře, který obsahuje vašeho tenanta Azure AD B2C.
+    1. V nabídce vlevo vyberte **Azure Active Directory** (*není* Azure AD B2C). Případně vyberte **všechny služby**a pak vyhledejte a vyberte **Azure Active Directory**.
     1. V části **Spravovat** v levé nabídce vyberte **Registrace aplikací (starší verze)** .
     1. Vybrat **registraci nové aplikace**
     1. Zadejte název aplikace. Například *audit log aplikace*.

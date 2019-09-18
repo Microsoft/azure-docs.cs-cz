@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917384"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077143"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: Použití Apache HBase v Azure HDInsightu
 
@@ -41,7 +41,7 @@ Následující postup používá šablonu Azure Resource Manager k vytvoření c
 
 1. Výběrem následujícího obrázku otevřete šablonu v Azure Portal. Šablona se nachází v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. V okně **Vlastní nasazení** zadejte následující hodnoty:
 
@@ -68,11 +68,11 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 
 Pro většinu osob se data zobrazí v tabulkovém formátu:
 
-![Tabulková data HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![Tabulková data HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
 V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)) vypadají stejná data jako:
 
-![Velké objemy tabulkových dat HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![BigTable data o službě HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **Použití prostředí HBase**
 
@@ -115,7 +115,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
     scan 'Contacts'
     ```
 
-    ![Prostředí HDInsight Hadoop HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![Prostředí HDInsight Apache Hadoop HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
 1. K `get` načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
 
@@ -284,7 +284,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 1. V horní části stránky vyberte **Rychlé odkazy** , přejděte na aktivní odkaz na uzel Zookeeper a pak vyberte **HBase Master uživatelské rozhraní**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
-   ![Hlavní uživatelské rozhraní HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HMaster uživatelské rozhraní HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    Hlavní uživatelské rozhraní HBase obsahuje tyto části:
 
@@ -304,7 +304,7 @@ Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před od
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
 1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBA a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBA. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky. Další informace naleznete v tématu:
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592106"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063360"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -41,7 +41,7 @@ Element **TrustFrameworkPolicy** obsahuje následující atributy:
 | Atribut | Požadováno | Popis |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být`0.3.0.0` |
-| TenantObjectId | Ne | Jedinečný identifikátor objektu pro klienta Azure Active Directory (Azure AD) B2C. |
+| TenantObjectId | Ne | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
 | TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
 | `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* . |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |

@@ -4,14 +4,14 @@ description: Postup připojení klientů ke službě Azure HPC cache Service
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775348"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036962"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Připojení mezipaměti HPC Azure
 
@@ -19,13 +19,13 @@ Po vytvoření mezipaměti k ní budou mít klienti NFS přístup pomocí jednod
 
 Použijte adresy pro připojení uvedené na stránce s přehledem mezipaměti a cestu k virtuálnímu oboru názvů, kterou jste nastavili při vytváření cíle úložiště. 
 
-![snímek stránky s přehledem instance mezipaměti HPC v Azure se zvýrazněným políčkem v pravém dolním rohu seznamu adres připojení](media/mount-addresses.png)
+![snímek stránky s přehledem instance mezipaměti HPC v Azure se zvýrazněným políčkem v pravém dolním rohu seznamu adres připojení](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > Adresy připojení mezipaměti odpovídají síťovým rozhraním v podsíti mezipaměti. Tyto síťové adaptéry se zobrazí ve skupině prostředků s názvy končícími `-cluster-nic-` a číslem. Tato rozhraní neměňte ani neodstraňujte, jinak se mezipaměť nestane nedostupnou.
 
-Cesty k virtuálnímu oboru názvů se zobrazí na stránce **cíle úložiště** . 
-![snímek obrazovky s cílovým panelem úložiště v mezipaměti s zvýrazňujícím polem kolem položky ve sloupci cesta v tabulce](media/storage-target-path.png)
+Cesty k virtuálnímu oboru názvů se zobrazí na stránce **cíle úložiště** . Kliknutím na název cíle zobrazíte podrobnosti, včetně agregované cesty oboru názvů (nebo cest), které jsou k němu přidružené. 
+![snímek obrazovky s cílovým panelem úložiště v mezipaměti s zvýrazňujícím polem kolem položky ve sloupci cesta v tabulce](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Syntaxe příkazu Mount
 

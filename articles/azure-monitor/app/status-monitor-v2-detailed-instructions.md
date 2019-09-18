@@ -3,7 +3,7 @@ title: Podrobné pokyny k Azure Monitorování stavu v2 | Microsoft Docs
 description: Podrobné pokyny pro zahájení práce s Monitorování stavu v2 Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326277"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057852"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Monitorování stavu v2: Podrobné pokyny
 
@@ -222,7 +222,7 @@ Při psaní instalačních skriptů si Projděte předchozí pokyny.
 Sada Application Insights SDK bude muset poslat telemetrii vaší aplikace Microsoftu. Doporučujeme nakonfigurovat nastavení proxy serveru pro vaši aplikaci v souboru Web. config. Další informace najdete v tématu [Application Insights Nejčastější dotazy: Passthrough](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)proxy serveru.
 
 
-## <a name="enable-monitoring"></a>Povolení monitorování
+## <a name="enable-monitoring"></a>Povolit sledování
 
 K povolení monitorování použijte příkaz.`Enable-ApplicationInsightsMonitoring`
 

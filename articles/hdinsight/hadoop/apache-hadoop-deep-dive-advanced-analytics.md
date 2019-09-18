@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918203"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066985"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
@@ -23,17 +23,17 @@ HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukt
 
 ## <a name="advanced-analytics-process"></a>Proces pokročilé analýzy
 
-![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![Tok procesu pokročilé analýzy](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-Po zjištění obchodního problému a zahájení shromažďování a zpracování dat je potřeba vytvořit model, který představuje otázku, kterou chcete předpovědět. Model bude používat jeden nebo více algoritmů strojového učení, aby vytvářely typ předpovědi, který nejlépe vyhovuje vašim obchodním potřebám.  Většina vašich dat by měla být použita ke školení vašeho modelu se zbytkem, který se používá k otestování nebo vyhodnocení. 
+Po zjištění obchodního problému a zahájení shromažďování a zpracování dat je potřeba vytvořit model, který představuje otázku, kterou chcete předpovědět. Model bude používat jeden nebo více algoritmů strojového učení, aby vytvářely typ předpovědi, který nejlépe vyhovuje vašim obchodním potřebám.  Většina vašich dat by měla být použita ke školení vašeho modelu se zbytkem, který se používá k otestování nebo vyhodnocení.
 
-Až vytvoříte, nasadíte, otestujete a vyhodnocujete svůj model, dalším krokem je nasazení modelu tak, aby bylo zahájeno zadávání odpovědí na vaše otázky. Posledním krokem je monitorovat výkon svého modelu a ladit ho podle potřeby. 
+Až vytvoříte, nasadíte, otestujete a vyhodnocujete svůj model, dalším krokem je nasazení modelu tak, aby bylo zahájeno zadávání odpovědí na vaše otázky. Posledním krokem je monitorovat výkon svého modelu a ladit ho podle potřeby.
 
 ## <a name="common-types-of-algorithms"></a>Běžné typy algoritmů
 
 Pokročilá Analytická řešení poskytují sadu algoritmů strojového učení. Tady je souhrn kategorií algoritmů a přidružených běžných případů použití firmy.
 
-![Případy použití Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+![Machine Learning souhrny kategorií](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jestli potřebujete zadat data pro školení. Algoritmy strojového učení jsou rozdělené takto:
 
@@ -98,7 +98,7 @@ Tento scénář pokročilých analýz obsahuje tři klíčové úlohy:
 
 V tomto příkladu se používá sada imagí CIFAR-10 zkompilovaná a distribuovaná Alex Krizhevsky, Vinoed Nair a Geoffrey Hinton. Datová sada CIFAR-10 obsahuje 60 000 32 × 32 barev obrázků, které patří 10 vzájemně se vylučující třídy:
 
-![Obrázky](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+![Příklady imagí Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Další podrobnosti o datové sadě najdete v tématu učení Alex Krizhevsky [s více vrstvami funkcí z drobných imagí](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,13 +111,13 @@ Datová sada byla rozdělená na školicí sadu 50 000 imagí a sadu testů 10 0
 
 Celý proces předzpracování nebo bodování imagí 10 000 trvá méně než jednu minutu v clusteru se 4 pracovními uzly. Model přesně předpovídá popisky ~ 9 100 (91%) fotografií. Nejasná matice ilustrují nejběžnější chyby klasifikace. Matice například ukazuje, že nepopisení psi jako kočky a naopak probíhá častěji než u jiných párů popisků.
 
-![Výsledky](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+![Graf výsledků Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Vyzkoušejte si to!
 
 Postupujte podle [tohoto kurzu](../spark/apache-spark-microsoft-cognitive-toolkit.md) a implementujte toto řešení do konce: nastavte cluster HDInsight Spark, nainstalujte Cognitive Toolkit a spusťte Jupyter notebook, který vyhodnotí 10 000 imagí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Apache Hive a Azure Machine Learning
 

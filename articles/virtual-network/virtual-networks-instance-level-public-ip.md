@@ -1,10 +1,10 @@
 ---
-title: Azure úrovni Instance adresy veřejné IP adresy (klasické) | Dokumentace Microsoftu
-description: Pochopit instance adresy úrovně veřejné IP (ILPIP) a jak je spravovat pomocí prostředí PowerShell.
+title: Veřejné IP adresy na úrovni instance Azure (Classic) | Microsoft Docs
+description: Pochopení adres veřejných IP adres (ILPIP) na úrovni instance a jejich správa pomocí PowerShellu
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60186795"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058409"
 ---
-# <a name="instance-level-public-ip-classic-overview"></a>Instance přehled úrovně veřejných IP adres (Classic)
-Instance úrovně veřejné IP (ILPIP) je veřejnou IP adresu můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, nikoli do cloudové služby, který váš virtuální počítač nebo instanci role jsou umístěny v. ILPIP nepřijímá místo z virtuální IP (VIP), který je přiřazen ke cloudové službě. Místo toho je další IP adresu, můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.
+# <a name="instance-level-public-ip-classic-overview"></a>Přehled veřejné IP adresy na úrovni instance (Classic)
+Veřejná IP adresa na úrovni instance (ILPIP) je veřejná IP adresa, kterou můžete přímo přiřadit k virtuálnímu počítači nebo instanci role Cloud Services, nikoli ke cloudové službě, ve které se nachází váš virtuální počítač nebo instance role. ILPIP nebere místo virtuální IP adresy (VIP), která je přiřazená k vaší cloudové službě. Místo toho je to další IP adresa, kterou můžete použít k přímému připojení k VIRTUÁLNÍmu počítači nebo instanci role.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytváření virtuálních počítačů prostřednictvím Resource Manageru. Ujistěte se, že rozumíte jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungovat v Azure.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje vytvářet virtuální počítače prostřednictvím Správce prostředků. Ujistěte se, že rozumíte tomu, jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungují v Azure.
 
-![Rozdíl mezi ILPIP a virtuální IP adresy](./media/virtual-networks-instance-level-public-ip/Figure1.png)
+![Rozdíl mezi ILPIP a VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Jak je znázorněno na obrázku 1, cloudovou službu se přistupuje pomocí virtuální IP adresy, zatímco jednotlivé virtuální počítače jsou obvykle přístupné pomocí virtuální IP adresy:&lt;číslo portu&gt;. Po přiřazení ILPIP konkrétnímu virtuálnímu počítači, tento virtuální počítač je přístupný přímo pomocí této IP adresy.
+Jak je znázorněno na obrázku 1, ke cloudové službě se dostanete pomocí virtuální IP adresy, zatímco k jednotlivým virtuálním počítačům&lt;se běžně&gt;používá virtuální IP adresa: číslo portu. Přiřazením ILPIP ke konkrétnímu virtuálnímu počítači se k tomuto virtuálnímu počítači dá získat přímý pøístup pomocí této IP adresy.
 
-Při vytváření cloudové služby v Azure odpovídající záznamy DNS automaticky vytvoří pro povolení přístupu k této služby prostřednictvím plně kvalifikovaný název domény (FQDN), namísto použití skutečné virtuální IP adresy. Pro ILPIP umožňuje přístup k instanci role nebo virtuálního počítače podle plně kvalifikovaného názvu domény namísto ILPIP se stane stejného procesu. Například pokud vytvořit cloudovou službu s názvem *contosoadservice*, a nakonfigurovat webovou roli s názvem *contosoweb* se dvěma případy a v souboru .cscfg `domainNameLabel` je nastavena na  *WebPublicIP*Azure registrů následující A záznamy pro instance:
+Když v Azure vytvoříte cloudovou službu, vytvoří se automaticky odpovídající záznamy DNS A, které umožní přístup ke službě prostřednictvím plně kvalifikovaného názvu domény (FQDN) místo použití skutečné virtuální IP adresy. Ke stejnému procesu dochází pro ILPIP, což umožňuje přístup k virtuálnímu počítači nebo instanci role podle plně kvalifikovaného názvu domény namísto ILPIP. Pokud například vytvoříte cloudovou službu s názvem *contosoadservice*a nakonfigurujete webovou roli s názvem *contosoweb* se dvěma instancemi a v souboru. cscfg `domainNameLabel` je nastavená na *WebPublicIP*, Azure zaregistruje následující záznamy pro instance
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -40,25 +40,25 @@ Při vytváření cloudové služby v Azure odpovídající záznamy DNS automat
 
 
 > [!NOTE]
-> Můžete přiřadit pouze jeden ILPIP pro každý virtuální počítač nebo instanci role. Můžete použít až pro 5 ILPIPs na jedno předplatné. ILPIPs nejsou podporovány pro virtuální počítače s několika síťovými Kartami.
+> Každému virtuálnímu počítači nebo instanci role můžete přiřadit jenom jeden ILPIP. U každého předplatného můžete použít až 5 ILPIPs. ILPIPs se pro virtuální počítače s více síťovými kartami nepodporují.
 > 
 > 
 
-## <a name="why-would-i-request-an-ilpip"></a>Proč byste požádat ILPIP?
-Pokud chcete být schopni připojit k vaší instanci role virtuálního počítače nebo IP adresa přiřazená k němu, místo použití cloudu služby virtuálních IP adres:&lt;číslo portu&gt;, žádosti ILPIP pro váš virtuální počítač nebo role instance.
+## <a name="why-would-i-request-an-ilpip"></a>Proč bych chtěl požádat o ILPIP?
+Pokud se chcete připojit ke svému virtuálnímu počítači nebo instanci role prostřednictvím IP adresy přiřazené přímo k této adrese, místo použití cloudové služby VIP:&lt;číslo&gt;portu, požádejte o ILPIP pro váš virtuální počítač nebo instanci role.
 
-* **Aktivní FTP** -přiřazením ILPIP k virtuálnímu počítači, může přijímat přenosy přes libovolný port. Koncové body nejsou nutné pro virtuální počítač přijímat přenosy.  Zobrazit [přehled protokolu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) podrobné informace o protokolu FTP.
-* **Odchozí IP** – odchozí přenos dat pocházejících z virtuálního počítače je namapovaná na ILPIP jako zdroj a ILPIP jednoznačně identifikuje virtuální počítač na externí entity.
+* **Aktivní FTP** – přiřazením ILPIP k virtuálnímu počítači může přijímat přenosy z libovolného portu. Koncové body nejsou pro příjem provozu virtuálního počítače vyžadovány.  Podrobnosti o protokolu FTP najdete v tématu [Přehled protokolu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) .
+* **Odchozí IP adresa** – odchozí přenosy pocházející z virtuálního počítače se MAPUJÍ na ILPIP jako zdroj a ILPIP jedinečně IDENTIFIKUJE virtuální počítač externím entitám.
 
 > [!NOTE]
-> V minulosti ILPIP adresy se označuje jako veřejné adresy IP adresy (PIP).
+> V minulosti se adresa ILPIP odkazovala jako adresa veřejné IP adresy (PIP).
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Správa ILPIP pro virtuální počítač
-Následující úlohy umožňují vytvořit, přiřadit a odebrat ILPIPs z virtuálních počítačů:
+Následující úlohy umožňují vytvářet, přiřazovat a odebírat ILPIPs z virtuálních počítačů:
 
-### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Tom, jak požádat ILPIP během vytváření virtuálních počítačů pomocí Powershellu
-Následující skript Powershellu vytvoří cloudovou službu s názvem *FTPService*, načte bitovou kopii z Azure, vytvoří virtuální počítač s názvem *FTPInstance* pomocí načtené image nastaví virtuální počítač určený ILPIP a přidá virtuální počítač do nové služby:
+### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Jak požádat o ILPIP při vytváření virtuálního počítače pomocí PowerShellu
+Následující skript PowerShellu vytvoří cloudovou službu s názvem *FTPService*, načte image z Azure, vytvoří virtuální počítač s názvem *FTPInstance* pomocí načtené image, nastaví virtuální počítač tak, aby používal ILPIP, a přidá virtuální počítač do nové služby:
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -76,7 +76,7 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 
 ```
-Pokud chcete zadat jiný účet úložiště jako umístění nového disku virtuálního počítače, můžete použít **MediaLocation** parametr:
+Pokud chcete jako umístění nového disku virtuálního počítače zadat jiný účet úložiště, můžete použít parametr **MediaLocation** :
 
 ```powershell
     New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
@@ -86,7 +86,7 @@ Pokud chcete zadat jiný účet úložiště jako umístění nového disku virt
 ```
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Jak načíst informace ILPIP pro virtuální počítač
-Chcete-li zobrazit informace ILPIP pro virtuální počítač vytvořen s předchozí skript, pomocí následujícího příkazu prostředí PowerShell a podívejte se hodnoty *PublicIPAddress* a *PublicIPName*:
+Pokud chcete zobrazit ILPIP informace o virtuálním počítači vytvořeném pomocí předchozího skriptu, spusťte následující příkaz PowerShellu a sledujte hodnoty pro *PublicIPAddress* a *PublicIPName*:
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -121,15 +121,15 @@ Očekávaný výstup:
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Postup odebrání ILPIP z virtuálního počítače
-Pokud chcete odebrat ILPIP přidá do virtuálního počítače v předchozím scénáři, spusťte následující příkaz Powershellu:
+### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Jak odebrat ILPIP z virtuálního počítače
+Pokud chcete odebrat ILPIP přidaný do virtuálního počítače v předchozím skriptu, spusťte následující příkaz PowerShellu:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
 ### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Postup přidání ILPIP do existujícího virtuálního počítače
-Přidat ILPIP k virtuálnímu počítači vytvořenému pomocí předchozího skriptu, spusťte následující příkaz:
+Pokud chcete přidat ILPIP k virtuálnímu počítači vytvořenému pomocí předchozího skriptu, spusťte následující příkaz:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
@@ -137,10 +137,10 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 
 ## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Správa ILPIP pro instanci role Cloud Services
 
-Pokud chcete přidat ILPIP instance role Cloud Services, proveďte následující kroky:
+Chcete-li přidat ILPIP do instance role Cloud Services, proveďte následující kroky:
 
-1. Stáhnout pomocí kroků v souboru .cscfg pro cloudovou službu [jak konfigurovat Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) článku.
-2. Aktualizovat přidáním souboru .cscfg `InstanceAddress` elementu. Následující příklad přidá ILPIP s názvem *MyPublicIP* role instance s názvem *WebRole1*: 
+1. Stáhněte soubor. cscfg pro cloudovou službu provedením kroků v článku [Postup konfigurace Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) .
+2. Aktualizujte soubor. cscfg přidáním `InstanceAddress` elementu. Následující příklad přidá ILPIP s názvem *MyPublicIP* do instance role s názvem *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -162,10 +162,10 @@ Pokud chcete přidat ILPIP instance role Cloud Services, proveďte následujíc�
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Nahrát pomocí kroků v souboru .cscfg pro cloudovou službu [jak konfigurovat Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) článku.
+3. Nahrajte soubor. cscfg pro cloudovou službu provedením kroků v článku [Postup konfigurace Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) .
 
-### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Jak načíst informace ILPIP pro Cloudovou službu
-Chcete-li zobrazit informace ILPIP za role instance, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* a *PublicIPFqdns*:
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Jak načíst ILPIP informace pro cloudovou službu
+Chcete-li zobrazit informace o ILPIP na instanci role, spusťte následující příkaz prostředí PowerShell a sledujte hodnoty pro *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* a *PublicIPFqdns*:
 
 ```powershell
 Add-AzureAccount
@@ -176,12 +176,12 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-Můžete také použít `nslookup` k dotazování domény sub je záznam:
+Můžete se také použít `nslookup` k dotazování na záznam A v dílčí doméně:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
 ``` 
 
-## <a name="next-steps"></a>Další postup
-* Pochopit, jak [přidělování IP adres](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení classic.
-* Další informace o [vyhrazené IP adresy](virtual-networks-reserved-public-ip.md).
+## <a name="next-steps"></a>Další kroky
+* Pochopte, jak [přidělování IP adres](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení Classic.
+* Přečtěte si o [rezervovaných IP adresách](virtual-networks-reserved-public-ip.md).

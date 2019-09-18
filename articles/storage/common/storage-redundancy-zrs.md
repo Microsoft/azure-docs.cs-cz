@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016440"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036249"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016440"
 
 ## <a name="support-coverage-and-regional-availability"></a>Pokrytí podpory a regionální dostupnost
 
-ZRS aktuálně podporuje standardní typy účtů pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
+ZRS aktuálně podporuje typy účtů úložiště úrovně Standard pro obecné účely v2 a úložiště. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
 
 ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, soubory, tabulky a fronty.
 
-ZRS je všeobecně dostupná v následujících oblastech:
+Pro účty pro obecné účely v2 je ZRS všeobecně dostupná v následujících oblastech:
 
 - Jihovýchodní Asie
 - Evropa – západ
@@ -38,6 +38,10 @@ ZRS je všeobecně dostupná v následujících oblastech:
 - USA – východ
 - USA – východ 2
 - USA – západ 2
+
+Pro účty úložiště ZRS je všeobecně dostupná v následujících oblastech:
+
+- Evropa – západ
 
 Microsoft nadále povoluje ZRS v dalších oblastech Azure. Další informace o nových oblastech najdete na stránce [aktualizace služby Azure](https://azure.microsoft.com/updates/) .
 
@@ -64,6 +68,9 @@ Existují dvě primární možnosti migrace na ZRS:
 
 - Ručně zkopírujte nebo přesuňte data do nového účtu ZRS z existujícího účtu.
 - Požádejte o migraci za provozu.
+
+> [!IMPORTANT]
+> Migrace za provozu není v současné době pro sdílené složky Premium podporována. V tuto chvíli se podporuje jenom ruční kopírování a přesouvání dat.
 
 Pokud potřebujete, aby migrace dokončila určité datum, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za provozu. Při ruční migraci budete řídit časování.
 
@@ -94,7 +101,7 @@ Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azu
 4. V části **problém** zadejte následující hodnoty: 
     - **Závažnost**: Ponechte výchozí hodnotu tak, jak je.
     - **Typ problému**: Vyberte **migrace dat**.
-    - **Kategorie**: Vyberte možnost **migrovat do ZRS v rámci oblasti**.
+    - **Kategorie**: Vyberte **migrovat do ZRS**.
     - **Název**: Zadejte popisný název, například **migrace účtu ZRS**.
     - **Podrobnosti**: V poli **podrobností** zadejte další podrobnosti, například přejete si migrovat na ZRS z [LRS, GRS] v \_ \_ oblasti. 
 5. Vyberte **Další**.
@@ -141,7 +148,7 @@ ZRS Classic je k dispozici pouze pro **objekty blob bloku** v účtech úložiš
 
 Pokud chcete data účtu ZRS ručně migrovat do nebo z účtu LRS, ZRS Classic, GRS nebo RA-GRS, použijte jeden z následujících nástrojů: AzCopy, Průzkumník služby Azure Storage, Azure PowerShell nebo Azure CLI. Můžete také vytvořit vlastní řešení migrace pomocí jedné z Azure Storage klientských knihoven.
 
-Můžete také upgradovat účty ZRS Classic na ZRS na portálu nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure v oblastech, kde je ZRS k dispozici. Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do části **Konfigurace** účtu a vyberte upgradovat:
+Můžete také upgradovat účty ZRS Classic na ZRS na portálu nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure v oblastech, kde je ZRS k dispozici. Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do části **Konfigurace** účtu a vyberte **upgradovat**:
 
 ![Upgrade ZRS Classic na ZRS na portálu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 

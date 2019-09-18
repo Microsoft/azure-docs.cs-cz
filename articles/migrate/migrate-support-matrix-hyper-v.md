@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376101"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066784"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -27,9 +27,9 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače Hyper-V.
 **Nasazení** | **Zobrazí***
 --- | ---
 **Posouzení místních virtuálních počítačů Hyper-V** | [Nastavte](tutorial-prepare-hyper-v.md) své první posouzení.<br/><br/> [Spusťte](scale-hyper-v-assessment.md) hodnocení ve velkém měřítku.
-**Migrace virtuálních počítačů Hyper-V do Azure** | [Vyzkoušejte](tutorial-migrate-hyper-v.md) migraci do Azure. 
+**Migrace virtuálních počítačů Hyper-V do Azure** | [Vyzkoušejte](tutorial-migrate-hyper-v.md) migraci do Azure.
 
-Migrace serverů Hyper-V spravovaných pomocí System Center Virtual Machine Manager (VMM) není podporována migrací Azure Migrate serveru. 
+Migrace serverů Hyper-V spravovaných pomocí System Center Virtual Machine Manager (VMM) není podporována migrací Azure Migrate serveru.
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projekty
 
@@ -44,10 +44,13 @@ Geografie | Azure Migrate projekty lze vytvořit v řadě geografických oblast�
   Azure Government | USA (Gov) – Virginia
   Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
   Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
+  Brazílie | Brazílie – jih
   Kanada | Kanada – střed nebo Kanada – východ
   Evropa | Severní Evropa nebo Západní Evropa
+  Francie | Francie – střed
   Indie | Střed Indie nebo Jižní Indie
   Japonsko |  Japonsko – východ nebo Japonsko – západ
+  Korejská republika | Korea – střed nebo Korea – jih
   Spojené království | Velká Británie – jih nebo Velká Británie – západ
   Spojené státy | Střed USA nebo Západní USA 2
 

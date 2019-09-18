@@ -1,7 +1,7 @@
 ---
 title: Přístup k datům ve službě Azure Storage
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat úložiště dat pro přístup ke službám Azure Storage během školení pomocí služby Azure Machine Learning Service.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat úložiště dat pro přístup ke službám Azure Storage během školení pomocí Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191925"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035300"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 
@@ -232,7 +232,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>Přístup k datům během bodování
 
-Služba Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložišti dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
+Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložišti dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
 | Metoda | Přístup k úložišti dat | Popis |
 | ----- | :-----: | ----- |
@@ -243,7 +243,7 @@ Služba Azure Machine Learning poskytuje několik způsobů, jak používat vaš
 V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být možné vytvořit vlastní kód pomocí příslušné sady Azure SDK pro přístup k datům. Například použití [sady SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python) pro přístup k datům uloženým v objektech blob.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Trénování modelu](how-to-train-ml-models.md)
 

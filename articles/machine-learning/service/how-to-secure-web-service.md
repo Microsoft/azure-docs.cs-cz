@@ -1,7 +1,7 @@
 ---
 title: Zabezpečení webových služeb pomocí protokolu SSL
-titleSuffix: Azure Machine Learning service
-description: Přečtěte si, jak zabezpečit webovou službu, která je nasazená prostřednictvím služby Azure Machine Learning, povolením protokolu HTTPS. Protokol HTTPS zabezpečuje data od klientů pomocí protokolu TLS (Transport Layer Security), což je náhrada za SSL (Secure Socket Layer). Klienti také používají protokol HTTPS k ověření identity webové služby.
+titleSuffix: Azure Machine Learning
+description: Přečtěte si, jak zabezpečit webovou službu nasazenou prostřednictvím Azure Machine Learning povolením protokolu HTTPS. Protokol HTTPS zabezpečuje data od klientů pomocí protokolu TLS (Transport Layer Security), což je náhrada za SSL (Secure Socket Layer). Klienti také používají protokol HTTPS k ověření identity webové služby.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772523"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034379"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning
 
-V tomto článku se dozvíte, jak zabezpečit webovou službu, která je nasazená prostřednictvím služby Azure Machine Learning.
+V tomto článku se dozvíte, jak zabezpečit webovou službu, která je nasazená prostřednictvím Azure Machine Learning.
 
 Pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) můžete omezit přístup k webovým službám a zabezpečit data, která klienti odesílají. Protokol HTTPS pomáhá zabezpečit komunikaci mezi klientem a webovou službou tím, že šifruje komunikaci mezi nimi. Šifrování používá [protokol TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS se někdy označuje jako *SSL (Secure Sockets Layer)* (SSL), což bylo předchůdce TLS.
 
@@ -151,7 +151,7 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
   Aktualizujte DNS veřejné IP adresy clusteru AKS na kartě **Konfigurace** v části **Nastavení** v levém podokně. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
 
-  [![Služba Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualizace certifikátu SSL
 
@@ -246,7 +246,7 @@ update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Naučte se:
 + [Využití modelu strojového učení nasazeného jako webové služby](how-to-consume-web-service.md)
 + [Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md)
