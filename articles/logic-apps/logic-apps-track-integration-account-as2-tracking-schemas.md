@@ -76,7 +76,7 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | outgoingHeaders |Slovník JToken | Odchozí podrobnosti záhlaví zprávy AS2. (Volitelné) |
 | isNrrEnabled | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
 | isMdnExpected | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
-| mdnType | Enum | Povolené hodnoty jsou **NotConfigured**, **synchronizace**, a **asynchronní**. (Povinné) |
+| mdnType | Enum | Povolené hodnoty jsou **NotConfigured**, **Sync**, a **Async**. (Povinné) |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Schéma sledování AS2 MDN
