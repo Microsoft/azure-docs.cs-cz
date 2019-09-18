@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860285"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075500"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -403,6 +403,8 @@ Tato funkce snižuje počet ověřování ve webových aplikacích, které se ob
 >Funkce **Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **zůstat přihlášenou** AD FS, když uživatelé provedou dvoustupňové ověřování pro AD FS prostřednictvím Azure Multi-Factor Authentication Server nebo multi-Factoru třetí strany. řešení ověřování.
 >
 >Pokud uživatelé vyberou možnost **zůstat přihlášeni** na AD FS a také označí své zařízení jako důvěryhodné pro Multi-Factor Authentication, uživatel nebude automaticky ověřený po vypršení časového **limitu zapamatování služby Multi-Factor Authentication** . Azure AD si vyžádá nové dvoustupňové ověřování, ale AD FS vrátí token s původní Multi-Factor Authentication deklarací a datem, místo aby se znovu provádělo dvoustupňové ověřování. **Tato reakce nastavuje smyčku ověřování mezi Azure AD a AD FS.**
+>
+>Funkce **pamatovat Multi-Factor Authentication** není kompatibilní s uživateli B2B a při přihlašování k pozváným klientům se nebude zobrazovat pro uživatele B2B.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Povolit zapamatovat Multi-Factor Authentication
