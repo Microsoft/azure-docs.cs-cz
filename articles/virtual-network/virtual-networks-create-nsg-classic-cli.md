@@ -1,10 +1,10 @@
 ---
-title: Vytvořte skupinu zabezpečení sítě (classic) pomocí Azure classic CLI | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit a nasadit skupinu zabezpečení sítě (classic) pomocí Azure classic CLI.
+title: Vytvoření skupiny zabezpečení sítě (Classic) pomocí rozhraní příkazového řádku Azure Classic | Microsoft Docs
+description: Naučte se vytvořit a nasadit skupinu zabezpečení sítě (Classic) pomocí rozhraní příkazového řádku Azure Classic.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 17d98950-5fbb-4653-bef6-d822ab37541e
@@ -15,80 +15,80 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 454d17ac4f4c3723d7b7ee1ac2c639b885f3fff9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be63cdc3df5752f73b21bb5adc5fffaa364e7f43
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721199"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056709"
 ---
-# <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>Vytvořte skupinu zabezpečení sítě (classic) pomocí Azure classic CLI
+# <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>Vytvoření skupiny zabezpečení sítě (Classic) pomocí rozhraní příkazového řádku Azure Classic
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [vytvořit skupiny Nsg v modelu nasazení Resource Manager](tutorial-filter-network-traffic-cli.md).
+Tento článek se týká modelu nasazení Classic. Můžete také [vytvořit skupin zabezpečení sítě v modelu nasazení Správce prostředků](tutorial-filter-network-traffic-cli.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Následující vzorové příkazy Azure CLI můžete očekávat jednoduché prostředí už vytvořili závislosti na scénáři. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí podle [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-cli.md).
+Následující ukázkové příkazy Azure CLI očekávají v závislosti na scénáři jednoduché prostředí, které už je vytvořené. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, nejdříve Sestavte testovací prostředí [vytvořením virtuální](virtual-networks-create-vnet-classic-cli.md)sítě.
 
-## <a name="create-an-nsg-for-the-front-end-subnet"></a>Vytvořte skupinu zabezpečení sítě pro front-endové podsítě
+## <a name="create-an-nsg-for-the-front-end-subnet"></a>Vytvoření NSG pro front-end podsíť
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přečtěte si téma [instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-cli-version-1.0).
-2. Přejděte do režimu classic:
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přečtěte si téma [instalace a konfigurace Azure CLI](/cli/azure/install-cli-version-1.0).
+2. Přepnout do klasického režimu:
 
     ```azurecli
     azure config mode asm
     ```   
 
-3. Vytvořte skupinu zabezpečení sítě::
+3. Vytvořit NSG::
    
     ```azurecli   
      azure network nsg create -l uswest -n NSG-FrontEnd
     ```
    
-4. Vytvořte pravidlo zabezpečení, které umožňuje přístup na port 3389 (RDP) z Internetu:
+4. Vytvořte pravidlo zabezpečení, které umožní přístup k portu 3389 (RDP) z Internetu:
    
     ```azurecli
     azure network nsg rule create -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
    ```
 
-5. Vytvoření pravidla, která umožňuje přístup na port 80 (HTTP) z Internetu:
+5. Vytvořte pravidlo, které umožní přístup k portu 80 (HTTP) z Internetu:
    
     ```azurecli
     azure network nsg rule create -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
     ```   
 
-6. Přidružení NSG k front-endové podsítě:
+6. Přidružte NSG k podsíti front-end:
    
     ```azurecli
     azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd
    ```
 
-## <a name="create-the-nsg-for-the-back-end-subnet"></a>Vytvoření skupiny zabezpečení sítě pro podsíť back-end
+## <a name="create-the-nsg-for-the-back-end-subnet"></a>Vytvoření NSG pro back-endové podsítě
 
-1. Vytvoření skupiny zabezpečení sítě:
+1. Vytvořte NSG:
    
     ```azurecli
     azure network nsg create -l uswest -n NSG-BackEnd
    ```
 
-2. Vytvoření pravidla, která umožňuje přístup k portu 1433 (SQL) z front-endové podsítě:
+2. Vytvořte pravidlo, které umožní přístup k portu 1433 (SQL) z front-endové podsítě:
    
     ```azurecli
     azure network nsg rule create -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
    ```
 
-3. Vytvořte pravidlo pro odepření přístupu k Internetu:
+3. Vytvoření pravidla zakazujícího přístup k Internetu:
    
     ```azurecli
     azure network nsg rule create -a NSG-BackEnd -n web-rule -c Deny -p Tcp -r Outbound -y 200 -f * -o * -e Internet -u 80
    ```
 
-4. Přidružení NSG k back endové podsítě:
+4. Přidružte NSG k back-endové podsíti:
    
     ```azurecli
     azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384083"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097580"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -81,10 +81,10 @@ Jakmile se zobrazí stav back-end serveru, který není v pořádku pro všechny
 Zpráva zobrazená ve sloupci Podrobnosti na kartě stav back-endu poskytuje podrobnější přehled o problému a na základě těchto informací můžeme začít s řešením problému.
 
 > [!NOTE]
-> Výchozí žádost o test paměti je odeslána ve formátu <protocol>://127.0.0.1:<port> <http://127.0.0.1/> /, například pro test http na portu 80 a bere v úvahu pouze odpověď stavových kódů HTTP 200-399 jako v pořádku. Protokol a cílový port jsou zděděné z nastavení HTTP. Pokud chcete, Application Gateway použít test na jiném protokolu, názvu hostitele nebo cestě a přijměte jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
+> Výchozí požadavek testu se odešle ve formátu \<protokol\>://127.0.0.1:\<port\>/, například <http://127.0.0.1/> pro test http na portu 80 a bere v úvahu pouze odpověď stavových kódů HTTP 200-399 jako reakce v pořádku. Protokol a cílový port jsou zděděné z nastavení HTTP. Pokud chcete, Application Gateway použít test na jiném protokolu, názvu hostitele nebo cestě a přijměte jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
 
-### <a name="error-messages"></a>Chybové zprávy
-
+<a name="error-messages"></a>Chybové zprávy
+------------------------
 #### <a name="backend-server-timeout"></a>Časový limit back-endu serveru
 
 **Zpráva** Doba, kterou back-end zabere na reakci\'na test stavu služby Application Gateway s, je větší než prahová hodnota časového limitu v nastavení sondy.

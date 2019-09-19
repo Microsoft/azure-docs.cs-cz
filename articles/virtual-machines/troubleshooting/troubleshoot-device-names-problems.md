@@ -1,10 +1,10 @@
 ---
-title: Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Vysvětluje, proč zařízení virtuálního počítače s Linuxem názvů změnit a jak problém vyřešit.
+title: Řešení potíží se změnami názvů zařízení virtuálních počítačů s Linux v Azure | Microsoft Docs
+description: Vysvětluje, proč se mění názvy zařízení virtuálních počítačů se systémem Linux a jak tento problém vyřešit.
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 0350b6bdc990ed6c2de60e3e98c3768b18d0d636
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710422"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058207"
 ---
-# <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem
+# <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží se změnami názvu zařízení virtuálních počítačů se systémem Linux
 
-Tento článek vysvětluje, proč změnit názvy zařízení po restartování virtuálního počítače s Linuxem nebo znovu připojit datové disky. Tento článek poskytuje také řešení tohoto problému.
+Tento článek vysvětluje, proč se po restartování virtuálního počítače se systémem Linux nebo opětovném připojení datových disků mění názvy zařízení. Článek také poskytuje řešení pro tento problém.
 
 ## <a name="symptoms"></a>Příznaky
-Při spouštění virtuálních počítačů s Linuxem v Microsoft Azure se můžete setkat s následujícími problémy:
+Při spouštění virtuálních počítačů se systémem Linux v Microsoft Azure může docházet k následujícím problémům:
 
-- Virtuální počítač se nepodaří spustit po restartování.
-- Když datové disky se odpojit a znovu připojit, změna názvů zařízení disku.
-- Aplikace nebo skript, který odkazuje na disk s použitím názvu zařízení selže, protože došlo ke změně názvu zařízení.
+- Po restartování se virtuální počítač nepodaří spustit.
+- Když se datové disky odpojí a znovu připojí, změní se názvy zařízení na disku.
+- Aplikace nebo skript, který odkazuje na disk pomocí názvu zařízení, se nezdařil, protože došlo ke změně názvu zařízení.
 
 ## <a name="cause"></a>Příčina
 
-Umístění zařízení v systému Linux nemusí být konzistentní vzhledem k aplikacím napříč restartování. Názvy zařízení jsou tvořeny hlavní čísla (písmena) a podverze. Ovladač systému Linux paměťového zařízení zjišťuje nové zařízení, ovladače přiřadí hlavní a dílčí čísla z rozsahu z dostupného rozsahu do zařízení. Při odebrání zařízení čísla zařízení jsou uvolněny pro opakované použití.
+Cesty zařízení v systému Linux nezaručují konzistenci v rámci restartování. Názvy zařízení se skládají z hlavních čísel (písmen) a vedlejších čísel. Když ovladač úložného zařízení se systémem Linux zjistí nové zařízení, ovladač přiřadí hlavní a vedlejší čísla z dostupného rozsahu k zařízení. Po odebrání zařízení se čísla zařízení uvolní pro opakované použití.
 
-K problému dochází, protože zařízení vyhledávání v Linuxu je naplánováno podsystémem SCSI asynchronně. V důsledku toho cesta zařízení se mohou lišit mezi restarty.
+K tomuto problému dochází, protože subsystém SCSI naplánoval kontrolu zařízení v systému Linux, aby probíhala asynchronně. V důsledku toho se může název cesty zařízení měnit v různých restartech.
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, použijte trvalé pojmenování. Existují čtyři způsoby, jak používat trvalé pojmenování: pomocí systému souborů popisek, UUID, podle ID nebo podle cesty. Doporučujeme použít popisek systému souborů nebo UUID pro Linuxové virtuální počítače Azure.
+Chcete-li tento problém vyřešit, použijte trvalé pojmenování. Existují čtyři způsoby použití trvalého pojmenovávání: podle popisku systému souborů, podle identifikátoru UUID, podle ID nebo podle cesty. Pro virtuální počítače Azure Linux doporučujeme použít popisek systému souborů nebo UUID.
 
-Zadejte většině distribucí `fstab` **nofail** nebo **nobootwait** parametry. Tyto parametry umožňují spustit, pokud se disk připojit při spuštění systému. Další informace o těchto parametrech v dokumentaci distribuce. Informace o tom, jak nakonfigurovat virtuální počítač s Linuxem pro použití UUID při přidání datového disku najdete v tématu [připojit k počítači s Linuxem připojit nový disk](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+Většina distribucí poskytuje `fstab` parametry **neúspěšné** nebo **nobootwait** . Tyto parametry umožňují spuštění systému v případě, že se nepodaří připojit disk při spuštění. Další informace o těchto parametrech najdete v dokumentaci k distribuci. Informace o tom, jak nakonfigurovat virtuální počítač Linux pro použití UUID při přidávání datového disku, najdete v tématu [připojení k virtuálnímu počítači se systémem Linux a připojení nového disku](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
-Při instalaci agenta Azure Linux ve virtuálním počítači agent použije k vytvoření sadu symbolické odkazy na cestě /dev/disk/azure Udev pravidla. Aplikace a skripty pomocí procesu Udev pravidla Identifikujte disky, které jsou připojené k virtuálnímu počítači, spolu s typ disku a disk na logické jednotky.
+Když je agent Azure Linux nainstalovaný na virtuálním počítači, používá agent udev pravidla k vytvoření sady symbolických odkazů pod cestou/dev/disk/Azure. Aplikace a skripty používají pravidla udev k identifikaci disků, které jsou připojené k virtuálnímu počítači, spolu s typem disku a logickými jednotkami.
 
-Pokud už jste upravili vaše fstab tak, že váš virtuální počítač se nespouští a nemůžete SSH k virtuálnímu počítači, můžete použít [konzoly sériového portu virtuálního počítače](./serial-console-linux.md) zadat [režimu jednoho uživatele](./serial-console-grub-single-user-mode.md) a upravovat vaše fstab.
+Pokud jste fstab už upravili takovým způsobem, že se váš virtuální počítač nespouští a nemůžete k vašemu VIRTUÁLNÍmu počítači přihlášený protokol SSH, můžete použít [konzolu sériového portu VM](./serial-console-linux.md) k zadání [režimu Single User](./serial-console-grub-single-user-mode.md) a úpravě fstab.
 
-### <a name="identify-disk-luns"></a>Identifikace disku logické jednotky
+### <a name="identify-disk-luns"></a>Identifikace logických jednotek disku
 
-Aplikace používá logické jednotky k vyhledání všech připojených discích a vytvořit symbolické odkazy. Agent Azure Linux zahrnuje Udev pravidla, která nastavení symbolické odkazy z logické jednotky do zařízení:
+Aplikace používají logické jednotky (LUN) k vyhledání všech připojených disků a k vytváření symbolických odkazů. Agent Azure Linux zahrnuje pravidla udev, která nastavují symbolické odkazy z logické jednotky (LUN) na zařízení:
 
     $ tree /dev/disk/azure
 
@@ -67,7 +67,7 @@ Aplikace používá logické jednotky k vyhledání všech připojených discíc
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-Informace o logických jednotkách z účtu systému Linux hosta je načíst s použitím `lsscsi` nebo něco podobného:
+Informace o logické jednotce (LUN) z účtu hosta `lsscsi` systému Linux jsou načteny pomocí nebo podobného nástroje:
 
       $ sudo lsscsi
 
@@ -81,7 +81,7 @@ Informace o logických jednotkách z účtu systému Linux hosta je načíst s p
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Informace o logických jednotkách hosta se používá s metadaty předplatného Azure najít virtuální pevný disk ve službě Azure Storage, který obsahuje data oddílu. Například můžete použít `az` rozhraní příkazového řádku:
+Informace o hostované logické jednotce se používají s metadaty předplatného Azure k vyhledání VHD v Azure Storage, který obsahuje data oddílu. Například můžete použít rozhraní `az` příkazového řádku:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
@@ -111,9 +111,9 @@ Informace o logických jednotkách hosta se používá s metadaty předplatného
       }
     ]
 
-### <a name="discover-filesystem-uuids-by-using-blkid"></a>Zjišťovat identifikátory UUID systému souborů pomocí blkid
+### <a name="discover-filesystem-uuids-by-using-blkid"></a>Zjištění identifikátorů UUID systému souborů pomocí blkid
 
-Aplikace a skripty, přečtěte si výstup `blkid`, nebo podobně jako zdroje informací k sestavení kompletních symbolické odkazy v cestě /dev. Výstup zobrazuje identifikátory UUID všechny disky, které jsou připojené k virtuálnímu počítači a jejich přidružené zařízení souboru:
+Aplikace a skripty čtou výstup `blkid`(nebo podobné zdroje informací), aby mohli vytvořit symbolické odkazy v cestě/dev. Výstup zobrazuje identifikátory UUID všech disků připojených k virtuálnímu počítači a jejich přidruženému souboru zařízení:
 
     $ sudo blkid -s UUID
 
@@ -122,7 +122,7 @@ Aplikace a skripty, přečtěte si výstup `blkid`, nebo podobně jako zdroje in
     /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
     /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
 
-Pravidla Udev agenta Azure Linux vytvořit sadu symbolické odkazy na cestě /dev/disk/azure:
+Pravidla udev agenta Azure Linux vytvoří sadu symbolických odkazů pod cestou/dev/disk/Azure:
 
     $ ls -l /dev/disk/azure
 
@@ -132,18 +132,18 @@ Pravidla Udev agenta Azure Linux vytvořit sadu symbolické odkazy na cestě /de
     lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
     lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
 
-Aplikace pomocí odkazů k identifikaci spouštěcí disk zařízení a prostředků (dočasný) disku. V Azure aplikace by měla vypadat /dev/disk/azure/root-part1 nebo /dev/disk/azure-resource-part1 cesty ke zjištění těchto oddílů.
+Aplikace používají odkazy k identifikaci zařízení spouštěcího disku a prostředku (dočasného) disku. V Azure by měly aplikace Hledat v cestách/dev/disk/Azure/root-part1 nebo/dev/disk/Azure-Resource-part1, aby tyto oddíly zjistili.
 
-Všechny další oddíly z `blkid` seznamu jsou umístěny na datový disk. Aplikace udržovat UUID pro tyto oddíly a zjistit název zařízení za běhu pomocí cesty:
+Všechny další oddíly ze seznamu `blkid` se nacházejí na datovém disku. Aplikace udržují UUID pro tyto oddíly a používají cestu k vyhledání názvu zařízení za běhu:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
 
-### <a name="get-the-latest-azure-storage-rules"></a>Získat nejnovější pravidla služby Azure Storage
+### <a name="get-the-latest-azure-storage-rules"></a>Získat nejnovější pravidla Azure Storage
 
-Pokud chcete získat nejnovější pravidla služby Azure Storage, spusťte následující příkazy:
+Chcete-li získat nejnovější pravidla Azure Storage, spusťte následující příkazy:
 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
@@ -152,8 +152,8 @@ Pokud chcete získat nejnovější pravidla služby Azure Storage, spusťte nás
 
 Další informace najdete v následujících článcích:
 
-- [Ubuntu: Pomocí UUID](https://help.ubuntu.com/community/UsingUUID)
-- [Red Hat: Trvalé pojmenování](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux: Co můžete udělat identifikátory UUID pro vás](https://www.linux.com/news/what-uuids-can-do-you)
-- [Proces Udev: Úvod do správy zařízení ve službě moderního systému Linux](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Ubuntu: Použití UUID](https://help.ubuntu.com/community/UsingUUID)
+- [Red Hat: Trvalé pojmenovávání](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
+- [Linux Jaké identifikátory UUID můžou dělat za vás](https://www.linux.com/news/what-uuids-can-do-you)
+- [Udev Seznámení se správou zařízení v moderním systému Linux](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

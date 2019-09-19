@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91467f99e7932ce7ffcd5b3300f8544fb848ccfa
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019081"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087675"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -354,7 +354,7 @@ Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili iden
 
 ### <a name="dependency-types"></a>Typy závislostí
 
-Application Insights používá typ závislosti k cusomize prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](/azure-monitor/app/transaction-diagnostics):
+Application Insights používá typ závislosti k cusomize prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](/azure/azure-monitor/app/transaction-diagnostics):
 - `Azure queue`pro Azure Storage fronty
 - `Azure Event Hubs`pro Azure Event Hubs
 - `Azure Service Bus`pro Azure Service Bus

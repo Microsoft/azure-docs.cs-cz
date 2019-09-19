@@ -4,16 +4,17 @@ description: Úvod do služby HDInsight a Apache Hadoop a součásti technologie
 keywords: azure hadoop, hadoop azure, hadoop úvod, úvod hadoop, technologie hadoop, úvod do technologie hadoop, úvod k technologii hadoop, co je cluster hadoop, co je hadoop cluster, k čemu slouží hadoop
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: 859e830483ac959f6f55ba27b5657779ac16d2fb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934145"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088203"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co je Apache Hadoop ve službě Azure HDInsight?
 

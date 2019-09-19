@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562347"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056447"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -31,45 +31,44 @@ Jakmile bude důvěrná klientská aplikace vytvořená, můžete získat token 
 
 Obor pro požadavek na tok přihlašovacích údajů klienta je název prostředku následovaný `/.default`. Tento zápis oznamuje službě Azure AD, aby používala **oprávnění na úrovni aplikace** deklarované staticky během registrace aplikace. Jak už bylo uvedeno dříve, tato oprávnění rozhraní API musí udělit správce klienta.
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 V MSAL. Python, konfigurační soubor by vypadal jako následující fragment kódu:
 
-```Python
+```Json
 {
-    "authority": "https://login.microsoftonline.com/organizations",
-    "client_id": "your_client_id",
-    "secret": "This is a sample only. You better NOT persist your password."
-    "scope": ["https://graph.microsoft.com/.default"]
+    "scope": ["https://graph.microsoft.com/.default"],
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.default";
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
-### <a name="all"></a>Vše
-
-Obor používaný pro přihlašovací údaje klienta by měl vždycky být resourceId + "/.default".
+---
 
 ### <a name="case-of-azure-ad-v10-resources"></a>Případ prostředků Azure AD (v 1.0)
 
+Obor používaný pro přihlašovací údaje klienta by měl vždycky být resourceId + "/.default".
+
 > [!IMPORTANT]
-> Pro MSAL (koncový bod Microsoft Identity Platform), který žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
+> V případě, že MSAL žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
 > Proto pokud by jako Azure SQL ( **https://database.windows.net** ) prostředek očekává cílovou skupinu končící lomítkem (pro Azure SQL: `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` (Všimněte si dvojitého lomítka). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL.
 
 ## <a name="acquiretokenforclient-api"></a>Rozhraní API pro AcquireTokenForClient
 
-### <a name="net"></a>.NET
+K získání tokenu pro aplikaci použijete `AcquireTokenForClient` nebo ekvivalent v závislosti na platformách.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 using Microsoft.Identity.Client;
@@ -98,13 +97,12 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 }
 ```
 
-#### <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
-
-`AcquireTokenForClient` V MSAL.NET používá **mezipaměť tokenu aplikace** (všechny ostatní metody AcquireTokenXX používají mezipaměť tokenu uživatele) `AcquireTokenSilent` nevolají před voláním `AcquireTokenForClient` jako `AcquireTokenSilent` používá mezipaměť tokenu **uživatele** . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu **aplikace** a aktualizuje ji.
-
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```Python
+# The pattern to acquire a token looks like this.
+result = None
+
 # Firstly, looks up a token from cache
 # Since we are looking for token for the current app, NOT for an end user,
 # notice we give account parameter as None.
@@ -113,20 +111,42 @@ result = app.acquire_token_silent(config["scope"], account=None)
 if not result:
     logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
     result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token
+    print(result["token_type"])
+    print(result["expires_in"])  # You don't normally need to care about this.
+                                 # It will be good for at least 5 minutes.
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You may need this when reporting a bug
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-ClientCredentialParameters parameters = ClientCredentialParameters
-        .builder(Collections.singleton(KEYVAULT_DEFAULT_SCOPE))
+ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
+        Collections.singleton(GRAPH_DEFAULT_SCOPE))
         .build();
 
-CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(clientCredentialParam);
 
-// You can complete the future in many different ways. Here we use .get() for simplicity
-AuthenticationResult result = future.get();
+BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
+    if (ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+    }
+    System.out.println("Returned ok - " + res);
+    System.out.println("ID Token - " + res.idToken());
+
+    /* call a protected API with res.accessToken() */
+};
+
+future.whenCompleteAsync(processAuthResult);
+future.join();
 ```
+
+---
 
 ### <a name="protocol"></a>Protocol
 
@@ -159,9 +179,11 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>Další informace o protokolu
-
 Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
+
+## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
+
+`AcquireTokenForClient` V MSAL.NET používá **mezipaměť tokenu aplikace** (všechny ostatní metody AcquireTokenXX používají mezipaměť tokenu uživatele) `AcquireTokenSilent` nevolají před voláním `AcquireTokenForClient` jako `AcquireTokenSilent` používá mezipaměť tokenu **uživatele** . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu **aplikace** a aktualizuje ji.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

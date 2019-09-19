@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846932"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064391"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurace tokenů v Azure Active Directory B2C
 
-V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tokenu](active-directory-b2c-reference-tokens.md) v Azure Active Directory (Azure AD) B2C.
+V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tokenu](active-directory-b2c-reference-tokens.md) v Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tok
 Životnost tokenu můžete nakonfigurovat pro libovolný tok uživatele.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)** .
 5. Otevřete uživatelský tok, který jste vytvořili dříve.

@@ -1,10 +1,10 @@
 ---
-title: Řešení potíží s Azure site-to-site pro připojení VPN, který nejde se připojit | Dokumentace Microsoftu
-description: Informace o řešení potíží s připojením VPN site-to-site, která náhle přestane fungovat a nelze je připojit.
+title: Řešení potíží s připojením VPN typu Site-to-site, která nelze připojit | Microsoft Docs
+description: Naučte se řešit potíže s připojením VPN typu Site-to-site, které náhle přestane fungovat a nelze je znovu připojit.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -12,52 +12,52 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 3919243569035be41293ddc97c76a9f964cda7cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688499"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058877"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: Připojení k Azure VPN typu site-to-site se nemůže připojit a přestane fungovat
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Při Připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
-Po dokončení konfigurace připojení site-to-site VPN mezi místní sítí a virtuální síť Azure, připojení k síti VPN náhle přestane fungovat a nelze je připojit. Tento článek obsahuje postup řešení potíží, které vám pomohou vyřešit tento problém. 
+Po nakonfigurování připojení VPN typu Site-to-site mezi místní sítí a virtuální sítí Azure se připojení VPN náhle zastaví a nebude možné ho znovu připojit. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou tento problém vyřešit. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Chcete-li problém vyřešit, nejprve zkuste [resetování brány Azure VPN](vpn-gateway-resetgw-classic.md) a obnovit tunelového propojení z místního zařízení VPN. Pokud se problém nevyřeší, použijte následující postup zjištění příčiny problému.
+Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN Gateway](vpn-gateway-resetgw-classic.md) a resetovat tunel z místního zařízení VPN. Pokud se problém opakuje, postupujte podle těchto kroků a Identifikujte příčinu problému.
 
-### <a name="prerequisite-step"></a>Požadovaný krok
+### <a name="prerequisite-step"></a>Krok požadovaných součástí
 
-Zkontrolujte typ brány Azure VPN.
+Ověřte typ brány VPN Azure.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-2. Zkontrolujte **přehled** stránku brány sítě VPN pro informace o typu.
+2. Informace o typu najdete na stránce s přehledem služby VPN Gateway.
     
     ![Přehled brány](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1. Zkontrolujte, zda je ověřen místního zařízení VPN
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1. Zkontrolovat, jestli je místní zařízení VPN ověřené
 
-1. Zkontrolujte, jestli používáte [ověřit zařízení VPN a verze operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud zařízení není ověřená zařízení VPN, budete muset obraťte na výrobce zařízení a zjistit, jestli potíže s kompatibilitou.
+1. Ověřte, zda používáte ověřené [zařízení VPN a verzi operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud se nejedná o ověřené zařízení VPN, možná budete muset kontaktovat výrobce zařízení a zjistit, jestli došlo k potížím s kompatibilitou.
 
-2. Ujistěte se, že je zařízení VPN správně nakonfigurovaný. Další informace najdete v tématu [upravit ukázky konfigurace zařízení](vpn-gateway-about-vpn-devices.md#editing).
+2. Ujistěte se, že je zařízení VPN správně nakonfigurované. Další informace najdete v tématu [Úprava ukázek konfigurace zařízení](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-verify-the-shared-key"></a>Krok 2. Ověřte sdílený klíč
+### <a name="step-2-verify-the-shared-key"></a>Krok 2. Ověření sdíleného klíče
 
-Porovnejte sdílený klíč pro místní zařízení VPN k Azure virtuální sítě VPN abyste měli jistotu, že klíče shodují. 
+Porovnejte sdílený klíč pro místní zařízení VPN s Azure Virtual Network VPN, abyste se ujistili, že se klíče shodují. 
 
-Chcete-li zobrazit sdílený klíč pro připojení k síti VPN Azure, použijte jednu z následujících metod:
+Pokud chcete zobrazit sdílený klíč pro připojení Azure VPN, použijte jednu z následujících metod:
 
 **Azure Portal**
 
-1. Přejděte na připojení brány VPN typu site-to-site, který jste vytvořili.
+1. Přejít na připojení typu Site-to-site brány VPN, které jste vytvořili.
 
-2. V **nastavení** klikněte na tlačítko **sdílený klíč**.
+2. V části **Nastavení** klikněte na možnost **sdílený klíč**.
     
     ![Sdílený klíč](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
@@ -65,53 +65,53 @@ Chcete-li zobrazit sdílený klíč pro připojení k síti VPN Azure, použijte
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pro model nasazení Azure Resource Manageru:
+Pro model nasazení Azure Resource Manager:
 
     Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
 
-Pro model nasazení classic:
+Pro model nasazení Classic:
 
     Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
-### <a name="step-3-verify-the-vpn-peer-ips"></a>Krok 3. Ověření IP adres partnerské sítě VPN
+### <a name="step-3-verify-the-vpn-peer-ips"></a>Krok 3. Ověření IP adresy partnerského uzlu sítě VPN
 
--   Definice IP ve **brány místní sítě** objektu v Azure by měl odpovídat IP v místním zařízení.
--   Definice IP brány Azure, který je nastaven na místním zařízení by měl odpovídat IP adresu brány Azure.
+-   Definice IP adresy v objektu **brány místní sítě** v Azure by měla odpovídat místní IP adrese zařízení.
+-   Definice IP adresy brány Azure nastavená na místním zařízení by se měla shodovat s IP adresou brány Azure.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Krok 4. Zkontrolujte směrování definovaného uživatelem a skupin zabezpečení sítě v podsíti brány
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Krok 4. Kontrolovat UDR a skupin zabezpečení sítě v podsíti brány
 
-Zkontrolujte a odeberte uživatelem definované směrování (UDR) nebo skupiny zabezpečení sítě (Nsg) v podsíti brány a klikněte výsledek testu. Pokud se problém vyřeší, ověřte nastavení, která je použita uživatelem definovaná TRASA nebo skupiny zabezpečení sítě.
+Zkontrolujte a odeberte uživatelsky definované směrování (UDR) nebo skupiny zabezpečení sítě (skupin zabezpečení sítě) v podsíti brány a pak otestujte výsledek. Pokud je problém vyřešen, ověřte nastavení, které UDR nebo NSG použili.
 
-### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>Krok 5. Zkontrolujte adresu místní zařízení VPN externí rozhraní
+### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>Krok 5. Ověřte adresu externího rozhraní zařízení místní sítě VPN.
 
-- Pokud je součástí Internetová IP adresa zařízení VPN **místní sítě** definice v Azure, může dojít k občasnému odpojení.
-- Externí rozhraní zařízení musí být přímo na Internetu. Musí být bez překladu adres nebo brány firewall mezi Internetem a zařízení.
-- Ke konfiguraci clusteringu mít virtuální IP adresu brány firewall, musíte přerušit clusteru a vystavit zařízení VPN přímo do veřejného rozhraní, které brána lze rozhraní s.
+- Pokud je internetová IP adresa zařízení VPN zahrnutá v definici **místní sítě** v Azure, může docházet ke občasnému odpojení.
+- Externí rozhraní zařízení musí být přímo na internetu. Mezi Internetem a zařízením by neměl být žádný překlad síťových adres ani brána firewall.
+- Chcete-li nakonfigurovat clustery brány firewall tak, aby měly virtuální IP adresu, je nutné cluster přerušit a vystavit zařízení VPN přímo veřejnému rozhraní, se kterým může Brána používat rozhraní.
 
-### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Krok 6. Ověřte, jestli přesně odpovídají podsítě (Azure založené na zásadách brány)
+### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Krok 6. Ověření, že se podsítě přesně shodují (brány založené na zásadách Azure)
 
--   Ověřte, že prostory adres virtuální sítě odpovídají přesně mezi virtuální sítí Azure a místní definice.
--   Ověřte, že odpovídají přesně mezi podsítěmi **brány místní sítě** a místní definice v místní síti.
+-   Ověřte, jestli se adresní prostory virtuální sítě přesně shodují mezi virtuální sítí Azure a místními definicemi.
+-   Ověřte, že se podsítě přesně shodují mezi **bránou místní sítě a místními** definicemi místní sítě.
 
-### <a name="step-7-verify-the-azure-gateway-health-probe"></a>Krok 7. Ověření Azure gateway sondu stavu
+### <a name="step-7-verify-the-azure-gateway-health-probe"></a>Krok 7. Ověření sondy stavu služby Azure Gateway
 
-1. Sonda stavu otevřete tak, že přejdete na následující adresu URL:
+1. Otevřete test stavu tak, že přejdete na následující adresu URL:
 
     `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
-2. Proklikejte se upozornění certifikátu.
-3. Pokud se zobrazí odpověď, VPN gateway se považuje za v pořádku. Pokud jste neobdrželi odpověď, brána nemusí být v pořádku nebo skupinu zabezpečení sítě v podsíti brány je příčinou problému. Následující text je ukázkové odpovědi:
+2. Klikněte na upozornění certifikátu.
+3. Pokud obdržíte odpověď, brána sítě VPN se považuje za v dobrém stavu. Pokud neobdržíte odpověď, brána nemusí být v pořádku nebo NSG v podsíti brány způsobuje problém. Následující text je ukázková odpověď:
 
     ```xml
     <?xml version="1.0"?>
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
     ```
 
-### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Krok 8. Zkontrolujte, zda je povolena funkce metoda perfect forward secrecy místního zařízení VPN
+### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Krok 8. Ověřte, jestli má místní zařízení VPN povolenou funkci Perfect Forward Secrecy.
 
-Metoda perfect forward secrecy funkce může způsobit problémy odpojení. Pokud zařízení VPN metoda perfect forward secrecy povolena, zakažte tuto funkci. Pak aktualizujte zásady IPsec brány sítě VPN.
+Funkce Perfect Forward Secrecy může způsobit problémy s odpojením. Pokud má zařízení VPN povolené PFS (Perfect Forward Secrecy), zakažte tuto funkci. Pak aktualizujte zásady protokolu IPsec brány VPN.
 
 ## <a name="next-steps"></a>Další postup
 
--   [Konfigurace připojení typu site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
--   [Konfigurace zásad IPsec/IKE pro připojení VPN typu site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+-   [Konfigurace připojení typu Site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [Konfigurace zásad IPsec/IKE pro připojení VPN typu Site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)

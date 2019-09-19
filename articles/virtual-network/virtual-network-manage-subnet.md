@@ -1,7 +1,7 @@
 ---
-title: Přidat, změnit nebo odstranit podsíť virtuální sítě Azure
+title: Přidání, změna nebo odstranění podsítě virtuální sítě Azure
 titlesuffix: Azure Virtual Network
-description: Zjistěte, jak přidat, změnit nebo odstranit podsíť virtuální sítě v Azure.
+description: Naučte se přidávat, měnit nebo odstraňovat podsítě virtuální sítě v Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,102 +13,102 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: 8a8feb0f12fbf5eadcddf239ff2e13c058a566fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4af8c6dbbcbb877351018eb881f4d3b0b447bbce
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693309"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098980"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
-Zjistěte, jak přidat, změnit nebo odstranit podsíť virtuální sítě. Všechny prostředky Azure, které jsou nasazené do virtuální sítě se nasazuje do podsítě ve virtuální síti. Pokud začínáte s virtuálními sítěmi, další informace o nich v [Přehled virtuálních sítí](virtual-networks-overview.md) nebo provedením [kurzu](quick-create-portal.md). Pokud chcete vytvořit, změnit, nebo odstranění virtuální sítě, naleznete v tématu [Správa virtuální sítě](manage-virtual-network.md).
+Naučte se přidávat, měnit nebo odstraňovat podsítě virtuální sítě. Všechny prostředky Azure nasazené ve virtuální síti se nasazují do podsítě v rámci virtuální sítě. Pokud s virtuálními sítěmi začínáte, můžete o nich získat další informace v [přehledu virtuální sítě](virtual-networks-overview.md) nebo v tématu dokončení [kurzu](quick-create-portal.md). Informace o vytvoření, změně nebo odstranění virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
+Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
-- Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
+- Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
-- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
-- Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
+- Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+- Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` , aby se vytvořilo připojení k Azure.
 
-Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
+Účet, ke kterému se přihlašujete, nebo se k Azure připojíte pomocí nástroje, musí být přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v [oprávněních](#permissions).
 
 ## <a name="add-a-subnet"></a>Přidání podsítě
 
-1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji.
-2. Seznam virtuálních sítí vyberte virtuální síť, kterou chcete přidat do podsítě.
+1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
+2. V seznamu virtuálních sítí vyberte virtuální síť, do které chcete přidat podsíť.
 3. V části **NASTAVENÍ** vyberte **Podsítě**.
 4. Vyberte **+ podsíť**.
-5. Zadejte hodnoty následujících parametrů:
-   - **Název**: Název musí být v rámci virtuální sítě jedinečný. Pro maximální kompatibilita s ostatními službami Azure doporučujeme použít písmenem jako první znak názvu. Azure Application Gateway se například nenasadí do podsítě, který má název, který začíná číslem.
-   - **Rozsah adres**: Rozsah musí být jedinečný v rámci adresního prostoru virtuální sítě. Rozsahu se nesmí překrývat s rozsahy adres jiné podsítě ve virtuální síti. Adresní prostor musí být určena pomocí notace CIDR (Classless Inter-Domain Routing) zápisu. Ve virtuální síti s adresní prostor 10.0.0.0/16, můžete třeba definovat adresní prostor podsítě 10.0.0.0/24. Nejmenší oblast, kterou můžete určit je minimální velikostí/29, který nabízí osm IP adres podsítě. Azure si vyhrazuje první a poslední adresa v každé podsíti pro udržování souladu s protokoly. Tři další adresy jsou vyhrazené pro použití služby Azure. Proto definování podsítě je/29 řešit tzv tři použitelné IP adresy v podsíti. Pokud máte v plánu připojit virtuální sítě k bráně VPN, musíte vytvořit podsíť brány. Další informace o [aspekty konkrétní adresu rozsahu podsítí brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres podsítě je přidán za určitých podmínek můžete změnit. Zjistěte, jak změnit rozsah adres podsítě, najdete v článku [změnit nastavení podsítě](#change-subnet-settings).
-   - **Skupina zabezpečení sítě**: Můžete přiřadit žádný nebo jeden stávající skupina zabezpečení sítě k podsíti pro filtrování příchozího a odchozího provozu sítě pro podsíť. Skupina zabezpečení sítě musí existovat ve stejném předplatném a umístění jako virtuální síť. Další informace o [skupiny zabezpečení sítě](security-overview.md) a [jak vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).
-   - **Směrovací tabulka**: Můžete přiřadit žádnou nebo jednu existující směrovací tabulky podsítě řídit směrování provozu sítě k jiným sítím. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Další informace o [směrování Azure](virtual-networks-udr-overview.md) a [Vytvoření směrovací tabulky](tutorial-create-route-table-portal.md)
-   - **Koncové body služby:** Podsíť může mít nula nebo více koncových bodů služby povolená. Pokud chcete povolit koncový bod služby pro službu, vyberte službu nebo služby, které chcete povolit koncové body služby z **služby** seznamu. Umístění je automaticky nakonfigurován pro koncový bod. Ve výchozím nastavení jsou nakonfigurované koncové body služeb pro oblast virtuální sítě. Pro službu Azure Storage pro zajištění podpory scénářů místního převzetí služeb při selhání koncových bodů se automaticky konfigurují pro [spárovaných oblastech Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-   - **Delegování podsítě:** Podsíť může mít nula více delegování povoleno pro něj. Podsíť delegování dává explicitní oprávnění ke službě vytvářet prostředky specifické pro služby v podsíti při nasazení služby pomocí jedinečného identifikátoru. K delegování pro službu, vyberte službu chcete delegovat z **služby** seznamu.
+5. Zadejte hodnoty pro následující parametry:
+   - **Název**: Název musí být v rámci virtuální sítě jedinečný. Pro maximální kompatibilitu s jinými službami Azure doporučujeme použít jako první znak názvu písmeno. Například Azure Application Gateway nebudete nasazovat do podsítě s názvem, který začíná číslem.
+   - **Rozsah adres**: Rozsah musí být jedinečný v rámci adresního prostoru virtuální sítě. Rozsah se nesmí překrývat s ostatními rozsahy adres podsítí v rámci virtuální sítě. Adresní prostor se musí zadat pomocí zápisu CIDR (Classless Inter-Domain Routing). Například ve virtuální síti s adresním prostorem 10.0.0.0/16 můžete definovat adresní prostor podsítě 10.0.0.0/24. Nejmenší rozsah, který můžete zadat, je/29, který poskytuje osm IP adres pro podsíť. Azure rezervuje v každé podsíti první a poslední adresu pro shodu protokolu. Tři další adresy jsou rezervované pro využití služeb Azure. V důsledku toho definování podsítě s rozsahem adres/29 má za následek tři použitelné IP adresy v podsíti. Pokud plánujete připojit virtuální síť k bráně sítě VPN, musíte vytvořit podsíť brány. Přečtěte si další informace o [konkrétních požadavcích na rozsah adres pro podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete po přidání podsítě změnit za určitých podmínek. Informace o tom, jak změnit rozsah adres podsítě, najdete v tématu [Změna nastavení podsítě](#change-subnet-settings).
+   - **Skupina zabezpečení sítě**: K vyfiltrování příchozího a odchozího síťového provozu pro podsíť můžete k podsíti přidružit žádnou nebo jednu existující skupinu zabezpečení sítě. Skupina zabezpečení sítě musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [skupinách zabezpečení sítě](security-overview.md) a [o tom, jak vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).
+   - **Směrovací tabulka**: K podsíti můžete přidružit žádnou nebo jednu existující směrovací tabulku k řízení směrování provozu v síti do jiných sítí. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [Směrování Azure](virtual-networks-udr-overview.md) a [o tom, jak vytvořit směrovací tabulku](tutorial-create-route-table-portal.md) .
+   - **Koncové body služby:** Podsíť může mít pro ni nula nebo více koncových bodů služby. Chcete-li povolit koncový bod služby pro službu, vyberte služby nebo služby, pro které chcete povolit koncové body služby ze seznamu **služeb** . Umístění je konfigurováno automaticky pro koncový bod. Ve výchozím nastavení jsou koncové body služby nakonfigurované pro oblast virtuální sítě. Pro Azure Storage pro podporu regionálních scénářů převzetí služeb při selhání se koncové body automaticky nakonfigurují na [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+   - **Delegování podsítě:** Pro podsíť může být k dispozici nula pro více delegování. Delegování podsítě dává službě explicitní oprávnění k vytváření prostředků specifických pro službu v podsíti pomocí jedinečného identifikátoru při nasazování služby. Chcete-li delegovat službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění.
 
-       Odebrání koncového bodu služby, zrušte výběr služby, kterou chcete odstranit koncový bod služby pro. Další informace o koncových bodů služby a služby, je možné povolit pro najdete v tématu [přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md). Po povolení koncového bodu služby pro službu, musíte také povolit přístup k síti, podsíti pro prostředek vytvořený ve službě. Například, pokud povolíte koncový bod služby pro *Microsoft.Storage*, musíte také povolit síťový přístup všem účtům Azure Storage, kterým chcete udělit přístup k síti na. Podrobnosti o tom, jak povolit přístup k síti na podsítě, které je povolený koncový bod služby pro, najdete v dokumentaci pro jednotlivé služby povolíte koncový bod služby pro.
+       Chcete-li odebrat koncový bod služby, zrušte výběr služby, pro kterou chcete odebrat koncový bod služby. Další informace o koncových bodech služby a službách, pro které je možné je povolit, najdete v tématu [Přehled koncových bodů služby virtuální sítě](virtual-network-service-endpoints-overview.md). Po povolení koncového bodu služby pro službu musíte taky povolit přístup k síti pro podsíť pro prostředek vytvořený pomocí služby. Pokud například povolíte koncový bod služby pro *Microsoft. Storage*, musíte taky povolit přístup k síti pro všechny účty Azure Storage, ke kterým chcete udělit přístup k síti. Podrobnosti o tom, jak povolit síťový přístup k podsítím, pro které je povolen koncový bod služby, najdete v dokumentaci k jednotlivé službě, pro kterou jste povolili koncový bod služby.
 
-     Chcete-li ověřit, že koncový bod služby je povolená pro určitou podsíť, zobrazte [efektivní trasy](diagnose-network-routing-problem.md) u všech síťových rozhraních v podsíti. Když je nakonfigurovaný koncový bod, zobrazí *výchozí* trasy s předpony adres služby a typ dalšího segmentu z **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-6. Chcete-li přidat podsíť pro virtuální síť, kterou jste vybrali, **OK**.
+     Pokud chcete ověřit, jestli je koncový bod služby pro podsíť povolený, podívejte se na [efektivní trasy](diagnose-network-routing-problem.md) pro jakékoli síťové rozhraní v podsíti. Při konfiguraci koncového bodu se zobrazí *výchozí* trasa s předponami adres služby a typem **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+6. Pokud chcete přidat podsíť do virtuální sítě, kterou jste vybrali, vyberte **OK**.
 
-**Příkazy**
+**Příkaz**
 
-- Azure CLI: [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet)
+- Azure CLI: [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet)
 - PowerShell: [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)
 
 ## <a name="change-subnet-settings"></a>Změnit nastavení podsítě
 
-1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji.
-2. Seznam virtuálních sítí vyberte virtuální síť, která obsahuje podsíť, kterou chcete změnit nastavení.
+1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
+2. V seznamu virtuálních sítí vyberte virtuální síť, která obsahuje podsíť, pro kterou chcete změnit nastavení.
 3. V části **NASTAVENÍ** vyberte **Podsítě**.
-4. V seznamu podsítí vyberte podsíť, kterou chcete změnit nastavení pro. Můžete změnit následující nastavení:
+4. V seznamu podsítí vyberte podsíť, pro kterou chcete změnit nastavení. Můžete změnit následující nastavení:
 
-    - **Rozsah adres:** Pokud žádné prostředky se nasadí v rámci podsítě, můžete změnit rozsah adres. Pokud všechny prostředky v podsíti, musíte buď prostředky přesunout do jiné podsítě nebo nejprve odstraňte z podsítě. Kroky, jak můžete přesunout nebo odstranit prostředek se liší v závislosti na prostředku. Zjistěte, jak se přesunout nebo odstranit prostředky, které jsou v podsítích, najdete v dokumentaci pro každý typ prostředku, který chcete přesunout nebo odstranit. V tématu omezení pro **rozsah adres** v kroku 5 [přidat podsíť](#add-a-subnet).
-    - **Uživatelé**: Přístup k podsíti můžete řídit pomocí předdefinovaných nebo vlastní role. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti, najdete v článku [použití přiřazení rolí ke správě přístupu k prostředkům Azure](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
-    - **Skupina zabezpečení sítě** a **směrovací tabulka**: Podívejte se na krok 5 z [přidat podsíť](#add-a-subnet).
-    - **Koncové body služby**: Zobrazit koncové body služby v kroku 5 části [přidat podsíť](#add-a-subnet). Při povolení koncového bodu služby pro existující podsíť, ujistěte se, že žádné důležité úlohy běží na prostředky v podsíti. Koncové body služby přepnout trasy na každé síťové rozhraní v podsíti z pomocí výchozí trasa s *0.0.0.0/0* předponu a dalším segmentem směrování typu *Internet*, pomocí novou trasu s služby a typem dalšího segmentu směrování z předpony adres *VirtualNetworkServiceEndpoint*. Během přepnutí může být ukončena všechna otevřená připojení TCP. Koncový bod služby není povoleno, dokud přenosové toky ve službě pro všechna síťová rozhraní jsou aktualizovány pomocí nového trasy. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-    - **Delegování podsítě:** Zobrazit koncové body služby v kroku 5 části [přidat podsíť](#add-a-subnet). Delegování podsítě můžete upravit tak, aby nula nebo více delegování povoleno pro něj. Pokud je prostředek pro službu již nasazený v podsíti, delegování podsíť nejde odstranit, dokud se odeberou všechny prostředky pro službu. Na delegáta pro jiné služby, vyberte službu chcete delegovat z **služby** seznamu.
+    - **Rozsah adres:** Pokud v rámci podsítě nejsou nasazené žádné prostředky, můžete změnit rozsah adres. Pokud v podsíti existují nějaké prostředky, musíte buď přesunout prostředky do jiné podsítě, nebo je nejdřív odstranit z podsítě. Postup přesunutí nebo odstranění prostředku se liší v závislosti na prostředku. Pokud chcete zjistit, jak přesunout nebo odstranit prostředky, které jsou v podsítích, přečtěte si dokumentaci pro každý typ prostředku, který chcete přesunout nebo odstranit. Prohlédněte si omezení pro **Rozsah adres** v kroku 5 části [Přidání podsítě](#add-a-subnet).
+    - **Uživatelé**: Přístup k podsíti můžete řídit pomocí integrovaných rolí nebo vlastních rolí. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům Azure](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
+    - **Skupina zabezpečení sítě** a **směrovací tabulka**: Viz krok 5 [Přidání podsítě](#add-a-subnet).
+    - **Koncové body služby**: Viz koncové body služby v kroku 5 části [Přidání podsítě](#add-a-subnet). Při povolování koncového bodu služby pro existující podsíť zajistěte, aby na žádném prostředku v podsíti neběžely žádné kritické úlohy. Koncové body služby přepínají trasy v každém síťovém rozhraní v podsíti z použití výchozí trasy s předponou adresy *0.0.0.0/0* a typem dalšího segmentu směrování *Internetu*, k použití nové trasy s předponami adres služby a typu dalšího segmentu směrování. z *VirtualNetworkServiceEndpoint*. Během přepínače se můžou ukončit všechna otevřená připojení TCP. Koncový bod služby není povolený, dokud se přenos toků ke službě pro všechna síťová rozhraní neaktualizuje pomocí nové trasy. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+    - **Delegování podsítě:** Viz koncové body služby v kroku 5 části [Přidání podsítě](#add-a-subnet). Delegování podsítě lze změnit na hodnotu nula nebo více delegování, které jsou pro něj povoleny. Pokud je v podsíti již nasazen prostředek pro službu, nelze přidat ani odebrat delegování podsítě, dokud nebudou odebrány všechny prostředky pro službu. Chcete-li delegovat jinou službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění.
 5. Vyberte **Uložit**.
 
-**Příkazy**
+**Příkaz**
 
-- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
+- Azure CLI: [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
 - PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
 
-## <a name="delete-a-subnet"></a>Odstranit podsíť
+## <a name="delete-a-subnet"></a>Odstranění podsítě
 
-Podsítě můžete odstranit pouze v případě, že nejsou žádné prostředky v podsíti. Pokud existují prostředky v podsíti, je nutné odstranit prostředky, které jsou v podsíti, než budete moct odstranit podsíť. Kroky, jak jste se odstranit prostředek se liší v závislosti na prostředku. Zjistěte, jak odstranit prostředky, které jsou v podsítích, najdete v dokumentaci pro každý typ prostředku, který chcete odstranit.
+Podsíť můžete odstranit pouze v případě, že v podsíti nejsou žádné prostředky. Pokud v podsíti existují prostředky, je nutné odstranit prostředky, které jsou v podsíti, než budete moci odstranit podsíť. Postup odstranění prostředku se liší v závislosti na prostředku. Pokud se chcete dozvědět, jak odstranit prostředky, které jsou v podsítích, přečtěte si dokumentaci pro každý typ prostředku, který chcete odstranit.
 
-1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji.
-2. Seznam virtuálních sítí vyberte virtuální síť, která obsahuje podsíť, ve které chcete odstranit.
+1. Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pole *virtuální sítě* . Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
+2. V seznamu virtuálních sítí vyberte virtuální síť, která obsahuje podsíť, kterou chcete odstranit.
 3. V části **NASTAVENÍ** vyberte **Podsítě**.
-4. Vyberte v seznamu podsítí **...** , na pravé straně, pro podsíť chcete odstranit
-5. Vyberte **odstranit**a pak vyberte **Ano**.
+4. V seznamu podsítí vyberte na pravé straně propodsíť, kterou chcete odstranit.
+5. Vyberte **Odstranit**a pak vyberte **Ano**.
 
-**Příkazy**
+**Příkaz**
 
-- Azure CLI: [az network vnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
+- Azure CLI: [AZ Network VNet Delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
 - PowerShell: [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Oprávnění
 
-K provádění úloh v podsítích, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
+Aby bylo možné provádět úlohy v podsítích, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-|Akce                                                                   |   Name                                       |
+|Action                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
-|Microsoft.Network/virtualNetworks/subnets/read                           |   Přečtěte si podsíti virtuální sítě              |
-|Microsoft.Network/virtualNetworks/subnets/write                          |   Vytvoří nebo aktualizuje podsíť virtuální sítě  |
-|Microsoft.Network/virtualNetworks/subnets/delete                         |   Odstranění podsítě virtuální sítě            |
-|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Připojte se k virtuální síti                     |
-|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Povolení koncového bodu služby podsítě     |
-|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Získejte virtuální počítače v podsíti       |
+|Microsoft.Network/virtualNetworks/subnets/read                           |   Čtení podsítě virtuální sítě              |
+|Microsoft.Network/virtualNetworks/subnets/write                          |   Vytvoření nebo aktualizace podsítě virtuální sítě  |
+|Microsoft.Network/virtualNetworks/subnets/delete                         |   Odstraní podsíť virtuální sítě.            |
+|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Připojení k virtuální síti                     |
+|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Povolení koncového bodu služby pro podsíť     |
+|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Získání virtuálních počítačů v podsíti       |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Vytvoření virtuální sítě a podsítě se používá [PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablon Resource Manageru](template-samples.md)
-- Vytvoření a použití [Azure policy](policy-samples.md) pro virtuální sítě
+- Vytvoření virtuální sítě a podsítí pomocí ukázkových [](powershell-samples.md) skriptů PowerShellu nebo [Azure CLI](cli-samples.md) nebo použití šablon Azure [Správce prostředků](template-samples.md)
+- Vytvoření a použití [zásad Azure](policy-samples.md) pro virtuální sítě

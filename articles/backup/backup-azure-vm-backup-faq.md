@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827583"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098386"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -120,6 +120,16 @@ V případě spravovaného virtuálního počítače Azure je povolený obnoven�
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak získám rychlejší obnovení?
 Funkce [okamžitého obnovení](backup-instant-restore-capability.md) pomáhá urychlit zálohování a okamžité obnovení ze snímků.
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Co se stane, když změníme nastavení trezoru klíčů pro šifrovaný virtuální počítač?
+
+Po změně nastavení trezoru klíčů pro šifrovaný virtuální počítač budou zálohy nadále fungovat s novou sadou podrobností, ale po obnovení z bodu obnovení před změnou budete muset tajné klíče v trezoru klíčů obnovit, aby bylo možné virtuální počítač vytvořit z  její. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) .
+
+Operace, jako je tajný klíč nebo převzetí klíče, nevyžadují tento krok a stejný Trezor klíčů je možné použít i po obnovení.
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>Můžu k virtuálnímu počítači přistupovat po obnovení z důvodu přerušeného vztahu mezi virtuálním počítačem a řadičem domény?
+
+Ano, budete mít přístup k virtuálnímu počítači po obnovení, protože došlo k přerušení vztahu virtuálního počítače s řadičem domény. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) .
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 

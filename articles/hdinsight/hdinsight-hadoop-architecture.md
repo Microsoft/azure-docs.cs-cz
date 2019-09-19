@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 66e0654162d3d0ac68d8fc1622358b36268569cf
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916532"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091471"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -45,9 +45,9 @@ NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich prů
 
 Všechny typy clusterů HDInsight nasazují PŘÍZi. Správce prostředků je nasazen pro vysokou dostupnost s primární a sekundární instancí, která běží na prvním a druhém hlavním uzlu v rámci clusteru. V jednom okamžiku je aktivní jenom jedna instance Správce prostředků. Instance NodeManager se spouštějí napříč dostupnými pracovními uzly v clusteru.
 
-![PŘÍZe v HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+![Apache PŘÍZe v Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Použití MapReduce v Apache Hadoopu ve službě HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Seznámení se službou Azure HDInsight](hadoop/apache-hadoop-introduction.md)

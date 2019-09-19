@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056295"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086559"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scénář: Webová aplikace, která přihlašuje uživatele
 
@@ -32,15 +32,35 @@ Seznamte se s tím, co potřebujete k vytvoření webové aplikace, která přih
 
 ## <a name="getting-started"></a>Začínáme
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 Pokud chcete vytvořit první přenosné webové aplikace (ASP.NET Core), které se přihlásí uživatelům, postupujte podle tohoto rychlého startu:
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: ASP.NET Core webové aplikace, které přihlásí uživatele](quickstart-v2-aspnet-core-webapp.md)
 
-Pokud dáváte přednost tomu, abyste se ASP.NETi, vyzkoušejte následující kurz:
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+Chcete pochopit, jak přidat přihlášení do starší webové aplikace ASP.NET, vyzkoušejte následující kurz:
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: ASP.NET webová aplikace, která přihlásí uživatele](quickstart-v2-aspnet-webapp.md)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Pokud jste vývojářem Java, vyzkoušejte si následující rychlý Start:
+
+> [!div class="nextstepaction"]
+> [Rychlé zprovoznění: Přidání přihlašování do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Pokud vyvíjíte pomocí Pythonu, vyzkoušejte:
+
+> [!div class="nextstepaction"]
+> [Rychlé zprovoznění: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu](quickstart-v2-python-webapp.md)
+
+---
 
 ## <a name="overview"></a>Přehled
 
@@ -51,7 +71,7 @@ Do své webové aplikace můžete přidat ověřování, aby se mohli přihlašo
 V druhé fázi můžete také aplikaci povolit, aby vyvolala webová rozhraní API jménem přihlášeného uživatele. Tato další fáze je jiný scénář, který najdete ve [webové aplikaci volání webových rozhraní API](scenario-web-app-call-api-overview.md) .
 
 > [!NOTE]
-> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách **middlewaru** . Tento scénář ještě nevyžaduje knihovny Microsoft Authentication Library (MSAL), které se týkají získání tokenu pro volání chráněných rozhraní API. Knihovny pro ověřování budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
+> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách **middlewaru** . V případě rozhraní .NET tento scénář ještě nevyžaduje knihovny Microsoft Authentication Library (MSAL), které se týkají získání tokenu pro volání chráněných rozhraní API. Knihovny pro ověřování budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
 
 ## <a name="specifics"></a>Specifika
 

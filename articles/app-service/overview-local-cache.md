@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098463"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097648"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -49,7 +49,7 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 * Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Po spuštění aplikace se soubory zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 300 MB, ale můžete ji zvětšit až na 2 GB.
 * Místní mezipaměť je určena pro čtení i zápis. Jakákoli změna se ale zruší, když aplikace přesune virtuální počítače nebo se restartuje. Pro aplikace, které ukládají klíčová data v úložišti obsahu, nepoužívejte místní mezipaměť.
 * _D:\home\LogFiles_ a _D:\home\Data_ obsahují soubory protokolu a data aplikací. Dvě podsložky se ukládají místně na instanci virtuálního počítače a zkopírují se do sdíleného úložiště obsahu pravidelně. Aplikace mohou uchovávat soubory protokolu a data jejich zápisem do těchto složek. Kopírování do sdíleného úložiště obsahu je ale nejlepší, takže je možné soubory protokolů a data ztratit z důvodu náhlého selhání instance virtuálního počítače.
-* [Streamování protokolů](troubleshoot-diagnostic-logs.md#streamlogs) je ovlivněno nejlepší kopií. V protokolech streamování můžete sledovat zpoždění v délce jedné minuty.
+* [Streamování protokolů](troubleshoot-diagnostic-logs.md#stream-logs) je ovlivněno nejlepší kopií. V protokolech streamování můžete sledovat zpoždění v délce jedné minuty.
 * V úložišti sdíleného obsahu dojde ke změně struktury složek _protokolů_ a složek _dat_ pro aplikace, které používají místní mezipaměť. V nich jsou teď podsložky, které následují jako vzor pojmenování "jedinečný identifikátor" + časové razítko. Každá z podsložek odpovídá instanci virtuálního počítače, kde je aplikace spuštěná nebo spuštěná.
 * Další složky v _D:\home_ zůstanou v místní mezipaměti a nekopírují se do sdíleného úložiště obsahu.
 * Nasazení aplikací prostřednictvím jakékoli podporované metody se publikují přímo do trvalého sdíleného úložiště obsahu. Chcete-li aktualizovat složky _D:\home\site_ a _D:\home\siteextensions_ v místní mezipaměti, je nutné aplikaci restartovat. Chcete-li zajistit bezproblémové životní cyklus, přečtěte si informace dále v tomto článku.

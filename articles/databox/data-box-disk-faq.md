@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076904"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098823"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Nejčastější dotazy
 
@@ -89,6 +89,24 @@ A.  Stav objednávky disků Data Box Disk můžete sledovat na webu Azure Portal
 ### <a name="q-how-do-i-return-the-disks"></a>Otázka: Jak můžu disky vrátit? 
 A.  Microsoft přikládá k balíčku s disky Data Box Disk expediční štítek. Připevněte tento štítek k odesílanému balíčku a zavezte zapečetěný balíček na pobočku dopravce. Pokud se tento štítek poškodil nebo ztratil, přejděte na **Přehled > Stáhnout expediční štítek** a stáhněte si nový zpětný expediční štítek.
 
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Můžu Data Box Disk objednávku vybrat? Můžu disky vrátit přes dopravce, kterého zvolím?
+A. Ano. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box Disk pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud si chcete Data Box Disk objednávku, proveďte následující kroky:
+    
+1. Po umístění objednávky se zpracuje objednávka a připraví se disky. Pošleme vám e-mail s oznámením, že je vaše objednávka připravená na vyzvednutí. 
+2. Jakmile bude objednávka připravena k vyzvednutí, přejděte do objednávky v Azure Portal a přejděte do okna **Přehled** . 
+3. Zobrazí se oznámení s kódem v Azure Portal. Odešlete e-mailem [Azure Data box provoznímu týmu](mailto:adbops@microsoft.com) a poskytněte jim kód. Tým poskytne umístění a naplánuje datum a čas vyzvednutí. Po obdržení e-mailových oznámení je nutné zavolat týmu do 5 pracovních dnů.
+
+Po dokončení kopírování a ověření dat proveďte následující kroky, abyste vrátili disk:
+
+1. Po dokončení ověření dat odpojte disky. Odeberte propojovací kabely.
+2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu. Pokud chybí příslušenství, můžou se účtovat poplatky.
+
+    - Znovu použijte balení z prvotní dodávky. Doporučujeme zabalit disky pomocí odolné bublinkové fólie.
+    - Ujistěte se, že vše dobře sedí, aby se zamezilo jakýmkoli posunům v krabici.
+3. V Azure Portal otevřete **okno Přehled** pro vaši objednávku. Mělo by se zobrazit oznámení s kódem.
+4. Pomocí tohoto kódu a e-mailu [Azure Data box provozního týmu](mailto:adbops@microsoft.com) a poskytněte jim kód. Poskytne vám informace o tom, kde a kdy se mají disky odpustit.
+
+
 ## <a name="migrate-data"></a>Migrovat data
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>Otázka: Jaká je maximální velikost dat, která se dá použít s disky Data Box Disk?  
@@ -109,7 +127,7 @@ A.  Ke kopírování dat na disky použijte nástroj pro kopírování SMB, nap�
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Zkopírujte data Azure Data Box Disk a ověřte](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Kopírování dat na Azure Data Box Disk a jejich ověření](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Použijte více relací.
 - Místo kopírování přes sdílenou síťovou složku (při kterém vás můžou omezovat rychlosti sítí) zajistěte, aby se data nacházela přímo na počítači, ke kterému jsou příslušné disky připojené.
 - Zkontrolujte, že během procesu kopírování používáte USB 3.0 nebo novější. K identifikaci řadičů USB a zařízení USB připojených k počítači si stáhněte a používejte [nástroj USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview).

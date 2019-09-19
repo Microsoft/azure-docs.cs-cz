@@ -1,6 +1,6 @@
 ---
-title: Webová aplikace, které přihlásí uživatelé (Přesun do produkčního prostředí) – platforma identit Microsoft
-description: Zjistěte, jak sestavit webovou aplikaci, který se přihlásí uživatelé (Přesun do produkčního prostředí)
+title: Webová aplikace, která přihlašuje uživatele (Přesun do produkčního prostředí) – Microsoft Identity Platform
+description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přesunout do produkčního prostředí).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,38 +11,42 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074707"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086552"
 ---
-# <a name="web-app-that-signs-in-users---move-to-production"></a>Webovou aplikaci, která se přihlásí uživatelé – Přesun do produkčního prostředí
+# <a name="web-app-that-signs-in-users---move-to-production"></a>Webová aplikace, která přihlašuje uživatele – přesune se do produkčního prostředí
 
-Teď, když víte, jak k získání tokenu pro volání webových rozhraní API, zjistěte, jak ji přesunout do produkčního prostředí.
+Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak ho přesunout do produkčního prostředí.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-### <a name="calling-web-apis-scenario"></a>Volání webového rozhraní API pro scénář
+### <a name="calling-web-apis-scenario"></a>Scénář volání webových rozhraní API
 
-Jakmile web uživatelé vaší aplikace přihlásí, může volat webové rozhraní API jménem přihlášeného uživatele. Volání webového rozhraní API z webové aplikace je objekt následující scénáře:
+Jakmile se vaše webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
 
 > [!div class="nextstepaction"]
 > [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---web-app-tutorial"></a>Podrobné informace – kurz vývoje webové aplikace
+### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>Kurz pro rozsáhlou podrobně-ASP.NET Core Web App
 
-Další informace o dalších způsobech uživatelé přihlásit s ASP.NET Core kurz: [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Toto je progresivní kurz s produkčním připravený kód pro webové aplikace, včetně postupu pro přidání přihlášení.
+Přečtěte si o dalších způsobech přihlašování uživatelů pomocí ASP.NET Core kurzu: [MS-identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Tato ukázka je postupný kurz s kódem připraveným pro produkci webové aplikace, včetně postupu přidání přihlášení pomocí účtů v nástroji:
 
-<!--- Removed the diagram as it's already shown in the above link to GitHub
+- vaše organizace,
+- více organizací,
+- pracovní nebo školní účty nebo osobní účet Microsoft,
+- pomocí [Azure AD B2C](https://aka.ms/aadb2c),
+- nebo v národních cloudech.
 
-![Tutorial overview](media/scenarios/aspnetcore-webapp-tutorial.svg)
+### <a name="sample-code---java-web-app"></a>Ukázka kódu – webová aplikace Java
 
---->
+Přečtěte si další informace o webové aplikaci Java z ukázky na GitHubu: [Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

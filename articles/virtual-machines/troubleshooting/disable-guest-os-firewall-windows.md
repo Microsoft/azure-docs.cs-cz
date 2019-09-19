@@ -1,10 +1,10 @@
 ---
-title: Vypnout hostovaný operační systém brány Firewall na virtuálním počítači Azure | Dokumentace Microsoftu
+title: Zakázání brány firewall hostovaného operačního systému ve virtuálním počítači Azure | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505457"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086538"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
-Tento článek poskytuje odkaz pro situace, ve kterých je podezření, že brána firewall operačního systému hosta je filtrování částečné nebo úplné provozu do virtuálních počítačů (VM). Tato situace může nastat, pokud úmyslně provedly se změny brány firewall, která způsobila selhání připojení RDP.
+Tento článek poskytuje referenční informace o situacích, ve kterých máte podezření, že brána firewall hostovaného operačního systému filtruje částečný nebo kompletní provoz do virtuálního počítače. Tato situace může nastat, pokud byly provedeny změny v bráně firewall, která způsobila selhání připojení RDP.
 
 ## <a name="solution"></a>Řešení
 
-Proces, který je popsaný v tomto článku je určena pro použití tento problém obejdete tak, aby se mohli soustředit na řešení skutečných problém, tedy jak správně nastavit pravidla brány firewall. It\rquote s Microsoft osvědčeným postupem je součást brány Windows Firewall povolena. Jak nakonfigurovat \cf3 pravidla brány firewall, závisí na úroveň přístupu k s that\rquote virtuálního počítače vyžaduje.
+Postup, který je popsaný v tomto článku, je určený k použití jako alternativní řešení, abyste se mohli soustředit na řešení reálného problému, který je správně nastavený na pravidla brány firewall. It\rquote s osvědčeným postupem Microsoftu je povolit součást brány Windows Firewall. Způsob konfigurace pravidel brány firewall \cf3 závisí na úrovni přístupu k virtuálnímu počítači that\rquote, který je povinný.
 
 ### <a name="online-solutions"></a>Online řešení 
 
-Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete vytvořit tyto způsoby zmírnění rizik pomocí druhým virtuálním Počítačem.
+Pokud je virtuální počítač online a lze k němu přistupovat na jiném virtuálním počítači ve stejné virtuální síti, můžete tato omezení udělat pomocí jiného virtuálního počítače.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Zmírnění dopadů 1: Funkce vlastní rozšíření skriptů nebo spustit příkaz
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Zmírnění 1: Rozšíření vlastních skriptů nebo funkce příkazu Spustit
 
-Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) nebo [spustit příkazy](../windows/run-command.md) funkci (virtuální počítače Resource Manageru jenom) pro vzdálené spuštění těchto skriptů.
+Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) nebo funkce [Run Commands](../windows/run-command.md) (jenom správce prostředků virtuální počítače) a vzdáleně spouštět následující skripty.
 
 > [!Note]
 > * Pokud je brána firewall nastavená místně, spusťte následující skript:
@@ -45,18 +45,18 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
 >   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0 
 >   Restart-Service -Name mpssvc
 >   ```
-> * Pokud brána firewall je nastavená prostřednictvím zásady služby Active Directory, můžete spustit následující skript pro dočasný přístup. 
+> * Pokud je brána firewall nastavená prostřednictvím zásad služby Active Directory, můžete pro dočasný přístup použít příkaz Spustit následující skript. 
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
->   Ale co nejdříve zásady se použijí znovu, můžete budete má zahájit mimo vzdálenou relaci. Trvalé řešení tohoto problému je upravit zásady, které jsou použity na tomto počítači.
+>   Jakmile se ale zásada znovu použije, stane se Vzdálená relace. Trvalá oprava tohoto problému je úprava zásad, které se na tomto počítači aplikují.
 
-#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdáleného prostředí PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Zmírnění 2: Vzdálené prostředí PowerShell
 
-1.  Připojte se k virtuálnímu počítači, který je umístěný ve stejné virtuální síti jako virtuální počítač, který nemůže získat přístup pomocí připojení RDP.
+1.  Připojte se k virtuálnímu počítači, který se nachází ve stejné virtuální síti jako virtuální počítač, ke kterému se nemůžete připojit pomocí připojení RDP.
 
 2.  Otevřete okno konzole Powershellu.
 
@@ -70,13 +70,13 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
     ```
 
 > [!Note]
-> Pokud je brána firewall nastavená pomocí objektu zásad skupiny, tato metoda nemusí fungovat, protože tento příkaz změní pouze položky místního registru. Pokud je zásada na místě, přepíše tuto změnu. 
+> Pokud je brána firewall nastavená prostřednictvím objektu Zásady skupiny, tato metoda nemusí fungovat, protože tento příkaz změní jenom místní položky registru. Pokud je zásada nastavená, přepíše se tato změna. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Zmírnění dopadů 3: Příkazy PSTools
+#### <a name="mitigation-3-pstools-commands"></a>Zmírnění 3: Příkazy nástroj PsTools
 
-1.  Řešení potíží virtuálního počítače, stáhněte si [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
-2.  Spusťte instanci CMD a přejděte k virtuálnímu počítači prostřednictvím jeho vyhrazené IP adresy.
+2.  Otevřete instanci CMD a potom přejděte k virtuálnímu počítači přes jeho DIP.
 
 3.  Spusťte následující příkazy:
 
@@ -86,13 +86,13 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Zmírnění dopadů 4: Vzdálený registr 
+#### <a name="mitigation-4-remote-registry"></a>Zmírnění omezení 4: Vzdálený registr 
 
-Použijte následující postup použijte [Remote Registry](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
+Při použití [vzdáleného registru](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)použijte následující postup.
 
-1.  Na virtuálním počítači řešení potíží spusťte editor registru a přejděte na **souboru** > **připojit síťový registr**.
+1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru a pak klikněte na **soubor** > **připojit k síťovému registru**.
 
-2.  Otevřete *cílový počítač*\SYSTEM větve a zadejte následující hodnoty:
+2.  Otevřete cílovou větev *počítače*\System a zadejte následující hodnoty:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,41 +100,41 @@ Použijte následující postup použijte [Remote Registry](https://support.micr
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Restartujte službu. Protože nemůžete udělat pomocí vzdálený registr, je nutné použít odebrat konzoly služby.
+3.  Restartujte službu. Vzhledem k tomu, že to nelze provést pomocí vzdáleného registru, je nutné použít příkaz odebrat konzolu služby.
 
-4.  Spusťte instanci **Services.msc**.
+4.  Otevřete instanci **služby Services. msc**.
 
-5.  Klikněte na tlačítko **služby (místní počítač)** .
+5.  Klikněte na **služby (místní)** .
 
 6.  Vyberte **připojit k jinému počítači**.
 
-7.  Zadejte **privátní IP adresa (DIP)**  problému virtuálního počítače.
+7.  Zadejte **privátní IP adresu (DIP)**  problému virtuálního počítače.
 
-8.  Restartujte zásadu místní brány firewall.
+8.  Restartujte místní zásady brány firewall.
 
-9.  Pokuste se znovu připojit k virtuálnímu počítači pomocí protokolu RDP ze svého místního počítače.
+9.  Zkuste se připojit k VIRTUÁLNÍmu počítači pomocí protokolu RDP znovu z místního počítače.
 
-### <a name="offline-solutions"></a>Offline řešení 
+### <a name="offline-solutions"></a>Řešení offline 
 
-Pokud máte situace, ve kterém není možné dosáhnout virtuálního počítače pomocí libovolné metody rozšíření vlastních skriptů se nezdaří a budete muset pracovat v OFFLINE režimu při práci přímo prostřednictvím systémový disk. Provedete to podle těchto kroků:
+Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomocí žádné metody, rozšíření vlastních skriptů se nezdaří a bude nutné pracovat v OFFLINE režimu tak, že přímo na systémovém disku pracujete. Provedete to podle těchto kroků:
 
 1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
-3.  Ujistěte se, že je disk označený jako Online v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojený systémový disk.
+3.  Ujistěte se, že je disk označen jako online v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému systémovému disku.
 
-4.  Než provedete jakékoli úpravy, vytvořte kopii složky \windows\system32\config v případě, že je nutné vrátit zpět změny.
+4.  Než provedete jakékoli změny, vytvořte kopii složky \Windows\System32\Config v případě, že je nutné vrátit zpět změny.
 
-5.  Na virtuálním počítači řešení potíží spusťte editor registru (regedit.exe). 
+5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (Regedit. exe). 
 
-6.  Pro tento postup řešení potíží jsme se připojení podregistry jako BROKENSYSTEM a BROKENSOFTWARE.
+6.  Pro tento postup řešení potíží Namontujte podregistry jako BROKENSYSTEM a BROKENSOFTWARE.
 
-7.  Zvýrazněte klíči HKEY_LOCAL_MACHINE a potom vyberte soubor > načíst Hive v nabídce.
+7.  Zvýrazněte klíč HKEY_LOCAL_MACHINE a v nabídce vyberte soubor > Načíst podregistr.
 
-8.  Vyhledejte soubor \windows\system32\config\SYSTEM na připojený systémový disk.
+8.  Vyhledejte soubor \windows\system32\config\SYSTEM na připojeném systémovém disku.
 
-9.  Spusťte instanci prostředí PowerShell se zvýšenými oprávněními a spusťte následující příkazy:
+9.  Otevřete instanci PowerShellu se zvýšenými oprávněními a pak spusťte následující příkazy:
 
     ```cmd
     # Load the hives - If your attached disk is not F, replace the letter assignment here

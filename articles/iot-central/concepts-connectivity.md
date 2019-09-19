@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: bb7711eea927212042ed2299bae74130867c1692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019985"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067644"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -34,14 +34,17 @@ Použití DPS umožňuje:
 
 Tento článek popisuje následující čtyři případy použití:
 
-1. [Rychlé připojení jednoho zařízení pomocí SAS](#connect-a-single-device)
-1. [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-sas)
-1. [Připojte zařízení ve velkém měřítku pomocí certifikátů X. 509](#connect-devices-using-x509-certificates) , což je doporučený postup pro produkční prostředí.
-1. [Připojit bez prvotní registrace zařízení](#connect-without-registering-devices)
+- [Rychlé připojení jednoho zařízení pomocí SAS](#connect-a-single-device)
+- [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-sas)
+- [Připojte zařízení ve velkém měřítku pomocí certifikátů X. 509](#connect-devices-using-x509-certificates) , což je doporučený postup pro produkční prostředí.
+- [Připojit bez prvotní registrace zařízení](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Připojení jednoho zařízení
 
-Tento přístup je užitečný při experimentování s IoT Central nebo testováním zařízení. K vygenerování připojovacího řetězce pro zařízení můžete použít informace o připojení zařízení z vaší aplikace IoT Central. Podrobný postup najdete v tématu [jak vygenerovat připojovací řetězec zařízení pro připojení k aplikaci Azure IoT Central](howto-generate-connection-string.md).
+Tento přístup je užitečný při experimentování s IoT Central nebo testováním zařízení. K připojení zařízení k aplikaci IoT Central pomocí služby Device Provisioning (DPS) můžete použít informace o připojení zařízení z aplikace IoT Central. Ukázkový kód klienta zařízení DPS najdete v následujících jazycích:
+
+- [C\#](./howto-connect-raspberry-pi-csharp.md)
+- [Node.js](./howto-connect-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Připojení zařízení ve velkém měřítku pomocí SAS
 
@@ -164,8 +167,6 @@ Sady SDK pro zařízení Azure nabízí nejjednodušší způsob implementace k�
 - [Sada Azure IoT SDK pro jazyk Java](https://github.com/azure/azure-iot-sdk-java)
 - [Sada Azure IoT SDK pro .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
-Každé zařízení se připojuje pomocí jedinečného připojovacího řetězce, který identifikuje zařízení. Zařízení se může připojit jenom ke službě IoT Hub, kde je zaregistrované. Při vytváření reálného zařízení v aplikaci Azure IoT Central vygeneruje aplikace informace potřebné k vytvoření připojovacího řetězce pomocí `dps-keygen`.
-
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>Funkce sady SDK a připojení IoT Hub
 
 Všechna komunikace zařízení s IoT Hub používá následující možnosti připojení IoT Hub:
@@ -203,7 +204,7 @@ Pokud zařízení nemůže používat žádné z podporovaných protokolů, mů�
 
 Všechna data vyměňované mezi zařízeními a vaším IoT Central Azure jsou šifrovaná. IoT Hub ověří všechny požadavky ze zařízení, které se připojuje k jakémukoli koncovému bodu IoT Hub pro zařízení. Aby se zabránilo výměně přihlašovacích údajů po kabelech, zařízení používá k ověření podepsané tokeny. Další informace najdete v tématu [řízení přístupu k IoT Hub](../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili o připojení zařízení v Azure IoT Central, tady jsou doporučené další kroky:
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850652"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098626"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
@@ -34,7 +34,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
 
 1. V části **AUTOMATIZACE PROCESŮ** klikněte na **Runbooky**. Zobrazí se seznam runbooků.
 
-1. Klikněte na tlačítko **Přidat runbook** v horní části seznamu. Na stránce **Přidat runbook** vyberte **Rychlé vytvoření**.
+1. Klikněte na tlačítko **vytvořit sadu Runbook** , které se nachází v horní části seznamu.
 
 1. Jako **Název** runbooku zadejte Hello World a jako **Typ runbooku** vyberte **PowerShell**. Klikněte na možnost **Vytvořit**.
 
@@ -96,7 +96,7 @@ Po publikování runbooku se zobrazí stránka s přehledem.
 
 Pokud už runbook nepotřebujete, odstraňte ho. Provedete to tak, že v seznamu runbooků vyberete příslušný runbook a kliknete na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V rámci tohoto rychlého startu jste vytvořili, upravili, otestovali a publikovali runbook a spustili úlohu runbooku. Další informace o runboocích Automation najdete v článku věnovaném různým typům runbooků, které můžete vytvářet a používat ve službě Automation.
 

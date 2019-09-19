@@ -2,18 +2,18 @@
 title: Data Lake Tools for Visual Studio s Hortonworksem izolovaným prostorem (sandbox) – Azure HDInsight
 description: Naučte se používat nástroje Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks běžícím na místním virtuálním počítači. Pomocí těchto nástrojů můžete vytvářet a spouštět úlohy podregistru a vepřového prostoru v izolovaném prostoru (sandbox) a zobrazit výstup a historii úlohy.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962312"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098778"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks
 
@@ -41,7 +41,7 @@ Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujt
 
 2. Z **Průzkumník serveru**klikněte pravým tlačítkem na položku **HDInsight** a pak vyberte **připojit k emulátoru HDInsight**.
 
-    ![Snímek obrazovky Průzkumník serveru se zvýrazněnou možností připojit k emulátoru HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![Průzkumník serveru se zvýrazněným emulátorem připojení ke službě HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. V dialogovém okně **připojit k emulátoru HDInsight** zadejte heslo, které jste nakonfigurovali pro Ambari.
 
@@ -112,7 +112,7 @@ Podregistr poskytuje dotazovací jazyk HiveQL (SQL like) pro práci se strukturo
     > [!NOTE]  
     > Tyto informace jsou stejné, jaké jsou k dispozici v odkazu **protokolu úlohy** po dokončení úlohy.
 
-    ![Snímek obrazovky s výstupním protokolem](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![Snímek obrazovky s výstupem HiveServer2](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Vytvoření projektu podregistru
 
@@ -122,7 +122,7 @@ Můžete také vytvořit projekt, který obsahuje více skriptů podregistru. Po
 
 2. V seznamu projektů rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **podregistr (HDInsight)** . V seznamu šablon vyberte možnost **Ukázka podregistru**. Zadejte název a umístění a pak vyberte **OK**.
 
-    ![Snímek obrazovky s novým projektem s Azure Data Lake, podregistrem, ukázkou podregistru a zvýrazněnou možností OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![Nové okno projektu s Azure Data Lake, ukázkou podregistru a OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Ukázkový projekt podregistru** obsahuje dva skripty: **WebLogAnalysis. HQL** a **SensorDataAnalysis. HQL**. Tyto skripty můžete odeslat pomocí stejného tlačítka pro **odeslání** v horní části okna.
 
@@ -179,7 +179,7 @@ Nástroje Data Lake také umožňují snadno zobrazit informace o úlohách, kte
 
 2. Rozbalením tabulky se zobrazí sloupce pro tuto tabulku. Data můžete rychle zobrazit tak, že kliknete pravým tlačítkem na tabulku a vyberete **Zobrazit prvních 100 řádků**.
 
-    ![Snímek obrazovky Průzkumník serveru s vybranými tabulkami rozbalenými a zobrazenými horními 100 řádky](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![Průzkumník serveru s vybranými tabulkami s rozbalenou a zobrazenými horními 100 řádky](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Vlastnosti databáze a tabulky
 
@@ -197,7 +197,7 @@ Tabulku pak můžete vytvořit pomocí formuláře. V dolní části následují
 
 ![Snímek obrazovky formuláře použitého k vytvoření tabulky](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form-box.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Učení LAN Hortonworks sandboxu](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Kurz Apache Hadoop – Začínáme s HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

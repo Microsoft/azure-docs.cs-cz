@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 618a871bee762900d4c99700cde42d759506b4b9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8f9b60c6e181c9f47635e7d46ce103032d395028
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810583"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087349"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scénář: sledovací zařízení: Chyba: měkké zamrznutí – chyba procesoru v clusteru Azure HDInsight
 
@@ -53,7 +54,7 @@ Použijte opravu jádra. Skript níže upgraduje jádro Linux a restartuje poč�
 
 1. Počkejte, než bude spuštění úspěšné.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

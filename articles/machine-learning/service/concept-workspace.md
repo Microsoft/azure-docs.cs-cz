@@ -1,7 +1,7 @@
 ---
 title: Co je pracovní prostor
-titleSuffix: Azure Machine Learning service
-description: Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Udržuje historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.
+titleSuffix: Azure Machine Learning
+description: Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning. Udržuje historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860511"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035330"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
-Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning službu a poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při používání služby Azure Machine Learning.  Pracovní prostor uchovává historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.  
+Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, který poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning.  Pracovní prostor uchovává historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.  
 
 Jakmile máte model, který chcete, zaregistrujete ho v pracovním prostoru. Pak použijete zaregistrovaný model a skripty bodování k nasazení do Azure Container Instances, službě Azure Kubernetes nebo k poli FPGA (Array-programovatelné pole brány) jako koncový bod HTTP na bázi REST. Model můžete také nasadit do zařízení Azure IoT Edge jako modul.
 
@@ -103,9 +103,9 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete začít používat službu Azure Machine Learning, přečtěte si:
+Pokud chcete začít s Azure Machine Learning, přečtěte si:
 
-+ [Přehled služby Azure Machine Learning](overview-what-is-azure-ml.md)
++ [Přehled Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Vytvoření pracovního prostoru](how-to-manage-workspace.md)
 + [Správa pracovního prostoru](how-to-manage-workspace.md)
 + [Kurz: Výuka modelu](tutorial-train-models-with-aml.md)

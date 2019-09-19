@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 5fe1b2c720bbc55e8e245f9592755e046e0b04a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 6b16cc0423d2e6c45e399fd332ecd8cfca8c2933
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968433"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091312"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>Scénář: Snížení úrovně zpomalení v Azure HDInsight
 
@@ -37,7 +38,7 @@ Hodnota `true` dává smysl, pokud je počet oddílů větší a data nejsou zko
 
 1. Pokud #1 není možné, nastavte hodnotu konfigurace na false v relaci Beeline a zkuste dotaz znovu. `set hive.optimize.sort.dynamic.partition=false`. Nastavení hodnoty na hodnotu false na úrovni clusteru se nedoporučuje. Hodnota `true` je optimální a v závislosti na povaze dat a dotazu nastavte parametr podle potřeby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

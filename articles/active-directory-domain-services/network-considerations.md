@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617325"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086581"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
@@ -36,7 +36,7 @@ Při návrhu virtuální sítě pro Azure služba AD DS platí následující po
     * Chcete-li minimalizovat latenci, udržujte základní aplikace blízko nebo ve stejné oblasti jako podsíť virtuální sítě pro spravovanou doménu Azure služba AD DS. Mezi virtuálními sítěmi Azure můžete použít připojení VPN s partnerským vztahem nebo virtuální privátní síť (VPN).
 * Virtuální síť nemůže spoléhat na služby DNS kromě těch, které poskytuje Azure služba AD DS.
     * Azure služba AD DS poskytuje vlastní službu DNS. Virtuální síť musí být nakonfigurovaná tak, aby používala tyto adresy služby DNS. Překlad názvů pro další obory názvů se dá provést pomocí podmíněného dopředných služeb.
-    * Vlastní nastavení serveru DNS nemůžete použít k přímému dotazování dotazů na jiné servery DNS, včetně virtuálních počítačů. Prostředky ve virtuální síti musí používat službu DNS poskytovanou službou Azure služba AD DS.
+    * Vlastní nastavení serveru DNS nemůžete použít k přímému nasměrování dotazů z jiných serverů DNS, včetně virtuálních počítačů. Prostředky ve virtuální síti musí používat službu DNS poskytovanou službou Azure služba AD DS.
 
 > [!IMPORTANT]
 > Po povolení služby nemůžete přesunout služba AD DS Azure do jiné virtuální sítě.
@@ -105,7 +105,7 @@ Spravovaná doména Azure služba AD DS během nasazení vytvoří několik sí�
 
 Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyžadují následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, ve které je vaše spravovaná doména Azure služba AD DS nasazená.
 
-| Číslo portu | Protocol | Zdroj                             | Cíl | Action | Požadováno | Účel |
+| Číslo portu | Protocol | Zdroj                             | Destination | Action | Požadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ano      | Správa vaší domény. |

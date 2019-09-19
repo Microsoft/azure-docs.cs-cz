@@ -1,74 +1,63 @@
 ---
-title: Přehled integrace B2B enterprise – Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvářet automatizované pracovní postupy B2B pro podniková řešení integrace s Azure Logic Apps a Enterprise Integration Pack
+title: Podniková integrace B2B – Azure Logic Apps
+description: Přečtěte si, jak vytvářet automatizované pracovní postupy B2B pro podnikovou integraci pomocí Azure Logic Apps a Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
+ms.topic: overview
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
-ms.date: 09/08/2016
-ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845817"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087565"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: Scénáře integrace enterprise B2B v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Řešení B2B Enterprise Integration s Azure Logic Apps a Enterprise Integration Pack
 
-Pro pracovní postupy business-to-business (B2B) a bezproblémové komunikaci s Azure Logic Apps můžete aktivovat scénáře integrace enterprise od Microsoftu založené na cloudu řešení Enterprise Integration Pack. Organizace si mohou vyměňovat zprávy elektronicky, i když používají různé protokoly a formátů. Této sady transformuje do formátu, který organizace systémy dokážou interpretovat a zpracovat různé formáty. Organizace si mohou vyměňovat zprávy prostřednictvím standardních protokolů, jako jsou třeba [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zabezpečení zpráv pomocí šifrování a digitálním podpisům.
+Pro řešení B2B (Business-to-Business) a bezproblémovou komunikaci mezi organizacemi můžete vytvářet automatizované škálovatelné pracovní postupy pro podnikovou integraci pomocí Enterprise Integration Pack (EIP) s [Azure Logic Apps](../logic-apps/logic-apps-overview.md). I když organizace používají různé protokoly a formáty, můžou vyměňovat zprávy elektronicky. EIP transformuje různé formáty do formátu, který mohou systémy vaší organizace zpracovávat, a podporuje standardní protokoly, včetně [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zabezpečit zprávy pomocí šifrování i digitálních podpisů. EIP podporuje tyto [podnikové integrační konektory](../connectors/apis-list.md#integration-account-connectors) a tyto oborové standardy:
 
-Pokud jste se seznámili s BizTalk serverem nebo Microsoft Azure BizTalk Services, funkce pro podnikovou integraci se snadno používají, protože většina koncepty jsou podobné. Hlavní rozdíl je, že pro podnikovou integraci používá účty pro integraci pro zjednodušení ukládání a správu artefaktů použít v rámci komunikace B2B. 
+* Elektronický výměna dat (EDI)
+* Enterprise Application Integration (EAI)
 
-Enterprise Integration Pack architektonicky, je založená na "integračních účtů". Tyto účty jsou založené na cloudu kontejnery, které ukládají všechny artefakty, jako jsou schémata, partnerů, certifikátů, mapy a smlouvy. Tyto artefakty slouží k návrhu, nasazení a údržbě aplikace B2B a také umožňují vytvářet pracovní postupy B2B pro logic apps. Ale předtím, než budete moct použít tyto artefakty, musíte nejprve odkaz účtu pro integraci do aplikace logiky. Potom můžete svou aplikaci logiky získat přístup k artefaktům účtu integrace.
+Pokud jste obeznámeni se službou Microsoft BizTalk Server nebo Azure BizTalk Services, EIP sleduje podobné koncepty a usnadňuje tak použití funkcí. Jedním z podstatných rozdílů je, že EIP je architektonicky na základě "účtů pro integraci", které zjednodušují ukládání a správu artefaktů používaných v komunikacích B2B. Tyto účty jsou cloudové kontejnery, které ukládají všechny artefakty, jako jsou partneři, smlouvy, schémata, mapy a certifikáty. 
 
-## <a name="why-should-you-use-enterprise-integration"></a>Proč byste měli použít pro podnikovou integraci?
+## <a name="why-use-the-enterprise-integration-pack"></a>Proč použít Enterprise Integration Pack?
 
-* S podnikovou integrací můžete uložit všechny artefakty na jednom místě – účtu pro integraci.
-* Můžete vytvářet pracovní postupy B2B a integraci s aplikací třetích stran software jako služba (SaaS), místních aplikací a vlastních aplikací pomocí modulu Azure Logic Apps a všechny jeho konektory.
-* Můžete vytvořit vlastní kód pro logic apps s využitím Azure functions.
+* S EIP můžete ukládat všechny artefakty na jednom místě – váš účet pro integraci.
 
-## <a name="how-to-get-started-with-enterprise-integration"></a>Jak začít s podnikovou integrací?
+* Můžete vytvářet pracovní postupy B2B a integrovat je s aplikacemi SaaS (software jako služba) třetích stran, místními aplikacemi a vlastními aplikacemi pomocí Azure Logic Apps a konektorů.
 
-Můžete vytvářet a spravovat aplikace B2B sadou Enterprise Integration Pack prostřednictvím návrhář aplikace logiky v **webu Azure portal**. Můžete také spravovat aplikace logiky pomocí [Powershellu](https://docs.microsoft.com/powershell/module/az.logicapp).
+* Pomocí služby Azure Functions můžete vytvořit vlastní kód pro vaše aplikace logiky.
 
-Tady jsou hlavní kroky, které je třeba provést před vytvořením aplikace na webu Azure Portal:
+## <a name="how-do-i-get-started"></a>Jak mám začít?
 
-![Obrázek s přehledem](media/logic-apps-enterprise-integration-overview/overview-0.png)  
+Než budete moct začít sestavovat pracovní postupy B2B Logic Apps s EIP, budete potřebovat tyto položky:
 
-## <a name="what-are-some-common-scenarios"></a>Jaké jsou uvedeny některé obvyklé scénáře?
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-Podniková integrace podporuje tyto oborové standardy:
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s artefakty, které chcete použít
 
-* EDI - výměnu elektronických dat.
-* Funkce – Enterprise Application Integration, EAI
+* Chcete-li vytvořit mapy a schémata, můžete použít nástroj [Microsoft Azure Logic Apps podniková integrace Tools for Visual studio 2015 2,0](https://aka.ms/vsmapsandschemas) a visual Studio 2015.
 
-## <a name="heres-what-you-need-to-get-started"></a>Zde je, co potřebujete, abyste mohli začít
+Po vytvoření účtu pro integraci a přidání artefaktů můžete začít sestavovat pracovní postupy B2B s těmito artefakty vytvořením aplikace logiky v Azure Portal. Pokud s Logic Apps začínáte, zkuste [vytvořit základní aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete s těmito artefakty pracovat, ujistěte se, že jste nejdřív provedli propojení účtu pro integraci s vaší aplikací logiky. Potom vaše aplikace logiky bude mít přístup k vašemu účtu pro integraci. Můžete také vytvářet, spravovat a nasazovat aplikace logiky pomocí sady Visual Studio nebo [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp).
 
-* Předplatné Azure s účtu pro integraci
-* Visual Studio 2015 a vytváření map a schémata
-* [Nástroje Microsoft Azure Logic Apps Enterprise Integration pro Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)  
+Tady jsou kroky vysoké úrovně, které vám pomůžou začít sestavovat aplikace B2B Logic Apps:
 
-## <a name="try-it-now"></a>Vyzkoušet
+![Předpoklady pro vytváření aplikací B2B Logic Apps](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-[Nasazení plně funkční ukázkové AS2 odeslání a příjem aplikace logiky](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive) , který využívá funkce B2B pro Azure Logic Apps.
+## <a name="try-now"></a>Vyzkoušet
 
-## <a name="learn-more"></a>Víc se uč
-* [Smlouvy o](../logic-apps/logic-apps-enterprise-integration-agreements.md "přečtěte si víc o smlouvách enterprise integration")
-* [Scénáře B2b (B2B)](../logic-apps/logic-apps-enterprise-integration-b2b.md "zjistěte, jak vytvořit s B2B funkce Logic apps ")  
-* [Certifikáty](logic-apps-enterprise-integration-certificates.md "přečtěte si víc o podnikové integraci certifikáty")
-* [Plochého souboru kódování/dekódování](logic-apps-enterprise-integration-flatfile.md "zjistěte, jak kódování a dekódování plochého souboru obsahu")  
-* [Účty pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md "přečtěte si víc o účty pro integraci")
-* [Mapuje](../logic-apps/logic-apps-enterprise-integration-maps.md "přečtěte si víc o podnikové integrace map")
-* [Partneři](logic-apps-enterprise-integration-partners.md "přečtěte si víc o podnikové integrace partnerů")
-* [Schémata](logic-apps-enterprise-integration-schemas.md "přečtěte si víc o podnikové integraci schémata")
-* [Ověření XML zprávy](logic-apps-enterprise-integration-xml.md "zjistěte, jak ověřit XML zprávy službou Logic apps")
-* [Transformace XML](logic-apps-enterprise-integration-transform.md "přečtěte si víc o podnikové integrace map")
-* [Konektory Enterprise Integration](../connectors/apis-list.md "přečtěte si víc o konektory enterprise integration pack")
-* [Integrace účtu metadat](../logic-apps/logic-apps-enterprise-integration-metadata.md "přečtěte si víc o metadata účtu integrace")
-* [Monitorování zpráv B2B](logic-apps-monitor-b2b-message.md "Další informace o monitorování zpráv B2B")
-* [Sledování zpráv B2B v Azure Monitor protokoly](logic-apps-track-b2b-messages-omsportal.md "Další informace o sledování zpráv B2B v protokoly Azure monitoru")
+[Nasazení plně funkční ukázkové aplikace logiky, která odesílá a přijímá zprávy AS2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
+## <a name="next-steps"></a>Další postup
+
+* [Vytváření obchodních partnerů](logic-apps-enterprise-integration-partners.md)
+* [Vytvoření smluv](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [Přidání schémat](logic-apps-enterprise-integration-schemas.md)
+* [Přidávání map](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [Migrace z BizTalk Services](../logic-apps/logic-apps-move-from-mabs.md)

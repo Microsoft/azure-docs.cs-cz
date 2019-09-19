@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984231"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097144"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -48,16 +48,17 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | arabština      | `ar`          |           |             | ✔ \*                     | |
 | Čeština       | `cs`          |           |             | ✔ \*                     | |
-| Čínština (zjednodušená) | `zh-CN`| ✔ \***     |             | ✔         |    |
+| Čínština (zjednodušená) | `zh-hans`| ✔ \***     |             | ✔         |    |
+| Čínština (tradiční) | `zh-hant`| ✔ \***     |             | ✔         |    |
 | dánština      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Holandština       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Angličtina     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Angličtina     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Finština     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Francouzština      | `fr`          | ✔        | ✔           |  ✔            |     |
+| Francouzština      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
 | Němčina      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Řečtina       | `el`          | ✔ \*     |             |            |     |
 | Maďarština   | `hu`          |           |             |  ✔ \*          |     | 
-| italština     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| italština     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
 | Japonština    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Korejština      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norština (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615436"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097848"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS a používání vlastních certifikátů TLS ve službě Azure Kubernetes Service (AKS)
 
@@ -133,7 +133,7 @@ Obě aplikace jsou teď spuštěné v clusteru Kubernetes, ale nakonfigurují se
 V následujícím příkladu je přenos do adresy `https://demo.azure.com/` směrován do služby s názvem. `aks-helloworld` Provoz na adresu `https://demo.azure.com/hello-world-two` je směrován `ingress-demo` do služby. V tomto článku nemusíte tyto názvy ukázkových hostitelů měnit. V části použití v produkčním prostředí zadejte názvy zadané jako součást procesu žádosti o certifikát a procesu generování.
 
 > [!TIP]
-> Pokud se název hostitele zadaný během procesu žádosti o certifikát, název CN, neshoduje s hostitelem definovaným v trase příchozího přenosu dat, zobrazí se v něm kontroler Kubernetes příchozího *certifikátu*. Zajistěte, aby se názvy hostitelů a certifikátů příchozího směrování shodovaly.
+> Pokud se název hostitele zadaný během procesu žádosti o certifikát, název CN, neshoduje s hostitelem definovaným v trase příchozího přenosu dat, zobrazí se na řadiči příchozího upozornění *Kubernetes příchozí certifikát* . Zajistěte, aby se názvy hostitelů a certifikátů příchozího směrování shodovaly.
 
 Část *TLS* oznamuje trase příchozího přenosu dat s názvem *AKS-Inuse-tls* pro hostitele *demo.Azure.com*. Pro produkční použití zadejte svou vlastní adresu hostitele.
 

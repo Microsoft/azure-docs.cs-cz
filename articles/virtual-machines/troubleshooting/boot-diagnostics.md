@@ -1,29 +1,29 @@
 ---
-title: Diagnostika spouštění virtuálních počítačů v Azure | Dokumentace Microsoftu
+title: Diagnostika spouštění pro virtuální počítače v Azure | Dokument Microsoft doc
 description: Přehled dvou funkcí ladění pro virtuální počítače v Azure
 services: virtual-machines
 author: Deland-Han
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 7796d24b88ccc531b8042bfadf9d87f0072a2994
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709865"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086476"
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak používat diagnostiku spouštění k řešení potíží s virtuálními počítači v Azure
+# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
-Může existovat mnoho důvodů, proč se, že virtuální počítač dostane do nespustitelného stavu. Pro řešení potíží s pomocí vašich virtuálních počítačů vytvořených pomocí modelu nasazení Resource Manageru můžete použít následující funkce ladění: Výstup konzoly a snímku obrazovky podporu pro virtuální počítače Azure. 
+Může existovat mnoho důvodů, proč virtuální počítač přejde do stavu bez spouštění. Pokud chcete řešit problémy s virtuálními počítači vytvořenými pomocí modelu nasazení Správce prostředků, můžete použít následující funkce ladění: Podpora výstupu konzoly a snímku obrazovky pro virtuální počítače Azure. 
 
-Pro virtuální počítače s Linuxem můžete zobrazit výstup protokolu konzoly z portálu. Pro virtuální počítače Windows a Linuxem Azure vám umožní zobrazit snímek virtuálního počítače z hypervisoru. Obě funkce jsou podporovány pro virtuální počítače, které jsou ve všech oblastech Azure. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
+Pro virtuální počítače se systémem Linux můžete zobrazit výstup protokolu konzoly z portálu. Pro virtuální počítače s Windows i Linuxem vám Azure umožní zobrazit snímek obrazovky virtuálního počítače z hypervisoru. Obě funkce jsou podporované pro virtuální počítače Azure ve všech oblastech. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
 
-Můžete vybrat **Diagnostika spouštění** možnost zobrazit v protokolu a na snímku obrazovky.
+Můžete vybrat možnost **Diagnostika spouštění** a zobrazit protokol a snímek obrazovky.
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -43,21 +43,21 @@ Můžete vybrat **Diagnostika spouštění** možnost zobrazit v protokolu a na 
 - [Operační systém nebyl nalezen](https://support.microsoft.com/help/4010142)
 - [Chyba při spuštění nebo NEDOSTUPNÉ_SPOUŠTĚCÍ_ZAŘÍZENÍ](https://support.microsoft.com/help/4010143)
 
-## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Povolit diagnostiku na virtuálním počítači vytvořeném pomocí webu Azure Portal
+## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Povolení diagnostiky na virtuálním počítači vytvořeném pomocí webu Azure Portal
 
-Následující postup je pro virtuální počítače vytvořené pomocí modelu nasazení Resource Manager.
+Následující postup se používá pro virtuální počítač vytvořený pomocí modelu nasazení Správce prostředků.
 
-Na **správu** kartě **monitorování** části, ujistěte se, že **Diagnostika spouštění** zapnutý. Z **účet úložiště diagnostiky** rozevírací seznam, vyberte účet úložiště, ve které chcete umístit diagnostické soubory.
+Na kartě **Správa** v části **monitorování** se ujistěte, že je zapnutá **Diagnostika spouštění** . V rozevíracím seznamu **účet úložiště diagnostiky** vyberte účet úložiště, do kterého se mají umístit diagnostické soubory.
  
-![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
+![Vytvořit virtuální počítač](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Funkce diagnostiky spouštění nepodporuje účet premium storage. Pokud používáte účet premium storage pro diagnostiku spouštění, StorageAccountTypeNotSupported chybě může dojít při spuštění virtuálního počítače.
+> Funkce diagnostiky spouštění nepodporuje účet Premium Storage. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
 >
 
-### <a name="deploying-from-an-azure-resource-manager-template"></a>Nasazení ze šablony Azure Resource Manageru
+### <a name="deploying-from-an-azure-resource-manager-template"></a>Nasazení ze šablony Azure Resource Manager
 
-Pokud provádíte nasazení ze šablony Azure Resource Manageru, přejděte do prostředku vašeho virtuálního počítače a připojte část s diagnostickým profilem. Nastavte hlavičku verze rozhraní API na "2015-06-15" nebo novější. Nejnovější verze je "2018-10-01".
+Pokud nasazujete ze šablony Azure Resource Manager, přejděte k prostředku virtuálního počítače a přidejte část diagnostický profil. Nastavte hlavičku verze rozhraní API na "2015-06-15" nebo novější. Nejnovější verze je "2018-10-01".
 
 ```json
 {
@@ -79,22 +79,22 @@ Diagnostický profil umožňuje vybrat účet úložiště pro ukládání proto
 }
 ```
 
-Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
 
-## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolení diagnostiky spouštění na existující virtuální počítač 
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolit diagnostiku spouštění na stávajícím virtuálním počítači 
 
-Povolení diagnostiky spouštění na virtuálním počítači, postupujte podle těchto kroků:
+Pokud chcete povolit diagnostiku spouštění na stávajícím virtuálním počítači, postupujte podle těchto kroků:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a potom vyberte virtuální počítač.
-2. V **podpora a řešení potíží** vyberte **Diagnostika spouštění**a pak **nastavení** kartu.
-3. V **Diagnostika spouštění** nastavení, změní stav na **na**a od **účtu úložiště** rozevíracího seznamu vyberte účet úložiště. 
-4. Uložte změny.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a potom vyberte virtuální počítač.
+2. V části **Podpora a řešení potíží** vyberte **Diagnostika spouštění**a pak vyberte kartu **Nastavení** .
+3. V nastavení **Diagnostika spouštění** změňte stav na **zapnuto**a v rozevíracím seznamu **účet úložiště** vyberte účet úložiště. 
+4. Uložte změnu.
 
     ![Aktualizace stávajícího virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-Je nutné restartovat virtuální počítač se změna projevila.
+Aby se změna projevila, musíte restartovat virtuální počítač.
 
-### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Povolte diagnostiku spouštění pomocí rozhraní příkazového řádku Azure
+### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Povolení diagnostiky spouštění pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na existující virtuální počítač Azure. Další informace najdete v tématu [az Diagnostika spouštění virtuálních počítačů –](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na stávajícím virtuálním počítači Azure. Další informace najdete v tématu [AZ VM Boot-Diagnostics.](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)
