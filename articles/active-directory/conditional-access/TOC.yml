@@ -19,10 +19,10 @@
 - name: Koncepty
   expanded: false
   items:
-    - name: Využití podmíněného přístupu
-      href: howto-conditional-access-adoption-kit.md
     - name: Běžné zásady podmíněného přístupu
       href: concept-conditional-access-policy-common.md
+    - name: Komponenty zásad podmíněného přístupu
+      href: concept-conditional-access-policies.md
     - name: Podmínky
       href: conditions.md
     - name: Podmínky umístění

@@ -584,6 +584,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: Rozdílová kopie z databáze
           href: solution-template-delta-copy-with-control-table.md
+        - name: Migrace dat z Amazonu S3 do Azure Storage
+          href: solution-template-migration-s3-azure.md
         - name: Přesunutí souborů
           href: solution-template-move-files.md
         - name: Transformace dat s využitím Databricks

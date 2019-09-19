@@ -44,6 +44,9 @@ sections:
           - title: Integrace virtuální sítě
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>Zabezpečená služba umístěná ve vaší privátní virtuální síti Azure s privátními IP adresami</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>Hospodárné řešení pro nasazení několika spravovaných instancí, které sdílejí prostředky</p>'
+            title: Fondy instancí
           - title: Snadná migrace
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>Snadná migrace vašich místních databází do cloudu Azure s využitím nativního obnovení</p>
@@ -59,9 +62,6 @@ sections:
           - title: Úrovně služby
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
             html: <p>Možnost volby mezi úrovní služby Pro obecné účely a Pro důležité obchodní informace v závislosti na vašich obchodních potřebách</p>
-          - title: Pokročilé zabezpečení
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>Zabezpečení vašich instancí a databází s využitím integrovaných funkcí zabezpečení databází Azure SQL<p>
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
@@ -93,6 +93,12 @@ sections:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: Vytvoření nového fondu instancí
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: Konfigurace síťového prostředí Azure
             values:

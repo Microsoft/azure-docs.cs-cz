@@ -666,6 +666,8 @@
           href: how-to-configure-change-feed-start-time.md
         - name: Použití estimátoru pro kanálu změn
           href: how-to-use-change-feed-estimator.md
+        - name: Migrace z knihovny Change Feed Processor
+          href: how-to-migrate-from-change-feed-library.md
     - name: Integrované analýzy s využitím Apache Sparku
       items:
         - name: Konektor Spark pro Azure Databricks

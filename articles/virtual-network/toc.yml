@@ -255,8 +255,18 @@
           href: manage-public-ip-address-prefix.md
     - name: Přesun mezi oblastmi
       items:
+        - name: Skupiny zabezpečení sítě – portál
+          href: move-across-regions-nsg-portal.md
+        - name: Skupiny zabezpečení sítě – PowerShell
+          href: move-across-regions-nsg-powershell.md
         - name: Virtuální sítě – portál
           href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+        - name: Virtuální sítě – PowerShell
+          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+        - name: Veřejné IP adresy – portál
+          href: move-across-regions-publicip-portal.md
+        - name: Veřejné IP adresy – PowerShell
+          href: move-across-regions-publicip-powershell.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s partnerskými vztahy virtuálních sítí

@@ -73,7 +73,7 @@ sections:
       - type: list
         style: cards
         className: cardsM
-        columns: 3
+        columns: 2
         items:
           - href: /azure/sql-database/sql-database-single-index
             html: '<p>Pro vaše aplikace SaaS a mikroslužby, které vyžadují jednoúčelovou databázi s předvídatelným výkonem, můžete využít jednoúčelovou databázi spravovanou serverem služby SQL Database.</p>'
@@ -90,6 +90,11 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: Spravovaná instance
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>Fondy spravovaných instancí můžete využít jako jednoduché a hospodárné řešení pro nasazení několika spravovaných instancí, které sdílejí prostředky a rychle se škálují.</p>'
+            image:
+              src: media/index/i_instancepool.png
+            title: Fond instancí
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
@@ -128,6 +133,12 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+          - title: Vytvoření fondu instancí
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
   - title: Podrobné kurzy a výukové materiály
     items:
       - type: paragraph

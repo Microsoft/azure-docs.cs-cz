@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurace portů s vysokou dostupností pro interní nástroj pro vyrovnávání zatížení
       href: load-balancer-configure-ha-ports.md
+    - name: Přesun mezi oblastmi
+      items:
+        - name: Externí nástroj pro vyrovnávání zatížení – portál
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: Externí nástroj pro vyrovnávání zatížení – PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: Interní nástroj pro vyrovnávání zatížení – PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure

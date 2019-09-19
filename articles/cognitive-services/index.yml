@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965464"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087556"
 highlightedContent:
   items:
   - title: Co jsou služby Cognitive Services?
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Translator Speech (vyřazuje se)
-  - title: Rozhodovací služby
+  - title: Rozhodnutí
     summary: Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Vyhledávání na webu
-  - title: Containers
+  - title: Kontejnery služby Cognitive Service
     summary: Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat tatáž bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které se dodávají s kontejnery Docker.
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Kontejnery pro Cognitive Services
+      text: Kontejnery služby Cognitive Service
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: Vytváření kontejnerů pro opakované použití

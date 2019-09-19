@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: Podporovaná verze Kubernetes
       href: supported-kubernetes-versions.md
+    - name: Posílení zabezpečení v operačním systému hostitele
+      href: security-hardened-vm-host-image.md
 - name: Návody
   items:
     - name: Operace clusteru
@@ -116,7 +118,7 @@
         - name: Odstranění clusteru AKS
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Vytvoření ACR s clusterem AKS (Preview)
+        - name: Vytvoření ACR s clusterem AKS
           href: cluster-container-registry-integration.md
         - name: Vytváření virtuálních uzlů
           items:

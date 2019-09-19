@@ -152,6 +152,9 @@
         - name: Přidání a registrace datových sad
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Trénování s datovými sadami
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Trénování modelů
       items:
         - name: Nastavení prostředí trénování

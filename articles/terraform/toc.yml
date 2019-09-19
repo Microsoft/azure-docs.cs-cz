@@ -7,11 +7,11 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření aplikace s více službami
-      href: terrafom-quickstart.md
     - name: Instalace a konfigurace Terraformu
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
+    - name: Vytvoření aplikace s více službami
+      href: terrafom-quickstart.md
     - name: Vytvoření virtuálního počítače s Linuxem
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
@@ -67,10 +67,6 @@
   items:
     - name: Šablony konfigurace
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Koncepty
-  items:
-    - name: Integrace Azure Cloud Shellu
-      href: terraform-cloud-shell.md
 - name: Návody
   items:
     - name: Ukládání stavu ve službě Azure Storage
@@ -79,7 +75,7 @@
   items:
     - name: Registr modulů Azure
       href: 'https://registry.terraform.io/modules/Azure'
-    - name: Reference k Terraformu
+    - name: Zprostředkovatel Azure pro Terraform
       href: 'https://aka.ms/terraform'
 - name: Zdroje a prostředky
   items:

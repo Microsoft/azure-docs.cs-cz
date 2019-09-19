@@ -444,3 +444,5 @@
       href: 'https://blog.botframework.com/category/luis/'
     - name: Znalostní báze
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
+- name: Portál LUIS
+  href: 'https://www.luis.ai'

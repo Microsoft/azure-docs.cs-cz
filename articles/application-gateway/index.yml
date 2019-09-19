@@ -1,69 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Application Gateway
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Application Gateway
+summary: Naučte se vytvářet aplikační brány. Tato dokumentace vám pomůže naplánovat, nasadit a spravovat webový provoz do vašich prostředků Azure.
 metadata:
-  title: 'Dokumentace ke službě Azure Application Gateway – kurzy, reference k rozhraní API'
-  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Dokumentace ke službě Azure Application Gateway
+  description: Zjistěte, jak nasadit Azure Firewall, cloudovou službu zabezpečení sítě.
   services: application-gateway
-  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 5/20/2019
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Naučte se nasadit kontroler doručování aplikací (ADC) Application Gateway jako službu. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení, což vám umožňuje vytvořit škálovatelný a vysoce dostupný webový front-end.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se spravovat webový provoz k vašim prostředkům s využitím Application Gateway:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak nasadit, spravovat a monitorovat službu Application Gateway v Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Vytvoření aplikační brány s využitím firewallu webových aplikací</a>
-          - html: <a href="/azure/application-gateway/create-ssl-portal">Konfigurace aplikační brány s ukončením protokolu SSL</a>
-          - html: '<a href="/azure/application-gateway/create-multiple-sites-portal">Vytvoření a konfigurace aplikační brány, která hostuje více webů</a>'
-          - html: <a href="/azure/application-gateway/create-url-route-portal">Vytvoření aplikační brány s pravidly směrování založenými na cestě</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Vytvoření aplikační brány se směrováním založeným na cestě URL</a>
-          - html: '<a href="/azure/application-gateway/tutorial-autoscale-ps">Vytvoření aplikační brány, která vylepšuje přístup k webovým aplikacím</a>'
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Správa webového provozu s využitím služby Application Gateway
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
-          - title: Jazyky
-            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.applicationgatewaysoperations">Python</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">Kompletní referenční materiály k rozhraní REST API</a></p>'
+  ms.date: 09/18/2019
+  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076030"
+landingContent:
+- title: Informace o službě Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Application Gateway?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy
+      url: application-gateway-faq.md
+- title: Nasazení služby Application Gateway
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Přímý webový provoz s využitím služby Azure Application Gateway
+      url: quick-create-portal.md
+- title: Nasazení s využitím koncového zpracování SSL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Koncové zpracování SSL a kompletní šifrování SSL s využitím služby Application Gateway
+      url: ssl-overview.md
+    - text: Přehled zásad SSL
+      url: application-gateway-ssl-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurace aplikační brány s využitím koncového zpracování SSL
+      url: create-ssl-portal.md
+- title: Automatické škálování a zónově redundantní služby Application Gateway
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Automatické škálování a zónově redundantní služby Application Gateway v2
+      url: application-gateway-autoscaling-zone-redundant.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření aplikační brány, která vylepšuje přístup k webovým aplikacím
+      url: tutorial-autoscale-ps.md
+- title: Řešení potíží se službou Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled funkce Resource Health služby Application Gateway
+      url: resource-health-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Využití Log Analytics ke kontrole protokolů Firewallu webových aplikací služby Application Gateway
+      url: log-analytics.md
+    - text: Potíže se stavem back-endu ve službě Application Gateway
+      url: application-gateway-backend-health-troubleshooting.md

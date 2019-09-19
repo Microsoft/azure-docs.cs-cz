@@ -3,7 +3,7 @@ documentType: LandingData
 title: 'Azure SQL Database: Izolovaná databáze'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Dokumentace Azure SQL Database – kurzy, reference k rozhraní API'
+  title: 'Dokumentace k Azure SQL Database – kurzy, reference k rozhraní API'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   requires-business-manager-approval: false
@@ -16,14 +16,14 @@ metadata:
   manager: craigg
   ms.date: 04/26/2019
 abstract:
-  description: 'Azure SQL Database je relační databáze jako služba (DBaaS) založené na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonné, snadno k použití, spolehlivé a zabezpečené databázi, můžete použít k vytvoření nové aplikace, weby a mikroslužby v programovacím jazyce podle vašeho výběru, aniž byste museli spravovat infrastrukturu. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
+  description: 'Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze se snadným ovládáním, kterou můžete použít k vytváření nových aplikací, webů a mikroslužeb v programovacím jazyce podle vašeho výběru, aniž byste se museli zabývat správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
   aside:
     image:
       alt: null
       height: 110
       src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
       width: 250
-    title: 'Vytvoření izolované databáze SQL v Azure (3:12)'
+    title: 'Vytvoření jedné databáze SQL v Azure (3:12)'
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
@@ -40,46 +40,33 @@ sections:
               src: media/index/i_elasticpool.svg
           - title: Server služby SQL Database
             href: /azure/sql-database/sql-database-servers
-            html: '<p>Server služby SQL Database je ústřední bod správy pro konfiguraci zabezpečení, ladění, zásady zálohování a další vlastnosti konfigurace na sadu jeden, nebo součástí fondu databázím na serveru.</p>'
+            html: '<p>Server služby SQL Database je centrální bod správy pro konfiguraci zabezpečení, optimalizace, zásad zálohování a dalších konfiguračních vlastností sady izolovaných nebo sdružených databází.</p>'
             image:
               src: media/index/i_mi.svg
-          - title: Ceny a služby
+          - title: Úrovně cen a služeb
             href: /azure/sql-database/sql-database-service-tiers
-            html: '<p>Přizpůsobit poměr cena/výkon podle vašich potřeb s úrovní flexibilní služeb, ve kterých spojíte dostupnou 5 USD za měsíc na výkonné 80 základní databáze.</p>'
+            html: '<p>Flexibilní úrovně služby, od dostupných 5 USD za měsíc až po výkonné databáze s 80 jádry, umožňují přizpůsobit poměr cena/výkon vašim potřebám.</p>'
             image:
               src: media/index/i_perftier.svg
           - title: Škálovatelnost
             href: /azure/sql-database/sql-database-scale-resources
-            html: <p>Snadno vertikálně navýšit kapacitu databáze můžete zvýšit výkon vaší aplikace.</p>
+            html: <p>Využijte možnost vertikálního navýšení kapacity databáze k vylepšení výkonu vaší aplikace.</p>
             image:
               src: media/index/i_scale.svg
           - title: Platforma jako služba
             href: /azure/sql-database/sql-database-paas
-            html: '<p>Integrovanou vysokou dostupnost, automatické zálohování a geografická replikace pomůže zabránit zastavuje vaše obchodní operace údržby, selhání infrastruktury nebo selhání hardwaru.</p>'
+            html: '<p>Integrovaná vysoká dostupnost, automatizované zálohování a geografická replikace pomáhají zabránit tomu, aby operace údržby nebo selhání hardwaru a infrastruktury negativně ovlivnily vaše podnikání.</p>'
             image:
               src: media/index/gear.svg
           - title: Pokročilé zabezpečení
             href: /azure/sql-database/sql-database-security-index
-            html: '<p>Pomoc se zabezpečením vaší databáze pomocí ověřování Azure AD, virtuální sítě, brány firewall a připojení s funkcí Always Encrypted. Integrované zabezpečení pomáhá odhalit hrozby a ohrožení zabezpečení.</p>'
+            html: '<p>K posílení zabezpečení vašich databází můžete využít ověřování Azure AD, virtuální sítě, brány firewall a připojení Always Encrypted. Integrované zabezpečení pomáhá odhalit hrozby a ohrožení zabezpečení.</p>'
             image:
               src: media/index/i_security.svg
-  - title: Nové a funkce ve verzi preview
+  - title: Pětiminutová rychlá zprovoznění
     items:
       - type: paragraph
-        text: 'Průběžně vylepšujeme SQL Database s novými funkcemi a rádi bychom znali váš názor týkající se následující nové funkce:'
-      - type: list
-        style: unordered
-        items:
-          - html: '(Preview) <a href="sql-database-service-tier-hyperscale">Hyperškálovatelného</a> úroveň, která podporuje až 100 TB databází a replik pro čtení připravených více.'
-          - html: '(Preview) Nový SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">inteligentní dotaz zpracování</a> funkce, jako <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">proměnnou tabulky odložené kompilace</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">režimu služby batch v tabulkách rowstore</a>, a <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> Skalární UDF vkládání</a>.'
-          - html: '(Preview) Nové funkce jazyka Transact-SQL, jako například <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT agregace</a> a <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">hromadný import ze služby Azure Blob storage</a>.'
-          - html: '(Preview) Nový SQL Server. 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">sestavení</a> a znovu sestavte operace indexu columnstore clusteru.'
-          - html: '(Preview) Nové <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Azure SQL Database služby Machine Learning (s jazykem R)</a>.'
-          - html: '(Preview) Nové <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">bez serveru výpočetní vrstva</a> nabízí automatické škálování výpočetních a faktury za sekundu pro výpočetní prostředky, které používá.'
-  - title: Pětiminutové rychlé starty
-    items:
-      - type: paragraph
-        text: 'Azure SQL Database můžete provádět základní úlohy správy pomocí webu Azure portal, rozhraní příkazového řádku Azure a Azure Powershellu. Zjistěte, jak provádět základní úlohy správy pomocí následující ukázky rychlý start:'
+        text: 'Azure SQL Database umožňuje provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a Azure PowerShellu. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:'
       - type: table
         style: dataMatrix
         columns:
@@ -126,12 +113,12 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: Vytvoření a návrh schématu pro novou databázi SQL s použitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>.
-          - html: Migrace existující databáze do Azure s použitím <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">pomocníka s migrací databáze</a> nebo <a href="/azure/sql-database/sql-database-import">Import souboru BACPAC</a>.
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení služby SQL database</a>.
-          - html: Globální distribuce dat pomocí <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>.
-          - html: 'Další informace najdete <a href="sql-database-howto-single-database.md">návody</a> , která můžete nakonfigurovat svou databázi.'
-  - title: Ukázky kódu
+          - html: Vytvoření a návrh schématu pro novou databázi SQL s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
+          - html: Migrace existující databáze do Azure s využitím <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistanta</a> nebo <a href="/azure/sql-database/sql-database-import">importu souborů BACPAC</a>
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>
+          - html: Globální distribuce dat s využitím <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>
+          - html: 'Další <a href="sql-database-howto-single-database.md">praktičtí průvodci</a>, kteří pomáhají s konfigurací databáze'
+  - title: Ukázky
     items:
       - type: paragraph
         text: Vyhledání skriptů pro správu běžných úkolů

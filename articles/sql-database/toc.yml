@@ -164,7 +164,7 @@
           href: sql-database-reserved-capacity.md
         - name: Migrace z úrovně služby Premium RS
           href: sql-database-service-tiers-prs.md
-    - name: Výpočetní prostředky a úložiště
+    - name: Úrovně služby
       items:
         - name: Přehled
           href: sql-database-service-tiers-general-purpose-business-critical.md
@@ -302,6 +302,8 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: Koncové body virtuální sítě – PowerShell
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Privátní propojení
+              href: sql-database-private-endpoint-overview.md
         - name: Řízení přístupu
           items:
             - name: Řízení přístupu
