@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114849"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102011"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spuštění kontejnerů obličeje
 
@@ -33,6 +33,8 @@ Než začnete používat kontejnery Face API, musíte splnit následující pře
 |Modul Docker| Modul Docker musí být nainstalovaný na hostitelském [počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> V systému Windows musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Potřebujete základní porozumění konceptům Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů. Potřebujete také znalosti základních `docker` příkazů.| 
 |Prostředek pro tvář |Chcete-li použít kontejner, je nutné mít:<br><br>Prostředek Azure **Face** a přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách **Přehled** a **klíče** pro daný prostředek. Jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
@@ -80,16 +82,9 @@ Po dokončení kontejneru v hostitelském [počítači](#the-host-computer)použ
 
 ## <a name="run-the-container-with-docker-run"></a>Spuštění kontejneru pomocí Docker run
 
-Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Příkaz používá následující parametry.
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{ENDPOINT_URI}` hodnoty a `{API_KEY}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
 
-| Zástupný symbol | Value |
-|-------------|-------|
-|{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce `Cognitive Services` **klíčů** Azure. |
-|{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu je `Cognitive Services` k dispozici na stránce **Přehled** Azure. Příklad: `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
-
-`face/v1.0` Přidejte směrování do identifikátoru URI koncového bodu, jak je znázorněno v předchozím příkladu ENDPOINT_URI. 
-
-Tyto parametry nahraďte vlastními hodnotami v následujícím `docker run` ukázkovém příkazu:
+K dispozici jsou [Příklady](face-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -158,7 +153,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy, jak stahovat, insta
 > [!IMPORTANT]
 > U Cognitive Servicesch kontejnerů nejsou licencovány ke spuštění bez připojení k Azure pro měření. Zákazníci musí kontejnery povolit, aby ve všech časech komunikovaly fakturační údaje se službou měření. Kontejnery Cognitive Services neodesílají zákaznická data, jako je například analyzovaný obrázek nebo text, do společnosti Microsoft.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Nastavení konfigurace najdete v tématu [konfigurace kontejnerů](face-resource-container-config.md).
 * Další informace o tom, jak detekovat a identifikovat plošky, najdete v tématu [Přehled obličeje](Overview.md).

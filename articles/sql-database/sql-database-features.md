@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010297"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103158"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -114,8 +114,8 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 
 | **Funkce platformy** | **Izolované databáze a elastické fondy** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
-| [Aktivní geografická replikace](sql-database-active-geo-replication.md) | Ano – všechny úrovně služeb jiné než měřítko | Ne, další informace najdete v tématu [skupiny automatického převzetí služeb při selhání (Preview)](sql-database-auto-failover-group.md) . |
-| [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) | Ano – všechny úrovně služeb jiné než měřítko | Ano, ve [verzi Public Preview](sql-database-auto-failover-group.md)|
+| [Aktivní geografická replikace](sql-database-active-geo-replication.md) | Ano – všechny úrovně služeb jiné než měřítko | Ne, přečtěte si téma [skupiny automaticky převzetí služeb při selhání](sql-database-auto-failover-group.md) jako alternativu. |
+| [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) | Ano – všechny úrovně služeb jiné než měřítko | Ano, přečtěte si téma [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md)|
 | Automatické škálování | Ano, ale pouze v [modelu bez serveru](sql-database-serverless.md). V modelu bez serveru je změna úrovně služby (změna vCore, úložiště nebo DTU) rychlá a online. Změna vrstvy služeb vyžaduje minimální nebo žádné výpadky. | Ne, musíte zvolit rezervované výpočetní prostředky a úložiště. Změna úrovně služby (úložiště vCore nebo max) je online a vyžaduje minimální nebo žádné výpadky. |
 | [Automatické zálohování](sql-database-automated-backups.md) | Ano. Úplné zálohování se vytváří každých 7 dní, rozdílových 12 hodin a záloh protokolů každých 5-10 min. | Ano. Úplné zálohování se vytváří každých 7 dní, rozdílových 12 hodin a záloh protokolů každých 5-10 min. |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
@@ -169,9 +169,9 @@ K přesunu dat mezi SQL Server, Izolovaná databáze a databázemi spravované i
 
 | **Zdroj** | **Izolovaná databáze a elastický fond** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
-| SQL Server (on-Prem, AzureVM, Amazon RDS) | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Nativní zálohování a obnovování, [BacPac soubor (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
+| SQL Server (on-Prem, AzureVM, Amazon RDS) | **Online:** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Nativní zálohování a obnovování, [BacPac soubor (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
 | Izolovaná databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| MI | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Obnovení v časovém intervalu mezi instancemi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) nebo [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [nativní zálohování a obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
+| MI | **Online:** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Obnovení v časovém intervalu mezi instancemi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) nebo [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [nativní zálohování a obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Další postup
 

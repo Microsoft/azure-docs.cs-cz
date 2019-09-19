@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967226"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104382"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Kurz: Integrace Apptio s Azure Active Directory
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **identifikátor** zadejte hodnotu:`urn:federation:apptio`
 
-5. Apptio aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+5. Apptio aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
@@ -156,7 +156,7 @@ Ke konfiguraci jednotného přihlašování na straně **Apptio** je potřeba od
 
 ### <a name="create-apptio-test-user"></a>Vytvořit testovacího uživatele Apptio
 
-V této části vytvoříte uživatele s názvem B. Simon v Apptio. Pokud chcete přidat uživatele na platformě Apptio, pracujte s [týmem podpory Apptio](https://www.apptio.com/about/contact) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon v Apptio. Pokud chcete přidat uživatele na platformě Apptio, pracujte s [týmem podpory Apptio](https://www.apptio.com/about/contact) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO 
 

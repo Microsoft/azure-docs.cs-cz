@@ -1,18 +1,18 @@
 ---
 title: Co je privátní koncový bod Azure?
 description: Seznamte se s privátním koncovým bodem Azure
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057819"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104684"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 

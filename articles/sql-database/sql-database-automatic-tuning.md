@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 9aa9ea1fc8632671ac9ed2c045230b92edaf879d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9922d347fae154a3a9b1c37e813014225c28442d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066964"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103183"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění v Azure SQL Database
 
@@ -75,7 +75,7 @@ Automatické ladění identifikuje **vytváření indexů**, **drop index**a **v
 
 Doporučení pro ladění můžete buď ručně použít na portálu, nebo můžete povolit automatické ladění, a to na základě doporučení pro ladění. Výhodou toho, aby systém mohl samostatně použít doporučení pro vyladění, je to, že se automaticky ověří, že existuje kladný zisk na výkon úlohy a pokud se nezjistí žádné významné zlepšení výkonu, bude automaticky obnoví doporučení pro ladění. Počítejte s tím, že v případě dotazů, které jsou ovlivněné vyladěním doporučení, která se neprovádí často, může trvat až 72 hodin, než se návrh povede.
 
-V případě ručního použití doporučení pro ladění prostřednictvím T-SQL není k dispozici automatické ověřování výkonu a mechanismy zpětného zpracování. Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
+V případě, že použijete doporučení pro ladění prostřednictvím T-SQL, automatické ověřování výkonu a mechanismy zpětného zpracování nejsou k dispozici. Doporučení použitá tímto způsobem zůstanou aktivní a budou se zobrazovat v seznamu doporučení pro ladění 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli z tohoto seznamu odebrat doporučení, můžete ho z Azure Portal zrušit.
 
 Možnosti automatického ladění můžou být nezávisle povolené nebo zakázané pro každou databázi, nebo je můžete nakonfigurovat na serverech SQL Database a použít je na všech databázích, které dědí nastavení ze serveru. Servery SQL Database můžou dědit výchozí nastavení Azure pro automatické ladění. Výchozí nastavení Azure v tuto chvíli jsou nastavená na FORCE_LAST_GOOD_PLAN, CREATE_INDEX je povolená a DROP_INDEX je zakázaná.
 

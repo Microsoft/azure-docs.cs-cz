@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996454"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103068"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -293,6 +293,7 @@ Pokud se chcete podívat na tyto chyby, spusťte skript prostředí PowerShell *
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Soubor nelze synchronizovat z důvodu neočekávané chyby. | Pokud chyba trvá několik dní, otevřete prosím případ podpory. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože se používá. Soubor se synchronizuje, až se přestane používat. | Není vyžadována žádná akce. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor se během synchronizace změnil, takže je potřeba ho synchronizovat znovu. | Není vyžadována žádná akce. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Soubor nelze synchronizovat, protože byl dosažen maximální počet souborů konfliktů. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Další informace o konfliktech souborů najdete v tématu Azure File Sync [Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Chcete-li tento problém vyřešit, snižte počet konfliktních souborů. Soubor se synchronizuje, jakmile bude počet konfliktních souborů menší než 100. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporovaných znaků
 Pokud skript prostředí PowerShell **FileSyncErrorsReport. ps1** zobrazuje chyby z důvodu nepodporovaných znaků (kód chyby 0x8007007B nebo 0x80c80255), měli byste odebrat nebo přejmenovat znaky při chybě z příslušných názvů souborů. PowerShell pravděpodobně vytiskne tyto znaky jako otazníky nebo prázdné obdélníky, protože většina těchto znaků nemá standardní vizuální kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) lze použít k identifikaci nepodporovaných znaků.

@@ -4,19 +4,19 @@ description: Tento článek popisuje, jak pomocí změny rozdělení na oddíly 
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517433"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101517"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
 
-V tomto článku se dozvíte, jak použít změnu rozdělení na oddíly pro škálování Azure Stream Analytics dotazů na scénáře, které [](stream-analytics-scale-jobs.md)se nedají plně paralelismuovat.
+V tomto článku se dozvíte, jak použít změnu rozdělení na oddíly pro škálování Azure Stream Analytics dotazů na scénáře, které se nedají plně [paralelismuovat](stream-analytics-scale-jobs.md).
 
 Je možné, že nebudete moci použít [paralelní](stream-analytics-parallelization.md) postup v těchto případech:
 
@@ -54,7 +54,17 @@ Experimentujte a sledujte využití prostředků vaší úlohy a určete přesn�
 
 ## <a name="repartitions-for-sql-output"></a>Změny oddílů pro výstup SQL
 
-Pokud vaše úloha používá pro výstup SQL Database, použijte explicitní přerozdělení na oddíly, aby se maximalizovala propustnost. Vzhledem k tomu, že SQL funguje nejlépe s osmi moduly pro zápis, je možné tento tok změnit na osm, než se vyprázdní, nebo někam do dalšího nadřazeného, může to přinést výkon úloh. Další informace najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md).
+Pokud vaše úloha používá pro výstup SQL Database, použijte explicitní přerozdělení na oddíly, aby se maximalizovala propustnost. Vzhledem k tomu, že SQL funguje nejlépe s osmi moduly pro zápis, je možné tento tok změnit na osm, než se vyprázdní, nebo někam do dalšího nadřazeného, může to přinést výkon úloh. 
+
+Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Zvažte možnost [použít v](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) dotazu k explicitnímu zadání počtu modulů pro zápis výstupu. 
+
+Následující příklad přečte ze vstupu bez ohledu na to, že je přirozeně rozdělený, a přerozdělení streamu desetinásobné podle dimenze DeviceID a vyprázdní data na výstup. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+Další informace najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 
 ## <a name="next-steps"></a>Další postup

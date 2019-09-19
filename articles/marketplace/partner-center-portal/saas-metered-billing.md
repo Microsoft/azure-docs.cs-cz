@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141782"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105499"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Měřená fakturace pomocí služby měření na webu Marketplace
 
@@ -55,7 +55,7 @@ Například contoso je vydavatel se službou SaaS s názvem contoso Notification
     * Za 50000 e-mailů platíte $0,5 pro každých 100 e-mailů.
     * Kromě textů 10000, platíte $0,01 za každý text
 
-Zákazník Azure přihlašuje se k odběru služby CNS, který bude na základě vybraného plánu odesílat zahrnuté množství textu a e-mailů za měsíc.  Když zákazníci spotřebovávají více než zahrnuté množství, nemusí měnit plány ani provádět jiné akce.  Společnost Contoso bude měřit překročení množství nad rámec zahrnutého množství a začít vysílat události využití do Microsoftu za účelem dalšího využití pomocí [rozhraní API služby měření na webu Marketplace](./marketplace-metering-service-apis.md).  Společnost Microsoft pak bude zákazníkovi účtovat další využití, jak je určeno vydavatelem.
+Zákazník Azure přihlašuje se k odběru služby CNS, který bude na základě vybraného plánu odesílat zahrnuté množství textu a e-mailů za měsíc.  Společnost Contoso měří využití až do zahrnutého množství bez odesílání událostí využití společnosti Microsoft.  Když zákazníci spotřebovávají více než zahrnuté množství, nemusí měnit plány ani provádět jiné akce.  Společnost Contoso bude měřit překročení množství nad rámec zahrnutého množství a začít vysílat události využití do Microsoftu za účelem dalšího využití pomocí [rozhraní API služby měření na webu Marketplace](./marketplace-metering-service-apis.md).  Společnost Microsoft pak bude zákazníkovi účtovat další využití, jak je určeno vydavatelem.
 
 ## <a name="billing-dimensions"></a>Fakturační dimenze
 
@@ -135,6 +135,6 @@ Použijte následující postup, chcete-li odeslat lístek podpory:
 
 Další možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu [rozhraní API služby měření softwaru Marketplace](./marketplace-metering-service-apis.md) .

@@ -11,18 +11,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 058afdbc4aa134b5b3c4c8cc5e9e2f2ae6f53084
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569648"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103232"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
 V tomto článku se dozvíte, jak nakonfigurovat [aktivní geografickou replikaci pro databáze s jedním a fondem](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) v Azure SQL Database pomocí [Azure Portal](https://portal.azure.com) a iniciovat převzetí služeb při selhání.
 
-Informace o skupinách automatického převzetí služeb při selhání s databázemi s jednou a ve fondu najdete v tématu [osvědčené postupy použití skupin převzetí služeb při selhání s databázemi s jedním a fondem](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatického převzetí služeb při selhání se spravovanými instancemi (Preview) najdete v tématu [osvědčené postupy při používání skupin převzetí služeb při selhání se spravovanými instancemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)
+Informace o skupinách automatického převzetí služeb při selhání s databázemi s jednou a ve fondu najdete v tématu [osvědčené postupy použití skupin převzetí služeb při selhání s databázemi s jedním a fondem](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatického převzetí služeb při selhání se spravovanými instancemi najdete v tématu [osvědčené postupy při používání skupin převzetí služeb při selhání se spravovanými instancemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -91,7 +91,7 @@ Tato operace trvale ukončí replikaci do sekundární databáze a změní roli 
     ![Odebrat sekundární](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. Otevře se okno potvrzení. Kliknutím na **Ano** odeberete databázi ze partnerství geografické replikace. (Nastavte ji na databázi pro čtení i zápis, která není součástí žádné replikace.)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o aktivní geografické replikaci najdete v tématu [Aktivní geografická replikace](sql-database-active-geo-replication.md).
 * Další informace o skupinách automatického převzetí služeb při selhání najdete v tématu [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) .

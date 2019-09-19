@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932108"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105168"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby Speech
 
@@ -90,12 +90,14 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 * **Znak pro pokračování řádku**: Příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
 * **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
-Nahradit { _} s vlastními hodnotami:
+Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{API_KEY} | Klíč rozhraní API prostředku řeči |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Hodnota koncového bodu, včetně oblasti.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| **{API_KEY}** | Klíč `Speech` koncového bodu prostředku na stránce klíčů Azure `Speech` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Speech` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](speech-container-howto.md#gathering-required-parameters) . |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing-configuration-setting).
@@ -147,6 +149,6 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Kontrola [instalace a spouštění kontejnerů](speech-container-howto.md)

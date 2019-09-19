@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e6839443a75376224fe6a1007802b6b948a395
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 503de723894388a198abbb687221cb1403a6fa84
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989468"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Cisco Webex
 
@@ -87,11 +87,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
 
-    c. Po úspěšném dokončení nahrávání souboru metadat poskytovatele služby se v části **základní konfigurace SAML** automaticky naplní hodnoty **adresy URL pro odpovědi** .
+    c. Po úspěšném dokončení nahrávání souboru metadat poskytovatele **služby se v** části **základní konfigurace SAML** automaticky naplní hodnoty **adresy URL pro odpovědi** .
 
     Do textového pole **přihlašovací adresa URL** vložte hodnotu **adresy URL odpovědi**, která se automaticky vyplní nahráním souboru s metadaty SP.
 
-5. Aplikace Cisco Webex očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+5. Aplikace Cisco Webex očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 

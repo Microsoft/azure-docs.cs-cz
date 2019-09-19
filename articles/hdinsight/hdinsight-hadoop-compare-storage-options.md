@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ced2c888a412a72643bb0c12fceb7e83d39936cf
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
-ms.translationtype: HT
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098733"
+ms.locfileid: "71104539"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -34,7 +34,7 @@ Následující tabulka shrnuje Azure Storage služby, které jsou podporovány v
 |Azure Storage| Blob Storage * * | Object | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
 |Azure Data Lake Storage Gen1| Není k dispozici | Hierarchický (systém souborů) | Není k dispozici | Není k dispozici | Není k dispozici | jenom 3,6 | Všechny kromě adaptérů HBA |
 
-\* * Pro clustery HDInsight můžou být jenom sekundární účty úložiště typu BlobStorage.
+\* * Pro clustery HDInsight může být pouze sekundární účty úložiště typu BlobStorage a objekt blob stránky není podporovanou možností úložiště.
 
 Další informace o Azure Storage typech účtů najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md) .
 

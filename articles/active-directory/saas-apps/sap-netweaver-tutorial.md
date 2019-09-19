@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989038"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí SAP NetWeaver
 
@@ -152,7 +152,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
 
-    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** identifikátoru a odpovědi získají automaticky v **základním** textovém poli konfiguračního oddílu SAML, jak je znázorněno níže:
+    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi získají automaticky v **základním** textovém poli konfiguračního oddílu SAML, jak je znázorněno níže:
 
     d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<your company instance of SAP NetWeaver>`
 
@@ -163,7 +163,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > ``` 
     > ID objektu ServicePrincipal je třeba nastavit sami sami nebo ho můžete předat také zde.
 
-1. Aplikace SAP NetWeaver očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Aplikace SAP NetWeaver očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
@@ -247,7 +247,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. V případě **jednoho koncového** bodu odhlášení vyberte **HttpRedirect** a pokračujte kliknutím na **Další** .
+8. V případě **jednoho koncového bodu odhlášení** vyberte **HttpRedirect** a pokračujte kliknutím na **Další** .
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
@@ -267,7 +267,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
-13. V místním okně vyberte Neurčeno z **podporovaných formátů NameId** a klikněte na OK.
+13. V místním okně vyberte **Neurčeno** z **podporovaných formátů NameId** a klikněte na OK.
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 

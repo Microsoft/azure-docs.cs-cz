@@ -2,18 +2,18 @@
 title: Správa protokolů pro cluster HDInsight – Azure HDInsight
 description: Určete typy, velikosti a zásady uchovávání souborů protokolu aktivit HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960993"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105431"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -79,11 +79,11 @@ Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDIns
 
 Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
 
-![Zásobník a verze](./media/hdinsight-log-management/ambari-stack-versions.png)
+![Sada pro správu Apache Ambari a verze](./media/hdinsight-log-management/ambari-stack-versions.png)
 
 Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta**.
 
-![Konfigurace klientů hostitele](./media/hdinsight-log-management/download-client-configs.png)
+![Konfigurace klientů hostitele pro stažení Apache Ambari](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>Zobrazit protokoly akcí skriptů
 
@@ -93,7 +93,7 @@ Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro vše
 
 Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé služby.  Služby můžou zahrnovat Apache HBA, Apache Spark a spoustu dalších. Cluster Hadoop vytvoří velký počet podrobných protokolů, takže určíte, které protokoly jsou užitečné (a které nejsou) můžou být časově náročné.  Princip protokolovacího systému je důležitý pro cílovou správu souborů protokolu.  Následuje příklad souboru protokolu.
 
-![Příklad souboru protokolu HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
+![Příklad výstupu ukázkového souboru protokolu HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Přístup k souborům protokolu Hadoop
 
@@ -146,9 +146,9 @@ Teď máte dostatek informací, abyste vytvořili strategii správy protokolů p
 
 Jakmile určíte, které soubory protokolu je možné odstranit, můžete upravit parametry protokolování v mnoha službách Hadoop tak, aby se soubory protokolu po zadaném časovém období automaticky odstranily.
 
-U určitých souborů protokolu můžete použít přístup k archivaci souborů protokolu nižší ceny. V případě Azure Resource Manager protokolů aktivit můžete tento přístup prozkoumat pomocí Azure Portal.  Kliknutím na odkaz **Protokol aktivit**v Azure Portal pro vaši instanci HDInsight nastavte archivaci protokolů ARM.  V horní části stránky hledání protokolu aktivit vyberte položku nabídky **exportovat** a otevřete podokno **Protokol aktivit exportu** .  Vyplňte v předplatném, oblasti, jestli se má exportovat do účtu úložiště, a kolik dní si zachováte protokoly. V tomto stejném podokně můžete také určit, jestli se má exportovat do centra událostí. 
+U určitých souborů protokolu můžete použít přístup k archivaci souborů protokolu nižší ceny. V případě Azure Resource Manager protokolů aktivit můžete tento přístup prozkoumat pomocí Azure Portal.  Kliknutím na odkaz **Protokol aktivit**v Azure Portal pro vaši instanci HDInsight nastavte archivaci protokolů ARM.  V horní části stránky hledání protokolu aktivit vyberte položku nabídky **exportovat** a otevřete podokno **Protokol aktivit exportu** .  Vyplňte v předplatném, oblasti, jestli se má exportovat do účtu úložiště, a kolik dní si zachováte protokoly. V tomto stejném podokně můžete také určit, jestli se má exportovat do centra událostí.
 
-![Exportovat soubory protokolu](./media/hdinsight-log-management/hdi-export-log-files.png)
+![Náhled Azure Portal exportovat protokol aktivit](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Případně můžete skript archivovat pomocí prostředí PowerShell.  Ukázkový skript PowerShellu najdete v tématu [archivace protokolů Azure Automation do Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 
@@ -172,7 +172,7 @@ Můžete také ověřit, zda je povoleno protokolování ladění pro jednu nebo
 
 Chcete-li shromáždit protokoly ze všech uzlů do jednoho centrálního umístění, můžete vytvořit tok dat, například ingestování všech záznamů protokolu do Solr.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Postupy monitorování a protokolování pro HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
 * [Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)

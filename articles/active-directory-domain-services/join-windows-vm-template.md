@@ -1,106 +1,148 @@
 ---
-title: Připojte virtuální počítač s Windows serverem k Azure Active Directory Domain Services | Microsoft Docs
-description: Připojte virtuální počítač s Windows serverem ke spravované doméně pomocí šablon Azure Resource Manager.
+title: Použití šablony k připojení virtuálního počítače s Windows serverem k Azure služba AD DS | Microsoft Docs
+description: Naučte se používat šablony Azure Resource Manager k připojení k novému nebo existujícímu virtuálnímu počítači s Windows serverem k spravované doméně Azure Active Directory Domain Services.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 599d474b7c45274c87878c622149a86bc93af318
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d4e6beb376172e5ec5285d26b47fd23b396d5e38
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612272"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104114"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem ke spravované doméně pomocí šablony Správce prostředků
-V tomto článku se dozvíte, jak připojit virtuální počítač s Windows serverem k Azure AD Domain Services spravované doméně pomocí šablon Správce prostředků.
+# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem k Azure Active Directory Domain Services spravované doméně pomocí šablony Správce prostředků
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+K automatizaci nasazení a konfigurace virtuálních počítačů Azure můžete použít šablonu Správce prostředků. Tyto šablony umožňují kdykoli vytvořit konzistentní nasazení. V šablonách je taky možné zahrnout rozšíření a automaticky tak nakonfigurovat virtuální počítač jako součást nasazení. Jedna z užitečných rozšíření spojuje virtuální počítače s doménou, které se dají používat se spravovanými doménami Azure Active Directory Domain Services (Azure služba AD DS).
 
-## <a name="before-you-begin"></a>Před zahájením
-K provedení úkolů uvedených v tomto článku budete potřebovat:
-1. Platné **předplatné Azure**.
-2. **Adresář služby Azure AD** – buď synchronizovaný s místním adresářem, nebo s adresářem jenom pro Cloud.
-3. **Azure AD Domain Services** musí být povolený pro adresář služby Azure AD. Pokud jste to ještě neudělali, postupujte podle všech úkolů popsaných v [průvodci Začínáme](tutorial-create-instance.md).
-4. Ujistěte se, že jste nakonfigurovali IP adresy spravované domény jako servery DNS pro virtuální síť. Další informace najdete v tématu [Postup aktualizace nastavení DNS pro virtuální síť Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) .
-5. Dokončete kroky potřebné k [synchronizaci hesel s Azure AD Domain Services spravované doméně](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
+V tomto článku se dozvíte, jak vytvořit virtuální počítač s Windows serverem a připojit ho k spravované doméně Azure služba AD DS pomocí šablon Správce prostředků. Naučíte se také, jak připojit stávající virtuální počítač s Windows serverem k doméně Azure služba AD DS.
 
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="install-and-configure-required-tools"></a>Instalace a konfigurace požadovaných nástrojů
-K provedení kroků popsaných v tomto dokumentu můžete použít kteroukoli z následujících možností:
-* **Azure PowerShell**: [Instalace a konfigurace](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure CLI**: [Instalace a konfigurace](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
+* Aktivní předplatné Azure.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Možnost 1: Zřídit nový virtuální počítač s Windows serverem a připojit ho ke spravované doméně
-**název šablony pro rychlý Start**: [201 – virtuální počítač – připojení k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="azure-resource-manager-template-overview"></a>Přehled šablony Azure Resource Manager
 
-Pokud chcete nasadit virtuální počítač s Windows serverem a připojit ho ke spravované doméně, proveďte následující kroky:
-1. Přejděte do [šablony pro rychlé](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)zprovoznění.
-2. Klikněte na **Deploy to Azure** (Nasadit do Azure).
-3. Na stránce **vlastní nasazení** zadejte požadované informace pro zřízení virtuálního počítače.
-4. Vyberte **předplatné Azure** , ve kterém chcete virtuální počítač zřídit. Vyberte stejné předplatné Azure, ve kterém jste povolili Azure AD Domain Services.
-5. Vyberte existující **skupinu prostředků** nebo vytvořte novou.
-6. Vyberte **umístění** , do kterého chcete nasadit nový virtuální počítač.
-7. V části **stávající název virtuální**sítě zadejte virtuální síť, ve které jste nasadili Azure AD Domain Services spravovanou doménu.
-8. V části **název existující podsítě**zadejte podsíť ve virtuální síti, kam chcete nasadit tento virtuální počítač. Nevybírejte podsíť brány ve virtuální síti. Nevybírejte také vyhrazenou podsíť, ve které je nasazená vaše spravovaná doména.
-9. Do pole **předpona popisku DNS**zadejte název hostitele virtuálního počítače, který se zřizuje. Například "contoso-Win".
-10. Vyberte odpovídající **Velikost virtuálního počítače** pro virtuální počítač.
-11. V poli **doména pro připojení**zadejte název domény DNS vaší spravované domény.
-12. V části **uživatelské jméno domény**zadejte název uživatelského účtu ve spravované doméně, který se má použít k připojení virtuálního počítače ke spravované doméně.
-13. Do pole **heslo domény**zadejte heslo účtu uživatele domény, na který odkazuje parametr domainUsername.
-14. Volitelné: Můžete zadat **cestu organizační jednotky** k vlastní organizační jednotce, do které se má virtuální počítač přidat. Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky **počítače AAD DC** ve spravované doméně.
-15. Do pole **uživatelské jméno správce virtuálního počítače** zadejte název účtu místního správce pro virtuální počítač.
-16. V poli **heslo správce virtuálního počítače** zadejte heslo místního správce pro virtuální počítač. Zadejte silné heslo místního správce virtuálního počítače, které chcete chránit před útoky hrubou silou hesla.
-17. Klikněte na **Souhlasím s výše uvedenými podmínkami a ujednáními**.
-18. Kliknutím na **koupit** zřídíte virtuální počítač.
+Správce prostředků šablony vám umožní definovat infrastrukturu Azure v kódu. Požadované prostředky, síťová připojení nebo konfigurace virtuálních počítačů je možné definovat v šabloně. Tyto šablony vytvářejí konzistentní a reprodukovatelná nasazení pokaždé a můžou být ve stejném znění jako při provádění změn. Další informace najdete v tématu [Přehled šablon Azure Resource Manager][template-overview].
+
+Každý prostředek je definován v šabloně pomocí formátu JSON. Následující příklad JSON používá typ prostředku *Microsoft. COMPUTE/virtualMachines/Extensions* k instalaci rozšíření připojení k doméně služby Active Directory. Používají se parametry, které zadáte v době nasazení. Po nasazení rozšíření se virtuální počítač připojí k zadané spravované doméně Azure služba AD DS.
+
+```json
+ {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('dnsLabelPrefix'),'/joindomain')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('dnsLabelPrefix'))]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "JsonADDomainExtension",
+        "typeHandlerVersion": "1.3",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "Name": "[parameters('domainToJoin')]",
+          "OUPath": "[parameters('ouPath')]",
+          "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
+          "Restart": "true",
+          "Options": "[parameters('domainJoinOptions')]"
+        },
+        "protectedSettings": {
+          "Password": "[parameters('domainPassword')]"
+        }
+      }
+    }
+```
+
+Toto rozšíření virtuálního počítače se dá nasadit i v případě, že virtuální počítač nevytvoříte ve stejné šabloně. Příklady v tomto článku znázorňují oba následující přístupy:
+
+* [Vytvoření virtuálního počítače s Windows serverem a připojení ke spravované doméně](#create-a-windows-server-vm-and-join-to-a-managed-domain)
+* [Připojit stávající virtuální počítač s Windows serverem ke spravované doméně](#join-an-existing-windows-server-vm-to-a-managed-domain)
+
+## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>Vytvoření virtuálního počítače s Windows serverem a připojení ke spravované doméně
+
+Pokud potřebujete virtuální počítač s Windows serverem, můžete ho vytvořit a nakonfigurovat pomocí šablony Správce prostředků. Po nasazení virtuálního počítače se nainstaluje rozšíření, které se připojí k virtuálnímu počítači do spravované domény Azure služba AD DS. Pokud už máte virtuální počítač, který chcete připojit ke spravované doméně Azure služba AD DS, přeskočte k [připojení existujícího virtuálního počítače s Windows serverem ke spravované doméně](#join-an-existing-windows-server-vm-to-a-managed-domain).
+
+Pokud chcete vytvořit virtuální počítač s Windows serverem, připojte ho k spravované doméně Azure služba AD DS a proveďte následující kroky:
+
+1. Přejděte k [šabloně pro rychlé](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)zprovoznění. Vyberte možnost **nasazení do Azure**.
+1. Na stránce **vlastní nasazení** zadejte následující informace, abyste mohli vytvořit virtuální počítač s Windows serverem a připojit ho k spravované doméně Azure služba AD DS:
+
+    | Nastavení                   | Value |
+    |---------------------------|-------|
+    | Subscription              | Vyberte stejné předplatné Azure, ve kterém jste povolili Azure AD Domain Services. |
+    | Resource group            | Vyberte skupinu prostředků pro váš virtuální počítač. |
+    | Location                  | Vyberte umístění pro váš virtuální počítač. |
+    | Název existující virtuální sítě        | Název existující virtuální sítě, ke které se má virtuální počítač připojit, například *myVnet*. |
+    | Existující název podsítě      | Název existující podsítě virtuální sítě, jako jsou například *úlohy*. |
+    | Předpona popisku DNS          | Zadejte název DNS, který chcete pro virtuální počítač použít, například *myvm*. |
+    | Velikost virtuálního počítače                   | Zadejte velikost virtuálního počítače, třeba *Standard_DS2_v2*. |
+    | Doména pro připojení            | Název DNS spravované domény Azure služba AD DS, například *contoso.com*. |
+    | Uživatelské jméno domény           | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
+    | Heslo domény           | Heslo pro uživatelský účet zadané v předchozím nastavení |
+    | Volitelná cesta organizační jednotky          | Vlastní organizační jednotka, do které se má virtuální počítač přidat Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky *řadiče domény AAD* . |
+    | Uživatelské jméno správce virtuálního počítače         | Zadejte účet místního správce, který se má vytvořit na virtuálním počítači. |
+    | Heslo správce virtuálního počítače         | Zadejte heslo místního správce pro virtuální počítač. Vytvořte silné heslo místního správce pro ochranu proti útokům hrubou silou hesla. |
+
+1. Přečtěte si podmínky a ujednání a potom zaškrtněte políčko pro souhlasím **s podmínkami a ujednáními uvedenými nahoře**. Až budete připraveni, vyberte **koupit** , abyste vytvořili virtuální počítač a připojili ho k spravované doméně Azure služba AD DS.
 
 > [!WARNING]
 > **Pořídí hesla s opatrností.**
-> Soubor parametrů šablony obsahuje hesla pro doménové účty a hesla místních správců pro virtuální počítač. Ujistěte se, že tento soubor nezůstane ve sdílených složkách nebo na jiných sdílených umístěních. Až dokončíte nasazení virtuálních počítačů, doporučujeme tento soubor vyřadit.
->
+> Soubor parametrů šablony vyžaduje heslo pro uživatelský účet, který je členem skupiny *správců řadiče domény Azure AD* . Do tohoto souboru neměňte ručně hodnoty a nechte ho přístupný pro sdílené složky nebo jiná sdílená umístění.
 
-Po úspěšném dokončení nasazení se nově zřízený virtuální počítač s Windows připojí ke spravované doméně.
+Úspěšné dokončení nasazení trvá několik minut. Po dokončení se virtuální počítač s Windows vytvoří a připojí se ke spravované doméně Azure služba AD DS. Virtuální počítač se dá spravovat nebo přihlásit k používání doménových účtů.
 
+## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>Připojit stávající virtuální počítač s Windows serverem ke spravované doméně
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Možnost 2: Připojit stávající virtuální počítač s Windows serverem ke spravované doméně
-**Šablona pro rychlý Start**: [201 – virtuální počítač – připojení k doméně – existující](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+Pokud máte existující virtuální počítač nebo skupinu virtuálních počítačů, které chcete připojit k spravované doméně Azure služba AD DS, můžete rozšíření virtuálního počítače nasadit jenom pomocí Správce prostředků šablony.
 
-Pokud se chcete připojit k existujícímu virtuálnímu počítači s Windows serverem ke spravované doméně, proveďte následující kroky:
-1. Přejděte do [šablony pro rychlé](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)zprovoznění.
-2. Klikněte na **Deploy to Azure** (Nasadit do Azure).
-3. Na stránce **vlastní nasazení** zadejte požadované informace pro zřízení virtuálního počítače.
-4. Vyberte **předplatné Azure** , ve kterém chcete virtuální počítač zřídit. Vyberte stejné předplatné Azure, ve kterém jste povolili Azure AD Domain Services.
-5. Vyberte existující **skupinu prostředků** nebo vytvořte novou.
-6. Vyberte **umístění** , do kterého chcete nasadit nový virtuální počítač.
-7. V poli **Seznam virtuálních počítačů** zadejte názvy existujících virtuálních počítačů, které se mají připojit ke spravované doméně. Jednotlivé názvy virtuálních počítačů můžete oddělit čárkami. Například **Contoso-web, contoso-API**.
-8. Do pole **uživatelské jméno pro připojení k doméně**zadejte název uživatelského účtu ve spravované doméně, který se má použít k připojení virtuálního počítače ke spravované doméně.
-9. Do pole **heslo uživatele pro připojení k doméně**zadejte heslo účtu uživatele domény, na který odkazuje parametr domainUsername.
-10. Do pole **plně kvalifikovaný název domény**zadejte název domény DNS vaší spravované domény.
-11. Volitelné: Můžete zadat **cestu organizační jednotky** k vlastní organizační jednotce, do které se má virtuální počítač přidat. Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky **počítače AAD DC** ve spravované doméně.
-12. Klikněte na **Souhlasím s výše uvedenými podmínkami a ujednáními**.
-13. Kliknutím na **koupit** zřídíte virtuální počítač.
+Pokud se chcete připojit k existujícímu virtuálnímu počítači s Windows serverem k spravované doméně Azure služba AD DS, proveďte následující kroky:
+
+1. Přejděte k [šabloně pro rychlé](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)zprovoznění. Vyberte možnost **nasazení do Azure**.
+1. Na stránce **vlastní nasazení** zadejte následující informace, které se připojí k virtuálnímu počítači do spravované domény Azure služba AD DS:
+
+    | Nastavení                   | Value |
+    |---------------------------|-------|
+    | Subscription              | Vyberte stejné předplatné Azure, ve kterém jste povolili Azure AD Domain Services. |
+    | Resource group            | Vyberte skupinu prostředků s existujícím VIRTUÁLNÍm počítačem. |
+    | Location                  | Vyberte umístění existujícího virtuálního počítače. |
+    | Seznam virtuálních počítačů                   | Zadejte čárkami oddělený seznam existujících virtuálních počítačů, které se mají připojit ke spravované doméně Azure služba AD DS, jako je například *myVM1, myVM2*. |
+    | Uživatelské jméno pro připojení k doméně     | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
+    | Uživatelské heslo pro připojení k doméně | Heslo pro uživatelský účet zadané v předchozím nastavení |
+    | Volitelná cesta organizační jednotky          | Vlastní organizační jednotka, do které se má virtuální počítač přidat Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky *řadiče domény AAD* . |
+
+1. Přečtěte si podmínky a ujednání a potom zaškrtněte políčko pro souhlasím **s podmínkami a ujednáními uvedenými nahoře**. Až budete připraveni, vyberte **koupit** a připojte se k virtuálnímu počítači ke spravované doméně Azure služba AD DS.
 
 > [!WARNING]
 > **Pořídí hesla s opatrností.**
-> Soubor parametrů šablony obsahuje hesla pro doménové účty a hesla místních správců pro virtuální počítač. Ujistěte se, že tento soubor nezůstane ve sdílených složkách nebo na jiných sdílených umístěních. Až dokončíte nasazení virtuálních počítačů, doporučujeme tento soubor vyřadit.
->
+> Soubor parametrů šablony vyžaduje heslo pro uživatelský účet, který je členem skupiny *správců řadiče domény Azure AD* . Do tohoto souboru neměňte ručně hodnoty a nechte ho přístupný pro sdílené složky nebo jiná sdílená umístění.
 
-Po úspěšném dokončení nasazení jsou zadané virtuální počítače s Windows připojené ke spravované doméně.
+Úspěšné dokončení nasazení může chvíli trvat. Po dokončení jsou zadané virtuální počítače s Windows připojené k spravované doméně Azure služba AD DS a dají se spravovat nebo přihlásily k používání doménových účtů.
 
+## <a name="next-steps"></a>Další postup
 
-## <a name="related-content"></a>Související obsah
-* [Přehled Azure PowerShellu](/powershell/azure/overview)
-* [Šablona rychlý Start pro Azure – připojení domény k novému virtuálnímu počítači](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
-* [Šablona Azure pro rychlý Start – připojení ke stávajícím virtuálním počítačům v doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
+V tomto článku jste použili Azure Portal ke konfiguraci a nasazení prostředků pomocí šablon. Prostředky můžete také nasadit pomocí Správce prostředků šablon pomocí [Azure PowerShell][deploy-powershell] nebo rozhraní příkazového [řádku Azure CLI][deploy-cli].
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[template-overview]: ../azure-resource-manager/template-deployment-overview.md
+[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
+[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md

@@ -2,18 +2,18 @@
 title: Dotazování protokolů Azure Monitor pro monitorování clusterů Azure HDInsight
 description: Naučte se spouštět dotazy na protokoly Azure Monitor pro monitorování úloh spuštěných v clusteru HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 031879ac1d0d2dd1148c0c37ee72c60d093f8a7d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809381"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103508"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight
 
@@ -27,38 +27,38 @@ Seznamte se se základními scénáři použití protokolů Azure Monitor k moni
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte mít nakonfigurovaný cluster HDInsight, aby používal protokoly Azure Monitor, a přidal do pracovního prostoru řešení monitorování pro konkrétní clustery HDInsight Azure Monitor. Pokyny najdete v tématu [použití protokolů Azure monitor s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+Musíte mít nakonfigurovaný cluster HDInsight, aby používal protokoly Azure Monitor, a přidal do pracovního prostoru řešení monitorování pro konkrétní clustery HDInsight Azure Monitor. Pokyny najdete v tématu [použití protokolů Azure monitor s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analýza metrik clusteru HDInsight
 
 Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
-2. Vyberte dlaždici **prohledávání protokolů** .
-3. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**.
+1. Vyberte dlaždici **prohledávání protokolů** .
+1. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**.
 
         search *
 
-    ![Prohledat všechny metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Prohledat všechny metriky")
+    ![Ambari Analytics – vyhledávání všech metrik](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Prohledat všechny metriky")
 
     Výstup by měl vypadat takto:
 
-    ![Hledat ve výstupu metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Hledat ve výstupu metriky")
+    ![hledání v Log Analytics – všechny metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Hledat ve výstupu metriky")
 
-5. V levém podokně v části **typ**vyberte metriku, kterou chcete dig hluboko do, a pak vyberte **použít**. Na následujícím snímku obrazovky vidíte `metrics_resourcemanager_queue_root_default_CL` typ vybraný.
+1. V levém podokně v části **typ**vyberte metriku, kterou chcete dig hluboko do, a pak vyberte **použít**. Na následujícím snímku obrazovky vidíte `metrics_resourcemanager_queue_root_default_CL` typ vybraný.
 
     > [!NOTE]  
     > Možná budete muset vybrat tlačítko **[+] Další** a vyhledat metriku, kterou hledáte. Tlačítko **použít** je také v dolní části seznamu, takže je nutné se k jeho zobrazení posunout dolů.
 
     Všimněte si, že dotaz v textovém poli se změní na jeden, který je zobrazený ve zvýrazněném poli na následujícím snímku obrazovky:
 
-    ![Vyhledat konkrétní metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Vyhledat konkrétní metriky")
+    ![metriky specifické pro hledání v Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Vyhledat konkrétní metriky")
 
-6. Aby se dig hlouběji do této konkrétní metriky. Můžete například Upřesnit stávající výstup na základě průměru prostředků využívaných v intervalu 10 minut, a to podle názvu clusteru pomocí následujícího dotazu:
+1. Aby se dig hlouběji do této konkrétní metriky. Můžete například Upřesnit stávající výstup na základě průměru prostředků využívaných v intervalu 10 minut, a to podle názvu clusteru pomocí následujícího dotazu:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 
-7. Místo rafinace na základě průměru použitých prostředků můžete použít následující dotaz k upřesnění výsledků na základě toho, kdy se maximální využití prostředků (a 90 a 95. percentilu) využívalo v období 10 minut:
+1. Místo rafinace na základě průměru použitých prostředků můžete použít následující dotaz k upřesnění výsledků na základě toho, kdy se maximální využití prostředků (a 90 a 95. percentilu) využívalo v období 10 minut:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 
@@ -68,15 +68,16 @@ Naučte se, jak zobrazit chybové zprávy během konkrétního časového obdob�
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
 2. Vyberte dlaždici **prohledávání protokolů** .
-3. Zadejte následující dotaz, který vyhledá všechny chybové zprávy pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**. 
+3. Zadejte následující dotaz, který vyhledá všechny chybové zprávy pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**.
 
          search "Error"
 
     Zobrazí se výstup podobný následujícímu výstupu:
 
-    ![Vyhledat výstup všech chyb](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Vyhledat výstup všech chyb")
+    ![Chyby prohledávání protokolu Azure Portal](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Vyhledat výstup všech chyb")
 
 4. V levém podokně v části kategorie **typu** vyberte typ chyby, který chcete dig do hloubky, a pak vyberte **použít**.  Všimněte si, že výsledky jsou upřesněny tak, aby zobrazovaly jenom chybu typu, který jste vybrali.
+
 5. Můžete Dig hlouběji do tohoto konkrétního seznamu chyb pomocí možností, které jsou k dispozici v levém podokně. Příklad:
 
     - Zobrazení chybových zpráv z konkrétního pracovního uzlu:

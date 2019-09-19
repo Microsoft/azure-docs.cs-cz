@@ -1,6 +1,6 @@
 ---
-title: Migrace aplikací pro Xamarin iOS pomocí Microsoft Authenticator od ADAL.NET do MSAL.NET | Azure
-description: Naučte se migrovat aplikace Xamarin iOS pomocí Microsoft Authenticator z knihovny ověřování Azure AD pro .NET (ADAL.NET) do knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Migrace aplikací pro Xamarin iOS, které používají Microsoft Authenticator od ADAL.NET do MSAL.NET | Azure
+description: Naučte se migrovat aplikace Xamarin iOS, které používají Microsoft Authenticator z knihovny ověřování Azure AD pro .NET (ADAL.NET) do knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
@@ -16,33 +16,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689e1c8912c567e466d2834172b5d2b98cfbc32c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086846"
+ms.locfileid: "71103958"
 ---
-# <a name="migrating-ios-applications-using-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS pomocí Microsoft Authenticator z ADAL.NET na MSAL.NET
+# <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
 
-Používali jste ADAL.NET a poskytovatele iOS a je čas migrovat na MSAL.NET [Microsoft Authentication Library](msal-overview.md), která podporuje zprostředkovatele v systému iOS od verze 4,3 a vyšší. 
+Používali jste knihovnu Azure Active Directory Authentication Library pro .NET (ADAL.NET) a zprostředkovatele iOS. Nyní je čas migrovat do [knihovny Microsoft Authentication Library](msal-overview.md) pro .net (MSAL.NET), která podporuje zprostředkovatele v systému iOS z verze 4,3. 
 
-Kde začít? Tento článek vám pomůže s migrací aplikace pro Xamarin iOS z knihovny ADAL do MSAL.
+Kde byste měli začít? Tento článek vám pomůže s migrací aplikace pro Xamarin iOS z ADAL do MSAL.
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto dokumentu se předpokládá, že už máte aplikaci Xamarin iOS, která je integrovaná s zprostředkovatelem iOS. Pokud to neuděláte, je nejlepší přejít přímo na MSAL.NET a spustit implementaci zprostředkovatele tam. Podrobnosti o vyvolání zprostředkovatele iOS v MSAL.NET s novou aplikací najdete v [této dokumentaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications) .
+V tomto článku se předpokládá, že už máte aplikaci Xamarin iOS integrovanou se zprostředkovatelem iOS. Pokud to neuděláte, přejděte přímo na MSAL.NET a spusťte implementaci zprostředkovatele tam. Informace o tom, jak vyvolat zprostředkovatele iOS v MSAL.NET pomocí nové aplikace, najdete v [této dokumentaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications).
 
 ## <a name="background"></a>Pozadí
 
 ### <a name="what-are-brokers"></a>Co jsou zprostředkovatelé?
 
-Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS ([Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator) v systémech iOS a Android portál společnosti Intune na Androidu). 
+Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS. (Podívejte se na [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) aplikaci v systémech iOS a Android a v aplikaci Portál společnosti Intune na Androidu.) 
 
 Umožňují:
 
-- Jednotné přihlašování,
-- Identifikace zařízení, kterou vyžadují některé [zásady podmíněného přístupu](../conditional-access/overview.md) (viz [Správa zařízení](../conditional-access/conditions.md#device-platforms))
-- Ověřování totožnosti aplikace, které se také vyžaduje v některých podnikových scénářích (viz téma [Správa mobilních aplikací Intune nebo mam](https://docs.microsoft.com/intune/mam-faq))
+- Jednotné přihlašování.
+- Identifikace zařízení, která je vyžadována některými [zásadami podmíněného přístupu](../conditional-access/overview.md). Další informace najdete v tématu [Správa zařízení](../conditional-access/conditions.md#device-platforms).
+- Ověřování totožnosti aplikace, které je také vyžadováno v některých podnikových scénářích. Další informace najdete v tématu [Správa mobilních aplikací (MAM) v Intune](https://docs.microsoft.com/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrace z ADAL na MSAL
 
@@ -51,7 +51,9 @@ Umožňují:
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
-V ADAL.NET je podpora zprostředkovatele povolená u kontextu pro ověřování, ale ve výchozím nastavení je zakázaná. Museli jste nastavit `useBroker` příznak na hodnotu true `PlatformParameters` v konstruktoru pro volání zprostředkovatele:
+V ADAL.NET je podpora zprostředkovatele povolená na základě kontextu pro ověřování. Ve výchozím nastavení je zakázaný. Museli jste nastavit 
+
+`useBroker`Příznak na hodnotu true v `PlatformParameters` konstruktoru pro volání zprostředkovatele:
 
 ```CSharp
 public PlatformParameters(
@@ -80,9 +82,9 @@ Pak zahrňte parametry v volání metody získání tokenu:
 ```
 
 </td><td>
-V MSAL.NET je podpora zprostředkovatele povolená u jednotlivých veřejných klientských aplikací. Ve výchozím nastavení je zakázaná. Pokud ho chcete povolit, použijte: 
+V MSAL.NET je podpora zprostředkovatelů povolená na základě PublicClientApplication. Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, použijte 
 
-`WithBroker()`parametr (ve výchozím nastavení nastaven na hodnotu true), aby zprostředkovatel volal:
+`WithBroker()`parametr (ve výchozím nastavení nastaven na hodnotu true), aby se mohl volat Zprostředkovatel:
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -100,11 +102,13 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>Krok 2: Nastavit UIViewController ()
-V ADAL.NET jste předali v UIViewController jako součást PlatformParameters (viz příklad v kroku 1). V MSAL.NET ale, aby vývojář poskytoval větší flexibilitu, se používá okno objektu, ale v běžném použití iOS se nevyžaduje. Chcete-li však použít zprostředkovatele, budete muset nastavit okno objektu, aby bylo možné odesílat a přijímat odpovědi od zprostředkovatele. 
+V ADAL.NET jste předali v UIViewController jako součást `PlatformParameters`. (Viz příklad v kroku 1.) V MSAL.NET, aby vývojářům poskytoval větší flexibilitu, se používá okno objektu, ale v běžném použití iOS se nepožaduje. Chcete-li použít zprostředkovatele, nastavte okno objektu tak, aby odesílalo a přijímalo odpovědi od zprostředkovatele. 
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
-UIViewController se předává do PlatformParamters na platformě specifické pro iOS.
+UIViewController se předává do 
+
+`PlatformParameters`v platformě specifické pro iOS.
 
 ```CSharp
 page.BrokerParameters = new PlatformParameters(
@@ -113,11 +117,10 @@ page.BrokerParameters = new PlatformParameters(
           PromptBehavior.SelectAccount);
 ```
 </td><td>
-V MSAL.NET musíte provést dvě věci, abyste mohli nastavit okno objektu pro iOS:
+V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 
-1) V `AppDelegate.cs`portálu `UIViewController()`nastavte na nový. `App.RootViewController` Toto přiřazení zajistí, že bude UIViewController s voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) Na AcquireTokenInteractive volání použijte`.WithParentActivityOrWindow(App.RootViewController)`
-a předejte odkaz na okno objektu you'will use.
+1. V `AppDelegate.cs`nastavte `App.RootViewController` na nový `UIViewController()`. Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)`a předejte odkaz na okno objektu, které použijete.
 
 **Příklad:**
 
@@ -140,9 +143,9 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Krok 3: Aktualizace AppDelegate pro zpracování zpětného volání
-ADAL i MSAL budou volat zprostředkovatele a zprostředkovatel pak bude volat zpět do vaší aplikace prostřednictvím `OpenUrl` metody `AppDelegate` třídy. Další informace najdete [tady](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS/_edit#step-two-update-appdelegate-to-handle-the-callback) .
+ADAL i MSAL volají zprostředkovatele a zprostředkovatel pak volá zpět do vaší aplikace prostřednictvím `OpenUrl` metody `AppDelegate` třídy. Další informace najdete v [této dokumentaci](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback).
 
-: heavy_check_mark:**mezi ADAL.NET a MSAL.NET nejsou žádné změny** .
+Mezi ADAL.NET a MSAL.NET nejsou žádné změny.
 
 ### <a name="step-4-register-a-url-scheme"></a>Krok 4: Registrace schématu adresy URL
 ADAL.NET a MSAL.NET používají adresy URL k vyvolání zprostředkovatele a vrátí odpověď zprostředkovatele zpět do aplikace. Zaregistrujte schéma URL v `Info.plist` souboru pro vaši aplikaci následujícím způsobem:
@@ -179,13 +182,14 @@ Příklad: `$"msauth.(BundleId")`
 ```
 
 > [!NOTE]
->  Toto schéma URL se stane součástí RedirectUri, který slouží k jednoznačné identifikaci aplikace při přijetí odpovědi od zprostředkovatele.
+> Toto schéma adresy URL se označuje jako součást identifikátoru URI přesměrování, který se používá k jednoznačné identifikaci aplikace, když obdrží odpověď od služby Broker.
 
 </table>
 
-### <a name="step-5-lsapplicationqueriesschemes"></a>Krok 5: LSApplicationQueriesSchemes
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Krok 5: Přidání identifikátoru zprostředkovatele do oddílu LSApplicationQueriesSchemes
 
-ADAL.NET a MSAL.NET oba používají `-canOpenURL:` ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. Přidejte do části LSApplicationQueriesSchemes souboru info. plist správný identifikátor pro zprostředkovatele iOS následujícím způsobem: 
+ADAL.NET a MSAL.NET oba používají `-canOpenURL:` ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. Přidejte do části LSApplicationQueriesSchemes souboru info. plist správný identifikátor pro zprostředkovatele iOS následujícím způsobem:
+
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
@@ -214,14 +218,18 @@ Využití
 ```
 </table>
 
-### <a name="step-6-register-you-redirecturi-in-the-portal"></a>Krok 6: Zaregistrujte se RedirectUri na portálu.
+### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>Krok 6: Registrace identifikátoru URI přesměrování na portálu
 
-ADAL.NET a MSAL.NET při cílení na zprostředkovatele přidávají další požadavky na redirectUri. Zaregistrujte identifikátor URI přesměrování do vaší aplikace na portálu.
+ADAL.NET a MSAL.NET v případě cílení na zprostředkovatele přidávají dodatečný požadavek na identifikátor URI přesměrování. Zaregistrujte identifikátor URI přesměrování do vaší aplikace na portálu.
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
 
-`"<app-scheme>://<your.bundle.id>"`případě`mytestiosapp://com.mycompany.myapp`
+`"<app-scheme>://<your.bundle.id>"`
+
+Příklad: 
+
+`mytestiosapp://com.mycompany.myapp`
 </td><td>
 
 `$"msauth.{BundleId}://auth"`
@@ -232,7 +240,7 @@ Příklad:
 
 </table>
 
-Další informace o registraci redirectUri na portálu najdete v tématu [využití zprostředkovatele v aplikacích Xamarin. iOS](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app) , kde najdete další podrobnosti.
+Další informace o tom, jak zaregistrovat identifikátor URI přesměrování na portálu, najdete v tématu [využití zprostředkovatele v aplikacích Xamarin. iOS](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
 
 ## <a name="next-steps"></a>Další postup
 

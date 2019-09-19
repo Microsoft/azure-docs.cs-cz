@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933638"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104927"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
@@ -29,7 +29,7 @@ Pomocí portálu Azure Data Factory můžete kontrolovat výstup aktivity prová
 
 Pomocí katalogu SSIS (SSISDB) si prohlédněte protokoly podrobností pro spuštění. Podrobnosti najdete v tématu [monitorování spuštěných balíčků a dalších operací](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
-## <a name="common-errors-causes-and-solutions"></a>Běžné chyby, příčiny a řešení
+## <a name="common-errors-causes-and-solutions"></a>Běžné chyby, jejich příčiny a řešení
 
 ### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Chybová zpráva: Časový limit připojení vypršel nebo služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. "
 
@@ -55,11 +55,11 @@ Potenciální příčinou je to, že zprostředkovatel ADO.NET použitý v balí
 
 ### <a name="error-message-the-connection--is-not-found"></a>Chybová zpráva: "Připojení"... " nebyl nalezen "
 
-Tuto chybu může způsobit známý problém ve starších verzích aplikace SQL Server Management Studio (SSMS). Pokud balíček obsahuje vlastní komponentu (například Azure Feature Pack pro SSIS nebo komponenty partnerů), která není nainstalovaná na počítači, kde se provádí nasazení pomocí SSMS, SSMS komponentu odebere a způsobí chybu. Upgradujte [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) na nejnovější verzi s opraveným problémem.
+Tuto chybu může způsobit známý problém ve starších verzích aplikace SQL Server Management Studio (SSMS). Pokud balíček obsahuje vlastní komponentu (například Azure Feature Pack pro SSIS nebo komponenty partnerů), která není nainstalovaná na počítači, kde se provádí nasazení pomocí SSMS, SSMS komponentu odebere a způsobí chybu. Upgradujte [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) na nejnovější verzi, ve které je tento problém opravený.
 
 ### <a name="error-messagessis-executor-exit-code--1073741819"></a>Chybová zpráva: "ukončovací kód prováděcího modulu SSIS:-1073741819."
 
-* Potenciální příčina & doporučené akce:
+* Potenciální příčina a doporučená akce:
   * Tato chyba může být způsobena omezením pro zdroj a cíl aplikace Excel, pokud je více zdrojů nebo cíle aplikace Excel prováděno paralelně ve více vláknech. Toto omezení můžete vyřešit tak, že změníte komponenty aplikace Excel tak, aby se spouštěly v pořadí, nebo je rozbalíte do různých balíčků a aktivujete je pomocí možnosti Spustit úlohu balíčku s vlastností ExecuteOutOfProcess nastavenou na hodnotu true.
 
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Chybová zpráva: "Na disku není dostatek místa"
@@ -70,7 +70,7 @@ Tato chyba znamená, že se místní disk používá v uzlu SSIS Integration run
 
 ### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Chybová zpráva: "Nepovedlo se načíst prostředek z hlavní větve. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Kód: 300004. Popis: načtení souboru "* * *" se nezdařilo. "
 
-* Potenciální příčina & doporučené akce:
+* Potenciální příčina a doporučená akce:
   * Pokud aktivita SSIS spouští balíček ze systému souborů (soubor balíčku nebo soubor projektu), k této chybě dojde, pokud projekt, balíček nebo konfigurační soubor není přístupný s přihlašovacími údaji pro přístup k balíčku, které jste zadali v aktivitě SSIS
     * Pokud používáte soubor Azure:
       * Cesta k souboru by \\měla začínat \\ \<názvem\>účtu úložiště\\. cesta ke sdílené složce File.Core.Windows.NET\<\>
@@ -81,7 +81,7 @@ Tato chyba znamená, že se místní disk používá v uzlu SSIS Integration run
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Chybová zpráva: Název souboru... zadaný v připojení není platný.
 
-* Potenciální příčina & doporučené akce:
+* Potenciální příčina a doporučená akce:
   * Je zadaný neplatný název souboru.
   * Ujistěte se, že používáte plně kvalifikovaný název domény (plně kvalifikovaný název domény) místo krátkého času ve Správci připojení.
 
@@ -120,19 +120,47 @@ K této chybě dojde, když prostředí Integration runtime SSIS nemá přístup
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Chybová zpráva: "Poskytovatel Microsoft OLE DB pro Analysis Services. HRESULT Popis 0x80004005: ' Chyba COM: Chyba COM: mscorlib; Cíl vyvolání způsobil výjimku.
 
-Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným ověřováním Azure Multi-Factor Authentication je nakonfigurované pro Azure Analysis Services ověřování. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
+Jednou z možných příčin je, že uživatelské jméno nebo heslo s povoleným Azure Multi-Factor Authentication je nakonfigurované pro ověřování Azure Analysis Services. Toto ověřování není podporováno v prostředí SSIS Integration runtime. Zkuste použít instanční objekt pro Azure Analysis Services ověřování:
 1. Připravte instanční objekt, jak je popsáno v tématu [automatizace s instančními objekty](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
 2. V programu Správce připojení nakonfigurujte **použití konkrétního uživatelského jména a hesla**: jako uživatelské jméno nastavte **AppID** a jako heslo **clientSecret** .
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: "ADONET zdroji se nepovedlo získat připojení {GUID} pomocí této chybové zprávy: Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON při použití spravované identity se nezdařilo.
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Chybová zpráva: Zdroji ADO.NET se nepodařilo navázat připojení {GUID} s následující chybovou zprávou: Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON při použití spravované identity se nezdařilo.
 
 Pokud má parametr *ConnectUsingManagedIdentity* **hodnotu true**, ujistěte se, že jste nenakonfigurovali metodu ověřování Správce připojení jako **ověřování hesla služby Active Directory** . Místo toho ho můžete nakonfigurovat jako **ověřování SQL** , které se ignoruje, pokud je nastavená možnost *ConnectUsingManagedIdentity* .
 
+### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Chybová zpráva: "Žádost o pracovní úlohu s identifikátorem GUID operace... selhání, protože chyba: Nepovedlo se odeslat pracovní operaci s chybovou zprávou: Microsoft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: Nepovedlo se načíst datový proxy.
+
+Ujistěte se, že váš modul runtime Azure-SSIS Integration runtime je nakonfigurovaný pomocí prostředí Integration runtime v místním prostředí. Další podrobnosti najdete v části [Configure IR Autohost as a proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md).
+
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Chybová zpráva: "Stav úlohy přípravy: Nepovedlo se. Chyba přípravného úkolu: ErrorCode 2010, ErrorMessage: Integration Runtime v místním prostředí... je offline
+
+Ujistěte se, že je nainstalovaný a spuštěný místní prostředí Integration runtime. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
+
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Chybová zpráva: "Chyba přípravného úkolu: ErrorCode 2906, ErrorMessage: Spuštění balíčku se nezdařilo., výstup: {"OperationErrorMessages": Chyba Vyžádaný poskytovatel OLE DB... není zaregistrováno. Pokud není nainstalován ovladač 64, spusťte balíček v režimu 32... "
+
+Zajistěte, aby odpovídající zprostředkovatel používaný konektory OLE DB ve vašem balíčku byl správně nainstalovaný na počítači s integrací prostředí Integration runtime. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) .
+
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Chybová zpráva: "Chyba přípravného úkolu: ErrorCode 2906, ErrorMessage: Spuštění balíčku se nezdařilo., výstup: {"OperationErrorMessages": Chyba System. IO. FileLoadException: Nelze načíst soubor nebo sestavení Microsoft. WindowsAzure. Storage, verze =..., Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Nalezená definice manifestu sestavení neodpovídá odkazu na sestavení. ' ..."
+
+Jednou z možných příčin je, že váš místní prostředí Integration runtime není správně nainstalováno nebo upgradováno. Navrhněte stažení a opětovnou instalaci nejnovějšího prostředí Integration runtime v místním prostředí. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices) v místním prostředí.
+
+### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Chybová zpráva: "Při požadování metadat se vyžaduje připojení. Pokud pracujete offline, zrušte v nabídce SSIS možnost pracovat offline, aby se povolilo připojení.
+
+* Potenciální příčina a doporučená akce:
+  * Pokud se zobrazí také varovná zpráva "komponenta nepodporuje použití Správce připojení s hodnotou ConnectByProxy Value true" v protokolu spuštění to znamená, že se správce připojení používá u komponenty, která ještě není podporována "ConnectByProxy". Podporované součásti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) .
+  * Protokol spuštění najdete v [sestavě SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) nebo ve složce protokolu, kterou jste zadali v aktivitě spuštění balíčku SSIS.
+  * Virtuální síť se dá také použít pro přístup k místním datům jako alternativu. Další podrobnosti najdete v článku [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md) .
+
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Chybová zpráva: "Stav úlohy přípravy: Nepovedlo se. Chyba přípravného úkolu: ErrorCode 2906, ErrorMessage: Spuštění balíčku se nezdařilo., výstup: {"OperationErrorMessages": "Ukončovací kód prováděcího modulu SSIS:-1. \ n", "LogLocation": "... \\SSISTelemetryExecutionLog.\\.. "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"\\
+
+Ujistěte se, C++ že je Visual runtime nainstalovaný v místním prostředí Integration runtime Machine. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) .
+
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Neočekávaně se spouští více spuštění balíčku.
 
-* Potenciální příčina & doporučené akce:
-  * Aktivita uložená procedura ADF se používá ke spuštění SSIS balíčku. Příkaz t-SQL může způsobit přechodný problém a aktivovat opětovné spuštění, které by způsobilo více spuštění balíčku.
+* Potenciální příčina a doporučená akce:
+  * Aktivita uložená procedura ADF nebo aktivita vyhledávání slouží ke spuštění SSIS balíčku. Příkaz t-SQL může způsobit přechodný problém a aktivovat opětovné spuštění, které by způsobilo více spuštění balíčku.
   * Místo toho použijte aktivitu ExecuteSSISPackage, která zajistí, že spuštění balíčku nebude znovu spuštěno, pokud uživatel nenastaví počet opakování v aktivitě. Podrobnosti najdete na adrese.[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Upřesněte svůj příkaz t-SQL, aby se mohl znovu spustit, a to tak, že zkontroluje, jestli už se spustilo spuštění.
 
 ### <a name="package-execution-takes-too-long"></a>Provádění balíčku trvá moc dlouho.
 

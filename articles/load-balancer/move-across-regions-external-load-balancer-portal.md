@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9cf15595270e0a0040e565be8319c13e3f5da306
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092219"
+ms.locfileid: "71105287"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Přesunout externí Load Balancer Azure do jiné oblasti pomocí Azure Portal
 
@@ -179,7 +179,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **datového. JSON** .  Získání ID:
+6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **Parameters. JSON** . Získání ID:
     
     1. Přihlaste se k [Azure Portal](http://portal.azure.com) > **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje přesunutou veřejnou IP adresu z výše uvedeného postupu, a klikněte na ni.
@@ -187,19 +187,19 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky.  Případně můžete kliknout na tlačítko **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **hodnota** v editoru **úprav parametrů** otevřeném v jiném okně nebo na kartě prohlížeče:
 
-    ```json
-       ```json
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-          "loadBalancers_myLoadbalancer_ext_name": {
-          "value": "<target-external-lb-name>"
-    },
-          "publicIPAddresses_myPubIP_in_externalid": {
-          "value": "<target-publicIP-resource-ID>"
-    },
+        ```json
+           ```json
+           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+           "contentVersion": "1.0.0.0",
+           "parameters": {
+              "loadBalancers_myLoadbalancer_ext_name": {
+              "value": "<target-external-lb-name>"
+        },
+              "publicIPAddresses_myPubIP_in_externalid": {
+              "value": "<target-publicIP-resource-ID>"
+        },
 
-    ```
+        ```
     6. V online Editoru klikněte na **Uložit** .
    
 

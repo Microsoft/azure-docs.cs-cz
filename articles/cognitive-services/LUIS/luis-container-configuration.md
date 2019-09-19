@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: e6a13688bba1c3a0e62e427e078e78c8f8dd4e70
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560624"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101985"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnerů Docker Language Understanding 
 
@@ -57,7 +57,7 @@ Nepoužívejte starter klíč nebo klíč pro vytváření obsahu.
 
 ## <a name="billing-setting"></a>Nastavení Billing
 
-Nastavení určuje identifikátor URI koncového bodu Cognitive Services prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner.  `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+Nastavení určuje identifikátor URI koncového bodu Cognitive Services prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
 Toto nastavení najdete v následujících umístěních:
 
@@ -106,7 +106,7 @@ Následující tabulka popisuje nastavení podporováno.
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](luis-container-howto.md#stop-the-container) ho.
 
-* Tyto příklady používají adresář mimo `c:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
+* Tyto příklady používají adresář mimo `C:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
 * Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 * Pokud používáte jiný operační systém, použijte pro připojení správnou konzolu, terminál, syntaxi složky a znak pro pokračování řádku pro svůj systém. Tyto příklady předpokládají konzolu Windows se znakem `^`pro pokračování řádku. Vzhledem k tomu, že kontejner je operačním systémem Linux, cílový připojení používá syntaxi složky ve stylu systému Linux.
 
@@ -116,11 +116,13 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{API_KEY} | Klíč koncového bodu trénovaného aplikace LUIS. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URL} | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Cognitive Services` . |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+| **{API_KEY}** | Klíč `LUIS` koncového bodu prostředku na stránce klíčů Azure `LUIS` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `LUIS` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](luis-container-howto.md#gathering-required-parameters) . |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](luis-container-howto.md#billing).
+> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru. Další informace najdete v tématu [fakturace](luis-container-howto.md#billing).
 > Hodnota ApiKey je **klíč** ze stránky klíče a koncové body na portálu Luis a je k dispozici také na stránce klíče prostředků `Cognitive Services` Azure. 
 
 ### <a name="basic-example"></a>Základní příklad

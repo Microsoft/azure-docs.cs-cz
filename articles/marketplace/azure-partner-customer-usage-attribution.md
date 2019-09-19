@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962938"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105613"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
@@ -166,43 +166,28 @@ Můžete také sledovat identifikátory GUID na podrobnější úrovni, jako je 
 
 Aby bylo možné povolit přidělení zákaznického využití, musí být zaregistrované identifikátory GUID.
 
-Všechny registrace pro identifikátory GUID šablon se provádí prostřednictvím Azure Marketplace portál partnerů cloudu (CPP).
+Všechny registrace identifikátorů GUID šablon se provádí v partnerském centru.
 
-Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v rámci CPP jsou sledována všechna nasazení.
+Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v partnerském centru jsou sledována všechna nasazení.
 
-1. Platí pro [Azure Marketplace](https://aka.ms/listonazuremarketplace) a získání přístupu k cpp.
+1. Zaregistrujte se jako [komerční Vydavatel na webu Marketplace](https://aka.ms/JoinMarketplace).
 
-   * Partneři musí [mít profil v CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
+   * Partneři musí [mít profil v partnerském centru](https://docs.microsoft.com/azure/marketplace/become-publisher). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
    * Partneři můžou registrovat víc identifikátorů GUID.
    * Partneři můžou zaregistrovat identifikátor GUID pro šablony řešení a nabídky mimo Marketplace.
 
-1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
 
-1. V pravém horním rohu vyberte ikonu účtu a pak vyberte **profil vydavatele**.
+1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře**.
 
-   ![Vybrat profil vydavatele](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. Na **stránce nastavení účtu**vyberte **Přidat identifikátor GUID sledování.**
 
-1. Na **stránce profil**vyberte **Přidat identifikátor GUID sledování.**
-
-   ![Vyberte Přidat identifikátor GUID sledování.](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. Do pole **sledovací identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte jenom identifikátor GUID bez předpony **PID-** prefix. Do pole **vlastní popis** zadejte název vaší nabídky nebo její popis.
-
-   ![Stránka profilu](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![Zadejte identifikátor GUID a popis nabídky.](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte jenom identifikátor GUID bez předpony **PID-** prefix. Do pole **Popis** zadejte název nebo popis vaší nabídky.
 
 1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
-   ![Znovu vyberte Přidat identifikátor GUID sledování.](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Zadejte jiný identifikátor GUID a popis nabídky.](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. Vyberte **Uložit**.
 
-   ![Vybrat Uložit](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v rámci CPP jsou sledována všechna nasazení.
 
 ## <a name="verify-the-guid-deployment"></a>Ověření nasazení identifikátoru GUID
 

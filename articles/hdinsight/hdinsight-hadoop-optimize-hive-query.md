@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 60c725e084a18326cc4bc9cc05d02d103261f5a4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 7624f15e878e13a93b5b5f395ef9cf9af48c95e4
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809257"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104518"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace Apache Hive dotazů ve službě Azure HDInsight
 
@@ -29,11 +29,11 @@ Zvýšení počtu pracovních uzlů v clusteru HDInsight umožňuje práci využ
 
 * V době vytváření clusteru můžete zadat počet pracovních uzlů pomocí rozhraní Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje konfiguraci uzlu pracovní proces na Azure Portal:
   
-    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png "scaleout_1")
-    
+    ![Uzly Azure Portal velikosti clusteru](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
+
 * Po vytvoření můžete také upravit počet pracovních uzlů pro další horizontální navýšení kapacity clusteru, aniž by bylo nutné ho znovu vytvořit:
 
-    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png "scaleout_2")
+    ![Velikost clusteru Azure Portal škálování](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
 Další informace o škálování HDInsight najdete v tématu [škálování clusterů HDInsight](hdinsight-scaling-best-practices.md) .
 
@@ -41,7 +41,7 @@ Další informace o škálování HDInsight najdete v tématu [škálování clu
 
 [Apache tez](https://tez.apache.org/) je alternativní spouštěcí modul pro modul MapReduce. Clustery HDInsight se systémem Linux mají ve výchozím nastavení povolené TEZ.
 
-![tez_1][image-hdi-optimize-hive-tez_1]
+![Diagram přehledu Apache Tez HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez je rychlejší z těchto důvodů:
 
@@ -55,9 +55,9 @@ Další informace o těchto konceptech najdete v článku [Apache tez](https://t
 
 Pomocí příkazu set můžete vytvořit libovolný dotaz tez s podregistrumi, a to tak, že zadáte předponu dotazu:
 
-   ```hive
-   set hive.execution.engine=tez;
-   ```
+```hive
+set hive.execution.engine=tez;
+```
 
 ## <a name="hive-partitioning"></a>Dělení podregistru
 
@@ -65,7 +65,7 @@ Vstupně-výstupní operace jsou zásadním kritickým bodem pro spouštění do
 
 Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year*. Vytvoří se nový adresář pro každý rok.
 
-![Dělení podregistru][image-hdi-optimize-hive-partitioning_1]
+![Apache Hive vytváření oddílů v HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 Některé předpoklady dělení:
 
@@ -75,32 +75,32 @@ Některé předpoklady dělení:
 
 Chcete-li vytvořit tabulku oddílů, použijte klauzuli *partitiond by* :
 
-   ```hive
-   CREATE TABLE lineitem_part
-       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
-        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
-        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
-   PARTITIONED BY(L_SHIPDATE STRING)
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-   STORED AS TEXTFILE;
-   ```
-   
+```sql
+CREATE TABLE lineitem_part
+      (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
+      L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+      L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+      L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
+PARTITIONED BY(L_SHIPDATE STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE;
+```
+
 Po vytvoření dělené tabulky můžete vytvořit statické dělení nebo dynamické dělení.
 
 * **Statické dělení** znamená, že už jste horizontálně dělené data v příslušných adresářích. Při statických oddílech se oddíly podregistru přidávají ručně na základě umístění adresáře. Následující fragment kódu je příklad.
   
-   ```hive
+   ```sql
    INSERT OVERWRITE TABLE lineitem_part
    PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
    SELECT * FROM lineitem 
    WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
-   
+
    ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
-   
+
 * **Dynamické dělení** znamená, že chcete, aby podregistr vytvořil oddíly automaticky. Vzhledem k tomu, že jste již vytvořili dělenou tabulku z pracovní tabulky, stačí, když vložíte data do dělené tabulky:
   
    ```hive
@@ -117,7 +117,7 @@ Po vytvoření dělené tabulky můžete vytvořit statické dělení nebo dynam
        L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
-   
+
 Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>Použití formátu ORCFile
@@ -136,40 +136,40 @@ ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak uklád
 
 Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC*:
 
-   ```hive
-   CREATE TABLE lineitem_orc_part
-       (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
-        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
-        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
-   PARTITIONED BY(L_SHIPDATE STRING)
-   STORED AS ORC;
-   ```
-   
+```sql
+CREATE TABLE lineitem_orc_part
+      (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
+      L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+      L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
+      L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
+PARTITIONED BY(L_SHIPDATE STRING)
+STORED AS ORC;
+```
+
 V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Příklad:
 
-   ```hive
-   INSERT INTO TABLE lineitem_orc
-   SELECT L_ORDERKEY as L_ORDERKEY, 
-          L_PARTKEY as L_PARTKEY , 
-          L_SUPPKEY as L_SUPPKEY,
-          L_LINENUMBER as L_LINENUMBER,
-          L_QUANTITY as L_QUANTITY, 
-          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-          L_DISCOUNT as L_DISCOUNT,
-          L_TAX as L_TAX,
-          L_RETURNFLAG as L_RETURNFLAG,
-          L_LINESTATUS as L_LINESTATUS,
-          L_SHIPDATE as L_SHIPDATE,
-           L_COMMITDATE as L_COMMITDATE,
-           L_RECEIPTDATE as L_RECEIPTDATE, 
-           L_SHIPINSTRUCT as L_SHIPINSTRUCT,
-           L_SHIPMODE as L_SHIPMODE,
-           L_COMMENT as L_COMMENT
-    FROM lineitem;
-   ```
-   
+```sql
+INSERT INTO TABLE lineitem_orc
+SELECT L_ORDERKEY as L_ORDERKEY, 
+         L_PARTKEY as L_PARTKEY , 
+         L_SUPPKEY as L_SUPPKEY,
+         L_LINENUMBER as L_LINENUMBER,
+         L_QUANTITY as L_QUANTITY, 
+         L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+         L_DISCOUNT as L_DISCOUNT,
+         L_TAX as L_TAX,
+         L_RETURNFLAG as L_RETURNFLAG,
+         L_LINESTATUS as L_LINESTATUS,
+         L_SHIPDATE as L_SHIPDATE,
+         L_COMMITDATE as L_COMMITDATE,
+         L_RECEIPTDATE as L_RECEIPTDATE, 
+         L_SHIPINSTRUCT as L_SHIPINSTRUCT,
+         L_SHIPMODE as L_SHIPMODE,
+         L_COMMENT as L_COMMENT
+FROM lineitem;
+```
+
 Další informace o formátu ORC najdete v [příručce k jazyku Apache Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Vektorizaci
@@ -178,26 +178,24 @@ Rozvektorování umožňuje podregistru zpracovat dávku 1024 řádků společn�
 
 Chcete-li povolit vlastní předponu dotazu na podregistr pomocí následujícího nastavení:
 
-   ```hive
-    set hive.vectorized.execution.enabled = true;
-   ```
+```hive
+set hive.vectorized.execution.enabled = true;
+```
 
 Další informace najdete v tématu [zpracování vektorového dotazu](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
 ## <a name="other-optimization-methods"></a>Další metody optimalizace
+
 Existuje více metod optimalizace, které je možné zvážit, například:
 
 * Sestavování **podregistru:** technika, která umožňuje clusteru a segmentovat velké sady dat pro optimalizaci výkonu dotazů.
 * **Optimalizace spojení:** optimalizace plánování spouštění dotazů na podregistr pro zlepšení efektivity spojení a omezení nutnosti pomocného parametru pro uživatele. Další informace najdete v tématu věnovaném [optimalizaci spojení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
 * **Zvyšte reduktorů**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
 V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v následujících článcích:
 
 * [Použití Apache Hive ve službě HDInsight](hadoop/hdinsight-use-hive.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](hdinsight-analyze-twitter-data-linux.md)
-
-
-[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
-[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png

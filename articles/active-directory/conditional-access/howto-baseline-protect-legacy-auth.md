@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9b74491c76747bd635547f6f22964fe792dbf01a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931935"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104089"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blokovat starší verze ověřování (Preview)
 
@@ -106,13 +106,13 @@ Zásady standardních **hodnot zásad: Zablokovat starší verze ověřování**
 
 Pokud chcete povolit tuto zásadu a chránit svoji organizaci:
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
 1. V seznamu zásad vyberte **základní zásady: Blokuje starší verze ověřování (Preview**).
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 

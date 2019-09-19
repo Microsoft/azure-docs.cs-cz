@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542903"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103792"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace Azure Active Directory se službou Azure Kubernetes
 
@@ -39,7 +39,7 @@ Další informace o OpenID Connect najdete v tématu [autorizace přístupu k we
 
 V rámci clusteru Kubernetes se ověřování pomocí tokenu Webhooku používá pro ověřovací tokeny. Ověřování tokenu Webhooku je nakonfigurované a spravované jako součást clusteru AKS.
 
-Další informace o ověřování tokenů Webhooku najdete v části [ověřování tokenu][kubernetes-webhook] Webhooku v dokumentaci k Kubernetes.
+Další informace o ověřování tokenů Webhooku najdete v části [ověřování tokenu Webhooku][kubernetes-webhook] v dokumentaci k Kubernetes.
 
 Aby bylo možné zajistit ověřování Azure AD pro cluster AKS, vytvoří se dvě aplikace Azure AD. První aplikací je serverová součást, která poskytuje ověřování uživatelů. Druhá aplikace je klientská komponenta, která se používá v případě, že rozhraní příkazového řádku vyzve k ověření. Tato klientská aplikace používá serverovou aplikaci pro skutečné ověření přihlašovacích údajů poskytnutých klientem.
 
@@ -86,7 +86,7 @@ Použije se první aplikace Azure AD, která získá členství uživatele ve sk
 
     e. Pokud chcete aktualizace uložit, vyberte **Přidat oprávnění** .
 
-    f. V části **souhlas udělení souhlasu**vyberte **udělit souhlas správce**. Toto tlačítko není k dispozici, pokud aktuální účet není správcem tenanta.
+    f. V části **souhlas udělení souhlasu**vyberte **udělit souhlas správce**. Toto tlačítko nebude dostupné. aktuálně používaný účet není uvedený jako správce tenanta.
 
     Po úspěšném udělení oprávnění se na portálu zobrazí následující oznámení:
 
@@ -280,7 +280,7 @@ error: You must be logged in to the server (Unauthorized)
 - Uživatel není členem více než 200 skupin.
 - Tajný kód definovaný v registraci aplikace pro server se shoduje s hodnotou konfigurovanou pomocí `--aad-server-app-secret`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Postup použití uživatelů a skupin Azure AD k řízení přístupu k prostředkům clusteru najdete v tématu [řízení přístupu k prostředkům clusteru pomocí řízení přístupu založeného na rolích a identit Azure AD v AKS][azure-ad-rbac].
 

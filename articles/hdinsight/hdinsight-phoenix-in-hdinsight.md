@@ -2,18 +2,18 @@
 title: Apache Phoenix ve službě HDInsight – Azure HDInsight
 description: Přehled Apache Phoenix
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: ashishth
-ms.openlocfilehash: 1e7059d30c5d480948eb681b477239151020b266
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961832"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105388"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix ve službě Azure HDInsight
 
@@ -129,7 +129,7 @@ Cluster An HDInsight HBA zahrnuje [uživatelské rozhraní Ambari](hdinsight-had
 
 2. V seznamu služeb v nabídce na levé straně vyberte **HBA** a pak vyberte kartu **Konfigurace** .
 
-    ![Konfigurace Ambari HBA](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
+    ![Konfigurace pro adaptéry Apache Ambari](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Pokud chcete povolit nebo zakázat Phoenix a nastavit časový limit dotazu, najděte oddíl konfigurace **SQL pro Phoenix** .
 

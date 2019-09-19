@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931177"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103249"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete v clusteru povolit a zjišťovat tak další služby pomocí protokolu DNS. 
@@ -73,16 +73,16 @@ Po vytvoření šablony můžete službu DNS povolit pomocí následujících kr
 
    - Pokud chcete službu DNS povolit s výchozím nastavením, přidejte ji do `addonFeatures` oddílu `properties` v části, jak je znázorněno v následujícím příkladu:
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - Chcete-li povolit službu s jiným než výchozím nastavením, přidejte `DnsService` `fabricSettings` do části oddíl dovnitř `properties` oddílu. V takovém případě nemusíte přidávat služba DNSservice do `addonFeatures`. Další informace o vlastnostech, které lze nastavit pro službu DNS, najdete v tématu [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
@@ -111,7 +111,10 @@ Po vytvoření šablony můžete službu DNS povolit pomocí následujících kr
               ]
             }
        ```
-1. Jakmile aktualizujete šablonu clusteru o provedené změny, použijte ji a nechte upgrade dokončeno. Po dokončení upgradu začne služba systému DNS běžet ve vašem clusteru. Název služby je `fabric:/System/DnsService`a můžete ho najít v části **Systémová** služba v Service Fabric Exploreru. 
+3. Jakmile aktualizujete šablonu clusteru o provedené změny, použijte ji a nechte upgrade dokončeno. Po dokončení upgradu začne služba systému DNS běžet ve vašem clusteru. Název služby je `fabric:/System/DnsService`a můžete ho najít v části **Systémová** služba v Service Fabric Exploreru. 
+
+> [!NOTE]
+> Při upgradu serveru DNS z zakázaného na povoleno se Service Fabric Explorer nemusí odrážet nový stav. Chcete-li řešení vyřešit, restartujte uzly úpravou UpgradePolicy v šabloně Azure Resource Manager. Další informace najdete v [referenčních informacích k šabloně Service Fabric](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>Nastavení názvu DNS pro vaši službu
@@ -257,6 +260,6 @@ public class ValuesController : Controller
 
 * Služba DNS pro službu Service Fabric Services ještě není v systému Linux podporována. Služba DNS je podporovaná pro kontejnery v systému Linux. K dispozici je ruční řešení pomocí nástroje Fabric Client/ServicePartitionResolver.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o komunikaci služby v rámci clusteru s [připojením a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)
 

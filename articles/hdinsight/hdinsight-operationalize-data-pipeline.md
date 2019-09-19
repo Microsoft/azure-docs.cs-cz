@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961348"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105516"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -33,7 +33,7 @@ Příklad kanálu počká, dokud nepřijde nová časová data období, a pak ul
 
 Příklad kanálu znázorňuje následující diagram.
 
-![Kanál letových dat](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![Přehled datového kanálu pro HDI let](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Přehled řešení Apache Oozie
 
@@ -43,7 +43,7 @@ Oozie popisuje jeho kanály z pohledu *akcí*, *pracovních postupů*a *koordin�
 
 Následující diagram znázorňuje návrh vysoké úrovně v tomto ukázkovém kanálu Oozie.
 
-![Kanál pro letová data Oozie](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie let – Ukázkový datový kanál](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Zřizování prostředků Azure
 
@@ -55,23 +55,23 @@ Tento kanál vyžaduje, aby ve stejném umístění byl cluster Hadoop Azure SQL
 2. V rámci skupiny prostředků zřiďte Azure SQL Server a databázi. `oozie` Nepotřebujete databázi větší, než je cenová úroveň Standard S1.
 3. Pomocí Azure Portal přejděte k podoknu nově nasazeného SQL Database a vyberte **nástroje**.
 
-    ![Tlačítko nástroje](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
+    ![Ikona tlačítka nástroje databáze SQL HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. Vyberte **Editor dotazů**.
 
-    ![Tlačítko editoru dotazů](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
+    ![Nástroje SQL DB Editor dotazů verze Preview](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. V podokně **Editor dotazů** vyberte **přihlášení**.
 
-    ![Tlačítko pro přihlášení](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
+    ![Okno přihlášení k SQL DB editoru dotazů](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. Zadejte přihlašovací údaje pro SQL Database a vyberte **OK**.
 
-   ![Přihlašovací formulář](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
+   ![Přihlašovací parametry SQL DB editoru dotazů](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. V textové oblasti editoru dotazů zadejte následující příkazy SQL pro vytvoření `dailyflights` tabulky, která bude ukládat souhrnná data z každého spuštění kanálu.
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -90,7 +90,7 @@ Tento kanál vyžaduje, aby ve stejném umístění byl cluster Hadoop Azure SQL
 
 8. Výběrem **příkazu Spustit** spusťte příkazy SQL.
 
-    ![Tlačítko spustit](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
+    ![Tlačítko pro spuštění databáze HDInsight SQL](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Vaše Azure SQL Database je teď připravená.
 
@@ -104,12 +104,12 @@ Vaše Azure SQL Database je teď připravená.
 
 4. V podokně **typ clusteru** vyberte typ clusteru **Hadoop** , operační systém **Linux** a nejnovější verzi clusteru HDInsight. **Úroveň clusteru** ponechte na úrovni **Standard**.
 
-    ![Typ clusteru HDInsight](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
+    ![Azure Portal typ konfigurace clusteru](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. Zvolte **možnost vybrat** , pokud chcete použít výběr typu clusteru.
 6. Dokončete podokno **základy** zadáním přihlašovacího hesla a výběrem `oozie` skupiny prostředků ze seznamu a pak vyberte **Další**.
 
-    ![Základy HDInsight – podokno](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
+    ![Podokno základy vytváření Azure Portalch clusterů](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. V podokně **úložiště** ponechte typ primární úložiště nastaven na **Azure Storage**, vyberte **vytvořit novou**a zadejte název nového účtu.
 
@@ -123,13 +123,13 @@ Vaše Azure SQL Database je teď připravená.
 
     ![Ověření metastore podregistru HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Zadejte své uživatelské jméno a heslo SQL Database a zvolte **Vybrat**. 
+10. Zadejte své uživatelské jméno a heslo SQL Database a zvolte **Vybrat**.
 
        ![Ověření přihlašovacích údajů pro podregistr HDInsight metastore](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Zpátky v podokně **Nastavení metastore** vyberte databázi pro úložiště metadat Oozie a proveďte ověření jako dříve. 
+11. Zpátky v podokně **Nastavení metastore** vyberte databázi pro úložiště metadat Oozie a proveďte ověření jako dříve.
 
-       ![Nastavení metastore HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Nastavení metastore Azure Portal](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. Vyberte **Další**.
 13. V podokně **Souhrn** vyberte **vytvořit** a nasaďte svůj cluster.
@@ -176,17 +176,18 @@ Soubor můžete zkopírovat pomocí spojovacího bodu služby `bash` v relaci pr
 Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dvě tabulky podregistru, jednu pro příchozí data (`rawFlights`) a jednu pro sumarizovaná data (`flights`). Vytvořte tyto tabulky v Ambari následujícím způsobem.
 
 1. Přihlaste se k Ambari tak, že přejdete na http:\//headnodehost: 8080.
+
 2. V seznamu služeb vyberte **podregistr**.
 
-    ![Výběr podregistru v Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Seznam pro výběr podregistru služeb Apache Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. Vyberte **Přejít k zobrazení** vedle popisku zobrazení podregistru 2,0.
 
-    ![Výběr zobrazení podregistru v Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Ambari seznam Shrnutí pro Apache Apache Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. V oblasti text dotazu vložte následující příkazy k vytvoření `rawFlights` tabulky. Tabulka poskytuje schéma-čtení pro soubory `/example/data/flights` CSV ve složce v Azure Storage. `rawFlights` 
+4. V oblasti text dotazu vložte následující příkazy k vytvoření `rawFlights` tabulky. Tabulka poskytuje schéma-čtení pro soubory `/example/data/flights` CSV ve složce v Azure Storage. `rawFlights`
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -211,7 +212,7 @@ Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dv�
 
 5. Vyberte **provést** a vytvořte tabulku.
 
-    ![Dotaz na podregistr v Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![dotaz na podregistr služby HDI Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. Chcete-li `flights` vytvořit tabulku, nahraďte text v oblasti textu dotazu následujícími příkazy. `flights` Tabulka je spravovaná tabulka v podregistru, která umožňuje rozdělit data do oddílů podle roku, měsíce a dne v měsíci. Tato tabulka bude obsahovat všechna historická data letového řádu s nejnižší členitosti ve zdrojových datech jednoho řádku na jeden let.
 
@@ -463,7 +464,7 @@ Pomocí spojovacího bodu služby z relace bash Nasaďte svůj pracovní`workflo
 
 7. Sledujte stav pomocí webové konzoly Oozie. V rámci Ambari vyberte možnost **Oozie**, **Rychlé odkazy**a pak **Oozie webové konzole**. Na kartě **úlohy pracovního postupu** vyberte **všechny úlohy**.
 
-    ![Pracovní postupy webové konzoly Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![pracovní postupy webové konzoly HDI Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. Po ÚSPĚŠNÉm dokončení dotazu do tabulky databáze SQL Zobrazte vložené řádky. Pomocí Azure Portal přejděte do podokna pro SQL Database, vyberte **nástroje**a otevřete **Editor dotazů**.
 
@@ -475,7 +476,7 @@ Teď, když je pracovní postup spuštěný pro jeden den testu, můžete tento 
 
 Pokud chcete tento pracovní postup naplánovat tak, aby běžel denně (nebo všechny dny v rozsahu kalendářních dat), můžete použít koordinátora. Koordinátor je definován souborem XML, například `coordinator.xml`:
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -554,7 +555,7 @@ Jak vidíte, většina koordinátora právě předává informace o konfiguraci 
 
 * Bod 2: V rámci rozsahu dat pracovního postupu `dataset` prvek určuje, kde se má v poli HDFS vyhledat data pro konkrétní rozsah dat, a nakonfiguruje, jak Oozie určuje, zda jsou data pro zpracování ještě k dispozici.
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -567,7 +568,7 @@ Jak vidíte, většina koordinátora právě předává informace o konfiguraci 
 
 * Bod 3: Prvek určuje konkrétní časové razítko, které má být použito jako nominální čas při nahrazování hodnot `uri-template` v objektu pro přidruženou datovou sadu. `data-in`
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>
@@ -648,7 +649,7 @@ Pokud chcete kanál spustit se koordinátorem, pokračujte podobným způsobem j
 
     Každá akce v tomto seznamu odpovídá instanci pracovního postupu, která zpracovává data o jednom dni, přičemž začátek tohoto dne je určen jmenovitým časem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Dokumentace k Apache Oozie](https://oozie.apache.org/docs/4.2.0/index.html)
 

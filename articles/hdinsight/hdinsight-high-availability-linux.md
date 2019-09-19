@@ -1,20 +1,20 @@
 ---
 title: Vysoká dostupnost pro Hadoop – Azure HDInsight
 description: Přečtěte si, jak clustery HDInsight zlepšují spolehlivost a dostupnost pomocí dalšího hlavního uzlu. Přečtěte si, jak se to týká služeb Hadoop, jako je Ambari a podregistr, a také jak se jednotlivě připojit ke každému hlavnímu uzlu pomocí SSH.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879773"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104409"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
@@ -106,7 +106,7 @@ Webové uživatelské rozhraní Ambari je možné zobrazit `https://CLUSTERNAME.
 
 Po přijetí na stránku Ambari jsou nainstalované služby uvedeny na levé straně stránky.
 
-![Nainstalované služby](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Instalované služby Apache Ambari](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle služby. Jakékoli výstrahy týkající se služby lze zobrazit pomocí odkazu **výstrahy** v horní části stránky.  Ambari nabízí několik předdefinovaných výstrah.
 
@@ -155,11 +155,11 @@ Můžete vybrat každou službu a zobrazit další informace.
 
 I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace, použijte odkaz **hostitelé** v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
 
-![Seznam hostitelů](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Seznam hostitelů Apache Ambari hlavnímu uzlu](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Výběr odkazu pro jeden z hlavních uzlů zobrazí služby a komponenty běžící v tomto uzlu.
 
-![Stav součásti](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Stav součásti Apache Ambari](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Další informace o použití Ambari najdete v tématu [monitorování a Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 

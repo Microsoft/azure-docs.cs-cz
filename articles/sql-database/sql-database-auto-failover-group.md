@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806608"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103185"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -172,9 +172,6 @@ Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito o
   > Elastické fondy s 800 nebo méně DTU a více než 250 databází pomocí geografické replikace můžou narazit na problémy, včetně delšího plánovaného převzetí služeb při selhání a sníženého výkonu.  Tyto problémy se budou pravděpodobněji vyskytnout pro úlohy náročné na zápis, když jsou koncové body geografické replikace široce oddělené geograficky nebo pokud se pro každou databázi používá více sekundárních koncových bodů.  Příznaky těchto problémů jsou uvedené v případě, že se prodleva geografické replikace v průběhu času zvyšuje.  Toto zpoždění se dá monitorovat pomocí [Sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Pokud dojde k těmto potížím, bude zmírnění rizik zahrnovat zvýšení počtu DTU fondů nebo snížení počtu geograficky replikovaných databází ve stejném fondu.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Osvědčené postupy použití skupin převzetí služeb při selhání se spravovanými instancemi
-
-> [!IMPORTANT]
-> Skupiny automatického převzetí služeb při selhání pro spravovanou instanci jsou ve verzi Public Preview.
 
 Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci a bude připojena k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci budou replikovány do sekundární instance. 
 
@@ -365,7 +362,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje skupinu převzetí služeb při selhání. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API: Správa skupin převzetí služeb při selhání se spravovanými instancemi (Preview)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Správa skupin převzetí služeb při selhání se spravovanými instancemi
 
 | rozhraní API | Popis |
 | --- | --- |

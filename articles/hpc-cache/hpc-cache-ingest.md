@@ -4,14 +4,14 @@ description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775647"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105318"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Přesun dat do Azure Blob Storage pro Azure HPC cache
 
@@ -31,15 +31,17 @@ Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obs
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Předběžné načtení dat v úložišti objektů BLOB pomocí CLFSLoad
 
-Nástroj [avere CLFSLoad](https://aka.ms/avere-clfsload) můžete použít ke zkopírování dat do nového kontejneru úložiště objektů blob, než ho přidáte jako cíl úložiště. Tento nástroj se spouští na virtuálním počítači Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. Toto je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
+Můžete použít <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad Utility ke zkopírování dat do nového kontejneru úložiště objektů BLOB předtím, než ho přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
+
+Nástroj avere CLFSLoad je k dispozici na vyžádání od týmu Azure HPC cache. Požádejte o pomoc svého týmu nebo otevřete lístek podpory, který vám požádá o pomoc.
 
 Tato možnost funguje jenom s novými prázdnými kontejnery. Vytvořte kontejner před použitím avere CLFSLoad.
 
-Podrobné informace jsou obsaženy v [souboru Readme avere CLFSLoad](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). <!-- caution literal link -->
+Podrobné informace jsou součástí distribuce avere CLFSLoad, která je k dispozici na vyžádání od týmu Azure HPC cache. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 Obecný přehled procesu:
 
-1. Připravte systém Linux (fyzický nebo virtuální počítač) pomocí Pythonu verze 3,6 nebo novější. (Pro lepší výkon doporučujeme Python 3,7.)
+1. Připravte systém Linux (virtuální počítač nebo fyzický) pomocí Pythonu verze 3,6 nebo novější. (Pro lepší výkon doporučujeme Python 3,7.)
 1. Nainstalujte software avere-CLFSLoad do systému Linux.
 1. Spusťte přenos z příkazového řádku systému Linux.
 
@@ -50,7 +52,7 @@ Nástroj avere CLFSLoad potřebuje následující informace:
 * Token sdíleného přístupového podpisu (SAS), který umožňuje nástroji zapisovat do kontejneru
 * Místní cesta ke zdroji dat – buď místní adresář, který obsahuje data ke zkopírování, nebo místní cestu k připojenému vzdálenému systému s daty.
 
-Požadavky jsou podrobně vysvětleny v [souboru Readme avere CLFSLoad](https://aka.ms/avere-clfsload).
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Kopírování dat prostřednictvím mezipaměti HPC Azure
 
@@ -81,7 +83,7 @@ Strategie paralelního příjmu dat s mezipamětí služby Azure HPC cache zahrn
 
 * Skriptované kopírování pomocí ``parallelcp`` – Zjistěte, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po nastavení úložiště se dozvíte, jak můžou klienti připojit mezipaměť.
 

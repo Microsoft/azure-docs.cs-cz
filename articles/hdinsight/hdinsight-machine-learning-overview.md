@@ -2,18 +2,18 @@
 title: Přehled Machine Learning – Azure HDInsight
 description: Přehled možností strojového učení pro velké objemy dat pro clustery ve službě Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961975"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105418"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
 
@@ -39,7 +39,7 @@ Pomocí služby ML Services ve službě HDInsight se systémem Spark můžete pa
 
 Azure Machine Learning poskytuje nástroje pro modelování prediktivních analýz a také plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning je kompletní řešení prediktivní analýzy v cloudu, které můžete použít k vytváření, testování, zprovoznění a správě prediktivních modelů. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
 
-![Zajištění dostupnosti pokročilých analýz pro Hadoop pomocí Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+![Přehled Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 Vytvářejte funkce pro data v clusteru HDInsight Hadoop pomocí [dotazů na podregistry](../machine-learning/team-data-science-process/create-features-hive.md). Konstrukce *funkcí* se snaží zvýšit prediktivní výkon výukových algoritmů vytvořením funkcí z nezpracovaných dat, která usnadňují proces učení. Pomocí [modulu import dat](../machine-learning/studio/import-data.md)můžete spouštět dotazy HiveQL z aplikace Azure Machine Learning Studio a přistupovat k datům zpracovávaným v podregistru a ukládat je do úložiště objektů BLOB.
 

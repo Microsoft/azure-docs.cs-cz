@@ -2,18 +2,18 @@
 title: Monitorování výkonu clusteru – Azure HDInsight
 description: Jak monitorovat stav a výkon Apache Hadoopch clusterů ve službě Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 936307399b658b75962e6969820215f9808d053f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961069"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104405"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -36,11 +36,11 @@ Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načít
 
 Zobrazí se také sloupce zobrazující počet jader a velikost paměti RAM pro každého hostitele a využití disku a průměr zatížení.
 
-![Karta hostitelé](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+![Přehled karty hostitelé Apache Ambari](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Pro podrobný pohled na komponenty běžící na daném hostiteli a jejich metrikách vyberte libovolný název hostitele. Metriky se zobrazují jako vybraná časová osa využití procesoru, zatížení, využití disku, využití paměti, využití sítě a počet procesů.
 
-![Podrobnosti o hostiteli](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+![Přehled informací o hostiteli Apache Ambari](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Podrobnosti o nastavení výstrah a zobrazování metrik najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) .
 
@@ -56,7 +56,7 @@ Pokud více tenantů sdílí velký cluster, existuje konkurence pro prostředky
 
 PŘÍZe nám umožňuje přidělit prostředky těmto frontám a zjistit, jestli jsou přiřazené všechny dostupné prostředky. Chcete-li zobrazit informace o frontách, přihlaste se k webovému uživatelskému rozhraní Ambari a pak v horní nabídce vyberte možnost **správce fronty příze** .
 
-![Správce fronty PŘÍZ](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+![Správce fronty Ambari nitě Apache](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 Stránka správce fronty PŘÍZe zobrazuje seznam front na levé straně a procento kapacity, která je jim přiřazena.
 
@@ -64,11 +64,11 @@ Stránka správce fronty PŘÍZe zobrazuje seznam front na levé straně a proce
 
 Podrobnější pohled na vaše fronty získáte tak, že na řídicím panelu Ambari vyberete ze seznamu na levé straně službu **příze** . Pak v rozevírací nabídce **Rychlé odkazy** vyberte **Správce prostředků uživatelské rozhraní** pod aktivním uzlem.
 
-![Odkaz na nabídku uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+![Odkazy v nabídce uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyberte **Scheduler** . Zobrazí se seznam front pod *frontami aplikací*. Tady vidíte kapacitu, která se používá pro každou frontu, jak dobře jsou úlohy distribuované mezi nimi a jestli jsou nějaké úlohy omezené na prostředky.
 
-![Nabídka uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Nabídka uživatelského rozhraní Apache HAdoop Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Omezování úložiště
 

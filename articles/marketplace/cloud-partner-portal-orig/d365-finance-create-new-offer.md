@@ -1,37 +1,23 @@
 ---
-title: Vytvoření nové nabídky Microsoft Dynamics 365 Business Central | Azure Marketplace
-description: Vysvětluje, jak vytvořit novou nabídku Microsoft Dynamics 365 Business Central pomocí portál partnerů cloudu.
+title: Jak vytvořit novou nabídku podnikového centra Microsoft Dynamics 365 | Azure Marketplace
+description: Zastaralá a propojená s odpovídajícími články na počítačích; bylo vysvětleno, jak vytvořit novou nabídku podnikového centra Microsoft Dynamics 365 pomocí portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 603dd63b31536bf906afc49223f4d6ac99819293
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 165406f2cf7ad6087febebdfdc67896527d23961
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935047"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105578"
 ---
-<a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Microsoft Dynamics 365 Business Central
-====================================================================
+# <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Business Central v Microsoft Dynamics 365
 
-Po vytvoření aplikace, je nutné definovat všechny atributy, které určí, jak budou vaše aplikace uvedené v Microsoft AppSource. Musíte například zadat informace o vaší společnosti, nabídky a plány, marketingových, kontakt na podporu a kategorie Microsoft AppSource. 
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu řešení Dynamics 365 Business Central nabízí. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové nabídky Business Central v Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
-Definování atributů, přihlaste se k Microsoft [portál partnerů cloudu](https://cloudpartner.azure.com/), pomocí účtu Microsoft, který jste použili k registraci v Centru pro vývojáře.
+## <a name="next-steps"></a>Další postup
 
-1. Na portál Cloud Partner, v levém navigačním panelu klikněte na **+ nová nabídka** a vyberte **Dynamics 365 Business Central** ze seznamu aplikací.
-
-   ![Vytvoření nové nabídky](./media/d365-financials/image003.png)
-
-2. Nová nabídka zobrazení "Editoru" teď pro vás otevřen a jste připravení začít s vytvářením obsahu.
-
-   ![Pořadí publikování nabídky](./media/d365-financials/image005.png)
-
-3. V zobrazení "Editoru" uvidíte přehled karty, které se mají provést. Každá karta obsahuje sadu polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*). Nebude moct přejít na další krok pro publikování bez dokončení těchto polí. Pro Dynamics 365 Business Central aplikace se zobrazí následující karty:
-
--   **Nabídka nastavení**
--   **Technické informace**
--   **Prezentace podrobnosti**
--   **Kontakty**
+Před vytvořením nové nabídky podnikového centra Dynamics 365 byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) s vybranými stránkami **Přehled** . Postupujte podle pokynů v tématu [Vytvoření nové nabídky podnikového centra Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) a vytvořte nabídku.

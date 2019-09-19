@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932997"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102572"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů detektoru anomálií
+# <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů Detektoru anomálií
 
 Běhové prostředí kontejneru **detektoru anomálií** se konfiguruje `docker run` pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
 
@@ -104,8 +104,10 @@ Hodnotu v závorkách `{}`nahraďte vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{API_KEY} | Klíč koncového bodu prostředku detektoru anomálií. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Hodnota fakturačního koncového bodu, včetně oblasti|`https://westus2.api.cognitive.microsoft.com`|
+| **{API_KEY}** | Klíč `Anomaly Detector` koncového bodu prostředku na stránce klíčů Azure `Anomaly Detector` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Anomaly Detector` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters) . |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](anomaly-detector-container-howto.md#billing).
@@ -135,7 +137,7 @@ Následující příklady Docker jsou pro kontejner detektoru anomálií.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nasazení kontejneru detektoru anomálií pro Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -2,18 +2,18 @@
 title: Použití tunelového propojení SSH pro přístup k Azure HDInsight
 description: Naučte se používat tunel SSH k bezpečnému procházení webových prostředků hostovaných na uzlech HDInsight se systémem Linux.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: cad2988a9b6d6cdf557eeabee7cc93e0bbba9267
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879622"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105472"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším uživatelská rozhraní
 
@@ -90,19 +90,19 @@ Po dokončení příkazu se provoz odeslaný do portu 9876 v místním počíta�
 
 1. Vyberte **uložit**
 
-    ![vytvořit relaci SSH](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    ![Relace vytvoření výstupu HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 1. V části **kategorie** nalevo od dialogu rozbalte položku **připojení**, rozbalte položku **SSH**a potom vyberte možnost **tunely**.
 
 1. Zadejte následující informace o **možnostech řízení formuláře předávání portů SSH** :
-   
+
    * **Zdrojový port** – port na straně klienta, který chcete přesměrovat. Například **9876**.
 
    * **Cíl** – adresa SSH pro cluster HDInsight. Například **mycluster-ssh.azurehdinsight.net**.
 
    * **Dynamicky** – umožňuje dynamické směrování proxy SOCKS.
-     
-     ![Obrázek možností tunelového propojení](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+
+     ![Možnosti tunelového propojení Konfigurace výstupu](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
 1. Vyberte **Přidat** a přidejte nastavení a potom kliknutím na **otevřít** otevřete připojení SSH.
 
@@ -114,9 +114,9 @@ Po dokončení příkazu se provoz odeslaný do portu 9876 v místním počíta�
 > Kroky v této části používají prohlížeč Mozilla FireFox, protože nabízí stejné nastavení proxy serveru na všech platformách. Další moderní prohlížeče, jako je Google Chrome, můžou vyžadovat rozšíření, jako je například FoxyProxy, aby fungovalo s tunelem.
 
 1. Nakonfigurujte prohlížeč tak, aby používal **localhost** a port, který jste použili při vytváření tunelu jako proxy **SOCKS V5** . Tady vidíte, jak vypadají nastavení Firefox. Pokud jste použili jiný port než 9876, změňte port na ten, který jste použili:
-   
-    ![Obrázek nastavení Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
-   
+
+    ![prohlížeč Firefox – nastavení proxy serveru](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+
    > [!NOTE]  
    > Výběr **vzdáleného DNS** překládá požadavky služby DNS (Domain Name System) pomocí clusteru HDInsight. Toto nastavení vyřeší DNS pomocí hlavního uzlu clusteru.
 
@@ -133,7 +133,7 @@ Po vytvoření clusteru pomocí následujících kroků ověřte, že máte př�
 
 2. Z webového uživatelského rozhraní Ambari vyberte HDFS ze seznamu na levé straně stránky.
 
-    ![Obrázek s vybraným systémem HDFS](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    ![Vybraná služba Apache Ambari HDFS](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
 3. Po zobrazení informací o službě HDFS vyberte **Rychlé odkazy**. Zobrazí se seznam hlavních uzlů clusteru. Vyberte jeden z hlavních uzlů a pak vyberte **uživatelské rozhraní NameNode**.
 
@@ -146,12 +146,12 @@ Po vytvoření clusteru pomocí následujících kroků ověřte, že máte př�
 
 4. Zobrazí se stránka podobná následujícímu obrázku:
 
-    ![Obrázek uživatelského rozhraní NameNode](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    ![Obrázek uživatelského rozhraní Hadoop NameNode](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
     > Všimněte si adresy URL této stránky; měl by být podobný `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Tento identifikátor URI používá interní plně kvalifikovaný název domény (FQDN) uzlu a je přístupný pouze při použití tunelu SSH.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se seznámili s postupem vytvoření a používání tunelu SSH, si přečtěte následující dokument, kde najdete další způsoby použití Ambari:
 

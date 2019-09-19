@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066811"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101545"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -48,7 +48,6 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
 | <a href="https://aka.ms/managed-instance-tde-byok">Transparentní šifrování dat (TDE) s Bring Your Own Key (BYOK)</a> |Informace najdete v tématu [Azure SQL transparentní šifrování dat s klíči spravovanými zákazníky v Azure Key Vault: Podpora](transparent-data-encryption-byok-azure-sql.md)Bring Your Own Key.|
-| <a href="https://aka.ms/managed-instance-failover-groups">Geografické skupiny distribuovaných převzetí služeb při selhání</a> | Ponechte kopii instance v jiné oblasti a ujistěte se, že budou data dostupná i v případě scénáře regionální havárie. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
 | [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Změny v tabulkách replikujte do jiných databází umístěných na spravovaných instancích, v izolovaných databázích nebo instancích SQL Server, nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných spravovaných instancích nebo instanci SQL Server. Informace najdete v tématu [Konfigurace replikace v databázi spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md). |
 | Detekce hrozeb |Informace najdete v tématu [konfigurace detekce hrozeb v Azure SQL Database Managed instance](sql-database-managed-instance-threat-detection.md).|

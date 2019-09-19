@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8ec081a758096298036efacfe1b0e6d62ed00cbd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961861"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105343"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight
 
@@ -80,7 +80,7 @@ Každý cluster HDInsight spoléhá na různé služby Azure a na open source so
 
 Apache Ambari poskytuje správu a monitorování clusteru HDInsight pomocí webového uživatelského rozhraní a REST API. Ambari je součástí clusterů HDInsight se systémem Linux. Vyberte podokno **řídicí panel clusteru** na stránce Azure Portal HDInsight.  Výběrem podokna **řídicí panel clusteru HDInsight** otevřete uživatelské rozhraní Ambari a zadejte přihlašovací údaje clusteru.  
 
-![Uživatelské rozhraní Ambari](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+![Přehled řídicího panelu Apache Ambari](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 Chcete-li otevřít seznam zobrazení služeb, vyberte **Ambari zobrazení** na stránce Azure Portal.  Tento seznam závisí na tom, které knihovny jsou nainstalovány. Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na odkaz služby zobrazíte informace o konfiguraci a službě.
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambari zobrazí výstrahu s informacemi o hostitelích, na kterých je služba WebHCat vypnutá. Službu WebHCat můžete zkusit zálohovat restartováním služby na jejím hostiteli.
 
-![Restart WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+![Server Apache Ambari restartování WebHCat serveru](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 Pokud se server WebHCat stále nespustí, zkontrolujte zprávy o chybách v protokolu operací. Podrobnější informace najdete v souborech `stderr` a `stdout` na uzlech, na které se odkazuje.
 
@@ -176,7 +176,7 @@ Na úrovni PŘÍZe existují dva typy časových limitů:
 
     Na následujícím obrázku je znázorněná fronta joblauncher na 714,4%, která se používá. To je přijatelné, pokud je stále volná kapacita výchozí fronty k vypůjčení. Pokud je ale cluster plně využíván a paměť PŘÍZe je na 100% kapacitě, musí nové úlohy počkat, což nakonec způsobí vypršení časového limitu.
 
-    ![Fronta Joblauncher](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    ![Zobrazení fronty Spouštěče úloh HDInsight](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     Existují dva způsoby, jak tento problém vyřešit: Snižte rychlost odeslání nových úloh nebo zvyšte rychlost spotřeby starých úloh tím, že nakonfigurujete škálování clusteru.
 
@@ -208,7 +208,7 @@ Diagnostikujte tyto problémy:
 
 Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
 
-![Zásobník a verze](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+![Stack a verze Apache Ambari](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>Krok 5: Prověřte soubory protokolu
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 752613becb92711866d520e6fcd46ed3a320353f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860267"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101957"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
 
@@ -138,8 +138,8 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{API_KEY} | Klíč koncového bodu prostředku Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Hodnota adresy URL koncového bodu|`https://myresourcename.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | Klíč `Face` koncového bodu prostředku na stránce klíčů Azure `Face` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Face` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters) . |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -170,6 +170,6 @@ Následující příklady Docker jsou pro kontejner obličeje.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [instalace a spouštění kontejnerů](face-how-to-install-containers.md)

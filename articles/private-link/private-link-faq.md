@@ -1,18 +1,18 @@
 ---
 title: Nejčastější dotazy týkající se privátního propojení Azure
 description: Přečtěte si o privátních odkazech Azure.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7e08c91636089abf25e46e1303097fc27b2d75b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037513"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104591"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se privátního propojení Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "71037513"
 - **[Privátní koncový bod Azure](private-endpoint-overview.md)** : Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Pomocí privátních koncových bodů se můžete připojit ke službě Azure PaaS, která podporuje privátní odkazy nebo vlastní službu privátních odkazů.
 - **[Služba privátního propojení Azure](private-link-service-overview.md)** : Služba privátního propojení Azure je služba vytvořená poskytovatelem služeb. V současné době může být služba privátního propojení připojena k konfiguraci protokolu IP front-endu Standard Load Balancer. 
 
-### <a name="how-is-traffic-being-send-when-using-private-link"></a>Jak se posílá provoz při použití privátního propojení?
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Jak se posílá provoz při použití privátního propojení?
 Provoz se odesílá soukromě přes páteřní síť Microsoftu. Neprojde internetem.  
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
@@ -76,6 +76,6 @@ Ne. Služba privátního propojení nevyžaduje vyhrazenou podsíť. Můžete zv
 ### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Jsem poskytovatelem služeb pomocí privátního propojení Azure. Musím se muset ujistit, že všichni moji zákazníci mají jedinečný adresní prostor IP adres a nepřekrývat ho s mým adresním prostorem? 
 Ne. Pro vás tato funkce poskytuje soukromý odkaz Azure. Proto nemusíte mít překrývající se adresní prostor s adresním prostorem zákazníka. 
 
-##  <a name="next-steps"></a>Další kroky
+##  <a name="next-steps"></a>Další postup
 
 - Informace o [privátním propojení Azure](private-link-overview.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: dad796c8a7a34a782a4f78260ac38bd966eddde9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960930"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105401"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -37,7 +37,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Azure CLI](hdinsight-administer-use-command-line.md)|cluster Azure HDInsight změnil \<velikost clusteru > \<cílový počet instancí > |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
-![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během několika minut nahoru nebo dolů.
 
@@ -112,7 +112,7 @@ Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použ
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
 4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **uživatelské rozhraní ResourceManager**.
 
-    ![Uživatelské rozhraní ResourceManager](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    ![Uživatelské rozhraní ResourceManager pro rychlé odkazy Apache Ambari](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 K uživatelskému rozhraní ResourceManager můžete přistupovat přímo `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`pomocí.
 
@@ -243,7 +243,7 @@ Servery oblastí se po dokončení operace škálování automaticky vyrovnávaj
     balancer
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Automatické škálování clusterů Azure HDInsight](hdinsight-autoscale-clusters.md)
 * [Seznámení se službou Azure HDInsight](hadoop/apache-hadoop-introduction.md)

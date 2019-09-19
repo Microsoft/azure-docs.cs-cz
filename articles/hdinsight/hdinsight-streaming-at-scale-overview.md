@@ -8,22 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076791"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105324"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
 Řešení pro velké objemy dat v reálném čase působí na data, která se pohybují. Tato data jsou obvykle nejužitečnější v době doručení. Pokud je příchozí datový Stream větší, než se dá v tomto okamžiku zpracovat, budete možná muset omezit prostředky. Případně můžete cluster HDInsight škálovat tak, aby splňoval vaše řešení streamování, a to přidáním uzlů na vyžádání.
 
-
 V aplikaci pro streamování jeden nebo víc zdrojů dat generuje události (někdy v milionech za sekundu), které je potřeba rychle přijmout, aniž by se musely vyhodit žádné užitečné informace. Příchozí události jsou zpracovávány pomocí *ukládání do vyrovnávací paměti služby Stream*, označovaného také jako služba *Event queuing*, například [Apache Kafka](kafka/apache-kafka-introduction.md) nebo [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po shromáždění událostí můžete data analyzovat pomocí analytického systému v reálném čase v rámci vrstvy *zpracování streamu* , jako je například [Apache Storm](storm/apache-storm-overview.md) nebo [streamování Apache Spark](spark/apache-spark-streaming-overview.md). Zpracovaná data mohou být uložena v dlouhodobém systému úložiště, například [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)a zobrazená v reálném čase na řídicím panelu Business Intelligence, jako je například [Power BI](https://powerbi.microsoft.com), Tableau nebo vlastní webová stránka.
 
-
-![Modely streamování HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Vzory streamování Azure HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -63,7 +61,7 @@ Apache Spark používá tři klíčové parametry pro konfiguraci svého prostř
 
 Tyto tři parametry lze nakonfigurovat na úrovni clusteru, pro všechny aplikace, které jsou spuštěny v clusteru, a lze je také zadat pro každou jednotlivou aplikaci. Další informace najdete v tématu [Správa prostředků pro Apache Spark clustery](spark/apache-spark-resource-manager.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight](storm/apache-storm-quickstart.md)
 * [Příklad topologií pro Apache Storm v HDInsight](storm/apache-storm-example-topology.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d3a36615109383074833e9af634eb611fb863339
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034499"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103653"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spuštění kontejnerů Rozpoznávání textu
 
@@ -36,6 +36,8 @@ Před použitím Rozpoznávání textu kontejnerů musíte splnit následující
 |Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
 |Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
@@ -77,16 +79,9 @@ Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použij
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Příkaz používá následující parametry:
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{ENDPOINT_URI}` hodnoty a `{API_KEY}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
 
-| Zástupný symbol | Value |
-|-------------|-------|
-|{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů `Cognitive Services` Azure.  |
-|{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu. Příklad:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
-
-Musíte přidat `vision/v2.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI.
-
-Tyto parametry nahraďte vlastními hodnotami v následujícím ukázkovém `docker run` příkazu.
+K dispozici jsou [Příklady](computer-vision-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -164,7 +159,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 > [!IMPORTANT]
 > Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [konfigurace kontejnery](computer-vision-resource-container-config.md) nastavení konfigurace
 * Kontrola [přehled pro počítačové zpracování obrazu](Home.md) Další informace o rozpoznávání tištěné a rukou psaný text  

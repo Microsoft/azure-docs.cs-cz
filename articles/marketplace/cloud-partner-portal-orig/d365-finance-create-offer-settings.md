@@ -1,45 +1,23 @@
 ---
-title: Jak vyplnit formulář pro nastavení nabídky | Azure Marketplace
-description: Vysvětluje různá pole, které vyžadují hodnoty ve formuláři nabízejí nastavení pro novou aplikaci Dynamics 365 Business Central.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Postup vyplnění formuláře nastavení nabídky | Azure Marketplace
+description: Zastaralý článek s odkazy na počítačové články; byla "vysvětlení různých polí, která vyžadují hodnoty ve formuláři nastavení nabídky, pro novou aplikaci Dynamics 365 Business Central."
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: d29b17e1a109b37a51a0e6bd2af2a7bb02b977a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934911"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105556"
 ---
-<a name="how-to-fill-out-the-offer-settings-form"></a>Jak vyplnit formulář pro nastavení nabídky
-=======================================
+# <a name="how-to-fill-out-the-offer-settings-form"></a>Postup vyplnění formuláře nastavení nabídky
 
-Formulář pro nastavení nabídky je základní formulář a zadejte nastavení nabídky.
-Povinná pole jsou popsané níže.
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu řešení Dynamics 365 Business Central nabízí. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové nabídky Business Central v Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
-### <a name="offer-id"></a>ID nabídky
+## <a name="next-steps"></a>Další kroky
 
-`OfferId` je jedinečný identifikátor nabídky v rámci profilu vydavatele.
-Toto ID se nebude zobrazovat v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. Toto pole je uzamčen, jakmile uvedete nabídky.
-
-Pokud například partner "Contoso" vytvoří nazývá "ukázkové webové aplikaci" ID nabídky, se zobrazí v AppSource jako:
-
-&emsp; `https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
-
-
-### <a name="publisher-id"></a>ID vydavatele
-
-Tento rozevírací seznam umožňuje zvolit profil vydavatele, který chcete publikovat v rámci této nabídky. Toto pole je uzamčen, jakmile uvedete nabídky.
-
-
-### <a name="name"></a>Name
-
-Toto je zobrazovaný název aplikace/nabídky, které se zobrazí v aplikaci Microsoft [AppSource](https://appsource.microsoft.com/). Může mít maximálně 50 znaků.
-
-> [!NOTE]
-> Krátký název musí být stejný jako název vydavatele zadaný v manifestu aplikace.
-
-Klikněte na **Uložit** uložte svůj postup. Dalším krokem je přidání technické informace pro vaši nabídku.
+Před vytvořením nové nabídky podnikového centra Dynamics 365 byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) s vybranými stránkami **Přehled** . Postupujte podle pokynů v tématu [Vytvoření nové nabídky podnikového centra Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) a vytvořte nabídku.

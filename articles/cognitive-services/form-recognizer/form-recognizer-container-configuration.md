@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348703"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105104"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurovat kontejnery pro rozpoznávání formulářů
 
@@ -88,18 +88,19 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 
 Nahraďte {_argument_name_} v následující tabulce vlastními hodnotami:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | Klíč, který se používá ke spuštění kontejneru. Je k dispozici na stránce klíče pro rozpoznávání formulářů Azure Portal.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled nástroje pro rozpoznávání formulářů Azure Portal.|
-|{COMPUTER_VISION_API_KEY}| Klíč je k dispozici na stránce Azure Portal rozhraní API pro počítačové zpracování obrazu klíče.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Koncový bod fakturace. Pokud používáte cloudový Počítačové zpracování obrazu prostředek, hodnota identifikátoru URI je k dispozici na stránce s přehledem Azure Portal rozhraní API pro počítačové zpracování obrazu. Pokud používáte textový kontejner pro rozpoznávání *služeb* , použijte adresu URL fakturačního koncového bodu, která se předává kontejneru v `docker run` příkazu.|
+| **{FORM_RECOGNIZER_API_KEY}** | Klíč, který se používá ke spuštění kontejneru. Je k dispozici na stránce klíče pro rozpoznávání formulářů Azure Portal. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled nástroje pro rozpoznávání formulářů Azure Portal.|
+| **{COMPUTER_VISION_API_KEY}** | Klíč je k dispozici na stránce Azure Portal rozhraní API pro počítačové zpracování obrazu klíče.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Koncový bod fakturace. Pokud používáte cloudový Počítačové zpracování obrazu prostředek, hodnota identifikátoru URI je k dispozici na stránce s přehledem Azure Portal rozhraní API pro počítačové zpracování obrazu. Pokud používáte textový kontejner pro rozpoznávání *služeb* , použijte adresu URL fakturačního koncového bodu, která se předává kontejneru v `docker run` příkazu. |
+
+Podrobnosti o tom, jak tyto hodnoty získat, najdete v článku [shromažďování požadovaných parametrů](form-recognizer-container-howto.md#gathering-required-parameters) .
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Chcete-li spustit kontejner, zadejte `Eula`možnosti `Billing`, a `ApiKey` , jinak se kontejner nespustí. Další informace najdete v tématu [fakturace](#billing-configuration-setting).
-
-> [!NOTE] 
-> Hodnota ApiKey je **klíč** ze stránky klíče prostředků služby pro rozpoznávání formulářů Azure.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Příklady Docker kontejneru pro rozpoznávání formulářů
 
@@ -134,6 +135,6 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [instalace a spuštění kontejnerů](form-recognizer-container-howto.md).

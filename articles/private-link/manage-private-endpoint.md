@@ -1,18 +1,18 @@
 ---
 title: Správa připojení privátního koncového bodu v Azure
 description: Naučte se spravovat připojení privátních koncových bodů v Azure.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 16654662665607f86aa08d1f9c5638daf2cbc251
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018916"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104639"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
 Privátní propojení Azure pracuje na modelu toku volání schválení, kde příjemce služby privátního propojení může požádat o připojení k poskytovateli služeb za účelem využívání služby. Poskytovatel služeb se pak může rozhodnout, jestli chcete, aby se příjemce mohl připojit nebo ne. Privátní propojení Azure umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na svých prostředcích. Tento článek poskytuje informace o tom, jak spravovat připojení privátního koncového bodu.

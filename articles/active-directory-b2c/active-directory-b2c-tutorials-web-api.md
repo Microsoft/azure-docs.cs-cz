@@ -1,21 +1,21 @@
 ---
-title: Kurz – udělení přístupu k webovému rozhraní API ASP.NET – Azure Active Directory B2C | Microsoft Docs
+title: Kurz – udělení přístupu k webovému rozhraní API ASP.NET – Azure Active Directory B2C
 description: Kurz týkající se použití Active Directory B2C k ochraně webového rozhraní API ASP.NET a jeho volání z webové aplikace v ASP.NET.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064730"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103399"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní API ASP.NET pomocí Azure Active Directory B2C
 
@@ -82,20 +82,20 @@ Ukázkové řešení obsahuje dva projekty:
 
 Následující dva projekty jsou v ukázkovém řešení:
 
-- **TaskWebApp** – vytvoření a úprava seznamu úkolů V ukázce se k registraci nebo přihlašování uživatelů používá tok uživatelů **registrace nebo přihlašování** .
-- **TaskService** – podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Rozhraní API je chráněno pomocí Azure AD B2C a volá ho TaskWebApp.
+* **TaskWebApp** – vytvoření a úprava seznamu úkolů V ukázce se k registraci nebo přihlašování uživatelů používá tok uživatelů **registrace nebo přihlašování** .
+* **TaskService** – podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Rozhraní API je chráněno pomocí Azure AD B2C a volá ho TaskWebApp.
 
 ### <a name="configure-the-web-application"></a>Konfigurace webové aplikace
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
-2. Otevřete soubor **Web.config** v projektu **TaskWebApp**.
-3. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem:
+1. V projektu **TaskWebApp** otevřete soubor **Web. config**.
+1. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Nakonfigurujte identifikátor URI rozhraní API. Toto je identifikátor URI, který webová aplikace používá k vytvoření požadavku rozhraní API. Nakonfigurujte také požadovaná oprávnění.
+1. Nakonfigurujte identifikátor URI rozhraní API. Toto je identifikátor URI, který webová aplikace používá k vytvoření požadavku rozhraní API. Nakonfigurujte také požadovaná oprávnění.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -105,26 +105,27 @@ Následující dva projekty jsou v ukázkovém řešení:
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor **Web.config** v projektu **TaskService**.
-2. Nakonfigurujte rozhraní API tak, aby používalo vašeho tenanta.
+1. V projektu **TaskService** otevřete soubor **Web. config**.
+1. Nakonfigurujte rozhraní API tak, aby používalo vašeho tenanta.
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. Nastavte ID klienta na ID aplikace zaregistrované pro vaše rozhraní API.
+1. Nastavte ID klienta na ID aplikace vaší registrované aplikace webového rozhraní API, *webapi1*.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Aktualizujte nastavení toku uživatelů pomocí názvu uživatelského toku registrace a přihlášení.
+1. Aktualizujte nastavení toku uživatelů pomocí názvu vašeho uživatelského toku pro registraci a přihlašování, *B2C_1_signupsignin1*.
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Nakonfigurujte nastavení oborů tak, aby odpovídaly oborům, které jste vytvořili na portálu.
+1. Nakonfigurujte nastavení oborů tak, aby odpovídalo nastavením, které jste vytvořili na portálu.
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -136,16 +137,17 @@ Následující dva projekty jsou v ukázkovém řešení:
 Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Nastavit projekty po spuštění**.
-2. Vyberte **více projektů po spuštění**.
-3. U obou projektů změňte hodnotu **Akce** na **Spustit**.
-4. Nastavení uložíte kliknutím na **OK**.
-5. Stisknutím klávesy **F5** spusťte obě aplikace. Každá aplikace se otevře na vlastní kartě prohlížeče. `https://localhost:44316/` je webová aplikace.
-    Na adrese `https://localhost:44332/` je webové rozhraní API.
+1. Vyberte **více projektů po spuštění**.
+1. U obou projektů změňte hodnotu **Akce** na **Spustit**.
+1. Nastavení uložíte kliknutím na **OK**.
+1. Stisknutím klávesy **F5** spusťte obě aplikace. Každá aplikace se otevře v samostatném okně prohlížeče.
+    * `https://localhost:44316/`je webová aplikace.
+    * Na adrese `https://localhost:44332/` je webové rozhraní API.
 
-6. Ve webové aplikaci klikněte na **Registrace/přihlášení** a přihlaste se k webové aplikaci. Použijte účet, který jste vytvořili dříve.
-7. Po přihlášení klikněte na **seznam úkolů** a vytvořte položku seznamu úkolů.
+1. Ve webové aplikaci vyberte možnost **Registrace/přihlášení** a přihlaste se k webové aplikaci. Použijte účet, který jste vytvořili dříve.
+1. Po přihlášení vyberte **seznam úkolů** a vytvořte položku seznamu úkolů.
 
-Když vytvoříte položku seznamu úkolů, Webová aplikace odešle požadavek na webové rozhraní API, aby vygeneroval položku seznamu úkolů. Chráněná webová aplikace volá chráněné webové rozhraní API ve vašem tenantovi Azure AD B2C.
+Když vytvoříte položku seznamu úkolů, Webová aplikace odešle požadavek na webové rozhraní API, aby vygeneroval položku seznamu úkolů. Vaše chráněná webová aplikace volá webové rozhraní API chráněné Azure AD B2C.
 
 ## <a name="next-steps"></a>Další postup
 

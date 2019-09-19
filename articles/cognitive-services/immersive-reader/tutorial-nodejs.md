@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991047"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104993"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: Spuštění Asistivní čtečky (Node.js)
 
@@ -85,7 +85,7 @@ V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následuj�
 require('dotenv').config();
 ```
 
-V horní části souboru otevřete soubor _routes\index.js_ a následující import:
+Otevřete soubor _routes\index.js_ a na začátek souboru přidejte následující kód:
 
 ```javascript
 var request = require('request');
@@ -262,7 +262,7 @@ Do moderního čtecího zařízení můžete zahrnout matematický obsah pomocí
 
 2. Přejděte na _http://localhost:3000_ . Když spustíte moderní čtečku a posuňte se k dolnímu okraji, uvidíte matematický vzorec.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
 * Zobrazit ukázky kódu na [GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

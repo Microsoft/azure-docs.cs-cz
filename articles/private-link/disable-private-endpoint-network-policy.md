@@ -1,18 +1,18 @@
 ---
 title: Zakázání zásad sítě pro privátní koncové body v Azure
 description: Přečtěte si, jak zakázat zásady sítě pro privátní koncové body.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8b5e989db46bce3fdf652a0b64db86cdcc16f9f1
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017994"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104623"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Zakázání zásad sítě pro privátní koncové body
 
@@ -71,6 +71,6 @@ Tato část popisuje, jak zakázat zásady privátního koncového bodu podsít�
           } 
 } 
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o [privátním koncovém bodu Azure](private-endpoint-overview.md)
  

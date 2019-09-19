@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103088"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103211"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -31,7 +31,7 @@ Přidejte SQL Database spravovanou instanci do skupiny převzetí služeb při s
   > [!NOTE]
   > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance](sql-database-managed-instance.md#managed-instance-management-operations). 
-  > - Používání skupin převzetí služeb při selhání se spravovanými instancemi je aktuálně ve verzi Preview. 
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -124,7 +124,7 @@ K vytvoření sekundární spravované instance použijte následující postup:
 
    ![Sekundární síť MI](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. Na kartě **Další nastavení** pro geografickou **replikaci**vyberte **Ano** , aby se _použil jako sekundární převzetí služeb při selhání_. Z rozevíracího seznamu vyberte primární spravovanou instanci. 
+1. Na kartě **Další nastavení** pro **geografickou replikaci**vyberte **Ano** , aby se _použil jako sekundární převzetí služeb při selhání_. Z rozevíracího seznamu vyberte primární spravovanou instanci. 
     1. Ujistěte se, že kolace a časová zóna odpovídají hodnotě primární spravované instance. Primární spravovaná instance vytvořená v tomto kurzu použila výchozí `SQL_Latin1_General_CP1_CI_AS` řazení `(UTC) Coordinated Universal Time` a časové pásmo. 
 
    ![Sekundární síť MI](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
@@ -142,7 +142,7 @@ Aby se dvě spravované instance účastnily skupiny převzetí služeb při sel
 
    ![Přidat bránu pro primární spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom do vyhledávacího pole zadejte `Virtual network gateway` . Vyberte prostředek **brány virtuální sítě** publikovaný Microsoftem. 
+1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom do vyhledávacího pole zadejte `Virtual network gateway` . Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**. 
 
    ![Vytvořit novou bránu virtuální sítě](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 

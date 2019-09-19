@@ -8,12 +8,12 @@ ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: dccc9462c6c20f3bce239e3b61cafa3d61e3d383
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5e3a6249f19df7d16c7051c43eec4275ec6f4131
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901181"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090719"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za registraci do Azure Enterprise
 
@@ -43,7 +43,7 @@ Pokud jste podepsali dodatek č. M503, můžete frekvenci kterékoli smlouvy zm�
 
 ## <a name="credits-and-adjustments"></a>Kredity a úpravy
 
-Všechny kredity a úpravy, které se týkají vaší registrace, si můžete prohlédnout na adrese [https://www.ea.azure.com](https://www.ea.azure.com) v části **Sestavy**. Pokud máte konkrétní dotaz na skutečnou výši kreditu, obraťte se na [podporu portálu Azure EA](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c).
+Všechny kredity a úpravy, které se týkají vaší registrace, si můžete prohlédnout na adrese [https://ea.azure.com](https://ea.azure.com) v části **Sestavy**. Pokud máte konkrétní dotaz na skutečnou výši kreditu, obraťte se na [podporu portálu Azure EA](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c).
 
 ## <a name="request-an-invoice-copy"></a>Žádost o kopii faktury
 
