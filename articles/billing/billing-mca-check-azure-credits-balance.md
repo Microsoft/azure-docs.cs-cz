@@ -1,6 +1,6 @@
 ---
-title: Zůstatek kreditu Azure sledovat zákaznické smlouvy Microsoft
-description: Zjistěte, jak zkontrolovat zůstatek kreditu Azure pro zákaznické smlouvy společnosti Microsoft.
+title: Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
+description: Přečtěte si, jak sledovat zůstatek kreditu Azure u smlouvy se zákazníkem Microsoftu.
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -12,89 +12,89 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490968"
 ---
-# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledovat zůstatek kreditu Azure pro smlouvu zákazníků společnosti Microsoft
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
-Zůstatek kreditu Azure pro smlouvy zákazníků společnosti Microsoft najdete na webu Azure Portal. Kredity můžete použít k platbám za poplatky, které jsou předmětem kredity.
+Zůstatek kreditu Azure u smlouvy se zákazníkem Microsoftu můžete zobrazit na webu Azure Portal. Pomocí kreditů můžete platit poplatky, na které se tyto kredity vztahují.
 
-Bude se vám účtovat při použití produktů, které nejsou pokryty kredity nebo využití překročí, váš zůstatek kreditu. Další informace najdete v tématu [produktů, které nejsou pokryty kredity Azure. () #products-that-aren't-covered-by-azure-credits).
+Pokud používáte produkty, na které se kredity nevztahují, nebo při využívání překročíte zůstatek kreditu, začnou se vám účtovat poplatky. Další informace najdete v části [Produkty, na které se nevztahují kredity Azure].(#products-that-arent-covered-by-azure-credits).
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance"></a>Zkontrolujte váš zůstatek kreditu
+## <a name="check-your-credit-balance"></a>Kontrola zůstatku kreditu
 
 1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-    ![Snímek obrazovky zobrazující vyhledávání v portálu pro správu nákladů a fakturace](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  Vyberte **kredity Azure** na levé straně. V závislosti na přístup, budete muset vybrat fakturační účet nebo fakturační profil a potom vyberte **kredity Azure**.
+3.  Na levé straně vyberte **Kredity Azure**. V závislosti na úrovni přístupu možná budete muset vybrat fakturační účet nebo fakturační profil a teprve pak zvolit **Kredity Azure**.
 
-4. Na stránce kredity Azure se zobrazí následující informace:
+4. Stránka Kredity Azure obsahuje následující informace:
 
-   ![Snímek obrazovky zůstatek kreditu a transakce pro profil fakturace](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+   ![Snímek obrazovky se zůstatkem kreditu a transakcemi pro určitý fakturační profil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
-   | Termín               | Definice                           |
+   | Označení               | Definice                           |
    |--------------------|--------------------------------------------------------|
-   | Odhadované zůstatek  | Odhadované množství kreditů máte po zvážení všech účtovat a čekající transakce |
-   | Aktuální zůstatek    | Množství kreditů od vaší poslední faktury. Nezahrnuje všechny čekající transakce |
-   | Transakce       | Všechny fakturační transakce, které měla vliv na zůstatek vašeho kreditu Azure |
+   | Odhadovaný zůstatek  | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
+   | Aktuální zůstatek    | Množství kreditů podle vaší poslední faktury. Nezahrnuje žádné nevyřízené transakce |
+   | Transakce       | Všechny fakturační transakce, které ovlivnily zůstatek kreditu Azure |
 
-   Když zůstatek na vašem odhadované klesne na hodnotu 0, bude vám účtována veškeré využití, včetně produktů, které jsou předmětem kredity.
+   Když odhadovaný zůstatek klesne na 0, začne se vám účtovat veškeré využití, a to i produktů, na které se jinak vztahují kredity.
 
-6. Vyberte **kredity seznamu** do zobrazení seznamu kredity pro fakturační profil. Kredity seznam obsahuje následující informace:
+6. Seznam kreditů pro daný fakturační profil zobrazíte výběrem položky **Seznam kreditů**. Seznam kreditů obsahuje následující informace:
 
-   ![Snímek obrazovky s kredity seznamy pro profil fakturace](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Snímek obrazovky se seznamy kreditů pro určitý fakturační profil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Termín | Definice |
+   | Označení | Definice |
    |---|---|
-   | Odhadované zůstatek | Výši kreditu Azure, ke kterým máte po odečtení nefakturované kredit oprávněné účtování poplatků za zůstatek na vašem aktuálním|
-   | Aktuální zůstatek | Množství kreditu Azure, které jste předtím, než kredit nefakturované oprávněné poplatky. Počítá se tak, že přidáte nový kredity Azure, který jste dostali k zůstatek kreditu současně s vaší poslední faktury|
-   | source | Získání zdroje kreditu |
-   | Počáteční datum | Datum, kdy jste získali kreditu |
+   | Odhadovaný zůstatek | Množství vašich kreditů Azure po odečtení nezaúčtovaných poplatků s nárokem na uplatnění kreditů od aktuálního zůstatku|
+   | Aktuální zůstatek | Množství vašich kreditů Azure před zvážením nezaúčtovaných poplatků s nárokem na uplatnění kreditů. Počítá se přičtením počtu získaných kreditů Azure k zůstatku kreditů na základě poslední faktury|
+   | Zdroj | Zdroj pořízení kreditu |
+   | Počáteční datum | Datum získání kreditu |
    | Datum vypršení platnosti | Datum, kdy vyprší platnost kreditu |
-   | Zůstatek | Zůstatek na účtu od poslední faktury |
-   | Původní velikost | Původní množství kreditu |
-   | Status | Aktuální stav úvěru. Stav může být aktivní, používá, vypršela nebo vyprší |
+   | Zůstatek | Zůstatek na základě poslední faktury |
+   | Původní množství | Původní množství kreditů |
+   | Status | Aktuální stav kreditů. Možné stavy: Aktivní, Použito, Platnost vypršela nebo Platnost vyprší |
 
-## <a name="how-credits-are-used"></a>Používání kreditů
+## <a name="how-credits-are-used"></a>Způsob uplatňování kreditů
 
-Ve fakturační účet zákaznické smlouvy Microsoft používáte ke správě faktury a platby fakturační profily. Měsíční faktuře je vygenerována pro každý profil, fakturace a způsobů platby můžete zaplatit fakturu.
+Na fakturačním účtu pro smlouvu se zákazníkem Microsoftu spravujete své faktury a způsoby platby pomocí fakturačních profilů. Pro každý fakturační profil se jednou za měsíc generuje faktura a k úhradě této faktury používáte zvolené způsoby platby.
 
-Kredity Azure jsou jedním z způsobů platby. Získáte kredit od Microsoftu jako propagační kredit a výši kreditu na úrovni služeb. Tyto kredity se přiřazují fakturační profilu. Při vygenerování faktury pro fakturační profil, kredity se automaticky použijí pro Celková fakturovaná částka k výpočtu velikosti, budete muset platit. Plaťte jiný způsob platby jako kontrola zůstatek nebo svážete přenosu.
+Kredity Azure představují jeden ze způsobů platby. Kredity získáváte od Microsoftu, třeba v podobě propagačních kreditů nebo kreditů na úrovni služeb. Tyto kredity se přiřadí k určitému fakturačnímu profilu. Ve chvíli vytváření faktury pro tento fakturační profil se kredity automaticky uplatní na celkovou fakturovanou částku a vypočítá se částka, kterou máte zaplatit. Zbývající částku uhradíte pomocí jiného způsobu platby, například šekem nebo bezhotovostním převodem.
 
-## <a name="products-that-arent-covered-by-azure-credits"></a>Produkty, které nejsou pokryty kredity Azure
+## <a name="products-that-arent-covered-by-azure-credits"></a>Produkty, na které se nevztahují kredity Azure
 
- Následující produkty nejsou pokryty kredity Azure. Za použití těchto produktů bez ohledu na to, váš zůstatek kreditu:
+ Kredity Azure se nevztahují na následující produkty. Za využívání těchto produktů se vám budou bez ohledu na zůstatek kreditu účtovat poplatky:
 
 - Canonical
 - Citrix XenApp Essentials
 - Citrix XenDesktop
 - Registrovaný uživatel
 - Openlogic
-- Vzdálený přístup práva XenApp Essentials registrovaný uživatel
+- Registrovaný uživatel s oprávněním ke vzdálenému přístupu XenApp Essentials
 - Ubuntu Advantage
-- Visual Studio Enterprise (měsíčně)
+- Visual Studio Enterprise (měsíční)
 - Visual Studio Enterprise (roční)
-- Visual Studio Professional (měsíčně)
-- Visual Studio Professional (Annual)
-- Produkty Azure Marketplace
+- Visual Studio Professional (měsíční)
+- Visual Studio Professional (roční)
+- Produkty z Azure Marketplace
 - plánům podpory Azure
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vysvětlení fakturační účet pro smlouvy Microsoft zákazníka](billing-mca-overview.md)
-- [Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft](billing-mca-understand-your-invoice.md)
+- [Vysvětlení fakturačních účtů pro smlouvu se zákazníkem Microsoftu](billing-mca-overview.md)
+- [Vysvětlení výrazů na faktuře za smlouvu se zákazníkem Microsoftu](billing-mca-understand-your-invoice.md)

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit oddíly na vaší faktuře uspořádat svoje náklady – Azure
-description: Zjistěte, jak uspořádat náklady s využitím části faktury.
+title: Uspořádání nákladů na faktuře pomocí oddílů – Azure
+description: Naučte se organizovat náklady pomocí oddílů faktury.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -11,49 +11,49 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: eadaf34dc5bdd93af532362e8f8542de3f17f414
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490786"
 ---
-# <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Vytvořit oddíly na vaší faktuře uspořádat svoje náklady
+# <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Uspořádání nákladů na faktuře pomocí oddílů
 
-Vytvořit oddíly na vaší faktuře uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Potom ostatním uživatelům oprávnění k vytvoření předplatného Azure, které se fakturují na části. Do části pak účtovat žádné poplatky za využívání a nákup předplatných. Můžete zobrazit celkové poplatky pro oddíl na vaší faktuře na webu Azure Portal, nebo Seznamte se s nimi v analýze nákladů na Azure. Další informace najdete v tématu [zobrazit transakce podle části faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
+Vytvořte na faktuře oddíly, pomocí kterých uspořádáte náklady podle oddělení, vývojového prostředí nebo podle jiných požadavků organizace. Dalším uživatelům pak můžete udělit oprávnění k vytváření předplatných Azure, která se účtují na daný oddíl. V něm se pak budou zobrazovat všechny poplatky za využití a nákupy v rámci daných předplatných. Můžete zobrazit celkové poplatky za oddíl na faktuře, na webu Azure Portal nebo je přezkoumat v analýze nákladů Azure. Další informace najdete v tématu [Zobrazení transakcí podle oddílů faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="create-an-invoice-section-in-the-azure-portal"></a>Vytvořte oddíl faktury na webu Azure Portal
+## <a name="create-an-invoice-section-in-the-azure-portal"></a>Vytvoření oddílu faktury na webu Azure Portal
 
-K vytvoření oddílu faktury, musíte být **fakturační vlastníka profilu** nebo **fakturační Přispěvatel profilu**. Další informace najdete v tématu [spravovat části faktury pro fakturační profil](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
+Pokud chcete vytvořit oddíl faktury, musíte být **vlastníkem fakturačního profilu** nebo **přispěvatelem fakturačního profilu**. Další informace najdete v tématu [Správa oddílů faktur pro fakturační profil](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-   ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+   ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
-3. Vyberte **fakturovat oddíly** v levém podokně. V závislosti na přístup, budete muset vybrat fakturační profil nebo fakturační účet a potom vyberte **fakturovat oddíly**.
+3. V levém podokně vyberte **Oddíly faktury**. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační profil nebo fakturační účet a pak vybrat **Oddíly faktury**.
 
-   ![Snímek obrazovky zobrazující seznam oddílů faktury](./media/billing-mca-section-invoice/mca-select-invoice-sections.png)
+   ![Snímek obrazovky, který zobrazuje seznam oddílů faktury](./media/billing-mca-section-invoice/mca-select-invoice-sections.png)
 
 4. V horní části stránky vyberte **Přidat**.
 
-5. Zadejte název pro část faktury a vyberte fakturační profil. V části uvidíte na faktuře fakturační profil odráží využití každé předplatné a nákup, které jste přiřadili do části. 
+5. Zadejte název oddílu faktury a vyberte fakturační profil. Teto oddíl se zobrazí na faktuře pro fakturační profil a bude odrážet využití jednotlivých předplatných a nákupy, které jste k oddílu přiřadili. 
 
-   ![Snímek obrazovky zobrazující stránku vytvoření části faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
+   ![Snímek obrazovky, který zobrazuje stránku pro vytvoření oddílu faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
 6. Vyberte **Vytvořit**.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka](billing-mca-create-subscription.md)
-- [Ostatním uživatelům oprávnění k vytvoření předplatného Azure](billing-mca-create-subscription.md#give-others-permission)
-- [Získat vlastnictví fakturace předplatného Azure od uživatelů v jiných účtech fakturace](billing-mca-request-billing-ownership.md)
+- [Vytvoření dalšího předplatného Azure pro smlouvu se zákazníkem Microsoftu](billing-mca-create-subscription.md)
+- [Udělení oprávnění k vytváření předplatných Azure dalším uživatelům](billing-mca-create-subscription.md#give-others-permission)
+- [Získání role vlastníka fakturace pro předplatná Azure od uživatelů v jiných fakturačních účtech](billing-mca-request-billing-ownership.md)

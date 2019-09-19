@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: '<p>Fondy spravovaných instancí můžete využít jako jednoduché a hospodárné řešení pro nasazení několika spravovaných instancí, které sdílejí prostředky a rychle se škálují.</p>'
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: Fond instancí
   - title: Zprovoznění během 5 minut
     items:

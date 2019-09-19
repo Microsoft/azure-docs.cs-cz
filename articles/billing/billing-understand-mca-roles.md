@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení fakturace správní role pro Microsoft zákaznických smluv – Azure
-description: Další informace o fakturace rolí pro fakturační účty v Azure pro Microsoft zákaznických smluv.
+title: Vysvětlení rolí pro správu fakturace za smlouvy se zákazníky Microsoftu – Azure
+description: Přečtěte si o fakturačních rolích pro fakturační účty smluv se zákazníky Microsoftu v Azure.
 author: amberbhargava
 manager: amberbhargava
 ms.service: billing
@@ -11,204 +11,204 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490439"
 ---
-# <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure
+# <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure
 
-Ke správě vašeho fakturačního účtu zákaznické smlouvy Microsoft, pomocí role popsané v následujících částech. Tyto role jsou kromě předdefinované role, které Azure nabízí pro řízení přístupu k prostředkům. Další informace najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
+Při správě fakturačního účtu smlouvy se zákazníkem Microsoftu používejte role popsané v následujících částech. Tyto role existují vedle předdefinovaných rolí, které v Azure slouží k řízení přístupu k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. Zaškrtněte, pokud máte přístup k zákaznické smlouvy společnosti Microsoft.
+Tento článek se týká fakturačních účtů smluv se zákazníky Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
 
-## <a name="billing-role-definitions"></a>Fakturace definice rolí
+## <a name="billing-role-definitions"></a>Definice fakturačních rolí
 
-Následující tabulka popisuje fakturace rolí umožňuje spravovat vaše fakturační účet fakturace profily a části faktury.
+Následující tabulka popisuje fakturační role, které slouží ke správě fakturačního účtu, fakturačních profilů a oddílů faktury.
 
 |Role|Popis|
 |---|---|
-|Vlastník účtu fakturace|Spravovat všechno pro fakturační účet|
-|Přispěvatel účtů fakturace|Spravovat všechno kromě oprávnění na fakturační účet|
-|Čtenář fakturace účtu|Zobrazení jen pro čtení všeho na fakturační účet|
-|Vlastníka profilu fakturace|Spravovat všechno fakturačních profilu|
-|Přispěvatel profilu fakturace|Spravovat všechno kromě oprávnění na fakturační profil|
-|Čtenář fakturace profilu|Zobrazení jen pro čtení všeho na fakturační profil|
-|Správce faktury|Zobrazení a faktury za fakturační profil|
-|Vlastník části faktury|Správu všech položek v části faktury|
-|Přispěvatel části faktury|Spravovat všechno kromě oprávnění v části faktury|
-|Čtečka části faktury|Zobrazení jen pro čtení všeho v části faktury|
-|Tvůrce předplatného Azure|Vytvářet předplatná Azure|
+|Vlastník fakturačního účtu|Spravuje všechny aspekty fakturačního účtu.|
+|Přispěvatel fakturačního účtu|Spravuje všechno kromě oprávnění k fakturačnímu účtu.|
+|Čtenář fakturačního účtu|Může zobrazit všechno ve fakturačním účtu, ale jenom pro čtení.|
+|Vlastník fakturačního profilu|Spravuje všechny aspekty fakturačního profilu.|
+|Přispěvatel fakturačního profilu|Spravuje všechno kromě oprávnění k fakturačnímu profilu.|
+|Čtenář fakturačního profilu|Může zobrazit všechno ve fakturačním profilu, ale jenom pro čtení.|
+|Správce faktur|Může zobrazovat a platit faktury pro určitý fakturační profil.|
+|Vlastník oddílu faktur|Spravuje všechno v určitém oddílu faktury.|
+|Přispěvatel oddílu faktur|Spravuje všechno kromě oprávnění k oddílu faktury.|
+|Čtenář oddílu faktur|Může zobrazit všechno v oddílu faktury, ale jenom pro čtení.|
+|Tvůrce předplatného Azure|Vytváří předplatná Azure.|
 
-## <a name="billing-account-roles-and-tasks"></a>Fakturace účtu role a úlohy
+## <a name="billing-account-roles-and-tasks"></a>Role a úlohy související s fakturačním účtem
 
-Fakturační účet vám umožní spravovat fakturaci pro vaši organizaci. Fakturační účet můžete uspořádat nákladů, sledování nákladů a faktury a řízení přístupu k fakturaci pro vaši organizaci. Další informace najdete v tématu [pochopit fakturační účet](billing-mca-overview.md#your-billing-account).
+Fakturační účet umožňuje spravovat fakturaci vaší organizace. Fakturační účet slouží k uspořádání nákladů, monitorování poplatků a faktur a řízení přístupu k fakturaci ve vaší organizaci. Další informace najdete v článku [Vysvětlení fakturačního účtu](billing-mca-overview.md#your-billing-account).
 
-Jakou roli, budete potřebovat k provádění úloh v rámci fakturačního účtu v následujících tabulkách.
+Následující tabulky ukazují, jakou roli potřebujete k různým úkonům v kontextu fakturačního účtu.
 
-### <a name="manage-billing-account-permissions-and-properties"></a>Správa fakturačního účtu oprávnění a vlastnosti
+### <a name="manage-billing-account-permissions-and-properties"></a>Správa oprávnění a vlastností fakturačního účtu
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit existující oprávnění pro fakturační účet|✔|✔|✔|
-|Ostatním uživatelům oprávnění k zobrazení a správě fakturační účet|✔|✘|✘|
-|Zobrazit vlastnosti fakturační účet, jako je název společnosti, adresu a další|✔|✔|✔|
+|Zobrazení stávajících oprávnění k fakturačnímu účtu|✔|✔|✔|
+|Udělování oprávnění k zobrazení a správě fakturačního účtu ostatním|✔|✘|✘|
+|Zobrazení vlastností fakturačního účtu, jako je název společnosti, adresa a další|✔|✔|✔|
 
-### <a name="manage-billing-profiles-for-billing-account"></a>Správa fakturace profilů pro fakturační účet
+### <a name="manage-billing-profiles-for-billing-account"></a>Správa fakturačních profilů pro fakturační účet
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit všechny profily fakturačního účtu|✔|✔|✔|
+|Zobrazení všech fakturačních profilů v účtu|✔|✔|✔|
 
-### <a name="manage-invoices-for-billing-account"></a>Spravovat faktury pro fakturační účet
+### <a name="manage-invoices-for-billing-account"></a>Správa faktur pro fakturační účet
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit všechny faktury v účtu|✔|✔|✔|
-|Stažení faktury, využití a poplatky za soubory Azure, ceníky a daňové dokumenty v účtu|✔|✔|✔|
+|Zobrazení všech faktur v účtu|✔|✔|✔|
+|Stahování faktur, souborů s informacemi o poplatcích a využití Azure, ceníků a daňových dokumentů v účtu|✔|✔|✔|
 
-### <a name="manage-invoice-sections-for-billing-account"></a>Správa části faktury pro fakturační účet
+### <a name="manage-invoice-sections-for-billing-account"></a>Správa oddílů faktur pro fakturační účet
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit všechny části faktury v účtu|✔|✔|✔|
+|Zobrazení všech oddílů faktur v účtu|✔|✔|✔|
 
 ### <a name="manage-transactions-for-billing-account"></a>Správa transakcí pro fakturační účet
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit všechny transakce fakturace pro účet|✔|✔|✔|
-|Zobrazit všechny produkty pro účet|✔|✔|✔|
+|Zobrazení všech fakturačních transakcí pro účet|✔|✔|✔|
+|Zobrazení všech zakoupených produktů v účtu|✔|✔|✔|
 
 ### <a name="manage-subscriptions-for-billing-account"></a>Správa předplatných pro fakturační účet
 
-|Úkol|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu|
+|Úkol|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu|
 |---|---|---|---|
-|Zobrazit všechna předplatná Azure ve fakturačním účtu|✔|✔|✔|
+|Zobrazení všech předplatných Azure ve fakturačním účtu|✔|✔|✔|
 
-## <a name="billing-profile-roles-and-tasks"></a>Fakturační profil role a úlohy
+## <a name="billing-profile-roles-and-tasks"></a>Role a úlohy související s fakturačním profilem
 
-Fakturační profil vám umožní spravovat faktury a platby. Měsíční faktuře se vygeneruje pro předplatná Azure a další produkty nákupu využít fakturační profil. Pomocí metody platby zaplatit fakturu. Další informace najdete v tématu [pochopit fakturaci profily](billing-mca-overview.md#billing-profiles).
+Fakturační profil umožňuje spravovat faktury a způsoby platby. Za předplatná Azure a další produkty zakoupené prostřednictvím fakturačního profilu se generuje měsíční faktura. Způsoby platby slouží k úhradě této faktury. Další informace najdete v článku [Vysvětlení fakturačních profilů](billing-mca-overview.md#billing-profiles).
 
-Následující tabulky popisují, jaké role je potřeba dokončit úlohy v rámci fakturační profil.
+Následující tabulky ukazují, jakou roli potřebujete k různým úkonům v kontextu fakturačního profilu.
 
-### <a name="manage-billing-profile-permissions-properties-and-policies"></a>Spravovat oprávnění fakturační profil, vlastnosti a zásady
+### <a name="manage-billing-profile-permissions-properties-and-policies"></a>Správa oprávnění, vlastností a zásad fakturačního profilu
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit existující oprávnění pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
-|Ostatním uživatelům oprávnění k zobrazení a správě fakturační profil|✔|✘|✘|✘|✘|✘|✘|
-|Fakturační profil vlastnosti zobrazení, jako jsou PO číslo, předvoleb faktury e-mailu a dalších|✔|✔|✔|✔|✔|✔|✔|
-|Aktualizovat vlastnosti fakturační profil |✔|✔|✘|✘|✘|✘|✘|
-|Zobrazit zásady použity na fakturační profil jako povolit nákupy na Azure rezervace, povolit nákupy na Azure marketplace a další|✔|✔|✔|✔|✔|✔|✔|
-|Použije zásady na fakturační profil |✔|✔|✘|✘|✘|✘|✘|
+|Zobrazení stávajících oprávnění k fakturačnímu profilu|✔|✔|✔|✔|✔|✔|✔|
+|Udělování oprávnění k zobrazení a správě fakturačního profilu ostatním|✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení vlastností fakturačního profilu, jako je číslo objednávky, předvolby zasílání faktur e-mailem a další|✔|✔|✔|✔|✔|✔|✔|
+|Aktualizace vlastností fakturačního profilu |✔|✔|✘|✘|✘|✘|✘|
+|Zobrazení zásad použitých ve fakturačním profilu, například povolení nákupů rezervací v Azure, povolení nákupů z Azure Marketplace a další|✔|✔|✔|✔|✔|✔|✔|
+|Uplatňování zásad ve fakturačním profilu |✔|✔|✘|✘|✘|✘|✘|
 
-### <a name="manage-invoices-for-billing-profile"></a>Spravovat faktury pro fakturační profil
+### <a name="manage-invoices-for-billing-profile"></a>Správa faktur pro fakturační profil
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechny faktury pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
-|Stažení faktury, využití a poplatky za soubory Azure, ceníky a daňových dokumentů pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Zobrazení všech faktur ve fakturačním profilu|✔|✔|✔|✔|✔|✔|✔|
+|Stahování faktur, souborů s informacemi o poplatcích a využití Azure, ceníků a daňových dokumentů pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
 
-### <a name="manage-invoice-sections-for-billing-profile"></a>Správa části faktury pro fakturační profil
+### <a name="manage-invoice-sections-for-billing-profile"></a>Správa oddílů faktur pro fakturační profil
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechny části faktury pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
-|Vytvořit nový oddíl faktury pro fakturační profil|✔|✔|✘|✘|✘|✘|✘|
+|Zobrazení všech oddílů faktur pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Vytváření nových oddílů faktur pro fakturační profil|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-transactions-for-billing-profile"></a>Správa transakcí pro fakturační profil
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechny transakce fakturační pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Zobrazení všech fakturačních transakcí pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
 
-### <a name="manage-payment-methods-for-billing-profile"></a>Spravovat způsoby platby pro fakturaci profilu
+### <a name="manage-payment-methods-for-billing-profile"></a>Správa způsobů platby pro fakturační profil
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazení způsoby platby pro fakturaci profil|✔|✔|✔|✔|✔|✔|✔|
-|Sledování zůstatku kredity Azure pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Zobrazení způsobů platby pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Sledování zůstatku kreditů Azure pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
 
 ### <a name="manage-subscriptions-for-billing-profile"></a>Správa předplatných pro fakturační profil
 
-|Úkol|Vlastníka profilu fakturace|Přispěvatel profilu fakturace|Čtenář fakturace profilu|Správce faktury|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úkol|Vlastník fakturačního profilu|Přispěvatel fakturačního profilu|Čtenář fakturačního profilu|Správce faktur|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechna předplatná Azure pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
+|Zobrazení všech předplatných Azure pro fakturační profil|✔|✔|✔|✔|✔|✔|✔|
 
-## <a name="invoice-section-roles-and-tasks"></a>Role části faktury a úlohy
+## <a name="invoice-section-roles-and-tasks"></a>Role a úlohy související s oddíly faktur
 
-Oddíl faktury umožňuje uspořádat náklady na vaší faktuře. Můžete vytvořit části uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Poplatky za využívání a nákup předplatných a zobrazit v části faktury. Další informace najdete v tématu [části faktury porozumění](billing-mca-overview.md#invoice-sections).
+Oddíly faktury slouží k uspořádání nákladů na faktuře. Můžete vytvořit oddíly, pomocí kterých uspořádáte náklady podle oddělení, vývojového prostředí nebo podle jiných požadavků organizace. Dalším uživatelům můžete udělit oprávnění k vytváření předplatných Azure pro daný oddíl. V daném oddílu faktury se pak budou zobrazovat všechny poplatky za využití a nákupy v rámci daných předplatných. Další informace najdete v článku, který [vysvětluje oddíly faktury](billing-mca-overview.md#invoice-sections).
 
-Následující tabulky popisují, jaké role, které potřebujete k provádění úloh v rámci části faktury.
+Následující tabulky ukazují, jakou roli potřebujete k různým úkonům v kontextu oddílů faktur.
 
-### <a name="manage-invoice-section-permissions-and-properties"></a>Spravovat oprávnění části faktury a vlastnosti
+### <a name="manage-invoice-section-permissions-and-properties"></a>Správa oprávnění a vlastností oddílů faktur
 
-|Úlohy|Vlastník části faktury|Přispěvatel části faktury|Čtečka části faktury|Tvůrce předplatného Azure|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu | |
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu | |
 |---|---|---|---|---|---|---|---|---|
-|Zobrazit všechna oprávnění v části faktury|✔|✔|✔|✔|✔|✔|✔| |
-|Ostatním uživatelům oprávnění k zobrazení a správa části faktury|✔|✘|✘|✘|✘|✘|✘| |
-|Zobrazit vlastnosti části faktury|✔|✔|✔|✔|✔|✔|✔| |
-|Aktualizovat vlastnosti části faktury|✔|✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení všech oprávnění k oddílu faktury|✔|✔|✔|✔|✔|✔|✔| |
+|Udělování oprávnění k zobrazení a správě oddílu faktury ostatním|✔|✘|✘|✘|✘|✘|✘| |
+|Zobrazení vlastností oddílu faktury|✔|✔|✔|✔|✔|✔|✔| |
+|Aktualizace vlastností oddílu faktury|✔|✔|✘|✘|✘|✘|✘|✘|
 
-### <a name="manage-products-for-invoice-section"></a>Správa produktů pro části faktury
+### <a name="manage-products-for-invoice-section"></a>Správa produktů souvisejících s oddílem faktury
 
-|Úlohy|Vlastník části faktury|Přispěvatel části faktury|Čtečka části faktury|Tvůrce předplatného Azure|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechny produkty v části faktury|✔|✔|✔|✘|✔|✔|✔|
-|Správa fakturace pro produkty pro části faktury jako zrušit, vypnout automatické prodloužení platnosti a další|✔|✔|✘|✘|✘|✘|✘|
-|Změna části faktury pro produkty|✔|✔|✘|✘|✘|✘|✘|
+|Zobrazení všech produktů zakoupených v rámci oddílu faktury|✔|✔|✔|✘|✔|✔|✔|
+|Správa fakturace pro produkty v rámci oddílu faktury, například storno, vypnutí automatického obnovení a další|✔|✔|✘|✘|✘|✘|✘|
+|Změna oddílu faktury pro produkty|✔|✔|✘|✘|✘|✘|✘|
 
-### <a name="manage-subscriptions-for-invoice-section"></a>Správa předplatných pro části faktury
+### <a name="manage-subscriptions-for-invoice-section"></a>Správa předplatných pro oddíl faktury
 
-|Úlohy|Vlastník části faktury|Přispěvatel části faktury|Čtečka části faktury|Tvůrce předplatného Azure|Vlastník účtu fakturace|Přispěvatel účtů fakturace|Čtenář fakturace účtu
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu
 |---|---|---|---|---|---|---|---|
-|Zobrazit všechna předplatná Azure pro části faktury|✔|✔|✔|✘|✔|✔|✔|
-|Změna části faktury pro předplatná|✔|✔|✘|✘|✘|✘|✘|
-|Požádat o vlastnictví fakturace předplatného uživatele v jiné fakturační účty|✔|✔|✘|✘|✘|✘|✘|
+|Zobrazení všech předplatných Azure pro oddíl faktury|✔|✔|✔|✘|✔|✔|✔|
+|Změna oddílu faktury pro předplatná|✔|✔|✘|✘|✘|✘|✘|
+|Žádost o roli vlastníka fakturace pro předplatná od uživatelů v jiných fakturačních účtech|✔|✔|✘|✘|✘|✘|✘|
 
-## <a name="subscription-billing-roles-and-tasks"></a>Fakturace předplatného role a úlohy
+## <a name="subscription-billing-roles-and-tasks"></a>Role a úlohy související s fakturací předplatného
 
-Následující tabulka ukazuje, jakou roli, budete potřebovat k provádění úloh v rámci předplatného.
+Následující tabulka ukazuje, jakou roli potřebujete k různým úkonům v kontextu předplatného.
 
-|Úlohy|Vlastník části faktury|Přispěvatel části faktury|Čtečka části faktury|Tvůrce předplatného Azure|
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|
 |---|---|---|---|---|
-|Vytvářet předplatná Azure|✔|✔|✘|✔|
-|Nákladové středisko aktualizace pro předplatné|✔|✔|✘|✘|
-|Změna části faktury pro předplatné|✔|✔|✘|✘|
+|Vytváří předplatná Azure.|✔|✔|✘|✔|
+|Aktualizace nákladového centra pro předplatné|✔|✔|✘|✘|
+|Změna oddílu faktury pro předplatné|✔|✔|✘|✘|
 
-## <a name="manage-billing-roles-in-the-azure-portal"></a>Správa fakturace rolí na portálu Azure portal
+## <a name="manage-billing-roles-in-the-azure-portal"></a>Správa fakturačních rolí na webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Vyhledejte položku **Správa nákladů a fakturace**.
 
-   ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
+   ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 
-3. Vyberte **řízení přístupu (IAM)** v oboru, jako je například fakturační účet, fakturační profil nebo části faktury, ve které chcete poskytnout přístup.
+3. Vyberte **Řízení přístupu (IAM)** v příslušném rozsahu, ve kterém chcete udělit přístup, například v rozsahu fakturačního účtu, fakturačního profilu nebo oddílu faktury.
 
-4. Stránku řízení přístupu (IAM) obsahuje seznam uživatelů a skupin, které jsou přiřazeny ke každé roli pro tento obor.
+4. Na stránce Řízení přístupu (IAM) se zobrazí seznam uživatelů a skupin přiřazených k jednotlivým rolím v daném rozsahu.
 
-   ![Snímek obrazovky zobrazující seznam správce pro fakturační účet](./media/billing-understand-mca-roles/billing-list-admins.png)
+   ![Snímek obrazovky se seznamem správců fakturačního účtu](./media/billing-understand-mca-roles/billing-list-admins.png)
 
-5. Chcete-li udělit přístup pro uživatele, vyberte **přidat** z horní části stránky. V rozevíracím seznamu rolí vyberte roli. Zadejte e-mailovou adresu uživatele, kterým chcete udělit přístup. Vyberte **Uložit** přiřazení role.
+5. Pokud chcete určitému uživateli udělit přístup, v horní části stránky vyberte **Přidat**. V rozevíracím seznamu Role vyberte roli. Zadejte e-mailovou adresu uživatele, kterému chcete udělit přístup. Přiřaďte roli výběrem možnosti **Uložit**.
 
-   ![Snímek obrazovky zobrazující, přidáte k fakturačnímu účtu správce](./media/billing-understand-mca-roles/billing-add-admin.png)
+   ![Snímek obrazovky, který znázorňuje přidání správce k fakturačnímu účtu](./media/billing-understand-mca-roles/billing-add-admin.png)
 
-6. K odebrání přístupu pro uživatele, vyberte uživatele, který chcete odebrat přiřazení role. Vyberte odebrat.
+6. Pokud chcete určitému uživateli odebrat přístup, vyberte uživatele s přiřazenou rolí, kterou chcete odebrat. Vyberte Odebrat.
 
-   ![Snímek obrazovky zobrazující odebrání fakturační účet správce](./media/billing-understand-mca-roles/billing-remove-admin.png)
+   ![Snímek obrazovky, který znázorňuje odebrání správce z fakturačního účtu](./media/billing-understand-mca-roles/billing-remove-admin.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Naleznete v následujících článcích se dozvíte o vašem fakturačním účtu:
+Informace o fakturačním účtu najdete v následujících článcích:
 
-- [Začněte s vaším fakturačním účtem pro smlouvy Microsoft zákazníka](billing-mca-overview.md)
-- [Vytvořte předplatné Azure pro váš fakturační účet pro smlouvy Microsoft zákazníka](billing-mca-create-subscription.md)
+- [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](billing-mca-overview.md)
+- [Vytvoření předplatného Azure pro fakturační účet pro smlouvu se zákazníkem Microsoftu](billing-mca-create-subscription.md)

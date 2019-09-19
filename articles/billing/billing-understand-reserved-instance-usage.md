@@ -1,6 +1,6 @@
 ---
-title: Využití Azure rezervace pro jednotlivé předplatné s průběžnými sazbami
-description: Zjistěte, jak číst využití pochopit, jak použít Azure rezervace pro jednotlivé předplatného pro průběžné platby.
+title: Využití rezervací Azure u jednoho předplatného s průběžnými platbami
+description: Zjistěte, jak číst informace o využití, abyste pochopili, jak se uplatňuje rezervace Azure pro vaše samostatné předplatné s průběžnými platbami.
 author: bandersmsft
 manager: yashr
 tags: billing
@@ -12,96 +12,96 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490361"
 ---
-# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití Azure rezervace pro jednotlivé předplatného pro předplatné tarify průběžných plateb
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití rezervací Azure u jednoho předplatného s průběžnými platbami
 
-Použít ReservationId z [rezervované stránky](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a používání souboru z [portálu účtů Azure](https://account.azure.com) vyhodnotit využití rezervace.
+Při vyhodnocování vašeho využití rezervací použijte hodnotu ReservationId ze [stránky Rezervace](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a soubor s informacemi o využití z [portálu účtů Azure](https://account.azure.com).
 
-Pokud jste zákazník se smlouvou Enterprise, přečtěte si téma [porozumět používání rezervaci u prováděcí smlouvy Enterprise.](billing-understand-reserved-instance-usage-ea.md).
+Pokud jste zákazník se smlouvou Enterprise, přečtěte si téma [Vysvětlení využití rezervací pro smlouvu Enterprise](billing-understand-reserved-instance-usage-ea.md).
 
-Tento článek předpokládá, že se má rezervace použít na jedno předplatné. Pokud se má rezervace použít na více než jedno předplatné, může vaše výhoda rezervací uložena ve více souborech použití sdíleného svazku clusteru.
+Tento článek vychází z předpokladu, že se rezervace uplatňuje na jedno předplatné. Pokud se rezervace použije na více než jedno předplatné, může se zvýhodněná rezervace rozdělit do více souborů CSV s informacemi o využití.
 
-## <a name="usage-for-reserved-virtual-machine-instances"></a>Využití pro rezervované instance virtuálních počítačů
+## <a name="usage-for-reserved-virtual-machine-instances"></a>Využití rezervovaných instancí virtuálních počítačů
 
-V dalších částech předpokládají, že používáte virtuální počítač Windows Standard_DS1_v2 oblasti USA – východ a vaše rezervovaných virtuálních počítačů instance informace vypadá jako v následující tabulce:
+Pro potřeby následujících částí si představte, že používáte virtuální počítač Standard_DS1_v2 s Windows v oblasti USA – východ a informace o rezervované instanci virtuálního počítače vypadají takto:
 
 | Pole | Hodnota |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Množství |1|
-|SKU | Standard_DS1_v2|
+|Skladová jednotka (SKU) | Standard_DS1_v2|
 |Oblast | eastus |
 
-Část hardwaru virtuálního počítače se vztahuje, protože nasazený virtuální počítač odpovídající rezervaci atributy. Jaký software Windows není předmětem rezervované instance virtuálního počítače najdete v tématu [náklady na software Windows instancí virtuálních počítačů rezervy Azure](billing-reserved-instance-windows-software-costs.md)
+Rezervace pokrývá hardwarovou část virtuálního počítače, protože nasazený virtuální počítač vyhovuje atributům rezervace. Informace o tom, na který software Windows se rezervovaná instance virtuálního počítače nevztahuje, najdete v tématu [Náklady na software pro rezervované instance virtuálních počítačů Azure s Windows](billing-reserved-instance-windows-software-costs.md).
 
-### <a name="statement-section-of-csv-file-for-vms"></a>Příkaz části souboru .csv pro virtuální počítače
+### <a name="statement-section-of-csv-file-for-vms"></a>Oddíl výpisu v souboru CSV týkající se virtuálních počítačů
 
-Tato část souboru CSV se zobrazí celkové využití vaší rezervace. Použít filtr na **podkategorie měřiče** pole s údajem o **"Rezervace-"** . Zobrazit něco jako na následujícím snímku obrazovky:
+V této části souboru CSV najdete celkové využití týkající se vaší rezervace. V poli **Podkategorie měřiče** použijte filtr obsahující **"Reservation-"** . Měla by se zobrazit obrazovka podobná následujícímu snímku:
 
-![Snímek obrazovky filtrované rezervace informací o využití a nákladů](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
+![Snímek obrazovky s filtrovanými podrobnostmi o využití rezervace a poplatcích](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
-**Rezervované základní virtuální počítač** řádek obsahuje celkový počet hodin, které jsou předmětem rezervace. Tento řádek je 0,00 Kč, protože rezervace zvládne. **Počítače rezervace Windows serverem (1 jádro)** řádku zahrnují náklady na Windows software.
+Řádek **Rezervované základní virtuální počítače** obsahuje celkový počet hodin, na které se vztahuje rezervace. Na tomto řádku je částka 0,00 USD, protože náklady pokrývá rezervace. Řádek **Reservation-Windows Svr (1 Core)** se vztahuje na náklady na software pro Windows.
 
-### <a name="daily-usage-section-of-csv-file"></a>Části denní využívání ze souboru CSV
+### <a name="daily-usage-section-of-csv-file"></a>Oddíl s denním využitím v souboru CSV
 
-Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervace.
+Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervací.
 
-![Snímek obrazovky s informací o denním využití a poplatky za](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
+![Snímek obrazovky s podrobnostmi o denním využití a poplatcích](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. **ReservationId** v **Další informace o** pole je rezervace, které se použije k virtuálnímu počítači.
-2. **ConsumptionMeter** je ID měřiče pro virtuální počítač.
-3. **Rezervované základní virtuální počítač** **podkategorie měřiče** řádek představuje náklady hodnotou 0 USD v části prohlášení. Náklady na provozování tento virtuální počítač je už zaplaceno rezervace.
-4. **ID měřiče** je ID měřiče pro rezervaci. Náklady na tento měřič je hodnotou 0 USD. Toto id měřiče se zobrazí pro jakýkoli virtuální počítač, který může využít sleva za rezervaci.
-5. Standard_DS1_v2 je jeden virtuální procesor virtuálního počítače a virtuálního počítače se nasazují bez programu Azure Hybrid Benefit. Tedy tento měřič zahrnuje korunu navíc softwaru Windows. Měření odpovídající 1 jádro virtuálních počítačů řady D series najdete v tématu [náklady na software Windows instancí virtuálních počítačů rezervy Azure](billing-reserved-instance-windows-software-costs.md). Pokud máte na program Azure Hybrid Benefit se nepoužije tento další poplatek.
+1. Položka **ReservationId** v poli **Další informace** odpovídá rezervaci použité pro daný virtuální počítač.
+2. **ConsumptionMeter** je ID měřiče pro daný virtuální počítač.
+3. Řádek **Rezervované základní virtuální počítače** ve sloupci **Podkategorie měřiče** představuje částku 0 USD z oddílu s výpisem. Náklady na provoz tohoto virtuálního počítače jsou už zahrnuté v ceně rezervace.
+4. **ID měřiče** je ID měřiče pro danou rezervaci. Náklady na tento měřič jsou 0 USD. Toto ID měřiče se zobrazí pro každý virtuální počítač, který má nárok na slevu za rezervaci.
+5. Standard_DS1_v2 je virtuální počítač s jedním vCPU a je nasazený bez zvýhodněného hybridního využití Azure. To znamená, že tento měřič zaznamenává dodatečné poplatky za software pro Windows. Pokud chcete najít měřič odpovídající jednojádrovému virtuálnímu počítači řady D, přečtěte si téma [Náklady na software pro rezervované instance virtuálních počítačů Azure s Windows](billing-reserved-instance-windows-software-costs.md). Pokud máte zvýhodněné hybridní využití Azure, tento dodatečný poplatek se vám neúčtuje.
 
-## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Využití pro SQL Database a Cosmos DB rezervace
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Využití u rezervací SQL Database a Cosmos DB
 
-V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB.
+Následující části vysvětlují sestavu využití na příkladu Azure SQL Database. Stejný postup můžete použít i k získání informací o využití pro Azure Cosmos DB.
 
-Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
+Předpokládejme, že používáte SQL Database Gen 4 v oblasti USA – východ a informace o vaší rezervaci vypadají zhruba takto:
 
 | Pole | Hodnota |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Množství |2|
-|Product| SQL Database Gen 4 (2 jádra)|
+|Produkt| SQL Database Gen 4 (2 jádra)|
 |Oblast | eastus |
 
-### <a name="statement-section-of-csv-file"></a>Příkaz části ze souboru CSV
+### <a name="statement-section-of-csv-file"></a>Oddíl výpisu v souboru CSV
 
-Filtrovat podle **využití rezervovaných instancí** měřit název a zvolte požadovaný **kategorie měřiče** – Azure SQL database nebo Azure Cosmos DB. Zobrazit něco jako na následujícím snímku obrazovky:
+Nastavte filtr podle názvu měřiče **Reserved Instance Usage** (Využití rezervovaných instancí) a vyberte požadovanou hodnotu ve sloupci **Kategorie měřiče** – Azure SQL Database nebo Azure Cosmos DB. Měla by se zobrazit obrazovka podobná následujícímu snímku:
 
-![Soubor CSV pro službu SQL Database rezervované kapacity](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
-**Využití rezervovaných instancí** řádek obsahuje celkový počet předmětem rezervace – základní hodiny. Tato míra je hodnotou 0 USD pro tento řádek jako zahrnuté náklady na rezervaci.
+Řádek **Reserved Instance Usage** (Využití rezervovaných instancí) obsahuje celkový počet hodin jádra, na který se vztahuje rezervace. Částka pro tento řádek činí 0 USD, protože náklady pokrývá rezervace.
 
-### <a name="detail-section-of-csv-file"></a>Tělo ze souboru CSV
+### <a name="detail-section-of-csv-file"></a>Oddíl podrobností v souboru CSV
 
-Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervaci kapacity databáze SQL vyhrazený.
+Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervací rezervované kapacity služby SQL Database.
 
-![Soubor CSV pro službu SQL Database rezervované kapacity](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. **ReservationId** v **Další informace o** pole je rezervace SQL Database vyhrazené kapacity, který se použije pro prostředek databáze SQL.
-2. **ConsumptionMeter** je ID měřiče pro prostředek databáze SQL.
-3. **Id měřiče** je měřič rezervace. Náklady na tento měřič je hodnotou 0 USD. Všechny prostředky databáze SQL, které jsou způsobilé pro sleva za rezervaci se zobrazí toto ID měřiče v souboru CSV.
+1. Položka **ReservationId** v poli **Další informace** odpovídá rezervaci rezervované kapacity služby SQL Database, která se uplatňuje na tento prostředek služby SQL Database.
+2. **ConsumptionMeter** je ID měřiče pro daný prostředek SQL Database.
+3. **ID měřiče** je měřič rezervace. Náklady na tento měřič jsou 0 USD. Toto ID měřiče se nachází v souboru CSV pro všechny prostředky služby SQL Database, které mají nárok na slevu za rezervaci.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
-- [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
-- [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
+- [Vysvětlení způsobu uplatnění slevy za rezervaci](billing-understand-vm-reservation-charges.md)
+- [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
+- [Náklady na software pro Windows nezahrnuté v rezervacích](billing-reserved-instance-windows-software-costs.md)

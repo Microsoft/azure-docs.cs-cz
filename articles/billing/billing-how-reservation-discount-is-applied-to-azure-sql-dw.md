@@ -1,6 +1,6 @@
 ---
-title: Jak použít slevy na rezervaci do služby Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Přečtěte si, jak použít slevy na rezervaci pro Azure SQL Data Warehouse a šetřit peníze je tak.
+title: Principy uplatňování slev za rezervace u služby Azure SQL Data Warehouse | Microsoft Docs
+description: Zjistěte, jak se uplatňují slevy za rezervace u služby Azure SQL Data Warehouse, a ušetřete.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 10e19377d31489cd19465fe6171ffb530bd58c28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60918358"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Jak použít slevy na rezervaci do služby Azure SQL Data Warehouse
+# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Principy uplatňování slev za rezervace u služby Azure SQL Data Warehouse
 
-Po nákupu Azure SQL Data Warehouse vyhrazené kapacity sleva za rezervaci se automaticky využije na datových skladů, které existují v dané oblasti. Sleva za rezervaci se vztahuje na využití, protože ho vygeneroval měřiče cDWU SQL Data Warehouse. Úložiště a sítě se účtují sazbami průběžných plateb.
+Po zakoupení rezervované kapacity Azure SQL Data Warehouse se sleva za rezervaci automaticky uplatní na datové sklady v rámci dané oblasti. Sleva za rezervaci se uplatňuje na využití naměřené měřičem cDWU služby SQL Data Warehouse. Úložiště a sítě se účtují podle tarifů průběžných plateb.
 
-## <a name="reservation-discount-application"></a>Slev za rezervaci
+## <a name="reservation-discount-application"></a>Uplatnění slevy za rezervaci
 
-Sleva za rezervované kapacity SQL Data Warehouse se využije ke spuštěnému sklady po hodinách. Pokud nemáte skladu nasazeny hodinu pro určitou hodinu nevyužité záložní kapacitu. To se nepřenáší.
+Sleva za rezervovanou kapacitu SQL Data Warehouse se na spuštěné datové sklady uplatňuje po hodinách. Pokud nemáte během některé hodiny nasazený žádný datový sklad, zůstane rezervovaná kapacita pro danou hodinu nevyužitá. Nepřevádí se.
 
-Po nákupu rezervace, které můžete zakoupit odpovídá SQL Data Warehouse využití generované s spuštěním sklady v libovolném bodě v čase. Vypnout některých skladů pak slevy na rezervaci automaticky platit pro všechny odpovídající sklady.
+Po nákupu se zakoupená rezervace přiřadí k využití služby SQL Data Warehouse naměřené u spuštěných datových skladů. Pokud některé datové sklady vypnete, slevy za rezervace se automaticky uplatní na ostatní vyhovující datové sklady.
 
-Pro skladů, které nelze spustit pro celou hodinu rezervaci se automaticky využije na odpovídající jindy během této hodiny.
+V případě datových skladů, které nejsou spuštěné celou hodinu, se rezervace automaticky uplatní na ostatní vyhovující instance spuštěné v danou hodinu.
 
-## <a name="discount-examples"></a>Slevy příklady
+## <a name="discount-examples"></a>Příklady slev
 
-Následující příklady ukazují, jak SQL Data Warehouse záložní kapacitu sleva, v závislosti na nasazení.
+Následující příklady ukazují, jak se uplatňuje sleva za rezervovanou kapacitu SQL Data Warehouse v závislosti na druhu nasazení.
 
-- **Příklad 1**: Můžete si koupit 5 jednotky 100 cDWU vyhrazené kapacity. Spustit instanci DW1500c SQL Data Warehouse je jedna hodina. V takovém případě je vygenerován využití za 15 jednotky 100 cDWU využití. Sleva za rezervaci se vztahuje na 5 jednotek, které jste použili. Bude se vám účtovat podle sazeb s průběžnými platbami pro zbývající 10 jednotek 100 cDWU využití, který jste použili.
+- **Příklad 1:** Zakoupíte 5 jednotek rezervované kapacity 100 cDWU. Na hodinu spustíte instanci SQL Data Warehouse DW1500c. V takovém případě naměřené využití odpovídá 15 jednotkám využití 100 cDWU. Sleva za rezervaci se uplatní na 5 jednotek, které jste využili. Zbývajících 10 využitých jednotek využití 100 cDWU se vám bude účtovat podle tarifů průběžných plateb.
 
-- **Příklad 2**: Můžete si koupit 5 jednotky 100 cDWU vyhrazené kapacity. Spusťte dvě instance DW100c SQL Data Warehouse je jedna hodina. V tomto případě jsou emitovány dvě události využití pro 1 jednotku 100 cDWU využití. Jak událostí využití získat slevy záložní kapacitu. Zbývající 3 jednotky 100 cDWU vyhrazené kapacity jsou ztraceny a není přenesou pro budoucí použití.
+- **Příklad 2:** Zakoupíte 5 jednotek rezervované kapacity 100 cDWU. Na hodinu spustíte dvě instance SQL Data Warehouse DW100c. V takovém případě se naměří dvě události využití 1 jednotky využití 100 cDWU. Slevy za rezervovanou kapacitu se uplatní u obou událostí využití. Zbývající 3 jednotky rezervované kapacity 100 cDWU zůstanou nevyužité a nepřevedou se do budoucna.
 
-- **Příklad 3**: 1 jednotka 100 cDWU vyhrazené kapacity nákupu. Spustíte dvě instance DW100c SQL Data Warehouse. Každá běží po dobu 30 minut. V takovém případě obou událostí použití získat slevy záložní kapacitu. Bez použití se účtuje podle sazeb s průběžnými platbami.
+- **Příklad 3:** Zakoupíte 1 jednotku rezervované kapacity 100 cDWU. Spustíte dvě instance SQL Data Warehouse DW100c. Obě jsou spuštěné 30 minut. V takovém případě se slevy za rezervovanou kapacitu uplatní u obou událostí využití. Podle tarifů průběžných plateb se neúčtuje žádné využití.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
-- Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+- Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
-- [Zobrazit transakce rezervace](billing-view-reservations.md)
-- [Získejte rezervace transakce a využití prostřednictvím rozhraní API](billing-reservation-apis.md)
+- [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
+- [Zobrazení transakcí rezervací](billing-view-reservations.md)
+- [Získání transakcí a využití rezervací prostřednictvím rozhraní API](billing-reservation-apis.md)
 - [Správa rezervací](billing-manage-reserved-vm-instance.md)

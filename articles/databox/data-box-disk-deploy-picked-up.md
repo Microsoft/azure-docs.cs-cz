@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390412"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910117"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ Než začnete, ujistěte se, že jste dokončili [Kurz: Kopírování dat na Azu
 
 Další kroky závisí na tom, kam zařízení vracíte. Pokyny se liší pro USA a Kanadu, Evropskou unii (EU), Austrálii nebo země v Asii.
 
-### <a name="pick-up-in-us-canada"></a>Vyzvednutí v USA a Kanadě
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[V USA a Kanadě](#tab/in-us-or-canada)
 
 Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
@@ -68,7 +68,7 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
     - Místo naplánování vyzvednutí můžete také Data Box Disk dovézt na nejbližší sběrné místo.
 
-### <a name="pick-up-in-europe"></a>Vyzvednutí v Evropě
+### <a name="in-europetabin-europe"></a>[V Evropě](#tab/in-europe)
 
 Při vrácení zařízení v Evropě proveďte následující kroky.
 
@@ -81,7 +81,7 @@ Při vrácení zařízení v Evropě proveďte následující kroky.
 4. Přejděte na web DHL Express pro vaši zemi/oblast a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.    
 3. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
-### <a name="pick-up-in-australia"></a>Vyzvednutí v Austrálii
+### <a name="in-australiatabin-australia"></a>[V Austrálii](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při vyzvednutí v Austrálii proveďte následující kroky.
 
@@ -89,9 +89,9 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 3. Připevněte štítek na krabici. 
 4. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="pick-up-in-asia"></a>Vyzvednutí v Asii
+### <a name="in-japan-koreatabin-japan-korea"></a>[V Japonsku a Koreji](#tab/in-japan-korea)
 
-Pokyny pro vyzvednutí se pro Japonsko, Koreu a Singapur liší.
+Tady jsou pokyny pro vyzvednutí v Japonsku a Koreji.
 
 #### <a name="pick-up-in-japan"></a>Vyzvednutí v Japonsku
 
@@ -134,7 +134,8 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
     3. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti *Quantium Solutions International* a domluvte se na náhradním řešení. 
     4. V případě, že požadavek provádíte telefonicky, dostane se vám ústního potvrzení.
 
-#### <a name="pick-up-in-singapore"></a>Vyzvednutí v Singapuru
+
+### <a name="in-singaporetabin-singapore"></a>[V Singapuru](#tab/in-singapore)
 
 1. Vytiskněte expediční štítek a připevněte ho na krabici. Pokud je popisek poškozený nebo se ztratil:
     - Přejděte na **Přehled > Stáhnout expediční štítek** a získejte zpáteční expediční štítek.

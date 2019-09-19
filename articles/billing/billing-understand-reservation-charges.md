@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení rezervace slevy pro Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak sleva za rezervaci se použije ke spouštění databází Azure SQL Database.
+title: Vysvětlení slev za rezervaci ve službě Azure SQL Databases | Microsoft Docs
+description: Zjistěte, jak se na spuštěné databáze služby Azure SQL Database uplatňuje sleva za rezervaci.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60370283"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Jak se sleva za rezervaci použije k Azure SQL Database.
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Způsob uplatňování slev za rezervaci na databáze služby Azure SQL Database
 
-Po nákupu Azure SQL Database vyhrazené kapacity sleva za rezervaci se automaticky využije na databáze SQL, které odpovídají atributy a množství rezervace. Rezervace pokrývá náklady na výpočty pro SQL Database. Software, úložiště a sítě vám budeme účtovat za běžné sazby. Může zahrnovat náklady na licencování pro SQL Database s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Když si zakoupíte rezervovanou kapacitu služby Azure SQL Database, na prostředky SQL Database, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá náklady na výpočetní prostředky služby SQL Database. Poplatky za software, úložiště a sítě se vám budou účtovat za použití normálních sazeb. Licenční náklady na databáze SQL Database můžete pokrýt pomocí [zvýhodněného hybridního využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Rezervované instance virtuálních počítačů najdete v části [slevy pochopit Azure Reserved VM Instances](billing-understand-vm-reservation-charges.md).
+Informace o rezervovaných instancích virtuálních počítačů najdete v tématu [Vysvětlení slevy za rezervované instance virtuálních počítačů Azure](billing-understand-vm-reservation-charges.md).
 
-## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-Sleva za rezervaci se "*použití – it nebo ztratit – it*". Ano Pokud nemáte odpovídající prostředky pro hodinu, potom ztratíte množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+*Nevyužité slevy se nenahrazují*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
-Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
-## <a name="discount-applied-to-sql-databases"></a>Slevy u databází SQL
+## <a name="discount-applied-to-sql-databases"></a>Sleva uplatněná na databáze SQL
 
- Sleva za rezervované kapacity databáze SQL se využije ke spouštění databází SQL po hodinách. Rezervace, které můžete zakoupit odpovídá využití služby compute, protože ho vygeneroval spuštěné databáze SQL. V případě služeb SQL Database, které neběží celou hodinu, se rezervace automaticky využije pro ostatní služby SQL Database odpovídající atributům rezervace. Sleva můžete použít SQL Database. ty jsou spuštěny souběžně. Pokud nemáte k dispozici SQL Database. ty spustit pro celou hodinu odpovídající atributy rezervace, neobdržíte všech výhod sleva za rezervaci pro určitou hodinu.
+ Sleva za rezervovanou kapacitu databází SQL se na spuštěné databáze SQL uplatňuje po hodinách. Rezervace, kterou si zakoupíte, se přiřadí k využívání výpočetních prostředků spuštěnými databázemi SQL. V případě databází SQL, které neběží celou hodinu, se rezervace automaticky využije pro ostatní databáze SQL odpovídající atributům rezervace. Vaše sleva se použije také pro databáze SQL, které běží současně. Pokud nemáte databáze SQL, které běží celou hodinu a odpovídají atributům rezervace, nezískáte pro danou hodinu celou výhodu slevy za rezervaci.
 
-Následující příklady ukazují, jak platí sleva záložní kapacitu databáze SQL v závislosti na počtu jader jste koupili, a pokud máte spuštěnou.
+Následující příklady ukazují, jak se sleva za rezervovanou kapacitu služby SQL Database uplatňuje v závislosti na počtu zakoupených jader a na tom, kdy jsou tato jádra spuštěná.
 
-- Scénář 1: Můžete si koupit kapacitu databáze SQL vyhrazený pro 8 jader SQL Database. Spuštění 16 jader SQL Database, která odpovídají rest atributy rezervace. Platíte průběžnými platbami cena za 8jádrový využití služby compute SQL Database. Získáte slevy na rezervaci za jednu hodinu využití služby compute databáze SQL 8 jader.
+- Scénář 1: Zakoupíte si rezervovanou kapacitu služby SQL Database pro databázi SQL s 8 jádry. Spustíte databázi SQL se 16 jádry, která vyhovuje všem zbývajícím atributům rezervace. Naúčtuje se vám průběžná platba za 8 jader využití výpočetních prostředků služby SQL Database. Na jednu hodinu získáte slevu za rezervaci využití výpočetních prostředků pro databázi SQL s 8 jádry.
 
-Zbytek těchto příkladech se předpokládá, že je databáze SQL vyhrazený kapacitu, kterou si koupit za 16 jader SQL Database a zbytek atributy rezervace shodovat s provozní databází SQL.
+U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu SQL Database pro databázi SQL se 16 jádry a spuštěné databáze SQL vyhovují všem zbývajícím atributům rezervace.
 
-- Scénář 2: Spustíte dvě databáze SQL s 8 jádry je jedna hodina. Sleva za rezervaci 16 jader se použije k výpočtu využití pro obě 8 jader databází SQL.
-- Scénář 3: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:30 odp. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Obě jsou zahrnuté do sleva za rezervaci.
-- Scénář 4: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:45 pm. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Vám budou účtovány průběžných platbách za překryv 15 minut. Sleva za rezervaci se vztahuje na výpočetní využití pro zbytek času.
+- Scénář 2: Spustíte dvě databáze SQL, které mají každá 8 jader a každá běží jednu hodinu. Na využití výpočetních prostředků pro obě databáze SQL s 8 jádry se uplatní sleva za rezervaci 16 jader.
+- Scénář 3: Od 13:00 do 13:30 máte spuštěnou jednu databázi SQL se 16 jádry. Od 13:30 do 14:00 spustíte jinou databázi SQL se 16 jádry. Na obě se bude vztahovat sleva za rezervaci.
+- Scénář 4: Od 13:00 do 13:45 máte spuštěnou jednu databázi SQL se 16 jádry. Od 13:30 do 14:00 spustíte jinou databázi SQL se 16 jádry. Za 15 minut, kdy se doba chodu obou databází překrývá, zaplatíte průběžnou platbu. Po zbytek doby se na využití výpočetních prostředků uplatňuje sleva za rezervaci.
 
-K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [pochopit Azure rezervace využití](billing-understand-reserved-instance-usage-ea.md).
+Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](billing-understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
-- [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
-- [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Vysvětlení využití rezervace pro předplatná CSP](/partner-center/azure-reservations)
+- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+- [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
+- [Vysvětlení využití rezervací u předplatných CSP](/partner-center/azure-reservations)

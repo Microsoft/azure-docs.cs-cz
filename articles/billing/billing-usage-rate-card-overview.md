@@ -1,6 +1,6 @@
 ---
-title: Získat využití Azure s Azure API pro fakturaci. | Dokumentace Microsoftu
-description: Přečtěte si o Azure Billing využití a RateCard API, které slouží k poskytování přehledů o spotřebě prostředků Azure a trendy.
+title: Získání informací o využití Azure pomocí rozhraní API pro fakturaci | Microsoft Docs
+description: Seznamte se s rozhraními API pro fakturaci využití Azure a RateCard, která poskytují přehled o spotřebě prostředků Azure a trendech.
 services: ''
 documentationcenter: ''
 author: tonguyen
@@ -17,58 +17,58 @@ ms.date: 5/10/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 4756c7abcb354e0b72c8a95c9d2df4bb3a14671a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443021"
 ---
-# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
-Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
+# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programové získání přehledu o využití Azure pomocí rozhraní API pro fakturaci Azure
+Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití a prostředcích do vašeho upřednostňovaného nástroje pro datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Tato rozhraní API se implementují jako poskytovatel prostředků a jsou součástí řady rozhraní API, která zveřejňuje Azure Resource Manager.  
 
-## <a name="azure-invoice-download-api-preview"></a>Rozhraní API pro stažení faktury Azure (Preview)
-Jednou [vyjádřit výslovný souhlas se kompletní](billing-manage-access.md#opt-in), stahování faktur ve verzi preview [faktury API](/rest/api/billing). Mezi funkce patří:
+## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (Preview)
+Jakmile se [dokončí udělení přístupu](billing-manage-access.md#opt-in), můžete si pomocí verze Preview rozhraní [API Faktury](/rest/api/billing) stahovat faktury. Toto jsou některé z dostupných funkcí:
 
-* **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k data o využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure.
-* **Datum filtrování** – použití `$filter` parametr zobrazíte všechny faktury v obráceném pořadí časovém období koncové datum faktury.
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
+* **Filtrování podle data** – pomocí parametru `$filter` můžete načíst všechny faktury v obráceném chronologickém pořadí podle koncového data období faktury.
 
 > [!NOTE]
-> Tato funkce je v první verzi preview a může být v souladu s změny zpětně kompatibilní. V současné době není k dispozici pro některé nabídky předplatného (EA, CSP, AIO nepodporuje) a Azure Germany.
+> Tato funkce je v první verzi Preview a může u ní dojít ke zpětně nekompatibilním změnám. V současné době není dostupná pro určité nabídky předplatného (smlouva Enterprise, program CSP a Azure v rámci licenčního programu Open se nepodporují) a v Azure Germany.
 
-## <a name="azure-resource-usage-api-preview"></a>Využití prostředků Azure, rozhraní API (Preview)
-Použití Azure [rozhraní API využití prostředků](/previous-versions/azure/reference/mt219003(v=azure.100)) k přesunu dat Odhadované využití Azure. Toto rozhraní API zahrnuje:
+## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (Preview)
+Pomocí [rozhraní API Využití prostředků Azure](/previous-versions/azure/reference/mt219003(v=azure.100)) můžete získat údaje o odhadované spotřebě Azure. Rozhraní API nabízí tyto funkce:
 
-* **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k data o využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure.
-* **Hodinové nebo denní agregace** – volající můžete určit, zda chtějí svá data využití Azure každou hodinu intervalů nebo denních intervalů. Výchozí hodnota je denně.
-* **Instance metadata (včetně značky prostředku)** – získání podrobností na úrovni instance jako prostředek plně kvalifikovaný identifikátor uri (/subscriptions/ {id předplatného} /..), informace o skupinách prostředků a značky prostředku. Tato metadata vám deterministicky a programově přidělit využití podle klíčových slov, pro případy použití, jako jsou různé účtování.
-* **Resource metadata** – podrobnosti o prostředku, například název měřiče, kategorie měřiče, podkategorie měřiče, jednotky a oblasti dejte volající lépe pochopit, co spotřebovával. Spolupracujeme také zarovnat terminologie resource metadata ve na webu Azure portal, Azure použití sdíleného svazku clusteru, EA fakturace sdíleného svazku clusteru a další veřejné webové prostředí, vám umožní korelovat data napříč prostředím.
-* **Využití pro typy jinou nabídku** – data o využití je k dispozici pro typy nabídek jako průběžné platby MSDN, peněžního závazku, peněžní kredit ve výši a EA, s výjimkou [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
+* **Hodinová nebo denní agregace** – volající můžou určit, jestli chtějí údaje o využití Azure zobrazit v hodinových, nebo denních intervalech. Výchozí nastavení je denní interval.
+* **Metadata instance (včetně značek prostředků)** – můžete získat podrobnosti na úrovni instance, třeba kvalifikovaný identifikátor URI prostředku (/subscriptions/{id-předplatného}/…), informace o skupině prostředků nebo značky prostředků. Tato metadata pomáhají deterministicky a programově přidělovat využití pomocí značek pro potřeby různých případů použití, jako je rozúčtování poplatků.
+* **Metadata prostředků** – podrobnosti o prostředcích, jako je název měřiče, kategorie měřiče, podkategorie měřiče, jednotka a oblast, poskytují volajícímu lepší přehled o spotřebovaných prostředcích. Pracujeme také na sjednocení terminologie metadat prostředků na webu Azure Portal, v souboru CSV s informacemi o využití Azure, v souboru CSV o fakturaci smluv EA a v dalších veřejných prostředích, abyste viděli souvislosti mezi daty z různých prostředí.
+* **Využití u různých typů nabídek** – informace o využití jsou dostupné pro různé typy nabídek, například nabídky s průběžnými platbami, MSDN, peněžní závazek, peněžní kredit a smlouvy EA, s výjimkou [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
 
-## <a name="azure-resource-ratecard-api-preview"></a>Prostředek Azure RateCard API (Preview)
-Použití [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) zobrazíte seznam dostupných prostředků Azure a odhadovaných informace o cenách pro všechny. Toto rozhraní API zahrnuje:
+## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (Preview)
+Pomocí [rozhraní API RateCard pro prostředky Azure](/previous-versions/azure/reference/mt219005(v=azure.100)) získáte seznam dostupných prostředků Azure a informace o odhadovaných cenách každého z nich. Rozhraní API nabízí tyto funkce:
 
-* **Řízení přístupu Azure na základě rolí** – konfigurace zásad přístupu na [webu Azure portal](https://portal.azure.com) nebo prostřednictvím [rutin prostředí Azure PowerShell](/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k RateCard data. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář, vlastník nebo Přispěvatel získat přístup k datům využití ke konkrétnímu předplatnému Azure.
-* **Podpora pro průběžné platby, MSDN, peněžního závazku a nabídek peněžních kreditů (EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nepodporuje)** -toto rozhraní API poskytuje informace sazeb Azure úrovně nabídky.  Volající toto rozhraní API musíte předat informace o nabídce zobrazíte podrobnosti o prostředku a kurzy. Aktuálně nám poskytnout sazby EA, protože nabídky EA upravili sazby za registraci.
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k datům RateCard. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář, Vlastník nebo Přispěvatel.
+* **Podpora nabídek s průběžnými platbami, MSDN, s peněžním závazkem a s peněžním kreditem (nepodporují se programy EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card))** – toto rozhraní API poskytuje informace o sazbách na úrovni nabídky.  Volající tohoto rozhraní API musí k zobrazení podrobností o prostředcích a sazeb zadat informace o nabídce. V tuto chvíli nemůžeme poskytovat sazby pro smlouvy EA, protože nabídky smluv EA mají vlastní sazby.
 
 ## <a name="scenarios"></a>Scénáře
-Tady jsou některé scénáře, které jsou možné kombinací využití a RateCard API:
+Tady je několik scénářů, ve kterých můžete využít kombinaci rozhraní API s informacemi o využití a RateCard:
 
-* **Výdaje za Azure za daný měsíc** – použijte kombinaci využití a RateCard API získat lepší přehled o své cloudové výdaje za daný měsíc. Můžete analyzovat po hodinách a denní sektorů odhadne využití a poplatků.
-* **Nastavení výstrah** – využít k získání odhadovaných cloudové využití a poplatky za a nastavit výstrahy na základě prostředků nebo peněžní na využití a RateCard API.
-* **Předpověď vyúčtování** – Get Odhadované využití a cloudové výdaje a použití algoritmů strojového učení k předpovědi, co bude na faktuře na konci fakturačního cyklu.
-* **Předběžné spotřeby analýza nákladů** – použijte RateCard API předpovědět, kolik vaše faktura se pro očekávané využití při přesun úloh do Azure. Pokud máte existující úlohy v jiných cloudech nebo privátních cloudů, využití s Azure můžete také namapovat sazby získat lepší odhad Azure výdajů. Tento odhad poskytuje schopnost zaměření na nabídku a porovnat a kontrast mezi typy jinou nabídku nad rámec s průběžnými platbami, jako je peněžních závazků a peněžního kreditu. Rozhraní API také nabízí možnost zobrazit rozdíly náklady podle oblasti a umožňuje provádět analýzy what-if nákladů pro vám pomůže zajistit rozhodnutí o nasazení.
-* **Analýza "co kdyby"**  -
+* **Náklady na Azure v průběhu měsíce** – díky kombinaci rozhraní API s informacemi o využití a RateCard můžete získat lepší přehled o útratě v cloudu během měsíce. Můžete analyzovat využití v hodinových a denních intervalech a odhady nákladů.
+* **Nastavení výstrah** – pomocí rozhraní API s informacemi o využití a RateCard můžete získat odhad spotřeby cloudu a poplatků a nastavit výstrahy založené na prostředcích nebo peněžních částkách.
+* **Předpověď faktury** – můžete získat odhad spotřeby a útraty v cloudu a pomocí algoritmů strojového učení předvídat, jaká bude výše faktury na konci fakturačního období.
+* **Analýza nákladů před spotřebou** – pomocí rozhraní API RateCard můžete předpovídat, jaká bude výše faktury za očekávané využití, když přesunete své úlohy do Azure. Pokud máte stávající úlohy v jiných cloudech nebo privátních cloudech, můžete také namapovat jejich využívání na sazby Azure, a získat tak lepší odhad nákladů na Azure. Tento odhad vám poskytne lepší přehled nabídek a umožní vám porovnat různé typy nabídek nad rámec nabídek s průběžnými platbami, například nabídek s peněžním závazkem nebo peněžním kreditem. Rozhraní API vám taky umožní zobrazit rozdíly v nákladech podle oblastí a provést analýzu potenciálních nákladů, abyste mohli lépe rozhodovat o nasazení.
+* **Analýza potenciálních nákladů** -
 
-  * Můžete určit, zda je cenově výhodnější ke spouštění úloh v jiné oblasti nebo na jinou konfiguraci prostředků Azure. Náklady na prostředky Azure může lišit v závislosti na oblasti Azure, které používáte.
-  * Můžete také určit, pokud jiný typ nabídky Azure poskytuje lepší rychlost v prostředku Azure.
+  * Můžete zjistit, jestli je cenově výhodnější spouštět úlohy v jiné oblasti nebo s jinou konfigurací prostředku Azure. Náklady na prostředky Azure se můžou lišit v závislosti na oblasti Azure, kterou používáte.
+  * Můžete také zjistit, jestli by vám jiný typ nabídky Azure neposkytl lepší sazbu pro určitý prostředek Azure.
 
 
-## <a name="next-steps"></a>Další postup
-* Prohlédněte si ukázky kódu na Githubu:
+## <a name="next-steps"></a>Další kroky
+* Podívejte se na ukázky kódu na GitHubu:
   * [Vzorový kód pro rozhraní API pro faktury](https://go.microsoft.com/fwlink/?linkid=845124)
 
   * [Vzorový kód pro rozhraní API služby Usage](https://github.com/Azure-Samples/billing-dotnet-usage-api)
 
   * [Vzorový kód pro rozhraní API služby RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Další informace o Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+* Další informace o Azure Resource Manageru najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).

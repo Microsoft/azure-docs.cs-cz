@@ -1,6 +1,6 @@
 ---
-title: Monitorování a sledování využití služeb Azure zdarma
-description: Zjistěte, jak kontrolovat využití bezplatné služby v souboru CSV Azure portal a využití.
+title: Monitorování a sledování využití bezplatných služeb Azure
+description: Zjistěte, jak zkontrolovat využití bezplatných služeb na webu Azure Portal a v souboru CSV s informacemi o využití.
 author: amberbhargava
 manager: amberb
 tags: billing
@@ -12,62 +12,62 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 3543bed7f699fd149ca7f2a6f61e9eb5aad5f1a3
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491424"
 ---
-# <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Kontrola využití bezplatné služby je součástí bezplatného účtu Azure
+# <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Kontrola využití bezplatných služeb, které jsou součástí bezplatného účtu Azure
 
-Se vám neúčtují poplatky pro služby zahrnuté zdarma s bezplatným účtem Azure, pokud překročíte limity služby. Tak si zachováte omezení, můžete použít pro monitorování a sledování využití bezplatné služby na webu Azure portal nebo v souboru využití.
+Za služby zahrnuté bezplatně v rámci bezplatného účtu Azure se neúčtují žádné poplatky, pokud nepřekročíte limity těchto služeb. Pokud chcete zůstat v mezích těchto limitů, můžete monitorovat a sledovat využití bezplatných služeb pomocí webu Azure Portal nebo souboru s informacemi o využití.
 
 ## <a name="check-usage-in-the-azure-portal"></a>Kontrola využití na webu Azure Portal
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2.  V levé navigační oblasti, vyberte **všechny služby**.
+2.  V levé navigační oblasti vyberte **Všechny služby**.
 
 3.  Vyberte **Předplatná**.
 
-4.  Vyberte předplatné, které jste vytvořili při registraci bezplatné účtu.
+4.  Vyberte předplatné, které jste vytvořili při registraci bezplatného účtu.
 
-    ![Snímek obrazovky zobrazující všechna předplatná](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
+    ![Snímek obrazovky ukazující všechna předplatná](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
 
-5.  V části Přehled zobrazuje důležité informace o vašem předplatném. Například ID předplatného, typ nabídky a názvu předplatného. Informace najdete taky když vyprší platnost kreditu vašeho bezplatného účtu.
+5.  V části Přehled se zobrazí základní informace o vašem předplatném. Například ID předplatného, typ nabídky a název předplatného. Najdete tu také informace o datu vypršení platnosti vašeho kreditu bezplatného účtu.
 
-    ![Snímek obrazovky zobrazující základní informace o předplatném](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
+    ![Snímek obrazovky ukazující základní informace o předplatném](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 
-6.  Posuňte se dolů najít informace o aktuální i předpokládané náklady. Cena zahrnuje využití služeb, které nejsou součástí vašeho bezplatného účtu a využití překročení limitů bezplatné služby.
+6.  Posuňte se dolů, kde najdete informace o vašich aktuálních a předpokládaných nákladech. Náklady zahrnují využití služeb nad rámec bezplatného účtu a využití překračující limity bezplatných služeb.
 
-    ![Snímek obrazovky zobrazující předplatné informace o nákladech](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
+    ![Snímek obrazovky ukazující informace o nákladech na předplatné](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
 
-7.  Poslední část oddílu přehled má tabulka zobrazující využití bezplatné služby.
+7.  Na konci části Přehled najdete tabulku ukazující využití bezplatných služeb.
 
-    ![Snímek obrazovky zobrazující využití bezplatných služeb](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
+    ![Snímek obrazovky ukazující využití bezplatných služeb](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
     Tabulka obsahuje následující sloupce:
 
-* **Název měřiče:** Určuje měrnou jednotku pro měření spotřebovávanou. Další informace o službě Mapování měřičů najdete v tématu [pochopit bezplatnou službu pro mapování měřičů](billing-understand-free-service-meter-mapping.md).
-* **Využití a omezení:** Aktuální měsíc využití a omezení pro měřidla. Tyto informace můžete najít také ve stavovém řádku.
-* **Stav:** Stav využití měření. Založena na vzoru vaše využití, může mít jednu z následujících stanov:
-  * **Nepoužíváte:** Jste nepoužili měřič nebo využití měřičů nebyl zaznamenal fakturační systém.
-  * **Datum překročení \<datum >:** Byl překročen limit pro měřidla \<datum >.
-  * **Pravděpodobně se nepřekročí:** Už brzo budete pravděpodobně se nepřekročí. limit pro měřidla.
-  * **Datum překročení \<datum >:** Budete pravděpodobně překročí tento limit pro měřidla v \<datum >.
+* **Název měřiče:** Určuje měrnou jednotku spotřebovávaného měřiče. Další informace o mapování služeb na měřiče najdete v tématu [Principy mapování bezplatných služeb na měřiče](billing-understand-free-service-meter-mapping.md).
+* **Využití/limit:** Využití za aktuální měsíc a limit daného měřiče. Tyto informace najdete také na stavovém řádku.
+* **Stav:** Stav využití daného měřiče. V závislosti na vašem vzorci využití se může zobrazit jeden z následujících stavů:
+  * **Nepoužívá se:** Měřič nepoužíváte nebo fakturační systém ještě nepřijal informace o využití z měřiče.
+  * **Překročeno dne \<Date>:** Dne \<Date> jste překročili limit měřiče.
+  * **Pravděpodobně se nepřekročí:** Pravděpodobně nepřekročíte limit měřiče.
+  * **Překročí se dne \<Date>:** Dne \<Date> pravděpodobně překročíte limit měřiče.
 
-## <a name="check-usage-with-the-usage-file"></a>Zkontrolujte použití se souborem využití
+## <a name="check-usage-with-the-usage-file"></a>Kontrola využití v souboru s informacemi o využití
 
-Váš soubor využití poskytuje podrobné informace o vašem předplatném Azure. Váš denní a měsíční využití soubor si můžete stáhnout z centra účtů Azure. Zjistěte, jak stáhnout soubor využití a pochopení přístup vyžaduje, najdete v článku [získání faktury a využití](billing-download-azure-invoice-daily-usage-date.md). Další informace o sloupcích v souboru využití najdete v tématu [vysvětlení podmínek vašeho použití](billing-understand-your-usage.md).
+V souboru s informacemi o využití najdete podrobné informace týkající se vašeho předplatného Azure. Soubor s informacemi o měsíčním a denním využití si můžete stáhnout z Centra účtů Azure. Pokyny ke stažení souboru s informacemi o využití a informace o požadované úrovni přístupu najdete v tématu [Získání faktury a dat o využití](billing-download-azure-invoice-daily-usage-date.md). Informace o jednotlivých sloupcích v souboru s informacemi o využití najdete v tématu [Vysvětlení výrazů týkajících se využití](billing-understand-your-usage.md).
 
-Využití soubor obsahuje informace o bezplatných nebo placených služeb využití. Bude mít bezplatná služba měřiče **Free** přidáván na konec názvu měřiče. Najít bezplatné měřičů, otevřete soubor v Excelu a filtr **sloupec kategorie měřiče** u buněk, které obsahují text **– Free** (použít filtry textu &rarr; filtr obsahuje).
+Soubor s informacemi o využití obsahuje informace o bezplatných i placených službách. Měřiče bezplatných služeb mají ke konci svého názvu připojený text **Free**. Pokud chcete vyhledat měřiče bezplatných služeb, otevřete soubor v aplikaci Excel a ve sloupci **Meter Category** (Kategorie měřiče) vyfiltrujte buňky obsahující text **- Free** (použijte Textové filtry &rarr; filtr Obsahuje).
 
 
-![Snímek obrazovky zobrazující využití bezplatných služeb](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
+![Snímek obrazovky ukazující využití bezplatných služeb](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
-- [Upgradujte vaše předplatné](billing-upgrade-azure-subscription.md)
+## <a name="next-steps"></a>Další kroky
+- [Upgrade předplatného](billing-upgrade-azure-subscription.md)

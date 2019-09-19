@@ -1,6 +1,6 @@
 ---
-title: Prevence neočekávaných nákladů a správa fakturace v Azure
-description: Přečtěte si, jak se vyhnout neočekávaným poplatkům za váš účet Azure. Využijte funkce pro sledování nákladů a správu pro předplatné Azure.
+title: Jak zabránit neočekávaným nákladům a spravovat fakturaci v Azure
+description: Zjistěte, jak se vyhnout neočekávaným poplatkům ve faktuře za Azure. U předplatného Azure můžete využít funkce pro sledování a řízení nákladů.
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -12,208 +12,208 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: b64e84c3fff27675029ff35f27972a4aca014ec3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68612091"
 ---
-# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zabránění neočekávaným poplatkům s využitím fakturace a správy nákladů Azure
+# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
 
-Při registraci k Azure máte k dispozici několik věcí, které vám pomůžou získat lepší představu o útratě:
+Při registraci Azure máte k dispozici několik možností, které vám pomohou získat lepší představu o útratě:
 
-- [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/) může poskytnout odhad nákladů ještě před vytvořením prostředku Azure. 
+- [Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/) dokáže odhadnout náklady ještě před vytvořením prostředku Azure. 
 
-- [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) poskytuje aktuální rozpis nákladů a prognózu pro vaše předplatné. 
+- [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nabízí rozpis aktuálních nákladů a prognózu pro vaše předplatné. 
 
-- Pokud chcete seskupit a pochopit náklady na různé projekty nebo týmy, podívejte se na [označení prostředků](../azure-resource-manager/resource-group-using-tags.md). Pokud má vaše organizace systém vytváření sestav, který chcete použít, podívejte se na [fakturační rozhraní API](billing-usage-rate-card-overview.md).
+- Pokud chcete seskupit a zjistit náklady na různé projekty nebo týmy, můžete využít [označování prostředků](../azure-resource-manager/resource-group-using-tags.md). Pokud vaše organizace používá vykazovací systém, kterému dáváte přednost, podívejte se na [fakturační rozhraní API](billing-usage-rate-card-overview.md).
 
-- Pokud se vaše předplatné vytvořilo z smlouva Enterprise (EA), můžete si své náklady zobrazit v Azure Portal. Pokud je vaše předplatné prostřednictvím poskytovatele Cloud Solution Provider (CSP) nebo Azure Sponsorship, pak se na vás nemusí vztahovat některé z následujících funkcí. Další informace najdete v tématu [Další zdroje informací pro EA, CSP a sponzorství](#other-offers).
+- Pokud bylo vaše předplatné vytvořeno ze smlouvy Enterprise (EA), můžete si své náklady zobrazit na webu Azure Portal. Pokud jste si předplatné pořídili přes poskytovatele CSP (Cloud Solution Provider) nebo Azure Sponsorship, nemusí se na vás vztahovat některé z následujících funkcí. Více informací najdete v [dalších materiálech pro EA, CSP a Sponsorship](#other-offers).
 
-- Pokud je vaše předplatné bezplatnou zkušební verzí, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), systém Azure V rámci licenčního programu Open (AIO) nebo BizSpark, vaše předplatné se automaticky zakáže, když se použijí všechny vaše kredity. Přečtěte [](#spending-limit) si o limitech útraty, abyste se vyhnuli neočekávanému zákazu
+- Pokud jako předplatné používáte bezplatnou zkušební verzi, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Systém Azure v rámci licenčního programu Open (AIO) nebo BizSpark, vaše předplatné se při využití všech kreditů automaticky zakáže. Přečtěte si o [limitech útraty](#spending-limit), aby vaše předplatné nebylo neočekávaně zakázáno.
 
-- Pokud jste si zaregistrovali [bezplatný účet Azure](https://azure.microsoft.com/free/), [můžete využít některé z nejoblíbenějších služeb Azure zdarma po dobu 12 měsíců](billing-create-free-services-included-free-account.md). Spolu s níže uvedenými doporučeními se můžete podívat, jak si neúčtují [poplatky za bezplatný účet](billing-avoid-charges-free-account.md).
+- Pokud jste si zaregistrovali [bezplatný účet Azure](https://azure.microsoft.com/free/), [můžete využít některé z nejoblíbenějších služeb Azure zdarma po dobu 12 měsíců](billing-create-free-services-included-free-account.md). Spolu s níže uvedenými doporučeními si přečtěte, jak se [vyhnout platbám za bezplatný účet](billing-avoid-charges-free-account.md).
 
-## <a name="get-estimated-costs-before-adding-azure-services"></a>Získat odhadované náklady před přidáním služeb Azure
+## <a name="get-estimated-costs-before-adding-azure-services"></a>Zjištění odhadovaných nákladů před přidáním služeb Azure
 
-Tady jsou některé další informace o odhadu nákladů pomocí následujících nástrojů:
+Zde najdete další informace o odhadu nákladů pomocí následujících nástrojů:
 - Cenová kalkulačka Azure
-- portál Azure
+- Azure Portal
 - Limit útraty
 
-Obrázky v následujících částech ukazují příklad ceny v amerických dolarech.
+Na obrázcích v následujících částech jsou zobrazeny příklady cen v amerických dolarech.
 
 ### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Odhad nákladů online pomocí cenové kalkulačky
 
-Podívejte se na [cenovou kalkulačku](https://azure.microsoft.com/pricing/calculator/) , kde získáte Odhadované měsíční náklady na službu, které vás zajímá. Můžete přidat libovolný prostředek Azure First stran, abyste získali odhadované náklady. V cenové kalkulačkě můžete změnit typ měny.
+Pokud chcete zjistit odhadované měsíční náklady na službu, o kterou máte zájem, použijte [cenovou kalkulačku](https://azure.microsoft.com/pricing/calculator/). Odhadované náklady zjistíte pro jakýkoli prostředek Azure poskytovaný první stranou. V cenové kalkulačce můžete změnit typ měny.
 
-![Snímek nabídky cenové kalkulačky](./media/billing-getting-started/pricing-calc.png)
+![Snímek obrazovky s nabídkou cenové kalkulačky](./media/billing-getting-started/pricing-calc.png)
 
-Například v cenové kalkulačkě je virtuální počítač s Windows (VM) s Windows odhadem na náklady a určitou částku za měsíc v výpočetních hodinách, pokud necháte běžet celý čas:
+Cenová kalkulačka například u virtuálního počítače A1 s Windows odhadne určitou částku za měsíc za výpočetní čas, pokud ho necháte běžet celou dobu:
 
-![Snímek obrazovky s cenovou kalkulačkou, která ukazuje odhadované náklady na virtuální počítač s Windows a1 za měsíc](./media/billing-getting-started/pricing-calcvm.png)
+![Snímek obrazovky s cenovou kalkulačkou, která ukazuje odhadované náklady na virtuální počítač A1 s Windows za měsíc](./media/billing-getting-started/pricing-calcvm.png)
 
-Další informace o cenách najdete v tématu s [cenami – Nejčastější dotazy](https://azure.microsoft.com/pricing/faq/). Pokud se chcete spojit s prodejcem Azure, zavolejte telefonní číslo uvedené v horní části stránky Nejčastější dotazy.
+Další informace o cenách najdete v [nejčastějších dotazech ohledně cen](https://azure.microsoft.com/pricing/faq/). Pokud si chcete promluvit s prodejcem Azure, zavolejte na telefonní číslo uvedené na začátku stránky s nejčastějšími dotazy.
 
-### <a name="review-estimated-costs-in-the-azure-portal"></a>Přečtěte si odhadované náklady na Azure Portal
+### <a name="review-estimated-costs-in-the-azure-portal"></a>Zjištění odhadovaných nákladů na webu Azure Portal
 
-Když v Azure Portal přidáte službu, zobrazí se vám zobrazení odhadovaná cena za měsíc v účtované měně. Když například zvolíte velikost virtuálního počítače s Windows, zobrazí se vám Odhadované měsíční náklady za výpočetní hodiny:
+Když na webu Azure Portal přidáte nějakou službu, můžete se zpravidla podívat na odhadovanou cenu za měsíc ve své účtované měně. Když například zvolíte velikost virtuálního počítače s Windows, uvidíte odhadované měsíční náklady za výpočetní čas:
 
-![Příklad: virtuální počítač s Windows a1 zobrazující odhadované náklady za měsíc](./media/billing-getting-started/vm-size-cost.png)
+![Příklad: virtuální počítač A1 s Windows zobrazující odhadované náklady za měsíc](./media/billing-getting-started/vm-size-cost.png)
 
-### <a name="spending-limit"></a>Podívejte se, jestli máte limit útraty zapnutý.
+### <a name="spending-limit"></a> Zjištění, jestli máte zapnutý limit útraty
 
-Pokud máte předplatné, které používá kredity, je limit útraty ve výchozím nastavení zapnutý. Tím se vám při útratě všech svých kreditů neúčtují poplatky za platební kartu. Podívejte se na [úplný seznam nabídek Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
+Pokud máte předplatné, které používá kredity, je limit útraty standardně zapnutý. Díky tomu se vám při utracení všech kreditů nezačnou strhávat poplatky z platební karty. Prohlédněte si [úplný seznam nabídek Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
 
-Když ale dosáhnete limitu útraty, vaše služby se zablokují. To znamená, že vaše virtuální počítače se nadělují. Abyste se vyhnuli výpadkům služby, musíte vypnout limit útraty. Všechna nadlimitní využití se účtují na platební kartu v souboru.
+Když ale dosáhnete limitu útraty, vaše služby se zakážou. To znamená, že se zruší přidělení vašich virtuálních počítačů. Abyste se vyhnuli výpadkům služby, musíte limit útraty vypnout. Jakékoli nadlimitní využití bude strženo z vaší zaregistrované platební karty.
 
-Pokud chcete zjistit, jestli máte limit útraty, přejděte do [zobrazení předplatná v centru účtů](https://account.windowsazure.com/Subscriptions). Pokud je limit útraty zapnutý, zobrazí se banner podobný následujícímu:
+Pokud chcete zjistit, jestli máte limit útraty zapnutý, přejděte na [zobrazení Předplatná v Centru účtů](https://account.windowsazure.com/Subscriptions). Pokud je limit útraty zapnutý, zobrazí se informační zpráva podobná následující:
 
-![Snímek obrazovky zobrazující upozornění týkající se limitu útraty v centru účtů](./media/billing-getting-started/spending-limit-banner.png)
+![Snímek obrazovky zobrazující upozornění na zapnutý limit útraty v Centru účtů](./media/billing-getting-started/spending-limit-banner.png)
 
-Klikněte na banner a podle zobrazených výzev odeberte limit útraty. Pokud jste při registraci nezadali informace o kreditních kartách, je nutné ji zadat, chcete-li odebrat limit útraty. Další informace najdete v tématu [limit útraty Azure – jak to funguje a jak ho povolit nebo odebrat](https://azure.microsoft.com/pricing/spending-limits/).
+Klikněte na tuto informační zprávu a podle zobrazených pokynů limit útraty odeberte. Pokud jste při registraci nezadali informace o platební kartě, musíte je kvůli odebrání limitu útraty zadat. Další informace najdete v článku [Limit útraty Azure – jak funguje a jak ho aktivovat nebo odebrat](https://azure.microsoft.com/pricing/spending-limits/).
 
-## <a name="use-budgets-and-cost-alerts"></a>Použití rozpočtů a cenových výstrah
+## <a name="use-budgets-and-cost-alerts"></a>Použití rozpočtů a upozornění na náklady
 
-Můžete vytvářet [rozpočty](../cost-management/tutorial-acm-create-budgets.md) pro správu nákladů a vytvářet [výstrahy](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) , které automaticky upozorňují zúčastněné strany na anomálie a rizika plynoucí z výdajů. Výstrahy vycházejí z útraty v porovnání s rozpočtovými a nákladovou prahovou hodnotou.
+Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-management/tutorial-acm-create-budgets.md) a nastavit [upozornění](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů.
 
 ## <a name="monitor-costs-when-using-azure-services"></a>Monitorování nákladů při používání služeb Azure
 Náklady můžete monitorovat pomocí následujících nástrojů:
 
-- Tags
-- Rozpis nákladů a rychlost vypálení
+- Značky
+- Rozpis nákladů a pracovní tempo
 - Analýza nákladů
 
-### <a name="tags"></a>Přidání značek k prostředkům pro seskupení fakturačních dat
+### <a name="tags"></a> Seskupení fakturačních údajů přidáním značek k prostředkům
 
-Pomocí značek můžete seskupit fakturační data pro podporované služby. Například pokud spustíte několik virtuálních počítačů pro různé týmy, pak můžete pomocí značek kategorizovat náklady podle nákladového střediska (například: HR, marketing, finance atd.) nebo prostředí (například: produkční, předprodukční, test).
+Pomocí značek můžete seskupit fakturační údaje za podporované služby. Pokud například provozujete několik virtuálních počítačů pro různé týmy, můžete pomocí značek kategorizovat náklady podle nákladového střediska (například pro osobní, marketingové a finanční oddělení) nebo prostředí (například pro produkční, předprodukční a testovací).
 
 ![Snímek obrazovky, který ukazuje nastavení značek na portálu](./media/billing-getting-started/tags.png)
 
-Značky se zobrazí v různých zobrazeních pro generování sestav nákladů. Například jsou viditelné v [zobrazení analýza nákladů](#costs) hned a v souboru CSV s podrobným využitím po vašem prvním fakturačním období.
+Značky jsou vidět v různých zobrazeních s výkazy nákladů. Po prvním fakturačním období jsou například vidět v [zobrazení analýzy nákladů](#costs) a v souboru CSV s podrobným využitím.
 
-Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
+Další informace najdete v článku [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a>Sledovat rozpis nákladů a rychlost vypálení
+### <a name="costs"></a> Monitorování rozpisu nákladů a pracovního tempa
 
-Po spuštění služeb Azure budou pravidelně kontrolovat poplatky. Aktuální útratu a pracovní tempo můžete vidět v Azure Portal.
+Po spuštění služeb Azure pravidelně kontrolujte poplatky. Aktuální útratu a pracovní tempo si můžete prohlédnout na webu Azure Portal.
 
-1. Přejděte na [předplatná v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
+1. Přejděte na [Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-2. Pokud je pro vaše předplatné podporovaná, zobrazí se rozpis nákladů a rychlost vypalování.
+2. Pokud to vaše předplatné podporuje, zobrazí se rozpis nákladů a pracovní tempo.
 
-    ![Snímek obrazovky s počtem a rozpisem vypálení v Azure Portal](./media/billing-getting-started/burn-rate.PNG)
+    ![Snímek obrazovky s pracovním tempem a rozpisem na webu Azure Portal](./media/billing-getting-started/burn-rate.PNG)
 
-3. Kliknutím na [Analýza nákladů](../cost-management/quick-acm-cost-analysis.md) v seznamu nalevo zobrazíte rozpis nákladů podle prostředků. Po přidání služby počkejte 24 hodin na zobrazení dat.
+3. Kliknutím na [Analýza nákladů](../cost-management/quick-acm-cost-analysis.md) v seznamu nalevo zobrazíte rozpis nákladů podle prostředků. Po přidání nějaké služby počkejte 24 hodin, než se údaje zobrazí.
 
-    ![Snímek obrazovky zobrazení analýzy nákladů v Azure Portal](./media/billing-getting-started/cost-analysis.png)
+    ![Snímek obrazovky se zobrazením analýzy nákladů na webu Azure Portal](./media/billing-getting-started/cost-analysis.png)
 
-4. Můžete filtrovat podle různých vlastností, jako jsou [značky](#tags), typ prostředku, skupina prostředků a časový rozsah. Kliknutím na **použít** potvrďte filtry a **Stáhněte si** , jestli chcete exportovat zobrazení do souboru hodnot oddělených čárkami (. csv).
+4. Můžete filtrovat podle různých vlastností, jako jsou [značky](#tags), typ prostředku, skupina prostředků a časový rozsah. Kliknutím na **Použít** filtry potvrďte a pak klikněte na **Stáhnout**, pokud chcete toto zobrazení exportovat do textového souboru s oddělovači (.csv).
 
-5. Kromě toho můžete kliknutím na prostředek zobrazit historii denních výdajů a množství nákladů na prostředky.
+5. Kromě toho můžete kliknutím na prostředek zobrazit historii denní útraty a zjistit, kolik vás tento prostředek každý den stojí.
 
-    ![Snímek obrazovky s zobrazením historie výdajů v Azure Portal](./media/billing-getting-started/costhistory.png)
+    ![Snímek obrazovky se zobrazením historie výdajů na webu Azure Portal](./media/billing-getting-started/costhistory.png)
 
-Porovnejte náklady, které vidíte, u odhadů, které jste viděli při výběru služeb. Pokud se náklady významně liší od odhadů, podívejte se do cenového plánu, který jste vybrali pro vaše prostředky.
+Náklady, které vidíte, porovnejte s odhady, které jste viděli při výběru služeb. Pokud se náklady od odhadů významně liší, zkontrolujte cenový plán, který jste pro své prostředky vybrali.
 
 ## <a name="optimize-and-reduce-costs"></a>Optimalizace a snížení nákladů
-Pokud nejste obeznámeni se zásadami správy nákladů, přečtěte si, [jak optimalizovat cloudovou investici pomocí Azure cost management](../cost-management/cost-mgt-best-practices.md).
+Pokud nejste obeznámeni s principy řízení nákladů, přečtěte si článek [Využití investice do cloudu na maximum se službou Azure Cost Management](../cost-management/cost-mgt-best-practices.md).
 
-V Azure Portal můžete také optimalizovat a snížit náklady na Azure pomocí automatického vypnutí pro virtuální počítače a doporučení poradce.
+Také na webu Azure Portal můžete optimalizovat a snížit náklady na Azure pomocí automatického vypínání virtuálních počítačů a doporučení Advisoru (Poradce).
 
-### <a name="consider-cost-cutting-features-like-auto-shutdown-for-vms"></a>Zvažte funkce, jako je automatické vypnutí pro virtuální počítače.
+### <a name="consider-cost-cutting-features-like-auto-shutdown-for-vms"></a>Zvážení funkcí pro snížení nákladů, jako je automatické vypínání virtuálních počítačů
 
-V závislosti na vašem scénáři můžete automatické vypnutí pro virtuální počítače nakonfigurovat v Azure Portal. Další informace najdete v tématu [Automatické vypnutí virtuálních počítačů pomocí Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
+Podle situace můžete na webu Azure Portal nakonfigurovat automatické vypínání virtuálních počítačů. Další informace najdete v článku [Automatické vypínání virtuálních počítačů pomocí Azure Resource Manageru](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
-![Snímek obrazovky s možností automatického vypnutí na portálu](./media/billing-getting-started/auto-shutdown.png)
+![Snímek obrazovky s možností automatického vypínání na portálu](./media/billing-getting-started/auto-shutdown.png)
 
-Automatické vypnutí není stejné jako při vypnutí na virtuálním počítači s možností napájení. Automatické vypnutí se zastaví a zruší přidělení virtuálních počítačů, aby se zastavily další poplatky za využití. Další informace najdete v tématu VĚNOVANÉm cenám pro virtuální počítače se systémem [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) o stavech virtuálních počítačů.
+Automatické vypnutí není totéž jako vypnutí virtuálního počítače pomocí možností napájení. Při automatickém vypnutí se virtuální počítače zastaví a zruší se jejich přidělení, takže nenabíhají další poplatky za využití. Další informace najdete v nejčastějších dotazech ke stavům virtuálních počítačů pro [virtuální počítače s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Další cenové funkce pro vývojová a testovací prostředí najdete [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
+Další funkce pro snížení nákladů u vývojových a testovacích prostředí popisuje [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
-### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Zapnutí a kontrola Azure Advisor doporučení
+### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Zapnutí a kontrola doporučení Azure Advisoru (Poradce)
 
-[Azure Advisor](../advisor/advisor-overview.md) pomáhá snižovat náklady tím, že identifikuje prostředky s nízkým využitím. Navštivte službu Advisor v Azure Portal:
+[Azure Advisor](../advisor/advisor-overview.md) (Poradce) pomáhá snižovat náklady tím, že identifikuje prostředky s nízkým využitím. Přejděte na Advisor (Poradce) na webu Azure Portal:
 
-![Snímek obrazovky s tlačítkem Azure Advisor v Azure Portal](./media/billing-getting-started/advisor-button.png)
+![Snímek obrazovky s tlačítkem Advisor (Poradce) na webu Azure Portal](./media/billing-getting-started/advisor-button.png)
 
-Užitečná doporučení můžete získat na kartě **náklady** na řídicím panelu Poradce:
+Užitečná doporučení můžete získat na kartě **Náklady** na řídicím panelu Advisoru (Poradce):
 
-![Snímek obrazovky s doporučením pro náklady na poradce](./media/billing-getting-started/advisor-action.png)
+![Snímek obrazovky s příkladem doporučení Advisoru (Poradce) ohledně nákladů](./media/billing-getting-started/advisor-action.png)
 
-Kurz průvodce [optimalizace nákladů z doporučení](../cost-management/tutorial-acm-opt-recommendations.md) najdete v kurzu s podrobnými informacemi o úsporách nákladů a šetřících náklady.
+Absolvujte výukový kurz [Optimalizace nákladů na základě doporučení](../cost-management/tutorial-acm-opt-recommendations.md), který se věnuje doporučením Advisoru (Poradce) ohledně úspor nákladů.
 
-## <a name="review-costs-against-your-latest-invoice"></a>Kontrola nákladů na nejnovější fakturu
+## <a name="review-costs-against-your-latest-invoice"></a>Kontrola nákladů na nejnovější faktuře
 
-Na konci fakturačního cyklu je k dispozici vaše nejnovější faktury. Můžete si také [Stáhnout faktury a podrobné soubory použití](billing-download-azure-invoice-daily-usage-date.md) , abyste se ujistili, že jste se vyrovnali správně. Další informace o porovnání denního využití s vaší fakturou najdete v tématu [vysvětlení faktury za Microsoft Azure](billing-understand-your-bill.md).
+Na konci fakturačního cyklu je k dispozici vaše nejnovější faktura. Můžete si také [stáhnout faktury a soubory s podrobnými informacemi o využití](billing-download-azure-invoice-daily-usage-date.md) a zkontrolovat správnost vyúčtování. Další informace o porovnání denního využití s fakturou najdete v článku [Informace o vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md).
 
 ### <a name="billing-api"></a>Rozhraní API pro fakturaci
 
-Pomocí rozhraní API pro fakturaci Azure můžete programově získat data o využití. Využijte rozhraní API pro RateCard a rozhraní API pro využití a získejte vaše fakturované využití. Další informace najdete v tématu [Získání přehledů o spotřebě prostředků Microsoft Azure](billing-usage-rate-card-overview.md).
+Pomocí rozhraní API pro fakturaci Azure můžete data o využití získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](billing-usage-rate-card-overview.md).
 
-## <a name="other-offers"></a>Další zdroje informací a zvláštní případy
+## <a name="other-offers"></a> Další prostředky a speciální případy
 
-### <a name="ea-csp-and-sponsorship-customers"></a>Zákazníci se smlouvou EA, CSP a sponzorství
-Začněte tím, že budete kontaktovat svého správce účtů nebo partnera Azure.
+### <a name="ea-csp-and-sponsorship-customers"></a>Zákazníci využívající EA, CSP a Sponsorship
+Začněte tím, že kontaktujete svého account manažera nebo partnera Azure.
 
 | Nabídka | Zdroje a prostředky |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Smlouva Enterprise (EA) | [Portál EA](https://ea.azure.com/), [dokumentace k nápovědě](https://ea.azure.com/helpdocs)a [Power BI sestava](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Kontaktujte svého poskytovatele |
-| Azure Sponsorship | [Portál sponzorství](https://www.microsoftazuresponsorships.com/) |
+| Smlouva Enterprise (EA) | [Portál EA](https://ea.azure.com/), [nápověda](https://ea.azure.com/helpdocs) a [sestava Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
+| CSP (Cloud Solution Provider) | Kontaktujte svého poskytovatele. |
+| Azure Sponsorship | [Portál Sponsorship](https://www.microsoftazuresponsorships.com/) |
 
-Pokud ho spravujete pro velkou organizaci, doporučujeme, abyste si přečetli [Azure Enterprise weblešení](/azure/architecture/cloud-adoption-guide/subscription-governance) a [Podnikový IT dokument White Paper](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (soubor. PDF stažením, jenom v angličtině).
+Pokud se staráte o IT ve velké organizaci, doporučujeme, abyste si přečetli článek o [používání Azure v podnicích](/azure/architecture/cloud-adoption-guide/subscription-governance) a [dokument white paper o podnikovém IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (soubor .pdf ke stažení, jen v angličtině).
 
-#### <a name="EA"></a>smlouva Enterprise zobrazení nákladů v Azure Portal
+#### <a name="EA"></a> Zobrazení nákladů u smlouvy Enterprise na webu Azure Portal
 
-Podniková zobrazení nákladů jsou v současnosti ve Public Preview. Položky, které se mají poznamenat:
+Zobrazení nákladů u smluv Enterprise je v současnosti ve veřejné verzi Preview. Měli byste vědět:
 
-- Náklady na předplatné jsou založené na využití a nezahrnují předplacené částky, překročení limitů, zahrnuté množství, úpravy a daně. Skutečné poplatky jsou vypočítány na úrovni registrace.
-- Částky zobrazené v Azure Portal se mohou lišit od toho, co je na portálu Enterprise. Aktualizace na portálu Enterprise může trvat několik minut, než se změny zobrazí v Azure Portal.
-- Pokud nevidíte žádné náklady, může to být z jednoho z následujících důvodů:
-    - Nemáte oprávnění na úrovni předplatného. Pokud chcete zobrazit zobrazení podnikových nákladů, musíte být čtečkou fakturace, čtenář, přispěvatel nebo vlastník na úrovni předplatného.
-    - Jste vlastníkem účtu a správce registrace zakázal nastavení "poplatky za zobrazení".  Pokud chcete získat přístup k nákladům, obraťte se na správce registrace.
-    - Jste správcem vašeho oddělení a správce registrace zakázal nastavení **Zobrazit poplatky za zobrazení da** .  Pro získání přístupu se obraťte na správce registrace.
-    - Nakoupili jste Azure prostřednictvím partnera pro kanály a partner neuvolnil informace o cenách.  
-- Pokud aktualizujete nastavení související s přístupem k nákladům na portálu Enterprise, nastane zpoždění několik minut, než se změny zobrazí v Azure Portal.
+- Náklady na předplatné vycházejí z využití a nezahrnují předplacené částky, nadlimitní využití, zahrnuté množství, opravy a daně. Skutečné poplatky se počítají na úrovni prováděcí smlouvy.
+- Částky zobrazené na webu Azure Portal se mohou lišit od částek na portálu Enterprise. Aktualizace na portálu Enterprise se na webu Azure Portal mohou projevit až za několik minut.
+- Pokud nevidíte žádné náklady, může to mít jeden z následujících důvodů:
+    - Nemáte oprávnění na úrovni předplatného. Abyste viděli zobrazení podnikových nákladů, musíte být čtenářem fakturace, čtenářem, přispěvatelem nebo vlastníkem na úrovni předplatného.
+    - Jste vlastníkem účtu a váš správce prováděcí smlouvy zakázal nastavení pro zobrazení nákladů vlastníkovi účtu.  Požádejte správce prováděcí smlouvy o přístup k nákladům.
+    - Jste správcem oddělení a váš správce prováděcí smlouvy zakázal nastavení pro **zobrazení nákladů správci oddělení**.  Požádejte správce prováděcí smlouvy o přístup.
+    - Koupili jste Azure přes distribučního partnera a tento partner neuvolnil informace o ceně.  
+- Pokud na portálu Enterprise aktualizujete nastavení související s přístupem k nákladům, projeví se změny na webu Azure Portal se zpožděním několika minut.
 - Limit útraty a pokyny k fakturaci se nevztahují na předplatná EA.
 
-### <a name="check-your-subscription-and-access"></a>Kontrolovat předplatné a přístup
+### <a name="check-your-subscription-and-access"></a>Kontrola předplatného a přístupu
 
-Chcete-li zobrazit náklady, je nutné mít [přístup na úrovni předplatného k fakturačním údajům](billing-manage-access.md). Pouze správce účtu má přístup k [centru účtů](https://account.azure.com/Subscriptions), změnám fakturačních údajů a správě předplatných. Správce účtu je osoba, která se stala procesem registrace. Další informace najdete v tématu [Přidání nebo změna rolí správce Azure, které spravují předplatné nebo služby](billing-add-change-azure-subscription-administrator.md).
+Abyste viděli náklady, musíte mít [přístup k fakturačním údajům na úrovni předplatného](billing-manage-access.md). K [Centru účtů](https://account.azure.com/Subscriptions), změně fakturačních údajů a správě předplatných má přístup jen správce účtu. Správce účtu je osoba, která prošla procesem registrace. Další informace najdete v článku [Jak přidat nebo změnit role správce Azure, které spravují předplatné nebo služby](billing-add-change-azure-subscription-administrator.md).
 
-Pokud se chcete podívat, jestli jste správcem účtu, přejděte na [předplatná v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Zobrazte seznam předplatných a najděte **moji roli**. Pokud je *správcem účtu* role, pak máte úplná oprávnění. Pokud se říká něco jiného, jako je *vlastník*, nemáte úplná oprávnění.
+Pokud chcete zjistit, jestli jste správcem účtu, přejděte na [Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Zobrazte seznam předplatných a najděte sloupec **Moje role**. Pokud je zde uvedeno *Správce účtu*, pak máte úplná oprávnění. Pokud je zde uvedeno něco jiného, například *Vlastník*, pak úplná oprávnění nemáte.
 
-![Snímek obrazovky vaší role v zobrazení předplatných v Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
+![Snímek obrazovky vaší role v zobrazení Předplatná na webu Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
 
-Pokud chcete spravovat předplatná a měnit informace o fakturaci, [Najděte správce účtu](billing-subscription-transfer.md#whoisaa). Požádejte správce účtu, aby dokončil úkoly nebo [přeneste předplatné za vás](billing-subscription-transfer.md).
+Pokud chcete spravovat předplatná a měnit fakturační údaje, [najděte správce účtu](billing-subscription-transfer.md#whoisaa). Požádejte správce účtu o provedení příslušných úkolů nebo o [převod předplatného na vás](billing-subscription-transfer.md).
 
-Pokud správce účtu už není ve vaší organizaci a potřebujete spravovat fakturaci, [kontaktujte nás](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud správce účtu už nepracuje ve vaší organizaci a potřebujete spravovat fakturaci, [kontaktujte nás](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 
-### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Požádat o smlouva SLA kredit pro incident služby
+### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Vyžádání kreditu smlouvy o úrovni služeb za servisní incident
 
-Smlouva o úrovni služeb (SLA) popisuje závazky společnosti Microsoft týkající se dostupnosti a konektivity. Incident služby se oznamuje, když se služby Azure setkávají s problémem, který má dopad na provozuschopnost nebo konektivitu, často se označuje jako výpadek. Pokud pro každou službu nedosáhneme a udržujeme úrovně služeb, jak je popsáno v smlouvě SLA, můžete mít nárok na kredit na část svých měsíčních poplatků za služby.
+Smlouva o úrovni služeb (SLA) popisuje závazky Microsoftu týkající se dostupnosti a konektivity. Servisní incident je nahlášen, když se služby Azure potýkají s problémem, který má dopad na dostupnost nebo konektivitu, a často se označuje jako *výpadek*. Pokud nedosáhneme a neudržíme úrovně jednotlivých služeb, jak je popsáno ve smlouvě SLA, můžete mít nárok na kredit části vašich měsíčních poplatků za služby.
 
-Požadavek na kredit:
+Kredit si vyžádáte takto:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, ujistěte se, že používáte tu, kterou ovlivnila výpadky Azure. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, nezapomeňte použít ten, který byl ovlivněn výpadkem Azure. 
 2. Vytvořte novou žádost o podporu.
-3. V části **typ problému**vyberte **fakturace**.
-4. V části **typ problému**vyberte **žádost o refundaci**.
-5. Přidejte podrobnosti, abyste určili, že žádáte o kredit smlouvy SLA, zmiňujete si datum, čas, časové pásmo a také ovlivněné služby (virtuální počítače, weby atd.).
-6. Ověřte své kontaktní údaje a vyberte **vytvořit** a odešlete žádost.
+3. V seznamu **Typ problému** vyberte **Fakturace**.
+4. V seznamu **Typ problému** vyberte **Žádost o refundaci**.
+5. Popište, že žádáte o kredit na základě smlouvy SLA, uveďte datum/čas/časové pásmo a dotčené služby (virtuální počítače, weby atd.).
+6. Ověřte své kontaktní údaje a výběrem možnosti **Vytvořit** žádost odešlete.
 
-Prahové hodnoty smlouvy SLA se liší podle služby. Například webová vrstva SQL má smlouvu SLA 99,9%, virtuální počítače mají smlouvu SLA o 99,95% a úroveň Standard SQL má smlouvu SLA na 99,99%.
+Prahové hodnoty smlouvy SLA se liší podle služby. Například SQL na úrovni Web má smlouvu SLA na 99,9 %, virtuální počítače mají smlouvu SLA na 99,95 % a SQL úrovně Standard má smlouvu SLA na 99,99 %.
 
-U některých služeb jsou k dispozici předpoklady pro použití smlouvy SLA. Například virtuální počítače musí mít nasazené dvě nebo více instancí ve stejné skupině dostupnosti.
+U některých služeb musí být splněny určité předpoklady, aby šla smlouva SLA uplatnit. Například virtuální počítače musí mít nasazené nejméně dvě instance ve stejné skupině dostupnosti.
 
-Další informace najdete v dokumentaci ke [smlouvám o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) a [souhrnu SLA pro služby Azure](https://azure.microsoft.com/support/legal/sla/summary/) .
+Další informace najdete v dokumentaci ke [smlouvám o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) a [souhrnu smluv SLA pro služby Azure](https://azure.microsoft.com/support/legal/sla/summary/).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si [](billing-spending-limit.md) o používání limitů útraty, abyste zabránili nadměrnému využití.
+- Seznamte se s [limity útraty](billing-spending-limit.md), abyste neutráceli víc, než musíte.
 - Začněte [analyzovat náklady na Azure](../cost-management/quick-acm-cost-analysis.md).

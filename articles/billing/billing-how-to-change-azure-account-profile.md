@@ -1,6 +1,6 @@
 ---
-title: Změna informací o profilu účtu Azure | Microsoft Docs
-description: V této části najdete popis postupu změny profilu účtu správy Azure a kontaktní e-mailové adresy.
+title: Změna informací o profilu na účtu Azure | Microsoft Docs
+description: Článek vysvětluje, jak změnit profil a kontaktní e-mailovou adresu na účtu správce Azure.
 author: genlin
 manager: alherz
 tags: billing
@@ -14,93 +14,93 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dea54f2e692174e12cb2dc1f0e0e0ed9fca127bc
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68516578"
 ---
-# <a name="change-the-profile-information-for-your-azure-account"></a>Změna informací o profilu účtu Azure
+# <a name="change-the-profile-information-for-your-azure-account"></a>Změna informací o profilu na účtu Azure
 
-Společnost Microsoft používá e-mailovou adresu v profilu správce účtu k odesílání důležitých oznámení o fakturaci, službě a doporučení týkajících se účtu Azure. Doporučujeme, abyste zadali e-mailovou adresu, kterou pravidelně kontrolujete. Jako správce účtu můžete profil také aktualizovat, aby se změnila poštovní adresa a telefonní číslo účtu.
+Microsoft používá e-mailovou adresu v profilu správce účtu k zasílání důležitých oznámení o fakturaci a službách a doporučení týkající se účtu Azure. Doporučujeme zadat e-mailovou adresu, kterou pravidelně kontrolujete. Jako správce účtu můžete také profil aktualizovat a změnit v něm poštovní adresu a telefonní číslo pro daný účet.
 
-Společnost Microsoft používá e-mailovou adresu v profilu uživatele, účet uživatele, který není správcem účtu, k odesílání oznámení souvisejících se službou a doporučení pro účty. Všechna fakturační oznámení se odesílají správci účtu. Profil můžete také aktualizovat, aby se změnila vaše poštovní adresa a telefonní číslo, ale nezmění se poštovní adresa nebo telefonní číslo účtu.
+Microsoft používá e-mailovou adresu v profilu uživatele účtu, který není správcem účtu, k zasílání oznámení o službách a doporučení týkajících se účtu. Všechna fakturační oznámení se odesílají správci účtu. Můžete také svůj profil aktualizovat a změnit v něm poštovní adresu a telefonní číslo, ale poštovní adresa ani telefonní číslo přiřazené k účtu se tím nezmění.
 
 ## <a name="change-your-profile-information"></a>Změna informací o profilu
 
 1. Přihlaste se do [Centra účtů Azure](https://account.azure.com/subscriptions).
 1. Vyberte tlačítko **Upravit podrobnosti** a pak aktualizujte informace o **profilu**.
 
-   ![Příklad informací o profilu Azure](./media/billing-how-to-change-azure-account-profile/profile.png)
+   ![Příklad informací o profilu v Azure](./media/billing-how-to-change-azure-account-profile/profile.png)
 
-### <a name="send-notifications-to-an-additional-email-address"></a>Odeslat oznámení na další e-mailovou adresu
+### <a name="send-notifications-to-an-additional-email-address"></a>Odesílání oznámení na další e-mailovou adresu
 
-Kromě e-mailové adresy správce účtu, která je přidružená k vašemu účtu, můžete mít oznámení o službě a doporučení k účtu odeslané na e-mailovou adresu. E-mailová adresa správce účtu získá důležitá oznámení o všech předplatných pod účtem, včetně aktualizací souvisejících s fakturací.
+Můžete nastavit odesílání oznámení služeb a doporučení k účtu i na jinou e-mailovou adresu než na e-mailovou adresu správce účtu, která je přidružená k vašemu účtu. Na e-mailovou adresu správce účtu přicházejí důležitá oznámení týkající se všech předplatných v rámci daného účtu, včetně zpráv o fakturaci.
 
 ### <a name="change-the-account-administrators-email-address-in-your-profile"></a>Změna e-mailové adresy správce účtu ve vašem profilu
 
 Správce účtu je osoba, která nastavila účet Azure a která dostává důležitá e-mailová oznámení týkající se všech předplatných v rámci účtu. Doporučujeme zadat kontaktní e-mailovou adresu, kterou pravidelně kontroluje správce účtu.
 
-### <a name="update-your-sign-in-email-address"></a>Aktualizace e-mailové adresy pro přihlášení
+### <a name="update-your-sign-in-email-address"></a>Aktualizace přihlašovací e-mailové adresy
 
-Při aktualizaci e-mailové adresy profilu se neaktualizuje e-mailová adresa pro přihlášení. Chcete-li změnit přihlašovací e-mailovou adresu, je nutné přenést vlastnictví účtu.
+Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy. Pokud chcete změnit přihlašovací e-mailovou adresu, musíte převést vlastnictví účtu.
 
 ### <a name="update-the-billing-address-for-your-credit-card"></a>Aktualizace fakturační adresy pro platební kartu
 
-Informace o tom, jak aktualizovat fakturační údaje, najdete v tématu [Změna platební karty, která se používá k platbám za předplatné Azure](billing-how-to-change-credit-card.md).
+Informace o aktualizaci fakturačních údajů najdete v tématu [Změna platební karty použité k úhradě předplatného Azure](billing-how-to-change-credit-card.md).
 
-### <a name="update-your-countryregion"></a>Aktualizace země nebo oblasti
+### <a name="update-your-countryregion"></a>Aktualizace země/oblasti
 
-Z důvodu technických omezení nemůžeme pro existující účet změnit zemi nebo oblast. Můžete ale vytvořit účet v požadované zemi nebo oblasti a potom kontaktovat podporu Azure a migrovat vaše služby na tento účet.
+Z důvodu technických omezení není na stávajícím účtu možné změnit zemi/oblast. Můžete ale vytvořit účet v požadované zemi/oblasti a potom kontaktovat podporu Azure, aby na tento účet migrovala vaše služby.
 
-## <a name="service-and-marketing-emails"></a>E-maily služby a marketingu
+## <a name="service-and-marketing-emails"></a>Oznámení služeb a marketingové e-maily
 
-Budete vyzváni k zadání [Azure Portal](https://portal.azure.com) k ověření nebo aktualizaci e-mailové adresy každých 90 dní. Microsoft odesílá e-maily e-mailové adresy vašeho profilu s informacemi týkajícími se účtu Azure:
+Na webu [Azure Portal](https://portal.azure.com) se vám každých 90 dní zobrazí výzva k ověření nebo aktualizaci e-mailové adresy. Microsoft odesílá na e-mailovou adresu ve vašem profilu následující informace týkající se účtu Azure:
 
-- Oznámení služeb
+- Oznámení služby
 - Výstrahy zabezpečení
-- Účely fakturace
+- Zprávy o fakturaci
 - Podpora
-- Marketingová komunikace
-- Doporučení k osvědčeným postupům na základě využití Azure
+- Marketingová sdělení
+- Doporučené osvědčené postupy na základě vašeho používání Azure
 
-Zadejte e-mailovou adresu, na které chcete dostávat oznámení o vašem účtu. Když zadáte e-mailovou adresu, budete moci dostávat oznámení od Microsoftu.
+Zadejte e-mailovou adresu, na kterou chcete dostávat zprávy o vašem účtu. Zadáním e-mailové adresy se přihlašujete k zasílání zpráv od Microsoftu.
 
 ![Příklad výzvy k aktualizaci kontaktních údajů](./media/billing-how-to-change-azure-account-profile/update-contact-information.png)
 
 ### <a name="change-your-contact-email-address"></a>Změna kontaktní e-mailové adresy
 
-Kontaktní e-mailovou adresu můžete změnit pomocí jedné z následujících metod:
+Kontaktní e-mailovou adresu můžete změnit těmito způsoby:
 
-* Přihlaste se do [Centra účtů Azure](https://account.azure.com/subscriptions). Vyberte **Upravit podrobnosti** a pak aktualizujte e-mailovou adresu profilu. Aktualizace e-mailové adresy vašeho profilu neaktualizuje vaši e-mailovou adresu přihlášení.
+* Přihlaste se do [Centra účtů Azure](https://account.azure.com/subscriptions). Vyberte **Upravit podrobnosti** a aktualizujte e-mailovou adresu v profilu. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
 
-* V Azure Portal přejděte do oblasti [kontaktní informace](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) a zadejte e-mailovou adresu. Adresa, kterou poskytnete, přijímá službu a marketingovou komunikaci. E-mailová adresa v profilu Centrum účtů Azure se aktualizuje tak, aby odpovídala automaticky. Aktualizace e-mailové adresy vašeho profilu neaktualizuje vaši e-mailovou adresu přihlášení.
+* Přejděte na webu Azure Portal do části [Kontaktní údaje](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) a zadejte e-mailovou adresu. Na zadanou adresu se budou zasílat zprávy o službách a marketingové zprávy. Automaticky se upraví i e-mailová adresa v profilu v Centru účtů Azure. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
 
-* V [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte kontextovou nabídku ( **...** ). Potom v nabídce vyberte **moje kontaktní informace** a zadejte e-mailovou adresu. Adresa, kterou poskytnete, přijímá službu a marketingovou komunikaci. E-mailová adresa v profilu Centrum účtů Azure se aktualizuje tak, aby odpovídala automaticky. Aktualizace e-mailové adresy vašeho profilu neaktualizuje vaši e-mailovou adresu přihlášení.
+* Na webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte místní nabídku ( **…** ). Pak v nabídce vyberte **Moje kontaktní údaje** a zadejte e-mailovou adresu. Na zadanou adresu se budou zasílat zprávy o službách a marketingové zprávy. Automaticky se upraví i e-mailová adresa ve vašem profilu v Centru účtů Azure. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
 
 ![Příklad aktualizace e-mailové adresy v Azure](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 
-### <a name="opt-out-of-marketing-emails"></a>Odhlásit z marketingových e-mailů
+### <a name="opt-out-of-marketing-emails"></a>Odhlášení od zasílání marketingových e-mailů
 
-Výslovný souhlas s příjmem marketingových e-mailů:
+Pokud se chcete odhlásit od zasílání marketingových e-mailů, postupujte takto:
 
-1. Pokud chcete odeslat žádost pomocí e-mailové adresy vašeho profilu, otevřete [formulář žádosti](https://account.microsoft.com/profile/permissions-link-request) . Pomocí e-mailu dostanete odkaz na aktualizaci vašich předvoleb.
-2. Kliknutím na odkaz otevřete stránku **Spravovat oprávnění komunikace** . Na této stránce jsou uvedeny typy marketingové komunikace, ke kterým je e-mailová adresa vybrána. Vymažte všechna témata, která chcete odhlásit, a pak vyberte **Uložit**.
+1. Přejděte na [formulář požadavku](https://account.microsoft.com/profile/permissions-link-request) a zadejte požadavek, ve kterém uvedete e-mailovou adresu ve svém profilu. Dostanete e-mail s odkazem pro aktualizaci předvoleb.
+2. Výběrem tohoto odkazu otevřete stránku **Správa oprávnění ke komunikaci**. Tato stránka obsahuje typy marketingových zpráv, k jejichž zasílání je daná e-mailová adresa přihlášená. Zrušte zaškrtnutí všech témat, z jejichž zasílání se chcete odhlásit, a pak zvolte **Uložit**.
 
-![Příklad stránky pro správu oprávnění komunikace](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
+![Příklad stránky pro správu oprávnění ke komunikaci](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
-Když se odhlásíte od marketingové komunikace, na základě vašeho účtu se dál dostanou oznámení služby.
+Po odhlášení ze zasílání marketingových zpráv budete dál dostávat oznámení služeb pro váš účet.
 
 ## <a name="change-the-subscription-name"></a>Změna názvu předplatného
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), v levém podokně vyberte **předplatné** a pak vyberte předplatné, které chcete přejmenovat.
-1. Vyberte **Přehled**a pak na panelu příkazů vyberte **Přejmenovat** .
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com), v levém podokně vyberte **Předplatné** a pak zvolte předplatné, které chcete přejmenovat.
+1. Vyberte **Přehled** a na panelu příkazů vyberte **Přejmenovat**.
     ![Příklad přejmenování předplatného Azure](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
-1. Po změně názvu vyberte **Save (Uložit**).
+1. Až změníte název, vyberte **Uložit**.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
 - [Zobrazení fakturačních účtů](billing-view-all-accounts.md)

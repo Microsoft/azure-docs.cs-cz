@@ -1,6 +1,6 @@
 ---
-title: Kontrola fakturačních dat předplatného Azure pomocí REST API | Microsoft Docs
-description: Naučte se používat rozhraní Azure REST API ke kontrole podrobností fakturace předplatného.
+title: Kontrola fakturačních dat předplatného Azure pomocí rozhraní REST API | Microsoft Docs
+description: Naučte se používat rozhraní Azure REST API ke kontrole podrobných údajů fakturace předplatného.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: banders
 ms.openlocfilehash: 8cfa429b18fb282f5c1f85d2fd1637704653b855
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443050"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Kontrola fakturace předplatného pomocí rozhraní REST API
 
 Rozhraní API pro vytváření sestav Azure vám pomůžou zkontrolovat a spravovat náklady na Azure.
 
-Filtry vám pomůžou přizpůsobit výsledky, aby vyhovovaly vašim potřebám.
+Filtry pomůžou přizpůsobit výsledky, aby vyhovovaly vašim potřebám.
 
-Tady se naučíte, jak použít REST API k vrácení podrobností fakturace předplatného pro daný rozsah dat.
+Tady se naučíte, jak používat rozhraní REST API k vrácení podrobných údajů fakturace předplatného pro daný rozsah dat.
 
 ``` http
 GET https://management.azure.com/subscriptions/${subscriptionID}/providers/Microsoft.Billing/billingPeriods/${billingPeriod}/providers/Microsoft.Consumption/usageDetails?$filter=properties/usageEnd ge '${startDate}' AND properties/usageEnd le '${endDate}'
@@ -35,24 +35,24 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-`{subscriptionID}` Parametr je povinný a identifikuje cílové předplatné.
+Parametr `{subscriptionID}` je povinný a identifikuje cílové předplatné.
 
-Parametr je povinný a určuje aktuální [fakturační období.](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) `{billingPeriod}`
+Parametr `{billingPeriod}` je povinný a určuje aktuální [fakturační období](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
-V `${startDate}` tomto `${endDate}` příkladu jsou vyžadovány parametry a, ale volitelné pro koncový bod. Určují rozsah kalendářních dat jako řetězce ve formátu yyyy-MM-DD (příklady: `'20180501'` a `'20180615'`).
+Parametry `${startDate}` a `${endDate}` jsou v tomto příkladu povinné, ale pro koncový bod volitelné. Určují rozsah kalendářních dat jako řetězce ve formátu YYYY-MM-DD (příklady: `'20180501'` a `'20180615'`).
 
 Jsou vyžadovány následující hlavičky:
 
-|Hlavička žádosti|Popis|
+|Hlavička požadavku|Popis|
 |--------------------|-----------------|
-|*Content-Type:*|Povinný parametr. Nastavte na `application/json`.|
-|*Authorization:*|Povinný parametr. Nastavte na platný `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |
 
 ## <a name="response"></a>Odpověď
 
-Pro úspěšnou odpověď se vrátí stavový kód 200 (OK), který obsahuje seznam podrobných nákladů na váš účet.
+V případě úspěšné odpovědi se vrátí stavový kód 200 (OK), který obsahuje seznam podrobných nákladů pro váš účet.
 
 ``` json
 {
@@ -79,22 +79,22 @@ Pro úspěšnou odpověď se vrátí stavový kód 200 (OK), který obsahuje sez
 }
 ```
 
-Každá položka v **hodnotě** představuje podrobnosti týkající se použití služby:
+Každá položka v **hodnotě** představuje podrobné informace o použití služby:
 
-|Vlastnost Response|Popis|
+|Vlastnost odpovědi|Popis|
 |----------------|----------|
-|**subscriptionGuid** | Globálně jedinečné ID pro předplatné |
-|**startDate** | Datum, kdy bylo zahájeno používání. |
-|**endDate** | Datum, kdy bylo dokončeno použití. |
+|**subscriptionGuid** | Globálně jedinečné ID pro předplatné. |
+|**startDate** | Datum, kdy bylo používání zahájeno. |
+|**endDate** | Datum, kdy bylo používání ukončeno. |
 |**useageQuantity** | Použité množství. |
-|**billableQuantity** | Množství se ve skutečnosti účtuje. |
-|**pretaxCost** | Fakturované náklady před platnými daněmi. |
+|**billableQuantity** | Aktuálně účtované množství. |
+|**pretaxCost** | Fakturované náklady před uplatněním daní. |
 |**meterDetails** | Podrobné informace o použití. |
-|**nextLink**| Při nastavení určuje adresu URL pro další stránku podrobností. Prázdné, pokud je stránka poslední. |
+|**nextLink**| Při nastavení určuje adresu URL další stránky podrobností. Prázdné, pokud je stránka poslední. |
 
-Tento příklad je zkrácený; Úplný popis každého pole odpovědi najdete v části [Podrobnosti o využití seznamu](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) .
+Tento příklad je zkrácený; úplný popis každého pole odpovědi najdete v části věnované [výpisu podrobností o využití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod).
 
-Jiné stavové kódy označují chybové stavy. V těchto případech objekt odpovědi vysvětluje, proč se žádost nezdařila.
+Jiné stavové kódy označují chybové stavy. V těchto případech objekt odpovědi vysvětluje, proč se požadavek nezdařil.
 
 ``` json
 {
@@ -107,7 +107,7 @@ Jiné stavové kódy označují chybové stavy. V těchto případech objekt odp
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-- [Přehled nástroje Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Prozkoumat [REST API fakturace v podniku](https://docs.microsoft.com/rest/api/billing/)
+## <a name="next-steps"></a>Další kroky
+- Projděte si [Přehled služby Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api).
+- Prozkoumejte [Rozhraní REST API podnikové fakturace](https://docs.microsoft.com/rest/api/billing/).
 - [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)

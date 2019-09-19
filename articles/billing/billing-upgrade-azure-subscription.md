@@ -1,7 +1,7 @@
 ---
-title: Upgrade bezplatné předplatné Azure
-description: Popisuje, jak může upgrade bezplatného předplatného.
-keywords: upgrade průběžné platby
+title: Upgrade bezplatného předplatného Azure
+description: Popisuje, jak můžete upgradovat bezplatné předplatné.
+keywords: pay as you go upgrade
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -14,15 +14,15 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1a670976b199a558f7adedeb52811d465f644058
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490253"
 ---
-# <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-subscription"></a>Upgrade bezplatného účtu Azure nebo Azure pro předplatné Students Starter
+# <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-subscription"></a>Upgradujte si bezplatný účet Azure nebo předplatné Azure for Students Starter.
 
-Pokud máte [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) předplatné, můžete upgradovat na [samostatného předplatného s průběžnými sazbami](https://azure.microsoft.com/offers/ms-azr-0003p/) na webu Azure Portal. Pokud jste předplatné Azure for Students Starter a mají nárok na bezplatnou zkušební verzi, můžete upgradovat na bezplatnou zkušební verzi.
+Pokud máte [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo předplatné [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/), můžete upgradovat na [individuální předplatné s tarify průběžných plateb](https://azure.microsoft.com/offers/ms-azr-0003p/) na webu Azure Portal. Pokud máte předplatné Azure for Students Starter a máte nárok na bezplatnou zkušební verzi, můžete upgradovat na bezplatnou zkušební verzi.
 
 <a id="freetrial"></a>
 
@@ -31,52 +31,52 @@ Pokud máte [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) neb
 Pokud provedete upgrade z bezplatné zkušební verze předplatného, váš zbývající kredit vám zůstane po celých 30 dnů od vytvoření předplatného. Také budete mít 12měsíční přístup k bezplatným službám.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **předplatných.**
+1. Vyhledejte **Předplatná**.
 
-    ![Snímek obrazovky zobrazující vyhledávání](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    ![Snímek obrazovky znázorňující hledání](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. Vyberte své předplatné bezplatné zkušební verze.
-1. V přehledu předplatné už, klikněte na tlačítko **upgradovat předplatné** na panelu příkazů.
+1. V přehledu předplatného na panelu příkazů klikněte na **Upgradovat předplatné**.
 
-    ![Snímek obrazovky, která zobrazuje tlačítko upgradovat](./media/billing-upgrade-azure-subscription/free-upgrade-button.png)
+    ![Snímek obrazovky, který zobrazuje tlačítko Upgradovat](./media/billing-upgrade-azure-subscription/free-upgrade-button.png)
 
-1. Pokud ještě nemáte jinou platební metodu pro vaše předplatné bezplatné zkušební verze, zobrazí se výzva, aby vám ho přidal.
-1. Je potřeba zadat telefonní číslo ověřit vaši identitu.
-1. Zadejte název vašeho předplatného. Výchozí název je *s průběžnými platbami.*
+1. Pokud ještě nemáte způsob platby pro předplatné bezplatné zkušební verze, budete vyzváni k jeho přidání.
+1. Možná budete muset zadat telefonní číslo k ověření vaší identity.
+1. Zadejte název vašeho předplatného. Ve výchozím nastavení je název *Průběžné platby*.
 
      ![Snímek obrazovky zobrazující název](./media/billing-upgrade-azure-subscription/free-upgrade-name.png)
 
-1. Zvolte plán podpory pro vaše předplatné. Další informace o plánech podpory najdete v tématu [plánů podpory Azure](https://azure.microsoft.com/us/support/plans/).
+1. Vyberte plán podpory pro vaše předplatné. Další informace o plánech podpory najdete v tématu [Plány podpory Azure](https://azure.microsoft.com/us/support/plans/).
 
-1. Klikněte na tlačítko **upgradovat**.
+1. Klikněte na tlačítko **Upgradovat**.
 
-Pokud chcete [převést toto předplatné](billing-subscription-transfer.md) po upgradu, musíte počkat, až do nabídky předplatného, ID se změní na **MS-AZR - 003P**. ID nabídky se změní v následujících případech:
+Pokud chcete po upgradu [převést předplatné](billing-subscription-transfer.md), musíte počkat na změnu ID nabídky předplatného na **MS-AZR-003P**. ID nabídky se změní v následujících případech:
 
 * Spotřebujete veškerý zbývající kredit.
 * Uplyne 30 dnů od spuštění bezplatné zkušební verze.
 
 <a id="student"></a>
 
-## <a name="upgrade-your-azure-for-students-starter-subscription"></a>Upgradujte vaše předplatné Azure for Students Starter
+## <a name="upgrade-your-azure-for-students-starter-subscription"></a>Upgrade předplatného Azure for Students Starter
 
-Pomocí následujícího postupu můžete upgradovat na bezplatnou zkušební verzi, pokud máte nárok.
+Pomocí níže uvedeného postupu můžete upgradovat na bezplatnou zkušební verzi, pokud máte nárok.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **předplatných.**
+1. Vyhledejte **Předplatná**.
 
-    ![Snímek obrazovky zobrazující vyhledávání](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    ![Snímek obrazovky znázorňující hledání](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
-1. Vyberte vaše předplatné Azure for Students Starter.
-1. V oblasti Přehled předplatné, klikněte na tlačítko **upgradovat předplatné** na panelu příkazů.
+1. Vyberte své předplatné Azure for Students Starter.
+1. V oblasti přehledu předplatného na panelu příkazů klikněte na **Upgradovat předplatné**.
 
-    ![Snímek obrazovky, která zobrazuje tlačítko Aktualizovat pro studenty](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
+    ![Snímek obrazovky, který zobrazuje tlačítko Upgradovat pro studenty](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
-1. Pokud provádíte upgrade na samostatný účet s průběžnými sazbami a již nemáte jinou platební metodu pro vaše předplatné, zobrazí se výzva, aby vám ho přidal.
-1. Je potřeba zadat telefonní číslo ověřit vaši identitu.
+1. Pokud provádíte upgrade na individuální účet s tarify průběžných plateb a ještě pro své předplatné nemáte způsob platby, budete vyzváni k jeho přidání.
+1. Možná budete muset zadat telefonní číslo k ověření vaší identity.
 1. Zadejte název vašeho předplatného.
-1. Pokud provádíte upgrade na samostatný účet s průběžnými sazbami, zvolte plán podpory pro vaše předplatné. Další informace o plánech podpory najdete v tématu [plánů podpory Azure](https://azure.microsoft.com/us/support/plans/).
-1. Klikněte na tlačítko **upgradovat**.
+1. Pokud provádíte upgrade na individuální účet s tarify průběžných plateb, vyberte pro své předplatné plán podpory. Další informace o plánech podpory najdete v tématu [Plány podpory Azure](https://azure.microsoft.com/us/support/plans/).
+1. Klikněte na tlačítko **Upgradovat**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když máte samostatného předplatného s průběžnými sazbami, naleznete v tématu [vám Nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure.](billing-getting-started.md)
+Když teď máte k dispozici individuální předplatné s tarify průběžných plateb, přečtěte si, [jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure](billing-getting-started.md).

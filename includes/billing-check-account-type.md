@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
 ms.openlocfilehash: a271f03788bc7b831e6d8daff3d53503db5a2710
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491061"
 ---
-Zkontrolujte typ smlouvy k určení typu fakturační účet
+Zkontrolujte typ smlouvy a určete typ vašeho fakturačního účtu.
  
 1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
  
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
  
-   ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
+   ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
-3. Pokud máte přístup do jediného fakturační oboru, vyberte **vlastnosti** na levé straně.
+3. Pokud máte přístup jenom k jednomu rozsahu fakturace, vyberte na levé straně **Vlastnosti**.
  
-    ![Snímek obrazovky zobrazující smlouvy zákazníka Microsoftu na stránce vlastností](./media/billing-check-account-type/billing-mca-property.png)
+    ![Snímek obrazovky zobrazující smlouvu se zákazníkem Microsoftu na stránce vlastnosti](./media/billing-check-account-type/billing-mca-property.png)
     
-    **Fakturace typ účtu** vlastností stránky určuje typ účtu. Může být programu služeb Microsoft Online Service, smlouvy Enterprise nebo smlouvy zákazníka se společností Microsoft. Další informace o typu fakturační účty, najdete v článku [zobrazit vaše fakturační účty na webu Azure portal](../articles/billing/billing-view-all-accounts.md).  
+    **Typ fakturačního účtu** na stránce Vlastnosti určuje typ vašeho účtu. Může to být program Microsoft Online Service, smlouva Enterprise nebo smlouva se zákazníkem Microsoftu. Další informace o typu fakturačních účtů najdete v tématu věnovaném [zobrazení fakturačních účtů na webu Azure Portal](../articles/billing/billing-view-all-accounts.md).  
  
-4. Pokud máte přístup k více oborům fakturace, vyberte **fakturační účet** nebo **všechny obory fakturační** na levé straně. Kontrola typu **fakturace typ účtu** sloupce.
+4. Pokud máte přístup k více rozsahům fakturace, vyberte na levé straně **Fakturační účet** nebo **Všechny rozsahy fakturace**. Ve sloupci **Typ fakturačního účtu** ověřte typ.
  
-    ![Snímek obrazovky zobrazující smlouvy zákazníka Microsoftu na stránce se seznamem fakturační účet](./media/billing-check-account-type/billing-account-type-in-the-list.png)
+    ![Snímek obrazovky zobrazující smlouvu se zákazníkem Microsoftu na stránce seznamu fakturačních účtů](./media/billing-check-account-type/billing-account-type-in-the-list.png)
  

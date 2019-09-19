@@ -1,6 +1,6 @@
 ---
-title: Vytvořit bezplatné služby s bezplatným účtem Azure
-description: Zjistěte, jak vytvářet služby, které je součástí bezplatného účtu Azure.
+title: Vytvoření bezplatných služeb s využitím bezplatného účtu Azure
+description: Zjistěte, jak vytvořit služby zahrnuté v bezplatném účtu Azure.
 author: amberbhargava
 manager: amberb
 ms.service: billing
@@ -11,31 +11,31 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: fdeb60ea28df1dd5a4dee43d26069f60eacfda76
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491396"
 ---
-# <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých s bezplatným účtem Azure
+# <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých v bezplatném účtu Azure
 
-Bezplatný účet Azure zahrnuje omezené množství bezplatných služeb po dobu 12 měsíců. Další informace najdete v tématu [co je bezplatný účet Azure](https://azure.microsoft.com/free/free-account-faq/). Azure uchovává informace o využití jednotlivých služeb a nebude účtovat Pokud překročíte limity. Tyto limity bezplatný účet Azure poskytuje flexibilitu používat různé konfigurace služby podle svých potřeb.
+Bezplatný účet Azure zahrnuje omezené množství bezplatných služeb na 12 měsíců. Další informace najdete v tématu [Co je bezplatný účet Azure](https://azure.microsoft.com/free/free-account-faq/). Azure sleduje vaše využití jednotlivých služeb, a pokud nepřekročíte nastavené limity, neúčtují se vám žádné poplatky. V mezích těchto limitů bezplatný účet Azure umožňuje flexibilně používat různé konfigurace služeb odpovídající vašim potřebám.
 
-## <a name="create-free-services-in-the-azure-portal"></a>Vytvořit bezplatné služby na webu Azure Portal
-Doporučujeme použít [bezplatná služba stránky](https://go.microsoft.com/fwlink/?linkid=859151) k vytvoření nové služby. Nebo se můžete přihlásit [webu Azure portal](https://portal.azure.com)vyberte **všechny služby** vlevo a vyhledejte **bezplatné služby**.
+## <a name="create-free-services-in-the-azure-portal"></a>Vytvoření bezplatných služeb na webu Azure Portal
+Nové služby doporučujeme vytvářet na stránce [Bezplatné služby](https://go.microsoft.com/fwlink/?linkid=859151). Případně se můžete přihlásit k webu [Azure Portal](https://portal.azure.com), na levé straně vybrat **Všechny služby** a vyhledat **bezplatné služby**.
 
-## <a name="services-can-be-created-in-any-region"></a>Služby lze vytvořit v libovolné oblasti
-Za předpokladu, se v rámci omezení, můžete vytvořit služby zdarma v libovolné oblasti, kde jsou k dispozici služby. Třeba získat 750 hodin virtuálního počítače B1S Windows zdarma každý měsíc s bezplatným účtem Azure. Virtuální počítač můžete vytvořit v libovolné oblasti, kde jsou k dispozici virtuální počítače řady B-series. Azure vám nebude účtovat, pokud překročíte 750 hodin. Zákazníky v USA můžete například zřízení virtuálního počítače s Windows B1S v oblasti západní Evropa a používejte to zadarmo 750 hodin.
+## <a name="services-can-be-created-in-any-region"></a>Služby je možné vytvořit v jakékoli oblasti
+Dokud se budete držet v mezích limitů, můžete bezplatně vytvářet služby v jakékoli oblasti, ve které jsou dané služby dostupné. S bezplatným účtem Azure například získáte 750 hodin virtuálního počítače B1S s Windows měsíčně zdarma. Virtuální počítač můžete vytvořit v jakékoli oblasti, ve které jsou dostupné virtuální počítače řady B. Pokud nepřekročíte 750 hodin, Azure vám nebude účtovat žádné poplatky. Například zákazník v USA může zřídit virtuální počítač B1S s Windows v oblasti Evropa – západ a používat ho 750 hodin bezplatně.
 
-Další informace o dostupnosti služby Azure podle oblasti najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+Informace o dostupnosti služeb Azure v jednotlivých oblastech najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 
-## <a name="create-multiple-service-instances-in-allowed-limits"></a>Vytvoření víc instancí služby v povoleném rozsahu
-Více instancí služby můžete vytvořit zdarma za předpokladu součet použití je v rámci omezení využití. Například získáte 750 hodin virtuálního počítače B1S Windows zdarma každý měsíc s bezplatným účtem Azure. V libovolné kombinaci, které chcete, můžete využít 750 hodin. Můžete například vytvořit 5 virtuální počítače B1S Windows a používat je pro 150 hodin.
+## <a name="create-multiple-service-instances-in-allowed-limits"></a>V mezích povolených limitů můžete vytvořit více instancí služeb
+Bezplatně můžete vytvořit více instancí služeb, pokud jejich souhrnné využití nepřekročí limit využití. S bezplatným účtem Azure například získáte 750 hodin virtuálního počítače B1S s Windows měsíčně zdarma. Těchto 750 hodin můžete využít v libovolné kombinaci. Můžete například vytvořit 5 virtuálních počítačů B1S s Windows a každý z nich využívat 150 hodin.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [vyhnout získání bezplatného účtu Azure účtovat](billing-avoid-charges-free-account.md).
+- Zjistěte, [jak se vyhnout účtování poplatků za bezplatný účet Azure](billing-avoid-charges-free-account.md).

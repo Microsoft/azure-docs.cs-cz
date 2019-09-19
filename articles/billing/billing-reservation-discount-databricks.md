@@ -1,6 +1,6 @@
 ---
-title: Použití slevy předběžného nákupu Azure Databricks
-description: Zjistěte, jak o nižší předběžného nákupu Azure Databricks platí pro vaše použití.
+title: Způsob uplatňování slevy za předběžný nákup služby Azure Databricks
+description: Zjistěte, jak se na využití uplatňuje sleva za předběžný nákup služby Azure Databricks.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 7c1855b587ab1d603e9c6ac24a67b0f50065361f
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67827642"
 ---
-# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Jak se uplatňuje sleva ve výši předběžného nákupu Azure Databricks
+# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Způsob uplatňování slevy za předběžný nákup služby Azure Databricks
 
-Kdykoli během období nákupu můžete použít předem zakoupené jednotky potvrzení Azure Databricks (DBCU). Žádné Azure Databricks, který využívá odečte snížení z předem zakoupené DBCUs automaticky.
+Předem zakoupené jednotky potvrzení Azure Databricks (DBCU) můžete využít kdykoli během zakoupeného období. Od předem zakoupených jednotek DBCU se automaticky odečítá veškeré využití služby Azure Databricks.
 
-Na rozdíl od virtuálních počítačů, předem zakoupené jednotky nevyprší po hodinách. Můžete je kdykoli během období nákupu. Chcete-li získat slevy předběžného nákupu, nemusíte znovu provádět nasazení ani přiřadit kupují předem plán do vašich pracovních prostorů Azure Databricks za využití.
+Na rozdíl od virtuálních počítačů nevyprší platnost předem zakoupených jednotek po každé hodině. Můžete je využít kdykoli během zakoupeného období. K tomu, abyste získali slevy za předběžný nákup, nemusíte na využití opakovaně nasazovat předem zakoupený plán ani jej přiřazovat k pracovním prostorům Azure Databricks.
 
-Sleva za předběžného nákupu vztahuje pouze na využití jednotek (DBU) Azure Databricks. Další poplatky, jako jsou výpočty, úložiště a sítě se účtují samostatně.
+Slevy za předem zakoupené využití se vztahují jenom na využití jednotek Azure Databricks (DBU). Další poplatky, například za výpočetní prostředky, úložiště a prostředky sítě, se účtují zvlášť.
 
-## <a name="pre-purchase-discount-application"></a>Předplatit slev
+## <a name="pre-purchase-discount-application"></a>Uplatnění slevy za předběžný nákup
 
-Databricks předběžného nákupu se vztahuje na všechny úrovně a úloh Databricks. Před nákupem jako fond předplacené jednotek Databricks potvrzení změn si můžete představit. Využití se odečte od fondu, bez ohledu na to, úlohy nebo úroveň. Využití je odečtena poměr následující:
+Předběžný nákup Databricks se vztahuje na všechny úlohy a úrovně služby Databricks. Předběžný nákup si můžete představit jako fond předplacených jednotek potvrzení Databricks. Využití se odečítá z tohoto fondu bez ohledu na zvolenou úlohu nebo úroveň. Využití se odečítá s následujícími koeficienty:
 
-| **Úloha** | **Poměr aplikace DBU – úroveň Standard** | **Poměr aplikace DBU – úroveň Premium** |
+| **Úloha** | **Koeficient uplatňování DBU – úroveň Standard** | **Koeficient uplatňování DBU – úroveň Premium** |
 | --- | --- | --- |
-| Analýza dat | 0.4 | 0.55 |
-| Příprava dat | 0.15 | 0,30 |
-| Jednoduchá příprava dat | 0,07 | 0.22 |
+| Analýza dat | 0,4 | 0,55 |
+| Příprava dat | 0,15 | 0,30 |
+| Jednoduchá příprava dat | 0,07 | 0,22 |
 
-Například když je zpracován množství Data Analytics – úroveň Standard, předem zakoupené jednotky Databricks potvrzení odečte 0.4 jednotkami. Když množství dat Engineering světla – úroveň Standard se používá, předem zakoupené jednotky Databricks potvrzení se odečte 0,07 jednotky
+Například když se spotřebuje určité množství datových analýz na úrovni Standard, od předem zakoupených jednotek potvrzení Databricks se odečte 0,4 jednotky. Když se využije v určitém objemu jednoduchá příprava dat na úrovni Standard, od předem zakoupených jednotek potvrzení Databricks se odečte 0,07 jednotky.
 
-## <a name="determine-plan-use"></a>Určení plánu
+## <a name="determine-plan-use"></a>Určení využití plánu
 
-Pokud chcete zjistit DBCU používání plánu, přejděte k webu Azure portal > **rezervace** a klikněte na tlačítko zakoupené plán Databricks. Vaše využití k datu se zobrazí se všechny zbývající jednotky. Další informace o určení vaší rezervace, najdete v tématu [zobrazit využití rezervace](billing-reservation-apis.md#see-reservation-usage) článku.
+Pokud chcete určit využití plánu DBCU, na webu Azure Portal přejděte do části **Rezervace** a klikněte na zakoupený plán služby Databricks. Zobrazí se vaše využití k aktuálnímu datu a všechny zbývající jednotky. Další informace o určení využití rezervací najdete v článku [Zobrazení využití rezervací](billing-reservation-apis.md#see-reservation-usage).
 
-## <a name="how-discount-application-shows-in-usage-data"></a>Způsob, jakým zobrazuje slev za využití dat
+## <a name="how-discount-application-shows-in-usage-data"></a>Jak se uplatnění slevy projeví v datech o využití
 
-Když slevy předběžného nákupu se vztahuje na využití Databricks na vyžádání poplatky se zobrazí jako nuly v datech využití. Další informace o rezervaci nákladů a využití najdete v tématu [získat smlouvu Enterprise rezervace nákladů a využití](billing-understand-reserved-instance-usage-ea.md).
+Když na využití služby Databricks uplatníte slevu za předběžný nákup, v datech o využití se zobrazí nulové poplatky za vyžádání. Další informace o nákladech na rezervace a jejich využití najdete v tématu [Získání nákladů na rezervace a jejich využití v rámci smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o správě rezervaci, najdete v článku [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
-- Další informace o předběžného nákupu Azure Databricks ještě ušetříte peníze, najdete v článku [Azure Databricks optimalizovat náklady pomocí předběžného nákupu](billing-prepay-databricks-reserved-capacity.md).
-- Další informace o rezervacích Azure, najdete v následujících článcích:
-  - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](billing-manage-reserved-vm-instance.md).
+- Další informace o úspoře peněz předběžným nákupem služby Azure Databricks najdete v tématu [Optimalizace nákladů na Azure Databricks díky předběžnému nákupu](billing-prepay-databricks-reserved-capacity.md).
+- Další informace o rezervacích Azure najdete v následujících článcích:
+  - [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md)
   - [Správa rezervací v Azure](billing-manage-reserved-vm-instance.md)
-  - [Vysvětlení využití rezervace pro předplatné s průběžnými sazbami](billing-understand-reserved-instance-usage.md)
-  - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
+  - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+  - [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

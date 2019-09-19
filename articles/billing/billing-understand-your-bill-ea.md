@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení faktury za Azure enterprise
-description: Zjistěte, jak číst a porozumět využití a vyúčtování pro smlouvy Azure Enterprise.
+title: Vysvětlení informací na faktuře za smlouvu Azure Enterprise
+description: Zjistěte, jak číst informace o využití a fakturu za smlouvy Azure Enterprise a jak je chápat.
 author: adpick
 manager: dougeby
 tags: billing
@@ -12,124 +12,124 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490289"
 ---
-# <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení faktury za Azure Enterprise Agreement
+# <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
-Azure zákazníky se smlouvou Enterprise dostávat faktury, při překročení kreditu organizace nebo používání služeb, které nejsou pokryty všemi kreditu.
+Když zákazníci Azure se smlouvou Enterprise překročí kredit své organizace nebo použijí služby, na které se kredit nevztahuje, dostanou fakturu.
 
-Kredit vaší organizace zahrnuje svůj peněžní závazek. Peněžní závazek je částky zaplacené předem organizaci využití služeb Azure. Prostředky peněžních závazků můžete přidat k vaší smlouvě Enterprise kontaktujte vašeho account manažer Microsoftu nebo prodejce v systému.  
+Kredit vaší organizace zahrnuje váš peněžní závazek. Peněžní závazek je množství, které vaše organizace předem zaplatila za využívání služeb Azure. Pokud chcete do své smlouvy Enterprise přidat prostředky peněžního závazku, obraťte se na svého správce účtu Microsoft nebo prodejce.  
 
 ## <a name="invoices-for-most-customers"></a>Faktury pro většinu zákazníků
 
-Tato část se nevztahuje na zákazníky Azure v Austrálii, Japonska a Singapur. Pokud jste v jednom z těchto zemí/oblastí, přečtěte si téma [faktury pro ostatní zákazníky](#invoices-for-other-customers).
+Tato část se netýká zákazníků Azure v Austrálii, Japonsku a Singapuru. Pokud se nacházíte v některé z těchto zemí nebo oblastí, přejděte do části [Faktury pro ostatní zákazníky](#invoices-for-other-customers).
 
-Při jedné z následujících akcí během fakturačního cyklu obdržíte fakturu Azure:
+Pokud během fakturačního cyklu dojde k jedné z následujících situací, dostanete fakturu za Azure:
 
-- **Nadlimitní využití služby**: Poplatky za využívání vaší organizace být vyšší než zůstatek vašeho kreditu.
-- **Poplatky se účtují samostatně**: Služby, vaše organizace používá nejsou pokryty všemi uvedeného kreditu. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
+- **Nadlimitní využití služby:** Poplatky za využití pro vaši organizace překročí váš kredit.
+- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Bez ohledu na výši vašeho kreditu se vám budou fakturovat následující služby:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
-    - Vzdálený přístup práva XenApp Essentials registrovaný uživatel
+    - Registrovaný uživatel služby Remote Access Rights pro XenApp Essentials
     - Ubuntu Advantage
-    - Visual Studio Enterprise (měsíčně)
+    - Visual Studio Enterprise (měsíční)
     - Visual Studio Enterprise (roční)
-    - Visual Studio Professional (měsíčně)
-    - Visual Studio Professional (Annual)
-- **Poplatky za Marketplace**: Azure Marketplace nákupu a využití vaší organizaci Dal nepokrývá. Proto vám už účtováno poplatků za Marketplace bez ohledu na to, váš zůstatek kreditu. Na webu Enterprise Portal správce rozlehlé sítě můžete povolit nebo zakázat nákupy na Marketplace.
+    - Visual Studio Professional (měsíční)
+    - Visual Studio Professional (roční)
+- **Poplatky za Marketplace:** Kredit vaší organizace se nevztahuje na nákupy na webu Azure Marketplace a jejich využívání. Poplatky za Marketplace se vám tedy naúčtují bez ohledu na výši vašeho kreditu. Podnikový správce může povolit nebo zakázat nákupy na webu Marketplace na webu Enterprise Portal.
 
-## <a name="review-charges-for-most-customers"></a>Poplatky za revize pro většinu zákazníků
-Tato část se nevztahuje na zákazníky Azure v Austrálii, Japonska a Singapur. Pokud jste v některé z těchto zemí, přečtěte si téma [zkontrolujte poplatky pro ostatní zákazníky](#review-charges-for-other-customers).
+## <a name="review-charges-for-most-customers"></a>Kontrola poplatků pro většinu zákazníků
+Tato část se netýká zákazníků Azure v Austrálii, Japonsku a Singapuru. Pokud se nacházíte v některé z těchto zemí, přejděte do části [Kontrola poplatků pro ostatní zákazníky](#review-charges-for-other-customers).
 
-Ke kontrole a ověřte poplatky na faktuře, musíte být správce podnikové sítě. Další informace najdete v tématu [správních rolí pochopit smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud si nejste jisti, kdo je správce rozlehlé sítě pro vaši organizaci [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud chcete zkontrolovat a ověřit poplatky na své faktuře, musíte být podnikovým správcem. Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud nevíte, kdo je ve vaší organizaci podnikovým správcem, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-Vaše faktura zobrazí všechny využívání služeb Azure, za nímž následuje veškeré poplatky webu Marketplace. Pokud máte zůstatek kreditu, použije se na využití Azure.
+Na vaší faktuře se zobrazuje veškeré využívání Azure a za ním poplatky za Marketplace. Pokud máte zůstatek kreditu, uplatní se na využívání Azure.
 
-Porovnejte vaše kombinované celkovou velikost na webu Enterprise Portal v **sestavy** > **využití: Souhrn** s faktuře Azure. Částky za **využití: Souhrn** jsou bez daně.
+V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovou částku uvedenou na webu Enterprise Portal s vaší fakturou za Azure. Částky v části **Souhrn využití** jsou uvedené bez daně.
 
-1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
-1. Vyberte **sestavy**.
-1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
-    ![Snímek obrazovky zobrazující M + C možnost v souhrnu využití.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. Souhrnné množství **celkové využití** a **Azure Marketplace** by měl odpovídat **celkovou velikost rozšířené** na vaší faktuře.
-1. Chcete-li získat další podrobnosti o poplatcích, přejděte na **stáhnout využití**.  
-    ![Snímek obrazovky zobrazující kartu stažení informací o využití](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
+1. Přihlaste se na web [Enterprise Portal](https://ea.azure.com).
+1. Vyberte **Sestavy**.
+1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
+    ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Souhrnná částka za **Celkové využití** a **Azure Marketplace** by měla odpovídat hodnotě *****Celková rozšířená částka** na vaší faktuře.
+1. Další podrobnosti o vašich poplatcích najdete v části **Stažení dat o využití**.  
+    ![Snímek obrazovky s kartou Stažení dat o využití](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
 
-## <a name="invoices-for-other-customers"></a>Pro ostatní zákazníky, faktury
+## <a name="invoices-for-other-customers"></a>Faktury pro ostatní zákazníky
 
-Tato část platí jenom pro zákazníky Azure v Austrálii, Japonska a Singapur.
+Tato část se týká jenom zákazníků Azure v Austrálii, Japonsku a Singapuru.
 
-Jeden nebo více Azure faktury se zobrazí, když dojde k následujícímu:
+Když nastane některá z následujících situací, dostanete jednu nebo více faktur Azure:
 
-- **Nadlimitní využití služby**: Poplatky za využívání vaší organizace být vyšší než zůstatek vašeho kreditu.
-- **Poplatky se účtují samostatně**: Služby, vaše organizace používá nejsou pokryty všemi uvedeného kreditu. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
+- **Nadlimitní využití služby:** Poplatky za využití pro vaši organizace překročí váš kredit.
+- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Bez ohledu na výši vašeho kreditu se vám budou fakturovat následující služby:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
-    - Vzdálený přístup práva XenApp Essentials registrovaný uživatel
+    - Registrovaný uživatel služby Remote Access Rights pro XenApp Essentials
     - Ubuntu Advantage
-    - Visual Studio Enterprise (měsíčně)
+    - Visual Studio Enterprise (měsíční)
     - Visual Studio Enterprise (roční)
-    - Visual Studio Professional (měsíčně)
-    - Visual Studio Professional (Annual)
-- **Poplatky za Marketplace**: Nákupy na Marketplace a využití Azure nejsou pokryty ve vaší organizaci Dal a služby se účtují zvlášť. Na webu Enterprise Portal správce rozlehlé sítě můžete povolit nebo zakázat nákupy na Marketplace.
+    - Visual Studio Professional (měsíční)
+    - Visual Studio Professional (roční)
+- **Poplatky za Marketplace:** Kredit vaší organizace se nevztahuje na nákupy na webu Azure Marketplace a jejich využívání a tyto nákupy a využívání se budou fakturovat zvlášť. Podnikový správce může povolit nebo zakázat nákupy na webu Marketplace na webu Enterprise Portal.
 
-Pokud máte poplatky z důvodu překročení limitu služby a poplatky, které se během fakturačního období se účtují samostatně, získáte jednu fakturu. Obsahuje oba typy poplatky. Poplatky Tržiště za se vždy fakturují samostatně.
+Pokud se vám během jednoho fakturačního období naúčtují poplatky za nadlimitní využití služeb a poplatky účtované zvlášť, dostanete jednu fakturu. Ta bude obsahovat oba typy poplatků. Poplatky za Marketplace se vždycky fakturují samostatně.
 
-## <a name="review-charges-for-other-customers"></a>Kontrola poplatky za další zákazníci
+## <a name="review-charges-for-other-customers"></a>Kontrola poplatků pro ostatní zákazníky
 
-Tato část se týká pouze pokud jste v Austrálii, Japonska a Singapur.
+Tato část se vás týká jenom v případě, že se nacházíte v Austrálii, Japonsku nebo Singapuru.
 
-Ke kontrole a ověřte poplatky na faktuře, musíte být správce podnikové sítě. Další informace najdete v tématu [správních rolí pochopit smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud si nejste jisti, kdo je správce rozlehlé sítě pro vaši organizaci [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud chcete zkontrolovat a ověřit poplatky na své faktuře, musíte být podnikovým správcem. Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud nevíte, kdo je ve vaší organizaci podnikovým správcem, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="review-service-overage-invoice"></a>Zkontrolovat fakturu za Nadlimitní využití služby
+### <a name="review-service-overage-invoice"></a>Kontrola faktury za nadlimitní využití služby
 
-Porovnejte vaše množství celkové využití na webu Enterprise Portal v **sestavy** > **využití: Souhrn** s faktuře za Nadlimitní využití služby. Faktura za Nadlimitní využití služby zahrnuje využití, která překračuje kredit vaší organizace a/nebo služby, které nejsou pokryty všemi uvedeného kreditu. Částky na **využití: Souhrn** jsou bez daně.
+V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovou částku za využití uvedenou na webu Enterprise Portal s vaší fakturou za nadlimitní využití služby. Faktura za nadlimitní využití služby zahrnuje využití, které překračuje kredit vaší organizace, a služby, na které se kredit nevztahuje. Částky v části **Souhrn využití** jsou uvedené bez daně.
 
-1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
-1. Vyberte **sestavy**.
-1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
-    ![Snímek obrazovky zobrazující M + C možnost v souhrnu využití.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. **Celkové využití** velikost by měla odpovídat **celkovou velikost rozšířené** na vaší faktuře za Nadlimitní využití služby.  
-1. Chcete-li získat další informace o poplatcích, přejděte na **stáhnout využití** > **stažení Rozšířené sestavy**. Sestava neobsahuje, daní a poplatků za rezervace nebo poplatků za marketplace.  
-      ![Snímek obrazovky zobrazující pokročilé sestavy stáhnout na kartě stáhnout využití.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
+1. Přihlaste se na web [Enterprise Portal](https://ea.azure.com).
+1. Vyberte **Sestavy**.
+1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
+    ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Částka **Celkové využití** by měla odpovídat hodnotě *****Celková rozšířená částka** na vaší faktuře za nadlimitní využití služby.  
+1. Další informace o poplatcích najdete v části **Stažení dat o využití** > **Stažení rozšířené sestavy**. Tato sestava nezahrnuje daně, poplatky za rezervace ani poplatky za Marketplace.  
+      ![Snímek obrazovky ukazující položku Stažení rozšířené sestavy na kartě Stažení dat o využití](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
-V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené na faktuře a v **využití: Souhrn** na webu Enterprise Portal:
+Následující tabulka obsahuje výrazy uvedené na faktuře a v části **Souhrn využití** na webu Enterprise Portal a jejich popisy:
 
-|Termín faktur|Využití souhrnný termín|Popis|
+|Výraz na faktuře|Výraz v souhrnu využití|Popis|
 |---|---|---|
-|Celková částka rozšířené|Celkové využití|Celkové využití před zdaněním poplatek za určité období, než se použije tento kredit.|
-|Využití závazků|Využití závazků|Tento kredit použije toto konkrétní období.|
-|Celkový prodej|Celkové Nadlimitní využití|Celkové využití nákladů, která překračuje vašeho kreditu. Tato částka nezahrnuje daně.|
-|Částka daně|Neuvedeno|Daň, která se vztahuje na množství celkového prodeje pro konkrétní období.|
-|Celková částka|Neuvedeno|Dobu vypršení platnosti faktury poté, co se použije tento kredit a přidá daně.|
+|Celková rozšířená částka|Celkové využití|Celkový poplatek za využití před zdaněním za konkrétní období před uplatněním kreditu.|
+|Využití v rámci závazku|Využití v rámci závazku|Kredit uplatněný za dané období.|
+|Celkový prodej|Celkové nadlimitní využití|Celkový poplatek za využití, které překračuje částku kreditu. Tato částka nezahrnuje daň.|
+|Částka daně|Neuvedeno|Daň, která se uplatňuje na částku celkového prodeje za dané období.|
+|Celková částka|Neuvedeno|Splatná částka faktury po uplatnění kreditu a přičtení daně.|
 
-### <a name="marketplace-invoice"></a>Faktuře Marketplace
+### <a name="marketplace-invoice"></a>Faktura za Marketplace
 
-Tato část se týká pouze pokud jste v Austrálii, Japonska a Singapur.
+Tato část se vás týká jenom v případě, že se nacházíte v Austrálii, Japonsku nebo Singapuru.
 
-Porovnejte celkový počet na Azure Marketplace **sestavy** > **využití: Souhrn** na webu Enterprise Portal s vaší faktuře marketplace. Faktura za marketplace je pouze za nákupy a využití na Azure Marketplace. Částky na **využití: Souhrn** jsou bez daně.
+V části **Sestavy** > **Souhrn využití** na portálu Enterprise Portal můžete porovnat celkovou částku za Azure Marketplace s vaší fakturou za Marketplace. Faktura za marketplace je pouze za nákupy a využití na Azure Marketplace. Částky v části **Souhrn využití** jsou uvedené bez daně.
 
-1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
-1. Vyberte **sestavy**.
-1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
-     ![Snímek obrazovky zobrazující M + C možnost na využití: Souhrn.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
-1. **Azure Marketplace** celkový počet by měl odpovídat **celkový prodej** na vaší faktuře marketplace.
-1. Chcete-li získat další informace o poplatcích podle použití, přejděte na **stáhnout využití**. V části **poplatků za Marketplace**vyberte **Stáhnout**. Tato sestava nezahrnuje daně ani jednorázové nákupy.  
-     ![Stáhnout snímek obrazovky zobrazující možnost poplatků za Marketplace.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
+1. Přihlaste se na web [Enterprise Portal](https://ea.azure.com).
+1. Vyberte **Sestavy**.
+1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
+     ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
+1. Celková částka za **Azure Marketplace** by měla odpovídat hodnotě **Celkový prodej** na vaší faktuře za Marketplace.
+1. Další informace o účtovaných poplatcích podle využití najdete v části **Stažení dat o využití**. V části **Poplatky za Marketplace** vyberte **Stáhnout**. Tato sestava nezahrnuje daně ani jednorázové nákupy.  
+     ![Snímek obrazovky s možností stažení v části poplatků za Marketplace](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
-- [Zobrazovat a stahovat využití Azure a poplatky za](billing-download-azure-daily-usage.md)
+## <a name="next-steps"></a>Další kroky
+- [Zobrazení a stažení informací o využití a poplatků za Azure](billing-download-azure-daily-usage.md)

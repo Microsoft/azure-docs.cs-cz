@@ -1,6 +1,6 @@
 ---
-title: Pochopení faktury zákaznického souhlasu Microsoftu v Azure
-description: Přečtěte si, jak číst a pochopit vaše smlouvy o zákaznících Microsoftu v Azure.
+title: Vysvětlení faktury za smlouvu se zákazníkem Microsoftu v Azure
+description: Zjistěte, jak číst fakturu za smlouvu se zákazníkem Microsoftu v Azure a jak jí rozumět.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,100 +12,100 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: a5f77120c1d4e8a6721f3bc207132bee19a7772f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68383541"
 ---
-# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Výrazy na faktuře se zákaznickou smlouvou Microsoftu
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Výrazy na faktuře za smlouvu se zákazníkem Microsoftu
 
-Tento článek se týká fakturačního účtu Azure pro zákaznickou smlouvu Microsoftu. [Ověřte, jestli máte přístup k smlouvě o zákaznících Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu Azure za smlouvu se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
-Vaše faktura poskytuje souhrn poplatků a pokynů k platbám. Je k dispozici ke stažení ve formátu Portable Document Format (. PDF) z [Azure Portal](https://portal.azure.com/) nebo je lze odeslat e-mailem. Další informace najdete v tématu [zobrazení a stažení faktury Microsoft Azure](billing-download-azure-invoice.md).
+Na faktuře najdete souhrn poplatků a pokyny k platbě. Můžete si ji stáhnout ve formátu PDF (Portable Document Format) z webu [Azure Portal](https://portal.azure.com/) nebo si ji nechat zaslat e-mailem. Další informace najdete v tématu [Zobrazení a stažení faktury za Microsoft Azure](billing-download-azure-invoice.md).
 
 ## <a name="billing-period"></a>Fakturační období
 
-Fakturuje se vám každý měsíc. To, který den v měsíci obdržíte, zjistíte tak, že zkontrolujete *Datum faktury* ve vlastnostech fakturačního profilu ve [Azure Portal](https://portal.azure.com/). Poplatky, které se vyskytují mezi koncem fakturačního období a datem faktury, jsou zahrnuté do faktury za příští měsíc, protože se nacházejí v dalším fakturačním období. Počáteční a koncové datum fakturačního období pro každou fakturu najdete v souhrnu fakturace v dokumentu faktury.
+Fakturace probíhá každý měsíc. To, který den v měsíci dostáváte faktury, zjistíte podle *data faktury* ve vlastnostech fakturačního profilu na webu [Azure Portal](https://portal.azure.com/). Poplatky, které se naúčtují mezi koncem fakturačního období a datem faktury, se zahrnou do faktury za další měsíc, protože spadají do dalšího fakturačního období. Počáteční a koncové datum fakturačního období pro každou fakturu najdete v souboru PDF faktury nad položkou **Souhrn fakturace**.
 
-## <a name="invoice-terms-and-descriptions"></a>Výrazy a popisy faktury
+## <a name="invoice-terms-and-descriptions"></a>Výrazy na faktuře a jejich popis
 
-V následujících oddílech jsou uvedeny důležité termíny, které vidíte na faktuře, a uveďte popisy jednotlivých termínů.
+V následujících částech najdete důležité výrazy, které uvidíte na své faktuře, a jejich popisy.
 
 ### <a name="invoice-summary"></a>Souhrn faktury
 
-**Souhrn faktury** je v horní části první stránky a zobrazuje informace o vašem fakturačním profilu a způsobu, jakým platíte.
+**Souhrn faktury** se nachází v horní části první stránky a obsahuje informace o vašem fakturačním profilu a o tom, jakým způsobem platíte.
 
-![Část Souhrn faktury](./media/billing-understand-your-invoice-mca/invoicesummary.png)
+![Oddíl Souhrn faktury](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
-| Termín | Popis |
+| Označení | Popis |
 | --- | --- |
-| Kupující |Adresa vaší právní entity, která se našla ve vlastnostech fakturačního účtu|
-| Příjemce faktury |Fakturační adresa fakturačního profilu, který obdrží fakturu, se našla ve vlastnostech fakturačního profilu.|
-| Fakturační profil |Název fakturačního profilu, který obdrží fakturu |
-| P.O. číslo |Volitelné číslo nákupní objednávky přiřazené vámi pro sledování |
-| Číslo faktury |Jedinečné číslo faktury vygenerované společností Microsoft, které se používá pro účely sledování |
-| Datum faktury |Datum, kdy se faktura vygeneruje, obvykle pět až 12 dní po skončení fakturačního cyklu. Datum faktury můžete kontrolovat ve vlastnostech fakturačního profilu.|
-| Platební podmínka |Jak platíte za váš účet Microsoft. *Čisté 30 dnů* znamená, že platíte do 30 dnů od data faktury. |
+| Kupující |Adresa vaší právnické osoby zadaná ve vlastnostech fakturačního účtu|
+| Příjemce faktury |Fakturační adresa fakturačního profilu, který dostane fakturu, zadaná ve vlastnostech fakturačního profilu|
+| Fakturační profil |Název fakturačního profilu, který dostane fakturu |
+| P.O. číslo |Volitelné číslo nákupní objednávky, které máte přiřazené pro účely sledování |
+| Číslo faktury |Jedinečné číslo faktury vygenerované Microsoftem, které se používá pro účely sledování |
+| Datum faktury |Datum vygenerování faktury, většinou 5 až 12 dní po konci fakturačního období. Datum faktury můžete zkontrolovat ve vlastnostech fakturačního profilu|
+| Platební podmínky |Způsob, jakým platíte faktury od Microsoftu. *Čistých 30 dní* znamená, že platíte do 30 dnů od data faktury |
 
 ### <a name="billing-summary"></a>Souhrn fakturace
 
-**Souhrn fakturace** zobrazuje poplatky za fakturační profil od předchozího fakturačního období, všech kreditů, které byly uplatněny, daní a celkové dlužné částky.
+**Souhrn fakturace** obsahuje poplatky pro daný fakturační profil od předchozího fakturačního období, uplatněné kredity, daně a celkovou dlužnou částku.
 
-![Část Souhrn fakturace](./media/billing-understand-your-invoice-mca/billingsummary.png)
+![Oddíl Souhrn fakturace](./media/billing-understand-your-invoice-mca/billingsummary.png)
 
-| Termín | Popis |
+| Označení | Popis |
 | --- | --- |
-| Poplatky|Celkový počet poplatků za Microsoft za tento Fakturační profil od posledního fakturačního období |
-| Závěrečné titulky |Kredity, které jste dostali z vrácených |
-| Použité kredity Azure | Kredity Azure, které se automaticky vztahují na Azure, se účtují za každé fakturační období. |
+| Poplatky|Celková výše poplatků Microsoftu pro tento fakturační profil od posledního fakturačního období |
+| Kredity |Kredity, které jste dostali za vratky |
+| Uplatněné kredity Azure | Kredity Azure, které se v každém fakturačním období automaticky uplatňují na poplatky za Azure |
 | Mezisoučet |Splatná částka před zdaněním |
-| Daň |Typ a množství daně, které platíte, v závislosti na zemi nebo oblasti vašeho fakturačního profilu. Pokud nemusíte platit daň, neuvidíte daň na faktuře. |
-| Odhadované celkové úspory |Odhadovaná celková velikost, kterou jste uložili z efektivní slevy. V případě potřeby jsou platné zlevněné sazby uvedené pod sekcí řádky nákupu v části Podrobnosti podle faktury. |
+| Daň |Typ a částka daně, kterou máte zaplatit, v závislosti na zemi/oblasti fakturačního profilu. Pokud žádnou daň platit nemusíte, na vaší faktuře se nezobrazí |
+| Odhadované celkové úspory |Odhad celkové částky, kterou jste ušetřili díky platným slevám. Případné platné slevové sazby najdete v řádkových položkách nákupu v oddílu Podrobnosti podle faktury |
 
 ### <a name="invoice-sections"></a>Oddíly faktury
 
-U každé faktury v rámci vašeho fakturačního profilu se vám budou účtovat poplatky, množství využitých kreditů Azure, daň a celková dlužná částka.
+Na každé faktuře v rámci vašeho fakturačního uvidíte poplatky, výši uplatněných kreditů Azure, daň a celkovou dlužnou částku.
 
 `Total = Charges - Azure Credit + Tax`
 
-### <a name="details-by-invoice-section"></a>Část Podrobnosti podle faktury
+### <a name="details-by-invoice-section"></a>Oddíl Podrobnosti podle faktury
 
-V části Podrobnosti se zobrazuje náklady na jednotlivé faktury rozdělené podle objednávky produktu. V rámci každé objednávky produktu se náklady rozdělují podle typu služby. Denní poplatky za vaše produkty a služby najdete v části Azure Portal a využití Azure a v CSV. Další informace najdete v tématu [vysvětlení poplatků na faktuře pro smlouvy o zákaznících Microsoftu](billing-mca-understand-your-bill.md).
+Tady se zobrazují náklady z každého oddílu faktury rozdělené podle objednávek produktu. V rámci každé objednávky produktu jsou náklady rozdělené podle typu služby. Denní poplatky za produkty a služby najdete na webu Azure Portal a v souboru CSV s informacemi o využití Azure a poplatcích. Další informace najdete v tématu [Vysvětlení poplatků na faktuře za smlouvu se zákazníkem Microsoftu](billing-mca-understand-your-bill.md).
 
-Celková částka splatná pro každou rodinu služeb se počítá odečtením *kreditů Azure* od kreditů a *poplatků* a připočtením *daně*:
+Celková dlužná částka za každou řadu služeb se vypočítá odečtením *kreditů Azure* od hodnoty *Kredity/poplatky* a přičtením hodnoty *Daň*:
 
 
-![Část Podrobnosti podle faktury](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
+![Oddíl Podrobnosti podle faktury](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
-| Termín |Popis |
+| Označení |Popis |
 | --- | --- |
-| Jednotková cena | Efektivní Jednotková cena služby (v cenové měně), která se používá k sazbě využití. Toto je jedinečné pro produkt, rodinu služeb, měřič a nabídku. |
-| Množství | Zakoupené nebo spotřebované množství během fakturačního období |
-| Poplatky/kredity | Čisté množství poplatků po použití kreditů nebo refundací |
-| Azure Credit | Množství kreditů Azure, které se vztahují na poplatky nebo kredity|
-| Daňová sazba | Daňové sazby v závislosti na zemi nebo oblasti |
-| Daňová částka | Množství daně použité k nákupu na základě daňové sazby |
+| Jednotková cena | Platná jednotková cena služby (v ceníkové měně), která se používá k nacenění využívání. Liší se v závislosti na produktu, řadě služeb, měřiči a nabídce |
+| Množství | Množství zakoupené nebo spotřebované během fakturačního období |
+| Poplatky/kredity | Čistá částka poplatků po uplatnění kreditů/refundací |
+| Kredit Azure | Výše kreditů Azure uplatněná na hodnotu Poplatky/kredity|
+| Daňová sazba | Daňové sazby v závislosti na zemi/oblasti |
+| Částka daně | Částka daně přičtená k nákupu na základě daňové sazby |
 | Celkem | Celková částka splatná za nákup |
 
-### <a name="how-to-pay"></a>Jak platíte
+### <a name="how-to-pay"></a>Postup platby
 
-V dolní části faktury jsou k dispozici pokyny pro platbu faktury. Můžete platit kontrolou, telegraficky nebo online. Pokud platíte online, můžete použít platební kartu nebo kredity Azure, pokud je to možné.
+Ve spodní části faktury najdete pokyny pro úhradu. Můžete platit šekem, bezhotovostním převodem nebo online. Pokud platíte online, můžete použít platební kartu nebo kredity Azure, pokud je to možné.
 
 ### <a name="publisher-information"></a>Informace o vydavateli
 
-Pokud máte ve vyúčtování služby třetích stran, zobrazí se v dolní části faktury název a adresa každého vydavatele.
+Pokud máte na faktuře služby třetích stran, zobrazí se ve spodní části faktury název a adresa každého vydavatele.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Podívejte se na přístup k zákaznickým smlouvám Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Pochopte poplatky na faktuře vašeho fakturačního profilu.](billing-mca-understand-your-bill.md)
+- [Vysvětlení poplatků na faktuře pro váš fakturační profil](billing-mca-understand-your-bill.md)
 - [Jak získat data o denním využití a fakturu za Azure](billing-download-azure-invoice-daily-usage-date.md)
-- [Zobrazení cen za Azure ve vaší organizaci](billing-ea-pricing.md)
-- [Zobrazení daňových dokumentů pro fakturační profil](billing-mca-download-tax-document.md)
+- [Zobrazení cen Azure pro vaši organizaci](billing-ea-pricing.md)
+- [Zobrazení daňových dokumentů pro váš fakturační profil](billing-mca-download-tax-document.md)

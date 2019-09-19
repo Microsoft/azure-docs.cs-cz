@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241432"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898177"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně p
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>Odeslání v USA, Kanadě nebo Evropě
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[V USA, Kanadě a Evropě](#tab/in-us-canada-europe)
 
 Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující kroky.
 
@@ -94,7 +94,7 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
 
-## <a name="ship-in-australia"></a>Odeslání v Austrálii
+## <a name="in-australiatabin-australia"></a>[V Austrálii](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
 
@@ -126,7 +126,7 @@ V případě dotazů souvisejících s vaší objednávkou přes telefon:
 - Nejprve odešlete e-mail s žádostí o vyzvednutí.
 - Přes telefon uveďte název vaší objednávky.
 
-## <a name="ship-in-japan"></a>Odeslání v Japonsku 
+## <a name="in-japantabin-japan"></a>[V Japonsku](#tab/in-japan) 
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Vypněte zařízení a odpojte kabely.
