@@ -58,7 +58,7 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 
 | Vlastnost | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
-| sourceType | Ano |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. |
+| sourceType | Ano |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **custom**. |
 | source | Ano |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. |
 | systemId | Ano | String | ID logiku aplikace systému. |
 | runId | Ano | String | ID spuštění aplikace logiky |
