@@ -1,6 +1,6 @@
 ---
-title: Reakce na požadavky HTTP – Azure Logic Apps
-description: Reakce na události v reálném čase přes protokol HTTP pomocí Azure Logic Apps
+title: Přijímat volání HTTPS a reagovat na ně – Azure Logic Apps
+description: Zpracování požadavků HTTPS a událostí v reálném čase pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914339"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122712"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Reakce na požadavky HTTP pomocí Azure Logic Apps
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Příjem příchozích volání HTTPS a jejich reakce pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované akce triggeru a odpovědi na žádost můžete vytvářet automatizované úlohy a pracovní postupy, které přijmou a reagují na požadavky HTTP v reálném čase. Můžete mít například aplikaci logiky:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované akce triggeru žádosti nebo odpovědi můžete vytvářet automatizované úlohy a pracovní postupy, které přijímají příchozí požadavky HTTPS a reagují na ně. Můžete mít například aplikaci logiky:
 
-* Odpověď na požadavek HTTP na data v místní databázi.
+* Přijetí a odpověď na požadavek HTTPS na data v místní databázi.
 * Aktivuje pracovní postup, když dojde k externí události Webhooku.
-* Volání aplikace logiky v jiné aplikaci logiky.
+* Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
+
+Aktivační událost žádosti podporuje *pouze* protokol HTTPS. Pokud chcete místo toho provést odchozí volání HTTP nebo HTTPS, použijte integrovaný [Trigger nebo akci HTTP](../connectors/connectors-native-http.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,15 +37,15 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>Přidat aktivační událost žádosti
+## <a name="add-request-trigger"></a>Přidat aktivační událost žádosti
 
-Tato integrovaná aktivační událost vytvoří ručně koncový bod, který může přijmout příchozí požadavek HTTP. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md)
+Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole "požadavek HTTP" jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
 
-   ![Výběr triggeru požadavku HTTP](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Vybrat aktivační událost žádosti](./media/connectors-native-reqres/select-request-trigger.png)
 
    Aktivační událost žádosti zobrazuje tyto vlastnosti:
 
@@ -52,10 +54,10 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod, který m�
    | Název vlastnosti | Název vlastnosti JSON | Požadováno | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti HTTP |
+   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
-1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo požadavku HTTP v příchozím požadavku, například:
+1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
 
    ![Příklad schématu JSON](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -190,7 +192,7 @@ Zde jsou další informace o výstupech z triggeru požadavku:
 
 ## <a name="add-a-response-action"></a>Přidat akci odpovědi
 
-Akci reakce můžete použít ke reakci na datovou část (data) na příchozí požadavek HTTP, ale jenom v aplikaci logiky, která se aktivuje požadavkem HTTP. Akci odpovědi můžete přidat kdykoli ve svém pracovním postupu. Další informace o základní definici JSON pro tuto aktivační událost najdete v tématu [typ akce odpovědi](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
+Akci reakce můžete použít ke reakci na datovou část (data) na příchozí požadavek HTTPS, ale jenom v aplikaci logiky, která se aktivuje požadavkem HTTPS. Akci odpovědi můžete přidat kdykoli ve svém pracovním postupu. Další informace o základní definici JSON pro tuto aktivační událost najdete v tématu [typ akce odpovědi](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu minutu. Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky `504 GATEWAY TIMEOUT` vrátí volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě `202 ACCEPTED` vrátí odpověď volajícímu.
 
@@ -224,7 +226,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
    | Název vlastnosti | Název vlastnosti JSON | Požadováno | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Stavový kód** | `statusCode` | Ano | Stavový kód protokolu HTTP, který se má vrátit v odpovědi |
+   | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
    | **Záhlaví** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
    | **Text** | `body` | Ne | Tělo odpovědi |
    |||||
@@ -233,6 +235,6 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
 1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Konektory pro Logic Apps](../connectors/apis-list.md)

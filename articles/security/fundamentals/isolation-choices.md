@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928013"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123055"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -105,7 +105,7 @@ Mezi další možnosti Azure Active Directory patří:
 
 - Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronizace a replikace s místními adresáři.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí Azure Multi-Factor Authentication serveru a také s vlastními aplikacemi a adresáři pomocí sady SDK.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně služby Active Directory bez nasazení řadičů domény. K těmto virtuálním počítačům se můžete přihlásit pomocí svých podnikových přihlašovacích údajů Active Directory a spravovat virtuální počítače připojené k doméně pomocí Zásady skupiny pro vymáhání standardních hodnot zabezpečení na všech virtuálních počítačích Azure.
 
@@ -128,19 +128,8 @@ Pokud disková jednotka používaná pro úložiště má selhání hardwaru, je
 Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnují rozsáhlou škálu výpočetních instancí & služeb, které se můžou automaticky škálovat a snížit, aby vyhovovaly potřebám vaší aplikace nebo podniku. Tato výpočetní instance a služba nabízí izolaci na více úrovních pro zabezpečení dat bez omezení flexibility v konfiguraci, kterou zákazníci požadují.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Izolované velikosti virtuálních počítačů
-Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
-Využitím izolované velikosti zaručujete, že váš virtuální počítač bude jediným operačním systémem, který běží na konkrétní instanci serveru.  Mezi aktuální nabídky izolovaných virtuálních počítačů patří:
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-Další informace o každé izolované velikosti, která je k dispozici, najdete [tady](../../virtual-machines/windows/sizes-memory.md).
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & izolaci kořenového operačního systému mezi kořenovým virtuálním počítačem & virtuálních počítačů hosta
 Výpočetní platforma Azure je založená na virtualizaci počítačů – to znamená, že veškerý kód zákazníka se spouští ve virtuálním počítači Hyper-V. U každého uzlu Azure (nebo síťového koncového bodu) je k dispozici hypervisor, který běží přímo na hardwaru, a rozděluje uzel na proměnný počet hostů Virtual Machines (virtuálních počítačů).
@@ -352,7 +341,7 @@ Nasazení Azure má několik vrstev izolace sítě. Následující diagram znáz
 
 - [Možnosti izolace sítě pro počítače ve virtuálních sítích Windows Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-To zahrnuje Klasický scénář front-endu a back-endu, ve kterém můžou počítače v určité back-mailové síti nebo v podsítí povolit jenom určité klienty nebo jiné počítače, aby se připojili ke konkrétnímu koncovému bodu na základě seznamu povolených IP adres.
+To zahrnuje Klasický scénář front-endu a back-endu, ve kterém můžou počítače v určité back-mailové síti nebo v podsítích umožňovat konkrétním koncovým bodů připojení jenom určitých klientů nebo jiných počítačů na základě seznamu povolených IP adres.
 
 - [Izolace výpočtů](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

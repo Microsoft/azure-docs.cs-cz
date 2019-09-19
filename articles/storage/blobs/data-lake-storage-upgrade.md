@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992232"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130409"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Hlavním úkolem je překládat identifikátor URI, který má předponu `adl://
 
 Schéma identifikátoru URI pro Data Lake Storage Gen1 je uvedený [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) podrobností, ale zhruba řečeno, je *adl://mydatalakestore.azuredatalakestore.net/\<cesta_k_souboru\>.*
 
-Schéma identifikátoru URI pro přístup k souborům Data Lake Storage Gen2 [](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) je podrobně vysvětleno, ale široce řečeno, je `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
+Schéma identifikátoru URI pro přístup k souborům Data Lake Storage Gen2 je [podrobně vysvětleno](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) , ale široce řečeno, je `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`.
 
 Budete muset projít vašimi stávajícími aplikacemi a ujistěte se, že jste změnili identifikátory URI odpovídajícím způsobem tak, aby odkazoval na Gen2 úložiště Data Lake těch, které jsou. Kromě toho budete muset přidat příslušné přihlašovací údaje. A konečně jak vyřadit původní aplikace a nahraďte novou aplikaci muset nezarovnají úzce ke strategii zachování celkové upgradu.
 

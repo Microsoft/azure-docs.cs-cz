@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987898"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129290"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s chybami balíčku obsahu v protokolu aktivit Azure Active Directory 
 
@@ -39,7 +39,7 @@ Při práci s balíčkem obsahu Power BI pro Azure Active Directory (Azure AD) j
 
 V tomto článku najdete informace o možných příčinách a o tom, jak tyto chyby opravit.
  
-## <a name="refresh-failed"></a>Aktualizace se nezdařila 
+## <a name="refresh-failed"></a>Aktualizace se nepodařila 
  
 **Jak je tato chyba Surface**: Odeslání e-mailu z Power BI nebo neúspěšného stavu v historii aktualizace. 
 
@@ -47,7 +47,7 @@ V tomto článku najdete informace o možných příčinách a o tom, jak tyto c
 | Příčina | Jak opravit |
 | ---   | ---        |
 | Chyby při selhání aktualizace se můžou způsobovat při resetování přihlašovacích údajů uživatelů, kteří se připojili k balíčku obsahu, ale ne aktualizovat v nastavení připojení balíčku obsahu. | V Power BI Najděte datovou sadu odpovídající řídicímu panelu protokoly aktivit Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a zadejte svoje přihlašovací údaje služby Azure AD. |
-| Aktualizace může selhat kvůli rozsáhlým datovým sadám. | Balíček obsahu Azure AD s Power BI v současné době podporuje pouze malé datové sady (méně než 500, 00 řádků) kvůli omezením týkajícím se časových limitů v rámci služby Power BI. Pokud dojde k chybám při omezování nebo pokud se aktualizace nepovede kvůli problémům s časovým limitem, může to být způsobeno tím, že se pokoušíte načíst velkou datovou sadu. Zkraťte časové období v dotazu a zkuste to znovu.|
+| Aktualizace může selhat kvůli rozsáhlým datovým sadám. | Balíček obsahu Azure AD s Power BI v současné době podporuje pouze malé datové sady (méně než 500 000 řádků) kvůli omezením týkajícím se časových limitů v rámci služby Power BI. Pokud dojde k chybám při omezování nebo pokud se aktualizace nepovede kvůli problémům s časovým limitem, může to být způsobeno tím, že se pokoušíte načíst velkou datovou sadu. Zkraťte časové období v dotazu a zkuste to znovu.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje zdroje dat. 
@@ -69,7 +69,7 @@ V tomto článku najdete informace o možných příčinách a o tom, jak tyto c
 | ---   | ---        |
 | V závislosti na velikosti vašeho tenanta může tento krok trvat několik minut až 30 minut. | Pokud se zpráva nezměnila tak, aby zobrazovala řídicí panel během celé hodiny, požádejte [o pomoc lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nainstalujte Power BI balíčku obsahu pro sestavy služby Azure AD](quickstart-install-power-bi-content-pack.md).
 * [Použití Power BI balíčku obsahu pro sestavy služby Azure AD k vizualizaci dat](howto-power-bi-content-pack.md)

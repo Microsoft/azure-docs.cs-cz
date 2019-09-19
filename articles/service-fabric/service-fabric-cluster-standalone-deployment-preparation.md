@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618842"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130316"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava vašeho nasazení clusteru Service Fabric Standalone
 
@@ -65,10 +65,11 @@ Tady jsou některé doporučené specifikace pro každý počítač, který chce
 * Minimálně 40 GB volného místa na disku
 * 4 jádra nebo větší využití procesoru
 * Připojení k zabezpečené sítě nebo sítě pro všechny počítače
-* Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709, 1803 nebo 2019)
+* Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709 nebo 1803). Verze Service Fabric 6.4.654.9590 a novější také podporuje servery 2019 a 1809.
 * [Rozhraní .NET framework 4.5.1 nebo novější](https://www.microsoft.com/download/details.aspx?id=40773), úplné instalace
 * [Prostředí Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [RemoteRegistry služby](https://technet.microsoft.com/library/cc754820) by měla být spuštěná na všech počítačích
+* Instalační jednotka Service Fabric musí být systém souborů NTFS.
 
 Správce clusteru, nasazení a konfigurace clusteru, musí mít [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) na všech počítačích. Service Fabric nelze nainstalovat na řadič domény.
 

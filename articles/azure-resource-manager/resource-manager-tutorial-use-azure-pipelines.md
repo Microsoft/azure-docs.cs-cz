@@ -1,6 +1,6 @@
 ---
-title: Průběžná integrace se sadou Azure kanály | Dokumentace Microsoftu
-description: Zjistěte, jak průběžné sestavování, testování a nasazování šablon Azure Resource Manageru.
+title: Kontinuální integrace s Azure Pipelines | Microsoft Docs
+description: Naučte se průběžně sestavovat, testovat a nasazovat šablony Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 85dc0476da12bea64610b6910b0682fef00f4b5a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057789"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122230"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: Průběžná integrace šablon Azure Resource Manageru s kanály Azure
+# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: Průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
-Zjistěte, jak pomocí Azure kanály průběžné sestavování a nasazování projekty ze šablony Azure Resource Manageru.
+Naučte se používat Azure Pipelines k průběžnému sestavování a nasazování projektů šablon Azure Resource Manager.
 
-Azure DevOps poskytuje služby pro vývojáře pro podporu týmů na plánování práce, spolupráce na vývoj kódu a sestavování a nasazování aplikací. Vývojáři mohou pracovat v cloudu pomocí služby Azure DevOps. Azure DevOps poskytuje integrovanou sadu funkcí, ke kterým můžete přistupovat přes webový prohlížeč nebo klienta integrovaného vývojového prostředí. Azure kanálu je jedním z těchto funkcí. Kanály Azure je plně funkční kontinuální integrace (CI) a průběžné doručování (CD) služby. Funguje s poskytovatelem upřednostňované Git a můžete nasadit na většině hlavní cloudové služby. Pak můžete automatizovat sestavení, testování a nasazení kódu do Microsoft Azure, Google Cloud Platform nebo Amazon Web Services.
+Azure DevOps poskytuje Vývojářské služby pro podporu týmů pro plánování práce, spolupráci na vývoji kódu a sestavování a nasazování aplikací. Vývojáři můžou pracovat v cloudu pomocí Azure DevOps Services. Azure DevOps poskytuje integrovanou sadu funkcí, ke kterým můžete přistupovat prostřednictvím webového prohlížeče nebo klienta IDE. Kanál Azure je jednou z těchto funkcí. Azure Pipelines je plně funkční služba pro průběžnou integraci (CI) a průběžné doručování (CD). Funguje s vaším preferovaným poskytovatelem Git a může se nasadit do většiny hlavních cloudových služeb. Potom můžete automatizovat sestavení, testování a nasazení kódu pro Microsoft Azure, Google Cloud Platform nebo Amazon Web Services.
 
-Tento kurz je určen pro vývojáře šablony Azure Resource Manageru, kteří jsou nové služby Azure DevOps a Azure kanály. Pokud jste již obeznámeni s GitHub a DevOps, můžete přeskočit na [vytvoření kanálu](#create-a-pipeline).
+Tento kurz je určený pro Azure Resource Manager vývojáře šablon, kteří jsou novými Azure DevOps Services a Azure Pipelines. Pokud už jste obeznámeni s GitHubem a DevOps, můžete přeskočit na [vytvoření kanálu](#create-a-pipeline).
 
 > [!NOTE]
-> Vyberte název projektu. Při přechodu v průběhu kurzu nahraďte některý z **AzureRmPipeline** názvem vašeho projektu.
+> Vyberte název projektu. Když projdete kurz, nahraďte **AzureRmPipeline** názvem vašeho projektu.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -38,7 +38,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Vytvoření projektu Azure DevOps
 > * Vytvoření kanálu Azure
 > * Ověření nasazení kanálu
-> * Aktualizace šablony a opětovné nasazení
+> * Aktualizujte šablonu a znovu nasaďte
 > * Vyčištění prostředků
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -47,38 +47,38 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* **Účet GitHub**, kde ji použijete k vytvoření úložiště pro šablony. Pokud ho nemáte, můžete si [vytvořit zdarma](https://github.com). Další informace o používání úložiště GitHub, najdete v části [úložišť GitHub sestavení](/azure/devops/pipelines/repos/github).
-* **Nainstalovat Git**. Tento kurz pokyn používá *Git Bash* nebo *Git Shell*. Pokyny najdete v tématu [nainstalujte Git]( https://www.atlassian.com/git/tutorials/install-git).
-* **Azure DevOps organizace**. Pokud ho nemáte, můžete jeden vytvořit zdarma. Zobrazit [vytvořit kolekci organizace nebo projektu]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* **[Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků**. Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* **Účet GitHubu**, kde ho použijete k vytvoření úložiště pro šablony. Pokud ho ještě nemáte, můžete si [ho vytvořit zdarma](https://github.com). Další informace o použití úložišť GitHub najdete v tématu [sestavení úložišť GitHubu](/azure/devops/pipelines/repos/github).
+* **Nainstalovat Git**. Tato instrukce kurzu používá *Git bash* nebo *git shell*. Pokyny najdete v tématu [instalace Gitu]( https://www.atlassian.com/git/tutorials/install-git).
+* **Organizace Azure DevOps**. Pokud ho ještě nemáte, můžete si ho vytvořit zdarma. Viz [vytvoření organizace nebo kolekce projektů]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **[Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
 ## <a name="prepare-a-github-repository"></a>Příprava úložiště GitHub
 
-GitHub slouží k uložení váš zdrojový kód projektu, včetně šablon Resource Manageru. Ostatní podporované úložiště najdete v části [úložiště podporuje Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
+GitHub slouží k uložení zdrojového kódu projektu, včetně šablon Správce prostředků. Další podporovaná úložiště najdete v tématu [úložiště podporovaná službou Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
 
-### <a name="create-a-github-repository"></a>Vytvořit úložiště GitHub
+### <a name="create-a-github-repository"></a>Vytvoření úložiště GitHub
 
-Pokud nemáte účet GitHub, najdete v článku [požadavky](#prerequisites).
+Pokud nemáte účet GitHubu, přečtěte si téma [požadavky](#prerequisites).
 
-1. Přihlaste se k [Githubu](https://github.com).
-2. Vyberte image pro váš účet v pravém horním rohu a pak vyberte **úložištích**.
+1. Přihlaste se k [GitHubu](https://github.com).
+2. V pravém horním rohu vyberte svůj obrázek účtu a pak vyberte **svoje úložiště**.
 
-    ![Azure Resource Manageru Azure DevOps Azure kanály vytvořit úložiště GitHub](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines vytvoření úložiště GitHubu](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
 
-1. Vyberte **nový**, zelené tlačítko.
-1. V **název úložiště**, zadejte název úložiště.  Například **AzureRmPipeline úložiště**. Nezapomeňte nahradit některé z **AzureRmPipeline** názvem vašeho projektu. Můžete vybrat, zda **veřejné** nebo **privátní** pro procházení tohoto kurzu. A pak vyberte **vytvoření úložiště**.
-1. Poznamenejte si adresu URL. Adresa URL úložiště má následující formát:
+1. Vyberte **nové**a zelené tlačítko.
+1. Do **název úložiště**zadejte název úložiště.  Například **AzureRmPipeline-úložiště**. Nezapomeňte nahradit libovolný z **AzureRmPipeline** názvem vašeho projektu. V rámci tohoto kurzu můžete vybrat buď **veřejné** , nebo **soukromé** . A pak vyberte **vytvořit úložiště**.
+1. Zapište adresu URL. Adresa URL úložiště má následující formát:
 
     ```url
     https://github.com/[YourAccountName]/[YourRepositoryName]
     ```
 
-Toto úložiště se označuje jako *vzdáleného úložiště*. Každý z vývojářů z jednoho projektu můžete naklonovat jeho vlastní *místního úložiště*a sloučit změny do vzdáleného úložiště.
+Toto úložiště se označuje jako *vzdálené úložiště*. Každý z vývojářů stejného projektu může klonovat své vlastní *místní úložiště*a sloučit změny do vzdáleného úložiště.
 
 ### <a name="clone-the-remote-repository"></a>Klonování vzdáleného úložiště
 
-1. Otevřete prostředí Git nebo Git Bash.  Viz [Požadavky](#prerequisites).
-1. Zkontrolujte aktuální složku **githubu**.
+1. Otevřete prostředí Git nebo Git bash.  Viz [Požadavky](#prerequisites).
+1. Ověřte, jestli je aktuální složka **GitHub**.
 1. Spusťte následující příkaz:
 
     ```bash
@@ -89,34 +89,34 @@ Toto úložiště se označuje jako *vzdáleného úložiště*. Každý z vývo
     pwd
     ```
 
-    Nahraďte **[YourAccountName]** s Githubem, váš název účtu a nahraďte **[YourGitHubRepositoryName]** názvem vašeho úložiště, kterou jste vytvořili v předchozím postupu.
+    Nahraďte **[YourAccountName]** názvem vašeho účtu GitHub a nahraďte **[YourGitHubRepositoryName]** názvem vašeho úložiště, který jste vytvořili v předchozím postupu.
 
-    Na následujících snímcích obrazovky ukazuje příklad.
+    Na následujících snímcích obrazovky vidíte příklad.
 
-    ![Azure Resource Manageru Azure DevOps Azure kanály vytvořit prostředí bash Githubu](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines vytvoření GitHubu bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
-**CreateAzureStorage** složku pro uložení šablony je složka. **Pwd** příkaz zobrazí cestu ke složce. Je cesta kde uložit šablonu, kterou chcete v následujícím postupu.
+Složka **CreateAzureStorage** je složka, ve které je šablona uložena. Příkaz **PWD** zobrazuje cestu ke složce. Cesta je místo, kam šablonu uložíte, do následujícího postupu.
 
-### <a name="download-a-quickstart-template"></a>Stáhnout šablonu pro rychlý start
+### <a name="download-a-quickstart-template"></a>Stažení šablony pro rychlé zprovoznění
 
-Místo vytvoření šablony, můžete si stáhnout [šablonu pro rychlý Start]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json). Tato šablona vytvoří účet služby Azure Storage.
+Místo vytváření šablony si můžete stáhnout [šablonu pro rychlý Start]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json). Tato šablona vytvoří účet Azure Storage.
 
-1. Otevřít Visual Studio code. Viz [Požadavky](#prerequisites).
+1. Otevřete Visual Studio Code. Viz [Požadavky](#prerequisites).
 2. Otevřete šablonu s následující adresou URL:
 
     ```URL
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Uložte soubor jako **azuredeploy.json** k **CreateAzureStorage** složky. Název složky a název souboru se používají, se nacházejí v kanálu.  Pokud změníte tyto názvy, je nutné aktualizovat názvů používaných v kanálu.
+3. Uložte soubor jako **azuredeploy. JSON** do složky **CreateAzureStorage** . Název složky i název souboru se používají tak, jak jsou v kanálu.  Pokud tyto názvy změníte, je nutné aktualizovat názvy používané v kanálu.
 
-### <a name="push-the-template-to-the-remote-repository"></a>Vložit šablonu do vzdáleného úložiště
+### <a name="push-the-template-to-the-remote-repository"></a>Vložení šablony do vzdáleného úložiště
 
-Azuredeploy.json se přidala do místního úložiště. V dalším kroku nahrajte šablonu do vzdáleného úložiště.
+Azuredeploy. JSON se přidal do místního úložiště. V dalším kroku nahrajete šablonu do vzdáleného úložiště.
 
-1. Otevřít *Git Shell* nebo *Git Bash*, pokud není otevřený.
-1. Změňte adresář na složku CreateAzureStorage ve vašem místním úložišti.
-1. Ověřte, **azuredeploy.json** je soubor ve složce.
+1. Otevřete *prostředí Git* nebo *Git bash*, pokud není otevřené.
+1. Změňte adresář na složku CreateAzureStorage v místním úložišti.
+1. Ověřte, zda je soubor **azuredeploy. JSON** ve složce.
 1. Spusťte následující příkaz:
 
     ```bash
@@ -125,61 +125,61 @@ Azuredeploy.json se přidala do místního úložiště. V dalším kroku nahraj
     git push origin master
     ```
 
-    Může se zobrazit upozornění týkající se LF. Upozornění můžete ignorovat. **hlavní** hlavní větev.  Obvykle vytvoříte větev pro každou aktualizaci. Pro zjednodušení tohoto kurzu budete používat v hlavní větvi přímo.
-1. V prohlížeči přejděte do vašeho úložiště GitHub.  Adresa URL je  **https://github.com/ [YourAccountName] / [YourGitHubRepository]** . Měly by se zobrazit **CreateAzureStorage** složky a **Azuredeploy.json** uvnitř složky.
+    Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Hlavní** větev je hlavní.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu budete používat hlavní větev přímo.
+1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je  **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . V rámci složky se zobrazí složka **CreateAzureStorage** a **Azuredeploy. JSON** .
 
-Zatím jste vytvořili úložiště GitHub a nahrát šablonu do úložiště.
+Zatím jste vytvořili úložiště GitHub a nahráli šablonu do úložiště.
 
-## <a name="create-a-devops-project"></a>Vytvořit projekt DevOps
+## <a name="create-a-devops-project"></a>Vytvoření projektu DevOps
 
-DevOps organizace je potřeba, aby bylo možné přejít k dalšímu postupu.  Pokud ho nemáte, přečtěte si téma [požadavky](#prerequisites).
+Aby bylo možné přejít k dalšímu postupu, je nutné, aby byla DevOps organizace.  Pokud ho nemáte, přečtěte si téma [požadavky](#prerequisites).
 
 1. Přihlaste se k [Azure DevOps](https://dev.azure.com).
-1. Vyberte organizaci DevOps z levé strany.
+1. Vyberte DevOps organizaci vlevo.
 
-    ![Azure Resource Manageru Azure DevOps Azure kanály vytvořit projekt Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines vytvoření projektu Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. Vyberte **Vytvořit projekt**. Pokud nemáte k dispozici všechny projekty, se automaticky otevře stránka pro vytvoření projektu.
+1. Vyberte **Vytvořit projekt**. Pokud nemáte žádné projekty, otevře se stránka vytvořit projekt automaticky.
 1. Zadejte následující hodnoty:
 
-    * **Název projektu**: Zadejte název projektu. Název projektu, který jste vybrali na začátek tohoto kurzu můžete použít.
-    * **Správa verzí**: Vyberte **Git**. Možná budete muset Rozbalit **Upřesnit** zobrazíte **verzí**.
+    * **Název projektu**: zadejte název projektu. Můžete použít název projektu, který jste vybrali na začátku kurzu.
+    * Správa **verzí**: Vyberte **Git**. Pro zobrazení **správy verzí**možná budete muset rozbalit možnost **Upřesnit** .
 
     Pro ostatní vlastnosti použijte výchozí hodnotu.
 1. Vyberte **Vytvořit projekt**.
 
-Umožňuje vytvořte připojení služby, který slouží k nasazení projekty do Azure.
+Vytvořte připojení služby, které se používá k nasazení projektů do Azure.
 
-1. Vyberte **nastavení projektu** od nejnižší úrovně v levé nabídce.
-1. Vyberte **služby připojení** pod **kanály**.
-1. Vyberte **nová služba připojení**a pak vyberte **AzureResourceManager**.
+1. V dolní části nabídky vlevo vyberte **nastavení projektu** .
+1. V části **kanály**vyberte **připojení služby** .
+1. Vyberte **nové připojení služby**a pak vyberte **AzureResourceManager**.
 1. Zadejte následující hodnoty:
 
-    * **Název připojení**: Zadejte název připojení. Například **AzureRmPipeline conn**. Poznamenejte si tento název, třeba název při vytváření kanálu.
-    * **Určit obor úrovně**: vyberte **předplatné**.
+    * **Název připojení**: zadejte název připojení. Například **AzureRmPipeline-připojeno**. Poznamenejte si tento název. při vytváření kanálu budete potřebovat název.
+    * **Úroveň oboru**: vyberte **předplatné**.
     * **Předplatné**: vyberte své předplatné.
     * **Skupina prostředků**: Ponechte prázdné.
-    * **Povolit všechny kanály, abyste mohli používat toto připojení**. (vybráno)
+    * **Povolí všem kanálům používat toto připojení**. Vyberte
 1. Vyberte **OK**.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Až dosud jste dokončili následující úlohy.  Pokud přeskočíte v předchozích částech vzhledem k tomu, že máte zkušenosti s GitHub a DevOps, musíte dokončit úkoly, než budete pokračovat.
+Až do této chvíle jste dokončili následující úlohy.  Pokud přeskočíte předchozí oddíly, protože jste obeznámeni s GitHubem a DevOps, musíte před pokračováním dokončit úkoly.
 
-- Úložiště GitHub vytvořte a uložte [Tato šablona](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) k **CreateAzureStorage** složky v úložišti.
-- Vytvořte projekt DevOps a vytvořte připojení služby Azure Resource Manageru.
+- Vytvořte úložiště GitHub a uložte [tuto šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) do složky **CreateAzureStorage** v úložišti.
+- Vytvořte projekt DevOps a vytvořte připojení služby Azure Resource Manager.
 
-K vytvoření kanálu s krokem k nasazení šablony:
+Vytvoření kanálu s krokem pro nasazení šablony:
 
-1. Vyberte **kanály** v levé nabídce.
-1. Vyberte **nový kanál**.
-1. Z **připojit** kartu, vyberte možnost **Githubu**. Pokud se zobrazí dotaz, zadejte své přihlašovací údaje Githubu a postupujte podle pokynů. Pokud se zobrazí následující obrazovka, vyberte **vybrat pouze úložiště**a ověřte své úložiště je v seznamu dřív, než vyberete **schválit a instalace**.
+1. V nabídce vlevo vyberte **kanály** .
+1. Vyberte **Nový kanál**.
+1. Na kartě **připojit** vyberte **GitHub**. Pokud se zobrazí výzva, zadejte svoje přihlašovací údaje k GitHubu a pak postupujte podle pokynů. Pokud se zobrazí následující obrazovka, vyberte **jenom možnost vybrat úložiště**a ověřte, jestli je vaše úložiště v seznamu, než vyberete **schválit & nainstalovat**.
 
-    ![Azure Resource Manageru Azure DevOps Azure kanály pouze vyberte úložiště](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines vybrat jenom úložiště](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. Z **vyberte** kartu, vyberte úložiště.  Výchozí název je **[YourAccountName] / [YourGitHubRepositoryName]** .
-1. Z **konfigurovat** kartu, vyberte možnost **Starter kanálu**. Zobrazuje **azure pipelines.yml** soubor kanálu s dva kroky skriptu.
-1. Nahradit **kroky** oddíl s následující kód YAML:
+1. Na kartě **Vybrat** vyberte své úložiště.  Výchozí název je **[YourAccountName]/[YourGitHubRepositoryName]** .
+1. Na kartě **Konfigurace** vyberte **Počáteční kanál**. Zobrazuje soubor kanálu **Azure-Pipelines. yml** se dvěma kroky skriptu.
+1. Nahraďte oddíl **kroků** následujícím YAML:
 
     ```yaml
     steps:
@@ -194,46 +194,46 @@ K vytvoření kanálu s krokem k nasazení šablony:
         deploymentMode: 'Incremental'
     ```
 
-    By měl vypadat:
+    Bude vypadat takto:
 
-    ![Azure yaml kanály Azure Resource Manageru Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
 
     Proveďte následující změny:
 
-    * **azureSubscription**: zaktualizujte příslušnou hodnotu připojení služby vytvořené v předchozím postupu.
-    * **Akce**: **vytvořit nebo aktualizovat skupinu prostředků** akce provede akce 2 - 1. Vytvořte skupinu prostředků, pokud je k dispozici nový název skupiny prostředků; 2. nasazení šablony zadán.
-    * **Název skupiny prostředků**: Zadejte název nové skupiny prostředků. Například **AzureRmPipeline-rg**.
-    * **umístění**: Zadejte umístění pro skupinu prostředků.
-    * **templateLocation**: když **propojený artefakt** není zadána, úloha hledá soubor šablony přímo z připojené úložiště.
-    * **csmFile** je cesta k souboru šablony. Není nutné zadat soubor parametrů šablony, protože všechny parametry definované v šabloně mají výchozí hodnoty.
+    * **azureSubscription**: Aktualizujte hodnotu pomocí připojení služby, které jste vytvořili v předchozím postupu.
+    * **Akce**: akce **vytvořit nebo aktualizovat skupinu prostředků** provede 2 akce-1. Pokud je zadaný název nové skupiny prostředků, vytvořte skupinu prostředků. odst. Nasaďte zadanou šablonu.
+    * **resourceGroupName**: zadejte nový název skupiny prostředků. Například **AzureRmPipeline-RG**.
+    * **umístění**: zadejte umístění pro skupinu prostředků.
+    * **templateLocation**: když je zadán **propojený artefakt** , úloha vyhledá soubor šablony přímo z připojeného úložiště.
+    * **csmFile** je cesta k souboru šablony. Nemusíte zadávat soubor parametrů šablony, protože všechny parametry definované v šabloně mají výchozí hodnoty.
 
-    Další informace o úkolu, naleznete v tématu [úkol nasazení skupiny prostředků Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+    Další informace o úloze najdete v tématu [Úloha nasazení skupiny prostředků Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment) .
 1. Vyberte **Uložit a spustit**.
-1. Vyberte **uložte a spusťte** znovu. Kopii souboru YAML se uloží do připojené úložiště. Zobrazíte soubor YAML přejděte do úložiště.
-1. Ověřte, že kanál byl úspěšně proveden.
+1. Vyberte **Uložit a spustit** znovu. Kopie souboru YAML se uloží do připojeného úložiště. Soubor YAML můžete zobrazit tak, že přejdete do úložiště.
+1. Ověřte, že se kanál úspěšně spustil.
 
-    ![Azure yaml kanály Azure Resource Manageru Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Otevřete skupinu prostředků. Název je zadán v souboru YAML kanálu.  Zobrazí se vytvoří jeden účet úložiště.  Název účtu úložiště začíná **ukládání**.
-1. Vyberte název účtu úložiště ho otevřete.
+1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
+1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **vlastnosti**. Všimněte si, že **SKU** je **Standard_LRS**.
 
-    ![Azure portal ověřovací kanály Azure Resource Manageru Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
+    ![Azure Resource Manager ověřování portálu Azure Pipelines Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
 ## <a name="update-and-redeploy"></a>Aktualizace a opětovné nasazení
 
-Při aktualizaci šablony a odešlete změny do vzdáleného úložiště, kanál automaticky aktualizuje prostředků, účet úložiště v tomto případě.
+Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, kanál v tomto případě automaticky aktualizuje prostředky a účet úložiště.
 
-1. Otevřít **azuredeploy.json** ze svého místního úložiště ve Visual Studio Code.
-1. Aktualizace **defaultValue** z **storageAccountType** k **Standard_GRS**. Viz následující snímek obrazovky:
+1. Otevřete **azuredeploy. JSON** z místního úložiště v Visual Studio Code.
+1. Aktualizujte hodnotu **DefaultValue** ovládacího **storageAccountType** na **Standard_GRS**. Viz následující snímek obrazovky:
 
-    ![Azure Resource Manageru Azure DevOps Azure kanály aktualizovat yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines Update YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 
 1. Uložte změny.
-1. Odešlete změny do vzdáleného úložiště spuštěním následujících příkazů z Gitu nebo prostředí Bash.
+1. Dodejte změny do vzdáleného úložiště spuštěním následujících příkazů z Gitu bash/shell.
 
     ```bash
     git pull origin master
@@ -242,11 +242,11 @@ Při aktualizaci šablony a odešlete změny do vzdáleného úložiště, kaná
     git push origin master
     ```
 
-    První příkaz synchronizuje místní úložiště a vzdáleným úložištěm. Mějte na paměti, že soubor YAML kanálu byl přidán do vzdáleného úložiště.
+    První příkaz synchronizuje místní úložiště se vzdáleným úložištěm. Zapamatujte si, že se soubor YAML kanálu přidal do vzdáleného úložiště.
 
-    Hlavní větve vzdáleného úložiště bylo aktualizováno se znovu aktivuje kanál.
+    Když se hlavní větev vzdáleného úložiště aktualizuje, kanál se znovu aktivuje.
 
-Pokud chcete ověřit změny, můžete zkontrolovat skladové položky účtu úložiště.  Zobrazit [ověření nasazení](#verify-the-deployment).
+Chcete-li ověřit změny, můžete zkontrolovat SKU účtu úložiště.  Viz [Ověření nasazení](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -257,11 +257,11 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-Můžete také odstranit úložiště GitHub a projekt Azure DevOps.
+Možná budete chtít odstranit i úložiště GitHub a projekt Azure DevOps.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu vytvoříte kanál Azure DevOps k nasazení šablony Azure Resource Manageru. Informace o nasazování prostředků Azure napříč několika oblastmi a používání postupů bezpečného nasazení najdete tady:
+V tomto kurzu vytvoříte kanál Azure DevOps, který nasadí šablonu Azure Resource Manager. Informace o nasazování prostředků Azure napříč několika oblastmi a používání postupů bezpečného nasazení najdete tady:
 
 > [!div class="nextstepaction"]
-> [Použití Azure Deployment Manageru](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Použití postupů bezpečného nasazení](./deployment-manager-tutorial.md)

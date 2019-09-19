@@ -1,19 +1,19 @@
 ---
 title: Služby zprovoznění ML ve službě HDInsight – Azure
 description: Naučte se, jak zprovoznění datový model a vytvořit předpovědi se službami ML ve službě Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967681"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123565"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
 
@@ -50,31 +50,31 @@ Po použití clusteru ML Services ve službě HDInsight k dokončení modelován
 
 1. Zobrazí se možnosti, ze kterých si můžete vybrat. Vyberte první možnost, jak je znázorněno na následujícím snímku obrazovky, abyste **nakonfigurovali ml Server pro provozuschopnost**.
 
-    ![OP1 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![Výběr nástroje pro správu R serveru](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Nyní máte k dispozici možnost zvolit způsob, jakým se má zprovoznění ML Server. Z prezentovaných možností vyberte **první zadáním.**
 
-    ![OP2 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![Zprovoznění nástroje pro správu R serveru](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Po zobrazení výzvy zadejte a znovu zadejte heslo pro místního uživatele s oprávněními správce.
 
 1. Měli byste vidět výstupy naznačující, že operace byla úspěšná. Také se zobrazí výzva, abyste v nabídce vybrali jinou možnost. Vyberte E a vraťte se do hlavní nabídky.
 
-    ![op3 jednoho boxu](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![Nástroj pro správu R serveru byl úspěšný](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. Volitelně můžete provádět diagnostické kontroly spuštěním diagnostického testu následujícím způsobem:
 
     a. V hlavní nabídce vyberte **6** a spusťte diagnostické testy.
 
-    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![Diagnostika nástroje pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. **V nabídce diagnostické testy vyberte.** Po zobrazení výzvy zadejte heslo, které jste zadali pro místního uživatele s oprávněními správce.
 
-    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![Test nástroje pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Ověřte, že výstup ukazuje, že celkový stav je Pass.
 
-    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![Průchod nástrojem pro správu R serveru](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. V zobrazených možnostech nabídky zadejte **E** pro návrat do hlavní nabídky a pak zadáním **8** ukončete nástroj pro správu.
 
@@ -148,7 +148,7 @@ Pomocí těchto kroků vyřaďte z provozu pracovní uzly:
 
 1. Klikněte na **Akce** > **vybrané hostitelé** > **hostitelé** > **zapnout režim údržby**. Například na následujícím obrázku jsme vybrali k vyřazení z provozu uzly wn3 a wn4.  
 
-   ![vyřazení pracovních uzlů z provozu](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Režim údržby pro Apache Ambari](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * Vyberte **Akce** > **Vybraní hostitelé** > – datové**uzly** > klikněte na **vyřadit z provozu**.
 * Vyberte **Akce** > **vybrané hostitelé** > **NodeManagers** > klikněte na **vyřadit z provozu**.
@@ -189,7 +189,7 @@ Jakmile budou všechny vyřazené pracovní uzly nakonfigurované tak, aby spou�
          ]
        }
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa clusteru služby ML Services v HDInsight](r-server-hdinsight-manage.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)

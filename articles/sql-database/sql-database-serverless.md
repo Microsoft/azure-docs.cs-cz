@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993453"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123082"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (Preview)
 
@@ -66,8 +66,8 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 | | **Výpočetní prostředí bez serveru** | **Zřízené výpočetní prostředky** |
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
-| **Úsilí řízení výkonu** |malým|Vyšší|
-|**Škálování na výpočetní výkon**|Automatické|Ručně|
+| **Úsilí řízení výkonu** |malým|Výkonnější|
+|**Škálování na výpočetní výkon**|Automatické|Ruční|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžité|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
@@ -126,7 +126,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 
 |Funkce|Aktivační událost autoresume|
 |---|---|
-|Ověřování a autorizace|Přihlásit se|
+|Ověřování a autorizace|Přihlášení|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
 |Zjišťování a klasifikace dat|Přidávání, úpravy, odstraňování nebo zobrazování popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|
@@ -160,6 +160,12 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
    |GP_S_Gen5_1|Obecné použití|Gen5|1|
    |GP_S_Gen5_2|Obecné použití|Gen5|2|
    |GP_S_Gen5_4|Obecné použití|Gen5|4|
+   |GP_S_Gen5_6|Obecné použití|Gen5|6|
+   |GP_S_Gen5_8|Obecné použití|Gen5|8|
+   |GP_S_Gen5_10|Obecné použití|Gen5|10|
+   |GP_S_Gen5_12|Obecné použití|Gen5|12|
+   |GP_S_Gen5_14|Obecné použití|Gen5|14|
+   |GP_S_Gen5_16|Obecné použití|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 
@@ -288,7 +294,7 @@ Omezení prostředků najdete v tématu [výpočetní vrstva bez serveru](sql-da
 
 Cena za výpočetní náklady je maximální využití procesoru a využité paměti každou sekundu. Pokud je množství využitého procesoru a využité paměti menší než minimální velikost zřízená za každou, účtuje se zřízené množství. Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.
 
-- **Prostředek se fakturoval**: Procesor a paměť
+- **Prostředek se fakturoval**: PROCESOR a paměť
 - **Účtovaná částka**: Vcore Unit Price * Max (min virtuální jádra, virtuální jádra použito, min. gb × 1/3, využité paměti gb × 1/3) 
 - **Četnost fakturace**: Za sekundu
 
@@ -322,7 +328,7 @@ Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda. 
 
 Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou těchto oblastí: Austrálie – střed, Čína – východ, Čína – sever, Francie – jih, Německo – střed, Německo – západ, Indie – jih, Korea – jih, Jižní Afrika – západ, Velká Británie – sever, Velká Británie – jih, Velká Británie – západ a Středozápadní USA.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak [začít, najdete v tématu rychlý Start: Pomocí Azure Portal](sql-database-single-database-get-started.md)vytvořte v Azure SQL Database jednu databázi.
 - Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

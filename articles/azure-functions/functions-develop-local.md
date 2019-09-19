@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 7e0b5137355c9fd89600fa48c075c81cfb1190e3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c50615b9cbe5c3ca926d893858bb39eeb5720067
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085448"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129596"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions kódu a testování místně
 
@@ -35,7 +35,7 @@ Způsob, jakým vyvíjíte funkce v místním počítači, závisí na vašich [
 
 Každé z těchto místních vývojových prostředí umožňuje vytvářet projekty aplikací Function App a používat předdefinované šablony funkcí k vytváření nových funkcí. Každá z nich používá základní nástroje, takže můžete testovat a ladit své funkce na vlastním počítači pomocí modulu runtime Real Functions, stejně jako u jakékoli jiné aplikace. Projekt aplikace Function App můžete také publikovat z libovolného z těchto prostředí do Azure.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + Další informace o místním vývoji kompilovaných C# funkcí pomocí sady visual Studio 2019 naleznete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md).
 + Další informace o místním vývoji funkcí pomocí VS Code na počítačích se systémem Mac, Linux nebo Windows najdete v [dokumentaci k VS Code Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).

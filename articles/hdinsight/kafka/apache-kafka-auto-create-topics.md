@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960666"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122673"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytváření témat
 
@@ -25,7 +25,7 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 1. Z [Azure Portal](https://portal.azure.com)vyberte cluster Kafka.
 
-2. V __přehledu clusteru__vyberte __řídicí panel clusteru__. 
+2. V __přehledu clusteru__vyberte __řídicí panel clusteru__.
 
     ![Obrázek portálu s vybraným řídicím panelem clusteru](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 3. V seznamu na levé straně stránky vyberte službu Kafka.
 
-    ![Seznam služeb](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Karta seznam služeb Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. V polovině stránky vyberte konfigurace.
 
-    ![Karta konfigurace služby](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Karta konfigurace služby Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. Do pole Filtr zadejte hodnotu `auto.create`. 
+5. Do pole Filtr zadejte hodnotu `auto.create`.
 
-    ![Obrázek pole filtru](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Pole vyhledávacího filtru Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Tím se vyfiltruje seznam vlastností a zobrazí `auto.create.topics.enable` se nastavení.
 
@@ -53,7 +53,7 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 7. Vyberte službu Kafka, vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-    ![Obrázek výběru pro restartování](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > Hodnoty Ambari můžete nastavit také pomocí REST API Ambari. To je všeobecně obtížnější, protože je třeba provést více volání REST pro načtení aktuální konfigurace, její úpravy atd. Další informace najdete v tématu [Správa clusterů HDInsight pomocí dokumentu REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) .

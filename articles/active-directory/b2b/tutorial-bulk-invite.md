@@ -1,140 +1,110 @@
 ---
-title: Kurz pro hromadné pozvání uživatele spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
+title: Kurz pro hromadné pozvání uživatelů pro spolupráci B2B – Azure Active Directory | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak použít PowerShell a soubor CSV k hromadnému rozeslání pozvánek externím uživatelům spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277999"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128727"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvat uživatele spolupráce B2B ve službě Azure AD
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadné pozvání uživatelů pro spolupráci s B2B v Azure AD (Preview)
 
-Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se dozvíte, jak použít PowerShell k hromadnému rozeslání pozvánek externím uživatelům. Konkrétně provedete následující:
+|     |
+| --- |
+| Tento článek popisuje funkci veřejné verze Preview aplikace Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
+
+
+Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se naučíte, jak pomocí Azure Portal posílat hromadné pozvánky externím uživatelům. Konkrétně provedete následující:
 
 > [!div class="checklist"]
-> * Připravíte soubor CSV (textový soubor s oddělovači) s informacemi o uživatelích.
-> * Spustíte skript PowerShellu pro odeslání pozvánek.
+> * Pomocí **hromadných pozvání uživatelů (Preview)** Připravte textový soubor s oddělovači (. csv) pomocí předvoleb pro informace o uživateli a pozvánky.
+> * Nahrání souboru. CSV do Azure AD
 > * Ověříte, že jsou uživatelé v adresáři přidaní.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte Azure Active Directory, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="install-the-latest-azureadpreview-module"></a>Instalace nejnovějšího modulu AzureADPreview
-Přesvědčte se, že instalujete nejnovější verzi modulu Azure AD PowerShell pro Graph (AzureADPreview). 
-
-Nejdřív zkontrolujte, které moduly jste nainstalovali. Otevřete Windows PowerShell se zvýšenými uživatelskými oprávněními (Spustit jako správce) a spusťte následující příkaz:
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-Na základě výstupu proveďte jednu z následujících akcí:
-
-- Pokud se nezobrazí žádné výsledky, spusťte k instalaci modulu AzureADPreview následující příkaz:
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- Pokud se ve výsledcích zobrazí pouze modul AzureAD, spusťte k instalaci modulu AzureADPreview tyto příkazy: 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- Pokud se ve výsledcích zobrazí pouze modul AzureADPreview, ale zobrazí se zpráva, že existuje novější verze, aktualizujte ho následujícími příkazy: 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-Může se zobrazit výzva, že modul instalujete z nedůvěryhodného úložiště. K tomu dochází, pokud jste úložiště PSGallery dříve nenastavili jako důvěryhodné. Stisknutím klávesy **Y** modul nainstalujte.
-
-### <a name="get-test-email-accounts"></a>Získání testovacích e-mailových účtů
-
 Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozvánky odeslat. Účty se nesmí nacházet ve vaší organizaci. Můžete použít libovolný typ účtu, včetně sociálních účtů jako jsou adresy gmail.com nebo outlook.com.
 
-## <a name="prepare-the-csv-file"></a>Příprava souboru CSV
+## <a name="invite-guest-users-in-bulk"></a>Hromadné pozvání uživatelů typu Host
 
-V Microsoft Excelu vytvořte soubor CSV se seznamem jmen pozvaných uživatelů a jejich e-mailových adres. Nezapomeňte nastavit záhlaví sloupce **Name** (Jméno) a **InvitedUserEmailAddress** (E-mailová adresa pozvaného uživatele). 
+1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
+2. V navigačním podokně vyberte **Azure Active Directory**.
+3. V části **Spravovat**vyberte **Uživatelé** > **hromadné pozvánky**.
+4. Na stránce **hromadně pozvat uživatele (Preview)** vyberte **Stáhnout** a získejte platný soubor. csv s vlastnostmi pozvánky.
 
-List vytvořte například v následujícím formátu:
+    ![Tlačítko pro stažení hromadného pozvání](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. Otevřete soubor. csv a přidejte řádek pro každého uživatele typu Host. Požadované hodnoty jsou:
 
-![Výstup PowerShellu zobrazující zatím neschválené pozvání uživatele](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **E-mailová adresa pro pozvání** – uživatel, který dostane pozvánku
 
-Soubor uložte jako **C:\BulkInvite\Invitations.csv**. 
+   * **Adresa URL přesměrování** – adresa URL, na kterou se po přijetí pozvánky přesměruje pozvaní uživatelé
 
-Pokud nemáte Excel, můžete soubor CSV vytvořit v libovolném textovém editoru, jako je například Poznámkový blok. Každou hodnotu oddělte čárkou a každý řádek novým řádkem. 
+    ![Příklad souboru CSV se zadanými uživateli typu Host](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>Přihlášení k tenantovi
+   > [!NOTE]
+   > V **přizpůsobené zprávě pozvánky** nepoužívejte čárky, protože jim zabrání v úspěšném analyzování zprávy.
 
-Spuštěním následujícího příkazu se připojte k doméně klienta:
+6. Uložte soubor.
+7. Na stránce **hromadně pozvat uživatele (Preview)** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru. csv. 
+8. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+9. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která přidá pozvánky. 
+10. Chcete-li zobrazit stav úlohy, vyberte **kliknutím sem zobrazíte stav jednotlivých operací**. Nebo můžete v části **aktivita** vybrat možnost **výsledky hromadné operace (Preview)** . Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání**nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-Například, `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+    ![Příklad výsledků hromadné operace](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-Po zobrazení výzvy zadejte své přihlašovací údaje.
+11. Po dokončení úlohy se zobrazí oznámení, že hromadná operace byla úspěšná.
 
-## <a name="send-bulk-invitations"></a>Hromadné odeslání pozvánek
+## <a name="verify-guest-users-in-the-directory"></a>Ověřit uživatele typu Host v adresáři
 
-Pokud chcete pozvánky odeslat, spusťte následující skript PowerShellu (cesta **c:\bulkinvite\invitations.csv** je cestou k souboru CSV): 
+Zkontrolujte, že uživatelé typu Host, které jste přidali, existují v adresáři Azure Portal nebo pomocí prostředí PowerShell.
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-Tento skript odešle pozvánku e-mailovým adresám v souboru Invitations.csv. Zobrazený výstup by měl u každého uživatele vypadat přibližně takto:
+### <a name="view-guest-users-in-the-azure-portal"></a>Zobrazit uživatele typu Host v Azure Portal
 
-![Výstup PowerShellu zobrazující zatím neschválené pozvání uživatele](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
+2. V navigačním podokně vyberte **Azure Active Directory**.
+3. V části **Spravovat** vyberte **Uživatele**.
+4. V části **Zobrazit**vyberte možnost **Uživatelé typu Host** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste přidali.
 
-## <a name="verify-users-exist-in-the-directory"></a>Ověření existence uživatelů v adresáři
+### <a name="view-guest-users-with-powershell"></a>Zobrazení uživatelů typu host s využitím PowerShellu
 
-Pokud chcete ověřit, zda se uživatelé do Azure AD přidali, spusťte následující příkaz:
+Spusťte následující příkaz:
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Měli byste vidět, které můžete pozvat uživatele uvedená se hlavní název uživatele (UPN) ve formátu *emailaddress*EXT #\@*domény*. Například *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, kde je organizace, ze kterého jste odeslali pozvánek contoso.onmicrosoft.com.
+
+Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *EmailAddress*#EXT #\@*Domain*. Například *lstokes_fabrikam. com\@# contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už testovací uživatelské účty v adresáři nepotřebujete, můžete je odstranit. Uživatelský účet odstraníte spuštěním následujícího příkazu:
+Pokud už je nepotřebujete, můžete testovací uživatelské účty odstranit v adresáři na stránce Azure Portal na stránce Uživatelé tak, že vyberete zaškrtávací políčko vedle uživatele typu Host a pak vyberete **Odstranit**. 
+
+Můžete také spustit následující příkaz prostředí PowerShell a odstranit uživatelský účet:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 Příklad: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
 V tomto kurzu jste hromadně odeslali pozvánky uživatelům typu host, kteří nepatří do vaší organizace. V dalším článku se dozvíte, jak funguje uplatnění pozvánky.
 
 > [!div class="nextstepaction"]
 > [Další informace o uplatnění pozvánky ve spolupráci B2B služby Azure AD](redemption-experience.md)
-

@@ -4,7 +4,7 @@ description: Získejte odpovědi na nejčastější dotazy týkající se Open S
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: cc71d2a53241753272610a14c30e44f1cf45e95c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073104"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121223"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
 
@@ -212,9 +212,9 @@ Další informace o osvědčených postupech zabezpečení pro WordPress najdete
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Snažím se používat PHPMyAdmin a zobrazí se zpráva "přístup byl odepřen". Návody vyřešit?
 
-K tomuto problému může dojít, pokud funkce MySQL v aplikaci v této instanci App Service ještě není spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL v aplikaci. Chcete-li ověřit, zda je spuštěn MySQL v aplikaci, v Průzkumníkovi procesů ověřte, zda je v procesech uveden seznam MySQL. exe.
+K tomuto problému může dojít, pokud funkce MySQL in-app není v této instanci App Service ještě spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL in-app. Pokud chcete ověřit, jestli je aplikace MySQL v aplikaci spuštěná, v Průzkumníkovi procesů se ujistěte, že jsou v procesech uvedené MySQL. exe.
 
-Až se ujistíte, že je spuštěný MySQL v aplikaci, zkuste použít PHPMyAdmin.
+Po ujištění, že je aplikace MySQL v aplikaci spuštěná, zkuste použít PHPMyAdmin.
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Při pokusu o import nebo export databáze MySQL v aplikaci pomocí PHPMyadmin se zobrazí chyba HTTP 403. Návody vyřešit?
 

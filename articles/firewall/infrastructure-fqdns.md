@@ -1,34 +1,33 @@
 ---
-title: Infrastruktura plně kvalifikovaný název domény pro Azure bránu Firewall
-description: Další informace o infrastruktuře plně kvalifikovaných názvů domén v Brána Firewall služby Azure
+title: Plně kvalifikovaný název domény infrastruktury pro Azure Firewall
+description: Další informace o plně kvalifikovaném názvu domény infrastruktury v Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61066317"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130202"
 ---
 # <a name="infrastructure-fqdns"></a>Plně kvalifikované názvy domén infrastruktury
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. 
 
-Tyto služby jsou součástí kolekce předdefinovaných pravidel:
+Do předdefinované kolekce pravidel jsou zahrnuté tyto služby:
 
-- COMPUTE přístup k úložišti úložiště Image platformy (PIR)
-- Spravovat přístup k úložišti disků stav
-- Protokolování (MDS) a diagnostiky Azure
-- Azure Active Directory
+- Výpočetní přístup k úložišti imagí platformy úložiště (PIR)
+- Přístup k úložišti stavu spravovaných disků
+- Azure Diagnostics a protokolování (MDS)
 
-## <a name="overriding"></a>Přepsání 
+## <a name="overriding"></a>Přitom 
 
-Tuto kolekci pravidel integrované infrastruktury můžete přepsat vytvořením Odepřít všechny kolekce pravidel aplikace, která je zpracována jako poslední. Vždy se zpracuje před kolekcí pravidel infrastruktury. Vše mimo kolekci pravidel infrastruktury je ve výchozím nastavení zakázané.
+Tuto vestavěnou kolekci pravidel infrastruktury můžete přepsat vytvořením kolekce pravidel Odepřít všechny aplikace, která se zpracovává jako poslední. Vždy se zpracuje před kolekcí pravidel infrastruktury. Vše mimo kolekci pravidel infrastruktury je ve výchozím nastavení zakázané.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [nasazení a konfiguraci brány Firewall Azure](tutorial-firewall-deploy-portal.md).
+- Přečtěte si, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md).

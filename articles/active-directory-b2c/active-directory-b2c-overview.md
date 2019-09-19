@@ -1,135 +1,133 @@
 ---
-title: Co je Azure Active Directory B2C? | Dokumenty Microsoft
-description: Přečtěte si, jak pomocí Azure Active Directory B2C vytvořit a spravovat prostředí identity, jako je přihlášení k registraci, a Správa profilů ve vaší aplikaci.
+title: Co je Azure Active Directory B2C?
+description: Naučte se, jak můžete použít Azure Active Directory B2C k podpoře externích identit ve vašich aplikacích, včetně sociálního přihlášení s Facebooku, Google a dalšími poskytovateli identity.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 007b23f07afec6163c2158feb3f17ba71e44bdb5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065698"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120697"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
-Azure Active Directory B2C (Azure AD B2C) je služba pro správu identit od firmy do spotřebitele. Tato služba umožňuje přizpůsobit a řídit, jak budou uživatelé zabezpečeně pracovat s webovými, stolními, mobilními nebo jednostránkovémi aplikacemi. Pomocí Azure AD B2C se uživatelé můžou zaregistrovat, přihlašovat, resetovat hesla a upravovat profily. Azure AD B2C implementuje formulář protokolů OpenID Connect a OAuth 2,0. Důležitým klíčem při implementaci těchto protokolů jsou tokeny zabezpečení a jejich deklarace identity, které umožňují poskytovat zabezpečený přístup k prostředkům.
+Azure Active Directory B2C poskytuje jako službu identitu od firmy po zákazníka. Vaši zákazníci používají preferované identity sociálních, podnikových nebo místních účtů k získání přístupu k aplikacím a rozhraním API pomocí jednotného přihlašování.
 
-*Cesta uživatele* je požadavek, který určuje zásadu, která řídí chování způsobu, jakým uživatel a aplikace budou pracovat s Azure AD B2C. K dispozici jsou dvě cesty pro definování cest uživatelů v Azure AD B2C.
+![Azure AD B2C infografika zprostředkovatelů identit a podřízených aplikací](media/active-directory-b2c-overview/azureadb2c-overview.png)
 
-Pokud jste vývojář aplikací s odborností identity nebo bez něj, můžete se rozhodnout definovat běžné toky identity uživatelů pomocí Azure Portal. Pokud jste odborník na identitu, systémový integrátor, konzultant nebo interní tým identity, je vhodné, abyste mohli používat toky OpenID Connect a lépe porozuměli poskytovatelům identity a ověřování založeném na deklaracích. můžete zvolit vlastní zásady založené na XML.
+Azure Active Directory B2C (Azure AD B2C) je řešení pro správu přístupu k identitám zákazníků (CIAM), které podporuje miliony uživatelů a miliard ověřování za den. Postará o škálování a bezpečnost ověřovací platformy, monitorování a automatické zpracování hrozeb, jako je například odepření služby, postřik hesel nebo útoky hrubou silou.
 
-Než začnete s definováním cesty pro uživatele, musíte vytvořit klienta Azure AD B2C a zaregistrovat svoji aplikaci a rozhraní API v tenantovi. Po dokončení těchto úloh můžete začít s definicí cesty uživatelů buď pomocí uživatelských toků, nebo vlastních zásad. Volitelně můžete také přidat nebo změnit poskytovatele identity nebo přizpůsobit způsob, jakým uživatel pracuje na cestě.
+## <a name="custom-branded-identity-solution"></a>Řešení identity vlastní značky
 
-## <a name="protocols-and-tokens"></a>Protokoly a tokeny
+Azure AD B2C je řešení ověřování typu bílá-Label. Pomocí vaší značky můžete přizpůsobit celé uživatelské prostředí, aby se s vašimi webovými a mobilními aplikacemi plynule.
 
-Azure AD B2C podporuje [protokoly OpenID Connect a OAuth 2,0](active-directory-b2c-reference-protocols.md) pro cesty uživatelů. V implementaci OpenID Connect v Azure AD B2C zahajuje aplikace tuto cestu uživatele zasíláním žádostí o ověření do Azure AD B2C.
+Umožňuje přizpůsobit všechny stránky zobrazené Azure AD B2C, když se uživatelé přihlásí, přihlásí a upraví své informace o profilu. Přizpůsobte si HTML, CSS a JavaScript v rámci cest uživatelů, aby se Azure AD B2C zkušenost vypadala a vypadala jako nativní součást vaší aplikace.
 
-Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID nebo přístupový token](active-directory-b2c-reference-tokens.md). Tento token zabezpečení definuje identitu uživatele. Tokeny jsou přijímány z Azure AD B2C koncových bodů `/token` , `/authorize` jako je například nebo koncový bod. Z těchto tokenů můžete získat přístup k deklaracím, které se dají použít k ověření identity a povolení přístupu k zabezpečeným prostředkům.
+![Přizpůsobení přihlašovacích a přihlašovacích stránek a obrázku na pozadí](media/active-directory-b2c-overview/sign-in-small.png)
 
-## <a name="tenants-and-applications"></a>Klienti a aplikace
+## <a name="single-sign-on-access-with-a-user-provided-identity"></a>Přístup s jednotným přihlašováním pomocí uživatelsky poskytnuté identity
 
-V Azure AD B2C *tenant* představuje vaši organizaci a je adresářem uživatelů. Každý tenant Azure AD B2C se odlišuje a je oddělený od jiných tenantů Azure AD B2C. Je možné, že již máte klienta Azure Active Directory, Azure AD B2C tenant je jiný tenant. Tenant obsahuje informace o uživatelích, kteří se zaregistrovali k používání vaší aplikace. Například hesla, data profilu a oprávnění. Další informace najdete v tématu [kurz: Vytvořte tenanta](tutorial-create-tenant.md)Azure Active Directory B2C.
+Azure AD B2C používá ověřovací protokoly založené na standardech, včetně připojení OpenID Connect, OAuth 2,0 a SAML. Integruje se s většinou moderních aplikací a komerčního softwaru mimo polici.
 
-Předtím, než aplikaci nakonfigurujete tak, aby používala Azure AD B2C, je nutné ji nejprve zaregistrovat v tenantovi pomocí Azure Portal. Proces registrace shromáždí a přiřadí vaší aplikaci hodnoty. Tyto hodnoty zahrnují ID aplikace, které jedinečně identifikuje aplikaci a identifikátor URI pro přesměrování, který se používá k přímému směrování odpovědí zpět do aplikace.
+![Diagram identit třetích stran federování k Azure AD B2C](media/active-directory-b2c-overview/scenario-singlesignon.png)
 
-Interakce každé aplikace probíhá podle podobného vzoru:
+Díky tomu, že slouží jako centrální ověřovací autorita pro vaše webové aplikace, mobilní aplikace a rozhraní API, Azure AD B2C umožňuje vytvořit pro ně řešení jednotného přihlašování (SSO). Centralizovat shromažďování profilů a informací o preferencích uživatelů a zachytit detailní analýzy týkající se chování přihlášení a převodu.
 
-1. Aplikace nasměruje uživatele na spuštění zásady.
-2. Uživatel vykoná zásadu podle její definice.
-3. Aplikace obdrží token.
-4. Aplikace používá token k pokusu o přístup k prostředku.
-5. Server prostředků ověří token, aby ověřil, že je možné udělit přístup.
-6. Aplikace pravidelně aktualizuje token.
+## <a name="integrate-with-external-user-stores"></a>Integrace s úložišti externích uživatelů
 
-Chcete-li zaregistrovat webovou aplikaci, proveďte kroky v [kurzu: Zaregistrujte aplikaci, abyste mohli povolit registraci a přihlašování pomocí Azure AD B2C](tutorial-register-applications.md). Můžete také [Přidat aplikaci webového rozhraní API do tenanta Azure Active Directory B2C](add-web-application.md) nebo [Přidat nativní klientskou aplikaci do svého klienta Azure Active Directory B2C](add-native-application.md).
+Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atributů na uživatele. Můžete je ale integrovat i s externími systémy. Můžete například použít Azure AD B2C pro ověřování, ale delegovat externí databázi pro řízení vztahů se zákazníky (CRM) nebo věrnostní databáze zákazníků jako zdroj pravdy pro zákaznická data.
 
-## <a name="user-journeys"></a>Cesty uživatelů
+Dalším scénářem úložiště externího uživatele je, že Azure AD B2C zpracovávat ověřování pro vaši aplikaci, ale integrovat s externím systémem, který ukládá profil uživatele nebo osobní údaje. Například pro splnění požadavků na zaregistrování dat, například místních nebo místních zásad úložiště dat.
 
-Zásady v cestě uživatele je možné definovat jako [tok uživatele](active-directory-b2c-reference-policies.md) nebo [vlastní zásady](active-directory-b2c-overview-custom.md). Předdefinované toky uživatelů pro nejběžnější úkoly identity, jako je registrace, přihlašování a úpravy profilu, jsou k dispozici v Azure Portal.
+![Logický diagram Azure AD B2C komunikaci s externím uživatelským úložištěm](media/active-directory-b2c-overview/scenario-remoteprofile.png)
 
-Cesty uživatelů umožňují řídit chování konfigurací následujících nastavení:
+Azure AD B2C může umožnit shromažďování informací od uživatele během registrace nebo úprav profilu a pak tato data z externího systému předat. Během budoucích ověřování pak Azure AD B2C může načíst data z externího systému a v případě potřeby je zahrnout jako součást odpovědi ověřovacího tokenu, kterou posílá do vaší aplikace.
 
-- Účty sociálních sítí, které uživatel používá k registraci aplikace
-- Data shromážděná od uživatele, jako je křestní jméno nebo poštovní směrovací číslo
-- Ověřování pomocí služby Multi-Factor Authentication
-- Vzhled a chování stránek
-- Informace vrácené do aplikace
+## <a name="progressive-profiling"></a>Progresivní profilace
 
-Vlastní zásady jsou konfigurační soubory, které definují chování [architektury identity Experience Framework](trustframeworkpolicy.md) ve vašem tenantovi Azure AD B2C. Architektura prostředí identity je základní platforma, která vytváří vztah důvěryhodnosti s více stranami a dokončuje kroky v cestě uživatele.
+Jiná možnost cesty uživatele zahrnuje postupné profilace. Progresivní profilace umožňuje zákazníkům rychle dokončit první transakci shromažďováním minimálního množství informací. Pak postupně Shromážděte více dat profilu od zákazníka v budoucích přihlášeních.
 
-Vlastní zásady je možné změnit tak, aby prováděly řadu úloh. Vlastní zásada je jeden nebo více souborů ve formátu XML, které odkazují na sebe navzájem v hierarchickém řetězu. K dispozici je [Startovní sada](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) pro vlastní zásady, které umožňují běžné úkoly identity.
+![Vizuální znázornění postupného profilace](media/active-directory-b2c-overview/scenario-progressive.png)
 
-Vlastní zásady nebo uživatelské toky různých typů se ve vašem tenantovi Azure AD B2C používají podle potřeby a je možné je znovu použít napříč aplikacemi. Tato flexibilita umožňuje definovat a upravovat prostředí identity uživatelů s minimálními nebo žádnými změnami kódu. Zásady se používají tak, že se do žádostí o ověření pomocí protokolu HTTP přidá speciální parametr dotazu. Pokud chcete vytvořit vlastní zásadu, přečtěte si téma Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+## <a name="third-party-identity-verification-and-proofing"></a>Ověřování identity a kontrola identity od jiných výrobců
 
-## <a name="identity-providers"></a>Zprostředkovatelé identity
+Pomocí Azure AD B2C můžete usnadnit ověřování identity a kontrolu tím, že shromažďujete uživatelská data a pak je předáte do systému třetí strany, abyste mohli ověřit, vyhodnocování vztahů důvěryhodnosti a schválení pro vytváření uživatelských účtů.
 
-V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Zprostředkovatele identity, které jsou podporovány Azure AD B2C, můžete přidat pomocí Azure Portal.
+![Diagram znázorňující tok uživatele pro kontrolu identity od jiného výrobce](media/active-directory-b2c-overview/scenario-idproofing.png)
 
-V aplikaci obvykle používáte pouze jednoho poskytovatele identity, ale máte možnost přidat další. Pokud chcete ve svém tenantovi Azure AD B2C nakonfigurovat poskytovatele identity, musíte nejdřív vytvořit aplikaci na webu pro vývojáře zprostředkovatele identity a potom zaznamenat identifikátor aplikace nebo identifikátor klienta a heslo nebo tajný klíč klienta od poskytovatele identity. aplikaci, kterou vytvoříte. Tento identifikátor a heslo potom slouží ke konfiguraci vaší aplikace.
+Jsou to jenom některé z věcí, které můžete provádět s Azure AD B2C jako vaše podniková zákaznická platforma. Následující části tohoto přehledu vás provedou ukázkovou aplikací, která používá Azure AD B2C. Vítá vás také přechod přímo na podrobnější [technický přehled Azure AD B2C](technical-overview.md).
 
-Následující články popisují postup přidání některých běžných zprostředkovatelů identity do toků uživatelů:
+## <a name="example-woodgrove-groceries"></a>Příklad: WoodGrovey v nákupech
 
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Účet Microsoft](active-directory-b2c-setup-msa-app.md)
+[Woodgrove][woodgrove] je živá webová aplikace vytvořená Microsoftem, která předvádí několik Azure AD B2Cch funkcí. V následujících částech najdete některé možnosti ověřování poskytované Azure AD B2C na webu WoodGrove.
 
-Následující články popisují postup přidání některých běžných zprostředkovatelů identity do vlastních zásad:
-- [Amazon](setup-amazon-custom.md)
-- [Google](active-directory-b2c-custom-setup-goog-idp.md)
-- [Účet Microsoft](active-directory-b2c-custom-setup-msa-idp.md)
+### <a name="business-overview"></a>Přehled podnikání
 
-Další informace najdete v tématu [kurz: Přidejte do svých aplikací zprostředkovatele identity v Azure Active Directory B2C](tutorial-add-identity-providers.md).
+WoodGrove je online prodejnový obchod, který prodává prodejny jednotlivcům i obchodním zákazníkům. Jejich obchodní zákazníci kupují své zákazníky jménem své společnosti nebo firmy, které spravují.
 
+### <a name="sign-in-options"></a>Možnosti přihlášení
 
-## <a name="page-customization"></a>Přizpůsobení stránky
+WoodGroveé prodejny nabízejí několik možností přihlašování na základě vztahů jejich zákazníků s obchodem:
 
-Většinu obsahu HTML a CSS, který je prezentován zákazníkům v cestě uživatele, lze řídit. Pomocí přizpůsobení stránky můžete přizpůsobit vzhled a chování všech vlastních zásad nebo toku uživatelů. Pomocí této funkce pro vlastní nastavení můžete udržovat konzistenci značky a vizuální konzistenci mezi vaší aplikací a službou Azure AD B2C.
+* **Jednotliví** zákazníci se můžou zaregistrovat nebo přihlašovat pomocí jednotlivých účtů, jako je například se zprostředkovatelem sociálních identit nebo e-mailovou adresou a heslem.
+* **Podnikoví** zákazníci se můžou zaregistrovat nebo se přihlásit pomocí svých podnikových přihlašovacích údajů.
+* **Partneři** a dodavatelé jsou jednotlivci, kteří poskytují prodejny obchod s produkty k prodeji. Identitu partnera poskytuje [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 
-Azure AD B2C spouští kód v prohlížeči uživatele a používá moderní přístup nazvaný sdílení prostředků mezi zdroji (CORS). Nejprve zadáte v zásadě s vlastním obsahem ve formátu HTML adresu URL. Azure AD B2C sloučí prvky uživatelského rozhraní s obsahem HTML načteným z vaší adresy URL a pak zobrazí stránku uživateli.
+![Jednotlivé přihlašovací stránky (B2C), obchodní (B2C) a partneři (B2B)](media/active-directory-b2c-overview/woodgrove-overview.png)
 
-Do Azure AD B2C se parametry odesílají v řetězci dotazu. Předáním parametru do koncového bodu HTML se dynamicky změní obsah stránky. Například můžete změnit obrázek pozadí na přihlašovací stránce nebo na přihlašovací stránce na základě parametru, který předáte z webové nebo mobilní aplikace.
+### <a name="authenticate-individual-customers"></a>Ověřování jednotlivých zákazníků
 
-Pokud chcete přizpůsobit stránky v toku uživatelů, přečtěte si téma [kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C](tutorial-customize-ui.md). Pokud chcete přizpůsobit stránky ve vlastních zásadách, přečtěte si téma [přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md) nebo [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md).
+Když zákazník vybere **přihlášení pomocí svého osobního účtu**, přesměruje se na přizpůsobenou přihlašovací stránku, která je hostovaná Azure AD B2C. Můžete vidět na následujícím obrázku, který jsme přizpůsobili uživatelské rozhraní (UI), aby vypadal stejně jako web WoodGrove. Zákazníci WoodGrove by neměli vědět, že prostředí ověřování je hostované a zabezpečené pomocí Azure AD B2C.
 
-## <a name="developer-resources"></a>Materiály pro vývojáře
+![Vlastní přihlašovací stránka WoodGrove, jejímž hostitelem je Azure AD B2C](media/active-directory-b2c-overview/sign-in.png)
 
-### <a name="client-applications"></a>Klientské aplikace
+WoodGrove umožňuje svým zákazníkům registraci a přihlašování pomocí účtů Google, Facebook nebo Microsoft jako jejich zprostředkovatele identity. Nebo se můžou zaregistrovat pomocí své e-mailové adresy a hesla a vytvořit tak, co se nazývá *místní účet*.
 
-Máte možnost zvolit si aplikace pro [iOS](active-directory-b2c-devquickstarts-ios.md), [Android](active-directory-b2c-devquickstarts-android.md)a .NET, a to mimo jiné. Azure AD B2C tyto akce umožňuje současně chránit identity uživatelů.
+Když zákazník vybere **registraci pomocí osobního účtu** a pak se **zaregistruje**, zobrazí se mu vlastní registrační stránka.
 
-Pokud jste vývojář webové aplikace v ASP.NET, nastavte svoji aplikaci tak, aby ověřovala účty pomocí kroků v [kurzu: Povolit webové aplikaci ověřování s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-web-app.md).
+![Vlastní registrační stránka WoodGrove, jejímž hostitelem je Azure AD B2C](media/active-directory-b2c-overview/sign-up.png)
 
-Pokud jste vývojář desktopové aplikace, nastavte svoji aplikaci tak, aby ověřovala účty pomocí kroků v [tomto kurzu: Povolit aplikaci klasické pracovní plochy ověřování s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-desktop-app.md).
+Po zadání e-mailové adresy a výběru možnosti **Odeslat ověřovací kód**Azure AD B2C jim pošle kód. Po zadání kódu vyberte možnost **ověřit kód**a potom zadejte další informace ve formuláři, musí také souhlasit s podmínkami služby.
 
-Pokud jste samoobslužným vývojářem aplikací pomocí Node. js, nastavte svoji aplikaci na ověřování účtů pomocí kroků v [tomto kurzu: Povolte jednostránkovou aplikaci pro ověřování s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-spa.md).
+Kliknutím na tlačítko **vytvořit** dojde Azure AD B2C k přesměrování uživatele zpět na web nákupů v Woodgrove. Při přesměrování Azure AD B2C předá webové aplikaci WoodGrove ověřovací token OpenID Connect. Uživatel je teď přihlášený a připravený k použití, zobrazovaný název zobrazený v pravém horním rohu, který označuje, že jsou přihlášeni.
 
-### <a name="apis"></a>API
-Pokud klient nebo webové aplikace potřebují volat rozhraní API, můžete nastavit zabezpečený přístup k těmto prostředkům v Azure AD B2C.
+![Záhlaví webu WoodGrove nákupů ukazující, že uživatel je přihlášený](media/active-directory-b2c-overview/signed-in-individual.png)
 
-Pokud jste vývojář webové aplikace v ASP.NET, nastavte svou aplikaci tak, aby volala chráněné rozhraní API pomocí kroků v [tomto kurzu: Udělte přístup k webovému rozhraní API ASP.NET pomocí](active-directory-b2c-tutorials-web-api.md)Azure Active Directory B2C.
+### <a name="authenticate-business-customers"></a>Ověřování obchodních zákazníků
 
-Pokud jste vývojář desktopové aplikace, nastavte svou aplikaci tak, aby volala chráněné rozhraní API pomocí kroků v [tomto kurzu: Udělte přístup k webovému rozhraní API Node. js z desktopové aplikace pomocí](active-directory-b2c-tutorials-desktop-app-webapi.md)Azure Active Directory B2C.
+Když zákazník vybere jednu z možností v části **Obchodní zákazníci**, vyvolá web Woodgrove nákupů jinou zásadu Azure AD B2C, než má jednotliví zákazníci.
 
-Pokud jste samoobslužnou aplikaci pro vývoj aplikací pomocí Node. js, nastavte aplikaci pro ověřování účtů pomocí kroků v [tomto kurzu: Udělte přístup k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-spa-webapi.md).
+Tato zásada prezentuje uživateli možnost použít své podnikové přihlašovací údaje pro registraci a přihlášení. V WoodGrove příkladu se uživatelům zobrazí výzva, abyste se přihlásili pomocí účtu Office 365 nebo Azure AD. Tato zásada využívá [víceklientské aplikace Azure AD](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) a `/common` koncový bod Azure AD k federovat Azure AD B2C se všemi zákazníky s Office 365 na světě.
 
-### <a name="javascript"></a>JavaScript
+### <a name="authenticate-partners"></a>Ověřování partnerů
 
-Do aplikací v Azure AD B2C můžete přidat vlastní kód na straně klienta JavaScriptu. Chcete-li nastavit jazyk JavaScript v aplikaci, definujte [rozložení stránky](page-layout.md) a povolte [JavaScript](javascript-samples.md) ve vašich uživatelských tocích nebo vlastních zásadách.
+**Přihlášení pomocí odkazu na účet dodavatele** používá funkce spolupráce Azure Active Directory B2B's. Azure AD B2B je rodina funkcí v Azure Active Directory pro správu identit partnerů. Tyto identity můžou být federované z Azure Active Directory pro přístup do aplikací chráněných Azure AD B2C.
 
-### <a name="user-accounts"></a>Uživatelské účty
+Přečtěte si další informace o Azure AD B2B v [tom, co je přístup uživatelů typu Host v Azure Active Directory B2B?](../active-directory/b2b/what-is-b2b.md).
 
-Mnoho běžných úloh správy tenantů je potřeba provést programově. Primárním příkladem je Správa uživatelů. Je možné, že budete muset migrovat existující úložiště uživatelů na klienta Azure AD B2C. Je možné, že budete chtít hostovat registraci uživatele na vlastní stránce a vytvořit v adresáři Azure AD B2C uživatelské účty na pozadí. Tyto typy úloh vyžadují možnost vytvářet, číst, aktualizovat a odstraňovat uživatelské účty. Tyto úlohy můžete provádět pomocí [Graph API služby Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md).
+<!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
+### Sample code
 
-## <a name="next-steps"></a>Další postup
+If you'd like to jump right into the code to see how the WoodGrove Groceries application is built, you can find the repository on GitHub:
 
-Začněte konfigurovat svoji aplikaci pro prostředí registrace a přihlášení – pokračujte tímto kurzem.
+[Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
+-->
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když máte představu o tom, co Azure AD B2C, a některé z scénářů, které vám může pomáhat, dig o jeho funkcích a technických aspektech trochu hlubší.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md)
+> [Azure AD B2C Technical Overview >](technical-overview.md)
+
+<!-- LINKS - External -->
+[woodgrove]: https://aka.ms/ciamdemo
+[woodgrove-repo]: https://github.com/Azure-Samples/active-directory-external-identities-woodgrove-demo

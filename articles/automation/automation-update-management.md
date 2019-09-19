@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102652"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129684"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -83,7 +83,7 @@ V následující tabulce je uveden seznam podporovaných operačních systémů:
 
 > [!NOTE]
 > Sady škálování virtuálních počítačů Azure je možné spravovat pomocí Update Management. Update Management pracuje na samotných instancích a ne na základní imagi. Aktualizace budete muset naplánovat přírůstkově, protože neaktualizujete všechny instance virtuálních počítačů najednou.
-> Uzly VMSS se dají přidat pomocí následujících kroků v části [onbaord a non-Azure Machine](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
+> Uzly VMSS se dají přidat podle kroků v části připojení [počítače mimo Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -301,7 +301,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
 |Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
-|Aktuální zprávy     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
+|Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 ### <a name="linux-2"></a>Linux
 
@@ -610,7 +610,7 @@ Tyto skupiny jsou definovány dotazem, když je zahájeno nasazení aktualizace,
 * Umístění
 * Tags
 
-![Výběr skupin](./media/automation-update-management/select-groups.png)
+![Vybrat skupiny](./media/automation-update-management/select-groups.png)
 
 Chcete-li zobrazit náhled výsledků dynamické skupiny, klikněte na tlačítko **Náhled** . V této verzi Preview se v této době zobrazuje členství ve skupině. v tomto příkladu hledáme počítače s **rolí** značek, které se rovnají **BackendServer**. Pokud se tato značka přidá do dalších počítačů, přidají se do všech budoucích nasazení v této skupině.
 
@@ -620,7 +620,7 @@ Chcete-li zobrazit náhled výsledků dynamické skupiny, klikněte na tlačítk
 
 Pro počítače, které nejsou v Azure, se při vytváření dynamické skupiny používají taky uložená hledání, která se označují jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ji můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
 
-![Výběr skupin](./media/automation-update-management/select-groups-2.png)
+![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 
@@ -665,7 +665,7 @@ Odebrání virtuálního počítače z Update Management:
 * Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci `MicrosoftDefaultScopeConfig-Updates`oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
 * Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejděte k kurzu, kde se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 

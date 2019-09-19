@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e4f2d4f0e7dd9380ba708d84dfe7588043fd4a68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236703"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122380"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Příklad rozhraní příkazového řádku: Vytvoření a odeslání úlohy
 
-Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednu z možností je zadat adresu URL HTTPS jako úloha vstup (jak je znázorněno v tomto článku). 
+Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -33,11 +33,11 @@ Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, mu
 
 ## <a name="example-script"></a>Ukázkový skript
 
-Při spuštění `az ams job start`, můžete nastavit popisek na výstupu úlohy. Popisek můžete později použít k identifikaci tohoto prostředku výstupu je pro. 
+Když spustíte `az ams job start`, můžete pro výstup úlohy nastavit popisek. Popisek lze později použít k identifikaci toho, k čemu je tento výstupní prostředek pro. 
 
-- Pokud přiřadíte hodnotu popisku, nastavte "– výstupní assety k" assetname = label "
-- Pokud není hodnota přiřadit popisek, nastavte "– výstupní assety k" assetname = ".
-  Všimněte si, že přidáte "=" k `output-assets`. 
+- Pokud k popisku přiřadíte hodnotu, nastavte '--Output-assets ' na "Asset = Label".
+- Pokud k popisku nepřiřadíte hodnotu, nastavte '--Output-assets ' na "majetku =".
+  Všimněte si, že přidáte "=" do `output-assets`. 
 
 ```azurecli
 az ams job start \
@@ -50,7 +50,7 @@ az ams job start \
   -g amsResourceGroup 
 ```
 
-Získejte odpovědi podobně jako tato:
+Dostanete odpověď podobnou této:
 
 ```
 {
@@ -85,6 +85,6 @@ Získejte odpovědi podobně jako tato:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Přehled služby Media Services](media-services-overview.md)
+[AZ AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

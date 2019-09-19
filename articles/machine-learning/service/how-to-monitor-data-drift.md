@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034362"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123270"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak monitorovat posun dat mezi školicí datovou s
 
 ## <a name="what-is-data-drift"></a>Co je posun dat?
 
-K posunu dat dochází, když se data obsluhovaná modelem v produkčním prostředí liší od dat použitých ke výukě modelu. Je to jeden z hlavních důvodů, kdy přesnost modelu v čase snižuje výkon, takže sledování posunu dat pomáhá detekovat problémy s výkonem modelu. 
+V kontextu strojového učení je posun dat změnou v modelu vstupní data, která vede k modelování snížení výkonu. Je to jeden z hlavních důvodů, kdy přesnost modelu v čase snižuje výkon, takže sledování posunu dat pomáhá detekovat problémy s výkonem modelu. 
 
 ## <a name="what-can-i-monitor"></a>Co můžu monitorovat?
 
@@ -187,7 +187,7 @@ Pokud se data odsadí negativně vlivem na výkon nasazeného modelu, je čas na
 * Vyhodnoťte výkon nově vygenerovaného modelu.
 * Nasaďte nový model, pokud je výkon lepší než produkční model.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úplný příklad použití posunu dat najdete v [poznámkovém bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
 

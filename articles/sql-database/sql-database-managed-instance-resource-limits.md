@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010189"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128918"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -52,18 +52,18 @@ Spravovaná instance má dvě úrovně služeb: [Pro obecné účely](sql-databa
 | **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuální jádra\* | COMPUTE GEN4 – 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 – 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maximální velikost paměti | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
-| Maximální velikost rezervovaného úložiště instance | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 – 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
-| Maximální velikost databáze | 8 TB | 4 TB |
-| Maximální počet databází na instanci | 100 | 100 |
-| Maximální počet souborů databáze na instanci | Až 280 | 32 767 souborů na databázi |
-| Maximální velikost souboru | 8 TB | 4 TB |
-| Maximální velikost souboru protokolu | 2 TB | 2 TB |
+| Maximální velikost paměti | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 20,4 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 20,4 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
+| Maximální velikost úložiště instancí (rezervované) | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 – 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
+| Maximální velikost databáze | Až v aktuálně dostupné velikosti instance (max. 2 TB až 8 TB v závislosti na počtu virtuální jádra). | Až v aktuálně dostupné velikosti instance (max. 1 TB-4 TB v závislosti na počtu virtuální jádra). |
+| Maximální velikost databáze tempDB | Omezeno na 24 GB/vCore (96 – 1 920 GB) a aktuálně dostupná velikost instance.<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Až do aktuálně dostupné velikosti instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
+| Maximální počet databází na instanci | 100, pokud nedošlo k dosažení limitu velikosti úložiště instance. | 100, pokud nedošlo k dosažení limitu velikosti úložiště instance. |
+| Maximální počet souborů databáze na instanci | Až 280, pokud nedošlo k dosažení limitu velikosti úložiště instance nebo [místa přidělení úložiště na disku Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 souborů na databázi, pokud nebylo dosaženo limitu velikosti úložiště instance. |
+| Maximální velikost souboru | Omezeno na 8 TB, aktuálně dostupná velikost instance (max. 2 TB až 8 TB) a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na 4 TB a aktuálně dostupnou velikost instance (až do 1 TB až 4 TB). |
+| Maximální velikost souboru protokolu | Omezeno na 2 TB, aktuálně dostupná velikost instance a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na 2 TB a aktuálně dostupnou velikost instance. |
 | Data/protokol IOPS (přibližná) | 500 – 7 500 na jeden soubor<br/>\*[Zvětšením velikosti souboru získat více IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
-| Limit propustnosti zápisu protokolu | 3 MB/s na vCore<br/>Max. 22 MB/s na instanci | 4 MB/s na vCore<br/>Max. 48 MB/s na instanci|
-| Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Není k dispozici |
+| Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
+| Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
-| Maximální velikost databáze tempDB | 192 – 1 920 GB (24 GB na vCore)<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Omezeno velikostí úložiště maximální instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
 | OLTP v paměti | Nepodporuje se | K dispozici |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
@@ -93,10 +93,10 @@ Spravovaná instance aktuálně podporuje nasazení pouze u následujících typ
 
 ## <a name="regional-resource-limitations"></a>Omezení regionálních prostředků
 
-Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení pro každou oblast Azure v závislosti na typu typu předplatného:
+Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení na oblast Azure (které je možné zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance)) v závislosti na typu typu předplatného:
 
 - **Omezení podsítě**: Maximální počet podsítí, ve kterých jsou spravované instance nasazeny v jedné oblasti.
-- **limit Vcore**: Maximální počet virtuální jádra, které se dají nasadit napříč všemi instancemi v jedné oblasti. Celkový počet instancí není omezený, pokud se nachází v rámci limitu vCore.
+- **limit jednotky Vcore**: Maximální počet vCore jednotek, které se dají nasadit napříč všemi instancemi v jedné oblasti. Jedna vCorea GP používá jednu vCore jednotku a jedna BC vCore přijímá 4 jednotky vCore. Celkový počet instancí není omezený, pokud se nachází v rámci limitu vCore jednotek.
 
 > [!Note]
 > Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) , pokud v aktuální oblasti potřebujete víc spravovaných instancí. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
@@ -151,7 +151,7 @@ Postup pro zahájení procesu získání větší kvóty:
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o spravované instanci najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
 - Informace o cenách najdete v tématu [SQL Database ceny za Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).

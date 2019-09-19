@@ -1,6 +1,6 @@
 ---
-title: Připojení k koncovým bodům HTTP nebo HTTPS z Azure Logic Apps
-description: Monitorování koncových bodů HTTP nebo HTTPS v automatizovaných úlohách, procesech a pracovních postupech pomocí Azure Logic Apps
+title: Volání koncových bodů HTTP a HTTPS – Azure Logic Apps
+description: Odeslání odchozích požadavků do koncových bodů HTTP a HTTPS pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,18 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234375"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122702"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů HTTP nebo HTTPS pomocí Azure Logic Apps
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Odeslání odchozích volání do koncových bodů HTTP nebo HTTPS pomocí Azure Logic Apps
 
-Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému konektoru http můžete automatizovat pracovní postupy, které pravidelně volají libovolný koncový bod HTTP nebo https vytvořením Logic Apps. Například můžete monitorovat koncový bod služby pro svůj web tak, že zkontrolujete jeho koncový bod podle zadaného plánu. Když v tomto koncovém bodu dojde k určité události, jako je například váš web vypíná, událost spustí pracovní postup vaší aplikace logiky a spustí zadané akce.
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované triggeru nebo akce http můžete vytvářet automatizované úlohy a pracovní postupy, které pravidelně odesílají požadavky do libovolného koncového bodu http nebo HTTPS. Pokud místo toho chcete přijmout příchozí volání HTTP nebo HTTPS a reagovat na ně, použijte integrovaný [Trigger žádosti nebo akci reakce](../connectors/connectors-native-reqres.md).
+
+Například můžete monitorovat koncový bod služby pro svůj web tak, že zkontrolujete jeho koncový bod podle zadaného plánu. Když v tomto koncovém bodu dojde k určité události, jako je například váš web vypíná, událost spustí pracovní postup vaší aplikace logiky a spustí zadané akce.
 
 Pokud chcete koncový bod vyhledat nebo spustit *dotaz* na pravidelný plán, můžete jako první krok v pracovním postupu použít Trigger http. Při každé kontrole aktivační událost odesílá volání nebo *požadavek* na koncový bod. Odpověď koncového bodu Určuje, jestli je Workflow vaší aplikace logiky spuštěn. Aktivační událost projde veškerý obsah z odpovědi na akce ve vaší aplikaci logiky.
 
@@ -148,22 +150,22 @@ Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací
 
 | Název vlastnosti | type | Popis |
 |---------------|------|-------------|
-| Záhlaví | objekt | Hlavičky z požadavku |
-| těles | objekt | Objekt JSON | Objekt s obsahem textu z požadavku |
+| hlavičky | object | Hlavičky z požadavku |
+| těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | Stavový kód | int | Stavový kód z požadavku |
 |||
 
-| Kód stavu | Popis |
+| Stavový kód | Popis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Přijata |
+| 202 | Přijato |
 | 400 | Nesprávná žádost |
 | 401 | Neautorizováno |
 | 403 | Zakázáno |
-| 404 | Nenalezeno |
+| 404 | Nenalezené |
 | 500 | Došlo k vnitřní chybě serveru. Došlo k neznámé chybě. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

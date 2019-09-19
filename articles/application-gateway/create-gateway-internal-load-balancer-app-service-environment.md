@@ -1,10 +1,10 @@
 ---
-title: Řešení potíží s Application Gateway v Azure – služba ASE s ILB | Dokumentace Microsoftu
-description: Zjistěte, jak řešit služby application gateway pomocí interního nástroje Load Balancer v Azure App Service Environment
+title: Řešení potíží s Application Gateway v Azure – interního nástroje pomocného Průvodce | Microsoft Docs
+description: Přečtěte si, jak řešit potíže s aplikační bránou pomocí interní Load Balancer s App Service Environment v Azure.
 services: vpn-gateway
 documentationCenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: baed2b23a321c53a614303d3085fbb3a4bf6ad0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831091"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121956"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát serveru back-end není povolený pro službu application gateway pomocí interního nástroje Load Balancer pomocí služby App Service Environment
+# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát back-end serveru není povolený pro aplikační bránu pomocí interního Load Balancer s App Service Environment
 
-Tento článek ho. následující problémy: Certifikát není na seznamu povolených, při vytváření služby application gateway s využitím interní zatížení nástroje pro vyrovnávání (ILB) společně s App Service Environment (ASE) na back-endu při použití – kompletního protokolu SSL v Azure.
+V tomto článku se řeší následující potíže: Certifikát není povolený při vytváření aplikační brány pomocí interního Load Balancer (interního nástroje) spolu s App Service Environment (pomocného programu) na back-endu při použití kompletního protokolu SSL v Azure.
 
 ## <a name="symptoms"></a>Příznaky
 
-Když vytvoříte aplikační brány pomocí ILB ASE v back-endu, back-end server může přestat není v pořádku. K tomuto problému dochází, pokud certifikát ověřování služby application gateway pravděpodobně neshoduje s nakonfigurovaným certifikátem na back endového serveru. Jako příklad najdete v následujícím scénáři:
+Když vytvoříte Aplikační bránu pomocí interního nástroje s pomocným mechanismem na back-endu, back-end Server může být ve špatném stavu. K tomuto problému dochází v případě, že ověřovací certifikát služby Application Gateway neodpovídá nakonfigurovanému certifikátu na back-end serveru. Podívejte se na následující scénář jako příklad:
 
-**Konfigurace aplikační brány:**
+**Konfigurace Application Gateway:**
 
-- **Naslouchací proces:** Multi-Site
+- **Služby** Více lokalit
 - **Port:** 443
 - **Hostname:** test.appgwtestase.com
 - **Certifikát SSL:** CN=test.appgwtestase.com
-- **Back-Endového fondu:** IP adresa nebo plně kvalifikovaný název domény
+- **Back-end fond:** IP adresa nebo plně kvalifikovaný název domény
 - **IP adresa:** : 10.1.5.11
-- **Nastavení protokolu HTTP:** HTTPS
+- **Nastavení HTTP:** HTTPS
 - **Port:** : 443
 - **Vlastní test paměti:** Název hostitele – test.appgwtestase.com
-- **Certifikát pro ověřování:** .cer test.appgwtestase.com
-- **Stav back-endu:** Není v pořádku – certifikát back-end serveru není na seznamu povolených pomocí služby Application Gateway.
+- **Ověřovací certifikát:** cer z test.appgwtestase.com
+- **Stav back-endu:** Stav není v pořádku – certifikát back-end serveru není na seznamu povolených Application Gateway.
 
-**Konfigurace ASE:**
+**Konfigurace pomocného mechanismu:**
 
 - **ILB IP:** 10.1.5.11
 - **Název domény:** appgwtestase.com
 - **App Service:** test.appgwtestase.com
-- **Vytvoření vazby SSL:** SNI SSL – CN=test.appgwtestase.com
+- **Vazba SSL:** SNI SSL – CN = test. appgwtestase. com
 
-Při přístupu k application gateway zobrazí následující chybová zpráva, protože není v pořádku back-end serverů:
+Při přístupu k aplikační bráně se zobrazí následující chybová zpráva, protože back-end Server není v pořádku:
 
-**502 – Webový server obdržel neplatnou odpověď době, kdy fungoval jako brána nebo proxy server.**
+**502 – webový server obdržel neplatnou odpověď v době, kdy se jednalo o bránu nebo proxy server.**
 
 ## <a name="solution"></a>Řešení
 
-Když nepoužíváte název hostitele pro přístup k webu HTTPS, back endového serveru vrátí nakonfigurovaným certifikátem na výchozím webu, v případě, že SNI je zakázaná. Pro službu ASE výchozí certifikát pochází z certifikátu ILB. Pokud neexistují žádné nakonfigurované certifikáty pro ILB, certifikát pochází z certifikát aplikace služby ASE.
+Pokud pro přístup k webu HTTPS nepoužíváte název hostitele, back-end server vrátí nakonfigurovaný certifikát na výchozím webu, v případě, že je SNI zakázaný. Pro interního nástroje pomocného nástroje se z certifikátu interního nástroje dostane výchozí certifikát. Pokud pro interního nástroje nejsou žádné nakonfigurované certifikáty, pochází certifikát z certifikátu aplikace pomocného mechanismu.
 
-Při použití plně kvalifikovaný název domény (FQDN) pro přístup k ILB back endového serveru vrátí správný certifikát, který se odeslal v nastavení protokolu HTTP. Pokud tedy tomu tak není, zvažte následující možnosti:
+Pokud pro přístup k interního nástroje použijete plně kvalifikovaný název domény (FQDN), back-end server vrátí správný certifikát, který se nahrál v nastavení HTTP. V takovém případě zvažte následující možnosti:
 
-- Použijte plně kvalifikovaný název domény v back endovém fondu služby application gateway tak, aby odkazoval na IP adresu ILB. Tato možnost funguje jenom v případě budete mít privátní zóny DNS nebo vlastní DNS nakonfigurovaný. V opačném případě je nutné vytvořit záznam "A" pro veřejná služba DNS.
+- Pomocí plně kvalifikovaného názvu domény v rámci fondu back-end služby Application Gateway ukažte na IP adresu interního nástroje. Tato možnost funguje jenom v případě, že máte nakonfigurovanou privátní zónu DNS nebo vlastní DNS. V opačném případě je nutné vytvořit záznam "A" pro veřejnou službu DNS.
 
-- Použití se nahraný certifikát na ILB nebo výchozí certifikát (ILB) v nastavení protokolu HTTP. Application gateway získá certifikát, když přistupuje ILB IP pro test paměti.
+- V nastavení HTTP použijte nahraný certifikát na interního nástroje nebo výchozí certifikát (interního nástroje certifikát). Aplikační brána získá certifikát, když přistupuje k IP adrese interního nástroje pro test.
 
-- Použijte certifikát se zástupným znakem na ILB a back endového serveru tak, aby pro všechny weby, certifikát je běžné. Toto řešení je ale možné jenom v případě subdomény a ne v případě, že všechny weby vyžadují různé názvy hostitelů.
+- Použijte certifikát se zástupným znakem na interního nástroje a back-end Server, aby se pro všechny weby používal certifikát běžným způsobem. Toto řešení je však možné pouze v případě subdomén, a ne v případě, že každý z webů vyžaduje různé názvy hostitelů.
 
-- Zrušte **použití pro službu App service** možnost pro službu application gateway v případě, že používáte IP adresu ILB.
+- Pokud používáte IP adresu interního nástroje, zrušte zaškrtnutí možnosti **použít pro službu App Service pro službu** Application Gateway.
 
-Aby se snížila režie, můžete nahrát certifikát ILB v nastavení protokolu HTTP, aby cesta testu paměti fungovat. (Tento krok je jen pro přidávání na seznam povolených. To se nepoužije pro komunikaci protokolem SSL.) Můžete načíst certifikát ILB použitím ILB s jeho IP adresa v prohlížeči na adrese HTTPS a export certifikátu protokolu SSL v Base-64 kódování formátu CER a nahrává se certifikát na příslušné nastavení HTTP.
+Chcete-li snížit režii, můžete nahrát certifikát interního nástroje v nastavení protokolu HTTP, aby bylo možné cestu k testu použít. (Tento krok je jenom pro přidávání do seznamu povolených. Nepoužívá se pro komunikaci SSL.) Certifikát interního nástroje můžete načíst tak, že přistupujete k interního nástroje s jeho IP adresou z prohlížeče na HTTPS a potom exportujete certifikát SSL ve formátu CER se základními 64 a nahráváte certifikát na příslušné nastavení HTTP.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.

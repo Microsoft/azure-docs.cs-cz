@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070588"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129712"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
@@ -29,7 +29,7 @@ Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mo
 Nasazení aplikace do neprodukčního slotu má následující výhody:
 
 * Změny aplikace můžete ověřit v pracovním slotu nasazení před jejich přepnutím do produkčního slotu.
-* Když nasadíte aplikaci do slotu a zaměníte ji do produkčního prostředí, zajistíte, aby se všechny instance slotu před jejich přepnutím do produkčního prostředí zahodily. Tím se eliminuje prostoje při nasazení aplikace. Přesměrování provozu je bezproblémové a žádné požadavky nejsou vyřazeny z důvodu operací prohození. Tento celý pracovní postup můžete automatizovat konfigurací [automatického](#Auto-Swap) prohození, pokud není nutné ověření předem.
+* Když nasadíte aplikaci do slotu a zaměníte ji do produkčního prostředí, zajistíte, aby se všechny instance slotu před jejich přepnutím do produkčního prostředí zahodily. Tím se eliminuje prostoje při nasazení aplikace. Přesměrování provozu je bezproblémové a žádné požadavky nejsou vyřazeny z důvodu operací prohození. Tento celý pracovní postup můžete automatizovat konfigurací [automatického prohození](#Auto-Swap) , pokud není nutné ověření předem.
 * Po prohození teď má slot s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neočekávají, můžete stejnou záměnu provést hned a získat tak svůj "poslední známý dobrý web" zpátky.
 
 Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
@@ -48,7 +48,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
     ![Přidat nový slot nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo izolovaná , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
+   > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
    > 
 
 3. V dialogovém okně **Přidat slot** zadejte název slotu a vyberte, jestli se má naklonovat konfigurace aplikace z jiného slotu nasazení. Pokračujte výběrem **Přidat** .
@@ -78,8 +78,8 @@ Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z j
 Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produkčního slotu), App Service provede následující kroky, které zajistí, že cílový slot nefunguje bez výpadku:
 
 1. Použijte následující nastavení z cílového slotu (například z produkčního slotu) na všechny instance zdrojové patice: 
-    - [](#which-settings-are-swapped) Nastavení aplikace konkrétního slotu a připojovací řetězce, pokud jsou k dispozici.
-    - [](deploy-continuous-deployment.md) Nastavení průběžného nasazování, pokud je povoleno.
+    - Nastavení aplikace [konkrétního slotu](#which-settings-are-swapped) a připojovací řetězce, pokud jsou k dispozici.
+    - Nastavení [průběžného nasazování](deploy-continuous-deployment.md) , pokud je povoleno.
     - [App Service nastavení ověřování](overview-authentication-authorization.md) , pokud je povoleno.
     
     Kterýkoli z těchto případů aktivuje všechny instance ve zdrojové patici, aby se restartovaly. Během [prohození s náhledem](#Multi-Phase)označuje konec první fáze. Operace swapu je pozastavená a můžete ověřit, jestli zdrojové sloty správně funguje s nastaveními cílové patice.
@@ -88,7 +88,7 @@ Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produ
 
 1. Pokud je povolena [místní mezipaměť](overview-local-cache.md) , spusťte inicializaci místní mezipaměti tím, že na každou instanci zdrojové patice nastavíte požadavek HTTP na kořen aplikace ("/"). Počkejte, dokud každá instance nevrátí žádnou odpověď HTTP. Inicializace místní mezipaměti způsobí další restartování každé instance.
 
-1. Pokud je [Automatické](#Auto-Swap) prohození povoleno s [vlastním](#Warm-up)zahříváním, spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
+1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
 
     Pokud `applicationInitialization` není zadaný, spusťte požadavek HTTP do kořenového adresáře aplikace zdrojové patice každé instance. 
     
@@ -111,7 +111,7 @@ Pokud chcete nakonfigurovat nastavení aplikace nebo připojovací řetězec tak
 <a name="Swap"></a>
 
 ## <a name="swap-two-slots"></a>Prohození dvou slotů 
-Na stránce **sloty nasazení** vaší aplikace a na stránce **Přehled** můžete vyměnit sloty nasazení. Technické podrobnosti o prohození slotu najdete v tématu [co se stane při](#AboutConfiguration)prohození.
+Na stránce **sloty nasazení** vaší aplikace a na stránce **Přehled** můžete vyměnit sloty nasazení. Technické podrobnosti o prohození slotu najdete v tématu [co se stane při prohození](#AboutConfiguration).
 
 > [!IMPORTANT]
 > Před zavedením aplikace z slotu nasazení do produkčního prostředí se ujistěte, že je produkční a že všechna nastavení ve zdrojové pozici jsou nakonfigurovaná přesně tak, jak je chcete mít v produkčním prostředí.
@@ -128,13 +128,13 @@ Postup při prohození slotů nasazení:
 
 2. Vyberte požadované **zdrojové** a **cílové** sloty. Obvykle je cílem produkční slot. Také vyberte karty **změny zdrojového kódu** a **cíl změny** a ověřte, zda byly provedeny změny konfigurace. Až budete hotovi, můžete sloty hned vyměnit tak, že vyberete **swap**.
 
-    ![Dokončit prohození](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Dokončení výměny slotů](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    Pokud chcete zjistit, jak by se cílový slot spouštěl s novým nastavením před tím, než dojde ke skutečnému prohození, nevybírejte možnost **swap**, ale postupujte podle pokynů v části prohození [s náhledem](#Multi-Phase)
+    Pokud chcete zjistit, jak by se cílový slot spouštěl s novým nastavením před tím, než dojde ke skutečnému prohození, nevybírejte možnost **swap**, ale postupujte podle pokynů v části [prohození s náhledem](#Multi-Phase)
 
 3. Až skončíte, zavřete dialogové okno tak, že vyberete **Zavřít**.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží](#troubleshoot-swaps)se zahozením.
+Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
@@ -151,23 +151,23 @@ Pokud zrušíte prohození, App Service znovu aplikuje prvky konfigurace na zdro
 
 Pro prohození s náhledem:
 
-1. Postupujte podle kroků v části prohození [slotů nasazení](#Swap) , ale vyberte **provést prohození s náhledem**.
+1. postupujte podle kroků v části prohození [slotů nasazení](#Swap) , ale vyberte **provést prohození s náhledem**.
 
-    ![Prohození s náhledem](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Prohodit s náhledem](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
     V dialogovém okně se dozvíte, jak se změní konfigurace ve zdrojovém slotu ve fázi 1 a jak se změní zdrojový a cílový slot ve fázi 2.
 
-2. Až budete připraveni zahájit prohození, vyberte možnost **Spustit**prohození.
+2. Až budete připraveni zahájit prohození, vyberte možnost **Spustit prohození**.
 
     Po dokončení fáze 1 se zobrazí upozornění v dialogovém okně. Zobrazte náhled swapu ve zdrojovém slotu tak `https://<app_name>-<source-slot-name>.azurewebsites.net`, že na. 
 
-3. Až budete připraveni dokončit vyřazení, vyberte **Dokončit** prohození v **akci** prohození a vyberte **Dokončit**prohození.
+3. Až budete připraveni dokončit vyřazení, vyberte **Dokončit prohození** v **akci prohození** a vyberte **Dokončit prohození**.
 
     Chcete-li zrušit probíhající zahození, vyberte možnost **Zrušit zaměnit** místo.
 
 4. Až skončíte, zavřete dialogové okno tak, že vyberete **Zavřít**.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží](#troubleshoot-swaps)se zahozením.
+Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
 
 Informace o automatizaci vícenásobného swapu najdete v tématu [automatizace pomocí PowerShellu](#automate-with-powershell).
 
@@ -193,18 +193,18 @@ Konfigurace automatického prohození:
 
 1. Přejít na stránku prostředků vaší aplikace. Vyberte **nasazovací sloty** >  >  > požadovaný zdrojovou patici > Konfigurace Obecné nastavení. *\<*
    
-2. Pro **Automatické**prohození vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického**prohození a na panelu příkazů vyberte **Uložit** . 
+2. Pro **Automatické prohození**vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození**a na panelu příkazů vyberte **Uložit** . 
    
     ![Výběry pro konfiguraci automatického prohození](./media/web-sites-staged-publishing/AutoSwap02.png)
 
 3. Spusťte do zdrojové patice nabízení kódu. Automatické prohození proběhne po krátké době a aktualizace se projeví na adrese URL cílové patice.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží](#troubleshoot-swaps)se zahozením.
+Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Zadat vlastní zahřívání
-Pokud používáte [Automatické](#Auto-Swap)prohození, některé aplikace můžou před zahozením vyžadovat vlastní akce. `applicationInitialization` Konfigurační prvek v souboru Web. config umožňuje určit vlastní inicializační akce. [Operace](#AboutConfiguration) prohození počká na dokončení tohoto vlastního zahřívání a teprve potom bude prohozena s cílovou paticí. Zde je ukázkový fragment souboru Web. config.
+Pokud používáte [Automatické prohození](#Auto-Swap), některé aplikace můžou před zahozením vyžadovat vlastní akce. `applicationInitialization` Konfigurační prvek v souboru Web. config umožňuje určit vlastní inicializační akce. [Operace prohození](#AboutConfiguration) počká na dokončení tohoto vlastního zahřívání a teprve potom bude prohozena s cílovou paticí. Zde je ukázkový fragment souboru Web. config.
 
     <system.webServer>
         <applicationInitialization>
@@ -220,11 +220,14 @@ Můžete také přizpůsobit chování zahřívání pomocí jednoho nebo obou n
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k nástroji test pro zahřívání webu. Toto nastavení aplikace přidejte zadáním vlastní cesty, která začíná lomítkem jako hodnotou. Příklad: `/statuscheck`. Výchozí hodnota je `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platné kódy odpovědí HTTP pro operaci zahřívání. Přidejte toto nastavení aplikace s čárkami odděleným seznamem kódů HTTP. Příklad je `200,202` . Pokud vrácený stavový kód není v seznamu, operace zahřívání a swap se zastaví. Ve výchozím nastavení jsou všechny kódy odpovědí platné.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží](#troubleshoot-swaps)se zahozením.
+> [!NOTE]
+> `<applicationInitialization>`je součástí každé spuštění aplikace, kde se tato dvě nastavení aplikace vztahují jenom na zahození slotu.
+
+Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
 
 ## <a name="monitor-a-swap"></a>Monitorování swapu
 
-Pokud se [operace](#AboutConfiguration) prohození trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
 
@@ -314,7 +317,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Prohození slotů nasazení
+### <a name="swap-deployment-slots"></a>Prohodit sloty nasazení
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -342,7 +345,7 @@ Příkazy rozhraní příkazového [řádku Azure](https://github.com/Azure/azur
 
 ## <a name="troubleshoot-swaps"></a>Řešení potíží se zahozením
 
-Pokud dojde k nějaké chybě během [](#AboutConfiguration)prohození slotu, přihlásí se k *D:\home\LogFiles\eventlog.XML*. Je také zaznamenána v protokolu chyb konkrétní aplikace.
+Pokud dojde k nějaké chybě během [prohození slotu](#AboutConfiguration), přihlásí se k *D:\home\LogFiles\eventlog.XML*. Je také zaznamenána v protokolu chyb konkrétní aplikace.
 
 Zde jsou některé běžné chyby swapu:
 
@@ -369,5 +372,7 @@ Zde jsou některé běžné chyby swapu:
     ```
 - Některá [pravidla omezení IP adres](app-service-ip-restrictions.md) můžou zabránit operaci přepnutí z odesílání požadavků HTTP do vaší aplikace. Rozsahy IPv4 adres, které `10.` začínají `100.` na a jsou interní pro vaše nasazení. Měli byste jim dovolit, aby se připojili k vaší aplikaci.
 
-## <a name="next-steps"></a>Další postup
+- Po prohození slotu může aplikace zaznamenat neočekávané restartování. Důvodem je to, že po prohození není konfigurace vazeb názvů hostitelů synchronizovaná, což sám o sobě nezpůsobí restart. Některé zdrojové události úložiště (například převzetí služeb při selhání svazku úložiště) ale můžou detekovat rozdíly a vynutit restartování všech pracovních procesů. K minimalizaci těchto typů restartování nastavte [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` nastavení aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *všech slotech*. Toto nastavení *aplikace ale nefunguje s* aplikacemi Windows Communication Foundation (WCF).
+
+## <a name="next-steps"></a>Další kroky
 [Blokovat přístup k neprodukčním slotům](app-service-ip-restrictions.md)

@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638187"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123107"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní úložiště v Azure Search?
 
@@ -132,7 +132,7 @@ Data nebo dokumenty, které chcete rozšířit, musí existovat ve zdroji dat Az
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
-Služba [Azure Table Storage](search-howto-indexing-azure-tables.md) se dá použít pro odchozí data ve znalostní bázi, ale nedá se použít jako prostředek pro příchozí data do kanálu indexování založeného na AI.
+* [Azure Table storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2 Azure Search služba
 
@@ -143,7 +143,7 @@ Azure Search poskytuje funkci indexeru a indexery slouží k tomu, aby provedl c
 | Object | REST API | Popis |
 |--------|----------|-------------|
 | Zdroj dat | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat Azure, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
-| dovednosti | [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
+| Dovednosti | [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
 | index | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index Azure Search. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
 | indexer | [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
 
@@ -239,7 +239,7 @@ Pokud používáte víc služeb, vytvořte si všechny služby ve stejné oblast
 
 **Krok 3: [Vytvoření prostředku Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
 
-**Krok 4: Začněte [s portálem](cognitive-search-quickstart-blob.md) nebo začněte [s ukázkovými daty pomocí Rest a](knowledge-store-howto.md) předzálohovacího programu.** 
+**Krok 4: Začněte [s portálem](cognitive-search-quickstart-blob.md) nebo začněte [s ukázkovými daty pomocí Rest a předzálohovacího](knowledge-store-howto.md) programu.** 
 
 Pomocí REST `api-version=2019-05-06-Preview` můžete vytvořit kanál založený na AI, který zahrnuje znalostní bázi Store. V nejnovější verzi Preview rozhraní API poskytuje `knowledgeStore` objekt dovednosti definici.
 

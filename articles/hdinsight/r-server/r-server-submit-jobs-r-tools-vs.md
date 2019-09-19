@@ -1,19 +1,19 @@
 ---
 title: Odesílání úloh z Nástroje R pro Visual Studio – Azure HDInsight
 description: Odešlete úlohy R z místního počítače s Visual Studiem do clusteru HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967865"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130262"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -41,7 +41,7 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 
    2. Přejděte na položku nabídky **Nástroje jazyka R** a pak vyberte **nastavení pro datové vědy...** .
 
-       ![Nastavení pro datové vědy...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Nastavení pro datové vědy sady Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > Pomocí přístupu v kroku 1 můžete také uložit a obnovit individuální rozvržení dat pro odborníky na data, a ne opakovat příkaz **nastavení pro datové vědy** .
@@ -56,11 +56,11 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 6. V horní části souboru stiskněte kombinaci kláves CTRL + ENTER pro odeslání každého řádku, a to po jednom, do okna Interaktivní R. Některé řádky můžou při instalaci balíčků chvíli trvat.
     * Případně můžete vybrat všechny řádky v souboru R (CTRL + A), pak buď provést vše (CTRL + ENTER), nebo na panelu nástrojů vybrat ikonu spustit interaktivní.
 
-        ![Spustit jako interaktivní](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Interaktivní spuštění sady Visual Studio](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Po spuštění všech řádků ve skriptu byste měli vidět výstup podobný tomuto:
 
-    ![Pracovní prostor](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Nástroje jazyka R pro Visual Studio Workspace](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Odeslání úloh do clusteru služby HDInsight ML
 
@@ -96,7 +96,7 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Nastavení kontextu Spark](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![Apache Spark – nastavení kontextu](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. V okně Interaktivní R spusťte následující příkazy:
 
@@ -113,17 +113,17 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
 
     1. Z podokna clusteru služby HDInsight ML v Azure v nabídce vlevo vyberte **účty úložiště** .
 
-        ![Účty úložiště](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Účty Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Vyberte výchozí účet úložiště pro váš cluster a poznamenejte si název kontejneru nebo adresáře.
 
     3. V nabídce na levé straně v podokně účtu úložiště vyberte **kontejnery** .
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Kontejnery Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. Soubor by měl být zobrazen `newUser` ve složce. `people.json`
 
-        ![Zkopírovaný soubor](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight zkopíroval umístění složky souborů](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Po dokončení používání aktuálního kontextu Apache Spark je nutné ho zastavit. Nelze spustit více kontextů najednou.
 
@@ -131,8 +131,7 @@ Pomocí Microsoft ml Server/Microsoft R Client z počítače s Windows vybavené
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Možnosti výpočetního kontextu pro služby ML v HDInsight](r-server-compute-contexts.md)
 * [Kombinování škály a Sparku](../hdinsight-hadoop-r-scaler-sparkr.md) poskytuje příklad zpoždění leteckého letu předpovědi.
-

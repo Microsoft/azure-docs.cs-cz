@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s kanálu ServiceChannel | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s kanálu ServiceChannel | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a kanálu ServiceChannel.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120dbefb6885489155a4b86fae429223766a06bc
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 4adc22982c8c7fa7b7a856ded01f88ee548bde93
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976088"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121970"
 ---
-# <a name="tutorial-integrate-servicechannel-with-azure-active-directory"></a>Kurz: Integrace kanálu ServiceChannel s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s kanálu ServiceChannel
 
 V tomto kurzu se dozvíte, jak integrovat kanálu ServiceChannel s Azure Active Directory (Azure AD). Když integrujete kanálu ServiceChannel s Azure AD, můžete:
 
@@ -58,7 +58,6 @@ Pokud chcete nakonfigurovat integraci kanálu ServiceChannel do služby Azure AD
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **kanálu ServiceChannel** .
 1. Na panelu výsledků vyberte **kanálu ServiceChannel** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-servicechannel"></a>Konfigurace a testování jednotného přihlašování Azure AD pro kanálu ServiceChannel
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí kanálu ServiceChannel pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v kanálu ServiceChannel.
@@ -68,9 +67,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Nakonfigurujte kanálu SERVICECHANNEL SSO](#configure-servicechannel-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[Nakonfigurujte kanálu SERVICECHANNEL SSO](#configure-servicechannel-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
     1. **[Vytvořte kanálu ServiceChannel Test User](#create-servicechannel-test-user)** -to, abyste měli protějšek B. Simon v kanálu ServiceChannel, která je propojená s reprezentací uživatele v Azure AD.
-3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -82,53 +81,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** proveďte následující kroky:
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-      a. Do textového pole **identifikátor** zadejte hodnotu jako:`http://adfs.<domain>.com/adfs/service/trust`
+    a. Do textového pole **identifikátor** zadejte hodnotu jako:`http://adfs.<domain>.com/adfs/service/trust`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Tady doporučujeme, abyste v identifikátoru použili jedinečnou hodnotu řetězce. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta kanálu ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Vaše aplikace kanálu ServiceChannel očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace kanálu ServiceChannel očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+1. Deklarace role je předem nakonfigurovaná, takže ji nemusíte konfigurovat, ale je potřeba, abyste je ve službě Azure AD mohli vytvořit pomocí tohoto [článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management). Další pokyny k deklaracím identity najdete [tady](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) : kanálu ServiceChannel příručka.
 
-    Další pokyny k deklaracím identity najdete [tady](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) : kanálu ServiceChannel příručka.
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > V tomto [odkazu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) najdete informace o tom, jak nakonfigurovat **roli** v Azure AD.
-
-6. Pokud plánujete povolit jenom přihlášení uživatele, měli byste kromě toho přidat následující deklarace identity, jak je uvedeno níže. Deklarace identity **role** musí být namapována na **User. assignedroles** , který obsahuje roli uživatele. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
-
-    | Name   |  Zdrojový atribut |
-    | ------ | --- |
-    | Role   | user.assignedroles |
-
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
-
-    c. Ponechte **obor názvů** prázdný.
-
-    d. Jako **atribut**vyberte zdroj.
-
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavení kanálu ServiceChannel** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. V části **Nastavení kanálu ServiceChannel** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -139,10 +107,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-    1. Do pole **Název** zadejte `B.Simon`.  
-    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -152,7 +120,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **kanálu ServiceChannel**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -164,19 +132,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-servicechannel-sso"></a>Konfigurace jednotného přihlašování kanálu ServiceChannel
 
-Ke konfiguraci jednotného přihlašování na straně **kanálu ServiceChannel** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory kanálu ServiceChannel](https://servicechannel.zendesk.com/hc/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně **kanálu ServiceChannel** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory kanálu ServiceChannel](https://servicechannel.zendesk.com/hc/en-us). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-servicechannel-test-user"></a>Vytvořit testovacího uživatele kanálu ServiceChannel
 
 Aplikace podporuje zřizování uživatelů pouze v čase a po ověření budou automaticky vytvořena v aplikaci. Pro úplné zřizování uživatelů prosím kontaktujte [tým podpory kanálu ServiceChannel](https://servicechannel.zendesk.com/hc/).
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici kanálu ServiceChannel, měli byste se automaticky přihlásit k kanálu ServiceChannel, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -184,3 +152,4 @@ Když na přístupovém panelu kliknete na dlaždici kanálu ServiceChannel, mě
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Vyzkoušejte si kanálu ServiceChannel s Azure AD](https://aad.portal.azure.com/)

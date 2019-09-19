@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997017"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128984"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní
 
@@ -125,9 +125,9 @@ Tyto modely a nasazení můžete najít také v částech **modely** a **koncov�
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu strojového učení ve vizuálním rozhraní. Další informace o tom, jak můžete pomocí vizuálního rozhraní vyřešit jiné typy problémů, najdete v našich dalších ukázkových experimentech.
 
 > [!div class="nextstepaction"]
-> [Ukázka klasifikace úvěrového rizika](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [Ukázka klasifikace úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

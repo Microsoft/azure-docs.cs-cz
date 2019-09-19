@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960219"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123246"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci Apache Kafkach témat pomocí Kafka ve službě HDInsight
 
@@ -84,7 +84,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
     1. Klikněte na **Přidat**.
     1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
-        ![Přidat partnerský vztah virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. Konfigurace inzerce protokolu IP:
     1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`
@@ -104,7 +104,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
     1. Klikněte na **OK** a **uložte změny konfigurace**.
     1. Klikněte na **restartovat** > restart**všech ovlivněných** v oznámení **požadovaná k restartování** . Klikněte na **Potvrdit restart vše**.
 
-        ![restartovat Kafka uzly](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
     1. Zůstat na kartě **Konfigurace** v části **služby** > **Kafka**. V části **Kafka Broker** nastavte vlastnost **Listeners** na `PLAINTEXT://0.0.0.0:9092`.
@@ -115,7 +115,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
     1. V řídicím panelu Ambari klikněte na **hostitelé** .
     1. Poznamenejte si IP adresy pro zprostředkovatele a uzly Zookeeper. Uzly zprostředkovatele **mají jako první** dvě písmena názvu hostitele a uzly Zookeeper mají **ZK** jako první dvě písmena názvu hostitele.
 
-        ![Zobrazit IP adresy](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![IP adresy uzlů pro zobrazení Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Opakujte předchozí tři kroky pro druhý cluster **Kafka-Secondary-cluster**: Nakonfigurujte reklamu protokolu IP, nastavte naslouchací procesy a poznamenejte si IP adresy zprostředkovatele a Zookeeper.
 
@@ -251,7 +251,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
         6. Změňte hodnotu `auto.create.topics.enable` na true a pak vyberte __Save (Uložit__). Přidejte poznámku a pak znovu vyberte __Uložit__ .
         7. Vyberte službu __Kafka__ , vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-        ![konfigurovat automatické vytváření témat](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![Kafka povolit automatické vytváření témat](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>Spustit nástroje MirrorMaker
 

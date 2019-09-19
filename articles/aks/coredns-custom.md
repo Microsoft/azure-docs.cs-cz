@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018666"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130021"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
@@ -20,7 +20,7 @@ Služba Azure Kubernetes Service (AKS) používá projekt [CoreDNS][coredns] pro
 
 Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci pro CoreDNS ( *CoreFile*). Místo toho použijete Kubernetes *ConfigMap* k přepsání výchozích nastavení. Pokud chcete zobrazit výchozí AKS CoreDNS ConfigMaps, použijte `kubectl get configmaps --namespace=kube-system coredns -o yaml` příkaz.
 
-V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS.
+V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS. Tento přístup se liší od konfigurace CoreDNS v jiných kontextech, jako je například použití CoreFile. Ověřte, že je spuštěná verze CoreDNS, protože hodnoty konfigurace se můžou mezi verzemi měnit.
 
 > [!NOTE]
 > `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není zpětně kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
@@ -31,7 +31,7 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 ## <a name="what-is-supportedunsupported"></a>Co je podporováno/nepodporované
 
-Podporují se všechny integrované moduly plug-in CoreDNS. Nepodporují se žádné moduly plug-in nebo doplňky třetích stran. 
+Podporují se všechny integrované moduly plug-in CoreDNS. Nepodporují se žádné moduly plug-in nebo doplňky třetích stran.
 
 ## <a name="rewrite-dns"></a>Přepsat DNS
 

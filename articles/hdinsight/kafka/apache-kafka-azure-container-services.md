@@ -1,19 +1,19 @@
 ---
 title: Použití služby Azure Kubernetes s Kafka ve službě HDInsight
 description: Naučte se používat Kafka v HDInsight z imagí kontejnerů hostovaných ve službě Azure Kubernetes Service (AKS).
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960599"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122640"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
 
@@ -43,10 +43,9 @@ Tento dokument také předpokládá, že jste vás provedl prostřednictvím [ku
 
 HDInsight i AKS používají jako kontejner pro výpočetní prostředky Azure Virtual Network. Pokud chcete povolit komunikaci mezi HDInsight a AKS, musíte povolit komunikaci mezi jejich sítěmi. Kroky v tomto dokumentu slouží Virtual Network partnerských vztahů k sítím. Další připojení, jako je třeba VPN, by měla také fungovat. Další informace o partnerském vztahu najdete v dokumentu [partnerského vztahu virtuální sítě](../../virtual-network/virtual-network-peering-overview.md) .
 
-
 Následující diagram znázorňuje topologii sítě použitou v tomto dokumentu:
 
-![HDInsight v jedné virtuální síti, AKS v jiné a sítě připojené pomocí partnerského vztahu](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![HDInsight v jedné virtuální síti, AKS v jiné, s použitím partnerského vztahu](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]  
 > Překlad názvů není mezi partnerskými sítěmi povolený, takže se používá IP adresování. Ve výchozím nastavení je Kafka v HDInsight nakonfigurovaná tak, aby vracela názvy hostitelů, a ne IP adresy, když se klienti připojují. Kroky v tomto dokumentu upravují Kafka místo toho použití reklamy protokolu IP.
@@ -113,7 +112,7 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 3. Pokud chcete zobrazit konfiguraci Kafka, v horním __rohu vyberte konfigurace__ .
 
-    ![Odkazy konfigurace pro Kafka](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    ![Konfigurace služeb Apache Ambari](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. Pokud chcete najít konfiguraci __Kafka-ENV__ , zadejte `kafka-env` do pole __filtru__ v pravém horním rohu.
 
@@ -135,7 +134,7 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
-    ![Tlačítko Uložit konfiguraci](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    ![Konfigurace pro uložení konfigurace Apache Ambari](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Chcete-li zabránit chybám při restartování Kafka, použijte tlačítko __Akce služby__ a vyberte __zapnout režim údržby__. Kliknutím na tlačítko OK dokončete tuto operaci.
 
@@ -192,6 +191,7 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
+
     Dokončení této operace trvá několik minut.
 
 8. Upravte soubor manifestu Kubernetes (`kafka-aks-test.yaml`) a nahraďte `microsoft` názvem ACR loginServer, který jste získali v kroku 4.
@@ -212,14 +212,14 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
 
 11. Otevřete webový prohlížeč a zadejte externí IP adresu pro službu. Přijdete na stránku, která bude vypadat jako na následujícím obrázku:
 
-    ![Obrázek webové stránky](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    ![Obrázek webové stránky Apache Kafka test](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. Zadejte text do pole a potom vyberte tlačítko __Odeslat__ . Data se odesílají do Kafka. Pak příjemce Kafka v aplikaci přečte zprávu a přidá ji do části __zprávy z Kafka__ .
 
     > [!WARNING]  
     > Můžete obdržet více kopií zprávy. K tomuto problému obvykle dochází, když aktualizujete prohlížeč po připojení nebo otevřete více připojení prohlížeče k aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující odkazy popisují používání Apache Kafka ve službě HDInsight:
 

@@ -4,7 +4,7 @@ description: Naučte se řešit potíže, při kterých nemůžete do Azure API 
 services: api-management
 documentationcenter: ''
 author: genlin
-manager: cfowler
+manager: dcscontentpm
 editor: ''
 ms.service: api-management
 ms.workload: mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072095"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121522"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nepovedlo se aktualizovat názvy hostitelů služby API Management.
 
@@ -39,7 +39,7 @@ Pokud chcete tento problém vyřešit, postupujte následovně:
 
 1. Otevřete [Azure Portal](Https://portal.azure.com), vyberte svou instanci API Management a pak vyberte **spravované identity**. Ujistěte se, že možnost **registrovat s Azure Active Directory** je nastavená na **hodnotu Ano**. 
     ![Registrace ve službě Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
-1. V Azure Portal otevřete službu trezory **klíčů** a vyberte Trezor klíčů, který se pokoušíte použít pro vlastní doménu.
+1. V Azure Portal otevřete službu **trezory klíčů** a vyberte Trezor klíčů, který se pokoušíte použít pro vlastní doménu.
 1. Vyberte **zásady přístupu**a ověřte, jestli existuje instanční objekt, který odpovídá názvu instance služby API Management. V takovém případě vyberte instanční objekt a ujistěte se, že má oprávnění **získat** uvedené v části **oprávnění tajného**kódu.  
     ![Přidání zásad přístupu pro instanční objekt](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. Pokud služba API Management není v seznamu, vyberte **Přidat zásadu přístupu**a pak vytvořte následující zásady přístupu:
@@ -53,7 +53,7 @@ Pokud chcete tento problém vyřešit, postupujte následovně:
 
 Zkontrolujte, zda byl problém vyřešen. Chcete-li to provést, zkuste vytvořit vlastní doménu ve službě API Management pomocí certifikátu Key Vault.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě API Management Service:
 
 - Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.

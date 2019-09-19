@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035509"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123147"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 
@@ -37,7 +37,7 @@ Zvažte následující definice pro pochopení hloubkového učení vs. strojov�
 
 - **Umělá inteligentní funkce (AI)** je technika, která umožňuje počítačům napodobovat lidské inteligentní funkce. Zahrnuje Machine Learning. 
  
-Je důležité pochopit vztah mezi AI, Machine Learningem a hlubokou výukou. Machine Learning je způsob, jak dosáhnout umělých inteligentních funkcí. Pomocí technik strojového učení a hloubkového učení můžete sestavovat počítačové systémy a aplikace, které budou často přidruženy k lidským inteligentním funkcím. Tyto úlohy zahrnují vizuální vnímání, rozpoznávání řeči, rozhodování a překlad jazyka.
+Je důležité pochopit vztah mezi AI, Machine Learningem a hlubokou výukou. Machine Learning je způsob, jak dosáhnout umělých inteligentních funkcí. Pomocí technik strojového učení a hloubkového učení můžete sestavovat počítačové systémy a aplikace, které budou často přidruženy k lidským inteligentním funkcím. Mezi tyto úlohy patří rozpoznávání obrázků, rozpoznávání řeči a překlad jazyka.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Techniky hloubkového učení vs. Machine Learning 
 
@@ -47,12 +47,12 @@ Následující tabulka porovnává tyto dvě metody podrobněji:
 
 | |Všechny Machine Learning |Jenom obsáhlý Learning|
 |---|---|---|
-|  **Počet datových bodů** | Může používat malé objemy dat poskytované uživateli. | Vyžaduje velké množství školicích dat, aby bylo možné provádět stručné závěry. |
+|  **Počet datových bodů** | Pomocí malých objemů dat můžete vytvořit předpovědi. | K zajištění předpovědi je potřeba použít velké množství školicích dat. |
 |  **Závislosti hardwaru** | Může pracovat na méně koncových počítačích. Nepotřebuje velké množství výpočetního výkonu. | Závisí na vysoce koncových počítačích. Tím je v podstatě velký počet operací násobení matice. GPU může efektivně optimalizovat tyto operace. |
 |  **Featurization proces** | Vyžaduje, aby funkce byly přesně identifikovány a vytvořeny uživateli. | Zjišťuje funkce na nejvyšší úrovni z dat a vytváří nové funkce sama o sobě. |
-|  **Postup učení** | Rozdělí úkoly na malé kousky a pak kombinuje přijaté výsledky do jednoho závěru. | Vyřeší tento problém na konci. |
-|  **Doba spuštění** | Provede poměrně krátkou dobu, od několika sekund až po několik hodin. | Vyučování trvá neobvykle dlouhou dobu, protože algoritmus hloubkového učení zahrnuje mnoho parametrů. |
-|  **Výstup** | Výstupem je obvykle číselná hodnota, jako je například skóre nebo klasifikace. | Výstupem může být text, skóre, element nebo zvuk. |
+|  **Postup učení** | Rozděluje studijní proces do menších kroků. Pak sloučí výsledky z každého kroku do jednoho výstupu. | Projděte si proces učení tím, že tento problém vyřešíte na uceleném základě. |
+|  **Doba spuštění** | Provede poměrně krátkou dobu, od několika sekund až po několik hodin. | Výuka obvykle trvá příliš dlouho, protože algoritmus hloubkového učení zahrnuje mnoho vrstev. |
+|  **Výstup** | Výstupem je obvykle číselná hodnota, jako je například skóre nebo klasifikace. | Výstup může mít několik formátů, jako je text, skóre nebo zvuk. |
 
 ## <a name="deep-learning-use-cases"></a>Případy použití hloubkového učení
 
@@ -62,7 +62,7 @@ Některé z nejběžnějších aplikací pro obsáhlý Learning jsou popsané v 
 
 ### <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
 
-Jedno použití sítí s hloubkovým učením je rozpoznávání názvů entit, což je způsob, jak extrahovat určité typy informací z nestrukturovaných a neoznačených dat. Tyto informace mohou být osoby, místa, společnosti nebo věci. Informace pak mohou být uloženy ve strukturovaném schématu, aby bylo možné sestavit seznam adres nebo sloužit jako srovnávací test pro modul ověřování identity.
+Rozpoznávání pojmenovaných entit je metoda hloubkového učení, která přebírá text jako vstup a transformuje ho do předem určené třídy. Tato nová informace může být poštovním kódem, datum, ID produktu. Informace pak mohou být uloženy ve strukturovaném schématu, aby bylo možné sestavit seznam adres nebo sloužit jako srovnávací test pro modul ověřování identity.
 
 ### <a name="object-detection"></a>Detekce objektů
 
@@ -72,17 +72,21 @@ Detekce objektů se už používá v oborech, jako jsou hry, maloobchodní prode
 
 ### <a name="image-caption-generation"></a>Generování titulku obrázku
 
-Podobně jako rozpoznávání obrázku v titulkování obrázků pro daný obrázek systém musí vygenerovat titulek, který popisuje obsah obrázku. Když můžete objekty v fotografiích detekovat a označovat, je dalším krokem změna těchto popisků na popisné a soudržné věty. Obecně platí, že systémy titulků obrázků využívají velmi velké konvoluční sítě neuronové ke zjišťování objektů v obrazových fotografiích a pak používají znovu aktuální neuronové síť (RNN), aby se štítky přepnuly na souvislé věty.
+Podobně jako rozpoznávání obrázku v titulkování obrázků pro daný obrázek systém musí vygenerovat titulek, který popisuje obsah obrázku. Když můžete objekty v fotografiích detekovat a označovat, je dalším krokem Změna popisků na popisné věty. 
+
+Obvykle aplikace titulkování obrázků používají sítě neuronové konvoluční k identifikaci objektů v imagi a následné použití opakující se sítě neuronové k zapnutí popisků v konzistentních větách.
 
 ### <a name="machine-translation"></a>Strojový překlad
 
-Strojový překlad používá slova, fráze nebo věty z jednoho jazyka a automaticky je překládá do jiného jazyka. Automatický překlad strojového překladu je delší dobu, ale obsáhlý Learning dosahuje působivých výsledků ve dvou konkrétních oblastech: automatický překlad textu (a převod řeči na text) a automatický překlad obrázků. 
+Strojový překlad používá slova nebo věty z jednoho jazyka a automaticky je překládá do jiného jazyka. Strojový překlad je delší dobu, ale obsáhlý Learning dosahuje působivých výsledků ve dvou konkrétních oblastech: automatický překlad textu (a převod řeči na text) a automatický překlad obrázků.
 
-Díky správné transformaci dat dokáže rozsáhlá síť pochopit textové, zvukové a vizuální signály. Strojový překlad lze použít k identifikaci fragmentů zvuku ve větších zvukových souborech a přepisovat mluveného slova nebo obrázku jako textu.
+Díky příslušné transformaci dat může neuronové síť pochopit textové, zvukové a vizuální signály. Strojový překlad lze použít k identifikaci fragmentů zvuku ve větších zvukových souborech a přepisovat mluveného slova nebo obrázku jako textu.
 
 ### <a name="text-analytics"></a>Analýza textu
 
-Důležitým úkolem hloubkového učení je e-zjišťování. Společnosti využívají analýzu textu založené na hloubkovém učení ke zjišťování obchodu zasvěcených osob a dodržování předpisů pro státní správu. Fondy transakcí využívají Text Analytics k přechodu do rozsáhlých úložišť dokumentů, abyste získali přehled o budoucích investicích a mínění trhu. Případ použití pro analýzu textu na základě hloubkového učení se otáčí kolem své schopnosti analyzovat obrovské objemy textových dat a provádět analýzy nebo vracet agregace.
+Analýza textu založená na metodách hloubkového učení zahrnuje analýzu velkých objemů textových dat (například příjem lékařských dokumentů nebo příjmů výdajů), rozpoznávání vzorů a vytváření uspořádaných a stručných informací.
+
+Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění. 
 
 ## <a name="artificial-neural-networks"></a>Umělé sítě neuronové
 
@@ -92,19 +96,19 @@ V následujících částech se prozkoumá nejoblíbenější umělá neuronové
 
 ### <a name="feedforward-neural-network"></a>Síť neuronové Feedforward
 
-Síť neuronové Feedforward je nejzákladnější typ umělé neuronové sítě. V Feedforward síti jsou informace přenášeny pouze v jednom směru ze vstupní vrstvy do výstupní vrstvy. Feedforward neuronové Networks transformují vstup tím, že ho umístí prostřednictvím řady skrytých vrstev. Každá vrstva se skládá ze sady neurons a každá vrstva je plně připojená ke všem neurons ve vrstvě. Poslední plně připojená vrstva (výstupní vrstva) představuje vygenerované předpovědi.
+Síť neuronové Feedforward je nejzákladnější typ umělé neuronové sítě. V Feedforward síti se informace pohybují pouze v jednom směru ze vstupní vrstvy do výstupní vrstvy. Feedforward neuronové Networks transformují vstup tím, že ho umístí prostřednictvím řady skrytých vrstev. Každá vrstva se skládá ze sady neurons a každá vrstva je plně připojená ke všem neurons ve vrstvě. Poslední plně připojená vrstva (výstupní vrstva) představuje vygenerované předpovědi.
 
 ### <a name="recurrent-neural-network"></a>Znovu aktuální neuronové síť
 
-Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Používají se často pro složité úlohy, jako je učení rukopisu a rozpoznávání jazyka.
+Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Jsou často používány pro komplexní úlohy, jako je například prognózování časových řad, učení rukopisu a rozpoznávání jazyka.
 
 ### <a name="convolutional-neural-networks"></a>Konvoluční neuronové sítě
 
 Síť neuronové konvoluční je zvláště efektivní umělá síť neuronové a představuje jedinečnou architekturu. Vrstvy jsou uspořádány do tří rozměrů: šířka, Výška a hloubka. Neurons v jedné vrstvě se připojí k neurons v následující vrstvě, ale pouze do malých oblastí neurons vrstvy. Konečný výstup je snížen na jeden vektor skóre pravděpodobnosti uspořádané podél rozměru hloubky. 
 
-Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznávání obrazu a klasifikace.
+Sítě konvoluční neuronové se používají v oblastech, jako je rozpoznávání videa, rozpoznávání obrázků a systémy doporučení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující články ukazují, jak používat technologii pro hloubkové učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 

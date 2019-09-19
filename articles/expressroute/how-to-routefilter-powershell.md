@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu – ExpressRoute: PowerShell: Azure | Dokumentace Microsoftu'
+title: 'Konfigurace filtrů tras pro Microsoft peering – ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Tento článek popisuje postup konfigurace filtrů směrování pro Microsoft Peering pomocí Powershellu
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e5d94fad5ddcfd0b34e36cb96727cff48b62ea0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5a5ca4949ca223e9123d59c9578a2628dacd351
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730217"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123407"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: PowerShell
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "66730217"
 
 Filtry tras představují způsob, jak spotřebovat dílčí sadu podporovaných služeb přes partnerský vztah Microsoftu. Kroky v tomto článku vám pomůžou nakonfigurovat a spravovat filtrů směrování pro okruhy ExpressRoute.
 
-Služby Dynamics 365 a službám Office 365 Exchange Online, SharePoint Online a Skype pro firmy a veřejné služby Azure, jako jsou úložiště a SQL DB jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Veřejné služby Azure jsou volitelné na základě podle oblasti a nemůže být definovaná na veřejné služby.
+Služby Office 365 jako Exchange Online, SharePoint Online a Skype pro firmy a veřejné služby Azure, jako jsou Storage a SQL DB, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Veřejné služby Azure jsou volitelné na základě podle oblasti a nemůže být definovaná na veřejné služby.
 
 Když se filtr tras připojuje partnerského vztahu Microsoftu je nakonfigurovaná na okruh ExpressRoute, jsou všechny předpony, které jsou vybrány pro tyto služby inzerované prostřednictvím relace protokolu BGP, které jsou vytvořeny. Ke každé předponě je připojená hodnota komunity protokolu BGP, která identifikuje službu nabízenou prostřednictvím dané předpony. Tyto hodnoty komunity protokolu BGP a služeb, které jsou mapovány seznam najdete v tématu [komunit protokolu BGP](expressroute-routing.md#bgp).
 
@@ -40,7 +40,7 @@ Po vytvoření partnerského vztahu Microsoftu je nakonfigurovaná na váš okru
 
 Filtr tras umožňuje identifikovat služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu s vaším okruhem ExpressRoute. V podstatě se jedná o seznam všech povolených hodnot komunity protokolu BGP. Po definování prostředku filtru tras a jeho připojení k okruhu ExpressRoute se do vaší sítě budou inzerovat všechny předpony, které se mapují na hodnoty komunity protokolu BGP.
 
-Aby bylo možné připojit filtry tras se službami Office 365 s nimi, musíte mít oprávnění k využívání služeb Office 365 přes ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 přes ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu ověřování najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Připojení ke službám Dynamics 365 nevyžaduje žádné předchozí autorizace.
+Aby bylo možné připojit filtry tras se službami Office 365 s nimi, musíte mít oprávnění k využívání služeb Office 365 přes ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 přes ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu ověřování najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > Partnerský vztah Microsoftu okruhů ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 budou mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras. Partnerský vztah Microsoftu okruhů ExpressRoute, které jsou nakonfigurované 1. srpna 2017 nebo později nebude mít všechny předpony inzerované, dokud se filtr tras je připojen k okruhu.
@@ -101,7 +101,7 @@ Určete předplatné, které chcete použít.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>Krok 1: Získat seznam předpon a hodnotami komunity protokolu BGP
+## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnot komunity protokolu BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
 
@@ -112,15 +112,15 @@ Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít
 
-Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
+Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras.
 
-## <a name="filter"></a>Krok 2: Vytvořit filtr tras a pravidlo filtru
+## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidla filtru
 
 Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
 ### <a name="1-create-a-route-filter"></a>1. Vytvořit filtr tras
 
-Nejprve vytvořte filtr tras. Příkaz "New-AzRouteFilter" pouze vytvoří prostředek filtr trasy. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
+Nejprve vytvořte filtr tras. Příkaz New-AzRouteFilter vytvoří pouze prostředek filtru tras. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
 
 ```azurepowershell-interactive
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
@@ -144,7 +144,7 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>Krok 3: Připojit filtr tras k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3: Připojení filtru tras k okruhu ExpressRoute
 
 Spusťte následující příkaz připojit filtr tras k okruhu ExpressRoute, za předpokladu, že máte jenom partnerského vztahu Microsoftu:
 

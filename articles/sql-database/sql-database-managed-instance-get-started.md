@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873872"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101680"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
 Tento rychlý Start vás provede vytvořením Azure SQL Database [spravované instance](sql-database-managed-instance.md) v Azure Portal.
 
 > [!IMPORTANT]
-> Omezení najdete v tématu [podporované oblasti](sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy](sql-database-managed-instance-resource-limits.md#supported-subscription-types)předplatného.
+> Omezení najdete v tématu [podporované oblasti](sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -58,16 +58,16 @@ Následující kroky ukazují, jak vytvořit spravovanou instanci.
    |**Typ připojení**|Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Azure SQL Database zásady připojení](sql-database-connectivity-architecture.md#connection-policy).|
    |**Skupina prostředků**|Nová nebo existující skupina prostředků.|Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
 
-   ![Formulář spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
+   ![formulář spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání, vyberte rezervaci a určete spravovanou instanci DnsAzurePartner. Tato funkce je ve verzi Preview a není zobrazená na následujícím snímku obrazovky.
+5. Pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání, vyberte rezervaci a určete spravovanou instanci DnsAzurePartner. 
 6. Vyberte **cenovou úroveň** pro velikost výpočetních prostředků a prostředků úložiště a zkontrolujte možnosti cenové úrovně. Výchozí hodnotou je cenová úroveň s 32 GB paměti a 16 virtuálními jádry pro obecné účely.
 7. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader.
 8. Až budete hotovi, vyberte **použít** a uložte svůj výběr. 
 9. Vyberte **vytvořit** a nasaďte spravovanou instanci.
 10. Výběrem ikony **oznámení** zobrazíte stav nasazení.
 
-    ![Průběh nasazení spravované instance](./media/sql-database-managed-instance-get-started/deployment-progress.png)
+    ![průběh nasazení spravované instance](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
 11. Výběrem **nasazení** probíhá otevírání okna spravovaná instance, abyste mohli dále monitorovat průběh nasazení. 
 
@@ -108,7 +108,7 @@ Po úspěšném nasazení zkontrolujte prostředky, které byly vytvořeny, a na
 
    Název se podobá **your_machine_name. a1b2c3d4e5f6. Database. Windows. NET**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak se připojit ke spravované instanci:
   - Přehled možností připojení pro aplikace najdete v tématu [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).

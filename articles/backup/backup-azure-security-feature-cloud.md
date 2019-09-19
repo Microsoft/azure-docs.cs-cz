@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018187"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129339"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -122,9 +122,9 @@ Operace zrušit odstranění, po které následuje operace pokračovat, bude chr
 
 Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohované položky. Odstraněné položky jsou po 14 dnech operace odstranění trvale odstraněny. Trezor můžete odstranit až po vyprázdnění všech neodstraněných položek.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Jak můžu odstranit data starší než 14 dní, po jejichž uplynutí se dočasná doba odstraní?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Můžu odstranit data starší než 14 dní, po jejichž uplynutí bude období obnovitelného odstranění?
 
-Neexistuje žádný způsob, jak data vyprázdnit před 14 dny po odstranění. Pokud se jedná o blokování nebo problémy s dodržováním předpisů, obraťte se prosím na podporu Microsoftu.
+Ne. Nelze odstranit dočasně odstraněné položky, budou automaticky odstraněny po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Měli byste počkat na 14 dní před provedením jakékoli jiné akce na virtuálním počítači.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu ochránit virtuální počítače označené pro obnovitelné odstranění do 14 dní do nového trezoru, obraťte se na podporu Microsoftu.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Může dojít k obnovitelnému odstranění operací v PowerShellu nebo rozhraní příkazového řádku?
 
@@ -134,6 +134,6 @@ Ne, podpora PowerShellu nebo rozhraní příkazového řádku není aktuálně k
 
 Ne. V současné době je obnovitelné odstranění podporováno pouze pro virtuální počítače Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o [ovládacích prvcích zabezpečení pro Azure Backup](backup-security-controls.md).

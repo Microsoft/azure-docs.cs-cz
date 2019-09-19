@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 0691b1a531ffebbb2c368bdb37dd4d8025fb4a4e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623712"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129694"
 ---
 Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigurace upravitelná. Některé prvky konfigurace následují po prohození obsahu (ne pro konkrétní sloty), zatímco jiné konfigurační prvky zůstávají na stejném slotu po prohození (specifické pro slot). Následující seznamy obsahují nastavení, která se mění při prohození slotů.
 
@@ -19,7 +19,6 @@ Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigura
 * Nastavení aplikace (může být nakonfigurováno na slot)
 * Připojovací řetězce (můžou být nakonfigurované tak, aby se nastavily na slot)
 * Mapování obslužných rutin
-* Nastavení monitorování a diagnostiky
 * Veřejné certifikáty
 * Obsah webových úloh
 * Hybridní připojení *
@@ -27,19 +26,20 @@ Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigura
 * Koncové body služby *
 * Content Delivery Network Azure *
 
-Funkce označené hvězdičkou (*) jsou plánovány k rychlému navázání na slot. 
+Funkce označené hvězdičkou (*) jsou plánovány jako neswapé. 
 
 **Neswapá nastavení**:
 
 * Publikování koncových bodů
 * Názvy vlastních domén
-* Privátní certifikáty a vazby SSL
+* Neveřejné certifikáty a nastavení TLS/SSL
 * Nastavení škálování
 * Plánovače WebJobs
 * Omezení IP adresy
 * Stálé připojení
-* Nastavení protokolu (HTTPS, verze TLS, klientské certifikáty)
 * Nastavení diagnostického protokolu
 * Sdílení prostředků mezi zdroji (CORS)
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+> [!NOTE]
+> Některá nastavení aplikace, která platí pro nezaměnitelné nastavení, se také nemění. Například vzhledem k tomu, že nastavení diagnostického protokolu není zaměněno, související `WEBSITE_HTTPLOGGING_RETENTION_DAYS` nastavení `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` aplikací, jako jsou a, se také nemění, i když se nezobrazí jako nastavení slotu.
+>

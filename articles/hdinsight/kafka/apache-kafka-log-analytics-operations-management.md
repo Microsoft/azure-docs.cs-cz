@@ -1,19 +1,19 @@
 ---
 title: Protokoly Azure Monitor pro Apache Kafka – Azure HDInsight
 description: Naučte se používat protokoly Azure Monitor k analýze protokolů z Apache Kafka clusteru v Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960115"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122602"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
 
@@ -43,7 +43,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 * Využití disku:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -82,17 +82,17 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
     > [!IMPORTANT]  
     > Nahraďte hodnoty dotazů konkrétními informacemi o clusteru. Například `ClusterName_s` musí být nastaven na název vašeho clusteru. `HostName_s`musí být nastavené na název domény pracovního uzlu v clusteru.
-    
+
     Můžete také zadat `*` pro prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
-    
+
     | Typ protokolu | Popis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Server služby Kafka Broker. log |
     | log\_kafkacontroller\_CL | Protokol Kafka Broker Controller. log |
     | metriky\_KafkaCL\_ | Kafka JMX metriky |
-    
-    ![Obrázek vyhledávání využití CPU](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![Apache Kafka – využití procesoru Log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](../../log-analytics/log-analytics-get-started.md)a [dotazy Azure monitor protokoly pro monitorování clusterů HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).

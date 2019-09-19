@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: allensu
-ms.openlocfilehash: fb7c0c31ad91bfdb6ea360c1909a216f0779ebde
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 349d8afd46a06455edcd25e2a7ea48f407d285ef
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274622"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130417"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -171,7 +171,8 @@ Informace o smlouvě SLA pro Load Balancer úrovně Standard najdete na stránce
 
 - Load Balancer je produkt TCP nebo UDP určený k vyrovnávání zatížení a přesměrování portů pro tyto konkrétní protokoly IP.  Pravidla vyrovnávání zatížení a příchozí pravidla překladu adres (NAT) se podporují pro protokoly TCP a UDP, ale nikoli pro ostatní protokoly IP včetně protokolu ICMP. Load Balancer neukončuje datovou část toku protokolu UDP ani TCP, nereaguje na ni, ani s ní neprovádí jiné interakce. Nejedná se o proxy server. Aby se v klientovi zobrazila odpověď z front-endu, musí přes IP síť proběhnout úspěšné ověření připojení k front-endu s použitím stejného protokolu, jaký se používá v pravidle vyrovnávání zatížení nebo příchozím pravidle překladu adres (TCP nebo UDP), _a_ alespoň jeden z virtuálních počítačů musí vygenerovat odpověď.  Pokud z front-endu Load Balanceru neobdržíte odpověď přes IP síť, znamená to, že žádný virtuální počítač nebyl schopný reagovat.  Pokud žádný virtuální počítač není schopný reagovat, není možné provádět interakce s front-endem Load Balanceru.  To platí i pro odchozí připojení, kde se [maskovací SNAT portů](load-balancer-outbound-connections.md#snat) podporuje pouze pro protokoly TCP a UDP – všechny ostatní protokoly IP včetně protokolu ICMP také selžou.  Pokud chcete tento problém zmírnit, přiřaďte veřejnou IP adresu na úrovni instance.
 - Na rozdíl od veřejných Load Balancerů, které zajišťují [odchozí připojení](load-balancer-outbound-connections.md) při přechodu z privátních IP adres v rámci virtuální sítě na veřejné IP adresy, interní Load Balancery nepřekládají odchozí připojení k front-endu interního Load Balaneru, protože se nacházejí v adresním prostoru privátních IP adres.  Tím se zabrání potenciálnímu vyčerpání portů SNAT v rámci adresního prostoru jedinečných interních IP adres, kde se překlad nevyžaduje.  Vedlejším efektem je, že pokud se odchozí tok z virtuálního počítače v back-endovém fondu pokusí téct do front-endu interního Load Balanceru ve stejném fondu _a_ mapuje se sám na sebe, nebudou se obě větve toku shodovat a tok selže.  Kdyby se tok nemapoval zpět na stejný virtuální počítač v back-endovém fondu, který vytvořil tok do front-endu, proběhnul by tok úspěšně.   Když se tok mapuje sám na sebe, odchozí tok pro front-end zdánlivě pochází z virtuálního počítače a odpovídající příchozí tok sám pro sebe zdánlivě pochází z virtuálního počítače. Z pohledu hostovaného operačního systému se příchozí a odchozí části stejného toku na virtuálním počítači neshodují. Zásobník protokolu TCP nerozpozná, že jsou tyto poloviny stejného toku součástí stejného toku, protože se zdroj neshoduje s cílem.  Kdyby se tok mapoval na jakýkoli jiný virtuální počítač v back-endovém fondu, tyto poloviny toku by se shodovaly a virtuální počítač by na tok mohl úspěšně reagovat.  Příznakem tohoto scénáře je přerušované vypršení časového limitu připojení, když se tok vrací do stejného back-endu, ze kterého pochází. Existuje několik běžných alternativních řešení, jak tohoto scénáře (směrování toků pocházejících z back-endového fondu do front-endu interního Load Balanceru odpovídajícího tomuto back-endovému fondu) spolehlivě dosáhnout, která zahrnují buď vložení vrstvy proxy serveru za interní Load Balancer, nebo [použití pravidel stylu DSR](load-balancer-multivip-overview.md).  Zákazníci můžou kombinovat interní Load Balancer s libovolným proxy serverem třetí strany nebo v případě scénářů proxy serverů omezených na HTTP a HTTPS nahradit interní službu [Application Gateway](../application-gateway/application-gateway-introduction.md). Přestože ke zmírnění problému můžete použít veřejný Load Balancer, výsledný scénář je náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md#snat) a měli byste se mu vyhnout, pokud nebude pečlivě řízený.
+- Obecně platí, že při vyrovnávání zatížení nejsou v pravidlech vyrovnávání zatížení podporovány přeposílání fragmentů IP adres nebo provádění fragmentování IP adres protokolů UDP a  [Pravidla vyrovnávání zatížení portů ha](load-balancer-ha-ports-overview.md) jsou výjimkou tohoto obecného příkazu a lze je použít k přeposílání stávajících FRAGMENTŮ IP adres.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď máte přehled o Azure Load Balanceru. Pokud chcete začít používat Load Balancer, vytvořte ho, vytvořte virtuální počítače s nainstalovaným vlastním rozšířením služby IIS a zajistěte vyrovnávání zatížení webové aplikace mezi virtuálními počítači. Pokyny najdete v rychlém startu [Vytvoření Load Balanceru úrovně Basic](quickstart-create-basic-load-balancer-portal.md).

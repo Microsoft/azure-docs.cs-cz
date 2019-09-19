@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624359"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129554"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Zálohování a obnovení sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -86,13 +86,15 @@ Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. V seznamu sdílených složek Azure vyberte požadovanou sdílenou složku. Otevře se nabídka Zálohovaná položka pro vybranou sdílenou složku.
+3. V seznamu sdílených složek Azure vyberte požadovanou sdílenou složku. Zobrazí se podrobnosti o **zálohovaných položkách** . V nabídce **zálohovaná položka** klikněte na **Zálohovat nyní**. Protože se jedná o úlohu zálohování na vyžádání, není k bodu obnovení přidružená žádná zásada uchovávání.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/backup-item-menu.png)
 
-4. V nabídce Zálohovaná položka klikněte na **Zálohovat nyní**. Protože se jedná o úlohu zálohování na vyžádání, není k bodu obnovení přidružená žádná zásada uchovávání. Otevře se dialogové okno **Zálohovat nyní**. Zadejte poslední den, ke kterému chcete uchovávat bod obnovení.
+4. Otevře se dialogové okno **Zálohovat nyní**. Zadejte poslední den, ke kterému chcete uchovávat bod obnovení.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/backup-now-menu.png)
+
+5. Kliknutím na **OK** potvrďte úlohu zálohování na vyžádání.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Obnovení sdílené složky Azure ze zálohy
 Pokud potřebujete obnovit celou sdílenou složku nebo jednotlivé soubory nebo složky z bodu obnovení, přejděte do části Zálohovaná položka, jak je popsáno v předchozí části. Zvolte **Obnovit sdílenou složku** a obnovte celou sdílenou složku k požadovanému bodu v čase. Ze seznamu bodů obnovení, který se zobrazí, vyberte některý bod obnovení, abyste mohli přepsat aktuální sdílenou složku, nebo obnovte tuto sdílenou složku do alternativní sdílené složky ve stejné oblasti.

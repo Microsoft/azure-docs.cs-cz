@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309166"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123592"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
@@ -47,7 +47,7 @@ Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
     ![Azure Database for MariaDB – umístění repliky](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
+   > Replikace mezi oblastmi je ve verzi Preview. Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
 
 7. Vyberte **OK** a potvrďte tak vytvoření repliky.
 
@@ -130,12 +130,12 @@ K odstranění hlavního serveru z Azure Portal použijte následující postup:
 
 4. Vyberte časový rozsah, který chcete zobrazit. Následující obrázek vybere časový rozsah 30 minut.
 
-   ![Vybrat časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Vyberte časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
 5. Zobrazí prodlevu replikace pro vybraný časový rozsah. Následující obrázek zobrazuje posledních 30 minut pro velkou úlohu.
 
-   ![Vybrat časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Vyberte časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [čtení replik](concepts-read-replicas.md)

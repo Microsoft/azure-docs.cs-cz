@@ -1,24 +1,24 @@
 ---
-title: 'Rozšíření místní sítě do Azure pomocí soukromého připojení – přehled ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Rozšiřování místní sítě do Azure prostřednictvím privátního připojení – přehled ExpressRoute: Azure | Microsoft Docs'
 description: Technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 09/18/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 6d83cb76abad3923dc7f0473f4a609938093d990
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730496"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123321"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
-ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Office 365.
 
-Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To umožňuje připojením ExpressRoute poskytovat další spolehlivost, vyšší rychlost, konzistentní latenci a lepší zabezpečení než Typická připojení přes Internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
+Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To umožňuje připojením ExpressRoute nabídnout spolehlivější, rychlejší rychlost, konzistentní latenci a vyšší zabezpečení než typická připojení přes Internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
 
 ![Přehled připojení ExpressRoute](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -46,7 +46,6 @@ Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním s
 Připojení ExpressRoute umožňují přístup k následujícím službám:
 * Služby Microsoft Azure
 * Služby Microsoft Office 365
-* Microsoft Dynamics 365
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -59,11 +58,11 @@ Když se připojíte k Microsoftu v jednom z našich [umístění partnerského 
 
 Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným v oblastech Severní Evropa a Západní Evropa. Přehled geopolitických oblastí, přidružených oblastí cloudu Microsoftu a odpovídajících umístění partnerských vztahů ExpressRoute najdete v článku [Partneři ExpressRoute a umístění partnerského vztahu](expressroute-locations.md).
 
-### <a name="global-connectivity-with-expressroute-premium"></a>Globální připojení s ExpressRoute Premium
-Můžete povolit [ExpressRoute Premium](expressroute-faqs.md) abyste rozšířili připojení přes geopolitické hranice. Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným ve všech oblastech po celém světě (národní cloudy jsou vyloučeny). Můžete přistupovat ke službám nasazeným v oblastech Jižní Amerika nebo Austrálie stejným způsobem, jakým přistupujete k oblastem Severní Evropa a Západní Evropa.
+### <a name="global-connectivity-with-expressroute-premium"></a>Globální konektivita s ExpressRoute Premium
+[ExpressRoute Premium](expressroute-faqs.md) můžete povolit pro rozšiřování připojení napříč geopolitickými hranicemi. Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným ve všech oblastech po celém světě (národní cloudy jsou vyloučeny). Můžete přistupovat ke službám nasazeným v oblastech Jižní Amerika nebo Austrálie stejným způsobem, jakým přistupujete k oblastem Severní Evropa a Západní Evropa.
 
-### <a name="local-connectivity-with-expressroute-local"></a>Místní připojení s ExpressRoute místní
-Můžete přenést data za výhodnou cenu tím, že [místní SKU](expressroute-faqs.md) Pokud je možné přenést data do umístění služby ExpressRoute téměř požadovanou oblast Azure. Přenos dat s místní, je součástí poplatek za ExpressRoute portu. 
+### <a name="local-connectivity-with-expressroute-local"></a>Místní připojení pomocí ExpressRoute Local
+Náklady na data můžete efektivně přenášet tím, že povolíte [místní SKU](expressroute-faqs.md) , pokud můžete data přenést do umístění ExpressRoute poblíž požadované oblasti Azure. V případě místního přenosu dat se do ExpressRoute portu zařadí poplatky za přenos dat. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Propojení místních lokalit pomocí ExpressRoute Global Reach
 Můžete povolit ExpressRoute Global Reach pro výměnu dat mezi místními lokalitami díky propojení okruhů ExpressRoute. Pokud třeba máte soukromé datacentrum v Kalifornii připojené k ExpressRoute v Silicon Valley a jiné soukromé datacentrum v Texasu připojené k ExpressRoute v Dallasu, pomocí ExpressRoute Global Reach můžete svá soukromá datacentra propojit prostřednictvím dvou okruhů ExpressRoute. Provoz mezi datacentry bude procházet přes síť Microsoftu.
@@ -81,7 +80,7 @@ ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke glo
 Ke klíčovým funkcím, které ExpressRoute Direct poskytuje, patří mimo jiné:
 
 * Masivní příjem dat do služeb jako Storage a Cosmos DB
-* Fyzické izolace pro obory, které upraví a vyžadují vyhrazená a izolované připojení, jako například: Bankovnictví, Government a maloobchodního prodeje
+* Fyzickou izolaci pro obory, které jsou regulováné a vyžadují vyhrazené a izolované připojení, například: Banka, státní správa a maloobchod
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
 Další informace najdete v článku o [ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).
@@ -114,7 +113,7 @@ Můžete si vybrat fakturační model, který vám nejlépe vyhovuje. Zvolte si 
 ## <a name="faq"></a>Nejčastější dotazy
 Nejčastější dotazy týkající se ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Seznamte se s [modely připojení ExpressRoute](expressroute-connectivity-models.md).
 * Přečtěte si další informace o připojeních ExpressRoute a doménách směrování. Viz [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 * Vyhledejte poskytovatele služeb. Viz [Partneři ExpressRoute a umístění partnerského vztahu](expressroute-locations.md).

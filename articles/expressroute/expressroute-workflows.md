@@ -1,19 +1,19 @@
 ---
-title: 'Pracovní postupy konfigurace – ExpressRoute okruhů: Azure | Dokumentace Microsoftu'
+title: 'Pracovní postupy konfigurace okruhu – ExpressRoute: Azure | Microsoft Docs'
 description: Tato stránka zobrazuje pracovní postupy pro konfiguraci okruh ExpressRoute a partnerské vztahy
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883170"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123381"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 Tato stránka vás provede službu zřizování a pracovní postupy konfigurace směrování na vysoké úrovni.
@@ -29,7 +29,7 @@ Následující obrázek a příslušné postupy ukazují úlohy, které je třeb
    
    * Povolení soukromého partnerského vztahu Azure – povolit tento partnerský vztah pro připojení k virtuálním počítačům nebo službám nasazeným v rámci virtuální sítě v cloudu.
 
-   * Povolit vytvoření partnerského vztahu Microsoft - povolit přístup k Office 365 a Dynamics 365. Kromě toho všechny služby Azure PaaS jsou přístupné prostřednictvím partnerského vztahu Microsoftu.
+   * Povolit partnerský vztah Microsoftu – povolte pro přístup k Office 365. Kromě toho všechny služby Azure PaaS jsou přístupné prostřednictvím partnerského vztahu Microsoftu.
      
      > [!IMPORTANT]
      > Ujistěte se, že budete používat samostatný proxy server / edge pro připojení k Microsoft než ten, který můžete použít pro Internet. Pomocí stejného edge pro ExpressRoute a Internetem způsobí asymetrického směrování a způsobí výpadek připojení pro vaši síť.

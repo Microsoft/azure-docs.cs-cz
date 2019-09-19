@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592056"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123438"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -55,11 +55,23 @@ Informace najdete v tématu [ExpressRoute SLA](https://azure.microsoft.com/suppo
 
 ## <a name="supported-services"></a>Podporované služby
 
-ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings.md) pro různé typy služeb.
+ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings.md) pro různé typy služeb: privátní partnerské vztahy, partnerské vztahy Microsoftu a veřejné partnerské vztahy.
 
 ### <a name="private-peering"></a>Soukromý partnerský vztah
 
 * Virtuální sítě, včetně všech virtuálních počítačů a cloudových služeb
+
+### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
+
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Power BI – k dispozici prostřednictvím regionální komunity Azure, [najdete informace o](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) tom, jak zjistit oblast Power BI tenanta.
+* Azure Active Directory
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
+* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>**Tyto služby nejsou podporovány**:
+    * CDN
+    * Azure Front Door
+    * Multi-factor Authentication
+    * Traffic Manager
 
 ### <a name="public-peering"></a>Veřejný partnerský vztah
 
@@ -68,26 +80,17 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 >
 
 * Power BI
-* Dynamics 365 pro Finance and Operations (dříve označované jako Dynamics AX Online)
 * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>
   **Tyto služby nejsou podporovány**:
     * CDN
-    * Přední dvířka Azure
+    * Azure Front Door
     * Multi-factor Authentication
     * Traffic Manager
 
-### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
+### <a name="is-dynamics-365-supported-on-expressroute"></a>Je Dynamics 365 podporován na ExpressRoute?
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 
-* Power BI – k dispozici prostřednictvím regionální komunity Azure, [najdete informace o](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) tom, jak zjistit oblast Power BI tenanta. 
-* Azure Active Directory
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
-* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>**Tyto služby nejsou podporovány**:
-    * CDN
-    * Přední dvířka Azure
-    * Multi-factor Authentication
-    * Traffic Manager
+Prostředí Dynamics 365 a Common Data Service (CD) jsou hostována v Azure, takže zákazníci využívají základní podporu ExpressRoute pro prostředky Azure. Můžete se připojit ke svým koncovým bodům služby, pokud váš filtr směrovače obsahuje oblasti Azure, ve kterých jsou vaše prostředí Dynamics 365 a CD hostovaná.
+
 
 ## <a name="data-and-connections"></a>Připojení a dat.
 
@@ -262,7 +265,7 @@ ExpressRoute premium je kolekce následující funkce:
 
 * Zvýšená směrovací tabulky limit ze 4000 na 10 000 tras pro soukromý partnerský vztah.
 * Zvýšit počet virtuálních sítí a globální dosah ExpressRoute připojení, která se dá nastavit pro okruh ExpressRoute (výchozí hodnota je 10). Další informace najdete v tématu [limity pro ExpressRoute](#limits) tabulky.
-* Připojení k Office 365 a Dynamics 365.
+* Připojení k Office 365
 * Globální konektivita v základní síti Microsoft. Teď můžete propojit virtuální síť, která v geopolitické oblasti jeden okruh ExpressRoute v jiné oblasti.<br>
     **Příklady:**
 
@@ -332,7 +335,7 @@ ExpressRoute Local je k dispozici v umístěních partnerských vztahů, kde jed
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Mé existující okruhy ExpressRoute podporuje připojení ke službám Office 365 a Dynamics 365?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Můžou moje stávající okruhy ExpressRoute podporovat připojení ke službám Office 365?
 
 Ano. Stávající okruh ExpressRoute může být nakonfigurované pro podporu připojení ke službám Office 365. Ujistěte se, že máte dostatečnou kapacitu pro připojení ke službám Office 365 a že jste povolili doplněk premium. [Plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/) potřebuje vám pomůže s plánováním připojení. Viz také [vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
 
@@ -369,13 +372,9 @@ Neuvidíte žádné trasy. Budete muset připojit filtr tras pro váš okruh spu
 
 Při použití filtrů tras, každý zákazník se může zapnout partnerský vztah Microsoftu. Ale určená pro služby Office 365, stále musíte získat autorizováno uživatelem služeb Office 365.
 
-### <a name="do-i-need-to-get-authorization-for-turning-on-dynamics-365-over-microsoft-peering"></a>Je potřeba získat autorizaci pro zapnutí Dynamics 365 přes partnerský vztah Microsoftu?
-
-Ne, není nutné autorizace pro Dynamics 365. Můžete vytvořit pravidlo a vyberte Dynamics 365 community bez autorizace.
-
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Můžu povolené partnerského vztahu před 1. srpna 2017, jak můžete využít výhod filtry tras Microsoftu?
 
-Stávající okruh bude dál inzerování předpony pro Office 365 a Dynamics 365. Pokud chcete přidat oznámení o inzerovaných programech Azure veřejné prefixy přes stejnou partnerského vztahu Microsoftu, můžete vytvořit filtr tras, vyberte služby, které potřebujete inzerované (včetně, které potřebujete služeb Office 365 a Dynamics 365) a připojit filtr vaší společnosti Microsoft partnerský vztah. Pokyny najdete v tématu [konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
+Váš stávající okruh bude pokračovat ve inzerci předpon pro Office 365. Pokud chcete přidat reklamy veřejné předpony Azure přes stejný partnerský vztah Microsoftu, můžete vytvořit filtr tras, vybrat služby, které potřebujete inzerovat (včetně služeb Office 365, které potřebujete), a připojit filtr k partnerskému vztahu Microsoftu. Pokyny najdete v tématu [konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Mám v jednom umístění partnerského vztahu Microsoftu, nyní pokouším předat ji povolit na jiném místě a mi nezobrazují všechny předpony.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996524"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128811"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Jaké je vizuální rozhraní pro Azure Machine Learning? 
 
@@ -91,12 +91,12 @@ Webové služby poskytují rozhraní mezi aplikací a modelem bodování. Extern
 
 Informace o tom, jak model nasadit, najdete [v tématu Kurz: Nasaďte model strojového učení pomocí vizuálního](ui-tutorial-automobile-price-deploy.md)rozhraní.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Seznamte se se základy prediktivní analýzy a strojového učení [s využitím kurzu: Předpověď ceny automobilu pomocí vizuálního rozhraní](ui-tutorial-automobile-price-train-score.md)
 * Použijte jednu z ukázek a upravte ji tak, aby vyhovovala vašim potřebám:
-    * [Ukázka 1 – regrese: Předpověď ceny](ui-sample-regression-predict-automobile-price-basic.md)
-    * [Ukázka 2 – regrese: Předpověď cen a porovnávání algoritmů](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](ui-sample-classification-predict-credit-risk-basic.md)
-    * [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [Ukázka 5 – klasifikace: Předpověď změn, appetencyí a prodejů](ui-sample-classification-predict-churn.md)
+    * [Ukázka 1 – regrese: Předpověď ceny](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [Ukázka 2 – regrese: Předpověď cen a porovnávání algoritmů](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Ukázka 5 – klasifikace: Předpověď změn, appetencyí a prodejů](how-to-ui-sample-classification-predict-churn.md)

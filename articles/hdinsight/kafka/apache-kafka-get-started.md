@@ -1,19 +1,19 @@
 ---
 title: Nastavení Apache Kafka ve službě HDInsight pomocí Azure Portal – rychlý Start
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí portálu Azure Portal. Také se seznámíte s tématy, předplatiteli a konzumenty Kafka.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960255"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123588"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal
 
@@ -38,8 +38,8 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V nabídce vlevo přejděte na **+ vytvořit Resource** > **Analytics** > **HDInsight**.
-   
-    ![Vytvoření clusteru HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure Portal vytvoření prostředku HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. V části **Základy** zadejte nebo vyberte následující informace:
 
@@ -47,9 +47,9 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
     | --- | --- |
     | Název clusteru | Jedinečný název clusteru HDInsight. |
     | Subscription | Vyberte své předplatné. |
-    
+
    Vyberte __Typ clusteru__ a zobrazte **Konfiguraci clusteru**.
-   
+
    ![Základní konfigurace clusteru Apache Kafka ve službě HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. V části __Konfigurace clusteru__vyberte následující hodnoty:
@@ -61,7 +61,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
     Výběrem **možnosti vybrat** uložte nastavení typu clusteru a vraťte se k __základům__.
 
-    ![Vybrat typ clusteru](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![Typ clusteru HDInsight Apache Kafka](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. V části __Základy__ zadejte nebo vyberte následující informace:
 
@@ -77,7 +77,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
     Pro zajištění vysoké dostupnosti dat vyberte oblast (umístění), které obsahuje __tři domény selhání__. Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-   ![Výběr předplatného](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Základy vytváření clusterů Azure Portal](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Kliknutím na tlačítko __Další__ dokončete základní konfiguraci.
 
@@ -105,7 +105,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
 
 11. V části **Souhrn** zkontrolujte konfiguraci clusteru. Pomocí odkazů __Upravit__ opravte případná chybná nastavení. Nakonec vyberte **vytvořit** a vytvořte cluster.
 
-    ![Souhrn konfigurace clusteru](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![Souhrn konfigurace clusteru Kafka](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     Vytvoření clusteru trvá přibližně 20 minut.
 
@@ -305,7 +305,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 > 
 > Odstraněním clusteru Apache Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Použití Apache Spark s Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

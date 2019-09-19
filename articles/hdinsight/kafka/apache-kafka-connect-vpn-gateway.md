@@ -1,19 +1,19 @@
 ---
 title: Připojení k Kafka pomocí virtuálních sítí – Azure HDInsight
 description: Naučte se, jak se přímo připojit k Kafka v HDInsight prostřednictvím Azure Virtual Network. Přečtěte si, jak se připojit k Kafka z vývojářských klientů pomocí brány VPN nebo z klientů v místní síti pomocí zařízení brány VPN.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960432"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122610"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight prostřednictvím Azure Virtual Network
 
@@ -252,7 +252,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 3. Pokud chcete zobrazit konfiguraci Kafka, v horním __rohu vyberte konfigurace__ .
 
-    ![Odkazy konfigurace pro Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Konfigurace služeb Apache Ambari](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Pokud chcete najít konfiguraci __Kafka-ENV__ , zadejte `kafka-env` do pole __filtru__ v pravém horním rohu.
 
@@ -274,7 +274,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
-    ![Tlačítko Uložit konfiguraci](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Konfigurace pro uložení konfigurace Apache Ambari](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Chcete-li zabránit chybám při restartování Kafka, použijte tlačítko __Akce služby__ a vyberte __zapnout režim údržby__. Kliknutím na tlačítko OK dokončete tuto operaci.
 
@@ -366,7 +366,7 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
 
     * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o používání služby HDInsight s virtuální sítí najdete v dokumentu [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) .
 

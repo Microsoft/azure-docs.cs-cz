@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018855"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130228"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -163,3 +163,7 @@ Azure Firewall musí zřídit při škálování víc instancí virtuálních po
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Je potřeba změnit velikost podsítě brány firewall při škálování služby?
 
 Ne. Azure Firewall nepotřebuje podsíť větší než/26.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Má Azure Firewall ve výchozím nastavení povolený přístup ke službě Active Directory?
+
+Ne. Azure Firewall blokuje přístup ke službě Active Directory ve výchozím nastavení. Pokud chcete přístup udělit, nakonfigurujte značku služby Azureactivedirectory selhala. Další informace najdete v tématu [Azure firewall značky služby](service-tags.md).

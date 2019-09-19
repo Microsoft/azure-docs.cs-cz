@@ -1,18 +1,18 @@
 ---
 title: Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
 description: Tento článek popisuje, jak použít vlastní klíč z Azure Key Vault k šifrování dat uložených v Apache Kafka v Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000106"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122687"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
 
@@ -22,7 +22,7 @@ Všechny spravované disky v HDInsight jsou chráněné pomocí šifrování slu
 
 Šifrování BYOK je proces, který se během vytváření clusteru zpracuje v jednom kroku, a to bez dalších nákladů. Vše, co potřebujete udělat, je zaregistrovat HDInsight jako spravovanou identitu s Azure Key Vault a přidat šifrovací klíč při vytváření clusteru.
 
-Všechny zprávy do clusteru Kafka (včetně replik, které udržuje Kafka) jsou šifrované pomocí symetrického šifrovacího klíče (klíč DEK). KLÍČ DEK je chráněný pomocí klíčového šifrovacího klíče (KEK) z vašeho trezoru klíčů. Procesy šifrování a dešifrování jsou zpracovávány výhradně službou Azure HDInsight. 
+Všechny zprávy do clusteru Kafka (včetně replik, které udržuje Kafka) jsou šifrované pomocí symetrického šifrovacího klíče (klíč DEK). KLÍČ DEK je chráněný pomocí klíčového šifrovacího klíče (KEK) z vašeho trezoru klíčů. Procesy šifrování a dešifrování jsou zpracovávány výhradně službou Azure HDInsight.
 
 K bezpečnému střídání klíčů v trezoru klíčů můžete použít Azure Portal nebo Azure CLI. Když se klíč otáčí, cluster HDInsight Kafka začne používat nový klíč během několika minut. Povolte funkce ochrany před náhodným odstraněním, které chcete chránit před ransomwaremmi scénáři a náhodným odstraněním. Trezory klíčů bez této funkce ochrany nejsou podporované.
 
@@ -46,6 +46,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
    1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro rychlý Start [Azure Key Vault](../../key-vault/key-vault-overview.md) . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md).
 
    2. V trezoru klíčů Povolte "obnovitelné odstranění" pomocí příkazu [AZ Key trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI.
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 
         b. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
 
-        ![Vygenerovat název klíče](./media/apache-kafka-byok/apache-kafka-create-key.png "Vygenerovat název klíče")
+        ![Apache Kafka vygenerovat název klíče](./media/apache-kafka-byok/apache-kafka-create-key.png "Vygenerovat název klíče")
 
         c. Vyberte klíč, který jste vytvořili ze seznamu klíčů.
 
-        ![Azure Key Vault seznam klíčů](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Seznam klíčů trezoru klíčů Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Pokud používáte vlastní klíč pro šifrování clusteru Kafka, musíte zadat identifikátor URI klíče. Zkopírujte **identifikátor klíče** a uložte ho někam do chvíle, kdy jste připraveni vytvořit cluster.
 
-        ![Kopírovat identifikátor klíče](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Identifikátor klíče pro Apache Kafka získat](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Přidejte spravovanou identitu do zásad přístupu trezoru klíčů.
 
         a. Vytvořte nové zásady přístupu Azure Key Vault.
@@ -99,6 +100,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
    Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
 
 ## <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
+
    Můžou nastat situace, kdy budete možná chtít změnit šifrovací klíče používané clusterem Kafka po jeho vytvoření. To může být snadné prostřednictvím portálu. Pro tuto operaci musí mít cluster přístup k aktuálnímu klíči i k zamýšlenému novému klíči. v opačném případě se operace otočení klíče nezdaří.
 
    Chcete-li otočit klíč, je nutné mít úplnou adresu URL nového klíče (viz krok 3 [nastavení Key Vault a klíčů](#setup-the-key-vault-and-keys)). Až to budete mít, přejděte do části vlastnosti clusteru Kafka na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
@@ -122,7 +124,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 **Co se stane, když cluster ztratí přístup k trezoru klíčů nebo klíči?**
 Pokud cluster ztratí přístup k tomuto klíči, zobrazí se na portálu Apache Ambari upozornění. V tomto stavu se operace **změny klíče** nezdaří. Po obnovení přístupu ke klíčům zmizí Ambari upozornění a operace, jako je například střídání klíčů, je možné úspěšně provést.
 
-   ![Výstraha Ambari přístupu ke klíči Kafka](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Výstraha Ambari přístupu k klíči Apache Kafka](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Jak mohu obnovit cluster, pokud jsou klíče odstraněny?**
 

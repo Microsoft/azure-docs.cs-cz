@@ -4,15 +4,15 @@ description: Naučte se publikovat nabídku spravované služby, která zákazn�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165254"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105268"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
@@ -66,12 +66,12 @@ Nakonec dokončete část **Podrobnosti manifestu** . Tím se vytvoří manifest
 
 - Nejprve zadejte **verzi** manifestu. Použijte formát *n. n. n* (například 1.2.5).
 - Potom zadejte **ID tenanta**. Toto je identifikátor GUID přidružený k Azure Active Directorymu ID tenanta vaší organizace (tj. tenant, ve kterém budete pracovat, abyste mohli spravovat prostředky vašich zákazníků). Pokud tyto možnosti nemáte k dispozici, můžete ji najít přesunutím ukazatele myši na název účtu v pravém horním rohu Azure Portal, nebo výběrem **přepínače Adresář**. 
-- Nakonec do svého plánu přidejte jednu nebo více autorizačních položek. Autorizace definují entity, které mají přístup k prostředkům a předplatným pro zákazníky, kteří si plán kupují. Tyto informace musíte zadat, chcete-li získat přístup k prostředkům jménem zákazníka pomocí delegované správy prostředků Azure.
+- Nakonec do svého plánu přidejte jednu nebo více **autorizačních** položek. Autorizace definují entity, které mají přístup k prostředkům a předplatným pro zákazníky, kteří si plán kupují. Tyto informace musíte zadat, chcete-li získat přístup k prostředkům jménem zákazníka pomocí delegované správy prostředků Azure.
   Pro každou autorizaci zadejte následující. Pak můžete vybrat **nové autorizace** tolikrát, kolikrát je potřeba, a přidat tak další definice uživatelů nebo rolí.
   - **ID objektu Azure AD**: Identifikátor Azure AD uživatele, skupiny uživatelů nebo aplikace, kterým budou udělena určitá oprávnění (jak je popsáno v definici role) pro prostředky vašich zákazníků.
   - **Zobrazovaný název objektu Azure AD**: Popisný název, který zákazníkovi pomůže pochopit účel této autorizace. Zákazník uvidí tento název při delegování prostředků.
   - **Definice role**: V seznamu vyberte jednu z dostupných předdefinovaných rolí Azure AD. Tato role určuje oprávnění, která bude mít uživatel v poli **ID objektu Azure AD** v materiálech vašich zákazníků. Informace o těchto rolích najdete v tématu [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Přiřaditelné role**: Pokud jste vybrali možnost Správce přístupu uživatele v **definici role** pro tuto autorizaci, můžete sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moci přiřadit tyto **role** ke [spravovaným identitám](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
+  - **Přiřaditelné role**: To se vyžaduje jenom v případě, že jste pro tuto autorizaci vybrali správce přístupu uživatele v **definici role** . Pokud ano, musíte sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moci přiřadit tyto **role** ke [spravovaným identitám](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. Pokud tady nevyberete jednu nebo víc rolí, odeslání se nepředá. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
 
 > [!TIP]
 > Ve většině případů budete chtít přiřadit oprávnění k skupině uživatelů nebo instančnímu objektu služby Azure AD, a ne k řadě jednotlivých uživatelských účtů. To vám umožní přidat nebo odebrat přístup pro jednotlivé uživatele bez nutnosti aktualizace a opětovného publikování plánu, když se změní vaše požadavky na přístup.
@@ -130,7 +130,7 @@ Až budete spokojeni se všemi informacemi, které jste zadali, je dalším krok
 
 ## <a name="the-customer-onboarding-process"></a>Proces zprovoznění zákazníků
 
-Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v horní části stránky poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
+Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
 
 Předtím, než bude možné připojit předplatné (nebo skupiny prostředků v rámci předplatného), musí být odběr autorizovaný k registraci tím, že ručně zaregistruje poskytovatele prostředků **Microsoft. ManagedServices** . Uživatel v tenantovi zákazníka s rolí přispěvatel nebo vlastník může postupovat podle kroků uvedených v části [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
 
@@ -140,7 +140,7 @@ Zákazník pak může potvrdit, že předplatné je připravené k registraci, j
 
 1. V Azure Portal vyberte předplatné.
 1. Vyberte **Poskytovatelé prostředků**.
-1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako zaregistrované.
+1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako **zaregistrované**.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -187,7 +187,7 @@ Namespace                  RegistrationState
 Microsoft.ManagedServices  Registered
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
-- V Azure Portal můžete [Zobrazit a spravovat zákazníky](view-manage-customers.md) .
+- V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

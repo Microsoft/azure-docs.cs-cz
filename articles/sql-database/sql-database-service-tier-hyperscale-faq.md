@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515348"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128704"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy k databázím Azure SQL s škálovatelným škálováním
 
@@ -46,15 +46,15 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 | | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
 |:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** |Vše|  Většina obchodních úloh. Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Datové aplikace s vysokými nároky na kapacitu dat a možnost automatického škálování úložiště a škálování výpočetních prostředků. | OLTP aplikace s vysokou mírou transakcí a nejnižší latencí v/v. Nabízí nejvyšší odolnost proti chybám při použití několika izolovaných replik.|
-|  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
+|  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Jednoúčelová databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
-| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | **Typ úložiště** | Vše |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost úložiště** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
 | **Propustnost vstupně-výstupních operací** | Samostatná databáze * * | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | Není k dispozici | Spravovaná instance: Závisí na velikosti souboru|
-|**Dostupnost**|Vše|1 replika bez měřítka pro čtení, žádná místní mezipaměť | Více replik, maximálně 15, částečná místní mezipaměť pro čtení a zmenšení | 3 repliky, 1 škálování pro čtení, zóna – redundantní HA, úplná místní mezipaměť |
+| | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovaná instance: Závisí na velikosti souboru|
+|**Dostupnost**|Vše|1 replika bez měřítka pro čtení, žádná místní mezipaměť | Více replik, až 4 škálování pro čtení, částečná místní mezipaměť | 3 repliky, 1 škálování pro čtení, zóna – redundantní HA, úplná místní mezipaměť |
 |**Vytvářet**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
 
 \*Elastické fondy nejsou podporované ve vrstvě služeb s škálováním na úrovni.

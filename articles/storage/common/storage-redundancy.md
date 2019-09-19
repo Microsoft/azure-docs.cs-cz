@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074352"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122978"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -28,12 +28,7 @@ Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantn
 
 Když vytváříte účet úložiště, můžete vybrat jednu z následujících možností redundance:
 
-- [Místně redundantní úložiště (LRS)](storage-redundancy-lrs.md)
-- [Zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md)
-- [Geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md)
-- [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Geografická zóna – redundantní úložiště (GZRS)](storage-redundancy-gzrs.md)
-- [Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 Následující tabulka poskytuje rychlý přehled rozsahu trvanlivosti a dostupnosti, které vám každá strategie replikace poskytne pro daný typ události (nebo událost podobného dopadu).
 
@@ -55,7 +50,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 Informace o tom, jak Azure Storage garantuje odolnost a dostupnost, najdete v [Azure Storage smlouvě SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Azure Premium Storage podporuje jenom místně redundantní úložiště (LRS).
+> Azure Premium Storage aktuálně podporuje jenom místně redundantní úložiště (LRS).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
 
