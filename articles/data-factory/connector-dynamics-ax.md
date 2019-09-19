@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2ecb19f86c665e89e9326c160596a8f14a169dba
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 39c03058970a412a9bc312f99c239377898e5073
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009407"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092102"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Kopírování dat z Dynamics AX pomocí Azure Data Factory (Preview)
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factor
 
 Tento konektor Dynamics AX se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data z Dynamics AX můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

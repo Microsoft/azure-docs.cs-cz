@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67175387"
 ---
 Úložiště je omezené na místo na disku nebo na základě *maximálního počtu* indexů, dokumentů nebo jiných prostředků na nejvyšší úrovni, podle toho, co nastane dřív. V následující tabulce jsou uvedené limity úložiště. Maximální omezení indexů, dokumentů a dalších objektů najdete v tématu [omezení podle prostředků](../articles/search/search-limits-quotas-capacity.md#index-limits).

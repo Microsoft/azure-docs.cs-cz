@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233117"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098605"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Nasazení Pythonu pro Azure Functions s využitím Visual Studio Code
 
@@ -39,13 +39,13 @@ Pokud narazíte na problémy s některým z kroků v tomto kurzu, máme rádi v�
 
 ### <a name="azure-subscription"></a>Předplatné Azure
 
-Pokud nemáte předplatné Azure, zaregistrujte si [nyní](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension) bezplatný 30denní účet s $200 v kreditech Azure, abyste si vyzkoušeli libovolnou kombinaci služeb.
+Pokud nemáte předplatné Azure, [Zaregistrujte si nyní](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension) bezplatný 30denní účet s $200 v kreditech Azure, abyste si vyzkoušeli libovolnou kombinaci služeb.
 
 ### <a name="visual-studio-code-python-and-the-azure-functions-extension"></a>Visual Studio Code, Python a rozšíření Azure Functions
 
 Nainstalujte následující software:
 
-- Python 3.6. x podle požadavků Azure Functions. [Python 3.6.8](https://www.python.org/downloads/release/python-368/) je nejnovější verze 3.6. x.
+- Python 3.6. x podle požadavků Azure Functions. [Python 3.6.9](https://www.python.org/downloads/release/python-369/) je nejnovější verze 3.6. x.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) popsané v [kurzu Visual Studio Code Pythonu – předpoklady](https://code.visualstudio.com/docs/python/python-tutorial).
 - [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Obecné informace najdete v [úložišti GitHub VSCode-azurefunctions](https://github.com/Microsoft/vscode-azurefunctions).
@@ -393,7 +393,7 @@ Po prvním nasazení můžete provádět změny kódu, jako je například přid
     }
     ```
 
-1. Spusťte ladicí program tak, že vyberete **F5** nebo > vyberete příkaz nabídky**Spustit ladění** . Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
+1. Spusťte ladicí program **tak, že** > vyberete **F5** nebo vyberete příkaz nabídky**Spustit ladění** . Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
 
     ```output
     Http Functions:
@@ -444,6 +444,18 @@ V této části přidáte vazbu úložiště k funkci HttpExample vytvořené d�
           "queueName": "outqueue",
           "connection": "AzureWebJobsStorage"
         }
+    ```
+
+1. Obsah *Host. JSON* nahraďte následujícím kódem a přidejte [odkaz na rozšiřující balíčky](functions-bindings-register.md#extension-bundles).
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
     ```
 
 1. Teď, když jste nakonfigurovali vazbu, ji můžete použít ve svém kódu funkce. Nově definovaná vazba se znovu zobrazí ve vašem kódu jako `main` argument funkce v  *\_ \_\_init\_. py*. Například můžete upravit `msg`  *\_ \_soubor init\_. py v HttpExample tak, aby odpovídal následujícímu, který ukazuje použití argumentu k zápisu zprávy s časovým razítkem s názvem použitým v\_* Request. Komentáře vysvětlují konkrétní změny:
@@ -500,7 +512,7 @@ V této části přidáte vazbu úložiště k funkci HttpExample vytvořené d�
 
 Function App, který jste vytvořili, zahrnuje prostředky, které můžou nabývat minimálními náklady (viz [ceny funkcí](https://azure.microsoft.com/pricing/details/functions/)). Prostředky vyčistíte tak, že kliknete pravým tlačítkem na **Function App v Azure: V** Průzkumníku funkcí a vyberte **Odstranit Function App**. Můžete také navštívit [Azure Portal](https://portal.azure.com), vybrat **skupiny prostředků** v navigačním podokně na levé straně, vybrat skupinu prostředků vytvořenou v procesu tohoto kurzu a pak použít příkaz **Odstranit skupinu prostředků** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Blahopřejeme k dokončení tohoto návodu k nasazení kódu Pythonu do Azure Functions! Nyní jste připraveni vytvořit mnoho dalších funkcí bez serveru.
 
@@ -508,7 +520,7 @@ Jak bylo uvedeno dříve, další informace o rozšíření Functions najdete v 
 
 Přečtěte si [přehled Azure Functions](functions-overview.md) a prozkoumejte různé triggery, které můžete použít.
 
-Další informace o službách Azure, které můžete použít z Pythonu, včetně úložiště dat spolu s AI a Machine Learning službami, najdete v [centru pro vývojáře](/azure/python/?view=azure-python)v Pythonu pro Azure.
+Další informace o službách Azure, které můžete použít z Pythonu, včetně úložiště dat spolu s AI a Machine Learning službami, najdete v [centru pro vývojáře v Pythonu pro Azure](/azure/python/?view=azure-python).
 
 K dispozici jsou také další rozšíření Azure pro Visual Studio Code, které můžete najít užitečné. V Průzkumníkovi rozšíření stačí hledat "Azure":
 

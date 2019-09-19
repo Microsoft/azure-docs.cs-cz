@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 642de9e2c1e2907f8adf917bd3e35ec9b1c9a76d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 074fb498ee5bc07bba69df04bd56bd3393e95f1b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010402"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089425"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopírování dat ze serveru SFTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -30,7 +30,7 @@ Tento článek popisuje, jak kopírovat data ze serveru SFTP. Další informace 
 
 Tento konektor SFTP se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Odstranit aktivitu](delete-activity.md)
@@ -403,5 +403,5 @@ Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMe
 
 Další informace o vlastnostech najdete v části [Odstranění aktivity](delete-activity.md) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

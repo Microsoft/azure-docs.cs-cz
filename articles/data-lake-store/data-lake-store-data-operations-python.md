@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f65b6f0bfefd7763b72e8853b0314830a8c5327b
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f2ee982e2c1e1c363a391779721f848b8ae6afd5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232561"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088887"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ V tomto článku se naučíte, jak pomocí sady Python SDK provádět operace sy
 Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu Azure-Správa-datalake-Store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu Azure-Správa-datalake-Store](/python/api/azure-mgmt-datalake-store/).
 * `azure-datalake-store` Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v referenčních informacích o [systémových modulech v souboru Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
@@ -122,7 +122,7 @@ Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 �
     ## Delete a directory
     adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Operace správy účtů na data Lake Storage Gen1 s využitím Pythonu](data-lake-store-get-started-python.md)
 
 ## <a name="see-also"></a>Viz také:

@@ -2,17 +2,17 @@
 title: 'Kurz: Clustery Apache Hadoop na vyžádání v Azure HDInsight – Data Factory'
 description: Kurz – Naučte se vytvářet clustery Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory.
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736167"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098724"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
 
 6. Vyberte **vytvořit & monitorování** a spusťte tak Azure Data Factory portál pro vytváření a monitorování.
 
-    ![Přehled Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Přehled Azure Data Factory")
+    ![Přehled Azure Data Factoryového portálu](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Přehled Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
@@ -352,7 +352,7 @@ Případně můžete odstranit celou skupinu prostředků, kterou jste pro tento
 1. Na dlaždici **prostředky** máte k dispozici výchozí účet úložiště a datovou továrnu, pokud nesdílíte skupinu prostředků s jinými projekty.
 1. Vyberte **Odstranit skupinu prostředků**. Tím se odstraní účet úložiště a data uložená v účtu úložiště.
 
-    ![Odstranit skupinu prostředků](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Odstranit skupinu prostředků")
+    ![Azure Portal odstranit skupinu prostředků](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Odstranit skupinu prostředků")
 
 1. Zadáním názvu skupiny prostředků potvrďte odstranění a pak vyberte **Odstranit**.
 

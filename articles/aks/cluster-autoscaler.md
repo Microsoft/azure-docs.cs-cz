@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018718"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097902"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Preview – automaticky škáluje cluster tak, aby splňoval požadavky aplikace ve službě Azure Kubernetes (AKS).
 
@@ -53,11 +53,11 @@ Při vytváření a správě clusterů AKS, které používají automatické šk
 Pro úpravu požadavků aplikace, například mezi Workday a večer nebo na víkendu, clustery často potřebují způsob automatického škálování. Clustery AKS se můžou škálovat jedním ze dvou způsobů:
 
 * **Automatické škálování clusteru** sleduje lusky, které není možné naplánovat na uzlech z důvodu omezení prostředků. Cluster pak automaticky zvýší počet uzlů.
-* Horizontální navýšení **pod AutoScale** používá server metrik v clusteru Kubernetes k monitorování požadavků na prostředky v luskech. Pokud služba potřebuje více prostředků, počet lusků se automaticky zvýší, aby splňovala požadavky.
+* Horizontální navýšení **pod AutoScale** používá server metrik v clusteru Kubernetes k monitorování požadavků na prostředky v luskech. Pokud aplikace potřebuje více prostředků, počet lusků se automaticky zvýší, aby splňovala požadavky.
 
 ![Automatické škálování clusteru a horizontální navýšení se často spolupracuje na podporu požadovaných požadavků aplikace.](media/autoscaler/cluster-autoscaler.png)
 
-Automatické škálování pod a automatického škálováním na clusteru může také snížit počet lusků a uzlů podle potřeby. Automatické škálování clusteru snižuje počet uzlů v případě nevyužité kapacity v časovém intervalu. Lusky na uzlu, který se má odebrat pomocí automatického škálování clusteru, se bezpečně naplánovaly jinde v clusteru. V případě, že se nedá přesunout lusky, například v následujících situacích, není možné automatické škálování clusteru zmenšit.
+V případě potřeby můžete také snížit počet lusků a uzlů, a to jak horizontální, tak i automatické škálování clusteru. Automatické škálování clusteru snižuje počet uzlů v případě nevyužité kapacity v časovém intervalu. Lusky na uzlu, který se má odebrat pomocí automatického škálování clusteru, se bezpečně naplánovaly jinde v clusteru. V případě, že se nedá přesunout lusky, například v následujících situacích, není možné automatické škálování clusteru zmenšit.
 
 * Objekt, který je přímo vytvořený, a není zálohovaný objektem kontroleru, jako je například nasazení nebo sada replik.
 * Rozpočet přerušení pod přerušením (PDB) je příliš omezující a neumožňuje, aby počet lusků klesl pod určitou prahovou hodnotu.
@@ -67,7 +67,7 @@ Další informace o tom, jak se automatické škálování clusteru nedá škál
 
 Automatické škálování clusteru používá parametry spouštění pro věci, jako jsou časové intervaly mezi událostmi škálování a mezními hodnotami prostředků. Tyto parametry jsou definované platformou Azure a momentálně se nezveřejňují, abyste je mohli upravovat. Další informace o tom, jaké parametry používá nástroj pro automatické škálování clusteru, najdete v tématu [co jsou parametry automatického škálování clusteru?][autoscaler-parameters].
 
-Cluster a horizontální funkce autoškálovatelnosti můžou spolupracovat společně a často se nasazují společně v clusteru. V kombinaci se horizontální automatické škálování pod ním zaměřuje na spouštění počtu lusků potřebných pro splnění požadavků aplikace. Automatické škálování clusteru se zaměřuje na spouštění počtu uzlů potřebných k podpoře naplánovaných lusků.
+Cluster a horizontální, pod kterými můžou spolupracovníci spolupracovat a často se obě nasazují v clusteru. V kombinaci se horizontální automatické škálování pod ním zaměřuje na spouštění počtu lusků potřebných pro splnění požadavků aplikace. Automatické škálování clusteru se zaměřuje na spouštění počtu uzlů potřebných k podpoře naplánovaných lusků.
 
 > [!NOTE]
 > Ruční škálování je při použití automatického škálování clusteru zakázané. Určete požadovaný počet uzlů, aby měl automatické škálování clusteru. Pokud chcete cluster ručně škálovat, [zakažte automatické škálování clusteru](#disable-the-cluster-autoscaler).

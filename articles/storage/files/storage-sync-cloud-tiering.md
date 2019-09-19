@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699372"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098968"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Při vrstvení souboru Azure File Sync filtr systému souborů (StorageSync. sys) místně nahradí soubor objektem ukazatele nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor obsahuje atribut "offline" a atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -100,10 +100,10 @@ Nejjednodušší způsob, jak na disk navrátit soubor, je otevřít soubor. Azu
 
 Můžete také použít PowerShell k vynucení souboru, který se má odvolat. Tato možnost může být užitečná, pokud chcete odvolat více souborů najednou, například všechny soubory ve složce. Otevřete relaci PowerShellu pro uzel serveru, na kterém je nainstalovaná Azure File Sync, a pak spusťte následující příkazy PowerShellu:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+```
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Proč velikost vlastnosti *disku* pro soubor neodpovídá vlastnosti *size* po použití Azure File Sync? 
@@ -113,10 +113,10 @@ Průzkumník souborů systému Windows zpřístupňuje dvě vlastnosti, které r
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Návody vynutit vrstvení souboru nebo adresáře?
 Když je povolená funkce vrstvení cloudu, vrstva cloudu automaticky rozchází soubory na základě posledního přístupu a doby úprav, aby se dosáhlo procenta volného místa na svazku, které je zadané na koncovém bodu cloudu. Někdy ale můžete chtít ručně vynutit soubor do vrstvy. To může být užitečné, pokud uložíte velký soubor, který nechcete znovu použít po dlouhou dobu, a chcete, aby volné místo na svazku bylo teď k dispozici pro jiné soubory a složky. Vrstvení můžete vynutit pomocí následujících příkazů PowerShellu:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>Další kroky
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)

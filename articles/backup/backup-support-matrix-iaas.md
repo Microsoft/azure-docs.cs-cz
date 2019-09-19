@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
 ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "71018676"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
@@ -235,7 +235,7 @@ Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green
 Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md).
 - [Zálohování počítačů s Windows přímo](tutorial-backup-windows-server-to-azure.md)bez záložního serveru.

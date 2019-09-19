@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058973"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091994"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží s Azure Data Factory
 
@@ -282,17 +282,109 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina:** Definice aktivity funkce Azure není dokončená.
 
-- **Doporučení**: Zkontrolujte prosím, že definice JSON aktivity vstupu AzureFunction má vlastnost s názvem Method.
+- **Doporučení**: Ověřte, zda definice JSON vstupní AzureFunction aktivity obsahuje vlastnost s názvem Method.
 
 
 ### <a name="error-code--3612"></a>Kód chyby:  3612
 
 - **Zpráva**:`Azure function activity missing LinkedService definition in JSON.`
 
-- **Příčina:** Definice aktivity funkce Azure není dokončená.
+- **Příčina:** Definice aktivity funkce Azure nemůže být dokončena.
 
 - **Doporučení**: Zkontrolujte prosím, že definice JSON pro aktivitu vstupu AzureFunction má propojenou podrobnosti o službě.
 
+
+## <a name="azure-machine-learning"></a>Azure Machine Learning
+
+
+### <a name="error-code--4101"></a>Kód chyby:  4101
+
+- **Zpráva**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **Příčina:** Chybný formát nebo chybí definice vlastnosti.
+
+- **Doporučení**:  Zkontrolujte prosím, jestli je aktivita definovaná se správnými daty.
+
+
+### <a name="error-code--4110"></a>Kód chyby:  4110
+
+- **Zpráva**: U aktivity AzureMLExecutePipeline chybí definice LinkedService ve formátu JSON.
+
+- **Příčina:** Definice aktivity AzureMLExecutePipeline není dokončena.
+
+- **Doporučení**:  Zkontrolujte prosím, jestli definice JSON vstupní AzureMLExecutePipeline aktivity obsahuje propojené informace o službě.
+
+
+### <a name="error-code--4111"></a>Kód chyby:  4111
+
+- **Zpráva**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **Příčina:** Nesprávná definice aktivity
+
+- **Doporučení**:  Zkontrolujte prosím, jestli definice JSON vstupních AzureMLExecutePipeline aktivit obsahuje správné podrobnosti propojené služby.
+
+
+### <a name="error-code--4112"></a>Kód chyby:  4112
+
+- **Zpráva**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **Příčina:** Chybný formát nebo chybí definice vlastnosti.
+
+- **Doporučení**:  Zkontrolujte prosím, jestli definice propojené služby obsahuje správná data.
+
+
+### <a name="error-code--4121"></a>Kód chyby:  4121
+
+- **Zpráva**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Příčina:** Přihlašovací údaje použité pro přístup ke službě Azure ML vypršely.
+
+- **Doporučení**:  Ověřte prosím, že přihlašovací údaje jsou platné, a zkuste to znovu
+
+
+### <a name="error-code--4122"></a>Kód chyby:  4122
+
+- **Zpráva**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Příčina:** Přihlašovací údaje zadané v propojené službě AzureML jsou neplatné nebo nemají oprávnění k této operaci.
+
+- **Doporučení**:  Ověřte prosím, že přihlašovací údaje v propojené službě jsou platné a mají oprávnění pro přístup ke službě AzureML.
+
+
+### <a name="error-code--4123"></a>Kód chyby:  4123
+
+- **Zpráva**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Příčina**:`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **Doporučení**:  Zkontrolujte hodnoty vlastností aktivity, aby odpovídaly očekávané datové části publikovaného kanálu Azure ML zadaného v propojené službě.
+
+
+### <a name="error-code--4124"></a>Kód chyby:  4124
+
+- **Zpráva**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Příčina:** Publikovaný koncový bod kanálu Azure ML neexistuje.
+
+- **Doporučení**:  Ověřte prosím, že publikovaný koncový bod kanálu Azure ML zadaný v propojené službě existují ve službě Azure ML.
+
+
+### <a name="error-code--4125"></a>Kód chyby:  4125
+
+- **Zpráva**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Příčina:** Chyba serveru ve službě Azure ML.
+
+- **Doporučení**:  Zkuste to prosím znovu později. Pokud problém trvá, obraťte se na tým služby Azure ML.
+
+
+### <a name="error-code--4126"></a>Kód chyby:  4126
+
+- **Zpráva**:`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **Příčina:** Spuštění kanálu AzureML selhalo.
+
+- **Doporučení**:  Podívejte se prosím na AzureMLService pro další protokolování chyb a opravte kanál ML.
 
 
 ## <a name="custom"></a>Vlastní
@@ -316,6 +408,15 @@ Následující tabulka se vztahuje na Azure Batch.
 - **Příčina:** Nesprávný klíč pro přístup k dávce nebo název fondu.
 
 - **Doporučení**: Ověřte název fondu a přístupový klíč Batch v propojené službě.
+
+
+### <a name="error-code--2502"></a>Kód chyby:  2502
+
+- **Zpráva**:`Cannot access user storage account; please check storage account settings.`
+
+- **Příčina:** Nesprávný název účtu úložiště nebo přístupový klíč.
+
+- **Doporučení**: Ověřte název účtu úložiště a přístupový klíč v propojené službě.
 
 
 ### <a name="error-code--2504"></a>Kód chyby:  2504
@@ -472,7 +573,7 @@ Následující tabulka se vztahuje na datové proudy Spark, podregistr, MapReduc
 
 ## <a name="web-activity"></a>Aktivita webu
 
-### <a name="error-code--2310"></a>Kód chyby:  2310
+### <a name="error-code--2108"></a>Kód chyby:  2108
 
 - **Zpráva**:`Invalid HttpMethod: '...'.`
 
@@ -560,6 +661,25 @@ Následující tabulka se vztahuje na datové proudy Spark, podregistr, MapReduc
 
 - **Doporučení**:  Ke kontrole koncového bodu použijte Fiddler nebo post.
 
+
+### <a name="error-code--2208"></a>Kód chyby:  2208
+
+- **Zpráva**:`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **Příčina:** Cílová služba vrátila stav selhání.
+
+- **Doporučení**:  K ověření žádosti použijte Fiddler/post.
+
+
+### <a name="error-code--2308"></a>Kód chyby:  2308
+
+- **Zpráva**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **Příčina:** Tato chyba může mít několik příčin, jako je připojení k síti, selhání služby DNS, ověřování certifikátu serveru nebo časový limit.
+
+- **Doporučení**:  K ověření žádosti použijte Fiddler/post.
+
+
 Použití Fiddler k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Stáhněte, nainstalujte a otevřete [Fiddler](https://www.telerik.com/download/fiddler).
@@ -590,7 +710,7 @@ Použití Fiddler k vytvoření relace HTTP monitorované webové aplikace:
 
 Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 

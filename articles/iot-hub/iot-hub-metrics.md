@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f0bcf12a43a4732b371dd2d64c0b174a0087bea9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877077"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098939"
 ---
 # <a name="understand-iot-hub-metrics"></a>Pochopení IoT Hub metriky
 
@@ -81,7 +81,7 @@ IoT Hub poskytuje několik metrik, které vám poskytnou přehled o stavu vašeh
 |c2d<br>. Methods<br>. Chyba|Neúspěšná volání přímé metody|Count|Celkem|Počet všech neúspěšných volání metody Direct|Žádné dimenze|
 |c2d<br>. Methods<br>.requestSize|Velikost žádosti o vyvolání přímé metody|B|Average|Průměrně, minimální a maximální počet všech úspěšných požadavků na metodu Direct.|Žádné dimenze|
 |c2d<br>. Methods<br>.responseSize|Velikost odezvy volání přímých metod|B|Average|Průměrných, minimálních a maximálních odpovědí všech úspěšných přímých metod.|Žádné dimenze|
-|c2d<br>.twin<br>. Read<br>. úspěch|Úspěšné zdvojené čtení z back-endu|Count|Celkem|Počet všech úspěšných zdvojených čtení spouštěných back-endu.|Žádné dimenze|
+|c2d<br>.twin<br>. Read<br>. úspěch|Úspěšné zdvojené čtení z back-endu|Count|Celkem|Počet všech úspěšných zdvojených čtení spouštěných back-endu. Tento počet nezahrnuje zdvojené čtení iniciované z nevyžádaných dotazů.|Žádné dimenze|
 |c2d<br>.twin<br>. Read<br>. Chyba|Neúspěšné čtení z back-endu ze zadních vláken|Count|Celkem|Počet všech neúspěšných čtení, která byla inicializována back-endu.|Žádné dimenze|
 |c2d<br>.twin<br>. Read<br>. Size|Velikost odpovědi zdvojeného čtení z back-endu|B|Average|Průměrně, minimální a maximální počet všech úspěšných zdvojených čtení, které byly spuštěny na konci.|Žádné dimenze|
 |c2d<br>.twin<br>. Update<br>. úspěch|Úspěšné zdvojené aktualizace z back-endu|Count|Celkem|Počet všech úspěšných dokončených aktualizací, které jsou úspěšně spouštěny po konci.|Žádné dimenze|
@@ -106,8 +106,8 @@ IoT Hub poskytuje několik metrik, které vám poskytnou přehled o stavu vašeh
 |dailyMessage<br>QuotaUsed|Celkový počet použitých zpráv|Count|Average|Počet všech aktuálně využívaných zpráv Jedná se o kumulativní hodnotu, která se každý den resetuje na nulu v 00:00 UTC.|Žádné dimenze|
 |deviceDataUsage|Celkové využití dat zařízení|B|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné dimenze|
 |totalDeviceCount|Celkem zařízení (Preview)|Count|Average|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
-|připojen<br>Počet zařízení|Připojená zařízení (Preview)|Count|Average|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
-|konfiguračních|Metriky konfigurace|Count|Celkem|Metriky pro operace konfigurace|Žádné dimenze|
+|Připojen<br>Počet zařízení|Připojená zařízení (Preview)|Count|Average|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
+|Konfiguračních|Metriky konfigurace|Count|Celkem|Metriky pro operace konfigurace|Žádné dimenze|
 
 ## <a name="next-steps"></a>Další postup
 

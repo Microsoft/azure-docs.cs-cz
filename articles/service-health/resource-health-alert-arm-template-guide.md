@@ -1,62 +1,62 @@
 ---
-title: Konfigurace výstrahy týkající se stavu prostředků Azure pomocí šablon Resource Manageru | Dokumentace Microsoftu
-description: Vytvořte upozornění prostřednictvím kódu programu, které vás upozorní, když budou nedostupné prostředky Azure.
+title: Konfigurace upozornění na stav prostředků Azure pomocí šablon Správce prostředků | Microsoft Docs
+description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493399"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71099011"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrahy týkající se stavu prostředků pomocí šablon Resource Manageru
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků pomocí šablon Správce prostředků
 
-Tento článek vám ukáže postup vytvoření Resource Health upozornění protokolu aktivit programově pomocí šablon Azure Resource Manageru a Azure Powershellu.
+V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manager a Azure PowerShell vytvářet výstrahy protokolu aktivit Resource Health programově.
 
-Azure Resource Health zachovat informována o aktuální a Historický stav svých prostředků Azure. Azure Resource Health můžete upozornění se zobrazí v téměř v reálném čase v případě těchto prostředků jste změny v jejich stav. Vytváří se Resource Health výstrahy prostřednictvím kódu programu povolit uživatelům vytvářet a upravovat výstrahy hromadně.
+Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
 
 > [!NOTE]
-> Výstrahy týkající se stavu prostředků jsou aktuálně ve verzi preview.
+> Výstrahy Resource Health jsou momentálně ve verzi Preview.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postupujte podle pokynů na této stránce, budete muset předem zařídit pár věcí:
+Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavit pár věcí:
 
-1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
-2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../azure-monitor/platform/action-groups.md) nakonfigurovaný tak, aby upozornění
+1. Je potřeba nainstalovat [modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) .
+2. Musíte [vytvořit nebo znovu použít skupinu akcí](../azure-monitor/platform/action-groups.md) nakonfigurovanou pro upozorňování
 
-## <a name="instructions"></a>Pokyny
-1. Pomocí Powershellu, připojte se k Azure pomocí svého účtu a vyberte předplatné, které chcete pracovat s
+## <a name="instructions"></a>Instrukce
+1. Pomocí PowerShellu se přihlaste k Azure pomocí svého účtu a vyberte předplatné, se kterým chcete pracovat.
 
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Můžete použít `Get-AzSubscription` seznam předplatných, budete mít přístup k.
+    > Můžete použít `Get-AzSubscription` k vypsání předplatných, ke kterým máte přístup.
 
-2. Najít a uložit úplné ID Azure Resource Manageru pro vaši skupinu akcí
+2. Vyhledejte a uložte úplné ID Azure Resource Manager pro vaši skupinu akcí.
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Vytvoříte a uložíte šablonu Resource Manageru pro výstrahy týkající se stavu prostředků jako `resourcehealthalert.json` ([viz podrobnosti níže](#resource-manager-template-options-for-resource-health-alerts))
+3. Vytvoření a uložení šablony Správce prostředků pro Resource Health výstrahy jako `resourcehealthalert.json` ([Viz podrobnosti níže](#resource-manager-template-options-for-resource-health-alerts))
 
-4. Vytvořte nové nasazení Azure Resource Manageru pomocí této šablony.
+4. Vytvořit nové nasazení Azure Resource Manager pomocí této šablony
 
         New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
-5. Budete vyzváni k zadání názvu upozornění a jste si zkopírovali dříve ID prostředku skupiny akcí:
+5. Zobrazí se výzva k zadání názvu výstrahy a ID prostředku skupiny akcí, které jste zkopírovali dříve:
 
         Supply values for the following parameters:
         (Type !? for Help.)
         activityLogAlertName: <Alert Name>
         actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
 
-6. Pokud vše funguje úspěšně, dostanete potvrzení v prostředí PowerShell
+6. Pokud vše úspěšně fungovalo, získáte potvrzení v PowerShellu.
 
         DeploymentName          : ExampleDeployment
         ResourceGroupName       : <resourceGroup>
@@ -74,13 +74,13 @@ Postupujte podle pokynů na této stránce, budete muset předem zařídit pár 
         Outputs                 :
         DeploymentDebugLogLevel :
 
-Všimněte si, že pokud plánujete plné automatizaci tohoto procesu, stačí jednoduše upravte šablonu Resource Manageru pro výzvu pro hodnoty v kroku 5.
+Pamatujte na to, že pokud plánujete plně automatizovat tento proces, stačí upravit šablonu Správce prostředků, aby se nezobrazovala výzva k zadání hodnot v kroku 5.
 
-## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Možnosti šablony Resource Manageru pro výstrahy týkající se stavu prostředků
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Možnosti šablony Správce prostředků pro výstrahy Resource Health
 
-Tuto základní šablonu můžete použít jako výchozí bod pro vytvoření výstrahy týkající se stavu prostředků. Tato šablona bude fungovat, jak je uvedená, bude registraci a přihlašování budete chcete obdržet výstrahy pro všechny události stavu prostředků nově aktivovaného všech prostředků v předplatném.
+Tuto základní šablonu můžete použít jako výchozí bod pro vytváření výstrah Resource Health. Tato šablona bude fungovat tak, jak bude zapsána, a pošle vám přihlašovací upozornění pro všechny nově aktivované události stavu prostředků ve všech prostředcích v rámci předplatného.
 
-> V dolní části tohoto článku jsme zahrnuli také mnohem složitější šablonu oznámení, což by měl zvýšit signál od šumu pro výstrahy týkající se stavu prostředků porovnání s touto šablonou.
+> V dolní části tohoto článku jsme také zahrnuli komplexnější šablonu výstrah, která by měla zvýšit poměr mezi signálem a Resource Health výstrahami v porovnání s touto šablonou.
 
 ```json
 {
@@ -137,26 +137,26 @@ Tuto základní šablonu můžete použít jako výchozí bod pro vytvoření v�
 }
 ```
 
-Však není doporučeno široké upozornění podobný následujícímu. Zjistěte, jak můžeme nastavit dolů toto upozornění a zaměřte se na události, které jsme vám jde o níže.
+Obecná výstraha, jako je tato jedna, se obecně nedoporučuje. Přečtěte si, jak můžeme nastavit rozsah těchto výstrah, aby se soustředit na události, které se vám zajímají níže.
 
-### <a name="adjusting-the-alert-scope"></a>Úprava oboru výstrah
+### <a name="adjusting-the-alert-scope"></a>Úprava oboru výstrahy
 
-Výstrahy týkající se stavu prostředků lze nakonfigurovat monitorování událostí na třech různých oborech:
+Výstrahy Resource Health lze nakonfigurovat pro monitorování událostí ve třech různých oborech:
 
  * Úroveň předplatného
  * Úroveň skupiny prostředků
- * Zdrojem pro úroveň
+ * Úroveň prostředků
 
-Šablona upozornění je nakonfigurována na úrovni předplatného, ale pokud chcete konfigurovat upozornění na pouze oznámení o některých prostředků nebo prostředky v rámci určité skupiny prostředků, stačí jednoduše změnit `scopes` v výše uvedené části Šablona.
+Šablona výstrahy je nakonfigurovaná na úrovni předplatného, ale pokud chcete, aby upozornění nakonfigurovali jenom na určité prostředky nebo prostředky v rámci určité skupiny prostředků, stačí změnit `scopes` výše uvedenou část. vzhledu.
 
-Pro úrovně oboru skupiny prostředků by měl vypadat části obory:
+V případě oboru na úrovni skupiny prostředků by měl oddíl rozsahy vypadat takto:
 ```json
 "scopes": [
     "/subscriptions/<subscription id>/resourcegroups/<resource group>"
 ],
 ```
 
-A pro prostředek úrovni oboru, část oboru by měl vypadat takto:
+A v rozsahu na úrovni prostředků by měl oddíl Scope vypadat takto:
 
 ```json
 "scopes": [
@@ -166,11 +166,11 @@ A pro prostředek úrovni oboru, část oboru by měl vypadat takto:
 
 Příklad: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
-> Můžete přejít na web Azure Portal a podívejte se na adresu URL při prohlížení vašich prostředků Azure, chcete-li získat tento řetězec.
+> Pokud chcete získat tento řetězec, můžete přejít na Azure Portal a podívat se na adresu URL při zobrazení prostředku Azure.
 
-### <a name="adjusting-the-resource-types-which-alert-you"></a>Nastavení prostředku typy, které vás upozorní
+### <a name="adjusting-the-resource-types-which-alert-you"></a>Úprava typů prostředků, které vás upozorňují
 
-Upozornění na úrovni skupiny prostředků nebo předplatné může mít různé druhy prostředků. Pokud chcete omezit výstrahy, které může přicházet pouze ze podmnožinu typů prostředků, můžete definovat, že `condition` část šablony takto:
+Výstrahy na úrovni předplatného nebo skupiny prostředků mohou mít různé druhy prostředků. Pokud chcete omezit výstrahy jenom z určité podmnožiny typů prostředků, můžete to definovat v `condition` části šablony, například takto:
 
 ```json
 "condition": {
@@ -195,12 +195,12 @@ Upozornění na úrovni skupiny prostředků nebo předplatné může mít různ
 },
 ```
 
-Tady používáme `anyOf` obálky umožňující upozornění stavu prostředků tak, aby odpovídaly některá z podmínek, určíme, což pro výstrahy, které se zaměřují na konkrétní typy prostředků.
+V `anyOf` tomto příkladu použijeme obálku, která umožňuje, aby výstraha o stavu prostředků odpovídala některé z podmínek, které zadáte, a umožňuje upozornění, která cílí na konkrétní typy prostředků.
 
-### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Nastavení s upozorněním, že události stavu prostředků
-Pokud prostředky událost stavu, které procházejí řadu fází, která představuje stav události stavu: `Active`, `InProgress`, `Updated`, a `Resolved`.
+### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Úprava Resource Healthch událostí, které vás upozorňují
+Když se prostředky dostanou události stavu, mohou projít řadou fází, které představují stav události stavu `Active`:, `InProgress`, `Updated`a `Resolved`.
 
-Můžete chtít pouze oznámení, když se prostředek stane není v pořádku, v takovém případě chcete nakonfigurovat výstrahy jenom oznámit, kdy `status` je `Active`. Pokud chcete také upozorněni v dalších fázích, můžete však přidat tyto podrobnosti takto:
+Je možné, že budete chtít být upozorněni pouze v případě, že prostředek není v pořádku. v takovém případě budete chtít výstrahu nakonfigurovat tak `status` , `Active`aby upozornila pouze v případě, že je. Pokud ale chcete být také informováni o dalších fázích, můžete tyto podrobnosti přidat, například:
 
 ```json
 "condition": {
@@ -230,13 +230,13 @@ Můžete chtít pouze oznámení, když se prostředek stane není v pořádku, 
 }
 ```
 
-Pokud chcete být upozornění pro všechny čtyři fází událostí stavu, tuto podmínku můžete odebrat všechno dohromady a upozornění vám oznámí bez ohledu `status` vlastnost.
+Pokud chcete být upozorněni na všechny čtyři fáze událostí stavu, můžete tuto podmínku odebrat dohromady a tato výstraha vás bude informovat bez ohledu na `status` vlastnost.
 
-### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Nastavení výstrah Resource Health, aby "Neznámý" události
+### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Nastavení výstrah Resource Health, aby se předešlo neznámým událostem
 
-Azure Resource Health můžete nahlásit vám nejnovější stav svých prostředků nepřetržitým monitorováním jejich pomocí nástrojům test Runner. Relevantní ohlášené stavu stavy jsou: "Dostupný", "Není k dispozici" a "Snížený výkon". Ale v situacích, kdy jsou schopné komunikovat spouštěče a prostředků Azure, "Neznámý" stav nahlašuje prostředku a bude se považovat za událost "Aktivním" stavu.
+Azure Resource Health vám může ohlásit nejnovější stav svých prostředků tím, že je průběžně monitoruje pomocí Test Runner. Příslušné nahlášené stavy stavu: "Dostupné", "nedostupné" a "omezené". V situacích, kdy spouštěč a prostředek Azure nemůže komunikovat, je pro prostředek hlášen stav "Neznámý", který je považován za "aktivní" událost stavu.
 
-Ale pokud prostředek ohlásí "Neznámá", je pravděpodobné, že jeho stav nebyl změněn od posledního hlášení o přesné. Pokud chcete odstranit oznámení o událostech "Neznámý", můžete zadat tuto logiku v šabloně:
+Pokud se ale zdroj ohlásí jako "Neznámý", je pravděpodobný, že se jeho stav od poslední přesné sestavy nezměnil. Pokud chcete eliminovat výstrahy na "neznámých" událostech, můžete tuto logiku zadat v šabloně:
 
 ```json
 "condition": {
@@ -284,15 +284,15 @@ Ale pokud prostředek ohlásí "Neznámá", je pravděpodobné, že jeho stav ne
 },
 ```
 
-V tomto příkladu jsme jsou se pouze oznámení o událostech, kde aktuální a předchozí stav nemá "Neznámý". Tato změna může být záležitostí užitečné, pokud vaše výstrahy se odesílají přímo na váš mobilní telefon nebo e-mailu. 
+V tomto příkladu oznamujeme jenom události, u kterých aktuální a předchozí stav nemá "Neznámý". Tato změna může být užitečná, pokud se vaše výstrahy odesílají přímo na váš mobilní telefon nebo e-mail. 
 
-Všimněte si, že je možné pro vlastnosti currentHealthStatus a previousHealthStatus mít hodnotu null v některé události. Například když aktualizované dojde k události je pravděpodobné, že stav prostředku nebyl změněn od posledního hlášení těchto informací další události je k dispozici jen (třeba vyvolat). Proto pomocí klauzule výše může vést k některé výstrahy není spuštěna, protože properties.currentHealthStatus a properties.previousHealthStatus hodnoty budou nastaveny na hodnotu null.
+Všimněte si, že vlastnosti currentHealthStatus a previousHealthStatus v některých událostech mají hodnotu null. Například když dojde k aktualizované události, je pravděpodobný, že se stav prostředku od poslední sestavy nezměnil, jsou k dispozici pouze další informace o událostech (například příčina). Proto použití klauzule výše může vést k tomu, že se neaktivují některé výstrahy, protože hodnoty Properties. currentHealthStatus a Properties. previousHealthStatus budou nastavené na hodnotu null.
 
-### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Úprava výstrahu, kterou chcete vyhnout, kterou inicioval uživatel události
+### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Nastavení výstrahy, aby se předešlo událostem iniciované uživatelem
 
-Události stavu prostředků může být aktivační událost iniciované platformou a události, kterou inicioval uživatel. Může být vhodné, pouze odeslat oznámení, když událost stavu se způsobené platformou Azure.
+Události Resource Health mohou být aktivovány platformou iniciované uživatelem a událostmi iniciované uživatelem. Může být vhodné odeslat oznámení pouze v případě, že je událost stavu způsobena platformou Azure.
 
-Je snadno konfigurovatelné upozornění můžete filtrovat pouze tyto typy událostí:
+Výstrahu můžete snadno nakonfigurovat tak, aby vyfiltroval jenom tyto typy událostí:
 
 ```json
 "condition": {
@@ -306,11 +306,11 @@ Je snadno konfigurovatelné upozornění můžete filtrovat pouze tyto typy udá
     ]
 }
 ```
-Všimněte si, že je možné pro pole příčina mít hodnotu null v některé události. To znamená přechod stavu Probíhá (například k dispozici do nedostupný) a událost se protokoluje při okamžitě zabránit oznámení zpoždění. Proto pomocí klauzule výše může vést k upozornění není spuštěné, protože hodnota vlastnosti properties.clause bude nastavena na hodnotu null.
+Všimněte si, že v některých událostech může být pole Příčina null. To znamená, že dojde k přechodu na stav (například k dispozici k dispozici) a událost je protokolována okamžitě, aby nedocházelo k prodlevám při oznámení. Proto může použití klauzule výše způsobit, že se neaktivuje výstraha, protože hodnota vlastnosti Property. klauzule bude nastavena na hodnotu null.
 
-## <a name="complete-resource-health-alert-template"></a>Kompletní šablonu oznámení Resource Health
+## <a name="complete-resource-health-alert-template"></a>Dokončit šablonu výstrahy Resource Health
 
-Pomocí různých nastavení popsané v předchozí části, tady je ukázka šablony, který je nakonfigurovaný pro maximalizaci signál od šumu. Berte v úvahu upozornění, jak je uvedeno nahoře kde currentHealthStatus, previousHealthStatus a hodnoty vlastností příčina může mít hodnotu null v některé události.
+Pomocí různých úprav popsaných v předchozí části najdete ukázkovou šablonu, která je nakonfigurovaná tak, aby maximalizovala poměr hluku signálu. Pamatujte na to, že v některých událostech mohou být hodnoty vlastností currentHealthStatus, previousHealthStatus a způsobit hodnotu null.
 
 ```json
 {
@@ -434,15 +434,15 @@ Pomocí různých nastavení popsané v předchozí části, tady je ukázka ša
 }
 ```
 
-Však budete nejlíp vědět, jaký konfigurace platí pro vás, takže používejte nástroje, výukové vám v této dokumentaci, aby vlastní přizpůsobení.
+Dozvíte se ale, co je pro vás nejvhodnější konfigurace, takže k vlastnímu přizpůsobení použijte výukové nástroje v této dokumentaci.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě Resource Health:
+Další informace o Resource Health:
 -  [Přehled Azure Resource Health](Resource-health-overview.md)
 -  [Typy prostředků a kontroly stavu dostupné prostřednictvím služby Azure Resource Health](resource-health-checks-resource-types.md)
 
 
-Vytvoření upozornění na stav služby:
--  [Konfigurace výstrah pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
--  [Azure schéma událostí protokolu aktivit](../azure-monitor/platform/activity-log-schema.md)
+Vytvořit výstrahy Service Health:
+-  [Konfigurace upozornění pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Schéma událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log-schema.md)

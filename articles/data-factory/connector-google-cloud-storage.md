@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: bd99a7eeafd3a3c038f9a5e23c25bc468d465f46
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 3f8b38e7d6a6a480b7455d33cbf86b512430f39a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009843"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090298"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopírování dat ze služby Google Cloud Storage pomocí Azure Data Factory
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak kopírovat data z Google Cloud Storage. Další inf
 
 Tento konektor Google Cloud Storage se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Odstranit aktivitu](delete-activity.md)

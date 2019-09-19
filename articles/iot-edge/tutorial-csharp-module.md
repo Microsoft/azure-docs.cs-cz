@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: MT
+ms.openlocfilehash: e2bfc65ad8fafa07de6e3727d651fccabaddc90e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839577"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077258"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj modulu C# IoT Edge pro zařízení se systémem Linux
 
@@ -36,7 +36,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 Tento kurz ukazuje, jak vyvíjet modul **C#** pomocí **Visual Studio Code**a jak ho nasadit na zařízení se **systémem Linux**. Pokud vyvíjíte moduly pro zařízení s Windows, použijte místo toho [vývoj C# modulu IoT Edge pro zařízení s Windows](tutorial-csharp-module-windows.md) .
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů jazyka C do systému Linux: 
+Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení C# modulů pro Linux: 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |
@@ -332,7 +332,7 @@ V opačném případě můžete odstranit místní konfigurace a prostředky Azu
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 

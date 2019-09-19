@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899959"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091958"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -107,7 +107,7 @@ Podrobnější přehled procesu ověřování v jiných scénářích týkajíc�
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>Uživatel spravuje svoje přihlašovací údaje ve Windows Hello pro firmy.
 
-[Služba Microsoft PIN Reset Services](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) je funkce služby Azure AD, která uživatelům umožňuje v případě potřeby resetovat PIN kód. Pomocí zásad skupiny, Microsoft Intune nebo kompatibilní správy mobilních zařízení (MDM) může správce nakonfigurovat zařízení s Windows 10 tak, aby bezpečně používala službu Microsoft PIN Reset Service, která uživatelům umožňuje resetovat své zapomenuté kódy PIN pomocí nastavení nebo nad zamykací obrazovkou bez nutnosti opětovné registrace.
+[Služba Microsoft PIN Reset Services](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) je funkce služby Azure AD, která uživatelům umožňuje v případě potřeby resetovat PIN kód. Pomocí zásad skupiny, Microsoft Intune nebo kompatibilní správy mobilních zařízení (MDM) může správce nakonfigurovat zařízení s Windows 10 tak, aby bezpečně používala službu Microsoft PIN Reset Service, která uživatelům umožňuje resetovat své zapomenuté kódy PIN pomocí nastavení nebo nad zamykací obrazovkou bez nutnosti opětovné registrace.
 
 Někdy se uživatelé musí vrátit k používání hesel. [Samoobslužné resetování hesla](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) je další funkce služby Azure AD, která uživatelům umožňuje resetovat hesla bez nutnosti kontaktovat pracovníky oddělení IT. Před použitím této služby je třeba, aby se uživatelé zaregistrovali pro Samoobslužné resetování hesla. Během registrace uživatel zvolí jednu nebo více metod ověřování povolených organizací. SSPR umožňuje uživatelům rychle získat odblokování a pokračovat v práci bez ohledu na to, kde jsou, nebo v denní době. Díky tomu, že uživatelé můžou odblokovat samy sebe, může vaše organizace zkrátit neproduktivní dobu a náklady na vysokou podporu pro nejběžnější problémy související s heslem.
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že většina uživatelů je zvykla používat k ověřování 
 
 Aby bylo možné aplikaci Microsoft Authenticator použít jako řešení bez hesla pro přihlášení k účtu služby Azure AD, musí být kroky provedeny správcem i koncovými uživateli.
 
-Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncové uživatele pro Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncovým uživatelům ověřování Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Koncoví uživatelé budou muset [Stáhnout a nainstalovat](../../active-directory/user-help/user-help-auth-app-download-install.md) aplikaci Microsoft Authenticator a [nastavit účet](../../active-directory/user-help/security-info-setup-auth-app.md) tak, aby používal aplikaci Microsoft Authenticator jako jednu z metod ověřování.
 
@@ -228,7 +228,7 @@ Doporučujeme také, aby každá organizace vytvořila protokol pro uživatele a
 
 Správci sice můžou [ručně zřizovat klíče](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) a distribuovat je koncovým uživatelům, takže zřizování a povolování poskytovatele přihlašovacích údajů FIDO2 na zamykací obrazovce Windows 10 budou podporované prostřednictvím [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Správci budou taky muset použít [Azure Portal](https://portal.azure.com/) k povolení zařízení hardwarových tokenů jako metody ověřování pomocí hesla.
 
-Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i resetování hesla jednotného přihlašování (SSPR).
+Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i pro resetování hesla jednotného přihlašování (SSPR).
 
 Kromě výběru hardwarového tokenu jako výchozí metody Multi-Factor Authentication doporučujeme také vybrat další možnost ověření.
 

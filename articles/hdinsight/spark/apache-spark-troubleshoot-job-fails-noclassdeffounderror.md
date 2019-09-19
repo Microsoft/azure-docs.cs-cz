@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f39822d0800af8658e46cde0202a2c261890b4e3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7ccd908c96e68190f09da37a83e0a34a09f5e697
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885529"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087136"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Úloha streamování Apache Spark, která čte Apache Kafka data, se nezdařila s NoClassDefFoundError ve službě HDInsight
 
@@ -47,7 +48,7 @@ spark-submit \
 
 Použijte příkaz Spark-submit s `–packages` možností a zajistěte, aby verze souboru jar-streaming-Kafka byla stejná jako verze clusteru Kafka, kterou používáte.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

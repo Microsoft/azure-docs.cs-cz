@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147281"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091368"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení
 
@@ -110,7 +110,7 @@ Jeden ze způsobů, jak vytvořit tento vztah důvěryhodnosti, je podrobně pop
 
 ## <a name="specify-dns-servers"></a>Zadat servery DNS 
 
-Pro zvýšení odolnosti se důrazně doporučuje zadat adresy serverů DNS používané ve vašem prostředí. Pokud chcete [nastavit server DNS v článku věnovaném řešení potíží](troubleshoot.md#resolution-7), podívejte se na dvě možnosti.
+Pro zvýšení odolnosti se důrazně doporučuje zadat adresy serverů DNS používané ve vašem prostředí. Pokud chcete nastavit server DNS pro IoT Edge, přečtěte si téma řešení for [Edge agent průběžně hlásí prázdný konfigurační soubor a](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) v článku věnovaném řešení potíží se nespouštějí žádné moduly.
 
 ## <a name="optional-offline-settings"></a>Volitelná nastavení
 
@@ -207,5 +207,5 @@ Další podrobnosti o možnostech vytváření najdete v dokumentaci k [Docker](
 Přečtěte si další informace o tom, jak nastavit transparentní bránu pro připojení nadřazených a podřízených zařízení: 
 
 * [Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge](how-to-create-transparent-gateway.md)
-* [Ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md)
-* [Připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md)
+* [Ověření podřízeného zařízení ve službě Azure IoT Hub](how-to-authenticate-downstream-device.md)
+* [Připojení podřízeného zařízení k bráně služby Azure IoT Edge](how-to-connect-downstream-device.md)

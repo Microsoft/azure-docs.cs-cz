@@ -5,7 +5,7 @@ keywords: Chyba vzdálené plochy, Chyba připojení ke vzdálené ploše, nelze
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eb9929c66275959ed64ab66517f8b38190f1bdbd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089668"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088173"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP na virtuální počítač s Windows v Azure
 Při použití připojení vzdálené plochy k virtuálnímu počítači s Windows (VM) v Azure se může zobrazit konkrétní chybová zpráva. Tento článek podrobně popisuje některé běžné chybové zprávy, ke kterým došlo, a postup řešení potíží. Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP, ale nedošlo k určité chybové zprávě, přečtěte si článek [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).
@@ -104,7 +104,7 @@ Každý počítač s Windows má místní skupinu Remote Desktop Users, která o
 
 Ujistěte se, že účet, který používáte k připojení, má přihlašovací práva ke vzdálené ploše. Alternativním řešením je použít účet domény nebo místního správce pro připojení přes vzdálenou plochu. Chcete-li přidat požadovaný účet do místní skupiny Uživatelé vzdálené plochy, použijte modul snap-in konzoly Microsoft Management Console (**Systémové nástroje > místní uživatelé a skupiny > skupiny > Uživatelé vzdálené plochy**).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud žádná z těchto chyb nevznikla a došlo k neznámému problému s připojením pomocí protokolu RDP, přečtěte si [Průvodce řešením potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 * Postup řešení potíží při přístupu k aplikacím běžícím na virtuálním počítači najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: ae3e45ece1bd53846ab7728c29c0da1b709fe42c
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915950"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091764"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -202,9 +202,9 @@ Následující vzorový požadavek na rozhraní API vrátí počet výstrah v r�
   }
 }
 ```
-Můžete zadat dotaz na výstrahy pro jejich [důležitá](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) pole.
+Můžete zadat dotaz na výstrahy pro jejich [důležitá](alerts-common-schema-definitions.md#essentials) pole.
 
-Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžete získat další informace o konkrétních výstrahách, včetně jejich [kontextových polí výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) .
+Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžete získat další informace o konkrétních výstrahách, včetně jejich [kontextových polí výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 ## <a name="next-steps"></a>Další kroky
 

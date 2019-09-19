@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 432d81b4282e45bc2f33d098e618f2edd152628b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017754"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098028"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -28,7 +28,7 @@ Další verze Analýza mínění je teď dostupná ve verzi Public Preview a př
 * Automatické označování pro různé zabarvení v textu
 * Mínění analýzy a výstupy na úrovni dokumentu a věty. 
 
-Podporuje angličtinu, japonštinu a zjednodušenou čínštinu a je k dispozici v následujících `Australia East`oblastech `Central Canada`: `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US` ,, , `UK South`, `West Europe`a .`West US 2`
+Podporuje angličtinu, francouzštinu, italštinu, japonštinu, zjednodušenou čínštinu a tradiční čínštinu a je k dispozici v `Australia East`těchto `Central Canada`oblastech `Central US`:, `East US`, `East US 2`, `North Europe` `East Asia`,,, , `Southeast Asia` ,`South Central US`, ,`West Europe`a. `West US 2` `UK South`
 
 > [!div class="nextstepaction"]
 > [Další informace o Analýza mínění V3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

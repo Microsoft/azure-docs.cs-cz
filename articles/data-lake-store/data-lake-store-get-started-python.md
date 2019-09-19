@@ -1,6 +1,6 @@
 ---
-title: 'Python: Operace správy účtů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
-description: Zjistěte, jak pomocí sady Python SDK pracovat s Azure Data Lake Storage Gen1 operace správy účtů.
+title: 'Python: Operace správy účtů na Azure Data Lake Storage Gen1 | Microsoft Docs'
+description: Naučte se používat sadu Python SDK pro práci s operacemi správy účtů Azure Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b6ef5a5c12bb766fb7106d5c7a8189c4b92980d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60877253"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088788"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace správy účtů v Azure Data Lake Storage Gen1 pomocí Pythonu
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace správy účtů na Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,7 +27,7 @@ ms.locfileid: "60877253"
 >
 >
 
-Zjistěte, jak pomocí sady Python SDK pro Azure Data Lake Storage Gen1 provádět základní účet operace správy, jako je například vytvoření účtu Data Lake Storage Gen1, Data Lake Storage Gen1 výpis účtů atd. Pokyny k provádění operací systému souborů ve službě Data Lake Storage Gen1 pomocí Pythonu najdete v tématu [operace systému souborů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md).
+Naučte se používat sadu Python SDK pro Azure Data Lake Storage Gen1 k provádění základních operací správy účtů, jako je například vytvoření účtu Data Lake Storage Gen1, výpis účtů Data Lake Storage Gen1 atd. Pokyny k provádění operací systému souborů v Data Lake Storage Gen1 pomocí Pythonu najdete v tématu [operace systému souborů na data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,11 +39,11 @@ Zjistěte, jak pomocí sady Python SDK pro Azure Data Lake Storage Gen1 provád�
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
-Pro práci s Data Lake Storage Gen1 pomocí Pythonu, je nutné nainstalovat tři moduly.
+Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul Azure Data Lake Storage Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store filesystem](https://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
+* `azure-datalake-store` Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -86,16 +86,16 @@ pip install azure-datalake-store
 
 3. Uložte změny v souboru mysample.py.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 V této části popíšeme různé způsoby, jak provádět ověření pomocí Azure AD. Dostupné jsou následující možnosti:
 
-* Své aplikaci ověřování koncového uživatele, najdete v části [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-end-user-authenticate-python.md).
-* Své aplikaci ověřování služba služba, naleznete v tématu [ověřování služba služba Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md).
+* Pro ověřování koncového uživatele pro vaši aplikaci si přečtěte téma [ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-end-user-authenticate-python.md).
+* Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md).
 
-## <a name="create-client-and-data-lake-storage-gen1-account"></a>Vytvoření klienta a účtu Data Lake Storage Gen1
+## <a name="create-client-and-data-lake-storage-gen1-account"></a>Vytvořit klientský a Data Lake Storage Gen1 účet
 
-Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Storage Gen1. Objekt klienta použije k vytvoření účtu Data Lake Storage Gen1. Nakonec vytvoří objekt klienta systému souborů.
+Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 účtu. Pomocí objektu klienta vytvoří účet Data Lake Storage Gen1. Nakonec vytvoří objekt klienta systému souborů.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -124,16 +124,16 @@ Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Storage
     for items in result_list:
         print(items)
 
-## <a name="delete-the-data-lake-storage-gen1-account"></a>Odstranění účtu Data Lake Storage Gen1
+## <a name="delete-the-data-lake-storage-gen1-account"></a>Odstranit účet Data Lake Storage Gen1
 
     ## Delete an existing Data Lake Storage Gen1 account
     adlsAcctClient.account.delete(adlsAccountName)
     
 
 ## <a name="next-steps"></a>Další postup
-* [Operace systému souborů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md).
+* [Operace systému souborů na data Lake Storage Gen1 s využitím Pythonu](data-lake-store-data-operations-python.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [referenční informace k Azure-datalake-store Pythonu (systém souborů)](https://azure-datalake-store.readthedocs.io/en/latest)
-* [Aplikace typu Open zdroj velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
+* [Reference k jazyku Python (systém souborů) pro Azure – datalake – Store](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

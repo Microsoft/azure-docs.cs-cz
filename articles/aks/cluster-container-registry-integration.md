@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305151"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097805"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Preview – ověření pomocí Azure Container Registry služby Azure Kubernetes
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry služby Azure Kubernetes
 
 Pokud používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je nutné vytvořit ověřovací mechanismus. Tento článek podrobně popisuje doporučené konfigurace pro ověřování mezi těmito dvěma službami Azure.
 
 AKS můžete nastavit na integraci ACR v několika jednoduchých příkazech pomocí Azure CLI.
-
-> [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS](support-policies.md)
-> * [Nejčastější dotazy k podpoře Azure](faq.md)
 
 ## <a name="before-you-begin"></a>Před zahájením
 
 Musíte mít následující:
 
 * Role **vlastníka** nebo **správce účtu Azure** v **předplatném Azure**
-* Budete také potřebovat Azure CLI verze 2.0.70 nebo novější a rozšíření 0.4.8 AKS-Preview.
+* Potřebujete také Azure CLI verze 2.0.73 nebo novější.
 * Potřebujete do svého klienta [nainstalovaného Docker](https://docs.docker.com/install/) a potřebujete přístup k [dokovacímu centru](https://hub.docker.com/) .
-
-## <a name="install-latest-aks-cli-preview-extension"></a>Nainstalovat nejnovější rozšíření AKS CLI Preview
-
-Potřebujete rozšíření **AKS-Preview 0.4.13** nebo novější.
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Vytvoření nového clusteru AKS s integrací ACR
 
@@ -52,7 +37,7 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-\* * ID prostředku ACR má následující formát: 
+**ID prostředku ACR má následující formát:** 
 
 /Subscriptions/< předplatné-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   

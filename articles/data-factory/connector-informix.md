@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9048653ff32c4a24268dd7b4a2bbdd3904c43b16
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: a0b89bb21400de74107e49988395f36a1c897dbd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008940"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090192"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložišť dat IBM Informix pomocí Azure Data Factory
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 
 Tento konektor Informix se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Data ze zdroje Informix můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.

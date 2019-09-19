@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951872"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091815"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Relace zpráv: první v, první (FIFO) 
 
@@ -40,6 +40,9 @@ Funkce Session v Service Bus umožňuje určitou operaci přijímání, ve form�
 Na portálu nastavte příznak následujícím zaškrtávacím políčkem:
 
 ![][2]
+
+> [!NOTE]
+> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
 
 Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách, podobně jako- *Message*, který skrývá složitost správy přijímací smyčky.
 

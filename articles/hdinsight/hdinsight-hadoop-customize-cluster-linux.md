@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935275"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098794"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -45,11 +45,11 @@ Získejte další informace o práci se správou přístupu:
 Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight. Následující vlastnosti a funkce skriptových akcí jsou tyto:
 
 * Musí být uložené na identifikátoru URI, který je přístupný z clusteru HDInsight. Níže jsou možná umístění úložiště:
-    
+
     * Pro běžné clustery:
-    
+
       * ADLS Gen1: Služba HDInsight instančního objektu používá pro přístup Data Lake Storage musí mít ke skriptu oprávnění ke čtení. Formát identifikátoru URI pro skripty uložené v Data Lake Storage Gen1 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`je.
-      
+
       * Objekt BLOB v účtu Azure Storage, který je buď primárním nebo dalším účtem úložiště pro cluster HDInsight. HDInsight získá přístup k oběma těmto typům účtů úložiště během vytváření clusteru.
 
         > [!IMPORTANT]  
@@ -60,9 +60,9 @@ Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight. Nás
         Příklady identifikátorů URI najdete v tématu [Příklady skriptů akcí](#example-script-action-scripts)skriptů.
 
      * Pro clustery s protokolem ESP:
-         
+
          * Jsou podporovány identifikátory URI wasb://nebo wasbs://nebo http [s]://.
-            
+
 * Dá se omezit na spouštění jenom na určitých typech uzlů. Příklady jsou hlavní uzly nebo pracovní uzly.
 
 * Může být trvalá nebo ad hoc.
@@ -107,14 +107,12 @@ Skript se spustí při konfiguraci HDInsight. Skript běží paralelně na všec
 > [!NOTE]  
 > Můžete provádět operace, jako je zastavení a spuštění služeb, včetně služeb souvisejících s Apache Hadoop. Pokud zastavíte služby, ujistěte se, že je před dokončením skriptu spuštěná služba Ambari a další služby související se systémem Hadoop. Tyto služby se vyžadují k úspěšnému určení stavu a stavu clusteru, když se vytváří.
 
-
 Během vytváření clusteru můžete použít mnoho akcí skriptu najednou. Tyto skripty jsou vyvolány v pořadí, v jakém byly zadány.
 
 > [!IMPORTANT]  
 > Akce skriptu musí být dokončeny během 60 minut nebo vypršel časový limit. Při zřizování clusteru se skript spouští souběžně s jinými procesy nastavení a konfigurace. Soutěž na prostředky, jako je čas procesoru nebo šířka pásma sítě, může způsobit, že se dokončení skriptu bude trvat déle, než ve vývojovém prostředí.
 >
 > Aby se minimalizoval čas potřebný ke spuštění skriptu, vyhněte se úlohám, jako je stahování a kompilování aplikací ze zdroje. Předem zkompilujte aplikace a uložte binární soubor do Azure Storage.
-
 
 ### <a name="script-action-on-a-running-cluster"></a>Akce skriptu na spuštěném clusteru
 
@@ -161,13 +159,13 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
 1. Začněte vytvářet cluster, jak je popsáno v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md). Během vytváření clusteru přijdete na stránku __souhrnu clusteru__ . Na stránce __Souhrn clusteru__ vyberte odkaz __Upravit__ pro __upřesňující nastavení__.
 
-    ![Odkaz Rozšířená nastavení](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
+    ![Rozšířené nastavení clusteru Azure Portal](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
-3. V části __Upřesnit nastavení__ vyberte __akce skriptu__. V části __akce skriptu__ vyberte __+ Odeslat novou__.
+1. V části __Upřesnit nastavení__ vyberte __akce skriptu__. V části __akce skriptu__ vyberte __+ Odeslat novou__.
 
-    ![Odeslat novou akci skriptu](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Akce skriptu na portálu odeslat nové](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
-4. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
+1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
     ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -183,13 +181,13 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
     Použijte položku __zachovat tuto položku akce skriptu__ a ujistěte se, že je skript použit během operace škálování.
 
-5. Vyberte __vytvořit__ a skript se uloží. Potom můžete k přidání dalšího skriptu použít možnost __+ Odeslat novou__ .
+1. Vyberte __vytvořit__ a skript se uloží. Potom můžete k přidání dalšího skriptu použít možnost __+ Odeslat novou__ .
 
-    ![Několik akcí skriptů](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+    ![Vícenásobné akce skriptu HDInsight](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Až budete s přidáváním skriptů hotovi, vyberte tlačítko __Vybrat__ a potom klikněte na tlačítko __Další__ a vraťte se do části __Souhrn clusteru__ .
 
-3. Pokud chcete vytvořit cluster, vyberte __vytvořit__ z výběru __souhrnu clusteru__ .
+1. Pokud chcete vytvořit cluster, vyberte __vytvořit__ z výběru __souhrnu clusteru__ .
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Použití akce skriptu z Azure Resource Manager šablon
 
@@ -249,7 +247,7 @@ Přejít na [Azure Portal](https://portal.azure.com):
 
     ![Přidání skriptu do běžícího clusteru](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-4. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
+1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
     ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -265,7 +263,7 @@ Přejít na [Azure Portal](https://portal.azure.com):
 
     Pomocí položky __zachovat tuto položku akce skriptu__ zajistěte, aby byl skript použit během operací škálování.
 
-5. Nakonec vyberte tlačítko **vytvořit** , pokud chcete skript použít pro cluster.
+1. Nakonec vyberte tlačítko **vytvořit** , pokud chcete skript použít pro cluster.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Použití akce skriptu pro spuštěný cluster z Azure PowerShell
 
@@ -346,17 +344,17 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 1. Ve výchozím zobrazení vyberte v části **Nastavení**možnost **akce skriptu**.
 
-4. Historie skriptů pro tento cluster se zobrazí v oddílu akce skriptu. Tyto informace obsahují seznam trvalých skriptů. Na následujícím snímku obrazovky vidíte, že skript Solr byl spuštěn v tomto clusteru. Snímek obrazovky nezobrazuje žádné trvalé skripty.
+1. Historie skriptů pro tento cluster se zobrazí v oddílu akce skriptu. Tyto informace obsahují seznam trvalých skriptů. Na následujícím snímku obrazovky vidíte, že skript Solr byl spuštěn v tomto clusteru. Snímek obrazovky nezobrazuje žádné trvalé skripty.
 
-    ![Akce skriptů](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![Historie odeslání akcí skriptu na portálu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-5. Výběrem skriptu z historie zobrazíte oddíl **vlastnosti** pro tento skript. V horní části obrazovky můžete skript znovu spustit nebo ho povýšit.
+1. Výběrem skriptu z historie zobrazíte oddíl **vlastnosti** pro tento skript. V horní části obrazovky můžete skript znovu spustit nebo ho povýšit.
 
-    ![Akce skriptu, vlastnosti](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+    ![Akce skriptu – vlastnosti povýšení](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-6. Můžete také vybrat tři tečky, **...** vpravo od položek v oddílu akce skriptu k provedení akcí.
+1. Můžete také vybrat tři tečky, **...** vpravo od položek v oddílu akce skriptu k provedení akcí.
 
-    ![Akce skriptu, tři tečky](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+    ![Trvalé akce při odstraňování skriptů](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -414,7 +412,7 @@ Ve službě HDInsight jsou k dispozici dva typy open source komponent:
 > [!WARNING]  
 > Součásti dodávané s clusterem HDInsight jsou plně podporované. Podpora Microsoftu pomáhá izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Je možné, že podpora Microsoftu problém vyřešit. Případně vás můžou požádat, abyste provedli dostupné kanály pro technologie Open Source, kde se nachází hlubokou odbornost této technologie. Je možné použít mnoho webů komunity. Příklady jsou [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com). 
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Je možné, že podpora Microsoftu problém vyřešit. Případně vás můžou požádat, abyste provedli dostupné kanály pro technologie Open Source, kde se nachází hlubokou odbornost této technologie. Je možné použít mnoho webů komunity. Příklady jsou [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com).
 >
 > Projekty Apache také obsahují projektové weby na [webu Apache](https://apache.org). Příkladem je [Hadoop](https://hadoop.apache.org/).
 
@@ -442,7 +440,7 @@ K zobrazení informací protokolovaných akcemi skriptů můžete použít webov
 
 3. Vyhledá položky, které mají ve sloupci **Operations** **customscriptaction běžet\_** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
 
-    ![Snímek obrazovky s operacemi](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
+    ![Operace s akcemi skriptu Apache Ambari](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Chcete-li zobrazit výstup **stdout** a **stderr** , vyberte položku **run\customscriptaction** a přejděte k podrobnostem prostřednictvím odkazů. Tento výstup se generuje při spuštění skriptu a může mít užitečné informace.
 
@@ -514,7 +512,7 @@ Existují dvě výjimky:
 
     V tomto clusteru se nedají spouštět žádné nové akce skriptu kvůli konfliktům názvů skriptů v existujících skriptech. Názvy skriptů zadané při vytváření clusteru musí být jedinečné. Existující skripty jsou spouštěny při změně velikosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Instalace a použití Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)

@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001852"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092011"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -67,7 +67,7 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
 
 1. Jako název experimentu zadejte **My-1st-automl-experiment** .
 
-1. Vyberte **vytvořit nový výpočetní**výkon. 
+1. Vyberte **vytvořit nový výpočetní**výkon. Výpočetní prostředí je prostředí prostředků založené na místním nebo cloudu, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. V tomto experimentu používáme cloudový výpočetní výkon. 
 
     1. Nakonfigurujte výpočetní kontext pro tento experiment.
         
@@ -147,9 +147,9 @@ Jak experiment probíhá, obrazovka aktualizuje **graf iterace** a **seznam iter
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Pomocí automatizovaného strojového učení na úvodní stránce pracovního prostoru můžete nasadit nejlepší model jako webovou službu pro předpověď nových dat a identifikaci potenciálních oblastí příležitostí. Pro tento experiment nasazení znamená, že finanční instituce teď má iterativní a škálovatelné řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem.
+Pomocí automatizovaného strojového učení na úvodní stránce pracovního prostoru můžete nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
 
-V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut.
+V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
 
 1. Na stránce **Podrobnosti o spuštění** vyberte v pravém horním rohu tlačítko **nasadit nejlepší model** .
 
@@ -162,7 +162,7 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
     Skript bodování| AutoGenerate
     Skript prostředí| AutoGenerate
     
-1. Vyberte **Nasadit**.
+1. Vyberte **Nasadit**.  
 
     Po úspěšném dokončení nasazení se zobrazí zpráva o dokončení nasazení.
     
@@ -186,7 +186,7 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu automatizovaného strojového učení jste pomocí cílové stránky pracovního prostoru vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 

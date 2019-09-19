@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095175"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090750"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
 
@@ -89,7 +89,7 @@ Další pokyny pro použití vlastní image Linux:
 
 ## <a name="container-configuration-for-batch-pool"></a>Konfigurace kontejneru pro fond služby Batch
 
-Pokud chcete povolit, aby fond dávek spouštěl úlohy kontejneru, musíte v objektu [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) fondu zadat nastavení [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) . (Tento článek obsahuje odkazy na reference k rozhraní Batch .NET API. Odpovídající nastavení jsou v rozhraní API pro [dávkovou Python](/python/api/azure.batch) .)
+Pokud chcete povolit, aby fond dávek spouštěl úlohy kontejneru, musíte v objektu [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) fondu zadat nastavení [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) . (Tento článek obsahuje odkazy na reference k rozhraní Batch .NET API. Odpovídající nastavení jsou v rozhraní API pro [dávkovou Python](/python/api/overview/azure/batch) .)
 
 Fond s povoleným kontejnerem můžete vytvořit s nebo bez předem načtených imagí kontejnerů, jak je znázorněno v následujících příkladech. Proces pull (nebo předběžného načtení) umožňuje předem načíst image kontejneru z dokovacího centra nebo jiného registru kontejneru na internetu. Nejlepšího výkonu dosáhnete, když použijete službu [Azure Container Registry](../container-registry/container-registry-intro.md) ve stejné oblasti jako účet Batch.
 
@@ -302,7 +302,7 @@ CloudTask containerTask = new CloudTask (
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podívejte se také na sadu [Batch pro dávkové](https://github.com/Azure/batch-shipyard) zpracování, která umožňuje snadné nasazení kontejnerových úloh v Azure Batch prostřednictvím receptů v [loděnicích](https://github.com/Azure/batch-shipyard/tree/master/recipes).
 

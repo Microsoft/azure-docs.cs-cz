@@ -7,14 +7,14 @@ manager: carmonm
 keywords: obnovit zálohu; Jak obnovit; bod obnovení;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3d7497b7afd44a05f3691d3e3094e84c3dd73747
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: c479249a3a09b625e37fb80e7b73dcc8a1268622
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983922"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098368"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -188,7 +188,27 @@ Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí
 - Pokud má zálohovaný virtuální počítač statickou IP adresu, obnovený virtuální počítač bude mít dynamickou IP adresu, aby se předešlo konfliktu. [Do obnoveného virtuálního počítače můžete přidat STATICKOU IP adresu](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 - Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](../virtual-machines/linux/reset-password.md)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
+- Pokud nemůžete získat přístup k virtuálnímu počítači po obnovení z důvodu přerušeného vztahu k virtuálnímu počítači s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:
+    - Připojte disk s operačním systémem jako datový disk k obnovenému virtuálnímu počítači.
+    - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    - Povolení přístupu k VIRTUÁLNÍmu počítači z příkazového řádku na virtuálním počítači přes sériovou konzolu
+    
+  ```
+    bcdedit /store <drive letter>:\boot\bcd /enum
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+    - Při opakovaném sestavení virtuálního počítače použijte Azure Portal k resetování účtu místního správce a hesla
+    - K odpojení virtuálního počítače z domény použijte Sériová konzola přístup a CMD.
 
+    ```
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+    ```
+
+- Až se virtuální počítač odpojí a restartuje, budete moct úspěšně RDP na virtuální počítač s přihlašovacími údaji místního správce a úspěšně znovu připojit virtuální počítač k doméně.
 
 ## <a name="backing-up-restored-vms"></a>Zálohování obnovených virtuálních počítačů
 

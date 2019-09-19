@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení konfigurace clusteru Azure HDInsight pomocí bootstrapu
-description: Zjistěte, jak přizpůsobit konfiguraci clusteru HDInsight programově pomocí rozhraní .net, PowerShell a Resource Manageru šablony.
+title: Přizpůsobení konfigurací clusteru Azure HDInsight pomocí Bootstrap
+description: Přečtěte si, jak pomocí šablon .NET, PowerShell a Správce prostředků přizpůsobit konfiguraci clusteru HDInsight prostřednictvím kódu programu.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,55 +8,54 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 15d08b14e38f097e8e9c3e0db893efb1d6efe44d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484042"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098672"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
-Spouštěcí skripty umožňují instalaci a konfiguraci součásti v Azure HDInsight prostřednictvím kódu programu. 
+Spouštěcí skripty umožňují programově instalovat a konfigurovat komponenty v Azure HDInsight.
 
-Chcete-li nastavit nastavení konfiguračního souboru při vytváření clusteru HDInsight třemi způsoby:
+Existují tři přístupy k nastavení konfiguračního souboru při vytváření clusteru HDInsight:
 
 * Použití Azure Powershell
 * Použití sady .NET SDK
 * Použití šablon Azure Resource Manageru
 
-Například použití těchto metod prostřednictvím kódu programu, můžete nakonfigurovat možnosti v těchto souborech:
+Pomocí těchto programových metod můžete například nakonfigurovat možnosti v těchto souborech:
 
 * clusterIdentity.xml
-* Core-site.xml
+* Core-site. XML
 * gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
 * hive-env.xml
 * hive-site.xml
-* mapred-site
-* oozie site.xml
+* mapred – lokalita
+* Oozie-site. XML
 * oozie-env.xml
-* Storm-site.xml
+* Storm-site. XML
 * tez-site.xml
 * webhcat-site.xml
-* yarn-site.xml
-* Server.Properties (Konfigurace zprostředkovatele kafka)
+* YARN-site. XML
+* Server. Properties (Kafka-Broker Configuration)
 
-Informace o instalaci dalších komponent na clusteru HDInsight při vytváření najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
+Informace o instalaci dalších komponent v clusteru HDInsight během vytváření najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akce skriptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud používáte PowerShell, budete potřebovat [Az modulu](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview).
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-Následující kód Powershellu přizpůsobí [Apache Hive](https://hive.apache.org/) konfigurace:
+Následující kód PowerShellu přizpůsobí konfiguraci [Apache Hive](https://hive.apache.org/) :
 
 > [!IMPORTANT]  
-> Parametr `Spark2Defaults` možná bude nutné použít s [přidat AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Prázdné hodnoty můžete předat parametru, jak je znázorněno v následujícím příkladu kódu.
-
+> Parametr `Spark2Defaults` může být potřeba použít s [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Do parametru můžete předat prázdné hodnoty, jak je znázorněno v následujícím příkladu kódu.
 
 ```powershell
 # hive-site.xml configuration
@@ -82,23 +81,23 @@ New-AzHDInsightCluster `
     -Config $config
 ```
 
-Kompletní funkční skript prostředí PowerShell najdete v [příloha](#appendix-powershell-sample).
+Úplný funkční skript PowerShellu najdete v [dodatku](#appendix-powershell-sample).
 
-**Chcete-li ověřit změny:**
+**Ověření změny:**
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V levé nabídce klikněte na tlačítko **clustery HDInsight**. Pokud ho nevidíte, klikněte na tlačítko **všechny služby** první.
-3. Klikněte na cluster, který jste právě vytvořili pomocí Powershellového skriptu.
-4. Klikněte na tlačítko **řídicí panel** z horní části okna otevřete uživatelské rozhraní Ambari.
-5. Klikněte na tlačítko **Hive** v levé nabídce.
-6. Klikněte na tlačítko **HiveServer2** z **Souhrn**.
-7. Klikněte na tlačítko **Configs** kartu.
-8. Klikněte na tlačítko **Hive** v levé nabídce.
+2. V nabídce vlevo klikněte na **clustery HDInsight**. Pokud ho nevidíte, klikněte na **všechny služby** jako první.
+3. Klikněte na cluster, který jste právě vytvořili, pomocí skriptu PowerShellu.
+4. Kliknutím na **řídicí panel** v horní části okna otevřete uživatelské rozhraní Ambari.
+5. V nabídce vlevo klikněte na **podregistr** .
+6. Klikněte na **HiveServer2** ze **Shrnutí**.
+7. Klikněte na kartu **Konfigurace** .
+8. V nabídce vlevo klikněte na **podregistr** .
 9. Klikněte na tlačítko **Upřesnit** kartu.
-10. Posuňte se dolů a pak rozbalte **Advanced hive lokality**.
-11. Vyhledejte **hive.metastore.client.socket.timeout** v oddílu.
+10. Posuňte se dolů a pak rozbalte položku **pokročilý podregistr-site**.
+11. V části vyhledejte **podregistr. metastore. Client. Socket. Timeout** .
 
-Některé další ukázky k přizpůsobení další konfigurační soubory:
+Další ukázky přizpůsobení dalších konfiguračních souborů:
 
 ```xml
 # hdfs-site.xml configuration
@@ -115,10 +114,10 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ```
 
 ## <a name="use-net-sdk"></a>Použití sady .NET SDK
-Zobrazit [clusterů v HDInsight pomocí sady .NET SDK se systémem Linux vytvořit](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Přečtěte si téma [Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
-## <a name="use-resource-manager-template"></a>Šablony Resource Manageru pomocí
-V šabloně Resource Manageru můžete spuštění:
+## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
+Můžete použít Bootstrap v šabloně Správce prostředků:
 
 ```json
 "configurations": {
@@ -130,29 +129,27 @@ V šabloně Resource Manageru můžete spuštění:
 }
 ```
 
-![Přizpůsobí bootstrap šablony Azure Resource Manageru clusteru HDInsight Hadoop](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop přizpůsobí šablonu Azure Resource Manager Bootstrap clusteru.](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvořte clustery systému Apache Hadoop v HDInsight][hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
-* [Vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script]
-* [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]
-* [Instalace a využít Apache Giraph u clusterů HDInsight](hdinsight-hadoop-giraph-install.md).
+## <a name="see-also"></a>Viz také:
+
+* [Vytváření clusterů Apache Hadoop ve službě HDInsight][hdinsight-provision-cluster] poskytuje pokyny, jak vytvořit cluster HDInsight pomocí dalších vlastních možností.
+* [Vývoj skriptů akcí skriptu pro HDInsight][hdinsight-write-script]
+* [Instalace a použití Apache Spark v clusterech HDInsight][hdinsight-install-spark]
+* [Nainstalujte a použijte Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions-linux.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Fáze při vytváření clusteru"
 
-## <a name="appendix-powershell-sample"></a>Dodatek: Ukázka PowerShellu
+## <a name="appendix-powershell-sample"></a>Obsažen Ukázka PowerShellu
 
-Tento skript Powershellu vytvoří HDInsight cluster a přizpůsobí nastavení Hive. Je potřeba zadat hodnoty pro `$nameToken`, `$httpPassword`, a `$sshPassword`.
+Tento skript PowerShellu vytvoří cluster HDInsight a přizpůsobí nastavení podregistru. Nezapomeňte zadat hodnoty pro `$nameToken`, `$httpPassword`a `$sshPassword`.
 
 > [!WARNING]  
-> Druh účtu úložiště `BlobStorage` nelze použít pro clustery HDInsight.
-
+> Druh `BlobStorage` účtu úložiště se nedá použít pro clustery HDInsight.
 
 ```powershell
 ####################################

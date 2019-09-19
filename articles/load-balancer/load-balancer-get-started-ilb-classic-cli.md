@@ -5,6 +5,7 @@ description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatí
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0b061da308f2e8635cf1722cb6a735624501374
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781235"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090981"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení pomocí Azure Classic CLI
 
@@ -30,7 +31,7 @@ ms.locfileid: "60781235"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-cli.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-cli.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 

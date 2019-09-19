@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0538b3ea4ac3a7999a3028cfd8b2cfafbbf7856c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967281"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097733"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
@@ -49,11 +49,11 @@ Sestavy výkonu, vizualizace provozu a checkups stavu jsou k dispozici pro každ
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Další informace najdete v tématu [streamování protokolů pomocí Azure CLI](troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+Další informace najdete v tématu [protokoly streamování v Cloud Shell](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolte [protokolování aplikací](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Logfiles/Application/* .
+Povolte [protokolování aplikací](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Logfiles/Application/* .
 
 Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -131,7 +131,7 @@ Chcete-li zlepšit výkon aplikací Tomcat, můžete před nasazením do App Ser
 
 ## <a name="secure-applications"></a>Zabezpečené aplikace
 
-Aplikace Java běžící v App Service mají stejnou sadu osvědčených [postupů zabezpečení](/azure/security/security-paas-applications-using-app-services) jako u jiných aplikací.
+Aplikace Java běžící v App Service mají stejnou sadu [osvědčených postupů zabezpečení](/azure/security/security-paas-applications-using-app-services) jako u jiných aplikací.
 
 ### <a name="authenticate-users-easy-auth"></a>Ověřování uživatelů (snadné ověřování)
 
@@ -326,7 +326,7 @@ Podpora produktů pro [JDK Zulu s podporou Azure Azul](https://www.azul.com/down
 
 Vývojáři mohou [otevřít problém](/azure/azure-supportability/how-to-create-azure-support-request) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Toto téma poskytuje příkaz Java Runtime, který podporuje Azure App Service ve Windows.
 

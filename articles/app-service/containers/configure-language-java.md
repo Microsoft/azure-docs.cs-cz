@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8e47365f74668ba2b93bad2b65a9dc9e83080832
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034909"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098127"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -49,11 +49,11 @@ Sestavy výkonu, vizualizace provozu a checkups stavu jsou k dispozici pro každ
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-Další informace najdete v tématu [streamování protokolů pomocí Azure CLI](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+Další informace najdete v tématu [protokoly streamování v Cloud Shell](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
+Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
 Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -102,7 +102,7 @@ Další informace najdete v referenčních informacích k [příkazům Jcmd](htt
 
 ### <a name="analyzing-recordings"></a>Analýza záznamů
 
-Použijte [FTPS](../deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v pokynech k [instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+Použijte [FTPS](../deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v [pokynech k instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a ladění
 
@@ -418,7 +418,7 @@ Pro připojení ke zdrojům dat v aplikacích pro pružinové spouštění dopor
     app.datasource.url=${CUSTOMCONNSTR_exampledb}
     ```
 
-Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění pro přístup k datům a k](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) externě nakonfigurovaným [konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) .
+Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění pro přístup k datům a k](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) [externě nakonfigurovaným konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) .
 
 ## <a name="configure-java-ee-wildfly"></a>Konfigurace jazyka Java EE (WildFly)
 
@@ -696,7 +696,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
 3. Pomocí FTP nahrajte soubor JAR správce relací do instance App Service a umístěte ho do adresáře */Home/Tomcat/lib* . Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-4. Zakažte [soubor cookie spřažení relace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) pro vaši instanci App Service. To můžete provést z Azure Portal tak, že přejdete do aplikace a pak nakonfigurujete nastavení **konfigurace > obecná nastavení > spřažení ARR** na **off**. Alternativně můžete použít následující příkaz:
+4. Zakažte [soubor cookie spřažení relace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) pro vaši instanci App Service. To můžete provést z Azure Portal tak, že přejdete do aplikace a pak **nakonfigurujete nastavení konfigurace > obecná nastavení > spřažení ARR** na **off**. Alternativně můžete použít následující příkaz:
 
     ```azurecli
     az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
@@ -706,9 +706,9 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
 5. Přejděte do části **vlastnosti** instance App Service a najděte **Další odchozí IP adresy**. Tyto možnosti označují všechny možné odchozí IP adresy pro vaši aplikaci. Zkopírujte je pro použití v dalším kroku.
 
-6. Pro každou IP adresu vytvořte v mezipaměti Azure pro instanci Redis pravidlo brány firewall. To můžete provést na Azure Portal z části **Brána firewall** vaší instance Redis. Zadejte jedinečný název pro každé pravidlo a nastavte **Počáteční IP adresu** a hodnoty KONCOVých **IP** adres na stejnou IP adresu.
+6. Pro každou IP adresu vytvořte v mezipaměti Azure pro instanci Redis pravidlo brány firewall. To můžete provést na Azure Portal z části **Brána firewall** vaší instance Redis. Zadejte jedinečný název pro každé pravidlo a nastavte **Počáteční IP adresu** a hodnoty **koncových IP** adres na stejnou IP adresu.
 
-7. Přejděte do části **Rozšířená nastavení** instance Redis a nastavte možnost **povoluje přístup pouze přes protokol SSL** . Tím umožníte, aby vaše instance App Service komunikovala s mezipamětí Redis prostřednictvím infrastruktury Azure.
+7. Přejděte do části **Rozšířená nastavení** instance Redis a nastavte možnost **povoluje přístup pouze přes protokol SSL** **.** Tím umožníte, aby vaše instance App Service komunikovala s mezipamětí Redis prostřednictvím infrastruktury Azure.
 
 8. Aktualizujte konfiguraci v souboru *pom. XML* vaší aplikace tak, aby odkazovala na informace o účtu Redis. `azure-webapp-maven-plugin` Tento soubor používá proměnné prostředí, které jste předtím nastavili, aby byly informace o svém účtu ze zdrojových souborů.
 
@@ -794,7 +794,7 @@ Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile b
 
 Pokud bude vyřazení podporované běhové prostředí Java, budou se vývojáři Azure, kteří používají modul runtime, předávat oznámení o zastaralosti alespoň šest měsíců před vyřazením modulu runtime.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na webu [Azure pro vývojáře v jazyce Java](/java/azure/) najdete informace o rychlých startech, kurzech a referenční dokumentaci Java pro Azure.
 

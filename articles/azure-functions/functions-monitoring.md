@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085612"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098685"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -610,7 +610,7 @@ Při vývoji aplikace často budete chtít, aby se při spuštění v Azure v re
 
 Existují dva způsoby, jak zobrazit datový proud souborů protokolu generovaných spuštěním vaší funkce.
 
-* **Integrované streamování protokolů**: platforma App Service umožňuje zobrazit datový proud souborů protokolu aplikace. Jedná se o ekvivalent výstupu zobrazeného při ladění funkcí během [místního vývoje](functions-develop-local.md) a při použití karty **test** na portálu. Zobrazí se všechny informace založené na protokolu. Další informace najdete v tématu [postup streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Tato metoda streamování podporuje pouze jednu instanci a nelze ji použít s aplikací spuštěnou v systému Linux v plánu spotřeby.
+* **Integrované streamování protokolů**: platforma App Service umožňuje zobrazit datový proud souborů protokolu aplikace. Jedná se o ekvivalent výstupu zobrazeného při ladění funkcí během [místního vývoje](functions-develop-local.md) a při použití karty **test** na portálu. Zobrazí se všechny informace založené na protokolu. Další informace najdete v tématu [protokoly streamování](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Tato metoda streamování podporuje pouze jednu instanci a nelze ji použít s aplikací spuštěnou v systému Linux v plánu spotřeby.
 
 * **Live Metrics Stream**: když je aplikace funkcí [připojená k Application Insights](#enable-application-insights-integration), můžete zobrazit data protokolu a další metriky téměř v reálném čase v Azure Portal pomocí [Live Metrics Stream](../azure-monitor/app/live-stream.md). Tuto metodu použijte, když chcete monitorovat funkce běžící na více instancích nebo v systému Linux v plánu spotřeby. Tato metoda používá [ukázková data](#configure-sampling).
 

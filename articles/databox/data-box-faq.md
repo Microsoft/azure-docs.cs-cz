@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142935"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098810"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -156,7 +156,7 @@ Další informace najdete v [kurzu: Zkopírujte data do Azure Data Box](data-box
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Zkopírujte data Azure Data Box a ověřte](data-box-deploy-copy-data.md).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Kopírování dat do Azure Data Boxu a jejich ověření](data-box-deploy-copy-data.md).
 - Použijte více relací.
 - Místo kopírování dat přes sdílenou síťovou složku (při kterém můžete být omezeni rychlostí sítě) zajistěte, aby byla data přímo na počítači, ke kterému je zařízení Data Box připojené.
 - Proveďte srovnávací testy výkonu počítače, který se používá ke kopírování dat. Pro srovnávací testy výkonu hardwaru serveru si stáhněte a používejte [nástroj Bluestop FIO](https://ci.appveyor.com/project/axboe/fio). Vyberte nejnovější sestavení x86 nebo x64, vyberte kartu **artefakty** a Stáhněte soubor MSI.
@@ -180,8 +180,19 @@ A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro 
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co bych měl/a dělat?
 A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způsobem manipuloval, nepoužívejte ho. [Obraťte se na podporu Microsoftu](data-box-disk-contact-microsoft-support.md) a co nejdříve zařízení vraťte. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V uvedeném případě vám náhradní zařízení nebudeme účtovat.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>Otázka: Můžu k dodání zařízení Data Box použít vlastního dopravce?
-A. U služby Data Box zajišťuje dopravu do datacentra Azure i z něj Microsoft. Pokud chcete použít vlastního dopravce, můžete použít službu Azure Import/Export. Další informace najdete v článku o [službě Azure Import/Export](../storage/common/storage-import-export-service.md).
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Otázka: Můžu Data Box objednávku vybrat? Můžu Data Box vrátit přes dopravce, který zvolím?
+A. Ano. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud chcete Data Box zařízení, proveďte následující kroky:
+    
+1. Po umístění objednávky se zpracuje objednávka a připraví se Data Box. Pošleme vám e-mail s oznámením, že je vaše objednávka připravená na vyzvednutí. 
+2. Jakmile bude objednávka připravena k vyzvednutí, přejděte do objednávky v Azure Portal a přejděte do okna **Přehled** . 
+3. Zobrazí se oznámení s kódem v Azure Portal. Odešlete e-mailem [Azure Data box provoznímu týmu](mailto:adbops@microsoft.com) a poskytněte jim kód. Tým poskytne umístění a naplánuje datum a čas vyzvednutí. Po obdržení e-mailových oznámení je nutné zavolat týmu do 5 pracovních dnů.
+
+Po dokončení kopírování dat proveďte následující kroky a vraťte vaše zařízení:
+
+1. Po dokončení kopírování dat bez chyb spusťte **Příprava k odeslání**. Po dokončení přípravy obdržíte kód v místním webovém uživatelském rozhraní zařízení. Zkopírujte a uložte kód.
+2. Vypněte zařízení a odeberte spojovací kabely.
+3. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
+4. Odešlete e-mailem [Azure Data box provoznímu týmu](mailto:adbops@microsoft.com) a poskytněte jim kód, který jste předtím uložili. Poskytne vám informace o tom, kde a kdy se má zařízení vyřadit.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Otázka: Budou se při expedici v zařízeních Data Boxovat hranice mezi země?
 A. Všechna Data Box zařízení jsou dodávána ze stejné země jako jejich cíl a nebudou mezi mezinárodními hranicemi. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se zařízení můžou dodávat do a z libovolné země EU. To platí jak pro Data Box, tak pro Data Box Heavyá zařízení.

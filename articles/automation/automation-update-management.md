@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: MT
+ms.openlocfilehash: daa075518c569e257fd86a478809a1d1650d4345
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743840"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098112"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -75,7 +75,7 @@ V následující tabulce je uveden seznam podporovaných operačních systémů:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)|**Posouzení aktualizací**: Podporováno<br><br>Probíhá **Oprava**: Vyžaduje Hybrid Runbook Worker. Viz [požadavky na Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)|**Posouzení aktualizací**: Podporováno<br><br>Probíhá **Oprava**: Vyžaduje Hybrid Runbook Worker. Viz [požadavky na Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, aby příkaz "Yumu" vracel data zabezpečení, která CentOS nejsou v poli. Další informace o opravách na základě klasifikace v CentOS najdete v tématu [klasifikace aktualizací v systému Linux](#linux-2) .          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -231,7 +231,7 @@ Při zahrnutí skupin počítačů do nasazení aktualizace se členství ve sku
 
 Pokud nechcete, aby se aktualizace používaly mimo časové období údržby v Ubuntu, překonfigurujte balíček bezobslužné aktualizace tak, aby nedocházelo k automatickým aktualizacím. Informace o tom, jak nakonfigurovat balíček, najdete [v tématu věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-Virtuální počítače vytvořené z imagí RHEL (na Red Hat Enterprise Linux vyžádání), které jsou k dispozici v Azure Marketplace, se registrují pro přístup k [infrastruktuře RHUI (Red Hat Update Infrastructure)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , která je nasazená v Azure. Jakákoli jiná distribuce systému Linux musí být aktualizována z online úložiště souborů distribuce pomocí podporovaných metod distribuce.
+Virtuální počítače vytvořené z imagí RHEL (na Red Hat Enterprise Linux vyžádání), které jsou k dispozici v Azure Marketplace, se registrují pro přístup k infrastruktuře RHUI (Red Hat Update Infrastructure), která je nasazená v Azure. Jakákoli jiná distribuce systému Linux musí být aktualizována z online úložiště souborů distribuce pomocí podporovaných metod distribuce.
 
 Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit**:
 
@@ -422,7 +422,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy na posuzování virtuálních počítačů Azure (Linux)
 
-U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
+U některých Linux distribuce se neshoduje [](https://en.wikipedia.org/wiki/Endianness) s hodnotou VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
@@ -665,7 +665,7 @@ Odebrání virtuálního počítače z Update Management:
 * Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci `MicrosoftDefaultScopeConfig-Updates`oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
 * Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejděte k kurzu, kde se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 

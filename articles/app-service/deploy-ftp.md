@@ -11,16 +11,16 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 09/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070489"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098064"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace pro Azure App Service pomocí FTP/S
 
@@ -72,9 +72,9 @@ Doporučujeme, abyste pro nasazení do aplikace použili **přihlašovací údaj
 
 Pro zvýšení zabezpečení byste měli povolený jenom FTP přes SSL. Pokud nepoužíváte nasazení FTP, můžete také zakázat protokol FTP i FTPS.
 
-Na stránce prostředků vaší aplikace v [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte **nastavení aplikace** .
+Na stránce prostředků vaší aplikace v [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte **Konfigurace** > **Obecné nastavení** .
 
-Pokud chcete zakázat nešifrované FTP, vyberte **jenom FTPS**. Pokud chcete úplně vypnout FTP i FTPS, vyberte **Zakázat**. Jakmile budete hotoví, klikněte na **Uložit**. Pokud používáte **jenom FTPS** , musíte vyhovět TLS 1,2 nebo vyššímu, a to tak, že přejdete do okna **Nastavení SSL** ve vaší webové aplikaci. TLS 1,0 a 1,1 nejsou podporované jenom pro **FTPS**.
+Pokud chcete zakázat nešifrované FTP, vyberte **FTPS jenom** ve **stavu FTP**. Pokud chcete úplně vypnout FTP i FTPS, vyberte **disabled (zakázáno**). Jakmile budete hotoví, klikněte na **Uložit**. Pokud používáte **jenom FTPS**, musíte vyhovět TLS 1,2 nebo vyššímu, a to tak, že přejdete do okna **Nastavení TLS/SSL** ve vaší webové aplikaci. TLS 1,0 a 1,1 nejsou podporované jenom pro **FTPS**.
 
 ![Zakázat FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -111,7 +111,7 @@ Ověřte, zda jste zadali správný název hostitele a [přihlašovací údaje](
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?
 Azure App Service podporuje připojení prostřednictvím aktivního i pasivního režimu. Pasivní režim je preferovaný, protože počítače nasazení jsou obvykle za bránou firewall (v operačním systému nebo v rámci domácí nebo firemní sítě). Podívejte se na [příklad v dokumentaci k WinSCP](https://winscp.net/docs/ui_login_connection). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V případě pokročilejších scénářů nasazení zkuste [nasadit do Azure pomocí Gitu](deploy-local-git.md). Nasazení založené na Gitu do Azure umožňuje správu verzí, obnovování balíčků, MSBuild a další.
 

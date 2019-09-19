@@ -1,38 +1,38 @@
 ---
-title: Podpora protokolu WebSocket ve službě Azure Application Gateway | Dokumentace Microsoftu
-description: Tato stránka poskytuje přehled podpory Application Gateway pomocí protokolu WebSocket.
+title: Podpora protokolu WebSocket v Azure Application Gateway | Microsoft Docs
+description: Tato stránka poskytuje přehled podpory Application Gateway WebSocket.
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831231"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097246"
 ---
-# <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket ve službě Application Gateway
+# <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket v Application Gateway
 
 Application Gateway poskytuje nativní podporu protokolu WebSocket ve všech velikostech brány. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. 
 
-Protokol WebSocket standardizaci [RFC6455](https://tools.ietf.org/html/rfc6455) umožňuje plně duplexní komunikaci mezi serverem a klientem přes dlouho běžící připojení TCP. Tato funkce umožňuje vyšší interaktivitou komunikace mezi webovým serverem a klientem, který může být obousměrné bez nutnosti dotazování jako požadovaných v implementacích založené na protokolu HTTP. Objekt WebSocket je nízké nároky na rozdíl od protokolu HTTP a můžete znovu použít stejné připojení TCP pro více požadavku/odpovědi, což vede k mnohem efektivnější využití prostředků. Protokoly WebSocket jsou navrženy pro práci přes tradiční HTTP porty 80 a 443.
+Protokol WebSocket standardizovaný v [RFC6455](https://tools.ietf.org/html/rfc6455) umožňuje plně duplexní komunikaci mezi serverem a klientem po dlouhém běhu připojení TCP. Tato funkce umožňuje interaktivní komunikaci mezi webovým serverem a klientem, což může být obousměrné bez nutnosti cyklického dotazování podle požadavků v implementacích založených na protokolu HTTP. WebSocket má na rozdíl od HTTP nízkou režii a může znovu použít stejné připojení TCP pro více požadavků nebo odpovědí, což má za následek efektivnější využití prostředků. Protokoly protokolu WebSocket jsou navržené tak, aby fungovaly přes tradiční porty HTTP 80 a 443.
 
-Můžete pokračovat v používání standardní naslouchací proces protokolu HTTP na portu 80 nebo 443 pro příjem provozu pomocí protokolu WebSocket. Přenos pomocí protokolu WebSocket je pak přesměrované na serveru povoleno back-end protokolu WebSocket pomocí odpovídající back-endový fond jak je uvedeno v pravidlech brány application. Back-end serveru musí odpovědět na sond brány aplikací, které jsou popsány v [přehled sondy stavu](application-gateway-probe-overview.md) oddílu. Sondy stavu služby Application gateway jsou jenom HTTP/HTTPS. Každý back-end serveru musí odpovědět na sondy protokolu HTTP služby application gateway pro směrování provozu objektu websocket na straně serveru.
+Pro příjem provozu protokolu WebSocket můžete nadále používat standardní naslouchací proces HTTP na portu 80 nebo 443. Přenosy protokolu WebSocket se pak přesměrují na back-end Server s protokolem WebSocket s použitím příslušného back-endu, jak je uvedeno v pravidlech služby Application Gateway. Back-end Server musí reagovat na testy služby Application Gateway, které jsou popsány v části [Přehled sondy stavu](application-gateway-probe-overview.md) . Sondy stavu Application Gateway jsou jenom HTTP/HTTPS. Každý back-end Server musí reagovat na testy HTTP, aby brána Application Gateway směrovala provoz protokolu WebSocket na server.
 
-Používá se v aplikacích, které využívají samosprávné komunikace rychlé, v reálném čase, jako jsou konverzace, řídicí panel a herních aplikací.
+Používá se v aplikacích, které využívají rychlou komunikaci v reálném čase, jako jsou konverzace, řídicí panely a herní aplikace.
 
-## <a name="how-does-websocket-work"></a>Jak funguje objektu websocket na straně
+## <a name="how-does-websocket-work"></a>Jak funguje WebSocket
 
-K navázání připojení soketu WebSocket, konkrétní metody handshake založené na protokolu HTTP se vyměňují mezi klientem a serverem. V případě úspěšného ověření application layer protocol je "upgradovat" z HTTP na protokoly Websocket, pomocí dříve navázaném připojení TCP. Jakmile k tomu dojde, HTTP je zcela mimo obrázku; data mohou být odeslány nebo přijaty pomocí protokolu WebSocket oba koncové body, dokud není zavřena připojení soketu WebSocket. 
+K navázání připojení pomocí protokolu WebSocket se vymění konkrétní Metoda handshake založená na protokolu HTTP mezi klientem a serverem. V případě úspěchu je protokol aplikační vrstvy upgradován z HTTP na WebSockets pomocí dříve vytvořeného připojení TCP. V takovém případě je HTTP zcela mimo obrázek. data je možné odesílat nebo přijímat pomocí protokolu WebSocket oběma koncovými body, až do ukončení připojení protokolu WebSocket. 
 
-![addcert](./media/application-gateway-websocket/websocket.png)
+![protokolu WebSocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 
-Existující naslouchací proces protokolu HTTP slouží k podpoře přenos pomocí protokolu WebSocket. Tady je fragment prvku httpListeners ze souboru šablony vzorku. Je třeba naslouchacích procesů HTTP a HTTPS pro podporu protokolu WebSocket a zabezpečený přenos pomocí protokolu WebSocket. Podobně můžete použít na portálu nebo v prostředí Azure PowerShell k vytvoření služby application gateway s moduly pro naslouchání na portu 80/443 podporují přenos pomocí protokolu WebSocket.
+K podpoře provozu protokolu WebSocket se dá použít existující naslouchací proces HTTP. Následuje fragment prvku httpListeners z ukázkového souboru šablony. Pro podporu protokolu WebSocket a zabezpečení provozu protokolu WebSocket budete potřebovat naslouchací proces HTTP i HTTPS. Podobně můžete pomocí portálu nebo Azure PowerShell vytvořit Aplikační bránu s naslouchacími procesy na portu 80/443 pro podporu provozu protokolu WebSocket.
 
 ```json
 "httpListeners": [
@@ -66,9 +66,9 @@ Existující naslouchací proces protokolu HTTP slouží k podpoře přenos pomo
     ],
 ```
 
-## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>Konfigurace pravidla BackendAddressPool, nastavení BackendHttpSetting a směrování
+## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>Konfigurace pravidla BackendAddressPool, BackendHttpSetting a směrování
 
-BackendAddressPool slouží k definování back-endového fondu se servery pomocí protokolu WebSocket povolena. Nastavení backendHttpSetting je definována s back-endový port 80 a 443. Vlastnosti pro spřažení na základě souborů cookie a requestTimeouts nejsou relevantní pro přenos pomocí protokolu WebSocket. Není žádná změna v pravidle směrování, "Základní" se používá a jejich zapojení odpovídající naslouchacího procesu pro odpovídající back-endového fondu adres. 
+BackendAddressPool se používá k definování fondu back-endu s povolenými servery protokolu WebSocket. BackendHttpSetting je definována s back-end port 80 a 443. Hodnota časového limitu požadavku v nastavení HTTP platí také pro relaci protokolu WebSocket. V pravidle směrování se nevyžaduje žádná změna, která se používá k propojení příslušného naslouchacího procesu s odpovídajícím fondem back-end adres. 
 
 ```json
 "requestRoutingRules": [{
@@ -104,9 +104,9 @@ BackendAddressPool slouží k definování back-endového fondu se servery pomoc
 }]
 ```
 
-## <a name="websocket-enabled-backend"></a>Back-end pomocí protokolu WebSocket povoleno
+## <a name="websocket-enabled-backend"></a>Back-end s povoleným protokolem WebSocket
 
-Back-endu, musí mít HTTP/HTTPS webový server běží na nakonfigurované portu protokolu websocket pro práci (obvykle 80 a 443). Tento požadavek je, protože protokol WebSocket vyžaduje počáteční handshake být u upgradu protokol WebSocket jako pole hlavičky protokolu HTTP. Následuje příklad hlavičky:
+Aby mohl WebSocket fungovat, musí mít váš back-end webový server HTTP/HTTPS, který běží na konfigurovaném portu (obvykle 80/443). Důvodem je, že protokol WebSocket vyžaduje, aby počáteční Metoda handshake byla HTTP s upgradem na protokol WebSocket jako pole hlavičky. Následuje příklad záhlaví:
 
 ```
     GET /chat HTTP/1.1
@@ -119,8 +119,8 @@ Back-endu, musí mít HTTP/HTTPS webový server běží na nakonfigurované port
     Sec-WebSocket-Version: 13
 ```
 
-Dalším důvodem je, že tuto sondu stavu back-endu aplikace brána podporuje pouze protokoly HTTP a HTTPS. Pokud back-end serveru neodpovídá na HTTP nebo HTTPS testy, je vyřazen ze back-endový fond.
+Dalším důvodem je, že sonda stavu back-endu služby Application Gateway podporuje jenom protokoly HTTP a HTTPS. Pokud back-end server nereaguje na testy HTTP nebo HTTPS, vychází z back-endu fondu.
 
 ## <a name="next-steps"></a>Další postup
 
-Po získání informací o podpora protokolu WebSocket, přejděte na [vytvoření služby application gateway](quick-create-powershell.md) začít s protokol WebSocket webové aplikace s podporou.
+Po získání podpory protokolu WebSocket si přečtěte, jak [vytvořit Aplikační bránu](quick-create-powershell.md) a začít používat webovou aplikaci s povoleným protokolem WebSocket.

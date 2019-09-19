@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f98df297eceb0a85a214bc046d33bd4c08d20030
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 201f35e7b3ccf7c113ae30a6d007ad3a1f9adb98
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884810"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087687"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -28,7 +28,7 @@ Správa takových přihlašovacích údajů může být obtížná. Setrvání p
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
-- [Rozšíření pro ověřování aplikací pro Visual Studio](https://go.microsoft.com/fwlink/?linkid=862354), které je dostupné jako samostatné rozšíření pro visual Studio 2017 Update 5 a je součástí produktu v Update 6 nebo novějším. S aktualizací Update 6 nebo novější můžete ověřit instalaci rozšíření ověřování aplikace výběrem nástrojů pro vývoj pro Azure v instalačním programu sady Visual Studio.
+- Rozšíření pro ověřování aplikací pro Visual Studio, které je dostupné jako samostatné rozšíření pro Visual Studio 2017 Update 5 a je součástí produktu v Update 6 nebo novějším. S aktualizací Update 6 nebo novější můžete ověřit instalaci rozšíření ověřování aplikace výběrem nástrojů pro vývoj pro Azure v instalačním programu sady Visual Studio.
 
 ## <a name="using-the-library"></a>Použití knihovny
 

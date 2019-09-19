@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9908ecdab389b429667b5e3da1abac5d2ca422ed
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d1b9a2a151ee73a060e65dc7df631d3e4955504d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009858"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090427"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 
 Tento konektor Couchbase je podporován pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z Couchbase do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
@@ -185,5 +185,5 @@ Ke zkopírování dat z Couchbase, nastavte typ zdroje v aktivitě kopírování
 
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

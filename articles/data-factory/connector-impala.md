@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f637314045210d89f8ac1da5d8675855e5d8b55
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 4bebdbda8fbba10b3e8817d3958e75d39522538a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009040"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092044"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopírování dat z Impala pomocí služby Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 
 Tento konektor Impala je podporován pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z Impala do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.

@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "68912331"
 ---
 V následující tabulce je uveden seznam kvót a omezení určených pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).

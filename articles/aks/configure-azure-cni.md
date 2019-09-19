@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3683c9fa7810083d26527275a1235df5336d1c65
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68498572"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097823"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ V *době nasazení clusteru*můžete nakonfigurovat maximální počet lusků na
 
 * **Azure CLI**: Zadejte argument při nasazení clusteru pomocí příkazu [AZ AKS Create.][az-aks-create] `--max-pods` Maximální hodnota je 250.
 * **Šablona správce prostředků**: Pokud nasadíte cluster [] s správce prostředků šablonou, určete vlastnostvobjektu`maxPods` ManagedClusterAgentPoolProfile. Maximální hodnota je 250.
-* **Azure Portal**: Když nasadíte cluster s Azure Portal, nemůžete změnit maximální počet lusků na uzel. Při nasazení pomocí Azure Portal se síťové clustery Azure CNI na jeden uzel omezí na 30 lusků.
+* **Azure Portal:** Když nasadíte cluster s Azure Portal, nemůžete změnit maximální počet lusků na uzel. Při nasazení pomocí Azure Portal se síťové clustery Azure CNI na jeden uzel omezí na 30 lusků.
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurace maximálního počtu existujících clusterů
 
@@ -118,7 +118,7 @@ Nejprve Získejte ID prostředku podsítě pro existující podsíť, do které 
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
-    --query [].id --output tsv
+    --query "[0].id" --output tsv
 
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```

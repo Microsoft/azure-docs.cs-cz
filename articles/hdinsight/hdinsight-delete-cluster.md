@@ -2,18 +2,18 @@
 title: Jak odstranit cluster HDInsight – Azure
 description: Informace o různých způsobech, jak můžete odstranit cluster Azure HDInsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 1c9214f3084d7b1e2012ec69e3b8e3fe6d08c09e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a28d59cb35004fac6b069f2aa41042b4d46e443f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810264"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091525"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure
 
@@ -29,8 +29,8 @@ ms.locfileid: "70810264"
 2. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight** a vyberte svůj cluster.
 
 3. Ve výchozím zobrazení vyberte ikonu **Odstranit** . Pomocí výzvy odstraňte cluster.
-   
-    ![Ikona Odstranit](./media/hdinsight-delete-cluster/deletecluster.png)
+
+    ![Tlačítko pro odstranění clusteru HDInsight](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
 
 ## <a name="azure-powershell-az-module"></a>Azure PowerShell AZ Module
 
