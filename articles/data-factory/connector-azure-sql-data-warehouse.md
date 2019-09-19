@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
 ms.openlocfilehash: 78b74c1db5f331e7b74a730148d52b1ff7694ec0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "71058985"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 

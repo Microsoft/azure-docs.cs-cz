@@ -1,19 +1,19 @@
 ---
-title: Rychlý Start – vytvoření clusteru služby Azure Kubernetes (AKS)
+title: 'Rychlý start: Nasazení clusteru služby Azure Kubernetes'
 description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a monitorovat výkon ve službě Azure Kubernetes Service (AKS) pomocí Azure CLI.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 05/20/2019
+ms.date: 09/13/2019
 ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019
+ms.openlocfilehash: 0ad1bb4acf27ff542b94b2e6f4aef82705f4b46a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68880684"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097990"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -30,6 +30,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+
+> [!Note]
+> Pokud se příkazy v tomto rychlém startu spouštějí místně (místo Azure Cloud Shell), ujistěte se, že jste příkazy spustili jako správce.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -58,15 +61,10 @@ Následující příklad výstupu ukazuje, že skupina prostředků byla úspě�
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se dá pomocí parametru *--enable-addons monitoring* povolit Azure Monitor pro kontejnery.
+Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se dá pomocí parametru *--enable-addons monitoring* povolit Azure Monitor pro kontejnery.  Dokončení této akce bude trvat několik minut.
 
 ```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-count 1 \
-    --enable-addons monitoring \
-    --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
@@ -234,30 +232,11 @@ Pokud chcete zobrazit hlasovou aplikaci Azure v akci, otevřete webový prohlí�
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
-
-Po vytvoření clusteru AKS byly povoleny Azure Monitor pro kontejnery pro zachycení metrik stavu pro uzly clusteru a lusky. Tyto metriky stavu jsou k dispozici na webu Azure Portal.
-
-Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro hlasování Azure, proveďte následující kroky:
-
-1. Otevřete webový prohlížeč na Azure Portal [https://portal.azure.com][azure-portal].
-1. Vyberte vaši skupinu prostředků, například *myResourceGroup*, a pak váš cluster AKS, například *myAKSCluster*.
-1. V části **monitorování** na levé straně vyberte přehledy.
-1. V horní části vyberte **+ Přidat filtr**.
-1. Jako vlastnost vyberte *obor názvů* a pak zvolte  *\<All, ale Kube-\>System*.
-1. Vyberte **kontejnery**.
-
-Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
-
-![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough/monitor-containers.png)
-
-Chcete-li zobrazit protokoly `azure-vote-back` pro pod, zvolte možnost **zobrazení v analýze**a pak vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
-
-![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
+Po vytvoření clusteru AKS byly povoleny [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) pro zachycení metrik stavu pro uzly clusteru a lusky. Tyto metriky stavu jsou k dispozici na webu Azure Portal.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru a všechny související prostředky pomocí příkazu [AZ Group Delete][az-group-delete] .
+Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru a všechny související prostředky pomocí příkazu [AZ Group Delete][az-group-delete] .
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -272,9 +251,9 @@ V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem v
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. K webovému [řídicímu panelu Kubernetes můžete získat přístup][kubernetes-dashboard] také pro svůj cluster AKS.
+V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. K [webovému řídicímu panelu Kubernetes můžete získat přístup][kubernetes-dashboard] také pro svůj cluster AKS.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 

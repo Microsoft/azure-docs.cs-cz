@@ -8,20 +8,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810757"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066925"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
-Extrakce, transformace a načítání (ETL) je proces, při kterém se data získávají z různých zdrojů, shromážděná ve standardním umístění, vyčištěná a zpracovaná a nakonec se načtou do úložiště dat, ze kterého se dá dotazovat. Starší verze procesů ETL importuje data, čistí je a pak je uloží do relačního datového stroje. S HDInsight podporuje rozsáhlá škála Apache Hadoopch komponent ekosystémů ve velkém měřítku. 
+Extrakce, transformace a načítání (ETL) je proces, při kterém se data získávají z různých zdrojů, shromážděná ve standardním umístění, vyčištěná a zpracovaná a nakonec se načtou do úložiště dat, ze kterého se dá dotazovat. Starší verze procesů ETL importuje data, čistí je a pak je uloží do relačního datového stroje. S HDInsight podporuje rozsáhlá škála Apache Hadoopch komponent ekosystémů ve velkém měřítku.
 
 Pro použití HDInsight v procesu ETL se dá vytvořit souhrn pomocí tohoto kanálu:
 
-![Přehled ETL HDInsight](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![Přehled ETL HDInsight v škálování](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 Následující části obsahují všechny fáze ETL a jejich přidružené součásti.
 
@@ -35,11 +35,11 @@ Orchestrace je nutná ke spuštění příslušné úlohy ve vhodnou dobu.
 
 Apache Oozie je systém koordinace pracovních postupů, který spravuje úlohy Hadoop. Oozie běží v rámci clusteru HDInsight a je integrovaný do zásobníku Hadoop. Oozie podporuje úlohy Hadoop pro Apache Hadoop MapReduce, Apache prasete, Apache Hive a Apache Sqoop. Oozie lze také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy Java nebo skripty prostředí.
 
-Další informace najdete v tématu [použití nástroje Apache Oozie s Apache Hadoop k definování a spuštění pracovního postupu v HDInsight](../hdinsight-use-oozie-linux-mac.md) pro hloubkové podrobně ukazující, jak používat Oozie k řízení kompletního kanálu, najdete v tématu [zprovoznění The data Pipeline](../hdinsight-operationalize-data-pipeline.md). 
+Další informace najdete v tématu [použití nástroje Apache Oozie s Apache Hadoop k definování a spuštění pracovního postupu v HDInsight](../hdinsight-use-oozie-linux-mac.md) pro hloubkové podrobně ukazující, jak používat Oozie k řízení kompletního kanálu, najdete v tématu [zprovoznění The data Pipeline](../hdinsight-operationalize-data-pipeline.md).
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory poskytuje možnosti orchestrace v podobě platformy jako služby. Je to cloudová služba pro integraci dat, která umožňuje vytvářet pracovní postupy řízené daty v cloudu za účelem Orchestrace a automatizace přesunu dat a transformace dat. 
+Azure Data Factory poskytuje možnosti orchestrace v podobě platformy jako služby. Je to cloudová služba pro integraci dat, která umožňuje vytvářet pracovní postupy řízené daty v cloudu za účelem Orchestrace a automatizace přesunu dat a transformace dat.
 
 Pomocí Azure Data Factory můžete:
 
@@ -133,7 +133,7 @@ Apache Flume se nedá použít se službou Azure HDInsight.  Místní instalace 
 
 Jakmile data ve vybraném umístění existují, je nutné je vyčistit, zkombinovat nebo připravit na konkrétní vzor použití.  Pro tento druh práce jsou k dispozici všechny vhodné možnosti pro podregistr, prasata a Spark SQL.  Jsou podporovány v HDInsight. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití systému Apache prasete s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 * [Použití Apache Hive jako nástroje ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

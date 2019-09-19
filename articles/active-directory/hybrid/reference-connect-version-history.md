@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983558"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097600"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -44,6 +44,9 @@ I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) získáte pomocí tohoto odkazu.
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>Dříve byly počítače se systémem Windows nižší úrovně připojené k Prem AD v některých případech nesprávně synchronizovány do cloudu. Příkladem je naplněná hodnota atributu userCertificate pro zařízení nižší úrovně Windows ve službě AD. Tato zařízení v Azure AD se ale vždycky nechali ve stavu čeká na vyřízení, protože tyto verze OS nejsou navržené k registraci ve službě Azure AD prostřednictvím AAD Sync. V této verzi Azure AD Connect AAD Sync zastavit synchronizaci počítačů se systémem Windows nižší úrovně do služby Azure AD a odstraní také dříve nesprávně synchronizovaná zařízení Windows ze služby Azure AD. Upozorňujeme, že tato změna neodstraní žádná zařízení Windows nižší úrovně, která byla správně zaregistrována ve službě Azure AD pomocí balíčku MSI. Tato zařízení budou pro účely podmíněného přístupu podle zařízení nadále fungovat podle očekávání. Někteří zákazníci můžou ze služby Azure AD zobrazit některá nebo všechna zařízení nižší úrovně Windows. Nejedná se o příčinu obav, protože tyto identity zařízení ve skutečnosti služba Azure AD během autorizace podmíněného přístupu nikdy nepoužily. Tito zákazníci možná budou muset znovu navštívit https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan a získat zařízení se systémem Windows na nižší úrovni, aby se zajistilo, že se tato zařízení budou moct plně účastnit podmíněného přístupu na základě zařízení. Mějte na paměti, že pokud se vám tato odstranění u objektů počítačů nebo zařízení nižší úrovně v Azure AD překročí prahová hodnota pro odstranění exportu, doporučujeme, aby se tyto operace při odstraňování mohli dopustit.
 
 ### <a name="release-status"></a>Stav verze
 9/10/2019: Vydaná jenom pro automatický upgrade

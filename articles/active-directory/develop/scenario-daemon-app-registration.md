@@ -1,6 +1,6 @@
 ---
-title: Démon procesu aplikace volání webových rozhraní API (registrace aplikace) – platforma identit Microsoft
-description: Zjistěte, jak sestavit aplikaci démona, která volá webové rozhraní API – registrace aplikace
+title: Aplikace démona, která volá webová rozhraní API (registrace aplikací) – platforma Microsoftu identity
+description: Informace o tom, jak vytvořit aplikaci démona, která volá webová rozhraní API – registrace aplikace
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a355ab226e56a3dde1df5369deda5142d47848
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f590010a655fb01529a4a59b5540cc03068f2b8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076237"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056476"
 ---
-# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Démon procesu aplikace, že volání webového rozhraní API – registrace aplikace
+# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace démona, která volá webová rozhraní API – registrace aplikace
 
-Démon procesu aplikace zde je, co potřebujete vědět při registraci aplikace.
+V případě aplikace démona je zde uvedeno, co potřebujete znát při registraci aplikace.
 
 ## <a name="supported-account-types"></a>Podporované typy účtu
 
-Vzhledem k tomu, že démon aplikace smysl jenom v tenantovi Azure AD, když vytvoříte aplikaci budete muset zvolit:
+Vzhledem k tom, že aplikace démona dávají smysl jenom v tenantovi Azure AD, musíte při vytváření aplikace zvolit tyto možnosti:
 
-- buď **účty v tomto adresáři organizace jenom**. Tato volba je nejběžnější případ, jako jsou obvykle napsány aplikace démon vývojáři – obchodní (LOB).
-- nebo **účty v libovolném adresáři organizace**. Tato volba provede Pokud jste nezávislý dodavatel softwaru poskytuje nástroj nástroje pro vaše zákazníky. Budete potřebovat správci tenantů zákazníka ke schválení.
+- buď **účty v tomto organizačním adresáři**. Tato volba je nejčastějším případem, protože aplikace démona jsou obvykle zapisovány obchodními vývojáři (LOB).
+- **účty nebo v jakémkoli organizačním adresáři**. Tuto možnost můžete vybrat, pokud jste nezávislý výrobce softwaru, který zákazníkům poskytuje nástroj pro nástroj. K schválení budete potřebovat správce tenantů pro zákazníky.
 
-## <a name="authentication---no-reply-uri-needed"></a>Ověřování - žádný identifikátor URI odpovědi, který je potřeba
+## <a name="authentication---no-reply-uri-needed"></a>Ověřování-není potřeba žádný identifikátor URI pro odpověď
 
-V případě, kdy důvěrné klientské aplikace používá **pouze** tok přihlašovacích údajů klienta, adresa URL odpovědi nemusí být registrován. Není nutná buď pro konfiguraci aplikace/konstrukce. Tok přihlašovacích údajů klienta nepoužívá se.
+V případě, že vaše důvěrná klientská aplikace používá **jenom** tok přihlašovacích údajů klienta, adresa URL odpovědi nemusí být zaregistrovaná. Není nutné ani pro konfiguraci a konstrukci aplikace. Tok přihlašovacích údajů klienta ho nepoužívá.
 
-## <a name="api-permissions---app-permissions-and-admin-consent"></a>Oprávnění k rozhraní API – oprávnění a vyjádření souhlasu správce
+## <a name="api-permissions---app-permissions-and-admin-consent"></a>Oprávnění rozhraní API – oprávnění aplikace a souhlas správce
 
-Démon procesu aplikace může požadovat pouze oprávnění aplikací k rozhraním API (ne delegovaná oprávnění). V **oprávnění rozhraní API** stránka pro registraci aplikace, po dokončení výběru **přidat oprávnění** a vybrali řady rozhraní API, zvolte **oprávnění aplikace**, a pak vyberte oprávnění
+Aplikace démona může požadovat oprávnění aplikace jenom pro rozhraní API (nejsou delegovaná oprávnění). Na stránce **oprávnění rozhraní API** pro registraci aplikace po výběru možnosti **Přidat oprávnění** a zvolení rodiny rozhraní API zvolte **oprávnění aplikace**a pak vyberte vaše oprávnění.
 
-![Oprávnění a vyjádření souhlasu správce](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+![Oprávnění aplikace a souhlas správce](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
-Démon procesu aplikace vyžadují, jste správcem tenanta předem souhlas s aplikací volání webového rozhraní API. Svůj souhlas se poskytuje v rámci stejného **oprávnění rozhraní API** stránky výběrem správce tenanta **udělit souhlas správce *naší organizace***
+Aplikace démona vyžadují, aby aplikace, která volá webové rozhraní API, měla předem souhlas správce tenanta. Tento souhlas je k dispozici na stejné stránce **oprávnění API** správcem tenanta, který v  ***naší organizaci* vybere udělení souhlasu správce** .
 
-Pokud jste nezávislý dodavatel softwaru vytvářet aplikace s více tenanty, chcete zkontrolovat [nasazení – případ aplikace démonů s více tenanty](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps) odstavce.
+Pokud jste nezávislý výrobce softwaru, který vytváří víceklientské aplikace, měli byste se podívat na [část nasazení v případě aplikace démona s více klienty](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps) .
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Démon procesu aplikace – konfigurace kódu aplikace](./scenario-daemon-app-configuration.md)
+> [Aplikace démon – konfigurace kódu aplikace](./scenario-daemon-app-configuration.md)
