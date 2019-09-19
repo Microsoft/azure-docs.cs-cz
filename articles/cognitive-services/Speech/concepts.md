@@ -251,7 +251,7 @@ Formulář vytvořené je nejvhodnější pro aplikace, které fungují na rozpo
 
 Vzhledem k tomu, že vulgární fráze je přirozeně součástí mluveného jazyka, služba Microsoft Speech při jejich mluveném rozpoznání tato slova a fráze rozpozná. Vulgární výrazy ale nemusí být vhodné pro všechny aplikace, zejména pro aplikace s omezenou, nedospělý cílovou skupinou uživatelů.
 
-VYTVOŘENÉový formulář používá maskování vulgárních výrazů u formy normalizace inverzního textu. Chcete-li maskovat vulgární výrazy, nastavte hodnotu parametru vulgárních výrazů na `masked`. Při maskování vulgárních výrazů se slova rozpoznaná jako součást slovníku vulgárního jazyka nahrazují hvězdičkami. Například: *připomenout mi k nákupu 5 ** * * * tužky. Maskovaný vytvořené tvar výsledku rozpoznávání nezahrnuje velká a malá písmena.
+VYTVOŘENÉový formulář používá maskování vulgárních výrazů u formy normalizace inverzního textu. Chcete-li maskovat vulgární výrazy, nastavte hodnotu parametru vulgárních výrazů na `masked`. Při maskování vulgárních výrazů se slova rozpoznaná jako součást slovníku vulgárního jazyka nahrazují hvězdičkami. Například: *připomenout mi k nákupu 5* tužky. Maskovaný vytvořené tvar výsledku rozpoznávání nezahrnuje velká a malá písmena.
 
 > [!NOTE]
 > Pokud je hodnota parametru dotazu vulgárních výrazů nastavená `raw`na, je vytvořené tvar s maskou stejný jako formulář vytvořené. Vulgární výrazy *nejsou* maskovány.
