@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: b9db5cbb9e65fc7bc8aa306a69a0889f29b61be3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101340"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066869"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -121,12 +121,12 @@ ms.locfileid: "70101340"
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Stažení, instalace a povolení agenta virtuálního počítače Azure)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Konfigurace rozšíření Azure Enhanced Monitoring pro SAP)
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Kontrola připravenosti pro Azure Enhanced Monitoring pro SAP)
-[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Kontrola stavu infrastruktury monitorování Azure)
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Řešení potíží se službou Azure Monitoring pro SAP)
+[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Konfigurace rozšíření Azure pro SAP)
+[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Kontroly připravenosti pro rozšíření Azure pro SAP)
+[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Kontrolu stavu pro rozšíření Azure pro konfiguraci SAP)
+[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Řešení potíží s rozšířením Azure pro SAP)
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Konfigurace monitorování)
+[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Nakonfigurovat rozšíření virtuálního počítače)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Konfigurace proxy serveru)
 [deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
@@ -150,7 +150,7 @@ ms.locfileid: "70101340"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Kontroly a řešení potíží s nastavením kompletního monitorování)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Kontroly a řešení potíží pro ucelenou kolekci dat pro agenta hostitele SAP)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -327,7 +327,7 @@ Ke správě virtuálních počítačů se systémem Windows nebo Linux můžete 
 
 ### <a name="internet-connection"></a>Připojení k Internetu
 
-Chcete-li stáhnout a spustit nástroje a skripty, které jsou požadovány pro nasazení softwaru SAP, musíte být připojeni k Internetu. Virtuální počítač Azure, na kterém běží rozšíření Azure Enhanced Monitoring pro SAP, potřebuje taky přístup k Internetu. Pokud je virtuální počítač Azure součástí virtuální sítě Azure nebo místní domény, ujistěte se, že jsou nastavená příslušná nastavení proxy serveru, jak je popsáno v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
+Chcete-li stáhnout a spustit nástroje a skripty, které jsou požadovány pro nasazení softwaru SAP, musíte být připojeni k Internetu. Virtuální počítač Azure s rozšířením Azure pro SAP taky potřebuje přístup k Internetu. Pokud je virtuální počítač Azure součástí virtuální sítě Azure nebo místní domény, ujistěte se, že jsou nastavená příslušná nastavení proxy serveru, jak je popsáno v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
 
 ### <a name="microsoft-azure-subscription"></a>Předplatné Microsoft Azure
 
@@ -440,7 +440,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě pomocí skupin zabezpečení sítě][virtual-networks-nsg].
-   * **Rozšíření**: Rozšíření virtuálních počítačů můžete nainstalovat tak, že je přidáte do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. V této příručce najdete informace v části [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5] .
+   * **Rozšíření**: Rozšíření virtuálních počítačů můžete nainstalovat tak, že je přidáte do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
    * **Monitorování**
      * **Diagnostika spouštění**: Pro diagnostiku spouštění můžete vybrat **Zakázat** .
@@ -454,7 +454,7 @@ Váš virtuální počítač se nasadí do skupiny prostředků, kterou jste vyb
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Vytvoření virtuálního počítače pomocí šablony
 
-Virtuální počítač můžete vytvořit pomocí jedné ze šablon SAP publikovaných v [úložišti GitHub Azure-Rychlé-Templates][azure-quickstart-templates-github]. Můžete také ručně vytvořit virtuální počítač pomocí [Azure Portal][virtual-machines-windows-tutorial], PowerShellu nebo rozhraní [][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]příkazového [řádku Azure CLI][virtual-machines-linux-tutorial].
+Virtuální počítač můžete vytvořit pomocí jedné ze šablon SAP publikovaných v [úložišti GitHub Azure-Rychlé-Templates][azure-quickstart-templates-github]. Můžete také ručně vytvořit virtuální počítač pomocí [Azure Portal][virtual-machines-windows-tutorial], [PowerShellu][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]nebo rozhraní příkazového [řádku Azure CLI][virtual-machines-linux-tutorial].
 
 * [**Šablona s konfigurací dvou vrstev (jenom jeden virtuální počítač)** (SAP-2-vrstva-Marketplace-image)][sap-templates-2-tier-marketplace-image]
 
@@ -508,19 +508,19 @@ Agent virtuálního počítače Azure se nasadí ve výchozím nastavení, když
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření ani shromažďovat data monitorování. Další informace najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
+V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření virtuálních počítačů nebo shromažďovat informace o infrastruktuře Azure pro hostitelského agenta SAP přes rozšíření SAP. pro Azure. Další informace najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
 
 #### <a name="join-a-domain-windows-only"></a>Připojit k doméně (jenom Windows)
 
 Pokud je vaše nasazení Azure připojené k místní službě Active Directory nebo instanci DNS prostřednictvím připojení VPN typu Site-to-site nebo ExpressRoute (Tento postup se nazývá *více* míst v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]) se očekává, že se virtuální počítač připojuje k místní doméně. Další informace o požadavcích pro tuto úlohu najdete v tématu [připojení virtuálního počítače k místní doméně (jenom Windows)][deployment-guide-4.3].
 
-#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurace monitorování
+#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Nakonfigurovat rozšíření virtuálního počítače
 
-Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure Monitoring pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro monitorování SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
+Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
 
-#### <a name="monitoring-check"></a>Kontrola monitorování
+#### <a name="vm-extension-for-sap-check"></a>Rozšíření virtuálního počítače pro kontrolu SAP
 
-Zkontrolujte, zda sledování funguje, jak je popsáno v tématu [kontroly a řešení potíží s nastavením kompletního monitorování][deployment-guide-troubleshooting-chapter].
+Zkontrolujte, jestli rozšíření virtuálního počítače pro SAP funguje, jak je popsáno v části [kontroly a řešení potíží pro koncovou kolekci dat pro agenta hostitele SAP][deployment-guide-troubleshooting-chapter].
 
 #### <a name="post-deployment-steps"></a>Kroky po nasazení
 
@@ -579,7 +579,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě pomocí skupin zabezpečení sítě][virtual-networks-nsg].
-   * **Rozšíření**: Rozšíření virtuálních počítačů můžete nainstalovat tak, že je přidáte do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. V této příručce najdete informace v části [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5] .
+   * **Rozšíření**: Rozšíření virtuálních počítačů můžete nainstalovat tak, že je přidáte do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
    * **Monitorování**
      * **Diagnostika spouštění**: Pro diagnostiku spouštění můžete vybrat **Zakázat** .
@@ -654,22 +654,22 @@ Pokud je vaše nasazení Azure připojené k místní službě Active Directory 
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření ani shromažďovat data monitorování. Další informace najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
+V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření virtuálních počítačů nebo shromažďovat informace o infrastruktuře Azure pro hostitelského agenta SAP přes rozšíření SAP. informace o Azure najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurace sledování
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurace rozšíření Azure VM pro SAP
 
-Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure Monitoring pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro monitorování SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
+Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
 
-#### <a name="monitoring-check"></a>Kontrola monitorování
+#### <a name="sap-vm-extension-check"></a>Kontroler rozšíření SAP VM
 
-Zkontrolujte, zda sledování funguje, jak je popsáno v tématu [kontroly a řešení potíží s nastavením kompletního monitorování][deployment-guide-troubleshooting-chapter].
+Zkontrolujte, jestli rozšíření virtuálního počítače pro SAP funguje, jak je popsáno v části [kontroly a řešení potíží pro koncovou kolekci dat pro agenta hostitele SAP][deployment-guide-troubleshooting-chapter].
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scénář 3: Přesunutí místního virtuálního počítače pomocí nezobecněného virtuálního pevného disku Azure s SAP
 
 V tomto scénáři plánujete přesunout konkrétní systém SAP z místního prostředí do Azure. Můžete to udělat tak, že nahrajete virtuální pevný disk, který obsahuje operační systém, binární soubory SAP a nakonec binární soubory DBMS, a virtuální pevné disky s daty a soubory protokolů systému DBMS do Azure. Na rozdíl od scénáře popsaného [ve scénáři 2: Nasazení virtuálního počítače s vlastní imagí pro SAP][deployment-guide-3.3]: v tomto případě zachováte uživatelské účty název hostitele, SAP SID a SAP na virtuálním počítači Azure, protože byly nakonfigurovány v místním prostředí. Nemusíte generalizovat operační systém. Tento scénář se často používá u různých scénářů, ve kterých se v rámci prostředí SAP na pracovišti spouští místně a jeho součástí běží na Azure.
 
-V tomto scénáři se agent virtuálního počítače během nasazování automaticky nenainstaluje. Vzhledem k tomu, že agent virtuálního počítače a rozšíření Azure Enhanced Monitoring pro SAP potřebují ke spuštění SAP NetWeaver v Azure, je potřeba stáhnout, nainstalovat a povolit obě komponenty ručně, i když vytvoříte virtuální počítač.
+V tomto scénáři se agent virtuálního počítače během **nasazování automaticky nenainstaluje** . Vzhledem k tomu, že agent virtuálního počítače a rozšíření Azure pro SAP se vyžadují ke spuštění SAP NetWeaver v Azure, je potřeba stáhnout, nainstalovat a povolit obě komponenty ručně, i když vytvoříte virtuální počítač.
 
 Další informace o agentovi virtuálního počítače Azure najdete v následujících zdrojích informací.
 
@@ -744,26 +744,26 @@ Pokud je vaše nasazení Azure připojené k místní službě Active Directory 
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření ani shromažďovat data monitorování. Další informace najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
+V závislosti na tom, jak je vaše místní síť nakonfigurovaná, možná budete muset nastavit proxy server na svém VIRTUÁLNÍm počítači. Pokud je váš virtuální počítač připojený k místní síti přes VPN nebo ExpressRoute, virtuální počítač nemusí mít přístup k Internetu a nebude moct stahovat požadovaná rozšíření virtuálních počítačů nebo shromažďovat informace o infrastruktuře Azure pro hostitelského agenta SAP přes rozšíření SAP. informace o Azure najdete v tématu [konfigurace proxy serveru][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurace sledování
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurace rozšíření Azure VM pro SAP
 
-Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure Monitoring pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro monitorování SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
+Abyste měli jistotu, že SAP podporuje vaše prostředí, nastavte rozšíření Azure pro SAP, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. V prostředcích uvedených v části [prostředky SAP][deployment-guide-2.2]ověřte požadavky pro SAP a požadované minimální verze systému SAP kernel a agenta hostitele SAP.
 
-#### <a name="monitoring-check"></a>Kontrola monitorování
+#### <a name="sap-vm-check"></a>Kontroly virtuálních počítačů SAP
 
-Zkontrolujte, zda sledování funguje, jak je popsáno v tématu [kontroly a řešení potíží s nastavením kompletního monitorování][deployment-guide-troubleshooting-chapter].
+Zkontrolujte, jestli rozšíření virtuálního počítače pro SAP funguje, jak je popsáno v části [kontroly a řešení potíží pro koncovou kolekci dat pro agenta hostitele SAP][deployment-guide-troubleshooting-chapter].
 
-## <a name="update-the-monitoring-configuration-for-sap"></a>Aktualizace konfigurace monitorování pro SAP
+## <a name="update-the-configuration-of-azure-extension-for-sap"></a>Aktualizace konfigurace rozšíření Azure pro SAP
 
-Aktualizujte konfiguraci monitorování SAP v některém z následujících scénářů:
-* Společný tým Microsoftu/SAP rozšiřuje možnosti monitorování a požaduje více nebo méně čítačů.
-* Společnost Microsoft zavádí novou verzi základní infrastruktury Azure, která zajišťuje data monitorování, a rozšíření Azure Enhanced Monitoring pro SAP musí být pro tyto změny přizpůsobeno.
-* K VIRTUÁLNÍmu počítači Azure připojíte další datové disky nebo odeberete datový disk. V tomto scénáři aktualizujte kolekci dat týkajících se úložišť. Změna konfigurace přidáním nebo odstraněním koncových bodů nebo přiřazením IP adres k virtuálnímu počítači nemá vliv na konfiguraci monitorování.
+Aktualizujte konfiguraci rozšíření Azure pro SAP v některém z následujících scénářů:
+* Společný tým Microsoftu/SAP rozšiřuje možnosti rozšíření virtuálního počítače a požaduje více nebo méně čítačů.
+* Společnost Microsoft zavádí novou verzi základní infrastruktury Azure, která zajišťuje data a rozšíření Azure pro SAP musí být přizpůsobeno těmto změnám.
+* K VIRTUÁLNÍmu počítači Azure připojíte další datové disky nebo odeberete datový disk. V tomto scénáři aktualizujte kolekci dat týkajících se úložišť. Změna konfigurace přidáním nebo odstraněním koncových bodů nebo přiřazením IP adres k virtuálnímu počítači nemá vliv na konfiguraci rozšíření.
 * Velikost virtuálního počítače Azure změníte například z velikosti A5 na jinou velikost virtuálního počítače.
 * Do virtuálního počítače Azure přidáte nová síťová rozhraní.
 
-Chcete-li aktualizovat nastavení monitorování, aktualizujte infrastrukturu monitorování podle kroků v části [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5].
+Pokud chcete aktualizovat nastavení, aktualizujte konfiguraci rozšíření Azure pro SAP podle kroků v části [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5].
 
 ## <a name="detailed-tasks-for-sap-software-deployment"></a>Podrobné úlohy pro nasazení softwaru SAP
 
@@ -925,15 +925,15 @@ Nastavení proxy serveru v \\etc\\waagent. conf platí také pro požadovaná ro
 
 Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP][virtual-networks-udr-overview].
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace rozšíření Azure Enhanced Monitoring pro SAP
+### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace rozšíření Azure pro SAP
 
-Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure Enhanced Monitoring pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
+Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
 
-Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete nainstalovat a nakonfigurovat rozšíření Azure Enhanced Monitoring pro SAP. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows nebo Linux pomocí počítače s Windows, přečtěte si téma [Azure PowerShell][deployment-guide-4.5.1]. Informace o instalaci rozšíření na VIRTUÁLNÍm počítači se systémem Linux pomocí plochy pro Linux najdete v tématu [Azure CLI][deployment-guide-4.5.2].
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete nainstalovat a nakonfigurovat rozšíření Azure pro SAP. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows nebo Linux pomocí počítače s Windows, přečtěte si téma [Azure PowerShell][deployment-guide-4.5.1]. Informace o instalaci rozšíření na VIRTUÁLNÍm počítači se systémem Linux pomocí plochy pro Linux najdete v tématu [Azure CLI][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell pro virtuální počítače se systémy Linux a Windows
 
-Postup instalace rozšíření Azure Enhanced Monitoring pro SAP pomocí prostředí PowerShell:
+Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell. Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].  
 1. Spusťte následující rutinu Azure PowerShellu.
@@ -952,21 +952,21 @@ Další informace o `Set-AzVMAEMExtension`naleznete v tématu [set-AzVMAEMExtens
 
 ![Úspěšné spuštění rutiny Azure specifické pro SAP – AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzVMAEMExtension` Konfigurace provádí všechny kroky ke konfiguraci monitorování hostitele pro SAP.
+`Set-AzVMAEMExtension` Konfigurace provádí všechny kroky pro konfiguraci shromažďování dat hostitele pro SAP.
 
 Výstup skriptu obsahuje následující informace:
 
-* Potvrďte, že je nakonfigurované monitorování pro disk s operačním systémem a všechny další datové disky.
+* Potvrzení, že je nakonfigurované shromažďování dat pro disk s operačním systémem a všechny další datové disky.
 * Následující dvě zprávy potvrzují konfiguraci metrik úložiště pro určitý účet úložiště.
-* Jeden řádek výstupu udává stav skutečné aktualizace konfigurace monitorování.
+* Jeden řádek výstupu udává stav skutečné aktualizace rozšíření virtuálních počítačů pro konfiguraci SAP.
 * Další řádek výstupu potvrzuje, že konfigurace byla nasazena nebo aktualizována.
-* Poslední řádek výstupu je informativní. Zobrazuje vaše možnosti pro testování konfigurace monitorování.
-* Pokud chcete ověřit, že se úspěšně provedly všechny kroky rozšířeného monitorování Azure a že infrastruktura Azure poskytuje potřebná data, pokračujte v kontrole připravenosti pro rozšíření Azure Enhanced Monitoring pro SAP, jak je popsáno v [tématu. Kontrola připravenosti pro Azure Enhanced Monitoring pro SAP][deployment-guide-5.1].
+* Poslední řádek výstupu je informativní. Zobrazuje vaše možnosti pro testování rozšíření virtuálního počítače pro konfiguraci SAP.
+* Pokud chcete ověřit, že se úspěšně provedly všechny kroky rozšíření Azure VM pro konfiguraci SAP a že infrastruktura Azure poskytuje potřebná data, pokračujte v kontrole připravenosti pro rozšíření Azure pro SAP, jak je popsané v části [kontroly připravenosti. pro rozšíření Azure pro SAP][deployment-guide-5.1].
 * Počkejte 15-30 minut, než Azure Diagnostics shromáždí relevantní data.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure CLI pro virtuální počítače se systémem Linux
 
-Instalace rozšíření Azure Enhanced Monitoring pro SAP pomocí Azure CLI:
+Instalace rozšíření Azure pro SAP pomocí Azure CLI:
 
    1. Nainstalujte rozhraní příkazového řádku Azure Classic, jak je popsáno v tématu [instalace rozhraní příkazového řádku Azure Classic][azure-cli].
    1. Přihlaste se pomocí svého účtu Azure:
@@ -981,7 +981,7 @@ Instalace rozšíření Azure Enhanced Monitoring pro SAP pomocí Azure CLI:
       azure config mode arm
       ```
 
-   1. Povolit rozšířené monitorování Azure:
+   1. Povolit rozšíření Azure pro SAP:
 
       ```
       azure vm enable-aem <resource-group-name> <vm-name>
@@ -1008,7 +1008,7 @@ Instalace rozšíření Azure Enhanced Monitoring pro SAP pomocí Azure CLI:
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Ověřte, jestli je rozšíření Azure Enhanced monitoring aktivní na virtuálním počítači Azure Linux. Ověřte, zda existuje \\soubor\\var\\lib\\AzureEnhancedMonitor PerfCounters. Pokud existuje, spusťte na příkazovém řádku tento příkaz, ve kterém se zobrazí informace shromažďované rozšířeným monitorováním Azure:
+1. Ověřte, jestli je rozšíření Azure pro SAP aktivní na virtuálním počítači Azure Linux. Ověřte, zda existuje \\soubor\\var\\lib\\AzureEnhancedMonitor PerfCounters. Pokud existuje, spusťte na příkazovém řádku tento příkaz, který zobrazí informace shromažďované rozšířením Azure pro SAP:
 
    ```
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1022,25 +1022,25 @@ Instalace rozšíření Azure Enhanced Monitoring pro SAP pomocí Azure CLI:
    ...
    ```
 
-## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a řešení potíží pro komplexní monitorování
+## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a řešení potíží pro ucelenou kolekci dat pro agenta hostitele SAP
 
-Po nasazení virtuálního počítače Azure a nastavení příslušné infrastruktury monitorování Azure ověřte, jestli všechny komponenty rozšíření Azure Enhanced monitoring fungují podle očekávání.
+Po nasazení virtuálního počítače Azure a nastavení relevantního rozšíření Azure pro SAP ověřte, jestli všechny komponenty rozšíření fungují podle očekávání.
 
-Spusťte kontrolu připravenosti pro rozšíření Azure Enhanced Monitoring pro SAP, jak je popsáno v tématu [Kontrola připravenosti pro rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-5.1]. Pokud jsou všechny výsledky kontroly připravenosti kladné a všechny relevantní čítače výkonu se zobrazí v pořádku, bylo monitorování Azure úspěšně nastavené. Můžete pokračovat v instalaci agenta hostitele SAP, jak je popsáno v tématu poznámky SAP v tématu [prostředky SAP][deployment-guide-2.2]. Pokud Kontrola připravenosti indikuje, že čítače chybí, spusťte kontrolu stavu infrastruktury monitorování Azure, jak je popsáno v tématu [Kontrola stavu pro konfiguraci infrastruktury monitorování Azure][deployment-guide-5.2]. Další možnosti řešení potíží najdete v tématu [řešení potíží se službou Azure Monitoring pro SAP][deployment-guide-5.3].
+Spusťte kontrolu připravenosti pro rozšíření Azure pro SAP, jak je popsané v [části kontrolu připravenosti pro Azure Extension pro SAP][deployment-guide-5.1]. Pokud jsou všechny výsledky kontroly připravenosti kladné a všechny relevantní čítače výkonu se zobrazí v pořádku, rozšíření Azure pro SAP se úspěšně nastavilo. Můžete pokračovat v instalaci agenta hostitele SAP, jak je popsáno v tématu poznámky SAP v tématu [prostředky SAP][deployment-guide-2.2]. Pokud kontrolu připravenosti indikuje, že čítače chybí, spusťte kontrolu stavu pro Azure Extension pro SAP, jak je popsáno v tématu [o kontrole stavu rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Další možnosti řešení potíží najdete v tématu [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontrola připravenosti pro rozšíření Azure Enhanced Monitoring pro SAP
+### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontroly připravenosti pro rozšíření Azure pro SAP
 
-Tato kontrola zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základní infrastruktury monitorování Azure.
+Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základního rozšíření Azure pro SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Spuštění kontroly připravenosti na virtuálním počítači s Windows
 
 1. Přihlaste se k virtuálnímu počítači Azure (použití účtu správce není nutné).
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku změňte adresář na instalační složku rozšíření Azure Enhanced Monitoring pro SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
+1. Na příkazovém řádku změňte adresář na instalační složku rozšíření Azure pro SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
-   *Verze* v cestě k rozšíření monitorování se může lišit. Pokud se v instalační složce zobrazují složky pro více verzí rozšíření monitorování, zkontrolujte konfiguraci služby Windows AzureEnhancedMonitoring a pak přepněte do složky označené jako *cesta ke spustitelnému souboru*.
+   *Verze* v cestě k příponě se může lišit. Pokud se v instalační složce zobrazují složky pro více verzí rozšíření, zkontrolujte konfiguraci služby Windows AzureEnhancedMonitoring a pak přepněte do složky označené jako *cesta ke spustitelnému souboru*.
 
-   ![Vlastnosti služby, na které běží rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-figure-1000]
+   ![Vlastnosti služby, na které běží rozšíření Azure pro SAP][deployment-guide-figure-1000]
 
 1. Na příkazovém řádku spusťte **azperflib. exe** bez parametrů.
 
@@ -1049,15 +1049,15 @@ Tato kontrola zajistí, že se všechny metriky výkonu, které se zobrazí v ap
    >
    >
 
-Pokud není nainstalované rozšíření Azure Enhanced monitoring nebo služba AzureEnhancedMonitoring není spuštěná, rozšíření není správně nakonfigurované. Podrobné informace o tom, jak rozšíření nasadit, najdete v tématu [řešení potíží s infrastrukturou Azure Monitoring pro SAP][deployment-guide-5.3].
+Pokud rozšíření Azure pro SAP není nainstalované nebo služba AzureEnhancedMonitoring není spuštěná, rozšíření není správně nakonfigurované. Podrobné informace o tom, jak rozšíření nasadit, najdete v tématu [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
 > [!NOTE]
-> Azperflib. exe je komponenta, kterou nelze použít pro vlastní účely. Jedná se o součást, která poskytuje data monitorování Azure související s virtuálním počítačem pro agenta hostitele SAP.
+> Azperflib. exe je komponenta, kterou nelze použít pro vlastní účely. Jedná se o součást, která poskytuje data infrastruktury Azure související s virtuálním počítačem výhradně pro agenta hostitele SAP.
 > 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Podívejte se na výstup souboru azperflib. exe.
 
-Výstup Azperflib. exe zobrazuje všechny naplněné čítače výkonu Azure pro SAP. V dolní části seznamu shromážděných čítačů zobrazuje souhrn a indikátor stavu stav monitorování Azure.
+Výstup Azperflib. exe zobrazuje všechny naplněné čítače výkonu Azure pro SAP. V dolní části seznamu shromážděných čítačů zobrazuje souhrn a indikátor stavu stav rozšíření Azure pro SAP.
 
 ![Výstup kontroly stavu spuštěním azperflib. exe, což znamená, že neexistují žádné problémy][deployment-guide-figure-1100]
 <a name="figure-11"></a>
@@ -1066,20 +1066,20 @@ Zkontroluje výsledek vrácený pro **čítače celkový** výstup, který je hl
 
 Vyhodnotit výsledné hodnoty následujícím způsobem:
 
-| Hodnoty výsledků Azperflib. exe | Stav monitorování Azure |
+| Hodnoty výsledků Azperflib. exe | Rozšíření Azure pro stav SAP |
 | --- | --- |
 | **Volání rozhraní API – nedostupné** | Čítače, které nejsou k dispozici, nemusí být možné použít pro konfiguraci virtuálního počítače, nebo se jedná o chyby. Zobrazení **stavu**. |
 | **Čítače celkem – prázdné** |Následující dva čítače služby Azure Storage můžou být prázdné: <ul><li>Serverová latence čtení z paměti – MS</li><li>Čtení z paměti op E2E MS</li></ul>Všechny ostatní čítače musí mít hodnoty. |
 | **Stav** |Pouze v případě, že se v zobrazení stav vrátí **OK**. |
 | **Diagnostika** |Podrobné informace o stavu. |
 
-Pokud hodnota **stavu** není v **pořádku**, postupujte podle pokynů v části [Kontrola stavu pro konfiguraci infrastruktury monitorování Azure][deployment-guide-5.2].
+Pokud hodnota **stavu** není v **pořádku**, postupujte podle pokynů v části [kontroly stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2].
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Spuštění kontroly připravenosti na virtuálním počítači se systémem Linux
 
 1. Připojte se k virtuálnímu počítači Azure pomocí SSH.
 
-1. Podívejte se na výstup rozšíření Azure Enhanced monitoring.
+1. Podívejte se na výstup rozšíření Azure pro SAP.
 
    a.  Spustit `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
@@ -1105,11 +1105,11 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobnou této:`python /usr/sbin/waagent -daemon`
 
-1. Ujistěte se, že je nainstalované a spuštěné rozšíření Azure Enhanced monitoring.
+1. Ujistěte se, že je nainstalovaná a spuštěná přípona Azure pro SAP.
 
    a.  Spustit `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
-   **Očekávaný výsledek**: Zobrazuje obsah adresáře rozšíření Azure Enhanced monitoring.
+   **Očekávaný výsledek**: Zobrazuje obsah rozšíření Azure pro adresář SAP.
 
    b. Spustit `ps -ax | grep AzureEnhanced`
 
@@ -1125,11 +1125,11 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
 Pokud už máte nainstalovaný aplikační Server SAP NetWeaver ABAP, otevřete transakční ST06 a ověřte, jestli je povolené rozšířené monitorování.
 
-Pokud některá z těchto kontrol selže a podrobné informace o tom, jak toto rozšíření nasadit, najdete v tématu [řešení potíží s infrastrukturou Azure Monitoring pro SAP][deployment-guide-5.3].
+Pokud některá z těchto kontrol selže a podrobnější informace o tom, jak toto rozšíření nasadit, najdete v tématu [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrola stavu pro konfiguraci infrastruktury monitorování Azure
+### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrolu stavu pro rozšíření Azure pro konfiguraci SAP
 
-Pokud některá data monitorování nejsou dodávána správně, jak je uvedeno v testu popsaných v části [Kontrola připravenosti pro Azure Enhanced Monitoring pro SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutinu, která zkontroluje, zda je infrastruktura monitorování Azure a monitorování. rozšíření pro SAP je správně nakonfigurované.
+Pokud některá z dat infrastruktury nejsou dodána správně, jak je uvedeno v testu popsaných v tématu [Kontrola připravenosti pro Azure Extension pro SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutinu, abyste zkontrolovali, jestli je infrastruktura Azure a rozšíření Azure pro SAP správně nakonfigurována.
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell, jak je popsáno v tématu [Deploying Azure PowerShell rutiny][deployment-guide-4.1].
 1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí získáte spuštěním rutiny `Get-AzEnvironment`. Pokud chcete použít globální Azure, vyberte prostředí **AzureCloud** . V případě Azure v Číně vyberte **AzureChinaCloud**.
@@ -1146,21 +1146,21 @@ Pokud některá data monitorování nejsou dodávána správně, jak je uvedeno 
 
 1. Skript testuje konfiguraci virtuálního počítače, který vyberete.
 
-   ![Výstup úspěšného testu infrastruktury monitorování Azure pro SAP][deployment-guide-figure-1300]
+   ![Výstup úspěšného testu rozšíření Azure pro SAP][deployment-guide-figure-1300]
 
-Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu aktualizace, jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure Enhanced Monitoring pro SAP][deployment-guide-5.1] a [kontrolu stavu pro konfiguraci infrastruktury monitorování Azure][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s infrastrukturou Azure Monitoring pro SAP][deployment-guide-5.3].
+Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu **aktualizace, jak**je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure rozšíření pro SAP][deployment-guide-5.1] a [kontrolu stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
 > [!Note]
-> V případech, kdy používáte spravované standardní disky Azure, se můžete setkat s upozorněními. Místo testů se zobrazí upozornění vracející "OK". To je normální a určené pro případ tohoto typu disku. Viz také téma [řešení potíží s infrastrukturou Azure Monitoring pro SAP][deployment-guide-5.3] .
+> V případech, kdy používáte spravované standardní disky Azure, se můžete setkat s upozorněními. Místo testů se zobrazí upozornění vracející "OK". To je normální a určené pro případ tohoto typu disku. Viz také téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3] .
 > 
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s infrastrukturou Azure Monitoring pro SAP
+### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s rozšířením Azure pro SAP
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
 Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Pokud služba není nainstalovaná správně nebo pokud ve vašem VIRTUÁLNÍm počítači není spuštěná, nemůžete shromažďovat metriky výkonu.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář rozšíření Azure Enhanced monitoring je prázdný.
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Instalační adresář rozšíření Azure pro SAP je prázdný.
 
 ###### <a name="issue"></a>Problém
 
@@ -1170,7 +1170,7 @@ Instalační adresář C:\\balíčky\\plug-\\in Microsoft. zákaznického poradn
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu spustit `Set-AzVMAEMExtension` konfigurační skript.
 
-##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Služba pro rozšířené monitorování Azure neexistuje.
+##### <a name="service-for-azure-extension-for-sap-does-not-exist"></a>Služba pro rozšíření Azure pro SAP neexistuje.
 
 ###### <a name="issue"></a>Problém
 
@@ -1178,16 +1178,16 @@ Služba systému Windows AzureEnhancedMonitoring neexistuje.
 
 Výstup Azperflib. exe vyvolá chybu:
 
-![Spuštění azperflib. exe indikuje, že služba rozšíření Azure Enhanced Monitoring pro SAP není spuštěná.][deployment-guide-figure-1400]
+![Provedení azperflib. exe indikuje, že služba rozšíření Azure pro SAP není spuštěná.][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Řešení
 
-Pokud služba neexistuje, rozšíření Azure Enhanced Monitoring pro SAP se nenainstalovalo správně. Znovu nasaďte rozšíření pomocí kroků popsaných ve scénáři nasazení v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3].
+Pokud služba neexistuje, rozšíření Azure pro SAP se nenainstalovalo správně. Znovu nasaďte rozšíření pomocí kroků popsaných ve scénáři nasazení v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3].
 
 Po nasazení rozšíření po jedné hodině znovu ověřte, zda jsou na virtuálním počítači Azure k dispozici čítače výkonu Azure.
 
-##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Služba pro rozšířené monitorování Azure existuje, ale nepodařilo se ji spustit.
+##### <a name="service-for-azure-extension-for-sap-exists-but-fails-to-start"></a>Služba pro rozšíření Azure pro SAP existuje, ale nepodařilo se ji spustit.
 
 ###### <a name="issue"></a>Problém
 
@@ -1195,7 +1195,7 @@ Služba AzureEnhancedMonitoring systému Windows existuje a je povolená, ale ne
 
 ###### <a name="solution"></a>Řešení
 
-Konfigurace je nesprávná. Restartujte rozšíření monitorování pro virtuální počítač, jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5].
+Konfigurace je nesprávná. Restartujte rozšíření Azure pro SAP na virtuálním počítači, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5].
 
 #### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
 
@@ -1207,11 +1207,11 @@ Pokud řešení potíží pomocí SAP Note [1999351] problém nevyřeší, spus�
 
 Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není spuštěn, nelze shromáždit žádné metriky výkonu.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář rozšíření Azure Enhanced monitoring je prázdný.
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Instalační adresář rozšíření Azure pro SAP je prázdný.
 
 ###### <a name="issue"></a>Problém
 
-Složka \\var\\lib\\waagentneobsahujepodadresářprorozšířeníAzureEnhancedmonitoring.\\
+Složka \\var\\lib\\waagentneobsahujepodadresářprorozšířeníAzureproSAP.\\
 
 ###### <a name="solution"></a>Řešení
 
@@ -1233,13 +1233,13 @@ Spuštění azperfli. exe jak bylo popsáno dříve, můžete získat výsledek,
 
 ###### <a name="solution"></a>Řešení
 
-Zprávy jsou způsobeny faktem, že standardní Managed Disks neposkytují rozhraní API používaná rozšířením monitorování pro kontrolu statistik standardních Azure Storagech účtů. Nejedná se o obavy. Důvodem pro zavedení monitorování pro účty Standard Disk Storage bylo omezení vstupně-výstupních procesů, ke kterým došlo často. Služba Managed disks se vyhne omezování tím, že omezuje počet disků v účtu úložiště. Proto není tento typ dat monitorování kritický.
+Zprávy jsou způsobeny faktem, že standardní Managed Disks neposkytují rozhraní API používaná rozšířením SAP pro SAP pro kontrolu statistik standardních Azure Storagech účtů. Nejedná se o obavy. Důvod, proč se shromažďování dat pro účty Standard Disk Storage omezuje na vstupně-výstupní operace, ke kterým došlo často. Služba Managed disks se vyhne omezování tím, že omezuje počet disků v účtu úložiště. Proto tento typ dat není kritický.
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure.
 
 Metriky výkonu v Azure se shromažďují pomocí démona, který získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Diagnostics. Čítače úložiště přicházejí z protokolů v rámci vašeho předplatného úložiště.
 
-Úplný a aktuální seznam známých problémů najdete v článku SAP Note [1999351], který obsahuje další informace pro řešení potíží s rozšířeným monitorováním Azure pro SAP.
+Úplný a aktuální seznam známých problémů najdete v článku SAP Note [1999351], který obsahuje další informace o řešení potíží pro rozšíření Azure pro SAP.
 
-Pokud problém nevyřešíte pomocí protokolu SAP Note [1999351] , spusťte znovu konfigurační skript `Set-AzVMAEMExtension` , jak je popsáno v tématu [Konfigurace rozšíření Azure Enhanced Monitoring pro SAP][deployment-guide-4.5]. Může se stát, že budete muset počkat na hodinu, protože čítače pro diagnostiku úložiště nebo diagnostické čítače se nemůžou vytvářet hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
+Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte `Set-AzVMAEMExtension` konfigurační skript znovu, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Může se stát, že budete muset počkat na hodinu, protože čítače pro diagnostiku úložiště nebo diagnostické čítače se nemůžou vytvářet hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.

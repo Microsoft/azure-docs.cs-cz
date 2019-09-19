@@ -5,6 +5,7 @@ description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatí
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b864a4bf352c547779bb368650971fa8b805fca7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848537"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090969"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení (Classic) pomocí prostředí PowerShell
 
@@ -30,7 +31,7 @@ ms.locfileid: "60848537"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](load-balancer-get-started-ilb-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -44,7 +45,7 @@ Pokud chcete vytvořit sadu interního nástroje pro vyrovnávání zatížení 
 2. Přidejte koncové body odpovídající virtuálním počítačům, které budou přijímat příchozí provoz.
 3. Nakonfigurujte servery, které budou posílat provoz k vyrovnání zatížení, aby posílaly provoz na virtuální IP adresu instance interního vyrovnávání zatížení.
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>Krok 1: Vytvořte instanci interního Vyrovnávání zatížení
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>Krok 1: Vytvoření instance interního vyrovnávání zatížení
 
 Pro existující cloudovou službu nebo cloudovou službu nasazenou v regionální virtuální síti můžete vytvořit instanci interního vyrovnávání zatížení pomocí následujících příkazů prostředí Windows PowerShell:
 
@@ -59,7 +60,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Všimněte si, že toto použití rutiny prostředí Windows PowerShell [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) používá sadu parametrů DefaultProbe. Více informací o dalších sadách parametrů najdete v dokumentaci k rutině [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Přidání koncových bodů do instance interního Vyrovnávání zatížení
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Přidání koncových bodů do instance interního vyrovnávání zatížení
 
 Zde naleznete příklad:
 
@@ -75,7 +76,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Konfigurace serverů pro posílání provozu do nového koncového bodu interního Vyrovnávání zatížení
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Konfigurace serverů pro posílání provozu do nového koncového bodu interního vyrovnávání zatížení
 
 Servery, u jejichž provozu se bude vyrovnávat zatížení, je nutné nakonfigurovat pro používání nové IP adresy (virtuální IP adresy) instance interního vyrovnávání zatížení. Jedná se o adresu, na které tato instance interního vyrovnávání zatížení naslouchá. Ve většině případů je třeba pouze přidat nebo upravit záznam DNS pro virtuální IP adresu instance interního vyrovnávání zatížení.
 

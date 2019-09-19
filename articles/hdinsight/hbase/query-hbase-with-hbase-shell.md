@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Dotaz Apache HBase v Azure HDInsight - HBase Shell'
-description: V tomto rychlém startu se dozvíte, jak pomocí prostředí Apache HBase spouštět dotazy Apache HBase.
-keywords: hdinsight hadoop, HBase
+title: 'Rychlý start: Dotazování Apache HBA v prostředí Azure HDInsight – HBA'
+description: V tomto rychlém startu se dozvíte, jak používat prostředí Apache HBA pro spouštění dotazů Apache HBA.
+keywords: HDInsight, Hadoop, HBA
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,62 +9,62 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: d937e090895a5b02026c755b1efb7dd1e0b35000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054297"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076432"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Rychlý start: Dotaz Apache HBase v Azure HDInsight pomocí prostředí HBase
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Rychlý start: Dotazování Apache HBA ve službě Azure HDInsight pomocí prostředí HBA
 
-V tomto rychlém startu se dozvíte, jak pomocí prostředí Apache HBase vytvoření tabulky HBase, vkládání dat a potom zadejte dotaz tabulku.
+V tomto rychlém startu se dozvíte, jak pomocí prostředí Apache HBA vytvořit tabulku HBA, vkládat data a pak dotazovat tabulku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Clustery Apache HBase. Zobrazit [vytvořit cluster](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Zajistěte si vybrat **HBase** typ clusteru.
+* Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-table-and-manipulate-data"></a>Vytvoření tabulky a pracovat s daty
+## <a name="create-a-table-and-manipulate-data"></a>Vytvoření tabulky a manipulace s daty
 
 Pro většinu osob se data zobrazí v tabulkovém formátu:
 
-![Tabulková data HDInsight HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![Tabulková data HDInsight Apache HBA](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
-V HBase (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)), vypadají stejná data následovně:
+V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)) vypadají stejná data jako:
 
-![Velké objemy tabulkových dat HDInsight HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![BigTable data o službě HDInsight Apache HBA](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
-Můžete použít SSH pro připojení ke clusterům HBase a používání prostředí Apache HBase k vytváření tabulek HBase, vkládání dat a dotazování na data.
+Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí prostředí Apache HBA vytvořit tabulky HBA, vkládat data a dotazovat data.
 
-1. Použití `ssh` příkazu se připojte ke svému clusteru HBase. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem vašeho clusteru a potom zadejte příkaz:
+1. Pomocí `ssh` příkazu se připojte ke clusteru HBA. Níže uvedený příkaz upravte nahrazením `CLUSTERNAME` názvem vašeho clusteru a zadáním příkazu:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Použití `hbase shell` příkaz ke spuštění interaktivního prostředí HBase. Zadejte následující příkaz v připojení SSH:
+2. Pomocí `hbase shell` příkazu spusťte interaktivní prostředí pro adaptéry HBA. Do připojení SSH zadejte následující příkaz:
 
     ```bash
     hbase shell
     ```
 
-3. Použití `create` příkaz pro vytvoření tabulky HBase se dvěma skupinami sloupců. Zadejte následující příkaz:
+3. Pomocí `create` příkazu vytvořte tabulku HBA se dvěma skupinami sloupců. Zadejte následující příkaz:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Použití `list` příkazu zobrazte výpis všech tabulek v HBase. Zadejte následující příkaz:
+4. K `list` vypsání všech tabulek v adaptérech HBA použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     list
     ```
 
-5. Použití `put` příkaz pro vložení hodnot v zadaném sloupci v zadaný řádek v určité tabulce. Zadejte následující příkaz:
+5. Použijte `put` příkaz pro vložení hodnot do zadaného sloupce v zadaném řádku v konkrétní tabulce. Zadejte následující příkaz:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,55 +73,55 @@ Můžete použít SSH pro připojení ke clusterům HBase a používání prost�
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Použití `scan` příkaz kontrolovat a vrátíte se `Contacts` dat tabulky. Zadejte následující příkaz:
+6. Pomocí `scan` příkazu naskenujte a `Contacts` vraťte data tabulky. Zadejte následující příkaz:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Použití `get` příkaz k načtení obsahu řádku. Zadejte následující příkaz:
+7. K `get` načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    Zobrazit podobné výsledky jako pomocí `scan` příkaz, protože existuje pouze jeden řádek.
+    Podobné výsledky se zobrazí při použití `scan` příkazu, protože existuje pouze jeden řádek.
 
-8. Použití `delete` příkazu k odstranění hodnota buňky v tabulce. Zadejte následující příkaz:
+8. Pomocí `delete` příkazu můžete odstranit hodnotu buňky v tabulce. Zadejte následující příkaz:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Použití `disable` příkazu zakažte v tabulce. Zadejte následující příkaz:
+9. Pomocí `disable` příkazu zakažte tabulku. Zadejte následující příkaz:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Použití `drop` příkaz pro odpojení tabulku z HBase. Zadejte následující příkaz:
+10. K `drop` vyřazení tabulky z HBA použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. Použití `exit` příkaz k zastavení interaktivní prostředí HBase. Zadejte následující příkaz:
+11. Pomocí `exit` příkazu zastavte prostředí HBA interaktivní prostředí. Zadejte následující příkaz:
 
     ```hbase
     exit
     ```
 
-Další informace o schématu tabulky HBase najdete v tématu [Úvod do navrhování schémat HBase Apache](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf). Další příkazy HBase najdete v tématu [referenční příručka Apache HBase](https://hbase.apache.org/book.html#quickstart).
+Další informace o schématu tabulky HBA najdete v tématu [Úvod do návrhu schématu Apache HBA](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf). Další příkazy HBA najdete v [Referenční příručce k Apache HBA](https://hbase.apache.org/book.html#quickstart).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak pomocí prostředí Apache HBase k vytvoření tabulky HBase, vkládání dat a potom zadejte dotaz tabulku. Další informace o datech uložených v HBase, dalším článku se seznámíte se způsobem spouštění dotazů s Apache Sparkem.
+V tomto rychlém startu jste zjistili, jak pomocí prostředí Apache HBA vytvářet tabulky HBA, vkládat data a dotazovat se na tabulku. Další článek s informacemi uloženými v Hbach vám ukáže, jak spustit dotazy pomocí Apache Spark.
 
 > [!div class="nextstepaction"]
-> [Použití Apache Sparku ke čtení a zápisu dat Apache HBase](../hdinsight-using-spark-query-hbase.md)
+> [Použití Apache Spark ke čtení a zápisu dat Apache HBA](../hdinsight-using-spark-query-hbase.md)

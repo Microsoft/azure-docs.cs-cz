@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128058"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090769"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -116,7 +116,7 @@ Podrobnosti najdete v souboru `python_quickstart_client.py` a v následujících
 
 ### <a name="preliminaries"></a>Nezbytné úkony
 
-K práci s účtem úložiště aplikace používá balíček [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) k vytvoření objektu [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice).
+K práci s účtem úložiště aplikace používá balíček [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) k vytvoření objektu [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice).
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-Odkaz `blob_client` slouží aplikaci k vytvoření kontejneru v účtu úložiště a k nahrání datových souborů do tohoto kontejneru. Soubory v úložišti jsou definované jako objekty [ResourceFile](/python/api/azure.batch.models.resourcefile) služby Batch, které může služba Batch později stáhnout do výpočetních uzlů.
+Odkaz `blob_client` slouží aplikaci k vytvoření kontejneru v účtu úložiště a k nahrání datových souborů do tohoto kontejneru. Soubory v úložišti jsou definované jako objekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) služby Batch, které může služba Batch později stáhnout do výpočetních uzlů.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -149,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
 
-K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů (`_POOL_NODE_COUNT`) a velikost virtuálního počítače (`_POOL_VM_SIZE`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) odešle fond do služby Batch.
+Metoda [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) odešle fond do služby Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Vytvoření úlohy Batch
 
-Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [Job. Add](/python/api/azure.batch.operations.joboperations) přidá úlohu do zadaného účtu Batch. Na začátku úloha neobsahuje žádné úkoly.
+Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [Job. Add](/python/api/azure-batch/azure.batch.operations.joboperations) přidá úlohu do zadaného účtu Batch. Na začátku úloha neobsahuje žádné úkoly.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,9 +185,9 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Vytvoření úkolů
 
-Aplikace vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Každý úkol zpracovává vstupní objekt `resource_files` pomocí parametru `command_line`. Příkazový řádek v ukázce spustí příkaz prostředí Bash `cat`, který zobrazí textový soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
+Aplikace vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Každý úkol zpracovává vstupní objekt `resource_files` pomocí parametru `command_line`. Příkazový řádek v ukázce spustí příkaz prostředí Bash `cat`, který zobrazí textový soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
-Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
+Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
 
 ```python
 tasks = list()
@@ -232,7 +232,7 @@ Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá v
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Provedete to tak, že v Azure Portal vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste spustili malou aplikaci sestavenou pomocí rozhraní Python API služby Batch a ta vytvořila fond a úlohu služby Batch. Úloha spustila ukázkové úkoly a stáhla výstup vytvořený v uzlech. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch a vysvětlení paralelních úloh v reálné aplikaci najdete v kurzu o Pythonu služby Batch.
 

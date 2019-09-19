@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321836"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090789"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí Azure Batch s využitím rozhraní Python API
 
@@ -123,7 +123,7 @@ Následující části ukázkovou aplikaci rozdělují do kroků, které aplikac
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Ověřování klientů objektů blob a služby Batch
 
-K práci s účtem úložiště aplikace používá balíček [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) k vytvoření objektu [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice).
+K práci s účtem úložiště aplikace používá balíček [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) k vytvoření objektu [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice).
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Nahrání vstupních souborů
 
-Aplikace používá odkaz `blob_client` k vytvoření kontejneru úložiště pro vstup souborů MP4 a kontejner pro výstup úlohy. Potom zavolá funkci `upload_file_to_container` pro odeslání souborů MP4 z místního adresáře `InputFiles` do kontejneru. Soubory v úložišti jsou definované jako objekty [ResourceFile](/python/api/azure.batch.models.resourcefile) služby Batch, které může služba Batch později stáhnout do výpočetních uzlů.
+Aplikace používá odkaz `blob_client` k vytvoření kontejneru úložiště pro vstup souborů MP4 a kontejner pro výstup úlohy. Potom zavolá funkci `upload_file_to_container` pro odeslání souborů MP4 z místního adresáře `InputFiles` do kontejneru. Soubory v úložišti jsou definované jako objekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) služby Batch, které může služba Batch později stáhnout do výpočetních uzlů.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -165,13 +165,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
-Na účtu Batch potom příklad pomocí volání `create_pool` vytvoří fond výpočetních uzlů. Tato definovaná funkce používá třídu služby Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) k nastavení počtu uzlů, velikosti virtuálního počítače a konfigurace fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje širokou škálu imagí virtuálních počítačů v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+Na účtu Batch potom příklad pomocí volání `create_pool` vytvoří fond výpočetních uzlů. Tato definovaná funkce používá třídu služby Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) k nastavení počtu uzlů, velikosti virtuálního počítače a konfigurace fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje širokou škálu imagí virtuálních počítačů v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů a velikost virtuálních počítačů jsou definované konstanty. Batch podporuje vyhrazené uzly a [uzly s nízkou prioritou](batch-low-pri-vms.md) a ve svých fondech můžete použít oba typy. Vyhrazené uzly jsou rezervované pro váš fond. Uzly s nízkou prioritou pocházejí z přebytečné kapacity virtuálních počítačů v Azure a nabízejí se za nižší cenu. Pokud Azure nemá dostatek kapacity, uzly s nízkou prioritou budou nedostupné. Ukázka ve výchozím nastavení vytvoří fond obsahující pouze 5 uzlů s nízkou prioritou ve velikosti *Standard_A1_v2*. 
 
-Spolu s fyzickými vlastnostmi uzlu tato konfigurace fondu také zahrnuje objekt [StartTask](/python/api/azure.batch.models.starttask). StartTask se spustí na každém uzlu, když se takový uzel připojí k fondu, a taky pokaždé, když se uzel restartuje. V tomto příkladě StartTask spouští příkazy prostředí Bash pro instalaci balíčku ffmpeg a závislostí na uzlech.
+Spolu s fyzickými vlastnostmi uzlu tato konfigurace fondu také zahrnuje objekt [StartTask](/python/api/azure-batch/azure.batch.models.starttask). StartTask se spustí na každém uzlu, když se takový uzel připojí k fondu, a taky pokaždé, když se uzel restartuje. V tomto příkladě StartTask spouští příkazy prostředí Bash pro instalaci balíčku ffmpeg a závislostí na uzlech.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) odešle fond do služby Batch.
+Metoda [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) odešle fond do služby Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -199,9 +199,9 @@ new_pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(new_pool)
 ```
 
-### <a name="create-a-job"></a>Vytvoření úlohy
+### <a name="create-a-job"></a>Vytvoří úlohu
 
-Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `create_job`. Tato definovaná funkce používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure.batch.operations.joboperations) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
+Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `create_job`. Tato definovaná funkce používá třídu [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -213,11 +213,11 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Vytvoření úkolů
 
-Aplikace vytvoří úkoly pro úlohu pomocí volání `add_tasks`. Tato definovaná funkce vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Každá úloha spouští ffmpeg pro zpracování vstupního objektu `resource_files` pomocí parametru `command_line`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
+Aplikace vytvoří úkoly pro úlohu pomocí volání `add_tasks`. Tato definovaná funkce vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Každá úloha spouští ffmpeg pro zpracování vstupního objektu `resource_files` pomocí parametru `command_line`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
-Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/python/api/azure.batch.models.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti `output_files` nahrají do kontejneru v propojeném účtu úložiště.
+Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti `output_files` nahrají do kontejneru v propojeném účtu úložiště.
 
-Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
+Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
 
 ```python
 tasks = list()
@@ -247,7 +247,7 @@ batch_service_client.task.add_collection(job_id, tasks)
 
 Když služba Batch přidá do úlohy úkoly, automaticky je zařadí do fronty a naplánuje jejich spuštění ve výpočetních uzlech v přidruženém fondu. Na základě vámi zadaných nastavení služba Batch zpracuje veškeré řazení úkolů do fronty, plánování úkolů, opakované spouštění a další povinnosti spojené se správou úkolů. 
 
-Ke sledování provádění úkolů existuje mnoho přístupů. Funkce `wait_for_tasks_to_complete` v tomto příkladu používá objekt [TaskState](/python/api/azure.batch.models.taskstate) k monitorování úloh pro konkrétní stav (v tomto případě dokončený stav) v rámci časového limitu.
+Ke sledování provádění úkolů existuje mnoho přístupů. Funkce `wait_for_tasks_to_complete` v tomto příkladu používá objekt [TaskState](/python/api/azure-batch/azure.batch.models.taskstate) k monitorování úloh pro konkrétní stav (v tomto případě dokončený stav) v rámci časového limitu.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -267,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úložiště, který vytvořila, a dá vám možnost odstranit fond a úlohu služby Batch. Třídy [JobOperations](/python/api/azure.batch.operations.joboperations) a [PoolOperations](/python/api/azure.batch.operations.pooloperations) v BatchClient obsahují metody pro odstranění, které se zavolají, pokud potvrdíte odstranění. I když se vám neúčtují poplatky za úlohy a úlohy samotné, účtují se vám poplatky za výpočetní uzly. Proto doporučujeme, abyste fondy přidělovali, jen když je to potřeba. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. Vstupní a výstupní soubory však zůstanou v účtu úložiště.
+Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úložiště, který vytvořila, a dá vám možnost odstranit fond a úlohu služby Batch. Třídy [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) a [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) v BatchClient obsahují metody pro odstranění, které se zavolají, pokud potvrdíte odstranění. I když se vám neúčtují poplatky za úlohy a úlohy samotné, účtují se vám poplatky za výpočetní uzly. Proto doporučujeme, abyste fondy přidělovali, jen když je to potřeba. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. Vstupní a výstupní soubory však zůstanou v účtu úložiště.
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 

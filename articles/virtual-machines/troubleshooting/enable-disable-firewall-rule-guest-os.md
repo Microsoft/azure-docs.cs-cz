@@ -1,10 +1,10 @@
 ---
-title: Povolit nebo zakázat pravidlo brány firewall na hostovaný operační systém na virtuálním počítači Azure | Dokumentace Microsoftu
+title: Povolení nebo zakázání pravidla brány firewall v hostovaném operačním systému na virtuálním počítači Azure | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,114 +14,114 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444652"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086448"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolit nebo zakázat pravidlo brány firewall na operační systém hosta virtuálního počítače Azure
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolení nebo zakázání pravidla brány firewall v hostovaném operačním systému virtuálního počítače Azure
 
-Tento článek poskytuje odkaz pro řešení potíží s situace, ve kterém máte podezření, že brána firewall operačního systému hosta je filtrování částečné přenosy na virtuální počítač (VM). To může být užitečné z následujících důvodů:
+Tento článek poskytuje referenční informace pro řešení potíží s situací, ve které máte podezření, že brána firewall hostovaného operačního systému filtruje částečný provoz na virtuálním počítači (VM). To může být užitečné z následujících důvodů:
 
-*   Pokud úmyslně provedené změny do brány firewall, která způsobila selhání připojení RDP, pomocí funkce rozšíření vlastních skriptů můžete problém vyřešit.
+*   Pokud byla změna záměrně provedena v bráně firewall, která způsobila selhání připojení RDP, může problém vyřešit pomocí funkce rozšíření vlastních skriptů.
 
-*   Zakázání všech profilů brány firewall je více spolehlivá způsob řešení potíží s než nastavení pravidla brány firewall specifické pro protokol RDP.
+*   Vypnutí všech profilů brány firewall je mnohem foolproof způsob, jak řešit potíže s nastavením pravidla brány firewall specifického pro protokol RDP.
 
 ## <a name="solution"></a>Řešení
 
-Jak nakonfigurovat pravidla brány firewall, závisí na úroveň přístupu k virtuálnímu počítači, který je potřeba. Následující příklady používají pravidla protokolu RDP. Však stejně jako lze použít na jakýkoli jiný druh provoz najetím myší na správný klíč registru.
+Způsob konfigurace pravidel brány firewall závisí na úrovni přístupu k požadovanému virtuálnímu počítači. Následující příklady používají pravidla protokolu RDP. Stejné metody ale můžete použít na jakýkoli jiný typ provozu tak, že přejdete na správný klíč registru.
 
 ### <a name="online-troubleshooting"></a>Řešení potíží s online 
 
-#### <a name="mitigation-1-custom-script-extension"></a>Zmírnění dopadů 1: Rozšíření vlastních skriptů
+#### <a name="mitigation-1-custom-script-extension"></a>Zmírnění 1: Rozšíření vlastních skriptů
 
-1.  Vytvořte váš skript pomocí následující šablony.
+1.  Pomocí následující šablony Vytvořte skript.
 
-    *   Pokud chcete povolit pravidlo:
+    *   Postup při povolení pravidla:
         ```cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Postup při zakázání pravidla:
+    *   Zakázání pravidla:
         ```cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-2.  Uložení v Azure portal pomocí tohoto skriptu [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) funkce. 
+2.  Nahrajte tento skript do Azure Portal pomocí funkce [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) . 
 
-#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdáleného prostředí PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Zmírnění 2: Vzdálené prostředí PowerShell
 
-Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete provést podle zmírnění pomocí druhým virtuálním Počítačem.
+Pokud je virtuální počítač online a dá se k němu přistoupit na jiném virtuálním počítači ve stejné virtuální síti, můžete na základě druhého virtuálního počítače udělat zmírňující rizika.
 
-1.  Řešení potíží virtuální počítač otevřete okno konzole Powershellu.
+1.  Na virtuálním počítači pro řešení potíží otevřete okno konzoly PowerShellu.
 
-2.  Spusťte následující příkazy, podle potřeby.
+2.  Podle potřeby spusťte následující příkazy.
 
-    *   Pokud chcete povolit pravidlo:
+    *   Postup při povolení pravidla:
         ```powershell
         Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
         Enable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
         exit
         ```
 
-    *   Postup při zakázání pravidla:
+    *   Zakázání pravidla:
         ```powershell
         Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
         Disable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>Zmírnění dopadů 3: Příkazy PSTools
+#### <a name="mitigation-3-pstools-commands"></a>Zmírnění 3: Příkazy nástroj PsTools
 
-Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete provést podle zmírnění pomocí druhým virtuálním Počítačem.
+Pokud je virtuální počítač online a dá se k němu přistoupit na jiném virtuálním počítači ve stejné virtuální síti, můžete na základě druhého virtuálního počítače udělat zmírňující rizika.
 
-1.  Řešení potíží virtuálního počítače, stáhněte si [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
-2.  Spusťte instanci CMD a přístup k virtuálnímu počítači prostřednictvím jeho vnitřní IP (DIP). 
+2.  Otevřete instanci CMD a získejte přístup k virtuálnímu počítači přes jeho interní IP adresu (DIP). 
 
-    * Pokud chcete povolit pravidlo:
+    * Postup při povolení pravidla:
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Postup při zakázání pravidla:
+    *   Zakázání pravidla:
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>Zmírnění dopadů 4: Vzdálený registr
+#### <a name="mitigation-4-remote-registry"></a>Zmírnění omezení 4: Vzdálený registr
 
-Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete použít [Remote Registry](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) na jiný virtuální počítač.
+Pokud je virtuální počítač online a lze k němu přistupovat na jiném virtuálním počítači ve stejné virtuální síti, můžete použít [Vzdálený registr](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) na jiném virtuálním počítači.
 
-1.  Na virtuálním počítači řešení potíží spusťte Editor registru (regedit.exe) a pak vyberte **souboru** > **připojit síťový registr**.
+1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (Regedit. exe) a pak vyberte **soubor** > **připojit síťový registr**.
 
-2.  Otevřít *cílový počítač*\SYSTEM větev a potom zadejte následující hodnoty:
+2.  Otevřete *cílovou větev počítač*\System a zadejte následující hodnoty:
 
     * Chcete-li povolit pravidlo, otevřete následující hodnotu registru:
     
         *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
     
-        Poté změňte **aktivní = FALSE** k **aktivní = TRUE** v řetězci:
+        Pak změňte hodnotu **aktivní = false** na **aktivní = true** v řetězci:
 
-        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
     
-    * Chcete-li zakázat pravidlo, otevřete následující hodnotu registru:
+    * Pravidlo zakážete otevřením následující hodnoty registru:
     
         *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Poté změňte **aktivní = TRUE** k **aktivní = FALSE**:
+        Pak změňte hodnotu **aktivní = true** na **aktivní = false**:
         
-        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-3.  Restartujte virtuální počítač, aby se změny projevily.
+3.  Aby se změny projevily, restartujte virtuální počítač.
 
-### <a name="offline-troubleshooting"></a>Řešení potíží s offline 
+### <a name="offline-troubleshooting"></a>Řešení potíží offline 
 
-Pokud virtuální počítač nemá přístup k jakýmkoli způsobem, pomocí rozšíření vlastních skriptů se nezdaří a budete muset pracovat v OFFLINE režimu při práci přímo prostřednictvím systémový disk.
+Pokud nemůžete získat přístup k virtuálnímu počítači pomocí žádné metody, rozšíření vlastních skriptů se nezdaří a bude nutné pracovat v režimu OFFLINE přímo na systémovém disku.
 
 Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 
@@ -129,42 +129,42 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk 
 
 2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
-3.  Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Všimněte si, že písmeno jednotky, který je přiřazen k připojený systémový disk.
+3.  Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Všimněte si, že písmeno jednotky přiřazené k připojenému systémovému disku.
 
-4.  Než provedete jakékoli úpravy, vytvořte kopii složky \windows\system32\config v případě, že je nutné vrátit zpět změny.
+4.  Než provedete jakékoli změny, vytvořte kopii složky \Windows\System32\Config v případě, že je nutné vrátit zpět změny.
 
-5.  Na virtuálním počítači řešení potíží spusťte Editor registru (regedit.exe).
+5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (Regedit. exe).
 
-6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíče a pak vyberte **souboru** > **načíst Hive** z nabídky.
+6.  Zvýrazněte klíč **HKEY_LOCAL_MACHINE** a v nabídce **Vyberte možnost** > **Načíst podregistr** .
 
-    ![Příkaz regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
+    ![Programu](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
-7.  Vyhledejte a pak otevřete soubor \windows\system32\config\SYSTEM. 
+7.  Vyhledejte a otevřete soubor \windows\system32\config\SYSTEM. 
 
     > [!Note]
-    > Zobrazí se výzva k zadání jména. Zadejte **BROKENSYSTEM**a potom rozbalte **HKEY_LOCAL_MACHINE**. Nyní uvidíte Další klíč, který je pojmenován **BROKENSYSTEM**. Pro toto řešení potíží, jsme se připojení tyto podregistrů problému jako **BROKENSYSTEM**.
+    > Zobrazí se výzva k zadání názvu. Zadejte **BROKENSYSTEM**a pak rozbalte **HKEY_LOCAL_MACHINE**. Zobrazí se teď další klíč s názvem **BROKENSYSTEM**. Pro účely tohoto řešení se tyto podregistry namontují jako **BROKENSYSTEM**.
 
-8.  Proveďte následující změny ve větvi BROKENSYSTEM:
+8.  Ve větvi BROKENSYSTEM proveďte následující změny:
 
-    1.  Zkontrolujte, které **ControlSet** virtuální počítač se spouští z klíče registru. Zobrazí se jeho číslo klíče v HKLM\BROKENSYSTEM\Select\Current.
+    1.  Ověřte, ze kterého klíče registru **CONTROLSET** se virtuální počítač spouští. V HKLM\BROKENSYSTEM\Select\Current. se zobrazí jeho klíčové číslo.
 
     2.  Chcete-li povolit pravidlo, otevřete následující hodnotu registru:
     
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
-        Poté změňte **aktivní = FALSE** k **aktivní = True**.
+        Pak změňte **hodnotu aktivní = false** na **aktivní = true**.
         
-        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-    3.  Pokud chcete zakázat pravidlo, otevřete následující klíč registru:
+    3.  Pokud chcete pravidlo zakázat, otevřete následující klíč registru:
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Poté změňte **aktivní = True** k **aktivní = FALSE**.
+        Pak změňte hodnotu **aktivní = true** na **aktivní = false**.
         
-        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-9.  Zvýrazněte **BROKENSYSTEM**a pak vyberte **souboru** > **Uvolnit podregistr** z nabídky.
+9.  Zvýrazněte **BROKENSYSTEM**a pak z nabídky vyberte **soubor** > **Uvolnit podregistr** .
 
 10. [Odpojení disku a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md).
 

@@ -4,7 +4,7 @@ description: Přečtěte si, jak nainstalovat agenta virtuálního počítače A
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 018f27999c4f69c0868e2a8fde6535346c7d0377
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090361"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059241"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Instalace agenta virtuálního počítače Azure v offline režimu 
 

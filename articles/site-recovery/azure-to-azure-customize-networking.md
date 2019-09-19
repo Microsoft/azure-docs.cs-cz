@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886894"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087710"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
 
@@ -23,13 +23,16 @@ Tento článek poskytuje pokyny k přizpůsobení síťových konfigurací v cí
 
 Přečtěte si, jak Site Recovery poskytuje zotavení po havárii pro [Tento scénář](azure-to-azure-architecture.md).
 
-## <a name="support-networking-resources"></a>Podpora síťových prostředků
+## <a name="supported-networking-resources"></a>Podporované síťové prostředky
 
 Při replikaci virtuálních počítačů Azure je možné k virtuálnímu počítači s podporou převzetí služeb při selhání zadat následující hlavní konfigurace prostředků.
 
 - [Interní nástroj pro vyrovnávání zatížení.](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Veřejná IP adresa](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Skupina zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) pro podsíť i pro síťovou kartu
+
+ > [!IMPORTANT]
+  > Tato nastavení se v tuto chvíli podporují jenom v operaci převzetí služeb při selhání, a ne pro testovací převzetí služeb při selhání.
 
 ## <a name="pre-requisites"></a>Požadavky
 
@@ -42,7 +45,7 @@ Při replikaci virtuálních počítačů Azure je možné k virtuálnímu poč�
 2. Klikněte na požadovaný virtuální počítač Azure.
 3. Klikněte na **výpočty a síť**a **upravte**. Všimnete si, že nastavení konfigurace síťových adaptérů zahrnují odpovídající prostředky ve zdroji. 
 
-     ![přizpůsobit](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+     ![Přizpůsobit](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
 4. Klikněte na **Upravit** u síťového adaptéru, který chcete konfigurovat. V dalším okně, které se otevře, vyberte odpovídající předem vytvořené prostředky v cíli.
 

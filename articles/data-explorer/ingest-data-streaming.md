@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843869"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090632"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -41,8 +41,9 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
  
 1. V [uživatelském rozhraní Web](https://dataexplorer.azure.com/)definujte [zásady přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) pro tabulky nebo databáze, které budou přijímat streamovaná data. 
 
-    > [!TIP]
-    > Pokud je zásada definovaná na úrovni databáze, všechny tabulky v databázi mají povolený příjem dat do streamování.
+    > [!NOTE]
+    > * Pokud je zásada definovaná na úrovni databáze, všechny tabulky v databázi mají povolený příjem dat do streamování.
+    > * Použitá zásada může odkazovat pouze na nově ingestovaná data a nikoli na jiné tabulky v databázi.
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Použití ingestování streamování k ingestování dat do clusteru
 

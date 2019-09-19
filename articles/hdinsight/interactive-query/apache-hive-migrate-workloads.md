@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815804"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091457"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -71,7 +71,7 @@ Po správném nastavení vlastností tabulky spusťte nástroj pro migraci datov
 1. Z prostředí spusťte následující příkaz. Nahraďte `${{STACK_VERSION}}` řetězcem verze z předchozího kroku:
 
 ```bash
-/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true  -m automatic  automatic  --modifyManagedTables --oldWarehouseRoot /apps/hive/warehouse
+/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
 ```
 
 Po dokončení nástroje pro migraci bude váš sklad podregistru připravený pro HDInsight 4,0. 
@@ -109,7 +109,7 @@ Pokud se po instalaci DAS nezobrazí dotazy, které jste spustili v prohlížeč
     * `tez.history.logging.proto-base-dir`
 3. V obou hlavních restartujte HDFS, podregistr, tez a DAS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Oznámení HDInsight 4,0](../hdinsight-version-release.md)
 * [Podrobně HDInsight 4,0 s hloubkou](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

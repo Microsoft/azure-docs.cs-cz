@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b502823ea19cd8bbdab73c78fa3afdab2267940e
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e5a88b2ec46332e329c7c703a2f89e58b8323820
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009436"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090397"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopírování dat z procházení pomocí Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 
 Tento konektor pro procházení se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou zdrojovou maticí](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 Kopírování dat z přechod do libovolné podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.

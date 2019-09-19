@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: 8460e6782083a7e2aee06c80effe4fb5a683dd80
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 52135391024eafdfea15afd6c05a5d13bf92a2c7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951111"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091588"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scénář: Výjimka úložiště po resetování připojení ve službě Azure HDInsight
 

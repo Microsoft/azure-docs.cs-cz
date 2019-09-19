@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211873"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086998"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace Java pomocí Microsoftu
 
@@ -32,10 +32,11 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-> ## <a name="prerequisites"></a>Požadavky
-> K provedení této ukázky budete potřebovat: 
-> - Java Development Kit (JDK) 8 nebo vyšší a Maven.
->
+## <a name="prerequisites"></a>Požadavky
+
+K provedení této ukázky budete potřebovat: 
+- Java Development Kit (JDK) 8 nebo vyšší a Maven.
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > Máte dvě možnosti, jak spustit aplikaci pro rychlý Start: Express (možnost 1) nebo ruční (možnost 2).
@@ -105,7 +106,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 > 1. Nahraďte vlastnosti aplikace.
 >   1. Vyhledejte `aad.clientId` a aktualizujte `Enter_the_Application_Id_here` hodnotu s hodnotou **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali. 
 >   1. Vyhledejte `aad.authority` a aktualizujte `Enter_the_Tenant_Name_Here` hodnotu s hodnotou **ID adresáře (tenant)** v registrované aplikaci.
->   1. Vyhledejte `aad.secretKey` a aktualizujte `Enter_the_Client_Secret_Here` hodnotu pomocí tajného **klíče klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
+>   1. Vyhledejte `aad.secretKey` a aktualizujte `Enter_the_Client_Secret_Here` hodnotu pomocí **tajného klíče klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4: Spuštění ukázky kódu
 1. Spusťte ukázku kódu a otevřete prohlížeč a přejděte na *http://localhost:8080* adresu.

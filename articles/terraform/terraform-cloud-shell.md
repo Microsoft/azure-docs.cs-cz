@@ -1,5 +1,5 @@
 ---
-title: Použití Terraformu se službou Azure Cloud Shell
+title: Konfigurace Azure Cloud Shell pro Terraformu
 description: Použijte Terraform se službou Azure Cloud Shell a zjednodušte si ověřování a konfiguraci šablon.
 services: terraform
 ms.service: azure
@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169933"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087739"
 ---
 # <a name="terraform-cloud-shell-development"></a>Vývoj v Cloud Shellu pomocí Terraformu 
 

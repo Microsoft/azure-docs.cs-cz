@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: MT
+ms.openlocfilehash: ced2c888a412a72643bb0c12fceb7e83d39936cf
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885191"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098733"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -129,7 +129,7 @@ Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran fi
 
 Následující diagram nabízí abstraktní zobrazení architektury HDInsight Azure Storage:
 
-![Diagram znázorňující, jak clustery Hadoop používají rozhraní API HDFS pro přístup a ukládání strukturovaných a nestrukturovaných dat v úložišti objektů BLOB](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura HDInsight Storage")
+![Architektura HDInsight Storage](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura HDInsight Storage")
 
 Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. Tento systém souborů je přístupný pomocí plně kvalifikovaného identifikátoru URI, například:
 
@@ -241,7 +241,7 @@ Další informace o tom, jak získat přístup k datům v Data Lake Storage Gen1
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Seznámení se službou Azure Storage](../storage/common/storage-introduction.md)

@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569066"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090905"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s SQL Database problémy s připojením a přechodnými chybami
 
@@ -90,7 +91,7 @@ Chcete-li otestovat logiku opakování, je nutné simulovat nebo způsobit chybu
 Jedním ze způsobů, jak otestovat logiku opakování, je odpojit klientský počítač od sítě v době, kdy je program spuštěný. Tato chyba je:
 
 - **SqlException.Number** = 11001
-- Zpráva: "Žádný takový hostitel není známý"
+- Message: "Žádný takový hostitel není známý"
 
 V rámci prvního pokusu je možné znovu připojit klientský počítač k síti a pak se pokusit připojit.
 
@@ -108,7 +109,7 @@ Aby byl tento test praktický, odpojte počítač od sítě před spuštěním p
 V programu může být uživatelské jméno před prvním pokusem o připojení záměrně napředné. Tato chyba je:
 
 - **SqlException.Number** = 18456
-- Zpráva: Přihlášení uživatele WRONG_MyUserName se nezdařilo.
+- Message: Přihlášení uživatele WRONG_MyUserName se nezdařilo.
 
 V rámci prvního pokusu může program opravit chybu a potom se pokusit o připojení.
 
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Několik vrácených řádků z sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Několik vrácených řádků z sys. fn_xe_telemetry_blob_target_read_file
 
 Následující příklad ukazuje, jak vrácený řádek může vypadat. Zobrazené hodnoty null nejsou v jiných řádcích často null.
 

@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 139fb0e77f8f6960e7b13899f9586dd78bf46a92
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a9d82e0465e555d4959e549e04565399d423c1ee
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735851"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087369"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scénář: Uzel clusteru nemá volné místo na disku v Azure HDInsight.
 
@@ -37,7 +38,7 @@ Mezipaměť aplikace Apache nitě mohla spotřebovat veškeré dostupné místo 
 
 1. Chcete-li tento problém vyřešit, optimalizujte svou aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

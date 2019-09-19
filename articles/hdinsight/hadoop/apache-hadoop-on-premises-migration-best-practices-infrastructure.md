@@ -2,18 +2,18 @@
 title: Migrace místních Apache Hadoopových clusterů do Azure HDInsight – infrastruktura
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: dbd4cc987883c959ad9b13b60491dd2288bd5643
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735738"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087455"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -189,7 +189,7 @@ HDInsight se dá připojit k místní síti pomocí virtuálních sítí Azure a
 
 Další informace najdete v článku [připojení HDInsight k místní síti](../connect-on-premises-network.md) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si další článek v této sérii:
 

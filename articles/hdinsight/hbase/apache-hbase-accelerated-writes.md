@@ -5,22 +5,23 @@ services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 8b24c7517402aa6f29c95c0cd0f58bb1d51e1082
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876469"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091734"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Urychlené zápisy Azure HDInsight pro Apache HBA
 
-Tento článek poskytuje základní informace o funkci akcelerovaných zápisů pro Apache HBA ve službě Azure HDInsight a o tom, jak je možné ji efektivně využít ke zlepšení výkonu zápisu. **Urychlené zápisy** využívají [spravované disky Azure Premium SSD](../../virtual-machines/linux/disks-types.md#premium-ssd) ke zvýšení výkonu protokolu Wal (Apache HBA Write). Další informace o Apache HBA najdete [v tématu Co je Apache HBA v HDInsight](apache-hbase-overview.md).
+Tento článek poskytuje základní informace o funkci **akcelerovaných zápisů** pro Apache HBA ve službě Azure HDInsight a o tom, jak je možné ji efektivně využít ke zlepšení výkonu zápisu. **Urychlené zápisy** využívají [spravované disky Azure Premium SSD](../../virtual-machines/linux/disks-types.md#premium-ssd) ke zvýšení výkonu protokolu Wal (Apache HBA Write). Další informace o Apache HBA najdete [v tématu Co je Apache HBA v HDInsight](apache-hbase-overview.md).
 
 ## <a name="overview-of-hbase-architecture"></a>Přehled architektury HBA
 
-V adaptérech HBA se **řádek** skládá z jednoho nebo více **sloupců** a je identifikovaný klíčovým **řádkem**. **Tabulka**je tvořena více řádky. Sloupce obsahují **buňky**, které jsou verze hodnoty v tomto sloupci s časovým razítkem. Sloupce jsou seskupeny do **rodin sloupců**a všechny sloupce v řadě sloupců jsou uloženy společně v úložištích souborů s názvem **HFiles**.
+V adaptérech HBA se **řádek** skládá z jednoho nebo více **sloupců** a je identifikovaný **klíčovým řádkem**. **Tabulka**je tvořena více řádky. Sloupce obsahují **buňky**, které jsou verze hodnoty v tomto sloupci s časovým razítkem. Sloupce jsou seskupeny do **rodin sloupců**a všechny sloupce v řadě sloupců jsou uloženy společně v úložištích souborů s názvem **HFiles**.
 
 **Oblasti** v adaptérech HBA slouží k vyrovnávání zatížení zpracování dat. HBA nejprve uloží řádky tabulky v jedné oblasti. Řádky jsou rozloženy mezi více oblastí, když se zvyšuje objem dat v tabulce. **Servery oblastí** mohou zpracovávat žádosti pro více oblastí.
 
@@ -54,7 +55,7 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Oficiální dokumentace k Apache HBA v rámci [funkce protokolu pro zápis do dávky](https://hbase.apache.org/book.html#wal)
 * Pokud chcete upgradovat cluster HDInsight Apache HBA tak, aby používal urychlené zápisy, přečtěte si téma [migrace clusteru Apache HBA na novou verzi](apache-hbase-migrate-new-version.md).

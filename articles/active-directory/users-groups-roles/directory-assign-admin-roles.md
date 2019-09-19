@@ -14,11 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "70861177"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
@@ -78,12 +78,6 @@ Role Správce ověřování je aktuálně ve verzi Public Preview. Tato verze Pr
 * Skupiny zabezpečení a vlastníci skupiny Office 365, kteří můžou spravovat členství ve skupině. Tyto skupiny můžou udělit přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure AD a jinde.
 * Správci v jiných službách mimo Azure AD, jako je Exchange Online, Centrum zabezpečení a dodržování předpisů pro Office a systémy lidských zdrojů.
 * Nesprávci jako vedoucí pracovníci, právní poradce a zaměstnanci lidských zdrojů, kteří mohou mít přístup k citlivým nebo soukromým informacím.
-
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Správce Azure DevOps](#azure-devops-administrator-permissions)
-
-Uživatelé s touto rolí můžou spravovat zásady Azure DevOps a omezit tak nové vytváření nových organizací Azure DevOps na sadu konfigurovatelných uživatelů nebo skupin AAD. Uživatelé v této roli můžou spravovat tuto zásadu prostřednictvím jakékoli organizace Azure DevOps, která je zálohovaná v rámci služby Azure AD společnosti.
-
-V budoucnu budou všechny zásady Enterprise Azure DevOps spravované uživateli v této roli.
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Správce Azure Information Protection](#azure-information-protection-administrator-permissions)
 
@@ -497,19 +491,6 @@ Povoleno zobrazení, nastavení a obnovení informací o metodě ověřování p
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v organizaci Office 365. Další podrobnosti najdete v online dokumentaci. |
-
-### <a name="azure-devops-administrator-permissions"></a>Oprávnění správce Azure DevOps
-
-Může spravovat zásady a nastavení organizace Azure DevOps.
-
-> [!NOTE]
-> Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#azure-devops-administrator) výše.
->
->
-
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. devOps/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure DevOps. |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure Information Protection oprávnění správce
 
@@ -1515,7 +1496,6 @@ Zobrazovaný název grafu | Zobrazované jméno Azure Portal | directoryRoleTemp
 Správce aplikací | Správce aplikací | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Vývojář aplikací | Vývojář aplikací | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Správce Azure DevOps | Správce Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Správce toku B2C uživatele | Správce toku B2C uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Správce atributů uživatelských toků B2C | Správce atributů uživatelských toků B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

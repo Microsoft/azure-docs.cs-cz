@@ -2,18 +2,18 @@
 title: Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight založeném na systému Linux – Azure
 description: Přečtěte si, jak získat přístup k protokolům aplikací PŘÍZ na clusteru HDInsight se systémem Linux (Apache Hadoop) pomocí příkazového řádku i webového prohlížeče.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879856"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091507"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux
 
@@ -62,11 +62,11 @@ Uživatelské rozhraní Správce prostředků PŘÍZe běží na clusteru hlavn�
 1. Ve webovém prohlížeči přejděte na https://CLUSTERNAME.azurehdinsight.net. Položku název_clusteru nahraďte názvem vašeho clusteru HDInsight.
 2. V seznamu služeb vlevo vyberte možnost **příze**.
 
-    ![Vybraná služba příze](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Je vybraná služba Apache Ambari nitě](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
 3. V rozevíracím seznamu **Rychlé odkazy** vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokol ResourceManager**.
 
-    ![Rychlé odkazy na přízi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Rychlé odkazy na Ambari nitě Apache](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     Zobrazí se seznam odkazů na záznamy PŘÍZe.
 

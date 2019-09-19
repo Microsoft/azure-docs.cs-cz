@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962800"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087462"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Předpoklady pro správu účtů na portál partnerů cloudu 
 
@@ -21,7 +21,7 @@ Předtím, než budete moci použít [portál partnerů cloudu](https://cloudpar
 
 ## <a name="account-terms-and-guidelines"></a>Podmínky a pokyny pro účet
 
-Před vytvořením účtu pečlivě zkontrolujte svá práva a zodpovědnosti v rámci [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement) a [podmínky použití Microsoftu](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx) .  
+Před vytvořením účtu pečlivě zkontrolujte svá práva a zodpovědnosti v rámci [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement) a [podmínky použití Microsoftu](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright) .  
 
 Pečlivě vyberte název účtu.  Představuje vaši organizaci, takže by neměl obsahovat žádná chráněná nebo contentious slova.  Microsoft například v názvech účtů zakazuje používání svých autorských podmínek, jako je například Azure a Microsoft.  Další informace najdete v tématu [pokyny pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
 

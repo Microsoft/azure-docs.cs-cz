@@ -1,5 +1,5 @@
 ---
-title: Instalace a konfigurace Terraformu pro použití s Azure | Microsoft Docs
+title: Instalace a konfigurace Terraformu pro zřizování prostředků Azure | Microsoft Docs
 description: Naučte se instalovat a konfigurovat Terraformu k vytváření prostředků Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,16 +12,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: gwallace
-ms.openlocfilehash: 105b3805e1297f796e0353f9328044896248aaa0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/17/2019
+ms.author: tarcher
+ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081751"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090724"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalace a konfigurace Terraformu pro zřizování virtuálních počítačů a jiné infrastruktury do Azure
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalace a konfigurace Terraformu pro zřizování prostředků Azure
  
 Terraformu poskytuje snadný způsob, jak definovat, zobrazovat náhled a nasazovat cloudovou infrastrukturu pomocí [jednoduchého jazyka šablonování](https://www.terraform.io/docs/configuration/syntax.html). Tento článek popisuje nezbytné kroky pro použití Terraformu ke zřízení prostředků v Azure.
 
@@ -145,7 +145,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste nainstalovali Terraformu nebo použili Cloud Shell ke konfiguraci přihlašovacích údajů Azure a zahájení vytváření prostředků ve vašem předplatném Azure. Pokud chcete vytvořit úplnější Terraformu nasazení v Azure, přečtěte si následující článek:
 

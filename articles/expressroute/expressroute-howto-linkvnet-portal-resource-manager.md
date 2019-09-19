@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775288"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088903"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 
 * Musí mít aktivní okruh ExpressRoute.
   * Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený poskytovatel připojení.
-  * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Zobrazit [konfigurace směrování](expressroute-howto-routing-portal-resource-manager.md) najdete pokyny pro směrování.
+  * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Pokyny pro vytváření partnerských vztahů a směrování najdete v článku [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) .
   * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
   * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
 
@@ -52,15 +52,16 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 
 ### <a name="to-create-a-connection"></a>Vytvoření připojení
 
-1. Ujistěte se, že váš okruh ExpressRoute a soukromého partnerského vztahu Azure byl úspěšně nakonfigurován. Postupujte podle pokynů v [vytvořit okruh ExpressRoute](expressroute-howto-circuit-arm.md) a [konfigurace směrování](expressroute-howto-routing-arm.md). Váš okruh ExpressRoute by měl vypadat jako na následujícím obrázku:
+1. Ujistěte se, že váš okruh ExpressRoute a soukromého partnerského vztahu Azure byl úspěšně nakonfigurován. Postupujte podle pokynů v tématu [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-arm.md). Váš okruh ExpressRoute by měl vypadat jako na následujícím obrázku:
 
-   ![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   [![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Zobrazit okruh")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. Teď můžete začít zřizování připojení k propojení vaší brány virtuální sítě pro váš okruh ExpressRoute. Klikněte na tlačítko **připojení** > **přidat** otevřít **přidat připojení** stránce a pak proveďte konfiguraci hodnot.
 
-   ![Přidat snímek obrazovky připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   [![Obrázek přidání připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Obrázek přidání připojení")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Po připojení se úspěšně nakonfigurovalo, objekt připojení se zobrazí informace o připojení.
 
    ![Snímek obrazovky připojení objektu](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Připojení virtuální sítě k okruhu - jiného předplatného
 

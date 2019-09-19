@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 54e07a840aac1e754db68d9a14403750757f4bcf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 57ba285b7de34dd548128b1f58644a32e153d056
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620841"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087164"
 ---
 # <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>Scénář: IllegalArgumentException pro aktivitu Apache Spark v Azure HDInsight
 
@@ -30,7 +31,7 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 Pokud soubor JAR aplikace není umístěný ve výchozím/primárním úložišti clusteru Spark, úloha Sparku se nezdaří.
 
-Jedná se o známý problém s rozhraním open source pro Spark sledovaným v této chybě: [Pokud je v FS. defaultFS a v JAR aplikace jiná adresa URL, úloha Sparku se](https://issues.apache.org/jira/browse/SPARK-22587)nezdařila.
+Jedná se o známý problém s rozhraním open source pro Spark sledovaným v této chybě: [Pokud je v FS. defaultFS a v JAR aplikace jiná adresa URL, úloha Sparku se nezdařila](https://issues.apache.org/jira/browse/SPARK-22587).
 
 Tento problém byl vyřešen ve Spark 2.3.0.
 

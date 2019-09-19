@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002723"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076411"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Škálujte a Registrujte modely řetězení ve velkém měřítku pomocí Azure Machine Learning
 
@@ -84,7 +84,7 @@ V tomto kurzu jste si už pro vás poskytli školicí skript **chainer_mnist. py
 
 Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **chainer_mnist. py** ukazuje, jak protokolovat některé metriky do běhu Azure ml pomocí `Run` objektu ve skriptu.
 
-Zadaný školicí skript používá ukázková data z `datasets.mnist.get_mnist` funkce chainer.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md#upload-dataset-and-scripts) k zpřístupnění dat během školení.
+Zadaný školicí skript používá ukázková data z `datasets.mnist.get_mnist` funkce chainer.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md) k zpřístupnění dat během školení.
 
 Zkopírujte školicí skript **chainer_mnist. py** do adresáře projektu.
 

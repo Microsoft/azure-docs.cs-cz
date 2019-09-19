@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: 04b17d2e3acba7f003325ca7fdef2107108aea4d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 09/10/2019
+ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013418"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091144"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden server
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření seskupují více souvisejících objektů SQL společně v jednom balíčku, který se dá načíst nebo odebrat z databáze jediným příkazem. Po načtení do databáze nástroje rozšíření funguje jako předdefinované funkce.
@@ -44,6 +44,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | kryptografické funkce|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | Rozšíření pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Zobrazit informace o uzamykání na úrovni řádků|
@@ -88,6 +89,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | kryptografické funkce|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | Rozšíření pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | Zobrazit informace o uzamykání na úrovni řádků|
@@ -133,6 +135,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | kryptografické funkce|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | Rozšíření pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | Zobrazit informace o uzamykání na úrovni řádků|
@@ -178,6 +181,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | kryptografické funkce|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | Rozšíření pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | Zobrazit informace o uzamykání na úrovni řádků|
@@ -213,6 +217,9 @@ Odchozí připojení z Azure Database for PostgreSQL se v současné době nepod
 Pokud plánujete použití `uuid_generate_v4()` z rozšíření UUID-OSSP, zvažte porovnání s `gen_random_uuid()` rozšířením pgcrypto pro výhody výkonu.
 
 
+## <a name="pgaudit"></a>pgAudit
+Rozšíření pgAudit poskytuje protokolování auditování relací a objektů. Informace o tom, jak používat toto rozšíření v Azure Database for PostgreSQL, najdete v článku věnovaném [koncepcím auditu](concepts-audit.md). 
+
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB je databáze časových řad, která je zabalená jako přípona pro PostgreSQL. TimescaleDB poskytuje časově orientované analytické funkce, optimalizace a škáluje Postgres pro úlohy časových řad.
 
@@ -244,10 +251,10 @@ V databázi Postgres teď můžete povolit TimescaleDB. Připojte se k databázi
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 ```
 > [!TIP]
-> Pokud se zobrazí chyba, potvrďte, že jste po uložení shared_preload_libraries restartovali [Server](howto-restart-server-portal.md) . 
+> Pokud se zobrazí chyba, potvrďte, že jste po uložení shared_preload_libraries [restartovali Server](howto-restart-server-portal.md) . 
 
 Nyní můžete vytvořit TimescaleDBou tabulku [zcela od začátku](https://docs.timescale.com/getting-started/creating-hypertables) nebo migrovat [existující data časových řad v PostgreSQL](https://docs.timescale.com/getting-started/migrating-data).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud nevidíte rozšíření, které byste chtěli použít, dejte nám prosím jistotu. Hlasujte pro existující žádosti nebo vytvořte nové žádosti o zpětnou vazbu na našem [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).

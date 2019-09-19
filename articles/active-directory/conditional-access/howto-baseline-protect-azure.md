@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532954"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086732"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat MFA pro správu služby (Preview)
 
@@ -50,7 +50,7 @@ Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, ud
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Vzhledem k tomu, že zásady **vyžadovat MFA pro správu služby** platí pro všechny Azure Resource Manager uživatele, je potřeba provést několik důležitých informací, aby bylo zajištěno hladké nasazení. Mezi tyto požadavky patří určení uživatelů a zásad služeb ve službě Azure AD, které nemůžou nebo by neměly provádět MFA, a také aplikace a klienty používané ve vaší organizaci, které nepodporují moderní ověřování.
+Zásada **vyžadovat MFA pro správu služby** se vztahuje na všechny Azure Resource Manager uživatele.
 
 ## <a name="enable-the-baseline-policy"></a>Povolit základní zásady
 
@@ -64,7 +64,7 @@ Chcete-li povolit tuto zásadu a chránit správce:
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
 1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 

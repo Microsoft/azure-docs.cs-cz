@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901760"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091104"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -58,7 +58,7 @@ Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.
 Pokud chcete nakonfigurovat partnerské vztahy virtuálních sítí pro virtuální sítě v různých předplatných nebo klientech služby Active Directory, postupujte podle kroků v části [vytvoření partnerského vztahu v různých předplatných pro Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
 > [!Note]
-> Ke konfiguraci partnerského vztahu sítě musíte mít v obou předplatných oprávnění **Přispěvatel sítě** . Další informace najdete v tématu [oprávnění k partnerským partnerům](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions).
+> Ke konfiguraci partnerského vztahu sítě musíte mít v obou předplatných oprávnění **Přispěvatel sítě** . Další informace najdete v tématu [oprávnění k partnerským partnerům](virtual-network-manage-peering.md#permissions).
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Scénář 2: Konfigurace partnerského vztahu virtuálních sítí s topologií hvězdicové topologie, která používá místní prostředky
 
@@ -104,7 +104,7 @@ Další informace o požadavcích na globální partnerské vztahy a omezeních 
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Scénář 4: Mám potíže s připojením mezi dvěma partnerskými virtuálními sítěmi
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions). Vyberte virtuální síť, vyberte **partnerský vztah**a potom zaškrtněte pole **stav** . Jaký je stav?
+Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions). Vyberte virtuální síť, vyberte **partnerský vztah**a potom zaškrtněte pole **stav** . Jaký je stav?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>Typ připojení 1: Stav partnerského vztahu zobrazuje ' připojeno '
 

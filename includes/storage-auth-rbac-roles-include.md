@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4f9a828e5233c88db2106bc648c07578927e0d29
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514865"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71078236"
 ---
 Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k datům BLOB a front pomocí Azure AD a OAuth:
 
@@ -26,4 +26,6 @@ Azure poskytuje následující předdefinované role RBAC pro autorizaci příst
 - [Odesílatel zprávy s daty ve frontě úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Slouží k udělení oprávnění přidat zprávám ve frontě Azure Storage.
 
 > [!NOTE]
-> Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut.
+> Rozšiřování přiřazení rolí RBAC může trvat až pět minut.
+>
+> Pouze role definované pro přístup k datům umožňují objektu zabezpečení přístup k datům objektů BLOB nebo front. Role, jako je **vlastník**, **Přispěvatel**a **Přispěvatel účtu úložiště** , umožňují objektu zabezpečení Spravovat účet úložiště, ale neposkytují přístup k datům objektů BLOB ani Queue v rámci tohoto účtu.
