@@ -93,7 +93,7 @@ Funkce řetězce fungují pouze v řetězcích.
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Vrátí znaky z řetězce počínaje od zadané pozice. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Vrátí řetězec ve formátu s malými písmeny. |
 | [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Vrátí řetězec ve formátu velkými písmeny. |
-| [sklon](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec. |
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec. |
 |||
 
 <a name="collection-functions"></a>
