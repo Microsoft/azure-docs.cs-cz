@@ -133,7 +133,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingTransactionSetId | String | Sady transakcí odpovídá ID, který mapuje na AK201 v potvrzení. (Volitelné) |
 | statusCode | Boolean | Stavový kód potvrzení sady transakcí. (Povinné) |
 | segmentsCount | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | ak2Segment | String | Potvrzení transakce v rámci přijatý funkční skupiny. (Volitelné) |
