@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Pomocí Pythonu
               href: sdk-python-quickstart.md
+            - name: Pomocí Javy
+              href: sdk-java-quickstart.md
 - name: Kurzy
   items:
     - name: Vytvoření webové stránky pro vlastní vyhledávání

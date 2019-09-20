@@ -92,6 +92,10 @@
           href: create-certificate-scenarios.md
 - name: Návody
   items:
+    - name: Zabezpečení
+      items:
+        - name: Doporučení
+          href: security-recommendations.md
     - name: Použití spravované identity služby App Service
       href: managed-identity.md
     - name: Protokolování v Azure Key Vaultu

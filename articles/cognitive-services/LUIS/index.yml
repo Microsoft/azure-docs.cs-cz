@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: 2191d2b3efebe1439f9f6180540929dc83027846
-  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
+  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71129269"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71155021"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -131,3 +131,13 @@ landingContent:
       url: luis-concept-entity-types.md#types-of-entities
     - text: Předem připravené domény
       url: luis-reference-prebuilt-domains.md
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Řešení potíží
+      url: troubleshooting.md
+    - text: Dotazy na Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/LUIS
+    - text: Ovlivnění služeb s využitím UserVoice
+      url: https://cognitive.uservoice.com/forums/551524-luis
