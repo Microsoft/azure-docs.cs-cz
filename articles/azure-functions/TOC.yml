@@ -271,7 +271,7 @@
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: Reference k nastavení aplikací
       href: functions-app-settings.md
-    - name: Vazby
+    - name: Triggery a vazby
       items:
         - name: Blob Storage
           href: functions-bindings-storage-blob.md

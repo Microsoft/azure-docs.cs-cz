@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: ae4b4b13e81bc000bc0675c80c09101cc4369bc1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130129"
+ms.locfileid: "71146823"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -49,7 +49,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 | Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |---------|----------|----------|-------------|
 |[Detektor anomálií][ad-containers] |F0, S0|**Anomálie – detektor** |Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Žádost o přístup](https://aka.ms/adcontainer)|
-|[Počítačové zpracování obrazu][cv-containers] |F0, S1|**Čtení** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité:** Kontejner rozpoznat Text v současné době používá pouze angličtinu.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Počítačové zpracování obrazu][cv-containers] |F0, S1|**Čtení** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité:** Kontejner pro čtení aktuálně funguje pouze v angličtině.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Počítačové zpracování obrazu][cv-containers] |F0, S1|**Rozpoznání textu** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky.<br/><br/>**Důležité:** Kontejner rozpoznat Text v současné době používá pouze angličtinu.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Rozpoznávání tváře][fa-containers] |F0, S0|**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Nástroj pro rozpoznávání formulářů][fr-containers] |F0, S0|**Nástroj pro rozpoznávání formulářů** |Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů.<br>[Žádost o přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
