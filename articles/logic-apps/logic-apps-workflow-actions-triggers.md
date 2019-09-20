@@ -52,10 +52,10 @@ Triggery mají tyto prvky nejvyšší úrovně, i když jsou některé voliteln�
 
 | Value | type | Popis | 
 |-------|------|-------------| 
-| <*trigger-name*> | Řetězec | Název triggeru | 
-| <*trigger-type*> | Řetězec | Typ triggeru, například "http" nebo "vstupech apiconnection" | 
+| <*trigger-name*> | String | Název triggeru | 
+| <*trigger-type*> | String | Typ triggeru, například "http" nebo "vstupech apiconnection" | 
 | <*trigger-inputs*> | Objekt JSON | Vstupy, které definují chování triggeru | 
-| <*Časová jednotka*> | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "Druhé", "minuta", "hodina", "den", "týden", "měsíc" | 
+| <*Časová jednotka*> | String | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "Druhé", "minuta", "hodina", "den", "týden", "měsíc" | 
 | <*number-of-time-units*> | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>Měsíčně 1-16 měsíců </br>Dnu 1-500 dní </br>Hodiny 1 – 12000 hodiny </br>Za 1 – 72000 minut </br>První 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
 |||| 
 
