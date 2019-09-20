@@ -5,6 +5,8 @@
     - name: Informace o Azure AD B2C
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: Technický přehled a přehled funkcí
+      href: technical-overview.md
 - name: Šablony Rychlý start
   expanded: true
   items:

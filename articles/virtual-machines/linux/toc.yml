@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: Předchozí generace
           href: sizes-previous-gen.md
+        - name: Izolované velikosti
+          href: isolation.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
         - name: Kvóty virtuálních procesorů

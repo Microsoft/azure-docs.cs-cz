@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Vytvoření aplikace Apache Spark v IntelliJ
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: Koncepty
+      items:
+        - name: Osvědčené postupy Sparku v HDInsightu
+          href: ./spark/spark-best-practices.md
+        - name: Konfigurace nastavení Apache Sparku
+          href: ./spark/apache-spark-settings.md
+        - name: Optimalizace úloh Apache Spark
+          href: ./spark/apache-spark-perf.md
     - name: Postup
       items:
         - name: Použití nástrojů
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: Správa aplikací Apache Spark s využitím rozšířeného serveru historie
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Konfigurace nastavení Apache Sparku
-              href: ./spark/apache-spark-settings.md
-            - name: Optimalizace úloh Apache Spark
-              href: ./spark/apache-spark-perf.md
             - name: Povolení ukládání do mezipaměti s využitím IO Cache
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Použití poznámkových bloků s Apache Sparkem

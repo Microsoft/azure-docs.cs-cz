@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: Oprava virtuálního počítače
+  items:
+    - name: Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálních počítačů Azure
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Oprava virtuálního počítače s Linuxem pomocí příkazů pro opravu virtuálních počítačů Azure
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

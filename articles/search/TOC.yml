@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Odkazy na dokumentaci
           href: cognitive-search-resources-documentation.md
-    - name: Knowledge Store (Preview)
-      items:
-        - name: Vytvoření znalostní databáze na webu Azure Portal
-          href: knowledge-store-create-portal.md
-        - name: Vytvoření s využitím architektury REST a Postman
-          href: knowledge-store-howto.md
-        - name: Zobrazení s využitím Průzkumníka služby Storage
-          href: knowledge-store-view-storage-explorer.md
-        - name: Propojení s Power BI
-          href: knowledge-store-connect-power-bi.md
-    - name: Dotazování dat
+        - name: Knowledge Store (Preview)
+          items:
+            - name: Vytvoření znalostní databáze na webu Azure Portal
+              href: knowledge-store-create-portal.md
+            - name: Vytvoření s využitím architektury REST a Postman
+              href: knowledge-store-howto.md
+            - name: Zobrazení s využitím Průzkumníka služby Storage
+              href: knowledge-store-view-storage-explorer.md
+            - name: Propojení s Power BI
+              href: knowledge-store-connect-power-bi.md
+    - name: Dotazování dokumentů
       items:
         - name: Vytvoření základního dotazu
           href: search-query-overview.md
@@ -283,18 +283,14 @@
       items:
         - name: Funkce související se stránkou
           href: search-pagination-page-layout.md
-    - name: Upřesnění relevance
-      items:
-        - name: Přidání profilů vyhodnocování
+        - name: Vyladění relevance (profily vyhodnocování)
           href: index-add-scoring-profiles.md
-    - name: Správa
+    - name: Správa a monitorování
       items:
         - name: Správa portálu
           href: search-manage.md
         - name: Správa PowerShellu
           href: search-manage-powershell.md
-    - name: Monitorování
-      items:
         - name: Protokolování a monitorování aktivit
           href: search-monitor-usage.md
         - name: Prohledání analýzy provozu

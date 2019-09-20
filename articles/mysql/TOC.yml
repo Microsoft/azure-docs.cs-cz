@@ -195,7 +195,7 @@
           href: howto-data-in-replication.md
         - name: Vytváření replik pro čtení – Azure Portal
           href: howto-read-replicas-portal.md
-        - name: Vytváření replik pro čtení – Azure CLI
+        - name: 'Vytváření replik pro čtení – Azure CLI, REST API'
           href: howto-read-replicas-cli.md
     - name: Řešení potíží
       items:

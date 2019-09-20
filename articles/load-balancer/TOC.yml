@@ -129,6 +129,8 @@
           href: move-across-regions-external-load-balancer-portal.md
         - name: Externí nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
+        - name: Interní nástroj pro vyrovnávání zatížení – portál
+          href: move-across-regions-internal-load-balancer-portal.md
         - name: Interní nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Řešení potíží

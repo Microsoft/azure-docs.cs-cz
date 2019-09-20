@@ -102,6 +102,8 @@
         - name: Předchozí generace
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Izolované velikosti
+          href: isolation.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
         - name: Výsledky srovnávacích testů

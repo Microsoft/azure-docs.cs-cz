@@ -1,64 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Jenkins v Azure
+### YamlMime:Landing
+title: Dokumentace k Jenkinsu v Azure
+summary: Naučte se používat Jenkinse k automatizaci kontinuální integrace a průběžného doručování v Azure.
 metadata:
-  title: 'Dokumentace k Jenkinsu v Azure – kurzy, ukázky, odkazy a zdroje informací'
-  description: Nasazení a integrace Jenkinse s Azure
+  title: Dokumentace k Jenkinsu v Azure
+  description: Naučte se používat Jenkinse k automatizaci kontinuální integrace a průběžného doručování v Azure.
+  services: azure
   ms.service: jenkins
-  keywords: 'jenkins, azure, devops, tutorials, samples, reference'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
-  ms.custom: seo-java-july2019
-abstract:
-  description: 'Využijte opensourcový server Jenkins k sestavování aplikací v cloudu a jejich nasazení do Azure. Naučte se instalovat, konfigurovat a škálovat Jenkinse v Azure a prostřednictvím našich šablon Rychlý start, kurzů a ukázkových kanálů nastavte pro svoje aplikace průběžnou integraci (CI).'
-  aside:
-    image:
-      alt: Logo Jenkins
-      height: 133
-      width: 110
-      src: media/Jenkins.png
-    title: null
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Vytvořte v Azure systém Jenkins a sestavte aplikaci.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template'
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Nastavte průběžnou integraci pro vaše aplikace, spouštějte agenty v cloudu a využijte ve svých úlohách služby Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Nastavte průběžnou integraci do služby <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, protokolu <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> nebo <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">virtuálního počítače s Linuxem</a>.'
-          - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Zřiďte prostředky v úloze kanálu</a>.
-          - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Škálujte s využitím agentů virtuálních počítačů Azure</a>.
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázkové skripty a fáze pro vaše kanály
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Fragmenty kódu a fáze souboru Jenkinsfile</a>'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Moduly plug-in
-            html: '<p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a><p><a href="https://plugins.jenkins.io/azure-function">Modul plug-in Azure Function</a><p><a href="https://plugins.jenkins.io/azure-acs">Modul plug-in Azure Container Service</a>'
-  - type: paragraph
-    text: '<h4>Jenkins® je registrovaná ochranná známka společnosti Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) je licencované v rámci [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) z [projektu Jenkins](https://jenkins.io).</h4>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 3d0a74df70b2007812acf22a40e8bd210948fae2
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104274"
+landingContent:
+- title: Jenkins v Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Jenkins v Azure
+      url: overview.md
+  - linkListType: reference
+    links:
+    - text: Moduly plug-in Jenkinse pro Azure
+      url: jenkins-plugins.md
+  - linkListType: architecture
+    links:
+    - text: Architektura Jenkinse
+      url: /azure/architecture/reference-architectures/jenkins/
+- title: Nainstalovat a konfigurovat Jenkinse
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření serveru Jenkins
+      url: install-jenkins-solution-template.md
+  - linkListType: download
+    links:
+    - text: Ukázkové úlohy a skripty
+      url: https://github.com/azure/jenkins
+- title: Škálování s využitím Jenkinse a Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Škálování s využitím Azure Container Instances
+      url: /azure/container-instances/container-instances-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: Škálování pomocí agentů virtuálních počítačů Azure
+      url: jenkins-azure-vm-agents.md
+- title: CI/CD do Azure Functions
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení do Azure Functions
+      url: jenkins-azure-functions-deploy.md
+- title: CI/CD do AKS
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení z GitHubu do AKS
+      url: /azure/aks/jenkins-continuous-deployment?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: Nasazení do AKS s využitím vzoru modrá/zelená
+      url: jenkins-aks-blue-green-deployment.md
+    - text: Nasazení s využitím modulu plug-in služby Azure Dev Spaces
+      url: tutorial-jenkins-dev-spaces.md
+- title: Průběžná integrace a doručování do App Service
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření prostředků Azure v úloze kanálu
+      url: execute-cli-jenkins-pipeline.md
+    - text: Nasazení z GitHubu do App Service
+      url: tutorial-jenkins-deploy-web-app-azure-app-service.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení s využitím modulu plug-in služby App Service
+      url: deploy-jenkins-app-service-plugin.md
+- title: CI/CD do Azure DevOps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení do linuxového virtuálního počítače s využitím Azure DevOps Services
+      url: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: CI/CD do Azure Storage
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Využití služby Azure Storage s řešením Jenkins C/I
+      url: /azure/storage/storage-java-jenkins-continuous-integration-solution?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: Průběžná integrace a doručování do virtuálních počítačů s Linuxem
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření vývojářské infrastruktury na virtuálním počítači s Linuxem
+      url: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: CI/CD do Service Fabric
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Sestavení a nasazení aplikace Azure Service Fabric
+      url: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json

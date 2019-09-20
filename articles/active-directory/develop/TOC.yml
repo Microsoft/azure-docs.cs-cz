@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Toky ověřování a scénáře aplikací
           href: authentication-flows-app-scenarios.md
+        - name: Osvědčené postupy pro platformu identit
+          href: identity-platform-integration-checklist.md
         - name: Scénáře aplikací
           items:
             - name: Cílová skupina přihlášení
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Přechod k produkčnímu prostředí
                   href: scenario-mobile-production.md
-            - name: Kontrolní seznam k integraci
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Přehled

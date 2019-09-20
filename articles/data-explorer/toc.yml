@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: Monitorování
       items:
+        - name: Použití diagnostických protokolů k monitorování příjmu dat
+          href: using-diagnostic-logs.md
         - name: Použití metrik k monitorování stavu clusterů
           href: using-metrics.md
     - name: Integrace s ostatními nástroji
       items:
-        - name: Hromadné kopírování dat s využitím šablony Azure Data Factory
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Hromadné kopírování dat s využitím šablony Azure Data Factory
+              href: data-factory-template.md
+            - name: Spouštění řídicích příkazů s využitím Azure Data Factory
+              href: data-factory-command-activity.md
         - name: Konektor Apache Spark
           href: spark-connector.md
         - name: Připojení z Databricks pomocí Pythonu
