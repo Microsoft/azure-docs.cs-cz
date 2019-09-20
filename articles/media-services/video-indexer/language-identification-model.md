@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931114"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147190"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
 
@@ -53,7 +53,7 @@ Převládající jazyk modelu je k dispozici ve formátu JSON Insights `sourceLa
 * Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
 * Pokud video indexer nemůže identifikovat jazyk s dostatečnou spolehlivostí (`>0.6`), je záložní jazyk angličtina.
 * Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 
-* Kvalitní zvukové Caustic může mít vliv na výsledky modelu.
+* Zvuk nízké kvality může mít vliv na výsledky modelu.
 * Model vyžaduje ve zvukovém zařízení alespoň jednu minutu řeči.
 * Model je navržený pro rozpoznávání spontánních konverzací mluveného slova (ne hlasové příkazy, přihlásí atd.).
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113562"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162399"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -154,7 +154,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **regexGroupName** |Nepovinné |Řetězec |Název skupiny uvnitř **regexPattern**. Jenom v případě, že se používá **replacementPropertyName** , extrahujeme hodnotu této skupiny jako **replacementValue** z **replacementPropertyName**. |
 | **Zastaralá** |Nepovinné |Řetězec |Nová hodnota nahradí starou s. |
 | **replacementAttributeName** |Nepovinné |Řetězec |Název atributu, který se má použít k nahrazení hodnoty |
-| **Šablony** |Nepovinné |Řetězec |Když se zadá hodnota **šablony** , budeme v šabloně Hledat text **OldValue** a nahradit ho zdrojovou hodnotou . |
+| **Šablony** |Nepovinné |Řetězec |Když se zadá hodnota **šablony** , budeme v šabloně Hledat text **OldValue** a nahradit ho **zdrojovou** hodnotou. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -163,9 +163,10 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 **Popis:**<br> Vyžaduje minimálně dva argumenty, které jsou definovány pomocí výrazů pravidel pro vytvoření jedinečnou hodnotu. Funkce vyhodnocuje každé pravidlo a poté zkontroluje hodnotu vygenerovat jedinečný v cílové aplikaci/adresáři. První jedinečnou hodnotu najít, bude vrácena ten. Pokud všechny hodnoty již existují v cíli, položka bude získat mezi a důvod získá protokolovat v protokolech auditu. Neexistuje žádná horní mez počtu argumentů, které mohou být k dispozici.
 
 > [!NOTE]
->1. Toto je funkce nejvyšší úrovně, nemohou být vnořeny.
->2. Tuto funkci nelze použít pro atributy, které mají odpovídající prioritu.  
->3. Tato funkce je určená jenom pro vytvoření položky. Při použití ho atributem, nastavte **použít mapování** vlastnost **pouze při vytváření objektu**.
+> - Toto je funkce nejvyšší úrovně, nemohou být vnořeny.
+> - Tuto funkci nelze použít pro atributy, které mají odpovídající prioritu.  
+> - Tato funkce je určená jenom pro vytvoření položky. Při použití ho atributem, nastavte **použít mapování** vlastnost **pouze při vytváření objektu**.
+> - Tato funkce je momentálně podporovaná jenom pro zřizování uživatelů z Workday do služby Active Directory. Nedá se použít s jinými zřizovacími aplikacemi. 
 
 
 **Parametry:**<br> 
@@ -191,7 +192,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 ### <a name="split"></a>Rozdělit
 **Funkce:**<br> Split (Source, oddělovač)
 
-**Popis:**<br> Rozdělí řetězec do pole s hodnotou Mulit pomocí zadaného znaku oddělovače.
+**Popis:**<br> Rozdělí řetězec na pole s více hodnotami pomocí zadaného oddělovače.
 
 **Parametry:**<br> 
 
@@ -228,7 +229,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **value** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíči. |
 
 ---
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 **Funkce:**<br> ToLower (zdroj, jazyková verze)
 
 **Popis:**<br> Převezme hodnotu *zdrojového* řetězce a převede ji na malý případ pomocí pravidel jazykové verze, které jsou určeny. Pokud nejsou zadány žádné informace o *jazykové verzi* , pak použije invariantní jazykovou verzi.
@@ -241,7 +242,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **jazykových** |volitelná, |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
 
 ---
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 **Funkce:**<br> ToUpper (zdroj, jazyková verze)
 
 **Popis:**<br> Převezme hodnotu *zdrojového* řetězce a převede ji na velká písmena pomocí pravidel jazykové verze, které jsou určeny. Pokud nejsou zadány žádné informace o *jazykové verzi* , pak použije invariantní jazykovou verzi.

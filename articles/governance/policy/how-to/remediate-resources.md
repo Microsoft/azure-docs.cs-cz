@@ -1,22 +1,22 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
-description: Tento návod vás provede nápravné prostředky, které jsou nekompatibilní zásady ve službě Azure Policy.
+description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241143"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147049"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
-Prostředky, které jsou pro nekompatibilní **deployIfNotExists** zásady můžou být přepnuté do vyhovujícího stavu prostřednictvím **nápravy**. K nápravě se dá dát pokyn Azure Policy, aby se na vašich stávajících prostředcích spouštěla **deployIfNotExists** účinek přiřazených zásad. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
+Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tak, že na základě pokynů Azure Policy spustíte efekt **deployIfNotExists** nebo **operace** značky přiřazené zásady u stávajících prostředků. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>Jak funguje opravy zabezpečení
 
@@ -26,11 +26,11 @@ Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí 
 ![Spravovaná identita - chybějící role](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Pokud se prostředek změnil **deployIfNotExists** je mimo rozsah přiřazení zásady nebo šabloně přistupuje k vlastnosti s prostředky mimo obor přiřazení zásady, spravovanou identitu tohoto přiřazení musí být [ručně udělen přístup](#manually-configure-the-managed-identity) nebo nápravy nasazení se nezdaří.
+> Pokud se prostředek upravený pomocí **deployIfNotExists** nebo **Upravit** nachází mimo rozsah přiřazení zásady nebo šablona přistupuje k vlastnostem na prostředcích mimo obor přiřazení zásady, spravovaná identita přiřazení musí být [. Ruční udělení přístupu](#manually-configure-the-managed-identity) nebo nasazení opravy se nezdaří.
 
 ## <a name="configure-policy-definition"></a>Nakonfigurovat definici zásad
 
-Prvním krokem je definování role, která **deployIfNotExists** potřebuje k úspěšnému nasazení obsahu zahrnuty šablony v definici zásad. V části **podrobnosti** vlastnost, přidejte **roleDefinitionIds** vlastnost. Tato vlastnost je pole řetězců, které odpovídají role ve vašem prostředí. Úplný příklad najdete v článku [deployIfNotExists příklad](../concepts/effects.md#deployifnotexists-example).
+Prvním krokem je definování rolí, které **deployIfNotExists** a **mění** v definici zásady, aby se úspěšně nasadil obsah šablony, která je k dispozici. V části **podrobnosti** vlastnost, přidejte **roleDefinitionIds** vlastnost. Tato vlastnost je pole řetězců, které odpovídají role ve vašem prostředí. Úplný příklad najdete v [příkladech deployIfNotExists](../concepts/effects.md#deployifnotexists-example) nebo v příkladech pro [Úpravy](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -42,7 +42,7 @@ Prvním krokem je definování role, která **deployIfNotExists** potřebuje k �
 }
 ```
 
-**roleDefinitionIds** používá identifikátor úplný zdroj a nepřijímá krátké **roleName** role. Chcete-li získat ID pro roli "Přispěvatel" ve vašem prostředí, použijte následující kód:
+Vlastnost **roleDefinitionIds** používá úplný identifikátor prostředku a nebere v úvahu krátký **roleName** role. Chcete-li získat ID pro roli "Přispěvatel" ve vašem prostředí, použijte následující kód:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +126,7 @@ Přidání role pro toto přiřazení spravovanou identitu, postupujte podle tě
 
 ### <a name="create-a-remediation-task-through-portal"></a>Vytvoření úlohy nápravy prostřednictvím portálu
 
-Při vyhodnocování, přiřazení zásad s **deployIfNotExists** efekt Určuje, zda existují nekompatibilní prostředky. Po nalezení nekompatibilní prostředky jsou podrobné informace jsou k dispozici na **nápravy** stránky. Společně se seznamem zásad, které mají nekompatibilní prostředky je možnosti k aktivaci **úloha opravy**. Tato možnost je, co vytvoří nasazení z **deployIfNotExists** šablony.
+Během hodnocení určuje přiřazení zásad s **deployIfNotExists** nebo **úpravou** efektů, jestli existují nekompatibilní prostředky. Po nalezení nekompatibilní prostředky jsou podrobné informace jsou k dispozici na **nápravy** stránky. Společně se seznamem zásad, které mají nekompatibilní prostředky je možnosti k aktivaci **úloha opravy**. Tato možnost vytvoří nasazení ze šablony **deployIfNotExists** nebo operace **Úpravy** .
 
 Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
 
@@ -138,7 +138,7 @@ Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
 
    ![Výběr nápravy na stránce zásad](../media/remediate-resources/select-remediation.png)
 
-1. Všechny **deployIfNotExists** přiřazení zásad s nekompatibilní prostředky jsou k dispozici na **zásady k nápravě** kartu a data tabulky. Klikněte na příslušnou zásadu s prostředky, které jsou nekompatibilní. **Nová úloha opravy** otevře se stránka.
+1. Všechna přiřazení zásad **deployIfNotExists** a **Upravit** s nekompatibilními prostředky jsou obsažená v **zásadách, které se mají opravit** na kartě a v tabulce dat. Klikněte na příslušnou zásadu s prostředky, které jsou nekompatibilní. **Nová úloha opravy** otevře se stránka.
 
    > [!NOTE]
    > Alternativní způsob, jak otevírat **úloha opravy** stránky je najít a klikněte na zásadu z **dodržování předpisů** stránce a potom klikněte na **vytvořit úlohu nápravy** tlačítko.
@@ -161,7 +161,7 @@ Prostředky nasazené prostřednictvím **úloha opravy** jsou přidány do **na
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Vytvoření úlohy nápravy pomocí Azure CLI
 
-Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte `az policy remediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a ID přiřazení zásady **deployIfNotExists** .
+Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte `az policy remediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +174,7 @@ Další příkazy a příklady pro nápravu najdete v tématu [AZ Policy reoprav
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Vytvoření úlohy nápravy pomocí Azure PowerShell
 
-Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte `Start-AzPolicyRemediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a ID přiřazení zásady **deployIfNotExists** .
+Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte `Start-AzPolicyRemediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

@@ -1142,7 +1142,7 @@
     - name: Analýzy ve Windows
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
     - name: Šablony Rychlý start

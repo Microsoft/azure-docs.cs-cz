@@ -1,20 +1,20 @@
 ---
-title: Vytvoření privátní zóny Azure DNS pomocí Azure PowerShell
+title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure PowerShell
 description: V tomto článku vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Tento podrobný průvodce vám pomůže vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure PowerShellu.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854119"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162113"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Vytvoření privátní zóny Azure DNS pomocí Azure PowerShell
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Rychlý start: Vytvoření privátní zóny DNS Azure pomocí Azure PowerShell
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud budete chtít, můžete tento postup provést pomocí [Azure CLI](private-dns-getstarted-cli.md).
+Pokud budete chtít, můžete tento rychlý Start dokončit pomocí [Azure CLI](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -46,7 +46,7 @@ Nejdřív vytvořte skupinu prostředků, která bude obsahovat zónu DNS:
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
+## <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
 Zóna DNS se vytvoří pomocí rutiny `New-AzPrivateDnsZone`.
 
@@ -207,9 +207,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGr
 Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste nasadili privátní zónu DNS, vytvořili záznam DNS a otestovali zónu.
-Teď se můžete o privátních zónách DNS dozvědět podrobnější informace.
-
-* [Použití Azure DNS pro privátní domény](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Azure DNS Private Zones scénáře](private-dns-scenarios.md)

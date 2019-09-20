@@ -4,7 +4,7 @@ description: V tomto článku jsou uvedeny nejčastější dotazy týkající se
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 480ca33f02242499bdf9fff3fa35695e7d4841a0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945470"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154719"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: Nejčastější dotazy
 
@@ -207,7 +207,7 @@ Tyto kroky může být automatizované prostřednictvím úlohy po spuštění, 
 Až to uděláte, můžete ověřit, jestli je protokol HTTP/2 povolený, nebo ne, a to pomocí jedné z následujících metod:
 
 - Povolte verzi protokolu v protokolech služby IIS a Prohlédněte si protokoly služby IIS. V protokolech se zobrazí protokol HTTP/2. 
-- Povolte vývojářský nástroj F12 v aplikaci Internet Explorer/Microsoft Edge a přepněte na kartu síť a ověřte protokol. 
+- Povolte vývojářský nástroj F12 v aplikaci Internet Explorer nebo Microsoft Edge a přepněte na kartu síť a ověřte protokol. 
 
 Další informace najdete v tématu [http/2 ve službě IIS](https://blogs.iis.net/davidso/http2).
 

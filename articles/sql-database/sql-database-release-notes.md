@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 90482fc859c4dcdd04a70e91da2fd6adb079a795
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101545"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162274"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -26,12 +26,12 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 | Funkce | Podrobnosti |
 | ---| --- |
-| [Privátní odkaz Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Soukromý odkaz zjednodušuje architekturu sítě a zabezpečuje připojení mezi koncovými body v Azure tím, že udržuje data v síti Azure, čímž eliminuje expozici Internetu. Privátní odkaz také umožňuje vytvářet a vykreslovat vlastní služby v Azure. |
+| [Privátní odkaz Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Privátní propojení zjednodušuje architekturu sítě a zabezpečuje propojení mezi koncovými body v Azure díky uchovávání dat v síti Azure. Eliminuje tak jejich vystavení ve veřejném internetu. Privátní propojení také umožňuje vytvářet a vykreslovat vlastní služby v Azure. |
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](sql-database-accelerated-database-recovery.md).|
 |Přibližný počet DISTINCT|Informace najdete v tématu [přibližný počet jedinečných](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Režim dávky na Rowstore (pod úrovní kompatibility 150)|Informace najdete v tématu [režim dávky v Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
 | Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a SQL Data Warehouse klasifikaci & zjišťování dat](sql-database-data-discovery-and-classification.md).|
-| Elastické úlohy databáze | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
+| Úlohy elastické databáze | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
 | Elastické dotazy | Informace najdete v tématu [Přehled elastického dotazu](sql-database-elastic-query-overview.md). |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md) |
 |Zpětná vazba o udělení paměti (režim řádku) (v části úroveň kompatibility 150)|Informace najdete v článku o [zpětné vazbě přidělení paměti (režim řádku)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
@@ -60,6 +60,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 ### <a name="managed-instance-h2-2019-updates"></a>Aktualizace spravované instance H2 2019
 
+- [Skupiny s automatickým převzetím služeb při selhání](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) umožňují replikovat všechny databáze z primární instance do sekundární instance v jiné oblasti.
 - Nakonfigurujte chování spravované instance pomocí [příznaků globálních trasování](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/).
 
 ### <a name="managed-instance-h1-2019-updates"></a>Aktualizace spravované instance H1 2019
@@ -78,7 +79,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 
 - **Srpna 2019** – obsažené databáze jsou ve spravované instanci plně podporovány.
 
-## <a name="updates"></a>Aktuální zprávy
+## <a name="updates"></a>Aktualizace
 
 Seznam SQL Database aktualizací a vylepšení najdete v tématu [aktualizace služby SQL Database](https://azure.microsoft.com/updates/?product=sql-database).
 

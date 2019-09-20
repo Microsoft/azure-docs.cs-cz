@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105278"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155131"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -23,7 +23,7 @@ Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazní
 Můžete přidružit své ID Microsoft Partner Network (MPN) k připojeným předplatným, abyste mohli sledovat váš dopad napříč zapojením zákazníků a získávat rozpoznávání. Další informace najdete v tématu [propojení ID partnera s účty Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Všimněte si, že budete muset toto přidružení provést v tenantovi poskytovatele služeb.
 
 > [!NOTE]
-> Zákazníci se můžou připojit automaticky při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali na Azure Marketplace. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán, pomocí nabídky publikované do Azure Marketplace.
+> Při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali do Azure Marketplace, je také možné připojit zákazníky. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán, pomocí nabídky publikované do Azure Marketplace.
 
 Proces zprovoznění vyžaduje akce, které se mají provést v rámci tenanta poskytovatele služeb i z tenanta zákazníka. Všechny tyto kroky jsou popsány v tomto článku.
 

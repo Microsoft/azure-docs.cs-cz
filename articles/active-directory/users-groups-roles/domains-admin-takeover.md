@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914782"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146462"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -88,14 +88,11 @@ Když ověříte vlastnictví názvu domény, Azure AD odstraní název domény 
 ### <a name="support-for-external-admin-takeover"></a>Podpora pro převzetí externích správců
 Převzetí externích správců je podporované následujícími online služby:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 Mezi podporované plány služby patří:
 
-- Power BI zdarma
-- Power BI Pro
 - PowerApps zdarma
 - PowerFlow zdarma
 - RMS pro jednotlivce
@@ -114,14 +111,10 @@ Klíč a šablony nejsou přesunuty, pokud se nespravovaný tenant nachází v j
 
 I když je služba RMS pro jednotlivce navržená tak, aby podporovala ověřování Azure AD pro otevření chráněného obsahu, nebrání uživatelům také v ochraně obsahu. Pokud uživatelé prováděli ochranu obsahu pomocí předplatného služby RMS pro jednotlivce a klíč a šablony nebyly přesunuty, nebude tento obsah po převzetí domény přístupný.
 
-#### <a name="more-information-about-power-bi"></a>Další informace o Power BI
-
-Když provedete externí převzetí, Power BI obsah, který byl vytvořen před převzetím, je umístěn do [Power BI archivovaného pracovního prostoru](/power-bi/service-admin-power-bi-archived-workspace). Obsah, který chcete použít v novém tenantovi, musíte ručně migrovat.
-
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Rutiny Azure AD PowerShellu pro možnost ForceTakeover
 Tyto rutiny se zobrazují v [příkladu PowerShellu](#powershell-example).
 
-rutiny | Použití
+rutiny | Využití
 ------- | -------
 `connect-msolservice` | Po zobrazení výzvy se přihlaste ke spravovanému tenantovi.
 `get-msoldomain` | Zobrazuje názvy domén přidružené k aktuálnímu tenantovi.

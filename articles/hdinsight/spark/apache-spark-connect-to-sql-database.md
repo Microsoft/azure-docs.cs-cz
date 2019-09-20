@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984816"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147046"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do služby Azure SQL Database
 
@@ -38,7 +38,7 @@ Začněte vytvořením [Jupyter notebook](https://jupyter.org/) přidruženého 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete svůj cluster.
 1. Na pravé straně vyberte **Poznámkový blok Jupyter** pod **řídicími panely clusteru** .  Pokud nevidíte **řídicí panely clusteru**, vyberte v nabídce vlevo možnost **Přehled** . Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
-    ![Poznámkový blok Jupyter ve Sparku](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Poznámkový blok Jupyter ve Sparku")
+    ![Jupyter Poznámkový blok na Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Poznámkový blok Jupyter ve Sparku")
    
    > [!NOTE]  
    > K poznámkovým blokům Jupyter můžete získat přístup také otevřením následující adresy URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
@@ -182,7 +182,7 @@ V této části streamuje data do sady **TVK** , kterou jste už vytvořili ve s
 
 1. Výstup zobrazuje schéma **TVK. csv**. V **této části jsou** také stejné schéma. Výstup vypíše sloupce v tabulce.
 
-    ![Schéma tabulky](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schéma tabulky")
+    ![tabulka schématu Apache Spark HDInsight](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schéma tabulky")
 
 1. Nakonec pomocí následujícího fragmentu kódu načtěte data ze souboru TVK. csv a Streamujte **ho do úložiště v Azure** SQL Database. Vložte fragment kódu do buňky kódu, nahraďte zástupné hodnoty hodnotami pro vaši databázi SQL Azure a potom stiskněte **SHIFT + ENTER** , aby se spustila.
 
@@ -229,7 +229,7 @@ V této části streamuje data do sady **TVK** , kterou jste už vytvořili ve s
 
         SELECT COUNT(*) FROM hvactable
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage](apache-spark-use-with-data-lake-store.md)
 * [Zpracování událostí streamování strukturovaných dat pomocí EventHub](apache-spark-eventhub-structured-streaming.md)

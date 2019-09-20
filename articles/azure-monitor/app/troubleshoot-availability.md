@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067062"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146602"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -46,10 +46,9 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Občasné selhání testu s chybou porušení protokolu
 
-|Příznak/chybová zpráva| Možné příčiny|
-|----|---------|
-v případě porušení protokolu CR musí následovat znak LF. | K tomu dochází, když jsou zjištěna chybná záhlaví. Konkrétně některá záhlaví nemusí používat znaky CRLF k označení konce řádku, což porušuje specifikaci HTTP, a proto selže při ověřování na úrovni .NET WebRequest.
- || To může být způsobeno také nástroji pro vyrovnávání zatížení nebo sítě CDN.
+|Příznak/chybová zpráva| Možné příčiny| Možná řešení |
+|----|---------|-----|
+|Server potvrdil narušení protokolu. Oddíl = ResponseHeader detail = CR musí být následován znakem LF. | K tomu dochází, když jsou zjištěna chybná záhlaví. Konkrétně některá záhlaví nemusí používat znaky CRLF k označení konce řádku, což porušuje specifikaci protokolu HTTP. Application Insights vynucuje tuto specifikaci HTTP a neúspěšné odpovědi s nesprávně vytvořenými záhlavími.| a. Pokud chcete opravit chybné servery, obraťte se na poskytovatele hostitele webu nebo poskytovatele CDN. <br> b. V případě, že neúspěšné požadavky jsou prostředky (například soubory stylu, obrázky, skripty), můžete zvážit zakázání analýzy závislých požadavků. Mějte na paměti, že pokud to uděláte, ztratíte možnost sledovat dostupnost těchto souborů.
 
 > [!NOTE]
 > Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
@@ -134,7 +133,7 @@ Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat o
 
 Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Testování webu ve více krocích](availability-multistep.md)
 * [Testy adresy URL pro příkazy URL](monitor-web-app-availability.md)

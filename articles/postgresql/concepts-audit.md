@@ -6,19 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092258"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147169"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 
 Auditování protokolování databázových aktivit na serveru Azure Database for PostgreSQL je k dispozici prostřednictvím rozšíření audit PostgreSQL: [pgAudit](https://www.pgaudit.org/). pgAudit poskytuje podrobné protokolování relací a/nebo objektů auditu.
 
 > [!NOTE]
-> pgAudit se dá povolit jenom na Pro obecné účely a paměťově optimalizovaných serverech.
+> pgAudit je ve verzi Preview na Azure Database for PostgreSQL.
+> Rozšíření lze povolit pouze na Pro obecné účely a paměťově optimalizovaných serverech.
 
 ## <a name="usage-considerations"></a>Požadavky na využití
 Ve výchozím nastavení jsou příkazy protokolu pgAudit generovány spolu s běžnými příkazy protokolu pomocí standardního protokolovacího zařízení Postgres. V Azure Database for PostgreSQL se tyto soubory protokolu dají stáhnout prostřednictvím Azure Portal nebo rozhraní příkazového řádku. Maximální velikost úložiště pro kolekci souborů je 1 GB a každý soubor je k dispozici po dobu maximálně sedmi dnů (výchozí hodnota je tři dny). Tato služba je krátkodobá možnost uložení.

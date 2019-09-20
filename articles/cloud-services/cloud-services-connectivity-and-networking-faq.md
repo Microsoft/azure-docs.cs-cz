@@ -4,7 +4,7 @@ description: V tomto článku jsou uvedené Nejčastější dotazy týkající s
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941739"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154875"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: Nejčastější dotazy
 
@@ -103,7 +103,7 @@ Abyste se ujistili, že se veřejná IP adresa vaší cloudové služby (označo
 - [Vyhrazení IP adresy existující cloudové služby](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Pokud máte pro své role více než jednu instanci, přidružením protokolu RIP ke cloudové službě by nemělo dojít k výpadku. Případně můžete rozsah IP adres vašeho datacentra Azure přidaný do seznamu povolených. Všechny rozsahy IP adres Azure najdete na [webu služby Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Pokud máte pro své role více než jednu instanci, přidružením protokolu RIP ke cloudové službě by nemělo dojít k výpadku. Případně můžete přidat rozsah IP adres vašeho datacentra Azure do seznamu povolených. Všechny rozsahy IP adres Azure najdete na [webu služby Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Tento soubor obsahuje rozsahy IP adres (včetně výpočetních prostředků, SQL a rozsahů úložiště), které se používají v datových centrech Azure. Každý týden se účtuje aktualizovaný soubor, který odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres. Nové rozsahy, které se zobrazí v souboru, se v datových centrech nepoužijí aspoň na jeden týden. Každý týden si stáhněte nový soubor. XML a proveďte potřebné změny na svém webu, abyste správně identifikovali služby běžící v Azure. Uživatelé Azure ExpressRoute si můžou všimnout, že tento soubor se používá k aktualizaci inzerce protokolu BGP v Azure Space v první týden v měsíci.
 

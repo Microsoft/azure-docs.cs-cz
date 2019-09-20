@@ -7,16 +7,16 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194620"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161936"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
-Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za nevyhovující.
+Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
@@ -54,9 +54,47 @@ Konfigurace hosta používá modul prostředků **GuestConfiguration** k vytvá�
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Vytvořit vlastní konfiguraci hosta
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Vytvoření vlastní konfigurace a prostředků konfigurace hosta
 
 Prvním krokem k vytvoření vlastní zásady pro konfiguraci hosta je vytvoření konfigurace DSC. Přehled konceptů a terminologie DSC najdete v tématu [Přehled prostředí POWERSHELL DSC](/powershell/dsc/overview/overview).
+
+Pokud vaše konfigurace vyžaduje jenom prostředky, které jsou integrované s instalací agenta konfigurace hosta, stačí vytvořit konfigurační soubor MOF. Pokud potřebujete spustit další skript, budete muset vytvořit vlastní modul prostředků.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Požadavky na vlastní prostředky konfigurace hosta
+
+Když konfigurace hosta Audituje počítač, nejprve se `Test-TargetResource` spustí a určí, jestli je ve správném stavu.  Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní.  Pokud je `$false` logická hodnota pro libovolný prostředek v konfiguraci, spustí `Get-TargetResource`se zprostředkovatel.
+Pokud logická hodnota `$true` `Get-TargetResource` není volána.
+
+Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která nebyla pro konfiguraci požadovaného stavu systému Windows nutná.
+
+- Vrácená zatřiďovací tabulka musí zahrnovat vlastnost s názvem **důvody**.
+- Vlastnost důvody musí být pole.
+- Každá položka v poli musí být zatřiďovací tabulka s klíči s názvem **Code** a **frází**.
+
+Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou informace zobrazeny, když je počítač nekompatibilní.
+Jednotlivé položky si můžete představit z důvodů, proč prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být nekompatibilní s více než jedním důvodem.
+
+Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, kdy prostředek není kompatibilní jako hodnota **fráze**.  **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se použil k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit pro audit počítače, pokud je možné zachytit výstup a vrátit ho jako řetězcovou hodnotu pro vlastnost **fráze** .
+
+- **Kód** (řetězec): Název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu.  Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
+    - Příkladem může být Registry: Registry: keynotpresent.
+- **Fráze** (řetězec): Uživatelsky čitelný text, který vysvětluje, proč nastavení nedodržuje předpisy.
+    - Příkladem může být, že $key klíč registru není v počítači přítomen.
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
+
+Pro vývojáře, kteří chtějí urychlit proces zahájení práce a práci z ukázkového kódu, existuje projekt komunity s názvem **projekt konfigurace hosta** jako šablona pro modul [sádry](https://github.com/powershell/plaster) prostředí PowerShell.  Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu.  Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
@@ -141,10 +179,10 @@ V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné kl
 
 Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem. Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Dále vytvořte instanci Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
+Vytvořte instanci Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
 Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Pak přiřaďte počítači identitu přiřazenou uživateli. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Přiřaďte počítači identitu přiřazenou uživatelem. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače. Adresu URL třídy Key Vault lze předat prostředku jako vlastnosti, takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -334,7 +372,7 @@ Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a j
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VOLITELNÉ Podepisování balíčků konfigurace hosta
 
-Vlastní zásady konfigurace hosta ve výchozím nastavení používají SHA256 hash k ověření, že se balíček zásad nezměnil z okamžiku, kdy byl publikován na serveru, který je auditován.
+Vlastní zásady konfigurace hosta ve výchozím nastavení používají SHA256 hash k ověření, že se balíček zásad nezměnil od okamžiku, kdy byl vyčten serverem, který je auditován.
 V případě potřeby mohou zákazníci také použít certifikát k podepisování balíčků a vynucení rozšíření konfigurace hosta pouze k povolení podepsaného obsahu.
 
 Chcete-li povolit tento scénář, je třeba provést dva kroky. Spusťte rutinu pro podepsání balíčku obsahu a přidejte značku do počítačů, které by měly vyžadovat podepsání kódu.

@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104031"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145663"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -78,6 +78,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 | ![Prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Pro mobilní aplikace nakonfigurujte jednotlivé platformy pomocí prostředí pro registraci aplikací. Aby vaše aplikace mohla využít výhod Microsoft Authenticator nebo Microsoft Portál společnosti pro jednotné přihlašování, vaše aplikace potřebuje nakonfigurovaný identifikátor URI pro přesměrování zprostředkovatele. To umožňuje, aby Microsoft po ověření vrátil kontrolu na vaši aplikaci. Při konfiguraci jednotlivých platforem vás proces registrace aplikace provede procesem. Pracovní příklad můžete stáhnout pomocí rychlého startu. Pokud je to možné, používejte v iOS zprostředkovatele a systémové webzobrazení.|
 | ![Prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Ve webových aplikacích nebo webových rozhraních API ponechte jednu mezipaměť tokenů na účet.  Pro webové aplikace by měla být mezipaměť tokenů nastavená ID účtu.  Pro webová rozhraní API by měl být účet nastaven pomocí hash tokenu, který se používá k volání rozhraní API. MSAL.NET poskytuje serializaci mezipaměti vlastního tokenu v podplatformách .NET Framework a .NET Core. Z důvodu zabezpečení a výkonu doporučujeme, abyste měli v úmyslu serializovat jednu mezipaměť na uživatele. Další informace najdete v tématu o [serializaci mezipaměti tokenů](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).|
 | ![Prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud jsou data, která vaše aplikace vyžaduje, dostupná prostřednictvím [Microsoft Graph](https://developer.microsoft.com/graph), požádejte o oprávnění pro tato data pomocí koncového bodu Microsoft Graph místo jednotlivého rozhraní API. |
+| ![Prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |Nehlédněte do hodnoty přístupového tokenu nebo se pokuste o jeho analýzu jako klient.  Můžou měnit hodnoty, formáty nebo dokonce zašifrované bez upozornění – vždy použijte id_token, pokud se klient potřebuje dozvědět něco o uživateli nebo volat Microsoft Graph.  Přístupové tokeny by měly analyzovat jenom webová rozhraní API (protože jsou ta definující formát a nastavení šifrovacích klíčů). |
 
 ## <a name="end-user-experience"></a>Činnost koncového uživatele
 

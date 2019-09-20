@@ -1,29 +1,30 @@
 ---
-title: Ukázky Azure Powershellu pro Azure Cosmos DB – Apache Cassandra API
-description: Ukázky Azure Powershellu pro Azure Cosmos DB – Apache Cassandra API
+title: Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API Cassandra
+description: Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 670fac2e7eadaa8273c309fee56f164512398d78
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 31997143aa688c2eb74d180a2811496e53bc672c
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565480"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155437"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Ukázky Azure Powershellu pro Azure Cosmos DB – Apache Cassandra API
+# <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API Cassandra
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure Powershellu pro službu Azure Cosmos DB pro rozhraní Cassandra API.
+Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Cosmos DB rozhraní API Cassandra.
 
 | | |
 |---|---|
-|[Vytvoření účtu, prostoru klíčů a tabulky](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostoru klíčů a tabulky. |
-|[Vypsat nebo získat keyspaces nebo tabulky](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypsat nebo získat keyspaces nebo tabulky. |
-|[Získat RU/s](scripts/powershell/cassandra/ps-cassandra-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte RU/s pro prostor klíčů nebo tabulky. |
-|[Aktualizace RU/s](scripts/powershell/cassandra/ps-cassandra-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizujte RU/s pro prostor klíčů nebo tabulky. |
-|[Přidat oblast](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoření účtu Azure Cosmos a přidejte do seznamu umístění oblast. |
-|[Změna priority převzetí služeb při selhání](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změna priority převzetí služeb při selhání účtu Azure Cosmos pomocí triggeru ruční převzetí služeb při selhání. |
-|[Účet klíče a připojovací řetězec úlohy](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte připojovací řetězce k účtu Azure Cosmos. Získejte primární a sekundární klíče účtu Azure Cosmos. Obnovení klíče účtu služby. |
+|[Vytvoření účtu, místa a tabulky](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostor a tabulku. |
+|[Vypsat nebo získat prostory a tabulky](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo získá prostor nebo tabulky. |
+|[Získat RU/s](scripts/powershell/cassandra/ps-cassandra-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte RU/s pro prostor klíčů nebo tabulku. |
+|[Aktualizace RU/s](scripts/powershell/cassandra/ps-cassandra-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizujte RU/s pro prostor klíčů nebo tabulku. |
+|[Aktualizace účtu nebo přidání oblasti](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Přidejte oblast do účtu Cosmos. Lze ji také použít pro úpravu dalších vlastností účtu, ale musí být odděleny od změn v oblastech. |
+|[Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změňte prioritu regionálního převzetí služeb při selhání účtu Azure Cosmos nebo aktivujte ruční převzetí služeb při selhání. |
+|[Klíče účtu nebo připojovací řetězce](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární klíče, připojovací řetězce nebo znovu vygenerujte klíč účtu pro účet Azure Cosmos. |
+|[Vytvoření účtu Cosmos pomocí brány firewall protokolu IP](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos s povoleným protokolem IP firewall. |
 |||

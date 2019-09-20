@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679128"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161498"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -42,7 +42,7 @@ Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS,
 
 * Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.43 nebo vyšší.
 
-* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [Jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto rychlém startu [](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
+* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [Jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto [rychlém](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)startu. 
 
 * Server Jenkinse musí mít nainstalovanou Helm a kubectl a k dispozici pro účet Jenkinse, jak je vysvětleno dále v tomto kurzu.
 
@@ -253,7 +253,7 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
     }
     ```
 
-4. Do Jenkinse přidejte *uživatelské jméno s* přihlašovacími údaji k heslu. **Uživatelské jméno** je uživatelské jméno z posledního kroku v tomto příkladu `acr01`. **Heslo** je hodnota pro první heslo, v tomto příkladu `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. **ID** tohoto přihlašovacího údaje je hodnota ACR_CRED_ID.
+4. Do Jenkinse přidejte *uživatelské jméno s přihlašovacími údaji k heslu* . **Uživatelské jméno** je uživatelské jméno z posledního kroku v tomto příkladu `acr01`. **Heslo** je hodnota pro první heslo, v tomto příkladu `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. **ID** tohoto přihlašovacího údaje je hodnota ACR_CRED_ID.
 
 5. Nastavte přihlašovací údaje AKS. Přidejte do Jenkinse typ přihlašovacích údajů *Konfigurace Kubernetes (kubeconfig)* (použijte možnost zadat přímo). Přihlašovací údaje pro přístup ke clusteru AKS získáte spuštěním následujícího příkazu:
 
@@ -349,7 +349,7 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
 
 2. Přihlaste se k Jenkinse a vyberte název kanálu a pak zvolte **sestavit hned**. 
 
-    Můžete také nastavit Webhook, který automaticky aktivuje kanál Jenkinse. Po zadání žádosti o přijetí změn vydá GitHub příspěvek na Jenkinse, který aktivuje kanál. Další informace o nastavení Webhooku najdete v tématu [připojení Jenkinse k GitHubu](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
+    Můžete také nastavit *Webhook* , který automaticky aktivuje kanál Jenkinse. Po zadání žádosti o přijetí změn vydá GitHub příspěvek na Jenkinse, který aktivuje kanál. Další informace o nastavení Webhooku najdete v tématu [připojení Jenkinse k GitHubu](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
 
 3. Porovnat změny s aktuální sdílenou verzí:
 
@@ -413,7 +413,7 @@ Až budete s použitím ukázkové aplikace hotovi, vyčistěte prostředky Azur
 az group delete -y --no-wait -n MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak používat modul plug-in Azure Dev Spaces pro Jenkinse a modul plug-in Azure Container Registry k vytváření kódu a nasazování do vývojového prostoru.
 

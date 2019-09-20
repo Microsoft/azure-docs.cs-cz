@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711012"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153897"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Brána firewall operačního systému hosta virtuálního počítače Azure je špatně nakonfigurovaný.
 
@@ -49,13 +49,13 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
 
 Následující pravidla lze upravovat, buď umožňuje přístup k virtuálnímu počítači (prostřednictvím protokolu RDP) nebo poskytnout prostředí pro snazší řešení problémů:
 
-*   Vzdálená plocha (TCP-In): Toto je standardní pravidlo, které poskytuje primární přístup do virtuálního počítače tím, že protokol RDP v Azure.
+*   Vzdálená plocha (TCP-in): Toto je standardní pravidlo, které poskytuje primární přístup k virtuálnímu počítači tím, že povoluje protokol RDP v Azure.
 
-*   Vzdálená správa Windows (HTTP-In): Toto pravidlo umožňuje vám umožní připojit se k virtuálnímu počítači pomocí Powershellu. V Azure, tento typ přístupu vám umožní používat skriptovací aspekt vzdálené skriptování a řešení potíží.
+*   Vzdálená správa systému Windows (HTTP-in): Toto pravidlo vám umožní připojit se k virtuálnímu počítači pomocí PowerShellu. v Azure vám tento druh přístupu umožní používat skriptování ke vzdálenému skriptování a odstraňování potíží.
 
-*   Sdílení souborů a tiskáren (SMB-In): Toto pravidlo aktivuje přístup ke sdílené složce sítě jako možnost řešení potíží.
+*   Sdílení souborů a tiskáren (SMB-in): Toto pravidlo aktivuje přístup ke sdílené síťové složce jako možnost řešení potíží.
 
-*   Sdílení souborů a tiskáren (žádost o odezvu – ICMPv4-In): Toto pravidlo umožňuje příkaz ping virtuálnímu počítači.
+*   Sdílení souborů a tiskáren (požadavek na odezvu – ICMPv4-In): Toto pravidlo vám umožní testovat virtuální počítač z pøíkazového testu.
 
 V případě sériový přístup ke konzole může dotazovat aktuální stav pravidla brány firewall.
 
@@ -98,7 +98,7 @@ V případě sériový přístup ke konzole může dotazovat aktuální stav pra
 
 ### <a name="offline-mitigations"></a>Offline migrace
 
-1.  Povolení nebo zakázání pravidla brány firewall, najdete v tématu [povolit nebo zakázat pravidlo brány firewall na operační systém hosta virtuálního počítače Azure](enable-disable-firewall-rule-guest-os.md).
+1.  Pokud chcete povolit nebo zakázat pravidla brány firewall, přečtěte si téma [Povolení nebo zakázání pravidla brány firewall v hostovaném operačním systému virtuálního počítače Azure](enable-disable-firewall-rule-guest-os.md).
 
 2.  Zkontrolujte, zda jsou v [blokuje příchozí provoz scénáře s branou firewall hostovaného operačního systému](guest-os-firewall-blocking-inbound-traffic.md).
 

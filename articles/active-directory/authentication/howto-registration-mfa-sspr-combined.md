@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162297"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145676"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit registraci kombinovaných zabezpečení informací (Preview)
 
@@ -30,7 +30,7 @@ Než začnete s novým prostředím, přečtěte si článek [Registrace informa
 |     |
 
 > [!NOTE]
-> Organizace, které povolily předchozí verzi Preview pro registraci a správu bezpečnostních údajů, by měly dokončit níže uvedené kroky, aby bylo možné používat vylepšené prostředí Preview. V případě organizací, které tento přepínač nedělají, od 25. září 2019 bude společnost Microsoft přepínat uživatele předchozí verze Preview, aby mohli registrovat a spravovat informace o zabezpečení v rozšířeném prostředí. 
+> Organizace, které povolily předchozí verzi Preview pro registraci a správu bezpečnostních údajů, by měly dokončit níže uvedené kroky, aby bylo možné používat vylepšené prostředí Preview. Pro organizace, které tento přepínač nedělají, od 8. října 2019 bude Microsoft přepínat uživatele předchozí verze Preview, aby mohli registrovat a spravovat informace o zabezpečení v rozšířeném prostředí. 
 > 
 > Pokud jste nepovolili žádnou verzi Preview, nebude mít vliv na vaši organizaci.
 
@@ -68,7 +68,7 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
 
 1. V **Azure Portal**přejděte na **Azure Active Directory** > **podmíněný přístup** .
 1. Vyberte **Nová zásada**.
-1. Do název zadejte název pro tuto zásadu. Například kombinovaná **Registrace informací o zabezpečení v důvěryhodných sítích**
+1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**
 1. V části **přiřazení**klikněte na **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
 
    > [!WARNING]
@@ -79,8 +79,8 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
    1. Konfigurovat **Ano**
    1. Zahrnout **libovolné umístění**
    1. Vyloučit **všechna důvěryhodná umístění**
-   1. V okně umístění klikněte na Hotovo.
-   1. V okně podmínky klikněte na Hotovo.
+   1. V okně umístění klikněte na **Hotovo** .
+   1. V okně podmínky klikněte na **Hotovo** .
 1. V části **řízení** > přístupu**udělení oprávnění**
    1. Klikněte na **blokovat přístup** .
    1. Pak klikněte na **Vybrat** .

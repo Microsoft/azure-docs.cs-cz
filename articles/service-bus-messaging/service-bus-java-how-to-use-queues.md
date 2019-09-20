@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967857"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155504"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
 Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Azure SDK pro jazyk Java][Azure SDK for Java] . Pokud používáte zatmění, můžete nainstalovat [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro jazyk Java. Pak můžete přidat **knihovny Microsoft Azure pro jazyk Java** do projektu:
 
-![Snímek obrazovky s kartou knihovny, kde můžete přidat knihovny](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Přidání knihoven Microsoft Azure pro Java do projektu zatmění](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 Do horní části `import` souboru Java přidejte následující příkazy:
 

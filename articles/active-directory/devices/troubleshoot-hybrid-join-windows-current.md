@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995218"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162414"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
 
@@ -110,7 +110,7 @@ Další kroky k odstraňování potíží můžete pokračovat v dalších kroc�
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení.
+Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
 Pole chybová fáze označuje fázi selhání spojení, zatímco ' Client ErrorCode ' označuje kód chyby operace JOIN.
 
 ```
@@ -181,7 +181,7 @@ Chcete-li najít kód pro chybu zjišťování kódu chyby, použijte jednu z n�
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-V části diagnostická data ve výstupu stavu připojení vyhledejte test DRS Discovery.
+V části diagnostická data ve výstupu stavu připojení vyhledejte test DRS Discovery. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Vyhledejte typ registrace a vyhledejte kód chyby ze seznamu níže.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení.
+Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
 Pole registrace typu označuje typ provedeného spojení.
 
 ```
@@ -407,7 +407,7 @@ Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure 
 ## <a name="known-issues"></a>Známé problémy
 - V části Nastavení-> účty – > přístup do práce nebo do školy můžou zařízení připojená k hybridní službě Azure AD zobrazovat dva různé účty, jednu pro Azure AD a jednu pro místní službu AD, když jsou připojeni k mobilním hotspotům nebo externím sítím Wi-Fi. Toto je jenom problém s uživatelským rozhraním a nemá žádný vliv na funkčnost. 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokračování [v řešení potíží pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)
 

@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711551"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154024"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače
 
@@ -112,8 +112,8 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
 
     > [!Note]
     > Následující pokyny se vztahují zásady brány firewall, v závislosti na tom, jak je nastavit:
-    >    * *BlockInbound*: Veškerý příchozí provoz se zablokuje, pokud nemáte v platnosti pravidla povolení provozu.
-    >    * *BlockInboundAlways*: Bude ignorovat všechna pravidla brány firewall a veškerý provoz se zablokuje.
+    >    * *BlockInbound*: Veškerý příchozí provoz bude zablokován, pokud nemáte pravidlo pro povolení provozu.
+    >    * *BlockInboundAlways*: Všechna pravidla brány firewall budou ignorována a veškerý provoz bude zablokován.
 
 2.  Upravit *DefaultInboundAction* nastavit tyto profily **povolit** provoz. Chcete-li to provést, spusťte následující příkaz:
 
@@ -142,7 +142,7 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
 
 #### <a name="mitigation-1"></a>Zmírnění dopadů 1
 
-Zobrazit [jak do brány Firewall povolte nebo zakažte pravidlo v operačním systému hosta](enable-disable-firewall-rule-guest-os.md).
+Viz [Jak povolit – zakázat pravidlo brány firewall v hostovaném operačním systému](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>Zmírnění dopadů 2
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312125"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146841"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -23,7 +23,7 @@ Pro použití značek u prostředků musí mít uživatel k tomuto typu prostře
 
 ## <a name="policies"></a>Zásady
 
-Pomocí [Azure Policy](../governance/policy/overview.md) můžete vymáhat pravidla označování a konvence. Vytvořením zásady se vyhnete scénáři nasazení prostředků do vašeho předplatného, které nedodržují očekávané značky vaší organizace. Místo ručního použití značek nebo hledání prostředků, které nedodržují předpisy, můžete vytvořit zásadu, která při nasazení automaticky použije potřebné značky. V následující části jsou uvedeny příklady zásad pro značky.
+Pomocí [Azure Policy](../governance/policy/overview.md) můžete vymáhat pravidla označování a konvence. Vytvořením zásady se vyhnete scénáři nasazení prostředků do vašeho předplatného, které nedodržují očekávané značky vaší organizace. Místo ručního použití značek nebo hledání prostředků, které nedodržují předpisy, můžete vytvořit zásadu, která při nasazení automaticky použije potřebné značky. Značky se teď dají použít u existujících prostředků s novým efektem [změny](../governance/policy/concepts/effects.md#modify) a [úlohou nápravy](../governance/policy/how-to/remediate-resources.md). V následující části jsou uvedeny příklady zásad pro značky.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -409,7 +409,7 @@ Můžete načítat informace o značkách prostřednictvím [rozhraní API pro v
 
 Informace o REST API operacích najdete v referenčních informacích o [fakturačních REST API Azure](/rest/api/billing/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, jestli můžete pro typ prostředku použít značku, přečtěte si téma [Podpora značek pro prostředky Azure](tag-support.md).
 * Úvod k používání portálu najdete v tématu [použití Azure Portal ke správě prostředků Azure](manage-resource-groups-portal.md).  

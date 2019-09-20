@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103158"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162288"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -161,7 +161,7 @@ Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ano | Ano [, verze 18,0 a vyšší](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ano | Ano |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – viz [Rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |
-| [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ano](https://www.microsoft.com/download/details.aspx?id=38829) | Ne |
+| [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ano](https://www.microsoft.com/download/details.aspx?id=38829) | Ano, [ve verzi Preview](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Metody migrace
 
@@ -170,10 +170,10 @@ K přesunu dat mezi SQL Server, Izolovaná databáze a databázemi spravované i
 | **Zdroj** | **Izolovaná databáze a elastický fond** | **Spravované instance a fondy instancí** |
 | --- | --- | --- |
 | SQL Server (on-Prem, AzureVM, Amazon RDS) | **Online:** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Nativní zálohování a obnovování, [BacPac soubor (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
-| Izolovaná databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
+| Jednoúčelová databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
 | MI | **Online:** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Obnovení v časovém intervalu mezi instancemi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) nebo [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [nativní zálohování a obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Společnost Microsoft nadále přidává funkce do Azure SQL Database. Navštivte webovou stránku aktualizace služby pro Azure, kde najdete nejnovější aktualizace pomocí těchto filtrů:
 

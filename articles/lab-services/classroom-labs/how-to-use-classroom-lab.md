@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
+ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032020"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161523"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
@@ -28,12 +28,15 @@ Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobra
 
 1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
 1. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
-2. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
-3. Počkejte, až bude virtuální počítač připravený. Na dlaždici VM si všimněte následujících polí:
+
+    > [!NOTE]
+    > Pro použití Azure Lab Services je vyžadován účet Microsoft. Pokud se pokoušíte použít účet Microsoft, jako jsou například účty Yahoo nebo Google, abyste se přihlásili k portálu, postupujte podle pokynů pro vytvoření účet Microsoft, která bude propojena s neúčet Microsoft. Pak postupujte podle pokynů k dokončení procesu registrace. 
+1. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
+1. Počkejte, až bude virtuální počítač připravený. Na dlaždici VM si všimněte následujících polí:
     1. V horní části dlaždice se zobrazí **název testovacího prostředí**.
     1. Napravo se zobrazí ikona představující **operační systém** virtuálního počítače. V tomto příkladu se jedná o operační systém Windows. 
     1. V dolní části dlaždice se zobrazí ikony nebo tlačítka, které spustí/zastaví virtuální počítač a připojí se k virtuálnímu počítači. 
-    1. Napravo od tlačítek se zobrazí stav virtuálního počítače. Ověřte, že se zobrazuje stav virtuálního počítače Zastaveno.
+    1. Napravo od tlačítek se zobrazí stav virtuálního počítače. Ověřte, že se zobrazuje stav virtuálního počítače **Zastaveno**.
 
         ![Virtuální počítač v zastaveném stavu](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
@@ -49,7 +52,7 @@ Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobra
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-1. Vyberte druhé tlačítko, jak je znázorněno na následujícím obrázku , abyste se připojili k virtuálnímu počítači testovacího prostředí. 
+1. Vyberte druhé tlačítko, jak je znázorněno na následujícím obrázku, abyste se **připojili** k virtuálnímu počítači testovacího prostředí. 
 
     ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Proveďte jeden z následujících kroků: 
@@ -107,7 +110,7 @@ Po registraci do testovacích prostředí se můžete podívat na všechny labor
     ![Zobrazit všechna testovací prostředí](../media/how-to-use-classroom-lab/all-labs.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
 - [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)

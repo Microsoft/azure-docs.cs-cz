@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663380"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154669"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 
@@ -25,11 +25,11 @@ Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Použití API pro odměnu pro posílání skóre nedostatku do přizpůsobení
 
-Do přizpůsobení přizpůsobeného pomocí API pro [odměnu](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)se posílají ceny. Odměňování je číslo od-1 do 1. Přizpůsobené vlaky je modelem, který dosáhne nejvyšší možné ceny v průběhu času.
+Do přizpůsobení přizpůsobeného pomocí API pro [odměnu](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)se posílají ceny. Odměňování je obvykle číslo od 0 do 1. V některých scénářích může být záporná odměna s hodnotou-1 a měla by se používat jenom v případě, že máte zkušenosti s posílením učení (RL). Přizpůsobené vlaky je modelem, který dosáhne nejvyšší možné ceny v průběhu času.
 
 Ceny jsou odesílány poté, co došlo k chování uživatele, což může být několik dní později. Maximální doba přizpůsobování času bude počkat, dokud se událost nepovažuje za neurčitou, nebo pokud se výchozí měna nakonfiguruje s [dobou čekání](#reward-wait-time) na Azure Portal.
 
-Pokud se skóre pro událost nedostalo v **době čekání**na odměnu, použije se **Výchozí měna** . **[Výchozí odměna](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** je obvykle nastavena na hodnotu nula.
+Pokud se skóre pro událost nedostalo v **době čekání na odměnu**, použije se **Výchozí měna** . **[Výchozí odměna](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** je obvykle nastavena na hodnotu nula.
 
 
 ## <a name="behaviors-and-data-to-consider-for-rewards"></a>Chování a data, která je třeba zvážit při neprospěchu
@@ -52,11 +52,11 @@ V obchodní logice musí být vypočítáno skóre odměňování. Skóre lze zn
 
 ## <a name="default-rewards"></a>Výchozí ceny
 
-Pokud v [době čekání](#reward-wait-time)na odměnu nedojde k žádné záměna, doba od volání metody Rank implicitně aplikuje **výchozí odměnu** na tuto událost pořadí.
+Pokud v [době čekání na odměnu](#reward-wait-time)nedojde k žádné záměna, doba od volání metody Rank implicitně aplikuje **výchozí odměnu** na tuto událost pořadí.
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>Sestavování na více faktorech  
 
-Pro efektivní přizpůsobení můžete vytvořit skóre odměňování (libovolné číslo od-1 a 1) na základě více faktorů. 
+Pro efektivní přizpůsobení můžete vytvořit skóre pro odměnu na základě více faktorů. 
 
 Můžete například použít tato pravidla pro přizpůsobení seznamu obsahu videa:
 
@@ -78,9 +78,9 @@ Nastavení agregace:
 *  **První**: Bere v případě, že je pro událost obdrženo první skóre a zahodí zbytek.
 * **Součet**: Vybírá všechny hodnocení bez jakýchkoli motivů pro ID události a přidává je dohromady.
 
-Všechny odměny za události, které jsou obdrženy po **dobu čekání**na odměnu, se zahodí a neovlivňují školení modelů.
+Všechny odměny za události, které jsou obdrženy po **dobu čekání na odměnu**, se zahodí a neovlivňují školení modelů.
 
-Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být vyšší než 1 nebo nižší než-1. Tím nedojde k selhání služby.
+Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být mimo očekávaný rozsah skóre. Tím nedojde k selhání služby.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
@@ -88,7 +88,7 @@ Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být vy
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Osvědčené postupy pro výpočet skóre odměňování
 
-* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: Můžete se snadno domnívat, že se jedná o kliknutí, ale dobrá výhoda je založená na tom, co chcete, aby uživatelé *měli místo toho* , co chcete, aby mohli *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
+* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: Můžete se snadno domnívat, že se jedná o kliknutí, ale dobrá výhoda je založená na tom, co chcete, aby uživatelé měli místo toho, co chcete *, aby mohli* *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
 
 * **Použijte skóre odměňování pro to, jak dobrá přizpůsobení fungovala**: Přizpůsobení návrhu filmu by vedlo k tomu, že by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
 
@@ -104,7 +104,7 @@ Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být vy
 
 Přizpůsobování bude korelovat informace o volání pořadí s neprospěchem v souvislosti s voláními na základě počtu volání ke výukě modelu. Můžou se nacházet v různou dobu. Přizpůsobování čeká na omezený čas, počínaje okamžikem, kdy došlo k volání pořadí, i v případě, že bylo volání řazení provedeno jako neaktivní událost a aktivováno později.
 
-Pokud **Doba čekání** na odměnu vyprší a neexistují žádné informace o záplatcích, použije se pro tuto událost výchozí odměna za školení. Maximální doba čekání je 6 dnů.
+Pokud **Doba čekání na odměnu** vyprší a neexistují žádné informace o záplatcích, použije se pro tuto událost výchozí odměna za školení. Maximální doba čekání je 6 dnů.
 
 ## <a name="best-practices-for-setting-reward-wait-time"></a>Osvědčené postupy pro nastavení doby čekání na odměnu
 

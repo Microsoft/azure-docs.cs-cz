@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b153db3570f10ad5ad130dedd0bd20fe22776ed6
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910963"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146342"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Hromadné odebrání členů skupiny (Preview) v Azure Active Directory
 
@@ -27,18 +27,24 @@ Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký poče
 > [!NOTE]
 > Hromadné operace Azure AD jsou funkcí veřejné verze Preview služby Azure AD a jsou dostupné s placeným licenčním plánem Azure AD. Další informace o tom, jak používat verzi Preview, najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="bulk-removal-service-limits"></a>Omezení služby hromadného odebrání
-
-Každá Hromadná aktivita, ze které se mají odebrat seznam členů skupiny, může běžet po dobu až jedné hodiny. Tím se povolí odebrání seznamu minimálně 40 000 členů.
-
 ## <a name="to-bulk-remove-group-members"></a>Hromadné odebrání členů skupiny
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně odebírat členy skupin, které vlastní.
 1. V Azure AD vyberte **skupiny** > **všechny skupiny**.
 1. Otevřete skupinu, ze které odebíráte členy, a pak vyberte **Členové**.
-1. Na stránce **Členové** vyberte možnost **odebrat členy** pro stažení, aktualizaci a nahrání souboru CSV se seznamem členů, které chcete ze skupiny odebrat.
+1. Na stránce **Členové** vyberte **odebrat členy**.
+1. Na stránce **hromadné odebrání členů skupiny (Preview)** vyberte **Stáhnout** a získejte šablonu souboru CSV s požadovanými vlastnostmi člena skupiny.
 
    ![Příkaz odebrat členy je na stránce profilu pro skupinu.](./media/groups-bulk-remove-members/remove-panel.png)
+
+1. Otevřete soubor CSV a přidejte řádek pro každého člena skupiny, který chcete ze skupiny odebrat (požadované hodnoty jsou ID členského objektu nebo hlavní název uživatele). Pak soubor uložte.
+
+   ![Soubor CSV obsahuje názvy a ID pro členy, kteří mají být odebráni.](./media/groups-bulk-remove-members/csv-file.png)
+
+1. Na stránce **hromadně odebrat členy skupiny (Preview)** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru. csv.
+1. Po ověření obsahu souboru se zobrazí stránka hromadného importu **úspěšně nahrané soubory**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která odebere členy skupiny ze skupiny.
+1. Po dokončení operace odebrání se zobrazí oznámení, že hromadná operace byla úspěšná.
 
 ## <a name="check-removal-status"></a>Stav odebrání kontroly
 
@@ -46,7 +52,14 @@ Na stránce **výsledky hromadných operací (Preview)** můžete zobrazit stav 
 
    ![Stránka s výsledky hromadných operací zobrazuje stav hromadné žádosti](./media/groups-bulk-remove-members/bulk-center.png)
 
-## <a name="next-steps"></a>Další postup
+Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání**nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
+
+## <a name="bulk-removal-service-limits"></a>Omezení služby hromadného odebrání
+
+Každá Hromadná aktivita, ze které se mají odebrat seznam členů skupiny, může běžet po dobu až jedné hodiny. Tím se povolí odebrání seznamu minimálně 40 000 členů.
+
+## <a name="next-steps"></a>Další kroky
 
 - [Členové skupiny hromadného importu](groups-bulk-import-members.md)
 - [Stažení členů skupiny](groups-bulk-download-members.md)
+- [Stažení seznamu všech skupin](groups-bulk-download.md)

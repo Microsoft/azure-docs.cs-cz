@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194667"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161986"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -20,7 +20,7 @@ Pokud je u prostředku Azure zjištěno, že není kompatibilní s pravidlem zá
 
 > [!div class="checklist"]
 > - [Podrobnosti o kompatibilitě](#compliance-details)
-> - [Historie změn (Preview)](#change-history-preview)
+> - [Historie změn (Preview)](#change-history)
 
 ## <a name="compliance-details"></a>Podrobnosti dodržování předpisů
 
@@ -79,7 +79,7 @@ Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
 > [!NOTE]
 > Pokud chcete chránit data, když je hodnota vlastnosti _tajná_ , aktuální hodnota zobrazí hvězdičky.
 
-Tyto podrobnosti vysvětlují, proč je prostředek aktuálně nekompatibilní, ale nezobrazují, kdy došlo ke změně prostředku, který způsobil, že se neshoduje s předpisy. Informace najdete v části o [historii změn (Preview)](#change-history-preview) níže.
+Tyto podrobnosti vysvětlují, proč je prostředek aktuálně nekompatibilní, ale nezobrazují, kdy došlo ke změně prostředku, který způsobil, že se neshoduje s předpisy. Informace najdete v části o [historii změn (Preview)](#change-history) níže.
 
 ### <a name="compliance-reasons"></a>Důvody pro dodržování předpisů
 
@@ -91,7 +91,7 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
 |Aktuální hodnota musí být stejná jako cílová hodnota. |je rovno nebo **není** notEquals |
 |Aktuální hodnota musí být menší než cílová hodnota. |menší nebo negreaterOrEqualsé |
-|Aktuální hodnota musí být větší než nebo rovna cílové hodnotě. |greaterOrEquals nebo méně |
+|Aktuální hodnota musí být větší než nebo rovna cílové hodnotě. |greaterOrEquals nebo **méně** |
 |Aktuální hodnota musí být větší než cílová hodnota. |větší nebo nelessOrEquals |
 |Aktuální hodnota musí být menší nebo rovna cílové hodnotě. |lessOrEquals nebo **ne** větší |
 |Aktuální hodnota musí existovat. |neexistuje |
@@ -111,9 +111,9 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 
 ## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci hosta
 
-U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním počítači může vyhodnotit víc nastavení a budete muset zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má nevyhovující stav, budete muset zjistit, které konkrétní zásady hesel nejsou _kompatibilní_a proč.
+U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním počítači může vyhodnotit víc nastavení a budete muset zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
 
-Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač nedodržuje _předpisy_.
+Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -148,7 +148,7 @@ Audit that an application is installed inside Windows VMs                 {[Inst
 Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
 ```
 
-Chcete-li zobrazit pouze frázi _důvod_ , která popisuje, proč virtuální počítač nedodržuje _předpisy_, vraťte pouze podřízenou vlastnost důvod.
+Chcete-li zobrazit pouze frázi _důvod_ , která popisuje, proč virtuální počítač _nedodržuje předpisy_, vraťte pouze podřízenou vlastnost důvod.
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
@@ -214,7 +214,7 @@ _Vizuální rozdíl_ Aides při identifikaci změn prostředku. Zjištěné změ
 
 Data historie změn poskytuje [Azure Resource Graph](../../resource-graph/overview.md). Chcete-li zadat dotaz na tyto informace mimo Azure Portal, přečtěte si téma [získání změn prostředků](../../resource-graph/how-to/get-resource-changes.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).

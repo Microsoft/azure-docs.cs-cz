@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b22507796a9e614da780d25795bb7edf7094e935
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103206"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147215"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
@@ -31,7 +31,7 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
 
 
 > [!IMPORTANT]
-> Změna velikosti disku s operačním systémem virtuálního počítače Azure způsobí, že se počítač restartuje.
+> Změna velikosti disku operačního systému virtuálního počítače Azure vyžaduje, aby byl virtuální počítač navrácený.
 >
 > Po rozbalení disků je potřeba [rozšířit svazek v operačním systému](#expand-the-volume-within-the-os) a využít tak větší disk.
 > 
@@ -214,6 +214,6 @@ Po rozbalení disku pro virtuální počítač musíte přejít do operačního 
 4.  Do příkazového řádku **DiskPart** zadejte `extend [size=<size>]`. Tím se rozšíří vybraný svazek o *Velikost* v megabajtech (MB).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Disky můžete připojit také pomocí [Azure Portal](attach-managed-disk-portal.md).

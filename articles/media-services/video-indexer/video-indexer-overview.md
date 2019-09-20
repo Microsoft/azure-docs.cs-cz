@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123509"
+ms.locfileid: "71146473"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -54,10 +54,13 @@ Následuje seznam přehledů, které můžete z videí načíst pomocí Video In
 * **Detekce černého snímku**: Identifikuje černé snímky prezentované ve videu.
 * **Extrakce klíčového snímku**: Detekuje stabilní klíčové snímky ve videu.
 * **Kumulovaný kredity**: Identifikujte začátek a konec kumulovaných kreditů na konci televizních pořadů a filmů.
+* **Zjištění animovaných znaků** (Preview): detekce, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s [Cognitive Services vlastní vize](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
+* **Detekce typu redakčního snímku**: označení snímků na základě jejich typu (jako je třeba velký záběr, střední záběr, zavření, extrémní uzavření, dva snímky, více lidí, venku a interiér atd.). Další informace najdete v tématu [zjištění typu redakčního snímku](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
 * **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
+* **Identifikace a přepis mluveného slova ve více jazycích** (Preview): Automaticky identifikuje mluvený jazyk v různých segmentech ze zvukového souboru, který odesílá jednotlivé segmenty mediálního souboru, aby se přepisu, a sloučí přepis zpátky do jednoho sjednoceného přepisu. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
 * **Přepis zvuku**: Převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
 * **Skryté titulky**: Vytvoří skryté titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: Automaticky detekuje, oddělují a sloučí je s jednou časovou osou.
@@ -75,6 +78,7 @@ Následuje seznam přehledů, které můžete z videí načíst pomocí Video In
 K dispozici bude při indexování v jednom kanálu částečný výsledek pro tyto modely.
 
 * **Extrakce klíčových slov**: Extrahuje klíčová slova z mluvené řeči a vizuálního textu.
+* **Extrakce pojmenovaných entit**: Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
 * **Extrakce značek**: Extrahuje značky z mluvené řeči a vizuálního textu.
 * **Odvození tématu**: Provádí odvození hlavních témat z přepisů. Zahrnuje se taxonomie IPTC na první úrovni.
 * **Artefakty**: Extrahuje bohatou sadu artefaktů další úrovně podrobností pro každý model.

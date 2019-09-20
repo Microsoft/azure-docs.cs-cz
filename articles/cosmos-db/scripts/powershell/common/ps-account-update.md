@@ -1,19 +1,19 @@
 ---
-title: Skript Azure Powershellu – aktualizace účtu Azure Cosmos
-description: Ukázkový skript Azure Powershellu – aktualizace účtu Azure Cosmos přidání oblasti
+title: Skript Azure PowerShell – aktualizace účtu Azure Cosmos
+description: Ukázka skriptu Azure PowerShell – aktualizace účtu Azure Cosmos nebo změna oblastí
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8fad9b47b4f451f4b77f32038b26d6dc43809a60
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7d57264daf4036d1823d3da27c248bdca1d7466d
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603956"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154745"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>Aktualizovat účet Azure Cosmos a přidání oblasti pomocí Powershellu
+# <a name="update-an-azure-cosmos-account-or-add-modify-regions-using-powershell"></a>Aktualizace účtu Azure Cosmos nebo přidání oblastí úprav pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603956"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> V rámci jedné operace nelze upravovat oblasti a měnit jiné vlastnosti účtu Cosmos. Ty je třeba provést jako dvě samostatné operace.
+> [!NOTE]
+> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Pokud chcete tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a aplikujte je na skript specifický pro rozhraní API.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -38,14 +43,14 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Prostředky Azure**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Získá prostředek. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Vytvořte prostředek. |
 | [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Aktualizuje prostředek. |
 |**Skupiny prostředků Azure**| |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

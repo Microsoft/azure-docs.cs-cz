@@ -1,6 +1,6 @@
 ---
-title: Jak používat fronty služby Service Bus pomocí PHP | Dokumentace Microsoftu
-description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce PHP.
+title: Použití front Service Bus s PHP | Microsoft Docs
+description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v PHP.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -14,50 +14,50 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 92ea3c71dda011c5f7b19682d9bdea6c226ae5d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992082"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147242"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty služby Service Bus pomocí PHP
+# <a name="how-to-use-service-bus-queues-with-php"></a>Použití front Service Bus s PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-V tomto kurzu se dozvíte, jak vytvářet aplikace PHP na odesílání a příjem zpráv z fronty Service Bus. 
+V tomto kurzu se naučíte vytvářet aplikace PHP pro posílání zpráv a příjem zpráv z Service Bus fronty. 
 
 ## <a name="prerequisites"></a>Požadavky
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
-    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
-    2. Vytvoření služby Service Bus **obor názvů**. 
-    3. Získejte **připojovací řetězec**. 
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
+    1. Přečtěte si rychlý **přehled** Service Busch **front**. 
+    2. Vytvořte **obor názvů**Service Bus. 
+    3. Získá **připojovací řetězec**. 
 
         > [!NOTE]
-        > Vytvoříte **fronty** v oboru názvů služby Service Bus pomocí PHP v tomto kurzu. 
-3. [Azure SDK pro PHP](../php-download-sdk.md)
+        > V tomto kurzu vytvoříte **frontu** v oboru názvů Service Bus pomocí PHP. 
+3. [Azure SDK pro PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
-Jediným požadavkem pro vytvoření aplikace v jazyce PHP, který přistupuje k službě objektů Blob v Azure je odkazující na třídy v [sady Azure SDK pro jazyk PHP](../php-download-sdk.md) z vašeho kódu. Nástroje pro vývoj můžete použít k vytvoření aplikace nebo Poznámkový blok.
+Jediným požadavkem pro vytvoření aplikace PHP, která přistupuje k Azure Blob service, je odkazování tříd v [sadě Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) z vašeho kódu. Pomocí libovolného vývojového nástroje můžete vytvořit aplikaci nebo Poznámkový blok.
 
 > [!NOTE]
-> Instalace PHP je také nutné [OpenSSL rozšíření](https://php.net/openssl) nainstalovaný a povolený.
+> Vaše instalace PHP musí také mít nainstalované a povolené [rozšíření OpenSSL](https://php.net/openssl) .
 
-V této příručce se bude používat funkce služby, které může být volána z v rámci aplikace v jazyce PHP místně nebo v kódu v rámci webové role Azure, role pracovního procesu nebo webu.
+V této příručce budete používat funkce služby, které lze volat v rámci aplikace PHP místně nebo v kódu spuštěném v rámci webové role Azure, role pracovního procesu nebo webu.
 
-## <a name="get-the-azure-client-libraries"></a>Získání knihoven Azure klienta
+## <a name="get-the-azure-client-libraries"></a>Získání klientských knihoven Azure
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-Pokud chcete používat fronty služby Service Bus rozhraní API, postupujte takto:
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
+Pokud chcete použít rozhraní API fronty Service Bus, udělejte toto:
 
-1. Odkazovat na soubor pomocí automatického zavaděče [require_once] [ require_once] příkazu.
-2. Odkazovat na všechny třídy, které můžete použít.
+1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require_once]
+2. Odkázat na libovolné třídy, které můžete použít.
 
-Následující příklad ukazuje, jak zahrnout automatického zavaděče souboru a odkaz `ServicesBuilder` třídy.
+Následující příklad ukazuje, jak zahrnout soubor automatického zavaděče a odkazovat na `ServicesBuilder` třídu.
 
 > [!NOTE]
-> V tomto příkladu (a další příklady v tomto článku) se předpokládá, že jste si nainstalovali klientské knihovny PHP pro Azure prostřednictvím autora. Pokud jste nainstalovali na knihovny ručně nebo jako balíček hrušky, musí odkazovat **WindowsAzure.php** souboru automatického zavaděče.
+> V tomto příkladu (a dalších příkladech v tomto článku) se předpokládá, že máte nainstalované klientské knihovny PHP pro Azure přes skladatele. Pokud jste knihovny nainstalovali ručně nebo jako balíček pro HRUŠKy, musíte se odkázat na soubor automatického zavaděče **windowsazure. php** .
 > 
 > 
 
@@ -66,23 +66,23 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-V příkladech níže `require_once` příkazu se vždy nezobrazí, ale jsou odkazovány pouze třídy nezbytné ke spuštění příkladu.
+V níže uvedených `require_once` příkladech bude příkaz vždy zobrazen, ale budou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
 
-## <a name="set-up-a-service-bus-connection"></a>Nastavit připojení služby Service Bus
-Chcete-li vytvořit instanci služby Service Bus klienta, musíte nejprve mít platný připojovací řetězec v následujícím formátu:
+## <a name="set-up-a-service-bus-connection"></a>Nastavení Service Busho připojení
+Chcete-li vytvořit instanci klienta Service Bus, musíte nejprve mít platný připojovací řetězec v tomto formátu:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Kde `Endpoint` je obvykle ve formátu `[yourNamespace].servicebus.windows.net`.
+Kde `Endpoint` je obvykle formát `[yourNamespace].servicebus.windows.net`.
 
-K vytvoření libovolného klienta služby Azure, je nutné použít `ServicesBuilder` třídy. Můžete:
+Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Můžete:
 
-* Předejte řetězec připojení přímo k němu.
-* Použití **CloudConfigurationManager (CCM)** ke kontrole více externích zdrojů pro připojovací řetězec:
-  * Ve výchozím nastavení obsahuje podporu pro jeden externí zdroj – proměnné prostředí
-  * Můžete přidat nové zdroje tím, že rozšíří `ConnectionStringSource` třídy
+* Předání připojovacího řetězce přímo do něj.
+* Použijte **CloudConfigurationManager (ccm)** pro kontrolu několika externích zdrojů pro připojovací řetězec:
+  * Ve výchozím nastavení se dodává s podporou pro jednu externí proměnnou zdrojového prostředí.
+  * Nové zdroje můžete přidat rozšířením `ConnectionStringSource` třídy.
 
 Ve zde uvedených příkladech se připojovací řetězec předává přímo.
 
@@ -97,9 +97,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
-Můžete provádět operace správy front služby Service Bus přes `ServiceBusRestProxy` třídy. A `ServiceBusRestProxy` objekt je vytvořen prostřednictvím `ServicesBuilder::createServiceBusService` výrobní metoda s odpovídající připojovací řetězec, který zapouzdřuje token oprávněními k její správě.
+Můžete provádět operace správy pro Service Bus fronty prostřednictvím `ServiceBusRestProxy` třídy. Objekt je vytvořen `ServicesBuilder::createServiceBusService` pomocí metody Factory s příslušným připojovacím řetězcem, který zapouzdřuje oprávnění tokenu pro jeho správu. `ServiceBusRestProxy`
 
-Následující příklad ukazuje, jak vytvořit instanci `ServiceBusRestProxy` a volat `ServiceBusRestProxy->createQueue` můžete vytvořit frontu s názvem `myqueue` v rámci `MySBNamespace` obor názvů služby:
+Následující příklad ukazuje, jak vytvořit `ServiceBusRestProxy` instanci volání `ServiceBusRestProxy->createQueue` a a vytvořit frontu s názvem `myqueue` v rámci `MySBNamespace` oboru názvů služby:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +128,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Můžete použít `listQueues` metodu na `ServiceBusRestProxy` objekty ke kontrole, jestli fronta se zadaným názvem již existuje v oboru názvů.
+> Můžete použít `listQueues` metodu pro `ServiceBusRestProxy` objekty a ověřit, zda fronta se zadaným názvem již existuje v rámci oboru názvů.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Odeslat zprávu do fronty služby Service Bus, vaše aplikace volání `ServiceBusRestProxy->sendQueueMessage` metody. Následující kód ukazuje, jak odeslat zprávu `myqueue` fronty dříve vytvořených v rámci `MySBNamespace` obor názvů služby.
+Chcete-li odeslat zprávu do fronty Service Bus, vaše aplikace volá `ServiceBusRestProxy->sendQueueMessage` metodu. Následující kód ukazuje, jak odeslat zprávu do `myqueue` fronty, která byla dříve vytvořena `MySBNamespace` v rámci oboru názvů služby.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -163,19 +163,19 @@ catch(ServiceException $e){
 }
 ```
 
-Zprávy odeslané do (a přijatých z) služby Service Bus jsou instance front [BrokeredMessage][BrokeredMessage] třídy. [BrokeredMessage][BrokeredMessage] objekty mají sadu standardních metod a vlastností, které se používají k uložení vlastních vlastností aplikace a tělo libovolnými aplikačními daty.
+Zprávy odeslané do (a přijaté z) Service Bus fronty jsou instance třídy [BrokeredMessage][BrokeredMessage] . Objekty [BrokeredMessage][BrokeredMessage] mají sadu standardních metod a vlastností, které se používají k uložení vlastních vlastností specifických pro aplikace a obsahu libovolných dat aplikace.
 
 Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Tento horní limit velikosti fronty je 5 GB.
 
-## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
+## <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
 
-Nejlepší způsob, jak přijímá zprávy z fronty je použití `ServiceBusRestProxy->receiveQueueMessage` metoda. Může být přijaty zprávy ve dvou různých režimech: [*ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) a [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Výchozí hodnota je **PeekLock**.
+Nejlepším způsobem, jak přijímat zprávy z fronty, je použít `ServiceBusRestProxy->receiveQueueMessage` metodu. Zprávy mohou být přijímány ve dvou různých režimech: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) a [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Výchozí hodnota je **PeekLock**.
 
-Při použití [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu přijímat je jednorázová operace; to znamená, když Service Bus přijme požadavek čtení zprávy ve frontě, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. Režim [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat možnost, že v případě selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zprávu, která se spotřebovala před pádem vynechá.
+Při použití režimu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je operace Receive jedinou operací; To znamená, že když Service Bus obdrží požadavek na čtení zprávy ve frontě, označí zprávu jako spotřebou a vrátí ji do aplikace. Režim [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat možnost, že v případě selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus bude označena jako spotřebovaná zpráva, pak když se aplikace znovu spustí a začne znovu spotřebovávat zprávy, vynechá se zpráva, která byla spotřebována před chybou.
 
-Ve výchozím [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) režim přijetí zprávy stane dvoufázového operaci, která umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, který se má používat, uzamkne ji ostatní uživatelé z dešifrujete proti a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí předáním přijatou zprávu do `ServiceBusRestProxy->deleteMessage`. Když Service Bus uvidí `deleteMessage` volání, bude označí zprávu jako spotřebovávanou a odebere ji z fronty.
+Ve výchozím režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus obdrží požadavek, najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním uživatelům v jejich přijetí, a pak ji vrátí do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle `ServiceBusRestProxy->deleteMessage`do. Když Service Bus uvidí `deleteMessage` volání, bude zprávu označovat jako spotřebou a odebrat ji z fronty.
 
-Následující příklad ukazuje, jak pro příjem a zpracování zpráv pomocí [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) režimu (výchozím režimu).
+Následující příklad ukazuje, jak přijmout a zpracovat zprávu pomocí režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) (výchozí režim).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -217,19 +217,19 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
 
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlockMessage` metoda na přijatou zprávu (místo `deleteMessage` metoda). To způsobí, že služba Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může volat `unlockMessage` metodu na přijaté zprávě (místo `deleteMessage` metody). To způsobí, že Service Bus odemkne zprávu v rámci fronty a zpřístupní ji pro opětovné přijetí, a to buď pomocí stejné aplikace, nebo jiné náročné aplikace.
 
-K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak se Service Bus zprávu automaticky odemkne a nastavte ji k dispozici pro další přijetí.
+Je také časový limit přidružený ke zprávě uzamčený ve frontě a pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například pokud dojde k selhání aplikace), Service Bus bude automaticky odemknout a nastavit k dispozici pro opětovné přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` požadavku a potom bude doručit víckrát do aplikace při restartování. To se často nazývá *nejméně jednou* zpracování; to znamená, že každá zpráva se zpracuje alespoň jednou ale v některých situacích může doručit víckrát. Pokud scénář nemůže tolerovat zpracování, je doporučeno následným přidáním další logiku pro aplikace pro zpracování víckrát doručené zprávy. To se často opírá `getMessageId` metoda zprávy, která zůstává konstantní pokusu o doručení.
+V případě, že dojde k chybě aplikace po zpracování zprávy, ale před `deleteMessage` vydáním žádosti, bude zpráva doručena do aplikace při restartu. Tato metoda se často nazývá *alespoň po* zpracování; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud scénář nemůže tolerovat duplicitní zpracování, doporučuje se přidat další logiku do aplikací pro zpracování duplicitního doručování zpráv. To se často dosahuje pomocí `getMessageId` metody zprávy, která zůstává konstantní při pokusůch o doručení.
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se seznámili se základy front Service Bus, najdete v článku [fronty, témata a odběry] [ Queues, topics, and subscriptions] Další informace.
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se naučili základy Service Busch front, najdete další informace v tématu [fronty, témata a předplatná][Queues, topics, and subscriptions] .
 
-Další informace také najdete [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
+Další informace najdete také v centru pro [vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

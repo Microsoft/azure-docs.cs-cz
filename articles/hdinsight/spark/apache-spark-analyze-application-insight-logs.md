@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899867"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145594"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s využitím Apache Spark ve službě HDInsight
 
@@ -39,7 +39,7 @@ Při vývoji a testování tohoto dokumentu byly použity následující prostř
 
 Následující diagram znázorňuje architekturu služby tohoto příkladu:
 
-![Diagram znázorňující tok dat z Application Insights do úložiště objektů BLOB a následně se zpracovává pomocí Sparku ve službě HDInsight](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+![Tok dat z Application Insights do úložiště objektů blob, Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Úložiště Azure
 
@@ -72,7 +72,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 1. V [Azure Portal](https://portal.azure.com)vyberte svůj cluster Spark v HDInsight. V části **Rychlé odkazy** vyberte **řídicí panely clusteru**a pak vyberte **Jupyter notebook** v části Dashboard__ clusteru.
 
-    ![Řídicí panely clusteru](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Pyspark řídicího panelu clusteru Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **PySpark**. Otevře se nová karta prohlížeče obsahující Jupyter Notebook založenou na Pythonu.
 
@@ -215,7 +215,8 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 1. V [Azure Portal](https://portal.azure.com)vyberte svůj cluster Spark v HDInsight. V části **Rychlé odkazy** vyberte **řídicí panely clusteru**a pak vyberte **Jupyter notebook** v části Dashboard__ clusteru.
 
-    ![Řídicí panely clusteru](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Scala řídicího panelu clusteru Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **Scala**. Zobrazí se nová karta prohlížeče obsahující Jupyter Notebook na základě Scala.
 3. Do prvního pole (označovaného jako **buňka**) na stránce zadejte následující text:
 
@@ -356,7 +357,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
         ...
         +---------+
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další příklady použití Apache Spark pro práci s daty a službami v Azure najdete v následujících dokumentech:
 

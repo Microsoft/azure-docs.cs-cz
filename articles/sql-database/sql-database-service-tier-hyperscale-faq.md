@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128704"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162256"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy k databázím Azure SQL s škálovatelným škálováním
 
@@ -361,6 +361,11 @@ Ve výchozím nastavení vytvoříme 2 repliky pro databáze s škálovatelnými
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Návody se připojit k těmto sekundárním výpočetním uzlům
 
 K těmto dalším výpočetním uzlům, které jsou jen pro čtení, se `ApplicationIntent` můžete připojit nastavením argumentu v `readonly`připojovacím řetězci na. Všechna připojení označená `readonly` pomocí jsou automaticky směrována na jeden z dalších výpočetních uzlů určených jen pro čtení.  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Návody ověřit, jestli se mám úspěšně připojit k sekundárnímu výpočetnímu uzlu pomocí SSMS/jiných klientských nástrojů?
+
+Pomocí SSMS/jiných klientských nástrojů můžete spustit následující dotaz T-SQL: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Výsledkem je `READ_ONLY` , že pokud vaše připojení odkazuje na sekundární uzel, který je jen pro čtení `READ_WRITE` , nebo pokud vaše připojení odkazuje na primární uzel.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Můžu vytvořit vyhrazený koncový bod pro repliku pro čtení a škálování.
 

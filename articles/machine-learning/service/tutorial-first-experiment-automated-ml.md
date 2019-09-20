@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092011"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162546"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -65,93 +65,93 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
 
 1. Vyberte **vytvořit experiment**. 
 
-1. Jako název experimentu zadejte **My-1st-automl-experiment** .
+1. Zadejte tento název experimentu:`my-1st-automl-experiment`
 
-1. Vyberte **vytvořit nový výpočetní**výkon. Výpočetní prostředí je prostředí prostředků založené na místním nebo cloudu, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. V tomto experimentu používáme cloudový výpočetní výkon. 
+1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Cíl výpočetní služby je místní nebo cloudové prostředí prostředků, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. V tomto experimentu používáme cloudový výpočetní výkon. 
 
-    1. Nakonfigurujte výpočetní kontext pro tento experiment.
-        
-        Pole | Value
-        ----|---
-        Název výpočetních prostředků služby Machine Learning |  Zadejte jedinečný název, který identifikuje váš výpočetní kontext. V tomto příkladu použijte **automl-COMPUTE**.
-        Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon. Použijte výchozí **Standard_DS12_V2**.
-        Další nastavení| *Minimální uzel*: 1. Chcete-li povolit profilaci dat, je nutné mít jeden nebo více uzlů. <br> *Maximální počet uzlů*: 6.
- 
-    1. Pokud chcete vytvořit nový výpočetní výkon, vyberte **vytvořit**. Dokončení této akce trvá několik minut. 
+   Pole | Popis | Hodnota pro kurz
+   ----|---|---
+   Název Compute |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
+   Velikost&nbsp;virtuálního&nbsp;počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
+   Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
 
-    1. Až se vytváření dokončí, vyberte v rozevíracím seznamu nový výpočetní výkon a pak vyberte **Další**.
+   >[!NOTE]
+   >V tomto kurzu použijete výchozí účet úložiště a kontejner vytvořený s novým výpočetním prostředím. Automaticky se naplní ve formuláři.
+    
+1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
+   **Dokončení této akce trvá několik minut.** 
 
-    >[!NOTE]
-    >V tomto kurzu použijete výchozí účet úložiště a kontejner vytvořený s novým výpočetním prostředím. Automaticky se naplní ve formuláři.
+1. Po vytvoření vyberte v rozevíracím seznamu nový cíl výpočtů a vyberte **Další**.
 
-1. Vyberte **Odeslat z místního souboru**. Odsud vytvoříte novou datovou sadu se souborem **bankmarketing_train. csv** , který jste předtím stáhli pro tento kurz. 
+1. Vyberte **Odeslat z místního souboru** a začněte vytvářet novou datovou sadu. 
 
-    1. Vyberte **Procházet** a pak na místním počítači vyberte soubor **bankmarketing_train. csv** . 
+    1. Vyberte **Procházet**.
+    
+    1. V místním počítači vyberte soubor **bankmarketing_train. csv** . Jedná se o soubor, který jste stáhli jako [požadavek](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
     1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
-    1. Vyberte **Další** a nahrajte ho do výchozího kontejneru, který se automaticky nastavil během vytváření pracovního prostoru. Verze Public Preview podporuje pouze nahrávání místních souborů. 
+    1. V levém dolním rohu vyberte **Další** a nahrajte ho do výchozího kontejneru, který se automaticky nastavil během vytváření pracovního prostoru. Verze Public Preview podporuje pouze nahrávání místních souborů. 
 
     1. Po dokončení nahrávání se formulář **nastavení a náhled** vyplní inteligentně podle typu souboru. Zajistěte, aby byl formulář vyplněn následujícím způsobem.
         
         Pole|Value
         ---|---
-        Formát souboru| Oddělených
+        Formát souboru| Oddělené
         Oddělovač| Čárka
         Kódování| UTF-8
-        Záhlaví sloupců| Všechny soubory mají stejná záhlaví.
+        Záhlaví sloupců| Všechny soubory mají stejná záhlaví
         Přeskočit řádky | Žádné
-
-        >[!NOTE]
-        > Pokud se některé nastavení v tomto formuláři aktualizuje, verze Preview se odpovídajícím způsobem aktualizuje.
 
         Vyberte **Další**.
     
-
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Hotovo**, aby se dokončilo nahrávání souboru a vytváření datové sady pro váš experiment.
 
         ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
-        
 1. Jako úkol předpovědi vyberte **klasifikace** .
 
 1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
 
 1. Rozbalte položku **Pokročilá nastavení** a vyplňte pole následujícím způsobem.
 
-    Pokročilá nastavení|Value
-    ------|------
-    Primární metrika| AUC_weighted 
-    Výstupní kritéria| Pokud je splněno kterékoli z těchto kritérií, úloha školení skončí před úplným dokončením: <br> *Doba úlohy školení (minuty)* : 5  <br> *Maximální počet iterací*: 10 
-    Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.
-    Ověřování| Pro počet křížových validací vyberte K skládání křížového ověřování a **2** . 
-    Souběžnost| U maximálního počtu souběžných iterací vyberte **5** .
-
    >[!NOTE]
-   > Pro tento experiment nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iterace. Neblokujte také algoritmy, které mají být testovány.
+   > Pro tento experiment nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Neblokujte také algoritmy, které mají být testovány.
+   
+    Rozšířená&nbsp;nastavení|Popis|Hodnota&nbsp;pro&nbsp;kurz
+    ------|---------|---
+    Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|**AUC_weighted** 
+    Výstupní kritéria| Pokud je splněno kterékoli z těchto kritérií, úloha školení skončí i v případě, že nebyla kompletně dokončena. |Doba&nbsp;úlohy&nbsp;školení (minuty):&nbsp; **čl**  <br> <br> &nbsp;Maximum#iterací&#58; 10&nbsp;&nbsp; 
+    Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
+    Ověřování| Typ ověřování a počet testů. | **K skládání** křížového ověřování<br><br>  křížové ověření: **2** 
+    Souběžnost| Maximální počet souběžných iterací.|**5**
 
-1. Pokud chcete experiment spustit, vyberte **Spustit** .
+1. Pokud chcete experiment spustit, vyberte **Spustit** . Po zahájení přípravy experimentu se zobrazí obrazovka se stavovou zprávou.
 
-   Po zahájení experimentu se v horní části zobrazí prázdná obrazovka se stavovou zprávou.
+>[!IMPORTANT]
+> Příprava na Příprava spuštění experimentu trvá **10-15 minut** . Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  
+>
+> V produkčním prostředí byste pravděpodobně nemuseli trochu začít. Pro tento kurz ale doporučujeme začít zkoumat výsledky iterace, jak jsou dokončené, zatímco ostatní pořád běží. 
 
-Proces přípravy experimentu trvá několik minut. Po dokončení tohoto procesu se stavová zpráva změní na **spuštěno.**
+##  <a name="explore-iteration-results"></a>Prozkoumat výsledky iterace
 
-##  <a name="view-experiment-details"></a>Zobrazit podrobnosti experimentu
+Jak experimenty probíhají, obrazovka aktualizuje **graf iterace** a **seznam iterací** s různými iteracemi (modely) vytvořenými podle jejich dokončení a řadí je podle skóre metriky. Ve výchozím nastavení je model, který vychází z nejvyšší úrovně na základě zvolené metriky **AUC_weighted** , v horní části seznamu.
 
-Jak experiment probíhá, obrazovka aktualizuje **graf iterace** a **seznam iterací** o různé iterace (modely), které jsou spuštěny. Seznam iterací je v pořadí podle skóre metriky. Ve výchozím nastavení je model, který vychází z nejvyšší **AUC_weighted** metriky, v horní části seznamu.
+Při čekání na dokončení všech iterací experimentu vyberte **název** dokončené iterace a prozkoumejte její podrobnosti o výkonu. 
+   
+Následující příklad znázorňuje grafy a spouštění metrik vygenerovaných pro každou iteraci, jako je například křivka odvolání přesnosti, nejasná matice, hodnocení vážené přesnosti atd. 
 
->[!WARNING]
-> Školicí úlohy povedou několik minut, než se dokončí spuštění každého kanálu.
-
-[![Spustit řídicí panel podrobností](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
+![Podrobnosti spuštění iterace](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Pomocí automatizovaného strojového učení na úvodní stránce pracovního prostoru můžete nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
+Automatizované Machine Learning na úvodní stránce pracovního prostoru umožňuje nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
+
+Po dokončení spuštění přejděte zpátky na stránku s podrobnostmi o **grafu iterace** a **seznamu iterací** . 
 
 V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
 
-1. Na stránce **Podrobnosti o spuštění** vyberte v pravém horním rohu tlačítko **nasadit nejlepší model** .
+1. V pravém horním rohu vyberte tlačítko **nasadit nejlepší model** .
 
 1. Nasaďte **nejvhodnější podokno model nasazení** následujícím způsobem:
 
@@ -186,7 +186,7 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu automatizovaného strojového učení jste pomocí cílové stránky pracovního prostoru vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 

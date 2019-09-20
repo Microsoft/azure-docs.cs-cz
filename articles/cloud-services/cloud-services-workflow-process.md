@@ -4,7 +4,7 @@ description: Tento článek poskytuje přehled procesů pracovního postupu při
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945323"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162145"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektury klasického virtuálního počítače Windows Azure 
 Tento článek poskytuje přehled procesů pracovních postupů, ke kterým dochází při nasazování nebo aktualizaci prostředku Azure, jako je třeba virtuální počítač. 
@@ -37,15 +37,16 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 
 **B**. Kontroler prostředků infrastruktury zodpovídá za údržbu a monitorování všech prostředků v datovém centru. Komunikuje s agenty hostitele prostředků infrastruktury v operačním systému prostředků infrastruktury odesílající informace, jako je verze operačního systému hosta, balíček služby, konfigurace služby a stav služby.
 
-**C**. Hostitelský Agent se nachází na hostiteli OSsystem a zodpovídá za nastavení hostovaného operačního systému a komunikaci s agentem hosta (WindowsAzureGuestAgent), aby se role aktualizovala směrem k zamýšlenému stavu cíle a pomocí agenta hosta byly zkontrolovány prezenční signály. Pokud agent hostitele neobdrží odpověď prezenčního signálu po dobu 10 minut, Agent hosta restartuje hostovaný operační systém.
+**C**. Hostitelský agent bydlí v hostitelském operačním systému a zodpovídá za nastavení hostovaného operačního systému a komunikaci s agentem hosta (WindowsAzureGuestAgent), aby se role aktualizovala směrem k zamýšlenému stavu cíle a aby se pomocí agenta hosta kontroly prezenčního signálu. Pokud agent hostitele neobdrží odpověď prezenčního signálu po dobu 10 minut, Agent hosta restartuje hostovaný operační systém.
 
 **C2**. WaAppAgent zodpovídá za instalaci, konfiguraci a aktualizaci WindowsAzureGuestAgent. exe.
 
 **D**.  WindowsAzureGuestAgent zodpovídá za následující:
 
-1. Konfigurace hostovaného operačního systému včetně brány firewall, seznamů ACL, prostředků LocalStorage, balíčku služby a konfigurace a certifikátů. Nastavení identifikátoru SID pro uživatelský účet, pod kterým bude role běžet.
-2. Komunikace se stavem role do prostředků infrastruktury.
-3. Spouští se WaHostBootstrapper a monitoruje se, aby se zajistilo, že role je ve stavu cíle.
+1. Konfigurace hostovaného operačního systému včetně brány firewall, seznamů ACL, prostředků LocalStorage, balíčku služby a konfigurace a certifikátů.
+2. Nastavení identifikátoru SID pro uživatelský účet, pod kterým bude role běžet.
+3. Komunikace se stavem role do prostředků infrastruktury.
+4. Spouští se WaHostBootstrapper a monitoruje se, aby se zajistilo, že role je ve stavu cíle.
 
 **E**. WaHostBootstrapper zodpovídá za:
 
@@ -76,7 +77,7 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 
 ## <a name="workflow-processes"></a>Pracovní postupy
 
-1. Uživatel vytvoří požadavek, jako je nahrání souborů. cspkg a. cscfg, informuje prostředek o zastavení nebo provedení změny konfigurace atd. To lze provést prostřednictvím Azure Portal nebo pomocí nástroje, který používá rozhraní API pro správu služeb, jako je například funkce publikování aplikace Visual Studio. Tento požadavek směřuje na RDFE, aby provede celou práci související s předplatným, a pak sdělí požadavek FFE. Zbývajících z těchto kroků pracovního postupu je nasazení nového balíčku a jeho spuštění.
+1. Uživatel vytvoří požadavek, jako je nahrání souborů ". cspkg" a ". cscfg", oznamuje zdroji, aby zastavil nebo prováděl změnu konfigurace atd. To lze provést prostřednictvím Azure Portal nebo pomocí nástroje, který používá rozhraní API pro správu služeb, jako je například funkce publikování aplikace Visual Studio. Tento požadavek směřuje na RDFE, aby provede celou práci související s předplatným, a pak sdělí požadavek FFE. Zbývajících z těchto kroků pracovního postupu je nasazení nového balíčku a jeho spuštění.
 2. FFE vyhledá správný fond počítačů (na základě zákaznického vstupu, jako je skupina vztahů nebo geografické umístění a vstup z prostředků infrastruktury, jako je třeba dostupnost počítače) a komunikuje s hlavním řadičem prostředků infrastruktury v daném fondu počítačů.
 3. Kontroler prostředků infrastruktury vyhledá hostitele, který má dostupné jádra procesoru (nebo roztočí nového hostitele). Balíček služby a konfigurace se zkopírují na hostitele a kontrolér Fabric komunikuje s agentem hostitele na hostitelském operačním systému, aby nasadil balíček (konfigurace DIP, portů, hostovaného operačního systému atd.).
 4. Agent hostitele spustí hostovaný operační systém a komunikuje s agentem hosta (WindowsAzureGuestAgent). Hostitel pošle prezenční signály hostovi, aby se ujistil, že role pracuje směrem k jejímu cílovému stavu.

@@ -1,18 +1,18 @@
 ---
 title: Vysvětlení fungování efektů
-description: Azure definice zásady mají různé účinky, které určují způsob správy a hlásí dodržování předpisů.
+description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231524"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147004"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 
@@ -27,13 +27,14 @@ V definici zásad se v současné době podporují tyto efekty:
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled) (Zakázáno)
 - [EnforceRegoPolicy](#enforceregopolicy) Tisk
+- [Modify](#modify)
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
 Žádosti o vytvoření nebo aktualizaci prostředku prostřednictvím Azure Resource Manager jsou vyhodnocovány pomocí Azure Policy nejdříve. Azure Policy vytvoří seznam všech přiřazení, která platí pro daný prostředek, a pak vyhodnotí prostředek proti každé definici. Azure Policy zpracovává několik efektů před předáním požadavku příslušnému poskytovateli prostředků. Tím se zabrání zbytečnému zpracování poskytovatele prostředků, když prostředek nesplňuje navržené ovládací prvky zásad správného řízení Azure Policy.
 
 - **Zakázané** je nejprve zkontrolována k určení, pokud by se mělo vyhodnotit pravidlo zásad.
-- **Připojit** se pak vyhodnocuje. Od té doby připojení může změnit požadavek, změny provedené pomocí připojení může zabránit auditu nebo odepřít efekt spouštět.
+- Pak se vyhodnotí **připojení** a **Úpravy** . Vzhledem k tomu, že může žádost změnit, může dojít k tomu, že se projeví audit nebo odepření z aktivace.
 - **Odepřít** se pak vyhodnocuje. Vyhodnocením odepření před auditu, je zabráněno double protokolování nežádoucí prostředku.
 - **Audit** se pak vyhodnocuje před požadavkem na poskytovateli prostředků.
 
@@ -47,7 +48,10 @@ Tento efekt je užitečné pro testování situace nebo pokud má definice zása
 
 ## <a name="append"></a>Připojit
 
-Připojte se používá k přidání další pole k požadovanému prostředku během vytváření nebo aktualizace. Běžným příkladem je přidávání klíčových slov na prostředcích, třeba costCenter nebo povoleno zadat IP adresy pro prostředek úložiště.
+Připojte se používá k přidání další pole k požadovanému prostředku během vytváření nebo aktualizace. Běžným příkladem je zadání povolených IP adres pro prostředek úložiště.
+
+> [!IMPORTANT]
+> Příkaz append je určen pro použití bez značek. Během přidávání může přidat značky k prostředku během žádosti o vytvoření nebo aktualizaci. místo toho se doporučuje použít efekt [úprav](#modify) pro značky.
 
 ### <a name="append-evaluation"></a>Přidat hodnocení
 
@@ -61,36 +65,7 @@ Přidat efekt má jenom **podrobnosti** pole, které je potřeba. Jako **podrobn
 
 ### <a name="append-examples"></a>Přidat příklady
 
-Příklad 1: Dvojice **pole/hodnota** , která má připojit značku.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-Příklad 2: Dvě páry **pole/hodnota** pro připojení sady značek.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-Příklad 3: Pár **pole/hodnota** s **hodnotou** pole, která se používá pro nastavení pravidel protokolu IP v účtu úložiště, pomocí [aliasu](definition-structure.md#aliases) , který není **\*[]** . Když je alias mimo **[\*]** pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
+Příklad 1: Pár **pole/hodnota** s **hodnotou** pole, která se používá pro nastavení pravidel protokolu IP v účtu úložiště, pomocí [aliasu](definition-structure.md#aliases) , který není **\*[]** . Když je alias mimo **[\*]** pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Příklad 3: Pár **pole/hodnota** s **hodnotou** pole, která se používá pro
 }
 ```
 
-Příklad 4: Pár **pole/hodnota** pomocí aliasu **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. [](definition-structure.md#aliases) Pomocí aliasu **[\*]** tento efekt připojí **hodnotu** k potenciálně existujícímu poli. Pokud pole ještě neexistuje, vytvoří se.
+Příklad 2: Pár **pole/hodnota** pomocí [aliasu](definition-structure.md#aliases) **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Pomocí aliasu **[\*]** tento efekt připojí **hodnotu** k potenciálně existujícímu poli. Pokud pole ještě neexistuje, vytvoří se.
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Příklad 4: Pár **pole/hodnota** pomocí aliasu **[\*]** s **hodnotou** pole p
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Změnit
+
+Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání značek prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Zásada úprav by měla být `mode` vždy nastavená na hodnotu _indexováno_. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md).
+Jediné pravidlo změny může mít libovolný počet operací.
+
+> [!IMPORTANT]
+> Upravit je aktuálně pouze pro použití s značkami. Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Pokud ale nemůžete vytvořit spravovanou identitu, doporučuje se připojení.
+
+### <a name="modify-evaluation"></a>Upravit vyhodnocení
+
+Úprava je vyhodnocena před tím, než je žádost zpracována poskytovatelem prostředků během vytváření nebo aktualizace prostředku. Upravit přidá nebo aktualizuje značky prostředku, pokud je splněna podmínka **if** pravidla zásad.
+
+Když se v rámci zkušebního cyklu spustí definice zásady pomocí efektu změny, neprovádí změny prostředků, které už existují. Místo toho označí jakémukoli prostředku, který splňuje **Pokud** podmínka vyhodnocena jako nedodržující předpisy.
+
+### <a name="modify-properties"></a>Upravit vlastnosti
+
+Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které definují oprávnění potřebná k nápravě a **operace** používané k přidání, aktualizaci nebo odebrání hodnot značek.
+
+- **roleDefinitionIds** [povinné]
+  - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role řízení přístupu na základě role přístupné předplatné. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
+  - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
+- **provozní operace** požadovanou
+  - Pole všech operací značek, které mají být dokončeny na vyhovujících prostředcích.
+  - Vlastnosti
+    - **operace** požadovanou
+      - Definuje akci, která se má provést u odpovídajícího prostředku. Možnosti jsou: _addOrReplace_, _Add_, _Remove_. _Přidat_ se chová podobně jako v efektu [připojit](#append) .
+    - **pole** požadovanou
+      - Značka, která se má přidat, nahradit nebo odebrat. Názvy značek musí splňovat stejné zásady vytváření názvů pro ostatní [pole](./definition-structure.md#fields).
+    - **hodnota** volitelné
+      - Hodnota, na kterou má být značka nastavena.
+      - Tato vlastnost je povinná, pokud je **operace** _addOrReplace_ nebo _Add_.
+
+### <a name="modify-operations"></a>Úpravy operací
+
+Pole vlastností **Operations** umožňuje změnit několik značek různými způsoby v rámci jedné definice zásady. Každá operace se skládá z vlastností **operace**, **pole**a **hodnoty** . Operace určuje, co je úloha nápravy pro značky, pole určuje, která značka se změní, a hodnota definuje nové nastavení pro tuto značku. Následující příklad provede následující změny značek:
+
+- `environment` Nastaví značku na "test", a to i v případě, že již existuje s jinou hodnotou.
+- Odebere značku `TempResource`.
+- Nastaví značku na parametr zásad, který je nakonfigurovaný pro přiřazení zásady. `Dept`
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+Vlastnost **Operation** má následující možnosti:
+
+|Operace |Popis |
+|-|-|
+|addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
+|Přidat |Přidá do prostředku definovanou značku a hodnotu. |
+|odebrat |Odebere z prostředku definovanou značku. |
+
+### <a name="modify-examples"></a>Upravit příklady
+
+Příklad 1: Přidejte značku a nahraďte stávající `environment` značky slovem "test": `environment`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+Příklad 2: Odeberte značku a `environment` přidejte značku nebo nahraďte existující `environment` značky hodnotou parametru: `env`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +325,7 @@ Příklad: Vyhodnotí Virtual Machines a určí, jestli antimalwarové rozšíř
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-Podobně jako AuditIfNotExists DeployIfNotExists provede nasazení šablony při je splněná podmínka.
+Podobně jako AuditIfNotExists, definice zásad DeployIfNotExists provede nasazení šablony, když je splněna podmínka.
 
 > [!NOTE]
 > [Vnořené šablony](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) podporují **deployIfNotExists**, ale [propojené šablony](../../../azure-resource-manager/resource-group-linked-templates.md) se momentálně nepodporují.
@@ -247,7 +338,7 @@ Během cyklu vyhodnocení definice zásad s účinností DeployIfNotExists, kter
 
 ### <a name="deployifnotexists-properties"></a>Vlastnosti DeployIfNotExists
 
-**Podrobnosti** má vlastnost účinky DeployIfNotExists všechny podvlastnosti, které definují související prostředky tak, aby shodu a ke spuštění nasazení šablony.
+Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definující související prostředky, které se shodují, a nasazení šablon, které se má spustit.
 
 - **Typ** [povinné]
   - Určuje typ souvisejících prostředků tak, aby odpovídaly.

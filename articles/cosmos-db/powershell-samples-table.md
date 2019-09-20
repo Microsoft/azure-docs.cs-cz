@@ -1,29 +1,30 @@
 ---
-title: Ukázky Azure Powershellu pro službu Azure Cosmos DB - Table API
-description: Ukázky Azure Powershellu pro službu Azure Cosmos DB - Table API
+title: Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API pro tabulky
+description: Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: d908dc47b9f8724c5c760c290056a77550cb8058
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 95cd55bd3f87ddb4d37bfc527c8dcd28bdfa42da
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566264"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155198"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Ukázky Azure Powershellu pro službu Azure Cosmos DB - Table API
+# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API pro tabulky
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure Powershellu pro službu Azure Cosmos DB pro rozhraní Table API.
+Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Cosmos DB rozhraní API pro tabulky.
 
 | | |
 |---|---|
-|[Vytvoření účtu a tabulky](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet služby Azure Cosmos a tabulky. |
-|[Vypsat nebo získat tabulky](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypsat nebo získat tabulky. |
-|[Získat RU/s](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získání RU/s pro tabulku. |
-|[Aktualizace RU/s](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizace RU/s pro tabulku. |
-|[Přidat oblast](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoření účtu Azure Cosmos a přidejte do seznamu umístění oblast. |
-|[Změna priority převzetí služeb při selhání](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změna priority převzetí služeb při selhání účtu Azure Cosmos pomocí triggeru ruční převzetí služeb při selhání. |
-|[Účet klíče a připojovací řetězec úlohy](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte připojovací řetězce k účtu Azure Cosmos. Získejte primární a sekundární klíče účtu Azure Cosmos. Obnovení klíče účtu služby. |
+|[Vytvoření účtu a tabulky](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a tabulku. |
+|[Vypsat nebo získat tabulky](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo získá tabulky. |
+|[Získat RU/s](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte RU/s pro tabulku. |
+|[Aktualizace RU/s](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizujte RU/s pro tabulku. |
+|[Aktualizace účtu nebo přidání oblasti](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Přidejte oblast do účtu Cosmos. Lze ji také použít pro úpravu dalších vlastností účtu, ale musí být odděleny od změn v oblastech. |
+|[Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změňte prioritu regionálního převzetí služeb při selhání účtu Azure Cosmos nebo aktivujte ruční převzetí služeb při selhání. |
+|[Klíče účtu nebo připojovací řetězce](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární klíče, připojovací řetězce nebo znovu vygenerujte klíč účtu pro účet Azure Cosmos. |
+|[Vytvoření účtu Cosmos pomocí brány firewall protokolu IP](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos s povoleným protokolem IP firewall. |
 |||

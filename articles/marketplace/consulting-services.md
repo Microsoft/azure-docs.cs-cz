@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876689"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147293"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytují partnerům Microsoftu cíle připojení zákazníků k službám pro podporu a rozšiřování jejich používání v Azure a obchodních cílech. 
@@ -24,15 +24,17 @@ Tyto konzultační nabídky – nabídky služeb jsou zapojení specifické pro 
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Konzultační služby v Azure Marketplace vs AppSource prezentace
 Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloudové produkty Microsoftu, které zákazníkům pomůžou najít, co potřebují. Každý prezentace nabízí specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**Osoby**   |**IT specialisté a vývojáři cloudu**|**Obchodní uživatelé/tvůrci obchodních rozhodnutí**|
 |Závažnost řešení     |Technické aplikace sestavené pro nebo postavené na Azure|Obchodní aplikace, které využívají nebo rozšířily D365, Power BI, O365 a Azure. (Doplňky nebo dokončené aplikace doplňku)|
-|Možnosti publikování     |Kontaktujte mě, zkušební, transakční nebo konzultační služby|Kontaktujte mě, zkušební verze nebo konzultační služby|
+|Možnosti publikování     |Kontaktujte mě, zkušební verzi, transakční službu nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Ostatní      |Místní publikování prostřednictvím Azure Stack|Konzultační služby pro Dynamics a Power BI|
+|Ostatní      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics a Power BI|
 
-Nabídky služeb, které jsou založené na Microsoft Dynamics 365, Office 365 a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v tématu [Microsoft AppSource pokynů pro výpis konzultačních služeb](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 365 a Power BI mají nárok na seznam Microsoft AppSource. Další informace najdete v tématu [Microsoft AppSource pokynů pro výpis konzultačních služeb](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v článcích o [publikování konzultační služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
 > Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na * * technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
@@ -100,7 +102,7 @@ Před registrací můžete začít shromažďovat a připravovat obsah, který v
 |Nastavení pro nové nabídky  |
 |---------|
 |Název nabídky (200 znaků) a popis (2000 znaků)    |
-|Kompetencí     |
+|Kompetence     |
 |Dostupnost země nebo oblasti     |
 |Trvání zapojení     |
 |Příslušné obory, kategorie a klíčová slova pro hledání     |
@@ -169,7 +171,7 @@ V rámci portál partnerů cloudu můžete do svého seznamu přidat formátová
 * \* Souhrn nabídky s kurzívou
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste to ještě neudělali, 
 

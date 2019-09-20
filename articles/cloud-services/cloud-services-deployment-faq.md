@@ -4,7 +4,7 @@ description: V tomto článku jsou uvedené Nejčastější dotazy týkající s
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941727"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154805"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: Nejčastější dotazy
 
@@ -32,22 +32,22 @@ Pokud má cloudová služba nasazení v obou slotech, je celá cloudová služba
 
 K selháním přidělení dojde v případě, že cluster, ve kterém se nachází vaše cloudová služba, nemá dostatek fyzických výpočetních prostředků, které by vyhověly vaší žádosti o nasazení
 
-Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Proč při navýšení kapacity nebo škálování nasazení cloudové služby dojde k selhání přidělení?
 Při nasazení cloudové služby se obvykle připnuté na konkrétní cluster. To znamená, že pro existující cloudovou službu musí být ve stejném clusteru přidělené nové instance. Pokud se cluster blíží kapacitě nebo není k dispozici požadovaná velikost/typ virtuálního počítače, může být požadavek neúspěšný.
 
-Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Proč nasazení cloudové služby do skupiny vztahů někdy způsobí selhání přidělení?
 Nové nasazení do prázdné cloudové služby může být přiděleno prostředky infrastruktury v jakémkoli clusteru v této oblasti, pokud není ke skupině vztahů připnuté cloudová služba. Nasazení do stejné skupiny vztahů se pokusí o stejný cluster. Pokud se cluster blíží kapacitě, požadavek může selhat.
 
-Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Proč změna velikosti virtuálního počítače nebo přidání nového virtuálního počítače do existující cloudové služby někdy způsobí selhání přidělení?
-Clustery v datacentru můžou mít různé konfigurace typů počítačů (například série, Av2 řady, D Series, Dv2 Series, G series, H Series atd.). Ale ne všechny clustery by nutně měly všechny typy virtuálních počítačů. Například pokud se pokusíte přidat virtuální počítač D Series do cloudové služby, která je již nasazena v clusteru pouze s řadou, dojde k selhání přidělení. K tomu dojde také v případě, že se pokusíte změnit velikost SKU virtuálního počítače (například přepínání z řady na řady D).
+Clustery v datacentru mohou mít různé konfigurace typů počítačů (například série, Av2 řady, D Series, Dv2 Series, G series, H Series atd.). Ale ne všechny clustery by nutně měly všechny typy virtuálních počítačů. Například pokud se pokusíte přidat virtuální počítač D Series do cloudové služby, která je již nasazena v clusteru pouze s řadou, dojde k selhání přidělení. K tomu dojde také v případě, že se pokusíte změnit velikost SKU virtuálního počítače (například přepínání z řady na řady D).
 
-Pro zvýšení rizika takového selhání přidělení se podívejte na [téma selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
 
 Pokud chcete zjistit dostupné velikosti v oblasti, přečtěte [si téma Microsoft Azure: Dostupné produkty v jednotlivých](https://azure.microsoft.com/regions/services)oblastech.
 
@@ -73,7 +73,7 @@ Vzhledem k tomu, že cloudová služba je klasický prostředek, který není p�
   
 - Nasazení prostřednictvím [Azure Portal](https://portal.azure.com).
 
-    To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy/překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
+    To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy nebo překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
  
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure Portal vyžaduje, aby měl účet úložiště pro nasazení? 
 

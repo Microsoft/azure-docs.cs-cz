@@ -1,28 +1,28 @@
 ---
-title: Vytvoření privátní zóny Azure DNS pomocí Azure CLI
-description: V tomto postupu vytvoříte a otestujete privátní zóny DNS a záznamu v Azure DNS. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure CLI.
+title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure CLI
+description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure CLI.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 6/13/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: d882a9c40efc5e9bcb1a5e1c02f1ac73970d57db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8aee640d8648abb623fe5ead0b21e3ae3084424a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076428"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162143"
 ---
-# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Vytvoření privátní zóny Azure DNS pomocí Azure CLI
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-Tento postup vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure CLI.
+Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure CLI.
 
-K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Toto nastavení se nazývá *propojené* virtuální sítě. Pokud je povolená Automatická registrace, Azure DNS také aktualizuje záznamy zóny pokaždé, když je vytvořen virtuální počítač, změny jeho "IP adresu, nebo je odstranit.
+K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-V tomto postupu se dozvíte, jak:
+V tomto rychlém startu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření privátní zóny DNS
@@ -32,7 +32,7 @@ V tomto postupu se dozvíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](private-dns-getstarted-powershell.md).
+Pokud budete chtít, můžete tento rychlý Start dokončit pomocí [Azure PowerShell](private-dns-getstarted-powershell.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,9 +44,9 @@ Nejdřív vytvořte skupinu prostředků, která bude obsahovat zónu DNS:
 az group create --name MyAzureResourceGroup --location "East US"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
+## <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-Následující příklad vytvoří virtuální síť s názvem **myAzureVNet**. Pak vytvoří zónu DNS s názvem **private.contoso.com** v **MyAzureResourceGroup** zónu DNS, která propojí skupinu prostředků, **MyAzureVnet** virtuální sítě, a umožňuje automatické registrace.
+Následující příklad vytvoří virtuální síť s názvem **myAzureVNet**. Potom ve skupině prostředků **MyAzureResourceGroup** vytvoří zónu DNS s názvem **Private.contoso.com** , propojí zónu DNS s virtuální sítí **MyAzureVnet** a povolí automatickou registraci.
 
 ```azurecli
 az network vnet create \
@@ -64,7 +64,7 @@ az network private-dns link vnet create -g MyAzureResourceGroup -n MyDNSLink \
    -z private.contoso.com -v myAzureVNet -e true
 ```
 
-Pokud chcete vytvořit zónu jenom pro překlad adres (registrace bez automatické název hostitele), můžete použít `-e false` parametru.
+Pokud chcete vytvořit zónu jenom pro překlad názvů (bez automatické registrace názvu hostitele), můžete použít `-e false` parametr.
 
 ### <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
 
@@ -117,7 +117,7 @@ Dokončení tohoto procesu může několik minut trvat.
 
 K vytvoření záznamu DNS použijte příkaz `az network private-dns record-set [record type] add-record`. Například nápovědu k přidání záznamů A získáte příkazem `az network private-dns record-set A add-record --help`.
 
- Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **private.contoso.com**, ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
+ Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com**ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -139,7 +139,7 @@ az network private-dns record-set list \
 
 ## <a name="test-the-private-zone"></a>Testování privátní zóny
 
-Teď můžete otestovat překlad názvů pro vaše **private.contoso.com** privátní zónu.
+Teď můžete testovat překlad IP adres pro privátní zónu **Private.contoso.com** .
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
 
@@ -206,16 +206,14 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-Pokud už je nepotřebujete, odstraňte **MyAzureResourceGroup** skupinu prostředků odstraňte prostředky vytvořené v tomto postupu.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 
 ```azurecli
 az group delete --name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
-
-V tomto postupu jste privátní zóny DNS vytvořit záznam DNS nasadila a otestovala zóny.
-Teď se můžete o privátních zónách DNS dozvědět podrobnější informace.
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Použití Azure DNS pro privátní domény](private-dns-overview.md)
+> [Azure DNS Private Zones scénáře](private-dns-scenarios.md)
+

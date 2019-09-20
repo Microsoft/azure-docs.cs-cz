@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274823"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147347"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
@@ -27,7 +27,7 @@ ms.locfileid: "68274823"
 >[!NOTE] 
 >Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](load-balancer-standard-overview.md).
 
-Internetové nástroje pro vyrovnávání zatížení se dají nasadit s adresou IPv6. Kromě připojení protokolem IPv4 Tato funkce umožňuje následující možnosti:
+Základní služba Vyrovnávání zatížení na základě Internetu se dá nasadit s adresou IPv6. Kromě připojení protokolem IPv4 Tato funkce umožňuje následující možnosti:
 
 * Nativní připojení k síti IPv6 mezi veřejnými internetovými klienty a Azure Virtual Machines (virtuální počítače) prostřednictvím nástroje pro vyrovnávání zatížení.
 * Nativní koncová konektivita protokolu IPv6 mezi virtuálními počítači a veřejnými klienty podporujícími internetovou IPv6.
@@ -79,8 +79,9 @@ Omezení
 * Změna parametru loadDistributionMethod pro protokol IPv6 se v tuto **chvíli**nepodporuje.
 * Rezervované IP adresy IPv6 (kde IPAllocationMethod = static) se **aktuálně nepodporují**.
 * NAT64 (převod IPv6 na IPv4) není podporován.
+* Nástroje pro vyrovnávání zatížení standardních SKU aktuálně nepodporují adresy IPv6.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak nasadit nástroj pro vyrovnávání zatížení s protokolem IPv6.
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883058"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162299"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Rychlý start: Vytvoření pravidla brány firewall na úrovni serveru pro databáze s jednou a ve fondu pomocí Azure Portal
 
@@ -54,7 +54,7 @@ Postupujte podle těchto kroků a vytvořte pravidlo brány firewall protokolu I
 4. Vyberte **Přidat IP adresu klienta** na panelu nástrojů a přidejte svou aktuální IP adresu k novému pravidlu brány firewall IP na úrovni serveru. Pravidlo brány firewall protokolu IP na úrovni serveru může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
    > [!IMPORTANT]
-   > Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Výběrem možnosti **vypnuto** na této stránce zakážete všechny služby Azure.
+   > Ve výchozím nastavení je přístup přes bránu SQL Database firewall pro všechny služby Azure zakázaný. Pokud chcete povolit přístup pro všechny služby Azure, vyberte na této stránce **zapnuté** .
    >
 
 5. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru SQL Database.

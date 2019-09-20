@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142084"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162460"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -91,7 +91,7 @@ Připravenost přihlíží k několika vlastnostem virtuálních počítačů, a
 **Vlastnost** | **Podrobnosti** | **Připravenosti**
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
-**Jader** | Počítače Core < = maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud <br/>faktor komfortu je určen v nastavení hodnocení, počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
+**Jader** | Počítače Core < = maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
 **Paměť** | Velikost paměti počítače < = maximální paměť (3892 GB v Azure M Series Standard_M128m&nbsp;<sup>2</sup>) pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
 **Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
@@ -142,7 +142,7 @@ Odhad nákladů ukazuje celkové náklady na výpočetní prostředky a úloži�
 
 Každé posouzení na základě výkonu je přidruženo k hodnocení spolehlivosti.
 
-- Hodnocení spolehlivosti je v rozsahu od 1 hvězdičky po pěti hvězdičkách (jeden začátek je nejnižší a pět-začátek nejvyšší).
+- Hodnocení spolehlivosti je v rozsahu od 1 hvězdičky po 5 hvězdiček (jedna hvězdička je nejnižší a pět hvězdiček nejvyšší).
 - Hodnocení spolehlivosti je přiřazeno k posouzení na základě dostupnosti datových bodů potřebných k výpočtu posouzení.
 - Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
 - Hodnocení spolehlivosti není k dispozici pro místní posouzení "tak, jak je".
@@ -216,7 +216,7 @@ Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agen
 4. Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci MMA na místním počítači.
 
 > [!NOTE]
-> K automatizaci instalace agentů můžete použít nástroj pro nasazení, jako je například System Center Configuration Manager nebo partnerský nástroj, například [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), který orovides řešení nasazení agenta pro Azure Migrate.
+> K automatizaci instalace agentů můžete použít nástroj pro nasazení, jako je například System Center Configuration Manager nebo partnerský nástroj, například [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), který poskytuje řešení nasazení agenta pro Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Instalace agenta MMA na počítač s Windows
@@ -340,5 +340,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Přečtěte si o](migrate-services-overview.md) nejnovější verzi Azure Migrate.

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 09/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6293fc84969c4e246c05da4482f76142263db230
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e3d6312be0936f14ece5d30a2bbf3e4235031c0e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985550"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154066"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 
@@ -27,22 +27,15 @@ Ve výchozím nastavení může být k kontejneru a jakýmkoli objektům blob v 
 
 Můžete nakonfigurovat kontejner s následujícími oprávněními:
 
-* **Žádný veřejný přístup pro čtení:** K kontejneru a jeho objektům blob může mít přistup jenom vlastník účtu úložiště. Toto je výchozí nastavení pro všechny nové kontejnery.
-* **Veřejný přístup pro čtení jenom pro objekty BLOB:** Objekty BLOB v kontejneru lze číst anonymním požadavkem, ale data kontejneru nejsou k dispozici. Anonymní klienti nemohou vytvořit výčet objektů BLOB v rámci kontejneru.
-* **Veřejný přístup pro čtení kontejneru a jeho objektů BLOB:** Všechna data kontejneru a objektů BLOB lze číst anonymním požadavkem. Klienti mohou vytvořit výčet objektů BLOB v kontejneru anonymním požadavkem, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
-
-K nastavení oprávnění kontejneru můžete použít následující:
-
-* [Azure Portal](https://portal.azure.com)
-* [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure CLI](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* Prostřednictvím kódu programu prostřednictvím některé z klientských knihoven pro úložiště nebo REST API
+- **Žádný veřejný přístup pro čtení:** K kontejneru a jeho objektům blob může mít přistup jenom vlastník účtu úložiště. Toto je výchozí nastavení pro všechny nové kontejnery.
+- **Veřejný přístup pro čtení jenom pro objekty BLOB:** Objekty BLOB v kontejneru lze číst anonymním požadavkem, ale data kontejneru nejsou k dispozici. Anonymní klienti nemohou vytvořit výčet objektů BLOB v rámci kontejneru.
+- **Veřejný přístup pro čtení kontejneru a jeho objektů BLOB:** Všechna data kontejneru a objektů BLOB lze číst anonymním požadavkem. Klienti mohou vytvořit výčet objektů BLOB v kontejneru anonymním požadavkem, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
 
 ### <a name="set-container-public-access-level-in-the-azure-portal"></a>Nastavit úroveň veřejného přístupu kontejneru v Azure Portal
 
 Z [Azure Portal](https://portal.azure.com)můžete úroveň veřejného přístupu aktualizovat na jeden nebo více kontejnerů:
 
-1. Na webu Azure Portal přejděte na svůj účet úložiště.
+1. V Azure Portal přejděte na přehled svého účtu úložiště.
 1. V části **BLOB Service** v okně nabídky vyberte **objekty blob**.
 1. Vyberte kontejnery, pro které chcete nastavit úroveň veřejného přístupu.
 1. Pomocí tlačítka **změnit úroveň přístupu** můžete zobrazit nastavení veřejného přístupu.
@@ -57,16 +50,28 @@ Následující snímek obrazovky ukazuje, jak změnit úroveň veřejného pří
 
 ### <a name="set-container-public-access-level-with-net"></a>Nastavení úrovně veřejného přístupu ke kontejneru pomocí .NET
 
-Chcete-li nastavit oprávnění pro kontejner C# pomocí a klientskou knihovnu pro úložiště pro .NET, nejprve Načtěte existující oprávnění kontejneru voláním metody GetPermissions. Poté nastavte vlastnost **PublicAccess** pro objekt **BlobContainerPermissions** , který je vrácen metodou GetPermissions. Nakonec zavolejte metodu **SetPermissions** s aktualizovanými oprávněními.
+Chcete-li nastavit oprávnění pro kontejner pomocí klientské knihovny Azure Storage pro .NET, nejprve Načtěte existující oprávnění kontejneru voláním jedné z následujících metod:
+
+- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
+
+Dále nastavte vlastnost **PublicAccess** objektu [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) , který je vrácen metodou **GetPermissions** .
+
+Nakonec zavolejte jednu z následujících metod pro aktualizaci oprávnění kontejneru:
+
+- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
 Následující příklad nastaví oprávnění kontejneru na úplný veřejný přístup pro čtení. Pokud chcete nastavit oprávnění pro veřejný přístup pro čtení jenom pro objekty blob, nastavte vlastnost **PublicAccess** na **BlobContainerPublicAccessType. blob**. Chcete-li odebrat všechna oprávnění pro anonymní uživatele, nastavte vlastnost na hodnotu **BlobContainerPublicAccessType. off**.
 
 ```csharp
-public static void SetPublicContainerPermissions(CloudBlobContainer container)
+private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
 {
-    BlobContainerPermissions permissions = container.GetPermissions();
+    BlobContainerPermissions permissions = await container.GetPermissionsAsync();
     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
-    container.SetPermissions(permissions);
+    await container.SetPermissionsAsync(permissions);
+
+    Console.WriteLine("Container {0} - permissions set to {1}", container.Name, permissions.PublicAccess);
 }
 ```
 
@@ -81,13 +86,15 @@ Můžete vytvořit nový objekt klienta služby pro anonymní přístup tím, ž
 ```csharp
 public static void CreateAnonymousBlobClient()
 {
-    // Create the client object using the Blob storage endpoint.
-    CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
+    // Create the client object using the Blob storage endpoint for your account.
+    CloudBlobClient blobClient = new CloudBlobClient(
+        new Uri(@"https://storagesamples.blob.core.windows.net"));
 
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. Note this is only possible when the container supports full public read access.
+    // Read the container's properties. 
+    // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
@@ -102,9 +109,11 @@ Pokud máte adresu URL kontejneru, který je anonymně dostupný, můžete jej p
 public static void ListBlobsAnonymously()
 {
     // Get a reference to a container that's available for anonymous access.
-    CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
+    CloudBlobContainer container = new CloudBlobContainer(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container"));
 
     // List blobs in the container.
+    // Note this is only possible when the container supports full public read access.
     foreach (IListBlobItem blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
@@ -119,45 +128,14 @@ Pokud máte adresu URL objektu blob, který je k dispozici pro anonymní příst
 ```csharp
 public static void DownloadBlobAnonymously()
 {
-    CloudBlockBlob blob = new CloudBlockBlob(new Uri(@"https://storagesample.blob.core.windows.net/sample-container/logfile.txt"));
-    blob.DownloadToFile(@"C:\Temp\logfile.txt", System.IO.FileMode.Create);
+    CloudBlockBlob blob = new CloudBlockBlob(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container/logfile.txt"));
+    blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>Funkce, které jsou k dispozici pro anonymní uživatele
-
-V následující tabulce jsou uvedeny operace, které mohou být volány anonymně, pokud je kontejner konfigurován pro veřejný přístup.
-
-| Operace REST | Veřejný přístup pro čtení ke kontejneru | Veřejné oprávnění ke čtení jenom pro objekty blob |
-| --- | --- | --- |
-| Seznam kontejnerů | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Vytvoření kontejneru | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat vlastnosti kontejneru | Anonymní požadavky povoleny | Jenom autorizované žádosti |
-| Získat metadata kontejneru | Anonymní požadavky povoleny | Jenom autorizované žádosti |
-| Nastavení metadat kontejneru | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat seznam ACL kontejneru | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Nastavení seznamu ACL kontejneru | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Odstranění kontejneru | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Výpis objektů BLOB | Anonymní požadavky povoleny | Jenom autorizované žádosti |
-| Vložení objektu BLOB | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat objekt BLOB | Anonymní požadavky povoleny | Anonymní požadavky povoleny |
-| Získat vlastnosti objektu BLOB | Anonymní požadavky povoleny | Anonymní požadavky povoleny |
-| Nastavení vlastností objektu BLOB | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat metadata objektu blob | Anonymní požadavky povoleny | Anonymní požadavky povoleny |
-| Nastavení metadat objektu BLOB | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Blok vložení | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat seznam blokovaných (pouze potvrzené bloky) | Anonymní požadavky povoleny | Anonymní požadavky povoleny |
-| Získat seznam blokovaných (pouze nepotvrzené bloky nebo všechny bloky) | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Seznam blokovaných umístění | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Odstranit objekt Blob | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Zkopírování objektu Blob | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Objekt BLOB snímku | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Objekt BLOB zapůjčení | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Vložit stránku | Jenom autorizované žádosti | Jenom autorizované žádosti |
-| Získat rozsahy stránek | Anonymní požadavky povoleny | Anonymní požadavky povoleny |
-| Připojit objekt blob | Jenom autorizované žádosti | Jenom autorizované žádosti |
-
 ## <a name="next-steps"></a>Další kroky
 
-* [Autorizace pro služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services)
-* [Použití sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Autorizace přístupu k Azure Storage](../common/storage-auth.md)
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
+- [REST API služby BLOB Service](/rest/api/storageservices/blob-service-rest-api)

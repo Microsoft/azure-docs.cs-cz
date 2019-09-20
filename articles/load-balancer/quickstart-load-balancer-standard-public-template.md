@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2019
+ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e1a04cad7fe5c9c95397ffad2faa80c7d657d0f8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273800"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161408"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-an-azure-resource-manager-template"></a>Rychlý start: Vytvoření standardního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý start: Vytvoření standardního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manager, která pro vyrovnávání zatížení virtuálních počítačů vytvoří standardní nástroj pro vyrovnávání zatížení.
+Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manager, která pro vyrovnávání zatížení virtuálních počítačů vytvoří standardní nástroj pro vyrovnávání zatížení. Použití šablony Správce prostředků přijímá méně kroků v porovnání s jinými metodami nasazení.
+
+[Šablona správce prostředků](../azure-resource-manager/template-deployment-overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.network/loadbalancers).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,9 +34,22 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když vytvoříte standardní nástroj pro vyrovnávání zatížení, musíte také vytvořit novou veřejnou IP adresu, která je nakonfigurovaná jako front-end pro nástroj pro vyrovnávání zatížení úrovně Standard.
 
-K vytvoření standardního nástroje pro vyrovnávání zatížení můžete použít spoustu metod. V tomto rychlém startu použijete Azure PowerShell k nasazení [Správce prostředků šablony](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json). Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit.
+Šablona použitá v tomto rychlém startu je [šablonou pro rychlý Start](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
 
-Další informace o konceptech spojených s nasazením a správou řešení Azure najdete v [dokumentaci k Azure Resource Manager](/azure/azure-resource-manager/). Další šablony, které souvisejí s Azure Load Balancer, najdete v tématu [šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+[!code-json[<Azure Resource Manager template create standard load balancer>](~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json)]
+
+V šabloně bylo definováno více prostředků Azure:
+
+- **Microsoft. Network/loadBalancers**
+- **Microsoft. Network/publicIPAddresses**: pro nástroj pro vyrovnávání zatížení.
+- **Microsoft.Network/networkSecurityGroups**
+- **Microsoft.Network/virtualNetworks**
+- **Microsoft. COMPUTE/virutalMachines** (3 z nich)
+- **Microsoft. Network/publicIPAddresses** (3 z nich): pro každý ze tří virtuálních počítačů.
+- **Microsoft. Network/networkInterfaces** (3 z nich)
+- **Microsoft. COMPUTE/VirtualMachine/Extensions** (3 z nich): použijte ke konfiguraci služby IIS a webových stránek
+
+Další šablony, které souvisejí s Azure Load Balancer, najdete v tématu [šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
 1. Vyberte **vyzkoušet** z následujícího bloku kódu a otevřete Azure Cloud Shell a pak postupujte podle pokynů pro přihlášení k Azure.
 
@@ -65,7 +80,11 @@ Další informace o konceptech spojených s nasazením a správou řešení Azur
 
    Název skupiny prostředků je název projektu s připojeným **RG** . Název skupiny prostředků budete potřebovat v další části.
 
-Nasazení šablony trvá přibližně 10 minut.
+Nasazení šablony trvá přibližně 10 minut. Výstup je po dokončení podobný tomuto:
+
+![Výstup nasazení PowerShellu pro Azure Standard Load Balancer Správce prostředků](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
+
+Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
@@ -77,9 +96,13 @@ Nasazení šablony trvá přibližně 10 minut.
 
 1. Vyberte nástroj pro vyrovnávání zatížení. Výchozím názvem je název projektu s připojenou hodnotou **----9,1** .
 
-1. Zkopírujte pouze část veřejné IP adresy IP adresy a vložte ji do adresního řádku prohlížeče. Prohlížeč zobrazí výchozí stránku webového serveru Internetová informační služba (IIS).
+1. Zkopírujte pouze část veřejné IP adresy IP adresy a vložte ji do adresního řádku prohlížeče.
 
-   ![Webový server služby IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
+   ![Azure Load Balancer úrovně Standard – veřejná IP adresa šablony Správce prostředků](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-deployment-public-ip.png)
+
+    Prohlížeč zobrazí výchozí stránku webového serveru Internetová informační služba (IIS).
+
+   ![Webový server služby IIS](./media/quickstart-load-balancer-standard-public-template/load-balancer-test-web-page.png)
 
 Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížení napříč všemi třemi virtuálními počítači, můžete vynutit aktualizaci webového prohlížeče z klientského počítače.
 
@@ -87,7 +110,7 @@ Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížen�
 
 Pokud je už nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že přejdete na Azure Portal, vyberete skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a pak vyberete **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili standardní nástroj pro vyrovnávání zatížení, připojili jste k němu virtuální počítače, nakonfigurovali pravidlo provozu nástroje pro vyrovnávání zatížení, provedli sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení.
 
@@ -95,4 +118,3 @@ Pokud se chcete dozvědět víc, přejděte k kurzům Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
- 

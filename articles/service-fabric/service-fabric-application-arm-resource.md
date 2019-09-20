@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 3810afa7ad00aa731751aa1f0bfe38d503de5850
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953208"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153594"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Správa aplikací a služeb jako Azure Resource Managerch prostředků
 
@@ -272,12 +272,12 @@ Pouhým odebráním Microsoft. ServiceFabric/Clusters/Application ze šablony AR
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Správa existující aplikace pomocí Správce prostředků
 
-Pokud je váš cluster už v provozu a některé aplikace, které byste chtěli spravovat jako Správce prostředků prostředky, už jsou nasazené, neodstraňujte aplikace a znovu je nasadíte, můžete použít volání PUT pomocí stejných rozhraní API, aby se aplikace dostaly potvrzeno jako Správce prostředků prostředky. 
+Pokud je váš cluster už v provozu a některé aplikace, které byste chtěli spravovat jako Správce prostředků prostředky, už jsou nasazené, neodstraňujte aplikace a znovu je nasadíte, můžete použít volání PUT pomocí stejných rozhraní API, aby se aplikace dostaly potvrzeno jako Správce prostředků prostředky. Další informace najdete [v tématu Co je model prostředků aplikace Service Fabric?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
 > Aby mohl upgrade clusteru ignorovat aplikace, které nemají stav v pořádku, může zákazník zadat "maxPercentUnhealthyApplications": 100 "v části" upgradeDescription/healthPolicy "; Podrobné popisy všech nastavení jsou v [dokumentaci Service fabric REST API zásadách upgradu clusteru](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * K nasazení dalších aplikací do clusteru použijte [Service Fabric CLI](service-fabric-cli.md) nebo [PowerShell](service-fabric-deploy-remove-applications.md) . 
 * [Upgrade clusteru Service Fabric](service-fabric-cluster-upgrade.md)

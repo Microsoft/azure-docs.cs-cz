@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088422"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162216"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -33,6 +33,9 @@ Nelze odstranit Recovery Services trezor, který obsahuje závislosti, jako jsou
 
   ![Odstraňte chybu chráněného serveru.](./media/backup-azure-delete-vault/error-message.jpg)
 
+- Pokud se v části se zobrazí zpráva, že se položky zálohy nacházejí ve stavu tichého odstranění, a budete muset počkat na jejich trvalé odstranění. Další informace najdete v tomto [článku](https://aka.ms/SoftDeleteCloudWorkloads).
+
+   ![Odstraňte chybu trezoru.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 Pokud chcete trezor odstranit, vyberte scénář, který odpovídá vašemu nastavení, a postupujte podle doporučených kroků:
 

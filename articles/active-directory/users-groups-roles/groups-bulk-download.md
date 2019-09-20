@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914753"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146283"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Hromadné stažení seznamu skupin (Preview) v Azure Active Directory
 
@@ -26,10 +26,6 @@ Pomocí portálu Azure Active Directory (Azure AD) můžete hromadně stahovat s
 
 > [!NOTE]
 > Hromadné operace Azure AD jsou funkcí veřejné verze Preview služby Azure AD a jsou dostupné s placeným licenčním plánem Azure AD. Další informace o tom, jak používat verzi Preview, najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
-## <a name="bulk-download-service-limits"></a>Omezení služby hromadného stahování
-
-Každá Hromadná aktivita ke stažení seznamu skupin může běžet po dobu až jedné hodiny. To vám umožní stáhnout seznam minimálně 300 000 skupin.
 
 ## <a name="to-download-a-list-of-groups"></a>Stažení seznamu skupin
 
@@ -45,7 +41,11 @@ Na stránce **výsledky hromadných operací (Preview)** můžete zobrazit stav 
 
    ![Stránka s výsledky hromadných operací zobrazuje stav hromadné žádosti](./media/groups-bulk-download/bulk-center.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="bulk-download-service-limits"></a>Omezení služby hromadného stahování
+
+Každá Hromadná aktivita ke stažení seznamu skupin může běžet po dobu až jedné hodiny. To vám umožní stáhnout seznam minimálně 300 000 skupin.
+
+## <a name="next-steps"></a>Další kroky
 
 - [Hromadné odebrání členů skupiny](groups-bulk-remove-members.md)
 - [Stažení členů skupiny](groups-bulk-download-members.md)

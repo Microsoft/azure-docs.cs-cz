@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878795"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147161"
 ---
 # <a name="handling-event-grid-events"></a>Zpracování událostí služby Event Grid
 
@@ -38,6 +38,9 @@ Aplikace, které zpracovávají Media Services události, by měly dodržovat n�
 * Podobně ověřte, zda je typ eventType, který je připraven ke zpracování, a nepředpokládá se, že všechny události, které obdržíte, budou takové typy, které očekáváte.
 * Ignorujte pole, která nerozumíte.  Tento postup vám pomůže zajistit odolný přístup k novým funkcím, které se v budoucnu můžou přidat.
 * Pokud chcete omezit události na konkrétní událost, použijte předponu a příponu "Subject".
+
+> [!NOTE]
+> Na události se vztahují Event Grid [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/). Pokud chcete dostávat oznámení o událostech pomocí rozhraní API, přečtěte si příklady o tom, jak zpracovávat události, pomocí [sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) nebo [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
 
 ## <a name="next-steps"></a>Další kroky
 

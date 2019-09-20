@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883662"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155240"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -39,7 +39,7 @@ Přizpůsobení používá modely strojového učení k zjištění, jaká akce 
 1. Vytvořte a nakonfigurujte instanci služby přizpůsobení ve Azure Portal. Každá instance je smyčkou přizpůsobování.
 1. Pomocí sady SDK můžete volat přizpůsobení s informacemi (_funkcemi_) týkajícími se vašich uživatelů a obsahem (_Akce_). Před použitím přizpůsobeného přizpůsobování nemusíte zadávat vyčištěná a označená data. 
 1. V klientské aplikaci Zobrazte uživatele podle vlastní akce.
-1. Použijte sadu SDK k poskytnutí zpětné vazby k přizpůsobenému uživateli, který označuje, jestli akce přizpůsobené uživatelem vybrala uživatel. Toto je _skóre odměňování_, obvykle mezi-1 a 1.
+1. Pomocí sady SDK můžete poskytnout zpětnou vazbu k přizpůsobenému objektu, který označuje, jestli akce přizpůsobené uživatelem vybrala vlastní nastavení. Toto je _[skóre záměna](concept-rewards.md)_ .
 1. Podívejte se na analýzy v Azure Portal, abyste vyhodnotili, jak systém funguje a jak vaše data pomáhají přizpůsobit.
 
 ## <a name="where-can-i-use-personalizer"></a>Kde můžu použít přizpůsobování?
@@ -60,7 +60,7 @@ Přizpůsobování není služba pro uchovávání a správu informací o profil
 Služba pro přizpůsobení má dvě rozhraní API:
 
 * Odeslat informace o vašich uživatelích a obsahu (_akcích_ _) pro_přizpůsobení. Přizpůsobuje odezvu na horní akci.
-* Pošlete nám svůj názor na přizpůsobené informace o tom, jak dobře se hodnocení vypracovalo jako číslo obvykle mezi 0 a 1 (předchozí oddíl uvádíme-1 a 1). 
+* Pošlete nám svůj názor na vlastní informace o tom, jak dobře se hodnocení vypracovalo jako [skóre odměňování](concept-rewards.md). 
 
 ![Základní sekvence událostí pro přizpůsobení](media/what-is-personalizer/personalization-intro.png)
 

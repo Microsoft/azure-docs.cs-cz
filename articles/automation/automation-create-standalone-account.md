@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779158"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146653"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -28,7 +28,6 @@ Když v Azure Portal vytvoříte účet Automation, automaticky se vytvoří tyt
   * Vytvoří instanční objekt ve službě Azure Active Directory (Azure AD).
   * Vytvoří certifikát.
   * Přiřadí Access Control na základě rolí přispěvatele (RBAC), která spravuje prostředky Azure Resource Manager pomocí runbooků.
-* **Účet Spustit jako pro Azure Classic**. Tento účet nahraje certifikát pro správu. Certifikát spravuje klasické prostředky pomocí runbooků.
 
 S těmito účty vytvořenými pro vás můžete rychle začít sestavovat a nasazovat Runbooky pro podporu vašich potřeb automatizace.
 
@@ -97,16 +96,15 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 | AzureRunAsCertificate |Asset certifikátu, který se automaticky vytvoří při vytvoření účtu Automation, nebo pomocí skriptu PowerShellu pro existující účet. Certifikát se ověřuje pomocí Azure, abyste mohli spravovat Azure Resource Manager prostředky z runbooků. Tento certifikát má životnost jeden rok. |
 | AzureRunAsConnection |Asset připojení, který se automaticky vytvoří při vytvoření účtu Automation, nebo pomocí skriptu PowerShellu pro existující účet. |
 
-Následující tabulka shrnuje prostředky pro účet Spustit jako pro Azure Classic.
+## <a name="classic-run-as-accounts"></a>Účty Spustit jako pro Azure Classic
 
-| Resource | Popis |
-| --- | --- |
-| Runbook AzureClassicAutomationTutorial |Příklad grafického Runbooku. Sada Runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí účtu Spustit jako pro Azure Classic (certifikát). Pak se zobrazí název a stav virtuálního počítače. |
-| Runbook se skriptem AzureClassicAutomationTutorial |Příklad Runbooku PowerShellu Sada Runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí účtu Spustit jako pro Azure Classic (certifikát). Pak se zobrazí název a stav virtuálního počítače. |
-| AzureClassicRunAsCertificate |Prostředek certifikátu, který se vytvoří automaticky. Certifikát se ověřuje pomocí Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. Tento certifikát má životnost jeden rok. |
-| AzureClassicRunAsConnection |Prostředek připojení, který se vytvoří automaticky. Asset se ověřuje pomocí Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. |
+V případě, že vytvoříte účet Azure Automation, ve výchozím nastavení se už nevytváří účty Spustit jako pro Classic. Pokud stále potřebujete účet Spustit jako pro Classic, proveďte následující kroky.
 
-## <a name="next-steps"></a>Další postup
+1. Na stránce **účet Automation** vyberte **účty Spustit jako** v části **Nastavení účtu**.
+2. Vyberte **účet Spustit jako pro Azure Classic**.
+3. Kliknutím na **vytvořit** pokračujte v vytváření účtu Spustit jako pro Azure Classic.
+
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o vytváření grafického obsahu najdete v tématu věnovaném [vytváření grafik v Azure Automation](automation-graphical-authoring-intro.md).
 * První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).

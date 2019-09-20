@@ -1,28 +1,26 @@
 ---
 title: Analýza webových protokolů pomocí knihoven Pythonu ve Sparku – Azure
-description: Tento poznámkový blok ukazuje, jak analyzovat data protokolů vlastní knihovny pomocí Sparku v Azure HDInsight.
+description: Tento Poznámkový blok ukazuje, jak analyzovat data protokolu pomocí vlastní knihovny pomocí Sparku v Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: hrasheed
-ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6d23e8cfa8d20169d2b63723138b60dafb1069de
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448762"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146983"
 ---
-# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovna Python s clusterem Apache Spark v HDInsight
+# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovny Pythonu s Apache Spark clusteru v HDInsight
 
-Tento poznámkový blok ukazuje, jak analyzovat data protokolů použití vlastní knihovny s Apache Spark v HDInsight. Vlastní knihovny používáme je knihovnu Pythonu s názvem **iislogparser.py**.
+Tento Poznámkový blok ukazuje, jak analyzovat data protokolu pomocí vlastní knihovny s Apache Spark v HDInsight. Vlastní knihovna, kterou používáme, je knihovna Pythonu s názvem **iislogparser.py**.
 
 > [!TIP]  
-> Tento článek je také k dispozici jako poznámkový blok Jupyter v clusteru Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. K provedení článek z v rámci poznámkového bloku, vytvořte Spark cluster, spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a pak spusťte Poznámkový blok **Analýza protokolů se Sparkem s využitím vlastní library.ipynb** pod **PySpark** složky.
->
->
+> Tento článek je také k dispozici jako Poznámkový blok Jupyter v clusteru Spark (Linux), který vytvoříte v HDInsight. Prostředí poznámkového bloku umožňuje spouštět fragmenty Pythonu přímo z poznámkového bloku. K provedení tohoto článku v rámci poznámkového bloku vytvořte cluster Spark, spusťte Poznámkový blok`https://CLUSTERNAME.azurehdinsight.net/jupyter`Jupyter () a potom spusťte Poznámkový blok **Analýza protokolů pomocí Sparku pomocí vlastní knihovny. ipynb** ve složce **PySpark** .
 
 **Požadavky:**
 
@@ -32,38 +30,37 @@ Musíte mít následující:
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="save-raw-data-as-an-rdd"></a>Uložit jako RDD nezpracovaná data
-V této části vytvoříme s využitím [Jupyter](https://jupyter.org) Poznámkový blok přidružený cluster Apache Spark v HDInsight ke spouštění úloh, které zpracovávají nezpracovaná ukázková data a uložte ho jako tabulku Hive. Ukázková data se soubor CSV (hvac.csv) k dispozici na všech clusterech ve výchozím nastavení.
+## <a name="save-raw-data-as-an-rdd"></a>Uložení nezpracovaných dat jako RDD
+V této části používáme Poznámkový blok [Jupyter](https://jupyter.org) přidružený ke clusteru Apache Spark ve službě HDInsight ke spouštění úloh, které zpracovávají nezpracovaná ukázková data a ukládají je jako tabulku podregistru. Vzorová data jsou ve výchozím nastavení ve všech clusterech k dispozici soubor. CSV (TVK. csv).
 
-Po uložení dat jako tabulku Apache Hive v další části se připojíme k tabulce Hive pomocí nástrojů BI, jako je Power BI a Tableau.
+Po uložení dat jako Apache Hive tabulky se v další části připojíme k tabulce podregistru pomocí nástrojů BI, jako je například Power BI a Tableau.
 
-1. Z portálu [Azure Portal](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.   
+1. Z portálu [Azure Portal](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
+
 2. Z okna clusteru Spark klikněte na **Řídicí panel clusteru** a poté na **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
    > [!NOTE]
    > Může také otevřít poznámkový blok Jupyter pro váš cluster tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
+
 3. Vytvořte nový poznámkový blok. Klikněte na tlačítko **Nový** a pak klikněte na tlačítko **PySpark**.
 
-    ![Vytvoření nového poznámkového bloku Jupyter](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvoření nového poznámkového bloku Apache Jupyter](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+
 4. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Klikněte na název poznámkového bloku v horní části a zadejte popisný název.
 
     ![Zadání názvu poznámkového bloku](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Zadání názvu poznámkového bloku")
-5. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importem typů, které jsou požadovány pro tento scénář. Do prázdné buňky vložte následující fragment kódu a pak stiskněte **SHIFT + ENTER**.
+5. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importováním typů, které jsou požadovány pro tento scénář. Do prázdné buňky vložte následující fragment kódu a pak stiskněte **SHIFT + ENTER**.
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
-
-1. Vytvoření RDD pomocí ukázkových dat protokolu již k dispozici v clusteru. Přistupujete k datům v účtu úložiště výchozí přidružené ke clusteru v **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
+6. Vytvořte RDD pomocí ukázkových dat protokolu, která jsou už v clusteru dostupná. Přístup k datům ve výchozím účtu úložiště, který je přidružený ke clusteru, najdete na adrese **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
-
-1. Načtěte ukázkový protokol nastavení pro ověření, že v předchozím kroku, byla úspěšně dokončena.
+7. Načte ukázkovou sadu protokolů pro ověření, že předchozí krok byl úspěšně dokončen.
 
         logs.take(5)
 
@@ -79,21 +76,22 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32',
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
-## <a name="analyze-log-data-using-a-custom-python-library"></a>Analyzuje data protokolů pomocí vlastní knihovna Python
-1. Ve výstupu výše první řádky několik zahrnout informace v záhlaví a každý zbývající řádek odpovídá schématu je popsáno v této hlavičky. Tyto protokoly analýzy může být složité. Proto používáme vlastní knihovny Python (**iislogparser.py**), který provede analýzu těchto protokolů mnohem jednodušší. Ve výchozím nastavení, je součástí clusteru Spark v HDInsight v této knihovně **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+## <a name="analyze-log-data-using-a-custom-python-library"></a>Analýza dat protokolu pomocí vlastní knihovny Pythonu
 
-    Ale není v této knihovně `PYTHONPATH` tak jsme nelze použít pomocí příkazu import jako `import iislogparser`. Použití této knihovny, jsme musí distribuovat do všech pracovních uzlů. Spusťte následující fragment kódu.
+1. Ve výše uvedeném výstupu obsahuje první pár řádků informace záhlaví a každý zbývající řádek odpovídá schématu popsanému v této hlavičce. Analýza takových protokolů by mohla být složitá. Proto používáme vlastní knihovnu Pythonu (**iislogparser.py**), která zjednodušuje analýzu takových protokolů. Ve výchozím nastavení je tato knihovna součástí clusteru Spark v HDInsight na adrese **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+
+    Tato knihovna však není v rozhraní `PYTHONPATH` , takže ji nemůžeme použít pomocí příkazu import, jako `import iislogparser`je. Chcete-li použít tuto knihovnu, je nutné ji distribuovat do všech pracovních uzlů. Spusťte následující fragment kódu.
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
-
-1. `iislogparser` poskytuje funkce `parse_log_line` , která vrací `None` Pokud řádek protokolu je řádek záhlaví a vrátí instanci `LogLine` třídy, pokud dojde řádek protokolu. Použití `LogLine` třídy k extrahování pouze řádky protokolu z RDD:
+1. `iislogparser`poskytuje funkci `parse_log_line` , která vrátí `None` , zda je řádek protokolu řádkem záhlaví a `LogLine` vrátí instanci třídy, pokud dojde k řádku protokolu. `LogLine` Použijte třídu k extrakci pouze řádků protokolu z RDD:
 
         def parse_line(l):
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. Načte několik extrahované protokolu řádky, pro ověření, že krok byla úspěšně dokončena.
+
+1. Načtěte několik extrahovaných řádků protokolu, abyste ověřili, že krok byl úspěšně dokončen.
 
        logLines.take(2)
 
@@ -105,7 +103,8 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. `LogLine` Třídy, jako je třeba zase, má některé užitečné metody `is_error()`, který vrátí, zda položka protokolu má kód chyby. Použito pro výpočet počet chyb v řádcích extrahované protokolu a potom protokolovat všechny chyby do jiného souboru.
+
+1. Třída zase obsahuje některé užitečné metody, jako `is_error()`například, což vrátí, zda záznam v protokolu obsahuje kód chyby. `LogLine` Toto použijte k výpočtu počtu chyb v extrahovaných řádcích protokolu a pak k zaznamenání všech chyb do jiného souboru.
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -120,8 +119,8 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
        # -----------------
 
        There are 30 errors and 646 log entries
-4. Můžete také použít **Matplotlib** k vytvoření vizualizace dat. Pokud chcete najít příčinu žádosti, které běží dlouhou dobu, můžete chtít vyhledat soubory, které zaberou nejvíce času průměrně poskytovat.
-   Následující fragment načte horní 25 prostředky, u nichž trvalo většinu času pro obsluhu žádost.
+1. Pomocí **matplotlib** můžete také vytvořit vizualizaci dat. Například pokud chcete izolovat příčinu požadavků, které jsou spouštěny po dlouhou dobu, budete pravděpodobně chtít najít soubory, které mají největší čas k obsluze v průměru.
+   Následující fragment kódu načte prvních 25 prostředků, které pomohly vyhovět žádosti.
 
        def avgTimeTakenByKey(rdd):
            return rdd.combineByKey(lambda line: (line.time_taken, 1),
@@ -162,7 +161,8 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. Můžete také prezentuje tyto informace ve formě grafu. Jako první krok k vytvoření vykreslení, dejte nám prosím nejprve vytvořit dočasné tabulky **AverageTime**. V tabulce seskupí podle času, pokud chcete zobrazit, pokud byly v určitém čase jakékoli neobvyklé latence dosahující protokoly.
+
+1. Tyto informace můžete také zobrazit ve formě grafu. Jako první krok k vytvoření grafu nám můžeme vytvořit dočasnou tabulku **AverageTime**. Tabulka seskupí protokoly podle času a zjistí, jestli v určitou dobu nedocházelo k nějakým neobvyklým špičkám latence.
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -170,19 +170,21 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. Potom můžete spustit následující dotaz SQL, který získal všechny záznamy **AverageTime** tabulky.
+
+1. Pak můžete spustit následující dotaz SQL a získat všechny záznamy v tabulce **AverageTime** .
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   `%%sql` Magic, za nímž následuje `-o averagetime` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](https://pandas.pydata.org/) datový rámec se zadaným názvem **averagetime**.
+   Magic následovaný tím `-o averagetime` zajistí, že výstup dotazu je trvale uložen na serveru Jupyter (obvykle hlavnímu uzlu clusteru). `%%sql` Výstup je trvalý jako [PANDAS](https://pandas.pydata.org/) datový rámec se zadaným názvem **averagetime**.
 
    Zobrazený výstup by měl vypadat asi takto:
 
-   ![Výstup dotazu SQL](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "výstup dotazu SQL")
+   ![výstup HDInsight Jupyter SQL qyery](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "Výstup dotazu SQL")
 
-   Další informace o `%%sql` magic, viz [nepodporuje parametry s %% magický příkaz jazyka sql](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
-7. Matplotlib, knihovna použitý k vytvoření vizualizace dat, můžete teď použít k vytvoření vykreslení. Protože vykreslení musí být vytvořeny z místně trvalý **averagetime** datového rámce, fragment kódu musí začínat `%%local` magic. Tím se zajistí, že je kód spuštěn místně na serveru Jupyter.
+   Další informace o `%%sql` Magic naleznete v tématu [Parameters Supported a%% SQL Magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+
+1. Nyní můžete použít knihovnu matplotlib, která slouží k vytvoření vizualizace dat, k vytvoření grafu. Vzhledem k tomu, že je nutné vytvořit vykreslení z místně trvalého datového rámce **averagetime** , musí fragment kódu začínat `%%local` Magic. Tím se zajistí, že se kód spustí místně na serveru Jupyter.
 
        %%local
        %matplotlib inline
@@ -194,29 +196,30 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
 
    Zobrazený výstup by měl vypadat asi takto:
 
-   ![Výstup Matplotlib](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib výstupu")
-8. Po dokončení spuštění aplikace byste měli poznámkový blok vypnout a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Dojde k vypnutí a zavření poznámkového bloku.
+   Diagram ![analýzy webového protokolu Apache Spark](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Výstup matplotlib")
+
+1. Po dokončení spuštění aplikace byste měli poznámkový blok vypnout a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Dojde k vypnutí a zavření poznámkového bloku.
 
 ## <a name="seealso"></a>Viz také
-* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
+* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
-* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Apache Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ nápad k vytváření a odesílání aplikací v Apache Spark Scala](apache-spark-intellij-tool-plugin.md)
+* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Správa prostředků
+### <a name="manage-resources"></a>Spravovat prostředky
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

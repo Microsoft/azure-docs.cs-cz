@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564869"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146622"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -35,7 +35,7 @@ Application Gateway podporuje ukončení protokolu SSL/TLS v bráně, po kterém
 
 ## <a name="autoscaling"></a>Automatické škálování
 
-Application Gateway nebo WAF nasazení v rámci Standard_v2 nebo WAF_v2 SKU podporují automatické škálování a můžou vertikálně navyšovat nebo snížit kapacity na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Další informace o funkcích Application Gateway standard_v2 a WAF_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
+Application Gateway nebo WAF nasazení v rámci Standard_v2 nebo WAF_v2 SKU podporují automatické škálování a můžou vertikálně navyšovat nebo snížit kapacity na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Další informace o funkcích Application Gateway Standard_v2 a WAF_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Redundance zóny
 
@@ -47,11 +47,11 @@ Virtuální IP adresa služby Application Gateway v Standard_v2 nebo WAF_v2 SKU 
 
 ## <a name="web-application-firewall"></a>Firewall webových aplikací
 
-Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. Firewall webových aplikací (WAF) je založený na [základní sadě pravidel OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. 
+Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
 Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
 
-Další informace najdete v tématu věnovaném [firewallu webových aplikací (WAF) v Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview)).
+Další informace najdete v tématu věnovaném [firewallu webových aplikací (WAF) v Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview).
 
 ## <a name="url-based-routing"></a>Směrování na základě adresy URL
 
@@ -63,7 +63,7 @@ Další informace najdete v tématu [směrování na základě adresy URL s Appl
 
 ## <a name="multiple-site-hosting"></a>Hostování několika webů
 
-Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
+Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jednoho Application Gateway nebo 40 pro WAF (pro zajištění optimálního výkonu). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
 
 Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
 
@@ -85,7 +85,7 @@ Podpora přesměrování Application Gateway nabízí následující možnosti:
 
 Další informace najdete v tématu [přesměrování provozu](https://docs.microsoft.com/azure/application-gateway/redirect-overview) pomocí Application Gateway.
 
-## <a name="session-affinity"></a>Spřažení relací
+## <a name="session-affinity"></a>Přidružení relace
 
 Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném serveru. Pomocí souborů cookie spravovaných bránou umí služba Application Gateway směrovat následný provoz z uživatelské relace ke zpracování na stejný server. To je důležité v případech, kdy se stav jednotlivých uživatelských relací ukládá místně na serveru.
 
@@ -107,6 +107,8 @@ Další informace najdete v tématu [Řadič příchozího přenosu dat služby 
 
 Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Po povolení Application Gateway zajistí, že všechny instance rušení registrace ve fondu back-endu neobdrží žádnou novou žádost, zatímco se existující požadavky dokončí v nakonfigurovaném časovém limitu. To platí pro instance back-end, které se explicitně odebraly z fondu back-endu prostřednictvím volání rozhraní API, a back-endové instance, které jsou nahlášené jako chybné v závislosti na sondách stavu.
 
+Další informace naleznete v části vyprazdňování připojení v tématu [Přehled konfigurace Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
+
 ## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
@@ -127,13 +129,13 @@ Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-h
 
 ## <a name="sizing"></a>Velikost
 
-Application Gateway Standard_v2 a WAF_v2 SKU lze nakonfigurovat pro nasazení s automatickým škálováním nebo pevnou velikostí. Tyto SKU nenabízejí různé velikosti instancí.
+Application Gateway Standard_v2 a WAF_v2 SKU lze nakonfigurovat pro nasazení s automatickým škálováním nebo pevnou velikostí. Tyto SKU nenabízejí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
 Application Gateway Standard a SKU WAF se momentálně nabízí ve třech velikostech: **Malá**, **střední**a **Velká**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 
 Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway s povoleným přesměrováním zpracování SSL:
+Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
 | Průměrná velikost odpovědi back-endu stránky | Malé | Střední | Velké |
 | --- | --- | --- | --- |
@@ -143,7 +145,7 @@ Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé i
 > [!NOTE]
 > Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V závislosti na vašich požadavcích a prostředí můžete vytvořit testovací Application Gateway pomocí portálu Azure Portal, Azure PowerShellu nebo rozhraní Azure CLI:
 

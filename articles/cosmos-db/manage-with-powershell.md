@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5b041fecfaa5a84ed5a04a3a8c53de10b9efd65b
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616833"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155374"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -43,10 +43,11 @@ Následující části demonstrují, jak spravovat účet Azure Cosmos, včetně
 * [Znovu vygenerovat klíče pro účet Azure Cosmos](#regenerate-keys)
 * [Výpis připojovacích řetězců pro účet Azure Cosmos](#list-connection-strings)
 * [Úprava priority převzetí služeb při selhání pro účet Azure Cosmos](#modify-failover-priority)
+* [Aktivace ručního převzetí služeb při selhání pro účet Azure Cosmos](#trigger-manual-failover)
 
 ### <a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
-Tento příkaz vytvoří účet databáze Azure Cosmos s více oblastmi, [zásadami konzistence](consistency-levels.md)s vazbou na [více oblastí][distribute-data-globally].
+Tento příkaz vytvoří účet databáze Azure Cosmos s [více oblastmi][distribute-data-globally], [zásadami konzistence](consistency-levels.md)s vazbou na více oblastí.
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -121,7 +122,9 @@ Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos.
 * Povolení více hlavních serverů
 
 > [!NOTE]
-> Tento příkaz umožňuje přidat a odebrat oblasti, ale neumožňuje měnit priority převzetí služeb při selhání nebo měnit oblast pomocí `failoverPriority=0`. Postup úpravy priority převzetí služeb při selhání najdete v tématu [Úprava priority převzetí služeb při selhání pro účet Azure Cosmos](#modify-failover-priority).
+> Nemůžete současně přidat ani odebrat `locations` oblasti a změnit další vlastnosti pro účet Azure Cosmos. Úprava oblastí se musí provádět jako samostatná operace, než jakákoli jiná změna prostředku účtu.
+> [!NOTE]
+> Tento příkaz umožňuje přidat a odebrat oblasti, ale neumožňuje měnit priority převzetí služeb při selhání ani aktivovat ruční převzetí služeb při selhání. Viz [Upravit prioritu převzetí služeb při selhání](#modify-failover-priority) a [aktivovat ruční převzetí služeb při selhání](#trigger-manual-failover)
 
 ```azurepowershell-interactive
 # Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
@@ -238,23 +241,55 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a>Úprava priority převzetí služeb při selhání
 
-Pro účty databáze ve více oblastech můžete změnit pořadí, ve kterém bude účet Cosmos propagovat sekundární repliky pro čtení, pokud dojde k místnímu převzetí služeb při selhání v primární replice pro zápis. Změny `failoverPriority=0` lze také použít k zahájení plánování zotavení po havárii.
+U účtů konfigurovaných s automatickým převzetím služeb při selhání můžete změnit pořadí, ve kterém bude Cosmos povýšit sekundární repliky na primární, pokud primární databáze není k dispozici.
 
-V následujícím příkladu Předpokládejme, že účet má aktuální prioritu `West US 2 = 0` převzetí služeb při selhání pro a `East US 2 = 1` a překlopit oblasti.
+V následujícím příkladu Předpokládejme, že aktuální priorita převzetí služeb `West US 2 = 0`při `East US 2 = 1`selhání `South Central US = 2`,,,.
 
 > [!CAUTION]
 > Změna `locationName` pro`failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Jakékoli další změny priority nebudou aktivovat převzetí služeb při selhání.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
-# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
 $failoverRegions = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="West US 2"; "failoverPriority"=1 }
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="South Central US"; "failoverPriority"=1 },
+    @{ "locationName"="East US 2"; "failoverPriority"=2 }
+)
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
+
+Invoke-AzResourceAction -Action failoverPriorityChange `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
+```
+
+### <a id="trigger-manual-failover"></a>Aktivace ručního převzetí služeb při selhání
+
+U účtů konfigurovaných pomocí ručního převzetí služeb při selhání můžete převzít služby při selhání a zvýšit úroveň `failoverPriority=0`sekundární repliky na primární úpravou. Tato operace se dá použít k inicializaci plánování zotavení po havárii při zotavení po havárii.
+
+V následujícím příkladu Předpokládejme, že účet má aktuální prioritu `West US 2 = 0` převzetí služeb při selhání pro a `East US 2 = 1` a překlopit oblasti.
+
+> [!CAUTION]
+> Změna `locationName` pro`failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Žádná jiná změna priority nebude aktivovat převzetí služeb při selhání.
+
+```azurepowershell-interactive
+# Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+
+$failoverRegions = @(
+    @{ "locationName"="South Central US"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="West US 2"; "failoverPriority"=2 }
 )
 
 $failoverPolicies = @{
