@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141286"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170047"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: Prozkoumejte aplikaci pro zpracování obrázkůC#
 
@@ -76,11 +76,11 @@ Nejprve musíte vytvořit ukázkovou aplikaci, aby mohla aplikace Visual Studio 
 Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s knihovnou klienta Počítačové zpracování obrazu při provádění různých úloh, jako je například generování miniatur nebo označování obrázků. Pokud chcete spustit ukázkovou aplikaci a pracovat s ní, proveďte následující kroky:
 
 1. Po dokončení sestavení stiskněte klávesu **F5** nebo zvolte možnost **ladění** z nabídky pásu karet a pak zvolte možnost **Spustit ladění** a spusťte ukázkovou aplikaci.
-1. Když se zobrazí ukázková aplikace, v navigačním podokně vyberte **Správa klíčů** předplatného. zobrazí se stránka Správa klíčů předplatného.
+1. Když se zobrazí ukázková aplikace, v navigačním podokně vyberte **Správa klíčů předplatného** . zobrazí se stránka Správa klíčů předplatného.
    ![Stránka správy klíčů předplatného](../Images/Vision_UI_Subscription.PNG)  
-1. Do **klíče**předplatného zadejte svůj klíč předplatného.
+1. Do **klíče předplatného**zadejte svůj klíč předplatného.
 1. Do **koncového bodu**zadejte adresu URL koncového bodu.  
-   Pokud například používáte klíč předplatného z Počítačové zpracování obrazu bezplatné zkušební verze, zadejte následující adresu URL koncového bodu:`https://westcentralus.api.cognitive.microsoft.com`
+   Pokud například používáte klíč předplatného z Počítačové zpracování obrazu bezplatné zkušební verze, zadejte následující adresu URL koncového bodu:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Pokud nechcete zadat klíč předplatného a adresu URL koncového bodu při příštím spuštění ukázkové aplikace, klikněte na **Uložit nastavení** a uložte klíč předplatného a adresu URL koncového bodu do vašeho počítače. Pokud chcete odstranit dřív uložený klíč předplatného a adresu URL koncového bodu, vyberte **Odstranit nastavení**.
 
@@ -308,7 +308,7 @@ Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče
 
 Pokud už je nepotřebujete, odstraňte složku, do které jste naklonováni `Microsoft/Cognitive-Vision-Windows` úložiště. Pokud jste se rozhodli použít ukázkové image, odstraňte také složku, do které jste naklonováni `Microsoft/Cognitive-Face-Windows` úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Začínáme s Face API](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

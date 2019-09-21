@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261758"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169473"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -220,6 +220,10 @@ Můžete pořád používat starého poskytovatele. (Bude odebráno pouze v hlav
 > Nový poskytovatel je k dispozici pro aplikace, které cílí na NETSTANDARD 2.0 nebo novější. Pokud vaše aplikace cílí na starší verze rozhraní .NET Core, jako je například .NET Core 1,1, nebo pokud cílí na .NET Framework, pokračujte v používání starého poskytovatele.
 
 ## <a name="console-application"></a>Konzolová aplikace
+
+> [!NOTE]
+> K dispozici je nová verze beta Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights (ILogger a jiné Application Insights telemetrie) pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md)
+Následující příklad bude po vydání stabilní verze tohoto nového balíčku zastaralý.
 
 Následující kód ukazuje ukázkovou konzolovou aplikaci, která je nakonfigurovaná tak, aby odesílala ILogger trasování do Application Insights.
 
@@ -497,7 +501,7 @@ Tento kód je vyžadován pouze v případě, že používáte samostatného zpr
    }
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace pro:
 

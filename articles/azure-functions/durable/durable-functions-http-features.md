@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b909918ff4f9abc1dd64d4c7e5ccb35954b233f7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935791"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171125"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -205,7 +205,7 @@ Integrovaná podpora pro volání rozhraní API HTTP je výhodná a není vhodn�
 Pokud některá z těchto omezení můžou mít vliv na váš případ použití, zvažte místo toho použití funkcí aktivity a klientských knihoven HTTP specifických pro jazyk k provedení odchozích volání HTTP.
 
 > [!NOTE]
-> Pokud jste vývojářem .NET, možná vás zajímá, proč tato funkce používá `DurableHttpRequest` a `DurableHttpResponse` typy místo vestavěných rozhraní .NET `HttpRequestMessage` a `HttpResponseMessage`. Tato volba návrhu byla záměrné. Hlavním důvodem je, že vlastní typy vám pomohou zajistit, aby uživatelé nemuseli vytvářet nesprávné předpoklady o podporovaném chování interního klienta HTTP. Typy s trvalým nastavením také umožňují zjednodušit návrh rozhraní API a snadněji vysvětlovat speciální funkce, jako je [spravovaná integrace identit](#managed-identities) a [uživatelský vzor cyklického dotazování](#http-202-handling).
+> Pokud jste vývojářem .NET, možná vás zajímá, proč tato funkce používá `DurableHttpRequest` a `DurableHttpResponse` typy místo vestavěných rozhraní .NET `HttpRequestMessage` a `HttpResponseMessage`. Tato volba návrhu byla záměrné. Hlavním důvodem je, že vlastní typy vám pomůžou zajistit, aby uživatelé nemuseli vytvářet nesprávné předpoklady o podporovaném chování interního klienta HTTP. Typy s trvalým nastavením také umožňují zjednodušit návrh rozhraní API a snadněji vysvětlovat speciální funkce, jako je [spravovaná integrace identit](#managed-identities) a [uživatelský vzor cyklického dotazování](#http-202-handling).
 
 ## <a name="next-steps"></a>Další kroky
 

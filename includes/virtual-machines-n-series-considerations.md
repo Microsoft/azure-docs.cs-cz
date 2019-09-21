@@ -2,30 +2,30 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 06/19/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1de7221f100077e07a2211bdb94e0198b35cb77c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 14f5998ee1c562b649257f7dce9ffc2f52a66226
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174968"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174941"
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-* Dostupnost virtuálních počítačů řady N-series, naleznete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+* Dostupnost virtuálních počítačů řady N-Series najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 
-* Virtuální počítače řady N-series je možné nasadit jenom v modelu nasazení Resource Manager.
+* Virtuální počítače řady N-Series jde nasadit jenom v modelu nasazení Správce prostředků.
 
-* Virtuální počítače řady N-series se liší v typu Azure Storage podporují pro jejich disků. NC a NV virtuální počítače podporují jenom disky virtuálních počítačů, které využívají pomocí standardní úložiště disku (HDD). NCv2, NCv3, ND, NDv2 a NVv2 virtuální počítače podporují jenom disky virtuálních počítačů, které se zálohují na podle Disk Storage úrovně Premium (SSD).
+* Virtuální počítače řady N-Series se liší v typu Azure Storage podporují jejich disky. Virtuální počítače síťového adaptéru a NV podporují jenom disky virtuálních počítačů, které jsou založené na standardu Disk Storage (HDD). Virtuální počítače NCv2, NCv3, ND, NDv2 a NVv2 podporují pouze disky virtuálních počítačů, které jsou zajištěny pomocí Premium Disk Storage (SSD).
 
-* Pokud chcete nasadit více než několik virtuálních počítačů řady N-series, zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
+* Pokud chcete nasadit více než několik virtuálních počítačů řady N-Series, vezměte v úvahu předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
-* Může být potřeba zvýšit kvótu pro jádra (podle oblasti) ve vašem předplatném Azure a zvýšit samostatné kvóty pro jádra NC, NCv2, NCv3, ND, NDv2, NV nebo NVv2. Požádat o zvýšení kvóty, [otevřete žádost o online zákaznickou podporu](../articles/azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Výchozí omezení může lišit v závislosti na vaše předplatné kategorie.
+* V rámci vašeho předplatného Azure možná budete muset zvýšit kvótu jader (na oblast) a zvýšit samostatnou kvótu pro NC, NCv2, NCv3, ND, NDv2, NV nebo NVv2 jádra. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](../articles/azure-supportability/how-to-create-azure-support-request.md) zdarma. Výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
 
 
 

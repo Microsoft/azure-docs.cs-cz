@@ -9,60 +9,60 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: c716ae0a2bb30e7e8eb249a1d230097efc0d3795
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097789"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173767"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
-Service Fabric mřížky rozhraní příkazového řádku (CLI) je potřeba nasadit a spravovat prostředky, místně i v Azure Service Fabric mřížky. 
+K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). 
 
-Existují tři typy rozhraní příkazového řádku, který můžete použít a jsou shrnuty v následující tabulce. 
+Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce. 
 
-| Rozhraní příkazového řádku modulu | Cílové prostředí |  Popis | 
+| Modul CLI | Cílové prostředí |  Popis | 
 |---|---|---|
-| síť az | Síť Azure Service Fabric | Primární CLI, který umožňuje nasazení aplikací a správě prostředků v prostředí Azure Service Fabric mřížky. 
-| sfctl | Místní clusterů | Service Fabric CLI, který umožňuje nasazení a testování prostředky Service Fabric na místní clustery.  
-| Maven CLI | Místní clustery & sítě Azure Service Fabric | Obálka kolem `az mesh` a `sfctl` , která umožňuje vývojářům v jazyce Java použijte prostředí známých příkazového řádku Azure a místní vývojové prostředí.  
+| AZ Mesh | Síť Azure Service Fabric | Primární rozhraní příkazového řádku, které umožňuje nasazovat aplikace a spravovat prostředky v prostředí sítě Azure Service Fabric. 
+| sfctl | Místní clustery | Service Fabric CLI, který umožňuje nasazení a testování prostředků Service Fabric na místních clusterech.  
+| Maven CLI | Místní clustery & síť Azure Service Fabric | Obálka kolem `az mesh` a `sfctl` , která vývojářům v jazyce Java umožňuje používat známé prostředí příkazového řádku pro místní a vývojové prostředí Azure.  
 
 Ve verzi Preview je rozhraní příkazového řádku služby Azure Service Fabric Mesh jako rozšíření Azure CLI. Můžete ho nainstalovat do Azure Cloud Shellu nebo do místní instalace Azure CLI. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-## <a name="install-the-azure-service-fabric-mesh-cli"></a>Instalace Azure Service Fabric síť rozhraní příkazového řádku
-1. Je nutné nainstalovat Azure CLI verze 2.0.43 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete rozhraní příkazového řádku nainstalovat nebo upgradovat na nejnovější verzi, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+## <a name="install-the-azure-service-fabric-mesh-cli"></a>Instalace rozhraní příkazového řádku pro Azure Service Fabric
+1. Musíte nainstalovat Azure CLI verze 2.0.67 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Informace o instalaci nebo upgradu na nejnovější verzi rozhraní příkazového řádku najdete v tématu [instalace rozhraní příkazového řádku Azure CLI][azure-cli-install].
 
-2. Instalace modulu Azure Service Fabric mřížky CLI rozšíření pomocí následujícího příkazu. 
+2. Pomocí následujícího příkazu nainstalujte modul rozšíření rozhraní příkazového řádku Azure Service Fabric. 
 
     ```azurecli-interactive
     az extension add --name mesh
     ```
 
-3. Aktualizujte existující modul Azure mřížky příkazového řádku Service Fabric pomocí následujícího příkazu.
+3. Pomocí následujícího příkazu aktualizujte existující modul rozhraní příkazového řádku Azure Service Fabric.
 
     ```azurecli-interactive
     az extension update --name mesh
     ```
 
-## <a name="install-the-service-fabric-cli-sfctl"></a>Nainstalujte Service Fabric CLI (sfctl) 
+## <a name="install-the-service-fabric-cli-sfctl"></a>Instalace rozhraní příkazového řádku Service Fabric (sfctl) 
 
-Postupujte podle pokynů na [nastavení Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). **Sfctl** modul lze použít pro nasazení aplikací založených na modelu prostředků, který s clustery Service Fabric na místním počítači. 
+Postupujte podle pokynů v tématu [nastavení Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). Modul **sfctl** se dá použít k nasazení aplikací na základě modelu prostředků v Service Fabric clusterech na místním počítači. 
 
-## <a name="install-the-maven-cli"></a>Instalace nástroje Maven rozhraní příkazového řádku 
+## <a name="install-the-maven-cli"></a>Instalace rozhraní příkazového řádku Maven 
 
-Chcete-li používat rozhraní příkazového řádku Maven následující musí být nainstalovaný na vašem počítači: 
+Aby bylo možné používat rozhraní příkazového řádku Maven, musí být na počítači nainstalovány následující: 
 
 * [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* Mřížky rozhraní příkazového řádku Azure (az síť) - do cílové sítě Azure Service Fabric 
-* SFCTL (sfctl) - cílit na místní clusterů 
+* Azure mřížka CLI (AZ mesh) – pro cílení na síť Azure Service Fabric 
+* SFCTL (SFCTL) – pro cílení místních clusterů 
 
-Rozhraní příkazového řádku nástroje Maven pro Service Fabric je stále ve verzi preview. 
+Rozhraní příkazového řádku Maven pro Service Fabric je stále ve verzi Preview. 
 
-Použití modulu plug-in Maven ve vaší aplikaci Maven Java, přidejte do souboru pom.xml následující fragment kódu:
+Pokud chcete použít modul plug-in Maven v aplikaci Maven Java, přidejte do souboru pom. XML následující fragment kódu:
 
 ```XML
 <project>
@@ -84,9 +84,9 @@ Použití modulu plug-in Maven ve vaší aplikaci Maven Java, přidejte do soubo
 </project>
 ```
 
-Čtení [odkaz na rozhraní příkazového řádku Maven](service-fabric-mesh-reference-maven.md) části a seznamte se s podrobnými informacemi o využití.
+Další informace o podrobném využití najdete v části referenční dokumentace k rozhraní příkazového [řádku Maven](service-fabric-mesh-reference-maven.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Můžete také nastavit [vývojové prostředí ve Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
 

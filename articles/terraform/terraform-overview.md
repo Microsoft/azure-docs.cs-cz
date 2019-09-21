@@ -1,6 +1,6 @@
 ---
 title: Použití Terraformu v Azure
-description: Úvod k použití Terraformu k verzi a nasazení infrastruktury Azure.
+description: Seznámení s používáním Terraformu k nasazení a nasazení infrastruktury Azure.
 services: terraform
 ms.service: azure
 keywords: terraform, devops, přehled, plánování, použití, automatizace
@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/31/2018
-ms.openlocfilehash: 8b5ad3f060e2c8760014d7fc1990b971976388f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 4e51b8b5aa1cd00fcdd2481d73c40458d01d38c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884439"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173065"
 ---
 # <a name="terraform-with-azure"></a>Terraform v Azure
 
@@ -43,7 +43,7 @@ Terraform poskytuje rozhraní příkazového řádku, které umožňuje uživate
 
 Terraform je oblíbeným nástrojem pro multicloudové scénáře, kdy se nasadí podobná infrastruktura do Azure a do dalších cloudů od poskytovatelů cloudových služeb nebo do místních datacenter. Vývojářům to umožňuje používat ke správě infrastruktury u několika poskytovatelů cloudových služeb stejné nástroje a konfigurační soubory.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečetli jste si přehled a výhody nástroje Terraform a tady jsou doporučené další kroky:
 

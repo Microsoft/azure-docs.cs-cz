@@ -1,40 +1,40 @@
 ---
-title: Vytvořit místní virtuální sítě s využitím Terraformu v Azure
-description: Kurz ilustrující způsob implementace místní virtuální sítě v Azure, které jsou uloženy místní prostředky
+title: Vytvoření místní virtuální sítě pomocí Terraformu v Azure
+description: Kurz ilustrující implementaci místní virtuální sítě v Azure, která je založená na místních prostředcích
 services: terraform
 ms.service: azure
-keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, místní
+keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, místní síť
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888682"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169785"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvořit místní virtuální sítě s využitím Terraformu v Azure
+# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření místní virtuální sítě pomocí Terraformu v Azure
 
-V tomto kurzu se implementovat místní síti pomocí služby Azure Virtual network (VNet). Virtuální síť Azure může nahradit vlastní privátní virtuální síť. Uděláte to tak, namapujte příslušné IP adresy v podsítí.
+V tomto kurzu implementujete místní síť pomocí služby Azure Virtual Network (VNet). Virtuální síť Azure by mohla být nahrazena vaší vlastní privátní virtuální sítí. Provedete to tak, že namapujete příslušné IP adresy v podsítích.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Použití HCL (HashiCorp Language) pro implementaci místní virtuální sítě v topologii centra s paprsky
-> * Použití Terraformu k vytvoření centrální síti prostředky zařízení
-> * Použití Terraformu k vytvoření místního virtuálního počítače
-> * Použití Terraformu k vytvoření brány virtuální privátní sítě v místním
+> * Použití HCL (HashiCorp Language) k implementaci místní virtuální sítě v centru hvězdicové topologie
+> * Použití Terraformu k vytváření prostředků síťových zařízení centra
+> * Vytvoření místního virtuálního počítače pomocí Terraformu
+> * Vytvoření místní brány virtuální privátní sítě pomocí Terraformu
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-Simulovat v místní síti, vytvořte virtuální síť Azure. Ukázka virtuální síti probíhá skutečný privátní místní síti. Postupujte stejným způsobem pracovat s vaší stávající místní sítě, namapujte příslušné IP adresy v podsítí.
+K simulaci místní sítě vytvořte službu Azure Virtual Network. Ukázková virtuální síť používá místo skutečné privátní místní sítě. Pokud to chcete provést stejně jako stávající místní síť, namapujte příslušné IP adresy v podsítích.
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
@@ -54,11 +54,11 @@ Simulovat v místní síti, vytvořte virtuální síť Azure. Ukázka virtuáln
     cd hub-spoke
     ```
 
-## <a name="declare-the-on-premises-vnet"></a>Deklarujte místní virtuální sítě
+## <a name="declare-the-on-premises-vnet"></a>Deklarace místní virtuální sítě
 
-Vytvořte konfigurační soubor Terraform, který deklaruje virtuální síť místní.
+Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuální síť.
 
-1. Ve službě Cloud Shell, otevřete nový soubor s názvem `on-prem.tf`.
+1. V Cloud Shell otevřete nový soubor s názvem `on-prem.tf`.
 
     ```bash
     code on-prem.tf
@@ -66,7 +66,7 @@ Vytvořte konfigurační soubor Terraform, který deklaruje virtuální síť m�
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"
@@ -223,9 +223,9 @@ Vytvořte konfigurační soubor Terraform, který deklaruje virtuální síť m�
     }
     ```
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření virtuální sítě centra s využitím Terraformu v Azure](./terraform-hub-spoke-hub-network.md)
+> [Vytvoření centrální virtuální sítě pomocí Terraformu v Azure](./terraform-hub-spoke-hub-network.md)

@@ -3,7 +3,7 @@ title: Použití interního serveru DNS pro překlad názvů virtuálních poč�
 description: Postup vytvoření karet virtuálních síťových rozhraní a použití interního serveru DNS pro překlad názvů virtuálních počítačů v Azure pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: vlivech
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: gwallace
-ms.openlocfilehash: d53c4c2120701ca99d0865e2c074c85e629ae81c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: cynthn
+ms.openlocfilehash: b143a28216d0d8417615ad2c40a3b66c9c5d1be2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875173"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173866"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvoření síťových karet a použití interního serveru DNS pro překlad názvů virtuálních počítačů v Azure
 
@@ -163,6 +163,6 @@ az vm create \
 
 Když použijete příznaky rozhraní příkazového řádku pro volání stávajících prostředků, podáváme Azure, aby virtuální počítač nasadil do stávající sítě. Aby se opakovala, po nasazení virtuální sítě a podsítě můžou být v rámci oblasti Azure ponechány jako statické nebo trvalé prostředky.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Přímé vytvoření vlastního prostředí pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí šablon](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

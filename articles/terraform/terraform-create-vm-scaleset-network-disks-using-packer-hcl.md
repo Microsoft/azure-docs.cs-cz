@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138340"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173482"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -42,9 +42,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V prázdném adresáři vytvořte tři nové soubory s následujícími názvy:
 
-- ```variables.tf``` tento soubor bude obsahovat hodnoty proměnných používaných v šabloně.
-- ```output.tf``` tento soubor bude popisovat nastavení, která se zobrazí po nasazení.
-- ```vmss.tf```Tento soubor obsahuje kód infrastruktury, kterou nasazujete.
+- `variables.tf` : Tento soubor obsahuje hodnoty proměnných použitých v šabloně.
+- `output.tf` : Tento soubor popisuje nastavení, která se zobrazí po nasazení.
+- `vmss.tf` : Tento soubor obsahuje kód infrastruktury, kterou nasazujete.
 
 ##  <a name="create-the-variables"></a>Vytvoření proměnných 
 
@@ -52,7 +52,7 @@ V tomto kroku definujete proměnné, které přizpůsobí prostředky vytvořen�
 
 Upravte soubor `variables.tf`, zkopírujte následující kód a potom změny uložte.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Uložte soubor.
 
-Při nasazování šablony Terraformu budete chtít získat plně kvalifikovaný název domény, který se používá pro přístup k aplikaci. Použijte typ prostředku ```output``` nástroje Terraform a získejte vlastnost ```fqdn``` tohoto prostředku. 
+Při nasazování šablony Terraformu budete chtít získat plně kvalifikovaný název domény, který se používá pro přístup k aplikaci. Použijte typ prostředku `output` nástroje Terraform a získejte vlastnost `fqdn` tohoto prostředku. 
 
 Upravte soubor `output.tf` a zkopírujte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény. 
 
@@ -89,9 +89,9 @@ V tomto kroku vytvoříte v nové skupině prostředků Azure následující sí
 
 Budete také potřebovat skupinu prostředků, ve které se budou všechny prostředky vytvářet. 
 
-Do souboru ```vmss.tf``` zkopírujte následující kód: 
+Do souboru `vmss.tf` zkopírujte následující kód: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ Spuštěním následujícího příkazu v adresáři, ve kterém jste vytvořili
 terraform init 
 ```
  
-Moduly plug-in poskytovatele se z registru Terraformu stáhnou do složky ```.terraform``` adresáře, ve kterém jste příkaz spustili.
+Moduly plug-in poskytovatele se z registru Terraformu stáhnou do složky `.terraform` adresáře, ve kterém jste příkaz spustili.
 
 Spuštěním následujícího příkazu nasaďte infrastrukturu do Azure.
 
@@ -185,8 +185,7 @@ V tomto kroku vytvoříte v síti, kterou jste dříve nasadili, následující 
 
 Na konec souboru `vmss.tf` přidejte následující kód.
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 Přidáním následujícího kódu do souboru `variables.tf` přizpůsobte nasazení:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80
@@ -456,7 +455,7 @@ terraform destroy
 
 Když se zobrazí výzva k potvrzení odstranění skupiny prostředků, zadejte `yes`. Odstranění můžete trvat i několik minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pomocí Terraformu nasadili do Azure škálovací sadu virtuálních počítačů a jumpbox. Naučili jste se tyto postupy:
 

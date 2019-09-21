@@ -1,89 +1,88 @@
 ---
-title: Vytváření proměnných pro ukládání hodnot – Azure Logic Apps | Dokumentace Microsoftu
-description: Jak ukládat a spravovat hodnoty tak, že vytvoříte proměnné v Azure Logic Apps
+title: Vytváření a Správa proměnných pro ukládání hodnot – Azure Logic Apps
+description: Jak ukládat a spravovat hodnoty pomocí proměnných v Azure Logic Apps
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.topic: article
-ms.date: 05/30/2018
 ms.service: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 09/20/2019
+ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004430"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171293"
 ---
-# <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Vytvoření proměnné k ukládání a správě hodnoty v Azure Logic Apps
+# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a Správa hodnot pomocí proměnných v Azure Logic Apps
 
-Tento článek popisuje, jak můžete ukládat a pracovat s hodnotami v celé aplikaci logiky tak, že vytvoříte proměnné. Například proměnné vám může pomoct zjistit počet případů, kdy se spustí smyčku. Při iterování přes pole nebo kontrola pole pro konkrétní položky, můžete použít proměnnou tak, aby odkazovaly číslo indexu pro každou položku pole. 
+Tento článek ukazuje, jak vytvořit a pracovat s proměnnými, které slouží k ukládání hodnot do aplikace logiky. Například proměnné vám pomohou sledovat počet spuštění smyčky. Chcete-li iterovat přes pole nebo zjistit konkrétní položku v poli, můžete použít proměnnou pro odkazování na číslo indexu pro každou položku pole.
 
-Můžete vytvořit proměnné pro datové typy, například celé číslo, float, logická hodnota, řetězec, pole a objektu. Jakmile vytvoříte proměnnou, můžete provést další úlohy, například:
+Můžete vytvořit proměnné pro datové typy, jako je celé číslo, float, Boolean, String, Array a Object. Po vytvoření proměnné můžete provádět další úlohy, například:
 
-* Získat nebo odkaz na hodnotu proměnné.
-* Zvýšení nebo snížení proměnné podle konstantní hodnoty, označované také jako *přírůstek* a *snížení*.
-* Přiřadíte jinou hodnotu do proměnné.
-* Vložit nebo *připojit* hodnotu proměnné jako poslední čas v řetězce nebo pole.
+* Získá nebo odkázat na hodnotu proměnné.
+* Zvyšte nebo snižte proměnnou pomocí konstantní hodnoty, označované také jako *zvýšení* a *snížení*.
+* Přiřaďte proměnné jinou hodnotu.
+* Vloží nebo *připojí* hodnotu proměnné jako poslední čas v řetězci nebo poli.
 
-Proměnné existují a jsou globální pouze v rámci instanci aplikace logiky, která je vytvořila. Kromě toho jsou zachována i mezi všechny iterace smyčky v instanci aplikace logiky. Při odkazování na proměnné, použijte název proměnné jako token, ne název akce, který je obvykle způsob, jak odkazovat na výstupy akce. 
+Proměnné existují a jsou globální jenom v instanci aplikace logiky, která je vytvořila. Také se chovají v rámci všech iterací smyčky v instanci aplikace logiky. Když odkazujete na proměnnou, použijte název proměnné jako token, nikoli název akce, což je obvyklý způsob, jak odkazovat na výstupy akce.
 
 > [!IMPORTANT]
-> Ve výchozím nastavení cykly ve smyčce "Foreach" běžet paralelně. Při použití proměnných ve smyčkách spuštění smyčky [postupně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) proměnné vrátit předvídatelné výsledky. 
-
-Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>. 
+> Ve výchozím nastavení se cyklická smyčka "for each" spouští paralelně. Když použijete proměnné ve smyčce, spusťte smyčku [sekvenčně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) , aby proměnné vracely předvídatelné výsledky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle tohoto článku, tady jsou položky, které potřebujete:
+* Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Aplikace logiky, ve kterém chcete vytvořit proměnnou 
+* Aplikace logiky, ve které chcete vytvořit proměnnou
 
-  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky.
 
-* A [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
+* [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve vaší aplikaci logiky
 
-  Před přidáním akce pro vytváření a práci s proměnnými, aplikace logiky musí spouštět triggerem.
+  Než budete moct přidat akce pro vytváření a práci s proměnnými, musí vaše aplikace logiky začínat triggerem.
 
 <a name="create-variable"></a>
 
 ## <a name="initialize-variable"></a>Inicializovat proměnnou
 
-Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodnota – vše v rámci jedné akce ve vaší aplikaci logiky. Je možné deklarovat pouze proměnné na globální úrovni, není v rozsahu obory, podmínek a cyklů. 
+Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hodnotu – vše v rámci jedné akce ve vaší aplikaci logiky. Proměnné můžete deklarovat jenom na globální úrovni, ne v oborech, podmínkách a smyčkách.
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s existující aktivační události.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s existující triggerem.
 
-2. Ve vaší aplikaci logiky, v části krok, ve které chcete přidat proměnnou proveďte jeden z těchto kroků: 
+1. V aplikaci logiky v kroku, kam chcete přidat proměnnou, proveďte jeden z následujících kroků: 
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a pak zvolte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "proměnné". Ze seznamu akcí vyberte **proměnné – inicializovat proměnnou**.
+1. V části **zvolit akci**zadejte `variables` do vyhledávacího pole jako filtr. V seznamu akce vyberte možnost **inicializovat proměnnou**.
 
-   ![Vyberte akci](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
+   ![Vybrat akci](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
-4. Zadejte informace pro vaše proměnná:
+1. Zadejte tyto informace o proměnné, jak je popsáno níže:
 
-   | Vlastnost | Požaduje se | Value |  Popis |
+   | Vlastnost | Požadováno | Value |  Popis |
    |----------|----------|-------|--------------|
-   | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Type | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
-   | Value | Ne | <*start-value*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
-   ||||| 
+   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Typ** | Ano | <*typ proměnné*> | Datový typ proměnné |
+   | **Hodnota** | Ne | <*start-value*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
+   |||||
+
+   Příklad:
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-5. Teď pokračujte v přidávání akce, které chcete. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
+1. Nyní pokračujte v přidávání akcí, které chcete. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **inicializovat proměnnou** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JavaScript Object Notation (JSON):
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jak se akce **inicializovat proměnnou** zobrazí v definici aplikace logiky, která je ve formátu JavaScript Object Notation (JSON):
 
 ```json
 "actions": {
@@ -101,9 +100,9 @@ Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým 
 },
 ```
 
-Tady jsou příklady pro některé typy proměnných:
+Tady jsou příklady pro některé jiné typy proměnných:
 
-*Řetězcová hodnota*
+*Řetězcová proměnná*
 
 ```json
 "actions": {
@@ -121,7 +120,7 @@ Tady jsou příklady pro některé typy proměnných:
 },
 ```
 
-*Proměnné typu Boolean*
+*Logická proměnná*
 
 ```json
 "actions": {
@@ -139,7 +138,7 @@ Tady jsou příklady pro některé typy proměnných:
 },
 ```
 
-*Pole celých čísel*
+*Pole s celými čísly*
 
 ```json
 "actions": {
@@ -177,12 +176,11 @@ Tady jsou příklady pro některé typy proměnných:
 
 <a name="get-value"></a>
 
-## <a name="get-the-variables-value"></a>Získat hodnota proměnné
+## <a name="get-the-variables-value"></a>Získat hodnotu proměnné
 
-Načíst nebo odkazovat proměnné obsah, můžete použít také [variables() funkce](../logic-apps/workflow-definition-language-functions-reference.md#variables) v návrháři aplikace logiky a zobrazení editoru kódu.
-Při odkazování na proměnné, použijte název proměnné jako token, ne název akce, který je obvykle způsob, jak odkazovat na výstupy akce. 
+Pro načtení nebo odkazování na obsah proměnné můžete použít také [funkci Variables ()](../logic-apps/workflow-definition-language-functions-reference.md#variables) v návrháři aplikace logiky a v editoru zobrazení kódu. Při odkazování na proměnnou použijte název proměnné jako token, nikoli název akce, což je obvyklý způsob, jak odkazovat na výstupy akce.
 
-Například tento výraz získá položky z proměnné pole [vytvořili dříve v tomto článku](#append-value) pomocí **variables()** funkce. **String()** funkce vrátí obsah proměnné ve formátu řetězce: `"1, 2, 3, red"`
+Například tento výraz získá položky z proměnné pole [vytvořené dříve v tomto článku](#append-value) pomocí `variables()` funkce. `string()` Funkce vrátí obsah proměnné ve formátu řetězce:`"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -190,37 +188,37 @@ Například tento výraz získá položky z proměnné pole [vytvořili dříve 
 
 <a name="increment-value"></a>
 
-## <a name="increment-variable"></a>Zvýšení hodnoty proměnné 
+## <a name="increment-variable"></a>Zvýšit proměnnou 
 
-Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidejte **proměnné – zvýšení hodnoty proměnné** akce aplikace logiky. Tato akce funguje pouze s proměnnými celé číslo a plovoucí desetinnou čárkou.
+Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidejte akci **přírůstku** do vaší aplikace logiky. Tato akce funguje pouze s proměnnými Integer a float.
 
-1. V návrháři aplikace logiky, vyberte v části krok, kde chcete navýšit stávající proměnné, **nový krok** > **přidat akci**. 
+1. V návrháři aplikace logiky v kroku, kde chcete zvětšit existující proměnnou vyberte **Nový krok**. 
 
-   Tato aplikace logiky již má například aktivační událost a akce, která vytvoří proměnnou. Ano přidejte novou akci podle těchto kroků:
+   Například tato aplikace logiky již má Trigger a akci, která vytvořila proměnnou. Proto přidejte novou akci pomocí těchto kroků:
 
    ![Přidat akci](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
-   Přidání akce mezi stávající kroky, najeďte myší na šipku připojení tak, aby se zobrazí znaménko plus (+). Vyberte znaménko plus a pak zvolte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus (+). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-2. Do vyhledávacího pole zadejte jako filtr "zvýšení hodnoty proměnné". V seznamu akcí vyberte **proměnné – zvýšení hodnoty proměnné**.
+1. Do vyhledávacího pole zadejte jako filtr "přírůstek proměnné". V seznamu akce vyberte **proměnné-přírůstek proměnná**.
 
-   ![Vyberte akci "Zvýšení hodnoty proměnné"](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
+   ![Vybrat akci zvýšit proměnnou](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 
-3. Zadejte informace pro zvýšení vaší proměnné:
+1. Zadejte tyto informace pro zvýšení vaší proměnné:
 
-   | Vlastnost | Požaduje se | Value |  Popis |
+   | Vlastnost | Požadováno | Value |  Popis |
    |----------|----------|-------|--------------|
-   | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Value | Ne | <*increment-value*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
-   |||| 
+   | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
+   | **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: I když je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
+   ||||
 
-   Příklad: 
-   
+   Příklad:
+
    ![Příklad hodnoty přírůstku](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
-4. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **zvýšení hodnoty proměnné** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON:
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce s **proměnnou přírůstku** zobrazí v definici aplikace logiky, která je ve formátu JSON:
 
 ```json
 "actions": {
@@ -235,68 +233,69 @@ Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým 
 },
 ```
 
-## <a name="example-create-loop-counter"></a>Příklad: Vytvoření čítače cyklů
+## <a name="example-create-loop-counter"></a>Příklad: Vytvořit počítadlo smyčky
 
-Proměnné se obvykle používají pro počet případů, kdy se spustí smyčku počítání. Tento příklad ukazuje, jak vytvořit a používat proměnné pro tuto úlohu tak, že vytvoříte smyčku, která vrátí přílohy v e-mailu.
+Proměnné se běžně používají pro počítání počtu spuštění smyčky. Tento příklad ukazuje, jak vytvořit a používat proměnné pro tuto úlohu vytvořením smyčky, která bude počítat přílohy v e-mailu.
 
-1. Na webu Azure Portal vytvoření prázdné aplikace logiky. Přidání triggeru, který kontroluje nových e-mailu a přílohy. 
+1. V Azure Portal vytvořte prázdnou aplikaci logiky. Přidejte aktivační událost, která kontroluje nové e-maily a přílohy.
 
-   Tento příklad používá Office 365 Outlook aktivační událost pro **při přijetí nového e-mailu**. 
-   Chcete-li vyvolat pouze v případě, že má e-mail přílohy můžete nastavit Tato aktivační událost.
-   Však můžete veškerých konektorů, která kontroluje nových e-mailů s přílohami, jako je například konektor Outlook.com.
+   V tomto příkladu se **při přijetí nového e-mailu**použije trigger Office 365 Outlook. Tuto aktivační událost můžete nastavit tak, aby se aktivovala pouze v případě, že má e-mail přílohy. Můžete ale použít libovolný konektor, který kontroluje nové e-maily s přílohami, jako je konektor Outlook.com.
 
-2. V triggeru, zvolte **zobrazit pokročilé možnosti**. Pokud chcete, aby se aktivační událost kontroly příloh a předat tyto přílohy do pracovních postupů aplikace logiky, vyberte **Ano** pro tyto vlastnosti:
-   
-   * **Má přílohu** 
-   * **Zahrnout přílohy** 
+1. V aktivační události pro kontrolu příloh a předání těchto příloh do pracovního postupu vaší aplikace logiky vyberte **Ano** pro tyto vlastnosti:
 
-   ![Vyhledat a zahrnout přílohy](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
+   * **Má přílohu**
+   * **Zahrnout přílohy**
 
-3. Přidat [ **inicializovat proměnnou** akce](#create-variable). Vytvoření celočíselnou proměnnou s názvem **počet** nulu na začátku počáteční hodnota.
+   ![Kontrolovat a zahrnovat přílohy](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-   ![Přidání akce pro "Inicializovat proměnnou"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
+1. Přidejte akci [ **inicializovat proměnnou** ](#create-variable). Vytvořte celočíselnou proměnnou s `Count` názvem, která má nulovou počáteční hodnotu.
 
-4. K cyklování skrze každou přílohu, přidejte *pro každou* smyčky výběrem **nový krok** > **Další** > **přidat pro každý**.
+   ![Přidat akci pro "inicializovat proměnnou"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-   ![Přidání smyčky "pro každý"](./media/logic-apps-create-variables-store-values/add-loop.png)
+1. Chcete-li procyklovat jednotlivé přílohy, přidejte *pro každou* smyčku.
 
-5. Ve smyčce, klikněte do **vybrat výstup z předchozího postupu** pole. Jakmile se zobrazí v seznamu dynamického obsahu, vyberte **přílohy**. 
+   1. V akci **inicializovat proměnnou** vyberte **Nový krok**.
+
+   1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `for each` jako filtr hledání a **pro každý**vyberte.
+
+      ![Přidejte smyčku For Each.](./media/logic-apps-create-variables-store-values/add-loop.png)
+
+1. Ve smyčce klikněte do pole **vybrat výstup z předchozího postupu** . Až se zobrazí seznam dynamického obsahu, vyberte **přílohy**.
 
    ![Výběr možnosti „Přílohy“](./media/logic-apps-create-variables-store-values/select-attachments.png)
 
-   **Přílohy** předává pole hodnot, která má e-mailové přílohy z výstupu triggeru do smyčku.
+   Vlastnost **Attachments** předá do smyčky pole, které obsahuje přílohy e-mailů z výstupu triggeru.
 
-6. Smyčka "for each" vyberte **přidat akci**. 
+1. V části **pro každou** smyčku vyberte **přidat akci**.
 
-   ![Vyberte "Přidat akci"](./media/logic-apps-create-variables-store-values/add-action-2.png)
+   ![Vyberte přidat akci.](./media/logic-apps-create-variables-store-values/add-action-2.png)
 
-7. Do vyhledávacího pole zadejte jako filtr "zvýšení hodnoty proměnné". Ze seznamu akcí vyberte **proměnné – zvýšení hodnoty proměnné**.
+1. Do vyhledávacího pole zadejte jako filtr "přírůstek proměnné". V seznamu akce vyberte možnost **zvýšit proměnnou**.
 
    > [!NOTE]
-   > Ujistěte se, **zvýšení hodnoty proměnné** akce se zobrazí uvnitř smyčka. Pokud se zobrazí akci mimo smyčku, přetáhněte akce do smyčky.
+   > Ujistěte se, že se v rámci smyčky objeví akce **přírůstku** . Pokud se akce objeví mimo smyčku, přetáhněte akci do smyčky.
 
-8. V **zvýšení hodnoty proměnné** akce, z **název** seznamu, vyberte **počet** proměnné. 
+1. V akci **zvýšit proměnnou** v seznamu **název** vyberte proměnnou **Count** .
 
-   ![Vyberte proměnnou "Počet"](./media/logic-apps-create-variables-store-values/add-increment-variable-example.png)
+   ![Vybrat proměnnou Count](./media/logic-apps-create-variables-store-values/add-increment-variable-example.png)
 
-9. V rámci smyčky přidejte všechny akce, které vám pošle počet příloh. V akci, zahrnují hodnotu z **počet** proměnných, například: 
+1. V rámci smyčky přidejte jakoukoli akci, která vám pošle počet příloh. V akci zahrňte hodnotu z proměnné **Count** , například:
 
-   ![Přidání akce, která odesílá výsledky](./media/logic-apps-create-variables-store-values/send-email-results.png)
+   ![Přidat akci, která odesílá výsledky](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
-10. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**. 
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Pokud vaše aplikace logiky není povolené, v nabídce aplikace logiky, vyberte **přehled**. Na panelu nástrojů zvolte **povolit**. 
+1. Pokud vaše aplikace logiky není povolená, vyberte v nabídce aplikace logiky možnost **Přehled**. Na panelu nástrojů vyberte **Povolit**.
 
-2. Na panelu nástrojů návrháře aplikace logiky zvolte **spustit**. Tímto krokem ručně spustíte svou aplikaci logiky.
+1. Na panelu nástrojů návrháře aplikace logiky vyberte **Spustit**. Tento krok ručně spustí vaši aplikaci logiky.
 
-3. Odeslání e-mailu s přílohami přiřaďte jeden nebo více e-mailový účet, který jste použili v tomto příkladu.
+1. Odešlete e-mail s jednou nebo více přílohami k e-mailovému účtu, který jste použili v tomto příkladu.
 
-   Tento krok spustí trigger aplikace logiky, která vytvoří a spustí instanci pracovního postupu aplikace logiky.
-   V důsledku toho aplikace logiky vám odešle zprávu nebo e-mailu, který zobrazuje počet přílohy v e-mailu, který jste odeslali.
+   Tento krok spustí Trigger aplikace logiky, který vytvoří a spustí instanci pro pracovní postup vaší aplikace logiky. V důsledku toho vám aplikace logiky pošle zprávu nebo e-mail zobrazující počet příloh e-mailů, které jste odeslali.
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob smyčka "for each", zobrazí se **zvýšení hodnoty proměnné** akce v definici aplikace logiky, která je ve formátu JSON.
+Pokud přepínáte z návrháře na Editor zobrazení kódu, zde je způsob, jakým **se v rámci** definice aplikace logiky zobrazí akce **pro každou** smyčku a která je ve formátu JSON.
 
 ```json
 "actions": {
@@ -322,19 +321,19 @@ Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob smyčka 
 
 <a name="decrement-value"></a>
 
-## <a name="decrement-variable"></a>Dekrementuje proměnnou.
+## <a name="decrement-variable"></a>Snížit proměnnou
 
-Ke snížení nebo *snížení* proměnnou podle konstantní hodnoty, postupujte podle kroků pro [zvýšení proměnnou](#increment-value) s tím rozdílem, že můžete najít a vybrat **proměnné – Dekrementuje proměnnou**akce místo. Tato akce funguje pouze s proměnnými celé číslo a plovoucí desetinnou čárkou.
+Chcete *-li proměnnou snížit nebo snížit* pomocí konstantní hodnoty, postupujte podle kroků pro [zvýšení proměnné](#increment-value) s výjimkou toho, že vyhledáte a vyberete akci **snížit proměnnou** . Tato akce funguje pouze s proměnnými Integer a float.
 
-Tady jsou vlastnosti **Dekrementuje proměnnou** akce:
+Tady jsou vlastnosti pro akci **snížení proměnné** :
 
-| Vlastnost | Požaduje se | Value |  Popis |
+| Vlastnost | Požadováno | Value |  Popis |
 |----------|----------|-------|--------------|
-| Name | Ano | <*Název proměnné*> | Název proměnné se sníží | 
-| Value | Ne | <*increment-value*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má snížit | 
+| **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: I když je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky znali určitou hodnotu pro snížení vaší proměnné. |
 ||||| 
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **Dekrementuje proměnnou** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **snížení proměnné** zobrazí v definici aplikace logiky, která je ve formátu JSON.
 
 ```json
 "actions": {
@@ -349,36 +348,34 @@ Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým 
 },
 ```
 
-
 <a name="assign-value"></a>
 
 ## <a name="set-variable"></a>Nastavit proměnnou
 
-Přiřadit jinou hodnotu existující proměnné, postupujte podle kroků pro [zvýšení proměnnou](#increment-value) , které jste s výjimkou: 
+Chcete-li přiřadit jinou hodnotu k existující proměnné, postupujte podle kroků pro [zvýšení proměnné](#increment-value) s výjimkou toho, že:
 
-1. Vyhledejte a vyberte **proměnné – nastavená proměnná** akce místo. 
+1. Místo toho vyhledejte a vyberte akci **nastavit proměnnou** .
 
-2. Zadejte název proměnné a hodnotu, kterou chcete přiřadit. Nová hodnota a proměnná musí mít stejný datový typ.
-Je požadována hodnota, protože tato akce nemá výchozí hodnotu. 
+1. Zadejte název proměnné a hodnotu, kterou chcete přiřadit. Nová hodnota i proměnná musí mít stejný datový typ. Hodnota je povinná, protože tato akce nemá výchozí hodnotu.
 
-Tady jsou vlastnosti **nastavená proměnná** akce:
+Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 
-| Vlastnost | Požaduje se | Value |  Popis | 
-|----------|----------|-------|--------------| 
-| Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Value | Ano | <*new-value*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
+| Vlastnost | Požadováno | Value |  Popis |
+|----------|----------|-------|--------------|
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
 ||||| 
 
 > [!NOTE]
-> Pokud si nejste zvyšování nebo dekrementace proměnné, změna proměnných uvnitř smyčky *může* vytvořit neočekávaným výsledkům, protože smyčky ve výchozím nastavení spouští paralelně nebo souběžně. Pro tyto případy zkuste nastavit smyčku sekvenční spuštění. Například pokud chcete odkazovat na proměnné hodnotu uvnitř smyčka a očekávají, že na začátku a na konci této instance smyčky stejnou hodnotu, použijte následující postup změna jak cyklu: 
+> Pokud nezvyšujete ani nesnižujete proměnné, *může* Změna proměnných uvnitř smyček vznikne neočekávané výsledky, protože smyčky běží paralelně nebo souběžně, ve výchozím nastavení. V těchto případech zkuste nastavit smyčku tak, aby běžela sekvenčně. Například pokud chcete odkazovat na hodnotu proměnné uvnitř smyčky a očekávat stejnou hodnotu na začátku a konci této instance smyčky, postupujte podle těchto kroků a změňte způsob, jakým se spouští smyčka: 
 >
-> 1. V pravém horním rohu vašeho smyčku, zvolte tlačítko se třemi tečkami (...) a klikněte na tlačítko **nastavení**.
+> 1. V pravém horním rohu smyčky vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
 > 
-> 2. V části **řízení souběžnosti**, změnit **přepsat výchozí** nastavení **na**.
+> 2. V části **řízení souběžnosti**změňte **výchozí nastavení přepsat** na **zapnuto**.
 >
-> 3. Přetáhněte **stupeň paralelismu** posuvníku **1**.
+> 3. Přetáhněte jezdec **stupeň paralelismu** na **1**.
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **nastavená proměnná** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON. V tomto příkladu se změní aktuální hodnota proměnné "Počet" s jinou hodnotou. 
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **nastavit proměnnou** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad změní `Count` aktuální hodnotu proměnné na jinou hodnotu.
 
 ```json
 "actions": {
@@ -408,28 +405,26 @@ Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým 
 
 <a name="append-value"></a>
 
-## <a name="append-to-variable"></a>Připojení k proměnné
+## <a name="append-to-variable"></a>Připojit k proměnné
 
-Pro proměnné, které obsahují řetězce nebo pole, můžete vložit nebo *připojit* hodnota proměnné jako poslední položky v tyto řetězce nebo pole. Můžete provést kroky pro [zvýšení proměnnou](#increment-value) s tím rozdílem, že místo toho postupujte takto: 
+Pro proměnné, které ukládají řetězce nebo pole, můžete vložit nebo *připojit* hodnotu proměnné jako poslední položku v těchto řetězcích nebo polích. Můžete postupovat podle kroků pro [zvýšení proměnné](#increment-value) s výjimkou toho, že jste provedete tyto kroky: 
 
-1. Vyhledejte a vyberte jednu z těchto akcí podle toho, jestli vaše proměnná řetězce nebo pole: 
+1. Najděte a vyberte jednu z těchto akcí na základě toho, zda je proměnná řetězec nebo pole: 
 
-   * **Proměnné – připojení k proměnné řetězce**
-   * **Proměnné – připojení k proměnné pole** 
+   * **Připojit k proměnné řetězce**
+   * **Připojit k proměnné pole** 
 
-2. Zadejte hodnotu pro připojení jako poslední položky v řetězce nebo pole. 
-   Tato hodnota se vyžaduje. 
+1. Zadejte hodnotu, která se má připojit jako poslední položka v řetězci nebo poli. Tato hodnota se vyžaduje.
 
-Tady jsou vlastnosti **připojit k...**  akce:
+Tady jsou vlastnosti pro akce **připojit k...** :
 
-| Vlastnost | Požaduje se | Value |  Popis | 
-|----------|----------|-------|--------------| 
-| Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Value | Ano | <*append-value*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 
-|||||  
+| Vlastnost | Požadováno | Value |  Popis |
+|----------|----------|-------|--------------|
+| **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
+| **Hodnota** | Ano | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
+|||||
 
-Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **připojení k proměnné pole** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.
-Tento příklad vytvoří proměnné pole a přidá jako poslední položku v poli jinou hodnotu. Sady výsledků je aktualizované proměnnou, která obsahuje tato pole: `[1,2,3,"red"]` 
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole:`[1,2,3,"red"]`
 
 ```json
 "actions": {
@@ -457,11 +452,6 @@ Tento příklad vytvoří proměnné pole a přidá jako poslední položku v po
 },
 ```
 
-## <a name="get-support"></a>Získat podporu
+## <a name="next-steps"></a>Další kroky
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Další postup
-
-* Další informace o [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o [konektorech Logic Apps](../connectors/apis-list.md)

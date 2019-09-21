@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172973"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172839"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z GitHubu do Azure App Service s průběžnou integrací a nasazením Jenkinse
 
 V tomto kurzu se nasadí Ukázková webová aplikace v jazyce Java z GitHubu do [Azure App Service na Linux](/azure/app-service/containers/app-service-linux-intro) tím, že se nastaví průběžná integrace (CI) a průběžné nasazování (CD) v Jenkinse. Když aplikaci aktualizujete vložením potvrzení do GitHubu, Jenkinse automaticky vytvoří a znovu publikuje vaši aplikaci, aby Azure App Service. Ukázková aplikace v tomto kurzu byla vyvinutá pomocí rozhraní pro [spouštění pružiny](https://projects.spring.io/spring-boot/) . 
 
-![Přehled](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Přehled nasazení GitHubu na Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 V tomto kurzu dokončíte tyto úlohy:
 
@@ -77,7 +77,7 @@ K dokončení tohoto kurzu budete potřebovat tyto položky:
 
 1. [Přihlaste se k úložišti GitHub pro ukázkovou aplikaci pro pružinové spouštění](https://github.com/spring-guides/gs-spring-boot). 
 
-1. V pravém horním rohu GitHubu vyberte rozvětvení.
+1. V pravém horním rohu GitHubu vyberte **rozvětvení**.
 
    ![Ukázkové úložiště pro rozvětvení z GitHubu](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -97,19 +97,19 @@ Pokud chcete, aby nástroj Jenkinse monitoroval GitHub a reagovali, když se nov
 
 1. Na stránce **Spravovat Jenkinse** vyberte **Konfigurovat systém**. 
 
-   ![Konfigurace systému](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Konfigurace systému v Jenkinse](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. V části **GitHub** zadejte podrobnosti pro váš server GitHub. V seznamu **Přidat server GitHub** vyberte **GitHub Server**. 
 
-   ![Přidat server GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Přidání serveru GitHubu v Jenkinse](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Pokud není vybraná vlastnost **Spravovat háky** , vyberte tuto vlastnost. Vyberte **Upřesnit** , abyste mohli zadat další nastavení. 
 
-   ![Pro další nastavení vyberte Upřesnit.](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Zadat Pokročilá nastavení Jenkinse pro server GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. V seznamu **spravovat další akce GitHubu** vyberte **převést přihlašovací jméno a heslo na token**.
 
-   ![Výběr možnosti spravovat další akce GitHubu](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![Převést přihlašovací údaje a heslo na token pro GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. Vyberte **přihlášení a heslo** , abyste mohli zadat své uživatelské jméno a heslo GitHubu. Až to budete mít, vyberte **vytvořit přihlašovací údaje tokenu**. tím se vytvoří [token Pat GitHubu](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
 
@@ -181,11 +181,11 @@ V Jenkinse vytvořte úlohu kanálu pro sestavení a nasazení vaší aplikace.
 
 1. Vraťte se na domovskou stránku Jenkinse a vyberte možnost **Nová položka**. 
 
-   ![Vyberte "Nové položky"](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Vytvoření kanálu Jenkinse](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. Zadejte název úlohy kanálu, například "My-Java-Web-App" a vyberte **kanál**. V dolní části vyberte **OK**.  
 
-   ![Vyberte kanál.](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Pojmenování úlohy kanálu Jenkinse](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Nastavte si Jenkinse s instančním objektem, aby se Jenkinse mohla nasadit do Azure bez použití vlastních přihlašovacích údajů.
 
@@ -199,7 +199,7 @@ V Jenkinse vytvořte úlohu kanálu pro sestavení a nasazení vaší aplikace.
       WEB_APP=yourWebAppName
       ```
 
-      ![Vyberte možnost Příprava prostředí pro běh a nastavte proměnné prostředí.](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Příprava prostředí pro spuštění a nastavení proměnných prostředí](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
@@ -254,7 +254,7 @@ Nyní zadejte skript sestavení a nasazení, který má Jenkinse použít.
 
 1. V Jenkinse vyberte dříve vytvořenou úlohu kanálu. 
 
-   ![Výběr úlohy kanálu pro webovou aplikaci](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Výběr úlohy kanálu Jenkinse pro webovou aplikaci](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. V nabídce vlevo vyberte **Konfigurovat**.
 
@@ -272,7 +272,7 @@ Nyní zadejte skript sestavení a nasazení, který má Jenkinse použít.
 
    Až budete hotovi, vaše definice kanálu bude vypadat jako v tomto příkladu: 
 
-   ![Kanál bodu na skriptu](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Nasměrujte svůj kanál Jenkinse ve skriptu](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 

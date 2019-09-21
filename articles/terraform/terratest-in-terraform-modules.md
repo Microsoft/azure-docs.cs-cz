@@ -1,5 +1,5 @@
 ---
-title: Moduly Terraformu v Azure můžete testovat pomocí Terratest
+title: Testování modulů Terraformu v Azure pomocí Terratest
 description: Zjistěte, jak pomocí Terratestu testovat moduly Terraformu.
 services: terraform
 ms.service: azure
@@ -8,49 +8,49 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 03/19/2019
-ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 637bb01bff625989e392d5d711ebd5cdef5c0e09
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888367"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169629"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Moduly Terraformu v Azure můžete testovat pomocí Terratest
+# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testování modulů Terraformu v Azure pomocí Terratest
 
 > [!NOTE]
-> Ukázkový kód v tomto článku nebude fungovat s verzí 0,12 (a vyšší).
+> Vzorový kód v tomto článku nepracuje s verzí 0,12 (a vyšší).
 
-Můžete použít moduly Terraformu pro Azure k vytvoření opakovaně použitelné, sestavitelný a možností intenzivního testování součástí. Moduly Terraformu začlenit zapouzdření, které jsou užitečné při implementaci infrastruktury jako kódu procesy.
+Moduly Azure Terraformu můžete použít k vytvoření opakovaně použitelných, sestavitelných a testovatelné komponent. Terraformu moduly zahrnují zapouzdření, které je užitečné při implementaci infrastruktury jako procesů kódu.
 
-Je důležité při vytváření modulů Terraformu implementovat kontroly kvality. Bohužel omezené dokumentace je k dispozici vysvětlují, jak si můžete vytvořit testy jednotky a integrace v modulů Terraformu. Tento kurz představuje testovací infrastruktury a osvědčené postupy, které jsme přijali, když jsme vytvořili naši [moduly Terraformu pro Azure](https://registry.terraform.io/browse?provider=azurerm).
+Je důležité implementovat zabezpečování kvality při vytváření Terraformu modulů. K dispozici je bohužel omezená dokumentace, která vysvětluje, jak vytvářet testy jednotek a testy integrace v Terraformuch modulech. V tomto kurzu se seznámíte s infrastrukturou testování a osvědčenými postupy, které jsme přijali, když jsme vytvořili naše [moduly Azure terraformu](https://registry.terraform.io/browse?provider=azurerm).
 
-Jsme se podívali na vše nejoblíbenější testování infrastruktury a vyberte možnost [Terratest](https://github.com/gruntwork-io/terratest) má použít pro testování naše moduly Terraformu. Terratest se implementuje jako knihovna Go. Terratest poskytuje kolekce pomocných funkcí a vzory pro běžnou infrastrukturu testování úkoly, jako je zasílání požadavků HTTP a přístup k určitému virtuálnímu počítači pomocí SSH. Následující seznam popisuje některé hlavní výhody používání Terratest:
+Prohledali jsme všechny nejoblíbenější testovací infrastruktury a zvolili [Terratest](https://github.com/gruntwork-io/terratest) pro testování našich terraformu modulů. Terratest se implementuje jako knihovna Go. Terratest poskytuje kolekci pomocných funkcí a vzorů pro běžné úlohy testování infrastruktury, jako je vytváření požadavků HTTP a používání SSH pro přístup k určitému virtuálnímu počítači. Následující seznam popisuje některé z hlavních výhod používání Terratest:
 
-- **Poskytuje pohodlné pomocné rutiny ke kontrole infrastruktury**. Tato funkce je užitečná v případě, že chcete ověřit skutečnou infrastrukturu ve skutečném prostředí.
-- **Struktura složky je uspořádaný jasně**. Testovací případy jsou uspořádány jasně a postupujte podle [standardní strukturu složek modulů Terraformu](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
-- **Všechny testovací případy jsou napsané v cestách**. Většina vývojářů, kteří používají Terraformu jsou vývojáře v Go. Pokud jste vývojář, Go, není nutné další použití Terratest jiném programovacím jazyce. Navíc jsou jenom závislosti, které jsou požadovány pro spuštění testovacích případů v Terratest Go a Terraformu.
-- **Infrastruktuře je velmi dobře rozšiřitelná**. Můžete rozšířit další funkce nad rámec Terratest, včetně funkce specifické pro Azure.
+- **Poskytuje pohodlným pomocníkům pro kontrolu infrastruktury**. Tato funkce je užitečná v případě, že chcete ověřit skutečnou infrastrukturu ve skutečném prostředí.
+- **Struktura složek je jasně uspořádaná**. Vaše testovací případy jsou uspořádány jasně a řídí [standardní strukturu složek modulu terraformu](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
+- **Všechny testovací případy jsou zapsané v cestách**. Většina vývojářů, kteří používají Terraformu, patří vývojářům. Pokud jste vývojář, nemusíte se učit s jiným programovacím jazykem, abyste mohli používat Terratest. Také jediné závislosti, které jsou požadovány pro spuštění testovacích případů v Terratest, jsou Terraformu.
+- **Infrastruktura je vysoce rozšiřitelná**. Další funkce můžete roztáhnout nad Terratest, včetně funkcí specifických pro Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek praktické je nezávislá na platformě. Příklady kódu, které používáme v tomto článku můžete spustit na Windows, Linux nebo MacOS. 
+Tento praktický článek je nezávislý na platformě. Příklady kódu, které používáme v tomto článku, můžete spustit v systému Windows, Linux nebo MacOS. 
 
 Než začnete, nainstalujte následující software:
 
-- **Přejděte programovací jazyk**: Terraform testovací případy jsou napsané v [Přejít](https://golang.org/dl/).
+- **Programovací jazyk**, který je na cestách: Testovací případy terraformu jsou zapsané v [cestách](https://golang.org/dl/).
 - **dep:** [dep](https://github.com/golang/dep#installation) je nástroj pro správu závislostí pro Go.
-- **Azure CLI**: [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování pomocí instančního objektu v Azure nebo [prostřednictvím rozhraní příkazového řádku Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
-- **Obrázek**: Používáme [spustitelné bitové kopii](https://github.com/magefile/mage/releases) až vám ukážeme, jak můžete zjednodušit spuštěné Terratest případy. 
+- **Azure CLI**: [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku, který můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování v Azure prostřednictvím instančního objektu nebo [prostřednictvím rozhraní příkazového řádku Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html))
+- **Mage**: Pomocí spustitelného [souboru Mage](https://github.com/magefile/mage/releases) vám ukážeme, jak zjednodušit spuštění Terratest případů. 
 
 ## <a name="create-a-static-webpage-module"></a>Vytvoření modulu statického webu
 
-V tomto kurzu vytvoříte modul Terraform, který zřídí statickou webovou stránku tak, že nahrajete soubor HTML do objektu blob Azure Storage. Tento modul poskytuje uživatelům z celého světa přístup na webovou stránku prostřednictvím adresy URL, která vrací modulu.
+V tomto kurzu vytvoříte modul Terraformu, který zřídí statickou webovou stránku, a to nahráním jednoho souboru HTML do objektu blob Azure Storage. Tento modul poskytuje uživatelům přístup k webové stránce z celého světa prostřednictvím adresy URL, kterou modul vrací.
 
 > [!NOTE]
-> Vytvořte všechny soubory, které jsou popsané v této části v rámci vaší [GOPATH](https://github.com/golang/go/wiki/SettingGOPATH) umístění.
+> Vytvořte všechny soubory popsané v této části v umístění [gopath tak](https://github.com/golang/go/wiki/SettingGOPATH) .
 
-Nejprve vytvořte novou složku s názvem `staticwebpage` pod GoPath `src` složky. Celková struktura složek tohoto kurzu je uvedeno v následujícím příkladu. Soubory označené hvězdičkou `(*)` jsou primární fokus v této části.
+Nejprve vytvořte novou složku s názvem `staticwebpage` ve složce gopath tak. `src` V následujícím příkladu je uvedena celková struktura složek tohoto kurzu. Soubory označené hvězdičkou `(*)` jsou hlavním fokusem v této části.
 
 ```
  📁 GoPath/src/staticwebpage
@@ -70,7 +70,7 @@ Nejprve vytvořte novou složku s názvem `staticwebpage` pod GoPath `src` slož
    └ 📄 variables.tf (*)
 ```
 
-Statická webová stránka modul přijímá třemi vstupy. Vstupy jsou deklarovány v `./variables.tf`:
+Modul statických webových stránek přijímá tři vstupy. Vstupy jsou deklarovány v `./variables.tf`:
 
 ```hcl
 variable "location" {
@@ -87,7 +87,7 @@ variable "html_path" {
 }
 ```
 
-Jak už jsme zmínili výše v tomto článku, tento modul vypíše adresu URL, která je deklarována v `./outputs.tf`:
+Jak už jsme uvedli v článku, tento modul také výstupuje adresu URL, která je deklarována v `./outputs.tf`:
 
 ```hcl
 output "homepage_url" {
@@ -95,11 +95,11 @@ output "homepage_url" {
 }
 ```
 
-Hlavní logika modulu zřizuje čtyři prostředky:
-- **Skupina prostředků**: Název skupiny prostředků je `website_name` vstup doplněno `-staging-rg`.
-- **Účet úložiště**: Název účtu úložiště je `website_name` vstup doplněno `data001`. Dodržovat omezení název účtu úložiště, modul odebere všechny speciální znaky a používá malá písmena v názvu účtu celého úložiště.
-- **Oprava název kontejneru**: Kontejner má název `wwwroot` a je vytvořen v účtu úložiště.
-- **jeden soubor HTML**: Je pro čtení ze souboru HTML `html_path` vstup a nahráli do `wwwroot/index.html`.
+Hlavní logika modulu zřídí čtyři prostředky:
+- **Skupina prostředků**: Název skupiny prostředků je `website_name` vstup připojený pomocí. `-staging-rg`
+- **účet úložiště**: Název účtu úložiště je `website_name` vstup připojený pomocí. `data001` Aby se v souladu s omezeními názvů účtu úložiště, modul odstraní všechny speciální znaky a v celém názvu účtu úložiště použije malá písmena.
+- **kontejner s pevným názvem**: Kontejner se nazývá `wwwroot` a je vytvořen v účtu úložiště.
+- **jeden soubor HTML**: Soubor HTML se načte ze `html_path` vstupu a nahraje do. `wwwroot/index.html`
 
 Logika modulu statického webu se implementuje v souboru `./main.tf`:
 
@@ -137,11 +137,11 @@ resource "azurerm_storage_blob" "homepage" {
 
 ### <a name="unit-test"></a>Test jednotek
 
-Terratest je určená pro testy integrace. Pro tento účel zřídí Terratest skutečné prostředky ve skutečných prostředí. Integrace testovací úlohy v některých případech může být mimořádně velkou, zejména v případě, že máte velké množství prostředků ke zřízení. Logika, která převede názvy účtů úložiště, které označujeme v předchozí části je typickým příkladem. 
+Terratest je navržen pro integrační testy. Pro tento účel Terratest zřídí reálné prostředky v reálném prostředí. V některých případech se může stát, že úlohy integračních testů budou velmi velké, zejména pokud máte velký počet prostředků ke zřízení. Dobrým příkladem je logika, která převede názvy účtů úložiště, na které odkazujeme v předchozí části. 
 
-Ale nemusíme skutečně zřiďte všechny prostředky. Chceme ověřte správnost pojmenování způsob převodu. Díky flexibilitě Terratest můžeme pomocí testů jednotek. Testování jednotek je místní spouštění testovacích případů (i když se vyžaduje přístup k Internetu). Spustit testovací případy jednotek `terraform init` a `terraform plan` příkazy parsovat výstup `terraform plan` a vyhledejte hodnoty atributů pro porovnání.
+Ale opravdu nepotřebujeme zřídit žádné prostředky. Chceme mít jistotu, že logika převodu názvů je správná. Díky flexibilitě Terratest můžeme použít jednotkové testy. Testy jednotek jsou místní běžící testovací případy (i když je vyžadován přístup k Internetu). Testové případy jednotek `terraform init` jsou `terraform plan` `terraform plan` spouštěny a příkazy k analýze výstupu a hledání hodnot atributů k porovnání.
 
-Zbývající část popisuje, jak používáme Terratest provádět testování částí, abyste měli jistotu, že je správný logikou používanou k převodu názvy účtů úložiště. Nás zajímá jenom v souborech s hvězdičkou `(*)`.
+Zbytek této části popisuje, jak používáme Terratest k implementaci testu jednotek, abyste se ujistili, že logika používaná k převodu názvů účtů úložiště je správná. Zajímá Vás pouze soubory označené hvězdičkou `(*)`.
 
 ```
  📁 GoPath/src/staticwebpage
@@ -161,9 +161,9 @@ Zbývající část popisuje, jak používáme Terratest provádět testování 
    └ 📄 variables.tf
 ```
 
-Nejprve používáme prázdný HTML soubor s názvem `./test/fixtures/storage-account-name/empty.html` jako zástupný symbol.
+Nejprve použijeme prázdný soubor HTML s názvem `./test/fixtures/storage-account-name/empty.html` jako zástupný symbol.
 
-Soubor `./test/fixtures/storage-account-name/main.tf` je rámec testovacího případu. Přijímá jeden vstup, `website_name`, což je také vstup jednotkové testy. Logika je znázorněna zde:
+Soubor `./test/fixtures/storage-account-name/main.tf` je snímkem testovacího případu. Přijímá jeden vstup, `website_name`, což je také vstup testů jednotek. Tady je zobrazená logika:
 
 ```hcl
 variable "website_name" {
@@ -178,17 +178,17 @@ module "staticwebpage" {
 }
 ```
 
-Hlavní součásti je provádění testů jednotek v `./test/storage_account_name_unit_test.go`.
+Hlavní součástí je implementace testů jednotek v `./test/storage_account_name_unit_test.go`.
 
-Přejděte vývojáři pravděpodobně si všimnout, že Jednotkový test shoduje se signaturou classic testovací funkce přejít tak, že přijímá argument typu `*testing.T`.
+V případě vývojářů je pravděpodobné, že test jednotky odpovídá Signature funkce klasického testu, přijímá argument typu `*testing.T`.
 
-V těle test jednotky, budeme mít celkem pět případů, které jsou definovány v proměnné `testCases` (`key` jako vstup a `value` jako očekávaný výstup). Pro každý testovací případ jednotka nejdřív provozujeme `terraform init` a cílit na složce testovací přípravek (`./test/fixtures/storage-account-name/`). 
+V těle testu jednotek máme celkem pět případů, které jsou definovány v proměnné `testCases` (`key` jako vstup a `value` jako očekávaný výstup). Pro každý testovací případ jednotky nejprve spustíte `terraform init` a zacílíte na testovací přípravnou složku (`./test/fixtures/storage-account-name/`). 
 
-Další, `terraform plan` příkaz, který používá vstupu pro konkrétní testovací případ (podívejte se na `website_name` definice v `tfOptions`) ukládá výsledek, který má `./test/fixtures/storage-account-name/terraform.tfplan` (které nejsou uvedené v celková struktura složek).
+Dále příkaz, který používá konkrétní vstup testovacího případu (podívejte `website_name` se na definici v `tfOptions`), uloží výsledek do `./test/fixtures/storage-account-name/terraform.tfplan` (není uvedeno v celkové struktuře složek). `terraform plan`
 
-Tento soubor s výsledky je analyzován kód čitelné struktury pomocí oficiální plán analyzátoru Terraformu.
+Tento soubor výsledku se analyzuje do struktury čitelné kódem pomocí oficiálního analyzátoru plánu Terraformu.
 
-Teď se podíváme pro atributy, které nás zajímá (v tomto případě `name` z `azurerm_storage_account`) a porovnávat výsledky s očekávaný výstup:
+Teď se podíváme na atributy, které vás zajímají (v tomto případě `name` `azurerm_storage_account`z), a porovnejte výsledky s očekávaným výstupem:
 
 ```go
 package test
@@ -264,13 +264,13 @@ GoPath/src/staticwebpage/test$ az login    # Required when no service principal 
 GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
 ```
 
-Tradiční výsledek testu Go vrátí přibližně minutu.
+Výsledek testu tradičního přechodu se vrátí přibližně minutu.
 
 ### <a name="integration-test"></a>Integrační test
 
-Na rozdíl od testování částí musí testy integrace zřizovat prostředky do reálného prostředí pro perspektivu začátku do konce. Terratest odvádí dobrou práci, tento typ úlohy. 
+Na rozdíl od testování částí musí testy integrace zřídit prostředky do reálného prostředí pro ucelenou perspektivu. Terratest je dobrým úkolem s tímto druhem úlohy. 
 
-Osvědčené postupy pro moduly Terraformu zahrnovat instalaci `examples` složky. `examples` Složka obsahuje některé ukázky začátku do konce. Vyhněte se práce s reálná data, případně proč bezpečná není testovacích tyto ukázky jako integrační testy? V této části se zaměříme na tři soubory, které jsou označeny hvězdičkou `(*)` ve struktuře následující složky:
+Mezi osvědčené postupy pro moduly terraformu patří `examples` instalace složky. `examples` Složka obsahuje několik komplexních ukázek. Chcete-li se vyhnout práci s reálnými daty, netestujte tyto ukázky jako integrační testy? V této části se zaměříme na tři soubory označené hvězdičkou `(*)` v následující struktuře složek:
 
 ```
  📁 GoPath/src/staticwebpage
@@ -290,7 +290,7 @@ Osvědčené postupy pro moduly Terraformu zahrnovat instalaci `examples` složk
    └ 📄 variables.tf
 ```
 
-Začněme s ukázkami. Nové ukázkové složky s názvem `hello-world/` se vytvoří v `./examples/` složky. Tady, zajišťuje jednoduché stránky HTML k odeslání: `./examples/hello-world/index.html`.
+Pojďme začít s ukázkami. Ve složce se vytvoří nová ukázková složka s názvem `hello-world/`. `./examples/` Tady poskytujeme jednoduchou stránku HTML, která se má nahrát: `./examples/hello-world/index.html`.
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +306,7 @@ Začněme s ukázkami. Nové ukázkové složky s názvem `hello-world/` se vytv
 </html>
 ```
 
-Ukázka Terraformu `./examples/hello-world/main.tf` je podobný tomu vidíte v testu jednotek. Je jedním z největších rozdílů: Ukázka také vytiskne URL nahrané HTML jako webovou stránku s názvem `homepage`.
+Ukázka `./examples/hello-world/main.tf` terraformu je podobná té, která je znázorněna v testu jednotky. Existuje jeden značný rozdíl: Ukázka také vytiskne adresu URL nahraného HTML jako webovou stránku s názvem `homepage`.
 
 ```hcl
 variable "website_name" {
@@ -325,11 +325,11 @@ output "homepage" {
 }
 ```
 
-Používáme Terratest a classic přejděte testování funkcí znovu v integraci soubor testu `./test/hello_world_example_test.go`.
+V souboru `./test/hello_world_example_test.go`integračního testu používáme znovu funkce Terratest a klasického testu.
 
-Na rozdíl od testování částí vytvořte testy integrace skutečných prostředků v Azure. To je důvod, proč potřebujete mít na paměti, aby předešel konfliktům. (Věnujte zvláštní pozornost některá globálně jedinečných názvů jako názvy účtů úložiště.) Prvním krokem testovací logiku tedy generovat náhodnými `websiteName` pomocí `UniqueId()` funkce poskytované Terratest. Tato funkce generuje náhodný název, který obsahuje malá písmena, velká písmena nebo číslice. `tfOptions` Díky všechny příkazy Terraformu, které se zaměřují `./examples/hello-world/` složky. Je také zajišťuje, že `website_name` je nastaveno náhodného `websiteName`.
+Na rozdíl od jednotkových testů vytváří integrační testy v Azure skutečné prostředky. To je důvod, proč musíte být opatrní, abyste se vyhnuli konfliktům při pojmenovávání. (Věnujte zvláštní pozornost některým globálně jedinečným názvům, jako jsou názvy účtů úložiště.) Proto první krok testovací logiky je vygenerování náhodného `websiteName` `UniqueId()` pomocí funkce, kterou poskytuje Terratest. Tato funkce generuje náhodný název, který obsahuje malá písmena, Velká písmena nebo číslice. `tfOptions`zpřístupňuje všechny příkazy terraformu, které `./examples/hello-world/` cílí na složku. Také je zajištěno, `website_name` že je nastavena na `websiteName`náhodný.
 
-Následně se postupně spustí příkazy `terraform init`, `terraform apply` a `terraform output`. Můžeme použít další pomocná funkce, `HttpGetWithCustomValidation()`, která poskytuje Terratest. Abyste měli jistotu, že HTML se nahraje do výstupu používáme pomocnou funkci `homepage` adresu URL, která je vrácena `terraform output`. Porovnáme stavový kód HTTP GET s `200` a hledat klíčová slova v kódu HTML obsahu. Nakonec se s využitím funkce `defer` jazyka Go zajistí spuštění příkazu `terraform destroy`.
+Následně se postupně spustí příkazy `terraform init`, `terraform apply` a `terraform output`. Používáme další pomocnou funkci `HttpGetWithCustomValidation()`, která je k dispozici v Terratest. Pomocná funkce používáme k zajištění, aby se kód HTML nahrál na `homepage` výstupní adresu URL, kterou `terraform output`vrátí. Porovnáváme stavový kód HTTP s `200` a vyhledejte některá klíčová slova v obsahu HTML. Nakonec se s využitím funkce `defer` jazyka Go zajistí spuštění příkazu `terraform destroy`.
 
 ```go
 package test
@@ -373,7 +373,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
 }
 ```
 
-Ke spuštění testů integrace, proveďte následující kroky na příkazovém řádku:
+Chcete-li spustit testy integrace, proveďte následující kroky na příkazovém řádku:
 
 ```shell
 $ cd [Your GoPath]/src/staticwebpage
@@ -385,20 +385,20 @@ GoPath/src/staticwebpage/test$ az login    # Required when no service principal 
 GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
 ```
 
-Tradiční výsledek testu Go vrátí během dvou minut. Testování částí a integrační testy můžete spustit také spuštěním těchto příkazů:
+Výsledek testu tradičního přechodu se vrátí přibližně po dobu dvou minut. Můžete také spustit testy jednotek i integrační testy spuštěním těchto příkazů:
 
 ```shell
 GoPath/src/staticwebpage/test$ go fmt
 GoPath/src/staticwebpage/test$ go test
 ```
 
-Integrační testy trvat déle než testování částí (dvě minuty pro jeden případ integrace porovnání na jednu minutu pro pět případy jednotek). Ale je rozhodnout, zda se má použití jednotkových testů nebo integrační testy ve scénáři. Obvykle nám dávají přednost používání testování částí pro komplexní logiku pomocí Terraformu HCL funkcí. Obvykle používáme integrační testy pro perspektivu začátku do konce uživatele.
+Testy integrace mají mnohem déle než testy jednotek (dvě minuty pro jeden případ integrace v porovnání s jednou minutou pro pět jednotek). Ale jedná se o vaše rozhodnutí, jestli chcete ve scénáři použít testy jednotek nebo testy integrace. Obvykle doporučujeme používat testy jednotek pro komplexní logiku pomocí funkcí Terraformu HCL. Pro koncovou perspektivu uživatele obvykle používáme testy Integration.
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>Zjednodušení spouštění případů Terraformu s využitím nástroje mage 
 
-Spouštění testovacích případů ve službě Azure Cloud Shell není snadný úkol. Budete muset přejít k různým adresářům a spouštět různé příkazy. Abyste se vyhnuli použití Cloud Shell, v našem projektu zavedeme systém sestavení. V této části jsme systém sestavení Go, Ndex bitové kopie, použít pro úlohu.
+Spuštění testovacích případů v Azure Cloud Shell není jednoduchý úkol. Musíte přejít do různých adresářů a spustit jiné příkazy. Chcete-li se vyhnout použití Cloud Shell, zavádíme v našem projektu systém sestavení. V této části používáme pro úlohu systém sestavení na cestách, Mage.
 
-Jediné, co vyžaduje Ndex bitové kopie je `magefile.go` v kořenovém adresáři vašeho projektu (označené `(+)` v následujícím příkladu):
+Jediná věc požadovaná Mage je `magefile.go` v kořenovém adresáři vašeho projektu ( `(+)` označená v následujícím příkladu):
 
 ```
  📁 GoPath/src/staticwebpage
@@ -419,12 +419,12 @@ Jediné, co vyžaduje Ndex bitové kopie je `magefile.go` v kořenovém adresá�
    └ 📄 variables.tf
 ```
 
-Tady je příklad `./magefile.go`. V tento skript sestavení, napsané v cestách můžeme implementovat pět kroků sestavení:
-- `Clean`: V kroku odebere všechny generované a dočasné soubory, které jsou generovány během provádění testů.
-- `Format`: Je krok spuštěn `terraform fmt` a `go fmt` k formátování vašeho základu kódu.
-- `Unit`: V kroku spustí všechny testy jednotek (s použitím konvence název funkce `TestUT_*`) v části `./test/` složky.
-- `Integration`: Krok je podobný `Unit`, ale místo testování částí se provede integrační testy (`TestIT_*`).
-- `Full`: Je krok spuštěn `Clean`, `Format`, `Unit`, a `Integration` postupně.
+Tady je příklad `./magefile.go`. V tomto skriptu sestavení, který je napsán v cestách, implementujeme pět kroků sestavení:
+- `Clean`: Krok odebere všechny generované a dočasné soubory, které jsou generovány při spuštění testu.
+- `Format`: Krok se spustí `terraform fmt` a `go fmt` naformátuje základ kódu.
+- `Unit`: Krok spustí všechny testy jednotek (pomocí konvence `TestUT_*`názvů funkcí) `./test/` ve složce.
+- `Integration`: Tento krok je podobný `Unit`, ale místo testování částí provádí integrační testy (`TestIT_*`).
+- `Full`: Krok se spouští `Clean`, `Format`, `Unit`a `Integration` v pořadí.
 
 ```go
 // +build mage
@@ -501,7 +501,7 @@ func Clean() error {
 }
 ```
 
-Můžete použít následující příkazy k provedení úplné testovací sady. Kód je podobný spuštěné kroky, které jsme použili v předchozí části. 
+K provedení úplné sady testů můžete použít následující příkazy. Kód je podobný spuštěným postupům, které jsme použili v předchozí části. 
 
 ```shell
 $ cd [Your GoPath]/src/staticwebpage
@@ -512,15 +512,15 @@ GoPath/src/staticwebpage$ az login    # Required when no service principal envir
 GoPath/src/staticwebpage$ mage
 ```
 
-Poslední příkazového řádku můžete nahradit mage další kroky. Například můžete použít `mage unit` nebo `mage clean`. Je vhodné vložit `dep` příkazy a `az login` v magefile. Nezobrazovat jsme sem kód. 
+Poslední příkazový řádek můžete nahradit dalšími kroky Mage. Například můžete použít `mage unit` nebo `mage clean`. Je vhodné vkládat `dep` příkazy a `az login` v magefile. Kód zde nezobrazujeme. 
 
-S Ndex bitové kopie může také sdílet kroky pomocí systému balíček Go. V takovém případě můžete zjednodušit magefiles přes všechny moduly odkazující na běžnou implementaci a deklarační popisovač závislosti (`mg.Deps()`).
+Pomocí Mage můžete také nasdílet kroky pomocí systému balíčku nástroje. V takovém případě je možné zjednodušit magefiles napříč všemi moduly tím, že odkazují jenom na běžnou implementaci a deklarujete`mg.Deps()`závislosti ().
 
-**Volitelné: Nastavení služby instančního objektu prostředí proměnných pro spouštění testů přijetí**
+**Volitelné Nastavení proměnných prostředí instančních objektů pro spuštění testů přijetí**
  
-Místo spouštění `az login` před testy, můžete dokončit ověřování Azure nastavením proměnné prostředí instančního objektu služby. Publikuje Terraform [seznam názvů proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Povinné jsou pouze první čtyři z těchto proměnných prostředí.) Terraform, publikuje také podrobné pokyny, které vysvětlují, jak [získat hodnotu z těchto proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
+Místo spuštění `az login` před testy můžete dokončit ověřování Azure nastavením proměnných prostředí instančního objektu. Terraformu publikuje [seznam názvů proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Povinné jsou pouze první čtyři z těchto proměnných prostředí.) Terraformu také zveřejňuje podrobné pokyny, které vysvětlují, jak [získat hodnotu těchto proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o Terratest, najdete v článku [stránku Githubu Terratest](https://github.com/gruntwork-io/terratest).
-* Informace o bitové kopii, najdete v článku [stránku Githubu mage](https://github.com/magefile/mage) a [mage webu](https://magefile.org/).
+* Další informace o Terratest najdete na [stránce GitHubu Terratest](https://github.com/gruntwork-io/terratest).
+* Informace o Mage najdete na [stránce GitHubu Mage](https://github.com/magefile/mage) a na [webu Mage](https://magefile.org/).

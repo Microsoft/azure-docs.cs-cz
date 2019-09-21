@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: 5e342418dc6cc9ed0a3bbbfaad42801d5ffe9e9d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900244"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173781"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora virtuálních počítačů 2. generace (Preview) v Azure
 
@@ -49,7 +49,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Mv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * Řady [NCv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) a [NCv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [Řada KS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [NVv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Image virtuálních počítačů 2. generace v Azure Marketplace
 
@@ -80,7 +80,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
-| Spouštění             | PCAT                      | UEFI                               |
+| Spustit             | PCAT                      | UEFI                               |
 | Řadiče disku | IDE – integrované vývojové prostředí                       | SCSI                               |
 | Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
@@ -88,12 +88,13 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 | Funkce | Generace 1 | Generace 2 |
 |------------|--------------|--------------|
-| Disk s operačním systémem > 2 TB                    | znak                        | :heavy_check_mark: |
-| Vlastní disk/image/prohození operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |
-| Podpora sady škálování virtuálních počítačů | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/záloha                        | :heavy_check_mark:         | znak                |
-| Galerie sdílených imagí              | :heavy_check_mark:         | znak                |
-| Azure Disk Encryption             | :heavy_check_mark:         | znak                |
+| Disk s operačním systémem > 2 TB                    | znak                | :heavy_check_mark: |
+| Vlastní disk/image/prohození operačního systému         | :heavy_check_mark: | :heavy_check_mark: |
+| Podpora sady škálování virtuálních počítačů | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | znak                |
+| Zálohování a obnovení                    | :heavy_check_mark: | :heavy_check_mark: |
+| Galerie sdílených imagí              | :heavy_check_mark: | znak                |
+| Azure Disk Encryption             | :heavy_check_mark: | znak                |
 
 ## <a name="creating-a-generation-2-vm"></a>Vytvoření virtuálního počítače 2. generace
 
@@ -101,14 +102,37 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-`windowsserver-gen2preview` Nabídka obsahuje jenom image Windows generace 2. Toto balení zabraňuje nejasnostem mezi 1. generace a imagemi 2. generace. Pokud chcete vytvořit virtuální počítač 2. generace, vyberte z této nabídky **Image** a při vytváření virtuálního počítače použijte standardní proces.
+#### <a name="azure-portal"></a>portál Azure
 
-V současné době Marketplace nabízí následující image Windows generace 2:
+Image generace 2 pro Windows a SLES jsou součástí stejné nabídky serveru jako image Gen1. Z hlediska toků to znamená, že vyberete nabídku a SKU z portálu pro váš virtuální počítač. Pokud SKU podporuje jak image generace 1, tak i generace 2, můžete vybrat vytvoření virtuálního počítače generace 2 z karty *Upřesnit* v toku vytváření virtuálních počítačů.
 
-* 2019-datacenter-gen2
-* 2016-datacenter-gen2
-* 2012-r2-datacenter-gen2
-* 2012-datacenter-gen2
+V současné době následující SKU podporují image generace 1 i generace 2:
+
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows Server 2016
+* Windows Server. 2019
+
+Když jako nabídku vyberete SKU Windows serveru, na kartě **Upřesnit** máte možnost vytvořit virtuální počítač s identifikátorem **1.1** nebo **Gen 2** (UEFI). Pokud vyberete **Obecné 2**, ujistěte se, že velikost virtuálního počítače vybraná na kartě **základy** se [podporuje pro virtuální počítače generace 2](#generation-2-vm-sizes).
+
+![Vyberte virtuální počítač 1. generace 2 nebo 2. generace.](./media/generation-2/gen1-gen2-select.png)
+
+#### <a name="powershell"></a>PowerShell
+
+PowerShell můžete také použít k vytvoření virtuálního počítače přímo odkazující na generaci SKU 1 nebo 2. generace.
+
+Pomocí následující rutiny prostředí PowerShell můžete například získat seznam SKU v `WindowsServer` nabídce.
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Pokud vytváříte virtuální počítač s Windows Serverem 2012 jako operačním systémem, vyberete buď SKLADOVOU položku virtuálního počítače 1. generace (BIOS) nebo generace 2 (UEFI), což bude vypadat takto:
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
 
 V části [funkce a možnosti](#features-and-capabilities) najdete aktuální seznam podporovaných imagí na webu Marketplace.
 
@@ -116,7 +140,7 @@ V části [funkce a možnosti](#features-and-capabilities) najdete aktuální se
 
 Virtuální počítač 2. generace můžete vytvořit ze spravované bitové kopie nebo spravovaného disku stejným způsobem, jako byste vytvořili virtuální počítač 1. generace.
 
-### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
+### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtual Machine Scale Sets. V Azure CLI použijte Azure Scale Sets k vytvoření virtuálních počítačů 2. generace.
 
@@ -131,7 +155,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 * **Mám soubor. VHD z místního virtuálního počítače 2. generace. Můžu soubor. VHD použít k vytvoření virtuálního počítače generace 2 v Azure?**
   Ano, můžete přenést soubor. VHD generace 2 do Azure a použít ho k vytvoření virtuálního počítače 2. generace. K tomu použijte následující postup:
     1. Nahrajte soubor. VHD do účtu úložiště ve stejné oblasti, ve které chcete vytvořit virtuální počítač.
-    1. Vytvořte spravovaný disk ze souboru. VHD. Vlastnost generování HyperV nastavte na v2. Při vytváření spravovaného disku byly nastaveny následující příkazy prostředí PowerShell.
+    1. Vytvořte spravovaný disk ze souboru. VHD. Nastavte vlastnost generace technologie Hyper-V na hodnotu v2. Následující příkazy PowerShellu při vytváření spravovaného disku nastavily vlastnost generace technologie Hyper-V.
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>

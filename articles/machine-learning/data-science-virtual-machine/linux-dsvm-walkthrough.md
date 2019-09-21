@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208292"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170697"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
@@ -30,7 +30,7 @@ Než budete moct použít DSVM pro Linux, musíte mít následující požadavky
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
 * [**Data Science Virtual Machine Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
-* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
 * Chcete-li plynulejší posouvání, přepněte `gfx.xrender.enabled` ve webovém prohlížeči DSVM na prohlížeč Firefox `about:config`příznaku. [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False`. [Další informace](https://support.mozilla.org/questions/981140).
 * **Účet Azure Machine Learning**. Pokud ho ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://studio.azureml.net/). Můžete si to vyzkoušet zdarma, abychom vám pomohli začít.
 
@@ -58,7 +58,7 @@ Pak zřetězení dvou souborů dohromady:
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **\_wordové\_frekvence * Word*** označují procento slov v e-mailu, která odpovídají *Wordu*. Pokud je například **slovo\_frekvence\_** nastavené na **1**, pak se v e-mailu provedlo1% všech slov.
+* Sloupce jako **\_wordové\_frekvence * Word*** označují procento slov v e-mailu, která odpovídají *Wordu*. Pokud je například **\_slovo frekvence\_** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
 * Sloupce jako **char\_frekvence\_* char*** označují procento všech znaků v e-mailu, které jsou typu *char*.
 * **velké\_spustit\_délka\_nejdelší** představuje nejdelší doba posloupnost velká písmena.
 * **velké\_spustit\_délka\_průměrné** je průměrná délka všech pořadí velká písmena.
@@ -363,7 +363,7 @@ Nainstalujte a spusťte Rattle spuštěním těchto příkazů:
 > [!NOTE]
 > Nemusíte instalovat Rattle na DSVM. Při otevření Rattle se ale může zobrazit výzva k instalaci dalších balíčků.
 
-Rattle používá rozhraní založené na kartě. Většina karet odpovídá krokům v rámci vědeckého [zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumání dat. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Poslední karta obsahuje protokol příkazů jazyka R, které byly spuštěny pomocí Rattle.
+Rattle používá rozhraní založené na kartě. Většina karet odpovídá krokům v rámci [vědeckého zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumání dat. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Poslední karta obsahuje protokol příkazů jazyka R, které byly spuštěny pomocí Rattle.
 
 Načíst a nakonfigurovat datové sady:
 
@@ -382,7 +382,7 @@ Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploc
 
 1. Vyberte **distribuce**.
 1. V případě **word_freq_remove** a **word_freq_you**vyberte **histogram**.
-1. Vyberte **Provést**. V jednom okně grafu by se měla zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
+1. Vyberte **Provést**. V jednom okně grafu _by se měla_ zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
 
 Tato **korelace** je také zajímavá. Vytvoření grafu:
 
@@ -428,7 +428,7 @@ Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učen
 Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
 
 > [!NOTE]
-> Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné před exportem **#** tohoto protokolu vložit znak *...* v textu protokolu.
+> Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné před **#** *exportem tohoto protokolu* vložit znak... v textu protokolu.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL a SQuirreL SQL
 

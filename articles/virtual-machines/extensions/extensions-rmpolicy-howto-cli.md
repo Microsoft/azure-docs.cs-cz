@@ -3,7 +3,7 @@ title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure
 description: K omezení nasazení rozšíření virtuálních počítačů použijte Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 49f56d5bd258a75efaed03b51076ca194749830e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092361"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174029"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Omezení instalace rozšíření na virtuálních počítačích se systémem Linux pomocí Azure Policy
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu [Azure Policy](../../governance/policy/overview.md).

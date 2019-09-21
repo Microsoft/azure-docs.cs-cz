@@ -3,7 +3,7 @@ title: Vytvoření kompletního virtuálního počítače se systémem Linux v A
 description: Naučte se používat Terraformu k vytváření a správě kompletního prostředí virtuálních počítačů se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2017
-ms.author: gwallace
-ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100802"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173861"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálních počítačů s Linuxem v Azure s využitím Terraformu
 
@@ -35,7 +35,7 @@ Pojďme si projít každý oddíl šablony Terraformu. Můžete také zobrazit �
 > [!TIP]
 > Pokud vytvoříte proměnné prostředí pro hodnoty nebo používáte prostředí [Azure Cloud Shell bash](/azure/cloud-shell/overview) , nemusíte do této části zahrnout deklarace proměnných.
 
-```tf
+```hcl
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -46,7 +46,7 @@ provider "azurerm" {
 
 V následující části se vytvoří skupina prostředků s `myResourceGroup` názvem `eastus` v umístění:
 
-```tf
+```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
@@ -62,7 +62,7 @@ V dalších oddílech odkazujete na skupinu prostředků pomocí *$ {azurerm_res
 ## <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 V následující části se vytvoří virtuální síť s názvem *myVnet* v adresním prostoru *10.0.0.0/16* :
 
-```tf
+```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 
 V následující části se vytvoří podsíť s názvem *mySubnet* ve virtuální síti *myVnet* :
 
-```tf
+```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
     resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
@@ -90,7 +90,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ## <a name="create-public-ip-address"></a>Vytvoření veřejné IP adresy
 Pokud chcete získat přístup k prostředkům přes Internet, vytvořte a přiřaďte k VIRTUÁLNÍmu počítači veřejnou IP adresu. Následující část vytvoří veřejnou IP adresu s názvem *myPublicIP*:
 
-```tf
+```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
@@ -107,7 +107,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ## <a name="create-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
 Skupiny zabezpečení sítě řídí tok síťového provozu na VIRTUÁLNÍm počítači a z něj. V následující části se vytvoří skupina zabezpečení sítě s názvem *myNetworkSecurityGroup* a definuje pravidlo povolující provoz protokolu SSH na portu TCP 22:
 
-```tf
+```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
@@ -135,7 +135,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 ## <a name="create-virtual-network-interface-card"></a>Vytvořit kartu virtuálního síťového rozhraní
 Virtuální síťová karta (NIC) připojí virtuální počítač k dané virtuální síti, veřejné IP adrese a skupině zabezpečení sítě. V následující části šablony Terraformu se vytvoří virtuální síťová karta s názvem *myNIC* připojená k virtuálním prostředkům sítě, které jste vytvořili:
 
-```tf
+```hcl
 resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
@@ -159,7 +159,7 @@ resource "azurerm_network_interface" "myterraformnic" {
 ## <a name="create-storage-account-for-diagnostics"></a>Vytvoření účtu úložiště pro diagnostiku
 K uložení diagnostiky spouštění pro virtuální počítač budete potřebovat účet úložiště. Tyto diagnostiky spouštění vám můžou pomoct vyřešit problémy a monitorovat stav virtuálního počítače. Vytvořený účet úložiště slouží pouze k uložení dat diagnostiky spouštění. Protože každý účet úložiště musí mít jedinečný název, následující oddíl vygeneruje nějaký náhodný text:
 
-```tf
+```hcl
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
@@ -172,7 +172,7 @@ resource "random_id" "randomId" {
 
 Nyní můžete vytvořit účet úložiště. Následující část vytvoří účet úložiště s názvem založeným na náhodném textu vygenerovaném v předchozím kroku:
 
-```tf
+```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
     name                = "diag${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
@@ -193,7 +193,7 @@ Posledním krokem je vytvoření virtuálního počítače a použití všech vy
 
  Data klíče SSH jsou k dispozici v části *ssh_keys* . Zadejte platný veřejný klíč SSH v poli *key_data* .
 
-```tf
+```hcl
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
@@ -243,7 +243,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
 Chcete-li všechny tyto oddíly přenést společně a zobrazit Terraformu v akci, vytvořte soubor s názvem *terraform_azure. TF* a vložte následující obsah:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -413,7 +413,7 @@ Když máte vytvořenou šablonu Terraformu, prvním krokem je inicializace Terr
 terraform init
 ```
 
-Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se v Azure nevytvářejí.
+Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se v Azure *nevytvářejí.*
 
 ```bash
 terraform plan
@@ -421,7 +421,7 @@ terraform plan
 
 Po provedení předchozího příkazu by se měla zobrazit například následující obrazovka:
 
-```bash
+```console
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -456,7 +456,7 @@ terraform apply
 
 Jakmile se Terraformu dokončí, vaše infrastruktura virtuálních počítačů je připravená. Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [AZ VM show](/cli/azure/vm):
 
-```azurecli
+```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 
@@ -466,5 +466,5 @@ Pak můžete přes SSH k VIRTUÁLNÍmu počítači:
 ssh azureuser@<publicIps>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Vytvořili jste základní infrastrukturu v Azure pomocí Terraformu. U složitějších scénářů, včetně příkladů, které používají nástroje pro vyrovnávání zatížení a Virtual Machine Scale Sets, najdete další informace v tématu [terraformu – příklady pro Azure](https://github.com/hashicorp/terraform/tree/master/examples). Aktuální seznam podporovaných zprostředkovatelů Azure najdete v [dokumentaci k terraformu](https://www.terraform.io/docs/providers/azurerm/index.html).

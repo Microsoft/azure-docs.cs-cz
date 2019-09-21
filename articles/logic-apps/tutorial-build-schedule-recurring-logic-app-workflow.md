@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931434"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172175"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: Vytváření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
@@ -235,7 +235,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
 1. V předchozí akci vyberte **Nový krok**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**a vyhledejte "podmínka" a vyberte akci **podmínky** .
+1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte jako filtr "podmínka". V seznamu akce vyberte akci **Podmínka** .
 
    ![Vybrat akci podmínka](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -243,19 +243,19 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
 1. Vytvořte podmínku, která kontroluje, zda hodnota vlastnosti **dobacesty** překračuje zadaný limit, jak je popsáno a zobrazen zde:
 
-   1. Uvnitř podmínky klikněte v poli **zvolit hodnotu** na levé straně podmínky.
+   1. V podmínce klikněte do pole **zvolit hodnotu** na levé straně podmínky.
 
-   1. Po zobrazení seznamu dynamického obsahu vyberte v části **proměnné**vlastnost **dobacesty** .
+   1. V seznamu dynamický obsah, který se zobrazí, vyberte v části **proměnné**vlastnost **dobacesty** .
 
       ![Na levé straně podmínky sestavení](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. V dialogovém okně porovnání vyberte tento operátor: **je větší než**.
+   1. V poli prostřední porovnání vyberte operátor **je větší než** .
 
    1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit:`15`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 
-      ![Vytvoření podmínky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Dokončená podmínka](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Uložte svou aplikaci logiky.
 
@@ -364,7 +364,7 @@ Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostře
 
 1. Jako potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili aplikaci logiky, která kontroluje dopravní situaci podle zadaného plánu (pracovní dny ráno) a provádí akci (zasílá e-mail), pokud doba trvání cesty překročí určený limit. Dále se naučíte sestavit aplikaci logiky, která odesílá na seznam adresátů žádosti o schválení s využitím integrace služeb Azure, služeb Microsoft a dalších aplikací SaaS.
 

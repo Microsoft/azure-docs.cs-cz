@@ -1,45 +1,45 @@
 ---
-title: Vytvoření virtuální sítě centra s využitím Terraformu v Azure
-description: Kurz ukazující vytvoření virtuální sítě v Azure, která funguje jako společný bod připojení mezi jinými sítěmi
+title: Vytvoření centrální virtuální sítě pomocí Terraformu v Azure
+description: Kurz ilustrující, jak vytvořit virtuální síť centra v Azure, která funguje jako společný spojovací bod mezi ostatními sítěmi
 services: terraform
 ms.service: azure
-keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, centra s paprsky, rozbočovače.
+keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, středový paprsek a centrum.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884686"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173425"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření virtuální sítě centra s využitím Terraformu v Azure
+# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření centrální virtuální sítě pomocí Terraformu v Azure
 
-Centrální virtuální síti (VNet) funguje jako ústřední bod připojení k místní síti. Virtuální sítě hostitelů sdílené služby používané úlohami hostovanými ve virtuálních sítích paprsků. Pro účely ukázky jsou implementovány žádné sdílené služby v tomto kurzu.
+Rozbočovačová virtuální síť (VNet) funguje jako centrální bod připojení k místní síti. Virtuální síť hostuje sdílené služby spotřebované úlohami hostovanými na paprskovém virtuální sítě. Pro účely ukázky nejsou v tomto kurzu implementovány žádné sdílené služby.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Implementace virtuální síti centra v topologii centra s paprsky pomocí HCL (HashiCorp Language)
-> * Použití Terraformu k vytvoření centra Jump box virtuálního počítače
-> * Použití Terraformu k vytvoření brány virtuální privátní sítě rozbočovače
-> * Použití Terraformu k vytvoření připojení rozbočovače a na místní brána
+> * Použití HCL (HashiCorp Language) k implementaci virtuální sítě rozbočovače v topologii centra s paprsky
+> * Použití Terraformu k vytvoření virtuálního počítače s odkazem na seznam hub
+> * Vytvoření brány virtuální privátní sítě centra pomocí Terraformu
+> * Vytvoření centra a místních připojení brány pomocí Terraformu
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure](./terraform-hub-spoke-introduction.md).
-1. [Vytvořit místní virtuální sítě s využitím Terraformu v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-Centrální síti se skládá z následujících součástí:
+Síť rozbočovače se skládá z následujících součástí:
 
-- Centrální virtuální síti
-- Brána virtuální sítě centra
-- Brána připojení rozbočovače 
+- Virtuální síť centra
+- Brána virtuální sítě rozbočovače
+- Připojení brány centra 
 
 Následující konfigurační soubor Terraformu definuje prostředky:
 
@@ -61,9 +61,9 @@ Následující konfigurační soubor Terraformu definuje prostředky:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>Deklarovat virtuální síti centra
+## <a name="declare-the-hub-vnet"></a>Deklarovat virtuální síť centra
 
-Vytvoření konfiguračního souboru Terraform, který deklaruje centrální virtuální síti.
+Vytvořte konfigurační soubor Terraformu, který deklaruje virtuální síť centrální sítě.
 
 1. Ve Cloud Shellu vytvořte soubor s názvem `hub-vnet.tf`.
 
@@ -73,7 +73,7 @@ Vytvoření konfiguračního souboru Terraform, který deklaruje centrální vir
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     locals {
       prefix-hub         = "hub"
       hub-location       = "CentralUS"
@@ -229,9 +229,9 @@ Vytvoření konfiguračního souboru Terraform, který deklaruje centrální vir
     }
     ```
     
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [S využitím Terraformu v Azure vytvořit virtuální síťové zařízení centra](./terraform-hub-spoke-hub-nva.md))
+> [Vytvoření zařízení virtuální sítě rozbočovače pomocí terraformu v Azure](./terraform-hub-spoke-hub-nva.md)

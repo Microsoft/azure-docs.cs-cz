@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900667"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173596"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
 
 Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-end Java, který ukládá výsledky hlasování do stavové back-endové služby v Azure Service Fabric. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Zvažte také postup pro použití [spolehlivé služby Java v rychlém startu.](service-fabric-quickstart-java-reliable-services.md)
 
-![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Ukázková hlasovací aplikace Service Fabric](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
@@ -60,15 +60,15 @@ Nejprve vytvořte webový front-end hlasovací aplikace. Webové uživatelské r
 
 2. Vytvořte projekt postupným výběrem **File** (Soubor) > **New** (Nový) > **Other** (Jiné) > **Service Fabric** > **Service Fabric Project** (Projekt Service Fabric).
 
-    ![Dialogové okno New Project (Nový projekt) v Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Nový projekt Service Fabric v zatmění](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
 3. V dialogovém okně **Průvodce projektem ServiceFabric** pojmenujte **hlasovací** tlačítko projektu a vyberte **Další**.
 
-    ![Výběr bezstavové služby v Javě dialogovém okně New Service (Nová služba)](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![Výběr bezstavové služby v Javě dialogovém okně New Service (Nová služba)](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
 4. Na stránce **Přidat službu** vyberte **Bezstavová služba**a pojmenujte službu **VotingWeb**. Kliknutím na **Dokončit** vytvořte projekt.
 
-    ![Vytvoření bezstavové služby]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Vytvoření bezstavové služby pro projekt Service Fabric]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Eclipse vytvoří aplikaci a projekt služby a zobrazí je v průzkumníku balíčků.
 
@@ -416,7 +416,7 @@ Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v r�
 
 3. Eclipse vytvoří projekt služby a zobrazí ho v průzkumníku balíčků.
 
-    ![Průzkumník řešení](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Průzkumník projektů v zatmění](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>Přidání souboru VotingDataService.java
 
@@ -557,7 +557,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
 
 1. V Průzkumníku balíčků klikněte pravým tlačítkem na projekt **hlasování** a vyberte **Nová** > **Složka**. Složku pojmenujte **VotingRPC/src/rpcmethods**.
 
-    ![Vytvoření balíčku VotingRPC](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![Vytvoření balíčku VotingRPC v Průzkumníkovi balíčků zatmění](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. Ve složce *Voting/VotingRPC/src/rpcmethods* vytvořte soubor *VotingRPC.java* a do tohoto souboru **VotingRPC.java** vložte následující kód. 
 
@@ -720,7 +720,7 @@ Hlasovací aplikace se skládá ze dvou služeb:
 - Webová front-end služba (VotingWeb) – Webová front-end služba v Javě, která obsluhuje webovou stránku a zveřejňuje rozhraní API pro komunikaci s back-end službou.
 - Back-end služba (VotingDataService) – Webová služba v Javě, která definuje metody pro ukládání hlasů volané přes vzdálená volání procedur (RPC).
 
-![Diagram aplikace](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![Ukázka hlasovacího diagramu](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 Když v aplikaci provedete nějakou akci (přidání položky, hlasování, odebrání položky), dojde k následujícím událostem:
 1. JavaScript odešle odpovídající požadavek do webového rozhraní API ve webové front-end službě jako požadavek HTTP.

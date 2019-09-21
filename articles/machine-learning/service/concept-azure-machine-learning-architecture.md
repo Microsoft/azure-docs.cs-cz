@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035592"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170428"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: Architektura a koncepty
 
@@ -63,10 +63,10 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#training-scripts">Školicí skript</a>
 + <a href="#runs">Spuštění</a>
++ <a href="#environments">Environment</a>
 + <a href="#github-tracking-and-integration">Sledování Gitu</a>
 + <a href="#snapshots">Snímek</a>
 + <a href="#activities">Aktivita</a>
-+ <a href="#images">Obrázek</a>
 + <a href="#deployment">Nasazení</a>
 + <a href="#web-service-deployments">Webové služby</a>
 + <a href="#iot-module-deployments">Moduly IoT</a>
@@ -180,28 +180,15 @@ Aktivita představuje dlouhotrvající operace. Příklady aktivit jsou následu
 
 Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového uživatelského rozhraní, abyste mohli snadno monitorovat průběh těchto operací.
 
-### <a name="images"></a>Obrázky
+### <a name="environments"></a>Prostředí
 
-Image poskytují způsob, jak spolehlivě nasadit model spolu se všemi komponentami, které potřebujete k použití modelu. Bitová kopie obsahuje následující položky:
+Prostředí Azure ML se používají k určení konfigurace (Docker/Python/Spark/atd.), která slouží k vytvoření reprodukovatelného prostředí pro přípravu dat, školení modelů a obsluhu modelů. Jsou spravované a se správou verzí v rámci vašeho pracovního prostoru Azure Machine Learning umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
-* Model.
-* Hodnoticí skript nebo aplikace. Pomocí skriptu předáte vstup do modelu a vrátíte výstup modelu.
-* Závislosti, které jsou vyžadovány modelem nebo skriptem bodování nebo aplikací. Můžete například zahrnout soubor prostředí Conda, který obsahuje závislosti balíčků Python.
+K vývoji školicího skriptu můžete použít objekt prostředí v místním výpočetním prostředí, použít stejné prostředí v Azure Machine Learning výpočetním prostředí pro modelově škálovatelné školení a dokonce model nasadit do stejného prostředí. 
 
-Azure Machine Learning může vytvořit dva typy imagí:
+Naučte [se vytvářet a spravovat opakovaně použitelné prostředí ml](how-to-use-environments.md) pro školení a odvozování.
 
-* **Obrázek FPGA**: Používá se při nasazení do pole brány v Azure, které je programovatelné polem.
-* **Obrázek Docker**: Používá se při nasazení na jiné výpočetní cíle než FPGA. Příklady jsou Azure Container Instances a Azure Kubernetes Service.
 
-Azure Machine Learning poskytuje základní image, která se používá ve výchozím nastavení. Můžete také zadat vlastní image.
-
-### <a name="image-registry"></a>Registru imagí
-
-Bitové kopie jsou zařazené do katalogu v **registru imagí** v pracovním prostoru. Když vytvoříte obrázek, můžete zadat další značky metadat, abyste se mohli později dotazovat, aby si image našli.
-
-Příklad vytvoření bitové kopie najdete [v tématu nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
-
-Příklad nasazení modelu pomocí vlastní image najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
 
 ### <a name="deployment"></a>Nasazení
 
@@ -237,7 +224,7 @@ Další informace o kanálech strojového učení s touto službou najdete v té
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s Azure Machine Learning, přečtěte si:
 

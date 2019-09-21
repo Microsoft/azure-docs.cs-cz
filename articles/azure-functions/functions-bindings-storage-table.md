@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086247"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171181"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -529,7 +529,7 @@ Vstupní vazba tabulkového úložiště podporuje následující scénáře:
 
 * **Čtení jednoho nebo více řádků v JavaScriptu**
 
-  Nastavte vlastnosti `take`a. `filter` Nenastavuje `partitionKey` se `rowKey`nebo. Přístup k entitě vstupní tabulky (entity) pomocí `context.bindings.<name>`. Deserializované objekty mají `RowKey` vlastnosti a `PartitionKey` .
+  Nastavte vlastnosti `take`a. `filter` Nenastavuje `partitionKey` se `rowKey`nebo. Přístup k entitě vstupní tabulky (entity) pomocí `context.bindings.<BINDING_NAME>`. Deserializované objekty mají `RowKey` vlastnosti a `PartitionKey` .
 
 ## <a name="output"></a>Výstup
 
@@ -786,7 +786,7 @@ Vazba na výstup tabulkového úložiště podporuje následující scénáře:
 
 * **Zápis jednoho nebo více řádků v JavaScriptu**
 
-  Ve funkcích JavaScriptu získáte přístup k výstupu tabulky pomocí `context.bindings.<name>`.
+  Ve funkcích JavaScriptu získáte přístup k výstupu tabulky pomocí `context.bindings.<BINDING_NAME>`.
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
@@ -796,7 +796,7 @@ Vazba na výstup tabulkového úložiště podporuje následující scénáře:
 | Objekt blob, tabulka, fronta | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Objekt blob, tabulka, fronta | [Odstraňování potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

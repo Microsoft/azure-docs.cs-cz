@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854490"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173462"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 
@@ -46,7 +46,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
 
 5. Do souboru deklarace proměnných zkopírujte následující kód:
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
 
 7. Do souboru proměnných zkopírujte následující kód. Zástupné symboly Nezapomeňte nahradit následujícím způsobem: V případě použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. `subscription_id` U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
 
 2. Do nově vytvořeného souboru `main.tf` zkopírujte následující ukázkové definice prostředku: 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -227,7 +227,7 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
 
 Terraform inicializujete spuštěním následujícího příkazu:
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ Když se příkaz `terraform plan` zpracovává, Terraform provede aktualizaci a
 
 Pokud svůj plán provádění ukládat nepotřebujete, spusťte následující příkaz:
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 Pokud plán provádění uložit potřebujete, spusťte tento příkaz (zástupný text &lt;path> nahraďte požadovanou výstupní cestou):
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ Posledním krokem tohoto kurzu je spuštění [příkazu terraform apply](https:
 
 Pokud chcete nejnovější plán provádění použít, spusťte následující příkaz:
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 Pokud chcete použít dříve uložený plán provádění, spusťte tento příkaz (zástupný text &lt;path> nahraďte cestou, kde se uložený plán provádění nachází):
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

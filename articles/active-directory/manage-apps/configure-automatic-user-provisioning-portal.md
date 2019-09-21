@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056137"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170475"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -81,7 +81,7 @@ Mezi podporovaná přizpůsobení patří:
 
 Službu zřizování Azure AD pro vybranou aplikaci můžete spustit a zastavit v oblasti **Nastavení** na obrazovce **zřizování** . Můžete se také rozhodnout vymazat mezipaměť zřizování a službu restartovat.
 
-Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **stavu zřizování** na **zapnuto**. Tato změna způsobí, že služba zřizování Azure AD spustí počáteční cyklus. Načte uživatele, kteří jsou přiřazeni v části **Uživatelé a skupiny** , zadá dotaz na cílovou aplikaci pro ně a potom spustí akce zřizování definované v oddílu **mapování** Azure AD. Během tohoto procesu služba zřizování ukládá data uložená v mezipaměti s informacemi o tom, jaké uživatelské účty spravuje, takže nespravované účty v cílových aplikacích, které nikdy nejsou v oboru pro přiřazení, nejsou ovlivněné operacemi zrušení zřízení. Po počátečním cyklu služba zřizování automaticky synchronizuje objekty uživatelů a skupin po dobu deseti minut.
+Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **stavu zřizování** na **zapnuto**. Tato změna způsobí, že služba zřizování Azure AD spustí počáteční cyklus. Načte uživatele, kteří jsou přiřazeni v části **Uživatelé a skupiny** , zadá dotaz na cílovou aplikaci pro ně a potom spustí akce zřizování definované v oddílu **mapování** Azure AD. Během tohoto procesu služba zřizování ukládá data uložená v mezipaměti s informacemi o tom, jaké uživatelské účty spravuje, takže nespravované účty v cílových aplikacích, které nikdy nejsou v oboru pro přiřazení, nejsou ovlivněné operacemi zrušení zřízení. Po počátečním cyklu služba zřizování automaticky synchronizuje objekty uživatelů a skupin v intervalu 40 minut.
 
 Změňte **stav zřizování** na **vypnuto** , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
 

@@ -7,13 +7,13 @@ keywords: terraform, devops, virtuální počítač, Azure, škálovací sada, s
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2018
-ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885081"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169874"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
 
@@ -29,15 +29,15 @@ V tomto kurzu zjistíte, jak pomocí služby [Azure Cloud Shell](/azure/cloud-sh
 > * Vytvořit a nasadit jumpbox pro připojení k virtuálním počítačům prostřednictvím protokolu SSH
 
 > [!NOTE]
-> Překopírujte nejnovější verzi Terraformu soubory konfigurace použité v tomto článku jsou v [Super Terraformu úložišti na Githubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Nejnovější verze konfiguračních souborů Terraformu používaných v tomto článku se nachází v [úložišti Super terraformu na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nainstalujte Terraformu**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Nainstalovat terraformu**: Postupujte podle pokynů v článku [terraformu a nakonfigurujte přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure) .
 
-- **Vytvoření páru klíčů SSH**: Pokud ještě nemáte SSH pár klíčů, postupujte podle pokynů v článku, [postupy vytváření a používání veřejných a privátních pár klíčů SSH pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Vytvořte pár klíčů ssh**: Pokud ještě nemáte pár klíčů SSH, postupujte podle pokynů v článku, [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
@@ -80,7 +80,7 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
 
 1. Do editoru vložte následující kód:
 
-   ```JSON
+   ```hcl
    variable "location" {
     description = "The location where resources will be created"
    }
@@ -124,7 +124,7 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
 1. Do editoru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
    :
 
-   ```JSON
+   ```hcl
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
@@ -157,7 +157,7 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
 
 1. Na konec tohoto souboru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
 
-   ```JSON
+   ```hcl
    resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
@@ -252,7 +252,7 @@ V Cloud Shellu proveďte následující kroky:
 
 1. Na konec souboru vložte následující kód:
 
-   ```JSON
+   ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
@@ -369,7 +369,7 @@ V Cloud Shellu proveďte následující kroky:
 
 1. Do editoru vložte následující kód:
 
-   ```JSON
+   ```hcl
    #cloud-config
    packages:
     - nginx
@@ -393,7 +393,7 @@ V Cloud Shellu proveďte následující kroky:
 
 1. Nasazení přizpůsobte vložením následujícího kódu na konec souboru:
 
-    ```JSON
+    ```hcl
     variable "application_port" {
        description = "The port that you want to expose to the external load balancer"
        default     = 80
@@ -458,7 +458,7 @@ V Cloud Shellu proveďte následující kroky:
 
 1. Na konec souboru vložte následující kód:
 
-   ```JSON
+   ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
@@ -528,7 +528,7 @@ V Cloud Shellu proveďte následující kroky:
 
 1. Na konec souboru vložte následující kód, aby se po dokončení nasazení zobrazil název hostitele jumpboxu:
 
-   ```
+   ```hcl
    output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
    }
@@ -565,10 +565,10 @@ terraform destroy
 
 Odstranění můžete trvat i několik minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak použit Terraform k vytvoření škálovací sady virtuálních počítačů Azure. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky:
 
-[Terraform centru na webu Microsoft.com](https://docs.microsoft.com/azure/terraform/)
-[dokumentaci poskytovatele Terraformu pro Azure](https://aka.ms/terraform)
-[Terraformu pro Azure poskytovatele zdroj](https://aka.ms/tfgit) 
- [Moduly Terraformu pro Azure](https://aka.ms/tfmodules)
+[Centrum terraformu v](https://docs.microsoft.com/azure/terraform/)
+[dokumentaci k](https://aka.ms/terraform)
+poskytovateli Azure Microsoft.com terraformu[terraformu source](https://aka.ms/tfgit)
+Provider[terraformu modules Azure](https://aka.ms/tfmodules)

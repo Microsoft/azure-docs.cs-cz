@@ -1,85 +1,85 @@
 ---
-title: Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure
-description: Kurz ilustrující vytvoření referenční architektury celý hybridní sítě v Azure pomocí Terraformu
+title: Vytvoření topologie hybridní sítě rozbočovače a paprsků pomocí Terraformu v Azure
+description: Kurz ilustrující postup vytvoření celé hybridní síťové referenční architektury v Azure pomocí Terraformu
 services: terraform
 ms.service: azure
-keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, partnerský vztah virtuální sítě, síťové virtuální zařízení
+keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, síťové virtuální zařízení
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 648369d89bd2b5b08171e1f6f5482c81bfba3c66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884713"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173453"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Kurz: Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Kurz: Vytvoření topologie hybridní sítě rozbočovače a paprsků pomocí Terraformu v Azure
 
-V této sérii kurzů ukazuje, jak implementovat v Azure pomocí Terraformu [rozbočovač a uvedenou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). 
+V této sérii kurzů se dozvíte, jak používat Terraformu k implementaci v Azure a hvězdicové [síťové topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). 
 
-Hvězdicová topologie je způsob, jak izolovat úlohy při sdílení společných služeb. Mezi tyto služby patří, identity a zabezpečení. Centrum je virtuální síť (VNet), která funguje jako centrální spojovací bod k místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem. Sdílené služby jsou nasazené v rozbočovači, jednotlivé úlohy se nasadí v sítích paprsků.
+Topologie rozbočovače a paprsků je způsob, jak izolovat úlohy při sdílení běžných služeb. Mezi tyto služby patří identita a zabezpečení. Hub je virtuální síť (VNet), která funguje jako centrální bod připojení k místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem. Sdílené služby se nasazují v centru, zatímco jednotlivé úlohy se nasazují v sítích paprsků.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Rozložení hvězdicové hybridní sítě referenční zdroje informací o architektuře pomocí HCL (HashiCorp Language)
-> * Použití Terraformu k vytvoření centrální síti prostředky zařízení
-> * Použití Terraformu k vytvoření centrální síti v Azure tak, aby fungoval jako společný bod pro všechny prostředky
-> * Použití Terraformu k vytvoření jednotlivé úlohy jako paprsky virtuálních sítí v Azure
-> * Použití Terraformu k vytvoření brány a připojení mezi na místě a sítě Azure
-> * Použití Terraformu k vytvoření partnerské vztahy virtuálních sítí paprsků sítě
+> * Použití HCL (HashiCorp Language) k rozložení prostředků referenčních architekturou hybridní sítě rozbočovače a paprsků
+> * Použití Terraformu k vytváření prostředků síťových zařízení centra
+> * Použití Terraformu k vytvoření sítě rozbočovače v Azure, která bude fungovat jako běžný bod pro všechny prostředky
+> * Použití Terraformu k vytváření jednotlivých úloh jako paprskových virtuální sítě v Azure
+> * Použití Terraformu k navázání bran a připojení mezi místním prostředím a sítěmi Azure
+> * Použití Terraformu k vytváření partnerských vztahů virtuálních sítí pro sítě paprsků
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Instalace a konfigurace Terraformu**: Ke zřízení virtuálních počítačů a další infrastrukturu v Azure, [instalace a konfigurace Terraformu](/azure/virtual-machines/linux/terraform-install-configure)
+- **Instalace a konfigurace terraformu**: Postup při zřizování virtuálních počítačů a jiné infrastruktury v Azure, [instalace a konfigurace terraformu](/azure/virtual-machines/linux/terraform-install-configure)
 
-## <a name="hub-and-spoke-topology-architecture"></a>Hvězdicová topologie architektury
+## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologie rozbočovače a paprsků
 
-Centrum je v hvězdicové topologii virtuální sítě. Virtuální sítě funguje jako ústřední bod připojení k vaší místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem, které je možné použít k izolaci úloh. Přenosy mezi centrem a místním datacentrem proudí prostřednictvím připojení ExpressRoute nebo brány sítě VPN. Následující obrázek znázorňuje komponenty v hvězdicové topologii:
+V topologii centra a paprsků je centrum virtuální síť. Virtuální síť funguje jako centrální bod připojení k vaší místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem, které je možné použít k izolaci úloh. Přenosy mezi centrem a místním datacentrem proudí prostřednictvím připojení ExpressRoute nebo brány sítě VPN. Následující obrázek znázorňuje komponenty v hvězdicové topologii:
 
-![Hvězdicová topologie architektury v Azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
+![Architektura topologie rozbočovače a paprsků v Azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
 
-## <a name="benefits-of-the-hub-and-spoke-topology"></a>Výhody hvězdicové topologii
+## <a name="benefits-of-the-hub-and-spoke-topology"></a>Výhody topologie centra a paprsků
 
-Rozbočovač a uvedenou síťovou topologii je způsob, jak izolovat úlohy při sdílení společných služeb. Mezi tyto služby patří, identity a zabezpečení. Centrum je virtuální síť, která funguje jako centrální spojovací bod k místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem. Sdílené služby jsou nasazené v rozbočovači, jednotlivé úlohy se nasadí v sítích paprsků. Tady je několik výhod rozbočovač a uvedenou síťovou topologii:
+Topologie sítě rozbočovače a paprsků je způsob, jak izolovat úlohy při sdílení běžných služeb. Mezi tyto služby patří identita a zabezpečení. Centrum je virtuální síť, která funguje jako centrální bod připojení k místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem. Sdílené služby se nasazují v centru, zatímco jednotlivé úlohy se nasazují v sítích paprsků. Tady jsou některé výhody síťové topologie centra a paprsků:
 
-- **Úspory nákladů** tím, že centralizují služby na jednom místě, který může být sdílen více úloh. Mezi tyto úlohy patří síťových virtuálních zařízení a servery DNS.
+- **Úspora nákladů** díky centralizaci služeb v jednom umístění, které může sdílet více úloh. Mezi tyto úlohy patří síťová virtuální zařízení a servery DNS.
 - **Překonání omezení předplatných** díky vytvoření partnerského vztahu virtuálních sítí z různých předplatných s hlavním centrem
 - **Oddělení oblastí zájmu** mezi centrálním IT (SecOps, InfraOps) a úlohami (DevOps)
 
-## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typické použití hvězdicové architektury
+## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typická použití pro architekturu centra a paprsků
 
-Mezi typická použití hvězdicové architektury patří:
+Mezi Typická použití pro architekturu hub a paprsku patří:
 
-- Řada zákazníků má úlohy, které jsou nasazené v různých prostředích. Tato prostředí patří vývoj, testování a provoz. V mnoha případech tyto úlohy potřebují sdílet služby jako DNS, identifikátory, NTP nebo službě AD DS. Tyto sdílené služby mohou být umístěny ve virtuální síti centra. Tímto způsobem každé prostředí je nasazené do paprsku, aby se zachovala izolace.
-- Úlohy, které nevyžadují připojení k sobě navzájem, ale vyžadují přístup ke sdíleným službám.
+- Mnoho zákazníků má úlohy, které jsou nasazeny v různých prostředích. Mezi tato prostředí patří vývoj, testování a produkce. V mnoha případech je potřeba, aby tyto úlohy sdílely služby, jako jsou DNS, identifikátory, NTP nebo služba AD DS. Tyto sdílené služby můžou být umístěné ve virtuální síti centra. V takovém případě se každé prostředí nasadí do paprsku, aby se zachovala izolace.
+- Úlohy, které nevyžadují připojení navzájem, ale vyžadují přístup ke sdíleným službám.
 - Podniky, které vyžadují centrální kontrolu nad aspekty zabezpečení.
-- Podniky, které vyžadují oddělenou správu pro úlohy v každém paprsku.
+- Podniky, které vyžadují oddělené řízení pro úlohy v každém paprsku.
 
-## <a name="preview-the-demo-components"></a>Ve verzi Preview součásti demo
+## <a name="preview-the-demo-components"></a>Náhled ukázkových součástí
 
-Při práci prostřednictvím jednotlivých kurzu této série, různé součásti jsou definovány v různých Terraformu skripty. Architektura ukázka vytvoří a nasadí se skládá z následujících součástí:
+Při práci v každém kurzu v této sérii jsou různé komponenty definovány v samostatných Terraformu skriptech. Ukázková architektura vytvořená a nasazená se skládá z následujících součástí:
 
-- **Místní síť**: Privátní místní síti se spuštěnou s organizací. Pro rozbočovač a uvedenou referenční architekturu virtuální sítě v Azure umožňuje simulovat v místní síti.
+- **Místní síť**: Privátní místní síť běžící s organizací. V případě referenční architektury hub a paprsků se pro simulaci místní sítě používá virtuální síť v Azure.
 
-- **Zařízení VPN**. Zařízení VPN ani služby obsahuje externí připojení k místní síti. Zařízení VPN může být hardwarové zařízení nebo softwarové řešení. 
+- **Zařízení VPN**. Zařízení nebo služba sítě VPN poskytují externí připojení k místní síti. Zařízení VPN může být hardwarové zařízení nebo softwarové řešení. 
 
-- **Virtuální síť centra**. Centrum je ústřední bod připojení k vaší místní síti a místo pro hostování služeb. Tyto služby mohou být spotřebovány různými úlohami hostovanými ve virtuálních sítích paprsků.
+- **Virtuální síť centra**. Centrum je centrální bod připojení k vaší místní síti a místo pro hostování služeb. Tyto služby mohou být spotřebovány různými úlohami hostovanými v virtuální sítě paprsků.
 
-- **Podsíť brány**. Brány virtuální sítě jsou uloženy ve stejné podsíti.
+- **Podsíť brány**. Brány virtuální sítě se nacházejí ve stejné podsíti.
 
 - **Virtuální sítě paprsků**. Paprsky se dají použít k izolování úloh v jejich vlastních virtuálních sítích, které se spravují odděleně od ostatních paprsků. Každá úloha může obsahovat několik vrstev s několika podsítěmi připojenými prostřednictvím nástrojů pro vyrovnávání zatížení Azure. 
 
-- **Partnerské vztahy virtuálních sítí**. Dvě virtuální sítě můžou být připojené pomocí připojení s partnerským vztahem. Připojení s partnerským vztahem jsou nepřenositelná připojení s nízkou latencí mezi virtuálními sítěmi. Po navázání partnerského vztahu, virtuální sítě vyměňují přenosy pomocí páteřní síť Azure, aniž by bylo směrovač. V hvězdicové síťové topologie VNet peering se používá připojuje Centrum ke každému paprsku. Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech.
+- **Partnerské vztahy virtuálních sítí**. Dva virtuální sítě se dají připojit pomocí partnerského připojení. Připojení s partnerským vztahem jsou nepřenositelná připojení s nízkou latencí mezi virtuálními sítěmi. Po navázání partnerského vztahu virtuální sítě provoz Exchange pomocí páteře Azure, aniž by bylo potřeba směrovač. V hvězdicové síťové topologii se pro připojení centra k jednotlivým paprskům používá VNet peering. Peer virtuální sítě můžete vytvořit ve stejné oblasti nebo v různých oblastech.
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-Vytvoření adresáře, který obsahuje konfigurační soubory Terraformu pro tuto ukázku.
+Vytvořte adresář, který obsahuje konfigurační soubory Terraformu pro ukázku.
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
@@ -109,7 +109,7 @@ Vytvoření adresáře, který obsahuje konfigurační soubory Terraformu pro tu
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve službě Cloud Shell, otevřete nový soubor s názvem `main.tf`.
+1. V Cloud Shell otevřete nový soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -117,19 +117,19 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.22"
     }
     ```
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
 ## <a name="create-the-variables-file"></a>Vytvoření souboru proměnných
 
-Vytvořte konfigurační soubor Terraformu pro společné proměnné, které se používají na různých skriptů.
+Vytvořte konfigurační soubor Terraformu pro běžné proměnné, které se používají v různých skriptech.
 
-1. Ve službě Cloud Shell, otevřete nový soubor s názvem `variables.tf`.
+1. V Cloud Shell otevřete nový soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -137,7 +137,7 @@ Vytvořte konfigurační soubor Terraformu pro společné proměnné, které se 
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     variable "location" {
       description = "Location of the network"
       default     = "centralus"
@@ -159,9 +159,9 @@ Vytvořte konfigurační soubor Terraformu pro společné proměnné, které se 
     }
     ```
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Vytvořit místní virtuální sítě s využitím Terraformu v Azure](./terraform-hub-spoke-on-prem.md)
+> [Vytvoření místní virtuální sítě pomocí Terraformu v Azure](./terraform-hub-spoke-on-prem.md)

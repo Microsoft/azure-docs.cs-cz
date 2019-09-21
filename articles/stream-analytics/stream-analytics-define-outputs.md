@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984866"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173577"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -210,6 +210,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Oddělovač |Platí pouze pro serializaci CSV. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
 | Formát |Platí pouze pro typ JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. **Pole** určuje, že výstup je formátován jako pole objektů JSON. |
 | Sloupce vlastností | Volitelný parametr. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
+| Sloupce systémových vlastností | Volitelný parametr. Páry klíč-hodnota vlastností systému a odpovídajících názvů sloupců, které je třeba připojit k odchozí zprávě místo datové části. Další informace o této funkci najdete v části [Vlastnosti systému pro Service Bus fronty a výstupy témat](#system-properties-for-service-bus-queue-and-topic-outputs) .  |
 
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.
 
@@ -229,6 +230,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Kódování |Pokud používáte formát CSV nebo JSON, je nutné zadat kódování. V tuto chvíli je jediným podporovaným formátem kódování UTF-8. |
 | Oddělovač |Platí pouze pro serializaci CSV. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
 | Sloupce vlastností | Volitelný parametr. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
+| Sloupce systémových vlastností | Volitelný parametr. Páry klíč-hodnota vlastností systému a odpovídajících názvů sloupců, které je třeba připojit k odchozí zprávě místo datové části. Další informace o této funkci najdete v části [Vlastnosti systému pro Service Bus fronty a výstupy témat](#system-properties-for-service-bus-queue-and-topic-outputs) . |
 
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.
 
@@ -295,6 +297,25 @@ Následující snímek obrazovky ukazuje vlastnosti výstupní zprávy, které b
 
 ![Vlastní vlastnosti události](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
 
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Systémové vlastnosti pro Service Bus front a témat 
+Sloupce dotazu můžete připojit jako [systémové vlastnosti](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) do odchozí fronty služby Service Bus nebo do zpráv tématu. Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) hodnotami sloupce dotazu.
+Tyto vlastnosti systému jsou podporovány – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Řetězcové hodnoty těchto sloupců se analyzují jako odpovídající typ hodnoty vlastnosti systému a jakékoli selhání při analýze se považují za chyby dat.
+Toto pole je k dispozici jako formát objektu JSON. Podrobnosti o tomto formátu jsou následující:
+* Obklopené složenými závorkami {}.
+* Napsané páry klíč/hodnota.
+* Klíče a hodnoty musí být řetězce.
+* Klíč je název vlastnosti systému a hodnota je název sloupce dotazu.
+* Klíče a hodnoty jsou oddělené dvojtečkou.
+* Jednotlivé páry klíč/hodnota jsou oddělené čárkou.
+
+Ukazuje, jak používat tuto vlastnost –
+
+* Zadávání`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Sloupce systémových vlastností:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+Tím se nastaví `MessageId` zprávy fronty služby Service Bus s `column1`hodnotami a PartitionKey se nastaví s `column2`hodnotami.
+
 ## <a name="partitioning"></a>Dělení
 
 Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výstupu pro každý typ výstupu:
@@ -332,7 +353,7 @@ Následující tabulka popisuje některé z důležitých informací pro výstup
 | Azure Cosmos DB   | Viz [omezení Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Velikost dávky a frekvence zápisu se dynamicky upravují na základě Azure Cosmos DBch odpovědí. <br /> Neexistují předem vymezená omezení Stream Analytics. |
 | Azure Functions   | | Výchozí velikost dávky je 262 144 bajtů (256 KB). <br /> Výchozí počet událostí na jednu dávku je 100. <br /> Velikost dávky je možné konfigurovat a můžete se zvýší nebo sníží ve službě Stream Analytics [výstup možnosti](#azure-functions).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > 
 > [Rychlé zprovoznění: Vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md)

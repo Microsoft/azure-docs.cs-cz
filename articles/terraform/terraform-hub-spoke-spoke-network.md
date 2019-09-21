@@ -1,42 +1,42 @@
 ---
-title: Vytvoření sítě paprsků s využitím Terraformu v Azure
-description: Zjistěte, jak implementovat dvě paprsku, virtuální sítě připojené k centrum v topologii centra s paprsky
+title: Vytvoření sítě paprsků pomocí Terraformu v Azure
+description: Naučte se implementovat dva hvězdicové virtuální sítě připojené k rozbočovači v topologii hvězdicové topologie.
 services: terraform
 ms.service: azure
-keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, paprsku, centra s paprsky
+keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, paprskový, středový – paprskový
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 9cce809401a26eb2b45b11303afcd4818a1f950b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 9437f43a12204c9a08e1c0da11fc737e8c026c80
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884526"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173391"
 ---
-# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření virtuální sítě paprsků s využitím Terraformu v Azure
+# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření hvězdicové virtuální sítě pomocí Terraformu v Azure
 
-V tomto kurzu implementujete dvě sítě samostatné paprsku k předvedení oddělení úloh. Sítě sdílení společných prostředků pomocí centrální virtuální síti. Paprsky se dají použít k izolování úloh v jejich vlastních virtuálních sítích, které se spravují odděleně od ostatních paprsků. Každá úloha může obsahovat několik vrstev s několika podsítěmi připojenými prostřednictvím nástrojů pro vyrovnávání zatížení Azure.
+V tomto kurzu implementujete dvě samostatné sítě paprsků k předvedení oddělení úloh. Sítě sdílejí společné prostředky pomocí virtuální sítě rozbočovače. Paprsky se dají použít k izolování úloh v jejich vlastních virtuálních sítích, které se spravují odděleně od ostatních paprsků. Každá úloha může obsahovat několik vrstev s několika podsítěmi připojenými prostřednictvím nástrojů pro vyrovnávání zatížení Azure.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Implementace virtuálních sítí paprsků v topologii centra s paprsky pomocí HCL (HashiCorp Language)
-> * Použití Terraformu k vytvoření virtuálního počítače v sítích paprsků
-> * Použití Terraformu k vytvoření partnerské vztahy virtuálních sítí pomocí sítí centra
+> * Použití HCL (HashiCorp Language) k implementaci paprskového virtuální sítěu v topologii hvězdicové topologie
+> * Použití Terraformu k vytváření virtuálních počítačů v sítích paprsků
+> * Použití Terraformu k navázání partnerských vztahů virtuálních sítí s centrálními sítěmi
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure](./terraform-hub-spoke-introduction.md).
-1. [Vytvořit místní virtuální sítě s využitím Terraformu v Azure](./terraform-hub-spoke-on-prem.md).
-1. [S využitím Terraformu v Azure vytvořit virtuální síť centra](./terraform-hub-spoke-hub-network.md).
-1. [S využitím Terraformu v Azure vytvořit virtuální síťové zařízení centra](./terraform-hub-spoke-hub-nva.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte virtuální síť centra pomocí terraformu v Azure](./terraform-hub-spoke-hub-network.md).
+1. [Vytvořte zařízení virtuální sítě rozbočovače s terraformu v Azure](./terraform-hub-spoke-hub-nva.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje virtuální sítě paprsků a virtuálního počítače pro pracovní vytížení. Partnerské virtuální síti z centra do paprsku se pak vytvoří.
+V této části se vytvoří dvě skripty paprsků. Každý skript definuje virtuální síť paprsků a virtuální počítač pro úlohy. Pak se vytvoří partnerský virtuální síť z rozbočovače na paprskový.
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
@@ -56,9 +56,9 @@ V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje vir
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>Deklarovat dvě paprsku sítě
+## <a name="declare-the-two-spoke-networks"></a>Deklarace dvou paprskových sítí
 
-1. Ve službě Cloud Shell, otevřete nový soubor s názvem `spoke1.tf`.
+1. V Cloud Shell otevřete nový soubor s názvem `spoke1.tf`.
 
     ```bash
     code spoke1.tf
@@ -66,7 +66,7 @@ V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje vir
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     locals {
       spoke1-location       = "CentralUS"
       spoke1-resource-group = "spoke1-vnet-rg"
@@ -178,7 +178,7 @@ V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje vir
     }
     ```
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
 1. Vytvořte nový soubor s názvem `spoke2.tf`.
 
@@ -188,7 +188,7 @@ V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje vir
     
 1. Do editoru vložte následující kód:
     
-    ```JSON
+    ```hcl
     locals {
       spoke2-location       = "CentralUS"
       spoke2-resource-group = "spoke2-vnet-rg"
@@ -304,9 +304,9 @@ V této části jsou vytvořeny dva skripty paprsku. Každý skript definuje vir
     }
     ```
      
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
   
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Ověření hvězdicové sítě s využitím Terraformu v Azure](./terraform-hub-spoke-validation.md)
+> [Ověření sítě centra a paprsků pomocí Terraformu v Azure](./terraform-hub-spoke-validation.md)

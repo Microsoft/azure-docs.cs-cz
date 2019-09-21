@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights pro aplikace konzoly | Dokumentace Microsoftu
-description: Monitorování webových aplikací pro dostupnost, výkon a využití.
+title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
+description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a využití.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,24 +13,29 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 0c2a28462633d47ad1d3f247793e3fcf6f4d40c0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795443"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169450"
 ---
-# <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
+# <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
-Musíte mít předplatné s [Microsoft Azure](https://azure.com). Přihlaste se pomocí účtu Microsoft, které můžete mít zřízen pro Windows, Xbox Live a dalším cloudovým službám Microsoftu. Váš tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby vás přidal k ní pomocí svého účtu Microsoft.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje monitorovat webovou aplikaci pro účely dostupnosti, výkonu a využití.
+
+K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se pomocí účet Microsoft, kterou můžete potřebovat pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. Váš tým může mít k Azure předplatné organizace: Požádejte vlastníka, aby vás do něho přidal pomocí účet Microsoft.
+
+> [!NOTE]
+> K dispozici je nová verze beta Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), a proto se dá použít v .NET Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo novější.
+Po vydání stabilní verze tohoto nového balíčku bude tento dokument zastaralý.
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Typ aplikace vyberte **Obecné**.
-* Zkopírujte klíč instrumentace. Vyhledejte klíč v **Essentials** rozevíracího seznamu nový prostředek vytvořený. 
-* Nainstalujte nejnovější [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíčku.
-* Nastavení klíče instrumentace v kódu před sledování žádnou telemetrii (nebo nastavte proměnnou prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli mít ručně sledovat telemetrii a podívejte se na webu Azure portal
+* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
+* Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili. 
+* Nainstalujte nejnovější balíček [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
+* Před sledováním jakékoli telemetrie (nebo nastavením proměnné prostředí APPINSIGHTS_INSTRUMENTATIONKEY) nastavte klíč instrumentace ve vašem kódu. Potom byste měli být schopni ručně sledovat telemetrii a vidět ji na Azure Portal
 
 ```csharp
 // you may use different options to create configuration as shown later in this article
@@ -40,21 +45,21 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* Nainstalujte nejnovější verzi [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček – automaticky sleduje HTTP, SQL nebo některých jiných volání externích závislostí.
+* Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.
 
-Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby se co nejdříve stane inicializace. 
+Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí `ApplicationInsights.config` souboru. Ujistěte se, že k inicializaci dojde co nejdříve. 
 
 > [!NOTE]
-> Odkaz na pokyny **soubor ApplicationInsights.config** platí pouze pro aplikace, které cílí na rozhraní .NET Framework a neplatí pro aplikace .NET Core.
+> Pokyny odkazující na **ApplicationInsights. config** platí jenom pro aplikace, které cílí na .NET Framework a nevztahují se na aplikace .NET Core.
 
-### <a name="using-config-file"></a>Pomocí konfiguračního souboru
-Ve výchozím nastavení, Application Insights SDK hledá `ApplicationInsights.config` souboru v pracovním adresáři při `TelemetryConfiguration` se vytváří
+### <a name="using-config-file"></a>Použití konfiguračního souboru
+Ve výchozím nastavení Application Insights SDK při `ApplicationInsights.config` `TelemetryConfiguration` vytváření v pracovním adresáři vyhledá soubor.
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
-Můžete také zadat cesta ke konfiguračnímu souboru.
+Můžete také zadat cestu ke konfiguračnímu souboru.
 
 ```csharp
 using System.IO;
@@ -62,9 +67,9 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 var telemetryClient = new TelemetryClient(configuration);
 ```
 
-Další informace najdete v tématu [odkaz na soubor konfigurace](configuration-with-applicationinsights-config.md).
+Další informace najdete v tématu [Referenční dokumentace ke konfiguračnímu souboru](configuration-with-applicationinsights-config.md).
 
-Úplný příklad konfiguračního souboru se může zobrazit nainstalováním nejnovější verze [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) balíčku. Tady je **minimální** konfigurace závislostí kolekce, které se rovná v příkladu kódu.
+Úplný příklad konfiguračního souboru můžete získat instalací nejnovější verze balíčku [Microsoft. ApplicationInsights. windowsserver](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) . Zde je **minimální** konfigurace pro kolekci závislostí, která je ekvivalentní k příkladu kódu.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -94,11 +99,11 @@ Další informace najdete v tématu [odkaz na soubor konfigurace](configuration-
 
 ```
 
-### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace shromažďování telemetrie z kódu
+### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace kolekce telemetrie z kódu
 > [!NOTE]
-> Čtení konfiguračního souboru není podporován v rozhraní .NET Core. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+> Čtení konfiguračního souboru není v rozhraní .NET Core podporováno. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
-* Při spuštění aplikace vytvořit a nakonfigurovat `DependencyTrackingTelemetryModule` instance – musí být typu singleton a pro dobu životnosti aplikace musí být zachovány.
+* Při spuštění aplikace vytvořte a nakonfigurujte `DependencyTrackingTelemetryModule` instanci – musí být typu Singleton a musí být zachována pro dobu života aplikace.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -118,20 +123,20 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Přidat inicializátory běžné telemetrie
+* Přidat běžné Inicializátory telemetrie
 
 ```csharp
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Pokud jste vytvořili konfiguraci s prostým `TelemetryConfiguration()` konstruktor, musíte kromě povolení podpory korelace. **Není potřeba** Pokud čtení konfigurace ze souboru používá `TelemetryConfiguration.CreateDefault()` nebo `TelemetryConfiguration.Active`.
+Pokud jste vytvořili konfiguraci pomocí jednoduchého `TelemetryConfiguration()` konstruktoru, je nutné povolit podporu korelace navíc. Není **nutné** , pokud si přečtete konfiguraci ze souboru, používá `TelemetryConfiguration.CreateDefault()` se `TelemetryConfiguration.Active`nebo.
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* Můžete také chtít nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* Můžete také chtít nainstalovat a inicializovat modul sběrače čítače výkonu, jak je popsáno [zde](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/) .
 
 
 #### <a name="full-example"></a>Úplný příklad
@@ -205,6 +210,6 @@ namespace ConsoleApp
 
 ```
 
-## <a name="next-steps"></a>Další postup
-* [Monitorovat závislosti](../../azure-monitor/app/asp-net-dependencies.md) zobrazíte, pokud REST, SQL nebo jiných externích prostředků vás zpomalují.
-* [Použití rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání vlastních událostí a metrik pro podrobnější přehled výkonu a využití vaší aplikace.
+## <a name="next-steps"></a>Další kroky
+* [Sledujte závislosti](../../azure-monitor/app/asp-net-dependencies.md) , abyste viděli, jestli REST, SQL nebo jiné externí prostředky zpomalují vaši práci.
+* [Pomocí rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) můžete odesílat vlastní události a metriky pro podrobnější přehled o výkonu a využití vaší aplikace.

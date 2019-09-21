@@ -3,7 +3,7 @@ title: Rozšíření a funkce virtuálních počítačů Azure pro Linux | Micro
 description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure seskupená podle toho, co poskytují nebo zlepšují.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
-ms.openlocfilehash: 1a3fe1f70143e2c33a3e4d309991f1174eb2d6dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092397"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169010"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -235,7 +235,7 @@ Agent virtuálního počítače se systémem Linux obsahuje kód *agenta zřizov
 
 Podporované verze agentů můžou používat automatické aktualizace. Jediný kód, který lze aktualizovat, je *kód pro zpracování rozšíření*, nikoli kód zřizování. *Kód zřizovacího agenta* je kód spustit jako.
 
-*Kód pro manipulaci* s rozšířeními zodpovídá za komunikaci s prostředky infrastruktury Azure a zpracovává operace rozšíření virtuálních počítačů, jako jsou instalace, stav generování sestav, aktualizace jednotlivých rozšíření a jejich odebrání. Aktualizace obsahují opravy zabezpečení, opravy chyb a vylepšení *kódu pro zpracování rozšíření*.
+*Kód pro manipulaci s rozšířeními* zodpovídá za komunikaci s prostředky infrastruktury Azure a zpracovává operace rozšíření virtuálních počítačů, jako jsou instalace, stav generování sestav, aktualizace jednotlivých rozšíření a jejich odebrání. Aktualizace obsahují opravy zabezpečení, opravy chyb a vylepšení *kódu pro zpracování rozšíření*.
 
 Při instalaci agenta se vytvoří nadřazený démon. Tato nadřazená položka potom vytvoří podřízený proces, který se používá ke zpracování rozšíření. Pokud je pro agenta k dispozici aktualizace, bude stažena, Nadřazená aktivita zastaví podřízený proces, provede upgrade a pak ji restartuje. Pokud by došlo k potížím s aktualizací, nadřazený proces se vrátí zpět na předchozí podřízenou verzi.
 
@@ -259,7 +259,7 @@ V předchozím příkladu je výstup nadřazeného objektu nebo balíčku nasaze
 
 "Agent stavu cíle" je verze automatického aktualizace.
 
-Důrazně doporučujeme, abyste pro agenta vždy měli automatické aktualizace, AutoUpdate [. Enabled = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Tato možnost není povolená znamená, že je potřeba aktualizovat agenta ručně a Nezískávat opravy chyb a zabezpečení.
+Důrazně doporučujeme, abyste pro agenta vždy měli automatické aktualizace, [AutoUpdate. Enabled = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Tato možnost není povolená znamená, že je potřeba aktualizovat agenta ručně a Nezískávat opravy chyb a zabezpečení.
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
@@ -410,6 +410,6 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 | Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření Azure Diagnostics](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Rozšíření přístupu k virtuálnímu počítači Azure |Správa uživatelů a přihlašovacích údajů |[Rozšíření přístupu virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).

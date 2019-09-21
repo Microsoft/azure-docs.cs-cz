@@ -3,16 +3,16 @@ title: Postup vytvoření zásad konfigurace hostů
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače se systémem Windows nebo Linux.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161936"
+ms.locfileid: "71172464"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -62,24 +62,22 @@ Pokud vaše konfigurace vyžaduje jenom prostředky, které jsou integrované s 
 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Požadavky na vlastní prostředky konfigurace hosta
 
-Když konfigurace hosta Audituje počítač, nejprve se `Test-TargetResource` spustí a určí, jestli je ve správném stavu.  Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní.  Pokud je `$false` logická hodnota pro libovolný prostředek v konfiguraci, spustí `Get-TargetResource`se zprostředkovatel.
-Pokud logická hodnota `$true` `Get-TargetResource` není volána.
+Když konfigurace hosta Audituje počítač, nejprve se `Test-TargetResource` spustí a určí, jestli je ve správném stavu. Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní. Pokud je `$false` logická hodnota pro libovolný prostředek v konfiguraci, spustí `Get-TargetResource`se zprostředkovatel. Pokud logická hodnota není `$true` `Get-TargetResource` volána.
 
-Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která nebyla pro konfiguraci požadovaného stavu systému Windows nutná.
+Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která není potřebná pro konfiguraci požadovaného stavu Windows.
 
 - Vrácená zatřiďovací tabulka musí zahrnovat vlastnost s názvem **důvody**.
 - Vlastnost důvody musí být pole.
 - Každá položka v poli musí být zatřiďovací tabulka s klíči s názvem **Code** a **frází**.
 
-Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou informace zobrazeny, když je počítač nekompatibilní.
-Jednotlivé položky si můžete představit z důvodů, proč prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být nekompatibilní s více než jedním důvodem.
+Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou informace zobrazeny, když je počítač nekompatibilní. Jednotlivé položky si můžete představit z důvodů, proč prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být nekompatibilní s více než jedním důvodem.
 
-Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, kdy prostředek není kompatibilní jako hodnota **fráze**.  **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se použil k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit pro audit počítače, pokud je možné zachytit výstup a vrátit ho jako řetězcovou hodnotu pro vlastnost **fráze** .
+Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **fráze**. **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se použil k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit pro audit počítače, pokud je možné zachytit výstup a vrátit ho jako řetězcovou hodnotu pro vlastnost **fráze** .
 
-- **Kód** (řetězec): Název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu.  Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
-    - Příkladem může být Registry: Registry: keynotpresent.
+- **Kód** (řetězec): Název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu. Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
+  - Příkladem může být`registry:registry:keynotpresent`
 - **Fráze** (řetězec): Uživatelsky čitelný text, který vysvětluje, proč nastavení nedodržuje předpisy.
-    - Příkladem může být, že $key klíč registru není v počítači přítomen.
+  - Příkladem může být`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,7 +92,7 @@ return @{
 
 #### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
 
-Pro vývojáře, kteří chtějí urychlit proces zahájení práce a práci z ukázkového kódu, existuje projekt komunity s názvem **projekt konfigurace hosta** jako šablona pro modul [sádry](https://github.com/powershell/plaster) prostředí PowerShell.  Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu.  Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
+Pro vývojáře, kteří chtějí urychlit proces zahájení práce a práci z ukázkového kódu, existuje projekt komunity s názvem **projekt konfigurace hosta** jako šablona pro modul [sádry](https://github.com/powershell/plaster) prostředí PowerShell. Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu. Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
@@ -177,15 +175,23 @@ Dokončený balíček musí být uložený v umístění, ke kterému mají př�
 
 V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné klíče používané v době běhu, ukládat je do Azure Key Vault. Tento návrh se implementuje v rámci vlastních prostředků DSC.
 
-Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem. Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+1. Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem.
 
-Vytvořte instanci Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
-Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+   Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Přiřaďte počítači identitu přiřazenou uživatelem. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+1. Vytvořte instanci Key Vault.
 
-Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače. Adresu URL třídy Key Vault lze předat prostředku jako vlastnosti, takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
+   Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
+   Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+
+1. Přiřaďte počítači identitu přiřazenou uživatelem.
+
+   Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+   Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+
+1. Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače.
+
+   Adresu URL třídy Key Vault lze předat prostředku jako vlastnosti, takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
 
 Následující příklad kódu lze použít ve vlastním prostředku k načtení tajných kódů z Key Vault pomocí uživatelsky přiřazené identity. Hodnota vrácená z požadavku na Key Vault je prostý text. Jako osvědčený postup si ho uložte v rámci objektu přihlašovacích údajů.
 
@@ -264,8 +270,7 @@ Pokud chcete tento příkaz použít k vytvoření uživatelského rozhraní pro
 
 Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr s názvem **Parameters**.
-Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a automaticky vytvoří všechny požadované oddíly souborů použité k vytvoření každé definice Azure Policy.
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr s názvem **Parameters**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a automaticky vytvoří všechny požadované oddíly souborů použité k vytvoření každé definice Azure Policy.
 
 Následující příklad vytvoří Azure Policy pro audit služby, kde uživatel vybere ze seznamu služeb v době přiřazování zásad.
 
@@ -294,7 +299,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-V případě zásad pro Linux zahrňte `AttributesYmlContent` do konfigurace vlastnost a příslušné hodnoty odpovídajícím způsobem přepsat. Agent konfigurace hosta automaticky vytvoří soubor YaML používaný nespecifikací k ukládání atributů. Viz následující příklad.
+V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a příslušné hodnoty odpovídajícím způsobem přepsat. Agent konfigurace hosta automaticky vytvoří soubor YaML používaný nespecifikací k ukládání atributů. Viz následující příklad.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -356,18 +361,14 @@ S definicemi zásad a iniciativ vytvořenými v Azure se posledním krokem při�
 
 Po publikování vlastního Azure Policy pomocí vlastního balíčku obsahu jsou k dispozici dvě pole, která je potřeba aktualizovat, pokud chcete publikovat novou verzi.
 
-- **Verze**: Když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.  Vlastnost aktualizuje verzi přiřazení konfigurace hosta v novém souboru zásad tak, aby rozšíření rozpoznalo aktualizaci balíčku.
-- **contentHash**: Tato vlastnost je automaticky aktualizována pomocí `New-GuestConfigurationPolicy` rutiny.  Jedná se o hodnotu hash balíčku, kterou `New-GuestConfigurationPackage`vytvořil.  Vlastnost musí být správná pro `.zip` soubor, který publikujete.  Je-li `contentUri` aktualizována pouze vlastnost, například v případě, že by někdo mohl provést ruční změnu definice zásady z portálu, rozšíření nepřijme balíček obsahu.
+- **Verze**: Když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta v novém souboru zásad tak, aby rozšíření rozpoznalo aktualizaci balíčku.
+- **contentHash**: Tato vlastnost je automaticky aktualizována pomocí `New-GuestConfigurationPolicy` rutiny. Jedná se o hodnotu hash balíčku, kterou `New-GuestConfigurationPackage`vytvořil. Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud je aktualizována pouze vlastnost **contentUri** , například v případě, kdy by někdo mohl provést ruční změnu definice zásady z portálu, rozšíření nepřijme balíček obsahu.
 
-Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze.
-Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
+Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
 
-Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell.
-Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC.
-Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování.
-Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: Převeďte Zásady skupiny do](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
+Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC. Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování. Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: Převeďte Zásady skupiny do](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
 Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VOLITELNÉ Podepisování balíčků konfigurace hosta
@@ -403,15 +404,13 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Dobrá Reference k vytváření GPG klíčů pro použití s počítači se systémem Linux je poskytována článkem na GitHubu, který [generuje nový klíč GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
-Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Tato značka se dá doručovat ve velkém rozsahu pomocí Azure Policy. Podívejte se na ukázku [použít značku a její výchozí hodnotu](../samples/apply-tag-default-value.md) .
-Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
+Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Tato značka se dá doručovat ve velkém rozsahu pomocí Azure Policy. Podívejte se na ukázku [použít značku a její výchozí hodnotu](../samples/apply-tag-default-value.md) . Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>Tisk Řešení potíží s přiřazením zásad konfigurace hostů
 
-Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů.
-Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 
-Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů.  Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
+Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů. Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
 
 ## <a name="next-steps"></a>Další kroky
 

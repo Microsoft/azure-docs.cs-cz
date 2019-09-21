@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058282"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169546"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -29,14 +29,14 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 
 [Sada Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) může monitorovat aplikace bez ohledu na to, kde nebo jak jsou spuštěny. Pokud vaše aplikace běží a má síťové připojení k Azure, je možné shromažďovat telemetrii. Monitorování Application Insights je podporováno všude, kde je podporováno rozhraní .NET Core. Podpora zahrnuje:
 * **Operační systém**: Windows, Linux nebo Mac.
-* **Způsob hostování**: V procesu nebo mimo proces. 
+* **Způsob hostování**: V procesu nebo mimo proces.
 * **Metoda nasazení**: Závislá na rozhraní nebo na samostatné úrovni.
-* **Webový server**: Služba IIS (Internet Information Server) nebo Kestrel. 
+* **Webový server**: Služba IIS (Internet Information Server) nebo Kestrel.
 * **Hostující platforma**: Funkce Web Apps Azure App Service, virtuální počítač Azure, Docker, Azure Kubernetes Service (AKS) atd.
 * **ROZHRANÍ IDE**: Visual Studio, VS Code nebo příkazový řádek.
 
 > [!NOTE]
-> Pokud používáte ASP.NET Core 3,0-Preview společně s Application Insights, použijte prosím verzi [2.8.0-beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) nebo vyšší. Toto je jediná verze známá pro správnou práci s ASP.NET Core 3,0. Pro aplikace ASP.NET Core 3,0 se zatím nepodporuje připojování na základě sady Visual Studio.
+> Pokud používáte ASP.NET Core 3,0-Preview společně s Application Insights, použijte prosím verzi [2.8.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3) nebo vyšší. Toto je jediná verze známá pro správnou práci s ASP.NET Core 3,0. Pro aplikace ASP.NET Core 3,0 se zatím nepodporuje připojování na základě sady Visual Studio.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -122,7 +122,7 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
     > [!NOTE]
     > Klíč instrumentace zadaný v kódu služby WINS přes proměnnou `APPINSIGHTS_INSTRUMENTATIONKEY`prostředí, která je službou WINS nad jinými možnostmi.
 
-## <a name="run-your-application"></a>Spustit aplikaci
+## <a name="run-your-application"></a>Spusťte aplikaci
 
 Spusťte aplikaci a proveďte na ni požadavky. Telemetrii by teď měla přesměrovat do Application Insights. Sada Application Insights SDK automaticky shromažďuje následující telemetrii.
 
@@ -151,7 +151,7 @@ Podpora [čítačů výkonu](https://azure.microsoft.com/documentation/articles/
 
 Verze sady SDK 2.8.0-beta3 a vyšší podporuje shromažďování EventCounters. Sada SDK ve výchozím nastavení shromažďuje následující čítače a tyto čítače lze dotazovat buď v Průzkumník metrik, nebo pomocí analytického dotazu pod tabulkou PerformanceCounter. Název čítačů bude ve formátu "kategorie | Čítač ".
 
-|Kategorie | Čítač|
+|Category | Čítač|
 |---------------|-------|
 |System. Runtime | využití procesoru |
 |System. Runtime | pracovní sada |
@@ -241,7 +241,7 @@ Můžete upravit několik běžných nastavení tak, že `ApplicationInsightsSer
 |AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
 
-Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOptions` najdete v](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs) tématu seznam nejaktuálnějších dat.
+Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOptions` najdete v](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) tématu seznam nejaktuálnějších dat.
 
 ### <a name="sampling"></a>Vzorkování
 

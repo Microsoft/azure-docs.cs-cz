@@ -3,7 +3,7 @@ title: Instalace a konfigurace Terraformu pro zřizování prostředků Azure | 
 description: Naučte se instalovat a konfigurovat Terraformu k vytváření prostředků Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090724"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168730"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalace a konfigurace Terraformu pro zřizování prostředků Azure
  
@@ -37,7 +37,7 @@ Pro instalaci Terraformu [Stáhněte](https://www.terraform.io/downloads.html) p
 
 Ověřte konfiguraci cesty pomocí `terraform` příkazu. Zobrazí se seznam dostupných možností Terraformu, jako v následujícím příkladu výstupu:
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -94,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 Vytvořte soubor v `test.tf` prázdném adresáři a vložte ho do následujícího skriptu.
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -111,7 +111,7 @@ terraform init
 
 Výstup se podobá následujícímu příkladu:
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -125,7 +125,7 @@ terraform apply
 
 Výstup se podobá následujícímu příkladu:
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create
@@ -145,7 +145,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste nainstalovali Terraformu nebo použili Cloud Shell ke konfiguraci přihlašovacích údajů Azure a zahájení vytváření prostředků ve vašem předplatném Azure. Pokud chcete vytvořit úplnější Terraformu nasazení v Azure, přečtěte si následující článek:
 

@@ -1,21 +1,18 @@
 ---
-title: 'Rychlý start: Nastavení geograficky umělé inteligentní analýzy'
-titleSuffix: Azure Data Science Virtual Machine
-description: Zjistěte, jak vytvořit a nakonfigurovat virtuální počítač geograficky AI datové vědy. Počítač pro virtuální Geo AI datové vědy poskytuje nástroje pro vytváření řešení AI a ML pomocí zeměpisné údaje.
-keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
-services: machine-learning
+title: 'Rychlý start: Vytvoření DSVM s Geo AI'
+description: Nakonfigurujte a vytvořte geografickou Data Science Virtual Machine AI v Azure pro geoprostorové analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208062"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170729"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Rychlý start: Nastavení geograficky umělého virtuálního počítače s logikou v Azure 
 

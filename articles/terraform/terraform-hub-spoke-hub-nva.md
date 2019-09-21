@@ -1,40 +1,40 @@
 ---
-title: Vytvoření zařízení virtuální sítě centra s využitím Terraformu v Azure
-description: Implementuje kurz vytvoření virtuální sítě rozbočovače, který funguje jako společný bod připojení mezi všech ostatních sítí
+title: Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure
+description: Kurz implementuje vytvoření virtuální sítě rozbočovače, která funguje jako společný bod připojení mezi všemi ostatními sítěmi.
 services: terraform
 ms.service: azure
-keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, centra s paprsky, rozbočovače.
+keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, středový paprsek a centrum.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 4155a67f70ccc238c6046c07dded7f0214689617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886822"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173411"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Kurz: Vytvoření zařízení virtuální sítě centra s využitím Terraformu v Azure
+# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Kurz: Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure
 
-A **zařízení VPN** je zařízení, která poskytuje externí připojení k místní síti. Zařízení VPN může být hardwarové zařízení nebo softwarové řešení. Příkladem řešení softwaru je směrování a vzdálený přístup (RRAS) ve Windows serveru 2012. Další informace o zařízení VPN najdete v tématu [informace o zařízeních VPN pro připojení typu Site-to-Site VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+**Zařízení VPN** je zařízení, které poskytuje externí připojení k místní síti. Zařízení VPN může být hardwarové zařízení nebo softwarové řešení. Jedním z příkladů softwarového řešení je služba Směrování a vzdálený přístup (RRAS) ve Windows Serveru 2012. Další informace o zařízeních VPN najdete v tématu [informace o zařízeních VPN pro připojení typu Site-to-site VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
-Azure podporuje širokou řadu síťových virtuálních zařízení, ze kterého chcete vybrat. V tomto kurzu se používá Ubuntu image. Další informace o širokou řadu řešení zařízení podporované v Azure, najdete v článku [síťová zařízení domovskou stránku](https://azure.microsoft.com/solutions/network-appliances/).
+Azure podporuje širokou škálu síťových virtuálních zařízení, ze kterých si můžete vybrat. Pro tento kurz se používá Ubuntu obrázek. Další informace o nejrůznějších řešeních zařízení podporovaných v Azure najdete na [domovské stránce Síťová zařízení](https://azure.microsoft.com/solutions/network-appliances/).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Můžete implementovat virtuální síť centra v topologii centra s paprsky HCL (HashiCorp Language)
-> * Použití Terraformu k vytvoření centra sítě virtuálního počítače, který bude fungovat jako zařízení
+> * Použití HCL (HashiCorp Language) k implementaci virtuální sítě rozbočovače v topologii centra s paprsky
+> * Pomocí Terraformu vytvořit virtuální počítač sítě rozbočovače, který funguje jako zařízení
 > * Použití Terraformu k povolení tras pomocí rozšíření CustomScript
-> * Použití Terraformu k vytvoření hvězdicové brány směrovací tabulky
+> * Použití Terraformu k vytvoření směrovacích tabulek brány hub a paprsků
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure](./terraform-hub-spoke-introduction.md).
-1. [Vytvořit místní virtuální sítě s využitím Terraformu v Azure](./terraform-hub-spoke-on-prem.md).
-1. [S využitím Terraformu v Azure vytvořit virtuální síť centra](./terraform-hub-spoke-hub-network.md).
+1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
+1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
+1. [Vytvořte virtuální síť centra pomocí terraformu v Azure](./terraform-hub-spoke-hub-network.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
@@ -58,9 +58,9 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="declare-the-hub-network-appliance"></a>Deklarovat síťové zařízení centra
 
-Vytvoření konfiguračního souboru Terraform, který deklaruje virtuální místní sítě.
+Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuální síť.
 
-1. Ve službě Cloud Shell, vytvořte nový soubor s názvem `hub-nva.tf`.
+1. V Cloud Shell vytvořte nový soubor s názvem `hub-nva.tf`.
 
     ```bash
     code hub-nva.tf
@@ -68,7 +68,7 @@ Vytvoření konfiguračního souboru Terraform, který deklaruje virtuální mí
 
 1. Do editoru vložte následující kód:
     
-    ```JSON
+    ```hcl
     locals {
       prefix-hub-nva         = "hub-nva"
       hub-nva-location       = "CentralUS"
@@ -272,9 +272,9 @@ Vytvoření konfiguračního souboru Terraform, který deklaruje virtuální mí
 
     ```
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednoho paprsku virtuálních sítí s využitím Terraformu v Azure](./terraform-hub-spoke-spoke-network.md)
+> [Vytvoření virtuálních sítí paprsků pomocí Terraformu v Azure](./terraform-hub-spoke-spoke-network.md)

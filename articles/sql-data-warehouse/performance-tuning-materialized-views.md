@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985347"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172784"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu pomocí materializovaná zobrazení 
 Vyhodnocená zobrazení v Azure SQL Data Warehouse poskytují nízkou metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
@@ -34,7 +34,7 @@ Většina požadavků na standardní zobrazení se stále vztahuje na materializ
 
 | Porovnání                     | Zobrazení                                         | Materialized View             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|Zobrazit definici                 | Uložené v Azure Data Warehouse.              | Uložené v Azure Data Warehouse.    
+|Zobrazení definice                 | Uložené v Azure Data Warehouse.              | Uložené v Azure Data Warehouse.    
 |Zobrazit obsah                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.                                             
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno                          
 |Rychlost načtení dat zobrazení ze složitých dotazů     | pomalé                                         | Rychlá  
@@ -84,19 +84,21 @@ Tady je obecné pokyny k používání materializovaná zobrazení pro zlepšen�
 
 **Návrh pro vaše úlohy**
 
-- Než začnete vytvářet materializovaná zobrazení, je důležité porozumět vašim úlohám z hlediska vzorů dotazů, důležitosti, četnosti a velikosti výsledných dat.  
+Než začnete vytvářet materializovaná zobrazení, je důležité porozumět vašim úlohám z hlediska vzorů dotazů, důležitosti, četnosti a velikosti výsledných dat.  
 
-- Uživatelé mohou pro vyhodnocená zobrazení doporučená nástrojem pro optimalizaci dotazů spustit příkaz vysvětlit WITH_RECOMMENDATIONS < SQL_statement >.  Vzhledem k tomu, že tato doporučení jsou specifická pro konkrétní dotazy, materializované zobrazení, které přináší jeden dotaz, nemusí být optimální pro jiné dotazy ve stejné zátěži.  Vyhodnoťte tato doporučení s ohledem na vaše úlohy.  Ideální materializovaná zobrazení jsou ta, která mají vliv na výkon úloh.  
+Uživatelé mohou pro vyhodnocená zobrazení doporučená nástrojem pro optimalizaci dotazů spustit příkaz vysvětlit WITH_RECOMMENDATIONS < SQL_statement >.  Vzhledem k tomu, že tato doporučení jsou specifická pro konkrétní dotazy, materializované zobrazení, které přináší jeden dotaz, nemusí být optimální pro jiné dotazy ve stejné zátěži.  Vyhodnoťte tato doporučení s ohledem na vaše úlohy.  Ideální materializovaná zobrazení jsou ta, která mají vliv na výkon úloh.  
 
 **Mějte na paměti kompromisy mezi rychlejšími dotazy a náklady** 
 
-- Pro každé materializované zobrazení jsou k dispozici náklady na úložiště a náklady na zobrazení údržby v rámci pracovní sady řazené kolekce členů. K dispozici je jeden stěhovací kolekci členů na instanci Azure SQL Data Warehouseho serveru.  Pokud existuje příliš mnoho vyhodnocených zobrazení, zatížení pracovního postupu řazené kolekce členů se zvýší a výkon dotazů, které využívají materializovaná zobrazení, může zhoršit, pokud pracovní podíl v programu řazené kolekce členů nemůže přesunout data do segmentů indexu dostatečně rychle.  Uživatelé by měli zjistit, zda náklady vzniklé ze všech hodnocených zobrazení mohou být posunuty pomocí nárůstu výkonu dotazů.  Spustit tento dotaz pro seznam materializované zobrazení v databázi: 
+Pro každé materializované zobrazení jsou k dispozici náklady na úložiště dat a náklady na údržbu zobrazení.  Při změně dat v základních tabulkách se zvyšuje velikost vyhodnoceného zobrazení a jeho fyzická struktura se také změní.  Aby se zabránilo snížení výkonu dotazů, jsou jednotlivé materializované zobrazení uchovávány samostatně modulem datového skladu, včetně přesunutí řádků z rozdílového úložiště do segmentů indexu columnstore a sloučení změn dat.  Úloha údržby získá vyšší hodnotu, když se zvýší počet materializovaná zobrazení a základní tabulka.   Uživatelé by měli zjistit, zda náklady vzniklé ze všech hodnocených zobrazení mohou být posunuty pomocí nárůstu výkonu dotazů.  
+
+Tento dotaz můžete spustit pro seznam materializované zobrazení v databázi: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 Možnosti snížení počtu materializovaná zobrazení: 
 

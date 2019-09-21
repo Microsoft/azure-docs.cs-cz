@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092313"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174016"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -70,7 +70,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 }
 ```
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>properties
 
 | Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
@@ -177,7 +177,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 | Kód ukončení | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 0 | Úspěšná operace |
+| 0 | Operace byla úspěšná. |
 | 1 | Nesprávné použití rozšíření | Kontrolovat výstupní protokol spuštění |
 | 10 | Integrační služby Linux pro Hyper-V a Azure nejsou dostupné nebo nainstalované | Kontrolovat výstup lspci |
 | 11 | Grafický procesor NVIDIA se v této velikosti virtuálního počítače nenašel. | Použít [podporovanou velikost virtuálního počítače a operační systém](../linux/n-series-driver-setup.md) |
@@ -190,7 +190,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).
 
 Další informace o virtuálních počítačích řady N-Series najdete v tématu [velikosti virtuálních počítačů optimalizované pro procesory GPU](../linux/sizes-gpu.md).

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744082"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172066"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -90,7 +90,7 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
     >[!IMPORTANT]
     >Vzhledem k tomu, že soubor Local. Settings. JSON může obsahovat tajné kódy, je nutné jej vyloučit ze správy zdrojového kódu projektu.
 
-V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úpravou souboru Function. JSON](#javascript-2) nebo [přidáním parametru do funkce knihovny C# tříd](#c-class-library-2).
+V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úpravou souboru Function. JSON](#add-a-function-to-your-project) nebo [přidáním parametru do funkce knihovny C# tříd](#add-a-function-to-your-project).
 
 [Do projektu můžete také přidat novou funkci](#add-a-function-to-your-project).
 
@@ -98,11 +98,11 @@ V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úprav
 
 S výjimkou triggerů HTTP a Timer jsou vazby implementovány v balíčcích rozšíření. Je nutné nainstalovat balíčky rozšíření pro aktivační události a vazby, které je potřebují. Proces pro instalaci rozšíření vazby závisí na jazyku vašeho projektu.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>Knihovna\# tříd jazyka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) v okně terminálu nainstalujete balíčky rozšíření, které v projektu potřebujete. Následující příkaz nainstaluje rozšíření Azure Storage, které implementuje vazby pro úložiště objektů blob, front a tabulek.
 
@@ -110,19 +110,23 @@ Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-packag
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>Přidání funkce do projektu
 
 Novou funkci můžete přidat do existujícího projektu pomocí jedné z předdefinovaných šablon triggeru Functions. Chcete-li přidat novou aktivační proceduru funkce, vyberte F1 a otevřete tak paletu příkazů a vyhledejte a spusťte příkaz **Azure Functions: Vytvořit funkci** Podle zobrazených výzev vyberte typ triggeru a definujte požadované atributy triggeru. Pokud aktivační událost vyžaduje přístupový klíč nebo připojovací řetězec pro připojení ke službě, připravte ji ještě před vytvořením triggeru funkce.
 
 Výsledky této akce závisí na jazyku vašeho projektu:
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 V projektu se vytvoří nová složka. Složka obsahuje nový soubor Functions. JSON a nový soubor kódu JavaScriptu.
 
-### <a name="c-class-library"></a>Knihovna\# tříd jazyka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Do projektu C# se přidá nový soubor knihovny tříd (. cs).
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>Přidat vstupní a výstupní vazby
 
@@ -130,7 +134,7 @@ Funkci můžete rozšířit přidáním vstupních a výstupních vazeb. Proces 
 
 Následující příklady se připojují k frontě úložiště `outqueue`s názvem, kde je připojovací řetězec pro účet úložiště nastavený `MyStorageConnection` v nastavení aplikace v souboru Local. Settings. JSON.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code umožňuje přidat do souboru Function. JSON vazby pomocí praktické sady výzev. Vazbu vytvoříte tak, že kliknete pravým tlačítkem (CTRL + kliknete na macOS **) do složky** funkce a vyberete **Přidat vazbu**:
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Další informace najdete v referenčních odkazech na [výstupní vazbu úložiště fronty](functions-bindings-storage-queue.md#output---javascript-example) .
 
-### <a name="c-class-library"></a>Knihovna\# tříd jazyka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Aktualizujte metodu funkce tak, aby do definice `Run` metody přidal následující parametr:
 
@@ -181,6 +185,8 @@ Tento kód vyžaduje přidání následujícího `using` příkazu:
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 `msg` Parametr`ICollector<T>` je typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. Do kolekce přidáte jednu nebo více zpráv. Tyto zprávy se po dokončení funkce odesílají do fronty.
 
@@ -208,7 +214,7 @@ Následující kroky publikují projekt na novou aplikaci funkcí vytvořenou s 
 
 1. **V Azure: V** oblasti funkce vyberte ikonu **nasadit do Function App** .
 
-    ![Nastavení Function App](./media/functions-develop-vs-code/function-app-publish-project.png)
+    ![Nastavení aplikace funkcí](./media/functions-develop-vs-code/function-app-publish-project.png)
 
 1. Pokud nejste přihlášení, budete vyzváni k **přihlášení k Azure**. Můžete si také **vytvořit bezplatný účet Azure**. Po přihlášení z prohlížeče se vraťte na Visual Studio Code.
 

@@ -1,54 +1,50 @@
 ---
-title: Vytvoření vlastní akce a prostředků v Azure
-description: V tomto kurzu se přenášejí prostřednictvím vytvoření vlastní akce a prostředků v Azure Resource Manageru a integrovat je do vlastních pracovních postupů pro šablon Azure Resource Manageru, rozhraní příkazového řádku Azure, Azure Policy a protokolu aktivit.
+title: Vytváření vlastních akcí a prostředků v Azure
+description: V tomto kurzu se naučíte vytvářet vlastní akce a prostředky v Azure Resource Manager. Také ukazuje, jak vlastní pracovní postupy spolupracují s Azure Resource Managermi šablonami, Azure CLI, Azure Policy a protokolem aktivit Azure.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 4bbfcf070611e3df5c0fe47070f2ab6961111e07
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: dc1601e344c371a5f0feaadd272a2c6ff40af031
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800040"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172936"
 ---
-# <a name="create-custom-actions-and-resources-in-azure"></a>Vytvoření vlastní akce a prostředků v Azure
+# <a name="create-custom-actions-and-resources-in-azure"></a>Vytváření vlastních akcí a prostředků v Azure
 
-Vlastní zprostředkovatelé umožňují přizpůsobit pracovní postupy v Azure. Vlastní zprostředkovatel je kontrakt mezi Azure a `endpoint`. Umožňuje přidání nové vlastní rozhraní API do Azure Resource Manageru k povolení nové nasazení a možnosti správy. V tomto kurzu budou procházet jednoduchý příklad, jak přidat nové akce a prostředky do Azure a tom, jak integrovat se.
+Vlastní poskytovatel je kontrakt mezi Azure a koncovým bodem. Pomocí vlastních zprostředkovatelů můžete změnit pracovní postupy v Azure přidáním nových rozhraní API do Azure Resource Manager. Pomocí těchto vlastních rozhraní API můžou Správce prostředků využívat nové možnosti nasazení a správy.
 
-V tomto kurzu je rozdělen do následujících kroků:
+V tomto kurzu se seznámíte s jednoduchým příkladem, jak přidat nové akce a prostředky do Azure a jak je integrovat.
 
-- Nastavení funkce Azure pro Azure Vlastní zprostředkovatelé
-- Vytváření koncový bod RESTful pro vlastní zprostředkovatelé
-- Vytvoření a použití vlastního zprostředkovatele
+## <a name="set-up-azure-functions-for-azure-custom-providers"></a>Nastavení Azure Functions pro vlastní zprostředkovatele Azure
 
-## <a name="setup-azure-functions-for-azure-custom-providers"></a>Nastavení funkce Azure pro Azure Vlastní zprostředkovatelé
+V první části tohoto kurzu se dozvíte, jak nastavit aplikaci Azure Functions pro práci s vlastními poskytovateli:
 
-Tato část kurzu přejde do podrobností o tom, jak nastavit funkce Azure pro práci s vlastní poskytovatele. Vlastní zprostředkovatelé můžete pracovat se žádné veřejné adresy URL.
+- [Nastavení Azure Functions pro vlastní zprostředkovatele Azure](./tutorial-custom-providers-function-setup.md)
 
-- [Nastavení funkce Azure pro Azure Vlastní zprostředkovatelé](./tutorial-custom-providers-function-setup.md)
+Vlastní zprostředkovatelé můžou pracovat s jakoukoli veřejnou adresou URL.
 
-## <a name="authoring-a-restful-endpoint-for-custom-providers"></a>Vytváření koncový bod RESTful pro vlastní zprostředkovatelé
+## <a name="author-a-restful-endpoint-for-custom-providers"></a>Vytvořit RESTful koncový bod pro vlastní zprostředkovatele
 
-Tato část kurzu přejde do podrobností o vytváření koncový bod RESTful pro vlastní zprostředkovatele.
+Druhá část tohoto kurzu popisuje, jak vytvořit RESTful koncový bod pro vlastní zprostředkovatele:
 
-- [Vytváření koncový bod RESTful pro vlastní zprostředkovatelé](./tutorial-custom-providers-function-authoring.md)
+- [Vytváření RESTful koncového bodu pro vlastní zprostředkovatele](./tutorial-custom-providers-function-authoring.md)
 
-## <a name="creating-and-utilizing-the-custom-provider"></a>Vytvoření a použití vlastního zprostředkovatele
+## <a name="create-and-use-a-custom-provider"></a>Vytvoření a použití vlastního zprostředkovatele
 
-Tato část kurzu přejde do podrobností o tom, jak vytvořit vlastního zprostředkovatele a používání vlastních akcí a prostředky.
+Třetí část tohoto kurzu popisuje, jak vytvořit vlastního poskytovatele a použít vlastní akce a prostředky:
 
-- [Vytvářet a využívat Azure vlastního zprostředkovatele](./tutorial-custom-providers-create.md)
+- [Vytvoření a použití vlastního zprostředkovatele](./tutorial-custom-providers-create.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme se dozvěděli o vlastních poskytovatelů a jak takovou sestavit. Chcete pokračovat v dalším kroku kurzu:
+V tomto kurzu jste se dozvěděli o vlastních poskytovatelích a o tom, jak je sestavit. Pokud chcete pokračovat k dalšímu kurzu, přečtěte si téma [kurz: Nastavte Azure Functions pro vlastní poskytovatele](./tutorial-custom-providers-function-setup.md)Azure.
 
-- [Kurz: Nastavení funkce Azure pro Azure Vlastní zprostředkovatelé](./tutorial-custom-providers-function-setup.md)
-
-Pokud hledáte rychlý start nebo odkazů, tady je pár užitečných odkazů:
+Pokud hledáte odkazy nebo rychlý Start, tady je několik užitečných odkazů:
 
 - [Rychlé zprovoznění: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Postup: Přidání vlastní akce k rozhraní Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Postup: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Postup: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

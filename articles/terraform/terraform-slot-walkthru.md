@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889154"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169821"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použití Terraformu ke zřízení infrastruktury pomocí slotů nasazení Azure
 
@@ -26,7 +26,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Účet GitHub**: Je nutné [Githubu](https://www.github.com) účet vytvořit fork a používání testů úložiště GitHub.
+- **Účet GitHub**: Potřebujete účet [GitHub](https://www.github.com) pro rozvětvení a používání úložiště GitHub test.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraformu
 
@@ -74,7 +74,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -266,7 +266,7 @@ Prohození dvou slotů nasazení otestujete následovně:
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 

@@ -1,10 +1,10 @@
 ---
-title: Nelze se připojit pomocí RDP k virtuálnímu počítači s Windows v Azure | Dokumentace Microsoftu
-description: Řešení potíží, pokud se nemůžete připojit k virtuálnímu počítači Windows v Azure pomocí vzdálené plochy
-keywords: Chyba vzdálené plochy, Chyba připojení ke vzdálené ploše, se nemůže připojit k virtuálnímu počítači, řešení potíží vzdálené plochy
+title: Nejde se připojit pomocí protokolu RDP k virtuálnímu počítači s Windows v Azure | Microsoft Docs
+description: Řešení potíží, když se nemůžete připojit k virtuálnímu počítači s Windows v Azure pomocí vzdálené plochy
+keywords: Chyba vzdálené plochy, Chyba připojení ke vzdálené ploše, nelze se připojit k virtuálnímu počítači, odstraňování potíží vzdálené plochy
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -14,129 +14,129 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
-ms.author: roiyz
-ms.openlocfilehash: 711c5cb8211de8b5ec27cfd76f12c34c84676e64
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: akjosh
+ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710503"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168750"
 ---
-# <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure
-Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
+# <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure
+Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede některými nejběžnějšími metodami řešení potíží s připojením RDP. 
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 <a id="quickfixrdp"></a>
 
 ## <a name="quick-troubleshooting-steps"></a>Rychlé kroky pro řešení potíží
-Po provedení každého kroku Poradce při potížích opakujte pokus o připojení k virtuálnímu počítači:
+Po každém kroku řešení potíží se pokuste znovu připojit k virtuálnímu počítači:
 
-1. Resetujte konfiguraci vzdálené plochy.
-2. Zkontrolujte skupinu zabezpečení sítě pravidla / Cloud Services – koncové body.
-3. Zkontrolujte protokoly konzoly virtuálního počítače.
-4. Resetování síťové rozhraní virtuálního počítače.
-5. Kontrola stavu prostředků virtuálních počítačů.
-6. Resetování hesla virtuálního počítače.
+1. Resetovat konfiguraci vzdálené plochy.
+2. Zkontroluje pravidla skupiny zabezpečení sítě/Cloud Services koncové body.
+3. Zkontrolujte protokoly konzoly virtuálních počítačů.
+4. Resetujte síťovou kartu virtuálního počítače.
+5. Podívejte se na Resource Health virtuálního počítače.
+6. Resetujte heslo virtuálního počítače.
 7. Restartujte virtuální počítač.
-8. Opětovné nasazení virtuálního počítače.
+8. Znovu nasaďte virtuální počítač.
 
-Pokud potřebujete podrobnější kroky a vysvětlení pokračujte ve čtení. Ověřte tuto místní síťové vybavení, jako jsou například routery a bránami firewall neblokují odchozí TCP port 3389, jak je uvedeno v [podrobné řešení potíží se scénáři RDP](detailed-troubleshoot-rdp.md).
+Pokud potřebujete podrobnější kroky a vysvětlení, pokračujte ve čtení. Ověřte, že místní síťové zařízení, jako jsou směrovače a brány firewall, neblokuje odchozí port TCP 3389, jak je uvedeno v [podrobných scénářích řešení potíží s](detailed-troubleshoot-rdp.md)protokolem RDP.
 
 > [!TIP]
-> Pokud **připojit** tlačítko pro váš virtuální počítač je zobrazeno šedě na portálu a nejste připojení k Azure prostřednictvím [Express Route](../../expressroute/expressroute-introduction.md) nebo [Site-to-Site VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) připojení, musíte vytvořit a před použitím protokolu RDP přiřadit veřejnou IP adresu vašeho virtuálního počítače. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+> Pokud je tlačítko **připojit** pro váš virtuální počítač na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , musíte před použitím protokolu RDP vytvořit a přiřadit virtuální počítač k veřejné IP adrese. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
 
-## <a name="ways-to-troubleshoot-rdp-issues"></a>Způsoby řešení potíží s RDP
-Řešení potíží s virtuální počítače vytvořené pomocí modelu nasazení Resource Manager pomocí jedné z následujících metod:
+## <a name="ways-to-troubleshoot-rdp-issues"></a>Způsoby řešení potíží s protokolem RDP
+Pomocí jedné z následujících metod můžete řešit problémy s virtuálními počítači vytvořenými pomocí modelu nasazení Správce prostředků:
 
-* Azure portal – nemají výborné Pokud potřebujete rychle resetovat přihlašovací údaje pro konfiguraci nebo uživatel RDP a nástroje Azure, nainstalované.
-* Azure PowerShell – Pokud umíte pracovat se příkazový řádek Powershellu, rychle resetovat protokol RDP konfigurace nebo přihlašovací údaje uživatele pomocí rutin Azure Powershellu.
+* Azure Portal – Skvělé, pokud potřebujete rychle Resetovat konfiguraci RDP nebo přihlašovací údaje uživatele a nemáte nainstalované nástroje Azure Tools.
+* Azure PowerShell – Pokud jste obeznámeni s příkazovým řádkem PowerShellu, můžete rychle obnovit konfiguraci RDP nebo přihlašovací údaje uživatele pomocí rutin Azure PowerShell.
 
-Můžete také vyhledat kroky pro řešení potíží virtuální počítače vytvořené pomocí [model nasazení Classic](#troubleshoot-vms-created-using-the-classic-deployment-model).
+Můžete také vyhledat postup řešení potíží s virtuálními počítači vytvořenými pomocí [modelu nasazení Classic](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
 <a id="fix-common-remote-desktop-errors"></a>
 
-## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí webu Azure portal
-Po provedení každého kroku Poradce při potížích zkuste se znovu připojit k virtuálnímu počítači. Pokud se pořád nemůžete připojit, vyzkoušejte další krok.
+## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí Azure Portal
+Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLNÍmu počítači. Pokud se stále nemůžete připojit, zkuste další krok.
 
-1. **Resetujte připojení RDP**. Tento krok řešení problémů s resetuje se konfigurace RDP když jsou zakázaná vzdálená připojení nebo brány Windows Firewall protokol RDP blokují pravidla, třeba.
+1. **Resetujte připojení RDP**. Tento krok řešení potíží resetuje konfiguraci RDP, když jsou zakázaná vzdálená připojení nebo blokuje protokol RDP, například pravidla brány Windows Firewall.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **resetovat heslo** tlačítko. Nastavit **režimu** k **resetovat jenom konfiguraci** a potom klikněte na tlačítko **aktualizace** tlačítka:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **resetovat heslo** . Nastavte **režim** pouze pro **resetování konfigurace** a potom klikněte na tlačítko **aktualizovat** :
    
-    ![Resetovat konfiguraci RDP na webu Azure Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Pravidla skupiny zabezpečení sítě ověřte, zda**. Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat platná pravidla skupin zabezpečení a ověřte, že příchozí "skupina zabezpečení sítě existuje pravidlo a je nastaveno jako prioritní pro port RDP (ve výchozím nastavení 3389). Další informace najdete v tématu [přenosy dat pomocí efektivní pravidla zabezpečení pro řešení potíží s virtuálním počítači](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+    ![Resetovat konfiguraci RDP v Azure Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
+2. **Ověřte pravidla skupiny zabezpečení sítě**. Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat účinná pravidla skupiny zabezpečení, abyste měli jistotu, že příchozí pravidlo "Povolit" NSG existuje a že má nastavenou prioritu pro port RDP (standardně 3389). Další informace najdete v tématu [použití platných pravidel zabezpečení k řešení potíží s tokem provozu virtuálních počítačů](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-3. **Diagnostika spouštění virtuálních počítačů zkontrolujte**. Tento poradce při potížích krok kontroluje protokoly konzoly virtuálního počítače k určení, jestli se virtuální počítač hlásí problém. Ne všechny virtuální počítače mají povolení diagnostiky spouštění tak tento krok řešení problémů může být volitelný.
+3. **Zkontrolujte diagnostiku spouštění virtuálního počítače**. Tento krok řešení potíží zkontroluje protokoly konzoly virtuálních počítačů a určí, jestli tento virtuální počítač hlásí problém. Ne všechny virtuální počítače mají zapnutou diagnostiku spouštění, takže tento krok odstraňování potíží může být nepovinný.
    
-    Konkrétní kroky jsou nad rámec tohoto článku, ale může to znamenat problém širší, ovlivňuje možnosti připojení RDP. Další informace o kontrole protokoly konzoly a snímku obrazovky virtuálního počítače najdete v tématu [diagnostiky spouštění pro virtuální počítače](boot-diagnostics.md).
+    Konkrétní kroky pro řešení potíží jsou nad rámec tohoto článku, ale mohou poukazovat na širší problém, který má vliv na připojení RDP. Další informace o kontrole protokolů konzoly a snímku obrazovky virtuálního počítače najdete v tématu [Diagnostika spouštění pro virtuální počítače](boot-diagnostics.md).
 
-4. **Resetování síťové rozhraní virtuálního počítače**. Další informace najdete v tématu [resetování síťové karty pro virtuální počítač Windows Azure](../windows/reset-network-interface.md).
-5. **Kontrola stavu prostředků virtuálních počítačů**. Tento poradce při potížích krok ověřuje, že nejsou žádné známé problémy s platformou Azure, který může mít vliv na připojení k virtuálnímu počítači.
+4. **Resetujte síťovou kartu virtuálního počítače**. Další informace najdete v tématu [Postup resetování síťové karty pro virtuální počítače Azure s Windows](../windows/reset-network-interface.md).
+5. **Podívejte se na Resource Health virtuálního počítače**. Tento krok pro odstraňování potíží ověřuje, že neexistují žádné známé problémy s platformou Azure, které by mohly mít vliv na připojení k virtuálnímu počítači.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **Resource health** tlačítko. V dobrém stavu virtuálního počítače hlásí jako **dostupné**:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **stav prostředku** . **K dispozici**jsou sestavy virtuálních počítačů, které jsou v pořádku:
    
-    ![Kontrola stavu prostředků virtuálních počítačů na webu Azure Portal](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Resetovat přihlašovací údaje uživatele**. Toto řešení potíží resetuje heslo k účtu místního správce, když nejste jistí nebo jste zapomněli přihlašovací údaje.  Po přihlášení k virtuálnímu počítači, měli byste resetovat heslo tohoto uživatele.
+    ![Ověřte stav prostředku virtuálního počítače v Azure Portal](./media/troubleshoot-rdp-connection/check-resource-health.png)
+6. **Resetovat přihlašovací údaje uživatele** Tento krok řešení potíží resetuje heslo na účtu místního správce, pokud si nejste jistí nebo jste zapomněli přihlašovací údaje.  Po přihlášení k virtuálnímu počítači byste měli resetovat heslo pro tohoto uživatele.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **resetovat heslo** tlačítko. Ujistěte se, že **režimu** je nastavena na **resetovat heslo** a pak zadejte svoje uživatelské jméno a nové heslo. Nakonec klikněte na tlačítko **aktualizace** tlačítka:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **resetovat heslo** . Ujistěte se, že je **režim** nastavený na **resetování hesla** , a pak zadejte uživatelské jméno a nové heslo. Nakonec klikněte na tlačítko **aktualizovat** :
    
-    ![Resetovat přihlašovací údaje uživatele na webu Azure Portal](./media/troubleshoot-rdp-connection/reset-password.png)
-7. **Restartujte virtuální počítač**. Tento krok Poradce při potížích můžete opravit základní problémů, na které má virtuální počítač.
+    ![Resetovat přihlašovací údaje uživatele v Azure Portal](./media/troubleshoot-rdp-connection/reset-password.png)
+7. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal a klikněte na tlačítko **přehled** kartu. Klikněte na tlačítko **restartovat** tlačítka:
+    Vyberte svůj virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . Klikněte na tlačítko **restartovat** :
    
-    ![Restartujte virtuální počítač na webu Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
-8. **Opětovné nasazení virtuálního počítače**. Tento poradce při potížích krok znovu nasadí virtuální počítač do jiného hostitele v rámci Azure a opravte všechny základní platformy nebo problémy se sítí.
+    ![Restartujte virtuální počítač v Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
+8. **Znovu nasaďte virtuální**počítač. Tento krok řešení potíží znovu nasadí váš virtuální počítač na jiného hostitele v rámci Azure, aby se opravily jakékoli základní platformy nebo problémy se sítí.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **znovu nasadit** tlačítko a pak klikněte na tlačítko **znovu nasadit**:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **znovu nasadit** a potom klikněte na tlačítko **znovu nasadit**:
    
-    ![Opětovné nasazení virtuálního počítače na webu Azure Portal](./media/troubleshoot-rdp-connection/redeploy-vm.png)
+    ![Znovu nasaďte virtuální počítač do Azure Portal](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
-    Po dokončení této operace, dojde ke ztrátě dat dočasné disky a dynamické IP adresy, které jsou spojené s virtuálním Počítačem se aktualizují.
+    Po dokončení této operace dojde ke ztrátě dočasných dat na disku a aktualizuje se dynamická IP adresa přidružená k virtuálnímu počítači.
 
-9. **Zkontrolujte směrování**. Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).
+9. **Ověřte směrování**. Použijte možnost [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) Network Watcher k potvrzení, že trasa nebrání směrování provozu do nebo z virtuálního počítače. Můžete si také projít efektivní trasy a zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [použití efektivních tras k řešení potíží s tokem provozu virtuálních počítačů](../../virtual-network/diagnose-network-routing-problem.md).
 
-10. Ujistěte se, že všechny místní bráně firewall nebo brána firewall v počítači, povoluje odchozí provoz TCP 3389 do Azure.
+10. Zajistěte, aby všechny místní brány firewall nebo brána firewall v počítači umožňovaly odchozí přenos TCP 3389 do Azure.
 
-Pokud stále dochází k potíží s RDP, můžete si [žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud stále dochází k problémům s protokolem RDP, můžete [otevřít žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)protokolem RDP.
 
-## <a name="troubleshoot-using-azure-powershell"></a>Řešení potíží s využitím Azure Powershellu
-Pokud jste tak dosud neučinili, [instalace a konfigurace nejnovější Azure PowerShell](/powershell/azure/overview).
+## <a name="troubleshoot-using-azure-powershell"></a>Řešení potíží pomocí Azure PowerShell
+Pokud jste to ještě neudělali, [nainstalujte a nakonfigurujte nejnovější Azure PowerShell](/powershell/azure/overview).
 
-Následující příklady používají proměnné, jako `myResourceGroup`, `myVM`, a `myVMAccessExtension`. Tyto názvy proměnných a umístění nahraďte vlastními hodnotami.
+Následující příklady používají proměnné `myResourceGroup`, jako například, `myVM`a. `myVMAccessExtension` Nahraďte názvy a umístění těchto proměnných vlastními hodnotami.
 
 > [!NOTE]
-> Resetovat přihlašovací údaje uživatele a konfigurace protokolu RDP s použitím [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. V následujících příkladech `myVMAccessExtension` je název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existující rozšíření pomocí `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` zkontrolovat vlastnosti virtuálního počítače. Chcete-li zobrazit název, vyhledejte v části "Rozšíření" výstupu.
+> Pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell resetujete přihlašovací údaje uživatele a konfiguraci RDP. V následujících příkladech `myVMAccessExtension` je název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existujícího rozšíření pomocí nástroje `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a ověřit vlastnosti virtuálního počítače. Chcete-li zobrazit název, podívejte se do části "přípony" ve výstupu.
 
-Po provedení každého kroku Poradce při potížích zkuste se znovu připojit k virtuálnímu počítači. Pokud se pořád nemůžete připojit, vyzkoušejte další krok.
+Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLNÍmu počítači. Pokud se stále nemůžete připojit, zkuste další krok.
 
-1. **Resetujte připojení RDP**. Tento krok řešení problémů s resetuje se konfigurace RDP když jsou zakázaná vzdálená připojení nebo brány Windows Firewall protokol RDP blokují pravidla, třeba.
+1. **Resetujte připojení RDP**. Tento krok řešení potíží resetuje konfiguraci RDP, když jsou zakázaná vzdálená připojení nebo blokuje protokol RDP, například pravidla brány Windows Firewall.
    
-    Následující příklad resetuje připojení RDP na virtuální počítač s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
+    Následující příklad obnoví připojení RDP na virtuálním počítači s názvem `myVM` `WestUS` v umístění a ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
-2. **Pravidla skupiny zabezpečení sítě ověřte, zda**. Tento poradce při potížích krok ověřuje, že máte pravidlo skupiny zabezpečení sítě tak, aby povolovala provoz protokolu RDP. Výchozí port pro protokol RDP je TCP port 3389. Pravidlo pro povolení provozu protokolu RDP nemusí být vytvořen automaticky při vytvoření virtuálního počítače.
+2. **Ověřte pravidla skupiny zabezpečení sítě**. Tento krok řešení potíží ověří, že máte ve skupině zabezpečení sítě pravidlo, které povoluje provoz protokolu RDP. Výchozím portem pro protokol RDP je port TCP 3389. Při vytváření virtuálního počítače se nemusí automaticky vytvořit pravidlo pro povolení provozu RDP.
    
-    Nejprve přiřadit všechna konfigurační data pro vaše skupiny zabezpečení sítě `$rules` proměnné. Následující příklad získá informace o skupině zabezpečení sítě s názvem `myNetworkSecurityGroup` ve skupině prostředků s názvem `myResourceGroup`:
+    Nejprve přiřaďte k `$rules` proměnné všechna konfigurační data pro skupinu zabezpečení sítě. Následující příklad získá informace o skupině zabezpečení sítě s názvem `myNetworkSecurityGroup` ve skupině prostředků s názvem: `myResourceGroup`
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
-    Nyní zobrazte pravidla, které jsou nakonfigurované pro tuto skupinu zabezpečení sítě. Ověřte, zda existuje pravidlo umožňující TCP port 3389 pro příchozí připojení následujícím způsobem:
+    Nyní zobrazte pravidla konfigurovaná pro tuto skupinu zabezpečení sítě. Ověřte, že existuje pravidlo umožňující povolit port TCP 3389 pro příchozí připojení následujícím způsobem:
    
     ```powershell
     $rules.SecurityRules
     ```
    
-    Následující příklad ukazuje zabezpečení platné pravidlo, které povoluje provoz protokolu RDP. Můžete zobrazit `Protocol`, `DestinationPortRange`, `Access`, a `Direction` jsou správně nakonfigurovány:
+    Následující příklad ukazuje platné pravidlo zabezpečení, které povoluje provoz protokolu RDP. `Protocol`Můžete zobrazit `DestinationPortRange` ,,a`Direction`správněnakonfigurovat: `Access`
    
     ```powershell
     Name                     : default-allow-rdp
@@ -154,16 +154,16 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
     Direction                : Inbound
     ```
    
-    Pokud nemáte pravidlo, které umožní provoz protokolu RDP, [vytvořte pravidlo skupiny zabezpečení sítě](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Povolte TCP port 3389.
-3. **Resetovat přihlašovací údaje uživatele**. Tento krok Poradce při potížích resetuje heslo pro účet místního správce, který zadáte, pokud si nejste jisti, nebo jste zapomněli přihlašovací údaje.
+    Pokud nemáte pravidlo, které povoluje provoz protokolu RDP, [Vytvořte pravidlo skupiny zabezpečení sítě](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Povolte port TCP 3389.
+3. **Resetovat přihlašovací údaje uživatele** Tento krok řešení potíží resetuje heslo na účtu místního správce, který zadáte, pokud si nejste jistí nebo jste zapomněli přihlašovací údaje.
    
-    Nejprve zadejte uživatelské jméno a nové heslo tak, že přiřadíte přihlašovací údaje, aby `$cred` proměnné následujícím způsobem:
+    Nejdřív zadejte uživatelské jméno a nové heslo přiřazením přihlašovacích údajů k `$cred` proměnné následujícím způsobem:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Nyní aktualizujte přihlašovací údaje na vašem virtuálním počítači. Následující příklad aktualizuje přihlašovací údaje na virtuálním počítači s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
+    Teď aktualizujte přihlašovací údaje na svém VIRTUÁLNÍm počítači. V následujícím příkladu se aktualizují přihlašovací údaje na virtuálním počítači `WestUS` s názvem `myVM` v umístění a ve skupině `myResourceGroup`prostředků s názvem:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -171,79 +171,79 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
     ```
-4. **Restartujte virtuální počítač**. Tento krok Poradce při potížích můžete opravit základní problémů, na které má virtuální počítač.
+4. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+    Následující příklad restartuje virtuální počítač `myVM` s názvem ve skupině prostředků `myResourceGroup`s názvem:
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
-5. **Opětovné nasazení virtuálního počítače**. Tento poradce při potížích krok znovu nasadí virtuální počítač do jiného hostitele v rámci Azure a opravte všechny základní platformy nebo problémy se sítí.
+5. **Znovu nasaďte virtuální**počítač. Tento krok řešení potíží znovu nasadí váš virtuální počítač na jiného hostitele v rámci Azure, aby se opravily jakékoli základní platformy nebo problémy se sítí.
    
-    Následující příklad znovu nasadí virtuální počítač s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
+    V následujícím příkladu se znovu nasadí virtuální počítač `myVM` s názvem `WestUS` v umístění a ve skupině prostředků s `myResourceGroup`názvem:
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Zkontrolujte směrování**. Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).
+6. **Ověřte směrování**. Použijte možnost [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) Network Watcher k potvrzení, že trasa nebrání směrování provozu do nebo z virtuálního počítače. Můžete si také projít efektivní trasy a zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [použití efektivních tras k řešení potíží s tokem provozu virtuálních počítačů](../../virtual-network/diagnose-network-routing-problem.md).
 
-7. Ujistěte se, že všechny místní bráně firewall nebo brána firewall v počítači, povoluje odchozí provoz TCP 3389 do Azure.
+7. Zajistěte, aby všechny místní brány firewall nebo brána firewall v počítači umožňovaly odchozí přenos TCP 3389 do Azure.
 
-Pokud stále dochází k potíží s RDP, můžete si [žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud stále dochází k problémům s protokolem RDP, můžete [otevřít žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)protokolem RDP.
 
-## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Řešení potíží virtuální počítače vytvořené pomocí modelu nasazení Classic
-Po provedení každého kroku Poradce při potížích opakujte pokus o připojení k virtuálnímu počítači.
+## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Řešení potíží s virtuálními počítači vytvořenými pomocí modelu nasazení Classic
+Po každém kroku řešení potíží se pokuste znovu připojit k virtuálnímu počítači.
 
-1. **Resetujte připojení RDP**. Tento krok řešení problémů s resetuje se konfigurace RDP když jsou zakázaná vzdálená připojení nebo brány Windows Firewall protokol RDP blokují pravidla, třeba.
+1. **Resetujte připojení RDP**. Tento krok řešení potíží resetuje konfiguraci RDP, když jsou zakázaná vzdálená připojení nebo blokuje protokol RDP, například pravidla brány Windows Firewall.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Klikněte na tlačítko **... Další** tlačítko a pak klikněte na **resetovat vzdálený přístup**:
+    V Azure Portal vyberte svůj virtuální počítač. Klikněte na **... Další** tlačítko a potom klikněte na **resetovat vzdálený přístup**:
    
-    ![Resetovat konfiguraci RDP na webu Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
-2. **Ověřte koncové body cloudových služeb**. Tento poradce při potížích krok ověřuje, že máte koncové body ve vašich cloudových službách tak, aby povolovala provoz protokolu RDP. Výchozí port pro protokol RDP je TCP port 3389. Pravidlo pro povolení provozu protokolu RDP nemusí být vytvořen automaticky při vytvoření virtuálního počítače.
+    ![Resetovat konfiguraci RDP v Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+2. **Ověřte Cloud Services koncové body**. Tento krok řešení potíží ověří, zda máte v Cloud Services koncové body, aby bylo možné provoz protokolu RDP povolit. Výchozím portem pro protokol RDP je port TCP 3389. Při vytváření virtuálního počítače se nemusí automaticky vytvořit pravidlo pro povolení provozu RDP.
    
-   Vyberte svůj virtuální počítač na webu Azure Portal. Klikněte na tlačítko **koncové body** tlačítko, zobrazí se koncové body aktuálně nakonfigurovaný pro váš virtuální počítač. Ověřte, že existují koncové body, které umožní provoz protokolu RDP na portu TCP 3389.
+   V Azure Portal vyberte svůj virtuální počítač. Kliknutím na tlačítko **koncové body** zobrazíte aktuálně nakonfigurované koncové body pro váš virtuální počítač. Ověřte, zda existují koncové body, které povolují provoz protokolu RDP na portu TCP 3389.
    
-   Následující příklad ukazuje platné koncové body, které umožňují provoz protokolu RDP:
+   Následující příklad ukazuje platné koncové body, které povolují přenosy protokolu RDP:
    
-   ![Ověřte koncové body služby Cloud Services na webu Azure Portal](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![Ověření koncových bodů Cloud Services v Azure Portal](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   Pokud nemáte koncový bod, který umožňuje provoz protokolu RDP, [vytvoření koncového bodu služby Cloud Services](../windows/classic/setup-endpoints.md). Povolit TCP na privátní port 3389.
-3. **Diagnostika spouštění virtuálních počítačů zkontrolujte**. Tento poradce při potížích krok kontroluje protokoly konzoly virtuálního počítače k určení, jestli se virtuální počítač hlásí problém. Ne všechny virtuální počítače mají povolení diagnostiky spouštění tak tento krok řešení problémů může být volitelný.
+   Pokud nemáte koncový bod, který umožňuje provoz protokolu RDP, [vytvořte Cloud Services koncový bod](../windows/classic/setup-endpoints.md). Povolte protokol TCP na privátní port 3389.
+3. **Zkontrolujte diagnostiku spouštění virtuálního počítače**. Tento krok řešení potíží zkontroluje protokoly konzoly virtuálních počítačů a určí, jestli tento virtuální počítač hlásí problém. Ne všechny virtuální počítače mají zapnutou diagnostiku spouštění, takže tento krok odstraňování potíží může být nepovinný.
    
-    Konkrétní kroky jsou nad rámec tohoto článku, ale může to znamenat problém širší, ovlivňuje možnosti připojení RDP. Další informace o kontrole protokoly konzoly a snímku obrazovky virtuálního počítače najdete v tématu [diagnostiky spouštění pro virtuální počítače](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/).
-4. **Kontrola stavu prostředků virtuálních počítačů**. Tento poradce při potížích krok ověřuje, že nejsou žádné známé problémy s platformou Azure, který může mít vliv na připojení k virtuálnímu počítači.
+    Konkrétní kroky pro řešení potíží jsou nad rámec tohoto článku, ale mohou poukazovat na širší problém, který má vliv na připojení RDP. Další informace o kontrole protokolů konzoly a snímku obrazovky virtuálního počítače najdete v tématu [Diagnostika spouštění pro virtuální počítače](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/).
+4. **Podívejte se na Resource Health virtuálního počítače**. Tento krok pro odstraňování potíží ověřuje, že neexistují žádné známé problémy s platformou Azure, které by mohly mít vliv na připojení k virtuálnímu počítači.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **Resource Health** tlačítko. V dobrém stavu virtuálního počítače hlásí jako **dostupné**:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **Resource Health** . **K dispozici**jsou sestavy virtuálních počítačů, které jsou v pořádku:
    
-    ![Kontrola stavu prostředků virtuálních počítačů na webu Azure Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Resetovat přihlašovací údaje uživatele**. Tento krok Poradce při potížích resetuje heslo pro účet místního správce, který zadáváte při nejste jistí nebo jste zapomněli přihlašovací údaje.  Po přihlášení k virtuálnímu počítači, měli byste resetovat heslo tohoto uživatele.
+    ![Ověřte stav prostředku virtuálního počítače v Azure Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+5. **Resetovat přihlašovací údaje uživatele** Tento krok řešení potíží resetuje heslo na účtu místního správce, který zadáte, pokud si nejste jistí nebo jste zapomněli přihlašovací údaje.  Po přihlášení k virtuálnímu počítači byste měli resetovat heslo pro tohoto uživatele.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů podokně nastavení **podpora a řešení potíží** v dolní části seznamu části. Klikněte na tlačítko **resetovat heslo** tlačítko. Zadejte svoje uživatelské jméno a nové heslo. Nakonec klikněte na tlačítko **Uložit** tlačítka:
+    V Azure Portal vyberte svůj virtuální počítač. Posuňte se dolů v podokně nastavení do části **Podpora a řešení potíží** v blízkosti dolního okraje seznamu. Klikněte na tlačítko **resetovat heslo** . Zadejte své uživatelské jméno a nové heslo. Nakonec klikněte na tlačítko **Uložit** :
    
-    ![Resetovat přihlašovací údaje uživatele na webu Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
-6. **Restartujte virtuální počítač**. Tento krok Poradce při potížích můžete opravit základní problémů, na které má virtuální počítač.
+    ![Resetovat přihlašovací údaje uživatele v Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+6. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Vyberte svůj virtuální počítač na webu Azure Portal a klikněte na tlačítko **přehled** kartu. Klikněte na tlačítko **restartovat** tlačítka:
+    Vyberte svůj virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . Klikněte na tlačítko **restartovat** :
    
-    ![Restartujte virtuální počítač na webu Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![Restartujte virtuální počítač v Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
-7. Ujistěte se, že všechny místní bráně firewall nebo brána firewall v počítači, povoluje odchozí provoz TCP 3389 do Azure.
+7. Zajistěte, aby všechny místní brány firewall nebo brána firewall v počítači umožňovaly odchozí přenos TCP 3389 do Azure.
 
-Pokud stále dochází k potíží s RDP, můžete si [žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud stále dochází k problémům s protokolem RDP, můžete [otevřít žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)protokolem RDP.
 
-## <a name="troubleshoot-specific-rdp-errors"></a>Poradce při potížích s konkrétními chybami protokolu RDP
-Při pokusu o připojení k vašemu virtuálnímu počítači pomocí protokolu RDP, může dojít k určité chybové zprávě. Následují nejběžnější chybové zprávy:
+## <a name="troubleshoot-specific-rdp-errors"></a>Řešení konkrétních chyb protokolu RDP
+Při pokusu o připojení k VIRTUÁLNÍmu počítači přes RDP se může objevit konkrétní chybová zpráva. Níže jsou uvedené nejběžnější chybové zprávy:
 
-* [Vzdálená relace byla odpojena, protože nejsou žádné vzdálené plochy licenční servery mohly poskytnout licenci k dispozici](troubleshoot-specific-rdp-errors.md#rdplicense).
-* [Vzdálená plocha nenašla počítač "name"](troubleshoot-specific-rdp-errors.md#rdpname).
-* [Došlo k chybě ověřování. Místní úřad zabezpečení nelze kontaktovat](troubleshoot-specific-rdp-errors.md#rdpauth).
-* [Chyba zabezpečení Windows: Vaše přihlašovací údaje nefungovala](troubleshoot-specific-rdp-errors.md#wincred).
-* [Počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
+* [Vzdálená relace byla odpojena, protože nejsou k dispozici žádné licenční servery vzdálené plochy pro poskytnutí licence](troubleshoot-specific-rdp-errors.md#rdplicense).
+* [Vzdálená plocha nemůže najít počítač "název"](troubleshoot-specific-rdp-errors.md#rdpname).
+* [Došlo k chybě ověřování. Místní autoritu zabezpečení nelze kontaktovat](troubleshoot-specific-rdp-errors.md#rdpauth).
+* [Chyba zabezpečení systému Windows: Vaše přihlašovací údaje nefungovaly](troubleshoot-specific-rdp-errors.md#wincred).
+* [Tento počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>Další zdroje
-Pokud žádná z těchto chyb došlo k chybě a se pořád nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si na podrobné [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Řešení potíží s kroky k používání aplikace běžící na virtuálním počítači, naleznete v tématu [řešení potíží s přístupem k aplikaci spuštěné na Virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Pokud máte problémy s použitím Secure Shell (SSH) k připojení k virtuálnímu počítači s Linuxem v Azure, najdete v článku [řešení potíží s připojení SSH k virtuálnímu počítači s Linuxem v Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud nedošlo k žádné z těchto chyb a stále se nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si podrobný [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Postup řešení potíží při přístupu k aplikacím běžícím na virtuálním počítači najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud máte problémy s použitím Secure Shell (SSH) pro připojení k virtuálnímu počítači se systémem Linux v Azure, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači se systémem Linux v Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 

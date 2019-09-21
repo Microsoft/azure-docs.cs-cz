@@ -3,7 +3,7 @@ title: Rozšíření a funkce virtuálních počítačů Azure | Microsoft Docs
 description: Přečtěte si, jaká rozšíření virtuálních počítačů Azure jsou a jak se dají používat s virtuálními počítači Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
-ms.author: roiyz
-ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.author: akjosh
+ms.openlocfilehash: deb49267a262705370e48e150cc5ed6c4dc04247
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958832"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168884"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozšíření a funkce virtuálních počítačů Azure
 Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. můžete použít existující image a pak je přizpůsobit jako součást nasazení. dostanete se k vlastnímu podnikání. vytváření obrázků.
@@ -74,7 +74,7 @@ Informace o řešení potíží pro jednotlivá rozšíření najdete v části 
 | Microsoft. recoveryservices. VMSnapshot | [Snímek pro Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o fungování agenta a rozšíření pro Linux najdete v tématu [rozšíření a funkce virtuálních počítačů Azure pro Linux](features-linux.md).
 * Další informace o tom, jak funguje Agent hosta a rozšíření systému Windows, najdete v tématu [rozšíření a funkce virtuálních počítačů Azure pro Windows](features-windows.md).  
 * Informace o instalaci agenta hosta systému Windows najdete v tématu [Přehled agenta virtuálního počítače Azure s Windows](agent-windows.md).  

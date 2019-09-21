@@ -1,31 +1,31 @@
 ---
-title: Vytvoření clusteru Kubernetes pomocí služby Application Gateway jako kontroler příchozího přenosu dat pomocí Azure Kubernetes Service (AKS)
-description: Kurz znázorňující způsob vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí služby Application Gateway jako kontroler příchozího přenosu dat
+title: Vytvoření clusteru Kubernetes s Application Gateway jako kontroleru příchozího přenosu dat pomocí Azure Kubernetes Service (AKS)
+description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
 services: terraform
 ms.service: azure
-keywords: terraform, devops, virtuální počítač, azure, kubernetes, příchozího přenosu dat, služba application gateway
+keywords: terraformu, DevOps, Virtual Machine, Azure, Kubernetes, příchozí, Application Gateway
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 1/10/2019
-ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 0373b254a900fd34232bb6863c93802fa7b51aab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885417"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169966"
 ---
-# <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes s Application Gateway kontroler příchozího přenosu dat pomocí služby Azure Kubernetes Service a Terraformu
-[Azure Kubernetes Service (AKS)](/azure/aks/) spravuje vaše hostované prostředí Kubernetes. AKS umožňuje rychle a snadno nasadit a spravovat kontejnerizované aplikace bez znalosti Orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
+# <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru s Kubernetes pomocí Application Gatewayho kontroleru příchozího přenosu dat pomocí Azure Kubernetes Service a Terraformu
+[Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes. AKS umožňuje rychle a snadno nasazovat a spravovat aplikace s využitím kontejnerů bez odbornosti pro orchestraci kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
 
-Řadič služby příchozího přenosu dat je část softwaru, která poskytuje reverzní proxy server, směrování provozu konfigurovatelné a ukončení protokolu TLS pro služby Kubernetes. Prostředky Kubernetesu příchozího přenosu dat se používají ke konfiguraci pravidla příchozího přenosu dat a trasy pro jednotlivé služby Kubernetes. Použití kontroler příchozího přenosu dat a pravidla příchozího přenosu dat, jednu IP adresu je možné směrovat provoz do více služeb v clusteru Kubernetes. Azure poskytuje všechny výše uvedené funkce [Application Gateway](/azure/Application-Gateway/), takže se dají ideální kontroler příchozího přenosu dat pro Kubernetes v Azure. 
+Kontroler příchozího přenosu dat je softwarový software, který poskytuje reverzní proxy, konfigurovatelné směrování provozu a ukončení protokolu TLS pro služby Kubernetes Services. Kubernetes příchozí prostředky se používají ke konfiguraci pravidel příchozího přenosu dat a tras pro jednotlivé služby Kubernetes. Pomocí řadiče příchozího přenosu dat a pravidel příchozího přenosu dat se dá jedna IP adresa používat ke směrování provozu do několika služeb v clusteru Kubernetes. Všechny výše uvedené funkce poskytuje Azure [Application Gateway](/azure/Application-Gateway/), což umožňuje ideální kontroler příchozího přenosu dat pro Kubernetes v Azure. 
 
-V tomto kurzu se dozvíte, jak provádět následující úkoly při vytváření [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) cluster AKS pomocí Application Gateway jako kontroler příchozího přenosu dat:
+V tomto kurzu se naučíte, jak provádět následující úlohy při vytváření clusteru [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) pomocí AKS s Application Gateway jako adaptér příchozího přenosu dat:
 
 > [!div class="checklist"]
 > * Použití HCL (Jazyk společnosti HashiCorp) k definování clusteru Kubernetes
-> * Použijte Terraform a vytvoří prostředek služby Application Gateway
+> * Vytvoření prostředku Application Gateway pomocí Terraformu
 > * Použití Terraformu a AKS k vytvoření clusteru Kubernetes
 > * Použití nástroje kubectl k otestování dostupnosti clusteru Kubernetes
 
@@ -33,12 +33,12 @@ V tomto kurzu se dozvíte, jak provádět následující úkoly při vytvářen�
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nakonfigurujte Terraform**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Konfigurace terraformu**: Postupujte podle pokynů v článku [terraformu a nakonfigurujte přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure) .
 
-- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty pro ID aplikace, displayName a heslo.
-  - Spuštěním následujícího příkazu si poznamenejte ID objektu instanční objekt služby
+- **Objekt služby Azure**: Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku Vytvoření instančního [objektu Azure pomocí](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku služby Azure. Poznamenejte si hodnoty pro parametr appId, DisplayName a Password.
+  - Poznamenejte si ID objektu instančního objektu spuštěním následujícího příkazu.
 
-    ```bash
+    ```azurecli
     az ad sp list --display-name <displayName>
     ```
 
@@ -82,7 +82,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.18"
     }
@@ -99,17 +99,21 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     ```bash
     :wq
     ```
-   ## <a name="define-input-variables"></a>Definujte vstupní proměnné
-   Vytvoření konfiguračního souboru Terraform, který zobrazí seznam všech proměnných potřebných pro toto nasazení
-1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`
+
+## <a name="define-input-variables"></a>Definování vstupních proměnných
+Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech proměnných potřebných pro toto nasazení.
+
+1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
+
     ```bash
     vi variables.tf
     ```
+
 1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-2. Do editoru vložte následující kód:
+1. Do editoru vložte následující kód:
     
-    ```JSON
+    ```hcl
     variable "resource_group_name" {
       description = "Name of the resource group already created."
     }
@@ -242,7 +246,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     ```
 
 ## <a name="define-the-resources"></a>Definování prostředků 
-Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředky. 
+Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředky. 
 
 1. Ve Cloud Shellu vytvořte soubor s názvem `resources.tf`.
 
@@ -254,9 +258,9 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
 
 1. Do editoru vložte následující bloky kódu:
 
-    a. Vytvořit lokální blok pro vypočítaný proměnné jak znovu použít
+    a. Vytvořte blok lokálních hodnot pro vypočítané proměnné pro opakované použití.
 
-    ```JSON
+    ```hcl
     # # Locals block for hardcoded names. 
     locals {
         backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
@@ -268,8 +272,10 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
         app_gateway_subnet_name = "appgwsubnet"
     }
     ```
-    b. Vytvořit zdroj dat pro skupinu prostředků, novou identitu uživatele
-    ```JSON
+
+    b. Vytvořte zdroj dat pro skupinu prostředků, novou identitu uživatele.
+
+    ```hcl
     data "azurerm_resource_group" "rg" {
       name = "${var.resource_group_name}"
     }
@@ -284,8 +290,10 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
       tags = "${var.tags}"
     }
     ```
-    c. Vytvoření základní síťových prostředků
-   ```JSON
+
+    c. Vytvořte základní síťové prostředky.
+
+    ```hcl
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
       location            = "${data.azurerm_resource_group.rg.location}"
@@ -328,8 +336,10 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
       tags = "${var.tags}"
     }
     ```
-    d. Vytvořit prostředek služby Application Gateway
-    ```JSON
+
+    d. Vytvořte prostředek Application Gateway.
+
+    ```hcl
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
       resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -393,8 +403,10 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
     ```
-    e. Vytvořit přiřazení role
-    ```JSON
+
+    e. Vytvořte přiřazení rolí.
+
+    ```hcl
     resource "azurerm_role_assignment" "ra1" {
       scope                = "${data.azurerm_subnet.kubesubnet.id}"
       role_definition_name = "Network Contributor"
@@ -424,8 +436,10 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
-    f. Vytvoření clusteru Kubernetes
-    ```JSON
+
+    f. Vytvořte cluster Kubernetes.
+
+    ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
       name       = "${var.aks_name}"
       location   = "${data.azurerm_resource_group.rg.location}"
@@ -502,7 +516,7 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
 
 1. Do editoru vložte následující kód:
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -541,13 +555,13 @@ Vytvořte Terraformu konfigurační soubor, který vytvoří všechny prostředk
     ```
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Nastavení služby Azure Storage k uložení stavu Terraformu
-Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. Nicméně, v prostředí s více praktické účasti několika osob, potřebujete ke sledování stavu na serveru pomocí [služby Azure storage](/azure/storage/). V této části získáte potřebné informace o účtu úložiště (název účtu a klíč účtu) a vytvoříte kontejner úložiště, do kterého se uloží informace o stavu Terraformu.
+Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. Ve více praktických prostředích pro více uživatelů je ale potřeba sledovat stav na serveru pomocí služby [Azure Storage](/azure/storage/). V této části získáte potřebné informace o účtu úložiště (název účtu a klíč účtu) a vytvoříte kontejner úložiště, do kterého se uloží informace o stavu Terraformu.
 
 1. Na webu Azure Portal vyberte v levé nabídce **Všechny služby**.
 
 1. Vyberte **Účty úložiště**.
 
-1. Na kartě **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. **Poznamenejte si název účtu úložiště, kterou vyberete, jako potřebujeme ho později.**
+1. Na kartě **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. **Poznamenejte si název účtu úložiště, který vyberete, jak ho budete potřebovat později.**
 
 1. Na kartě účtu úložiště vyberte **Přístupové klíče**.
 
@@ -559,7 +573,7 @@ Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. T
 
 1. Ve službě Cloud Shell vytvořte v účtu Azure Storage kontejner (nahraďte zástupné hodnoty &lt;YourAzureStorageAccountName> a &lt;YourAzureStorageAccountAccessKey> příslušnými hodnotami vašeho účtu Azure Storage).
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -576,7 +590,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform init“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. Vytvoření souboru proměnných zadávat vstupní hodnoty ve službě Cloud Shell, vytvořte soubor s názvem `main.tf`.
+1. Vytvořte soubor proměnných pro zadání vstupních hodnot v Cloud Shell vytvořte soubor s názvem `main.tf`.
 
     ```bash
     vi terraform.tfvars
@@ -584,9 +598,9 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
 1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-1. Vložte následující proměnné na do editoru vytvořili dříve:
+1. Do editoru vložte následující proměnné, které jste vytvořili dříve:
 
-    ```JSON
+    ```hcl
       resource_group_name = <Name of the Resource Group already created>
 
       location = <Location of the Resource Group>
@@ -617,7 +631,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform plan“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Vytvoření clusteru Kubernetes může trvat několik minut a relace služby Cloud Shell může vypršet. Pokud vyprší časový limit relace Cloud Shellu, provedením kroků v části "Obnovit z časový limit Cloud Shellu" vám k dokončení tohoto kurzu.
+1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Vytvoření clusteru Kubernetes může trvat několik minut a relace služby Cloud Shell může vypršet. Pokud Cloud Shell časový limit relace, můžete postupovat podle kroků v části obnovení z Cloud Shell časového limitu, který vám umožní dokončit tento kurz.
 
     ```bash
     terraform apply out.plan
@@ -627,12 +641,12 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform apply“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-apply-complete.png)
 
-1. Na webu Azure Portal, vyberte **skupiny prostředků** v levé nabídce zobrazíte prostředky vytvořené pro nový cluster Kubernetes ve vybrané skupině prostředků.
+1. V Azure Portal v nabídce vlevo vyberte **skupiny prostředků** , aby se zobrazily prostředky vytvořené pro nový cluster Kubernetes ve vybrané skupině prostředků.
 
     ![Příkazový řádek Cloud Shellu](./media/terraform-k8s-cluster-appgw-with-tf-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Zotavení z vypršení relace služby Cloud Shell
-Pokud vyprší časový limit relace Cloud Shell, můžete obnovit takto:
+Pokud Cloud Shell časový limit relace, můžete k obnovení použít následující postup:
 
 1. Spusťte relaci služby Cloud Shell.
 
@@ -674,8 +688,8 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
     ![Nástroj kubectl vám umožňuje ověřit stav clusteru Kubernetes.](./media/terraform-k8s-cluster-appgw-with-tf-aks/kubectl-get-nodes.png)
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak pomocí Terraformu a AKS vytvořit cluster Kubernetes. Tady jsou některé další prostředky, které vám pomohou získat informace o Terraformu v Azure.
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste zjistili, jak pomocí Terraformu a AKS vytvořit cluster Kubernetes. Tady jsou některé další materiály, které vám pomohou získat další informace o Terraformu v Azure.
  
  > [!div class="nextstepaction"] 
  > [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)

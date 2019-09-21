@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171204"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171489"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace v jazyce Java s Azure App Service v systému Linux a Azure Cosmos DB
 
 Tento kurz vás provede procesem sestavení, konfigurace, nasazení a škálování webových aplikací v jazyce Java v Azure. Až budete hotovi, budete mít aplikaci pro [spouštění pružiny](https://projects.spring.io/spring-boot/) , která ukládá data v [Azure Cosmos DB](/azure/cosmos-db) spuštěná na [Azure App Service v systému Linux](/azure/app-service/containers).
 
-![Aplikace Java spuštěná ve službě Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Aplikace pro spouštění pružiny, která ukládá data do Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 V tomto kurzu se naučíte:
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 Po spuštění aplikace můžete přístup k aplikaci pružiny použít místně pomocí tohoto odkazu: [http://localhost:8080/](http://localhost:8080/).
 
- ![Aplikace Java spuštěná ve službě Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Přístup k aplikaci jarní TODO místně](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Pokud se zobrazí výjimky místo zprávy "spuštění TodoApplication", zkontrolujte, zda `bash` skript v předchozím kroku exportovali proměnné prostředí správně a zda jsou hodnoty správné pro Azure Cosmos DB databázi, kterou jste vytvořili.
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adresou URL:
 
- ![Aplikace Java spuštěná ve službě Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Aplikace pružinového spuštění běžící se vzdálenou adresou URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
