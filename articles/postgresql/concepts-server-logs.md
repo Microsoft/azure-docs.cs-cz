@@ -49,12 +49,12 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na zv
 | TenantId | ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| type | Typ protokolu Vždy `AzureDiagnostics` |
+| Type | Typ protokolu Vždy `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID předplatného, ke kterému server patří |
-| Skupina prostředků | Název skupiny prostředků, do které server patří |
+| ResourceGroup | Název skupiny prostředků, do které server patří |
 | ResourceProvider | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORPOSTGRESQL` |
-| Typ prostředku | `Servers` |
-| Prostředku | Identifikátor URI prostředku |
+| ResourceType | `Servers` |
+| ResourceId | Identifikátor URI prostředku |
 | Resource | Název serveru |
 | Kategorie | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
