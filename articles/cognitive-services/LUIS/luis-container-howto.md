@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/20/2019
 ms.author: dapine
-ms.openlocfilehash: 9d1a6ab698ceb6ac1c0a4fc635b5a8fe1e68b0c6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102044"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172323"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
  
-Kontejner Language Understanding (LUIS) načte vyškolený nebo publikovaný Language Understanding model, také jako [aplikaci Luis](https://www.luis.ai), do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky do aplikace Language Understanding, aby se zlepšila přesnost předpovědi aplikace.
+Kontejner Language Understanding (LUIS) načte váš vyškolený nebo publikovaný Language Understanding model. Kontejner Docker jako [aplikace Luis](https://www.luis.ai)poskytuje přístup k dotazu předpovědi z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky do aplikace Language Understanding, aby se zlepšila přesnost předpovědi aplikace.
 
 Následující video znázorňuje použití tohoto kontejneru.
 
@@ -30,13 +30,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné spustit kontejner LUIS, musíte mít následující: 
+Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požadavky:
 
 |Požadováno|Účel|
 |--|--|
 |Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
-|Soubor `Cognitive Services` Luis zabalených [aplikací](luis-how-to-start-new-app.md#export-app-for-containers) a prostředků Azure |Aby bylo možné kontejner používat, musíte mít:<br><br>* _Cognitive Services_ prostředek Azure a související fakturační klíč identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru. Musíte přidat `luis/v2.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br>* Vyškolená nebo publikovaná aplikace zabalená jako připojená vstup do kontejneru s jeho přidruženým ID aplikace. Zabalený soubor můžete získat z portálu LUIS nebo z rozhraní API pro vytváření obsahu. Pokud získáváte LUIS zabalenou aplikaci z [rozhraní API pro vytváření obsahu](#authoring-apis-for-package-file), budete také potřebovat svůj _klíč pro vytváření obsahu_.<br><br>Tyto požadavky slouží k předání argumentů příkazového řádku do následujících proměnných:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a k nahrání protokolů dotazů zpět do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Toto ID se používá k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je Azure Portal v seznamu klíčů prostředků _Cognitive Services_ . Klíč koncového bodu je k dispozici také na portálu LUIS na stránce klíče a nastavení koncového bodu. Nepoužívejte počáteční klíč.<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedeno na stránce Přehled.<br><br>Klíč pro [vytváření obsahu a klíč koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je zaměnitelné. |
+|Soubor `Cognitive Services` Luis zabalených [aplikací](luis-how-to-start-new-app.md#export-app-for-containers) a prostředků Azure |Aby bylo možné kontejner používat, musíte mít:<br><br>* _Cognitive Services_ prostředek Azure a související fakturační klíč identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru. <br>* Vyškolená nebo publikovaná aplikace zabalená jako připojená vstup do kontejneru s jeho přidruženým ID aplikace. Zabalený soubor můžete získat z portálu LUIS nebo z rozhraní API pro vytváření obsahu. Pokud získáváte LUIS zabalenou aplikaci z [rozhraní API pro vytváření obsahu](#authoring-apis-for-package-file), budete také potřebovat svůj _klíč pro vytváření obsahu_.<br><br>Tyto požadavky slouží k předání argumentů příkazového řádku do následujících proměnných:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a k nahrání protokolů dotazů zpět do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Toto ID se používá k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je Azure Portal v seznamu klíčů prostředků _Cognitive Services_ . Klíč koncového bodu je k dispozici také na portálu LUIS na stránce klíče a nastavení koncového bodu. Nepoužívejte počáteční klíč.<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedeno na stránce Přehled.<br><br>Klíč pro [vytváření obsahu a klíč koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je zaměnitelné. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -57,7 +57,7 @@ Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
 
 |Kontejner| Minimální | Doporučené | TPS<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|LUIS|1 jádro, 2 GB paměti|1 jádro, 4 GB paměti|20,40|
+|LUIS|1 jádro, 2 GB paměti|1 jádro, 4 GB paměti|20, 40|
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * TPS-transakcí za sekundu
@@ -85,7 +85,7 @@ Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použij
 ![Proces použití Language Understandingho kontejneru (LUIS)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Exportujte balíček](#export-packaged-app-from-luis) pro kontejner z portálu Luis nebo z rozhraní Luis API.
-1. Přesuňte soubor balíčku do požadovaného **vstupního** adresáře v hostitelském [počítači](#the-host-computer). Neměňte přejmenování, změnu, přepsání nebo dekomprimaci souboru balíčku LUIS.
+1. Přesuňte soubor balíčku do požadovaného **vstupního** adresáře v hostitelském [počítači](#the-host-computer). Neměňte přejmenování, změnu, přepsání ani dekomprimaci souboru balíčku LUIS.
 1. [Spusťte kontejner](##run-the-container-with-docker-run)s požadovaným vstupním _připojením_ a nastavením fakturace. K [](luis-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu. 
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 1. Až budete s kontejnerem hotovi, [importujte protokoly koncových bodů](#import-the-endpoint-logs-for-active-learning) z výstupního připojení na portálu Luis a [](#stop-the-container) zastavte kontejner.
@@ -109,9 +109,9 @@ Vstupní adresář pro připojení může obsahovat současně **produkční**, 
 
 |Typ balíčku|Rozhraní API koncového bodu dotazu|Dostupnost dotazů|Formát souboru balíčku|
 |--|--|--|--|
-|Trénovaný|Získat, zveřejnit|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Fázování|Získat, zveřejnit|Azure a kontejner|`{APPLICATION_ID}_STAGING.gz`|
-|Provozní|Získat, zveřejnit|Azure a kontejner|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Trénovaný|ZÍSKAT, ZVEŘEJNIT|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Fázování|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APPLICATION_ID}_STAGING.gz`|
+|Provozní|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Neměňte přejmenování, změnu, přepsání nebo dekomprimaci souborů balíčku LUIS.
@@ -170,12 +170,12 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Zástupný symbol | Value |
 |-------------|-------|
-|{APPLICATION_ID} | ID aplikace publikované aplikace LUIS |
-|{APPLICATION_ENVIRONMENT} | Prostředí publikované aplikace v LUIS Použijte jednu z následujících hodnot:<br/>`PRODUCTION`<br/>`STAGING` |
-|{AUTHORING_KEY} | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis. |
-|{AZURE_REGION} | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
+| **{APPLICATION_ID}** | ID aplikace publikované aplikace LUIS |
+| **{APPLICATION_ENVIRONMENT}** | Prostředí publikované aplikace v LUIS Použijte jednu z následujících hodnot:<br/>`PRODUCTION`<br/>`STAGING` |
+| **{AUTHORING_KEY}** | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis. |
+| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
 
-Pokud si chcete stáhnout publikovaný balíček, přečtěte si [tady dokumentaci k rozhraní API][download-published-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru. 
+Pokud si chcete stáhnout publikovaný balíček, přečtěte si [tu dokumentaci k rozhraní API][download-published-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru. 
 
 ### <a name="export-trained-apps-package-from-api"></a>Exportovat balíček školené aplikace z rozhraní API
 
@@ -189,12 +189,12 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Zástupný symbol | Value |
 |-------------|-------|
-|{APPLICATION_ID} | ID aplikace vyškolené aplikace LUIS |
-|{APPLICATION_VERSION} | Verze aplikace vyškolené aplikace LUIS |
-|{AUTHORING_KEY} | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis.  |
-|{AZURE_REGION} | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
+| **{APPLICATION_ID}** | ID aplikace vyškolené aplikace LUIS |
+| **{APPLICATION_VERSION}** | Verze aplikace vyškolené aplikace LUIS |
+| **{AUTHORING_KEY}** | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis. |
+| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
 
-Pokud si chcete stáhnout vyškolený balíček, přečtěte si [tady dokumentaci k rozhraní API][download-trained-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru. 
+Pokud si chcete stáhnout vyškolený balíček, přečtěte si [tu dokumentaci k rozhraní API][download-trained-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru. 
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
@@ -247,8 +247,8 @@ Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
 
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|
-|Publikování|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [zveřejnit](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& fázování<br>[& timezoneOffset]<br>[& verbose]<br>[protokol &]<br>|
-|Trénovaný|Získat, zveřejnit|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& verbose]<br>[protokol &]|
+|Publikování|[ZÍSKAT](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [ZVEŘEJNIT](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& fázování<br>[& timezoneOffset]<br>[& verbose]<br>[protokol &]<br>|
+|Trénovaný|ZÍSKAT, ZVEŘEJNIT|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& verbose]<br>[protokol &]|
 
 Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 
@@ -286,7 +286,7 @@ Název verze má maximálně 10 znaků a obsahuje pouze znaky, které jsou povol
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Import protokolů koncového bodu pro aktivní učení
 
-Pokud je pro kontejner LUIS zadaný výstupní připojení, soubory protokolu dotazu aplikace se uloží do výstupního adresáře, kde {INSTANCE_ID} je ID kontejneru. Protokol dotazu aplikace obsahuje dotaz, odpověď a časová razítka pro každý dotaz předpovědi odeslaný do kontejneru LUIS. 
+Pokud je pro kontejner Luis zadáno výstupní připojení, soubory protokolu dotazu aplikace jsou uloženy ve výstupním adresáři, kde `{INSTANCE_ID}` je ID kontejneru. Protokol dotazu aplikace obsahuje dotaz, odpověď a časová razítka pro každý dotaz předpovědi odeslaný do kontejneru LUIS. 
 
 Následující umístění ukazuje strukturu vnořených adresářů pro soubory protokolu kontejneru.
 ```
@@ -330,7 +330,7 @@ Nejnovější kontejner vydaný v 2019 Build bude podporovat:
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>Nepodporované závislosti `latest` pro kontejner
 
-Pokud vaše aplikace LUIS obsahuje nepodporované závislosti, nebudete moct [Exportovat pro kontejner](#export-packaged-app-from-luis) , dokud neodeberete nepodporované funkce. Při pokusu o export do kontejneru nahlásí portál LUIS nepodporované funkce, které je třeba odebrat.
+Pokud chcete [exportovat kontejner](#export-packaged-app-from-luis), musíte z aplikace Luis odebrat nepodporované závislosti. Při pokusu o export do kontejneru nahlásí portál LUIS tyto nepodporované funkce, které je třeba odebrat.
 
 Aplikaci LUIS můžete použít, pokud **neobsahuje žádnou z** následujících závislostí:
 
