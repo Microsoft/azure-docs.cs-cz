@@ -533,11 +533,11 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| MinLastTimestamp | string | Minimální poslední časové razítko mezi všechny stopy (zvuku nebo videa). |
-| TypeOfTrackWithMinLastTimestamp | string | Typ sledování (zvuku nebo videa) s minimální poslední časové razítko. |
-| MaxLastTimestamp | string | Maximální počet časová razítka mezi všechny stopy (zvuku nebo videa). |
+| minLastTimestamp | string | Minimální poslední časové razítko mezi všechny stopy (zvuku nebo videa). |
+| typeOfTrackWithMinLastTimestamp | string | Typ sledování (zvuku nebo videa) s minimální poslední časové razítko. |
+| maxLastTimestamp | string | Maximální počet časová razítka mezi všechny stopy (zvuku nebo videa). |
 | typeOfTrackWithMaxLastTimestamp | string | Typ sledování (zvuku nebo videa) s maximální poslední časové razítko. |
-| TimescaleOfMinLastTimestamp| string | Získá časový rámec, ve kterém je reprezentován "MinLastTimestamp".|
+| timescaleOfMinLastTimestamp| string | Získá časový rámec, ve kterém je reprezentován "MinLastTimestamp".|
 | timescaleOfMaxLastTimestamp| string | Získá časový rámec, ve kterém je reprezentován "MaxLastTimestamp".|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
