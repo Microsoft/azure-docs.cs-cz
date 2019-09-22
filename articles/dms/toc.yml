@@ -47,6 +47,7 @@
     - name: Migrace balíčků SSIS do spravované instance Azure SQL Database
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Zdroje a prostředky
+  expanded: true
   items:
     - name: Stav scénáře migrace databází
       href: resource-scenario-status.md
