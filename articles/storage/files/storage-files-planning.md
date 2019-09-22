@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036333"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178354"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -215,6 +215,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |East US        |LRS     |Ne    |Zatím ne|
 |Francie – střed |LRS, ZRS|Ne    |LRS-Yes, ZRS – zatím ne|
 |Francie – jih   |LRS     |Ne    |Ano|
+|Severní Evropa   |LRS     |Ne    |Ano|
 |Jižní Indie    |LRS     |Ne    |Zatím ne|
 |Jihovýchodní Asie |LRS, ZRS|Ne    |Ano|
 |Západní střed USA|LRS     |Ne    |Zatím ne|
@@ -273,7 +274,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

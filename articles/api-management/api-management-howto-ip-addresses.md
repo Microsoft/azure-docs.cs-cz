@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861246"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178190"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP adresy API Management Azure
 
@@ -61,7 +61,7 @@ V případě [nasazení s více oblastmi](api-management-howto-deploy-multi-regi
 
 Pokud je vaše služba API Management ve virtuální síti, bude mít dva typy IP adres – Public a Private.
 
-Veřejné IP adresy se používají pro interní komunikaci na portu `3443` – pro správu konfigurace (například prostřednictvím Azure Resource Manager). Kromě toho platí, že když je žádost odeslána z API Management k veřejnému (internetovému) back-endu, jako zdroj žádosti se zobrazí veřejná IP adresa.
+Veřejné IP adresy se používají pro interní komunikaci na portu `3443` – pro správu konfigurace (například prostřednictvím Azure Resource Manager). V konfiguraci externí virtuální sítě se používají také pro provoz rozhraní API modulu runtime. Pokud je žádost odeslána z API Management do veřejného back-endu (internetového), bude se jako zdroj žádosti zobrazovat veřejná IP adresa.
 
 Privátní virtuální IP adresy (VIP) se používají pro připojení ze sítě k API Management koncových bodů – bran, portálu pro vývojáře a roviny správy pro přímý přístup k rozhraní API. Můžete je použít k nastavení záznamů DNS v síti.
 

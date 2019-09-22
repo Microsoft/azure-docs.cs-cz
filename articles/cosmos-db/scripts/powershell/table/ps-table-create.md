@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB, vytvoření tabulky rozhraní Table API
-description: Skript Azure Powershellu – Azure Cosmos DB, vytvoření tabulky rozhraní Table API
+title: Skript Azure PowerShell – Azure Cosmos DB vytvoření tabulky rozhraní API pro tabulky
+description: Skript Azure PowerShell – Azure Cosmos DB vytvoření tabulky rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 23b80befc8859916958a0004eecde3fabdf85c5e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 998379384c12c611989bf1ef04b149ab1ceaf25c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602075"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178725"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro službu Azure Cosmos DB - Table API
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro Azure Cosmos DB rozhraní API pro tabulky
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

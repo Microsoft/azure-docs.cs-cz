@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní Table API
-description: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní Table API
+title: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro tabulky
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d34a9e679ee6c1b65111817197a98555be13cf1d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 5d3fa2e2122c006825a8413a2ca2f292bda2de74
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67601948"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178691"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Zjištění propustnosti (RU/s) pro tabulky pro službu Azure Cosmos DB - Table API
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Získat propustnost (RU/s) pro tabulku Azure Cosmos DB-rozhraní API pro tabulky
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

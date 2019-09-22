@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB vytvořit rozhraní Gremlin API databáze a grafu
-description: Skript Azure Powershellu – Azure Cosmos DB vytvořit rozhraní Gremlin API databáze a grafu
+title: Skript Azure PowerShell – Azure Cosmos DB vytvoření databáze a grafu rozhraní Gremlin API
+description: Skript Azure PowerShell – Azure Cosmos DB vytvoření databáze a grafu rozhraní Gremlin API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 92af72609aa4f6261dfbd41ae07ddacd4275ab39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1820195b59a370b9378283a35d1d058abde6eccd
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602480"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178968"
 ---
-# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Vytvoření databáze a grafu pro službu Azure Cosmos DB – rozhraní Gremlin API
+# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Vytvoření databáze a grafu pro rozhraní Azure Cosmos DB Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

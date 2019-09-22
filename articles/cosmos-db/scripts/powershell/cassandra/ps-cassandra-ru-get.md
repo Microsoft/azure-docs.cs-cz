@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro Apache Cassandra API
-description: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro Apache Cassandra API
+title: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API Cassandra
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4aed55a0c3ae969cf9148e5bf8d6a70a3151f695
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b2544a3c704318839f0c2b956db4d39e83d08d3f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603990"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179004"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Zjištění propustnosti (RU/s) prostor klíčů nebo tabulky pro službu Azure Cosmos DB – Apache Cassandra API služby
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Získat propustnost (RU/s) pro místo na disku nebo tabulku pro Azure Cosmos DB-rozhraní API Cassandra
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

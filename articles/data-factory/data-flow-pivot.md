@@ -1,72 +1,78 @@
 ---
-title: Azure Data Factory mapování transformace Pivot toku dat
-description: Kontingenční data z řádků do sloupců pomocí Azure Data Factory mapování toku Pivot transformace dat
+title: Azure Data Factory transformace kontingenčního toku dat při mapování
+description: Kontingenční data z řádků do sloupců pomocí Azure Data Factory mapování pivotu toku dat
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348451"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178654"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure data factory pivot transformace
+# <a name="azure-data-factory-pivot-transformation"></a>Transformace pivotu služby Azure Data Factory
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Použijte Pivotu v toku dat ADF jako agregace kde má jeden nebo více sloupců seskupení jeho hodnoty jedinečných řádků transformuje na jednotlivé sloupce. V podstatě můžete otáčení hodnoty řádků do nového sloupce (dat čerpají metadata).
+Použijte Pivot v toku dat ADF jako agregaci, kde jeden nebo více sloupců seskupení má jedinečné hodnoty řádků transformované na jednotlivé sloupce. V podstatě můžete hodnoty v řádcích vyhodnotit do nových sloupců (data převeďte do metadat).
 
-![Otáčení možnosti](media/data-flow/pivot1.png "otáčení 1")
+![Možnosti pivotu](media/data-flow/pivot1.png "kontingenční tabulka 1")
 
 ## <a name="group-by"></a>Seskupit podle
 
-![Otáčení možnosti](media/data-flow/pivot2.png "otáčení 2")
+![Možnosti pivotu](media/data-flow/pivot2.png "kontingenční tabulka 2")
 
-Nejprve nastavte sloupce, které chcete seskupit podle vaší pivot agregace. Můžete nastavit více než 1 sloupec tady se + znaménko vedle seznamu sloupců.
+Nejprve nastavte sloupce, které chcete seskupit podle pro agregaci pivotu. Můžete nastavit více než 1 sloupec se symbolem + vedle seznamu sloupců.
 
-## <a name="pivot-key"></a>Klíče kontingenční tabulky
+## <a name="pivot-key"></a>Klávesa Pivot
 
-![Otáčení možnosti](media/data-flow/pivot3.png "otáčení 3")
+![Možnosti pivotu](media/data-flow/pivot3.png "Pivot 3")
 
-Klíče kontingenční tabulky je sloupec, který bude ADF otáčení z řádku na sloupec. Ve výchozím nastavení bude otáčení každou jedinečnou hodnotu v datové sadě pro toto pole na sloupec. Však můžete volitelně zadat hodnoty z datové sady, kterou chcete přenechte obranu hodnot sloupců. To je sloupec, který určí, které se vytvoří nové sloupce.
+Kontingenční klíč je sloupec, který bude ADF od řádku po sloupec. Ve výchozím nastavení se všechny jedinečné hodnoty v datové sadě pro toto pole Překlopí do sloupce. Volitelně můžete zadat hodnoty z datové sady, které chcete překlopit do hodnot sloupců. Toto je sloupec, který určí nové sloupce, které budou vytvořeny.
 
-## <a name="pivoted-columns"></a>Převedený sloupce
+## <a name="pivoted-columns"></a>Sloupce v kontingenčním sloupci
 
-![Otáčení možnosti](media/data-flow/pivot4.png "otáčení 4")
+![Možnosti pivotu](media/data-flow/pivot4.png "kontingenční tabulka 4")
 
-A konečně zvolíte agregaci, kterou chcete použít pro pivotovaná hodnoty a jak byste chtěli sloupce, který se má zobrazit v nové projekce výstup z transformace.
+Nakonec zvolíte agregaci, kterou chcete použít pro hodnoty v kontingenčním okně, a způsob, jakým chcete sloupce zobrazit v nové výstupní projekci z transformace.
 
-(Volitelné) Můžete nastavit vzoru pro pojmenovávání s předponou, střední a příponu je třeba přidat do každého nový název sloupce z hodnoty řádků.
+Volitelné Můžete nastavit vzor pojmenování s předponou, střední a příponou, která se má přidat do každého nového názvu sloupce z hodnot řádků.
 
-Například "Oblasti" Přesun "Prodeje" výsledkem by byla hodnoty nového sloupce od každé hodnoty prodeje, tj "25", "50", "1000" atd. Ale pokud nastavíte hodnotu předpony "Sales-", každá hodnota sloupce by přidat "Sales-" začátek hodnoty.
+Například při překlopení "prodej" podle "oblasti" by vznikly nové hodnoty sloupců z každé hodnoty prodeje, tj. "25", "50", "1000" atd. Pokud však nastavíte hodnotu předpony "Sales-", každá hodnota sloupce by do začátku hodnoty přidala "Sales –".
 
-![Otáčení možnosti](media/data-flow/pivot5.png "otáčení 5")
+![Možnosti pivotu](media/data-flow/pivot5.png "Pivot 5")
 
-Nastavení uspořádání sloupců "Normální" seskupí dohromady pivotovaná sloupce s jejich agregované hodnoty. Mezi sloupci a hodnota se alternativní nastavení uspořádání sloupců na "Laterální".
+Když nastavíte uspořádání sloupců na "normální", budou se seskupovat všechny kontingenční sloupce s agregovanými hodnotami. Nastavení uspořádání sloupců na stranu "bočního" se bude střídat mezi sloupcem a hodnotou.
 
 ### <a name="aggregation"></a>Agregace
 
-Nastavit agregaci, kterou chcete použít pro pivot hodnoty, klikněte na pole v dolní části podokna neseskupené sloupce. Zadáte do Tvůrce toku dat ADF kde agregační výraz sestavit a zadejte alias popisný název vaší nové agregované hodnoty.
+Chcete-li nastavit agregaci, kterou chcete použít pro hodnoty pivotu, klikněte na pole v dolní části podokna Pivoted Columns. Do Tvůrce výrazů toku dat ADF zadáte, kde můžete sestavit agregační výraz a zadat popisný název aliasu pro nové agregované hodnoty.
 
-Jazyk výrazů tok ADF Data použít k podrobnému popisu transformace převedený sloupec v Tvůrce: https://aka.ms/dataflowexpressions.
+Použijte jazyk výrazu toku dat ADF k popisu transformací pivoted Columns v Tvůrci výrazů: https://aka.ms/dataflowexpressions.
 
 ## <a name="pivot-metadata"></a>Metadata pivotu
 
-Transformace Pivot vytvoří nové názvy sloupců, které jsou dynamické vzorce na základě příchozích dat. Klíče kontingenční vytváří hodnoty pro každý nový název sloupce. Pokud nemáte zadejte jednotlivé hodnoty a chcete vytvořit názvy dynamické sloupců pro každou jedinečnou hodnotu v klíče kontingenční tabulky, uživatelské rozhraní, nebudou zobrazeny metadata zkontrolujte, jestli se a nedojde k žádné šíření sloupce k transformaci jímky. Pokud nastavíte hodnoty pro klíče kontingenční tabulky, ADF můžete určit nové názvy sloupců a tyto názvy sloupců v zkontrolujte, jestli k dispozici, který se jímky mapování.
+Transformace Pivot vytvoří nové názvy sloupců, které jsou dynamické na základě vašich příchozích dat. Klávesa Pivot vytvoří hodnoty pro každý nový název sloupce. Pokud neurčíte jednotlivé hodnoty a chcete pro každou jedinečnou hodnotu v kontingenčním klíči vytvořit dynamické názvy sloupců, nezobrazí se v uživatelském rozhraní tato metadata při kontrole a nebude k transformaci jímky zacházet žádné šíření sloupců. Pokud nastavíte hodnoty pro Pivot Key, potom může ADF určit nové názvy sloupců a tyto názvy sloupců budou k dispozici v mapování kontroly a jímky.
 
-### <a name="landing-new-columns-in-sink"></a>Úvodní nové sloupce do jímky
+### <a name="generate-a-new-model-from-dynamic-columns"></a>Generování nového modelu z dynamických sloupců
 
-I s názvy sloupců dynamické v Pivotu můžete stále jímky nové názvy sloupců a hodnoty do cílového úložiště. Stačí nastavte "Povolit schématu odchylek" na na v nastavení jímky. Neuvidíte nové dynamické názvy ve sloupci metadata, ale možnost schématu odchylek vám umožní dostat data.
+Kontingenční tabulka dynamicky generuje nové názvy sloupců založené na hodnotách řádků. Tyto nové sloupce můžete převést na metadata, která lze později odkazovat v toku dat. Uděláte to tak, že kliknete na kartu náhled dat. Všechny nové sloupce vygenerované transformací pivotu se zobrazí v záhlaví tabulky s ikonou "se stejnou". Kliknutím na tlačítko "mapa se posunem" zapnete tyto nové sloupce do metadat, čímž se jejich součástí modelu toku dat.
+
+![Kontingenční sloupce](media/data-flow/newpivot1.png "Mapování odhozených kontingenčních sloupců")
+
+### <a name="landing-new-columns-in-sink"></a>Vykládku nových sloupců v jímky
+
+I když jsou názvy dynamických sloupců v kontingenčním diagramu, můžete stále ukládat nové názvy a hodnoty sloupců do cílového úložiště. Stačí nastavit možnost "zapnout posun schématu" na zapnuto v nastavení jímky. V metadatech sloupců se neobjeví nové dynamické názvy, ale možnost posunu schématu vám umožní tato data obložit.
 
 ### <a name="view-metadata-in-design-mode"></a>Zobrazit metadata v režimu návrhu
 
-Pokud chcete zobrazit jako metadata v zkontrolujte, jestli se nové názvy sloupců a chcete zobrazit sloupce, které rozšíří explicitně do jímky transformace, nastavte v kartě klíče kontingenční explicitní hodnoty.
+Pokud chcete zobrazit nové názvy sloupců jako metadata a chcete zobrazit sloupce, které se šíří explicitně do transformace jímky, pak nastavte explicitní hodnoty na kartě Pivot Key.
 
-### <a name="how-to-rejoin-original-fields"></a>Jak se znovu připojit původní pole
-Transformace Pivot bude pouze projektu sloupci používanými v agregaci, seskupení a otáčení akce. Pokud budete chtít zahrnout ostatní sloupce z předchozího kroku do vašeho toku, použít novou větev z předchozího kroku a použití vzoru spojení sama na sebe na připojení toku s původní metadata.
+### <a name="how-to-rejoin-original-fields"></a>Postup opětovného připojení původních polí
+Transformace pivotu bude promítnout pouze sloupce používané v akci agregace, seskupení a Pivot. Pokud chcete zahrnout další sloupce z předchozího kroku v toku, použijte novou větev z předchozího kroku a pomocí vzoru pro vlastní spojení připojte tok s původními metadaty.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zkuste [převést řádky transformace](data-flow-unpivot.md) jak proměnit hodnoty řádků hodnot sloupců. 
+Zkuste [transformaci Unpivot](data-flow-unpivot.md) , aby se hodnoty sloupce přepnuly na hodnoty řádků. 

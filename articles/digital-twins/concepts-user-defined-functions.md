@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638459"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178263"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
@@ -23,7 +23,7 @@ Digitální vlákna Azure nabízí pokročilé výpočetní funkce. Vývojáři 
 
 Jakmile zařízení odešlou data telemetrie do digitálních vláken Azure, můžou vývojáři zpracovávat data ve čtyřech fázích: *ověřování*, *Shoda*, *výpočty*a *odeslání*.
 
-![Tok zpracování dat digitálních vláken Azure][1]
+[![Tok zpracování dat digitálních vláken Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Fáze Validate transformuje příchozí zprávu telemetrie na běžně srozumitelný formát [objektu pro přenos dat](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . Tato fáze také provádí ověřování zařízení a senzorů.
 1. Fáze porovnávání vyhledá příslušné uživatelsky definované funkce, které se mají spustit. Předdefinované shody hledají uživatelsky definované funkce na základě informací o zařízení, snímači a prostoru z příchozí zprávy telemetrie.
@@ -34,9 +34,7 @@ Jakmile zařízení odešlou data telemetrie do digitálních vláken Azure, mů
 
 Zpracování dat v digitálních proobjektech Azure se skládá z definování tří objektů: *shody*, *uživatelsky definovaných funkcí*a *přiřazení rolí*.
 
-![Objekty pro zpracování dat z digitálního vlákna Azure][2]
-
-<div id="matcher"></div>
+[![Objekty pro zpracování dat z digitálního vlákna Azure](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Párování
 
@@ -92,7 +90,7 @@ Koshodě definují sadu podmínek, které vyhodnocují, jaké akce probíhají n
 
 ### <a name="user-defined-functions"></a>Uživatelsky definované funkce
 
-Uživatelsky definovaná funkce je vlastní funkce spuštěná v izolovaném prostředí Azure Digital revláken. Uživatelsky definované funkce mají přístup ke zprávě telemetrie nezpracovaného senzoru, jak se obdrží. Uživatelsky definované funkce také mají přístup ke službě prostorového grafu a dispečera. Po zaregistrování uživatelsky definované funkce v grafu je nutné vytvořit shodu (podrobná [výše](#matcher)) pro určení, kdy je funkce spuštěna. Například když digitální vlákna Azure obdrží novou telemetrii od daného senzoru, odpovídající uživatelsky definovaná funkce může vypočítat klouzavý průměr za posledních několik čtených senzorů.
+Uživatelsky definovaná funkce je vlastní funkce spuštěná v izolovaném prostředí Azure Digital revláken. Uživatelsky definované funkce mají přístup ke zprávě telemetrie nezpracovaného senzoru, jak se obdrží. Uživatelsky definované funkce také mají přístup ke službě prostorového grafu a dispečera. Po zaregistrování uživatelsky definované funkce v grafu je nutné vytvořit shodu (podrobná [výše](#matchers)) pro určení, kdy je funkce spuštěna. Například když digitální vlákna Azure obdrží novou telemetrii od daného senzoru, odpovídající uživatelsky definovaná funkce může vypočítat klouzavý průměr za posledních několik čtených senzorů.
 
 Uživatelsky definované funkce lze zapsat v JavaScriptu. Pomocné metody komunikují s grafem v uživatelsky definovaném spouštěcím prostředí. Vývojáři můžou spouštět vlastní fragmenty kódu pro zprávy telemetrie senzorů. Příklady obsahují:
 
@@ -103,14 +101,11 @@ Uživatelsky definované funkce lze zapsat v JavaScriptu. Pomocné metody komuni
 
 Další informace najdete v tématu [Jak používat uživatelsky definované funkce](./how-to-user-defined-functions.md).
 
-
 #### <a name="examples"></a>Příklady
 
 [Úložiště GitHub pro C# ukázku digitálních vláken](https://github.com/Azure-Samples/digital-twins-samples-csharp/) obsahuje několik příkladů uživatelsky definovaných funkcí:
 - [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) vyhledá oxid uhličitý, pohyb a teplotní hodnoty a určí, zda je místnost k dispozici s těmito hodnotami v rozsahu. [Kurzy pro digitální vlákna](tutorial-facilities-udf.md) probírají tuto funkci podrobněji. 
 - [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) vyhledá data z více snímačů pohybu a určí, zda je prostor k dispozici, pokud žádný z nich nedetekuje žádné pohyby. Můžete snadno nahradit uživatelsky definovanou funkci použitou v rychlém startu [](quickstart-view-occupancy-dotnet.md)nebo v kurzech [](tutorial-facilities-setup.md)tím, že provedete změny uvedené v části komentáře v souboru. 
-
-
 
 ### <a name="role-assignment"></a>Přiřazení role
 
@@ -118,14 +113,10 @@ Akce uživatelsky definované funkce se řídí [řízením přístupu na zákla
 
 Ke spuštění uživatelsky definované funkce, která nemá žádné přiřazení rolí, je možné, aby se shodovala. V takovém případě funkce definovaná uživatelem nenačte žádná data z grafu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak směrovat události a zprávy telemetrie do jiných služeb Azure, najdete v tématu [události a zprávy směrování](./concepts-events-routing.md).
 
 - Pokud chcete získat další informace o tom, jak vytvořit párování, uživatelsky definované funkce a přiřazení rolí, přečtěte si [příručku k používání uživatelsky definovaných funkcí](./how-to-user-defined-functions.md).
 
 - Přečtěte si [referenční dokumentaci k klientské knihovně funkcí definovaných uživatelem](./reference-user-defined-functions-client-library.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

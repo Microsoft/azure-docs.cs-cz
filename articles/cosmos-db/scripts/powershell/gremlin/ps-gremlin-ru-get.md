@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní Gremlin API
-description: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní Gremlin API
+title: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro Gremlin
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro Gremlin
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 81dbe0731bd3390ff3777dc21f78c86f535e5bb7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1da7559d67be94013ea829a533a09db6c8abcad4
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602443"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178943"
 ---
-# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Zjištění propustnosti (RU/s) pro databázi nebo graf pro službu Azure Cosmos DB – rozhraní Gremlin API
+# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Získání propustnosti (RU/s) pro databázi nebo graf pro rozhraní Azure Cosmos DB Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

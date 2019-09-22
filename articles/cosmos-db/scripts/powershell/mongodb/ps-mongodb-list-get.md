@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB seznamu a získejte operace pro rozhraní MongoDB API
-description: Skript Azure Powershellu – Azure Cosmos DB seznamu a získejte operace pro rozhraní MongoDB API
+title: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní MongoDB API
+description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní MongoDB API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: cd00166e93477dc229a25cc7a183febe4034d7bb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 47d2f6a14fadfa75e5db28eb44b7ca3410e6503c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603901"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178884"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Seznam a získat pro službu Azure Cosmos DB – rozhraní API MongoDB databáze a grafy
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Vypíše a získá databáze a grafy pro Azure Cosmos DB MongoDB API.
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

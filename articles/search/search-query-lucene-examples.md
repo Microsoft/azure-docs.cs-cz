@@ -1,5 +1,5 @@
 ---
-title: Příklady dotazů Lucene – Azure Search
+title: Použít úplnou syntaxi dotazů Lucene – Azure Search
 description: Syntaxe dotazů Lucene pro přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšování skóre termínů, hledání regulárních výrazů a hledání pomocí zástupných znaků ve službě Azure Search.
 author: HeidiSteen
 manager: nitinme
@@ -7,17 +7,17 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648238"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178156"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Příklady dotazů s použitím úplné syntaxe hledání Lucene (rozšířené dotazy v Azure Search)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Search)
 
 Při sestavování dotazů pro Azure Search můžete nahradit výchozí [jednoduchý analyzátor dotazů](query-simple-syntax.md) dalšími [analyzátory dotazů obsáhlém Lucene v Azure Search](query-lucene-syntax.md) a formulovat specializované a pokročilé definice dotazů. 
 
@@ -231,12 +231,12 @@ Lépe čitelná verze výše uvedeného dotazu je `search=business_title:compute
 
 Zvyšování termínů se liší od profilů vyhodnocování v tom, že profily vyhodnocování zvyšují určitá pole, nikoli konkrétní podmínky. Následující příklad pomáhá ilustrovat rozdíly.
 
-Vezměte v úvahu profil vyhodnocování, který zvyšuje shodu v určitém poli, jako je třeba **Žánr** v musicstoreindex příkladu. Za účelem dalšího zvýšení úrovně hledaného výrazu, který je vyšší než jiné, se dá použít zvyšování skóre termínu. Například "Rock ^ 2 Electronic" bude zvyšovat dokumenty, které obsahují hledané výrazy v poli žánru vyšším než ostatní hledaná pole v indexu. Kromě toho jsou dokumenty, které obsahují hledaný termín "Rock", seřazené vyšší než druhý hledaný výraz "elektronický" v důsledku hodnoty zvýšení termínu (2).
+Vezměte v úvahu profil vyhodnocování, který zvyšuje shodu v určitém poli, jako je třeba **Žánr** v musicstoreindex příkladu. Za účelem dalšího zvýšení úrovně hledaného výrazu, který je vyšší než jiné, se dá použít zvyšování skóre termínu. Například "Rock ^ 2 Electronic" bude zvyšovat dokumenty, které obsahují hledané výrazy v poli **žánru** vyšším než ostatní hledaná pole v indexu. Kromě toho jsou dokumenty, které obsahují hledaný termín "Rock", seřazené vyšší než druhý hledaný výraz "elektronický" v důsledku hodnoty zvýšení termínu (2).
 
 Při nastavování úrovně faktoru čím vyšší je faktor zvýšení, tím důležitější je, že výraz bude relativní vzhledem k ostatním hledaným podmínkám. Ve výchozím nastavení je faktor zvýšení 1. I když faktor zvýšení musí být kladný, může být menší než 1 (například 0,2).
 
 
-## <a name="example-6-regex"></a>Příklad 6: Regulární
+## <a name="example-6-regex"></a>Příklad 6: regulární
 
 Hledání regulárního výrazu vyhledá shodu na základě obsahu mezi lomítky "/", jak je uvedeno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
 
@@ -282,7 +282,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > Dotazy se zástupnými znaky nejsou [analyzovány](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Zkuste zadat analyzátor dotazů Lucene ve vašem kódu. Následující odkazy vysvětlují, jak nastavit vyhledávací dotazy pro rozhraní .NET i REST API. Odkazy používají výchozí jednoduchou syntaxi, takže budete muset použít, co jste se naučili v tomto článku, a zadat tak **queryType**.
 
 * [Dotazování indexu Azure Search pomocí sady .NET SDK](search-query-dotnet.md)

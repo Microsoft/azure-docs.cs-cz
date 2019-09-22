@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7dcc69434e017d6564030d83b14098344bc8ac0d
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114383"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178337"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -33,6 +33,9 @@ Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
 Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) úložiště GitHub.
+
+> [!NOTE]
+> Verze 2. x nevytváří téma ani předplatné nakonfigurované v `ServiceBusTrigger` instanci. Verze 2. x je založená na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) a nezpracovává správu fronty.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 

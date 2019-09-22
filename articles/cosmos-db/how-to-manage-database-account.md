@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 95e3ee31ea6a700253e372d183944c17c85e327c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093384"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178320"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro všechna 
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
 
-1. Přejděte k účtu Azure Cosmos a otevřete nabídku replikovat **data globálně** .
+1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
 
 1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí **+** popisku, který odpovídá vašim požadovaným oblastem (y). Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
 
@@ -166,10 +166,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-Otevřete kartu **replikace dat globálně** a výběrem **Povolit** povolte zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které v daném účtu aktuálně máte, stanou oblastmi pro čtení a zápis. 
-
-> [!NOTE]
-> Když povolíte zápis ve více oblastech, nemůžete ho zakázat. 
+Otevřete kartu **replikace dat globálně** a výběrem **Povolit** povolte zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které v daném účtu aktuálně máte, stanou oblastmi pro čtení a zápis. V případě potřeby můžete také zakázat zápisy ve více oblastech.
 
 ![Účet Azure Cosmos konfiguruje snímek s více hlavními servery.](./media/how-to-manage-database-account/single-to-multi-master.png)
 
@@ -182,6 +179,8 @@ $resourceGroupName = 'myResourceGroup'
 $accountName = 'myaccountname'
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
 ```
+
+Pokud chcete vytvořit účet Azure Cosmos bez zápisů ve více oblastech, můžete nastavit `--enable-multiple-write-locations` parametr na false (NEPRAVDA).
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
@@ -366,7 +365,7 @@ Proces ručního převzetí služeb při selhání zahrnuje změnu oblasti zápi
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. Přejděte k účtu Azure Cosmos a otevřete nabídku replikovat **data globálně** .
+1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
 
 2. V horní části nabídky vyberte **ruční převzetí služeb při selhání**.
 
@@ -414,7 +413,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace a příklady, jak spravovat účet Azure Cosmos i databáze a kontejnery, najdete v následujících článcích:
 

@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB vytvořit rozhraní API MongoDB databáze a kolekce
-description: Skript Azure Powershellu – Azure Cosmos DB vytvořit rozhraní API MongoDB databáze a kolekce
+title: Skript Azure PowerShell – Azure Cosmos DB vytvoření databáze a kolekce rozhraní MongoDB API
+description: Skript Azure PowerShell – Azure Cosmos DB vytvoření databáze a kolekce rozhraní MongoDB API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: c299ca8ea46d8c36f16209e9b5d6b603fa2a1894
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 54fd220978a66081979de456568173a7e2784280
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602353"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178907"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Vytvořit databázi a kolekci Azure Cosmos DB – rozhraní API MongoDB
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Vytvoření databáze a kolekce pro rozhraní Azure Cosmos DB MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

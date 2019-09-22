@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325813"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178569"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: Nasazení skupiny s více kontejnery pomocí souboru YAML
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325813"
 
 Azure Container Instances podporuje nasazení více kontejnerů do jednoho hostitele pomocí [skupiny kontejnerů](container-instances-container-groups.md). Skupina kontejnerů je užitečná při sestavování postranního vozíku aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci, kde služba potřebuje druhý připojený proces.
 
-V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigurace na dvou kontejnerech, a to nasazením souboru YAML pomocí Azure CLI. Soubor YAML poskytuje stručný formát pro zadání nastavení instance. Získáte informace o těchto tématech:
+V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigurace na dvou kontejnerech, a to nasazením [souboru YAML](container-instances-reference-yaml.md) pomocí Azure CLI. Soubor YAML poskytuje stručný formát pro zadání nastavení instance. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Konfigurace souboru YAML
@@ -126,7 +126,7 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
+## <a name="view-container-logs"></a>Zobrazit protokoly kontejneru
 
 Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . `--container-name` Argument určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu `aci-tutorial-app` je určen kontejner.
 
@@ -171,7 +171,7 @@ Connection: keep-alive
 
 Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný `200 OK`kód odpovědi HTTP než.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste použili soubor YAML k nasazení skupiny více kontejnerů v Azure Container Instances. Naučili jste se tyto postupy:
 

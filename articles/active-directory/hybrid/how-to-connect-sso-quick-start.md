@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965221"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176836"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -40,7 +40,7 @@ Ujistěte se, že jsou splněné následující požadavky:
    - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, seznam  **\*** povolených připojení k adresám URL. msappproxy.NET přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
-    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) , kde najdete další informace.
+    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) , _kde najdete další_ informace.
 
 * **Použít podporované topologie Azure AD Connect**: Ujistěte se, že používáte jednu z podporovaných topologií, které jsou [zde](plan-connect-topologies.md)popsané Azure AD Connect.
 
@@ -221,7 +221,7 @@ V kroku 2 Azure AD Connect vytvoří účty počítačů (reprezentující služ
 >[!IMPORTANT]
 >Dešifrovací klíč protokolu Kerberos v účtu počítače, pokud se nevrací, lze použít ke generování lístků protokolu Kerberos pro libovolného uživatele v doménové struktuře služby AD. Škodlivé objekty actor potom můžou zosobnit přihlášení Azure AD pro ohrožené uživatele. Důrazně doporučujeme, abyste tyto dešifrovací klíče protokolu Kerberos pravidelně přepsali nejméně jednou za 30 dní.
 
-Pokyny k postupu při převzetí klíčů najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) Pracujeme na schopnostech zavést automatizované převrácení klíčů.
+Pokyny k postupu při převzetí klíčů najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy](how-to-connect-sso-faq.md) Pracujeme na schopnostech zavést automatizované převrácení klíčů.
 
 >[!IMPORTANT]
 >Tento krok nemusíte provádět _hned_ po povolení této funkce. Převeďte šifrovací klíče protokolu Kerberos aspoň jednou za 30 dní.

@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376191"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177995"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
-Azure Media Services V3 vám umožní extrahovat přehledy z vašich videosouborů a zvukových souborů s Video Indexer prostřednictvím přednastavených analyzátoru AMS V3 (popsané v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Azure Media Services V3 vám umožní extrahovat přehledy z vašich videosouborů a zvukových souborů pomocí Video Indexer prostřednictvím přednastavených analyzátorů Media Services V3 (popsaných v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-K analýze obsahu pomocí přednastavených Media Services V3 vytvoříte **transformaci** a odešlete **úlohu** , která používá jedno z těchto přednastavení: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) nebo **AudioAnalyzerPreset**. Následující článek ukazuje, jak používat **VideoAnalyzerPreset**: [Návodu Analyzujte videa pomocí](analyze-videos-tutorial-with-api.md)Azure Media Services.
+K analýze obsahu pomocí přednastavených Media Services V3 vytvoříte transformaci a odešlete **úlohu** , která používá jedno z těchto přednastavení: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) nebo **AudioAnalyzerPreset**. Následující článek ukazuje, jak používat **VideoAnalyzerPreset**: [Návodu Analyzujte videa pomocí](analyze-videos-tutorial-with-api.md)Azure Media Services.
 
 > [!NOTE]
 > Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
@@ -104,7 +104,7 @@ Příklad:
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
-|jistotou|Spolehlivost rozpoznávání.|
+|Jistotou|Spolehlivost rozpoznávání.|
 |jazyk|Jazyk OCR.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazilo toto optické rozpoznávání znaků (stejné optické rozpoznávání znaků se může několikrát zobrazit).|
 
@@ -147,13 +147,13 @@ Příklad:
 |---|---|
 |id|ID obličeje|
 |name|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
-|jistotou|Spolehlivost identifikace obličeje.|
+|Jistotou|Spolehlivost identifikace obličeje.|
 |description|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
 |knownPersonId|Pokud se jedná o známého uživatele, jeho interní ID.|
-|referenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
+|ReferenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
 |referenceType|Aktuálně pouze Bing.|
-|název|Pokud se jedná o celebrit, jeho titul (například "generální ředitel společnosti Microsoft").|
+|title|Pokud se jedná o celebrit, jeho titul (například "generální ředitel společnosti Microsoft").|
 |imageUrl|Pokud se jedná o celebrit, jeho adresu URL obrázku.|
 |instance|Jedná se o instance, kde se v zadaném časovém rozsahu objevila plocha. Každá instance má také thumbnailsId. |
 
@@ -356,7 +356,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
-|jistotou|Spolehlivost rozpoznávání klíčového slova|
+|Jistotou|Spolehlivost rozpoznávání klíčového slova|
 |jazyk|Jazyk klíčového slova (při překladu).|
 |instance|Seznam časových rozsahů, ve kterých se toto klíčové slovo objevilo (klíčové slovo se může zobrazit víckrát).|
 
@@ -436,6 +436,6 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 }
 ] 
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md)

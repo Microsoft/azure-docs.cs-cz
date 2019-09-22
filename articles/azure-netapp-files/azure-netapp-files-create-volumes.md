@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 06733103980086fad0975514ae3489c3652e428a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 45164acd89fc9634d6929bafb35e64a5dc9f2b86
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846748"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178222"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -44,7 +44,9 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
-        Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.
+        Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.   
+
+        Název svazku nelze `default` použít.
 
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
@@ -65,7 +67,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         
         Pokud jste nedelegovanou podsíť, můžete na stránce vytvořit svazek kliknout na **vytvořit novou** . Pak na stránce vytvořit podsíť zadejte informace o podsíti a vyberte možnost **Microsoft. NetApp/** Volumes pro delegování podsítě pro Azure NetApp Files. V každé virtuální síti je možné delegovat jenom jednu podsíť na Azure NetApp Files.   
  
-        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

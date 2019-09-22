@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 3d08105e78274300eb7ee0a8c0ad146a737d0ffa
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644956"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176641"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení vzdálené plochy pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -36,7 +36,8 @@ V poli **povolit připojení ke vzdálené plošeovou** zprávu vyberte **pokra�
 ![Povolení připojení ke vzdálené ploše pro bitovou kopii operačního systému Linux](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> Povolení **připojení ke vzdálené ploše** otevírá jenom port **RDP** na počítačích se systémem Linux. Jako učitel se k počítači se systémem Linux připojíte poprvé pomocí SSH a nainstalujete balíčky RDP a GUI, abyste se mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. Potom obrázek **publikujete** , aby se studenti mohli připojit k virtuálním počítačům s Linuxem pro studenty. 
+> Povolení **připojení ke vzdálené ploše** otevírá jenom port **RDP** na počítačích se systémem Linux. Pokud je už v imagi virtuálního počítače nainstalovaný a nakonfigurovaný protokol RDP (například: Ubuntu Data Science Virtual Machine image) se můžete k virtuálním počítačům a studentům připojit pomocí protokolu RDP, aniž byste museli postupovat podle dalších kroků.
+> Pokud není v imagi virtuálního počítače nainstalovaný a nakonfigurovaný RDP, budete se muset poprvé připojit k počítači se systémem Linux a nainstalovat balíčky RDP a GUI, abyste se vy a studenti mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. Potom obrázek publikujete, aby se studenti mohli připojit k virtuálním počítačům s Linuxem pro studenty.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 V současné době se připojení ke vzdálené ploše podporuje pro následující operační systémy:
@@ -75,5 +76,5 @@ Kliknutím na tlačítko **Kopírovat** vedle textového pole ho zkopírujte do 
 
 Pokud vyberete možnost **RDP** , na váš počítač se stáhne soubor RDP. Uložte ho a otevřete ho pro připojení k počítači. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po povolení funkce připojení ke vzdálené ploše studentům se můžou studenti připojit ke svým virtuálním počítačům přes RDP/SSH. Další informace najdete v tématu [použití vzdálené plochy pro virtuální počítače se systémem Linux v prostředí učebny](how-to-use-remote-desktop-linux-student.md). 

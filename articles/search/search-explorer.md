@@ -1,33 +1,30 @@
 ---
-title: Nástroj Průzkumník služby Search pro dotazování na data v Azure Portal-Azure Search
-description: Pro dotazy na indexy v Azure Search použijte Azure Portal nástroje, jako je Průzkumník vyhledávání. Zadejte hledané výrazy nebo plně kvalifikované vyhledávací řetězce s pokročilou syntaxí.
+title: Použití nástroje Průzkumník služby Search pro dotazování dat v Azure Portal-Azure Search
+description: Průzkumník služby Search je integrovaný do Azure Portal, který je užitečný pro zkoumání obsahu a ověřování dotazů v Azure Search. Zadejte řetězce pro hledání termínu nebo fráze nebo plně kvalifikované výrazy hledání s pokročilou syntaxí.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649968"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178135"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Průzkumník služby Search pro dotazování na data v Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Použití Průzkumníka služby Search v Azure Portal pro dotazování dokumentů v Azure Search 
 
-V tomto článku se dozvíte, jak zadat dotaz na existující index Azure Search pomocí **Průzkumníka služby Search** v Azure Portal. Pomocí Průzkumníka služby Search můžete odesílat jednoduché nebo úplné řetězce dotazů Lucene do libovolného existujícího indexu ve vaší službě. 
+V tomto článku se dozvíte, jak zadat dotaz na existující index Azure Search pomocí **Průzkumníka služby Search** v Azure Portal. Můžete spustit Průzkumníka služby Search na panelu příkazů a odeslat jednoduché nebo úplné výrazy dotazů Lucene do libovolného existujícího indexu ve vaší službě. 
 
    ![Příkaz Průzkumníka vyhledávání na portálu](./media/search-explorer/search-explorer-cmd2.png "Příkaz Průzkumníka vyhledávání na portálu")
 
-
-Nápovědu Začínáme najdete v tématu [Start Search Explorer](#start-search-explorer).
-
 ## <a name="basic-search-strings"></a>Základní vyhledávací řetězce
 
-Následující příklady předpokládají vestavěný vzorový index realestate. Nápovědu k vytvoření tohoto indexu najdete v [tématu rychlý Start: Import, index a dotazování v Azure Portal](search-get-started-portal.md).
+V následujících příkladech se předpokládá, že je předdefinovaný ukázkový index z reálného majetku. Tento index můžete vytvořit pomocí Průvodce importem dat na portálu, přičemž jako zdroj dat vyberte **ukázky** .
 
 ### <a name="example-1---empty-search"></a>Příklad 1 – prázdné hledání
 
@@ -149,7 +146,7 @@ Tipy pro hledání v **Průzkumníkovi služby Search**:
 + Výrazy dotazu a filtru musí být kloubem v syntaxi podporované Azure Search. Výchozí hodnota je [Jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V následujících zdrojích najdete další informace o syntaxi dotazů a příklady.
 

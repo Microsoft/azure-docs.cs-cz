@@ -7,12 +7,12 @@ ms.date: 08/12/2019
 ms.topic: quickstart
 ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 8d679a95cc89c2ae7774b7f7b51b9d0aadd89d12
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b28e8e4dccf75d36b318e838e35de23d176c5c23
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390978"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176746"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Vytvoření aplikace v Node. js v Azure
 
@@ -43,7 +43,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 Pokud se při nastavení proměnných prostředí problém nevyřeší, kontaktujte nás kliknutím na tlačítko **jsem v problému** níže.
 
-### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
+### <a name="prerequisite-check"></a>Kontrola požadavků
 
 Než budete pokračovat, ujistěte se, že máte nainstalované a nakonfigurované všechny požadavky.
 
@@ -168,27 +168,19 @@ Po zobrazení výzvy vyberte možnost povolit protokolování a restartovat apli
 
 ![Povolit protokolování a restartování](./media/quickstart-nodejs/enable-restart.png)
 
-Po několika sekundách se zobrazí zpráva oznamující, že jste připojeni ke službě streamování protokolů.
+Po několika sekundách se zobrazí zpráva oznamující, že jste připojeni ke službě streamování protokolů. Několikrát aktualizujte stránku, aby se zobrazila více aktivit.
 
-```bash
-Connecting to log-streaming service...
-2017-12-21 17:33:51.428 INFO  - Container practical-mustache_2 for site practical-mustache initialized successfully.
-2017-12-21 17:33:56.500 INFO  - Container logs
-```
-
-Aktualizujte stránku několikrát v prohlížeči, aby se zobrazil výstup protokolu.
-
-```bash
-2017-12-21 17:35:17.774 INFO  - Container logs
-2017-12-21T17:35:14.955412230Z GET / 304 141.798 ms - -
-2017-12-21T17:35:15.248930479Z GET /stylesheets/style.css 304 3.180 ms - -
-2017-12-21T17:35:15.378623115Z GET /favicon.ico 404 53.839 ms - 995
-```
+    ```bash
+    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+    ```
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Blahopřejeme, úspěšně jste dokončili tento rychlý Start.
 

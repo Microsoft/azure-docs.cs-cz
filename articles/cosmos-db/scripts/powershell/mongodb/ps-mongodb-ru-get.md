@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní MongoDB API
-description: Skript Azure Powershellu – Azure Cosmos DB zjištění propustnosti (RU/s) pro rozhraní MongoDB API
+title: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro MongoDB
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro MongoDB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 91e3d8f1240e2eebb3e1d30ee18b16299f442106
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0df75831bb54ebb9f648a8ca9207c2572fd4d2e9
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602290"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178866"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Zjištění propustnosti (RU/s) pro databázi nebo kolekci Azure Cosmos DB – rozhraní API MongoDB
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Získat propustnost (RU/s) pro databázi nebo kolekci pro rozhraní Azure Cosmos DB MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

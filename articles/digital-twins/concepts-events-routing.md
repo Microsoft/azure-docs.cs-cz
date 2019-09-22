@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638528"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177080"
 ---
 # <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
 
@@ -29,7 +29,7 @@ Funkce digitálních vláken Azure nabízí dva způsoby, jak propojit události
 
 Uživatelé mohou zadat jeden nebo více koncových bodů odchozích zpráv pro odeslání událostí nebo přeposílat zprávy. Události a zprávy budou odesílány do koncových bodů podle těchto předdefinovaných předvoleb směrování. Jinými slovy uživatelé můžou určit určitý koncový bod pro příjem událostí operací grafu, další pro příjem událostí telemetrie zařízení a tak dále.
 
-![Směrování událostí digitálních vláken Azure][1]
+[![Směrování událostí digitálních vláken Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Směrování do Event Hubs udržuje pořadí, ve kterém se odesílají zprávy telemetrie. Proto dorazí na koncový bod ve stejném pořadí, ve kterém byly původně přijaty. Event Grid a Service Bus nezaručují, že koncové body budou přijímat události ve stejném pořadí, ve kterém se objevily. Schéma událostí však zahrnuje časové razítko, které lze použít k identifikaci pořadí po doručení událostí do koncového bodu.
 
@@ -55,7 +55,7 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
-| EventHub|     X          |         X         |     X       |      X       |   X       |
+| Centrum událostí|     X          |         X         |     X       |      X       |   X       |
 | ServiceBus|              |         X         |     X       |      X       |   X       |
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
@@ -67,6 +67,3 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 - Další informace o omezeních Azure Digital Forms Preview najdete v tématu [omezení služby Public Preview](concepts-service-limits.md).
 
 - Ukázku digitálních vláken Azure si můžete vyzkoušet v rychlém startu, kde najdete [dostupné místnosti](quickstart-view-occupancy-dotnet.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

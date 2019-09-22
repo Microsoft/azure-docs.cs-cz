@@ -3,18 +3,18 @@ title: Přehled služby Azure Digital Twins | Microsoft Docs
 description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736964"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178289"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
@@ -33,7 +33,7 @@ Digitální vlákna Azure se vztahují na všechny typy prostředí, jako jsou n
 - Analyzujte úrovně obsazení pro budova.
 - Najděte si pokladnu nejvytíženější v úložišti.
 
-Bez ohledu na to, jaký je skutečný podnikový scénář, je velmi pravděpodobný, ale odpovídající digitální instance může být zajištěna prostřednictvím digitálních vláken Azure.
+Bez ohledu na to, jaký je skutečný podnikový scénář, je pravděpodobně možné zřídit odpovídající digitální instanci prostřednictvím digitálních vláken Azure.
 
 Následující video se podrobněji podíváte na digitální vlákna Azure.
 
@@ -45,13 +45,13 @@ Digitální vlákna Azure mají následující klíčové funkce.
 
 ### <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
-[*Graf prostorových informací*](./concepts-objectmodel-spatialgraph.md#graph)nebo *prostorový graf*je virtuální reprezentace fyzického prostředí. Můžete ji použít k modelování vztahů mezi lidmi, místy a zařízeními.
+[*Graf prostorových informací*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)nebo *prostorový graf*je virtuální reprezentace fyzického prostředí. Můžete ji použít k modelování vztahů mezi lidmi, místy a zařízeními.
 
 Vezměte v úvahu aplikaci inteligentního nástroje, která zahrnuje několik měřičů spotřeby elektřiny připojených přes okolí. Společnost inteligentního nástroje musí přesně monitorovat a předpovědět využití elektřiny a fakturace. Každé zařízení a senzor musí být modelovány s využitím kontextu umístění a zákazníka, kterému se má fakturovat. Graf prostorových informací můžete použít k modelování těchto typů komplexních vztahů.
 
 ### <a name="digital-twin-object-models"></a>Objektové modely služby Digital Twins
 
-[Digitální objekty](./concepts-objectmodel-spatialgraph.md#model) s dvojitým datovým modelem jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
+[Digitální objekty](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) s dvojitým datovým modelem jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
 
 Například aplikace pro obsazení místnosti může používat předdefinované typy prostorů, jako jsou areály, budovy, Podlahová plocha a místnost.
 
@@ -93,11 +93,11 @@ Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a je
 
 Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
 
-![Azure Digital Twins je služba postavená na službě Azure IoT Hub][1]
+[![Digitální vlákna Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejít na krátkou ukázku o digitálních Zdvojeních Azure:
 
@@ -113,6 +113,3 @@ Seznamte se se základními koncepty služby Azure Digital Twins:
 
 >[!div class="nextstepaction"]
 >[Seznamte se s digitálními objekty a graf prostorové logiky](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

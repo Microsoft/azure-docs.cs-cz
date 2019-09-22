@@ -1,19 +1,20 @@
 ---
-title: Prostředí Azure PowerShell skriptu – vytvoření kontejneru indexování vypnuta v účtu služby Azure Cosmos
-description: Skript Azure Powershellu ukázkový – vytvoření kontejneru indexování vypnuta v účtu služby Azure Cosmos
+title: Azure PowerShell skript – vytvoření indexování kontejneru v účtu Azure Cosmos vypnuto
+description: Ukázka skriptu Azure PowerShell – vytvoření indexování kontejnerů v účtu Azure Cosmos vypnuto
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d216aa7eaa25ee18c7b5e962309e2a08f11df284
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603864"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178840"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Vytvoření kontejneru indexování v účtu služby Azure Cosmos pomocí Powershellu
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Vytvoření indexu kontejneru vypnutého v účtu Azure Cosmos pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

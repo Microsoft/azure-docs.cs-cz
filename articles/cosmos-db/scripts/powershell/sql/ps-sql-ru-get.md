@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – Azure Cosmos DB získat zřízená propustnost (RU/s) pro SQL (Core) rozhraní API
-description: Skript Azure Powershellu – Azure Cosmos DB získat zřízená propustnost (RU/s) pro SQL (Core) rozhraní API
+title: Azure PowerShell skript-Azure Cosmos DB získat zřízenou propustnost (RU/s) pro rozhraní API SQL (jádro)
+description: Azure PowerShell skript-Azure Cosmos DB získat zřízenou propustnost (RU/s) pro rozhraní API SQL (jádro)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 75a8ebbb04fd3cbad9f0a1a3f302b40439adbbcc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602136"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178764"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Získání zřízená propustnost (RU/s) pro databázi nebo kontejneru pro službu Azure Cosmos DB - SQL (Core) rozhraní API
+# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Získání zřízené propustnosti (RU/s) pro databázi nebo kontejner pro rozhraní API Azure Cosmos DB-SQL (jádro)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033755"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176839"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -80,7 +80,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nej
     ![Časová osa výpisu aplikace OpenID Connect do galerie](./media/howto-app-gallery-listing/openid.png)
 
     * Pokud chcete přidat aplikaci do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID připojit & OAuth 2,0** výše.
-    * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 - **SAML 2,0** nebo **WS-** podáváno: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem služby Azure AD pomocí [pokynů k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
 
@@ -98,6 +98,12 @@ Vytvořte webovou aplikaci, která má přihlašovací stránku HTML pro konfigu
 * Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlašování k heslům, vyberte **heslo SSO** nahoře.
 * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
+## <a name="requesting-for-user-provisioning"></a>Požadavek na zřizování uživatelů
+
+Podle následujícího postupu vyžádejte si zřizování uživatelů –
+
+   ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Aktualizovat nebo odebrat existující výpis
 
 Pokud chcete aktualizovat nebo odebrat existující aplikaci v galerii aplikací Azure AD, musíte ji nejdřív odeslat na [portálu aplikační síť](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte ho pro přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí svého účet Microsoft (například Outlook nebo Hotmail).
@@ -106,9 +112,9 @@ Pokud chcete aktualizovat nebo odebrat existující aplikaci v galerii aplikací
 
     ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Pokud chcete aktualizovat existující aplikaci, vyberte **aktualizovat existující seznam aplikací**.
-    * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující seznam aplikací**.
-    * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Pokud chcete aktualizovat existující aplikaci, vyberte vhodnou možnost podle vašich požadavků.
+    * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **z Galerie odebrat seznam Moje aplikace**.
+    * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="listing-requests-by-customers"></a>Výpis požadavků od zákazníků
 
@@ -124,11 +130,11 @@ Níže je uvedený tok aplikací požadovaných zákazníky –
 
 Časová osa pro proces výpisu aplikace SAML 2,0 nebo WS-zakrmená v galerii je 7-10 pracovních dnů.
 
-   ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/timeline.png)
+  ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/timeline.png)
 
 Časová osa pro proces výpisu aplikace OpenID Connect v galerii je 2-5 pracovních dnů.
 
-   ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/timeline2.png)
+  ![Časová osa výpisu aplikace SAML do galerie](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalací zákazníka
 

@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622974"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177201"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení služby Azure Digital Vláknas ve verzi Preview a konfigurace prostorového grafu
 
@@ -43,15 +43,11 @@ V těchto kurzech se za účelem podrobnějšího pokrytí konceptů používaj�
 
 - [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Nasazení služby Digital Twins
 
 Chcete-li vytvořit novou instanci služby Azure digitální dvojče postupujte podle kroků v této části. Je možné vytvořit pouze jednu instanci na jedno předplatné. Pokud už máte jedno spuštěné, přejděte k další části. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Udělení oprávnění pro aplikaci
 
@@ -76,7 +72,7 @@ Pokud už máte stažené ukázky pro [rychlý start věnovaný zjištění dost
 
 Ve složce extrahované vzorku, otevřete soubor **digital-twins-samples-csharp\digital-twins-samples.code-workspace** ve Visual Studio Code. Obsahuje dva projekty:
 
-* Můžete použít ukázkou zřizování **obsazení quickstart** ke konfiguraci a zřízení [Prostorové řady grafu](concepts-objectmodel-spatialgraph.md#graph). Tento graf je digitalizovaná obrázek prostory vaší fyzické a prostředky v nich. Používá [objektový model](concepts-objectmodel-spatialgraph.md#model), která definuje objekty pro Chytré budovy. Úplný seznam objektů digitální dvojče a rozhraní REST API, navštivte [této dokumentace k rozhraní REST API](https://docs.westcentralus.azuresmartspaces.net/management/swagger) nebo adresy URL rozhraní API Management, pro kterou byla vytvořena [vaší instance](#deploy).
+* Můžete použít ukázkou zřizování **obsazení quickstart** ke konfiguraci a zřízení [Prostorové řady grafu](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Tento graf je digitalizovaná obrázek prostory vaší fyzické a prostředky v nich. Používá [objektový model](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), která definuje objekty pro Chytré budovy. Úplný seznam objektů digitální dvojče a rozhraní REST API, navštivte [této dokumentace k rozhraní REST API](https://docs.westcentralus.azuresmartspaces.net/management/swagger) nebo adresy URL rozhraní API Management, pro kterou byla vytvořena [vaší instance](#deploy-digital-twins).
 
    Prozkoumat ukázku naleznete v tématu jak komunikuje s vaší instancí digitální dvojče, můžete začít s **src\actions** složky. Soubory v této složce implementovat příkazy, které použijete v následujících kurzech:
     - **ProvisionSample.cs** soubor ukazuje, jak zřídit prostorový graf.
@@ -101,17 +97,15 @@ Ve složce extrahované vzorku, otevřete soubor **digital-twins-samples-csharp\
     ```
 
 1. V sadě Visual Studio Code otevřete [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) soubor **vytížení – rychlý Start** projektu. Aktualizací následujících hodnot:
-   * **ClientID**: Zadejte ID aplikace pro registraci vaší aplikace Azure AD. Jste si poznamenali v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
-   * **Tenant**: Zadejte ID adresáře vašeho [tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Také uvedené v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
-   * **BaseUrl**: Zadejte adresu URL instance digitálního vlákna. Chcete-li získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`hodnotami vaší instance:. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy). Nahraďte **swagger /** s **api/v1.0/** .
+   * **ClientID**: Zadejte ID aplikace pro registraci vaší aplikace Azure AD. Jste si poznamenali v části toto ID ve kterém jste [nastavení oprávnění aplikace](#grant-permissions-to-your-app).
+   * **Tenant**: Zadejte ID adresáře vašeho [tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Také uvedené v části toto ID ve kterém jste [nastavení oprávnění aplikace](#grant-permissions-to-your-app).
+   * **BaseUrl**: Zadejte adresu URL instance digitálního vlákna. Chcete-li získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`hodnotami vaší instance:. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy-digital-twins). Nahraďte **swagger /** s **api/v1.0/** .
 
 1. Podívejte se do seznamu digitální dvojče funkce, které můžete prozkoumat pomocí ukázky. Spusťte následující příkaz:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Vysvětlení procesu zřizování
 

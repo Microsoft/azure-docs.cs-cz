@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638493"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177066"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
@@ -23,9 +23,7 @@ Klíčové modely digitálních vláken popisují koncepty, kategorie a vlastnos
 
 U digitálních vláken objektů a Ontology je možné naplnit _prostorový graf_. Prostorové grafy jsou virtuální reprezentace mnoha vztahů mezi mezerami, zařízeními a lidmi, které jsou relevantní pro řešení IoT. Tento diagram znázorňuje příklad prostorového grafu, který používá Ontology inteligentního sestavování.
 
-![Vytváření prostorových grafů v oblasti digitálních vláken][1]
-
-<a id="model"></a>
+[![Vytváření prostorových grafů v oblasti digitálních vláken](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Prostorový graf se skládá z prostorů, zařízení, senzorů a uživatelů. Každá je propojená dohromady způsobem, který modeluje reálný svět. V této ukázce má místo 43 čtyři podlahová místa, z nichž každá má mnoho různých oblastí. Uživatelé jsou přidružení ke svým pracovním stanicím a mají přístup k částem grafu. Správce má oprávnění provádět změny prostorového grafu, zatímco návštěvník má práva pouze k zobrazení určitých dat o sestavách.
 
@@ -55,8 +53,6 @@ Další kategorie objektů jsou:
   - Odeslat oznámení, pokud jsou splněny předdefinované podmínky. V současné době je možné UDF zapisovat do JavaScriptu.
 - **Shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou zprávu telemetrie.
 - **Koncové body** jsou umístění, kde lze směrovat zprávy telemetrie a události digitálních vláken, například `Event Hub` `Service Bus`,, a `Event Grid`.
-
-<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
@@ -89,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  V tomto obrázku se zobrazí úplný formát adresy URL.
 
-![Rozhraní API pro správu portálu Digital vlákna][2]
+(![Rozhraní API pro správu portálu Digital vlákna](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/koncepty/Digital-Twins-Spatial-Graph-Management-API-URL. png # Lightbox)
 
 Další informace o tom, jak používat grafy prostorových informací, najdete v tématu rozhraní API pro správu digitálních vláken Azure vás zajímá ve verzi Preview.
 
@@ -101,12 +97,8 @@ Přečtěte si další informace o [použití Swagger](how-to-use-swagger.md).
 
 Všechna volání rozhraní API musí být ověřena pomocí protokolu [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Rozhraní API se řídí konvencemi pro [REST API Microsoftu](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Většina rozhraní API, která vracejí kolekce, podporují možnosti dotazů na systém [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud se chcete dozvědět o připojení zařízení a o tom, jak odesílat zprávy telemetrie do digitálních vláken, přečtěte si téma připojení zařízení k digitálním vstupům [a telemetrie v Azure](concepts-device-ingress.md).
 
 - Pokud se chcete dozvědět o omezeních a omezeních rozhraní API pro správu, přečtěte si téma [Azure Digital REprops API Management a omezení](concepts-service-limits.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

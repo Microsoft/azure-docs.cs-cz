@@ -1,19 +1,20 @@
 ---
-title: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro rozhraní MongoDB API
-description: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro rozhraní MongoDB API
+title: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro MongoDB API
+description: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro MongoDB API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 517857116bf077814b936e5d7ecb54d841959657
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d2dd99d5a5f1d0f03c5fe4980fde376ffdd55bca
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603887"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178811"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizace RU/s pro databázi nebo kolekci Azure Cosmos DB – rozhraní API MongoDB
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizace RU/s pro databázi nebo kolekci pro rozhraní API pro Azure Cosmos DB MongoDB
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -43,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

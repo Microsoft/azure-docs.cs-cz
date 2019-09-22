@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 83581b22389efe5c9c19689e3116b39ea049ccdc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694207"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177954"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -19,7 +19,7 @@ Server Azure Database for MySQL můžete vytvořit v jedné ze tří různých c
 
 |    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
-| Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
+| Generace výpočetních prostředků | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
@@ -83,7 +83,7 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 
 Servery s méně než 100 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 512 MB nebo 5% velikosti zřízeného úložiště. Servery s více než 100 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 5 GB.
 
-Pokud jste například zřídili 110 GB úložiště a skutečné využití dosáhne více než 105 GB, server je označen jen pro čtení. Případně, pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení, pokud volné úložiště dosáhne méně než 512 MB.
+Pokud jste například zřídili 110 GB úložiště a skutečné využití dosáhne více než 105 GB, server je označen jen pro čtení. Případně, pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení, pokud volné úložiště dosáhne méně než 256 MB.
 
 Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadavky transakcí zápisu se zablokují a stávající aktivní transakce se budou provádět dál. Když je server nastavený jen pro čtení, všechny další operace zápisu a potvrzení transakcí selžou. Dotazy na čtení budou fungovat dál bez přerušení. Jakmile navýšíte velikost zřízeného úložiště, bude server připravený znovu přijímat transakce zápisu.
 
@@ -91,13 +91,13 @@ Doporučujeme zapnout automatické zvětšování úložiště nebo nastavit vý
 
 ### <a name="storage-auto-grow"></a>Automatické zvětšování úložiště
 
-Automatické zvětšování úložiště zabrání vašemu serveru v provozu z úložiště a nejenom pro čtení. Pokud je povolené automatické zvětšování úložiště, úložiště se automaticky zvětšuje, aniž by to ovlivnilo zatížení. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Platí omezení maximální velikosti úložiště, jak je uvedeno výše.
+Automatické zvětšování úložiště zabrání vašemu serveru v provozu z úložiště a nejenom pro čtení. Pokud je povolené automatické zvětšování úložiště, úložiště se automaticky zvětšuje, aniž by to ovlivnilo zatížení. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, pokud je volné úložiště menší než 10% zřízeného úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště menší než 10% velikosti zřízené úložiště. Platí omezení maximální velikosti úložiště, jak je uvedeno výše.
 
-Pokud jste například zřídili 1000 GB úložiště a skutečné využití dosáhne více než 950 GB, zvýší se velikost úložiště serveru na 1050 GB. Případně, pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší na 15 GB, pokud je úložiště menší než 1 GB volného místa.
+Pokud jste například zřídili 1000 GB úložiště a skutečné využití dosáhne více než 900 GB, zvýší se velikost úložiště serveru na 1050 GB. Případně, pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší na 15 GB, pokud je úložiště menší než 1 GB volného místa.
 
 Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Zálohování
 
 Služba automaticky provede zálohování vašeho serveru. Minimální doba uchovávání záloh je sedm dní. Můžete nastavit dobu uchovávání až 35 dní. Uchovávání lze v jakémkoli okamžiku během životnosti serveru upravit. Můžete si vybrat mezi místně redundantními a geograficky redundantními zálohováními. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde je server vytvořen. Tato redundance poskytuje úroveň ochrany v případě havárie. Máte také možnost obnovit server do jakékoli jiné oblasti Azure, ve které je služba dostupná v geograficky redundantních zálohách. Po vytvoření serveru není možné měnit mezi dvěma možnostmi úložiště zálohování.
 
@@ -113,7 +113,7 @@ Když změníte počet virtuální jádra, generování hardwaru nebo cenovou ú
 
 Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/)služeb. Chcete-li zobrazit náklady na konfiguraci, kterou požadujete, [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) na kartě **cenová úroveň** na základě možností, které jste vybrali, zobrazí měsíční náklady. Pokud nemáte předplatné Azure, můžete získat odhadovanou cenu pomocí cenové kalkulačky Azure. Na webu [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) vyberte **Přidat položky**, rozbalte kategorii **databáze** a zvolte **Azure Database for MySQL** pro přizpůsobení možností.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [vytvořit server MySQL na portálu](howto-create-manage-server-portal.md).
 - Přečtěte si o [omezeních služeb](concepts-limits.md).

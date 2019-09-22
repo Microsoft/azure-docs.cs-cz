@@ -1,80 +1,78 @@
 ---
-title: Provádění operací s daty – Azure Logic Apps | Dokumentace Microsoftu
-description: Převod, spravovat a zpracování dat výstupy a formáty v Azure Logic Apps
+title: Provádění operací s daty – Azure Logic Apps
+description: Převod, Správa a manipulace výstupů a formátů dat v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/30/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.topic: article
+ms.date: 09/20/2019
+ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206202"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179669"
 ---
-# <a name="perform-data-operations-in-azure-logic-apps"></a>Provádět operace s daty v Azure Logic Apps
+# <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 
-Tento článek popisuje, jak můžete pracovat s daty ve svých aplikacích logiky přidáním akce pro tyto a další úkoly:
+Tento článek ukazuje, jak můžete pracovat s daty v aplikacích logiky přidáním akcí pro tyto úlohy a dalších akcí:
 
-* Vytváření tabulek z polí.
-* Vytvoří pole z jiných polí na základě podmínky.
-* Vytvořte uživatelsky přívětivé tokeny z vlastností objektu JavaScript Object Notation (JSON), takže tyto vlastnosti můžete snadno použít ve svém pracovním postupu.
+* Vytvoří tabulky z polí.
+* Vytvořte pole z jiných polí na základě podmínky.
+* Vytvořte uživatelsky přívětivé tokeny z vlastností objektu JavaScript Object Notation (JSON), abyste tyto vlastnosti mohli snadno použít ve svém pracovním postupu.
 
-Pokud nenajdete akce, kterou chcete tady, zkusit mnoho různých [funkce pro zpracování dat](../logic-apps/workflow-definition-language-functions-reference.md) poskytující Logic Apps. 
+Pokud tu požadovanou akci nenajdete, zkuste procházet mnoho různých [funkcí manipulace s daty](../logic-apps/workflow-definition-language-functions-reference.md) , které Azure Logic Apps poskytuje.
 
-Tyto tabulky shrnují data, která operací můžete použít a jsou uspořádané podle zdrojové datové typy, které operace pracovat, ale každý popis se zobrazí podle abecedy.
+Tyto tabulky shrnují datové operace, které lze použít a jsou uspořádány na základě typů zdrojových dat, na kterých operace fungují, ale každý popis se zobrazí abecedně.
 
-**Pole akcí** 
+**Akce pole** 
 
-Tato akce vám pomohou při práci s daty v polích.
+Tyto akce vám pomůžou pracovat s daty v polích.
 
-| Akce | Popis | 
-|--------|-------------| 
-| [**Vytvoření tabulky CSV**](#create-csv-table-action) | Vytvořte tabulku hodnotami oddělenými čárkami (CSV) z pole. | 
-| [**Vytvoření tabulky HTML**](#create-html-table-action) | Vytvoření tabulky HTML z pole. | 
-| [**Filtrování pole**](#filter-array-action) | Vytvoření podsadě pole z pole na základě zadaného filtru nebo podmínky. | 
-| [**Připojte se k**](#join-action) | Vytvoření řetězce z všechny položky v poli a jednotlivé položky oddělte zadaný znak. | 
-| [**Vyberte**](#select-action) | Vytvoří pole z zadané vlastnosti pro všechny položky v jiné pole. | 
+| Action | Popis |
+|--------|-------------|
+| [**Vytvořit tabulku CSV**](#create-csv-table-action) | Vytvoří tabulku hodnot s oddělovači (CSV) z pole. |
+| [**Vytvořit tabulku HTML**](#create-html-table-action) | Vytvoří tabulku HTML z pole. |
+| [**Filtrovat pole**](#filter-array-action) | Vytvořte podmnožinu pole z pole na základě zadaného filtru nebo podmínky. |
+| [**Zúčastnit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
+| [**Vybrali**](#select-action) | Vytvoří pole z určených vlastností pro všechny položky v jiném poli. |
 ||| 
 
 **Akce JSON**
 
-Tato akce vám pomohou při práci s daty ve formátu JavaScript Object Notation (JSON).
+Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation (JSON).
 
-| Akce | Popis | 
-|--------|-------------| 
-| [**Compose**](#compose-action) | Vytvoření zprávy, nebo řetězec, z více vstupů, které mohou mít různé datové typy. Pak můžete použít tento řetězec jako jeden vstup, nikoli opakovaně zadávat stejné vstupy. Můžete například vytvořit do jedné zprávy JSON z různých vstupy. | 
-| [**Parsování formátu JSON**](#parse-json-action) | Vytvořte uživatelsky přívětivé data tokeny pro vlastnosti ve formátu JSON obsahu tak můžete snadno použít vlastnosti ve svých aplikacích logiky. | 
-||| 
+| Action | Popis |
+|--------|-------------|
+| [**Sestavit**](#compose-action) | Vytvoření zprávy nebo řetězce z více vstupů, které mohou mít různé datové typy. Tento řetězec je pak možné použít jako jeden vstup místo opakovaného zadávání stejných vstupů. Můžete například vytvořit jednu zprávu JSON z různých vstupů. |
+| [**Analyzovat JSON**](#parse-json-action) | Vytvářejte uživatelsky přívětivé datové tokeny pro vlastnosti v obsahu JSON, abyste mohli snadněji používat vlastnosti ve svých aplikacích logiky. |
+|||
 
-Chcete-li vytvořit složitější transformace JSON, naleznete v tématu [provádět pokročilé transformacích JSON pomocí Liquid šablony](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
+Chcete-li vytvořit složitější transformace JSON, přečtěte si téma [provádění pokročilých TRANSFORMACÍ JSON pomocí tekutých šablon](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-V příkladech v tomto článku, budete potřebovat tyto položky:
+* Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
+* Aplikace logiky, kde potřebujete operaci pro práci s daty
 
-* Aplikace logiky, kde je třeba operace pro práci s daty 
+  Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky.
 
-  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve vaší aplikaci logiky 
 
-* A [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
-
-  Operace s daty jsou k dispozici pouze jako akce, tak, aby před použitím těchto akcí spuštění aplikace logiky s triggerem a všechny další akce, které jsou potřebné pro vytváření výstupy, které chcete zahrnout.
+  Datové operace jsou k dispozici pouze jako akce, takže před použitím těchto akcí spusťte aplikaci logiky s triggerem a zahrňte všechny další akce potřebné pro vytvoření požadovaných výstupů.
 
 <a name="compose-action"></a>
 
 ## <a name="compose-action"></a>Akce psaní
 
-Chcete-li vytvořit jeden výstupu, jako je objekt JSON z více vstupů, můžete použít **operace s daty – psaní** akce. Vstupy může mít různé typy, jako například celá čísla, logické hodnoty, pole, objekty JSON a jakékoli jiné nativní typ, který podporuje Azure Logic Apps, například binární a XML. Pak můžete výstup v akce, které následují po **Compose** akce. **Compose** akcí můžete také uložit můžete opakovaně zadávání stejnými vstupy při vytvoření pracovního postupu aplikace logiky. 
+Chcete-li vytvořit jeden výstup, jako je například objekt JSON z více vstupů, můžete použít akci **vytvořit** . Vaše vstupy mohou mít různé typy, jako jsou celá čísla, logické hodnoty, pole, objekty JSON a jakýkoli jiný nativní typ, který Azure Logic Apps podporuje, například binary a XML. Pak můžete použít výstup v akcích, které následují po akci **psaní** . Akce **napsat** vám také může ušetřit při vytváření pracovního postupu aplikace logiky opakovaně při zadávání stejných vstupů.
 
-Například můžete vytvořit zprávu JSON z více proměnných, jako jsou proměnné řetězce, které obsahují jména a příjmení lidí a celočíselnou proměnnou, která ukládá lidí ve věku. Tady **Compose** přijímá tyto vstupy akce:
+Můžete například vytvořit zprávu JSON z více proměnných, jako například řetězcové proměnné, které ukládají křestní jména a příjmení lidí, a celočíselnou proměnnou, která ukládá věkové jméno uživatele. V tomto případě akce **psaní** akceptuje tyto vstupy:
 
 `{ "age": <ageVar>, "fullName": "<lastNameVar>, <firstNameVar>" }`
 
@@ -82,493 +80,558 @@ a vytvoří tento výstup:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Pokud chcete vyzkoušet příklad, následujícím postupem pomocí návrháře aplikace logiky. Nebo, pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Compose** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat - Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návrháře aplikace logiky. Nebo, pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat definice akcí pro **vytváření** a **inicializaci proměnných** z tohoto článku do vlastní základní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – sestavení](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační událost a několik **inicializovat proměnnou** akce. 
-   Tyto akce jsou nastavené pro vytváření dva řetězce proměnné a proměnná typu integer. Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a několika akcimi **inicializovat proměnnou** . Tyto akce jsou nastaveny pro vytváření dvou řetězcových proměnných a celočíselné proměnné. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit výstup proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete vytvořit výstup, postupujte podle jednoho z následujících kroků: 
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "vytváření". Ze seznamu akcí vyberte tuto akci: **Vytvoření**
+1. V části **zvolit akci**zadejte `compose` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit** .
 
-   ![Výběr akce "Vytvořit"](./media/logic-apps-perform-data-operations/select-compose-action.png)
+   ![Vybrat akci psaní](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
-4. V **vstupy** zadejte vstupy, které chcete použít pro vytváření výstupu. 
+1. Do pole **vstupy** zadejte vstupy, které chcete pro vytvoření výstupu.
 
-   Například, když kliknete do **vstupy** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořenou proměnné:
+   Pokud v tomto příkladu kliknete do pole **vstupy** , zobrazí se seznam dynamického obsahu, abyste mohli vybrat dříve vytvořené proměnné:
 
-   ![Vyberte vstupy sestavení](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![Vybrat vstupy k psaní](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
-   Tady je příklad dokončení **Compose** akce: 
+   Tady je příklad akce **psaní** , kterou jste dokončili: 
 
-   ![Dokončení akce "Vytvořit"](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   ![Dokončila se akce "psát"](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-5. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [akce psaní](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action). 
+Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [akce psaní](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Potvrďte, zda **Compose** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **Compose** akce.
+Pokud chcete potvrdit, jestli akce **Vytvoření** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **psaní** .
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **Compose** akce.
+1. Ve vaší aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **psaní** .
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když v seznamu dynamického obsahu se otevře, v části **Compose** akci, vyberte **výstup**. 
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte v části akce **psaní** možnost **výstup**.
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a zahrnuje **výstup** polí v předmětu a textu v e-mailu:
+   V tomto příkladu se používá akce **Odeslat e-mail** a obsahuje **výstupní** pole v textu e-mailu a subjektu:
 
-   !["Output" polí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   ![Pole "výstup" v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Vytvořit"](./media/logic-apps-perform-data-operations/compose-email-results.png)
+   ![E-mail s výsledky akce "vytvořit"](./media/logic-apps-perform-data-operations/compose-email-results.png)
 
 <a name="create-csv-table-action"></a>
 
 ## <a name="create-csv-table-action"></a>Akce vytvoření tabulky CSV
 
-Chcete-li vytvořit tabulku hodnot oddělených čárkami (CSV) obsahující vlastnosti a hodnoty z objektu jazyka JavaScript Notation (JSON) objektů v poli, použijte **operace s daty – vytvoření tabulky CSV** akce. Pak můžete použít výslednou tabulku do akce, které následují **vytvoření tabulky CSV** akce. 
+Pokud chcete vytvořit tabulku hodnot s oddělovači (CSV), která obsahuje vlastnosti a hodnoty z objektů JavaScript Object Notation (JSON) v poli, použijte akci **vytvořit tabulku CSV** . Výslednou tabulku pak můžete použít v akcích, které následují po akci **vytvořit tabulku CSV** .
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky CSV** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – vytvoření tabulky CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky CSV** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – vytvoření tabulky CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jejichž počáteční hodnota je pole, která má některé vlastnosti a hodnoty ve formátu JSON. 
-   Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je pole, které obsahuje některé vlastnosti a hodnoty ve formátu JSON. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit tabulku CSV proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, ve které chcete vytvořit tabulku CSV, proveďte jeden z následujících kroků: 
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "Vytvoření tabulky csv" jako filtr. Ze seznamu akcí vyberte tuto akci: **Vytvoření tabulky CSV**
+1. V části **zvolit akci**zadejte `create csv table` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit tabulku CSV** .
 
-   ![Vyberte "sdíleného svazku clusteru vytvořit tabulku" akce](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
+   ![Výběr akce vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
-4. V **z** zadejte pole nebo výraz, které chcete použít pro vytvoření tabulky. 
+1. Do pole **od** zadejte pole nebo výraz, který chcete pro vytvoření tabulky.
 
-   Například, když kliknete do **z** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořené proměnné:
+   V tomto příkladu, když kliknete dovnitř pole **z** , se zobrazí seznam dynamický obsah, abyste mohli vybrat dříve vytvořenou proměnnou:
 
-   ![Vyberte pole výstup pro vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
-
-   Tady je příklad dokončení **vytvoření tabulky CSV** akce: 
-
-   ![Bylo dokončeno "sdíleného svazku clusteru vytvořit tabulku" akce](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
-
-   Ve výchozím nastavení tato akce automaticky vytvoří sloupce podle pole položky. 
-   Chcete-li ručně vytvořit záhlaví sloupců a hodnoty, zvolte **zobrazit pokročilé možnosti**. 
-   Chcete-li zadat jenom vlastní hodnoty, změňte **sloupce** k **vlastní**. 
-   Pokud chcete poskytnout vlastní sloupec záhlaví příliš, změňte **zahrnout záhlaví** k **Ano**. 
+   ![Vybrat výstup pole pro vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
 
    > [!TIP]
-   > Vytvořit uživatelsky přívětivé tokeny pro vlastnosti v objektech JSON, tak tyto vlastnosti můžete vybrat jako vstupy, použijte [Parsovat JSON](#parse-json-action) před voláním **vytvoření tabulky CSV** akce.
+   > Chcete-li vytvořit uživatelsky přívětivé tokeny pro vlastnosti v objektech JSON, abyste je mohli vybrat jako vstupy, použijte [analýzu JSON](#parse-json-action) před voláním akce **vytvořit tabulku CSV** .
 
-5. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+   Tady je příklad dokončené akce **Vytvoření tabulky CSV** : 
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![Dokončena akce vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Potvrďte, zda **vytvoření tabulky CSV** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **vytvoření tabulky CSV** akce.
+### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **vytvoření tabulky CSV** akce.
+Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. 
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když v seznamu dynamického obsahu se otevře, v části **vytvoření tabulky CSV** akci, vyberte **výstup**. 
+Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a zahrnuje **výstup** pole e-mailu:
+1. Otevřete seznam **sloupce** a vyberte možnost **vlastní**.
 
-   !["Output" polí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+1. Ve vlastnosti **záhlaví** určete vlastní text záhlaví, který chcete použít místo toho.
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Do vlastnosti **Key (klíč** ) zadejte vlastní hodnotu, která se má použít místo toho.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+Chcete-li odkazovat a upravovat hodnoty z pole, můžete použít `@item()` funkci v definici JSON akce **Vytvoření tabulky CSV** .
 
-   ![E-mailu s "sdíleného svazku clusteru vytvořit tabulku" výsledky akcí](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
+1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**. 
+
+1. V editoru kódu v `inputs` oddílu Upravit akci upravte tabulku tak, jak chcete.
+
+Tento příklad vrátí pouze hodnoty sloupce, nikoli záhlaví z `columns` pole `header` nastavením vlastnosti na prázdnou hodnotu a přesměrování jednotlivých `value` vlastností:
+
+```json
+"Create_CSV_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "CSV",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Zde je výsledek, který tento příklad vrátí:
+
+```text
+Results from Create CSV table action:
+
+Apples,1
+Oranges,2
+```
+
+V návrháři se teď akce **vytvořit tabulku CSV** zobrazí tímto způsobem:
+
+!["Vytvoření tabulky CSV" bez záhlaví sloupců](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+
+Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [Akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
+
+Pokud chcete potvrdit, jestli akce **Vytvoření tabulky CSV** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **Vytvoření tabulky CSV** .
+
+1. Ve vaší aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **vytvořit tabulku CSV** .
+
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte v akci **vytvořit tabulku CSV** možnost **výstup**. 
+
+   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku poslat e-mail a obsahuje pole **výstup** do textu e-mailu:
+
+   ![Pole "výstup" v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
+
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
+
+   ![E-mail s výsledky akce "vytvořit tabulku CSV"](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
 
 <a name="create-html-table-action"></a>
 
-## <a name="create-html-table-action"></a>Vytvoření akce tabulky HTML
+## <a name="create-html-table-action"></a>Akce vytvoření tabulky HTML
 
-K vytvoření tabulky HTML, který obsahuje vlastnosti a hodnoty z objektu jazyka JavaScript Notation (JSON) objektů v poli, použijte **operace s daty – vytvoření tabulky HTML** akce. Pak můžete použít výslednou tabulku do akce, které následují **vytvoření tabulky HTML** akce.
+Chcete-li vytvořit tabulku HTML, která obsahuje vlastnosti a hodnoty z objektů JavaScript Object Notation (JSON) v poli, použijte akci **vytvořit tabulku HTML** . Výslednou tabulku pak můžete použít v akcích, které následují po akci **Vytvoření tabulky HTML** .
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vytvoření tabulky HTML** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – vytvoření tabulky HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky HTML** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – vytvoření tabulky HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jejichž počáteční hodnota je pole, která má některé vlastnosti a hodnoty ve formátu JSON. 
-   Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je pole, které obsahuje některé vlastnosti a hodnoty ve formátu JSON. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit tabulku HTML proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete vytvořit tabulku HTML, proveďte jeden z následujících kroků:
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "Vytvoření tabulky html" jako filtr. Ze seznamu akcí vyberte tuto akci: **Vytvoření tabulky HTML**
+1. V části **zvolit akci**zadejte `create html table` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit tabulku HTML** .
 
-   ![Výběr akce "Vytvořit HTML tabulku"](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
+   ![Výběr akce vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
-4. V **z** zadejte pole nebo výraz, které chcete použít pro vytvoření tabulky. 
+1. Do pole **od** zadejte pole nebo výraz, který chcete pro vytvoření tabulky.
 
-   Například, když kliknete do **z** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořené proměnné:
+   V tomto příkladu, když kliknete dovnitř pole **z** , se zobrazí seznam dynamický obsah, abyste mohli vybrat dříve vytvořenou proměnnou:
 
-   ![Vyberte pole výstup pro vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
-
-   Tady je příklad dokončení **vytvoření tabulky HTML** akce: 
-
-   ![Dokončení akce "Vytvořit HTML tabulky"](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
-
-   Ve výchozím nastavení tato akce automaticky vytvoří sloupce podle pole položky. 
-   Chcete-li ručně vytvořit záhlaví sloupců a hodnoty, zvolte **zobrazit pokročilé možnosti**. 
-   Chcete-li zadat jenom vlastní hodnoty, změňte **sloupce** k **vlastní**. 
-   Pokud chcete poskytnout vlastní sloupec záhlaví příliš, změňte **zahrnout záhlaví** k **Ano**. 
+   ![Vybrat výstup pole pro vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
 
    > [!TIP]
-   > Vytvořit uživatelsky přívětivé tokeny pro vlastnosti v objektech JSON, tak tyto vlastnosti můžete vybrat jako vstupy, použijte [Parsovat JSON](#parse-json-action) před voláním **vytvoření tabulky HTML** akce.
+   > Chcete-li vytvořit uživatelsky přívětivé tokeny pro vlastnosti v objektech JSON, aby bylo možné vybrat tyto vlastnosti jako vstupy, použijte [analýzu JSON](#parse-json-action) před voláním akce **vytvořit tabulku HTML** .
 
-5. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+   Tady je příklad dokončené akce **Vytvoření tabulky HTML** :
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![Dokončená akce vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Potvrďte, zda **vytvoření tabulky HTML** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **vytvoření tabulky HTML** akce.
+### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **vytvoření tabulky HTML** akce.
+Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. 
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když v seznamu dynamického obsahu se otevře, v části **vytvoření tabulky HTML** akci, vyberte **výstup**. 
+Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a zahrnuje **výstup** pole e-mailu:
+1. Otevřete seznam **sloupce** a vyberte možnost **vlastní**.
 
-   !["Output" polí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+1. Ve vlastnosti **záhlaví** určete vlastní text záhlaví, který chcete použít místo toho.
+
+1. Do vlastnosti **Key (klíč** ) zadejte vlastní hodnotu, která se má použít místo toho.
+
+Chcete-li odkazovat a upravovat hodnoty z pole, můžete použít `@item()` funkci v definici JSON akce **tabulky pro vytvoření HTML** .
+
+1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**. 
+
+1. V editoru kódu v `inputs` oddílu Upravit akci upravte tabulku tak, jak chcete.
+
+Tento příklad vrátí pouze hodnoty sloupce, nikoli záhlaví z `columns` pole `header` nastavením vlastnosti na prázdnou hodnotu a přesměrování jednotlivých `value` vlastností:
+
+```json
+"Create_HTML_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "HTML",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Zde je výsledek, který tento příklad vrátí:
+
+```text
+Results from Create HTML table action:
+
+Apples    1
+Oranges   2
+```
+
+V návrháři se teď akce **vytvořit tabulku HTML** zobrazuje tímto způsobem:
+
+!["Vytvořit tabulku HTML" bez záhlaví sloupců](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+
+Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [Akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
+
+Pokud chcete potvrdit, jestli akce **Vytvoření tabulky HTML** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **Vytvoření tabulky HTML** .
+
+1. Ve vaší aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **Vytvoření tabulky HTML** .
+
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte v akci **vytvořit tabulku HTML** možnost **výstup**. 
+
+   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku poslat e-mail a obsahuje pole **výstup** do textu e-mailu:
+
+   ![Pole "výstup" v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
    
    > [!NOTE]
-   > Při zahrnutí tabulky HTML výstup v akci e-mailu, ujistěte se, že jste nastavili **je HTML** vlastnost **Ano** e-mailu je akce pokročilé možnosti. Tímto způsobem e-mailové akce správně formátuje tabulku HTML.
+   > Pokud zahrnete výstup HTML tabulky do e-mailové akce, ujistěte se, že jste v rozšířené možnosti e-mailové akce nastavili vlastnost **is HTML** na **Ano** . Tímto způsobem akce e-mailu naformátuje správně tabulku HTML.
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Vytvořit HTML tabulku"](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![E-mail s výsledky akce "vytvořit tabulku HTML"](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
-## <a name="filter-array-action"></a>Akce filtrování pole
+## <a name="filter-array-action"></a>Akce filtru pole
 
-Chcete-li vytvořit pole s menší obsahující položky, které splňují určitá kritéria, z existujícího pole, použijte **operace s daty – filtrování pole** akce. Filtrované pole pak můžete použít v akce, které následují po **filtrování pole** akce. 
+Chcete-li vytvořit menší pole, které obsahuje položky, které splňují určitá kritéria, z existujícího pole, použijte akci **filtrování pole** . Filtrované pole pak můžete použít v akcích, které následují po akci **filtru pole** .
 
 > [!NOTE]
-> Text filtru, který použijete v vaše podmínka je velká a malá písmena. Tuto akci nejde také změnit formát nebo součástí položky v poli. 
+> Libovolný text filtru, který používáte ve vaší podmínce, rozlišuje velká a malá písmena. Tato akce také nemůže změnit formát nebo součásti položek v poli. 
 > 
-> Pro akce, které používají výstup pole **filtrování pole** akce, tyto akce, musíte přijmout pole jako vstup, nebo může být nutné transformovat pole výstup do jiného formátu kompatibilní. 
+> Pro akce, které mají použít výstup pole z akce **filtrovat pole** , musí buď tyto akce přijmout pole jako vstup, nebo může být nutné transformovat výstupní pole do jiného kompatibilního formátu.
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **filtrování pole** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového pracovního postupu definice: [Příklady kódu operace dat – filtrování pole](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **pole filtru** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – pole filtru](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jejichž počáteční hodnota je pole, která má některé ukázkové celých čísel. Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je pole, které obsahuje některá vzorová celá čísla. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
    > [!NOTE]
-   > Přestože tento příklad používá jednoduché celočíselné pole, tato akce je zvláště užitečná pro objekt JSON, pole, kde si můžete vyfiltrovat v závislosti na vlastnosti a hodnoty objektů.
+   > I když tento příklad používá jednoduché pole typu Integer, je tato akce obzvláště užitečná pro pole objektů JSON, kde můžete filtrovat podle vlastností a hodnot objektů.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit filtrované pole proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete vytvořit filtrované pole, proveďte jeden z následujících kroků: 
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "filtrování pole". Ze seznamu akcí vyberte tuto akci: **Filtrování pole**
+1. Do vyhledávacího pole zadejte `filter array` jako filtr. V seznamu akce vyberte akci **Filtr pole** .
 
-   ![Vyberte akci "Filtrování pole"](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
+   ![Výběr akce filtrovat pole](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
-4. V **z** zadejte pole nebo výraz, který chcete filtrovat. 
+1. Do pole **od** zadejte pole nebo výraz, který chcete filtrovat.
 
-   Například, když kliknete do **z** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořené proměnné:
+   V tomto příkladu, když kliknete dovnitř pole **z** , se zobrazí seznam dynamický obsah, abyste mohli vybrat dříve vytvořenou proměnnou:
 
-   ![Vyberte pole výstup pro vytvoření filtrovaného pole](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
+   ![Vyberte výstup pole pro vytvoření filtrovaného pole.](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
 
-5. Podmínky zadejte položky pole, které chcete porovnat, vyberte operátor porovnání a určete hodnotu porovnání.
+1. Pro podmínku zadejte položky pole, které chcete porovnat, vyberte operátor porovnání a zadejte hodnotu porovnání.
 
-   V tomto příkladu **item()** funkce pro každou položku v poli při přístupu k **filtrování pole** akce hledání položky pole, jehož hodnota je větší než 1:
+   V tomto příkladu se `item()` používá funkce pro přístup k jednotlivým položkám v poli, zatímco akce **pole filtru** vyhledává položky pole, jejichž hodnota je větší než jedna:
    
-   ![Dokončení akce "Filtrování pole"](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   ![Akce "Filter Array" se dokončila.](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-6. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [akce dotazu](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
+Další informace o této akci v základní definici pracovního postupu najdete v tématu [Akce dotazu](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Potvrďte, zda **filtrování pole** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **filtrování pole** akce.
+Pokud chcete potvrdit, jestli akce **pole filtru** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **filtrovat pole** .
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **filtrování pole** akce.
+1. V aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **filtrovat pole** .
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když se otevře seznam dynamického obsahu vyberte **výraz**. K získání výstupu pole z **filtrování pole** akce, zadejte tento výraz, který zahrnuje **filtrování pole** název akce:
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte **výraz**. Chcete-li získat výstup pole z akce **filtrování pole** , zadejte tento výraz, který obsahuje název akce **pole filtru** :
 
-   ```
-   @actionBody('Filter_array')
-   ```
+   `@actionBody('Filter_array')`
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a obsahuje výstupy z **actionBody('Filter_array')** výrazem v těle v e-mailu:
+   V tomto příkladu se používá akce **Odeslat e-mail** pro Office 365 Outlook a obsahuje výstupy z výrazu **ActionBody (' Filter_array ')** v těle e-mailu:
 
-   ![Akce výstupy akce "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   ![Výstupy akcí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Filtrování pole"](./media/logic-apps-perform-data-operations/filter-array-email-results.png)
+   ![E-mail s výsledky akce filtrovat pole](./media/logic-apps-perform-data-operations/filter-array-email-results.png)
 
 <a name="join-action"></a>
 
-## <a name="join-action"></a>Připojte se k akci
+## <a name="join-action"></a>Akce JOIN
 
-Chcete-li vytvořit řetězec, který obsahuje všechny položky z pole a tyto položky oddělujte konkrétní oddělovací znak, použijte **operace s daty – spojení** akce. Potom můžete řetězec v akce, které následují po **připojení** akce.
+Chcete-li vytvořit řetězec, který má všechny položky z pole a oddělit tyto položky pomocí konkrétního znaku oddělovače, použijte akci **spojení** . Pak můžete použít řetězec v akcích, které následují po akci **spojení** .
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **připojení** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [Příklady kódu operace dat – připojení](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí **spojování** a **inicializovat proměnnou** z tohoto článku do vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – spojení](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jejichž počáteční hodnota je pole, která má některé ukázkové celých čísel. 
-   Při testování aplikace logiky později, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Tato akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je pole, které obsahuje některá vzorová celá čísla. Když testujete aplikaci logiky později, můžete aplikaci logiky spustit ručně, aniž byste čekali na požár triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit řetězec z pole proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete vytvořit řetězec z pole, proveďte jeden z následujících kroků:
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-join-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "join". Ze seznamu akcí vyberte tuto akci: **Spojení**
+1. Do vyhledávacího pole zadejte `join` jako filtr. V seznamu akce vyberte tuto akci: **Spojení**
 
-   ![Vyberte akci "Data operace – spojení"](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![Vybrat akci spojení](./media/logic-apps-perform-data-operations/select-join-action.png)
 
-4. V **z** zadejte pole, které obsahuje položky, které chcete připojit jako řetězec. 
+1. Do pole **od** zadejte pole, které obsahuje položky, které chcete připojit jako řetězec.
 
-   Například, když kliknete do **z** pole, seznamu dynamického obsahu, který se zobrazí, takže můžete vybrat dřív vytvořené proměnné:  
+   V tomto příkladu když kliknete dovnitř pole **z** , zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat dříve vytvořenou proměnnou:  
 
-   ![Vyberte pole výstup pro vytvoření řetězce](./media/logic-apps-perform-data-operations/configure-join-action.png)
+   ![Vybrat výstup pole pro vytvoření řetězce](./media/logic-apps-perform-data-operations/configure-join-action.png)
 
-5. V **Seznamte se s** zadejte znak, který chcete použít pro dělicí každou položku pole. 
+1. Do pole **spojit s** zadejte znak, který chcete oddělit o každou položku pole. 
 
-   Tento příklad používá jako oddělovač dvojtečkou (:).
+   V tomto příkladu se používá dvojtečka (:) jako oddělovač.
 
-   ![Zadat oddělovací znak](./media/logic-apps-perform-data-operations/finished-join-action.png)
+   ![Zadejte znak oddělovače.](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-6. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [připojte se k akci](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
+Další informace o této akci v základní definici pracovního postupu najdete v [akci spojení](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Potvrďte, zda **připojení** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **připojte se k** akce. 
+Pokud chcete potvrdit, jestli akce **spojení** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **Join** .
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **připojení** akce.
+1. Ve vaší aplikaci logiky přidejte akci, která vám umožní odeslat výsledky akce **Join** .
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když v seznamu dynamického obsahu se otevře, v části **připojení** akci, vyberte **výstup**. 
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte v akci **připojit** možnost **výstup**. 
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a zahrnuje **výstup** pole e-mailu:
+   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku poslat e-mail a obsahuje pole **výstup** do textu e-mailu:
 
-   !["Output" polí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   ![Pole "výstup" v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Join"](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![E-mail s výsledky akce JOIN](./media/logic-apps-perform-data-operations/join-email-results.png)
 
 <a name="parse-json-action"></a>
 
-## <a name="parse-json-action"></a>Parsovat JSON akce
+## <a name="parse-json-action"></a>Analyzovat akci JSON
 
-K odkazu nebo přístup k vlastnostem v zápisu JSON (JavaScript Object) obsah, uživatelsky přívětivé pole nebo tokenů pro tyto vlastnosti můžete vytvořit pomocí **operace s daty – Parsovat JSON** akce.
-Tímto způsobem můžete vybrat tyto vlastnosti ze seznamu dynamického obsahu při zadávání vstupy pro vaši aplikaci logiky. Tato akce zadejte schéma JSON nebo generování schématu JSON z ukázkový obsah JSON nebo datové části.
+Chcete-li odkazovat nebo přistupovat k vlastnostem v obsahu JavaScript Object Notation (JSON), můžete pro tyto vlastnosti vytvořit uživatelsky přívětivá pole nebo tokeny pomocí akce **analyzovat JSON** . Tímto způsobem můžete vybrat tyto vlastnosti ze seznamu dynamického obsahu, když zadáte vstupy pro vaši aplikaci logiky. Pro tuto akci můžete buď zadat schéma JSON, nebo vygenerovat schéma JSON z ukázkového obsahu nebo datové části JSON.
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **Parsovat JSON** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu : [Příklady kódu operace dat – Parsovat JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **analýzu JSON** a **inicializovat proměnnou** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – analýza formátu JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jehož počáteční hodnota je objekt JSON, který obsahuje vlastnosti a hodnoty. 
-   Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je objekt JSON, který obsahuje vlastnosti a hodnoty. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
-2. V aplikaci logiky, ve které chcete analyzovat obsah JSON proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete analyzovat obsah JSON, postupujte podle jednoho z následujících kroků:
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "parsování formátu json" jako filtr. Ze seznamu akcí vyberte tuto akci: **Parsování formátu JSON**
+1. Do vyhledávacího pole zadejte `parse json` jako filtr. V seznamu akce vyberte akci **analyzovat JSON** .
 
-   ![Vyberte akci "Parsovat JSON"](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
+   ![Vybrat akci analyzovat JSON](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
-4. V **obsah** zadejte obsah JSON, který chcete analyzovat. 
+1. V poli **obsah** zadejte obsah JSON, který chcete analyzovat.
 
-   Například, když kliknete do **obsah** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořené proměnné:
+   Pokud v tomto příkladu kliknete do pole **obsahu** , zobrazí se seznam dynamického obsahu, abyste mohli vybrat dříve vytvořenou proměnnou:
 
-   ![Vyberte objekt JSON pro akce parsovat JSON](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
+   ![Vyberte objekt JSON pro akci analyzovat JSON.](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
 
-5. Zadejte schéma JSON, který popisuje obsah JSON, který se analýza. 
+1. Zadejte schéma JSON, které popisuje obsah JSON, který budete analyzovat.
 
    V tomto příkladu je tady schéma JSON:
 
-   ![Zadejte schéma JSON pro objekt ve formátu JSON, který chcete analyzovat](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
+   ![Poskytněte schéma JSON pro objekt JSON, který chcete analyzovat.](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
 
-   Pokud nemáte k dispozici schéma, můžete vygenerovat toto schéma z obsahu JSON nebo *datové části*, při analýze. 
+   Pokud schéma nemáte, můžete toto schéma vygenerovat z obsahu JSON nebo *datové části*, kterou analyzujete. 
    
-   1. V **Parsovat JSON** akci, vyberte **k vygenerování schématu použít ukázkovou datovou část**.
+   1. V akci **analyzovat JSON** vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   2. V části **zadejte nebo vložte ukázkovou datovou část JSON**, zadejte obsah JSON a pak zvolte **provádí**.
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte obsah JSON a potom vyberte **Hotovo**.
 
-      ![Zadejte obsah JSON pro generování schématu](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
+      ![Zadejte obsah JSON pro generování schématu.](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-6. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [akce Parsovat JSON](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Další informace o této akci v základní definici pracovního postupu najdete v tématu [analýza akce JSON](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Potvrďte, zda **Parsovat JSON** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **Parsovat JSON** akce.
+Pokud chcete potvrdit, jestli akce **analýzy JSON** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **analyzovat JSON** .
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **Parsovat JSON** akce.
+1. V aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **analyzovat JSON** .
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když v seznamu dynamického obsahu se otevře, v části **Parsovat JSON** akce, teď můžete vybrat vlastnosti z analyzovaného obsah JSON.
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah v rámci akce **analyzovat JSON** teď můžete vybrat vlastnosti z analyzovaného obsahu JSON.
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a zahrnuje **FirstName**, **LastName**, a **e-mailu** pole v e-mailu:
+   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku odeslat e-mail a do těla e-mailu zahrne pole **FirstName**, **LastName**a **e-mail** :
 
-   ![Vlastností JSON použitých v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
+   ![Vlastnosti JSON v akci odeslat e-mail](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
-   Tady je dokončené e-mailové akce:
+   Toto je dokončená e-mailová akce:
 
-   ![Dokončení e-mailové akce](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![Akce dokončeného e-mailu](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**. 
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Join"](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![E-mail s výsledky akce JOIN](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
-## <a name="select-action"></a>Vyberte akci
+## <a name="select-action"></a>Vybrat akci
 
-Chcete-li vytvořit pole, která je vytvořená z hodnoty existujícího pole objektů JSON, použijte **operace s daty – výběr** akce. Můžete například vytvořit objekt JSON pro každou hodnotu v celočíselné pole tak, že zadáte vlastnosti, které musí mít každý objekt JSON a způsob namapování hodnoty v poli zdroje k těmto vlastnostem. A přestože můžete změnit součástí těchto objektů JSON, výstup pole má vždy stejný počet položek jako zdrojové pole.
+Chcete-li vytvořit pole, které obsahuje objekty JSON sestavené z hodnot v existujícím poli, použijte akci **Vybrat** . Můžete například vytvořit objekt JSON pro každou hodnotu v celočíselném poli zadáním vlastností, které musí mít každý objekt JSON, a jak mapovat hodnoty ve zdrojovém poli na tyto vlastnosti. A i když můžete změnit komponenty v těchto objektech JSON, výstupní pole má vždycky stejný počet položek jako zdrojové pole.
 
 > [!NOTE]
-> Pro akce, které používají výstup pole **vyberte** akce, tyto akce, musíte přijmout pole jako vstup, nebo může být nutné transformovat pole výstup do jiného formátu kompatibilní. 
+> Pro akce, které mají použít výstup pole z akce **Select** , musí buď tyto akce přijmout pole jako vstup, nebo může být nutné transformovat výstupní pole do jiného kompatibilního formátu. 
 
-Pokud dáváte přednost práci v editoru kódu zobrazit, můžete zkopírovat v příkladu **vyberte** a **inicializovat proměnnou** definice akce v tomto článku do aplikace logiky podkladového definice pracovního postupu: [Příklady kódu operace dat – výběr](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **Výběr** a **inicializaci proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – výběr](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Tento příklad používá na webu Azure portal a aplikaci logiky s **opakování** aktivační události a **inicializovat proměnnou** akce. 
-   Tato akce je nastavený pro vytvoření proměnné, jejichž počáteční hodnota je pole, která má některé ukázkové celých čísel. 
-   Pokud později otestovat svou aplikaci logiky, můžete ručně spustit vaši aplikaci bez čekání na aktivační událost, která se aktivuje.
+   V tomto příkladu se používá Azure Portal a aplikace logiky s triggerem **opakování** a akcí **inicializovat proměnnou** . Akce je nastavena pro vytvoření proměnné, jejíž počáteční hodnota je pole, které obsahuje některá vzorová celá čísla. Když později otestujete aplikaci logiky, můžete aplikaci spustit ručně bez čekání na aktivaci triggeru.
 
-   ![Počáteční ukázková aplikace logiky](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![Spouští se ukázková aplikace logiky.](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
-2. V aplikaci logiky, ve kterém chcete vytvořit pole proveďte jeden z následujících kroků: 
+1. V aplikaci logiky, kde chcete vytvořit pole, proveďte jeden z následujících kroků: 
 
-   * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
+   * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
      ![Přidat akci](./media/logic-apps-perform-data-operations/add-select-action.png)
 
-   * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
-   Vyberte znaménko plus a potom vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo **+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-3. Do vyhledávacího pole zadejte jako filtr "Vyberte". Ze seznamu akcí vyberte tuto akci: **Výběr**
+1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `select` jako filtr. V seznamu akce vyberte akci **Vybrat** .
 
-   ![Vyberte akci "Vyberte"](./media/logic-apps-perform-data-operations/select-select-action.png)
+   ![Vyberte akci vybrat.](./media/logic-apps-perform-data-operations/select-select-action.png)
 
-4. V **z** zadejte má zdrojové pole.
+1. Do pole **od** zadejte zdrojové pole, které chcete.
 
-   Například, když kliknete do **z** pole v seznamu dynamického obsahu se zobrazí, takže můžete vybrat dřív vytvořené proměnné:
+   V tomto příkladu, když kliknete dovnitř pole **z** , se zobrazí seznam dynamický obsah, abyste mohli vybrat dříve vytvořenou proměnnou:
 
-   ![Vyberte zdrojové pole pro akce výběru](./media/logic-apps-perform-data-operations/configure-select-action.png)
+   ![Vybrat zdrojové pole pro akci výběru](./media/logic-apps-perform-data-operations/configure-select-action.png)
 
-5. V **mapy** levém sloupci pole, zadejte název vlastnosti, kterou chcete přiřadit všechny hodnoty ve zdrojové pole. V pravém sloupci zadejte výraz, který představuje hodnotu, kterou chcete přiřadit vlastnosti.
+1. V levém sloupci v poli **Mapa** zadejte název vlastnosti, který chcete přiřadit každé hodnotě ve zdrojovém poli. Do sloupce na pravé straně zadejte výraz, který představuje hodnotu, kterou chcete přiřadit vlastnost.
 
-   Tento příklad určuje "Product_ID" jako název vlastnosti přiřazení každou hodnotu v poli celého čísla pomocí **item()** funkce ve výrazu, který přistupuje k každou položku pole. 
+   Tento příklad určuje "Product_ID" jako název vlastnosti pro přiřazení každé hodnoty v poli typu Integer pomocí `item()` funkce ve výrazu, který přistupuje k jednotlivým položkám pole. 
 
-   ![Zadejte vlastnost objektu JSON a hodnoty pro pole, které chcete vytvořit](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![Zadejte vlastnost objektu JSON a hodnoty pro pole, které chcete vytvořit.](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
-   Tady je dokončené akce:
+   Toto je dokončená akce:
 
-   ![Dokončení akce výběru](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   ![Akce výběru se dokončila.](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-6. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Další informace o této akci v základní definici pracovního postupu najdete v tématu [vyberte akci](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Další informace o této akci v základní definici pracovního postupu najdete v tématu [Výběr akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Potvrďte, zda **vyberte** akce vytvoří očekávané výsledky, poslat oznámení, který obsahuje výstup z **vyberte** akce.
+Pokud chcete potvrdit, jestli akce **Select** vytvoří očekávané výsledky, pošlete sami sobě oznámení, které obsahuje výstup z akce **Vybrat** .
 
-1. V aplikaci logiky, přidejte akci, která vám může poslat výsledky z **vyberte** akce.
+1. Ve vaší aplikaci logiky přidejte akci, která vám umožní odeslat výsledky z akce **Vybrat** .
 
-2. V akci klikněte kamkoli chcete zobrazit výsledky. Když se otevře seznam dynamického obsahu vyberte **výraz**. K získání výstupu pole z **vyberte** akce, zadejte tento výraz, který zahrnuje **vyberte** název akce:
+1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah vyberte **výraz**. Chcete-li získat výstup pole z akce **Select** , zadejte tento výraz, který obsahuje název akce **výběru** :
 
-   ```
-   @actionBody('Select')
-   ```
+   `@actionBody('Select')`
 
-   V tomto příkladu **Office 365 Outlook – odeslat e-mail** akce a obsahuje výstupy z **actionBody('Select')** výrazem v těle v e-mailu:
+   V tomto příkladu se používá akce **Odeslat e-mail** pro Office 365 Outlook a obsahuje výstupy z `@actionBody('Select')` výrazu v těle e-mailu:
 
-   ![Akce výstupy akce "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   ![Výstupy akcí v akci "Odeslat e-mail"](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
-3. Teď svou aplikaci logiky spustit ručně. Na panelu nástrojů návrháře zvolte **spustit**. 
+1. Nyní ručně spusťte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Spustit**.
 
-   Podle e-mailový konektor, který jste použili, tady jsou výsledky, které získáte:
+   V závislosti na e-mailovém konektoru, který jste použili, získáte následující výsledky:
 
-   ![E-mailu s výsledky akce "Vyberte"](./media/logic-apps-perform-data-operations/select-email-results.png)
+   ![E-mail s výsledky akce "vybrat"](./media/logic-apps-perform-data-operations/select-email-results.png)
 
-## <a name="get-support"></a>Získat podporu
+## <a name="next-steps"></a>Další kroky
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Další postup
-
-* Další informace o [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o [konektorech Logic Apps](../connectors/apis-list.md)

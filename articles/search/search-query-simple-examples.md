@@ -1,33 +1,35 @@
 ---
-title: Příklady dotazů s syntaxí jednoduchého vyhledávání – Azure Search
-description: Jednoduché příklady dotazů pro fulltextové vyhledávání, filtrování vyhledávání, geografické vyhledávání, nafiltrované vyhledávání a další řetězce dotazů, které se používají k dotazování indexu Azure Search.
+title: Vytvoření jednoduchého dotazu – Azure Search
+description: Naučte se, když spustíte dotazy založené na jednoduché syntaxi pro fulltextové vyhledávání, vyfiltrujte hledání, geografické vyhledávání, omezující kontrolu proti Azure Search indexu.
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647614"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179192"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů, které používají syntaxi hledání "jednoduchá" v Azure Search
+# <a name="create-a-simple-query-in-azure-search"></a>Vytvoření jednoduchého dotazu v Azure Search
 
-[Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vyvolá výchozí analyzátor dotazů pro provádění fulltextových vyhledávacích dotazů pro Azure Search index. Jednoduchý analyzátor dotazů je rychlý a pracuje s běžnými scénáři v Azure Search, včetně fulltextového vyhledávání, filtrovaných a omezujících výsledků hledání a geografického vyhledávání. V tomto článku se seznámíme s příklady, které demonstrují operace dotazů, které jsou k dispozici při použití jednoduché syntaxe.
+V Azure Search vyvolá [Jednoduchá syntaxe dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) výchozí analyzátor dotazů pro provádění fulltextových vyhledávacích dotazů pro index. Tento analyzátor je rychlý a pracuje s běžnými scénáři, včetně fulltextového vyhledávání, filtrovaných a omezujících výsledků hledání a geografického vyhledávání. 
 
-Alternativní syntaxe dotazu je [Úplná Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), která podporuje složitější struktury dotazů, jako je hledání přibližných a zástupných znaků. to může trvat déle. Další informace a příklady demonstrující úplnou syntaxi naleznete v tématu [příklady dotazů syntaxe pro Lucene](search-query-lucene-examples.md).
+V tomto článku používáme příklady k ilustraci jednoduché syntaxe.
+
+Alternativná syntaxe dotazu je [Úplná Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), která podporuje složitější struktury dotazů, jako je hledání přibližných a zástupných znaků. to může trvat déle. Další informace a příklady, které demonstrují úplnou syntaxi, najdete v tématu [použití úplné syntaxe Lucene](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formulování požadavků v post
 
 Následující příklady využívají index vyhledávání úloh NYC sestávající z úloh, které jsou k dispozici na základě datové sady poskytované městem OpenData iniciativy z [New Yorku](https://nycopendata.socrata.com/) . Tato data by se neměla považovat za aktuální nebo kompletní. Index je na službě izolovaného prostoru poskytované Microsoftem, což znamená, že k pokusu o provedení těchto dotazů nepotřebujete předplatné Azure ani Azure Search.
 
-K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [prozkoumání pomocí klientů REST](search-get-started-postman.md).
+K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení požadavku HTTP na GET. Další informace najdete v tématu [rychlý Start: Prozkoumejte Azure Search REST API pomocí Post](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Nastavit hlavičku požadavku
 
@@ -141,7 +143,7 @@ Pokud si to chcete vyzkoušet v příspěvku pomocí GET, můžete vložit do to
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Dalším účinným způsobem, jak kombinovat filtrování a hledání **`search.ismatch*()`** , je ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtru používá zástupný znak k výběru business_title, včetně plánu, Planneru, plánování a tak dále.
+Dalším účinným způsobem, jak kombinovat filtrování a hledání **`search.ismatch*()`** , je ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtru používá zástupný znak k výběru business_title, *včetně plánu,* Planneru, plánování a tak dále.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
@@ -267,7 +269,7 @@ Několik parametrů řídí, která pole jsou ve výsledcích hledání, počet 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Připojeno k předchozímu příkladu, můžete řadit podle názvu. Toto řazení funguje, protože civil_service_title je v indexu.
+Připojeno k předchozímu příkladu, můžete řadit podle názvu. Toto řazení *funguje, protože civil_service_title je v* indexu.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
@@ -285,7 +287,7 @@ Pokud chcete získat další 5, přeskočte první dávku:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Zkuste zadat dotazy ve svém kódu. Následující odkazy vysvětlují, jak nastavit vyhledávací dotazy pro rozhraní .NET i REST API s použitím výchozí jednoduché syntaxe.
 
 * [Dotazování indexu Azure Search pomocí sady .NET SDK](search-query-dotnet.md)
