@@ -28,7 +28,7 @@ Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací.
 |Příkaz|Popis|
 | --- | --- |
 | create | Vytvoří Service Fabric aplikaci pomocí zadaného popisu. |
-| odstraňovat | Odstraní existující aplikaci Service Fabric. |
+| delete | Odstraní existující aplikaci Service Fabric. |
 | deployed | Získá informace o aplikaci nasazené na Service Fabric uzlu. |
 | nasazeno – stav | Získá informace o stavu aplikace nasazené na Service Fabric uzlu. |
 | deployed-list | Načte seznam aplikací nasazených na Service Fabric uzlu. |
