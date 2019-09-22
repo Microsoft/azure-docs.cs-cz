@@ -222,9 +222,9 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
-| id zprávy |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| id uživatele |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| message-id |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| user-id |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
+| to |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
