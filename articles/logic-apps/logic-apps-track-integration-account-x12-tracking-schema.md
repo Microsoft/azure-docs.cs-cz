@@ -237,7 +237,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingInterchangeControlNumber |String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Enum | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| processingStatus | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ta102 | String | Interchange datum. (Volitelné) |
 | ta103 | String | Interchange čas. (Volitelné) |
 | ta105 | String | Výměny. Poznámka: kód. (Volitelné) |
@@ -349,7 +349,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingFunctionalGroupId | String | ID mapuje AK101 ve funkční skupině potvrzení. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ak903 | String | Počet přijatých sady transakcí. (Volitelné) |
 | ak904 | String | Číslo sady transakcí přijaté v identifikované funkční skupiny. (Volitelné) |
 | ak9Segment | String | Zda je funkční skupinu určené v segmentu AK1 přijímat nebo odmítat a proč. (Volitelné) |

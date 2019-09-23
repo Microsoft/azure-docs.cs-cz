@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Přidání souboru HTTPCommunicationListener.java
 
-Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice* a pak vyberte **Nový * *** * * soubor.  Pojmenujte soubor *HttpCommunicationListener. Java* a vyberte **Dokončit**.
+Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice* a pak vyberte **Nový****soubor**.  Pojmenujte soubor *HttpCommunicationListener. Java* a vyberte **Dokončit**.
 
 Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  Později v části aktualizace souboru HttpCommunicationListener. Java se tento soubor upraví tak, aby vygeneroval, četl a napsal hlasovací data z back-endové služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 

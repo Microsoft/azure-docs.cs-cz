@@ -116,8 +116,8 @@ Chcete-li do řešení přidat další moduly, spusťte příkaz **Azure IoT Edg
 
 Výchozí kód modulu, který je součástí řešení, je umístěn v následujícím umístění:
 
-- C#Funkce Azure Functions (): **moduly >  *&lt;název&gt;*  >  *&lt;vašeho modulu název&gt;vašeho modulu*. cs
-- C#: **moduly >  *&lt;název&gt; modulu* > program.cs
+- C#Funkce Azure Functions (): **moduly >  *&lt;název&gt;*  >  *&lt;vašeho modulu název&gt;vašeho modulu*. cs**
+- C#: **moduly >  *&lt;název&gt; modulu* > program.cs**
 - Python: **moduly >  *&lt;název&gt; modulu* > Main.py**
 - Node. js: **moduly >  *&lt;název&gt; modulu* > App. js** .
 - Java: **moduly >  *&lt;&gt; název modulu* > src > Main > Java > com > edgemodulemodules > App. Java**

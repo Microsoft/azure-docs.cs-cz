@@ -26,7 +26,7 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. Nasazení modelu
               href: tutorial-deploy-models-with-aml.md
-        - name: Regrese (data newyorské taxislužby)
+        - name: Regrese s využitím automatizovaného strojového učení (data newyorské taxislužby)
           items:
             - name: Automatické trénování modelu ML
               displayName: 'automl, automated, auto ml,'
@@ -44,7 +44,7 @@
         - name: 2. Nasazení regresního modelu
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: Automatizované strojové učení
+    - name: Automatizované strojové učení (rozhraní)
       items:
         - name: Klasifikace (bankovní data)
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -107,13 +107,13 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: Nastavení vývojového prostředí
+    - name: Nastavení prostředí
       items:
-        - name: Konfigurace vývojových prostředí
+        - name: Nastavení vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Správa softwarového prostředí
-          displayName: 'pip, Conda'
+        - name: Nastavení softwarových prostředí
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: Povolit protokolování
           displayName: 'troubleshoot, log, files, tracing'

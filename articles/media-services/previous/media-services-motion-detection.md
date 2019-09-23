@@ -100,13 +100,13 @@ Následující tabulka popisuje prvky výstupního souboru JSON.
 | offset |Časový posun pro časová razítka v "taktech". Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. V budoucích scénářích, které podporujeme, se tato hodnota může změnit. |
 | framerate |Počet snímků ve videu za sekundu. |
 | width, height |Odkazuje na šířku a výšku videa v pixelech. |
-| start |Počáteční časové razítko v "taktech". |
+| Spuštění |Počáteční časové razítko v "taktech". |
 | duration |Délka události v "taktech". |
 | interval |Interval každého záznamu v události, v "taktech". |
 | events |Každý fragment události obsahuje pohyb zjištěný během tohoto časového období. |
 | type |V aktuální verzi je to vždycky "2" pro obecný pohyb. Tento popisek poskytuje rozhraní API pro video, které flexibilita rozděluje pohyb v budoucích verzích. |
 | regionId |Jak bylo vysvětleno výše, bude tato verze vždy 0 v této verzi. Tento popisek poskytuje rozhraní API pro video, které nabízí flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
-| regions |Odkazuje na oblast ve videu, kde se zajímáte o pohybu. <br/><br/>-"ID" představuje oblast oblasti – v této verzi je pouze jeden identifikátor 0. <br/>– "typ" představuje tvar oblasti, o které se zajímáte pro pohyb. V současné době jsou podporovány "obdélníky" a "mnohoúhelník".<br/> Pokud jste zadali "Rectangle", oblast má rozměry v X, Y, šířce a výšce. Souřadnice X a Y reprezentují horní levý horní souřadnici oblasti v normalizovaném rozsahu od 0,0 do 1,0. Šířka a výška představuje velikost oblasti v normalizovaném rozsahu od 0,0 do 1,0. V aktuální verzi jsou hodnoty X, Y, Šířka a výška vždy opraveny na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelník", má oblast rozměry v bodech. <br/> |
+| oblasti |Odkazuje na oblast ve videu, kde se zajímáte o pohybu. <br/><br/>-"ID" představuje oblast oblasti – v této verzi je pouze jeden identifikátor 0. <br/>– "typ" představuje tvar oblasti, o které se zajímáte pro pohyb. V současné době jsou podporovány "obdélníky" a "mnohoúhelník".<br/> Pokud jste zadali "Rectangle", oblast má rozměry v X, Y, šířce a výšce. Souřadnice X a Y reprezentují horní levý horní souřadnici oblasti v normalizovaném rozsahu od 0,0 do 1,0. Šířka a výška představuje velikost oblasti v normalizovaném rozsahu od 0,0 do 1,0. V aktuální verzi jsou hodnoty X, Y, Šířka a výška vždy opraveny na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelník", má oblast rozměry v bodech. <br/> |
 | fragments |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment bez událostí znamená, že během tohoto počátečního času a doby trvání nebyl zjištěn žádný pohyb. |
 | brackets [] |Každá závorka představuje jeden interval v události. Prázdné hranaté závorky pro tento interval znamenají, že nebyl zjištěn žádný pohyb. |
 | locations |Tato nová položka v části události uvádí umístění, kde k pohybu došlo. Tato informace je konkrétnější než zóny detekce. |

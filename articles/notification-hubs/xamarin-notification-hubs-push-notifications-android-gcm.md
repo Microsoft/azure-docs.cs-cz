@@ -85,7 +85,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     ![Název balíčku v GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Nastavte cílovou verzi Androidu pro projekt na **android 9,0 (výseč)** pomocí následujících kroků: 
     1. Klikněte pravým tlačítkem na projekt a vyberte **vlastnosti**. 
-    1. **Pro kompilaci pomocí verze Androidu: (Cílová architektura) Vyberte možnost **Android 9,0 (výseč).**** 
+    1. **Pro kompilaci pomocí verze Androidu: (Cílová architektura)** Vyberte možnost **Android 9,0 (výseč).** 
     1. V okně se zprávou vyberte **Ano** , pokud chcete pokračovat se změnou cílové architektury.
 1. Pomocí následujících kroků přidejte do projektu požadované balíčky NuGet:
     1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.

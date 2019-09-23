@@ -74,9 +74,9 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 
 | Name | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
-| protocol | `http` Nebo `tcp` | řetězec |
+| protocol | `http` Nebo `tcp` | string |
 | port | Volitelné, pokud je `http`protokol povinný, pokud je protokol`tcp` | int |
-| requestPath | Povinné, pokud je `http`protokol nepovolený, když je protokol`tcp` | řetězec |
+| requestPath | Povinné, pokud je `http`protokol nepovolený, když je protokol`tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.

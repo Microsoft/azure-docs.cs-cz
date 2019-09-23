@@ -34,7 +34,7 @@ Když Azure Active Directory Domain Services (Azure služba AD DS) nemůže po d
 Předchozí obrázek znázorňuje možné stavy, ve kterých může být spravovaná doména Azure služba AD DS.
 
 ### <a name="running-state"></a>Stav spuštění
-Spravovaná doména, která je správně nakonfigurovaná a pravidelně funguje, je **** ve stavu spuštěno.
+Spravovaná doména, která je správně nakonfigurovaná a pravidelně funguje, je ve stavu **spuštěno **.
 
 **Co očekávat**
 * Společnost Microsoft může pravidelně monitorovat stav vaší spravované domény.
@@ -65,7 +65,7 @@ V některých případech (například pokud máte neplatnou konfiguraci sítě)
 
 
 ### <a name="the-suspended-state"></a>Stav pozastaveno
-Spravovaná doména je v pozastaveném **** stavu z následujících důvodů:
+Spravovaná doména je v **pozastaveném** stavu z následujících důvodů:
 
 * Jeden nebo více kritických výstrah nebylo v 15 dnech vyřešeno. Kritické výstrahy můžou být způsobené chybnou konfigurací, které blokují přístup k prostředkům, které vyžaduje Azure služba AD DS.
     * Například výstraha [AADDS104: Chyba](alert-nsg.md) sítě byla nevyřešena po dobu více než 15 dní ve spravované doméně.
