@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Experimenty s vizuálním rozhraním
-      items:
-        - name: Predikce ceny
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: Predikce ceny (pokročilá)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: Predikce úvěrového rizika
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: Predikce úvěrového rizika (pokročilá)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: Predikce četnosti změn
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: Predikce zpoždění letů
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Otevřené datové sady Azure
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Koncepty
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: Použití Chaineru
               href: how-to-train-chainer.md
+        - name: Použití vizuálního rozhraní
+          displayName: sample visual interface experiments
+          items:
+            - name: Predikce ceny
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: Predikce ceny (pokročilá)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: Predikce úvěrového rizika
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: Predikce úvěrového rizika (pokročilá)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: Predikce četnosti změn
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: Predikce zpoždění letů
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: Ladění hyperparametrů
           displayName: parameter
           href: how-to-tune-hyperparameters.md

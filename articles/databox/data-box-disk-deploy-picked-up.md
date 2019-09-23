@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910117"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128686"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 3. Připevněte štítek na krabici. 
 4. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[V Japonsku a Koreji](#tab/in-japan-korea)
-
-Tady jsou pokyny pro vyzvednutí v Japonsku a Koreji.
-
-#### <a name="pick-up-in-japan"></a>Vyzvednutí v Japonsku
+### <a name="in-japantabin-japan"></a>[V Japonsku](#tab/in-japan)
 
 1. Vyplňte název vaší společnosti a adresu do nákladního listu do části informací o odesílateli.
 2. Odešlete e-mail společnosti Quantium Solutions pomocí následující e-mailové šablony.
@@ -120,7 +116,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 - E-mailem：Customerservice.JP@quantiumsolutions.com 
 - Telefonicky: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Vyzvednutí v Koreji
+### <a name="in-koreatabin-korea"></a>[V Koreji](#tab/in-korea)
 
 1. Nezapomeňte zahrnout zpáteční nákladní list.
 2. Pokud je nákladní list k dispozici, vyžádejte si vyzvednutí takto:

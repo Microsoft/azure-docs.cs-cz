@@ -1,57 +1,155 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Azure Logic Apps
+summary: Sestavujte automatizované škálovatelné pracovní postupy, obchodní procesy a podnikové orchestrace a integrujte své aplikace a data napříč cloudovými službami a místními systémy.
 metadata:
-  title: 'Dokumentace ke službě Azure Logic Apps – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: 'Služba Azure Logic Apps zjednodušuje vytváření automatizovaných škálovatelných pracovních postupů, které integrují aplikace a data napříč cloudovými službami a místními systémy. Pomocí našich rychlých startů, kurzů, šablon a rozhraní API se naučíte vytvářet, navrhovat a nasazovat aplikace logiky, které automatizují obchodní procesy.'
+  title: Dokumentace k Azure Logic Apps
+  description: Sestavujte automatizované škálovatelné pracovní postupy, obchodní procesy a podnikové orchestrace a integrujte své aplikace a data napříč cloudovými službami a místními systémy.
   services: logic-apps
-  author: ecfan
-  manager: carmonm
   ms.service: logic-apps
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: logic-apps
-  ms.date: 01/09/2018
-  ms.author: estfan
-abstract:
-  description: 'Služba Azure Logic Apps zjednodušuje vytváření automatizovaných škálovatelných pracovních postupů, které integrují aplikace a data napříč cloudovými službami a místními systémy. Pomocí našich rychlých startů, kurzů, šablon a rozhraní API se naučíte vytvářet, navrhovat a nasazovat aplikace logiky, které automatizují obchodní procesy.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak vytvořit aplikaci logiky, která běží v Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: portál Azure
-            href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: /azure/logic-apps/quickstart-create-logic-apps-with-visual-studio
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: /azure/logic-apps/quickstart-create-logic-apps-visual-studio-code
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se sestavovat aplikace logiky, které se spouštějí podle plánu a integrují data napříč službami Azure, službami Microsoftu a dalšími aplikacemi SaaS (software jako služba).'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow">Kontrola provozu s využitím aplikace logiky založené na plánu</a>
-          - html: <a href="/azure/logic-apps/tutorial-process-mailing-list-subscriptions-workflow">Správa požadavků na seznam adresátů s využitím aplikace logiky</a>
-          - html: <a href="/azure/logic-apps/tutorial-process-email-attachments-workflow">Zpracování e-mailů a příloh s využitím aplikace logiky</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.logicapp">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/logic/">Reference k rozhraní REST API</a></p>
+  ms.topic: landing-page
+  author: ecfan
+  ms.author: estfan; logicappspm
+  ms.date: 09/18/2019
+  ms.openlocfilehash: d23fac0d030c1d288e1491273d39e07d80426885
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71147302"
+landingContent:
+- title: Informace o Azure Logic Apps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Logic Apps?
+      url: logic-apps-overview.md
+  - linkListType: concept
+    links:
+    - text: Konektory pro Azure Logic Apps
+      url: /azure/connectors/apis-list.md
+    - text: Plánování opakujících se pracovních postupů
+      url: concepts-schedule-automated-recurring-tasks-workflows.md
+    - text: Podniková integrace B2B
+      url: logic-apps-enterprise-integration-overview.md
+  - linkListType: learn
+    links:
+    - text: Úvod do Azure Logic Apps
+      url: https://docs.microsoft.com/learn/modules/intro-to-logic-apps/
+  - linkListType: video
+    links:
+    - text: Seznámení s Azure Logic Apps
+      url: https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps
+    - text: Azure Logic Apps – bezplatná integrace kódu a rozhraní API
+      url: https://www.youtube.com/watch?v=Z3qaBQS0w20
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření aplikace logiky – Azure Portal
+      url: quickstart-create-first-logic-app-workflow.md
+    - text: Vytvoření aplikace logiky – Visual Studio
+      url: quickstart-create-logic-apps-with-visual-studio.md
+  - linkListType: get-started
+    links:
+    - text: 'Šablona: Spuštění úloh časovače podle plánu'
+      url: https://azure.microsoft.com/resources/templates/301-logicapps-jobscheduler/
+  - linkListType: learn
+    links:
+    - text: Automatické směrování a zpracování dat
+      url: https://docs.microsoft.com/learn/modules/route-and-process-data-logic-apps
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření pracovního postupu založeného na plánu
+      url: tutorial-build-schedule-recurring-logic-app-workflow.md
+    - text: Vytvoření pracovního postupu založeného na schválení
+      url: tutorial-process-mailing-list-subscriptions-workflow.md
+    - text: Vytvoření pracovního postupu Azure Functions a Storage
+      url: tutorial-process-email-attachments-workflow.md
+  - linkListType: video
+    links:
+    - text: Staňte se s Azure Logic Apps mistrem v plánování
+      url: https://azure.microsoft.com/resources/videos/ignite-2018-be-the-scheduler-hero-with-azure-logic-apps
+- title: Přístup k místním datům nebo virtuálním sítím
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co je místní brána dat?
+      url: https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem
+    - text: Co je prostředí integrační služby?
+      url: connect-virtual-network-vnet-isolated-environment-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Instalace místní brány dat
+      url: logic-apps-gateway-install.md
+    - text: Připojení k místním zdrojům dat
+      url: logic-apps-gateway-connection.md
+    - text: Připojení k virtuálním sítím
+      url: connect-virtual-network-vnet-isolated-environment-overview.md
+  - linkListType: video
+    links:
+    - text: Úvod do prostředí integrační služby
+      url: https://azure.microsoft.com/resources/videos/azure-friday-introduction-to-azure-integration-service-environment-for-logic-apps/
+- title: Sestavení podnikové integrace B2B
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření a správa účtů integrace
+      url: logic-apps-enterprise-integration-create-integration-account.md
+    - text: Přidání obchodních partnerů
+      url: logic-apps-enterprise-integration-partners.md
+    - text: Vytváření smluv mezi partnery
+      url: logic-apps-enterprise-integration-agreements.md
+  - linkListType: learn
+    links:
+    - text: 'Ukázka: Připojení k účtu integrace a nasazení pomocí Azure DevOps'
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+  - linkListType: architecture
+    links:
+    - text: Základní podniková integrace
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+- title: Správa a zabezpečení aplikací logiky
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa aplikací logiky – Visual Studio
+      url: manage-logic-apps-with-visual-studio.md
+    - text: Správa prostředí integrační služby
+      url: ise-manage-integration-service-environment.md
+    - text: Zabezpečení přístupu a dat
+      url: logic-apps-securing-a-logic-app.md
+    - text: Ověřování pomocí spravovaných identit
+      url: create-managed-service-identity.md
+- title: Nasazení aplikací logiky
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Automatizace nasazení aplikace logiky
+      url: logic-apps-azure-resource-manager-templates-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytváření šablon pro aplikace logiky
+      url: logic-apps-create-azure-resource-manager-templates.md
+    - text: Nasazování šablon pro aplikace logiky
+      url: logic-apps-deploy-azure-resource-manager-templates.md
+  - linkListType: learn
+    links:
+    - text: Vytvoření a nasazení s využitím šablon Resource Manageru
+      url: https://docs.microsoft.com/learn/modules/create-deploy-logic-apps-using-arm-templates/
+    - text: 'Ukázka: Připojení k Azure Storage a nasazení s využitím Azure DevOps'
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+    - text: 'Ukázka: Připojení k Azure Service Bus a nasazení s využitím Azure DevOps'
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+- title: Další informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Konfigurace a omezení služeb
+      url: logic-apps-limits-and-config.md
+    - text: Cenový model
+      url: logic-apps-pricing.md
+    - text: Jazykové schéma pro definování pracovních postupů
+      url: logic-apps-workflow-definition-language.md
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.logicapp/
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/logic/

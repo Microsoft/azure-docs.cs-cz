@@ -183,8 +183,8 @@
       href: /rest/api/mariadb
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Uložené procedury replikace příchozích dat
-      href: reference-data-in-stored-procedures.md
+    - name: Uložené procedury Azure
+      href: reference-stored-procedures.md
 - name: Zdroje a prostředky
   items:
     - name: Šablony nasazení

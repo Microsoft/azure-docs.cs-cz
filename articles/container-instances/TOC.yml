@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: Nasazení skupiny kontejnerů – Resource Manager
           href: container-instances-multi-container-group.md
+    - name: Integrace se službami Azure
+      items:
+        - name: Aktivace pomocí Azure Functions
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -121,6 +125,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
     - name: Konektor
       href: /connectors/aci
 - name: Zdroje a prostředky

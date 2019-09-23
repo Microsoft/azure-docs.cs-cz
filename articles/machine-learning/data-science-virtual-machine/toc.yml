@@ -61,3 +61,11 @@
       href: 'https://stackoverflow.com/search?q=dsvm'
     - name: Příručka pro vývojáře v R
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
+- name: Referenční informace
+  items:
+    - name: DSVM s Windows
+      href: reference-windows-vm.md
+    - name: DSVM s Ubuntu
+      href: reference-ubuntu-vm.md
+    - name: DSVM s CentOS
+      href: reference-centos-vm.md

@@ -17,9 +17,9 @@
   items:
     - name: Vytváření pracovních postupů založených na plánech
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: Správa požadavků na seznam adresátů
+    - name: Vytvoření pracovních postupů založených na schválení
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: Zpracování e-mailových příloh
+    - name: Vytvoření pracovního postupu Azure Storage a Azure Functions
       href: tutorial-process-email-attachments-workflow.md
 - name: Ukázky
   items:
@@ -31,7 +31,7 @@
   items:
     - name: Konektory pro Logic Apps
       href: ../connectors/apis-list.md
-    - name: Plánování automatizovaných opakujících se pracovních postupů
+    - name: Plánování opakujících se pracovních postupů
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Bez serveru s Azure
       href: logic-apps-serverless-overview.md
@@ -105,12 +105,18 @@
           href: logic-apps-diagnosing-failures.md
     - name: Vývoj pro scénáře B2B
       items:
-        - name: Vytvoření účtu pro integraci
+        - name: Vytvoření účtu integrace
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Obchodní partneři
           href: logic-apps-enterprise-integration-partners.md
         - name: Smlouvy
           href: logic-apps-enterprise-integration-agreements.md
+        - name: Schémata pro ověřování XML
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: Mapy pro transformaci XML
+          href: logic-apps-enterprise-integration-maps.md
+        - name: Certifikáty
+          href: logic-apps-enterprise-integration-certificates.md
         - name: Metadata artefaktů
           href: logic-apps-enterprise-integration-metadata.md
         - name: Příjem zpráv B2B
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: Zpracování plochých souborů
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: Transformace XML
+          href: logic-apps-enterprise-integration-transform.md
         - name: Zpracování XML
           href: logic-apps-enterprise-integration-xml.md
         - name: Ověření XML
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: Přidání schémat pro ověřování XML
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: Transformace XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Přidání map pro transformaci XML
-          href: logic-apps-enterprise-integration-maps.md
         - name: Transformace JSON
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: Přidání certifikátů zabezpečení
-          href: logic-apps-enterprise-integration-certificates.md
         - name: Řešení chyb B2B
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Sestavení plánu zotavení po havárii

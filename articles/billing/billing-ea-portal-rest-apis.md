@@ -4,16 +4,16 @@ description: Tento článek popisuje rozhraní REST API, která se používají 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900858"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105445"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
 
@@ -31,7 +31,7 @@ Zákazníci Microsoft Enterprise Azure mohou prostřednictvím rozhraní REST AP
 
 **Poplatek obchodu Marketplace Store:** Toto [rozhraní API](billing-enterprise-api-marketplace-storecharge.md) vrací poplatky vzniklé v obchodě na základě využití, v rozpisu po dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Poplatek obchodu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
-**Ceník:** Toto [rozhraní API](/billing-enterprise-api-pricesheet.md) poskytuje platnou sazbu každého měřiče pro danou registraci a fakturační období. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
+**Ceník:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje platnou sazbu každého měřiče pro danou registraci a fakturační období. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
 **Fakturační období:** Toto [rozhraní API](billing-enterprise-api-billing-periods.md) vrací seznam fakturačních období, která obsahují data o spotřebě u dané registrace, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
@@ -81,11 +81,11 @@ Koncový bod Swagger je k dispozici v [následujících rozhraních API pro vytv
 
 Pokud používáte rozhraní API, budou se zobrazovat kódy stavu odpovědí. Jsou popsány v následující tabulce.
 
-| Kód stavu odpovědi | Zpráva | Popis |
+| Stavový kód odpovědi | Zpráva | Popis |
 | --- | --- | --- |
 | 200 | OK | Bez chyby |
 | 401 | Neautorizováno | Klíč rozhraní API se nedá najít, je neplatný, vypršela jeho platnost atd. |
-| 404 | Není k dispozici | Nenašel se koncový bod sestavy. |
+| 404 | Neaktivní | Nenašel se koncový bod sestavy. |
 | 400 | Nesprávná žádost | Neplatné parametry – rozsahy dat, čísla smluv EA atd. |
 | 500 | Chyba serveru | Neočekávaná chyba při zpracování žádosti |
 
@@ -117,30 +117,30 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Název předplatného | SubscriptionName | SubscriptionName |   |
-| Datum | Date | Date | Zobrazuje datum, kdy byla spuštěna sestava katalogu služeb. Formátem je řetězec data bez časového razítka. |
+| Datum | Datum | Datum | Zobrazuje datum, kdy byla spuštěna sestava katalogu služeb. Formátem je řetězec data bez časového razítka. |
 | Měsíc | Month | Month |   |
 | Den | Day | Day |   |
 | Rok | Year | Year |   |
 | Produkt | BillableItemName | Produkt |   |
-| ID měřiče | ResourceGUID | MeterId |   |
-| Kategorie měřiče | Service | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
-| Podkategorie měřiče | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
-| Oblast měřiče | ServiceRegion | MeterRegion | Třetí úroveň podrobností požadovaných pro službu. Užitečné při hledání kontextu oblasti pro ResourceGUID. |
-| Název měřiče | ServiceResource | MeterName | Název služby |
+| ID měření | ResourceGUID | MeterId |   |
+| Kategorie měření | Služba | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
+| Podkategorie měření | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
+| Oblast měření | ServiceRegion | MeterRegion | Třetí úroveň podrobností požadovaných pro službu. Užitečné při hledání kontextu oblasti pro ResourceGUID. |
+| Název měření | ServiceResource | MeterName | Název služby |
 | Spotřebované množství | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
 | Umístění prostředku | ServiceSubRegion | ResourceLocation |   |
-| Využívaná služba | ServiceInfo | ConsumedService |   |
-| ID instance | Component | InstanceId |   |
+| Spotřebovaná služba | ServiceInfo | ConsumedService |   |
+| ID instance | Komponenta | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
-| Značky | Tags | Tags |   |
+| Značky | Značky | Značky |   |
 | Identifikátor služby úložiště   | OrderNumber | StoreServiceIdentifier   |   |
 | Název oddělení | DepartmentName | DepartmentName |   |
 | Nákladové středisko | CostCenter | CostCenter |   |
-| Měrná jednotka | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízená oznámení, jednotky, hodiny za jednotku, MB, denní jednotky |
+| Jednotka měření | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízená oznámení, jednotky, hodiny za jednotku, MB, denní jednotky |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Sestava pro Azure Marketplace
@@ -156,17 +156,17 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | Měsíc | Month |  Month |
 | Den | Day |  Day |
 | Rok | Year |  Year |
-| ID měřiče | MeterResourceId |  MeterId |
-| Název vydavatele | PublisherFriendlyName |  PublisherName |
+| ID měření | MeterResourceId |  MeterId |
+| Název vydavatele | PublisherFriendlyName |  Název vydavatele |
 | Název nabídky | OfferFriendlyName |  OfferName |
 | Název plánu | PlanFriendlyName |  PlanName |
 | Spotřebované množství | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
-| Měrná jednotka | UnitOfMeasure | UnitOfMeasure |
+| Jednotka měření | UnitOfMeasure | UnitOfMeasure |
 | ID instance | InstanceId | InstanceId |
 | Další informace | AdditionalInfo | AdditionalInfo |
-| Značky | Tags | Tags |
+| Značky | Značky | Značky |
 | Číslo objednávky | OrderNumber | OrderNumber |
 | Název oddělení | DepartmentNames | DepartmentName |
 | Nákladové středisko | CostCenters |  CostCenter |
@@ -176,8 +176,8 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 
 | Název sloupce CSV | Název sloupce JSON | Poznámka |
 | --- | --- | --- |
-| Služba | Service |  Žádná změna ceny |
-| Měrná jednotka | UnitOfMeasure |   |
+| Služba | Služba |  Žádná změna ceny |
+| Jednotka měření | UnitOfMeasure |   |
 | Číslo nadlimitní položky | ConsumptionPartNumber |   |
 | Cena nadlimitní položky | ConsumptionPrice |   |
 | Kód měny | CurrencyCode |     |

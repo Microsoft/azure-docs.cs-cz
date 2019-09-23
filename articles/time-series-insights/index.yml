@@ -1,61 +1,129 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Time Series Insights
+summary: Naučte se spouštět analýzy Azure IoT v cloudu s využitím plně spravovaného zpracování událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.
 metadata:
-  title: 'Dokumentace ke službě Azure Time Series Insights – rychlá zprovoznění, kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Naučte se spouštět analýzy Azure IoT v cloudu s využitím plně spravovaného zpracování událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.'
+  title: Dokumentace ke službě Azure Time Series Insights – rychlá zprovoznění, kurzy, reference k rozhraní API | Microsoft Docs
+  description: Naučte se spouštět analýzy Azure IoT v cloudu s využitím plně spravovaného zpracování událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.
   services: time-series-insights
-  author: deepakpalled
-  manager: cshankar
   ms.service: time-series-insights
+  ms.subservice: time-series-insights
   ms.topic: landing-page
-  ms.date: 06/03/2019
-  ms.author: dpalled
-abstract:
-  description: 'Vítá vás služba Azure Time Series Insights. Azure Time Series Insights poskytuje výkonné nástroje pro telemetrii a zkoumání dat, které pomáhají vylepšovat provozní analýzy. Tato dokumentace popisuje službu Time Series Insights, postup při zahájení práce s využitím četných jejích funkcí a její výkonná rozhraní API. Informace jsou uváděné ve dvou verzích, pro všeobecně dostupnou verzi (Time Series Insights ve verzi GA) a pro hlavní aktualizaci této služby, která je ve verzi Preview (Time Series Insights ve verzi Preview).'
-  aside:
-    image:
-      alt: Úvodní video k funkcím službě Azure IoT Time Series Insights
-      height: 110
-      src: media/index/new-tsi-intro.png
-      width: 250
-    title: 'Time Series Insights pro aplikace IoT (13:31)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Projděte si rychlé ukázky, které vám pomohou začít během několika minut, a seznamte se blíž se službou Azure Time Series Insights.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
-            text: Prozkoumání Azure Time Series Insights verze GA
-            href: /azure/time-series-insights/time-series-quickstart
-      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Prozkoumání Azure Time Series Insights verze Preview</a></p>
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Prostřednictvím několika podrobných příkladů se naučíte vytvářet prostředí Azure Time Series Insights, jednostránkové webové aplikace a ještě mnohem víc.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Azure Time Series Insights verze GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Vytvoření prostředí Azure Time Series Insights</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Vytvoření jednostránkové webové aplikace</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Prozkoumání javascriptové klientské knihovny</a></p>
-          - title: Azure Time Series Insights verze Preview
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Nastavení prostředí Azure Time Series Insights Preview</a></p>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Rozhraní API služby Time Series Insights verze GA
-            html: <p><a href="/rest/api/time-series-insights/ga">Přístup k datům</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Syntaxe dotazů</a></p>
-          - title: Rozhraní API služby Time Series Insights verze Preview
-            html: <p><a href="/rest/api/time-series-insights/preview-query">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Rozhraní API pro modely</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Rozhraní API pro prostředí</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Rozhraní API služby Time Series pro výrazy</a></p>
-          - title: Klientská sada SDK
-            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">Javascriptová klientská sada SDK</a></p>'
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/04/2019
+  ms.openlocfilehash: 46d97b411971b7dbd844a6f5aa23d97d1c59d30c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71145559"
+landingContent:
+- title: Informace o službě Azure Time Series Insights
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Time Series Insights ve verzi Preview?
+      url: time-series-insights-update-overview.md
+    - text: Informace o službě Azure Time Series Insights verze GA
+      url: time-series-insights-overview.md
+  - linkListType: video
+    links:
+    - text: Time Series Insights pro aplikace IoT (13:31)
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+- title: Začínáme s verzí Preview
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Prozkoumání Azure Time Series Insights verze Preview
+      url: time-series-insights-update-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Kurz k Azure Time Series Insights verze Preview
+      url: time-series-insights-update-create-environment.md
+    - text: Vytvoření jednostránkové webové aplikace
+      url: tutorial-create-tsi-sample-spa.md
+    - text: Javascriptová klientská knihovna pro Time Series Insights
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zřizování a správa
+      url: time-series-insights-update-how-to-manage.md
+  - linkListType: concept
+    links:
+    - text: Vizualizace dat v průzkumníku služby Time Series Insights verze Preview
+      url: time-series-insights-update-explorer.md
+- title: Plánování a příprava verze Preview
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Připojení k Event Hubs
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Připojení ke službě IoT Hub
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: Příchozí přenos a úložiště dat
+      url: time-series-insights-update-storage-ingress.md
+  - linkListType: how-to-guide
+    links:
+    - text: Udělení přístupu k datům
+      url: time-series-insights-data-access.md
+    - text: Úpravy JSON pro dotazy
+      url: time-series-insights-update-how-to-shape-events.md
+  - linkListType: concept
+    links:
+    - text: Model služby Time Series
+      url: time-series-insights-update-tsm.md
+- title: Začínáme s verzí GA
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Prozkoumání Azure Time Series Insights verze GA
+      url: time-series-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření prostředí Time Series Insights
+      url: tutorial-create-populate-tsi-environment.md
+    - text: Vytvoření jednostránkové webové aplikace
+      url: tutorial-create-tsi-sample-spa.md
+    - text: Javascriptová klientská knihovna pro Time Series Insights
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření prostředí
+      url: time-series-insights-get-started.md
+  - linkListType: concept
+    links:
+    - text: Vizualizace dat v průzkumníku služby Time Series Insights
+      url: time-series-insights-explorer.md
+- title: Plánování a příprava verze GA
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Připojení k Event Hubs
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Připojení ke službě IoT Hub
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: Plánování prostředí
+      url: time-series-insights-environment-planning.md
+    - text: Škálování prostředí
+      url: time-series-insights-how-to-scale-your-environment.md
+  - linkListType: how-to-guide
+    links:
+    - text: Udělení přístupu k datům
+      url: time-series-insights-data-access.md
+    - text: Úpravy JSON pro dotazy
+      url: how-to-shape-query-json.md
+    - text: Odesílání událostí
+      url: time-series-insights-send-events.md
+- title: Referenční materiály k rozhraní API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Time Series Insights
+      url: /rest/api/time-series-insights/
+    - text: Azure Time Series Insights verze Preview
+      url: /rest/api/time-series-insights/preview
+    - text: Azure Time Series Insights verze GA
+      url: /rest/api/time-series-insights/ga
+    - text: Javascriptová klientská sada SDK
+      url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

@@ -9,12 +9,22 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Překlad adres IP – portál
-      href: dns-getstarted-portal.md
-    - name: Překlad adres IP – PowerShell
-      href: dns-getstarted-powershell.md
-    - name: Překlad adres IP – rozhraní příkazového řádku
-      href: dns-getstarted-cli.md
+    - name: Veřejná služba DNS
+      items:
+        - name: Vytvoření veřejné zóny – portál
+          href: dns-getstarted-portal.md
+        - name: Vytvoření veřejné zóny – PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Vytvoření veřejné zóny – CLI
+          href: dns-getstarted-cli.md
+    - name: Privátní DNS
+      items:
+        - name: Vytvoření privátní zóny – portál
+          href: private-dns-getstarted-portal.md
+        - name: Vytvoření privátní zóny – CLI
+          href: private-dns-getstarted-cli.md
+        - name: Vytvoření privátní zóny – PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Kurzy
   items:
     - name: Veřejná služba DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Záznamy aliasů pro záznamy zón
           href: tutorial-alias-rr.md
-    - name: Privátní DNS
-      items:
-        - name: Vytvoření privátní zóny DNS a záznamu
-          href: private-dns-portal.md
 - name: Ukázky
   items:
     - name: Azure CLI
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Postup
   items:
-    - name: Privátní DNS
-      items:
-        - name: Vytvoření privátní zóny – rozhraní příkazového řádku
-          href: private-dns-getstarted-cli.md
-        - name: Vytvoření privátní zóny – PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: Veřejná služba DNS
       items:
         - name: Záznamy aliasů pro webové aplikace s vyrovnáváním zatížení

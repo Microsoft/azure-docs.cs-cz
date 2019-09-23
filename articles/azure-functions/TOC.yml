@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Vývoj a nasazení pomocí Azure Pipelines
           href: functions-how-to-azure-devops.md
+        - name: Vývoj a nasazení pomocí GitHub Actions
+          href: functions-how-to-github-actions.md
         - name: Nasazení souboru Zip
           href: deployment-zip-push.md
         - name: Spuštění z balíčku

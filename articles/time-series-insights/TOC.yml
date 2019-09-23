@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights verze Preview
       items:
-        - name: Kurz k Azure Time Series Insights verze Preview
+        - name: Nastavení prostředí verze Preview
           href: time-series-insights-update-create-environment.md
 - name: Koncepty
   items:

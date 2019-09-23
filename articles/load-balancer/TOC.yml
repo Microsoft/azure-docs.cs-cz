@@ -18,7 +18,7 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Vytvoření Load Balanceru úrovně Standard – Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Vytvoření Load Balanceru úrovně Standard – šablona Azure Resource Manageru
+    - name: Vytvoření Standard Load Balanceru – šablona
       displayName: ARM
       href: quickstart-load-balancer-standard-public-template.md
 - name: Kurzy

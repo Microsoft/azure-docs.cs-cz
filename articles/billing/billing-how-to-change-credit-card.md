@@ -11,14 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 7719ae83525883a6d3f014dbb99877b7319f2ccd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 05b1fe3d061e735322e6eb6c65e60f63d8adb4d6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383658"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933870"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Přidání, aktualizace nebo odebrání platební karty v Azure
+
+Tento dokument je určený pro zákazníky, kteří si zaregistrovali Azure online pomocí platební karty.
 
 Na webu Azure Portal můžete přidat novou platební kartu, aktualizovat stávající platební kartu nebo odstranit platební kartu, kterou nepoužíváte. Pokud chcete provést tyto změny, musíte být [Správce účtu](billing-subscription-transfer.md#whoisaa).
 
@@ -164,7 +166,7 @@ Pokud chcete změnit výchozí způsob platby na šek / bezhotovostní převod, 
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
 
-    ![Snímek obrazovky s možností Fakturační profil v nabídce](./media/billing-how-to-change-credit-card/billing-profile.png)
+    ![Snímek obrazovky s možností Fakturační profily v nabídce](./media/billing-how-to-change-credit-card/billing-profile.png)
 
 1. Zvolte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.

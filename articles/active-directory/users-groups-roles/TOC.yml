@@ -36,26 +36,24 @@
   items:
     - name: Správa uživatelů
       items:
-        - name: Přidání nových uživatelů do Azure AD
+        - name: Vytvoření uživatelů
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné vytváření uživatelů (Preview)
+          href: users-bulk-add.md
         - name: Správa uživatelských profilů
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Hromadné operace (Preview)
-          items:
-            - name: Stahování uživatelů (Preview)
-              href: users-bulk-download.md
-            - name: Hromadný import uživatelů (Preview)
-              href: users-bulk-add.md
-            - name: Hromadné odstraňování uživatelů (Preview)
-              href: users-bulk-delete.md
-            - name: Hromadné obnovení uživatelů (Preview)
-              href: users-bulk-restore.md
+        - name: Stahování informací o uživateli (Preview)
+          href: users-bulk-download.md
         - name: Sdílení uživatelských účtů
           href: users-sharing-accounts.md
         - name: Přiřazení uživatelů k rolím správce
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné odstraňování uživatelů (Preview)
+          href: users-bulk-delete.md
         - name: Obnovit odstraněného uživatele
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné obnovení uživatelů (Preview)
+          href: users-bulk-restore.md
         - name: Zavření účtu v nespravovaném adresáři
           href: users-close-account.md
         - name: Přidání uživatelů B2B
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Hledání v seznamech členů a skupin (Preview)
           href: groups-members-owners-search.md
+        - name: Vytvoření skupiny (Azure Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Správa skupin s využitím PowerShellu pro Graph (v2)
           href: groups-settings-v2-cmdlets.md
         - name: Správa skupin MSOnline s využitím PowerShellu
           href: groups-settings-cmdlets.md
-        - name: Správa členů skupin
+        - name: Přidání nebo odebrání členů skupin
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné přidávání členů (Preview)
+          href: groups-bulk-import-members.md
+        - name: Hromadné odebírání členů (Preview)
+          href: groups-bulk-remove-members.md
+        - name: Hromadné stahování seznamu členů (Preview)
+          href: groups-bulk-download-members.md
         - name: Správa vlastníků skupin
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Hromadné operace (Preview)
-          items:
-            - name: Hromadný import členů (Preview)
-              href: groups-bulk-import-members.md
-            - name: Hromadné stahování členů (Preview)
-              href: groups-bulk-download-members.md
-            - name: Hromadné odebírání členů (Preview)
-              href: groups-bulk-remove-members.md
-            - name: Hromadné stažení seznamu skupin (Preview)
-              href: groups-bulk-download.md
+        - name: Hromadné stahování seznamu skupin (Preview)
+          href: groups-bulk-download.md
         - name: Správa skupin ve skupinách
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Vytvoření skupiny (Azure Portal)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Přidání skupinového přístupu k aplikacím SaaS
           href: groups-saasapps.md
         - name: Referenční informace k pojmenování skupin

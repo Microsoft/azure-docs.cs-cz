@@ -134,8 +134,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Automatizace infrastruktury
       href: infrastructure-automation.md
-    - name: Zabezpečení a zásady
-      href: security-policy.md
+    - name: Zabezpečení
+      items:
+        - name: Zabezpečení a zásady
+          href: security-policy.md
     - name: Stavy a životní cyklus
       href: states-lifecycle.md
     - name: Monitorování
@@ -183,6 +185,8 @@
           href: windows-desktop-multitenant-hosting-deployment.md
     - name: Zabezpečení virtuálních počítačů
       items:
+        - name: Doporučení
+          href: security-recommendations.md
         - name: Přístup za běhu
           href: ../../security-center/security-center-just-in-time.md
         - name: Šifrování
@@ -259,6 +263,14 @@
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
           href: nested-virtualization.md
+    - name: Monitorování virtuálních počítačů
+      items:
+        - name: Azure Monitor pro virtuální počítače
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: Vytvoření upozornění metrik
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: Vytvoření upozornění protokolu
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: Správa nákladů
       items:
         - name: Předplacení virtuálních počítačů – rezervace Azure

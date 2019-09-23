@@ -13,9 +13,9 @@ metadata:
   ms.service: dms
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
+  ms.date: 09/22/2019
 abstract:
-  description: 'Služba Azure Database Migration Service umožňuje bezproblémovou migraci z více zdrojů databáze na platformy Azure Data s minimální dobou vyřazení z provozu. Služba používá nástroj Data Migration Assistant k vygenerování sestav vyhodnocení poskytujících doporučení, která vás provedou nutnými změnami před provedením migrace. Až budete připraveni zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky.'
+  description: 'Služba Azure Database Migration Service umožňuje bezproblémovou migraci z více zdrojů databáze na platformy Azure Data s minimální dobou vyřazení z provozu. Služba používá nástroj Data Migration Assistant k vygenerování sestav vyhodnocení poskytujících doporučení, která vás provedou nutnými změnami před provedením migrace. Až budete připravení zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky.'
   aside:
     image:
       alt: null
@@ -40,19 +40,36 @@ sections:
   - title: Podrobné kurzy
     items:
       - type: paragraph
-        text: 'Naučte se migrovat databáze s využitím služby Database Migration Service:'
+        text: 'Naučte se migrovat databáze s využitím služby Azure Database Migration Service:'
       - type: list
-        style: ordered
+        style: unordered
         items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">Offline migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Online migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">Online migrace RDS SQL Serveru do Azure SQL Database spravované instance Azure SQL Database s využitím DMS</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">Online migrace MySQL do služby Azure Database for MySQL pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB s využitím DMS</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB s využitím DMS</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">Offline migrace SQL Serveru do služby Azure SQL Database</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">Online migrace SQL Serveru do služby Azure SQL Database</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">Offline migrace SQL Serveru do spravované instance Azure SQL Database</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Online migrace SQL Serveru do spravované instance Azure SQL Database</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">Online migrace RDS SQL Serveru do Azure SQL Database nebo spravované instance Azure SQL Database</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">Online migrace MySQL do služby Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-mysql-server-azure-db-for-mysql-online">Online migrace RDS MySQL do služby Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">Online migrace PostgreSQL do Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-postgresql-server-azure-db-for-postgresql-online">Online migrace RDS PostgreSQL do Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB</a>
+          - html: <a href="/azure/dms/tutorial-oracle-azure-postgresql-online">Online migrace Oracle do Azure Database for PostgreSQL</a>
+  - title: Videa
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/">Použití průvodce migrací databází</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/">Proces migrace a doporučené nástroje/služby</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/">Požadavky a vytvoření instance DMS</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/">Migrace SQL Serveru 2008 do spravované instance Azure SQL Database</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/">Migrace PostgreSQL do Azure Database for PostgreSQL</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/">Monitorování online migrace a provedení přímé migrace</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/">Migrace Oracle do Azure SQL Database</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/">Migrace MongoDB do Azure Cosmos DB</a>'
   - title: Ukázky
     items:
       - type: list
