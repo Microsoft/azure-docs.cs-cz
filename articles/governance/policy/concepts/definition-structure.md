@@ -3,16 +3,16 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje, jak je používat prostředku definice zásady Azure Policy stanovit vytváření názvů pro prostředky ve vaší organizaci zadáním popisu vašeho nového, když je tato zásada vynucená a jaký vliv má provést.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239190"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145571"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -351,7 +351,7 @@ Tato ukázka pravidla zásad používá **hodnotu** ke kontrole, jestli se výsl
 
 #### <a name="avoiding-template-failures"></a>Předcházení chybám šablon
 
-Použití _šablonových funkcí_ v **hodnotě** umožňuje mnoho komplexních vnořených funkcí. Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Příklad **hodnoty** , která se v některých scénářích nezdařila:
+Použití šablonových _funkcí_ v **hodnotě** umožňuje mnoho komplexních vnořených funkcí. Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Příklad **hodnoty** , která se v některých scénářích nezdařila:
 
 ```json
 {
@@ -367,7 +367,7 @@ Použití _šablonových funkcí_ v **hodnotě** umožňuje mnoho komplexních v
 }
 ```
 
-Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane účinkem **odepření** .
+Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane účinkem odepření.
 
 Místo toho použijte funkci [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) ke kontrole, zda první tři znaky **názvu** odpovídají **ABC** bez povolení **názvu** kratšího než tři znaky, aby došlo k chybě:
 
@@ -398,6 +398,7 @@ Azure Policy podporuje následující typy účinku:
 - **DeployIfNotExists**: nasadí prostředek, pokud už neexistuje.
 - **Zakázané**: nevyhodnocuje prostředky pro pravidlo zásad dodržování předpisů
 - **EnforceRegoPolicy**: konfiguruje řadič otevřeného přístupu agenta zásad ve službě Azure Kubernetes (Preview).
+- **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku
 
 Pro **připojit**, je nutné zadat následující údaje:
 
@@ -424,6 +425,8 @@ Hodnota může být řetězec nebo objekt formátu JSON.
     ]
 }
 ```
+
+Podobně platí, že příkaz **Upravit** vyžaduje vlastnost **roleDefinitionId** v části **podrobností** pravidla zásad pro [úlohu nápravy](../how-to/remediate-resources.md). **Úprava** také vyžaduje, aby pole **operace** definovala akce, které se mají u značek prostředků provést.
 
 Podrobné informace o každém z efektů, pořadí vyhodnocení, vlastností a příkladů najdete v tématu [principy Azure Policych efektů](effects.md).
 
