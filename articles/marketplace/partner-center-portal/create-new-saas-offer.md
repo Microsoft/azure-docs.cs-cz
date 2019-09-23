@@ -441,7 +441,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-**Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
+* *Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 

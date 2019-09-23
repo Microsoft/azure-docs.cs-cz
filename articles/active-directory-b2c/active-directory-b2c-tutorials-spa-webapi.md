@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor *B2C-WebApi/* * appSettings. JSON** * v aplikaci Visual Studio nebo Visual Studio Code.
+1. Otevřete soubor *B2C-WebApi/**appSettings. JSON*** v aplikaci Visual Studio nebo Visual Studio Code.
 1. `AzureAdB2C` Upravte blok tak, aby odrážel název vašeho tenanta, ID aplikace webové aplikace API, název vaší zásady registrace a přihlašování a obory, které jste definovali dříve. Blok by měl vypadat podobně jako v následujícím příkladu (s `Tenant` odpovídajícími `ClientId` hodnotami a):
 
     ```json

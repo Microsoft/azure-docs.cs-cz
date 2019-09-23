@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak zobrazit počet všech typů síťových prost
 
 1. Přihlaste se k webu Azure [Portal](https://portal.azure.com).
 2. V levém horním rohu Azure Portal vyberte **všechny služby**.
-3. Do pole **Filtr** zadejte *odběry* . Pokud **** se ve výsledcích hledání zobrazí předplatná, vyberte ji.
+3. Do pole **Filtr** zadejte *odběry* . Pokud se ve výsledcích hledání zobrazí **předplatná**, vyberte ji.
 4. Vyberte název předplatného, pro který chcete zobrazit informace o použití.
 5. V části **Nastavení**vyberte **využití + kvóta**.
 6. Můžete vybrat následující možnosti:

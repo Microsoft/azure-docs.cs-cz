@@ -100,7 +100,7 @@ Cílení na plnou verzi rozhraní .NET Core, samostatné nasazení a ASP.NET Cor
 
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
-* Vyberte **nastavení** > * * * * nastavení aplikace * * * *.
+* Vyberte **nastavení** > ** **nastavení aplikace** **.
    * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Jméno:`APPINSIGHTS_JAVASCRIPT_ENABLED`

@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Dotazování dokumentů
       items:
-        - name: Vytvoření základního dotazu
+        - name: Sestavení a typy dotazů
           href: search-query-overview.md
-        - name: Průzkumník služby Search (portál)
+        - name: Vytvoření jednoduchého dotazu
+          href: search-query-simple-examples.md
+        - name: Použití úplné syntaxe Lucene
+          href: search-query-lucene-examples.md
+        - name: Použití Průzkumníka služby Search (portál)
           href: search-explorer.md
         - name: Jednoduchá syntaxe dotazů
           href: query-simple-syntax.md
         - name: Úplná syntaxe dotazů Lucene
           href: query-lucene-syntax.md
-        - name: Příklady (jednoduchá syntaxe)
-          href: search-query-simple-examples.md
-        - name: Příklady (úplná syntaxe Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (Preview)
           href: search-more-like-this.md
     - name: Použití filtrů

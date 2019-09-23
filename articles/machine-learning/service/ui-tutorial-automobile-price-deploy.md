@@ -35,7 +35,7 @@ Kompletní [část tohoto kurzu](ui-tutorial-automobile-price-train-score.md) se
 
 Než nasadíte experiment jako webovou službu, musíte nejprve převést *školicí experiment* na *prediktivní experiment*.
 
-1. V dolní části plátna experimentu vyberte **vytvořit prediktivní experiment***.
+1. V dolní části plátna experimentu vyberte **vytvořit prediktivní experiment\*** .
 
     ![Animovaný obrázek GIF znázorňující automatický převod školicích experimentů do prediktivního experimentu](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 

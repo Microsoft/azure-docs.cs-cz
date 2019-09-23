@@ -73,7 +73,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Při migraci virtuálních počítačů můžete vybrat jinou cílovou oblast Azure. Všechny oblasti Azure jsou podporovány pro cíl migrace.
 
 7. Klikněte na **Další**.
-8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment > Další.
+8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment** > **Další.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
