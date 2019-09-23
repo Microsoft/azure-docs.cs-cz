@@ -1,21 +1,21 @@
 ---
-title: Vytvoření mezipaměti prostředí Azure HPC
+title: Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
 description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037084"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181034"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
+# <a name="create-an-azure-hpc-cache-preview"></a>Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
 
-K vytvoření mezipaměti použijte Azure Portal.
+K vytvoření mezipaměti použijte Azure Portal. 
 
 ![snímek obrazovky s přehledem mezipaměti v Azure Portal s tlačítkem vytvořit v dolní části](media/hpc-cache-home-page.png)
 
@@ -32,7 +32,7 @@ V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní 
 * Podsíť – vyberte nebo vytvořte podsíť s aspoň 64 IP adresami (/24), která se použije jenom pro mezipaměť Azure HPC.
 
 ## <a name="set-cache-capacity"></a>Nastavit kapacitu mezipaměti
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
 Na stránce **mezipaměť** musíte nastavit kapacitu mezipaměti HPC Azure. Tato hodnota určuje, kolik dat vaše mezipaměť může uchovávat a jak rychle může obsluhovat požadavky klientů. Po období verze Public Preview ovlivní kapacita také náklady na mezipaměť.
 
@@ -61,7 +61,7 @@ Kliknutím na **odkaz Přidat cíl úložiště** definujte své back-endové ú
 
 Můžete definovat až deset různých cílů úložiště.
 
-Podrobné pokyny pro přidání cíle úložiště jsou obsažené v tématu [Přidání úložiště](hpc-cache-add-storage.md). Postup se liší pro úložiště objektů BLOB nebo pro export souborů NFS.
+Podrobné pokyny pro přidání cíle úložiště jsou zahrnuté v tématu [Přidání cílů úložiště](hpc-cache-add-storage.md). Postup se liší pro úložiště objektů BLOB nebo pro export souborů NFS.
 
 Tady je několik tipů: 
 
@@ -87,7 +87,7 @@ Po dokončení vytváření se zobrazí oznámení s odkazem na novou instanci m
 
 ![snímek obrazovky instance mezipaměti HPC Azure v Azure Portal](media/hpc-cache-new-overview.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po zobrazení mezipaměti v seznamu **prostředky** ji můžete připojit pro klientský přístup, použít ji k přesunutí dat pracovní sady do nového cíle úložiště objektů BLOB v Azure nebo definování dalších zdrojů dat.
 

@@ -1,19 +1,19 @@
 ---
-title: Ingestování dat mezipaměti HPC Azure – ruční kopírování
+title: Ingestování dat ve verzi Preview mezipaměti prostředí Azure HPC – ruční kopírování
 description: Použití příkazů CP k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 2d89a74d4b79e74c2bc6667a5f76c2348ca3c274
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775231"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180985"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Ingestování dat mezipaměti HPC Azure – metoda ručního kopírování
+# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (Preview) data ingestování – metoda ručního kopírování
 
 Tento článek obsahuje podrobné pokyny pro ruční kopírování dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC. K optimalizaci rychlosti kopírování používá vícevláknové paralelní operace.
 

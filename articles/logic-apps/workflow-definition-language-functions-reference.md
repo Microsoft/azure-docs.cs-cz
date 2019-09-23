@@ -4129,7 +4129,7 @@ triggerOutputs()
 
 <a name="trim"></a>
 
-### <a name="trim"></a>sklon
+### <a name="trim"></a>trim
 
 Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec.
 

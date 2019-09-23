@@ -1,22 +1,21 @@
 ---
-title: Vytvoření mezipaměti prostředí Azure HPC
+title: Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
 description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036845"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180975"
 ---
-# <a name="configure-aggregated-namespace"></a>Konfigurovat agregovaný obor názvů
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
-Mezipaměť HPC Azure umožňuje klientům přístup k nejrůznějším systémům úložiště prostřednictvím virtuálního oboru názvů, který skrývá podrobnosti o back-endovém systému úložiště.
+Azure HPC cache (Preview) umožňuje klientům přístup k nejrůznějším systémům úložiště prostřednictvím virtuálního oboru názvů, který skrývá podrobnosti o back-endovém systému úložiště.
 
 Když přidáte cíl úložiště, nastavíte cestu s přístupem klienta. Klientské počítače připojí tento FilePath. Cíl úložiště přidružený k této cestě můžete změnit. Můžete například nahradit hardwarový systém úložiště cloudovým úložištěm, aniž byste museli přepisovat klientské postupy.
 
@@ -31,7 +30,7 @@ Data šablony jsou uložena v datovém centru a informace potřebné pro tuto ú
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-Tyto exporty zpřístupňuje systém úložiště Datacenter: 
+Tyto exporty zpřístupňuje systém úložiště Datacenter:
 
     /
     /goldline
@@ -49,7 +48,7 @@ Pokud chcete mít snadný přístup přes mezipaměť, zvažte vytvoření cíl�
 
 Vzhledem k tomu, že jsou zdrojové cesty systému souborů NFS podadresáři stejného exportu, budete muset definovat několik cest k oboru názvů ze stejného cíle úložiště. 
 
-| Cílový název hostitele úložiště  | Cesta exportu NFS      | Cesta k podadresáři | Cesta oboru názvů    |
+| Cílový název hostitele úložiště  | Cesta k exportu systému souborů NFS      | Cesta podadresáře | Cesta oboru názvů    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |

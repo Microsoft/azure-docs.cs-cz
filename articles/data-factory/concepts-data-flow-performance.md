@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992356"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180856"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -90,6 +90,13 @@ Po kliknutí na tuto ikonu se zobrazí plán spuštění a následný profil vý
 * V Návrháři toku dat použijte kartu náhled dat pro transformace k zobrazení výsledků logiky transformace.
 * Otestujte datové toky z návrháře kanálu tím, že na plátno pro návrh kanálu umístíte aktivitu toku dat a pomocí tlačítka ladit ji otestujete.
 * Testování v režimu ladění bude fungovat s živým živým clusterovým prostředím bez nutnosti čekat na zahřívání clusteru za běhu.
+* Během ladění dat ve verzi Preview v prostředí návrháře toku dat můžete omezit množství dat, která testujete u každého zdroje nastavením limitu řádků z odkazu nastavení ladění v uživatelském rozhraní návrháře toku dat. Nezapomeňte prosím, že nejdřív musíte zapnout režim ladění.
+
+![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
+
+* Při testování datových toků z spuštění ladění kanálu můžete omezit počet řádků, které se mají použít pro testování, nastavením velikosti vzorkování na jednotlivých zdrojích. Nezapomeňte zakázat vzorkování při plánování kanálů v běžném provozním plánu.
+
+![Vzorkování řádků](media/data-flow/source1.png "Vzorkování řádků")
 
 ### <a name="disable-indexes-on-write"></a>Zakázat indexy při zápisu
 * Použijte aktivitu uložené procedury kanálu ADF před aktivitou toku dat, která zakáže indexy na cílových tabulkách, na které se zapisují z jímky.
@@ -141,7 +148,11 @@ Například pokud mám seznam datových souborů z července 2019, které chci z
 
 To bude mít lepší výkon než vyhledávání v úložišti objektů BLOB v kanálu, který pak projde všemi odpovídajícími soubory pomocí příkazu ForEach s aktivitou spustit tok dat uvnitř.
 
-## <a name="next-steps"></a>Další postup
+### <a name="increase-the-size-of-your-debug-cluster"></a>Zvětšit velikost clusteru ladění
+
+Při zapnutí ladění se ve výchozím nastavení použije výchozí prostředí Azure Integration runtime, které se vytvoří automaticky pro každou datovou továrnu. Tato výchozí Azure IR se nastavuje pro 8 jader, 4 pro uzel ovladače a 4 pro pracovní uzel pomocí obecných výpočetních vlastností. Při testování s většími objemy dat můžete zvětšit velikost clusteru ladění vytvořením nové Azure IR s větší konfigurací a volbou této nové Azure IR při přepnutí na ladění. To vám podá pokyn ADF k použití tohoto Azure IR pro náhled dat a ladění kanálu pomocí toků dat.
+
+## <a name="next-steps"></a>Další kroky
 
 Další články toku dat týkající se výkonu:
 

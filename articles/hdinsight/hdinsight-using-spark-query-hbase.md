@@ -1,6 +1,6 @@
 ---
-title: Použití Sparku ke čtení a zápisu dat HBase – Azure HDInsight
-description: Konektor Spark HBase můžete číst a zapisovat data z clusteru Spark pro HBase cluster.
+title: Použití Sparku ke čtení a zápisu dat HBA – Azure HDInsight
+description: Konektor Spark HBA slouží ke čtení a zápisu dat z clusteru Spark do clusteru HBA.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,59 +8,59 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b3fc4f9badeedbed55f89702933b41a952977b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056750"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180804"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
-Apache HBase je dotazovaný obvykle s jeho nízké úrovně rozhraní API (kontrol, získá a vloží) nebo se syntaxí SQL pomocí Apache Phoenix. Apache také poskytuje Apache Spark HBase konektor, který je pohodlnou a výkonnější alternativou k dotazování a modifikaci dat uložených v HBase.
+Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (vyhledávání, získání a vložení), nebo pomocí syntaxe SQL pomocí Apache Phoenix. Apache taky poskytuje konektor Apache Spark HBA, což je praktická alternativa k dotazování a úpravám dat uložených v rámci adaptérů HBA.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dva samostatné clustery HDInsight, které jsou nasazené ve stejné virtuální síti. Jeden jeden HBase a Spark s nejméně Sparku 2.1 (HDInsight 3.6) nainstalovaný. Další informace najdete v tématu [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
+* Ve stejné virtuální síti jsou nasazené dva samostatné clustery HDInsight. Je nainstalovaná jedna z adaptérů HBA a jedna Spark s aspoň Spark 2,1 (HDInsight 3,6). Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* [Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) jako primární úložiště vašich clusterů. To může být wasb: / / Azure Blob Storage, abfs: / / pro Azure Data Lake Storage Gen2 nebo adl: / / pro Azure Data Lake Storage Gen1. Pokud pro úložiště objektů Blob nebo Data Lake Storage Gen2 je povoleno zabezpečený přenos, identifikátor URI by wasbs: / / nebo abfss: / /, respektive naleznete také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Blob Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Celkový proces
 
-Proces vysoké úrovně pro povolení váš cluster Spark na HDInsight cluster dotazovat vypadá takto:
+Proces vysoké úrovně, který umožňuje vašemu clusteru Spark dotazovat se na cluster HDInsight, je následující:
 
-1. Příprava nějaká ukázková data v HBase.
-2. Získejte hbase-site.xml soubor ze složky Konfigurace clusteru HBase (/ etc/hbase/potvrzení).
-3. Ve složce Konfigurace Spark 2 (/ etc/spark2/conf), umístěte kopii hbase-site.xml.
-4. Spustit `spark-shell` odkazující na konektoru Spark HBase pomocí jeho Maven v koordinuje `packages` možnost.
-5. Definujte katalog, který mapuje schématu ze Spark HBase.
-6. Práce s daty HBase pomocí RDD nebo rozhraní API datového rámce.
+1. Připravte si některá ukázková data v adaptérech HBA.
+2. Získejte soubor HBase-site. XML z vaší složky Konfigurace clusteru HBA (/etc/HBase/conf).
+3. Uložte kopii HBase-site. XML do konfigurační složky Spark 2 (/etc/spark2/conf).
+4. Spusťte `spark-shell` odkazování konektoru Spark HBA podle jeho souřadnic Maven `packages` v možnosti.
+5. Definujte katalog, který mapuje schéma ze Sparku na HBA.
+6. Můžete pracovat s daty HBA pomocí rozhraní API RDD nebo dataframe.
 
-## <a name="prepare-sample-data-in-apache-hbase"></a>Příprava ukázkových dat v Apache HBase
+## <a name="prepare-sample-data-in-apache-hbase"></a>Příprava ukázkových dat v Apache HBA
 
-V tomto kroku vytvoření a vyplnění tabulky v Apache HBase, který potom můžete dotazovat pomocí Sparku.
+V tomto kroku vytvoříte a naplníte tabulku v Apache Hbach, které pak můžete dotazovat pomocí Sparku.
 
-1. Použití `ssh` příkazu se připojte ke svému clusteru HBase. Upravte následující příkaz tak, že nahradíte `HBASECLUSTER` s názvem vaší HBase clusteru a potom zadejte příkaz:
+1. `ssh` Pomocí příkazu se připojte ke clusteru HBA. Níže uvedený příkaz upravte nahrazením `HBASECLUSTER` názvem vašeho clusteru HBA a zadáním příkazu:
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Použití `hbase shell` příkaz ke spuštění interaktivního prostředí HBase. Zadejte následující příkaz v připojení SSH:
+2. `hbase shell` Pomocí příkazu spusťte interaktivní prostředí pro adaptéry HBA. Do připojení SSH zadejte následující příkaz:
 
     ```bash
     hbase shell
     ```
 
-3. Použití `create` příkaz pro vytvoření tabulky HBase se dvěma skupinami sloupců. Zadejte následující příkaz:
+3. `create` Pomocí příkazu vytvořte tabulku HBA se dvěma skupinami sloupců. Zadejte následující příkaz:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Použití `put` příkaz pro vložení hodnot v zadaném sloupci v zadaný řádek v určité tabulce. Zadejte následující příkaz:
+4. `put` Pomocí příkazu můžete vkládat hodnoty do zadaného sloupce v zadaném řádku v konkrétní tabulce. Zadejte následující příkaz:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,53 +73,53 @@ V tomto kroku vytvoření a vyplnění tabulky v Apache HBase, který potom mů�
     put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
     ```
 
-5. Použití `exit` příkaz k zastavení interaktivní prostředí HBase. Zadejte následující příkaz:
+5. `exit` Pomocí příkazu zastavte prostředí HBA interaktivní prostředí. Zadejte následující příkaz:
 
     ```hbase
     exit
     ```
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Zkopírujte hbase-site.xml ke clusteru Spark
+## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopírování HBase-site. XML do clusteru Spark
 
-Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře výchozí úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážely konfiguraci.  V otevřít relaci SSH pro HBase cluster, zadejte příkaz:
+Zkopírujte soubor HBase-site. XML z místního úložiště do kořenového adresáře výchozího úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážel vaši konfiguraci.  Pak z otevřené relace SSH do clusteru HBA zadejte příkaz:
 
 | Hodnota syntaxe | Nová hodnota|
 |---|---|
-|[Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Upravte tak, aby odrážely úložiště.  Níže uvedené syntaxe je pro úložiště objektů blob s povoleným zabezpečeným přenosem.|
-|`SPARK_STORAGE_CONTAINER`|Nahraďte výchozí název kontejneru úložiště používají pro clustery Spark.|
-|`SPARK_STORAGE_ACCOUNT`|Nahraďte výchozí název účtu úložiště pro Spark cluster.|
+|[Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Upravte, aby odrážela vaše úložiště.  Níže uvedená syntaxe je pro úložiště objektů BLOB s povoleným zabezpečeným přenosem.|
+|`SPARK_STORAGE_CONTAINER`|Nahraďte výchozím názvem kontejneru úložiště použitým pro cluster Spark.|
+|`SPARK_STORAGE_ACCOUNT`|Nahraďte názvem výchozího účtu úložiště použitým pro cluster Spark.|
 
 ```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
 
-Ukončete vaše ssh připojení k vašemu clusteru HBase.
+Pak ukončete připojení SSH k vašemu clusteru HBA.
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložit hbase-site.xml na svém clusteru Spark
+## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložte HBase-site. XML do clusteru Spark.
 
-1. Připojení k hlavnímu uzlu clusteru Sparku pomocí protokolu SSH.
+1. Připojte se k hlavnímu uzlu clusteru Spark pomocí SSH.
 
-2. Zadejte následující příkaz pro kopírování `hbase-site.xml` z výchozí úložiště clusteru Spark ke složce Spark 2 konfigurace v místním úložišti clusteru:
+2. Zadejte následující příkaz pro zkopírování `hbase-site.xml` z výchozího úložiště clusteru Spark do složky Konfigurace Spark 2 v místním úložišti clusteru:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
     ```
 
-## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spusťte prostředí Sparku odkazující na konektor Spark HBase
+## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spustit prostředí Spark odkazující na konektor Spark HBA
 
-1. V otevřít relaci SSH ke clusteru Spark zadejte následující příkaz ke spuštění prostředí sparku:
+1. V otevřené relaci SSH ke clusteru Spark zadejte následující příkaz, který spustí prostředí Spark:
 
     ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
-2. Ponechat otevřené tuto instanci prostředí Spark a pokračovat k dalšímu kroku.
+2. Nechejte tuto instanci prostředí Spark otevřené a pokračujte dalším krokem.
 
-## <a name="define-a-catalog-and-query"></a>Zadejte katalogu a dotaz
+## <a name="define-a-catalog-and-query"></a>Definování katalogu a dotazu
 
-V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spark pro Apache HBase.  
+V tomto kroku definujete objekt katalogu, který mapuje schéma z Apache Spark na Apache HBA.  
 
-1. Otevřete prostředí Sparku, zadejte následující `import` příkazy:
+1. V otevřeném prostředí Spark zadejte následující `import` příkazy:
 
     ```scala
     import org.apache.spark.sql.{SQLContext, _}
@@ -128,7 +128,7 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
     import spark.sqlContext.implicits._
     ```  
 
-2. Zadejte následující příkaz k definování katalogu pro tabulky kontaktů, že kterou jste vytvořili v HBase:
+2. Zadejte následující příkaz pro definování katalogu pro tabulku kontaktů, kterou jste vytvořili v části HBA:
 
     ```scala
     def catalog = s"""{
@@ -144,13 +144,13 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
     |}""".stripMargin
     ```
 
-    Kód provede následující akce:  
+    Kód provede následující:  
 
-     a. Definovat schéma katalogu s názvem tabulky HBase `Contacts`.  
-     b. Identifikujte rowkey jako `key`a mapování názvů sloupce používané v rodině sloupců, název sloupce a typ sloupce v HBase Spark.  
-     c. Také musí být definováno v podrobnosti jako sloupec s názvem rowkey (`rowkey`), který má konkrétní sloupce řady `cf` z `rowkey`.  
+     a. Definujte schéma katalogu pro tabulku HBA s názvem `Contacts`.  
+     b. Identifikujte rowkey jako `key`a namapujte názvy sloupců používané ve Sparku na rodinu sloupců, název sloupce a typ sloupce, jak se používá v adaptérech HBA.  
+     c. Rowkey musí být také definováno podrobněji jako pojmenovaný sloupec (`rowkey`), který má konkrétní `rowkey`rodinu `cf` sloupců.  
 
-3. Zadejte následující příkaz k definování metodu, která poskytuje datový rámec kolem vašeho `Contacts` tabulky v HBase:
+3. Níže uvedeným příkazem Definujte metodu, která poskytuje objekt dataframe kolem `Contacts` tabulky v hbach:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,13 +162,13 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
      }
     ```
 
-4. Vytvoření instance datového rámce:
+4. Vytvořte instanci datového rámce:
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. Dotaz datového rámce:
+5. Dotaz na datový rámec:
 
     ```scala
     df.show()
@@ -183,20 +183,20 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
         |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
         +------+--------------------+--------------+-------------+--------------+
 
-7. Zaregistrujte dočasnou tabulku můžete zadat dotaz na tabulku HBase pomocí Spark SQL:
+7. Zaregistrujte dočasnou tabulku, abyste mohli zadat dotaz na tabulku HBA pomocí Spark SQL:
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. Vydávání dotazů SQL proti `contacts` tabulky:
+8. Vydejte dotaz SQL na `contacts` tabulku:
 
     ```scala
     val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
     query.show()
     ```
 
-9. Měli byste vidět výsledky, jako jsou tyto:
+9. Měli byste vidět podobné výsledky:
 
     ```output
     +-------------+--------------------+
@@ -207,9 +207,9 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
     +-------------+--------------------+
     ```
 
-## <a name="insert-new-data"></a>Vložte nová data
+## <a name="insert-new-data"></a>Vložit nová data
 
-1. Chcete-li vložit nový záznam kontaktu, definujte `ContactRecord` třídy:
+1. Chcete-li vložit nový záznam kontaktu, definujte `ContactRecord` třídu:
 
     ```scala
     case class ContactRecord(
@@ -221,7 +221,7 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
         )
     ```
 
-2. Vytvoření instance `ContactRecord` a vložit ho do pole:
+2. Vytvořte instanci `ContactRecord` a vložte ji do pole:
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -230,13 +230,13 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
     newData(0) = newContact
     ```
 
-3. Pole nová data uložte do HBase:
+3. Uložte pole nových dat do HBA:
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. Podívejte se na výsledky:
+4. Projděte si výsledky:
 
     ```scala  
     df.show()
@@ -254,12 +254,12 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. Ukončete prostředí sparku tak, že zadáte následující příkaz:
+6. Zavřete prostředí Spark zadáním následujícího příkazu:
 
     ```scala
     :q
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Apache Spark HBase Connector](https://github.com/hortonworks-spark/shc)
+* [Konektor Apache Spark HBA](https://github.com/hortonworks-spark/shc)

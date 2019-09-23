@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995560"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181079"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimalizace úloh Apache Spark v HDInsight
 
@@ -60,7 +60,7 @@ Při vytváření nového clusteru Spark máte možnost vybrat si Azure Blob Sto
 | Typ úložiště | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //URL/ | **Standard** | Ano | Přechodný cluster |
-| Azure Data Lake Storage Gen 2| **ABFS [s]:** //URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen 2| **ABFS:** //URL/ | **Zrychlení** | Ano | Přechodný cluster |
 | Azure Data Lake Storage Gen1| **adl:** //url/ | **Zrychlení** | Ano | Přechodný cluster |
 | Místní HDFS | **HDFS:** //URL/ | **Způsobem** | Ne | Interaktivní cluster 24/7 |
 
@@ -210,7 +210,7 @@ Klíčem k výkonu dotazů Spark 2. x je modul Tungsten, který závisí na gene
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight](apache-spark-job-debugging.md)
 * [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)

@@ -7,19 +7,19 @@ ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
-ms.translationtype: HT
+ms.openlocfilehash: b2b38fe2d9a2bf4c645e5b1cda4b8fba356353d3
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145571"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181202"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
 Definice zásad prostředků používají k navázání vytváření názvů pro prostředky Azure Policy. Každá definice popisuje dodržování předpisů prostředkem a co projeví má provést, když prostředek se jako nevyhovující.
 Definuje konvence, můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete určit, zda jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Všechny podřízené prostředky dědí zásady. Pokud zásady se použijí pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
 
-Schéma používané službou Azure Policy najdete tady: [https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json](https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json)
+Schéma používané službou Azure Policy najdete tady: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policydefinitions](/azure/templates/microsoft.authorization/2019-01-01/policydefinitions)
 
 Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
 

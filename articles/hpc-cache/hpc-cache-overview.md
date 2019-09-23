@@ -1,19 +1,19 @@
 ---
-title: Přehled mezipaměti HPC Azure
+title: Přehled Azure HPC cache Preview
 description: Popisuje řešení Azure HPC cache, což je přístupové akcelerátory pro přístup k souborům pro vysoce výkonné výpočetní prostředí.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036884"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180679"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
+# <a name="what-is-azure-hpc-cache-preview"></a>Co je Azure HPC Cache? (Preview)
 
 Azure HPC ukládá přístup k vašim datům pro úlohy využívající vysoce výkonné výpočetní prostředí (HPC). Díky ukládání souborů do mezipaměti v Azure zajišťuje škálovatelnost cloud computingu, a to i pro pracovní postupy, ve kterých jsou vaše data uložená v sítích WAN, jako třeba v prostředí místního síťového úložiště (NAS) připojené k síti datacentra.
 
@@ -58,7 +58,11 @@ Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
 
 Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="preview-availability"></a>Dostupnost verze Preview
+
+Služba Azure HPC cache ve verzi Public Preview je omezená, aby se zajistila kvalita služeb. Vyžádejte si přístup vyplněním [tohoto formuláře](https://aka.ms/onboard-hpc-cache). Po přidání předplatného do seznamu přístupu můžete vytvořit mezipaměť testů.
+
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o jeho funkcích najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 * Další informace o [požadavcích](hpc-cache-prereqs.md) produktu

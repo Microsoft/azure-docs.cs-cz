@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 8a1bb4f0315be70cfe8debab0ee9eb1e4b576738
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259132"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181126"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
@@ -111,7 +111,7 @@ Při přímém připojení z hlavního uzlu clusteru nebo z prostředku ve stejn
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Všimněte si [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště vašeho clusteru. Například `wasb://` pro `adl://` Azure Storage pro Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. `abfs://` Pokud je pro Azure Storage nebo data Lake Storage Gen2 povolený zabezpečený přenos, je `wasbs://` identifikátor `abfss://`URI nebo v uvedeném pořadí. Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* Všimněte si [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště vašeho clusteru. Například `wasb://` pro `adl://` Azure Storage pro Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. `abfs://` Pokud je pro Azure Storage povolený zabezpečený přenos, je `wasbs://`identifikátor URI. Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 
 * Možnost 1: Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru.

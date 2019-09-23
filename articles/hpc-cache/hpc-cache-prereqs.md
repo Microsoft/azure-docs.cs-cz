@@ -1,19 +1,19 @@
 ---
-title: Požadavky na mezipaměť prostředí Azure HPC
+title: Požadavky mezipaměti HPC Azure (Preview)
 description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036856"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180909"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
+# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Předpoklady pro Azure HPC cache (Preview)
 
 Než použijete Azure Portal k vytvoření nové mezipaměti prostředí Azure HPC, ujistěte se, že vaše prostředí splňuje tyto požadavky.
 
@@ -59,7 +59,7 @@ Než začnete vytvářet mezipaměť, ověřte tyto požadavky týkající se op
 * Mezipaměť HPC Azure musí být schopná vytvářet rozhraní virtuální sítě (nic). Uživatel, který vytváří mezipaměť, musí mít v předplatném dostatečná oprávnění pro vytváření síťových adaptérů.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* Pokud používáte úložiště objektů blob, vyžaduje instance mezipaměti prostředí Azure HPC autorizaci pro přístup k vašemu účtu úložiště. Řízení přístupu na základě role (RBAC) můžete použít k poskytnutí přístupu k mezipaměti do úložiště objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště. Postupujte podle pokynů v části [Přidání úložiště do mezipaměti](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
+* Pokud používáte úložiště objektů blob, vyžaduje instance mezipaměti prostředí Azure HPC autorizaci pro přístup k vašemu účtu úložiště. Řízení přístupu na základě role (RBAC) můžete použít k poskytnutí přístupu k mezipaměti do úložiště objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště. Postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
 
 ## <a name="storage-infrastructure"></a>Infrastruktura úložiště
 
@@ -86,8 +86,8 @@ Pokud chcete vytvořit kompatibilní účet úložiště, použijte Tato nastave
 
 Je vhodné použít účet úložiště ve stejném umístění jako mezipaměť.
 
-Musíte taky dát aplikaci cache přístup k vašemu účtu úložiště Azure. Podle popisu v části [Přidání úložiště do mezipaměti](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) udělte mezipaměti účet úložiště role přispěvatel a přispěvatel dat objektů BLOB úložiště. Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
+Musíte taky dát aplikaci cache přístup k vašemu účtu úložiště Azure. Podle popisu v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) poskytněte mezipaměti přispěvatelům účet úložiště a přispěvatel dat objektů BLOB úložiště. Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření instance mezipaměti prostředí Azure HPC](hpc-cache-create.md) z Azure Portal

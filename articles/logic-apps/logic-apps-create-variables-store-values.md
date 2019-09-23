@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171293"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180782"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a Správa hodnot pomocí proměnných v Azure Logic Apps
 
@@ -99,6 +99,9 @@ Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jak s
    }
 },
 ```
+
+> [!NOTE]
+> I když akce **inicializovat proměnnou** má `variables` oddíl, který je strukturován jako pole, akce může najednou vytvořit pouze jednu proměnnou. Každá nová proměnná vyžaduje samostatnou akci **inicializovat proměnnou** .
 
 Tady jsou příklady pro některé jiné typy proměnných:
 
@@ -200,7 +203,7 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
 
    Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus (+). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "přírůstek proměnné". V seznamu akce vyberte **proměnné-přírůstek proměnná**.
+1. Do vyhledávacího pole zadejte jako filtr "přírůstek proměnné". V seznamu akce vyberte možnost **zvýšit proměnnou**.
 
    ![Vybrat akci zvýšit proměnnou](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 

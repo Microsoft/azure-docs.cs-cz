@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b6114a764d0834b7bcfe4b95d34fae6a03a8a40e
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736340"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181022"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Kurz: Zápis do Apache Hadoop HDFS z Apache Storm ve službě Azure HDInsight
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. `abfs://` `wasb://` Pokud je pro Azure Storage nebo data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI `wasbs://` by `abfss://`byl nebo v uvedeném pořadí taky [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. `abfs://` `wasb://` Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
@@ -209,7 +209,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat Apache Storm k zápisu dat do úložiště kompatibilního se systémem HDFS používaného Apache Storm v HDInsight.
 
