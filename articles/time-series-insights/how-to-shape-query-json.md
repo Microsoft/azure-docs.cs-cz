@@ -92,8 +92,8 @@ Příklad datové části JSON:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | DATA\_ŘÁDKU | EVROPA |
-   | FYYY | DATA\_ŘÁDKU | USA |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | US |
 
 * Time Series Insights tabulka událostí po sloučení:
 
