@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813969"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180728"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
@@ -23,7 +23,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma identifikátoru URI pro primární úložiště clusterů. To je `wasb://` pro Azure `abfs://` BLOB Storage pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage nebo data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI `wasbs://` by `abfss://`byl nebo v uvedeném pořadí.  Další informace najdete [v tématu o vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma identifikátoru URI pro primární úložiště clusterů. To je `wasb://` pro Azure `abfs://` BLOB Storage pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Další informace najdete [v tématu o vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
@@ -101,7 +101,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Vložte tento fragment kódu do nového odstavce a stiskněte **SHIFT + ENTER**. Pak vyberte **65** z rozevíracího seznamu pro **dočasné** umístění tis. 
+    Vložte tento fragment kódu do nového odstavce a stiskněte **SHIFT + ENTER**. Pak v rozevíracím seznamu **tempa** vyberte **65** . 
 
 8. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  Pak vyberte **Nastavení** a proveďte následující změny:
 
@@ -118,7 +118,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 10. Přejděte na **Livy**a pak vyberte **restartovat**.  Na příkazovém řádku vyberte **OK** .
 
-    ![Restartujte Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartujte Zeppelin intepreter")
+    ![Restartování překladače Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartování překladače Zeppelin")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Návody použít pro Poznámkový blok externí balíčky?
 Poznámkový blok Zeppelin Apache Spark v HDInsight můžete nakonfigurovat tak, aby používal externí balíčky, které se podílejí na komunitě, které nejsou zahrnuté do clusteru. Úplný seznam dostupných balíčků můžete vyhledat v [úložišti Maven](https://search.maven.org/) . Můžete také získat seznam dostupných balíčků z jiných zdrojů. Například úplný seznam balíčků, které jsou součástí komunity, je k dispozici v [balíčcích Spark](https://spark-packages.org/).
@@ -169,7 +169,7 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 
 2. Přejděte na **Livy**a pak vyberte **restartovat**.
 
-    ![Restartujte Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartujte Zeppelin intepreter")
+    ![Restartování překladače Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartování překladače Zeppelin")
 
 3. Spustí buňku kódu z existujícího poznámkového bloku Zeppelin. Tím se vytvoří nová relace Livy v clusteru HDInsight.
 
@@ -193,7 +193,7 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Správa prostředků
+### <a name="manage-resources"></a>Spravovat prostředky
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 

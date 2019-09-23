@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441997"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181106"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -38,7 +38,7 @@ Prostředí HDInsight připojené k doméně podporuje více uživatelů a přes
 
 Plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu, `CLUSTERNAME.azurehdinsight.net` je `CLUSTERNAME-ssh.azurehdinsight.net` nebo (jenom pro SSH).
 
-Interně má každý uzel v clusteru název, který je přiřazený během konfigurace clusteru. Názvy clusterů najdete na stránce hostitelé  ve webovém uživatelském rozhraní Ambari. K vrácení seznamu hostitelů z Ambari REST API můžete použít také následující:
+Interně má každý uzel v clusteru název, který je přiřazený během konfigurace clusteru. Názvy clusterů najdete na stránce **hostitelé** ve webovém uživatelském rozhraní Ambari. K vrácení seznamu hostitelů z Ambari REST API můžete použít také následující:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -124,11 +124,9 @@ Při použití __Azure Storage__použijte jedno z následujících schémat iden
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Používá se při komunikaci s jiným než výchozím účtem úložiště. Například když máte další účet úložiště nebo když přistupujete k datům uloženým v veřejně přístupném účtu úložiště.
 
-Při použití __Azure Data Lake Storage Gen2__použijte jedno z následujících schémat identifikátorů URI:
+Při použití __Azure Data Lake Storage Gen2__použijte následující schéma identifikátoru URI:
 
-* `abfs:///`: Přístup k výchozímu úložišti pomocí nešifrované komunikace
-
-* `abfss:///`: Přístup k výchozímu úložišti pomocí šifrované komunikace.  Schéma abfss se podporuje jenom ve verzi HDInsight 3,6 a vyšší.
+* `abfs://`: Přístup k výchozímu úložišti pomocí šifrované komunikace.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Používá se při komunikaci s jiným než výchozím účtem úložiště. Například když máte další účet úložiště nebo když přistupujete k datům uloženým v veřejně přístupném účtu úložiště.
 
@@ -241,7 +239,7 @@ Různé typy clusterů jsou ovlivněny škálováním následujícím způsobem:
     * **Uživatelské rozhraní**pro zaplavení: Pomocí následujícího postupu můžete znovu vyvážit topologii pomocí uživatelského rozhraní.
 
         1. Otevřete `https://CLUSTERNAME.azurehdinsight.net/stormui` ve webovém prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru s více podsítěmi. Po zobrazení výzvy zadejte název správce clusteru HDInsight (správce) a heslo, které jste zadali při vytváření clusteru.
-        2. Vyberte topologii, kterou chcete znovu vyvážit, a pak  vyberte tlačítko pro vyvážení. Zadejte zpoždění před provedením operace obnovení rovnováhy.
+        2. Vyberte topologii, kterou chcete znovu vyvážit, a pak vyberte tlačítko pro **vyvážení** . Zadejte zpoždění před provedením operace obnovení rovnováhy.
 
 * **Kafka**: Po operaci škálování byste měli znovu vyrovnávat repliky oddílů. Další informace najdete v článku o [vysoké dostupnosti dat s Apache Kafka v dokumentu HDInsight](./kafka/apache-kafka-high-availability.md) .
 
@@ -283,7 +281,7 @@ Pokud chcete použít jinou verzi komponenty, nahrajte potřebnou verzi a použi
 >
 > Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa clusterů HDInsight pomocí REST API Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)

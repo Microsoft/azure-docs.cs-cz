@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104539"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180771"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -30,9 +30,9 @@ Následující tabulka shrnuje Azure Storage služby, které jsou podporovány v
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Obecné účely v2 | Hierarchický (systém souborů) | Blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
 |Azure Storage| Obecné účely v2 | Object | Blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
-|Azure Storage| Obecné účely v1 | Object | Blob | Standard | Není k dispozici | Vše | Vše |
+|Azure Storage| Obecné účely v1 | Object | Blob | Standard | neuvedeno | Vše | Vše |
 |Azure Storage| Blob Storage * * | Object | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
-|Azure Data Lake Storage Gen1| Není k dispozici | Hierarchický (systém souborů) | Není k dispozici | Není k dispozici | Není k dispozici | jenom 3,6 | Všechny kromě adaptérů HBA |
+|Azure Data Lake Storage Gen1| neuvedeno | Hierarchický (systém souborů) | neuvedeno | neuvedeno | neuvedeno | jenom 3,6 | Všechny kromě adaptérů HBA |
 
 \* * Pro clustery HDInsight může být pouze sekundární účty úložiště typu BlobStorage a objekt blob stránky není podporovanou možností úložiště.
 
@@ -95,9 +95,9 @@ Další informace najdete v tématu [ovladač systému souborů objektů BLOB v 
 
 Azure Data Lake Storage Gen2 používá nové schéma identifikátoru URI pro přístup k souborům v Azure Storage ze služby HDInsight:
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem`abfss://` SSL (předponu) a nezašifrovaný přístup (`abfs://` předpona). Používejte `abfss` všude tam, kde je to možné, i když přistupujete k datům umístěným uvnitř stejné oblasti v Azure.
+Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem SSL.
 
 `<FILE_SYSTEM_NAME>`Určuje cestu Data Lake Storage Gen2 systému souborů.
 
@@ -108,8 +108,8 @@ Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem`abfss://`
 Pokud nejsou zadány `<ACCOUNT_NAME>` hodnoty pro `<FILE_SYSTEM_NAME>` a, použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je součástí clusterů HDInsight, lze odkazovat pomocí jedné z následujících cest:
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]
@@ -241,7 +241,7 @@ Další informace o tom, jak získat přístup k datům v Data Lake Storage Gen1
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Seznámení se službou Azure Storage](../storage/common/storage-introduction.md)

@@ -1,19 +1,19 @@
 ---
-title: Přidání úložiště do mezipaměti prostředí Azure HPC
+title: Přidání úložiště do mezipaměti HPC Azure (Preview)
 description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure HPC mohla používat místní systém souborů NFS nebo kontejnery objektů blob Azure pro dlouhodobé ukládání souborů
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037220"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181003"
 ---
-# <a name="add-storage"></a>Přidání úložiště
+# <a name="add-storage-targets"></a>Přidat cíle úložiště
 
 *Cíle úložiště* jsou back-endové úložiště pro soubory, které jsou dostupné prostřednictvím instance mezipaměti HPC Azure. Můžete přidat úložiště systému souborů NFS, jako je místní hardwarový systém, nebo uložit data do objektu blob Azure.
 
@@ -112,8 +112,8 @@ Pro každý export vyplňte tyto hodnoty:
 
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
-### <a name="choose-a-usage-model"></a>Výběr modelu použití 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Výběr modelu použití
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Při vytváření cíle úložiště, který odkazuje na systém úložiště NFS, je nutné zvolit *model využití* pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
 
@@ -123,7 +123,7 @@ Při vytváření cíle úložiště, který odkazuje na systém úložiště NF
 
 * Klienti obcházejí mezipaměť – tuto možnost vyberte, pokud budou vaši klienti zapisovat data přímo do systému úložiště bez předchozího zápisu do mezipaměti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
 

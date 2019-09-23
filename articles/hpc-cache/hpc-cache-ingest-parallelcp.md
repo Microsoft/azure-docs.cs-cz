@@ -1,19 +1,19 @@
 ---
-title: Ingestování dat mezipaměti HPC Azure – paralelní kopírování skriptu
+title: Ingestování dat ve verzi Preview mezipaměti prostředí Azure HPC – paralelní kopírování skriptu
 description: Jak použít skript paralelního kopírování k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7414d830f5a2e6fc12066b2f408da041838283db
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775361"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180949"
 ---
-# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Ingestování dat mezipaměti HPC Azure – paralelní kopírování metody skriptu
+# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (Preview) data ingestování – paralelní kopírování metody skriptu
 
 Tento článek obsahuje pokyny pro vytvoření ``parallelcp`` skriptu a jeho použití k přesunu dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
 

@@ -1,0 +1,105 @@
+---
+title: Podrobnosti struktury přiřazení zásad
+description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 09/23/2019
+ms.topic: conceptual
+ms.service: azure-policy
+manager: carmonm
+ms.openlocfilehash: a01cee2ba803a048e426507b57b96d0833743636
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181376"
+---
+# <a name="azure-policy-assignment-structure"></a>Azure Policy struktura přiřazení
+
+Přiřazení zásad používají Azure Policy k definování prostředků, které se přiřazují v průběhu zásad nebo iniciativ. Přiřazení zásad může určit hodnoty parametrů pro danou skupinu prostředků v době přiřazení, což umožňuje znovu použít definice zásad, které řeší stejné vlastnosti prostředku s různými požadavky na dodržování předpisů.
+
+Schéma používané službou Azure Policy najdete tady: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policyassignments](/azure/templates/microsoft.authorization/2019-01-01/policyassignments)
+
+K vytvoření přiřazení zásady použijte JSON. Definice zásady obsahuje elementy pro:
+
+- Zobrazovaný název
+- description
+- zprostředkovatele identity
+- režim vynucení
+- Definice zásad
+- parameters
+
+Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotEnforce_ s dynamickými parametry:
+
+```json
+{
+    "properties": {
+        "displayName": "Enforce resource naming rules",
+        "description": "Force resource names to begin with DeptA and end with -LC",
+        "metadata": {
+            "assignedBy": "Cloud Center of Excellence"
+        },
+        "enforcementMode": "DoNotEnforce",
+        "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "parameters": {
+            "prefix": {
+                "value": "DeptA"
+            },
+            "suffix": {
+                "value": "-LC"
+            }
+        }
+    }
+}
+```
+
+Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md).
+
+## <a name="display-name-and-description"></a>Zobrazovaný název a popis
+
+K identifikaci přiřazení zásad a zadání kontextu pro jeho použití s konkrétní sadou prostředků použijte **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
+
+## <a name="enforcement-mode"></a>Režim vynucení
+
+Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výsledek zásad u existujících prostředků bez zahájení platnosti zásad nebo aktivace záznamů v [protokolu aktivit Azure](../../../azure-monitor/platform/activity-logs-overview.md).
+Tento scénář se běžně označuje jako "What If" a je v souladu s postupy bezpečného nasazení.
+
+Tato vlastnost má následující hodnoty:
+
+|Režim |Hodnota JSON |type |Opravit ručně |Položka protokolu aktivit |Popis |
+|-|-|-|-|-|-|
+|Enabled |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+
+Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
+
+## <a name="policy-definition-id"></a>ID definice zásady
+
+Toto pole musí být úplný název cesty buď definice zásady, nebo definice iniciativy.
+`policyDefinitionId`je řetězec, nikoli pole. Doporučuje se, aby se místo toho k použití [iniciativy](./definition-structure.md#initiatives) používala i v případě, že je často přiřazováno více zásad.
+
+## <a name="parameters"></a>Parametry
+
+Tento segment přiřazení zásad poskytuje hodnoty pro parametry definované v definici [zásady nebo definici iniciativy](./definition-structure.md#parameters).
+Tento návrh umožňuje znovu použít definici zásad nebo iniciativ s různými prostředky, ale kontrolovat různé obchodní hodnoty nebo výsledky.
+
+```json
+"parameters": {
+    "prefix": {
+        "value": "DeptA"
+    },
+    "suffix": {
+        "value": "-LC"
+    }
+}
+```
+
+V tomto příkladu jsou `prefix` parametry dříve definované v definici zásad a. `suffix` Toto přiřazení konkrétní zásady nastavuje `prefix` **oddělení** a `suffix` na **-LC**. Stejná definice zásad se znovu používá s jinou sadou parametrů pro jiné oddělení, což snižuje duplicity a složitost definic zásad a zároveň nabízí flexibilitu.
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si o [struktuře definic zásad](./definition-structure.md).
+- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
+- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

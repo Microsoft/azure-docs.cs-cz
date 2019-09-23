@@ -4,30 +4,30 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 368f08272173b019873dfe20e1164d6baf72ff5e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542666"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180040"
 ---
-#### <a name="additional-premium-file-share-level-limits"></a>Další prémiové souboru omezení úrovní sdílené složky
+#### <a name="additional-premium-file-share-level-limits"></a>Další omezení úrovně sdílení souborů Premium
 
 |Oblast  |Target  |
 |---------|---------|
-|Minimální velikost zvětšit nebo zmenšit    |1 GiB      |
-|Základní IOPS    |1 vstupně-výstupních operací za GiB maximálně 100 000|
-|Shlukování vstupně-výstupních operací    |3 x IOPS za GiB maximálně 100 000|
-|Frekvence odchozího přenosu dat         |60 MiB/s + 0,06 * zřízené GiB        |
-|Rychlost příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
+|Minimální velikost – zvýšení a snížení velikosti    |1 GiB      |
+|Základní IOPS    |1 IOPS na GiB, až do 100 000|
+|Shlukování IOPS    |3x IOPS za GiB, až do 100 000|
+|Míra odchozích dat         |60 MiB/s + 0,06 * zřízené GiB        |
+|Míra příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
 
-#### <a name="file-level-limits"></a>Omezení na úrovni souboru
+#### <a name="file-level-limits"></a>Omezení na úrovni souborů
 
-|Oblast  |Soubor Premium  |Standardní soubor |
+|Oblast  |Soubor úrovně Premium  |Standardní soubor |
 |---------|---------|---------|
 |Size                  |1 TiB         |1 TiB|
-|Maximální počet vstupně-výstupních operací na soubor     |5 000         |1 000|
-|Souběžné obslužné rutiny    |2 000         |2 000|
-|Příchozí přenos dat  |300 MiB za sekundu|      Zobrazit hodnoty propustnosti standardní soubor|
-|Výchozí přenos   |200 Mib za sekundu| Zobrazit hodnoty propustnosti standardní soubor|
-|Propustnost| Zobrazit hodnoty příchozí a odchozí přenos souboru premium| Až 60 MiB za sekundu|
+|Maximální počet vstupně-výstupních operací na soubor     |5,000         |1 000|
+|Souběžné popisovače    |2 000         |2 000|
+|Výchozí přenos  |300 MiB/s|      Zobrazit standardní hodnoty propustnosti souboru|
+|Příchozí přenos dat  |200 MiB/s| Zobrazit standardní hodnoty propustnosti souboru|
+|Propustnost| Viz hodnoty vstupně-výstupních souborů Premium| Až 60 MiB/s|

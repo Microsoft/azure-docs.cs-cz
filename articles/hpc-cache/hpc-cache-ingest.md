@@ -1,19 +1,19 @@
 ---
-title: Přesun dat do cloudového kontejneru mezipaměti HPC Azure
+title: Přesun dat do cloudového kontejneru Azure HPC cache (Preview)
 description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105318"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180720"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Přesun dat do Azure Blob Storage pro Azure HPC cache
+# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Přesun dat do Azure Blob Storage pro Azure HPC cache (Preview)
 
 Pokud váš pracovní postup zahrnuje přesun dat do úložiště objektů BLOB v Azure, ujistěte se, že používáte efektivní strategii pro kopírování dat prostřednictvím mezipaměti prostředí Azure HPC.
 
@@ -33,7 +33,7 @@ Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obs
 
 Můžete použít <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad Utility ke zkopírování dat do nového kontejneru úložiště objektů BLOB předtím, než ho přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
 
-Nástroj avere CLFSLoad je k dispozici na vyžádání od týmu Azure HPC cache. Požádejte o pomoc svého týmu nebo otevřete lístek podpory, který vám požádá o pomoc.
+Nástroj avere CLFSLoad je k dispozici na vyžádání od týmu Azure HPC cache. Požádejte o pomoc svého týmu, nebo otevřete [lístek podpory](hpc-cache-support-ticket.md) , který vám požádá o pomoc.
 
 Tato možnost funguje jenom s novými prázdnými kontejnery. Vytvořte kontejner před použitím avere CLFSLoad.
 
@@ -60,7 +60,7 @@ Pokud nechcete použít nástroj avere CLFSLoad, nebo pokud chcete do existujíc
 
 ![Diagram znázorňující pohyb dat s více vlákny s více klienty: Vlevo nahoře je ikona pro místní hardwarové úložiště, která z něho přichází více šipek. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k mezipaměti HPC Azure. Z mezipaměti HPC Azure se několik šipek odkazuje na úložiště objektů BLOB.](media/hpc-cache-parallel-ingest.png) 
 
-Příkazy ``cp`` nebo``copy`` , které obvykle slouží k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku přijímat pouze jeden soubor, což je odpad z prostředků clusteru.
+Příkazy ``cp`` nebo``copy`` , které obvykle slouží k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku uchovávat pouze jeden soubor, což je odpad z prostředků mezipaměti.
 
 V této části se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny pro přesun dat do úložiště objektů BLOB s využitím Azure HPC cache. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 

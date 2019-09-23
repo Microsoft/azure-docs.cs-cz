@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354954"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180748"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
@@ -29,12 +29,12 @@ HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce 
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI by byl wasbs://nebo abfss://, v uvedeném pořadí taky [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. `wasb://` To`abfs://` Azure Storage pro Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 nebo ADL://. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl wasbs://.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 * **Možná změna konfigurace úložiště.**  Pokud používáte druh `BlobStorage`účtu úložiště, podívejte se na téma [Konfigurace úložiště](#storage-configuration) .
-* Volitelné.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
+* Volitelný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
-> Účet úložiště použitý v tomto článku byl Azure Storage s povoleným zabezpečeným přenosem `wasbs` , a proto se používá v celém článku. [](../../storage/common/storage-require-secure-transfer.md)
+> Účet úložiště použitý v tomto článku byl Azure Storage s povoleným [zabezpečeným přenosem](../../storage/common/storage-require-secure-transfer.md) , a proto `wasbs` se používá v celém článku.
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 Pokud je účet úložiště použitý jako typ `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`, není nutná žádná akce.  Proces v tomto článku bude mít výstup alespoň `/tezstaging`do.  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` `fs.azure.page.blob.dir` v konfigurační proměnné v `core-site.xml` nástroji for Service `HDFS`.  Tato konfigurace způsobí, že výstupem adresáře jsou objekty blob stránky, které nejsou podporované pro druh `BlobStorage`účtu úložiště.  Chcete- `BlobStorage` li použít tento článek, `/tezstaging` odeberte z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
@@ -273,7 +273,7 @@ Get-AzHDInsightJobOutput `
     -HttpCredential $creds
 ```
 
-Výstup úlohy podregistru  by měl vypadat podobně jako v následujícím příkladu:
+Výstup úlohy **podregistru** by měl vypadat podobně jako v následujícím příkladu:
 
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
     100041    RIM 9650    d476f3687700442549a83fac4560c51c

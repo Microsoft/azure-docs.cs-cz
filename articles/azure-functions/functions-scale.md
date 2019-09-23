@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874935"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180102"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -62,6 +62,8 @@ Plán spotřeby je výchozím plánem hostování a nabízí následující výh
 * Horizontální navýšení kapacity i během období vysokého zatížení
 
 Aplikace Function App ve stejné oblasti se dají přiřadit ke stejnému plánu spotřeby. Neexistuje žádný nevýhodou ani dopad na to, aby ve stejném plánu spotřeby běželo víc aplikací. Přiřazení více aplikací ke stejnému plánu spotřeby nemá žádný vliv na odolnost, škálovatelnost nebo spolehlivost každé aplikace.
+
+Další informace o odhadu nákladů při spuštění v plánu spotřeby najdete v tématu [porozumění nákladům na plán spotřeby](functions-consumption-costs.md).
 
 ## <a name="premium-plan"></a>Plán Premium (Preview)
 
@@ -130,6 +132,8 @@ Když je `dynamic`výstup z tohoto příkazu, vaše aplikace Function App je v p
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
 V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se filtrují z existujících výběrů **účtu úložiště** při vytváření aplikace Function App
+
+Stejný účet úložiště, který používá vaše aplikace Function App, můžete použít taky triggery a vazbami k uložení dat aplikace. U operací náročných na úložiště byste ale měli použít samostatný účet úložiště.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
