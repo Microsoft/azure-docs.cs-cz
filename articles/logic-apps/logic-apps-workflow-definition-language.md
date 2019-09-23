@@ -79,11 +79,11 @@ Tady je obecná struktura definice parametru:
 
 | Atribut | Požadováno | Typ | Popis |
 |-----------|----------|------|-------------|
-| <*název parametru*> | Ano | Řetězec | Název parametru, který chcete definovat |
+| <*parameter-name*> | Ano | Řetězec | Název parametru, který chcete definovat |
 | <*parameter-type*> | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče použijte `securestring` typy nebo `secureobject` , protože `GET` operace nevrátí tyto typy. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*výchozí parametr-hodnota*> | Ano | Stejné jako`type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue` Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
-| <*pole s parametrem--------Parameter-Values*> | Ne | Array | Pole s hodnotami, které může parametr přijmout |
-| <*Parametr-Description*> | Ne | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
+| <*default-parameter-value*> | Ano | Stejné jako`type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue` Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
+| <*array-with-permitted-parameter-values*> | Ne | Array | Pole s hodnotami, které může parametr přijmout |
+| <*parametr-description*> | Ne | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
 ||||
 
 Dále vytvořte [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro definici pracovního postupu, definujte parametry šablony, které přijímají hodnoty požadované při nasazení, nahraďte hodnoty pevně zakódované odkazy na šablony nebo parametry definice pracovního postupu jako podle potřeby a uložte hodnoty pro použití při nasazení v samostatném [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Tímto způsobem můžete tyto hodnoty snadno měnit pomocí souboru parametrů, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Pro informace, které jsou citlivé nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, můžete tyto hodnoty uložit v Azure Key Vault a nechat si soubory parametrů načíst tyto hodnoty z vašeho trezoru klíčů. Další informace a příklady definování parametrů na úrovních definice šablony a pracovního postupu najdete v tématu [přehled: Automatizujte nasazení Logic Apps pomocí šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
