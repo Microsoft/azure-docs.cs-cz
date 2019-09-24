@@ -99,9 +99,9 @@ Příklad datové části JSON:
 
    | deviceId | messageId | deviceLocation | timestamp | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | DATA\_ŘÁDKU | EVROPA | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | DATA\_ŘÁDKU | EVROPA | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | DATA\_ŘÁDKU | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Poznámky k těmto dvěma tabulkám:
 
@@ -163,21 +163,21 @@ Příklad datové části JSON:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | jednotka |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s |
-   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi |
-   | FYYY | pumpRate | DATA\_ŘÁDKU | USA | Rychlost toku | ft3/s |
-   | FYYY | oilPressure | DATA\_ŘÁDKU | USA | Tlak v oleji motoru | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | LINE\_DATA | US | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | US | Tlak v oleji motoru | psi |
 
 * Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | jednotka | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | DATA\_ŘÁDKU | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | DATA\_ŘÁDKU | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | pumpRate | LINE\_DATA | US | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | US | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Poznámky k těmto dvěma tabulkám:
 
