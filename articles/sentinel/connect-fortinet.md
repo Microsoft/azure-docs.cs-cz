@@ -1,5 +1,5 @@
 ---
-title: Připojení dat Fortinet k Azure Sentinel Preview | Microsoft Docs
+title: Připojení dat Fortinet ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Fortinet ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679286"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240702"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Připojení zařízení Fortinet
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Nedoporučujeme ho pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+
 
 Službu Azure Sentinel můžete připojit k jakémukoli Fortinet zařízení tím, že soubory protokolu uložíte jako formát CEF (Common Event Format) syslog. Díky integraci se službou Azure Sentinel můžete snadno spouštět analýzy a dotazy napříč daty souboru protokolu z Fortinet. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
@@ -140,12 +138,12 @@ Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Anal
        - rsyslog. d:`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
 
      Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service rsyslog restart`
-       - syslog-ng:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+       - Syslog-ng:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
       
      Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service syslog-ng restart`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak připojit zařízení Fortinet ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

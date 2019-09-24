@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845343"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211768"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění pomocí Analýza textu
 
@@ -139,7 +139,7 @@ Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto člán
 > [!NOTE]
 > * Formát požadavku Analýza mínění v3 a [omezení dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
 > * V tuto chvíli Analýza mínění V3:
->    * V současné době podporuje angličtinu, zjednodušenou čínštinu a japonské jazyky.
+>    * V současné době podporuje jazyky anglické, francouzštiny, italštiny, japonštiny, zjednodušené čínštiny a tradiční čínštiny.
 >    * Je k dispozici v následujících oblastech `Australia East`: `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`,, `South Central US`, ,`UK South` a`West US 2` `West Europe` .
 
 |Funkce |Popis  |
@@ -273,7 +273,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
  [Přehled Analýza textu](../overview.md) Nejčastější dotazy – Nejčastější [dotazy](../text-analytics-resource-faq.md)</br>
  [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)

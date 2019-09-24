@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697345"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241013"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání
 
@@ -114,13 +114,14 @@ V seznamu dotazů se zobrazí nový dotaz s počátečním názvem `Query1`. Dva
 Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený editor**. Otevře se okno rozšířeného editoru. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
 
 > [!NOTE]
-> Následující příklady předpokládají, že koncový bod rozhraní API pro analýzu textu začíná oblastí `https://westus.api.cognitive.microsoft.com`. Analýza textu umožňuje vytvořit předplatné ve 13 různých oblastech. Pokud jste si službu zaregistrovali v jiné oblasti, nezapomeňte použít koncový bod pro oblast, kterou jste vybrali. Tento koncový bod najdete, když se přihlásíte na webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné Analýza textu a vyberete stránku Přehled.
+> Nahraďte níže uvedený ukázkový koncový bod `<your-custom-subdomain>`(obsahující) koncovým bodem vygenerovaným pro váš analýza textu prostředek. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a `Quick start`vyberete.
+
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -164,7 +165,8 @@ Klikněte na **Upravit přihlašovací údaje**, v dialogovém okně se ujistět
 > [!NOTE]
 > Vybrali jste `Anonymous`, protože služba Analýza textu použije k vašemu ověření přístupový klíč, aby řešení Power BI nemuselo poskytovat přihlašovací údaje pro samotný požadavek HTTP.
 
-![[Nastavení ověřování na Anonymní]](../media/tutorials/power-bi/access-web-content.png)
+> [!div class="mx-imgBorder"]
+> ![[nastavení ověřování na anonymní]](../media/tutorials/power-bi/access-web-content.png)
 
 Pokud se banner Upravit přihlašovací údaje zobrazuje i po zvolení anonymního přístupu, možná jste do kódu [vlastní funkce](#CreateCustomFunction) `KeyPhrases` zapomněli vložit svůj přístupový klíč Analýzy textu.
 
@@ -223,7 +225,7 @@ Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivn
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +242,7 @@ Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazy
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +276,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -285,7 +287,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 <a name="NextSteps"></a>
 
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.

@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Preview Sentinelu datům Azure AD | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu data služby Azure Active Directory.
+title: Připojení dat Azure AD ke službě Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak připojit Azure Active Directory dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5784101c9f2e0dc238ac48c5d0f6fbe4c0dc596f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620667"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240821"
 ---
-# <a name="connect-data-from-azure-active-directory"></a>Připojení dat ze služby Azure Active Directory
+# <a name="connect-data-from-azure-active-directory"></a>Připojení dat z Azure Active Directory
 
-> [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Sentinel umožňuje shromažďovat data z [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) a Streamovat do ověřovacích Azure. Můžete použít na datový proud [protokolů přihlášení](../active-directory/reports-monitoring/concept-sign-ins.md) a [protokoly auditu](../active-directory/reports-monitoring/concept-audit-logs.md) .
+
+Možnost Azure Sentinel umožňuje shromažďovat data z [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) a streamovat je do Azure Sentinel. Můžete zvolit streamování [protokolů přihlášení](../active-directory/reports-monitoring/concept-sign-ins.md) a [auditu](../active-directory/reports-monitoring/concept-audit-logs.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete exportovat data přihlášení ze služby Active Directory, musí mít licenci Azure AD P1 nebo P2.
+- Pokud chcete exportovat přihlašovací data ze služby Active Directory, musíte mít licenci Azure AD P1 nebo P2.
 
-- Uživatel se globální správce nebo bezpečnostní oprávnění správce v tenantovi chcete Streamovat protokoly z.
+- Uživatel s oprávněními globálního správce nebo správce zabezpečení u tenanta, ze kterého chcete protokoly streamovat.
 
 - Aby bylo možné zobrazit stav připojení, musíte mít oprávnění pro přístup k diagnostickým protokolům Azure AD. 
 
 
-## <a name="connect-to-azure-ad"></a>Připojení k Azure AD
+## <a name="connect-to-azure-ad"></a>Připojení ke službě Azure AD
 
-1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Azure Active Directory** dlaždici.
+1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Azure Active Directory** .
 
-2. Vedle chcete Streamovat do Azure ověřovacích protokolů, klikněte na tlačítko **připojit**.
+1. Vedle protokolů, které chcete streamovat do služby Azure Sentinel, klikněte na **připojit**.
 
-6. Chcete-li použít příslušné schéma v Log Analytics pro oznámení služby Azure AD, vyhledejte **SigninLogs** a **mají**.
+1. Můžete vybrat, jestli chcete, aby výstrahy z Azure AD automaticky generovaly incidenty v rámci služby Azure Sentinel automaticky. V části **vytvořit incidenty** vyberte **Povolit** , pokud chcete povolit výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analýza** a pak na **aktivní pravidla**.
+
+1. Pokud chcete použít příslušné schéma v Log Analytics pro výstrahy Azure AD, vyhledejte **SigninLogs** a **AuditLogs**.
 
 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit služby Azure AD do Azure Sentinelu. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit Azure AD ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).

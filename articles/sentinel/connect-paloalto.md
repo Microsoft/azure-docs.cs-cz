@@ -1,5 +1,5 @@
 ---
-title: Připojit data sítí Palo Alto do Azure Sentinel Preview | Microsoft Docs
+title: Připojit data sítí Palo Alto do Azure Sentinel | Microsoft Docs
 description: Přečtěte si, jak propojit data Palo Alto Networks do Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679221"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240242"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Připojení zařízení Palo Alto Networks
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Můžete připojit Azure Sentinel k jakýmkoli zařízením Palo Alto Networks tím, že soubory protokolu uložíte jako běžný formát chyb syslog (CEF). Integrace s Azure Sentinel umožňuje snadno spouštět analýzy a dotazy napříč daty souboru protokolu z Palo Alto Networks. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
@@ -138,8 +136,8 @@ Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Anal
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit zařízení Palo Alto Network ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

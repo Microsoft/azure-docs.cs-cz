@@ -1,5 +1,5 @@
 ---
-title: Připojit data F5 do Azure Sentinel Preview | Microsoft Docs
+title: Připojit data F5 ke službě Azure Sentinel | Microsoft Docs
 description: Přečtěte si, jak připojit data F5 ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7ad95515ff58e2990102fa2b71d0ce66d4377617
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 64ea16b6e5a2821db4f053928e4b95ba80d177dd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679298"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240014"
 ---
 # <a name="connect-your-f5-appliance"></a>Připojení zařízení F5
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Můžete připojit Azure Sentinel k jakémukoli zařízení F5 tím, že soubory protokolu uložíte jako CEF syslog. Integrace s Azure Sentinel umožňuje snadno spouštět analýzy a dotazy napříč daty souboru protokolu z F5. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
@@ -130,5 +128,5 @@ Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Anal
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit zařízení F5 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

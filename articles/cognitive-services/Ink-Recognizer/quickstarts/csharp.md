@@ -1,52 +1,52 @@
 ---
-title: 'Rychlý start: Rozpoznat digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu aC#'
+title: 'Rychlý start: Rozpoznávání digitálního inkoustu pomocí REST API pro rozpoznávání rukopisuC#'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro rozpoznávání rukopisu spusťte uznání digitální inkoustových tahů.
+description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat tahy digitálního inkoustu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721239"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211781"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý start: Rozpoznat digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu aC#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý start: Rozpoznávání digitálního inkoustu pomocí REST API pro rozpoznávání rukopisuC#
 
-V tomto rychlém startu můžete zahájit odesílání digitální inkoustových tahů do rozhraní API pro rozpoznávání rukopisu. To C# aplikace odešle požadavek rozhraní API, obsahující data ve formátu JSON inkoustu stroke a získá odpověď.
+Pomocí tohoto rychlého startu můžete začít odesílat tahy digitálního inkoustu do rozhraní API pro rozpoznávání rukopisu. Tato C# aplikace pošle požadavek rozhraní API obsahující data tahu ve formátu JSON a získá odpověď.
 
-Zatímco tato aplikace je napsána v C#, rozhraní API je kompatibilní s Většina programovacích jazyků rozhraní RESTful webová služba.
+I když je tato aplikace napsaná v C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Obvykle by volání rozhraní API z aplikace pro digitální rukopisu. V tomto rychlém startu odesílá data inkoustu stroke pro následující ukázka rukou psaný ze souboru JSON.
+Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V tomto rychlém startu se v souboru JSON pošle data tahy perem pro následující psaný vzorek.
 
-![Obrázek rukou psaný text](../media/handwriting-sample.jpg)
+![Obrázek rukopisného textu](../media/handwriting-sample.jpg)
 
-Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089502).
+Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089502).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Chcete-li nainstalovat Newtonsoft.Json jako balíček NuGet v sadě Visual studio:
-        1. Klikněte pravým tlačítkem na **správci řešení**
-        2. Klikněte na tlačítko **spravovat balíčky NuGet...**
-        3. Vyhledejte `Newtonsoft.Json` a instalace balíčku
-- Pokud používáte Linux nebo MacOS, můžete tuto aplikaci spustili pomocí [Mono](https://www.mono-project.com/).
+    - Postup instalace Newtonsoft. JSON jako balíčku NuGet v aplikaci Visual Studio:
+        1. Klikněte pravým tlačítkem na **správce řešení** .
+        2. Klikněte na **Spravovat balíčky NuGet...**
+        3. `Newtonsoft.Json` Vyhledat a nainstalovat balíček
+- Pokud používáte Linux/MacOS, může být tato aplikace spuštěná pomocí [mono](https://www.mono-project.com/).
 
-- Příklad inkoustu stroke data pro účely tohoto rychlého najdete na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
+- Ukázková data tahu perem pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V sadě Visual Studio vytvořit nové řešení konzoly a přidejte následující balíčky. 
+1. V aplikaci Visual Studio vytvořte nové řešení konzoly a přidejte následující balíčky. 
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     using Newtonsoft.Json.Linq;
     ```
 
-2. Vytváření proměnných pro váš klíč předplatného a váš koncový bod. Níže je identifikátor URI, můžete použít pro rozpoznávání rukopisu. Připojí se k vašeho koncového bodu služby později k vytvoření rozhraní API adresa URl požadavku.
+2. Vytvořte proměnné pro svůj klíč předplatného a koncový bod. Nahraďte níže uvedený koncový bod následujícím vygenerovaným prostředkem pro rozpoznávání rukopisu. Připojte ho k identifikátoru URI pro rozpoznávání rukopisu pro připojení k rozhraní API.
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -70,17 +70,17 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
 
     // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
+    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce k odesílání požadavků
+## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
 
-1. Vytvoření nové asynchronní funkce volána `Request` , která přebírá proměnných vytvořené výše.
+1. Vytvořte novou asynchronní funkci s názvem `Request` , která přijímá proměnné vytvořené výše.
 
-2. Nastavení protokolu zabezpečení a záhlaví informací pomocí klienta `HttpClient` objektu. Nezapomeňte přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví. Pak vytvořte `StringContent` pro žádost.
+2. Pomocí `HttpClient` objektu nastavte informace o protokolu zabezpečení a hlavičce klienta. Nezapomeňte do `Ocp-Apim-Subscription-Key` hlavičky přidat svůj klíč předplatného. Pak vytvořte `StringContent` objekt pro požadavek.
  
-3. Odeslat požadavek s `PutAsync()`. Pokud je žádost úspěšná, vrátí odpověď.  
+3. Odešlete žádost pomocí `PutAsync()`. Pokud je požadavek úspěšný, vrátí odpověď.  
     
     ```csharp
     static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
@@ -102,11 +102,11 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     }
     ```
 
-## <a name="send-an-ink-recognition-request"></a>Poslat žádost o rozpoznávání rukopisu
+## <a name="send-an-ink-recognition-request"></a>Poslat požadavek na rozpoznávání rukopisu
 
-1. Vytvořit novou funkci s názvem `recognizeInk()`. Sestavit požadavku a odeslat ho voláním `Request()` funkce s váš koncový bod, klíč předplatného, adresu URL pro rozhraní API a data digitálního inkoustu stroke.
+1. Vytvořte novou funkci s názvem `recognizeInk()`. Sestavte požadavek a odešlete ho voláním `Request()` funkce s vaším koncovým bodem, klíčem předplatného, adresou URL pro rozhraní API a datovým tahem digitálního inkoustu.
 
-2. Deserializace objektu JSON a zapište ho do konzoly. 
+2. Deserializovat objekt JSON a zapsat ho do konzoly. 
     
     ```csharp
     static void recognizeInk(string requestData){
@@ -123,9 +123,9 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     }
     ```
 
-## <a name="load-your-digital-ink-data"></a>Načtěte data digitálního inkoustu
+## <a name="load-your-digital-ink-data"></a>Načtení dat digitálního inkoustu
 
-Vytvořit funkci s názvem `LoadJson()` načtení inkoustu datového souboru JSON. Použití `StreamReader` a `JsonTextReader` k vytvoření `JObject` a vrátí jej.
+Vytvořte funkci nazvanou `LoadJson()` , která načte soubor JSON pro tisk dat. `StreamReader` Pomocí a `JsonTextReader` vytvořte avraťteho.`JObject`
     
 ```csharp
 public static JObject LoadJson(string fileLocation){
@@ -140,11 +140,11 @@ public static JObject LoadJson(string fileLocation){
 }
 ```
 
-## <a name="send-the-api-request"></a>Odeslání požadavku rozhraní API
+## <a name="send-the-api-request"></a>Odeslat požadavek rozhraní API
 
-1. V hlavní metodě vaší aplikace načtěte JSON data pomocí funkce vytvořené výše. 
+1. V metodě Main aplikace načtěte data JSON pomocí funkce vytvořené výše. 
 
-2. Volání `recognizeInk()` funkce vytvořené výše. Použití `System.Console.ReadKey()` nechat otevřené v okně konzoly se po spuštění aplikace.
+2. `recognizeInk()` Zavolejte funkci vytvořenou výše. Slouží `System.Console.ReadKey()` k zachování otevřeného okna konzoly po spuštění aplikace.
     
     ```csharp
     static void Main(string[] args){
@@ -157,18 +157,18 @@ public static JObject LoadJson(string fileLocation){
         }
     ```
 
-## <a name="run-the-application-and-view-the-response"></a>Spusťte aplikaci a zobrazit odpovědi
+## <a name="run-the-application-and-view-the-response"></a>Spuštění aplikace a zobrazení odpovědi
 
-Spusťte aplikaci. Úspěšná odpověď se vrátí ve formátu JSON. Můžete také najít odpověď JSON na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
+Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Pokud chcete zobrazit, jak rozhraní API pro rozpoznávání rukopisu funguje v digitální rukopisu aplikaci, podívejte se na následující ukázkové aplikace na Githubu:
+Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
 * [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       

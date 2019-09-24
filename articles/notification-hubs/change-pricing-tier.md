@@ -1,79 +1,80 @@
 ---
-title: Změna cenové úrovně oboru názvů Notification Hubs | Dokumentace Microsoftu
-description: Zjistěte, jak změnit cenovou úroveň obor názvů služby Azure Notification Hubs.
+title: Změna cenové úrovně oboru názvů Notification Hubs | Microsoft Docs
+description: Naučte se změnit cenovou úroveň oboru názvů Azure Notification Hubs.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
-ms.author: jowargo
-ms.openlocfilehash: 99ea21b3eb01a674a89c70a1b923f02e600cc3c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 679e8b58e5876d5460b426e694df85ded992a36d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234485"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212561"
 ---
-# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Změnit cenovou úroveň obor názvů služby Azure notification hubs
-Notification Hubs se nabízí ve třech úrovních: **bezplatné**, **základní**, a **standardní**. Tento článek ukazuje, jak změnit cenovou úroveň pro obor názvů služby Azure Notification Hubs. 
+# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Změna cenové úrovně oboru názvů centra oznámení Azure
+Notification Hubs se nabízí na třech úrovních: **Free**, **Basic**a **Standard**. V tomto článku se dozvíte, jak změnit cenovou úroveň pro obor názvů Azure Notification Hubs. 
 
 ## <a name="overview"></a>Přehled
-Ve službě Azure Notification Hubs **centra** je nejmenší prostředků na entitu. To obecně mapuje na jednu aplikaci a může obsahovat jeden certifikát u každého systému oznámení platformy jsme podporu pro aplikaci. Aplikace může být hybridní nebo nativní a multiplatformní aplikace.
+V Azure Notification Hubs je **centrum** nejmenším prostředkem/entitou. Obecně se mapuje na jednu aplikaci a může obsahovat jeden certifikát pro každý systém oznámení platformy, který podporujeme pro aplikaci. Aplikace může být hybridní nebo nativní a aplikace pro více platforem.
 
-A **obor názvů** je kolekce služby notification hubs. Každý obor názvů se obvykle skládá z rozbočovačů, které mají související a používat pro konkrétní účel. Například můžete mít tři různé obory názvů pro vývoj, testování a produkční účely v uvedeném pořadí. 
+**Obor názvů** je kolekce Center oznámení. Každý obor názvů se obvykle skládá z rozbočovačů, které se vztahují k určitému účelu a používají je. Například můžete mít tři různé obory názvů pro vývoj, testování a produkční účely. 
 
-Můžete přiřadit cenovou úroveň na úrovni oboru názvů. Notification Hubs podporuje tři úrovně: **bezplatné**, **základní**, a **standardní**. Na úrovni můžete použít pro obor názvů, který vyhovuje vašim požadavkům. Následující části ukazují, jak změnit cenovou úroveň oboru názvů Notification Hubs. 
+Cenovou úroveň můžete přidružit na úrovni oboru názvů. Notification Hubs podporuje tři úrovně: **Free**, **Basic**a **Standard**. Můžete použít vrstvu pro obor názvů, který vyhovuje vašim požadavkům. V následujících částech se dozvíte, jak změnit cenovou úroveň oboru názvů Notification Hubs. 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
-Při použití webu Azure portal, můžete změnit cenovou úroveň pro obor názvů na stránce obor názvů nebo stránka centra.  Když se změní na stránce centra, ve skutečnosti jej změníte na úrovni oboru názvů. Změní cenovou úroveň pro obor názvů a všechna centra v oboru názvů. 
+Při použití Azure Portal můžete změnit cenovou úroveň oboru názvů na stránce oboru názvů nebo na stránce centra.  Když ho změníte na stránce centra, ve skutečnosti ho změníte na úrovni oboru názvů. Změní cenovou úroveň pro obor názvů a všechna centra v oboru názvů. 
 
-### <a name="change-tier-on-the-namespace-page"></a>Změna úrovně na stránce obor názvů
-Následující postup obsahuje kroky, chcete-li změnit cenovou úroveň pro obor názvů na stránce obor názvů. Pokud změníte úroveň pro obor názvů, platí pro všechna centra v oboru názvů.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v nabídce vlevo. 
-3. Vyberte **názvové prostory centra oznámení** v **Internet of Things** oddílu. Pokud vyberte hvězdičku (`*`) vedle textu, získá přidá do levého navigačního panelu v části **Oblíbené**. Pomůže vám s přístupem ke stránce obory názvů rychlejší při příštím a vyšší. Po přidání do oblíbených položek, vyberte **názvové prostory centra oznámení**. 
-
-    ![Všechny služby -> názvové prostory centra oznámení](./media/change-pricing-tier/all-services-nhub.png)
-1. Na **názvové prostory centra oznámení** stránky, vyberte obor názvů, pro kterou chcete změnit cenovou úroveň. 
-2. Na **Namespace centra oznámení** stránky pro váš obor názvů, zobrazí se aktuální cenová úroveň pro obor názvů v **Essentials** oddílu. Na následujícím obrázku vidíte, že cenové úrovně oboru názvů je **Free**. 
-
-    ![Aktuální cenová úroveň na stránce obor názvů](./media/change-pricing-tier/pricing-tier-before.png)
-1. Na **Namespace centra oznámení** stránky pro váš obor názvů, vyberte **cenová úroveň** pod **spravovat** oddílu. 
-
-    ![Vyberte cenovou úroveň na stránce obor názvů](./media/change-pricing-tier/namespace-select-pricing-menu.png)
-6. Změnit svou cenovou úroveň a klikněte na tlačítko **vyberte** tlačítko.    
-7. Zobrazí stav úrovně, změnit v akci **výstrahy**. 
-8. Přepněte **přehled** stránky. Potvrďte, že se zobrazí nová úroveň pro **cenová úroveň** pole **Essentials** oddílu.     
-1. Tento krok je volitelný. Vyberte libovolné centrum v oboru názvů. Zkontrolujte, jestli se stejnou cenovou úroveň v **Essentials** oddílu. Měli byste vidět stejnou cenovou úroveň pro všechna centra v oboru názvů. 
-
-### <a name="change-tier-on-the-hub-page"></a>Změna úrovně na stránce centra
-Následující postup obsahuje kroky, chcete-li změnit cenovou úroveň pro obor názvů na stránce centra. I když neprovedete tyto kroky od stránka centra, ve skutečnosti změnit cenovou úroveň pro obor názvů a všechna centra v oboru názvů. 
+### <a name="change-tier-on-the-namespace-page"></a>Změna úrovně na stránce oboru názvů
+Následující postup obsahuje kroky pro změnu cenové úrovně oboru názvů na stránce oboru názvů. Když změníte úroveň oboru názvů, bude platit pro všechna centra v oboru názvů.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v nabídce vlevo.
-3. Vyberte **Notification Hubs** v **Internet of Things** oddílu. 
-4. Vyberte oznámení **centra**. 
-5. Vyberte **cenová úroveň** v nabídce vlevo. 
-6. Změnit cenovou úroveň a klikněte na tlačítko **vyberte** tlačítko. Tato akce změní nastavení cenové úrovně pro obor názvů obsahující rozbočovače. Proto se zobrazí novou cenovou úroveň na stránce obor názvů a všech stránkách centra. 
+2. V nabídce vlevo vyberte **všechny služby** . 
+3. V části **Internet věcí** vyberte **obory názvů centra oznámení** . Pokud vyberete hvězdičku (`*`) vedle textu, přidají se do levého navigačního panelu v části **Oblíbené**. Pomůže vám to rychleji při dalším přístupu na stránku oborů názvů. Po přidání do oblíbených položek vyberte **obory názvů centra oznámení**. 
+
+    ![Všechny služby – > obory názvů centra oznámení](./media/change-pricing-tier/all-services-nhub.png)
+1. Na stránce **obory názvů centra oznámení** vyberte obor názvů, pro který chcete změnit cenovou úroveň. 
+2. Na stránce **oboru názvů centra oznámení** pro váš obor názvů uvidíte aktuální cenovou úroveň pro obor názvů v části **základy** . Na následujícím obrázku můžete vidět, že cenová úroveň oboru názvů je **zdarma**. 
+
+    ![Aktuální cenová úroveň na stránce oboru názvů](./media/change-pricing-tier/pricing-tier-before.png)
+1. Na stránce **obor názvů centra oznámení** pro svůj obor názvů vyberte **cenová úroveň** v části **Spravovat** . 
+
+    ![Výběr cenové úrovně na stránce oboru názvů](./media/change-pricing-tier/namespace-select-pricing-menu.png)
+6. Změňte cenovou úroveň a klikněte na tlačítko **Vybrat** .    
+7. V **upozorněních**se zobrazí stav akce změna vrstvy. 
+8. Přepněte na stránku **Přehled** . Potvrďte, že se nová úroveň zobrazuje v poli **cenová úroveň** v části **základy** .     
+1. Tento krok je volitelný. Vyberte libovolné centrum v oboru názvů. Ověřte, že se v části **základy** zobrazuje stejná cenová úroveň. Měli byste vidět stejnou cenovou úroveň pro všechna centra v oboru názvů. 
+
+### <a name="change-tier-on-the-hub-page"></a>Změnit úroveň na stránce centra
+Následující postup popisuje postup změny cenové úrovně oboru názvů na stránce centra. I když provedete tyto kroky počínaje na stránce centra, změníte cenovou úroveň pro obor názvů a všechna centra v oboru názvů. 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. V nabídce vlevo vyberte **všechny služby** .
+3. V části **Internet věcí** vyberte **Notification Hubs** . 
+4. Vyberte **centrum**oznámení. 
+5. V nabídce vlevo vyberte **cenovou úroveň** . 
+6. Změňte cenovou úroveň a klikněte na tlačítko **Vybrat** . Tato akce změní nastavení cenové úrovně pro obor názvů, který obsahuje centrum. Proto uvidíte novou cenovou úroveň na stránce obor názvů a na všech stránkách centra. 
 
 ## <a name="use-rest-api"></a>Použití rozhraní REST API
-Následující REST API poskytovatele prostředků můžete použít k získání aktuální cenová úroveň a aktualizujte ji. 
+K získání aktuální cenové úrovně a její aktualizaci můžete použít následující poskytovatele prostředků REST API. 
 
-### <a name="get-current-pricing-tier-for-a-namespace"></a>Získat aktuální cenová úroveň pro obor názvů
-Chcete-li získat **aktuální úroveň oboru názvů**, odeslat příkaz GET, jak je znázorněno v následujícím příkladu: 
+### <a name="get-current-pricing-tier-for-a-namespace"></a>Získání aktuální cenové úrovně pro obor názvů
+Chcete-li získat **aktuální úroveň oboru názvů**, odešlete příkaz Get, jak je znázorněno v následujícím příkladu: 
 
 ```REST
 GET: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
 ```
 
 ### <a name="update-pricing-tier-for-a-namespace"></a>Aktualizace cenové úrovně pro obor názvů
-K **aktualizovat na úrovni oboru názvů**, poslat příkaz, PUT, jak je znázorněno v následujícím příkladu: 
+Chcete-li **aktualizovat úroveň oboru názvů**, odešlete příkaz PUT, jak je znázorněno v následujícím příkladu: 
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
@@ -82,5 +83,5 @@ Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o těchto úrovních a cenách najdete v tématu [Notification Hubs ceny](https://azure.microsoft.com/pricing/details/notification-hubs/).

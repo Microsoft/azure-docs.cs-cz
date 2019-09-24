@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172053"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229527"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: Vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Abyste mohli Azure služba AD DS povolit, potřebujete ve svém tenantovi Azure AD oprávnění *globálního správce* .
-* Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění přispěvatele v předplatném Azure.
+* Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění *přispěvatele* v předplatném Azure.
 * [Pro Samoobslužné resetování hesla][configure-sspr]se musí nakonfigurovat tenant služby Azure AD.
 
 > [!IMPORTANT]
@@ -64,6 +64,15 @@ Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě
 * **Název předdefinované domény:** Ve výchozím nastavení se používá integrovaný název domény adresáře (přípona *. onmicrosoft.com* ). Pokud chcete povolit přístup přes Internet k spravované doméně pomocí protokolu Secure LDAP, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže certifikační autorita (CA) certifikát nevydá.
 * **Vlastní názvy domén:** Nejběžnějším přístupem je zadat vlastní název domény, obvykle ten, který už vlastníte a který je směrovatelný. Když použijete směrovatelný, vlastní doménu, může provoz správně přesměrovat podle potřeby na podporu vašich aplikací.
 * **Přípony domén bez směrování:** Obecně doporučujeme, abyste se vyhnuli příponě názvu domény, která není směrovatelný, například *contoso. Local*. Přípona *. Local* není směrovatelný a může způsobit problémy s překladem názvů DNS.
+
+> [!TIP]
+> Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se pro název domény zahrnout jedinečnou předponu. Například pokud je název vašeho kořenového adresáře DNS *contoso.com*, vytvořte spravovanou doménu Azure služba AD DS s vlastním názvem domény *Corp.contoso.com* nebo *DS.contoso.com*. V hybridním prostředí s místním prostředím služba AD DS se tyto předpony už můžou používat. Použijte jedinečnou předponu pro Azure služba AD DS.
+>
+> Můžete použít kořenový název DNS pro spravovanou doménu Azure služba AD DS, ale možná budete muset vytvořit další záznamy DNS pro další služby ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
+>
+> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *contoso.com* . Ve všech příkazech zadejte vlastní název domény, který může obsahovat jedinečnou předponu.
+>
+> Další informace najdete v tématu [Výběr předpony pro pojmenování pro doménu][naming-prefix].
 
 Platí taky následující omezení názvů DNS:
 
@@ -150,7 +159,7 @@ Na stránce **Souhrn** v průvodci zkontrolujte nastavení konfigurace pro sprav
 
     ![Oznámení v Azure Portal probíhajícího nasazení](./media/tutorial-create-instance/deployment-in-progress.png)
 
-1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doménaaktuálně nasazuje. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
+1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
 
     ![Stav služby Domain Services ve stavu zřizování](./media/tutorial-create-instance/provisioning-in-progress.png)
 
@@ -228,3 +237,6 @@ Pokud chcete tuto spravovanou doménu zobrazit v akci, vytvořte virtuální po�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

@@ -1,11 +1,11 @@
 ---
 title: Šablony
-description: Toto téma vysvětluje šablon pro službu Azure notification hubs.
+description: Toto téma vysvětluje šablony pro centra oznámení Azure.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,34 +13,36 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872077"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212985"
 ---
 # <a name="templates"></a>Šablony
 
-Šablony umožňují klientské aplikaci určit přesný formát oznámení, která chce přijmout. Pomocí šablon, můžete aplikaci realizovat několik různých výhod, včetně následujících:
+Šablony umožňují klientské aplikaci zadat přesný formát oznámení, která chce přijmout. Pomocí šablon může aplikace realizovat několik různých výhod, včetně následujících:
 
-- Back-endu. pro více platforem
+- Back-end nezávislá platformy
 - Přizpůsobená oznámení
-- Nezávislosti na verzi klienta
-- Snadné lokalizace
+- Nezávislost klienta a verze
+- Snadná lokalizace
 
-Tato část obsahuje dva podrobné příklady použití šablony k odesílání oznámení pro více platforem cílí na všechna zařízení napříč platformami a přizpůsobení všesměrového vysílání oznámení jednotlivým zařízením.
+V této části najdete dva podrobné příklady použití šablon k posílání oznámení nezávislá platforem cílících na všechna vaše zařízení na různých platformách a k přizpůsobení oznámení všesměrového vysílání pro každé zařízení.
 
-## <a name="using-templates-cross-platform"></a>Pomocí šablony pro různé platformy
+## <a name="using-templates-cross-platform"></a>Používání šablon pro různé platformy
 
-K odeslání pro každé upozornění, které se mají poslat konkrétní datová část službám oznamování platformy (WNS, APNS) je standardní způsob, jak posílat nabízená oznámení. Například pokud chcete odeslat oznámení APNS, je datová část objektu JSON v následujícím formátu:
+Standardní způsob, jak odesílat nabízená oznámení, je odeslat pro každé oznámení, které se pošle, konkrétní datovou část do služby oznámení platformy (WNS, APNS). Například pro odeslání výstrahy službě APNS je datová část objekt JSON v následujícím tvaru:
 
 ```json
 {"aps": {"alert" : "Hello!" }}
 ```
 
-Odeslat zprávu podobné informační zprávy v aplikaci Windows Store, datová část XML je následující:
+Chcete-li odeslat podobnou zprávu informační zprávy v aplikaci pro Windows Store, datová část XML je následující:
 
 ```xml
 <toast>
@@ -52,23 +54,23 @@ Odeslat zprávu podobné informační zprávy v aplikaci Windows Store, datová 
 </toast>
 ```
 
-Podobně jako datové části můžete vytvořit pro MPNS (Windows Phone) a FCM platforem (Android).
+Můžete vytvořit podobné datové části pro platformy MPNS (Windows Phone) a FCM (Android).
 
-Tento požadavek vynutí back-endu aplikace k vytvoření různých datových částí pro každou platformu a efektivně je zodpovědná za součástí prezentační vrstvy aplikace back-endu. Některé aspekty zahrnují lokalizace a grafické rozložení (hlavně pro aplikace Windows Store, které zahrnují oznámení pro různé typy dlaždic).
+Tento požadavek vynutí, aby back-end aplikace vytvářely různé datové části pro každou platformu, a efektivně vytvoří back-end zodpovědný za součást prezentační vrstvy aplikace. Mezi důležité aspekty patří lokalizace a grafické rozložení (zejména pro aplikace pro Windows Store, které obsahují oznámení pro různé typy dlaždic).
 
-Funkce šablony služby Notification Hubs umožňuje klientská aplikace vytvořit zvláštní registrace, volá se registrace šablon, které zahrnují kromě sad značek, šablony. Funkce šablony služby Notification Hubs umožňuje klientskou aplikaci, ať už pracujete s registrací zařízení (upřednostňováno) nebo přidružení zařízení k šablony. S ohledem předchozí příklady datovou část, informace pouze nezávislá na platformě je skutečná zpráva s výstrahou (Hello!). Šablona je sada instrukcí pro Centrum oznámení o tom, jak formátování zprávy nezávislá na platformě pro registraci této konkrétní klientské aplikace. V předchozím příkladu je nezávislá na platformě zpráva jedné vlastnosti: `message = Hello!`.
+Funkce šablony Notification Hubs umožňuje klientské aplikaci vytvořit speciální registrace, které se nazývají registrace šablon, mezi které patří také sada značek, šablona. Funkce šablony Notification Hubs umožňuje klientské aplikaci přidružit zařízení k šablonám bez ohledu na to, jestli pracujete s instalacemi (preferované) nebo registrací. V předchozích příkladech datové části se jedná o skutečnou zprávu s upozorněním (Hello!), která je závislá na platformě. Šablona je sada instrukcí pro Centrum oznámení o tom, jak naformátovat zprávu nezávislou na platformě pro registraci konkrétní klientské aplikace. V předchozím příkladu je zpráva nezávislá na platformě jedinou vlastností: `message = Hello!`.
 
-Na následujícím obrázku je znázorněn proces:
+Proces je znázorněný na následujícím obrázku:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-Šablony pro registraci aplikace iOS klienta vypadá takto:
+Šablona pro registraci klientské aplikace pro iOS je následující:
 
 ```json
 {"aps": {"alert": "$(message)"}}
 ```
 
-Odpovídající šablonu pro klientskou aplikaci pro Windows Store je:
+Odpovídající šablona klientské aplikace pro Windows Store je:
 
 ```xml
 <toast>
@@ -80,17 +82,17 @@ Odpovídající šablonu pro klientskou aplikaci pro Windows Store je:
 </toast>
 ```
 
-Všimněte si, že skutečné zpráva nahradí výrazu $(zprávy). Tento výraz instruuje centru oznámení pokaždé, když se odešle zprávu do této konkrétní registraci, k vytvoření zprávy, která následuje ji a přepínače ve společné hodnoty.
+Všimněte si, že vlastní zpráva je nahrazena výrazem $ (zpráva). Tento výraz instruuje centrum oznámení, kdykoli pošle zprávu této konkrétní registraci, k vytvoření zprávy, která následuje, a přepne do společné hodnoty.
 
-Pokud pracujete s modelem instalace, obsahuje klíč "šablony" instalace JSON několik šablon. Pokud pracujete s modelem zápisu, klientská aplikace můžete vytvořit více registrací Chcete-li používat více šablon; například šablony pro šablonu pro aktualizace dlaždice a oznámení. Klientské aplikace můžete také kombinovat nativní registrace (s žádná šablona registrace) a šablona registrace.
+Pokud pracujete s modelem instalace, klíč instalace "templates" obsahuje JSON více šablon. Pokud pracujete s registračním modelem, může klientská aplikace vytvořit více registrací, aby bylo možné použít více šablon. například šablona pro zprávy s výstrahami a šablonu pro aktualizace dlaždic. Klientské aplikace mohou také kombinovat nativní registrace (registrace bez šablony) a registrace šablon.
 
-Centrum oznámení odešle jedno oznámení ke každé šabloně bez zohlednění, jestli patří do stejné klientské aplikace. Toto chování je možné přeložit nezávislá na platformě oznámení do další oznámení. Například stejné nezávislá na platformě zprávy do centra oznámení lze bezproblémově přeložit v informační výstrahy a aktualizace dlaždice, aniž by bylo nutné upozornit back-endu. Některé platformy (například iOS) může sbalit několik oznámení do stejného zařízení, pokud se odesílají v krátké době.
+Centrum oznámení pošle jedno oznámení pro každou šablonu bez zvážení toho, jestli patří do stejné klientské aplikace. Toto chování se dá použít k překladu oznámení nezávislých na platformě na další oznámení. Například stejná zpráva nezávislá na platformě do centra oznámení může být hladce přeložena informační zprávou a aktualizací dlaždic, aniž by to vyžadovalo, aby se v něm dozvěděla. Některé platformy (například iOS) mohou sbalit více oznámení na stejné zařízení, pokud jsou odesílány v krátké době.
 
-## <a name="using-templates-for-personalization"></a>Pomocí šablon pro přizpůsobení
+## <a name="using-templates-for-personalization"></a>Použití šablon pro přizpůsobení
 
-Další výhodou použití šablony je schopnost provádět přizpůsobení za registraci oznámení pomocí Notification Hubs. Představte si třeba o počasí aplikaci, která se zobrazí dlaždice s počasí v konkrétním umístění. Může uživatel vybrat mezi stupních Celsia nebo Fahrenheita a jedné nebo pětidenního předpovědi. Pomocí šablon, každou instalaci klienta aplikace si můžou zaregistrovat formátu potřebném (1 den stupně Celsia, 1 den Fahrenheita, 5 dní ve stupních Celsia, 5 dní Fahrenheita kurzy), a back-endu odeslat zprávu, která obsahuje všechny informace potřebné k vyplnění těchto šablon (například pětidenního Prognózování s stupních Celsia a Fahrenheita).
+Další výhodou pro používání šablon je schopnost použít Notification Hubs k provedení individuálního nastavení oznámení v rámci registrace. Představte si například aplikaci počasí, která zobrazuje dlaždici s povětrnostními podmínkami na určitém místě. Uživatel si může vybrat mezi stupních Celsia nebo Fahrenheita a jednou nebo 5 dny. Pomocí šablon se může každá instalace klientské aplikace zaregistrovat pro požadovaný formát (1 den Celsia, 1 den v Fahrenheita, 5 dnů Celsia, 5 dní Fahrenheita) a mít back-end jednu zprávu, která obsahuje všechny informace potřebné k vyplnění těchto šablon. (například předpověď na pět dní se stupněm Celsia a Fahrenheita).
 
-Šablona pro předpověď jednodenní s ve stupních Celsia teploty vypadá takto:
+Šablona pro jeden den prognózy s teplotou Celsia je následující:
 
 ```xml
 <tile>
@@ -117,35 +119,35 @@ Zpráva odeslaná do centra oznámení obsahuje následující vlastnosti:
 </table><br/>
 ```
 
-Pomocí tohoto modelu back-endu pouze odešle do jedné zprávy bez nutnosti ukládat konkrétní nastavení možnosti pro uživatele aplikace. Následující obrázek ukazuje tento scénář:
+Při použití tohoto vzoru back-end pošle jenom jednu zprávu, aniž by museli ukládat konkrétní možnosti přizpůsobení pro uživatele aplikace. Tento scénář je znázorněný na následujícím obrázku:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## <a name="how-to-register-templates"></a>Postup registrace šablon
+## <a name="how-to-register-templates"></a>Postup při registraci šablon
 
-Zaregistrovat se šablonami pomocí Instalační model (upřednostňováno) nebo modelu zápisu, naleznete v tématu [Správa registrací](notification-hubs-push-notification-registration-management.md).
+Chcete-li provést registraci v šablonách pomocí modelu instalace (preferované) nebo registračního modelu, viz [Správa registrace](notification-hubs-push-notification-registration-management.md).
 
-## <a name="template-expression-language"></a>Výraz jazyka šablony
+## <a name="template-expression-language"></a>Jazyk výrazu šablony
 
-Šablony jsou omezené na formát dokumentu XML nebo JSON. Navíc můžete pouze umístit výrazy na konkrétní místech; například uzel atributy nebo hodnoty XML řetězec hodnoty vlastností pro formát JSON.
+Šablony jsou omezené na formáty dokumentů XML nebo JSON. Můžete také umístit výrazy na konkrétní místa; například atributy uzlu nebo hodnoty pro XML, hodnoty vlastností řetězce pro JSON.
 
-Jazyk povolené v šablonách naleznete v následující tabulce:
+V následující tabulce je uveden jazyk povolený v šablonách:
 
 | Výraz       | Popis |
 | ---------------- | --- |
-| $(prop)          | Odkaz na vlastnost události se zadaným názvem. Názvy vlastností nerozlišují malá a velká písmena. Tento výraz se přeloží do hodnoty vlastnosti text nebo na prázdný řetězec je-li vlastnost není k dispozici. |
-| $(prop, n)       | Jak je uvedeno výše ale text není explicitně oříznut n znaků, například $(title, 20) klipy obsah vlastnost názvu 20 znaků. |
-| . (prop, n)       | Jak je uvedeno výše ale text je přidán se třemi tečkami, jako je oříznut. Celková velikost řetězce zkrácený a přípony nepřekročí n znaků. . (název, 20) se vstupní vlastnost "Toto je název řádku" výsledků v **Toto je název...** |
-| %(Prop)          | Podobně jako $(name) s tím rozdílem, že je výstup kódovaný identifikátor URI. |
-| #(prop)          | Používá se v šablonách JSON (například pro iOS a Android šablony).<br><br>Tato funkce funguje stejně jako $(prop) dříve zadán, s výjimkou případů, když se používá v šablonách JSON (například Apple šablony). V tomto případě, pokud není tato funkce obklopený "{","}" (například myJsonProperty: "#(název)"), a je vyhodnocen jako číslo ve formátu jazyka Javascript, například regexp: (0&#124;(&#91;1 až 9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((elektronická&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, pak ve výstupu JSON je číslo.<br><br>Například "oznámení" BADGE ":"#(název)"se stane"badge": 40 (a ne 40). |
-| 'text' nebo "text" | Literál. Literály obsahují libovolný text v jednoduchých nebo dvojitých uvozovkách. |
-| expr1 + expr2    | Operátor zřetězení propojení dvou výrazů do jednoho řetězce. |
+| $ (Prop)          | Odkaz na vlastnost události se zadaným názvem. V názvech vlastností se nerozlišují velká a malá písmena. Tento výraz se přeloží na textovou hodnotu vlastnosti nebo do prázdného řetězce, pokud vlastnost není k dispozici. |
+| $ (Prop, n)       | Jak je uvedeno výše, ale text se explicitně ořízne n znaků, například $ (title, 20), ořízne obsah vlastnosti title o 20 znaků. |
+| . (Prop, n)       | Jak je uvedeno výše, ale text má příponu se třemi tečkami, jak je oříznutý. Celková velikost oříznutého řetězce a přípona nepřekračuje n znaků. . (title; 20) se vstupní vlastností "Toto je název řádku". Výsledkem je **název...** |
+| % (Prop)          | Podobně jako $ (název) s tím rozdílem, že výstup je kódovaný pomocí identifikátoru URI. |
+| # (Prop)          | Používá se v šablonách JSON (například pro šablony iOS a Android).<br><br>Tato funkce funguje úplně stejně jako $ (Prop) dřív, s výjimkou případů, kdy se používá v šablonách JSON (například šablony Apple). V takovém případě, pokud tato funkce není obklopena "{", "}" (například "myJsonProperty": "# (Name)") a vyhodnotí se jako číslo ve formátu JavaScriptu, například RegExp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, výstupní JSON je číslo.<br><br>Například ' BADGE ': ' # (Name) ' se bude ' BADGE ': 40 (a ne "40"). |
+| ' text ' nebo "text" | Literál. Literály obsahují libovolný text uzavřený v jednoduchých nebo dvojitých uvozovkách. |
+| Výraz1 + Výraz2    | Operátor zřetězení spojuje dva výrazy do jednoho řetězce. |
 
-Výraz může být některé z předchozích formuláře.
+Výrazy mohou být libovolné z předchozích forem.
 
-Při použití zřetězení, musí být v celý výraz s `{}`. Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Při použití zřetězení musí být celý výraz ohraničený pomocí `{}`. Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
-Například následující šablona není platnou šablonu XML:
+Například následující šablona není platnou šablonou XML:
 
 ```xml
 <tile>
@@ -157,7 +159,7 @@ Například následující šablona není platnou šablonu XML:
 </tile>
 ```
 
-Jak jsme vysvětlili výše, při použití zřetězení, musí být zabaleny výrazy do složených závorek. Příklad:
+Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zabaleny do složených závorek. Příklad:
 
 ```xml
 <tile>

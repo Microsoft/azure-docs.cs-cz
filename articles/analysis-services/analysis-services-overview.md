@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 81cda4648b97562e0ee557af0f28515d98a734b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073850"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240913"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -53,7 +53,7 @@ Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými 
 |Plán  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
-|B2    |    80     |    20     |
+|B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>Úroveň Standard
 
@@ -104,7 +104,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Západní Evropa    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Asie a Tichomoří 
+### <a name="asia-pacific"></a>Asie a Tichomoří 
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|

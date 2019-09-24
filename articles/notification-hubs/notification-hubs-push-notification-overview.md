@@ -1,9 +1,9 @@
 ---
 title: Co je Azure Notification Hubs?
 description: Přečtěte si, jak přidat funkce nabízených oznámení služby Azure Notification Hubs.
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: fcfb0ce8-0e19-4fa8-b777-6b9f9cdda178
@@ -14,13 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 04/30/2019
-ms.author: jowargo
-ms.openlocfilehash: 1ee50603886f76b0a54cee940e7644c401804078
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/30/2019
+ms.openlocfilehash: f92c9ac6942bfad8df57bb3887d1ba5b7c7190af
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610016"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213105"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Co je Azure Notification Hubs?
 
@@ -106,7 +108,7 @@ Centra oznámení jsou předem připravená jádra pro zasílání oznámení, k
 - **Zabezpečení**
   - K dispozici je sdílený tajný přístupový klíč (SAS) nebo federované ověření.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte s vytvářením a používáním centra oznámení pomocí tohoto [kurzu: Nabízená oznámení do mobilních](notification-hubs-android-push-notification-google-fcm-get-started.md)aplikací.
 

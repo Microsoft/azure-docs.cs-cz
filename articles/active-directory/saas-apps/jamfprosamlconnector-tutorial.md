@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c8a2fb278515306848f46206db67b7f37ea2ac
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034242"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212381"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Jamf pro
 
@@ -87,7 +87,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 1. Vyberte **nastavit další adresy URL**. Chcete-li nakonfigurovat aplikaci v režimu **iniciované SP** , zadejte do textového pole **Adresa URL pro přihlášení** adresu URL, která používá následující vzorec:`https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Zobrazí se skutečná hodnota identifikátoru z * oddíl **jednotného přihlašování** na portálu Jamf pro, který je vysvětlen dále v tomto kurzu. Z hodnoty identifikátoru můžete extrahovat skutečnou hodnotu subdomény a použít ji jako přihlašovací adresu URL a adresu URL odpovědi. Můžete se také podívat na vzorce zobrazené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Aktuální hodnotu identifikátoru získáte z oddílu **jednotného přihlašování** na portálu Jamf pro, který je vysvětlen dále v tomto kurzu. Z hodnoty identifikátoru můžete extrahovat skutečnou hodnotu subdomény a použít ji jako přihlašovací adresu URL a adresu URL odpovědi. Můžete se také podívat na vzorce zobrazené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete část **podpisový certifikát SAML** , vyberte tlačítko **Kopírovat** a zkopírujte **adresu URL federačních metadat aplikace**a uložte ji do svého počítače.
 

@@ -1,101 +1,103 @@
 ---
-title: Ověřování založené na tokenech (HTTP/2) pro služby APN ve službě Azure Notification Hubs | Dokumentace Microsoftu
-description: Toto téma vysvětluje, jak využít nový token ověřování pro služby APN
+title: Ověřování založené na tokenech (HTTP/2) pro službu APN v Azure Notification Hubs | Microsoft Docs
+description: Toto téma vysvětluje, jak využít nové ověřování tokenu pro APNS.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/13/2019
-ms.author: jowargo
-ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872321"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213116"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) pro služby APN
+# <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) na APNS
 
 ## <a name="overview"></a>Přehled
 
-Tento článek podrobně popisuje, jak používat nový protokol APNS HTTP/2 pomocí ověřování na základě tokenu.
+Tento článek podrobně popisuje použití nového protokolu HTTP/2 služby APN s ověřováním na základě tokenů.
 
-Klíčové výhody používání nového protokolu zahrnout:
+Mezi klíčové výhody použití nového protokolu patří:
 
-* Generování tokenů je poměrně starosti, (ve srovnání s certifikáty)
-* Žádná další data vypršení platnosti – máte pod kontrolou ověřovacích tokenů a jejich odvolání
-* Datové části se teď dá až 4 KB
-* Synchronní zpětnou vazbu
-* Už brzo budete od společnosti Apple nejnovější protokol – certifikáty dál používat binární protokol, který je označen pro odstranění
+* Generování tokenu je poměrně bezplatné (ve srovnání s certifikáty).
+* Žádná další data vypršení platnosti – máte kontrolu nad svými ověřovacími tokeny a jejich odvolání.
+* Datové vytížení teď můžou být až 4 KB.
+* Synchronní zpětná vazba
+* Pracujete na nejnovějším protokolu Apple – certifikáty pořád používají binární protokol, který je označený pro zastaralost.
 
-Pomocí tento nový mechanismus lze provést ve dvou krocích za pár minut:
+Použití tohoto nového mechanismu se dá udělat během několika minut ve dvou krocích:
 
-1. Získejte potřebné informace z portálu Apple Developer účtu
+1. Získání nezbytných informací z portálu Apple Developer Account
 2. Konfigurace centra oznámení s novými informacemi
 
-Modul Notification Hubs je teď nastavené a můžete používat nový systém ověřování s APNS.
+Notification Hubs je teď nastavená tak, aby používala nový ověřovací systém s APNS.
 
-Poznámka: Pokud jste migrovali ze pomocí přihlašovacích údajů certifikát služby APN:
+Všimněte si, že pokud jste migrovali z použití přihlašovacích údajů certifikátu pro APNS:
 
-* token vlastnosti přepsat vašeho certifikátu v našem systému
-* ale aplikace i nadále bez problémů přijímat oznámení.
+* vlastnosti tokenu přepíšou váš certifikát v našem systému.
+* ale vaše aplikace bude nadále přijímat oznámení bez problémů.
 
-## <a name="obtaining-authentication-information-from-apple"></a>Získávání informací o ověřování od společnosti Apple
+## <a name="obtaining-authentication-information-from-apple"></a>Získání ověřovacích informací od společnosti Apple
 
-Pokud chcete povolit ověřování pomocí tokenu, musíte z vašeho účtu vývojáře Apple následující vlastnosti:
+Pokud chcete povolit ověřování na základě tokenu, budete potřebovat následující vlastnosti z vašeho účtu Apple Developer:
 
 ### <a name="key-identifier"></a>Identifikátor klíče
 
-Identifikátor klíče můžete získat ze stránky "Klíče" v účtu Apple Developer
+Identifikátor klíče se dá získat ze stránky klíče ve vašem účtu Apple Developer.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier--application-name"></a>Identifikátor aplikace & název aplikace
 
-Název aplikace je k dispozici prostřednictvím App ID stránky v účtu pro vývojáře.
+Název aplikace je k dispozici prostřednictvím stránky ID aplikací v účtu vývojáře.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-Identifikátor aplikace je k dispozici prostřednictvím stránky podrobnosti o členství v účtu pro vývojáře.
+Identifikátor aplikace je k dispozici prostřednictvím stránky s podrobnostmi členství v účtu vývojáře.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
 ### <a name="authentication-token"></a>Ověřovací token
 
-Ověřovací token si můžete stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak generovat tento token [dokumentace Applu pro vývojáře](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+Ověřovací token se dá stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak vygenerovat tento token, najdete v [dokumentaci pro vývojáře společnosti Apple](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Konfigurace vašeho centra oznámení, která používá ověřování založené na tokenech
+## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Konfigurace centra oznámení pro použití ověřování založeného na tokenech
 
-### <a name="configure-via-the-azure-portal"></a>Konfigurace prostřednictvím webu Azure portal
+### <a name="configure-via-the-azure-portal"></a>Konfigurace prostřednictvím Azure Portal
 
-Pokud chcete povolit ověřování pomocí tokenu založené na portálu, přihlaste se k webu Azure portal a přejděte do vašeho centra oznámení > Notification Services > panely APNS.
+Pokud chcete na portálu povolit ověřování na základě tokenu, přihlaste se k Azure Portal a v centru oznámení > Notification Services > na panelu APNS.
 
-Existuje nová vlastnost – *režim ověřování*. Vyberte Token umožňuje aktualizovat vaše Centrum relevantní token vlastnosti.
+Je k dispozici nová vlastnost – *režim ověřování*. Výběr tokenu vám umožní aktualizovat centrum pomocí všech odpovídajících vlastností tokenu.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-* Zadejte vlastnosti, které jste získali z vašeho účtu vývojáře Apple
-* Zvolte režim vaší aplikace (produkční nebo izolovaného prostoru)
-* Klikněte na tlačítko **Uložit** tlačítko Aktualizovat přihlašovací údaje APNS
+* Zadejte vlastnosti, které jste načetli z účtu Apple Developer.
+* Výběr režimu aplikace (produkční nebo izolovaný režim)
+* Kliknutím na tlačítko **Uložit** aktualizujte přihlašovací údaje služby APN.
 
-### <a name="configure-via-management-api-rest"></a>Konfigurace prostřednictvím rozhraní API (REST) pro správu
+### <a name="configure-via-management-api-rest"></a>Konfigurace přes rozhraní API pro správu (REST)
 
-Můžete použít naši [rozhraní API pro správu](https://msdn.microsoft.com/library/azure/dn495827.aspx) aktualizovat vaše Centrum oznámení, která používá ověřování založené na tokenech.
-V závislosti na tom, zda aplikace, kterou konfigurujete je izolovaný prostor nebo produkčního prostředí (zadané v účtu Apple Developer) použijte jeden z odpovídající koncových bodů:
+Pomocí našich [rozhraní API pro správu](https://msdn.microsoft.com/library/azure/dn495827.aspx) můžete aktualizovat centrum oznámení tak, aby používalo ověřování založené na tokenech.
+V závislosti na tom, jestli je aplikace, kterou konfigurujete, v izolovaném prostoru nebo v produkční aplikaci (zadané v účtu Apple Developer), použijte jeden z odpovídajících koncových bodů:
 
-* Koncový bod izolovaného prostoru: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Produkční koncový bod: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+* Koncový bod izolovaného prostoru:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+* Produkční koncový bod:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
-> Ověřování založené na tokenech, musíte jako verzi rozhraní API: **2017-04 nebo novější**.
+> Ověřování založené na tokenech vyžaduje rozhraní API verze: **2017-04 nebo novější**.
 
-Tady je příklad požadavku PUT aktualizovat Centrum ověřování pomocí tokenu:
+Tady je příklad žádosti PUT o aktualizaci centra pomocí ověřování založeného na tokenech:
 
     ```text
     PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -114,9 +116,9 @@ Tady je příklad požadavku PUT aktualizovat Centrum ověřování pomocí toke
 
 ### <a name="configure-via-the-net-sdk"></a>Konfigurace prostřednictvím sady .NET SDK
 
-Můžete nakonfigurovat centrem určený pomocí tokenu ověřování na základě našich [nejnovější Klientská sada SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
+Centrum můžete nakonfigurovat tak, aby používalo ověřování založené na tokenech, a to s využitím [nejnovější klientské sady SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
 
-Tady je ukázka kódu ilustrující správné použití:
+Zde je ukázka kódu ilustrující správné použití:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -130,6 +132,6 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Návrat k použití ověřování pomocí certifikátů
+## <a name="reverting-to-using-certificate-based-authentication"></a>Vrácení zpět se změnami pomocí ověřování na základě certifikátu
 
-Kdykoli můžete vrátit zpět k používání ověřování pomocí certifikátů pomocí libovolné metody předchozí a předáním certifikátu místo token vlastností. Tato akce přepíše dříve uložené přihlašovací údaje.
+Kdykoli se můžete vrátit k použití ověřování založeného na certifikátech, a to pomocí předchozí metody a předáním certifikátu namísto vlastností tokenu. Tato akce přepíše dříve uložené přihlašovací údaje.

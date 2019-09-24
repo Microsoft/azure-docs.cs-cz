@@ -1,11 +1,11 @@
 ---
-title: Jak používat Notification Hubs s Javou
-description: Zjistěte, jak používat Azure Notification Hubs z back endem v Javě.
+title: Použití Notification Hubs s jazykem Java
+description: Naučte se používat Azure Notification Hubs z back-endu Java.
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4c3f966d-0158-4a48-b949-9fa3666cb7e4
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,37 +13,39 @@ ms.tgt_pltfrm: java
 ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 993eafd5a0b74be706d13fe8e06483c223f81eb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461200"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213204"
 ---
-# <a name="how-to-use-notification-hubs-from-java"></a>Jak používat Notification Hubs z Javy
+# <a name="how-to-use-notification-hubs-from-java"></a>Použití Notification Hubs z Java
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Toto téma popisuje klíčové funkce nové plně podporované oficiální Azure Notification Hub Java SDK.
-Tento projekt je projekt open source a je možné zobrazit celý kód SDK na [Java SDK].
+Toto téma popisuje klíčové funkce nové plně podporované oficiální sady SDK pro centra oznámení Azure.
+Tento projekt je open source projekt a celý kód sady SDK si můžete prohlédnout v [Java SDK].
 
-Obecně platí, dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje obálku dynamického zajišťování prostřednictvím těchto rozhraní REST v jazyce Java.
+Obecně platí, že ke všem funkcím Notification Hubs máte přístup z back-endu Java/PHP/Python/Ruby pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje na těchto rozhraních REST v jazyce Java tenké obálky.
 
-Sady SDK v současné době podporuje:
+Sada SDK aktuálně podporuje:
 
-* CRUD do Notification Hubs
-* CRUD registrací
-* Instalace správy
-* Import/Export registrace
-* Pravidelně zasílá
-* Naplánované odešle
-* Asynchronní operace prostřednictvím Java NIO
-* Podporované platformy: APNS (iOS), FCM (Android), služby nabízených oznámení Windows (aplikace pro Windows Store), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez služby Google)
+* CRUD při Notification Hubs
+* CRUD při registracích
+* Správa instalace
+* Registrace importu/exportu
+* Pravidelná odeslání
+* Plánovaná odeslání
+* Asynchronní operace přes Java NIO
+* Podporované platformy: APNS (iOS), FCM (Android), WNS (Windows Store apps), MPNS (Windows Phone), ADM (Amazon Kindle požár), Baidu (Android bez služeb Google)
 
-## <a name="sdk-usage"></a>Použití sady SDK
+## <a name="sdk-usage"></a>Využití sady SDK
 
-### <a name="compile-and-build"></a>Kompilace a buildu
+### <a name="compile-and-build"></a>Kompilovat a sestavit
 
 Použití [Maven]
 
@@ -53,15 +55,15 @@ Sestavení:
 
 ## <a name="code"></a>Kód
 
-### <a name="notification-hub-cruds"></a>CRUDs centra oznámení
+### <a name="notification-hub-cruds"></a>CRUD centra oznámení
 
-**Vytvoření NamespaceManager:**
+**Vytvořte NamespaceManager:**
 
     ```java
     NamespaceManager namespaceManager = new NamespaceManager("connection string")
     ```
 
-**Vytvoření centra oznámení:**
+**Vytvořit centrum oznámení:**
 
     ```java
     NotificationHubDescription hub = new NotificationHubDescription("hubname");
@@ -75,34 +77,34 @@ Sestavení:
     hub = new NotificationHub("connection string", "hubname");
     ```
 
-**Získáte Centrum oznámení:**
+**Získat centrum oznámení:**
 
     ```java
     hub = namespaceManager.getNotificationHub("hubname");
     ```
 
-**Aktualizujte Centrum oznámení:**
+**Aktualizace Centra oznámení:**
 
     ```java
     hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
     hub = namespaceManager.updateNotificationHub(hub);
     ```
 
-**Odstraňte Centrum oznámení:**
+**Odstranit centrum oznámení:**
 
     ```java
     namespaceManager.deleteNotificationHub("hubname");
     ```
 
-### <a name="registration-cruds"></a>Registrace CRUDs
+### <a name="registration-cruds"></a>Registrace CRUD
 
-**Vytvoření centra oznámení klienta:**
+**Vytvoření klienta centra oznámení:**
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
     ```
 
-**Vytvoření registrace Windows:**
+**Vytvořit registraci systému Windows:**
 
     ```java
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
@@ -111,7 +113,7 @@ Sestavení:
     hub.createRegistration(reg);
     ```
 
-**Vytvoření registrace iOS:**
+**Vytvořit registraci iOS:**
 
     ```java
     AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
@@ -120,9 +122,9 @@ Sestavení:
     hub.createRegistration(reg);
     ```
 
-Podobně můžete vytvořit registrace Androidu (FCM), Windows Phone (MPNS) a Kindle Fire (ADM).
+Podobně můžete vytvořit registrace pro Android (FCM), Windows Phone (MPNS) a Kindle Fire (ADM).
 
-**Vytvořte šablonu registrace:**
+**Vytváření registrací šablon:**
 
     ```java
     WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
@@ -130,9 +132,9 @@ Podobně můžete vytvořit registrace Androidu (FCM), Windows Phone (MPNS) a Ki
     hub.createRegistration(reg);
     ```
 
-**Vytvoření registrace pomocí vytvoření ID registrace + upsert vzoru:**
+**Vytvoření registrací pomocí vytvoření ID registrace + vzor Upsert:**
 
-Odebere duplicitní položky z důvodu žádné ztráty odpovědi, pokud ukládání ID registrací zařízení:
+Odebere duplicity z důvodu jakýchkoli ztracených odpovědí, pokud se v zařízení ukládají ID registrace:
 
     ```java
     String id = hub.createRegistrationId();
@@ -140,62 +142,62 @@ Odebere duplicitní položky z důvodu žádné ztráty odpovědi, pokud uklád�
     hub.upsertRegistration(reg);
     ```
 
-**Aktualizace registrace:**
+**Registrace aktualizací:**
 
     ```java
     hub.updateRegistration(reg);
     ```
 
-**Odstraňte registrace:**
+**Odstranit registrace:**
 
     ```java
     hub.deleteRegistration(regid);
     ```
 
-**Registrace dotazu:**
+**Registrace dotazů:**
 
-* **Získejte jednotné registrace:**
+* **Získat jednu registraci:**
 
     ```java
     hub.getRegistration(regid);
     ```
 
-* **Získáte všechny registrace v centru:**
+* **Získat všechny registrace v centru:**
 
     ```java
     hub.getRegistrations();
     ```
 
-* **Získání registrace pomocí značky:**
+* **Získat registrace se značkou:**
 
     ```java
     hub.getRegistrationsByTag("myTag");
     ```
 
-* **Získáte registrace kanálu:**
+* **Získat registrace podle kanálu:**
 
     ```java
     hub.getRegistrationsByChannel("devicetoken");
     ```
 
-Všechny dotazy sběr dat podporují tokeny $top a pokračování.
+Všechny dotazy kolekce podporují tokeny $top a pokračování.
 
-### <a name="installation-api-usage"></a>Instalace rozhraní API využití
+### <a name="installation-api-usage"></a>Využití rozhraní API instalace
 
-Instalace rozhraní API je alternativní mechanismus pro správu registrace. Namísto zachování více registrace, které nejsou jednoduchého dotazu a může snadno provést nesprávně nebo neefektivně, je nyní možné použít objekt jedna instalace.
+Rozhraní API pro instalaci je alternativním mechanismem pro správu registrací. Místo udržování více registrů, které nejsou triviální a je možné je snadno provést nesprávně nebo neefektivně, je nyní možné použít jeden objekt instalace.
 
-Instalace obsahuje všechno, co potřebujete: push kanálu (token zařízení), značky, šablony, sekundární dlaždice (pro služby nabízených oznámení Windows a APNS). Není nutné volat službu k získání ID už – právě generovat identifikátor GUID nebo jakýkoli jiný identifikátor, uchovávejte na zařízení a odeslat do back-endu spolu s nabízenou kanálu (token zařízení).
+Instalace obsahuje všechno, co potřebujete: kanál push (token zařízení), značky, šablony, sekundární dlaždice (pro WNS a APNS). Službu nemusíte volat, abyste mohli získat ID. můžete tak vygenerovat GUID nebo jakýkoli jiný identifikátor, ponechat ho v zařízení a poslat do back-endu společně s kanálem push (token zařízení).
 
-Na back-endu, byste měli dělat jenom jedním voláním metody `CreateOrUpdateInstallation`; je plně idempotentní, takže můžete bez obav opakovat v případě potřeby.
+V back-endu byste měli provést pouze jedno volání `CreateOrUpdateInstallation`. je plně idempotentní, takže v případě potřeby to zkuste znovu.
 
-Jako příklad pro Amazon Kindle Fire.
+Příklad pro službu Amazon Kindle Fire:
 
     ```java
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
     ```
 
-Pokud chcete ji aktualizovat:
+Pokud ji chcete aktualizovat:
 
     ```java
     installation.addTag("foo");
@@ -204,7 +206,7 @@ Pokud chcete ji aktualizovat:
     hub.createOrUpdateInstallation(installation);
     ```
 
-Pro pokročilé scénáře použijte částečnou aktualizaci schopnost, která umožňuje upravit pouze určité vlastnosti objektu instalace. Částečné aktualizace jsou podmnožinou operace oprava JSON, které je možné spustit proti objektu instalace.
+V případě pokročilých scénářů použijte možnost částečné aktualizace, která umožňuje změnit pouze konkrétní vlastnosti objektu instalace. Částečná aktualizace je podmnožinou operací opravy JSON, které lze spustit proti instalačnímu objektu.
 
     ```java
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
@@ -213,15 +215,15 @@ Pro pokročilé scénáře použijte částečnou aktualizaci schopnost, která 
     hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
     ```
 
-Odstraňte instalace:
+Odstranit instalaci:
 
     ```java
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`, a `Delete` jsou konzistentní s `Get`. Požadovaná operace stačí přejde do fronty systému během volání a je proveden v pozadí. Get není určen pro scénář hlavní modulu runtime, ale pouze pro ladění a odstraňování potíží, bude úzce omezený službou.
+`CreateOrUpdate`, `Patch` `Get`a `Delete` jsou nakonec konzistentní s. Vaše požadovaná operace při volání přejde do fronty systému a spustí se na pozadí. Operace Get není navržena pro hlavní scénář modulu runtime, ale pouze pro účely ladění a řešení potíží je tato služba pevně omezená.
 
-Odeslat toku pro instalace je stejná jako registrace. Cílení na konkrétní instalaci oznámení – stačí použít značku "InstallationId: {desired-id}". V takovém případě je kód:
+Tok odeslání pro instalace je stejný jako u registrací. Chcete-li směrovat oznámení na konkrétní instalaci, stačí použít značku InstallationId: {požadovaného-ID}. V tomto případě kód je:
 
     ```java
     Notification n = Notification.createWindowsNotification("WNS body");
@@ -237,11 +239,11 @@ Pro jednu z několika šablon:
     hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
     ```
 
-### <a name="schedule-notifications-available-for-standard-tier"></a>Naplánovat oznámení (k dispozici pro úroveň STANDARD)
+### <a name="schedule-notifications-available-for-standard-tier"></a>Oznámení plánu (k dispozici pro úroveň STANDARD)
 
-Stejné jako regulární odeslat, ale jeden další parametr - hodnotou scheduledTime, která uvádí, že pokud má se doručit oznámení. Služba přijímá libovolný bod v čase mezi now + 5 minut a nyní + 7 dní.
+Stejné jako běžné odeslání, ale s jedním dalším parametrem-scheduledTime, který říká, kdy by mělo být doručeno oznámení. Služba akceptuje libovolný časový okamžik mezi teď + 5 minutami a teď + 7 dny.
 
-**Plán nativní oznámení Windows:**
+**Naplánování nativního oznámení systému Windows:**
 
     ```java
     Calendar c = Calendar.getInstance();
@@ -252,9 +254,9 @@ Stejné jako regulární odeslat, ale jeden další parametr - hodnotou schedule
 
 ### <a name="importexport-available-for-standard-tier"></a>Import/Export (k dispozici pro úroveň STANDARD)
 
-Budete muset provést hromadné operace s registrací. Obvykle je pro integraci s jiným systémem nebo masivní opravy aktualizace značky. Nedoporučujeme používat tok získání/aktualizaci, pokud se podílejí tisíce registrací. Funkce importu/exportu v systému je navržená pro tento scénář. V rámci vašeho účtu úložiště budete poskytovat přístup ke kontejneru objektů blob jako zdroj příchozích dat a umístění pro výstup.
+Je možné, že budete muset provést hromadnou operaci s registracemi. Obvykle se jedná o integraci s jiným systémem nebo obrovskými opravami, které tyto značky aktualizují. V případě, že jsou zapojeny tisíce registrací, nedoporučujeme používat tok Get/Update. Funkce importu/exportu v systému je navržena tak, aby pokryla scénář. Jako zdroj příchozích dat a umístění pro výstup budete poskytovat přístup k kontejneru objektů BLOB v účtu úložiště.
 
-**Odeslání úlohy exportu:**
+**Odeslat úlohu exportu:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -263,7 +265,7 @@ Budete muset provést hromadné operace s registrací. Obvykle je pro integraci 
     job = hub.submitNotificationHubJob(job);
     ```
 
-**Odeslání úlohy importu:**
+**Odeslat úlohu importu:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -273,7 +275,7 @@ Budete muset provést hromadné operace s registrací. Obvykle je pro integraci 
     job = hub.submitNotificationHubJob(job);
     ```
 
-**Počkejte, dokud se provádí úlohy:**
+**Počkejte na dokončení úlohy:**
 
     ```java
     while(true){
@@ -284,7 +286,7 @@ Budete muset provést hromadné operace s registrací. Obvykle je pro integraci 
     }
     ```
 
-**Získá všechny úlohy:**
+**Získat všechny úlohy:**
 
     ```java
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
@@ -292,13 +294,13 @@ Budete muset provést hromadné operace s registrací. Obvykle je pro integraci 
 
 **Identifikátor URI s podpisem SAS:**
 
- Tato adresa URL je adresa URL souboru objektu blob nebo kontejneru objektů blob a sadu parametrů, jako jsou oprávnění a čas vypršení platnosti a podpis těchto věcí, které bylo vytvořeno s použitím klíče SAS účtu. Azure Java SDK úložiště má bohaté možnosti, jako je vytváření těchto identifikátorů URI. Jednoduché alternativou, podívejte se na `ImportExportE2E` testovací třídy (od Githubu umístění), která obsahuje základní a compact provádění podpisový algoritmus.
+ Tato adresa URL je adresa URL souboru objektu BLOB nebo kontejneru objektů BLOB a sady parametrů, jako jsou oprávnění a doba vypršení platnosti, a navíc signatura všech těchto věcí pomocí klíče SAS účtu. Azure Storage Java SDK obsahuje bohatě funkční možnosti včetně vytváření těchto identifikátorů URI. Jako jednoduchá alternativa se podíváme `ImportExportE2E` na třídu testu (z umístění GitHubu), která má základní a kompaktní implementaci podpisového algoritmu.
 
-### <a name="send-notifications"></a>Odesílání oznámení
+### <a name="send-notifications"></a>Odeslat oznámení
 
-Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomáhají při vytváření objektů nativní a šablonu oznámení.
+Objekt oznámení je jednoduše tělo se záhlavími. některé obslužné metody vám pomůžou při sestavování nativních objektů oznámení a šablon.
 
-* **Windows Store a Windows Phone 8.1 (bez Silverlight)**
+* **Windows Store a Windows Phone 8,1 (ne Silverlight)**
 
     ```java
     String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
@@ -322,7 +324,7 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
     hub.sendNotification(n);
     ```
 
-* **Windows Phone 8.0 a 8.1 Silverlight**
+* **Windows Phone 8,0 a 8,1 Silverlight**
 
     ```java
     String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -335,7 +337,7 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
     hub.sendNotification(n);
     ```
 
-* **Kindle Fire**
+* **Kindle požár**
 
     ```java
     String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
@@ -343,7 +345,7 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
     hub.sendNotification(n);
     ```
 
-* **Odeslání se značkami**
+* **Odeslat do značek**
   
     ```java
     Set<String> tags = new HashSet<String>();
@@ -352,13 +354,13 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
     hub.sendNotification(n, tags);
     ```
 
-* **Odeslat do výrazu značky**
+* **Výraz odeslání do značky**
 
     ```java
     hub.sendNotification(n, "foo && ! bar");
     ```
 
-* **Odeslání šablony oznámení**
+* **Odeslat oznámení šablony**
 
     ```java
     Map<String, String> prop =  new HashMap<String, String>();
@@ -368,25 +370,25 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
     hub.sendNotification(n);
     ```
 
-Spouštění kódu Java by měl nyní vytvořit oznámení uvedených na cílovém zařízení.
+Spuštění kódu Java by teď mělo vytvořit oznámení na cílovém zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Toto téma vám ukázal vytvoření jednoduchého klienta REST Javy pro Notification Hubs. Odsud můžete:
+Toto téma ukazuje, jak vytvořit jednoduchého klienta Java REST pro Notification Hubs. Tady můžete:
 
-* Stáhněte si kompletní [Java SDK], který obsahuje celý kód SDK.
-* Pohrajte si s ukázky:
+* Stáhněte si úplnou [Java SDK]obsahující celý kód sady SDK.
+* Začněte s ukázkami:
   * [Začínáme s Notification Hubs]
-  * [Odesílání mimořádných zpráv]
-  * [Odesílání lokalizovaných mimořádných zpráv]
+  * [Poslat novinky]
+  * [Odeslat lokalizované novinky]
   * [Odesílání oznámení ověřeným uživatelům]
-  * [Odesílání oznámení napříč platformami ověřeným uživatelům]
+  * [Odesílání oznámení mezi platformami ověřeným uživatelům]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Začínáme s Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Odesílání mimořádných zpráv]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Odesílání lokalizovaných mimořádných zpráv]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+[Poslat novinky]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Odeslat lokalizované novinky]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Odesílání oznámení ověřeným uživatelům]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Odesílání oznámení napříč platformami ověřeným uživatelům]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Odesílání oznámení mezi platformami ověřeným uživatelům]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Maven]: https://maven.apache.org/

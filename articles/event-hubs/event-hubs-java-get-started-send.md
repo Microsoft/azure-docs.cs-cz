@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967616"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219428"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs
 
@@ -181,11 +181,11 @@ Chcete-li použít EventProcessorHost, musíte mít účet [Azure Storage] [Azur
 1. Přihlaste se [Azure Portal](https://portal.azure.com)a na levé straně obrazovky vyberte **vytvořit prostředek** .
 2. Vyberte **úložiště**a pak vyberte **účet úložiště**. V **vytvořit účet úložiště** okno, zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
    
-    ![Vytvoření účtu úložiště](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Vytvořte účet úložiště v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Vyberte nově vytvořený účet úložiště a pak vyberte **přístupové klíče**:
    
-    ![Získání přístupových klíčů](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Získání přístupových klíčů v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Zkopírujte hodnotu key1 do dočasného umístění. Použijete ho později v tomto kurzu.
 
@@ -421,7 +421,7 @@ Můžete použít libovolné úložiště dat, která je k dispozici ve vašem p
 Třída com.microsoft.azure.eventprocessorhost.EventProcessorHost vám poskytne dva konstruktory, které umožňují kontrolního bodu správce pro vaše EventProcessorHost override.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články: 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

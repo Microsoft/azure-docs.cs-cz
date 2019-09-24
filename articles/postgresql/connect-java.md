@@ -8,12 +8,12 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: b025315391ceb15fc1ae76f0365898f02882dd0b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: b729881d30248bb4c3a717d70009cd68da91cf94
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563442"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211836"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý start: Použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for PostgreSQL – jeden server
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace jazyka Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
@@ -34,7 +34,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-java/1-connection-string.png)
+ ![Název serveru Azure Database for PostgreSQL](./media/connect-java/azure-database-postgresql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
 Pomocí následujícího kódu se připojte a načtěte do databáze data s využitím funkce s příkazem **INSERT** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) slouží k připojení k databázi, odstranění tabulky a vytvoření tabulky. Objekt [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) slouží k sestavení příkazů INSERT a metody setString() a setInt() k vázání hodnot parametrů. Metoda [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) spouští příkaz pro každou sadu parametrů. 
@@ -383,6 +383,6 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)

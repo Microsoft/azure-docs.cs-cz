@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 04d81f8e16a3f34f7abf15c9606833002fafb39c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a9992fbaa20b0137fd503992fc9efba11c2dfd3b
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034532"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213505"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -223,9 +223,9 @@ Pokud chcete použít image z __privátního registru kontejnerů__ , který nen
 
 ```python
 # Set the container registry information
-myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
-myenv.docker.base_image_repository.username = "username"
-myenv.docker.base_image_repository.password = "password"
+myenv.docker.base_image_registry.address = "myregistry.azurecr.io"
+myenv.docker.base_image_registry.username = "username"
+myenv.docker.base_image_registry.password = "password"
 ```
 
 Po definování prostředí jej pomocí objektu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) definujte odvozená prostředí, ve kterém se model a webová služba spustí.
@@ -278,7 +278,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 Další informace o nasazení modelu pomocí rozhraní příkazového řádku (ML) najdete v části "registrace modelů, profilace a nasazení" v [rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) článek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [tom, kde nasadit a jak](how-to-deploy-and-where.md).
 * Naučte se [, jak pomocí Azure Pipelines naučit a nasazovat modely strojového učení](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

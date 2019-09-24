@@ -4,9 +4,9 @@ description: V tomto kurzu se naučíte používat služby Azure Notification Hu
 services: notification-hubs
 documentationcenter: android
 keywords: nabízená oznámení;nabízené oznámení;nabízené oznámení Android
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,20 +15,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063636"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212358"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> Od 10. dubna 2018 se nepoužívá Google Google Cloud Messaging (GCM). Na serveru GCM a klientských rozhraní API jsou zastaralé a odeberou se co nejdříve 29. května 2019. Další informace najdete v tématu [GCM a FCM – nejčastější dotazy](https://developers.google.com/cloud-messaging/faq).
+> Od 10. dubna 2018 má Google zastaralé Google Cloud Messaging (GCM). GCM Server a klientská rozhraní API jsou zastaralá a budou se odebírat hned jako 29. května 2019. Další informace najdete v článku [Nejčastější dotazy k GCM a FCM](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Přehled
 
@@ -36,7 +38,7 @@ V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání n
 Vytvoříte prázdnou aplikaci pro Android, která přijímá nabízená oznámení službou Google Cloud Messaging (GCM).
 
 > [!IMPORTANT]
-> Google Cloud Messaging (GCM) je zastaralá a bude odebrána [brzy](https://developers.google.com/cloud-messaging/faq).
+> Google Cloud Messaging (GCM) je zastaralá a bude [brzy](https://developers.google.com/cloud-messaging/faq)odebrána.
 
 > [!IMPORTANT]
 > Toto téma popisuje nabízená oznámení ve službě Google Cloud Messaging (GCM). Pokud používáte Firebase Cloud Messaging (FCM) od Googlu, přečtěte si článek [Odesílání nabízených oznámení do systému Android pomocí služeb Azure Notification Hubs a FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
@@ -53,7 +55,7 @@ V tomto kurzu provedete následující akce:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/) předtím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Vytvoření projektu, který podporuje službu GCM (Google Cloud Messaging)
@@ -66,7 +68,7 @@ V tomto kurzu provedete následující akce:
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>Konfigurace nastavení GCM pro centrum oznámení
 
-1. Vyberte **Google (GCM)** v **nastavení oznámení**.
+1. V **Nastavení oznámení**vyberte **Google (GCM)** .
 2. Zadejte **klíč API**, který jste získali z Google Cloud Console.
 3. Na panelu nástrojů vyberte **Uložit**.
 
@@ -108,7 +110,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     }
     ```
 
-### <a name="updating-the-projects-androidmanifestxml"></a>Aktualizace souboru AndroidManifest.xml v projektu
+### <a name="updating-the-projects-androidmanifestxml"></a>Aktualizuje se souboru AndroidManifest. XML projektu.
 
 1. Aby bylo možné podporovat GCM, implementujte do kódu, který se používá k [získání registračních tokenů](https://developers.google.com/cloud-messaging/) službu naslouchání ID instance. Použijte k tomu [rozhraní API ID instance od Googlu](https://developers.google.com/instance-id/). V tomto kurzu je název třídy `MyInstanceIDService`.
 
@@ -164,9 +166,9 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 
     V následujícím kódu třídy `NotificationSettings` aktualizujte tyto tři zástupné symboly:
 
-   * `SenderId`: Číslo projektu, který jste získali výše [Google Cloud Console](https://cloud.google.com/console).
-   * `HubListenConnectionString`: `DefaultListenAccessSignature` Připojovací řetězec centra. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
-   * `HubName`: Použijte název, který se zobrazí na stránce centra v centru oznámení [Azure Portal].
+   * `SenderId`: Číslo projektu, které jste získali dříve v [konzole Google Cloud](https://cloud.google.com/console).
+   * `HubListenConnectionString`: `DefaultListenAccessSignature` Připojovací řetězec pro vaše centrum. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
+   * `HubName`: Použijte název centra oznámení, které se zobrazí na stránce centra v [Azure Portal].
 
      Kód `NotificationSettings`:
 
@@ -712,7 +714,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     }
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovaným back-endem. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s Androidem, pokračujte následujícím kurzem:  
 

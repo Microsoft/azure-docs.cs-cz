@@ -11,20 +11,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200101"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218304"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
 V tomto článku se dozvíte, jak vytvořit Azure Machine Learning datové sady (Preview) a jak přistupovat k datům z místních nebo vzdálených experimentů.
 
-S Azure Machine Learningmi datovými sadami můžete: 
+S Azure Machine Learningmi datovými sadami můžete:
 
-* V úložišti, na který odkazují datové sady, **uchovejte jednu kopii dat** . 
+* V úložišti, na který odkazují datové sady, **uchovejte jednu kopii dat** .
 
 * **Snadný přístup k datům během školení k modelu** bez obav o připojovací řetězce nebo cesty k datům.
 
@@ -45,7 +45,7 @@ K vytváření a práci s datovými sadami potřebujete:
 
 ## <a name="dataset-types"></a>Typy datových sad
 
-Datové sady jsou rozdělené do dvou typů podle toho, jak je uživatelé využívají při školení. 
+Datové sady jsou rozdělené do dvou typů podle toho, jak je uživatelé využívají při školení.
 
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do datového rámce PANDAS nebo Sparku. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší [dokumentaci](https://aka.ms/tabulardataset-api-reference).
 
@@ -53,7 +53,7 @@ Datové sady jsou rozdělené do dvou typů podle toho, jak je uživatelé využ
 
 Další informace o nadcházejících změnách rozhraní API najdete [tady](https://aka.ms/tabular-dataset).
 
-## <a name="create-datasets"></a>Vytvoření datových sad 
+## <a name="create-datasets"></a>Vytvoření datových sad
 
 Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
 
@@ -81,9 +81,9 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>Vytvořit TabularDatasets
 
-TabularDatasets se dá vytvořit prostřednictvím sady SDK nebo pomocí cílové stránky pracovního prostoru (Preview). Časové razítko se dá určit ze sloupce v datech nebo se data vzoru cesty ukládají do, aby se povolila vlastnost časové řady, která umožňuje snadné a efektivní filtrování podle času. 
+TabularDatasets se dá vytvořit prostřednictvím sady SDK nebo pomocí cílové stránky pracovního prostoru (Preview). Časové razítko se dá určit ze sloupce v datech nebo se data vzoru cesty ukládají do, aby se povolila vlastnost časové řady, která umožňuje snadné a efektivní filtrování podle času.
 
-#### <a name="using-the-sdk"></a>Použití sady SDK 
+#### <a name="using-the-sdk"></a>Použití sady SDK
 
 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) Použijte`TabularDatasetFactory` metodu třídy pro čtení souborů ve formátu CSV nebo TSV a vytvořte neregistrované TabularDataset. Pokud čtete z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění.
 
@@ -120,7 +120,7 @@ from azureml.core import Dataset, Datastore
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
-Použijte metodu pro `TabularDataset` třídu k umožnění snadného a efektivního filtrování podle času. [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) Další příklady a podrobnosti najdete [tady](http://aka.ms/azureml-tsd-notebook). 
+Použijte metodu pro `TabularDataset` třídu k umožnění snadného a efektivního filtrování podle času. [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) Další příklady a podrobnosti najdete [tady](https://aka.ms/azureml-tsd-notebook).
 
 ```Python
 # create a TabularDataset with timeseries trait
@@ -132,20 +132,20 @@ dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_form
 # set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
 dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
 
-# filter with timeseries trait specific methods 
+# filter with timeseries trait specific methods
 data_slice = dataset.time_before(datetime(2019, 1, 1))
 data_slice = dataset.time_after(datetime(2019, 1, 1))
-data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
-data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="using-the-workspace-landing-page"></a>Použití úvodní stránky pracovního prostoru 
+#### <a name="using-the-workspace-landing-page"></a>Použití úvodní stránky pracovního prostoru
 
 Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com) , abyste mohli vytvořit datovou sadu přes webové prostředí. V současné době cílová stránka pracovního prostoru podporuje pouze vytváření TabularDatasets.
 
-Následující animace ukazuje, jak vytvořit datovou sadu na úvodní stránce pracovního prostoru. 
+Následující animace ukazuje, jak vytvořit datovou sadu na úvodní stránce pracovního prostoru.
 
-Nejprve v levém podokně vyberte v části **assets (prostředky) datové** **sady** . Pak vyberte **+ vytvořit datovou sadu** a zvolte zdroj vaší datové sady; může to být buď místní soubory, úložiště dat nebo veřejné webové adresy URL. Formuláře **nastavení a verze Preview** a **schématu** se inteligentně vyplní podle typu souboru. Vyberte **Další** , abyste je zkontrolovali nebo chcete ještě před vytvořením datovou sadu nakonfigurovat. Pokud chcete dokončit vytváření datové sady, vyberte **Hotovo** . 
+Nejprve v levém podokně vyberte v části **assets (prostředky) datové** **sady** . Pak vyberte **+ vytvořit datovou sadu** a zvolte zdroj vaší datové sady; může to být buď místní soubory, úložiště dat nebo veřejné webové adresy URL. Formuláře **nastavení a verze Preview** a **schématu** se inteligentně vyplní podle typu souboru. Vyberte **Další** , abyste je zkontrolovali nebo chcete ještě před vytvořením datovou sadu nakonfigurovat. Pokud chcete dokončit vytváření datové sady, vyberte **Hotovo** .
 
 ![Vytvoření datové sady pomocí uživatelského rozhraní](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -166,7 +166,7 @@ animal_ds = Dataset.File.from_files(path=datastore_paths)
 web_paths = [
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]          
+           ]
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -183,11 +183,11 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 >[!Note]
-> Datové sady vytvořené prostřednictvím cílové stránky pracovního prostoru jsou automaticky registrovány v pracovním prostoru. 
+> Datové sady vytvořené prostřednictvím cílové stránky pracovního prostoru jsou automaticky registrovány v pracovním prostoru.
 
 ## <a name="version-datasets"></a>Datové sady verze
 
-Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nové verze. Verze datové sady je způsob, jak můžete založit stav dat, abyste mohli použít určitou verzi datové sady pro experimentování nebo budoucí rozmnožování. Typické scénáře použití správy verzí: 
+Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nové verze. Verze datové sady je způsob, jak můžete založit stav dat, abyste mohli použít určitou verzi datové sady pro experimentování nebo budoucí rozmnožování. Typické scénáře použití správy verzí:
 * Když jsou nová data dostupná pro rekurzi.
 * Při použití různých přístupů k přípravě dat nebo analýze funkcí.
 
@@ -196,7 +196,7 @@ Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nov�
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]          
+           ]
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

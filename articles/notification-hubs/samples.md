@@ -1,25 +1,27 @@
 ---
-title: Ukázky Azure Notification Hubs
-description: Seznam dostupné sady SDK Azure Notification Hubs
+title: Ukázky pro Azure Notification Hubs
+description: Seznam dostupných sad SDK pro Azure Notification Hubs
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: jowargo
 ms.date: 03/28/2019
-ms.openlocfilehash: 1d035513418147b8fae1d8e2f217d20d19f02f2e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/28/2019
+ms.openlocfilehash: 5c7c2b073d0684d908b677d3dda1586f6baa8f61
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60559921"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213309"
 ---
-# <a name="azure-notification-hubs-samples"></a>Ukázky Azure Notification Hubs
-Tento článek obsahuje odkazy na ukázky, které ukazují klíčové funkce v Azure Notification Hubs.
+# <a name="azure-notification-hubs-samples"></a>Ukázky pro Azure Notification Hubs
+Tento článek obsahuje odkazy na ukázky, které demonstrují klíčové funkce v Azure Notification Hubs.
 
 ## <a name="samples"></a>Ukázky kódu
 
@@ -29,5 +31,5 @@ Tento článek obsahuje odkazy na ukázky, které ukazují klíčové funkce v A
 - [Ionic](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Ionic)
 - [iOS](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)
 
-## <a name="next-steps"></a>Další postup
-Kurzy v najdete v článku **kurzy** část obsahu (obsah).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si kurzy v obsahu (obsah) v části **kurzy** .

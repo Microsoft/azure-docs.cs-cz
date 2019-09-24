@@ -4,9 +4,9 @@ description: V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hub
 services: notification-hubs
 keywords: nabízená oznámení ios,nabízení zpráv,nabízená oznámení,nabízená zpráva
 documentationcenter: xamarin
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/23/2019
-ms.author: jowargo
-ms.openlocfilehash: ba392f69c0c5803768a04b94d9f9c0ed4f032fbf
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/23/2019
+ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775025"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213575"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
@@ -210,7 +212,7 @@ Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Tes
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Apps, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k zasílání zpráv oznámení použít také přímo rozhraní REST API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrovaných v back-endu. V následujícím kurzu se dozvíte, jak zasílat nabízená oznámení do konkrétních zařízení iOS:
 

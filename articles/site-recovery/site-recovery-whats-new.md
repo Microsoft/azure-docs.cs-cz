@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010247"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212796"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -411,6 +411,6 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Aktualizujte si naše aktualizace na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?product=site-recovery) .

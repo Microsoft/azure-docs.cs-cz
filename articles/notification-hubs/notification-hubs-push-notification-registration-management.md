@@ -1,54 +1,56 @@
 ---
 title: Správa registrací
-description: Toto téma vysvětluje, jak zaregistrovat zařízení pomocí služby notification hubs, abyste mohli přijímat nabízená oznámení.
+description: Toto téma vysvětluje, jak registrovat zařízení pomocí Centra oznámení, aby bylo možné přijímat nabízená oznámení.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/08/2019
+ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488634"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213091"
 ---
 # <a name="registration-management"></a>Správa registrací
 
 ## <a name="overview"></a>Přehled
 
-Toto téma vysvětluje, jak zaregistrovat zařízení pomocí služby notification hubs, abyste mohli přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a pak zavádí dva hlavní způsoby registrace zařízení: registrace ze zařízení přímo k centru oznámení a registrace prostřednictvím back-endu aplikace.
+Toto téma vysvětluje, jak registrovat zařízení pomocí Centra oznámení, aby bylo možné přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a pak zavádí dva hlavní vzory pro registraci zařízení: registraci ze zařízení přímo do centra oznámení a jejich registraci prostřednictvím back-endu aplikace.
 
 ## <a name="what-is-device-registration"></a>Co je registrace zařízení
 
-Registrace zařízení ve službě Centrum oznámení se provádí pomocí **registrace** nebo **instalace**.
+Registrace zařízení pomocí Centra oznámení se provádí pomocí **registrace** nebo **instalace**.
 
 ### <a name="registrations"></a>Registrace
 
-Registrace přidruží popisovač služby oznamování platformy (PNS) pro zařízení se značkami a případně šablony. Popisovač systému oznámení platformy může být parametr ChannelURI, token zařízení nebo id registrace FCM. Značky se používají k oznámení směrovat na správná sada popisovače zařízení. Další informace najdete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md). Šablony slouží k provedení transformace za registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
+Registrace přidružuje popisovač PNS (Platform Notification Service) pro zařízení s značkami a pravděpodobně šablonou. Popisovač PNS může být parametr channeluri, token zařízení nebo ID registrace FCM. Značky se používají ke směrování oznámení na správnou sadu popisovačů zařízení. Další informace najdete v tématu [výrazy směrování a značek](notification-hubs-tags-segment-push-message.md). Šablony slouží k implementaci transformace na jednu registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
-> Azure Notification Hubs podporuje maximálně 60 značek na zařízení.
+> Azure Notification Hubs podporuje maximálně 60 značek na jedno zařízení.
 
-### <a name="installations"></a>Instalace
+### <a name="installations"></a>Instalovány
 
-Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalace je vylepšená registrace, která zahrnuje kontejner souvisejících vlastností nabízených oznámení. Je to nejnovější a nejlepší přístup k registraci vašich zařízení. Není ale podporována na straně klienta .NET SDK ([oznámení SDK pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  To znamená, že pokud provádíte registraci z samotného klientského zařízení, budete muset použít [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) přístup k podpoře instalací. Pokud používáte back-end službu, měli byste být schopni použít [sadu SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Tady jsou některé klíčové výhody použití zařízení:
+Níže jsou uvedeny některé klíčové výhody použití instalací:
 
-- Vytvoření nebo aktualizace instalace je plně idempotentní. Takže můžete opakovat bez jakékoli obavy o duplicitní registrace.
-- Instalační model podporuje formát speciální značka (`$InstallationId:{INSTALLATION_ID}`), která umožňuje odesílání oznámení přímo do konkrétních zařízení. Například, pokud kód aplikace nastaví ID instalace `joe93developer` pro toto konkrétní zařízení, Vývojář můžete cílit na toto zařízení při odesílání oznámení `$InstallationId:{joe93developer}` značky. To umožňuje cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
-- Použití zařízení také vám umožní registraci částečné aktualizace. Částečné aktualizace instalace je požadováno pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Není nutné stáhnout celý registrace a pak znovu odeslat všechny předchozí značky.
+- Vytvoření nebo aktualizace instalace je plně idempotentní. Takže ho můžete opakovat bez jakýchkoli obav o duplicitních registracích.
+- Model instalace podporuje speciální formát značek (`$InstallationId:{INSTALLATION_ID}`), který umožňuje posílání oznámení přímo na konkrétní zařízení. Například pokud kód aplikace nastaví ID `joe93developer` instalace pro toto konkrétní zařízení, může vývojář toto zařízení cílit při odesílání oznámení `$InstallationId:{joe93developer}` do značky. To vám umožní zaměřit se na konkrétní zařízení, aniž byste museli provádět žádné další kódování.
+- Použití instalací také umožňuje provádět částečné aktualizace registrace. Částečná aktualizace instalace se vyžaduje pomocí metody PATCH [standardu JSON-patch](https://tools.ietf.org/html/rfc6902). To je užitečné, když chcete aktualizovat značky v registraci. Nemusíte si vyžádat celou registraci a znovu znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastnosti instalace](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastností instalace](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -87,45 +89,45 @@ Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení registrace a instalace, nevyprší platnost.
+> Ve výchozím nastavení nevyprší platnost registrací a instalací.
 
-Registrace a instalace musí obsahovat platný popisovač systému oznámení platformy pro každé zařízení nebo kanálu. Protože popisovačů systému PNS lze získat pouze v klientské aplikaci na zařízení, jeden vzor je zaregistrovat přímo na tomto zařízení pomocí klientské aplikace. Na druhé straně důležité informace o zabezpečení a obchodní logiky související s značek může vyžadovat ke správě při registraci zařízení v back-end aplikace.
+Registrace a instalace musí obsahovat platný popisovač PNS pro každé zařízení nebo kanál. Vzhledem k tomu, že popisovače PNS se dají získat jenom v klientské aplikaci na zařízení, jeden ze vzorů se registruje přímo na tomto zařízení pomocí klientské aplikace. Na druhé straně, aspekty zabezpečení a obchodní logiky týkající se značek můžou vyžadovat, abyste mohli spravovat registraci zařízení v back-endu aplikace.
 
 > [!NOTE]
-> Instalace rozhraní API nepodporuje službu Baidu (i když se provede registrace rozhraní API). 
+> Rozhraní API pro instalaci nepodporuje službu Baidu (i když rozhraní API registrací dělá). 
 
 ### <a name="templates"></a>Šablony
 
-Pokud chcete použít [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení obsahuje také všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Názvy šablon pomoct cílové různé šablony služby pro stejné zařízení.
+Pokud chcete používat [šablony](notification-hubs-templates-cross-platform-push-messages.md), má instalace zařízení také všechny šablony přidružené k danému zařízení ve formátu JSON (viz Ukázka výše). Názvy šablon můžou pro stejné zařízení cílit na jiné šablony.
 
-Název každé šablony se mapuje na šablony textu a volitelná sada značky. Kromě toho jednotlivé platformy, může mít vlastnosti další šablony. Pro Windows Store (s použitím služby nabízených oznámení Windows) a Windows Phone 8 (pomocí MPNS) další sadu záhlaví může být součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) tématu.
+Každý název šablony se mapuje na tělo šablony a volitelná sada značek. Každá platforma navíc může mít další vlastnosti šablony. Pro Windows Store (s použitím WNS) a Windows Phone 8 (pomocí MPNS) může být součástí šablony další sada hlaviček. V případě APNs můžete nastavit vlastnost vypršení platnosti buď na konstantu, nebo na výraz šablony. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí tématu REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) .
 
-### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace Windows Store
+### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace pro Windows Store
 
-Pro Windows Store klientské aplikace odesíláním oznámení na sekundární dlaždice je stejný jako posílá do primární. To je podporováno také v zařízení. Sekundární dlaždice mají různé parametr ChannelUri, která zpracovává sadu SDK na vaší klientské aplikace transparentní.
+Pro klientské aplikace pro Windows Store je odesílání oznámení do sekundárních dlaždic stejné jako odeslání do primární dlaždice. To je podporováno i v instalacích. Sekundární dlaždice mají jiný parametr channeluri, který sada SDK v klientské aplikaci transparentně zpracovává.
 
-Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci pro Windows Store. Stejně jako u primární parametr ChannelUri ChannelUris sekundární dlaždice můžete změnit v daném okamžiku provádějí. Aby bylo možné zachovat zařízení v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždice je.
+Slovník SecondaryTiles používá stejný TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci pro Windows Store. Podobně jako u primárního parametr channeluri se může ChannelUris sekundární dlaždice kdykoli změnit. Aby se instalace v centru oznámení aktualizovala, zařízení je musí aktualizovat s aktuální ChannelUris sekundárních dlaždic.
 
-## <a name="registration-management-from-the-device"></a>Správa registrací zařízení
+## <a name="registration-management-from-the-device"></a>Správa registrace ze zařízení
 
-Při správě registraci zařízení z klientských aplikací, je odpovědná za zasílání oznámení pouze back-endu. Klientské aplikace aktualizovat popisovačů systému PNS a zaregistrujte značky. Tento model je znázorněný na následujícím obrázku.
+Při správě registrace zařízení z klientských aplikací zodpovídá back-end jenom za posílání oznámení. Klientské aplikace udržují PNS a zaregistrují značky. Tento model je znázorněn na následujícím obrázku.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Zařízení nejdřív načte popisovač systému oznámení platformy z systém oznámení platformy a pak zaregistruje v centru oznámení přímo. Po úspěšné registraci se back-end aplikace může odeslat oznámení cílení na registraci. Další informace o tom, jak odesílat oznámení, naleznete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md).
+Zařízení nejdřív načte popisovač PNS z PNS a potom se zaregistruje přímo do centra oznámení. Po úspěšné registraci může back-end aplikace odeslat oznámení cílené na registraci. Další informace o tom, jak odesílat oznámení, najdete v tématu [výrazy směrování a značek](notification-hubs-tags-segment-push-message.md).
 
-V tomto případě používáte pouze oprávnění k naslouchání pro přístup k vaší notification hubs ze zařízení. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
+V takovém případě použijete pro přístup k centrům oznámení ze zařízení pouze práva naslouchání. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
 
-Registrace zařízení je nejjednodušší způsob, ale má určité nevýhody:
+Registrace ze zařízení je nejjednodušší způsob, ale má několik nevýhod:
 
-- Klientská aplikace lze aktualizovat pouze její klíčová slova, když je aplikace aktivní. Například pokud má uživatel dvě zařízení, které registrují značky související s týmy sportu, během prvního zařízení zaregistruje pro další značka (třeba Seahawks), ve druhém zařízení nebudou přijímat oznámení o Seahawks dokud je aplikace na druhém zařízení spustit znovu. Obecně platí když značky jsou ovlivněny více zařízení, správě značek z back-endu je žádoucí možnost.
-- Protože aplikace mohou být zneužity, zabezpečení registrace konkrétní značky vyžaduje velmi opatrně, jak je popsáno v části "zabezpečení na úrovni značku."
+- Klientská aplikace může aktualizovat pouze své značky, pokud je aplikace aktivní. Pokud má například uživatel dvě zařízení, která registrují značky související s sportovními týmy, když první zařízení zaregistruje pro další značku (například Seahawks), druhé zařízení neobdrží oznámení o Seahawks, dokud nebude aplikace na druhém zařízení. provedeno podruhé. Obecně platí, že pokud jsou značky ovlivněné více zařízeními, je žádoucí možnost spravovat značky z back-endu.
+- Vzhledem k tomu, že aplikace mohou být napadeny, zabezpečení registrace u konkrétních značek vyžaduje zvláštní péči, jak je vysvětleno v části zabezpečení na úrovni značek.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci centra oznámení ze zařízení pomocí instalace
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci v centru oznámení ze zařízení pomocí instalace
 
-V tuto chvíli je podporováno pouze pomocí [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
+V současné době je tato podpora podporována pouze pomocí [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
 
-Můžete také pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
+K aktualizaci instalace můžete použít také metodu PATCH s použitím [standardu JSON-patch](https://tools.ietf.org/html/rfc6902) .
 
 ```
 class DeviceInstallation
@@ -204,9 +206,9 @@ else
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Ukázkový kód pro registraci centra oznámení ze zařízení pomocí registrace
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Ukázkový kód pro registraci v centru oznámení ze zařízení pomocí registrace
 
-Tyto metody vytvořit nebo aktualizovat registraci pro zařízení, na kterém jsou volány. To znamená, že za účelem aktualizace popisovač nebo značky, musí přepsat celý registrace. Mějte na paměti, že registrace jsou přechodné, takže byste měli vždy mít spolehlivé úložiště s aktuální značky, které jsou v konkrétní zařízení.
+Tyto metody vytvoří nebo aktualizují registraci pro zařízení, na kterém se nazývají. To znamená, že aby bylo možné aktualizovat popisovač nebo značky, je nutné přepsat celou registraci. Nezapomeňte, že registrace jsou přechodné, takže byste měli mít vždy spolehlivý obchod s aktuálními značkami, které konkrétní zařízení potřebuje.
 
 ```
 // Initialize the Notification Hub
@@ -259,19 +261,19 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 }
 ```
 
-## <a name="registration-management-from-a-backend"></a>Správa registrace z back-endu.
+## <a name="registration-management-from-a-backend"></a>Správa registrace z back-endu
 
-Správa registrace z back-end vyžaduje psaním dalšího kódu. Aplikace ze zařízení musíte zadat zpracování aktualizace systému oznámení platformy na back-end při každém spuštění aplikace (spolu s značky a šablony) a back-end musíte aktualizovat tento ovladač v centru oznámení. Tento návrh je znázorněný na následujícím obrázku.
+Správa registrací ze služby back-end vyžaduje zápis dalšího kódu. Aplikace ze zařízení musí k back-endu poskytovat aktualizovaný PNS pokaždé, když se aplikace spustí (spolu se značkami a šablonami), a back-end musí tento popisovač aktualizovat v centru oznámení. Tento návrh je znázorněn na následujícím obrázku.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-Výhody Správa registrace z back-endu patří schopnost upravit značky pro registrace i v případě, že odpovídající aplikace na zařízení není aktivní a ověření klienta aplikace před přidáním značky k jeho registraci.
+Výhody správy registrací z back-endu zahrnují možnost upravit značky na registrace i v případě, že je odpovídající aplikace v zařízení neaktivní a ověřit klientskou aplikaci před přidáním značky k registraci.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Ukázkový kód pro registraci centra oznámení z back-end pomocí instalace
+### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Ukázkový kód pro registraci v centru oznámení z back-endu pomocí instalace
 
-Klientské zařízení stále získá jeho popisovač systému oznámení platformy a vlastnosti relevantní instalace jako před a volání vlastních rozhraní API na back-end, který může provádět registraci a autorizujte značek atd. Můžete využívat back-endu [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Klientské zařízení stále získá svůj PNS popisovač a relevantní vlastnosti instalace a zavolá vlastní rozhraní API na back-end, které může provést registraci a autorizovat značky atd. Back-end může využít [sadu SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Můžete také pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
+K aktualizaci instalace můžete použít také metodu PATCH s použitím [standardu JSON-patch](https://tools.ietf.org/html/rfc6902) .
 
 ```
 // Initialize the Notification Hub
@@ -315,9 +317,9 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci centra oznámení ze zařízení s použitím ID registrace
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci v centru oznámení ze zařízení s použitím ID registrace
 
-Z back-endu aplikace můžete provádět základní operace CRUDS při registraci. Příklad:
+Z back-endu vaší aplikace můžete provádět základní operace CRUD při registracích. Příklad:
 
 ```
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
@@ -341,4 +343,4 @@ await hub.UpdateRegistrationAsync(r);
 await hub.DeleteRegistrationAsync(r);
 ```
 
-Back-endu, musí umět zpracovat souběžnosti mezi aktualizací registrací. Service Bus nabízí optimistického řízení souběžnosti pro správu registrace. Na úrovni protokolu HTTP to je implementováno s použitím značky ETag na operací správy registrace. Tato funkce slouží transparentně Microsoft SDKs, která je vyvolána výjimka, pokud aktualizace byl odmítnut z důvodu souběžnosti. Back-endu aplikace je zodpovědná za zpracování těchto výjimek a opakování pokusu o aktualizaci v případě potřeby.
+Back-end musí zvládnout souběžnost mezi aktualizacemi registrace. Service Bus nabízí optimistické řízení souběžnosti pro správu registrací. Na úrovni HTTP je tato implementace implementována s použitím značky ETag při operacích správy registrace. Tato funkce je transparentně používána Microsoft SDK, což vyvolá výjimku, pokud se aktualizace zamítla z důvodů souběžnosti. Back-end aplikace zodpovídá za zpracování těchto výjimek a v případě potřeby opakuje pokus o aktualizaci.

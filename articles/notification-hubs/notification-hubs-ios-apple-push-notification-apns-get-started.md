@@ -4,9 +4,9 @@ description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k o
 services: notification-hubs
 documentationcenter: ios
 keywords: nabízené oznámení;nabízená oznámení;nabízená oznámení ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988215"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211947"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace pro iOS pomocí Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací pro iOS pomocí Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -47,7 +49,7 @@ Dokončený kód v tomto kurzu lze najít v části [Github](https://github.com/
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free) během několika minut.
+* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free) .
 * [Windows Azure Messaging Framework]
 * Poslední verze jazyka [Xcode]
 * Zařízení podporující iOS 10 (nebo novější verzi)
@@ -80,42 +82,42 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
     ![Xcode – možnosti nabízení][12]
 
-5. Přidáte sadu SDK služby Azure Notification Hubs moduly.
+5. Přidejte moduly Azure Notification Hubs SDK.
 
-   Můžete integrovat sadu SDK Azure Notification Hubs v aplikaci s použitím [Cocoapods](https://cocoapods.org) nebo ručním přidáním binární soubory do projektu.
+   Sadu Azure Notification Hubs SDK můžete integrovat do své aplikace pomocí [Cocoapods](https://cocoapods.org) nebo ručním přidáním binárních souborů do projektu.
 
-   - Integrace pomocí Cocoapods
+   - Integrace přes Cocoapods
 
-     Přidejte následující závislosti na vaší `podfile` zahrnout do své aplikace sadu SDK služby Azure Notification Hubs.
+     Přidejte do své `podfile` aplikace následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Spustit `pod install` instalace nově definované podu a otevřete váš `.xcworkspace`.
+     Spusťte `pod install` instalaci nově definovaného bodu pod a `.xcworkspace`otevřete.
 
      > [!NOTE]
-     > Pokud se zobrazí chyba typu ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` během spuštění `pod install`, spusťte prosím `pod repo update` od úložiště Cocoapods získat nejnovější podů a pak spusťte `pod install`.
+     > Pokud ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` se vám při spuštění `pod install`zobrazí chyba, spusťte `pod repo update` prosím, abyste získali nejnovější lusky z úložiště Cocoapods a pak běželi `pod install`.
 
-   - Integrace prostřednictvím Carthage
+   - Integrace přes Carthage
 
-     Přidejte následující závislosti na vaší `Cartfile` zahrnout do své aplikace sadu SDK služby Azure Notification Hubs.
+     Přidejte do své `Cartfile` aplikace následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Potom aktualizujte a závislosti sestavení:
+     Závislosti v následujících, aktualizacích a sestaveních:
 
      ```shell
      $ carthage update
      ```
 
-     Další informace o používání Carthage, najdete v článku [úložiště Carthage GitHub](https://github.com/Carthage/Carthage).
+     Další informace o použití Carthage najdete v [úložišti GitHub Carthage](https://github.com/Carthage/Carthage).
 
-   - Integrace tak, že zkopírujete binární soubory do projektu
+   - Integrace kopírováním binárních souborů do projektu
 
-     1. Stáhněte si [sadu SDK služby Azure Notification Hubs](https://github.com/Azure/azure-notificationhubs-ios/releases) framework k dispozici jako soubor zip a rozbalte ho.
+     1. Stáhněte si rozhraní [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) , které je k dispozici jako soubor zip, a rozbalte ho.
 
      2. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
 
@@ -140,7 +142,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. Ve vaší `AppDelegate.m` přidejte následující kód `didFinishLaunchingWithOptions` metody založené na vaší verzi iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
+8. V souboru přidejte následující kód `didFinishLaunchingWithOptions` do metody na základě vaší verze iOS. `AppDelegate.m` Tento kód zaregistruje popisovač vašeho zařízení do APN:
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
@@ -211,7 +213,7 @@ Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fy
 
     ![Test příjmu nabízených oznámení aplikace iOS][35]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem:
 

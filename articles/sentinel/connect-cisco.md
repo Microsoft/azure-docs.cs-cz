@@ -1,5 +1,5 @@
 ---
-title: Připojit data Cisco k Azure Sentinel Preview | Microsoft Docs
+title: Připojení dat Cisco k Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Cisco k Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e4df594128a119f38c66796d7b00a30420a2a0bd
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6218d3a53df38e938b7d7805c45facd30f850105
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679331"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240147"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Připojení zařízení Cisco ASA 
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Můžete připojit Azure Sentinel k jakémukoli zařízení Cisco ASA. Cisco ASA je nativně integrovaný s Azure Sentinel pro příjem dat, takže i když vaše zařízení Cisco neukládá protokoly jako CEF, Azure Sentinel je ingestuje stejným způsobem jako v případě, že zpracovává protokoly CEF. Integrace s Azure Sentinel umožňuje snadno spouštět analýzy a dotazy napříč daty souboru protokolu z Cisco ASA. 
 
@@ -131,5 +129,5 @@ Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Anal
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit zařízení Cisco ASA ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101438"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241007"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
@@ -50,7 +50,7 @@ Následující diagram představuje podrobný přehled připojeného řešení. 
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Připojení mezi cloudy ve verzi Preview je omezené na oblast Azure Východní USA (eastus) a na oblast OCI Ashburn (US-Ashburn-1).
+* Připojení mezi cloudy ve verzi Preview je omezené na oblasti Azure Východní USA (eastus) & Velká Británie – jih (uksouth) a oblasti Ashburn (USA – východ) & Londýn (Velká Británie – jih). Pro Velká Británie – jih použijte prosím doménu dostupnosti 1 (AD 1) v rozhraní OCI při nasazení připojení pro nižší latenci.
 
 ## <a name="networking"></a>Sítě
 
@@ -72,7 +72,7 @@ Identita je jedním z hlavních pilířů partnerství mezi společnostmi Micros
 
 V současné době tato integrace umožňuje správu v jednom centrálním umístění, které je Azure Active Directory. Azure AD synchronizuje všechny změny v adresáři s odpovídajícím adresářem Oracle a používá se pro jednotné přihlašování do řešení Oracle pro více cloudů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte s mezi [cloudovou sítí](configure-azure-oci-networking.md) mezi Azure a OCI. 
 

@@ -1,11 +1,11 @@
 ---
-title: Nabízená oznámení odesílaná konkrétním zařízením s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging | Dokumentace Microsoftu
-description: Zjistěte, jak používat Notification Hubs k odesílání nabízených oznámení odesílaná konkrétním zařízením s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging (FCM).
+title: Nabízená oznámení na konkrétní zařízení s Androidem pomocí služby Azure Notification Hubs a zasílání zpráv v cloudu Google Firebase | Microsoft Docs
+description: Naučte se používat Notification Hubs k odesílání oznámení na konkrétní zařízení s Androidem pomocí Azure Notification Hubs a zasílání zpráv FCM (Google Firebase Cloud Messaging).
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
-ms.author: jowargo
-ms.openlocfilehash: 0192326feeab3063c6e03376f565590728ba2a02
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/30/2019
+ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227556"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213351"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging (FCM)
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Kurz: Nabízená oznámení na konkrétní zařízení s Androidem s využitím Azure Notification Hubs a zasílání zpráv FCM (Google Firebase Cloud Messaging)
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -36,19 +38,19 @@ V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
 > * Přidáte do mobilní aplikace výběr kategorií.
-> * Registrovaný pro oznámení pomocí značek.
+> * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
 > * Testování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu vychází z aplikace, kterou jste vytvořili v [kurzu: Nabízená oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md). Před zahájením tohoto kurzu, dokončete [kurzu: Nabízená oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Tento kurz sestaví na aplikaci, kterou jste [vytvořili v kurzu: Nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase cloudového zasílání zpráv. Před zahájením tohoto kurzu dokončete [tento kurz: Nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a](notification-hubs-android-push-notification-google-fcm-get-started.md)Firebase cloudového zasílání zpráv.
 
 ## <a name="add-category-selection-to-the-app"></a>Přidání výběru kategorií do aplikace
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. Otevřít `res/layout/activity_main.xml file`a nahraďte obsah následujícím kódem:
+1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -101,7 +103,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
             />
     </LinearLayout>
     ```
-2. Otevřít `res/values/strings.xml` a přidejte následující řádky:
+2. `res/values/strings.xml` Otevřete soubor a přidejte následující řádky:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -113,10 +115,10 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     <string name="label_sports">Sports</string>
     ```
 
-    Vaše `main_activity.xml` grafické rozložení by měl vypadat jako na následujícím obrázku:
+    Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte třídu `Notifications` ve stejném balíčku jako vaše `MainActivity` třídy.
+3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
 
     ```java
     import java.util.HashSet;
@@ -202,12 +204,12 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Ve vaší `MainActivity` třídy, přidejte pole pro `Notifications`:
+4. Do třídy přidejte pole pro `Notifications`: `MainActivity`
 
     ```java
     private Notifications notifications;
     ```
-5. Potom aktualizujte `onCreate` způsob, jak je znázorněno v následujícím kódu. Registraci v Notification Hubs v **subscribeToCategories** metodu **oznámení** třídy. 
+5. Pak aktualizujte `onCreate` metodu, jak je znázorněno v následujícím kódu. Zaregistrujete se pomocí Notification Hubs v metodě **subscribeToCategories** třídy **Notifications** . 
 
     ```java
     @Override
@@ -265,7 +267,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií a použití `Notifications` třídy k uložení seznamu v místním úložišti a registraci odpovídající značky ve vašem Centru oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí `Notifications` třídy uloží seznam do místního úložiště a zaregistruje odpovídající značky do vašeho centra oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
 
 Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kategorií a zaregistrovat ji v centru oznámení pokaždé, když uživatel změní vybrané kategorie.
 
@@ -273,7 +275,7 @@ Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kat
 
 Tento postup provede při spuštění registraci v centru oznámení. Použije k tomu kategorie uložené v místním úložišti.
 
-1. Potvrďte, že následující kód je na konci `onCreate` metodu `MainActivity` třídy:
+1. Potvrďte, že následující kód je na konci `onCreate` metody `MainActivity` ve třídě:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -324,7 +326,7 @@ Hotová aplikace teď do místního úložiště v zařízení uloží sadu kate
 
     ![Oznámení o technologických novinkách](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste odeslali nabízená oznámení určitým zařízením s Androidem, která si zaregistrovala kategorie. Pokud se chcete naučit zasílat nabízená oznámení určitým uživatelům, pokračujte následujícím kurzem:
 

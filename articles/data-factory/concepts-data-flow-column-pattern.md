@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775212"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219764"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Vzorce mapování datových toků
 
@@ -56,6 +56,6 @@ Sestavte pravidla pomocí Tvůrce výrazů. Vaše výrazy vrátí logickou hodno
 * `stream`představuje název přidružený ke každému streamu nebo transformaci v toku.
 * `position`je pořadové místo sloupců v toku dat
 
-## <a name="next-steps"></a>Další postup
-* Přečtěte si další informace o jazykovém [výrazu](http://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o jazykovém [výrazu](https://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.
 * Použijte vzory sloupců v [transformaci jímky](data-flow-sink.md) a [Vyberte transformaci](data-flow-select.md) pomocí mapování založeného na pravidlech.

@@ -1,5 +1,5 @@
 ---
-title: Připojení dat Symantec AWS k Azure Sentinel Preview | Microsoft Docs
+title: Připojení dat Symantec AWS ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Symantec AWS ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295624"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240870"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 
@@ -82,5 +82,5 @@ V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit AWS CloudTrail ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

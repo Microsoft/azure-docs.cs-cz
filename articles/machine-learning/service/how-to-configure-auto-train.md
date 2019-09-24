@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035027"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213518"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -202,7 +202,7 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Tři různé `task` hodnoty parametrů určují seznam algoritmů, které se mají použít.  Pomocí parametrů `blacklist` nebo můžete dále upravit iterace s dostupnými algoritmy, které mají být zahrnuty nebo vyloučeny. `whitelist` Seznam podporovaných modelů lze nalézt ve [třídě SupportedAlgorithms](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
+Tři různé `task` hodnoty parametrů určují seznam modelů, které se mají použít.  Pomocí parametrů `blacklist` nebo můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. `whitelist` Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primární metriku
 Primární metrika; Jak je znázorněno v předchozích příkladech Určuje metriku, která se má použít během školení modelu pro optimalizaci. Primární metrika, kterou můžete vybrat, je určená typem úlohy, kterou zvolíte. Níže je uveden seznam dostupných metrik.
@@ -570,7 +570,7 @@ RunDetails(automl_run).show()
 
 Další informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v článku [konceptu](machine-learning-interpretability-explainability.md) o výkladu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [jak a kde nasadit model](how-to-deploy-and-where.md).
 

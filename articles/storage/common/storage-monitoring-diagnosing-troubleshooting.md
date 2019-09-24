@@ -4,16 +4,16 @@ description: K identifikaci, diagnostice a řešení potíží souvisejících s
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855356"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212829"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -101,6 +101,8 @@ Oddíl "[diagnostikování problémů s úložištěm]" popisuje, jak diagnostik
 Pokud jste obeznámeni s monitorováním výkonu systému Windows, můžete si představit metriky úložiště jako Azure Storage ekvivalent čítačů sledování výkonu systému Windows. V části metriky úložiště najdete komplexní sadu metrik (čítače v terminologii sledování výkonu systému Windows), jako je například dostupnost služby, celkový počet požadavků na službu nebo procento úspěšných požadavků na službu. Úplný seznam dostupných metrik najdete v tématu [Analýza úložiště schéma tabulky metrik](https://msdn.microsoft.com/library/azure/hh343264.aspx). Můžete určit, jestli chcete, aby služba úložiště shromáždila a agregační metriky každou hodinu nebo každou minutu. Další informace o tom, jak povolit metriky a monitorovat účty úložiště, najdete v tématu [Povolení metrik úložiště a zobrazení dat metrik](https://go.microsoft.com/fwlink/?LinkId=510865).
 
 Můžete zvolit, které hodinové metriky chcete zobrazit v [Azure Portal](https://portal.azure.com) a nakonfigurovat pravidla, která upozorní správce e-mailem vždy, když hodinová metrika překročí určitou prahovou hodnotu. Další informace najdete v tématu [přijímání oznámení o výstrahách](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
+
+Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure-monitor/insights/storage-insights-overview.md) (Preview). Jedná se o funkci Azure Monitor, která nabízí ucelený přehled o vašich Azure Storagech účtech tím, že poskytuje jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. Nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto metriky můžete okamžitě zobrazit z předem definovaných interaktivních grafů a dalších vizualizací, které jsou v ní obsažené.
 
 Služba úložiště shromažďuje metriky s využitím optimálního úsilí, ale nemusí zaznamenávat každou operaci úložiště.
 
@@ -520,14 +522,14 @@ Položky protokolu:
 | 07b26a5d-... |Přijata odpověď. Stavový kód = 200, ID žádosti = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | 07b26a5d-... |Stahuje se text odpovědi. |
-| 07b26a5d-... |Operace byla úspěšně dokončena. |
+| 07b26a5d-... |Operace se úspěšně dokončila. |
 | 07b26a5d-... |Spouští se synchronní požadavek https://domemaildist.blob.core.windows.net/azuremmblobcontainer na. |
 | 07b26a5d-... |StringToSign = odstranit................... x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | 07b26a5d-... |Čeká se na odpověď. |
 | 07b26a5d-... |Přijata odpověď. Stavový kód = 202, ID žádosti = 6ab2a4cf-..., obsahu-MD5 =, ETag =. |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | 07b26a5d-... |Stahuje se text odpovědi. |
-| 07b26a5d-... |Operace byla úspěšně dokončena. |
+| 07b26a5d-... |Operace se úspěšně dokončila. |
 | e2d06d78-... |Spouští se asynchronní požadavek https://domemaildist.blob.core.windows.net/azuremmblobcontainer na.</td> |
 | e2d06d78-... |StringToSign = HEAD.................. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | e2d06d78-... |Čeká se na odpověď. |
@@ -538,7 +540,7 @@ Položky protokolu:
 | e2d06d78-... |Přijata odpověď. Stavový kód = 404, ID žádosti = 353ae3bc-..., obsahu-MD5 =, ETag =. |
 | e2d06d78-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | e2d06d78-... |Stahuje se text odpovědi. |
-| e2d06d78-... |Operace byla úspěšně dokončena. |
+| e2d06d78-... |Operace se úspěšně dokončila. |
 | e2d06d78-... |Spouští se asynchronní požadavek https://domemaildist.blob.core.windows.net/azuremmblobcontainer na. |
 | e2d06d78-... |StringToSign = PUT... 0................... x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | e2d06d78-... |Čeká se na odpověď. |
@@ -560,7 +562,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Name | Hodnota |
+| Name | Value |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697Z |
 | Typ operace     | GetBlobProperties            |
@@ -807,11 +809,11 @@ Jako součást monitorování výkonu a dostupnosti můžete použít také funk
 
 Další informace najdete v [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o analýzách v Azure Storage najdete v těchto materiálech:
 
-* [Monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md)
+* [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
 * [Analýza úložiště](storage-analytics.md)
 * [Metriky služby Storage Analytics](storage-analytics-metrics.md)
 * [Schéma tabulky metrik analýzy úložiště](/rest/api/storageservices/storage-analytics-metrics-table-schema)

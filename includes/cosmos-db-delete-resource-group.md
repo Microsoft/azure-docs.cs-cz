@@ -4,12 +4,13 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/23/2019
 ms.author: sngun
-ms.openlocfilehash: 008177e28e99d09f384899141038c13a0e625519
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: seo-java-september2019
+ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541451"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210186"
 ---
 Až budete s webovou aplikací a Azure Cosmos DB účtem hotovi, můžete odstranit prostředky Azure, které jste vytvořili, abyste se s nimi neúčtují další poplatky. Odstranění prostředků:
 
@@ -17,11 +18,11 @@ Až budete s webovou aplikací a Azure Cosmos DB účtem hotovi, můžete odstra
 
 2. Vyberte skupinu prostředků, kterou jste vytvořili pro tento rychlý Start.  
 
-   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+   ![Vyberte skupinu prostředků, kterou chcete odstranit.](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
 2. V novém okně vyberte **Odstranit skupinu prostředků**.
 
-   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+   ![Odstranit skupinu prostředků](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
 3. V dalším okně zadejte název skupiny prostředků, kterou chcete odstranit, a pak vyberte **Odstranit**.
 

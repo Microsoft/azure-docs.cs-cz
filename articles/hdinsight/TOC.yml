@@ -217,6 +217,8 @@
               href: ./hdinsight-release-notes.md
             - name: Úplné poznámky k verzi HDInsight 3.6
               href: ./hdinsight-release-notes-archive.md
+        - name: Nejčastější dotazy
+          href: ./hdinsight-faq.md
         - name: Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Informace o používání HDInsightu v Linuxu

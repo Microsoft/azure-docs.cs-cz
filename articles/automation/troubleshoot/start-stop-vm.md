@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688051"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240850"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>Příčina
 
 Nasazení mohou selhat z jednoho z následujících důvodů:
@@ -52,6 +60,7 @@ Nasazení mohou selhat z jednoho z následujících důvodů:
 2. Je zavedena zásada, která zakáže nasazení řešení spustit nebo zastavit virtuální počítače.
 3. Typy prostředků `Microsoft.Insights` ,nebo`Microsoft.Automation`nejsouregistrovány. `Microsoft.OperationsManagement`
 4. Váš pracovní prostor Log Analytics má na svém počítači zámek.
+5. Máte zastaralou verzi modulů AzureRM nebo řešení spustit/zastavit.
 
 ### <a name="resolution"></a>Řešení
 
@@ -66,6 +75,7 @@ Projděte si následující seznam, kde můžete najít možná řešení vašeh
 
    Další informace o chybách při registraci zprostředkovatelů najdete v tématu [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/resource-manager-register-provider-errors.md) .
 4. Pokud máte zámek v pracovním prostoru Log Analytics, v Azure Portal vyberte svůj pracovní prostor a odeberte všechny zámky v prostředku.
+5. Pokud výše uvedená řešení problém nevyřeší, postupujte podle pokynů v části [aktualizace řešení](../automation-solution-vm-management.md#update-the-solution) pro opětovné nasazení řešení spustit/zastavit.
 
 ## <a name="all-vms-fail-to-startstop"></a>Případě Nepodařilo se spustit nebo zastavit všechny virtuální počítače.
 
@@ -191,7 +201,7 @@ Tento problém může být způsoben nesprávně konfigurovaným nebo vydaným �
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete ověřit, jestli je účet Spustit jako správně nakonfigurovaný, Azure Portal v části **Nastavení účtu**vyberte účet Automation a vyberte **účty Spustit jako** . Tady se zobrazí stav účtů spustit jako, pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost. stav se zobrazí.
+Pokud chcete ověřit, jestli je účet Spustit jako správně nakonfigurovaný, Azure Portal v části nastavení účtu vyberte účet Automation a vyberte účty Spustit jako. Tady se zobrazí stav účtů spustit jako, pokud je účet Spustit jako nesprávně nakonfigurovaný nebo vypršela jeho platnost. stav se zobrazí.
 
 Pokud je váš účet Spustit jako [špatně nakonfigurovaný](../manage-runas-account.md#misconfiguration), měli byste účet Spustit jako odstranit a znovu vytvořit.
 
@@ -216,7 +226,7 @@ V mnoha případech může být chyba způsobena použitím staré a zastaralé 
 
 Chcete-li vyřešit mnoho chyb, doporučujeme řešení odebrat a aktualizovat. Informace o tom, jak řešení aktualizovat, najdete v tématu [aktualizace virtuálních počítačů spustit/zastavit během nepracovních řešení](../automation-solution-vm-management.md#update-the-solution). Navíc můžete zkontrolovat [streamy úloh](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a vyhledat případné chyby. Na portálu přejdete do svého účtu Automation a v části **Automatizace procesu**vyberete **úlohy** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

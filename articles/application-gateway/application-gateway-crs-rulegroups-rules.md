@@ -1,333 +1,334 @@
 ---
-title: Azure Application Gateway brány firewall webových aplikací CRS a skupin pravidel CRS pravidla
-description: Tato stránka obsahuje informace o skupin pravidel CRS firewallu webových aplikací a pravidla.
+title: Skupiny pravidel a pravidla pro Firewall webových aplikací v Azure Application Gateway
+description: Tato stránka poskytuje informace o skupinách pravidel a pravidlech pro Firewall webových aplikací.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e56301e98ca773369631e2f7ae137c63d0b9ddef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613317"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240339"
 ---
-# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupin pravidel CRS firewallu webových aplikací a pravidla
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
 
-Firewall webových aplikací brány aplikací (WAF) chrání webové aplikace z nejběžnějších ohrožení zabezpečení a zneužitím. To se provádí prostřednictvím pravidla, které jsou definovány podle základní sady pravidel OWASP 3.0 nebo 2.2.9. Tato pravidla je možné zakázat na základě pravidla pomocí pravidla. Tento článek obsahuje aktuální pravidla a nabízí sady pravidel.
+Brána Firewall webových aplikací Application Gateway (WAF) chrání webové aplikace před běžnými chybami zabezpečení a zneužitím. To se provádí prostřednictvím pravidel, která jsou definovaná na základě sad pravidel OWASP Core 3,0 nebo 2.2.9. Tato pravidla je možné zakázat na základě pravidla podle pravidla. Tento článek obsahuje aktuální pravidla a nabízené RuleSets.
 
-Následující pravidlo skupiny a pravidla jsou k dispozici při použití aplikační brány s firewallem webových aplikací.
+Při použití Application Gateway s firewallem webových aplikací jsou k dispozici následující skupiny pravidel a pravidla.
 
-# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+# <a name="owasp-30tabowasp3"></a>[OWASP 3,0](#tab/owasp3)
 
-## <a name="owasp30"></a> Sady pravidel
+## <a name="owasp30"></a>Sady pravidel
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Obecné</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|200004|Je to možné vícedílné zprávy standardu bezkonkurenční hranice.|
+|200004|Možná nespárovaná hranice na více částí.|
 
-### <a name="crs911"></a> <p x-ms-format-detection="none">ŽÁDOST O 911 ZPŮSOB VYNUCENÍ</p>
+### <a name="crs911"></a> <p x-ms-format-detection="none">POŽADAVEK-911-METODA – VYNUCENÍ</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|911100|Metoda není povolena zásadami|
+|911100|Metoda není u zásad povolená.|
 
 
-### <a name="crs913"></a> <p x-ms-format-detection="none">ŽÁDOST O 913 SKENER DETEKCE</p>
+### <a name="crs913"></a> <p x-ms-format-detection="none">POŽADAVEK-913-DETEKCE SKENERU</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|913100|Najít User-Agent přidružené kontrolu zabezpečení|
-|913110|Najít záhlaví požadavku přidružený k kontrolu zabezpečení|
-|913120|Nalezena žádost o název souboru/argument přidružený k kontrolu zabezpečení|
-|913101|Najít související s klientem HTTP/generické uživatelského agenta|
-|913102|Najít přidružené webové prohledávacího modulu/bot uživatelského agenta|
+|913100|Našel se uživatelský agent přidružený ke skeneru zabezpečení.|
+|913110|Našla se Hlavička požadavku přidružená ke skeneru zabezpečení.|
+|913120|Našel se název souboru/argument pro požadavek přidružený ke skeneru zabezpečení.|
+|913101|Našel se uživatelský agent přidružený ke skriptování nebo obecnému klientovi HTTP.|
+|913102|Našel se uživatelský agent přidružený k webovému nástroji nebo bot.|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|920100|Neplatný požadavek HTTP řádku|
-|920130|Nepovedlo se analyzovat datovou část požadavku.|
-|920140|Striktní ověření se nezdařilo text požadavku s více částmi.|
-|920160|Hlavičku HTTP Content-Length není číselná.|
-|920170|ZÍSKÁNÍ nebo HEAD žádost s obsah textu.|
-|920180|Chybí hlavička Content-Length požadavek POST.|
-|920190|Rozsah = poslední bajt je neplatný.|
-|920210|Více/konfliktní Data záhlaví připojení nenašel.|
-|920220|Pokus o útok URL kódování urážlivého příspěvku|
-|920240|Pokus o útok URL kódování urážlivého příspěvku|
-|920250|UTF8 Pokus o útok zneužití kódování|
-|920260|Pokus o útok Unicode plné/poloviční šířku urážlivý příspěvek|
-|920270|Neplatný znak v požadavku (znak null)|
-|920280|Požadavku chybí hlavička hostitele|
-|920290|Hlavička hostitele prázdný|
-|920310|Požadavek má prázdnou hlavičky Accept|
-|920311|Požadavek má prázdnou hlavičky Accept|
-|920330|Záhlaví prázdného uživatelského agenta|
-|920340|Požádat o obsahující obsahu, ale hlavička Content-Type chybí|
-|920350|Hlavička hostitele je číselný IP adresa|
-|920380|V požadavku má moc argumentů|
-|920360|Příliš dlouhý název argumentu|
-|920370|Hodnota argumentu je příliš dlouhý|
-|920390|Překročila se velikost celkový počet argumentů|
-|920400|Nahraný soubor příliš velký.|
-|920410|Celkový počet odeslaných souborů příliš velký.|
-|920420|Typ obsahu požadavku není povolena zásadami|
-|920430|Verze protokolu HTTP není povolena zásadami|
-|920440|Adresa URL přípona souboru je omezena zásadami|
-|920450|Hlavička protokolu HTTP je omezený zásad (%@{MATCHED_VAR})|
-|920200|Rozsah = příliš mnoho polí (6 nebo více)|
-|920201|Rozsah = příliš mnoho polí pro požadavek pdf (35 nebo více)|
-|920230|Zjištěn více kódování URL|
-|920300|Požadavku chybí hlavičky Accept|
-|920271|Neplatný znak v požadavku (bez tisknutelných znaků)|
-|920320|Chybí hlavička uživatelského agenta|
-|920272|Neplatný znak v požadavku (mimo tisknutelných znaků pod ascii 127)|
-|920202|Rozsah = příliš mnoho polí pro požadavek pdf (6 nebo více)|
-|920273|Neplatný znak v požadavku (mimo velmi přísná set)|
-|920274|Neplatný znak v záhlaví požadavku (mimo velmi přísná set)|
+|920100|Neplatný řádek požadavku HTTP|
+|920130|Nepovedlo se analyzovat text požadavku.|
+|920140|Tělo žádosti s více částmi se nepodařilo striktní ověření.|
+|920160|Hlavička Content-Length protokolu HTTP není číselná.|
+|920170|Získá nebo vrátí požadavek HEAD s obsahem textu.|
+|920180|V požadavku POST chybí hlavička Content-Length.|
+|920190|Range = neplatná hodnota posledního bajtu|
+|920210|Bylo nalezeno více nebo konfliktních dat záhlaví připojení.|
+|920220|Pokus o útok zneužití kódování adresy URL|
+|920240|Pokus o útok zneužití kódování adresy URL|
+|920250|Pokus o útok zneužití kódování UTF8|
+|920260|Pokus o útok proti zneužití Unicode s plnou/poloviční šířkou|
+|920270|Neplatný znak v žádosti (znak null)|
+|920280|V požadavku chybí Hlavička hostitele.|
+|920290|Prázdná Hlavička hostitele|
+|920310|Požadavek má prázdnou hlavičku Accept.|
+|920311|Požadavek má prázdnou hlavičku Accept.|
+|920330|Prázdné záhlaví uživatelského agenta|
+|920340|Požadavek obsahující obsah, ale chybějící záhlaví Content-Type|
+|920350|Hlavička hostitele je numerická IP adresa.|
+|920380|Příliš mnoho argumentů v žádosti|
+|920360|Název argumentu je příliš dlouhý.|
+|920370|Hodnota argumentu je moc dlouhá.|
+|920390|Celková velikost argumentů byla překročena.|
+|920400|Velikost nahraného souboru je moc velká.|
+|920410|Celkový počet nahraných souborů je moc velký.|
+|920420|Typ obsahu žádosti není povolený zásadou.|
+|920430|Verze protokolu HTTP není v zásadě povolená.|
+|920440|Přípona souboru adresy URL je omezená zásadami.|
+|920450|Záhlaví HTTP je omezené zásadami (% @ {MATCHED_VAR}).|
+|920200|Range = příliš mnoho polí (6 nebo více)|
+|920201|Range = příliš mnoho polí pro požadavek PDF (35 nebo více)|
+|920230|Bylo zjištěno více kódování URL.|
+|920300|Požadavek neobsahuje hlavičku Accept.|
+|920271|Neplatný znak v žádosti (netisknutelné znaky)|
+|920320|Chybí záhlaví uživatelského agenta.|
+|920272|Neplatný znak v žádosti (mimo tisknutelné znaky pod ASCII 127)|
+|920202|Range = příliš mnoho polí pro požadavek PDF (6 nebo více)|
+|920273|Neplatný znak v žádosti (mimo velmi striktní sadu)|
+|920274|Neplatný znak v záhlavích žádostí (mimo velmi striktní sadu)|
 |920460|Neobvyklé řídicí znaky|
 
-### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="crs921"></a> <p x-ms-format-detection="none">POŽADAVEK-921-PROTOKOL – ÚTOK</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|921100|Útok podvržení požadavku HTTP.|
-|921110|Požadavek HTTP pašování útoku|
-|921120|Odpověď HTTP, rozdělování útoku|
-|921130|Odpověď HTTP, rozdělování útoku|
-|921140|Útok prostřednictvím injektáže záhlaví HTTP přes záhlaví|
-|921150|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (zjistil znaků CR/LF)|
-|921160|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (CR/LF a zjištěna název hlavičky)|
-|921151|Útok prostřednictvím injektáže záhlaví HTTP přes datová část (zjistil znaků CR/LF)|
-|921170|Parametr HTTP znečištění|
-|921180|Znečištění HTTP parametr (% @{TX.1})|
+|921100|Útok s podvržením požadavků HTTP|
+|921110|Útok proti podvržení požadavku HTTP|
+|921120|Útok na rozdělení HTTP odpovědi|
+|921130|Útok na rozdělení HTTP odpovědi|
+|921140|Útok prostřednictvím injektáže záhlaví HTTP prostřednictvím hlaviček|
+|921150|Útok injektáže záhlaví HTTP prostřednictvím datové části (počet zjištěných znaků CR/LF)|
+|921160|Útok na injektáže záhlaví HTTP prostřednictvím datové části (CR/LF a záhlaví-název byl zjištěn)|
+|921151|Útok injektáže záhlaví HTTP prostřednictvím datové části (počet zjištěných znaků CR/LF)|
+|921170|Znečištění parametru HTTP|
+|921180|Znečišťování parametru HTTP (% @ {TX. 1})|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|930100|Cesty přechodu útoku (/.. /)|
-|930110|Cesty přechodu útoku (/.. /)|
+|930100|Útok procházením cest (/.. /)|
+|930110|Útok procházením cest (/.. /)|
 |930120|Pokus o přístup k souboru operačního systému|
-|930130|Pokus o přístup k souboru s omezeným přístupem|
+|930130|Omezený pokus o přístup k souboru|
 
-### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="crs931"></a> <p x-ms-format-detection="none">POŽADAVEK-931-APLIKACE – ÚTOK – RFI</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|931100|Možných útoků zahrnutí vzdáleného souboru (RFI) = parametr adresy URL pomocí IP adresy|
-|931110|Možných útoků zahrnutí vzdáleného souboru (RFI) = běžný RFI zranitelné parametr název používaný w nebo adresa URL datové části|
-|931120|Je to možné vzdáleného souboru (RFI) útok = adresy URL datové části používá w a koncové otázku Označit znak (?)|
-|931130|Je to možné vzdáleného souboru (RFI) útok = vypnout domény odkazu|
+|931100|Možný útok RFI (Remote File začlenění) = parametr URL s použitím IP adresy|
+|931110|Možný útok na vzdálený soubor k zahrnutí (RFI) = běžný název parametru s chybou RFI, který používal datovou část adresy URL|
+|931120|Možný útok na vzdálené zahrnutí souborů (RFI) = datová část adresy URL použité pro znak otazníku (?)|
+|931130|Možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz|
 
-### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="crs932"></a> <p x-ms-format-detection="none">POŽADAVEK – 932 – APLIKAČNÍ – ÚTOK – RCE</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|932120|Vzdálené spouštění příkazů Windows Powershellu příkaz nenašel =|
-|932130|Spuštění vzdálených příkazů = výraz prostředí Unix nalezen|
-|932140|Spuštění vzdálených příkazů = Windows pro, nebo pokud se najde příkaz|
-|932160|Vzdálené spouštění příkazů prostředí Unix kód =|
-|932170|Spuštění vzdálených příkazů = Shellshock (CVE 2014 6271)|
-|932171|Spuštění vzdálených příkazů = Shellshock (CVE 2014 6271)|
+|932120|Vzdálené spuštění příkazu = nalezen příkaz prostředí Windows PowerShell|
+|932130|Vzdálené spuštění příkazu = Nalezeno výraz prostředí systému UNIX|
+|932140|Vzdálené spuštění příkazu = Windows pro/Pokud se našel příkaz|
+|932160|Vzdálené spuštění příkazu = nalezen kód prostředí systému UNIX|
+|932170|Vzdálené spuštění příkazu = Shellshock (CVE-2014-6271)|
+|932171|Vzdálené spuštění příkazu = Shellshock (CVE-2014-6271)|
 
-### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="crs933"></a> <p x-ms-format-detection="none">POŽADAVEK – 933 – APLIKAČNÍ – ÚTOK – PHP</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|933100|PHP injektáže = nalezena otevírací nebo uzavírací značka|
-|933110|PHP injektáže = nalezen nahrávání souborů skriptů PHP|
-|933120|PHP injektáže = direktivě konfiguraci nalezen|
-|933130|PHP injektáže = proměnné nalezen|
-|933150|PHP injektáže = název funkce s vysokým rizikem PHP nalezen.|
-|933160|PHP injektáže = volání funkce PHP s vysokým rizikem, nalezena|
-|933180|PHP injektáže = proměnné funkce volání nalezen|
-|933151|PHP injektáže = najít název funkce PHP střední riziko|
-|933131|PHP injektáže = proměnné nalezen|
-|933161|PHP injektáže = PHP s nízkou hodnotu volání funkce nalezen|
-|933111|PHP injektáže = nalezen nahrávání souborů skriptů PHP|
+|933100|Útok injektáže PHP = našla se počáteční nebo uzavírací značka.|
+|933110|Útok injektáže PHP = nahrání souboru skriptu PHP se našlo.|
+|933120|Útok injektáže PHP = nalezená direktiva konfigurace|
+|933130|Útok injektáže PHP = nalezené proměnné|
+|933150|Útok na injektáže PHP = nalezen název funkce PHP s vysokým rizikem|
+|933160|Útok na injektáže PHP = Nalezeno volání funkce PHP s vysokým rizikem|
+|933180|Útok injektáže PHP = Nalezeno volání proměnné funkce|
+|933151|Útok injektáže PHP = střední-rizikové název funkce PHP|
+|933131|Útok injektáže PHP = nalezené proměnné|
+|933161|Útok injektáže PHP = nalezené volání funkce PHP s nízkou hodnotou|
+|933111|Útok injektáže PHP = nahrání souboru skriptu PHP se našlo.|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|941100|XSS útoku zjištěna prostřednictvím libinjection|
-|941110|Filtr XSS – kategorie 1 = Vector značky skriptu|
-|941130|Filtr XSS – kategorie 3 = atribut vektoru|
-|941140|Filtr XSS – kategorie 4 = Vector URI jazyka Javascript|
-|941150|Filtr XSS – kategorie 5 = atributů zakázaného HTML|
-|941180|Uzel ověření Blacklist klíčová slova|
-|941190|Skriptování mezi servery pomocí šablony stylů|
-|941200|Skriptování mezi servery pomocí VML snímků|
-|941210|Obfuskovaný XSS pomocí jazyka Javascript|
-|941220|Skriptování mezi servery pomocí obfuskovaný skript jazyka Visual Basic|
-|941230|XSS pomocí značky 'embed.|
-|941240|Skriptování mezi servery pomocí atributu "import" nebo "implementace.|
-|941260|XSS tagu 'meta'|
-|941270|Skriptování mezi servery pomocí "link" href|
-|941280|XSS tagu "základní"|
-|941290|XSS tagu "aplet.|
-|941300|XSS tagu "objekt"|
-|941310|US ASCII poškozený kódování XSS filtru – zjištěna útoku.|
-|941330|Filtruje - IE XSS zjistil útoku.|
-|941340|Filtruje - IE XSS zjistil útoku.|
-|941350|Kódování UTF-7 kódování aplikace Internet Explorer XSS - zjistil útoku.|
-|941320|Je to možné XSS útoku zjistil - obslužnou rutinu značky HTML|
+|941100|Útok XSS zjištěný prostřednictvím libinjection|
+|941110|Filtr XSS – kategorie 1 = vektor značky skriptu|
+|941130|Filtr XSS – kategorie 3 = vektor atributu|
+|941140|Filtr XSS – kategorie 4 = vektor URI JavaScriptu|
+|941150|Filtr XSS – kategorie 5 = nepovolené atributy HTML|
+|941180|Klíčová slova zakázaného validátoru uzlů|
+|941190|XSS pomocí šablon stylů|
+|941200|XSS pomocí snímků VML|
+|941210|XSS pomocí nepoužívaného JavaScriptu|
+|941220|XSS pomocí nepoužívaného skriptu VB|
+|941230|XSS pomocí tagu embed|
+|941240|XSS s použitím atributu import nebo Implement|
+|941260|XSS s použitím značky meta|
+|941270|XSS používající odkaz href|
+|941280|XSS pomocí tagu Base|
+|941290|XSS s použitím značky applet|
+|941300|XSS s použitím značky Object|
+|941310|Byl zjištěn útok se špatným kódováním pro kódování XSS typu US-ASCII.|
+|941330|Filtry v IE XSS – byl zjištěn útok.|
+|941340|Filtry v IE XSS – byl zjištěn útok.|
+|941350|Bylo zjištěno útoku kódování UTF-7 v IE XSS.|
+|941320|Byl zjištěn možný útok XSS – obslužná rutina značky HTML|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|942100|SQL zjistila útoku prostřednictvím injektáže prostřednictvím libinjection|
-|942110|Útok prostřednictvím injektáže SQL: Běžné vkládání testování zjištěné|
-|942130|Útok prostřednictvím injektáže SQL: Zjištěna Tautology SQL.|
-|942140|Útok prostřednictvím injektáže SQL = běžné názvy DB zjistil|
-|942160|Zjistí skrytá sqli testy pomocí sleep() nebo benchmark().|
-|942170|Detekuje pokusy o srovnávací test a přejít do režimu spánku útok prostřednictvím injektáže SQL, včetně podmíněného dotazů|
-|942190|Zjistí MSSQL provádění kódu a pokusy o shromažďování informací|
-|942200|Zjistí MySQL komentář – / místo obfuskovaný injektáže a prvními ukončení|
-|942230|Zjistí podmíněného pokusu o Injektáž SQL|
-|942260|Zjistí, že základní ověřovací přihlášení SQL pokusí 2/3|
-|942270|Hledáte základní sql injection. Běžné útoku řetězec pro mysql oracle a dalších.|
-|942290|Vyhledá pokusu o Injektáž SQL základní MongoDB|
-|942300|Zjistí MySQL komentáře, podmínky a injektáže ch (a) jazyka r|
-|942320|Zjistí, MySQL a PostgreSQL uložené procedury/funkce injektáže|
-|942330|Zjistí classic probings prostřednictvím injektáže SQL 1/2|
-|942340|Zjistí, že základní ověřovací přihlášení SQL pokusí 3/3|
-|942350|Zjistí vkládání MySQL UDF a manipulaci s další data nebo strukturu pokusí|
-|942360|Zjistí zřetězených základní útok prostřednictvím injektáže SQL a pokusů o zadání SQLLFI|
-|942370|Zjistí classic probings prostřednictvím injektáže SQL 2/2|
-|942150|Útok prostřednictvím injektáže SQL|
-|942410|Útok prostřednictvím injektáže SQL|
-|942430|S omezením pomocí specifikátoru detekce anomálií znak SQL (args): (12) překročil počet speciálních znaků|
-|942440|Zjištěna pořadí Komentář SQL.|
-|942450|SQL šestnáctkové kódování identifikovat|
-|942251|Zjistí injektáže HAVING|
-|942460|Výstraha detekce anomálií meta znak – opakované mimoslovní znaky|
+|942100|Byl zjištěn útok prostřednictvím injektáže SQL prostřednictvím libinjection|
+|942110|Útok injektáže SQL: Bylo zjištěno společné testování injektáže.|
+|942130|Útok injektáže SQL: Zjistilo se Tautology SQL.|
+|942140|Útok injektáže SQL = zjištěny běžné názvy databází|
+|942160|Detekuje nevidomé SQLi testy pomocí režimu spánku () nebo srovnávacího testu ().|
+|942170|Detekuje srovnávací testy SQL a operace vkládání do režimu spánku včetně podmíněných dotazů.|
+|942190|Detekuje provádění kódu MSSQL a pokusy o shromažďování informací|
+|942200|Detekuje komentáře MySQL – vkládání/Space-obfuscated a ukončení zaškrtnutí.|
+|942230|Detekuje podmíněné pokusy o injektáže SQL.|
+|942260|Detekuje základní pokusy o obejití ověřování SQL 2/3|
+|942270|Hledání základního vkládání SQL Běžný řetězec útoku pro MySQL Oracle a další.|
+|942290|Vyhledá základní pokusy o vkládání SQL MongoDB.|
+|942300|Detekuje komentáře MySQL, podmínky a injektáže r (ch) r|
+|942310|Detekuje zřetězené pokusy o vkládání SQL 2/2|
+|942320|Detekuje injektáže uložených procedur/funkcí MySQL a PostgreSQL.|
+|942330|Detekuje bingy pro vkládání v klasických rozhraních SQL 1/2|
+|942340|Detekuje základní pokusy o obejití ověřování SQL 3/3|
+|942350|Detekuje injektáže systému MySQL UDF a další pokusy o manipulaci s daty/strukturou.|
+|942360|Detekuje zřetězené základní vkládání SQL a pokusy SQLLFI.|
+|942370|Detekuje bingy pro vkládání v klasických rozhraních SQL 2/2|
+|942150|Útok injektáže SQL|
+|942410|Útok injektáže SQL|
+|942430|Omezené zjištění anomálií znaků SQL (args): počet speciálních znaků se překročil (12).|
+|942440|Zjistila se sekvence komentářů SQL.|
+|942450|Identifikované kódování šestnáctkového formátu SQL|
+|942251|Detekuje, že se mají injektáže|
+|942460|Výstraha detekce anomálií meta znaku – opakující se znaky jiné než Word|
 
-### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="crs943"></a> <p x-ms-format-detection="none">POŽADAVEK-943-APLIKAČNÍ – ÚTOK – FIXACE RELACE</p>
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|943100|Útok záznam možné relace = nastavení hodnoty souboru Cookie ve formátu HTML|
-|943110|Útok záznam možné relace = název parametru ID relace s odkazující server vypnout domény|
-|943120|Útok záznam možné relace = název parametru ID relace se žádné odkazující server|
+|943100|Možný útok z relace = nastavení hodnot souboru cookie ve formátu HTML|
+|943110|Možný útok v relaci = název parametru SessionID s názvem odkazující mimo doménu|
+|943120|Možný útok s možností záznamu relace = název parametru SessionID bez odkazujícího serveru|
 
 # <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="owasp229"></a> Sady pravidel
+## <a name="owasp229"></a>Sady pravidel
 
-### <a name="crs20"></a> crs_20_protocol_violations
+### <a name="crs20"></a>crs_20_protocol_violations
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|960911|Neplatný požadavek HTTP řádku|
-|981227|Chyba Apache = neplatný identifikátor URI požadavku.|
-|960912|Nepovedlo se analyzovat datovou část požadavku.|
-|960914|Striktní ověření se nezdařilo text požadavku s více částmi.|
-|960915|S více částmi. analyzátor zjistil možné bezkonkurenční hranice.|
-|960016|Hlavičku HTTP Content-Length není číselná.|
-|960011|ZÍSKÁNÍ nebo HEAD žádost s obsah textu.|
-|960012|Chybí hlavička Content-Length požadavek POST.|
-|960902|Neplatné použití Identity kódování.|
-|960022|Můžete očekávejte záhlaví není povolený pro protokol HTTP 1.0.|
-|960020|Záhlaví – Direktiva pragma vyžaduje hlavičku Cache-Control pro požadavky HTTP/1.1.|
+|960911|Neplatný řádek požadavku HTTP|
+|981227|Chyba Apache = neplatný identifikátor URI v požadavku.|
+|960912|Nepovedlo se analyzovat text požadavku.|
+|960914|Tělo žádosti s více částmi se nepodařilo striktní ověření.|
+|960915|Analyzátor částí zjistil možnou neshodnou hranici.|
+|960016|Hlavička Content-Length protokolu HTTP není číselná.|
+|960011|Získá nebo vrátí požadavek HEAD s obsahem textu.|
+|960012|V požadavku POST chybí hlavička Content-Length.|
+|960902|Neplatné použití kódování identity|
+|960022|Očekává se, že hlavička není povolená pro HTTP 1,0.|
+|960020|Hlavička pragma vyžaduje hlavičku Cache-Control pro požadavky HTTP/1.1.|
 |958291|Rozsah = pole existuje a začíná na 0.|
-|958230|Rozsah = poslední bajt je neplatný.|
-|958295|Více/konfliktní Data záhlaví připojení nenašel.|
-|950107|Pokus o útok URL kódování urážlivého příspěvku|
-|950109|Zjištěn více kódování URL|
-|950108|Pokus o útok URL kódování urážlivého příspěvku|
-|950801|UTF8 Pokus o útok zneužití kódování|
-|950116|Pokus o útok Unicode plné/poloviční šířku urážlivý příspěvek|
-|960901|Neplatný znak v požadavku|
-|960018|Neplatný znak v požadavku|
+|958230|Range = neplatná hodnota posledního bajtu|
+|958295|Bylo nalezeno více nebo konfliktních dat záhlaví připojení.|
+|950107|Pokus o útok zneužití kódování adresy URL|
+|950109|Bylo zjištěno více kódování URL.|
+|950108|Pokus o útok zneužití kódování adresy URL|
+|950801|Pokus o útok zneužití kódování UTF8|
+|950116|Pokus o útok proti zneužití Unicode s plnou/poloviční šířkou|
+|960901|Neplatný znak v žádosti|
+|960018|Neplatný znak v žádosti|
 
-### <a name="crs21"></a> crs_21_protocol_anomalies
+### <a name="crs21"></a>crs_21_protocol_anomalies
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|960008|Požadavku chybí hlavička hostitele|
-|960007|Hlavička hostitele prázdný|
-|960015|Požadavku chybí hlavičky Accept|
-|960021|Požadavek má prázdnou hlavičky Accept|
-|960009|Požadavku chybí záhlaví Agent uživatele|
-|960006|Záhlaví prázdného uživatelského agenta|
-|960904|Požádat o obsahující obsahu, ale hlavička Content-Type chybí|
-|960017|Hlavička hostitele je číselný IP adresa|
+|960008|V požadavku chybí Hlavička hostitele.|
+|960007|Prázdná Hlavička hostitele|
+|960015|Požadavek neobsahuje hlavičku Accept.|
+|960021|Požadavek má prázdnou hlavičku Accept.|
+|960009|V požadavku chybí záhlaví uživatelského agenta.|
+|960006|Prázdné záhlaví uživatelského agenta|
+|960904|Požadavek obsahující obsah, ale chybějící záhlaví Content-Type|
+|960017|Hlavička hostitele je numerická IP adresa.|
 
-### <a name="crs23"></a> crs_23_request_limits
+### <a name="crs23"></a>crs_23_request_limits
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|960209|Příliš dlouhý název argumentu|
-|960208|Hodnota argumentu je příliš dlouhý|
-|960335|V požadavku má moc argumentů|
-|960341|Překročila se velikost celkový počet argumentů|
-|960342|Nahraný soubor příliš velký.|
-|960343|Celkový počet odeslaných souborů příliš velký.|
+|960209|Název argumentu je příliš dlouhý.|
+|960208|Hodnota argumentu je moc dlouhá.|
+|960335|Příliš mnoho argumentů v žádosti|
+|960341|Celková velikost argumentů byla překročena.|
+|960342|Velikost nahraného souboru je moc velká.|
+|960343|Celkový počet nahraných souborů je moc velký.|
 
-### <a name="crs30"></a> crs_30_http_policy
+### <a name="crs30"></a>crs_30_http_policy
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|960032|Metoda není povolena zásadami|
-|960010|Typ obsahu požadavku není povolena zásadami|
-|960034|Verze protokolu HTTP není povolena zásadami|
-|960035|Adresa URL přípona souboru je omezena zásadami|
-|960038|Hlavička protokolu HTTP je omezen pomocí zásad|
+|960032|Metoda není u zásad povolená.|
+|960010|Typ obsahu žádosti není povolený zásadou.|
+|960034|Verze protokolu HTTP není v zásadě povolená.|
+|960035|Přípona souboru adresy URL je omezená zásadami.|
+|960038|Hlavička protokolu HTTP je omezená zásadami.|
 
 ### <a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|990002|Žádost o označuje, že kontrola zabezpečení zkontrolovat webu|
-|990901|Žádost o označuje, že kontrola zabezpečení zkontrolovat webu|
-|990902|Žádost o označuje, že kontrola zabezpečení zkontrolovat webu|
-|990012|Neautorizovaný webu prohledávacího modulu|
+|990002|Požadavek indikuje, že skener zabezpečení prohledal Web|
+|990901|Požadavek indikuje, že skener zabezpečení prohledal Web|
+|990902|Požadavek indikuje, že skener zabezpečení prohledal Web|
+|990012|Prohledávací nástroj neautorizovaných webů|
 
-### <a name="crs40"></a> crs_40_generic_attacks
+### <a name="crs40"></a>crs_40_generic_attacks
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|960024|Výstraha detekce anomálií meta znak – opakované mimoslovní znaky|
-|950008|Vkládání značky aplikace nezdokumentovaný ColdFusion|
-|950010|Útok prostřednictvím injektáže LDAP|
-|950011|Vkládání SSI útoku|
-|950018|Adresa URL univerzální XSS PDF zjištěna.|
+|960024|Výstraha detekce anomálií meta znaku – opakující se znaky jiné než Word|
+|950008|Vkládání nedokumentovaných značek ColdFusion|
+|950010|Útok injektáže LDAP|
+|950011|Útok injektáže SSI|
+|950018|Byla zjištěna adresa URL technologie Universal PDF XSS.|
 |950019|Útok prostřednictvím injektáže e-mailu|
-|950012|Útok podvržení požadavku HTTP.|
-|950910|Odpověď HTTP, rozdělování útoku|
-|950911|Odpověď HTTP, rozdělování útoku|
-|950117|Vzdálený soubor zahrnutí útoku|
-|950118|Vzdálený soubor zahrnutí útoku|
-|950119|Vzdálený soubor zahrnutí útoku|
-|950120|Je to možné vzdáleného souboru (RFI) útok = vypnout domény odkazu|
+|950012|Útok s podvržením požadavků HTTP|
+|950910|Útok na rozdělení HTTP odpovědi|
+|950911|Útok na rozdělení HTTP odpovědi|
+|950117|Útok na vzdálené zahrnutí souborů|
+|950118|Útok na vzdálené zahrnutí souborů|
+|950119|Útok na vzdálené zahrnutí souborů|
+|950120|Možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz|
 |981133|Pravidlo 981133|
 |981134|Pravidlo 981134|
-|950009|Útok záznam relace|
-|950003|Záznam relace|
-|950000|Záznam relace|
-|950005|Vzdálený soubor k pokusu o přístup|
-|950002|Přístup k systému příkaz|
-|950006|Injektáž příkazů systému|
-|959151|Útok prostřednictvím injektáže PHP|
-|958976|Útok prostřednictvím injektáže PHP|
-|958977|Útok prostřednictvím injektáže PHP|
+|950009|Útok na záznam relace|
+|950003|Fixace relace|
+|950000|Fixace relace|
+|950005|Pokus o vzdálený přístup k souborům|
+|950002|Přístup k systémovému příkazu|
+|950006|Vkládání systémových příkazů|
+|959151|Útok injektáže PHP|
+|958976|Útok injektáže PHP|
+|958977|Útok injektáže PHP|
 
 ### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|981231|Zjištěna pořadí Komentář SQL.|
-|981260|SQL šestnáctkové kódování identifikovat|
-|981320|Útok prostřednictvím injektáže SQL = běžné názvy DB zjistil|
+|981231|Zjistila se sekvence komentářů SQL.|
+|981260|Identifikované kódování šestnáctkového formátu SQL|
+|981320|Útok injektáže SQL = zjištěny běžné názvy databází|
 |981300|Pravidlo 981300|
 |981301|Pravidlo 981301|
 |981302|Pravidlo 981302|
@@ -345,140 +346,140 @@ Následující pravidlo skupiny a pravidla jsou k dispozici při použití aplik
 |981314|Pravidlo 981314|
 |981315|Pravidlo 981315|
 |981316|Pravidlo 981316|
-|981317|Výstrahy detekce anomálií SQL příkazu SELECT|
-|950007|Útok prostřednictvím injektáže SQL skrytá|
-|950001|Útok prostřednictvím injektáže SQL|
+|981317|Výstraha detekce anomálií příkazu SELECT jazyka SQL|
+|950007|Nevidomý útok injektáže SQL|
+|950001|Útok injektáže SQL|
 |950908|Útok prostřednictvím injektáže SQL.|
-|959073|Útok prostřednictvím injektáže SQL|
-|981272|Zjistí skrytá sqli testy pomocí sleep() nebo benchmark().|
-|981250|Detekuje pokusy o srovnávací test a přejít do režimu spánku útok prostřednictvím injektáže SQL, včetně podmíněného dotazů|
-|981241|Zjistí podmíněného pokusu o Injektáž SQL|
-|981276|Hledáte základní sql injection. Běžné útoku řetězec pro mysql oracle a dalších.|
-|981270|Vyhledá pokusu o Injektáž SQL základní MongoDB|
-|981253|Zjistí, MySQL a PostgreSQL uložené procedury/funkce injektáže|
-|981251|Zjistí vkládání MySQL UDF a manipulaci s další data nebo strukturu pokusí|
+|959073|Útok injektáže SQL|
+|981272|Detekuje nevidomé SQLi testy pomocí režimu spánku () nebo srovnávacího testu ().|
+|981250|Detekuje srovnávací testy SQL a operace vkládání do režimu spánku včetně podmíněných dotazů.|
+|981241|Detekuje podmíněné pokusy o injektáže SQL.|
+|981276|Hledání základního vkládání SQL Běžný řetězec útoku pro MySQL Oracle a další.|
+|981270|Vyhledá základní pokusy o vkládání SQL MongoDB.|
+|981253|Detekuje injektáže uložených procedur/funkcí MySQL a PostgreSQL.|
+|981251|Detekuje injektáže systému MySQL UDF a další pokusy o manipulaci s daty/strukturou.|
 
-### <a name="crs41xss"></a> crs_41_xss_attacks
+### <a name="crs41xss"></a>crs_41_xss_attacks
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|973336|Filtr XSS – kategorie 1 = Vector značky skriptu|
-|973338|Filtr XSS – kategorie 3 = Vector URI jazyka Javascript|
+|973336|Filtr XSS – kategorie 1 = vektor značky skriptu|
+|973338|Filtr XSS – kategorie 3 = vektor URI JavaScriptu|
 |981136|Pravidlo 981136|
 |981018|Pravidlo 981018|
-|958016|Útoky skriptování napříč weby (XSS)|
-|958414|Útoky skriptování napříč weby (XSS)|
-|958032|Útoky skriptování napříč weby (XSS)|
-|958026|Útoky skriptování napříč weby (XSS)|
-|958027|Útoky skriptování napříč weby (XSS)|
-|958054|Útoky skriptování napříč weby (XSS)|
-|958418|Útoky skriptování napříč weby (XSS)|
-|958034|Útoky skriptování napříč weby (XSS)|
-|958019|Útoky skriptování napříč weby (XSS)|
-|958013|Útoky skriptování napříč weby (XSS)|
-|958408|Útoky skriptování napříč weby (XSS)|
-|958012|Útoky skriptování napříč weby (XSS)|
-|958423|Útoky skriptování napříč weby (XSS)|
-|958002|Útoky skriptování napříč weby (XSS)|
-|958017|Útoky skriptování napříč weby (XSS)|
-|958007|Útoky skriptování napříč weby (XSS)|
-|958047|Útoky skriptování napříč weby (XSS)|
-|958410|Útoky skriptování napříč weby (XSS)|
-|958415|Útoky skriptování napříč weby (XSS)|
-|958022|Útoky skriptování napříč weby (XSS)|
-|958405|Útoky skriptování napříč weby (XSS)|
-|958419|Útoky skriptování napříč weby (XSS)|
-|958028|Útoky skriptování napříč weby (XSS)|
-|958057|Útoky skriptování napříč weby (XSS)|
-|958031|Útoky skriptování napříč weby (XSS)|
-|958006|Útoky skriptování napříč weby (XSS)|
-|958033|Útoky skriptování napříč weby (XSS)|
-|958038|Útoky skriptování napříč weby (XSS)|
-|958409|Útoky skriptování napříč weby (XSS)|
-|958001|Útoky skriptování napříč weby (XSS)|
-|958005|Útoky skriptování napříč weby (XSS)|
-|958404|Útoky skriptování napříč weby (XSS)|
-|958023|Útoky skriptování napříč weby (XSS)|
-|958010|Útoky skriptování napříč weby (XSS)|
-|958411|Útoky skriptování napříč weby (XSS)|
-|958422|Útoky skriptování napříč weby (XSS)|
-|958036|Útoky skriptování napříč weby (XSS)|
-|958000|Útoky skriptování napříč weby (XSS)|
-|958018|Útoky skriptování napříč weby (XSS)|
-|958406|Útoky skriptování napříč weby (XSS)|
-|958040|Útoky skriptování napříč weby (XSS)|
-|958052|Útoky skriptování napříč weby (XSS)|
-|958037|Útoky skriptování napříč weby (XSS)|
-|958049|Útoky skriptování napříč weby (XSS)|
-|958030|Útoky skriptování napříč weby (XSS)|
-|958041|Útoky skriptování napříč weby (XSS)|
-|958416|Útoky skriptování napříč weby (XSS)|
-|958024|Útoky skriptování napříč weby (XSS)|
-|958059|Útoky skriptování napříč weby (XSS)|
-|958417|Útoky skriptování napříč weby (XSS)|
-|958020|Útoky skriptování napříč weby (XSS)|
-|958045|Útoky skriptování napříč weby (XSS)|
-|958004|Útoky skriptování napříč weby (XSS)|
-|958421|Útoky skriptování napříč weby (XSS)|
-|958009|Útoky skriptování napříč weby (XSS)|
-|958025|Útoky skriptování napříč weby (XSS)|
-|958413|Útoky skriptování napříč weby (XSS)|
-|958051|Útoky skriptování napříč weby (XSS)|
-|958420|Útoky skriptování napříč weby (XSS)|
-|958407|Útoky skriptování napříč weby (XSS)|
-|958056|Útoky skriptování napříč weby (XSS)|
-|958011|Útoky skriptování napříč weby (XSS)|
-|958412|Útoky skriptování napříč weby (XSS)|
-|958008|Útoky skriptování napříč weby (XSS)|
-|958046|Útoky skriptování napříč weby (XSS)|
-|958039|Útoky skriptování napříč weby (XSS)|
-|958003|Útoky skriptování napříč weby (XSS)|
-|973300|Je to možné XSS útoku zjistil - obslužnou rutinu značky HTML|
-|973301|Útoky XSS zjistil|
-|973302|Útoky XSS zjistil|
-|973303|Útoky XSS zjistil|
-|973304|Útoky XSS zjistil|
-|973305|Útoky XSS zjistil|
-|973306|Útoky XSS zjistil|
-|973307|Útoky XSS zjistil|
-|973308|Útoky XSS zjistil|
-|973309|Útoky XSS zjistil|
-|973311|Útoky XSS zjistil|
-|973313|Útoky XSS zjistil|
-|973314|Útoky XSS zjistil|
-|973331|Filtruje - IE XSS zjistil útoku.|
-|973315|Filtruje - IE XSS zjistil útoku.|
-|973330|Filtruje - IE XSS zjistil útoku.|
-|973327|Filtruje - IE XSS zjistil útoku.|
-|973326|Filtruje - IE XSS zjistil útoku.|
-|973346|Filtruje - IE XSS zjistil útoku.|
-|973345|Filtruje - IE XSS zjistil útoku.|
-|973324|Filtruje - IE XSS zjistil útoku.|
-|973323|Filtruje - IE XSS zjistil útoku.|
-|973348|Filtruje - IE XSS zjistil útoku.|
-|973321|Filtruje - IE XSS zjistil útoku.|
-|973320|Filtruje - IE XSS zjistil útoku.|
-|973318|Filtruje - IE XSS zjistil útoku.|
-|973317|Filtruje - IE XSS zjistil útoku.|
-|973329|Filtruje - IE XSS zjistil útoku.|
-|973328|Filtruje - IE XSS zjistil útoku.|
+|958016|Útok skriptování XSS (mezi weby)|
+|958414|Útok skriptování XSS (mezi weby)|
+|958032|Útok skriptování XSS (mezi weby)|
+|958026|Útok skriptování XSS (mezi weby)|
+|958027|Útok skriptování XSS (mezi weby)|
+|958054|Útok skriptování XSS (mezi weby)|
+|958418|Útok skriptování XSS (mezi weby)|
+|958034|Útok skriptování XSS (mezi weby)|
+|958019|Útok skriptování XSS (mezi weby)|
+|958013|Útok skriptování XSS (mezi weby)|
+|958408|Útok skriptování XSS (mezi weby)|
+|958012|Útok skriptování XSS (mezi weby)|
+|958423|Útok skriptování XSS (mezi weby)|
+|958002|Útok skriptování XSS (mezi weby)|
+|958017|Útok skriptování XSS (mezi weby)|
+|958007|Útok skriptování XSS (mezi weby)|
+|958047|Útok skriptování XSS (mezi weby)|
+|958410|Útok skriptování XSS (mezi weby)|
+|958415|Útok skriptování XSS (mezi weby)|
+|958022|Útok skriptování XSS (mezi weby)|
+|958405|Útok skriptování XSS (mezi weby)|
+|958419|Útok skriptování XSS (mezi weby)|
+|958028|Útok skriptování XSS (mezi weby)|
+|958057|Útok skriptování XSS (mezi weby)|
+|958031|Útok skriptování XSS (mezi weby)|
+|958006|Útok skriptování XSS (mezi weby)|
+|958033|Útok skriptování XSS (mezi weby)|
+|958038|Útok skriptování XSS (mezi weby)|
+|958409|Útok skriptování XSS (mezi weby)|
+|958001|Útok skriptování XSS (mezi weby)|
+|958005|Útok skriptování XSS (mezi weby)|
+|958404|Útok skriptování XSS (mezi weby)|
+|958023|Útok skriptování XSS (mezi weby)|
+|958010|Útok skriptování XSS (mezi weby)|
+|958411|Útok skriptování XSS (mezi weby)|
+|958422|Útok skriptování XSS (mezi weby)|
+|958036|Útok skriptování XSS (mezi weby)|
+|958000|Útok skriptování XSS (mezi weby)|
+|958018|Útok skriptování XSS (mezi weby)|
+|958406|Útok skriptování XSS (mezi weby)|
+|958040|Útok skriptování XSS (mezi weby)|
+|958052|Útok skriptování XSS (mezi weby)|
+|958037|Útok skriptování XSS (mezi weby)|
+|958049|Útok skriptování XSS (mezi weby)|
+|958030|Útok skriptování XSS (mezi weby)|
+|958041|Útok skriptování XSS (mezi weby)|
+|958416|Útok skriptování XSS (mezi weby)|
+|958024|Útok skriptování XSS (mezi weby)|
+|958059|Útok skriptování XSS (mezi weby)|
+|958417|Útok skriptování XSS (mezi weby)|
+|958020|Útok skriptování XSS (mezi weby)|
+|958045|Útok skriptování XSS (mezi weby)|
+|958004|Útok skriptování XSS (mezi weby)|
+|958421|Útok skriptování XSS (mezi weby)|
+|958009|Útok skriptování XSS (mezi weby)|
+|958025|Útok skriptování XSS (mezi weby)|
+|958413|Útok skriptování XSS (mezi weby)|
+|958051|Útok skriptování XSS (mezi weby)|
+|958420|Útok skriptování XSS (mezi weby)|
+|958407|Útok skriptování XSS (mezi weby)|
+|958056|Útok skriptování XSS (mezi weby)|
+|958011|Útok skriptování XSS (mezi weby)|
+|958412|Útok skriptování XSS (mezi weby)|
+|958008|Útok skriptování XSS (mezi weby)|
+|958046|Útok skriptování XSS (mezi weby)|
+|958039|Útok skriptování XSS (mezi weby)|
+|958003|Útok skriptování XSS (mezi weby)|
+|973300|Byl zjištěn možný útok XSS – obslužná rutina značky HTML|
+|973301|Byl zjištěn útok XSS.|
+|973302|Byl zjištěn útok XSS.|
+|973303|Byl zjištěn útok XSS.|
+|973304|Byl zjištěn útok XSS.|
+|973305|Byl zjištěn útok XSS.|
+|973306|Byl zjištěn útok XSS.|
+|973307|Byl zjištěn útok XSS.|
+|973308|Byl zjištěn útok XSS.|
+|973309|Byl zjištěn útok XSS.|
+|973311|Byl zjištěn útok XSS.|
+|973313|Byl zjištěn útok XSS.|
+|973314|Byl zjištěn útok XSS.|
+|973331|Filtry v IE XSS – byl zjištěn útok.|
+|973315|Filtry v IE XSS – byl zjištěn útok.|
+|973330|Filtry v IE XSS – byl zjištěn útok.|
+|973327|Filtry v IE XSS – byl zjištěn útok.|
+|973326|Filtry v IE XSS – byl zjištěn útok.|
+|973346|Filtry v IE XSS – byl zjištěn útok.|
+|973345|Filtry v IE XSS – byl zjištěn útok.|
+|973324|Filtry v IE XSS – byl zjištěn útok.|
+|973323|Filtry v IE XSS – byl zjištěn útok.|
+|973348|Filtry v IE XSS – byl zjištěn útok.|
+|973321|Filtry v IE XSS – byl zjištěn útok.|
+|973320|Filtry v IE XSS – byl zjištěn útok.|
+|973318|Filtry v IE XSS – byl zjištěn útok.|
+|973317|Filtry v IE XSS – byl zjištěn útok.|
+|973329|Filtry v IE XSS – byl zjištěn útok.|
+|973328|Filtry v IE XSS – byl zjištěn útok.|
 
-### <a name="crs42"></a> crs_42_tight_security
+### <a name="crs42"></a>crs_42_tight_security
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|950103|Cesty přechodu útoku|
+|950103|Útok procházením cest|
 
-### <a name="crs45"></a> crs_45_trojans
+### <a name="crs45"></a>crs_45_trojans
 
-|RuleId|Popis|
+|ruleId|Popis|
 |---|---|
-|950110|Přístup přes zadní vrátka|
-|950921|Přístup přes zadní vrátka|
-|950922|Přístup přes zadní vrátka|
+|950110|Přístup zadní vrátka|
+|950921|Přístup zadní vrátka|
+|950922|Přístup zadní vrátka|
 
 ---
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak zakázat pravidla firewallu webových aplikací: [Přizpůsobit pravidla firewallu webových aplikací](application-gateway-customize-waf-rules-portal.md)
+Přečtěte si, jak zakázat pravidla WAF: [Přizpůsobení pravidel WAF](application-gateway-customize-waf-rules-portal.md)

@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953001"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240265"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí Change Tracking řešení
 
@@ -36,7 +36,7 @@ Pro agenta Windows se oficiálně podporuje následující verze operačního sy
 
 Následující distribuce systému Linux jsou oficiálně podporována. Agent pro Linux se ale může spustit i v jiných distribucích, které nejsou uvedené. Pokud není uvedeno jinak, všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
 
-### <a name="64-bit"></a>64 bitů
+### <a name="64-bit"></a>64 – bit
 
 * CentOS 6 a 7
 * Amazon Linux 2017.09
@@ -46,7 +46,7 @@ Následující distribuce systému Linux jsou oficiálně podporována. Agent pr
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 bitů
+### <a name="32-bit"></a>32 – bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -75,7 +75,7 @@ Azure Security Center se přidalo monitorování integrity souborů (FIM) založ
 
 - Změny softwaru
 - Služby systému Windows
-- Procesy démon Linuxu
+- Procesy démon systému Linux
 
 Pokud jste již vypnuli FIM a chcete vyzkoušet úplné Change Tracking řešení, je nutné provést následující kroky. Nastavení nejsou tímto procesem odebrána.
 
@@ -100,7 +100,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
 |Enabled     | Určuje, zda je nastavení použito.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logicky seskupené soubory.        |
-|Zadejte cestu     | Cesta pro kontrolu souboru. Příklad: "/etc/*. conf"       |
+|Zadat cestu     | Cesta pro kontrolu souboru. Příklad: "/etc/*. conf"       |
 |Typ cesty     | Typ položky, která se má sledovat. možné hodnoty jsou File a Directory.        |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
@@ -123,7 +123,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
 |Enabled     | Určuje, zda je nastavení použito.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logicky seskupené soubory.        |
-|Zadejte cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
+|Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **false**.|
 
@@ -155,7 +155,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 |Enabled     | Určuje, zda je nastavení použito.        |
 |Název položky     | Popisný název klíče registru, který se má sledovat        |
 |Skupina     | Název skupiny pro logicky seskupené klíče registru.        |
-|Klíč registru Windows   | Cesta pro kontrolu klíče registru. Příklad: "Prostředí HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common po spuštění"      |
+|Klíč registru systému Windows   | Cesta pro kontrolu klíče registru. Příklad: "Prostředí HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common po spuštění"      |
 
 ## <a name="limitations"></a>Omezení
 
@@ -187,7 +187,7 @@ V následující tabulce je uvedena frekvence sběru dat pro typy změn. U každ
 | Registr systému Windows | 50 minut |
 | Soubor Windows | 30 minut |
 | Soubor Linux | 15 minut |
-| Služby pro Windows | 10 sekund až 30 minut</br> Výchozí: 30 minut |
+| Služby pro Windows | 10 sekund až 30 minut</br> Výchozí 30 minut |
 | Procesy démon systému Linux | 5 minut |
 | Software systému Windows | 30 minut |
 | Software pro Linux | 5 minut |
@@ -198,7 +198,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 |---|---|---|
 |File|500||
 |Registru|250||
-|Software systému Windows|250|Neobsahuje aktualizace softwaru|
+|Software systému Windows|250|Neobsahuje opravy hotfix softwaru|
 |Balíčky Linux|1250||
 |Služby|250||
 |Démon|250||
@@ -273,7 +273,7 @@ Následující adresy jsou vyžadovány konkrétně pro Change Tracking. Komunik
 
 Po povolení řešení můžete zobrazit souhrn změn pro monitorované počítače výběrem možnosti **Change Tracking** v části **Správa konfigurace** v účtu Automation.
 
-Můžete zobrazit změny v počítačích a pak přejít k podrobnostem pro každou událost. Rozevírací nabídky jsou v horní části grafu k dispozici pro omezení grafu a podrobné informace na základě typu změny a rozsahů času. Můžete také kliknout na graf a přetáhnout ho a vybrat vlastní časový rozsah. **Typ změny** bude jedna z následujících hodnot **událostí**, démonů, **souborů**, registrů, **softwaru**a **služeb systému Windows**. Kategorie zobrazuje typ změny a lze ji **Přidat**, **Upravit**nebo **Odebrat**.
+Můžete zobrazit změny v počítačích a pak přejít k podrobnostem pro každou událost. Rozevírací nabídky jsou v horní části grafu k dispozici pro omezení grafu a podrobné informace na základě typu změny a rozsahů času. Můžete také kliknout na graf a přetáhnout ho a vybrat vlastní časový rozsah. **Typ změny** bude jedna z následujících hodnot **událostí**, **démonů**, **souborů**, **registrů**, **softwaru**a **služeb systému Windows**. Kategorie zobrazuje typ změny a lze ji **Přidat**, **Upravit**nebo **Odebrat**.
 
 ![Obrázek řídicího panelu Change Tracking](./media/change-tracking/change-tracking-dash01.png)
 
@@ -329,7 +329,7 @@ Při upozorňování na změny v souboru hostitelů je jedním z užitečných v
 |ConfigurationChange <br>&#124;kde RegistryKey = = "HKEY_LOCAL_MACHINE\\software\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hodí se ke sledování změn důležitých antivirových klíčů.|
 |ConfigurationChange <br>&#124;kde RegistryKey obsahuje "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| Užitečné pro sledování změn nastavení brány firewall|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o používání řešení najdete v kurzu o Change Tracking.
 

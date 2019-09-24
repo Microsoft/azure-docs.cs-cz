@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488691"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240409"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -42,7 +42,7 @@ V rámci této instalace se zaměstnanci v podniku můžou přihlašovat k uzlů
 
 Osvědčeným postupem, který používá většina podniků, je zajistit, že ne každý zaměstnanec má přístup ke všem podnikovým prostředkům. Správce může podobně definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. To je dostupné jenom v clusterech ESP.
 
-Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení podregistru [](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md) a [Kafka](apache-domain-joined-run-kafka.md) pomocí těchto modulů plug-in v Apache Ranger. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že lidé mají pouze oprávnění potřebná k provádění jejich pracovních odpovědností. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
+Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení [podregistru](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md) a [Kafka](apache-domain-joined-run-kafka.md) pomocí těchto modulů plug-in v Apache Ranger. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že lidé mají pouze oprávnění potřebná k provádění jejich pracovních odpovědností. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
 
 Správce může například nakonfigurovat [Apache Ranger](https://ranger.apache.org/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje filtrování na úrovni řádků a sloupců (maskování dat) a filtruje citlivá data proti neautorizovaným uživatelům.
 
@@ -52,7 +52,7 @@ Auditování veškerého přístupu k prostředkům clusteru a datům je nezbytn
 
 Správce může zobrazit a ohlásit veškerý přístup k prostředkům a datům clusteru HDInsight. Správce může také zobrazit a ohlásit všechny změny v zásadách řízení přístupu, které jsou vytvořeny v rámci podporovaných koncových bodů Apache Ranger. 
 
-Pro přístup k protokolům auditu Apache Ranger a Ambari a také k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) a zobrazte související záznamy auditu.
+Pro přístup k protokolům auditu Apache Ranger a Ambari a také k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) a zobrazte tabulky, které poskytují záznamy auditování.
 
 ### <a name="encryption"></a>Šifrování
 
@@ -73,6 +73,7 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 | Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Zákazníka |
 |  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Zákazníka |
 |  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Zákazníka |
+|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Zákazníka |
 |  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Zákazníka |
 |  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazníka |
 | Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Zákazníka |
@@ -83,8 +84,8 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Zákazníka |
 |  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall (Preview) | Zákazníka |
-| Virtualizovaná infrastruktura | Není k dispozici | HDInsight (poskytovatel cloudu) |
-| Zabezpečení fyzické infrastruktury | Není k dispozici | HDInsight (poskytovatel cloudu) |
+| Virtualizovaná infrastruktura | neuvedeno | HDInsight (poskytovatel cloudu) |
+| Zabezpečení fyzické infrastruktury | neuvedeno | HDInsight (poskytovatel cloudu) |
 
 ## <a name="next-steps"></a>Další kroky
 

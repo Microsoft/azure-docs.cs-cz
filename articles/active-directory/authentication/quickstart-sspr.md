@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414052"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212104"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Rychlý start: Samoobslužné resetování hesla
 
@@ -26,12 +26,12 @@ Tento rychlý start vás provede konfigurací samoobslužného resetování hesl
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci.
 * Účet s oprávněními globálního správce.
-* Bez oprávnění správce testovacího uživatele s heslem, když už víte, pokud je potřeba vytvořit uživatele najdete v článku [rychlý start: Přidání nových uživatelů do služby Azure Active Directory](../add-users-azure-active-directory.md).
+* Testovací uživatel bez oprávnění správce s heslem, které znáte, pokud potřebujete vytvořit uživatele, najdete v článku [rychlý Start: Přidejte nové uživatele do Azure Active Directory](../add-users-azure-active-directory.md).
 * Pilotní skupina pro testování, ve které je testovací uživatel bez oprávnění správce členem. Pokud potřebujete skupinu vytvořit, podívejte se do článku [Vytvoření skupiny a přidání členů ve službě Azure AD](../active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
-> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+[Zobrazit tento proces jako video na YouTube](https://youtu.be/Pa0eyqjEjvQ)
 
 1. Ve svém stávajícím tenantovi Azure AD na webu **Azure Portal** vyberte v části **Azure Active Directory** volbu **Resetování hesla**.
 
@@ -42,15 +42,15 @@ Tento rychlý start vás provede konfigurací samoobslužného resetování hesl
 3. Na stránce **Metody ověřování** proveďte následující volby:
    * Počet metod požadovaných k resetování: **1**
    * Metody dostupné pro uživatele:
-      * **E-mail**
-      * **Kód mobilní aplikace (preview)**
+      * **E-mailu**
+      * **Kód mobilní aplikace (Preview)**
    * Klikněte na **Uložit**.
 
-     ![Výběr metody ověřování pro samoobslužné resetování HESLA][Authentication]
+     ![Výběr metod ověřování pro SSPR][Authentication]
 
 4. Na stránce **Registrace** proveďte následující volby:
-   * Vyžadovat od uživatelů registraci při přihlášení: **Ano**
-   * Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací: **365**
+   * Vyžadovat, aby se uživatelé zaregistrovali při přihlášení: **Ano**
+   * Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení ověřovacích údajů: **365**
 
 ## <a name="test-self-service-password-reset"></a>Testování samoobslužného resetování hesla
 
@@ -65,9 +65,9 @@ Teď můžete otestovat konfiguraci samoobslužného resetování hesla prostře
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zakázání samoobslužného resetování hesla je snadné. Otevřete svého tenanta Azure AD, přejděte na **vlastnosti** > **resetování hesla**a pak vyberte **žádný** pod **samoobslužného resetování hesla Povolené**.
+Zakázání samoobslužného resetování hesla je snadné. Otevřete svého tenanta služby > Azure AD a v části **Samoobslužné resetování hesla**vyberte možnost **žádné** **resetování hesla**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak pro uživatele, kteří existují jenom v cloudu, rychle nakonfigurovat samoobslužné resetování hesla. Pokud se chcete dozvědět, jak provést podrobnější zavedení, pokračujte na našeho průvodce zavedením.
 

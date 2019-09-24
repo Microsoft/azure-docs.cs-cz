@@ -4,9 +4,9 @@ description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k o
 services: notification-hubs
 documentationcenter: windows
 keywords: nabízené oznámení,nabízená oznámení,nabízení windows phone
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: df42a0e2fcc8c139c7a2b6ecfa78ce1780fe54ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60873979"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213471"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací Windows Phone pomocí Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro Windows Phone aplikace pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -43,7 +45,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/) předtím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Express s komponentami pro vývoj mobilních aplikací](https://www.visualstudio.com/vs/older-downloads/)
 
 Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notification Hubs pro aplikace Windows Phone 8.
@@ -54,7 +56,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
 ### <a name="configure-windows-phone-mpns-settings"></a>Konfigurace nastavení Windows Phone (MPNS)
 
-1. V **NASTAVENÍ OZNÁMENÍ** vyberte **Windows Phone (MPNS)**.
+1. V **NASTAVENÍ OZNÁMENÍ** vyberte **Windows Phone (MPNS)** .
 2. Vyberte, že chcete **povolit ověřování nabízených oznámení**.
 3. Na panelu nástrojů vyberte **Uložit**.
 
@@ -84,7 +86,7 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
-5. Přidejte následující kód v horní části `Application_Launching` metoda ve `App.xaml.cs`:
+5. Přidejte následující kód na začátek `Application_Launching` metody v: `App.xaml.cs`
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -112,13 +114,13 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
     ```
 
    > [!NOTE]
-   > Hodnota `MyPushChannel` je index, který se používá k vyhledání existujícího kanálu v [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) kolekce. Pokud zde není k dispozici, vytvořte novou položku s tímto názvem.
+   > Hodnota `MyPushChannel` je index, který se používá k vyhledání existujícího kanálu v kolekci [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) . Pokud zde není k dispozici, vytvořte novou položku s tímto názvem.
 
-    Vložit název rozbočovače a připojovací řetězec nazývá `DefaultListenSharedAccessSignature` , který jste si poznamenali v předchozí části.
+    Vložte název vašeho centra a připojovací řetězec s názvem `DefaultListenSharedAccessSignature` , který jste si poznamenali v předchozí části.
     Tento kód načte identifikátor URI kanálu pro aplikaci z MPNS a pak zaregistruje tento kanál URI pomocí centra oznámení. Také zaručuje, že kanál URI je registrován v centru oznámení pokaždé, když je aplikace spuštěna.
 
    > [!NOTE]
-   > V tomto kurzu se odešle informační zpráva do zařízení. Při odesílání oznámení dlaždice musíte místo toho volat `BindToShellTile` metodu na kanál. Pro podporu obou oznámení a oznámení v dlaždici, volejte obě `BindToShellTile` a `BindToShellToast`.
+   > V tomto kurzu se odešle informační zpráva do zařízení. Když odešlete oznámení na dlaždici, musíte místo toho zavolat `BindToShellTile` metodu na kanál. Chcete-li podporovat informační zprávy a oznámení dlaždic, `BindToShellTile` zavolejte `BindToShellToast`jak a.
 
 6. V Průzkumníku řešení rozbalte **Vlastnosti**, otevřete soubor `WMAppManifest.xml`, klikněte na kartu **Možnosti** a ujistěte se, že je zaškrtnuta schopnost **ID_CAP_PUSH_NOTIFICATION**. Vaše aplikace teď přijímá nabízená oznámení.
 
@@ -147,7 +149,7 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
 
     ![Oznámení na zařízení Windows Phone](./media/notification-hubs-windows-phone-get-started/notification-on-windows-phone.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto jednoduchém příkladu jste vysílali nabízená oznámení pro všechna vaše zařízení Windows Phone 8. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením, pokračujte následujícím kurzem:
 

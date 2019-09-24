@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717577"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212581"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Integrovaná provozní analýza v Azure Cosmos DB s využitím Apache Spark (Preview) 
 
@@ -20,7 +20,7 @@ Integrovaná podpora Apache Spark v Azure Cosmos DB umožňuje spouštět analý
 Výpočetní prostředí Spark je automaticky dostupné ve všech oblastech Azure přidružených k vašemu účtu Azure Cosmos. Úlohy Sparku používají možnost více hlavních možností Azure Cosmos DB a můžou zapisovat nebo dotazovat se na místní repliky v jednotlivých oblastech. 
 
 > [!NOTE]
-> Integrovaná podpora pro Apache Spark v Azure Cosmos DB je aktuálně ve verzi omezené verze Preview. Pokud se chcete přihlásit k verzi Preview, přejděte na [stránku Preview](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)a zaregistrujte se na ni. 
+> Integrovaná podpora pro Apache Spark v Azure Cosmos DB je aktuálně ve verzi omezené verze Preview. Pokud se chcete přihlásit k verzi Preview, přejděte na [stránku Preview a zaregistrujte](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)se na ni. 
 
 Podpora Apache Spark v Azure Cosmos DB nabízí následující výhody:
 
@@ -137,13 +137,7 @@ Následující obrázek ukazuje, jak se v herních analýzách používá Azure 
 
 ![Podpora Sparku v Azure Cosmos DB v herních analýzách](./media/spark-api-introduction/gaming-analytics.png)
 
-## <a name="built-in-jupyter-notebooks-support"></a>Integrovaná podpora poznámkových bloků Jupyter
-
-Azure Cosmos DB podporuje integrované poznámkové bloky Jupyter pro všechna rozhraní API, jako je Cassandra, MongoDB, SQL, Gremlin a Table. Poznámkové bloky Jupyter se spouštějí v rámci účtů Azure Cosmos a zvyšují prostředí pro vývojáře. Integrovaná podpora poznámkových bloků pro všechna Azure Cosmos DB rozhraní API a datové modely umožňují interaktivní spouštění dotazů. Můžete také spouštět modely strojového učení a analyzovat data uložená ve vašich databázích Azure Cosmos. Pomocí prostředí poznámkového bloku Jupyter můžete analyzovat uložená data, sestavovat a naučit modely strojového učení a provádět Inferencing na datech v Azure Portal, jak je znázorněno na následujícím obrázku:
-
-![Podpora notebooků Jupyter v Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o výhodách Azure Cosmos DB najdete v článku [Přehled](introduction.md) .
 * [Začínáme s rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)

@@ -8,48 +8,48 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392854"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210189"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
 | Vrstva | Limit za den | Uchovávání dat | Komentář |
 |:---|:---|:---|:---|
-| Cenová úroveň aktuální za GB<br>(představený 2018. dubna) | Bez omezení | 30-730 dní | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
+| Cenová úroveň aktuální za GB<br>(představený 2018. dubna) | Neomezeno | 30-730 dní | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
 | Starší úrovně Free<br>(představený 2016. dubna) | 500 MB | 7 dní | Když váš pracovní prostor dosáhne limitu 500 MB za den, příjem dat se zastaví a obnoví se na začátku dalšího dne. Den vychází ze standardu UTC. Všimněte si, že data shromážděná pomocí Azure Security Center nejsou zahrnutá do tohoto limitu 500 MB za den a budou se dál shromažďovat nad tímto limitem.  |
-| Starší verze samostatné na GB úrovně<br>(představený 2016. dubna) | Bez omezení | 30 až 730 dnů | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
-| Starší verze na uzel (OMS)<br>(představený 2016. dubna) | Bez omezení | 30 až 730 dnů | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
-| Starší verze úrovně Standard | Bez omezení | 30 dní  | Uchování se nedá upravit. |
-| Starší verze úrovně Premium | Bez omezení | 365 dní  | Uchování se nedá upravit. |
+| Starší verze samostatné na GB úrovně<br>(představený 2016. dubna) | Neomezeno | 30 až 730 dnů | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
+| Starší verze na uzel (OMS)<br>(představený 2016. dubna) | Neomezeno | 30 až 730 dnů | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
+| Starší verze úrovně Standard | Neomezeno | 30 dní  | Uchování se nedá upravit. |
+| Starší verze úrovně Premium | Neomezeno | 365 dní  | Uchování se nedá upravit. |
 
 **Počet pracovních prostorů na předplatné**
 
 | Cenová úroveň    | Limit pracovního prostoru | Komentáře
 |:---|:---|:---|
 | Úroveň Free  | 10 | Toto omezení nejde zvýšit. |
-| Všechny ostatní úrovně | Bez omezení | Omezíte počet prostředků v rámci skupiny prostředků a počet skupin prostředků na předplatné. |
+| Všechny ostatní úrovně | Neomezeno | Omezíte počet prostředků v rámci skupiny prostředků a počet skupin prostředků na předplatné. |
 
 **Azure Portal**
 
-| Kategorie | Omezení | Komentáře |
+| Category | Omezení | Komentáře |
 |:---|:---|:---|
 | Maximální počet záznamů vrácených dotazem protokolu | 10,000 | Zmenšete výsledky pomocí rozsahu dotazu, časového rozsahu a filtrů v dotazu. |
 
 
 **Rozhraní API kolekce dat**
 
-| Kategorie | Omezení | Komentáře |
+| Category | Omezení | Komentáře |
 |:---|:---|:---|
 | Maximální velikost pro jeden příspěvek | 30 MB | Rozdělte větší svazky na více příspěvků. |
 | Maximální velikost pro hodnoty polí  | 32 KB | Pole delší než 32 kB se oříznou. |
 
 **Rozhraní API pro hledání**
 
-| Kategorie | Omezení | Komentáře |
+| Category | Omezení | Komentáře |
 |:---|:---|:---|
 | Maximální počet záznamů vrácených v jednom dotazu | 500,000 | |
 | Maximální velikost vrácených dat | 64 000 000 bajtů (~ 61 MiB)| |
@@ -58,12 +58,25 @@ ms.locfileid: "70392854"
 
 **Obecné limity pracovního prostoru**
 
-| Kategorie | Omezení | Komentáře |
+| Category | Omezení | Komentáře |
 |:---|:---|:---|
 | Maximální počet sloupců v tabulce         | 500 | |
 | Maximální počet znaků pro název sloupce | 500 | |
 | Oblasti na kapacitě | Západní střed USA | V tuto chvíli nemůžete v této oblasti vytvořit nový pracovní prostor, protože se jedná o dočasný limit kapacity. Toto omezení se plánuje až do konce října 2019. |
 | Export dat | Momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
+
+**Rychlost přijímání dat**
+
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí prahová hodnota pro rychlost příjmu je nastavená na **500 MB/min** na pracovní prostor. Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
+ 
+Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >V závislosti na tom, jak dlouho jste používali Log Analytics, je možné, že budete mít přístup ke starším cenovým úrovním. Další informace o [cenových úrovních Log Analytics starších verzích](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

@@ -1,5 +1,5 @@
 ---
-title: Možnosti lovu v Azure Sentinel Preview | Microsoft Docs
+title: Možnosti lovu v Azure Sentinel | Microsoft Docs
 description: Tento článek popisuje, jak používat možnosti lovu do Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780463"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240617"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Prohledat hrozby ve službě Azure Sentinel Preview
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Loven pro hrozby s v Azure Sentinel
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Pokud jste zkoušející, který chce být aktivní pro hledání bezpečnostních hrozeb, výkonné nástroje pro vyhledávání a dotazování v souvislosti s technologií Azure pro zajištění bezpečnostních hrozeb v rámci zdrojů dat vaší organizace. Ale vaše systémy a bezpečnostní zařízení generují Mountains dat, která se můžou obtížně analyzovat a filtrovat na smysluplné události. Aby se analytikům zabezpečení dokázali aktivně podívat na nové anomálie, které nezjistily vaše aplikace zabezpečení, v rámci integrovaných dotazů Azure Sentinele se podíváte na tyto otázky, které vám pomůžou najít problémy v datech, která už máte ve vaší síti. 
 
@@ -41,8 +39,7 @@ S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod
 
 - Výkonný dotazovací jazyk pomocí technologie IntelliSense: Postaven na základě dotazovacího jazyka, který vám poskytne flexibilitu, kterou je třeba vzít v úvahu pro další úroveň.
 
-- Vytvořte si vlastní záložky: Během loveckého procesu se můžete setkat se všemi shodami nebo nálezy, řídicími panely nebo aktivitami, které vypadají neobvyklé nebo podezřelé. Aby bylo možné označit tyto položky, abyste se do nich mohli vrátit v budoucnu, použijte funkci záložky. Záložky umožňují uložit položky pro pozdější použití k vytvoření incidentu pro účely šetření. Další informace o záložkách naleznete v tématu Use [záložky v lovu].
-
+- Vytvořte si vlastní záložky: Během loveckého procesu se můžete setkat se všemi shodami nebo nálezy, řídicími panely nebo aktivitami, které vypadají neobvyklé nebo podezřelé. Aby bylo možné označit tyto položky, abyste se do nich mohli vrátit v budoucnu, použijte funkci záložky. Záložky umožňují uložit položky pro pozdější použití k vytvoření incidentu pro účely šetření. Další informace o záložkách najdete [v tématu použití záložek při lovu](hunting.md).
 - K automatizaci šetření používejte poznámkové bloky: Poznámkové bloky se podobají podrobným playbookyům, které můžete sestavit, abyste provedli kroky vyšetřování a průzkumu.  Poznámkové bloky zapouzdřují všechny kroky pro lovecké v opakovaně použitelných PlayBook, které je možné sdílet s ostatními uživateli ve vaší organizaci. 
 - Dotaz na uložená data: Data jsou v tabulkách k dispozici pro dotazování. Můžete například zadat dotaz na vytváření procesů, události DNS a mnoho dalších typů událostí.
 
@@ -143,7 +140,7 @@ Klonovat a upravit existující lovecký dotaz:
 
    ![vlastní dotaz](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak spustit lovecké šetření s použitím funkce Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
 

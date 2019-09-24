@@ -1,6 +1,6 @@
 ---
-title: Propojení dat Windows firewall Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu Windows firewall data.
+title: Připojit data brány Windows Firewall ke službě Azure Sentinel | Microsoft Docs
+description: Naučte se připojit data brány Windows Firewall ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,53 +13,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a863910ee338da5655e9f3b5610b0a8049b8b2a9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620774"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240624"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 
-> [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Konektor Windows firewall umožňuje snadno připojit vaše protokoly brány firewall Windows, pokud jsou připojeni k pracovnímu prostoru Azure Sentinelu. Toto připojení umožňuje zobrazit řídicí panely, vytvářet vlastní výstrahy a zlepšit šetření. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Řešení shromažďuje události brány firewall pro Windows z počítače Windows, na kterých je nainstalován agenta Log Analytics. 
+
+Konektor brány Windows Firewall umožňuje snadno připojit protokoly brány Windows Firewall, pokud jsou připojené k pracovnímu prostoru Sentinel Azure. Toto připojení umožňuje zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení. Řešení shromažďuje události brány Windows Firewall z počítačů se systémem Windows, na kterých je nainstalován agent Log Analytics. 
 
 
 > [!NOTE]
-> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
 ## <a name="enable-the-connector"></a>Povolení konektoru 
 
-1. Na portálu Azure Sentinelu vyberte **datové konektory** a potom klikněte na **brány Windows firewall** dlaždici. 
-1.  Pokud jsou vaše počítače s Windows v Azure:
-    1. Klikněte na tlačítko **instalace agenta na virtuálním počítači Windows Azure**.
-    1. V **virtuálních počítačů** seznamu, vyberte počítač Windows chcete Streamovat do ověřovacích Azure. Ujistěte se, že jde o virtuálního počítače s Windows.
-    1. V okně, které se otevře pro tento virtuální počítač, klikněte na tlačítko **připojit**.  
-    1. Klikněte na tlačítko **povolit** v **brány Windows firewall konektor** okna. 
+1. Na portálu Sentinel Azure vyberte **datové konektory** a pak klikněte na dlaždici **Windows Firewall** . 
+1.  Pokud jsou počítače s Windows v Azure:
+    1. Klikněte na **nainstalovat agenta na virtuální počítač Azure s Windows**.
+    1. V seznamu **virtuální počítače** vyberte počítač s Windows, který chcete streamovat do Azure Sentinel. Ujistěte se, že se jedná o virtuální počítač s Windows.
+    1. V okně, které se otevře pro daný virtuální počítač, klikněte na **připojit**.  
+    1. V okně **konektor brány Windows Firewall** klikněte na **Povolit** . 
 
-2. Pokud váš počítač Windows není virtuální počítač Azure:
-    1. Klikněte na tlačítko **instalace agenta do počítače mimo Azure**.
-    1. V **přímý agent** okna, vyberte buď **Windows stáhnout agenta (64bitová verze)** nebo **Windows stáhnout agenta (32 bitů)** .
-    1. Nainstalujte agenta na svém počítači s Windows. Kopírovat **ID pracovního prostoru**, **primární klíč**, a **sekundární klíč** a využít při zobrazení výzvy v průběhu instalace.
+2. Pokud Váš počítač s Windows není virtuální počítač Azure:
+    1. Klikněte na **instalovat agenta na počítačích mimo Azure**.
+    1. V okně **přímý agent** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **stáhnout agenta pro Windows (32 bitů)** .
+    1. Nainstalujte agenta na počítač s Windows. Zkopírujte **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** a použijte je při zobrazení výzvy během instalace.
 
-4. Vyberte typy dat, které chcete Streamovat.
-5. Klikněte na tlačítko **řešení nainstalovat**.
-6. Chcete-li použít odpovídající schématu pro bránu Windows firewall v Log Analytics, vyhledejte **SecurityEvent**.
+4. Vyberte datové typy, které chcete streamovat.
+5. Klikněte na **instalovat řešení**.
+6. Pokud chcete použít příslušné schéma v Log Analytics pro bránu Windows Firewall, vyhledejte **SecurityEvent**.
 
-## <a name="validate-connectivity"></a>Ověření připojení
+## <a name="validate-connectivity"></a>Ověřit připojení
 
-Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v Log Analytics. 
+Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak připojit bránu Windows firewall do ověřovacích Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit bránu Windows Firewall ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

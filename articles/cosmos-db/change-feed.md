@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615669"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219902"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změnit informační kanál v Azure Cosmos DB – přehled
 
@@ -42,7 +42,7 @@ Tato funkce je aktuálně podporuje následující klientské sady SDK a rozhran
 
 ## <a name="change-feed-and-different-operations"></a>Kanál změn a různé operace
 
-V současné době se zobrazí všechny operace v kanálu změn. Funkce, kde můžete řídit změny informační kanál pro určité operace, například jenom aktualizace a vkládání není ještě není k dispozici. "Měkké značky" můžete přidat v položce pro aktualizace a filtr na základě při zpracování položek v kanálu změn. Kanál změn není aktuálně protokolu odstraní. Podobně jako v předchozím příkladu můžete přidat softwarové značky u položek, které jsou mazány, například můžete přidat atribut v položce nazývá "odstraněné" a nastavte na hodnotu "true" a nastavte hodnotu TTL na položce, takže se dají automaticky odstranit. Si můžete přečíst, že změna položky informačního kanálu pro historické položky, například, kteří byli přidáni před pěti lety. Pokud není položka smazána si můžete přečíst tato změna kanálu až na hodnotu původ vašeho kontejneru.
+V současné době se zobrazí všechny operace v kanálu změn. Funkce, kde můžete řídit změny informační kanál pro určité operace, například jenom aktualizace a vkládání není ještě není k dispozici. "Měkké značky" můžete přidat v položce pro aktualizace a filtr na základě při zpracování položek v kanálu změn. Kanál změn není aktuálně protokolu odstraní. Podobně jako v předchozím příkladu můžete přidat softwarové značky u položek, které jsou mazány, například můžete přidat atribut v položce nazývá "odstraněné" a nastavte na hodnotu "true" a nastavte hodnotu TTL na položce, takže se dají automaticky odstranit. Můžete si přečíst kanál změn pro historické položky (Poslední změna odpovídající položce, nezahrnuje mezilehlé změny), například položky přidané před pěti lety. Pokud není položka smazána si můžete přečíst tato změna kanálu až na hodnotu původ vašeho kontejneru.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Pořadí položek v kanálu změn řazení
 

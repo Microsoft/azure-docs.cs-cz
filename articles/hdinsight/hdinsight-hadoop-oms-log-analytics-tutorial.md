@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816027"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240375"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Použití protokolů Azure Monitor k monitorování clusterů HDInsight
 
@@ -109,6 +109,15 @@ Protože clusteru je to úplně nový cluster, nebude se v sestavě zobrazovat �
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
 
 Azure monitor také podporuje shromažďování a analýzu metrik výkonu pro uzly ve vašem clusteru. Další informace o povolení a konfiguraci této funkce najdete v tématu [zdroje dat o výkonu pro Linux v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Auditování clusteru
+
+Služba HDInsight podporuje auditování clusteru s protokoly Azure Monitor importem následujících typů protokolů:
+
+* `log_gateway_audit_CL`– Tato tabulka poskytuje protokoly auditu z uzlů brány clusteru, které zobrazují úspěšné a neúspěšné pokusy o přihlášení.
+* `log_auth_CL`– Tato tabulka poskytuje protokoly SSH s úspěšnými a neúspěšnými pokusy o přihlášení.
+* `log_ambari_audit_CL`– Tato tabulka poskytuje protokoly auditu z Ambari.
+* `log_ranger_audti_CL`– Tato tabulka poskytuje protokoly auditu z Apache Ranger v clusterech ESP.
 
 ## <a name="next-steps"></a>Další kroky
 

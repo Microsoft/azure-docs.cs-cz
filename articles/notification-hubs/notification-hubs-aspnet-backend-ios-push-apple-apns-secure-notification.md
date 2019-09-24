@@ -1,10 +1,10 @@
 ---
-title: Azure Notification Hubs zabezpečené nabízená oznámení
-description: Zjistěte, jak k odesílání zabezpečených nabízených oznámení do aplikací pro iOS z Azure. Ukázky kódu napsané v jazyce Objective-C a C#.
+title: Azure Notification Hubs Secure push
+description: Naučte se odesílat zabezpečená nabízená oznámení do aplikace pro iOS z Azure. Ukázky kódu napsané v cíli – C C#a.
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458484"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212143"
 ---
-# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs zabezpečené nabízená oznámení
+# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -30,47 +32,47 @@ ms.locfileid: "61458484"
 
 ## <a name="overview"></a>Přehled
 
-Podpora nabízená oznámení v Microsoft Azure umožňuje získat přístup k snadným ovládáním, multiplatformní a horizontálním navýšením kapacity škálovanou infrastrukturu, což výrazně zjednodušuje provádění nabízená oznámení pro zákaznické a podnikové aplikace pro mobilní zařízení platformy.
+Podpora nabízených oznámení v Microsoft Azure umožňuje přístup k infrastruktuře nabízených oznámení s více platformami a škálování na více platforem, která významně zjednodušuje implementaci nabízených oznámení pro příjemce i podnikové aplikace pro mobilní zařízení. platformu.
 
-Z důvodu dodržování legislativních nebo omezení zabezpečení, někdy aplikace může být vhodné zahrnout něco oznámení, který nemůže být přenesen prostřednictvím infrastrukturu standardní nabízených oznámení. Tento kurz popisuje, jak dosáhnout stejné prostředí tím, že odesílání citlivé informace přes zabezpečené ověřené připojení mezi klientským zařízením a back-endu aplikace.
+V důsledku regulativních nebo bezpečnostních omezení někdy může aplikace chtít v oznámení zahrnout něco, co nelze přenést pomocí standardní infrastruktury nabízených oznámení. V tomto kurzu se dozvíte, jak dosáhnout stejného prostředí odesláním citlivých informací prostřednictvím zabezpečeného a ověřeného připojení mezi klientským zařízením a back-endu aplikace.
 
-Na vysoké úrovni tok je následujícím způsobem:
+Tok je na vysoké úrovni následující:
 
 1. Back-end aplikace:
-   * Úložiště zabezpečené datové části v back-end databáze.
-   * ID tohoto oznámení se odešle do zařízení (se neodesílají žádné informace o zabezpečení).
-2. Aplikace na zařízení, když obdrží oznámení:
-   * Zařízení kontaktuje back endu, zabezpečené datové části požadavku.
-   * Aplikace můžete zobrazit datovou část jako oznámení na zařízení.
+   * Ukládá zabezpečenou datovou část do back-endové databáze.
+   * Odešle ID tohoto oznámení do zařízení (nejsou odesílány žádné zabezpečené informace).
+2. Aplikace v zařízení při příjmu oznámení:
+   * Zařízení kontaktuje back-end požadující zabezpečenou datovou část.
+   * Aplikace může datovou část zobrazit jako oznámení na zařízení.
 
-Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení ukládá ověřovací token v místním úložišti, po přihlášení uživatele. Zaručí se tak bezproblémové prostředí, protože zařízení můžete načíst zabezpečené pomocí tohoto tokenu datovou část v oznámení. Pokud vaše aplikace neukládá ověřovacích tokenů na zařízení nebo pokud můžete platnost těchto tokenů, aplikace pro zařízení, při přijetí oznámení by měl zobrazit obecné oznámení výzvou, aby uživatel ke spuštění aplikace. Aplikace pak ověří uživatele a zobrazuje datová část oznámení.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. Tím zajistíte bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tato tokeny vypršela, měla by aplikace zařízení po přijetí oznámení zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
 
-V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně pošle nabízené oznámení. Tento kurz vychází [oznamování uživatelům pomocí](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurz, abyste měli dokončíte kroky uvedené v tomto kurzu nejprve.
+Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu informování [uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
 > [!NOTE]
-> Tento kurz předpokládá, že jste vytvořili a konfiguraci centra oznámení, jak je popsáno v [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Začínáme with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-ios-project"></a>Upravit projekt pro iOS
+## <a name="modify-the-ios-project"></a>Úprava projektu iOS
 
-Teď, když jste změnili back endu aplikace k odeslání jenom *ID* oznámení, budete muset změnit vaše aplikace iOS bude zpracovávat toto oznámení a zpětné volání back endu k načtení zabezpečené zprávy, který se má zobrazit.
+Teď, když jste změnili back-end aplikace, abyste poslali jenom *ID* oznámení, musíte změnit aplikaci pro iOS, aby zpracovala toto oznámení, a volat back-end pro načtení zabezpečené zprávy, která se má zobrazit.
 
-K dosažení tohoto cíle, musíme napsat logiku k načtení zabezpečený obsah z back-end aplikace.
+Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečený obsah z back-endu aplikace.
 
-1. V `AppDelegate.m`, ujistěte se, že aplikace registrů pro tichou oznámení, takže zpracuje ID oznámení odeslané z back-endu. Přidat `UIRemoteNotificationTypeNewsstandContentAvailability` v didFinishLaunchingWithOptions možnost:
+1. V `AppDelegate.m`nástroji se ujistěte, že aplikace registruje pro tichá oznámení, aby zpracovala ID oznámení odeslané z back-endu. `UIRemoteNotificationTypeNewsstandContentAvailability` Přidejte možnost do didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. Ve vaší `AppDelegate.m` přidat oddíl implementace v horní části stránky s následující deklarace:
+2. V horní části Přidat implementaci s následující deklarací: `AppDelegate.m`
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. V oddílu implementace pak přidejte následující kód a nahraďte zástupný symbol `{back-end endpoint}` s koncovým bodem pro váš back-end získané dříve:
+3. Pak v části implementace přidejte následující kód a nahraďte zástupný symbol `{back-end endpoint}` koncovým bodem pro back-end získaný dříve:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -117,14 +119,14 @@ K dosažení tohoto cíle, musíme napsat logiku k načtení zabezpečený obsah
     }
     ```
 
-    Tato metoda volá back endu aplikace načíst obsah oznámení s použitím přihlašovací údaje uložené ve sdílené předvolby.
+    Tato metoda volá back-end aplikace pro načtení obsahu oznámení pomocí přihlašovacích údajů uložených ve sdílených preferencích.
 
-4. Teď máme zpracuje příchozí oznámení a použijte výše uvedené metody k načtení zobrazování obsahu. Nejprve musíme povolit vaše aplikace iOS bude běžet na pozadí při přijímání nabízených oznámení. V **XCode**, vyberte projektu aplikace na levém panelu a potom klikněte na tlačítko v cílové hlavní aplikace **cíle** středovém podokně v části.
-5. Klikněte na vaše **možnosti** kartě v horní části centrální podokně a podívejte se **Vzdálená oznámení** zaškrtávací políčko.
+4. Nyní musíme zpracovat příchozí oznámení a použít výše uvedenou metodu k načtení obsahu, který se má zobrazit. Nejdřív musíme povolit, aby vaše aplikace pro iOS běžela na pozadí při přijímání nabízeného oznámení. V **Xcode**vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
+5. Pak v horní části centrálního podokna klikněte na kartu **Možnosti** a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![][IOS1]
 
-6. V `AppDelegate.m` přidejte následující metodu pro zpracování nabízených oznámení:
+6. V `AppDelegate.m` části přidejte následující metodu pro zpracování nabízených oznámení:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -149,14 +151,14 @@ K dosažení tohoto cíle, musíme napsat logiku k načtení zabezpečený obsah
     }
     ```
 
-    Všimněte si, že je vhodnější zpracovat případy chybí vlastnost záhlaví ověřování nebo zamítnutí back-end. Konkrétní zpracování těchto případech většinou závisí cílové činnost koncového uživatele. Jednou z možností je zobrazení oznámení s výzvou obecný kvůli ověření uživatele k načtení skutečné oznámení.
+    Všimněte si, že je vhodnější zpracovat případy chybějící vlastnosti záhlaví ověřování nebo zamítnutí back-endu. Konkrétní zpracování těchto případů závisí hlavně na svém cílovém uživatelském prostředí. Jednou z možností je zobrazit oznámení s obecnou výzvou pro uživatele, aby se ověřilo, že se má načíst vlastní oznámení.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Pokud chcete spustit aplikaci, postupujte takto:
+Chcete-li spustit aplikaci, postupujte následovně:
 
-1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízená oznámení nebude fungovat v simulátoru).
-2. V aplikaci pro iOS uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být stejnou hodnotu.
-3. V aplikaci pro iOS uživatelského rozhraní, klikněte na tlačítko **přihlášení**. Pak klikněte na tlačítko **odesílání nabízených oznámení**. Měli byste vidět zabezpečené oznámení se zobrazí v centru oznámení.
+1. V XCode spusťte aplikaci na fyzickém zařízení s iOS (nabízená oznámení nebudou v simulátoru fungovat).
+2. V uživatelském rozhraní aplikace pro iOS zadejte uživatelské jméno a heslo. Může se jednat o libovolný řetězec, ale musí se jednat o stejnou hodnotu.
+3. V uživatelském rozhraní aplikace pro iOS klikněte na **Přihlásit**se. Pak klikněte na **Odeslat nabízení**. V centru oznámení by se mělo zobrazit zabezpečené oznámení.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

@@ -32,12 +32,14 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Koncepty
   items:
-    - name: Ověřování a autorizace
-      href: relay-authentication-and-authorization.md
+    - name: Zabezpečení
+      items:
+        - name: Ověřování a autorizace
+          href: relay-authentication-and-authorization.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: service-bus-relay-security-controls.md
     - name: Protokol pro hybridní připojení
       href: relay-hybrid-connections-protocol.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: service-bus-relay-security-controls.md
 - name: Postup
   items:
     - name: Plánování a návrh

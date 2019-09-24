@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898682"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219441"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -60,7 +60,7 @@ Přihlaste se pomocí pracovního účtu, abyste mohli propojit doménu firemní
 
 ### <a name="agree-to-terms-and-conditions"></a>Vyjádřit souhlas s podmínkami a ujednáními
 
-Bude nutné souhlasit s podmínkami a ujednáními v rámci [smlouvy Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560).
+Bude nutné souhlasit s podmínkami a ujednáními v rámci [smlouvy Microsoft Marketplace vydavatele](https://go.microsoft.com/fwlink/?LinkID=699560).
 
 ### <a name="provide-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
 
@@ -103,7 +103,7 @@ Po přihlášení použijte postup v této části k dokončení nastavování �
 
 1. V partnerském centru vyberte **Nastavení** > **partner nastavení** > **programy** > **Začínáme.**
 2. Microsoft Partner Network zjistí vaše předplatné a zobrazí stránku s profilem vydavatele, kde můžete zadat název vaší společnosti a ID MPN.
-3. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** pro dokončení registrace.
+3. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Marketplace vydavatele](https://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** pro dokončení registrace.
 
 Po registraci přejdete na stránku Přehled komerčního tržiště. Na levém navigačním panelu se zobrazí **komerční tržiště** . Pokud vyberete **Nastavení** > **partnerských nastavení** > **programy**, uvidíte, že je komerční web Marketplace uvedený jako zaregistrovaný.
 

@@ -3,16 +3,16 @@ title: Nahrávání, stahování, výpis a odstraňování objektů BLOB pomocí
 description: Vytvoření, nahrání a odstranění objektů blob a kontejnerů v Node.js pomocí služby Azure Storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2018
+ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 9d709d19f179dc29b5e290a141d446f3353f4971
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306021"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240429"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Rychlý start: Nahrávání, stahování, výpis a odstraňování objektů BLOB pomocí Azure Storage v10 za účelem SDK pro JavaScript
 
@@ -51,6 +51,7 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
+
 Teď, když jsou závislosti nainstalované, můžete ukázku spustit následujícím příkazem:
 
 ```bash
@@ -60,10 +61,11 @@ npm start
 Výstup z aplikace se bude podobat následujícímu příkladu:
 
 ```bash
+Container "demo" is created
 Containers:
  - container-one
  - container-two
-Container "demo" is created
+ - demo
 Blob "quickstart.txt" is uploaded
 Local file "./readme.md" is uploaded
 Blobs in "demo" container:
@@ -75,9 +77,11 @@ Blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
-Pokud pro tento rychlý start používáte nový účet úložiště, nemusí se názvy kontejnerů v části *Kontejnery* zobrazit.
+
+Pokud pro tento rychlý Start používáte nový účet úložiště, může se zobrazit jenom *ukázkový* kontejner uvedený pod popiskem*kontejnery:* .
 
 ## <a name="understanding-the-code"></a>Vysvětlení kódu
+
 Ukázka začíná importem určitého počtu tříd a funkcí z oboru názvů úložiště objektů blob v Azure. Jednotlivé importované položky jsou vysvětleny na místě, kde se v této ukázce používají.
 
 ```javascript
@@ -123,14 +127,18 @@ const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
 const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 ```
 Další sada konstant pomáhá odhalit záměr výpočtů velikosti souborů během operací nahrávání.
+
 ```javascript
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
+
 Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
+
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
+
 ### <a name="calling-code"></a>Volání kódu
 
 Pro podporu syntaxe *async/await* JavaScriptu se veškerý volající kód zabalí do funkce s názvem *execute*. Potom se zavolá funkce *execute* a zpracuje se jako příslib.
@@ -142,6 +150,7 @@ async function execute() {
 
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
+
 Veškerý následující kód se spustí uvnitř funkce execute, kde je umístěn komentář `// commands...`.
 
 Nejprve se relevantní proměnné deklarují pro přiřazení názvů, ukázkového obsahu a pro odkázání na místní soubor, který se má nahrát do úložiště objektů blob.
@@ -160,6 +169,7 @@ const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS
 const pipeline = StorageURL.newPipeline(credentials);
 const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
 ```
+
 V tomto bloku kódu se používají následující třídy:
 
 - Třída [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) má na starosti zabalení přihlašovacích údajů k účtu úložiště a jejich poskytnutí kanálu žádosti.
@@ -174,6 +184,7 @@ Instance *ServiceURL* se používá s instancemi [ContainerURL](/javascript/api/
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 ```
+
 Proměnné *containerURL* a *blockBlobURL* se v této ukázce opakovaně používají k práci s účtem úložiště. 
 
 V tomto okamžiku kontejner neexistuje v účtu úložiště. Instance *ContainerURL* představuje adresu URL, se kterou můžete pracovat. Pomocí této instance můžete kontejner vytvořit a odstranit. Umístění tohoto kontejneru odpovídá například tomuto:
@@ -187,6 +198,7 @@ Proměnná *blockBlobURL* slouží ke správě jednotlivých objektů blob a umo
 ```bash
 https://<ACCOUNT_NAME>.blob.core.windows.net/demo/quickstart.txt
 ```
+
 Stejně jako kontejner tento objekt blob bloku zatím neexistuje. Proměnná *blockBlobURL* se později používá k vytvoření objektu blob nahráním obsahu.
 
 ### <a name="using-the-aborter-class"></a>Použití třídy Aborter
@@ -196,37 +208,13 @@ Stejně jako kontejner tento objekt blob bloku zatím neexistuje. Proměnná *bl
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
 ```
+
 Prvky Aborter vám poskytují kontrolu nad žádostmi, protože umožňují:
 
 - Určit množství času uděleného pro dávku žádostí
 - Určit, jak dlouho se jednotlivá žádost má v dávce provádět
 - Zrušit žádosti
 - Zastavit vypršení časového limitu najednou u všech žádostí pomocí statického člena *Aborter.none*
-
-### <a name="show-container-names"></a>Zobrazení názvů kontejnerů
-V účtech může být uložený ohromný počet kontejnerů. Následující kód ukazuje, jak vypsat kontejnery segmentovaným způsobem, který umožňuje cyklicky procházet velké množství kontejnerů. Funkce *showContainerNames* se předává instancím *ServiceURL* a *Aborter*.
-
-```javascript
-console.log("Containers:");
-await showContainerNames(serviceURL, aborter);
-```
-Funkce *showContainerNames* používá metodu *listContainersSegment* k vyžádání dávky názvů kontejnerů z účtu úložiště.
-```javascript
-async function showContainerNames(aborter, serviceURL) {
-
-    let response;
-    let marker;
-
-    do {
-        response = await serviceURL.listContainersSegment(aborter, marker);
-        marker = response.marker;
-        for(let container of response.containerItems) {
-            console.log(` - ${ container.name }`);
-        }
-    } while (marker);
-}
-```
-Při vrácení odpovědi se pomocí iterace *containerItems* vypíše název do konzoly. 
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -236,22 +224,58 @@ K vytvoření kontejneru se používá metoda *create* třídy *ContainerURL*.
 await containerURL.create(aborter);
 console.log(`Container: "${containerName}" is created`);
 ```
+
 Protože je název kontejneru definovaný při volání *ContainerURL.fromServiceURL(adresa URL služby, název kontejneru)* , stačí k vytvoření kontejneru zavolat metodu *create*.
 
+### <a name="show-container-names"></a>Zobrazení názvů kontejnerů
+
+V účtech může být uložený ohromný počet kontejnerů. Následující kód ukazuje, jak vypsat kontejnery segmentovaným způsobem, který umožňuje cyklicky procházet velké množství kontejnerů. Funkce *showContainerNames* se předává instancím *ServiceURL* a *Aborter*.
+
+```javascript
+console.log("Containers:");
+await showContainerNames(serviceURL, aborter);
+```
+
+Funkce *showContainerNames* používá metodu *listContainersSegment* k vyžádání dávky názvů kontejnerů z účtu úložiště.
+
+```javascript
+async function showContainerNames(aborter, serviceURL) {
+    let marker = undefined;
+
+    do {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
+            console.log(` - ${ container.name }`);
+        }
+    } while (marker);
+}
+```
+
+Při vrácení odpovědi se pomocí iterace *containerItems* vypíše název do konzoly. 
+
 ### <a name="upload-text"></a>Nahrání textu
+
 K nahrání textu do objektu blob se používá metoda *upload*.
+
 ```javascript
 await blockBlobURL.upload(aborter, content, content.length);
 console.log(`Blob "${blobName}" is uploaded`);
 ```
+
 Zde se této metodě předává text a jeho délka.
+
 ### <a name="upload-a-local-file"></a>Nahrání místního souboru
+
 K nahrání místního souboru do kontejneru potřebujete adresu URL kontejneru a cestu k souboru.
+
 ```javascript
 await uploadLocalFile(aborter, containerURL, localFilePath);
 console.log(`Local file "${localFilePath}" is uploaded`);
 ```
+
 Funkce *uploadLocalFile* volá funkci *uploadFileToBlockBlob*, která jako argumenty přebírá cestu k souboru a instanci cíle objektu blob bloku.
+
 ```javascript
 async function uploadLocalFile(aborter, containerURL, filePath) {
 
@@ -263,16 +287,20 @@ async function uploadLocalFile(aborter, containerURL, filePath) {
     return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
 }
 ```
+
 ### <a name="upload-a-stream"></a>Nahrání streamu
+
 Nahrávání streamů je také podporované. Tato ukázka otevře místní soubor jako stream, který předá metodě pro nahrání.
+
 ```javascript
 await uploadStream(containerURL, localFilePath, aborter);
 console.log(`Local file "${localFilePath}" is uploaded as a stream`);
 ```
+
 Funkce *uploadStream* volá *uploadStreamToBlockBlob* pro nahrání streamu do kontejneru úložiště.
+
 ```javascript
 async function uploadStream(aborter, containerURL, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
@@ -295,51 +323,82 @@ async function uploadStream(aborter, containerURL, filePath) {
                     uploadOptions.maxBuffers);
 }
 ```
+
 Během nahrávání alokuje *uploadStreamToBlockBlob* vyrovnávací paměti pro uložení dat streamu do mezipaměti, pokud bude potřeba opakování. Hodnota *maxBuffers* určuje maximální počet použitých vyrovnávacích pamětí, protože každá vyrovnávací paměť vytváří samostatnou žádost o nahrání. V ideálním případě se větší počet vyrovnávacích pamětí projeví ve vyšší rychlosti, ale za cenu většího využití paměti. Při dostatečně vysokém počtu vyrovnávacích paměti se rychlost nahrávání ustálí a kritický bod se přesune z klienta na síť nebo disk.
 
 ### <a name="show-blob-names"></a>Zobrazení názvů objektů blob
-Tak jako mohou účty obsahovat množství kontejnerů, může každý kontejner potenciálně obsahovat obrovské množství objektů blob. Přístup k jednotlivým objektům blob v kontejneru je dostupný přes instanci třídy *ContainerURL*. 
+
+Tak jako mohou účty obsahovat množství kontejnerů, může každý kontejner potenciálně obsahovat obrovské množství objektů blob. Přístup k jednotlivým objektům blob v kontejneru je dostupný přes instanci třídy *ContainerURL*.
+
 ```javascript
 console.log(`Blobs in "${containerName}" container:`);
 await showBlobNames(aborter, containerURL);
 ```
+
 Funkce *showBlobNames* volá *listBlobFlatSegment* k vyžádání dávky objektů blob z kontejneru.
+
 ```javascript
 async function showBlobNames(aborter, containerURL) {
-
-    let response;
-    let marker;
+    let marker = undefined;
 
     do {
-        response = await containerURL.listBlobFlatSegment(aborter);
-        marker = response.marker;
-        for(let blob of response.segment.blobItems) {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
             console.log(` - ${ blob.name }`);
         }
     } while (marker);
 }
 ```
+
 ### <a name="download-a-blob"></a>Stažení objektu blob
+
 Po vytvoření objektu blob můžete jeho obsah stáhnout pomocí metody *download*.
+
 ```javascript
 const downloadResponse = await blockBlobURL.download(aborter, 0);
-const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
+const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
 console.log(`Downloaded blob content: "${downloadedContent}"`);
 ```
-Odpověď se vrátí v podobě streamu. V tomto příkladu je stream převedený na řetězec kvůli výpisu na konzole.
+
+Odpověď se vrátí v podobě streamu. V tomto příkladu je datový proud převeden na řetězec pomocí následující pomocné funkce *streamToString* .
+
+```javascript
+// A helper method used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+}
+```
+
 ### <a name="delete-a-blob"></a>Odstranění objektu blob
+
 Metoda *delete* z instance *BlockBlobURL* odstraní objekt blob z kontejneru.
+
 ```javascript
 await blockBlobURL.delete(aborter)
 console.log(`Block blob "${blobName}" is deleted`);
 ```
+
 ### <a name="delete-a-container"></a>Odstranění kontejneru
+
 Metoda *delete* z instance *ContainerURL* odstraní kontejner z účtu úložiště.
+
 ```javascript
 await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
 
 ## <a name="next-steps"></a>Další kroky

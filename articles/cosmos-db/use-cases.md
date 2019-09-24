@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614226"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219879"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití služby Azure Cosmos DB
 Tento článek poskytuje přehled o několik běžných případů použití pro službu Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí služby Cosmos DB.   
@@ -40,7 +40,7 @@ Tady jsou některé atributy služby Azure Cosmos DB, kterým jsou vhodné pro v
 Tyto atributy jsou užitečné v webové, mobilní a herní aplikace a aplikace IoT, která potřebují nízkou dobou odezvy a potřebují zpracovávat obrovské množství čtení a zápisu.
 
 ## <a name="iot-and-telematics"></a>IoT a telematika
-Případy použití IoT běžně sdílí některé vzorů v tom, jak jejich ingestování, proces a ukládat data.  Nejprve je třeba tyto systémy ingestování nárůstům data ze senzorů zařízení různých národních prostředích. Tyto systémy dále zpracovávat a analyzovat streamovaná data k závěry v reálném čase. Data se potom archivovat do studeného úložiště pro dávkové analýzy. Microsoft Azure nabízí bohaté služby, které mohou být použity pro IoT případy použití, včetně služby Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, centra oznámení Azure, Azure Machine Learning, Azure HDInsight a Power BI. 
+Případy použití IoT běžně sdílí některé vzorů v tom, jak jejich ingestování, proces a ukládat data.  Nejprve je třeba tyto systémy ingestování nárůstům data ze senzorů zařízení různých národních prostředích. Tyto systémy dále zpracovávat a analyzovat streamovaná data k závěry v reálném čase. Data se potom archivovat do studeného úložiště pro dávkové analýzy. Microsoft Azure nabízí obsáhlé služby, které se dají použít pro případy použití IoT, včetně Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification hub, Azure Machine Learning, Azure HDInsight a Power BI. 
 
 ![Referenční architektura Azure Cosmos DB IoT](./media/use-cases/iot.png)
 
@@ -98,32 +98,7 @@ Formát JSON, formát podporovaný službou Cosmos DB, je ve formátu platné ke
 ![Architektura referenční aplikace webové služby Azure Cosmos DB](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>Další postup
-Začínáme se službou Azure Cosmos DB, postupujte podle našich [rychlých startech](create-sql-api-dotnet.md), který vás provede vytvořením účtu a začátky práce se službou Cosmos DB. 
 
-Nebo, pokud chcete další informace o zákaznících pomocí služby Cosmos DB, jsou k dispozici následující příběhy zákazníků:
+* Začínáme se službou Azure Cosmos DB, postupujte podle našich [rychlých startech](create-sql-api-dotnet.md), který vás provede vytvořením účtu a začátky práce se službou Cosmos DB.
 
-* [Jet.com](https://jet.com). Elektronický obchodník špici, spouští v cloudu Microsoftu, využívá služby Cosmos DB v globálním měřítku.
-* [Asos.com](https://www.asos.com/). Asos.com je British online způsobem a krásy úložiště. Primárně zaměřených na mladé dospělé, Asos prodává více než 850 značky, stejně jako vlastní rozsah oblečení a příslušenství.
-* [Toyota](https://www.toyota.com/). Toyota Motor Corporation je japonský automobilový průmysl výrobce. Toyota využít Cosmos DB pro globální aplikace IoT.
-* [Citrix](https://customers.microsoft.com/story/citrix). Citrix vyvíjí řešení jednotného přihlašování pomocí Azure Service Fabric a Azure Cosmos DB
-* [TEXA](https://customers.microsoft.com/story/texaspa) společnosti TEXA revoluční řešení IoT pro vlastníky vozidla pomáhá šetřit čas, peníze, plynu – a případně se nachází.
-* [Společnosti Domino Pizza](https://www.dominos.com). Společnosti Domino Pizza A.s. je řetěz American pizza restauraci.
-* [Ovládací prvky Johnsonem](https://www.johnsoncontrols.com). Ovládací prvky Johnsonem jsou celosvětově připojená technologie a víceúčelový vedoucí, který poskytuje široké spektrum zákazníků ve více než 150 zemích nebo oblastech.
-* [Microsoft Windows Universal Store, Azure IoT Hub, Xbox Live a další služby v internetovém měřítku](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Postupy: sestavení Microsoft masivně škálovatelné služby pomocí služby Azure Cosmos DB.
-* [Microsoft Data a analytický tým](https://customers.microsoft.com/story/microsoftdataandanalytics). Společnosti Microsoft Data a analytický tým dosahuje globálním měřítku kolekcí velkých objemů dat pomocí služby Azure Cosmos DB
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha využívá Azure Cosmos DB k propojení zákazníky a firmy v Indii.
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit trvá letu pomocí služby Azure Cosmos DB.
-* [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio přechází od AWS ke službě Azure Cosmos DB k využívat sociální data ve velkém měřítku.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Nedoručené procházení: Žádná vyšplhalaá hra na více lidí ne#1 podporována Azure Cosmos DB.
-* [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Jak Halo 5 implementuje hraní na sociálních sítích využívající službu Azure Cosmos DB.
-* [Galerie Cortana Analytics](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Galerii Cortana Analytics – web komunity škálovatelné postavená na službě Azure Cosmos DB.
-* [Rychlé](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Úvodní integrátor poskytuje globální přehled o nadnárodní podniky během několika minut s využitím flexibilních cloudových technologií.
-* [Společnost News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639). Zvyšování sofistikovanosti na novinky a poskytuje informace s jasným cílem pro angažovanosti občanů. 
-* [Společnost SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653). Konzistentní Barva po celém světě hlavních značek zapněte do skupiny zabezpečení. A využívá skupiny zabezpečení Azure.
-* [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608). Světová Špička Telenor využívá cloud mohli přejít bez rychlostí začínající. 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667). Úložiště do budoucna běží na rychlé hledání a snadno datový tok.
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet). Platforma založená na Azure softwaru boří překážky mezi firmy a zákazníků
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases). Inteligentní ledničky weka vylepšuje správu vakcín, tak více lidí je chránit před nemocemi chránit
-* [Oranžové Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth). Existuje víc informací, které tuto aplikaci potravin než vyhovují okem nebo úst.
-* [Real Madrid](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f). Real Madrid přibližuje svůj stadion 450 milionům fanoušků z celého světa pomocí cloudu společnosti Microsoft.
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services). TUKU díky car nákup Zábava s pomocí služby Azure
+* Pokud chcete získat další informace o zákaznících, kteří používají Azure Cosmos DB, přečtěte si stránku [případové studie zákazníka](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db) .

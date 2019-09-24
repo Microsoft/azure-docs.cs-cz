@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Sentinelu Preview data Azure Security Center | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu data Azure Security Center.
+title: Připojení dat Azure Security Center ke službě Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak připojit Azure Security Center dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620574"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240224"
 ---
-# <a name="connect-data-from-azure-security-center"></a>Připojení dat ze služby Azure Security Center
-
-> [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="connect-data-from-azure-security-center"></a>Připojení dat z Azure Security Center
 
 
 
-Azure Sentinel vám umožní připojit výstrahy z [Azure Security Center](../security-center/security-center-intro.md) a Streamovat je do ověřovacích Azure. 
+
+
+Azure Sentinel umožňuje propojit výstrahy z [Azure Security Center](../security-center/security-center-intro.md) a streamovat je do Azure Sentinel. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete exportovat oznámení ze služby Azure Security Center, musí být přispěvatele pro předplatné, jehož protokoly budete Streamovat.
+- Pokud chcete exportovat výstrahy z Azure Security Center, musíte být přispěvatelem předplatného, jehož protokoly jste streamují.
 
-- Musíte mít [Azure Security Center úrovně Standard](../security-center/security-center-pricing.md) spuštěna v rámci předplatného. V opačném případě [své předplatné upgradovat na standard](https://azure.microsoft.com/pricing/details/security-center/).
+- Musíte mít na předplatném spuštěnou [úroveň Standard Azure Security Center](../security-center/security-center-pricing.md) . V takovém případě [upgradujte předplatné na úroveň Standard](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Musíte přihlásit jako uživatel, který má oprávnění správce zabezpečení nebo globální správce na každé předplatné, které chcete připojit.
+- Musíte se přihlásit pomocí uživatele, který má oprávnění globálního správce nebo správce zabezpečení u každého předplatného, které chcete připojit.
 
 
-## <a name="connect-to-azure-security-center"></a>Připojení ke službě Azure Security Center
+## <a name="connect-to-azure-security-center"></a>Připojení k Azure Security Center
 
-1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Azure Security Center** dlaždici.
-1. Na pravé straně klikněte na **připojit** vedle každého předplatného, jejíž výstrahy chcete Streamovat do ověřovacích Azure. Ujistěte se, že pro každé předplatné upgradovat na Azure Security Center úrovně Standard na datový proud výstrahy k Sentinelu Azure.
+1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Azure Security Center** .
+
+1. V pravém rámečku klikněte na **připojit** vedle každého předplatného, jehož výstrahy chcete streamovat do Azure Sentinel. Nezapomeňte upgradovat každé předplatné na Azure Security Center úrovně Standard na streamování výstrah do Azure Sentinel.
+
+1. Můžete vybrat, jestli chcete, aby výstrahy z Azure Security Center automaticky generovaly incidenty v rámci služby Azure Sentinel automaticky. V části **vytvořit incidenty** vyberte **Povolit** , pokud chcete povolit výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analýza** a pak na **aktivní pravidla**.
 
 3. Klikněte na **Připojit**.
 
-4. Použít příslušné schéma v Log Analytics pro výstrahy Azure Security Center, vyhledejte **SecurityEvent**.
+4. Pokud chcete pro Azure Security Center výstrahy použít příslušné schéma v Log Analytics, vyhledejte **SecurityAlert**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu Azure Security Center. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+V tomto dokumentu jste zjistili, jak připojit Azure Security Center ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).

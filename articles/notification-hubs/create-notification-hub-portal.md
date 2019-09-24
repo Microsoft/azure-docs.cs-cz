@@ -1,57 +1,59 @@
 ---
-title: Vytvoření centra oznámení Azure pomocí webu Azure portal | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak k vytvoření centra oznámení Azure pomocí webu Azure portal.
+title: Vytvoření centra oznámení Azure pomocí Azure Portal | Microsoft Docs
+description: V tomto kurzu se naučíte vytvořit centrum oznámení Azure pomocí Azure Portal.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: jowargo
-ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681948"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212440"
 ---
-# <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Vytvoření centra oznámení Azure na webu Azure Portal 
-Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Další informace týkající se služby najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+# <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Vytvoření centra oznámení Azure v Azure Portal 
+Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Další informace o této službě najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-V tomto rychlém startu vytvoříte Centrum oznámení na webu Azure Portal. První část obsahuje kroky k vytvoření oboru názvů Notification Hubs a rozbočovač v tomto oboru názvů. Druhá část obsahuje kroky k vytvoření centra oznámení v existujícího oboru názvů Notification Hubs. 
+V tomto rychlém startu vytvoříte centrum oznámení v Azure Portal. První část obsahuje kroky pro vytvoření oboru názvů Notification Hubs a centra v daném oboru názvů. Druhá část obsahuje postup vytvoření centra oznámení v existujícím oboru názvů Notification Hubs. 
 
 ## <a name="create-a-namespace-and-a-notification-hub"></a>Vytvoření oboru názvů a centra oznámení
-V této části vytvoříte obor názvů a centra v oboru názvů. 
+V této části vytvoříte obor názvů a centrum v oboru názvů. 
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-## <a name="create-a-notification-hub-in-an-existing-namespace"></a>Vytvoření centra oznámení v existujícího oboru názvů
-V této části vytvoříte v existující obor názvů centra oznámení. 
+## <a name="create-a-notification-hub-in-an-existing-namespace"></a>Vytvoření centra oznámení v existujícím oboru názvů
+V této části vytvoříte centrum oznámení v existujícím oboru názvů. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v nabídce vlevo vyhledejte **centra oznámení**vyberte **hvězdičky** (`*`) vedle položky **názvové prostory centra oznámení** a přidejte ji tak **Oblíbené** části v nabídce vlevo. Vyberte **názvové prostory centra oznámení**. 
+2. V nabídce vlevo vyberte **všechny služby** , vyhledejte **Centrum oznámení**, vyberte hvězdičku (`*`) vedle položky **obory názvů centra oznámení** a přidejte je do části **Oblíbené** v nabídce vlevo. Vyberte **obory názvů centra oznámení**. 
 
-      ![Azure portal – vyberte názvové prostory centra oznámení](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
-3. Na **názvové prostory centra oznámení** vašeho oboru názvů vyberte ze seznamu. 
+      ![Azure Portal – výběr oborů názvů centra oznámení](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
+3. Na stránce **obory názvů centra oznámení** vyberte ze seznamu svůj obor názvů. 
 
-      ![Zvolte svůj obor názvů v seznamu](./media/create-notification-hub-portal/select-namespace.png)
-1. Na **Namespace centra oznámení** stránce **přidat Centrum** na panelu nástrojů. 
+      ![Ze seznamu vyberte svůj obor názvů.](./media/create-notification-hub-portal/select-namespace.png)
+1. Na stránce **obor názvů centra oznámení** vyberte **Přidat centrum** na panelu nástrojů. 
 
-      ![Názvové prostory centra oznámení – přidat tlačítko centra](./media/create-notification-hub-portal/add-hub-button.png)
-4. Na **nového centra oznámení** stránky, zadejte název centra oznámení a vyberte **OK**.
+      ![Obory názvů centra oznámení – tlačítko Přidat centrum](./media/create-notification-hub-portal/add-hub-button.png)
+4. Na stránce **nové centrum oznámení** zadejte název centra oznámení a vyberte **OK**.
 
-      ![Nového centra oznámení -> stránky zadejte název vašeho centra](./media/create-notification-hub-portal/new-notification-hub-page.png)
-4. Vyberte **oznámení** (ikona zvonku) v horní části stránky a zjistit stav nasazení nového centra. Vyberte **X** v pravém rohu zavřete okno oznámení. 
+      ![Nová stránka centra oznámení – > zadejte název vašeho centra.](./media/create-notification-hub-portal/new-notification-hub-page.png)
+4. V horní části vyberte **oznámení** (ikona zvonku) a zobrazte stav nasazení nového centra. Výběrem **X** v pravém horním rohu zavřete okno oznámení. 
 
-      ![Oznámení nasazení](./media/create-notification-hub-portal/deployment-notification.png)
-5. Aktualizovat **názvové prostory centra oznámení** webovou stránku zobrazit vaše nové centrum v seznamu. 
+      ![Oznámení o nasazení](./media/create-notification-hub-portal/deployment-notification.png)
+5. Aktualizujte webovou stránku **obory názvů centra oznámení** , abyste viděli nové centrum v seznamu. 
 
       ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/create-notification-hub-portal/new-hub-in-list.png)
-6. Vyberte vaše **centra oznámení** zobrazíte na domovské stránce pro vaše Centrum oznámení. 
+6. Vyberte **Centrum oznámení** , kde se zobrazí domovská stránka centra oznámení. 
 
       ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/create-notification-hub-portal/hub-home-page.png)
 
-## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste vytvořili centrum oznámení. Zjistěte, jak nakonfigurovat nastavení (PNS) systému oznámení platformy centra, najdete v článku [nakonfigurovat nastavení systému oznámení platformy centra oznámení](configure-notification-hub-portal-pns-settings.md). 
+## <a name="next-steps"></a>Další kroky
+V tomto rychlém startu jste vytvořili centrum oznámení. Informace o tom, jak nakonfigurovat nastavení centra pro PNS (Platform Notification System), najdete v tématu [Konfigurace centra oznámení s nastavením PNS](configure-notification-hub-portal-pns-settings.md). 

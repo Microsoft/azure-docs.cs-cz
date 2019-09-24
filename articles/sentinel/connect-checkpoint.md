@@ -1,32 +1,29 @@
 ---
-title: Připojit data Check Point do Azure Sentinel Preview | Microsoft Docs
+title: Připojit data kontrolního bodu ke službě Azure Sentinel | Microsoft Docs
 description: Přečtěte si, jak propojit data z kontrolního bodu do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ea9cb7997f86c10bb09c01dfc345aaeeef46708a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1bfa59e92ce2cde45b448174260396f4e93a6282
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679342"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240138"
 ---
 # <a name="connect-your-check-point-appliance"></a>Připojení zařízení se kontrolním bodem
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Můžete připojit Azure Sentinel k libovolnému zařízení se kontrolním bodem tím, že soubory protokolu uložíte jako CEF syslog. Integrace s Azure Sentinel umožňuje snadno spouštět analýzy a dotazy napříč daty souboru protokolu z kontrolního bodu. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
@@ -79,7 +76,7 @@ Nakonfigurujte zařízení kontrolního bodu tak, aby předalo zprávy syslog ve
 1. Přejděte na [Export protokolu Check Point](https://aka.ms/asi-syslog-checkpoint-forwarding).
 2. Přejděte dolů k **základnímu nasazení** a postupujte podle pokynů pro nastavení připojení, a to podle následujících pokynů:
    - Nastavte **port SYSLOG** na **514** nebo port, který jste nastavili v agentovi.
-     - V rozhraní příkazového řádku nahraďte **název a** **IP adresu cílového serveru** pomocí názvu agenta syslog a IP adresy.
+     - V rozhraní příkazového řádku nahraďte název a **IP adresu cílového serveru** pomocí názvu agenta syslog a IP adresy.
      - Nastavte formát na **CEF**.
 3. Pokud používáte verzi R 77.30 nebo R 80.10, posuňte se k **instalacím** a postupujte podle pokynů pro instalaci exportéra protokolu pro vaši verzi.
  
@@ -140,8 +137,8 @@ Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Anal
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit zařízení s kontrolním bodem ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

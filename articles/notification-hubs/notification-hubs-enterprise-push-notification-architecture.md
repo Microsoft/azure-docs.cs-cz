@@ -1,11 +1,11 @@
 ---
-title: Notification Hubs – podniková architektura nabízených oznámení
-description: Pokyny k použití v podnikovém prostředí Azure Notification Hubs
+title: Architektura nabízených oznámení Notification Hubs – Enterprise
+description: Pokyny k používání Notification Hubs Azure v podnikovém prostředí
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 903023e9-9347-442a-924b-663af85e05c6
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,65 +13,67 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 938801148b175456553865b54d59271021811401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873313"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211907"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 
-Podniky jsou dnes postupně přesun směrem k vytvoření mobilní aplikace pro buď jejich koncoví uživatelé (externí) nebo pro zaměstnance (interní). Mají stávající back-end systémy na místě už to jsou sálové počítače nebo některé obchodní aplikace, které musí být integrován do architektury mobilních aplikací. Tato příručka pojednává o jak vhodné provést tuto integraci, doporučujeme z možných řešení pro běžné scénáře.
+Podniky v současné době se postupně pohybují k vytváření mobilních aplikací pro koncové uživatele (externí) nebo pro zaměstnance (interní). Mají stávající back-endové systémy na místě IT sálové nebo některé obchodní aplikace, které musí být integrovány do architektury mobilní aplikace. V této příručce se dozvíte, jak nejlépe provést tuto integraci, aby bylo možné řešení doporučit běžným scénářům.
 
-Časté požadavek je pro zasílání nabízených oznámení uživatelům prostřednictvím jejich mobilní aplikace při výskytu události zájmu v back-endovým systémům. například zákazník banky, který má banky bankovnictví aplikaci na Iphonu chce být informován při MD nad určitou dobu z účtu nebo scénáři intranetu, ve kterém chce, aby zaměstnance z finančního oddělení, který má aplikace schválení rozpočtu na Windows Phone  upozornění, až je přijata žádost o schválení.
+Častým požadavkem je odesílat nabízená oznámení uživatelům prostřednictvím své mobilní aplikace, když dojde k nějakému zájmu v back-end systémech. Například zákazník banky, který má bankovní aplikaci bank na iPhonu, chce upozornit na to, že se dal na účtu nebo v intranetu, kde má zaměstnanec z finančního oddělení, který má aplikaci pro schvalování rozpočtu na Windows Phone, informovat.  oznámení o přijetí žádosti o schválení.
 
-Bankovním účtu nebo schválení zpracování bude pravděpodobně třeba provést v některých back-end systém, který musí inicializovat nabízených oznámení pro uživatele. Může existovat více tyto back-end systémy, které musíte sestavit stejný druh logiky nabídne, jakmile se událost se aktivuje upozornění. Složitost zde spočívá v integraci několika back-endových systémů spolu s jeden nabízených systému, kde koncoví uživatelé mohou předplacenou jiný oznámení a můžou existovat ještě více mobilních aplikací. Například intranet mobilní aplikace kde může být vhodné jeden mobilní aplikace pro příjem oznámení z více takových systémů back-endu. Back-endových systémůf neznáte nebo muset znát sémantiku/technologie nabízených oznámení, abyste běžným řešením tradičně bylo zavést komponentu, která dotazuje systémů back-end pro všechny události a je odpovědná za zasílání zprávy nabízených oznámení, které mají klient.
+Bankovní účet nebo zpracování schválení se pravděpodobně provede v některém back-endu systému, který musí iniciovat uživateli nabízené oznámení. Může existovat několik takových back-end systémů, které musí všechny sestavovat stejný druh logiky, aby bylo možné je odeslat, když událost aktivuje oznámení. Složitost zde spočívá v integraci několika back-end systémů spolu s jediným systémem nabízených oznámení, kde se koncoví uživatelé můžou přihlásit k odběru různých oznámení a můžou existovat i několik mobilních aplikací. Například intranetové mobilní aplikace, ve kterých jedna mobilní aplikace může chtít dostávat oznámení z několika takových back-end systémů. Systémy back-end neznají ani nepotřebují znát sémantiku a technologii nabízených oznámení, takže společné řešení je tradičně zavedlo k zavedení komponenty, která se dotazuje back-end systémy na jakékoli zajímavé události a zodpovídá za odeslání nabízených zpráv do Služba.
 
-Lepším řešením je použití služby Azure Service Bus – model tématu/odběru, což snižuje složitost při vytváření škálovatelných řešení.
+Lepším řešením je použití modelu Azure Service Bus-téma/předplatného, což snižuje složitost a zároveň usnadňuje škálovatelné řešení.
 
-Tady je obecné architektuře řešení (zobecněný pomocí více mobilních aplikací, ale vztahuje rovněž, pokud existuje jenom jedna mobilní aplikace)
+Tady je obecná Architektura řešení (generalizovaná s více mobilními aplikacemi, ale i v případě, že je k dispozici jenom jedna mobilní aplikace).
 
 ## <a name="architecture"></a>Architektura
 
 ![][1]
 
-Je důležitá v tento diagram architektury služby Azure Service Bus, která poskytuje témata/předplatná programovacího modelu (Další informace o ji do [Programování služby Service Bus Pub/Sub]). Příjemce, který v tomto případě je mobilní back-end (obvykle [Azure Mobile Service], která inicializuje nabízených oznámení do mobilní aplikace) přijme zprávy přímo z back-endových systémůf ale místo toho abstrakci zprostředkující vrstvy poskytované [Azure Service Bus], což umožňuje mobilním back-endu pro příjem zpráv z jednoho nebo více back-endovým systémům. Téma služby Service Bus je potřeba vytvořit pro každý back-end systém, třeba účet, HR, Finance, což je v podstatě "témata", které vás zajímají, který zahájí zpráv k odeslání jako nabízené oznámení. Back-endovým systémům odesílají zprávy službě tato témata. Mobilní back-endu můžete přihlásit k odběru těchto témat vytvořením odběru služby Service Bus. Opravňuje mobilní back-end pro příjem oznámení z odpovídající systém back-endu. Mobilní back-end i nadále naslouchat zprávám ve svých předplatných a co nejdříve po přijetí e-mailu, znovu aktivuje a odešle jako oznámení pro své Centrum oznámení. Notification hubs pak nakonec doručení zprávy do mobilní aplikace. Tady je seznam klíčových komponent:
+Klíčový kámen v tomto diagramu architektury je Azure Service Bus, který poskytuje témata nebo programovací model předplatných (Další informace najdete v tématu [Service Bus pro publikování a následné programování]). Příjemce, což je v tomto případě mobilní back-end (obvykle [Azure Mobile Service], která iniciuje nabízení oznámení mobilním aplikacím), nepřijímá zprávy přímo ze systémů back-end, ale místo toho poskytuje zprostředkující vrstvu abstrakce, kterou [Azure Service Bus], která umožňuje mobilnímu back-endu přijímat zprávy z jednoho nebo více back-end systémů. Je třeba vytvořit Service Bus téma pro každý back-end systém, například účet, HR, finance, který je v podstatě "důležité" témata, která zahájí odeslání zprávy jako nabízené oznámení. Back-endové systémy odesílají zprávy do těchto témat. Mobilní back-end se může přihlásit k odběru jednoho nebo několika takových témat vytvořením předplatného Service Bus. Umožňuje mobilnímu back-endu přijímat oznámení z odpovídajícího systému back-end. Mobilní back-end nadále naslouchá zprávám ve svých předplatných a Jakmile přijde zpráva, přepíná a odesílá oznámení do centra oznámení. Centra oznámení nakonec doručovat zprávu do mobilní aplikace. Tady je seznam klíčových součástí:
 
-1. Back-endových systémůf (systémy obchodní/starší verze)
-   * Vytvoří téma služby Service Bus
-   * Odešle zprávu
+1. Back-endové systémy (LoB/starší systémy)
+   * Vytvoří Service Bus téma.
+   * Odesílá zprávu.
 1. Mobilní back-end
-   * Vytvoří předplatné služby
-   * Přijme zprávu (z back-end systém)
-   * Odešle oznámení klientům (prostřednictvím centra oznámení Azure)
+   * Vytvoří předplatné služby.
+   * Přijímá zprávu (ze systému back-end)
+   * Odesílá oznámení klientům (prostřednictvím centra oznámení Azure).
 1. Mobilní aplikace
-   * Přijme a zobrazí oznámení
+   * Přijímá a zobrazuje oznámení.
 
 ### <a name="benefits"></a>Výhody
 
-1. Oddělení mezi příjemce (mobilní aplikace nebo služby přes Centrum oznámení) a odesílatele (back-end systémy) umožňuje další back-endových systémůf integrujete minimální změny.
-1. Také udržuje scénář více mobilní aplikace nebudou moct přijímat události z jednoho nebo více back-endových systémů.  
+1. Oddělení mezi příjemcem (mobilní aplikace/služba prostřednictvím centra oznámení) a odesilatelem (back-end systémy) umožňuje integraci dalších back-end systémů s minimálními změnami.
+1. Také umožňuje situaci, kdy více mobilních aplikací dokáže přijímat události z jednoho nebo více back-end systémů.  
 
 ## <a name="sample"></a>Ukázka
 
 ### <a name="prerequisites"></a>Požadavky
 
-Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné kroky vytvoření a konfigurace:
+Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářeními & kroky konfigurace:
 
-1. [Programování služby Service Bus Pub/Sub] – tento kurz vysvětluje podrobnosti o práci se Service Bus tématy nebo předplatnými, postup vytvoření oboru názvů tak, aby obsahovala tématy nebo předplatnými, odesílání a příjem zpráv z nich.
-2. [Notification Hubs – kurz pro univerzální aplikace Windows] – tento kurz vysvětluje, jak nastavit aplikaci Windows Store a používat Notification Hubs k registraci a pak přijímat oznámení.
+1. [Service Bus pro publikování a následné programování] zpracování – v tomto kurzu se dozvíte, jak pomocí Service Bus témata a předplatná vytvořit obor názvů, který bude obsahovat témata nebo odběry, jak odesílat & zpráv z nich.
+2. [Notification Hubs – kurz univerzální pro Windows] – v tomto kurzu se dozvíte, jak nastavit aplikaci pro Windows Store a jak používat Notification Hubs k registraci a následnému doručování oznámení.
 
 ### <a name="sample-code"></a>Ukázka kódu
 
-Úplný ukázkový kód je k dispozici na [ukázky centra oznámení]. Je rozdělit do tří součástí:
+Úplný vzorový kód je k dispozici v [Ukázky centra oznámení]. Je rozdělen na tři komponenty:
 
 1. **EnterprisePushBackendSystem**
 
-    a. Tento projekt používá **WindowsAzure.ServiceBus** balíčku NuGet a je založena na [Programování služby Service Bus Pub/Sub].
+    a. Tento projekt používá balíček NuGet **windowsazure. ServiceBus** a je založen na [Service Bus pro publikování a následné programování].
 
-    b. Tato aplikace je jednoduchá C# konzolové aplikace pro simulaci systému LoB, který zahájí zpráv, který bude doručen do mobilní aplikace.
+    b. Tato aplikace je jednoduchá C# Konzolová aplikace pro simulaci systému LOB, která zahájí doručení zprávy do mobilní aplikace.
 
     ```csharp
     static void Main(string[] args)
@@ -87,7 +89,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     }
     ```
 
-    c. `CreateTopic` slouží k vytvoření tématu služby Service Bus.
+    c. `CreateTopic`slouží k vytvoření Service Busho tématu.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -104,7 +106,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     }
     ```
 
-    d. `SendMessage` slouží k odesílání zpráv pro toto téma služby Service Bus. Tento kód jednoduše odešle sadu náhodné zpráv do tématu pravidelně pro účely ukázky. Obvykle je back-end systém, který odesílá zprávy při výskytu události.
+    d. `SendMessage`slouží k odeslání zpráv do tohoto Service Bus tématu. Tento kód jednoduše pošle do tématu sadu náhodných zpráv pro účely ukázky. Obvykle existuje systém back-end, který odesílá zprávy, když dojde k události.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -138,9 +140,9 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     ```
 2. **ReceiveAndSendNotification**
 
-    a. Tento projekt používá *WindowsAzure.ServiceBus* a **Microsoft.Web.WebJobs.Publish** NuGet balíčky a je založena na [Programování služby Service Bus Pub/Sub].
+    a. Tento projekt využívá balíčky NuGet *windowsazure. ServiceBus* a **Microsoft. Web. WebJobs. Publish** a vychází z [Service Bus pro publikování a následné programování]pro publikování na bázi.
 
-    b. Následující Konzolová aplikace spouští jako [Azure WebJob] vzhledem k tomu, že má spouštět nepřetržitě naslouchat zprávám ze systémů LoB/back-endu. Tato aplikace je součástí mobilní back-end.
+    b. Následující aplikace konzoly se spouští jako [Webová úloha Azure] , protože musí běžet nepřetržitě, aby naslouchala zpráv ze systémů LOB a back-endu. Tato aplikace je součástí vašeho mobilního back-endu.
 
     ```csharp
     static void Main(string[] args)
@@ -156,7 +158,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     }
     ```
 
-    c. `CreateSubscription` slouží k vytvoření odběru služby Service Bus pro téma kde back-end systém posílání zpráv. V závislosti na podnikový scénář, tato komponenta vytvoří jeden nebo více odběrů do příslušných témat (například některé mohou přijímat zprávy ze systému řízení zdrojů, některé ze systému Finance a tak dále)
+    c. `CreateSubscription`slouží k vytvoření předplatného Service Bus pro téma, kde back-end systém odesílá zprávy. V závislosti na obchodním scénáři Tato součást vytvoří jedno nebo více předplatných odpovídajících tématům (například některé můžou přijímat zprávy ze systému HR, některé z finančních systémů a tak dále).
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -172,7 +174,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` slouží ke čtení zprávy z tématu pomocí svého předplatného a pokud je úspěšné čtení pak si vytvořte oznámení (v ukázkovém scénáři Windows nativní informační zpráva) k odeslání do mobilní aplikace pomocí Azure Notification Hubs.
+    d. `ReceiveMessageAndSendNotification`se používá ke čtení zprávy z tématu pomocí svého předplatného, a pokud je čtení úspěšné, pak se vytvoří oznámení (ve vzorovém scénáři je nativní oznámení systému Windows), které se odešle do mobilní aplikace pomocí Azure Notification Hubs.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -224,25 +226,25 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
     }
     ```
 
-    e. Pro publikování této aplikace jako **WebJob**, klikněte pravým tlačítkem na řešení v sadě Visual Studio a vyberte **publikovat jako webovou úlohu**
+    e. Pokud chcete tuto aplikaci publikovat jako **webovou úlohu**, klikněte pravým tlačítkem na řešení v aplikaci Visual Studio a vyberte **Publikovat jako webovou úlohu** .
 
     ![][2]
 
-    f. Vyberte svůj profil publikování a vytvořit nový web Azure, pokud ho ještě neexistuje, který je hostitelem této webové úlohy, a až budete mít na web potom **publikovat**.
+    f. Vyberte svůj profil publikování a vytvořte nový web Azure, pokud už neexistuje, který je hostitelem této webové úlohy, a až potom web publikujte.
 
     ![][3]
 
-    g. Konfigurace úlohy být "Spustit průběžně", aby při přihlášení k [Azure Portal] by měl vypadat přibližně takto:
+    g. Nakonfigurujte úlohu tak, aby běžela průběžně, takže když se přihlásíte k [Azure Portal] , mělo by se zobrazit něco jako v následujícím seznamu:
 
     ![][4]
 
 3. **EnterprisePushMobileApp**
 
-    a. Tato aplikace je aplikace Windows Store, která přijímá informační zprávy z úlohy WebJob spuštěna jako součást mobilní back-end a zobrazit ji. Tento kód je založený na [Notification Hubs – kurz pro univerzální aplikace Windows].  
+    a. Tato aplikace je aplikace pro Windows Store, která přijímá informační zprávy z webové úlohy spuštěné jako součást mobilního back-endu a zobrazuje je. Tento kód vychází z [Notification Hubs – kurz univerzální pro Windows].  
 
-    b. Ujistěte se, že vaše aplikace je povoleno přijímat oznámení informačního nápisu.
+    b. Ujistěte se, že je ve vaší aplikaci povolený příjem oznámení informačními zprávami.
 
-    c. Ujistěte se, že následující Notification Hubs registrační kód je volána v aplikaci spustit (po nahrazení `HubName` a `DefaultListenSharedAccessSignature` hodnoty:
+    c. Zajistěte, aby se při spuštění aplikace volala následující registrační kód Notification Hubs (po nahrazení `HubName` hodnot a: `DefaultListenSharedAccessSignature`
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -264,13 +266,13 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 
-1. Ujistěte se, že vaše webová úloha je úspěšně spuštěná a průběžně spuštění je naplánované.
-2. Spustit **EnterprisePushMobileApp**, která spustí aplikaci Windows Store.
-3. Spustit **EnterprisePushBackendSystem** konzolovou aplikaci, která simuluje back-end obchodní a spustí odesílání zpráv a měla by se zobrazit informační zprávy uvedené jako na následujícím obrázku:
+1. Ujistěte se, že je vaše webová úloha úspěšně spuštěná a že je naplánováno jejich nepřetržité spuštění.
+2. Spusťte **EnterprisePushMobileApp**, ve kterém se spustí aplikace pro Windows Store.
+3. Spusťte konzolovou aplikaci **EnterprisePushBackendSystem** , která simuluje back-end LOB a začne odesílat zprávy a měla by se zobrazit informační zpráva, která se zobrazí jako na následujícím obrázku:
 
     ![][5]
 
-4. Zprávy byly původně odeslána do témat Service Bus, které byl monitorován odběry služby Service Bus v webová úloha. Jakmile byla přijata zpráva, oznámení se vytvoří a odešle do mobilní aplikace. Můžete si projít protokoly úlohy WebJob k potvrzení zpracování, když přejdete na odkaz na protokoly v [Azure Portal] pro webové úlohy:
+4. Zprávy byly původně odeslány pro Service Bus témata, která byla monitorována Service Bus odběry ve webové úloze. Po přijetí zprávy se vytvoří oznámení a pošle se do mobilní aplikace. Můžete procházet protokoly webové úlohy a potvrdit zpracování při přechodu na odkaz protokoly v [Azure Portal] pro vaši webovou úlohu:
 
     ![][6]
 
@@ -286,7 +288,7 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 [Ukázky centra oznámení]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Programování služby Service Bus Pub/Sub]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: ../app-service/webjobs-create.md
-[Notification Hubs – kurz pro univerzální aplikace Windows]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Service Bus pro publikování a následné programování]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Webová úloha Azure]: ../app-service/webjobs-create.md
+[Notification Hubs – kurz univerzální pro Windows]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Portal]: https://portal.azure.com/

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129684"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240291"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -71,11 +71,11 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
-V následující tabulce je uveden seznam podporovaných operačních systémů:
+V následující tabulce je uveden seznam podporovaných operačních systémů pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v pokynech k instalaci pro [Windows HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) a [Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)|**Posouzení aktualizací**: Podporováno<br><br>Probíhá **Oprava**: Vyžaduje Hybrid Runbook Worker. Viz [požadavky na Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)||
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, aby příkaz "Yumu" vracel data zabezpečení, která CentOS nejsou v poli. Další informace o opravách na základě klasifikace v CentOS najdete v tématu [klasifikace aktualizací v systému Linux](#linux-2) .          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -249,6 +249,9 @@ Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasaze
 | Restartovat ovládací prvek| Určuje, jak by se mělo zpracovat restartování. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
 Nasazení aktualizací lze také vytvořit programově. Informace o tom, jak vytvořit nasazení aktualizace pomocí REST API, najdete v tématu [Konfigurace aktualizací softwaru-vytvořit](/rest/api/automation/softwareupdateconfigurations/create). K dispozici je také Ukázková sada Runbook, kterou lze použít k vytvoření týdenního nasazení aktualizací. Další informace o této sadě Runbook najdete v tématu [Vytvoření týdenního nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+> [!NOTE]
+> Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) mohou způsobit událost restartování, pokud je **ovládací prvek restart** nastaven na možnost **Nikdy nerestartovat**.
 
 ### <a name="maintenance-windows"></a>Okna údržby
 

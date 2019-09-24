@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034729"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211999"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
 
@@ -35,6 +35,8 @@ Pracovní prostor Log Analytics poskytuje:
 * Obor pro konfiguraci nastavení, jako je [cenová úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [uchování](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)a [capping dat](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)
 
 Tento článek poskytuje podrobný přehled týkající se návrhu a migrace, přehled řízení přístupu a porozumění implementací návrhu, které doporučujeme pro vaši organizaci IT.
+
+
 
 ## <a name="important-considerations-for-an-access-control-strategy"></a>Důležité informace o strategii řízení přístupu
 
@@ -58,7 +60,7 @@ Při použití agentů Log Analytics ke shromažďování dat je potřeba pochop
 Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
 * Každá skupina pro správu Operations Manager může být [připojená pouze k jednomu pracovnímu prostoru](../platform/om-agents.md). 
-* Počítače se systémem Linux vykazující skupinu pro správu musí být nakonfigurovány tak, aby nahlásily přímo do Log Analytics pracovního prostoru. Pokud již počítače se systémem Linux hlásí přímo do pracovního prostoru a chcete je monitorovat pomocí Operations Manager, postupujte podle těchto kroků a nahlaste se [skupině pro správu Operations Manager](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
+* Počítače se systémem Linux vykazující skupinu pro správu musí být nakonfigurovány tak, aby nahlásily přímo do Log Analytics pracovního prostoru. Pokud již počítače se systémem Linux hlásí přímo do pracovního prostoru a chcete je monitorovat pomocí Operations Manager, postupujte podle těchto kroků a [nahlaste se skupině pro správu Operations Manager](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Log Analytics agenta pro Windows můžete nainstalovat do počítače s Windows a podávat ho do obou Operations Manager integrovaných v pracovním prostoru a v jiném pracovním prostoru.
 
 ## <a name="access-control-overview"></a>Přehled řízení přístupu
@@ -130,6 +132,19 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 
 Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí PowerShellu nebo pomocí šablony Správce prostředků, najdete v tématu [Konfigurace režimu řízení přístupu](manage-access.md#configure-access-control-mode).
 
+## <a name="ingestion-volume-rate-limit"></a>Omezení přenosové rychlosti pro přijímání
+
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí prahová hodnota pro rychlost příjmu je nastavená na **500 MB/min** na pracovní prostor. Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
+ 
+Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
+
 ## <a name="recommendations"></a>Doporučení
 
 ![Příklad návrhu kontextu prostředků](./media/design-logs-deployment/workspace-design-resource-context-01.png)
@@ -153,6 +168,6 @@ Při plánování migrace do tohoto modelu Vezměte v úvahu následující skut
 * Odebere aplikační týmy oprávnění ke čtení a dotazování pracovního prostoru.
 * Povolte a nakonfigurujte jakákoli řešení monitorování, přehledy, jako je například Azure Monitor pro kontejnery nebo Azure Monitor pro virtuální počítače, účty Automation a řešení pro správu, jako je například Update Management, spustit nebo zastavit virtuální počítače atd., které byly nasazeny v původním stejných.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li implementovat oprávnění zabezpečení a ovládací prvky doporučené v této příručce, přečtěte si téma [Správa přístupu k protokolům](manage-access.md).

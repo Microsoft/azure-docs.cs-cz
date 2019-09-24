@@ -3,9 +3,9 @@ title: Azure Notification Hubs Rich push
 description: Naučte se odesílat bohatá nabízená oznámení do aplikace pro iOS z Azure. Ukázky kódu napsané v cíli – C C#a.
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348475"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212202"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 

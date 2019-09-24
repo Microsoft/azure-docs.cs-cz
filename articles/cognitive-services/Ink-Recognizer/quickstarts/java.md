@@ -1,43 +1,43 @@
 ---
-title: 'Rychlý start: Rozpoznat digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu a Javy.'
+title: 'Rychlý start: Rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Java'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro rozpoznávání rukopisu spusťte uznání digitální inkoustových tahů.
+description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat tahy digitálního inkoustu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: b1c739b6355d3b32063e5289720ed1d191611e65
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721247"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212685"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Rychlý start: Rozpoznat digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu a Javy.
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Rychlý start: Rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Java
 
-Pokud chcete začít používat rozhraní API pro rozpoznávání rukopisu na digitální inkoustových tahů použijte v tomto rychlém startu. Tato aplikace v Javě odešle požadavek rozhraní API, obsahující data ve formátu JSON inkoustu stroke a získá odpověď.
+Pomocí tohoto rychlého startu můžete začít používat rozhraní API pro rozpoznávání rukopisu na tahy digitálního pera. Tato aplikace Java pošle požadavek rozhraní API obsahující data tahu ve formátu JSON a získá odpověď.
 
-Zatímco tato aplikace je napsána v jazyce Java, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Obvykle by volání rozhraní API z aplikace pro digitální rukopisu. V tomto rychlém startu odesílá data inkoustu stroke pro následující ukázka rukou psaný ze souboru JSON.
+Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V tomto rychlém startu se v souboru JSON pošle data tahy perem pro následující psaný vzorek.
 
-![Obrázek rukou psaný text](../media/handwriting-sample.jpg)
+![Obrázek rukopisného textu](../media/handwriting-sample.jpg)
 
-Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089904).
+Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089904).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Java&trade; vývoj Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
+- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
 
-- Tyto knihovny importu z úložiště Maven
-    - [JSON v jazyce Java](https://mvnrepository.com/artifact/org.json/json) balíčku
-    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) balíčku
+- Importovat tyto knihovny z úložiště Maven
+    - [JSON v balíčku Java](https://mvnrepository.com/artifact/org.json/json)
+    - Balíček [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)
 
-- Příklad inkoustu stroke data pro účely tohoto rychlého najdete na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
+- Ukázková data tahu perem pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -58,7 +58,7 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     import java.nio.file.Paths;
     ```
 
-2. Vytváření proměnných pro váš klíč předplatného a váš koncový bod. Níže je identifikátor URI, můžete použít pro rozpoznávání rukopisu. Připojí se k vašeho koncového bodu služby později k vytvoření adresy URL požadavku rozhraní API.
+2. Vytvořte proměnné pro svůj klíč předplatného a koncový bod. Nahraďte níže uvedený koncový bod následujícím vygenerovaným prostředkem pro rozpoznávání rukopisu. Připojte ho k identifikátoru URI pro rozpoznávání rukopisu pro připojení k rozhraní API.
 
     ```java
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -66,23 +66,23 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
     static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://api.cognitive.microsoft.com";
+    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce k odesílání požadavků
+## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
 
-1. Vytvořit novou funkci s názvem `sendRequest()` , která přebírá proměnných vytvořené výše. Pak proveďte následující kroky.
+1. Vytvořte novou funkci s názvem `sendRequest()` , která přijímá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Vytvoření `CloseableHttpClient` objekt, který může odesílat požadavky na rozhraní API. Odeslat žádost o `HttpPut` objekt žádosti kombinací koncový bod služby a adresu URL pro rozpoznávání rukopisu.
+2. `CloseableHttpClient` Vytvořte objekt, který může odesílat požadavky do rozhraní API. Odešlete požadavek do `HttpPut` objektu žádosti kombinací koncového bodu a adresy URL nástroje pro rozpoznávání rukopisu.
 
-3. Použijte žádosti `setHeader()` funkce nastavíte `Content-Type` záhlaví `application/json`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+3. Pomocí `setHeader()` funkce Request `Content-Type` nastavte hlavičku na `application/json`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
 
-4. Použijte žádosti `setEntity()` funkci pro data, která mají být odeslány.   
+4. Použijte `setEntity()` funkci žádosti na data, která chcete odeslat.   
 
-5. Použití klienta `execute()` funkce Odeslat požadavek a uložit ho. tím `CloseableHttpResponse` objektu. 
+5. Použijte `execute()` funkci klienta k odeslání žádosti a uložte ji `CloseableHttpResponse` do objektu. 
 
-6. Vytvoření `HttpEntity` objekt pro uložení obsahu odpovědi. Získat obsah s `getEntity()`. Pokud odpovědi není prázdný, vrátí jej.
+6. `HttpEntity` Vytvořte objekt pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()`. Pokud odpověď není prázdná, vraťte ji.
     
     ```java
     static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
@@ -108,9 +108,9 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
     }
     ```
 
-## <a name="send-an-ink-recognition-request"></a>Poslat žádost o rozpoznávání rukopisu
+## <a name="send-an-ink-recognition-request"></a>Poslat požadavek na rozpoznávání rukopisu
 
-Vytvořit metodu nazvanou `recognizeInk()` rozpoznávat data inkoustu stroke. Volání `sendRequest()` metoda vytvořené výše s koncovým bodem, adresa url, klíč předplatného a dat json. Získat výsledek a vypíše do konzoly.
+Vytvořte metodu volanou `recognizeInk()` pro rozpoznání dat tahu perem. `sendRequest()` Zavolejte metodu vytvořenou výše pomocí vašeho koncového bodu, adresy URL, klíče předplatného a dat JSON. Získejte výsledek a vytiskněte ho do konzoly.
 
 ```java
 static void recognizeInk(String requestData) {
@@ -120,11 +120,11 @@ static void recognizeInk(String requestData) {
 }
 ```
 
-## <a name="load-your-digital-ink-data-and-send-the-request"></a>Načíst data digitálního inkoustu a odeslat žádost
+## <a name="load-your-digital-ink-data-and-send-the-request"></a>Načtení dat digitálního inkoustu a odeslání žádosti
 
-1. V hlavní metodě vaší aplikace přečtěte si v souboru JSON, který obsahuje data, která se přidá na požadavky.
+1. V metodě Main aplikace si přečtěte v souboru JSON obsahujícím data, která se přidají do požadavků.
 
-2. Volání funkce rozpoznávání rukopisu vytvořili výše.
+2. Zavolejte funkci rozpoznávání rukopisu vytvořenou výše.
     
     ```java
     public static void main(String[] args) throws Exception {
@@ -133,17 +133,17 @@ static void recognizeInk(String requestData) {
     }
     ```
 
-## <a name="run-the-application-and-view-the-response"></a>Spusťte aplikaci a zobrazit odpovědi
+## <a name="run-the-application-and-view-the-response"></a>Spuštění aplikace a zobrazení odpovědi
 
-Spusťte aplikaci. Úspěšná odpověď se vrátí ve formátu JSON. Můžete také najít odpověď JSON na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
+Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Pokud chcete zobrazit, jak rozhraní API pro rozpoznávání rukopisu funguje v digitální rukopisu aplikaci, podívejte se na následující ukázkové aplikace na Githubu:
+Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
 * [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       

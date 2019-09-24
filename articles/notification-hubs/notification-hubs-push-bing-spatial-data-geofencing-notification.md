@@ -4,9 +4,9 @@ description: V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bi
 services: notification-hubs
 documentationcenter: windows
 keywords: nabízené oznámení,nabízená oznámení
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: f41beea1-0d62-4418-9ffc-c9d70607a1b7
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459949"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213241"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Kurz: Nabízená oznámení založená na poloze pomocí Azure Notification Hubs a Bing Spatial Data
+# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Kurz: Oznámení na základě umístění s využitím Azure Notification Hubs a prostorových dat Bingu
 
 V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bing Spatial Data doručovat nabízená oznámení na základě polohy.
 
@@ -37,7 +39,7 @@ V tomto kurzu provedete následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/) předtím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) nebo novější ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409))
 * Nejnovější verze [Azure SDK](https://azure.microsoft.com/downloads/)
 * [Účet na webu Dev Center pro Mapy Bing](https://www.bingmapsportal.com/) (Je možné si jej vytvořit zdarma a přidružit si ho k účtu Microsoft.)
@@ -51,7 +53,7 @@ V tomto kurzu provedete následující kroky:
 3. Pokud nemáte žádný zdroj dat, zobrazí se odkaz na jeho vytvoření. Vyberte **Nahrát data jako zdroj dat**. Můžete použít také nabídku **Zdroje dat** > **Nahrát data**.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Vytvořte soubor `NotificationHubsGeofence.pipe` na pevném disku s následujícím obsahem: V tomto kurzu použijete ukázkový kanál podle soubor, který vyznačenou oblast waterfront kalifornském San Franciscu:
+4. Na pevném disku `NotificationHubsGeofence.pipe` vytvořte soubor s následujícím obsahem: V tomto kurzu použijete ukázkový soubor založený na kanálu, který je v oblasti sítě San Francisco Waterfront:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -64,7 +66,7 @@ V tomto kurzu provedete následující kroky:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stránce **Nahrát zdroj dat** proveďte následující akce:
    1. Jako **Formát dat** vyberte **kanál**.
-   2. Procházet a vybrat `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
+   2. Procházejte a vyberte `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
    3. Vyberte tlačítko **Nahrát**.
 
       > [!NOTE]
@@ -101,7 +103,7 @@ V tomto kurzu provedete následující kroky:
 
 ## <a name="set-up-the-uwp-application"></a>Nastavení aplikace pro UPW
 
-1. V nástroji Visual Studio vytvořte nový projekt typu **Prázdná aplikace (univerzální pro Windows)**.
+1. V nástroji Visual Studio vytvořte nový projekt typu **Prázdná aplikace (univerzální pro Windows)** .
 
     ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
@@ -387,7 +389,7 @@ V tomto kurzu provedete následující kroky:
 
     ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete řešení připravit na reálný provoz, může být zapotřebí podniknout několik kroků.
 

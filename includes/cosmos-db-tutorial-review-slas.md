@@ -4,22 +4,23 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.custom: seo-java-september2019
+ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67175551"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210188"
 ---
-Na webu Azure portal monitoruje propustnosti pro účet služby Cosmos DB, storage, dostupnosti, latence a konzistence. Grafy pro metriky, které jsou přidružené [Azure Cosmos DB Service smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zobrazit hodnota SLA ve srovnání s skutečný výkon. Tato sada metriky díky monitorování vaší smlouvy o úrovni služeb transparentní.
+Azure Portal sleduje propustnost účtu Cosmos DB, úložiště, dostupnost, latenci a konzistenci. Grafy pro metriky přidružené k [Azure Cosmos DB smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) ukazují hodnotu SLA v porovnání s skutečným výkonem. Tato sada metrik umožňuje monitorovat SLA transparentním způsobem.
 
-Zkontrolujte metriky a smlouvy o úrovni služeb: 
+Postup kontroly metrik a SLA: 
 
-1. Vyberte **metriky** v navigační nabídce účtu služby Cosmos DB.
+1. V navigační nabídce účtu Cosmos DB vyberte metriky.
    
-2. Vyberte kartu, jako je například **latence**a vyberte časové rozmezí na pravé straně. Porovnání **skutečný** a **SLA** řádky v grafu.
+2. Vyberte kartu, jako je **latence**, a vyberte časový rámec na pravé straně. Porovnejte **skutečné** řádky a řádky **SLA** v grafech.
    
-   ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
    
-3. Zkontrolujte metriky na ostatních kartách. 
+3. Projděte si metriky na dalších kartách. 
 

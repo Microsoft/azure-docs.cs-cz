@@ -4,9 +4,9 @@ description: Naučte se používat Notification Hubs k odesílání nabízených
 keywords: nabízené oznámení, nabízená oznámení, nabízená oznámení Node. js, nabízená oznámení iOS
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67706227"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213190"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Notification Hubs Azure a Node. js
 
@@ -37,7 +39,7 @@ Mezi zahrnuté scénáře patří odesílání nabízených oznámení do aplika
 
 - Android
 - iOS
-- Univerzální platforma pro Windows
+- Univerzální platforma Windows
 - Windows Phone
 
 ## <a name="notification-hubs"></a>Notification Hubs
@@ -98,7 +100,7 @@ Pomocí následujících kroků `connectionstring` Získejte hodnotu připojení
 - **Windows Phone** – použijte `MpnsService` objekt, který je k dispozici na`notificationHubService.mpns`
 - **Univerzální platforma Windows** – použijte `WnsService` objekt, který je k dispozici na`notificationHubService.wns`
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Postup: Posílání nabízených oznámení do aplikací pro Android
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Postup: Odesílání nabízených oznámení do aplikací pro Android
 
 `GcmService` Objekt`send` poskytuje metodu, kterou lze použít k odesílání nabízených oznámení do aplikací pro Android. `send` Metoda přijímá následující parametry:
 

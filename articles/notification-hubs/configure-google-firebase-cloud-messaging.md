@@ -1,38 +1,40 @@
 ---
-title: Konfigurace služby Google Firebase Cloud Messaging ve službě Azure Notification Hubs | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat nastavení Google Firebase Cloud Messaging centra oznámení Azure.
+title: Konfigurace zasílání zpráv v cloudu Google Firebase v Azure Notification Hubs | Microsoft Docs
+description: Naučte se konfigurovat centrum oznámení Azure s nastavením cloudového zasílání zpráv Google Firebase.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60239187"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212497"
 ---
-# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení Google Firebase Cloud Messaging (FCM) pro Centrum oznámení na webu Azure Portal
-V tomto článku se dozvíte, jak nakonfigurovat nastavení Google Firebase Cloud Messaging (FCM) pro centra oznámení Azure pomocí webu Azure portal.  
+# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení v Azure Portal
+V tomto článku se dozvíte, jak nakonfigurovat nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení Azure pomocí Azure Portal.  
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud jste ještě nevytvořili centra oznámení, vytvořte teď. Další informace najdete v tématu [vytvoření centra oznámení Azure na webu Azure Portal](create-notification-hub-portal.md). 
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
 
-## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Konfigurace služby Google Firebase Cloud Messaging (FCM)
+## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Konfigurace zasílání zpráv v cloudu Google Firebase (FCM)
 
-Následující postup obsahuje postup pro konfiguraci nastavení Google Firebase Cloud Messaging (FCM) pro Centrum oznámení: 
+Následující postup vám poskytne postup konfigurace nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení: 
 
-1. Na webu Azure Portal na **centra oznámení** stránce **Google (GCM/FCM)** v nabídce vlevo. 
-2. Vložit **klíč rozhraní API** FCM projektu, který jste předtím uložili. 
+1. V Azure Portal na stránce **centra oznámení** vyberte **Google (GCM/FCM)** v nabídce vlevo. 
+2. Vložte **klíč rozhraní API** pro projekt FCM, který jste předtím uložili. 
 3. Vyberte **Uložit**. 
 
    ![Snímek obrazovky, který ukazuje, jak nakonfigurovat Notification Hubs pro Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-## <a name="next-steps"></a>Další postup
-Kurz s podrobnými pokyny pro odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging, najdete v tématu [nabízená oznámení do zařízení s Androidem pomocí Notification Hubs a Google FCM ](notification-hubs-android-push-notification-google-fcm-get-started.md).
+## <a name="next-steps"></a>Další kroky
+Kurz s podrobnými pokyny pro doručování oznámení do zařízení s Androidem pomocí služby Azure Notification Hubs a zasílání zpráv v cloudu Google Firebase najdete v tématu [nabízená oznámení na zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 

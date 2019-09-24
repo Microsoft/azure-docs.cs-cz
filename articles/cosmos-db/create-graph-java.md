@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172531"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212637"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Rychlý start: Sestavení databáze grafu pomocí sady Java SDK a Azure Cosmos DB rozhraní API pro tabulky
 
@@ -110,7 +110,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-java/keys.png)
+    ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. Otevřete soubor src/remote.yaml a vložte jedinečnou hodnotu ID místo `$name$` v části `hosts: [$name$.graphs.azure.com]`.
 
     Řádek 1 souboru remote.yaml by teď měl vypadat nějak takto: 
@@ -219,15 +219,15 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , ![a potom v grafu klikněte na tlačítko změnit cíl](./media/create-graph-java/edit-pencil-button.png) vrcholu v grafu vedle **cílů** na pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
 
-    ![Změna cíle vrcholu v grafu](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Změna cíle vrcholu v grafu – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. Do pole **cíl** zadejte *Rakesh*, do pole **popisek hrany** zadejte *ví*a potom zaškrtněte políčko.
 
-    ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Přidání připojení v Průzkumník dat – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-    ![Dva propojené vrcholy v Průzkumníku dat](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Dva vrcholy připojené v Průzkumník dat – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
 

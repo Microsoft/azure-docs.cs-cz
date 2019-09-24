@@ -1,43 +1,45 @@
 ---
-title: Export a import registrace Azure Notification Hubs hromadné | Dokumentace Microsoftu
-description: Zjistěte, jak používat Notification Hubs hromadné podporu k provedení velký počet operací v centru oznámení nebo chcete-li exportovat všechny registrace.
+title: Hromadná export a import registrací Azure Notification Hubs | Microsoft Docs
+description: Naučte se používat hromadnou podporu Notification Hubs k provádění velkého počtu operací v centru oznámení nebo pro export všech registrací.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575297"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212399"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Export a import hromadnou registrací Azure Notification Hubs
-Existují scénáře, ve kterých je potřeba vytvořit nebo upravit velký počet registrací v centru oznámení. Některé z těchto scénářů jsou značky aktualizace následujících batch výpočtů nebo migrujete stávající implementaci nabízených oznámení používat Notification Hubs.
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Hromadné export a import registrací Azure Notification Hubs
+Existují scénáře, ve kterých je nutné vytvořit nebo upravit velký počet registrací v centru oznámení. Některé z těchto scénářů jsou aktualizace značky po výpočtech služby Batch nebo migrace stávající implementace nabízených oznámení na použití Notification Hubs.
 
-Tento článek vysvětluje, jak provádět velký počet operací v centru oznámení nebo chcete-li exportovat všechny registrace hromadně.
+Tento článek vysvětluje, jak provést velký počet operací v centru oznámení nebo exportovat všechny registrace hromadně.
 
-## <a name="high-level-flow"></a>Základní tok
-Podpora služby batch je navržen pro podporu dlouhotrvajících úloh zahrnující miliony registrací. K dosažení této stupnice, podpory služby batch používá Azure Storage k ukládání podrobností o úloze a výstup. Pro hromadné operace aktualizace je potřeba k vytvoření souboru v kontejneru objektů blob, jehož obsah je seznam registrace – aktualizovat operace uživatele. Při spuštění úlohy, uživatel zadá adresu URL k vstupnímu objektu blob, spolu s adresu URL do výstupního adresáře (také v kontejneru objektů blob). Po spuštění úlohy, uživatel stav můžete zkontrolovat pomocí dotazu na umístění adresy URL poskytnuté na spuštění úlohy. Určité úlohy můžete provádět operace pouze konkrétním druhu (vytvoří, aktualizuje nebo odstraní). Operace exportu provádějí analogicky.
+## <a name="high-level-flow"></a>Tok na nejvyšší úrovni
+Podpora služby Batch je navržená tak, aby podporovala dlouhodobě běžící úlohy, které zahrnují miliony registrací. Pro dosažení tohoto škálování podpora dávky používá Azure Storage k ukládání podrobností a výstupu úlohy. Pro operace hromadné aktualizace musí uživatel vytvořit soubor v kontejneru objektů blob, jehož obsah je seznam operací aktualizace registrace. Při spuštění úlohy uživatel poskytne adresu URL vstupního objektu BLOB společně s adresou URL pro výstupní adresář (také v kontejneru objektů BLOB). Po zahájení úlohy může uživatel zjistit stav pomocí dotazu na umístění adresy URL zadané na začátku úlohy. Konkrétní úloha může provádět pouze operace určitého druhu (vytvoří, aktualizuje nebo odstraní). Operace exportu se provádějí obdobně.
 
 ## <a name="import"></a>Import
 
 ### <a name="set-up"></a>Nastavení
 V této části se předpokládá, že máte následující entity:
 
-- Centrum oznámení zřízené.
-- Kontejner objektů blob služby Azure Storage.
-- Odkazy [balíčku NuGet pro Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) a [balíčku Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+- Zřízené centrum oznámení.
+- Azure Storage kontejner objektů BLOB.
+- Odkazuje na [balíček nuget Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) a [Notification Hubs balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>Vytvoření vstupní soubor a uložte ho do objektu BLOB
-Vstupní soubor obsahuje seznam registrací serializovanou ve formátu XML, jeden pro každý řádek. Pomocí sady Azure SDK, následující příklad kódu ukazuje, jak k serializaci registrace a nahrání do kontejneru objektů blob.
+### <a name="create-input-file-and-store-it-in-a-blob"></a>Vytvořit vstupní soubor a uložit ho do objektu BLOB
+Vstupní soubor obsahuje seznam registrací serializovaných v XML, jeden pro každý řádek. Pomocí sady Azure SDK následující příklad kódu ukazuje, jak serializovat registrace a nahrát je do kontejneru objektů BLOB.
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -57,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> Předchozí kód serializuje registrace v paměti a poté odešle celého datového proudu do objektu blob. Pokud jste nahráli soubor více než pár v megabajtech, přečtěte si pokyny objektů blob v Azure o tom, jak provést tyto kroky; například [objekty BLOB bloku](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+> Předchozí kód deserializace registrace v paměti a pak nahraje celý datový proud do objektu BLOB. Pokud jste nahráli soubor o více než několik megabajtů, přečtěte si téma pokyny k objektu blob Azure, jak provést tyto kroky. například [objekty blob bloku](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
-### <a name="create-url-tokens"></a>Vytvořit adresu URL tokeny
-Po nahrání vstupního souboru generování adres URL pro zadání souboru vstupní a výstupní adresář pro své Centrum oznámení. Dva kontejnery různých objektů blob můžete použít pro vstup a výstup.
+### <a name="create-url-tokens"></a>Vytváření tokenů URL
+Po nahrání vstupního souboru vygenerujte adresy URL, které se poskytují do centra oznámení pro vstupní soubor i výstupní adresář. Pro vstup a výstup můžete použít dva různé kontejnery objektů BLOB.
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -88,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>Odeslání úlohy
-Dva vstupní a výstupní adresy URL můžete nyní spustit úlohy služby batch.
+Se dvěma vstupními a výstupními adresami URL teď můžete spustit dávkovou úlohu.
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -113,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-Kromě vstupní a výstupní adresy URL v tomto příkladu vytvoří `NotificationHubJob` objekt, který obsahuje `JobType` objektu, který může být jedna z následujících typů:
+Kromě vstupních a výstupních adres URL tento příklad vytvoří `NotificationHubJob` objekt, který `JobType` obsahuje objekt, což může být jeden z následujících typů:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Po dokončení volání, úloha navázat tak, že Centrum oznámení a můžete zkontrolovat její stav pomocí volání do [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+Až se volání dokončí, úloha bude pokračovat centrem oznámení a můžete zjistit jeho stav voláním [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
 
-Po dokončení úlohy si můžete prohlédnout výsledky podle následující soubory v adresáři výstupu:
+Po dokončení úlohy můžete zkontrolovat výsledky zobrazením následujících souborů ve výstupním adresáři:
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Tyto soubory obsahují seznam úspěšných a neúspěšných operací ze služby batch. Formát souboru je `.cvs`, ve které každý řádek obsahuje číslo řádku z původního vstupního souboru a výstup operace (obvykle popis vytvořené nebo aktualizované registrace).
+Tyto soubory obsahují seznam úspěšných a neúspěšných operací z dávky. Formát souboru je `.cvs`, ve kterém každý řádek obsahuje číslo řádku původního vstupního souboru a výstup operace (obvykle se jedná o vytvořený nebo aktualizovaný popis registrace).
 
 ### <a name="full-sample-code"></a>Úplný ukázkový kód
-Následující ukázkový kód importuje registrace do centra oznámení.
+Následující vzorový kód importuje registrace do centra oznámení.
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -260,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Export
-Export registrace je podobný import s těmito rozdíly:
+Export registrace je podobný jako při importu, a to s těmito rozdíly:
 
-- Stačí výstupní adresy URL.
-- Můžete vytvořit NotificationHubJob typu ExportRegistrations.
+- Potřebujete jenom výstupní adresu URL.
+- Vytvoříte NotificationHubJob typu ExportRegistrations.
 
 ### <a name="sample-code-snippet"></a>Ukázka fragmentu kódu
-Tady je ukázka fragmentu kódu pro export registrace v jazyce Java:
+Tady je ukázkový fragment kódu pro export registrací v jazyce Java:
 
 ```java
 // submit an export job
@@ -285,8 +287,8 @@ while(true){
 
 ```
 
-## <a name="next-steps"></a>Další postup
-Další informace o registraci, najdete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+Další informace o registracích najdete v následujících článcích:
 
 - [Správa registrací](notification-hubs-push-notification-registration-management.md)
 - [Značky pro registrace](notification-hubs-tags-segment-push-message.md)

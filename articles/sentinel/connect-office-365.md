@@ -1,32 +1,29 @@
 ---
-title: Připojit data Office 365 k Azure Sentinel Preview | Microsoft Docs
+title: Připojit data Office 365 k Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Office 365 k Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018997"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240664"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) můžete streamovat do Azure Sentinel jediným kliknutím. Protokoly auditu z několika tenantů můžete streamovat do jednoho pracovního prostoru v Azure Sentinel. Konektor protokolu aktivit Office 365 nabízí přehled o probíhajících činnostech uživatelů. Získáte informace o různých akcích uživatelů, správců, systémových nastavení a událostech ze sady Office 365. Připojením sady Office 365 do Azure Sentinel můžete tato data použít k zobrazení řídicích panelů, vytváření vlastních výstrah a zlepšení procesu šetření.
 
@@ -36,8 +33,8 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
-- V počítači, ze kterého jste se přihlásili ke službě Azure Sentinel pro vytvoření připojení, se ujistěte, že je port 4433 otevřený pro webový provoz.
-- Pokud váš tenant nemá licenci Office 365 E3 nebo Office 365 E5, musíte povolit jednotné auditování na svém zadržení pomocí jednoho z těchto procesů:
+- V počítači, ze kterého jste se přihlásili ke službě Azure Sentinel pro vytvoření připojení, se ujistěte, že je port 4433 otevřený pro webový provoz. Po úspěšném připojení se tento port může zavřít znovu.
+- Pokud váš tenant nemá licenci Office 365 E3 nebo Office 365 E5, musíte ve svém tenantovi povolit jednotné auditování pomocí jednoho z těchto procesů:
     - [Pomocí rutiny Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) a povolte parametr "UnifiedAuditLogIngestionEnabled").
     - [Nebo pomocí uživatelského rozhraní Centrum zabezpečení a dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
@@ -55,8 +52,8 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 3. Pokud chcete použít příslušné schéma v Log Analytics pro protokoly Office 365, vyhledejte **OfficeActivity**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit Office 365 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

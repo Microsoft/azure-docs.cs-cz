@@ -1,6 +1,6 @@
 ---
-title: Po propojení dat DNS ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Zjistěte, jak připojit data DNS v Azure Sentinelu.
+title: Připojení dat DNS ve službě Azure Sentinel | Microsoft Docs
+description: Naučte se připojit data DNS ve službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,29 +13,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1c79aad557efb85a8797584c33c74983ef645d07
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611317"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240711"
 ---
-# <a name="connect-your-domain-name-server"></a>Připojení serveru název domény
+# <a name="connect-your-domain-name-server---preview"></a>Připojení vašeho názvového serveru domény – Preview
 
-> [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Libovolný Server DNS (Domain Name) běží na Windows Azure Sentinelu se můžete připojit. To provádí instalací agenta na počítači DNS. Protokoly pomocí DNS, můžete získat zabezpečení, výkon a operace související informace o infrastruktuře DNS vaší organizace pomocí shromažďování, analýza, a korelace analýzy a protokoly auditu a dalších souvisejících dat ze serverů DNS.
 
-Když povolíte připojení protokolu DNS můžete:
-- Identifikace klientů, které se pokoušejí přeložit škodlivé domény názvy
-- Identifikace zastaralých záznamů
-- Identifikujte často doménový názvy a prahová klienti DNS
-- Zobrazení žádosti o zatížení serverů DNS
-- Selhání registrace DNS dynamického zobrazení
+Můžete připojit libovolný server DNS (Domain Name Server), který běží v systému Windows, do Azure Sentinel. K tomu slouží instalace agenta na počítač DNS. Pomocí protokolů DNS můžete získat přehledy o zabezpečení, výkonu a operacích souvisejících s provozem v infrastruktuře DNS vaší organizace tím, že shromažďujete, analyzujete a korelujete protokoly o analýze a auditu a další související data ze serverů DNS.
+
+Pokud povolíte připojení protokolu DNS, můžete:
+- Identifikujte klienty, kteří se pokoušejí přeložit názvy škodlivých domén.
+- Identifikace zastaralých záznamů o prostředcích
+- Identifikace často dotazovaných názvů domén a klientů DNS prahová
+- Zobrazit zatížení žádostí na serverech DNS
+- Zobrazit selhání dynamické registrace DNS
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
@@ -45,7 +43,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 | --- | --- | --- |
 | [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
 | [Agenti systému Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
-| [Skupina pro správu System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta nástroje Operations Manager do Azure monitoru se nevyžaduje. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Skupina pro správu System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 | [Účet služby Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 
 ### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
@@ -53,27 +51,27 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 Řešení shromažďuje inventář DNS a dat týkajících se události DNS ze serverů DNS instalaci agenta Log Analytics. Shromažďuje data související s inventářem, jako je například počet serverů DNS, zóny a záznamy o prostředcích, spuštěním rutin Powershellu DNS. Data se aktualizují jednou každé dva dny. Událost související data se shromažďují v reálném čase z [analýzy a protokoly auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) poskytuje rozšířené protokolování DNS a Diagnostika ve Windows serveru 2012 R2.
 
 
-## <a name="connect-your-dns-appliance"></a>Připojit zařízení DNS
+## <a name="connect-your-dns-appliance"></a>Připojení zařízení DNS
 
-1. Na portálu Azure Sentinelu vyberte **datové konektory** a zvolte **DNS** dlaždici.
+1. Na portálu Sentinel Azure vyberte **datové konektory** a klikněte na dlaždici **DNS** .
 1. Pokud jsou vaše počítače DNS v Azure:
-    1. Klikněte na tlačítko **instalace agenta na virtuálním počítači Windows Azure**.
-    1. V **virtuálních počítačů** seznamu, vyberte počítač DNS chcete Streamovat do ověřovacích Azure. Ujistěte se, že jde o virtuálního počítače s Windows.
-    1. V okně, které se otevře pro tento virtuální počítač, klikněte na tlačítko **připojit**.  
-    1. Klikněte na tlačítko **povolit** v **DNS konektor** okna. 
+    1. Klikněte na **nainstalovat agenta na virtuální počítač Azure s Windows**.
+    1. V seznamu **virtuální počítače** vyberte počítač DNS, který chcete streamovat do Azure Sentinel. Ujistěte se, že se jedná o virtuální počítač s Windows.
+    1. V okně, které se otevře pro daný virtuální počítač, klikněte na **připojit**.  
+    1. V okně konektoru **DNS** klikněte na **Povolit** . 
 
-2. Pokud váš počítač DNS není virtuální počítač Azure:
-    1. Klikněte na tlačítko **instalace agenta do počítače mimo Azure**.
-    1. V **přímý agent** okna, vyberte buď **Windows stáhnout agenta (64bitová verze)** nebo **Windows stáhnout agenta (32 bitů)** .
-    1. Nainstalujte agenta na počítači DNS. Kopírovat **ID pracovního prostoru**, **primární klíč**, a **sekundární klíč** a využít při zobrazení výzvy v průběhu instalace.
+2. Pokud Váš počítač DNS není virtuální počítač Azure:
+    1. Klikněte na **instalovat agenta na počítačích mimo Azure**.
+    1. V okně **přímý agent** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **stáhnout agenta pro Windows (32 bitů)** .
+    1. Nainstalujte agenta na počítač DNS. Zkopírujte **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** a použijte je při zobrazení výzvy během instalace.
 
-3. Chcete-li použít příslušné schéma v Log Analytics pro protokoly DNS, vyhledejte **DnsEvents**.
+3. Pokud chcete pro protokoly DNS použít příslušné schéma v Log Analytics, vyhledejte **DnsEvents**.
 
-## <a name="validate"></a>Ověření 
+## <a name="validate"></a>Ověřit 
 
-Ve službě Log Analytics vyhledejte schématu **DnsEvents** a ujistěte se, že existují události.
+V Log Analytics vyhledejte **DnsEvents** schématu a ujistěte se, že existují události.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak se připojit na místním zařízení DNS k Sentinelu Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+V tomto dokumentu jste zjistili, jak připojit místní zařízení DNS ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).

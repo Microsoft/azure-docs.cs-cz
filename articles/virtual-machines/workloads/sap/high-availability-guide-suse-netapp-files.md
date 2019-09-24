@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: fbb87843462e7e830fc357e178b41f7262b80e70
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70099571"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213267"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -33,15 +33,15 @@ ms.locfileid: "70099571"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -65,20 +65,20 @@ Tento článek vysvětluje, jak dosáhnout vysoké dostupnosti pro aplikaci SAP 
 Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
 * [Dokumentace k Azure NetApp Files][anf-azure-doc] 
-* Poznámka [1928533]pro SAP obsahuje:  
+* Poznámka [1928533][1928533]pro SAP obsahuje:  
   * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP
   * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure
   * Podporovaný software SAP a kombinace operačního systému (OS) a databáze
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
-* SAP Note [2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
-* Pro aplikace SAP Poznámka [2205917] se doporučuje nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP.
-* Poznámka SAP Poznámka [1944799] obsahuje pokyny pro SAP HANA SUSE Linux Enterprise Server pro aplikace SAP.
-* Pro SAP Note [2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
-* V případě SAP Poznámka [2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
-* Poznámka SAP Poznámka [2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
-* Poznámka SAP poznámky [1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
-* V části SAP Note [1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
-* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* SAP Note [2015553][2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
+* Pro aplikace SAP Poznámka [2205917][2205917] se doporučuje nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP.
+* Poznámka SAP Poznámka [1944799][1944799] obsahuje pokyny pro SAP HANA SUSE Linux Enterprise Server pro aplikace SAP.
+* Pro SAP Note [2178632][2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
+* V případě SAP Poznámka [2191498][2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
+* Poznámka SAP Poznámka [2243692][2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
+* Poznámka SAP poznámky [1984787][1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
+* V části SAP Note [1999351][1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
+* Komunitní wikiweb pro SAP]https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) (obsahuje všechny požadované poznámky SAP pro Linux.
 * [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
@@ -786,7 +786,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na Azure Virtual Machines (virtuálních počítačích)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na Azure Virtual Machines (virtuálních počítačích)][sap-hana-ha]. Seznam podporovaných databází najdete v tématu [SAP Note 1928533][1928533].
 
 * Spusťte instalaci instance databáze SAP.
 
@@ -1295,7 +1295,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

@@ -1,49 +1,51 @@
 ---
-title: Konfigurace Apple Push Notification Service ve službě Azure Notification Hubs | Dokumentace Microsoftu
-description: Zjistěte, jak ke konfiguraci centra oznámení Azure s nastavením Apple Push Notification Service (APNS).
+title: Konfigurace Apple Push Notification Service v Azure Notification Hubs | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat nastavení služby Azure Notification hub s Apple Push Notification Service (APNS).
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9a9db9f05895569b050e56cdeec1ee2ee25af0df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 74e7e3c74934e292b668b8bff594a5efbca19716
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237811"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212541"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení Apple Push Notification Service (APNS) pro Centrum oznámení na webu Azure Portal
-V tomto článku se dozvíte, jak nakonfigurovat nastavení Apple Push Notification Service (APNS) pro centra oznámení Azure pomocí webu Azure portal. 
+# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení služby Apple Push Notification Service (APNS) pro Centrum oznámení v Azure Portal
+V tomto článku se dozvíte, jak nakonfigurovat nastavení služby Apple Push Notification Service (APNS) pro Centrum oznámení Azure pomocí Azure Portal. 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud jste ještě nevytvořili centra oznámení, vytvořte teď. Další informace najdete v tématu [vytvoření centra oznámení Azure na webu Azure Portal](create-notification-hub-portal.md). 
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
 
 ## <a name="configure-apple-push-notification-service"></a>Konfigurace Apple Push Notification Service
 
-Následující postup obsahuje postup pro konfiguraci nastavení Apple Push Notification Service (APNS) pro Centrum oznámení:
+Následující postup vám poskytne postup konfigurace nastavení Apple Push Notification Service (APNS) pro Centrum oznámení:
 
-1. Na webu Azure Portal na **centra oznámení** stránce **Apple (APNS)** v nabídce vlevo.
+1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Apple (APNs)** .
 
-1. Pro **režim ověřování**, vyberte buď **certifikát** nebo **Token**.
+1. V **režimu ověřování**vyberte buď **certifikát** , nebo **token**.
 
-   a. Pokud vyberete **certifikát**:
-   * Vyberte ikonu souboru a pak vyberte *.p12* soubor, který chcete odeslat.
+   a. Pokud vyberete možnost **certifikát**:
+   * Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
    * Zadejte heslo.
-   * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
+   * Vyberte režim **Sandbox**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
-     ![Snímek obrazovky APNS certifikátu konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Snímek obrazovky s konfigurací certifikátu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Pokud vyberete **Token**:
+   b. Pokud vyberete **token**:
 
-   * Zadejte hodnoty pro **ID klíče**, **ID sady prostředků**, **ID týmu**, a **Token**.
-   * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
+   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu**a tokenu.
+   * Vyberte režim **Sandbox**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
-     ![Snímek obrazovky APNS token konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
 
-## <a name="next-steps"></a>Další postup
-Kurz s podrobnými pokyny pro odesílání nabízených oznámení do zařízení s Iosem najdete v následujícím článku: [Nabízená oznámení do zařízení s Iosem pomocí Notification Hubs a služby APN](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+## <a name="next-steps"></a>Další kroky
+Kurz s podrobnými pokyny pro doručování oznámení do zařízení se systémem iOS najdete v následujícím článku: [Nabízená oznámení na zařízení s iOS pomocí Notification Hubs a APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)

@@ -54,7 +54,7 @@
     - name: Služba Functions s Logic Apps
       href: functions-twitter-email.md
     - name: Vývoj funkcí Pythonu s využitím editoru VS Code
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: Definice OpenAPI pro bezserverová rozhraní API
       href: functions-openapi-definition.md
     - name: Připojení k virtuální síti

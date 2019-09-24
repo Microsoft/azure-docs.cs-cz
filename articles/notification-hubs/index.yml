@@ -5,14 +5,14 @@ metadata:
   title: 'Dokumentace ke službě Azure Notification Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: 'Naučte se, jak pomocí Notification Hubs odesílat nabízená oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. Kurzy, reference k rozhraní API a další dokumentace'
   services: notification-hubs
-  author: spelluru
-  manager: null
+  author: sethmanheim
+  manager: femila
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/01/2017
-  ms.author: spelluru
+  ms.author: sethm
 abstract:
   description: 'Naučte se využívat Notification Hubs, škálovatelný modul zasílání nabízených oznámení pro více platforem, k rychlému rozesílání milionů zpráv aplikacím spuštěným na různých typech zařízení (Android, iOS, Windows, Windows Phone). <p>Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavení a odesílání nabízených oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení.</p>'
   aside:

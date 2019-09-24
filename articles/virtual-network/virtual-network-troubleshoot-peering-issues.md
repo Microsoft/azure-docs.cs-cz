@@ -14,115 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091104"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219235"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
 Tato příručka pro řešení potíží poskytuje kroky, které vám pomohou vyřešit většinu problémů s [partnerskými vztahy virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-![OBRAZU](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
+![Diagram partnerského vztahu virtuálních sítí](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
 
-## <a name="scenario-1-configure-virtual-network-peering-between-two-virtual-networks"></a>Scénář 1: Konfigurace partnerského vztahu virtuálních sítí mezi dvěma virtuálními sítěmi
+## <a name="configure-virtual-network-peering-between-two-virtual-networks"></a>Konfigurace partnerského vztahu virtuálních sítí mezi dvěma virtuálními sítěmi
 
 Jsou virtuální sítě ve stejném předplatném nebo v různých předplatných?
 
-### <a name="connection-type-1-the-virtual-networks-are-in-the-same-subscription"></a>Typ připojení 1: Virtuální sítě jsou ve stejném předplatném.
+### <a name="the-virtual-networks-are-in-the-same-subscription"></a>Virtuální sítě jsou ve stejném předplatném.
 
-Ke konfiguraci partnerského vztahu virtuálních sítí pro virtuální sítě, které jsou ve stejném předplatném, použijte podle potřeby metody, které jsou k dispozici v následujících článcích:
+Pro konfiguraci partnerského vztahu virtuálních sítí pro virtuální sítě, které jsou ve stejném předplatném, použijte metody v následujících článcích:
 
-* Pokud jsou virtuální sítě ve **stejné oblasti**, postupujte podle pokynů pro [vytvoření partnerského vztahu pro virtuální sítě ve stejném předplatném](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering).
-* Pokud jsou virtuální sítě v **různých oblastech**, postupujte podle kroků pro nastavení [globálního partnerského vztahu virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).  
+* Pokud jsou virtuální sítě ve *stejné oblasti*, přečtěte si téma [vytvoření partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering).
+* Pokud jsou virtuální sítě v *různých oblastech*, přečtěte si téma [virtuální sítě s partnerským vztahem](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
 
 > [!Note]
-> Připojení nebude u globálních partnerských vztahů virtuálních sítí fungovat pro následující prostředky: 
+> Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky: 
 >
-> * Virtuální počítače za základní SKU interního nástroje
-> * Redis Cache (používá základní SKLADOVOU položku interního nástroje)
-> * Application Gateway (používá základní SKLADOVOU položku interního nástroje)
-> * Sady škálování (používá základní interního nástroje SKU)
-> * Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
-> * SQL Always On (používá základní SKLADOVOU položku interního nástroje)
-> * Prostředí App Service (pomocného mechanismu) (používá základní SKLADOVOU položku interního nástroje)
-> * API Management (používá základní SKLADOVOU položku interního nástroje)
-> * Služba Azure Active Directory Domain Service (přidávají) (používá základní interního nástroje SKU)
+> * Virtuální počítače za základní SKU interního nástroje pro vyrovnávání zatížení (interního nástroje)
+> * Redis Cache (používá interního nástroje SKU úrovně Basic)
+> * Application Gateway (používá základní interního nástroje SKU)
+> * Virtual Machine Scale Sets (používá základní interního nástroje SKU)
+> * Clustery Azure Service Fabric (používá základní SKU interního nástroje)
+> * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
+> * Azure App Service Environment pro PowerApps (používá interního nástroje SKU úrovně Basic)
+> * Azure API Management (používá základní SKLADOVOU položku interního nástroje)
+> * Azure Active Directory Domain Services (Azure služba AD DS) (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálního partnerského vztahu.
 
-### <a name="connection-type-2-the-virtual-networks-are-in-different-subscriptions-or-ad-tenants"></a>Typ připojení 2: Virtuální sítě jsou v různých předplatných nebo klientech služby AD.
+### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>Virtuální sítě jsou v různých předplatných nebo klientech služby Active Directory.
 
-Pokud chcete nakonfigurovat partnerské vztahy virtuálních sítí pro virtuální sítě v různých předplatných nebo klientech služby Active Directory, postupujte podle kroků v části [vytvoření partnerského vztahu v různých předplatných pro Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Informace o konfiguraci partnerského vztahu virtuálních sítí pro virtuální sítě v různých předplatných nebo klientech služby Active Directory najdete v tématu [vytvoření partnerského vztahu v různých předplatných pro Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
 > [!Note]
 > Ke konfiguraci partnerského vztahu sítě musíte mít v obou předplatných oprávnění **Přispěvatel sítě** . Další informace najdete v tématu [oprávnění k partnerským partnerům](virtual-network-manage-peering.md#permissions).
 
-## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Scénář 2: Konfigurace partnerského vztahu virtuálních sítí s topologií hvězdicové topologie, která používá místní prostředky
+## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Konfigurace partnerského vztahu virtuálních sítí s topologií hvězdicové topologie, která používá místní prostředky
 
-![OBRAZU](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1a.png)
+![Diagram partnerského vztahu virtuální sítě s místním paprskem](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1a.png)
 
-### <a name="connection-type-1-for-site-to-site-connection-or-expressroute-connection"></a>Typ připojení 1: Připojení Site-to-site nebo připojení ExpressRoute
+### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Připojení typu Site-to-site nebo připojení ExpressRoute
 
 Postupujte podle kroků v části: [Nakonfigurujte přenos brány VPN pro partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 
-### <a name="connection-type-2-for-point-to-site-connections"></a>Typ připojení 2: Pro připojení Point-to-site
+### <a name="for-point-to-site-connections"></a>Pro připojení Point-to-site
 
 1. Postupujte podle kroků v části: [Nakonfigurujte přenos brány VPN pro partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
-2. Po navázání nebo změně partnerského vztahu virtuální sítě se musí balíček Point-to-site stáhnout a nainstalovat znovu, aby klienti připojení Point-to-site získali aktualizované trasy k virtuální síti paprsků.
+2. Po navázání nebo změně partnerského vztahu virtuální sítě Stáhněte a přeinstalujte balíček Point-to-site, aby klienti Point-to-site získali aktualizované trasy k virtuální síti paprsků.
 
-## <a name="scenario-3-configure-virtual-network-peering-with-hub-spoke-topology-for-azure-virtual-network"></a>Scénář 3: Konfigurace partnerského vztahu virtuálních sítí pomocí topologie centra s paprsky pro Azure Virtual Network
+## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Konfigurace partnerského vztahu virtuálních sítí pomocí virtuální sítě topologie hvězdicové a hvězdicové topologie
 
-![OBRAZU](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1b.png)
+![Diagram partnerského vztahu virtuální sítě s virtuální síťovou paprskou](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1b.png)
 
-### <a name="connection-type-1-the-virtual-networks-are-in-the-same-region"></a>Typ připojení 1: Virtuální sítě jsou ve stejné oblasti.
+### <a name="the-virtual-networks-are-in-the-same-region"></a>Virtuální sítě jsou ve stejné oblasti.
 
-Ve virtuální síti rozbočovače musíte nakonfigurovat síťové virtuální zařízení (síťové virtuální zařízení) a mít uživatelsky definované trasy s virtuálním síťovým zařízením Next Hop použitým ve virtuálních sítích paprsků. Další informace najdete v tématu [řetězení služeb](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
+
+1. Ve virtuální síti rozbočovače nakonfigurujte síťové virtuální zařízení (síťové virtuální zařízení).
+1. Ve virtuálních sítích paprsků musí být uživatelem definované trasy s typem dalšího segmentu směrování použité síťové virtuální zařízení.
+
+Další informace najdete v tématu [řetězení služeb](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
 
 > [!Note]
 > Pokud potřebujete podporu k nastavení síťové virtuální zařízení, [obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 Pomoc při řešení potíží s nastavením a směrováním zařízení síťové virtuální zařízení najdete v tématu [problémy se síťovým virtuálním zařízením v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
 
-### <a name="connection-type-2-the-virtual-networks-are-in-different-regions"></a>Typ připojení 2: Virtuální sítě jsou v různých oblastech.
+### <a name="the-virtual-networks-are-in-different-regions"></a>Virtuální sítě jsou v různých oblastech.
 
-Nyní se podporuje přenos přes globální virtuální síť VNet. Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky:
+Přenos přes globální partnerský vztah virtuálních sítí se teď podporuje. Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky:
 
 * Virtuální počítače za základní SKU interního nástroje
-* Redis Cache (používá základní SKLADOVOU položku interního nástroje)
-* Application Gateway (používá základní SKLADOVOU položku interního nástroje)
+* Redis Cache (používá interního nástroje SKU úrovně Basic)
+* Application Gateway (používá základní interního nástroje SKU)
 * Sady škálování (používá základní interního nástroje SKU)
 * Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
-* SQL Always On (používá základní SKLADOVOU položku interního nástroje)
-* Prostředí App Service (pomocného mechanismu) (používá základní SKLADOVOU položku interního nástroje)
+* SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
+* App Service Environment (používá základní SKLADOVOU položku interního nástroje)
 * API Management (používá základní SKLADOVOU položku interního nástroje)
-* Služba Azure Active Directory Domain Service (přidávají) (používá základní interního nástroje SKU)
+* Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace o požadavcích na globální partnerské vztahy a omezeních najdete v tématu věnovaném [partnerským vztahům virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints).
 
-## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Scénář 4: Mám potíže s připojením mezi dvěma partnerskými virtuálními sítěmi
+## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>Řešení potíží s připojením mezi dvěma partnerskými virtuálními sítěmi
 
 Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions). Vyberte virtuální síť, vyberte **partnerský vztah**a potom zaškrtněte pole **stav** . Jaký je stav?
 
-### <a name="connection-type-1-the-peering-status-shows-connected"></a>Typ připojení 1: Stav partnerského vztahu zobrazuje ' připojeno '
+### <a name="the-peering-status-is-connected"></a>Stav partnerského vztahu je "připojeno".
 
-Pokud chcete tento problém vyřešit, postupujte podle následujících kroků:
+Řešení tohoto problému:
 
 1. Podívejte se na toky síťových přenosů:
 
    Pomocí [řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview) a [toku IP Ověřte](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) ze zdrojového virtuálního počítače k cílovému virtuálnímu počítači, jestli existuje NSG nebo udr, která způsobuje rušení v přenosných tocích.
 
-   Pokud používáte zařízení s bránou firewall nebo síťové virtuální zařízení, postupujte podle následujících kroků: 
-   1. Zdokumentujte parametry UDR, abyste je mohli obnovit po dokončení tohoto kroku.
-   2. Odeberte UDR ze zdrojové podsítě virtuálních počítačů nebo síťového adaptéru, který odkazuje na síťové virtuální zařízení jako další segment směrování. Ověřte připojení ze zdrojového virtuálního počítače přímo k cíli, který přeskočí síťové virtuální zařízení. Pokud tento krok funguje, přečtěte si [Poradce při potížích s síťové virtuální zařízení](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
+   Pokud používáte bránu firewall nebo síťové virtuální zařízení: 
+   1. Zajistěte si dokumentaci parametrů UDR, abyste je mohli po dokončení tohoto kroku obnovit.
+   2. Odeberte UDR ze zdrojové podsítě virtuálních počítačů nebo síťového adaptéru, který odkazuje na síťové virtuální zařízení jako další segment směrování. Ověřte připojení ze zdrojového virtuálního počítače přímo k cíli, který přeskočí síťové virtuální zařízení. Pokud tento krok nefunguje, přečtěte si téma [Poradce při potížích s síťové virtuální zařízení](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
 
 2. Proveďte trasování sítě: 
    1. Spusťte trasování sítě na cílovém virtuálním počítači. Pro Windows můžete použít **netsh**. Pro Linux použijte **TCPDump**.
    2. Spusťte **TcpPing** nebo **PsPing** ze zdroje do cílové IP adresy.
 
-   * Toto je příklad příkazu **TcpPing** :`tcping64.exe -t <destination VM address> 3389`
+      Toto je příklad příkazu **TcpPing** :`tcping64.exe -t <destination VM address> 3389`
 
    3. Po dokončení **TcpPing** zastavte trasování sítě v cíli.
    4. Pokud pakety přicházejí ze zdroje, nedochází k potížím se sítí. Vyhledejte problém s konfigurací tím, že prověřte bránu firewall virtuálního počítače i aplikaci, která naslouchá na tomto portu.
@@ -131,104 +135,105 @@ Pokud chcete tento problém vyřešit, postupujte podle následujících kroků:
    > Nemůžete se připojit k následujícím typům prostředků přes globální partnerský vztah virtuální sítě (virtuální sítě v různých oblastech):
    >
    > * Virtuální počítače za základní SKU interního nástroje
-   > * Redis Cache (používá základní SKLADOVOU položku interního nástroje)
-   > * Application Gateway (používá základní SKLADOVOU položku interního nástroje)
+   > * Redis Cache (používá interního nástroje SKU úrovně Basic)
+   > * Application Gateway (používá základní interního nástroje SKU)
    > * Sady škálování (používá základní interního nástroje SKU)
    > * Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
-   > * SQL Always On (používá základní SKLADOVOU položku interního nástroje)
-   > * Prostředí App Service (pomocného mechanismu) (používá základní SKLADOVOU položku interního nástroje)
+   > * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
+   > * App Service Environment (používá základní SKLADOVOU položku interního nástroje)
    > * API Management (používá základní SKLADOVOU položku interního nástroje)
-   > * Služba Azure Active Directory Domain Service (přidávají) (používá základní interního nástroje SKU)
+   > * Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálního partnerského vztahu.
 
-### <a name="connection-type-2-the-peering-status-shows-disconnected"></a>Typ připojení 2: Stav partnerského vztahu zobrazuje "Odpojeno"
+### <a name="the-peering-status-is-disconnected"></a>Stav partnerského vztahu je "Odpojeno".
 
-Je nutné odstranit partnerské vztahy z obou virtuální sítě a znovu je vytvořit.
+Pokud chcete tento problém vyřešit, odstraňte partnerský vztah z obou virtuálních sítí a pak je znovu vytvořte.
 
-## <a name="scenario-5-i-have-a-connectivity-issue-between-a-hub-spoke-virtual-network-and-on-premises-resource"></a>Scénář 5: Mám potíže s připojením mezi virtuální sítí hvězdicové centra a místním prostředkem
+## <a name="troubleshoot-a-connectivity-issue-between-a-hub-spoke-virtual-network-and-an-on-premises-resource"></a>Řešení potíží s připojením mezi virtuální sítí hvězdicové centra a místním prostředkem
 
-Používáte síťové virtuální zařízení nebo bránu VPN od jiného výrobce?
+Používá vaše síť síťové virtuální zařízení nebo VPN Gateway třetí strany?
 
-### <a name="connection-type-1-my-network-uses-a-third-party-nva-or-vpn-gateway"></a>Typ připojení 1: Moje síť používá síťové virtuální zařízení nebo bránu VPN třetí strany.
+### <a name="my-network-uses-a-third-party-nva-or-vpn-gateway"></a>Moje síť používá síťové virtuální zařízení nebo bránu VPN třetí strany.
 
 Pokud chcete řešit problémy s připojením, které mají vliv na síťové virtuální zařízení nebo bránu VPN třetí strany, přečtěte si následující články:
 
 * [Poradce při potížích s síťové virtuální zařízení](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
 * [Řetězení služeb](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
 
-### <a name="connection-type-2-my-network-does-not-a-third-party-nva-or-vpn-gateway"></a>Typ připojení 2: Moje síť nepředstavuje síťové virtuální zařízení nebo bránu VPN třetí strany.
+### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>Moje síť nepoužívá síťové virtuální zařízení nebo bránu VPN třetí strany.
 
-Mají virtuální sítě rozbočovač i paprsek bránu sítě VPN?
+Má virtuální síť centrální sítě a virtuální síť hvězdicové bránu VPN?
 
-#### <a name="both-the-hub-and-spoke-virtual-networks-have-a-vpn-gateway"></a>Virtuální sítě rozbočovač i paprsek mají bránu VPN.
+#### <a name="both-the-hub-virtual-network-and-the-spoke-virtual-network-have-a-vpn-gateway"></a>Virtuální síť rozbočovače i virtuální síť paprsků mají bránu VPN.
 
 Použití vzdálené brány se nepodporuje.
 
-Z důvodu omezení partnerského vztahu virtuálních sítí se **používání vzdálené brány** u virtuální sítě rozbočovače nepodporuje, pokud virtuální síť rozbočovače už má bránu VPN.
+Pokud už virtuální síť rozbočovače má bránu VPN, ve virtuální síti paprsků se nepodporuje možnost **použít vzdálenou bránu** . Důvodem je omezení partnerského vztahu virtuální sítě.
 
-#### <a name="both-the-hub-and-spoke-virtual-networks-dont-have-a-vpn-gateway"></a>Virtuální sítě rozbočovač i paprsků nemají bránu VPN.
+#### <a name="both-the-hub-virtual-network-and-the-spoke-virtual-network-do-not-have-a-vpn-gateway"></a>Virtuální síť rozbočovače i virtuální síť paprsků nemají bránu VPN.
 
-U připojení typu Site-to-site nebo ExpressRoute ověřte tyto primární příčiny potíží s připojením k vzdálené virtuální síti z místního prostředí.
+U připojení typu Site-to-site nebo Azure ExpressRoute ověřte následující primární příčiny potíží s připojením k vzdálené virtuální síti z místního prostředí:
 
-* Ověřte, že je ve virtuální síti s bránou zaškrtnuto políčko **Povolení přesměrovaného přenosu** .
-* Ověřte, zda je ve virtuální síti, která nemá bránu, zaškrtnuto políčko **použít vzdálenou bránu** .
+* Ve virtuální síti, která má bránu, ověřte, že je zaškrtnuté políčko **Povolení přesměrovaného přenosu** .
+* Ve virtuální síti, která nemá bránu, ověřte, zda je zaškrtnuto políčko **použít vzdálenou bránu** .
 * Požádejte správce sítě o kontrolu vašich místních zařízení, aby se ověřilo, že všichni mají přidaný adresní prostor vzdálené virtuální sítě.
 
 Pro připojení Point-to-site:
 
-* Ověřte, že je ve virtuální síti s bránou zaškrtnuto políčko **Povolení přesměrovaného přenosu** .
-* Ověřte, zda je ve virtuální síti, která nemá bránu, zaškrtnuto políčko **použít vzdálenou bránu** .
-* Stáhněte a nainstalujte klientský balíček Point-to-site znovu. Trasy virtuální sítě, které jsou nově partnerského vztahu, automaticky nepřidává trasy k klientům Point-to-site.
+* Ve virtuální síti, která má bránu, ověřte, že je zaškrtnuté políčko **Povolení přesměrovaného přenosu** .
+* Ve virtuální síti, která nemá bránu, ověřte, zda je zaškrtnuto políčko **použít vzdálenou bránu** .
+* Stáhněte a znovu nainstalujte balíček klienta Point-to-site. Trasy virtuální sítě, které jsou nově partnerského vztahu, automaticky nepřidává trasy k klientům Point-to-site.
 
-## <a name="scenario-6-i-have-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-the-same-region"></a>Scénář 6: Mám potíže se síťovým připojením mezi koncovými virtuálními sítěmi ve stejné oblasti
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-the-same-region"></a>Řešení problémů se síťovým připojením mezi paprsky mezi virtuálními sítěmi ve stejné oblasti
 
-Musíte mít síťové virtuální zařízení v síti rozbočovače, nakonfigurovat udr v paprskech, které mají síťové virtuální zařízení sadu jako další segment směrování, a povolit **předávání přenosů** ve virtuální síti rozbočovače.
+Síť rozbočovače musí zahrnovat síťové virtuální zařízení. Nakonfigurujte udr v paprskech, které mají síťové virtuální zařízení sadu jako další segment směrování, a povolte možnost **Povolit předaný provoz** ve virtuální síti rozbočovače.
 
 Další informace najdete v tématu [řetězení služeb](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)a diskuzi o těchto požadavcích s [dodavatelem síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) podle vašeho výběru.
 
-## <a name="scenario-7-i-have-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Scénář 7: Mám potíže se síťovým připojením mezi koncovými virtuálními sítěmi v různých oblastech
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Řešení problémů se síťovým připojením centra mezi virtuálními sítěmi v různých oblastech mezi koncovými servery
 
-Nyní se podporuje přenos přes globální virtuální síť VNet. Připojení nebude u globálních partnerských vztahů virtuálních sítí fungovat pro následující prostředky:
+Přenos přes globální partnerský vztah virtuálních sítí se teď podporuje. Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky:
 
 * Virtuální počítače za základní SKU interního nástroje
-* Redis Cache (používá základní SKLADOVOU položku interního nástroje)
-* Application Gateway (používá základní SKLADOVOU položku interního nástroje)
+* Redis Cache (používá interního nástroje SKU úrovně Basic)
+* Application Gateway (používá základní interního nástroje SKU)
 * Sady škálování (používá základní interního nástroje SKU)
 * Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
-* SQL Always On (používá základní SKLADOVOU položku interního nástroje)
-* Prostředí App Service (pomocného mechanismu) (používá základní SKLADOVOU položku interního nástroje)
+* SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
+* App Service Environment (používá základní SKLADOVOU položku interního nástroje)
 * API Management (používá základní SKLADOVOU položku interního nástroje)
-* Služba Azure Active Directory Domain Service (přidávají) (používá základní interního nástroje SKU)
+* Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
-Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálních partnerských vztahů a [různých topologiích sítě VPN](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/).
+Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálních partnerských vztahů a [různých topologií sítě VPN](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/).
 
-## <a name="scenario-8-i-have-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Scénář 8: Mám potíže se síťovým připojením mezi webovou aplikací a koncovou virtuální sítí.
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Řešení potíží se síťovým připojením mezi službou Web App a paprskovou virtuální sítí s rozbočovačem
 
-Pokud chcete tento problém vyřešit, postupujte podle těchto kroků:
+Řešení tohoto problému:
 
-1. Přihlaste se k Azure Portal. Přejít do webové aplikace, vyberte sítě a potom vyberte **Integrace virtuální** **sítě**.
-2. Zkontrolujte, jestli se vám zobrazí vzdálená virtuální síť. Ručně zadejte adresní prostor vzdálené virtuální sítě (**synchronizovat síť** a **Přidat trasy**).
+1. Přihlaste se k portálu Azure. 
+1. Ve webové aplikaci vyberte síť a potom vyberte **Integrace virtuální** **sítě**.
+1. Zkontrolujte, jestli se vám zobrazí vzdálená virtuální síť. Zadejte ručně adresní prostor vzdálené virtuální sítě (**synchronizovat síť** a **Přidat trasy**).
 
 Další informace najdete v následujících článcích:
 
-* [Integrace aplikace s Virtual Network Azure](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Integrace aplikace do služby Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Směrování sítě VPN typu Point-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
-## <a name="scenario-9-i-receive-an-error-when-configuring-virtual-network-peering"></a>Scénář 9: Při konfiguraci partnerského vztahu virtuálních sítí se zobrazí chyba
+## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Řešení potíží s chybovou zprávou o konfiguraci partnerského vztahu virtuálních sítí 
 
-### <a name="error-1-current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Chyba 1: Aktuální tenant `<TENANT ID>` nemá autorizaci pro přístup k propojenému předplatnému.
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Aktuální tenant `<TENANT ID>` nemá autorizaci pro přístup k propojenému předplatnému.
 
-Pokud chcete tento problém vyřešit, postupujte podle kroků v části [vytvoření partnerského vztahu – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Pokud chcete tento problém vyřešit, přečtěte si téma [vytvoření partnerského vztahu – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
-### <a name="error-2-not-connected"></a>Chyba 2: Nepřipojeno
+### <a name="not-connected"></a>Nepřipojené
 
-Je nutné odstranit partnerské vztahy z obou virtuální sítě a znovu je vytvořit.
+Pokud chcete tento problém vyřešit, odstraňte partnerský vztah z obou virtuálních sítí a pak je znovu vytvořte.
 
-### <a name="error-3-failed-to-peer-a-databricks-virtual-network"></a>Chyba 3: Nepodařilo se vytvořit partnerský vztah k virtuální síti datacihly.
+### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nepodařilo se vytvořit partnerský vztah k virtuální síti datacihly.
 
-Pokud chcete tento problém vyřešit, nakonfigurujte partnerský vztah virtuální sítě z okna **Azure Databricks** a pak zadejte cílovou virtuální síť pomocí **ID prostředku**. Další informace najdete v tématu [virtuální síť partnera a datacihly do vzdálené virtuální sítě](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Chcete-li tento problém vyřešit, nakonfigurujte partnerský vztah virtuální sítě v rámci **Azure Databricks**a pak zadejte cílovou virtuální síť pomocí **ID prostředku**. Další informace najdete v tématu [virtuální síť partnera a datacihly do vzdálené virtuální sítě](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Řešení potíží s připojením mezi virtuálními počítači Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)

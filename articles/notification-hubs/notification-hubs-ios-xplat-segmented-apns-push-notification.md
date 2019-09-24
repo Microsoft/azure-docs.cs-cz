@@ -3,9 +3,9 @@ title: Nabízená oznámení na konkrétní zařízení s iOS pomocí Azure Noti
 description: V tomto kurzu se naučíte používat službu Azure Notification Hubs k posílání nabízených oznámení na konkrétní zařízení s iOS.
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/28/2019
-ms.author: jowargo
-ms.openlocfilehash: f83afa62859dee5963749daf2555af08cf6a0e0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 07/28/2019
+ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663822"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213226"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení na konkrétní zařízení s iOS pomocí Azure Notification Hubs
 
@@ -51,7 +53,7 @@ Prvním krokem je přidání prvků uživatelského rozhraní do stávajícího 
 
    * Popisek s textem "průlom News",
    * Popisky s texty kategorií "World", "politika", "Business", "Technology", "věda", "Sport",
-   * Šest přepínačů, jeden pro každou kategorii, **nastavte ve výchozím** nastavení všechny **stavy** přepínačů.
+   * Šest přepínačů, jeden pro každou kategorii, nastavte ve výchozím nastavení všechny **stavy** přepínačů.
    * Jedno tlačítko s označením "předplatné"
 
      Scénář by měl vypadat takto:
@@ -348,7 +350,7 @@ Obvykle se oznámení odesílají pomocí back-end služby, ale můžete posíla
 
 3. Každé zařízení, které se přihlásí k odběru nových zpráv, obdrží oznámení o novinkách, která jste právě odeslali.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste odeslali oznámení všesměrového vysílání na konkrétní zařízení s iOS, která jsou zaregistrovaná pro tyto kategorie. Pokud se chcete dozvědět, jak doručovat lokalizované oznámení, přejděte k následujícímu kurzu:
 

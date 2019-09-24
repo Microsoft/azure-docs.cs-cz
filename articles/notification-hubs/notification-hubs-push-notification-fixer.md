@@ -1,11 +1,11 @@
 ---
-title: Diagnostika vynechanými oznámeními ve službě Azure Notification Hubs
-description: Zjistěte, jak diagnostikovat běžné problémy s vynechanými oznámeními ve službě Azure Notification Hubs.
+title: Diagnostika zrušených oznámení v Azure Notification Hubs
+description: Naučte se diagnostikovat běžné problémy s vyřazenými oznámeními v Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,188 +13,190 @@ ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
-ms.author: jowargo
-ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/04/2019
+ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925827"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213152"
 ---
-# <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika vynechanými oznámeními ve službě Azure Notification Hubs
+# <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
 
-Běžné otázky o Azure Notification Hubs je postup řešení potíží při oznámení z aplikace nejsou zobrazeny na klientských zařízeních. Zákazníci chtějí vědět, kde a proč byly vyřazeny oznámení a jak vyřešit problém. Tento článek identifikuje proč oznámení může získáte nebo nebudou přijímány zařízení. Také vysvětluje, jak zjistit hlavní příčinu.
+Častým dotazem o Azure Notification Hubs je řešení potíží, když se oznámení z aplikace neobjeví na klientských zařízeních. Zákazníci chtějí zjistit, kde a proč byla oznámení vyřazena, a jak tento problém vyřešit. Tento článek popisuje, proč by mohla být oznámení Vyřazená nebo nepřijímaná zařízeními. Vysvětluje také, jak určit hlavní příčinu.
 
-Je důležité se napřed seznámit jak Notification Hubs doručí oznámení do zařízení.
+Nejdřív je důležité porozumět tomu, jak Notification Hubs do zařízení doručovat oznámení.
 
 ![Architektura Notification Hubs][0]
 
-V toku typické odeslat oznámení, je zpráva odeslána z *back-endu aplikace* Notification hubs. Notification Hubs zpracovává všechny registrace. Zohledňuje nakonfigurované značky a výrazy označení k určení cíle. Cíle jsou registrace, které je potřeba dostat nabízené oznámení. Tyto registrace může zahrnovat některé z našich podporované platformy: Vyvolání operačního systému (Amazon), iOS, Windows a Windows Phone, Android Baidu (zařízení s Androidem v Číně).
+V běžném toku oznámení o odesílání se zpráva pošle z *back-endu aplikace* do Notification Hubs. Notification Hubs zpracuje všechny registrace. Pro určení cílů bere v úvahu konfigurované značky a výrazy značek. Cíle jsou registrace, které potřebují přijímat nabízená oznámení. Tyto registrace můžou zahrnovat libovolnou z našich podporovaných platforem: Android, Baidu (zařízení s Androidem v Číně), oheň pro iOS, Windows a Windows Phone.
 
-S cíli navázat, Notification Hubs nabízených oznámení upozornění *push notification service* pro platformu zařízení. Mezi příklady patří Apple Push Notification service (APNs) společnosti Apple a služby Firebase Cloud Messaging (FCM) pro Google. Notification Hubs nabízených oznámení upozornění rozdělit mezi několik dávek registrací. Ověřuje ve službě příslušných nabízená oznámení na základě přihlašovacích údajů, můžete nastavit na webu Azure Portal, v části **Konfigurace centra oznámení**. Nabízené oznámení služby potom předává oznámení k funkcím *klientská zařízení*.
+Po navázání cílů zaNotification Hubs *informování oznámení do služby nabízených oznámení* pro platformu zařízení. Mezi příklady patří služba APNs (Apple Push Notification Service) pro zasílání zpráv Apple a Firebase Cloud Messaging (FCM) pro Google. Notification Hubs nabízená oznámení jsou rozdělená mezi několik dávek registrací. Ověřuje se přes příslušnou službu nabízených oznámení na základě přihlašovacích údajů, které jste nastavili v Azure Portal v části **Konfigurace centra oznámení**. Služba nabízených oznámení pak přepošle oznámení do příslušných *klientských zařízení*.
 
-Odeslání oznámení do konečné fáze je mezi služby nabízených oznámení platformy a zařízení. Doručení oznámení může selhat na všechny čtyři fáze procesu nabízených oznámení (klient, back-endu aplikace, Notification Hubs a služby nabízených oznámení platformy). Další informace o architektuře Notification Hubs najdete v tématu [Přehled služby Notification Hubs].
+Poslední nožka doručování oznámení probíhá mezi službou nabízených oznámení platformy a zařízením. Doručení oznámení může selhat v kterékoli ze čtyř fází procesu nabízených oznámení (klient, back-end aplikace, Notification Hubs a služba nabízených oznámení platformy). Další informace o architektuře Notification Hubs najdete v tématu [Přehled Notification Hubs].
 
-Selhání při poskytování oznámení mohou nastat během počáteční fázi fáze/testování. Vynechanými oznámeními v této fázi může znamenat problém s konfigurací. V případě selhání k poskytování oznámení v produkčním prostředí může být vynechána některá nebo všechna oznámení. V tomto případě je označeno hlubší aplikace nebo vzor problém pro zasílání zpráv.
+Během prvotní fáze testu/přípravy může dojít k selhání při doručování oznámení. Vyřazená oznámení v této fázi můžou znamenat problém s konfigurací. Pokud dojde k selhání při doručování oznámení v produkčním prostředí, může dojít k vyřazení některých nebo všech oznámení. V tomto případě je v tomto případě uveden hlubší problém se vzorem aplikace nebo zasílání zpráv.
 
-Další části se probírají scénáře, ve kterých oznámení může dojít ke ztrátě, od běžné výjimečný.
+V další části najdete scénáře, ve kterých je možné vyřadit oznámení od běžných až po vzácná.
 
-## <a name="notification-hubs-misconfiguration"></a>Nesprávnou konfigurací ve službě Notification Hubs ##
+## <a name="notification-hubs-misconfiguration"></a>Notification Hubs konfigurace ##
 
-K odesílání oznámení do služby příslušných nabízených oznámení, musí ověřit Notification Hubs v rámci vaší aplikace sám. Musíte vytvořit účet pro vývojáře s cílovou platformu notification service (Microsoft Apple, Google, atd.). Poté je nutné zaregistrovat aplikaci s operačním systémem, kde můžete získat token nebo klíč, který používáte pro práci s cílový systém oznámení platformy.
+Aby bylo možné odesílat oznámení do příslušné služby nabízených oznámení, Notification Hubs musí být ověřovány v kontextu vaší aplikace. Musíte vytvořit vývojářský účet pomocí služby oznámení cílové platformy (Microsoft, Apple, Google atd.). Pak musíte aplikaci zaregistrovat v operačním systému, kde získáte token nebo klíč, který používáte pro práci s cílovým PNS.
 
-Je nutné přidat platformy přihlašovací údaje k webu Azure portal. Pokud žádná oznámení jsou tam dostupné pro zařízení, prvním krokem je zajistit, že jsou správné přihlašovací údaje nakonfigurované ve službě Notification Hubs. Přihlašovací údaje musí odpovídat aplikace vytvořené v rámci účet pro vývojáře pro konkrétní platformu.
+Do Azure Portal musíte přidat pověření platformy. Pokud zařízení nedosáhnou žádné oznámení, je prvním krokem ověření, že jsou v Notification Hubs nakonfigurované správné přihlašovací údaje. Přihlašovací údaje se musí shodovat s aplikací, která je vytvořená v rámci vývojářského účtu specifického pro platformu.
 
-Podrobné pokyny k dokončení tohoto procesu najdete v tématu [Začínáme s Azure Notification Hubs].
+Podrobné pokyny k dokončení tohoto procesu najdete v tématu Začínáme [Začínáme s Azure Notification Hubs].
 
-Tady jsou některé běžné chybné konfigurace ke kontrole:
+Tady je několik běžných chybových konfigurací, které byste měli kontrolovat:
 
 ### <a name="notification-hub-name-location"></a>Umístění názvu centra oznámení
 
-Ujistěte se, že název vašeho centra oznámení (bez překlepů) jsou stejné v každé z těchto umístění:
-   * Při registraci z klienta
-   * Pokud odesílání oznámení z back-endu
-   * Pokud jste nakonfigurovali přihlašovací údaje služby nabízených oznámení
+Ujistěte se, že název centra oznámení (bez překlepů) je stejný v každém z těchto umístění:
+   * Kam se zaregistrujete z klienta
+   * Místo odesílání oznámení z back-endu
+   * Místo, kde jste nakonfigurovali pověření služby nabízených oznámení
 
-Zkontrolujte použití řetězce správné sdíleného přístupového podpisu konfigurace na straně klienta a ukončit aplikaci zpět. Obecně platí, je nutné použít **DefaultListenSharedAccessSignature** na straně klienta a **DefaultFullSharedAccessSignature** aplikace back-endu. Tím udělíte oprávnění k odesílání zpráv do Notification Hubs.
+Ujistěte se, že jste na klientovi a v back-endu aplikace používali správné konfigurační řetězce pro sdílený přístupový podpis. Obecně je nutné použít **DefaultListenSharedAccessSignature** na straně klienta a **DefaultFullSharedAccessSignature** na back-endu aplikace. Tím se udělí oprávnění odesílat oznámení Notification Hubs.
 
 ### <a name="apn-configuration"></a>Konfigurace APN ###
 
-Musíte mít dvěma různými uzly: jeden pro produkci a další položku pro testování. Musíte nahrát certifikát, který používáte v prostředí izolovaného prostoru k rozbočovači samostatné než certifikát/rozbočovače, který budete používat v produkčním prostředí. Nepokoušejte se nahrát různé typy certifikátů na stejném centru. To způsobí selhání oznámení.
+Musíte udržovat dvě různá centra: jednu pro produkční prostředí a jinou pro testování. Certifikát, který použijete v prostředí izolovaného prostoru (sandbox), musíte nahrát do samostatného centra, než je certifikát nebo rozbočovač, který budete používat v produkčním prostředí. Nepokoušejte se nahrávat různé typy certifikátů do stejného rozbočovače. Způsobí selhání oznámení.
 
-Pokud nechtěně nahrát různé typy certifikátů na stejném centru, by měl odstranit. a začít pracovat s nového centra. Pokud z nějakého důvodu nelze odstranit rozbočovače, musíte odstranit všechny existující registrace nejméně z centra.
+Pokud nechtěně nahrajete různé typy certifikátů do stejného rozbočovače, měli byste centrum odstranit a začít znovu s novým centrem. Pokud z nějakého důvodu nemůžete centrum odstranit, musíte aspoň odstranit všechny existující registrace z centra.
 
 ### <a name="fcm-configuration"></a>Konfigurace FCM ###
 
-1. Ujistěte se, *klíč serveru* jste získali z Firebase shod klíč serveru jste zaregistrovali na webu Azure Portal.
+1. Zajistěte, aby byl *klíč serveru* , který jste získali ze Firebase, shodný s klíčem serveru, který jste zaregistrovali v Azure Portal.
 
-   ![Klíč serveru firebase][3]
+   ![Firebase Server Key][3]
 
-2. Ujistěte se, že jste nakonfigurovali **ID projektu** na straně klienta. Můžete získat hodnotu pro **ID projektu** z řídicího panelu Firebase.
+2. Ujistěte se, že jste na klientovi nakonfigurovali **ID projektu** . Hodnotu pro **ID projektu** můžete získat z řídicího panelu Firebase.
 
-   ![ID projektu firebase][1]
+   ![ID projektu Firebase][1]
 
 ## <a name="application-issues"></a>Problémy s aplikací ##
 
-### <a name="tags-and-tag-expressions"></a>Značky a výrazy označení ###
+### <a name="tags-and-tag-expressions"></a>Výrazy značek a značek ###
 
-Pokud pomocí značky nebo výrazy označení segmentovat cílovou skupinu, je možné, že při odesílání oznámení se nenašel žádný cíl. Tato chyba je na základě zadaným značkám nebo výrazy označení v odesílání volání.
+Použijete-li značky nebo výrazy značek k segmentaci cílové skupiny, je možné, že při odeslání oznámení nebude nalezen žádný cíl. Tato chyba je založena na zadaných značkách nebo výrazech značek v volání Send.
 
-Zkontrolujte registraci k zajištění, že značky budou porovnávány názvy při odesílání oznámení. Ověřte příjem oznámení z klientů, které mají tyto registrace.
+Zkontrolujte své registrace a zajistěte, aby se značky shodovaly při odeslání oznámení. Pak ověřte příjem oznámení pouze z klientů, kteří mají tyto registrace.
 
-Předpokládejme například, že všechny registrace s Notification Hubs pomocí značky "Politika." Pokud pak odešlete oznámení se značkou "Sports", upozornění nebude odesláno do libovolného zařízení. Komplexní případ může zahrnovat výrazy označení, kde jste zaregistrovali pomocí "Značky A" *nebo* "Značka B", ale cílové "Značky A & & značka B." V části Tipy pro vlastní diagnózu později v tomto článku se dozvíte, jak zkontrolovat registraci a jejich značky.
+Předpokládejme například, že všechny registrace pomocí Notification Hubs používají značku "politika". Pokud pak odešlete oznámení se značkou "Sport", oznámení se nepošle na žádné zařízení. Složitý případ může zahrnovat výrazy značky, u kterých jste zaregistrováni pomocí "tag A" *nebo* "tag B", ale jste Cíleni na značku & & značce b. " V části Tipy pro vlastní diagnostiku dále v článku se dozvíte, jak zkontrolovat registrace a jejich značky.
 
-### <a name="template-issues"></a>Problémy se šablonou ###
+### <a name="template-issues"></a>Problémy s šablonou ###
 
-Pokud používáte šablony, ujistěte se, postupujte podle pokynů popsaných v [šablony].
+Používáte-li šablony, ujistěte se, že jste postupují podle pokynů popsaných v tématu [šablony].
 
-### <a name="invalid-registrations"></a>Neplatná registrace ###
+### <a name="invalid-registrations"></a>Neplatné registrace ###
 
-Pokud správnou konfiguraci centra oznámení a značky nebo výrazy označení byly správně použity, budou vyhledány platné cíle. Oznámení se mají posílat do těchto cílů. Notification Hubs poté vyvolá několik zpracování dávky paralelně. Každá dávka odesílá zprávy do sadu registrací.
+Pokud centrum oznámení bylo nakonfigurováno správně a značky nebo výrazy značek byly použity správně, jsou nalezeny platné cíle. Oznámení by se měla odesílat těmto cílům. Notification Hubs pak v paralelním spuštění několika dávkových dávek. Každá dávka odesílá zprávy do sady registrací.
 
 > [!NOTE]
-> Vzhledem k tomu Notification Hubs zpracovává dávky paralelně, není zaručeno pořadí, ve kterém jsou doručovány oznámení.
+> Vzhledem k tomu, že Notification Hubs zpracovává souběžné dávkové zpracování, není zaručeno pořadí, ve kterém jsou oznámení doručena.
 
-Notification Hubs je optimalizovaná pro model doručování zpráv "na většinu jednou". Odstranění duplicitních dat, snažíme tak, aby žádná oznámení se doručují více než jednou na zařízení. Ujistěte se, že pouze konkrétní zprávu je před odesláním do služby nabízených oznámení odeslaných za identifikátor zařízení se kontroluje registrace.
+Notification Hubs je optimalizován pro model doručení zpráv "" na nejvyšší úrovni ". Zkusíme odstranění duplicitních dat, aby se zařízení nedoručilo více než jednou. Registrace se kontrolují, aby se zajistilo, že se každému identifikátoru zařízení pošle jenom jedna zpráva, než se pošle do služby nabízených oznámení.
 
-Každá dávka je odesílat služby nabízených oznámení, která pak přijme a ověří registrace. Během tohoto procesu je možné, že služba nabízených oznámení zjistí chybu pomocí jedné nebo více registrací v dávce. Služba nabízených oznámení potom vrátí chybu do Notification Hubs a proces se zastaví. Služba nabízených oznámení úplně zahodí této služby batch. To platí zejména s APNs, který používá protokol TCP datového proudu.
+Každá dávka se odešle do služby nabízených oznámení, která zase přijme a ověří registrace. Během tohoto procesu je možné, že služba nabízených oznámení detekuje chybu s jednou nebo více registrací v dávce. Služba nabízených oznámení pak při Notification Hubs vrátí chybu a proces se zastaví. Služba nabízených oznámení tuto dávku ponechá kompletně. To je obzvláště pravdivé u služby APN, která používá protokol TCP Stream.
 
-Chyba registrace v tomto případě se odebere z databáze. Opakujte jsme doručení oznámení pro ostatní zařízení v této dávce.
+V takovém případě je registrace z databáze odebrána. Pak zopakujeme doručení oznámení pro zbývající zařízení v této dávce.
 
-Pokud chcete získat další informace o chybě týkající se selhání doručení pokusu o proti zápisu, můžete použít rozhraní REST API pro Notification Hubs [Telemetrii jednotlivých zpráv: Získat telemetrii o zprávy oznámení](https://msdn.microsoft.com/library/azure/mt608135.aspx) a [zpětná vazba systému oznámení platformy](https://msdn.microsoft.com/library/azure/mt705560.aspx). Ukázkový kód, naleznete v tématu [příklad odesílání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Pokud chcete získat další informace o chybách při neúspěšném pokusu o doručení proti registraci, můžete použít Notification Hubs [rozhraní REST API na telemetrii zpráv: Získejte telemetrii](https://msdn.microsoft.com/library/azure/mt608135.aspx) zpráv s oznámením a [PNS zpětnou vazbu](https://msdn.microsoft.com/library/azure/mt705560.aspx). Vzorový kód najdete v [příkladu odeslání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
-## <a name="push-notification-service-issues"></a>Nabízená oznámení problémy se službou
+## <a name="push-notification-service-issues"></a>Problémy se službou nabízených oznámení
 
-Jakmile služba nabízených oznámení, obdrží oznámení, doručí oznámení do zařízení. V tomto okamžiku Notification Hubs nemá žádnou kontrolu nad doručování oznámení do zařízení.
+Jakmile služba nabízených oznámení obdrží oznámení, doručí oznámení zařízení. V tuto chvíli Notification Hubs nemá žádnou kontrolu nad doručením oznámení do zařízení.
 
-Protože službám oznamování platformy jsou odolnější, oznámení se většinou kontaktovat zařízení během několika sekund. Pokud je omezování služby nabízených oznámení, Notification Hubs platí exponenciální regresní strategie. Pokud služba nabízených oznámení zůstane po dobu 30 minut nedostupná, je zajistit pro vypršení platnosti a vyřadit zprávy trvale zásada.
+Protože jsou služby upozorňování platformy robustní, oznámení v několika sekundách mají za následek přístup k zařízením. Pokud se služba nabízených oznámení omezuje, Notification Hubs použije exponenciální strategii pro zpětnou strategii. Pokud služba nabízených oznámení zůstane nedosažitelná po dobu 30 minut, je k dispozici zásada, která vyprší a trvale vynechává zprávy.
 
-Pokud služba nabízených oznámení pokusí doručit oznámení, ale je zařízení offline, oznámení se ukládá pomocí služby nabízených oznámení. Uloží se pouze po omezenou dobu času. Oznámení se doručí do zařízení, když zařízení přestane být k dispozici.
+Pokud se služba nabízených oznámení pokusí doručovat oznámení, ale zařízení je v režimu offline, oznámení je uložené ve službě nabízených oznámení. Ukládá se jenom po omezené časové období. Oznámení se doručí do zařízení, jakmile bude zařízení k dispozici.
 
-Každé aplikaci, která ukládá pouze jedno poslední upozornění. Pokud více oznámení se posílají, když je zařízení offline, každé nové oznámení způsobí, že poslední z nich budou zahozeny. Zachovat pouze nejnovější oznámení se nazývá *slučování* v APNs a *sbalení* v FCM. (FCM používá sbalení klíč). Když zařízení zůstane offline po dlouhou dobu, oznámení, které byly uloženy pro zařízení se zahodí. Další informace najdete v tématu [Přehled služby APN] a [O zpráv FCM].
+Každá aplikace ukládá jenom jedno nedávné oznámení. Pokud je v době, kdy je zařízení v režimu offline, posíláno více oznámení, každé nové oznámení způsobí, že poslední z nich bude zrušeno. Udržování pouze nejnovějšího oznámení *se nazývá sloučení* v APNs a *sbalení* v FCM. (FCM používá klíč sbalení.) Pokud zařízení po dlouhou dobu zůstane offline, budou oznámení uložená pro zařízení zahozena. Další informace najdete v tématu [Přehled služby APN] a [o zprávách FCM].
 
-S Notification Hubs můžete předat slučovací klíč prostřednictvím hlavičky protokolu HTTP pomocí obecného rozhraní API SendNotification. Například pro sadu .NET SDK můžete využít `SendNotificationAsync`. Rozhraní API SendNotification využívá taky hlavičky HTTP, které jsou předány jako služba příslušných nabízených oznámení.
+Pomocí Notification Hubs můžete předat slučovací klíč přes hlavičku HTTP pomocí obecného rozhraní SendNotification API. Například pro sadu .NET SDK můžete použít `SendNotificationAsync`. Rozhraní SendNotification API také přijímá hlavičky protokolu HTTP, které se předávají do příslušné služby nabízených oznámení.
 
-## <a name="self-diagnosis-tips"></a>Tipy pro vlastní diagnózu
+## <a name="self-diagnosis-tips"></a>Tipy pro samočinnou diagnostiku
 
-Tady jsou cesty k diagnostikovat původní příčinu vynechané oznámení v Notification Hubs.
+Tady jsou cesty pro diagnostiku hlavní příčiny odhozených oznámení v Notification Hubs.
 
 ### <a name="verify-credentials"></a>Ověření přihlašovacích údajů ###
 
 #### <a name="push-notification-service-developer-portal"></a>Portál pro vývojáře služby nabízených oznámení ####
 
-Ověřte přihlašovací údaje v příslušných nabízená oznámení služby portálu pro vývojáře (APNs, FCM, Windows Notification Service a tak dále). Další informace najdete v tématu [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: Posílání oznámení do aplikací Univerzální platforma Windows pomocí Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>portál Azure ####
 
-Ke kontrole a odpovídat přihlašovacím údajům s těmi, která jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte **zásady přístupu** karta na portálu Azure portal.
+Pokud chcete zkontrolovat přihlašovací údaje, které jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte na kartu **zásady přístupu** v Azure Portal.
 
-![Zásady přístupu k webu Azure portal][4]
+![Zásady přístupu Azure Portal][4]
 
-### <a name="verify-registrations"></a>Ověření registrace
+### <a name="verify-registrations"></a>Ověřit registrace
 
 #### <a name="visual-studio"></a>Visual Studio ####
 
-V sadě Visual Studio můžete připojit k Azure prostřednictvím Průzkumníka serveru pro zobrazení a správa několika služeb Azure, včetně Notification Hubs. Tento zástupce je to užitečné hlavně pro vaše vývojové a testovací prostředí.
+V aplikaci Visual Studio se můžete připojit k Azure prostřednictvím Průzkumník serveru, abyste mohli zobrazit a spravovat několik služeb Azure, včetně Notification Hubs. Tato zkratka je primárně užitečná pro vývojové a testovací prostředí.
 
-![Průzkumníka serveru Visual Studio][9]
+![Průzkumník serveru sady Visual Studio][9]
 
-Můžete zobrazit a spravovat všechny registrace ve vašem Centru. Registrace lze rozdělit podle platformy, nativní nebo šablona registrace, značky, identifikátor služby nabízených oznámení, ID registrace a datum vypršení platnosti. Můžete také upravit registraci na této stránce. To je užitečné zejména pro úpravy značky.
+Můžete zobrazit a spravovat všechny registrace v centru. Registrace lze rozdělit do kategorií podle Platform, nativního nebo registračního zápisu, značky, identifikátoru nabízených oznámení, ID registrace a data vypršení platnosti. Na této stránce můžete také upravit registraci. To je zvlášť užitečné pro úpravy značek.
 
-Klikněte pravým tlačítkem na vaše Centrum oznámení v **Průzkumníka serveru**a vyberte **Diagnostika**. 
+V **Průzkumník serveru**klikněte pravým tlačítkem na centrum oznámení a vyberte **Diagnostika**. 
 
-![Průzkumníka serveru Visual Studio: Diagnostikujte nabídek](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Průzkumník serveru sady Visual Studio: Nabídka diagnostiky](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
 Zobrazí se následující stránka:
 
 ![Visual Studio: Diagnostika stránky](./media/notification-hubs-diagnosing/diagnose-page.png)
 
-Přepněte **registrace zařízení** stránky:
+Přepněte na stránku **registrace zařízení** :
 
 ![Visual Studio: Registrace zařízení](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
-Můžete použít **testovací odeslání** stránku odeslat testovací oznámení:
+K odeslání zprávy testovacího oznámení můžete použít stránku pro **odeslání testů** :
 
 ![Visual Studio: Poslat na zkoušku](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> Pomocí sady Visual Studio k úpravě registrace pouze během vývoje a testování a s omezený počet registrací. Pokud je potřeba upravit vaše registrace hromadně, zvažte použití export a import registrace funkcí popsaných v [How To: Export a změny registrací hromadné](https://msdn.microsoft.com/library/dn790624.aspx).
+> Pomocí sady Visual Studio můžete upravovat registraci pouze během vývoje a testování a s omezeným počtem registrací. Pokud potřebujete upravit své registrace hromadně, zvažte použití funkcí registrace pro export a import popsaných v [tématu Postupy: Hromadné](https://msdn.microsoft.com/library/dn790624.aspx)exporty a úpravy registrací.
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer ####
 
-Mnozí uživatelé používají [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer) k zobrazení a správě jejich notification hubs. Service Bus Exploreru je projekt open source. 
+Mnoho zákazníků používá [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer) k zobrazení a správě Center oznámení. Service Bus Explorer je open source projekt. 
 
-### <a name="verify-message-notifications"></a>Ověření zprávy s oznámením
+### <a name="verify-message-notifications"></a>Ověření oznámení zprávy
 
 #### <a name="azure-portal"></a>portál Azure ####
 
-Chcete-li odeslat testovací oznámení vašim klientům bez služby back-end provoz, v části **podpora a řešení potíží**vyberte **testovací odeslání**.
+Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží**možnost **Odeslat test odeslat**.
 
-![Funkce odeslání testování v Azure][7]
+![Testování funkcí Send v Azure][7]
 
 #### <a name="visual-studio"></a>Visual Studio ####
 
 Můžete také odeslat testovací oznámení ze sady Visual Studio.
 
-![Testování funkce Odeslat v sadě Visual Studio][10]
+![Testování funkcí Send v aplikaci Visual Studio][10]
 
-Další informace o používání Notification Hubs pomocí Průzkumníka serveru Visual Studia najdete v těchto článcích:
+Další informace o použití Notification Hubs se sadou Visual Studio Průzkumník serveru najdete v těchto článcích:
 
-* [Postup zobrazení registrace zařízení pro notification hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
-* [Podrobné informace: Visual Studio 2013 Update 2 RC a Azure SDK 2.3]
-* [Oznamujeme vydání sady Visual Studio 2013 Update 3 a Azure SDK 2.4]
+* [Jak zobrazit registrace zařízení pro centra oznámení](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Hluboká podrobně: Visual Studio 2013 Update 2 RC a Azure SDK 2,3]
+* [Oznamujeme vydání verze Visual Studio 2013 Update 3 a Azure SDK 2,4.]
 
-### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Ladění neúspěšných oznámení a zkontrolujte výsledek oznámení
+### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Ladění neúspěšných oznámení a kontrola výsledku oznámení
 
 #### <a name="enabletestsend-property"></a>Vlastnost EnableTestSend ####
 
-Při odesílání oznámení pomocí Notification Hubs oznámení je zpočátku zařadí do fronty. Notification Hubs určuje cíle, které správný a potom odešle oznámení služby nabízených oznámení. Pokud používáte rozhraní REST API nebo některou z klientské sady SDK, návrat volání odesílání znamená, že pouze, že je zpráva ve frontě, pomocí Notification Hubs. Neposkytuje přehled o tom, co se stalo při Notification Hubs nakonec odeslána oznámení do služby nabízených oznámení.
+Když odešlete oznámení prostřednictvím Notification Hubs, oznámení se zpočátku zařadí do fronty. Notification Hubs určuje správné cíle a poté pošle oznámení službě nabízených oznámení. Pokud používáte REST API nebo kteroukoli z klientských sad SDK, vrátí volání odeslání pouze zprávu, že zpráva je zařazena do fronty pomocí Notification Hubs. Neposkytuje vám přehled o tom, co se stalo, když Notification Hubs nakonec oznámení odeslali službě nabízených oznámení.
 
-Pokud vaše oznámení nedorazí v klientském zařízení, může mít došlo k chybě při pokusu o doručování do služby nabízených oznámení pomocí Notification Hubs. Například velikost datové části může být delší než maximální povolenou služby nabízených oznámení nebo přihlašovacím údajům nakonfigurovaným v Notification Hubs může být neplatný.
+Pokud oznámení v klientském zařízení nepřijde, může při Notification Hubs pokusu o doručení do služby nabízených oznámení došlo k chybě. Například velikost datové části může překročit maximum povolené službou nabízených oznámení nebo přihlašovací údaje nakonfigurované v Notification Hubs mohou být neplatné.
 
-Získat přehled o tom, nabízená oznámení služby chyby, můžete použít [EnableTestSend] vlastnost. Tato vlastnost je automaticky povolené, při odesílání zkušebních zpráv z klienta Visual Studio nebo portálu. Chcete-li zobrazit podrobné informace o ladění můžete použít tuto vlastnost a také přes rozhraní API. V současné době můžete použít v sadě .NET SDK. Přidá se na všechny klientské sady SDK nakonec.
+Pokud chcete získat přehled o chybách služby nabízených oznámení, můžete použít vlastnost [EnableTestSend] . Tato vlastnost je automaticky povolena při odesílání zkušebních zpráv z portálu nebo klienta sady Visual Studio. Tato vlastnost slouží k zobrazení podrobných informací o ladění a také prostřednictvím rozhraní API. V současné době je možné ji použít v sadě .NET SDK. Bude nakonec přidáno do všech klientských sad SDK.
 
-Použít `EnableTestSend` vlastnost s volání REST přidat parametr řetězce dotazu s názvem *testování* za účelem odeslání volání. Příklad:
+Chcete-li `EnableTestSend` použít vlastnost se voláním REST, přidejte parametr řetězce dotazu s názvem *test* na konec volání odeslání. Příklad:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -202,7 +204,7 @@ https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-versio
 
 #### <a name="net-sdk-example"></a>Příklad sady .NET SDK ####
 
-Tady je příklad použití sady .NET SDK k odesílání oznámení nativní automaticky otevírané okno (informační zpráva):
+Tady je příklad použití sady .NET SDK k odeslání nativního informačního oznámení (informační zprávy):
 
 ```csharp
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName);
@@ -210,9 +212,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Na konci spuštění `result.State` jednoduše stavy `Enqueued`. Výsledky neposkytují žádné přehled o tom, co se stalo se nabízené oznámení.
+Na konci spuštění `result.State` jednoduše stavy `Enqueued`. Výsledky neposkytují žádný přehled o tom, co se stalo s nabízeným oznámením.
 
-V dalším kroku můžete použít `EnableTestSend` vlastnost typu Boolean. Použití `EnableTestSend` vlastnost při inicializaci `NotificationHubClient` získat podrobný stav o nabízená oznámení služby chyby, ke kterým dochází při odesílání oznámení. Odeslání volání bude vyžadovat čas navíc k vrácení, protože je nejprve nutné Notification Hubs k poskytování oznámení služby nabízených oznámení.
+Dále můžete použít `EnableTestSend` vlastnost Boolean. Při inicializaci`NotificationHubClient` použijte vlastnost, abyste získali podrobný stav o chybách služby nabízených oznámení, ke kterým dojde při odeslání oznámení. `EnableTestSend` Volání Send trvá déle, než se vrátí, protože nejprve potřebuje Notification Hubs pro doručení oznámení službě nabízených oznámení.
 
 ```csharp
     bool enableTestSend = true;
@@ -236,37 +238,37 @@ windows
 The Token obtained from the Token Provider is wrong
 ```
 
-Tato zpráva znamená, že přihlašovací údaje nakonfigurované ve službě Notification Hubs jsou neplatné nebo že se vyskytl problém s registrací v centru. Odstranit tuto registraci a nechat klienta znovu vytvořit registrace před odesláním zprávy.
+Tato zpráva znamená, že přihlašovací údaje nakonfigurované v Notification Hubs jsou neplatné nebo že došlo k potížím s registracemi v centru. Odstraňte tuto registraci a umožněte klientovi, aby registraci znovu vytvořil před odesláním zprávy.
 
 > [!NOTE]
-> Použití `EnableTestSend` vlastnost bude výrazně omezený. Tuto možnost použijte pouze v prostředí vývoje a testování a s omezenou sadu registrací. Ladění oznámení se posílají jenom 10 zařízení. Je také omezení na zpracování ladění odešle na 10 za minutu.
+> `EnableTestSend` Použití vlastnosti je silně omezené. Tuto možnost použijte pouze v prostředí pro vývoj a testování a s omezené sady registrací. Oznámení ladění se odesílají jenom na 10 zařízení. K dispozici je také omezení zpracování ladění na 10 za minutu.
 
-### <a name="review-telemetry"></a>Zkontrolujte telemetrická data ###
+### <a name="review-telemetry"></a>Kontrola telemetrie ###
 
 #### <a name="azure-portal"></a>portál Azure ####
 
-Na portálu můžete získat rychlý přehled o všech aktivit v centru oznámení.
+Na portálu můžete získat rychlý přehled o všech aktivitách v centru oznámení.
 
-1. Na **přehled** kartě, zobrazí souhrnný náhled na registraci, upozornění a chyb podle platformy.
+1. Na kartě **Přehled** uvidíte agregované zobrazení registrací, oznámení a chyb podle platformy.
 
-   ![Řídicího panelu s přehledem Notification Hubs][5]
+   ![Řídicí panel přehledu Notification Hubs][5]
 
-2. Na **monitorování** kartu, můžete přidat řadu jiné metriky specifické pro platformu pro podrobnější pohled. Můžete si prohlédnout konkrétně chyby, které se vrátí, když se pokusí Notification Hubs k odesílání oznámení do služby nabízených oznámení.
+2. Na kartě **monitorování** můžete pro hlubší vzhled přidat mnoho dalších metrik specifických pro konkrétní platformu. Můžete se podívat na chyby, které se vrátí, když se Notification Hubs pokusí odeslat oznámení službě nabízených oznámení.
 
-   ![Protokol aktivit Azure portal][6]
+   ![Protokol aktivit Azure Portal][6]
 
-3. Začněte tím, že zkontrolujete **příchozí zprávy**, **registrace operace**, a **úspěšná oznámení**. Potom přejděte na kartu podle platformy ke kontrole chyb, které jsou specifické pro služby nabízených oznámení.
+3. Začněte tím, že zkontrolujete **příchozí zprávy**, **operace registrace**a **úspěšná oznámení**. Pak přejdete na kartu platforma na platformu, kde můžete zkontrolovat chyby, které jsou specifické pro službu nabízených oznámení.
 
-4. Pokud nastavení ověřování pro vaše Centrum oznámení je nesprávné, zprávy **chyba systému oznámení platformy ověřování** se zobrazí. Je dobrá indikace toho zkontrolujte přihlašovací údaje služby nabízených oznámení.
+4. Pokud není nastavení ověřování pro vaše centrum oznámení správné, zobrazí se **Chyba ověření PNS** zprávy. Je dobré se podívat, jak přihlašovací údaje služby nabízených oznámení kontrolovat.
 
 #### <a name="programmatic-access"></a>Programový přístup ####
 
-Další informace o programový přístup, najdete v části [programový přístup](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Další informace o programovém přístupu najdete v tématu [programový přístup](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
-> Některé funkce související s telemetrií jako Export a import registrace a telemetrie přístup přes rozhraní API, jsou k dispozici pouze v rámci úrovně služeb Standard. Při pokusu o použití těchto funkcí z bezplatné nebo základní úroveň služeb, pokud používáte sadu SDK zobrazí se zprávou výjimky. Pokud používáte funkce přímo z rozhraní REST API, zobrazí se chyba HTTP 403 (zakázáno).
+> Několik funkcí souvisejících s telemetriemi, jako je export a import registrací a přístup k telemetrie prostřednictvím rozhraní API, jsou k dispozici pouze na úrovni služby Standard. Pokud se pokusíte použít tyto funkce z úrovně služby Free nebo Basic, zobrazí se zpráva o výjimce, pokud použijete sadu SDK. Pokud používáte funkce přímo z rozhraní REST API, zobrazí se chyba HTTP 403 (zakázáno).
 >
-> Pokud chcete používat funkce související s telemetrií, nejprve ověřte na webu Azure Portal, že používáte úrovně služeb Standard.  
+> Chcete-li používat funkce související se telemetrie, nejprve zajistěte Azure Portal, že používáte úroveň služby Standard.  
 
 <!-- IMAGES -->
 [0]: ./media/notification-hubs-diagnosing/Architecture.png
@@ -281,15 +283,15 @@ Další informace o programový přístup, najdete v části [programový přís
 [10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
 
 <!-- LINKS -->
-[Přehled služby Notification Hubs]: notification-hubs-push-notification-overview.md
+[Přehled Notification Hubs]: notification-hubs-push-notification-overview.md
 [Začínáme s Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Šablony]: https://msdn.microsoft.com/library/dn530748.aspx
 [Přehled služby APN]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
-[O zpráv FCM]: https://firebase.google.com/docs/cloud-messaging/concept-options
+[O zprávách FCM]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
-[Podrobné informace: Visual Studio 2013 Update 2 RC a Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
-[Oznamujeme vydání sady Visual Studio 2013 Update 3 a Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[Hluboká podrobně: Visual Studio 2013 Update 2 RC a Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[Oznamujeme vydání verze Visual Studio 2013 Update 3 a Azure SDK 2,4.]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx

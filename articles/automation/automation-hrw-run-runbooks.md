@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186766"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240325"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
@@ -41,8 +41,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Oprávnění sady Runbook
 
-Runbooky běžící na Hybrid Runbook Worker nemůžou používat stejnou metodu, která se obvykle používá pro Runbooky ověřující prostředky Azure, protože přistupuje k prostředkům, které nejsou v Azure. Sada Runbook může buď poskytnout své vlastní ověřování místním prostředkům, nebo může nakonfigurovat ověřování pomocí [spravovaných identit pro prostředky](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-)Azure. Můžete také zadat účet RunAs k poskytnutí kontextu uživatele pro všechny sady Runbook.
+Runbooky běžící na Hybrid Runbook Worker nemůžou používat stejnou metodu, která se obvykle používá pro Runbooky ověřující prostředky Azure, protože přistupuje k prostředkům, které nejsou v Azure. Sada Runbook může buď poskytnout své vlastní ověřování místním prostředkům, nebo může nakonfigurovat ověřování pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Můžete také zadat účet RunAs k poskytnutí kontextu uživatele pro všechny sady Runbook.
 
 ### <a name="runbook-authentication"></a>Ověřování Runbooku
 
@@ -309,9 +308,9 @@ Podepsaný Runbook bude mít název `<runbook name>.asc`.
 
 Podepsaný Runbook se teď dá nahrát na Azure Automation a dá se spustit jako běžná sada Runbook.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o různých metodách, které se dají použít ke spuštění Runbooku, najdete [v tématu Spuštění Runbooku v Azure Automation](automation-starting-a-runbook.md).
 * Chcete-li pochopit různé způsoby práce s Runbooky PowerShellu v Azure Automation pomocí textového editoru, přečtěte si téma [Úprava sady Runbook v Azure Automation](automation-edit-textual-runbook.md)
 * Pokud vaše Runbooky nejsou úspěšně dokončeny, přečtěte si příručku k odstraňování potíží s [chybami spuštění sady Runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci](https://docs.microsoft.com/en-us/powershell/scripting/overview)k PowerShellu.
+* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/en-us/powershell/scripting/overview).

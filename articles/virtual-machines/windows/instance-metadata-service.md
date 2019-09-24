@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996405"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240395"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -47,7 +47,7 @@ Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby a nov
 
 Pokud chcete vyzkoušet Instance Metadata Service, vytvořte virtuální počítač z [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) nebo [Azure Portal](https://portal.azure.com) ve výše uvedených oblastech a použijte následující příklady.
 
-## <a name="usage"></a>Použití
+## <a name="usage"></a>Využití
 
 ### <a name="versioning"></a>Správa verzí
 
@@ -360,10 +360,10 @@ azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počít
 customData | Zobrazit [vlastní data](#custom-data) | 2019-02-01
 location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
 name | Název virtuálního počítače | 2017-04-02
-dodání | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
+nabídka | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
-Rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
 zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
@@ -573,7 +573,7 @@ Department:IT;Environment:Test;Role:WebRole
 **Požadavek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
 **Odpověď**
@@ -644,7 +644,7 @@ Verification successful
 Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
-Rozhraní | [](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) Naplánování virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+plán | [](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) Naplánování virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
 časové razítko/createdOn | Časové razítko, ve kterém byl vytvořen první podepsaný dokument
 časové razítko/expiresOn | Časové razítko, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
@@ -798,6 +798,6 @@ Puppet | https://github.com/keirans/azuremetadata
 
     ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Scheduled Events](scheduled-events.md)
