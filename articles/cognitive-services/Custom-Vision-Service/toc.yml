@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: Kurzy
   items:
+    - name: Aplikace pro vizuální výstrahy IoT
+      href: iot-visual-alerts-tutorial.md
     - name: Detektor log pro mobilní zařízení
       href: logo-detector-mobile.md
 - name: Návody

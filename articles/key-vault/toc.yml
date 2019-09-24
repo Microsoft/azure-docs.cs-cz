@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: Klíče účtu úložiště
       items:
-        - name: Spravované klíče účtu úložiště s využitím Azure CLI
+        - name: Správa klíčů účtu úložiště pomocí Azure CLI
           href: key-vault-ovw-storage-keys.md
-        - name: Spravované klíče účtu úložiště s využitím PowerShellu
+        - name: Správa klíčů účtu úložiště pomocí PowerShellu
           href: key-vault-overview-storage-keys-powershell.md
+        - name: Načtení tokenů sdíleného přístupového podpisu v kódu
+          href: storage-keys-sas-tokens-code.md
     - name: Azure Containers
       href: ../container-instances/container-instances-managed-identity.md
     - name: Šablona Azure Resource Manageru

@@ -36,6 +36,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Správa
       items:
+        - name: Vyhrazený hostitel
+          href: virtual-machines-windows-sql-dedicated-host.md
         - name: S využitím webu Azure Portal
           href: virtual-machines-windows-sql-manage-portal.md
         - name: Rozšíření podpory pro SQL 2008 a R2

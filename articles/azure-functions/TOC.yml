@@ -138,6 +138,8 @@
           href: 'functions-reference-node.md#typescript'
     - name: Diagnostika
       href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Náklady plánu Consumption
+      href: functions-consumption-costs.md
     - name: Otázky výkonu
       href: functions-best-practices.md
     - name: Proxy servery služby Functions

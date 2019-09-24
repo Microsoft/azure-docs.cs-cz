@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkell
   ms.date: 08/30/2019
-  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
-  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.openlocfilehash: db39dac68106c9a7538a9c6ea369d2614c012c1f
+  ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70774551"
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71180705"
 landingContent:
 - title: Informace o službě Azure HPC Cache
   linkLists:
@@ -37,10 +37,8 @@ landingContent:
       url: hpc-cache-mount.md
   - linkListType: concept
     links:
-    - text: Konfigurace agregovaného oboru názvů
+    - text: Plánování agregovaného oboru názvů
       url: hpc-cache-namespace.md
-    - text: Naplnění nového úložiště objektů blob
-      url: hpc-cache-ingest.md
 - title: Řešení potíží
   linkLists:
   - linkListType: how-to-guide

@@ -257,6 +257,12 @@
     - name: Vysvětlení efektu služby Policy
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Struktura přiřazení Azure Policy
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: Vyhodnocení dopadu nové zásady
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: Azure Policy pro Kubernetes
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md
