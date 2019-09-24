@@ -89,7 +89,7 @@ Níže jsou uvedeny popisy vlastností:
 | commonNames | řetězec [] | --- | Běžné názvy instalovaných certifikátů clusteru |
 | x509StoreName | řetězec | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
 | typeHandlerVersion | 1.1 | --- | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
-| Cesta k DataPath | řetězec | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
+| dataPath | řetězec | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na [Přehled funkce nasazení kamkoli a porovnání s clustery spravovanými Azure](service-fabric-deploy-anywhere.md).
