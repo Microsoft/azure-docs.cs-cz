@@ -3,9 +3,8 @@ title: Pokročilé zabezpečení dat pro IaaS v Azure Security Center | Microsof
 description: " Naučte se, jak povolit pokročilé zabezpečení dat pro IaaS v Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295759"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202173"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Pokročilé zabezpečení dat pro SQL servery na Azure Virtual Machines (Public Preview)
 Rozšířené zabezpečení dat pro SQL Server v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. V současné době (v Public Preview) obsahuje funkce pro zpřístupnění a zmírnění potenciálních chyb zabezpečení databáze a zjišťování neobvyklé aktivit, které by mohly znamenat hrozbu pro vaši databázi. 
@@ -72,7 +71,7 @@ Můžete zobrazit a spravovat aktuální výstrahy zabezpečení.
 
 1. Chcete-li zobrazit podrobnosti a akce týkající se zkoumání aktuální hrozby a vyřešení budoucích hrozeb, posuňte se dolů na stránku **Obecné informace** a v části **Postup odstranění problému** klikněte na odkaz **kroky pro šetření** .
 
-    ![Postup odstranění problému](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Kroky pro odstranění problému](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. Pokud chcete zobrazit protokoly, které jsou přidružené k triggeru výstrahy, použijte **pracovní prostory Log Analytics** a proveďte následující kroky:
 

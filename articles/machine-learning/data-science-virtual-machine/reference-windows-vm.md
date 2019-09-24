@@ -1,5 +1,5 @@
 ---
-title: 'Další informace: DSVM Windows'
+title: 'Další informace: DSVM s Windows'
 description: Podrobnosti o nástrojích, které jsou součástí Data Science VM Windows
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 8ed083ad39c3ace3a0f66a61936974b462ed418f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: be4397de477891f2a698c9f7dcb131da79479529
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174692"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200008"
 ---
 # <a name="reference-windows-data-science-virtual-machine"></a>Další informace: Data Science Virtual Machine Windows
 
@@ -132,4 +132,6 @@ Pomocí [Instalace webové platformy Microsoft](https://www.microsoft.com/web/do
 > [!NOTE]
 > V systému Windows Server 2012 verze DSVM a edice Windows Server 2016 do března 2018 je výchozím prostředím Anaconda Python 2,7. Sekundární prostředí je Python 3,5, který se nachází na adrese C:\Anaconda\envs\py35.
 
+## <a name="next-steps"></a>Další kroky
 
+Máte další otázky? Zvažte vytvoření [lístku podpory](https://azure.microsoft.com/support/create-ticket/).

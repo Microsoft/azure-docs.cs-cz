@@ -2,31 +2,25 @@
 title: Přístup k virtuálnímu počítači za běhu v Azure Security Center | Microsoft Docs
 description: Tento dokument ukazuje, jak přístup k virtuálnímu počítači za běhu v Azure Security Center pomáhá řídit přístup k virtuálním počítačům Azure.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872917"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202011"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálnímu počítači pomocí za běhu
 
 Přístup k virtuálnímu počítači za běhu (just-in-time) se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
-> Funkce za běhu je k dispozici na úrovni Standard Security Center.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
+> Funkce za běhu je k dispozici na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
 
 
 > [!NOTE]
@@ -36,7 +30,7 @@ Přístup k virtuálnímu počítači za běhu (just-in-time) se dá použít k 
 
 Útoky hrubou silou běžně cílí na porty správy jako prostředky pro získání přístupu k virtuálnímu počítači. V případě úspěchu může útočník převzít kontrolu nad VIRTUÁLNÍm počítačem a vytvořit dostane do vašeho prostředí.
 
-Jedním ze způsobů, jak omezit vystavení útokem hrubou silou, je omezit dobu, po kterou je port otevřený. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Pokud je povolený program just-in-time, Security Center používá pravidla [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) (NSG) a Azure firewall, která omezují přístup k portům pro správu, aby na ně nedokázali zacílit útočníci.
+Jedním ze způsobů, jak omezit vystavení útokem hrubou silou, je omezit dobu, po kterou je port otevřený. Porty pro správu není nutné otevírat po všech časech. Stačí je otevřít, jenom když jste připojeni k virtuálnímu počítači, například provádět úlohy správy nebo údržby. Pokud je povolený program just-in-time, Security Center používá pravidla [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) (NSG) a Azure firewall, která omezují přístup k portům pro správu, aby na ně nedokázali zacílit útočníci.
 
 ![Scénář za běhu](./media/security-center-just-in-time/just-in-time-scenario.png)
 
@@ -44,7 +38,7 @@ Jedním ze způsobů, jak omezit vystavení útokem hrubou silou, je omezit dobu
 
 Když je povolený postup za běhu, Security Center zamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla NSG. Vyberete porty na virtuálním počítači, pro které bude příchozí provoz uzamčen. Tyto porty jsou ovládány pomocí řešení za běhu.
 
-Když si uživatel vyžádá přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel oprávnění [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) , které jim umožní úspěšně požádat o přístup k virtuálnímu počítači. Pokud je žádost schválená, Security Center automaticky nakonfiguruje skupiny zabezpečení sítě (skupin zabezpečení sítě) a Azure Firewall tak, aby povolovaly příchozí provoz na vybraných portech a požadované zdrojové IP adresy nebo rozsahy po dobu, kterou jste zadali. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, se však přeruší.
+Když si uživatel požádá o přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel pro tento virtuální počítač oprávnění [Access Control na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md) . Pokud je žádost schválená, Security Center automaticky nakonfiguruje skupiny zabezpečení sítě (skupin zabezpečení sítě) a Azure Firewall tak, aby povolovaly příchozí provoz na vybraných portech a požadované zdrojové IP adresy nebo rozsahy po dobu, kterou jste zadali. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, se však přeruší.
 
  > [!NOTE]
  > Pokud je žádost o přístup JIT schválená pro virtuální počítač za Azure Firewall, Security Center automaticky změní obě pravidla zásad NSG i brány firewall. V době, kterou jste zadali, budou pravidla umožňovat příchozí provoz na vybrané porty a požadované zdrojové IP adresy nebo rozsahy. Po uplynutí této doby Security Center obnoví v předchozích stavech pravidla brány firewall a NSG.
@@ -87,7 +81,7 @@ Od ASC můžete nakonfigurovat zásady JIT a požádat o přístup k virtuální
     **Přístup k virtuálnímu počítači za běhu** poskytuje informace o stavu virtuálních počítačů:
 
     - **Nakonfigurováno** – virtuální počítače, které byly nakonfigurovány pro podporu přístupu k virtuálnímu počítači za běhu. Uvedená data jsou za poslední týden a obsahují pro každý virtuální počítač počet schválených požadavků, datum posledního přístupu a čas a poslední uživatel.
-    - **Doporučené** – virtuální počítače, které můžou podporovat přístup k virtuálním počítačům za běhu, ale nejsou nakonfigurované na. Pro tyto virtuální počítače doporučujeme povolit řízení přístupu k virtuálnímu počítači za běhu. 
+    - **Doporučené** – virtuální počítače, které můžou podporovat přístup k virtuálním počítačům za běhu, ale nejsou nakonfigurované na. Pro tyto virtuální počítače doporučujeme povolit řízení přístupu k virtuálnímu počítači za běhu.
     - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
       - Chybějící NSG – řešení za běhu vyžaduje, aby bylo na místě NSG.
       - Klasický přístup k VIRTUÁLNÍm počítačům (VM) – Security Center za běhu aktuálně podporuje jenom virtuální počítače nasazené prostřednictvím Azure Resource Manager. Řešení za běhu nepodporuje klasické nasazení. 
@@ -131,7 +125,7 @@ Vyžádání přístupu k virtuálnímu počítači prostřednictvím ASC:
 
     - Ikona ve sloupci **Podrobnosti o připojení** označuje, zda je v NSG nebo FW povolena JIT. Pokud je tato možnost povolena, zobrazí se pouze ikona brány firewall.
 
-    - Sloupec **Podrobnosti o připojení** poskytuje správné informace potřebné k připojení virtuálního počítače a také označuje otevřené porty.
+    - Sloupec **Podrobnosti o připojení** poskytuje informace požadované pro připojení virtuálního počítače a jeho otevřených portů.
 
       ![Vyžádání přístupu za běhu](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -191,11 +185,11 @@ To umožňuje použít pro virtuální počítač přístup za běhu pomocí ná
 
 - Servery Windows:
     - Port RDP 3389
-    - 3 hodiny z maximálního povoleného přístupu
+    - Tři hodiny z maximálního povoleného přístupu
     - Povolené zdrojové IP adresy jsou nastavené na any.
 - Servery Linux:
     - Port SSH 22
-    - 3 hodiny z maximálního povoleného přístupu
+    - Tři hodiny z maximálního povoleného přístupu
     - Povolené zdrojové IP adresy jsou nastavené na any.
      
 Pokud má virtuální počítač už povolený just-in-time, budete při přechodu na jeho stránku konfigurace moct zjistit, jestli je povolený za běhu, a můžete použít odkaz k otevření zásady v Azure Security Center k zobrazení a změně nastavení.
@@ -213,7 +207,7 @@ Když se v Azure Portal pokusíte připojit k virtuálnímu počítači, Azure z
   Přístup je požadován s následujícími výchozími parametry:
 
   - **zdrojová IP adresa**: Any (*) (nejde změnit)
-  - **časový rozsah**: 3 hodiny (nejde změnit)  <!--Isn't this set in the policy-->
+  - **časový rozsah**: Tři hodiny (nejde změnit) <!--Isn't this set in the policy-->
   - **číslo portu** Port RDP 3389 pro Windows/port 22 pro Linux (lze změnit)
 
     > [!NOTE]
@@ -289,7 +283,7 @@ Spusťte následující příkaz v PowerShellu:
 
 Další informace najdete v dokumentaci k rutinám PowerShellu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak přístup k virtuálnímu počítači za běhu v Security Center pomáhá řídit přístup k virtuálním počítačům Azure.
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:

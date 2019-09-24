@@ -1,11 +1,10 @@
 ---
-title: Skóre spolehlivosti ve službě Azure Security Center | Dokumentace Microsoftu
-description: " Zjistěte, jak pracovat s Azure Security Center skóre spolehlivosti. "
+title: Skóre spolehlivosti v Azure Security Center | Microsoft Docs
+description: " Naučte se pracovat s Azure Security Centerm skóre spolehlivosti. "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e88198f8-2e16-409d-a0b0-a62e68c2f999
 ms.service: security-center
 ms.devlang: na
@@ -13,45 +12,45 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
-ms.author: rkarlin
-ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60916564"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202381"
 ---
 # <a name="alert-confidence-score"></a>Skóre spolehlivosti výstrah 
 
-Azure Security Center vám poskytuje přehled napříč prostředky, které běží na Azure a vás upozorní, když zjistí potenciální problémy. Objem výstrah může být náročné pro tým operace zabezpečení k řešení jednotlivě a bude nutné nastavení priority výstrah, které chcete prozkoumat. Prošetřování výstrah může být složité a časově náročné a v důsledku toho některé výstrahy jsou ignorovány.
+Azure Security Center vám poskytne přehled o prostředcích, které spouštíte v Azure, a upozorní vás, když zjistí možné problémy. Objem výstrah může být náročný na to, že tým provozu zabezpečení individuálně adresuje a že je potřeba stanovit prioritu, které výstrahy se mají prozkoumat. Zkoumání výstrah může být složité a časově náročné a v důsledku toho se některé výstrahy ignorují.
 
-Skóre spolehlivosti ve službě Security Center může pomoci vašeho týmu třídění a určit prioritu výstrah. Security Center automaticky použije doporučené postupy, inteligentní algoritmy a procesy používané modulem analytici určit, zda je legitimní hrozbu a nabízí smysluplné přehledy v podobě skóre spolehlivosti.
+Skóre spolehlivosti v Security Center může vašemu týmu pomáhat při třídění a určování priorit výstrah. Security Center automaticky používá osvědčené postupy, inteligentní algoritmy a procesy používané analytiky k určení, jestli je hrozba legitimní a poskytuje smysluplné přehledy ve formě skóre spolehlivosti.
 
-## <a name="how-the-confidence-score-is-triggered"></a>Jak se aktivuje skóre spolehlivosti
+## <a name="how-the-confidence-score-is-triggered"></a>Způsob aktivace skóre spolehlivosti
 
-Výstrahy jsou generovány při zjištění podezřelých procesů běžících na virtuálních počítačích. Security Center kontroluje a analyzuje tyto výstrahy virtuálních počítačích s Windows v Azure. Provádí automatizované kontroly a korelací pomocí pokročilých algoritmů pro různé entity a zdroje dat v organizaci a všech vašich prostředků Azure a nabídne spolehlivosti se skóre, které je míra důvěru Security Center upozornění pravý a měly prozkoumat, je potřeba.
+Výstrahy se generují při zjištění podezřelých procesů spuštěných na virtuálních počítačích. Security Center zkontroluje a analyzuje tyto výstrahy na virtuálních počítačích s Windows, které běží v Azure. Provádí automatizované kontroly a korelace pomocí pokročilých algoritmů napříč různými entitami a zdroji dat v celé organizaci a všech vašich prostředků Azure a představuje hodnocení spolehlivosti, které je mírou toho, jak jsou Security Center. Tato výstraha je pravá a je nutné ji prozkoumat.
 
-## <a name="understanding-the-confidence-score"></a>Principy skóre spolehlivosti
+## <a name="understanding-the-confidence-score"></a>Princip hodnocení spolehlivosti
 
-Skóre spolehlivosti v rozsahu 1 až 100 a představuje získáte jistotu potřebnou má služba Security Center, že výstraha by měl se měl prozkoumat. Čím vyšší je toto skóre, větší jistotu Security Center je, že upozornění informuje o originální škodlivých aktivit. Skóre spolehlivosti obsahuje seznam hlavních důvodů, proč výstrahy přijaté jeho skóre spolehlivosti. Skóre spolehlivosti usnadňuje analytikům zabezpečení a upřednostnit jejich reakce na výstrahy a řešit většinu nejprve klávesy útoky, takže v konečném důsledku snížení množství čas potřebný na útoky a porušení.
+Skóre spolehlivosti v rozsahu od 1 do 100 a představuje Security Center spolehlivosti, že výstraha musí být prověřena. Čím vyšší je skóre, tím Security Centerější znamená, že výstraha indikuje skutečnou škodlivou aktivitu. Hodnocení spolehlivosti zahrnuje seznam hlavních důvodů, proč výstraha obdržela své skóre spolehlivosti. Skóre spolehlivosti usnadňuje analytikům v zabezpečení určit prioritu reakcí na výstrahy a vyřešit většinu útoků jako první a nakonec zkrátit dobu potřebnou k reakci na útoky a porušení.
 
-Chcete-li zobrazit skóre spolehlivosti:
+Postup zobrazení skóre spolehlivosti:
 - Na portálu Security Center otevřete okno výstrahy zabezpečení.
--  Výstrah a incidentů seřazené od nejvyšší k nejnižší, což znamená, že si větší jistotu Security Center je, že výstraha představuje hrozbu, čím blíže, že je do horní části stránky. 
+-  Výstrahy a incidenty jsou seřazené od nejvyšší po nejnižší, což znamená, že se Security Center znamená, že výstraha představuje hrozbu, blíže k hornímu okraji stránky. 
 
 
  ![Skóre spolehlivosti][1]
 
-Chcete-li zobrazit data, která přispívají k Security Center důvěru ve výstraze:
-- Na zabezpečení upozorní okno, v části **spolehlivosti**, zobrazit poznámky, které přispěly k skóre spolehlivosti a získání přehledů souvisejících s danou výstrahou. To vám poskytuje podobné informace o povaze aktivity, které výstrahu způsobil.
+Zobrazení dat, která přispěla k obavám Security Center v upozornění:
+- V okně Výstraha zabezpečení můžete v části **důvěrné**zobrazit pozorování, která přispěla ke skóre spolehlivosti, a získat přehledy týkající se výstrahy. Získáte tak další informace o povaze aktivit, které výstrahu způsobily.
 
-  ![Skóre spolehlivosti podezřelé][2]
+  ![Podezřelé skóre spolehlivosti][2]
 
-Skóre spolehlivosti pomocí Security Center k určení priority výstrah třídění ve vašem prostředí. Skóre spolehlivosti vám šetří čas a úsilí automaticky prošetřování výstrah, použitím doporučené postupy a inteligentním algoritmům provedou a funguje jako virtuální analytik a zjistěte jaké hrozby jsou skutečné a které je potřeba zaměřit vaši pozornost.
+Pomocí hodnocení spolehlivosti Security Center můžete určit prioritu třídění výstrah ve vašem prostředí. Skóre spolehlivosti šetří čas a úsilí tím, že automaticky prozkoumá výstrahy, uplatní osvědčené postupy a inteligentní algoritmy a působí jako virtuální analytik a určí, které hrozby jsou reálné a kde je potřeba zaměřit pozornost.
 
 
-## <a name="next-steps"></a>Další postup
-Tento článek vysvětlil, jak používat skóre spolehlivosti k určení priority výstrahy vyšetřování. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+## <a name="next-steps"></a>Další kroky
+Tento článek vysvětluje, jak používat hodnocení spolehlivosti k určení priorit šetření výstrah. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.

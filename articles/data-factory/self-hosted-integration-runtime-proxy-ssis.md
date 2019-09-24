@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: de9e0a936c68f181665e44ea6115f60c6dc60e98
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179048"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200299"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR v ADF
 Tento článek popisuje, jak spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) v Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) s místním prostředím IR nakonfigurovaným jako proxy.  Tato funkce umožňuje přístup k datům místně bez [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  To je užitečné v případě, že vaše podniková síť má příliš složitou zásadu konfigurace/omezující zásady, která umožňuje vložit do ní Azure-SSIS IR.
@@ -86,10 +86,11 @@ První pracovní úkoly spuštěné v místním prostředí IR se budou účtova
 Druhý pracovní úkol, který běží na vašem Azure-SSIS IR, se nebude účtovat samostatně, ale běžící Azure-SSIS IR bude účtována tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
 ## <a name="current-limitations"></a>Aktuální omezení
-- V současné době jsou podporovány pouze správci připojení souborů OLEDB a plochý soubor a zdroje OLEDB/ploché soubory.
+
+- V současné době jsou podporovány pouze správci připojení souborů OLEDB a plochý soubor a zdroje OLEDB/ploché soubory. 
 - V současné době jsou podporovány pouze propojené služby Azure Blob Storage nakonfigurované s **klíčem**/účtu**SAS identifikátoru**/**zabezpečení** SAS.
 - V současné době je podporována pouze místní prostředí IR zřízené v rámci stejného ADF, kde je zajištěna vaše Azure-SSIS IR.
-- Proměnné a parametry SSIS nejsou podporovány.
+- Použití parametrů nebo proměnných SSIS ve vlastnostech zdrojů OLEDB/plochých souborů a správců připojení se nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 Po nakonfigurování místního prostředí IR jako proxy serveru pro Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k datům v místním prostředí, jak spouštět aktivity balíčků SSIS v kanálech ADF, v tématu [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF. ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142905"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202912"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -44,11 +44,14 @@ Azure Migrate používá řešení [Service map](../operations-management-suite/
     ![Přidat pracovní prostor](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Když přidružujete pracovní prostor, získáte možnost vytvořit nový pracovní prostor nebo připojit nějaký existující:
-  - Když vytváříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti ve stejném geografickém regionu [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+  - Když vytváříte nový pracovní prostor, musíte zadat název pracovního prostoru. Můžete zvolit [oblast](https://azure.microsoft.com/global-infrastructure/regions/) , ve které bude pracovní prostor vytvořen.
   - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v oblasti, kde [je podpora Service map podporována](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Aby bylo možné připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
   > [!NOTE]
   > Jakmile připojíte pracovní prostor k projektu, nemůžete ho později změnit.
+
+  > [!NOTE]
+  > Azure Migrate aktuálně podporuje vytváření pracovních prostorů OMS v oblastech Východní USA, jihovýchodní Asie a Západní Evropa. Pokud je pracovní prostor vytvořen mimo Azure Migrate v jakékoli jiné oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate. 
 
 - Přidružený pracovní prostor je označený jako **projekt migrace**klíče a hodnota **název projektu**, kterou můžete použít k vyhledávání v Azure Portal.
 - Pokud chcete přejít k pracovnímu prostoru přidruženému k projektu, můžete přejít na oddíl **základy** na stránce **Přehled** projektu a získat přístup k pracovnímu prostoru.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065923"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200318"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -32,16 +32,15 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména v souvislosti s pozorovanou latencí na straně klienta. K dispozici jsou dvě nastavení konfigurace klíče pro konfiguraci zásad připojení klienta – *režim* připojení a *protokol*připojení.  K dispozici jsou dva režimy:
 
-   * Režim brány (výchozí)
+   * Režim brány
       
-     Režim brány je podporován na všech platformách sady SDK a je nastaven jako výchozí. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromis mezi výkonem je ale v tom, že režim brány zahrnuje další směrování sítě při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě. Režim připojení brány se doporučuje také při spouštění aplikací v prostředích s omezeným počtem připojení soketu, například při použití Azure Functions nebo pokud používáte plán spotřeby. 
+     Režim brány je podporovaný na všech platformách SDK a je nakonfigurovaná výchozí [sada pro Microsoft. Azure. DocumentDB SDK](sql-api-sdk-dotnet.md). Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromis mezi výkonem je ale v tom, že režim brány zahrnuje další směrování sítě při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě. Režim připojení brány se doporučuje taky při spouštění aplikací v prostředích s omezeným počtem připojení soketů. 
+
+     Při použití sady SDK v Azure Functions, zejména v [plánu spotřeby](../azure-functions/functions-scale.md#consumption-plan), si zavědomete současných [omezení v připojeních](../azure-functions/manage-connections.md). V takovém případě se může režim brány doporučit, pokud také pracujete s dalšími klienty založenými na protokolu HTTP v rámci vaší aplikace Azure Functions.
 
    * Přímý režim
 
-     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS. Pokud používáte nejnovější verzi sady .NET SDK, režim přímého připojení je podporován v .NET Standard 2,0 a rozhraní .NET Framework. Při použití přímého režimu jsou k dispozici dvě možnosti protokolu:
-
-     * TCP
-     * HTTPS
+     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS a je výchozím režimem připojení, pokud používáte [Microsoft. Azure. Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md).
 
      Při použití režimu brány Cosmos DB používá rozhraní API Azure Cosmos DB pro MongoDB port 443 a porty 10250, 10255 a 10256. Port 10250 se mapuje na výchozí instanci MongoDB bez geografické replikace a 10255/10256 portů na instanci MongoDB s funkcí geografické replikace. Při použití TCP v přímém režimu kromě portů brány je potřeba zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud nejsou tyto porty otevřené a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. Následující tabulka uvádí režimy připojení, které jsou dostupné pro různá rozhraní API a porty služby pro každé rozhraní API:
 
@@ -53,7 +52,20 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
      Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Přímý protokol TCP i HTTPS používají protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
-     Režim připojení je nakonfigurovaný během vytváření instance DocumentClient s parametrem ConnectionPolicy. Je-li použit přímý režim, lze protokol nastavit také v rámci parametru ConnectionPolicy.
+     V případě sady SDK v3 je režim připojení nakonfigurován při vytváření instance CosmosClient jako součást CosmosClientOptions.
+
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = "your authKey from the Azure portal";
+     CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+     new CosmosClientOptions
+     {
+        ConnectionMode = ConnectionMode.Direct,
+        ConnectionProtocol = Protocol.Tcp
+     });
+     ```
+
+     V sadě Microsoft. Azure. DocumentDB SDK je režim připojení nakonfigurovaný během vytváření instance DocumentClient s parametrem ConnectionPolicy. Je-li použit přímý režim, lze protokol nastavit také v rámci parametru ConnectionPolicy.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -72,9 +84,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 2. **Zavolejte OpenAsync, aby se zamezilo latenci při spuštění prvního požadavku.**
 
-    Ve výchozím nastavení má první požadavek větší latenci, protože musí načíst směrovací tabulku adres. Chcete-li se vyhnout této latenci při spuštění prvního požadavku, měli byste zavolat OpenAsync () jednou během inicializace následujícím způsobem.
+    Ve výchozím nastavení má první požadavek větší latenci, protože musí načíst směrovací tabulku adres. Pokud používáte [sadu SDK v2](sql-api-sdk-dotnet.md), abyste se vyhnuli této latenci při spuštění prvního požadavku, měli byste zavolat openAsync () jednou během inicializace následujícím způsobem.
 
         await client.OpenAsync();
+
+    > [!NOTE] 
+    > Metoda OpenAsync vytvoří žádosti o získání směrovací tabulky adres pro všechny kontejnery v účtu. Pro účty, které mají mnoho kontejnerů, ale jejich aplikace přistupuje k podmnožině, by vygenerovala zbytečný objem provozu, který způsobí, že se inicializace zpomalí. Použití metody OpenAsync nemusí být v tomto scénáři užitečné, protože zpomaluje spuštění aplikace.
+
    <a id="same-region"></a>
 3. **Společné umístění klientů ve stejné oblasti Azure pro výkon**
 
@@ -95,15 +111,22 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 1. **Nainstalovat nejnovější sadu SDK**
 
     Sady Azure Cosmos DB SDK se neustále zdokonalují, aby poskytovaly nejlepší výkon. Pokud chcete zjistit nejnovější sadu SDK a zkontrolovat vylepšení, podívejte se na stránky [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) .
-2. **Použití typu Singleton Azure Cosmos DB klienta po dobu života vaší aplikace**
 
-    Každá instance DocumentClient je bezpečná pro přístup z více vláken a při provozu v přímém režimu provádí efektivní správu připojení a ukládání adres do mezipaměti. Aby bylo možné efektivně spravovat správu připojení a lepší výkon díky DocumentClient, doporučujeme pro celou doménu aplikace používat jednu instanci DocumentClient.
+2. **Použití rozhraní API pro streamování**
+
+    [Sada .NET SDK V3](sql-api-sdk-dotnet-standard.md) obsahuje rozhraní API pro Stream, která mohou přijímat a vracet data bez serializace. 
+
+    Aplikace střední vrstvy, které nespotřebovávají odpovědi přímo z SDK, ale předají jim přenos na jiné aplikační vrstvy, můžou těžit z rozhraní API streamu. Příklady zpracování streamu najdete v ukázkách [správy položek](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) .
+
+3. **Použití typu Singleton Azure Cosmos DB klienta po dobu života vaší aplikace**
+
+    Každá instance DocumentClient a CosmosClient je bezpečná pro přístup z více vláken a při práci v přímém režimu provádí efektivní správu připojení a ukládání adres do mezipaměti. Aby bylo možné efektivně spravovat správu a lepší výkon pomocí klienta SDK, doporučuje se použít pro každou doménu AppDomain jednu instanci pro celou dobu života aplikace.
 
    <a id="max-connection"></a>
-3. **Při použití režimu brány zvýšit System.Net MaxConnections na hostitele**
+4. **Při použití režimu brány zvýšit System.Net MaxConnections na hostitele**
 
     Azure Cosmos DB požadavky se při použití režimu brány převezmou přes HTTPS/REST a řídí se výchozí limit počtu připojení na název hostitele nebo IP adresa. Je možné, že bude nutné nastavit hodnoty MaxConnections na vyšší hodnotu (100-1000), aby Klientská knihovna mohla využívat více souběžných připojení k Azure Cosmos DB. V sadě .NET SDK 1.8.0 a vyšších je výchozí hodnota pro [Třída ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50 a změnit hodnotu, můžete nastavit vyšší hodnotu v [Documents. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) .   
-4. **Ladění paralelních dotazů pro dělené kolekce**
+5. **Ladění paralelních dotazů pro dělené kolekce**
 
      SQL .NET SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku. Paralelní dotazy poskytují dva parametry, které mohou uživatelé ladit tak, aby vyhovovaly vlastním požadavkům, (a) Z MaxDegreeOfParallelism: pro kontrolu maximálního počtu oddílů, které lze následně dotazovat paralelně a (b) MaxBufferedItemCount: pro řízení počtu předem načtené výsledky.
 
@@ -114,10 +137,10 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     (b) ***optimalizace\:***  paralelního dotazu MaxBufferedItemCount je navržena tak, aby se výsledky předem načetly, zatímco je aktuální dávka výsledků zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. MaxBufferedItemCount je parametr pro omezení počtu předběžně načtených výsledků. Nastavení MaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
-5. **Zapnout GC na straně serveru**
+6. **Zapnout GC na straně serveru**
 
     Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na true.
-6. **Implementace omezení rychlosti v intervalech RetryAfter**
+7. **Implementace omezení rychlosti v intervalech RetryAfter**
 
     Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti na omezení pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy. Podpora zásad opakování je obsažená ve verzi 1.8.0 a novějších rozhraních SQL [.NET](sql-api-sdk-dotnet.md) a [Java](sql-api-sdk-java.md)verze 1.9.0 a novějších z [Node. js](sql-api-sdk-node.md) a [Pythonu](sql-api-sdk-python.md)a všechny podporované verze sady [.NET Core](sql-api-sdk-dotnet-core.md) SDK. Další informace najdete v [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -127,15 +150,15 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     readDocument.RequestDiagnosticsString 
     ```
     
-7. **Horizontální navýšení kapacity klienta – zatížení**
+8. **Horizontální navýšení kapacity klienta – zatížení**
 
     Pokud testujete na úrovních vysoké propustnosti (> 50 000 RU/s), může se klientská aplikace stát kritickým bodem, protože počítač vycapping na využití procesoru nebo sítě. Pokud se dostanou k tomuto bodu, můžete dál nasdílet Azure Cosmos DB účet tím, že navedete horizontální navýšení kapacity klientských aplikací napříč více servery.
-8. **Mezipaměť identifikátorů URI dokumentů pro nižší latenci čtení**
+9. **Mezipaměť identifikátorů URI dokumentů pro nižší latenci čtení**
 
     Ukládání identifikátorů URI dokumentů mezipaměti, kdykoli je to možné, pro nejlepší výkon čtení. Je nutné definovat logiku pro ukládání ResourceID do mezipaměti při vytváření prostředku. Vyhledávání založené na ResourceID jsou rychlejší než vyhledávání na základě názvu, takže ukládání těchto hodnot do mezipaměti vylepšuje výkon. 
 
    <a id="tune-page-size"></a>
-1. **Vyladění velikosti stránek pro dotazy a kanály pro čtení pro lepší výkon**
+10. **Vyladění velikosti stránek pro dotazy a kanály pro čtení pro lepší výkon**
 
    Při hromadném čtení dokumentů pomocí funkce kanálu čtení (například ReadDocumentFeedAsync) nebo při vystavování dotazu SQL se výsledky vrátí segmenticky, pokud je sada výsledků příliš velká. Ve výchozím nastavení se výsledky vrátí do bloků 100 položek nebo 1 MB, podle toho, který limit se narazí jako první.
 
@@ -144,7 +167,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
    > [!NOTE] 
    > Vlastnost maxItemCount by se neměla používat jenom pro účely stránkování. Je to hlavní využití pro zlepšení výkonu dotazů snížením maximálního počtu položek vrácených na jednu stránku.  
 
-   Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v FeedOptions umožňuje nastavit maximální počet položek, které mají být vráceny v operaci enmuration. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky najde optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
+   Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v FeedOptions umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky najde optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -152,11 +175,11 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     
    Při spuštění dotazu jsou výsledná data odeslána v rámci paketu TCP. Pokud zadáte příliš nízkou hodnotu pro `maxItemCount`, je počet cest nutných k odeslání dat v rámci paketu TCP vysoký, což ovlivňuje výkon. Takže pokud si nejste jistí, jakou hodnotu má `maxItemCount` vlastnost nastavit, je nejlepší ji nastavit na-1 a nechat sadu SDK, aby zvolila výchozí hodnotu. 
 
-10. **Zvýšení počtu vláken/úloh**
+11. **Zvýšení počtu vláken/úloh**
 
     Viz [zvýšení počtu vláken/úloh](#increase-threads) v části sítě.
 
-11. **Použití 64 bitového hostitelského zpracování**
+12. **Použití 64 bitového hostitelského zpracování**
 
     SQL SDK funguje v procesu 32 hostitele při použití sady SQL .NET SDK verze 1.11.4 a vyšší. Pokud však používáte Mezioddílové dotazy, doporučujeme pro zlepšení výkonu použití 64 bitového zpracování hostitele. Následující typy aplikací mají 32 hostitelský hostitelský proces jako výchozí, takže aby bylo možné změnit to na 64-bit, postupujte podle těchto kroků v závislosti na typu vaší aplikace:
 
@@ -228,7 +251,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Poplatek za požadavek (tj. náklady na zpracování požadavku) dané operace se přímo koreluje s velikostí dokumentu. Operace s velkým objemem dokumentů se při používání malých dokumentů dotýkají více než operací.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Ukázkovou aplikaci, která se používá k vyhodnocení Azure Cosmos DB pro scénáře s vysokým výkonem na několika klientských počítačích, najdete v tématu [testování výkonu a škálování pomocí Azure Cosmos DB](performance-testing.md).
 
 Další informace o návrhu aplikace pro škálování a vysoký výkon najdete v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).

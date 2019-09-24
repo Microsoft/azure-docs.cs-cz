@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171505"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202960"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -35,7 +35,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo nově
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Chcete-li použít více fondů uzlů, potřebujete rozšíření *AKS-Preview* CLI 0.4.12 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
+Chcete-li použít více fondů uzlů, potřebujete rozšíření *AKS-Preview* CLI 0.4.16 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -178,7 +178,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemohou vyskytovat současně. Pokud se pokusíte o chybu, bude vrácena chyba. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů. Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
+
+Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
@@ -193,9 +195,6 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.10 \
     --no-wait
 ```
-
-> [!Tip]
-> Chcete-li upgradovat rovinu ovládacího prvku `az aks upgrade -k 1.14.6`na *1.14.6*, spusťte. Přečtěte si další informace o [upgradech řídicí roviny s více fondy uzlů](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.13.10*:
 
@@ -232,7 +231,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Upgrade uzlů na zadanou verzi trvá několik minut.
 
-V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Možnost upgradovat fondy jednotlivých uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby se zachovala doba provozu aplikace v rámci výše zmíněných omezení.
+V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Výchozím chováním `az aks upgrade` je upgrade všech fondů uzlů společně s řídicí rovinou, aby bylo možné toto zarovnání dosáhnout. Možnost upgradovat fondy jednotlivých uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby se zachovala doba provozu aplikace v rámci výše zmíněných omezení.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade řídicí plochy clusteru s více fondy uzlů
 
@@ -243,11 +242,12 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 > * Verze fondu uzlů může být jedna podverze nižší než verze řídicí roviny.
 > * Verze fondu uzlů může být libovolná verze opravy, pokud jsou dodržena jiná dvě omezení.
 
-Cluster AKS má dva objekty prostředků clusteru. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů a každá z nich má svou vlastní verzi Kubernetes. Chování operace upgradu závisí na tom, který prostředek je zaměřen a jaká verze základního rozhraní API je volána.
+Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
 
 1. Upgrade roviny ovládacího prvku vyžaduje použití`az aks upgrade`
-   * Dojde také k upgradu všech fondů uzlů v clusteru.
-1. Upgrade pomocí`az aks nodepool upgrade`
+   * Tím dojde k upgradu verze řídicí roviny a všech fondů uzlů v clusteru.
+   * Předáním `az aks upgrade` tohoto `--control-plane-only` příznaku provedete upgrade jenom na řídicí plochu clusteru a žádný z `--control-plane-only` přidružených fondů uzlů * příznak není k dispozici ve **AKS-Preview rozšíření v 0.4.16** nebo vyšších.
+1. Upgrade fondů jednotlivých uzlů vyžaduje použití`az aks nodepool upgrade`
    * Tím se upgraduje jenom cílový fond uzlů s určenou verzí Kubernetes.
 
 Vztah mezi verzemi Kubernetes uchovávanými fondy uzlů musí také následovat po sadě pravidel.

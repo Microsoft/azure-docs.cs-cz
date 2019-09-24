@@ -3,9 +3,8 @@ title: Použít aktualizace systému v Azure Security Center | Microsoft Docs
 description: V tomto dokumentu se dozvíte, jak implementovat Azure Security Center doporučení **použít aktualizace systému** a **restartovat po aktualizacích systému**.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.author: memildin
+ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531463"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202501"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému v Azure Security Center
 Azure Security Center monitoruje každodenní virtuální počítače s Windows a Linuxem pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na počítači s Windows. Security Center také kontroluje nejnovější aktualizace v systémech Linux. Pokud na vašem VIRTUÁLNÍm počítači nebo v počítači chybí aktualizace systému, Security Center bude doporučit, abyste použili aktualizace systému.
@@ -71,7 +70,7 @@ V tomto příkladu použijeme **COMPUTE**.
 
     ![Hledání protokolů Azure Monitor][5]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.

@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 02/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6a12ef422211a77299ece00c5333a6c9f10c9427
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 79f99aa80179fc46eab00a804e61e41aae3cedbf
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174676"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203935"
 ---
-Pro přístup k úložišti Azure, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Pro účely tohoto rychlého startu vytvoření účtu úložiště pomocí [webu Azure portal](https://portal.azure.com/), Azure Powershellu nebo rozhraní příkazového řádku Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md).
+Veškerý přístup k Azure Storage probíhá prostřednictvím účtu úložiště. V tomto rychlém startu vytvořte účet úložiště pomocí [Azure Portal](https://portal.azure.com/), Azure PowerShell nebo Azure CLI. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md).

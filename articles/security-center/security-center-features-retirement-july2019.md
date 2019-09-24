@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910574"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202206"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
+
 > [!NOTE]
 > Tento dokument obsahuje podrobný seznam funkcí, které byly vyřazeny z Azure Security Center 31. července 2019.
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
-
 Provedli jsme několik [vylepšení](https://azure.microsoft.com/updates/?product=security-center) Azure Security Center za šest měsíců od až do července 2019.
 S těmito vylepšenými možnostmi jsme odebrali několik redundantních funkcí a souvisejících rozhraní API od Security Center 31. července 2019.
 
-Většina těchto funkcí pro vyřazení z provozu se dá nahradit novými funkcemi v Azure Security Center nebo Azure Log Analytics. Další funkce se dají implementovat pomocí [Azure Sentinel (Preview)](https://azure.microsoft.com/services/azure-sentinel/).
+Většinu těchto vyřazených funkcí se dá nahradit dalšími funkcemi v Azure Security Center nebo Azure Log Analytics. Další funkce se dají implementovat pomocí [Azure Sentinel (Preview)](https://azure.microsoft.com/services/azure-sentinel/).
 
 Mezi vyřazené Security Center funkce patří:
 
@@ -104,11 +103,11 @@ Odebrali jsme tlačítko **Přejít na mapu událostí zabezpečení** a řídic
 
 ![Mapování výstrah zabezpečení – tlačítko][10]
 
-Když vyberete tlačítko **Přejít na mapu událostí zabezpečení** , otevřete řídicí panel Analýza hrozeb. Vyřadíme řídicí panel Analýza hrozeb.
+Když vyberete tlačítko **Přejít na mapu událostí zabezpečení** , otevřel se (teď vyřazeno) řídicí panel Analýza hrozeb.
 
 ![Řídicí panel Analýza hrozeb][11]
 
-Když zvolíte pracovní prostor pro zobrazení řídicího panelu Analýza hrozeb, otevřete na Log Analytics obrazovku Mapa výstrah zabezpečení (Preview). Tato obrazovka byla vyřazena.
+Když zvolíte pracovní prostor pro zobrazení řídicího panelu Analýza hrozeb, otevřeli jste v Log Analytics obrazovku Mapa výstrah zabezpečení (nyní vyřazeno).
 
 ![Mapování výstrah zabezpečení v Log Analytics][12]
 

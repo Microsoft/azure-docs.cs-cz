@@ -3,7 +3,7 @@ title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Zakáza
 description: Reference k rozhraní API pro Monitorování stavu v2 Disable-ApplicationInsightsMonitoring. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326412"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203435"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Rozhraní API pro Monitorování stavu v2: Disable-ApplicationInsightsMonitoring
 
@@ -69,7 +69,7 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
  Další informace najdete v Monitorování stavu v2:
  - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.

@@ -3,23 +3,22 @@ title: Platformy podporované aplikací Azure Security Center | Microsoft Docs
 description: Tento dokument poskytuje seznam platforem podporovaných nástrojem Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c094ef5f3e7c7bfa96f95264e137fd8938296bb4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 08/29/2019
+ms.author: memildin
+ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232214"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201629"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -106,7 +105,7 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Účet Service Fabric
 * Účet služby Automation
 * Nástroj pro vyrovnávání zatížení
-* Hledat
+* Search
 * Názvový prostor služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí

@@ -3,9 +3,8 @@ title: Vyšetřování incidentů a výstrah v Azure Security Center | Dokumenta
 description: Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662958"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202059"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Vyšetřování incidentů a výstrah v Azure Security Center (vyřazeno)
 Tento dokument vám pomůže s používáním funkce šetření (Preview) v Azure Security Center k prozkoumání incidentů a výstrah zabezpečení.
@@ -65,11 +64,11 @@ Karta **Entity** zobrazuje všechny související entity seskupené podle typu. 
 
 ![Entity](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 Karta **Vyhledávání** uvádí všechny typy protokolů, které jsou pro entitu k dispozici. U každého typu protokolu můžete zobrazit počet dostupných záznamů. Kliknutím na jednotlivé typy protokolů přejdete na obrazovku vyhledávání. Na obrazovce vyhledávání můžete upřesnit vaše hledání a použít různé vyhledávací funkce, například nastavení výstrah. V aktuální verzi je karta Vyhledávání dostupná pouze pro entity uživatelů a počítačů.
 
-![Hledat](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Průzkum
 

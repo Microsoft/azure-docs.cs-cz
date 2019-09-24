@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146473"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203558"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -79,7 +79,6 @@ K dispozici bude při indexování v jednom kanálu částečný výsledek pro t
 
 * **Extrakce klíčových slov**: Extrahuje klíčová slova z mluvené řeči a vizuálního textu.
 * **Extrakce pojmenovaných entit**: Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
-* **Extrakce značek**: Extrahuje značky z mluvené řeči a vizuálního textu.
 * **Odvození tématu**: Provádí odvození hlavních témat z přepisů. Zahrnuje se taxonomie IPTC na první úrovni.
 * **Artefakty**: Extrahuje bohatou sadu artefaktů další úrovně podrobností pro každý model.
 * **Analýza mínění**: Identifikuje kladné, záporné a neutrální zabarvení z mluvené řeči a vizuálního textu.

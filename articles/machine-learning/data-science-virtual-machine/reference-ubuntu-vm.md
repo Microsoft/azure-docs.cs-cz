@@ -1,5 +1,5 @@
 ---
-title: 'Další informace: Ubuntu DSVM'
+title: 'Další informace: DSVM s Ubuntu'
 description: Podrobnosti o nástrojích, které jsou součástí Data Science Virtual Machine Ubuntu
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 20fe027ddf47ba98cef41cdc40a1b2e0d387c2a5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174705"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204032"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Další informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -342,3 +342,6 @@ Nyní se otevře grafické rozhraní se sadou karet. Pomocí následujících kr
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaný skript R. Nebo použijte skript jako takový a spusťte ho kdykoli, abyste mohli opakovat všechno, co bylo provedeno v uživatelském rozhraní Rattle. Hlavně pro začátečníky v R je to způsob, jak rychle analyzovat a strojové učení v jednoduchém grafickém rozhraní, a to při automatickém generování kódu v jazyce R, abyste mohli upravovat nebo učit.
 
+## <a name="next-steps"></a>Další kroky
+
+Máte další otázky? Zvažte vytvoření [lístku podpory](https://azure.microsoft.com/support/create-ticket/).

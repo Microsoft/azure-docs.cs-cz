@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799229"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203819"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -34,7 +34,7 @@ Následující schéma představuje tok dat přes řešení Azure Data Box od m�
 
 ![Zabezpečení zařízení Data Box](media/data-box-security/data-box-security-2.png)
 
-Data prochází přes toto řešení, jsou zaznamenány události a se generují protokoly. Další informace najdete v části [sledování a protokolování událostí pro vaše zařízení Azure Data Box](data-box-logs.md).
+Jak data přecházejí přes toto řešení, události se zaznamenávají a generují se protokoly. Další informace najdete na webu [sledování a protokolování událostí pro Azure Data box](data-box-logs.md).
 
 ## <a name="security-features"></a>Funkce zabezpečení
 
@@ -50,7 +50,7 @@ Zařízení Data Box je chráněno následujícími funkcemi.
 - Běží pouze na softwaru specifickém pro Data Box.
 - Spouští se v uzamčeném stavu.
 - Řídí přístup k zařízení přes heslo pro odemčení zařízení.
-- Přístupové přihlašovací údaje ke kopírování na zařízení a ze zařízení. Všechny přístup k **přihlašovací údaje zařízení** stránky v Azure portal jsou přihlášeni [protokoly aktivit](data-box-logs.md#query-activity-logs-during-setup).
+- Přístupové přihlašovací údaje ke kopírování na zařízení a ze zařízení. Veškerý přístup na stránku **přihlašovací údaje zařízení** v Azure Portal se zaznamená do [protokolů aktivit](data-box-logs.md#query-activity-logs-during-setup).
 
 ### <a name="data-box-data-protection"></a>Ochrana dat na zařízení Data Box
 
@@ -58,7 +58,7 @@ Data, která se na zařízení Data Box ukládají a která se z něho kopíruj�
 
 - 256bitové šifrování AES pro neaktivní uložená data.
 - Pro přenášená data je možné použít šifrované protokoly.
-- Bezpečné vymazání dat ze zařízení po dokončení jejich nahrání do Azure. Vymazání dat je v souladu se standardy NIST 800-88r1. Události vymazání dat je zaznamenán v [uspořádat historii](data-box-logs.md#download-order-history).
+- Bezpečné vymazání dat ze zařízení po dokončení jejich nahrání do Azure. Výmaz dat je v souladu s pokyny v [dodatku A pro jednotky pevného disku ATA v NIST standardech 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). Událost mazání dat je zaznamenána v [historii objednávky](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Ochrana služby Data Box
 
@@ -66,7 +66,7 @@ Služba Data Box Disk je chráněná následujícími funkcemi.
 
 - Přístup ke službě Data Box vyžaduje, aby vaše organizace měla předplatné Azure, které zahrnuje Data Box. Vaše předplatné určuje funkce, které máte na webu Azure Portal dostupné.
 - Protože služba Data Box je hostovaná v Azure, je chráněna funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
-- Přístup k objednávka zařízení Data Box je řídit prostřednictvím použití role řízení přístupu na základě rolí (RBAC). Další informace najdete v tématu [nastavit řízení přístupu pro objednávka zařízení Data Box](data-box-logs.md#set-up-access-control-on-the-order)
+- Přístup k pořadí Data Box lze řídit pomocí rolí Access Control RBAC (role) na základě rolí. Další informace najdete v tématu [nastavení řízení přístupu pro pořadí data box](data-box-logs.md#set-up-access-control-on-the-order) .
 - Služba Data Box ukládá heslo pro odemčení, které slouží k odemčení zařízení ve službě.
 - Služba Data Box ukládá údaje o objednávce a stavu přenosu v úložišti služby. Tyto informace se odstraní při smazání objednávky.
 
@@ -80,11 +80,11 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
 
   - Jméno kontaktu
   - Telefonní číslo
-  - E-mail
+  - Email
   - Ulice
   - Město
   - PSČ
-  - Stav
+  - State
   - Provincie/kraj/oblast
   - Číslo účtu dopravce
   - Sledovací číslo zásilky
@@ -106,9 +106,9 @@ V zařízení Data Box jsou implementovány následující pokyny pro zabezpeče
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Odolnost před nešetrným zacházením při přepravě          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Bezpečná aktualizace firmwaru         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Ochrana dat         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Sanitizace dat         |
+|Dodatek A, pro jednotky pevného disku ATA v [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Sanitizace dat         |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Projděte si [požadavky zařízení Data Box](data-box-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-limits.md).

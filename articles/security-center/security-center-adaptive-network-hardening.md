@@ -3,9 +3,8 @@ title: Adaptivní posílení zabezpečení sítě v Azure Security Center | Micr
 description: " Naučte se, jak povolit adaptivní posílení zabezpečení sítě v Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295893"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202762"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
@@ -66,7 +65,7 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
    > [!NOTE]
    > Můžete také [Odstranit](#delete-rule) nebo [Přidat](#add-rule) pravidlo.
 
-3. Vyberte pravidla, která chcete použít na NSG, a klikněte na vykonat .
+3. Vyberte pravidla, která chcete použít na NSG, a klikněte na vykonat.
 
       > [!NOTE]
       > Vynutilná pravidla se přidají do NSG ochrany virtuálního počítače. (Virtuální počítač může být chráněný NSG, který je přidružený k jeho síťovému rozhraní, nebo podsíti, ve které se virtuální počítač nachází, nebo obojí)
@@ -99,7 +98,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 1. V okně **Upravit pravidlo** aktualizujte podrobnosti, které chcete změnit, a klikněte na **Uložit**.
 
    > [!NOTE]
-   > Po kliknutí na **Uložit**jste úspěšně změnili pravidlo. *Nepoužíváte ho však pro NSG.* Pokud ho chcete použít, musíte vybrat pravidlo v seznamu a kliknout na vykonat  (jak je vysvětleno v dalším kroku).
+   > Po kliknutí na **Uložit**jste úspěšně změnili pravidlo. *Nepoužíváte ho však pro NSG.* Pokud ho chcete použít, musíte vybrat pravidlo v seznamu a kliknout na vykonat (jak je vysvětleno v dalším kroku).
 
    ![Upravit pravidlo](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/07/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: dcbbaa2f4c6ebe709c879909f873b212f238ff2a
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375863"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203219"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Rychlý start: QnA Maker klientskou knihovnu pro Node. js
 
@@ -122,12 +122,15 @@ Zavolejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/cogni
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
+Aby bylo možné úspěšně vytvořit [`wait_for_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že je zahrnutá funkce, na kterou se odkazuje v kódu výše. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
 
 Znalostní bázi můžete aktualizovat tak, že do metody [aktualizace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) předáte ID znalostní báze a [UpdateKbOperationDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) obsahující objekty pro [Přidání](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add), [aktualizaci](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update)a [odstranění](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) DTO. K určení, jestli se aktualizace zdařila, použijte metodu [Operational detail](#get-status-of-an-operation) .
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
+
+Aby bylo možné úspěšně aktualizovat [`wait_for_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že obsahuje funkci, na kterou se odkazuje ve výše uvedeném kódu. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
@@ -153,6 +156,9 @@ Volání _setTimeout_ v následujícím bloku kódu slouží k simulaci asynchro
 
 Spusťte aplikaci pomocí `node index.js` příkazu z adresáře aplikace.
 
+
+Všechny fragmenty kódu v tomto článku jsou [k dispozici](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) a lze je spustit jako jeden soubor.
+
 ```console
 node index.js
 ```
@@ -172,4 +178,3 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)
 * [Získat analýzu využití](../how-to/get-analytics-knowledge-base.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020192"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203264"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Vytvoření webové aplikace Python (Django) s PostgreSQL v Azure App Service
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Než začnete vytvářet Azure Database for PostgreSQL, zkontrolujte, [Jaké výpočetní generace je ve vaší oblasti k dispozici](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores).
 
-Podle kroků v tomto článku můžete postupovat v systému macOS. Pokyny pro Linux a Windows jsou ve většině případů stejné, ale odlišnosti nejsou v tomto kurzu podrobně popsané.
+Postup uvedený v tomto článku najdete na macOS, Linux a pokyny pro Windows jsou ve většině případů stejné, ale rozdíly nejsou popsané v tomto kurzu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

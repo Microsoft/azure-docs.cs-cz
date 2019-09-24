@@ -1,5 +1,5 @@
 ---
-title: 'Další informace: CentOS DSVM'
+title: 'Další informace: DSVM s CentOS'
 description: Podrobnosti o nástrojích, které jsou součástí Data Science Virtual Machine CentOS
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9366eb1bde05d80b8882ee28aa9eb03a75f75964
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d50bb18d15bcad72eed3a97088b61c623e6208fe
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174718"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199985"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Další informace: CentOS (Linux) Data Science Virtual Machine
 
@@ -341,3 +341,7 @@ Grafické rozhraní, které má otevřenou sadu karet. Pomocí následujících 
 1. Vyberte tlačítko **exportovat** a uložte soubor skriptu jazyka R s názvem *weather_script. R* do domovské složky.
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaný skript R. Nebo použijte skript jako takový a spusťte ho kdykoli, abyste mohli opakovat všechno, co bylo provedeno v uživatelském rozhraní Rattle. Hlavně pro začátečníky v R je to způsob, jak rychle analyzovat a strojové učení v jednoduchém grafickém rozhraní, a to při automatickém generování kódu v jazyce R pro úpravy nebo pro učení.
+
+## <a name="next-steps"></a>Další kroky
+
+Máte další otázky? Zvažte vytvoření [lístku podpory](https://azure.microsoft.com/support/create-ticket/).

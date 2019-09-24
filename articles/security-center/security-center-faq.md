@@ -3,9 +3,8 @@ title: Azure Security Center – nejčastější dotazy (FAQ) | Dokumentace Micr
 description: Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.author: memildin
+ms.openlocfilehash: b8ca4dfe8b1bba169b1234461dc5e8855fef1d7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873409"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202297"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -55,7 +54,7 @@ Security Center posuzuje konfiguraci vašich prostředků identifikovat problém
 Zobrazit [oprávnění ve službě Azure Security Center](security-center-permissions.md) získat další informace o rolí a povolených akcí ve službě Security Center.
 
 ## <a name="data-collection-agents-and-workspaces"></a>Shromažďování dat, agentů a pracovní prostory
-Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů (VMSS), kontejnerů IaaS a počítačů mimo Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
+Security Center shromažďuje data z virtuálních počítačů Azure, sady škálování virtuálních počítačů, kontejnerů IaaS a počítačů mimo Azure (včetně místních), aby se mohla monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Fakturace centra zabezpečení je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru:
@@ -133,10 +132,10 @@ Pro počítače se systémem Linux zatím není podporována podpora více domov
 
 Pro existující počítače v předplatných, které jsou připojené k Security Center před 2019-03-17, když se zjistí existující agent, Microsoft Monitoring Agent rozšíření se nenainstaluje a počítač nebude ovlivněn. Pro tyto počítače si přečtěte doporučení "vyřešit problémy se stavem agenta monitorování na vašich počítačích" a vyřešte problémy s instalací agenta na těchto počítačích.
 
- Další informace najdete v části Další [co se stane, když OMS nebo SCOM přímý agent je již nainstalován na mém virtuálním počítači?](#scomomsinstalled)
+ Další informace najdete v další části, [co se stane, když je na mém virtuálním počítači už nainstalovaný System Center Operations Manager nebo přímý agent OMS](#scomomsinstalled) .
 
-### Co se stane, když je na mém virtuálním počítači už nainstalovaný Agent System Center Operations Manager (SCOM)?<a name="scomomsinstalled"></a>
-Security Center nainstaluje Microsoft Monitoring Agent rozšíření na straně stávajícího agenta System Center Operations Manager. Stávající agent SCOM bude nadále hlásit Server System Center Operations Manager normálně. Počítejte s tím, že agent System Center Operations Manager a Microsoft Monitoring Agent sdílet běžné knihovny run-time, které budou během tohoto procesu aktualizovány na nejnovější verzi. Poznámka – Pokud je nainstalovaná verze agenta System Center Operations Manager 2012, nepovolujte Automatické zřizování (možnosti správy se můžou ztratit, pokud je System Center Operations Manager Server verze 2012).
+### Co se stane, když je na mém virtuálním počítači už nainstalovaný Agent System Center Operations Manager?<a name="scomomsinstalled"></a>
+Security Center nainstaluje rozšíření Microsoft Monitoring Agent vedle sebe stávajícímu agentu System Center Operations Manager. Stávající Agent bude nadále hlásit Server System Center Operations Manager normálně. Počítejte s tím, že agent Operations Manager a Microsoft Monitoring Agent sdílet běžné knihovny run-time, které budou během tohoto procesu aktualizovány na nejnovější verzi. Poznámka: Pokud je nainstalovaná verze 2012 agenta Operations Manager, nepovolujte Automatické zřizování (možnosti správy se můžou ztratit, pokud je Operations Manager Server verze 2012).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Co je dopady odebrání těchto rozšíření?
 Pokud odeberete rozšíření Microsoft Monitoring, Security Center nedokáže ke shromažďování dat zabezpečení z virtuálního počítače a několik doporučení zabezpečení a výstrahy nejsou k dispozici. Security Center během 24 hodin, určuje chybí rozšíření a znovu nainstaluje rozšíření virtuálního počítače.
@@ -160,8 +159,8 @@ Můžete ji vypnout automatické zřizování pro vaše předplatná v zásadě 
 
 Můžete se odhlásit ze automatické zřizování, pokud pro vás platí následující:
 
-- Automatickou instalaci agenta pomocí služby Security Center platí pro celé předplatné.  Automatická instalace nelze použít pro některé virtuální počítače řady. Pokud existují kritických virtuálních počítačů, které nejde nainstalovat pomocí agenta Microsoft Monitoring Agent, pak by měl zakážete automatické zřizování.
-- Instalace rozšíření Microsoft Monitoring Agent (MMA) aktualizuje verzi agenta. To platí pro přímého agenta a agenta SCOM (v druhém případě se jedná o společné běhové knihovny SCOM a MMA, které se budou aktualizovat v procesu). Pokud nainstalovaného agenta nástroje SCOM je verze 2012 a upgradu, když SCOM server má také verze 2012 může dojít ke ztrátě možnosti správy. Pokud je nainstalovaný agent SCOM verze 2012, zvažte možnost vypnutí automatického zřizování.
+- Automatickou instalaci agenta pomocí služby Security Center platí pro celé předplatné. Automatická instalace nelze použít pro některé virtuální počítače řady. Pokud existují kritických virtuálních počítačů, které nejde nainstalovat pomocí agenta Microsoft Monitoring Agent, pak by měl zakážete automatické zřizování.
+- Instalace rozšíření Microsoft Monitoring Agent (MMA) aktualizuje verzi agenta. To platí pro přímého agenta a System Center Operations Managerho agenta (v druhé Operations Manager a MMA sdílet společné běhové knihovny, které se budou aktualizovat v procesu). Pokud je nainstalovaný agent Operations Manager verze 2012 a upgradovaný, můžou být možnosti spravovatelnosti ztraceny, pokud je Operations Manager Server také verze 2012. Pokud je nainstalovaný agent Operations Manager verze 2012, zvažte Automatické zřizování.
 - Pokud máte vlastní pracovní prostor mimo předplatné (centrálních pracovních prostorů), pak by měl zakážete automatické zřizování. Můžete ručně nainstalovat rozšíření Microsoft Monitoring Agent a připojit ho váš pracovní prostor bez Security Center přepsání připojení.
 - Pokud chcete se vyhnout vytváření více pracovních prostorů na předplatné a máte vlastní vlastní pracovní prostor v rámci předplatného, máte dvě možnosti:
 
@@ -298,7 +297,7 @@ Security Center je služba Azure nepřetržitě monitoruje prostředí Azure zá
 Azure Security Center monitoruje prostředky Azure následující:
 
 * Virtuální počítače (VM) (včetně [Cloud Services](../cloud-services/cloud-services-choose-me.md))
-* Virtual Machine Scale Sets (VMSSs)
+* Virtual Machine Scale Sets
 * Virtuální sítě Azure
 * Služba Azure SQL
 * Účet služby Azure Storage

@@ -3,9 +3,8 @@ title: Zabezpečení dat ve službě Azure Security Center | Dokumentace Microso
 description: Tento dokument popisuje způsob správy a ochrany dat ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234086"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202341"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -29,31 +28,31 @@ Tento článek popisuje způsob správy a ochrany dat ve službě Azure Security
 ## <a name="data-sources"></a>Zdroje dat
 Azure Security Center analyzuje data z následujících zdrojů a poskytuje přehled o stavu vašeho zabezpečení, zjišťuje ohrožení zabezpečení a doporučuje způsoby zmírnění rizik a detekuje aktivní hrozby:
 
-- Služby Azure: Na základě informací o konfiguraci služeb Azure, které máte nasazené, tím, že komunikuje s poskytovatelem prostředků pro danou službu.
-- Síťový provoz: Využívá Vzorkovaná metadata síťového provozu z infrastruktury společnosti Microsoft, například zdrojovou a cílovou adresu IP/port, velikost paketu nebo síťový protokol.
-- Partnerská řešení: Využívá výstrahy zabezpečení z integrovaných partnerských řešení, jako jsou brány firewall a antimalwarová řešení.
-- Virtuální počítače a servery: Využívá informace o konfiguraci a informace o událostech zabezpečení, jako jsou protokoly událostí a auditů Windows, protokoly služby IIS, zprávy syslog a soubory se stavem systému z vašich virtuálních počítačů. Při vytvoření výstrahy Azure Security Center může navíc vygenerovat snímek příslušného disku virtuálního počítače a z tohoto disku extrahovat artefakty související s příslušnou výstrahou (jako je třeba soubor registru) pro účely forenzní analýzy.
+- Služby Azure: Používá informace o konfiguraci služeb Azure, které jste nasadili, prostřednictvím komunikace s poskytovatelem prostředků této služby.
+- Síťový provoz: Používá ukázková metadata síťového provozu z infrastruktury společnosti Microsoft, jako je zdrojová nebo cílová IP adresa/port, velikost paketu a síťový protokol.
+- Partnerská řešení: Používá výstrahy zabezpečení z integrovaných partnerských řešení, jako jsou brány firewall a antimalwarová řešení.
+- Vaše Virtual Machines a servery: Používá informace o konfiguraci a informace o událostech zabezpečení, jako jsou protokoly událostí a auditu systému Windows, protokoly IIS, zprávy syslog a soubory s výpisem stavu systému z vašich virtuálních počítačů. Při vytvoření výstrahy Azure Security Center může navíc vygenerovat snímek příslušného disku virtuálního počítače a z tohoto disku extrahovat artefakty související s příslušnou výstrahou (jako je třeba soubor registru) pro účely forenzní analýzy.
 
 
 ## <a name="data-protection"></a>Ochrana dat
-**Oddělení dat**: Data se ukládají logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
+**Oddělení dat**: Data se v každé komponentě v rámci služby udržují logicky odděleně. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
-**Přístup k datům**: Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů se stavem systému, události vytváření procesů, snímků disku virtuálního počítače a artefakty, zahrnující mohou neúmyslně zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Podmínky online služeb společnosti Microsoft a Prohlášení o zásadách ochrany osobních údajů](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na informace o zákaznících zůstávají ve vašem vlastnictví.
+**Přístup k datům**: Aby bylo možné poskytnout doporučení pro zabezpečení a prozkoumat potenciální bezpečnostní hrozby, mohou pracovníci společnosti Microsoft získat přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů se stavem systému, událostí vytváření procesů, snímků disků virtuálních počítačů a artefaktů. které můžou neúmyslně zahrnovat zákaznická data nebo osobní údaje z vašich virtuálních počítačů. Dodržujeme [Podmínky online služeb společnosti Microsoft a Prohlášení o zásadách ochrany osobních údajů](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na informace o zákaznících zůstávají ve vašem vlastnictví.
 
-**Za využívání dat**: Společnost Microsoft používá vzory a analýzy hrozeb napříč několika klienty k vylepšení našich schopnosti prevence a detekce; uděláme v souladu se závazky ochrany osobních údajů je popsáno v našem [prohlášení o zásadách](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Použití dat**: Microsoft používá ke zvýšení možností prevence a detekce vzory a analýzy hrozeb, které se zobrazují napříč více klienty. v souladu se závazky ochrany osobních údajů popsané v našem [prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 
 ## <a name="data-location"></a>Umístění dat
 
-**Vaše pracovní prostory**: Pracovní prostor je určen pro následující Geografie a data shromážděná z vašich virtuálních počítačů Azure, včetně výpisy stavu systému a některé typy dat výstrah, se ukládají v nejbližším pracovním prostoru.
+**Vaše pracovní prostory**: Pracovní prostor je zadaný pro následující zeměpisných oblastech a data shromážděná z virtuálních počítačů Azure, včetně výpisů stavu systému a některých typů dat výstrah, se ukládají do nejbližšího pracovního prostoru.
 
 | Geografie virtuálního počítače                              | Geografie pracovního prostoru |
 |-------------------------------------|---------------|
-| Spojené státy, Brazílie, Jižní Afrika | Spojené státy |
+| USA, Brazílie, Jižní Afrika | Spojené státy |
 | Kanada                              | Kanada        |
-| Evropa (s výjimkou Spojené království)   | Evropa        |
+| Evropa (s výjimkou Spojeného království)   | Evropa        |
 | Spojené království                      | Spojené království |
-| Asie (s výjimkou Indie, Japonsko, Koreji, Čína)   | Asie a Tichomoří  |
-| Jižní Korea                              | Asie a Tichomoří  |
+| Asie (s výjimkou Indie, Japonska, Koreje, ČLR)   | Asie a Tichomoří  |
+| Korea                              | Asie a Tichomoří  |
 | Indie                               | Indie         |
 | Japonsko                               | Japonsko         |
 | Čína                               | Čína         |
@@ -64,7 +63,7 @@ Snímky disků virtuálních počítačů se ukládají ve stejném účtu úlo�
 
 Pro virtuální počítače a servery spuštěné v jiných prostředích, například místně, můžete zadat pracovní prostor a oblast, kde se shromážděná data ukládají.
 
-**Azure Security Center Storage**: Informace o výstrahách zabezpečení, včetně partnerských výstrah, se ukládají místně v závislosti na umístění souvisejícího prostředku Azure, kdežto informace o stavu zabezpečení a doporučení se ukládají centrálně ve Spojených státech nebo Evropa závislosti na umístění zákazníka.
+**Azure Security Center úložiště**: Informace o výstrahách zabezpečení, včetně partnerských výstrah, se ukládají místně v závislosti na umístění souvisejícího prostředku Azure, zatímco informace o stavu zabezpečení a doporučení se ukládají centrálně v USA nebo Evropa podle umístění zákazníka.
 Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provádí tuto analýzu v rámci stejné geografie jako pracovní prostor a po dokončení analýzy tyto dočasné kopie odstraní.
 
 Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač.
@@ -82,13 +81,13 @@ Pokud používáte Azure Security Center úrovně Free, můžete pomocí zásad 
 Zákazníci můžou využívat data související se službou Security Center z různých datových proudů, jak je znázorněno níže:
 
 * **Aktivity Azure:** všechny výstrahy zabezpečení, schválené žádosti o přístup [právě včas](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ke službě Security Center a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Protokoly Azure monitoru**: výstrahy zabezpečení.
+* **Protokoly Azure monitor**: všechny výstrahy zabezpečení.
 
 
 > [!NOTE]
 > Doporučení zabezpečení je možné využívat také prostřednictvím rozhraní REST API. Další informace najdete v [referenčních materiálech k rozhraní REST API poskytovatele prostředků zabezpečení](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.

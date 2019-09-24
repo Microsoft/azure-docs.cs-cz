@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774583"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204199"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
@@ -69,7 +69,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -100,6 +100,9 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 > [!NOTE]
 > V daném časovém okamžiku může být na virtuálním počítači nainstalovaná jenom jedna verze rozšíření. zadání vlastního skriptu dvakrát ve stejné Správce prostředků šabloně pro stejný virtuální počítač se nezdaří.
+
+> [!NOTE]
+> Toto schéma můžeme použít uvnitř prostředku VirtualMachine nebo jako samostatný prostředek. Název prostředku musí být v tomto formátu "virtualMachineName/klapka", pokud se toto rozšíření používá jako samostatný prostředek v šabloně ARM. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 

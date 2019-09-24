@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155240"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203787"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -53,7 +53,7 @@ Klientská aplikace může například přidat přizpůsobení do:
 * Vyberte odpověď robota pro chat k objasnění záměru uživatele nebo navrhnout akci.
 * Určete prioritu návrhů toho, co má uživatel dělat jako další krok v obchodním procesu.
 
-Přizpůsobování není služba pro uchovávání a správu informací o profilu uživatele nebo k protokolování předvoleb nebo historie jednotlivých uživatelů. Přizpůsobování se učí z funkcí jednotlivých interakcí v akci a kontextu jediného modelu, který může získat maximální ceny, když dojde k podobným funkcím. 
+Přizpůsobování není služba pro uchovávání a správu informací o profilu uživatele nebo k protokolování předvoleb nebo historie jednotlivých uživatelů. Přizpůsobený modul se učí od jednotlivých funkcí interakce v akci kontextu v jediném modelu, který může získat maximální ceny, když dojde k podobným funkcím. 
 
 ## <a name="personalization-for-developers"></a>Individuální nastavení pro vývojáře
 

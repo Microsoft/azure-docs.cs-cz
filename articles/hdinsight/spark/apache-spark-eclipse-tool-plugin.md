@@ -2,18 +2,18 @@
 title: 'Azure Toolkit for Eclipse: Vytváření Scalach aplikací pro HDInsight Spark '
 description: Nástroje HDInsight v Azure Toolkit for Eclipse slouží k vývoji aplikací Spark napsaných v Scala a jejich odeslání do clusteru HDInsight Spark přímo z integrovaného vývojového prostředí (IDE).
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.author: hrasheed
-ms.openlocfilehash: b027ef911b65931f7c96ad45fae66656b3586730
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ebea83d87cd169f61c91a93f092fa277f5017a7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994613"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203799"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -50,11 +50,12 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
 
 1. Spusťte prostředí IDE pro zatmění a otevřete Průzkumníka Azure. V nabídce **okno** vyberte **Zobrazit zobrazení**a pak vyberte **Další**. V dialogovém okně, které se otevře, rozbalte **Azure**, vyberte **Průzkumník Azure**a pak vyberte **OK**.
 
-   ![Zobrazit dialogové okno zobrazení](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+   ![Apache Spark zobrazení Eclispse](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
 1. Klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **Přihlásit**se.
 1. V dialogovém okně **přihlášení do Azure** zvolte metodu ověřování, vyberte **Přihlásit**se a zadejte svoje přihlašovací údaje Azure.
 
-   ![Dialogové okno přihlášení do Azure](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+   ![Eclispse – symbol pro Azure Apache Spark](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
 1. Po přihlášení se v dialogovém okně **Vybrat odběry** zobrazí všechna předplatná Azure přidružená k přihlašovacím údajům. Kliknutím na tlačítko **Vybrat** zavřete dialogové okno.
 
@@ -183,7 +184,7 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
    * Najeďte myší na graf úlohy. Zobrazuje základní informace o spuštěné úloze. Vyberte graf úlohy a můžete zobrazit fáze a informace, které Každá úloha generuje.
 
-     ![Podrobnosti fáze úlohy](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Informace o fázi grafu Apache Spark úlohy](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * Vyberte kartu **protokol** pro zobrazení často používaných protokolů, včetně protokolu **stderr**, **ovladače stdout**a **informací o adresáři**.
 
@@ -213,7 +214,7 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 1. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
 
-### <a name="manage-azure-subscriptions"></a>Správa předplatných Azure
+### <a name="manage-azure-subscriptions"></a>Spravovat předplatná Azure
 
 Ve výchozím nastavení nástroj HDInsight v Azure Toolkit for Eclipse uvádí Clustery Spark ze všech vašich předplatných Azure. V případě potřeby můžete zadat odběry, pro které chcete získat přístup ke clusteru.
 
@@ -238,7 +239,7 @@ Chcete-li tuto chybu vyřešit, je nutné [stáhnout spustitelný soubor](https:
    * V levém podokně vyberte **HDInsight**.
    * V pravém podokně vyberte možnost **Spark v HDInsight Local Run Sample (Scala)** .
 
-   ![Dialogové okno Nový projekt](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
+   ![Nový projekt – výběr dialogového okna Průvodce](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. Chcete-li poskytnout podrobné informace o projektu, postupujte podle kroků 3 až 6 v předchozí části [nastavení projektu Spark Scala pro cluster HDInsight Spark](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster).
 

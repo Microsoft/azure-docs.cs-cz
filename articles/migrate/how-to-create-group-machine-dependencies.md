@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906375"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200203"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí pro posouzení
 
@@ -61,7 +61,7 @@ Pracovní prostor připojte následujícím způsobem:
 
     ![Přidat pracovní prostor](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - Když zadáte název nového pracovního prostoru, vytvoří se ve stejné geografické oblasti jako projekt Azure Migrate.
+    - Po zadání názvu pro nový pracovní prostor můžete zvolit [oblast](https://azure.microsoft.com/global-infrastructure/regions/) , ve které bude pracovní prostor vytvořen.
     - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace.
     - K pracovnímu prostoru potřebujete přístup čtenář, abyste ho mohli připojit.
     - Po připojení nelze upravit pracovní prostor přidružený k projektu.

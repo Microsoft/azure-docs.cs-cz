@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991630"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203535"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -135,7 +135,7 @@ Služba Syslog, protokoly Docker, deník a dmesg se zpracovávají pomocí sprav
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Jaká je výchozí konfigurace plánovače pro ARO společnosti?
 
-Služba ARO používá výchozí Plánovač, který je dodáván v OpenShift. V ARO společnosti se nepodporují několik dalších mechanismů. Další podrobnosti [](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) najdete v dokumentaci k výchozímu plánovači a v [dokumentaci k hlavnímu plánovači](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) .
+Služba ARO používá výchozí Plánovač, který je dodáván v OpenShift. V ARO společnosti se nepodporují několik dalších mechanismů. Další podrobnosti najdete v dokumentaci k [výchozímu plánovači](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) a v [dokumentaci k hlavnímu plánovači](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) .
 
 Rozšířené nebo vlastní plánování nejsou aktuálně podporovány. Další podrobnosti najdete v [dokumentaci plánování](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) .
 
@@ -164,3 +164,45 @@ Další podrobnosti najdete v tématu [OpenShift docs pro odesílání](https://
 Azure Red Hat OpenShift podporuje partnerský vztah virtuálních sítí a umožňuje zákazníkům poskytnout virtuální síť pro partnerský vztah a virtuální síť CIDR, ve které bude síť OpenShift fungovat.
 
 Virtuální síť, kterou vytvořila služba ARO společnosti, bude chráněná a nebude přijímat změny konfigurace. Virtuální síť, která je v partnerském vztahu, je řízená zákazníkem a nachází se ve svém předplatném.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Je cluster umístěn v rámci předplatného zákazníka? 
+
+Spravovaná aplikace Azure bydlí v uzamčené skupině prostředků s předplatným zákazníka. Zákazník může zobrazit objekty v tomto RG, ale ne upravovat.
+
+## <a name="is-the-sdn-module-configurable"></a>Je modul SDN konfigurovatelný?
+
+SDN je OpenShift-OVS-networkpolicy a nedá se konfigurovat.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Která práva systému UNIX (v IaaS) jsou k dispozici pro uzly Master/infrastruktura/aplikace?
+
+Neplatí pro tuto nabídku. Přístup k uzlu je zakázaný.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Jaká práva OCP máme? Správce clusteru? Projekt – správce?
+
+Podrobnosti najdete v tématu [Přehled správy clusteru](https://docs.openshift.com/aro/admin_guide/index.html)Azure Red Hat OpenShift.
+
+## <a name="which-kind-of-federation-with-ldap"></a>Jaký druh federace se službou LDAP?
+
+To se dá dosáhnout prostřednictvím integrace služby Azure AD. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Sdílí se s ostatními zákazníky nějaký prvek v ARO společnosti? Nebo je vše nezávislé?
+
+Každý cluster Azure Red Hat OpenShift je vyhrazený pro daného zákazníka a v rámci předplatného zákazníka. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Můžeme zvolit trvalé řešení úložiště. OCS? 
+
+K dispozici jsou dvě třídy úložiště pro výběr: Disk Azure a soubor Azure.
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Jak se cluster aktualizoval (včetně hlavních a podřízených) z důvodu ohrožení zabezpečení?
+
+Podívejte [se, jaký je obecný proces upgradu?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Co služba pro vyrovnávání zatížení Azure používá v ARO?  Je Standard nebo Basic a je konfigurovatelná?
+
+ARO používá standardní Azure Load Balancer a nedá se konfigurovat.
+
+## <a name="can-aro-use-netapp-based-storage"></a>Můžou ARO používat úložiště založené na NetApp?
+
+V současné době jsou jedinou podporovanou možností úložiště třídy úložiště disků a souborů Azure. 
+
+

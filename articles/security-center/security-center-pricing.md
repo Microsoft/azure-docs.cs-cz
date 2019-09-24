@@ -1,11 +1,10 @@
 ---
-title: Upgrade na Security Center úrovně Standard pro zvýšení zabezpečení | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o cenách pro Azure Security Center.
+title: Upgradujte na úroveň Standard Security Center pro rozšířené zabezpečení | Microsoft Docs
+description: Tento článek poskytuje informace o cenách pro Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -13,59 +12,59 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: memildin
+ms.openlocfilehash: 0663e97dabe8b5f50ee9605f0bc9319c7a2aa13c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551739"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201239"
 ---
-# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade na Security Center úrovně Standard pro zvýšení zabezpečení
-Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad hybridními cloudovými úlohami aktivní ochrany, které sníží vaši zranitelnost vůči hrozbám a inteligentního zjišťování, které vám pomůžou udržet krok s rychle vyvíjejícími se kybernetickými útoky.
+# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgradujte na úroveň Standard Security Center pro rozšířené zabezpečení
+Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými útoky.
 
 ## <a name="pricing-tiers"></a>Cenové úrovně
 Security Center se nabízí ve dvou úrovních:
 
-- **Free** úroveň se automaticky zapnulo Všechna předplatná Azure a poskytuje užitečná doporučení zabezpečení k ochraně vašich prostředků Azure, zásady zabezpečení a nepřetržité posuzování zabezpečení.
-- **Standardní** úroveň rozšiřuje možnosti na úrovni Free pro úlohy běžící v soukromé i jinými veřejnými cloudy, poskytuje jednotné bezpečnostní správu a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Úroveň Standard přidává také upřesnit hrozeb funkce detekce, která používá integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne, řízení přístupu a aplikací a snižte tak vystavení útokům na síť a malware, a Další. Na úrovni Standard můžete vyzkoušet zdarma. Security Center úrovně Standard podporuje Azure prostředky, včetně virtuálních počítačů, škálovacích sad virtuálních počítačů, služby App Service, SQL servery a účty úložiště. Pokud máte v Azure Security Center úrovně Standard můžete zrušit podporu na základě typu prostředku. 
+- Úroveň **Free** je automaticky povolená ve všech předplatných Azure a poskytuje zásady zabezpečení, průběžné posuzování zabezpečení a užitečná doporučení zabezpečení, která vám pomůžou s ochranou prostředků Azure.
+- Úroveň **Standard** rozšiřuje možnosti úrovně Free na úlohy spuštěné v privátních a dalších veřejných cloudech a zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudy. Úroveň Standard také přináší pokročilé funkce pro detekci hrozeb, které využívají integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkcí pro přístup k síti a k omezení ohrožení síťových útoků a malwaru, přístupu a aplikací. aktuálnější. Úroveň Standard můžete vyzkoušet zdarma. Security Center Standard podporuje prostředky Azure, včetně virtuálních počítačů, virtuálních počítačů Scale Sets, App Service, serverů SQL a účtů úložiště. Pokud máte Azure Security Center Standard, můžete na základě typu prostředku odhlásit podporu. 
 
 
-Další informace najdete v Centru zabezpečení v [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/)Security Center.
 
-## <a name="try-standard-free-for-30-days"></a>Vyzkoušejte zdarma po dobu 30 dnů Standard
-Na úrovni Standard se nabízí zdarma pro prvních 30 dnů. Na konci 30 dnů rozhodnete ve využívání služby pokračovat, automaticky začneme za využití.
+## <a name="try-standard-free-for-30-days"></a>Vyzkoušejte si Standard zdarma po dobu 30 dnů
+Úroveň Standard se nabízí po dobu prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky se zahájí vyúčtováním využití.
 
-Celý předplatného Azure můžete upgradovat na úroveň Standard, která dědí všechny prostředky v rámci předplatného.
+Můžete upgradovat celé předplatné Azure na úroveň Standard, která se dědí ze všech prostředků v rámci předplatného.
 
-Pokud chcete získat na úrovni Standard:
+Postup získání úrovně Standard:
 
-1. Vyberte **ceny na & stavení** na **Security Center** hlavní nabídky.
-2. Vyberte předplatné, které chcete provést upgrade na úroveň Standard.
-3. Vyberte **cenová úroveň**.
-4. Vyberte **standardní** k upgradu.
+1. V hlavní nabídce **Security Center** vyberte **cenové & nastavení** .
+2. Vyberte předplatné, které chcete upgradovat na úroveň Standard.
+3. Vyberte **cenovou úroveň**.
+4. Vyberte možnost **Standard** pro upgrade.
 5. Klikněte na **Uložit**.
 
-(Ceny uvedené na obrázku jsou například pouze pro účely.) ![Ceny Security Center](./media/security-center-pricing/get-standard.png)
+(Ceny v imagi jsou například jenom pro účely.) ![Ceny Security Center](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Pokud chcete povolit všechny funkce Security Center, musíte použít cenovou úroveň Standard u předplatného, které obsahuje příslušné virtuální počítače. Konfigurace cenové úrovně u pracovního prostoru nepovolí přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a detekce sítí pro prostředky Azure.
 >
 >
 
-## <a name="why-upgrade-to-standard"></a>Proč upgradovat na Standard?
-Security Center nabízí vyšší míru zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami, včetně:
+## <a name="why-upgrade-to-standard"></a>Proč upgradovat na úroveň Standard?
+Security Center nabízí vylepšené zabezpečení a ochranu před hrozbami pro úlohy hybridního cloudu, včetně:
 
-- **Zabezpečení hybridní** – získejte jednotný přehled o zabezpečení ve všech místních i cloudových úloh. Aplikovat zásady zabezpečení a průběžně vyhodnocovat zabezpečení vašimi hybridními cloudovými úlohami pro zajištění dodržování bezpečnostních standardů. Shromažďujte, prohledávejte a analyzujte data o zabezpečení z nejrůznějších zdrojů, včetně bran firewall a dalších partnerských řešení.
-- **Rozšířená detekce hrozeb** -pomocí pokročilých analýz a grafu inteligentního zabezpečení Microsoftu k získejte výhodu nad vyvíjejícími se kybernetickými útoky.  Využijte integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne. Monitorujte v sítích, počítačích a cloudových službách příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte vyšetřování pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
-- **Řízení přístupu a aplikací** -Blokujte malware a další nechtěné aplikace použitím doporučení na seznam povolených upravených pro vaše konkrétní úlohy a využívajících strojové učení. Omezte plochu vystavenou síťovým útokům s just-in-time řízený přístup k portům pro správu na virtuálních počítačích Azure, výrazně tím omezit vystavení útokům hrubou silou a jiným síťovým útokům.
+- **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďujte, prohledávejte a analyzujte data o zabezpečení z nejrůznějších zdrojů, včetně bran firewall a dalších partnerských řešení.
+- **Rozšířená detekce hrozeb** – použití pokročilých analýz a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vyvíjejí počítačové útoky.  Využijte integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne. Monitorujte v sítích, počítačích a cloudových službách příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte vyšetřování pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+- **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace pomocí doporučení na seznam povolených, která jsou přizpůsobená vašim konkrétním úlohám a využívají Machine Learning. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure, což výrazně snižuje riziko útoků hrubou silou a dalších sítí.
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste se seznámili s cenami pro Security Center. Další informace o úroveň Standard nabízí vyšší zabezpečení a pokročilou ochranu před hrozbami, naleznete v tématu:
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste zavedli ceny Security Center. Další informace o rozšířeném zabezpečení a Rozšířené ochraně před internetovými vrstvami úrovně Standard najdete v těchto tématech:
 
 - [Pokročilá detekce hrozeb](security-center-threat-report.md)
-- [Právě v řízení přístupu na čas virtuálního počítače](security-center-just-in-time.md)
+- [Řízení přístupu k virtuálnímu počítači podle potřeby](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

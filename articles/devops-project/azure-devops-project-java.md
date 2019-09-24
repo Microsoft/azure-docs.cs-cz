@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898056"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203729"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Rychlý start: Nastavení kanálu CI/CD pro aplikaci Java pomocí Azure DevOps Projects
 
@@ -39,7 +39,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 2. Vyberte **Vytvořit**.
 
-    ![Zahájení konfigurace průběžného doručování](_img/azure-devops-project-java/fullbrowser.png)
+    ![Vytvoření prostředku Azure v DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Výběr ukázkové aplikace a služby Azure
 
@@ -62,7 +62,7 @@ Ukázka v Javě zahrnuje výběr několika architektur aplikace.
 
 2. Vyberte **Procházet** a zobrazte spuštěnou aplikaci.
 
-    ![Zobrazení řídicího panelu](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Zobrazit řídicí panel aplikace v Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    DevOps Projects automaticky nakonfigurovali aktivační událost sestavení a vydání CI.  Teď jste připraveni při práci na aplikaci v Javě spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.
 
@@ -145,7 +145,7 @@ Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobra
 
 Pokud už je nepotřebujete, můžete Azure App Service a další související prostředky odstranit. Použití **odstranit** funkce na řídicím panelu projekty DevOps.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete tady:
 

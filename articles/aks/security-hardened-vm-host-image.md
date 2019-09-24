@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099457"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202973"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Posílení zabezpečení v hostitelích virtuálních počítačů s AKS 
 
@@ -77,15 +77,13 @@ AKS-Engine v tuto chvíli nepropaguje ani nedodržuje žádné konkrétní stand
 |5.4.4 |Zajistěte, aby výchozí uživatel umask byl 027 nebo více omezující. |
 |5.6 |Zajistěte, aby byl omezený přístup k příkazu su|
 
-(*) Musí být povoleno. Viz [dokumentace k](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)definici clusteru.
-
 ## <a name="additional-notes"></a>Další poznámky
  
 * Aby bylo možné dále omezit prostor pro útoky, byly některé zbytečné ovladače modulu jádra v operačním systému zakázané. 
 
 * Nepodporovaný operační systém zabezpečení se nepodporuje mimo platformu AKS. 
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 Další informace o zabezpečení AKS najdete v následujících článcích: 
 

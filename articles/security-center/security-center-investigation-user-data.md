@@ -1,11 +1,10 @@
 ---
-title: Spravovat uživatelská data v Azure Security Center šetření | Dokumentace Microsoftu
-description: " Další informace o správě dat uživatele v Azure Security Center funkci šetření. "
+title: Správa uživatelských dat nalezených v šetření Azure Security Center | Microsoft Docs
+description: " Naučte se spravovat uživatelská data zjištěná ve vyšetřovací funkci Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,40 +12,40 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 1fd979be117104186b2dfce47cc79947a092eb9e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: memildin
+ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672328"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202038"
 ---
-# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Spravovat uživatelská data v Azure Security Center šetření
-Tento článek obsahuje informace o tom, jak spravovat uživatelská data v Azure Security Center funkci šetření. Šetření data jsou uložena v [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) a vystavené ve službě Security Center. Správa uživatelských dat zahrnuje možnost odstranit nebo exportovat data.
+# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Správa uživatelských dat nalezených v Azure Security Center šetření
+Tento článek poskytuje informace o tom, jak spravovat uživatelská data zjištěná v rámci vyšetřovací funkce Azure Security Center. Data o vyšetřování jsou uložená v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) a zpřístupněna v Security Center. Správa uživatelských dat zahrnuje možnost odstraňovat nebo exportovat data.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="searching-for-and-identifying-personal-data"></a>Hledání a identifikovat osobní údaje
-Na webu Azure Portal, můžete použít Centrum zabezpečení [pročtěte](../security-center/security-center-investigation.md) k vyhledání osobních údajů. Funkce šetření je k dispozici v rámci **výstrahy zabezpečení**.
+## <a name="searching-for-and-identifying-personal-data"></a>Hledání a identifikace osobních údajů
+V Azure Portal můžete k hledání osobních údajů použít [funkci šetření](../security-center/security-center-investigation.md) Security Center. Funkce šetření je k dispozici v části **výstrahy zabezpečení**.
 
-Funkce šetření zobrazí všechny entity, informace o uživateli a data v rámci **entity** kartu.
+Funkce šetření zobrazuje všechny entity, informace o uživateli a data na kartě **entity** .
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Zabezpečení a řízení přístupu k osobním údajům
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo správce účtu může přístup k zákaznickým datům v rámci nástroje.
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji.
 
-Zobrazit [předdefinované role pro řízení přístupu na základě rolí Azure](../role-based-access-control/built-in-roles.md) Další informace o rolích Čtenář, vlastníka a Přispěvatel. Zobrazit [správci předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) získat další informace o roli správce účtu.
+Další informace o rolích čtenářů, vlastníků a přispěvatelů najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) . Další informace o roli správce účtu najdete v tématu [Správci předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) .
 
 ## <a name="deleting-personal-data"></a>Odstraňování osobních údajů
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo účet správce může odstranit informace šetření.
+Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může odstranit informace o šetření.
 
-Pokud chcete odstranit šetření, můžete odeslat `DELETE` požadavek na rozhraní REST API Azure Resource Manageru:
+Chcete-li odstranit šetření, můžete odeslat `DELETE` žádost na Azure Resource Manager REST API:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-`incidentName` Vstup můžete zobrazit tak seznam všech incidentů pomocí `GET` žádosti:
+Vstup lze najít výpisem všech incidentů `GET` pomocí žádosti: `incidentName`
 
 ```HTTP
 GET
@@ -54,8 +53,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>Exportování osobních údajů
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo účet správce může exportovat informace šetření. Pokud chcete exportovat informace šetření, přejděte na **entity** kartu kopírovat a vkládat příslušné informace.
+Security Center uživatel, kterému byla přiřazena role vlastníka, přispěvatel nebo správce účtu, může exportovat informace o šetření. Pokud chcete exportovat informace o šetření, klikněte na kartu **entity** a zkopírujte a vložte relevantní informace.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o správě uživatelských dat, naleznete v tématu [správu dat uživatele ve službě Azure Security Center](security-center-privacy.md).
-Další informace o odstraňování soukromým datům v Azure Monitor protokoly najdete v tématu [jak exportovat a odstranění dat soukromých](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Další informace o správě uživatelských dat najdete v tématu [Správa uživatelských dat v Azure Security Center](security-center-privacy.md).
+Další informace o odstraňování privátních dat v protokolu Azure Monitor najdete v tématu [Jak exportovat a odstranit privátní data](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

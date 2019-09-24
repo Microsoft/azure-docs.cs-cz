@@ -1,70 +1,66 @@
 ---
-title: Ochrana služby App Services ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento článek pomáhá Začínáme s ochranou služby App Services ve službě Azure Security Center.
+title: Ochrana App Services v Azure Security Center | Microsoft Docs
+description: Tento článek vám pomůže začít chránit App Services v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/27/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.date: 01/27/2019
+ms.author: memildin
+ms.openlocfilehash: 68f7c47f0a0f56085d632f1c1741318f440b41ee
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551864"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202480"
 ---
-# <a name="protect-app-service-with-azure-security-center"></a>Ochrana služby App Service pomocí Azure Security Center
-Tento článek vám pomůže používat Azure Security Center k monitorování a chránit vaše aplikace běžící na App Service.
+# <a name="protect-app-service-with-azure-security-center"></a>Ochrana App Service s využitím Azure Security Center
+Tento článek vám pomůže použít Azure Security Center k monitorování a ochraně aplikací, které běží nad App Service.
 
-App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru bez nutnosti spravovat infrastrukturu. App Service nabízí automatické škálování a vysoká dostupnost, podporují jak Windows a Linuxem, tak i automatizované nasazení z Githubu, službě Azure DevOps nebo v libovolném adresáři Gitu. 
+App Service umožňuje sestavovat a hostovat webové aplikace v programovacím jazyce podle vašeho výběru bez nutnosti spravovat infrastrukturu. App Service nabízí automatické škálování a vysokou dostupnost, podporuje Windows i Linux i automatizované nasazení z GitHubu, Azure DevOps nebo nějakého úložiště Git. 
 
-Chyby ve webových aplikacích zneužívají útočníci, často, protože mají běžné a dynamického rozhraní pro téměř každé organizaci na Internetu. Požadavky na aplikace běžící na App Service prochází několika Gateway nasazené v datových centrech Azure po celém světě, zodpovědná za směrování každý požadavek jeho příslušné aplikace. 
+Ohrožení zabezpečení webových aplikací se často využívají útočníky, protože mají společné a dynamické rozhraní pro skoro každou organizaci na internetu. Žádosti o aplikace běžící na App Service procházejí několika branami nasazenými v datových centrech Azure po celém světě a zodpovídají za směrování jednotlivých požadavků do příslušné aplikace. 
 
-Azure Security Center můžete spustit posouzení a doporučení na vaše aplikace spuštěná ve službě App Service v izolovaných prostorů v virtuálního počítače nebo instance na vyžádání. S využitím viditelnost, které Azure nabízí jako poskytovatel cloudu, Security Center analyzuje protokoly interní služby App Service pro monitorování běžnými útoky webové aplikace, které často spouštět napříč několika cíly.
+Azure Security Center můžou na svých aplikacích spuštěných v App Service spustit posouzení a doporučení v izolovaném prostoru (sandboxech) ve virtuálních počítačích nebo instancích na vyžádání. Díky využití viditelnosti, kterou má Azure jako poskytovatel cloudu, Security Center analyzuje vaše App Service interní protokoly pro monitorování běžných útoků webových aplikací, které se často spouštějí napříč více cíli.
 
-Security Center bude využívat škálovatelnosti cloudu k identifikaci útoků na vaše aplikace služby App Service a soustředit se na nově vznikající útoky, protože útočníci na fáze rekognoskace prohledávání identifikovat ohrožení zabezpečení napříč více webů hostovaných na Azure. Security Center pomocí analýz a modelů strojového učení k pokrytí všech rozhraní umožňuje zákazníkům interakci s svých aplikací, ať už prostřednictvím protokolu HTTP nebo prostřednictvím metody správy. Kromě toho jako první strany služby v Azure Security Center také jedinečné pozici nabízí analýzy založené na hostiteli zabezpečení, které pokrývají základní výpočetní uzly pro tento PaaS umožňuje Security Center můžete detekovat útoky na webové aplikace, které byly již zneužít.
+Security Center využívá škálování cloudu k identifikaci útoků na vaše App Service aplikace a Zaměřte se na nově vznikající útoky, zatímco útočníci jsou ve fázi rekognoskace, hledají, jak identifikovat chyby zabezpečení napříč několika weby, které se hostují v Azure. Security Center používá analýzy a modely strojového učení k pokrytí všech rozhraní, která zákazníkům umožňují interakci s aplikacemi, ať už přes protokol HTTP nebo prostřednictvím metod správy. Kromě toho je jako služba první strany v Azure Security Center taky na jedinečné pozici, která nabízí analýzy zabezpečení založené na hostiteli, které se týkají základních výpočetních uzlů pro tento PaaS, což umožňuje Security Center detekovat útoky na webové aplikace, které byly již zneužití.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K monitorování a zabezpečení vaší služby App Service musíte mít plán služby App Service, který je spojený s vyhrazenými počítači. Jedná se o tyto plány: Basic, Standard, Premium, Isolated nebo Linux. Azure Security Center nepodporuje plány Free, Shared ani Consumption. Další informace najdete v tématu [plány služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+K monitorování a zabezpečení vaší služby App Service musíte mít plán služby App Service, který je spojený s vyhrazenými počítači. Jedná se o tyto plány: Basic, Standard, Premium, Isolated nebo Linux. Azure Security Center nepodporuje plány Free, Shared ani Consumption. Další informace najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-## <a name="security-center-protection"></a>Security Center ochrany
+## <a name="security-center-protection"></a>Ochrana Security Center
 
-Azure Security Center chrání instance virtuálního počítače, ve kterém běží služby App Service a rozhraní pro správu. Také sleduje žádostí a odpovědí odeslaných do a z vašich aplikací ve službě App Service.
+Azure Security Center chrání instanci virtuálního počítače, ve které je spuštěný App Service a rozhraní pro správu. Monitoruje také požadavky a odpovědi odeslané do aplikací spuštěných v App Service a z nich.
 
-Security Center je nativně integrováno s App Service, takže odpadá potřeba nasazení a zprovoznění – integrace je dokonale transparentní.
+Security Center je nativně integrovaná s App Service a odstraňuje nutnost nasazení a registraci – integrace je zcela transparentní.
 
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>Povolení monitorování a ochranu služby App Service
+## <a name="enabling-monitoring-and-protection-of-app-service"></a>Povolení monitorování a ochrany App Service
 
-1. V Azure zvolte Security Center.
-2. Přejděte na **ceny na & stavení** a zvolte předplatné.
-3. V části **cenová úroveň**v **služby App service** řádek, plán přepnete **povoleno**.
+1. V Azure vyberte Security Center.
+2. Přejít na **Nastavení cenové &** a vyberte předplatné.
+3. V části **cenová úroveň**na řádku **App Service** přepněte plán na **povoleno**.
 
-![Přepnout App service](./media/security-center-app-services/app-services-toggle.png)
+![přepínač služby App Service](./media/security-center-app-services/app-services-toggle.png)
 
 >[!NOTE]
-> Počet instancí uvedené pro vaši množství prostředků, které představuje počet instancí relevantní aktivní v tuto chvíli po otevření okna cenovou úroveň služby App Service. Protože toto číslo může změnit v závislosti na vybrané možnosti škálování, počet instancí, které se vám účtovat odpovídajícím způsobem změněny.
+> Počet instancí uvedených pro vaše množství prostředků představuje počet relevantních instancí App Service, které jsou v tuto chvíli aktivní, když jste otevřeli okno cenová úroveň. Vzhledem k tomu, že se toto číslo může změnit na základě vybraných možností škálování, upraví se odpovídající počet instancí, které se vám účtují.
 
-Chcete-li zakázat monitorování a doporučení pro službu App Service, opakujte tento proces a přepnout vaše **služby App Service** plánujete **zakázané**.
+Pokud chcete zakázat monitorování a doporučení pro App Service, opakujte tento postup a přepněte plán **App Service** na **zakázáno**.
 
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak konfigurovat nastavení zabezpečení ve službě Azure Security Center.
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
-* [Služby App services](security-center-virtual-machine-protection.md#app-services):  Zobrazení seznamu vaší služby App service Environment se souhrny stavu.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Naučte se konfigurovat nastavení zabezpečení v Azure Security Center.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Aplikační služby](security-center-virtual-machine-protection.md#app-services):  Podívejte se na seznam prostředí služby App Service s shrnutími stavu.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 34aaae23b834ec1fb9e071f31c6d8e94c9c7dd0a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170813"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204162"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Rychlý start: Nastavení CentOS (Linux) Data Science Virtual Machine v Azure
 
@@ -33,7 +33,7 @@ Tady je postup vytvoření instance Data Science Virtual Machine CentOS:
 
 1. V dalším okně vyberte **vytvořit**.
 
-    ![Průvodce vytvořením virtuálního počítače](./media/linux-dsvm-intro/create-centos.png)
+    [![](media/linux-dsvm-intro/create-centos.png "Tlačítko pro vytvoření počítače s CentOS")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    

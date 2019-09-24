@@ -3,9 +3,8 @@ title: Správa potíží s ochranou Endpoint Protection pomocí Azure Security C
 description: Naučte se spravovat problémy ochrany koncových bodů v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231304"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202065"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa potíží s ochranou Endpoint Protection pomocí Azure Security Center
 Azure Security Center monitoruje stav antimalwarové ochrany a oznamuje ho v okně problémy ochrany koncového bodu. Security Center zvýrazní problémy, jako jsou zjištěné hrozby a nedostatečná ochrana, což může způsobit, že vaše virtuální počítače a počítače budou zranitelné proti malwarovým hrozbám. Pomocí informací v části **problémy s ochranou koncového bodu Endpoint Protection**můžete identifikovat plán, který řeší všechny zjištěné problémy.
