@@ -80,7 +80,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
-| typeHandlerVersion | 9,5 |
+| typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
