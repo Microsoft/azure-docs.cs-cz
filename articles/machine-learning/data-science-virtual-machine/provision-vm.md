@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: f543db0240d59cf99f3bd793e059b7985f1ffe22
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170664"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204077"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý start: Nastavení Data Science Virtual Machine pro Windows
 
@@ -28,10 +28,12 @@ Vytvoření instance DSVM:
 
 1. Pokud ještě nejste přihlášení, můžete přejít na [Azure Portal](https://portal.azure.com) zobrazí se výzva k přihlášení k účtu Azure.
 1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Windows 2016.
+
     ![Seznam virtuálních počítačů s Windows](./media/provision-vm/search-windows.png)
+
 1. V dolní části vyberte tlačítko **vytvořit** .
 
-   ![Výpis virtuálního počítače na Azure Portal s tlačítkem vytvořit](./media/provision-vm/create-windows.png)
+    [![](media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    ![Karta základy odpovídající virtuálnímu počítači s Windows](./media/provision-vm/review-create-windows.png)

@@ -3,9 +3,8 @@ title: Práce se zásadami zabezpečení | Microsoft Docs
 description: Tento článek popisuje, jak pracovat se zásadami zabezpečení v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314920"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200490"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -131,7 +130,7 @@ Důležité pojmy v Azure Policy:
 
 - **Přiřazení** je aplikace iniciativy nebo zásady konkrétního oboru (skupina pro správu, předplatné atd.). 
 
-Security Center má předdefinovanou iniciativu, která zahrnuje všechny zásady zabezpečení. Aby bylo možné vyhodnotit zásady Security Center v prostředcích Azure, měli byste vytvořit přiřazení ke skupině pro správu nebo předplatnému, které chcete vyhodnotit.  
+Security Center má předdefinovanou iniciativu, která zahrnuje všechny zásady zabezpečení. Aby bylo možné vyhodnotit zásady Security Center v prostředcích Azure, měli byste vytvořit přiřazení ke skupině pro správu nebo předplatnému, které chcete vyhodnotit.
 
 Integrovaná iniciativa má ve výchozím nastavení povolené všechny zásady Security Center. Můžete zakázat určité zásady z předdefinované iniciativy, například můžete použít všechny zásady Security Center s výjimkou **firewallu webových aplikací**, a to tak, že změníte hodnotu parametru efektu zásady na Disabled ( **zakázáno**). 
 
@@ -231,10 +230,10 @@ V tomto příkladu se dozvíte, jak odebrat přiřazení:
 |Adaptivní řízení aplikací |Monitorování možného seznamu povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Skupiny zabezpečení sítě |Monitorování opravňujícího přístupu k síti v Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému v Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrana koncových bodů |Monitorovat chybějící Endpoint Protection v Azure Security Center |endpointProtectionMonitoringEffect |
+|Ochrana koncového bodu |Monitorovat chybějící Endpoint Protection v Azure Security Center |endpointProtectionMonitoringEffect |
 |Šifrování disku |Monitorování nešifrovaných disků virtuálních počítačů v Azure Security Center |diskEncryptionMonitoringEffect|
 |Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů v Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
-|Brána firewall webových aplikací |Monitorování nechráněné webové aplikace v Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Firewall webových aplikací |Monitorování nechráněné webové aplikace v Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Brána firewall příští generace |Monitorování nechráněných koncových bodů sítě v Azure Security Center| |
 
 
@@ -246,7 +245,7 @@ Security Center používá Access Control na základě rolí (RBAC), která posk
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak upravit zásady zabezpečení v Azure Policy. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md): Naučte se plánovat a porozumět hlediskům návrhu Azure Security Center.

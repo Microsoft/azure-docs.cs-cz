@@ -3,9 +3,8 @@ title: Podporované funkce, které jsou k dispozici v Azure Security Center | Mi
 description: Tento dokument poskytuje seznam služeb podporovaných nástrojem Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234579"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200813"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
@@ -109,7 +108,7 @@ Azure Security Center podporuje následující prostředky PaaS:
 |Účet Service Fabric|✔| X|
 |Účet služby Automation|✔| X|
 |Nástroj pro vyrovnávání zatížení|✔| X|
-|Hledat|✔| X|
+|Search|✔| X|
 |Názvový prostor služby Service Bus|✔| X|
 |Stream Analytics|✔| X|
 |Obor názvů centra událostí|✔| X|

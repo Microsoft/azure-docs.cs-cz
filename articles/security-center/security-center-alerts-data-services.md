@@ -3,23 +3,19 @@ title: Detekce hrozeb pro datové služby v Azure Security Center | Microsoft Do
 description: Toto téma představuje výstrahy datových služeb dostupné v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: da960861-0b6c-4d80-932d-898cdebb4f83
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 25f691d972b208b517f92752e2a9c30b016ec62a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/24/2019
+ms.author: memildin
+ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013346"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202579"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 

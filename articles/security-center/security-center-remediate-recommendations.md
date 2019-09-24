@@ -3,9 +3,8 @@ title: Opravit doporučení v Azure Security Center | Microsoft Docs
 description: Tento dokument vysvětluje, jak opravit doporučení v Azure Security Center, která vám pomůžou chránit prostředky Azure a zůstat v souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a32e344ffe33f411bae85763ae3b919040c1109b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: memildin
+ms.openlocfilehash: 9bd1586193d2e36c370217e37b77409298821a67
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575623"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200999"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Oprava doporučení v Azure Security Center
 
@@ -94,7 +93,7 @@ Operace opravy používá volání rozhraní API pro nasazení šablony nebo opr
 |Měly by být povolené diagnostické protokoly v Key Vault.|Tato akce povolí diagnostické protokoly pro trezory klíčů. Diagnostické protokoly a metriky se ukládají ve vybraném pracovním prostoru.|
 |Měly by být povolené diagnostické protokoly ve službě Service Bus.|Tato akce povolí diagnostické protokoly ve službě Service Bus. Diagnostické protokoly a metriky se ukládají ve vybraném pracovním prostoru.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste si ukázali, jak opravit doporučení v Security Center. Další informace o Security Center najdete v následujících tématech:
 

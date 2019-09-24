@@ -1,56 +1,55 @@
 ---
-title: Nastavení Azure Security Center | Dokumentace Microsoftu
-description: Konfigurace nastavení Azure Security Center.
+title: Nastavení Azure Security Center | Microsoft Docs
+description: Nakonfigurujte nastavení Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703519"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201611"
 ---
 # <a name="security-center-settings"></a>Nastavení služby Security Center
-Tento článek obsahuje přehled nastavení ve službě Security Center.
+Tento článek poskytuje přehled nastavení v Security Center.
 
-V části zásady zabezpečení se dá kontaktovat následující nastavení:
+V části zásady zabezpečení je možné dosáhnout následujících nastavení:
 
-- **Shromažďování dat**: Určuje zřizování agentů a [shromažďování dat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) nastavení.
-- **Zásady zabezpečení**: Určuje, který určuje Security Center monitoruje a doporučuje. Můžete upravit [zásady zabezpečení](tutorial-security-policy.md) ve službě Security Center. Můžete také použít [Azure Policy](tutorial-security-policy.md) vytvářet nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu. 
-- **E-mailová oznámení**: Určuje kontakty zabezpečení a [e-mailová oznámení](security-center-provide-security-contact-details.md) nastavení.
-- **Cenová úroveň**: Definuje free nebo standard [výběr cenové](security-center-pricing.md). Zvolená úroveň určí, které funkce Security Center budou dostupné pro prostředky v daném rozsahu. Můžete určit úroveň pro předplatná a pracovní prostory.
+- **Shromažďování dat**: Určuje zřizování agenta a nastavení [shromažďování dat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) .
+- **Zásady zabezpečení**: Určuje, které ovládací prvky Security Center monitoruje a doporučuje. [Zásady zabezpečení](tutorial-security-policy.md) můžete upravit v Security Center. Pomocí [Azure Policy](tutorial-security-policy.md) můžete také vytvářet nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu. 
+- **E-mailová oznámení**: Určuje kontakty zabezpečení a nastavení [e-mailových oznámení](security-center-provide-security-contact-details.md) .
+- **Cenová úroveň**: Definuje [Výběr ceny](security-center-pricing.md)na bezplatné nebo standardní úrovni. Zvolená úroveň určí, které funkce Security Center budou dostupné pro prostředky v daném rozsahu. Můžete zadat úroveň předplatných a pracovních prostorů.
 
 > [!NOTE]
-> Můžete nastavit všechny na jedno předplatné. Pro pracovní prostory můžete nastavit pouze pro sběr dat a cenová úroveň.
+> Všechna tato nastavení můžete nastavit na jedno předplatné. U pracovních prostorů můžete nastavit jenom shromažďování dat a cenovou úroveň.
 >
 
 
-## <a name="who-can-edit-security-policies"></a>Kdo může upravit zásady zabezpečení?
-Security Center používá Role-Based řízení přístupu (RBAC), který poskytuje předdefinované role, které je možné přiřadit uživatelům, skupinám a službám v Azure. Když uživatelé otevřou Security Center, uvidí jenom informace týkající se prostředky, ke kterým mají přístup. To znamená, že uživatelé jsou přiřazeni roli *vlastníka*, *Přispěvatel*, nebo *čtečky* k předplatnému prostředek patří. Kromě těchto rolí existují ve službě Security Center dvě specifické role:
+## <a name="who-can-edit-security-policies"></a>Kdo může upravovat zásady zabezpečení?
+Security Center používá Access Control na základě rolí (RBAC), která poskytuje předdefinované role, které se dají přiřadit uživatelům, skupinám a službám v Azure. Když uživatelé otevřou Security Center, uvidí jenom informace, které souvisejí s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému, ke kterému prostředek patří. Kromě těchto rolí existují ve službě Security Center dvě specifické role:
 
-- **Čtenář zabezpečení**: Zobrazení oprávnění ke službě Security Center, což zahrnuje doporučení, výstrahy, zásady a stav, ale jejich nemůže provádět změny.
-- **Správce zabezpečení**: Stejné oprávnění zobrazit jako *Čtenář zabezpečení*, a můžete také aktualizovat zásady zabezpečení a rušit doporučení a výstrahy.
+- **Čtecí modul zabezpečení**: Mít oprávnění k zobrazení Security Center, což zahrnuje doporučení, výstrahy, zásady a stav, ale nemůže provádět změny.
+- **Správce zabezpečení**: Mít stejná oprávnění k zobrazení jako *Čtenář zabezpečení*a můžou taky aktualizovat zásady zabezpečení a zrušit doporučení a upozornění.
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli o zásad zabezpečení ve službě Azure Security Center. Další informace o službě Azure Security Center, najdete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste se dozvěděli o zásadách zabezpečení v Azure Security Center. Další informace o Azure Security Center najdete v následujících článcích:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Zjistěte, jak doporučení služby Security Center vám pomoct chránit prostředky Azure.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure.
+* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Přečtěte si, jak Security Center doporučení pomůžou chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
-* [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md): Zjistěte, jak se spravuje Security Center a chrání data.
+* [Zabezpečení dat Azure Security Center](security-center-data-security.md): Přečtěte si, jak Security Center spravuje a chrání data.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Získejte odpovědi na nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Získejte nejnovější informace zabezpečení Azure a informace.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Získejte nejnovější novinky a informace o zabezpečení Azure.

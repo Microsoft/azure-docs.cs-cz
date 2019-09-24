@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d0ef228f9f019b6f975ba32cf6a579f328226ae2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966991"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203451"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Rychlý start: Klientská knihovna Počítačové zpracování obrazu pro Java
 
@@ -24,6 +24,7 @@ Začněte s knihovnou klienta Počítačové zpracování obrazu pro Java. Pomoc
 Pomocí klientské knihovny Počítačové zpracování obrazu pro jazyk Java:
 
 * Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
+* Vyrozpoznávají vytištěné a ručně psaný text pomocí rozhraní Batch Read API.
 
 [](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [artefaktu Referenční dokumentace (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
@@ -115,6 +116,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Poč
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza obrázku](#analyze-an-image)
+* [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -212,6 +214,29 @@ Následující kód Vytiskne informace o typu obrázku&mdash;, ať už se jedná
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
+## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
+
+Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků.
+
+> [!NOTE]
+> Můžete také číst text ve vzdálené imagi pomocí jeho adresy URL. Scénáře týkající se vzdálených imagí najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) .
+
+### <a name="call-the-recognize-api"></a>Volání rozhraní API pro rozpoznávání
+
+Nejprve použijte následující kód k volání metody **recognizePrintedTextInStream** pro daný obrázek. Když přidáte tento kód do projektu, je třeba nahradit hodnotu `localTextImagePath` cestou k místní imagi. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+### <a name="print-recognize-results"></a>Tisk – rozpoznat výsledky
+
+Následující blok kódu zpracovává vrácený text a analyzuje ho pro vytištění prvního slova na každém řádku. Tento kód můžete použít k rychlému pochopení struktury instance **OcrResult** .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_print)]
+
+Nakonec zavřete blok try/catch a definici metody.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_catch)]
+
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Aplikaci můžete vytvořit pomocí:
@@ -233,7 +258,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak provádět základní úlohy pomocí Počítačové zpracování obrazu knihovny Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 

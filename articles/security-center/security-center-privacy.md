@@ -1,11 +1,10 @@
 ---
-title: Správa dat uživatele ve službě Azure Security Center | Dokumentace Microsoftu
-description: " Další informace o správě dat uživatele ve službě Azure Security Center. "
+title: Spravovat uživatelská data v Azure Security Center | Microsoft Docs
+description: " Naučte se spravovat data uživatelů v Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,92 +12,92 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
-ms.author: rkarlin
-ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: memildin
+ms.openlocfilehash: 40299b2ff9a20792cf25828051d2f937f3f1e9da
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703468"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201282"
 ---
-# <a name="manage-user-data-in-azure-security-center"></a>Správa dat uživatele ve službě Azure Security Center
-Tento článek obsahuje informace o tom, jak můžete spravovat uživatelská data v Azure Security Center. Správa uživatelských dat zahrnuje schopnost přistupovat k, odstranit nebo exportovat data.
+# <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat v Azure Security Center
+Tento článek poskytuje informace o tom, jak můžete spravovat data uživatelů v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu, odstranění a exportu dat.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo správce účtu může přístup k zákaznickým datům v rámci nástroje. Zobrazit [předdefinované role pro řízení přístupu na základě rolí Azure](../role-based-access-control/built-in-roles.md) Další informace o rolích Čtenář, vlastníka a Přispěvatel. Zobrazit [správci předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) získat další informace o roli správce účtu.
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji. Další informace o rolích čtenářů, vlastníků a přispěvatelů najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) . Další informace o roli správce účtu najdete v tématu [Správci předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) .
 
-## <a name="searching-for-and-identifying-personal-data"></a>Hledání a identifikovat osobní údaje
-Security Center uživatel mohl zobrazit jejich osobních údajů na webu Azure portal. Security Center se uchovávají pouze podrobností o kontaktu zabezpečení jako jsou e-mailových adres a telefonních čísel. Zobrazit [poskytnutí podrobností kontaktů zabezpečení ve službě Azure Security Center](security-center-provide-security-contact-details.md) Další informace.
+## <a name="searching-for-and-identifying-personal-data"></a>Hledání a identifikace osobních údajů
+Uživatel Security Center může pomocí Azure Portal zobrazit jejich osobní údaje. Security Center ukládá pouze podrobnosti o kontaktech zabezpečení, jako jsou e-mailové adresy a telefonní čísla. Další informace najdete [v tématu Zadání podrobností o kontaktu zabezpečení v Azure Security Center](security-center-provide-security-contact-details.md) .
 
-Na webu Azure Portal může uživatel zobrazit povolená konfigurace IP adresy pomocí metody just-in čas virtuálního počítače přístup k funkci služby Security Center. Další informace najdete v tématu [Správa přístupu k virtuálním počítačům pomocí metody Just-in-Time](security-center-just-in-time.md).
+V Azure Portal může uživatel zobrazit povolené konfigurace IP adres pomocí funkce přístup k virtuálnímu počítači s přístupem k virtuálnímu počítači Security Center. Další informace najdete v tématu [Správa přístupu k virtuálním počítačům pomocí metody Just-in-Time](security-center-just-in-time.md).
 
-Na webu Azure Portal může uživatel zobrazit výstrahy zabezpečení poskytne Security Center, včetně IP adresy a podrobnosti o útočníka. Zobrazit [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) Další informace.
+V Azure Portal může uživatel zobrazit výstrahy zabezpečení, které poskytuje Security Center včetně IP adres a podrobností útočníka. Další informace najdete [v tématu Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) .
 
 ## <a name="classifying-personal-data"></a>Klasifikace osobních údajů
-Nemusíte klasifikace osobních údajů v funkce kontaktu zabezpečení Security Center. Data uložená se e-mailovou adresu (nebo více e-mailové adresy) a telefonní číslo. [Kontaktní údaje](security-center-provide-security-contact-details.md) ověření pomocí služby Security Center.
+Nemusíte klasifikovat osobní údaje, které byly nalezeny ve funkci kontaktu zabezpečení Security Center. Uložená data jsou e-mailová adresa (nebo několik e-mailových adres) a telefonní číslo. [Kontaktní údaje](security-center-provide-security-contact-details.md) se ověřují pomocí Security Center.
 
-Není potřeba klasifikovat IP adresy a portu čísel uloženy službou Security Center [právě včas](security-center-just-in-time.md) funkce.
+Nemusíte klasifikovat IP adresy a čísla portů uložená funkcí pro funkci [Just-Time v čase](security-center-just-in-time.md) Security Center.
 
-Pouze uživatel přiřazenou roli správce můžete klasifikace osobních údajů pomocí [zobrazení výstrah](security-center-managing-and-responding-alerts.md) ve službě Security Center.
+Jenom uživatel, který má přiřazenou roli správce, může klasifikovat osobní údaje [zobrazením výstrah](security-center-managing-and-responding-alerts.md) v Security Center.
 
-## <a name="securing-and-controlling-access-to-personal-data"></a>Zabezpečení a řízení přístupu k osobním údajům
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo správce účtu může přistupovat k [kontaktní údaje zabezpečení](security-center-provide-security-contact-details.md).
+## <a name="securing-and-controlling-access-to-personal-data"></a>Zabezpečení a řízení přístupu k osobním datům
+Security Center uživatel, kterému byla přiřazena role čtenářů, vlastník, přispěvatel nebo účet, může získat přístup k [datům kontaktů zabezpečení](security-center-provide-security-contact-details.md).
 
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo správce účtu může přistupovat k jejich [právě včas](security-center-just-in-time.md) zásady.
+Security Center uživatel, kterému byla přiřazena role čtenářů, vlastník, přispěvatel nebo účet, může přistupovat ke svým zásadám [podle času](security-center-just-in-time.md) .
 
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo správce účtu může zobrazovat jejich [výstrahy](security-center-managing-and-responding-alerts.md).
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo správce účtu, může zobrazit jejich [výstrahy](security-center-managing-and-responding-alerts.md).
 
 ## <a name="updating-personal-data"></a>Aktualizace osobních údajů
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo správce účtu může aktualizovat [kontaktní údaje zabezpečení](security-center-provide-security-contact-details.md) prostřednictvím webu Azure portal.
+Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může aktualizovat [data kontaktů zabezpečení](security-center-provide-security-contact-details.md) prostřednictvím Azure Portal.
 
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo správce účtu může aktualizovat jejich [jenom v zásadách čas](security-center-just-in-time.md).
+Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může aktualizovat zásady pro [právě v čase](security-center-just-in-time.md).
 
-Správce účtu nelze upravit výstrah incidentů. [Výstrah incidentů](security-center-managing-and-responding-alerts.md) je považován za zabezpečení dat a je jen pro čtení.
+Správce účtu nemůže upravovat incidenty výstrah. [Incident výstrahy](security-center-managing-and-responding-alerts.md) se považuje za data zabezpečení a je jen pro čtení.
 
 ## <a name="deleting-personal-data"></a>Odstraňování osobních údajů
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo účet správce může odstranit [kontaktní údaje zabezpečení](security-center-provide-security-contact-details.md) prostřednictvím webu Azure portal.
+Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může odstranit [data kontaktů zabezpečení](security-center-provide-security-contact-details.md) prostřednictvím Azure Portal.
 
-Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo účet správce může odstranit [jenom v zásadách čas](security-center-just-in-time.md) prostřednictvím webu Azure portal.
+Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může pomocí Azure Portal odstranit [zásady pro jediný čas](security-center-just-in-time.md) .
 
-Security Center uživatele nelze odstranit upozornění incidenty. Z důvodu potřeby zabezpečení [výstrah incidentů](security-center-managing-and-responding-alerts.md) se považuje za čtení pouze data.
+Uživatel Security Center nemůže odstranit incidenty výstrahy. V důsledku potřeb zabezpečení se [incident výstrahy](security-center-managing-and-responding-alerts.md) považuje za data určená jen pro čtení.
 
 ## <a name="exporting-personal-data"></a>Exportování osobních údajů
-Security Center uživatel přiřazenou roli Čtenář, vlastník, Přispěvatel nebo účet správce může exportovat [kontaktní údaje zabezpečení](security-center-provide-security-contact-details.md) podle:
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet může exportovat [data kontaktů zabezpečení](security-center-provide-security-contact-details.md) podle těchto údajů:
 
-- Při kopírování z portálu Azure portal
-- Provádění volání rozhraní Azure REST API, GET HTTP:
+- Probíhá kopírování z Azure Portal
+- Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
   ```
 
-Security Center uživateli přiřadit roli správce účtu můžete exportovat [jenom v zásadách čas](security-center-just-in-time.md) obsahující IP adres podle:
+Uživatel, který má přiřazenou roli správce účtu Security Center, může exportovat [zásady podle času](security-center-just-in-time.md) , které obsahují IP adresy:
 
-- Při kopírování z portálu Azure portal
-- Provádění volání rozhraní Azure REST API, GET HTTP:
+- Probíhá kopírování z Azure Portal
+- Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
   ```
 
-Účet správce může exportovat podrobných informacích výstrahy podle:
+Správce účtu může exportovat podrobnosti výstrahy podle těchto údajů:
 
-- Při kopírování z portálu Azure portal
-- Provádění volání rozhraní Azure REST API, GET HTTP:
+- Probíhá kopírování z Azure Portal
+- Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Zobrazit [výstrahy zabezpečení získat (GET kolekce)](https://msdn.microsoft.com/library/mt704050.aspx) Další informace.
+Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](https://msdn.microsoft.com/library/mt704050.aspx) .
 
-## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Omezení použití osobních údajů pro profilaci nebo marketingové bez souhlasu
-Security Center uživatel může zvolit odhlásit tak, že odstraníte jejich [kontaktní údaje zabezpečení](security-center-provide-security-contact-details.md).
+## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Omezení používání osobních údajů pro profilaci nebo marketing bez souhlasu
+Uživatel Security Center se může rozhodnout, že se má odhlásit a odstranit [data kontaktů zabezpečení](security-center-provide-security-contact-details.md).
 
-[Právě v datech časové](security-center-just-in-time.md) je považován za podnikově identifikovatelných dat a se uchovávají po dobu 30 dnů.
+[Data v čase](security-center-just-in-time.md) se považují za neidentifikovatelná data, která se uchovávají po dobu 30 dnů.
 
-[Data výstrahy pro](security-center-managing-and-responding-alerts.md) je považován za zabezpečení dat a se uchovávají po dobu dvou let.
+[Data výstrah](security-center-managing-and-responding-alerts.md) se považují za bezpečnostní data a uchovávají se po dobu dvou let.
 
 ## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
-Auditovat protokoly kontaktu zabezpečení za běhu a výstrahy aktualizace jsou zachována ve [protokolů aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+Protokoly auditu pro kontakt se zabezpečením, tentokrát v čase a aktualizace výstrah se udržují v [protokolech aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
-## <a name="next-steps"></a>Další postup
-Další informace o správě uživatelských dat, naleznete v tématu [spravovat uživatelská data v Azure Security Center šetření](security-center-investigation-user-data.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o správě uživatelských dat najdete v tématu [Správa uživatelských dat nalezených v Azure Security Center šetření](security-center-investigation-user-data.md).

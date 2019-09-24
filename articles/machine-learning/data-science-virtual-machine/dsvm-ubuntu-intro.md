@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: 5b50355391180c4a499a0f4e77c3897f8969cdb8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f50d784b7518bd01a3a0069cb474296d359420a8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170960"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200056"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý start: Nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
@@ -33,7 +33,7 @@ Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové v�
 
 1. V dalším okně vyberte **vytvořit**.
 
-    ![Průvodce vytvořením virtuálního počítače](./media/dsvm-ubuntu-intro/create-linux.png)
+   [![](media/dsvm-ubuntu-intro/create-linux.png "Tlačítko pro vytvoření počítače s Ubuntu")](media/dsvm-ubuntu-intro/create-linux-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    
