@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835150"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257937"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Konfigurace domény vydavatele aplikace (Preview)
 
-Doména vydavatele aplikace se zobrazí uživatelům na [výzvu k vyjádření souhlasu aplikace](application-consent-experience.md) a umožní uživatelům, aby věděli, kde jsou odesílány informace. Víceklientské aplikace registrované po 21. května 2019, které nemají doménu vydavatele zobrazeno jako Neověřeno Víceklientské aplikace jsou aplikace, které podporují účty mimo jeden adresář organizace. například podporují všechny účty Azure AD nebo podporují všechny účty Azure AD a osobní účty Microsoft.
+Doména vydavatele aplikace se zobrazí uživatelům na [výzvu k vyjádření souhlasu aplikace](application-consent-experience.md) a umožní uživatelům, aby věděli, kde jsou odesílány informace. Víceklientské aplikace registrované po 21. května 2019, které nemají doménu vydavatele zobrazeno jako **Neověřeno** Víceklientské aplikace jsou aplikace, které podporují účty mimo jeden adresář organizace. například podporují všechny účty Azure AD nebo podporují všechny účty Azure AD a osobní účty Microsoft.
 
 ## <a name="new-applications"></a>Nové aplikace
 
@@ -42,11 +42,11 @@ Následující tabulka shrnuje výchozí chování hodnoty domény vydavatele.
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | – *. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (primární) | domain2.com |
 
-Pokud není nastavená doména vydavatele aplikace s více klienty, nebo pokud je nastavená na doménu, která končí na. onmicrosoft.com, zobrazí se výzva k vyjádření souhlasu aplikace na místě domény vydavatele Neověřeno.
+Pokud není nastavená doména vydavatele aplikace s více klienty, nebo pokud je nastavená na doménu, která končí na. onmicrosoft.com, zobrazí se výzva k vyjádření souhlasu aplikace na místě domény vydavatele **Neověřeno** .
 
 ## <a name="grandfathered-applications"></a>Grandfathered aplikace
 
-Pokud se vaše aplikace zaregistrovala před 21. května 2019, zobrazí se výzva k vyjádření souhlasu vaší aplikace neověřená, pokud jste nezadali doménu vydavatele. Doporučujeme nastavit hodnotu domény vydavatele tak, aby uživatelé mohli zobrazit tyto informace na příkazovém řádku pro vyjádření souhlasu vaší aplikace.
+Pokud se vaše aplikace zaregistrovala před 21. května 2019, zobrazí se výzva k vyjádření souhlasu vaší aplikace **neověřená** , pokud jste nezadali doménu vydavatele. Doporučujeme nastavit hodnotu domény vydavatele tak, aby uživatelé mohli zobrazit tyto informace na příkazovém řádku pro vyjádření souhlasu vaší aplikace.
 
 ## <a name="configure-publisher-domain-using-the-azure-portal"></a>Konfigurace domény vydavatele pomocí Azure Portal
 
@@ -96,6 +96,12 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 ### <a name="to-select-a-verified-domain"></a>Výběr ověřené domény
 
 - Pokud má váš tenant ověřené domény, vyberte jednu z domén v rozevíracím seznamu **Vybrat ověřenou doménu** .
+
+>[!Note]
+> Očekávala se hlavička Content-Type, která by se `application/json`měla vrátit. Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Důsledky pro výzvu k vyjádření souhlasu aplikace
 

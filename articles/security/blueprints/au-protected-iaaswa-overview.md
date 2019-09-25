@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 50e410fc439be7b3a5f4c1e8d4bab5d60c3c4f52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5fe9cfe642585c4f5220d79813816e554fdf48ef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946928"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259187"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Webová aplikace Podrobný plán zabezpečení a dodržování předpisů Azure-IaaS pro Austrálii chráněnou
 
@@ -41,7 +41,7 @@ Pro rozšířené zabezpečení se všechny prostředky v tomto řešení spravu
 
 Toto řešení používá následující služby Azure. Další podrobnosti najdete v části [architektura nasazení](#deployment-architecture) .
 
-- Sady dostupnosti
+- Skupiny dostupnosti
     - (1) uzly clusteru SQL
     - (1) Web/IIS
 - Azure Active Directory
@@ -65,7 +65,7 @@ Toto řešení používá následující služby Azure. Další podrobnosti najd
 - Azure Virtual Network
     - (4) skupiny zabezpečení sítě
     - Azure Network Watcher
-- Recovery Services trezor
+- Trezor služby Recovery Services
 
 Tento podrobný plán obsahuje služby Azure, které nebyly certifikovány pro použití s chráněnou klasifikací prostřednictvím australského centra Internet Security Center (ACSC). Všechny služby zahrnuté v této referenční architektuře byly certifikovány ACSC na úrovni značek omezení rozšiřování (DLM). Společnost Microsoft doporučuje, aby si zákazníci zkontrolovali publikované sestavy zabezpečení a auditu týkající se těchto služeb Azure a používali jejich rámec řízení rizik k určení, jestli je služba Azure vhodná pro jejich interní akreditaci a použití na Chráněná klasifikace.
 
@@ -78,7 +78,7 @@ Toto řešení vytvoří virtuální počítač jako hostitele bastionu připoje
 -   [Antimalwarové rozšíření](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 -   [Rozšíření Azure Diagnostics](../../virtual-machines/windows/extensions-diagnostics-template.md)
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pomocí Azure Key Vault
--   [Zásady automatického](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) vypínání, které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají
+-   [Zásady automatického vypínání](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) , které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají
 
 ### <a name="virtual-network"></a>Virtuální síť
 Architektura definuje privátní virtuální síť s adresním prostorem 10.200.0.0/16.
@@ -123,7 +123,7 @@ Kromě toho následující Azure Active Directory možnosti pomůžou spravovat 
 - [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) zákazníkům umožňuje minimalizovat počet uživatelů, kteří mají přístup k určitým informacím. Správci můžou pomocí Azure Active Directory Privileged Identity Management zjišťovat, omezovat a monitorovat privilegované identity a jejich přístup k prostředkům. Tato funkce se dá v případě potřeby použít taky k prosazování přístupu pro správu za běhu na vyžádání.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detekuje potenciální ohrožení zabezpečení ovlivňující identity&#39;organizace a nakonfiguruje automatizované odezvy na zjištěné podezřelé akce související s&#39;identitami organizace s. zkoumá podezřelé incidenty, aby mohla přijmout vhodná opatření k jejich vyřešení.
 
-**Ověřování Azure Multi-Factor Authentication**: K ochraně identit by měla být implementována aplikace Multi-Factor Authentication. [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) je snadné použití, škálovatelné a spolehlivé řešení, které poskytuje druhou metodu ověřování pro ochranu uživatelů. Azure Multi-Factor Authentication využívá sílu cloudu a integruje se s místními službami Active Directory a vlastními aplikacemi. Tato ochrana je rozšířená na nejdůležitější scénáře.
+**Multi-Factor Authentication Azure**: K ochraně identit by měla být implementována aplikace Multi-Factor Authentication. [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) je snadné použití, škálovatelné a spolehlivé řešení, které poskytuje druhou metodu ověřování pro ochranu uživatelů. Azure Multi-Factor Authentication využívá sílu cloudu a integruje se s místními službami Active Directory a vlastními aplikacemi. Tato ochrana je rozšířená na nejdůležitější scénáře.
 
 ### <a name="security"></a>Zabezpečení
 **Správa tajných**kódů: Řešení používá [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů a tajných kódů. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Následující možnosti Azure Key Vault můžou zákazníkům chránit a přistupovat k těmto datům:
@@ -143,7 +143,7 @@ Kromě toho následující Azure Active Directory možnosti pomůžou spravovat 
 
 **Azure Security Center**: Díky [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)můžou zákazníci centrálně používat a spravovat zásady zabezpečení napříč úlohami, omezovat vystavení hrozeb a rozpoznávat a reagovat na útoky. Kromě toho Azure Security Center přistupuje k existujícím konfiguracím služeb Azure a poskytuje doporučení ke konfiguraci a službám, které vám pomůžou zlepšit zabezpečení stav a chránit data.
 
-Azure Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Azure Security Center má sadu předdefinovaných [výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), které se aktivují při výskytu hrozby nebo podezřelé aktivity. [Vlastní pravidla výstrah](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) v Azure Security Center umožňují zákazníkům definovat nové výstrahy zabezpečení na základě dat, která už jsou z jejich prostředí shromážděná.
+Azure Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Azure Security Center má sadu [předdefinovaných výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), které se aktivují při výskytu hrozby nebo podezřelé aktivity. [Vlastní pravidla výstrah](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) v Azure Security Center umožňují zákazníkům definovat nové výstrahy zabezpečení na základě dat, která už jsou z jejich prostředí shromážděná.
 
 Azure Security Center poskytuje prioritní výstrahy zabezpečení a incidenty, které zákazníkům zjednodušují zjišťování a řešení potenciálních problémů se zabezpečením. Pro každou zjištěnou hrozbu se vygeneruje [Sestava analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-threat-report) , která pomáhá týmům reakce na incidenty při zkoumání a opravai hrozeb.
 
@@ -170,7 +170,7 @@ Kromě toho tato referenční architektura využívá [posouzení ohrožení zab
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 Služba Azure výrazně zaznamenává činnost systému a uživatele a také stav systému:
 - **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
 
 **Protokoly Azure monitor**: Tyto protokoly jsou konsolidovány v [protokolech Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožňuje společnou analýzu všech dat bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center integruje s protokoly Azure Monitor a umožňuje zákazníkům používat dotazy Kusto pro přístup k datům událostí zabezpečení a kombinovat je s daty z jiných služeb.
 
@@ -194,7 +194,7 @@ Diagram toku dat pro tuto referenční architekturu je k dispozici ke [stažení
 ## <a name="compliance-documentation"></a>Dokumentace k dodržování předpisů
 Tato dokumentace k dodržování předpisů je založená na Microsoftu na platformách a službách dostupných od Microsoftu. V důsledku nejrůznějších zákaznických nasazení poskytuje tato dokumentace zobecněný přístup k řešení, které je hostované jenom v prostředí Azure. Zákazníci mohou identifikovat a používat alternativní produkty a služby na základě vlastních operačních prostředí a obchodních výsledků. Zákazníci, kteří chtějí používat místní prostředky, musí řešit zabezpečení a operace pro tyto místní prostředky. Zdokumentované řešení je možné přizpůsobit zákazníkům, aby vyřešilo konkrétní místní a bezpečnostní požadavky.
 
-V poli [podrobný plán zabezpečení a dodržování předpisů Azure –](https://aka.ms/au-protected-crm) v tabulce zodpovědnosti zákazníka jsou uvedeny všechny ovládací prvky zabezpečení, které jsou chráněné službou au. Tato matice podrobně popisuje, zda je implementace každého ovládacího prvku zodpovědností od společnosti Microsoft, zákazníka nebo sdílená mezi nimi.
+V poli [podrobný plán zabezpečení a dodržování předpisů Azure – v tabulce zodpovědnosti zákazníka](https://aka.ms/au-protected-crm) jsou uvedeny všechny ovládací prvky zabezpečení, které jsou chráněné službou au. Tato matice podrobně popisuje, zda je implementace každého ovládacího prvku zodpovědností od společnosti Microsoft, zákazníka nebo sdílená mezi nimi.
 
 [IaaS – matice implementace webové aplikace](https://aka.ms/au-protected-iaaswa-cim) , která je chráněná podrobný plán zabezpečení a dodržování předpisů Azure pomocí nástroje au, obsahuje informace o tom, které ovládací prvky chráněné službou au jsou řešeny architekturou webové aplikace IaaS, včetně podrobných popisů způsob, jakým implementace splňuje požadavky každého zahrnutého ovládacího prvku.
 
@@ -227,7 +227,7 @@ Aby bylo možné zabránit tomu, aby se klasifikovaná data synchronizovaná s A
 - [Zakázat synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
 - [Zakázat zpětný zápis hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 - [Zakázat zpětný zápis zařízení](../../active-directory/hybrid/how-to-connect-device-writeback.md)
-- Ponechte výchozí nastavení, [](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md) aby nedocházelo k náhodným odstraněním a [automatickému upgradu](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md) .
+- Ponechte výchozí nastavení, aby [nedocházelo k náhodným odstraněním](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md) a [automatickému upgradu](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md) .
 
 ## <a name="disclaimer"></a>Zřeknutí se práv
 - Tento dokument slouží pouze k informativním účelům. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ, JAKO INFORMACE V TOMTO DOKUMENTU. Tento dokument se poskytuje "tak, jak je". Informace a názory vyjádřené v tomto dokumentu, včetně adres URL a dalších odkazů na internetové weby, se mohou změnit bez předchozího upozornění. Zákazníci, kteří si tento dokument přečetli, nesou riziko jeho používání.

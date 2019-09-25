@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999209"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262763"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -93,7 +93,7 @@ Application Insights vytvoří grafy a tabulky, které vám ukáže například 
 Pokud dojde k chybám, selháním nebo problémům s výkonem, můžete prohledat data telemetrie podrobněji a diagnostikovat příčinu. A služba vám pošle e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace. Vhledem z hlediska aplikace je tak cenný nástroj zabezpečení, protože pomáhá s dostupností v Triad zabezpečení důvěrnosti, integrity a dostupnosti.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/platform/activity-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/platform/activity-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 [Protokoly Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje kromě prostředků Azure i řešení pro správu IT pro místní i cloudovou infrastrukturu (například AWS). Data z Azure Monitor můžete směrovat přímo do protokolů Azure Monitor, abyste viděli metriky a protokoly pro celé prostředí na jednom místě.
@@ -141,7 +141,7 @@ Můžete povolit nebo zakázat následující typy protokolů:
 
 -   Protokolování webového serveru – informace o transakcích HTTP pomocí formátu souboru protokolu W3C Extended. To je užitečné při určování celkové metriky lokality, jako je počet zpracovaných požadavků nebo kolik požadavků pochází z konkrétní IP adresy.
 
-#### <a name="application-diagnostics"></a>Diagnostika aplikace
+#### <a name="application-diagnostics"></a>Application Diagnostics
 [Application Diagnostics](../../app-service/troubleshoot-diagnostic-logs.md) umožňuje zachytit informace vytvářené webovou aplikací. ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. V Application Diagnostics existují dva hlavní typy událostí, které souvisejí s výkonem aplikace a s chybami aplikací a chybami. Chyby a chyby lze dále rozdělit do potíží s připojením, zabezpečením a selháním. Problémy s chybami jsou obvykle spojeny s problémem s kódem aplikace.
 
 V Application Diagnostics můžete zobrazit události seskupené těmito způsoby:

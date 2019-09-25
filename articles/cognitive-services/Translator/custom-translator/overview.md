@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: cdbbe9006f57c8b29e19fda85eefc0795da95a00
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595508"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257665"
 ---
 # <a name="what-is-custom-translator"></a>Co je Custom Translator?
 
 [Vlastní Překladatel](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, která umožňuje společnostem překladatelů, vývojářům aplikací a poskytovatelům jazykových služeb vytvářet přizpůsobené systémy NMT (neuronové Machine Translation). Přizpůsobené systémy překladu se hladce integrují do stávajících aplikací, pracovních postupů a webů. [Vlastní Překladatel](https://portal.customtranslator.azure.ai/) nabízí podobné možnosti, které [centrum Microsoftu](https://hub.microsofttranslator.com/) používá pro statistickou strojový překlad (SMT), ale výhradně pro systémy NMT (neuronové Machine Translation).
 
-Překladatelské systémy vytvořené pomocí [vlastního překladatele](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejného cloudového [](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), zabezpečeného, vysoce výkonného a vysoce škálovatelného rozhraní Microsoft Translator [text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), které každý den nakládá miliardám.
+Překladatelské systémy vytvořené pomocí [vlastního překladatele](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejného cloudového, [zabezpečeného](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoce výkonného a vysoce škálovatelného rozhraní Microsoft Translator [text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), které každý den nakládá miliardám.
 
 Vlastní Překladatel podporuje více než tři desítkové jazyky a mapuje se přímo na jazyky, které jsou k dispozici pro NMT. Úplný seznam najdete v tématu [Microsoft Translator languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
@@ -40,7 +40,7 @@ Vlastní Překladatel poskytuje různé funkce pro sestavení vlastního systém
 
 Microsoft Translator vydal [neuronové strojový překlad (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) v 2016. NMT poskytuje zásadní pokrok v kvalitě překladu v rámci technologie [SMT (Standard statistického strojového překladu)](https://en.wikipedia.org/wiki/Statistical_machine_translation) . Vzhledem k tomu, že NMT lépe zachycuje kontext úplných vět před jejich překladem, poskytuje vyšší kvalitu, lepší lidské zvuky a lepší překlady. [Vlastní Překladatel](https://portal.customtranslator.azure.ai) poskytuje NMT pro vaše vlastní modely, což má za následek lepší kvalitu překladu.
 
-Můžete použít dříve přeložené dokumenty k sestavení systému překladu. Tyto dokumenty zahrnují terminologii a styl specifický pro doménu, což je lepší než obecný systém překladu. Uživatelé můžou nahrávat dokumenty ALIGN, PDF, LCL, HTML, HTM, XLF, TMX, XLIFF, TXT, DOCX a XLSX.
+Můžete použít dříve přeložené dokumenty k sestavení systému překladu. Tyto dokumenty zahrnují terminologii a styl specifický pro doménu, což je lepší než standardní systém překladu. Uživatelé můžou nahrávat dokumenty ALIGN, PDF, LCL, HTML, HTM, XLF, TMX, XLIFF, TXT, DOCX a XLSX.
 
 Vlastní Překladatel taky přijímá data, která jsou na úrovni dokumentu rovnoběžná, aby bylo shromažďování a Příprava dat efektivnější. Pokud uživatelé mají přístup k verzím stejného obsahu v různých jazycích, ale v samostatných dokumentech, vlastní Překladatel bude moci automaticky rozlišovat věty v rámci dokumentů.
 
@@ -52,7 +52,7 @@ V případě [vlastního překladatele](https://portal.customtranslator.azure.ai
 
 Pomocí portálu zabezpečeného [vlastního překladatele](https://portal.customtranslator.azure.ai) můžou uživatelé nahrávat školicí data, naučit systémy, testovat systémy a nasazovat je do produkčního prostředí prostřednictvím intuitivního uživatelského rozhraní. Systém bude potom k dispozici pro použití ve velkém měřítku během několika hodin (skutečný čas závisí na velikosti školicích dat).
 
-[](https://portal.customtranslator.azure.ai) K vlastnímu překladateli se taky dá programově přistupovat prostřednictvím [vyhrazeného rozhraní API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (aktuálně ve verzi Preview). Rozhraní API umožňuje uživatelům pravidelně spravovat vytváření a aktualizaci průběžných školení prostřednictvím vlastní aplikace nebo webové služby.
+K [vlastnímu překladateli](https://portal.customtranslator.azure.ai) se taky dá programově přistupovat prostřednictvím [vyhrazeného rozhraní API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (aktuálně ve verzi Preview). Rozhraní API umožňuje uživatelům pravidelně spravovat vytváření a aktualizaci průběžných školení prostřednictvím vlastní aplikace nebo webové služby.
 
 Náklady na používání vlastního modelu k překladu obsahu jsou založené na cenové úrovni uživatele Translator Text API. Podrobnosti o cenové úrovni najdete na [webové stránce Cognitive Services Translator text API cenové](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) úrovně.
 
@@ -60,7 +60,7 @@ Náklady na používání vlastního modelu k překladu obsahu jsou založené n
 
 Vlastní systémy je možné hladce využít a integrovat do libovolného podnikového nebo podnikového pracovního postupu a na jakémkoli zařízení prostřednictvím Microsoft Translator Text API prostřednictvím standardu REST.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
 

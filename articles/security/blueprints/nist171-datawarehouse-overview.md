@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 98eb3834efa6dc6ce5d53990f4bb530351660b8a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d5c7ab3cc8d4de788da5d18f31c6aacb31b5d551
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946711"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259885"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Podrobný plán zabezpečení a dodržování předpisů Azure – datový sklad pro NIST SP 800-171
 
@@ -25,7 +25,7 @@ Tato Podrobný plán zabezpečení a dodržování předpisů Azure poskytuje po
 Tato referenční architektura, přidružená příručka implementace a model hrozeb, mají sloužit jako základ pro zákazníky, kteří přizpůsobují jejich konkrétní požadavky. Neměly by se používat tak, jak jsou v produkčním prostředí. Zákazníci zodpovídají za provádění odpovídajících posouzení zabezpečení a dodržování předpisů u všech řešení vytvořených pomocí této architektury. Požadavky se můžou lišit v závislosti na konkrétních implementacích jednotlivých zákazníků.
 
 ## <a name="architecture-diagram-and-components"></a>Diagram architektury a součásti
-Toto řešení poskytuje referenční architekturu, která implementuje vysoce výkonný a zabezpečený cloudový datový sklad. Tato architektura obsahuje dvě samostatné datové vrstvy. Jedna úroveň je místo, kam se data importují, ukládají a připravují v clusterovém prostředí SQL. Další úroveň je pro SQL Data Warehouse. S touto vrstvou se data načítají pomocí nástroje Extract-Transforming-Load (ETL) (například dotazy T- [](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) SQL) ke zpracování. Po uložení dat v SQL Data Warehouse může analýza běžet v obrovských měřítkech.
+Toto řešení poskytuje referenční architekturu, která implementuje vysoce výkonný a zabezpečený cloudový datový sklad. Tato architektura obsahuje dvě samostatné datové vrstvy. Jedna úroveň je místo, kam se data importují, ukládají a připravují v clusterovém prostředí SQL. Další úroveň je pro SQL Data Warehouse. S touto vrstvou se data načítají pomocí nástroje Extract-Transforming-Load (ETL) (například [dotazy T-](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) SQL) ke zpracování. Po uložení dat v SQL Data Warehouse může analýza běžet v obrovských měřítkech.
 
 Azure nabízí celou řadu sestav a analytických služeb pro zákazníka. Toto řešení zahrnuje SQL Server Reporting Services pro rychlé vytváření sestav z SQL Data Warehouse. Veškerý provoz SQL je zašifrovaný pomocí SSL prostřednictvím zahrnutí certifikátů podepsaných svým držitelem. Jako osvědčený postup doporučujeme použít pro rozšířené zabezpečení používání důvěryhodné certifikační autority.
 
@@ -83,7 +83,7 @@ Toto řešení vytvoří virtuální počítač jako hostitele bastionu připoje
 -   [Antimalwarové rozšíření](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
 -   [Rozšíření Azure Diagnostics](../../virtual-machines/windows/extensions-diagnostics-template.md).
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pomocí Key Vault.
--   [Zásady automatického](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) vypínání, které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají.
+-   [Zásady automatického vypínání](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) , které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají.
 -   [Ochrana Credential Guard v programu Windows Defender](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) je povolená, aby přihlašovací údaje a další tajné kódy běžely v chráněném prostředí, které je izolované od běžícího operačního systému.
 
 ### <a name="virtual-network"></a>Virtuální síť
@@ -143,7 +143,7 @@ Následující technologie poskytují možnosti pro správu přístupu k datům 
 
 **Azure Security Center**: Díky [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)můžou zákazníci centrálně používat a spravovat zásady zabezpečení napříč úlohami, omezovat vystavení hrozeb a rozpoznávat a reagovat na útoky. Security Center taky přistupuje k existujícím konfiguracím služeb Azure, aby poskytovala doporučení týkající se konfigurace a služeb, která vám pomůžou zdokonalit stav zabezpečení a chránit data.
 
-Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Security Center má sadu předdefinovaných [výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , které se spouštějí při výskytu hrozby nebo podezřelé aktivity. Zákazníci můžou pomocí [vlastních pravidel upozornění](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) definovat nové výstrahy zabezpečení na základě dat, která už jsou shromážděná z jejich prostředí.
+Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Security Center má sadu [předdefinovaných výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , které se spouštějí při výskytu hrozby nebo podezřelé aktivity. Zákazníci můžou pomocí [vlastních pravidel upozornění](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) definovat nové výstrahy zabezpečení na základě dat, která už jsou shromážděná z jejich prostředí.
 
 Security Center poskytuje prioritní výstrahy zabezpečení a incidenty. Security Center usnadňuje zákazníkům zjišťovat a řešit potenciální problémy se zabezpečením. Pro každou zjištěnou hrozbu se vygeneruje [Sestava analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Týmy reakce na incidenty mohou sestavy používat při vyšetřování a nápravě hrozeb.
 
@@ -158,7 +158,7 @@ Tato referenční architektura používá také funkci [posouzení ohrožení za
 
 Služba Azure výrazně zaznamenává činnost systému a uživatele a také stav systému:
 - **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly úložiště, protokoly Key Vault auditu a protokoly brány firewall Azure Application Gateway a. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uživatelé můžou nakonfigurovat dobu uchování až 730 dní, aby splnily konkrétní požadavky.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly úložiště, protokoly Key Vault auditu a protokoly brány firewall Azure Application Gateway a. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uživatelé můžou nakonfigurovat dobu uchování až 730 dní, aby splnily konkrétní požadavky.
 
 **Protokoly Azure monitor**: Tyto protokoly jsou konsolidovány v [protokolech Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění dat se data uspořádají do samostatných tabulek pro každý datový typ v Log Analytics pracovní prostory. Tímto způsobem lze analyzovat všechna data společně bez ohledu na její původní zdroj. Security Center se integruje s protokoly Azure Monitor. Zákazníci můžou pomocí dotazů Kusto přistupovat ke svým datům události zabezpečení a kombinovat je s daty z jiných služeb.
 

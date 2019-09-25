@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736181"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264501"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -91,7 +91,7 @@ Tento diagram znázorňuje příklad dat Time Series Insights zobrazených prost
 
 ![Průzkumník Time Series Insights](media/time-series-insights-explorer/explorer4.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Prozkoumejte Azure Time Series Insights obecné dostupnosti [bezplatného ukázkového prostředí](./time-series-quickstart.md).
 - Přečtěte si další informace o [plánování Time Series Insightsho](time-series-insights-environment-planning.md) prostředí.

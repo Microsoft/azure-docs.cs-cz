@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946524"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262773"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: PaaS hostování webových aplikací pro Velkou Británii pro oficiální úlohy
 
@@ -53,7 +53,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 
 - Azure Active Directory
 - App Service
-- Webové aplikace
+- Webová aplikace
 - Aplikace API
 - Azure DNS
 - Key Vault
@@ -113,7 +113,7 @@ Tato šablona nasadí následující funkce App Service:
 - Více App Servicech [slotů nasazení](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Vývoj, verze Preview, QA, UAT a těžba kurzů (výchozí slot).
 - [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) , které se připojují k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (můžete také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integrace s [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) pro monitorování výkonu
-- [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) 
 - [Výstrahy](../../azure-monitor/app/alerts.md) metriky 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
@@ -125,7 +125,7 @@ Azure SQL Database v tomto podrobném plánu
 
 Instance Azure SQL Database používá následující bezpečnostní opatření databáze:
 
-- [Pravidla brány firewall na úrovni serveru a databáze](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)nebo prostřednictvím koncových [bodů služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pomocí [pravidel virtuální sítě](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).
+- [Pravidla brány firewall na úrovni serveru a databáze](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)nebo prostřednictvím [koncových bodů služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pomocí [pravidel virtuální sítě](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).
 - [Transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) pomáhá chránit Azure SQL Database a Azure Data Warehouse před hrozbou škodlivých aktivit. Provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v reálném čase bez nutnosti změny aplikace.
 - [Ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.
 - Použití Azure Active Directory pro správu databáze
@@ -205,9 +205,9 @@ Diagram toku dat pro tuto referenční architekturu je k dispozici ke [stažení
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>Dokumentace k dodržování předpisů pro NCSC Cloud Security
 
-Komerční služba pro koruna (agentura, která funguje ke zlepšení obchodních a podnikových aktivit), obnovila klasifikaci podnikových cloudových služeb Microsoftu do G-cloudu V6, které pokrývají všechny své nabídky na oficiální úrovni. Podrobnosti o Azure a G-cloudu najdete v souhrnu [posouzení zabezpečení cloudu pro Azure Británie G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud).
+Komerční služba pro koruna (agentura, která funguje ke zlepšení obchodních a podnikových aktivit), obnovila klasifikaci podnikových cloudových služeb Microsoftu do G-cloudu V6, které pokrývají všechny své nabídky na oficiální úrovni. Podrobnosti o Azure a G-cloudu najdete v [souhrnu posouzení zabezpečení cloudu pro Azure Británie G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud).
 
-Tento podrobný plán se zařadí ke 14 zásadám cloudového zabezpečení, které jsou popsány v tématu [Principy](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) NCSC cloudového zabezpečení, které vám pomohou zajistit prostředí, které podporuje úlohy klasifikované jako oficiální v ČR.
+Tento podrobný plán se zařadí ke 14 zásadám cloudového zabezpečení, které jsou popsány v tématu [Principy NCSC cloudového](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) zabezpečení, které vám pomohou zajistit prostředí, které podporuje úlohy klasifikované jako oficiální v ČR.
 
 [Oficiální zákaznická matice podrobný plán zabezpečení a dodržování předpisů Azure-UK](https://aka.ms/ukofficial-crm) (excelový sešit) obsahuje seznam všech 14 zásad cloudového zabezpečení a označení pro každý princip (neboli princip principu subpart), ať už je to zásada implementace zodpovědnost za společnost Microsoft, zákazníka nebo sdílená mezi těmito dvěma službami.
 

@@ -3,8 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Migrace objektů blob mezi účty
 description: Pomocí AzCopy se zkopíruje obsah objektů blob v jednom účtu úložiště Azure do jiného.
 services: storage
 documentationcenter: na
-author: roygara
-manager: jeconnoc
+author: normesta
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
-ms.author: rogarana
-ms.openlocfilehash: 88eb97a206bc75bc9635da90eb9d48818ceef0f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364486"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260629"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows
 
@@ -26,7 +25,7 @@ Tato ukázka zkopíruje všechny objekty blob z uživatelem zadaného zdrojovéh
 
 Provede to s použitím příkazu `Get-AzStorageContainer`, který vypíše všechny kontejnery v účtu úložiště. Ukázka pak vyšle příkazy AzCopy a zkopíruje všechny kontejnery ze zdrojového účtu úložiště do cílového účtu úložiště. Pokud dojde k selhání, ukázka pokus opakuje tolikrát, kolik je hodnota v proměnné $retryTimes (výchozí hodnota je 3, ale můžete ji upravit pomocí parametru `-RetryTimes`). Pokud k selhání dojde při každém opakování, uživatel může skript spustit znovu a zadat pro ukázku poslední úspěšně zkopírovaný kontejner pomocí parametru `-LastSuccessContainerName`. Ukázka pak bude pokračovat v kopírování kontejnerů od tohoto bodu.
 
-Tato ukázka vyžaduje verzi modulu Azure Powershellu pro úložiště **0,7** nebo novější. Nainstalovanou verzi můžete zkontrolovat pomocí příkazu `Get-Module -ListAvailable Az.storage`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). 
+Tato ukázka vyžaduje modul úložiště Azure PowerShell verze **0,7** nebo novější. Nainstalovanou verzi můžete zkontrolovat pomocí příkazu `Get-Module -ListAvailable Az.storage`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,7 +70,7 @@ Tento skript ke kopírování dat z jednoho účtu úložiště do jiného použ
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Vrátí kontejnery přidružené k tomuto účtu úložiště. |
 | [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Vytvoří kontext služby Azure Storage. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

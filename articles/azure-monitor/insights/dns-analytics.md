@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982590"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265166"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -179,11 +179,17 @@ Na stránce prohledávání protokolů můžete vytvořit dotaz. Můžete filtro
 1. V **vyhledávacího dotazu pole**, typ `DnsInventory` zobrazíte všechny související s inventářem data DNS serverů DNS spravovaných tímto řešením. Seznam výsledků obsahuje data protokolu pro záznamy o prostředcích, servery DNS a zóny DNS.
 
     ![DnsInventory prohledávání protokolů](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Řešení potíží
 
-## <a name="feedback"></a>Zpětná vazba
+Postup řešení potíží s Commopn:
+
+1. Chybějící data vyhledávání DNS – Chcete-li tento problém vyřešit, zkuste resetovat konfiguraci nebo načíst stránku konfigurace jenom jednou na portálu. Pro obnovení stačí změnit nastavení na jinou hodnotu a pak ho změnit zpátky na původní hodnotu a uložit konfiguraci.
+
+## <a name="feedback"></a>Váš názor
 
 Pokud chcete poskytnout zpětnou vazbu, přejděte na [stránku Log Analytics UserVoice](https://aka.ms/dnsanalyticsuservoice) , kde najdete nápady, jak pracovat s funkcemi DNS Analytics. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V [protokolech dotazů](../log-query/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.

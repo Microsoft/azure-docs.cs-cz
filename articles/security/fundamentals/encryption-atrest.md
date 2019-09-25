@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984857"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262809"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -262,8 +262,8 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Na straně klienta pomocí spravovaného klientem**      |
 | **AI a Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Ano                | -                  | -                  |
-| Azure Machine Learning Service   | Ano                | -                  | -                  |
+| Azure Search                     | Ano                | Náhled            | -                  |
+| Služba Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
@@ -272,7 +272,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Katalog dat Azure               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
-| Průzkumník dat Azure              | Ano                | -                  | -                  |
+| Azure Data Explorer              | Ano                | -                  | -                  |
 | Azure Data Factory               | Ano                | -                  | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: b74373201db26405653584fc4000993b9d6fdf43
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e8458d505575a5bf39bbd0a9970c5044b9cbd0f0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946828"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257327"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: Webová aplikace PaaS pro FedRAMP
 
@@ -39,7 +39,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
     - (1) Firewall webových aplikací
         - Režim brány firewall: prevence
         - Sada pravidel: OWASP 3,0
-        - Naslouchací proces: port 443
+        - naslouchací proces: port 443
 - Virtuální síť Azure
 - Skupiny zabezpečení sítě
 - Azure DNS
@@ -144,7 +144,7 @@ Následující technologie poskytují možnosti správy identit v prostředí Az
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 Azure Monitor poskytuje rozsáhlé protokolování systémových a uživatelských aktivit a také stav systému. Shromažďuje a analyzuje data vygenerovaná prostředky v Azure a v místních prostředích.
 - **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall.
 - **Archivace protokolu**: Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci. Tyto protokoly se připojují k protokolům Azure Monitor pro zpracování, ukládání a vytváření sestav řídicích panelů.
 
 Kromě toho jsou součástí této architektury Tato řešení monitorování:

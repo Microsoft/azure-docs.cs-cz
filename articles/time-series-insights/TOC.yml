@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: Model služby Time Series
           href: time-series-insights-update-tsm.md
-        - name: Dotazování dat
+        - name: Dotaz na službu Time Series
           href: time-series-insights-update-tsq.md
         - name: Vizualizace dat v průzkumníku (Preview)
           href: time-series-insights-update-explorer.md

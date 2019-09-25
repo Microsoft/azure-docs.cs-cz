@@ -1,7 +1,7 @@
 ---
-title: Správa Azure DDoS Protection Standard s využitím webu Azure portal
+title: Správa Azure DDoS Protection Standard pomocí Azure Portal
 titlesuffix: Azure Virtual Network
-description: Další informace o použití Azure DDoS Protection Standard telemetrických dat ve službě Azure Monitor k zmírní útok.
+description: Naučte se, jak pomocí Azure DDoS Protection standardní telemetrie v Azure Monitor zmírnit útok.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,220 +16,220 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37a8799ca1ea986d5b47dad6e17781d7dfbacfab
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65911240"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261687"
 ---
-# <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
+# <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
-Zjistěte, jak povolit a zakázat distribuované s cílem odepření služeb (DDoS) protection a zmírnění útoků DDoS s Azure DDoS Protection Standard pomocí telemetrie. Chrání před útoky DDoS Protection standardní prostředky Azure, jako jsou virtuální počítače, nástroje pro vyrovnávání zatížení a brány application Gateway, které máte Azure [veřejnou IP adresu](virtual-network-public-ip-address.md) přiřazené. Další informace o standardních před útoky DDoS Protection a její možnosti najdete v tématu [před útoky DDoS Protection standardní přehled](ddos-protection-overview.md).
+Naučte se, jak povolit a zakázat distribuovanou ochranu před útoky na DDoS (Denial of Service), a využijte telemetrii k omezení DDoS útoku pomocí Azure DDoS Protection Standard. DDoS Protection Standard chrání prostředky Azure, jako jsou virtuální počítače, nástroje pro vyrovnávání zatížení a aplikační brány, které mají přiřazenou [veřejnou IP adresu](virtual-network-public-ip-address.md) Azure. Další informace o službě DDoS Protection Standard a jejích funkcích najdete v tématu [přehled DDoS Protection úrovně Standard](ddos-protection-overview.md).
 
-Před dokončením některé kroky v tomto kurzu, přihlaste se k webu Azure portal na https://portal.azure.com se účet přiřazený k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který je přiřazen odpovídající akce uvedené v [oprávnění](#permissions).
+Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal https://portal.azure.com v rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-a-ddos-protection-plan"></a>Vytvořit plán DDoS protection
+## <a name="create-a-ddos-protection-plan"></a>Vytvořit plán DDoS Protection
 
-Plán DDoS protection definuje sadu virtuálních sítí, které mají před útoky DDoS standard protection povolené napříč předplatnými. Můžete nakonfigurovat jeden plán DDoS protection vaší organizace a propojení virtuálních sítí z několika předplatných stejný plán. Plán DDoS Protection samotného je také přidružený k předplatnému, kterou jste vybrali při vytváření plánu. Plánu služby DDoS Protection funguje napříč oblastmi a předplatných. Příklad – můžete vytvořit plán v oblasti East-US a odkaz k předplatnému #1 ve vašem tenantovi. Stejný plán, který lze propojit k virtuálním sítím z jiných předplatných v různých oblastech, ve vašem tenantovi. Předplatné plánu souvisí s sebou nese náklady na měsíční opakované náklady pro plán, jakož i poplatky za Nadlimitní využití, v případě, že počet chráněné veřejné IP adresy překračuje 100. Další informace o cenách za DDoS najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
+Plán DDoS Protection definuje sadu virtuálních sítí, které mají povolený Standard DDoS Protection v rámci předplatných. Můžete nakonfigurovat jeden plán DDoS Protection pro vaši organizaci a propojit virtuální sítě s několika předplatnými do stejného plánu. Plán DDoS Protection sám o sobě souvisí taky s předplatným, které jste vybrali během vytváření plánu. Plán DDoS Protection funguje napříč oblastmi a předplatnými. Příklad: můžete vytvořit plán v oblasti Východ USA a odkaz na předplatné #1 ve vašem tenantovi. Stejný plán může být propojený s virtuálními sítěmi z jiných předplatných v různých oblastech v rámci vašeho tenanta. K předplatnému, ke kterému je přiřazen plán, se účtují měsíční periodická faktura za plán, jakož i poplatky za překročení limitu pro případ, že počet chráněných veřejných IP adres překračuje 100. Další informace o cenách DDoS najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
-Vytvoření více než jeden plán není vyžadováno pro většinu organizací. Plán nejde mezi předplatnými přesunout. Pokud chcete změnit přihlášení k odběru plánu je v, budete muset [odstranit existující plán](#work-with-ddos-protection-plans) a vytvořte novou.
+Pro většinu organizací není nutné vytvářet více než jeden plán. Plán nelze přesunout mezi předplatnými. Pokud chcete změnit předplatné, ve kterém je plán, je nutné [odstranit stávající plán](#work-with-ddos-protection-plans) a vytvořit nový.
 
-1. Vyberte **vytvořit prostředek** v levém horním rohu webu Azure portal.
-2. Vyhledejte *před útoky DDoS*. Když **plán DDos protection** se zobrazí ve výsledcích hledání vyberte ji.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
+2. Vyhledejte *DDoS*. Pokud se ve výsledcích hledání zobrazí **plán DDos Protection** , vyberte ho.
 3. Vyberte **Vytvořit**.
-4. Zadejte nebo vyberte vlastní hodnoty, nebo zadat, nebo vyberte následující ukázkové hodnoty a pak vyberte **vytvořit**:
+4. Zadejte nebo vyberte vlastní hodnoty, nebo zadejte nebo vyberte následující příklady hodnot a pak vyberte **vytvořit**:
 
-    |Nastavení        |Hodnota                                              |
+    |Nastavení        |Value                                              |
     |---------      |---------                                          |
     |Name           | myDdosProtectionPlan                              |
-    |Předplatné   | Vyberte své předplatné.                         |
-    |Skupina prostředků | Vyberte **vytvořit nový** a zadejte *myResourceGroup* |
-    |Location       | USA – východ                                           |
+    |Subscription   | Vyberte své předplatné.                         |
+    |Resource group | Vyberte **vytvořit nové** a zadejte *myResourceGroup* . |
+    |Location       | East US                                           |
 
-## <a name="enable-ddos-for-a-new-virtual-network"></a>Povolit před útoky DDoS pro nové virtuální sítě
+## <a name="enable-ddos-for-a-new-virtual-network"></a>Povolení DDoS pro novou virtuální síť
 
-1. Vyberte **vytvořit prostředek** v levém horním rohu webu Azure portal.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
-3. Zadejte nebo vyberte vlastní hodnoty, zadejte nebo vyberte následující ukázkové hodnoty, potvrďte zbývající výchozí nastavení a pak vyberte **vytvořit**:
+3. Zadejte nebo vyberte vlastní hodnoty, zadejte nebo vyberte následující příklady hodnot, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit**:
 
-    | Nastavení         | Hodnota                                                        |
+    | Nastavení         | Value                                                        |
     | ---------       | ---------                                                    |
     | Name            | myVirtualNetwork                                             |
-    | Předplatné    | Vyberte své předplatné.                                    |
-    | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Location        | USA – východ                                                      |
-    | Služba DDos protection | Vyberte **standardní** a potom v části **DDoS protection**vyberte **myDdosProtectionPlan**. Plán, který vyberete, může být ve stejném nebo jiném předplatném než virtuální sítě, ale obě předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory.|
+    | Subscription    | Vyberte své předplatné.                                    |
+    | Resource group  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
+    | Location        | East US                                                      |
+    | Ochrana DDos | Vyberte **Standard** a potom v části **DDoS Protection**vyberte **myDdosProtectionPlan**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
-Virtuální síť nelze přesunout do jiné skupiny prostředků nebo předplatného, pokud před útoky DDoS Standard je povolena pro virtuální síť. Pokud potřebujete přesunout virtuální síť s před útoky DDoS Standard povoleno, nejprve zakázat před útoky DDoS Standard, přesunout virtuální síť a pak povolte před útoky DDoS standard. Po přesunutí se obnoví automaticky laděná zásad prahové hodnoty pro všechny chráněné veřejné IP adresy ve virtuální síti.
+Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
 
-## <a name="enable-ddos-for-an-existing-virtual-network"></a>Povolit před útoky DDoS pro existující virtuální sítě
+## <a name="enable-ddos-for-an-existing-virtual-network"></a>Povolení DDoS pro existující virtuální síť
 
-1. Vytvořit plán DDoS protection pomocí kroků v [vytvořit plán DDoS protection](#create-a-ddos-protection-plan), pokud nemáte existující plán DDoS protection.
-2. Vyberte **vytvořit prostředek** v levém horním rohu webu Azure portal.
-3. Zadejte název virtuální sítě, kterou chcete zapnout DDoS Protection úrovně Standard pro v **hledat prostředky, služby a pole dokumentace** v horní části portálu. Když se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-4. Vyberte **DDoS protection**v části **nastavení**.
-5. Vyberte **standardní**. V části **plán DDoS protection**, vyberte existující plán DDoS protection nebo plán, který jste vytvořili v kroku 1 a pak vyberte **Uložit**. Plán, který vyberete, může být ve stejném nebo jiném předplatném než virtuální sítě, ale obě předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory.
+1. Vytvořte plán DDoS Protection tak, že vyplníte kroky v tématu [Vytvoření plánu DDoS Protection](#create-a-ddos-protection-plan), pokud nemáte existující plán DDoS Protection.
+2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
+3. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete povolit DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
+4. V části **Nastavení**vyberte **DDoS Protection**.
+5. Vyberte **Standard**. V části **plán ochrany DDoS**vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
 
-## <a name="disable-ddos-for-a-virtual-network"></a>Zakázat před útoky DDoS pro virtuální síť
+## <a name="disable-ddos-for-a-virtual-network"></a>Zakázat DDoS pro virtuální síť
 
-1. Zadejte název virtuální sítě, kterou chcete zakázat před útoky DDoS standard protection pro v **hledat prostředky, služby a pole dokumentace** v horní části portálu. Když se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-2. Vyberte **DDoS protection**v části **nastavení**.
-3. Vyberte **základní** pod **plán DDoS protection** a pak vyberte **Uložit**.
+1. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete zakázat DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
+2. V části **Nastavení**vyberte **DDoS Protection**.
+3. V části **plán DDoS Protection** vyberte **základní** a pak vyberte **Uložit**.
 
-## <a name="work-with-ddos-protection-plans"></a>Práce s plány DDoS protection
+## <a name="work-with-ddos-protection-plans"></a>Práce s plány DDoS Protection
 
-1. Vyberte **všechny služby** nahoře, levém rohu portálu.
-2. Zadejte *před útoky DDoS* v **filtr** pole. Když **plány DDoS protection** ve výsledcích se zobrazí, vyberte ji.
-3. Vyberte plán ochrany, které chcete zobrazit v seznamu.
-4. Jsou uvedeny všechny virtuální sítě, které jsou přidružené k plánu.
-5. Pokud chcete odstranit plán, musíte nejprve oddělit všechny virtuální sítě z ní. Pokud chcete zrušit přidružení plánu z virtuální sítě, přečtěte si téma [zakázat před útoky DDoS pro virtuální síť](#disable-ddos-for-a-virtual-network).
+1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+2. Do pole **filtru** zadejte *DDoS* . Pokud se ve výsledcích zobrazí **plány ochrany DDoS Protection** , vyberte ji.
+3. V seznamu vyberte plán ochrany, který chcete zobrazit.
+4. Zobrazí se všechny virtuální sítě přidružené k tomuto plánu.
+5. Pokud chcete plán odstranit, musíte nejdřív z něj oddělit všechny virtuální sítě. Pokud chcete zrušit přidružení plánu z virtuální sítě, přečtěte si téma [zakázání DDoS pro virtuální síť](#disable-ddos-for-a-virtual-network).
 
-## <a name="configure-alerts-for-ddos-protection-metrics"></a>Konfigurace výstrah pro metrik DDoS protection
+## <a name="configure-alerts-for-ddos-protection-metrics"></a>Konfigurace výstrah pro metriky DDoS Protection
 
-Můžete vybrat libovolný dostupných metrik DDoS protection vás upozorní, když je aktivní ke zmírnění během útoku, pomocí konfigurace výstrahy monitorování Azure. Pokud jsou splněny podmínky, zadaná adresa obdrží e-mailové upozornění:
+Můžete vybrat libovolnou z dostupných metrik ochrany DDoS, abyste byli upozorněni, když dojde k aktivnímu zmírnění během útoku pomocí konfigurace výstrahy Azure Monitor. Po splnění podmínek načte zadaná adresa e-mail s upozorněním:
 
-1. Vyberte **všechny služby** nahoře, levém rohu portálu.
-2. Zadejte *monitorování* v **filtr** pole. Když **monitorování** se zobrazí ve výsledcích, vyberte ji.
-3. Vyberte **metriky** pod **SHARED SERVICES**.
-4. Zadejte, nebo vyberte vlastní hodnoty, nebo zadejte následující ukázkové hodnoty, potvrďte zbývající výchozí nastavení a pak vyberte **OK**:
+1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+2. Do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích, vyberte ho.
+3. V části **sdílené služby**vyberte metriky.
+4. Zadejte nebo vyberte vlastní hodnoty nebo zadejte následující příklady hodnot, přijměte zbývající výchozí hodnoty a pak vyberte **OK**:
 
-    |Nastavení                  |Hodnota                                                                                               |
+    |Nastavení                  |Value                                                                                               |
     |---------                |---------                                                                                           |
     |Name                     | myDdosAlert                                                                                        |
-    |Předplatné             | Vyberte předplatné, které obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.        |
-    |Skupina prostředků           | Vyberte skupinu prostředků, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.      |
-    |Resource                 | Vyberte veřejnou IP adresu, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na. Před útoky DDoS monitoruje veřejné IP adresy přiřazené k prostředkům ve virtuální síti. Pokud nemáte k dispozici žádné prostředky s veřejnými IP adresami ve virtuální síti, musíte nejprve vytvořit prostředek s veřejnou IP adresu. Můžete monitorovat veřejnou IP adresu všechny prostředky nasazena prostřednictvím Resource Manageru (ne classic) uvedené v [virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou služby Azure App Service Environment a Azure VPN Gateway. Chcete-li pokračovat v tomto kurzu, můžete rychle vytvářet [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače.                   |
-    |Metrika                   | V části před útoky DDoS útoku nebo ne                                                                            |
-    |Prahová hodnota                | 1 - **1** znamená, že jsou terčem útoku. **0** znamená, že nejste terčem útoku.                         |
-    |Období                   | Vyberte jakékoli hodnotu zvolíte.                                                                   |
-    |Upozornění prostřednictvím e-mailu         | Zaškrtávací políčko                                                                                  |
-    |Další správce | Zadejte e-mailovou adresu, pokud ještě nejste e-mailu vlastníkem, přispěvatelem nebo Čtenář pro předplatné. |
+    |Subscription             | Vyberte předplatné, které obsahuje veřejnou IP adresu, pro kterou chcete dostávat upozornění.        |
+    |Resource group           | Vyberte skupinu prostředků obsahující veřejnou IP adresu, pro kterou chcete dostávat upozornění.      |
+    |Resource                 | Vyberte veřejnou IP adresu obsahující veřejnou IP adresu, pro kterou chcete dostávat upozornění. DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejdřív vytvořit prostředek s veřejnou IP adresou. Veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic) můžete sledovat ve [službě Virtual Network pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou prostředí Azure App Service a Azure VPN Gateway. Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .                   |
+    |Metrika                   | V části útok DDoS nebo ne                                                                            |
+    |Prahová hodnota                | 1- **1** znamená útok. **0** znamená, že nejste napadeni.                         |
+    |Období                   | Vyberte libovolnou hodnotu, kterou zvolíte.                                                                   |
+    |Odeslat E-mail e-mailem         | Zaškrtněte políčko.                                                                                  |
+    |Další správce | Pokud nejste vlastníkem e-mailu, přispěvatele nebo čtenáře pro předplatné, zadejte svou e-mailovou adresu. |
 
-    Během několika minut detekce útoku obdržíte e-mail ze metrik Azure monitoru, který vypadá podobně jako na následujícím obrázku:
+    Během několika minut detekce útoku obdržíte e-mail od Azure Monitor metriky, které vypadají podobně jako na následujícím obrázku:
 
-    ![Výstraha na útok](./media/manage-ddos-protection/ddos-alert.png)
+    ![Upozornění na útok](./media/manage-ddos-protection/ddos-alert.png)
 
 
-Pro simulaci s útoky DDoS pro ověření upozornění, najdete v článku [ověření před útoky DDoS detekce](#validate-ddos-detection).
+Chcete-li simulovat útok DDoS k ověření vaší výstrahy, přečtěte si téma [ověření detekce DDoS](#validate-ddos-detection).
 
-Můžete také další informace o [konfiguraci webhooků](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [logic apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytvoření výstrahy.
+Můžete si taky přečíst další informace o [konfiguraci](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) webhooků a [Logic Apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření výstrah.
 
-## <a name="use-ddos-protection-telemetry"></a>Použití před útoky DDoS protection telemetrie
+## <a name="use-ddos-protection-telemetry"></a>Použití telemetrie DDoS Protection
 
-Telemetrie na útok je zajišťováno prostřednictvím Azure monitorování v reálném čase. Telemetrie je k dispozici pouze po dobu trvání, který se veřejná IP adresa je v rámci omezení rizik. Nevidíte telemetrických dat před nebo po vyřešení útoku.
+Telemetrii k útoku je poskytována prostřednictvím Azure Monitor v reálném čase. Telemetrie je k dispozici jenom po dobu, po kterou je veřejná IP adresa v oblasti zmírnění rizik. Telemetrii se nezobrazuje před nebo po útoku na hrozby.
 
-1. Vyberte **všechny služby** nahoře, levém rohu portálu.
-2. Zadejte *monitorování* v **filtr** pole. Když **monitorování** se zobrazí ve výsledcích, vyberte ji.
-3. Vyberte **metriky**v části **SHARED SERVICES**.
-4. Vyberte **předplatné** a **skupiny prostředků** obsahující veřejnou IP adresu, který chcete telemetrii.
-5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa má telemetrii.
-6. Řada **dostupné metriky** se zobrazí na levé straně obrazovky. Tyto metriky, pokud je vybráno, vykreslovacích v **graf metrik Azure monitoru** na obrazovce Přehled.
-7. Vyberte **agregace** zadejte jako **Max**
+1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+2. Do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích, vyberte ho.
+3. Včásti **sdílené služby**vyberte metriky.
+4. Vyberte **předplatné** a **skupinu prostředků** , které obsahují veřejnou IP adresu, pro kterou chcete telemetrie.
+5. Vyberte možnost **Veřejná IP adresa** pro **typ prostředku**a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete telemetrie.
+6. Na levé straně obrazovky se zobrazí řada **dostupných metrik** . Tyto metriky, když je tato možnost vybraná, se graficky **Azure monitor v grafu metriky** na obrazovce Přehled.
+7. Vyberte typ **agregace** jako **Max** .
 
-Názvy metrik prezentují paketů různých typů a bajtů vs. pakety, základní konstrukce názvy značek na každou metriku následujícím způsobem:
+Názvy metrik obsahují různé typy paketů a bajty vs. pakety se základní konstrukcí názvů značek na jednotlivých metrikách, a to následujícím způsobem:
 
-- **Název značky zahozené** (například **příchozí pakety vyřadit DDoS**): Počet paketů vyřadit/odstranil v systému ochrany před útoky DDoS.
-- **Název značky předané** (například **příchozí pakety předané DDoS**): Počet pakety předané v systému před útoky DDoS na cílové virtuální IP adresy – přenos, který nebyl filtrovat.
-- **Žádný název značky** (například **příchozí pakety DDoS**): Celkový počet paketů, které přišel do scrubbingu systému – představuje součet pakety zahozena a předaných dál.
+- **Název vyřazené značky** (například **příchozí pakety vynechané DDoS**): Počet paketů vyřazených/provedených systémem DDoS Protection.
+- **Název předané značky** (například **příchozí pakety předané DDoS**): Počet paketů předaných systémem DDoS do cílové VIP – přenos, který nebyl filtrován.
+- **Žádný název značky** (například **příchozí pakety DDoS**): Celkový počet paketů, které byly předány do systému čištění dat, který představuje součet vyřazených a předaných paketů.
 
-Pro simulaci s útoky DDoS pro ověření telemetrická data, najdete v článku [ověření před útoky DDoS detekce](#validate-ddos-detection).
+Chcete-li simulovat útok DDoS k ověření telemetrie, přečtěte si téma [ověření detekce DDoS](#validate-ddos-detection).
 
-## <a name="view-ddos-mitigation-policies"></a>Zobrazit zásady omezení rizik před útoky DDoS
+## <a name="view-ddos-mitigation-policies"></a>Zobrazit zásady zmírnění rizik v DDoS
 
-DDoS Protection standardní použije tři zásady automaticky laděná omezení rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněných prostředků ve virtuální síti, který má povolené před útoky DDoS. Prahové hodnoty zásady můžete zobrazit tak, že vyberete **TCP příchozí pakety pro aktivaci omezení rizik útoků DDoS** a **UDP příchozí pakety pro aktivaci omezení rizik útoků DDoS** metriky ve službě **agregace** zadejte jako "Max", jak je znázorněno na následujícím obrázku:
+DDoS Protection Standard aplikuje tři automaticky optimalizované zásady pro zmírnění rizik (TCP SYN, TCP & UDP) pro každou veřejnou IP adresu chráněného prostředku ve virtuální síti, ve které je povolený DDoS. Prahové hodnoty zásad si můžete zobrazit tak, že vyberete **příchozí pakety TCP, které aktivují DDoS** a **příchozí pakety UDP pro aktivaci DDoSch rizikových** metrik s typem **agregace** jako Max, jak je znázorněno na následujícím obrázku:
 
-![Zobrazit zásady omezení rizik](./media/manage-ddos-protection/view-mitigation-policies.png)
+![Zobrazit zásady zmírňování](./media/manage-ddos-protection/view-mitigation-policies.png)
 
-Prahové hodnoty zásad jsou automaticky nakonfigurované přes Azure machine learning-based sítě provoz profilace. Pouze v případě, že zásady prahové hodnoty dochází omezení rizik útoků DDoS pro IP adresu terčem útoku.
+Prahové hodnoty zásad se automaticky konfigurují prostřednictvím profilace síťového provozu založeného na službě Azure Machine Learning. Pokud dojde k narušení prahové hodnoty zásad, DDoS se na útok v případě útoku na hrozby.
 
-## <a name="configure-ddos-attack-analytics"></a>Konfigurace analýzy útoku DDoS
-Azure DDoS Protection standard poskytuje útoku podrobné přehledy a vizualizace pomocí Analytics útoku DDoS. Ochrana před útoky DDoS jejich virtuálních sítích zákazníků obsahují podrobné přehled o provozu útoku a akce ke zmírnění tohoto útoku prostřednictvím sestav omezení rizik útoků & protokolů toku omezení rizik. 
+## <a name="configure-ddos-attack-analytics"></a>Konfigurace analýzy útoků DDoS
+Azure DDoS Protection Standard poskytuje podrobné přehledy a vizualizace útoků pomocí DDoSch analýz. Zákazníci, kteří chrání své virtuální sítě před útoky DDoS, mají podrobnější přehled o útokech na útoky a akcích podniknutých za účelem zmírnění útoku prostřednictvím sestav o zmírnění útoků, & protokolů pro zmírnění rizik. 
 
-## <a name="configure-ddos-attack-mitigation-reports"></a>Konfigurace sestavy ke zmírnění útoků DDoS
-Sestavy omezení rizik útoků používá Netflow data protokolu, který je agregován, aby poskytoval podrobné informace o útoku na váš prostředek. Kdykoli je prostředek veřejné IP adresy terčem útoku, generování sestav se spustí poté, co spustí omezení rizik. Bude vygenerována přírůstkové zpráva dobu omezení rizik celý každých 5 minut a sestavu po omezení rizik. Tím je zajištěno, že v události, které útoky DDoS pokračuje delší dobu, bude moci zobrazit aktuální snímek sestavy ke zmírnění každých 5 minut a úplný přehled jednou zmírnění útoků je nad. 
+## <a name="configure-ddos-attack-mitigation-reports"></a>Konfigurace sestav o zmírnění útoků DDoS
+Sestavy o zmírnění útoku využívají data protokolu NetFlow, která jsou agregovaná a poskytují podrobné informace o útoku na prostředek. V případě útoku na veřejné IP prostředky začne generování sestav hned po zahájení zmírnění. Pro celé období zmírnění rizika bude vygenerována přírůstková zpráva každých 5 minut a hlášení o zmírňování po zmírnění. K tomu je potřeba zajistit, aby v případě, že útok DDoS trvá delší dobu, budete moct zobrazit nejaktuálnější snímek sestavy o zmírnění každých 5 minut a kompletní souhrn po překročení omezení útoku. 
 
-1. Vyberte **všechny služby** nahoře, levém rohu portálu.
-2. Zadejte *monitorování* v **filtr** pole. Když **monitorování** se zobrazí ve výsledcích, vyberte ji.
-3. V části **nastavení**vyberte **nastavení diagnostiky**.
-4. Vyberte **předplatné** a **skupiny prostředků** obsahující veřejnou IP adresu, kterou chcete protokolovat.
-5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa chcete protokolovat metriky pro.
-6. Vyberte **zapnout diagnostiku pro shromažďování protokolů DDoSMitigationReports** a podle potřeby vyberte jako mnoho z následujících možností:
+1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+2. Do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích, vyberte ho.
+3. V části **Nastavení**vyberte **nastavení diagnostiky**.
+4. Vyberte **předplatné** a **skupinu prostředků** obsahující veřejnou IP adresu, kterou chcete protokolovat.
+5. Vyberte možnost **Veřejná IP adresa** pro **typ prostředku**a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete metriky protokolovat.
+6. Vyberte **zapnout diagnostiku pro shromáždění protokolu DDoSMitigationReports** a pak vyberte tolik z následujících možností, kolik budete potřebovat:
 
-    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Monitor. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Azure Monitor protokoly](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archivovat do účtu úložiště**: Data se zapisují do účtu Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Streamování do centra událostí**: Umožňuje přijímači protokolu vybírat protokoly pomocí centra událostí Azure. Centra událostí umožňují integraci s Splunk nebo jinými systémy SIEM. Další informace o této možnosti najdete v tématu [streamování diagnostických protokolů do centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Odeslat do Log Analytics**: Zapíše protokoly do služby Azure Monitor. Další informace o této možnosti najdete v tématu [shromáždění protokolů pro použití v protokolech Azure monitor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Přírůstkové & po útoku zmírnění sestavy obsahovat následující pole
+Mezi přírůstkové & sestavy o zmírnění útoků po útoku patří následující pole:
 - Vektory útoku
-- Statistiky provozu
-- Důvod vynechaných paketů
-- Protokoly
-- Prvních 10 zdroj zemích nebo oblastech
-- Prvních 10 zdroj čísla ASN
+- Statistika provozu
+- Důvod pro vyřazené pakety
+- Zapojené protokoly
+- Prvních 10 zdrojových zemí nebo oblastí
+- Prvních 10 zdrojů čísla ASN
 
-## <a name="configure-ddos-attack-mitigation-flow-logs"></a>Konfigurace protokolů toku omezení rizik útoků DDoS
-Protokoly toku omezení rizik útoků umožní zkontrolovat zhoršení provozu předávají provoz a další zajímavé datapoints během aktivního útoku DDoS v téměř reálném čase. Můžete ingestovat nepřetržitý datový proud těchto dat do systémů SIEM prostřednictvím centra událostí pro monitorování v téměř reálném čase, potenciální akcí a potřebu operací ochrany před mobilními. 
+## <a name="configure-ddos-attack-mitigation-flow-logs"></a>Konfigurace protokolů toku pro zmírnění útoků DDoS
+Protokoly o omezeních toků útoků na útoky umožňují kontrolovat vyřazený provoz, předávané přenosy a další zajímavé databody v rámci aktivního DDoS útoku téměř v reálném čase. Konstantní datový proud těchto dat můžete ingestovat do systémů SIEM prostřednictvím centra událostí pro monitorování téměř v reálném čase, provádět potenciální akce a řešit nutnost operací obrany. 
 
-1. Vyberte **všechny služby** nahoře, levém rohu portálu.
-2. Zadejte *monitorování* v **filtr** pole. Když **monitorování** se zobrazí ve výsledcích, vyberte ji.
-3. V části **nastavení**vyberte **nastavení diagnostiky**.
-4. Vyberte **předplatné** a **skupiny prostředků** obsahující veřejnou IP adresu, kterou chcete protokolovat.
-5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa chcete protokolovat metriky pro.
-6. Vyberte **zapnout diagnostiku pro shromažďování protokolů DDoSMitigationFlowLogs** a podle potřeby vyberte jako mnoho z následujících možností:
+1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+2. Do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích, vyberte ho.
+3. V části **Nastavení**vyberte **nastavení diagnostiky**.
+4. Vyberte **předplatné** a **skupinu prostředků** obsahující veřejnou IP adresu, kterou chcete protokolovat.
+5. Vyberte možnost **Veřejná IP adresa** pro **typ prostředku**a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete metriky protokolovat.
+6. Vyberte **zapnout diagnostiku pro shromáždění protokolu DDoSMitigationFlowLogs** a pak vyberte tolik z následujících možností, kolik budete potřebovat:
 
-    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Monitor. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Azure Monitor protokoly](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-1. Chcete-li zobrazit data protokolů toku v řídicím panelu Azure analytics, můžete importovat ukázkový řídicí panel z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+    - **Archivovat do účtu úložiště**: Data se zapisují do účtu Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Streamování do centra událostí**: Umožňuje přijímači protokolu vybírat protokoly pomocí centra událostí Azure. Centra událostí umožňují integraci s Splunk nebo jinými systémy SIEM. Další informace o této možnosti najdete v tématu [streamování diagnostických protokolů do centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Odeslat do Log Analytics**: Zapíše protokoly do služby Azure Monitor. Další informace o této možnosti najdete v tématu [shromáždění protokolů pro použití v protokolech Azure monitor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+1. Pokud chcete zobrazit data protokolů toku na řídicím panelu Azure Analytics, můžete si ukázkový řídicí panel naimportovat z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
-Protokoly toku bude mít tahle pole: 
+Protokoly toku budou obsahovat následující pole: 
 - Zdrojová adresa IP
 - Cílová IP adresa
 - Zdrojový port 
 - Cílový port 
 - Typ protokolu 
-- Akce při omezení rizik
+- Akce prováděná během zmírnění
 
 
 
-## <a name="validate-ddos-detection"></a>Ověření zjišťování před útoky DDoS
+## <a name="validate-ddos-detection"></a>Ověřit detekci DDoS
 
-Microsoft uzavřel partnerství s [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) k vytváření rozhraní ve kterém můžete vygenerovat provoz s podporou služba DDoS Protection veřejné IP adresy pro simulace. Simulace zarážku Cloud vám umožní:
+Microsoft spolupracuje s [cloudem BreakingPoint](https://www.ixiacom.com/products/breakingpoint-cloud) a vytváří rozhraní, ve kterém můžete vygenerovat provoz proti DDoS Protection veřejné IP adresy pro simulace. Simulace cloudu zarážky umožňuje:
 
 - Ověření, jak Microsoft Azure DDoS Protection chrání vaše prostředky Azure před útoky DDoS
-- Optimalizace procesu reakce na incidenty v rámci útoky DDoS
-- Dodržování předpisů dokument před útoky DDoS
-- Trénování vaše týmy zabezpečení sítě
+- Optimalizace procesu reakce na incidenty při útoku DDoS
+- DDoS dodržování předpisů v dokumentu
+- Školení týmů zabezpečení sítě
 
-## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Zobrazit upozornění před útoky DDoS protection ve službě Azure Security Center
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Zobrazit výstrahy DDoS Protection v Azure Security Center
 
-Azure Security Center poskytuje seznam [výstrahy zabezpečení](/azure/security-center/security-center-managing-and-responding-alerts), informace, které vám pomůže posoudit a opravovat problémy. Pomocí této funkce získáte jednotný přehled o výstrahách, včetně výstrahy související s útoky DDoS a akce ke zmírnění tohoto útoku v téměř v čase.
-Existují dva určitá upozornění, že se zobrazí všechny DDoS útoku detekci a zmírnění distribuovaných útoků:
+Azure Security Center poskytuje seznam [výstrah zabezpečení](/azure/security-center/security-center-managing-and-responding-alerts), s informacemi, které vám pomůžou prozkoumat a opravit problémy. Pomocí této funkce získáte jednotný přehled o výstrahách, včetně výstrah souvisejících s útokem na DDoS, a akcí provedených k tomu, aby se útok zmírnil prakticky v reálném čase.
+K dispozici jsou dvě konkrétní výstrahy, které se zobrazí při detekci a zmírnění útoků DDoS:
 
-- **Zjištěna útoky DDoS pro veřejné IP adresy**: Tato výstraha se vygeneruje, když služba DDoS protection zjistí, že jeden z veřejné IP adresy je cíl s útoky DDoS.
-- **Zmírnit útoky DDoS pro veřejné IP adresy**: Tato výstraha se vygeneruje, když byla zmírnit útok na veřejnou IP adresu.
-Chcete-li zobrazit výstrahy, otevřete **Security Center** na webu Azure Portal. V části **ochrana před internetovými útoky**vyberte **výstrahy zabezpečení**. Následující snímek obrazovky ukazuje příklad výstrahy útoku DDoS.
+- **Zjistil se útok DDoS pro veřejnou IP adresu**: Tato výstraha se vygeneruje, když služba DDoS Protection zjistí, že jedna z vašich veřejných IP adres je cílem útoku DDoS.
+- **Útok DDoS na veřejnou IP adresu byl odepřen**: Tato výstraha se vygeneruje v případě, že dojde ke zmírnění útoku na veřejnou IP adresu.
+Chcete-li zobrazit výstrahy, otevřete **Security Center** v Azure Portal. V části **Ochrana před hrozbami**vyberte **výstrahy zabezpečení**. Na následujícím snímku obrazovky vidíte příklad výstrah DDoS útoku.
 
-![Před útoky DDoS upozornění ve službě Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
+![DDoS výstraha v Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
 
-Výstrahy obsahují obecné informace o veřejnou IP adresu, která je v části útoku, geografická a informace analýzy hrozeb a kroky nápravy.
+Výstrahy obsahují obecné informace o veřejné IP adrese, která se nachází v rámci útoku, geograficky a informací o analýze hrozeb a nápravných krocích.
 
 ## <a name="permissions"></a>Oprávnění
 
-Pro práci s plány DDoS protection, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
+Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Name                                     |
+| Action                                            | Name                                     |
 | ---------                                         | -------------                            |
-| Microsoft.Network/ddosProtectionPlans/read        | Přečtěte si plán DDoS protection              |
-| Microsoft.Network/ddosProtectionPlans/write       | Vytvořit nebo aktualizovat plán DDoS protection  |
-| Microsoft.Network/ddosProtectionPlans/delete      | Odstranit plán DDoS protection            |
-| Microsoft.Network/ddosProtectionPlans/join/action | Připojte se k plánu DDoS protection              |
+| Microsoft.Network/ddosProtectionPlans/read        | Přečíst plán DDoS Protection              |
+| Microsoft.Network/ddosProtectionPlans/write       | Vytvořit nebo aktualizovat plán DDoS Protection  |
+| Microsoft.Network/ddosProtectionPlans/delete      | Odstranění plánu DDoS Protection            |
+| Microsoft.Network/ddosProtectionPlans/join/action | Připojit se k plánu DDoS Protection              |
 
-Povolit ochranu před útoky DDoS pro virtuální síť, váš účet musí také mít přiřazenou příslušnou [akce pro virtuální sítě](manage-virtual-network.md#permissions).
+Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš účet také přiřazeny příslušné [akce pro virtuální sítě](manage-virtual-network.md#permissions).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Vytvoření a použití [Azure policy](policy-samples.md) pro virtuální sítě
+- Vytvoření a použití [zásad Azure](policy-samples.md) pro virtuální sítě

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81cda4648b97562e0ee557af0f28515d98a734b6
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240913"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259536"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -225,7 +225,7 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
+Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/resource-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
 Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 

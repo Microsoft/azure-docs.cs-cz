@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103958"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257779"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
 
@@ -36,7 +36,7 @@ V tomto článku se předpokládá, že už máte aplikaci Xamarin iOS integrova
 
 ### <a name="what-are-brokers"></a>Co jsou zprostředkovatelé?
 
-Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS. (Podívejte se na [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) aplikaci v systémech iOS a Android a v aplikaci Portál společnosti Intune na Androidu.) 
+Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS. (Podívejte se na [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) aplikaci v systémech iOS a Android a v aplikaci Portál společnosti Intune na Androidu.) 
 
 Umožňují:
 
@@ -155,7 +155,7 @@ ADAL.NET a MSAL.NET používají adresy URL k vyvolání zprostředkovatele a vr
 <tr><td>
 Schéma adresy URL je pro vaši aplikaci jedinečné.
 </td><td>
-Rozhraní 
+Prostředek 
 
 `CFBundleURLSchemes`Název musí zahrnovat 
 
@@ -242,6 +242,6 @@ Příklad:
 
 Další informace o tom, jak zaregistrovat identifikátor URI přesměrování na portálu, najdete v tématu [využití zprostředkovatele v aplikacích Xamarin. iOS](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o [otázkách specifických pro Xamarin iOS pomocí MSAL.NET](msal-net-xamarin-ios-considerations.md). 

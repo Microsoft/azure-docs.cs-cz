@@ -1,6 +1,6 @@
 ---
-title: Co jsou závislosti služby v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
-description: Zjistěte, jak se používají podmínky v Azure Active Directory podmíněný přístup pro aktivaci zásad.
+title: Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? | Dokumenty Microsoft
+description: Přečtěte si, jak se v Azure Active Directory podmíněný přístup používají podmínky pro aktivaci zásad.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,53 +11,56 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9aca2e4ea5e107358ff72e83562057830ece2cc
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509348"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257917"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co jsou závislosti služby v Azure Active Directory podmíněného přístupu? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? 
 
-Díky zásadám podmíněného přístupu můžete určit požadavky na přístup k webům a službám. Požadavků na přístup může obsahovat třeba vyžadování vícefaktorového ověřování (MFA) nebo [spravovaných zařízeních](require-managed-devices.md). 
+Pomocí zásad podmíněného přístupu můžete zadat požadavky na přístup k webům a službám. Vaše požadavky na přístup například můžou zahrnovat vyžadování vícefaktorového ověřování (MFA) nebo [spravovaných zařízení](require-managed-devices.md). 
 
-Při přístupu k webu nebo služby přímo, je obvykle snadno posoudit dopad související zásady. Například pokud máte zásadu, která vyžaduje vícefaktorové ověřování pro SharePoint Online nakonfigurované vícefaktorové ověřování se vynucuje pro každé přihlášení na webovém portálu služby SharePoint. Však není vždy přímočaré k vyhodnocení dopadu zásady, protože existují cloudové aplikace se závislostmi s jinými cloudovými aplikacemi. Microsoft Teams můžete například poskytnout přístup k prostředkům v Sharepointu Online. Proto při přístupu k Microsoft Teams v tomto scénáři aktuální, nesete také závisí to na zásadách vícefaktorové ověřování služby SharePoint.   
+Když přímo přistupujete k webu nebo službě, je možné, že dopad souvisejících zásad se obvykle snadno vyhodnocuje. Například pokud máte zásadu, která vyžaduje vícefaktorové ověřování pro SharePoint Online, pro každé přihlášení k webovému portálu služby SharePoint se vynutí MFA. Není však vždy přímo předáván k vyhodnocení dopadu zásady, protože existují cloudové aplikace se závislostmi na jiné cloudové aplikace. Týmy Microsoft můžou například poskytnout přístup k prostředkům v SharePointu Online. Takže při přístupu k Microsoft Teams v našem scénáři se vztahují i na zásady ověřování serveru SharePoint.   
 
 ## <a name="policy-enforcement"></a>Vynucování zásad 
 
-Pokud máte nakonfigurovaný závislosti služby mohou zásady použijí pomocí časné vazby nebo s pozdní vazbou. 
+Pokud máte nakonfigurovanou závislost služby, dá se zásada použít s vynuceným vynuceným nebo pozdním vynucováním. 
 
-- **Vynucení zásad časné vazby** znamená, že uživatel musí splňovat zásady závislých služeb před přístupem k volání aplikace. Například uživatel musí splňovat zásady pro SharePoint před přihlášením MS Teams. 
-- **Vynucení zásad s pozdní vazbou** dojde poté, co uživatel přihlašuje k volající aplikaci. Vynucení je odložena na při volání metody žádostí aplikace, token pro příjem dat služby. Mezi příklady patří MS Teams přístup k plánování a Office.com přístupu Sharepointu. 
+- **Vynucení zásad s časnou vazbou** znamená, že uživatel musí před přístupem k volající aplikaci splňovat závislé zásady služby. Uživatel musí například před přihlášením do MS Teams splňovat zásady služby SharePoint. 
+- K **vynucení zásad s pozdní vazbou** dojde poté, co se uživatel přihlásí do volající aplikace. Vynucení se odvozuje při volání požadavků aplikace, tokenu pro službu pro příjem dat. Mezi příklady patří MS Teams přistupující k Planneru a Office.com přístupu k SharePointu. 
 
-Následující diagram znázorňuje závislostí služby MS Teams. Plná šipky označují vynucení časné vazby na přerušovanou šipku pro Planner označuje vynucení s pozdní vazbou. 
+Následující diagram znázorňuje závislosti služby MS Teams. Plné šipky označují vynucení s časnou vazbou, která je čárkovanou šipkou pro Planner, indikuje vynucené vynuceně vázané. 
 
-![MS Teams závislostí služby](./media/service-dependencies/01.png)
+![Závislosti služby MS Teams](./media/service-dependencies/01.png)
 
-Jako osvědčený postup byste měli nastavit běžné zásady mezi souvisejícími aplikacemi a službami, kdykoli je to možné. S stavu konzistentní zabezpečení vám poskytne nejlepší uživatelské prostředí. Například nastavení běžné zásady Exchange Online, SharePoint Online, Microsoft Teams a Skype pro firmy výrazně snižuje neočekávané výzvy, které mohou vzniknout při použití navazujících službách různých zásad. 
+V souladu s osvědčenými postupy byste měli v případě potřeby nastavit běžné zásady napříč souvisejícími aplikacemi a službami. Konzistentní stav zabezpečení poskytuje nejlepší uživatelské prostředí. Například nastavení společné zásady napříč Exchangem Online, SharePointem Online, Microsoft teams a Skype pro firmy výrazně zkracuje neočekávané výzvy, které mohou vzniknout z různých zásad, které se vztahují na služby pro příjem dat. 
 
-Následující tabulka uvádí závislosti další služby, ve kterém musí splňovat klientské aplikace  
+Následující tabulka uvádí další závislosti služby, ve kterých musí klientské aplikace splňovat požadavky.  
 
-| Klientské aplikace.         | Příjem dat služby                          | Vynucení |
+| Klientské aplikace         | Služba pro příjem dat                          | Výkonem |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
-| Microsoft Classroom | Exchange                                    | Časné vazby |
-|                     | SharePoint                                  | Časné vazby  |
-| Microsoft Teams     | Exchange                                    | Časné vazby |
+| Azure Data Lake     | Správa Microsoft Azure (portál a rozhraní API) | S časnou vazbou |
+| Učebna Microsoftu | Exchange                                    | S časnou vazbou |
+|                     | SharePoint                                  | S časnou vazbou |
+| Microsoft Teams     | Exchange                                    | S časnou vazbou |
 |                     | MS Planner                                  | S pozdní vazbou  |
-|                     | SharePoint                                  | Časné vazby |
-|                     | Online Skype pro firmy                   | Časné vazby |
+|                     | SharePoint                                  | S časnou vazbou |
+|                     | Online Skype pro firmy                   | S časnou vazbou |
 | Portál Office       | Exchange                                    | S pozdní vazbou  |
 |                     | SharePoint                                  | S pozdní vazbou  |
-| Aplikace Outlook skupiny      | Exchange                                    | Časné vazby |
-|                     | SharePoint                                  | Časné vazby |
-| PowerApps           | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
-|                     | Windows Azure Active Directory              | Časné vazby |
-| Projekt             | Dynamics CRM                                | Časné vazby |
-| Skype pro firmy  | Exchange                                    | Časné vazby |
-| Visual Studio       | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
+| Skupiny Outlooku      | Exchange                                    | S časnou vazbou |
+|                     | SharePoint                                  | S časnou vazbou |
+| PowerApps           | Správa Microsoft Azure (portál a rozhraní API) | S časnou vazbou |
+|                     | Azure Active Directory Windows              | S časnou vazbou |
+| Projekt             | Dynamics CRM                                | S časnou vazbou |
+| Skype pro firmy  | Exchange                                    | S časnou vazbou |
+| Visual Studio       | Správa Microsoft Azure (portál a rozhraní API) | S časnou vazbou |
+| Microsoft Forms     | Exchange                                    | S časnou vazbou |
+|                     | SharePoint                                  | S časnou vazbou |
+| Microsoft To-Do     | Exchange                                    | S časnou vazbou |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak implementovat podmíněný přístup ve vašem prostředí, najdete v článku [plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).
+Informace o tom, jak implementovat podmíněný přístup ve vašem prostředí, najdete v tématu [Plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66237326"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262247"
 ---
 # <a name="networking"></a>Sítě
 
@@ -70,11 +70,11 @@ Aby bylo možné povolit urychlené síťové služby v existujícím clusteru, 
 
 * Pokud chcete spouštět úlohy kontejnerů Windows, použijte [režim otevřené sítě](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) a usnadněte si tak komunikaci mezi službami.
 
-* K vystavování běžných aplikačních portů, jako je například 80 nebo 443, použijte reverzní proxy server, jako je [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) nebo [reverzní proxy Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) .
+* K vystavování běžných aplikačních portů, jako je například 80 nebo 443, použijte reverzní proxy server, jako je [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) nebo [reverzní proxy Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) .
 
 * Pro kontejnery Windows hostované na vzduchem gapped počítače, které nemůžou získat základní vrstvy z cloudového úložiště Azure, přepište chování cizí vrstvy pomocí příznaku [--Allow-undistribuovatelný-artefakts](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) v Docker démon.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Vytvoření clusteru Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Linux: [Vytvoření clusteru se systémem Linux](service-fabric-cluster-creation-via-portal.md)

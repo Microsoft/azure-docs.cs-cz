@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: 7584a884d41451c5a248b84a40eb45815bfb6bdf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240732"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261823"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat z Azure Information Protection
+
+> [!IMPORTANT]
+> Konektor dat Azure Information Protection v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pomocí konfigurace konektoru Azure Information Protection data můžete streamovat informace o protokolování z [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) do Azure Sentinel. Azure Information Protection vám pomůže řídit a zabezpečovat citlivá data, ať už jsou uložená v cloudu nebo místně.
 
@@ -54,10 +58,6 @@ Pokud se však protokolování informací z Azure Information Protection chystá
 - Do Azure Portal byla přidána Azure Information Protection. Pokud potřebujete s tímto krokem pomáhat, přečtěte si téma [přidání Azure Information Protection do Azure Portal](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal).
 
 ## <a name="connect-to-azure-information-protection"></a>Připojení k Azure Information Protection
-
-> [!IMPORTANT]
-> Konektor dat Azure Information Protection v Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Následující pokyny použijte, pokud jste nenakonfigurovali Log Analytics pracovní prostor pro Azure Information Protection, nebo potřebujete změnit pracovní prostor, ve kterém jsou uloženy informace o protokolování Azure Information Protection.
 

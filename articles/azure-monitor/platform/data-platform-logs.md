@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f6eaeb7c4a4d28fcf11ec9acda14629a79d00791
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9aed19c88517868c2e8cb860dc01d01b7a7c3127
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814333"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262082"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -26,7 +26,7 @@ ms.locfileid: "68814333"
 Protokoly v Azure Monitor jsou zvláště užitečné pro provádění složitých analýz napříč daty z nejrůznějších zdrojů. Tento článek popisuje, jak jsou v Azure Monitor strukturované protokoly, co můžete s daty dělat, a identifikuje různé zdroje dat, které ukládají data v protokolech.
 
 > [!NOTE]
-> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [diagnostického protokolu](diagnostic-logs-overview.md) , který můžete přesměrovat do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a diagnostické protokoly spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
+> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [diagnostického protokolu](resource-logs-overview.md) , který můžete přesměrovat do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a diagnostické protokoly spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
 
 ## <a name="what-are-azure-monitor-logs"></a>Co jsou protokoly Azure Monitor?
 
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít pr
 | Analyzovat | Pomocí [Log Analytics](../log-query/get-started-portal.md) v Azure Portal můžete zapisovat [dotazy protokolu](../log-query/log-query-overview.md) a interaktivně analyzovat data protokolu pomocí výkonného analytického modulu Průzkumník dat.<br>Pomocí [konzoly Application Insights Analytics](../app/analytics.md) v Azure Portal můžete zapisovat dotazy protokolu a interaktivně analyzovat data protokolu z Application Insights. |
 | Vizualizace | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Export výsledků dotazu na [Power BI](powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
 | Výstrahy | Konfigurace [pravidel upozornění protokolů](alerts-log.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) při výsledky dotazu splňují konkrétní výsledek.<br>Nakonfigurujte [pravidlo upozornění metriky](alerts-metric-logs.md) pro některé protokoly dat protokolů extrahované jako metriky. |
-| Načíst | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
+| Stahovat | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
 | Export | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -85,9 +85,9 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 
 | Data | Popis |
 |:---|:---|
-| Diagnostika prostředků | Nakonfigurujte nastavení diagnostiky pro zápis do diagnostických dat, včetně metriky do pracovního prostoru Log Analytics. Podívejte [se na téma streamování diagnostických protokolů Azure Log Analytics](diagnostic-logs-stream-log-store.md). |
+| Diagnostika prostředků | Nakonfigurujte nastavení diagnostiky pro zápis do diagnostických dat, včetně metriky do pracovního prostoru Log Analytics. Podívejte [se na téma streamování diagnostických protokolů Azure Log Analytics](resource-logs-collect-storage.md). |
 | Řešení monitorování | Řešení monitorování zapisují data, která shromažďuje do svého Log Analytics pracovního prostoru. Seznam řešení najdete v tématu [Podrobnosti shromažďování dat pro řešení pro správu v Azure](../insights/solutions-inventory.md) . Podrobnosti o instalaci a používání řešení najdete v tématu [monitorování řešení v Azure monitor](../insights/solutions.md) . |
-| Metriky | Pošlete metriky platforem pro Azure Monitor prostředky do pracovního prostoru Log Analytics, abyste zachovali data protokolu pro delší období a prováděli složitou analýzu s jinými datovými typy pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/). Podívejte [se na téma streamování diagnostických protokolů Azure Log Analytics](diagnostic-logs-stream-log-store.md). |
+| Metriky | Pošlete metriky platforem pro Azure Monitor prostředky do pracovního prostoru Log Analytics, abyste zachovali data protokolu pro delší období a prováděli složitou analýzu s jinými datovými typy pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/). Podívejte [se na téma streamování diagnostických protokolů Azure Log Analytics](resource-logs-collect-storage.md). |
 | Úložiště tabulek v Azure | Shromažďovat data ze služby Azure Storage, kde některé prostředky Azure napisují data monitorování. Další informace najdete v tématu [použití úložiště objektů BLOB v Azure pro službu IIS a úložiště tabulek Azure pro události s Log Analytics](azure-storage-iis-table.md). |
 
 ### <a name="virtual-machines"></a>Virtuální počítače
@@ -130,7 +130,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 | Azure Sentinel | [Sentinel v Azure](/azure/sentinel/) ukládá data ze zdrojů dat do pracovního prostoru Log Analytics. Viz [propojení zdrojů dat](/azure/sentinel/connect-data-sources).  |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Azure monitor datovou platformu](data-platform.md).
 - Seznamte [se s metrikami v Azure monitor](data-platform-metrics.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061907"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262743"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -53,7 +53,7 @@ Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způ
 **Podrobnosti**: Pomocí šablon [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) můžete posílit možnosti nasazení a usnadnit pochopení a inventarizaci virtuálních počítačů ve vašem prostředí.
 
 **Osvědčené postupy**: Zabezpečený privilegovaný přístup.   
-**Podrobnosti**: K povolení přístupu uživatelů k virtuálním počítačům a jejich nastavení použijte přístup s nejnižšími [oprávněními](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a předdefinované role Azure:
+**Podrobnosti**: K povolení přístupu uživatelů k virtuálním počítačům a jejich nastavení použijte [přístup s nejnižšími oprávněními](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a předdefinované role Azure:
 
 - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Může spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené.
 - [Přispěvatel klasických virtuálních počítačů](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Může spravovat virtuální počítače vytvořené pomocí modelu nasazení Classic, ale ne virtuální sítě nebo účtu úložiště, ke kterým jsou virtuální počítače připojené.
@@ -146,7 +146,7 @@ Zneužití prostředků může být problém, když procesy virtuálních počí
 
 Doporučujeme použít [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , abyste získali přehled o stavu prostředku. Azure Monitor funkce:
 
-- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/diagnostic-logs-overview.md): Monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
+- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/resource-logs-overview.md): Monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
 - [Rozšíření Azure Diagnostics](/azure/azure-monitor/platform/diagnostics-extension-overview): Poskytuje funkce pro monitorování a diagnostiku na virtuálních počítačích s Windows. Tyto funkce můžete povolit zahrnutím rozšíření v rámci [šablony Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organizace, které nemonitorují výkon virtuálních počítačů, nemůžou určit, jestli jsou některé změny v vzorech výkonu normální nebo neobvyklé. Virtuální počítač, který spotřebovává více prostředků než obvykle, může indikovat útok z externího prostředku nebo napadený proces spuštěný ve virtuálním počítači.

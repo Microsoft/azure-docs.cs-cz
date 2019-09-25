@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: fe9eed24ef641ef1403aa940b88790e38512e874
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083547"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258269"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,7 +29,7 @@ Ubuntu nyní zveřejňuje oficiální virtuální pevné disky Azure ke [https:/
 
 * Ubuntu 12.04/přesný: [Ubuntu-12,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/TRUSTe: [Ubuntu-14,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-amd64-Disk1. vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
 * Ubuntu 18.10/Cosmic: [Cosmic-Server-cloudimg-amd64. VHD. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
@@ -136,6 +136,6 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 ## <a name="references"></a>Odkazy
 [Jádro HWE (Ubuntu hardware Enable)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní jste připraveni k vytváření nových virtuálních počítačů v Azure pomocí svého Ubuntu Linuxho virtuálního pevného disku. Pokud soubor. VHD do Azure nahráváte poprvé, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
 

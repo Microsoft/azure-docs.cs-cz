@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe174f309656011a1d05762927e254ff210b1e7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68370676"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262012"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
@@ -211,7 +211,7 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](../log-query/log-query-overview.md).
 - Získejte lekci k [zápisu dotazů protokolu](../../azure-monitor/log-query/get-started-queries.md).

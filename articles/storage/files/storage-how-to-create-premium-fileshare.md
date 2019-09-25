@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699582"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260216"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Vytvoření sdílené složky Azure Premium
 Soubory úrovně Premium jsou nabízeny na úložném médiu SSD (Solid-State disk) a jsou užitečné pro úlohy náročné na v/v, včetně hostitelských databází a prostředí HPC (High Performance Computing). Soubory úrovně Premium se hostují v typu účtu úložiště zvláštního účelu, který se nazývá účet úložiště. Prémiové sdílené složky jsou navržené pro vysoce výkonné a podnikové aplikace, které poskytují konzistentní nízkou latenci, vysoké IOPS a vysoce propustnost sdílených složek.
@@ -59,7 +59,7 @@ Po vytvoření prostředku účtu úložiště přejděte na něj.
 ### <a name="create-a-premium-file-share"></a>Vytvoření sdílené složky úrovně Premium
 
 1. V levé nabídce účtu úložiště přejděte do části **souborové služby** a pak vyberte **soubory**.
-1. Vyberte **+ sdílená složka** , abyste vytvořili soubor úrovně Premium.
+1. Pokud chcete vytvořit sdílenou složku Premium, vyberte **sdílení souborů** .
 1. Zadejte název a požadovanou kvótu pro sdílenou složku a pak vyberte **vytvořit**.
 
 > [!NOTE]
@@ -206,7 +206,7 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, vč
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste vytvořili prémiovou sdílenou složku. Pokud se chcete dozvědět o výkonu, který tento účet nabízí, přejděte do části úroveň výkonu v příručce pro plánování.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065847"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264368"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -25,44 +25,45 @@ ms.locfileid: "71065847"
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ho ještě nemáte, musíte [vytvořit klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
+- Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
+- Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](active-directory-b2c-setup-fb-app.md) .
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
-3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Pomocí filtru **adresář a odběr** v horní nabídce vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 
 ### <a name="create-the-signing-key"></a>Vytvoření podpisového klíče
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-2. Pro **Možnosti**vyberte `Generate`možnost.
-3. Do **název**zadejte `TokenSigningKeyContainer`. Předponu `B2C_1A_` lze přidat automaticky.
-4. Jako **typ klíče**vyberte **RSA**.
-5. V případě **použití klíče**vyberte možnost **podpis**.
-6. Klikněte na možnost **Vytvořit**.
+1. Pro **Možnosti**vyberte `Generate`možnost.
+1. Do **název**zadejte `TokenSigningKeyContainer`. Předponu `B2C_1A_` lze přidat automaticky.
+1. Jako **typ klíče**vyberte **RSA**.
+1. V případě **použití klíče**vyberte možnost **podpis**.
+1. Vyberte **Vytvořit**.
 
 ### <a name="create-the-encryption-key"></a>Vytvoření šifrovacího klíče
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-2. Pro **Možnosti**vyberte `Generate`možnost.
-3. Do **název**zadejte `TokenEncryptionKeyContainer`. Předponu `B2C_1A`_ lze přidat automaticky.
-4. Jako **typ klíče**vyberte **RSA**.
-5. V případě **použití klíče**vyberte **šifrování**.
-6. Klikněte na možnost **Vytvořit**.
+1. Pro **Možnosti**vyberte `Generate`možnost.
+1. Do **název**zadejte `TokenEncryptionKeyContainer`. Předponu `B2C_1A`_ lze přidat automaticky.
+1. Jako **typ klíče**vyberte **RSA**.
+1. V případě **použití klíče**vyberte **šifrování**.
+1. Vyberte **Vytvořit**.
 
 ### <a name="create-the-facebook-key"></a>Vytvořit facebookový klíč
 
-Pokud už máte [tajný kód aplikace Facebook](active-directory-b2c-setup-fb-app.md), přidejte ho jako klíč zásad do svého tenanta. V opačném případě je nutné klíč vytvořit se zástupnou hodnotou, aby vaše zásady prošly ověřením.
+Přidejte [tajný klíč aplikace](active-directory-b2c-setup-fb-app.md) vaší aplikace Facebook jako klíč zásad. Můžete použít tajný klíč aplikace, který jste vytvořili v rámci požadavků tohoto článku.
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-2. Pro **Možnosti**vyberte `Manual`možnost.
-3. Jako **název**zadejte `FacebookSecret`. Předponu `B2C_1A_` lze přidat automaticky.
-4. V **tajných klíčích**zadejte svůj tajný kód Facebooku `0` z Developers.Facebook.com nebo jako zástupný symbol. Tato hodnota je tajný kód, nikoli ID aplikace.
-5. V případě **použití klíče**vyberte možnost **podpis**.
-6. Klikněte na možnost **Vytvořit**.
+1. Pro **Možnosti**vyberte `Manual`možnost.
+1. Jako **název**zadejte `FacebookSecret`. Předponu `B2C_1A_` lze přidat automaticky.
+1. V **tajnosti**zadejte *tajný kód aplikace* vaší aplikace na Facebooku z Developers.Facebook.com. Tato hodnota je tajný kód, nikoli ID aplikace.
+1. V případě **použití klíče**vyberte možnost **podpis**.
+1. Vyberte **Vytvořit**.
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrovat aplikace architektury identity Experience Framework
 
@@ -78,19 +79,19 @@ Azure AD B2C vyžaduje, abyste zaregistrovali dvě aplikace, které se používa
 1. Jako **název**zadejte `IdentityExperienceFramework`.
 1. Jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API**.
 1. Pro **přihlašovací adresu URL**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C název domény tenanta. Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
-1. Klikněte na možnost **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
 
 1. V **Registrace aplikací (starší verze)** vyberte možnost **Registrace nové aplikace**.
-2. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
-3. Jako **Typ aplikace**vyberte možnost **nativní**.
-4. Jako **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C tenant.
-5. Klikněte na možnost **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
-6. Na stránce nastavení vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
-7. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
-9. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na Hotovo.
-10. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
+1. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
+1. Jako **Typ aplikace**vyberte možnost **nativní**.
+1. Jako **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C tenant.
+1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Vyberte **Nastavení**, pak vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
+1. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
+1. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na Hotovo.
+1. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
 
 ## <a name="custom-policy-starter-pack"></a>Startovní sada vlastních zásad
 
@@ -160,7 +161,6 @@ Při nahrávání souborů Azure přidá předponu `B2C_1A_` do každého.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Přidat Facebook jako zprostředkovatele identity
 
-1. Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](active-directory-b2c-setup-fb-app.md) .
 1. V souboru nahraďte hodnotu hodnotou `client_id` ID aplikace Facebook: **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`
 
    ```xml
@@ -172,7 +172,7 @@ Při nahrávání souborů Azure přidá předponu `B2C_1A_` do každého.
 
 1. Nahrajte soubor *TrustFrameworkExtensions. XML* do svého tenanta.
 1. V části **vlastní zásady**vyberte **B2C_1A_signup_signin**.
-1. Vyberte **spustit hned** a vyberte Facebook pro přihlášení pomocí Facebooku a otestujte vlastní zásady. Nebo volejte zásadu přímo z registrované aplikace.
+1. Vyberte **spustit hned** a vyberte Facebook pro přihlášení pomocí Facebooku a otestujte vlastní zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

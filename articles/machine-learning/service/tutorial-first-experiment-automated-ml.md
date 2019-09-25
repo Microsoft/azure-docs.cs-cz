@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162546"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259313"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -58,10 +58,11 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
 
 1. Vyberte **Začínáme**.
 
-1.  V části **vytváření obsahu** v levém podokně vyberte možnost **automatizovaná ml** .
-Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s automatizovaným Machine Learning.
+1. V levém podokně v části **vytváření obsahu** vyberte možnost **automatizovaná ml** .
 
-    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Vzhledem k tomu, že se jedná o první automatizovaný experiment ML, uvidíte obrazovku Začínáme.
+
+   ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. Vyberte **vytvořit experiment**. 
 
@@ -79,6 +80,7 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
    >V tomto kurzu použijete výchozí účet úložiště a kontejner vytvořený s novým výpočetním prostředím. Automaticky se naplní ve formuláři.
     
 1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
+
    **Dokončení této akce trvá několik minut.** 
 
 1. Po vytvoření vyberte v rozevíracím seznamu nový cíl výpočtů a vyberte **Další**.
@@ -92,18 +94,18 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
     1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
     1. V levém dolním rohu vyberte **Další** a nahrajte ho do výchozího kontejneru, který se automaticky nastavil během vytváření pracovního prostoru. Verze Public Preview podporuje pouze nahrávání místních souborů. 
-
-    1. Po dokončení nahrávání se formulář **nastavení a náhled** vyplní inteligentně podle typu souboru. Zajistěte, aby byl formulář vyplněn následujícím způsobem.
+    
+       Po dokončení nahrávání se formulář nastavení a náhled předem vyplní podle typu souboru. 
+       
+    1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Value
+        Pole|Hodnota pro kurz
         ---|---
         Formát souboru| Oddělené
         Oddělovač| Čárka
         Kódování| UTF-8
         Záhlaví sloupců| Všechny soubory mají stejná záhlaví
         Přeskočit řádky | Žádné
-
-        Vyberte **Další**.
     
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Hotovo**, aby se dokončilo nahrávání souboru a vytváření datové sady pro váš experiment.
 
@@ -116,16 +118,17 @@ Zobrazí se obrazovka **Začínáme** , protože se jedná o první experiment s
 1. Rozbalte položku **Pokročilá nastavení** a vyplňte pole následujícím způsobem.
 
    >[!NOTE]
-   > Pro tento experiment nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Neblokujte také algoritmy, které mají být testovány.
+   > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
    
-    Rozšířená&nbsp;nastavení|Popis|Hodnota&nbsp;pro&nbsp;kurz
-    ------|---------|---
-    Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|**AUC_weighted** 
-    Výstupní kritéria| Pokud je splněno kterékoli z těchto kritérií, úloha školení skončí i v případě, že nebyla kompletně dokončena. |Doba&nbsp;úlohy&nbsp;školení (minuty):&nbsp; **čl**  <br> <br> &nbsp;Maximum#iterací&#58; 10&nbsp;&nbsp; 
-    Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-    Ověřování| Typ ověřování a počet testů. | **K skládání** křížového ověřování<br><br>  křížové ověření: **2** 
-    Souběžnost| Maximální počet souběžných iterací.|**5**
-
+   Rozšířená&nbsp;nastavení|Popis|Hodnota&nbsp;pro&nbsp;kurz
+   ------|---------|---
+   Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
+   Výstupní kritéria| Pokud je splněno kritérium, úloha školení se zastaví. |Čas&nbsp;úlohy&nbsp;školení: 5 <br> <br> &nbsp;Maximumiterací#&#58;10&nbsp;&nbsp;
+   Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
+   Typ ověření | Vyberte typ křížového ověření.|K skládání křížového ověřování
+   Počet ověření | Počet testů. | 2 křížová ověření 
+   Souběžnost| Maximální počet souběžných iterací.|5
+   
 1. Pokud chcete experiment spustit, vyberte **Spustit** . Po zahájení přípravy experimentu se zobrazí obrazovka se stavovou zprávou.
 
 >[!IMPORTANT]

@@ -14,18 +14,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240549"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261866"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
-
-
 
 Microsoft Azure Sentinel je škálovatelná, cloudová, nativní, **Siem (Security Information Management)** a **automatizované řešení pro orchestraci zabezpečení (společnosti)** . Služba Azure Sentinel nabízí inteligentní analýzu zabezpečení a analýzu hrozeb napříč podnikem a poskytuje jediné řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby. 
 
@@ -73,10 +71,9 @@ Pokud například používáte systém lístků ServiceNow, můžete použít n�
 ![Playbooky](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
+## <a name="investigation"></a>Šetření
 
-## <a name="investigation-preview"></a>Šetření (Preview)
-
-Podrobné nástroje pro [zkoumání](tutorial-investigate-cases.md) Azure Sentinel vám pomůžou pochopit rozsah a najít hlavní příčinu potenciální bezpečnostní hrozby. V interaktivním grafu můžete zvolit entitu, která bude klást zajímavé otázky konkrétní entity, a přejít k podrobnostem o této entitě a jejím připojení, abyste se dostali k hlavní příčině hrozby. 
+V současnosti ve verzi Preview vám Azure Sentinel – [podrobné vyšetřovací](tutorial-investigate-cases.md) nástroje pomůžou pochopit rozsah a najít hlavní příčinu potenciální bezpečnostní hrozby. V interaktivním grafu můžete zvolit entitu, která bude klást zajímavé otázky konkrétní entity, a přejít k podrobnostem o této entitě a jejím připojení, abyste se dostali k hlavní příčině hrozby. 
 
 ![Šetření](./media/tutorial-investigate-cases/map-timeline.png)
 

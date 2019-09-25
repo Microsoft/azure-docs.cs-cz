@@ -470,6 +470,8 @@
           href: detach-disk.md
         - name: Nasazení disků pomocí šablony
           href: using-managed-disks-template-deployments.md
+        - name: Nahrání virtuálního pevného disku na disk – PowerShell
+          href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Změna velikosti disku
           href: expand-os-disk.md
         - name: Pořízení snímku disku

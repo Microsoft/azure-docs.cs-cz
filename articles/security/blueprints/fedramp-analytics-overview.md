@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946877"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257595"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: Analýzy pro FedRAMP
 
@@ -111,7 +111,7 @@ AzureDiskEncryption
 [Azure monitor](../../azure-monitor/overview.md) generuje všechna zobrazení dat monitorování, včetně protokolů aktivit, metrik a diagnostických dat, a umožňuje zákazníkům vytvořit úplný přehled o stavu systému.  
 [Protokoly Azure monitor](../azure-security-disk-encryption-overview.md) poskytují rozsáhlé protokolování aktivity systému a uživatele a také stav systému. Shromažďuje a analyzuje data vygenerovaná prostředky v Azure a v místních prostředích.
 - **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows a protokoly služby Azure Blob Storage, tabulky a fronty.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows a protokoly služby Azure Blob Storage, tabulky a fronty.
 - **Protokoly brány firewall**: Application Gateway poskytuje úplné diagnostické protokoly a protokoly přístupu. Protokoly brány firewall jsou k dispozici pro prostředky Application Gateway s podporou WAF.
 - **Archivace protokolu**: Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage za účelem archivace s definovanou dobou uchovávání 2 dny. Tyto protokoly se připojují k protokolům Azure Monitor pro zpracování, ukládání a vytváření sestav řídicích panelů.
 
@@ -160,7 +160,7 @@ Toto řešení PaaS nezahrnuje žádné virtuální počítače Azure IaaS. Zák
 - **Správa oprav**: Virtuální počítače s Windows nasazené jako součást této referenční architektury jsou ve výchozím nastavení nakonfigurované tak, aby přijímaly automatické aktualizace z web Windows Update služby. Toto řešení zahrnuje také službu [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) , prostřednictvím které lze vytvořit aktualizované nasazení, aby se v případě potřeby daly opravit virtuální počítače.
 
 #### <a name="azure-commercial"></a>Komerční Azure
-I když tato architektura analýzy dat není určená pro nasazení do komerčního prostředí [Azure](https://azure.microsoft.com/overview/what-is-azure/) , podobné cíle je možné dosáhnout prostřednictvím služeb popsaných v této referenční architektuře a dalších dostupných služeb. pouze v komerčním prostředí Azure. Upozorňujeme, že Azure Commercial udržuje FedRAMP JAB P-ATO na úrovni středních dopadů a umožňuje státním institucím a partnerům nasazovat střední citlivé informace do cloudu s využitím komerčního prostředí Azure.
+I když tato architektura analýzy dat není určená pro nasazení do [komerčního prostředí Azure](https://azure.microsoft.com/overview/what-is-azure/) , podobné cíle je možné dosáhnout prostřednictvím služeb popsaných v této referenční architektuře a dalších dostupných služeb. pouze v komerčním prostředí Azure. Upozorňujeme, že Azure Commercial udržuje FedRAMP JAB P-ATO na úrovni středních dopadů a umožňuje státním institucím a partnerům nasazovat střední citlivé informace do cloudu s využitím komerčního prostředí Azure.
 
 Azure Commercial nabízí širokou škálu analytických služeb, které umožňují získávat přehledy z velkých objemů dat:
 -   [Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio), součást [Cortana Intelligence Suite](https://azure.microsoft.com/overview/ai-platform/), vyvíjí model prediktivní analýzy z jednoho nebo více zdrojů dat. Statistické funkce se používají v několika iteracích ke generování efektivního modelu, který mohou využívat aplikace jako Power BI.

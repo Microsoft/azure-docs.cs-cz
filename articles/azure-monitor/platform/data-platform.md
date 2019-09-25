@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor datové platformy | Dokumentace Microsoftu
-description: Monitorování data shromážděná službou Azure Monitor je rozdělené na protokoly, které se používají pro pokročilé analýzy a metriky, které jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře.
+title: Datová platforma Azure Monitor | Microsoft Docs
+description: Data monitorování shromážděná pomocí Azure Monitor jsou rozdělená na metriky, které jsou odlehčené a schopné podpořit podporu scénářů a protokolů v reálném čase, které se používají pro pokročilou analýzu.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,84 +11,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606977"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262053"
 ---
-# <a name="azure-monitor-data-platform"></a>Azure Monitor datová platforma
+# <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
-Povolení observability napříč dnešní komplexních výpočetních prostředí spouštění distribuovaných aplikací, které závisí na cloudových a místních služeb vyžaduje shromažďování provozních dat z každé vrstvě a všechny komponenty distribuovaného systému. Musíte být schopni provést podrobné informace na těchto datech a konsolidovat do jediného najednou pomocí různých perspektiv pro podporu velkého množství zúčastněné strany ve vaší organizaci.
+Díky tomu, že v dnešních složitých výpočetních prostředích využívajících distribuované aplikace, které spoléhají na cloudové i místní služby, je potřeba mít na výběr provozní data z každé vrstvy a všechny součásti distribuovaného systému. Musíte být schopni provádět podrobné přehledy o těchto datech a konsolidovat je do jednoho podokna skla s různými perspektivami, aby podporovaly velké množství zúčastněných stran ve vaší organizaci.
 
-[Azure Monitor](../overview.md) shromažďuje a agreguje data z různých zdrojů do common data platformy, kde je možné pro analýzu, vizualizaci a upozorňování. Poskytuje konzistentní prostředí na data z víc zdrojů, která poskytuje podrobný přehled napříč všechny sledované prostředky a dokonce i s daty z jiných služeb, které ukládají data ve službě Azure Monitor.
+[Azure monitor](../overview.md) shromažďuje a agreguje data z nejrůznějších zdrojů do společné datové platformy, kde se dá použít k analýze, vizualizaci a upozorňování. Nabízí konzistentní prostředí nad daty z více zdrojů, což poskytuje podrobné přehledy napříč všemi monitorovanými prostředky a dokonce i s daty z jiných služeb, které ukládají svá data v Azure Monitor.
 
 
 ![Přehled služby Azure Monitor](media/data-platform/overview.png)
 
-## <a name="observability-data-in-azure-monitor"></a>Observability data ve službě Azure Monitor
-Metriky, protokoly a distribuované trasování se běžně označují jako tři pilíře observability. Toto jsou různé druhy dat, která jako nástroj pro sledování musí shromažďovat a analyzovat a poskytovat dostatečné observability monitorovaný systém. Observability lze dosáhnout korelaci dat z více pilíře a agregace dat napříč celou sadu prostředků, které jsou monitorovány. Protože Azure Monitor uchovává data z víc zdrojů společně, data mohou být přiřazeny a analyzovat pomocí společnou sadu nástrojů. Také koreluje data napříč více tenantů, kromě dat pro ostatní služby hostování a předplatných Azure.
+## <a name="observability-data-in-azure-monitor"></a>Data o pozorování v Azure Monitor
+Metriky, protokoly a distribuovaná trasování se běžně označují jako tři pilíře, které je možné pozorovat. Jedná se o různé druhy dat, které nástroj pro monitorování musí shromažďovat a analyzovat, aby poskytoval dostatečnou pozorovateli monitorovaného systému. Možnost pozorování se dá dosáhnout korelacemi dat z několika pilířů a agregací dat napříč celou sadou monitorovaných prostředků. Vzhledem k tomu, že Azure Monitor ukládá data z více zdrojů dohromady, lze data sladit a analyzovat pomocí společné sady nástrojů. Také koreluje data mezi několika předplatnými Azure a klienty, kromě hostování dat pro jiné služby.
 
-Prostředky Azure generují značné množství dat monitorování. Azure Monitor konsoliduje tato data společně s monitorování dat z jiných zdrojů do jedné metriky nebo protokoly platformy. Každá je optimalizovaná pro konkrétní scénáře monitorování, a podporují různé funkce ve službě Azure Monitor. Funkce, jako jsou analýzy dat, vizualizace nebo výstrahy vyžadují, abyste porozumět rozdílům tak, aby vámi požadovaného scénáře můžete implementovat způsobem nejvíce efektivnější a cenově výhodnější. Insights ve službě Azure Monitor, jako [Application Insights](../app/app-insights-overview.md) nebo [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md) mají analytické nástroje, které vám umožní zaměřit na konkrétní scénář monitorování bez nutnosti znát rozdíly mezi těmito dvěma typy data. 
+Prostředky Azure generují významné množství dat monitorování. Azure Monitor konsoliduje tato data společně s daty monitorování z jiných zdrojů do metriky nebo na platformu protokolů. Každé je optimalizováno pro konkrétní scénáře monitorování a každá podporuje různé funkce v Azure Monitor. Funkce, jako jsou analýza dat, vizualizace nebo upozorňování, vyžadují, abyste porozuměli rozdílům, abyste mohli požadovaný scénář implementovat nejúčinnějším a cenově nejefektivnějším způsobem. Přehledy v Azure Monitor jako [Application Insights](../app/app-insights-overview.md) nebo [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) mají analytické nástroje, které vám umožní zaměřit se na konkrétní scénář monitorování, aniž by bylo nutné porozumět rozdílům mezi těmito dvěma typy dat. 
 
 
 ### <a name="metrics"></a>Metriky
-[Metriky](data-platform-metrics.md) jsou číselné hodnoty, které popisují některé aspekty systému v určitém místě v čase. Jsou shromážděné v pravidelných intervalech a jsou označeny časové razítko, název, hodnotu a jeden nebo více štítků definující. Metriky se dají agregovat pomocí různých algoritmů, ve srovnání s dalšími metrikami a analyzovat trendy v čase. 
+[Metriky](data-platform-metrics.md) jsou číselné hodnoty, které popisují určitý aspekt systému v určitém časovém okamžiku. Jsou shromažďovány v pravidelných intervalech a jsou označeny časovým razítkem, názvem, hodnotou a jedním nebo více definujícími popisky. Metriky se dají agregovat pomocí nejrůznějších algoritmů, ve srovnání s jinými metrikami a analyzovat trendy v čase. 
 
-Metriky ve službě Azure Monitor ukládají do databáze časových řad, který je optimalizovaný pro analýzu dat s časovým razítkem. Tomu metriky je obzvláště vhodný pro generování výstrah a rychlé zjišťování chyb. Osoba může zjistit, jaký je výkon vašeho systému, ale většinou potřebují a nelze jej zkombinovat s protokoly a identifikovat hlavní příčinu problémů.
+Metriky v Azure Monitor jsou uloženy v databázi časových řad, která je optimalizována pro analýzu časových údajů s časovým razítkem. Díky tomu jsou metriky zvláště vhodné pro upozorňování a rychlé zjišťování problémů. Můžou vám sdělit, jak systém funguje, ale obvykle se musí kombinovat s protokoly, aby identifikoval hlavní příčinu problémů.
 
-Metriky jsou k dispozici pro interaktivní analýzu na webu Azure Portal s [Průzkumníka metrik](../app/metrics-explorer.md). Je možné je přidat do [řídicí panel Azure](../learn/tutorial-app-dashboards.md) za účelem vizualizace v kombinaci s ostatními daty a použít pro téměř v reálném čase [upozorňování](alerts-metric.md).
+Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím [Průzkumník metrik](../app/metrics-explorer.md). Můžete je přidat do řídicího [panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s ostatními daty a používat pro [výstrahy](alerts-metric.md)téměř v reálném čase.
 
-Další informace o monitorování metrik Azure, včetně jejich zdroje dat v [metriky ve službě Azure Monitor](data-platform-metrics.md).
+Přečtěte si další informace o Azure Monitor metrikách, včetně jejich zdrojů dat v [metrikách v Azure monitor](data-platform-metrics.md).
 
 ### <a name="logs"></a>Logs
-[Protokoly](data-platform-logs.md) jsou události, ke kterým došlo v rámci systému. Jsou může obsahovat různé druhy dat a může být strukturovaná nebo volnotextové formuláře s časovým razítkem. Je možné se vytvořil nedojde a generovat položky protokolu událostí v prostředí systému v případě velkého zatížení obvykle vygeneruje další svazek protokolu.
+[Protokoly](data-platform-logs.md) jsou události, ke kterým došlo v rámci systému. Můžou obsahovat různé druhy dat a můžou být strukturované nebo volné textové zprávy s časovým razítkem. Můžou být vytvořené občas, protože události v prostředí generují položky protokolu a systém v rámci velkého zatížení obvykle vygeneruje více svazků protokolu.
 
-Protokoly ve službě Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/azure/data-explorer/) poskytující modulu výkonné analýzy a [Bohatý dotazovací jazyk](/azure/kusto/query/). Protokoly obvykle poskytnout dostatek informací, které poskytují úplný kontext se zjištěného problému a jsou užitečné pro určení kořenové případ problémy.
+Protokoly v Azure Monitor jsou uložené v pracovním prostoru Log Analytics, který je založený na [službě Azure Průzkumník dat](/azure/data-explorer/) , která poskytuje výkonný analytický modul a [bohatý dotazovací jazyk](/azure/kusto/query/). Protokoly obvykle poskytují dostatek informací, které poskytují úplný kontext zjištěného problému a jsou důležité pro identifikaci kořenového případu problémů.
 
 > [!NOTE]
-> Je důležité rozlišovat mezi protokoly Azure monitoru a zdroje dat protokolu v Azure. Například událostí na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který se zobrazí v nabídce Azure Monitor. Většinu prostředků se zapisuje provozní informace do [diagnostický protokol](diagnostic-logs-overview.md) předávání do různých umístění. Protokoly služby Azure Monitor je platforma dat protokolu, který shromažďuje protokoly aktivit a diagnostické protokoly spolu s dalšími daty monitorování poskytovat hloubkovou analýzu napříč celou sadu prostředků.
+> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [diagnostického protokolu](resource-logs-overview.md) , který můžete přesměrovat do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a diagnostické protokoly spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
 
 
- Můžete pracovat s [protokolu dotazy](../log-query/log-query-overview.md) interaktivně pomocí [Log Analytics](../log-query/portals.md) na webu Azure Portal, nebo přidejte výsledky a [řídicí panel Azure](../learn/tutorial-app-dashboards.md) za účelem vizualizace v kombinaci s Další data. Můžete také vytvořit [upozornění protokolů](alerts-log.md) která aktivuje upozornění na základě výsledků dotazu plánu.
+ S [dotazy protokolu](../log-query/log-query-overview.md) můžete pracovat interaktivně pomocí [Log Analytics](../log-query/portals.md) v Azure Portal nebo přidat výsledky do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s jinými daty. Můžete také vytvořit [výstrahy protokolu](alerts-log.md) , které aktivují výstrahu na základě výsledků dotazu plánu.
 
-Další informace o monitorování protokolů Azure, včetně jejich zdroje dat v [protokolů ve službě Azure Monitor](data-platform-logs.md).
+Přečtěte si další informace o protokolech Azure Monitor, včetně jejich zdrojů dat, v části [protokoly v Azure monitor](data-platform-logs.md).
 
 ### <a name="distributed-traces"></a>Distribuované trasování
-Trasování jsou řadu souvisejících událostí, které následují žádost uživatele prostřednictvím distribuovaného systému. Jejich slouží k určení chování kódu aplikace a výkonu různých transakcí. Když protokoly se často vytvářejí z jednotlivých součástí distribuovaný systém, trasování měří provoz a výkon vaší aplikace napříč celou sadu komponent.
+Trasování jsou série souvisejících událostí, které následují požadavky uživatele prostřednictvím distribuovaného systému. Lze je použít k určení chování kódu aplikace a výkonu různých transakcí. I když budou protokoly často vytvářeny jednotlivými součástmi distribuovaného systému, trasování měří provoz aplikace a výkon aplikace napříč celou sadou komponent.
 
-Distribuované trasování ve službě Azure Monitor je povolená s [Application Insights SDK](../app/distributed-tracing.md), a data trasování je uložen s ostatními daty protokolu aplikace shromážděných službou Application Insights. Díky tomu je k dispozici stejné analytické nástroje, jako ostatní data protokolu, včetně dotazů na protokoly, řídicích panelů a výstrah.
+Distribuované trasování v Azure Monitor je povolené pomocí [sady Application Insights SDK](../app/distributed-tracing.md)a data trasování se ukládají s dalšími daty protokolů aplikací shromážděnými pomocí Application Insights. Díky tomu je k dispozici pro stejné analytické nástroje jako jiná data protokolu, včetně dotazů protokolu, řídicích panelů a výstrah.
 
-Další informace o distribuované trasování na [co je distribuované trasování?](../app/distributed-tracing.md).
+Přečtěte si další informace o distribuovaném trasování v tématu [co je distribuované trasování?](../app/distributed-tracing.md).
 
 
-## <a name="compare-azure-monitor-metrics-and-logs"></a>Porovnání Azure monitorování metrik a protokolů
+## <a name="compare-azure-monitor-metrics-and-logs"></a>Porovnat Azure Monitor metriky a protokoly
 
-Následující tabulka porovnává metrik a protokolů ve službě Azure Monitor.
+Následující tabulka porovnává metriky a protokoly v Azure Monitor.
 
 | Atribut  | Metriky | Logs |
 |:---|:---|:---|
-| Výhody | Odlehčená a podporuje téměř v reálném čase scénářů, jako je třeba výstrahy. Ideální pro rychlé zjišťování chyb. | Analýza s bohatou dotazovací jazyk. Ideální pro hloubkovou analýzu a identifikovat hlavní příčinu. |
+| Výhody | Odlehčené a schopné scénáře téměř v reálném čase, jako jsou například výstrahy. Ideální pro rychlé zjišťování problémů. | Analyzováno pomocí bohatých dotazovacích jazyků. Ideální pro hloubkovou analýzu a identifikaci hlavní příčiny. |
 | Data | Pouze číselné hodnoty | Textová nebo číselná data |
-| Struktura | Standardní sadu vlastností, včetně doba vzorku, monitorovány zdroj, číselnou hodnotu. Některé metriky zahrnují více dimenzí pro další definice. | Jedinečnou sadu vlastností v závislosti na typu protokolu. |
-| Collection | Shromážďovány v pravidelných intervalech. | Mohou být shromažďovány nedojde, jak aktivovat události záznam, který se má vytvořit. |
-| Zobrazit na webu Azure portal | Průzkumník metrik | Log Analytics |
-| Zahrnout zdroje dat | Platforma metrik shromážděných z prostředků Azure.<br>Služba Application Insights monitorovat aplikace.<br>Vlastní aplikace nebo API definována. | Aplikace a diagnostické protokoly.<br>Řešení monitorování.<br>Agenti a rozšíření virtuálních počítačů.<br>Požadavky na aplikaci a výjimky.<br>Azure Security Center.<br>Rozhraní API kolekce dat |
+| Struktura | Standardní sada vlastností včetně času vzorkování, monitorovaného prostředku a číselné hodnoty Některé metriky obsahují více dimenzí pro další definice. | Jedinečná sada vlastností v závislosti na typu protokolu. |
+| Collection | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
+| Zobrazit v Azure Portal | Průzkumník metrik | Log Analytics |
+| Zdroje dat zahrnují | Metriky platformy shromážděné z prostředků Azure.<br>Aplikace monitorované pomocí Application Insights.<br>Vlastní definuje aplikace nebo rozhraní API. | Protokoly aplikací a diagnostiky.<br>Monitorování řešení.<br>Agenti a rozšíření virtuálních počítačů.<br>Žádosti a výjimky aplikace<br>Azure Security Center.<br>Rozhraní API kolekce dat. |
 
 ## <a name="collect-monitoring-data"></a>Shromažďování dat monitorování
-Různé [zdroje dat pro monitorování Azure](data-sources.md) bude zapisovat do pracovního prostoru Log Analytics (protokoly) nebo Azure Monitor metriky databáze (metriky) nebo obě. Některé zdroje budou zapisovat přímo do těchto úložišť dat, zatímco jiné můžou zapisovat do jiného umístění, jako je Azure storage a vyžadovat určitou konfiguraci k naplnění protokolů nebo metrik. 
+Různé [zdroje dat pro Azure monitor](data-sources.md) budou zapisovat do pracovního prostoru Log Analytics (protokoly) nebo do databáze metriky Azure monitor (metriky) nebo do obou možností. Některé zdroje budou zapisovat přímo do těchto úložišť dat, zatímco ostatní můžou zapisovat do jiného umístění, jako je Azure Storage, a vyžadují, aby některá konfigurace naplnila protokoly nebo metriky. 
 
-Zobrazit [metriky ve službě Azure Monitor](data-platform-metrics.md) a [protokolů ve službě Azure Monitor](data-platform-logs.md) seznam různých zdrojů dat, která naplní jednotlivých typů.
+Seznam různých zdrojů dat, které naplňují jednotlivé typy, najdete v tématu [metriky v Azure monitor](data-platform-metrics.md) a [v Azure monitor protokolů](data-platform-logs.md) .
 
 
 ## <a name="stream-data-to-external-systems"></a>Datový Stream k externím systémům
-Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](/azure/event-hubs/). K odesílání dat přímo do centra událostí, zatímco jiný proces, jako je například aplikace logiky můžete použít k načtení požadovaných dat můžete nakonfigurovat některé zdroje. Zobrazit [pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream](stream-monitoring-data-event-hubs.md) podrobnosti.
+Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](/azure/event-hubs/). Některé zdroje je možné nakonfigurovat tak, aby odesílaly data přímo do centra událostí, zatímco můžete k získání požadovaných dat použít jiný proces, jako je například aplikace logiky. Podrobnosti najdete v tématu [streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) .
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [metriky ve službě Azure Monitor](data-platform-metrics.md).
-- Další informace o [protokolů ve službě Azure Monitor](data-platform-logs.md).
+- Přečtěte si další informace o [metrikách v Azure monitor](data-platform-metrics.md).
+- Přečtěte si další informace o [protokolech v Azure monitor](data-platform-logs.md).
 - Další informace o [data k dispozici monitorování](data-sources.md) pro různé prostředky v Azure.

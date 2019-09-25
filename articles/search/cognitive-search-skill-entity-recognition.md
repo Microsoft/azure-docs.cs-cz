@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: eb196b9ff72201358982764f227ab7935489f05d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ad2fef96491c2d1a15ad9ff5f57d2911dfecaa36
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183406"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265787"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
@@ -68,7 +67,7 @@ Jedná se o entity, které jsou dobře známé, ale nejsou klasifikované jako s
 | adrese | Pole řetězců, kde každý řetězec představuje adresu URL |
 | e-maily | Pole řetězců, kde každý řetězec představuje e-mail |
 | namedEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>category</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>jistota (nepoužívá se teď Bude nastaveno na hodnotu-1).</li></ul> |
-| entity | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
+| podnikům | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 

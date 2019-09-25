@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963444"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262175"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Prostředí Simple Logs v Azure Monitor (Preview)
 Azure Monitor poskytuje [bohatou zkušenost](get-started-portal.md) pro vytváření [dotazů protokolu](log-query-overview.md) pomocí jazyka KQL. Nemusíte vyžadovat celou sílu KQL, ale a upřednostnit zjednodušené prostředí pro základní požadavky na dotazy. Funkce jednoduchého protokolování umožňuje vytvářet základní dotazy bez přímé interakce s KQL. Jednoduché protokoly můžete použít také jako výukový nástroj pro KQL, protože budete potřebovat složitější dotazy.
@@ -31,7 +31,7 @@ Azure Monitor poskytuje [bohatou zkušenost](get-started-portal.md) pro vytvář
 Rozhraní Simple log načítá data z tabulky *AzureDiagnostics*, *AzureMetrics*a *AzureActivity* pro vybraný prostředek. 
 
 ## <a name="using-simple-logs"></a>Používání jednoduchých protokolů
-V předplatném Azure přejděte do libovolného Cosmos DB nebo Key Vault s [diagnostickým nastavením nakonfigurovaným pro shromažďování protokolů v pracovním prostoru Log Analytics](../platform/diagnostic-logs-stream-log-store.md). V nabídce **monitorování** klikněte na **protokoly** a otevřete tak jednoduché možnosti protokolování.
+V předplatném Azure přejděte do libovolného Cosmos DB nebo Key Vault s [diagnostickým nastavením nakonfigurovaným pro shromažďování protokolů v pracovním prostoru Log Analytics](../platform/resource-logs-collect-storage.md). V nabídce **monitorování** klikněte na **protokoly** a otevřete tak jednoduché možnosti protokolování.
 
 ![Nabídka](media/simple-logs/menu.png)
 
@@ -51,7 +51,7 @@ Můžete přímo upravit KQL a používat další funkce v Log Analytics jako fi
 ![Upravit KQL](media/simple-logs/edit-kql.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Dokončete kurz [použití Log Analytics v Azure Portal](get-started-portal.md).
 - Dokončete kurz pro [zápis dotazů protokolu](get-started-portal.md).

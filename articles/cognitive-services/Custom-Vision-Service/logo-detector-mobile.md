@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564214"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261975"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznání loga služby Azure v obrázcích na kameře
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="get-the-source-code"></a>Získání zdrojového kódu
 
-Pokud chcete použít poskytnutou webovou aplikaci, naklonujte nebo Stáhněte zdrojový kód aplikace z úložiště AI pro [Visual](https://github.com/Microsoft/AIVisualProvision) Provisioning na GitHubu. Otevřete soubor *source/VisualProvision. sln* v aplikaci Visual Studio. Později upravíte některé soubory projektu, abyste mohli aplikaci spustit.
+Pokud chcete použít poskytnutou webovou aplikaci, naklonujte nebo Stáhněte zdrojový kód aplikace z úložiště AI pro [Visual Provisioning](https://github.com/Microsoft/AIVisualProvision) na GitHubu. Otevřete soubor *source/VisualProvision. sln* v aplikaci Visual Studio. Později upravíte některé soubory projektu, abyste mohli aplikaci spustit.
 
 ## <a name="create-an-object-detector"></a>Vytvoření detektoru objektu
 
@@ -57,7 +57,7 @@ Po nahrání školicích snímků vyberte na displeji první. Zobrazí se okno o
 
 Aplikace je nakonfigurovaná tak, aby fungovala s konkrétními řetězci značek. Definice najdete v souboru *Source\VisualProvision\Services\Recognition\RecognitionService.cs* :
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 Až označíte obrázek, načtěte vpravo a označte ho jako další. Po dokončení zavřete okno označování.
 
@@ -73,19 +73,19 @@ Po vyškolení modelu jste připraveni ho integrovat do své aplikace. Budete mu
 
 ![Web Custom Vision zobrazující okno prediktivního rozhraní API, které zobrazuje adresu URL a klíč rozhraní API](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Zkopírujte adresu URL souboru obrázku a hodnotu **předpovědi-Key** do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* :
+Zkopírujte adresu URL koncového bodu a hodnotu **prediktivního klíče** do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* :
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>Kontrola využití Custom Vision
 
 Otevřete soubor *source/VisualProvision/Services/Recognition/CustomVisionService. cs* , abyste viděli, jak aplikace používá vaši Custom Vision klíč a adresu URL koncového bodu. Metoda **PredictImageContentsAsync** přebírá bajtový datový proud obrázkového souboru spolu s tokenem zrušení (pro správu asynchronních úloh), volá rozhraní API prediktivního Custom Vision a vrátí výsledek předpovědi. 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
 Tento výsledek má podobu **PredictionResult** instance, která obsahuje seznam **předpovědních** instancí. **Předpověď** obsahuje zjištěnou značku a její umístění ohraničovacího rámečku v obrázku.
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 Pokud chcete získat další informace o tom, jak aplikace zpracovává Tato data, začněte metodou **GetResourcesAsync** . Tato metoda je definována v souboru *source/VisualProvision/Services/Recognition/RecognitionService. cs* .  
 
@@ -93,13 +93,13 @@ Pokud chcete získat další informace o tom, jak aplikace zpracovává Tato dat
 
 Custom Vision část tohoto kurzu jste dokončili. Pokud chcete aplikaci spustit, bude potřeba integrovat i službu Počítačové zpracování obrazu. Aplikace používá funkci rozpoznávání textu Počítačové zpracování obrazu k doplnění procesu zjišťování loga. Logo Azure může rozpoznat jeho vzhled *nebo* text, který se v blízkosti něj tiskne. Na rozdíl od Custom Vision modelů je Počítačové zpracování obrazu předvedený, aby na obrázcích a videích prováděl určité operace.
 
-Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)předplatného.
+Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče předplatného](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
 
 ![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
 Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `ComputerVisionEndpoint` proměnné a `ComputerVisionKey` pomocí správných hodnot.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -133,7 +133,7 @@ Po úspěšném dokončení by se měl zobrazit následující výstup JSON, vč
 
 Poznamenejte `clientId` si hodnoty a `tenantId` . Přidejte je do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* .
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
@@ -177,7 +177,7 @@ Pokud jste postupovali podle všech kroků v tomto scénáři a použili jste ap
 
 Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatná zkušební verze pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu nastavíte a prozkoumáte plnohodnotnou aplikaci Xamarin. Forms, která používá službu Custom Vision k detekci loga v obrazech mobilní kamery. V dalším kroku se dozvíte, jaké jsou osvědčené postupy pro vytváření Custom Vision modelu, takže když ho vytvoříte pro vlastní aplikaci, můžete ho nastavit jako účinný a přesný.
 

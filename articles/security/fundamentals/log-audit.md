@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946509"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262854"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -36,16 +36,16 @@ Cloudové aplikace jsou komplexní, s mnoha pohybujícími se částmi. Protokol
 Protokoly Azure se kategorizují do následujících typů:
 * **Protokoly řízení a správy** poskytují informace o Azure Resource Manager operacích vytváření, aktualizace a odstraňování. Další informace najdete v tématu [protokoly aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
-* **Protokoly roviny dat** poskytují informace o událostech vyvolaných jako součást využití prostředků Azure. Příkladem tohoto typu protokolu jsou protokoly událostí systému Windows, zabezpečení a aplikace ve virtuálním počítači a [diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) , které jsou konfigurovány prostřednictvím Azure monitor.
+* **Protokoly roviny dat** poskytují informace o událostech vyvolaných jako součást využití prostředků Azure. Příkladem tohoto typu protokolu jsou protokoly událostí systému Windows, zabezpečení a aplikace ve virtuálním počítači a [diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) , které jsou konfigurovány prostřednictvím Azure monitor.
 
 * **Zpracované události** poskytují informace o analyzovaných událostech a výstrahách, které byly zpracovány vaším jménem. Příklady tohoto typu jsou [Azure Security Center výstrahy](../../security-center/security-center-managing-and-responding-alerts.md) , které [Azure Security Center](../../security-center/security-center-intro.md) zpracovaly a analyzovaly vaše předplatné a poskytuje stručné výstrahy zabezpečení.
 
 V následující tabulce jsou uvedeny nejdůležitější typy protokolů, které jsou k dispozici v Azure:
 
-| Kategorie protokolu | Typ protokolu | Použití | Integrace |
+| Kategorie protokolu | Typ protokolu | Využití | Integrace |
 | ------------ | -------- | ------ | ----------- |
 |[Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md)|Řízení událostí roviny na Azure Resource Managerch prostředcích|  Poskytuje přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného.|    Rozhraní REST API [Azure monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Protokoly diagnostiky Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)|Častá data o provozu prostředků Azure Resource Manager v předplatném|  Poskytuje přehled o operacích, které provedl váš prostředek.| Azure Monitor, [Stream](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Protokoly diagnostiky Azure](../../azure-monitor/platform/resource-logs-overview.md)|Častá data o provozu prostředků Azure Resource Manager v předplatném|    Poskytuje přehled o operacích, které provedl váš prostředek.| Azure Monitor, [Stream](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Sestavy Azure AD](../../active-directory/reports-monitoring/overview-reports.md)|Protokoly a sestavy | Oznamuje aktivity přihlašování uživatelů a informace o aktivitách systému o správě uživatelů a skupin.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuální počítače a cloudové služby](../../azure-monitor/learn/quick-collect-azurevm.md)|Služba protokolu událostí systému Windows a protokol syslog pro Linux|  Zachycuje systémová data a data protokolování na virtuálních počítačích a přenáší tato data do účtu úložiště podle vašeho výběru.|   Windows (pomocí úložiště Windows Azure Diagnostics [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)]) a Linux v Azure monitor|
 |[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Protokolování úložiště poskytuje data metrik pro účet úložiště.|Poskytuje přehled o požadavcích trasování, analyzuje trendy využití a diagnostikuje problémy s vaším účtem úložiště.|   REST API nebo [Knihovna klienta](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -95,14 +95,14 @@ Protokoly diagnostiky Azure nabízejí několik možností konfigurace, jako jso
 
 * Uložte je do [účtu úložiště](../../azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Čas uchování (ve dnech) můžete určit pomocí nastavení diagnostiky.
 
-* [Streamujte je do centra událostí](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
+* [Streamujte je do centra událostí](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
 
 * Analyzujte je pomocí [protokolů Azure monitor](../../log-analytics/log-analytics-queries.md).
 
 **Podporované služby, schéma pro diagnostické protokoly a podporované kategorie protokolů na typ prostředku**
 
 
-| Služba | Schéma a dokumentace | Typ prostředku | Kategorie |
+| Služba | Schéma a dokumentace | Typ prostředku | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Protokoly Azure Monitor pro Load Balancer (Preview)](../../load-balancer/load-balancer-monitor-log.md)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |Network Security Groups (Skupiny zabezpečení sítě)|[Protokoly Azure Monitor pro skupiny zabezpečení sítě](../../virtual-network/virtual-network-nsg-manage-log.md)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -315,11 +315,11 @@ V centru Azure Monitor protokolů je pracovní prostor Log Analytics, který je 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Připojené zdroje jsou počítače a další prostředky, které generují data shromážděná protokolem Azure Monitor. Zdroje můžou zahrnovat agenty nainstalované v počítačích se [systémem Windows](../../log-analytics/log-analytics-agent-windows.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) , které se připojují přímo, nebo agenti v [připojené skupině pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). Protokoly Azure Monitor můžou shromažďovat taky data z [účtu služby Azure Storage](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md).
+Připojené zdroje jsou počítače a další prostředky, které generují data shromážděná protokolem Azure Monitor. Zdroje můžou zahrnovat agenty nainstalované v počítačích se [systémem Windows](../../log-analytics/log-analytics-agent-windows.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) , které se připojují přímo, nebo agenti v [připojené skupině pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). Protokoly Azure Monitor můžou shromažďovat taky data z [účtu služby Azure Storage](../../azure-monitor/platform/resource-logs-collect-storage.md).
 
 [Zdroje dat](../../azure-monitor/platform/agent-data-sources.md) jsou různé druhy dat, která jsou shromažďována z každého připojeného zdroje. Zdroje zahrnují události a [data o výkonu](../../azure-monitor/platform/data-sources-performance-counters.md) z agentů [Windows](../../azure-monitor/platform/data-sources-windows-events.md) a Linux, kromě zdrojů, jako jsou [protokoly IIS](../../azure-monitor/platform/data-sources-iis-logs.md) a [vlastní textové protokoly](../../azure-monitor/platform/data-sources-custom-logs.md). Nakonfigurujete každý zdroj dat, který chcete shromáždit, a konfigurace se automaticky distribuuje každému připojenému zdroji.
 
-Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby Azure](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md):
+Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby Azure](../../azure-monitor/platform/resource-logs-collect-storage.md):
 
 * Azure Diagnostics přímo do protokolů Azure Monitor (**Diagnostika** v následující tabulce)
 
@@ -333,7 +333,7 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnostika|Diagnostika|    [Aplikace Azure](../../azure-monitor/insights/azure-networking-analytics.md) [Analýza brány](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     Spojovací čára|  Spojovací čára|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Konektor (Preview)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Účty Azure Automation| Microsoft.Automation/<br>AutomationAccounts|    Diagnostika||       [Další informace](../../automation/automation-manage-send-joblogs-log-analytics.md)|
+|Účty Azure Automation| Microsoft.Automation/<br>automationAccounts|    Diagnostika||       [Další informace](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 |Účty Azure Batch|  Microsoft.Batch/<br>batchAccounts|  Diagnostika|    Diagnostika||
 |Klasické cloudové služby||       Storage||       [Další informace](../../azure-monitor/platform/azure-storage-iis-table.md)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>účty|       Diagnostika|||
@@ -355,7 +355,7 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 |Storage|||         Skript| [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Azure Virtual Machines|    Microsoft. COMPUTE/<br>virtualMachines|  Linka|  Linka||
 ||||Diagnostika||
-|Škálovací sady virtuálních počítačů|    Microsoft. COMPUTE/<br>virtualMachines    ||Diagnostika||
+|Virtual Machine Scale Sets|    Microsoft. COMPUTE/<br>virtualMachines    ||Diagnostika||
 ||Microsoft. COMPUTE/<br>virtualMachineScaleSets/<br>virtualMachines||||
 |Webové serverové farmy|Microsoft.Web/<br>serverfarms||   Diagnostika
 |Weby|  Microsoft.Web/<br>sites ||      Diagnostika|    [Další informace](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|

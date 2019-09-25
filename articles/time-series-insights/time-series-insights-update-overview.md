@@ -9,16 +9,16 @@ manager: cshankar
 ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d411e8d41f3026476ca8344e8ff9736701d6af6
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: ffa4424dd3173cf6493ec219fe92925c970ad08c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736174"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258313"
 ---
-# <a name="what-is-azure-time-series-insights-preview"></a>Co je ve verzi Preview Azure Time Series Insights?
+# <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
 Azure Time Series Insights Preview je ucelená nabídka typu platforma jako služba (PaaS). Používá se ke shromažďování, zpracování, ukládání, analýze a dotazování vysoce kontextových dat IoT škály, které jsou optimalizované pro časovou řadu. Time Series Insights je ideální pro zkoumání a provozní analýzu dat ad hoc. Time Series Insights je jedinečná rozšiřitelná a přizpůsobená nabídka služeb, která splňuje široké požadavky na nasazení v průmyslu IoT.
 
@@ -83,7 +83,7 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Time S
 | Analýza hlavních příčin a detekce anomálií | [Průzkumník Preview aplikace Azure Time Series Insights](./time-series-insights-update-explorer.md) podporuje jak zobrazení vzorků, tak zobrazení perspektiv pro provádění a ukládání více kroků při analýze hlavní příčiny. V kombinaci s Azure Stream Analytics můžete pomocí Time Series Insights detekovat výstrahy a anomálie téměř v reálném čase. |
 | Vlastní aplikace založené na Time Series Insights platformě | Time Series Insights podporuje [sadu JavaScript SDK](./tutorial-explore-js-client-lib.md). Sada SDK poskytuje bohaté ovládací prvky a zjednodušený přístup na dotazy. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Time Series Insights tak, aby vyhovovaly vašim konkrétním obchodním potřebám. [Rozhraní API](./time-series-insights-update-tsq.md) pro Time Series Insights dotazování můžete použít také přímo k pohonu dat do vlastních aplikací IoT. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začínáme s Azure Time Series Insights Preview:
 

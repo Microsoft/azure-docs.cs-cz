@@ -5,16 +5,15 @@ manager: eladz
 author: vkurpad
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: vikurpad
-ms.openlocfilehash: df2c469ef825863f958c8c263253c7d1c6f6c732
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f75e6dece376076d4aa5e33497aff7e4f9f56857
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004407"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265697"
 ---
 # <a name="working-with-skillsets"></a>Práce s dovednosti
 Tento článek je určen pro vývojáře, kteří potřebují hlubší porozumění způsobu, jakým funguje kanál pro obohacení a předpokládá, že máte koncepční porozumění procesu vyhledávání v rozpoznávání. Pokud začínáte vyhledáváním v rozpoznávání, začněte na:
@@ -44,8 +43,8 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
 |Úložiště objektů blob|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|Není k dispozici |
-|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|Není k dispozici|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|neuvedeno |
+|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|neuvedeno|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
 

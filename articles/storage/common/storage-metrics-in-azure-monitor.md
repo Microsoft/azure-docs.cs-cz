@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844828"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257090"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování nap
 
 Azure Monitor poskytuje několik způsobů přístupu metriky. K nim můžete přistupovat z [Azure Portal](https://portal.azure.com), rozhraní API Azure monitor (Rest a .NET) a analytických řešení, jako je například Event Hubs. Další informace najdete v tématu [Azure monitor metriky](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k datům v posledních 93 dnech. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md) ve službě Azure Monitor.
+Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k datům v posledních 93 dnech. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../azure-monitor/platform/resource-logs-overview.md) ve službě Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Přístup k metrikám v Azure Portal
 
@@ -302,19 +302,19 @@ Následující příklad uvádí formát pro zadání ID prostředku pro účet 
 
 Následující příklad uvádí formát pro zadání ID prostředku pro každou službu úložiště.
 
-* ID prostředku Blob service
+* ID prostředku služby Blob
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* ID prostředku Table service
+* ID prostředku služby Table
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* ID prostředku Služba front
+* ID prostředku služby Queue
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* ID prostředku souborové služby
+* ID prostředku služby File
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -393,7 +393,7 @@ Azure Storage podporuje pro metriky v Azure Monitor následující dimenze.
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
 | **BlobType** | Typ objektu BLOB pouze pro metriky objektů BLOB Podporované hodnoty jsou **BlockBlob**, **PageBlob**a **Azure Data Lake Storage**. Doplňovací objekt BLOB je zahrnutý v BlockBlob. |
-| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Horká**: Horká vrstva</li> <li>**Studená**: Studená vrstva</li> <li>**Archiv**: Úroveň archivu</li> <li>**Premium**: Úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standardní**: Typ vrstvy pro objekt BLOB Standard Page</li> <li>Nevrstvený: Typ vrstvy pro účet úložiště pro obecné účely v1</li> |
+| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Horká**: Horká vrstva</li> <li>**Studená**: Studená vrstva</li> <li>**Archiv**: Úroveň archivu</li> <li>**Premium**: Úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standardní**: Typ vrstvy pro objekt BLOB Standard Page</li> <li>**Nevrstvený**: Typ vrstvy pro účet úložiště pro obecné účely v1</li> |
 | **GeoType** | Transakce z primárního nebo sekundárního clusteru. Dostupné hodnoty zahrnují **Primary** a **Secondary**. Vztahuje se na geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) při čtení objektů ze sekundárního tenanta. |
 | **ResponseType** | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>**ServerOtherError**: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li>**ServerBusyError**: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li>**ServerTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li>**AuthorizationError**: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li>**NetworkError**: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>**ClientThrottlingError**: Chyba omezování využití sítě na straně klienta. </li> <li>**ClientTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li>**ClientOtherError**: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li>**Success**: Úspěšná žádost</li> <li> **SuccessWithThrottling**: Úspěšná žádost, když se klient SMB omezí při prvním pokusu (s), ale po opakování proběhne úspěch.</li> |
 | **ApiName** | Název operace. Příklad: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Všechny názvy operací naleznete v [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |

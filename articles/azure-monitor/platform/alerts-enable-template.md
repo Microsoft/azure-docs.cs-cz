@@ -1,6 +1,6 @@
 ---
-title: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru v Azure
-description: Zjistěte, jak pomocí šablony Resource Manageru k vytvoření klasických upozornění na metriku pro příjem oznámení e-mailu nebo webhooku.
+title: Vytvoření klasické výstrahy metriky v Azure pomocí šablony Správce prostředků
+description: Naučte se používat šablonu Správce prostředků k vytvoření klasické výstrahy metriky pro příjem oznámení prostřednictvím e-mailu nebo Webhooku.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faeb4df915cc5c56e21d1857fe75a956d419c46e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776435"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262090"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
-Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci Azure upozornění metrik. To umožňuje automaticky nastavení výstrah u vašich prostředků, pokud jsou vytvořené k zajištění, že jsou správně monitorovat všechny prostředky.
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) nakonfigurovat upozornění metrik Azure. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
 
 > [!NOTE]
 > 
-> Tento článek popisuje vytvoření **klasického upozornění metrik** pomocí šablon Resource Manageru. Pokud chcete pro vytvoření [novějších upozornění metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md) pomocí šablon, [v tomto článku](alerts-metric-create-templates.md) nabízí podrobné informace.
+> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Pokud hledáte [nové výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) pomocí šablon, najdete v [tomto článku](alerts-metric-create-templates.md) podrobnosti.
 >
 
 
-Základní kroky jsou následující:
+Základní postup je následující:
 
-1. Vytvoření šablony jako soubor JSON, který popisuje, jak vytvořit výstrahu.
-2. [Nasazení šablony pomocí libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit výstrahu.
+2. [Nasaďte šablonu pomocí libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
 
-Níže zjistíte, jak vytvořit šablonu Resource Manageru nejprve pro výstrahu samostatně, pak upozornění při vytváření jiný prostředek.
+Níže popisujeme, jak vytvořit šablonu Správce prostředků jako první pro výstrahu, a to pro výstrahu při vytváření jiného prostředku.
 
-## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Šablona Resource Manageru pro klasických upozornění na metriku
-Aby se vytvořila výstraha pomocí šablony Resource Manageru, vytvoříte prostředek typu `Microsoft.Insights/alertRules` a vyplňte všechny související vlastnosti. Níže je šablonu, která vytvoří pravidlo upozornění.
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Šablona Správce prostředků pro výstrahu klasické metriky
+Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/alertRules` a vyplňte všechny související vlastnosti. Níže je šablona, která vytvoří pravidlo výstrahy.
 
 ```json
 {
@@ -179,10 +179,10 @@ Aby se vytvořila výstraha pomocí šablony Resource Manageru, vytvoříte pros
 }
 ```
 
-Vysvětlení schématu a vlastnosti pro pravidlo výstrahy [je k dispozici tady](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Šablona Resource Manageru pro prostředek s klasických upozornění na metriku
-Upozornění na šablonu Resource Manageru je užitečné, nejčastěji při vytváření upozornění při vytváření prostředku. Například můžete chtít zajistit, aby "využití procesoru % > 80" nastavení pravidla pokaždé, když nasadíte virtuální počítač. K tomuto účelu můžete přidat pravidlo výstrahy jako prostředek v poli prostředků pro vaši šablonu virtuálního počítače a přidat závislosti pomocí `dependsOn` vlastnost ID prostředku virtuálního počítače. Tady je úplný příklad, který vytvoří virtuálního počítače s Windows a přidá výstrahu, která upozorní správci předplatného, když využití procesoru překročí 80 %.
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Šablona Správce prostředků pro prostředek s klasickou výstrahou metriky
+Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vytváření výstrahy při vytváření prostředku. Například může být vhodné zajistit, aby bylo pravidlo "CPU% > 80" nastaveno při každém nasazení virtuálního počítače. Chcete-li to provést, přidejte pravidlo výstrahy jako prostředek do pole prostředků pro šablonu virtuálního počítače a přidejte závislost pomocí `dependsOn` vlastnosti do ID prostředku virtuálního počítače. Tady je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní správce předplatného, když využití procesoru překročí 80%.
 
 ```json
 {
@@ -402,7 +402,7 @@ Upozornění na šablonu Resource Manageru je užitečné, nejčastěji při vyt
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o výstrahách](alerts-overview.md)
-* [Přidejte nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-stream-template.md) do šablony Resource Manageru
-* Syntaxi JSON a vlastnostech najdete v tématu [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) referenčními informacemi k šablonám.
+* [Přečtěte si další informace o výstrahách](alerts-overview.md)
+* [Přidání nastavení diagnostiky](../../azure-monitor/platform/diagnostic-settings-template.md) do šablony Správce prostředků
+* Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) .
 

@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: Rejstřík referenčních informací o zásadách
           href: api-management-policies.md
+    - name: Zabezpečení
+      items:
+        - name: Integrované ovládací prvky zabezpečení
+          href: api-management-security-controls.md
     - name: Předplatná
       href: api-management-subscriptions.md
     - name: Správa s použitím automatizace
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: Omezení pro import API
       href: api-management-api-import-restrictions.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: api-management-security-controls.md
 - name: Návody
   items:
     - name: Definování rozhraní API

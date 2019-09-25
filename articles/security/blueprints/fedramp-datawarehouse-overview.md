@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 79ed2b6e5d7bb600a79e12d19268035491f3fe08
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7fe5b45d7719b34fff8c09d08f510dc465f50104
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946860"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257410"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: Datový sklad pro automatizaci FedRAMP
 
@@ -49,7 +49,7 @@ Azure Virtual Machines
 -   (2) SQL Server uzel clusteru
 -   (1) SQL Server určující
 
-Sady dostupnosti
+Skupiny dostupnosti
 -   (1) řadiče domény služby Active Directory
 -   (1) uzly clusteru SQL a určující kopie
 
@@ -65,7 +65,7 @@ Load Balancer Azure SQL
 
 Azure Active Directory
 
-Recovery Services trezor
+Trezor služby Recovery Services
 
 Azure Key Vault
 
@@ -86,7 +86,7 @@ Virtuální počítač se vytvořil jako hostitel bastionu připojený k domén�
 -   [Rozšíření protokolů Azure Monitor](../../virtual-machines/windows/extensions-oms.md)
 -   [Rozšíření Azure Diagnostics](../../virtual-machines/windows/extensions-diagnostics-template.md)
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pomocí Azure Key Vault (ctí Azure Government, PCI DSS, HIPAA a další požadavky)
--   [Zásady automatického](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) vypínání, které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají
+-   [Zásady automatického vypínání](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) , které snižují spotřebu prostředků virtuálních počítačů, pokud se nepoužívají
 -   [Ochrana Credential Guard v programu Windows Defender](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) je povolená, aby přihlašovací údaje a další tajné kódy běžely v chráněném prostředí, které je izolované od běžícího operačního systému
 
 ### <a name="virtual-network"></a>Virtuální síť
@@ -129,7 +129,7 @@ AzureDiskEncryption
 ### <a name="logging-and-audit"></a>Protokolování a audit
 [Protokoly Azure monitor](../azure-security-disk-encryption-overview.md) poskytují rozsáhlé protokolování aktivity systému a uživatele a také stav systému. [Azure monitor protokoluje](https://azure.microsoft.com/services/log-analytics/) řešení shromažďuje a analyzuje data vygenerovaná prostředky v Azure a v místních prostředích.
 - **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows a protokoly služby Azure Blob Storage, tabulky a fronty.
+- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows a protokoly služby Azure Blob Storage, tabulky a fronty.
 - **Protokoly brány firewall**: Application Gateway poskytuje úplné diagnostické protokoly a protokoly přístupu. Protokoly brány firewall jsou k dispozici pro prostředky Application Gateway s podporou WAF.
 - **Archivace protokolu**: Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage za účelem archivace s definovanou dobou uchovávání 2 dny. Tyto protokoly se připojují k protokolům Azure Monitor pro zpracování, ukládání a vytváření sestav řídicích panelů.
 
@@ -172,7 +172,7 @@ Další informace o používání funkcí zabezpečení Azure SQL Database najde
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) je zásadní pro správu nasazení a zřizování přístupu k pracovníkům, kteří pracují s prostředím. Existující služba Windows Server Active Directory se dá integrovat do AAD ve [čtyřech kliknutích](../../active-directory/hybrid/how-to-connect-install-express.md). Zákazníci mohou také nasadit infrastrukturu služby Active Directory (řadiče domény) na existující AAD tím, že nasazená infrastruktura služby Active Directory vytvoří subdoménu doménové struktury AAD.
 
 ### <a name="additional-services"></a>Další služby
-I když tato architektura datového skladu není určená pro nasazení do komerčního prostředí [Azure](https://azure.microsoft.com/overview/what-is-azure/) , je možné dosáhnout podobných cílů prostřednictvím služeb popsaných v této referenční architektuře, jakož i dalších služeb, které jsou k dispozici. pouze v komerčním prostředí Azure. Upozorňujeme, že Azure Commercial udržuje FedRAMP JAB P-ATO na úrovni středních dopadů a umožňuje státním institucím a partnerům nasazovat střední citlivé informace do cloudu s využitím komerčního prostředí Azure.
+I když tato architektura datového skladu není určená pro nasazení do [komerčního prostředí Azure](https://azure.microsoft.com/overview/what-is-azure/) , je možné dosáhnout podobných cílů prostřednictvím služeb popsaných v této referenční architektuře, jakož i dalších služeb, které jsou k dispozici. pouze v komerčním prostředí Azure. Upozorňujeme, že Azure Commercial udržuje FedRAMP JAB P-ATO na úrovni středních dopadů a umožňuje státním institucím a partnerům nasazovat střední citlivé informace do cloudu s využitím komerčního prostředí Azure.
 
 Azure Commercial nabízí širokou škálu služeb, které zpracovávají naformátovaná a neformátovaná úložiště dat a fázování, aby je bylo možné používat v datových skladech, včetně těchto:
 -   [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) je spravovaná cloudová služba, která je sestavená pro komplexní hybridní projekty extrakce, transformace a načítání (ETL), extrakce, načítání a transformace (ELT) a integrace dat. Pomocí Azure Data Factory můžou zákazníci vytvářet a plánovat pracovní postupy řízené daty označované jako kanály, které ingestují data z různorodých úložišť dat. Zákazníci potom můžou data zpracovávat a transformovat na výstup do úložišť dat, jako je Azure SQL Data Warehouse.

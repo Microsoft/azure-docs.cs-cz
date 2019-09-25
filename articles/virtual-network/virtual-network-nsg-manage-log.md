@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 667d725653e9b668b18644e7d0c6d8f437e833ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570655"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259441"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Protokolování diagnostiky pro skupinu zabezpečení sítě
 
@@ -46,7 +46,7 @@ Pomocí webu [Azure Portal](#azure-portal), PowerShellu [](#powershell)nebo rozh
 
 5. V části **nastavení diagnostiky**zadejte nebo vyberte následující informace a pak vyberte **Uložit**:
 
-    | Nastavení                                                                                     | Hodnota                                                          |
+    | Nastavení                                                                                     | Value                                                          |
     | ---------                                                                                   |---------                                                       |
     | Name                                                                                        | Název, který zvolíte.  Příklad: *myNsgDiagnostics*      |
     | **Archivace do účtu úložiště**, **streamování do centra událostí**a **odeslání do Log Analytics** | Můžete vybrat tolik míst, kolik si zvolíte. Další informace o každé z nich najdete v tématu [cíle protokolu](#log-destinations).                                                                                                                                           |
@@ -88,7 +88,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, nikoli pro obě, přidejte `-Categories` možnost do předchozího příkazu následovaný *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, nikoli pro obě, přidejte `-Categories` možnost do předchozího příkazu následovaný *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení a analýza protokolů](#view-and-analyze-logs).
 
@@ -123,7 +123,7 @@ az monitor diagnostic-settings create \
 
 Pokud nemáte existující pracovní prostor, můžete ho vytvořit pomocí [Azure Portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [PowerShellu](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Existují dvě kategorie protokolování, pro které můžete protokoly povolit.
 
-Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, odeberte kategorii, pro kterou nechcete protokolovat data v předchozím příkazu. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, odeberte kategorii, pro kterou nechcete protokolovat data v předchozím příkazu. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení a analýza protokolů](#view-and-analyze-logs).
 
@@ -131,8 +131,8 @@ Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení
 
 Diagnostická data můžou být:
 - [Zápis na účet Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)pro auditování nebo ruční kontrolu. Dobu uchování (ve dnech) můžete určit pomocí nastavení diagnostiky prostředků.
-- [Streamování do centra událostí](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je PowerBI.
-- [Zapsáno do protokolu Azure monitor](../azure-monitor/platform/diagnostic-logs-stream-log-store.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- [Streamování do centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je PowerBI.
+- [Zapsáno do protokolu Azure monitor](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="log-categories"></a>Kategorie protokolu
 
@@ -198,7 +198,7 @@ Protokol čítače pravidla obsahuje informace o každém pravidle použitém u 
 
 ## <a name="view-and-analyze-logs"></a>Zobrazení a analýza protokolů
 
-Informace o tom, jak zobrazit data diagnostického protokolu, najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud odešlete diagnostická data do:
+Informace o tom, jak zobrazit data diagnostického protokolu, najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud odešlete diagnostická data do:
 - **Protokoly Azure monitor**: Pro rozšířené přehledy [můžete využít řešení Analytics](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) pro skupinu zabezpečení sítě. Řešení poskytuje vizualizace pro pravidla NSG, která povolují nebo zakazují provoz síťového rozhraní ve virtuálním počítači na adrese MAC.
 - **Účet Azure Storage**: Data jsou zapsána do souboru PT1H. JSON. Můžete najít:
@@ -207,7 +207,7 @@ Informace o tom, jak zobrazit data diagnostického protokolu, najdete v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [protokolování aktivit](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), dříve označovaném jako audit nebo provozní protokoly. Protokolování aktivit je ve výchozím nastavení povolené pro skupin zabezpečení sítě vytvořené prostřednictvím modelu nasazení Azure. Pokud chcete zjistit, které operace byly dokončeny v skupin zabezpečení sítě v protokolu aktivit, hledejte položky, které obsahují následující typy prostředků:
+- Přečtěte si další informace o [protokolování aktivit](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), dříve označovaném jako audit nebo provozní protokoly. Protokolování aktivit je ve výchozím nastavení povolené pro skupin zabezpečení sítě vytvořené prostřednictvím modelu nasazení Azure. Pokud chcete zjistit, které operace byly dokončeny v skupin zabezpečení sítě v protokolu aktivit, hledejte položky, které obsahují následující typy prostředků:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

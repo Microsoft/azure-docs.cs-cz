@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4ebb31a839a645bcb1312405ee0222f39dbbcd1e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71000765"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261271"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenosu klíčů chráněných HSM pro Azure Key Vault
 
@@ -41,7 +41,7 @@ Další informace o generování a přenosu klíče chráněného HSM přes Inte
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Další informace o podpůrný software nCipher HSM a službách Microsoftu
 
-Podpůrný software nCipher Security je přední globální poskytovatel šifrování dat a řešení pro místní zabezpečení v oblasti finančních služeb, vysoké technologie, výroby, státní správy a technologických odvětví. V rámci 40 záznamů o ochraně firemních a vládních informací se podpůrný software nCipher řešení zabezpečení zabezpečená pomocí čtyř pěti největších společností. Jejich řešení používají i 22 zemí a oblastí NATO a zabezpečení více než 80 na celosvětové transakce v rámci plateb.
+Podpůrný software nCipher zabezpečení, Entrust Datacardá společnost, je vedoucí na trhu HSM pro obecné účely, který umožňuje špičkové organizace poskytováním vztahů důvěryhodnosti, integrity a řízení pro své důležité obchodní informace a aplikace. Podpůrný software ncipherá kryptografická řešení zabezpečená nově vznikající technologie – cloud, IoT, blockchain, digitální platby a pomoc s plněním nových požadavků na dodržování předpisů pomocí stejné prověřené technologie, kterou globální organizace na základě dnešního dne zajišťují, aby se chránily před hrozbami citlivá data, síťová komunikace a podniková infrastruktura. Podpůrný software nCipher zajišťuje důvěru pro důležité podnikové aplikace, zajišťuje integritu dat a zadává zákazníkům úplnou kontrolu – dnes, zítra a v budoucnosti.
 
 Microsoft spolupracuje se zabezpečením podpůrný software nCipher a vylepšuje stav grafiky pro HSM. Tato vylepšení vám umožní získat běžné výhody hostovaných služeb, aniž byste museli opustit kontrolu vašich klíčů. Konkrétně tato vylepšení umožňují společnosti Microsoft spravovat HSM, takže je nemusíte používat. Jako cloudová služba Azure Key Vault škáluje v krátkém časovém oznámení, aby splňovala špičky využití vaší organizace. Ve stejnou chvíli je váš klíč chráněný v rámci HSM Microsoftu: Podržíte kontrolu nad životním cyklem klíčů, protože vygenerujete klíč a přenášíte ho do HSM Microsoftu.
 
@@ -287,6 +287,10 @@ Tento program vytvoří soubor **zabezpečení World** na%NFAST_KMDATA%\local\wo
 
 > [!NOTE]
 > Pokud váš modul HARDWAROVÉho zabezpečení nepodporuje novější sadu DLf3072s256mRijndael sady šifrováním Suite, můžete nahradit--cipher-suite = DLf3072s256mRijndael with--cipher-suite = DLf1024s160mRijndael.
+> 
+> Security World vytvořený pomocí New-World. exe, který se dodává s podpůrný software nCipher software verze 12,50, není kompatibilní s tímto BYOK postupem. K dispozici jsou dvě možnosti:
+> 1) Nadowngrade podpůrný software nCipher verze softwaru na 12.40.2, aby se vytvořil nový svět zabezpečení.
+> 2) Obraťte se na podporu podpůrný software nCipher a požádejte je o opravu hotfix pro verzi softwaru 12,50, která umožňuje používat 12.40.2 verzi New-World. exe, která je kompatibilní s tímto postupem BYOK.
 
 Potom udělejte následující:
 

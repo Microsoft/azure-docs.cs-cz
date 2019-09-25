@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: f91d0b17cfc984ccf56ad4a25ef2ece651dcbed5
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b152d5a48d49e78818602e7f66574937bebce2ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183336"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265768"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 
 Dovednost pro **rozpoznávání pojmenovaných entit** extrahuje pojmenované entity z textu. Dostupné entity zahrnují typy `person`, `location` a `organization`.
 
 > [!IMPORTANT]
-> Dovednost pro rozpoznávání pojmenovaných entit je teď přerušená [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora se zastavila 15. února 2019 a rozhraní API se z produktu odebralo 2. května 2019. Pokud chcete migrovat na podporovanou dovednost, postupujte podle doporučení v části nepoužívané poznatky pro [vyhledávání v rozpoznávání](cognitive-search-skill-deprecated.md) .
+> Dovednost pro rozpoznávání pojmenovaných entit je teď přerušená [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora se zastavila 15. února 2019 a rozhraní API se z produktu odebralo 2. května 2019. Pokud chcete migrovat na podporovanou dovednost, postupujte podle doporučení v části [nepoužívané poznatky pro vyhledávání v rozpoznávání](cognitive-search-skill-deprecated.md) .
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -60,7 +59,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 | obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
 | locations  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, kde každý řetězec představuje organizaci. |
-| entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`nebo) `"location"`</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (hodnota mezi 0 a 1, která představuje jistotu, že hodnota je skutečnou entitou)</li></ul> |
+| podnikům | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`nebo) `"location"`</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (hodnota mezi 0 a 1, která představuje jistotu, že hodnota je skutečnou entitou)</li></ul> |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 

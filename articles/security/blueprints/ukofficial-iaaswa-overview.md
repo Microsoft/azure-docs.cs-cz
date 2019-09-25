@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899942"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262805"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Podrobný plán zabezpečení a dodržování předpisů Azure – IaaS webová aplikace pro Spojené království
 
@@ -21,7 +21,7 @@ ms.locfileid: "69899942"
 
  Tento článek poskytuje pokyny a skripty pro automatizaci, které vám umožní doručovat Microsoft Azure trojrozměrné architektury založené na webu, která je vhodná pro zpracování mnoha úloh klasifikovaných jako oficiální ve Spojeném království.
 
- Pomocí infrastruktury jako přístupu ke kódu Sada šablon [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) nasadí prostředí, které se bude přizpůsobovat národním internetovým bezpečnostním střediskům (NCSC) [](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) 14 v oblasti cloudového zabezpečení a centrem pro Internet Security (CIS) [. Kritické ovládací prvky zabezpečení](https://www.cisecurity.org/critical-controls.cfm).
+ Pomocí infrastruktury jako přístupu ke kódu Sada šablon [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) nasadí prostředí, které se bude přizpůsobovat národním internetovým bezpečnostním střediskům (NCSC) 14 v oblasti [cloudového](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) zabezpečení a centrem pro Internet Security (CIS) [. Kritické ovládací prvky zabezpečení](https://www.cisecurity.org/critical-controls.cfm).
 
  NCSC doporučuje svým zákazníkům používat zásady zabezpečení cloudu k vyhodnocení vlastností zabezpečení služby a k pochopení rozdělení zodpovědnosti mezi zákazníkem a dodavatelem. Pro každý z těchto principů poskytujeme informace, které vám pomůžou pochopit rozdělení odpovědností.
 
@@ -98,7 +98,7 @@ ms.locfileid: "69899942"
   - (2) síťové adaptéry připojené k provozní virtuální síti VNet-1 na virtuálním počítači
   - Nepřipojeno k doméně
 
-Sady dostupnosti
+Skupiny dostupnosti
 - (1) Doména služby Active Directory virtuálního počítače set-2 virtuálních počítačů řadiče
 - (1) sada virtuálních počítačů na webové vrstvě – 2 virtuální počítače
 - (1) sada virtuálních počítačů pro virtuální počítače na úrovni: 2
@@ -131,7 +131,7 @@ Storage
 
 **Místní síť**: Soukromá místní síť implementovaná v organizaci.
 
-**Virtuální síť**v produkčním prostředí: Produkční [virtuální síť](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (Virtual Network) hostuje aplikaci a další provozní prostředky běžící v Azure. Každá virtuální síť může obsahovat několik podsítí, které se používají k izolaci a správě síťového provozu.
+**Virtuální síť v produkčním**prostředí: Produkční [virtuální síť](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (Virtual Network) hostuje aplikaci a další provozní prostředky běžící v Azure. Každá virtuální síť může obsahovat několik podsítí, které se používají k izolaci a správě síťového provozu.
 
 **Webová vrstva**: Zpracovává příchozí požadavky HTTP. Odpovědi jsou vráceny prostřednictvím této vrstvy.
 
@@ -172,7 +172,7 @@ Tyto virtuální sítě se pořád spravují jako samostatné prostředky, ale z
 
 **Protokoly aktivit**: Nakonfigurujte [protokoly aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) a poskytněte vám přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného.
 
-**Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) jsou všechny protokoly emitované prostředkem. Tyto protokoly můžou zahrnovat protokoly systému událostí Windows, objekty blob, tabulky a fronty.
+**Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) jsou všechny protokoly emitované prostředkem. Tyto protokoly můžou zahrnovat protokoly systému událostí Windows, objekty blob, tabulky a fronty.
 
 **Protokoly brány firewall**: Application Gateway poskytuje úplnou diagnostiku a protokoly přístupu. Protokoly brány firewall jsou dostupné pro prostředky služby Application Gateway, které mají povolený Firewall webových aplikací.
 
@@ -206,7 +206,7 @@ Zákazníci taky můžou zvážit použití [rozšířeného modelu správy zabe
 
 **Správa prostředků**: Prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení, se spravují seskupením dohromady do [skupin prostředků Azure](../../azure-resource-manager/resource-group-overview.md). Role Access Control na základě prostředků se pak dají přiřadit ke každé skupině prostředků, aby se omezil přístup jenom na autorizované uživatele.
 
-**Omezení Access Control**: Pomocí [Access Control na základě rolí](../../role-based-access-control/role-assignments-portal.md) (RBAC) spravujte prostředky v aplikaci pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) RBAC, které můžete použít k omezení operací, které DevOps můžou provádět na jednotlivých úrovních. Při udělování oprávnění použijte [Princip](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)nejnižších oprávnění. Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
+**Omezení Access Control**: Pomocí [Access Control na základě rolí](../../role-based-access-control/role-assignments-portal.md) (RBAC) spravujte prostředky v aplikaci pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) RBAC, které můžete použít k omezení operací, které DevOps můžou provádět na jednotlivých úrovních. Při udělování oprávnění použijte [Princip nejnižších](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)oprávnění. Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
 
 **Přístup k Internetu**: Tato referenční architektura využívá [Azure Application Gateway](../../application-gateway/overview.md) jako internetovou bránu a nástroj pro vyrovnávání zatížení. Někteří zákazníci taky můžou zvážit použití virtuálních zařízení třetích stran pro další vrstvy zabezpečení sítě jako alternativu k [Azure Application Gateway](../../application-gateway/overview.md).
 
@@ -214,9 +214,9 @@ Zákazníci taky můžou zvážit použití [rozšířeného modelu správy zabe
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>Dokumentace k dodržování předpisů pro NCSC Cloud Security
 
-Komerční služba pro koruna (agentura, která funguje ke zlepšení obchodních a podnikových aktivit), obnovila klasifikaci podnikových cloudových služeb Microsoftu do G-cloudu V6, které pokrývají všechny své nabídky na oficiální úrovni. Podrobnosti o Azure a G-cloudu najdete v souhrnu [posouzení zabezpečení cloudu pro Azure Británie G-Cloud](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud).
+Komerční služba pro koruna (agentura, která funguje ke zlepšení obchodních a podnikových aktivit), obnovila klasifikaci podnikových cloudových služeb Microsoftu do G-cloudu V6, které pokrývají všechny své nabídky na oficiální úrovni. Podrobnosti o Azure a G-cloudu najdete v [souhrnu posouzení zabezpečení cloudu pro Azure Británie G-Cloud](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud).
 
-Tento podrobný plán se zařadí ke 14 zásadám cloudového zabezpečení, které jsou popsány v tématu [Principy](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) NCSC cloudového zabezpečení, které vám pomohou zajistit prostředí, které podporuje úlohy klasifikované jako státní království.
+Tento podrobný plán se zařadí ke 14 zásadám cloudového zabezpečení, které jsou popsány v tématu [Principy NCSC cloudového](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) zabezpečení, které vám pomohou zajistit prostředí, které podporuje úlohy klasifikované jako státní království.
 
 [Matice zodpovědnosti zákazníka](https://aka.ms/ukofficial-crm) (excelový sešit) obsahuje seznam všech 14 principů zabezpečení cloudu a matrice pro každý princip (neboli princip subpart), zda je základní implementace zodpovědností od společnosti Microsoft, zákazníka nebo sdílí se mezi těmito dvěma.
 

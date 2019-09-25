@@ -10,13 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/29/2019
-ms.openlocfilehash: 04bd4378a0820444ab31c9c696e58fccf3026d14
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 09/23/2019
+ms.openlocfilehash: b5fb0c4de82d5ff5f5290127ec529787cabad64a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720890"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258357"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumat službu Azure Time Series Insights
 
@@ -88,7 +88,7 @@ Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořil
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
 1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Jste připraveni vytvořit vlastní prostředí Time Series Insights:
 > [!div class="nextstepaction"]

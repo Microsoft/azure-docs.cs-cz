@@ -1,60 +1,90 @@
 ---
-title: 'Azure Active Directory Domain Services: Řešení potíží se skupinami zabezpečení sítě | Microsoft Docs'
-description: Řešení potíží s konfigurací skupiny zabezpečení sítě pro Azure AD Domain Services
+title: Vyřešit výstrahy skupiny zabezpečení sítě v Azure služba AD DS | Microsoft Docs
+description: Přečtěte si, jak řešit a řešit výstrahy konfigurace skupiny zabezpečení sítě pro Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: ''
-editor: ''
+manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/22/2019
+ms.topic: troubleshooting
+ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 450ee5635b378ed7c4d4e4bedc1c4245f6b52d70
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "70743446"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258003"
 ---
-# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatnou konfigurací sítě pro spravovanou doménu
-Tento článek vám pomůže vyřešit problémy s konfigurací související se sítí a vyřešit chyby v síti, které mají za následek následující zprávu výstrahy:
+# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: Výstrahy konfigurace sítě v Azure Active Directory Domain Services
+
+Aby aplikace a služby správně komunikovaly s Azure Active Directory Domain Services (Azure služba AD DS), musí být otevřené konkrétní síťové porty, aby bylo možné tok dat povolit. V Azure řídíte tok provozu pomocí skupin zabezpečení sítě. Stav spravované domény Azure služba AD DS zobrazuje výstrahu, pokud nejsou nastavená požadovaná pravidla skupiny zabezpečení sítě.
+
+Tento článek vám pomůže pochopit a vyřešit běžné výstrahy týkající se problémů s konfigurací skupiny zabezpečení sítě.
 
 ## <a name="alert-aadds104-network-error"></a>AADDS104 výstrahy: Chyba sítě
-**Zpráva upozornění:** *Společnost Microsoft se nemůže spojit s řadiči domény pro tuto spravovanou doménu. K tomu může dojít v případě, že skupina zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším možným důvodem je, že existuje trasa definovaná uživatelem, která blokuje příchozí provoz z Internetu.*
 
-Mezi nejběžnější příčiny chyb sítě pro Azure AD Domain Services jsou neplatné konfigurace NSG. Skupina zabezpečení sítě (NSG) nakonfigurovaná pro vaši virtuální síť musí umožňovat přístup ke [konkrétním portům](network-considerations.md#network-security-groups-and-required-ports). Pokud jsou tyto porty blokované, Microsoft nemůže monitorovat ani aktualizovat spravovanou doménu. Kromě toho má vliv na synchronizaci mezi adresářem služby Azure AD a vaší spravovanou doménou. Při vytváření NSG zachovejte tyto porty otevřené, aby nedošlo k přerušení provozu.
+### <a name="alert-message"></a>Zpráva výstrahy
 
-### <a name="checking-your-nsg-for-compliance"></a>Kontroluje se NSG dodržování předpisů.
+*Společnost Microsoft se nemůže spojit s řadiči domény pro tuto spravovanou doménu. K tomu může dojít v případě, že skupina zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším možným důvodem je, že existuje trasa definovaná uživatelem, která blokuje příchozí provoz z Internetu.*
 
-1. Přejít na stránku [skupiny zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) v Azure Portal
-2. V tabulce vyberte NSG přidružené k podsíti, ve které je povolená vaše spravovaná doména.
-3. V části **Nastavení** na levém panelu klikněte na **příchozí pravidla zabezpečení** .
-4. Zkontrolujte pravidla, která jsou zavedena, a určete, která pravidla blokují přístup k [těmto portům](network-considerations.md#network-security-groups-and-required-ports) .
-5. Upravte NSG tak, aby se zajistilo dodržování předpisů tím, že odstraníte pravidlo, přidáte pravidlo nebo vytvoříte nový NSG úplně. Postup [Přidání pravidla](#add-a-rule-to-a-network-security-group-using-the-azure-portal) nebo vytvoření nového kompatibilního NSG najdete níže.
+Neplatná pravidla skupiny zabezpečení sítě jsou nejběžnější příčinou chyb sítě pro Azure služba AD DS. Skupina zabezpečení sítě pro virtuální síť musí umožňovat přístup ke konkrétním portům a protokolům. Pokud jsou tyto porty blokované, platforma Azure nemůže monitorovat ani aktualizovat spravovanou doménu. Má vliv i na synchronizaci mezi adresářem služby Azure AD a službou Azure služba AD DS spravované domény. Ujistěte se, že jsou otevřené výchozí porty, aby nedošlo k přerušení provozu.
 
-## <a name="sample-nsg"></a>Ukázka NSG
-Následující tabulka popisuje ukázkovou NSGi, která by zachovala zabezpečení spravované domény a současně umožňuje Microsoftu monitorovat, spravovat a aktualizovat informace.
+## <a name="default-security-rules"></a>Výchozí pravidla zabezpečení
 
-![Ukázka NSG](./media/active-directory-domain-services-alerts/default-nsg.png)
+Následující výchozí pravidla příchozího a odchozího zabezpečení se aplikují na skupinu zabezpečení sítě pro spravovanou doménu Azure služba AD DS. Tato pravidla zachovají Azure služba AD DS zabezpečená a umožňují platformě Azure monitorovat, spravovat a aktualizovat spravovanou doménu. Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps].
+
+### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
+
+| Priority | Name | Port | Protocol | Zdroj | Destination | Action |
+|----------|------|------|----------|--------|-------------|--------|
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
+| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
+| 65500    | DenyAllInBound | Any | Any | Any | Any | Odepřít |
+
+### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
+
+| Priority | Name | Port | Protocol | Zdroj | Destination | Action |
+|----------|------|------|----------|--------|-------------|--------|
+| 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | Internet | Allow |
+| 65500    | DenyAllOutBound | Any | Any | Any | Any | Odepřít |
 
 >[!NOTE]
-> Azure AD Domain Services vyžaduje neomezený odchozí přístup z virtuální sítě. Nedoporučujeme vytvářet žádná další pravidla NSG, která omezují odchozí přístup k virtuální síti.
+> Azure služba AD DS potřebuje neomezený odchozí přístup z virtuální sítě. Nedoporučujeme vytvářet žádná další pravidla, která omezují odchozí přístup k virtuální síti.
 
-## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Přidat pravidlo do skupiny zabezpečení sítě pomocí Azure Portal
-Pokud nechcete používat PowerShell, můžete do skupin zabezpečení sítě ručně přidat jednoduchá pravidla pomocí Azure Portal. Pokud chcete ve skupině zabezpečení sítě vytvořit pravidla, proveďte následující kroky:
+## <a name="verify-and-edit-existing-security-rules"></a>Ověřit a upravit existující pravidla zabezpečení
 
-1. Přejděte na stránku [skupiny zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) v Azure Portal.
-2. V tabulce vyberte NSG přidružené k podsíti, ve které je povolená vaše spravovaná doména.
-3. V části **Nastavení** na levém panelu klikněte buď na **pravidla zabezpečení příchozí** , nebo na **odchozí pravidla zabezpečení**.
-4. Vytvořte pravidlo kliknutím na **Přidat** a vyplněním informací. Klikněte na **OK**.
-5. Ověřte, že se pravidlo vytvořilo tak, že ho vyhledáte v tabulce Rules.
+Pokud chcete ověřit stávající pravidla zabezpečení a ujistit se, že jsou otevřené výchozí porty, proveďte následující kroky:
 
+1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
+1. Vyberte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*.
+1. Na stránce **Přehled** jsou uvedena existující pravidla pro příchozí a odchozí zabezpečení.
 
-## <a name="need-help"></a>Potřebujete pomoct?
-Kontaktujte tým Azure Active Directory Domain Services produktů, abyste mohli [sdílet zpětnou vazbu nebo podporu](contact-us.md).
+    Zkontrolujte pravidla příchozích a odchozích připojení a porovnejte je se seznamem požadovaných pravidel v předchozí části. V případě potřeby vyberte a odstraňte všechna vlastní pravidla, která blokují požadovaný provoz. Pokud chybí některá z požadovaných pravidel, přidejte pravidlo do další části.
+
+    Po přidání nebo odstranění pravidel, která povolí požadovaný provoz, se stav spravované domény Azure služba AD DS automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+
+### <a name="add-a-security-rule"></a>Přidat pravidlo zabezpečení
+
+Chcete-li přidat chybějící pravidlo zabezpečení, proveďte následující kroky:
+
+1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
+1. Vyberte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*.
+1. V části **Nastavení** na levém panelu klikněte na *příchozí pravidla zabezpečení* nebo na *odchozí pravidla zabezpečení* v závislosti na tom, které pravidlo potřebujete přidat.
+1. Vyberte **Přidat**a pak vytvořte požadované pravidlo na základě portu, protokolu, směru atd. Až budete připraveni, vyberte **OK**.
+
+Přidání a zobrazení pravidla zabezpečení v seznamu bude chvíli trvat.
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud stále máte problémy, [otevřete žádost o podporu Azure][azure-support] , kde najdete další pomoc při řešení potíží.
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-ldaps]: tutorial-configure-ldaps.md

@@ -17,25 +17,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835014"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264269"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
-K ověření entit Azure AD a vyžádání tokenů z Azure AD se používají knihovny Microsoft Authentication Library pro .NET (MSAL.NET) i knihovna ověřování Azure AD pro .NET (ADAL.NET). Až do té doby se většina vývojářů pracovala s Azure AD for Developers Platform (verze 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že vyžaduje tokeny pomocí služby Azure AD Authentication Library (ADAL). Teď pomocí MSAL.NET můžete ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C) prostřednictvím koncového bodu Microsoft Identity Platform. 
+K ověření entit Azure AD a vyžádání tokenů z Azure AD se používají knihovny Microsoft Authentication Library pro .NET (MSAL.NET) i knihovna ověřování Azure AD pro .NET (ADAL.NET). Až do té doby se většina vývojářů pracovala s Azure AD for Developers Platform (verze 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že vyžaduje tokeny pomocí služby Azure AD Authentication Library (ADAL). Pomocí MSAL:
 
-Tento článek popisuje, jak zvolit mezi knihovnou Microsoft Authentication Library pro .NET (MSAL.NET) a knihovnou ověřování Azure AD pro .NET (ADAL.NET) a porovnává dvě knihovny.  
+- můžete ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C), protože používá koncový bod Microsoft Identity Platform.
+- vaši uživatelé získají nejlepší možnosti jednotného přihlašování.
+- vaše aplikace může povolit postupný souhlas a podpora podmíněného přístupu je jednodušší.
+- přináší vám výhody inovace.
+
+**MSAL.NET je teď doporučovanou knihovnou ověřování, která se má použít s platformou Microsoft Identity**. V ADAL.NET se neimplementují žádné nové funkce. Úsilí se zaměřuje na zlepšení MSAL.
+
+Tento článek popisuje rozdíly mezi knihovnou Microsoft Authentication Library for .NET (MSAL.NET) a knihovnou ověřování Azure AD pro .NET (ADAL.NET) a pomáhá migrovat na MSAL.  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Rozdíly mezi aplikacemi ADAL a MSAL
+
 Ve většině případů je třeba použít MSAL.NET a koncový bod Microsoft Identity Platform, což je nejnovější generace knihoven ověřování od společnosti Microsoft. Pomocí MSAL.NET získáte tokeny pro uživatele, kteří se přihlásí do vaší aplikace pomocí Azure AD (pracovní a školní účty), účtů Microsoft (osobní) (MSA) nebo Azure AD B2C. 
 
 Pokud už jste obeznámeni s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL.NET), můžete si přečíst, [co se liší od koncového bodu Microsoft Identity Platform (v 2.0)](active-directory-v2-compare.md).
 
-Pokud ale vaše aplikace potřebuje přihlašovat uživatele staršími verzemi [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services), musíte i nadále používat ADAL.NET. Další podrobnosti najdete v tématu [Podpora služby ADFS](https://aka.ms/msal-net-adfs-support).
+Pokud ale vaše aplikace potřebuje přihlašovat uživatele staršími verzemi [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services), musíte i nadále používat ADAL.NET. Další informace najdete v tématu [Podpora služby ADFS](https://aka.ms/msal-net-adfs-support).
 
 Následující obrázek shrnuje některé rozdíly mezi ADAL.NET a MSAL.NETem ![souběžného kódu.](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
@@ -129,7 +137,7 @@ Typ aplikace | Udělení | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webová aplikace, webové rozhraní API, démon | Pověření klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Toky přihlašovacích údajů klienta v MSAL.NET](msal-authentication-flows.md#client-credentials))
 Webové rozhraní API | Jménem: | [Volání služeb jménem uživatele pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
-Webové aplikace | Ověřovací kód | [Získání tokenů pomocí autorizačních kódů ve webových aplikacích pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získání tokenů pomocí autorizačních kódů u webových aplikací s MSAL.NET](msal-authentication-flows.md#authorization-code)
+Webová aplikace | Ověřovací kód | [Získání tokenů pomocí autorizačních kódů ve webových aplikacích pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získání tokenů pomocí autorizačních kódů u webových aplikací s MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Trvalost mezipaměti
 
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Rozsahy, které se mají požádat v případě aplikace Flow/démon přihlašovacích údajů klienta
 
-V případě toku přihlašovacích údajů klienta by měl být `/.default`taky obor, který se má předat. To oznamuje službě Azure AD: "všechna oprávnění na úrovni aplikace, ke kterým správce souhlasí v registraci aplikace.
+V případě toku přihlašovacích údajů klienta by měl být `/.default`taky obor, který se má předat. Tento rozsah oznamuje službě Azure AD: "všechna oprávnění na úrovni aplikace, ke kterým správce souhlasí v registraci aplikace.
 
 ## <a name="adal-to-msal-migration"></a>MSAL migrace ADAL
 
@@ -214,9 +222,9 @@ V ADAL.NET v2. X, aktualizační tokeny byly vystaveny, což vám umožní vyví
 * Dlouhodobě běžící služby, které provádí akce, včetně aktualizace řídicích panelů jménem uživatelů, zatímco uživatelé už nebudou připojení. 
 * Scénáře webfarmu, které umožňují klientovi přenést RT do webové služby (ukládání do mezipaměti probíhá na straně klienta, zašifrovaný soubor cookie a není na straně serveru)
 
-Nejedná se tedy o případ s MSAL.NET, ale z bezpečnostních důvodů už nedoporučujeme používat tokeny aktualizace tímto způsobem. To by mohlo ztížit migraci na MSAL 3. x, protože rozhraní API neposkytuje způsob, jak předat dříve načtené obnovovací tokeny. 
+MSAL.NET nevystavuje aktualizace tokenů z bezpečnostních důvodů: MSAL zpracovává aktualizace tokenů za vás. 
 
-Naštěstí MSAL.NET nyní obsahuje rozhraní API, které umožňuje migrovat předchozí obnovovací tokeny do`IConfidentialClientApplication` 
+Naštěstí MSAL.NET nyní obsahuje rozhraní API, které vám umožní migrovat předchozí obnovovací tokeny (získané pomocí ADAL) do `IConfidentialClientApplication`:
 
 ```CSharp
 /// <summary>
@@ -259,6 +267,6 @@ V AuthenticationResult se zobrazí přístupový token a token ID, zatímco se n
 
 Tuto metodu můžete použít také pro různé scénáře integrace, kde máte k dispozici obnovovací token.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o oborech v [oborech, oprávněních a jejich souhlasu získáte v koncovém bodě Microsoft Identity Platform](v2-permissions-and-consent.md) .

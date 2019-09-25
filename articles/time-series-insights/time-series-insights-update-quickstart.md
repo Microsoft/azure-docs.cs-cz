@@ -10,13 +10,13 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/29/2019
-ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.date: 09/23/2019
+ms.openlocfilehash: 633eb00b479c6d2e2bf233b42aff7d393b110fd2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677712"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258420"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumat ukázkové prostředí Azure Time Series Insights Preview
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Time Series Insights najít už
 
 Průzkumník Preview Time Series Insights ukazuje historická data a hlavní příčiny analýzy. Jak začít:
 
-1. Přejít do ukázkového prostředí [farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples)  
+1. Přejít do [ukázkového prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples)  
 
 1. Pokud se zobrazí výzva, přihlaste se do Průzkumníka Time Series Insights pomocí svých přihlašovacích údajů k účtu Azure.
 
@@ -46,7 +46,7 @@ Průzkumník Preview Time Series Insights ukazuje historická data a hlavní př
 
       [![W7 ve společnosti Contoso – rostlina 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
+1. V poslední době společnost Contoso našla požár v větrné turbíně. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
 
    1. Změňte rozsah zobrazení na **3/9/17 20:00 na 3/10/17 20:00 (UTC)** .
    1. Vyberte **zabezpečení systému** > **FireAlert**.
@@ -78,7 +78,7 @@ Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historick�
 * Opravte problém.
 * Dejte špičkové systémy oznámení výstrah.
 
-## <a name="root-cause-analysis"></a>Analýza hlavní příčiny
+## <a name="root-cause-analysis"></a>Analýza původní příčiny
 
 1. Některé scénáře vyžadují propracované analýzy k odhalení drobných pokrytí dat. Vyberte Windmill **W6** na datum **6/25**.
 
@@ -123,7 +123,7 @@ Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořil
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
 1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Jste připraveni vytvořit vlastní prostředí Time Series Insights Preview. Začněte takto:
 

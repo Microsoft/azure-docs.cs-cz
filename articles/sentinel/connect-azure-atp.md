@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ebb727055296ba7886a9307ada113ab5a6e0c9e0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240191"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261842"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp---preview"></a>Připojení dat z Azure Advanced Threat Protection (ATP) – Preview
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Připojení dat z Azure Advanced Threat Protection (ATP)
 
-
-
+> [!IMPORTANT]
+> Datový konektor Azure Advanced Threat Protection ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Protokoly z [rozšířené ochrany před internetovými útoky Azure](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) můžete streamovat do Azure Sentinel jediným kliknutím.
 
@@ -41,7 +42,7 @@ Pokud je Azure ATP nasazený a ingestuje vaše data, můžou být podezřelé v�
 
 1. Pokud chcete připojit Azure ATP ke službě Azure Sentinel, musíte nejdřív povolit integraci mezi Azure ATP a Microsoft Cloud App Security. Informace o tom, jak to udělat, najdete v tématu [Integrace Azure Advanced Threat Protection](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
-1. V Azure Sentinel vyberte **datové konektory** a potom klikněte na dlaždici **ATP Azure** .
+1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Azure Advanced Threat Protection (Preview)** .
 
 1. Můžete vybrat, jestli chcete, aby výstrahy z Azure ATP automaticky generovaly incidenty v rámci služby Azure Sentinel automaticky. V části **vytvořit incidenty** vyberte **Povolit** , pokud chcete povolit výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analýza** a pak na **aktivní pravidla**.
 

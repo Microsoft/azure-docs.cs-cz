@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240711"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262730"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>Připojení vašeho názvového serveru domény – Preview
+# <a name="connect-your-domain-name-server"></a>Připojit váš názvový server domény
 
-
+> [!IMPORTANT]
+> Datový konektor DNS ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Můžete připojit libovolný server DNS (Domain Name Server), který běží v systému Windows, do Azure Sentinel. K tomu slouží instalace agenta na počítač DNS. Pomocí protokolů DNS můžete získat přehledy o zabezpečení, výkonu a operacích souvisejících s provozem v infrastruktuře DNS vaší organizace tím, že shromažďujete, analyzujete a korelujete protokoly o analýze a auditu a další související data ze serverů DNS.
 
@@ -53,7 +55,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 ## <a name="connect-your-dns-appliance"></a>Připojení zařízení DNS
 
-1. Na portálu Sentinel Azure vyberte **datové konektory** a klikněte na dlaždici **DNS** .
+1. Na portálu Sentinel Azure vyberte **datové konektory** a klikněte na dlaždici **DNS (Preview)** .
 1. Pokud jsou vaše počítače DNS v Azure:
     1. Klikněte na **nainstalovat agenta na virtuální počítač Azure s Windows**.
     1. V seznamu **virtuální počítače** vyberte počítač DNS, který chcete streamovat do Azure Sentinel. Ujistěte se, že se jedná o virtuální počítač s Windows.

@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 29e50a3d978338eaa46566574e6a20685a14bda4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186391"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265818"
 ---
 #   <a name="conditional-skill"></a>Podmíněná dovednost
 
@@ -89,9 +88,9 @@ Vstupy rozlišují velká a malá písmena.
 
 | Vstup   | Popis |
 |-------------|-------------|
-| condition   | Tento vstup je vyhodnoceným [polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Tento vstup je vyhodnoceným [polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena na *hodnotu true*. Řetězcové konstanty by měly být vráceny v jednoduchých uvozovkách (a). <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
-| whenFalse   | Tento vstup je vyhodnoceným [polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena jako NEPRAVDA. <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
+| condition   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
+| whenTrue    | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena na *hodnotu true*. Řetězcové konstanty by měly být vráceny v jednoduchých uvozovkách (a). <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
+| whenFalse   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena jako *NEPRAVDA*. <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 Existuje jeden výstup, který se jednoduše nazývá "výstup". Vrátí hodnotu *whenFalse* , pokud je podmínka false, nebo *whenTrue* , pokud je podmínka pravdivá.
@@ -175,7 +174,7 @@ V tomto příkladu nepoužíváme podmíněný aspekt dovednosti, protože podm�
 Některé parametry jsou vyhodnoceny, takže musíte být obzvláště opatrní, abyste mohli postupovat podle zdokumentovaného vzoru. Výrazy musí začínat symbolem rovná se. Cesta musí být oddělená znaky "$ (" a "") ". Nezapomeňte vkládat řetězce do jednoduchých uvozovek. Který pomáhá vyhodnocovacímu vyhodnocení rozlišovat mezi řetězci a skutečnými cestami a operátory. Také nezapomeňte vložit prázdné znaky kolem operátorů (např. "*" v cestě znamená něco jiného než násobení).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
