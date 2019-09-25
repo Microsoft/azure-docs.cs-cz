@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe4a47161e86614807e69b613b49e8808a35e041
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077234"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266061"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA vysoké dostupnosti pro virtuální počítače Azure
 
@@ -60,13 +60,13 @@ Azure má různé SLA dostupnosti pro různé komponenty, jako jsou sítě, úlo
 
 [Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) popisuje tři různé SLA pro tři různé konfigurace:
 
-- Jeden virtuální počítač, který používá [Azure Premium SSD](../../wi https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/ows/disks-types.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
+- Jeden virtuální počítač, který používá [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
 - Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Tato možnost poskytuje měsíční dobu provozu 99,95 procent.
 - Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [zóny dostupnost](https://docs.microsoft.com/azure/availability-zones/az-overview). Tato možnost zadala za měsíc 99,99% dobu provozu.
 
 Změřte svůj požadavek na dostupnost proti SLA, kterou můžou součásti Azure poskytovat. Pak zvolte scénáře, které SAP HANA, abyste dosáhli požadované úrovně dostupnosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [dostupnosti SAP HANA v rámci jedné oblasti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
 - Přečtěte si o [dostupnosti SAP HANA v různých oblastech Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ede3d863ed47b16b12f516d8af778fdb2576d27
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14742984fb993679abc87e279f3ad9882ec77ce3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70391034"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266024"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Rychlý start: Vytvoření aplikace Java pro správu rozhraní API pro tabulky dat Azure Cosmos DB
 
@@ -87,7 +87,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**. 
 
-   ![Zobrazení a zkopírování požadovaných informací o připojovacím řetězci v podokně Připojovací řetězec](./media/create-table-java/connection-string.png)
+   ![Zobrazení informací o připojovacím řetězci v podokně připojovací řetězec](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. Pomocí tlačítka pro kopírování na pravé straně zkopírujte PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC.
 

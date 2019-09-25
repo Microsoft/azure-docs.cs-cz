@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002406"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265986"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -669,7 +669,7 @@ Pokud nemáte nakonfigurovaný Git, propojené šablony jsou přístupné prost�
 
 ## <a name="hot-fix-production-branch"></a>Produkční větev Hot Fix
 
-Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou je potřeba opravit hned, ale nemůžete nasadit aktuální větev pro spolupráci, možná budete muset nasadit opravu Hot.
+Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou je potřeba opravit hned, ale nemůžete nasadit aktuální větev pro spolupráci, možná budete muset nasadit opravu Hot. Tento přístup je známý jako rychlý opravový technický nebo QFE. 
 
 1.  Ve službě Azure DevOps se podívejte na verzi, která byla nasazená do produkčního prostředí, a najděte poslední přivedený zápis.
 
@@ -705,8 +705,11 @@ Pokud používáte integraci Gitu s datovou továrnou a máte kanál CI/CD, kter
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 
--   Nemůžete publikovat jednotlivé prostředky. Entity datové továrny závisejí na sobě navzájem a sledování měnících se závislostí může být obtížné a vede k neočekávanému chování. Například triggery závisejí na kanálech, kanály závisejí na datových sadách a dalších kanálech, a tak dále. Pokud bylo možné publikovat pouze podmnožinu celé sady změn, může dojít k určitým neočekávaným chybám.
+- V případě _, že ADF nepovoluje_ zápisy na výběry, ani selektivní publikování prostředků, ADF. Publikování budou zahrnovat **všechny** změny provedené v datové továrně.
+
+    - Entity služby Data Factory jsou na sobě navzájem závislé, například triggery závisejí na kanálech, kanálech závisí na datových sadách a dalších kanálech atd. Selektivní publikování podmnožiny prostředků _může_ vést k neočekávanému chování a chybám.
+    - Ve výjimečných případech, kdy je třeba vymezit selektivní publikování, můžete uvažovat o opravách za běhu. Další informace najdete v tématu [provozní větev Hot Fix](#hot-fix-production-branch) .
 
 -   Nemůžete publikovat z privátních větví.
 
--   Nemůžete hostovat projekty na Bitbucket.
+-   Od tohoto okamžiku nemůžete hostovat projekty na Bitbucket
