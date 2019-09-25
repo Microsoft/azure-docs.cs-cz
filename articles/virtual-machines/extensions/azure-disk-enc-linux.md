@@ -140,20 +140,20 @@ Používá `AADClientCertificate`se:
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | řetězec |
-| type | AzureDiskEncryptionForLinux | řetězec |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (schéma 0,1) AADClientSecret | password | řetězec |
-| (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
+| (schéma 0,1) AADClientSecret | password | string |
+| (schéma 0,1) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
-| KeyEncryptionAlgorithm | "RSA-VÝPLNĚ OAEP", "RSA-VÝPLNĚ OAEP-256", "RSA1_5" | řetězec |
-| KeyEncryptionKeyURL | url | řetězec |
-| volitelné KeyVaultURL | url | řetězec |
-| Passphrase | password | řetězec | 
-| SequenceVersion | uniqueidentifier | řetězec |
-| VolumeType | Operační systém, data, vše | řetězec |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | "RSA-VÝPLNĚ OAEP", "RSA-VÝPLNĚ OAEP-256", "RSA1_5" | string |
+| KeyEncryptionKeyURL | url | string |
+| volitelné KeyVaultURL | url | string |
+| Passphrase | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Operační systém, data, vše | string |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
