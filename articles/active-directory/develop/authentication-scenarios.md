@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 09/23/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 76c5214fc26d299c6abb72ed6cd448728903e78f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622708"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272545"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -60,6 +60,25 @@ Ve výše popsaném příkladu scénáře můžete aplikace klasifikovat podle t
 * Aplikace, které potřebují zabezpečený přístup k prostředkům
 * Aplikace, které hrají roli samotného prostředku
 
+### <a name="how-each-flow-emits-tokens-and-codes"></a>Jak každý tok generuje tokeny a kódy
+
+V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf znázorňuje přehled:
+
+|Tok | Nutné | id_token | přístupový token | aktualizovat token | Autorizační kód | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hybridní tok OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Aktualizovat uplatnění tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | aktualizovat token | x | x | x| |
+|[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
+|[Tok kódu zařízení](v2-oauth2-device-code.md) | | x| x| x| |
+|[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
+
+**Poznámky**:
+
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity. 
+
+
 Teď, když máte přehled základních informací, přečtěte si článek popisující model aplikace identity a rozhraní API, jak zřizování funguje na platformě Microsoft Identity Platform a odkazuje na podrobné informace o běžných scénářích, které Microsoft Identity Platform podporuje.
 
 ## <a name="application-model"></a>Aplikační model
@@ -77,7 +96,7 @@ Platforma Microsoft Identity reprezentuje aplikace podle konkrétního modelu, k
     * Umožňuje uživatelům a správcům dynamicky udělovat nebo odepírat souhlas s tím, aby aplikace jejich jménem měla přístup k prostředkům.
     * Umožňuje správcům nakonec rozhodnout, co můžou aplikace provádět a kteří uživatelé můžou konkrétní aplikace používat a jak se přistupuje k prostředkům adresáře.
 
-V rámci Microsoft Identity Platform **objekt aplikace** popisuje aplikaci jako abstraktní entitu. Vývojáři pracují s aplikacemi. V době nasazení používá platforma Microsoft Identity Platform daný objekt aplikace jako podrobný plán k vytvoření instančníhoobjektu, který představuje konkrétní instanci aplikace v rámci adresáře nebo tenanta. Právě instanční objekt definuje, co aplikace v konkrétním cílovém adresáři ve skutečnosti může dělat, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Platforma Microsoft Identity Platform vytvoří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
+V rámci Microsoft Identity Platform **objekt aplikace** popisuje aplikaci jako abstraktní entitu. Vývojáři pracují s aplikacemi. V době nasazení používá platforma Microsoft Identity Platform daný objekt aplikace jako podrobný plán k vytvoření **instančního**objektu, který představuje konkrétní instanci aplikace v rámci adresáře nebo tenanta. Právě instanční objekt definuje, co aplikace v konkrétním cílovém adresáři ve skutečnosti může dělat, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Platforma Microsoft Identity Platform vytvoří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
 
 Následující diagram znázorňuje zjednodušený postup zřizování platformy Microsoft Identity Platform založený na základě souhlasu.  V tomto případě existují dva klienty (a a B), kde tenant vlastní aplikaci a tenant B vytváří instanci aplikace prostřednictvím instančního objektu.  
 
@@ -129,6 +148,6 @@ V následující tabulce je uveden stručný popis každého typu deklarace vys�
 | Hlavní název uživatele | Obsahuje hlavní název uživatele subjektu. |
 | Version | Obsahuje číslo verze tokenu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Seznamte se s [typy aplikací a scénáři podporovanými v platformě Microsoft Identity Platform](app-types.md) .

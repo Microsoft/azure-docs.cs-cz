@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bb926aeab4f88f2d41c578ae3962737df7b2f3
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: ea6e654037e545a1b969aa2a9b41245fb2892bff
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872865"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273810"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -91,7 +91,7 @@ Pokud potřebujete další oprávnění nebo prostředky, které se v tuto chví
 K dispozici jsou nové protokoly zřizování, které vám pomůžou monitorovat a řešit potíže s nasazením zřizování uživatelů a skupin. Tyto nové soubory protokolu obsahují informace o:
 
 - Které skupiny byly úspěšně vytvořeny v [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)
-- Jaké role byly naimportovány z [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on)
+- Jaké role byly naimportovány z [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws)
 - Kteří zaměstnanci nebyli naimportovali z [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)
 
 Další informace najdete v tématu [zřizování sestav na portálu Azure Active Directory (Preview)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs).
@@ -203,7 +203,7 @@ Další informace najdete v tématu [Správa pravidel dynamického členství](h
 
 **Textový** Změněná funkce  
 **Kategorie služby:** Kontroly přístupu  
-**Schopnost produktu:** Zásady správného řízení identit
+**Schopnost produktu:** Identity Governance
 
 Zavedli jsme nové oprávnění `AccessReview.ReadWrite.Membership`aplikace Microsoft Graph, které umožňuje aplikacím automaticky vytvářet a načítat kontroly přístupu pro členství ve skupinách a přiřazení aplikací. Toto oprávnění můžou použít naplánované úlohy nebo v rámci automatizace, aniž by bylo nutné přihlášený kontext uživatele.
 
@@ -660,7 +660,7 @@ Další informace o tom, jak lépe zabezpečit organizaci prostřednictvím auto
 ### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>Skóre Secure identity je teď dostupné ve službě Azure AD (Obecná dostupnost).
 
 **Textový** Nová funkce  
-**Kategorie služby:** Není k dispozici  
+**Kategorie služby:** neuvedeno  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
 Teď můžete monitorovat a zdokonalovat stav zabezpečení identity pomocí funkce skóre Secure identity ve službě Azure AD. Funkce skóre Secure identity využívá jeden řídicí panel, který vám může pomáhat:
@@ -808,8 +808,8 @@ Další informace o aktualizované verzi Azure AD Identity Protection najdete na
 ### <a name="azure-ad-entitlement-management-is-now-available-public-preview"></a>Služba Azure AD nároking Management je teď dostupná (verze Public Preview).
 
 **Textový** Nová funkce  
-**Kategorie služby:** Zásady správného řízení identit  
-**Schopnost produktu:** Zásady správného řízení identit
+**Kategorie služby:** Identity Governance  
+**Schopnost produktu:** Identity Governance
 
 Správa nároků služby Azure AD, která je teď ve verzi Public Preview, pomáhá zákazníkům delegovat správu balíčků přístupu, který definuje, jak můžou zaměstnanci a obchodní partneři požádat o přístup, kteří musí schvalovat a jak dlouho mají přístup. Přístup k balíčkům může spravovat členství v Azure AD a skupinách Office 365, přiřazování rolí v podnikových aplikacích a přiřazování rolí pro weby SharePointu Online. Přečtěte si další informace o správě nároků v tématu [Přehled správy nároků služby Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Další informace o šířce funkcí Azure AD Identity Governance, včetně Privileged Identity Management, kontrolách přístupu a podmínek použití, najdete v tématu [co je Azure AD identity governance?](../governance/identity-governance-overview.md).
 
@@ -871,7 +871,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Textový** Nová funkce  
 **Kategorie služby:** Kontroly přístupu  
-**Schopnost produktu:** Zásady správného řízení identit
+**Schopnost produktu:** Identity Governance
 
 Nové aktualizace v recenzích přístupu Azure AD umožňují:
 

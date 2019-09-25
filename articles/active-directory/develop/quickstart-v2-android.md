@@ -17,16 +17,14 @@ ms.date: 07/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25d4dba67bcf38049939ac40437c3668ee988235
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853048"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268503"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlaste se uživatelům a zavolejte rozhraní API pro Microsoft Graph z aplikace pro Android.
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplikace pro Android přihlásit uživatele v rámci osobního nebo pracovního a školního účtu, získat přístupový token a volat rozhraní Microsoft Graph API.
 
@@ -68,7 +66,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > 1. Vyberte `Configure` a uložte JSON ***Configuration MSAL*** pro pozdější verzi. 
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
+> #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurovat aplikaci
 > Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI pro přesměrování, který je kompatibilní s zprostředkovatelem ověřování. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
@@ -236,7 +234,7 @@ Aplikace by neměly vyžadovat, aby se uživatelé přihlásili pokaždé, když
 > | `getAccounts(...)` | Obsahuje účet, ke kterému se pokoušíte získat tokeny pro tichou instalaci. |
 > | `getAuthSilentCallback()` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 

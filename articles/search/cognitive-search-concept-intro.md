@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: aa8ab3a3bc2f243e8b0ee404228926ef46bc46db
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899968"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266394"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "rozpoznávání hledání" v Azure Search?
 
@@ -51,7 +50,7 @@ Vyhledávání v rozpoznávání pomocí předem připravených dovedností je v
 
   Předem připravené dovednosti taky můžete použít k restrukturování obsahu prostřednictvím operací rozdělení textu, sloučení a tvaru.
 
-Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní](cognitive-search-custom-skill-interface.md)s dovednostmi. Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>Kanál součásti pro hledání vnímání
@@ -98,7 +97,7 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 
 | Koncept | Popis| Odkazy |
 |---------|------------|-------|
-| Dovednosti | Nejvyšší úroveň s názvem prostředek obsahující kolekci dovedností. Dovednosti je kanál pro obohacení. Vyvolá se při indexování indexerem. | [Definovat dovednosti](cognitive-search-defining-skillset.md) |
+| Sada dovedností | Nejvyšší úroveň s názvem prostředek obsahující kolekci dovedností. Dovednosti je kanál pro obohacení. Vyvolá se při indexování indexerem. | [Definovat dovednosti](cognitive-search-defining-skillset.md) |
 | Vnímání znalostí | Atomická transformace v kanálu rozšíření. Často se jedná o komponentu, která extrahuje nebo odvodí strukturu, a proto rozšiřuje vaše znalosti vstupních dat. Téměř vždy je výstupem na základě textu a zpracování je zpracování přirozeného jazyka nebo zpracování obrázků, které extrahuje nebo generuje text ze vstupů z obrázku. Výstup dovedností lze namapovat na pole v indexu nebo použít jako vstup pro obohacení pro podřízené služby. Dovednost je předdefinovaná a poskytnutá společností Microsoft, nebo vlastní: vytvořená a nasazená vámi. | [Předdefinované dovednosti](cognitive-search-predefined-skills.md) |
 | Extrakce dat | Pokrývá širokou škálu zpracování, ale týká se rozpoznávání rozpoznávání entit, se většinou používá k extrakci dat (entity) ze zdroje, který tyto informace neposkytuje nativně. | [Dovednost pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md)| 
 | Zpracování obrázků | Odvodí text z obrázku, jako je například schopnost rozpoznat orientační bod, nebo extrahuje text z obrázku. Mezi běžné příklady patří rozpoznávání znaků pro zvedání znaků ze souboru naskenovaného dokumentu (JPEG) nebo rozpoznávání názvu ulice ve fotografii obsahující značku ulice. | Dovednost k [analýze obrázků](cognitive-search-skill-image-analysis.md) nebo [rozpoznávání OCR](cognitive-search-skill-ocr.md)

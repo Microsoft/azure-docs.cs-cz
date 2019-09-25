@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 965714fc4b02430653d3670ddec69fcd77cc7920
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 2b10866adb1615b31446388fa0e9d0dabffd13da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075644"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268696"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače se systémem CentOS Linux k Azure AD Domain Services spravované doméně
 
@@ -69,7 +69,7 @@ V souboru *hosts* aktualizujte adresu *localhost* . V následujícím příkladu
 Aktualizujte tyto názvy vlastními hodnotami:
 
 ```console
-127.0.0.1 centos centos.contoso.com
+127.0.0.1 centos.contoso.com centos
 ```
 
 Po dokončení uložte a zavřete soubor *hosts* pomocí `:wq` příkazu editoru.
@@ -195,7 +195,7 @@ Pokud chcete ověřit, jestli se virtuální počítač úspěšně připojil ke
     sudo yum update
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud máte problémy s připojením k virtuálnímu počítači ke spravované doméně Azure služba AD DS nebo když se přihlašujete pomocí účtu domény, přečtěte si téma [řešení potíží s připojením k doméně](join-windows-vm.md#troubleshoot-domain-join-issues).
 

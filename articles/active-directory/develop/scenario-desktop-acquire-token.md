@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5409b5619f8be16ef92f517b4b598e2a8e5e2b7
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3e8d46e873d48de5f7e507566b5af6095b9c4e1c
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872818"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268390"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – získat token
 
@@ -32,6 +32,8 @@ Webové rozhraní API je definováno pomocí `scopes`. Bez ohledu na možnosti, 
 
 - Systematický pokus o získání tokenu z mezipaměti tokenů voláním`AcquireTokenSilent`
 - Pokud se toto volání nezdařilo `AcquireToken` , použijte tok, který chcete použít (tady je `AcquireTokenXX`reprezentovaný).
+
+### <a name="in-msalnet"></a>V MSAL.NET
 
 ```CSharp
 AuthenticationResult result;
@@ -50,12 +52,52 @@ catch(MsalUiRequiredException ex)
                     .ExecuteAsync();
 }
 ```
+### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
+
+Cíl-C:
+
+```objc
+MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
+    
+MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
+[application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
+    
+    // Check the error
+    if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
+    {
+        // Interactive auth will be required, call acquireTokenWithParameters:error:
+    }
+}];
+```
+Swift:
+
+```swift
+guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
+let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
+application.acquireTokenSilent(with: silentParameters) { (result, error) in
+            
+    guard let authResult = result, error == nil else {
+                
+    let nsError = error! as NSError
+                
+        if (nsError.domain == MSALErrorDomain &&
+            nsError.code == MSALError.interactionRequired.rawValue) {
+                    
+            // Interactive auth will be required, call acquireToken()
+            return
+        }
+        return
+    }
+}
+```
 
 Tady je podrobné informace o různých způsobech získání tokenů v desktopové aplikaci.
 
 ## <a name="acquiring-a-token-interactively"></a>Interaktivní získání tokenu
 
 Následující příklad ukazuje minimální kód pro interaktivní získání tokenu pro čtení profilu uživatele pomocí Microsoft Graph.
+
+### <a name="in-msalnet"></a>V MSAL.NET
 
 ```CSharp
 string[] scopes = new string[] {"user.read"};
@@ -74,13 +116,47 @@ catch(MsalUiRequiredException)
 }
 ```
 
+### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
+
+Cíl-C:
+
+```objc
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error) 
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+            
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+Swift:
+
+```swift
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+                
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+                
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+
 ### <a name="mandatory-parameters"></a>Povinné parametry
 
 `AcquireTokenInteractive`má pouze jeden povinný parametr ``scopes``, který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API pro každé rozhraní API Microsoft Graph v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), bude nutné použít rozsah "User. Read", "Contacts. Read". Viz také [Microsoft Graph odkaz na oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 V systému Android je nutné zadat také nadřazenou aktivitu (pomocí `.WithParentActivityOrWindow`níže uvedených objektů), aby se token po interakci vrátil zpět do této nadřazené aktivity. Pokud ho nezadáte, vyvolá se při volání `.ExecuteAsync()`výjimka.
 
-### <a name="specific-optional-parameters"></a>Konkrétní volitelné parametry
+### <a name="specific-optional-parameters-in-msalnet"></a>Konkrétní volitelné parametry v MSAL.NET
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
@@ -918,7 +994,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Volání webového rozhraní API z desktopové aplikace](scenario-desktop-call-api.md)

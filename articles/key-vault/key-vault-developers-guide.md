@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000797"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268837"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault příručka pro vývojáře
 
@@ -29,26 +29,6 @@ Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](key
 ## <a name="public-previews"></a>Veřejné náhledy
 
 Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkoušejte si tyto informace a sdělte nám, co si myslíte prostřednictvím azurekeyvault@microsoft.comnaší e-mailové adresy pro zpětnou vazbu.
-
-### <a name="storage-account-keys---july-10-2017"></a>Klíče účtu úložiště – 10. července 2017
-
->[!NOTE]
->Pro tuto aktualizaci Azure Key Vault jenom funkce **klíče účtu úložiště** je ve verzi Preview.
-
-Tato verze Preview zahrnuje naši novou funkci klíčů účtu úložiště, která je dostupná prostřednictvím těchto rozhraní. [.NET/C#](/dotnet/api/microsoft.azure.keyvault/), [REST](/rest/api/keyvault/) a [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Další informace o nové funkci klíčů účtu úložiště najdete v tématu [Přehled klíčů účtu úložiště Azure Key Vault](key-vault-ovw-storage-keys.md).
-
-## <a name="videos"></a>Videa
-
-V tomto videu se dozvíte, jak vytvořit vlastní Trezor klíčů a jak ho používat z ukázkové aplikace "Hello Key Vault".
-
-- [Úvodní příručka pro Key Vault vývojáře](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Prostředky zmíněné ve výše uvedeném videu:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault vzorový kód](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a Správa trezorů klíčů
 

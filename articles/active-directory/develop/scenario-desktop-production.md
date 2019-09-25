@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, že volání webových rozhraní API (Přesun do produkčního prostředí) – platforma identit Microsoft
-description: Zjistěte, jak vytvářet aplikace klasické pracovní plochy, že volání webových rozhraní API (Přesun do produkčního prostředí)
+title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (přesunout do produkčního prostředí) – Microsoft Identity Platform
+description: Zjistěte, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (přesunout do produkčního prostředí).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,36 +17,38 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2343a416bd810792e7267b94395f953aa4f880a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111188"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268325"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – Přesun do produkčního prostředí
+# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – přesun do produkčního prostředí
 
-Tento článek obsahuje podrobnosti o vylepšovat vaši aplikaci dál a přesuňte ho do produkčního prostředí.
+V tomto článku najdete podrobné informace o dalším vylepšení aplikace a jejím přesunu do produkčního prostředí.
 
-## <a name="handling-errors-in-desktop-applications"></a>Zpracování chyb v klientských aplikacích
+## <a name="handling-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
 
-Různé toky jste zjistili, jak pro zpracování chyb pro tichou toků (jak je uvedeno ve fragmentech kódu). Seznámili jste se také, že existují případy, kde je interakce potřebné (přírůstkové souhlasu a podmíněný přístup).
+V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky (jak je znázorněno v části fragmenty kódu). Také jste viděli, že existují případy, kdy je interakce nutná (přírůstkový souhlas a podmíněný přístup).
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Jak vám má souhlasu uživatele předem pro několik prostředků
+## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Jak dát uživateli souhlas před několika prostředky
 
 > [!NOTE]
-> Získávání souhlas pro několik prostředků funguje platforma identit Microsoft, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje pouze souhlas správce, není souhlasu uživatele.
+> Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Koncový bod Microsoft identity platform (v2.0) neumožňuje získání tokenu pro několik prostředků najednou. Proto `scopes` parametr může obsahovat pouze obory pro jeden prostředek. Můžete zajistit, že uživatel předem souhlasí s několika prostředky pomocí `extraScopesToConsent` parametru.
+Koncový bod Microsoft Identity Platform (v 2.0) neumožňuje získat token pro několik prostředků najednou. `scopes` Proto parametr může obsahovat pouze obory pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
 
-Například pokud máte dva prostředky, které mají dvě obory každé:
+Například pokud máte dva prostředky, které mají dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi` -s 2 obory `customer.read` a `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` -s 2 obory `vendor.read` a `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`– se dvěma obory `customer.read` a`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`– se dvěma obory `vendor.read` a`vendor.write`
 
-Měli byste použít `.WithAdditionalPromptToConsent` modifikátor, který má `extraScopesToConsent` parametru.
+Měli byste použít `.WithAdditionalPromptToConsent` modifikátor, který `extraScopesToConsent` má parametr.
 
 Příklad:
+
+### <a name="in-msalnet"></a>V MSAL.NET
 
 ```CSharp
 string[] scopesForCustomerApi = new string[]
@@ -67,18 +69,48 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Toto volání se získat přístupový token pro první webové rozhraní API.
+### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
 
-Když budete potřebovat volání druhého webového rozhraní API, můžete volat:
+Cíl-C:
+
+```objc
+NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                                @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
+    
+NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                              @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+    
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
+interactiveParams.extraScopesToConsent = scopesForVendorApi;
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
+```
+
+Swift:
+
+```swift
+let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                            "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
+        
+let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                          "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+        
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
+interactiveParameters.extraScopesToConsent = scopesForVendorApi
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
+```
+
+Toto volání vám poskytne přístupový token pro první webové rozhraní API.
+
+Pokud potřebujete zavolat druhé webové rozhraní API, můžete zavolat `AcquireTokenSilent` rozhraní API:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Osobní účet Microsoft vyžaduje reconsenting při každém spuštění aplikace
+### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Osobní účet Microsoft vyžaduje přesouhlasení při každém spuštění aplikace.
 
-Reprompting pro vyjádření souhlasu pro všechna volání nativního klienta (desktop a mobilní aplikace) k autorizaci uživatele osobní účty Microsoft, je zamýšlené chování. Nativní klient systému identity je ze své podstaty nezabezpečené (rozporu s důvěrnými klientské aplikace, které Výměna tajného kódu s platformou Microsoft Identity k prokázání své identity). Platforma identit Microsoft jste zvolili pro zmírnění této zajišťování pro službami pro veřejnost podle výzvy k zadání souhlasu, pokaždé, když je tato aplikace oprávnění.
+Pro uživatele osobních účtů Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop/mobilní aplikace) volání metody autorizovat je zamýšlené chování. Identita nativního klienta je ze své podstaty nezabezpečená (v rozporu s důvěrnými klientskými aplikacemi, které vyměňují tajný klíč s platformou Microsoft identity k prokázání identity). Platforma Microsoft identity se rozhodla zmírnit toto zabezpečení pro zákazníky pomocí výzvy k zadání souhlasu uživatele, pokaždé, když je aplikace autorizována.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

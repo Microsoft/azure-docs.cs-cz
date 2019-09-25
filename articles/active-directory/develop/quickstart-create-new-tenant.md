@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853142"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268597"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Vytvoření a nastavení vývojového prostředí
+# <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
 
 Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
 
@@ -74,7 +74,7 @@ Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit
 
 Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociálních sítích a místních účtů, budete muset vytvořit tenanta Azure AD B2C. Pokud chcete začít, postupujte podle pokynů k [vytvoření tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyzkoušejte rychlý start zaměřený na psaní kódu a začněte s ověřováním uživatelů. 
 * Podrobnější vzorové kódy najdete v dokumentaci v části **Kurzy**.

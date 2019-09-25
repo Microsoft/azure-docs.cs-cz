@@ -1,6 +1,6 @@
 ---
-title: Mapování schématu v aktivitě kopírování | Dokumentace Microsoftu
-description: Informace o způsobu mapování schémat a datové typy z datového zdroje do jímky dat při kopírování dat aktivita kopírování ve službě Azure Data Factory.
+title: Mapování schématu v aktivitě kopírování | Microsoft Docs
+description: Přečtěte si, jak aktivita kopírování v Azure Data Factory mapuje schémata a datové typy ze zdrojových dat na data jímky při kopírování dat.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,28 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875805"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272267"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 
-Tento článek popisuje, jak funguje Azure Data Factory za kopírování schématu mapování a mapování datového typu z datového zdroje do jímky dat při spuštění kopírovat data.
+Tento článek popisuje, jak Azure Data Factory aktivita kopírování provádí mapování schématu a mapování typů dat ze zdrojových dat na data jímky při spouštění kopie dat.
 
-## <a name="schema-mapping"></a>mapování schématu
+## <a name="schema-mapping"></a>Mapování schématu
 
-Mapování sloupců platí při kopírování dat ze zdroje do jímky. Ve výchozím nastavení, aktivita kopírování **mapování dat zdroje do jímky podle názvů sloupců**. Můžete zadat [explicitního mapování](#explicit-mapping) přizpůsobit podle svých potřeb mapování sloupců. Přesněji řečeno aktivita kopírování:
+Mapování sloupce platí při kopírování dat ze zdroje do jímky. Ve výchozím nastavení jsou **zdrojová data mapování aktivit zkopírována do jímky podle názvů sloupců**. Můžete zadat [explicitní mapování](#explicit-mapping) pro přizpůsobení mapování sloupce podle vašich potřeb. Konkrétně aktivita kopírování:
 
-1. Číst data ze zdroje a určit schématu zdroje
-2. Použít výchozí mapování sloupců pro mapování sloupců podle názvu nebo použít explicitní sloupec mapování, pokud zadaný.
+1. Přečtěte si data ze zdroje a určete zdrojové schéma.
+2. Použijte výchozí mapování sloupce pro mapování sloupců podle názvu nebo použijte explicitní mapování sloupce, pokud je zadáno.
 3. Zápis dat do jímky
 
 ### <a name="explicit-mapping"></a>Explicitní mapování
 
-Můžete určit sloupce, které chcete mapování v aktivitě kopírování -> `translator`  ->  `mappings` vlastnost. Následující příklad definuje aktivitu kopírování v kanálu pro kopírování dat z obsahující text oddělený znaky do služby Azure SQL Database.
+Můžete zadat sloupce, které mají být namapovány na vlastnost `translator` aktivita kopírování – >  ->  `mappings` . Následující příklad definuje aktivitu kopírování v kanálu pro kopírování dat z textu s oddělovači do Azure SQL Database.
 
 ```json
 {
@@ -86,33 +86,33 @@ Můžete určit sloupce, které chcete mapování v aktivitě kopírování -> `
 }
 ```
 
-Následující vlastnosti jsou podporovány v rámci `translator`  ->  `mappings` -> objekt s `source` a `sink`:
+Následující vlastnosti jsou `translator` podporovány v  ->  `mappings` > objekt s `source` a `sink`:
 
-| Vlastnost | Popis                                                  | Požaduje se |
+| Vlastnost | Popis                                                  | Požadováno |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Název sloupce zdrojem nebo jímkou.                           | Ano      |
-| ordinal  | Index sloupce. Začněte s 1. <br>Použít a vyžaduje při použití oddělený text bez záhlaví řádku. | Ne       |
-| path     | Výraz cesty JSON pro každé pole pro rozbalení nebo mapy. Platí pro hierarchických dat třeba MongoDB nebo rozhraní REST.<br>U polí v kořenovém objektu cesta JSON začíná s kořenem $; u polí uvnitř pole vybraného pomocí `collectionReference` vlastnost, cesta JSON začíná od prvku pole. | Ne       |
-| type     | Data Factory dočasné datový typ sloupce zdrojem nebo jímkou. | Ne       |
-| culture  | Jazyková verze, ve sloupci zdrojem nebo jímkou. <br>Použít, když je typ `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne       |
-| format   | Formátovací řetězec se použije, když je typ `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní data a řetězce formátu časových](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) o tom, jak formátovat datum a čas. | Ne       |
+| name     | Název zdroje nebo sloupce jímky.                           | Ano      |
+| ordinal  | Index sloupce. Začněte s 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | Ne       |
+| path     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchická data, např. MongoDB/REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je `collectionReference` zvoleno vlastností, začíná cesta JSON od elementu pole. | Ne       |
+| type     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. | Ne       |
+| culture  | Jazyková verze zdroje nebo sloupce jímky. <br>Použijte, pokud je `Datetime` typ `Datetimeoffset`nebo. Výchozí formát je `en-us`. | Ne       |
+| format   | Řetězec formátu, který se má použít, `Datetime` Pokud `Datetimeoffset`je typ nebo. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
 
-Následující vlastnosti jsou podporovány v rámci `translator`  ->  `mappings` kromě objekt s `source` a `sink`:
+Následující vlastnosti `translator` jsou podporovány  ->  `source` kromě objektu s a`sink`: `mappings`
 
-| Vlastnost            | Popis                                                  | Požaduje se |
+| Vlastnost            | Popis                                                  | Požadováno |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Podporováno, pouze pokud je hierarchická data třeba MongoDB nebo rozhraní REST zdroje.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pomocí stejného vzoru a převést na jeden řádek pro každý objekt, zadejte cestu JSON pole použít různé. | Ne       |
+| collectionReference | Podporováno pouze v případě, že je zdrojem hierarchických dat například MongoDB/REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | Ne       |
 
-### <a name="alternative-column-mapping"></a>Mapování alternativních sloupce
+### <a name="alternative-column-mapping"></a>Alternativní mapování sloupce
 
-Můžete zadat kopírování aktivita -> `translator`  ->  `columnMappings` k mapování mezi daty tabulkové ve tvaru. V tomto případě je požadované pro vstupní a výstupní datové sady část "struktura". Podporuje mapování sloupce **mapování všech nebo podmnožinu sloupců v datové sadě zdroj "struktura" všech sloupců v datové sadě jímky "struktura"** . Následují chybových podmínek, za následek výjimku:
+Můžete určit aktivitu kopírování – > `translator`  ->  `columnMappings` k mapování mezi daty tabelárních ve tvaru. V tomto případě je oddíl "Structure" vyžadován pro vstupní i výstupní datové sady. Mapování sloupce podporuje **mapování všech nebo dílčích sloupců ve struktuře zdrojové datové sady na všechny sloupce ve struktuře datové sady jímky**. Následující jsou chybové stavy, jejichž výsledkem je výjimka:
 
-* Zdrojového úložiště dat dotazu, že výsledek nemá název sloupce, které je definováno v sekci "struktura" vstupní datové sady.
-* Úložiště dat jímky (Pokud se předem definované schéma) nemá název sloupce, které je definováno v sekci "struktura" výstupní datovou sadu.
-* Méně sloupců nebo více sloupců v "struktura" datová sada jímky než zadán v mapování.
-* Duplicitní mapování.
+* Výsledek dotazu na zdrojové úložiště dat nemá název sloupce, který je zadaný v části struktura vstupní datové sady.
+* Úložiště dat jímky (Pokud s předem definovaným schématem) nemá název sloupce, který je zadaný v části struktura výstupní datové sady.
+* Buď méně sloupců, nebo více sloupců ve struktuře datové sady jímky, než je uvedeno v mapování.
+* Duplicitní mapování
 
-V následujícím příkladu se vstupní datová sada obsahuje strukturu a odkazuje na tabulku v databázi Oracle místní.
+V následujícím příkladu má vstupní datová sada strukturu a odkazuje na tabulku v místní databázi Oracle.
 
 ```json
 {
@@ -136,7 +136,7 @@ V následujícím příkladu se vstupní datová sada obsahuje strukturu a odkaz
 }
 ```
 
-V této ukázce obsahuje strukturu výstupní datová sada a odkazuje na tabulku v Salesfoce.
+V této ukázce má výstupní datová sada strukturu a odkazuje na tabulku v Salesfoce.
 
 ```json
 {
@@ -160,7 +160,7 @@ V této ukázce obsahuje strukturu výstupní datová sada a odkazuje na tabulku
 }
 ```
 
-Následující kód JSON určuje aktivitu kopírování v kanálu. Sloupce z namapované na sloupce v jímky pomocí zdroje **translator** -> **columnMappings** vlastnost.
+Následující JSON definuje aktivitu kopírování v kanálu. Sloupce ze zdroje mapované na sloupce v jímky pomocí vlastnosti **Translator** -> **ColumnMappings** .
 
 ```json
 {
@@ -195,21 +195,21 @@ Následující kód JSON určuje aktivitu kopírování v kanálu. Sloupce z nam
 }
 ```
 
-Pokud používáte syntaxe `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` zadat mapování sloupce, je stále podporovány jako-je.
+Pokud používáte syntaxi `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` pro k určení mapování sloupce, je stále podporováno tak, jak je.
 
-### <a name="alternative-schema-mapping"></a>Mapování alternativních schématu
+### <a name="alternative-schema-mapping"></a>Alternativní mapování schématu
 
-Můžete zadat kopírování aktivita -> `translator`  ->  `schemaMapping` pro mapování mezi hierarchické ve tvaru dat a tabulkové upravená data, například kopírování z MongoDB nebo rozhraní REST do textového souboru a kopírovat z Oraclu na rozhraní API služby Azure Cosmos DB pro MongoDB. Následující vlastnosti jsou podporovány v aktivitě kopírování `translator` části:
+Můžete určit aktivitu kopírování – > `translator`  ->  `schemaMapping` k mapování mezi hierarchicky naformátovaná data a tabulková data, například kopírování z MongoDB/REST do textového souboru a kopírování z Oracle do Azure Cosmos DB rozhraní API pro MongoDB. V části aktivita `translator` kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type překladatele, aktivita kopírování musí být nastavená na: **TabularTranslator** | Ano |
-| schemaMapping | Kolekce párů klíč hodnota, která představuje vztah mapování **ze strany zdroje do jímky straně**.<br/>- **Key:** představuje zdroj. Pro **tabulkové zdroje**, zadejte název sloupce, jak je definováno ve struktuře datové sady, pro **hierarchické zdroj**, zadejte výraz cesty JSON pro každé pole extrahovat a mapování.<br>- **Value:** představuje jímky. Pro **tabulky jímky**, zadejte název sloupce, jak je definováno ve struktuře datové sady, pro **hierarchické jímky**, zadejte výraz cesty JSON pro každé pole extrahovat a mapování. <br>V případě hierarchických dat, u polí v kořenovém objektu JSON cesta začínající znakem $ kořenové; u polí uvnitř pole vybraného pomocí `collectionReference` vlastnost, cesta JSON začíná od prvku pole.  | Ano |
-| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pomocí stejného vzoru a převést na jeden řádek pro každý objekt, zadejte cestu JSON pole použít různé. Tato vlastnost je podporována pouze v případě, že je hierarchická data source. | Ne |
+| type | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** | Ano |
+| schemaMapping | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Value:** představuje jímky. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je `collectionReference` zvoleno vlastností, začíná cesta JSON od elementu pole.  | Ano |
+| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | Ne |
 
-**Příklad: zkopírujte z MongoDB do Oracle:**
+**Příklad: kopírování z MongoDB do Oracle:**
 
-Pokud například máte dokument MongoDB s následujícím obsahem:
+Například pokud máte MongoDB dokument s následujícím obsahem:
 
 ```json
 {
@@ -236,7 +236,7 @@ Pokud například máte dokument MongoDB s následujícím obsahem:
 }
 ```
 
-a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu data uvnitř pole linearizovat *(order_pd a order_price)* a křížové spojení se společnými kořenovými informacemi *(číslo, datum a města)* :
+a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se společnými kořenovými informacemi *(číslo, datum a město)* :
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
@@ -244,7 +244,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu data uvn
 | 01 | 20170122 | P2 | 13 | Seattle |
 | 01 | 20170122 | P3 | 231 | Seattle |
 
-Konfigurace pravidla mapování schématu jako podle následující ukázky JSON aktivity kopírování:
+Nakonfigurujte pravidlo mapování schématu jako následující ukázku JSON aktivity kopírování:
 
 ```json
 {
@@ -272,21 +272,21 @@ Konfigurace pravidla mapování schématu jako podle následující ukázky JSON
 }
 ```
 
-## <a name="data-type-mapping"></a>Mapování datového typu
+## <a name="data-type-mapping"></a>Mapování datových typů
 
-Aktivita kopírování provádí typy zdroje do jímky typy mapování s přístupem následující krok 2:
+Aktivita kopírování provádí typy zdrojů pro mapování typů jímky pomocí následujícího přístupu ke dvěma krokům:
 
-1. Převést z typů nativní zdroje Azure Data Factory dočasné datové typy
-2. Převést na nativní jímky typu Azure Data Factory dočasné datové typy
+1. Převést z nativních typů zdroje na Azure Data Factory dočasné datové typy
+2. Převést z Azure Data Factory dočasných datových typů na nativní typ jímky
 
-Můžete najít mapování mezi nativní typ pro pomocný typ v části "Mapování datového typu" v tématu každý konektor.
+Mapování mezi nativním typem a dočasným typem najdete v části mapování datových typů v každém konektoru.
 
 ### <a name="supported-data-types"></a>Podporované datové typy
 
-Data Factory podporuje následující typy dočasné dat: Můžete zadat následující hodnoty při Konfigurace informací o typu v [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure-or-schema) konfigurace:
+Data Factory podporuje následující dočasné datové typy: Při konfiguraci informací o typu v konfiguraci [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure-or-schema) můžete zadat následující hodnoty:
 
 * Byte[]
-* Boolean
+* Logická hodnota
 * Datetime
 * Datetimeoffset
 * Decimal
@@ -296,10 +296,10 @@ Data Factory podporuje následující typy dočasné dat: Můžete zadat násled
 * Int32
 * Int64
 * Single
-* String
+* Řetězec
 * Timespan
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Zobrazit další články o aktivitě kopírování:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)

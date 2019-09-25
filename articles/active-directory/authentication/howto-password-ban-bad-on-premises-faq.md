@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097570"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268650"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
 
@@ -101,6 +101,8 @@ Ne. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít
 
 Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
 
+Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD a verzí služby, která je nainstalovaná službou [Azure Active. Software proxy adresářové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
+
 **Otázka: V jakém pořadí by se měly agenti a proxy servery DC instalovat a registrovat?**
 
 Podporuje se jakékoli pořadí instalace agenta proxy, instalace agenta DC, registrace doménové struktury a registrace proxy serveru.
@@ -155,7 +157,7 @@ Následující odkazy nejsou součástí základní dokumentace k ochraně hesel
 
 Pokud vás zajímá více o ochraně heslem Azure AD a jejich nasazení ve vašem prostředí, můžete využít výhod služby Microsoft Proactive Service dostupné zákazníkům se smlouvou Premier nebo Unified support. Služba se nazývá Azure Active Directory: Ochrana heslem. Další informace vám poskytne váš správce technického účtu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud máte místní otázku ochrany heslem služby Azure AD, která tady není zodpovězená, pošlete nám níže uvedenou položku zpětné vazby.
 

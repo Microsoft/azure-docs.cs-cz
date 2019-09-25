@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642eb15c62c895e85add55b725318b150b51658e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179964"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s IDC
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://cas.idc.com/saml-welcome/AzureAppDirectory`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pro získání těchto hodnot kontaktujte [tým podpory pro klienta IDC](mailto:webchanneldev@idc.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -139,7 +139,7 @@ Ke konfiguraci jednotného přihlašování na straně **IDC** je potřeba odesl
 
 ### <a name="create-idc-test-user"></a>Vytvořit testovacího uživatele IDC
 
-V této části vytvoříte uživatele s názvem Britta Simon v IDC. Pracujte s [týmem podpory IDC](mailto:webchanneldev@idc.com) a přidejte uživatele na platformě IDC. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Uživatel nemusí být vytvořen v IDC předem. Uživatel se automaticky vytvoří při prvním použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO 
 

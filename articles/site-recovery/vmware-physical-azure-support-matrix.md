@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910445"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266410"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -45,7 +45,7 @@ Konfigurační server je místní počítač, který spouští součásti Site R
 
 **Komponenta** | **Požadavky**
 --- |---
-Procesorová jádra | 8
+Jádra procesoru | 8
 Paměť RAM | 16 GB
 Počet disků | 3 disky<br/><br/> Mezi disky patří disk s operačním systémem, disk mezipaměti procesového serveru a jednotka pro uchovávání pro navrácení služeb po obnovení.
 Volné místo na disku | 600 GB místa pro mezipaměť procesového serveru.
@@ -193,6 +193,7 @@ Host/Server – Hot přidat/odebrat disk | Ne
 Host/Server – vyloučit disk | Ano
 Funkce Multipath Host/Server (MPIO) | Ne
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve se podporovaly čtyři.
+ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
 Spuštění hosta/serveru EFI/UEFI | – Podporováno, pokud používáte službu mobility verze 9,13 nebo novější.<br/> – Podporováno při migraci virtuálních počítačů VMware nebo fyzických serverů se systémem Windows Server 2012 nebo novějším do Azure.<br/> – Virtuální počítače můžete replikovat jenom pro migraci. Navrácení služeb po obnovení do místního nasazení se nepodporuje.<br/> -Podporuje se jen systém souborů NTFS. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. <br/> -Velikost sektoru disku by měla být 512 bajtů na fyzický sektor.
 
 ## <a name="replication-channels"></a>Kanály replikace

@@ -1,111 +1,201 @@
 ---
 title: Použití Visual Studio Code pro Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak nainstalovat Azure Machine Learning pro Visual Studio Code a vytvořit jednoduchý experiment v Azure Machine Learning.
+description: Naučte se, jak nainstalovat Azure Machine Learning pro Visual Studio Code a vytvořit experiment v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: ronglu
-author: ronglums
-ms.date: 7/12/2019
+ms.author: jimgries
+author: greazer
+ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a93c71a97cdb1f6296919a248cf7ef545f7b307f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997176"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269241"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
-V tomto článku se dozvíte, jak používat rozšíření Azure Machine Learning pro Visual Studio Code ke školení a nasazení modelů pro strojové učení a hloubkové učení.
+V tomto článku se dozvíte, jak používat **Azure Machine Learning pro Visual Studio Code** rozšíření pro výuku a nasazení modelů strojového učení.
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje podporu pro experimenty spouštěné místně a na vzdálených výpočetních cílech. Každý experimentu je můžete udržovat přehled o různých spuštění často potřebujete zavádět postupně vyzkoušet s různými technikami, hyperparameters a další. Azure Machine Learning slouží ke sledování vlastní metriky a experimentovat spuštění, aktivace reprodukovatelnost datové vědy a umožňuje audity.
-
-Tyto modely můžete nasadit i pro potřeby testování a produkce.
+[Služba Azure Machine Learning](overview-what-is-azure-ml.md) zjednodušuje sestavování, školení a nasazení modelů strojového učení.
++ Pro účely školení poskytuje podporu pro spouštění experimentů místně nebo vzdáleně. Pro každý experiment můžete protokolovat vlastní metriky více spuštění pro doladění parametrů
++ Službu Azure Machine Learning můžete použít také k snadnému nasazení modelů strojového učení pro potřeby testování a výroby.
 
 ## <a name="prerequisites"></a>Požadavky
 
 + Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-+ Visual Studio Code musí být nainstalované. Visual Studio Code je jednoduchý, ale výkonný editor zdrojového kódu, který běží na vašem počítači. Obsahuje integrovanou podporu Pythonu a dalších programovacích jazyků. Pokud jste ještě nenainstalovali Visual Studio Code, přečtěte si, [jak](https://code.visualstudio.com/docs/setup/setup-overview).
++ Nainstalujte [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview), zjednodušený Editor kódu, který běží v systémech Windows, Mac a Linux.
 
 + [Nainstalujte Python 3,5 nebo novější](https://www.anaconda.com/download/).
 
 
-## <a name="install-the-extension-for-azure-machine-learning-for-visual-studio-code"></a>Nainstalovat rozšíření pro Azure Machine Learning Visual Studio Code
+## <a name="install-the-extension"></a>Instalace rozšíření
 
-Když nainstalujete rozšíření Azure Machine Learning, automaticky se nainstalují dvě další rozšíření (Pokud máte přístup k Internetu). Jedná se o [rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) a [rozšíření Python společnosti Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-
-Chcete-li pracovat s Azure Machine Learning, je nutné zapnout Visual Studio Code integrované vývojové prostředí (IDE) Python. Pro použití [Pythonu v Visual Studio Code](https://code.visualstudio.com/docs/languages/python)potřebujete rozšíření Microsoft Python. Toto rozšíření se automaticky nainstaluje s rozšířením Azure Machine Learning. Rozšíření zajišťuje Visual Studio Code skvělého integrovaného vývojového prostředí (IDE) a funguje na jakémkoli operačním systému s celou řadou překladačů Pythonu. Rozšíření Microsoft Python používá celou sílu Visual Studio Code k poskytování funkcí automatického dokončování, IntelliSense, linting, ladění a testování částí. Rozšíření také umožňuje snadno přepínat mezi prostředími Python, včetně virtuálních a conda prostředí. Další informace o úpravách, spouštění a ladění kódu v Pythonu najdete v [kurzu pro Python Hello World](https://code.visualstudio.com/docs/python/python-tutorial).
+Když nainstalujete rozšíření Azure Machine Learning, automaticky se nainstalují dvě další rozšíření. Jedná se o [rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) a [rozšíření Python společnosti Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-Python.Python). Další informace o používání rozšíření Pythonu pro úpravy, spouštění a ladění kódu v Pythonu najdete v [kurzu pro Python Hello World](https://code.visualstudio.com/docs/Python/Python-tutorial).
 
 Instalace rozšíření Azure Machine Learning:
 
 1. Otevřete Visual Studio Code.
 
-1. Ve webovém prohlížeči přejdete na [Azure Machine Learning for Visual Studio Code Extension (Preview)](https://aka.ms/vscodetoolsforai).
-
-1. Na této webové stránce vyberte **nainstalovat**. 
+1. Přepněte na kartu rozšíření a vyhledejte "Azure Machine Learning".
 
 1. Na kartě rozšíření vyberte **instalovat**.
 
-1. Karta Vítejte pro rozšíření se otevře v Visual Studio Code a symbol Azure (zobrazený červeně na následujícím snímku obrazovky) se přidá do řádku aktivity.
+1. Karta Vítejte pro rozšíření se otevře v Visual Studio Code a na řádku aktivity se přidá symbol Azure (zvýrazněný červeně na následujícím snímku obrazovky).
 
    ![Ikona Azure na řádku Visual Studio Code aktivity](./media/vscode-tools-for-ai/azure-activity-bar.png)
 
-1. V dialogovém okně vyberte **Přihlásit** se a postupujte podle výzev k ověření pomocí Azure. 
-   
+1. V dialogovém okně vyberte **Přihlásit** se a postupujte podle výzev k ověření pomocí Azure.
+
    Rozšíření účtu Azure, které se nainstalovalo spolu s rozšířením Azure Machine Learning for Visual Studio Code, vám pomůže s vaším účtem Azure ověřit. Seznam příkazů najdete na stránce pro [rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
-> [!Tip] 
-> Podívejte se na [rozšíření IntelliCode pro Visual Studio Code (Preview)](https://go.microsoft.com/fwlink/?linkid=2006060). IntelliCode poskytuje sadu funkcí s podporou AI pro technologii IntelliSense v Pythonu, jako je odvození nejvíce relevantního automatického dokončování na základě aktuálního kontextu kódu.
+> [!TIP]
+> Instalační program rozšíření si můžete také stáhnout přímo z [Azure Machine Learning Visual Studio Code rozšíření (Preview)](https://aka.ms/vscodetoolsforai).
 
-## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
+## <a name="quickstart-with-azure-machine-learning"></a>Rychlý Start s Azure Machine Learning
+Existuje několik způsobů, jak spustit školicí skripty pomocí služby Azure Machine Learning. Pokud začínáte, Podívejme se, jak rychle odeslat školicí skript pro běh v Azure.
 
-1. Ujistěte se, že je nainstalována Python 3,5 nebo novější a že je rozpoznána nástrojem Visual Studio Code. Pokud ji nainstalujete nyní, restartujte Visual Studio Code a [Vyberte interpret Pythonu](https://code.visualstudio.com/docs/python/python-tutorial).
+Pokud už jste se seznámili se Azure Machine Learning koncepty a chtěli bychom podrobnější informace o tom, jak je spravovat a používat s rozšířením, přečtěte si téma [Azure Machine Learning podrobnější s vs Code](./how-to-vscode-tools.md#azure-machine-learning-in-depth-with-vs-code) níže.
 
-1. V okně integrovaného terminálu zadejte interpret Pythonu, který se má použít. Nebo vyberte zadat pro použití výchozího interpretu Pythonu.
+## <a name="run-an-existing-python-training-script-in-azure"></a>Spuštění existujícího školicího skriptu Pythonu v Azure
+Pokud máte existující školicí skript, Azure Machine Learning rozšíření pro VS Code nejen nabízí vynikající prostředí pro úpravy, ladění a správu zdrojového kódu, ale také usnadňuje spouštění a ukládání metrik pro váš skript v Azure.
 
-   ![Výběr interpretu](./media/vscode-tools-for-ai/python.png)
+Pusťme se do toho. Můžete použít vlastní školicí skript, pokud ho máte připravený, nebo naklonovat ukázkové [úložiště VSCode-Tools-for-AI](https://github.com/microsoft/vscode-tools-for-ai). Toto je veřejné úložiště pro vytváření potíží s tímto rozšířením. Obsahuje také malou ukázkovou složku **mnist ručně zapsaných** , kterou použijeme v tomto příkladu.
 
-1. V pravém dolním rohu okna se zobrazí oznámení oznamující, že se automaticky instaluje [sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . Nově vytvořené prostředí Pythonu je místní a soukromé a má Visual Studio Code předpoklady pro práci s Azure Machine Learning.
+1. Otevřete složku **mnist ručně zapsaných** v vs Code.
 
-   ![Instalace sady Azure Machine Learning SDK pro Python](./media/vscode-tools-for-ai/runtimedependencies.png)
+1. Vytvořte nové prostředí Pythonu pomocí vašeho oblíbeného balíčku virtuálního prostředí nebo Anaconda a nainstalujte balíčky TensorFlow a numpy.
 
-## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
+1. V levém dolním rohu stavového řádku VS Code vyberte nové prostředí, které jste vytvořili jako interpret Pythonu.
 
-Před zahájením školení a nasazení modelů strojového učení v Visual Studio Code musíte vytvořit [pracovní prostor Azure Machine Learning](concept-workspace.md) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky. 
+1. Otevřete **Train.py** a spusťte ho otevřením ladicího programu a stisknutím tlačítka Spustit (nebo stačí stisknout klávesu F5).
 
-Vytvoření pracovního prostoru a přidání prvního experimentu:
+   [![Spustit školení MNIST ručně zapsaných](./media/vscode-tools-for-ai/run-mnist.gif)](./media/vscode-tools-for-ai/run-mnist.gif#lightbox)
+
+Pokud je všechno nainstalovaná správně, skript se spustí a vytvoří TensorFlow model ve složce výstupy.
+
+[![Zobrazit TensorFlow model](./media/vscode-tools-for-ai/show-tensorflow-model.gif)](./media/vscode-tools-for-ai/show-tensorflow-model.gif#lightbox)
+
+Když teď víte, že váš skript běží správně, můžeme ho spustit v Azure!
+
+To se dá snadno udělat bez dalších úprav **Train.py**. Avšak v několika jednoduchých změnách můžete pomocí Azure Machine Learning automaticky sledovat důležité metriky podle vašeho výběru o jednotlivých školicích běhůch.
+
+### <a name="make-azure-aware-of-your-run-metrics"></a>Zajistěte službě Azure vědět metriky spuštění
+Úprava projektu, aby bylo možné Azure ve vašich spuštěních vědět o důležitých informacích:
+
+1. Vytvořte soubor s názvem **amlrun.py** ve stejné složce jako **Train.py**
+
+    ```Python
+    import azureml
+    from azureml.core import Run
+
+    # access the Azure ML run
+    # init run param to check if running within AML
+    def get_AMLRun():
+        try:
+            run = Run.get_submitted_run()
+            return run
+        except Exception as e:
+            print("Caught = {}".format(e.message))
+            return None
+    ```
+
+2. Import souboru amlrun v **Train.py**
+
+    ```Python
+    ...
+    from utils import prepare_data
+    from amlrun import get_AMLRun
+    ...
+    ```
+3. Inicializace objektu spuštění v **Train.py**
+
+    ```Python
+    ...
+    init = tf.global_variables_initializer()
+    saver = tf.train.Saver()
+    run = get_AMLRun()
+    ...
+    ```
+4. Protokolujte metriky do Azure pomocí funkce run. log ():
+
+    ```Python
+    ...
+            acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
+
+            # log accuracies to AML logger if using AML
+            if run != None:
+                run.log('Validation Accuracy', np.float(acc_val))
+                run.log('Training Accuracy', np.float(acc_train))
+
+            print(epoch, '-- Training accuracy:', acc_train, '\b Validation
+    ...
+    ```
+### <a name="run-the-script-in-azure"></a>Spuštění skriptu v Azure
+A to je vše! Teď stačí použít rozšíření ke spuštění skriptu v cloudu! Všimněte si, že následující názorný postup trvá komprimaci doby potřebné k vytvoření nového pracovního prostoru Azure ML a výpočetní služby a také času potřebným ke spuštění školicího skriptu.
+
+   [![Začněte experimentovat s Azure ML.](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
+
+Po kliknutí na tlačítko pro spuštění experimentu odpovězte na následující výzvy:
+
+1. Zvolte svoje předplatné Azure.
+1. Vyberte vytvořit *Nový* pracovní prostor Azure ml.
+1. Vyberte ze sady předem nakonfigurovaných šablon k inicializaci prostředí Python pro spuštění. Šablony poskytují počáteční bod a obsahují nastavení pro:
+    1. **PyTorch**, **TensorFlow**nebo **Scikit – informace**
+    1. **Jednoduché** nebo **distribuované** výpočetní školení
+    1. **Obecné** pro vlastní prostředí
+1. Zajistěte, aby byl pro váš skript dokončený seznam balíčků PIP a Conda, a to přidáním balíčků, které nejsou zahrnuté v šabloně.
+1. Zkontrolujte výchozí názvy a specifikace pro spuštění experimentu a klikněte na odkaz **Odeslat experiment** v souboru JSON. Soubor JSON se neuloží, protože je jednoduše tam, kde můžete před odesláním zkontrolovat nebo změnit nastavení experimentu.
+1. Nasaďte se zpátky a uvolněte, než rozšíření nastaví vše pro vás a spustí váš skript.
+
+    [![Výuka v cloudu](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
+
+Během několika sekund budete upozorněni na to, že experiment byl odeslán do Azure ve chvíli, kdy můžete zobrazit jeho průběh v Azure Portal kliknutím na odkaz **Zobrazit experimenty spustit** v oznámení vs Code nebo uvnitř vs Code na základě aktualizace. na kartě Azure.
+
+V tuto chvíli je zobrazení metriky spuštění podporováno pouze v Azure Portal. Výše uvedený odkaz **Zobrazit experimenty pro zkoušku** vám umožní spustit, kde uvidíte metriky, které jste zaznamenali.
+[![Experiment spustit na portálu](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
+
+## <a name="azure-machine-learning-in-depth-with-vs-code"></a>Azure Machine Learning podrobně s VS Code
+
+V předchozím návodu jsme odeslali experiment za nejjednodušší cestu. Jak jste si všimli, že rozšíření minimalizuje kroky, které je třeba spravovat, aby bylo možné spustit experiment. V této části se dozvíte, jak můžete spravovat všechny Azure Machine Learning koncepce jednotlivě a poskytnout maximální kontrolu.
+
+Před zahájením školení a nasazení modelů strojového učení v Visual Studio Code musíte vytvořit [pracovní prostor Azure Machine Learning](concept-workspace.md) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky.
+
+### <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-   [![Vytvořit pracovní prostor](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+    [![Vytvořit pracovní prostor](./media/vscode-tools-for-ai/create-workspace.gif)](./media/vscode-tools-for-ai/create-workspace.gif#lightbox)
 
 
-1. Klikněte pravým tlačítkem na předplatné Azure a vyberte **vytvořit pracovní prostor**. Zobrazí se seznam. V příkladu animovaného obrázku je název odběru **bezplatný zkušební verze**a pracovní prostor je **TeamWorkspace**. 
+1. Klikněte pravým tlačítkem na předplatné Azure a vyberte **vytvořit pracovní prostor**. Ve výchozím nastavení je generován název obsahující datum a čas vytvoření. Změňte název na **TeamWorkspace** a stiskněte klávesu ENTER.
 
-1. Vyberte skupinu prostředků ze seznamu nebo vytvořte novou pomocí Průvodce v paletě příkazů.
+1. Vyberte skupinu prostředků ze seznamu, pokud víte, která z nich chcete vybrat nebo vytvořit novou. Pokud vytváříte nový, vyberte umístění, které je nejblíže umístění, do kterého plánujete model nasadit. V tomto případě jsme zvolili **západní USA 2**.
 
-1. Do pole zadejte jedinečný a jasný název nového pracovního prostoru. V příkladu obrázku má pracovní prostor název **TeamWorkspace**.
+1. Po stisknutí klávesy ENTER se Azure Machine Learning dostane požadavek na vytvoření pracovního prostoru. Tento proces se vám bude informovat v oznamovací oblasti Visual Studio Code.
 
-1. Vyberte ENTER a vytvořte nový pracovní prostor. Ve stromové struktuře se zobrazí pod názvem předplatného.
+1. Rozbalte uzel předplatné, abyste našli nově vytvořený pracovní prostor.
 
-1. Klikněte pravým tlačítkem na uzel **experiment** a v místní nabídce vyberte možnost **vytvořit experiment** .  Experimenty sledují vaše běhy pomocí Azure Machine Learning.
+### <a name="create-an-experiment"></a>Vytvoření experimentu
+V pracovním prostoru se dá vytvořit jeden nebo více experimentů, abyste mohli sledovat a analyzovat jednotlivé běhy školení k jednotlivým modelům. Spuštění se dá provést v cloudu Azure nebo na místním počítači.
 
-1. Do pole zadejte název experimentu. V ukázkových snímcích obrazovky se experiment jmenuje **mnist ručně zapsaných**.
- 
-1. Vyberte ENTER a vytvořte nový experiment. Experiment se zobrazí ve stromové struktuře pod názvem pracovního prostoru.
+1. Rozbalte pracovní prostor **TeamWorkspace** . Klikněte pravým tlačítkem myši na uzel **experimenty** a v místní nabídce vyberte možnost **vytvořit experiment** .
 
-1. V pracovním prostoru můžete kliknout pravým tlačítkem na experiment a nastavit ho jako **aktivní** experiment. **Aktivní** experiment je vaším aktuálním experimentem. Otevřená složka v Visual Studio Code bude propojena s tímto experimentem v cloudu. Tato složka by měla obsahovat vaše místní skripty Pythonu.
+1. Do příkazového řádku zadejte název experimentu. V ukázkových snímcích obrazovky se experiment jmenuje **mnist ručně zapsaných**.
 
-Nyní budou vaše klíčové metriky uloženy v historii experimentů. Podobně se modely, které vytvoříte, budou automaticky nahrány do Azure Machine Learning a ukládají se společně se svými metrikami a protokoly experimentů. 
+1. Vyberte ENTER a vytvořte nový experiment. Nový experiment se zobrazí ve stromu jako podřízený uzel **Experiments** .
 
-[![Připojit složku v Visual Studio Code](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
+1. V pracovním prostoru můžete kliknout pravým tlačítkem na experiment a nastavit ho jako **aktivní** experiment. **Aktivní** odkazy na experimenty, které experimentují v cloudu, do složky, kterou momentálně otevřete v Visual Studio Code. Tato složka by měla obsahovat vaše místní skripty Pythonu. Když nastavíte aktivní experiment, budou se v rámci experimentu ukládat klíčová metrika pro všechna cvičení, a to bez ohledu na to, kde se spustí.
+
+    [![Vytvoření experimentu](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
-## <a name="create-and-manage-compute-targets"></a>Vytvoření a Správa cílových výpočetních prostředí
+### <a name="create-and-manage-compute-targets"></a>Vytvoření a Správa cílových výpočetních prostředí
 
 Díky Azure Machine Learning pro Visual Studio Code můžete připravit vaše data, naučit modely a nasazovat je místně i na vzdálené výpočetní cíle.
 
@@ -117,106 +207,65 @@ Postup vytvoření cíle výpočtů:
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
 
-2. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. V následujícím příkladu obrázku je název odběru **bezplatný zkušební verze**a pracovní prostor je **TeamWorkspace**. 
+1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning.
 
-3. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **Compute** uzlu a zvolte **vytvořit výpočetní**.
+1. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **Compute** uzlu a zvolte **vytvořit výpočetní**.
 
-4. Zvolte typ cílové výpočetní ze seznamu. 
+1. Zvolte typ cílové výpočetní ze seznamu.
 
-5. Na paletě příkazů vyberte velikost virtuálního počítače.
+1. Na příkazovém řádku palety příkazů vyberte velikost virtuálního počítače. Výpočty můžete filtrovat pomocí textu, jako je například GPU.
 
-6. V paletě příkazů zadejte do pole název pro cíl výpočtů. 
+1. Na příkazovém řádku palety příkazů zadejte název cílového výpočetního prostředí.
 
-7. V konfiguračním souboru JSON, který se otevře na nové kartě, zadejte všechny rozšířené vlastnosti. Můžete určit vlastnosti, jako je třeba maximální počet uzlů.
+1. Po zadání názvu se výpočty vytvoří pomocí výchozích parametrů. Chcete-li změnit parametry, klikněte pravým tlačítkem na nový výpočet a vyberte možnost **Upravit výpočetní**prostředky.
 
-8. Po dokončení konfigurace služby COMPUTE Target klikněte v pravém dolním rohu okna na **Odeslat**.
+1. V zobrazeném formátu JSON proveďte požadované změny a pak klikněte na tlačítko Uložit a pokračovat CodeLens (pomocí klávesnice můžete stisknutím **kombinace kláves CTRL + SHIFT + p** vyvolat paletu příkazů a spustit **Azure ml: Příkaz Uložit a** pokračovat)
 
-Tady je příklad vytvoření Azure Machine Learning COMPUTE (AMLCompute):
+Tady je příklad, jak vytvořit a upravit Azure Machine Learning COMPUTE (AMLCompute):
 
-[![Vytvoření AML COMPUTE v Visual Studio Code](./media/vscode-tools-for-ai/CreateARemoteCompute.gif)](./media/vscode-tools-for-ai/CreateARemoteCompute.gif#lightbox)
+[![Vytvoření AML COMPUTE v Visual Studio Code](./media/vscode-tools-for-ai/create-remote-compute.gif)](./media/vscode-tools-for-ai/create-remote-compute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>Konfigurační soubor spuštění
 
-Rozšíření Visual Studio Code automaticky vytvoří místní cíl výpočtů a konfigurace spuštění pro místní a Dock prostředí v místním počítači. Konfigurační soubory spouštění najdete v rámci přidruženého cílového uzlu Compute. 
+Pokud chcete spustit Azure Machine Learning experiment na výpočetním prostředí, je potřeba správně nakonfigurovat výpočetní výkon. Konfigurační soubor spuštění je mechanismus, podle kterého je toto prostředí zadáno.
 
-## <a name="train-and-tune-models"></a>Trénování a optimalizaci modelů
+Tady je příklad, jak vytvořit konfiguraci spuštění pro AmlCompute, která je vytvořená výše.
 
-Pomocí Azure Machine Learning for Visual Studio Code (Preview) můžete rychle iterovat v kódu, krokovat a ladit a používat řešení pro správu zdrojového kódu. 
+[![Vytvoření konfigurace spuštění pro výpočetní prostředí](./media/vscode-tools-for-ai/create-runconfig.gif)](./media/vscode-tools-for-ai/create-runconfig.gif#lightbox)
 
-Chcete-li experiment spustit místně pomocí Azure Machine Learning:
+Pokud chcete na svém místním počítači spouštět experimenty Azure ML, je potřeba, aby se konfigurační soubor pro spuštění pořád vyžadoval. Při vytváření místní konfigurace spuštění se použité prostředí Pythonu použije jako výchozí cesta k překladači, který jste nastavili v VS Code.
 
-1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
+### <a name="train-and-tune-models"></a>Trénování a optimalizaci modelů
 
-1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. 
+Pomocí rozšíření Azure ML pro VS Code existuje několik způsobů, jak spustit školicí skript v experimentu.
 
-1. Pod uzlem pracovní prostor rozbalte **výpočetní** uzel a klikněte pravým tlačítkem na **konfiguraci spuštění** výpočetního prostředí, které chcete použít. 
+1. Klikněte pravým tlačítkem na skript školení a **vyberte Azure ml: Spustit jako experiment v Azure**
+1. Klikněte na ikonu spustit experiment na panelu nástrojů.
+1. Klikněte pravým tlačítkem na uzel Konfigurace spuštění.
+1. Pomocí palety příkazů vs Code spusťte **Azure ml: Spustit experiment**
+
+Spuštění Azure Machine Learning experimentu:
+
+1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure.
+
+1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning.
+
+1. Pod uzlem pracovní prostor rozbalte uzel **experimenty** a klikněte pravým tlačítkem myši na experiment, který chcete spustit.
 
 1. Vyberte **spuštění experimentu**.
 
-1. V Průzkumníku souborů vyberte skript, který chcete spustit. 
+1. Zvolte název souboru Pythonu, který chcete spustit pro výuku modelu, a stisknutím klávesy ENTER odeslání spusťte. Poznámka: Vybraný soubor se musí nacházet ve složce, kterou nyní máte otevřený v VS Code.
 
-1. Vyberte **Zobrazit experimenty** . zobrazí se integrovaný Azure Machine Learning portál, ve kterém se budou monitorovat vaše běhy a zobrazit vaše vyškolené modely.
+1. Po odeslání běhu se pod experimentem, který jste zvolili, zobrazí **uzel spustit** . Tento uzel použijte k monitorování stavu spuštění. Poznámka: Může být nutné pravidelně aktualizovat okno, aby se zobrazil nejnovější stav.
 
-Tady je příklad, jak spustit experiment místně:
+Tady je příklad, jak spustit experiment v dříve vytvořeném výpočetním prostředí:
 
-[![Místní spuštění experimentu](./media/vscode-tools-for-ai/RunExperimentLocally.gif)](./media/vscode-tools-for-ai/RunExperimentLocally.gif#lightbox)
+[![Místní spuštění experimentu](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
-### <a name="use-remote-computes-for-experiments-in-visual-studio-code"></a>Použití vzdálených výpočtů při experimentech v Visual Studio Code
+### <a name="deploy-and-manage-models"></a>Nasazení a správě modelů
+V Azure Machine Learning můžete nasadit a spravovat modely strojového učení v cloudu i na hraničních zařízeních.
 
-Chcete-li použít vzdálený výpočetní cíl pro školení, je nutné vytvořit konfigurační soubor spuštění. Tento soubor informuje Azure Machine Learning nejen kde spustit experiment, ale také jak připravit prostředí.
-
-#### <a name="the-conda-dependencies-file"></a>Souboru závislostí systému conda
-
-Ve výchozím nastavení se pro vás vytvoří nové prostředí conda a vaše závislosti při instalaci se spravují. V souboru *aml_config/conda_dependencies. yml* je však nutné zadat závislosti a jejich verze. 
-
-Následující fragment kódu z výchozí *aml_config/conda_dependencies. yml* Určuje `tensorflow=1.12.0`. Pokud nezadáte verzi závislosti, použije se nejnovější verze. Můžete přidat další závislosti v konfiguračním souboru.
-
-```yaml
-# The dependencies defined in this file will be automatically provisioned for runs with userManagedDependencies=False.
-
-name: project_environment
-dependencies:
-  # The python interpreter version.
-
-  # Currently Azure ML only supports 3.5.2 and later.
-
-- python=3.6.2
-- tensorflow=1.12.0
-
-- pip:
-    # Required packages for AzureML execution, history, and data preparation.
-
-  - --index-url https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
-  - --extra-index-url https://pypi.python.org/simple
-  - azureml-defaults
-
-```
-
-Spuštění experimentu s Azure Machine Learning ve vzdáleném cílovém výpočetním prostředí:
-
-1. Na řádku Visual Studio Code aktivity vyberte ikonu Azure. Zobrazí se postranní panel Azure Machine Learning.
-
-1. Ve stromovém zobrazení rozbalte předplatné Azure a pracovní prostor Azure Machine Learning. 
-
-1. V okně Editoru klikněte pravým tlačítkem na skript Python a vyberte **AML: Spouštějte jako experiment v Azure**. 
-
-1. Na paletě příkazů vyberte cíl výpočtů. 
-
-1. V paletě příkazů zadejte do pole název konfigurace spuštění. 
-
-1. Upravte soubor *conda_dependencies. yml* a určete závislosti za běhu experimentu. Pak v pravém dolním rohu okna vyberte **Odeslat**. 
-
-1. Vyberte **Zobrazit experimenty** . zobrazí se integrovaný Azure Machine Learning portál, ve kterém se budou monitorovat vaše běhy a zobrazit vaše vyškolené modely.
-
-Tady je příklad, jak spustit experiment na vzdáleném cílovém výpočetním prostředí:
-
-[![Spuštění experimentu na vzdáleném cíli](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif)](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif#lightbox)
-
-
-## <a name="deploy-and-manage-models"></a>Nasazení a správě modelů
-V Azure Machine Learning můžete nasadit a spravovat modely strojového učení v cloudu i na hraničních zařízeních. 
-
-### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Zaregistrujte si model pro Azure Machine Learning z Visual Studio Code
+#### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Zaregistrujte si model pro Azure Machine Learning z Visual Studio Code
 
 Teď, když jste proškole svůj model, ho můžete zaregistrovat ve svém pracovním prostoru. Můžete sledovat a nasazovat registrované modely.
 
@@ -228,26 +277,26 @@ Postup registrace modelu:
 
 1. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **modely** a zvolte **zaregistrujte Model**.
 
-1. V paletě příkazů zadejte do pole název modelu. 
+1. V paletě příkazů zadejte do pole název modelu.
 
-1. V seznamu vyberte, zda chcete nahrát **soubor modelu** (pro jednotlivé modely) nebo **složku modelu** (pro modely s více soubory, například TensorFlow). 
+1. V seznamu vyberte, zda chcete nahrát **soubor modelu** (pro jednotlivé modely) nebo **složku modelu** (pro modely s více soubory, například TensorFlow).
 
 1. Vyberte složky nebo souboru.
 
-1. Po dokončení konfigurace vlastností modelu klikněte v pravém dolním rohu okna na **Odeslat**. 
+1. Po dokončení konfigurace vlastností modelu klikněte v pravém dolním rohu okna na **Odeslat**.
 
 Tady je příklad, jak zaregistrovat model pro Azure Machine Learning:
 
-[![Registrace modelu do AML](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
+[![Registrace modelu do AML](./media/vscode-tools-for-ai/register-model.gif)](./media/vscode-tools-for-ai/register-model.gif#lightbox)
 
 
-### <a name="deploy-your-service-from-visual-studio-code"></a>Nasazení služby z Visual Studio Code
+#### <a name="deploy-your-service-from-visual-studio-code"></a>Nasazení služby z Visual Studio Code
 
 V Visual Studio Code můžete nasadit webovou službu do:
 + Azure Container Instances (ACI) pro testování.
 + Služba Azure Kubernetes (AKS) pro produkční prostředí.
 
-Nemusíte vytvářet kontejner ACI k testování předem, protože se vytvářejí kontejnery ACI za běhu. Je ale potřeba nakonfigurovat clustery AKS předem. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+Nemusíte vytvářet kontejner ACI k testování předem, protože kontejnery ACI se vytvářejí podle potřeby. Je ale potřeba nakonfigurovat clustery AKS předem. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 Nasazení webové služby:
 
@@ -259,9 +308,9 @@ Nasazení webové služby:
 
 1. Klikněte pravým tlačítkem na model, který chcete nasadit, a v místní nabídce vyberte **nasadit službu z registrovaného modelu** .
 
-1. Na paletě příkazů vyberte cíl výpočtů, na který chcete provést nasazení. 
+1. Na paletě příkazů vyberte cíl výpočtů, na který chcete provést nasazení.
 
-1. V paletě příkazů zadejte do pole název této služby.  
+1. V paletě příkazů zadejte do pole název této služby.
 
 1. Na paletě příkazů vyberte klávesu ENTER na klávesnici a vyhledejte a vyberte soubor skriptu.
 
@@ -273,15 +322,15 @@ Webová služba je momentálně nasazené.
 
 Tady je příklad, jak nasadit webovou službu:
 
-[![Nasazení webové služby](./media/vscode-tools-for-ai/CreatingAnImage.gif)](./media/vscode-tools-for-ai/CreatingAnImage.gif#lightbox)
+[![Nasazení webové služby](./media/vscode-tools-for-ai/create-image.gif)](./media/vscode-tools-for-ai/create-image.gif#lightbox)
 
-### <a name="use-keyboard-shortcuts"></a>Použití klávesových zkratek
+### <a name="experiment-with-additional-features"></a>Experimentování s dalšími funkcemi
 
-K přístupu k funkcím Azure Machine Learning v Visual Studio Code můžete použít klávesnici. Nejdůležitější klávesové zkratky, které je třeba znát, je Ctrl + Shift + P, která zobrazuje paletu příkazů. Z palety příkazů máte přístup ke všem funkcím Visual Studio Code, včetně klávesových zkratek pro nejběžnější operace.
+Paleta příkazů můžete použít pro přístup k mnoha funkcím Azure Machine Learning v Visual Studio Code. K vyvolání typu palety příkazů CTRL + SHIFT + P. Tady můžete vyhledat další funkce rozšíření Azure ML.
 
 [![Klávesové zkratky pro Azure Machine Learning Visual Studio Code](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Návod, jak vyškolit Azure Machine Learning mimo Visual Studio Code, najdete v tématu [kurz: Výukové modely pomocí](tutorial-train-models-with-aml.md)Azure Machine Learning.
-* Návod, jak upravovat, spouštět a ladit kód místně, najdete v [kurzu Python Hello World](https://code.visualstudio.com/docs/python/python-tutorial).
+* Návod, jak upravovat, spouštět a ladit kód místně, najdete v [kurzu Python Hello World](https://code.visualstudio.com/docs/Python/Python-tutorial).

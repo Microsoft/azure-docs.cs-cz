@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 09/4/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d686fad8471064f127e75f10f42f34350c764837
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a53de919960902fcc89a53293f31a07baa88cf32
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532537"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268551"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny Microsoft Authentication Library (MSAL)
 Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z koncového bodu Microsoft Identity Platform, aby mohli přistupovat k zabezpečeným webovým rozhraním API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, webová rozhraní API třetích stran nebo vlastní webové rozhraní API. MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují spoustu různých architektur aplikací a platforem.
@@ -54,15 +54,14 @@ MSAL se dá použít v mnoha scénářích aplikací, včetně následujících:
 
 | Knihovna | Podporované platformy a architektury|
 | --- | --- | 
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Univerzální platforma Windows|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Rozhraní JavaScript/TypeScript, jako je AngularJS, života. js nebo Durandal. js|
-| ![MSAL pro Android](media/sample-v2-code/logo_Android.png) <br/>[MSAL pro Android (Preview)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
-| ![MSAL pro iOS](media/sample-v2-code/logo_iOS.png) <br/>[MSAL. Cíl-C (Preview)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
-| ![MSAL4J](media/sample-v2-code/logo_java.png) <br/>[MSAL4J ve verzi Preview](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Univerzální platforma Windows|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Rozhraní JavaScript/TypeScript, jako je AngularJS, života. js nebo Durandal. js|
+| [MSAL pro Android (Preview)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL pro iOS a macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS a macOS|
+| [MSAL4J ve verzi Preview](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
 
 ## <a name="differences-between-adal-and-msal"></a>Rozdíly mezi ADAL a MSAL
+
 Active Directory Authentication Library (ADAL) se integruje s koncovým bodem Azure AD for Developers (v 1.0), kde MSAL se integruje s koncovým bodem Microsoft Identity Platform (v 2.0). Koncový bod v 1.0 podporuje pracovní účty, ale ne osobní účty. Koncový bod v 2.0 je sjednocením osobních účtů a pracovních účtů společnosti Microsoft do jednoho ověřovacího systému. Navíc můžete pomocí MSAL získat také ověřování pro Azure AD B2C.
 
 Konkrétnější informace najdete v tématu [migrace na MSAL.NET z ADAL.NET](msal-net-migration.md) a [migrace na MSAL. js z ADAL. js](msal-compare-msal-js-and-adal-js.md).
-
-            

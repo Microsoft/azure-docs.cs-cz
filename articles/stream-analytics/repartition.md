@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101517"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266444"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
 
@@ -56,7 +56,7 @@ Experimentujte a sledujte využití prostředků vaší úlohy a určete přesn�
 
 Pokud vaše úloha používá pro výstup SQL Database, použijte explicitní přerozdělení na oddíly, aby se maximalizovala propustnost. Vzhledem k tomu, že SQL funguje nejlépe s osmi moduly pro zápis, je možné tento tok změnit na osm, než se vyprázdní, nebo někam do dalšího nadřazeného, může to přinést výkon úloh. 
 
-Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Zvažte možnost [použít v](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) dotazu k explicitnímu zadání počtu modulů pro zápis výstupu. 
+Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Zvažte možnost [použít v](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) dotazu k explicitnímu zadání počtu modulů pro zápis výstupu. 
 
 Následující příklad přečte ze vstupu bez ohledu na to, že je přirozeně rozdělený, a přerozdělení streamu desetinásobné podle dimenze DeviceID a vyprázdní data na výstup. 
 
@@ -67,7 +67,7 @@ SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
 Další informace najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Začínáme s Azure Stream Analytics](stream-analytics-introduction.md)
 * [Využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md)

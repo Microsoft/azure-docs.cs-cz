@@ -146,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: Společné umístění tabulek
           href: concepts-hyperscale-colocation.md
+        - name: Zabezpečení a přístup k datům
+          items:
+            - name: Pravidla brány firewall
+              href: concepts-hyperscale-firewall-rules.md
+            - name: Konfigurace SSL
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: Rozšíření PostgreSQL
           href: concepts-hyperscale-extensions.md
         - name: Zdroje a prostředky
@@ -154,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: Návody
   items:
-    - name: Vytvoření uživatelů
-      href: howto-create-users.md
-    - name: Optimalizace
+    - name: Jeden server
       items:
-        - name: Hromadné vkládání
-          href: howto-optimize-bulk-inserts.md
-        - name: Automatický úklid
-          href: howto-optimize-autovacuum.md
-        - name: Kolekce statistik dotazů
-          href: howto-optimize-query-stats-collection.md
-        - name: Strategie tabulek Toast
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: Správa brány firewall
+        - name: Vytvoření uživatelů
+          href: howto-create-users.md
+        - name: Optimalizace
+          items:
+            - name: Hromadné vkládání
+              href: howto-optimize-bulk-inserts.md
+            - name: Automatický úklid
+              href: howto-optimize-autovacuum.md
+            - name: Kolekce statistik dotazů
+              href: howto-optimize-query-stats-collection.md
+            - name: Strategie tabulek Toast
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: Správa brány firewall
+          items:
+            - name: portál Azure
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: Obnovení serveru
+          items:
+            - name: portál Azure
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+        - name: Migrace databáze
+          items:
+            - name: Výpis a obnovení
+              href: howto-migrate-using-dump-and-restore.md
+            - name: Import a export
+              href: howto-migrate-using-export-and-import.md
+            - name: Migrace s minimem výpadků
+              href: howto-migrate-online.md
+        - name: Konfigurace parametrů serveru
+          items:
+            - name: portál Azure
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+        - name: Automatické zvětšení úložiště
+          items:
+            - name: portál Azure
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+        - name: Přístup k protokolům serveru
+          items:
+            - name: portál Azure
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: Monitorování
+          items:
+            - name: Vytváření upozornění na metriky
+              href: howto-alert-on-metric.md
+        - name: Řešení potíží
+          items:
+            - name: Řešení chyb připojení
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: Rozšířená ochrana před internetovými útoky
+          items:
+            - name: portál Azure
+              href: howto-database-threat-protection-portal.md
+        - name: Virtual Network
+          items:
+            - name: portál Azure
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: Restartování serveru
+          items:
+            - name: portál Azure
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+        - name: Replikace
+          items:
+            - name: Správa replik pro čtení – Azure Portal
+              href: howto-read-replicas-portal.md
+            - name: 'Správa replik pro čtení – Azure CLI, REST API'
+              href: howto-read-replicas-cli.md
+    - name: Hyperscale (Citus)
       items:
-        - name: portál Azure
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Obnovení serveru
-      items:
-        - name: portál Azure
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: Migrace databáze
-      items:
-        - name: Výpis a obnovení
-          href: howto-migrate-using-dump-and-restore.md
-        - name: Import a export
-          href: howto-migrate-using-export-and-import.md
-        - name: Migrace s minimem výpadků
-          href: howto-migrate-online.md
-    - name: Konfigurace parametrů serveru
-      items:
-        - name: portál Azure
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Automatické zvětšení úložiště
-      items:
-        - name: portál Azure
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-    - name: Přístup k protokolům serveru
-      items:
-        - name: portál Azure
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: Monitorování
-      items:
-        - name: Vytváření upozornění na metriky
-          href: howto-alert-on-metric.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení chyb připojení
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: Rozšířená ochrana před internetovými útoky
-      items:
-        - name: portál Azure
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
-      items:
-        - name: portál Azure
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Restartování serveru
-      items:
-        - name: portál Azure
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: Replikace
-      items:
-        - name: Správa replik pro čtení – Azure Portal
-          href: howto-read-replicas-portal.md
-        - name: 'Správa replik pro čtení – Azure CLI, REST API'
-          href: howto-read-replicas-cli.md
+        - name: Škálování
+          href: howto-hyperscale-scaling.md
+        - name: Správa brány firewall
+          items:
+            - name: portál Azure
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: Referenční informace
   items:
     - name: Azure CLI

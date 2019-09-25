@@ -1,6 +1,6 @@
 ---
-title: Použít Microsoft Authentication Library (MSAL) v národních cloudech – platforma identit Microsoft
-description: Microsoft Authentication Library (MSAL) vývojářům aplikací umožňuje získat tokeny pro volání zabezpečená webová rozhraní API. Tyto webové rozhraní API může být Microsoft Graphu, jiné APIs Microsoft, partnerskému webovému rozhraní API nebo vlastního webového rozhraní API. Knihovna MSAL podporuje více aplikačních architektur a platformy.
+title: Použití knihovny Microsoft Authentication Library (MSAL) v národních cloudech – Microsoft Identity Platform
+description: Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny, aby mohli volat zabezpečená webová rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, partnerská webová rozhraní API nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -17,82 +17,82 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9958356cae3c486ecf68e280f33d63c6a537b14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97855a52831a63a92a46bd0d25d23ba3fc91a07b
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235269"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268565"
 ---
-# <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v prostředí národních cloudů
+# <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
-[Národní cloudy](authentication-national-cloud.md) jsou fyzicky izolované instance Azure. Tyto oblasti Azure pomoct, ujistěte se, že požadavky na rezidenci a suverenitu, dodržování předpisů dat jsou zachované v zeměpisné oblasti.
+[Národní cloudy](authentication-national-cloud.md) jsou fyzicky izolované instancemi Azure. Tyto oblasti Azure vám pomůžou zajistit, aby se požadavky na data, svrchovanost a dodržování předpisů dodržovaly v rámci zeměpisných hranic.
 
-Kromě po celém světě cloudu společnosti Microsoft Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací v národních cloudech získat tokeny, aby bylo možné ověřovat a zabezpečená webová rozhraní API volat. Tyto webové rozhraní API může být Microsoft Graphu nebo další APIs Microsoft.
+Kromě celosvětového cloudu společnosti Microsoft Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací v národních cloudech získat tokeny, aby mohli ověřovat a volat zabezpečená webová rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph nebo jiná rozhraní API Microsoftu.
 
-Včetně globální cloudové služby Azure Active Directory (Azure AD) nasazené v následujících národních cloudů:  
+Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v následujících národních cloudech:  
 
 - Azure Government
 - Azure China 21Vianet
 - Azure Germany
 
-Tato příručka ukazuje, jak se přihlásit k pracovní a školní účty, získat přístupový token a volání rozhraní Microsoft Graph API [cloudu Azure Government](https://azure.microsoft.com/global-infrastructure/government/) prostředí.
+Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jsou splněny tyto požadavky.
+Než začnete, ujistěte se, že splňujete tyto požadavky.
 
-### <a name="choose-the-appropriate-identities"></a>Zvolte odpovídající identit
+### <a name="choose-the-appropriate-identities"></a>Zvolit odpovídající identity
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) aplikací můžete použít identit Azure AD Government a Azure AD veřejné identity k ověřování uživatelů. Vzhledem k tomu můžete použít některý z těchto identit, je potřeba rozhodnout, které koncového bodu autority, měli byste zvolit pro váš scénář:
+Aplikace [Azure Government](https://docs.microsoft.com/azure/azure-government/) můžou k ověřování uživatelů používat identity státní správy Azure AD a veřejné identity Azure AD. Vzhledem k tomu, že můžete použít některou z těchto identit, musíte se rozhodnout, jaký koncový bod autority byste měli zvolit pro svůj scénář:
 
-- Veřejné Azure AD: Běžně používá, pokud už vaše organizace má Azure AD veřejné tenanta služby podpory Office 365 (veřejné nebo GCC) nebo v jiné aplikaci.
-- Azure AD Government: Běžně používá, pokud vaše organizace už má Azure AD Government tenanta služby podpory Office 365 (GCC vysokou nebo Military, DoD) nebo ve službě Azure AD Government je vytvoření nového tenanta.
+- Veřejná služba Azure AD: Běžně se používá v případě, že vaše organizace už má veřejného tenanta Azure AD, aby podporoval Office 365 (Public nebo RSZ) nebo jinou aplikaci.
+- Státní správa Azure AD: Běžně se používá, pokud vaše organizace už má tenanta státní správy Azure AD, aby podporoval Office 365 (na úrovni RSZ nebo DoD) nebo vytvořil nového tenanta ve službě Azure AD.
 
-Až se rozhodnete, je zvláštní pozornost, kde provádíte registrace vaší aplikace. Pokud se rozhodnete veřejný Azure AD identity pro vaše aplikace Azure Government, musí zaregistrovat aplikaci v tenantovi Azure AD veřejné.
+V případě, že se rozhodnete, že provádíte registraci vaší aplikace, budete mít zvláštní pozornost. Pokud pro svou aplikaci Azure Government zvolíte veřejné identity Azure AD, musíte aplikaci zaregistrovat ve veřejném tenantovi Azure AD.
 
-### <a name="get-an-azure-government-subscription"></a>Získání předplatného Azure Government
+### <a name="get-an-azure-government-subscription"></a>Získat Azure Government předplatné
 
-Získání předplatného Azure Government, najdete v článku [Správa a připojení k vašemu předplatnému Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+Pokud chcete získat Azure Government předplatné, přečtěte si téma [Správa a připojení k předplatnému v Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
 
-Pokud ještě nemáte předplatné Azure Government, vytvořte [bezplatný účet](https://azure.microsoft.com/global-infrastructure/government/request/) předtím, než začnete.
+Pokud nemáte předplatné Azure Government, vytvořte si [bezplatný účet](https://azure.microsoft.com/global-infrastructure/government/request/) před tím, než začnete.
 
 ## <a name="javascript"></a>JavaScript
 
-### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.us/).
     
-   Koncové body Azure portal pro další národní cloudy, najdete v tématu [App registrace koncových bodů](authentication-national-cloud.md#app-registration-endpoints).
+   Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Pokud váš účet poskytuje přístup k více než jednoho tenanta, v pravém horním rohu vyberte svůj účet a nastavení portálu relace k požadované službě Azure AD tenanta.
-1. Přejděte [registrace aplikací](https://aka.ms/ra/ff) stránky na platformě Microsoft identity pro vývojáře.
-1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
-1. V části **podporovaných typů účtu**vyberte **účty v libovolném adresáři organizace**.
-1. V **identifikátor URI pro přesměrování** vyberte **webové** platformy a nastavte hodnotu na adresu URL aplikace založené na vašem webovém serveru. Najdete v dalších částech pokyny o tom, jak nastavit a získat adresu URL pro přesměrování ve Visual Studiu a uzel.
+1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+1. Přejít na stránku [Registrace aplikací](https://aka.ms/ra/ff) na platformě Microsoft identity pro vývojáře.
+1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
+1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři**.
+1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na adresu URL aplikace na základě vašeho webového serveru. V dalších částech najdete pokyny, jak nastavit a získat adresu URL pro přesměrování v sadě Visual Studio a uzlu.
 1. Vyberte **Zaregistrovat**.
-1. V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
-1. Tento kurz vyžaduje, abyste zapnuli [implicitní grant tok](v2-oauth2-implicit-grant-flow.md). V levém podokně zaregistrovanou aplikaci, vyberte **ověřování**.
-1. V **upřesňující nastavení**v části **implicitní grant**, vyberte **tokeny typu ID** a **přístupové tokeny** zaškrtávací políčka. Tokeny typu ID a přístupové tokeny jsou povinné, protože tato aplikace potřebuje přihlásit uživatele a volat rozhraní API.
+1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
+1. Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). V levém podokně registrované aplikace vyberte **ověřování**.
+1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2:  Nastavení webového serveru nebo projektu
 
-- [Stáhnout soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) pro místní webový server, jako je například uzel.
+- [Stáhněte si soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) pro místní webový server, jako je například Node.
 
   nebo
 
-- [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+- [Stáhněte si projekt sady Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
-Potom přejděte ke [konfigurovat vaše JavaScript SPA](#step-4-configure-your-javascript-spa) konfigurace vzorový kód před jejím spuštěním.
+Pak přejděte ke [konfiguraci vašeho JavaScriptu](#step-4-configure-your-javascript-spa) , abyste před spuštěním nakonfigurovali ukázku kódu.
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Krok 3: Knihovna Microsoft Authentication Library použít k přihlášení uživatele
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Krok 3: Přihlášení uživatele pomocí knihovny Microsoft Authentication Library
 
-Postupujte podle kroků v [kurz jazyka JavaScript](tutorial-v2-javascript-spa.md#create-your-project) k vytvoření projektu a integrovat MSAL k přihlášení uživatele.
+Použijte postup v [kurzu JavaScriptu](tutorial-v2-javascript-spa.md#create-your-project) k vytvoření projektu a integraci s MSAL pro přihlášení uživatele.
 
-### <a name="step-4-configure-your-javascript-spa"></a>Krok 4: Konfigurace vaší aplikace SPA v JavaScriptu
+### <a name="step-4-configure-your-javascript-spa"></a>Krok 4: Konfigurace vašeho JavaScriptu SPA
 
-V `index.html` soubor vytvořen během instalace projektu, přidejte informace o registraci aplikace. Přidejte následující kód v horní části v rámci `<script></script>` značky v těle vaše `index.html` souboru:
+`index.html` V souboru vytvořeném během nastavení projektu přidejte informace o registraci aplikace. Do `<script></script>` značek v těle `index.html` souboru přidejte následující kód:
 
 ```javascript
 const msalConfig = {
@@ -111,35 +111,69 @@ const graphConfig = {
 const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
-V kódu:
+V tomto kódu:
 
-- `Enter_the_Application_Id_here` je **ID aplikace (klient)** hodnotu této aplikace, které jste zaregistrovali.
-- `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
-    - Pokud vaše aplikace podporuje **účty v tomto adresáři organizace**, tuto hodnotu nahraďte ID tenanta nebo název (například contoso.microsoft.com) pro tenanta.
-    - Pokud vaše aplikace podporuje **účty v libovolném adresáři organizace**, nahradí tato hodnota se `organizations`.
+- `Enter_the_Application_Id_here`je hodnota **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
+- `Enter_the_Tenant_Info_Here`je nastavená na jednu z následujících možností:
+    - Pokud vaše aplikace podporuje **účty v tomto organizačním adresáři**, nahraďte tuto hodnotu ID tenanta nebo názvem tenanta (například contoso.Microsoft.com).
+    - Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto `organizations`hodnotu hodnotou.
     
-    Koncové body ověřování pro národní cloudy, najdete v tématu [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    Pokud chcete najít koncové body ověřování pro všechny národní cloudy, přečtěte si téma [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
     > [!NOTE]
-    > Osobní účty Microsoft se nepodporují v národních cloudech.
+    > Osobní účty Microsoft se v národních cloudech nepodporují.
   
-- `graphEndpoint` je koncový bod Microsoft Graph pro Microsoft cloud pro státní správu USA.
+- `graphEndpoint`je Microsoft Graphm koncovým bodem cloudu Microsoftu pro státní správu USA.
 
-   Microsoft Graph koncové body pro národní cloudy, najdete v tématu [Microsoft Graphu koncových bodů v národních cloudech](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   Pokud chcete najít Microsoft Graph koncové body pro všechny národní cloudy, přečtěte si téma [Microsoft Graph koncových bodů v národních cloudech](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="net"></a>.NET
 
-MSAL.NET slouží k přihlašování uživatelů, získání tokenů a volání rozhraní Microsoft Graph API v národních cloudech.
+MSAL.NET můžete použít k přihlašování uživatelů, získání tokenů a volání rozhraní API Microsoft Graph v národních cloudech.
 
-Následující kurzy ukazují, jak sestavit aplikaci .NET Core 2.2 MVC Web. Aplikace používá k přihlášení uživatelů s pracovním a školním účtem v organizaci, který patří do národních cloudů OpenID Connect.
+Následující kurzy ukazují, jak vytvořit webovou aplikaci .NET Core 2,2 MVC. Aplikace používá OpenID Connect k přihlašování uživatelů pomocí pracovního a školního účtu v organizaci, která patří do národního cloudu.
 
-- Chcete-li přihlásit uživatele a získat tokeny, postupujte podle [v tomto kurzu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
-- Volání rozhraní Microsoft Graph API, postupujte podle [v tomto kurzu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- Pokud se chcete přihlásit k uživatelům a získat tokeny, postupujte podle [tohoto kurzu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
+- Chcete-li volat rozhraní API Microsoft Graph, postupujte podle [tohoto kurzu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="next-steps"></a>Další postup
+## <a name="msal-for-ios-and-macos"></a>MSAL pro iOS a macOS
 
-Další informace:
+MSAL pro iOS a macOS se dají použít k získání tokenů v národních cloudech, ale při vytváření `MSALPublicClientApplication`vyžaduje další konfiguraci.
+
+Například pokud chcete, aby vaše aplikace byla víceklientské aplikace v národním cloudu (zde USA – státní správa), můžete napsat:
+
+Cíl-C:
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+                                                          
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+                                                                  
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+Swift:
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+        
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace pro:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Germany](https://docs.microsoft.com/azure/germany/)
+- [Azure Německo](https://docs.microsoft.com/azure/germany/)

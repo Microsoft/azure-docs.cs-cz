@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852687"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268354"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: Desktopová aplikace, které volá webová rozhraní API
 
@@ -32,7 +32,7 @@ Naučte se všechno, co potřebujete k vytvoření desktopové aplikace, která 
 
 ## <a name="getting-started"></a>Začínáme
 
-Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvodce rychlým startem pro platformu .NET nebo rychlý Start pro UWP:
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvodce rychlým startem pro Desktop, rychlý Start pro UWP nebo rychlý Start macOS nativní aplikace:
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z desktopové aplikace pro Windows](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvod
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
 
+> [!div class="nextstepaction"]
+> [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
+
 ## <a name="overview"></a>Přehled
 
 Napíšete desktopovou aplikaci a chcete se přihlašovat do vaší aplikace a volat webová rozhraní API, jako jsou Microsoft Graph, jiná rozhraní Microsoft API nebo vlastní webové rozhraní API. Máte několik možností:
 
 - Můžete použít získání interaktivního tokenu:
 
-  - Pokud vaše desktopová aplikace podporuje grafické ovládací prvky, například pokud se jedná o aplikaci Windows. Form nebo aplikaci WPF.
+  - Pokud vaše desktopová aplikace podporuje grafické ovládací prvky, například, pokud se jedná o aplikaci Windows. Form, aplikaci WPF nebo nativní aplikaci macOS.
   - Pokud se jedná o aplikaci .NET Core a souhlasíte s tím, že k interakci s ověřováním v Azure AD dojde v prohlížeči systému
 
 - U hostovaných aplikací pro Windows je taky možné, že aplikace běžící na počítačích, které jsou připojené k doméně Windows nebo AAD, se připojily k tichému získání tokenu pomocí integrovaného ověřování systému Windows.

@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, že volání webových rozhraní API (volání webového rozhraní API) - platforma identit Microsoft
-description: Zjistěte, jak sestavit aplikaci klasické pracovní plochy, která volá webové rozhraní API (volání webového rozhraní API)
+title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (volání webového rozhraní API) – Microsoft Identity Platform
+description: Zjistěte, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (volání webového rozhraní API).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,16 +15,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abaf234d3b216e0f67501e5d2f2f5c3f874c5d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56d3d01e39adfeb6bf2ef5e7e7d595f49c90f5a5
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111246"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268276"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – volání webového rozhraní API
+# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – volá webové rozhraní API.
 
-Teď, když máte token, můžete volat chráněné webové rozhraní API.
+Teď, když máte token, můžete zavolat chráněné webové rozhraní API.
 
 ## <a name="calling-a-web-api-from-net"></a>Volání webového rozhraní API z .NET
 
@@ -34,9 +34,39 @@ Teď, když máte token, můžete volat chráněné webové rozhraní API.
 More includes will come later for Python and Java
 -->
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Volání několik rozhraní API – přírůstkové souhlasu a podmíněného přístupu
+## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Volání webového rozhraní API v MSAL pro iOS a macOS
 
-Pokud je potřeba volat několik rozhraní API pro stejného uživatele, když jste získali token pro prvního rozhraní API, ho prostě zavoláte `AcquireTokenSilent`, zobrazí se token pro jiná rozhraní API tiše většinu času.
+Metody získání tokenů vrací `MSALResult` objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost, která se dá použít k volání webového rozhraní API. Aby bylo volání přístupu k chráněnému webovému rozhraní API, mělo by se do hlavičky autorizace protokolu HTTP přidat přístupový token.
+
+Cíl-C:
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
+
+Swift:
+
+```swift
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
+```
+
+## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Volání několika rozhraní API – přírůstkový souhlas a podmíněný přístup
+
+Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, stačí, když získáte token pro první rozhraní API, stačí zavolat `AcquireTokenSilent`a získáte token pro ostatní rozhraní API tiše v tichém čase.
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -46,10 +76,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Případy, ve kterém jsou vyžadována interakce je těchto případech:
+Případy, kdy je interakce požadována, je:
 
-- Uživatel souhlas pro prvního rozhraní API, ale teď je potřeba udělit souhlas pro další obory (přírůstkové souhlas)
-- Prvního rozhraní API nepovedlo vyžadují více Multi-Factor authentication, ale provede další příkaz.
+- Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory (postupný souhlas).
+- První rozhraní API nevyžadovalo vícenásobné ověřování, ale ten další.
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -68,7 +98,7 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přejít do produkčního prostředí](scenario-desktop-production.md)
+> [Přesunout do produkčního prostředí](scenario-desktop-production.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959924"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268675"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -43,23 +43,24 @@ Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
 * Licenční požadavky pro ochranu heslem služby Azure AD najdete v článku [odstranění chybných hesel ve vaší organizaci](concept-password-ban-bad.md#license-requirements).
-* Všechny řadiče domény, které mají nainstalovanou službu agenta řadiče domény pro Azure AD Password Protection, musí používat Windows Server 2012 nebo novější. Tento požadavek neznamená, že doména nebo doménová struktura služby Active Directory musí být také na úrovni funkčnosti domény nebo doménové struktury systému Windows Server 2012. Jak je uvedeno v [zásadách návrhu](concept-password-ban-bad-on-premises.md#design-principles), není k dispozici žádný minimální úrovni funkčnosti domény ani FFL nutný pro spuštění agenta řadiče domény ani proxy serveru.
+* Všechny počítače, ve kterých bude nainstalován software agenta řadiče domény Azure AD pro ochranu heslem, musí používat systém Windows Server 2012 nebo novější. Tento požadavek neznamená, že doména nebo doménová struktura služby Active Directory musí být také na úrovni funkčnosti domény nebo doménové struktury systému Windows Server 2012. Jak je uvedeno v [zásadách návrhu](concept-password-ban-bad-on-premises.md#design-principles), není k dispozici žádný minimální úrovni funkčnosti domény ani FFL nutný pro spuštění agenta řadiče domény ani proxy serveru.
 * Všechny počítače, které mají nainstalovanou službu agenta řadiče domény, musí mít nainstalované rozhraní .NET 4,5.
-* Všechny počítače, které získávají proxy službu pro ochranu heslem Azure AD, musí používat Windows Server 2012 R2 nebo novější.
+* Všechny počítače, ve kterých se služba proxy ochrany heslem Azure AD bude instalovat, musí používat Windows Server 2012 R2 nebo novější.
    > [!NOTE]
    > Nasazení proxy služby je povinný požadavek na nasazení ochrany heslem služby Azure AD, i když řadič domény může mít odchozí přímé připojení k Internetu. 
    >
 * Všechny počítače, ve kterých se služba proxy ochrany heslem Azure AD bude instalovat, musí mít nainstalované rozhraní .NET 4,7.
   Rozhraní .NET 4,7 by již mělo být nainstalováno na plně aktualizovaný systém Windows Server. V takovém případě si stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4,7 offline pro systém Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
-* Všechny počítače, včetně řadičů domény, které mají nainstalované komponenty ochrany hesel Azure AD, musí mít nainstalovaný modul Universal C Runtime. Modul runtime můžete získat tak, že zajistíte, že máte všechny aktualizace z web Windows Update. Nebo ho můžete získat v balíčku aktualizací specifických pro konkrétní operační systém. Další informace najdete v tématu [aktualizace pro Universal C Runtime v systému Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
+* Všechny počítače, včetně řadičů domény, které mají nainstalované komponenty ochrany hesel služby Azure AD, musí mít nainstalovaný modul Universal C Runtime. Modul runtime můžete získat tak, že zajistíte, že máte všechny aktualizace z web Windows Update. Nebo ho můžete získat v balíčku aktualizací specifických pro konkrétní operační systém. Další informace najdete v tématu [aktualizace pro Universal C Runtime v systému Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Mezi aspoň jedním řadičem domény v každé doméně a aspoň jedním serverem, který hostuje proxy službu pro ochranu heslem, musí existovat síťové připojení. Toto připojení musí řadiči domény dovolit přístup k portu mapovače koncových bodů RPC 135 a portu serveru RPC na proxy službě. Ve výchozím nastavení je port serveru RPC dynamickým portem RPC, ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
-* Všechny počítače, které jsou hostiteli proxy služby, musí mít síťový přístup k následujícím koncovým bodům:
+* Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít síťový přístup k následujícím koncovým bodům:
 
     |**Koncový bod**|**Účel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Žádosti o ověření|
     |`https://enterpriseregistration.windows.net`|Funkce ochrany heslem Azure AD|
 
+  Musíte taky povolit přístup k síti pro sadu portů a adres URL, které jsou zadané v [postupech nastavení prostředí proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment). Tyto kroky konfigurace jsou nutné, aby služba aktualizace agenta Microsoft Azure AD Connect mohla fungovat (Tato služba je nainstalovaná souběžně s proxy službou). Nedoporučujeme instalovat proxy a aplikační proxy aplikace služby Azure AD heslem souběžně na stejném počítači, kvůli nekompatibilitě mezi verzemi softwaru Microsoft Azure AD Connect agenta pro aktualizace.
 * Všechny počítače, které hostují proxy službu pro ochranu heslem, musí být nakonfigurované tak, aby řadičům domény udělily možnost přihlásit se k proxy službě. Tato možnost se řídí pomocí přiřazení oprávnění "přístup k tomuto počítači ze sítě".
 * Všechny počítače, které hostují proxy službu pro ochranu heslem, musí být nakonfigurované tak, aby umožňovaly odchozí přenosy TLS 1,2 HTTP.
 * Účet globálního správce pro registraci proxy služby pro ochranu heslem a doménovou strukturu s Azure AD.
@@ -333,7 +334,7 @@ Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů
 
 Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle dny, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nainstalovali služby, které potřebujete pro ochranu heslem Azure AD na místních serverech, [proveďte konfiguraci po instalaci a shromážděte informace pro vytváření sestav](howto-password-ban-bad-on-premises-operations.md) , abyste mohli nasazení dokončit.
 

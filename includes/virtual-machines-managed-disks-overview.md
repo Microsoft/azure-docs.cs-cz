@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104234"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266904"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -43,15 +43,21 @@ K ochraně před místními haváriemi se [Azure Backup](../articles/backup/back
 
 [Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) můžete použít k přiřazení konkrétních oprávnění ke spravovanému disku jednomu nebo více uživatelům. Managed disks zveřejňuje nejrůznější operace, včetně čtení, zápisu (vytvoření a aktualizace), odstranění a načtení identifikátoru [URI sdíleného přístupového podpisu (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) pro disk. Můžete udělit přístup pouze k operacím, které osoba potřebuje k provedení svých úloh. Například pokud nechcete, aby osoba kopírovala spravovaný disk do účtu úložiště, můžete se rozhodnout neudělit přístup k exportní akci pro tento spravovaný disk. Podobně pokud nechcete, aby uživatel k kopírování spravovaného disku používal identifikátor URI SAS, můžete se rozhodnout, že toto oprávnění neudělíte spravovanému disku.
 
+### <a name="upload-your-vhd"></a>Nahrání virtuálního pevného disku
+
+ Přímé nahrávání usnadňuje přenos VHD na spravovaný disk Azure. Dříve museli byste postupovat podle dalšího Zahrnutého procesu, který zahrnuje přípravu vašich dat v účtu úložiště. Nyní je k dispozici méně kroků. Nahrávání na místní virtuální počítače do Azure je snazší, nahrajte na velké spravované disky a proces zálohování a obnovení se zjednodušuje. Také snižuje náklady tím, že vám umožní nahrávat data na spravované disky přímo bez jejich připojení k virtuálním počítačům. K nahrání virtuálních pevných disků do velikosti 32 TiB můžete použít přímé nahrávání.
+
+ Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v článcích [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) nebo [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) .
+
 ## <a name="encryption"></a>Šifrování
 
-Managed disks nabízí dva různé druhy šifrování. První je Šifrování služby Storage (SSE), kterou provádí služba úložiště. Druhá je Azure Disk Encryption, kterou můžete povolit na discích s operačním systémem a datových discích pro vaše virtuální počítače.
+Managed disks nabízí dva různé druhy šifrování. První je Šifrování služby Storage (SSE), kterou provádí služba úložiště. Druhá je Azure Disk Encryption (ADE), kterou můžete povolit na discích s operačním systémem a datových discích pro vaše virtuální počítače.
 
 ### <a name="storage-service-encryption-sse"></a>Šifrování služby Storage (SSE)
 
 [Šifrování služby Azure Storage](../articles/storage/common/storage-service-encryption.md) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. SSE je ve výchozím nastavení povolená pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. Další podrobnosti najdete na [stránce s nejčastějšími dotazy Managed disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální počítače s IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
@@ -119,6 +125,6 @@ Azure používá pro přenos na disk prioritní síťový kanál, který získá
 
 Projděte si náš [Návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md) a Naučte se osvědčené postupy pro optimalizaci konfigurací virtuálních počítačů a disků, abyste mohli dosáhnout požadovaného výkonu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o jednotlivých typech disků, které nabízí Azure, který typ je vhodný pro vaše potřeby, a seznamte se s cíli jejich výkonu v našem článku o typech disků.

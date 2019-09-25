@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5b5efa4a8c6d92f9937709f57f99851c90058dda
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067688"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266252"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Rychlý start: Přizpůsobení klientské knihovny pro Python
 
@@ -128,6 +128,12 @@ Následující kód v `main` metodě programu se cyklicky vychází z cyklu dota
 
 Podívá se podrobněji na volání pořadí a odměny v následujících oddílech.
 
+Přidejte následující metody, které [získají volby obsahu](#get-content-choices-represented-as-actions)před spuštěním souboru kódu:
+
+* get_user_preference
+* get_user_timeofday
+* get_actions
+
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
 Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby `currentContent` vytvořil výběr obsahu. Proces může vytvořit obsah, který se má vyloučit z pořadí, zobrazené `excludeActions`jako. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
@@ -161,7 +167,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 >[Jak přizpůsobovat práci](how-personalizer-works.md)
