@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200813"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218258"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
@@ -41,7 +41,7 @@ V následujících částech jsou uvedeny Security Center funkce, které jsou k 
 ||**Virtuální počítač**|**Sada škálování virtuálních počítačů**||**Virtuální počítač**|**Sada škálování virtuálních počítačů**|
 |Výstrahy detekce hrozeb VMBA|✔|✔|✔|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
 |Výstrahy detekce hrozeb založené na síti|✔|✔|X|✔|✔|X|Standard|
-|Integrace ochrany ATP v programu Windows Defender|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standard|
+|Integrace ATP v programu Microsoft Defender|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standard|
 |Chybějící opravy|✔|✔|✔|✔|✔|✔|Zdarma|
 |Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Zdarma|
 |Posouzení služby Endpoint Protection|✔|✔|✔|X|X|X|Zdarma|

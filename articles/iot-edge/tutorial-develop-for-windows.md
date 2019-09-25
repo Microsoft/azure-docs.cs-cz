@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f62698cc736bb7df51d013199d3054b25598240e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147398"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240963"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -57,6 +57,7 @@ Vývojový počítač:
 
 * Windows 10 s aktualizací 1809 nebo novější.
 * V závislosti na vašich předvolbách pro vývoj můžete použít svůj vlastní počítač nebo virtuální počítač.
+  * Ujistěte se, že váš vývojový počítač podporuje vnořenou virtualizaci. Tato funkce je nezbytná pro spuštění kontejnerového modulu, který nainstalujete v následující části.
 * Nainstalujte [Git](https://git-scm.com/). 
 
 Zařízení Azure IoT Edge ve Windows:

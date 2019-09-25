@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203558"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219860"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
-Azure Media Services Video Indexer je řešení AI postavené na Azure Cognitive Services. Video Indexer poskytuje možnost extrahovat podrobné přehledy (bez potřeby analýzy dat nebo dovedností v kódování) pomocí modelů strojového učení, které jsou založené na několika kanálech (Voice, vocals, Visual). Modely můžete dále přizpůsobit a naučit. Služba umožňuje hloubkové hledání, snižuje provozní náklady, umožňuje nové příležitosti finanční zhodnocení a nové uživatelské prostředí ve velkých archivech videí (s nízkými překážkami vstupu). 
+Video Indexer (VI) je řešení Azure Media Services AI a část značky Microsoft Cognitive Services. Video Indexer poskytuje možnost extrahovat podrobné přehledy (bez potřeby analýzy dat nebo dovedností v kódování) pomocí modelů strojového učení, které jsou založené na několika kanálech (Voice, vocals, Visual). Modely můžete dále přizpůsobit a naučit. Služba umožňuje hloubkové hledání, snižuje provozní náklady, umožňuje nové příležitosti finanční zhodnocení a nové uživatelské prostředí ve velkých archivech videí (s nízkými překážkami vstupu). 
 
 Pokud chcete začít s extrakcí přehledů pomocí Video Indexer, musíte si vytvořit účet a nahrávat videa. Když nahrajete videa do Video Indexer, analyzují vizuály i zvuk spuštěním různých modelů AI. Jak Video Indexer analyzuje vaše video, přehledy, které jsou extrahovány modely.
+
+Následující diagram představuje ilustraci a nejedná se o technické vysvětlení toho, jak Video Indexer funguje v back-endu.
 
 ![Diagram toku](./media/video-indexer-overview/model-chart.png)
 

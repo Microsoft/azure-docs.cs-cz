@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036406"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212427"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>Ukládání důležitých podnikových dat do služby Azure Blob Storage
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Ukládání důležitých podnikových dat do služby Azure Blob Storage immutably 
 
 Neměnné úložiště pro úložiště objektů BLOB v Azure umožňuje uživatelům ukládat datové objekty kritické pro podnikání do ČERVa (psát jednou, číst mnoho). Tento stav zpřístupňuje data, která nejsou Erasable a není upravitelná pro interval zadaný uživatelem. Pro dobu trvání intervalu uchování lze vytvořit a číst objekty objektů blob, ale nikoli upravit ani odstranit. Pro Pro obecné účely v2 a účty Blob Storage ve všech oblastech Azure je povolené neměnné úložiště.
 
@@ -93,7 +93,7 @@ V následující tabulce jsou uvedeny typy operací objektů blob, které jsou z
 - V případě kontejneru je maximální počet úprav pro prodloužení intervalu uchování pro neměnné zásady na základě času 5.
 - V případě kontejneru se pro zamčené zásady uchovávají maximálně 7 protokolů auditu zásad uchovávání času.
 
-### <a name="legal-hold"></a>Právní blokování
+### <a name="legal-hold"></a>Právní důvody
 - V případě účtu úložiště je maximální počet kontejnerů s nastavením právního blokování 1 000.
 - V případě kontejneru je maximální počet platných značek blokování 10.
 - Minimální délka značky právního blokování je 3 alfanumerické znaky. Maximální délka je 23 alfanumerických znaků.

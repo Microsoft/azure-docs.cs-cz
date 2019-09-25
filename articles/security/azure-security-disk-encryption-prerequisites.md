@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845874"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224513"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -28,7 +28,7 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 
 ## <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
 
-Azure Disk Encryption není k dispozici na [virtuálních počítačích Basic a-Series](/pricing/details/virtual-machines/series/). Azure Disk Encryption je k dispozici na jiných virtuálních počítačích, které splňují tyto minimální požadavky na paměť:
+Azure Disk Encryption není k dispozici na [virtuálních počítačích Basic a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/). Azure Disk Encryption je k dispozici na jiných virtuálních počítačích, které splňují tyto minimální požadavky na paměť:
 
 | Virtuální počítač | Minimální požadavek na paměť |
 |--|--|

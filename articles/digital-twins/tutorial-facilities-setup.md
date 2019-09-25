@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177201"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219736"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení služby Azure Digital Vláknas ve verzi Preview a konfigurace prostorového grafu
 
@@ -80,7 +80,7 @@ Ve složce extrahované vzorku, otevřete soubor **digital-twins-samples-csharp\
     - **GetAvailableAndFreshSpaces.cs** soubor získá výsledky vlastní funkci s názvem uživatelem definované funkce.
     - **CreateEndpoints.cs** soubor vytvoří koncové body pro interakci s dalšími službami.
 
-* Ukázka simulace **připojení zařízení** simuluje data ze senzorů a odesílá je do služby IoT hub, který je pro vaši instanci digitální dvojče zřízený. V této ukázce použijete [v dalším kurzu po zřízení prostorový graf](tutorial-facilities-udf.md#simulate). Identifikátory ze senzorů a zařízení, které můžete použít ke konfiguraci této ukázce by měl být stejný jako budete používat ke zřízení grafu.
+* Ukázka simulace **připojení zařízení** simuluje data ze senzorů a odesílá je do služby IoT hub, který je pro vaši instanci digitální dvojče zřízený. V této ukázce použijete [v dalším kurzu po zřízení prostorový graf](tutorial-facilities-udf.md#simulate-sensor-data). Identifikátory ze senzorů a zařízení, které můžete použít ke konfiguraci této ukázce by měl být stejný jako budete používat ke zřízení grafu.
 
 ### <a name="configure-the-provisioning-sample"></a>Konfigurace ukázky zřizování
 

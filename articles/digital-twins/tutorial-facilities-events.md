@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827811"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219303"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: Příjem oznámení z digitálních vláken Azure pomocí Logic Apps
 
@@ -38,6 +38,9 @@ V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro spuštění ukázky. Spusťte `dotnet --version` , chcete-li ověřit, zda je nainstalovaná správná verze.
 - Účet Office 365 pro odesílání e-mailových oznámení.
+
+> [!TIP]
+> Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
 
 ## <a name="integrate-events-with-event-grid"></a>Integrace událostí se službou Event Grid
 
@@ -203,7 +206,7 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak vizualizovat data senzorů, analyzovat trendy a odhalit anomálie, najdete v dalším kurzu:
 

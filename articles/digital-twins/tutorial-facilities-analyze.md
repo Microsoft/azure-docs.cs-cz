@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827831"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219280"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z digitálních vláken Azure pomocí Time Series Insights
 
@@ -37,6 +37,9 @@ V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-
 - Spuštěná instance služby Digital Twins.
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro spuštění ukázky. Spusťte `dotnet --version` , chcete-li ověřit, zda je nainstalovaná správná verze.
+
+> [!TIP]
+> Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Streamování dat pomocí Event Hubs
 
@@ -130,7 +133,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte nový prostředek **Time Series Insights**. Vyberte **Vytvořit**.
+1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Vytvořit**.
 
 1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **další: Tlačítko zdroje** události nebo karta **zdroje událostí** .
 
@@ -169,7 +172,7 @@ Pokud chcete přestat zkoumat digitální vlákna Azure nad rámec tohoto bodu, 
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším článku se dozvíte víc o grafech prostorových informací a objektových modelech v digitálních prostředcích Azure.
 

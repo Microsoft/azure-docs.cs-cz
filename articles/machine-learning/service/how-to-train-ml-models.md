@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 041f80937e3ebae15dd5bd64858ccbd8269104a0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 43597113c439f2b88bee0834dddc8cb37ec0202a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002579"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213531"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 
@@ -94,13 +94,14 @@ Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-
 
 ```Python
 from azureml.train.estimator import Estimator
+from azureml.core.runconfig import MpiConfiguration
 
 estimator = Estimator(source_directory='./my-keras-proj',
                       compute_target=compute_target,
                       entry_script='train.py',
                       node_count=2,
                       process_count_per_node=1,
-                      distributed_backend='mpi',     
+                      distributed_training=MpiConfiguration(),        
                       conda_packages=['tensorflow', 'keras'],
                       custom_docker_image='continuumio/miniconda')
 ```
@@ -112,7 +113,8 @@ Parametr | Popis | Výchozí
 `custom_docker_image`| Název image, kterou chcete použít. Zadejte jenom Image v docker veřejných úložišť (v tomto případě Docker Hubu). Pokud chcete použít image z privátního úložiště Docker, použijte místo toho `environment_definition` parametr konstruktoru. [Viz příklad](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Počet uzlů pro trénovací úlohu. | `1`
 `process_count_per_node`| Počet procesů (nebo "pracovníky") pro spuštění na každý uzel. V tomto případě použijete `2` grafickými procesory, které jsou k dispozici na všech uzlech.| `1`
-`distributed_backend`| Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI.  Aby bylo možné provést paralelní nebo distribuované školení ( `node_count`například > 1 nebo `process_count_per_node`> 1 nebo obě), nastavte `distributed_backend='mpi'`. Je MPI implementace používaná třídou AML [otevřít MPI](https://www.open-mpi.org/).| `None`
+`distributed_training`| [MPIConfiguration]('https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py') objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
+
 
 Nakonec odešlete úlohu učení:
 ```Python

@@ -1,6 +1,6 @@
 ---
-title: Zpětné vyhledávání DNS pro služby Azure | Dokumentace Microsoftu
-description: Další informace o konfiguraci zpětného vyhledávání DNS pro služby hostované v Azure
+title: Reverzní DNS pro služby Azure | Microsoft Docs
+description: Naučte se konfigurovat reverzní vyhledávání DNS pro služby hostované v Azure.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -12,56 +12,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c33914fb404467a20a9799df9643e9702234c300
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160923"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224483"
 ---
-# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzních záznamů DNS pro služby hostované v Azure
+# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzního DNS pro služby hostované v Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tento článek vysvětluje postup konfigurace reverzního vyhledávání DNS pro služby hostované v Azure.
+Tento článek vysvětluje, jak nakonfigurovat reverzní vyhledávání DNS pro služby hostované v Azure.
 
-Služby v Azure pomocí IP adresy přiřazené přes Azure a ve vlastnictví společnosti Microsoft. Tyto reverzních záznamů DNS (záznam PTR) musí být vytvořeny v odpovídající vlastněným microsoftem zón reverzního vyhledávání DNS. Tento článek vysvětluje, jak to provést.
+Služby v Azure používají IP adresy přiřazené Azure a vlastněné Microsoftem. Tyto reverzní záznamy DNS (záznamy PTR) se musí vytvořit v odpovídajících zónách zpětného vyhledávání DNS vlastněných společností Microsoft. Tento článek vysvětluje, jak to provést.
 
-Tento scénář, neměly by být zaměňovány s možností [hostování zón reverzního vyhledávání DNS pro vaši přiřazené rozsahy IP adres v Azure DNS](dns-reverse-dns-hosting.md). V takovém případě rozsahy IP adres, který je reprezentován zóny zpětného vyhledávání musí přiřadit k organizaci, obvykle podle svého poskytovatele internetových služeb.
+Tento scénář by neměl být zaměnitelný s možností [hostování zón reverzního vyhledávání DNS pro přiřazené rozsahy IP adres v Azure DNS](dns-reverse-dns-hosting.md). V takovém případě musí být rozsahy IP adres reprezentované zónou zpětného vyhledávání přiřazené vaší organizaci, obvykle prostřednictvím poskytovatele internetových služeb.
 
-Před čtením tohoto článku, měli byste se seznámit s tím [přehled reverzní DNS a podporu v Azure](dns-reverse-dns-overview.md).
+Před čtením tohoto článku byste měli být obeznámeni s tímto [přehledem reverzních DNS a podpory v Azure](dns-reverse-dns-overview.md).
 
-V Azure DNS výpočetní prostředky (třeba virtuální počítače, škálovací sady virtuálních počítačů nebo clustery Service Fabric) jsou přístupné prostřednictvím prostředků PublicIpAddress. Zpětné vyhledávání DNS se konfigurují pomocí vlastnosti "ReverseFqdn" pro PublicIpAddress.
+V Azure DNS jsou k dispozici výpočetní prostředky (například virtuální počítače, sady škálování virtuálních počítačů nebo clustery Service Fabric) prostřednictvím prostředku PublicIpAddress. Reverzní vyhledávání DNS se konfigurují pomocí vlastnosti ' ReverseFqdn ' objektu PublicIpAddress.
 
 
-Reverzních záznamů DNS není aktuálně podporována pro službu Azure App Service.
+Reverzní DNS se v současnosti pro Azure App Service nepodporuje.
 
 ## <a name="validation-of-reverse-dns-records"></a>Ověření reverzních záznamů DNS
 
-Třetí strany by neměl být schopen vytvořit reverzních záznamů DNS pro jejich mapování služby Azure na svoje DNS domény. Chcete-li tomu zabránit, Azure pouze umožňuje vytváření zpětný záznam DNS, kde název domény zadaný v zpětný záznam DNS je stejný jako nebo se překládá na název DNS nebo IP adresu PublicIpAddress nebo cloudové služby v rámci stejného předplatného Azure.
+Třetí strana by neměla mít oprávnění k vytváření reverzních záznamů DNS pro své mapování služeb Azure do domén DNS. Aby k tomu nedocházelo, Azure umožňuje vytvořit reverzní záznam DNS jenom v případě, že název domény zadaný v záznamu reverzní DNS je stejný jako název DNS nebo IP adresa PublicIpAddress nebo cloudové služby ve stejném předplatném Azure.
 
-Toto ověření se provádí, pouze když zpětný záznam DNS se nastavit nebo změnit. Pravidelné opakované ověření se neprovádí.
+Toto ověření se provede, jenom když se nastaví nebo upraví reverzní záznam DNS. Periodické opakované ověření není provedeno.
 
-Příklad: Předpokládejme, že má prostředků PublicIpAddress contosoapp1.northus.cloudapp.azure.com název DNS a IP adresu 23.96.52.53. ReverseFqdn pro PublicIpAddress se dá nastavit jako:
-* Název DNS pro adresu PublicIpAddress, contosoapp1.northus.cloudapp.azure.com
-* Název DNS pro jinou adresu PublicIpAddress ve stejném předplatném, jako je například contosoapp2.westus.cloudapp.azure.com
-* Vlastní název serveru DNS, jako je například app1.contoso.com, tak dlouho, dokud se tento název *první* nakonfigurovaný jako záznam CNAME contosoapp1.northus.cloudapp.azure.com, nebo na jinou adresu PublicIpAddress ve stejném předplatném.
-* Vlastní název serveru DNS, jako je například app1.contoso.com, tak dlouho, dokud se tento název *první* nakonfigurovaný jako záznam 23.96.52.53 na IP adresu nebo IP adresu na jinou PublicIpAddress ve stejném předplatném.
+Příklad: Předpokládejme, že prostředek PublicIpAddress má název DNS contosoapp1.northus.cloudapp.azure.com a IP adresa 23.96.52.53. ReverseFqdn pro PublicIpAddress lze zadat jako:
+* Název DNS pro PublicIpAddress, contosoapp1.northus.cloudapp.azure.com
+* Název DNS pro různé PublicIpAddress ve stejném předplatném, jako je contosoapp2.westus.cloudapp.azure.com
+* Název DNS individuální, jako je například app1.contoso.com, pokud je tento název *poprvé* NAKONFIGUROVANÝ jako CNAME na ContosoApp1.northus.cloudapp.Azure.com nebo jiný PublicIpAddress ve stejném předplatném.
+* Název DNS individuální, jako je například app1.contoso.com, pokud se tento název *nejprve* nakonfiguruje jako záznam a na IP adresu 23.96.52.53, nebo na IP adresu jiného PublicIpAddress ve stejném předplatném.
 
-Stejné omezení platí pro zpětné vyhledávání DNS pro cloudové služby.
+Stejné omezení platí pro reverzní DNS pro Cloud Services.
 
 
-## <a name="reverse-dns-for-publicipaddress-resources"></a>Zpětné vyhledávání DNS pro adresu PublicIpAddress prostředky
+## <a name="reverse-dns-for-publicipaddress-resources"></a>Reverzní DNS pro prostředky PublicIpAddress
 
-Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro adresu PublicIpAddress prostředky v modelu nasazení Resource Manager pomocí Azure Powershellu, příkazového řádku Azure classic nebo Azure CLI. Konfigurace reverzních záznamů DNS pro adresu PublicIpAddress prostředky se aktuálně nepodporuje prostřednictvím webu Azure portal.
+V této části najdete podrobné pokyny pro konfiguraci reverzních prostředků DNS pro prostředky PublicIpAddress v modelu nasazení Správce prostředků, a to pomocí Azure PowerShell, rozhraní příkazového řádku Azure Classic nebo rozhraní příkazového řádku Azure CLI. Konfigurace reverzního DNS pro prostředky PublicIpAddress se v tuto chvíli nepodporuje prostřednictvím Azure Portal.
 
-Azure nyní podporují zpětné vyhledávání DNS jenom za prostředky PublicIpAddress protokolu IPv4. Není podporováno pro protokol IPv6.
+Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIpAddress. Pro protokol IPv6 se nepodporuje.
 
-### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Přidat do existující PublicIpAddresses reverzních záznamů DNS
+### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Přidat reverzní DNS do existujícího PublicIpAddresses
 
 #### <a name="powershell"></a>PowerShell
 
-Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
+Postup aktualizace reverzního DNS na stávající PublicIpAddress:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -69,7 +69,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-Chcete-li přidat reverzních záznamů DNS pro existující adresu PublicIpAddress, která ještě nemá název DNS, musíte také zadat název DNS:
+Pokud chcete přidat reverzní DNS do existující PublicIpAddress, která ještě nemá název DNS, musíte zadat taky název DNS:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -81,13 +81,13 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 
 #### <a name="azure-classic-cli"></a>Azure Classic CLI
 
-Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
+Postup přidání reverzního DNS do existujícího PublicIpAddress:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-Chcete-li přidat reverzních záznamů DNS pro existující adresu PublicIpAddress, která ještě nemá název DNS, musíte také zadat název DNS:
+Pokud chcete přidat reverzní DNS do existující PublicIpAddress, která ještě nemá název DNS, musíte zadat taky název DNS:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
@@ -95,21 +95,21 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f con
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
+Postup přidání reverzního DNS do existujícího PublicIpAddress:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com.
 ```
 
-Chcete-li přidat reverzních záznamů DNS pro existující adresu PublicIpAddress, která ještě nemá název DNS, musíte také zadat název DNS:
+Pokud chcete přidat reverzní DNS do existující PublicIpAddress, která ještě nemá název DNS, musíte zadat taky název DNS:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com --dns-name contosoapp1
 ```
 
-### <a name="create-a-public-ip-address-with-reverse-dns"></a>Vytvoření veřejné IP adresy s reverzních záznamů DNS
+### <a name="create-a-public-ip-address-with-reverse-dns"></a>Vytvoření veřejné IP adresy pomocí reverzního DNS
 
-Vytvoření nové PublicIpAddress s vlastnost reverzní DNS už zadali:
+Chcete-li vytvořit novou PublicIpAddress s již zadanou vlastností reverzního DNS:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -129,9 +129,9 @@ azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d conto
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
 ```
 
-### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>Zobrazení reverzních záznamů DNS pro existující adresu PublicIpAddress
+### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>Zobrazit reverzní DNS pro existující PublicIpAddress
 
-Chcete-li zobrazit použije se konfigurovaná hodnota pro existující adresu PublicIpAddress:
+Zobrazení nakonfigurované hodnoty pro existující PublicIpAddress:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -151,9 +151,9 @@ azure network public-ip show -n PublicIp -g MyResourceGroup
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
 ```
 
-### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Odebrání existující veřejné IP adresy reverzních záznamů DNS
+### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Odebrat reverzní DNS z existující Veřejné IP adresy
 
-Reverzní DNS vlastnost odebrání existující adresu PublicIpAddress:
+Postup odebrání reverzní vlastnosti DNS z existujícího PublicIpAddress:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -176,37 +176,37 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 ```
 
 
-## <a name="configure-reverse-dns-for-cloud-services"></a>Konfigurace reverzních záznamů DNS pro Cloud Services
+## <a name="configure-reverse-dns-for-cloud-services"></a>Konfigurace reverzního DNS pro Cloud Services
 
-Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro cloudové služby v modelu nasazení Classic pomocí prostředí Azure PowerShell. Konfigurace reverzních záznamů DNS pro cloudové služby není podporována prostřednictvím webu Azure portal, Azure classic CLI nebo Azure CLI.
+V této části najdete podrobné pokyny ke konfiguraci reverzního DNS pro Cloud Services v modelu nasazení Classic pomocí Azure PowerShell. Konfigurace reverzního DNS pro Cloud Services není podporována prostřednictvím Azure Portal, rozhraní příkazového řádku Azure Classic nebo rozhraní příkazového řádku Azure CLI.
 
-### <a name="add-reverse-dns-to-existing-cloud-services"></a>Přidat do existujících cloudových služeb reverzních záznamů DNS
+### <a name="add-reverse-dns-to-existing-cloud-services"></a>Přidat reverzní DNS do existující Cloud Services
 
-Přidání zpětný záznam DNS do existující cloudové služby:
+Postup přidání reverzního záznamu DNS do existující cloudové služby:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="create-a-cloud-service-with-reverse-dns"></a>Vytvořit Cloudovou službu s reverzních záznamů DNS
+### <a name="create-a-cloud-service-with-reverse-dns"></a>Vytvoření cloudové služby pomocí reverzního DNS
 
-Chcete-li vytvořit novou Cloudovou službu s vlastnost reverzní DNS už zadali:
+Pokud chcete vytvořit novou cloudovou službu s již zadanou vlastností reverzního DNS:
 
 ```powershell
 New-AzureService –ServiceName "contosoapp1" –Location "West US" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="view-reverse-dns-for-existing-cloud-services"></a>Zobrazení reverzních záznamů DNS pro existující cloudové služby
+### <a name="view-reverse-dns-for-existing-cloud-services"></a>Zobrazit reverzní DNS pro existující Cloud Services
 
-Chcete-li zobrazit existující Cloudovou službu vlastnost reverzní DNS:
+Zobrazení reverzní vlastnosti DNS pro existující cloudovou službu:
 
 ```powershell
 Get-AzureService "contosoapp1"
 ```
 
-### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Odebrat reverzních záznamů DNS z existujících cloudových služeb
+### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Odebrat reverzní DNS z existující Cloud Services
 
-Reverzní DNS vlastnost odebrání existující cloudové služby:
+Odebrání reverzní vlastnosti DNS z existující cloudové služby:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
@@ -214,45 +214,45 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-### <a name="how-much-do-reverse-dns-records-cost"></a>Kolik reverzní DNS záznamy náklady?
+### <a name="how-much-do-reverse-dns-records-cost"></a>Kolik stojí reverzních záznamů DNS?
 
-Jsou zdarma!  Se neúčtují žádné další poplatky pro reverzních záznamů DNS nebo dotazy.
+Jsou zdarma.  Pro reverzní záznamy a dotazy DNS se neúčtují žádné další náklady.
 
-### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>Vyřeší Moje reverzních záznamů DNS z Internetu?
+### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>Vyřeší se moje reverzní záznamy DNS z Internetu?
 
-Ano. Jakmile jednou nastavíte vlastnost reverzní DNS pro službu Azure, Azure spravuje delegování DNS a zóny DNS, které jsou potřeba k tomu, že zpětný záznam DNS překládá všem uživatelům Internetu.
+Ano. Po nastavení reverzní vlastnosti DNS pro vaši službu Azure spravuje Azure všechny delegování DNS a zóny DNS, které jsou potřeba k tomu, aby se zajistilo, že reverzní záznam DNS bude vyřešen pro všechny uživatele internetu.
 
-### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Vytvořené výchozí reverzních záznamů DNS pro Moje služby Azure?
+### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Jsou výchozí reverzní záznamy DNS vytvořené pro moje služby Azure?
 
-Ne. Reverzních záznamů DNS je přihlašovaná funkce. Reverzních záznamů DNS žádné výchozí se vytvoří, pokud se rozhodnete, že je nakonfigurovat.
+Ne. Reverzní služba DNS je funkce výslovného souhlasu. Pokud se rozhodnete nekonfigurovat, nebudou vytvořeny žádné výchozí záznamy DNS reverzní.
 
-### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Co je formát pro název plně kvalifikované domény (FQDN)?
+### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Jaký je formát plně kvalifikovaného názvu domény (FQDN)?
 
-Plně kvalifikované názvy domény jsou uvedeny v pořadí dopředu a musí být ukončen tečkou (například "app1.contoso.com.").
+Plně kvalifikované názvy domény jsou určené v pořadí od sebe a musí se končit tečkou (například "app1.contoso.com").
 
-### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>Co se stane, když ověření pro reverzních záznamů DNS jste zadané nezdaří?
+### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>Co se stane, když se u zadané reverzní služby DNS nepodaří ověřit ověření?
 
-Pokud reverzní kontroly ověřování DNS nepodaří, nakonfigurovat zpětný záznam DNS nezdaří. Opravte hodnotu reverzní DNS podle potřeby a zkuste to znovu.
+Pokud se kontrola reverzního ověřování DNS nezdařila, operace konfigurace reverzního záznamu DNS se nezdařila. Opravte hodnotu reverzní DNS podle potřeby a zkuste to znovu.
 
-### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Můžete nakonfigurovat reverzních záznamů DNS pro službu Azure App Service?
+### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Můžu pro Azure App Service nakonfigurovat reverzní DNS?
 
-Ne. Reverzní DNS není podporována pro službu Azure App Service.
+Ne. Reverzní DNS se pro Azure App Service nepodporuje.
 
-### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Můžete nakonfigurovat více reverzních záznamů DNS pro službu Azure?
+### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Můžu nakonfigurovat více reverzních záznamů DNS pro službu Azure?
 
-Ne. Azure podporuje jeden zpětný záznam DNS pro jednotlivé cloudové služby Azure nebo PublicIpAddress.
+Ne. Azure podporuje jeden reverzní záznam DNS pro každou cloudovou službu Azure nebo PublicIpAddress.
 
-### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Můžete nakonfigurovat reverzních záznamů DNS pro adresu PublicIpAddress protokolu IPv6 prostředky?
+### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Můžu nakonfigurovat reverzní DNS pro prostředky PublicIpAddress IPv6?
 
-Ne. Azure nyní podporují zpětné vyhledávání DNS pouze pro IPv4 adresu PublicIpAddress prostředky a cloudové služby.
+Ne. Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIpAddress a Cloud Services.
 
-### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Můžu poslat e-mailů do externích domén z mých služeb Azure Compute?
+### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Můžu odeslat e-maily externím doménám z výpočetních služeb Azure?
 
-Technické možnost odesílat e-maily přímo z nasazení služby Azure závisí na typu předplatného. Bez ohledu na typ předplatného společnost Microsoft doporučuje používat služby pro přenos přes důvěryhodný e-mailu k odesílání odchozích e-mailu. Další podrobnosti najdete v tématu [rozšířené zabezpečení Azure pro odesílání e-mailem – listopad 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Technická možnost odesílání e-mailů přímo z nasazení Azure závisí na typu předplatného. Bez ohledu na typ předplatného Microsoft doporučuje odesílat odchozí e-mailové služby pomocí důvěryhodných poštovních přenosů. Další podrobnosti najdete v tématu [Rozšířené zabezpečení Azure pro odesílání e-mailů – listopad 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o reverzních záznamů DNS najdete v tématu [zpětného vyhledávání DNS v encyklopedii Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Další informace o reverzních DNS najdete v tématu [reverzní DNS Lookup v Wikipedii](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Zjistěte, jak [hostování zóny zpětného vyhledávání pro váš rozsah IP přiřazené poskytovatele internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
+Naučte se [hostovat zónu zpětného vyhledávání pro rozsah IP adres přiřazený poskytovateli internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
 

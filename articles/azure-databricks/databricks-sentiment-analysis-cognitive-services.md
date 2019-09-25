@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68619583"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech s využitím Azure Databricks
@@ -216,7 +216,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
 > [!NOTE]
-> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést,  nastavte proměnnou `test` DataSource na `twitter` místo a naplňte seznam **testSource** s preferovaným vstupem testu.
+> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, nastavte proměnnou `test` DataSource na `twitter` místo a naplňte seznam **testSource** s preferovaným vstupem testu.
 
 ```scala
     import scala.collection.JavaConverters._

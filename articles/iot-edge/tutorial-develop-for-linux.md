@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030980"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240948"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Linuxem
 
@@ -63,6 +63,7 @@ V tomto kurzu se naučíte postup vývoje Visual Studio Code. Pokud místo toho 
 Vývojový počítač:
 
 * V závislosti na vašich předvolbách pro vývoj můžete použít svůj vlastní počítač nebo virtuální počítač.
+  * Ujistěte se, že váš vývojový počítač podporuje vnořenou virtualizaci. Tato funkce je nezbytná pro spuštění kontejnerového modulu, který nainstalujete v následující části.
 * Většina operačních systémů, které mohou spustit kontejnerový modul, lze použít k vývoji IoT Edge moduly pro zařízení se systémem Linux. V tomto kurzu se používá počítač s Windows, ale odkazuje na známé rozdíly na MacOS nebo Linux. 
 * Nainstalujte [Git](https://git-scm.com/), abyste si mohli stáhnout balíčky šablon modulů dále v tomto kurzu.  
 * [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
@@ -321,7 +322,7 @@ Příkazy v této části jsou pro vaše zařízení IoT Edge, ne pro váš výv
 
    V protokolech SimulatedTemperatureSensor a SampleModule by se měly zobrazovat zprávy, které zpracovávají. Modul edgeAgent je zodpovědný za spouštění jiných modulů, takže jeho protokoly budou mít informace o implementaci manifestu nasazení. Pokud některý z modulů není v seznamu nebo není spuštěný, budou pravděpodobně chyby v protokolech edgeAgent. Modul edgeHub zodpovídá za komunikaci mezi moduly a IoT Hub. Pokud jsou moduly v provozu, ale zprávy nepřicházejí do služby IoT Hub, budou pravděpodobně chyby v protokolech edgeHub. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu nastavíte Visual Studio Code na svém vývojovém počítači a z něho jste nasadili první IoT Edge modul. Teď, když znáte základní koncepty, zkuste do modulu přidat funkce, aby mohli analyzovat data, která procházejí. Vyberte preferovaný jazyk: 
 

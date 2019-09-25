@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609869"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224546"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
@@ -139,6 +139,7 @@ Do souboru přidejte následující spouštěcí kód JSON a uložte ho.
             "location": "[location()]"
         }
     }
+}
 ```
 
 Další informace najdete v tématu Začínáme [s CreateUiDefinition](create-uidefinition-overview.md).
@@ -215,7 +216,7 @@ New-AzManagedApplicationDefinition `
 
 Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](publish-marketplace-app.md).
 * Informace o nasazení instance spravované aplikace najdete v tématu [Nasazení aplikace z katalogu služeb prostřednictvím webu Azure Portal](deploy-service-catalog-quickstart.md).

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000586"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241058"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
@@ -363,14 +363,14 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 |**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| Není k dispozici |
-|DecipherOnly|mohli| Není k dispozici  |
+|DataEncipherment|šifrování, dešifrování| neuvedeno |
+|DecipherOnly|mohli| neuvedeno  |
 |DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|EncipherOnly|encrypt| Není k dispozici |
-|KeyCertSign|podepsat, ověřit|Není k dispozici|
+|EncipherOnly|encrypt| neuvedeno |
+|KeyCertSign|podepsat, ověřit|neuvedeno|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Není k dispozici |
-|bit crlsign|podepsat, ověřit| Není k dispozici |
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| neuvedeno |
+|bit crlsign|podepsat, ověřit| neuvedeno |
 
 ### <a name="certificate-issuer"></a>Vystavitel certifikátu
 

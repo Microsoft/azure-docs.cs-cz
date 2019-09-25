@@ -2,24 +2,17 @@
 title: 'Umístění a poskytovatelé připojení: Azure ExpressRoute | Microsoft Docs'
 description: Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle umístění.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 09/23/2019
 ms.author: cherylmc
-ms.openlocfilehash: 192bafc0b53483c21e52602b4de8c57f66fdee3c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 61ac896d2135790ca2e757ec56303fdb783d2865
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172559"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219665"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -74,9 +67,11 @@ Připojení přes geopolitické oblasti není pomocí standardní SKU pro Expres
 
 ## <a name="partners"></a>Poskytovatelé připojení ExpressRoute
 
-Následující tabulka uvádí umístění připojení a poskytovatele služby pro každé umístění. Seznam poskytovatelů služeb a umístění, ve kterých působí, najdete v článku [Umístění podle poskytovatelů služeb](expressroute-locations.md). 
+Následující tabulka uvádí umístění připojení a poskytovatele služby pro každé umístění. Seznam poskytovatelů služeb a umístění, ve kterých působí, najdete v článku [Umístění podle poskytovatelů služeb](expressroute-locations.md).
 
-**Místní oblasti Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) v každém umístění partnerského vztahu mají přístup. není k dispozici **, znamená to** , že ExpressRoute Local není v tomto umístění partnerského vztahu k dispozici.
+* **Místní oblasti Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) v každém umístění partnerského vztahu mají přístup. není k dispozici **, znamená to** , že ExpressRoute Local není v tomto umístění partnerského vztahu k dispozici.
+
+* **Zóna** odkazuje na [ceny](https://azure.microsoft.com/pricing/details/expressroute/).
 
 
 ### <a name="production-azure"></a>Produkční prostředí Azure

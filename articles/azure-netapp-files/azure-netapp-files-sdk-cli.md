@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: a99fb3b61d8193f1671fa1d8e228439941659d57
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141161"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212099"
 ---
-# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files sady SDK a nástroje rozhraní příkazového řádku
+# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Sady Azure NetApp Files SDK a nástroje CLI
 
 V tomto článku jsou uvedené sady SDK a nástroje příkazového řádku (CLI) podporované nástrojem Azure NetApp Files.
 
@@ -54,7 +54,7 @@ V následující tabulce jsou uvedeny ukázky kódu pro váš odkaz.
 |    Jazyk/nástroj    |    Dokumentace k ukázce kódu    |
 |------------------|--------------------------------------------|
 |    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
-|    Pythony    |    [Ukázka sady SDK pro Azure NetApp Files pro Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+|    Python    |    [Ukázka sady SDK pro Azure NetApp Files pro Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
-## <a name="next-steps"></a>Další postup   
+## <a name="next-steps"></a>Další kroky   
  [Stáhnout sady Azure SDK](https://azure.microsoft.com/downloads/)

@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/20/2019
 ms.author: alinast
-ms.openlocfilehash: 38df195f787407c4beab2f7251cf00c08a739e09
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e483ac8e56ce39cbb05c5d00634c6327b497bab5
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622886"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219909"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: Zajistěte, aby vaše stavební a monitorované pracovní podmínky byly ve verzi Preview Azure Digital Workers Preview
 
@@ -37,6 +37,9 @@ V tomto kurzu se předpokládá, že jste [dokončili nastavení digitálních v
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro sestavení a spuštění ukázky. Spusťte `dotnet --version` , chcete-li ověřit, zda je nainstalovaná správná verze. 
 - [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
+> [!TIP]
+> Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
+
 ## <a name="define-conditions-to-monitor"></a>Definice podmínek, které se mají monitorovat
 
 Můžete definovat sadu specifických podmínek, které se mají monitorovat v datech zařízení nebo senzoru, označovaných jako *shody*. Pak můžete definovat funkce označované jako *uživatelsky definované funkce*. Uživatelsky definované funkce spouštějí vlastní logiku pro data, která pocházejí z vašich prostorů a zařízení, když dojde k podmínkám zadaným pro tyto shody. Další informace najdete v tématu [zpracování dat a uživatelsky definované funkce](concepts-user-defined-functions.md). 
@@ -50,25 +53,23 @@ Přidejte následující shodu pod existující shody. Ujistěte se, že jsou kl
         dataTypeValue: Temperature
 ```
 
-Tato shoda bude sledovat senzor SAMPLE_SENSOR_TEMPERATURE, který jste přidali v [prvním kurzu](tutorial-facilities-setup.md). 
-
-<a id="udf"></a>
+Tato shoda bude sledovat `SAMPLE_SENSOR_TEMPERATURE` senzor, který jste přidali v [prvním kurzu](tutorial-facilities-setup.md). 
 
 ## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
 K přizpůsobení zpracování dat senzorů můžete použít uživatelsky definované funkce. Jedná se o vlastní kód JavaScriptu, který může běžet v instanci digitálních vláken Azure, když dojde k určitým podmínkám popsaným v odpovídajících sestavách. Pro každý senzor, který chcete monitorovat, můžete vytvořit odpovídající a uživatelsky definované funkce. Další informace najdete v tématu [zpracování dat a uživatelsky definované funkce](concepts-user-defined-functions.md). 
 
-V ukázkovém souboru provisionSample. yaml vyhledejte oddíl, který začíná textem **UserDefinedFunctions**. Tato část zřídí uživatelsky definovanou funkci se zadaným **názvem**. Tato UDF funguje na seznamu shod v rámci **matcherNames**. Všimněte si, že pro uživatelem definovanou funkci můžete v elementu **script** zadat vlastní soubor JavaScriptu.
+V ukázkovém souboru *provisionSample. yaml* vyhledejte oddíl, který začíná textem **UserDefinedFunctions**. Tato část zřídí uživatelsky definovanou funkci se zadaným **názvem**. Tato UDF funguje na seznamu shod v rámci **matcherNames**. Všimněte si, že pro uživatelem definovanou funkci můžete v elementu **script** zadat vlastní soubor JavaScriptu.
 
 Všimněte si také části **roleassignments**. Přiřadí roli správce prostoru k uživatelsky definované funkci. Tato role umožňuje IT přístup k událostem, které pocházejí z kteréhokoliv zřízeného prostoru. 
 
-1. Nakonfigurujte systém souborů UDF tak, aby zahrnoval teplotní teplotu přidáním nebo zrušením komentáře následujícího řádku v `matcherNames` uzlu souboru provisionSample. yaml:
+1. Nakonfigurujte uživatelem definovanou funkci tak, aby zahrnovala pravidlo shody teploty. Provedete to přidáním následujícího řádku do uzlu `matcherNames` v souboru *provisionSample.yaml* (případně zrušením komentáře u tohoto řádku):
 
     ```yaml
             - Matcher Temperature
     ```
 
-1. Otevřete soubor **src\actions\userDefinedFunctions\availability.js** v editoru. Toto je soubor, na který se odkazuje v elementu **Script** provisionSample. yaml. Uživatelsky definovaná funkce v tomto souboru vyhledává podmínky, když se v místnosti nezjistí žádný pohyb a úrovně oxidu uhličitého jsou nižší než 1 000 ppm. 
+1. Otevřete soubor **src\actions\userDefinedFunctions\availability.js** v editoru. Toto je soubor, na který se odkazuje v elementu **Script** *provisionSample. yaml*. Uživatelsky definovaná funkce v tomto souboru vyhledává podmínky, když se v místnosti nezjistí žádný pohyb a úrovně oxidu uhličitého jsou nižší než 1 000 ppm. 
 
    Upravte soubor JavaScriptu pro monitorování teploty a dalších podmínek. Přidejte následující řádky kódu, aby hledaly podmínky, když v místnosti není zjištěn žádný pohyb, úrovně oxidu uhličitého jsou nižší než 1 000 ppm a teplota je nižší než 78 stupňů Fahrenheita.
 
@@ -135,15 +136,12 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
         if(carbonDioxideValue < carbonDioxideThreshold && !presence) {
             log(`${availableFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, availableFresh);
-
-            // Set up custom notification for air quality
-            parentSpace.Notify(JSON.stringify(availableFresh));
         }
         else {
             log(`${noAvailableOrFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, noAvailableOrFresh);
 
-            // Set up custom notification for air quality
+            // Set up custom notification for poor air quality
             parentSpace.Notify(JSON.stringify(noAvailableOrFresh));
         }
     ```
@@ -182,7 +180,7 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
    > [!IMPORTANT]
    > Aby se zabránilo neoprávněnému přístupu k rozhraní API pro správu digitálních vláken, vyžaduje se přihlášení pomocí přihlašovacích údajů k účtu Azure. Ukládá vaše přihlašovací údaje po krátkou dobu, takže se při každém spuštění nemusíte přihlašovat. Při prvním spuštění tohoto programu a po vypršení platnosti vašich uložených přihlašovacích údajů vám aplikace přesměruje na přihlašovací stránku a zadá na ni kód specifický pro relaci. Podle pokynů se přihlaste pomocí svého účtu Azure.
 
-1. Po ověření účtu se v aplikaci spustí vytvoření ukázkového prostorového grafu, jak je nakonfigurováno v provisionSample. yaml. Počkejte, než se zřizování dokončí. Bude to trvat několik minut. Potom Sledujte zprávy v příkazovém okně a Všimněte si, jak se vytvořil prostorový graf. Všimněte si, jak aplikace vytvoří centrum IoT v kořenovém uzlu nebo v `Venue`.
+1. Po ověření účtu se v aplikaci spustí vytvoření ukázkového prostorového grafu, jak je nakonfigurováno v *provisionSample. yaml*. Počkejte, než se zřizování dokončí. Bude to trvat několik minut. Potom Sledujte zprávy v příkazovém okně a Všimněte si, jak se vytvořil prostorový graf. Všimněte si, jak aplikace vytvoří centrum IoT v kořenovém uzlu nebo v `Venue`.
 
 1. Z výstupu v příkazovém okně Zkopírujte hodnotu `ConnectionString` `Devices` v části do schránky. Tuto hodnotu budete potřebovat pro simulaci připojení zařízení v další části.
 
@@ -190,8 +188,6 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva podobná operaci vstupně-výstupní operace byla přerušena z důvodu ukončení vlákna nebo žádosti o aplikaci (uprostřed zřizování), zkuste příkaz spustit znovu. K tomu může dojít, pokud u klienta HTTP vypršel časový limit problému se sítí.
-
-<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>Simulace dat ze senzorů
 
@@ -209,9 +205,9 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
 
    a. **DeviceConnectionString**: Přiřaďte hodnotu `ConnectionString` v okně výstup z předchozí části. Tento řetězec zkopírujte v uvozovkách, aby se simulátor mohl správně připojit ke službě IoT Hub.
 
-   b. **HardwareId** v rámci pole senzory: Vzhledem k tomu, že simulujete události ze senzorů zřízených vaší instancí digitálních vláken Azure, ID hardwaru a názvy senzorů v tomto souboru by měly odpovídat `sensors` uzlu souboru provisionSample. yaml.
+   b. **HardwareId** v rámci pole senzory: Vzhledem k tomu, že simulujete události ze senzorů zřízených vaší instancí digitálních vláken Azure, ID hardwaru a názvy senzorů v tomto souboru by měly odpovídat `sensors` uzlu souboru *provisionSample. yaml* .
 
-      Přidejte novou položku pro senzor teploty. Uzel **senzory** v souboru appSettings. JSON by měl vypadat takto:
+      Přidejte novou položku pro senzor teploty. Uzel **senzory** v souboru *appSettings. JSON* by měl vypadat takto:
 
       ```JSON
       "Sensors": [{
@@ -251,7 +247,7 @@ Okno výstup ukazuje, jak uživatelsky definovaná funkce běží a zachycuje ud
 
    ![Výstup pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)
 
-Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nastaví hodnotu prostoru s příslušnou zprávou, jak jsme viděli [dříve](#udf). `GetAvailableAndFreshSpaces` Funkce vytiskne zprávu v konzole nástroje.
+Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nastaví hodnotu prostoru s příslušnou zprávou, jak jsme viděli [dříve](#create-a-user-defined-function). `GetAvailableAndFreshSpaces` Funkce vytiskne zprávu v konzole nástroje.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -264,7 +260,7 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zřídili své prostory a vytvořili jste rozhraní, abyste mohli aktivovat vlastní oznámení, můžete přejít do některého z následujících kurzů:
 

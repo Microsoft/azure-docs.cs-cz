@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129334"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219501"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -37,7 +37,7 @@ V následující tabulce jsou uvedeny některé osvědčené postupy souvisejíc
 **Podrobnosti**: Postupujte podle pokynů v [návodu k heslu Microsoftu](https://www.microsoft.com/research/publication/password-guidance/), který je vymezený pro uživatele platformy Microsoft Identity platform (Azure Active Directory, Active Directory a účet Microsoft).
 
 **Osvědčené postupy**: Monitorujte podezřelé akce související s vašimi uživatelskými účty.   
-**Podrobnosti**: Monitorujte [uživatele v](/azure/active-directory/reports-monitoring/concept-user-at-risk) případě rizikových a [rizikových přihlášení](../../active-directory/reports-monitoring/concept-risk-events.md) pomocí sestav zabezpečení Azure AD.
+**Podrobnosti**: Monitorujte [uživatele v případě rizikových](/azure/active-directory/reports-monitoring/concept-user-at-risk) a [rizikových přihlášení](../../active-directory/reports-monitoring/concept-risk-events.md) pomocí sestav zabezpečení Azure AD.
 
 **Osvědčené postupy**: Automatické zjišťování a náprava hesel s vysokým rizikem   
 **Podrobnosti**: [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview) je funkce edice Azure AD Premium P2, která umožňuje:
@@ -95,7 +95,7 @@ Průběžně monitorujte služby úložiště, které vaše aplikace používá 
 
 K získání centrálního zobrazení stavu zabezpečení všech vašich prostředků Azure použijte Security Center. Na první pohled ověřte, jestli jsou správně nastavené správné kontrolní mechanismy zabezpečení, a rychle identifikujte všechny prostředky, které vyžadují pozornost.
 
-Security Center se taky integruje s [pokročilou ochranou před internetovými útoky v programu Windows Defender](../../security-center/security-center-wdatp.md), která poskytuje komplexní možnosti zjišťování koncových bodů a odezvy (EDR). Díky integraci ochrany ATP v programu Windows Defender můžete obdržíte nezvyklosti. Můžete také detekovat a reagovat na pokročilé útoky na koncových bodech serveru monitorovaných Security Center.
+Security Center se taky integruje s [pokročilou ochranou před internetovými útoky v programu Microsoft Defender](../../security-center/security-center-wdatp.md), která poskytuje komplexní možnosti zjišťování koncových bodů a odezvy (EDR). Díky integraci ochrany ATP v programu Microsoft Defender můžete obdržíte nezvyklosti. Můžete také detekovat a reagovat na pokročilé útoky na koncových bodech serveru monitorovaných Security Center.
 
 Skoro všechny podnikové organizace mají systém SIEM (Security Information and Event Management), který usnadňuje identifikaci vznikajících hrozeb tím, že konsoliduje informace protokolu z různých zařízení pro shromáždění signálu. Protokoly se pak analyzují pomocí systému pro analýzu dat, který vám usnadní identifikaci "zajímavého" z hluku, který je ve všech řešeních pro shromáždění protokolů a analytická řešení nevyhnutelný.
 
@@ -121,7 +121,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: Pomocí [Azure monitor můžete shromažďovat a exportovat data](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
 
 **Osvědčené postupy**: Integrací možností zjišťování koncových bodů a odpovědí (EDR) do šetření útoku urychlíte šetření a lovecké procesy a omezíte falešně pozitivní výsledky.   
-**Podrobnosti**: [Povolte integraci ochrany ATP v programu Windows Defender](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
+**Podrobnosti**: [Povolte integraci ATP v programu Microsoft Defender](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Monitorování sítě v komplexním scénáři
 Zákazníci vytvářejí komplexní síť v Azure kombinací síťových prostředků, jako jsou virtuální síť, ExpressRoute, Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředcích.
@@ -148,7 +148,7 @@ Použijte následující osvědčené postupy DevOps, abyste měli jistotu, že 
 Můžete použít [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) ke zřízení aplikací pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu použijete k opakovanému nasazení aplikace v každé fázi životního cyklu aplikace.
 
 **Osvědčené postupy**: Automatické sestavování a nasazování do Azure Web Apps nebo Cloud Services.  
-**Podrobnosti**: Azure DevOps Projects můžete nakonfigurovat tak, aby se [automaticky vytvořily a](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) nasadily do Azure Web Apps nebo Cloud Services. Azure DevOps po každém vrácení se změnami kódu automaticky nasadí binární soubory po sestavení do Azure. Proces sestavení balíčku je ekvivalentní příkazu Package v aplikaci Visual Studio a kroky publikování jsou ekvivalentní příkazu Publikovat v aplikaci Visual Studio.
+**Podrobnosti**: Azure DevOps Projects můžete nakonfigurovat tak, aby se [automaticky vytvořily a nasadily](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) do Azure Web Apps nebo Cloud Services. Azure DevOps po každém vrácení se změnami kódu automaticky nasadí binární soubory po sestavení do Azure. Proces sestavení balíčku je ekvivalentní příkazu Package v aplikaci Visual Studio a kroky publikování jsou ekvivalentní příkazu Publikovat v aplikaci Visual Studio.
 
 **Osvědčené postupy**: Automatizujte správu vydaných verzí.  
 **Podrobnosti**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) je řešení pro automatizaci nasazení s více fázemi a správu procesu vydávání verzí. Vytvářejte spravované kanály průběžného nasazování k rychlému, snadnému a často vydaným verzím. Pomocí Azure Pipelines můžete automatizovat proces vydávání verzí a můžete mít předdefinované schvalovací pracovní postupy. Nasaďte místně a do cloudu, podle potřeby rozšiřujete a přizpůsobte.
@@ -206,8 +206,8 @@ Povolí Azure Policy monitorování a prosazování napsaných zásad vaší org
 
 Tady jsou některé osvědčené postupy zabezpečení, které je potřeba provést po Azure Policy:
 
-**Osvědčené postupy**: Zásady podporují několik typů efektů. Můžete si je přečíst v tématu [Struktura definice Azure Policy](../../governance/policy/concepts/definition-structure.md#policy-rule). Obchodní operace mohou negativně ovlivnit efekt **odmítnutí** a nápravu, takže zahájíte efekt **auditu** a omezíte riziko negativního dopadu zásad.   
-**Podrobnosti**: [Spusťte nasazení zásad v režimu auditování](../../governance/policy/concepts/definition-structure.md#policy-rule) a později proveďte postup zamítnutí nebo **nápravy**. Než přejdete na **Odepřít** nebo **opravit**, otestujte výsledky auditu a ověřte je.
+**Osvědčené postupy**: Zásady podporují několik typů efektů. Můžete si je přečíst v tématu [Struktura definice Azure Policy](../../governance/policy/concepts/definition-structure.md#policy-rule). Obchodní operace mohou negativně ovlivnit efekt **odmítnutí** a **nápravu** , takže zahájíte efekt **auditu** a omezíte riziko negativního dopadu zásad.   
+**Podrobnosti**: [Spusťte nasazení zásad v režimu auditování](../../governance/policy/concepts/definition-structure.md#policy-rule) a později proveďte postup **zamítnutí** nebo **nápravy**. Než přejdete na **Odepřít** nebo **opravit**, otestujte výsledky auditu a ověřte je.
 
 Další informace najdete v tématu [Vytvoření a Správa zásad pro vymáhání dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md).
 
@@ -220,7 +220,7 @@ Další informace najdete v tématu [Vytvoření a Správa zásad pro vymáhán�
 ## <a name="monitor-azure-ad-risk-reports"></a>Monitorování sestav rizik Azure AD
 Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem [detekce rizik](../../active-directory/reports-monitoring/concept-risk-events.md). Detekce rizik se zaznamenávají v sestavách zabezpečení Azure AD. Další informace najdete v sestavě zabezpečení [rizikové uživatele](../../active-directory/reports-monitoring/concept-user-at-risk.md) a [zabezpečení rizikových přihlášení](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:

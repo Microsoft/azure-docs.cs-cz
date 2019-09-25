@@ -1,5 +1,5 @@
 ---
-title: Spuštění PlayBook v Azure Sentinel Preview | Microsoft Docs
+title: Spuštění PlayBook ve službě Azure Sentinel | Microsoft Docs
 description: Tento článek popisuje, jak spustit PlayBook ve službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/21/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018803"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229513"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Kurz: Nastavení automatických odpovědí na hrozby v Azure Sentinel Preview
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: Nastavení automatických odpovědí na hrozby v Azure Sentinel
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Tento kurz vám pomůže využít playbooky zabezpečení ve službě Azure Sentinel k nastavení automatizovaných odpovědí na hrozby pro problémy související se zabezpečením zjištěné službou Azure Sentinel.
 
@@ -78,7 +76,9 @@ Pomocí těchto kroků vytvořte nové PlayBook zabezpečení v Azure Sentinel:
 
 6. Přejdete do návrháře aplikace logiky, kde můžete vytvořit novou nebo upravit šablonu. Další informace o vytvoření PlayBook s [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-7. Pokud vytváříte prázdné PlayBook, zadejte do pole **Prohledat všechny konektory a triggery** *Azure Sentinel*a vyberte, **když se aktivuje odpověď na výstrahu Sentinel Azure**. <br>Po vytvoření se nový PlayBook zobrazí v seznamu **playbooky** . Pokud se nezobrazí, klikněte na tlačítko **aktualizovat**. 
+7. Pokud vytváříte prázdné PlayBook, zadejte do pole **Prohledat všechny konektory a triggery** *Azure Sentinel*a vyberte, **když se aktivuje odpověď na výstrahu Sentinel Azure**. <br>Po vytvoření se nový PlayBook zobrazí v seznamu **playbooky** . Pokud se nezobrazí, klikněte na tlačítko **aktualizovat**.
+
+1. Použijte funkce **získat entity** , které vám umožní získat relevantní entity ze seznamu **entit** , jako jsou účty, IP adresy a hostitelé. To vám umožní spouštět akce u konkrétních entit.
 
 7. Teď můžete definovat, co se stane po aktivaci playbooku. Můžete přidat akci, logickou podmínku, podmínky případu přepínače nebo smyčky.
 
@@ -115,7 +115,7 @@ Automatizace odpovědí:
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak spustit PlayBook ve službě Azure Sentinel. Pokračujte na to, [jak](hunting.md) proaktivně procházet s hrozbami pomocí Azure Sentinel.
 

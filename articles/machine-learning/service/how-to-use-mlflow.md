@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999290"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219691"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik a nasazení modelů pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -146,6 +146,7 @@ MLflow sledování pomocí Azure Machine Learning umožňuje ukládat zaznamenan
 Pokud chcete Mlflow experimenty spustit pomocí Azure Databricks, musíte nejdřív vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
 
 V clusteru nezapomeňte nainstalovat knihovnu *AzureML-mlflow* z PyPi, abyste zajistili, že má cluster přístup k potřebným funkcím a třídám.
+Odsud naimportujte Poznámkový blok experimentu, připojte k němu svůj cluster a spusťte experiment. 
 
 ### <a name="install-libraries"></a>Instalovat knihovny
 
@@ -184,10 +185,17 @@ workspace_name = 'workspace_name'
 ws = Workspace.get(name=workspace_name,
                    subscription_id=subscription_id,
                    resource_group=resource_group)
-
 ```
+
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Připojení pracovních prostorů Azure Databricks a Azure Machine Learning
+
+V [Azure Portal](https://ms.portal.azure.com)můžete pracovní prostor Azure DATABRICKS (ADB) propojit s novým nebo existujícím Azure Machine Learning pracovním prostorem. Provedete to tak, že přejdete do svého pracovního prostoru ADB a v pravém dolním rohu vyberete tlačítko **propojit Azure Machine Learning pracovní prostor** . Propojení pracovních prostorů umožňuje sledovat data experimentů v pracovním prostoru Azure Machine Learning. 
+
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>Propojení MLflow sledování s vaším pracovním prostorem
+
 Po vytvoření instance pracovního prostoru nastavte identifikátor URI sledování MLflow. Provedete to tak, že propojíte sledování MLflow k pracovnímu prostoru Azure Machine Learning. Po tomto případě budou všechny experimenty nakládat do spravované služby sledování Azure Machine Learning.
+
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Přímo nastavit sledování MLflow v poznámkovém bloku
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
@@ -200,6 +208,12 @@ Ve školicím skriptu importujte mlflow a použijte rozhraní API pro protokolov
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
+
+#### <a name="automate-setting-mlflow-tracking"></a>Automatizace nastavení sledování MLflow
+
+Místo ručního nastavení sledovacího identifikátoru URI v každé následné relaci poznámkového bloku v clusterech to udělejte automaticky pomocí tohoto [Azure Machine Learning sledování skriptu init clusteru](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md).
+
+Pokud jste správně nakonfigurovali, můžete zobrazit data sledování MLflow v REST API Azure Machine Learning a všech klientech a v Azure Databricks prostřednictvím uživatelského rozhraní MLflow nebo pomocí klienta MLflow.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Zobrazení metrik a artefaktů ve vašem pracovním prostoru
 
@@ -375,6 +389,6 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

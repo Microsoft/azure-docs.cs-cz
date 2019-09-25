@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dce9308230c2a82c66b1d8689123d9d34fc6e408
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2c0f763dcc03d0ed2e4fb335342f39c2708572c0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114688"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213550"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 
@@ -744,7 +744,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. cache/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novým Redis Cache. |
 > | Action | Microsoft. cache/Locations/operationresults/Read | Získá výsledek dlouhotrvající operace, pro kterou se dřív vrátila hlavička Location do klienta. |
 > | Action | Microsoft.Cache/operations/read | Obsahuje seznam operací, které podporuje poskytovatel Microsoft. cache. |
-> | Action | Microsoft.Cache/redis/delete | Odstranit celou službu Redis Cache |
+> | Action | Microsoft.Cache/redis/delete | Odstranit celý Redis Cache |
 > | Action | Microsoft.Cache/redis/export/action | Exportovat Redis data do předem vydaných objektů BLOB úložiště v zadaném formátu |
 > | Action | Microsoft.Cache/redis/firewallRules/delete | Odstranit pravidla brány firewall protokolu IP Redis Cache |
 > | Action | Microsoft.Cache/redis/firewallRules/read | Získat pravidla brány firewall protokolu IP pro Redis Cache |
@@ -1222,9 +1222,9 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Přečte dostupné SKU pro předplatné. |
 > | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Přečte dostupné SKU pro předplatné. |
 > | Action | Microsoft.CognitiveServices/locations/deleteVirtualNetworkOrSubnets/action | Oznámení od společnosti Microsoft. Network odstraňování VirtualNetworks nebo podsítí. |
-> | Action | Microsoft.CognitiveServices/Operations/read | Vypíše všechny dostupné operace. |
-> | Action | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné do služeb Cognitive Services. |
-> | Action | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné do služeb Cognitive Services. |
+> | Action | Microsoft.CognitiveServices/Operations/read | Vypsat všechny dostupné operace |
+> | Action | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné pro Cognitive Services. |
+> | Action | Microsoft.CognitiveServices/register/action | Zaregistruje předplatné pro Cognitive Services. |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -1239,12 +1239,12 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Action | Microsoft. COMPUTE/availabilitySets/DELETE | Umožňuje odstranit sadu dostupnosti. |
+> | Action | Microsoft. COMPUTE/availabilitySets/DELETE | Odstraní skupinu dostupnosti. |
 > | Action | Microsoft. COMPUTE/availabilitySets/Read | Získá vlastnosti skupiny dostupnosti. |
 > | Action | Microsoft. COMPUTE/availabilitySets/povolených velikostí/Read | Vypíše dostupné velikosti pro vytvoření nebo aktualizaci virtuálního počítače ve skupině dostupnosti. |
 > | Action | Microsoft. COMPUTE/availabilitySets/Write | Vytvoří novou skupinu dostupnosti nebo aktualizuje stávající. |
 > | Action | Microsoft. COMPUTE/disks/beginGetAccess/Action | Získat identifikátor URI SAS disku pro přístup k objektu BLOB |
-> | Action | Microsoft. COMPUTE/disks/DELETE | Odstraní disky. |
+> | Action | Microsoft. COMPUTE/disks/DELETE | Odstraní disk. |
 > | Action | Microsoft. COMPUTE/disks/endGetAccess/Action | Odvolání identifikátoru URI SAS disku |
 > | Action | Microsoft. COMPUTE/disky/číst | Získá vlastnosti disku. |
 > | Action | Microsoft. COMPUTE/disks/Write | Vytvoří nový disk nebo aktualizuje stávající. |
@@ -1263,7 +1263,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. COMPUTE/hostitelé/odstranit | Odstraní hostitele. |
 > | Action | Microsoft. COMPUTE/hostitelé/číst | Získání vlastností hostitele |
 > | Action | Microsoft. COMPUTE/hostitelé/zapisovat | Vytvoří nového hostitele nebo aktualizuje stávajícího hostitele. |
-> | Action | Microsoft. COMPUTE/images/DELETE | Odstraní image. |
+> | Action | Microsoft. COMPUTE/images/DELETE | Odstraní obrázek. |
 > | Action | Microsoft. COMPUTE/images/Read | Získá vlastnosti obrázku. |
 > | Action | Microsoft. COMPUTE/images/Write | Vytvoří novou bitovou kopii nebo aktualizuje stávající. |
 > | Action | Microsoft. COMPUTE/Locations/capsOperations/Read | Získá stav operace asynchronního zakončení. |
@@ -1290,18 +1290,18 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.Compute/restorePointCollections/restorePoints/delete | Odstraní bod obnovení. |
 > | Action | Microsoft.Compute/restorePointCollections/restorePoints/read | Získá vlastnosti bodu obnovení. |
 > | Action | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action | Získat vlastnosti bodu obnovení spolu s identifikátory URI SAS objektů BLOB |
-> | Action | Microsoft.Compute/restorePointCollections/restorePoints/write | Vytvoří nový bod obnovení |
+> | Action | Microsoft.Compute/restorePointCollections/restorePoints/write | Vytvoří nový bod obnovení. |
 > | Action | Microsoft.Compute/restorePointCollections/write | Vytvoří novou kolekci bodů obnovení nebo aktualizuje stávající. |
-> | Action | Microsoft. COMPUTE/sharedVMImages/DELETE | Odstraní SharedVMImage. |
+> | Action | Microsoft. COMPUTE/sharedVMImages/DELETE | Odstraní SharedVMImage |
 > | Action | Microsoft. COMPUTE/sharedVMImages/Read | Získá vlastnosti SharedVMImage. |
-> | Action | Microsoft. COMPUTE/sharedVMImages/verze/DELETE | Odstraní SharedVMImageVersion. |
+> | Action | Microsoft. COMPUTE/sharedVMImages/verze/DELETE | Odstranit SharedVMImageVersion |
 > | Action | Microsoft. COMPUTE/sharedVMImages/verze/číst | Získá vlastnosti SharedVMImageVersion. |
 > | Action | Microsoft. COMPUTE/sharedVMImages/verze/replika/akce | Replikace SharedVMImageVersion do cílových oblastí |
 > | Action | Microsoft. COMPUTE/sharedVMImages/verze/Write | Vytvoří novou SharedVMImageVersion nebo aktualizuje stávající. |
 > | Action | Microsoft.Compute/sharedVMImages/write | Vytvoří nový SharedVMImage nebo aktualizuje stávající. |
 > | Action | Microsoft. COMPUTE/SKU/číst | Získá seznam skladových položek Microsoft. COMPUTE dostupných pro vaše předplatné. |
 > | Action | Microsoft. COMPUTE/snímky/beginGetAccess/Action | Získat identifikátor URI SAS snímku pro přístup k objektu BLOB |
-> | Action | Microsoft. COMPUTE/snímky/odstranit | Odstranit snímek |
+> | Action | Microsoft. COMPUTE/snímky/odstranit | Odstranění snímku |
 > | Action | Microsoft. COMPUTE/snímky/endGetAccess/Action | Odvolání identifikátoru URI SAS snímku |
 > | Action | Microsoft. COMPUTE/snímky/číst | Získá vlastnosti snímku. |
 > | Action | Microsoft. COMPUTE/snímky/zápis | Vytvoří nový snímek nebo aktualizuje stávající. |
@@ -1309,8 +1309,8 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. COMPUTE/virtualMachines/Capture/Action | Zachycuje virtuální počítač kopírováním virtuálních pevných disků a vygeneruje šablonu, která se dá použít k vytvoření podobných virtuálních počítačů. |
 > | Action | Microsoft. COMPUTE/virtualMachines/convertToManagedDisks/Action | Převede disky na bázi objektů BLOB virtuálního počítače na spravované disky. |
 > | Action | Microsoft. COMPUTE/virtualMachines/unallocate/Action | Vyžádá virtuální počítač a uvolní výpočetní prostředky. |
-> | Action | Microsoft. COMPUTE/virtualMachines/DELETE | Umožňuje odstranit virtuální počítač. |
-> | Action | Microsoft. COMPUTE/virtualMachines/Extensions/DELETE | Umožňuje odstranit rozšíření virtuálního počítače. |
+> | Action | Microsoft. COMPUTE/virtualMachines/DELETE | Odstraní virtuální počítač. |
+> | Action | Microsoft. COMPUTE/virtualMachines/Extensions/DELETE | Odstraní rozšíření virtuálního počítače. |
 > | Action | Microsoft. COMPUTE/virtualMachines/Extensions/Read | Získá vlastnosti rozšíření virtuálního počítače. |
 > | Action | Microsoft. COMPUTE/virtualMachines/Extensions/Write | Vytvoří nové rozšíření virtuálního počítače nebo aktualizuje stávající. |
 > | Action | Microsoft. COMPUTE/virtualMachines/generalize/akce | Nastaví stav virtuálního počítače jako zobecněný a připraví virtuální počítač pro zachytávání. |
@@ -1322,9 +1322,9 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. COMPUTE/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
 > | Action | Microsoft. COMPUTE/virtualMachines/znovu nasadit/akce | Znovu nasadí virtuální počítač. |
 > | Action | Microsoft. COMPUTE/virtualMachines/ReImage/Action | Obnoví virtuální počítač, který používá rozdílový disk, z image. |
-> | Action | Microsoft. COMPUTE/virtualMachines/restart/Action | Umožňuje restartovat virtuální počítač. |
+> | Action | Microsoft. COMPUTE/virtualMachines/restart/Action | Restartuje virtuální počítač. |
 > | Action | Microsoft. COMPUTE/virtualMachines/SpustitPříkaz/Action | Spustí na virtuálním počítači předdefinovaný skript. |
-> | Action | Microsoft. COMPUTE/virtualMachines/Start/Action | Umožňuje spustit virtuální počítač. |
+> | Action | Microsoft. COMPUTE/virtualMachines/Start/Action | Spustí virtuální počítač. |
 > | Action | Microsoft.Compute/virtualMachines/vmSizes/read | Zobrazí seznam dostupných velikostí, na které se dá virtuální počítač aktualizovat. |
 > | Action | Microsoft. COMPUTE/virtualMachines/Write | Vytvoří nový virtuální počítač nebo aktualizuje stávající virtuální počítač. |
 > | Action | Microsoft. COMPUTE/virtualMachineScaleSets/unallocate/Action | Vypíná a uvolňuje výpočetní prostředky pro instance sady škálování virtuálních počítačů.  |
@@ -2515,7 +2515,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. EventHub/obory názvů/autorizačních pravidel/Read | Získá seznam popisů autorizačních pravidel oborů názvů. |
 > | Action | Microsoft. EventHub/obory názvů/autorizačních pravidel/regenerateKeys/Action | Znovu vygenerovat primární nebo sekundární klíč k prostředku |
 > | Action | Microsoft. EventHub/obory názvů/autorizačních pravidel/Write | Vytvořte autorizační pravidla na úrovni oboru názvů a aktualizujte její vlastnosti. Přístupová práva autorizačních pravidel, primární a sekundární klíče lze aktualizovat. |
-> | Action | Microsoft. EventHub/obory názvů/odstranění | Odstraní prostředek oboru názvů. |
+> | Action | Microsoft. EventHub/obory názvů/odstranění | Odstranit prostředek oboru názvů |
 > | Action | Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel/klíče listkey/Action | Získá klíče autorizačních pravidel pro primární obor názvů zotavení po havárii. |
 > | Action | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules/read | Získat autorizační pravidla primárního oboru názvů pro zotavení po havárii |
 > | Action | Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/breakPairing/Action | Zakáže zotavení po havárii a zastaví replikaci změn z primárních oborů názvů na sekundární. |
@@ -2555,16 +2555,16 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
 > | Action | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/metricDefinitions/Read | Získá seznam popisů prostředků metrik oborů názvů. |
 > | Action | Microsoft. EventHub/obory názvů/číst | Získat seznam popisu prostředku oboru názvů |
-> | Action | Microsoft. EventHub/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů služby ACS |
+> | Action | Microsoft. EventHub/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů ACS |
 > | Action | Microsoft. EventHub/obory názvů/virtualNetworkRules/DELETE | Odstranit prostředek pravidla virtuální sítě |
-> | Action | Microsoft. EventHub/obory názvů/virtualNetworkRules/Read | Získat prostředek pravidla virtuální sítě |
+> | Action | Microsoft. EventHub/obory názvů/virtualNetworkRules/Read | Získá prostředek pravidla virtuální sítě. |
 > | Action | Microsoft. EventHub/obory názvů/virtualNetworkRules/Write | Vytvořit prostředek pravidla virtuální sítě |
 > | Action | Microsoft. EventHub/obory názvů/zápis | Vytvořte prostředek oboru názvů a aktualizujte jeho vlastnosti. Značky a kapacita oboru názvů jsou vlastnosti, které lze aktualizovat. |
 > | Action | Microsoft.EventHub/operations/read | Získat operace |
 > | Action | Microsoft. EventHub/registrace/akce | Zaregistruje předplatné pro poskytovatele prostředků EventHub a povolí vytváření prostředků EventHub. |
 > | Action | Microsoft.EventHub/sku/read | Získá seznam popisů prostředků SKU. |
 > | Action | Microsoft. EventHub/SKU/Regions/Read | Získá seznam popisů prostředků SkuRegions. |
-> | Action | Microsoft. EventHub/zrušit registraci/akce | Zaregistrovat poskytovatele prostředků EventHub |
+> | Action | Microsoft. EventHub/zrušit registraci/akce | Zaregistruje poskytovatele prostředků EventHub. |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
@@ -2652,7 +2652,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.Insights/AutoscaleSettings/Delete | Odstraní nastavení automatického škálování. |
 > | Action | Microsoft. Insights/AutoscaleSettings/Providers/Microsoft. Insights/diagnosticSettings/Read | Přečte nastavení diagnostiky prostředků. |
 > | Action | Microsoft. Insights/AutoscaleSettings/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky prostředků. |
-> | Action | Microsoft. Insights/AutoscaleSettings/Providers/Microsoft. Insights/logDefinitions/Read | Číst definice protokolů |
+> | Action | Microsoft. Insights/AutoscaleSettings/Providers/Microsoft. Insights/logDefinitions/Read | Čtení definic protokolů |
 > | Action | Microsoft. Insights/AutoscaleSettings/Providers/Microsoft. Insights/MetricDefinitions/Read | Číst definice metrik |
 > | Action | Microsoft.Insights/AutoscaleSettings/Read | Přečte nastavení automatického škálování. |
 > | Action | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Zahájeno automatické škálování vertikálním snížením kapacity |
@@ -2720,14 +2720,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. Insights/DiagnosticSettings/Read | Přečte nastavení diagnostiky prostředků. |
 > | Action | Microsoft. Insights/DiagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky prostředků. |
 > | Action | Microsoft.Insights/EventCategories/Read | Číst dostupné kategorie událostí protokolu aktivit |
-> | Action | Microsoft.Insights/eventtypes/digestevents/Read | Číst výtah typů událostí správy |
+> | Action | Microsoft.Insights/eventtypes/digestevents/Read | Výtah čtení typu události správy |
 > | Action | Microsoft. Insights/EventTypes/Values/Read | Přečte události protokolu aktivit |
 > | Action | Microsoft. Insights/ExtendedDiagnosticSettings/DELETE | Odstraní nastavení diagnostiky protokolu síťového toku. |
 > | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Read | Přečíst nastavení diagnostiky protokolů síťových toků |
 > | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky protokolu síťového toku. |
 > | Action | Microsoft.Insights/ListMigrationDate/Action | Získá datum migrace předplatného. |
 > | Action | Microsoft. Insights/ListMigrationDate/Read | Získá datum migrace předplatného. |
-> | Action | Microsoft. Insights/LogDefinitions/Read | Číst definice protokolů |
+> | Action | Microsoft. Insights/LogDefinitions/Read | Čtení definic protokolů |
 > | Action | Microsoft.Insights/LogProfiles/Delete | Odstraní profil protokolu aktivit. |
 > | Action | Microsoft.Insights/LogProfiles/Read | Číst profil protokolu aktivit |
 > | Action | Microsoft.Insights/LogProfiles/Write | Vytvoří nebo aktualizuje profil protokolu aktivit. |
@@ -2882,7 +2882,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. Insights/MetricAlerts/Read | Přečte upozornění na metriku. |
 > | Action | Microsoft. Insights/MetricAlerts/stav/čtení | Přečíst stav upozornění na metriku |
 > | Action | Microsoft. Insights/MetricAlerts/Write | Vytvoření nebo aktualizace výstrahy metriky |
-> | Action | Microsoft.Insights/MetricBaselines/Read | Čtení standardních hodnot metriky |
+> | Action | Microsoft.Insights/MetricBaselines/Read | Přečíst standardní hodnoty metrik |
 > | Action | Microsoft. Insights/MetricDefinitions/Microsoft. Insights/Read | Číst definice metrik |
 > | Action | Microsoft. Insights/MetricDefinitions/Providers/Microsoft. Insights/Read | Číst definice metrik |
 > | Action | Microsoft. Insights/MetricDefinitions/Read | Číst definice metrik |
@@ -2901,14 +2901,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.Insights/ScheduledQueryRules/Write | Zapisuje se pravidlo naplánovaného dotazu. |
 > | Action | Microsoft. Insights/klienti/registrovat/akce | Inicializuje poskytovatele platformy Microsoft Insights. |
 > | Action | Microsoft.Insights/Unregister/Action | Zaregistruje poskytovatele platformy Microsoft Insights. |
-> | Action | Microsoft.Insights/Webtests/Delete | Odstraní konfiguraci webového testu. |
+> | Action | Microsoft.Insights/Webtests/Delete | Odstranění konfigurace webového testu |
 > | Action | Microsoft. Insights/webtests/GetToken/číst | Čtení tokenu webového testu |
 > | Action | Microsoft. Insights/webtests/MetricDefinitions/Read | Čtení definic metrik webového testu |
 > | Action | Microsoft. Insights/webtests/metriky/číst | Čtení metriky webového testu |
 > | Action | Microsoft. Insights/webtests/číst | Přečte konfiguraci webového testu. |
-> | Action | Microsoft. Insights/webtests/Write | Provede zápis do konfigurace webového testu. |
-> | Action | Microsoft. Insights/sešity/odstranit | Odstranění sešitu |
-> | Action | Microsoft. Insights/sešity/číst | Přečíst sešit |
+> | Action | Microsoft. Insights/webtests/Write | Zápis do konfigurace webového testu |
+> | Action | Microsoft. Insights/sešity/odstranit | Odstraní sešit. |
+> | Action | Microsoft. Insights/sešity/číst | Přečte sešit. |
 > | Action | Microsoft. Insights/sešity/zápis | Vytvoří nebo aktualizuje sešit. |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
@@ -3384,7 +3384,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Action | Microsoft. migruje/assessmentprojects/assessmentOptions/Read | Získá možnosti posouzení, které jsou k dispozici v daném umístění. |
-> | Action | Microsoft. migrace/assessmentprojects/posouzení/čtení | Vypíše posouzení v projektu. |
+> | Action | Microsoft. migrace/assessmentprojects/posouzení/čtení | Vypíše posouzení v rámci projektu. |
 > | Action | Microsoft. migruje/assessmentprojects/DELETE | Odstraní projekt vyhodnocení. |
 > | Action | Microsoft. migruje/assessmentprojects/Groups/Assessments/assessedmachines/Read | Získá vlastnosti vyhodnoceného počítače. |
 > | Action | Microsoft. migruje/assessmentprojects/skupiny/posouzení/odstranění | Odstraní posouzení. |
@@ -3422,7 +3422,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. migruje/migrateprojects/Solutions/Write | Vytvoří nové řešení migrace projektu nebo aktualizuje existující řešení migrace projektu. |
 > | Action | Microsoft. migruje/migrateprojects/Write | Vytvoří nový projekt migrace nebo aktualizuje existující projekt migrace. |
 > | Action | Microsoft. migrace/operace/čtení | Zobrazí seznam operací, které jsou k dispozici v Microsoft. migrace prostředků Provider |
-> | Action | Microsoft. migrace/projekty/posouzení/čtení | Vypíše posouzení v projektu. |
+> | Action | Microsoft. migrace/projekty/posouzení/čtení | Vypíše posouzení v rámci projektu. |
 > | Action | Microsoft. migrace/projekty/odstranit | Odstraní projekt. |
 > | Action | Microsoft. migrace/projekty/skupiny/posouzení/assessedmachines/číst | Získá vlastnosti vyhodnoceného počítače. |
 > | Action | Microsoft. migrace/projekty/skupiny/posouzení/odstranění | Odstraní posouzení. |
@@ -3943,15 +3943,15 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel/regenerateKeys/Action | Autorizační pravidlo oboru názvů znovu vygeneruje primární/SecondaryKey. Zadejte klíč, který se musí znovu vygenerovat. |
 > | Action | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel/Write | Vytvořte autorizační pravidla na úrovni oboru názvů a aktualizujte její vlastnosti. Přístupová práva autorizačních pravidel, primární a sekundární klíče lze aktualizovat. |
 > | Action | Microsoft. NotificationHubs/obory názvů/CheckNotificationHubAvailability/Action | Kontroluje, zda je daný název NotificationHub k dispozici v rámci oboru názvů. |
-> | Action | Microsoft. NotificationHubs/obory názvů/DELETE | Odstraní prostředek oboru názvů. |
+> | Action | Microsoft. NotificationHubs/obory názvů/DELETE | Odstranit prostředek oboru názvů |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/Action | Získá seznam autorizačních pravidel centra oznámení. |
-> | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/DELETE | Odstranit autorizační pravidla Centra oznámení |
+> | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/DELETE | Odstranit autorizační pravidla centra oznámení |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/klíče listkey/Action | Získání připojovacího řetězce do centra oznámení |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/Read | Získá seznam autorizačních pravidel centra oznámení. |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/regenerateKeys/Action | Autorizační pravidlo centra oznámení znovu vygeneruje primární/SecondaryKey. Zadejte klíč, který se má znovu vygenerovat. |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel/Write | Vytvořte autorizační pravidla centra oznámení a aktualizujte její vlastnosti. Přístupová práva autorizačních pravidel, primární a sekundární klíče lze aktualizovat. |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/debugSend/Action | Odeslat testovací nabízené oznámení. |
-> | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/DELETE | Odstraní prostředek Centra oznámení. |
+> | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/DELETE | Odstranit prostředek centra oznámení |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/metricDefinitions/Read | Získá seznam popisů prostředků metrik oborů názvů. |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/pnsCredentials/Action | Získejte všechna pověření PNS centra oznámení. To zahrnuje přihlašovací údaje, WNS, MPNS, APNS, GCM a Baidu. |
 > | Action | Microsoft. NotificationHubs/obory názvů/NotificationHubs/Read | Získá seznam popisů prostředků centra oznámení. |
@@ -3982,7 +3982,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.OffAzure/HyperVSites/runasaccounts/read | Získá vlastnosti účtů spustit jako technologie Hyper-V. |
 > | Action | Microsoft. OffAzure/HyperVSites/Usage/Read | Získá použití webu Hyper-V. |
 > | Action | Microsoft.OffAzure/HyperVSites/write | Vytvoří nebo aktualizuje lokalitu Hyper-V. |
-> | Action | Microsoft.OffAzure/Operations/read | Přečte vystavené operace. |
+> | Action | Microsoft.OffAzure/Operations/read | Načte zpřístupněné operace. |
 > | Action | Microsoft. OffAzure/Register/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. OffAzure. |
 > | Action | Microsoft.OffAzure/VMwareSites/delete | Odstraní lokalitu VMware. |
 > | Action | Microsoft. OffAzure/VMwareSites/healthsummary/Read | Získá souhrn stavu pro prostředek VMware. |
@@ -4370,7 +4370,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba |
 > | Action | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
 > | Action | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Vytvořit položku chráněnou zálohováním |
+> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Vytvoří položku chráněnou zálohováním. |
 > | Action | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | Vrátí seznam všech chráněných položek. |
 > | Action | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
 > | Action | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | Ověřit funkce |
@@ -4386,7 +4386,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Vytvořit záložní záměr ochrany |
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Vrátí stav operace. |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
-> | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny kontejnery, které se dají chránit |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
@@ -4401,14 +4401,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvořit položku chráněnou zálohováním |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvoří položku chráněnou zálohováním. |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
 > | Action | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Action | Microsoft. RecoveryServices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
+> | Action | Microsoft. RecoveryServices/trezory/backupJobs/Cancel/Action | Zruší úlohu. |
 > | Action | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
 > | Action | Microsoft. RecoveryServices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
-> | Action | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | Action | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úloh. |
 > | Action | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
 > | Action | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování trezoru Recovery Services. |
 > | Action | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
@@ -4425,7 +4425,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. RecoveryServices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
 > | Action | Microsoft. RecoveryServices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
 > | Action | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
-> | Action | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Action | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Operace ověření chráněné položky |
 > | Action | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
 > | Action | Microsoft. RecoveryServices/trezory/odstranit | Operace odstranění trezoru odstraní zadaný prostředek Azure typu trezor. |
 > | Action | Microsoft. RecoveryServices/trezory/extendedInformation/DELETE | Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor. |
@@ -4446,27 +4446,27 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/checkConsistency/Action | Zkontroluje konzistenci prostředí infrastruktury. |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/DELETE | Odstranění všech prostředků infrastruktury |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/deployProcessServerImage/Action | Nasadit image procesového serveru |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/migratetoaad/Action | Migrace prostředků infrastruktury do AAD |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/migratetoaad/Action | Migrovat prostředky infrastruktury do AAD |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/operationresults/Read | Sledování výsledků asynchronní operace u prostředků infrastruktury prostředků |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Čtení jakýchkoli prostředků infrastruktury |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Znovu přidružit bránu |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/Remove/Action | Odebrat prostředky infrastruktury |
-> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Prodloužit platnost certifikátu pro Fabric |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Obnovit certifikát pro prostředky infrastruktury |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationLogicalNetworks/Read | Čtení libovolných logických sítí |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Čtení všech sítí |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/DELETE | Odstranit všechna mapování sítě |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/Write | Vytvoří nebo aktualizuje všechna mapování sítě. |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/discoverProtectableItem/Action | Zjistit chráněnou položku |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/discoverProtectableItem/Action | Zjistit chránitelnou položku |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/operationresults/Read | Sledování výsledků asynchronní operace na kontejnerech ochrany prostředků |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Remove/Action | Odebrat kontejner ochrany |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Remove/Action | Odstranit kontejner ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/DELETE | Odstranit všechny položky migrace |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migruje/Action | Migrovat položku |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migruje/Action | Položka migrace |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrationRecoveryPoints/číst | Čtení všech bodů obnovení migrace |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/operationresults/číst | Sledování výsledků asynchronní operace v položkách migrace prostředků |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/Read | Čtení všech položek migrace |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/Action | Test migrace |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/Action | Migrace testu |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/Action | Vyčištění migrace testu |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/Write | Vytvoření nebo aktualizace položek migrace |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/Read | Čtení všech chráněných položek |
@@ -4481,27 +4481,27 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Remove/Action | Odebrat chráněnou položku |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/removeDisks/Action | Odebrat disky |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/Action | Opravit replikaci |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reprotect/Action | Znovu chránit chráněnou položku |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reprotect/Action | Znovu zapnout ochranu položky |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/ResolveHealthErrors/Action |  |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/submitFeedback/Action | Odeslat názor |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/targetComputeSizes/číst | Čtení všech cílových výpočetních velikostí |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Čištění testovacího převzetí služeb při selhání |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/write | Vytvořit nebo aktualizovat jakékoli chráněné položky |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/delete | Odstranit všechna mapování kontejnerů ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/operationresults/číst | Sledování výsledků asynchronní operace v mapování kontejneru ochrany prostředků |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Remove/Action | Odebrat mapování kontejneru ochrany |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Remove/Action | Odebrat mapování kontejnerů ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Write | Vytvořit nebo aktualizovat všechna mapování kontejnerů ochrany |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Kontejner pro přepnutí ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Write | Vytvořit nebo aktualizovat všechny kontejnery ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/DELETE | Odstranit všechny poskytovatele Recovery Services |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/operationresults/Read | Sledování výsledků asynchronní operace u zprostředkovatelů Recovery Services prostředků |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/Action | Aktualizovat zprostředkovatele |
-> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Remove/Action | Odebrat poskytovatele Recovery Services |
+> | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Remove/Action | Odebrat zprostředkovatele Recovery Services |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Write | Vytvořit nebo aktualizovat Recovery Services poskytovatelé |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
 > | Action | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/DELETE | Odstranit všechna mapování klasifikace úložiště |
@@ -4533,9 +4533,9 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/operationresults/Read | Sledování výsledků asynchronní operace v plánech obnovení prostředků |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Plán obnovení plánovaného převzetí služeb při selhání |
 > | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
-> | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/reprotect/Action | Znovu zapnout ochranu plánu obnovení |
+> | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/reprotect/Action | Plán obnovení opětovného zapnutí ochrany |
 > | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailover/Action | Plán obnovení testovacího převzetí služeb při selhání |
-> | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení pro vyčištění testovacího převzetí služeb při selhání |
+> | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení vyčištění testovacího převzetí služeb při selhání |
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Plán obnovení převzetí služeb při selhání |
 > | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/Write | Vytvoření nebo aktualizace jakýchkoli plánů obnovení |
 > | Action | Microsoft. RecoveryServices/trezory/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
@@ -4567,7 +4567,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. Relay/obory názvů/autorizačních pravidel/Read | Získá seznam popisů autorizačních pravidel oborů názvů. |
 > | Action | Microsoft. Relay/obory názvů/autorizačních pravidel/regenerateKeys/Action | Znovu vygenerovat primární nebo sekundární klíč k prostředku |
 > | Action | Microsoft. Relay/obory názvů/autorizačních pravidel/Write | Vytvořte autorizační pravidla na úrovni oboru názvů a aktualizujte její vlastnosti. Přístupová práva autorizačních pravidel, primární a sekundární klíče lze aktualizovat. |
-> | Action | Microsoft. Relay/obory názvů/odstranění | Odstraní prostředek oboru názvů. |
+> | Action | Microsoft. Relay/obory názvů/odstranění | Odstranit prostředek oboru názvů |
 > | Action | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel/klíče listkey/Action | Získá klíče autorizačních pravidel pro primární obor názvů zotavení po havárii. |
 > | Action | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel/Read | Získat autorizační pravidla primárního oboru názvů pro zotavení po havárii |
 > | Action | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/breakPairing/Action | Zakáže zotavení po havárii a zastaví replikaci změn z primárních oborů názvů na sekundární. |
@@ -4593,7 +4593,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
 > | Action | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/metricDefinitions/Read | Získá seznam popisů prostředků metrik oborů názvů. |
 > | Action | Microsoft. Relay/obory názvů/čtení | Získat seznam popisu prostředku oboru názvů |
-> | Action | Microsoft. Relay/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů služby ACS |
+> | Action | Microsoft. Relay/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů ACS |
 > | Action | Microsoft. Relay/obory názvů/WcfRelays/autorizačních pravidel/Action | Operace pro aktualizaci WcfRelay Tato operace není podporována v rozhraní API verze 2017-04-01. Autorizační pravidla. K aktualizaci autorizačního pravidla prosím použijte volání PUT. |
 > | Action | Microsoft. Relay/obory názvů/WcfRelays/autorizačních pravidel/DELETE | Operace odstranění autorizačních pravidel WcfRelay |
 > | Action | Microsoft. Relay/obory názvů/WcfRelays/autorizačních pravidel/klíče listkey/Action | Získání připojovacího řetězce pro WcfRelay |
@@ -4793,7 +4793,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. ServiceBus/obory názvů/autorizačních pravidel/Read | Získá seznam popisů autorizačních pravidel oborů názvů. |
 > | Action | Microsoft. ServiceBus/obory názvů/autorizačních pravidel/regenerateKeys/Action | Znovu vygenerovat primární nebo sekundární klíč k prostředku |
 > | Action | Microsoft. ServiceBus/obory názvů/autorizačních pravidel/Write | Vytvořte autorizační pravidla na úrovni oboru názvů a aktualizujte její vlastnosti. Přístupová práva autorizačních pravidel, primární a sekundární klíče lze aktualizovat. |
-> | Action | Microsoft. ServiceBus/obory názvů/DELETE | Odstraní prostředek oboru názvů. |
+> | Action | Microsoft. ServiceBus/obory názvů/DELETE | Odstranit prostředek oboru názvů |
 > | Action | Microsoft. ServiceBus/obory názvů/disasterRecoveryConfigs/autorizačních pravidel/klíče listkey/Action | Získá klíče autorizačních pravidel pro primární obor názvů zotavení po havárii. |
 > | Action | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules/read | Získat autorizační pravidla primárního oboru názvů pro zotavení po havárii |
 > | Action | Microsoft. ServiceBus/obory názvů/disasterRecoveryConfigs/breakPairing/Action | Zakáže zotavení po havárii a zastaví replikaci změn z primárních oborů názvů na sekundární. |
@@ -4813,7 +4813,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Akce dataaction | Microsoft. ServiceBus/obory názvů/zprávy/odeslání/akce | Odesílání zpráv |
 > | Action | Microsoft. ServiceBus/obory názvů/messagingPlan/Read | Získá plán zasílání zpráv pro obor názvů.<br>Toto rozhraní API je zastaralé.<br>Vlastnosti vystavené prostřednictvím prostředku MessagingPlan se přesunou do prostředku oboru názvů (nadřazený) v pozdějších verzích rozhraní API.<br>Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Action | Microsoft. ServiceBus/obory názvů/messagingPlan/Write | Aktualizuje plán zasílání zpráv pro obor názvů.<br>Toto rozhraní API je zastaralé.<br>Vlastnosti vystavené prostřednictvím prostředku MessagingPlan se přesunou do prostředku oboru názvů (nadřazený) v pozdějších verzích rozhraní API.<br>Tato operace není podporována v rozhraní API verze 2017-04-01. |
-> | Action | Microsoft. ServiceBus/obory názvů/migrace/akce | Operace migrace oboru názvů |
+> | Action | Microsoft. ServiceBus/obory názvů/migrace/akce | Migrovat operaci oboru názvů |
 > | Action | Microsoft. ServiceBus/obory názvů/migrationConfigurations/DELETE | Odstraní konfiguraci migrace. |
 > | Action | Microsoft. ServiceBus/obory názvů/migrationConfigurations/Read | Získá konfiguraci migrace, která indikuje stav migrace a probíhající operace replikace. |
 > | Action | Microsoft. ServiceBus/obory názvů/migrationConfigurations/REVERT/Action | Obnoví migraci oboru názvů Standard na Premium. |
@@ -4840,7 +4840,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. ServiceBus/obory názvů/fronty/čtení | Získá seznam popisů prostředků fronty. |
 > | Action | Microsoft.ServiceBus/namespaces/queues/write | Vytvoří nebo aktualizuje vlastnosti fronty. |
 > | Action | Microsoft. ServiceBus/obory názvů/číst | Získat seznam popisu prostředku oboru názvů |
-> | Action | Microsoft. ServiceBus/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů služby ACS |
+> | Action | Microsoft. ServiceBus/obory názvů/removeAcsNamepsace/Action | Odebrat obor názvů ACS |
 > | Action | Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel/Action | Operace pro aktualizaci tématu Tato operace není podporována v rozhraní API verze 2017-04-01. Autorizační pravidla. K aktualizaci autorizačního pravidla prosím použijte volání PUT. |
 > | Action | Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel/DELETE | Operace odstranění autorizačních pravidel tématu |
 > | Action | Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel/klíče listkey/Action | Získání připojovacího řetězce k tématu |
@@ -4857,7 +4857,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.ServiceBus/namespaces/topics/subscriptions/write | Vytvoří nebo aktualizuje vlastnosti TopicSubscription. |
 > | Action | Microsoft.ServiceBus/namespaces/topics/write | Vytvoří nebo aktualizuje vlastnosti tématu. |
 > | Action | Microsoft.ServiceBus/namespaces/virtualNetworkRules/delete | Odstranit prostředek pravidla virtuální sítě |
-> | Action | Microsoft. ServiceBus/obory názvů/virtualNetworkRules/Read | Získat prostředek pravidla virtuální sítě |
+> | Action | Microsoft. ServiceBus/obory názvů/virtualNetworkRules/Read | Získá prostředek pravidla virtuální sítě. |
 > | Action | Microsoft. ServiceBus/obory názvů/virtualNetworkRules/Write | Vytvořit prostředek pravidla virtuální sítě |
 > | Action | Microsoft. ServiceBus/obory názvů/zápis | Vytvořte prostředek oboru názvů a aktualizujte jeho vlastnosti. Značky a kapacita oboru názvů jsou vlastnosti, které lze aktualizovat. |
 > | Action | Microsoft.ServiceBus/operations/read | Získat operace |
@@ -4871,32 +4871,32 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Action | Microsoft.ServiceFabric/clusters/applications/delete | Umožňuje odstranit libovolnou aplikaci. |
-> | Action | Microsoft. ServiceFabric/clustery/aplikace/číst | Umožňuje číst libovolnou aplikaci |
-> | Action | Microsoft.ServiceFabric/clusters/applications/services/delete | Umožňuje odstranit libovolnou službu. |
-> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/partitions/Read | Umožňuje číst libovolný oddíl. |
-> | Action | Microsoft. ServiceFabric/clustery/aplikace/služby/oddíly/repliky/čtení | Umožňuje číst libovolnou repliku. |
-> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/Ready | Umožňuje číst libovolnou službu. |
-> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/STATUSS/Read | Umožňuje načíst stav libovolné služby. |
-> | Action | Microsoft.ServiceFabric/clusters/applications/services/write | Umožňuje vytvořit nebo aktualizovat libovolnou službu. |
-> | Action | Microsoft.ServiceFabric/clusters/applications/write | Umožňuje vytvořit nebo aktualizovat libovolnou aplikaci. |
-> | Action | Microsoft.ServiceFabric/clusters/applicationTypes/delete | Umožňuje odstranit libovolný typ aplikace. |
-> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/Read | Umožňuje přečíst libovolný typ aplikace. |
-> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/Versions/DELETE | Umožňuje odstranit libovolnou verzi typu aplikace. |
-> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/verze/číst | Umožňuje přečíst libovolnou verzi typu aplikace. |
+> | Action | Microsoft.ServiceFabric/clusters/applications/delete | Odstranění libovolné aplikace |
+> | Action | Microsoft. ServiceFabric/clustery/aplikace/číst | Čtení libovolné aplikace |
+> | Action | Microsoft.ServiceFabric/clusters/applications/services/delete | Odstranění jakékoli služby |
+> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/partitions/Read | Číst libovolný oddíl |
+> | Action | Microsoft. ServiceFabric/clustery/aplikace/služby/oddíly/repliky/čtení | Čtení libovolné repliky |
+> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/Ready | Čtení libovolné služby |
+> | Action | Microsoft. ServiceFabric/Clusters/Applications/Services/STATUSS/Read | Číst libovolný stav služby |
+> | Action | Microsoft.ServiceFabric/clusters/applications/services/write | Vytvoření nebo aktualizace jakékoli služby |
+> | Action | Microsoft.ServiceFabric/clusters/applications/write | Vytvořit nebo aktualizovat libovolnou aplikaci |
+> | Action | Microsoft.ServiceFabric/clusters/applicationTypes/delete | Odstranění libovolného typu aplikace |
+> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/Read | Čtení libovolného typu aplikace |
+> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/Versions/DELETE | Odstranění libovolné verze typu aplikace |
+> | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/verze/číst | Čtení libovolné verze typu aplikace |
 > | Action | Microsoft. ServiceFabric/Clusters/applicationTypes/verze/Write | Vytvořit nebo aktualizovat libovolnou verzi typu aplikace |
 > | Action | Microsoft.ServiceFabric/clusters/applicationTypes/write | Vytvořit nebo aktualizovat libovolný typ aplikace |
-> | Action | Microsoft.ServiceFabric/clusters/delete | Umožňuje odstranit libovolný cluster. |
-> | Action | Microsoft. ServiceFabric/Clusters/Nodes/Read | Umožňuje číst libovolný uzel. |
-> | Action | Microsoft.ServiceFabric/clusters/read | Umožňuje číst libovolný cluster. |
-> | Action | Microsoft. ServiceFabric/clustery/stavy/číst | Umožňuje načíst stav libovolného clusteru. |
-> | Action | Microsoft.ServiceFabric/clusters/write | Umožňuje vytvořit nebo aktualizovat libovolný cluster. |
-> | Action | Microsoft. ServiceFabric/Locations/clusterVersions/Read | Načíst libovolnou verzi clusteru |
+> | Action | Microsoft.ServiceFabric/clusters/delete | Odstraní libovolný cluster. |
+> | Action | Microsoft. ServiceFabric/Clusters/Nodes/Read | Číst libovolný uzel |
+> | Action | Microsoft.ServiceFabric/clusters/read | Číst libovolný cluster |
+> | Action | Microsoft. ServiceFabric/clustery/stavy/číst | Čtení všech stavů clusteru |
+> | Action | Microsoft.ServiceFabric/clusters/write | Vytvoří nebo aktualizuje libovolný cluster. |
+> | Action | Microsoft. ServiceFabric/Locations/clusterVersions/Read | Čtení libovolné verze clusteru |
 > | Action | Microsoft. ServiceFabric/umístění/prostředí/clusterVersions/číst | Čtení libovolné verze clusteru pro konkrétní prostředí |
-> | Action | Microsoft. ServiceFabric/Locations/operationresults/Read | Umožňuje přečíst libovolné výsledky operace. |
-> | Action | Microsoft.ServiceFabric/locations/operations/read | Umožňuje přečíst libovolnou operaci podle umístění. |
-> | Action | Microsoft.ServiceFabric/operations/read | Umožňuje přečíst libovolnou dostupnou operaci. |
-> | Action | Microsoft. ServiceFabric/Register/Action | Umožňuje zaregistrovat libovolnou akci. |
+> | Action | Microsoft. ServiceFabric/Locations/operationresults/Read | Čtení všech výsledků operací |
+> | Action | Microsoft.ServiceFabric/locations/operations/read | Čtení libovolných operací podle umístění |
+> | Action | Microsoft.ServiceFabric/operations/read | Čtení všech dostupných operací |
+> | Action | Microsoft. ServiceFabric/Register/Action | Registrovat jakoukoli akci |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -5157,7 +5157,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.Sql/servers/databases/replicationLinks/read | Vrátí seznam replikačních propojení nebo získá vlastnosti pro zadané replikační odkazy. |
 > | Action | Microsoft. SQL/servery/databáze/replicationLinks/zrušení propojení/akce | Vynucené ukončení vztahu replikace nebo po synchronizaci s partnerem |
 > | Action | Microsoft.Sql/servers/databases/replicationLinks/updateReplicationMode/action | Aktualizovat režim replikace pro odkaz na synchronní nebo asynchronní režim |
-> | Action | Microsoft.Sql/servers/databases/restorePoints/action | Vytvoří nový bod obnovení |
+> | Action | Microsoft.Sql/servers/databases/restorePoints/action | Vytvoří nový bod obnovení. |
 > | Action | Microsoft.Sql/servers/databases/restorePoints/delete | Odstraní bod obnovení pro databázi. |
 > | Action | Microsoft.Sql/servers/databases/restorePoints/read | Vrátí body obnovení pro databázi. |
 > | Action | Microsoft. SQL/servery/databáze/pokračovat/akce | Obnoví databázi Azure SQL DataWarehouse. |
@@ -5326,17 +5326,17 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Akce dataaction | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Read | Vrátí výsledek čtení značek objektů BLOB. |
 > | Akce dataaction | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Write | Vrátí výsledek zápisu značek objektů BLOB. |
 > | Akce dataaction | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
-> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | Vymazat blokování kontejneru objektů blob z právních důvodů |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | Vymazat právní blokování kontejneru objektů BLOB |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstranění kontejneru. |
-> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/delete | Odstranit zásady neměnnosti kontejneru objektů blob |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Extended/Action | Rozšířit zásady neměnnosti kontejneru objektů blob |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Lock/Action | Zamknout zásady neměnnosti kontejneru objektů blob |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Read | Získat zásady neměnnosti kontejneru objektů blob |
-> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/write | Vložit zásady neměnnosti kontejneru objektů blob |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/delete | Odstranit zásady neměnnosti kontejneru objektů BLOB |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Extended/Action | Rozšíří zásady neměnnosti kontejneru objektů BLOB. |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Lock/Action | Zamknout zásady neměnnosti kontejneru objektů BLOB |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/immutabilityPolicies/Read | Získat zásady neměnnosti kontejneru objektů BLOB |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/write | Vložit zásady neměnnosti kontejneru objektů BLOB |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/Lease/Action | Vrátí výsledek zapůjčení kontejneru objektů BLOB. |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/Read | Vrátí kontejner. |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/Read | Vrátí seznam kontejnerů. |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/setLegalHold/Action | Nastavit blokování kontejneru objektů blob z právních důvodů |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/setLegalHold/Action | Nastavit právní blokování kontejneru objektů BLOB |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/Write | Vrátí výsledek opravy kontejneru objektů BLOB. |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/Containers/Write | Vrátí výsledek Put kontejneru objektů BLOB. |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro službu BLOB Service. |
@@ -5365,14 +5365,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft. Storage/storageAccounts/managementPolicies/DELETE | Odstranit zásady správy účtu úložiště |
 > | Action | Microsoft. Storage/storageAccounts/managementPolicies/Read | Získá zásady správy účtu úložiště. |
 > | Action | Microsoft. Storage/storageAccounts/managementPolicies/Write | Vložit zásady správy účtu úložiště |
-> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | Odstranit proxy připojení privátního koncového bodu |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | Odstranit proxy servery připojení privátního koncového bodu |
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
-> | Action | Microsoft. Storage/storageAccounts/privateEndpointConnectionProxies/Write | Vložit proxy privátního koncového bodu připojení |
+> | Action | Microsoft. Storage/storageAccounts/privateEndpointConnectionProxies/Write | Vložit proxy servery připojení privátního koncového bodu |
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu |
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnections/Write | Vložit připojení privátního koncového bodu |
 > | Action | Microsoft. Storage/storageAccounts/PrivateEndpointConnectionsApproval/Action | Schválit připojení privátního koncového bodu |
-> | Action | Microsoft.Storage/storageAccounts/privateLinkResources/read | Získat StorageAccount groupids |
+> | Action | Microsoft.Storage/storageAccounts/privateLinkResources/read | Získat ID skupin účtu úložiště |
 > | Action | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Vrátí výsledek odstranění fronty. |
 > | Akce dataaction | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Add/Action | Vrátí výsledek přidávání zprávy. |
 > | Akce dataaction | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Vrátí výsledek odstranění zprávy. |
@@ -5665,7 +5665,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Action | Microsoft.Support/register/action | Registruje zprostředkovatele prostředků podpory. |
+> | Action | Microsoft.Support/register/action | Registruje poskytovatele prostředků podpory. |
 > | Action | Microsoft.Support/supportTickets/read | Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná. |
 > | Action | Microsoft.Support/supportTickets/write | Umožňuje vytvořit nebo aktualizovat lístek podpory. Můžete vytvořit lístek podpory pro technické problémy, problémy s fakturací nebo kvótami nebo problémy související se správou předplatného. U stávajících lístků podpory můžete aktualizovat závažnost, podrobnosti kontaktu a komunikace. |
 
@@ -6130,7 +6130,7 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Action | Microsoft.WorkloadMonitor/notificationSettings/write | Konfigurovat nastavení oznámení pro prostředek |
 > | Action | Microsoft. monitor zátěže byl/Operations/Read | Načte podporované operace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Předdefinované role pro prostředky Azure](built-in-roles.md)

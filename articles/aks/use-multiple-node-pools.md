@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202960"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212262"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -176,7 +176,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
  
 > [!NOTE]
-> Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemohou vyskytovat současně. Pokud se pokusíte o chybu, bude vrácena chyba. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
+> Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
 V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
 
@@ -245,15 +245,15 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
 
 1. Upgrade roviny ovládacího prvku vyžaduje použití`az aks upgrade`
-   * Tím dojde k upgradu verze řídicí roviny a všech fondů uzlů v clusteru.
-   * Předáním `az aks upgrade` tohoto `--control-plane-only` příznaku provedete upgrade jenom na řídicí plochu clusteru a žádný z `--control-plane-only` přidružených fondů uzlů * příznak není k dispozici ve **AKS-Preview rozšíření v 0.4.16** nebo vyšších.
+   * Tím se upgraduje verze řídicí roviny a všechny fondy uzlů v clusteru.
+   * `az aks upgrade` Předáním`--control-plane-only` pomocí příznaku se upgraduje jenom Řídicí rovina clusteru a žádný z přidružených fondů uzlů se nemění. Příznak je k dispozici ve **verzi AKS-Preview rozšíření v 0.4.16** nebo vyšší. `--control-plane-only`
 1. Upgrade fondů jednotlivých uzlů vyžaduje použití`az aks nodepool upgrade`
-   * Tím se upgraduje jenom cílový fond uzlů s určenou verzí Kubernetes.
+   * Tato inovace se upgraduje jenom na cílový fond uzlů s určenou verzí Kubernetes.
 
 Vztah mezi verzemi Kubernetes uchovávanými fondy uzlů musí také následovat po sadě pravidel.
 
 1. Nelze downgradovat rovinu ovládacího prvku ani Kubernetes verzi fondu uzlů.
-1. Není-li zadána verze Kubernetes fondu uzlů, použije se výchozí hodnota, která se použije při návratu do verze řídicí roviny.
+1. Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. V případě deklarace v šabloně ARM se používá existující verze definovaná pro fond uzlů, pokud není nastavená žádná hodnota řídicí roviny.
 1. Můžete buď upgradovat, nebo škálovat úroveň ovládacího prvku nebo fondu uzlů v daném čase, nelze odeslat obě operace současně.
 1. Verze Kubernetes fondu uzlů musí být stejná hlavní verze jako plocha ovládacího prvku.
 1. Verze Kubernetes fondu uzlů může být nejvýše dvě (2) menší verze menší než Řídicí rovina, nikdy větší.
@@ -593,7 +593,7 @@ AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Někter�
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu `true` na jako výchozí `false` nastavení, pokud není zadané. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu `true` na jako výchozí `false` nastavení, pokud není zadáno. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
 
 ```
 "agentPoolProfiles":[  

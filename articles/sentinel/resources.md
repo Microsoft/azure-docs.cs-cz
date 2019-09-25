@@ -1,5 +1,5 @@
 ---
-title: Užitečné prostředky při práci s Azure Sentinel Preview | Microsoft Docs
+title: Užitečné prostředky při práci se službou Azure Sentinel | Microsoft Docs
 description: Tento dokument vám poskytne seznam užitečných prostředků při práci s Sentinel Azure.
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036240"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239980"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Užitečné prostředky pro práci s Azure Sentinel Preview
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
-> [!IMPORTANT]
-> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 V tomto článku najdete seznam prostředků, které vám pomůžou získat další informace o práci s Sentinel Azure Sentinel.
 
 Konektory Azure Logic Apps:<https://docs.microsoft.com/connectors/>
 
-## <a name="vendor-documentation"></a>Dokumentace dodavatele
 
+## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
+Protokoly auditu Azure Sentinel se udržují v [protokolech aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+
+
+## <a name="vendor-documentation"></a>Dokumentace dodavatele
 
 | **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
 |----|----|----|
@@ -48,5 +50,5 @@ Vystavte své dotazy na [TechCommunity místo](https://techcommunity.microsoft.c
 Prohlédněte si blogové příspěvky Azure Sentinel z [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu máte seznam prostředků, které jsou užitečné, když pracujete s ověřovacími službami Azure. Další informace o zabezpečení a dodržování předpisů Azure najdete na [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

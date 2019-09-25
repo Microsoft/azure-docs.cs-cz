@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0070ab94196dfe752e048e97dd40a8f69cf98373
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202606"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219632"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Detekce hrozeb pro virtuální počítače a servery v Azure Security Center
 
@@ -35,7 +35,7 @@ Security Center rozšiřuje svou cloudovou platformu ochrany díky integraci s p
 > [!NOTE]
 > Senzor ATP v programu Windows Server Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
-Když ochrana ATP v programu Windows Server Defender detekuje hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Windows Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Windows Server Defender najdete v tématu připojení [serverů ke službě ochrany ATP v programu Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Když ochrana ATP v programu Windows Server Defender detekuje hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Windows Server Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Analýza výpisu stavu systému<a nanme="windows-dump"></a>
 

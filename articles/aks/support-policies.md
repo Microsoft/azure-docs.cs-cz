@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596126"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240888"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -20,7 +20,7 @@ Tento článek poskytuje podrobné informace o zásadách technické podpory a o
 
 ## <a name="service-updates-and-releases"></a>Aktualizace a vydání služby
 
-* Informace o vydání najdete v poznámkách k [verzi AKS](https://github.com/Azure/AKS/releases).
+* Informace o vydání najdete v [poznámkách k verzi AKS](https://github.com/Azure/AKS/releases).
 * Informace o funkcích ve verzi Preview najdete v tématu [funkce AKS ve verzi Preview a související projekty](https://github.com/Azure/AKS/blob/master/previews.md).
 
 ## <a name="managed-features-in-aks"></a>Spravované funkce v AKS
@@ -95,7 +95,7 @@ Microsoft a zákazníci mají odpovědnost za pracovní uzly Kubernetes, kde:
   * Docker nebo Moby démon
 
 > [!NOTE]
-> Pokud je v pracovním uzlu nefunkční komponenta roviny ovládacího prvku, tým AKS může potřebovat restartovat celý pracovní uzel. Z důvodu jejich omezeného přístupu k aktivnímu zatížení a datům zákazníka tým AKS restartuje pracovní uzel pouze v případě, že zákazník problém vyřeší. Ať už je to možné, tým AKS funguje, aby nedošlo k tomu, že bude mít vliv na požadované restartování aplikace.
+> Pokud je v pracovním uzlu nefunkční komponenta roviny ovládacího prvku, může tým AKS restartovat jednotlivé součásti nebo celý pracovní uzel. Tyto operace restartování jsou automatizované a poskytují automatickou nápravu běžných problémů. Tato restartování se vyskytnou pouze na úrovni _uzlu_ , nikoli v clusteru, pokud se nejedná o nouzovou údržbu nebo výpadek.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Odpovědnosti zákazníků pro pracovní uzly AKS
 
@@ -149,7 +149,7 @@ Funkce ve verzi Public Preview spadají pod podporu "nejlepšího úsilí", prot
 * [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
-> Funkce ve verzi Preview se projeví na úrovni předplatného Azure. Neinstalujte funkce verze Preview v produkčním předplatném. V produkčním předplatném můžou funkce ve verzi Preview změnit výchozí chování rozhraní API a ovlivnit běžné operace.
+> Funkce ve verzi Preview se projeví na úrovni *předplatného* Azure. Neinstalujte funkce verze Preview v produkčním předplatném. V produkčním předplatném můžou funkce ve verzi Preview změnit výchozí chování rozhraní API a ovlivnit běžné operace.
 
 ## <a name="upstream-bugs-and-issues"></a>Naproti chybám a problémům
 

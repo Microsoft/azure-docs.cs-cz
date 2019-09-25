@@ -1,5 +1,5 @@
 ---
-title: Jak monitorovat účet Azure Storage | Microsoft Docs
+title: Jak monitorovat účet Azure Storage v Azure Portal | Microsoft Docs
 description: Naučte se monitorovat účet úložiště v Azure pomocí Azure Portal.
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844917"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211852"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště v Azure Portal
 
-[Analýza úložiště Azure](storage-analytics.md) poskytuje metriky pro všechny služby úložiště a protokoly objektů blob, front a tabulek. Pomocí [Azure Portal](https://portal.azure.com) můžete nakonfigurovat, které metriky a protokoly se budou zaznamenávat pro váš účet, a nakonfigurovat grafy, které poskytují vizuální reprezentace dat metrik.
+[Analýza úložiště Azure](storage-analytics.md) poskytuje metriky pro všechny služby úložiště a protokoly objektů blob, front a tabulek. Pomocí [Azure Portal](https://portal.azure.com) můžete nakonfigurovat, které metriky a protokoly se budou zaznamenávat pro váš účet, a nakonfigurovat grafy, které poskytují vizuální reprezentace dat metrik. 
+
+Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure-monitor/insights/storage-insights-overview.md) (Preview). Jedná se o funkci Azure Monitor, která nabízí ucelený přehled o vašich Azure Storagech účtech tím, že poskytuje jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. Nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto metriky můžete okamžitě zobrazit z předem definovaných interaktivních grafů a dalších vizualizací, které jsou v ní obsažené.
 
 > [!NOTE]
 > Existují náklady spojené s zkoumáním dat monitorování v Azure Portal. Další informace najdete v tématu [Analýza úložiště](storage-analytics.md).
@@ -140,6 +142,6 @@ Diagnostické protokoly se ukládají do kontejneru objektů BLOB s názvem *$lo
 
 Informace o přístupu k kontejneru $logs najdete v tématu [protokolování služby Storage Analytics](storage-analytics-logging.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [metrikách, protokolování a fakturaci](storage-analytics.md) pro analýza úložiště.

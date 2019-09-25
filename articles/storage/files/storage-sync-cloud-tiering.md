@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098968"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219342"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Při vrstvení souboru Azure File Sync filtr systému souborů (StorageSync. sys) místně nahradí soubor objektem ukazatele nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor obsahuje atribut "offline" a atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -102,8 +102,17 @@ Můžete také použít PowerShell k vynucení souboru, který se má odvolat. T
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+
+Při `-Order CloudTieringPolicy` zadání se nejdřív odeberou poslední změněné soubory.
+Další nepovinné parametry:
+* `-ThreadCount`Určuje, kolik souborů lze paralelně volat.
+* `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
+* `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
+
+> [!Note]  
+> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina se `Invoke-StorageSyncFileRecall` nezdařila.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Proč velikost vlastnosti *disku* pro soubor neodpovídá vlastnosti *size* po použití Azure File Sync? 

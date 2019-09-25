@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d97130251f7ca56adaf77c5e70d6f08bd5cf514
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101514"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212527"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Nastavení vysoké dostupnosti v SUSE pomocí STONITH
 Tento dokument popisuje podrobné pokyny k nastavení vysoké dostupnosti v SUSE operačním systému pomocí zařízení STONITH.
@@ -109,7 +109,7 @@ rescan-scsi-bus.sh
 
 ## <a name="2---initialize-the-sbd-device"></a>2.   Inicializace zařízení SBD
 
-2,1 inicializace zařízení SBD na uzlech
+2,1 inicializace zařízení **SBD na** uzlech
 
 ```
 sbd -d <SBD Device Name> create
@@ -187,7 +187,7 @@ modprobe softdog
 ```
 ![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4,4 Zkontrolujte a zajistěte, aby na uzlech běžela softdog, a to následujícím způsobem:
+4,4 Zkontrolujte a zajistěte, **aby na** uzlech běžela softdog, a to následujícím způsobem:
 ```
 lsmod | grep dog
 ```
@@ -199,7 +199,7 @@ lsmod | grep dog
 ```
 ![sbd-sh-start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4,6 otestujte démon SBD na **obou** uzlech. Po nakonfigurování na uzlech se zobrazí dvě položky.
+4,6 otestujte démon SBD na **obou** uzlech. Po nakonfigurování **na uzlech se zobrazí** dvě položky.
 ```
 sbd -d <SBD Device Name> list
 ```
@@ -225,13 +225,13 @@ SBD_PACEMAKER="yes"
 SBD_STARTMODE="clean" 
 SBD_OPTS=""
 ```
-4,10 spuštění služby Pacemaker v primárním **uzlu** (Uzel1)
+4,10 spuštění služby Pacemaker v **primárním uzlu** (Uzel1)
 ```
 systemctl start pacemaker
 ```
 ![Start-Pacemaker. png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Pokud se služba Pacemakernezdařila, *Přečtěte si scénář 5: Služba Pacemaker se nezdařila*
+Pokud se služba Pacemaker *nezdařila*, *Přečtěte si scénář 5: Služba Pacemaker se nezdařila*
 
 ## <a name="5---joining-the-cluster"></a>5.   Připojení ke clusteru
 Tato část popisuje, jak připojit uzel ke clusteru.
@@ -333,11 +333,12 @@ Service pacemaker stop
 ```
 Teď zastavte službu Pacemaker pro **Uzel2** a převzetí služeb při selhání službou **Uzel1**
 
-**Než převzetí služeb při**
-![selhání before-Failover.](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-![
-**PNG po převzetí služeb při selhání**After-Failover.PNGCRM-Mon-After-Failover.png![](media/HowToHLI/HASetupWithStonith/after-failover.png)
-](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**Před převzetím služeb při selhání**  
+![Before-Failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**Po převzetí služeb při selhání**  
+![After-Failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![CRM-Mon-After-Failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. Řešení potíží
