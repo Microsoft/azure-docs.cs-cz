@@ -1,4 +1,4 @@
-- name: Dokumentace k Azure Sentinelu verze Preview
+- name: Dokumentace k Azure Sentinelu
   href: index.yml
 - name: Přehled
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Kurzy
   items:
-    - name: Rozpoznávání podezřelých hrozeb
-      href: tutorial-detect-threats.md
+    - name: Použití integrovaných analýz k detekci hrozeb
+      href: tutorial-detect-threats-built-in.md
+    - name: Vytváření vlastních pravidel pro detekci hrozeb
+      href: tutorial-detect-threats-custom.md
+    - name: Monitorování dat
+      href: tutorial-monitor-your-data.md
     - name: Šetření incidentů
       href: tutorial-investigate-cases.md
     - name: Reakce na hrozby
       href: tutorial-respond-threats-playbook.md
+- name: Koncepty
+  items:
+    - name: Přiřazení oprávnění s využitím rolí
+      href: roles.md
+    - name: Pokročilá detekce útoků s více fázemi
+      href: fusion.md
 - name: Návody
   items:
     - name: Připojení zdrojů dat
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: Připojení virtuálních počítačů Azure Stack
           href: connect-azure-stack.md
+    - name: Několik tenantů (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Vytváření incidentů z upozornění
+      href: create-incidents-from-alerts.md
     - name: Vyhledávání
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: Využití záložek k vyhledávání
           href: bookmarks.md
-    - name: Povolení fúze
-      href: connect-fusion.md
+    - name: Odebrání Azure Sentinelu
+      href: offboard.md
 - name: Zdroje a prostředky
   items:
     - name: Užitečné materiály

@@ -5,15 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 09/04/2019
+ms.date: 09/24/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ea2c56e35741a49d057f2261f7b53fb754a43f8b
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d54d60728b9ad0cc72a6cbc81b380b2511d732a8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967986"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219807"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -31,6 +31,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 | [Úloha ISO 27001 App Service Environment/SQL Database](./iso27001-ase-sql-workload/index.md) | Poskytuje další infrastrukturu pro ukázku podrobného plánu [ISO 27001: Sdílené služby](./iso27001-shared/index.md). |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Poskytuje ochranné mantinely k dodržování předpisů pro NIST SP 800-53 R4. |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | Poskytuje sadu zásad pomáhajících zajistit dodržování předpisů PCI-DSS v3.2.1. |
+| [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | Pomáhá zajistit dodržování předpisů SWIFT CSP-CSCF v2020. |
 | [Zásady správného řízení UK OFFICIAL a UK NHS](./ukofficial/index.md) | Poskytují sadu kompatibilních vzorů infrastruktury a ochranných mantinelů zásad, které pomáhají zajistit osvědčení UK OFFICIAL a UK NHS. |
 | [Základy CAF](./caf-foundation/index.md) | Poskytuje sadu ovládacích prvků, které vám pomůžou se správou cloudových aktiv v souladu s [architekturou přechodu na cloud pro Azure od Microsoftu (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index). |
 | [Cílová zóna migrace CAF](./caf-migrate-landing-zone/index.md) | Poskytuje sadu ovládacích prvků, které vám pomůžou nastavit migraci vaší první úlohy a spravovat cloudová aktiva v souladu s [architekturou přechodu na cloud pro Azure od Microsoftu (CAF)](/azure/architecture/cloud-adoption/migrate/index). |

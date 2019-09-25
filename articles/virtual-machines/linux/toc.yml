@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Pořízení snímku disku
           href: snapshot-copy-managed-disk.md
+        - name: Vytvoření přírůstkového snímku
+          href: disks-incremental-snapshots.md
         - name: Zálohování nespravovaných disků
           href: incremental-snapshots.md
         - name: Migrace a převod

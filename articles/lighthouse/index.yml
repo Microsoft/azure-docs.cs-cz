@@ -1,61 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Lighthouse
+summary: Azure Lighthouse umožňuje poskytovatelům služeb spravovat prostředky Azure napříč všemi jejich zákazníky se zajištěním vyšší automatizace, větší škálovatelnosti a vylepšených zásad správného řízení.
 metadata:
   title: Dokumentace ke službě Azure Lighthouse
   description: Informace o správě prostředků zákazníků ve velkém měřítku
-  author: JnHs
-  manager: carmonm
   ms.service: lighthouse
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/11/2019
+  ms.collection: collection
+  author: JnHs
   ms.author: jenhayes
-abstract:
-  description: 'Azure Lighthouse nabízí poskytovatelům služeb jednu rovinu řízení umožňující zobrazovat a spravovat Azure napříč všemi jejich zákazníky se zajištěním vyšší automatizace, většího škálování a vylepšených zásad správného řízení.'
-sections:
-  - title: Koncepty
-    items:
-      - type: paragraph
-        text: Přečtěte si víc o klíčových aspektech služby Azure Lighthouse.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="concepts/azure-delegated-resource-management">Správa delegovaných prostředků Azure</a>
-          - html: <a href="concepts/cross-tenant-management-experience">Prostředí pro správu napříč tenanty</a>
-          - html: <a href="concepts/managed-services-offers">Nabídky spravovaných služeb na Azure Marketplace</a>
-          - html: <a href="concepts/recommended-security-practices.md">Doporučené postupy zabezpečení</a>
-          - html: <a href="concepts/cloud-solution-provider.md">Aspekty programu Cloud Solution Provider</a>
-  - title: Návody
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak nasadit zákazníky do správy delegovaných prostředků Azure a jak spravovat jejich prostředky.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="how-to/onboard-customer">Nasazení zákazníků do správy delegovaných prostředků Azure</a>
-          - html: <a href="how-to/publish-managed-services-offers">Publikování nabídek spravovaných služeb na Azure Marketplace</a>
-          - html: <a href="how-to/view-manage-customers">Zobrazení a správa zákazníků a delegovaných prostředků</a>
-          - html: <a href="how-to/view-manage-service-providers">Zobrazení a správa poskytovatelů služeb</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: 'Projděte si dostupné ukázky a šablony, které vám pomohou využívat Azure Lighthouse.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="samples/index">Index ukázek</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest">Azure CLI</a></p><p><a href="https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services">Azure PowerShell</a></p>'
-          - title: Jazyky
-            html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">Azure SDK pro .NET</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">Azure SDK pro .NET (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Azure SDK pro Python</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Azure SDK pro Python (PyPi)</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/managedservices/">Referenční materiály k rozhraní API</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01">2019-06-01 (OpenAPI)</a></p>'
+  ms.date: 09/19/2019
+  ms.openlocfilehash: b0ab72431c0a5f7f22426aa27ece1fb3da5f5a13
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219777"
+landingContent:
+- title: Informace o službě Azure Lighthouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Lighthouse?
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Správa delegovaných prostředků Azure
+      url: ./concepts/azure-delegated-resource-management.md
+    - text: Prostředí pro správu napříč tenanty
+      url: ./concepts/cross-tenant-management-experience.md
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení zákazníků do správy delegovaných prostředků Azure
+      url: ./how-to/onboard-customer.md
+  - linkListType: concept
+    links:
+    - text: Doporučené postupy zabezpečení
+      url: ./concepts/recommended-security-practices.md
+    - text: Aspekty programu Cloud Solution Provider
+      url: ./concepts/cloud-solution-provider.md
+- title: Nabídky Marketplace
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nabídky spravovaných služeb na Azure Marketplace
+      url: ./concepts/managed-services-offers.md
+  - linkListType: how-to-guide
+    links:
+    - text: Publikování nabídek spravovaných služeb
+      url: ./how-to/publish-managed-services-offers.md
+- title: Ukázky a šablony
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Úložiště ukázek služby Azure Lighthouse (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Rejstřík ukázek služby Azure Lighthouse
+      url: ./samples/index.md
+- title: Reference – soubory ke stažení
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI – 1. června 2019
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: SDK for .NET – NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: SDK for Python – PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: Reference – sady SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+- title: Prostředí webu Azure Portal
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení a správa zákazníků
+      url: ./how-to/view-manage-customers.md
+    - text: Zobrazení a správa poskytovatelů služeb
+      url: ./how-to/view-manage-service-providers.md
+- title: Zapojení
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Vyžádání funkcí produktu
+      url: https://feedback.azure.com/forums/922753

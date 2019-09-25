@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentace k Azure Sentinelu verze Preview
+title: Dokumentace k Azure Sentinelu
 metadata:
-  title: 'Dokumentace k Azure Sentinelu verze Preview – kurzy, rychlá zprovoznění | Microsoft Doc'
+  title: 'Dokumentace k Azure Sentinelu – kurzy, rychlá zprovoznění | Microsoft Doc'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: 'Azure Sentinel Preview je správa akcí a informací o zabezpečení (SIEM) nativní v cloudu, která poskytuje inteligentní bezpečnostní analýzy pro celou firmu na úrovni cloudu. Získáte neomezenou rychlost a škálování v cloudu a budete se tak moci soustředit na to, na čem opravdu záleží. Můžete snadno shromažďovat data ze všech vašich cloudových nebo místních prostředků, Office 365, prostředků Azure a dalších cloudů. Integrované strojové učení od odborníků Microsoftu na bezpečnostní analýzy vám umožní efektivně detekovat hrozby. Díky integrovaným playbookům pro automatizaci a orchestraci můžete automatizovat reakce na hrozby.'
+  description: 'Azure Sentinel je cloudově nativní správa akcí a informací o zabezpečení (SIEM), která poskytuje inteligentní bezpečnostní analýzy pro celou firmu na úrovni cloudu. Získáte neomezenou rychlost a škálování v cloudu a budete se tak moci soustředit na to, na čem opravdu záleží. Můžete snadno shromažďovat data ze všech vašich cloudových nebo místních prostředků, Office 365, prostředků Azure a dalších cloudů. Integrované strojové učení od odborníků Microsoftu na bezpečnostní analýzy vám umožní efektivně detekovat hrozby. Díky integrovaným playbookům pro automatizaci a orchestraci můžete automatizovat reakce na hrozby.'
 sections:
   - title: Zprovoznění během 5 minut
     items:

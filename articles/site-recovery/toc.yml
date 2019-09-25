@@ -425,7 +425,7 @@
       href: hyper-v-azure-powershell-resource-manager.md
     - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V (s VMM) do Azure s využitím PowerShellu
       href: hyper-v-vmm-powershell-resource-manager.md
-    - name: Přidání runbooků Azure Automation do plánů obnovení pro orchestraci převzetí služeb při selhání
+    - name: Přidání runbooků automatizace do plánů obnovení
       href: site-recovery-runbook-automation.md
 - name: Monitorování
   items:

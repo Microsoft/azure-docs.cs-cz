@@ -56,6 +56,8 @@
       href: getting-started-improving-your-classifier.md
     - name: Použití prediktivního rozhraní API
       href: use-prediction-api.md
+    - name: Použití navrhovaných značek
+      href: suggested-tags.md
     - name: Export modelů
       items:
         - name: Export modelu do mobilní verze

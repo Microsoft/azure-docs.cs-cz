@@ -110,6 +110,17 @@
         - name: Kroky pro nasazení
           displayName: 'standards, Payment Card Industry Data Security Standard'
           href: ./samples/pci-dss-3.2.1/deploy.md
+    - name: SWIFT CSP v2020
+      items:
+        - name: Přehled
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/deploy.md
     - name: UK OFFICIAL a UK NHS
       items:
         - name: Přehled

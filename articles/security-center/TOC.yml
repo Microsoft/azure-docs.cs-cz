@@ -57,6 +57,8 @@
           href: security-center-alerts-integration.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)
           href: security-center-alerts-cloud-smart.md
+        - name: Analýza hrozeb a mapa výstrah zabezpečení
+          href: security-center-threat-intel.md
         - name: Ověřování výstrah (testovací soubor EICAR)
           href: security-center-alert-validation.md
 - name: Návody
@@ -65,7 +67,7 @@
       href: security-center-secure-score.md
     - name: Upgrade na pokročilé zabezpečení
       href: security-center-onboarding.md
-    - name: Ochrana serveru pomocí Ochrany ATP v programu Windows Defender
+    - name: Ochrana serveru pomocí programu Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Pokročilé zabezpečení dat pro SQL na virtuálních počítačích Azure (Public Preview)
       href: security-center-iaas-advanced-data.md
