@@ -18,7 +18,7 @@
       items:
         - name: Přidání cílů úložiště
           href: hpc-cache-add-storage.md
-        - name: Přesouvání dat do úložiště mezipaměti
+        - name: Přesun data do cílů úložiště (v případě potřeby)
           items:
             - name: Předběžné načtení nového úložiště objektů blob
               href: hpc-cache-ingest.md

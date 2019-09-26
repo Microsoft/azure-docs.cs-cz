@@ -84,7 +84,11 @@
     - name: Vyrovnávání zatížení virtuálních počítačů v rámci zóny (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Konfigurace odchozích pravidel
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: Konfigurace pravidel odchozích přenosů – CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: Konfigurace pravidel odchozích přenosů – PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: Vytvoření nástroje pro vyrovnávání zatížení Azure s využitím REST API
       href: create-load-balancer-rest-api.md
     - name: Vytvoření Load Balancer úrovně Basic (šablona)

@@ -19,7 +19,7 @@
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
     - name: Nabídky spravovaných služeb na Azure Marketplace
-      displayName: 'managed services offer, azure marketplace'
+      displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Doporučené postupy zabezpečení
       displayName: 'mfa, authentication, secure, group'
@@ -27,6 +27,9 @@
     - name: Aspekty programu Cloud Solution Provider
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
+    - name: Azure Lighthouse v podnikových scénářích
+      displayName: 'corporation, IT, consolidate'
+      href: ./concepts/enterprise.md
 - name: Návody
   items:
     - name: Nasazení zákazníků do správy delegovaných prostředků Azure

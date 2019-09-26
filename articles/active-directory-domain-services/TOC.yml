@@ -95,22 +95,22 @@
       items:
         - name: Běžné chyby
           href: troubleshoot.md
-        - name: Běžná upozornění
-          items:
-            - name: Běžná upozornění
-              href: troubleshoot-alerts.md
-            - name: Oprava narušené konfigurace sítě
-              href: alert-nsg.md
-            - name: Obnovení chybějících objektů služby
-              href: alert-service-principal.md
-            - name: Upozornění protokolu Secure LDAP
-              href: alert-ldaps.md
         - name: Chyb neshod tenantů
           href: mismatched-tenant-error.md
         - name: Pozastavené domény
           href: suspension.md
         - name: Protokol Secure LDAP
           href: tshoot-ldaps.md
+        - name: Známé problémy
+          items:
+            - name: Běžná upozornění
+              href: troubleshoot-alerts.md
+            - name: Upozornění sítě
+              href: alert-nsg.md
+            - name: Upozornění instančních objektů
+              href: alert-service-principal.md
+            - name: Upozornění protokolu Secure LDAP
+              href: alert-ldaps.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

@@ -349,6 +349,8 @@
               href: manage-cassandra-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-cassandra.md
+            - name: Správa s využitím rozhraní příkazového řádku Azure
+              href: cli-samples-cassandra.md
     - name: Rozhraní MongoDB API
       items:
         - name: Úvod
@@ -411,7 +413,7 @@
               href: mongodb-mongochef.md
             - name: Připojení s využitím Compassu
               href: mongodb-compass.md
-            - name: Připojení s využitím Robomongo
+            - name: Připojení s využitím Robo 3T
               href: mongodb-robomongo.md
             - name: Připojení s využitím MongoDB
               href: mongodb-mongoose.md
@@ -432,6 +434,8 @@
               href: manage-mongodb-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-mongodb.md
+            - name: Správa s využitím rozhraní příkazového řádku Azure
+              href: cli-samples-mongodb.md
             - name: Řešení běžných potíží
               href: mongodb-troubleshoot.md
     - name: Rozhraní Gremlin API
@@ -492,6 +496,8 @@
               href: manage-gremlin-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-gremlin.md
+            - name: Správa s využitím rozhraní příkazového řádku Azure
+              href: cli-samples-gremlin.md
     - name: Rozhraní Table API
       items:
         - name: Úvod
@@ -546,6 +552,8 @@
               href: manage-table-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-table.md
+            - name: Správa s využitím rozhraní příkazového řádku Azure
+              href: cli-samples-table.md
         - name: Referenční informace
           items:
             - name: .NET

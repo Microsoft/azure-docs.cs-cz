@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Čítače výkonu
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: Závislosti
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: Přehled
                       href: platform/diagnostics-extension-overview.md
+                    - name: Shromažďování protokolů
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Historie verzí
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: Skupiny počítačů
               href: platform/computer-groups.md
-        - name: Prostředky Azure
+        - name: Platforma Azure
           items:
-            - name: Diagnostické protokoly
+            - name: Přehled protokolů platformy
+              href: platform/platform-logs-overview.md
+            - name: Protokoly prostředků
               items:
                 - name: Přehled
-                  href: platform/diagnostic-logs-overview.md
-                - name: Shromažďování v protokolech
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Shromažďování ze služby Azure Storage
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Shromažďování v protokolech Azure Monitoru
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Archivace do úložiště
-                  href: platform/archive-diagnostic-logs.md
-                - name: Povolení s využitím šablon Resource Manageru
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: předplatné Azure
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Streamování do Event Hubs
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Protokol aktivit
               items:
                 - name: Přehled
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: Schéma
                   href: platform/activity-log-schema.md
+            - name: Nastavení diagnostiky
+              items:
+                - name: Vytvoření nastavení diagnostiky
+                  href: platform/diagnostic-settings.md
+                - name: Vytvoření nastavení diagnostiky s využitím šablon Resource Manageru
+                  href: platform/diagnostic-settings-template.md
+                - name: Změna formátu úložiště objektů blob
+                  href: platform/resource-logs-blob-format.md
             - name: Streamování dat do Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -685,6 +695,7 @@
         - name: Storage
           items:
             - name: Azure Monitor pro Storage
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Databáze
           items:
@@ -747,7 +758,7 @@
             - name: Připojení správce konfigurací
               href: platform/collect-sccm.md
         - name: Streamování dat do Event Hubs
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Analýza dat
       items:
         - name: Metriky

@@ -472,6 +472,8 @@
         - name: Nasazení disků pomocí šablony
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Nahrání virtuálního pevného disku na disk – CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Změna velikosti disku
           href: expand-disks.md
         - name: Pořízení snímku disku

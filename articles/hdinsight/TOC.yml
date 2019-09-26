@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: Ukázky
       items:
+        - name: Ukázky Azure CLI
+          href: ./azure-cli-samples.md
         - name: Ukázky .NET
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Ukázky Java
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: Řešení potíží
           items:
+            - name: Řešení potíží s výkonem Apache HBA
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: hbase hbck vrací nekonzistence
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: Výjimka úložiště po resetování připojení

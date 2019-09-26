@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: Detekce hrozeb pro virtuální počítače a servery
           href: security-center-alerts-iaas.md
-        - name: Detekce hrozeb pro cloudové nativní výpočetní prostředí
+        - name: Detekce hrozeb pro cloudové aplikace a kontejnery
           href: security-center-alerts-compute.md
         - name: Detekce hrozeb pro datové služby
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Pokročilé zabezpečení dat pro SQL na virtuálních počítačích Azure (Public Preview)
       href: security-center-iaas-advanced-data.md
-    - name: Ochrana služby App Service
+    - name: Použití služby App Service k ochraně aplikací
       href: security-center-app-services.md
     - name: Práce se zásadami zabezpečení
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: E-mailová oznámení
       href: security-center-provide-security-contact-details.md
-    - name: Cenová úroveň
+    - name: Ceny
       href: security-center-pricing.md
     - name: Viditelnost v rámci celého tenanta
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: Rozhraní REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyřazení funkcí a rozhraní API (červenec 2019)
       href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: Správa uživatelských dat
       href: security-center-privacy.md
-    - name: Správa IoT
+    - name: Dokumentace ke službě Azure Security Center pro IoT
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Nejčastější dotazy
       href: security-center-faq.md
-    - name: Zabezpečení Azure
+    - name: Dokumentace k zabezpečení Azure
       href: /azure/security/
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Plán připravenosti
       href: security-center-readiness-roadmap.md
     - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Azure Security Center na webu Stack Overflow
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Videa
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Řešení potíží
+    - name: Průvodce odstraňováním potíží
       href: security-center-troubleshooting-guide.md

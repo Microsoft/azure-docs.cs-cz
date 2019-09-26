@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: Šablony Rychlý start
       items:
-        - name: Vytvoření a nastavení vývojového prostředí
+        - name: Nastavení tenanta
           href: quickstart-create-new-tenant.md
         - name: Konfigurace aplikace
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS a macOS
               href: quickstart-v2-ios.md
             - name: Univerzální platforma Windows
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS a macOS
               href: tutorial-v2-ios.md
             - name: Univerzální platforma Windows
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: Přehled
               href: msal-overview.md
-            - name: Migrace
+            - name: Migrace z ADAL
               items:
                 - name: Migrace na MSAL.NET
                   href: msal-net-migration.md
                 - name: Migrace na MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migrace na MSAL pro iOS a MacOS
+                  href: migrate-objc-adal-msal.md
                 - name: Migrace aplikací pro Xamarin pomocí zprostředkovatelů z ADAL.NET do MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: Podporované toky ověřování
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: Obory pro aplikace v1.0
                   href: msal-v1-app-scopes.md
-                - name: Serializace mezipaměti tokenů (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: Klientské aplikace
               items:
                 - name: Klientské aplikace
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: Protokolování
               href: msal-logging.md
-            - name: Jednotné přihlašování (JS)
-              href: msal-js-sso.md
-            - name: Chování výzvy (JS)
-              href: msal-js-prompt-behavior.md
-            - name: Podpora ADFS (.NET)
-              href: msal-net-adfs-support.md
+            - name: Jednotné přihlašování
+              items:
+                - name: Jednotné přihlašování s využitím MSAL.js
+                  href: msal-js-sso.md
+                - name: Jednotné přihlašování s využitím MSAL pro iOS a macOS
+                  items:
+                    - name: Jednotné přihlašování mezi aplikacemi MSAL
+                      href: single-sign-on-macos-ios.md
+                    - name: Jednotné přihlašování mezi aplikacemi MSAL a ADAL
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Integrace s ADFS
+              items:
+                - name: Podpora ADFS v MSAL.NET
+                  href: msal-net-adfs-support.md
             - name: Integrace s Azure AD B2C
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS a macOS
+                  href: 'config-authority.md#b2c'
             - name: Důležité informace a známé problémy
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Známé problémy – Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: MSAL pro iOS a MacOS
+                  items:
+                    - name: Problémy s SSL
+                      href: ssl-issues.md
         - name: Protokol ověřování
           items:
             - name: Typy aplikací a OAuth2.0
@@ -378,6 +392,8 @@
               items:
                 - name: Získání tokenu z mezipaměti
                   href: msal-net-acquire-token-silently.md
+                - name: Serializace mezipaměti tokenů
+                  href: msal-net-token-cache-serialization.md
                 - name: Vymazání mezipaměti tokenů
                   href: msal-net-clear-token-cache.md
                 - name: Vytvoření instance veřejného klienta s využitím možností
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: Předání vlastního stavu v požadavcích na ověření
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: Chování výzvy
+                  href: msal-js-prompt-behavior.md
+            - name: MSAL pro iOS a MacOS
+              items:
+                - name: Microsoft Authentication Library pro iOS a macOS – rozdíly
+                  href: msal-differences-ios-macos.md
+                - name: Konfigurace klíčenky
+                  href: howto-v2-keychain-objc.md
+                - name: Přizpůsobení prohlížečů a webových zobrazení
+                  href: customize-webviews.md
+                - name: Vyžádání vlastních deklarací identity
+                  href: request-custom-claims.md
+                - name: Konfigurace URI přesměrování
+                  href: redirect-uris-ios.md
         - name: Práce se sadou Visual Studio
           items:
             - name: Použití připojené služby Active Directory
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: Šablony Rychlý start
       items:
-        - name: Vytvoření a nastavení vývojového prostředí
+        - name: Nastavení tenanta
           href: quickstart-create-new-tenant.md
         - name: Konfigurace aplikace
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS a macOS
               href: quickstart-v1-ios.md
             - name: Windows Desktop .NET
               href: quickstart-v1-dotnet.md

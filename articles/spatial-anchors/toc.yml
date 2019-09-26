@@ -17,12 +17,12 @@
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: Vytvoření aplikace pro iOS
-      href: quickstarts/get-started-ios.md
-    - name: Vytvoření aplikace pro Android
-      href: quickstarts/get-started-android.md
     - name: Vytvoření aplikace HoloLens
       href: quickstarts/get-started-hololens.md
+    - name: Vytvoření aplikace pro Android
+      href: quickstarts/get-started-android.md
+    - name: Vytvoření aplikace pro iOS
+      href: quickstarts/get-started-ios.md
     - name: Vytvoření aplikace Xamarin
       items:
         - name: Android
@@ -84,6 +84,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Zdroje a prostředky
   items:
+    - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
+      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
     - name: Nejčastější dotazy
       href: spatial-anchor-faq.md
     - name: Poskytnutí zpětné vazby k produktu
