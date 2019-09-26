@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0a776c793bab9aee76cf338bc19c560ab700e787
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063947"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258199"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -84,8 +84,8 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | scope | Ne | Rozsah požadavku, který je definován podle specifikace 1,0 OpenID Connect Core. `openid`Například, `profile`a. `email` |
 | HttpBinding | Ne | Očekávaná vazba protokolu HTTP k přístupovému tokenu a koncovým bodům tokenu deklarací identity. Možné hodnoty: `GET` nebo `POST`.  |
 | ValidTokenIssuerPrefixes | Ne | Klíč, který se dá použít k přihlášení ke každému klientovi při použití poskytovatele identity s více klienty, jako je například Azure Active Directory. |
-| UsePolicyInRedirectUri | Ne | Určuje, jestli se při vytváření identifikátoru URI přesměrování má použít zásada. Při konfiguraci aplikace ve zprostředkovateli identity je nutné zadat identifikátor URI přesměrování. Identifikátor URI přesměrování odkazuje na Azure AD B2C, `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (login.microsoftonline.com se může změnit pomocí Your-tenant-Name.b2clogin.com).  Pokud zadáte `false`, budete muset pro každou zásadu, kterou používáte, přidat identifikátor URI přesměrování. Například: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Ne | Určuje, zda má být požadavek na externí službu označený jako selhání, pokud je stavový kód HTTP v rozsahu 5xx. Výchozí hodnota je `false`. |
+| UsePolicyInRedirectUri | Ne | Určuje, jestli se při vytváření identifikátoru URI přesměrování má použít zásada. Při konfiguraci aplikace ve zprostředkovateli identity je nutné zadat identifikátor URI přesměrování. Identifikátor URI přesměrování odkazuje na Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Pokud zadáte `false`, budete muset pro každou zásadu, kterou používáte, přidat identifikátor URI přesměrování. Například: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| MarkAsFailureOnStatusCode5xx | Ne | Určuje, zda má být požadavek na externí službu označený jako selhání, pokud je stavový kód HTTP v rozsahu 5xx. Výchozí formát je `false`. |
 | DiscoverMetadataByTokenIssuer | Ne | Určuje, zda mají být metadata OIDC zjištěna pomocí vystavitele v tokenu JWT. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
@@ -98,28 +98,10 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
-Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/oauth2/authresp`. Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) nebo ID tenanta. Identifikátor URI pro přesměrování musí být malými písmeny.
-
-Pokud používáte doménu **b2clogin.com** místo **Login.microsoftonline.com** , nezapomeňte místo Login.microsoftonline.com použít b2clogin.com.
+Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`. Ujistěte se, že `{your-tenant-name}` jste se svým jménem svého tenanta nahradili. Identifikátor URI pro přesměrování musí být malými písmeny.
 
 Příklady:
 
 - [Přidání účtu Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad](active-directory-b2c-custom-setup-msa-idp.md)
 - [Přihlášení pomocí účtů Azure AD](active-directory-b2c-setup-aad-custom.md)
 - [Umožňuje uživatelům přihlásit se k poskytovateli identit Azure AD s více klienty pomocí vlastních zásad.](active-directory-b2c-setup-commonaad-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

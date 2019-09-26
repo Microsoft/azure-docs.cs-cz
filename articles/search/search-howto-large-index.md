@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: heidist
-ms.openlocfilehash: e3240ca40b9dcf866c5e4a5cf570b5575b7586d8
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: aaf0d5edb91d60be85360746f76c4ca1f8db8978
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240359"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257032"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Indexování velkých datových sad v Azure Search
 
@@ -25,9 +25,9 @@ Následující části Prozkoumejte tři techniky pro indexování velkých obje
 
 ## <a name="option-1-pass-multiple-documents"></a>Možnost 1: Předat více dokumentů
 
-Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, jestli používáte třídu pro [Přidání dokumentů (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
+Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte metodu [Add documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
 
-Dávkové indexování je implementováno pro jednotlivé požadavky pomocí REST nebo .NET nebo prostřednictvím indexerů. Několik indexerů pracuje v různých omezeních. Indexování objektů BLOB v Azure nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. U indexerů založených na [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer )můžete nastavit `BatchSize` argument pro přizpůsobení tohoto nastavení, aby lépe odpovídal charakteristikám vašich dat. 
+Dávkové indexování je implementováno pro jednotlivé požadavky pomocí REST nebo .NET nebo prostřednictvím indexerů. Několik indexerů pracuje v různých omezeních. Indexování objektů BLOB v Azure nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. U indexerů založených na [REST API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit `BatchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
 
 > [!NOTE]
 > Aby se zachovala velikost dokumentu, vyhněte se přidávání nequeryablech dat do indexu. Image a další binární data se nedají přímo prohledávat a v indexu by se neměly ukládat. Pro integraci nequeryablech dat do výsledků hledání byste měli definovat pole bez možností vyhledávání, které ukládá odkaz na adresu URL do daného prostředku.
@@ -44,7 +44,7 @@ Zvýšení počtu replik a oddílů jsou Fakturovatelné události, které zvyš
 
 + Plánovače umožňují v pravidelných intervalech vyřídit indexování, takže je můžete v průběhu času rozložit.
 + Naplánované indexování může pokračovat v posledním známém bodu zastavení. Pokud zdroj dat není plně procházen v průběhu 24 hodin, indexer bude pokračovat v indexování dvou dnů na všech místech, kde se nachází na levé straně.
-+ Rozdělení dat na menší jednotlivé zdroje dat umožňuje paralelní zpracování. Můžete rozdělit velkou datovou sadu na menší datové sady na zdrojové datové platformě (třeba Azure Blob Storage nebo Azure SQL Database) a pak vytvořit více [objektů zdrojů dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure Search, které je možné indexovat paralelně.
++ Rozdělení dat na menší jednotlivé zdroje dat umožňuje paralelní zpracování. Zdrojová data můžete rozdělit do menších součástí, například do více kontejnerů v úložišti objektů BLOB v Azure, a pak vytvořit odpovídající a více [objektů zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure Search, které je možné indexovat paralelně.
 
 > [!NOTE]
 > Indexery jsou specifické pro zdroj dat. použití přístupu indexeru je možné realizovat jenom pro vybrané zdroje dat v Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), [úložiště tabulek](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).

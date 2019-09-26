@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174605"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266921"
 ---
 Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
 
 * Ev3-Series obsahuje procesor E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, poskytuje lepší hodnotu pro většinu úloh pro obecné účely a přináší Ev3 k virtuálním počítačům pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
-* Řady Eav3-Series a Easv3-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452V v konfiguraci s více vlákny s až 256mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh.  Řady Eav3-Series a Easv3-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
+* Velikosti Preview Eav3-Series a Easv3-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více vlákny s až 256mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh.  Řady Eav3-Series a Easv3-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
 * Mv2-Series nabízí nejvyšší počet vCPU (až 208 vCPU) a největší paměť (až 5,7 TiB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
 
@@ -61,13 +61,15 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 
 <sup>3</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
-## <a name="easv3-series"></a>Easv3-Series
+## <a name="easv3-series-preview"></a>Easv3-Series (Preview)
 
 Premium Storage: Podporováno
 
 Ukládání Premium Storage do mezipaměti: Podporováno
 
-Velikosti řady Easv3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452V procesor 2.35 GHz, který může dosáhnout posílených Fmax – v 3.35 GHz a využívat Storage úrovně Premium. Velikosti řady Easv3-Series jsou ideální pro podnikové aplikace náročné na paměť.
+Velikosti řady Easv3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – z 3.35 GHz a použít Premium Storage. Velikosti řady Easv3-Series jsou ideální pro podnikové aplikace náročné na paměť.
+
+[Kliknutím sem se přihlaste k verzi Preview](http://aka.ms/azureamdpreview).
 
 | Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 
 <sup>3</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
-## <a name="eav3-series"></a>Eav3-Series
+## <a name="eav3-series-preview"></a>Eav3-Series (Preview)
 
 Premium Storage: Není podporováno
 
 Ukládání Premium Storage do mezipaměti: Není podporováno
 
-Velikosti řady Eav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452V procesor 2.35 GHz, který může dosáhnout posílených Fmax – v 3.35 GHz a využívat Storage úrovně Premium. Velikosti řady Eav3-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti řady Easv3-Series. Měřiče cen a účtování pro velikosti Easv3 jsou stejné jako pro Eav3-Series.
+Velikosti řady Eav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – z 3.35 GHz a použít Premium Storage. Velikosti řady Eav3-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti řady Easv3-Series. Měřiče cen a účtování pro velikosti Easv3 jsou stejné jako pro Eav3-Series.
 
-| Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[Kliknutím sem se přihlaste k verzi Preview](http://aka.ms/azureamdpreview).
+
+| Size             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Řada Mv2
 

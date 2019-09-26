@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219632"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273890"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Detekce hrozeb pro virtuální počítače a servery v Azure Security Center
 
@@ -28,14 +28,14 @@ V tomto tématu jsou uvedeny různé typy metod detekce a upozornění, která j
 
 Azure Security Center se integruje se službami Azure za účelem monitorování a ochrany počítačů se systémem Windows. Security Center prezentuje výstrahy a návrhy oprav ze všech těchto služeb ve snadno použitelném formátu.
 
-### ATP Windows serveru Defender<a nanme="windows-atp"></a>
+### ATP v programu Microsoft Defender<a nanme="windows-atp"></a>
 
-Security Center rozšiřuje svou cloudovou platformu ochrany díky integraci s pokročilou ochranou před internetovými útoky v programu Windows Server Defender (ATP). Poskytuje komplexní možnosti detekce a odezvy koncových bodů (EDR).
+Security Center rozšiřuje své cloudové platformy na ochranu díky integraci s pokročilou ochranou před internetovými útoky v programu Microsoft Defender (ATP). Poskytuje komplexní možnosti detekce a odezvy koncových bodů (EDR).
 
 > [!NOTE]
-> Senzor ATP v programu Windows Server Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
+> Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
-Když ochrana ATP v programu Windows Server Defender detekuje hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Windows Server Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Analýza výpisu stavu systému<a nanme="windows-dump"></a>
 

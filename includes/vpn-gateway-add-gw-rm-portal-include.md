@@ -5,50 +5,50 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 72e61a36b58c0bc666f3e19b71fb1abe842208f5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174852"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273784"
 ---
-1. Přihlaste se k Azure portal a vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
+1. Na levé straně portálu klikněte na **+ Vytvořit prostředek** a do vyhledávacího pole zadejte text „Brána virtuální sítě“. Ve výsledcích hledání vyhledejte položku **Brána virtuální sítě** a klikněte na ni. Na stránce **Brána virtuální sítě** klikněte na **vytvořit**. Tím otevřete stránku **Vytvořit bránu virtuální sítě**.
 
-2. V **marketplace pole pro hledání**, zadejte *brány virtuální sítě*a vyberte **Brána virtuální sítě** ze seznamu hledání. 
+   ![Pole na stránce Vytvořit bránu virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Pole na stránce Vytvořit bránu virtuální sítě")
 
-3. Na **Brána virtuální sítě** stránce **vytvořit** otevřít **vytvořit bránu virtuální sítě** stránky.
+   ![Pole na stránce Vytvořit bránu virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Pole na stránce Vytvořit bránu virtuální sítě")
+2. Na stránce **Vytvořit bránu virtuální sítě** vyplňte hodnoty pro vaši bránu virtuální sítě.
 
-   ![Pole na stránce Vytvořit bránu virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Pole na stránce Vytvořit bránu virtuální sítě")
+   **Podrobnosti o projektu**
 
-4. Na **vytvořit bránu virtuální sítě** stránky, zadejte hodnoty pro příslušnou bránu virtuální sítě:
+   - **Předplatné:** Z rozevíracího seznamu vyberte předplatné, které chcete použít.
+   - **Skupina prostředků**: Toto nastavení se vyplní při výběru virtuální sítě na této stránce.
 
-   - **Název**: Zadejte název objektu brány, kterou vytváříte. Tento název se liší od název podsítě brány. 
+   **Podrobnosti instance**
 
-   - **Typ brány**: Vyberte **VPN** pro brány VPN Gateway. 
+   - **Název**: Pojmenujte bránu. Pojmenování brány není stejné jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.
+   - **Oblast:** Vyberte oblast, ve které chcete vytvořit tento prostředek. Oblast brány musí být stejná jako tato virtuální síť.
+   - **Typ brány**: Vyberte **VPN**. Brány VPN používají bránu virtuální sítě typu **VPN**. 
+   - **Typ sítě VPN**: Vyberte typ sítě VPN, který je určen pro vaši konfiguraci. Většina konfigurací vyžaduje trasový typ VPN.
+   - **SKU**: Z rozevíracího seznamu vyberte SKU brány. SKU uvedené v rozevíracím seznamu závisí na typu VPN, který jste vybrali. Další informace o SKU brány najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-   - **Typ sítě VPN**: Vyberte typ VPN určený pro vaši konfiguraci. Většina konfigurací vyžaduje **založené na trasách** typ sítě VPN.
+      **Virtuální síť**: Zvolte virtuální síť, do které chcete tuto bránu přidat.
 
-   - **SKLADOVÁ POLOŽKA**: Z rozevíracího seznamu vyberte SKU brány. SKU uvedené v rozevíracím seznamu závisí na typu VPN, který jste vybrali. Další informace o SKU brány najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+      **Rozsah adres podsítě brány**: Toto pole se zobrazí jenom v případě, že virtuální síť, kterou jste vybrali, nemá podsíť brány. Pokud ještě nemáte podsíť brány, vyplňte tento rozsah. Pokud je to možné, udělejte rozsah/27 nebo větší (/26,/25 atd.).
 
-      Vybrat pouze **povolit režim aktivní – aktivní** Pokud vytváříte konfiguraci služby brány typu aktivní aktivní. V opačném případě nechte toto nastavení nevybrané.
-  
-   - **Umístění**: Je nutné stránku posunout, aby **umístění**. Nastavte **umístění** do umístění, kde se nachází vaše virtuální síť. Například **USA – západ**. Pokud nenastavíte umístění do oblasti, ve kterém se nachází vaše virtuální síť, nebude se zobrazovat v rozevíracím seznamu při výběru virtuální sítě.
+   **Veřejná IP adresa**: Toto nastavení určuje objekt veřejné IP adresy, který se přidruží k bráně VPN. Veřejná IP adresa se dynamicky přiřadí k tomuto objektu při vytvoření brány VPN. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
-   - **Virtuální síť**: Zvolte virtuální síť, do které chcete tuto bránu přidat. Vyberte **virtuální síť** otevřít **zvolte virtuální síť** stránky a vyberte virtuální síť. Pokud se nezobrazí vaši virtuální síť, ujistěte se, **umístění** je nastaveno do oblasti, ve kterém se nachází vaše virtuální síť.
+     - **Veřejná IP adresa**: Možnost **Vytvořit novou** nechte vybranou.
+     - **Název veřejné IP adresy**: Do textového pole zadejte název vaší instance veřejné IP adresy.
+     - **Přiřazení**: Brána sítě VPN podporuje pouze dynamické.
 
-   - **Rozsah adres podsítě brány**: Toto nastavení zobrazí pouze pokud jste nevytvořili dříve podsíť brány pro vaši virtuální síť. Pokud jste dříve vytvořili platnou podsíť brány, toto nastavení se nezobrazí.
+   **Režim aktivní-aktivní**: Možnost **Povolit režim aktivní–aktivní** povolte jenom v případě, že vytváříte konfiguraci brány typu aktivní-aktivní. V opačném případě nechte toto nastavení nevybrané.
 
-   - **Veřejná IP adresa**: Toto nastavení určuje veřejnou IP adresu objektu, který je spojen s bránou VPN. Veřejná IP adresa se dynamicky přiřadí k tomuto objektu při vytvoření brány VPN. VPN gateway aktuálně podporuje pouze *dynamické* veřejné přidělování IP adres. Dynamické přidělování však neznamená, že změní IP adresa po přiřazení k vaší bráně VPN. Změny veřejné IP adresy se pouze při odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
-    
-      - Možnost **Vytvořit novou** nechte vybranou.
+   Možnost **Konfigurovat číslo ASN pro protokol BGP** nechte nevybranou s výjimkou případů, kdy vaše konfigurace specificky vyžaduje toto nastavení. Pokud toto nastavení skutečně vyžadujete, výchozí ASN je 65515. Dá se ale změnit.
 
-      - Do textového pole zadejte název pro svou veřejnou IP adresu.
+3. Kliknutím na tlačítko **zkontrolovat + vytvořit** spusťte ověřování. Po úspěšném ověření kliknutím na **vytvořit** nasaďte bránu VPN. Pro úplné vytvoření a nasazení brány může trvat až 45 minut. Stav nasazení můžete zobrazit na stránce Přehled pro vaši bránu.
 
-   - **Konfigurace protokolu BGP číslo ASN**: Nechte u tohoto nastavení toto políčko nezaškrtnuté, pokud vaše konfigurace konkrétně nevyžaduje. Pokud budete potřebovat toto nastavení, výchozí číslo ASN je *65515*, které můžete změnit.
-     
-5. Ověřte nastavení a vyberte **vytvořit** zahajte proces vytváření brány sítě VPN. Nastavení se ověří a zobrazí se vám **nasazení brány virtuální sítě** dlaždici na řídicím panelu. Vytváření brány může trvat až 45 minut. K zobrazení stavu dokončení může být nutné obnovit stránku portálu.
-
-6. Po vytvoření brány Ověřte adresu IP, která je přiřazena k němu zobrazením virtuální sítě na portálu. Brána se zobrazí jako připojené zařízení. Můžete vybrat připojené zařízení (bránu virtuální sítě) můžete zobrazit další informace.
+Po vytvoření brány můžete zobrazením virtuální sítě na portálu zobrazit IP adresu, která jí byla přiřazena. Brána se zobrazí jako připojené zařízení.

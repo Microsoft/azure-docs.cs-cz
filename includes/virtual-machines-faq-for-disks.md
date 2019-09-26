@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541447"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266870"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 
@@ -183,8 +183,26 @@ Ne, podpora Azure Backup ještě není k dispozici.
 **Můžu k virtuálnímu počítači se systémem v sadě dostupnosti připojit disk Ultra?**
 Ne, tato není ještě podporovaná.
 
-**Můžu povolit Azure Site Recovery (ASR) pro virtuální počítače pomocí Ultra disks?**
-Ne, ASR se ještě nepodporuje pro disky Ultra.
+**Můžu povolit Azure Site Recovery pro virtuální počítače s využitím disků Ultra?**
+Ne, Azure Site Recovery ještě není pro disky Ultra podporována.
+
+## <a name="uploading-to-a-managed-disk"></a>Nahrávání na spravovaný disk
+
+**Můžu nahrávat data na existující spravovaný disk?**
+
+Ne, nahrávání se dá použít jenom při vytváření nového prázdného disku se stavem **ReadyToUpload** .
+
+**Návody nahrát na spravovaný disk?**
+
+Vytvořte spravovaný disk s vlastností [CreateOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) nastavenou na Odeslat a potom do něj můžete nahrát data.
+
+**Můžu k virtuálnímu počítači připojit disk, když je ve stavu nahrávání?**
+
+Ne.
+
+**Můžu pořídit snímek spravovaných disku ve stavu nahrávání?**
+
+Ne.
 
 ## <a name="standard-ssd-disks"></a>SSD úrovně Standard disky
 

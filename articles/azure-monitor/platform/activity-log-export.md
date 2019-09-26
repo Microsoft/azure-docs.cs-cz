@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034845"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258474"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 [Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
@@ -42,7 +42,7 @@ Zásady sdíleného přístupu definují oprávnění, která má mechanismus st
 
 Pokud chcete profil protokolu aktivit aktualizovat tak, aby zahrnoval streamování, musíte mít pro toto Event Hubs autorizační pravidlo oprávnění ListKey. Obor názvů Event Hubs nemusí být ve stejném předplatném, jako je předplatné, které vysílá protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi AAD.
 
-Streamujte protokol aktivit do centra událostí vytvořením [profilu protokolu](#create-a-log-profile).
+Streamujte protokol aktivit do centra událostí [vytvořením profilu protokolu](#create-a-log-profile).
 
 ## <a name="create-a-log-profile"></a>Vytvoření profilu protokolu
 Můžete definovat způsob exportu protokolu aktivit Azure pomocí **profilu protokolu**. Každé předplatné Azure může mít jenom jeden profil protokolu. Tato nastavení se dají nakonfigurovat pomocí možnosti **exportovat** v okně Protokol aktivit na portálu. Dá se taky nakonfigurovat programově [pomocí Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin PowerShellu nebo rozhraní příkazového řádku.
@@ -60,13 +60,9 @@ Profil protokolu definuje následující.
 Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázané, pak zásady uchovávání nemají žádný vliv. Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 
 
-
-> [!WARNING]
-> Formát dat protokolu v účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](diagnostic-logs-append-blobs.md).
-
-
 > [!IMPORTANT]
 > Pokud poskytovatel prostředků Microsoft. Insights není zaregistrovaný, může se vám při vytváření profilu protokolu zobrazovat chyba. Pokud chcete tohoto poskytovatele zaregistrovat, přečtěte si téma [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md) .
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Vytvořit profil protokolu pomocí Azure Portal
 
@@ -80,7 +76,7 @@ Vytvořte nebo upravte profil protokolu s možností **exportovat do centra udá
    * Oblasti s událostmi k exportu. Měli byste vybrat všechny oblasti, abyste se ujistili, že nedošlo ke klíčovým událostem, protože protokol aktivit je globální (neregionální) protokol, a takže většina událostí nemá přidruženou oblast. 
    * Pokud chcete zapisovat do účtu úložiště:
        * Účet úložiště, na který byste chtěli ukládat události.
-       * Počet dní, po které mají být tyto události v úložišti uchovávány. Nastavení 0 dnů uchová protokoly navždy.
+       * počet dní, po které mají být tyto události v úložišti uchovávány. Nastavení 0 dnů uchová protokoly navždy.
    * Pokud chcete zapisovat do centra událostí:
        * Obor názvů Service Bus, ve kterém se má vytvořit centrum událostí pro streamování těchto událostí.
 
@@ -118,7 +114,7 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
     | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Location |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
     | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
-    | Kategorie |Ne |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_a _Action_. |
+    | Category |Ne |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_a _Action_. |
 
 ### <a name="example-script"></a>Ukázkový skript
 Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu protokolu aktivit, který zapisuje protokol aktivit do účtu úložiště i centra událostí.
@@ -167,6 +163,9 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
 ## <a name="activity-log-schema"></a>Schéma protokolu aktivit
 Ať už se odesílá do služby Azure Storage nebo centra událostí, data protokolu aktivit se zapisují do formátu JSON s následujícím formátem.
+
+
+> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v tématu [Příprava změny formátu Azure monitor diagnostické protokoly archivovány do účtu úložiště](diagnostic-logs-append-blobs.md) .
 
 ``` JSON
 {

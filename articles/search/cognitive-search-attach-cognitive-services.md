@@ -5,16 +5,15 @@ manager: nitinme
 author: LuisCabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
-ms.openlocfilehash: dcdef8df25bdf6a7a60b1221d1463e6be5486875
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639448"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265932"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Search 
 
@@ -159,7 +158,7 @@ Ceny uvedené v tomto článku jsou hypotetické. Slouží k ilustraci procesu o
 
 To všechno dohromady zaplatíte přibližně $57,00, abyste ingestují 1 000 dokumentů PDF tohoto typu s popisem dovednosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 + [Stránka s cenami Azure Search](https://azure.microsoft.com/pricing/details/search/)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

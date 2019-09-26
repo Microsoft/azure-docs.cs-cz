@@ -1,27 +1,27 @@
 ---
 title: Apache Spark výkon úloh s využitím Azure HDInsight v/v cache (Preview)
 description: Přečtěte si o službě Azure HDInsight v/v cache a o tom, jak je používat ke zvýšení výkonu Apache Spark.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091073"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266189"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
 Vstupně-výstupní mezipaměť je služba pro ukládání dat do mezipaměti pro Azure HDInsight, která vylepšuje výkon Apache Spark úloh. Vstupně-výstupní mezipaměť funguje taky s [tez](https://tez.apache.org/) a [Apache Hive](https://hive.apache.org/) úlohami, které se dají spouštět v clusterech [Apache Spark](https://spark.apache.org/) . Vstupně-výstupní mezipaměť používá open source komponentu pro ukládání do mezipaměti s názvem RubiX. RubiX je místní mezipaměť disku pro použití s analytickými moduly pro velké objemy dat, které přistupují k datům ze systémů cloudového úložiště. RubiX je jedinečný mezi systémy ukládání do mezipaměti, protože používá jednotky SSD (Solid-State Drive) místo toho, aby vyhradí provozní paměť pro účely ukládání do mezipaměti. Služba v/v cache spouští a spravuje servery metadat RubiX na všech pracovních uzlech clusteru. Také nakonfiguruje všechny služby clusteru pro transparentní používání služby RubiX cache.
 
 Většina SSD poskytuje více než 1 GByte za sekundu šířky pásma. Tato šířka pásma, doplněná mezipamětí souborových souborů v paměti operačního systému, poskytuje dostatečnou šířku pásma pro načtení strojového výpočetního výpočetního prostředí pro velké objemy dat, jako je například Apache Spark. Pracovní paměť je ponechána k dispozici pro Apache Spark pro zpracování velmi závislých úloh, jako jsou například přestupné operace. Výhradní použití operační paměti umožňuje Apache Spark dosáhnout optimálního využití prostředků.  
 
->[!Note]  
->Vstupně-výstupní mezipaměť aktuálně používá RubiX jako součást pro ukládání do mezipaměti, ale ta se v budoucích verzích této služby může změnit. Použijte prosím rozhraní v/v mezipaměti a neprovádějte žádné závislosti přímo na implementaci RubiX.
+> [!Note]  
+> Vstupně-výstupní mezipaměť aktuálně používá RubiX jako součást pro ukládání do mezipaměti, ale ta se v budoucích verzích této služby může změnit. Použijte prosím rozhraní v/v mezipaměti a neprovádějte žádné závislosti přímo na implementaci RubiX.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Výhody Azure HDInsight v/v cache
 
@@ -70,7 +70,7 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. Vyberte **znovu** > restartovat**všechny ovlivněné**.
 
-    ![Restartovat všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
+    ![Ambari restartování Apache All ovlivnilo](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
 
 1. Vyberte **Potvrdit restartování vše**.
 

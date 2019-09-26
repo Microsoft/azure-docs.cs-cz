@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934697"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272439"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Použití aktivního učení ke zlepšení znalostní báze
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 
 Aktivní učení vám umožní vylepšit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete. 
 
@@ -79,6 +79,8 @@ Aktivní učení je ve výchozím nastavení vypnuté. Zapněte ho, aby se zobra
     Po povolení **aktivního učení** znalostní báze v pravidelných intervalech navrhuje nové otázky na základě dotazů odeslaných uživatelem. Můžete zakázat **aktivní učení** tím, že znovu přepnete nastavení.
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Přijmout aktivní návrh učení ve znalostní bázi
+
+Aktivní učení mění znalostní bázi nebo Search Service, když schválíte návrh a pak ho uložíte a naučíte. Pokud schválíte návrh, přidá se jako alternativní otázka.
 
 1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti**a pak vyberte možnost **Zobrazit návrhy aktivního učení**. 
 
@@ -387,7 +389,14 @@ Sloupec je objekt JSON s informacemi o implicitní, `autosuggested`a explicitní
 ]
 ```
 
+Můžete také použít rozhraní API pro stažení změn ke kontrole těchto změn pomocí REST nebo jakékoli sady SDK založené na jazyku:
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje informace a doporučuje návrhy vaší znalostní báze. 
+
+
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

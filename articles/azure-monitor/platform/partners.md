@@ -1,6 +1,6 @@
 ---
-title: Partneři, kteří integrovat se službou Azure Monitor
-description: Přečtěte si o Azure monitoru partnerů a jak můžete přístup k dokumentaci pro integraci s nimi.
+title: Partneři, kteří integrují Azure Monitor
+description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65774249"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262298"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
+# <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
-Uvedeny v abecedním pořadí. 
+Uvedeno v abecedním pořadí. 
 
-## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
+## <a name="alertlogic-log-manager"></a>Správce protokolu AlertLogic
 
-![AlertLogic Logo](./media/partners/alertlogic.png)
+![Logo AlertLogic](./media/partners/alertlogic.png)
 
-Alert Logic Log Manager shromažďuje protokoly platformy Azure pro analýzu zabezpečení a uchovávání dat, aplikací a virtuálních počítačů. Shromáždí se také protokoly aktivit Azure prostřednictvím rozhraní API služby Azure Monitor. Tyto informace slouží k detekci malfeasance a musí splňovat požadavky na dodržování předpisů.
+Správce protokolů logiky výstrah shromažďuje protokoly platforem virtuálních počítačů, aplikací a Azure pro účely analýzy a uchovávání zabezpečení. Také shromažďuje protokol aktivit Azure prostřednictvím rozhraní Azure Monitor API. Tyto informace se používají ke zjištění malfeasance a splnění požadavků na dodržování předpisů.
 
-[Přejděte k dokumentaci.][alertlogic-doc]
+[Přejít na dokumentaci.][alertlogic-doc]
 
 <br/>
 
@@ -33,101 +33,101 @@ Alert Logic Log Manager shromažďuje protokoly platformy Azure pro analýzu zab
 
 ![AppDynamics Logo](./media/partners/appdynamics.png)
 
-AppDynamics Application Performance Management (APM) umožňuje vlastníkům aplikace rychle řešit výkonnostní kritické body a optimalizovat výkon jejich aplikací spuštěných v prostředí Azure. Azure Cloud Services (PaaS), může monitorovat webové a pracovní role, Virtual Machines (IaaS), vzdálené služby zjišťování (Microsoft Azure Service Bus), Microsoft Azure Queue, vzdálené služby Microsoft Azure (Azure Blob), Azure Queue (Microsoft Service Bus), Data Úložiště a Microsoft Azure Blob Storage. AppDynamics APM je k dispozici na webu Azure Marketplace.
+AppDynamics Application Performance Management (APM) umožňuje vlastníkům aplikací rychle řešit problémy s výkonem a optimalizovat výkon aplikací běžících v prostředí Azure. Může monitorovat Azure Cloud Services (PaaS), webové & role pracovních procesů, Virtual Machines (IaaS), vzdálené zjišťování služeb (Microsoft Azure Service Bus), Microsoft Azure frontu, Microsoft Azure vzdálených služeb (Azure BLOB), frontu Azure (Microsoft Service Bus), data Blob Storage úložiště a Microsoft Azure. AppDynamics APM je k dispozici v Azure Marketplace.
 
-[Přejděte k dokumentaci.][appdynamics-doc]
+[Přejít na dokumentaci.][appdynamics-doc]
 
-## <a name="microfocus-arcsight"></a>Microfocus ArcSight
+## <a name="microfocus-arcsight"></a>ArcSighti mikrofokusu
 
-ArcSight má inteligentní konektor pro monitorování Azure event hubs.
+ArcSight má inteligentní konektor pro Azure Monitor centra událostí.
 
-[Víc se uč.][arcsight-doc]
+[Další informace][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
-![Logo od společnosti Atlassian](./media/partners/atlassian.png)
+![Logo Atlassian](./media/partners/atlassian.png)
 
-Azure Monitor výstrah můžete vytvářet lístky JIRA.
+JIRA lístky můžete vytvářet na výstrahách Azure Monitor.
 
-[Přejděte k dokumentaci.][atlassian-doc]
+[Přejít na dokumentaci.][atlassian-doc]
 
 ## <a name="botmetric"></a>Botmetric
 
-[Víc se uč.][botmetric-doc]
+[Další informace][botmetric-doc]
 
 ## <a name="circonus"></a>Circonus
 
-![Circonus Logo](./media/partners/circonus.png)
+![Logo Circonus](./media/partners/circonus.png)
 
-Circonus je mikroslužeb, monitorování a analytické platformy vytvořená pro místní nebo nasazení SaaS. Je plně automatizovatelnou založené na rozhraní API platformy nabízí větší škálovatelnost a spolehlivější než systémy monitoruje. Požadavky na devops, produkt Circonus zajišťuje upozornění na základě percentilu, grafy, řídicí panely a inteligentní funkce strojového učení, které umožní optimalizaci podniku. Circonus monitoruje své cloudové prostředky Microsoft Azure a jejich využití v reálném čase. Circonus můžete použít ke shromažďování a sledujte metriky pro proměnné, které chcete k měření pro prostředky a aplikace. S Circonus získáte systémová přehled o využití prostředků a výkonu aplikací a provozního stavu Azure.
+Circonus je platforma pro monitorování a analýzu mikroslužeb vytvořená pro místní nebo SaaS nasazení. Platforma, která je zaměřená na rozhraní API, je plně škálovatelná a spolehlivá než u systémů, které monitoruje. Circonus pro požadavky DevOps zajišťuje výstrahy na základě percentilu, grafy, řídicí panely a analytické funkce pro strojové učení, které umožňují obchodní optimalizaci. Circonus monitoruje prostředky cloudu Microsoft Azure a jejich aplikace v reálném čase. Pomocí Circonus můžete shromažďovat a sledovat metriky pro proměnné, které chcete měřit pro prostředky a aplikace. S Circonus získáte přehled o využití prostředků Azure, výkonu aplikací a provozním stavu v rámci systému.
 
-[Přejděte k dokumentaci.][circonus-doc]
+[Přejít na dokumentaci.][circonus-doc]
 
 ## <a name="cloudhealth"></a>CloudHealth
 
-![CloudHealth Logo](./media/partners/cloudhealth.png)
+![Logo CloudHealth](./media/partners/cloudhealth.png)
 
 
-Sjednocení a automatizovat vaše Cloudová platforma navržená tak, aby ušetřit čas i peníze. CloudHealth poskytuje viditelnost, intuitivní optimalizace a procesy řízení odolné řešení pro správu cloudu. Platforma Cloudhealth umožňuje podnikům a účastníci programu MSP maximalizovat návratnost investic do cloudu. Jistotu rozhodování ohledně náklady, využití, výkonu a zabezpečení.
+Jednotky a automatizujte svůj Cloud s využitím platformy, která šetří čas a peníze. CloudHealth poskytuje viditelnost, intuitivní optimalizaci a postupy zásad správného řízení pro správu cloudu. Platforma CloudHealth umožňuje podnikům a účastníci programu MSP maximalizovat návratnost investic do cloudu. Zajistěte si důvěrná rozhodnutí ohledně nákladů, využití, výkonu a zabezpečení.
 
 [Víc se uč.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
-![CloudMonix Logo](./media/partners/cloudmonix.png)
+![Logo CloudMonix](./media/partners/cloudmonix.png)
 
-CloudMonix nabízí monitorování, automation a automatickým opravováním služeb pro platformu Microsoft Azure.
+CloudMonix nabízí služby pro monitorování, automatizaci a samočinné opravy pro Microsoft Azure platformu.
 
-[Přejděte k dokumentaci.][cloudmonix-doc]
+[Přejít na dokumentaci.][cloudmonix-doc]
 
 ## <a name="datadog"></a>Datadog
 
-![Logo služby DataDog](./media/partners/datadog.png)
+![Logo služby Datadog](./media/partners/datadog.png)
 
-Služby Datadog je nejlepší na světě sledování služby pro aplikace v cloudovém měřítku. To spojuje data ze serverů, databází, nástroje a služby k dispozici jednotný pohled na celý zásobník. Tyto možnosti jsou k dispozici na platformě pro analýzu dat založené na SaaS. Tato služba umožňuje Dev a Ops týmům spolupracovat, aby se zabránilo výpadkům, vyřešit problémy s výkonem a ujistěte se, že vývoj a nasazení cykly dokončit včas. Díky integraci služby Datadog a Azure, můžete shromažďovat a zobrazovat metriky z vaší infrastruktury. Je možné korelovat metriky virtuálního počítače s metriky na úrovni aplikace. Vyfiltrování a rozčlenění metriky pomocí jakékoli kombinace vlastností a vlastních značek.
+Služby Datadog je špičková služba monitorování pro aplikace v cloudovém měřítku. Spojuje data ze serverů, databází, nástrojů a služeb a prezentuje tak jednotný přehled o celém zásobníku. Tyto možnosti jsou k dispozici na platformě pro analýzu dat založené na SaaS. Tato služba umožňuje týmům pro vývoj a provoz spolupracovat, aby se předešlo výpadkům, vyřešila problémy s výkonem a zajistila, že se cykly vývoje a nasazení dokončí včas. Integrací služby Datadog a Azure můžete shromažďovat a zobrazovat metriky z celé infrastruktury. Vykorelujte metriky virtuálních počítačů s metrikami na úrovni aplikace. Rozřezání metrik a kostky pomocí libovolné kombinace vlastností a vlastních značek.
 
-[Přejděte k dokumentaci.][datadog-doc]
+[Přejít na dokumentaci.][datadog-doc]
 
-## <a name="dynatrace"></a>Dynatrace
+## <a name="dynatrace"></a>dynaTrace
 
-![DynaTrace Logo](./media/partners/dynatrace.png)
+![Logo DynaTrace](./media/partners/dynatrace.png)
 
-Dynatrace OneAgent se integruje s virtuálními počítači Azure a App Services prostřednictvím mechanismu rozšíření Azure. Tímto způsobem Dynatrace OneAgent můžete shromažďovat metriky výkonu hostitele, sítě a služby. Kromě pouze zobrazení metrik, vizualizuje Dynatrace prostředí začátku do konce. Zobrazuje transakce na straně klienta na databázové vrstvě. Dynatrace poskytuje založené na umělé Inteligenci korelace problémů, včetně plné integrace analýzu původní příčiny-poskytovat metodu úroveň informací o kódu a databáze. Tento přehled Díky uloženým jednodušší řešení potíží a výkonu optimalizace.
+DynaTrace OneAgent se integruje s virtuálními počítači Azure a App Services prostřednictvím mechanismu rozšíření Azure. Tímto způsobem může dynaTrace OneAgent shromažďovat metriky výkonu o hostitelích, síti a službách. Kromě pouhého zobrazení metrik dynaTrace vizualizuje prostředí od začátku do konce. Zobrazuje transakce ze strany klienta až po databázovou vrstvu. DynaTrace zajišťuje korelaci na základě AI a úplnou integrovanou hlavní příčinu a analýzu, která poskytuje přehledy na úrovni metod do kódu a databáze. Tento přehled přináší mnohem jednodušší řešení potíží a optimalizace výkonu.
 
-[Přejděte k dokumentaci.][dynatrace-doc]
+[Přejít na dokumentaci.][dynatrace-doc]
 
 ## <a name="elastic"></a>Elastická
 
-![Elastické Logo](./media/partners/elastic.png)
+![Elastické logo](./media/partners/elastic.png)
 
-Elastická databáze je společnost, hledání. Jako autoři řešení Elastic Stack (Elasticsearch, Kibana, Beats a Logstash), sestaví Elastická databáze samoobslužně spravovaným a případy použití nabídky SaaS, které bylo použít data v reálném čase a ve velkém měřítku pro hledání, protokolování, zabezpečení a analýzy.
+Elastická je vyhledávací společnost. Jako tvůrci elastického zásobníku (Elasticsearch, Kibana, Beats a Logstash) elastické sestavování samy spravované a SaaS nabídky, které usnadňují použití dat v reálném čase a ve velkém měřítku pro hledání, protokolování, zabezpečení a analytické případy.
 
-[Přejděte k dokumentaci.][elastic-doc]
+[Přejít na dokumentaci.][elastic-doc]
 
 ## <a name="grafana"></a>Grafana
 
-![Grafana Logo](./media/partners/grafana.png)
+![Logo Grafana](./media/partners/grafana.png)
 
-Grafana je open source aplikace, která umožňuje vizualizovat metriky dat časových řad.
+Grafana je open source aplikace, která umožňuje vizualizovat data metrik časových řad.
 
-[Přejděte k dokumentaci.][grafana-doc]
+[Přejít na dokumentaci.][grafana-doc]
 
 ## <a name="influxdata"></a>InfluxData
 
-![InfluxData Logo](./media/partners/Influxdata.png)
+![Logo InfluxData](./media/partners/Influxdata.png)
 
-InfluxData, creator InfluxDB, přináší moderní otevřenou platformu zdroje od základu navržená pro analýzu metrik a událostí (data časových řad) pro DevOps a IoT aplikací. Zda data pocházejí z lidí, senzorů nebo počítačů, InfluxData umožňuje vývojářům sestavení generace monitorování, analýzy a IoT aplikace rychleji, snáze a škálovat doručování rychle poskytnout skutečnou obchodní hodnotu. V kalifornském San Franciscu, InfluxData na základě více než 420 mezi zákazníky patří Cisco, eBay, IBM a Siemens.
+InfluxData, autor InfluxDB, nabízí moderní open source platformu sestavenou od základů pro analýzu metrik a událostí (data časových řad) pro aplikace DevOps a IoT. Bez ohledu na to, jestli data pocházejí z lidí, senzorů nebo počítačů, InfluxData vývojářům umožňuje rychle a rychleji vytvářet monitorování, analýzy a aplikace IoT v nové generaci. V závislosti na síti San Francisco jsou zákazníci InfluxData více než 420, kteří zahrnují Cisco, eBay, IBM a Siemens.
 
-[Přejděte k dokumentaci.][influxdata-doc]
+[Přejít na dokumentaci.][influxdata-doc]
 
 
-## <a name="logic-monitor"></a>Monitorování Logic
+## <a name="logic-monitor"></a>Monitor Logic
 
-![Logo logiku monitorování](./media/partners/logicmonitor.png)
+![Logo monitorování logiky](./media/partners/logicmonitor.png)
 
-LogicMonitor® je přední založené na SaaS, sledování výkonu platformy pro složitou infrastrukturu IT. Pokrytí pro tisíce technologie LogicMonitor nabízí detailní přehled o výkon infrastruktury a aplikací. LM cloudu komplexní monitorování Azure umožňuje uživatelům ke korelaci výkon cloudu Azure, místní a hybridní cloudové prostředky – vše z jedné platformy. Zjišťování automatizované prostředků, integrované monitorování šablon, předkonfigurované prahových hodnot výstrah a přizpůsobitelné řídicí panely se dá udělit IT rychlost, flexibilitu a viditelnost vyžaduje úspěšné.
+LogicMonitor® je špičková platforma pro monitorování výkonu založená na SaaS pro komplexní IT infrastrukturu. LogicMonitor s pokrytím pro tisíce technologií poskytuje podrobné přehledy o výkonu infrastruktury a aplikací. Komplexní monitorování Azure cloudu LM umožňuje uživatelům korelovat výkon cloudu Azure, místních i hybridních cloudových prostředků – a to vše z jedné platformy. Automatizované zjišťování prostředků, předdefinované šablony pro monitorování, prahové hodnoty předkonfigurovaných pro výstrahy a přizpůsobitelné řídicí panely, aby poskytovaly rychlost, flexibilitu a viditelnost, které musí být úspěšné.
 
-[Přejděte k dokumentaci.][logicmonitor-doc]
+[Přejít na dokumentaci.][logicmonitor-doc]
 
 ## <a name="moogsoft"></a>Moogsoft
 
@@ -135,138 +135,138 @@ LogicMonitor® je přední založené na SaaS, sledování výkonu platformy pro
 
 Moogsoft AIOps zrychluje agilní obchodní transformaci.
 
-Nástroje Microsoft Azure Automation and Control poskytuje v reálném čase okno o stavu aplikace a mikroslužeb, které jsou nasazené v Azure. Pomáhají Orchestrace sad runbook pro rychlejší opravy a Diagnostika. Další nástroje třetích stran zadejte časové období u místních aplikací a stavu infrastruktury.
+Microsoft Azure Automation and Control nástroje poskytují okno v reálném čase na stav aplikací a mikroslužeb nasazených v Azure. Pomůžou orchestrovat diagnostiku a runbooky pro rychlejší nápravu. Další nástroje třetích stran poskytují okno pro místní aplikace a stav infrastruktury.
 
-Moogsoft AIOps automatizuje událost k pracovnímu postupu nápravy beze změny stávajících procesů a organizační struktury. 
+Moogsoft AIOps automatizuje událost k nápravě pracovního postupu bez změny stávajících procesů a organizační struktury. 
 
-Moogsoft běží v vaše Azure využil její plochu naplno díky integraci do nástroje pro monitorování a automatizaci napříč hybridní infrastruktury. Moogsoft 
- - aktivně dříve zjistí aplikace ovlivňuje incidenty 
- - dynamicky orchestruje příslušných prostředků, aby se daly situace vědět 
- - snižuje průměrný čas potřebný k nápravě a negativní vliv na prostředí pro zákazníky. 
+Moogsoft se spouští v Azure Realu a integruje se s nástroji pro monitorování a automatizaci napříč hybridními prostředky infrastruktury. Moogsoft 
+ - aktivně detekuje incidenty s vlivem na aplikace dříve. 
+ - dynamicky orchestruje příslušné prostředky, aby bylo možné jejich situaci. 
+ - zkracuje střední čas potřebný k nápravě a nepříznivý dopad na uživatelské prostředí. 
 
-[Přejděte k dokumentaci.][moogsoft-doc]
+[Přejít na dokumentaci.][moogsoft-doc]
 
 ## <a name="newrelic"></a>NewRelic
 
-![NewRelic Logo](./media/partners/newrelic.png)
+![Logo NewRelic](./media/partners/newrelic.png)
 
-[Víc se uč.][newrelic-doc]
+[Další informace][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 
 ![OpsGenie Logo](./media/partners/opsgenie.png)
 
-Použitím OpsGenie funguje jako dispečer výstrah generovaných v Azure. Použitím OpsGenie Určuje správné osoby pro oznámení na základě plány na volání a eskalaci. Jej můžete upozornit pomocí e-mailem, textové zprávy (SMS), telefonního hovoru nebo nabízená oznámení. Azure vygeneruje upozornění na zjištěné problémy. Použitím OpsGenie zajistí, že lidé pracují na problém.
+OpsGenie slouží jako dispečer pro výstrahy vygenerované Azure. OpsGenie určuje správné osoby, které budou upozorňovány na závislosti na plánech a eskalacích volání. Může je informovat pomocí e-mailu, textových zpráv (SMS), telefonních hovorů nebo nabízených oznámení. Azure vygeneruje výstrahy zjištěné problémy. OpsGenie zajistí, že na tomto problému pracují správné osoby.
 
-[Přejděte k dokumentaci.][opsgenie-doc]
+[Přejít na dokumentaci.][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
 
-![PagerDuty Logo](./media/partners/pagerduty.png)
+![Logo PagerDuty](./media/partners/pagerduty.png)
 
-PagerDuty, špičkové řešení pro správu incidentů, poskytuje prvotřídní podporu pro Azure výstrahy týkající se metrik. PagerDuty podporuje oznámení Azure Monitor výstrahy, oznámení o automatickém škálování, události protokolu aktivit a metriky na úrovni platformy pro služby Azure. Tato vylepšení umožňují zvýšení viditelnosti zaměříte na základní platformě Azure. Může trvat plně využívá funkce správy incidentů v PagerDuty pro odpověď v reálném čase. Rozšířené integrace s Azure je možné prostřednictvím webhooků. Webhooky umožňují instalaci a nastavení řešení rychle a snadno.
+PagerDuty, což je špičkové řešení pro správu incidentů, poskytuje prvotřídní podporu pro výstrahy Azure na metrikách. PagerDuty podporuje oznámení o výstrahách Azure Monitor, oznámeních automatického škálování, události protokolu aktivit a metriky na úrovni platformy pro služby Azure. Tato vylepšení poskytují lepší přehled o základní platformě Azure. Na reakci v reálném čase můžete využít všechny možnosti správy incidentů PagerDuty. Rozšířená Integrace Azure je umožněna prostřednictvím webhooků. Webhooky umožňují vytvářet a přizpůsobovat řešení rychle a snadno.
 
-[Přejděte k dokumentaci.][pagerduty-doc]
+[Přejít na dokumentaci.][pagerduty-doc]
 
 ## <a name="qradar"></a>QRadar
 
-![QRadar Logo](./media/partners/qradar.png)
+![Logo QRadar](./media/partners/qradar.png)
 
-DSM od společnosti Microsoft Azure a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](https://www.ibm.com/support). Je možné [Další informace o integraci s Azure zde][qradar-doc].
+Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). [Další informace o integraci s Azure získáte tady][qradar-doc].
 
 ## <a name="sciencelogic"></a>ScienceLogic
 
-![ScienceLogic Logo](./media/partners/sciencelogic.png)
+![Logo ScienceLogic](./media/partners/sciencelogic.png)
 
-ScienceLogic přináší nové generace IT služby assurance platforma pro správu libovolné technologii, kdekoli. ScienceLogic zajišťuje škálování, zabezpečení, automatizaci a odolnosti nezbytné pro zjednodušení úloh správy IT prostředky, služby a aplikace. Platforma ScienceLogic používá rozhraní API služby Azure pro rozhraní s Microsoft Azure. ScienceLogic poskytuje přehled v reálném čase do služby Azure a prostředky. Abyste věděli, když něco nefunguje a můžete je rychleji vyřešit. Azure můžete spravovat také vedle vašeho cloudů a datových center systémů a služeb.
+ScienceLogic poskytuje novou generaci platforem IT IT Service pro správu libovolné technologie, kdekoli. ScienceLogic zajišťuje škálování, zabezpečení, automatizaci a odolnost nutná pro zjednodušení úloh správy IT prostředků, služeb a aplikací. Platforma ScienceLogic používá rozhraní API Azure k rozhraní s Microsoft Azure. ScienceLogic poskytuje přehled o službách a prostředcích Azure v reálném čase. Takže víte, že něco nefunguje a můžete ho opravit rychleji. Azure můžete také spravovat společně s ostatními cloudy a systémy a službami datového centra.
 
-[Víc se uč.][sciencelogic-doc]
+[Další informace][sciencelogic-doc]
 
 ## <a name="serverless360"></a>Serverless360
 
-![Serverless360 Logo](./media/partners/serverless360.png)
+![Logo Serverless360](./media/partners/serverless360.png)
 
-Serverless360 je nástroj pro jednu platformu k provozu, spravovat a monitorovat komponenty Azure bez serveru. Možnosti správy je jedním z klíčových problémů s implementacemi bez serveru. Stovky malých, samostatných služeb bez serveru jsou rozmístěny v různých místech – Správa a provoz těchto řešení je komplexní. Serverless360 řeší tyto problémy s bohatou sadu propracované nástroje. Může monitorovat bez serveru služeb, jako je Azure Functions, Logic Apps, události mřížky, fronty Service Bus, témat, přenosy, Event Hubs, úložiště fronty, soubory, objektů blob a tabulky. Serverless360 je k dispozici na webu Azure Marketplace. Tyto možnosti jsou k dispozici pro SaaS i privátní hostování (v prostředí ve svém vlastním prostředí).  
+Serverless360 je jedním nástrojem platformy pro provozování, správu a monitorování komponent bez serveru Azure. Spravovatelnost je jedním z klíčových problémů s implementacemi bez serveru. Stovky malých a diskrétních služeb bez serveru jsou rozptýlené na různých místech – Správa a provoz takových řešení je složitá. Serverless360 tyto problémy řeší s bohatou sadou propracovanéch nástrojů. Může monitorovat služby bez serveru, jako jsou Azure Functions, Logic Apps, Event Grids, Service Bus fronty, témata, relé, Event Hubs, fronty úložiště, soubory, objekty BLOB a tabulky. Serverless360 je k dispozici v Azure Marketplace. Tyto možnosti jsou k dispozici jak na SaaS, tak na privátním hostování (hostované ve vašem vlastním prostředí).  
 
-[Víc se uč.][serverless360-doc]
+[Další informace][serverless360-doc]
 
 ## <a name="signalfx"></a>SignalFx
 
-![SignalFX Logo](./media/partners/signalfx.png)
+![Logo SignalFX](./media/partners/signalfx.png)
 
-SignalFx je jedničkou v provozní informace v reálném čase pro vývoj a provoz s daty. Služba umožňuje zjistit a shromažďuje metriky přes všechny komponenty jsou v cloudu. Nahrazuje bod tradičních nástrojů a v reálném čase přehled o dnešních dynamických prostředích. Využití masivně škálovatelné platformě SignalFx platformy SaaS je optimalizovaná pro kontejner a architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní upozorňování a spolupráci třídění funkcí v rámci organizace všech velikostí. SignalFx integruje přímo s Azure Monitor, stejně jako prostřednictvím open source konektorů, jako *Telegraf*, *statsD*, a *shromážděná* zajistit nejlepší ve třídě řídicí panely, analýzy a výstrah pro Azure.
+SignalFx je vedoucí v reálném čase, který je součástí provozní logiky pro DevOps řízené daty. Služba zjišťuje a shromažďuje metriky napříč všemi komponentami v cloudu. Nahrazuje tradiční nástroje bodu a poskytuje přehled o dnešních dynamických prostředích v reálném čase. S využitím široce škálovatelné SignalFx platformy je platforma SaaS optimalizovaná pro kontejnery a architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní upozorňování a možnosti třídění ve spolupráci napříč organizacemi všechny velikosti. SignalFx se integruje přímo s Azure Monitor a také prostřednictvím open source konektorů, jako je *telegraf*, *Statistika*a *shromažďovat* , aby poskytovaly nejlepší z řídicích panelů tříd, analýz a výstrah pro Azure.
 
-[Přejděte k dokumentaci.][signalfx-doc]
+[Přejít na dokumentaci.][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
-![SIGNL4 Logo](./media/partners/signl4.png)
+![Logo SIGNL4](./media/partners/signl4.png)
 
-SIGNL4 – mobilní aplikace upozornění pro provozní týmy – je nejrychlejší způsob, jak směrovat kritické výstrahy ze služby Azure Monitor těm správným lidem ve správný čas – kdekoli pomocí nabízených oznámení, text a hlasových hovorů. SIGNL4 spravuje na volání funkce a staffhubu tým, sleduje doručování a vlastnictví výstrahy a proto ho postoupí v případě potřeby. Je k dispozici úplné transparentnosti napříč vaším týmem. Použití mimořádně jednoduché REST-webhook z SIGNL4 libovolné služby Azure se dá propojit s žádné úsilí. S SIGNL4 se zobrazí až 10 x rychlejší odezvu prostřednictvím e-mailová oznámení a ruční výstrahy.
+SIGNL4 – aplikace pro mobilní upozorňování pro provozní týmy – je nejrychlejší způsob, jak směrovat kritické výstrahy od Azure Monitor ke správným lidem ve správný čas – kdekoli pomocí nabízených, textových a hlasových hovorů. SIGNL4 spravuje poplatky za volání a posouvá tým, sleduje doručování a vlastnictví výstrah a v případě potřeby je předává. K dispozici je plná průhlednost v rámci vašeho týmu. S využitím jednoduchého Webhooku REST pro SIGNL4 může být služba Azure propojená bez úsilí. V SIGNL4 se vám zobrazí až 10x rychlejší reakce na e-mailová oznámení a ruční upozorňování.
 
-[Přejděte k dokumentaci.][signl4-doc]
+[Přejít na dokumentaci.][signl4-doc]
 
 ## <a name="solarwinds"></a>SolarWinds
 
-[Víc se uč.][solarwinds-doc]
+[Další informace][solarwinds-doc]
 
 ## <a name="splunk"></a>Splunk
 
-![Splunk Logo](./media/partners/splunk.png)
+![Logo Splunk](./media/partners/splunk.png)
 
-Doplněk Azure Monitor pro Splunk [k dispozici v Splunkbase tady](https://splunkbase.splunk.com/app/3534/).
+Doplněk Azure Monitor pro Splunk je [k dispozici v Splunkbase zde](https://splunkbase.splunk.com/app/3534/).
 
-[Přejděte k dokumentaci.][splunk-doc]
+[Přejít na dokumentaci.][splunk-doc]
 
-## <a name="sumo-logic"></a>Sumo logiky
+## <a name="sumo-logic"></a>Sumo logika
 
-![Logo sumo logiky](./media/partners/SumoLogic.png)
+![Logo Logic sumo](./media/partners/SumoLogic.png)
 
-Sumo logiky je služba analýzy dat zabezpečení, nativní pro cloud, počítače, v reálném čase, průběžné intelligence z strukturovaných, částečně strukturovaných a nestrukturovaných dat napříč celou aplikaci životního cyklu a zásobníku. Více než 1000 zákazníků na celém světě využívají Sumo logiku pro analýzy a přehledy k vytvoření, spuštění a zabezpečit svoje aplikace a cloudovými infrastrukturami. Zákazníci s logikou Sumo získat více tenantů, model služeb využít ke zvýšení konkurenční výhodu, přidanou hodnotu a růst.
+Sumo Logic je zabezpečená cloudová služba pro analýzu dat v cloudu, která poskytuje nepřetržité a průběžné analýzy strukturovaných, částečně strukturovaných a nestrukturovaných dat v reálném čase napříč celým životním cyklem aplikace a zásobníkem. Více než 1 000 zákazníků na celém světě spoléhá na sumo logiku pro analýzy a přehledy, které umožňují sestavovat, spouštět a zabezpečovat své aplikace a cloudové infrastruktury. Díky logice sumo můžou zákazníci získat výhodu více tenantů, Service-Model, aby se zvýšila konkurenční výhoda, obchodní hodnota a růst.
 
-[Víc se uč.][sumologic-doc]
+[Další informace][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
 
-![Turbonomic Logo](./media/partners/Turbonomic.png)
+![Logo Turbonomic](./media/partners/Turbonomic.png)
 
-Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím se elastické v jejich Azure místo průběžně optimalizací systém Ujistěte se, že aplikace neustále získat potřebné prostředky, které potřebují k poskytování své smlouvy SLA a žádné další výpočetní prostředky, úložiště a sítě pro IaaS a PaaS vrstva. Organizace můžete simulovat migrace, správně škálovat úlohy a vyřadit prostředky datových center zodpovědně migrace do Azure v čase, v rámci rozpočtu, současným zajištěním výkonu i dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
+Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím v jejich Azure pružně pružně tím, že trvale optimalizuje nemovitost, aby aplikace neustále získaly prostředky, které vyžadují k dodávání své smlouvy SLA, a ještě nic více napříč výpočetními, úložnými a síťovými aplikacemi pro IaaS a PaaS. vrstvení. Organizace můžou simulovat migrace, správně škálovat úlohy a vyřadit prostředky Datacenter, aby se zodpovědnou migrace do Azure včas v rámci rozpočtu a zároveň zajišťovaly výkon i dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
 
-[Víc se uč.][turbonomic-doc]
+[Další informace][turbonomic-doc]
 
-## <a name="next-steps"></a>Další postup
-- [Další informace o Azure monitoru](../../azure-monitor/overview.md)
-- [Metriky přístup pomocí rozhraní REST API](rest-api-walkthrough.md)
-- [Protokol aktivit do služby jiných společností než Microsoft Stream](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Stream diagnostických protokolů do služby jiných výrobců](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+## <a name="next-steps"></a>Další kroky
+- [Další informace o Azure Monitor](../../azure-monitor/overview.md)
+- [Přístup k metrikám pomocí REST API](rest-api-walkthrough.md)
+- [Streamování protokolu aktivit na službu, která není od Microsoftu](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+- [Streamování diagnostických protokolů do služby od jiného výrobce než Microsoftu](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 
 <!--Partner Documentation-->
-[alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "Dokumentace ke službě AlertLogic."
-[appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics dokumentaci."
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Dokumentace ke službě ArcSight."
+[alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "Dokumentaci k AlertLogic."
+[appdynamics-doc]: https://www.appdynamics.com/net/azure/ "Dokumentaci k AppDynamics."
+[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Dokumentaci k ArcSight."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
-[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric úvod."
+[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Úvod do Botmetric"
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
-[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix úvod."
-[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dokumentace služby Datadog."
-[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace dokumentaci."
-[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastické dokumentaci."
-[grafana-doc]: ./grafana-plugin.md "Integrace se službou Azure Monitor Grafana."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor přísunem data Telegraf integrace."
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentace ke službě Logic monitorování."
-[moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentace ke službě Moogsoft."
-[newrelic-doc]: https://newrelic.com/azure "Dokumentace ke službě NewRelic."
-[opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "Použitím OpsGenie dokumentaci."
-[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "Dokumentace ke službě PagerDuty."
-[qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar dokumentaci."
-[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "Dokumentace ke službě ScienceLogic."
-[serverless360-doc]: https://docs.serverless360.com/docs/ "Dokumentace ke službě Serverless360."
-[signalfx-doc]: https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure "Dokumentace ke službě SignalFx."
-[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "Dokumentace ke službě SIGNL4."
-[solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "Dokumentace ke službě SolarWinds."
-[splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentace ke službě Splunk."
-[sumologic-doc]: https://www.sumologic.com/azure "Dokumentace ke službě SumoLogic."
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic úvod."
+[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "Úvod do CloudMonix"
+[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dokumentaci k služby Datadog."
+[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentaci k dynaTrace."
+[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastická dokumentace"
+[grafana-doc]: ./grafana-plugin.md "Azure Monitor integrace Grafana."
+[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor telegraf inchladiče pro integraci dat."
+[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentace ke službě Logic monitor."
+[moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentaci k Moogsoft."
+[newrelic-doc]: https://newrelic.com/azure "Dokumentaci k NewRelic."
+[opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "Dokumentaci k OpsGenie."
+[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "Dokumentaci k PagerDuty."
+[qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "Dokumentaci k QRadar."
+[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "Dokumentaci k ScienceLogic."
+[serverless360-doc]: https://docs.serverless360.com/docs/ "Dokumentaci k Serverless360."
+[signalfx-doc]: https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure "Dokumentaci k SignalFx."
+[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "Dokumentaci k SIGNL4."
+[solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "Dokumentaci k SolarWinds."
+[splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentaci k Splunk."
+[sumologic-doc]: https://www.sumologic.com/azure "Dokumentaci k SumoLogic."
+[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Úvod do Turbonomic"
 

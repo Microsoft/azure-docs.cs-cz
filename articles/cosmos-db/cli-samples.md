@@ -1,41 +1,30 @@
 ---
-title: Ukázky v Azure CLI pro Azure Cosmos DB
-description: Ukázky v Azure CLI – Vytváření a správa účtů služby Azure Cosmos DB, databází, kontejnerů, oblastí a bran firewall
+title: Ukázky v Azure CLI pro Azure Cosmos DB SQL (jádro) API
+description: Ukázky v Azure CLI pro Azure Cosmos DB SQL (jádro) API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 9/25/2019
 ms.author: mjbrown
-ms.reviewer: sngun
-ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: defeacc3f0bc4cd9d77e538f8ceac5ca09a4068a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615571"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272374"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Ukázky v Azure CLI pro službu Azure Cosmos DB
+# <a name="azure-cli-samples-for-azure-cosmos-db-sql-core-api"></a>Ukázky v Azure CLI pro Azure Cosmos DB SQL (jádro) API
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Cosmos DB. Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](/cli/azure/cosmosdb).
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure Cosmos DB rozhraní API SQL (Core). Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](/cli/azure/cosmosdb). Ukázky Azure CLI pro další Azure Cosmos DB rozhraní API najdete v tématu [rozhraní API Cassandra](cli-samples-cassandra.md), [rozhraní MongoDB API](cli-samples-mongodb.md), rozhraní [Gremlin API](cli-samples-gremlin.md)a [rozhraní API pro tabulky](cli-samples-table.md). Všechny ukázkové skripty Azure Cosmos DB CLI najdete v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
 | |  |
 |---|---|
-|**Vytvoření účtu služby Azure Cosmos DB, databáze a kontejnerů**||
-| [Vytvoření účtu Azure Cosmos DB pomocí rozhraní SQL API](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří jeden Azure Cosmos DB účet, databázi a kontejner. |
-| [Vytvoření účtu Azure Cosmos DB pomocí rozhraní API Cosmos DB pro MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden Azure Cosmos DB účet, databázi a kolekci. |
-| [Vytvoření účtu Azure Cosmos DB pomocí rozhraní API Gremlin](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden Azure Cosmos DB účet, databázi a graf. |
-| [Vytvoření účtu Azure Cosmos DB pomocí rozhraní API Cassandra](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden Azure Cosmos DB účet a databázi. |
-| [Vytvoření účtu Azure Cosmos DB pomocí rozhraní API pro tabulky](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden Azure Cosmos DB účet, databázi a tabulku. |
-|**Škálování služby Azure Cosmos DB**||
-| [Škálování propustnosti kontejneru](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Změní zřízenou propustnosti kontejneru.|
-| [Replikace účtu databáze Azure Cosmos ve více oblastech a konfigurace priorit převzetí služeb při selhání](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globálně replikuje data účtu do několika oblastí s určenou prioritou převzetí služeb při selhání.|
-|**Zabezpečení služby Azure Cosmos DB**||
-| [Získání klíčů účtu](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Získá pro účet primární a sekundární hlavní klíč pro zápis a primární a sekundární klíč jen pro čtení.|
-| [Získání připojovacího řetězce pro účet Cosmos nakonfigurovaný s rozhraním API Azure Cosmos DB pro MongoDB](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Získá připojovací řetězec pro připojení aplikace MongoDB k vašemu účtu Azure Cosmos DB.|
-| [Opětovné vygenerování klíčů účtu](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Obnoví klíče účtu.|
-| [Vytvoření brány firewall](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří zásadu řízení příchozího přístupu z IP adres pro omezení přístupu k účtu na schválenou sadu počítačů nebo cloudových služeb.|
-|**Vysoká dostupnost, zotavení po havárii, zálohování a obnovení**||
-| [Konfigurace zásad převzetí služeb při selhání](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Nastaví prioritu převzetí služeb při selhání pro všechny oblasti, do kterých se účet replikuje.|
-|**Připojení služby Azure Cosmos DB k prostředkům**||
-| [Připojení webové aplikace ke službě Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Vytvoření a připojení databáze Azure Cosmos a webové aplikace Azure|
+| [Vytvoření účtu Azure Cosmos, databáze a kontejneru](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner pro rozhraní API SQL (Core). |
+| [Změna propustnosti](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kontejner.|
+| [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
+| [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
+| [Zabezpečení pomocí brány firewall protokolu IP](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvořte účet Cosmos s nakonfigurovanou bránou firewall protokolu IP.|
+| [Zabezpečený nový účet pomocí koncových bodů služby](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvořte účet Cosmos a zabezpečte ho pomocí koncových bodů služby.|
+| [Zabezpečení stávajícího účtu pomocí koncových bodů služby](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Aktualizujte účet Cosmos na zabezpečení pomocí koncových bodů služby, když je podsíť nakonec nakonfigurovaná.|
 |||

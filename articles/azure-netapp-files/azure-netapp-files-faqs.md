@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 09/24/2019
 ms.author: b-juche
-ms.openlocfilehash: f97bb4842d9e24d879dd47757fda75b16bca48cf
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494806"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264977"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -58,7 +58,9 @@ Všechny Azure NetApp Files svazky se šifrují pomocí standardu FIPS 140-2. V�
 
 ### <a name="how-are-encryption-keys-managed"></a>Jak se spravují šifrovací klíče? 
 
-Správa klíčů pro Azure NetApp Files je zpracovávána službou.  V současné době nejsou podporované uživatelsky spravované klíče (Přineste si vlastní klíče).
+Správa klíčů pro Azure NetApp Files je zpracovávána službou. Pro každý svazek se vygeneruje jedinečný datový šifrovací klíč XTS-AES-256. K šifrování a ochraně všech klíčů svazků se používá hierarchie šifrovacího klíče. Tyto šifrovací klíče se nikdy nezobrazují ani nehlásí v nešifrovaném formátu. Šifrovací klíče se odstraní hned po odstranění svazku.
+
+V současné době nejsou podporované uživatelsky spravované klíče (Přineste si vlastní klíče).
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Můžu nakonfigurovat pravidla zásad exportu pro systém souborů NFS pro řízení přístupu k cíli připojení služby Azure NetApp Files?
 
@@ -190,7 +192,7 @@ Ne. Azure Data Box nepodporuje aktuálně Azure NetApp Files.
 
 Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 - [Nejčastější dotazy k Microsoft Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Nejčastější dotazy k Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

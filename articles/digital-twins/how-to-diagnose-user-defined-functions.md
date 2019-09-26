@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876571"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260858"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure podporuje robustní protokolování, monitorování a 
 
 * Pro konfiguraci protokolování specificky pro digitální vlákna Azure si přečtěte, [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
 * V přehledu [Azure monitor](../azure-monitor/overview.md) najdete informace o výkonném nastavení protokolu povoleném prostřednictvím Azure monitor.
-* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích Azure pomocí webu Azure Portal, Azure CLI nebo PowerShellu.
+* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích Azure pomocí webu Azure Portal, Azure CLI nebo PowerShellu.
 
 Po nakonfigurování budete moct vybrat všechny kategorie protokolů, metriky a používat Azure Monitor výkonné pracovní prostory Log Analytics pro podporu vašeho úsilí o ladění.
 
@@ -205,7 +205,7 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat s těmito častými v
 
 1. Neautorizováno: Pokud vaše uživatelsky definovaná funkce nemá nastavené přiřazení role nebo nemá dostatečná oprávnění pro přístup k určitým metadatům z topologie, operace se nezdařila.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se, jak povolit [monitorování a protokoly](./how-to-configure-monitoring.md) v digitálních vlákenách Azure.
 

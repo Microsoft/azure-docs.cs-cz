@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213518"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259982"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -69,8 +69,10 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
+
 Automatizované machine learning podporuje data, která se nachází v místním počítači nebo v cloudu, jako je Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Můžete číst data do:
-* Pole Numpy X (funkce) a y (Cílová proměnná nebo také popis)
+
+* Numpy pole X (funkce) a y (Cílová proměnná, označovaná také jako Label)
 * Pandas dataframe
 
 >[!Important]
@@ -93,55 +95,25 @@ Příklady:
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Načíst data pro spouštění experimentů na vzdálený výpočetní
 
-Pro vzdálená spuštění je potřeba, aby data byla přístupná ze vzdálených výpočtů. To se dá udělat tak, že se data nahrávají do úložiště dat.
+Pro vzdálená spuštění musí být školicí data dostupná ze vzdáleného výpočetního prostředí. Třída [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) v sadě SDK zpřístupňuje funkce:
 
-Tady je příklad použití `datastore`:
+* snadné přenos dat ze statických souborů nebo zdrojů URL do vašeho pracovního prostoru
+* zpřístupnění dat pro školicí skripty při spuštění na cloudových výpočetních prostředcích
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>Definovat odkazy na dprep
-
-Definujte odkaz X a y jako dprep, který se bude předávat do automatizovaného `AutoMLConfig` objektu Machine Learning, který bude vypadat přibližně takto:
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+Podívejte se [na](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) příklad použití `Dataset` třídy pro připojení dat k cíli služby Compute.
 
 ## <a name="train-and-validation-data"></a>Trénování a ověřování dat
 
-Můžete určit samostatný vlak a sadu ověřování přímo v `AutoMLConfig` metodě.
+V `AutoMLConfig` konstruktoru můžete určit samostatné sady vlaků a ověřovacích sad přímo.
 
 ### <a name="k-folds-cross-validation"></a>K přeložení křížové ověření
 
@@ -175,7 +147,7 @@ Existuje několik možností, které můžete použít ke konfiguraci vašeho au
 
 Možné příklady:
 
-1.  Klasifikace experimentu s využitím AUC váha jako primární metriku s maximální dobou 12 000 sekund na iterace experimentu na konec až 50 iterací a 2 přeložení křížového ověření.
+1.  Experiment s klasifikací využívající AUC váženou jako primární metrika s maximální dobou 12 000 sekund na iteraci a experiment se ukončí po 50 iteracích a 2 skládání křížového ověřování.
 
     ```python
     automl_classifier = AutoMLConfig(
@@ -202,12 +174,10 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Tři různé `task` hodnoty parametrů určují seznam modelů, které se mají použít.  Pomocí parametrů `blacklist` nebo můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. `whitelist` Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
+Tři různé `task` hodnoty parametrů (třetí typ úlohy je `forecasting`a používá stejný fond algoritmů jako `regression` úlohy) určují seznam modelů, které se mají použít. Pomocí parametrů `blacklist` nebo můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. `whitelist` Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primární metriku
-Primární metrika; Jak je znázorněno v předchozích příkladech Určuje metriku, která se má použít během školení modelu pro optimalizaci. Primární metrika, kterou můžete vybrat, je určená typem úlohy, kterou zvolíte. Níže je uveden seznam dostupných metrik.
-
-Přečtěte si o konkrétních definicích těchto informací v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
+Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
 
 |Klasifikace | Regrese | Prognózování časových řad
 |-- |-- |--
@@ -217,9 +187,11 @@ Přečtěte si o konkrétních definicích těchto informací v seznámení s [a
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+Přečtěte si o konkrétních definicích těchto informací v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
+
 ### <a name="data-preprocessing--featurization"></a>Předzpracování dat & featurization
 
-V každém automatizovaném experimentu Machine Learning se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) , aby se algoritmy lépe prováděly.  Můžete ale také povolit další předzpracování/featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
+U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další předzpracování/featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
 
 Chcete-li povolit tuto featurization `"preprocess": True` , zadejte [ `AutoMLConfig` pro třídu](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -227,12 +199,13 @@ Chcete-li povolit tuto featurization `"preprocess": True` , zadejte [ `AutoMLCon
 > Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
 
 ### <a name="time-series-forecasting"></a>Prognózování časových řad
-Pro typ úkolu prognózy časových řad máte k definování další parametry.
-1. time_column_name – tento parametr je povinný, který definuje název sloupce ve školicích datech obsahujících řadu data a času.
-1. max_horizon – definuje dobu, kterou chcete předpovědět na základě periodicity školicích dat. Například pokud máte školicí data s denním intervalem, můžete definovat, jak dlouho chcete, aby model mohl vyškolit.
-1. grain_column_names – definuje názvy sloupců, které obsahují data jednotlivých časových řad ve vašich školicích datech. Pokud například vytváříte předpověď prodeje konkrétní značky podle obchodu, definovali byste sloupce úložiště a značky jako sloupce zrnitosti.
+Úloha časové řady `forecasting` vyžaduje další parametry v objektu Configuration:
 
-Podívejte se na příklad níže uvedených nastavení, příklad poznámkového bloku je k dispozici [zde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
+1. `time_column_name`: Požadovaný parametr, který definuje název sloupce ve školicích datech obsahujících platnou časovou řadu.
+1. `max_horizon`: Definuje dobu, po kterou chcete předpovědět na základě periodicity školicích dat. Například pokud máte školicí data s denním intervalem, můžete definovat, jak dlouho chcete, aby model mohl vyškolit.
+1. `grain_column_names`: Definuje názvy sloupců, které obsahují data jednotlivých časových řad ve vašich školicích datech. Pokud například vytváříte předpověď prodeje konkrétní značky podle obchodu, definovali byste sloupce úložiště a značky jako sloupce zrnitosti. Pro každou zrnitost/seskupení se vytvoří oddělující časová řada a prognózy. 
+
+Příklady nastavení použitých níže najdete v [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -341,11 +314,11 @@ run = experiment.submit(automl_config, show_output=True)
 >Nastavení `show_output` k `True` výsledků ve výstupu se zobrazí se v konzole.
 
 ### <a name="exit-criteria"></a>Výstupní kritéria
-K dokončení experimentu můžete definovat několik možností.
-1. Žádná kritéria – Pokud nedefinujete žádné parametry ukončení, bude experiment pokračovat, dokud nebude u primární metriky proveden žádný další postup.
-1. Počet iterací – můžete definovat počet iterací pro spuštění experimentu. Volitelně můžete přidat iteration_timeout_minutes a definovat časový limit v minutách pro každou iteraci.
-1. Ukončit po uplynutí doby, kdy se v nastavení použije experiment_timeout_minutes, můžete určit, jak dlouho má experiment pokračovat v běhu.
-1. Ukončit po dosažení skóre – pomocí experiment_exit_score se můžete rozhodnout pro dokončení experimentu po dosažení skóre na základě vaší primární metriky.
+Existuje několik možností, které můžete definovat pro ukončení experimentu.
+1. Žádná kritéria: Pokud nedefinujete žádné parametry ukončení, bude experiment pokračovat, dokud nebude u primární metriky proveden žádný další postup.
+1. Počet iterací: Definujete počet iterací pro spuštění experimentu. Volitelně můžete přidat `iteration_timeout_minutes` , chcete-li pro každou iteraci definovat časový limit v minutách.
+1. Ukončit po dobu: Použití `experiment_timeout_minutes` v nastavení umožňuje definovat dobu, po kterou má experiment pokračovat v běhu.
+1. Ukončit po dosažení skóre: Pomocí `experiment_exit_score` se dokončí experiment po dosažení primárního skóre metriky.
 
 ### <a name="explore-model-metrics"></a>Zkoumání metrik model
 

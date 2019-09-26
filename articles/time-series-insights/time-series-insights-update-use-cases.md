@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736154"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264515"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
 
@@ -26,7 +26,7 @@ Konkrétně tento článek obsahuje odpovědi na následující otázky:
 * Jaké jsou běžné případy použití pro Time Series Insights?
 * Jaké jsou výhody používání Time Series Insights pro [zkoumání dat a detekci vizuální anomálií](#data-exploration-and-visual-anomaly-detection)?
 * Jaké jsou výhody používání Time Series Insights pro [provozní analýzu a efektivitu procesů](#operational-analysis-and-driving-process-efficiency)?
-* Jaké jsou výhody použití Time Series Insights pro pokročilou [analýzu](#advanced-analytics)?
+* Jaké jsou výhody použití Time Series Insights pro [pokročilou analýzu](#advanced-analytics)?
 
 Přehled těchto scénářů použití je popsaný v následujících částech.
 
@@ -40,11 +40,15 @@ Detekujte anomálie a odhalujte skryté trendy ve vašich datech díky okamžit�
 
 [![Průzkumník dat](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-Většina zákazníků souhlasí s tím, že čas do přehledu je z nejúčinnějších prostředků Time Series Insights. Time Series Insights nevyžaduje žádnou přípravu dat předem. Umožňuje vám rychle se připojit k miliardám událostí ve službě Azure IoT Hub nebo Azure Event Hubs v řádu minut. Po připojení můžete vizualizovat a analyzovat miliardy událostí a odhalit anomálie a zjišťovat skryté trendy ve vašich datech.
+Většina zákazníků souhlasí s tím, že minimální doba potřebná k získání přehledu je jednou z největší funkcí Time Series Insights:
 
-Time Series Insights je intuitivní a snadno se používá. S daty můžete pracovat, aniž byste museli psát jediný řádek kódu. Není k dispozici žádný nový jazyk, který by bylo možné učit. Time Series Insights poskytuje podrobné dotazy založené na textu pro pokročilé uživatele, kteří znají SQL. Nabízí také průzkum vybrat a kliknout pro ně.
+* Time Series Insights nevyžaduje žádnou přípravu dat předem. 
+* Umožňuje vám rychle se připojit k miliardám událostí ve službě Azure IoT Hub nebo Azure Event Hubs v řádu minut. 
+* Po připojení můžete vizualizovat a analyzovat miliardy událostí a odhalit anomálie a zjišťovat skryté trendy ve vašich datech.
 
-Zákazníci využijí rychlost pro rychlé diagnostikování problémů souvisejících s prostředky. Můžou provádět DevOps a získat tak hlavní příčinu chyby v řešení IoT. Můžou také identifikovat oblasti, které se mají prozkoumat v iniciativách pro datové vědy.  
+Time Series Insights je intuitivní a snadno se používá. S daty můžete pracovat, aniž byste museli psát jediný řádek kódu. K dispozici není také žádný nový jazyk, který byste si měli přečíst, i když Time Series Insights poskytuje podrobný dotazovací jazyk založený na textu pro pokročilé uživatele obeznámené s SQL. Nabízí také průzkum vybrat a kliknout pro ně.
+
+Zákazníci můžou využít rychlost a rychle diagnostikovat problémy související s assety. Můžou provádět analýzu DevOps a získat tak hlavní příčinu chyby v řešení IoT. Můžou také označovat oblasti, které je potřeba označit k dalšímu šetření v rámci svých iniciativ v oblasti datových věd.  
 
 Existují tři základní způsoby, jak pracovat s daty uloženými v Time Series Insights:
 
@@ -78,7 +82,7 @@ Architekturu řešení lze dosáhnout následujícím způsobem:
 
 Time Series Insights nabízí zkoumání dat v reálném čase a přehledy založené na prostředcích nad historickými daty. V závislosti na potřebách vaší firmy můžete úlohy MapReduce a podregistru spouštět na datech uložených v Time Series Insights připojením Time Series Insights k Azure HDInsight. Data uložená v Time Series Insights jsou k dispozici pro Power BI a další zákaznické aplikace prostřednictvím rozhraní API pro dotazy na veřejné ploše Time Series Insights. Tato data je možné využít ve scénářích obsáhlé podnikání a provozní logiky.
 
-## <a name="advanced-analytics"></a>Pokročilá analýza
+## <a name="advanced-analytics"></a>Pokročilé analýzy
 
 Integrujte s pokročilými analytickými službami, jako jsou Machine Learning a Azure Databricks. Time Series Insights příchozí data z milionů zařízení. Přidává kontextová data, která lze hladce spotřebovat sadou služeb Azure Analytics.
 

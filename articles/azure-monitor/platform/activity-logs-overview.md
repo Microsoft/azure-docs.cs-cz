@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170623"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262130"
 ---
 # <a name="overview-of-azure-activity-log"></a>Přehled protokolu aktivit Azure
 
@@ -23,10 +23,10 @@ Pomocí protokolu aktivit můžete určit, _kdo_a _kdy_ se u prostředků ve va�
 
 Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/RDFE.
 
-## <a name="comparison-to-diagnostic-logs"></a>Porovnání s diagnostickými protokoly
-Pro každé předplatné Azure existuje jeden protokol aktivit. Poskytuje data o operacích u prostředku z vnějšku ("Řídicí rovina"). [Diagnostické protokoly](diagnostic-logs-overview.md) vycházejí z prostředku a poskytují informace o operaci tohoto prostředku (rovina dat). U každého prostředku je nutné povolit nastavení diagnostiky.
+## <a name="comparison-to-resource-logs"></a>Porovnání s protokoly prostředků
+Pro každé předplatné Azure existuje jeden protokol aktivit. Poskytuje data o operacích u prostředku z vnějšku ("Řídicí rovina"). [Protokoly prostředků](resource-logs-overview.md) se generují prostředkem a poskytují informace o operaci tohoto prostředku (rovina dat). Abyste mohli shromažďovat protokoly prostředků, musíte pro každý prostředek vytvořit nastavení diagnostiky.
 
-![Protokoly aktivit v porovnání s diagnostickými protokoly](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Protokoly aktivit v porovnání s protokoly prostředků](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]
@@ -49,20 +49,20 @@ Shromážděte protokol aktivit do Log Analyticsho pracovního prostoru v Azure 
 Exportujte protokol aktivit pro Azure Storage pro archivaci nebo streamování do centra událostí pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu. Viz [Export protokolu aktivit Azure](activity-log-export.md). Můžete také analyzovat události protokolu aktivit v Power BI pomocí [**balíčku obsahu Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 
 ## <a name="alert-on-activity-log"></a>Výstraha při protokolu aktivit
-Můžete vytvořit výstrahu, když se v protokolu aktivit vytvoří konkrétní události s upozorněním [protokolu aktivit](activity-log-alerts.md). Můžete také vytvořit výstrahu pomocí [dotazu protokolu](alerts-log-query.md) , pokud je protokol aktivit připojen k pracovnímu prostoru Log Analytics, ale je k dispozici náklady na protokolování výstrah dotazů. Pro výstrahy protokolu aktivit se neúčtují žádné náklady.
+Můžete vytvořit výstrahu, když se v protokolu aktivit vytvoří konkrétní události s [upozorněním protokolu aktivit](activity-log-alerts.md). Můžete také vytvořit výstrahu pomocí [dotazu protokolu](alerts-log-query.md) , pokud je protokol aktivit připojen k pracovnímu prostoru Log Analytics, ale je k dispozici náklady na protokolování výstrah dotazů. Pro výstrahy protokolu aktivit se neúčtují žádné náklady.
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit
 Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Všechny podrobnosti o schémat z těchto kategorií naleznete v tématu [schéma událostí protokolu aktivit Azure](activity-log-schema.md). 
 
-| Kategorie | Popis |
+| Category | Popis |
 |:---|:---|
 | Administrativní | Obsahuje záznam všech operací vytvoření, aktualizace, odstranění a akcí provedených prostřednictvím Správce prostředků. Mezi příklady událostí správy patří _vytvořit virtuální počítač_ a _Odstranit skupinu zabezpečení sítě_.<br><br>Každá akce prováděná uživatelem nebo aplikací pomocí Správce prostředků je modelována jako operace pro konkrétní typ prostředku. Pokud je typ operace _zápis_, _odstranění_nebo _Akce_, záznamy o zahájení i úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Události správy také zahrnují všechny změny řízení přístupu na základě role v rámci předplatného. |
-| Service Health | Obsahuje záznam o všech incidentech služby Health Service, ke kterým došlo v Azure. Příkladem události Service Health _SQL Azure v východní USA dochází_k výpadkům. <br><br>Service Health události přicházejí v šesti variantách: _Je vyžadována akce_, _pomocná obnovení_, _incident_, _Údržba_, _informace_nebo _zabezpečení_. Tyto události se vytvoří jenom v případě, že máte prostředek v předplatném, který by to ovlivnila událost.
-| Stav prostředku | Obsahuje záznam o všech událostech stavu prostředku, ke kterým došlo u vašich prostředků Azure. Příkladem události Resource Health je _stav virtuálního počítače, který_není k dispozici.<br><br>Události Resource Health mohou představovat jeden ze čtyř stavů: _K dispozici_,nedostupné, degradované a _neznámé_. Resource Health události se navíc dají zařadit do kategorií jako iniciované platformou nebo _uživatelem iniciované_. |
+| Service Health | Obsahuje záznam o všech incidentech služby Health Service, ke kterým došlo v Azure. Příkladem události Service Health _SQL Azure v východní USA dochází k výpadkům_. <br><br>Service Health události přicházejí v šesti variantách: Je _vyžadována akce_, _pomocná obnovení_, _incident_, _Údržba_, _informace_nebo _zabezpečení_. Tyto události se vytvoří jenom v případě, že máte prostředek v předplatném, který by to ovlivnila událost.
+| Stav prostředku | Obsahuje záznam o všech událostech stavu prostředku, ke kterým došlo u vašich prostředků Azure. Příkladem události Resource Health je _stav virtuálního počítače, který není k dispozici_.<br><br>Události Resource Health mohou představovat jeden ze čtyř stavů: _K dispozici_, _nedostupné_, _degradované_a _neznámé_. Resource Health události se navíc dají zařadit do kategorií jako _iniciované platformou_ nebo _uživatelem iniciované_. |
 | Výstrahy | Obsahuje záznam o aktivaci pro Azure Alerts. Příkladem události výstrahy je, že _procesor% v myVM byl za posledních 5 minut vyšší než 80_.|
-| Automatické škálování | Obsahuje záznam všech událostí souvisejících s provozem modulu automatického škálování na základě všech nastavení automatického škálování, které jste definovali v předplatném. Příkladem události automatického škálování se nepovedlo provést _akci automatického škálování horizontálního_škálování. |
+| Automatické škálování | Obsahuje záznam všech událostí souvisejících s provozem modulu automatického škálování na základě všech nastavení automatického škálování, které jste definovali v předplatném. Příkladem události automatického škálování se _nepovedlo provést akci automatického škálování horizontálního_škálování. |
 | Doporučení | Obsahuje události doporučení z Azure Advisor. |
-| Zabezpečení | Obsahuje záznam všech výstrah vygenerovaných nástrojem Azure Security Center. Příkladem události zabezpečení je podezřelý _soubor_s dvojitou příponou. |
+| Zabezpečení | Obsahuje záznam všech výstrah vygenerovaných nástrojem Azure Security Center. Příkladem události zabezpečení je _podezřelý soubor s dvojitou příponou_. |
 | Zásada | Obsahuje záznamy všech operací akce účinku prováděných Azure Policy. Příklady událostí zásad zahrnují _audit_ a _Deny_. Každá akce prováděná zásadami je modelovaná jako operace na prostředku. |
 
 

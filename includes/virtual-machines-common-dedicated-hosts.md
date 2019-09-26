@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976620"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266853"
 ---
 ## <a name="benefits"></a>Výhody 
 
@@ -64,7 +64,7 @@ Obě možnosti můžete použít společně a dosáhnout tak i větší izolace 
 
 ## <a name="maintenance-control"></a>Řízení údržby
 
-Infrastruktura, která podporuje vaše virtuální počítače, se občas může aktualizovat, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Platforma Azure se snaží minimalizovat dopad údržby platforem, kdykoli to bude možné, ale zákazníci s citlivými úlohami *údržby* se nemůžou tolerovat ještě pár sekund, než se virtuální počítač musí kvůli údržbě ukotvit nebo odpojit.
+Infrastruktura, která podporuje vaše virtuální počítače, se občas může aktualizovat, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Platforma Azure se snaží minimalizovat dopad údržby platforem, kdykoli to bude možné, ale zákazníci s *citlivými* úlohami údržby se nemůžou tolerovat ještě pár sekund, než se virtuální počítač musí kvůli údržbě ukotvit nebo odpojit.
 
 **Řízení údržby** poskytuje zákazníkům možnost přeskočit běžné aktualizace platforem naplánované na jejich vyhrazených hostitelích a pak je použít v době jejich výběru v rámci 35ho okna.
 
@@ -113,6 +113,6 @@ Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrá
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |
-| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud `autoHealingOnFailure` je povolený, vaše virtuální počítače budou zacelené na hardware v pořádku. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
-| Přidělení hostitele  | Z hostitele se odebraly všechny virtuální počítače. Na tohoto hostitele se už neúčtují, protože hardware se vyčerpal z rotace.   |
+| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud `autoReplaceOnFailure` je povolený, vaše virtuální počítače budou *zacelené* na hardware v pořádku. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
+| Hostitel se uvolnil.  | Z hostitele se odebraly všechny virtuální počítače. Na tohoto hostitele se už neúčtují, protože hardware se vyčerpal z rotace.   |
 

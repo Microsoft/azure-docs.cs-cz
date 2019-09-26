@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0bd4b1d969de0b54a1836048b5cb5910470f1ffa
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034875"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269222"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -36,7 +36,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 * [Jupyter poznámkové bloky](#jupyter): Pokud už Jupyter Notebook používáte, sada SDK obsahuje několik dalších doplňků, které byste měli nainstalovat.
 
-* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, má několik užitečných rozšíření, která můžete nainstalovat.
+* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, [rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) zahrnuje rozsáhlou jazykovou podporu jazyka Python a také funkce pro práci s Azure Machine Learning službou, která je mnohem pohodlnější a produktivní.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -76,7 +76,7 @@ Virtuální počítač poznámkového bloku je:
 
 + **Přizpůsobitelná**. I když máte spravovanou a zabezpečenou nabídku virtuálních počítačů, zachováte plný přístup k hardwarovým funkcím a přizpůsobíte ji na přání srdce. Můžete například rychle vytvořit nejnovější virtuální počítač s technologií NVidia V100 a provést tak podrobné ladění nové architektury sítě neuronové.
 
-Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, zastavte [virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
+Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, zastavte [virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
@@ -90,7 +90,7 @@ DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro 
 
 Sada SDK pro Azure Machine Learning funguje v DSVM ve verzi Ubuntu nebo Windows. Ale pokud plánujete používat DSVM jako cíl výpočtů, podporuje se jenom Ubuntu.
 
-Pokud chcete použít DSVM jako vývojové prostředí, udělejte toto:
+Použití DSVM jako vývojového prostředí:
 
 1. Vytvořte DSVM v jednom z následujících prostředí:
 
@@ -151,7 +151,7 @@ Další informace najdete v tématu [Virtual Machines pro datové vědy](https:/
 
 ## <a id="local"></a>Místní počítač
 
-Pokud používáte místní počítač (který může být také vzdáleným virtuálním počítačem), vytvořte prostředí Anaconda a nainstalujte sadu SDK pomocí následujícího postupu:
+Pokud používáte místní počítač (který může být také vzdáleným virtuálním počítačem), vytvořte prostředí Anaconda a nainstalujte sadu SDK. Tady je příklad:
 
 1. Stáhněte a nainstalujte [Anaconda](https://www.anaconda.com/distribution/#download-section) (verze Python 3,7), pokud ji ještě nemáte.
 
@@ -185,10 +185,10 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. K instalaci balíčků použijte následující příkazy:
 
-    Tento příkaz nainstaluje základní Azure Machine Learning SDK s poznámkovým blokem a automl. `automl` Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
+    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK pomocí poznámkového bloku a `automl` dalších. `automl` Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
     ```shell
-    pip install azureml-sdk[notebooks,automl]
+    pip install azureml-sdk[notebooks, automl]
     ```
 
    > [!NOTE]
@@ -221,14 +221,16 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 Poznámkové bloky Jupyter jsou součástí [Jupyter projektu](https://jupyter.org/). Poskytuje interaktivní prostředí pro psaní kódu ve kterém vytvoříte dokumenty, které kombinovat živého kódu s vyprávěného textu a grafiky. Jupyter poznámkové bloky jsou také skvělým způsobem, jak sdílet výsledky s ostatními, protože výstup částí kódu v dokumentu můžete uložit. Poznámkové bloky Jupyter můžete nainstalovat na různých platformách.
 
-Postup v části [místní počítač](#local) nainstaluje potřebné komponenty pro spouštění notebooků Jupyter v prostředí Anaconda. Pokud chcete povolit tyto součásti v prostředí Jupyter Notebook, udělejte toto:
+Postup v části [místní počítač](#local) nainstaluje potřebné komponenty pro spouštění notebooků Jupyter v prostředí Anaconda.
+
+Postup povolení těchto součástí v prostředí Jupyter Notebook:
 
 1. Otevřete příkazový řádek Anaconda a aktivujte své prostředí.
 
     ```shell
     conda activate myenv
     ```
-    
+
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks) pro sadu ukázkových poznámkových bloků.
 
     ```CLI
@@ -254,34 +256,35 @@ Postup v části [místní počítač](#local) nainstaluje potřebné komponenty
     import sys
     sys.path
     ```
-    
+
 1. Pokud chcete nakonfigurovat Jupyter Notebook k používání pracovního prostoru Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
 
 
 ### <a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code je editor kódu napříč platformami. Spoléhá na místní Python 3 a Conda instalace podpory Pythonu, ale poskytuje dodatečné nástroje pro práci s umělou Inteligencí. Také poskytuje podporu pro výběr prostředí Conda z editoru kódu.
+Visual Studio Code je velmi oblíbený editor kódu pro různé platformy, který podporuje rozsáhlou sadu programovacích jazyků a nástrojů prostřednictvím rozšíření dostupných na [webu Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). [Rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) nainstaluje [rozšíření Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro kódování ve všech typech prostředí Pythonu (Virtual, Anaconda atd.). Kromě toho poskytuje praktické funkce pro práci s Azure Machine Learning prostředky a spouštění Azure Machine Learning experimentů bez nutnosti opustit Visual Studio Code.
 
-Pokud chcete použít Visual Studio Code pro vývoj, udělejte toto:
+Použití Visual Studio Code pro vývoj:
 
-1. Informace o tom, jak používat Visual Studio Code pro vývoj v Pythonu, najdete v tématu Začínáme [s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
-
-1. Pokud chcete vybrat prostředí Conda, otevřete VS Code a pak vyberte CTRL + SHIFT + P (Linux a Windows) nebo Command + Shift + P (Mac).
-    __Paleta příkazu__ se otevře.
-
-1. Zadejte __Python: Vyberte Interpret__a pak vyberte prostředí conda.
-
-1. Chcete-li ověřit, zda můžete použít sadu SDK, vytvořte a potom spusťte nový soubor Pythonu (. py), který obsahuje následující kód:
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. Pokud chcete nainstalovat rozšíření Azure Machine Learning pro Visual Studio Code, přečtěte si téma [Nástroje pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
+1. Instalaci rozšíření Azure Machine Learning pro Visual Studio Code najdete v tématu [Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
     Další informace najdete v tématu [použití Azure Machine Learning pro Visual Studio Code](how-to-vscode-tools.md).
 
+1. Naučte se používat Visual Studio Code pro jakýkoliv typ vývoje v Pythonu, přečtěte si téma Začínáme [s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
+
+    - Pokud chcete vybrat prostředí SDK Pythonu obsahující sadu SDK, otevřete VS Code a pak vyberte CTRL + SHIFT + P (Linux a Windows) nebo Command + Shift + P (Mac).
+        - Otevře se __paleta příkazů__ .
+
+    - Zadejte __Python: Vyberte Interpret__a pak vyberte příslušné prostředí.
+
+1. Chcete-li ověřit, zda můžete použít sadu SDK, vytvořte nový soubor Pythonu (. py), který obsahuje následující kód:
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    Spusťte tento kód tak, že kliknete na "spustit buňku" CodeLens nebo jednoduše stisknete klávesu SHIFT + ENTER.
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -302,7 +305,7 @@ Použijte tato nastavení:
 | Nastavení |Platná pro| Value |
 |----|---|---|
 | Název clusteru |vždy| yourclustername |
-| Modul runtime Databricks |vždy| Libovolný běhový modul bez ML (bez ML 4. x, 5. x) |
+| Modul runtime Databricks |vždy| Libovolný modul runtime bez ML (ne ML 4. x, 5. x) |
 | Verze Pythonu |vždy| 3 |
 | Pracovní procesy |vždy| 2 nebo vyšší |
 | Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
@@ -326,7 +329,7 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte **připojit** .
 
-1. Monitoruje chyby, dokud se změnystavu nepřipojí, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
+1. Monitoruje chyby, dokud se změnystavu nepřipojí, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně:
 
    Zkuste cluster restartovat pomocí:
    1. V levém podokně vyberte clustery.

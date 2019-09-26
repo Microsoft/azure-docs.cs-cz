@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608117"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259411"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -139,7 +139,7 @@ Díky nárůstu využití vlastního zařízení (BYOD) a zásad práce z domova
 
 * Identifikujte uživatele, kteří mají administrativní role a služby, kde mohou spravovat.
 * Pomocí Azure AD PIM zjistíte, kteří uživatelé ve vaší organizaci mají přístup správce ke službě Azure AD, včetně dalších rolí, které nejsou uvedené v kroku 1.
-* Mimo role definované v Azure AD obsahuje sada Office 365 sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 Zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí, které nejsou spravované v Azure AD. Další informace najdete v tématech [o rolích správce systému Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [osvědčených postupech zabezpečení pro sadu Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Mimo role definované v Azure AD obsahuje sada Office 365 sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 Zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí, které nejsou spravované v Azure AD. Další informace najdete v tématech [o rolích správce systému Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [osvědčených postupech zabezpečení pro sadu Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Proveďte inventarizaci v jiných službách, na kterých vaše organizace spoléhá, jako je Azure, Intune nebo Dynamics 365.
 * Ujistěte se, že účty správců (účty používané pro účely správy, ne jenom pro každodenní účty uživatelů) obsahují pracovní e-mailové adresy, které jsou k nim připojené a které jsou zaregistrované pro Azure MFA, nebo místní ověřování pomocí MFA.
 * Požádejte uživatele o obchodní odůvodnění pro přístup pro správu.
@@ -173,7 +173,7 @@ Zapnout:
 
 Pokud používáte Windows Hello pro firmy, požadavek MFA se dá splnit pomocí přihlašovacích zkušeností Windows Hello. Další informace najdete v tématu [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Konfigurovat Identity Protection 
+#### <a name="configure-identity-protection"></a>Konfigurace identity Protection 
 
 Azure AD Identity Protection je nástroj pro monitorování a vytváření sestav založený na algoritmech, který můžete použít k detekci potenciálních ohrožení zabezpečení, které mají vliv na identity vaší organizace. Můžete nakonfigurovat automatizované odpovědi na ty zjištěné podezřelé aktivity a provést odpovídající opatření k jejich vyřešení. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -425,7 +425,7 @@ Další informace o tom, jak systém Microsoft Office 365 zpracovává incidenty
 
 **Zodpovědět** Používejte neprivilegované účty pro všechny uživatele a většinu správců. Začněte tím, že vyvíjíte řadu organizací, abyste zjistili, který z nich by měl mít oprávnění k privilegovanému účtu správce. A monitorujte nově vytvořené administrativní uživatele.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Microsoft Trust Center pro zabezpečení produktů](https://www.microsoft.com/trustcenter/security) – funkce zabezpečení cloudových produktů a služeb Microsoftu
 

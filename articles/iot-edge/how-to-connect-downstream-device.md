@@ -4,17 +4,17 @@ description: Jak nakonfigurovat podřízená nebo koncová zařízení pro přip
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999408"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266123"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojte zařízení za příjem dat k bráně Azure IoT Edge
 
@@ -33,6 +33,10 @@ Tento článek identifikuje běžné problémy s připojením zařízení příj
 * Procházení Azure IoT ukázky v několika jazycích, které vám pomůžou začít. 
 
 V tomto článku se podmínky *brány* a *brána IoT Edge* odkazovat na zařízení IoT Edge nakonfigurovaná jako transparentní brána. 
+
+## <a name="prerequisites"></a>Požadavky 
+
+K dispozici je soubor certifikátu **Azure-IoT-test-Only. root. ca. CERT. pem** , který se vygeneroval v části [Konfigurace zařízení IoT Edge tak, aby fungoval jako transparentní brána](how-to-create-transparent-gateway.md) , která je dostupná na vašem zařízení pro příjem dat. Vaše zařízení pro příjem dat používá tento certifikát k ověření identity zařízení brány. 
 
 ## <a name="prepare-a-downstream-device"></a>Příprava příjem dat zařízení
 
@@ -89,6 +93,14 @@ Zobrazí se zpráva, že "aktualizace certifikáty v /etc/ssl/certs... 1 přidá
 ### <a name="windows"></a>Windows
 
 Následující postup je příklad toho, jak nainstalovat certifikát certifikační Autority na hostitele Windows. V tomto příkladu se předpokládá, že používáte certifikát **Azure-IoT-test-Only. root. ca. CERT. pem** z článků s požadavky a že jste certifikát zkopírovali do umístění na zařízení pro příjem dat.
+
+Certifikáty můžete nainstalovat pomocí rutiny [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) prostředí PowerShell jako správce:
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+Certifikáty můžete nainstalovat také pomocí nástroje **Certlm** : 
 
 1. V nabídce Start, vyhledejte a vyberte **spravovat certifikáty počítače**. Nástroj, který volá **certlm** otevře.
 2. Přejděte do **certifikáty - místní počítač** > **důvěryhodné kořenové certifikační autority**.
@@ -191,6 +203,6 @@ Pokud má vaše listové zařízení přerušované připojení k zařízení br
 2. Je název hostitele brány přeložitelný na IP adresu? Přerušovaná připojení můžete vyřešit buď pomocí DNS, nebo přidáním položky souboru hostitele na listovém zařízení.
 3. Jsou v bráně firewall otevřené komunikační porty? Komunikace založená na použitém protokolu (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) musí být mezi podřízenými zařízeními a transparentním IoT Edge.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak můžete rozšířit IoT Edge [offline možnosti](offline-capabilities.md) pro příjem dat zařízení. 

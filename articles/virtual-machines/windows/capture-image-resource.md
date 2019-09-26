@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 33f3b03ba76a0c3fd33e057d0f15b2ab7a0f44e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089497"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273871"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -34,7 +34,7 @@ Nástroj Sysprep odebere všechny informace o vašem osobním účtu a zabezpeč
 Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) a [nepodporované scénáře](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
 
 > [!IMPORTANT]
-> Po spuštění příkazu Sysprep na virtuálním počítači je tento virtuální počítač považován za zobecněný a nelze jej restartovat. Proces generalizace virtuálního počítače je nevrtaný. Pokud potřebujete zachovat fungování původního virtuálního počítače, měli byste vytvořit [kopii virtuálního počítače](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) a zobecnit jeho kopii. 
+> Po spuštění příkazu Sysprep na virtuálním počítači je tento virtuální počítač považován za *zobecněný* a nelze jej restartovat. Proces generalizace virtuálního počítače je nevrtaný. Pokud potřebujete zachovat fungování původního virtuálního počítače, měli byste vytvořit [kopii virtuálního počítače](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) a zobecnit jeho kopii. 
 >
 > Pokud máte v úmyslu spustit nástroj Sysprep před prvním nahráním virtuálního pevného disku (VHD) do Azure, ujistěte se, že jste [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
 > 
@@ -109,7 +109,7 @@ K vytvoření image virtuálního počítače použijte tento postup:
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Nastavte stav virtuálního počítače na zobecněno. 
+3. Nastavte stav virtuálního počítače na **zobecněno**. 
    
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
@@ -205,9 +205,9 @@ Spravovanou bitovou kopii můžete vytvořit ze snímku generalizované virtuál
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Vytvoření image z VHD v účtu úložiště
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního počítače, který používá účet úložiště
 
-Vytvořte spravovanou bitovou kopii z zobecněného virtuálního pevného disku s operačním systémem v účtu úložiště. Budete potřebovat identifikátor URI virtuálního pevného disku v účtu úložiště, který je v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer*/*vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
+Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer* /  *vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
 
 
 1.  Vytvořte některé proměnné.

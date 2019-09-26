@@ -3,7 +3,7 @@ title: Automatické upgrady imagí operačního systému pomocí Azure Virtual M
 description: Přečtěte si, jak automaticky upgradovat image operačního systému na instancích virtuálních počítačů v sadě škálování.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
-ms.author: manayar
-ms.openlocfilehash: a9829f380200e616d242f5406b72593014f0efc2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: vashan
+ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656548"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71263505"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
@@ -283,5 +283,5 @@ Pomocí šablon můžete nasadit sadu škálování s automatickými upgrady ope
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další příklady, jak používat automatické upgrady operačního systému se sadami škálování, najdete v [úložišti GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

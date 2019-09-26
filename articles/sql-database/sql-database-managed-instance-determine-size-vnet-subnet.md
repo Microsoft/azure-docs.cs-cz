@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567502"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273557"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určení velikosti podsítě virtuální sítě pro Azure SQL Database spravovanou instanci
 
@@ -29,7 +29,7 @@ Při vytváření spravované instance Azure přiděluje počet virtuálních po
 V rámci návrhu vyžaduje spravovaná instance minimálně 16 IP adres v podsíti a může používat až 256 IP adres. V důsledku toho můžete při definování rozsahů IP adres podsítí použít masky podsítě mezi/28 a/24. Bitová maska sítě/28 (14 hostitelů na síť) je vhodná pro jedno obecné účely nebo pro důležité obchodní nasazení. Bitová maska/27 (30 hostitelů na síť) je ideální pro nasazení více spravovaných instancí v rámci stejné virtuální sítě. Bitové nastavení maskování/26 (62 hostitelů) a/24 (254 hostitelů) umožňuje další škálování z virtuální sítě na podporu dalších spravovaných instancí.
 
 > [!IMPORTANT]
-> Velikost podsítě s 16 IP adresami je minimum s omezeným potenciálem pro další navýšení kapacity spravované instance. Volba podsítě s předponou/27 nebo níže se důrazně doporučuje.
+> Velikost podsítě s 16 IP adresami je minimum s omezeným potenciálem, u kterého není podporována operace škálování, jako je vCore Změna velikosti. Důrazně doporučujeme vybrat podsíť s předponou předpony/27 nebo nejdelší.
 
 ## <a name="determine-subnet-size"></a>Určení velikosti podsítě
 

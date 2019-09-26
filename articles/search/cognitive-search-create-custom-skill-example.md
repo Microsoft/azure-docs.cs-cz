@@ -5,16 +5,15 @@ manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d77b4e3a002757bcf6c91b6611876e732273fcf9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183525"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266331"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
@@ -447,7 +446,7 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 }
 ```
 
-Tady se počítáme s předdefinovanými dovednostmi pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md) , která se mají prezentovat v dovednosti a rozšířit dokument seznamem organizací. V tomto článku najdete konfiguraci dovedností pro extrakci entit, která by byla dostatečná pro vytváření dat, která potřebujeme:
+Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md) , která se mají prezentovat v dovednosti a rozšířit dokument seznamem organizací. V tomto článku najdete konfiguraci dovedností pro extrakci entit, která by byla dostatečná pro vytváření dat, která potřebujeme:
 
 ```json
 {

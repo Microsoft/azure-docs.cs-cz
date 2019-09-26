@@ -1,70 +1,94 @@
 ---
-title: Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C | Microsoft Docs
-description: Přečtěte si, jak přizpůsobit uživatelské rozhraní pro aplikace, které používají Azure Active Directory B2C.
+title: Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
+description: Naučte se, jak přizpůsobit uživatelské rozhraní pro aplikace, které používají Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880783"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258170"
 ---
-# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
+# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
-Možnost brandingu a přizpůsobení uživatelského rozhraní (UI), které Azure Active Directory B2C (Azure AD B2C) slouží k zajištění bezproblémového prostředí pro zákazníky, je důležité. Mezi tyto prostředí patří registrace, přihlašování, úpravy profilu a resetování hesla. Tento článek poskytuje informace, které vám pomůžou přizpůsobit uživatelské rozhraní svých aplikací.
+Branding a přizpůsobení uživatelského rozhraní, které Azure Active Directory B2C (Azure AD B2C) zobrazuje vašim zákazníkům, pomáhá zajistit bezproblémové uživatelské prostředí ve vaší aplikaci. Mezi tyto možnosti patří registrace, přihlašování, úpravy profilu a resetování hesla. Tento článek představuje metody přizpůsobení uživatelského rozhraní (UI) pro uživatelské toky i pro vlastní zásady.
 
-V závislosti na vašich potřebách, když k nim dojde, přizpůsobíte uživatelské rozhraní aplikace různými způsoby. Příklad:
+## <a name="ui-customization-in-different-scenarios"></a>Přizpůsobení uživatelského rozhraní v různých scénářích
 
-- Pokud používáte [toky uživatelů](active-directory-b2c-reference-policies.md) k poskytování registrace nebo přihlašování, resetování hesla nebo prostředí pro úpravu profilů v aplikaci, použijte [Azure Portal k přizpůsobení uživatelského rozhraní](tutorial-customize-ui.md).
-- Pokud používáte tok uživatele v2, můžete pomocí [šablony rozložení stránky](#page-layout-templates) změnit vzhled stránek toku uživatele bez dalšího přizpůsobení. Můžete například použít modrý nebo břidlicově šedý motiv na všechny stránky v toku uživatele.
-- Pokud poskytujete pouze přihlášení, jeho doprovodné stránku pro resetování hesla a ověřovací e-maily, použijete stejný postup přizpůsobení, který se používá pro [přihlašovací stránku služby Azure AD](../active-directory/fundamentals/customize-branding.md).
-- Pokud se zákazníci pokusí upravit svůj profil předtím, než se přihlásí, budou přesměrováni na stránku, kterou upravíte, pomocí stejných kroků, které se použijí k přizpůsobení přihlašovací stránky Azure AD.
-- Pokud používáte [vlastní zásady](active-directory-b2c-overview-custom.md) pro poskytování registrace nebo přihlašování, resetování hesel nebo úprav profilů v aplikaci, použijte [k přizpůsobení uživatelského rozhraní soubory zásad](active-directory-b2c-ui-customization-custom.md).
-- Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte [vlastní zásady, které mohou změnit obsah stránky](active-directory-b2c-ui-customization-custom-dynamic.md) v závislosti na parametru, který je odeslán v řetězci dotazu. Například obrázek pozadí na Azure AD B2C na přihlašovací stránce se změní na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
-- Můžete povolit JavaScriptový kód na straně klienta v [uživatelském toku](user-flow-javascript-overview.md) Azure AD B2C nebo [vlastní zásady](page-layout.md).
+Existuje několik způsobů, jak přizpůsobit uživatelské rozhraní aplikace, které je vhodné pro různé scénáře.
 
-Azure AD B2C spouští kód v prohlížeči zákazníka a používá moderní přístup nazvaný [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). V době běhu se obsah načte z adresy URL, kterou zadáte v toku uživatele nebo zásadě. Pro různé stránky zadáte různé adresy URL. Po načtení obsahu z vaší adresy URL se sloučí s fragmentem HTML vloženým z Azure AD B2C a potom se zobrazí vašemu zákazníkovi.
+### <a name="user-flows"></a>Toky uživatelů
 
-Pokud k přizpůsobení uživatelského rozhraní používáte vlastní soubory HTML a CSS, přečtěte si následující pokyny, než začnete:
+Pokud používáte [toky uživatelů](active-directory-b2c-reference-policies.md), můžete změnit vzhled stránek toku uživatelů pomocí integrovaných *šablon rozložení stránky*nebo pomocí vlastních HTML a šablon stylů CSS. Obě metody jsou popsány dále v tomto článku.
 
-- Azure AD B2C sloučí obsah HTML na vaše stránky. Nekopírujte a nepokoušíte se změnit výchozí obsah, který Azure AD B2C poskytovat. Nejlepší je vytvořit obsah HTML od začátku a použít výchozí obsah jako referenční.
-- JavaScript teď může být součástí vlastního obsahu.
-- Podporované verze prohlížeče:
-    - Internet Explorer 11, 10 a Microsoft Edge
-    - Omezená podpora pro Internet Explorer 9 a 8
-    - Google Chrome 42,0 a novější
-    - Mozilla Firefox 38,0 a novější
-- Ujistěte se, že nezahrnete do kódu HTML značky formuláře, protože to brání operacím POST vytvořeným vloženým kódem HTML z Azure AD B2C.
+Pomocí [Azure Portal](tutorial-customize-ui.md) můžete nakonfigurovat přizpůsobení uživatelského rozhraní pro toky uživatelů.
+
+### <a name="custom-policies"></a>Vlastní zásady
+
+Pokud používáte [vlastní zásady](active-directory-b2c-overview-custom.md) pro poskytování registrace nebo přihlašování, resetování hesel nebo úprav profilů v aplikaci, použijte [k přizpůsobení uživatelského rozhraní soubory zásad](active-directory-b2c-ui-customization-custom.md).
+
+Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte vlastní zásady, které mohou [dynamicky měnit obsah stránky](active-directory-b2c-ui-customization-custom-dynamic.md) v závislosti na parametru, který je odeslán v řetězci dotazu. Můžete například změnit obrázek pozadí na Azure AD B2C přihlašovací stránku nebo přihlašovací stránku na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
+
+### <a name="javascript"></a>JavaScript
+
+Kód JavaScriptu na straně klienta můžete povolit jak v [toku uživatelů](user-flow-javascript-overview.md) , tak i ve [vlastních zásadách](page-layout.md).
+
+### <a name="sign-in-only-ui-customization"></a>Přizpůsobení uživatelského rozhraní pouze pro přihlášení
+
+Pokud poskytujete pouze přihlášení, společně s příslušnou stránkou pro resetování hesla a e-mailem pro ověřování, použijte stejný postup přizpůsobení, který se používá pro [přihlašovací stránku služby Azure AD](../active-directory/fundamentals/customize-branding.md).
+
+Pokud se zákazníci pokusí upravit svůj profil ještě předtím, než se přihlásí, přesměruje se na stránku, kterou přizpůsobíte, pomocí stejných kroků, které se použijí k přizpůsobení přihlašovací stránky Azure AD.
 
 ## <a name="page-layout-templates"></a>Šablony rozložení stránky
 
-V případě toků uživatelů v2 můžete zvolit předem navrženou šablonu, která poskytuje lepší vzhled vašich výchozích stránek a slouží jako dobrý základ pro vlastní přizpůsobení.
+Toky uživatelů poskytují několik integrovaných šablon, ze kterých si můžete vybrat a poskytnout tak profesionální vzhled na stránkách uživatele. Tyto šablony rozložení také mohou sloužit jako výchozí bod pro vlastní přizpůsobení.
 
-V nabídce vlevo v části **přizpůsobit**vyberte **rozložení stránky**. Pak vyberte **Template (Preview)** .
+V části **přizpůsobit** v nabídce vlevo vyberte **rozložení stránky** a pak vyberte **Šablona**.
 
-![Rozevírací seznam pro výběr šablony na stránce toku uživatele Azure Portal](media/customize-ui-overview/template.png)
+![Rozevírací seznam pro výběr šablony na stránce toku uživatele Azure Portal](media/customize-ui-overview/template-selection.png)
 
-Vyberte šablonu ze seznamu. Například šablona **oceán Blue** aplikuje na stránky toku uživatele následující rozložení:
+Potom v seznamu vyberte šablonu. Tady jsou příklady přihlašovacích stránek pro každou šablonu:
 
-![Příklad šablony oceánu Blue vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/ocean-blue.png)
+| Mořská modř | Břidlicová šedá | Classic |
+|:-:|:-:|:-:|
+|![Příklad šablony oceánu Blue vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-ocean-blue.png)|![Příklad šablony břidlicově šedé vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-slate-gray.png)|![Příklad klasické šablony vykreslené na přihlašovací stránce pro registraci](media/customize-ui-overview/template-classic.png)|
 
 Když zvolíte šablonu, vybrané rozložení se použije na všechny stránky v toku uživatele a v poli **URI vlastní stránky** se zobrazí identifikátor URI pro každou stránku.
 
-## <a name="where-do-i-store-ui-content"></a>Kde mám ukládat obsah uživatelského rozhraní?
+## <a name="custom-html-and-css"></a>Vlastní HTML a CSS
 
-Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského rozhraní můžete hostovat obsah svého uživatelského rozhraní kdekoli, například v [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), webových serverech, sítě CDN, AWS S3 nebo v systémech pro sdílení souborů. Důležitým bodem je, že je hostitelem obsahu veřejně dostupného koncového bodu HTTPS s povoleným CORS. Při zadání v obsahu je nutné použít absolutní adresu URL.
+Azure AD B2C spouští kód v prohlížeči zákazníka pomocí přístupu označovaného jako [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/).
 
-## <a name="how-do-i-get-started"></a>Jak mám začít?
+V době běhu se obsah načte z adresy URL, kterou zadáte v toku uživatele nebo vlastní zásady. Každá stránka v uživatelském prostředí načte svůj obsah z adresy URL, kterou zadáte pro tuto stránku. Po načtení obsahu z vaší adresy URL se sloučí s fragmentem kódu HTML vloženým pomocí Azure AD B2C a potom se stránka zobrazí vašemu zákazníkovi.
 
-Uživatelské rozhraní upravíte takto:
+Než použijete vlastní soubory HTML a CSS k přizpůsobení uživatelského rozhraní, přečtěte si následující pokyny:
+
+- Azure AD B2C **sloučí** obsah HTML na vaše stránky. Nekopírujte a nepokoušíte se změnit výchozí obsah, který Azure AD B2C poskytovat. Nejlepší je vytvořit obsah HTML od začátku a použít výchozí obsah jako referenční.
+- **JavaScript** může být součástí vlastního obsahu pro [uživatelské toky](user-flow-javascript-overview.md) i pro [vlastní zásady](javascript-samples.md).
+- Podporované **verze prohlížeče** :
+  - Internet Explorer 11, 10 a Microsoft Edge
+  - Omezená podpora pro Internet Explorer 9 a 8
+  - Google Chrome 42,0 a novější
+  - Mozilla Firefox 38,0 a novější
+- Nezahrnujte **značky formuláře** do HTML. Značky formuláře jsou v konfliktu s operacemi POST generovanými kódem HTML, které jsou vložené pomocí Azure AD B2C.
+
+### <a name="where-do-i-store-ui-content"></a>Kde mám ukládat obsah uživatelského rozhraní?
+
+Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského rozhraní můžete hostovat obsah svého uživatelského rozhraní na jakémkoli veřejně dostupném koncovém bodu HTTPS, který podporuje CORS. Například [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), webové servery, sítě CDN, AWS S3 nebo souborové systémy pro sdílení souborů.
+
+Důležitým bodem je, že je hostitelem obsahu veřejně dostupného koncového bodu HTTPS s povoleným CORS. Při zadání v obsahu je nutné použít absolutní adresu URL.
+
+## <a name="get-started-with-custom-html-and-css"></a>Začínáme s vlastními HTML a CSS
+
+Začněte používat vlastní HTML a CSS na stránkách uživatelského prostředí pomocí následujících pokynů.
 
 - Vytvoří obsah HTML ve správném formátu s prázdným `<div id="api"></div>` elementem umístěným někde `<body>`v. Tento prvek označuje, kde je vložen Azure AD B2C obsah. Následující příklad ukazuje minimální stránku:
 
@@ -82,7 +106,6 @@ Uživatelské rozhraní upravíte takto:
     </html>
     ```
 
-- Hostování obsahu na koncovém bodu HTTPS (s povolenými CORS) Při konfiguraci CORS musí být povolené metody GET i OPTIONS.
 - Pomocí CSS můžete naformátovat prvky uživatelského rozhraní, které Azure AD B2C vloží do stránky. Následující příklad ukazuje jednoduchý soubor CSS, který obsahuje také nastavení pro vložené prvky HTML:
 
     ```css
@@ -108,7 +131,10 @@ Uživatelské rozhraní upravíte takto:
     }
     ```
 
-- Vytvořte nebo upravte zásadu pro použití obsahu, který jste vytvořili.
+- Hostování obsahu na koncovém bodu HTTPS (s povolenými CORS) Při konfiguraci CORS musí být povolené metody GET i OPTIONS.
+- Vytvořte nebo upravte tok uživatele nebo vlastní zásady, abyste mohli používat obsah, který jste vytvořili.
+
+### <a name="html-fragments-from-azure-ad-b2c"></a>Fragmenty kódu HTML z Azure AD B2C
 
 V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B2C `<div id="api"></div>` sloučí do prvku umístěného v obsahu.
 
@@ -121,18 +147,31 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
-
-## <a name="how-do-i-localize-content"></a>Návody lokalizovat obsah?
+## <a name="localize-content"></a>Lokalizace obsahu
 
 Obsah HTML můžete lokalizovat tím, že ve svém tenantovi Azure AD B2C povolíte [vlastní nastavení jazyka](active-directory-b2c-reference-language-customization.md) . Povolením této funkce umožníte Azure AD B2C přeposlání parametru `ui-locales` OpenID Connect do svého koncového bodu. Server obsahu může tento parametr použít k poskytování HTML stránek specifických pro jazyk.
 
-Obsah lze z různých míst načíst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS nastavíte strukturu složek na hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu {Culture: RFC5646}, zavoláte tu správnou. Například váš identifikátor URI vlastní stránky může vypadat jako `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`. Stránku v francouzštině můžete načíst vyvoláním obsahu z`https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
+Obsah lze z různých míst načíst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS nastavíte strukturu složek na hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu `{Culture:RFC5646}`, zavoláte tu správnou.
+
+Identifikátor URI vlastní stránky může vypadat například takto:
+
+```HTTP
+https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
+```
+
+Stránku v francouzštině můžete načíst tak, že nahrajete obsah z:
+
+```HTTP
+https://contoso.blob.core.windows.net/fr/myHTML/unified.html
+```
 
 ## <a name="examples"></a>Příklady
 
-Příklady úprav si můžete stáhnout a zkontrolovat v těchto [ukázkových souborech šablony](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
+Několik ukázkových souborů šablon najdete v úložišti [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) na GitHubu.
 
-## <a name="next-steps"></a>Další postup
+Ukázkové soubory HTML a CSS v šablonách se nacházejí v adresáři [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) .
+
+## <a name="next-steps"></a>Další kroky
 
 - Pokud používáte **toky uživatelů**, můžete začít přizpůsobovat uživatelské rozhraní pomocí tohoto kurzu:
 

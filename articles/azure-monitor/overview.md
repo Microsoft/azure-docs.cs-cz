@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989174"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262214"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
-Azure Monitor maximalizuje dostupnost a výkon vašich aplikací tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
+Azure Monitor maximalizuje dostupnost a výkon vašich aplikací tím, že poskytuje ucelené řešení pro shromažďování, analýzu a telemetrii z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -57,7 +57,7 @@ Azure Monitor může shromažďovat data z nejrůznějších zdrojů. Data monit
 
 Jakmile vytvoříte předplatné Azure a začnete přidávat prostředky, jako jsou virtuální počítače a webové aplikace, Azure Monitor začne shromažďovat data.  Záznamy [protokolů aktivit](platform/activity-logs-overview.md) při vytváření nebo úpravách prostředků [Metriky](platform/data-platform.md) vás informují o tom, jak prostředek pracuje, a prostředky, které je náročné. 
 
-Data, která shromažďujete, rozšíříte do skutečné operace prostředků tím [](platform/diagnostic-logs-overview.md) , že povolíte diagnostiku a [přidáte agenta](platform/agent-windows.md) pro výpočetní prostředky. Tím se shromáždí telemetrie pro interní operaci prostředku a umožní vám nakonfigurovat různé [zdroje dat](platform/agent-data-sources.md) pro shromažďování protokolů a metrik z hostovaného operačního systému Windows a Linux. 
+Data, která shromažďujete, rozšíříte do skutečné operace prostředků tím [](platform/resource-logs-overview.md) , že povolíte diagnostiku a [přidáte agenta](platform/agent-windows.md) pro výpočetní prostředky. Tím se shromáždí telemetrie pro interní operaci prostředku a umožní vám nakonfigurovat různé [zdroje dat](platform/agent-data-sources.md) pro shromažďování protokolů a metrik z hostovaného operačního systému Windows a Linux. 
 
 Povolení monitorování pro [App Services aplikace](app/azure-web-apps.md) nebo virtuálního [počítače a aplikace sady škálování virtuálních počítačů](app/azure-vm-vmss-apps.md), aby Application Insights mohl shromažďovat podrobné informace o vaší aplikaci včetně zobrazení stránek, žádostí o aplikace a výjimek. Dále ověřte dostupnost aplikace konfigurací [testu dostupnosti](app/monitor-web-app-availability.md) pro simulaci provozu uživatelů.
 

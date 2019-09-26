@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 08/08/2019
-ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 09/24/2019
+ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935257"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266938"
 ---
 > [!IMPORTANT]
 > * Nové okno **Azure Active Directory** > **Registrace aplikací** nahrazuje starší **Azure Active Directory** > **Registrace aplikací (starší verze)** . 2019. května.
@@ -29,7 +29,7 @@ ms.locfileid: "68935257"
 
     Vaše aplikace se tady zobrazí po registraci.
 
-1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Zvolte platný identifikátor URI pro přesměrování uživatelů na ověření a pak zaregistrujte.
+1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Zvolte platný identifikátor URI pro přesměrování uživatelů na ověření a pak **Zaregistrujte**.
 
    [![Vytvoření aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 

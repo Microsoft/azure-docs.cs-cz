@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881629"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266887"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr PROCESORů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště pro velikosti v tomto seskupení.
 
@@ -25,7 +25,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
 - Dv2-Series, následný postup pro původní řadu D, nabízí výkonnější procesor a optimální konfiguraci procesoru a paměti, která je vhodná pro většinu produkčních úloh. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založený na nejnovější generaci procesorů Intel Xeon® E5-2673 V3 2,4 GHz (Haswell) nebo E5-2673 V4 2,3 GHz (Broadwell) a s technologií Intel Turbo 2,0 může jít až o 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
-- Sada Dv3-Series obsahuje procesor Intel® Xeon s procesorem 2,4 GHz, Haswell (), nebo nejnovější procesory 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší polohu pro většinu úloh pro obecné účely.  Paměť se rozšířila (od ~ 3,5 GiB/vCPU na 4 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Dv3 už nemá vysoké velikosti virtuálních počítačů řady D/Dv2, které se přesunuly na novou rodinu Ev3.
+- Sada Dv3-Series obsahuje procesor Intel® Xeon s procesorem 2,4 GHz, Haswell (), nebo nejnovější procesory 2,3 GHz Intel Xeon® E5-2673 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší polohu pro většinu úloh pro obecné účely.  Paměť se rozšířila (od ~ 3,5 GiB/vCPU na 4 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Dv3 už nemá vysoké velikosti virtuálních počítačů řady D/Dv2, které se přesunuly na novou rodinu Ev3.
 
   Příklady případů použití řady D-Series zahrnují aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
 
@@ -65,7 +65,7 @@ Premium Storage:  Podporováno
 
 Ukládání Premium Storage do mezipaměti:  Podporováno
 
-Velikosti řady Dsv3-Series jsou založené 2,4 na procesoru Intel Xeon® E5-2673 V3 (Haswell) nebo nejnovějším 2,3 GHz procesory Intel® XEON s podporou 2,0 technologie Intel Turbo 2673 v4 (Broadwell). Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dsv3-Series jsou založené 2,4 na procesoru Intel Xeon® E5-2673 V3 (Haswell) nebo nejnovějším 2,3 GHz procesory Intel® Xeon s podporou technologie Intel 2,0 Turbo 2673 v4 (Broadwell). Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
 
 | Size             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
@@ -80,13 +80,15 @@ Velikosti řady Dsv3-Series jsou založené 2,4 na procesoru Intel Xeon® E5-267
 
 <sup>1</sup> Dsv3 – funkce virtuálního počítače řady Intel® technologie Hyper-Threading
 
-## <a name="dasv3-series"></a>Dasv3-Series
+## <a name="dasv3-series-preview"></a>Dasv3-Series (Preview)
 
 Premium Storage: Podporováno
 
 Ukládání Premium Storage do mezipaměti: Podporováno
 
-Velikosti řady Dasv3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452V procesor 2.35 GHz, který může dosáhnout posílených Fmax – v 3.35 GHz a využívat Storage úrovně Premium. Velikosti řady Dasv3-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dasv3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – z 3.35 GHz a použít Premium Storage. Velikosti řady Dasv3-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh.
+
+Pokud [si chcete zaregistrovat verzi Preview, klikněte sem](http://aka.ms/azureamdpreview).
 
 | Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB |
 |---|---|---|---|
@@ -106,7 +108,7 @@ Premium Storage:  Není podporováno
 
 Ukládání Premium Storage do mezipaměti:  Není podporováno
 
-Velikosti řady Dv3-Series jsou založené na procesoru Intel® Xeon s procesorem 2,4 GHz, nebo 2,3 GHz procesory Intel XEON® E5-2673 v4 (Broadwell), které mohou dosáhnout 3,5 GHz pomocí technologie Intel Turbo zvyšovat 2,0. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dv3-Series jsou založené na procesoru Intel® Xeon s procesorem 2,4 GHz, nebo 2,3 GHz procesory Intel Xeon® E5-2673 v4 (Broadwell), které mohou dosáhnout 3,5 GHz pomocí technologie Intel Turbo zvyšovat 2,0. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series. 
 
@@ -123,13 +125,15 @@ Velikosti řady Dv3-Series jsou založené na procesoru Intel® Xeon s procesore
 
 <sup>1</sup> Dv3 – funkce virtuálního počítače řady Intel® technologie Hyper-Threading
 
-## <a name="dav3-series"></a>Dav3-Series
+## <a name="dav3-series-preview"></a>Dav3-Series (Preview)
 
 Premium Storage: Není podporováno
 
 Ukládání Premium Storage do mezipaměti: Není podporováno
 
-Velikosti řady Dav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452V procesor 2.35 GHz, který může dosáhnout zvýšení Fmax – 3.35 GHz. Velikosti řady Dav3-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dasv3. Měřiče cen a účtování pro velikosti Dasv3 jsou stejné jako pro Dav3-Series.
+Velikosti řady Dav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – 3.35 GHz. Velikosti řady Dav3-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dasv3. Měřiče cen a účtování pro velikosti Dasv3 jsou stejné jako pro Dav3-Series.
+
+Pokud [si chcete zaregistrovat verzi Preview, klikněte sem](http://aka.ms/azureamdpreview).
 
 | Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB |
 |---|---|---|---|
@@ -165,7 +169,7 @@ Premium Storage:  Není podporováno
 
 Ukládání Premium Storage do mezipaměti:  Není podporováno
 
-| Size           | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Max. datových disků | Propustnost: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Size           | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Max. datových disků | Zvyšují IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4×500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8×500            | 2 / 1 500                                     |

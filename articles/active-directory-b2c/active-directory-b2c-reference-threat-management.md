@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065425"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256908"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Správa hrozeb pro prostředky a data v Azure Active Directory B2C
 
@@ -37,10 +37,10 @@ Prvních 10 intervalů uzamčení je jedna minuta. Příštích 10 období uzam�
 
 Správa nastavení ochrany heslem, včetně prahové hodnoty uzamčení:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. V pravé horní nabídce portálu vyberte filtr **adresář + předplatné** a pak vyberte svého tenanta Azure AD B2C.
-1. V nabídce vlevo vyberte **Azure Active Directory** (nebo v levé horní části portálu vyberte **všechny služby** a pak vyhledejte a vyberte *Azure Active Directory*).
-1. V části **zabezpečení**vyberte **metody ověřování**a pak vyberte **ochrana heslem**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Pomocí filtru **adresář a odběr** v horní nabídce vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. V části **zabezpečení**vyberte **metody ověřování (Preview)** a pak vyberte **ochrana heslem**.
 1. Zadejte požadovaná nastavení ochrany heslem a pak vyberte **Uložit**.
 
     ![Stránka Azure Portal ochrana heslem v nastavení Azure AD](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

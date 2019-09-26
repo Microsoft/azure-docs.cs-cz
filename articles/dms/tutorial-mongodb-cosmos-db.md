@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/04/2019
-ms.openlocfilehash: baf3c372d0c84d4daf439fdc92fa6eeac5d12d0b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 09/25/2019
+ms.openlocfilehash: 96540a8ea40efcc3a2d115980999c8d470b85180
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501020"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265950"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: Migrace MongoDB k rozhraní API pro Azure Cosmos DB pro MongoDB v režimu offline pomocí DMS
 
@@ -116,6 +116,9 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 ## <a name="specify-source-details"></a>Zadání podrobností o zdroji
 
 1. Na obrazovce **Podrobnosti o zdroji** zadejte podrobnosti o připojení pro zdrojový server MongoDB.
+
+   > [!IMPORTANT]
+   > Azure Database Migration Service nepodporuje Azure Cosmos DB jako zdroj.
 
     Existují tři režimy připojení ke zdroji:
    * **Standardní režim**, který přijímá plně kvalifikovaný název domény nebo IP adresu, číslo portu a přihlašovací údaje pro připojení.
@@ -220,6 +223,6 @@ Po migraci dat uložených v databázi MongoDB Azure Cosmos DB k rozhraní API p
 
 * [Informace o Cosmos DB službě](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Projděte si pokyny k migraci dalších scénářů v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.

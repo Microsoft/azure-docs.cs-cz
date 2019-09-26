@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725629"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261698"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Verze Preview: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
@@ -26,7 +26,7 @@ Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedica
 Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.4.2 nebo novější a že jste se přihlásili k účtu Azure v `Connect-AzAccount`rámci. Pokud chcete nainstalovat verzi 2.4.2, otevřete příkazový řádek PowerShellu a zadejte:
 
 ```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
 ```
 
 K povolení funkcí modulu Preview v PowerShellu budete potřebovat aspoň 1.6.0 verze modulu PowerShellGet. Nejnovější verze prostředí PowerShell Core mají tuto možnost automaticky vestavěnou, ale u starších verzí PowerShellu můžete spustit následující příkaz, který aktualizuje na nejnovější verzi:
@@ -215,7 +215,7 @@ Remove-AzResourceGroup -Name $rgName
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 

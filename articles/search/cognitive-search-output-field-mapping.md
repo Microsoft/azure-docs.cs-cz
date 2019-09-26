@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 0e422d2453fe12280da9e9b0b5dc7aa391f97b9f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186400"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265508"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Mapování obohacených polí na index s možností prohledávání
 
@@ -70,7 +69,7 @@ Cesta v sourceFieldName může představovat jeden nebo více elementů. V před
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po namapování obohacených polí na prohledávatelné pole můžete [jako součást definice indexu](search-what-is-an-index.md)nastavit atributy polí pro každé z polí, která lze prohledávat.
 
 Další informace o mapování polí najdete v tématu [mapování polí v Azure Search indexerech](search-indexer-field-mappings.md).

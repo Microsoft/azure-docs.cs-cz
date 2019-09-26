@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822355"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260844"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostické protokoly pro centra událostí Azure
 
 Dva typy protokolů můžete zobrazit pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** : Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)** : Můžete nakonfigurovat diagnostické protokoly pro bohatší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** : Tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md)** : Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší zobrazení všeho, co se stane s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
 
@@ -48,13 +48,13 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
     ![Změnit stav diagnostické protokoly](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Nastavení cíle archiv, který chcete zjistit. například protokoly účtu úložiště, Centrum událostí nebo Azure Monitor.
+5.  Nastavte cíl archivu, který chcete; například účet úložiště, centrum událostí nebo protokoly Azure Monitor.
 
 6.  Uložte nové nastavení diagnostiky.
 
 Nové nastavení se projeví během 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cíli v **diagnostické protokoly** podokně.
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie pro diagnostické protokoly
 

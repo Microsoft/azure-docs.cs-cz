@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104684"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266371"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -43,7 +43,7 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
  
 - Pomocí stejného prostředku privátního propojení lze vytvořit více privátních koncových bodů. V případě jedné sítě, která používá běžnou konfiguraci serveru DNS, doporučujeme použít jeden privátní koncový bod pro daný prostředek privátního propojení, aby nedocházelo k duplicitním položkám nebo konfliktům v překladu názvů DNS. 
  
-- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  
@@ -127,7 +127,7 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 |Specializované úlohy nemůžou přistupovat k privátním koncovým bodům.    |   Následující služby nasazené do vaší virtuální sítě nemají přístup k jakémukoli prostředku privátního propojení pomocí privátních koncových bodů:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   Ve verzi Preview není žádné zmírnění.       |
 |  Portál nepodporuje vytváření privátních koncových bodů pomocí aliasu.  |   Portál povoluje vytváření privátních koncových bodů pomocí identifikátoru URI prostředku.      | Pro vyžádání připojení privátních koncových bodů použít identifikátor URI prostředku        |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí portálu](create-private-endpoint-portal.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)

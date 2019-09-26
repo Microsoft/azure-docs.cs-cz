@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638277"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266156"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojit malinu pi k Azure IoT Hub (Node. js)
 
@@ -135,7 +135,7 @@ Použijte Breadboard a vodiče můstků k připojení indikátoru LED a BME280 k
 
 ![Připojení k malinu PI a snímač](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-Senzor BME280 může shromažďovat data o teplotě a vlhkosti. Indikátor LED bude blikat, když zařízení pošle zprávu do cloudu. 
+Senzor BME280 může shromažďovat data o teplotě a vlhkosti. Indikátor LED bude blikat, když zařízení pošle zprávu do cloudu.
 
 Pro PIN kódy senzorů použijte následující kabely:
 
@@ -170,8 +170,8 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
 1. Připojte se k malin. PI jedním z následujících klientů SSH z hostitelského počítače:
 
    **Uživatelé systému Windows**
-  
-   a. Stažení a instalace [výstupu](https://www.putty.org/) pro Windows 
+
+   a. Stažení a instalace [výstupu](https://www.putty.org/) pro Windows
 
    b. Zkopírujte IP adresu vašeho PI do části název hostitele (nebo IP adresa) a jako typ připojení vyberte SSH.
 
@@ -192,10 +192,10 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
    node -v
    ```
 
-   Pokud je verze nižší než 11. x nebo pokud ve verzi PI není Node. js, nainstalujte nejnovější verzi.
+   Pokud je verze nižší než 10. x nebo pokud ve verzi PI není Node. js, nainstalujte nejnovější verzi.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
    V tomto souboru jsou dvě položky, které můžete nakonfigurovat. První z nich je `interval`, který definuje časový interval (v milisekundách) mezi zprávami odesílanými do cloudu. Druhá je `simulatedData`, což je logická hodnota, která určuje, jestli se mají použít Simulovaná data senzoru nebo ne.
 
    Pokud nemáte **senzor**, nastavte `simulatedData` hodnotu `true` na, aby ukázková aplikace vytvořila a používala Simulovaná data snímače.
+
+   *Poznámka: Adresa I2C použitá v tomto kurzu je ve výchozím nastavení 0x77. V závislosti na vaší konfiguraci může být také 0x76: Pokud narazíte na chybu I2C, zkuste změnit hodnotu na 118 a zjistit, jestli to funguje lépe. Pokud chcete zjistit, jakou adresu používá váš senzor, spusťte `sudo i2cdetect -y 1` v prostředí na Maline PI.*
 
 2. Uložte a ukončete zadáním příkazu Control-O > zadejte > Control-X.
 
@@ -252,7 +254,7 @@ Jedním ze způsobů, jak monitorovat zprávy přijaté službou IoT Hub ze své
 
 Další způsoby, jak zpracovávat data odesílaná vaším zařízením, můžete pokračovat k další části.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Spustili jste ukázkovou aplikaci, která shromáždí data ze senzorů a pošle ji do služby IoT Hub.
 

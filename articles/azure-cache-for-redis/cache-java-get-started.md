@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019
-ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 019defe782f8258acfd508745d36a0a6599d2e61
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881140"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273904"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití Azure cache pro Redis s Java
 
@@ -135,7 +135,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předtím hodnotu z mezipaměti, která byla nastavena pomocí konzoly Redis na webu Azure Portal. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
-![Dokončená aplikace v mezipaměti](./media/cache-java-get-started/cache-app-complete.png)
+![Aplikace Azure cache pro Redis se dokončila.](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -151,13 +151,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 1. Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
-   ![Odstranění](./media/cache-java-get-started/cache-delete-resource-group.png)
+   ![Skupina prostředků Azure se odstranila.](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
 1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrďte je a vyberte **Odstranit**.
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace Java. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
 

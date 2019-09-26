@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
-ms.subservice: cognitive-search
-ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004007"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265188"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Práce s projekcemi v úložišti znalostí v Azure Search
 
@@ -173,7 +172,7 @@ Případně, pokud potřebujete použít obohacená data v kanálu pro datové v
 
 Nakonec, pokud potřebujete exportovat data z znalostní báze Knowledge Store, Azure Data Factory obsahuje konektory pro export dat a pozemky v databázi podle vašeho výběru. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Jako další krok si vytvořte svoje první úložiště znalostní báze s použitím ukázkových dat a pokynů.
 

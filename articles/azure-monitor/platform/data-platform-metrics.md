@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: ea95b91d57255db8f638e600d57a98db314cd80f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e534754e46e6f2ad9b99b67d24d9f7da63a51a4f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113527"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258364"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
@@ -37,7 +37,7 @@ Následující tabulka uvádí různé způsoby, jak můžete použít data metr
 | Vizualizace | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
 | Výstrahy | Nakonfigurujte [pravidlo upozornění metriky](alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
 | Automatizovat |  Pomocí [automatického škálování](autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
-| Export | [Směrování metriky do protokolů](diagnostic-logs-stream-log-store.md) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
+| Export | [Směrování metriky do protokolů](resource-logs-collect-storage.md) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
 | Stahovat | Přístup k hodnotám metrik z příkazového řádku pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí [CLI](/cli/azure/monitor/metrics). |
 | Archiv | [Archiv](..//learn/tutorial-archive-data.md) historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo v režimu offline pro účely vykazování. |
 
@@ -110,13 +110,13 @@ Pro většinu prostředků v Azure se metriky ukládají po dobu 93 dnů. Existu
 
 
 > [!NOTE]
-> Metriky [platformy pro Azure monitor prostředky můžete odeslat do Log Analytics pracovního prostoru](diagnostic-logs-stream-log-store.md) pro dlouhodobé trendy.
+> Metriky [platformy pro Azure monitor prostředky můžete odeslat do Log Analytics pracovního prostoru](resource-logs-collect-storage.md) pro dlouhodobé trendy.
 
 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Azure monitor datovou platformu](data-platform.md).
 - Přečtěte si o [datech protokolu v Azure monitor](data-platform-logs.md).

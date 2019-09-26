@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e6771a0d72592f1952853642ceea196b02774ada
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595305"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257624"
 ---
 # <a name="customize-your-text-translations"></a>Přizpůsobení překladů textu
 
@@ -29,7 +29,7 @@ Pomocí vlastního překladatele můžete vytvářet neuronové překladatelské
 
 ### <a name="how-does-it-work"></a>Jak to funguje?
 
-Pomocí dříve přeložených dokumentů (letáků, webových stránek, dokumentace atd.) sestavíte systém překladu, který odráží vaši terminologii a styl specifický pro doménu, a lepší než obecný systém překladu. Uživatelé můžou ukládat dokumenty TMX, XLIFF, TXT, DOCX a XLSX.  
+Pomocí dříve přeložených dokumentů (letáků, webových stránek, dokumentace atd.) sestavíte systém překladu, který odráží vaši terminologii a styl specifický pro doménu, a lepší než standardní systém překladu. Uživatelé můžou ukládat dokumenty TMX, XLIFF, TXT, DOCX a XLSX.  
 
 Systém také přijímá data, která jsou paralelní na úrovni dokumentu, ale ještě není zarovnána na úrovni věty. Pokud mají uživatelé přístup k verzím stejného obsahu v různých jazycích, ale v samostatných dokumentech vlastní Překladatel bude moci automaticky rozlišovat věty mezi dokumenty.  Systém může také použít monolingual data v jednom nebo obou jazycích k doplnění dat paralelního školení pro zlepšení překladu.
 
@@ -61,7 +61,7 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 > [!NOTE]
 > Od 1. února 2018, AddTranslation () a AddTranslationArray () již nejsou k dispozici pro použití s Translator Text API V 2.0. Tyto metody selžou a nic se nebudou zapisovat. Translator Text API V 3.0 tyto metody nepodporuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Nastavení přizpůsobeného jazykového systému pomocí vlastního překladatele](https://aka.ms/CustomTranslatorDocs)

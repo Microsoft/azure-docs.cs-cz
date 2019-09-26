@@ -4,17 +4,17 @@ description: Jak ověřit podřízená zařízení nebo listová zařízení pro
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003629"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266129"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -32,7 +32,7 @@ Kroky v tomto článku ukazují ruční zřizování zařízení, ne Automatick�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md).
+Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md). Pokud pro vaše zařízení pro příjem dat používáte ověřování X. 509, musíte použít stejný skript pro generování certifikátů, který jste nastavili v článku transparentní brány. 
 
 Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Používá se k vytvoření certifikátů v tomto článku a odkazuje se na připojovací řetězec zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele.
 
@@ -386,6 +386,6 @@ private static String privateKeyString =
 DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCertificateString, false, privateKeyString, false);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po dokončení tohoto článku byste měli mít zařízení IoT Edge fungující jako transparentní bránu a pro zařízení zaregistrovaná ve službě IoT Hub. Dále je potřeba nakonfigurovat zařízení pro příjem dat tak, aby důvěřovala zařízení brány a odesílala do ní zprávy. Další informace najdete v tématu [připojte zařízení za příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).

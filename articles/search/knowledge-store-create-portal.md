@@ -4,16 +4,15 @@ description: Pomocí Průvodce importem dat v Azure Portal Vytvořte Azure Searc
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 14996d0ac9ee4e086a5dccd9275ef694adca06ca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963019"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265199"
 ---
 # <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Vytvoření Azure Search Knowledge Store v Azure Portal
 
@@ -78,7 +77,7 @@ V tomto kroku průvodce vytvoříte zdroj dat z objektu blob Azure s daty hotel�
 1. V části **režim analýzy**vyberte **text s oddělovači**a potom zaškrtněte políčko **první řádek obsahuje záhlaví** . Ujistěte se, že **znak oddělovače** je čárka (,).
 1. Zadejte **připojovací řetězec** služby úložiště, který jste uložili v předchozím kroku.
 1. Jako **název kontejneru**zadejte `hotel-reviews`.
-1. Klikněte **na další: Přidat vyhledávání rozpoznávání (volitelné)** .
+1. Klikněte na **Další: Přidat vyhledávání rozpoznávání (volitelné)** .
 
       ![Vytvoření objektu zdroje dat](media/knowledge-store-create-portal/hotel-reviews-ds.png "Vytvoření objektu zdroje dat")
 
@@ -107,7 +106,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
     ![Konfigurace úložiště znalostí](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurace úložiště znalostí")
 
-1. Klikněte **na další: Přizpůsobení cílového indexu**.
+1. Klikněte na **Další: Přizpůsobení cílového indexu**.
 
 ### <a name="import-data-import-data-wizard"></a>Importovat data (Průvodce importem dat)
 
@@ -123,7 +122,7 @@ V tomto kroku průvodce nakonfigurujete index pro volitelné dotazy fulltextové
 
     ![Konfigurace indexu](media/knowledge-store-create-portal/hotel-reviews-idx.png "Konfigurace indexu")
 
-1. Klikněte **na další: Vytvořte indexer**.
+1. Klikněte na **Další: Vytvořte indexer**.
 
 ### <a name="create-an-indexer"></a>Vytvořit indexer
 
@@ -137,7 +136,7 @@ V tomto kroku průvodce nakonfigurujete indexer, který se bude načítat zdroje
 
 1. V Azure Portal Sledujte odkaz na stav **oznámení Azure Search** kliknutím na odkaz. Provedení může trvat několik minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nastavili data pomocí služeb rozpoznávání a výsledky jste prozkoumali do úložiště Knowledge Store, můžete k prozkoumání obohacené sady dat použít Průzkumník služby Storage nebo Power BI.
 

@@ -1,27 +1,27 @@
 ---
 title: Notification Hubs zabezpečení
-description: Toto téma vysvětluje zabezpečení pro centra oznámení Azure.
+description: Toto téma vysvětluje zabezpečení pro Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
 editor: jwargo
-ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
+ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 753493100bbdb34255574656a47217560e2d321a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 09/23/2019
+ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213055"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273619"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
 
@@ -29,13 +29,18 @@ ms.locfileid: "71213055"
 
 Toto téma popisuje model zabezpečení Azure Notification Hubs.
 
-## <a name="shared-access-signature-security-sas"></a>Zabezpečení sdíleného přístupového podpisu (SAS)
+## <a name="shared-access-signature-security"></a>Zabezpečení sdíleného přístupového podpisu
 
-Notification Hubs implementuje schéma zabezpečení na úrovni entity nazývané SAS (sdílený přístupový podpis). Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sadu práv, jak je vysvětleno v tématu [deklarace identity zabezpečení](#security-claims). Při vytváření centra oznámení se automaticky vytvoří dvě pravidla: jednu s právy na **naslouchání** (kterou používá klientská aplikace) a druhá se **všemi** právy (které aplikace back-end používá).
+Notification Hubs implementuje schéma zabezpečení na úrovni entit označované jako *sdílený přístupový podpis* (SAS). Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sadu práv, jak je vysvětleno dále v tématu [deklarace zabezpečení](#security-claims). 
+
+Při vytváření rozbočovače se automaticky vytvoří dvě pravidla: jednu s právy na **naslouchání** (kterou používá klientská aplikace) a druhá se **všemi** právy (které používá back-end aplikace):
+
+- **DefaultListenSharedAccessSignature**: uděluje pouze oprávnění k **naslouchání** .
+- **DefaultFullSharedAccessSignature**: uděluje **příjem**, **správu**a **odesílání** oprávnění. Tato zásada se použije jenom v back-endu vaší aplikace. Nepoužívejte ho v klientských aplikacích. Použijte zásady jenom s přístupem **naslouchat** . Pokud chcete vytvořit nové zásady vlastního přístupu pomocí nového tokenu SAS, přečtěte si téma [tokeny SAS pro zásady přístupu](#sas-tokens-for-access-policies) dále v tomto článku.
 
 Pokud při provádění správy registrace z klientských aplikací nejsou informace odesílané prostřednictvím oznámení citlivé (například aktualizace o počasí), je pro přístup k centru oznámení běžný způsob, jak získat přístup ke službě centrum oznámení, aby byla hodnota klíče pravidla pro příjem pouze pro přístup k klientské aplikaci, a pokud chcete, aby klíčová hodnota pravidla měla plný přístup k back-endu aplikace.
 
-Aplikace by neměly vkládat hodnotu klíče do klientských aplikací pro Windows Store, místo toho si klientské aplikace načtou z back-endu aplikace při spuštění.
+Aplikace by neměly vkládat hodnotu klíče v klientských aplikacích pro Windows Store; místo toho si klientské aplikace načtou z back-endu aplikace při spuštění.
 
 Klíč s přístupem k **naslouchání** umožňuje klientské aplikaci zaregistrovat se pro libovolnou značku. Pokud vaše aplikace musí omezit registrace na konkrétní značky pro konkrétní klienty (například když značky reprezentují ID uživatelů), musí back-end aplikace provést registrace. Další informace najdete v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md). Tímto způsobem klientská aplikace nebude mít přímý přístup k Notification Hubs.
 
@@ -47,9 +52,33 @@ Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři d
 | ------- | ---------------------------------------------------- | ------------------ |
 | Naslouchání  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
 | Poslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
-| Spravovat  | CRUD na Notification Hubs (včetně aktualizace přihlašovacích údajů PNS a bezpečnostních klíčů) a čtení registrací na základě značek |Vytvořit, aktualizovat, číst a odstranit centra oznámení<br><br>Čtení registrací podle značky |
+| Spravovat  | CRUD na Notification Hubs (včetně aktualizace přihlašovacích údajů PNS a bezpečnostních klíčů) a čtení registrací na základě značek |Vytváření, aktualizace, čtení a odstraňování Center<br><br>Čtení registrací podle značky |
 
-Notification Hubs přijímá podpisové tokeny vytvořené se sdílenými klíči nakonfigurovanými přímo v centru oznámení.
+Notification Hubs akceptuje tokeny SAS vygenerované se sdílenými klíči nakonfigurovanými přímo na rozbočovači.
 
-Není možné odesílat oznámení do více než jednoho oboru názvů. Obory názvů představují logický kontejner pro centra oznámení a nejsou zapojená do odesílání oznámení.
-Zásady přístupu na úrovni oboru názvů (přihlašovací údaje) se dají použít pro operace na úrovni oboru názvů, například: výpis Center oznámení, vytváření nebo odstraňování Center oznámení atd. Jenom zásady přístupu na úrovni centra by vám umožnily odeslat oznámení.
+Není možné odesílat oznámení do více než jednoho oboru názvů. Obory názvů jsou logické kontejnery pro Notification Hubs a nejsou součástí odesílání oznámení.
+
+Použijte zásady přístupu na úrovni oboru názvů (přihlašovací údaje) pro operace na úrovni oboru názvů; Příklad: výpis Center, vytváření a odstraňování Center atd. Oznámení můžou odesílat jenom zásady přístupu na úrovni centra.
+
+### <a name="sas-tokens-for-access-policies"></a>Tokeny SAS pro zásady přístupu
+
+Pokud chcete vytvořit novou deklaraci zabezpečení nebo zobrazit existující klíče SAS, udělejte toto:
+
+1. Přihlaste se k portálu Azure.
+2. Vyberte **Všechny prostředky**.
+3. Vyberte název centra oznámení, pro který chcete vytvořit deklaraci identity, nebo se podívejte na klíč SAS.
+4. V nabídce na levé straně vyberte **zásady přístupu**.
+5. Vyberte **nové zásady** a vytvořte novou deklaraci zabezpečení. Zadejte název zásady a vyberte oprávnění, která chcete udělit. Pak vyberte **OK**.
+6. V okně zásady přístupu se zobrazí úplný připojovací řetězec (včetně nového klíče SAS). Tento řetězec můžete zkopírovat do schránky pro pozdější použití.
+
+Pokud chcete získat klíč SAS z konkrétní zásady, vyberte tlačítko **Kopírovat** vedle zásady obsahující klíč SAS, který chcete. Vložte tuto hodnotu do dočasného umístění a pak zkopírujte část klíče SAS připojovacího řetězce. V tomto příkladu se používá obor názvů Notification Hubs s názvem **mytestnamespace1**a zásada s názvem **policy2**. Klíč SAS je hodnota poblíž konce řetězce, kterou Určuje **SharedAccessKey**:
+
+```shell
+Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
+```
+
+![Získat klíče SAS](media/notification-hubs-push-notification-security/access1.png)
+
+## <a name="next-steps"></a>Další kroky
+
+- [Přehled Notification Hubs](notification-hubs-push-notification-overview.md)

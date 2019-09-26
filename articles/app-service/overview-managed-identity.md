@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098476"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260143"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -309,7 +309,10 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > |resource|Dotaz|Identifikátor URI prostředku AAD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.|
 > |api-version|Dotaz|Verze rozhraní API tokenu, která se má použít. "2017-09-01" je aktuálně podporovaná verze.|
 > |secret|Záhlaví|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).|
-> |ClientID|Dotaz|Volitelné ID uživatelem přiřazené identity, která se má použít. Je-li tento parametr vynechán, je použita identita přiřazená systémem.|
+> |ClientID|Dotaz|(Volitelné, pokud není přiřazeno uživatelem) ID uživatelem přiřazené identity, která se má použít. Je-li tento parametr vynechán, je použita identita přiřazená systémem.|
+
+> [!IMPORTANT]
+> Pokud se pokoušíte získat tokeny pro uživatelsky přiřazené identity, musíte zahrnout `clientid` vlastnost. V opačném případě se služba tokenů pokusí získat token pro identitu přiřazenou systémem, která může nebo nemusí existovat.
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 

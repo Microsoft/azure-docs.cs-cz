@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018173"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268779"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backupm: Problémy s agentem nebo rozšířením
 
@@ -233,7 +233,11 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="clean_up_restore_point_collection"></a>Vyčistit kolekci bodů obnovení
 
-Po odebrání zámku je potřeba vyčistit body obnovení. Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:<br>
+Po odebrání zámku je potřeba vyčistit body obnovení.
+
+Pokud odstraníte skupinu prostředků virtuálního počítače nebo samotný virtuální počítač, zůstanou snímky pro okamžité obnovení na spravovaných discích aktivní a jejich platnost vyprší v závislosti na sadě pro uchovávání informací. Chcete-li odstranit snímky okamžitého obnovení (Pokud už je nepotřebujete) uložené v kolekci bodů obnovení, vyčistěte kolekci bodů obnovení podle kroků uvedených níže.
+
+Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:<br>
 
 - [Vyčištění kolekce bodů obnovení spuštěním služby ad hoc Backup](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Vyčistit kolekci bodů obnovení z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>

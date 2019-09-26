@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232380"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261392"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
@@ -108,7 +108,7 @@ K povolení diagnostického protokolování v Azure Portal použijte následují
        { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
        ```
 
-      * **Požadavky**na metriky: Tuto možnost vyberte, pokud chcete ukládat podrobná data do [metrik Azure](../azure-monitor/platform/metrics-supported.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
+      * **Požadavky na metriky**: Tuto možnost vyberte, pokud chcete ukládat podrobná data do [metrik Azure](../azure-monitor/platform/metrics-supported.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
 
 3. Vyberte **Uložit**.
 
@@ -481,7 +481,7 @@ Následující tabulka popisuje obsah každé položky protokolu.
 
 ## <a name="next-steps"></a>Další postup
 
-- Pochopit postup při povolování protokolování a metrik a protokolů kategorií, které podporují různé služby Azure, přečtěte si i [přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) a [přehled o diagnostické protokoly Azure ](../azure-monitor/platform/diagnostic-logs-overview.md) článků.
+- Pochopit postup při povolování protokolování a metrik a protokolů kategorií, které podporují různé služby Azure, přečtěte si i [přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) a [přehled o diagnostické protokoly Azure ](../azure-monitor/platform/resource-logs-overview.md) článků.
 - Přečtěte si tyto články Další informace o službě event hubs:
    - [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

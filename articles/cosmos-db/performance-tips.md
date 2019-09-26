@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200318"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261314"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -47,7 +47,6 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 10000 až 20000    |
      |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Přímý protokol TCP i HTTPS používají protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
@@ -60,8 +59,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct,
-        ConnectionProtocol = Protocol.Tcp
+        ConnectionMode = ConnectionMode.Direct
      });
      ```
 
@@ -130,13 +128,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
      SQL .NET SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku. Paralelní dotazy poskytují dva parametry, které mohou uživatelé ladit tak, aby vyhovovaly vlastním požadavkům, (a) Z MaxDegreeOfParallelism: pro kontrolu maximálního počtu oddílů, které lze následně dotazovat paralelně a (b) MaxBufferedItemCount: pro řízení počtu předem načtené výsledky.
 
-    (a) ***ladění z MaxDegreeOfParallelism\:***  paralelního dotazu funguje tak, že dotazuje paralelní dotazování na více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Nastavením Z MaxDegreeOfParallelism na počet oddílů proto dosáhnete maximální pravděpodobností dosažení nejvíce výkonného dotazu, za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete nastavit Z MaxDegreeOfParallelism na vysoké číslo a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako Z MaxDegreeOfParallelism.
+    (a) ***stupeň\: vyladění*** paralelní paralelní dotaz funguje tak, že dotazuje paralelně dotazování na více oddílů. Data z jednotlivého oddílu se ale v souvislosti s dotazem načítají do sériového tvaru. Nastavení v sadě [SDK v2](sql-api-sdk-dotnet.md) nebo `MaxConcurrency` v [sadě SDK V3](sql-api-sdk-dotnet-standard.md) na počet oddílů má maximální šanci na dosažení nejvíce výkonného dotazu za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. `MaxDegreeOfParallelism` Pokud neznáte počet oddílů, můžete nastavit míru paralelismu na vysoké číslo a systém zvolí minimální (počet oddílů, vstup zadaný uživatelem) jako stupeň paralelismu.
 
     Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
     (b) ***optimalizace\:***  paralelního dotazu MaxBufferedItemCount je navržena tak, aby se výsledky předem načetly, zatímco je aktuální dávka výsledků zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. MaxBufferedItemCount je parametr pro omezení počtu předběžně načtených výsledků. Nastavení MaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
-    Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
+    Předběžné načítání funguje stejným způsobem bez ohledu na stupeň paralelismu a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
 6. **Zapnout GC na straně serveru**
 
     Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na true.

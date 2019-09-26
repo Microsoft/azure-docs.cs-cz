@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850260"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259178"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
 
@@ -24,7 +24,7 @@ Tento článek poskytuje informace o řešení problémů s požadovanou konfigu
 
 Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
 
-1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k PowerShellu [DSC](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 
    Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
 
@@ -149,7 +149,7 @@ Provedli jste upgrade verze WMF a máte poškozenou službu WMI.
 
 #### <a name="resolution"></a>Řešení
 
-Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) .
+Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
 ### <a name="issue-using-credential"></a>Případě Nejde použít přihlašovací údaje v konfiguraci DSC.
 
@@ -222,7 +222,7 @@ Známý problém se službou kompilace.
 
 Nejlepším alternativním řešením je kompilace místně nebo v kanálu CI/CD a nahrání souborů MOF přímo do služby.  Pokud je kompilace ve službě požadavkem, další nejlepší alternativní řešení by mělo rozdělit úlohy kompilace, aby se v názvech překrývaly.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

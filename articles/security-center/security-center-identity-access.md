@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202277"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268865"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
-
-> [!NOTE]
-> Odkaz "zobrazení *klasické* identity & přístupu" se vyřadí z 31. července 2019. Pokud se chcete dozvědět o alternativních službách, klikněte [sem](security-center-features-retirement-july2019.md#menu_classicidentity) .
 
 > [!NOTE]
 > Identita monitorování a přístup je ve verzi Preview a dostupná jenom na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
@@ -80,7 +77,7 @@ V části **Přehled**najdete seznam doporučení. První sloupec uvádí doporu
 ### <a name="subscriptions-section"></a>Oddíl Subscriptions
 Včásti Předplatná je seznam předplatných. První sloupec obsahuje seznam předplatných. Druhý sloupec zobrazuje celkový počet doporučení pro každé předplatné. Třetí sloupec zobrazuje závažnost problémů.
 
-![Karta předplatného][4]
+![Karta Předplatná][4]
 
 1. Vyberte předplatné. Souhrnné zobrazení otevřete tři karty:
 
@@ -125,13 +122,13 @@ Následující tabulku použijte jako pomůcku, která vám pomůže pochopit do
 > Pokud jste vytvořili zásadu podmíněného přístupu, která vyžaduje MFA, ale má nastavené vyloučení, vyhodnocování doporučení pro Security Center MFA posuzuje zásady, které nedodržují předpisy, protože umožňuje některým uživatelům přihlašovat se k Azure bez MFA.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících článcích:
 
 - [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 - [Ochrana dat a služby SQL Azure v Azure Security Center](security-center-sql-service-recommendations.md)
 
-Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+Další informace o službě Security Center najdete v následujících článcích:
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Vysvětlení výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Najděte odpovědi na nejčastější dotazy ohledně používání služby Security Center.

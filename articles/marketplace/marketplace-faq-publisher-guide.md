@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309017"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259945"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k Marketplace
 
@@ -185,7 +185,7 @@ Zákazníkům smlouva Enterprise (EA) se účtuje jejich EA. Konkrétní Azure M
 
 **Kde se můžu podívat na podrobnosti předplatného Azure Marketplace a informace o fakturaci?**
 
-MOSP – zákazníci s [předplatným Microsoft Online](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) můžou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části [Azure Portal]cost management + fakturace.
+MOSP – zákazníci s předplatným [Microsoft Online](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) můžou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části [Azure Portal]cost management + fakturace.
 
 Zákazníci smlouva Enterprise (EA) mohou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části Cost Management + fakturace [Azure Portal].
 
@@ -244,6 +244,14 @@ Kontaktujte poskytovatele vydavatelů pro veškerou technickou podporu produktu.
 Nákupy vytvořené z [Azure Marketplace](https://azuremarketplace.microsoft.com/) nejde vrátit, ale můžete je zrušit nebo odstranit. Nabídky na základě spotřeby se účtují podle využití, takže když se stav zastaví, účtují se i poplatky. Předplatné se zruší a nebude se účtovat po aktuálním fakturačním období. Pokud se předplatné zruší krátce po nákupu (24 hodin po dobu měsíčně a 14 dní pro roční), poskytne se plná náhrada.
 
 Zákazníci musí přímo kontaktovat vydavatele ohledně všech technických problémů souvisejících se službou na webu Marketplace nebo nákupem. Kontaktní údaje vydavatele nebo odkaz na web podpory najdete na stránce s podrobnostmi řešení na Azure Marketplace.
+
+**Jak se při zvýšení střední doby zpracovávají přidané licence?**
+
+Licence přidané do stávajícího předplatného se pro zbytek doby trvání předplatného vyhodnotily poměrně.
+
+**Jak se vychází z odebrání licencí v polovině období?**
+
+Licence, které se zruší, budou podléhat zásadám refundace, které se v těchto nejčastějších dotazech našly.  Všechny zrušené licence se okamžitě odeberou z vašeho účtu a už se nedají použít k jejich použití.
 
 ## <a name="faq-for-publishers"></a>Nejčastější dotazy pro vydavatele
 
@@ -305,7 +313,7 @@ Pokud potřebujete další informace a chcete začít s povolením zkušební ve
 
 **Návody začít s registrací centra pro vývoj?**
 
-Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že se [přihlásíte](https://account.microsoft.com/account/) pomocí účet Microsoft, které se přidruží k účtu vývojáře.
+Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že [](https://account.microsoft.com/account/) se přihlásíte pomocí účet Microsoft, které se přidruží k účtu vývojáře.
 
 Pokud ještě nemáte účet Microsoft, můžete [vytvořit účet](https://signup.live.com/) (například contoso_marketplace@live.com).
 
@@ -376,7 +384,7 @@ Další informace o našich výhodách GTM a možnostech, jak rozšiřovat své 
 
 **Kde jsou Azure Marketplace řešení povýšená v rámci webových vlastností Microsoftu?**
 
-Řešení Azure Marketplace jsou k dispozici na webu Microsoft [Azure Portal]a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Vývojáři cloudu a IT profesionálové, kteří používají Azure, mají při každém přihlášení expozici partnerským řešením. Podmnožina partnerských řešení se taky prezentuje a otáčí na stránce [Azure Marketplace domovskou](https://azuremarketplace.microsoft.com/marketplace) [stránku a řešení Azure](https://azure.microsoft.com/solutions/).
+Řešení Azure Marketplace jsou k dispozici na webu Microsoft [Azure Portal]a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Vývojáři cloudu a IT profesionálové, kteří používají Azure, mají při každém přihlášení expozici partnerským řešením. Podmnožina partnerských řešení se taky prezentuje a otáčí na stránce [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) domovskou [stránku a řešení Azure](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Fakturace a platby
 
@@ -406,7 +414,7 @@ V případě problémů s fakturací a předplatnými Azure Marketplace nákupu 
 
 **Na koho se mám obrátit s dotazy ohledně publikování nebo správy nabídek?**
 
-Projděte si [příručku pro Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete pomocí [Podpora Microsoftu v portál partnerů cloudu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)protokolovat lístek.
+Projděte si příručku pro [Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete pomocí [Podpora Microsoftu v portál partnerů cloudu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)protokolovat lístek.
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
 
@@ -445,7 +453,7 @@ Transakce se dají provádět v následujících 17 měnách: AUD, BRL, CAD, CHF
 
 Nabídka předplatného úrovně Free je trvale zadarmo.  Bezplatná zkušební verze softwaru (vyzkoušejte si ji teď) je placené předplatné, zdarma jenom po omezené časové období.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](/azure/marketplace/marketplace-publishers-guide) .
 

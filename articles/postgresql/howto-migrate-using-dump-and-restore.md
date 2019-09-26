@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 43e6fe301cf28b7a342ba2e802c9fce19bfeec4d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/24/2019
+ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815851"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261908"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
-[Pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) můžete použít k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pro obnovení databáze PostgreSQL z archivního souboru vytvořeného pomocí pg_dump.
+[Pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) můžete použít k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) pro obnovení databáze PostgreSQL z archivního souboru vytvořeného pomocí pg_dump.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
-- nainstalované nástroje příkazového řádku [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)
+- nainstalované nástroje příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)
 
 Pomocí těchto kroků vypíšete a obnovíte databázi PostgreSQL:
 
 ## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Vytvořte soubor s výpisem paměti pomocí pg_dump, který obsahuje data, která se mají načíst.
 Pokud chcete zálohovat stávající databázi PostgreSQL místně nebo na virtuálním počítači, spusťte následující příkaz:
 ```bash
-pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
+pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
 Například pokud máte místní server a databázi s názvem **TestDB** .
 ```bash
-pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
+pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
 
 
@@ -57,14 +57,14 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby Azure Database for PostgreSQL, je zálohovat databázi ve zdroji a obnovit ji v Azure. Pokud chcete zkrátit dobu potřebnou k dokončení migrace, zvažte použití následujících parametrů s příkazy Backup a Restore.
 
 > [!NOTE]
-> Podrobné informace o syntaxi najdete v článcích [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+> Podrobné informace o syntaxi najdete v článcích [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html).
 >
 
 ### <a name="for-the-backup"></a>Pro zálohu
 - Proveďte zálohu pomocí přepínače-FC, aby bylo možné provést obnovení paralelně, abyste ho urychlili. Příklad:
 
     ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>Pro obnovení
@@ -89,6 +89,6 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 
 Nezapomeňte otestovat a ověřit tyto příkazy v testovacím prostředí předtím, než je použijete v produkčním prostředí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Postup migrace databáze PostgreSQL pomocí exportu a importu najdete v tématu [migrace databáze PostgreSQL pomocí exportu a importu](howto-migrate-using-export-and-import.md).
 - Další informace o migraci databází do Azure Database for PostgreSQL najdete v [Průvodci migrací databáze](https://aka.ms/datamigration).

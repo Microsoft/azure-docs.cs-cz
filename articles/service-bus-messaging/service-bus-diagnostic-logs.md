@@ -1,6 +1,6 @@
 ---
-title: Diagnostické protokoly Azure Service Bus | Dokumentace Microsoftu
-description: Zjistěte, jak nastavili odesílání diagnostických protokolů pro služby Service Bus v Azure.
+title: Protokoly diagnostiky Azure Service Bus | Microsoft Docs
+description: Přečtěte si, jak nastavit diagnostické protokoly pro Service Bus v Azure.
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714106"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261807"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
+# <a name="service-bus-diagnostic-logs"></a>Protokoly diagnostiky Service Bus
 
-Dva typy protokolů můžete zobrazit pro Azure Service Bus:
-* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** . Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)** . Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všech novinkách, ke které dochází v rámci úlohy. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+Pro Azure Service Bus můžete zobrazit dva typy protokolů:
+* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** . Tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md)** . Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všeho, co se v rámci úlohy děje. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
 
-Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diagnostických protokolů, proveďte následující kroky:
+Diagnostické protokoly jsou ve výchozím nastavení zakázané. Chcete-li povolit diagnostické protokoly, proveďte následující kroky:
 
 1.  V [webu Azure portal](https://portal.azure.com)v části **monitorování a správa**, klikněte na tlačítko **diagnostické protokoly**.
 
-    ![navigace v okně diagnostické protokoly](./media/service-bus-diagnostic-logs/image1.png)
+    ![navigační okno s diagnostickými protokoly](./media/service-bus-diagnostic-logs/image1.png)
 
 2. Klikněte na prostředek, který chcete monitorovat.  
 
@@ -44,39 +44,39 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
 4.  Pro **stav**, klikněte na tlačítko **na**.
 
-    ![změnit stav diagnostické protokoly](./media/service-bus-diagnostic-logs/image3.png)
+    ![změnit diagnostické protokoly stavu](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Nastavení cíle archiv, který chcete zjistit. například protokoly účtu úložiště, Centrum událostí nebo Azure Monitor.
+5.  Nastavte cíl archivu, který chcete; například účet úložiště, centrum událostí nebo protokoly Azure Monitor.
 
 6.  Uložte nové nastavení diagnostiky.
 
-Nové nastavení se projeví během 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cílové na **diagnostické protokoly** okno.
+Nové nastavení se projeví během 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v okně **protokoly diagnostiky** .
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostické protokoly schématu
 
-Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každý záznam obsahuje pole řetězců, které používají formát je popsáno v následující části.
+Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující části.
 
 ## <a name="operational-logs-schema"></a>Schéma provozní protokoly
 
-Přihlásí **OperationalLogs** kategorie zaznamenat, co se stane během operace služby Service Bus. Tyto protokoly konkrétně zachytit typ operace, včetně vytvoření fronty, prostředky a stav operace.
+Protokoly v kategorii **OperationalLogs** zachytí, co se děje během Service Busch operací. Konkrétně tyto protokoly zachytí typ operace, včetně vytvoření fronty, použitých prostředků a stavu operace.
 
 Řetězce JSON operační protokol obsahovat prvky uvedené v následující tabulce:
 
 Název | Popis
 ------- | -------
-ID aktivity | Interní ID pro sledování
+ID aktivity | Interní ID, které se používá ke sledování
 EventName | Název operace           
-resourceId | ID prostředku Azure Resource Manageru
+resourceId | ID prostředku Azure Resource Manager
 SubscriptionId | ID předplatného
 EventTimeString | Čas operace
 EventProperties | Vlastnosti operace
-Status | Stav operace
-Caller | Volající operace (Azure portal nebo správy klienta)
+Stav | Stav operace
+Caller | Volající operace (Azure Portal nebo klient pro správu)
 category | OperationalLogs
 
-Tady je příklad operační protokol řetězec formátu JSON:
+Tady je příklad řetězce JSON provozního protokolu:
 
 ```json
 {
@@ -92,9 +92,9 @@ Tady je příklad operační protokol řetězec formátu JSON:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V následujících tématech se dozvíte více o Service Bus:
+Další informace o Service Bus najdete na následujících odkazech:
 
-* [Úvod do služby Service Bus](service-bus-messaging-overview.md)
-* [Začínáme se službou Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Úvod do Service Bus](service-bus-messaging-overview.md)
+* [Začínáme s Service Bus](service-bus-dotnet-get-started-with-queues.md)

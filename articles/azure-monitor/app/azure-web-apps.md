@@ -9,21 +9,21 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875205"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258576"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
-Povolení monitorování webových aplikací založených na .NET a .NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
+Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
 > Ruční přidání rozšíření Application Insights webu prostřednictvím**rozšíření** **nástrojů** > pro vývoj je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď předinstalována [](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
 
-## <a name="enable-application-insights"></a>Povolení Application Insights
+## <a name="enable-application-insights"></a>Povolit Application Insights
 
 Existují dva způsoby, jak povolit monitorování aplikací pro hostované aplikace Azure App Services:
 
@@ -138,7 +138,7 @@ Aby bylo možné povolit shromažďování telemetrie s Application Insights, je
 
 ### <a name="application-settings-definitions"></a>Definice nastavení aplikace
 
-|Název nastavení aplikace |  Definice | Hodnota |
+|Název nastavení aplikace |  Definice | Value |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování za běhu. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default`nebo `recommended`. |
@@ -325,6 +325,9 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
 > [!NOTE]
 > Aplikace Java a Node. js se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+
+> [!NOTE]
+> Aplikace ASP.NET Core 3,0 nejsou podporovány. Použijte prosím [Ruční instrumentaci](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) prostřednictvím kódu pro aplikace ASP.NET Core 3,0.
 
 1. Ověřte, že je aplikace monitorována `ApplicationInsightsAgent`prostřednictvím.
     * Ověřte, `ApplicationInsightsAgent_EXTENSION_VERSION` že nastavení aplikace je nastavené na hodnotu ~ 2.

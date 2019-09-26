@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850668"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265129"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu Azure Automation
 
@@ -129,7 +129,7 @@ Informace o předávání PSCredentials jako parametrů najdete v části [asset
 > [!NOTE]
 > Aby byly konfigurace obsahující **složené prostředky** správně kompilovány, je třeba nejprve zajistit, aby všechny prostředky DSC, na kterých se kompozitní spoléhá, byly nejprve importovány do Azure Automation.
 
-Přidání složeného **prostředku** DSC se neliší od přidání nějakého modulu prostředí PowerShell do Azure Automation.
+Přidání **složeného prostředku** DSC se neliší od přidání nějakého modulu prostředí PowerShell do Azure Automation.
 Podrobný postup pro tento proces je popsán v článku [Správa modulů v Azure Automation](/azure/automation/shared-resources/modules).
 
 ### <a name="managing-configurationdata-when-compiling-configuration-in-azure-automation"></a>Správa ConfigurationData při kompilování konfigurace v Azure Automation
@@ -259,7 +259,7 @@ Konfigurace podepsaného uzlu je místně ověřována na spravovaném uzlu agen
 > [!NOTE]
 > Konfigurační soubor uzlu nesmí být větší než 1 MB, aby bylo možné ho importovat do Azure Automation.
 
-Další informace o podepisování konfigurací uzlů najdete v tématu [vylepšení v WMF 5,1 – jak podepsat konfiguraci a modul](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+Další informace o podepisování konfigurací uzlů najdete v tématu [vylepšení v WMF 5,1 – jak podepsat konfiguraci a modul](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Kompilace konfigurace ve Windows PowerShellu
 
@@ -287,7 +287,7 @@ Pomocí rutiny [Import-AzureRmAutomationDscNodeConfiguration](/powershell/module
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)

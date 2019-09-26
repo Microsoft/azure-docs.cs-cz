@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: d77557f6d5d6a7bb741b9ff6caa4ea8f76db19c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567878"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262163"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze
 
@@ -50,13 +50,13 @@ Identifikované SQL Database snížení výkonu se zaznamenávají do diagnostic
 
 | Vlastnost             | Podrobnosti              |
 | :------------------- | ------------------- |
-| Informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
+| informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
 | Zjištěný časový rozsah | Počáteční a koncový čas období zjištěného přehledu |
 | Ovlivněné metriky | Metriky, které způsobily vygenerování přehledu: <ul><li>Zvýšení doby trvání dotazu [sekundy].</li><li>Nadměrné čekání [sekundy].</li><li>Žádosti s časovým limitem [procenta].</li><li>Chybné požadavky [procento].</li></ul>|
 | Hodnota dopadu | Hodnota měřené metriky. |
 | Ovlivněné dotazy a chybové kódy | Hodnota hash dotazu nebo kód chyby. Můžete je použít ke snadnému koreluji s ovlivněnými dotazy. K dispozici jsou metriky, které se skládají z zvýšení doby trvání dotazu, doba čekání, počty časových limitů nebo chybové kódy. |
 | Nalezení | Detekce zjištěná v databázi během doby události. K dispozici jsou 15 vzory detekce. Další informace najdete v tématu [řešení potíží s výkonem databáze pomocí Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Analýza hlavní příčiny | Analýza příčiny problému zjištěného v uživatelsky čitelném formátu Některé přehledy můžou obsahovat doporučení na zlepšení výkonu, pokud je to možné. |
+| Analýza původní příčiny | Analýza příčiny problému zjištěného v uživatelsky čitelném formátu Některé přehledy můžou obsahovat doporučení na zlepšení výkonu, pokud je to možné. |
 |||
 
 Praktické přehledy o používání Intelligent Insights s Azure SQL Analytics a o typických scénářích použití najdete ve vloženém videu:
@@ -96,7 +96,7 @@ Následující příklad ukazuje Intelligent Insights zobrazení prostřednictv�
 
 ### <a name="set-up-with-event-hubs"></a>Nastavení pomocí Event Hubs
 
-Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs. Další informace najdete v tématu [streamování protokolů Azure Diagnostics do Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs. Další informace najdete v tématu [streamování protokolů Azure Diagnostics do Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Pokud chcete použít Event Hubs k nastavení vlastního monitorování a upozorňování, přečtěte si téma [co dělat s protokoly metrik a diagnostikami v Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -174,9 +174,9 @@ Protokol Intelligent Insights výstupuje počet chybných požadavků. Označuje
 
 Pokud některá z monitorovaných kritických výjimek překročí absolutní prahové hodnoty spravované systémem, vygeneruje se inteligentní přehled s podrobnostmi o kritických výjimkách.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte [se řešit problémy s výkonem SQL Database Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Použijte [protokol Intelligent Insights SQL Database Performance Diagnostics](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Naučte se [monitorovat SQL Database pomocí SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md).

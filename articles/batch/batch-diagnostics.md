@@ -14,17 +14,17 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5f5e023d8014a780fa21e2c3ba18050c4e1a5771
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095252"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261664"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
  
-Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
+Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
@@ -109,7 +109,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
     ![Diagnostika služby batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-logs-stream-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-settings-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Protokoly diagnostiky přístup ve službě storage
@@ -138,7 +138,7 @@ Níže je uveden příklad `PoolResizeCompleteEvent` položky `PT1H.json` v soub
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Další informace o schématu diagnostické protokoly v aktuálním účtu úložiště najdete v tématu [archivace diagnostických protokolů Azure](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account). Pro přístup k protokolům ve vašem účtu úložiště prostřednictvím kódu programu, použijte rozhraní API služby Storage. 
+Další informace o schématu diagnostické protokoly v aktuálním účtu úložiště najdete v tématu [archivace diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account). Pro přístup k protokolům ve vašem účtu úložiště prostřednictvím kódu programu, použijte rozhraní API služby Storage. 
 
 ### <a name="service-log-events"></a>Služba Protokol událostí
 Azure protokoly služby Batch, je-li shromažďovat, obsahují události, protože ho pomocí služby Azure Batch po celou dobu životnosti jednotlivých prostředků Batch jako fondem nebo úlohou. Každou službou Batch byla vyvolána událost se protokoluje ve formátu JSON. To je například textu ukázku **událost vytvoření fondu**:

@@ -1,82 +1,82 @@
 ---
-title: Protokoly serveru Azure Database pro MariaDB
-description: Popisuje protokoly, které jsou k dispozici ve službě Azure Database pro MariaDB a parametry dostupnými pro povolení úrovní různých protokolování.
+title: Protokoly serveru pro Azure Database for MariaDB
+description: V této části najdete popis protokolů dostupných v Azure Database for MariaDB a dostupných parametrů pro povolení různých úrovní protokolování.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065706"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259969"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokoly pomalých dotazů ve službě Azure Database pro MariaDB
-Ve službě Azure Database pro MariaDB protokol pomalých dotazů je dostupné pro uživatele. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží.
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
+V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
 
-Další informace o protokolu pomalých dotazů, najdete v dokumentaci MariaDB pro [protokol pomalých dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/).
+Další informace o protokolu pomalých dotazů najdete v dokumentaci k MariaDB pro [protokol pomalých dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-slow-query-logs"></a>Zobrazení protokolů pomalých dotazů
-Můžete seznam a stáhněte si – Azure Database pro MariaDB protokoly pomalých dotazů pomocí webu Azure portal a rozhraní příkazového řádku Azure.
+## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalým dotazům
+Pomocí Azure Portal a Azure CLI můžete zobrazit a stáhnout protokoly pomalých dotazů Azure Database for MariaDB.
 
-Na webu Azure Portal vyberte váš server Azure Database for MariaDB. V části **monitorování** záhlaví, vyberte **protokoly serveru** stránky.
+V Azure Portal vyberte server Azure Database for MariaDB. Pod hlavičkou **monitorování** vyberte stránku **protokoly serveru** .
 
-Další informace o Azure CLI najdete v tématu [server protokoly konfigurace a přístup pomocí rozhraní příkazového řádku Azure](howto-configure-server-logs-cli.md).
+Další informace o rozhraní příkazového řádku Azure najdete v tématu [Konfigurace a přístup k protokolům serveru pomocí Azure CLI](howto-configure-server-logs-cli.md).
 
 ## <a name="log-retention"></a>Uchovávání protokolů
-Protokoly jsou k dispozici po dobu až sedmi dní od jejich vytvoření. Pokud celková velikost dostupné protokoly překročí 7 GB, se odstraní nejstarší soubory, dokud je k dispozici místo.
+Protokoly jsou k dispozici po dobu až sedmi dnů od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, pak se nejstarší soubory odstraní, dokud nebude k dispozici dostatek místa.
 
-Protokoly jsou otočeny každých 24 hodin nebo 7 GB, co nastane dříve.
+Protokoly se otočí každých 24 hodin nebo 7 GB, podle toho, co nastane dřív.
 
-## <a name="configure-slow-query-logging"></a>Nakonfigurovat protokolování pomalých dotazů
-Ve výchozím nastavení je zakázaný protokol pomalých dotazů. Ji Pokud chcete povolit, nastavte slow_query_log na ON.
+## <a name="configure-slow-query-logging"></a>Konfigurace pomalého protokolování dotazů
+Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete povolit, nastavte slow_query_log na ZAPNUTo.
 
-Další parametry, které můžete upravit patří:
+Mezi další parametry, které můžete upravit, patří:
 
-- **long_query_time**: Pokud dotaz trvá déle než long_query_time (v sekundách) se přihlásí daný dotaz. Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements**: Pokud dále zahrnuje příkazy pro správu jako ALTER_TABLE a ANALYZE_TABLE v příkazech napsané slow_query_log.
-- **log_queries_not_using_indexes**: Určuje, zda dotazy, které nepoužívají indexy jsou protokolovány slow_query_log
-- **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet jiných indexu dotazů, které se dají zapisovat do protokolu pomalých dotazů. Tento parametr se projeví při log_queries_not_using_indexes nastavená na ON.
+- **long_query_time**: Pokud dotaz trvá déle než long_query_time (v sekundách), dotaz se zaznamená do protokolu. Výchozí hodnota je 10 sekund.
+- **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu jako ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
+- **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
+- **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
 
-Najdete v článku MariaDB [zpomalit dokumentace ke službě log dotazu](https://mariadb.com/kb/en/library/slow-query-log-overview/) úplný popis parametrů protokol pomalých dotazů.
+Úplný popis pomalých parametrů protokolu dotazů naleznete v [dokumentaci k protokolu pomalého dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database pro MariaDB je integrované v protokolech diagnostiky Azure Monitor. Jakmile povolíte protokoly pomalých dotazů serveru MariaDB, můžete je mít znovu vygenerován pro protokoly Azure monitoru, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md).
+Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md).
 
 > [!IMPORTANT]
-> Tato funkce diagnostických protokolů serveru je k dispozici v obecné účely a optimalizovaný pro paměť pouze [cenové úrovně](concepts-pricing-tiers.md).
+> Tato diagnostická funkce pro protokoly serveru je k dispozici pouze v Pro obecné účely a v paměťově optimalizovaných [cenových úrovních](concepts-pricing-tiers.md).
 
-Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
+Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 
 | **Vlastnost** | **Popis** |
 |---|---|
-| `TenantId` | Vaše ID tenanta |
+| `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
-| `Type` | Typ protokolu. Vždy `AzureDiagnostics` |
-| `SubscriptionId` | Identifikátor GUID pro předplatné, které server patří do |
-| `ResourceGroup` | Název skupiny prostředků, do které patří server |
-| `ResourceProvider` | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORMARIADB` |
+| `TimeGenerated`UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
+| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
+| `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
+| `ResourceGroup` | Název skupiny prostředků, do které server patří |
+| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Název serveru |
-| `start_time_t` [UTC] | Čas zahájení dotazu |
-| `query_time_s` | Celková doba, kterou trvalo provádění dotazu |
-| `lock_time_s` | Celkový čas, který dotaz byl uzamčen. |
+| `start_time_t`UTC | Čas, kdy dotaz začal |
+| `query_time_s` | Celkový čas, kdy se dotaz trvalo spustit |
+| `lock_time_s` | Celkový čas, kdy byl dotaz uzamčen |
 | `user_host_s` | Uživatelské jméno |
-| `rows_sent_s` | Počet řádků, které jsou odeslány |
-| `rows_examined_s` | Počet řádků, které jsou zkoumány |
+| `rows_sent_s` | Počet odeslaných řádků |
+| `rows_examined_s` | Počet testovaných řádků |
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
-| `insert_id_s` | Vložte ID |
-| `sql_text_s` | Celý dotaz |
+| `insert_id_s` | Vložit ID |
+| `sql_text_s` | Úplný dotaz |
 | `server_id_s` | ID serveru |
 | `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
-## <a name="next-steps"></a>Další postup
-- [Jak nakonfigurovat a přístup k protokolům server z webu Azure portal](howto-configure-server-logs-portal.md).
+## <a name="next-steps"></a>Další kroky
+- [Konfigurace a přístup k protokolům serveru z Azure Portal](howto-configure-server-logs-portal.md).

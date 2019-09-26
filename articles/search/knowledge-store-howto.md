@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7568742c4a01903eddf7681da71e4f243cac1e56
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648825"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265626"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak začít se službou Knowledge Store v Azure Search
 
@@ -23,7 +22,7 @@ ms.locfileid: "69648825"
 >
 [Znalostní báze](knowledge-store-concept-intro.md) šetří soubory AI, které se vytvořily během indexování vašeho účtu Azure Storage pro dolování dat v jiných aplikacích. Pomocí uložených rozšíření můžete také pochopit a zdokonalit Azure Search kanál indexování. 
 
-Znalostní databáze je definována *dovednosti* a vytvořeným *indexerem*. Fyzický výraz úložiště znalostí je určen pomocí projekcí, které určují datové struktury v úložišti. V době, kdy jste tento návod dokončili, jste vytvořili všechny tyto objekty a vy budete znát, jak se budou všechny vzájemně přizpůsobovat. 
+Znalostní databáze je definována *dovednosti* a vytvořeným *indexerem*. Fyzický výraz úložiště znalostí je *určen pomocí projekcí* , které určují datové struktury v úložišti. V době, kdy jste tento návod dokončili, jste vytvořili všechny tyto objekty a vy budete znát, jak se budou všechny vzájemně přizpůsobovat. 
 
 V tomto cvičení začněte s ukázkovými daty, službami a nástroji a Naučte se základní pracovní postup pro vytváření a používání vašeho prvního obchodu s poznatky s důrazem na dovednosti definition.
 

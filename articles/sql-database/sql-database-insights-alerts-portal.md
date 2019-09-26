@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: 9468dbd71ee8da88cbabc3ca9f76c77d47adc221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567924"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262235"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a datový sklad pomocí Azure Portal
 
@@ -33,9 +33,9 @@ Můžete obdržet upozornění na základě metrik monitorování pro události 
 
 Můžete nakonfigurovat výstrahu, která při triggeru provede následující akce:
 
-* odesílání e-mailových oznámení správci služeb a spolusprávcům
-* odešlete e-mail na další e-maily, které zadáte.
-* volání Webhooku
+* Odesílání e-mailových oznámení správci služeb a spolusprávcům
+* Odešlete e-mail na další e-maily, které zadáte.
+* Volání Webhooku
 
 Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 
@@ -82,9 +82,9 @@ Jakmile vytvoříte upozornění, můžete ho vybrat a:
 | Databáze SQL | dtu_consumption_percent | Procento DTU | Average | 5 minut |
 | Databáze SQL | úložiště | Celková velikost databáze | Maximum | 30 minut |
 | Databáze SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| Databáze SQL | connection_failed | Chyba připojení | Celkem | 10 minut |
+| Databáze SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
 | Databáze SQL | blocked_by_firewall | Blokováno bránou firewall | Celkem | 10 minut |
-| Databáze SQL | ukončení | Zablokování | Celkem | 10 minut |
+| Databáze SQL | Ukončení | Zablokování | Celkem | 10 minut |
 | Databáze SQL | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
 | Databáze SQL | xtp_storage_percent | Procento úložiště v paměti OLTP (Preview) | Average | 5 minut |
 | Databáze SQL | workers_percent | Procento prac. procesů | Average | 5 minut |
@@ -103,20 +103,20 @@ Jakmile vytvoříte upozornění, můžete ho vybrat a:
 | Elastický fond | eDTU_used | využité eDTU | Average | 10 minut |
 | Elastický fond | storage_used | Využité úložiště | Average | 10 minut |
 ||||||               
-| SQL Data Warehouse | cpu_percent | Procentuální využití procesoru | Average | 10 minut |
-| SQL Data Warehouse | physical_data_read_percent | Procento V/V dat | Average | 10 minut |
-| SQL Data Warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| SQL Data Warehouse | connection_failed | Chyba připojení | Celkem | 10 minut |
-| SQL Data Warehouse | blocked_by_firewall | Blokováno bránou firewall | Celkem | 10 minut |
-| SQL Data Warehouse | service_level_objective | Úroveň služby databáze | Celkem | 10 minut |
-| SQL Data Warehouse | dwu_limit | DWU limit | Maximum | 10 minut |
-| SQL Data Warehouse | dwu_consumption_percent | Procento DWU | Average | 10 minut |
-| SQL Data Warehouse | dwu_used | DWU použito | Average | 10 minut |
+| Datový sklad SQL | cpu_percent | Procentuální využití procesoru | Average | 10 minut |
+| Datový sklad SQL | physical_data_read_percent | Procento V/V dat | Average | 10 minut |
+| Datový sklad SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
+| Datový sklad SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
+| Datový sklad SQL | blocked_by_firewall | Blokováno bránou firewall | Celkem | 10 minut |
+| Datový sklad SQL | service_level_objective | Úroveň služby databáze | Celkem | 10 minut |
+| Datový sklad SQL | dwu_limit | DWU limit | Maximum | 10 minut |
+| Datový sklad SQL | dwu_consumption_percent | Procento DWU | Average | 10 minut |
+| Datový sklad SQL | dwu_used | DWU použito | Average | 10 minut |
 ||||||
 
 
 ## <a name="next-steps"></a>Další kroky
 * [Získejte přehled o monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md) , včetně typů informací, které můžete shromažďovat a monitorovat.
 * Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [Přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md) a Shromážděte na vaší službě detailní metriky s vysokou frekvencí.
+* Získejte [Přehled diagnostických protokolů](../azure-monitor/platform/resource-logs-overview.md) a Shromážděte na vaší službě detailní metriky s vysokou frekvencí.
 * Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

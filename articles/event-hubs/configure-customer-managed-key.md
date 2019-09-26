@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035910"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260873"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -24,7 +24,7 @@ Azure Event Hubs teď podporuje možnost šifrování neaktivních dat buď pomo
 Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 
 > [!NOTE]
-> Funkce BYOK je podporována Event Hubs vyhrazenými clustery [s jedním tenantů](event-hubs-dedicated-overview.md) . Nedá se povolit pro standardní Event Hubs obory názvů.
+> Funkce BYOK je podporována [Event Hubs vyhrazenými clustery s jedním tenantů](event-hubs-dedicated-overview.md) . Nedá se povolit pro standardní Event Hubs obory názvů.
 
 Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md)
 
@@ -46,7 +46,7 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
 Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Event Hubs. Event Hubs podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) nebo rozhraní příkazového [řádku](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
 
-1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/key-vault-overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných](../key-vault/about-keys-secrets-and-certificates.md)klíčích a certifikátech.
+1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/key-vault-overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
 1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
@@ -61,7 +61,7 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
     1. Pokud chcete vytvořit nový klíč, vyberte v nabídce **klíče** v části **Nastavení**možnost **Generovat/importovat** .
         
         ![Vybrat tlačítko pro vygenerování/import](./media/configure-customer-managed-key/select-generate-import.png)
-    1. Nastavte **Možnosti** , které se mají vygenerovat, a zadejte název klíče.
+    1. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
 
         ![Vytvoření klíče](./media/configure-customer-managed-key/create-key.png) 
     1. Nyní můžete vybrat tento klíč, který chcete přidružit k oboru názvů Event Hubs pro šifrování z rozevíracího seznamu. 
@@ -84,7 +84,7 @@ Po odvolání šifrovacího klíče se služba Event Hubs v zašifrovaném oboru
 > Pokud odstraníte existující šifrovací klíč z trezoru klíčů a nahradíte ho novým klíčem na Event Hubs oboru názvů, protože odstranit klíč je stále platný (protože je uložený v mezipaměti) až do hodiny, můžou být vaše stará data (která byla zašifrovaná pomocí starého klíče) i nadále dostupná společně.  s novými daty, která jsou teď dostupná jenom pomocí nového klíče. Toto chování je záměrné v rámci verze Preview této funkce. 
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů 
-Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Povolit protokoly uživatelů
 Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
@@ -110,12 +110,12 @@ Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). 
 | ID aktivity | Interní ID, které se používá ke sledování. |
 | category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
 | resourceId | ID prostředku Azure Resource Manager |
-| keyVault | Úplný název trezoru klíčů |
+| KeyVault | Úplný název trezoru klíčů |
 | key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
 | version | Verze používaného klíče |
 | operation | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
 | code | Kód, který je přidružen k operaci. Příklad: Kód chyby 404 znamená, že klíč nebyl nalezen. |
-| zpráva | Jakákoli chybová zpráva přidružená k operaci |
+| message | Jakákoli chybová zpráva přidružená k operaci |
 
 Tady je příklad protokolu pro klíč spravovaný zákazníkem:
 
@@ -173,7 +173,7 @@ Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené
 > Pokud jsou koncové body služby virtuální sítě (VNet) nakonfigurovány na Azure Key Vault pro obor názvů Event Hubs, BYOK se nepodporuje. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 - [Přehled služby Event Hubs](event-hubs-about.md)
 - [Přehled Key Vault](../key-vault/key-vault-overview.md)

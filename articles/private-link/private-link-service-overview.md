@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 27e927425faec045c4f304ae6de155f2337307d9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104679"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265562"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
@@ -42,7 +42,7 @@ Po zahájení připojení příjemce může poskytovatel služeb přijmout nebo 
 
 Pokud se služba privátního propojení již nepoužívá, můžete ji odstranit. Před odstraněním služby se ale ujistěte, že k ní nejsou přidružená žádná připojení privátních koncových bodů. Můžete odmítat všechna připojení a službu odstranit.
 
-## <a name="properties"></a>Vlastnosti
+## <a name="properties"></a>properties
 
 Služba privátního propojení určuje následující vlastnosti: 
 
@@ -68,7 +68,7 @@ Služba privátního propojení určuje následující vlastnosti:
  
 - Jedna služba privátního propojení je dostupná z více privátních koncových bodů patřících různým virtuální sítě, předplatným a/nebo klientům služby Active Directory. Připojení je vytvořeno prostřednictvím pracovního postupu připojení. 
  
-- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
 - Služba privátního propojení může mít na sebe propojenou více konfigurací IP adres NAT. Výběr více než jedné konfigurace protokolu IP NAT může pomáhat poskytovatelům služeb škálovat. V dnešní době můžou poskytovatelé služeb přiřadit až osm IP adres NAT na jednu službu privátního propojení. U každé IP adresy překladu adres (NAT) můžete přiřadit více portů pro připojení TCP a tak škálovat. Po přidání více IP adres NAT do služby privátního propojení nemůžete IP adresy NAT odstranit. K tomu je potřeba zajistit, aby při odstraňování IP adres překladu adres (NAT) nedošlo k ovlivnění aktivních připojení.
 
@@ -104,6 +104,6 @@ Následující jsou známá omezení při použití služby privátního propoje
 - Vytváření a Správa prostředí z Azure Portal se nepodporuje.
 - Poskytovateli služeb nenabízí informace o připojení klientů pomocí protokolu proxy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Vytvoření služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
 - [Vytvoření služby privátního propojení pomocí Azure CLI](create-private-link-service-cli.md)

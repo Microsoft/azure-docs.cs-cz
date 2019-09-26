@@ -4,74 +4,74 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 11c9b2ea3ea054415f25f864651df28288aa0025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174980"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266836"
 ---
-Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
+Můžete využít spoustu příležitostí k monitorování virtuálních počítačů, a to shromažďováním, zobrazením a analýzou dat diagnostiky a protokolů. K jednoduchému [monitorování](../articles/azure-monitor/overview.md) virtuálního počítače můžete použít obrazovku Přehled pro virtuální počítač v Azure Portal. Pomocí [rozšíření](../articles/virtual-machines/windows/extensions-features.md) můžete nakonfigurovat diagnostiku virtuálních počítačů, abyste mohli shromažďovat další data metrik. Můžete také použít pokročilejší možnosti monitorování, například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="diagnostics-and-metrics"></a>Diagnostika a metriky 
 
-Můžete vytvořit a monitorovat kolekce [diagnostická data](https://docs.microsoft.com/cli/azure/vm/diagnostics) pomocí [metriky](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) v na webu Azure portal, rozhraní příkazového řádku Azure, Azure PowerShell a programovací rozhraní aplikace programovací (rozhraní API). Můžete například provést následující věci:
+Můžete nastavit a monitorovat shromažďování [diagnostických dat](https://docs.microsoft.com/cli/azure/vm/diagnostics) pomocí [metrik](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) v Azure Portal, rozhraní příkazového řádku Azure CLI, Azure PowerShell a programovacích rozhraní API (Application Programming Interface). Můžete například provést následující věci:
 
-- **Sledujte základní metriky pro virtuální počítač.** Na obrazovce Přehled na webu Azure portal zahrnují základní metriky uvedené využití CPU, využití sítě, celkový počet bajtů disku a diskových operací za sekundu.
+- **Sledujte základní metriky pro virtuální počítač.** Na obrazovce s přehledem Azure Portal základní metriky zahrnují využití CPU, využití sítě, celkový počet bajtů disku a diskových operací za sekundu.
 
-- **Povolit shromažďování diagnostiky spouštění a zobrazte ho pomocí webu Azure portal.** Při přenosu vlastní image do Azure nebo spouštění některé z imagí platformy, může být mnoho důvodů, proč virtuální počítač dostane do nespustitelného stavu. Při vytváření virtuálního počítače kliknutím můžete snadno povolit diagnostiku **povoleno** pro diagnostiku spouštění obrazovky nastavení v části monitorování.
+- **Povolte shromažďování diagnostiky spouštění a zobrazte ji pomocí Azure Portal.** Když narazíte na vlastní image do Azure nebo dokonce spustíte jednu z imagí platformy, může to mít spoustu důvodů, proč se virtuální počítač dostane do nespouštěcího stavu. Diagnostiku spouštění můžete snadno povolit při vytváření virtuálního počítače kliknutím na možnost **povoleno** pro diagnostiku spouštění v části monitorování obrazovky nastavení.
 
-    Při spouštění virtuálních počítačů, agent diagnostiky spouštění zaznamenává výstup spouštění a uloží jej v úložišti Azure. Tato data můžete použít k odstraňování problémů při spouštění virtuálních počítačů. Diagnostika spouštění nepovolí automaticky při vytvoření virtuálního počítače z nástroje příkazového řádku. Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Pokud povolíte diagnostiku spouštění na webu Azure Portal, účet úložiště se automaticky vytvoří za vás.
+    Při spuštění virtuálních počítačů zaznamená agent diagnostiky spouštění výstup spouštění a uloží ho do služby Azure Storage. Tato data můžete použít k odstraňování problémů při spouštění virtuálních počítačů. Diagnostika spouštění není automaticky povolena při vytváření virtuálního počítače z nástrojů příkazového řádku. Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Pokud povolíte diagnostiku spouštění v Azure Portal, automaticky se vytvoří účet úložiště.
 
-    Pokud jste nepovolili Diagnostika spouštění při vytvoření virtuálního počítače, můžete vždy povolit ho později pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic), nebo [šablony Azure Resource Manageru](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
+    Pokud jste nepovolili diagnostiku spouštění při vytváření virtuálního počítače, můžete ho kdykoli povolit později pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic)nebo [šablony Azure Resource Manager](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
 
-- **Povolte shromažďování dat diagnostiky hostovaného operačního systému.** Při vytváření virtuálního počítače, máte možnost v dialogovém okně nastavení Povolit diagnostiku hostovaného operačního systému. Pokud povolíte shromažďování dat diagnostiky [IaaSDiagnostics rozšíření pro Linux](../articles/virtual-machines/linux/diagnostic-extension.md) nebo [IaaSDiagnostics rozšíření pro Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) se přidá do virtuálního počítače, které umožňuje shromažďovat další datový disk, procesoru a paměti.
+- **Povolit shromažďování diagnostických dat operačního systému hosta** Když vytváříte virtuální počítač, budete mít příležitost na obrazovce nastavení a povolíte diagnostiku hostovaného operačního systému. Když povolíte shromažďování diagnostických dat, do virtuálního počítače se přidá [rozšíření IaaSDiagnostics pro Linux](../articles/virtual-machines/linux/diagnostic-extension.md) nebo [rozšíření IaaSDiagnostics pro Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) , které umožňuje shromažďovat další data o disku, procesoru a paměti.
 
-    Pomocí shromážděná diagnostická data, můžete nakonfigurovat automatické škálování pro virtuální počítače. Můžete také nakonfigurovat protokoly k ukládání dat a nastavení výstrah s oznámením výkon není úplně vpravo.
+    Pomocí shromážděných diagnostických dat můžete pro své virtuální počítače nakonfigurovat automatické škálování. Můžete taky nakonfigurovat protokoly pro ukládání dat a nastavit výstrahy, abyste věděli, že výkon není úplně pravý.
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
-Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overview.md) podle konkrétních metrik výkonu. Příklady problémy, se kterými můžete dostat upozornění: když průměrné využití procesoru překročí určitou prahovou hodnotu nebo volné místo na disku klesne pod určitou dobu. Upozornění se dá nakonfigurovat v [webu Azure portal](../articles/azure-monitor/platform/alerts-classic-portal.md)s použitím [prostředí Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell), nebo [rozhraní příkazového řádku Azure](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli).
+Můžete vytvářet [výstrahy](../articles/azure-monitor/platform/alerts-overview.md) na základě konkrétních metrik výkonu. Příklady problémů, které se dají upozornit, když průměrné využití procesoru překročí určitou prahovou hodnotu nebo je dostupné volné místo na disku pod určitou velikostí. Výstrahy se dají nakonfigurovat v [Azure Portal](../articles/azure-monitor/platform/alerts-classic-portal.md), pomocí [Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell)nebo v [Azure CLI](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
-[Azure Service Health](../articles/service-health/service-health-overview.md) poskytuje individuální pokyny a podporu, pokud vás ovlivňují problémy ve službách Azure, a pomůže vás připravit na chystanou plánovanou údržbu. Azure Service Health upozorní vás a vašich týmů pomocí cílených a flexibilních upozornění.
+[Azure Service Health](../articles/service-health/service-health-overview.md) poskytuje individuální pokyny a podporu v případě, že se vás týkají problémy se službami Azure, a pomůže vám připravit se na nadcházející plánovanou údržbu. Azure Service Health vás upozorní a vaše týmy s využitím cíleného a flexibilního oznámení.
 
 ## <a name="azure-resource-health"></a>Azure Resource Health
 
-[Azure Resource health](../articles/service-health/resource-health-overview.md) pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
+[Azure Resource Health](../articles/service-health/resource-health-overview.md) pomáhá diagnostikovat a získat podporu v případě, že problém Azure ovlivňuje vaše prostředky. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
 
 ## <a name="azure-activity-log"></a>Protokol aktivit Azure
 
-[Protokolu aktivit Azure](../articles/azure-monitor/platform/activity-logs-overview.md) je předplatné protokol, který poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo v Azure. V protokolu obsahuje celou řadu dat z Azure Resource Manageru provozních dat k aktualizacím na události služby Service Health. Protokol aktivit můžete kliknout na webu Azure Portal do zobrazení protokolu pro váš virtuální počítač.
+[Protokol aktivit Azure](../articles/azure-monitor/platform/activity-logs-overview.md) je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Protokol zahrnuje rozsah dat, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Kliknutím na protokol aktivit v Azure Portal zobrazíte protokol pro svůj virtuální počítač.
 
-Některé z akcí, které vám pomůžou s protokolu aktivit patří:
+Mezi akce, které můžete s protokolem aktivit dělat, patří:
 
-- Vytvoření [výstrahu pro událost protokolu aktivit](../articles/azure-monitor/platform/activity-logs-overview.md).
-- [Stream do centra událostí](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-- Analyzovat pomocí Power BI [balíček obsahu Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-- [Uložte ho do účtu úložiště](../articles/azure-monitor/platform/archive-activity-log.md) pro archivaci nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech) pomocí profilu protokolu.
+- Vytvoří [výstrahu pro událost protokolu aktivit](../articles/azure-monitor/platform/activity-logs-overview.md).
+- [Streamujte ho do centra událostí](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je PowerBI.
+- Analyzujte ho v PowerBI pomocí [balíčku obsahu PowerBI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
+- [Uložte ho do účtu úložiště](../articles/azure-monitor/platform/archive-activity-log.md) pro archivaci nebo ruční kontrolu. Dobu uchování (ve dnech) můžete určit pomocí profilu protokolu.
 
-Data protokolu aktivit se můžete dostat taky pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), nebo [monitorování rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/).
+Data protokolu aktivit můžete také přistupovat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/monitor)nebo [monitorovat rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/).
 
-[Diagnostické protokoly Azure](../articles/azure-monitor/platform/diagnostic-logs-overview.md) jsou protokoly generované ve vašem virtuálním počítači, které poskytují bohatou, časté data o její činnosti. Diagnostické protokoly se liší od protokolů aktivit tím, že poskytuje dokonalý přehled o operacích provedených ve virtuálním počítači.
+[Protokoly prostředků Azure](../articles/azure-monitor/platform/resource-logs-overview.md) jsou protokoly EMITOVANÉ vaším virtuálním počítačem, které poskytují bohatou a častou data o jeho provozu. Protokoly prostředků se liší od protokolu aktivit tím, že poskytují přehled o operacích, které byly provedeny v rámci virtuálního počítače.
 
-Některé z akcí, které vám pomůžou s diagnostických protokolů patří:
+Mezi postupy, které můžete s diagnostickými protokoly provádět, patří:
 
-- [Uložit do účtu úložiště](../articles/azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
-- [Stream do služby Event Hubs](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-- Analyzovat pomocí [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
+- [Uložte je do účtu úložiště](../articles/azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Dobu uchování (ve dnech) můžete určit pomocí nastavení diagnostiky prostředků.
+- [Streamujte je Event Hubs](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md) k ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je PowerBI.
+- Analyzujte je pomocí [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
-## <a name="advanced-monitoring"></a>Pokročilé sledování
+## <a name="advanced-monitoring"></a>Rozšířené monitorování
 
-- [Azure Monitor](../articles/azure-monitor/overview.md) je služba, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. To poskytuje komplexní řešení pro shromažďování, analýzu a funguje na telemetrická data z vašeho cloudu a místních prostředích. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé. Rozšíření můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-oms.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta Log Analytics můžete shromažďovat data protokolu a uložit do pracovního prostoru Log Analytics.
+- [Azure monitor](../articles/azure-monitor/overview.md) je služba, která monitoruje cloudové a místní prostředí a udržuje jejich dostupnost a výkon. Poskytuje komplexní řešení pro shromažďování, analýzu a provoz telemetrie z vašeho cloudového a místního prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé. Rozšíření můžete nainstalovat na [virtuální počítač](../articles/virtual-machines/linux/extensions-oms.md) se systémem Linux nebo na [virtuální počítač s Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta Log Analytics pro shromáždění dat protokolu a uložení v pracovním prostoru Log Analytics.
 
-    Pro Windows a virtuální počítače s Linuxem po instalaci agenta Log Analytics je doporučená metoda pro shromažďování protokolů. Nejjednodušší způsob, jak nainstalovat agenta Log Analytics na virtuálním počítači je prostřednictvím [rozšíření Log Analytics pro virtuální počítač](../articles/log-analytics/log-analytics-azure-vm-extension.md). Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru služby Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy.
+    Pro virtuální počítače se systémem Windows a Linux je doporučeným způsobem pro shromažďování protokolů instalace agenta Log Analytics. Nejjednodušší způsob, jak nainstalovat agenta Log Analytics na virtuální počítač, je prostřednictvím [rozšíření Log Analytics VM](../articles/log-analytics/log-analytics-azure-vm-extension.md). Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy.
 
-- [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) vám umožní monitorovat vašeho virtuálního počítače a její přidružené prostředky jejich vztah k síti, ke které jsou v. Rozšíření Network Watcher Agent můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-nwa.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-nwa.md).
+- [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) vám umožní monitorovat virtuální počítač a jeho přidružené prostředky, protože se vztahují k síti, ve které se nacházejí. Rozšíření agenta Network Watcher můžete nainstalovat na [virtuální počítač](../articles/virtual-machines/linux/extensions-nwa.md) se systémem Linux nebo na [virtuální počítač s Windows](../articles/virtual-machines/windows/extensions-nwa.md).
 
-- [Azure Monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) monitoruje analýzou výkonu a stavu systému Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí virtuální počítače Azure (VM) ve velkém měřítku procesy. 
+- [Azure monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) monitoruje vaše virtuální počítače Azure ve velkém měřítku analýzou výkonu a stavu virtuálních počítačů s Windows a Linux, včetně jejich různých procesů a propojených závislostí na jiných prostředcích a externích. procesem. 
 
-## <a name="next-steps"></a>Další postup
-- Provede v [monitorování virtuálního počítače Windows pomocí Azure Powershellu](../articles/virtual-machines/windows/tutorial-monitoring.md) nebo [monitorování virtuálního počítače s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/tutorial-monitoring.md).
-- Další informace o osvědčených postupech kolem [monitorování a Diagnostika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).
+## <a name="next-steps"></a>Další kroky
+- Projděte si postup v části [monitorování virtuálního počítače s Windows pomocí Azure PowerShell](../articles/virtual-machines/windows/tutorial-monitoring.md) nebo [monitorování virtuálního počítače se systémem Linux pomocí Azure CLI](../articles/virtual-machines/linux/tutorial-monitoring.md).
+- Přečtěte si další informace o osvědčených postupech pro [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).

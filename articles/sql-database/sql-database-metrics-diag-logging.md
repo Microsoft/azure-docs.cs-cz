@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 208ebaa2e22f4cd0ee2138f3e49f78c1e56860cf
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135175"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260318"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -33,7 +33,7 @@ Izolované databáze, sdružené databáze v elastických fondech a databáze in
 Další informace o metrikách a kategoriích protokolů podporovaných různými službami Azure najdete v těchto tématech:
 
 - [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
 
 Tento článek poskytuje pokyny, které vám pomůžou povolit telemetrii diagnostiky pro databáze SQL Azure, elastické fondy a spravované instance. Může vám také porozumět tomu, jak nakonfigurovat Azure SQL Analytics jako monitorovací nástroj pro zobrazení telemetrie diagnostiky databáze.
 
@@ -304,7 +304,7 @@ Přečtěte si o tom, jak [změnit nastavení diagnostiky pomocí REST API Azure
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Přečtěte si informace o tom, jak [Povolit nastavení diagnostiky při vytváření prostředků pomocí šablony Správce prostředků](../azure-monitor/platform/diagnostic-logs-stream-template.md).
+Přečtěte si informace o tom, jak [Povolit nastavení diagnostiky při vytváření prostředků pomocí šablony Správce prostředků](../azure-monitor/platform/diagnostic-settings-template.md).
 
 ## <a name="stream-into-azure-sql-analytics"></a>Streamování do Azure SQL Analytics
 
@@ -442,13 +442,13 @@ Podrobnosti o telemetrie dostupných pro všechny protokoly jsou popsány v nás
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál ResourceUsageStats |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál MANAGEDINSTANCES |
+|Category|Název kategorie Stál ResourceUsageStats |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál MANAGEDINSTANCES |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název spravované instance |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |SKU_s|SKU produktu Managed instance |
 |virtual_core_count_s|Počet dostupných virtuální jádra |
 |avg_cpu_percent_s|Průměrné procento procesoru |
@@ -467,16 +467,16 @@ Podrobnosti o telemetrie dostupných pro všechny protokoly jsou popsány v nás
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál QueryStoreRuntimeStatistics |
+|Category|Název kategorie Stál QueryStoreRuntimeStatistics |
 |OperationName|Název operace Stál QueryStoreRuntimeStatisticsEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |query_hash_s|Hodnota hash dotazu |
 |query_plan_hash_s|Hodnota hash plánu dotazů |
 |statement_sql_handle_s|Obslužná rutina příkazu SQL |
@@ -518,16 +518,16 @@ Další informace o [datech statistiky modulu runtime úložiště dotazů](http
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál QueryStoreWaitStatistics |
+|Category|Název kategorie Stál QueryStoreWaitStatistics |
 |OperationName|Název operace Stál QueryStoreWaitStatisticsEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |wait_category_s|Kategorie čekání |
 |is_parameterizable_s|Je dotaz parametrizovat |
 |statement_type_s|Typ příkazu |
@@ -556,16 +556,16 @@ Další informace o [datech statistiky čekání na úložiště dotazů](https:
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál Chyby |
+|Category|Název kategorie Stál Chyby |
 |OperationName|Název operace Stál ErrorEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |Message|Chybová zpráva v prostém textu |
 |user_defined_b|Je chybově definovaný bit uživatelem |
 |error_number_d|Kód chyby |
@@ -585,16 +585,16 @@ Přečtěte si další informace o [SQL serverch chybových zprávách](https://
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál DatabaseWaitStatistics |
+|Category|Název kategorie Stál DatabaseWaitStatistics |
 |OperationName|Název operace Stál DatabaseWaitStatisticsEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |wait_type_s|Název typu čekání |
 |start_utc_date_t [UTC]|Čas zahájení měřeného období |
 |end_utc_date_t [UTC]|Čas ukončení měřeného období |
@@ -614,16 +614,16 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál Vypršení časových limitů |
+|Category|Název kategorie Stál Vypršení časových limitů |
 |OperationName|Název operace Stál TimeoutEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |error_state_d|Chybový kód stavu |
 |query_hash_s|Hodnota hash dotazu, je-li k dispozici |
 |query_plan_hash_s|Hodnota hash plánu dotazu, je-li k dispozici |
@@ -637,16 +637,16 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál Čeká |
+|Category|Název kategorie Stál Čeká |
 |OperationName|Název operace Stál BlockEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |lock_mode_s|Režim zámku použitý dotazem |
 |resource_owner_type_s|Vlastník zámku |
 |blocked_process_filtered_s|KÓD XML sestavy blokovaného procesu |
@@ -661,16 +661,16 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |TimeGenerated [UTC] |Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál Zablokování |
+|Category|Název kategorie Stál Zablokování |
 |OperationName|Název operace Stál DeadlockEvent |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |deadlock_xml_s|XML sestavy zablokování |
 
 ### <a name="automatic-tuning-dataset"></a>Datová sada automatického ladění
@@ -682,16 +682,16 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
-|Kategorie|Název kategorie Stál AutomaticTuning |
-|Resource|Název zdroje |
-|Typ prostředku|Název typu prostředku Stál SERVERY/DATABÁZE |
+|Category|Název kategorie Stál AutomaticTuning |
+|Resource|Název prostředku |
+|ResourceType|Název typu prostředku Stál SERVERY/DATABÁZE |
 |SubscriptionId|Identifikátor GUID předplatného pro databázi |
-|Skupina prostředků|Název skupiny prostředků pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název serveru pro databázi |
 |LogicalDatabaseName_s|Název databáze |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|Prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |RecommendationHash_s|Jedinečná hodnota hash pro automatické ladění – doporučení |
 |OptionName_s|Operace automatického ladění |
 |Schema_s|Schéma databáze |
@@ -701,7 +701,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |IncludedColumns_s|Zahrnuté sloupce |
 |EstimatedImpact_s|Odhadovaný dopad automatického ladění s doporučením JSON |
 |Event_s|Typ události automatického ladění |
-|Timestamp_t|Poslední aktualizované časové razítko |
+|Timestamp_t|Časové razítko poslední aktualizace |
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights datová sada
 
@@ -712,7 +712,7 @@ Přečtěte si další informace o [formátu protokolu Intelligent Insights](sql
 Informace o tom, jak povolit protokolování a pochopit kategorie metrik a protokolů podporované různými službami Azure, najdete v těchto tématech:
 
 - [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
 
 Pokud se chcete dozvědět o Event Hubs, přečtěte si:
 

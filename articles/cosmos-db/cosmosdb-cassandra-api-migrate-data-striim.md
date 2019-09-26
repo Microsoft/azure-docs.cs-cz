@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ad690fa78f794b26b6cf496ea4485599486752b0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146977"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266044"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Striim
 
@@ -155,7 +155,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    ![Připojit k cíli](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Před konfigurací cíle se ujistěte, že jste přidali [kořenový certifikát Baltimore do prostředí Java Striim](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store).
+1. Před konfigurací cíle se ujistěte, že jste přidali [kořenový certifikát Baltimore do prostředí Java Striim](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store).
 
 1. Zadejte vlastnosti konfigurace vaší cílové instance Azure Cosmos DB a pokračujte výběrem možnosti **Uložit** . Tady jsou klíčové parametry k označení:
 

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 2d97e46578775cd0d5612fb8d94680bb5be8080a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174770"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260043"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -48,7 +48,7 @@ V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předpl
 
 ## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. V [GitHubu](https://github/com)přejděte do úložiště, vyberte **Nastavení** > **tajné klíče** > **Přidat nový tajný kód**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajné klíče** > **Přidat nový tajný kód**.
 
     ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321659"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272338"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí Azure Batch 
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-K zápisu výstupních souborů do kontejneru musí služba Batch použít token sdíleného přístupového podpisu (SAS). Vytvořte token pomocí příkazu [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Tento příklad vytvoří token, který umožňuje zápis do jakéhokoli kontejneru objektů blob v účtu a jehož platnost vyprší 15. listopadu 2018:
+K zápisu výstupních souborů do kontejneru musí služba Batch použít token sdíleného přístupového podpisu (SAS). Vytvořte token pomocí příkazu [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Tento příklad vytvoří token pro zápis do libovolného kontejneru objektů BLOB v účtu a platnost tokenu vyprší 15. listopadu 2020:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Poznamenejte si token vrácený příkazem, který je podobný následujícímu. Tento token použijete později.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>Vykreslení scény s jedním snímkem
@@ -217,7 +217,7 @@ Upravte v souboru JSON elementy `blobSource` a `containerURL` tak, aby obsahoval
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

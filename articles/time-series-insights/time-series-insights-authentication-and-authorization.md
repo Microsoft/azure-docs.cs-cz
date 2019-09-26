@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 88734b0ee05f5193da89f33e1639e4e7a187f225
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935250"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264648"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
 
@@ -100,6 +100,50 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
     ```
 
 1. Token se pak může předat v `Authorization` hlavičce, když aplikace volá rozhraní Time Series Insights API.
+
+## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
+
+Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP, které slouží k vytváření dotazů proti Time Series Insights rozhraní API GA a Preview. Požadavky na konkrétní rozhraní API jsou podrobněji popsány v [referenční dokumentaci Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/).
+
+### <a name="authentication"></a>Ověřování
+
+Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#). 
+
+> [!IMPORTANT]
+> Token se musí vystavit přesně `https://api.timeseries.azure.com/` prostředku (označuje se také jako "cílová skupina" tokenu).
+> * Vaše [dodatečná](https://www.getpostman.com/) **AuthURLa** se proto shodují s těmito kroky:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+
+> [!TIP]
+> Další informace o ověřování pomocí rozhraní API pro Time Series Insights pomocí [klientské sady SDK pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)najdete v kurzu [prozkoumání Azure Time Series Insights JavaScriptu pro klientské knihovny](tutorial-explore-js-client-lib.md#authentication) .
+
+### <a name="http-headers"></a>Hlavičky protokolu HTTP
+
+Požadované hlavičky žádosti:
+
+- `Authorization`pro ověřování a autorizaci musí být v autorizační hlavičce předán platný nosný token OAuth 2,0. Token se musí vystavit přesně `https://api.timeseries.azure.com/` prostředku (označuje se také jako "cílová skupina" tokenu).
+
+Nepovinné hlavičky žádosti:
+
+- `Content-type`-podporuje `application/json` se jenom.
+- `x-ms-client-request-id`– ID žádosti klienta. Služba zaznamenává tuto hodnotu. Umožňuje službě sledovat operace napříč službami.
+- `x-ms-client-session-id`– ID klientské relace. Služba zaznamenává tuto hodnotu. Umožňuje službě trasovat skupinu souvisejících operací napříč službami.
+- `x-ms-client-application-name`– název aplikace, která vygenerovala tento požadavek. Služba zaznamenává tuto hodnotu.
+
+Hlavičky odpovědi:
+
+- `Content-type`-podporuje `application/json` se jenom.
+- `x-ms-request-id`– ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti.
+
+### <a name="http-parameters"></a>Parametry HTTP
+
+Požadované parametry řetězce dotazu adresy URL:
+
+- `api-version=2016-12-12`
+- `api-version=2018-11-01-preview`
+
+Volitelné parametry řetězce dotazu adresy URL:
+
+- `timeout=<timeout>`– časový limit pro spuštění žádosti na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601 `"PT20S"` , například a měla by být `1-30 s`v rozsahu. Výchozí hodnota je `30 s`.
 
 ## <a name="next-steps"></a>Další kroky
 

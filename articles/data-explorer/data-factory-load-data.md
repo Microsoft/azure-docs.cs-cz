@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5eb05df7ed97839ef80798a752565234d180f0e2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803979"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268821"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do Azure Průzkumník dat pomocí Azure Data Factory 
 
@@ -96,6 +96,9 @@ Existují dva způsoby, jak do Azure Průzkumník dat načíst data pomocí Azur
     * Zadejte hodnotu **tajného přístupového klíče** .
     * Vyberte **Test připojení** a otestujte připojení propojené služby, které jste vytvořili.
     * Vyberte **Finish** (Dokončit).
+    
+    > [!NOTE]
+    > V Amazon S3 vyberte v navigačním panelu své uživatelské jméno Amazon a pak vyberte **Moje přihlašovací údaje zabezpečení** a vyhledejte **přístupový klíč**. 
 
 1. Na stránce **zdrojové úložiště dat** se zobrazí vaše nové připojení AmazonS31. Vyberte **Další**.
 
@@ -184,7 +187,7 @@ Služba Azure Průzkumník dat vytvoří novou propojenou službu pro kopírová
 
     ![Stránka Nasazení](media/data-factory-load-data/deployment.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si informace o [konektoru Azure Průzkumník dat](/azure/data-factory/connector-azure-data-explorer) v Azure Data Factory.
 

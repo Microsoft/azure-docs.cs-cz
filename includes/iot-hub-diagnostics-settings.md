@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175115"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266819"
 ---
-### <a name="enable-logging-with-diagnostics-settings"></a>Povolit protokolování pomocí nastavení diagnostiky
+### <a name="enable-logging-with-diagnostics-settings"></a>Povolit protokolování s nastavením diagnostiky
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
@@ -27,15 +27,15 @@ ms.locfileid: "67175115"
 
    ![Zapnout diagnostiku](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
-4. Zadejte název nastavení diagnostiky.
+4. Zadejte název pro nastavení diagnostiky.
 
-5. Zvolte ve které chcete odeslat protokoly. Můžete vybrat libovolnou kombinaci těchto tří možností:
+5. Vyberte, kam chcete protokoly odeslat. Můžete vybrat libovolnou kombinaci tří možností:
 
-   * Archivovat do účtu úložiště
-   * Stream do centra událostí
-   * Odeslání do Log Analytics
+   * Archivovat v účtu úložiště
+   * Streamovat do centra událostí
+   * Poslat do Log Analytics
 
-6. Vyberte operace, které chcete monitorovat a povolení protokolů pro tyto operace. Operace, které může podávat nastavení diagnostiky se:
+6. Vyberte operace, které chcete monitorovat, a pro tyto operace povolte protokoly. Operace, které nastavení diagnostiky mohou hlásit:
 
    * Připojení
    * Telemetrie zařízení
@@ -43,19 +43,19 @@ ms.locfileid: "67175115"
    * Operace identity zařízení
    * Nahrání souborů
    * Směrování zpráv
-   * Operace dvojčete typu cloud zařízení
-   * Operace dvojčete zařízení cloud
-   * Operace dvojčete
+   * Zdvojené operace z cloudu na zařízení
+   * Zdvojené operace mezi zařízeními a cloudem
+   * Zdvojené operace
    * Operace úlohy
    * Přímé metody  
-   * Distribuované trasování (preview)
+   * Distribuované trasování (Preview)
    * Konfigurace
    * Datové proudy zařízení
    * Metriky zařízení
 
-6. Uložte nové nastavení. 
+6. Uložte nová nastavení. 
 
-Pokud chcete zapnout nastavení diagnostiky pomocí Powershellu, použijte následující kód:
+Pokud chcete zapnout nastavení diagnostiky pomocí PowerShellu, použijte následující kód:
 
 ```azurepowershell
 Connect-AzAccount
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Nové nastavení se projeví během 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cílové na **nastavení diagnostiky** okno. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďovat a zpracovávat data protokolu z vašich prostředků azure](../articles/azure-monitor/platform/diagnostic-logs-overview.md).
+Nové nastavení se projeví během 10 minut. Pak se protokoly zobrazí v okně **nastavení diagnostiky** v nakonfigurovaném cíli archivace. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../articles/azure-monitor/platform/resource-logs-overview.md).

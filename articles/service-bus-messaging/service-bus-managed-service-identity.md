@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130311"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273675"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce, mezi Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -55,7 +55,14 @@ Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, kt
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu**nebo **předplatného**: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. 
+- **Zařazení do fronty**, **tématu**nebo **předplatného**: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) k přiřazení identity k Service Bus role RBAC: 
+
+    ```powershell
+    az role assignment create \
+        --role $service_bus_role \
+        --assignee $assignee_id \
+        --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
+    ```
 - **Obor názvů Service Bus**: Přiřazení role zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny příjemců, která je k ní přidružená.
 - **Skupina prostředků**: Přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
 - **Předplatné:** Přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.

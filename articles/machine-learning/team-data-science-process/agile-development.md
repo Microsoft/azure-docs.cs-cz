@@ -1,189 +1,222 @@
 ---
 title: Agilní vývoj projekty datových věd - vědecké zpracování týmových dat
-description: Jak můžete spustit projekt vědeckého zpracování dat v systematické, verzi řízen vývojáři a spolupráce v týmu projektu pomocí vědeckého zpracování týmových dat.
+description: Spusťte projekt pro datové vědy systematicky, řízenou verzí a spolupracujícím způsobem v rámci projektového týmu pomocí vědeckého procesu týmového zpracování dat.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/05/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60327671"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260688"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projekty datových věd
 
-Tento dokument popisuje, jak můžou vývojáři spustit projekt vědeckého zpracování dat v systematicky, správy verzí a spolupráce v rámci týmového projektu pomocí [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutý microsoftem, která poskytuje strukturovaných posloupnost aktivit k úspěšnému provedení cloudové prediktivní analytická řešení. Přehled rolí pracovníky a jejich přidružených úloh, které jsou zpracovávány standardizací data science týmu o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md). 
+Tento dokument popisuje, jak můžou vývojáři spustit projekt vědeckého zpracování dat v systematicky, správy verzí a spolupráce v rámci týmového projektu pomocí [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutá Microsoftem, která poskytuje strukturovanou sekvenci aktivit pro efektivní spouštění cloudových řešení prediktivní analýzy. Přehled rolí a úloh, které jsou zpracovávány týmem pro datové vědy, se standardizací na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md). 
 
 Tento článek obsahuje pokyny o tom, jak: 
 
-1. proveďte **plánování sprintu** pro pracovní položky, které jsou součástí projektu.<br> Pokud nejste obeznámeni s plánování sprintů, můžete najít podrobnosti a obecné informace [tady](https://en.wikipedia.org/wiki/Sprint_(software_development) "tady"). 
-2. **Přidání pracovních položek** do sprintů. 
+- *Plánování sprintu* pro pracovní položky zahrnuté v projektu.
+- Přidejte *pracovní položky* do sprintů.
+- Vytvořte a použijte *šablonu pro pracovní položky odvozenou od agilního zpracování* , která se specificky zarovnává se fázemi životního cyklu TDSP.
+
+Následující pokyny popisují kroky potřebné k nastavení týmového prostředí TDSP pomocí Azure Boards a Azure Repos v Azure DevOps. Pokyny využívají Azure DevOps, protože to je způsob implementace TDSP v Microsoftu. Pokud vaše skupina používá jinou platformu hostování kódu, úkoly vedoucí týmu se obecně nemění, ale způsob, jakým se úkoly dokončí, se liší. Například propojení pracovní položky s větví Git nemusí být stejné s GitHubem, protože se jedná o Azure Repos.
+
+Následující obrázek znázorňuje typické plánování sprintu, kódování a pracovní postup zdrojového řízení pro projekt datové vědy:
+
+![Vědecké zpracování týmových dat](./media/agile-development/1-project-execute.png)
+
+##  <a name='Terminology-1'></a>Typy pracovních položek
+
+V architektuře plánování sprintu TDSP existují čtyři často používané typy *pracovních položek* : *Funkce*, *uživatelské scénáře*, *úkoly*a *chyby*. Nevyřízené položky pro všechny pracovní položky jsou na úrovni projektu, nikoli na úrovni úložiště Git. 
+
+Tady jsou definice pro typy pracovních položek:
+
+- **Funkce**: Funkce odpovídá zapojení projektu. Různé zapojení s klientem jsou různé funkce a je vhodné zvážit různé fáze projektu jako jiné funkce. Pokud zvolíte schéma  *\<, jako je například název klienta >-\<Engagement >* k pojmenování funkcí, můžete snadno rozpoznat kontext projektu a zapojení z názvů samotných.
+  
+- **Uživatelský scénář**: Uživatelské scénáře jsou pracovními položkami, které jsou potřeba k dokončení funkce na konci. Mezi příklady uživatelských scénářů patří:
+  - Získání dat 
+  - Zkoumání dat 
+  - Generování funkcí
+  - Sestavení modelů
+  - Zprovoznění modelů 
+  - Přeučování modelů
+  
+- **Úloha**: Úkoly lze přiřadit pracovní položky, které je třeba provést, aby bylo možné dokončit konkrétní uživatelský scénář. Například úkoly v uživatelském scénáři *získají data* :
+  - Získat přihlašovací údaje pro SQL Server
+  - Nahrání dat do SQL Data Warehouse
+  
+- **Chyba**: Chyby jsou problémy v existujícím kódu nebo dokumentech, které je třeba opravit, aby bylo možné dokončit úlohu. Pokud jsou chyby způsobeny chybějícími pracovními položkami, mohou být vyřešeny jako uživatelské scénáře nebo úkoly. 
+
+Odborníci na data můžou být pohodlnější pomocí agilní šablony, která nahrazuje funkce, uživatelské scénáře a úkoly pomocí fází TDSP a dílčích fází životního cyklu. Pokud chcete vytvořit šablonu odvozenou od agilního plánování, která se specificky rovná se fázemi životního cyklu TDSP, přečtěte si téma [použití šablony agilní TDSP Work](#set-up-agile-dsp-6).
 
 > [!NOTE]
-> Kroky potřebné k nastavení prostředí TDSP týmu DevOps služby Azure jsou popsány v následující sadu pokynů. Určí způsob k provedení těchto úloh se službami Azure DevOps, protože se jedná o tom, jak implementovat TDSP v Microsoftu.  Pokud budete chtít používání služeb Azure DevOps, položky (3) a (4) v předchozím seznamu jsou výhody, které přirozeně. Pokud jiný kód hostování platformy se používá pro vaši skupinu, úlohy, které musíte provést vedoucí týmu obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit. Například na položku v části šest **propojit pracovní položku s větví Git**, nemusí být snadné, protože se jedná o službách Azure DevOps.
->
->
+> TDSP si vypůjčí koncepty funkcí, uživatelských scénářů, úloh a chyb ze správy kódu softwaru (SCM). Koncepty TDSP se mohou mírně lišit od jejich konvenčních definic SCM.
+
+## <a name='SprintPlanning-2'></a>Plánování sprintů
+
+Mnoho vědeckých pracovníků se zabývá více projekty, což může trvat několik měsíců a pokračovat v různých tempech. Plánování sprintu je užitečné pro stanovení priority projektu a plánování prostředků a přidělení. V Azure Boards můžete snadno vytvářet, spravovat a sledovat pracovní položky pro vaše projekty a provádět plánování sprintů, abyste zajistili, že se projekty pohybují podle očekávání.
+
+Další informace o plánování sprintů naleznete v tématu [Scrum sprinty](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint). 
+
+Další informace o plánování sprintu v Azure Boards naleznete v tématu [přiřazení nevyřízených položek do sprintu](/azure/devops/boards/sprints/assign-work-sprint). 
+
+## <a name='AddFeature-3'></a>Přidání funkce do nevyřízených položek 
+
+Po vytvoření projektu a úložiště kódu projektu můžete přidat funkci do nevyřízených položek, které představují práci pro váš projekt.
+
+1. Na stránce **projektu vyberte v** > levém navigačním panelu položku**neprotokoly** . 
+   
+1. Pokud **je typ**pracovní položky na horním panelu na kartě **backlogu** , rozevírací seznam a výběr **funkcí**. Pak vyberte **nová pracovní položka.**
+   
+   ![Vybrat novou pracovní položku](./media/agile-development/2-sprint-team-overview.png)
+   
+1. Zadejte název funkce, obvykle název projektu, a pak vyberte **Přidat k hornímu**. 
+   
+   ![Zadejte název a vyberte Přidat do horní části.](./media/agile-development/3-sprint-team-add-work.png)
+   
+1. V seznamu **nevyřízených položek** vyberte a otevřete novou funkci. Zadejte popis, přiřaďte člena týmu a nastavte parametry plánování. 
+   
+   Tuto funkci můžete také propojit s Azure Reposm úložiště kódu projektu výběrem možnosti **Přidat odkaz** v části **vývoj** . 
+   
+   Po dokončení úprav této funkce vyberte **uložit & zavřít**.
+   
+   ![Upravit funkci a vybrat Uložit & Zavřít](./media/agile-development/3a-add-link-repo.png)
+
+## <a name='AddStoryunderfeature-4'></a>Přidat uživatelský scénář do funkce 
+
+Pod funkcí můžete přidat uživatelské scénáře, které popisují hlavní kroky potřebné k dokončení projektu. 
+
+Přidání nového uživatelského scénáře do funkce:
+
+1. Na kartě **backlogu** vyberte **+** vlevo od funkce. 
+   
+   ![Přidání nového uživatelského scénáře pod funkci](./media/agile-development/4-sprint-add-story.png)
+   
+1. Dejte uživatelskému scénáři název a upravte podrobnosti, jako je například přiřazení, stav, popis, komentáře, plánování a Priorita. 
+   
+   Můžete také propojit uživatelský scénář s větví Azure Reposho úložiště kódu projektu výběrem možnosti **Přidat odkaz** v části **vývoj** . Vyberte úložiště a větev, na které chcete pracovní položku propojit, a pak vyberte **OK**.
+   
+   ![Přidat odkaz](./media/agile-development/5-sprint-edit-story.png)
+   
+1. Až skončíte s úpravou uživatelského scénáře, vyberte **uložit & zavřít**. 
+
+## <a name='AddTaskunderstory-5'></a>Přidání úkolu do uživatelského scénáře 
+
+Úlohy jsou konkrétní podrobné kroky, které jsou potřeba k dokončení jednotlivých uživatelských scénářů. Po dokončení všech úkolů uživatelského scénáře by měl být uživatelský scénář dokončený. 
+
+Chcete-li přidat úkol do uživatelského scénáře, vyberte **+** vedle položky uživatelský scénář a vyberte možnost **úloha**. Vyplňte název a další informace v úkolu.
+
+![Přidání úkolu do uživatelského scénáře](./media/agile-development/7-sprint-add-task.png)
+
+Po vytvoření funkcí, uživatelských scénářů a úkolů je můžete zobrazit **v zobrazení** nevyřízených **položek nebo panelů** , abyste mohli sledovat jejich stav.
+
+![Zobrazení nevyřízených položek](./media/agile-development/8-sprint-backlog-view.png)
+
+![Zobrazení desek](./media/agile-development/8a-sprint-board-view.png)
+
+## <a name='set-up-agile-dsp-6'></a>Použití šablony agilního TDSP práce
+
+Odborníci na data můžou být pohodlnější pomocí agilní šablony, která nahrazuje funkce, uživatelské scénáře a úkoly pomocí fází TDSP a dílčích fází životního cyklu. V Azure Boards můžete vytvořit agilní šablonu odvozenou pro vytváření a sledování pracovních položek pomocí fází životního cyklu TDSP. Následující kroky vás provedou nastavením šablony agilního procesu specifické pro datovou vědu a vytvářením pracovních položek pro datové vědy na základě šablony.
+
+### <a name="set-up-an-agile-data-science-process-template"></a>Nastavení agilní šablony procesu pro datové vědy
+
+1. Na hlavní stránce vaší organizace Azure DevOps v levém navigačním panelu vyberte **Nastavení organizace** . 
+   
+1. V levém navigačním panelu **Nastavení organizace** vyberte v **části panely**možnost **proces**. 
+   
+1. V podokně **všechny procesy** vyberte **...** vedle **agilního**a pak vyberte **vytvořit zděděný proces**.
+   
+   ![Vytvořit Zděděný proces z agilního řízení](./media/agile-development/10-settings.png) 
+   
+1. V dialogu **vytvořit zděděný proces z agilního** projektu zadejte název *AgileDataScienceProcess*a vyberte **vytvořit proces**.
+   
+   ![Vytvořit proces AgileDataScienceProcess](./media/agile-development/11-agileds.png)
+   
+1. V části **všechny procesy**vyberte nový **AgileDataScienceProcess**. 
+   
+1. Na kartě **typy pracovní položky** zakažte **námětu**, **funkce**, **uživatelský scénář**a **úkol** tak, že vyberete **...** vedle každé položky a pak vyberete **Zakázat**. 
+   
+   ![Zakázat typy pracovních položek](./media/agile-development/12-disable.png)
+   
+1. V části **všechny procesy**vyberte kartu **úrovně backlogu** . V části **portfolia**nevyřízené položky vyberte **...** vedle **námětu (zakázáno)** a pak vyberte **upravit/přejmenovat**. 
+   
+1. V dialogovém okně **Upravit úroveň backlogu** :
+   1. V části **název**nahraďte **námětu** *TDSP projekty*. 
+   1. V části **typy pracovních položek na této úrovni backlogu**vyberte **nový typ pracovní položky**, zadejte *projekt TDSP*a vyberte **Přidat**. 
+   1. V části **výchozí typ pracovní položky**, rozevírací seznam a vyberte **projekt TDSP**. 
+   1. Vyberte **Uložit**.
+   
+   ![Nastavit úroveň nevyřízených položek portfolia](./media/agile-development/13-rename.png)  
+   
+1. Použijte stejný postup k přejmenování **funkcí** do *TDSP fází*a přidejte následující typy pracovních položek:
+   
+   - *Principy podniku*
+   - *Získání dat*
+   - *Modelování*
+   - *Nasazení*
+   
+1. V části **nevyřízené položky požadavků**přejmenujte **příběhy** na *dílčí fáze TDSP*, přidejte novou *dílčí fázi TDSP*typu pracovní položky a nastavte výchozí typ pracovní položky na **TDSP dílčí fáze**.
+   
+1. V části **nevyřízené položky iterace**přidejte nový úkol typu pracovní položky *TDSP*a nastavte jej jako výchozí typ pracovní položky. 
+   
+Po dokončení tohoto postupu by úrovně backlogu měly vypadat takto:
+   
+ ![Úrovně nevyřízených položek šablon TDSP](./media/agile-development/14-template.png)  
+
+### <a name="create-agile-data-science-process-work-items"></a>Vytváření pracovních položek procesu agilních datových vědy
+
+Šablonu procesu pro datové vědy můžete použít k vytvoření projektů TDSP a sledování pracovních položek, které odpovídají fázím životního cyklu TDSP.
+
+1. Na hlavní stránce vaší organizace Azure DevOps vyberte **Nový projekt**. 
+   
+1. V dialogovém okně **vytvořit nový projekt** zadejte název projektu a pak vyberte **Upřesnit**. 
+   
+1. V části **proces pracovní položky**rozbalte rozevírací seznam a vyberte **AgileDataScienceProcess**a pak vyberte **vytvořit**.
+   
+   ![Vytvoření projektu TDSP](./media/agile-development/15-newproject.png)
+   
+1. V nově vytvořeném **projektu vyberte v** > levém navigačním panelu položku**neprotokoly** .
+   
+1. Pokud chcete, aby se projekty TDSP zobrazovaly, vyberte ikonu **Konfigurovat nastavení týmu** . Na obrazovce **Nastavení** zaškrtněte políčko **projekty TDSP** a pak vyberte **Uložit a zavřít**.
+   
+   ![Zaškrtávací políčko pro výběr projektů TDSP](./media/agile-development/16-enabledsprojects1.png)
+   
+1. Chcete-li vytvořit projekt TDSP specifický pro datové vědy, vyberte v horním panelu **projekty TDSP** a pak vyberte možnost **nová pracovní položka**. 
+   
+1. V překryvném okně zadejte název pracovní položky projektu TDSP a vyberte **Přidat k hornímu**.
+   
+   ![Vytvořit pracovní položku projektu pro datové vědy](./media/agile-development/17-dsworkitems0.png)
+   
+1. Chcete-li přidat pracovní položku v projektu TDSP, vyberte **+** vedle projektu a vyberte typ pracovní položky, který chcete vytvořit. 
+   
+   ![Vybrat typ pracovní položky pro datové vědy](./media/agile-development/17-dsworkitems1.png)
+   
+1. Vyplňte podrobnosti nové pracovní položky a vyberte **uložit & zavřít**.
+   
+1. Pokračujte výběrem **+** symbolů vedle pracovních položek a přidejte nové fáze TDSP, dílčí fáze a úlohy. 
+   
+Tady je příklad toho, jak se pracovní položky projektu datové vědy mají **Zobrazit v zobrazení** nevyřízených položek:
+
+![18](./media/agile-development/18-workitems1.png)
+
+
+## <a name="next-steps"></a>Další kroky
+
+Kód pro [spolupráci s Git](collaborative-coding-with-git.md) popisuje, jak vyvíjet vývoj kódu pro projekty pro datové vědy pomocí Gitu jako rozhraní pro vývoj sdíleného kódu a jak propojit tyto aktivity kódu s prací plánovaným pomocí agilního procesu.
+
+[Příklady návodů](walkthroughs.md) obsahuje návody pro konkrétní scénáře s odkazy a popisy miniatur. Propojené scénáře znázorňují, jak kombinovat cloudové a místní nástroje a služby do pracovních postupů nebo kanálů k vytváření inteligentních aplikací.
+  
+Další zdroje informací o agilních procesech:
+
+- [Agilní proces](/azure/devops/boards/work-items/guidance/agile-process)
+  
+- [Typy pracovních položek a pracovní postup agilního procesu](/azure/devops/boards/work-items/guidance/agile-process-workflow)
 
-Následující obrázek ukazuje typické sprintů, plánování, kódování a pracovní postup správy zdrojového kódu, které jsou součástí implementace projekt vědeckého zpracování dat:
-
-![1](./media/agile-development/1-project-execute.png)
-
-
-##  1. <a name='Terminology-1'></a>Terminologie 
-
-V TDSP sprintů plánování framework, existují čtyři často používané typy **pracovní položky**: **Funkce**, **uživatelský scénář**, **úloh**, a **chyb**. Každý projekt udržuje jednu sadu nevyřízených položek pro všechny pracovní položky. Na úrovni úložiště Git v rámci projektu se nevyskytuje žádná nevyřízená úloha. Tady je jejich definice:
-
-- **Funkce**: Funkce odpovídá engagement projektu. Různé zapojení klienta jsou považovány za různých funkcí. Podobně je nejlepší vzít v úvahu různých fází projektu pomocí klienta jako různé funkce. Pokud se například rozhodnete schéma ***ClientName EngagementName*** název funkce, pak snadno poznáte kontext projektu/engagement z názvů sami.
-- **Scénář**: Scénáře jsou různé pracovní položky, které jsou vyžadovány k dokončení funkce (projekt) end až do konce. Příklady scénářů:
-    - Získání dat 
-    - Zkoumání dat 
-    - Generuje se funkce
-    - Vytváření modelů
-    - Až po zprovoznění modelů 
-    - Přeučení modelů
-- **Úloha**: Úlohy jsou Přiřaditelné kódu nebo dokument pracovní položky nebo ostatní aktivity, které je potřeba provést k dokončení konkrétní scénáře. Například úkoly v textu *načtení dat* může být:
-    -  Získání přihlašovacích údajů systému SQL Server 
-    -  Nahrávání dat do SQL Data Warehouse. 
-- **Chyba**: Chyby se obvykle najdete opravy, které jsou potřeba pro existující kód nebo dokumentu, které se provádějí při dokončování úkolu. Je-li chybu nebyl nalezen fází nebo úlohy, můžete předat do scénáře nebo úkol. 
-
-> [!NOTE]
-> Koncepty jsou si funkcí, scénářů, úloh a chyb z softwaru správy kódu (SCM), který se má použít v datových věd. Se může od jejich konvenční SCM definice mírně liší.
->
->
-
-> [!NOTE]
-> Odborníci přes data mohou mít pocit pohodlnější použití šablona agile, které konkrétně v souladu s TDSP fáze životního cyklu. To na paměti plánování šablona Agile odvozené sprintu vytvořila, kde příběhy, články atd. jsou nahrazena fáze životního cyklu TDSP nebo substages. Pokyny o tom, jak vytvořit šablonu agilního najdete v tématu [agilní datový vědecký proces v aplikaci Visual Studio Online nastavit](agile-development.md#set-up-agile-dsp-6).
->
->
-
-## 2. <a name='SprintPlanning-2'></a>Plánování sprintů 
-
-Plánování sprintu je užitečné pro stanovení priority projektu a plánování prostředků a přidělení. Mnoho odborníci přes data jsou s více projekty, z nichž každá může trvat měsíce na absolvování zapojení. Projekty se často pokračovat v různých mezery. Ve službě Azure DevOps můžete snadno vytvářet, spravovat a sledování pracovních položek ve vašem projektu a provést k zajištění, že vaše projekty se v budoucnu podle očekávání plánování sprintu. 
-
-Postupujte podle [tento odkaz](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning) podrobné pokyny k plánování služby Azure DevOps sprintu. 
-
-
-## 3. <a name='AddFeature-3'></a>Přidat funkci  
-
-Po vytvoření projektu úložiště v rámci projektu, přejděte na tým **přehled** stránky a klikněte na tlačítko **řídit práci**.
-
-![2](./media/agile-development/2-sprint-team-overview.png)
-
-Zahrnout funkce v nevyřízených položkách, klikněte na tlačítko **nevyřízených položek** --> **funkce** --> **nový**, typ ve funkci **Title**(obvykle název projektu) a potom klikněte na tlačítko **přidat** .
-
-![3](./media/agile-development/3-sprint-team-add-work.png)
-
-Klikněte dvakrát na funkce, kterou jste vytvořili. Zadejte popis, přiřazení členů týmu k této funkci a nastavit parametry pro tuto funkci plánování. 
-
-Tuto funkci můžete také propojit úložiště projektu. Klikněte na tlačítko **odkaz Přidat** pod **vývoj** oddílu. Po dokončení úprav funkci klikněte na tlačítko **uložit a zavřít** ukončíte.
-
-
-## 4. <a name='AddStoryunderfeature-4'></a>Přidat scénář podle funkce 
-
-V části funkce lze přidat scénáře popsat hlavní kroky potřebné k dokončení projektu (funkce). Chcete-li přidat nový článek, klikněte na tlačítko **+** podepsat nalevo od funkce v zobrazení nevyřízených položek.  
-
-![4](./media/agile-development/4-sprint-add-story.png)
-
-Můžete upravit podrobnosti scénáře, jako je například stav, popis, komentáře, plánování a priority v místním okně.
-
-![5](./media/agile-development/5-sprint-edit-story.png)
-
-Tento scénář můžete propojit existující úložiště kliknutím **+ přidat propojení** pod **vývoj**. 
-
-![6](./media/agile-development/6-sprint-link-existing-branch.png)
-
-
-## 5. <a name='AddTaskunderstory-5'></a>Přidejte úkol do textu 
-
-Úlohy jsou konkrétní podrobné kroky, které jsou vyžadovány k dokončení každý scénář. Po dokončení všech úkolů scénáře, by se měl článek příliš dokončit. 
-
-Přidejte úkol do článku, klikněte na tlačítko **+** znaménko vedle textu položky, vyberte **úloh**a pak zadejte podrobné informace o této úlohy v místním okně.
-
-![7](./media/agile-development/7-sprint-add-task.png)
-
-Po vytvoření funkce, scénáře a úkoly můžete zobrazit v **nevyřízených položek** nebo **panelu** zobrazení sledovat jejich stav.
-
-![8](./media/agile-development/8-sprint-backlog-view.png)
-
-![9](./media/agile-development/9-link-to-a-new-branch.png)
-
-
-## 6. <a name='set-up-agile-dsp-6'></a> Nastavit šablonu Agilního TDSP práce ve Visual Studiu Online
-
-Tento článek vysvětluje, jak vytvořit šablonu procesu vědy agilní data, která používá fáze životního cyklu TDSP datové vědy a sleduje pracovní položky pomocí sady Visual Studio Online (vso). Následující kroky názorný postup vás provede Příkladem nastavení datové vědy – konkrétní agilní Šablona procesu *AgileDataScienceProcess* a ukazují, jak vytvářet data science pracovní položky na základě šablony.
-
-### <a name="agile-data-science-process-template-setup"></a>Nastavení šablony procesu agile Data Science
-
-1. Přejděte na domovské stránce serveru **konfigurovat** -> **procesu**.
-
-    ![10](./media/agile-development/10-settings.png) 
-
-2. Přejděte do **všechny procesy** -> **procesy**v části **Agile** a klikněte na **vytvořit zděděné procesu**. Pak přidejte název procesu "AgileDataScienceProcess" a klikněte na tlačítko **vytvořit proces**.
-
-    ![11](./media/agile-development/11-agileds.png)
-
-3. V části **AgileDataScienceProcess** -> **typy pracovních položek** kartu, zakažte **Epic**, **funkce**,  **Uživatelský scénář**, a **úloh** pomocí typů pracovních položek **konfigurace -> zakázat**
-
-    ![12](./media/agile-development/12-disable.png)
-
-4. Přejděte do **AgileDataScienceProcess** -> **úrovně nevyřízené položky** kartu. Přejmenovat "Náměty" na "TDSP projekty" po kliknutí na **konfigurovat** -> **úpravy/přejmenování**. V dialogovém okně stejné klikněte na tlačítko **+ nový typ pracovní položky** v "Projekt vědeckého zpracování dat" a nastavte hodnotu **výchozí typ pracovní položky** "TDSP projektu" 
-
-    ![13](./media/agile-development/13-rename.png)  
-
-5. Podobně, změňte název nevyřízené položky "Funkce" na "TDSP fáze" a přidejte následující text do **nové pracovní položky typu**:
-
-    - Obchodní vysvětlení
-    - Získání dat
-    - Modelování
-    - Nasazení
-
-6. Přejmenujte "Uživatelský scénář" na "TDSP Substages" s výchozí typ pracovní položky typu nově vytvořený "TDSP Substage".
-
-7. Nastavení "Úloh" ke nově vytvořit typ pracovní položky "TDSP úloha" 
-
-8. Po provedení těchto kroků úrovně nevyřízených položek by měl vypadat takto:
-
-    ![14](./media/agile-development/14-template.png)  
-
- 
-### <a name="create-data-science-work-items"></a>Vytvoření datové vědy pracovní položky
-
-Po vytvoření šablony procesu datové vědy můžete vytvořit a sledovat pracovní položky datové vědy, které odpovídají TDSP životního cyklu.
-
-1. Když vytvoříte nový projekt, vyberte "Agile\AgileDataScienceProcess" jako **zpracování pracovní položky**:
-
-    ![15](./media/agile-development/15-newproject.png)
-
-2. Přejděte na nově vytvořený projekt a klikněte na **pracovní** -> **nevyřízených položek**.
-
-3. Po kliknutí na zviditelnit "TDSP projekty" **konfigurace nastavení týmu** a zkontrolovat "TDSP projekty"; potom uložte.
-
-    ![16](./media/agile-development/16-enabledsprojects.png)
-
-4. Teď můžete začít vytvářet datové vědy konkrétní pracovní položky.
-
-    ![17](./media/agile-development/17-dsworkitems.png)
-
-5. Tady je příklad toho, jak by měl pracovní položky datové vědy projektu zobrazí:
-
-    ![18](./media/agile-development/18-workitems.png)
-
-
-## <a name="next-steps"></a>Další postup
-
-[Kódování spolupráci s Gitem](collaborative-coding-with-git.md) popisuje postup vývoje spolupráci kódu pro projekty datových věd jako vývojářská platforma sdílený kód pomocí Gitu a propojíte kódování aktivity k práci, plánovaná s agilního procesu.
-
-Tady jsou další odkazy na prostředky na agilní procesy.
-
-- Agilní proces   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Agilní proces typy pracovních položek a pracovní postup   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
-
-
-Postupy, které popisují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) článku. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 

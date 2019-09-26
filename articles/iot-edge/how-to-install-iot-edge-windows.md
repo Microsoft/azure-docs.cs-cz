@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877240"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266084"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -41,6 +41,14 @@ Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podpor
 ### <a name="supported-windows-versions"></a>Podporované verze Windows
 
 Pro vývojové a testovací scénáře lze Azure IoT Edge s kontejnery Windows nainstalovat do jakékoli verze systému Windows 10 nebo Windows Server 2019 (Build 17763), který podporuje funkci Containers. Informace o tom, které operační systémy se aktuálně podporují pro produkční scénáře, najdete v tématu [Azure IoT Edge podporovaných systémech](support.md#operating-systems). 
+
+Zařízení se systémem IoT Core musí mít volitelnou funkci kontejnerů IoT Core-Windows, která podporuje modul runtime IoT Edge. Pomocí následujícího příkazu ve [vzdálené relaci PowerShellu](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) ověřte, že jsou kontejnery Windows na vašem zařízení podporované: 
+
+```powershell
+Get-Service vmcompute
+```
+
+Pokud je služba k dispozici, měli byste získat úspěšnou odpověď se stavem služby uvedeným jako **spuštěno**. Pokud se nenalezne služba vmcompute, vaše zařízení nesplňuje požadavky na IoT Edge. Zeptejte se svého poskytovatele hardwaru o podpoře této funkce. 
 
 ### <a name="prepare-for-a-container-engine"></a>Příprava na modul kontejneru 
 
@@ -319,7 +327,7 @@ Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem z
 | **Ode** | žádný | Tento příznak vynutí odinstalaci v případě neúspěchu předchozího pokusu o odinstalaci. 
 | **RestartIfNeeded** | žádný | Tento příznak umožňuje, aby skript pro odinstalaci restartoval počítač bez výzvy, pokud je to nutné. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 

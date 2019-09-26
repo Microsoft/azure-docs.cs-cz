@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2a04c0fa2d92514103377c2aef420290d1bdd057
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781170"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266529"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal
 
@@ -24,16 +24,18 @@ Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a 
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-## <a name="gwsubnet"></a>Přidat podsíť brány
-
-[!INCLUDE [gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
-
 ## <a name="gwvalues"></a>Konfigurace a vytvoření brány
+
+V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
+
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
 >SKU brány úrovně Basic nepodporuje ověřování IKEv2 nebo RADIUS. Pokud plánujete, že se klienti se systémem Mac připojí k vaší virtuální síti, nepoužívejte základní SKU.
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="viewgw"></a>Zobrazit bránu VPN
 
@@ -45,7 +47,7 @@ Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a 
 
    ![Zobrazit bránu VPN Gateway](./media/create-routebased-vpn-gateway-portal/view-gateway.png "Zobrazit bránu VPN Gateway")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním.
 
