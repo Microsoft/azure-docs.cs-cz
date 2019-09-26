@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566537"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316661"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database
 
@@ -59,6 +59,6 @@ SQL Database poskytuje řadu integrovaných funkcí [zabezpečení a dodržován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li rychle začít pracovat s izolovanou databází, začněte s [jednou Guide.MD rychlým](sql-database-single-database-quickstart-guide.md)startem databáze.
+- Pokud chcete rychle začít pracovat s izolovanou databází, začněte s [jednou příručkou pro rychlý Start databáze](sql-database-single-database-quickstart-guide.md).
 - Další informace o migraci databáze SQL Server do Azure najdete v tématu [migrace na Azure SQL Database](sql-database-single-database-migrate.md).
 - Informace o podporovaných funkcích najdete v tématu [Funkce](sql-database-features.md).

@@ -1,6 +1,6 @@
 ---
-title: Exportovat databázi U-SQL pomocí nástrojů Azure Data Lake pro Visual Studio
-description: Další informace o použití Azure Data Lake Tools pro Visual Studio exportovat databázi U-SQL a automaticky importovat ho do místního účtu.
+title: Export databáze U-SQL – Nástroje Azure Data Lake pro Visual Studio
+description: Naučte se, jak pomocí Nástroje Azure Data Lake pro Visual Studio exportovat databázi U-SQL a automaticky ji naimportovat do místního účtu.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,82 +9,82 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628536"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315796"
 ---
-# <a name="export-a-u-sql-database"></a>Exportovat databázi U-SQL
+# <a name="export-a-u-sql-database"></a>Export databáze U-SQL
 
-V tomto článku najdete další informace o použití [Azure Data Lake Tools pro Visual Studio](https://aka.ms/adltoolsvs) exportovat databázi U-SQL jako jeden skript U-SQL a stažené zdroje. Vyexportované databáze můžete importovat do místní účet v rámci stejného procesu.
+V tomto článku se naučíte, jak pomocí [nástroje Azure Data Lake pro Visual Studio](https://aka.ms/adltoolsvs) exportovat databázi u-SQL jako jeden skript u-SQL a stažené prostředky. Můžete importovat exportovanou databázi do místního účtu v rámci stejného procesu.
 
-Zákazníci obvykle udržovat několik prostředí pro vývoj, testování a produkce. Tato prostředí jsou hostované na obou místní účet, na místním počítači vývojáře a v rámci účtu Azure Data Lake Analytics v Azure. 
+Zákazníci obvykle uchovávají více prostředí pro vývoj, testování a produkci. Tato prostředí jsou hostovaná na místním účtu, v místním počítači vývojáře a v účtu Azure Data Lake Analytics v Azure. 
 
-Při vývoji a ladění dotazů U-SQL v vývojová a testovací prostředí, vývojáři často potřeba znovu vytvořit svou práci v provozní databázi. Průvodce exportem databáze pomáhá zrychlit tento proces. Pomocí Průvodce vývojáře naklonovat existující databázi prostředí a ukázková data do jiných účtů Data Lake Analytics.
+Když vyvíjíte a ladíte dotazy U-SQL ve vývojovém a testovacím prostředí, vývojáři často potřebují znovu vytvořit svou práci v provozní databázi. Průvodce exportem databáze pomáhá zrychlit tento proces. Vývojáři mohou pomocí Průvodce klonovat existující databázové prostředí a ukázková data na jiné účty Data Lake Analytics.
 
-## <a name="export-steps"></a>Postup exportu
+## <a name="export-steps"></a>Kroky exportu
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>Krok 1: Export databáze v Průzkumníku serveru
+### <a name="step-1-export-the-database-in-server-explorer"></a>Krok 1: Exportovat databázi v Průzkumník serveru
 
-Všechny účty Data Lake Analytics, ke kterým máte oprávnění pro jsou uvedeny v Průzkumníku serveru. Export databáze:
+Všechny účty Data Lake Analytics, pro které máte oprávnění, jsou uvedeny v Průzkumník serveru. Export databáze:
 
-1. V Průzkumníku serveru rozbalte účet, který obsahuje databázi, kterou chcete exportovat.
+1. V Průzkumník serveru rozbalte účet obsahující databázi, kterou chcete exportovat.
 2. Klikněte pravým tlačítkem na databázi a pak vyberte **exportovat**. 
    
-    ![Průzkumník serveru – Export databáze](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
+    ![Průzkumník serveru – export databáze](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Pokud **exportovat** možnost nabídky nebude k dispozici, budete muset [aktualizaci nástroj lasted verzi](https://aka.ms/adltoolsvs).
+     Pokud možnost nabídky **exportovat** není k dispozici, je nutné [aktualizovat nástroj na poslední verzi](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Objekty, které chcete exportovat konfiguraci
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurace objektů, které chcete exportovat
 
-Pokud potřebujete pouze malou část velké databázi, můžete nakonfigurovat podmnožinu objektů, které chcete exportovat v průvodci export. 
+Pokud potřebujete jenom malou část velké databáze, můžete v Průvodci exportem nakonfigurovat podmnožinu objektů, které chcete exportovat. 
 
-Export akce provedete spuštění úlohy U-SQL. Export z účtu Azure, proto způsobuje náklady.
+Akce export se dokončila spuštěním úlohy U-SQL. Z tohoto důvodu se export z účtu Azure účtuje za nějaké náklady.
 
-![Průvodce exportem databáze - vyberte exportovat objekty](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
+![Průvodce exportem databáze – výběr objektů exportu](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Zkontrolujte seznam objektů a další konfigurace
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Kontrolovat seznam objektů a další konfigurace
 
-V tomto kroku ověříte vybrané objekty v **exportovat seznam objektu** pole. Pokud nejsou žádné chyby, vyberte **předchozí** vrátit zpět a správně nakonfigurovat objekty, které chcete exportovat.
+V tomto kroku můžete ověřit vybrané objekty v poli se **seznamem exportovat objekt** . Pokud dojde k chybám, vyberte **Předchozí** a vraťte se zpátky a správně nakonfigurujte objekty, které chcete exportovat.
 
-Můžete také nakonfigurovat další nastavení pro cíl exportu. V následující tabulce jsou uvedeny popisy konfigurace:
+Můžete také nakonfigurovat další nastavení pro cíl exportu. Popisy konfigurace jsou uvedeny v následující tabulce:
 
-|Konfigurace|Popis|
+|Konfiguraci|Popis|
 |-------------|-----------|
-|Název cíle|Tento název označuje, ve které chcete uložit exportovaný databázových prostředků. Příklady jsou sestavení, další soubory a ukázkovými daty. Složka s tímto názvem se vytvoří v kořenové složce místní data.|
-|Adresář projektu|Tato cesta definuje, ve které chcete uložit exportovaný skript U-SQL. V tomto umístění jsou uloženy všech definic objektů databáze.|
-|Pouze schéma|Pokud vyberete tuto možnost, jsou exportovány pouze definice databáze a prostředky (jako jsou sestavení a další soubory).|
-|Schéma a Data|Pokud vyberete tuto možnost, jsou exportovány definic databáze, prostředky a data. Horní N řádků z tabulky jsou exportovány.|
-|Importovat do místní databáze automaticky|Pokud vyberete tuto možnost, vyexportované databáze je automaticky importován do místní databáze při exportu bylo dokončeno.|
+|Název cíle|Tento název označuje, kam chcete uložit exportované prostředky databáze. Příklady jsou sestavení, další soubory a ukázková data. Složka s tímto názvem se vytvoří v kořenové složce vašich místních dat.|
+|Adresář projektu|Tato cesta definuje, kam chcete Uložit exportovaný skript U-SQL. Všechny definice databázových objektů jsou uloženy v tomto umístění.|
+|Pouze schéma|Vyberete-li tuto možnost, budou exportovány pouze definice databáze a prostředky (například sestavení a další soubory).|
+|Schéma a data|Pokud vyberete tuto možnost, budou exportovány definice databáze, prostředky a data. Exportují se horních N řádků tabulek.|
+|Importovat do místní databáze automaticky|Pokud vyberete tuto možnost, exportovaná databáze se automaticky naimportuje do místní databáze při dokončení exportu.|
 
-![Průvodce exportem databáze - Export seznamu objektů a další konfigurace](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
+![Průvodce exportem databáze – export seznamu objektů a dalších konfigurací](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>Krok 4: Kontrola výsledků exportu
+### <a name="step-4-check-the-export-results"></a>Krok 4: Podívejte se na výsledky exportu.
 
-Po dokončení exportu můžete zobrazit vyexportovaných výsledků v okně protokolu v průvodci. Následující příklad ukazuje, jak najít exportovaný U-SQL skriptů a databáze prostředky, včetně sestavení, další soubory a ukázkovými daty:
+Po dokončení exportu můžete zobrazit exportované výsledky v okně protokolu v průvodci. Následující příklad ukazuje, jak najít exportovaný skript U-SQL a databázové prostředky, včetně sestavení, dalších souborů a ukázkových dat:
 
-![Průvodce exportem databáze - Export výsledků](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
+![Průvodce exportem databáze – Export výsledků](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
 
-## <a name="import-the-exported-database-to-a-local-account"></a>Import vyexportované databáze pro místní účet
+## <a name="import-the-exported-database-to-a-local-account"></a>Importovat exportovanou databázi do místního účtu
 
-Nejpohodlnější způsob importu vyexportované databáze je výběr **importovat do místní databáze automaticky** zaškrtávací políčko během procesu exportu v kroku 3. Pokud je toto políčko nezaškrtli, nejdříve vyhledejte exportovaný skript U-SQL v protokolu exportu. Potom spusťte skript U-SQL místně k importování databáze do místní účet.
+Nejpohodlnější způsob, jak importovat exportovanou databázi, je zaškrtnout políčko **importovat do místní databáze automaticky** během procesu exportu v kroku 3. Pokud jste toto políčko nezaškrtli, napřed vyhledejte v protokolu exportu exportovaný skript U-SQL. Potom spusťte skript U-SQL místně a importujte databázi do místního účtu.
 
-## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Importovat exportovaný databáze do účtu Data Lake Analytics
+## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Import exportované databáze na účet Data Lake Analytics
 
-K importování databáze do jiného účtu Data Lake Analytics:
+Import databáze do jiného účtu Data Lake Analytics:
 
-1. Nahrání exportované prostředky, včetně sestavení, další soubory a ukázková data do výchozího účtu Azure Data Lake Store, který chcete importovat do účtu Data Lake Analytics. Můžete najít složku exportovaných prostředků v kořenové složce místní data. Kořen výchozí účet Data Lake Store nahrajte celou složku.
-2. Po dokončení nahrávání odešlete exportovaný skript U-SQL k účtu Data Lake Analytics, který chcete importovat databázi do.
+1. Nahrajte exportované prostředky, včetně sestavení, dalších souborů a ukázkových dat, na výchozí účet Azure Data Lake Store účtu Data Lake Analytics, který chcete importovat do. Složku exportovaných prostředků najdete v kořenové složce místní data. Nahrajte celou složku do kořenového adresáře výchozího účtu Data Lake Store.
+2. Po dokončení odesílání odešlete exportovaný skript U-SQL na účet Data Lake Analytics, do kterého chcete databázi importovat.
 
 ## <a name="known-limitations"></a>Známá omezení
 
-V současné době po vybrání **schéma a Data** možnosti v kroku 3, nástroj spouští úlohu U-SQL k exportu dat ukládají do tabulek. Z tohoto důvodu data exportu procesu může být pomalé a můžou se vám účtovat náklady. 
+Pokud v současné době vyberete možnost **schéma a data** v kroku 3, nástroj spustí úlohu U-SQL pro export dat uložených v tabulkách. Z tohoto důvodu může být proces exportu dat pomalý a Vy se vám můžou účtovat náklady. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Další informace o databáze U-SQL](/u-sql/data-definition-language-ddl-statements) 
+* [Další informace o databázích U-SQL](/u-sql/data-definition-language-ddl-statements) 
 * [Testování a ladění úloh U-SQL pomocí místního spuštění a sady Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
 

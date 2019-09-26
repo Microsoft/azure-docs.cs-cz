@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265166"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316187"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -180,9 +180,9 @@ Na stránce prohledávání protokolů můžete vytvořit dotaz. Můžete filtro
 
     ![DnsInventory prohledávání protokolů](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
-Postup řešení potíží s Commopn:
+Běžné kroky při řešení potíží:
 
 1. Chybějící data vyhledávání DNS – Chcete-li tento problém vyřešit, zkuste resetovat konfiguraci nebo načíst stránku konfigurace jenom jednou na portálu. Pro obnovení stačí změnit nastavení na jinou hodnotu a pak ho změnit zpátky na původní hodnotu a uložit konfiguraci.
 

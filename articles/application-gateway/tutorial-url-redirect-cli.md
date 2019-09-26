@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 7/30/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8453c236f83c4501587789e96545599f1e976eea
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608051"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315937"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány s přesměrování na základě cesty URL pomocí Azure CLI
 
-Při vytváření [aplikační brány](application-gateway-introduction.md) můžete Azure CLI použít ke konfiguraci [pravidel směrování podle adres URL](application-gateway-url-route-overview.md). V tomto kurzu vytvoříte back-endové fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
+Při vytváření [aplikační brány](application-gateway-introduction.md) můžete Azure CLI použít ke konfiguraci [pravidel směrování podle adres URL](tutorial-url-route-cli.md). V tomto kurzu vytvoříte back-endové fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
 
 V tomto kurzu se naučíte:
 
@@ -312,7 +312,7 @@ Až nebudete skupinu prostředků, aplikační bránu a další související pr
 ```azurecli-interactive
 az group delete --name myResourceGroupAG
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

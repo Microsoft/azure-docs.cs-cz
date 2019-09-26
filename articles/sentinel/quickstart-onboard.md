@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f209ef8bb8c492245b59374c33187dbbe763aa5
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240480"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316816"
 ---
 # <a name="on-board-azure-sentinel"></a>On-Board – Azure Sentinel
 
@@ -37,7 +37,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 - Aktivní předplatné Azure, pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Log Analytics pracovní prostor. Informace o tom, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
+- Log Analytics pracovní prostor. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../azure-monitor/platform/design-logs-deployment.md).
 
 -  Pokud chcete povolit Azure Sentinel, potřebujete oprávnění přispěvatele k předplatnému, ve kterém se nachází pracovní prostor Azure Sentinel. 
 - Pokud chcete použít Azure Sentinel, potřebujete oprávnění Přispěvatel nebo čtenář ve skupině prostředků, do které pracovní prostor patří.

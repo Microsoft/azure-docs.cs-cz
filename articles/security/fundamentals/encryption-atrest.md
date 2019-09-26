@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262809"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316781"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -178,7 +178,7 @@ Chcete-li získat klíč pro použití při šifrování nebo dešifrování dat
 - Zákazník má plnou zodpovědnost za správu životního cyklu klíčů.
 - Další nastavení & režijních nákladů na konfiguraci
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Šifrování na straně serveru pomocí klíčů spravovaných službou v hardwaru ovládaném zákazníkem
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v hardwaru ovládaném zákazníkem
 
 Některé služby Azure umožňují model správy klíčů hostitele vlastní klíč (HYOK). Tento režim správy je užitečný ve scénářích, kdy je potřeba zašifrovat neaktivní data a spravovat klíče ve speciálním úložišti mimo kontrolu Microsoftu. V tomto modelu musí služba získat klíč z externího webu. Jsou ovlivněny záruky výkonu a dostupnosti a konfigurace je složitější. Vzhledem k tomu, že služba má přístup k klíč DEK během operace šifrování a dešifrování, jsou celkové záruky zabezpečení tohoto modelu podobné tomu, když jsou klíče spravované zákazníkem v Azure Key Vault.  V důsledku toho tento model není vhodný pro většinu organizací, pokud nemá specifické požadavky na správu klíčů. V důsledku těchto omezení většina služeb Azure nepodporuje šifrování na straně serveru pomocí klíčů spravovaných serverem v hardwaru ovládaném zákazníkem.
 
@@ -273,7 +273,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Katalog dat Azure               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
 | Azure Data Explorer              | Ano                | -                  | -                  |
-| Azure Data Factory               | Ano                | -                  | -                  |
+| Azure Data Factory               | Ano                | Ano                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ano                | -                  | -                  |

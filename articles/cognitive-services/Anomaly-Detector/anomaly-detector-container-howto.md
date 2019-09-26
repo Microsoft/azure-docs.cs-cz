@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 339aab3ffe228d306738d3c17394bd322ab5e06c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103769"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316382"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spuštění kontejnerů Detektoru anomálií
 
@@ -164,7 +164,9 @@ Pro rozhraní API kontejneru http://localhost:5000 použijte hostitele.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s povoleným výstupním [připojením](anomaly-detector-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru. 
+Pokud spouštíte kontejner s povoleným výstupním [připojením](anomaly-detector-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Fakturace
 
@@ -191,7 +193,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 > [!IMPORTANT]
 > Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (např. Analyzovaná data časových řad) do Microsoftu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [konfigurace kontejnery](anomaly-detector-container-configuration.md) nastavení konfigurace
 * [Nasazení kontejneru detektoru anomálií pro Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)

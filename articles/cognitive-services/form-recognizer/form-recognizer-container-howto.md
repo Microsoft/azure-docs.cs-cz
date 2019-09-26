@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: c58f8ae0605f99952507a5f308316f784b3d8de1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105142"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316646"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů
 
@@ -303,7 +303,9 @@ Kontejner poskytuje rozhraní API koncového bodu REST, které můžete najít n
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Když kontejner spustíte, kontejner použije **stdout** a **stderr** k výstupu informací, které jsou užitečné při řešení problémů, které vznikají při spuštění nebo spuštění kontejneru.
+Pokud spouštíte kontejner s povoleným výstupním [připojením](form-recognizer-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Fakturace
 
@@ -330,7 +332,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 > [!IMPORTANT]
 >  Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [konfigurace kontejnerů](form-recognizer-container-configuration.md) pro nastavení konfigurace.
 * Použijte více [Cognitive Services kontejnerů](../cognitive-services-container-support.md).

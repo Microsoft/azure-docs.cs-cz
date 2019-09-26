@@ -1,5 +1,5 @@
 ---
-title: Principy Azure Security Center pro modul zabezpečení IoT pro IoT Edge Preview | Microsoft Docs
+title: Principy Azure Security Center pro modul zabezpečení IoT pro IoT Edge | Microsoft Docs
 description: Seznamte se s architekturou a funkcemi Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 6114fc768ad04ef812f6093d006ec9ad91b17af3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596853"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315892"
 ---
 # <a name="azure-iot-edge-security-module"></a>Modul zabezpečení Azure IoT Edge
-
-> [!IMPORTANT]
-> Azure Security Center pro službu IoT pro IoT Edge je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádění obchodních pracovních postupů na hraničních zařízeních.
 Klíčovou součástí, kterou IoT Edge hraje v prostředí IoT, je pro škodlivé objekty actor obzvláště atraktivní.

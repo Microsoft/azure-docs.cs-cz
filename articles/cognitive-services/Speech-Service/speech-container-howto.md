@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c8efc416555996ef9a1abd79ec5aafcb65186d6f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105166"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316684"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
 
@@ -23,7 +23,7 @@ Díky kontejnerům pro rozpoznávání řeči můžou zákazníci vytvářet jed
 
 Dva kontejnery řeči jsou **Převod řeči na text** a **Převod textu na řeč**. 
 
-|Funkce|Funkce|Latest (Nejnovější)|
+|Funkce|Funkce|Nejnovější|
 |-|-|--|
 |Převod řeči na text| <li>Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky.|1.2.0|
 |Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. s prostým textem Input nebo SSML (Speech syntézy Language). |1.2.0|
@@ -270,7 +270,9 @@ Kontejner poskytuje rozhraní API koncového bodu REST, které najdete [tady](ht
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Když kontejner spustíte, kontejner použije **stdout** a **stderr** k výstupu informací, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+Pokud spouštíte kontejner s povoleným výstupním [připojením](speech-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Fakturace
 

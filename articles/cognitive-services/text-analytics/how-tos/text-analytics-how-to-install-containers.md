@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 69fc955bbd9fc584e0d95e02087b778624def11b
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105071"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316477"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýza textu
 
@@ -152,6 +152,8 @@ Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](../text-analytics-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+
+[!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Fakturace
 

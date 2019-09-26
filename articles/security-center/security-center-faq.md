@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: memildin
-ms.openlocfilehash: b8ca4dfe8b1bba169b1234461dc5e8855fef1d7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bbb34a0a9d8035ce8cbfd3f3283677133370a9f2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202297"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316726"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -44,7 +44,7 @@ Security Center se nabízí ve dvou úrovních:
 **Úrovně Standard** přidá hrozeb pokročilé možnosti detekce, včetně analýzy hrozeb intelligence, analýzy chování, detekce anomálií, incidentů zabezpečení a hrozeb attribution sestavy. Můžete spustit bezplatnou zkušební verzi na úrovni Standard. Chcete-li provést upgrade, vyberte [cenová úroveň](https://docs.microsoft.com/azure/security-center/security-center-pricing) v zásadách zabezpečení. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Jak mohu sledovat, kdo v naší organizaci prováděl změny cenové úrovně v Azure Security Center
-Vzhledem k předplatnému Azure může mít několik správců, kteří mají oprávnění ke změně cenové úrovně, uživatel může chtít zjistit, kdo provedl změnu cenové úrovně. Pokud ho chcete použít, můžete použít protokol aktivit Azure. Další pokyny najdete [tady](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) .
+Předplatná Azure můžou mít víc správců s oprávněními ke změně cenové úrovně. Pokud chcete zjistit, který uživatel provedl změnu cenové úrovně, použijte protokol aktivit Azure. Další informace najdete [tady](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832).
 
 ## <a name="permissions"></a>Oprávnění
 Azure Security Center používá [řízení přístupu na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md). To poskytuje [předdefinované role](../role-based-access-control/built-in-roles.md), které se dají v Azure přiřadit uživatelům, skupinám a službám.
@@ -59,7 +59,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Fakturace centra zabezpečení je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru:
 
-- **Úroveň Free** – Security Center umožňuje řešení 'SecurityCenterFree' ve výchozím pracovním prostoru. Za na úrovni Free se nic neúčtuje.
+- **Úroveň Free** – Security Center umožňuje řešení 'SecurityCenterFree' ve výchozím pracovním prostoru. Za bezplatnou úroveň se vám nebude účtovat.
 - **Úroveň standard** – Security Center umožňuje řešení "Zabezpečení" na výchozího pracovního prostoru.
 
 Další informace o cenách najdete v tématu [ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -120,7 +120,7 @@ Vyberte existující pracovní prostor Log Analytics:
 ### Co když už je Microsoft Monitoring Agent na virtuálním počítači nainstalovaná jako rozšíření?<a name="mmaextensioninstalled"></a>
 Pokud je agent monitorování nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav pouze do jednoho pracovního prostoru. Security Center nemůže přepsat existující připojení k pracovním prostorům uživatele. Security Center bude ukládat data zabezpečení z virtuálního počítače v pracovním prostoru, který je už připojený, za předpokladu, že je na něm nainstalované řešení Security nebo SecurityCenterFree. Security Center může v tomto procesu upgradovat verzi rozšíření na nejnovější verzi.
 
-Další informace najdete v tématu [Automatické zřizování v případě existující instalace agenta](security-center-enable-data-collection.md#preexisting).
+Další informace najdete v tématu [Automatické zřizování v případě již existující instalace agenta](security-center-enable-data-collection.md#preexisting).
 
 
 ### Co když mám Microsoft Monitoring Agent nainstalovanou přímo na počítači, ale ne jako rozšíření (přímý Agent)?<a name="directagentinstalled"></a>
@@ -130,12 +130,12 @@ Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve
 
 Pro počítače se systémem Linux zatím není podporována podpora více domovských stránek agenta, takže pokud je zjištěna existující instalace agenta, Automatické zřizování nebude provedeno a konfigurace počítače nebude změněna.
 
-Pro existující počítače v předplatných, které jsou připojené k Security Center před 2019-03-17, když se zjistí existující agent, Microsoft Monitoring Agent rozšíření se nenainstaluje a počítač nebude ovlivněn. Pro tyto počítače si přečtěte doporučení "vyřešit problémy se stavem agenta monitorování na vašich počítačích" a vyřešte problémy s instalací agenta na těchto počítačích.
+Pro existující počítače v předplatných, která se zaregistrují do Security Center do března 17 2019, se při zjištění existujícího agenta Microsoft Monitoring Agent rozšíření nenainstaluje a počítač nebude ovlivněn. Pro tyto počítače si přečtěte doporučení "vyřešit problémy se stavem agenta monitorování na vašich počítačích" a vyřešte problémy s instalací agenta na těchto počítačích.
 
  Další informace najdete v další části, [co se stane, když je na mém virtuálním počítači už nainstalovaný System Center Operations Manager nebo přímý agent OMS](#scomomsinstalled) .
 
 ### Co se stane, když je na mém virtuálním počítači už nainstalovaný Agent System Center Operations Manager?<a name="scomomsinstalled"></a>
-Security Center nainstaluje rozšíření Microsoft Monitoring Agent vedle sebe stávajícímu agentu System Center Operations Manager. Stávající Agent bude nadále hlásit Server System Center Operations Manager normálně. Počítejte s tím, že agent Operations Manager a Microsoft Monitoring Agent sdílet běžné knihovny run-time, které budou během tohoto procesu aktualizovány na nejnovější verzi. Poznámka: Pokud je nainstalovaná verze 2012 agenta Operations Manager, nepovolujte Automatické zřizování (možnosti správy se můžou ztratit, pokud je Operations Manager Server verze 2012).
+Security Center nainstaluje rozšíření Microsoft Monitoring Agent vedle sebe stávajícímu agentu System Center Operations Manager. Stávající Agent bude nadále hlásit Server System Center Operations Manager normálně. Všimněte si, že agent Operations Manager a Microsoft Monitoring Agent sdílet běžné běhové knihovny, které budou během tohoto procesu aktualizovány na nejnovější verzi. Poznámka: Pokud je nainstalovaná verze 2012 agenta Operations Manager, nepovolujte Automatické zřizování (možnosti spravovatelnosti se můžou ztratit, pokud je Operations Manager Server verze 2012).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Co je dopady odebrání těchto rozšíření?
 Pokud odeberete rozšíření Microsoft Monitoring, Security Center nedokáže ke shromažďování dat zabezpečení z virtuálního počítače a několik doporučení zabezpečení a výstrahy nejsou k dispozici. Security Center během 24 hodin, určuje chybí rozšíření a znovu nainstaluje rozšíření virtuálního počítače.
@@ -147,7 +147,7 @@ Můžete ji vypnout automatické zřizování pro vaše předplatná v zásadě 
 
    ![Cenová úroveň][1]
 
-2. V dalším kroku se vypnout automatické zřizování tak, že vyberete **vypnout** na **zásady zabezpečení – shromažďování dat** okno.
+2. V dalším kroku vypnout automatické zřizování výběrem možnosti **vypnuto** na stránce **zásady zabezpečení – shromažďování dat** .
    ![Shromažďování dat][2]
 
 ### <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>By měl jsem vyjádřit výslovný nesouhlas automatickou instalaci agenta a vytváření pracovního prostoru?
@@ -161,20 +161,20 @@ Můžete se odhlásit ze automatické zřizování, pokud pro vás platí násle
 
 - Automatickou instalaci agenta pomocí služby Security Center platí pro celé předplatné. Automatická instalace nelze použít pro některé virtuální počítače řady. Pokud existují kritických virtuálních počítačů, které nejde nainstalovat pomocí agenta Microsoft Monitoring Agent, pak by měl zakážete automatické zřizování.
 - Instalace rozšíření Microsoft Monitoring Agent (MMA) aktualizuje verzi agenta. To platí pro přímého agenta a System Center Operations Managerho agenta (v druhé Operations Manager a MMA sdílet společné běhové knihovny, které se budou aktualizovat v procesu). Pokud je nainstalovaný agent Operations Manager verze 2012 a upgradovaný, můžou být možnosti spravovatelnosti ztraceny, pokud je Operations Manager Server také verze 2012. Pokud je nainstalovaný agent Operations Manager verze 2012, zvažte Automatické zřizování.
-- Pokud máte vlastní pracovní prostor mimo předplatné (centrálních pracovních prostorů), pak by měl zakážete automatické zřizování. Můžete ručně nainstalovat rozšíření Microsoft Monitoring Agent a připojit ho váš pracovní prostor bez Security Center přepsání připojení.
+- Pokud máte vlastní pracovní prostor mimo předplatné (centralizovaný pracovní prostor), měli byste se odhlásit z automatického zřizování. Můžete ručně nainstalovat rozšíření Microsoft Monitoring Agent a připojit ho váš pracovní prostor bez Security Center přepsání připojení.
 - Pokud chcete se vyhnout vytváření více pracovních prostorů na předplatné a máte vlastní vlastní pracovní prostor v rámci předplatného, máte dvě možnosti:
 
    1. Můžete se rozhodnout automatické zřizování. Po dokončení migrace nastavení výchozí nastavení pracovního prostoru jak je popsáno v [jak můžete používat své existující pracovní prostor Log Analytics?](#how-can-i-use-my-existing-log-analytics-workspace)
    2. Nebo můžete povolit migraci tak, aby bylo možné provést, agenta Microsoft Monitoring Agent nainstalovaný na virtuálních počítačích, a virtuální počítače připojené do vytvořeného pracovního prostoru. Vyberte vlastní vlastní pracovní prostor tak, že nastavíte výchozí nastavení pracovního prostoru s vyjádření výslovného souhlasu s opětovná konfigurace již nainstalovaní agenti. Další informace najdete v tématu [jak můžete používat své existující pracovní prostor Log Analytics?](#how-can-i-use-my-existing-log-analytics-workspace)
 
 ### <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Jaké jsou důsledky přestanete používat automatické zřizování?
-Po dokončení migrace bude Security Center nedokáže ke shromažďování dat zabezpečení z virtuálního počítače a několik doporučení zabezpečení a výstrahy nejsou k dispozici. Pokud odhlásit, měli byste nainstalovat agenta Microsoft Monitoring Agent ručně. Zobrazit [doporučený postup při vyjádří svůj nesouhlas](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
+Po dokončení migrace Security Center nemůžou shromažďovat data zabezpečení z virtuálního počítače a některá doporučení a upozornění zabezpečení nejsou k dispozici. Pokud se odhlásíte odhlásit, nainstalujte Microsoft Monitoring Agent ručně. Zobrazit [doporučený postup při vyjádří svůj nesouhlas](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Co když přestanete používat automatické zřizování jsou doporučené kroky?
 
-Rozšíření Microsoft Monitoring Agent byste měli nainstalovat ručně, můžete shromažďování dat zabezpečení z virtuálních počítačů a poskytování doporučení a výstrahy Security Center. Zobrazit [instalace agenta pro virtuální počítač Windows](../virtual-machines/extensions/oms-windows.md) nebo [instalace agenta pro virtuální počítač s Linuxem](../virtual-machines/extensions/oms-linux.md) pokyny k instalaci.
+Ručně nainstalujte Microsoft Monitoring Agent rozšíření tak, aby Security Center mohl shromažďovat data zabezpečení z vašich virtuálních počítačů a poskytovat doporučení a výstrahy. Zobrazit [instalace agenta pro virtuální počítač Windows](../virtual-machines/extensions/oms-windows.md) nebo [instalace agenta pro virtuální počítač s Linuxem](../virtual-machines/extensions/oms-linux.md) pokyny k instalaci.
 
-Můžete připojit agenta k jakékoli existující vlastní pracovní prostor nebo pracovní prostor vytvořený Security Center. Pokud vlastní pracovní prostor nemá "Zabezpečení" nebo "SecurityCenterFree" řešení povolené, je potřeba použít řešení. Pokud chcete použít, vyberte vlastní pracovní prostor nebo předplatné a použít cenovou úroveň prostřednictvím **zásady zabezpečení – cenová úroveň** okno.
+Můžete připojit agenta k jakékoli existující vlastní pracovní prostor nebo pracovní prostor vytvořený Security Center. Pokud vlastní pracovní prostor nemá "Zabezpečení" nebo "SecurityCenterFree" řešení povolené, je potřeba použít řešení. Pokud ho chcete použít, vyberte vlastní pracovní prostor nebo předplatné a pomocí stránky **zásady zabezpečení – cenová** úroveň použijte cenovou úroveň.
 
    ![Cenová úroveň][1]
 
@@ -191,8 +191,8 @@ Můžete ručně odebrat agenta Microsoft Monitoring Agent. Toto nastavení nedo
 Chcete-li ručně odebrat agenta:
 
 1.  Na portálu otevřete **Log Analytics**.
-2.  V okně Log Analytics vyberte pracovní prostor:
-3.  Vyberte jednotlivé virtuální počítače, které nechcete monitorovat a vyberte **odpojit**.
+2.  Na stránce Log Analytics vyberte pracovní prostor:
+3.  Vyberte virtuální počítače, které nechcete monitorovat, a vyberte **Odpojit**.
 
    ![Pokud chcete agenta odebrat][3]
 
@@ -201,7 +201,7 @@ Chcete-li ručně odebrat agenta:
 >
 >
 ### <a name="how-do-i-disable-data-collection"></a>Jak zakázat shromažďování dat?
-Automatické zřizování je ve výchozím nastavení vypnuté. Můžete vypnout automatické zřizování z prostředků v každém okamžiku vypnutím toto nastavení v zásadách zabezpečení. Automatické zřizování se důrazně doporučujeme zajistí výstrahy zabezpečení a doporučení týkající se aktualizací systému, ohrožení zabezpečení operačního systému a endpoint protection.
+Automatické zřizování je ve výchozím nastavení vypnuté. Můžete vypnout automatické zřizování z prostředků v každém okamžiku vypnutím toto nastavení v zásadách zabezpečení. Automatické zřizování se důrazně doporučuje, aby se získaly výstrahy zabezpečení a doporučení týkající se aktualizací systému, chyb zabezpečení operačního systému a ochrany koncových bodů.
 
 Zakázání shromažďování dat [Přihlaste se k webu Azure portal](https://portal.azure.com)vyberte **Procházet**vyberte **Security Center**a vyberte **vyberte zásadu**. Vyberte předplatné, pro které chcete vypnout automatické zřizování. Když vyberete předplatné **zásady zabezpečení – shromažďování dat** otevře. V části **automatického zřizování**vyberte **vypnout**.
 
@@ -209,11 +209,11 @@ Zakázání shromažďování dat [Přihlaste se k webu Azure portal](https://po
 Shromažďování dat můžete povolit u předplatného Azure v zásadě zabezpečení. Chcete-li povolit shromažďování dat. [Přihlaste se k webu Azure portal](https://portal.azure.com)vyberte **Procházet**vyberte **Security Center**a vyberte **zásady zabezpečení**. Vyberte předplatné, pro kterého chcete povolit automatické zřizování. Když vyberete předplatné **zásady zabezpečení – shromažďování dat** otevře. V části **automatického zřizování**vyberte **na**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Co se stane, když je povolené shromažďování dat?
-Pokud je povoleno automatické zřizování, Security Center zřídí agenta Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Pokud je povoleno automatické zřizování, Security Center zřídí agenta Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se doporučuje, ale k dispozici je také ruční instalace agenta. [Zjistěte, jak nainstalovat rozšíření Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
-Agent povolí události vytváření procesů 4688 a *CommandLine* pole v rámci události 4688. Nových procesů vytvořených ve virtuálním počítači se zaznamenávají v protokolu událostí a monitoruje detekce služby Security Center. Informace v podrobnostech pro každý nový proces naleznete v tématu [pole Popis v 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent také 4688 událostí vytvořených ve virtuálním počítači shromáždí a uloží je v hledání.
+Agent povolí události vytváření procesů 4688 a *CommandLine* pole v rámci události 4688. Nových procesů vytvořených ve virtuálním počítači se zaznamenávají v protokolu událostí a monitoruje detekce služby Security Center. Další informace o podrobnostech zaznamenaných pro každý nový proces najdete v tématu [Popis polí v 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent také 4688 událostí vytvořených ve virtuálním počítači shromáždí a uloží je v hledání.
 
-Agent také umožňuje shromažďovat data pro [adaptivní řízení aplikací](security-center-adaptive-application.md), Security Center je nakonfiguruje místní zásady nástroje AppLocker v režimu auditování povolit všechny aplikace. To způsobí, že nástroj AppLocker generovat události, které jsou pak shromážděná a využít Security Center. Je důležité si uvědomit, že tyto zásady nenakonfigurují v počítačích, na kterých je už nakonfigurovaná zásada nástroje AppLocker. 
+Agent také umožňuje shromažďovat data pro [adaptivní řízení aplikací](security-center-adaptive-application.md), Security Center je nakonfiguruje místní zásady nástroje AppLocker v režimu auditování povolit všechny aplikace. Tato zásada způsobí, že AppLocker generuje události, které se pak shromažďují a využívají Security Center. Je důležité si uvědomit, že tyto zásady nenakonfigurují v počítačích, na kterých je už nakonfigurovaná zásada nástroje AppLocker. 
 
 Když Security Center detekuje podezřelou aktivitu na virtuálním počítači, je zákazník informuje e-mailem, pokud [kontaktní informace o zabezpečení](security-center-provide-security-contact-details.md) byl poskytnut. Výstraha je také viditelné v řídicím panelu Security Center security výstrahy.
 
@@ -239,7 +239,7 @@ Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuální
 ### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Security Center se nenainstaluje řešení v mé existující pracovní prostory Log Analytics? Jaké jsou důsledky fakturace?
 Když Security Center identifikuje, že virtuální počítač je již připojen k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení na tento pracovní prostor podle cenové úrovně. Řešení se použijí jenom u příslušných virtuálních počítačů Azure a prostřednictvím [cílení řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže fakturace se nezmění.
 
-- **Úroveň Free** – Security Center nainstaluje řešení "SecurityCenterFree" v pracovním prostoru. Za na úrovni Free se nic neúčtuje.
+- **Úroveň Free** – Security Center nainstaluje řešení "SecurityCenterFree" v pracovním prostoru. Za bezplatnou úroveň se vám nebude účtovat.
 - **Úroveň standard** – Security Center nainstaluje řešení "Zabezpečení" na pracovním prostoru.
 
    ![Řešení na výchozího pracovního prostoru][4]
@@ -275,7 +275,7 @@ Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. P
 Jenom o doporučení, které jsou povolené v zásadách zabezpečení se tady zobrazí.
 
 ### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak lze zobrazit aktuální stav zabezpečení svoje prostředky Azure?
-**Přehled služby Security Center** okno ukazuje celkové postavení zabezpečení prostředí porušena výpočetní prostředky, sítě, úložiště a data a aplikace. Každý typ prostředku má zobrazení indikátoru, pokud byly identifikovány možných ohrožení zabezpečení. Kliknutím na každé dlaždici se zobrazí seznam zabezpečení problémů zjištěných pomocí Security Center spolu s inventář prostředků ve vašem předplatném.
+Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečení vašeho prostředí v členění podle COMPUTE, sítě, & úložiště dat a aplikací. Každý typ prostředku má zobrazení indikátoru, pokud byly identifikovány možných ohrožení zabezpečení. Kliknutím na každé dlaždici se zobrazí seznam zabezpečení problémů zjištěných pomocí Security Center spolu s inventář prostředků ve vašem předplatném.
 
 ### <a name="what-triggers-a-security-alert"></a>Co se aktivuje upozornění na zabezpečení?
 Azure Security Center automaticky shromažďuje, analyzuje a fuses data protokolu z vašich prostředků Azure, sítě a řešení partnerů, jako jsou antimalwarové zásady a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
@@ -319,7 +319,7 @@ Azure Security Center obsahuje přehled antimalwarové nainstalované prostředn
 Tato zpráva se zobrazí, když nejsou žádná data kontroly pro virtuální počítač. Může trvat nějakou dobu (míň než hodinu) pro data kontroly k naplnění po povolení shromažďování dat ve službě Azure Security Center. Po počáteční počet obyvatel data kontroly může zobrazit tato zpráva vzhledem k tomu, že neexistuje žádná data kontroly vůbec nebo neexistuje žádná nová data kontroly. Prohledávání nenaplňuje pro virtuální počítač v zastaveném stavu. Tato zpráva se může zobrazit, pokud nebyla zadána data kontroly nedávno (v souladu se zásadami uchovávání informací pro agenta Windows, což je výchozí hodnota 30 dnů).
 
 ### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Jak často Security Center zjišťovat existenci ohrožení zabezpečení operačního systému, aktualizací systému a problémy s endpoint protection?
-Latence ve službě Security Center vyhledává ohrožení zabezpečení, aktualizací, a je problémy:
+Níže jsou uvedeny doby latence Security Center prověřování chyb zabezpečení, aktualizací a problémů:
 
 - Konfigurace zabezpečení operačního systému – data se aktualizuje do 48 hodin
 - Aktualizace systému – data se aktualizuje během 24 hodin

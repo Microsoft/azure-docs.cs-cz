@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163222"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316763"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: Přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -68,7 +68,7 @@ Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
 Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create)a pak vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí podporovaného distribuce a v podporované oblasti. Následující příklad nasadí virtuální počítač s názvem *myVM* , který používá *Ubuntu 16,04 LTS* do skupiny prostředků s názvem *myResourceGroup* v oblasti *southcentralus* . V následujících příkladech můžete podle potřeby zadat vlastní skupinu prostředků a názvy virtuálních počítačů.
 
@@ -87,6 +87,9 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Instalace rozšíření pro přihlášení k virtuálnímu počítači Azure AD
 
+> [!NOTE]
+> Pokud se tento exention nasazuje do dříve vytvořeného virtuálního počítače, zajistěte, aby měl počítač alespoň 1 GB přidělené paměti, jinak se rozšíření nepodaří nainstalovat.
+
 Pokud se chcete přihlásit k virtuálnímu počítači se systémem Linux s přihlašovacími údaji služby Azure AD, nainstalujte Azure Active Directory rozšíření VM pro přihlášení. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) nainstalujete rozšíření *AADLoginForLinux* na virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
@@ -97,7 +100,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-*ProvisioningState* se po úspěšné instalaci rozšíření na virtuálním počítači zobrazí.
+*ProvisioningState* *se po* úspěšné instalaci rozšíření na virtuálním počítači zobrazí.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
@@ -159,7 +162,7 @@ Při prvním spuštění sudo se zobrazí výzva k ověření druhého času. Po
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-S tímto řádkem:
+s tímto řádkem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
@@ -195,6 +198,6 @@ Pokud jste úspěšně dokončili krok ověřování ve webovém prohlížeči, 
 
 Nasdílejte svůj názor na tuto funkci ve verzi Preview nebo nahlaste problémy pomocí svého [fóra s názory na Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) .

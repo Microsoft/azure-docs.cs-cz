@@ -10,21 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/16/2019
-ms.openlocfilehash: ceccc515b73bd41c7933889c61617c360c678eb7
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 09/25/2019
+ms.openlocfilehash: 9ccc5f5721d1ddc8459918913a4f3ce707766dea
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059291"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316699"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Výuka pomocí datových sad (Preview) v Azure Machine Learning
 
 V tomto článku se dozvíte dva způsoby, jak využívat [Azure Machine Learning datové sady](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) ve vzdálených školicích kurzech, aniž byste se museli starat o připojovací řetězce nebo cesty k datům.
 
-- Možnost 1: Předání datových sad přímo do školicího skriptu.
+- Možnost 1: Pokud máte strukturovaná data, vytvořte TabularDataset a použijte ji přímo ve školicím skriptu.
 
-- Možnost 2: Použijte datové sady k připojení nebo stažení souborů do vzdáleného výpočetního prostředí pro školení.
+- Možnost 2: Pokud máte nestrukturovaná data, vytvořte datovou sadu souborů a připojte nebo Stáhněte soubory do vzdáleného výpočetního prostředí pro školení.
+
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) a [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,9 +41,9 @@ K vytváření a školení s datovými sadami potřebujete:
 > [!Note]
 > Některé třídy DataSet (Preview) mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Pro uživatele se systémem Linux jsou tyto třídy podporovány pouze v následujících distribucích:  Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
-## <a name="option-1-pass-datasets-as-inputs-to-training-scripts"></a>Možnost 1: Předání datových sad jako vstupů do školicích skriptů
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Možnost 1: Použití datových sad přímo ve školicích skriptech
 
-Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) a [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py). V tomto příkladu vytvoříte [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a použijete ho jako vstup do svého `estimator` objektu pro školení. 
+V tomto příkladu vytvoříte [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a použijete ho jako přímý vstup k vašemu `estimator` objektu pro školení. 
 
 ### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
@@ -52,6 +54,24 @@ from azureml.core.dataset import Dataset
 
 web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+```
+
+### <a name="access-the-input-dataset-in-your-training-script"></a>Přístup ke vstupní datové sadě ve školicím skriptu
+
+Objekty TabularDataset poskytují možnost načíst data do datového rámce PANDAS nebo Spark, abyste mohli pracovat se známými knihovnami pro přípravu dat a školení. Pokud chcete tuto funkci využít, můžete předat TabularDataset jako vstup ve vaší konfiguraci školení a pak ho načíst ve svém skriptu.
+
+Provedete to tak, že získáte přístup ke [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) vstupní datové sadě prostřednictvím objektu ve školicím [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--) skriptu a použijete metodu. 
+
+```Python
+%%writefile $script_folder/train_titanic.py
+
+from azureml.core import Dataset, Run
+
+run = Run.get_context()
+# get the input dataset by name
+dataset = run.input_datasets['titanic_ds']
+# load the TabularDataset to pandas DataFrame
+df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-estimator"></a>Konfigurace Estimator
@@ -77,25 +97,6 @@ est = Estimator(source_directory=script_folder,
 # Submit the estimator as part of your experiment run
 experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
-
-```
-
-### <a name="access-the-input-dataset-in-your-training-script"></a>Přístup ke vstupní datové sadě ve školicím skriptu
-
-Objekty TabularDataset poskytují možnost načíst data do datového rámce PANDAS nebo Spark, abyste mohli pracovat se známými knihovnami pro přípravu dat a školení. Pokud chcete tuto funkci využít, můžete předat TabularDataset jako vstup ve vaší konfiguraci školení a pak ho načíst ve svém skriptu.
-
-Provedete to tak, že získáte přístup ke [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) vstupní datové sadě prostřednictvím objektu ve školicím [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--) skriptu a použijete metodu. 
-
-```Python
-%%writefile $script_folder/train_titanic.py
-
-from azureml.core import Dataset, Run
-
-run = Run.get_context()
-# get the input dataset by name
-dataset = run.input_datasets['titanic']
-# load the TabularDataset to pandas DataFrame
-df = dataset.to_pandas_dataframe()
 ```
 
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Možnost 2:  Připojit soubory ke vzdálenému cíli výpočtů
@@ -125,9 +126,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Konfigurace Estimator
 
-Místo předání datové sady přes `inputs` parametr v Estimator můžete také předat datovou sadu pomocí `script_params` a získat cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem se můžete vyhnout závislostem na Azure Machine Learning SDK ze školicího skriptu.
+Místo předání datové sady přes `inputs` parametr v Estimator můžete také předat datovou sadu pomocí `script_params` a získat cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem můžete získat přístup k datům a použít existující školicí skript.
 
-[Skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objekt Estimator se používá k odeslání běhu pro scikit experimenty.
+[Skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objekt Estimator se používá k odeslání běhu pro scikit experimenty. Přečtěte si další informace o školeních s [skriptu sklearn Estimator](how-to-train-scikit-learn.md).
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -187,10 +188,11 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
-[Ukázkové poznámkové bloky](https://aka.ms/dataset-tutorial) ukazují a rozbalí na základě konceptů v tomto článku, například pomocí datových sad s objekty ScriptRun a [HyperdDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) .
+[Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku. 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Automatické učení modelů strojového učení](how-to-auto-train-remote.md) pomocí TabularDatasets.
 
 * [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) s využitím datových sad
+
