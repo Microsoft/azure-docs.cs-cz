@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41caa5807ce837e1ff00ceadd3fe5aef958d01b6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066058"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315182"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů z účtu Li
 - Účet LinkedIn – Pokud ho ještě nemáte, [vytvořte účet](https://www.linkedin.com/start/join).
 - LinkedIn – stránka: potřebujete [LinkedIn](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page) , který můžete přidružit k aplikaci LinkedIn, kterou vytvoříte v další části.
 
-## <a name="create-an-application"></a>Vytvoření aplikace
+## <a name="create-an-application"></a>Vytvořit aplikaci
 
 Chcete-li použít LinkedIn jako poskytovatele identity v Azure AD B2C, je nutné vytvořit aplikaci LinkedIn.
 
@@ -217,15 +217,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikace**a pak vyberte **Přidat**.
-5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webovou aplikaci nebo webové rozhraní API**vyberte `Yes`a zadejte `https://jwt.ms` **adresu URL odpovědi**.
-7. Klikněte na možnost **Vytvořit**.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 

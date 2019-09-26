@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
-description: Podrobné pokyny ke konfiguraci spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony Azure Resource Manageru.
+title: Postup konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony
+description: Podrobné pokyny pro konfiguraci spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb96f4aaef461d049ca496780d542ad7db229e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 31a33a000fdc07756d39e42c8f70fc06a58b170e
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307756"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309978"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku pomocí šablony nasazení Azure Resource Manageru, se dozvíte, jak k provádění následujících spravovaných identit pro prostředky Azure operace na Virtuálním počítači Azure:
+V tomto článku se pomocí šablony nasazení Azure Resource Manager dozvíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s použitím šablony nasazení Azure Resource Manageru, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
+- Pokud nejste obeznámeni s používáním šablony nasazení Azure Resource Manager, přečtěte si [část přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Stejně jako webu Azure portal a skriptování, [Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md) šablony poskytují možnost nasazení nové nebo upravené zdroje, které jsou definované ve skupině prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místních i založené na portálu, včetně:
+Stejně jako u Azure Portal a skriptování poskytují [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) šablony možnost nasazení nových nebo upravených prostředků definovaných skupinou prostředků Azure. K dispozici je několik možností pro úpravu a nasazení šablony, včetně místních i na portálu, včetně:
 
-   - Použití [vlastní šablonu z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), která umožňuje vytvoření zcela nové šablony, nebo ji založit na existující běžné nebo [šablonu pro rychlý Start](https://azure.microsoft.com/documentation/templates/).
-   - Odvozování z existující skupinu prostředků, tak, že vyexportujete šablonu buď z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), nebo [aktuální stav nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-   - Pomocí místní [editor JSON (například VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a nahrání a nasazení pomocí Powershellu nebo rozhraní příkazového řádku.
-   - Pomocí sady Visual Studio [projekt skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) jak vytvořit a nasadit šablonu.  
+   - Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
+   - Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
+   - Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) sady Visual Studio k vytvoření a nasazení šablony.  
 
-Bez ohledu na vámi zvolené možnosti syntaxe šablony je stejný během počátečního nasazení a opětovné nasazení. Povolení systém nebo uživatel přiřazenou spravovaná identita nového nebo existujícího virtuálního počítače se provádí stejným způsobem. Také ve výchozím nastavení, provede Azure Resource Manageru [přírůstkové aktualizace](../../azure-resource-manager/deployment-modes.md) až po nasazení.
+Bez ohledu na zvolenou možnost je syntaxe šablony stejná při počátečním nasazení a opětovném nasazení. Povolení systému nebo uživatelsky přiřazené spravované identity na novém nebo existujícím virtuálním počítači se provádí stejným způsobem. Ve výchozím nastavení Azure Resource Manager také [přírůstkovou aktualizaci](../../azure-resource-manager/deployment-modes.md) nasazení.
 
-## <a name="system-assigned-managed-identity"></a>Systém přiřadil spravované identity
+## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
-V této části se povolí a zakáže systém přiřadil spravovanou identitu pomocí šablony Azure Resource Manageru.
+V této části povolíte a zakážete spravovanou identitu přiřazenou systémem pomocí šablony Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Povolit systém přiřadil spravovanou identitu při vytváření virtuálního počítače Azure nebo z existujícího virtuálního počítače
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Povolit spravovanou identitu přiřazenou systémem během vytváření virtuálního počítače Azure nebo na existujícím virtuálním počítači
 
-Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním počítači, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) přiřazení role.  Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
+Aby se na virtuálním počítači povolila spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. Pokud chcete povolit systém přiřadil spravovanou identitu, načtení šablony do editoru, vyhledejte `Microsoft.Compute/virtualMachines` prostředků zájmu v rámci `resources` a přidejte `"identity"` vlastnost na stejné úrovni jako `"type": "Microsoft.Compute/virtualMachines"` vlastnost. Použijte následující syntaxi:
+2. Pokud chcete povolit spravovanou identitu `Microsoft.Compute/virtualMachines` přiřazenou systémem, načtěte šablonu do editoru, vyhledejte prostředek zájmu `resources` v rámci oddílu a přidejte `"identity"` vlastnost na stejnou úroveň jako `"type": "Microsoft.Compute/virtualMachines"` vlastnost. Použijte následující syntaxi:
 
    ```JSON
    "identity": { 
@@ -64,10 +64,9 @@ Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním po�
    },
    ```
 
-> [!NOTE]
-> Může volitelně zřízení spravovaných identit pro prostředky Azure rozšíření virtuálního počítače tak, že zadáte jako `resources` element v šabloně. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-3. Jakmile budete hotovi, v dalších částech měla být přidána do `resource` část šablony a to by měl vypadat takto:
+
+3. Až budete hotovi, v `resource` části šablony by se měly přidat následující oddíly, které by měly vypadat takto:
 
    ```JSON
    "resources": [
@@ -104,17 +103,17 @@ Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním po�
     ]
    ```
 
-### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Přiřazení role Virtuálního počítače, systém přiřadil spravované identity
+### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Přiřaďte roli spravovanou identitu přiřazenou systémem virtuálního počítače.
 
-Po povolení systém přiřadil spravovaná identita na vašem virtuálním počítači, můžete jí udělit roli, jako **čtečky** přístup do skupiny prostředků, ve kterém byla vytvořena.
+Až na svém VIRTUÁLNÍm počítači povolíte spravovanou identitu přiřazenou systémem, můžete jí udělit roli, jako je **Čtenář** přístupu ke skupině prostředků, ve které se vytvořila.
 
-Přiřazení role na systém přiřadil identitu Virtuálního počítače, musí váš účet [správce uživatelských přístupů](/azure/role-based-access-control/built-in-roles#user-access-administrator) přiřazení role.
+Pokud chcete přiřadit roli k identitě přiřazené systému vašeho virtuálního počítače, váš účet potřebuje přiřazení role [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
  
-2. Načíst šablonu do [editor](#azure-resource-manager-templates) a přidejte následující informace poskytují vašemu virtuálnímu počítači **čtečky** přístup do skupiny prostředků, ve kterém byla vytvořena.  Struktury vaší šablony může lišit v závislosti na editoru a model nasazení, které zvolíte.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a přidejte následující informace, které **vašemu virtuálnímu počítači umožní** přístup ke skupině prostředků, ve které se vytvořila.  Struktura šablony se může lišit v závislosti na editoru a modelu nasazení, který zvolíte.
    
-   V části `parameters` části přidejte následující:
+   `parameters` V části přidejte následující:
 
     ```JSON
     "builtInRoleType": {
@@ -126,13 +125,13 @@ Přiřazení role na systém přiřadil identitu Virtuálního počítače, mus�
         }
     ```
 
-    V části `variables` části přidejte následující:
+    `variables` V části přidejte následující:
 
     ```JSON
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
-    V části `resources` části přidejte následující:
+    `resources` V části přidejte následující:
 
     ```JSON
     {
@@ -150,23 +149,23 @@ Přiřazení role na systém přiřadil identitu Virtuálního počítače, mus�
     }
     ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázat systém přiřadil spravovanou identitu z virtuálního počítače Azure
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázání spravované identity přiřazené systémem z virtuálního počítače Azure
 
-Z virtuálního počítače odebrat systém přiřadil spravovanou identitu, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) přiřazení role.  Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
+Pokud chcete z virtuálního počítače odebrat spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. Načíst šablonu do [editor](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachines` prostředků zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má jenom systém přiřadil spravovanou identitu, můžete jej zakázat tak, že změníte typ identity k `None`.  
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachines` prostředek zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má pouze spravovanou identitu přiřazenou systémem, můžete ho zakázat změnou typu identity na `None`.  
    
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
 
-   Pokud váš virtuální počítač má systém a uživatelsky přiřazené identity spravované, odeberte `SystemAssigned` z typ identity a zachovat `UserAssigned` spolu s `userAssignedIdentities` slovník hodnot.
+   Pokud má váš virtuální počítač i spravované identity přiřazené systémem i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` spolu s `userAssignedIdentities` hodnotami slovníku.
 
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
    
-   Pokud vaše `apiVersion` je `2017-12-01` a váš virtuální počítač má systém i uživatelsky přiřazené identity spravované odebrat `SystemAssigned` z typ identity a zachovat `UserAssigned` spolu s `identityIds` pole uživatel přiřazenou spravovaných identit.  
+   Pokud máte `apiVersion` `SystemAssigned` `UserAssigned` `identityIds` a váš virtuální počítač obsahuje spravované identity systémem i uživatelem, odeberte z typu identity a zachovejte spolu s polem spravovaných identit přiřazených uživatelem. `2017-12-01`  
    
-Následující příklad ukazuje, jak odebrat spravovanou identitu systém přiřadil z virtuálního počítače se žádné spravované identity přiřazené uživateli:
+Následující příklad ukazuje, jak odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače bez přiřazených uživatelem spravovaných identit:
 
 ```JSON
 {
@@ -179,22 +178,22 @@ Následující příklad ukazuje, jak odebrat spravovanou identitu systém při�
 }
 ```
 
-## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
-V této části přiřadíte spravovanou identitu uživatelsky přiřazené k virtuálnímu počítači Azure pomocí šablony Azure Resource Manageru.
+V této části pomocí šablony Azure Resource Manager přiřadíte k virtuálnímu počítači Azure spravovanou identitu s přiřazenou uživatelem.
 
 > [!Note]
-> Vytvoření uživatelsky přiřazené spravovanou identitu pomocí šablony Azure Resource Manageru najdete v tématu [vytvoření uživatelsky přiřazené identity spravované](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> Chcete-li vytvořit uživatelem přiřazenou identitu pomocí šablony Azure Resource Manager, přečtěte si téma [Vytvoření uživatelem přiřazené spravované identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Spravované identity přiřazené uživateli přiřadit Virtuálním počítači Azure
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli k virtuálnímu počítači Azure
 
-K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) přiřazení rolí. Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. V části `resources` prvku, přidejte následující položku přiřazení spravovanou identitu uživatelsky přiřazené k vašemu virtuálnímu počítači.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatel přiřazenou spravované identity, které jste vytvořili.
+1. V rámci `resources` elementu přidejte následující položku, která uživateli přiřadí spravovanou identitu přiřazenou k vašemu virtuálnímu počítači.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili.
 
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
 
-   Pokud vaše `apiVersion` je `2018-06-01`, uživatelsky přiřazené spravovaných identit jsou uloženy v `userAssignedIdentities` slovníku formátu a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložen v proměnné definované v `variables` vaší šablony.
+   `variables` `<USERASSIGNEDIDENTITYNAME>` `userAssignedIdentities` V takovém případě jsou spravované identity přiřazené uživatelem uloženy ve formátu slovníku a hodnota musí být uložena v proměnné definované v části šablony. `apiVersion` `2018-06-01`
 
    ```json
    {
@@ -211,9 +210,9 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    }
    ```
    
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
     
-   Pokud vaše `apiVersion` je `2017-12-01`, uživatelsky přiřazené spravovaných identit jsou uloženy v `identityIds` pole a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložen v proměnné definované v `variables` vaší šablony.
+   `identityIds` Vtakovém`<USERASSIGNEDIDENTITYNAME>` případě jsou spravované identity přiřazené uživatelem uloženy v poli a hodnota musí být uložena v proměnné definované v `variables` části šablony. `apiVersion` `2017-12-01`
     
    ```json
    {
@@ -230,9 +229,9 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    }
    ```
        
-3. Jakmile budete hotovi, v dalších částech měla být přidána do `resource` část šablony a to by měl vypadat takto:
+3. Až budete hotovi, v `resource` části šablony by se měly přidat následující oddíly, které by měly vypadat takto:
    
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**    
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**    
 
    ```JSON
    "resources": [
@@ -270,7 +269,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
    
    ```JSON
    "resources": [
@@ -310,15 +309,15 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
     ]
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure spravované identity přiřazené uživateli
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure
 
-Odebrání virtuálního počítače uživatelsky přiřazené identity, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) přiřazení role. Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
+K odebrání uživatelsky přiřazené identity z virtuálního počítače potřebuje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. Načíst šablonu do [editor](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachines` prostředků zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má uživatel přiřazenou spravované identity jenom, můžete jej zakázat tak, že změníte typ identity k `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachines` prostředek zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má pouze spravovanou identitu přiřazenou uživatelem, můžete ho zakázat změnou typu identity na `None`.
  
-   Následující příklad ukazuje, jak odebrat všechny přiřazené uživatele spravovaných identit z virtuálního počítače se žádný systém přiřadil spravovaných identit:
+   Následující příklad ukazuje, jak odebrat všechny spravované identity přiřazené uživatelem z virtuálního počítače bez spravovaných identit přiřazených systémem:
    
    ```json
     {
@@ -331,19 +330,19 @@ Odebrání virtuálního počítače uživatelsky přiřazené identity, musí v
     }
    ```
    
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
     
-   Z virtuálního počítače odebrat jeden uživatel přiřazenou spravovanou identitu, odeberte ho z `useraAssignedIdentities` slovníku.
+   Pokud chcete z virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji ze `useraAssignedIdentities` slovníku.
 
-   Pokud máte systém přiřadil spravovanou identitu, uložte ho v `type` pod `identity` hodnotu.
+   Pokud máte spravovanou identitu přiřazenou systémem, ponechte ji v `type` hodnotě `identity` pod hodnotou.
  
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
 
-   Z virtuálního počítače odebrat jeden uživatel přiřazenou spravovanou identitu, odeberte ho z `identityIds` pole.
+   Pokud chcete z virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z tohoto `identityIds` pole.
 
-   Pokud máte systém přiřadil spravovanou identitu, uložte ho v `type` pod `identity` hodnotu.
+   Pokud máte spravovanou identitu přiřazenou systémem, ponechte ji v `type` hodnotě `identity` pod hodnotou.
    
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Spravovaných identit pro prostředky Azure přehled](overview.md).
+- [Přehled spravovaných identit pro prostředky Azure](overview.md)
 

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827223"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900320"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade datového skladu na Gen2
 
@@ -37,7 +37,7 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 | Brazílie – jih |K dispozici |Dokončeno |
 | Kanada – střed |K dispozici |Dokončeno |
 | Kanada – východ |1\. června 2020 |Od 1. července 2020 |
-| Střední USA |K dispozici |Dokončeno |
+| Střed USA |K dispozici |Dokončeno |
 | Čína – východ |\* |\* |
 | Čína – východ 2 |K dispozici |Dokončeno |
 | Čína – sever |\* |\* |
@@ -45,25 +45,25 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 | Východní Asie |K dispozici |Dokončeno |
 | East US |K dispozici |Dokončeno |
 | Východní USA 2 |K dispozici |Dokončeno |
-| Francie – střed |K dispozici |Probíhá |
+| Francie – střed |K dispozici |Probíhá zpracování |
 | Střední Německo |\* |\* |
 | Německo – středozápad |Od 1. září 2019|Od 1. října 2019 |
 | Indie – střed |K dispozici |Dokončeno |
 | Indie – jih |K dispozici |Dokončeno |
-| Indie – západ |Od 1. července 2019 |Probíhá |
+| Indie – západ |Od 1. července 2019 |Probíhá zpracování |
 | Japonsko – východ |K dispozici |Dokončeno |
 | Japonsko – západ |K dispozici |Dokončeno |
 | Jižní Korea – střed |K dispozici |Dokončeno |
 | Jižní Korea – jih |K dispozici |Dokončeno |
-| Středoseverní USA |K dispozici |Dokončeno |
+| Střed USA – sever |K dispozici |Dokončeno |
 | Severní Evropa |K dispozici |Dokončeno |
 | Jižní Afrika – sever |12. července 2019 |Dokončeno |
-| Středojižní USA |K dispozici |Dokončeno |
+| Střed USA – jih |K dispozici |Dokončeno |
 | Jihovýchodní Asie |K dispozici |Dokončeno |
 | Spojené arabské emiráty – sever |20. července 2019 |Dokončeno |
-| Velká Británie – jih |K dispozici |Probíhá |
-| Spojené království – západ |K dispozici |Probíhá |
-| Středozápadní USA |Od 1. září 2019 |Od 1. října 2019|
+| Velká Británie – jih |K dispozici |Probíhá zpracování |
+| Spojené království – západ |K dispozici |Probíhá zpracování |
+| Západní střed USA |Od 1. listopadu 2019 |1\. prosince 2019|
 | Západní Evropa |K dispozici |Dokončeno |
 | USA – západ |K dispozici |Dokončeno |
 | USA – západ 2 |K dispozici |Dokončeno |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727580"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300788"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Doporučení zabezpečení pro Azure Marketplace image
 
@@ -56,7 +56,7 @@ Tato doporučení můžou být užitečná i pro organizace, které nemají imag
 | Zabezpečení                                                         | Použijte zabezpečenou základní bitovou kopii operačního systému. Virtuální pevný disk, který se používá pro zdroj všech imagí založených na Windows serveru, musí být z imagí operačního systému Windows Server, které poskytuje Microsoft Azure. |
 | Zabezpečení                                                         | Nainstalujte všechny nejnovější aktualizace zabezpečení.                                                                                                                                     |
 | Zabezpečení                                                         | Aplikace by neměly mít závislost na omezených uživatelských jménech, jako je správce, kořen a správce.                                                                |
-| Zabezpečení                                                         | Nástroj BitLocker Drive Encryption není podporován na pevném disku operačního systému. BitLocker se dá použít na datových discích.                                                            |
+| Zabezpečení                                                         | Nástroj BitLocker Drive Encryption je povolená pro pevné disky s operačním systémem i pro datové pevné disky.                                                             |
 | Zabezpečení                                                         | Omezte prostor pro útoky tím, že podržíte minimální nároky jenom na potřebné role, funkce, služby a síťové porty Windows serveru.                         |
 | Zabezpečení                                                         | Naskenujte zdrojový kód a výslednou image virtuálního počítače pro malware.                                                                                                                     |
 | Zabezpečení                                                         | Nastavte aktualizaci zabezpečení imagí Windows serveru na automatickou aktualizaci.                                                                                                                |

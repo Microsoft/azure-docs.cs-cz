@@ -12,23 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d1502b4e0e024a93db41a97589231eef1ed6696f
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016086"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310151"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
+
+> [!NOTE]
+> Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tento starší multimediální procesor. Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+
 Azure Media Indexer umožňuje zpřístupnění obsahu mediálních souborů a vytvoření fulltextového přepisu pro skryté titulky a klíčová slova. Mediální soubory můžete zpracovávat po jednom nebo v dávkách.  
 
-> [!IMPORTANT]
-> Při indexování obsahu se ujistěte, že používáte mediální soubory, které mají jasný zvuk (bez hudby, hluku, efektů nebo mikrofonu Hiss). Mezi příklady příslušného obsahu patří: zaznamenané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokoli se smíšeným zvukovým a zvukovým efektem, špatně zaznamenaného obsahu s hlukem na pozadí (Hiss).
-> 
-> 
+Při indexování obsahu se ujistěte, že používáte mediální soubory, které mají jasný zvuk (bez hudby, hluku, efektů nebo mikrofonu Hiss). Mezi příklady příslušného obsahu patří: zaznamenané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokoli se smíšeným zvukovým a zvukovým efektem, špatně zaznamenaného obsahu s hlukem na pozadí (Hiss).
 
 Úloha indexování může generovat následující výstupy:
 
@@ -266,9 +267,9 @@ V případě chyby by Azure Media Indexer měla nahlásit jeden z následující
 | 2004 |Nepodporovaný protokol |Protokol adresy URL média není podporován. |
 | 2005 |Nepodporovaný typ souboru |Typ vstupního mediálního souboru se nepodporuje. |
 | 2006 |Příliš mnoho vstupních souborů |Vstupní manifest obsahuje více než 10 souborů. |
-| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>or<br/> Poškozený mediální soubor <br/>or<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
+| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>nebo<br/> Poškozený mediální soubor <br/>nebo<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
 | 4000 |Dávkové indexování bylo dokončeno částečně. |Některé ze vstupních mediálních souborů se nepovedlo indexovat. Další informace najdete v tématu <a href="#output_files">výstupní soubory</a>. |
-| jiné |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
+| ostatní |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
 
 ## <a id="supported_languages"></a>Podporované jazyky
 V současné době jsou podporovány anglické a španělské jazyky. Další informace najdete v [blogovém příspěvku o vydané verzi v 1.2](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).

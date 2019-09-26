@@ -4,14 +4,14 @@ description: Popisuje způsob použití šablon Azure Resource Manager pro nasaz
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965300"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300159"
 ---
 # <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
@@ -47,9 +47,11 @@ Pokud se snažíte rozhodnout mezi používáním šablon Správce prostředků 
 
 * **Plány nasazení**: Pomocí [plánů poskytovaných](../governance/blueprints/overview.md) společností Microsoft můžete vyhovět zákonným a kompatibilním standardům. Tyto plány obsahují předem připravené šablony pro různé architektury.
 
+* **Integrace CI/CD**: Šablony můžete integrovat do nástrojů pro průběžnou integraci a průběžné nasazování (CI/CD), které můžou automatizovat vaše kanály vydávání verzí pro rychlé a spolehlivé aktualizace aplikací a infrastruktury. Pomocí úlohy šablon Azure DevOps a Správce prostředků můžete pomocí Azure Pipelines průběžně sestavovat a nasazovat projekty šablon Azure Resource Manager. Další informace najdete v tématu [vs Project with Pipelines](./vs-resource-groups-project-devops-pipelines.md) and [Continuous integration with Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md).
+
 * **Exportovatelný kód**: Šablonu pro stávající skupinu prostředků můžete získat buď exportováním aktuálního stavu skupiny prostředků, nebo zobrazením šablony použité pro konkrétní nasazení. Zobrazení [vyexportované šablony](export-template-portal.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
-* **Nástroje pro tvorbu**: Šablony můžete vytvářet pomocí [Visual Studio Code](resource-manager-tools-vs-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka.
+* **Nástroje pro tvorbu**: Šablony můžete vytvářet pomocí [Visual Studio Code](resource-manager-tools-vs-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Kromě sady Visual Studio Code můžete také použít [Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="template-file"></a>Soubor šablony
 
@@ -121,10 +123,7 @@ Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly,
 
 Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o vlastnostech v souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
-* Pokud chcete explicitně nastavit závislosti, aby se jeden prostředek nasadil před jiným prostředkem, přečtěte si téma [Definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md).
-* Prostředek můžete přidat do šablony a případně ho nasadit. Další informace najdete v tématu [podmíněné nasazení v šablonách správce prostředků](conditional-resource-deployment.md).
-* Místo opakování opakujících se bloků JSON ve vaší šabloně můžete zadat víc než jednu instanci proměnné, vlastnosti nebo prostředku. Další informace naleznete v tématu [iterace prostředků, vlastností nebo proměnných v šablonách Azure Resource Manager](resource-group-create-multiple.md).
 * Další informace o exportování šablon najdete v [tématu rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

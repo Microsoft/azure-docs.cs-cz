@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967822"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299597"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -29,10 +29,8 @@ Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Un
 
 Budete potřebovat:
 
-* JRE verze 1.7 nebo 1.8
+* Java 7 nebo novější
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
-
-Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte klíč instrumentace Application Insights
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
@@ -51,27 +49,16 @@ Pokud je váš projekt již nastaven na sestavení s použitím nástroje Maven,
 Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
 ```XML
-
-    <repositories>
-       <repository>
-          <id>central</id>
-          <name>Central</name>
-          <url>http://repo1.maven.org/maven2</url>
-       </repository>
-    </repositories>
-
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>applicationinsights-web</artifactId>
+        <artifactId>applicationinsights-web-auto</artifactId>
+        <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>[2.0,)</version>
+        <version>2.5.0</version>
       </dependency>
     </dependencies>
 ```
-
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>2.0.n</version>`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Je nutné přejít na novou sadu SDK?* Obnovte závislosti svého projektu.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Pokud používáte Gradle... <a name="gradle-setup" />
 Pokud je váš projekt již nastaven na sestavení s použitím nástroje Gradle, slučte následující kód do souboru build.gradle.
@@ -79,34 +66,25 @@ Pokud je váš projekt již nastaven na sestavení s použitím nástroje Gradle
 Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
 ```gradle
-
-    repositories {
-      mavenCentral()
-    }
-
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Pokud k vytvoření dynamického webového projektu používáte Eclipse...
-Použijte sadu SDK Application Insights pro modul plug-in Java. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
-
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Aktualizace na novou sadu SDK* Aktualizujte závislosti svého projektu.
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Jinak, pokud spravujete závislosti ručně...
 Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a zkopírujte do svého projektu potřebné soubory, přičemž nahraďte jejich starší verze.
 
 ### <a name="questions"></a>Otázky...
-* *Jaký je vztah mezi komponentami `-core` a `-web`?*
-  * `applicationinsights-core` poskytuje úplné informace o API. Tuto komponentu budete vždy potřebovat.
-  * `applicationinsights-web` poskytuje metriky, které sledují počty žádostí HTTP a časy odezvy. Tuto komponentu můžete vynechat, pokud nechcete automaticky shromažďovat tuto telemetrii. Hodí se to například v případě, že chcete napsat vlastní.
+* *Jaký je vztah mezi `-web-auto` `-web` komponentami a a `-core` ?*
+  * `applicationinsights-web-auto`poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, automatickým registrací filtru Application Insights servlet za běhu.
+  * `applicationinsights-web`také poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, ale vyžaduje ruční registraci filtru Application Insights servlet ve vaší aplikaci.
+  * `applicationinsights-core`poskytuje pouze úplné rozhraní API, například pokud vaše aplikace není založená na servlet.
   
 * *Jak mám aktualizovat sadu SDK na nejnovější verzi?*
   * Pokud používáte Gradle nebo Maven...
-    * Aktualizujte svůj soubor sestavení zadáním nejnovější verze nebo pomocí syntaxe zástupných znaků Gradle nebo Maven zahrňte nejnovější verzi automaticky. Pak aktualizujte závislosti svého projektu. Syntaxi zástupných znaků si můžete prohlédnout ve výše uvedených příkladech pro [Gradle](#gradle-setup) nebo [Maven](#maven-setup).
+    * Aktualizujte soubor sestavení tak, aby určoval nejnovější verzi.
   * Pokud spravujete závislosti ručně...
     * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a nahraďte staré. Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
@@ -116,34 +94,30 @@ Přidejte soubor ApplicationInsights.xml do složky zdrojů v projektu nebo zaji
 Nahraďte klíč instrumentace, který jste dostali z portálu Azure.
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <!-- The key from the portal: -->
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
+   <!-- HTTP request component (not required for bare API) -->
+   <TelemetryModules>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+   </TelemetryModules>
 
-      <!-- The key from the portal: -->
-      <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <!-- Events correlation (not required for bare API) -->
+   <!-- These initializers add context data to each event -->
+   <TelemetryInitializers>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+   </TelemetryInitializers>
 
-
-      <!-- HTTP request component (not required for bare API) -->
-      <TelemetryModules>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
-      </TelemetryModules>
-
-      <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data to each event -->
-
-      <TelemetryInitializers>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
-
-      </TelemetryInitializers>
-    </ApplicationInsights>
+</ApplicationInsights>
 ```
 
 Volitelně se konfigurační soubor může nacházet v jakémkoli umístění, ke kterému má vaše aplikace přístup.  Systémová vlastnost `-Dapplicationinsights.configurationDirectory` určuje adresář obsahující soubor ApplicationInsights.xml. Například konfigurační soubor umístěný v cestě `E:\myconfigs\appinsights\ApplicationInsights.xml` se nakonfiguruje pomocí vlastnosti `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
@@ -155,8 +129,8 @@ Volitelně se konfigurační soubor může nacházet v jakémkoli umístění, k
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternativní způsoby nastavení klíče instrumentace
 Application Insights SDK hledá klíče v tomto pořadí:
 
-1. Systémová vlastnost: -DAPPLICATION_INSIGHTS_IKEY=váš_ikey
-2. Proměnná prostředí: APPLICATION_INSIGHTS_IKEY
+1. Systémová vlastnost:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
+2. Proměnná prostředí: APPINSIGHTS_INSTRUMENTATIONKEY
 3. Konfigurační soubor: ApplicationInsights.xml
 
 Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
@@ -170,133 +144,9 @@ Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-me
     }
 ```
 
-Upozorňujeme, že [živá metrika](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) nepodporuje čtení klíče instrumentace z kódu.
+## <a name="4-add-agent"></a>4. Přidat agenta
 
-## <a name="4-add-an-http-filter"></a>4. Přidat filtr HTTP
-Poslední krok konfigurace umožňuje komponentě požadavku HTTP zaprotokolovat každý webový požadavek. (Není požadováno, pokud chcete úplné rozhraní API.)
-
-### <a name="spring-boot-applications"></a>Aplikace Spring Boot
-Zaregistrujte ve své třídě Configuration filtr Application Insights `WebRequestTrackingFilter`:
-
-```Java
-package <yourpackagename>.configurations;
-
-import javax.servlet.Filter;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import com.microsoft.applicationinsights.TelemetryConfiguration;
-import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
-
-@Configuration
-public class AppInsightsConfig {
-
-    @Bean
-    public String telemetryConfig() {
-        String telemetryKey = System.getenv("<instrumentation key>");
-        if (telemetryKey != null) {
-            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-        }
-        return telemetryKey;
-    }
-
-    /**
-     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
-     * @param webRequestTrackingFilter
-     * @return Bean of type {@link FilterRegistrationBean}
-     */
-    @Bean
-    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(webRequestTrackingFilter);
-        registration.addUrlPatterns("/*");
-        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-        return registration;
-    }
-
-
-    /**
-     * Creates bean of type WebRequestTrackingFilter for request tracking
-     * @param applicationName Name of the application to bind filter to
-     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
-     */
-    @Bean
-    @ConditionalOnMissingBean
-
-    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-        return new WebRequestTrackingFilter(applicationName);
-    }
-
-
-}
-```
-
-> [!NOTE]
-> Pokud používáte Spring Boot 1.3.8 nebo starší, nahraďte FilterRegistrationBean řádkem uvedeným níže.
-
-```Java
-    import org.springframework.boot.context.embedded.FilterRegistrationBean;
-```
-
-Tato třída nakonfiguruje `WebRequestTrackingFilter` jako první filtr v řetězu filtrů HTTP. Kromě toho z proměnné prostředí operačního systému přetáhne klíč instrumentace, pokud je k dispozici.
-
-> Vzhledem k tomu, že se jedná o aplikaci Spring Boot s vlastní konfigurací Spring MVC, místo konfigurace Spring MVC používáme konfiguraci webového filtru HTTP. Konfiguraci specifickou pro Spring MVC najdete v následujících částech.
-
-### <a name="applications-using-webxml"></a>Aplikace využívající soubor Web.xml
-Vyhledejte a otevřete soubor web.xml ve vašem projektu a slučte následující kód pod uzlem webové aplikace, které jsou nakonfigurované filtry aplikace.
-
-Chcete-li získat nejpřesnější výsledky, musí být filtr namapován před všemi ostatními filtry.
-
-```XML
-
-    <filter>
-      <filter-name>ApplicationInsightsWebFilter</filter-name>
-      <filter-class>
-        com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter
-      </filter-class>
-    </filter>
-    <filter-mapping>
-       <filter-name>ApplicationInsightsWebFilter</filter-name>
-       <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
-    <listener>
-      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
-    </listener>
-```
-
-#### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Pokud používáte Spring Web MVC 3.1 nebo novější
-Upravte tyto prvky v souboru *-servlet.xml, aby zahrnovaly balíček Application Insights:
-
-```XML
-
-    <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
-
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
-        </mvc:interceptor>
-    </mvc:interceptors>
-```
-
-#### <a name="if-youre-using-struts-2"></a>Pokud používáte Struts 2
-Tuto položku přidáte do konfiguračního souboru Struts (obvykle s názvem struts.xml nebo struts default.xml):
-
-```XML
-
-     <interceptors>
-       <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
-     </interceptors>
-     <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
-
-Pokud máte sběrače definované ve výchozím zásobníku, lze sběrač přidat do tohoto balíku.
+[Nainstalujte agenta Java](java-agent.md) , abyste mohli zachytit odchozí volání http, dotazy JDBC, protokolování aplikací a lepší pojmenovávání operací.
 
 ## <a name="5-run-your-application"></a>5. Spusťte aplikaci
 Buď ji spusťte v režimu ladění na vývojovém počítači, nebo publikujte na serveru.
@@ -314,9 +164,9 @@ Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších
 
 ![Podokno selhání Application Insights s grafy](./media/java-get-started/006-barcharts.png)
 
-> Application Insights předpokládá, že formát požadavků HTTP pro aplikace MVC je: `VERB controller/action`. Například `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` a `GET Home/Product/sdf96vws` se seskupí do `GET Home/Product`. Toto seskupení umožňuje smysluplné agregace požadavků, jako je počet požadavků a průměrná doba provádění pro požadavky.
->
->
+<!--
+[TODO update image with 2.5.0 operation naming provided by agent]
+-->
 
 ### <a name="instance-data"></a>Data instance
 Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednotlivých instancí.
@@ -362,15 +212,14 @@ Aplikace pro spouštění pružiny spuštěné v systému Windows vyžadují dal
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Výjimky a chyby požadavků
-Neošetřené výjimky jsou shromažďovány automaticky.
+Neošetřené výjimky a selhání požadavků jsou automaticky shromažďovány Application Insights webovým filtrem.
 
-Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
-
-* [Do kódu vložte volání trackException ()][apiexceptions].
-* [Nainstalovat na server agenta Java](java-agent.md). Určete metody, které chcete sledovat.
+Chcete-li shromažďovat data o jiných výjimkách, můžete [do kódu vložit volání trackException ()][apiexceptions].
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Volání metody monitorování a externí závislosti
 [Nainstalujte agenta Java](java-agent.md) k protokolování určených vnitřních metod a volání provedená prostřednictvím JDBC s daty časování.
+
+A pro automatické pojmenovávání operací.
 
 ## <a name="w3c-distributed-tracing"></a>Distribuované trasování W3C
 
@@ -442,9 +291,6 @@ Takže odesíláte telemetrii z webového serveru. Teď pokud chcete získat úp
 * [Přidejte telemetrii k webovým stránkám][usage] a sledujte zobrazení stránek a metriky uživatelů.
 * [Nastavte webové testy][availability] , abyste měli jistotu, že vaše aplikace zůstane v provozu a reaguje.
 
-## <a name="capture-log-traces"></a>Zaznamenat trasování protokolu
-Službu Application Insights můžete použít k nařezání a rozčlenění protokolů z Log4J, Logback nebo jiných rozhraní protokolování. Protokoly mohou korelovat s požadavky HTTP a další telemetrií. [Zjistěte jak][javalogs].
-
 ## <a name="send-your-own-telemetry"></a>Odeslat vlastní telemetrii
 Teď, když jste nainstalovali sadu SDK, můžete použít rozhraní API k odeslání vlastní telemetrie.
 
@@ -456,7 +302,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 
 [Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
-## <a name="questions-problems"></a>Otázky? Problémy?
+## <a name="questions-problems"></a>Máte dotazy? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Další kroky

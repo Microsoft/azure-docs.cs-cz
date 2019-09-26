@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860350"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309231"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -45,6 +45,14 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Historie verze REST API
 Informace o historii verze REST API Media Services najdete v části [Odkaz na Azure Media Services REST API].
+
+## <a name="september-2019"></a>Září 2019
+
+### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
+
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2*. Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Procesory médií [Azure Media Indexer 2 (ve verzi Preview)](media-services-process-content-with-indexer2.md) se vyřadí od 1. ledna 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+
+Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Srpen 2019
 

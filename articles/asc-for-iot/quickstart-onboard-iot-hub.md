@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596961"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299496"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý start: Připojení Azure Security Center služby IoT v IoT Hub
 
@@ -38,19 +38,6 @@ Tento článek popisuje, jak povolit Azure Security Center pro službu IoT v exi
 - IoT Hub (úroveň Standard)
 - Splnění všech [požadavků služby](service-prerequisites.md) 
 
-|Podporované oblasti služeb Azure | ||
-|---|---|---|
-| Střední USA |East US |Východní USA 2 |
-| Středozápadní USA |USA – západ |Západní USA 2 |
-| Střed USA – jih|Středoseverní USA | Kanada – střed|
-| Kanada – východ| Severní Evropa|Brazílie – jih|
-| Francie – střed| Spojené království – západ|Velká Británie – jih|
-|Západní Evropa|Severní Evropa| Japonsko – západ|
-|Japonsko – východ | Austrálie – jihovýchod|Austrálie – východ|
-|Východní Asie| Jihovýchodní Asie| Jižní Korea – střed|
-|Jižní Korea – jih| Střed Indie| Jižní Indie|
-|
-
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Povolení Azure Security Center pro IoT na IoT Hub 
 
 Pokud chcete povolit zabezpečení IoT Hub, udělejte toto: 
@@ -60,14 +47,14 @@ Pokud chcete povolit zabezpečení IoT Hub, udělejte toto:
 1. Jako výchozí ponechte vybranou **možnost Povolit** . 
 1. Vyberte svůj pracovní prostor Log Analytics.
 1. Zadejte podrobnosti o svém pracovním prostoru Log Analytics. 
-   - Vyberte možnost povolit **dvojí shromažďování** tím, že zachováte **přepínač s** **dvojitou kolekcí** .
-   - Výběrem možnosti **Uložit nezpracované události zabezpečení zařízení** v Log Analytics se kromě výchozích typů úložišť rozhodnete ukládat nezpracované **události** . Ponechte přepínač nezpracovaná **událost** **zapnutý**. 
+   - Vyberte možnost povolit **dvojí shromažďování** tím, že zachovátepřepínač s **dvojitou kolekcí** .
+   - Výběrem možnosti **Uložit nezpracované události zabezpečení zařízení** v Log Analytics se kromě výchozích typů úložišť rozhodnete ukládat **nezpracované události** . Ponechte přepínač **Nezpracovaná událost** **zapnutý**. 
     
 1. Klikněte na **Uložit**. 
 
 Blahopřejeme! Dokončili jste povolování Azure Security Center pro IoT na IoT Hub. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejděte k dalšímu článku a nakonfigurujte vaše řešení...
 

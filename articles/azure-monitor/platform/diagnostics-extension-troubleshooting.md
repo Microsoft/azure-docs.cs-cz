@@ -72,7 +72,7 @@ Pokud nejsou k dispozici žádná data pro specifickou metriku, zkontrolujte **k
 - Čas procesoru \Process (\% WaWorkerHost)
 - \Process (WaWorkerHost) \Private bajty
 - \Memory\Page chyby za sekundu
-- \.Čistý čas CLR paměti __ (globální\% ) v GC
+- \.Čistý čas CLR paměti(globální\% ) v GC
 - \ Logický disk (C:) \ zapsané bajty/s
 - \ Logický disk (C:) \ čtení v bajtech/s
 - \ Logický disk (D:) \ zapsané bajty/s
@@ -127,7 +127,7 @@ Konfigurace diagnostiky obsahuje pokyny pro shromáždění konkrétního typu d
 - **Protokoly trasování**:  Vzdálený přístup k virtuálnímu počítači a přidání TextWriterTraceListener do konfiguračního souboru aplikace.  Další https://msdn.microsoft.com/library/sk36c28t.aspx informace najdete v tématu Nastavení naslouchacího procesu textu.  Ujistěte se `<trace>` , že element `<trace autoflush="true">`má.<br />
 Pokud nevidíte vygenerované protokoly trasování, přečtěte si další informace o chybějících protokolech trasování.
 
-- **Trasování ETW**: Vzdálený přístup k virtuálnímu počítači a instalace PerfView.  V PerfView spusťte příkaz >  >  ****  > File User,**Poslouchejte etwprovder1** **etwprovider2**a tak dále. Příkaz **Listen** rozlišuje velká a malá písmena a mezi čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows nemůže být mezera. Pokud se příkaz nepovede spustit, můžete vybrat tlačítko **protokolu** v pravém dolním rohu nástroje PerfView, abyste viděli, co se pokusilo spustit, a jaký byl výsledek.  Za předpokladu, že je vstup správný, otevře se nové okno. Během několika sekund začnete zobrazovat trasování ETW.
+- **Trasování ETW**: Vzdálený přístup k virtuálnímu počítači a instalace PerfView.  V PerfView spusťte příkaz >  >  > File User,**Poslouchejte etwprovder1** **etwprovider2**a tak dále. Příkaz **Listen** rozlišuje velká a malá písmena a mezi čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows nemůže být mezera. Pokud se příkaz nepovede spustit, můžete vybrat tlačítko **protokolu** v pravém dolním rohu nástroje PerfView, abyste viděli, co se pokusilo spustit, a jaký byl výsledek.  Za předpokladu, že je vstup správný, otevře se nové okno. Během několika sekund začnete zobrazovat trasování ETW.
 
 - **Protokoly událostí**: Vzdálený přístup k virtuálnímu počítači. Otevřete `Event Viewer`a pak ověřte, zda existují události.
 

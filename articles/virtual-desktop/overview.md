@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876783"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300997"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je verze Preview pro virtuální počítače s Windows? 
 
@@ -76,6 +76,8 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Dá se povolit prostřednictvím:
   * Azure AD Connect
   * Azure AD Domain Services
+  >[!NOTE]
+  >Virtuální desktop Windows podporuje jenom Azure AD Domain Services uživatele, kteří jsou zdroji ze Azure Active Directory. Uživatelé, kteří jsou zdrojem služby Windows Server AD, se v tuto chvíli nepodporují.
 * Předplatné Azure, které obsahuje virtuální síť, která buď obsahuje, nebo je připojená k Windows serveru Active Directory.
   
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
@@ -108,7 +110,7 @@ Virtuální počítač s Windows podporuje následující image operačních sys
 * Více relací Windows 10 Enterprise
 * Windows Server 2016
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
 

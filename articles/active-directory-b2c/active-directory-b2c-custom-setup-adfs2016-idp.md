@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 202414260deacc4b196cd789e923ff00ca650b4d
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066128"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315210"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidejte AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -188,15 +188,7 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Komunikace se službou Azure AD B2C probíhá prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikace**a pak vyberte **Přidat**.
-5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webovou aplikaci nebo webové rozhraní API**vyberte `Yes`a zadejte `https://jwt.ms` **adresu URL odpovědi**.
-7. Klikněte na možnost **Vytvořit**.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ### <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 

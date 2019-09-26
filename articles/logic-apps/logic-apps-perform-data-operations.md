@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179669"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309399"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 
@@ -175,55 +175,93 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
 ### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
-Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. 
-
-Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
+Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
 
 1. Otevřete seznam **sloupce** a vyberte možnost **vlastní**.
 
 1. Ve vlastnosti **záhlaví** určete vlastní text záhlaví, který chcete použít místo toho.
 
-1. Do vlastnosti **Key (klíč** ) zadejte vlastní hodnotu, která se má použít místo toho.
+1. Do vlastnosti **hodnota** zadejte vlastní hodnotu, která se má použít místo toho.
 
-Chcete-li odkazovat a upravovat hodnoty z pole, můžete použít `@item()` funkci v definici JSON akce **Vytvoření tabulky CSV** .
+Chcete-li vrátit hodnoty z pole, můžete použít [ `item()` funkci](../logic-apps/workflow-definition-language-functions-reference.md#item) s akcí **vytvořit tabulku CSV** . Ve smyčce můžete [ `items()` funkci použít.](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**. 
-
-1. V editoru kódu v `inputs` oddílu Upravit akci upravte tabulku tak, jak chcete.
-
-Tento příklad vrátí pouze hodnoty sloupce, nikoli záhlaví z `columns` pole `header` nastavením vlastnosti na prázdnou hodnotu a přesměrování jednotlivých `value` vlastností:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Zde je výsledek, který tento příklad vrátí:
+Předpokládejme například, že chcete sloupce tabulky, které mají pouze hodnoty vlastností, a nikoli názvy vlastností z pole. Chcete-li vrátit pouze tyto hodnoty, postupujte podle těchto kroků pro práci v zobrazení návrháře nebo v zobrazení kódu. Zde je výsledek, který tento příklad vrátí:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-V návrháři se teď akce **vytvořit tabulku CSV** zobrazí tímto způsobem:
+#### <a name="work-in-designer-view"></a>Práce v zobrazení návrháře
 
-!["Vytvoření tabulky CSV" bez záhlaví sloupců](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci **hodnota** odkažte na každou vlastnost pole, kterou chcete. Každý řádek pod **hodnotou** vrátí všechny hodnoty pro zadanou vlastnost pole a v tabulce se bude jednat o sloupec.
+
+1. V části **hodnota**na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
+
+1. V seznamu dynamický obsah vyberte možnost **výraz**.
+
+1. V editoru výrazů zadejte tento výraz, který určuje hodnotu vlastnosti pole, kterou chcete, a vyberte **OK**.
+
+   `item()?['<array-property-name>']`
+
+   Příklad:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Výraz pro odkázání na vlastnost](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. Předchozí kroky opakujte pro každou vlastnost pole, kterou požadujete. Až to budete mít, vaše akce bude vypadat jako v tomto příkladu:
+
+   ![Výrazy dokončeny](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. Chcete-li přeložit výrazy na více popisných verzí, přepněte do zobrazení kódu a zpět do zobrazení návrháře a potom znovu otevřete sbalenou akci:
+
+   Akce **vytvořit tabulku CSV** se teď jeví jako v tomto příkladu:
+
+   ![Akce "vytvoření tabulky CSV" s vyřešenými výrazy a bez záhlaví](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>Práce v zobrazení kódu
+
+V definici `columns` JSON akce `header` nastavte v poli vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
+
+1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**.
+
+1. V editoru kódu v `columns` poli Akce přidejte vlastnost Empty `header` a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Příklad:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Přepněte zpátky na zobrazení návrháře a znovu otevřete sbalenou akci.
+
+   Akce **vytvořit tabulku CSV** se teď jeví jako v tomto příkladu a výrazy se vyřešily na podrobnější verze:
+
+   ![Akce "vytvoření tabulky CSV" s vyřešenými výrazy a bez záhlaví](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [Akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -288,55 +326,93 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
 ### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
-Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. 
-
-Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
+Ve výchozím nastavení je vlastnost **Columns** nastavena na hodnotu automaticky vytvořit sloupce tabulky založené na položkách pole. Chcete-li zadat vlastní hlavičky a hodnoty, postupujte takto:
 
 1. Otevřete seznam **sloupce** a vyberte možnost **vlastní**.
 
 1. Ve vlastnosti **záhlaví** určete vlastní text záhlaví, který chcete použít místo toho.
 
-1. Do vlastnosti **Key (klíč** ) zadejte vlastní hodnotu, která se má použít místo toho.
+1. Do vlastnosti **hodnota** zadejte vlastní hodnotu, která se má použít místo toho.
 
-Chcete-li odkazovat a upravovat hodnoty z pole, můžete použít `@item()` funkci v definici JSON akce **tabulky pro vytvoření HTML** .
+Chcete-li vrátit hodnoty z pole, můžete použít [ `item()` funkci](../logic-apps/workflow-definition-language-functions-reference.md#item) s akcí **vytvořit tabulku HTML** . Ve smyčce můžete [ `items()` funkci použít.](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**. 
-
-1. V editoru kódu v `inputs` oddílu Upravit akci upravte tabulku tak, jak chcete.
-
-Tento příklad vrátí pouze hodnoty sloupce, nikoli záhlaví z `columns` pole `header` nastavením vlastnosti na prázdnou hodnotu a přesměrování jednotlivých `value` vlastností:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Zde je výsledek, který tento příklad vrátí:
+Předpokládejme například, že chcete sloupce tabulky, které mají pouze hodnoty vlastností, a nikoli názvy vlastností z pole. Chcete-li vrátit pouze tyto hodnoty, postupujte podle těchto kroků pro práci v zobrazení návrháře nebo v zobrazení kódu. Zde je výsledek, který tento příklad vrátí:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-V návrháři se teď akce **vytvořit tabulku HTML** zobrazuje tímto způsobem:
+#### <a name="work-in-designer-view"></a>Práce v zobrazení návrháře
 
-!["Vytvořit tabulku HTML" bez záhlaví sloupců](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci **hodnota** odkažte na každou vlastnost pole, kterou chcete. Každý řádek pod **hodnotou** vrátí všechny hodnoty pro zadanou vlastnost a v tabulce se bude jednat o sloupec.
+
+1. V části **hodnota**na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
+
+1. V seznamu dynamický obsah vyberte možnost **výraz**.
+
+1. V editoru výrazů zadejte tento výraz, který určuje hodnotu vlastnosti pole, kterou chcete, a vyberte **OK**.
+
+   `item()?['<array-property-name>']`
+
+   Příklad:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Výraz pro odkázání na vlastnost](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. Předchozí kroky opakujte pro každou vlastnost pole, kterou požadujete. Až to budete mít, vaše akce bude vypadat jako v tomto příkladu:
+
+   ![Výrazy dokončeny](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. Chcete-li přeložit výrazy na více popisných verzí, přepněte do zobrazení kódu a zpět do zobrazení návrháře a potom znovu otevřete sbalenou akci:
+
+   Akce **vytvořit tabulku HTML** teď vypadá jako v tomto příkladu:
+
+   ![Akce "vytvořit tabulku HTML" s vyřešenými výrazy a bez záhlaví](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>Práce v zobrazení kódu
+
+V definici `columns` JSON akce `header` nastavte v poli vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
+
+1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**.
+
+1. V editoru kódu v `columns` poli Akce přidejte vlastnost Empty `header` a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Příklad:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Přepněte zpátky na zobrazení návrháře a znovu otevřete sbalenou akci.
+
+   Akce **vytvořit tabulku HTML** teď vypadá jako v tomto příkladu a výrazy se vyřešily na podrobnější verze:
+
+   ![Akce "vytvořit tabulku HTML" s vyřešenými výrazy a bez záhlaví](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [Akce tabulky](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 

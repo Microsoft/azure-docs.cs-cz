@@ -4,16 +4,16 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181003"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300029"
 ---
-# <a name="add-storage-targets"></a>Přidat cíle úložiště
+# <a name="add-storage-targets"></a>Přidání cílů úložiště
 
 *Cíle úložiště* jsou back-endové úložiště pro soubory, které jsou dostupné prostřednictvím instance mezipaměti HPC Azure. Můžete přidat úložiště systému souborů NFS, jako je místní hardwarový systém, nebo uložit data do objektu blob Azure.
 
@@ -21,11 +21,11 @@ Pro jednu mezipaměť můžete definovat až deset různých cílů úložiště
 
 Mějte na paměti, že exporty úložiště musí být dostupné z virtuální sítě vaší mezipaměti. U místních hardwarových úložišť možná budete muset nastavit server DNS, který dokáže přeložit názvy hostitelů pro přístup k úložišti NFS. Další informace najdete v tématu věnovaném [přístupu DNS](hpc-cache-prereqs.md#dns-access).
 
-Můžete přidat cíle úložiště při vytváření mezipaměti HPC Azure nebo později. Postup se mírně liší v závislosti na tom, zda přidáváte službu Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
+Můžete přidat cíle úložiště během vytváření mezipaměti nebo později. Postup se mírně liší v závislosti na tom, zda přidáváte službu Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
 
 ## <a name="add-storage-targets-while-creating-the-cache"></a>Přidání cílů úložiště při vytváření mezipaměti
 
-Pomocí karty **cíle úložiště** v Průvodci vytvořením mezipaměti definujte úložiště ve stejnou dobu, kdy vytvoříte instanci mezipaměti.
+Použijte kartu **cíle úložiště** v Průvodci vytvořením mezipaměti Azure HPC k definování úložiště ve stejnou dobu, kdy vytvoříte instanci mezipaměti.
 
 ![snímek obrazovky se stránkou cílů úložiště](media/hpc-cache-storage-targets-pop.png)
 
@@ -39,11 +39,13 @@ Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikn�
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Přidat nový cíl úložiště objektů BLOB v Azure
 
-Nový cíl úložiště objektů BLOB potřebuje prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu cloudového systému souborů Azure HPC cache. Přečtěte si další informace o předběžném načítání kontejneru objektů BLOB v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
+Nový cíl úložiště objektů BLOB potřebuje prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu cloudového systému souborů mezipaměti HPC Azure HPC. Přečtěte si další informace o předběžném načítání kontejneru objektů BLOB v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
 
 Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 ![snímek obrazovky s cílovou stránkou pro přidání cílení úložiště s informacemi o novém cíli úložiště Azure Blob Storage](media/hpc-cache-add-blob.png)
+
+<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 * **Cílový typ** – vyberte **objekt BLOB**.
@@ -52,13 +54,13 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
   Pro přístup k účtu úložiště bude nutné autorizovat instanci mezipaměti, jak je popsáno v tématu [Přidání rolí přístupu](#add-the-access-control-roles-to-your-account).
 * **Kontejner úložiště** – vyberte kontejner objektů BLOB pro tento cíl.
 
-* **Cesta virtuálního oboru názvů** – nastavte cestu pro klientský přístup pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
+* **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
 
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Přidání rolí řízení přístupu ke svému účtu
 
-Mezipaměť prostředí Azure HPC používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci aplikace mezipaměti pro přístup k vašemu účtu úložiště pro cíle služby Azure Blob Storage.
+Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci aplikace mezipaměti pro přístup k vašemu účtu úložiště pro cíle služby Azure Blob Storage.
 
 Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "StorageCache Resource Provider".
 
@@ -98,11 +100,16 @@ Zadejte tyto informace pro cíl úložiště zálohovaného systémem souborů N
 
 * **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v [části Výběr modelu použití níže](#choose-a-usage-model).
 
-Můžete vytvořit několik cest oboru názvů, které reprezentují různé exporty ve stejném systému úložiště NFS, ale musíte je vytvořit všechny z jednoho cíle úložiště.
+### <a name="nfs-namespace-paths"></a>Cesty oboru názvů NFS
 
-Pro každý export vyplňte tyto hodnoty:
+Cíl úložiště NFS může mít několik virtuálních cest, pokud každá cesta představuje jiný export nebo podadresář ve stejném systému úložiště.
 
-* **Cesta virtuálního oboru názvů** – nastavte cestu pro klientský přístup pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
+Vytvoření všech cest z jednoho cíle úložiště.
+<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+Zadejte tyto hodnoty pro každou cestu oboru názvů: 
+
+* **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
 
 <!--  The virtual path should start with a slash ``/``. -->
 

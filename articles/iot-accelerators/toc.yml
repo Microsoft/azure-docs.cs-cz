@@ -238,9 +238,7 @@
 - name: Referenční architektura
   items:
     - name: Přehled
-      href: iot-accelerators-architecture-overview.md
-    - name: Ke stažení
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: Implementace partnerů
       items:
         - name: Intel CLP (Connected Logistics Platform)

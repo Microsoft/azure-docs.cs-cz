@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212326"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314967"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -46,13 +46,8 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Počítače s Windows zaregistrované jako připojené k hybridní službě Azure AD jsou ve službě Azure AD zastoupené jako objekty zařízení. Tyto objekty zařízení lze použít pro podmíněný přístup. Počítače se systémem Windows 10 jsou synchronizovány do cloudu prostřednictvím Azure AD Connect, počítače se systémem Windows na nižší úrovni jsou registrovány přímo pomocí AD FS nebo bezproblémového jednotného přihlašování.
->
->Pouze počítače s Windows 10 s konkrétní hodnotou atributu userCertificate nakonfigurovanou hybridním připojením k Azure AD by se měly synchronizovat do cloudu Azure AD Connect.  V předchozích verzích Azure AD Connect tento požadavek nebyl striktně vynutil, což vedlo k zbytečným objektům zařízení v Azure AD. Taková zařízení v Azure AD se vždycky nechali ve stavu čekání na vyřízení, protože tyto počítače nebyly určené k registraci ve službě Azure AD.
->
->Tato verze Azure AD Connect bude synchronizovat jenom počítače s Windows 10, které jsou správně nakonfigurované tak, aby byly připojené k hybridní službě Azure AD. Azure AD Connect by nikdy neměl synchronizovat [zařízení s Windows nižší úrovně](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices).  Všechna zařízení v Azure AD, která se dřív synchronizoval, se teď z Azure AD odstraní.  Tato změna ale neodstraní žádná zařízení s Windows, která byla správně zaregistrovaná ve službě Azure AD pro připojení k hybridní službě Azure AD. 
->
->Někteří zákazníci můžou ze služby Azure AD zobrazit některá nebo všechna zařízení s Windows. Nejedná se o příčinu obav, protože tyto identity zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Někteří zákazníci možná budou muset přejít [na: Naplánujte svou implementaci](../../active-directory/devices/hybrid-azuread-join-plan.md) služby Hybrid Azure Active Directory JOIN, aby byly počítače se systémem Windows správně zaregistrované a zajistila, že se tato zařízení můžou plně účastnit podmíněného přístupu na základě zařízení. Pokud se Azure AD Connect pokouší odstranit zařízení s [Windows na nižší úrovni](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) , nejedná se o takové zařízení, které vytvořila [Služba Microsoft Workplace JOIN pro počítače se systémem Windows 10 nebo MSI](https://www.microsoft.com/download/details.aspx?id=53554) , a nelze ji spotřebovat žádnou jinou funkcí služby Azure AD.  Pokud se v Azure AD zobrazí odstranění objektů počítačů nebo zařízení, které překračují prahovou hodnotu pro odstranění exportu, doporučujeme, aby se tyto operace při odstraňování mohli dopustit.
+>V této verzi Azure AD Connect můžou někteří zákazníci vidět, že některá nebo všechna zařízení s Windows zmizí z Azure AD. Nejedná se o příčinu obav, protože tyto identity zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Další informace najdete v tématu [principy Azure AD Connect 1.4. xx. x disappearnce zařízení](reference-connect-device-disappearance.md) .
+
 
 ### <a name="release-status"></a>Stav verze
 9/10/2019: Vydaná jenom pro automatický upgrade
@@ -63,7 +58,7 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 - Zákazníci by měli mít přehled o tom, že vyřazení koncových bodů služby WMI pro MIIS_Service je teď odebraná. Jakékoli operace WMI by se teď měly provádět pomocí rutin PS.
 - Vylepšení zabezpečení pomocí resetování omezeného delegování objektu AZUREADSSOACC
 - Pokud přidáváte nebo upravujete pravidlo synchronizace, jsou-li v pravidle použity atributy, které jsou ve schématu konektoru, ale nejsou přidány do tohoto konektoru, přidají se do konektoru automaticky atributy. Totéž platí pro typ objektu, který pravidlo ovlivňuje. Pokud se do konektoru přidá cokoli, konektor se označí pro úplný import na další cyklus synchronizace.
-- Použití organizace nebo správce domény jako účtu konektoru už není podporované.
+- Použití organizace nebo správce domény jako účtu konektoru už není v nových nasazeních služby AAD Connect podporované. Aktuální nasazení AAD Connect pomocí organizace nebo správce domény jako účet konektoru nebudou touto verzí ovlivněny.
 - V nástroji Správce synchronizace se při vytváření/úpravách a odstraňování pravidel spustí Úplná synchronizace. Automaticky otevírané okno se zobrazí u libovolné změny pravidla oznamující uživateli, pokud bude spuštěn úplný import nebo Úplná synchronizace.
 - Přidání kroků zmírnění pro chyby hesla do ' konektory > vlastností > připojení '
 - Přidání upozornění na zastaralost pro správce synchronizační služby na stránce vlastností konektoru. Toto upozornění upozorňuje uživatele, že by se měly provádět změny prostřednictvím Průvodce AADC.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264977"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299618"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -139,6 +139,8 @@ Azure NetApp Files aktuálně podporuje jedno připojení Active Directory pro k
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Podporuje Azure NetApp Files Azure Active Directory? 
 
 Jsou podporovány jak [služby Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) , tak [Active Directory Domain Services (služba AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Pomocí Azure NetApp Files můžete použít existující řadiče domény služby Active Directory. Řadiče domény se můžou nacházet v Azure jako virtuální počítače nebo místně prostřednictvím sítě VPN ExpressRoute nebo S2S. Azure NetApp Files v tuto chvíli nepodporuje službu AD JOIN pro [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
+
+Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers` , když pro svůj účet NetApp nakonfigurujete službu Active Directory.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Jaké verze Windows serveru Active Directory se podporují?
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066729"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300249"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -59,7 +59,7 @@ Podrobnosti o koncových bodech můžete také získat z karty **Nastavení** ve
 
 ## <a name="generateanswer-request-configuration"></a>Konfigurace žádosti GenerateAnswer
 
-GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje, jak volat GenerateAnswer, naleznete v tématu [rychlé starty](../quickstarts/csharp.md). 
+GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje, jak volat GenerateAnswer, naleznete v tématu [rychlé starty](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base). 
 
 Požadavek POST používá:
 
@@ -244,7 +244,7 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo 
 |404|KB neexistuje|
 |410|Toto rozhraní API je zastaralé a už není dostupné.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Stránka **publikování** také poskytuje informace pro vygenerování odpovědi s použitím [metody post](../Quickstarts/get-answer-from-kb-using-postman.md) a [kudrlinkou](../Quickstarts/get-answer-from-kb-using-curl.md). 
 

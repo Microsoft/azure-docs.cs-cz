@@ -1,19 +1,20 @@
 ---
-title: Nejčastější dotazy ke službě Azure HDInsight
-description: Poskytuje přehled Azure HDInsight.
+title: Nejčastější dotazy k Azure HDInsight
+description: Nejčastější dotazy týkající se HDInsight
+keywords: Nejčastější dotazy najdete v nejčastějších dotazech.
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212752"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308071"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
 
@@ -27,7 +28,9 @@ Pokud chcete zkontrolovat dostupné typy clusterů HDInsight a metody zřizován
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Návody odstranit existující cluster HDInsight?
 
-Další informace o odstranění clusteru, když se už nepoužívá, najdete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster). Mezi operací vytvořit a odstranit v jednom clusteru doporučujeme mít aspoň 30 až 60 minut. V opačném případě může operace selhat a vracet následující chybovou zprávu:
+Další informace o odstranění clusteru, když se už nepoužívá, najdete v tématu [odstranění clusteru HDInsight](hdinsight-delete-cluster.md).
+
+Mezi operacemi Create a DELETE nechejte aspoň 30 až 60 minut. V opačném případě může operace selhat s následující chybovou zprávou:
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ V rámci předplatného může být nakonfigurované omezení počtu jader v jed
 
 Pokud chcete požádat o navýšení kvóty, postupujte následovně:
 
-1. Otevřete Azure Portal a vyberte Help + Support (podpora).
-2. Vyberte novou žádost o podporu.
-3. Na stránce Nová žádost o podporu vyberte na kartě základy následující možnosti:
+1. Otevřete [Azure Portal](https://portal.azure.com)a vyberte **help + Support (podpora**).
+   
+1. Vyberte **Nová žádost o podporu**.
+   
+1. Na kartě **základy** na nové stránce **žádosti o podporu** zadejte tyto informace:
+   
+   - **Typ problému:** Vyberte **omezení služby a předplatné (kvóty)** .
+   - **Formě** Vyberte předplatné, které chcete upravit.
+   - **Typ kvóty:** Vyberte **HDInsight**.
 
-   * Typ problému: Limity služeb a předplatných (kvóty)
-   * Předplatné: Předplatné, které chcete upravit
-   * Typ kvóty: HDInsight
-
-Další informace najdete v tématu [Vytvoření lístku podpory pro zvýšení počtu jader](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas).
+Další informace najdete v tématu [Vytvoření lístku podpory kvůli navýšení počtu jader](hdinsight-capacity-planning.md#quotas).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Jaké jsou různé typy uzlů v clusteru HDInsight?
 
 Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzlů. Každý typ uzlu hraje roli v provozu systému.
 
-Další informace najdete v tématu [typy prostředků v clusterech Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters).
+Další informace najdete v tématu [typy prostředků v clusterech Azure HDInsight](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
 ## <a name="individual-components"></a>Jednotlivé komponenty
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Můžu do clusteru nainstalovat další součásti?
 
-Ano, můžete nainstalovat další součásti nebo přizpůsobit konfiguraci clusteru pomocí kterékoli z následujících metod:
+Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
 
-* Použití skriptů během nebo po vytvoření. Tyto skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK. 
-* Použití sudo nebo jiných metod po zřízení clusteru.
-* Použití [platformy aplikace HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) k instalaci aplikací ekosystému
+- Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), což je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
+
+- `sudo`nebo jiné metody po zřízení clusteru.
+  
+- [Aplikační platforma HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) pro instalaci aplikací ekosystému.
 
 Podpora Microsoftu týmy však mohou nabízet podporu pouze v následujících situacích:
 
-* Problémy nebo chyby, ke kterým dochází při načítání skriptu. Všechny chyby, ke kterým dojde během provádění vlastních skriptů, jsou mimo obor lístku podpory. 
-* Další aplikace, které jsou součástí procesu vytváření clusteru. 
+- Problémy nebo chyby, ke kterým dochází při načítání skriptu. Všechny chyby, ke kterým dojde během provádění vlastních skriptů, jsou mimo obor lístku podpory.
+
+- Další aplikace, které jsou součástí procesu vytváření clusteru. 
 
 Seznam podporovaných součástí najdete v tématu [co jsou komponenty Apache Hadoop a verze dostupné v HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
 
 Podpora jednotlivých komponent se může lišit také podle typu clusteru. Například Spark není podporován v clusteru Kafka a naopak.
 
-Pro aplikace nebo služby mimo proces vytváření clusteru kontaktujte příslušného dodavatele nebo poskytovatele služeb a požádejte ho o podporu. Pro podporu těchto akcí můžete také použít weby komunity. K dispozici je mnoho webů komunity. Mezi příklady patří [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com/questions/tagged/hdinsight). Projekty Apache také obsahují projektové weby na [webu Apache](https://apache.org/). Jedním z příkladů je [Hadoop](https://hadoop.apache.org/).
+Pro aplikace a služby mimo proces vytváření clusteru kontaktujte dodavatele nebo poskytovatele služeb a požádejte ho o podporu. Můžete také použít mnoho webů podpory komunity. Příklady jsou [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com/). Projekty Apache také obsahují projektové weby na [webu Apache](https://apache.org/). Příkladem je [Hadoop](https://hadoop.apache.org/). 
 
- Další otázky týkající se podpory Azure najdete v [nejčastějších dotazech k podpoře](https://azure.microsoft.com/en-us/support/faq/)Azure.
+Další informace o podpoře Azure najdete v nejčastějších dotazech k [podpoře Azure](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Můžu upgradovat jednotlivé komponenty, které jsou v clusteru předem nainstalované?
 
@@ -102,7 +110,7 @@ Například upgrade podregistru jako jednotlivé součásti není podporován. H
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Může Spark a Kafka běžet na stejném clusteru HDInsight?
 
-Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight spustit nemůžete. Uživatelé by měli vytvořit samostatné clustery pro každý, aby nedocházelo k problémům s kolize prostředků.
+Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight není možné spustit. Vytvořte samostatné clustery pro Kafka a Spark, abyste se vyhnuli problémům s kolize prostředků.
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Návody změnit časové pásmo v Ambari?
 
@@ -119,7 +127,7 @@ Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight spustit nemůžet
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Jak mohu migrovat ze stávajícího metastore do Azure SQL Server? 
 
-Postup migrace z SQL Server do Azure SQL Server najdete v [tématu Kurz: Migrujte SQL Server do izolované databáze nebo databáze ve fondu v Azure SQL Database offline pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
+Postup migrace z SQL Server do Azure SQL Server najdete v [tématu Kurz: Migrujte SQL Server do izolované databáze nebo databáze ve fondu v Azure SQL Database offline pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Odstraní se metastore Hive při odstranění clusteru?
 
@@ -129,11 +137,11 @@ Výchozí metastore: Výchozí metastore je součástí životního cyklu cluste
 
 Vlastní metastore: Životní cyklus metastore není svázán s životním cyklem clusteru. Proto můžete vytvořit a odstranit clustery bez ztráty metadat. Metadata, jako jsou schémata podregistru, se zachovává i po odstranění a opětovném vytvoření clusteru HDInsight.
 
-Další informace najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+Další informace najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](hdinsight-use-external-metadata-stores.md).
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Migruje metastore Hive také výchozí zásady databáze Ranger?
 
-Ne, definice zásady je v databázi Ranger. Proto migrace databáze Ranger nemigruje zásady.
+Ne, definice zásady je v databázi Ranger, takže migrace databáze Ranger migruje zásady.
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Můžete migrovat metastore Hive z clusteru Balíček zabezpečení podniku (ESP) do clusteru bez protokolu ESP a naopak?
 
@@ -141,7 +149,7 @@ Ano, metastore Hive můžete migrovat z protokolu ESP do clusteru bez protokolu 
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Jak si můžu odhadnout velikost metastore Hive databáze?
 
-Metastore Hive se používá k ukládání metadat pro zdroje dat, které používá server pro podregistr. Proto jsou požadavky na velikost ovlivněny počtem zdrojů dat, které může být nutné použít pro podregistr, a způsobem složitosti zdrojů dat. Proto se velikost nedá odhadnout dopředu. Jak je uvedeno v [metastore Hive osvědčené postupy](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices), počínaje vrstvou S2 poskytují 50 DTU a 250 GB úložiště. Pokud se setkáte s kritickým bodem, můžete navýšení kapacity databáze škálovat.
+Metastore Hive se používá k ukládání metadat pro zdroje dat, které používá server pro podregistr. Požadavky na velikost závisí částečně na počtu a složitosti zdrojů dat podregistru a nedají se odhadnout předem. Jak je uvedeno v [metastore Hive osvědčené postupy](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices), můžete začít s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště, a pokud se zobrazí kritický bod, můžete škálovat databázi.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Podporujete jako externí metastore jinou databázi než Azure SQL Database?
 
@@ -159,53 +167,55 @@ Pokud zablokujete porty 22 a port 23, nebudete mít přístup ke clusteru přes 
 
 Další informace najdete v následujících dokumentech:
 
-* [Řízení síťového provozu](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
-* [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [Řízení síťového provozu](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+
+- [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Můžu nasadit další virtuální počítač ve stejné podsíti jako cluster HDInsight?
 
 Ano, můžete nasadit další virtuální počítač ve stejné podsíti jako cluster HDInsight. Možné jsou následující konfigurace:
 
-* Hraniční uzly: Do clusteru můžete přidat další hraniční uzel, jak je popsáno v tématu [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node). 
-* Samostatné uzly:  Do stejné podsítě můžete přidat samostatný virtuální počítač a přistupovat ke clusteru z tohoto virtuálního počítače pomocí privátního koncového bodu `https://<CLUSTERNAME>-int.azurehdinsight.net`. Další informace najdete v tématu [řízení síťového provozu](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic).
+- Hraniční uzly: Do clusteru můžete přidat další hraniční uzel, jak je popsáno v tématu [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](hdinsight-apps-use-edge-node.md).
+
+- Samostatné uzly:  Do stejné podsítě můžete přidat samostatný virtuální počítač a přistupovat ke clusteru z tohoto virtuálního počítače pomocí privátního koncového bodu `https://<CLUSTERNAME>-int.azurehdinsight.net`. Další informace najdete v tématu [řízení síťového provozu](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Můžu přidat existující cluster HDInsight do jiné virtuální sítě?
 
-Ne, existující cluster HDInsight nemůžete přidat do jiné virtuální sítě. Virtuální síť by měla být zadána v době zřizování. Pokud během zřizování není zadaná žádná virtuální síť, nasazení vytvoří interní síť, která není přístupná zvenčí. Další informace najdete v tématu [Přidání HDInsight do existující virtuální sítě](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet).
+Ne, nemůžete. Virtuální síť by měla být zadána v době zřizování. Pokud během zřizování není zadaná žádná virtuální síť, nasazení vytvoří interní síť, která není přístupná zvenčí. Další informace najdete v tématu [Přidání HDInsight do existující virtuální sítě](hdinsight-plan-virtual-network-deployment.md#existingvnet).
 
 ## <a name="security-and-certificates"></a>Zabezpečení a certifikáty
 
-Co jsou doporučení Microsoftu pro ochranu proti malwaru v clusterech Azure HD Insight?
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Jaká jsou doporučení pro ochranu proti malwaru v clusterech Azure HDInsight?
 
-Informace o ochraně proti malwaru najdete v tématu [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+Informace o ochraně proti malwaru najdete v tématu [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md).
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>Návody vytvořit keytab pro cluster HDInsight ESP?
 
-Pro uživatelské jméno domény můžete vytvořit keytab protokolu Kerberos. Později můžete tento keytab použít k ověření ve vzdálených clusterech připojených k doméně bez zadání hesla. Všimněte si velkých písmen v názvu domény:
+Vytvořte keytab protokolu Kerberos pro uživatelské jméno domény. Později můžete tento keytab použít k ověření ve vzdálených clusterech připojených k doméně bez zadání hesla. Všimněte si, že název domény je velká písmena:
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>Můžu použít stávajícího tenanta Azure Active Directory k vytvoření clusteru HDInsight, který má protokol ESP?
 
-Povolením Azure Active Directory Domain Services (AAD-DS) je předpokladem, než budete moct vytvořit cluster HDInsight s protokolem ESP. Open Source Hadoop spoléhá na protokol Kerberos k ověřování (na rozdíl od OAuth).
+Než budete moct vytvořit cluster HDInsight s protokolem ESP, musíte povolit Azure Active Directory Domain Services (Azure služba AD DS). Open Source Hadoop spoléhá na protokol Kerberos k ověřování (na rozdíl od OAuth).
 
-Aby bylo možné připojit virtuální počítače k doméně, je vyžadován řadič domény. AAD-DS je spravovaný řadič domény. Považuje se za rozšíření AAD, které poskytuje všechny požadavky protokolu Kerberos pro vytvoření zabezpečeného clusteru Hadoop spravovaném způsobem. HDInsight jako spravovaná služba se integruje s AAD-DS, aby poskytovala komplexní zabezpečení.
+Pokud chcete připojit virtuální počítače k doméně, musíte mít řadič domény. Azure služba AD DS je spravovaný řadič domény a považuje se za rozšíření Azure Active Directory, které poskytuje všechny požadavky protokolu Kerberos pro vytvoření zabezpečeného clusteru Hadoop spravovaném způsobem. HDInsight jako spravovaná služba se integruje se službou Azure služba AD DS k zajištění komplexního zabezpečení.
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Můžu použít certifikát podepsaný svým držitelem v nastavení zabezpečeného LDAP AAD-DS a zřídit cluster ESP?
 
-I když se doporučuje použít certifikát vydaný certifikační autoritou (CA), v protokolu ESP se taky podporuje použití certifikátu podepsaného svým držitelem.
+Doporučuje se použít certifikát vydaný certifikační autoritou, ale použití certifikátu podepsaného svým držitelem se podporuje i v protokolu ESP. Další informace naleznete v tématu:
 
-Další informace naleznete v tématu:
+- [Povolit Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Povolení služby Azure AD-DS](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds)
-* [Kurz: Konfigurace protokolu Secure LDAP pro Azure Active Directory Domain Services spravovanou doménu](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [Kurz: Konfigurace protokolu Secure LDAP pro Azure Active Directory Domain Services spravovanou doménu](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Jak můžu načíst přihlašovací aktivitu zobrazenou v Ranger?
 
@@ -219,13 +229,13 @@ Tento proces neovlivňuje ani neprovádí žádné cykly z jiných procesů. Bud
 
 V situacích, kdy je nutné řídit plán, můžete použít následující postup:
 
-1. Automatické spouštění zakažte pomocí následujícího příkazu:
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. Vytvořte úlohu cron, která spustí tento příkaz jako kořen:
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+1. Zakažte automatické spouštění pomocí následujícího příkazu:
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. Přidejte úlohu cron, která spustí následující příkaz jako kořenový adresář:
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 Další informace o tom, jak nastavit a spustit úlohu cron, najdete v tématu [návody nastavení úlohy cron](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)?
 
@@ -233,33 +243,34 @@ Další informace o tom, jak nastavit a spustit úlohu cron, najdete v tématu [
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Je možné přidat Azure Data Lake Storage Gen2 do stávajícího clusteru HDInsight jako další účet úložiště?
 
-Ne. V současné době nemůžete přidat Azure Data Lake Storage Gen2 do stávajícího clusteru HDInsight, který jako primární úložiště používá úložiště objektů BLOB. Další informace najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options). 
+Ne, v současnosti není možné přidat účet úložiště Azure Data Lake Storage Gen2 do clusteru, který má jako primární úložiště BLOB Storage. Další informace najdete v tématu [porovnání možností úložiště](hdinsight-hadoop-compare-storage-options.md).
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Jak najdu aktuálně propojenou instanční objekt pro účet úložiště Data Lake?
 
-Tato nastavení můžete ověřit tak, že ve vlastnostech svého clusteru na portálu zkontrolujete přístup Data Lake Storage Gen1. Další informace najdete v tématu [ověření instalace clusteru](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up).
+Nastavení můžete najít v **Data Lake Storage Gen1 přístupu** ve vlastnostech clusteru v Azure Portal. Další informace najdete v tématu [ověření instalace clusteru](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
  
-Jak mohu vypočítat využití účtů úložiště a kontejnerů objektů BLOB pro clustery HDInsight?
-Můžete použít jeden z následujících postupů:
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Jak mohu vypočítat využití účtů úložiště a kontejnerů objektů BLOB pro clustery HDInsight?
 
-* [Použití PowerShellu](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* Můžete také najít velikost/User/Hive/. Odpadkový koš/složka v clusterech HDI pomocí následujícího příkazu:
+Udělejte jednu z těchto věcí:
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [Použití PowerShellu](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- Najít velikost */User/Hive/. Odpadkový koš nebo* složka v clusteru HDInsight pomocí následujícího příkazového řádku:
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Jak můžu nastavit auditování pro účet Blob Storage?
 
-K auditování účtů BLOB Storage je nutné nakonfigurovat monitorování účtu úložiště BLOB pomocí postupu popsaného v [části monitorování účtu úložiště v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account). HDFS – protokol auditu poskytuje jenom informace o auditování jenom pro místní systém souborů HDFS (hdfs://mycluster).  Nezahrnuje operace, které se provádějí na vzdáleném úložišti.
+Pokud chcete auditovat účty úložiště BLOB, nakonfigurujte monitorování pomocí postupu v [části monitorování účtu úložiště v Azure Portal](../storage/common/storage-monitor-storage-account.md). HDFS – protokol auditu poskytuje jenom informace o auditování jenom pro místní systém souborů HDFS (hdfs://mycluster).  Nezahrnuje operace, které se provádějí na vzdáleném úložišti.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Jak můžu přenášet soubory mezi kontejnerem objektů BLOB a hlavním uzlem HDInsight?
 
-Soubory mezi kontejnerem objektů BLOB a hlavním uzlem HDInsight můžete přenášet spuštěním skriptu prostředí na hlavním uzlu, podobně jako v následujícím příkladu:
+Spusťte skript podobný následujícímu skriptu prostředí v hlavním uzlu:
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Existují nějaké moduly plug-in Ranger pro úložiště?
 
-V současné době neexistují žádné moduly plug-in Ranger pro úložiště objektů blob, Azure Data Lake Storage (ADLS) Gen1 nebo Azure Data Lake Storage Gen2. V případě clusterů ESP použijte ADLS jako osvědčený postup a na úrovni systému souborů pomocí nástrojů HDFS nastavte ručně jemně odstupňovaná oprávnění. Clustery ESP také při použití ADLS provede některé z řízení přístupu k systému souborů pomocí AAD na úrovni clusteru. 
+V současné době neexistuje žádný modul plug-in Ranger pro úložiště objektů BLOB a Azure Data Lake Storage Gen1 ani Gen2. U clusterů ESP byste měli použít Azure Data Lake Storage, protože na úrovni systému souborů pomocí nástrojů HDFS můžete ručně nastavit jemně odstupňovaná oprávnění. Při použití Azure Data Lake Storage se taky v clusterech s protokolem ESP provede některé řízení přístupu k systému souborů pomocí Azure Active Directory na úrovni clusteru. 
 
-Měli byste být schopni použít Průzkumník služby Azure Storage k přiřazení zásad přístupu k datům ke skupinám zabezpečení, kde se uživatelé nacházejí, pomocí postupů popsaných v následujících článcích:
+Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématu:
 
-* [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Je možné zvýšit HDFS úložiště v clusteru bez zvýšení velikosti disku pracovních uzlů?
 
-Ne, velikost disku žádného pracovního uzlu nemůžete zvětšit. Jediným způsobem, jak zvětšit velikost disku, je odstranit cluster a znovu ho vytvořit na větších virtuálních počítačích pracovních procesů.
-
-Microsoft nedoporučuje používat HDFS k ukládání vašich dat v HDInsight, protože data se odstraní při odstranění clusteru. Místo toho doporučujeme ukládat data do Azure. Škálování clusteru může také do clusteru HDInsight přidat větší kapacitu.
+Ne, nemůžete zvětšit velikost disku žádného pracovního uzlu, takže jediným způsobem, jak velikost disku zvýšit, je odstranit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
 
 ## <a name="edge-nodes"></a>Hraniční uzly
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Můžu po vytvoření clusteru přidat hraniční uzel?
 
-Ano, můžete přidat prázdný hraniční uzel do stávajícího clusteru HDInsight nebo do nového clusteru při vytváření clusteru.
-
-Další informace najdete v tématu [Použití prázdných hraničních uzlů v clusterech Apache Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node).
+Cluster HDInsight nebo nový cluster při vytváření clusteru. Další informace najdete v tématu [Použití prázdných hraničních uzlů v clusterech Apache Hadoop ve službě HDInsight](hdinsight-apps-use-edge-node.md).
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Jak se můžu připojit k hraničnímu uzlu?
 
-Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomocí SSH na portu 22. Název hraničního uzlu můžete najít na portálu clusteru (názvy obecně končí "-Ed").
+Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na portu 22. Název hraničního uzlu najdete na portálu clusteru. Názvy obvykle končí na *-Ed*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Proč jsou trvalé skripty nespuštěny automaticky u nově vytvořených hraničních uzlů?
 
-Trvalé skripty se používají k přizpůsobení nových pracovních uzlů, které se přidají do clusteru prostřednictvím operací škálování a neplatí pro hraniční uzly.
+Trvalé skripty můžete použít k přizpůsobení nových pracovních uzlů přidaných do clusteru prostřednictvím operací škálování. Trvalé skripty se nevztahují na hraniční uzly.
 
 ## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Co jsou REST API voláním pro vyžádání zobrazení dotazu tez z clusteru?
 
-Následující koncové body REST můžete použít k vyžádání potřebných informací, kde odpověď bude ve formátu JSON. K provedení těchto požadavků lze použít hlavičky základního ověřování.
+Pomocí následujících koncových bodů REST můžete načíst informace potřebné ve formátu JSON. K provedení požadavků použijte hlavičky základního ověřování.
 
-* "Zobrazení dotazu tez – https://`<cluster name>`. azurehdinsight.NET/WS/v1/Timeline/HIVE_QUERY_ID/
-
-* "Tez DAG" View- https://`<cluster name>`. azurehdinsight.NET/WS/v1/Timeline/TEZ_DAG_ID/
+- Tez zobrazení dotazu: *https:\//\<název clusteru >. azurehdinsight. NET/WS/v1/Timeline/HIVE_QUERY_ID/*
+- Tez DAG zobrazení: *https:\//\<název clusteru >. azurehdinsight. NET/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Návody načíst podrobnosti o konfiguraci z clusteru HDI pomocí Azure Active Directoryho uživatele?
 
@@ -315,15 +321,28 @@ Pokud chcete s vaším uživatelem AAD vyjednávat správné ověřovací tokeny
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Návody k monitorování výkonu PŘÍZu použít rozhraní RESTful API Ambari?
 
-Pokud je příkaz složeného volání ve stejné virtuální síti nebo virtuální síti s partnerským vztahem, použijte následující příkaz:
+Pokud zavoláte příkaz složené ve stejné virtuální síti nebo v partnerské virtuální síti, příkaz je:
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-Pokud se příkaz volá mimo virtuální síť nebo virtuální síť bez partnerského vztahu, formát příkazu je:
- 
-* Pro cluster bez protokolu ESP:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* Pro cluster ESP:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+Pokud příkaz zavoláte mimo virtuální síť nebo z nepartnerské virtuální sítě, formát příkazu je:
+
+- Pro cluster bez protokolu ESP:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- Pro cluster ESP:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > V kudrlinkou se zobrazí výzva k zadání hesla. Je nutné zadat platné heslo pro uživatelské jméno přihlášení clusteru.
@@ -340,7 +359,7 @@ Informace o tom, jak zrušit předplatné, najdete v tématu [zrušení předpla
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Co se stane po zrušení předplatného s průběžnými platbami?
 
-Informace o vašem předplatném po jeho zrušení najdete v tématu [co se stane po zrušení předplatného?](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription)
+Informace o vašem předplatném po jeho zrušení najdete v tématu [co se stane po zrušení předplatného?](/azure/billing/billing-how-to-cancel-azure-subscription)
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +371,8 @@ I když v uživatelském rozhraní Ambari se zobrazí jenom 1,2, HDInsight 3,6 o
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>Co nabízí HDInsight v souvislosti s funkcemi zpracování datových proudů v reálném čase?
 
-Informace o možnostech integrace zpracování datových proudů ve službě Azure HDInsight najdete v tématu [Volba technologie zpracování datových proudů v Azure](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing).
+Informace o možnostech integrace zpracování datových proudů ve službě Azure HDInsight najdete v tématu [Volba technologie zpracování datových proudů v Azure](/azure/architecture/data-guide/technology-choices/stream-processing).
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Existuje způsob, jak dynamicky ukončit hlavní uzel clusteru, když je cluster nečinný po určitou dobu?
 
-Ne, hlavní uzel clusteru nemůžete dynamicky ukončovat. Pro tento scénář můžete použít Azure Data Factory.
+Nemůžete to provést s clustery HDInsight. V těchto scénářích můžete použít Azure Data Factory.

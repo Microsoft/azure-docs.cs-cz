@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d6c5d881c5ca6eee14835ab0ec10bff2749299dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b0c6d80bfa7a7ae27e5dc6565b0d15b94eb7cdd3
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68502275"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310595"
 ---
 Následující tabulka uvádí informace o kvótě, které jsou specifické pro Azure Service Bus zasílání zpráv. Informace o cenách a dalších kvótách pro Service Bus najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Název kvóty | Scope | Poznámky | Value |
 | --- | --- | --- | --- |
 | Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. |100|
-| Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |50 |
+| Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |100 |
 | Velikost fronty nebo tématu |Entita |Definováno při vytváření fronty nebo tématu. <br/><br/> Následné příchozí zprávy jsou odmítnuty a volající kód obdrží výjimku. |1, 2, 3, 4 GB nebo 5 GB.<br /><br />V SKU úrovně Premium a standardní SKU s povoleným [rozdělením na oddíly](/azure/service-bus-messaging/service-bus-partitioning) je maximální velikost fronty nebo tématu 80 GB. |
 | Počet souběžných připojení na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. Operace REST se nepočítají směrem k souběžným připojením TCP. |NetMessaging: 1 000.<br /><br />AMQP: 5 000. |
 | Počet souběžných žádostí o přijetí změn ve frontě, tématu nebo entitě předplatného |Entita |Následné žádosti o přijetí byly zamítnuty a volající kód obdrží výjimku. Tato kvóta se vztahuje na kombinovaný počet souběžných operací příjmu napříč všemi předplatnými v tématu. |5,000 |

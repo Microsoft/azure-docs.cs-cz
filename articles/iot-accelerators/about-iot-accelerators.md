@@ -1,5 +1,5 @@
 ---
-title: Seznámení s akcelerátory řešení IoT – Azure | Dokumentace Microsoftu
+title: Seznámení s akcelerátory řešení IoT – Azure | Microsoft Docs
 description: Seznamte se s akcelerátory řešení Azure IoT. Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení.
 author: dominicbetts
 ms.author: dobett
@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080518"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309520"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
-Cloudové řešení IoT obvykle používá vlastní kód a cloudové služby ke správě zařízení připojení, zpracování dat a analýzy a prezentace.
+Cloudové řešení IoT obvykle používá vlastní kód a cloudové služby ke správě připojení zařízení, zpracování dat a analýz a prezentaci.
 
-Akcelerátory řešení IoT je dokončena, připraveno k nasazení řešení IoT, které implementují běžné scénáře IoT. Scénáře patří vzdálené monitorování, propojené továrny, prediktivní údržby a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
+Akcelerátory řešení IoT jsou kompletní a připravené k nasazení řešení IoT, které implementují běžné scénáře IoT. Scénáře zahrnují vzdálené monitorování, propojenou továrnu, prediktivní údržbu a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
 
 Akcelerátory řešení představují výchozí body pro vaše vlastní řešení IoT. Zdrojový kód všech akcelerátorů řešení je open source a dostupný na GitHubu. Akcelerátory řešení si můžete stáhnout a přizpůsobit podle svých potřeb.
 
@@ -32,17 +32,17 @@ Kód aplikace v každém akcelerátoru řešení obsahuje webovou aplikaci, ve k
 
 V současné době jsou k dispozici čtyři akcelerátory řešení, které můžete nasadit:
 
-### <a name="remote-monitoring"></a>Vzdálené monitorování
+### <a name="remote-monitoring"></a>Vzdálené sledování
 
-Použití [akcelerátor řešení vzdálené monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md) shromažďovat telemetrii ze vzdáleného zařízení a jejich řízení. Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
+K shromažďování telemetrie ze vzdálených zařízení a jejich řízení použijte [akcelerátor řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md) . Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
 
 Pomocí řídicího panelu vzdáleného monitorování můžete zobrazit telemetrii z připojených zařízení, zřizovat nová zařízení nebo upgradovat firmware na připojených zařízeních:
 
-[![Řídicí panel řešení vzdáleného monitorování](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení pro vzdálené monitorování](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
-### <a name="connected-factory"></a>Propojená továrna
+### <a name="connected-factory"></a>Připojená továrna
 
-Použití [akcelerátor řešení připojená továrna](iot-accelerators-connected-factory-features.md) můžete shromažďovat telemetrii z průmyslových prostředků s [OPC Unified architektura](https://opcfoundation.org/about/opc-technologies/opc-ua/) rozhraní a jejich řízení. Mezi průmyslové prostředky můžou patřit montážní a testovací stanice na výrobní lince továrny.
+Pomocí [akcelerátoru řešení propojené továrny](iot-accelerators-connected-factory-features.md) můžete shromažďovat telemetrii od průmyslových prostředků přes rozhraní [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) a řídit je. Mezi průmyslové prostředky můžou patřit montážní a testovací stanice na výrobní lince továrny.
 
 Pomocí řídicího panelu propojené továrny můžete monitorovat a spravovat svá průmyslová zařízení:
 
@@ -50,7 +50,7 @@ Pomocí řídicího panelu propojené továrny můžete monitorovat a spravovat 
 
 ### <a name="predictive-maintenance"></a>Prediktivní údržba
 
-Použití [akcelerátor řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md) předpovědět očekávaného selhat, takže je možné souběžně provádět údržbu předtím, než selhání zařízení vzdálené zařízení. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
+Pomocí [akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md) můžete předpovědět, kdy se očekává, že vzdálené zařízení selže, aby bylo možné provést údržbu ještě před selháním zařízení. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
 
 Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu prediktivní údržby:
 
@@ -58,7 +58,7 @@ Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu pred
 
 ### <a name="device-simulation"></a>Simulace zařízení
 
-Použití [akcelerátor řešení simulace zařízení](iot-accelerators-device-simulation-overview.md) spustit Simulovaná zařízení, které generují realistickou telemetrií. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
+Pomocí [akcelerátoru řešení pro simulaci zařízení](iot-accelerators-device-simulation-overview.md) můžete spouštět simulovaná zařízení, která generují realistickou telemetrii. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
 
 Pomocí webové aplikace simulace zařízení můžete konfigurovat a spouštět simulace:
 
@@ -82,10 +82,10 @@ Původní akcelerátory řešení byly napsané v .NET a využívaly architektur
 | ---------------------- | ------------- | ------------- |
 | Vzdálené monitorování      | Mikroslužby | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) a [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | Prediktivní údržba | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
-| Propojená továrna      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
+| Připojená továrna      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Simulace zařízení      | Mikroslužby | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Další informace o architektuře mikroslužeb najdete v tématu [Úvod do služby Azure IoT referenční architektura](iot-accelerators-architecture-overview.md).
+Další informace o architektuře mikroslužeb najdete v tématu [Úvod do referenční architektury Azure IoT](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 
@@ -93,17 +93,17 @@ Akcelerátory řešení můžete nasadit na webu [Akcelerátory řešení Micros
 
 Akcelerátor řešení pro vzdálené monitorování můžete nasadit v následujících konfiguracích:
 
-* **Standard:** Nasazení rozšířené infrastruktury pro vývoj produkčního nasazení. Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
-* **Basic:** Verze nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
-* **Místní:** Nasazení místního počítače pro vývoj a testování. S tímto přístupem se mikroslužby nasazují do místního kontejneru Dockeru a připojují se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
+* **Standardní** Nasazení rozšířené infrastruktury pro vývoj produkčního nasazení. Azure Container Service nasadí mikroslužby na několik virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
+* **Basic** Verze s nižšími náklady pro ukázku nebo testování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
+* **Místní** Nasazení místního počítače pro testování a vývoj. S tímto přístupem se mikroslužby nasazují do místního kontejneru Dockeru a připojují se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
 
-Náklady na provozování akcelerátoru řešení je kombinovaná [náklady na provozování podpůrné služby Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
+Cena za spuštění akcelerátoru řešení je celková [cena za provozování základních služeb Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, projděte si následující rychlé starty:
 
-* [Vyzkoušení řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
+* [Vyzkoušení řešení pro vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
 * [Vyzkoušení řešení propojené továrny](quickstart-connected-factory-deploy.md)
 * [Vyzkoušení řešení prediktivní údržby](quickstart-predictive-maintenance-deploy.md)
 * [Vyzkoušení řešení simulace zařízení](quickstart-device-simulation-deploy.md)

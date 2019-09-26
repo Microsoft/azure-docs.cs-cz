@@ -6,16 +6,18 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 57df9e0bd6f359a45333fcde51c51f49321fec9e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213877"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309558"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB
 
 Jupyter Poznámkový blok je open-source webová aplikace, která umožňuje vytvářet a sdílet dokumenty obsahující živý kód, rovnice, vizualizace a mluvený text. Azure Cosmos DB podporuje integrované poznámkové bloky Jupyter pro všechna rozhraní API, jako je Cassandra, MongoDB, SQL, Gremlin a Table. Integrovaná podpora poznámkových bloků pro všechna Azure Cosmos DB rozhraní API a datové modely umožňují interaktivní spouštění dotazů. Poznámkové bloky Jupyter se spouštějí v rámci účtů Azure Cosmos a umožňují vývojářům provádět zkoumání dat, čištění dat, transformace dat, číselné simulace, statistické modelování, vizualizaci dat a strojové učení.
+
+![Vizualizace poznámkových bloků Jupyter v Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
 Poznámkové bloky Jupyter podporují funkci Magic, která rozšiřuje možnosti jádra tím, že podporuje další příkazy. Cosmos Magic je příkaz, který rozšiřuje možnosti jádra Pythonu v poznámkovém bloku Jupyter, takže můžete kromě Apache Spark spustit i dotazy k rozhraní SQL API Azure Cosmos. Můžete snadno kombinovat dotazy Pythonu a SQL API a dotazovat se na data a vizualizovat je pomocí bohatých knihoven vizualizace integrovaných s příkazy vykreslení.
 Azure Portal nativně integruje prostředí poznámkového bloku Jupyter do účtů Azure Cosmos, jak je znázorněno na následujícím obrázku:
@@ -56,9 +58,8 @@ Jupyter poznámkové bloky můžou zahrnovat několik typů komponent, které js
 
 Pokud chcete začít s integrovanými Jupyter poznámkami v Azure Cosmos DB, přečtěte si následující články:
 
-* [Vytvoření poznámkového bloku]()
-* [Jak nainstalovat závislosti v poznámkovém bloku]()
-* [Použití rozšíření poznámkového bloku a Cosmos Magic k analýze dat]()
+* [Povolení poznámkových bloků v účtu Azure Cosmos](enable-notebooks.md)
+* [Použití funkcí a příkazů poznámkového bloku](use-notebook-features-and-commands.md)
 
 
 

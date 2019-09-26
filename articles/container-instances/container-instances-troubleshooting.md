@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325586"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300464"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných problémů v Azure Container Instances
 
-Tento článek popisuje, jak řešit běžné problémy při správě a nasazování kontejnerů do Azure Container Instances. Přečtěte si také [Nejčastější dotazy](container-instances-faq.md).
+Tento článek popisuje, jak řešit běžné problémy při správě a nasazování kontejnerů do Azure Container Instances. Přečtěte si také [Nejčastější dotazy](container-instances-faq.md). 
+
+Pokud potřebujete další podporu, přečtěte si část dostupná podpora a možnosti **podpory** v [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="naming-conventions"></a>Zásady vytváření názvů
 
@@ -26,12 +28,12 @@ Při definování specifikace kontejneru vyžadují některé parametry dodržov
 
 | Scope | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad |
 | --- | --- | --- | --- | --- | --- |
-| Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Název skupiny kontejnerů | 1-64 |Nerozlišuje malá a velká písmena |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Název kontejneru | 1-64 |Nerozlišuje malá a velká písmena |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontejneru | Mezi 1 a 65535 |Integer |Celé číslo od 1 do 65535 |`<port-number>` |`443` |
-| Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
-| Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
+| Popisek názvu DNS | 5-63 |Nerozlišuje malá a velká písmena |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
+| Proměnná prostředí | 1-63 |Nerozlišuje malá a velká písmena |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
+| Název svazku | 5-63 |Nerozlišuje malá a velká písmena |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Verze operačního systému image není podporovaná.
 
@@ -200,11 +202,30 @@ Tato chyba označuje, že kvůli vysokému zatížení v oblasti, ve které se p
 
 Azure Container Instances nevystavuje přímý přístup k podkladové infrastruktuře, která je hostitelem skupin kontejnerů. To zahrnuje přístup k rozhraní API Docker běžícímu na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud potřebujete interakci Docker, podívejte se do [Referenční dokumentace REST](https://aka.ms/aci/rest) a podívejte se, co podporuje rozhraní ACI API. Pokud chybí nějaký objekt, odešlete žádost ve [fórech ACI Feedback](https://aka.ms/aci/feedback).
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresy můžou být z důvodu neshodě portů dostupné.
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresa skupiny kontejnerů možná není dostupná kvůli neshodě portů.
 
-Azure Container Instances v současné době nepodporuje mapování portů jako u pravidelné konfigurace Docker, ale tato oprava je v plánu. Pokud zjistíte, že IP adresy nejsou k dispozici, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala `ports` stejným portům vystavení ve skupině kontejnerů s vlastností.
+Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům `ports` , které zveřejníte ve skupině kontejnerů s vlastností.
 
-## <a name="next-steps"></a>Další postup
+Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. `aci-helloworld` Aplikaci také spusťte, aby naslouchala na portu. `aci-helloworld`přijme volitelnou proměnnou `PORT` prostředí pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000:
+
+1. Nastavte skupinu kontejnerů k vystavení portu 9000 a předejte číslo portu jako hodnotu proměnné prostředí:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Ve výstupu `az container create`příkazu vyhledejte IP adresu skupiny kontejnerů. Vyhledejte hodnotu **IP**. 
+1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000`. 
+
+    Měla by se zobrazit zpráva "Vítá vás Azure Container Instances!" zpráva zobrazená webovou aplikací
+1. Až budete s kontejnerem hotovi, odeberte ho pomocí `az container delete` příkazu:
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
+
+## <a name="next-steps"></a>Další kroky
 
 Naučte se, jak [načíst protokoly a události kontejneru](container-instances-get-logs.md) , které vám pomůžou s laděním vašich kontejnerů.
 

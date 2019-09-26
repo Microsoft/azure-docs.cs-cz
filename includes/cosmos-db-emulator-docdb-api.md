@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 85fe028e35165ece0bdb143181bb1d8a6d4e1841
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c071cd289a1304a561a821fc6b5ad86d9bf986af
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67174759"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299306"
 ---
-[Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Případně můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s identifikátorem URI `https://localhost:8081`. Primární klíč je uvedený v části [Ověřování požadavků](../articles/cosmos-db/local-emulator.md#authenticating-requests).
+[Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Případně můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s identifikátorem URI `https://localhost:8081`. Klíč, který se má použít s emulátorem, najdete v tématu [ověřování požadavků](../articles/cosmos-db/local-emulator.md#authenticating-requests).

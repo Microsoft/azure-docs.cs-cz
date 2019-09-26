@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952804"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314935"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží s ochranou hesel Azure AD
 
@@ -56,17 +56,23 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Agent řadiče domény nemůže šifrovat nebo dešifrovat soubory zásad hesel.
 
-Tento problém se může vyskytnout v důsledku nejrůznějších příznaků, ale obvykle má běžnou hlavní příčinu.
+Ochrana heslem Azure AD má kritickou závislost na funkci šifrování a dešifrování, kterou poskytuje služba Microsoft Key Distribution Service. Selhání šifrování nebo dešifrování může být v manifestu s nejrůznějšími příznaky a má několik možných příčin.
 
-Ochrana heslem Azure AD má kritickou závislost na funkcích šifrování a dešifrování poskytovaných službou Microsoft Key Distribution Service, která je dostupná na řadičích domény se systémem Windows Server 2012 a novějším. Služba KDS musí být povolená a funkční na všech řadičích domény se systémem Windows Server 2012 a novějším v doméně.
+1. Ujistěte se, že je služba KDS povolená a funkční na všech řadičích domény se systémem Windows Server 2012 a novějším v doméně.
 
-Ve výchozím nastavení je režim spuštění služby KDS nakonfigurovaný jako ruční (spuštění triggeru). Tato konfigurace znamená, že při prvním pokusu o použití služby se klient spustí na vyžádání. Tento výchozí režim spuštění služby je přijatelný pro fungování ochrany hesel služby Azure AD.
+   Ve výchozím nastavení je režim spuštění služby KDS nakonfigurovaný jako ruční (spuštění triggeru). Tato konfigurace znamená, že při prvním pokusu o použití služby se klient spustí na vyžádání. Tento výchozí režim spuštění služby je přijatelný pro fungování ochrany hesel služby Azure AD.
 
-Pokud je režim spuštění služby KDS nakonfigurovaný tak, aby byl zakázaný, musí se tato konfigurace opravit předtím, než bude správně fungovat ochrana heslem Azure AD.
+   Pokud je režim spuštění služby KDS nakonfigurovaný tak, aby byl zakázaný, musí se tato konfigurace opravit předtím, než bude správně fungovat ochrana heslem Azure AD.
 
-Jednoduchý test tohoto problému je ruční spuštění služby KDS, a to buď prostřednictvím konzoly MMC pro správu služby, nebo pomocí jiných nástrojů pro správu (například spuštěním příkazu "net start kdssvc" z konzoly příkazového řádku). Očekává se, že se služba KDS úspěšně spustí a zůstane spuštěná.
+   Jednoduchý test tohoto problému je ruční spuštění služby KDS, a to buď prostřednictvím konzoly MMC pro správu služby, nebo pomocí jiných nástrojů pro správu (například spuštěním příkazu "net start kdssvc" z konzoly příkazového řádku). Očekává se, že se služba KDS úspěšně spustí a zůstane spuštěná.
 
-Nejběžnější hlavní příčinou nefunkčnosti služby KDS je, že objekt řadiče domény služby Active Directory je umístěný mimo výchozí organizační jednotku řadiče domény. Tato konfigurace není službou KDS podporována a nejedná se o omezení vyplývající z ochrany hesel služby Azure AD. Opravou této podmínky je přesunutí objektu řadiče domény do umístění v rámci výchozí organizační jednotky řadičů domény.
+   Nejběžnější hlavní příčinou nefunkčnosti služby KDS je, že objekt řadiče domény služby Active Directory je umístěný mimo výchozí organizační jednotku řadiče domény. Tato konfigurace není službou KDS podporována a nejedná se o omezení vyplývající z ochrany hesel služby Azure AD. Opravou této podmínky je přesunutí objektu řadiče domény do umístění v rámci výchozí organizační jednotky řadičů domény.
+
+1. Nekompatibilní Změna formátu KDS šifrované vyrovnávací paměti z Windows Serveru 2012 R2 na Windows Server 2016
+
+   Oprava zabezpečení KDS byla představena ve Windows serveru 2016, která mění formát KDS šifrovaných vyrovnávacích pamětí; v některých případech se v systému Windows Server 2012 a Windows Server 2012 R2 nezdaří dešifrování těchto vyrovnávacích pamětí. Obrácený směr je v pořádku – vyrovnávací paměti, které jsou zašifrované KDS na Windows Serveru 2012 a Windows Server 2012 R2, se vždycky úspěšně dešifrují v systému Windows Server 2016 a novějším. Pokud na řadičích domény v doménách služby Active Directory běží kombinace těchto operačních systémů, můžou se nahlásit občasné chyby dešifrování ochrany heslem Azure AD. Není možné přesně předpovědět časování nebo příznaky těchto selhání s ohledem na povahu opravy zabezpečení a s tím, že je nedeterministické, ke kterému řadiči domény Azure AD s ochranou hesel se v daný okamžik zašifruje data.
+
+   Microsoft zkoumá opravu tohoto problému, ale zatím není k dispozici žádné ETA. Mezitím není k dispozici žádné alternativní řešení pro tento problém, jiné než spuštění kombinace těchto nekompatibilních operačních systémů ve vašich doménách služby Active Directory. Jinými slovy, měli byste spustit pouze řadiče domény se systémem Windows Server 2012 a Windows Server 2012 R2 nebo byste měli spustit pouze systém Windows Server 2016 a vyšší řadiče domény.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Jsou přijímána slabá hesla, ale neměla by být
 
@@ -80,7 +86,7 @@ Tento problém může mít několik příčin.
 
 1. Zásady hesel jsou zakázané. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji na povolenou pomocí portálu ochrany hesel Azure AD. Viz [Povolení ochrany heslem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 
-1. Nenainstalovali jste software agenta DC na všechny řadiče domény v doméně. V takové situaci je obtížné zajistit, aby vzdálení klienti Windows během operace změny hesla nacíleny na konkrétní řadič domény. Pokud jste si myslíte, že jste se úspěšně zaměřili na konkrétní řadič domény, na kterém je nainstalovaný software agenta DC, můžete ověřit tak, že dvakrát zkontrolujete protokol událostí správce agenta řadiče domény: bez ohledu na výsledek bude obsahovat alespoň jednu událost, která bude dokumentovat výsledek hesla. Export. Pokud pro uživatele, jehož heslo je změněno, není k dispozici žádná událost, změna hesla byla zřejmě zpracována jiným řadičem domény.
+1. Nenainstalovali jste software agenta DC na všechny řadiče domény v doméně. V takové situaci je obtížné zajistit, aby vzdálení klienti Windows během operace změny hesla nacíleny na konkrétní řadič domény. Pokud si myslíte, že jste se úspěšně zaměřili na konkrétní řadič domény, na kterém je nainstalovaný software agenta řadiče domény, můžete ho ověřit dvojitou kontrolou protokolu událostí správce agenta řadiče domény: bez ohledu na výsledek, bude k dispozici alespoň jedna událost pro dokumentaci výsledku hesla. Export. Pokud pro uživatele, jehož heslo je změněno, není k dispozici žádná událost, změna hesla byla zřejmě zpracována jiným řadičem domény.
 
    Jako alternativní test zkuste setting\changing hesla při přihlášení přímo na řadič domény, na kterém je nainstalovaný software agenta DC. Tato technika se nedoporučuje pro produkční domény služby Active Directory.
 
@@ -189,7 +195,7 @@ Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade
 
 Pokud dojde k situaci, kdy služba agenta DC způsobuje problémy, služba agenta řadiče domény se může okamžitě vypnout. Knihovna DLL filtru hesel agenta řadiče domény se stále pokouší zavolat nespuštěnou službu a bude protokolovat události upozornění (10012, 10013), ale během této doby budou přijata všechna příchozí hesla. Služba agenta DC se pak dá nakonfigurovat taky prostřednictvím Správce řízení služeb systému Windows s typem spuštění zakázáno, jak je potřeba.
 
-Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režim](howto-password-ban-bad-on-premises-operations.md#enforce-mode)vynutilení.
+Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režim Vynutilení](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
 ## <a name="removal"></a>Odebrání
 
@@ -198,7 +204,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
 > [!IMPORTANT]
 > Tyto kroky je důležité provést v uvedeném pořadí. Pokud bude kterákoli instance služby proxy spuštěna, bude se pravidelně znovu vytvářet Objekt serviceConnectionPoint. Pokud je spuštěná kterákoli instance služby agenta řadiče domény, bude se pravidelně znovu vytvářet Objekt serviceConnectionPoint a stav adresáře SYSVOL.
 
-1. Odinstalujte software proxy ze všech počítačů. Tento krok nevyžaduje restartování.
+1. Odinstalujte software proxy ze všech počítačů. Tento **Krok nevyžaduje restartování** .
 2. Odinstalujte software agenta DC ze všech řadičů domény. Tento krok **vyžaduje** restart.
 3. Ručně odeberte všechny spojovací body služby proxy v každém názvovém kontextu domény. Umístění těchto objektů může být zjištěno s následujícím příkazem PowerShellu služby Active Directory:
 
@@ -241,7 +247,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
 
    Tato cesta se liší, pokud je sdílená složka SYSVOL nakonfigurovaná na jiném než výchozím umístění.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nejčastější dotazy k ochraně hesel Azure AD](howto-password-ban-bad-on-premises-faq.md)
 

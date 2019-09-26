@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219280"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300061"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z digitálních vláken Azure pomocí Time Series Insights
 
@@ -57,10 +57,10 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V Event Hubs nasazení oboru názvů vyberte podokno **Přehled** a pak vyberte **Přejít k prostředku**.
 
-    ![Event Hubs obor názvů po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![Event Hubs obor názvů po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. V podokně **přehledu** oboru názvů Event Hubs vyberte tlačítko **centra událostí** v horní části.
-    ![Tlačítko centra událostí](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![Tlačítko centra událostí](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Zadejte **název** centra událostí a vyberte **vytvořit**.
 
@@ -68,13 +68,13 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Vytvořit**.
 
-    ![Skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![Skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Jakmile se skupina uživatelů vytvoří, zobrazí se v seznamu v dolní části podokna **přehledu** centra událostí.
 
 1. Otevřete podokno **zásady sdíleného přístupu** pro centrum událostí a vyberte tlačítko **Přidat** . Jako název zásady zadejte **ManageSend** , ujistěte se, že jsou zaškrtnutá všechna políčka, a vyberte **vytvořit**.
 
-    ![Připojovací řetězce centra událostí](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![Připojovací řetězce centra událostí](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. Otevřete zásadu ManageSend, kterou jste vytvořili, a zkopírujte hodnoty připojovacího **řetězce – primární klíč** a **připojovací řetězec – sekundární klíč** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
 
@@ -127,7 +127,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
    Vytvoří dva koncové body centra událostí.
 
-   ![Koncové body pro službu Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Koncové body pro Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analýza s využitím služby Time Series Insights
 
@@ -137,11 +137,11 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **další: Tlačítko zdroje** události nebo karta **zdroje událostí** .
 
-    ![Výběry pro vytvoření instance Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Výběry pro vytvoření instance Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. Na kartě **zdroj události** zadejte **název**, vyberte **centrum událostí** jako **typ zdroje**a ujistěte se, že jsou vybrané jiné hodnoty správně. Vyberte **ManageSend** pro **název zásady přístupu centra událostí**a pak vyberte skupinu uživatelů, kterou jste vytvořili v předchozí části **skupiny uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
 
-    ![Výběry pro vytvoření zdroje událostí](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![Výběry pro vytvoření zdroje událostí](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. V podokně **Revize + vytvořit** zkontrolujte zadané informace a vyberte **vytvořit**.
 
@@ -153,13 +153,13 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. Po vygenerování několika simulovaných událostí se vraťte do Průzkumníka Time Series Insights a v horní části vyberte tlačítko Aktualizovat. Měli byste vidět analytické grafy, které se vytvářejí pro Simulovaná data senzorů. 
 
-    ![Graf v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Graf v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. V Průzkumníku Time Series Insights můžete vygenerovat grafy a Heat mapy pro různé události a data z místností, senzorů a dalších prostředků. Na levé straně můžete pomocí rozevíracích seznamů **měření** a **rozdělení** vytvořit vlastní vizualizace. 
 
    Například vyberte **události** pro **míru** a **DIGITALTWINS-SensorHardwareId** pro **rozdělení podle**, abyste vygenerovali heatmapu pro každé z vašich senzorů. Heatmapu bude vypadat podobně jako na následujícím obrázku:
 
-   ![Heatmapu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Heatmapu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -23,12 +23,15 @@
             - name: Předběžné načtení nového úložiště objektů blob
               href: hpc-cache-ingest.md
             - name: Alternativní metody příjmu dat
-            - name: Naplnění mezipaměti s využitím paralelní kopie
-              href: hpc-cache-ingest-parallelcp.md
-            - name: Naplnění mezipaměti s využitím msrsync
-              href: hpc-cache-ingest-msrsync.md
-            - name: Naplnění mezipaměti s využitím ruční kopie souborů
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: Naplnění mezipaměti s využitím paralelní kopie
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: Naplnění mezipaměti s využitím msrsync
+                  href: hpc-cache-ingest-msrsync.md
+                - name: Naplnění mezipaměti s využitím ruční kopie souborů
+                  href: hpc-cache-ingest-manual.md
+    - name: Připojení k mezipaměti
+      href: hpc-cache-mount.md
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory

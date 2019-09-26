@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 205809c34eb64255af511f316f138be1efd9983b
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065309"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315069"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlašování pomocí účtu Azure Active Directory s využitím vlastních zásad v Azure Active Directory B2C
 
@@ -179,15 +179,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistrujete v tenantovi B2C. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **aplikace**a pak vyberte **Přidat**.
-1. Zadejte název aplikace, například *testapp1*.
-1. Pro **webovou aplikaci nebo webové rozhraní API**vyberte `Yes`a zadejte `https://jwt.ms` **adresu URL odpovědi**.
-1. Vyberte **Vytvořit**.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 
@@ -205,7 +197,7 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
 
 Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms`, který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Při práci s vlastními zásadami můžete někdy potřebovat další informace při řešení potíží se zásadami během jejího vývoje.
 

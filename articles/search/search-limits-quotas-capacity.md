@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141147"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300663"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby v Azure Search
 Maximální limity úložiště, zatížení a množství indexů, dokumentů a dalších objektů závisí na tom, jestli jste zřídili [Azure Search](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage** s optimalizovaným úložištěm.
@@ -62,11 +62,13 @@ Maximální limity úložiště, zatížení a množství indexů, dokumentů a 
 
 ## <a name="document-limits"></a>Omezení dokumentů 
 
-Od října 2018 již neplatí žádná omezení pro žádnou novou službu vytvořenou v jakékoli Fakturovatelné úrovni (Basic, S1, S2, S3, S3 HD) v jakékoli oblasti. I když většina oblastí obsahovala neomezený počet dokumentů od listopadu 2017, mělo by dotrvat pět oblastí, které budou pokračovat v omezení dokumentů. V závislosti na tom, kdy a kde jste vytvořili vyhledávací službu, možná budete používat službu, na které se pořád vztahují omezení dokumentů.
+Od října 2018 již neplatí žádná omezení<sup>1</sup> pro každou novou službu vytvořenou v jakékoli Fakturovatelné úrovni (Basic, S1, S2, S3, S3 HD) v jakékoli oblasti. I když většina oblastí obsahovala neomezený počet dokumentů od listopadu 2017, mělo by dotrvat pět oblastí, které budou pokračovat v omezení dokumentů. V závislosti na tom, kdy a kde jste vytvořili vyhledávací službu, možná budete používat službu, na které se pořád vztahují omezení dokumentů.
 
 Pokud chcete zjistit, jestli vaše služba má omezení dokumentů, podívejte se na dlaždici využití na stránce Přehled vaší služby. Počty dokumentů jsou buď neomezené, nebo podléhají omezení na základě úrovně.
 
   ![Dlaždice využití](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> , i když nejsou k dispozici žádné limity dokumentů specifické pro skladovou položku, má každý index i nadále maximální bezpečný limit, aby se zajistila stabilita služby. Toto omezení pochází z Lucene. Každý Azure Search dokument je interně indexován jako jeden nebo více dokumentů Lucene. Počet dokumentů Lucene na dokument Azure Search závisí na celkovém počtu prvků v komplexních polích kolekcí. Každý element je indexován jako samostatný dokument Lucene. Například dokument se 3 prvky ve komplexním poli kolekce bude indexován jako 4 dokumenty Lucene – 1 pro samotný dokument a 3 pro prvky. Maximální počet dokumentů Lucene je zhruba 25 000 000 000 na jeden index.
 
 ### <a name="regions-previously-having-document-limits"></a>Oblasti, které dříve mají omezení dokumentů
 
@@ -105,15 +107,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Resource | Zdarma&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |neuvedeno |Neomezeno |Neomezeno |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
-| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není k dispozici  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;miliony |4&nbsp;miliony |4&nbsp;miliony |Není k dispozici |4&nbsp;miliony |4&nbsp;miliony |
+| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |24 hodin |24 hodin |
+| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;miliony |4&nbsp;miliony |4&nbsp;miliony |neuvedeno |4&nbsp;miliony |4&nbsp;miliony |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 

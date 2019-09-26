@@ -1,0 +1,57 @@
+---
+title: Připojení k virtuálnímu počítači s Windows z iOS – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows z iOS
+services: virtual-desktop
+author: heidilohr
+ms.service: virtual-desktop
+ms.topic: conceptual
+ms.date: 09/04/2019
+ms.author: helohr
+ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310318"
+---
+# <a name="connect-from-ios"></a>Připojení z iOS
+
+> Platí pro: iOS 8,0 nebo novější. Kompatibilní s iPhone, iPad a iPod touch.
+
+>[!NOTE]
+> Klient iOS je aktuálně stále ve verzi Preview.
+
+Pomocí našeho klienta ke stažení můžete získat přístup k prostředkům virtuálních klientů Windows ze zařízení s iOS. V této příručce se dozvíte, jak nastavit klienta iOS.
+
+## <a name="install-the-ios-beta-client"></a>Nainstalovat klienta iOS beta
+Instalace klienta iOS beta:
+
+1. Nainstalujte aplikaci [Apple testovacího prostředí](https://apps.apple.com/us/app/testflight/id899247664) na zařízení s iOS.
+2. Na zařízení s iOS otevřete prohlížeč a přejděte na [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
+3. V části popisek **krok 2: Připojte se k**beta verzi, vyberte **zahájit testování**.
+4. Až budete přesměrováni do aplikace testovacího prostředí, vyberte **přijmout**a pak vyberte **nainstalovat**.
+
+## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
+
+Přihlaste se k odběru informačního kanálu, který poskytuje správce, aby získal seznam spravovaných prostředků, ke kterým máte přístup v zařízení s iOS.
+
+Přihlášení k odběru informačního kanálu:
+
+1. V centru připojení klepněte **+** na a potom klepněte na **Přidat pracovní prostor**.
+2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je <https://rdweb.wvd.microsoft.com>adresa URL.
+   - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
+3. Klepněte na **Další**.
+4. Po zobrazení výzvy zadejte své přihlašovací údaje.
+   - V poli **uživatelské jméno**zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
+   - Pro **heslo**zadejte heslo přidružené k uživatelskému jménu.
+   - Může se také zobrazit výzva k poskytnutí dalších faktorů, pokud váš správce nakonfiguroval ověřování tímto způsobem.
+5. Klepněte na **Uložit**.
+
+V tomto případě by měl centrum připojení zobrazit vzdálené prostředky.
+
+Po přihlášení k odběru informačního kanálu se obsah informačního kanálu pravidelně aktualizuje automaticky. Prostředky je možné přidat, změnit nebo odebrat na základě změn provedených správcem.
+
+## <a name="client-documentation"></a>Dokumentace klienta
+
+Další informace o tom, jak používat klienta iOS beta, najdete v dokumentaci [Začínáme s klientem iOS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .

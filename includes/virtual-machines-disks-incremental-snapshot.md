@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e39f294f7902eabef401d4c8145f4f19a07f267f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224574"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310124"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Vytváření přírůstkového snímku (ve verzi Preview) pro spravované disky
 
@@ -23,10 +23,11 @@ Existuje několik rozdílů mezi přírůstkovým snímkem a běžným snímkem.
 
 Přírůstkové snímky také nabízí rozdílovou možnost, která je jednoznačně dostupná pro spravované disky. Umožňují získat změny dvou přírůstkových snímků stejných spravovaných disků na úrovni bloku. Tuto možnost můžete použít ke snížení objemu dat při kopírování snímků napříč oblastmi.
 
-Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám AzureDisks@microsoft.com prosím e-mail na adresu, kde získáte přístup k verzi Public Preview.
+Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám AzureDisks@microsoft.com e-mail na, abyste získali přístup k verzi Public Preview.
 
 ## <a name="restrictions"></a>Omezení
 
+- Přírůstkové snímky jsou v tuto chvíli dostupné jenom v Středozápadní USA.
 - Přírůstkové snímky momentálně nelze vytvořit poté, co jste změnili velikost disku.
 - Přírůstkové snímky se aktuálně nedají přesunout mezi předplatnými.
 - V současné době můžete v daném okamžiku generovat pouze identifikátory URI SAS až na pět snímků konkrétní rodiny snímků.
@@ -36,7 +37,7 @@ Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít použí
 
 ## <a name="powershell"></a>PowerShell
 
-K vytvoření přírůstkového snímku můžete použít Azure PowerShell. Nejnovější verzi PowerShellu můžete nainstalovat místně. Budete potřebovat nejnovější verzi Azure PowerShell, následující příkaz si buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější:
+K vytvoření přírůstkového snímku můžete použít Azure PowerShell. Budete potřebovat nejnovější verzi Azure PowerShell, následující příkaz si buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -44,22 +45,24 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Po nainstalování se přihlaste k relaci PowerShellu `az login`pomocí.
 
+Chcete-li vytvořit přírůstkový snímek s Azure PowerShell, nastavte konfiguraci pomocí `-Incremental` parametru [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) s parametrem a pak jej předejte jako proměnnou do `-Snapshot` [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) prostřednictvím parametru.
+
 `<yourDiskNameHere>`Nahraďte `<yourResourceGroupNameHere>`, a`<yourDesiredSnapShotNameHere>` hodnotami a pak můžete použít následující skript k vytvoření přírůstkového snímku:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
 $yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
 
-# Create an incremental snapshot by setting:
-# 1. Incremental property
-# 2. SourceUri property with the value of the Id property of the disk
+# Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+```
 
-# You can identify incremental snapshots of the same disk by using the SourceResourceId and SourceUniqueId properties of snapshots. 
-# SourceResourceId is the Azure Resource Manager resource ID of the parent disk. 
-# SourceUniqueId is the value inherited from the UniqueId property of the disk. If you delete a disk and then create a disk with the same name, the value of the UniqueId property will change. 
-# Following script shows how to get all the incremental snapshots in a resource group of same disk
+Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` `SourceUniqueId` vlastnostmi a a vlastnostmi snímků. `SourceResourceId`je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId`je hodnota zděděná z `UniqueId` vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` vlastnosti.
+
+Pomocí `SourceResourceId` a`SourceUniqueId` můžete vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků:
+
+```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
@@ -73,6 +76,46 @@ foreach ($snapshot in $snapshots)
 }
 
 $incrementalSnapshots
+```
+
+## <a name="cli"></a>Rozhraní příkazového řádku
+
+Můžete vytvořit přírůstkový snímek pomocí Azure CLI, budete potřebovat nejnovější verzi rozhraní příkazového řádku Azure CLI. Následující příkaz buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější verzi:
+
+```PowerShell
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+```
+
+K vytvoření přírůstkového snímku použijte příkaz [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) s `--incremental` parametrem.
+
+Následující příklad vytvoří přírůstkový snímek, nahraďte `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`a `<exampleLocation>` vlastními hodnotami a pak spusťte příklad:
+
+```bash
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot create -g <yourResourceGroupNameHere> \
+-n <yourDesiredSnapShotNameHere> \
+-l <exampleLocation> \
+--source "$sourceResourceId" \
+--incremental
+```
+
+Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` `SourceUniqueId` vlastnostmi a a vlastnostmi snímků. `SourceResourceId`je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId`je hodnota zděděná z `UniqueId` vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` vlastnosti.
+
+Pomocí `SourceResourceId` a`SourceUniqueId` můžete vytvořit seznam všech snímků přidružených k určitému disku. Následující příklad zobrazí seznam všech přírůstkových snímků přidružených k určitému disku, ale vyžaduje instalaci.
+
+V tomto příkladu se pro dotazování na data používá JQ. Chcete-li spustit příklad, musíte [nainstalovat JQ](https://stedolan.github.io/jq/download/).
+
+`<yourResourceGroupNameHere>` Nahraďte `<exampleDiskName>` a hodnotami a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků, pokud jste také nainstalovali JQ:
+
+```bash
+sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
+
+ 
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot list -g <yourResourceGroupNameHere> -o json \
+| jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
@@ -111,32 +154,6 @@ Můžete také použít šablony Azure Resource Manager k vytvoření přírůst
 }
 ```
 
-## <a name="cli"></a>Rozhraní příkazového řádku
-
-Přírůstkový snímek můžete pomocí Azure CLI vytvořit pomocí příkaz [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create). Příklad příkazu by vypadal takto:
-
-```bash
-az snapshot create -g <exampleResourceGroup> \
--n <exampleSnapshotName> \
--l <exampleLocation> \
---source <exampleVMId> \
---incremental
-```
-
-Můžete také určit, `--query` které snímky jsou přírůstkové snímky v rozhraní příkazového řádku, pomocí parametru na [AZ Snapshot show](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-show). Tento parametr můžete použít k přímému dotazování vlastností **parametr sourceresourceid** a **SourceUniqueId** snímků. Parametr sourceresourceid je ID prostředku Azure Resource Manager nadřazeného disku. **SourceUniqueId** je hodnota zděděná z vlastnosti **UniqueID** disku. Pokud disk odstraníte a pak vytvoříte disk se stejným názvem, změní se hodnota vlastnosti **UniqueID** .
-
-Příklady obou dotazů by vypadaly takto:
-
-```bash
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceResourceId] -o tsv
-
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceUniqueId] -o tsv
-```
-
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám AzureDisks@microsoft.com prosím e-mail na adresu, kde získáte přístup k verzi Public Preview.
+Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám AzureDisks@microsoft.com e-mail na, abyste získali přístup k verzi Public Preview.

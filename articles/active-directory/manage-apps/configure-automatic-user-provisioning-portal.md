@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170475"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315259"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -88,7 +88,6 @@ Změňte **stav zřizování** na **vypnuto** , aby se služba zřizování zast
 Zaškrtněte políčko **Vymazat aktuální stav a restartovat synchronizaci** a vyberte **Uložit** do:
 
 * Zastavení služby zřizování
-* Vypsat data uložená v mezipaměti s informacemi o tom, jaké účty služba Azure AD spravuje
 * Restartujte služby a znovu spusťte počáteční cyklus.
 
 Tato možnost umožňuje správcům znovu spustit proces nasazení.

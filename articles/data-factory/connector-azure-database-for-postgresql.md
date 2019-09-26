@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cb6f420b6d084539dc98a09632d0760a1344012
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: b92177b162f4649f253bf74372b175fc16130af6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092177"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300388"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-using-azure-data-factory"></a>Kopírování dat do a z Azure Database for PostgreSQL pomocí Azure Data Factory
+# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Database for PostgreSQL pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat ze služby Azure Database for PostgreSQL. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí funkce kopírování aktivity v nástroji Azure Data Factory kopírovat data z Azure Database for PostgreSQL. Sestaví se na [aktivitu kopírování v Azure Data Factory](copy-activity-overview.md) článku, která představuje obecný přehled aktivity kopírování.
 
 Tento konektor je specializovaný pro [službu Azure Database for PostgreSQL](../postgresql/overview.md). Pokud chcete kopírovat data z obecné databáze PostgreSQL místně nebo v cloudu, použijte [konektor PostgreSQL](connector-postgresql.md).
 
@@ -32,34 +32,34 @@ Tento konektor Azure Database for PostgreSQL se podporuje pro následující či
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Můžete kopírovat data ze Azure Database for PostgreSQL na jakékoli podporovaného úložiště dat jímky. Nebo můžete zkopírovat data z libovolného podporovaného zdrojového úložiště dat do Azure Database for PostgreSQL. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Můžete kopírovat data ze Azure Database for PostgreSQL na jakékoli podporovaného úložiště dat jímky. Nebo můžete zkopírovat data z libovolného podporovaného zdrojového úložiště dat do Azure Database for PostgreSQL. Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač umožňující připojení. Proto pro použití tohoto konektoru nemusíte ručně instalovat žádný ovladač.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování konkrétní entity služby Data Factory ke službě Azure Database for postgresql – konektoru.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro Azure Database for PostgreSQL konektor.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující vlastnosti jsou podporovány pro službu Azure Database for postgresql –, propojené služby:
+Pro propojenou službu Azure Database for PostgreSQL jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **AzurePostgreSql** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL.<br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na: **AzurePostgreSql**. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL.<br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také vložit heslo do Azure Key Vault a `password` získat konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje pro uložení v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
+| connectVia | Tato vlastnost představuje [prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
-Připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Další vlastnosti, které můžete nastavit na váš případ:
+Připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Tady je více vlastností, které můžete nastavit na váš případ:
 
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda ovladač používá k šifrování dat posílaných mezi ovladač a databázový server. Např.:`EncryptionMethod=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** / 1 (SSL) / 6 (RequestSSL) | Ne |
-| ValidateServerCertificate (virtuální čipové karty) | Určuje, jestli ovladač ověřil certifikát, který je odesláno serverem databáze, když je povoleno šifrování protokolu SSL (metoda šifrování = 1). Např.:`ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** / 1 (povoleno) | Ne |
+| EncryptionMethod (EM)| Metoda ovladač používá k šifrování dat posílaných mezi ovladač a databázový server. Například`EncryptionMethod=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** / 1 (SSL) / 6 (RequestSSL) | Ne |
+| ValidateServerCertificate (virtuální čipové karty) | Určuje, zda ovladač ověřuje certifikát, který je odeslán databázovým serverem, pokud je povoleno šifrování SSL (metoda šifrování = 1). Například`ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** / 1 (povoleno) | Ne |
 
-**Příklad:**
+**Příklad**:
 
 ```json
 {
@@ -76,7 +76,9 @@ Připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database
 }
 ```
 
-**Příklad: uložení hesla v Azure Key Vault**
+**Příklad**:
+
+***Ukládat heslo v Azure Key Vault***
 
 ```json
 {
@@ -103,16 +105,16 @@ Připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje – Azure Database for postgresql – datové sady.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu datové sady v Azure Data Factory](concepts-datasets-linked-services.md). V této části najdete seznam vlastností, které Azure Database for PostgreSQL podporuje v datových sadách.
 
 Ke kopírování dat ze služby Azure Database for PostgreSQL, nastavte vlastnost typ datové sady na **AzurePostgreSqlTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **AzurePostgreSqlTable** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost Type datové sady musí být nastavená na **AzurePostgreSqlTable** . | Ano |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
-**Příklad**
+**Příklad**:
 
 ```json
 {
@@ -130,7 +132,7 @@ Ke kopírování dat ze služby Azure Database for PostgreSQL, nastavte vlastnos
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje – Azure Database for postgresql – zdroje.
+Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [kanály a aktivity v Azure Data Factory](concepts-pipelines-activities.md). V této části najdete seznam vlastností podporovaných zdrojem Azure Database for PostgreSQL.
 
 ### <a name="azure-database-for-postgresql-as-source"></a>Azure Database for PostgreSql jako zdroj
 
@@ -138,10 +140,10 @@ Ke kopírování dat ze služby Azure Database for PostgreSQL, nastavte typ zdro
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzurePostgreSqlSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzurePostgreSqlSource** . | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ne (Pokud je určena vlastnost tableName v sadě dat) |
 
-**Příklad:**
+**Příklad**:
 
 ```json
 "activities":[
@@ -179,12 +181,12 @@ Chcete-li kopírovat data do Azure Database for PostgreSQL, v části **jímka**
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **AzurePostgreSQLSink** | Ano |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do Azure Database for PostgreSQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
-| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky Azure Database for PostgreSQL.<br>Povolená hodnota je celé číslo představující počet řádků. | Ne (výchozí hodnota je 10 000) |
-| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:00:30) |
+| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzurePostgreSQLSink**. | Ano |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má provést před zápisem dat do Azure Database for PostgreSQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
+| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky Azure Database for PostgreSQL.<br>Povolená hodnota je celé číslo, které představuje počet řádků. | Ne (výchozí hodnota je 10 000) |
+| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br>Povolené hodnoty jsou řetězce TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:00:30) |
 
-**Příklad:**
+**Příklad**:
 
 ```json
 "activities":[
@@ -219,7 +221,7 @@ Chcete-li kopírovat data do Azure Database for PostgreSQL, v části **jímka**
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Další informace o vlastnostech naleznete [v tématu Lookup Activity in Azure Data Factory](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

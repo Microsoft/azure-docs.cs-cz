@@ -1,54 +1,52 @@
 ---
-title: Přesunout externí Load Balancer Azure do jiné oblasti Azure pomocí Azure Portal
-description: Pomocí šablony Azure Resource Manager můžete přesunout externí Load Balancer Azure z jedné oblasti Azure do jiné pomocí Azure Portal.
+title: Přesuňte externí nástroj pro vyrovnávání zatížení Azure do jiné oblasti Azure pomocí Azure Portal
+description: Pomocí šablony Azure Resource Manager můžete přesunout externí nástroj pro vyrovnávání zatížení z jedné oblasti Azure do jiné pomocí Azure Portal.
 author: asudbring
 ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ad7e4c5aaa20722e6158973571fb95eb8d853f4d
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 9358d99c66b3b8e3d6988b1881e51c11848ad97b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219801"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300631"
 ---
-# <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Přesunout externí Load Balancer Azure do jiné oblasti pomocí Azure Portal
+# <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Přesunout externí nástroj pro vyrovnávání zatížení do jiné oblasti pomocí Azure Portal
 
-Existují různé scénáře, ve kterých byste chtěli přesunout existující externí nástroj pro vyrovnávání zatížení z jedné oblasti do druhé. Například může být vhodné vytvořit externí nástroj pro vyrovnávání zatížení se stejnou konfigurací pro testování. Externí nástroj pro vyrovnávání zatížení můžete také přesunout do jiné oblasti v rámci plánování zotavení po havárii.
+Existují různé scénáře, ve kterých byste chtěli přesunout externí nástroj pro vyrovnávání zatížení z jedné oblasti do druhé. Můžete například chtít vytvořit jiný externí nástroj pro vyrovnávání zatížení se stejnou konfigurací pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout externí nástroj pro vyrovnávání zatížení do jiné oblasti.
 
-Externí nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu existující konfigurace a veřejné IP adresy externího nástroje pro vyrovnávání zatížení.  Potom můžete prostředek připravit v jiné oblasti tak, že vyexportujete Nástroj pro vyrovnávání zatížení a veřejnou IP adresu do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablony nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates) .
+Ve smyslu literálu nemůžete externí nástroj pro vyrovnávání zatížení Azure přesunout z jedné oblasti do jiné. K exportu existující konfigurace a veřejné IP adresy externího nástroje pro vyrovnávání zatížení ale můžete použít šablonu Azure Resource Manager. Potom můžete prostředek připravit v jiné oblasti tak, že vyexportujete Nástroj pro vyrovnávání zatížení a veřejnou IP adresu do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že je externí nástroj pro vyrovnávání zatížení Azure v oblasti Azure, ze které chcete přejít.
 
-- Externí nástroje pro vyrovnávání zatížení Azure se nedají přesouvat mezi oblastmi.  Nový nástroj pro vyrovnávání zatížení bude nutné přidružit k prostředkům v cílové oblasti.
+- Externí nástroje pro vyrovnávání zatížení Azure se nedají přesouvat mezi oblastmi. Nový nástroj pro vyrovnávání zatížení bude nutné přidružit k prostředkům v cílové oblasti.
 
-- Pokud chcete exportovat konfiguraci externího nástroje pro vyrovnávání zatížení a nasadit šablonu pro vytvoření externího nástroje pro vyrovnávání zatížení v jiné oblasti, budete potřebovat roli Přispěvatel sítě nebo vyšší.
+- Pokud chcete exportovat konfiguraci externího nástroje pro vyrovnávání zatížení a nasadit šablonu pro vytvoření externího nástroje pro vyrovnávání zatížení v jiné oblasti, bude nutné přiřadit roli Přispěvatel sítě nebo vyšší.
 
 - Identifikujte rozložení zdrojové sítě a všechny prostředky, které aktuálně používáte. Toto rozložení zahrnuje, ale není omezené na nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě, veřejné IP adresy a virtuální sítě.
 
-- Ověřte, že vaše předplatné Azure umožňuje vytvářet externí nástroje pro vyrovnávání zatížení v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
+- Ověřte, že vaše předplatné Azure umožňuje vytvářet externí služby Vyrovnávání zatížení v cílové oblasti. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení pro tento proces.  Viz [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
-
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení. Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
-Následující kroky ukazují, jak připravit externí nástroj pro vyrovnávání zatížení pro přesun pomocí šablony Správce prostředků a přesunout konfiguraci externího nástroje pro vyrovnávání zatížení do cílové oblasti pomocí Azure Portal.  V rámci tohoto procesu musí být před přesunutím externího nástroje pro vyrovnávání zatížení zahrnutá konfigurace veřejné IP adresy externího nástroje pro vyrovnávání zatížení a musí se nejdřív udělat.
-
+Následující postupy ukazují, jak připravit externí nástroj pro vyrovnávání zatížení pro přesun pomocí šablony Správce prostředků a přesunout konfiguraci externího nástroje pro vyrovnávání zatížení do cílové oblasti pomocí Azure Portal. Nejdřív musíte Exportovat konfiguraci veřejné IP adresy externího nástroje pro vyrovnávání zatížení.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-public-ip-template-and-deploy-from-the-portal"></a>Exportujte šablonu veřejné IP adresy a nasaďte ji z portálu.
+### <a name="export-the-public-ip-template-and-deploy-the-public-ip-from-the-portal"></a>Exportujte šablonu veřejné IP adresy a nasaďte veřejnou IP adresu z portálu.
 
-1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
-2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a klikněte na ni.
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
-4. V okně **Exportovat šablonu** vyberte **nasadit** .
-5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
-8. Pokud chcete upravit parametr názvu veřejné IP adresy, změňte vlastnost v části **parametry** > **hodnota** ze zdrojového názvu veřejné IP adresy na název cílové veřejné IP adresy, ujistěte se, že je název v uvozovkách:
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a vyberte ji.
+3. Vyberte **Nastavení** > **Exportovat šablonu**.
+4. V části **Exportovat šablonu**vyberte **nasadit** .
+5. Vyberte **šablonu** > **Upravit parametry** a otevřete soubor Parameters. JSON v online editoru.
+8. Chcete-li upravit parametr názvu veřejné IP adresy, změňte **hodnotu vlastnosti Value** z **názvu** veřejné IP adresy zdroje na název vaší cílové veřejné IP adresy. Název uzavřete do uvozovek.
 
     ```json
             {
@@ -63,11 +61,11 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-    V Editoru klikněte na **Uložit** .
+    V editoru vyberte **Save (Uložit** ).
 
-9.  Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
+9.  Vyberte **šablonu** > **Upravit šablonu** a otevřete soubor Template. JSON v online editoru.
 
-10. Chcete-li upravit cílovou oblast, kam bude přesunuta veřejná IP adresa, změňte vlastnost **umístění** v části **prostředky**:
+10. Chcete-li upravit cílovou oblast, do které bude přesunuta veřejná IP adresa, změňte vlastnost **umístění** v části **prostředky**:
 
     ```json
             "resources": [
@@ -92,12 +90,12 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                }
              ]
     ```
+  
+    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti bez mezer. Například kód pro Střed USA je **centralus**.
+    
+12. V závislosti na vašich požadavcích můžete také změnit další parametry v šabloně, pokud chcete nebo potřebujete:
 
-11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
-
-12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
-
-    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou vlastnosti**název** **SKU** > v souboru **template. JSON** :
+    * **SKU**. SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo z úrovně Basic na standard, a to změnou vlastnosti **Name** v rámci **SKU** v souboru template. JSON:
 
         ```json
           "resources": [
@@ -112,9 +110,9 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
             },
         ```
 
-        Další informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address):
+        Informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
-    * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou.** . Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
+    * **Metoda přidělení veřejné IP adresy** a **časový limit nečinnosti**. Metodu přidělení veřejné IP adresy můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo ze **statické** na **dynamickou**. Časový limit nečinnosti můžete změnit tak, že změníte vlastnost **idleTimeoutInMinutes** na požadovanou hodnotu. Výchozí hodnota je **4**.
 
         ```json
           "resources": [
@@ -138,33 +136,34 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
         ```
 
-        Další informace o metodách přidělování a hodnotách časového limitu nečinnosti najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Informace o metodách přidělování a hodnotách časového limitu nečinnosti najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
+ 
+13. V online editoru vyberte **Uložit** .
 
-13. V online Editoru klikněte na **Uložit** .
+14. Vyberte předplatná **základní** > **a vyberte předplatné,** ve kterém se bude nasazovat cílová veřejná IP adresa.
 
-14. Klikněte na **základy** > **předplatné** a vyberte předplatné, ve kterém se nasadí cílová veřejná IP adresa.
+15. Vyberte možnost**Skupina prostředků** **základy** > a zvolte skupinu prostředků, do které bude nasazena cílová veřejná IP adresa. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
 
-15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, do které se bude nasadit cílová veřejná IP adresa.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
+16. Ověřte, zda je umístění **základních** > **umístění** nastaveno na cílové umístění, kam chcete nasadit veřejnou IP adresu.
 
-16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, ve kterém chcete nasadit veřejnou IP adresu.
+17. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů.
 
-17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.
+18. Zaškrtněte políčko **podmínky a ujednání** .
 
-18. Zaškrtněte políčko v části **podmínky a ujednání**.
+19. Vyberte **koupit** pro nasazení cílové veřejné IP adresy.
 
-19. Kliknutím na tlačítko **koupit** nasadíte cílovou veřejnou IP adresu.
-20. Pokud máte jinou veřejnou IP adresu, která se používá pro odchozí překlad adres (NAT) pro přemístění nástroje pro vyrovnávání zatížení, opakujte výše uvedené kroky a exportujte a nasaďte druhou odchozí veřejnou IP adresu do cílové oblasti.
+20. Pokud máte jinou veřejnou IP adresu, která se používá pro odchozí překlad adres (NAT) pro přemístění nástroje pro vyrovnávání zatížení, opakujte předchozí kroky pro export a nasazení druhé odchozí veřejné IP adresy do cílové oblasti.
 
-### <a name="export-the-external-load-balancer-template-and-deploy-from-the-azure-portal"></a>Exportujte šablonu externího nástroje pro vyrovnávání zatížení a nasaďte ji z Azure Portal
+### <a name="export-the-external-load-balancer-template-and-deploy-the-load-balancer-from-the-azure-portal"></a>Exportujte šablonu externího nástroje pro vyrovnávání zatížení a nasaďte Nástroj pro vyrovnávání zatížení z Azure Portal
 
-1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
-2. Vyhledejte skupinu prostředků, která obsahuje zdrojový externí nástroj pro vyrovnávání zatížení, a klikněte na ni.
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
-4. V okně **Exportovat šablonu** vyberte **nasadit** .
-5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+2. Vyhledejte skupinu prostředků, která obsahuje zdrojový externí nástroj pro vyrovnávání zatížení, a vyberte ji.
+3. Vyberte **Nastavení** > **Exportovat šablonu**.
+4. V části **Exportovat šablonu**vyberte **nasadit** .
+5. Vyberte **šablonu** > **Upravit parametry** a otevřete soubor Parameters. JSON v online editoru.
 
-5. Chcete-li upravit parametr názvu externí služby Vyrovnávání zatížení, změňte **hodnotu** vlastnosti zdrojového externího nástroje pro vyrovnávání zatížení na název vašeho cílového externího nástroje pro vyrovnávání zatížení, ujistěte se, že je název v uvozovkách:
+5. Chcete-li upravit parametr názvu externí služby Vyrovnávání zatížení, změňte vlastnost **Value** zdrojového externího nástroje pro vyrovnávání zatížení na název vašeho cílového externího nástroje pro vyrovnávání zatížení. Název uzavřete do uvozovek.
 
     ```json
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -179,13 +178,13 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **Parameters. JSON** . Získání ID:
+6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, kterou jste přesunuli v předchozích krocích, musíte nejdřív získat ID prostředku a pak ho vložit do souboru Parameters. JSON. Získání ID:
 
-    1. Přihlaste se k [Azure Portal](https://portal.azure.com) > **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
-    2. Vyhledejte cílovou skupinu prostředků, která obsahuje přesunutou veřejnou IP adresu z výše uvedeného postupu, a klikněte na ni.
-    3. Vyberte >**vlastnosti** **Nastavení** > .
-    4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky.  Případně můžete kliknout na tlačítko **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
-    5. Vložte ID prostředku do vlastnosti **hodnota** v editoru **úprav parametrů** otevřeném v jiném okně nebo na kartě prohlížeče:
+    1. Na jiné kartě nebo okně prohlížeče se přihlaste k [Azure Portal](https://portal.azure.com) a vyberte **skupiny prostředků**.
+    2. Vyhledejte cílovou skupinu prostředků, která obsahuje veřejnou IP adresu, kterou jste přesunuli v předchozích krocích. Vyberte ji.
+    3. Vyberte **Nastavení** > **vlastnosti**.
+    4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky. Alternativně můžete vybrat možnost **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
+    5. Vložte ID prostředku do vlastnosti **hodnota** v editoru **úprav parametrů** , který je otevřený v jiném okně prohlížeče nebo na kartě:
 
         ```json
            ```json
@@ -200,10 +199,10 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         },
 
         ```
-    6. V online Editoru klikněte na **Uložit** .
+    6. V online editoru vyberte **Uložit** .
 
 
-7.  Pokud jste nakonfigurovali odchozí NAT a odchozí pravidla pro nástroj pro vyrovnávání zatížení, v tomto souboru se objeví třetí položka pro externí ID odchozí veřejné IP adresy.  Opakujte výše uvedené kroky v **cílové oblasti** , abyste získali ID odchozí veřejné IP adresy a vložili tuto položku do souboru **Parameters. JSON** :
+7.  Pokud jste nakonfigurovali odchozí NAT a odchozí pravidla pro nástroj pro vyrovnávání zatížení, zobrazí se v tomto souboru třetí položka pro externí ID odchozí veřejné IP adresy. Opakujte předchozí kroky v **cílové oblasti** , abyste získali ID odchozí veřejné IP adresy. Vložte toto ID do souboru Parameters. JSON:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -224,8 +223,8 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         },
     ```
 
-8.  Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
-9.  Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace externího nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru **template. JSON** :
+8.  Vyberte **šablonu** > **Upravit šablonu** a otevřete soubor Template. JSON v online editoru.
+9.  Chcete-li upravit cílovou oblast, do které bude přesunuta konfigurace externího nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru template. JSON:
 
     ```json
         "resources": [
@@ -240,11 +239,11 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                 },
     ```
 
-10. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+10. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti bez mezer. Například kód pro Střed USA je **centralus**.
 
-11. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
+11. V závislosti na vašich požadavcích můžete také změnit další parametry v šabloně, pokud chcete nebo potřebujete:
 
-    * **SKU** -SKU externí služby Load Balancer můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na úroveň Standard, a to změnou vlastnosti**název** **SKU** > v souboru **template. JSON** :
+    * **SKU**. SKU externího nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo z úrovně Basic na standard, a to změnou vlastnosti **Name** v rámci **SKU** v souboru template. JSON:
 
         ```json
         "resources": [
@@ -258,9 +257,9 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                 "tier": "Regional"
             },
         ```
-      Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
+      Informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
-    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do oddílu **loadBalancingRules** souboru **template. JSON** :
+    * **Pravidla vyrovnávání zatížení**. Můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek v části **loadBalancingRules** souboru template. JSON:
 
         ```json
         "loadBalancingRules": [
@@ -290,9 +289,9 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                     }
                 ]
         ```
-       Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+       Informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 
-    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat test tak, že do části **sondy** v souboru **template. JSON** přidáte nebo odeberete položky.
+    * **Sondy**. Můžete přidat nebo odebrat sondu pro nástroj pro vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek v části **sondy** souboru template. JSON:
 
         ```json
         "probes": [
@@ -310,9 +309,9 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                     }
                 ],
         ```
-       Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) .
+       Další informace najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-    * **Pravidla příchozího překladu adres (NAT)** – můžete přidat nebo odebrat příchozí pravidla NAT pro nástroj pro vyrovnávání zatížení přidáním nebo odebráním položek do oddílu **inboundNatRules** souboru **template. JSON** :
+    * **Příchozí pravidla NAT**. Můžete přidat nebo odebrat příchozí pravidla překladu adres (NAT) pro nástroj pro vyrovnávání zatížení přidáním nebo odebráním položek v části **inboundNatRules** souboru template. JSON:
 
         ```json
         "inboundNatRules": [
@@ -334,7 +333,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                     }
                 ]
         ```
-        Aby bylo možné dokončit přidání nebo odebrání pravidla příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru **template. JSON** :
+        Aby bylo možné dokončit přidání nebo odebrání pravidla příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru template. JSON:
 
         ```json
         {
@@ -358,9 +357,9 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
             }
         }
         ```
-        Další informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        Informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 
-    * **Odchozí pravidla** – v konfiguraci můžete přidat nebo odebrat odchozí pravidla úpravou vlastnosti **outboundRules** v souboru **template. JSON** :
+    * **Odchozí pravidla**. Můžete přidat nebo odebrat odchozí pravidla v konfiguraci úpravou vlastnosti **outboundRules** v souboru template. JSON:
 
         ```json
         "outboundRules": [
@@ -386,33 +385,33 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                 ]
         ```
 
-         Další informace o odchozích pravidlech najdete v tématu [Load Balancer odchozích pravidel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) .
+         Další informace najdete v tématu [Load Balancer odchozích pravidel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).
 
-12. V online Editoru klikněte na **Uložit** .
+12. V online editoru vyberte **Uložit** .
 
-13. Kliknutím na položku **základní** > **předplatné** zvolíte předplatné, kde bude nasazen cílový externí nástroj pro vyrovnávání zatížení.
+13. Vyberte předplatná **základní** > **a zvolte předplatné,** ve kterém bude nasazený cílový externí nástroj pro vyrovnávání zatížení.
 
-15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, ve které bude nasazený cílový Nástroj pro vyrovnávání zatížení.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení nebo vybrat existující skupinu prostředků, která byla vytvořena výše pro veřejnou IP adresu.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
+15. Vyberte možnost**Skupina prostředků** **základy** > a zvolte skupinu prostředků, do které bude nasazený cílový Nástroj pro vyrovnávání zatížení. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení. Nebo můžete vybrat existující skupinu prostředků, kterou jste vytvořili dříve pro veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
 
-16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
+16. Ověřte, zda je umístění **základních** > **umístění** nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
 
-17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.  Ověřte, že ID prostředků se naplní pro všechny veřejné IP adresy v konfiguraci.
+17. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů. Ověřte, jestli se v konfiguraci naplní ID prostředků pro všechny veřejné IP adresy.
 
-18. Zaškrtněte políčko v části **podmínky a ujednání**.
+18. Zaškrtněte políčko **podmínky a ujednání** .
 
-19. Kliknutím na tlačítko **koupit** nasadíte cílovou veřejnou IP adresu.
+19. Vyberte **koupit** pro nasazení cílové veřejné IP adresy.
 
 ## <a name="discard"></a>Zahodit
 
-Pokud chcete zrušit cílovou veřejnou IP adresu a externí nástroj pro vyrovnávání zatížení, odstraňte skupinu prostředků, která obsahuje cílovou veřejnou IP adresu a externí nástroj pro vyrovnávání zatížení.  Provedete to tak, že vyberete skupinu prostředků z řídicího panelu na portálu a v horní části stránky přehled vyberete **Odstranit** .
+Pokud chcete zrušit cílovou veřejnou IP adresu a externí nástroj pro vyrovnávání zatížení, odstraňte skupinu prostředků, která je obsahuje. Provedete to tak, že na portálu vyberete skupinu prostředků z řídicího panelu a v horní části stránky přehled vyberete **Odstranit** .
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud chcete potvrdit změny a dokončit přesun veřejné IP adresy a externího nástroje pro vyrovnávání zatížení, odstraňte zdrojovou veřejnou IP adresu a externí nástroj pro vyrovnávání zatížení nebo skupinu prostředků. Provedete to tak, že na portálu vyberete možnost Veřejná IP adresa a externí nástroj pro vyrovnávání zatížení nebo skupinu prostředků z řídicího panelu a v horní části každé stránky vyberete **Odstranit** .
+Pokud chcete potvrdit změny a dokončit přesun veřejné IP adresy a externího nástroje pro vyrovnávání zatížení, odstraňte zdrojovou veřejnou IP adresu a externí nástroj pro vyrovnávání zatížení nebo skupinu prostředků. Provedete to tak, že vyberete tuto skupinu prostředků z řídicího panelu na portálu a pak v horní části každé stránky vyberete **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přesunuli externí nástroj pro vyrovnávání zatížení Azure z jedné oblasti na jiný a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
+V tomto kurzu jste přesunuli externí nástroj pro vyrovnávání zatížení Azure z jedné oblasti na jiný a vyčistili zdrojové prostředky. Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
 - [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

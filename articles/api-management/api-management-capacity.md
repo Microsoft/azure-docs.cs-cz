@@ -1,6 +1,6 @@
 ---
-title: Kapacita instance Azure API managementu | Dokumentace Microsoftu
-description: Tento článek vysvětluje, co je metriku kapacity a jak se informovaně rozhodnout, jestli se má změnit velikost instance Azure API Management.
+title: Kapacita instance služby Azure API Management | Microsoft Docs
+description: V tomto článku se dozvíte, co je metrika kapacity a jak dělat informovaná rozhodnutí o tom, jestli se má škálovat instance služby Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,94 +11,99 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836953"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299450"
 ---
-# <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance Azure API Management
+# <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance služby Azure API Management
 
-**Kapacita** je nejdůležitější [metrik Azure monitoru](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) umožňující informovaná rozhodnutí, jestli se má škálování instance služby API Management tak, aby vyhovovaly větší zatížení. Konstrukce je složité a ukládá určité chování.
+**Kapacita** je nejdůležitější [Azure monitor metrika](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) pro rozhodování o tom, jestli se má škálovat API Management instance, aby se vešlo více zátěže. Jeho konstrukce je složitá a ukládá určité chování.
 
-Tento článek vysvětluje, co **kapacity** je a jak se chová. Ukazuje, jak přistupovat k **kapacity** metrik na webu Azure Portal a navrhne, při které byste měli zvážit vertikální nebo upgradu vaší instance služby API Management.
+Tento článek vysvětluje, co je **kapacita** a jak se chová. Ukazuje, jak získat přístup k metrikám **kapacity** v Azure Portal a navrhuje, kdy zvažte škálování nebo upgrade instance API Management.
+
+> [!IMPORTANT]
+> Tento článek popisuje, jak můžete na základě metriky kapacity monitorovat a škálovat svou instanci Azure API Management. Je ale stejně důležité pochopit, co se stane, když konkrétní instance API Management skutečně *dosáhla* své kapacity. Azure API Management nepoužije žádné omezování na úrovni služby, aby se zabránilo fyzickému přetížení instancí. Když instance dosáhne své fyzické kapacity, bude se chovat podobně jako jakýkoli přetížený webový server, který nedokáže zpracovat příchozí požadavky: latence se zvýší, připojení se zahozena a dojde k chybám časového limitu atd. To znamená, že klienti rozhraní API by měli být připravení pracovat s touto možností podobně jako u jakékoli jiné externí služby (např. použitím zásad opakování).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupujte podle kroků v tomto článku, budete potřebovat:
+Chcete-li postupovat podle kroků v tomto článku, musíte mít:
 
 + Aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Instanci služby APIM. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
++ Instance APIM Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="what-is-capacity"></a>Co je to kapacita
+## <a name="what-is-capacity"></a>Co je kapacita
 
 ![Metrika kapacity](./media/api-management-capacity/capacity-ingredients.png)
 
-**Kapacita** je indikátor zatížení na instanci služby API Management. Odráží využití prostředků (procesor, paměť) a délky front sítě. Využití procesoru a paměti odhalí spotřeba prostředků:
+**Kapacita** je indikátorem zatížení instance API Management. Odráží využití prostředků (CPU, paměť) a délky fronty sítě. Využití CPU a paměti odhalí spotřebu prostředků pomocí:
 
-+ Služby API Management, jako je akce nebo abychom si vyžádali správu zpracování, který může obsahovat předává požadavky nebo spuštění zásady
-+ Vybrat procesy operačního systému, včetně procesů, které zahrnují náklady na počet metod handshake SSL u nového připojení.
++ API Management služby datové roviny, jako je například zpracování požadavků, které můžou zahrnovat předávací požadavky nebo spustit zásadu.
++ API Management služby roviny správy, jako jsou akce správy použité prostřednictvím webu Azure Portal nebo ARM, nebo načtení z [portálu pro vývojáře](api-management-howto-developer-portal.md).
++ vybrané procesy operačního systému včetně procesů, které zahrnují náklady na ověřování SSL v nových připojeních.
 
-Celkový počet **kapacity** hodnota průměrem těchto vlastních hodnot z každé jednotky instance služby API Management.
+Celková **kapacita** je průměrem vlastních hodnot z každé jednotky instance API Management.
 
-I když **metriku kapacity** je navržen pro surface problémy s vaší instancí služby API Management, existují případy, když problémy se neprojeví v změny v **metriku kapacity**.
+I když je **metrika kapacity** navržená tak, aby surfoval problémy s instancí API Management, existují případy, kdy se problémy neprojeví ve změnách **metriky kapacity**.
 
-## <a name="capacity-metric-behavior"></a>Kapacitní metriky chování
+## <a name="capacity-metric-behavior"></a>Chování metriky kapacity
 
-Z důvodu jeho vytváření v reálném životě **kapacity** mohou ovlivňovat mnoho proměnných, například:
+Z důvodu jeho konstrukce může být v reálné **kapacitě** ovlivněno mnoha proměnnými, například:
 
-+ modely připojení (nové připojení na žádost o vs opětovné použití existujícího připojení)
-+ velikost požadavku a odpovědi
-+ zásady nakonfigurované na každé rozhraní API nebo v některých klientech odesílání požadavků.
++ vzorce připojení (nové připojení k žádosti a opětovné použití existujícího připojení)
++ velikost žádosti a odpovědi
++ zásady nakonfigurované pro každé rozhraní API nebo počet klientů, kteří odesílají požadavky.
 
-Složitějších operací na požadavky jsou, tím vyšší **kapacity** za spotřebu. Například zásady komplexní transformace využívat mnohem více procesorů než jednoduchý požadavek přesměrování. Pomalá back-end služba odpovědi zvýší jeho příliš.
+Složitější operace s požadavky jsou, čím vyšší bude spotřeba **kapacity** . Komplexní zásady transformace například využívají mnohem více PROCESORů než jednoduché předávání požadavků. Pomalé odpovědi služby back-endu se zvýší.
 
 > [!IMPORTANT]
-> **Kapacita** není s přímým přístupem měřítko počet zpracovávaných požadavků.
+> **Kapacita** není přímá míra počtu zpracovávaných požadavků.
 
-![Kapacitní metriky špičky](./media/api-management-capacity/capacity-spikes.png)
+![Špičky metrik kapacity](./media/api-management-capacity/capacity-spikes.png)
 
-**Kapacita** můžete také vystoupat přerušovaně nebo být větší než nula, i v případě, že neexistují žádné požadavky na zpracování. Dochází z důvodu akcí systému nebo platformu a by se neměl brát v úvahu při rozhodování, jestli se má změnit velikost instance.
+**Kapacita** může být také přerušovaná nebo je větší než nula, i když nejsou zpracovávány žádné požadavky. Důvodem je, že se jedná o akce specifické pro systém nebo platformu a nemělo by se vzít v úvahu při rozhodování, zda chcete škálovat instanci.
 
-Nízká **metriku kapacity** nemusí nutně znamenat, že vaše instance služby API Management nedochází k problémům.
+**Metrika s nízkou kapacitou** nemusí nutně znamenat, že vaše instance API Management nemá žádné problémy.
   
-## <a name="use-the-azure-portal-to-examine-capacity"></a>Zkontrolujte kapacitu pomocí webu Azure Portal
+## <a name="use-the-azure-portal-to-examine-capacity"></a>Použití webu Azure Portal k prohlédnutí kapacity
   
 ![Metrika kapacity](./media/api-management-capacity/capacity-metric.png)  
 
-1. Přejděte k vaší instanci APIM v [webu Azure portal](https://portal.azure.com/).
-2. Vyberte **metriky (preview)** .
-3. Z části fialové vyberte **kapacity** metriky z dostupných metrik a nechte výchozí **Avg** agregace.
+1. V [Azure Portal](https://portal.azure.com/)přejděte na svou instanci APIM.
+2. Vyberte **Metriky**.
+3. V části fialová vyberte metrika **kapacity** z dostupných metrik a nechte výchozí průměrnou agregaci.
 
     > [!TIP]
-    > Vždy byste se podívat na **kapacity** metriky rozpis na umístění, aby se zabránilo chybě interpretace.
+    > Vždy byste se měli podívat na rozpis metrik **kapacity** na umístění, abyste se vyhnuli špatným interpretům.
 
-4. Vyberte z části zelené **umístění** pro rozdělení metriku podle dimenzí.
-5. Můžete si vyberte požadovaný časový rámec z panelu horní části.
+4. V zelené části vyberte **umístění** pro rozdělení metriky podle dimenze.
+5. Z horního panelu oddílu vyberte požadovaný časový rámec.
 
-    Můžete nastavit upozornění na metriku dali vám vědět, kdy se děje něco neočekávaného. Třeba získáte oznámení při vaší instanci APIM má překročení kapacity jeho očekávané maximální vytížení po dobu více než 20 minut.
+    Můžete nastavit výstrahu metriky, abyste měli jistotu, že se děje něco neočekávaného. Můžete například dostávat oznámení, když vaše instance APIM překročila očekávanou kapacitu špičky na více než 20 minut.
 
     >[!TIP]
-    > Můžete nakonfigurovat výstrahy, které vám umožní vědět, že vaše služba není dostatek kapacity, nebo pomocí funkce automatického škálování Azure Monitor automaticky přidat jednotku Azure API Management. Škálování operace může trvat přibližně 30 minut, takže byste měli odpovídajícím způsobem naplánovat pravidla.  
-    > Je povolen pouze škálování hlavního umístění.
+    > Můžete nakonfigurovat výstrahy, které vám pomůžou zjistit, kdy vaše služba má nedostatečnou kapacitu, nebo použít funkci Azure Monitor automatického škálování, která automaticky přidá jednotku Azure API Management. Operace škálování může trvat přibližně 30 minut, takže pravidla byste měli naplánovat odpovídajícím způsobem.  
+    > Je povoleno pouze škálování hlavního umístění.
 
-## <a name="use-capacity-for-scaling-decisions"></a>Použitá kapacita pro rozhodnutí o škálování
+## <a name="use-capacity-for-scaling-decisions"></a>Využijte kapacitu pro rozhodování o škálování
 
-**Kapacita** je metrika pro rozhodování, jestli se má škálování instance služby API Management tak, aby vyhovovaly větší zatížení. Vezměte v úvahu:
+**Kapacita** je metrika pro rozhodování o tom, jestli se má škálovat instance API Management, aby se vešlo více zátěže. Vezměte v úvahu:
 
-+ Prohlížení dlouhodobé trendů a průměr.
-+ Ignorování nečekaným špičkám, které budou pravděpodobně nesouvisí žádné nárůst zatížení (viz oddíl "Chování metrik kapacity" vysvětlení).
-+ Upgrade nebo změna velikosti instance, když **kapacity**hodnota překročí 60 % nebo 70 % po dobu delší čas (například 30 minut). Jiné hodnoty může fungují lépe, služby nebo scénáři.
++ Podívejte se na dlouhodobý trend a průměr.
++ Ignorují se náhlé špičky, které s největší pravděpodobně nesouvisejí se zvýšením zátěže (vysvětlení najdete v části "chování metriky kapacity").
++ Upgrade nebo škálování instance, pokud hodnota **kapacity**přesáhne 60% nebo 70% po delší dobu (například 30 minut). Pro vaši službu nebo scénář můžou fungovat lepší i jiné hodnoty.
 
 >[!TIP]  
-> Pokud budete moct předem odhadnout provozu, otestujte vaší instanci APIM na úlohy, které jste očekávali. Můžete zvýšit zatížení ve svém tenantovi postupně a sledovat, jaká hodnota metriky kapacity odpovídá zatížení ve špičce. Postupujte podle kroků v předchozí části, chcete-li pochopit, jakou kapacitu se používá v daném okamžiku pomocí webu Azure portal.
+> Pokud máte v úmyslu odhadnout svůj provoz předem, otestujte instanci APIM na úlohách, které očekáváte. Zatížení žádosti v tenantovi můžete postupně zvyšovat a monitorovat, jakou hodnotu metriky kapacity odpovídají zatížení vaší špičky. Postupujte podle kroků v předchozí části a použijte Azure Portal k pochopení, kolik kapacity se v daném okamžiku používá.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Jak škálovat nebo upgradujte instanci služby Azure API Management](upgrade-and-scale.md)
+[Jak škálovat nebo upgradovat instanci služby Azure API Management](upgrade-and-scale.md)

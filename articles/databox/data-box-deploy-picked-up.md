@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898177"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172673"
 ---
 ::: zone target="docs"
 
@@ -93,6 +93,26 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
     Místo naplánování vyzvednutí můžete také Data Box dovézt na nejbližší sběrné místo.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
+ 
+Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+
+
+::: zone-end
+
 
 ## <a name="in-australiatabin-australia"></a>[V Austrálii](#tab/in-australia)
 
@@ -126,6 +146,24 @@ V případě dotazů souvisejících s vaší objednávkou přes telefon:
 - Nejprve odešlete e-mail s žádostí o vyzvednutí.
 - Přes telefon uveďte název vaší objednávky.
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
+ 
+Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
 ## <a name="in-japantabin-japan"></a>[V Japonsku](#tab/in-japan) 
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
@@ -156,69 +194,23 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 - E-mailem：Customerservice.JP@quantiumsolutions.com 
 - Telefonicky: 03-5755-0150 
 
-::: zone target="docs"
-
-## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
-
-Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato**. Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace.
-
-Po dokončení ověřování se Data Box připojí k síti v datacentru Azure. Automaticky se spustí kopírování dat. V závislosti na velikosti dat může operace kopírování trvat několik hodin až dní. Průběh kopírování můžete sledovat na portálu.
-
-Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
-
-Než odstraníte data ze zdroje, ujistěte se, že se nahrála do Azure. Vaše data můžou být v následujících umístěních:
-
-- Vaše účty Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
-
-  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
-
-- Vaše skupiny prostředků spravovaných disků. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky se připojí ke skupinám prostředků zadaným při vytváření objednávky. 
-
-    - Pokud vaše kopírování na spravované disky v Azure proběhne úspěšně, můžete na webu Azure Portal přejít na **Podrobnosti objednávky** a poznamenat si skupiny prostředků zadané pro spravované disky.
-
-        ![Identifikace skupin prostředků spravovaných disků](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
-
-        Přejděte do skupiny prostředků, kterou jste si poznamenali, a vyhledejte své spravované disky.
-
-        ![Spravovaný disk připojený ke skupinám prostředků](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
-
-    - Pokud kopírujete VHDX nebo dynamický nebo rozdílový virtuální pevný disk, VHDX/VHD se nahraje do přípravného účtu úložiště jako objekt blob stránky, ale převod virtuálního pevného disku na spravovaný disk selže. Přejděte do svého přípravného **účtu úložiště do části Objekty blob** a vyberte odpovídající kontejner – StandardSSD, Standard HDD nebo PremiumSSD. Virtuální pevné disky se nahrají do přípravného účtu úložiště jako objekty blob stránky.
-
-::: zone-end
-
 ::: zone target="chromeless"
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
 
-::: zone-end
-
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
  
 Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
+::: zone-end
+
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
-
-> [!div class="checklist"]
-> * Požadavky
-> * Příprava k odeslání
-> * Odeslání Data Boxu do Microsoftu
-> * Ověření nahrání dat do Azure
-> * Vymazání dat z Data Boxu
-
-V následujícím článku se dozvíte, jak spravovat Data Box přes místní webové uživatelské rozhraní.
-
-> [!div class="nextstepaction"]
-> [Správa Azure Data Boxu pomocí místního webového uživatelského rozhraní](./data-box-local-web-ui-admin.md)
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
+
 
 

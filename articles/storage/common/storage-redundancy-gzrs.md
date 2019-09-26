@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036336"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300652"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -29,7 +29,11 @@ GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2.
 
 GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících oblastech:
 
+- Evropa – sever
+- Evropa – západ
 - USA – východ
+- USA – východ 2
+- USA – střed
 
 Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Informace o podporovaných oblastech najdete na stránce  [aktualizace služby Azure](https://azure.microsoft.com/updates/).
 
@@ -97,7 +101,7 @@ Existují dvě možnosti migrace na GZRS nebo RA-GZRS z účtu LRS, GRS nebo RA-
 
 #### <a name="perform-a-manual-migration"></a>Provedení ruční migrace
 
-Pokud potřebujete migraci dokončit do určitého data, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za provozu. Při ruční migraci budete řídit časování.
+Pokud potřebujete migraci dokončit do určitého data, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za chodu. Při ruční migraci máte kontrolu nad načasováním.
 
 Pokud chcete ručně migrovat data z existujícího účtu na účet GZRS nebo RA-GZRS, použijte nástroj, který umožňuje efektivně kopírovat data. Možné příklady:
 
@@ -107,7 +111,7 @@ Pokud chcete ručně migrovat data z existujícího účtu na účet GZRS nebo R
 
 #### <a name="perform-a-live-migration"></a>Provedení migrace za provozu
 
-Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, nabízí Microsoft taky možnost migrace za provozu. Migrace za provozu je místní migrace bez výpadků.
+Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, Microsoft nabízí také možnost migrace za chodu. Migrace za chodu je místní migrace bez výpadku.
 
 Během migrace za provozu můžete použít svůj účet úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým účtem úložiště. Během procesu migrace za provozu váš účet stále splňuje podmínky smlouvy SLA pro zajištění odolnosti a dostupnosti. Nedochází k výpadkům nebo ztrátě dat způsobené migrací za provozu.
 

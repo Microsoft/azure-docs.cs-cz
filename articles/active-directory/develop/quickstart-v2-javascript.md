@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852912"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290820"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Rychlý start: Přihlášení uživatelů a získání přístupového tokenu z jednostránkové aplikace v JavaScriptu
 
@@ -96,7 +96,8 @@ Vyberte možnost, která je vhodná pro vaše vývojové prostředí:
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -169,7 +170,8 @@ Kód pro rychlý Start také ukazuje, jak inicializovat knihovnu MSAL:
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,8 +184,9 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Kde  |  |
 > |---------|---------|
-> |`ClientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
+> |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
 > |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common`. |
+> |`redirectURI`     | Registrační identifikátor URI pro odpověď nebo přesměrování aplikace byl nakonfigurován. V tomto případě `http://localhost:30662/`. |
 > |`cacheLocation`  | Volitelné Nastaví úložiště prohlížeče pro stav ověřování. Výchozí hodnota je sessionStorage.   |
 > |`storeAuthStateInCookie`  | Volitelné Knihovna, ve které je uložen stav žádosti o ověření, který je požadován pro ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro prohlížeče IE a Edge, aby se zmírnily určité [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 
@@ -264,7 +267,7 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
 > [!NOTE]
 > V `loginRedirect` tomto rychlém startu `acquireTokenRedirect` se používá metoda a v aplikaci Microsoft Internet Explorer, protože se jedná o [známý problém](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) související se zpracováním překryvných oken aplikací Internet Explorer.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podrobnější návod k sestavování aplikace pro tento rychlý Start najdete v těchto tématech:
 

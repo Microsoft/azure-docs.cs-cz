@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876766"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300709"
 ---
 # <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
@@ -153,6 +153,11 @@ Použijte tyto obecné pokyny pro odstraňování potíží s kódy chyb připoj
 
 **Opravit** Připojte všechny virtuální počítače, které jsou součástí fondu hostitelů, do řadiče domény.
 
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Chyba: ConnectionFailedUserSIDInformationMismatch
+**Způsobit** Identifikátor SID z tokenu Azure Active Directory uživatele (AD) se neshoduje s identifikátorem SID vráceným řadičem domény při pokusu o povolení uživatele pro vzdálené přihlášení. K této chybě obvykle dochází při pokusu o přihlášení k prostředí Azure Active Directory Domain Servicesu (Azure služba AD DS) s uživatelem původně vytvořeným z Windows Server AD.
+
+**Opravit** Tento scénář se v tuto chvíli nepodporuje. K virtuálním počítačům virtuálních počítačů s Windows připojeným k Azure služba AD DS se můžou přihlásit jenom uživatelé, kteří se nahlásili z Azure Active Directory.
+
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojuje, ale nic se nezobrazuje (bez kanálu).
 
 Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale uživatel nevidí žádné ikony v informačním kanálu webového zjišťování.
@@ -167,7 +172,7 @@ Potvrďte, že se uživatel přihlašuje se správnými přihlašovacími údaji
 
 Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).

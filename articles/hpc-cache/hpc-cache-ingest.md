@@ -4,26 +4,26 @@ description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180720"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299995"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Přesun dat do Azure Blob Storage pro Azure HPC cache (Preview)
+# <a name="move-data-to-azure-blob-storage"></a>Přesun dat do služby Azure Blob Storage
 
-Pokud váš pracovní postup zahrnuje přesun dat do úložiště objektů BLOB v Azure, ujistěte se, že používáte efektivní strategii pro kopírování dat prostřednictvím mezipaměti prostředí Azure HPC.
+Pokud váš pracovní postup zahrnuje přesun dat do služby Azure Blob Storage, ujistěte se, že používáte efektivní strategii. Data můžete buď předem načíst do nového kontejneru objektů blob, abyste je mohli definovat jako cíl úložiště, nebo přidat kontejner a potom zkopírovat data pomocí Azure HPC cache.
 
 Tento článek vysvětluje nejlepší způsoby přesunu dat do úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
 
 Pamatujte na tyto skutečnosti:
 
-* Mezipaměť prostředí Azure HPC používá pro uspořádání dat v úložišti objektů BLOB specializované formáty úložiště. To je důvod, proč cíl úložiště BLOB musí být buď nový prázdný kontejner, nebo kontejner objektů blob, který se dřív používal pro data mezipaměti Azure HPC. ([Avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) taky používá tento cloudový systém souborů.)
+* Mezipaměť prostředí Azure HPC používá pro uspořádání dat v úložišti objektů BLOB specializované formáty úložiště. To je důvod, proč cíl úložiště BLOB musí být buď nový prázdný kontejner, nebo kontejner objektů blob, který se dřív používal pro data mezipaměti Azure HPC. ([Avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) taky používá tento cloudový souborový systém.)
 
-* Kopírování dat prostřednictvím mezipaměti prostředí Azure HPC je nejvhodnější při použití více klientů a paralelních operací. Jednoduchý příkaz kopírování z jednoho klienta přesune data pomalu.
+* Kopírování dat prostřednictvím mezipaměti prostředí Azure HPC do cílového záložního úložiště je efektivnější, pokud používáte více klientů a paralelních operací. Jednoduchý příkaz kopírování z jednoho klienta přesune data pomalu.
 
 Nástroj založený na Pythonu je k dispozici pro načtení obsahu do kontejneru úložiště objektů BLOB. Další informace najdete [v tématu předběžné načtení dat v úložišti objektů BLOB](#pre-load-data-in-blob-storage-with-clfsload) .
 
@@ -41,7 +41,7 @@ Podrobné informace jsou součástí distribuce avere CLFSLoad, která je k disp
 
 Obecný přehled procesu:
 
-1. Připravte systém Linux (virtuální počítač nebo fyzický) pomocí Pythonu verze 3,6 nebo novější. (Pro lepší výkon doporučujeme Python 3,7.)
+1. Připravte systém Linux (virtuální počítač nebo fyzický) pomocí Pythonu verze 3,6 nebo novější. Pro lepší výkon doporučujeme Python 3,7.
 1. Nainstalujte software avere-CLFSLoad do systému Linux.
 1. Spusťte přenos z příkazového řádku systému Linux.
 
@@ -50,7 +50,7 @@ Nástroj avere CLFSLoad potřebuje následující informace:
 * ID účtu úložiště, které obsahuje kontejner úložiště objektů BLOB
 * Název prázdného kontejneru úložiště objektů BLOB
 * Token sdíleného přístupového podpisu (SAS), který umožňuje nástroji zapisovat do kontejneru
-* Místní cesta ke zdroji dat – buď místní adresář, který obsahuje data ke zkopírování, nebo místní cestu k připojenému vzdálenému systému s daty.
+* Místní cesta ke zdroji dat – buď místní adresář, který obsahuje data ke zkopírování, nebo místní cestu k připojenému vzdálenému systému s daty
 
 <!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 

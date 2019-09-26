@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063279"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291095"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
 
 1. V nabídce vyberte **CORS**.
 2. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
-3. U **povolených metod**vyberte obojí `GET` a `OPTIONS`.
+3. U **povolených metod**vyberte `GET`,`PUT`a `OPTIONS`.
 4. U **povolených hlaviček**zadejte hvězdičku (*).
 5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
 6. Do **maximálního stáří**zadejte 200.
@@ -155,7 +155,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 
     ![Webový prohlížeč zobrazující přihlašovací stránku pro registraci nebo přihlášení s vlastními prvky uživatelského rozhraní](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak:
 

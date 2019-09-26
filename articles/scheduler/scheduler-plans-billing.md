@@ -1,6 +1,6 @@
 ---
-title: Plány a fakturace – Azure Scheduleru
-description: Další informace o plány a fakturace Azure Scheduler
+title: Plány a fakturace – Azure Scheduler
+description: Další informace o plánech a fakturaci pro Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,78 +9,78 @@ ms.reviewer: klam
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 3a8664497d3d082ec1c7f584188854991e872d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720442"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300873"
 ---
-# <a name="plans-and-billing-for-azure-scheduler"></a>Plány a fakturace Azure Scheduler
+# <a name="plans-and-billing-for-azure-scheduler"></a>Plány a fakturace pro Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
 
-## <a name="job-collection-plans"></a>Plány úlohy shromažďování dat
+## <a name="job-collection-plans"></a>Plány kolekce úloh
 
-Kolekce úloh v Azure Scheduleru, obsahuje určitý počet úloh. Kolekce úloh je fakturovatelná entita a obsahuje v plánech Standard, P10 Premium a P20 Premium, které jsou popsány zde: 
+Kolekce úloh ve službě Azure Scheduler obsahuje určitý počet úloh. Kolekce úloh je fakturovatelná entita a je dostupná v plánech Standard, P10 Premium a P20 Premium, které jsou popsané tady: 
 
-| Plán kolekce úloh | Maximální počet úloh na kolekci | Maximální počet opakování | Maximální počet kolekcí úloh na předplatné | Limits | 
+| Plán kolekce úloh | Maximální počet úloh na kolekci | Maximální opakování | Maximální počet kolekcí úloh na předplatné | Omezení | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standard** | 50 úloh na kolekci | Jedna za minutu. Úlohy nelze spouštět častěji než jedna za minutu. | Každé předplatné Azure může mít až 100 kolekcí standardní úloh. | Přístup k Scheduleru úplná sada funkcí | 
-| **P10 Premium** | 50 úloh na kolekci | Jedna za minutu. Úlohy nelze spouštět častěji než jedna za minutu. | Každé předplatné Azure může mít až 10 000 kolekce úloh P10 Premium. Pro další kolekce <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k Scheduleru úplná sada funkcí |
-| **P20 Premium** | 1 000 úloh na kolekci | Jedna za minutu. Úlohy nelze spouštět častěji než jedna za minutu. | Každé předplatné Azure může mít až 5 000 kolekcí úloh P20 Premium. Pro další kolekce <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k Scheduleru úplná sada funkcí |
+| **Standard** | 50 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 100 standardních kolekcí úloh. | Přístup k úplné sadě funkcí Scheduleru | 
+| **P10 Premium** | 50 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 10 000 kolekcí úloh P10 Premium. Pokud máte další kolekce, <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k úplné sadě funkcí Scheduleru |
+| **P20 Premium** | 1000 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 5 000 kolekcí úloh P20 Premium. Pokud máte další kolekce, <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k úplné sadě funkcí Scheduleru |
 |||||| 
 
 ## <a name="pricing"></a>Ceny
 
-Podrobnosti o cenách najdete v tématu [cenách Scheduleru](https://azure.microsoft.com/pricing/details/scheduler/).
+Podrobnosti o cenách najdete v tématu [ceny Scheduleru](https://azure.microsoft.com/pricing/details/scheduler/).
 
 ## <a name="upgrade-or-downgrade-plans"></a>Upgradovat nebo downgradovat plány
 
-Kdykoli můžete upgradovat nebo downgradovat plán kolekce úloh v plánech Standard, P10 Premium a P20 Premium.
+Plán kolekce úloh můžete kdykoli upgradovat nebo downgradovat napříč plány Standard, P10 Premium a P20 Premium.
 
 ## <a name="active-status-and-billing"></a>Aktivní stav a fakturace
 
-Kolekce úloh jsou vždy aktivní, pokud předplatné Azure celý přejde do o dočasný stav Zakázáno z důvodu problémů s fakturací. A přestože všech úloh v kolekci úloh prostřednictvím jediné operace můžete zakázat, tato akce nezmění stav kolekce úloh fakturace, tak kolekce úloh je *stále* účtuje. Kolekce úloh prázdný jsou považovány za aktivní a služby.
+Kolekce úloh jsou vždycky aktivní, pokud celé předplatné Azure nepřejde do dočasného zakázaného stavu kvůli problémům s fakturací. A i když můžete zakázat všechny úlohy v kolekci úloh prostřednictvím jediné operace, tato akce nezmění stav fakturace kolekce úloh, takže se kolekce úloh *stále* účtuje. Prázdné kolekce úloh se považují za aktivní a účtují se.
 
-Pokud chcete mít jistotu, že kolekce úloh se neúčtuje, je nutné odstranit kolekci úloh.
+Aby se zajistilo, že se kolekce úloh účtuje, je nutné ji odstranit.
 
-## <a name="standard-billable-units"></a>Fakturovatelné jednotky na úrovni Standard
+## <a name="standard-billable-units"></a>Fakturovatelné jednotky úrovně Standard
 
-Standardní fakturovatelná jednotka může mít až 10 kolekcí standardní úloh. Protože kolekce standardní úloh může mít až 50 úloh na kolekci, jedna jednotka na úrovni standard fakturační umožňuje vašemu předplatnému Azure může mít až do 500 úloh nebo až 22 téměř *milionů* úlohy spuštění za měsíc. Tento seznam vysvětluje, jak bude se vám účtovat na základě různých čísel standardní úlohy kolekce:
+Standardní fakturovatelná jednotka může mít až 10 standardních kolekcí úloh. Vzhledem k tomu, že standardní kolekce úloh může mít až 50 úloh na jednu kolekci, jedna standardní fakturační jednotka umožňuje, aby vaše předplatné Azure mělo až 500 úlohy, nebo až skoro 22 *milionů* spuštění úloh měsíčně. Tento seznam vysvětluje, jak se účtují na základě různých čísel standardních kolekcí úloh:
 
-* Pokud budete mít mezi 1 a 10 standardní úlohy kolekce, bude se vám účtovat pro jeden fakturační jednotka na úrovni standard. 
+* Pokud máte mezi 1 a 10 standardními kolekcemi úloh, účtuje se vám jedna standardní fakturační jednotka. 
 
-* Pokud máte mezi 11 a kolekcí úloh 20 Standard vám budeme fakturovat dvě fakturační jednotky na úrovni standard. 
+* Pokud máte mezi 11 a 20 standardními kolekcemi úloh, účtuje se vám ze dvou standardních fakturačních jednotek. 
 
-* Pokud máte mezi 21 a kolekcí úloh 30 standardní, účtuje se za tři jednotky standardní fakturace a tak dále.
+* Pokud máte mezi 21 a 30 standardními kolekcemi úloh, účtuje se vám tři standardní fakturační jednotky atd.
 
-## <a name="p10-premium-billable-units"></a>Fakturovatelné jednotky na úrovni premium P10
+## <a name="p10-premium-billable-units"></a>Fakturovatelné jednotky P10 Premium
 
-Fakturovatelná jednotka P10 premium může mít až 10 000 kolekce úloh P10 Premium. Protože kolekce úloh P10 Premium může mít až 50 úloh na kolekci, jeden fakturační jednotka úrovně premium P10 umožní vašemu předplatnému Azure může mít až 500 000 úloh, nebo až 22 téměř *miliard* úlohy spuštění za měsíc. 
+Fakturovatelná jednotka P10 Premium může mít až 10 000 kolekcí úloh P10 Premium. Vzhledem k tomu, že kolekce úloh P10 Premium může mít až 50 úloh na jednu kolekci, pak jedna fakturační jednotka P10 Premium umožní vašemu předplatnému Azure až 500 000 úlohy nebo až o 22 *miliard* provádění úloh za měsíc. 
 
-Kolekce úloh P10 Premium poskytují stejné funkce jako standardní úlohy kolekce, ale nabízejí zalomení ceny pro aplikace, které vyžadují mnoho kolekcí úloh a poskytují další škálovatelnost. Tento seznam vysvětluje, jak bude se vám účtovat na základě různých čísel kolekce úloh P10 Premium:
+Kolekce úloh P10 Premium poskytují stejné možnosti jako standardní kolekce úloh, ale nabízejí cenové přerušení pro aplikace, které vyžadují mnoho kolekcí úloh a poskytují větší škálovatelnost. Tento seznam vysvětluje, jak se fakturuje na základě různých počtů kolekcí úloh P10 Premium:
 
-* Pokud budete mít mezi 1 a 10 000 kolekce úloh P10 Premium, bude se vám účtovat za jednu jednotku fakturační P10 premium. 
+* Pokud máte mezi 1 a 10 000 P10mi kolekcemi úloh Premium, bude se vám účtovat jedna fakturační jednotka služby P10 Premium. 
 
-* Pokud máte mezi kolekce úloh P10 Premium 10,001 a 20 000, účtuje se za 2 jednotky fakturační úrovně premium P10 a tak dále.
+* Pokud máte 10 001 a 20 000 P10ch úloh Premium, budou se vám účtovat 2 fakturační jednotky P10 Premium atd.
 
-## <a name="p20-premium-billable-units"></a>Fakturovatelné jednotky na úrovni premium p20
+## <a name="p20-premium-billable-units"></a>Fakturovatelné jednotky P20 Premium
 
-Fakturovatelná jednotka P20 premium může mít až 5 000 kolekcí úloh P20 Premium. Protože kolekce úloh P20 Premium může mít až 1 000 úloh na kolekci úloh, jeden fakturační jednotka úrovně premium P20 umožní vašemu předplatnému Azure může mít až 5 000 000 úloh, nebo až téměř 220 *miliard* úlohy spuštění za měsíc.
+Fakturovatelná jednotka P20 Premium může mít až 5 000 kolekcí úloh P20 Premium. Vzhledem k tomu, že kolekce úloh P20 Premium může mít až 1 000 úloh na jednu kolekci úloh, pak jedna fakturační jednotka P20 Premium umožňuje, aby vaše předplatné Azure mělo až 5 000 000 úlohy, nebo až téměř 220 *miliard* úloh za měsíc.
 
-Kolekce úloh p20 Premium poskytují stejné funkce jako kolekce úloh P10 Premium, ale také kvůli podpoře větší počet úloh na kolekci a větší celkový počet úloh celkové od úrovně Premium P10, poskytuje další škálovatelnost.
+Kolekce úloh P20 Premium poskytují stejné možnosti jako kolekce úloh P10 Premium, ale také podporují větší počet úloh na kolekci a vyšší celkový počet úloh, které jsou celkově větší než P10 Premium a poskytují větší škálovatelnost.
 
 ## <a name="plan-comparison"></a>Porovnání plánů
 
-* Pokud máte více než 100 kolekcí úloh Standard (10 standardních jednotek fakturace), můžete získat lepší nabídku tak, že všechny kolekce úloh v plánu Premium.
+* Pokud máte více než 100 standardních kolekcí úloh (10 standardních fakturačních jednotek), můžete získat lepší přehled o všech kolekcích úloh v plánu Premium.
 
-* Pokud máte jednu kolekci standardní úlohy a jedna kolekce úloh Premium, pak vám budeme fakturovat jedna jednotka na úrovni standard fakturační *a* jeden fakturační jednotka na úrovni premium.
+* Pokud máte jednu standardní kolekci úloh a jednu kolekci úloh Premium, bude se vám účtovat jedna standardní fakturační jednotka *a* jedna fakturační jednotka úrovně Premium.
 
-  Služba Scheduler účtuje na základě počtu aktivní kolekce úloh, které jsou standard nebo premium.
+  Služba plánovače vychází z počtu aktivních kolekcí úloh, které jsou buď Standard, nebo Premium.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)

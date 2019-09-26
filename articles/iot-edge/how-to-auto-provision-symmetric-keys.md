@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414587"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299852"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče
 
@@ -100,11 +100,14 @@ Až vytvořit registraci ve službě Device Provisioning, budete mít příleži
 
    1. Vyberte **Uložit**.
 
-Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Nezapomeňte zkopírovat hodnotu **primárního klíče** registrace, která se má použít při vytváření klíče zařízení.
+Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Nezapomeňte zkopírovat hodnotu **primárního klíče** registrace, která se má použít při instalaci IoT Edge runtime, nebo pokud budete vytvářet klíče zařízení pro použití se zápisem skupiny.
 
 ## <a name="derive-a-device-key"></a>Odvodit klíč zařízení
 
-Vaše zařízení používá odvozený klíč zařízení s jedinečným ID registrace k provádění ověření symetrického klíče pomocí zápisu během zřizování. Pokud chcete vygenerovat klíč zařízení, použijte klíč, který jste zkopírovali z registrace DPS, k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace pro zařízení a převod výsledku na Formát Base64.
+> [!NOTE]
+> Tato část se vyžaduje jenom v případě, že používáte registraci skupiny.
+
+Každé zařízení používá svůj odvozený klíč zařízení s jedinečným ID registrace k provádění ověření symetrického klíče pomocí zápisu během zřizování. Pokud chcete vygenerovat klíč zařízení, použijte klíč, který jste zkopírovali z registrace DPS, k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace pro zařízení a převod výsledku na Formát Base64.
 
 Do kódu zařízení nezahrnujte primární ani sekundární klíč registrace.
 
@@ -159,7 +162,10 @@ Při zřizování zařízení budete potřebovat následující informace:
 
 * Hodnota **rozsahu ID** DPS
 * **ID registrace** zařízení, které jste vytvořili
-* Odvozený klíč zařízení pro ověření symetrického klíče zařízení
+* **Primární klíč** , který jste zkopírovali z registrace DPS
+
+> [!TIP]
+> Pro zápis skupin potřebujete místo registračního klíče každého zařízení [odvozený klíč](#derive-a-device-key) každého zařízení.
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
@@ -233,7 +239,7 @@ Seznam s moduly.
 iotedge list
 ```
 
-Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je přiřazený stav  registrace a že je uvedené ID zařízení.
+Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je přiřazený stav registrace a že je uvedené ID zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

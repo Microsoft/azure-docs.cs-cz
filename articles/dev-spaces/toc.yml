@@ -91,3 +91,5 @@
           href: how-to/ingress-https-traefik.md
     - name: Řešení potíží
       href: troubleshooting.md
+    - name: Nejčastější dotazy
+      href: faq.md

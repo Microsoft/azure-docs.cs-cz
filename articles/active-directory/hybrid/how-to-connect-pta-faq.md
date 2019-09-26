@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779087"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290764"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -41,15 +41,14 @@ Ne. Předávací ověřování je dostupné jenom v celosvětové instanci Azure
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../active-directory-conditional-access-azure-portal.md) s předávacím ověřováním?
 
-Ano. Všechny funkce podmíněného přístupu, včetně služby Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
+Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
-
-Ano, předávací ověřování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurováno v Azure AD Connect. Azure AD Connect potřebuje k Azure AD synchronizovat místní atribut služby Active Directory `UserPrincipalName` . Další informace najdete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Přečtěte si téma Podpora dokumentace k konkrétní aplikaci.
+V omezeném rozsahu předávací ověřování podporuje alternativní ID jako uživatelské jméno při konfiguraci v Azure AD Connect. Azure AD Connect potřebuje k Azure AD synchronizovat místní atribut služby Active Directory `UserPrincipalName` . Díky `UserPrincipalName` tomu se místní služba AD a Azure AD stanou identické. Pokud chcete použít jiný atribut k synchronizaci z místní služby AD jako hlavního názvu uživatele (UPN) do Azure AD, budete muset použít buď synchronizaci hodnoty hash hesla, nebo AD FS. Další informace najdete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Přečtěte si téma Podpora dokumentace k konkrétní aplikaci.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Funguje synchronizace hodnot hash hesel jako záložní pro předávací ověřování?
 
-Ne. Předávací ověřování neprovádí automatické převzetí služeb při synchronizaci hodnoty hash hesel. Aby nedocházelo k chybám při přihlašování uživatelů, měli byste nakonfigurovat předávací ověřování pro [vysokou dostupnost](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+Ne. Předávací _ověřování neprovádí automatické_ převzetí služeb při synchronizaci hodnoty hash hesel. Aby nedocházelo k chybám při přihlašování uživatelů, měli byste nakonfigurovat předávací ověřování pro [vysokou dostupnost](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Co se stane, když přepnu z synchronizace hodnot hash hesel do předávacího ověřování?
 
@@ -145,7 +144,7 @@ U většiny zákazníků jsou celkem dva nebo tři ověřovací agenti dostačuj
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Je možné nainstalovat prvního předávacího agenta na jiný server, než je ten, který spouští Azure AD Connect?
 
-Ne, tento scénář není podporován.
+Ne, tento scénář není _podporován._
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Proč potřebuji k povolení předávacího ověřování zadat jenom cloudový účet globálního správce?
 
@@ -175,7 +174,7 @@ Klienti vytvoření po 15. června 2015 mají výchozí chování při synchroni
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, které scénáře jsou podporovány a které nejsou.
 - [Rychlý Start](how-to-connect-pta-quick-start.md): Zprovoznění předávacího ověřování Azure AD.
 - [Migrace z AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – podrobný průvodce migrací z AD FS (nebo jiných federačních technologií) na předávací ověřování.

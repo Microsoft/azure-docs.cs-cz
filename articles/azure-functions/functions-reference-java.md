@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170552"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299383"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
 Modul runtime Azure Functions podporuje [jazyk Java se 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí jazyka Java.
 
-Funkce jazyka Java je `public` metoda upravená s poznámkou. `@FunctionName` Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. 
+Vzhledem k tomu, že se jedná o jiné jazyky, Function App může mít jednu nebo více funkcí. Funkce jazyka Java je `public` metoda upravená s poznámkou. `@FunctionName` Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. Jeden Function App napsaný v jazyce Java může mít více tříd s více veřejnými metodami `@FunctionName`, které jsou opatřeny poznámkami.
 
 V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Měli byste také dokončit rychlé zprovoznění funkcí a vytvořit svou první funkci pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [Maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Programovací model 
 
 Koncepty triggerů [a vazeb](functions-triggers-bindings.md) jsou zásadní pro Azure Functions. Triggery spustí provádění kódu. Vazby poskytují způsob, jak předávat data a vracet data z funkce, aniž byste museli psát vlastní přístup k datům.
+
+## <a name="project-scaffolding"></a>Generování uživatelského rozhraní pro projekt
+
+Nejjednodušší způsob, jak vytvořit generátor projektu Azure Functions založeného na jazyce Java `Apache Maven` , je použití archetypes. Můžete také vyhledat Průvodce generování projektu na Visual Studio Code a sady nástrojů Azure pro zatmění a IntelliJ.
+
+V současné době jsou k dispozici dvě Azure Functions archetypes pro Maven:
+
+### <a name="java-archetype"></a>Java Archetype
+
+Tento Archetype se zveřejňuje v rámci následujících identifikátorů ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin Archetype (Preview)
+
+Tento Archetype se zveřejňuje v rámci následujících identifikátorů ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Kotlin-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Zdrojový kód těchto archetypes najdete v [úložišti GitHub Azure Maven archetypes](https://github.com/microsoft/azure-maven-archetypes).
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -55,6 +83,8 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
+
+_* Projekt Kotlin vypadá velmi podobně, protože je stále Maven_
 
 Ke konfiguraci aplikace Function App můžete použít sdílený soubor [Host. JSON](functions-host-json.md) . Každá funkce má svůj vlastní soubor kódu (. Java) a konfigurační soubor vazby (Function. JSON).
 
@@ -411,7 +441,7 @@ public class Function {
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Functions vývoj v jazyce Java najdete v následujících zdrojích informací:
 

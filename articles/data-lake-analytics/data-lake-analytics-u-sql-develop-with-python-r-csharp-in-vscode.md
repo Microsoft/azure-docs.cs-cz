@@ -1,6 +1,6 @@
 ---
-title: Vývoj U-SQL pomocí Pythonu, R a C# pro Azure Data Lake Analytics v aplikaci Visual Studio Code
-description: Zjistěte, jak pomocí kódu Python, R a C# se odeslat úlohu ve službě Azure Data Lake.
+title: Spouštění úloh U-SQL v Pythonu, R a C# -Azure Data Lake Analytics
+description: Naučte se používat kód za použití Pythonu, R C# a k odeslání úlohy v Azure Data Lake.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jejiang
@@ -8,36 +8,36 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814091"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309713"
 ---
-# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL pomocí Pythonu, R a C# pro Azure Data Lake Analytics v aplikaci Visual Studio Code
-Zjistěte, jak používat Visual Studio Code (VSCode) pro zápis Python, R a C# kódu na pozadí pomocí U-SQL a odesílání úloh do služby Azure Data Lake. Další informace o Azure Data Lake Tools pro VSCode, naleznete v tématu [pomocí nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL pomocí Pythonu, R a C# Azure Data Lake Analytics v Visual Studio Code
+Naučte se používat Visual Studio Code (VSCode) k psaní Pythonu, R C# a kódu za použití u-SQL a odesílání úloh do služby Azure Data Lake. Další informace o Azure Data Lakech nástrojích pro VSCode najdete v tématu [použití nástroje Azure Data Lake pro Visual Studio kódu](data-lake-analytics-data-lake-tools-for-vscode.md).
 
-Před psaní vlastního kódu použití modelu code-behind, budete muset otevřít složku nebo pracovní prostor ve VSCode.
+Před psaním vlastního kódu na pozadí musíte v VSCode otevřít složku nebo pracovní prostor.
 
 
-## <a name="prerequisites-for-python-and-r"></a>Požadavky na Pythonu a r.
-Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL. 
-1. Otevřete svůj účet na portálu.
+## <a name="prerequisites-for-python-and-r"></a>Předpoklady pro Python a R
+Zaregistrujte sestavení rozšíření Python a R pro váš účet ADL. 
+1. Otevřete účet na portálu.
    - Vyberte **Přehled**. 
-   - Klikněte na tlačítko **ukázkový skript**.
+   - Klikněte na **ukázkový skript**.
 2. Klikněte na tlačítko **Další**.
-3. Vyberte **nainstalovat rozšíření U-SQL**. 
-4. Po instalaci rozšíření U-SQL, zobrazí se potvrzovací zpráva. 
+3. Vyberte **instalovat rozšíření U-SQL**. 
+4. Po instalaci rozšíření U-SQL se zobrazí potvrzovací zpráva. 
 
-   ![Nastavení prostředí pro python a r.](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Nastavení prostředí pro Python a R](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
    > [!Note]
-   > Pro nejlepší prostředí na službě jazyka Python nebo R Nainstalujte prosím VSCode Pythonu a r. rozšíření. 
+   > Pro lepší zkušenosti se službou Python a jazyka R prosím nainstalujte VSCode Python a R Extension. 
 
-## <a name="develop-python-file"></a>Vývoj soubor Pythonu
-1. Klikněte na tlačítko **nový soubor** ve vašem pracovním prostoru.
-2. Napište svůj kód v U-SQL. Následuje vzorový kód.
+## <a name="develop-python-file"></a>Vývoj souboru Pythonu
+1. Klikněte na **nový soubor** v pracovním prostoru.
+2. Napište svůj kód do U-SQL. Následuje ukázka kódu.
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
     @t  = 
@@ -58,8 +58,8 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
         USING Outputters.Csv();
     ```
     
-3. Klikněte pravým tlačítkem na soubor skriptu a pak vyberte **ADL: Generovat soubor kódu Python**. 
-4. **Xxx.usql.py** soubor je vygenerován ve své pracovní složce. Napište svůj kód v souboru Python. Následuje vzorový kód.
+3. Klikněte pravým tlačítkem na soubor skriptu a pak vyberte **ADL: Vygeneruje soubor**kódu Pythonu na pozadí. 
+4. Soubor **xxx.usql.py** se vygeneruje v pracovní složce. Napište svůj kód do souboru Python. Následuje ukázka kódu.
 
     ```Python
     def get_mentions(tweet):
@@ -72,11 +72,11 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
         del df['tweet']
         return df
     ```
-5. Klikněte pravým tlačítkem na **USQL** soubor, můžete kliknout na **kompilaci skriptu** nebo **odeslat úlohu** ke spuštění úlohy.
+5. Klikněte pravým tlačítkem na soubor **USQL** , můžete kliknout na **kompilovat skript** nebo **Odeslat úlohu** do spuštěné úlohy.
 
 ## <a name="develop-r-file"></a>Vývoj souboru R
-1. Klikněte na tlačítko **nový soubor** ve vašem pracovním prostoru.
-2. Napište svůj kód v souboru U-SQL. Následuje vzorový kód.
+1. Klikněte na **nový soubor** v pracovním prostoru.
+2. Napište svůj kód do souboru U-SQL. Následuje ukázka kódu.
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
     DECLARE @IrisData string = @"/usqlext/samples/R/iris.csv";
@@ -115,20 +115,20 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: Generovat soubor kódu R**. 
-4. **Xxx.usql.r** soubor je vygenerován ve své pracovní složce. Napište svůj kód v R souboru. Následuje vzorový kód.
+3. Klikněte pravým tlačítkem na soubor **USQL** a pak vyberte **ADL: Vygeneruje soubor**kódu R na pozadí. 
+4. Soubor **xxx. usql. r** je vygenerován v pracovní složce. Napište svůj kód do souboru R. Následuje ukázka kódu.
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. Klikněte pravým tlačítkem na **USQL** soubor, můžete kliknout na **kompilaci skriptu** nebo **odeslat úlohu** ke spuštění úlohy.
+5. Klikněte pravým tlačítkem na soubor **USQL** , můžete kliknout na **kompilovat skript** nebo **Odeslat úlohu** do spuštěné úlohy.
 
-## <a name="develop-c-file"></a>Vývoj soubor jazyka C#
-Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skript U-SQL. Můžete definovat skript vyhrazené pro UDO, UDA, UDT a systému souborů UDF v souboru kódu na pozadí. UDO, UDA, UDT a UDF lze použít přímo ve skriptu i bez registrace sestavení první. Použití modelu code-behind soubor je umístěn ve stejné složce jako jeho vytvoření partnerského vztahu soubor skriptu U-SQL. Pokud tento skript má název xxx.usql, je jako xxx.usql.cs název modelu code-behind. Pokud ručně odstraňte soubor kódu na pozadí, je zakázaná použití modelu code-behind pro jeho přidružené skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [psaní a použití vlastní kód v U-SQL: Uživatelem definované funkce]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+## <a name="develop-c-file"></a>Vývoj C# souboru
+Soubor kódu na pozadí je C# soubor přidružený k jednomu skriptu U-SQL. V souboru kódu na pozadí můžete definovat skript vyhrazený pro UDO, UDA, UDT a UDF. UDO, UDA, UDT a UDF lze použít přímo ve skriptu bez registrace sestavení jako první. Soubor kódu na pozadí se umístí do stejné složky jako partnerský soubor skriptu U-SQL. Pokud má skript název xxx. usql, kód na pozadí se jmenuje jako xxx.usql.cs. Pokud soubor kódu na pozadí odstraníte ručně, funkce kódu na pozadí je zakázána pro svůj přidružený skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [zápis a použití vlastního kódu v u-SQL: Uživatelsky definované funkce]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
-1. Klikněte na tlačítko **nový soubor** ve vašem pracovním prostoru.
-2. Napište svůj kód v souboru U-SQL. Následuje vzorový kód.
+1. Klikněte na **nový soubor** v pracovním prostoru.
+2. Napište svůj kód do souboru U-SQL. Následuje ukázka kódu.
     ```U-SQL
     @a = 
         EXTRACT 
@@ -157,8 +157,8 @@ Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skri
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: Generovat soubor kódu CS**. 
-4. **Xxx.usql.cs** soubor je vygenerován ve své pracovní složce. Napište svůj kód v souboru CS. Následuje vzorový kód.
+3. Klikněte pravým tlačítkem na soubor **USQL** a pak vyberte **ADL: Vygeneruje soubor**cs za kódem. 
+4. Soubor **xxx.usql.cs** se vygeneruje v pracovní složce. Napište svůj kód do souboru CS. Následuje ukázka kódu.
 
     ```CS
     namespace USQLApplication_codebehind
@@ -176,12 +176,12 @@ Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skri
         }
     }
     ```
-5. Klikněte pravým tlačítkem na **USQL** soubor, můžete kliknout na **kompilaci skriptu** nebo **odeslat úlohu** ke spuštění úlohy.
+5. Klikněte pravým tlačítkem na soubor **USQL** , můžete kliknout na **kompilovat skript** nebo **Odeslat úlohu** do spuštěné úlohy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Použití nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
-* [U-SQL místní spuštění a místní ladění pomocí Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [Začínáme s Data Lake Analytics pomocí Powershellu](data-lake-analytics-get-started-powershell.md)
-* [Začínáme s Data Lake Analytics pomocí webu Azure portal](data-lake-analytics-get-started-portal.md)
-* [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací v U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
-* [Použití Data Lake Analytics(U-SQL) katalogu](data-lake-analytics-use-u-sql-catalog.md)
+* [Místní spuštění U-SQL a místní ladění pomocí Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
+* [Začínáme s Data Lake Analytics pomocí prostředí PowerShell](data-lake-analytics-get-started-powershell.md)
+* [Začínáme s Data Lake Analytics pomocí Azure Portal](data-lake-analytics-get-started-portal.md)
+* [Použití Data Lake nástrojů pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
+* [Použití katalogu Data Lake Analytics (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)

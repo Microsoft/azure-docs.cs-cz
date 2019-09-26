@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/20/2019
+ms.date: 9/25/2019
 ms.author: b-juche
-ms.openlocfilehash: a2cfd7937bff10dae4601cb9727cfe43e4d61ca0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178274"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299654"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -95,6 +95,9 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     * **Cesta organizační jednotky**  
         Jedná se o cestu protokolu LDAP pro organizační jednotku (OU), kde budou vytvořeny účty počítačů serveru SMB. To znamená OU = druhá úroveň, OU = First Level. 
+
+        Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers` , když pro svůj účet NetApp nakonfigurujete službu Active Directory.
+        
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 
     ![Připojit k Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)

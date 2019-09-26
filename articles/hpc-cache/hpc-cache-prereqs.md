@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180909"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299917"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Předpoklady pro Azure HPC cache (Preview)
 
@@ -26,7 +26,7 @@ Doporučuje se placené předplatné.
 
 ## <a name="network-infrastructure"></a>Síťová infrastruktura
 
-Předtím, než budete moci použít mezipaměť, by měly být nastavené dvě možnosti související se sítí:
+Předtím, než budete moci použít mezipaměť, by měly být nastavené dvě požadavky týkající se sítě:
 
 * Vyhrazená podsíť pro instanci mezipaměti Azure HPC
 * Podpora DNS, aby mohla mezipaměť získat přístup k úložišti a dalším prostředkům
@@ -37,13 +37,13 @@ Mezipaměť prostředí Azure HPC potřebuje vyhrazenou podsíť s těmito kvali
 
 * Podsíť musí mít k dispozici minimálně 64 IP adres.
 * Podsíť nemůže hostovat žádné jiné virtuální počítače, a to ani pro související služby, jako jsou klientské počítače.
-* Pokud používáte více instancí mezipaměti, každá z nich potřebuje vlastní podsíť.
+* Pokud používáte více instancí Azure HPC cache, každá z nich potřebuje vlastní podsíť.
 
-Osvědčeným postupem je vytvořit novou podsíť pro mezipaměť. V rámci vytváření mezipaměti můžete vytvořit novou virtuální síť a podsíť.
+Osvědčeným postupem je vytvořit novou podsíť pro každou mezipaměť. V rámci vytváření mezipaměti můžete vytvořit novou virtuální síť a podsíť.
 
 ### <a name="dns-access"></a>Přístup DNS
 
-Mezipaměť prostředí Azure HPC potřebuje DNS pro přístup k prostředkům mimo svou virtuální síť. V závislosti na tom, jaké prostředky používáte, možná budete muset nastavit vlastní server DNS a nakonfigurovat přesměrování mezi tímto serverem a Azure DNS servery: 
+Mezipaměť potřebuje DNS pro přístup k prostředkům mimo svou virtuální síť. V závislosti na tom, jaké prostředky používáte, možná budete muset nastavit vlastní server DNS a nakonfigurovat přesměrování mezi tímto serverem a Azure DNS servery:
 
 * Pro přístup k koncovým bodům služby Azure Blob Storage a dalším interním prostředkům budete potřebovat server DNS založený na Azure.
 * Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště.
@@ -56,14 +56,16 @@ Přečtěte si další informace o virtuálních sítích Azure a konfiguracích
 
 Než začnete vytvářet mezipaměť, ověřte tyto požadavky týkající se oprávnění.
 
-* Mezipaměť HPC Azure musí být schopná vytvářet rozhraní virtuální sítě (nic). Uživatel, který vytváří mezipaměť, musí mít v předplatném dostatečná oprávnění pro vytváření síťových adaptérů.
+* Instance mezipaměti musí být schopná vytvářet rozhraní virtuální sítě (nic). Uživatel, který vytváří mezipaměť, musí mít v předplatném dostatečná oprávnění pro vytváření síťových adaptérů.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* Pokud používáte úložiště objektů blob, vyžaduje instance mezipaměti prostředí Azure HPC autorizaci pro přístup k vašemu účtu úložiště. Řízení přístupu na základě role (RBAC) můžete použít k poskytnutí přístupu k mezipaměti do úložiště objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště. Postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
+* Pokud používáte službu BLOB Storage, mezipaměť prostředí Azure HPC potřebuje autorizaci pro přístup k vašemu účtu úložiště. Řízení přístupu na základě role (RBAC) můžete použít k poskytnutí přístupu k mezipaměti do úložiště objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště. Pokud chcete přidat role, postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) .
 
 ## <a name="storage-infrastructure"></a>Infrastruktura úložiště
 
-Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Při vytváření mezipaměti můžete definovat cíle úložiště, ale můžete je také přidat později. 
+Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Můžete definovat cíle úložiště, když vytváříte mezipaměť, ale můžete také přidat úložiště později.
+
+Každý typ úložiště má specifické požadavky. 
 
 ### <a name="nfs-storage-requirements"></a>Požadavky na úložiště NFS
 
@@ -73,7 +75,7 @@ Back-end úložiště NFS musí být kompatibilní hardwarová a softwarová pla
 
 ### <a name="blob-storage-requirements"></a>Požadavky na úložiště objektů BLOB
 
-Pokud chcete používat úložiště objektů BLOB v Azure s mezipamětí Azure HPC, potřebujete kompatibilní účet úložiště a prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu mezipaměti HPC Azure, jak je popsáno v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
+Pokud chcete používat úložiště objektů BLOB v Azure s mezipamětí, potřebujete kompatibilní účet úložiště a prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu mezipaměti HPC Azure, jak je popsáno v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
 
 Před pokusem o přidání účtu jako cíle úložiště vytvořte účet a kontejner.
 
@@ -85,6 +87,7 @@ Pokud chcete vytvořit kompatibilní účet úložiště, použijte Tato nastave
 * Úroveň přístupu (výchozí): **za běhu**
 
 Je vhodné použít účet úložiště ve stejném umístění jako mezipaměť.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
 Musíte taky dát aplikaci cache přístup k vašemu účtu úložiště Azure. Podle popisu v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) poskytněte mezipaměti přispěvatelům účet úložiště a přispěvatel dat objektů BLOB úložiště. Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 

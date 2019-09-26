@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074309"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291086"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -102,7 +102,7 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 | `preferred_username` | Řetězec | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci.  Dá se použít i v pomocných parametrech uživatelského jména. Aby bylo možné získat tuto deklaraci, je vyžadován rozsah.`profile` |
 | `name` | Řetězec | Poskytuje uživatelsky čitelné hodnoty, které identifikují předmět tokenu. Hodnota není zaručena jako jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. Aby bylo možné získat tuto deklaraci, je vyžadován rozsah.`profile` |
 | `scp` | Řetězec, seznam oborů oddělených mezerami | Sada oborů vystavené vaší aplikací, pro které klientská aplikace požádala o souhlas. Vaše aplikace by měla ověřit, že tyto obory jsou platné, které jsou vystavené vaší aplikací, a učinit rozhodnutí o autorizaci na základě hodnoty těchto oborů. Je zahrnutá jenom pro [tokeny uživatelů](#user-and-application-tokens). |
-| `roles` | Pole řetězců, seznam oprávnění | Sada oprávnění vystavená vaší aplikací, ke které žádající aplikace nebo uživatel udělil oprávnění k volání. Pro [tokeny aplikací](#user-and-application-tokens)se tato služba používá v [](v1-oauth2-client-creds-grant-flow.md) rámci toku uživatelů na místě.  Pro [tokeny uživatele](#user-and-application-tokens) se naplní role, ke kterým se uživatel přiřadil v cílové aplikaci. |
+| `roles` | Pole řetězců, seznam oprávnění | Sada oprávnění vystavená vaší aplikací, ke které žádající aplikace nebo uživatel udělil oprávnění k volání. Pro [tokeny aplikací](#user-and-application-tokens)se tato služba používá v [rámci toku uživatelů na místě](v1-oauth2-client-creds-grant-flow.md) .  Pro [tokeny uživatele](#user-and-application-tokens) se naplní role, ke kterým se uživatel přiřadil v cílové aplikaci. |
 | `wids` | Pole [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) identifikátorů GUID | Označuje role v rámci tenanta přiřazené tomuto uživateli z oddílu rolí, které jsou k dispozici na [stránce role správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  Tato deklarace identity je nakonfigurovaná na základě jednotlivých aplikací prostřednictvím `groupMembershipClaims` vlastnosti [manifestu aplikace](reference-app-manifest.md).  Nastaví se na All nebo DirectoryRole se vyžaduje.  Nemusí být k dispozici v tokenech získaných prostřednictvím implicitního toku, protože se týkají délky tokenu. |
 | `groups` | Pole JSON identifikátorů GUID | Poskytuje ID objektů, které představují členství ve skupině daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a lze je bezpečně použít ke správě přístupu, jako je vynucení autorizace pro přístup k prostředku. Skupiny zahrnuté v deklaraci skupin jsou nakonfigurovány na základě jednotlivých aplikací prostřednictvím `groupMembershipClaims` vlastnosti [manifestu aplikace](reference-app-manifest.md). Hodnota null bude vyloučit všechny skupiny, hodnota "Security Group" bude zahrnovat pouze členství ve skupině zabezpečení služby Active Directory a hodnota "vše" bude zahrnovat skupiny zabezpečení a distribuční seznamy Office 365. <br><br>Podrobnosti o`groups` použití deklarace s implicitním grantem naleznete níže v `hasgroups` deklaraci identity. <br>U ostatních toků platí, že pokud počet skupin, ve kterých se uživatel nachází v rámci limitu (150 pro SAML, 200 pro JWT), se do zdrojů deklarací identity, které odkazují na koncový bod grafu AAD, přidá seznam skupin pro uživatele. |
 | `hasgroups` | Logická hodnota | Pokud je k dispozici, `true`znamená to, že uživatel má alespoň jednu skupinu. Používá se místo `groups` deklarace identity pro JWTs v implicitních tocích toků, pokud by deklarace identity celé skupiny rozšířila fragment identifikátoru URI za omezení délky adresy URL (aktuálně 6 nebo více skupin). Indikuje, že klient by měl pomocí grafu určit skupiny uživatelů (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
@@ -114,6 +114,11 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 | `uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. Prostředky by tuto deklaraci neměli používat. |
 | `rh` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. Prostředky by neměly tuto deklaraci identity používat. |
 | `ver` | Řetězec, buď `1.0` nebo`2.0` | Určuje verzi přístupového tokenu. |
+
+
+> [! Skupiny nadlimitní deklarace identity] Chcete-li zajistit, že velikost tokenu nepřekračuje limity velikosti hlavičky HTTP, Azure AD omezí počet ID objektů, které obsahuje, do deklarace skupiny. Pokud je uživatel členem více skupin, než je limit překročení (150 pro tokeny SAML, 200 pro tokeny JWT), služba Azure AD negeneruje v tokenu deklaraci identity skupin. Místo toho zahrnuje nadlimitní deklaraci identity v tokenu, která označuje aplikaci pro dotaz na Graph API k načtení členství uživatele ve skupině.
+> { ... "_claim_names": {"Groups": "src1"}; {"_claim_sources": {"src1": {"Endpoint": "[adresa URL grafu pro získání členství uživatele ve skupině]"}}    
+    ... } Můžete použít `BulkCreateGroups.ps1` ve složce [Scripts pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) , které vám pomůžou vyzkoušet scénáře překročení limitu.
 
 #### <a name="v10-basic-claims"></a>deklarace identity Basic v 1.0
 
@@ -247,7 +252,7 @@ Aktualizace tokenů se u různých důvodů může odhlásit nebo odvolat kdykol
 >
 > Při použití k načtení nového přístupového tokenu a obnovení tokenu se tokeny pro aktualizaci neověřují nebo odvolají.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si informace o [ `id_tokens` službě Azure AD](id-tokens.md).
 * Přečtěte si o oprávnění a souhlasu v v [1.0](v1-permissions-and-consent.md) a v [2.0](v2-permissions-and-consent.md).

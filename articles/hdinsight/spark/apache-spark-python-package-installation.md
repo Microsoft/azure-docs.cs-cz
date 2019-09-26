@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814068"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900698"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Akce skriptu pro instalaci externích balíčků Pythonu pro Jupyter poznámkové bloky v Apache Spark ve službě HDInsight
 
@@ -97,7 +97,7 @@ Existují dva typy open source komponent, které jsou k dispozici ve službě HD
 
     Výsledek bude vypadat takto:
     
-    ![TensorFlow provádění kódu](./media/apache-spark-python-package-installation/execution.png "Spustit TensorFlow kód")
+    ![TensorFlow provádění kódu](./media/apache-spark-python-package-installation/tensorflow-execution.png "Spustit TensorFlow kód")
 
 > [!NOTE]  
 > V clusteru jsou dvě instalace Pythonu. Spark použije instalaci Anaconda Pythonu, která se `/usr/bin/anaconda/bin` nachází na, a bude ve výchozím nastavení prostředí Python 2,7. Pokud chcete používat Python 3. x a instalovat balíčky v jádru PySpark3, použijte cestu ke `conda` spustitelnému souboru pro toto prostředí a `-n` použijte parametr k určení prostředí. Například příkaz `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` `ggplot` nainstaluje balíček do prostředí `conda-forge` Python 3,5 pomocí kanálu.

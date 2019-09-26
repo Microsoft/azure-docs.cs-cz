@@ -17,12 +17,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cb279441e8ed0c0110a5b18d32609ed5b01bd7e2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074269"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291049"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -30,7 +30,7 @@ ms.locfileid: "70074269"
 
 ## <a name="using-the-id_token"></a>Použití id_token
 
-Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo přístupového tokenu [](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, jako klíče v databázi a poskytnutí přístupu k klientské aplikaci.  Při vytváření klíčů pro databázi byste neměli `idp` používat, protože jsou v něm scénáře hostů.  Generování klíčů by se mělo `sub` provádět samostatně (což je vždycky jedinečné), `tid` které se používá pro směrování v případě potřeby.  Pokud potřebujete sdílet data napříč službami, bude fungovat `oid` , + `sub` + `tid` protože víc služeb získá stejný `oid`přístup.
+Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo [přístupového tokenu](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, jako klíče v databázi a poskytnutí přístupu k klientské aplikaci.  Při vytváření klíčů pro databázi byste neměli `idp` používat, protože jsou v něm scénáře hostů.  Generování klíčů by se mělo `sub` provádět samostatně (což je vždycky jedinečné), `tid` které se používá pro směrování v případě potřeby.  Pokud potřebujete sdílet data napříč službami, bude fungovat `oid` , + `sub` + `tid` protože víc služeb získá stejný `oid`přístup.
 
 ## <a name="claims-in-an-id_token"></a>Deklarace identity v id_token
 
@@ -80,7 +80,7 @@ V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nasta
 |`email` | Řetězec | `email` Deklarace identity je ve výchozím nastavení k dispozici pro účty hosta, které mají e-mailovou adresu.  Vaše aplikace může požádat o e-mailovou deklaraci identity pro spravované uživatele (ze stejného tenanta jako prostředku) `email` , a to pomocí [volitelné deklarace identity](active-directory-optional-claims.md).  V koncovém bodě verze 2.0 může aplikace požádat `email` o obor OpenID Connect – nemusíte požadovat žádnou volitelnou deklaraci identity a obor pro získání deklarace identity.  Deklarace e-mailu podporuje pouze adresovatelné pošty z informací o profilu uživatele. |
 |`name` | Řetězec | `name` Deklarace identity poskytuje lidský čitelný údaj, který identifikuje předmět tokenu. Hodnota není zaručena, že je jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. Pro příjem této deklarace je vyžadován rozsah.`profile` |
 |`nonce`| Řetězec | Hodnota nonce odpovídá parametru zahrnutému v původní žádosti/Authorize do IDP. Pokud se neshodují, vaše aplikace by měla token odmítnout. |
-|`oid` | Řetězec, identifikátor GUID | Neproměnlivý identifikátor pro objekt v systému Microsoft identity, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele napříč aplikacemi – dvě různé aplikace přihlášené ke stejnému uživateli získají stejnou hodnotu v `oid` deklaraci identity. Microsoft Graph bude toto ID vracet jako `id` vlastnost pro daný uživatelský účet. Vzhledem k tomu, že `profile` umožňujevíceaplikacímkorelovatuživatele,jepropříjemtétodeklaracevyžadovánrozsah.`oid` Všimněte si, že pokud jeden uživatel existuje ve více klientech, bude uživatel v každém tenantovi obsahovat jiné ID objektu – považují se za jiné účty, i když se uživatel do každého účtu přihlašuje pomocí stejných přihlašovacích údajů. |
+|`oid` | Řetězec, identifikátor GUID | Neproměnlivý identifikátor pro objekt v systému Microsoft identity, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele napříč aplikacemi – dvě různé aplikace přihlášené ke stejnému uživateli získají stejnou hodnotu v `oid` deklaraci identity. Microsoft Graph bude toto ID vracet jako `id` vlastnost pro daný uživatelský účet. Vzhledem k tomu, že `profile` umožňujevíceaplikacímkorelovatuživatele,jepropříjemtétodeklaracevyžadovánrozsah.`oid` Všimněte si, že pokud jeden uživatel existuje ve více klientech, bude uživatel v každém tenantovi obsahovat jiné ID objektu – považují se za jiné účty, i když se uživatel do každého účtu přihlašuje pomocí stejných přihlašovacích údajů. `oid` Deklarace identity je GUID a nedá se znovu použít. |
 |`roles`| pole řetězců | Sada rolí, které byly přiřazeny uživateli, který se přihlašuje. |
 |`rh` | Neprůhledný řetězec |Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`sub` | Řetězec, identifikátor GUID | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Subjekt je párový identifikátor, který je jedinečný pro konkrétní ID aplikace. Pokud se jeden uživatel přihlásí ke dvěma různým aplikacím pomocí dvou různých ID klientů, budou tyto aplikace pro deklaraci deklarace subjektu dostávat dvě odlišné hodnoty. To může nebo nemusí být žádoucí v závislosti na vaší architektuře a požadavcích na ochranu osobních údajů. |
@@ -101,5 +101,5 @@ Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřová
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace [](access-tokens.md) o přístupových tokenech
+* Další informace o [přístupových tokenech](access-tokens.md)
 * Přizpůsobte deklarace identity ve vašem id_token pomocí [volitelných deklarací identity](active-directory-optional-claims.md).

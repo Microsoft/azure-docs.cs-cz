@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873200"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300191"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Odstranění imagí kontejneru v Azure Container Registry pomocí rozhraní příkazového řádku Azure
 
@@ -259,11 +259,14 @@ if ($enableDelete) {
 }
 ```
 
+
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Automatické vymazání značek a manifestů (Preview)
 
 Jako alternativu ke skriptování příkazů rozhraní příkazového řádku Azure můžete spuštěním úlohy na vyžádání nebo naplánované ACR odstranit všechny značky, které jsou starší než určitá doba trvání nebo odpovídají zadanému filtru názvů. Další informace najdete v tématu [Automatické mazání imagí z Azure Container Registry](container-registry-auto-purge.md).
 
-## <a name="next-steps"></a>Další postup
+Volitelně můžete pro každý registr nastavit [zásady uchovávání informací](container-registry-retention-policy.md) pro správu netagovaných manifestů. Když zapnete zásadu uchovávání informací, manifesty obrázků v registru, které nemají žádné přidružené značky, a podkladová data vrstvy se po uplynutí nastaveného období odstraní automaticky.
+
+## <a name="next-steps"></a>Další kroky
 
 Další informace o úložišti imagí v Azure Container Registry najdete [v části úložiště imagí kontejneru v Azure Container Registry](container-registry-storage.md).
 

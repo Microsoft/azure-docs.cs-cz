@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886031"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ Následující značky služeb jsou k dispozici pro použití v [pravidlech skup
 * **SQL*** (pouze správce prostředků): Tato značka označuje předpony adres Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL a Azure SQL Data Warehouse služeb. Pokud jako hodnotu zadáte *SQL*, provoz směřující do SQL se povolí nebo zakáže. Pokud chcete v konkrétní [oblasti](https://azure.microsoft.com/regions)jenom udělit přístup k SQL, můžete zadat oblast v následujícím formátu SQL. [název oblasti]. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
 * **SqlManagement*** (jenom správce prostředků): Tato značka označuje předpony adres provozu správy pro nasazení ve vyhrazeném systému SQL. Pokud pro hodnotu zadáte *SqlManagement* , provoz se povolí nebo odepře SqlManagement. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí. 
 * **Úložiště*** (jenom správce prostředků): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete pouze přístup k úložišti v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat oblast v následujícím úložišti formátu. [název oblasti]. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **VirtualNetwork** (Správce prostředků) (**VIRTUAL_NETWORK** pro klasický): Tato značka zahrnuje adresní prostor virtuální sítě (všechny rozsahy CIDR definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) a adrese. předpony použité pro [trasy definované uživatelem](virtual-networks-udr-overview.md) Upozorňujeme, že tato značka může obsahovat výchozí trasu. 
+* **VirtualNetwork** (Správce prostředků) (**VIRTUAL_NETWORK** pro klasický): Tato značka zahrnuje adresní prostor virtuální sítě (všechny rozsahy CIDR definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) [virtuální sítě. virtuální IP adresa hostitele](security-overview.md#azure-platform-considerations) a předpony adresy použité pro [trasy definované uživatelem](virtual-networks-udr-overview.md) Upozorňujeme, že tato značka může obsahovat výchozí trasu. 
 
 > [!NOTE]
 > Značky služeb Azure označují předpony adres z konkrétního cloudu, který se používá. 

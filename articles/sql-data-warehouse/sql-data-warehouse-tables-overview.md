@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476754"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310107"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek v Azure SQL Data Warehouse
 
@@ -109,6 +109,9 @@ Seznam funkcí columnstore najdete v tématu [co je nového pro indexy columnsto
 ## <a name="statistics"></a>Statistika
 Optimalizátor dotazů používá při vytváření dotazu statistiku na úrovni sloupce. Pro zlepšení výkonu dotazů je důležité mít statistiku pro jednotlivé sloupce, zejména sloupce používané v dotazech na dotazy. [Vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) proběhne automaticky.  Aktualizace statistiky ale neproběhne automaticky. Aktualizuje statistiku po přidání nebo změně významného počtu řádků. Například aktualizujte statistiku po načtení. Další informace najdete v tématu [](sql-data-warehouse-tables-statistics.md)věnovaném statistickým pokynům.
 
+## <a name="primary-key-and-unique-key"></a>Primární klíč a jedinečný klíč
+PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.  JEDINEČNÉ omezení se podporuje jenom s nevynucovaném využitím.  Ověřte [SQL Data Warehouse omezení tabulky](sql-data-warehouse-table-constraints.md).
+
 ## <a name="commands-for-creating-tables"></a>Příkazy pro vytváření tabulek
 Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
@@ -128,8 +131,7 @@ Pokud data přicházejí z více úložišť dat, můžete data přenést do dat
 ## <a name="unsupported-table-features"></a>Nepodporované funkce tabulky
 SQL Data Warehouse podporuje mnoho, ale ne všechny, z funkcí tabulky nabízených jinými databázemi.  V následujícím seznamu jsou uvedeny některé funkce tabulky, které nejsou podporované v SQL Data Warehouse.
 
-- Primární klíč, cizí klíče, jedinečné, [omezení kontrolních tabulek](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- Cizí klíč, [omezení CHECK Table](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [Vypočítané sloupce](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Indexovaná zobrazení](/sql/relational-databases/views/create-indexed-views)
 - [Pořadí](/sql/t-sql/statements/create-sequence-transact-sql)
@@ -339,5 +341,5 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po vytvoření tabulek pro datový sklad je dalším krokem načtení dat do tabulky.  Kurz načítání najdete v tématu [načtení dat do SQL Data Warehouse](load-data-wideworldimportersdw.md).

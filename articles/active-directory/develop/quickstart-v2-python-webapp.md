@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257891"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309614"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -101,48 +101,35 @@ K provedení této ukázky budete potřebovat:
 1. Otevřete soubor **app_config. py** , který najdete v kořenové složce a nahraďte následujícím fragmentem kódu:
 
 ```python
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-CLIENT_ID = "Enter_the_Application_Id_here"
 CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-SCOPE = ["https://graph.microsoft.com/User.Read"]
-REDIRECT_URI = "http://localhost:5000/getAToken"
+CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
 > Kde:
 >
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
->   - Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.onmicrosoft.com).
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
 > - `Enter_the_Client_Secret_Here`– je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4: Spuštění ukázky kódu
 
-- Budete muset nainstalovat MSAL knihovny Pythonu, architekturu baněk, baňky pro správu relací na straně serveru a požadavky pomocí PIP následujícím způsobem:
+1. Budete muset nainstalovat MSAL knihovny Pythonu, architekturu baněk, baňky pro správu relací na straně serveru a požadavky pomocí PIP následujícím způsobem:
 
-```Shell
-pip install msal
-pip install flask
-pip install Flask-Session
-pip install requests
-```
+   ```Shell
+   pip install -r requirements.txt
+   ```
 
-- Pokud je proměnná prostředí pro baňku již nastavena: Spusťte app.py z prostředí nebo příkazového řádku:
+2. Spusťte app.py z prostředí nebo příkazového řádku:
 
-```Shell
-python app.py
-```
+   ```Shell
+   python app.py
+   ```
 
-- Pokud není nastavená proměnná prostředí pro baněk:
+## <a name="next-steps"></a>Další kroky
 
-    1. V prostředí shell nebo příkazovém řádku zadejte následující příkazy, a to tak, že přejdete do adresáře projektu:
+Přečtěte si další informace o webových aplikacích, které přihlásí uživatele, a potom zavolá webová rozhraní API:
 
-```Shell
-export FLASK_APP=app.py
-export FLASK_DEBUG=1
-flask run
-```
+> [!div class="nextstepaction"]
+> [Scénář: Webové aplikace, které přihlásí uživatele](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

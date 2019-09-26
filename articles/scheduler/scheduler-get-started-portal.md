@@ -10,23 +10,23 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531881"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300993"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí služby Azure Scheduler – Azure Portal
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
 
 V tomto kurzu se dozvíte, jak snadné je vytvořit a naplánovat úlohu a následně ji monitorovat a spravovat. 
 
 Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-## <a name="create-job"></a>Vytvoření úlohy
+## <a name="create-job"></a>Vytvořit úlohu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
 
@@ -93,7 +93,7 @@ Další informace o těchto oblastech získáte výběrem příslušné oblasti:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>properties
 
 Pokud chcete zobrazit vlastnosti jen pro čtení, které popisují metadata správy pro vaši úlohu, vyberte **Vlastnosti**.
 
@@ -110,7 +110,7 @@ Pokud chcete změnit upřesňující nastavení vaší úlohy, vyberte **Nastave
 | Typ akce | Popis | 
 |-------------|-------------| 
 | Všechny typy | Můžete změnit nastavení **Zásady opakování** a **Akce při chybě**. | 
-| Protokoly HTTP a HTTPS | Můžete změnit **Metodu** na libovolnou povolenou metodu. Také můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje. | 
+| HTTP a HTTPS | Můžete změnit **Metodu** na libovolnou povolenou metodu. Také můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje. | 
 | Fronta úložiště| Můžete změnit účet úložiště, název fronty, token SAS a text. | 
 | Service Bus | Můžete změnit obor názvů, cestu k tématu nebo frontě, nastavení ověření, typ přenosu, vlastnosti zprávy a text zprávy. | 
 ||| 
@@ -144,7 +144,7 @@ Pokud chcete zobrazit podrobnosti historie jednotlivých spuštění, napříkla
 
 Přístup ke službě Azure Scheduler můžete pro všechny uživatele podrobně spravovat pomocí řízení přístupu na základě role Azure. Informace o nastavení přístupu na základě rolí najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o [konceptech, terminologii a hierarchii entit](scheduler-concepts-terms.md)
 * [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)

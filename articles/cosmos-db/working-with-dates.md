@@ -5,21 +5,22 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 09/25/2019
+ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467815"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291149"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty ve službě Azure Cosmos DB
 Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](https://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek na přenos, JSON (a Azure Cosmos DB) podporuje jenom malou sadu základních typů: Řetězec, číslo, logická hodnota, pole, objekt a hodnota null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
 
-Kromě základních typů, mnoho aplikací se musí [data a času](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) typ představující datum a časové razítko. Tento článek popisuje, jak mohou vývojáři ukládat, načíst a dotazovat data ve službě Azure Cosmos DB pomocí sady .NET SDK.
+Kromě základních typů potřebuje mnoho aplikací, aby typ DateTime představoval data a časová razítka. Tento článek popisuje, jak mohou vývojáři ukládat, načíst a dotazovat data ve službě Azure Cosmos DB pomocí sady .NET SDK.
 
 ## <a name="storing-datetimes"></a>Ukládat data a času
-Ve výchozím nastavení [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) serializuje hodnoty data a času jako [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) řetězce. Většina aplikace mohly používat výchozí řetězcovou reprezentaci data a času z následujících důvodů:
+
+Azure Cosmos DB je vymezen na typy JSON, které neobsahují typ DateTime. Takže v Azure Cosmos DB musí být kalendářní data uložená jako řetězce. V současné době Azure Cosmos DB nepodporuje lokalizaci dat. Doporučený formát pro řetězce DateTime v Azure Cosmos DB je `YYYY-MM-DDThh:mm:ss.sssZ` podle standardu ISO 8601 UTC. Formátování řetězců v tomto formátu umožní řazení dat lexikograficky. Logika pro zpracování kalendářních dat typu non-UTC musí být definována klientem. Většina aplikace mohly používat výchozí řetězcovou reprezentaci data a času z následujících důvodů:
 
 * Je možné porovnat řetězce a relativní řazení hodnoty data a času se zachová, i když jsou tyto převedeny na řetězce. 
 * Tento postup nevyžaduje žádné vlastní kód nebo atributy pro převod formátu JSON.

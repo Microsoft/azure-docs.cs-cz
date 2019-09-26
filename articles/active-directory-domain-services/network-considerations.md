@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086581"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314995"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
@@ -46,7 +46,7 @@ Spravovaná doména Azure služba AD DS se připojuje k podsíti ve službě Azu
 * Azure služba AD DS musí být nasazené ve vlastní podsíti. Nepoužívejte existující podsíť ani podsíť brány.
 * Skupina zabezpečení sítě se vytvoří během nasazování spravované domény služba AD DS Azure. Tato skupina zabezpečení sítě obsahuje požadovaná pravidla pro správnou komunikaci služby.
     * Nevytvářejte ani nepoužívejte existující skupinu zabezpečení sítě s vlastními pravidly.
-* Azure služba AD DS vyžaduje mezi pět až sedm IP adresami. Ujistěte se, že rozsah IP adres podsítě může poskytovat tento počet adres.
+* Azure služba AD DS vyžaduje IP adresy 3-5. Ujistěte se, že rozsah IP adres podsítě může poskytovat tento počet adres.
     * Omezení dostupných IP adres může zabránit Azure AD Domain Services v údržbě dvou řadičů domény.
 
 Následující příklad diagramu popisuje platný návrh, ve kterém má Azure služba AD DS vlastní podsíť, existuje podsíť brány pro externí připojení a úlohy aplikací jsou v připojené podsíti v rámci virtuální sítě:
@@ -153,7 +153,7 @@ Příchozí provoz musíte také směrovat z IP adres obsažených v příslušn
 > [!CAUTION]
 > Tyto rozsahy IP adres datového centra Azure se můžou měnit bez předchozího upozornění. Ujistěte se, že máte procesy, abyste ověřili, že máte nejnovější IP adresy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o některých síťových prostředcích a možnostech připojení používaných službou Azure služba AD DS najdete v následujících článcích:
 

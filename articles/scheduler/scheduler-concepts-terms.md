@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530943"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300958"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
 
 ## <a name="entity-hierarchy"></a>Hierarchie entit
 
@@ -39,7 +39,7 @@ Na nejvyšší úrovni rozhraní REST API služby Scheduler zpřístupňuje tyto
 
 ### <a name="job-management"></a>Správa úloh
 
-Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Tady je adresa URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -47,7 +47,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Správa kolekce úloh
 
-Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Tady je adresa URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -55,7 +55,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Správa historie úloh
 
-Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Tady je adresa URI pro tuto operaci:
+Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Zde je adresa identifikátoru URI pro tuto operaci:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -75,13 +75,13 @@ Azure Scheduler podporuje několik typů úloh:
 Úloha služby Scheduler se skládá z těchto tří základních částí:
 
 * Akce, která se spustí, když se aktivuje časovač úlohy
-* Volitelné: Čas spuštění úlohy
+* Volitelné: Čas, kdy se má úloha spustit
 * Volitelné: Kdy a jak často se má úloha opakovat
-* Volitelné: Chyba akce, která se spustí v případě selhání primární akce
+* Volitelné: Chybová akce, která se spustí, pokud dojde k chybě primární akce
 
 Úloha obsahuje také data poskytnutá systémem, jako je například čas dalšího plánovaného spuštění úlohy. Definice kódu úlohy je objekt ve formátu JSON (JavaScript Object Notation), který obsahuje tyto elementy:
 
-| Element | Požaduje se | Popis | 
+| Prvek | Požadováno | Popis | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
@@ -227,7 +227,7 @@ Stejně jako primární **akce** může i akce při chybě využívat jednoducho
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>recurrence
+## <a name="recurrence"></a>opakování
 
 Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakovat. Příklad:
 
@@ -245,7 +245,7 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 },
 ```
 
-| Vlastnost | Požaduje se | Value | Popis | 
+| Vlastnost | Požadováno | Value | Popis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
@@ -275,7 +275,7 @@ Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nasta
 },
 ```
 
-| Vlastnost | Požaduje se | Value | Popis | 
+| Vlastnost | Požadováno | Value | Popis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
 | **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
@@ -319,7 +319,7 @@ Příklad:
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)

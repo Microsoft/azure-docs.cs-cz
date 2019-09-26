@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 381298abcfa4fa707af6b382565b4bfb990e96e6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899507"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299398"
 ---
 # <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Rychlý start: Použití jazyka Java k vytvoření a publikování funkce pro Azure Functions
 
@@ -223,7 +223,7 @@ Bude mít aktualizovaný výstup:
 Hi, AzureFunctionsTest
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
 
@@ -231,3 +231,6 @@ Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadil
 - Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
 - Funkce můžete psát a ladit místně pomocí nástrojů [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) a [Eclipse](functions-create-maven-eclipse.md). 
 - Funkce ladění můžete do Azure nasadit pomocí editoru Visual Studio Code. Pokyny najdete v dokumentaci editoru Visual Studio Code o [aplikacích bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
+
+> [!NOTE] 
+> Můžete také vytvořit Azure Functions projekt založený na Kotlin pomocí Azure-Functions-Kotlin-Archetype. Další informace najdete v [úložišti GitHub](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) .

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191776"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883401"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.
 
@@ -99,6 +99,9 @@ Tato sestava obsahuje popisy všech zásad, které se nezdařily, spolu s revizn
 
 Během kroku **vytvoření verze Preview** vytvoříme verzi nabídky, která je dostupná jenom pro cílovou skupinu, kterou jste zadali v části verze Preview vaší nabídky.
 
+>[!Note]
+> Nepoužívejte tento krok k tomu, aby uživatelé mimo vaši organizaci měli přehled o nabídce. Místo toho použijte možnost **soukromé nabídky** . V tuto chvíli nebyla vaše nabídka plně testována a ověřena a není připravena k externí distribuci.
+
 ## <a name="publisher-approval"></a>Schválení vydavatele
 
 V tomto kroku se vám pošle e-mail s žádostí o kontrolu a schválení vaší nabídky Preview před konečným krokem publikování.
@@ -141,6 +144,6 @@ V tomto kroku zajistíme, že vaše nabídka bude veřejně dostupná na webu Ma
 
 Pokud chcete provést změny v nabídce, kterou jste už publikovali, musíte nejdřív aktualizovat existující nabídku a pak ji znovu publikovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

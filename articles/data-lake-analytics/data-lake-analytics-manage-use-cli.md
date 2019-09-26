@@ -1,6 +1,6 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure
-description: Tento článek popisuje, jak pomocí Azure CLI ke správě úloh Data Lake Analytics, zdroje dat a uživatelů.
+description: Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure spravovat Data Lake Analytics úlohy, zdroje dat & uživatele.
 services: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -8,18 +8,18 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d66926d8ba87096537800d22a9c116b7b10d23cf
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387017"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309739"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Další informace o správě účtů Azure Data Lake Analytics, zdroje dat, uživatelů a úloh pomocí Azure CLI. Pokud chcete zobrazit témata týkající se řízení pomocí jiných nástrojů, klikněte na výběr karty výše.
+Naučte se spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure CLI. Pokud chcete zobrazit témata správy pomocí jiných nástrojů, klikněte na kartu nahoře.
 
 
 **Požadavky**
@@ -32,14 +32,14 @@ Než začnete tento kurz, musíte mít následující prostředky:
 
    * Pokud chcete absolvovat tuto ukázku, stáhněte a nainstalujte **předběžnou verzi** [nástrojů příkazového řádku Azure](https://github.com/MicrosoftBigData/AzureDataLake/releases).
 
-* Ověření pomocí `az login` příkazů a vyberte předplatné, pro kterou chcete použít. Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
+* Proveďte ověření pomocí `az login` příkazu a vyberte předplatné, které chcete použít. Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
 
    ```azurecli
    az login
    az account set --subscription <subscription id>
    ```
 
-   Teď můžete přistupovat příkazy Data Lake Analytics a Data Lake Store. Spuštěním následujícího příkazu zobrazíte seznam příkazů Data Lake Store a Data Lake Analytics:
+   Nyní máte přístup k příkazům Data Lake Analytics a Data Lake Store. Spusťte následující příkaz pro výpis Data Lake Store a Data Lake Analytics příkazů:
 
    ```azurecli
    az dls -h
@@ -48,11 +48,11 @@ Než začnete tento kurz, musíte mít následující prostředky:
 
 ## <a name="manage-accounts"></a>Správa účtů
 
-Před spuštěním jakékoli úlohy Data Lake Analytics, musíte mít účet Data Lake Analytics. Na rozdíl od Azure HDInsight neplatíte za účet Analytics Pokud úloha není spuštěná. Platíte jenom za čas, kdy je spuštěná úloha.  Další informace najdete v tématu [Přehled služby Azure Data Lake Analytics](data-lake-analytics-overview.md).  
+Před spuštěním Data Lake Analytics úloh musíte mít účet Data Lake Analytics. Na rozdíl od Azure HDInsight neplatíte za účet Analytics, pokud není úloha spuštěná. Platíte jenom za čas, kdy je úloha spuštěná.  Další informace najdete v tématu [přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).  
 
-### <a name="create-accounts"></a>Vytvoření účtů
+### <a name="create-accounts"></a>Vytváření účtů
 
-Spusťte následující příkaz k vytvoření účtu Data Lake 
+Spusťte následující příkaz, který vytvoří účet Data Lake. 
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -60,7 +60,7 @@ Spusťte následující příkaz k vytvoření účtu Data Lake
 
 ### <a name="update-accounts"></a>Aktualizace účtů
 
-Následující příkaz aktualizuje vlastnosti existujícího účtu Data Lake Analytics
+Následující příkaz aktualizuje vlastnosti existujícího účtu Data Lake Analytics.
 
    ```azurecli
    az dla account update --account "<Data Lake Analytics Account Name>" --firewall-state "Enabled" --query-store-retention 7
@@ -68,19 +68,19 @@ Následující příkaz aktualizuje vlastnosti existujícího účtu Data Lake A
 
 ### <a name="list-accounts"></a>Výpis účtů
 
-Přehled Data Lake Analytics účty v konkrétní skupině prostředků
+Výpis účtů Data Lake Analytics v rámci konkrétní skupiny prostředků
 
    ```azurecli
    az dla account list "<Resource group name>"
    ```
 
-## <a name="get-details-of-an-account"></a>Získat podrobnosti o účtu
+## <a name="get-details-of-an-account"></a>Získání podrobností o účtu
 
    ```azurecli
    az dla account show --account "<Data Lake Analytics account name>" --resource-group "<Resource group name>"
    ```
 
-### <a name="delete-an-account"></a>Odstranit účet
+### <a name="delete-an-account"></a>Odstranění účtu
 
    ```azurecli
    az dla account delete --account "<Data Lake Analytics account name>" --resource-group "<Resource group name>"
@@ -88,34 +88,34 @@ Přehled Data Lake Analytics účty v konkrétní skupině prostředků
 
 ## <a name="manage-data-sources"></a>Správa zdrojů dat
 
-Data Lake Analytics aktuálně podporuje následující dva datové zdroje:
+Data Lake Analytics aktuálně podporuje následující dva zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Když vytvoříte účet Analytics, je třeba určit účet úložiště Azure Data Lake výchozí účet úložiště. Výchozí účet Data Lake storage slouží k ukládání protokolů auditu úlohy metadata a úlohy. Jakmile vytvoříte účet Analytics můžete přidat další účty Data Lake Storage a/nebo účtu služby Azure Storage. 
+Když vytváříte účet Analytics, musíte určit účet Azure Data Lake Storage jako výchozí účet úložiště. Výchozí Data Lake účet úložiště se používá k ukládání metadat úlohy a protokolů auditu úlohy. Po vytvoření účtu Analytics můžete přidat další účty Data Lake Storage a účet Azure Storage. 
 
 ### <a name="find-the-default-data-lake-store-account"></a>Najít výchozí účet Data Lake Store
 
-Můžete zobrazit výchozí účet Data Lake Store používá spuštěním `az dla account show` příkazu. Výchozí název účtu je uvedena pod vlastnost defaultDataLakeStoreAccount.
+Výchozí účet Data Lake Store, který se používá, můžete zobrazit spuštěním `az dla account show` příkazu. Výchozí název účtu je uvedený pod vlastností defaultDataLakeStoreAccount.
 
    ```azurecli
    az dla account show --account "<Data Lake Analytics account name>"
    ```
 
-### <a name="add-additional-blob-storage-accounts"></a>Přidat další účty úložiště Blob
+### <a name="add-additional-blob-storage-accounts"></a>Přidat další účty úložiště BLOB
 
    ```azurecli
    az dla account blob-storage add --access-key "<Azure Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Storage account name>"
    ```
 
 > [!NOTE]
-> Jsou podporovány pouze objekt Blob úložiště krátké názvy. Nepoužívejte plně kvalifikovaný název domény, například "myblob.blob.core.windows.net".
+> Podporovány jsou pouze krátké názvy služby Blob Storage. Nepoužívejte plně kvalifikovaný název domény, například "myblob.blob.core.windows.net".
 > 
 
 ### <a name="add-additional-data-lake-store-accounts"></a>Přidat další účty Data Lake Store
 
-Následující příkaz aktualizuje zadaný účet Data Lake Analytics s další účet Data Lake Store:
+Následující příkaz aktualizuje zadaný Data Lake Analytics účet o další Data Lake Store účet:
 
    ```azurecli
    az dla account data-lake-store add --account "<Data Lake Analytics account name>" --data-lake-store-account-name "<Data Lake Store account name>"
@@ -123,7 +123,7 @@ Následující příkaz aktualizuje zadaný účet Data Lake Analytics s další
 
 ### <a name="update-existing-data-source"></a>Aktualizovat existující zdroj dat
 
-Aktualizace existujícího klíče účtu úložiště objektů Blob:
+Aktualizace existujícího klíče účtu úložiště objektů BLOB:
 
    ```azurecli
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
@@ -131,61 +131,61 @@ Aktualizace existujícího klíče účtu úložiště objektů Blob:
 
 ### <a name="list-data-sources"></a>Seznam zdrojů dat:
 
-Pro výpis účtů Data Lake Store:
+Výpis účtů Data Lake Store:
 
    ```azurecli
    az dla account data-lake-store list --account "<Data Lake Analytics account name>"
    ```
 
-Do seznamu objektů Blob v účtu úložiště:
+Výpis účtu úložiště objektů BLOB:
 
    ```azurecli
    az dla account blob-storage list --account "<Data Lake Analytics account name>"
    ```
 
-![Data Lake Analytics seznamu zdroj dat](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+![Zdroj dat seznamu Data Lake Analytics](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>Odstranění zdroje dat:
+### <a name="delete-data-sources"></a>Odstranit zdroje dat:
 Odstranění účtu Data Lake Store:
 
    ```azurecli
    az dla account data-lake-store delete --account "<Data Lake Analytics account name>" --data-lake-store-account-name "<Azure Data Lake Store account name>"
    ```
 
-Pokud chcete odstranit účet úložiště objektů Blob:
+Postup odstranění účtu úložiště BLOB:
 
    ```azurecli
    az dla account blob-storage delete --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-## <a name="manage-jobs"></a>Správa úloh
-Než budete moct vytvořit úlohu, musíte mít účet Data Lake Analytics.  Další informace najdete v tématu [Správa služby Data Lake Analytics účty](#manage-accounts).
+## <a name="manage-jobs"></a>Spravovat úlohy
+Než budete moct vytvořit úlohu, musíte mít účet Data Lake Analytics.  Další informace najdete v tématu [Správa účtů Data Lake Analytics](#manage-accounts).
 
-### <a name="list-jobs"></a>Seznam úloh
+### <a name="list-jobs"></a>Vypsat úlohy
 
    ```azurecli
    az dla job list --account "<Data Lake Analytics account name>"
    ```
 
-   ![Data Lake Analytics seznamu zdroj dat](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-jobs.png)
+   ![Zdroj dat seznamu Data Lake Analytics](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-jobs.png)
 
-### <a name="get-job-details"></a>Získání podrobností o úloze
+### <a name="get-job-details"></a>Získat podrobnosti o úloze
 
    ```azurecli
    az dla job show --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"
    ```
 
-### <a name="submit-jobs"></a>Odesílání úloh
+### <a name="submit-jobs"></a>Odeslat úlohy
 
 > [!NOTE]
-> Výchozí prioritu úlohy je 1000 a výchozí stupně paralelního zpracování úlohy je 1.
+> Výchozí priorita úlohy je 1000 a výchozí stupeň paralelismu pro úlohu je 1.
 > 
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
 
 ### <a name="cancel-jobs"></a>Zrušit úlohy
-Pomocí seznamu příkazu k vyhledání id úlohy a pak použijte Storno pro zrušení úlohy.
+Pomocí příkazu list Najděte ID úlohy a pak pomocí tlačítka Zrušit úlohu zrušte.
 
    ```azurecli
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"
@@ -211,7 +211,7 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Začínáme se službou Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Správa Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md)

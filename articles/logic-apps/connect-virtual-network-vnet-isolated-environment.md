@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099460"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309325"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -44,18 +44,19 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, přečtěte si, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md).
+* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, přečtěte si, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
 
   * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet).
-  
-    > [!NOTE]
-    > Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
-    > 
-    > **Název**: <*trasa-Name*><br>
-    > **Předpona adresy**: 0.0.0.0/0<br>
-    > **Další segment směrování**: Internet
+
+  * Názvy `<`podsítí musí začínat znakem abecedy nebo podtržítkem a nesmí používat tyto znaky:, `>`, `%`, `&`, `\\`, `?`, `/`. 
 
   * Ujistěte se, že vaše virtuální síť [zpřístupňuje tyto porty](#ports) , takže vaše ISE funguje správně a zůstává přístupná.
+
+  * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
+
+    **Název**: <*trasa-Name*><br>
+    **Předpona adresy**: 0.0.0.0/0<br>
+    **Další segment směrování**: Internet
 
 * Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Jinak budete muset pokaždé, když změníte server DNS, restartovat také ISE, což je funkce, která je dostupná ve verzi Public Preview ISE.
 
@@ -65,7 +66,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 
 Pokud používáte ISE se stávající virtuální sítí, běžný problém instalace je jeden nebo více blokovaných portů. Konektory používané pro vytváření připojení mezi ISE a cílovým systémem můžou mít také vlastní požadavky na porty. Pokud například komunikujete se systémem FTP pomocí konektoru FTP, zajistěte, aby byl k dispozici port, který používáte v tomto systému FTP, jako je například port 21 pro odesílání příkazů.
 
-Pokud jste vytvořili novou virtuální síť a podsítě bez omezení, nemusíte ve virtuální síti nastavovat [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/security-overview.md) , abyste mohli řídit provoz napříč podsítěmi. Pro existující virtuální síť můžete *volitelně* nastavit skupin zabezpečení sítě [filtrováním síťového provozu napříč](../virtual-network/tutorial-filter-network-traffic.md)podsítěmi. Pokud zvolíte tuto trasu, ujistěte se, že ISE otevírá konkrétní porty, jak je popsáno v následující tabulce ve virtuální síti, která má skupin zabezpečení sítě. Takže pro existující skupin zabezpečení sítě nebo brány firewall ve virtuální síti se ujistěte, že tyto porty otevřou. Díky tomu váš ISE zůstane přístupný a bude fungovat správně, takže nepřijdete o přístup k vašemu ISE. V opačném případě, pokud jsou nějaké požadované porty nedostupné, váš ISE přestane fungovat.
+Pokud jste vytvořili novou virtuální síť a podsítě bez omezení, nemusíte ve virtuální síti nastavovat [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/security-overview.md) , abyste mohli řídit provoz napříč podsítěmi. Pro existující virtuální síť můžete *volitelně* nastavit skupin zabezpečení sítě [filtrováním síťového provozu napříč podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Pokud zvolíte tuto trasu, ujistěte se, že ISE otevírá konkrétní porty, jak je popsáno v následující tabulce ve virtuální síti, která má skupin zabezpečení sítě. Takže pro existující skupin zabezpečení sítě nebo brány firewall ve virtuální síti se ujistěte, že tyto porty otevřou. Díky tomu váš ISE zůstane přístupný a bude fungovat správně, takže nepřijdete o přístup k vašemu ISE. V opačném případě, pokud jsou nějaké požadované porty nedostupné, váš ISE přestane fungovat.
 
 > [!IMPORTANT]
 > Pro interní komunikaci v rámci podsítí vyžaduje ISE otevření všech portů v těchto podsítích.
@@ -93,7 +94,7 @@ Tato tabulka popisuje porty ve vaší virtuální síti, které používá váš
 | Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Odchozí | 1886 | VirtualNetwork | AzureMonitor | Pro publikování stavu do Resource Health |
 | Koncový bod správy API Management | Příchozí | 3443 | APIManagement | VirtualNetwork | |
-| Závislost z protokolu k zásadám centra událostí a agentům monitorování | Odchozí | 5672 | VirtualNetwork | EventHub | |
+| Závislost z protokolu k zásadám centra událostí a agentům monitorování | Odchozí | 5672 | VirtualNetwork | Centrum událostí | |
 | Přístup k mezipaměti Azure pro instance Redis mezi instancemi rolí | Příchozí <br>Odchozí | 6379-6383 | VirtualNetwork | VirtualNetwork | Aby ISE mohli pracovat s Azure cache pro Redis, musíte tyto [odchozí a příchozí porty, které jsou popsané v mezipaměti Azure, otevřít i pro Redis Nejčastější dotazy](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 | Azure Load Balancer | Příchozí | * | AzureLoadBalancer | VirtualNetwork | |
 ||||||
@@ -134,13 +135,17 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    **Vytvořit podsíť**
 
-   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Po vytvoření prostředí nemůžete tyto adresy podsítě změnit. Každá podsíť musí splňovat tato kritéria:
-
-   * Má název, `<`který začíná abecedním znakem nebo podtržítkem a nemá tyto znaky:, `>`, `%`, `&`, `\\`, `?`,`/`
+   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Po vytvoření prostředí nemůžete tyto adresy podsítě změnit.
+   
+   > [!IMPORTANT]
+   > 
+   > Názvy podsítí musí začínat znakem abecedy nebo podtržítkem (bez čísel `<`) a nepoužívat tyto znaky:, `>`, `%`, `&`, `\\`, `?`, `/`.
+   
+   Každá podsíť musí taky splňovat tyto požadavky:
 
    * Používá [Formát CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
 
-   * Používá minimálně a `/27` v adresním prostoru, protože každá podsíť musí mít minimálně 32 adres. Příklad:
+   * Používá `/27` *minimálně a*v adresním prostoru, protože každá podsíť musí mít *minimálně 32 adres* . Příklad:
 
      * `10.0.0.0/27`má 32 adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32.
 
@@ -150,7 +155,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
      Další informace o výpočtu adres najdete v tématu [bloky CIDR protokolu IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), nezapomeňte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit tuto tabulku s každou podsítí, kterou používá vaše ISE:
+   * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
 
      **Název**: <*trasa-Name*><br>
      **Předpona adresy**: 0.0.0.0/0<br>

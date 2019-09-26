@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051053"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309585"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytváření a správa objektů BLOB v úložišti objektů BLOB v Azure pomocí Azure Logic Apps
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak můžete v rámci aplikace logiky pomocí kone
 Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. který funguje jako Trigger vaší aplikace logiky. Když k této události dojde, můžete aplikaci logiky aktualizovat nějaký soubor v kontejneru úložiště objektů blob, což je akce v aplikaci logiky.
 
 > [!NOTE]
-> Logic Apps nepodporuje přímé připojení k účtům úložiště Azure přes brány firewall. Pokud chcete získat přístup k těmto účtům úložiště, použijte jednu z možností:
+> Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Logic Apps však mají přístup k účtům Azure Storage, které existují v jiné oblasti, protože pro komunikaci mezi oblastmi se používá veřejná IP adresa. Případně můžete použít kteroukoli z možností:
 >
 > * Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
 >
@@ -65,7 +65,7 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky s
 
    Tento příklad používá tuto aktivační událost: **Při přidání nebo úpravě objektu BLOB (pouze vlastnosti)**
 
-   ![Vybrat trigger](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
+   ![Vybrat aktivační událost](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
 3. Pokud se zobrazí výzva k zadání podrobností o připojení, [vytvořte připojení k úložišti objektů BLOB hned teď](#create-connection). Nebo, pokud připojení již existuje, zadejte potřebné informace pro aktivační událost.
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515373"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899721"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Pro důležité obchodní informace úroveň – Azure SQL Database
 
@@ -45,6 +45,17 @@ Kromě toho Pro důležité obchodní informace cluster obsahuje integrovanou mo
 ## <a name="when-to-choose-this-service-tier"></a>Kdy zvolit tuto úroveň služby?
 
 Úroveň služby Pro důležité obchodní informace je navržená pro aplikace, které vyžadují odezvy s nízkou latencí z podkladového úložiště SSD (průměrně 1-2 MS), rychlé obnovení v případě, že se podkladová infrastruktura nezdařila nebo pokud je potřeba mimo jiné načítat sestavy, analýzy a jen pro čtení. dotazuje se na bezplatně čitelnou sekundární repliku primární databáze.
+
+Hlavní důvody, proč byste měli zvolit Pro důležité obchodní informace úroveň služby místo Pro obecné účely úrovně:
+-   Nízké požadavky na latenci v/v – zatížení, které potřebuje rychlou odezvu z vrstvy úložiště (1-2 milisekund v průměru), by mělo používat Pro důležité obchodní informaceovou vrstvu. 
+-   Častá komunikace mezi aplikací a databází Aplikace, která nemůže využít ukládání do mezipaměti aplikační vrstvy ani [dávkování požadavků](sql-database-use-batching-to-improve-performance.md) a potřebovat poslat mnoho dotazů SQL, které je nutné rychle zpracovat, je dobrým kandidátem na pro důležité obchodní informaceovou vrstvu.
+-   Velký počet aktualizací – operace vložení, aktualizace a odstranění upraví datové stránky v paměti (nezměněná stránka), které je třeba uložit do datových souborů `CHECKPOINT` s operací. Možná dojde k selhání procesu databázového stroje nebo převzetí služeb při selhání databáze s velkým počtem nezměněných stránek, což může prodloužit dobu obnovení Pro obecné účely úrovně. Pro důležité obchodní informace úroveň použijte v případě, že máte zatížení, které způsobuje mnoho změn v paměti. 
+-   Dlouho běžící transakce, které upravují data. Transakce, které jsou otevřeny po delší dobu, zabraňují zkracování souboru protokolu, který by mohl zvýšit velikost protokolu a počet [souborů virtuálního protokolu (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Vysoký počet VLF může zpomalit obnovení databáze po převzetí služeb při selhání.
+-   Úlohy s vytvářením sestav a analytickými dotazy, které se dají přesměrovat na bezplatnou sekundární repliku jen pro čtení.
+- Vyšší odolnost a rychlejší obnovení při selhání. V případě selhání systému bude databáze na primární instanci zakázaná a jedna ze sekundárních replik se hned stala novou primární databází pro čtení a zápis, která je připravená na zpracování dotazů. Databázový stroj nemusí analyzovat a opakovat transakce ze souboru protokolu a načíst všechna data do vyrovnávací paměti.
+- Rozšířená ochrana před poškozením dat – Pro důležité obchodní informace vrstva využívá repliky databáze na pozadí pro účely kontinuity podnikových aplikací, a proto služba také využívá automatickou opravu stránky, což je stejná technologie, která se používá pro SQL Server databáze. [zrcadlení a skupiny dostupnosti](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). V případě, že replika nemůže přečíst stránku z důvodu problému s integritou dat, bude nová kopie stránky načtena z jiné repliky, která nahrazuje nečitelný stránku, aniž by došlo ke ztrátě dat nebo výpadkům zákazníků. Tato funkce se vztahuje na vrstvu Pro obecné účely, pokud má databáze geograficky sekundární repliku.
+- Vyšší dostupnost – Pro důležité obchodní informace úroveň v nástroji multi-AZ Configuration garantuje 99,995% dostupnost, ve srovnání s 99,99% Pro obecné účely úrovně.
+- Rychlá úroveň geografického obnovení – Pro důležité obchodní informace nakonfigurovaná s geografickou replikací, má zaručený cíl bodu obnovení (RPO) 5 sec a doba obnovení (RTO) 30 sekund po dobu 100% nasazených hodin.
 
 ## <a name="next-steps"></a>Další kroky
 

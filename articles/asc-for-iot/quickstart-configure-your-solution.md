@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597029"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299689"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Rychlý start: Konfigurace řešení IoT
 
@@ -32,11 +32,11 @@ Azure Security Center pro IoT poskytují ucelené zabezpečení pro řešení Io
 
 Díky Azure Security Center pro IoT můžete monitorovat celé řešení IoT na jednom řídicím panelu, zpřístupnění všechna vaše zařízení IoT, platformy IoT a prostředky back-endu v Azure.
 
-Po povolení v IoT Hub Azure Security Center pro IoT automaticky identifikuje další služby Azure, které se také připojí k vašemu centru IoT a souvisí s vaším řešením IoT.
+Po povolení IoT Hub Azure Security Center pro IoT automaticky identifikuje další služby Azure, připojí se taky k vašemu IoT Hub a v souvislosti s vaším řešením IoT.
 
-Kromě automatického zjišťování vztahů můžete také vybrat, které další skupiny prostředků Azure chcete označit jako součást řešení IoT.
+Kromě automatického zjišťování vztahů můžete také vybrat, které další skupiny prostředků Azure chcete označit jako součást řešení IoT. 
 
-Vaše výběry umožňují přidat celé odběry, skupiny prostředků nebo jeden prostředek.
+Vaše výběry umožňují přidat celé odběry, skupiny prostředků nebo jeden prostředek. 
 
 Po definování všech vztahů prostředků Azure Security Center pro IoT využít Azure Security Center k poskytnutí doporučení a výstrah zabezpečení pro tyto prostředky.
 
@@ -45,15 +45,15 @@ Po definování všech vztahů prostředků Azure Security Center pro IoT využ�
 Pokud chcete přidat nový prostředek do řešení IoT, udělejte toto: 
 
 1. Otevřete **IoT Hub** v Azure Portal. 
-2. V nabídce vlevo vyberte a otevřete **prostředky** v části **zabezpečení** . 
-3. Vyberte **Upravit** a zvolte skupiny prostředků, které patří do vašeho řešení IoT.
-5. Klikněte na **Přidat**. 
+1. V nabídce **zabezpečení** v nabídce vlevo vyberte a otevřete **prostředky** . 
+1. Vyberte **Upravit** a zvolte skupiny prostředků, které patří do vašeho řešení IoT.
+1. Klikněte na **Přidat**. 
 
 Blahopřejeme! Přidali jste do řešení IoT novou skupinu prostředků.
 
 Azure Security Center pro IoT teď monitoruje nově přidávané skupiny prostředků a v rámci vašeho řešení IoT obnáší relevantní doporučení a výstrahy zabezpečení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším článku se dozvíte, jak vytvářet moduly zabezpečení...
 

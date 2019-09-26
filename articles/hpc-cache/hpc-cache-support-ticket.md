@@ -4,14 +4,14 @@ description: Jak otevřít žádost o nápovědu pro mezipaměť HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29750ab19f74ef1ceab8c69792d12b9f9ca2a297
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180887"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299945"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Otevření lístku podpory pro mezipaměť Azure HPC (Preview)
 
@@ -24,6 +24,8 @@ V seznamu vyberte své předplatné.
 Pokud chcete najít službu Azure HPC cache Preview, klikněte na tlačítko **všechny služby** a vyhledejte HPC.
 
 ![Snímek obrazovky karty základy žádosti o podporu, částečně vyplněný, jak je popsáno](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 Vyplňte zbývající pole informacemi a preferencemi a pak odešlete lístek, jakmile budete připraveni.
 

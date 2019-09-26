@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840101"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299868"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: Vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -27,7 +27,7 @@ Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako
 Chceme, aby zařízení IoT Edge pro nás dosáhlo čtyř věcí:
 
 * Příjem dat z listových zařízení
-* Předpověď RUL pro zařízení, které odeslalo data
+* Předpověď zbývající doby životnosti (RUL) pro zařízení, které odesílá data
 * Pošle zprávu jenom RUL, aby se zařízení dalo IoT Hub (Tato funkce se dá upravit tak, aby se zasílaly jenom v případě, že RUL klesne pod určitou úroveň).
 * Uložte data na listovém zařízení do místního souboru na zařízení IoT Edge. Tento datový soubor se pravidelně nahrává do IoT Hub prostřednictvím nahrávání souborů za účelem upřesnění školení modelu Machine Learning. Použití nahrávání souborů místo konstantního streamování zpráv je cenově výhodnější.
 
@@ -56,7 +56,7 @@ Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Vytvoření nového řešení IoT Edge
 
-Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publikovali image kontejneru obsahující náš model RUL. Azure Machine Learning, jako součást procesu vytváření obrazu, sestavená v částech, aby bylo možné image nasadit jako modul Azure IoT Edge. V tomto kroku vytvoříme Azure IoT Edge řešení pomocí modulu "Azure Machine Learning" a nasměruje modul na image, kterou jsme publikovali pomocí Azure Notebooks.
+Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publikovali image kontejneru obsahující náš model RUL. Azure Machine Learning jako součást procesu vytváření bitové kopie zabalený model, aby bylo možné image nasadit jako modul Azure IoT Edge. V tomto kroku vytvoříme Azure IoT Edge řešení pomocí modulu "Azure Machine Learning" a nasměruje modul na image, kterou jsme publikovali pomocí Azure Notebooks.
 
 1. Otevřete na svém vývojovém počítači relaci vzdálené plochy.
 
@@ -153,7 +153,7 @@ Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publ
 
 V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrovače zpracovává několik odpovědností pro naše řešení:
 
-* **Přijímat zprávy ze zařízení na listech:** když se zprávy dostanou do IoT Edge zařízení ze zařízení pro příjem dat, modul router zprávu přijme a začne orchestrovat směrování zprávy.
+* **Přijímat zprávy ze zařízení na listech: když se zprávy dostanou** do IoT Edge zařízení ze zařízení pro příjem dat, modul router zprávu přijme a začne orchestrovat směrování zprávy.
 * **Odeslat zprávy do modulu třídění RUL:** při přijetí nové zprávy ze zařízení pro příjem dat modul směrovače transformuje zprávu na formát, který klasifikátor RUL očekává. Směrovač pošle zprávu do klasifikátoru RUL pro předpověď RUL. Jakmile klasifikátor provede předpověď, pošle zprávu zpět do modulu směrovače.
 * **Posílání zpráv RUL do IoT Hub:** když směrovač přijímá zprávy od klasifikátoru, transformuje zprávu tak, aby obsahovala jenom základní informace, ID zařízení a RUL, a pošle zkrácenou zprávu do služby IoT Hub. Další vylepšení, které jsme tady neudělali, by poslalo zprávy do IoT Hub jenom v případě, že předpověď RUL klesne pod prahovou hodnotu (například když je RUL menší než 100 cyklů). Filtrování tímto způsobem omezuje objem zpráv a snižuje náklady centra IoT.
 * **Poslat zprávu do modulu zapisovače Avro:** Pokud chcete zachovat všechna data odesílaná zařízením pro příjem dat, modul router pošle celou zprávu přijatou z třídění do modulu zapisovače Avro, který zachová a nahraje data pomocí IoT Hubho nahrání souboru.
@@ -614,7 +614,7 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 7. Vyberte vybrat **kontejner**.
 
-8. Vyberte účet úložiště, který se používá v celém rámci tohoto kurzu, který se jmenuje jako **\<iotedgeandml Unique\>přípona**.
+8. Vyberte účet úložiště, který se používá v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml\<Unique přípona\>** .
 
 9. Zvolte kontejner **ruldata** a klikněte na **Vybrat**.
 
@@ -821,13 +821,13 @@ Když se přihlásíte do zařízení IoT Edge, získáte přístup k dobrým in
    sudo docker exec -it avroFileWriter bash
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jsme vytvořili řešení IoT Edge v Visual Studio Code se třemi moduly, klasifikátorem, směrovačem a zapisovačem nebo odesláním souborů. Nastavili jsme trasy, aby mohly moduly vzájemně komunikovat na hraničním zařízení, upravili konfiguraci hraničního zařízení a aktualizovali fázemi pro instalaci závislostí a přidali připojení vazby k kontejnerům modulů. Dále jsme aktualizovali konfiguraci IoT Hub pro směrování našich zpráv na základě typu a pro zpracování nahrávání souborů. Na všech místech jsme nasadili moduly na zařízení IoT Edge a zajistili, že moduly běžely správně.
 
 Další informace najdete na následujících stránkách:
 
-* [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md)
+* [Nasazování modulů a vytváření tras ve službě IoT Edge](module-composition.md)
 * [Syntaxe dotazu směrování zpráv IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [Směrování zpráv IoT Hub: teď se směrováním na text zprávy](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Nahrávání souborů s využitím služby IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)

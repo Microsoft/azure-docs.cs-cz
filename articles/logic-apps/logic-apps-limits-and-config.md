@@ -1,5 +1,5 @@
 ---
-title: Omezení a konfigurace-Azure Logic Apps | Microsoft Docs
+title: Omezení a konfigurace – Azure Logic Apps
 description: Omezení služby a hodnoty konfigurace pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1479c6665b5d68e0fa16ece7e37f4e2a2457c69a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242374"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309795"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -118,6 +118,12 @@ Chcete-li přejít nad tato omezení v normálním zpracování nebo spustit tes
 
 > [!NOTE]
 > [SKU vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, protože tato SKU nemá žádnou smlouvu o úrovni služeb (SLA) ani možnosti škálování. Tuto SKU použijte pouze pro experimentování, vývoj a testování, nikoli pro produkční nebo výkonnostní testování.
+
+<a name="gateway-limits"></a>
+
+## <a name="gateway-limits"></a>Omezení brány
+
+Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a aktualizace. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="request-limits"></a>
 
@@ -258,7 +264,7 @@ Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfigurace brány firewall: IP adresy
 
-Všechny Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte brány firewall se *všemi* [příchozími](#inbound) *a* [odchozími](#outbound) IP adresami, které používá služba Logic Apps. , a to na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti. 
+Všechny Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte brány firewall se *všemi* příchozími [](#inbound) *a* [odchozími](#outbound) IP adresami, které používá služba Logic Apps. , a to na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti. 
 
 Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
@@ -338,7 +344,7 @@ Logic Apps nepodporuje přímé připojení k účtům úložiště Azure přes 
 | Spojené království – západ | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 * Naučte se [vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) .  
 * Další informace o [běžných příkladech a scénářích](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390954"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300278"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné chybně napsaná slova s kontrolu pravopisu Bingu
 
@@ -89,7 +89,13 @@ Koncový bod adresy URL obsahuje několik hodnot, které je potřeba předávat 
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Ignorovat pravopisné chyby hned
-Pokud už nechcete používat službu API kontrola pravopisu Bingu v7, lze označit projevy, které mají pravopisné chyby hned, takže správné pravopisu, jakož i překlepy další LUIS. Tato možnost vyžaduje další popisování úsilí než použití kontroly pravopisu.
+
+Pokud nechcete používat službu rozhraní API Bingu pro kontrolu pravopisu v7, je nutné přidat správné a nesprávné zadání pravopisu. 
+
+Existují dvě řešení:
+
+* Popisek – příklad projevy, který má všechny různé pravopisy, aby LUIS mohl zjistit správné pravopisy a také překlepy. Tato možnost vyžaduje další popisování úsilí než použití kontroly pravopisu.
+* Vytvoří seznam frází se všemi variantami slova. V tomto řešení není nutné označovat variace slov v příkladu projevy. 
 
 ## <a name="publishing-page"></a>Stránka publikování
 [Publikování](luis-how-to-publish-app.md) stránka má **kontrolu pravopisu Bingu povolit** zaškrtávací políčko. Toto je usnadnění a vytvořit klíč a pochopit, jak se změní adresa URL koncového bodu. Budete stále muset použít parametry správný koncový bod aby měla kontrolu pravopisu pro každý utterance. 

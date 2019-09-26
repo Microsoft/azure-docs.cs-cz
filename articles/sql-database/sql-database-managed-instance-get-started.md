@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 5f37ca8e22b07e39eda87e11f52358e1d1497c60
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9eae757642c2a833b60c0c22a8984e83909e772c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178498"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300813"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -33,72 +33,70 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-managed-instance"></a>Vytvoření spravované instance
 
-Následující kroky ukazují, jak vytvořit spravovanou instanci.
+Následující kroky ukazují, jak vytvořit spravovanou instanci:
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud Azure SQL není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
-2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o Azure SQL Database Managed instance si můžete zobrazit tak, že na dlaždici **spravované instance** vyberete **Zobrazit podrobnosti** .
-3. Vyberte **vytvořit**:
+1. V levé nabídce Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a pak do vyhledávacího pole zadejte **Azure SQL** .
+2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o spravované instanci Azure SQL Database můžete zobrazit tak, že na dlaždici **spravované instance** vyberete **Zobrazit podrobnosti** .
+3. Vyberte **Vytvořit**.
 
    ![Vytvoření spravované instance](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
-4. Vyplňte formulář pro zřizování **spravované instance vytvoření SQL Database** vyplněním informací vyžadovaných na kartě Basic. K nakonfigurování dalších nastavení použijte možnosti sítě a rozšířená nastavení.
+4. Pomocí karet na formuláři pro **Vytvoření spravované Instance Azure SQL Database** můžete přidat požadované a volitelné informace. Tyto karty jsou popsány v následujících částech.
 
-### <a name="basic-tab"></a>Karta Basic
+### <a name="basics"></a>Základní informace
 
-Vyplňte povinné informace na kartě **Basic** pomocí následující tabulky. Toto je minimální sada informací pro zřízení spravované instance.
+Vyplňte informace požadované na kartě **základy** pomocí následující tabulky. Toto je minimální sada informací pro zřízení spravované instance.
 
-   ![Karta základ pro vytvoření spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
+![Karta základy pro vytvoření spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
 
-   | Nastavení| Navrhovaná hodnota | Popis |
-   | ------ | --------------- | ----------- |
-   | **Předplatné** | Vaše předplatné. | Předplatné, které vám poskytne oprávnění k vytváření nových prostředků. |
-   | **Skupina prostředků** | Nová nebo existující skupina prostředků.|Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   | **Název spravované instance** | Libovolný platný název.|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   | **Oblast** |Oblast, ve které chcete vytvořit spravovanou instanci.|Informace o oblastech najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).|
+| Nastavení| Navrhovaná hodnota | Popis |
+| ------ | --------------- | ----------- |
+| **Předplatné** | Vaše předplatné. | Předplatné, které vám poskytne oprávnění k vytváření nových prostředků. |
+| **Skupina prostředků** | Nová nebo existující skupina prostředků.|Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+| **Název spravované instance** | Libovolný platný název.|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+| **Oblast** |Oblast, ve které chcete vytvořit spravovanou instanci.|Informace o oblastech najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).|
 | **Přihlašovací jméno správce spravované instance** | Jakékoli platné uživatelské jméno. | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.|
-   | **Heslo** | Jakékoli platné heslo.| Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+| **Heslo** | Jakékoli platné heslo.| Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
-- Vyberte možnost **Konfigurace spravované instance** pro velikost výpočetních prostředků a prostředků úložiště a zkontrolujte možnosti cenové úrovně.
-- Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader.
-- Až budete hotovi, vyberte **použít** a uložte svůj výběr. 
+Vyberte **Konfigurovat spravovanou instanci** pro velikost výpočetních prostředků a prostředků úložiště a zkontrolujte cenové úrovně. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader. Až budete hotovi, vyberte **použít** a uložte svůj výběr. 
 
-  ![formulář spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
+![formulář spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
 
-Kliknutím na **zkontrolovat + vytvořit** můžete před vytvořením spravované instance zkontrolovat vybrané možnosti, nebo můžete vlastní konfiguraci sítě kliknutím na **další: Sítě**.
+Chcete-li zkontrolovat volby před vytvořením spravované instance, můžete vybrat možnost **zkontrolovat + vytvořit**. Případně nakonfigurujte možnosti sítě výběrem **možnosti Další: Sítě**.
 
-### <a name="networking-tab"></a>Karta sítě
+### <a name="networking"></a>Sítě
 
-Vyplníte volitelné informace na kartě sítě pomocí následující tabulky. V případě, že jsou tyto informace vynechány, použije se výchozí nastavení.
+Pomocí následující tabulky Vyplňte volitelné informace na kartě **síť** . Pokud tyto informace vynecháte, bude portál používat výchozí nastavení.
 
-   ![Karta pro vytvoření sítě spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+![Karta sítě pro vytvoření spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
 
-   | Nastavení| Navrhovaná hodnota | Popis |
-   | ------ | --------------- | ----------- |
-   | **Virtuální síť** | Vyberte buď možnost **vytvořit novou virtuální síť** , nebo platnou virtuální síť a podsíť.| Pokud síť nebo podsíť není k dispozici, je nutné ji [upravit tak, aby splňovala požadavky na síť](sql-database-managed-instance-configure-vnet-subnet.md) předtím, než ji vyberete jako cíl pro novou spravovanou instanci. Informace o požadavcích na konfiguraci síťového prostředí pro spravovanou instanci najdete v tématu [Konfigurace virtuální sítě pro spravovanou instanci](sql-database-managed-instance-connectivity-architecture.md). |
-   | **Typ připojení** | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Azure SQL Database zásady připojení](sql-database-connectivity-architecture.md#connection-policy).|
-   | **Veřejný koncový bod**  | Tuto možnost vyberte, pokud chcete povolit veřejný koncový bod. | Aby bylo možné získat přístup ke spravované instanci prostřednictvím koncového bodu veřejné dat, je nutné vybrat možnost **Povolit** veřejný koncový bod. | 
-   | **Povolení přístupu z** (v případě, že je veřejný koncový bod nastaven na povoleno) | Vyberte jednu z možností: <ul> <li>**Služby Azure**</li> <li>**Internet**</li> <li>**Bez přístupu**</li></ul>   |Prostředí portálu umožňuje konfigurovat skupinu zabezpečení s veřejným koncovým bodem. </br> </br> V závislosti na vašem scénáři vyberte jednu z následujících možností: </br> <ul> <li>Služby Azure – doporučuje se při připojování z Power BI nebo jiné služby pro více tenantů. </li> <li> Internet – použijte pro účely testování, pokud chcete rychle aktivovat spravovanou instanci. Nedoporučuje se pro použití v produkčních prostředích. </li> <li> Bez přístupu – Tato možnost vytvoří pravidlo zabezpečení Odepřít. Abyste mohli spravovat spravovanou instanci prostřednictvím veřejného koncového bodu, budete muset toto pravidlo upravit. </li> </ul> </br> Další informace o zabezpečení veřejného koncového bodu najdete v tématu [použití spravované instance Azure SQL Database bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md).|
+| Nastavení| Navrhovaná hodnota | Popis |
+| ------ | --------------- | ----------- |
+| **Virtuální síť** | Vyberte buď možnost **vytvořit novou virtuální síť** , nebo platnou virtuální síť a podsíť.| Pokud síť nebo podsíť není k dispozici, je nutné ji [upravit tak, aby splňovala požadavky na síť](sql-database-managed-instance-configure-vnet-subnet.md) předtím, než ji vyberete jako cíl pro novou spravovanou instanci. Informace o požadavcích na konfiguraci síťového prostředí pro spravovanou instanci najdete v tématu [Konfigurace virtuální sítě pro spravovanou instanci](sql-database-managed-instance-connectivity-architecture.md). |
+| **Typ připojení** | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Azure SQL Database zásady připojení](sql-database-connectivity-architecture.md#connection-policy).|
+| **Veřejný koncový bod**  | Vyberte **povolit**. | Aby bylo možné získat přístup ke spravované instanci prostřednictvím koncového bodu veřejné dat, je nutné povolit tuto možnost. | 
+| **Povolení přístupu z** (Pokud je povolený **veřejný koncový bod** ) | Vyberte jednu z možností.   |Prostředí portálu umožňuje konfigurovat skupinu zabezpečení s veřejným koncovým bodem. </br> </br> V závislosti na vašem scénáři vyberte jednu z následujících možností: </br> <ul> <li>**Služby Azure**: Tuto možnost doporučujeme, když se připojujete z Power BI nebo jiné víceklientské služby. </li> <li> **Internet**: Použijte pro testovací účely, pokud chcete rychle aktivovat spravovanou instanci. Nedoporučujeme ho pro produkční prostředí. </li> <li> **Bez přístupu**: Tato možnost vytvoří pravidlo zabezpečení **Odepřít** . Změnou tohoto pravidla zpřístupníte spravovanou instanci prostřednictvím veřejného koncového bodu. </li> </ul> </br> Další informace o zabezpečení veřejného koncového bodu najdete v tématu [použití spravované instance Azure SQL Database bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md).|
 
-Můžete vybrat možnost **zkontrolovat + vytvořit** a před vytvořením spravované instance zkontrolovat vybrané možnosti, nebo můžete nastavit vlastní konfiguraci dalších nastavení kliknutím na **další: Další nastavení**
+Vyberte **zkontrolovat + vytvořit** a před vytvořením spravované instance si prohlédněte své volby. Případně nakonfigurujte více vlastních nastavení výběrem možnosti **další: Další nastavení**
 
-### <a name="additional-settings-tab"></a>Karta Další nastavení
+### <a name="additional-settings"></a>Další nastavení
 
-Vyplňte volitelné informace na kartě **Další nastavení** pomocí následující tabulky. V případě, že jsou tyto informace vynechány, použije se výchozí nastavení.
+Vyplňte volitelné informace na kartě **Další nastavení** pomocí následující tabulky. Pokud tyto informace vynecháte, bude portál používat výchozí nastavení.
 
-   ![Spravovaná instance – vytvořit další kartu nastavení](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+![Karta Další nastavení pro vytvoření spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
 
-   | Nastavení| Navrhovaná hodnota | Popis |
-   | ------ | --------------- | ----------- |
-   | **Velké** | Kolace, kterou chcete použít pro spravovanou instanci.|Pokud migrujete databáze z SQL Server, Projděte si zdrojovou kolaci `SELECT SERVERPROPERTY(N'Collation')` pomocí a použijte tuto hodnotu. Informace o kolacích najdete v tématu [nastavení nebo změna kolace serveru](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
-   | **Časové pásmo** | Časové pásmo, které má vaše spravovaná instance dodržovat.|Další informace najdete v tématu [Časová pásma](sql-database-managed-instance-timezone.md).|
-   | **Použít jako sekundární převzetí služeb při selhání** | Pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání, vyberte Ano. |
-   | **Primární spravovaná instance** (v případě, že se použije jako sekundární převzetí služeb při selhání, se nastaví na Ano | Volba primární spravované instance (musí již existovat), se kterou spravovaná instance, kterou vytváříte, bude připojena ve stejné zóně DNS. Toto je krok předběžné podmínky, který umožňuje po vytvoření nakonfigurovat skupinu převzetí služeb při selhání. Podrobnosti najdete v [kurzu: Přidejte SQL Database spravovanou instanci do skupiny](sql-database-managed-instance-failover-group-tutorial.md)převzetí služeb při selhání. |
+| Nastavení| Navrhovaná hodnota | Popis |
+| ------ | --------------- | ----------- |
+| **Velké** | Vyberte kolaci, kterou chcete použít pro spravovanou instanci. Pokud migrujete databáze z SQL Server, Projděte si zdrojovou kolaci `SELECT SERVERPROPERTY(N'Collation')` pomocí a použijte tuto hodnotu.| Informace o kolacích najdete v tématu [nastavení nebo změna kolace serveru](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+| **Časové pásmo** | Vyberte časové pásmo, které bude vaše spravovaná instance sledovat.|Další informace najdete v tématu [Časová pásma](sql-database-managed-instance-timezone.md).|
+| **Použít jako sekundární převzetí služeb při selhání** | Vyberte **Ano**. | Tuto možnost povolte, pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání.|
+| **Primární spravovaná instance** (Pokud se **používá jako sekundární převzetí služeb při selhání** , je nastavené na **Ano**) | Vyberte existující primární spravovanou instanci, která bude připojena ke stejné zóně DNS se spravovanou instancí, kterou vytváříte. | Tento krok umožní konfiguraci po vytvoření skupiny převzetí služeb při selhání. Další informace najdete v tématu [kurz: Přidejte SQL Database spravovanou instanci do skupiny](sql-database-managed-instance-failover-group-tutorial.md)převzetí služeb při selhání.|
 
-### <a name="review--create-tab"></a>Revize + vytvořit kartu
+### <a name="review--create"></a>Zkontrolovat a vytvořit
 
-1. Vyberte kartu **Revize + vytvořit** a před vytvořením spravované instance si Projděte vybrané možnosti.
+1. Výběrem karty **Revize + vytvořit** si můžete prohlédnout své volby ještě před vytvořením spravované instance.
 
-   ![Kontrola spravované instance a karta vytvořit](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
+   ![Karta pro kontrolu a vytvoření spravované instance](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
 
 1. Výběrem **vytvořit** spusťte zřizování spravované instance.
 
@@ -109,33 +107,33 @@ Vyplňte volitelné informace na kartě **Další nastavení** pomocí následuj
 
 1. Výběrem ikony **oznámení** zobrazíte stav nasazení.
 
-    ![průběh nasazení spravované instance](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+    ![Průběh nasazení spravované instance](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
 
-1. V oznámení vyberte **nasazení** . tím otevřete okno spravovaná instance, abyste mohli dále monitorovat průběh nasazení. 
+1. V oznámení vyberte **nasazení** probíhá a otevřete okno spravovaná instance a dále Sledujte průběh nasazení. 
 
 > [!TIP]
-> Pokud jste zavřeli webový prohlížeč nebo jste přešli z obrazovky průběh nasazení, postupujte podle těchto kroků a najděte obrazovku průběh nasazení:
-> 1. V Azure Portal otevřete skupinu prostředků (zadanou na kartě **základní** ), do které nasazujete spravovanou instanci.
+> Pokud jste webový prohlížeč zavřeli nebo jste ho přesunuli z obrazovky průběh nasazení, najděte tuto obrazovku pomocí těchto kroků:
+> 1. V Azure Portal otevřete skupinu prostředků (na kartě **základy** ), do které nasazujete spravovanou instanci.
 > 2. Vyberte **nasazení**.
 > 3. Vyberte probíhající operaci nasazení spravované instance.
 
-## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Kontrola prostředků a načtení plně kvalifikovaného názvu serveru
+## <a name="review-resources-and-retrieve-your-host-name"></a>Kontrola prostředků a načtení názvu hostitele
 
-Po úspěšném nasazení zkontrolujte prostředky, které byly vytvořeny, a načtěte plně kvalifikovaný název serveru pro použití v pozdějších rychlých startech.
+Po úspěšném nasazení:
 
 1. Otevřete skupinu prostředků pro spravovanou instanci. Prohlédněte si své prostředky, které jste vytvořili v rychlém startu [Vytvoření spravované instance](#create-a-managed-instance) .
 
    ![Prostředky spravované instance](./media/sql-database-managed-instance-get-started/resources.png)
 
-2. Vyberte směrovací tabulku pro kontrolu tabulky trasy definované uživatelem (UDR), která byla vytvořena za vás.
+2. Vyberte směrovací tabulku pro kontrolu uživatelsky definované trasy (UDR), která byla vytvořena za vás.
 
    ![Tabulka směrování](./media/sql-database-managed-instance-get-started/route-table.png)
 
-3. V tabulce směrování si prohlédněte položky, které směrují provoz z a do virtuální sítě spravované instance. Pokud tabulku směrování vytváříte nebo konfigurujete ručně, musíte tyto záznamy vytvořit v tabulce směrování.
+3. V tabulce směrování si prohlédněte položky, které směrují provoz z a do virtuální sítě spravované instance. Pokud vytváříte nebo konfigurujete směrovací tabulku ručně, nezapomeňte tyto položky vytvořit v tabulce směrování.
 
    ![Položka pro podsíť spravované instance do místní sítě](./media/sql-database-managed-instance-get-started/udr.png)
 
-4. Vraťte se do skupiny prostředků a vyberte skupinu zabezpečení sítě a zkontrolujte pravidla zabezpečení.
+4. Vraťte se do skupiny prostředků a vyberte skupinu zabezpečení sítě.
 
    ![Skupina zabezpečení sítě](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
@@ -145,21 +143,23 @@ Po úspěšném nasazení zkontrolujte prostředky, které byly vytvořeny, a na
 
 6. Vraťte se do skupiny prostředků a vyberte spravovanou instanci.
 
-   ![Spravovaná instance](./media/sql-database-managed-instance-get-started/managed-instance.png)
+   ![Spravovaná instance ve skupině prostředků](./media/sql-database-managed-instance-get-started/managed-instance.png)
 
-7. Na kartě **Přehled** vyhledejte vlastnost **hostitel** . Zkopírujte plně kvalifikovanou adresu hostitele spravované instance pro použití v dalším rychlém startu.
+7. Na kartě **Přehled** vyhledejte vlastnost **hostitel** . Zkopírujte název hostitele spravované instance pro použití v dalším rychlém startu.
 
    ![Název hostitele](./media/sql-database-managed-instance-get-started/host-name.png)
 
-   Název se podobá **your_machine_name. a1b2c3d4e5f6. Database. Windows. NET**.
+   Název hostitele se také označuje jako plně kvalifikovaný název domény (FQDN). Je podobný jako *your_machine_name. a1b2c3d4e5f6. Database. Windows. NET*.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o tom, jak se připojit ke spravované instanci:
-  - Přehled možností připojení pro aplikace najdete v tématu [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
-  - Rychlý Start, který ukazuje, jak se připojit ke spravované instanci z virtuálního počítače Azure, najdete v tématu [Konfigurace připojení k virtuálnímu počítači Azure](sql-database-managed-instance-configure-vm.md).
-  - Pro rychlý Start, který ukazuje, jak se připojit ke spravované instanci z místního klientského počítače pomocí připojení typu Point-to-site, najdete informace v tématu [Konfigurace připojení typu Point-to-site](sql-database-managed-instance-configure-p2s.md).
-- Obnovení stávající databáze SQL Server z místního prostředí do spravované instance: 
-    - Použijte [Azure Database Migration Service (DMS) pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) k obnovení ze záložního souboru databáze. 
-    - Použijte [příkaz T-SQL Restore](sql-database-managed-instance-get-started-restore.md) k obnovení ze záložního souboru databáze.
-- Pro pokročilé monitorování výkonu databáze spravované instance s integrovanými funkcemi řešení potíží najdete informace v tématu [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
+Další informace o tom, jak se připojit ke spravované instanci:
+- Přehled možností připojení pro aplikace najdete v tématu [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
+- Rychlý Start, který ukazuje, jak se připojit ke spravované instanci z virtuálního počítače Azure, najdete v tématu [Konfigurace připojení k virtuálnímu počítači Azure](sql-database-managed-instance-configure-vm.md).
+- Pro rychlý Start, který ukazuje, jak se připojit ke spravované instanci z místního klientského počítače pomocí připojení typu Point-to-site, najdete informace v tématu [Konfigurace připojení typu Point-to-site](sql-database-managed-instance-configure-p2s.md).
+
+Obnovení stávající databáze SQL Server z místního prostředí do spravované instance: 
+- Použijte [Azure Database Migration Service pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) k obnovení ze záložního souboru databáze. 
+- Použijte [příkaz T-SQL Restore](sql-database-managed-instance-get-started-restore.md) k obnovení ze záložního souboru databáze.
+
+Pro pokročilé monitorování výkonu databáze spravované instance s integrovanými funkcemi řešení potíží najdete informace v tématu [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).

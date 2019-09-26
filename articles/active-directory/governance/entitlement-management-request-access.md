@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562177"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290888"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
@@ -40,9 +40,9 @@ Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyž�
 
 **Požadovaná role:** Žadatel
 
-1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz bude začínat na:
-
-    `https://myaccess.microsoft.com`
+1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit ID balíčku pro přístup podobně jako v následujícím příkladu:
+ 
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
 1. Otevřete odkaz.
 

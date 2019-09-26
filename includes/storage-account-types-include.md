@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 280ef8550177a514a6704a8bfab226745222f91e
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 0e5c1974ecb1b3efb8df602c76700b7db04a88d7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029762"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310522"
 ---
 Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má svůj vlastní cenový model. Před vytvořením účtu úložiště zvažte tyto rozdíly a určete typ účtu, který je pro vaše aplikace nejvhodnější. Typy účtů úložiště jsou:
 
@@ -27,10 +27,10 @@ Následující tabulka popisuje typy účtů úložiště a jejich možnosti:
 
 | Typ účtu úložiště | Podporované služby                       | Podporované úrovně výkonu      | Podporované úrovně přístupu         | Možnosti replikace               | Model nasazení<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Šifrování<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Obecné účely v2   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, ZGRS (Preview), RA-ZGRS (Preview)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Zašifrováno              |
-| Obecné účely v1   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Není k dispozici                            | LRS, GRS, RA-GRS                  | Správce prostředků, klasický    | Zašifrováno              |
-| Úložiště objektů blob bloku   | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Premium                       | Není k dispozici                            | LRS                               | Resource Manager             | Zašifrováno              |
-| Úložiště   | Pouze soubory | Premium                       | Není k dispozici                            | LRS                               | Resource Manager             | Zašifrováno              |
+| Obecné účely v2   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (Preview), RA-GZRS (Preview)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Zašifrováno              |
+| Obecné účely v1   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | neuvedeno                            | LRS, GRS, RA-GRS                  | Správce prostředků, klasický    | Zašifrováno              |
+| Úložiště objektů blob bloku   | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Zašifrováno              |
+| Úložiště   | Pouze soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Zašifrováno              |
 | Blob Storage         | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Standard                      | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Zašifrováno              |
 
 <div id="deployment-model"><sup>1</sup> Doporučuje se použít model nasazení Azure Resource Manager. Účty úložiště, které používají model nasazení Classic, se stále dají vytvořit v některých umístěních a stávající klasické účty se pořád podporují. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager vs. Classic Deployment: Pochopení modelů nasazení a stavu vašich prostředků</a>.</div>

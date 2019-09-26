@@ -1,5 +1,5 @@
 ---
-title: Výjimky - Azure Event Hubs zasílání zpráv | Dokumentace Microsoftu
+title: Výjimky zasílání zpráv pro .NET – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam výjimky zasílání zpráv služby Azure Event Hubs a doporučené akce.
 services: event-hubs
 documentationcenter: na
@@ -11,27 +11,27 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6680902180a1d4a3c75080e232569cf760ba078
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001769"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309842"
 ---
-# <a name="event-hubs-messaging-exceptions"></a>Výjimky zasílání zpráv služby Event Hubs
+# <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
 
-Tento článek uvádí některé výjimky generované knihovnou služby Azure Service Bus pro zasílání zpráv rozhraní API, která zahrnuje rozhraní API .NET Framework Event Hubs. Tento odkaz se může změnit, proto zkontrolujte novinky.
+V tomto článku jsou uvedené některé výjimky .NET generované knihovnou rozhraní API pro Azure Service Bus Messaging, která zahrnuje .NET Framework Event Hubs rozhraní API. Tento odkaz se může změnit, proto zkontrolujte novinky.
 
 ## <a name="exception-categories"></a>Kategorie výjimek
 
-Rozhraní API služby Event Hubs generovat výjimky, které můžete spadají do následujících kategorií, spolu s přidružené akce, které si můžete vyzkoušet a opravte je.
+Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následujících kategoriích, spolu s přidruženou akcí, kterou můžete provést, abyste je mohli zkusit opravit.
 
-1. Chyba kódování uživatele: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Obecné akce: Zkuste opravit kód než budete pokračovat.
-2. Chyba instalace/konfigurace: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Obecné akci: Zkontrolujte konfiguraci a v případě potřeby změnit.
-3. Přechodné výjimky: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception), [Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Obecné akce: operaci opakovat nebo upozornit uživatele.
-4. Ostatní výjimky: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](#timeoutexception), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [ Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Obecné akce: specifické pro daný typ výjimky naleznete v tabulce v následující části. 
+1. Chyba kódování uživatele: [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Obecné akce: Zkuste opravit kód než budete pokračovat.
+2. Chyba nastavení/konfigurace: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Obecné akci: Zkontrolujte konfiguraci a v případě potřeby změnit.
+3. Přechodné výjimky: [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](#serverbusyexception), [Microsoft. Azure. EventHubs. výjimka serverbusyexception](#serverbusyexception), [ Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Obecné akce: operaci opakovat nebo upozornit uživatele.
+4. Další výjimky: [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](#timeoutexception), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Obecné akce: specifické pro daný typ výjimky naleznete v tabulce v následující části. 
 
 ## <a name="exception-types"></a>Typy výjimek
 Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příčiny a poznámky navrhované akce, které můžete provést.
@@ -46,11 +46,11 @@ Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příč
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | Entity přidružené operaci neexistuje nebo byl odstraněn. | Ujistěte se, že entita existuje. | Opakování nepomůže. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Klient není schopen navázat připojení do centra událostí. |Ujistěte se, že je správný název zadaného hostitele a hostitel je dostupný. | Opakování může pomoci, pokud dojde k problémům přerušovaným připojením. |
 | [Microsoft.ServiceBus.Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Službu není možné na zpracování žádosti. v tuto chvíli. | Klienta můžete počkat určitou dobu a pak zkuste operaci zopakovat. <br /> Zobrazit [ServerBusyException](#serverbusyexception). | Klient může po určité době opakujte. Pokud opakování vede k jiné výjimce, podívejte se na chování při opakování této výjimky. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecný zasílání zpráv výjimku, která může být vyvolána v následujících případech: Je proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jiné entitě typu (například téma). Je proveden pokus o odeslání zprávy větší než 1 MB. Server nebo službu došlo k chybě při zpracování požadavku. Zobrazit zpráva o výjimce podrobnosti. Tato výjimka je obvykle s přechodnou výjimkou. | Zkontrolujte kód a ujistěte se, že pouze serializovatelné objekty se používají pro tělo zprávy (nebo použijte vlastní serializátor). V dokumentaci pro typy podporovaná hodnota vlastnosti a pouze použití podporované typy. Zkontrolujte, [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) vlastnost. Pokud je **true**, můžete operaci opakovat. | Chování při opakování není definována a nemusí nápovědy. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech: Byl proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma). Byl proveden pokus o odeslání zprávy větší než 1 MB. Server nebo službu došlo k chybě při zpracování požadavku. Zobrazit zpráva o výjimce podrobnosti. Tato výjimka je obvykle s přechodnou výjimkou. | Zkontrolujte kód a ujistěte se, že pouze serializovatelné objekty se používají pro tělo zprávy (nebo použijte vlastní serializátor). V dokumentaci pro typy podporovaná hodnota vlastnosti a pouze použití podporované typy. Zkontrolujte, [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) vlastnost. Pokud je **true**, můžete operaci opakovat. | Chování při opakování není definována a nemusí nápovědy. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Pokuste se vytvořit entitu s názvem, který se už používá jiná entita v tomto oboru názvů služby. | Odstraňte existující entity nebo vyberte jiný název entity, který se má vytvořit. | Opakování nepomůže. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Entity pro zasílání zpráv dosáhl maximální povolenou velikost. Tato výjimka může dojít, pokud již bylo otevřeno maximální počet přijímačů (což je 5) na úrovni skupiny – příjemce. | Příjem zpráv z entity nebo jeho podfronty k vytvoření prostoru v dané entitě. <br /> Zobrazit [QuotaExceededException](#quotaexceededexception) | Pokud do té doby byly odebrány zprávy, mohou pomoci při opakování. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Žádost o operaci runtime na entitu, zakázané. |Aktivujte entity. | Pokud entita byla aktivována mezitím, mohou pomoci při opakování. |
-| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Tělo zprávy překračuje limit 1 MB. Celkový počet zpráv, včetně možnosti vlastnosti systému a rezervy .NET je toto omezení 1 MB. | Zmenšit velikost datové části zprávy a potom zkuste operaci zopakovat. |Opakování nepomůže. |
+| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Datová část zprávy překračuje omezení 1 MB. Toto je omezení 1 MB pro celkovou zprávu, která může zahrnovat systémové vlastnosti a veškeré režie technologie .NET. | Zmenšit velikost datové části zprávy a potom zkuste operaci zopakovat. |Opakování nepomůže. |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) označuje, že byla překročena kvóta pro konkrétní entitu.
@@ -81,24 +81,24 @@ Této chybě může dojít z jednoho ze dvou důvodů:
 
 1. Zatížení se rovnoměrně mezi všechny oddíly v Centru událostí a omezení na jednotku propustnosti místní narazí na jeden oddíl.
     
-    Řešení: Úprava distribuční strategie oddílu ani se nemusíte pokoušet [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) můžou pomoct.
+    Řešení: Při revizi strategie distribuce oddílu nebo pokusu o [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) může pomáhat.
 
 2. Obor názvů služby Event Hubs nemá dostatek jednotek propustnosti (můžete zkontrolovat **metriky** obrazovky okno Hubs oboru názvů v události [webu Azure portal](https://portal.azure.com) potvrďte). Na portálu se zobrazí informace o agregovaných (1 minuta), ale můžeme měřit propustnost v reálném čase – tak, aby byl pouze odhad.
 
-    Řešení: Může pomoct zvýšit jednotek propustnosti oboru názvů. Tuto operaci na portálu, můžete provést v **škálování** okno obrazovky obor názvů služby Event Hubs. Nebo můžete použít [automatické rozšiřování](event-hubs-auto-inflate.md).
+    Řešení: Zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. Tuto operaci na portálu, můžete provést v **škálování** okno obrazovky obor názvů služby Event Hubs. Nebo můžete použít [automatické rozšiřování](event-hubs-auto-inflate.md).
 
 ### <a name="error-code-50001"></a>Kód chyby: 50001
 
 By měl k této chybě dochází jen zřídka. To se stane, když je nedostatek procesoru kontejneru kódu pro váš obor názvů – začíná není více než několik sekund, než nástroj pro vyrovnávání zatížení služby Event Hubs.
 
-### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>Omezí volání getruntimeinformation – metoda
-Azure Event Hubs podporuje až 50 volání za sekundu GetRuntimeInfo za sekundu. Po dosažení limitu, může se zobrazit výjimka podobný následujícímu:
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>Omezení volání metody Getruntimeinformation –
+Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 

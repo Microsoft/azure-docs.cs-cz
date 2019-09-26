@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104659"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300748"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
@@ -40,11 +40,11 @@ Privátní propojení Azure přináší následující výhody:
 
 |Scénář  |Podporované služby   |Dostupné oblasti | Stav   |
 |---------|---------|---------|---------|
-|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer |Středozápadní USA; WestUS Střed USA – jih; Východní USA; Severní USA  |  Náhled  |
+|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer |Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever  |  Náhled  |
 |Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Východní USA, Západní USA Středozápadní USA       | Náhled         |
 |  | Azure Data Lake Storage Gen2        |  Východní USA, Západní USA Středozápadní USA       | Náhled         |
-|  |  Azure SQL Database         | Středozápadní USA; WestUS Střed USA – jih; Východní USA; Severní USA       |   Náhled      |
-||Azure SQL Data Warehouse| Středozápadní USA; WestUS Střed USA – jih; Východní USA; Severní USA |Náhled|
+|  |  Azure SQL Database         | Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever      |   Náhled      |
+||Azure SQL Data Warehouse| Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever |Náhled|
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network). 
 

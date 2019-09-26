@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900635"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315823"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj modulu C# IoT Edge pro přesun souborů na data box Edge
 
@@ -73,7 +73,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
    5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
    6. Nastavte SKU na **Basic**.
 
-      ![Vytvořit registr kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Vyberte **Vytvořit**.
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
@@ -180,7 +180,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-6. Odeberte kód pro **metodu zprávy kanálu** a na jejím místě vložte kód pro **kopii**.
+6. Odeberte kód pro **metodu PipeMessage** a na jejím místě vložte kód pro **kopii**.
 
     ```
         /// <summary>
@@ -274,6 +274,6 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
 4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`:.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete nasadit a spustit tento modul na Data Box Edge, přečtěte si postup v tématu [Přidání modulu](data-box-edge-deploy-configure-compute.md#add-a-module).

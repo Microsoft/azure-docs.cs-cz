@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618366"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291018"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a Správa stávajícího balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -270,7 +270,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 1. Vyberte žádost, kterou chcete zobrazit.
 
-    Pokud v žádosti dojde k žádným chybám doručení, stav žádosti se **nedoručení** a dílčí stav se doručí **částečně**.
+    Pokud v žádosti dojde k žádným chybám doručení, stav žádosti se **nedoručení** a dílčí stav se **doručí částečně**.
 
     Pokud dojde k chybám doručení, v podokně podrobností žádosti dojde k počtu chyb doručení.
 
@@ -294,7 +294,15 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena.
 
 ## <a name="copy-my-access-portal-link"></a>Kopírovat odkaz na portál přístupu
 
-Většina uživatelů v adresáři se může přihlásit k portálu pro přístup a automaticky uvidí seznam balíčků pro přístup, které si můžou vyžádat. U externích partnerských uživatelů, kteří ještě nejsou ve vašem adresáři, je ale budete muset poslat odkaz, který může použít k vyžádání přístupového balíčku. Pokud je pro přístup k externím uživatelům povolený balíček přístupu a máte zásady pro adresář externího uživatele, může externí uživatel požádat o přístup k balíčku s odkazem na portál pro přístup.
+Většina uživatelů v adresáři se může přihlásit k portálu pro přístup a automaticky uvidí seznam balíčků pro přístup, které si můžou vyžádat. U externích partnerských uživatelů, kteří ještě nejsou ve vašem adresáři, je ale budete muset poslat odkaz, který může použít k vyžádání přístupového balíčku. 
+
+Je důležité, abyste při odesílání e-mailu na interní obchodní partner zkopírovali celý odkaz Můj portál pro přístup. Tím se zajistí, že partner získá přístup k portálu vašeho adresáře, aby mohl učinit svůj požadavek. 
+
+Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit identifikátorem přístupového balíčku. Ujistěte se, že odkaz obsahuje všechny tyto skutečnosti:
+
+ `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+Pokud je pro přístup k externím uživatelům povolený balíček přístupu a máte zásady pro adresář externího uživatele, může externí uživatel požádat o přístup k balíčku s odkazem na portál pro přístup.
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
@@ -346,7 +354,7 @@ Balíček přístupu se dá odstranit jenom v případě, že nemá žádná akt
 
 V rámci správy nároků služba Azure AD zpracuje hromadnou změnu přiřazení a prostředků v balíčcích přístupu několikrát denně. Takže pokud provedete přiřazení nebo změníte role prostředků vašeho balíčku pro přístup, může trvat až 24 hodin, než se tato změna provede v Azure AD, a navíc dobu potřebnou k rozšíření těchto změn na jiné online služby Microsoftu nebo připojené aplikace SaaS. pracují. Pokud vaše změna ovlivní jenom pár objektů, může tato změna trvat jenom pár minut, než se použije ve službě Azure AD, potom ostatní součásti Azure AD tuto změnu odhalí a aktualizují aplikace SaaS. Pokud vaše změna ovlivní tisíce objektů, bude změna trvat déle. Například pokud máte balíček pro přístup se dvěma aplikacemi a 100 přiřazení uživatele a rozhodnete se přidat roli webu služby SharePoint do balíčku pro přístup, může dojít ke zpoždění, dokud všichni uživatelé nebudou součástí této role webu služby SharePoint. Průběh můžete sledovat pomocí protokolu auditu Azure AD, protokolu zřizování Azure AD a protokolů auditu webu služby SharePoint.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přidat vlastníka katalogu nebo správce balíčků přístupu](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

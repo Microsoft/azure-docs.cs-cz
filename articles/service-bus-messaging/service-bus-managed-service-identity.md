@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273675"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299645"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce, mezi Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -57,7 +57,7 @@ Následující seznam popisuje úrovně, na jejichž základě můžete nastavit
 
 - **Zařazení do fronty**, **tématu**nebo **předplatného**: Přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí RBAC na úrovni předplatného. Tady je příklad použití příkazu Azure CLI: [AZ-role-Assignment-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) k přiřazení identity k Service Bus role RBAC: 
 
-    ```powershell
+    ```azurecli
     az role assignment create \
         --role $service_bus_role \
         --assignee $assignee_id \

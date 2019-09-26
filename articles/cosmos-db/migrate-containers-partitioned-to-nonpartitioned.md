@@ -4,14 +4,14 @@ description: Naučte se migrovat všechny existující nerozdělitelné kontejne
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615031"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300121"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 
@@ -19,12 +19,12 @@ Azure Cosmos DB podporuje vytváření kontejnerů bez klíče oddílu. V souča
 
 Kontejnery, které nejsou rozdělené do oddílů, jsou starší a měli byste migrovat existující kontejnery bez oddílů na dělené kontejnery pro škálování úložiště a propustnosti. Azure Cosmos DB poskytuje mechanizmus definovaný systémem pro migraci kontejnerů, které nejsou rozdělené do oddílů, do dělených kontejnerů. Tento dokument vysvětluje, jak se všechny existující kontejnery bez oddílů automaticky migrují do dělených kontejnerů. Funkci automatické migrace můžete využít jenom v případě, že používáte verzi V3 sad SDK ve všech jazycích.
 
-> [!NOTE] 
-> V současné době nemůžete migrovat Azure Cosmos DB účty rozhraní API MongoDB a Gremlin pomocí kroků popsaných v tomto dokumentu. 
+> [!NOTE]
+> V současné době nemůžete migrovat Azure Cosmos DB účty rozhraní API MongoDB a Gremlin pomocí kroků popsaných v tomto dokumentu.
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrace kontejneru pomocí klíče oddílu definovaného systémem
 
-Pro podporu migrace Azure Cosmos DB definuje klíč oddílu definovaného systémem, který je `/_partitionkey` označený na všech kontejnerech, které nemají klíč oddílu. Po migraci kontejnerů nelze definici klíče oddílu změnit. Například definice kontejneru, který je migrován do děleného kontejneru, bude následující: 
+Pro podporu migrace Azure Cosmos DB poskytuje klíč oddílu definovaný systémem, který je pojmenovaný `/_partitionkey` na všech kontejnerech, které nemají klíč oddílu. Po migraci kontejnerů nelze definici klíče oddílu změnit. Například definice kontejneru, který je migrován do děleného kontejneru, bude následující:
 
 ```json
 {
@@ -37,10 +37,10 @@ Pro podporu migrace Azure Cosmos DB definuje klíč oddílu definovaného systé
   },
 }
 ```
- 
-Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu vašich dokumentů. 
 
-Výběr správného klíče oddílu je důležitý pro optimální využití zajištěné propustnosti. Další informace najdete v článku [Jak zvolit klíč oddílu](partitioning-overview.md) . 
+Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu vašich dokumentů.
+
+Výběr správného klíče oddílu je důležitý pro optimální využití zajištěné propustnosti. Další informace najdete v článku [Jak zvolit klíč oddílu](partitioning-overview.md) .
 
 > [!NOTE]
 > Můžete využít klíč oddílu definovaného systémem pouze v případě, že ve všech jazycích používáte nejnovější verzi sady SDK verze/v3.
@@ -65,37 +65,37 @@ public class DeviceInformationItem
     [JsonProperty(PropertyName = "deviceId")]
     public string DeviceId { get; set; }
 
-    [JsonProperty(PropertyName = "_partitionKey")]
+    [JsonProperty(PropertyName = "_partitionKey", NullValueHandling = NullValueHandling.Ignore)]
     public string PartitionKey {get {return this.DeviceId; set; }
 }
 
 CosmosContainer migratedContainer = database.Containers["testContainer"];
 
 DeviceInformationItem deviceItem = new DeviceInformationItem() {
-  Id = "1234", 
+  Id = "1234",
   DeviceId = "3cf4c52d-cc67-4bb8-b02f-f6185007a808"
-} 
+}
 
-CosmosItemResponse<DeviceInformationItem > response = 
-  await migratedContainer.Items.CreateItemAsync(
+ItemResponse<DeviceInformationItem > response = 
+  await migratedContainer.CreateItemAsync<DeviceInformationItem>(
     deviceItem.PartitionKey, 
     deviceItem
   );
 
 // Read back the document providing the same partition key
-CosmosItemResponse<DeviceInformationItem> readResponse = 
-  await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
+ItemResponse<DeviceInformationItem> readResponse = 
+  await migratedContainer.ReadItemAsync<DeviceInformationItem>( 
     partitionKey:deviceItem.PartitionKey, 
     id: device.Id
-  ); 
+  );
 
 ```
 
-Úplnou ukázku najdete v úložišti GitHub [Samples .NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) . 
+Úplnou ukázku najdete v úložišti GitHub [Samples .NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) .
                       
 ## <a name="migrate-the-documents"></a>Migrace dokumentů
 
-I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti `/_partitionKey` klíče systémového oddílu není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` vlastnosti. 
+I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti `/_partitionKey` klíče systémového oddílu není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` vlastnosti.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Přístup k dokumentům, které nemají klíč oddílu
 
@@ -104,13 +104,13 @@ Aplikace mají přístup k existujícím dokumentům, které nemají klíč odd�
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
 await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
-  partitionKey: CosmosContainerSettings.NonePartitionKeyValue, 
+  partitionKey: PartitionKey.None, 
   id: device.Id
 ); 
 
 ```
 
-Kompletní ukázku, jak změnit oddíly dokumentů, najdete v úložišti GitHub Samples [.NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) . 
+Kompletní ukázku, jak změnit oddíly dokumentů, najdete v úložišti GitHub [Samples .NET](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) . 
 
 ## <a name="compatibility-with-sdks"></a>Kompatibilita se sadami SDK
 

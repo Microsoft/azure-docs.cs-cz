@@ -1,6 +1,6 @@
 ---
-title: Ladění aplikace v sadě Visual Studio | Dokumentace Microsoftu
-description: Zlepšení spolehlivosti a výkonu služeb ve vývoji a ladění je v sadě Visual Studio v místním vývojovém clusteru.
+title: Ladění aplikace v aplikaci Visual Studio | Microsoft Docs
+description: Vylepšete spolehlivost a výkon vašich služeb tím, že je vyvíjíte a ladíte v aplikaci Visual Studio v místním vývojovém clusteru.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428212"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300683"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -30,121 +30,128 @@ ms.locfileid: "66428212"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Ladění místní aplikace Service Fabric
-Nasazení a ladění aplikace Azure Service Fabric v místním počítači vývojový cluster můžete ušetřit čas a peníze. Visual Studio 2019 nebo 2015 můžete nasadit aplikaci do místního clusteru a automaticky připojit ladicí program pro všechny instance aplikace. Visual Studio musíte spustit jako správce pro připojení ladicího programu.
+Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service Fabric v clusteru pro vývoj místních počítačů. Sady Visual Studio 2019 nebo 2015 mohou nasadit aplikaci do místního clusteru a automaticky připojit ladicí program ke všem instancím aplikace. Pro připojení ladicího programu je nutné spustit aplikaci Visual Studio jako správce.
 
-1. Spusťte místní vývojový cluster podle pokynů v [nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
-2. Stisknutím klávesy **F5** nebo klikněte na tlačítko **ladění** > **spustit ladění**.
+1. Spusťte místní vývojový cluster podle kroků uvedených v části [Nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
+2. Stiskněte klávesu **F5** nebo klikněte na **ladění** > **Spustit ladění**.
    
-    ![Spusťte ladění aplikace][startdebugging]
-3. Nastavte zarážky v kódu a krokovat aplikaci kliknutím příkazy v **ladění** nabídky.
+    ![Spuštění ladění aplikace][startdebugging]
+3. Nastavte zarážky v kódu a proveďte krokování aplikace kliknutím na příkazy v nabídce **ladění** .
    
    > [!NOTE]
-   > Připojí se k všechny instance aplikace Visual Studio. Zatímco jste krokování kódem, může získat zarážky pomocí více procesů, které jsou výsledkem souběžných relací. Zkuste zakázat body přerušení, poté, že máte, tím, že každý zarážku na ID vlákna nebo pomocí diagnostických událostí.
+   > Visual Studio se připojí ke všem instancím aplikace. Zatímco probíhajíte prostřednictvím kódu, zarážky mohou dosáhnout více procesů, které mají za následek souběžné relace. Zkuste zakázat zarážky po jejich dosažení tím, že každou zarážku nastavíte na ID vlákna nebo pomocí diagnostických událostí.
    > 
    > 
-4. **Diagnostické události** okno se automaticky otevře, abyste mohli zobrazit diagnostické události v reálném čase.
+4. Okno **diagnostické události** se automaticky otevře, abyste mohli zobrazit diagnostické události v reálném čase.
    
-    ![Zobrazení diagnostických událostí v reálném čase][diagnosticevents]
-5. Můžete také otevřít **diagnostické události** okno v Průzkumníku cloudu.  V části **Service Fabric**, klikněte pravým tlačítkem na libovolný uzel a vyberte **trasování streamování zobrazení**.
+    ![Zobrazit diagnostické události v reálném čase][diagnosticevents]
+5. V Průzkumníku cloudu můžete také otevřít okno **diagnostické události** .  V části **Service Fabric**klikněte pravým tlačítkem na libovolný uzel a vyberte **Zobrazit trasování streamování**.
    
-    ![Otevřete okno diagnostické události][viewdiagnosticevents]
+    ![Otevření okna diagnostické události][viewdiagnosticevents]
    
-    Pokud chcete filtrovat trasování pro konkrétní službu nebo aplikaci, povolte trasy streamování pro daný konkrétní službu nebo aplikaci.
-6. Můžete zobrazit diagnostické události v automaticky generované **ServiceEventSource.cs** souborů a jsou volány z kódu aplikace.
+    Pokud chcete filtrovat trasování na určitou službu nebo aplikaci, povolte trasování streamování na konkrétní službě nebo aplikaci.
+6. Diagnostické události lze zobrazit v automaticky generovaném souboru **ServiceEventSource.cs** a jsou volány z kódu aplikace.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. **Diagnostické události** okna podporuje filtrování, pozastavení a kontrola událostí v reálném čase.  Tento filtr je jednoduchým řetězcem vyhledávání událostí zprávy, včetně jejího obsahu.
+7. Okno **diagnostické události** podporuje filtrování, pozastavování a kontrolu událostí v reálném čase.  Filtr je jednoduché hledání řetězců zprávy události, včetně jejího obsahu.
    
-    ![Filtrovat, pozastavení a obnovení nebo kontrola událostí v reálném čase][diagnosticeventsactions]
-8. Ladění služeb je jako ladění jiných aplikací. Obvykle budete nastavit zarážky pomocí sady Visual Studio pro snadné ladění. Přestože Reliable Collections replikovat napříč několika uzly, je stále implementovat rozhraní IEnumerable. Tato implementace znamená, že při ladění naleznete v tématu jsme uložený v, můžete použít zobrazení výsledků v sadě Visual Studio. Uděláte to tak, nastavte zarážku kdekoli ve vašem kódu.
+    ![Filtrování, pozastavení a obnovení nebo kontrola událostí v reálném čase][diagnosticeventsactions]
+8. Služby ladění jsou jako ladění jakékoli jiné aplikace. V sadě Visual Studio budete normálně nastavovat zarážky pro snadné ladění. I když jsou spolehlivé kolekce replikovány napříč více uzly, stále implementují rozhraní IEnumerable. Tato implementace znamená, že při ladění můžete použít zobrazení výsledků v aplikaci Visual Studio, abyste viděli, co jste uložili v rámci. Provedete to tak, že nastavíte zarážku kdekoli v kódu.
    
-    ![Spusťte ladění aplikace][breakpoint]
+    ![Spuštění ladění aplikace][breakpoint]
+
+
+### <a name="running-a-script-as-part-of-debugging"></a>Spuštění skriptu jako součást ladění
+V některých scénářích může být nutné spustit skript jako součást spuštění relace ladění (např. Pokud nepoužíváte výchozí služby).
+
+V aplikaci Visual Studio můžete přidat soubor s názvem **Start-Service. ps1** ve složce **Scripts** projektu aplikace Service Fabric (. sfproj). Tento skript bude vyvolán po vytvoření aplikace v místním clusteru.
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="debug-a-remote-service-fabric-application"></a>Ladění vzdálené aplikace Service Fabric
-Pokud vaše aplikace Service Fabric jsou spuštěné v clusteru Service Fabric v Azure, můžete vzdáleně ladit tyto aplikace přímo ze sady Visual Studio.
+## <a name="debug-a-remote-service-fabric-application"></a>Ladění aplikace vzdálené Service Fabric
+Pokud vaše aplikace Service Fabric běží na clusteru Service Fabric v Azure, můžete tyto aplikace vzdáleně ladit přímo ze sady Visual Studio.
 
 > [!NOTE]
-> Tato funkce vyžaduje [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).    
+> Tato funkce vyžaduje [sadu Service Fabric sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sadu Azure sdk pro .NET 2,9](https://azure.microsoft.com/downloads/).    
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Vzdálené ladění je určená pro scénáře vývoje/testování a není určen k použití v produkčním prostředí kvůli dopadu na spuštěné aplikace.
+> Vzdálené ladění je určeno pro scénáře vývoje a testování a nepoužívá se v produkčních prostředích z důvodu dopadu na běžící aplikace.
 > 
 > 
 
-1. Přejděte do svého clusteru v **Průzkumníka cloudu**. Klikněte pravým tlačítkem a zvolte **povolit ladění**
+1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit ladění** .
    
-    ![Povolení vzdáleného ladění][enableremotedebugging]
+    ![Povolit vzdálené ladění][enableremotedebugging]
    
-    Tím se spustí řízený proces povolení vzdáleného ladění rozšíření na uzlech clusteru a požadovaná síťová konfigurace.
-2. Klikněte pravým tlačítkem na uzel clusteru v **Průzkumníka cloudu**a zvolte **připojit ladicí program**
+    Tato akce zahájí proces povolení rozšíření vzdáleného ladění na uzlech clusteru a požadované konfigurace sítě.
+2. Klikněte pravým tlačítkem na uzel clusteru v **Průzkumníku cloudu**a vyberte **připojit ladicí program** .
    
     ![Připojit ladicí program][attachdebugger]
-3. V **připojit k procesu** dialogového okna, vyberte proces, kterému chcete ladit, a klikněte na **připojit**
+3. V dialogovém okně **připojit k procesu** vyberte proces, který chcete ladit, a klikněte na tlačítko **připojit** .
    
-    ![Vyberte proces][chooseprocess]
+    ![Zvolit proces][chooseprocess]
    
-    Název procesu, který chcete připojit, rovná se název název sestavení projektu vaší služby.
+    Název procesu, ke kterému se chcete připojit, se rovná názvu vašeho názvu sestavení projektu služby.
    
-    Ladicí program se připojit ke všem uzlům spuštění procesu.
+    Ladicí program se připojí ke všem uzlům, které proces spouští.
    
-   * Všechny instance služby na všech uzlech v případě, pokud ladíte bezstavovou službu, jsou součástí relace ladění.
-   * Pokud ladíte stavové služby, bude pouze primární replika žádný oddíl aktivní a proto zachycené ladicím programem. Pokud se primární replika přesune během relace ladění, zpracování této repliky bude stále součástí relace ladění.
-   * K zachycení pouze relevantní oddíly nebo instance dané služby, můžete použít podmíněné zarážky se přerušit pouze konkrétní oddíl nebo instance.
+   * V případě, že ladíte bezstavovou službu, jsou všechny instance služby na všech uzlech součástí relace ladění.
+   * Pokud ladíte stavovou službu, bude aktivní pouze primární replika jakéhokoli oddílu, a proto bude zachycena ladicím programem. Pokud se primární replika přesune během relace ladění, bude zpracování této repliky stále součástí ladicí relace.
+   * Chcete-li zachytit pouze relevantní oddíly nebo instance dané služby, můžete použít podmíněné zarážky pouze k přerušení konkrétního oddílu nebo instance.
      
-     ![Podmíněné zarážky][conditionalbreakpoint]
+     ![Podmíněná zarážka][conditionalbreakpoint]
      
      > [!NOTE]
-     > Ladění clusteru Service Fabric s více instancemi se stejným názvem spustitelného souboru služby aktuálně nepodporujeme.
+     > V současné době nepodporujeme ladění Service Fabricho clusteru s více instancemi stejného názvu spustitelného souboru služby.
      > 
      > 
-4. Po dokončení ladění vaší aplikace, můžete zakázat rozšíření vzdálené ladění kliknutím pravým tlačítkem cluster v **Průzkumníka cloudu** a zvolte **zakázat ladění**
+4. Po dokončení ladění aplikace můžete rozšíření vzdáleného ladění zakázat kliknutím pravým tlačítkem myši na cluster v **Průzkumníku cloudu** a zvolením možnosti **Zakázat ladění** .
    
-    ![Zakázání vzdálené ladění][disableremotedebugging]
+    ![Zakázat vzdálené ladění][disableremotedebugging]
 
-## <a name="streaming-traces-from-a-remote-cluster-node"></a>Trasy streamování ze vzdáleného clusteru
-Můžete také možné do datového proudu trasování přímo z uzlu vzdáleného clusteru se sadou Visual Studio. Tato funkce umožňuje trasování událostí trasování událostí pro Windows datového proudu, vytvořený v uzlu clusteru Service Fabric.
+## <a name="streaming-traces-from-a-remote-cluster-node"></a>Streamování trasování ze vzdáleného uzlu clusteru
+Je také možné streamovat trasování přímo ze vzdáleného uzlu clusteru do sady Visual Studio. Tato funkce umožňuje streamovat události trasování ETW, které se vytvářejí na uzlu clusteru Service Fabric.
 
 > [!NOTE]
-> Tato funkce vyžaduje [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).
-> Tato funkce podporuje pouze clustery spuštěné v Azure.
+> Tato funkce vyžaduje [sadu Service Fabric sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sadu Azure sdk pro .NET 2,9](https://azure.microsoft.com/downloads/).
+> Tato funkce podporuje jenom clustery běžící v Azure.
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Streamování trasování je určená pro scénáře vývoje/testování a není určen k použití v produkčním prostředí kvůli dopadu na spuštěné aplikace.
-> V případě produkčního prostředí by se neměla spoléhat na předávání událostí pomocí Azure Diagnostics.
+> Trasování streamování je určené pro scénáře pro vývoj a testování a ne pro použití v produkčních prostředích z důvodu dopadu na běžící aplikace.
+> V produkčním scénáři byste měli spoléhat na události předávání pomocí Azure Diagnostics.
 > 
 > 
 
-1. Přejděte do svého clusteru v **Průzkumníka cloudu**. Klikněte pravým tlačítkem a zvolte **povolit trasování streamování**
+1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit trasování streamování** .
    
-    ![Povolit vzdálené trasy streamování][enablestreamingtraces]
+    ![Povolit trasování vzdáleného streamování][enablestreamingtraces]
    
-    Tím se spustí řízený proces povolování rozšíření trasování streamování na vaše uzly clusteru, a také požadovaná síťová konfigurace.
-2. Rozbalte **uzly** element v **Průzkumníka cloudu**, klikněte pravým tlačítkem na uzel, který chcete trasování z datového proudu a zvolte **trasování streamování zobrazení**
+    Tato akce zahájí proces povolení rozšíření trasování datových proudů na uzlech clusteru a také požadované konfigurace sítě.
+2. Rozbalte prvek **uzly** v **Průzkumníku cloudu**, klikněte pravým tlačítkem na uzel, ze kterého chcete streamovat trasování, a vyberte **Zobrazit trasování streamování.**
    
-    ![Zobrazit vzdálené trasování streamování][viewremotestreamingtraces]
+    ![Zobrazit trasování vzdáleného streamování][viewremotestreamingtraces]
    
-    Krok 2 opakujte pro naleznete v tématu trasování z počtu uzlů. Každý datový proud uzly se zobrazí v okně vyhrazené.
+    Opakujte krok 2 pro libovolný počet uzlů, ze kterých chcete zobrazit trasování. Každý datový proud uzlů se zobrazí ve vyhrazeném okně.
    
-    Nyní budete moci zobrazit trasování, protože ho vygeneroval Service Fabric a služeb. Pokud chcete filtrovat události, které chcete zobrazit jen určité aplikace, jednoduše zadejte název aplikace ve filtru.
+    Teď můžete vidět trasování vysílaná Service Fabric a vašimi službami. Chcete-li filtrovat události tak, aby zobrazovaly pouze konkrétní aplikaci, stačí do filtru zadat název aplikace.
    
     ![Zobrazení trasování streamování][viewingstreamingtraces]
-3. Po dokončení trasy streamování z vašeho clusteru, můžete zakázat trasy streamování vzdálené, kliknutím pravým tlačítkem cluster v **Průzkumníka cloudu** a zvolte **zakázat trasování streamování**
+3. Po skončení streamování trasování z clusteru můžete zakázat trasování vzdáleného streamování kliknutím pravým tlačítkem myši na cluster v **Průzkumníku cloudu** a výběrem možnosti **zakázat trasování streamování** .
    
-    ![Zakázání vzdálené trasy streamování][disablestreamingtraces]
+    ![Zakázat trasování vzdáleného streamování][disablestreamingtraces]
 
-## <a name="next-steps"></a>Další postup
-* [Testovat službu Service Fabric](service-fabric-testability-overview.md).
-* [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+## <a name="next-steps"></a>Další kroky
+* [Otestujte službu Service Fabric](service-fabric-testability-overview.md).
+* [Spravujte své aplikace Service Fabric v aplikaci Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

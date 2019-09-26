@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2034701008396f524e5b058ddb726ddce89e4e32
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218304"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300614"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -172,9 +172,9 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ## <a name="register-datasets"></a>Registrace datových sad
 
-Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem:
+Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem.
 
-[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) Použijte metodu k registraci datových sad do vašeho pracovního prostoru, aby je bylo možné sdílet s ostatními a opakovaně používat v různých experimentech.
+[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) Použijte metodu k registraci datových sad s vaším pracovním prostorem, aby se mohly sdílet s ostatními a znovu použít v různých experimentech.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -187,7 +187,8 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>Datové sady verze
 
-Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nové verze. Verze datové sady je způsob, jak můžete založit stav dat, abyste mohli použít určitou verzi datové sady pro experimentování nebo budoucí rozmnožování. Typické scénáře použití správy verzí:
+Novou datovou sadu můžete zaregistrovat pod stejným názvem vytvořením nové verze. Verze datové sady je způsob, jak můžete založit stav dat, abyste mohli použít určitou verzi datové sady pro experimentování nebo budoucí rozmnožování. Obvyklé scénáře, které je potřeba vzít v úvahu pro správu verzí: 
+
 * Když jsou nová data dostupná pro rekurzi.
 * Při použití různých přístupů k přípravě dat nebo analýze funkcí.
 

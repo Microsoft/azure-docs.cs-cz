@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036661"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309355"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
-Pokud chcete získat přístup ke zdrojům dat z aplikací logiky, vytvořte na Azure Portal prostředek místní brány dat. Vaše aplikace logiky pak můžou používat [](../connectors/apis-list.md#on-premises-connectors)místní konektory. Tento článek ukazuje, jak vytvořit prostředek brány Azure *po* [Stažení a instalaci brány do místního počítače](../logic-apps/logic-apps-gateway-install.md). Další informace o bráně najdete v tématu [jak brána funguje](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Pokud chcete získat přístup ke zdrojům dat z aplikací logiky, vytvořte na Azure Portal prostředek místní brány dat. Vaše aplikace logiky pak můžou používat [](../connectors/apis-list.md#on-premises-connectors)místní konektory. Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a aktualizace. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+
+Tento článek ukazuje, jak vytvořit prostředek brány Azure *po* [Stažení a instalaci brány do místního počítače](../logic-apps/logic-apps-gateway-install.md). Další informace o bráně najdete v tématu [jak brána funguje](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service). 
 
 > [!TIP]
 > Pokud se chcete připojit k virtuálním sítím Azure, zvažte místo toho vytvoření [*prostředí integrační služby*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) . 
@@ -166,7 +168,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zabezpečení aplikací logiky](./logic-apps-securing-a-logic-app.md)
 * [Běžné příklady a scénáře pro Logic Apps](./logic-apps-examples-and-scenarios.md)

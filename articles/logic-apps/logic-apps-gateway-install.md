@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087728"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309860"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -58,7 +58,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
   * Úložiště SSD (Solid-State Drive) pro zařazování
 
   > [!NOTE]
-  > Brána nepodporuje Windows Server 2016 Core.
+  > Brána nepodporuje jádro Windows serveru.
 
 * **Související otázky**
 
@@ -74,6 +74,8 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
   * Oblast, kterou vyberete pro instalaci brány, je stejné umístění, které musíte vybrat při pozdějším vytvoření prostředku brány Azure pro vaši aplikaci logiky. Ve výchozím nastavení se jedná o stejné umístění jako váš tenant služby Azure AD, který spravuje váš účet Azure. Umístění však můžete změnit během instalace brány.
 
   * Brána má dva režimy: standardní režim a osobní režim, které platí jenom pro Power BI. Na stejném počítači nemůžete mít spuštěnou více než jednu bránu ve stejném režimu.
+
+  * Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a aktualizace. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -268,7 +270,7 @@ Další informace najdete v těchto tématech:
 * [Řešení potíží s místní bránou dat](/data-integration/gateway/service-gateway-tshoot)
 * [Monitorování a optimalizace výkonu brány](/data-integration/gateway/service-gateway-performance)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojení k místním datům z Logic Apps](../logic-apps/logic-apps-gateway-connection.md)
 * [Funkce Enterprise Integration](../logic-apps/logic-apps-enterprise-integration-overview.md)

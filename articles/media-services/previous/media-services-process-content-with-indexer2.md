@@ -11,35 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015017"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309249"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview
-## <a name="overview"></a>Přehled
+
+> [!NOTE]
+> Procesor [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) Media se vyřadí od 1. ledna 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tento starší multimediální procesor. Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+
 Procesor médií **verze Preview Azure Media Indexer 2** (MP) umožňuje vytvářet soubory médií a obsah prohledávatelné a také generovat skryté titulky. Ve srovnání s předchozí verzí [Azure Media Indexer](media-services-index-content.md)provádí **Azure Media Indexer 2 Preview** rychlejší indexování a nabízí širší podporu pro jazyky. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (Mandarin, zjednodušená), portugalština, arabština, ruština a japonština.
 
 Sada Management Pack **Azure Media Indexer 2 Preview** je momentálně ve verzi Preview.
 
 Tento článek ukazuje, jak vytvořit úlohy indexování pomocí **Azure Media Indexer 2 ve verzi Preview**.
 
-> [!NOTE]
-> Platí následující požadavky:
-> 
-> Indexer 2 není v Azure Čína a Azure Government podporován.
-> 
-> Při indexování obsahu se ujistěte, že používáte mediální soubory, které mají velmi jasný zvuk (bez hudby, hluku, efektů nebo mikrofonu Hiss). Mezi příklady příslušného obsahu patří: zaznamenané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokoli se smíšeným zvukovým a zvukovým efektem, špatně zaznamenaného obsahu s hlukem na pozadí (Hiss).
-> 
-> 
+## <a name="considerations"></a>Požadavky
 
-Tento článek obsahuje podrobnosti o **Azure Media Indexer 2 Preview** a ukazuje, jak ho používat s Media Services SDK pro .NET.
-
+Platí následující požadavky:
+ 
+* Indexer 2 není podporován v Azure Čína 21Vianet a Azure Government.
+* Při indexování obsahu se ujistěte, že používáte mediální soubory, které mají velmi jasný zvuk (bez hudby, hluku, efektů nebo mikrofonu Hiss). Mezi příklady příslušného obsahu patří: zaznamenané schůzky, přednášky nebo prezentace. Následující obsah nemusí být vhodný pro indexování: filmy, televizní pořady, cokoli se smíšeným zvukovým a zvukovým efektem, špatně zaznamenaného obsahu s hlukem na pozadí (Hiss).
+ 
 ## <a name="input-and-output-files"></a>Vstupní a výstupní soubory
 ### <a name="input-files"></a>Vstupní soubory
 Zvukové soubory nebo videosoubory

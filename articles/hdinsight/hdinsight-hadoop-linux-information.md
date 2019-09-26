@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181106"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308086"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -88,7 +88,7 @@ Další informace najdete v tématu [porty používané službou Apache Hadoop S
 
 Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na `/usr/hdp`adrese. Tento adresář obsahuje následující podadresáře:
 
-* **2.6.5.3006-29**: Název adresáře je verze datové platformy Hortonworks, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
+* **2.6.5.3006-29**: Název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
 * **aktuální**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3006-29** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
 Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a. `/HdiSamples`

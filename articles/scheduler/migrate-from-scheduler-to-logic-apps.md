@@ -8,40 +8,40 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/20/2018
-ms.openlocfilehash: 0225a9f34e016a4b1de51c06ba982d384e41007c
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.date: 09/23/2019
+ms.openlocfilehash: 6b80cbd16ac78f7f347bef9ab8e22c4d67d31058
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302076"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301030"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru na Azure Logic Apps
 
 > [!IMPORTANT]
-> Azure Logic Apps nahrazuje vyřazení Azure Scheduleru. Pokud chcete naplánovat úlohy, postupujte podle tohoto článku, abyste místo toho přesunuli Azure Logic Apps.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, přesuňte se prosím na Azure Logic Apps co nejdříve podle tohoto článku.
 
 V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakované úlohy vytvořením automatizovaných pracovních postupů pomocí Azure Logic Apps, nikoli pomocí Azure Scheduleru. Když vytváříte naplánované úlohy pomocí Logic Apps, získáte tyto výhody:
 
-* Nemusíte se starat o koncept *kolekce úloh* , protože každá aplikace logiky je samostatný prostředek Azure.
+* Sestavte svou úlohu pomocí vizuálního návrháře a [konektorů připravených k použití](../connectors/apis-list.md) ze stovek služeb, jako je Azure Blob Storage, Azure Service Bus, Office 365 Outlook a SAP.
 
-* Pomocí jedné aplikace logiky můžete spustit více jednorázových úloh.
+* Spravujte každý naplánovaný pracovní postup jako prostředek Azure jako první třídy. Nemusíte se starat o koncept *kolekce úloh* , protože každá aplikace logiky je individuální prostředek Azure.
 
-* Služba Azure Logic Apps podporuje časové pásmo a letní čas (DST).
+* Spouštějte více jednorázových úloh pomocí jedné aplikace logiky.
 
-Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo si v tomto rychlém startu zkuste vytvořit svou první aplikaci logiky: [Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Nastavte plány, které podporují časová pásma a automaticky se upraví na letní čas (DST).
+
+Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v tomto rychlém startu: [Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * K aktivaci aplikace logiky odesláním požadavků HTTP použijte nástroj, jako je například [aplikace pro pozálohovací plochu](https://www.getpostman.com/apps).
 
 ## <a name="schedule-one-time-jobs"></a>Plánování jednorázových úloh
 
 Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace logiky. 
-
-### <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
 1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky. 
 
@@ -61,11 +61,11 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a pak zvolte Hotovo, například:
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a potom vyberte **Hotovo**, například:
 
       ![Ukázková datová část](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. V části Trigger klikněte na **Další krok**. 
+1. V části Trigger vyberte **Další krok**. 
 
 1. Do vyhledávacího pole zadejte "zpoždění do" jako filtr. V seznamu akce vyberte tuto akci: **Zpoždění do**
 
@@ -102,20 +102,20 @@ Pokud chcete ručně spustit nebo aktivovat jednorázovou úlohu, odešlete vol�
 
 Například pomocí aplikace pro publikování můžete vytvořit požadavek POST s nastavením podobným této ukázce a pak vybrat **Odeslat** pro vytvoření žádosti.
 
-| Request – metoda | URL | Tělo | Hlavičky |
-|----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka:** Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Typ obsahu <br>**Hodnota**: Application/JSON
- |||| 
+| Metoda žádosti | URL | Tělo | Záhlaví |
+|----------------|-----|------|---------|
+| **POST** | <*endpoint-URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka:** Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Typ obsahu <br>**Hodnota**: Application/JSON |
+|||||
 
 ![Poslat požadavek na ruční aktivaci vaší aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
-Po odeslání hovoru se odpověď z vaší aplikace logiky zobrazí v poli nezpracované  na kartě **tělo** . 
+Po odeslání hovoru se odpověď z vaší aplikace logiky zobrazí v poli nezpracované na kartě **tělo** . 
 
 <a name="workflow-run-id"></a>
 
 > [!IMPORTANT]
 >
-> Pokud chcete úlohu později zrušit, klikněte na kartu **hlavičky** . Vyhledejte a zkopírujte hodnotu záhlaví **x-MS-Workflow-Run-ID** v odpovědi. 
+> Pokud chcete úlohu později zrušit, vyberte kartu **záhlaví** . Vyhledejte a zkopírujte hodnotu záhlaví **x-MS-Workflow-Run-ID** v odpovědi. 
 >
 > ![Odpověď](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -124,8 +124,6 @@ Po odeslání hovoru se odpověď z vaší aplikace logiky zobrazí v poli nezpr
 V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spuštění aplikace logiky. Chcete-li zrušit jednorázovou úlohu, můžete použít [spuštění pracovního postupu – zrušit](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel) v REST API Logic Apps. Po odeslání volání triggeru zadejte [ID spuštění pracovního postupu](#workflow-run-id).
 
 ## <a name="schedule-recurring-jobs"></a>Plánování opakujících se úloh
-
-### <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
 1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky v návrháři aplikace logiky. 
 
@@ -139,9 +137,9 @@ V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spu
 
    ![Rozšířený plán](./media/migrate-from-scheduler-to-logic-apps/recurrence-advanced-schedule.png)
 
-   Další informace o pokročilých možnostech plánování najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md) .
+   Další informace o pokročilých možnostech plánování najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md).
 
-1. Přidejte další požadované akce výběrem ze [stovek připravených k použití](../connectors/apis-list.md). V části Trigger klikněte na **Další krok**. Najděte a vyberte akce, které chcete.
+1. Přidejte další požadované akce výběrem ze [stovek připravených k použití](../connectors/apis-list.md). V části Trigger vyberte **Další krok**. Najděte a vyberte akce, které chcete.
 
    Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata: 
 
@@ -159,7 +157,7 @@ Tady jsou další způsoby, jak můžete úlohy přizpůsobit.
 
 Chcete-li řídit způsob, jakým se akce pokusí znovu spustit v aplikaci logiky, když dojde k přerušované chybě, můžete nastavit [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies) v nastavení jednotlivých akcí, například:
 
-1. Otevřete nabídku Akce ( **...** ) a vyberte **Nastavení**.
+1. Otevřete nabídku se třemi tečkami ( **...** ) akce a vyberte **Nastavení**.
 
    ![Otevřít nastavení akce](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -171,7 +169,7 @@ Chcete-li řídit způsob, jakým se akce pokusí znovu spustit v aplikaci logik
 
 Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, můžete spustit akci alterative, která řeší chybový stav. V Azure Logic Apps můžete také provést stejnou úlohu.
 
-1. V návrháři aplikace logiky nad akci, kterou chcete zpracovat, přesuňte ukazatel na šipku mezi jednotlivými kroky a vyberte a **přidejte paralelní větev**. 
+1. V návrháři aplikace logiky nad akcí, kterou chcete zpracovat, přesuňte ukazatel myši na šipku mezi jednotlivými kroky a vyberte **Přidat paralelní větev**. 
 
    ![Přidat paralelní větev](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -179,7 +177,7 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
    ![Přidat paralelní akci](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. V alternativní akci otevřete nabídku (.. **.** ) a vyberte **Konfigurovat spustit po**.
+1. V alternativní akci otevřete nabídku se třemi tečkami ( **...** ) a vyberte **Konfigurovat spustit po**.
 
    ![Konfigurovat běh po](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
@@ -187,19 +185,19 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
    ![Nastavení vlastností spustit po](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. Jakmile budete hotovi, zvolte **Done** (Hotovo).
+1. Jakmile budete hotovi, vyberte **Hotovo**.
 
 Další informace o zpracování výjimek naleznete v tématu [zpracování chyb a výjimek – vlastnost runafter šablonové](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-<a name="retire-date"></a> 
+<a name="retire-date"></a>
 
 **OTÁZKA**: Kdy služba Azure Scheduler vychází z provozu? <br>
-**A**: Služba Azure Scheduler je naplánována na vyřazení z 30. září 2019.
+**A**: Služba Azure Scheduler je naplánována k úplnému vyřazení 31. prosince 2019. Důležité kroky, které je třeba provést před tímto datem a detailní časovou osou, najdete v tématu [rozšíření data vyřazení pro Scheduler do 31. prosince 2019](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Obecné aktualizace najdete v tématu [Azure Updates – Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
-**OTÁZKA**: Co se stane s kolekcemi úloh a úlohami plánovače po vystavování služby? <br>
-**A**: Všechny kolekce úloh Scheduleru a úlohy budou odstraněny ze systému.
+**OTÁZKA**: Co se stane s kolekcemi úloh a úlohami po vystavování služby? <br>
+**A**: Všechny kolekce úloh a úlohy plánovače přestanou běžet a jsou odstraněny ze systému.
 
 **OTÁZKA**: Musím před migrací úloh Scheduleru do Logic Apps provést zálohování nebo provedení dalších úloh? <br>
 **A**: Jako osvědčený postup vždy zálohujte práci. Ověřte, že aplikace logiky, které jste vytvořili, jsou spuštěné podle očekávání před odstraněním nebo zakázáním úloh plánovače. 
@@ -216,16 +214,16 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 1. V hlavní nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**.
 
-1. V části **Podpora**vyberte **Nová žádost o podporu**. Zadejte pro svůj požadavek tyto podrobnosti:
+1. V nabídce **Podpora** vyberte **Nová žádost o podporu**. Zadejte tyto informace o vaší žádosti:
 
-   | Nastavení | Hodnota |
+   | Vlastnost | Value |
    |---------|-------|
-   | **Typ problému** | **Odbornou** | 
-   | **Předplatné** | <*Vaše předplatné – Azure*> | 
-   | **Služba** | V části **monitorování & Správa**vyberte **Plánovač**. | 
+   | **Typ problému** | **Odbornou** |
+   | **Předplatné** | <*Vaše předplatné – Azure*> |
+   | **Služba** | V části **monitorování & Správa**vyberte **Plánovač**. Pokud nemůžete najít **Scheduler**, nejdřív vyberte **všechny služby** . |
    ||| 
 
-1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, klikněte na tlačítko **Další**.
+1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, vyberte **Další**.
 
 **Community**
 

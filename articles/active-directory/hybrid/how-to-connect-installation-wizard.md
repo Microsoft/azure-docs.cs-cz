@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect opětovným spuštěním Průvodce instalací | Dokumentace Microsoftu
-description: Vysvětluje, jak funguje Průvodce instalací druhý čas spuštění.
-keywords: Průvodce instalací Azure AD Connect vám umožní nakonfigurovat nastavení údržby druhém spuštění
+title: Opětovné spuštění Průvodce instalací Azure AD Connect | Microsoft Docs
+description: Vysvětluje, jak Průvodce instalací funguje podruhé při jeho spuštění.
+keywords: Průvodce instalací Azure AD Connect umožňuje nakonfigurovat nastavení údržby podruhé, když ho spustíte.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -13,81 +13,84 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348401"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290931"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: Druhé spuštění průvodce instalací
-Při prvním spuštění Průvodce instalací služby Azure AD Connect to vás provede instalaci nakonfigurujte. Pokud znovu spustíte Průvodce instalací, nabízí možnosti pro údržbu.
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronizace: Druhé spuštění průvodce instalací
+Při prvním spuštění Průvodce instalací Azure AD Connect vás provede konfigurací instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti údržby.
 
-Průvodce instalací najdete v nabídce start s názvem **Azure AD Connect**.
+>[!IMPORTANT]
+>Mějte na paměti, že v průběhu synchronizace nemůžete spustit Průvodce instalací.  Před spuštěním Průvodce prosím ověřte, že není spuštěná synchronizace.
+
+Průvodce instalací můžete najít v nabídce Start s názvem **Azure AD Connect**.
 
 ![Nabídka Start](./media/how-to-connect-installation-wizard/startmenu.png)
 
-Když spustíte Průvodce instalací, zobrazí se stránka s těmito možnostmi:
+Po spuštění Průvodce instalací se zobrazí stránka s těmito možnostmi:
 
-![Stránka se seznamem další úkoly](./media/how-to-connect-installation-wizard/additionaltasks.png)
+![Stránka se seznamem dalších úloh](./media/how-to-connect-installation-wizard/additionaltasks.png)
 
-Pokud jste nainstalovali služby AD FS s Azure AD Connect, máte i další možnosti. Další možnosti máte pro služby AD FS jsou dokumentovány v článku [správu služby AD FS](how-to-connect-fed-management.md#manage-ad-fs).
+Pokud jste nainstalovali službu AD FS s Azure AD Connect, máte ještě více možností. Další možnosti, které máte v AD FS, najdete v části [Správa služby ADFS](how-to-connect-fed-management.md#manage-ad-fs).
 
-Vyberte jednu z úloh a klikněte na tlačítko **Další** pokračujte.
+Vyberte jednu z úloh a pokračujte kliknutím na tlačítko **Další** .
 
 > [!IMPORTANT]
-> Při otevření Průvodce instalací, všechny operace v modulu synchronizace jsou pozastavena. Zajistěte, aby že co nejdříve dokončili změny konfigurace zavřete průvodce instalací.
+> Po otevření Průvodce instalací se všechny operace v synchronizačním modulu pozastaví. Nezapomeňte Průvodce instalací zavřít hned po dokončení změn konfigurace.
 >
 >
 
 ## <a name="view-current-configuration"></a>Zobrazit aktuální konfiguraci
-Tato možnost poskytuje rychlý přehled o aktuálně nakonfigurovaných možností.
+Tato možnost nabízí rychlé zobrazení aktuálně nakonfigurovaných možností.
 
-![Stránka se seznamem všech možností a jejich stav](./media/how-to-connect-installation-wizard/viewconfig.png)
+![Stránka se seznamem všech možností a jejich stavu](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-Klikněte na tlačítko **předchozí** zpátky. Pokud vyberete **ukončovací**, zavřete průvodce instalací.
+Vraťte se kliknutím na tlačítko **Předchozí** . Pokud vyberete možnost **ukončit**, Průvodce instalací zavřete.
 
 ## <a name="customize-synchronization-options"></a>Přizpůsobit možnosti synchronizace
-Tato možnost umožňuje provádět změny konfigurace synchronizace. Zobrazí podmnožinu možnosti z cesty instalace vlastní konfigurace. Tato možnost se zobrazí i v případě, že jste původně použili Expresní instalace.
+Tato možnost slouží k provádění změn konfigurace synchronizace. Zobrazí se podmnožina možností z cesty k instalaci vlastní konfigurace. Tato možnost se zobrazí, i když jste nejdřív použili expresní instalaci.
 
-* [Přidat další adresáře](how-to-connect-install-custom.md#connect-your-directories). Odebírání adresáře, naleznete v tématu [odstranit konektor](how-to-connect-sync-service-manager-ui-connectors.md#delete).
-* [Změna domény a organizační jednotky filtrování](how-to-connect-install-custom.md#domain-and-ou-filtering).
-* Filtrování skupiny odebrat.
+* [Přidejte další adresáře](how-to-connect-install-custom.md#connect-your-directories). Informace o odebrání adresáře najdete v tématu [odstranění konektoru](how-to-connect-sync-service-manager-ui-connectors.md#delete).
+* [Změna filtrování domén a organizačních jednotek](how-to-connect-install-custom.md#domain-and-ou-filtering)
+* Odeberte filtrování skupin.
 * [Změnit volitelné funkce](how-to-connect-install-custom.md#optional-features).
 
-Další možnosti z počáteční instalaci nelze změnit a nejsou k dispozici. Tyto možnosti jsou:
+Ostatní možnosti počáteční instalace nelze změnit a nejsou k dispozici. Jsou to tyto možnosti:
 
-* Změňte atribut, který chcete použít pro userPrincipalName a sourceAnchor.
-* Změňte metodu spojovacího pro objekty z jiné doménové struktuře.
-* Povolte filtrování podle skupin.
+* Změňte atribut, který má být použit pro atribut userPrincipalName a sourceAnchor.
+* Změňte metodu spojování objektů z jiné doménové struktury.
+* Povolte filtrování na základě skupin.
 
 ## <a name="refresh-directory-schema"></a>Aktualizovat schéma adresáře
-Tato možnost se používá, pokud jste nezměnili schéma v jednom z vaší místní doménové struktury AD DS. Například můžete nainstalovat Exchange a upgradovat na Windows serveru 2012 schéma s objekty zařízení. V takovém případě musíte dáte pokyn, aby Azure AD Connect a znovu načíst schéma ze služby AD DS aktualizovat uloženou v mezipaměti. Tato akce obnoví také synchronizační pravidla. Pokud přidáte schématu serveru Exchange jako příklad jsou synchronizační pravidla pro Exchange v konfiguraci přidaný.
+Tato možnost se používá v případě, že jste změnili schéma v jedné z místních doménových struktur služba AD DS. Můžete například nainstalovat Exchange nebo upgradovat na schéma Windows Serveru 2012 s objekty zařízení. V takovém případě je potřeba, abyste Azure AD Connect znovu načetli schéma z služba AD DS a aktualizovali jeho mezipaměť. Tato akce také znovu vygeneruje pravidla synchronizace. Pokud přidáte schéma serveru Exchange, jako příklad se do konfigurace přidají pravidla synchronizace pro Exchange.
 
-Když vyberete tuto možnost, jsou uvedeny všechny adresáře v konfiguraci. Můžete ponechat výchozí nastavení a aktualizovat všechny doménové struktury nebo zrušte výběr některé z nich.
+Když vyberete tuto možnost, zobrazí se všechny adresáře ve vaší konfiguraci. Můžete ponechat výchozí nastavení a aktualizovat všechny doménové struktury nebo zrušit výběr některých z nich.
 
 ![Stránka se seznamem všech adresářů v prostředí](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>Konfigurovat pracovní režim
-Tato možnost umožňuje povolit nebo zakázat pracovní režim na serveru. Další informace o pracovní režim a způsobu jejich využití najdete v [operace](how-to-connect-sync-staging-server.md).
+Tato možnost umožňuje povolit nebo zakázat pracovní režim na serveru. Další informace o pracovním režimu a způsobu jejich použití najdete v tématu [operace](how-to-connect-sync-staging-server.md).
 
-Možnost zobrazí, pokud pracovní je aktuálně povoleno nebo zakázáno:  
-![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+Možnost zobrazuje, zda je pracovní postup aktuálně povolen nebo zakázán:  
+![Možnost, která zobrazuje aktuální stav pracovního režimu](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
-Chcete-li ke změně stavu, vyberte tuto možnost a vyberte nebo zrušte zaškrtnutí políčka.  
-![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
+Chcete-li změnit stav, vyberte tuto možnost a zaškrtněte nebo zrušte zaškrtnutí políčka.  
+![Možnost, která zobrazuje aktuální stav pracovního režimu](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
-## <a name="change-user-sign-in"></a>Změnit přihlášení uživatele
-Tato možnost umožňuje změnit metodu přihlašování uživatele do a z synchronizace hodnot hash hesel, předávacího ověřování nebo federace. Nelze změnit na **nekonfigurujte**.
+## <a name="change-user-sign-in"></a>Změna přihlášení uživatele
+Tato možnost umožňuje změnit metodu přihlašování uživatelů na a ze synchronizace hodnot hash hesel, předávacího ověřování nebo federace. Nemůžete změnit **konfiguraci**.
 
-Další informace o této možnosti najdete v tématu [přihlášení uživatele](plan-connect-user-signin.md#changing-the-user-sign-in-method).
+Další informace o této možnosti najdete v tématu věnovaném [přihlášení uživatele](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 
-## <a name="next-steps"></a>Další postup
-* Další informace o konfiguraci modelu používá synchronizace Azure AD Connect v [Principy deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o modelu konfigurace, který používá Azure AD Connect synchronizaci při [porozumění deklarativnímu zajišťování](concept-azure-ad-connect-sync-declarative-provisioning.md).
 
 **Témata s přehledem**
 

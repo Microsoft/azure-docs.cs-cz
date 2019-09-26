@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801374"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289597"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -38,7 +38,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 | [Vlastník](#owner) | Umožňuje správu všeho, včetně přístupu k prostředkům. |
 | [Přispěvatel](#contributor) | Umožňuje spravovat vše kromě udělení přístupu k prostředkům. |
 | [Reader](#reader) | Umožňuje zobrazit vše, ale ne provádět žádné změny. |
-| [AcrDelete](#acrdelete) | Odstranit ACR |
+| [AcrDelete](#acrdelete) | acr delete |
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
 | [AcrPull](#acrpull) | acr pull |
 | [AcrPush](#acrpush) | acr push |
@@ -183,8 +183,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Akce** |  |
 > | * | Vytváření a Správa prostředků všech typů |
 > | **NotActions** |  |
-> | Microsoft. Authorization/*/DELETE | Odstranění rolí a přiřazení rolí |
-> | Microsoft.Authorization/*/Write | Vytvoření rolí a přiřazení rolí |
+> | Microsoft. Authorization/*/DELETE | Odstranění rolí, přiřazení zásad, definic zásad a sad zásad |
+> | Microsoft.Authorization/*/Write | Vytváření rolí, přiřazení rolí, přiřazování zásad, definic zásad a definic sad zásad |
 > | Microsoft. Authorization/elevateAccess/Action | Udělí volajícímu přístup správce přístupu v oboru tenanta. |
 > | Microsoft. detail/blueprintAssignments/Write | Vytvořit nebo aktualizovat všechny artefakty podrobného plánu |
 > | Microsoft. detail/blueprintAssignments/DELETE | Odstraní všechny artefakty podrobného plánu. |
@@ -212,7 +212,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Odstranit ACR |
+> | **Popis** | acr delete |
 > | **ID** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/artifacts/delete | Odstraňte artefakt v registru kontejnerů. |
@@ -496,7 +496,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="avere-contributor"></a>Přispěvatel avere
+## <a name="avere-contributor"></a>Přispěvatel Avere
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -531,7 +531,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="avere-operator"></a>Avere – operátor
+## <a name="avere-operator"></a>Operátor Avere
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -749,12 +749,12 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
 > | Microsoft. RecoveryServices/trezory/backupstorageconfig/* |  |
 > | Microsoft. RecoveryServices/trezory/backupconfig/* |  |
-> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Operace ověření chráněné položky |
 > | Microsoft.RecoveryServices/Vaults/write | Operace Vytvořit trezor vytvoří prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery správy zálohování zaregistrované s trezorem. |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/* |  |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny kontejnery, které se dají chránit |
 > | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
 > | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
 > | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
@@ -789,7 +789,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvoří položku chráněnou zálohováním. |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
 > | Microsoft. RecoveryServices/trezory/backupJobs/* | Vytváření a správa úloh zálohování |
@@ -816,7 +816,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
 > | Microsoft. RecoveryServices/trezory/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Operace ověření chráněné položky |
 > | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
@@ -824,7 +824,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery správy zálohování zaregistrované s trezorem. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Vytvořit záložní záměr ochrany |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny kontejnery, které se dají chránit |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
 > | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
 > | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
@@ -858,7 +858,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
 > | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úloh. |
 > | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování trezoru Recovery Services. |
@@ -1178,7 +1178,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Features/Providers/Features/Read | Získá funkci předplatného v daném poskytovateli prostředků. |
 > | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel výstrah pro přehledy |
 > | Microsoft.Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft.Insights/logDefinitions/read | Číst definice protokolů |
+> | Microsoft.Insights/logDefinitions/read | Čtení definic protokolů |
 > | Microsoft. Insights/metricdefinitions/Read | Číst definice metrik |
 > | Microsoft. Insights/metriky/číst | Čtení metrik |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
@@ -1222,7 +1222,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Zobrazit seznam klíčů |
 > | Microsoft.Insights/alertRules/read | Přečte klasické upozornění na metriku. |
 > | Microsoft.Insights/diagnosticSettings/read | Přečte nastavení diagnostiky prostředků. |
-> | Microsoft.Insights/logDefinitions/read | Číst definice protokolů |
+> | Microsoft.Insights/logDefinitions/read | Čtení definic protokolů |
 > | Microsoft. Insights/metricdefinitions/Read | Číst definice metrik |
 > | Microsoft. Insights/metriky/číst | Čtení metrik |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
@@ -1474,8 +1474,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.Compute/virtualMachines/*/read | Přečtěte si vlastnosti virtuálního počítače (velikosti virtuálních počítačů, běhový stav, rozšíření virtuálních počítačů atd.). |
 > | Microsoft. COMPUTE/virtualMachines/unallocate/Action | Vyžádá virtuální počítač a uvolní výpočetní prostředky. |
 > | Microsoft. COMPUTE/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
-> | Microsoft. COMPUTE/virtualMachines/restart/Action | Umožňuje restartovat virtuální počítač. |
-> | Microsoft. COMPUTE/virtualMachines/Start/Action | Umožňuje spustit virtuální počítač. |
+> | Microsoft. COMPUTE/virtualMachines/restart/Action | Restartuje virtuální počítač. |
+> | Microsoft. COMPUTE/virtualMachines/Start/Action | Spustí virtuální počítač. |
 > | Microsoft.DevTestLab/*/read | Čtení vlastností testovacího prostředí |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Vydeklarujte náhodný virtuální počítač v testovacím prostředí. |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | Vytvářejte virtuální počítače v testovacím prostředí. |
@@ -2266,7 +2266,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/checkConsistency/Action | Zkontroluje konzistenci prostředí infrastruktury. |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Čtení jakýchkoli prostředků infrastruktury |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Znovu přidružit bránu |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Prodloužit platnost certifikátu pro Fabric |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Obnovit certifikát pro prostředky infrastruktury |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Čtení všech sítí |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
@@ -2277,9 +2277,9 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Read | Čtení jakýchkoli chráněných položek |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/číst | Čtení všech bodů obnovení replikace |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/Action | Opravit replikaci |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reprotect/Action | Znovu chránit chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reprotect/Action | Znovu zapnout ochranu položky |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Čištění testovacího převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
@@ -2293,9 +2293,9 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/failoverCommit/Action | Plán obnovení potvrzení převzetí služeb při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Plán obnovení plánovaného převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/reprotect/Action | Znovu zapnout ochranu plánu obnovení |
+> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/reprotect/Action | Plán obnovení opětovného zapnutí ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailover/Action | Plán obnovení testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení pro vyčištění testovacího převzetí služeb při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení vyčištění testovacího převzetí služeb při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Plán obnovení převzetí služeb při selhání |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Čtení výstrah pro trezor služby Recovery Services |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/notificationConfiguration/Read |  |
@@ -2360,7 +2360,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="spatial-anchors-account-contributor"></a>Přispěvatel účtu prostorových kotev
+## <a name="spatial-anchors-account-contributor"></a>Přispěvatel účtu Spatial Anchors
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2380,7 +2380,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="spatial-anchors-account-owner"></a>Vlastník účtu prostorových ukotvení
+## <a name="spatial-anchors-account-owner"></a>Vlastník účtu Spatial Anchors
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2401,7 +2401,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="spatial-anchors-account-reader"></a>Čtečka účtu prostorových kotev
+## <a name="spatial-anchors-account-reader"></a>Čtenář účtu Spatial Anchors
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2467,7 +2467,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="sql-managed-instance-contributor"></a>Přispěvatel spravované instance SQL
+## <a name="sql-managed-instance-contributor"></a>Přispěvatel Spravované instance SQL
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2678,7 +2678,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="storage-blob-data-reader"></a>Čtenář dat v objektech blob služby Storage 
+## <a name="storage-blob-data-reader"></a>Čtenář dat v objektech blob služby Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2931,7 +2931,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Vytvořit záložní záměr ochrany |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/*/Read |  |
 > | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvoří položku chráněnou zálohováním. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Vytvoří zásady ochrany. |
 > | Microsoft.RecoveryServices/Vaults/read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
@@ -3018,7 +3018,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)

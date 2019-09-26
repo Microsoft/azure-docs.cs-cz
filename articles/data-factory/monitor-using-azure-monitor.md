@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910186"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300567"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitor
 
@@ -404,7 +404,7 @@ Log Analytics dědí schéma z monitorování s následujícími výjimkami:
     | Azure Monitor sloupec | Log Analytics sloupec | type |
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dynamické |
-    | $. Properties. Anotac | Anotac | Dynamické |
+    | $. Properties. Anotac | Poznámky | Dynamické |
     | $. Properties. Vstup | Vstup | Dynamické |
     | $. Properties. Výkonem | Výstup | Dynamické |
     | $. Properties. Chyba. errorCode | Kód chyby | int |
@@ -505,8 +505,6 @@ Když nainstalujete Azure Data Factory Analytics, vytvoří se výchozí sada zo
 
 ![Okno s "sešity (Preview)" a "AzureDataFactoryAnalytics" se zvýrazní](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-![Grafická reprezentace spuštění a chyb](media/data-factory-monitor-oms/monitor-oms-image7.png)
-
 Můžete vizualizovat předchozí metriky, zobrazit dotazy za těmito metrikami, upravit dotazy, vytvořit upozornění a provést další akce.
 
 ![Grafická reprezentace kanálu spouštěná službou Data Factory](media/data-factory-monitor-oms/monitor-oms-image8.png)
@@ -548,5 +546,5 @@ Přihlaste se k Azure Portal a vyberte **monitorování** > **výstrah** a vytvo
 
     ![Definování skupiny akcí](media/monitor-using-azure-monitor/alerts_image12.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Programové monitorování a Správa kanálů](monitor-programmatically.md)

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: c81c2de180a2c5734f3896d4b6843f2ccccdf45f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 7cb158490bd8a8520e101dbe321b8594cad059f9
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231209"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309672"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -71,11 +71,13 @@ Rozlišení a přenosové rychlosti obsažené ve výstupu z kodéru Live Encode
 Při vytváření živé události můžete zadat následující možnosti:
 
 * Protokol streamování pro živou událost (aktuálně se podporují i protokoly RTMP a Smooth Streaming).<br/>Možnost protokolu nejde změnit, pokud je spuštěná živá událost nebo jejich přidružené živé výstupy. Pokud požadujete různé protokoly, měli byste pro každý protokol streamování vytvořit samostatnou živou událost.  
-* Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které můžou ingestovat video do této živé události. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: Adresa IpV4 se čtyřmi čísly, rozsahem adres CIDR.
 * Při vytváření události můžete nastavit automatické spouštění. <br/>Pokud je vlastnost autostart nastavena na hodnotu true, spustí se po vytvoření živá událost. Fakturace začne ihned po spuštění živé události. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události. Alternativně můžete událost spustit, až budete připraveni ke spuštění streamování. 
 
     Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
+* Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které můžou ingestovat video do této živé události. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: Adresa IpV4 se čtyřmi čísly, rozsahem adres CIDR.
 
+    Pokud chcete povolit určité IP adresy pro vlastní brány firewall nebo chcete omezit vstupy na živé události na IP adresy Azure, Stáhněte si soubor JSON z [rozsahů IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Podrobnosti o tomto souboru získáte kliknutím na část **Podrobnosti** na stránce.
+    
 ## <a name="live-event-ingest-urls"></a>Adresy URL pro příjem živých událostí
 
 Po vytvoření živé události můžete získat adresy URL ingestu, které poskytnete místní kodéru pro kódování v reálném čase. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [Doporučené místní kodéry v reálném čase](recommended-on-premises-live-encoders.md). 
@@ -161,6 +163,6 @@ Podrobné informace o živých výstupech najdete v tématu [Použití cloudové
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Kurz živého streamování](stream-live-tutorial-with-api.md)

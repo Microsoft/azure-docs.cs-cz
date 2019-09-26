@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012693"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299576"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
 
 ## <a name="using-spring-boot-15x"></a>Použití pružinového spuštění 1.5 x
 Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti: 
-* [Application Insights pružiny-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-beta nebo vyšší
+* [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
 * 1\.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
 * [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
@@ -37,7 +37,7 @@ Kroky
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
-        <version>1.1.0-BETA</version>
+        <version>2.5.0</version>
     </dependency>
 
     <dependency>
@@ -64,7 +64,7 @@ Kroky
 Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 
 * Application Insights pružiny-Boot-Starter 2.1.2 nebo vyšší
-* Azure-jaře-Boot-Metrics – starts 2.1.5 nebo vyšší  
+* Azure-jaře-Boot – metriky – starts 2.0.7 nebo novější
 * [Prostředek Application Insights](../../azure-monitor/app/create-new-resource.md )
 
 Kroky:
@@ -75,21 +75,21 @@ Kroky:
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.1.6</version>
+          <version>2.0.7</version>
     </dependency>
     ```
 1. Aktualizujte soubor Application. Properties nebo YML pomocí klíče instrumentace Application Insights pomocí následující vlastnosti:
 
-     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
+     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 3. Sestavení aplikace a spuštění
 4. Výše uvedený postup by měl být spuštěn s předem agregovanými metrikami automaticky shromážděnými do Azure Monitor. Podrobné informace o tom, jak vyladit Application Insights jaře Boot Starter, najdete v [souboru Readme na GitHubu](https://github.com/Microsoft/azure-spring-boot/releases/latest).
 
 Výchozí metriky:
 
 *    Automaticky konfigurované metriky pro metriky Tomcat, JVM, Logback, metriky Log4J, metriky provozu, metriky procesoru, FileDescriptorMetrics.
-*    Pokud je například Netflix hystrix k dispozici na cestě třídy, tyto metriky se také dostanou. 
+*    Například pokud je Netflix hystrix k dispozici na cestě třídy, získáme také tyto metriky. 
 *    Následující metriky mohou být k dispozici, když přidáváte příslušné fazole. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -121,10 +121,8 @@ Vypnutí automatické shromažďování metrik:
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Použití mikroměřiče u webových aplikací, které nejsou ve jarním spuštění
 
 Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
- 
-* [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) nebo vyšší
-* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) nebo novější
-* [Registrovat webový filtr](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+
+* Application Insights 2.5.0 Web auto nebo novější
 * 1\.1.0 nebo novější v registru mikroměřiče Azure
 * [Prostředek Application Insights](../../azure-monitor/app/create-new-resource.md )
 
@@ -141,14 +139,41 @@ Kroky:
         
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-web</artifactId>
-            <version>2.2.0</version>
-        </dependency
+            <artifactId>applicationinsights-web-auto</artifactId>
+            <version>2.5.0</version>
+        </dependency>
      ```
 
-2. Do složky Resources vložte Application Insights. XML.
+2. Umístit `ApplicationInsights.xml` soubor do složky Resources:
 
-    Ukázková třída servlet (emituje metriku časovače):
+    ```XML
+    <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    
+       <!-- The key from the portal: -->
+       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+    
+       <!-- HTTP request component (not required for bare API) -->
+       <TelemetryModules>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+       </TelemetryModules>
+    
+       <!-- Events correlation (not required for bare API) -->
+       <!-- These initializers add context data to each event -->
+       <TelemetryInitializers>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+       </TelemetryInitializers>
+    
+    </ApplicationInsights>
+    ```
+
+3. Ukázková třída servlet (emituje metriku časovače):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +212,7 @@ Kroky:
     
     ```
 
-      Ukázková třída konfigurace:
+4. Ukázková třída konfigurace:
 
     ```Java
          @WebListener
@@ -250,7 +275,7 @@ Do konfiguračního souboru přidejte následující kód vazby:
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o mikroměřiči najdete v oficiální [dokumentaci](https://micrometer.io/docs)k mikroměřiči.
-* Další informace o jaře v Azure najdete v dokumentaci k [Azure oficiální jaře](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
+* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).

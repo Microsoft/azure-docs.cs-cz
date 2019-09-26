@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180985"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299975"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (Preview) data ingestování – metoda ručního kopírování
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>Kdy přidat přípojné body
 
-Po zobrazení dostatečného množství paralelních vláken proti jednomu přípojnému bodu systému souborů aplikace bude k dispozici bod, ve kterém přidání dalších vláken neposkytuje větší propustnost. (V závislosti na typu dat se měří propustnost v souborech za sekundu nebo v bajtech za sekundu.) Nebo horší, více vláken může někdy způsobit snížení propustnosti.  
+Po zobrazení dostatečného množství paralelních vláken pro jeden přípojný bod systému souborů bude k dispozici bod, ve kterém přidání dalších vláken neposkytuje větší propustnost. (V závislosti na typu dat se měří propustnost v souborech za sekundu nebo v bajtech za sekundu.) Nebo horší, více vláken může někdy způsobit snížení propustnosti.  
 
-Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do jiných adres připojení mezipaměti HPC Azure pomocí stejné cesty pro připojení vzdáleného systému souborů:
+Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do jiných adres připojení mezipaměti HPC Azure pomocí stejné cesty pro připojení ke vzdálenému systému souborů:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Vytváření manifestů souborů
 
-Po porozumění výše uvedeným funkcím (více než jedno místo kopírování na cíl, více cílů na klienta, více klientů na zdrojový systém souborů přístupný v síti) zvažte toto doporučení: Sestavujte manifesty souborů a pak je používejte s příkazy kopírování mezi více klienty.
+Po porozumění výše uvedeným funkcím (více než jedno místo kopírování na cíl, více cílů na každého klienta, více klientů na přístupný zdrojový souborový systém) zvažte toto doporučení: Sestavujte manifesty souborů a pak je používejte s příkazy kopírování mezi více klienty.
 
 V tomto scénáři se k ``find`` vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
 

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736432"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898719"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -52,6 +52,15 @@ Seznam aktuálně podporovaných zdrojů dat najdete v tématu [Data Catalog DSR
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Návody požádat o podporu pro jiný zdroj dat?
 Pokud chcete odesílat žádosti o funkce a další zpětnou vazbu, na webu [fóra o zpětné vazbě Azure](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)klikněte na Data Catalog.
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Proč se mi při pokusu o vytvoření nového katalogu objeví *katalog* chyb?
+
+Když si koupíte Office 365 E5 s licencí Power BI Pro, Microsoft automaticky vytvoří výchozí katalog v oblasti předplatného. Tento katalog používá bezplatnou SKLADOVOU položku. Licence na uživatele Office 365/Power BI je spravovaná na stránce pro správu sady Office 365. 
+
+Tento typ katalogu dat však nemá **možnost Správce** a není zobrazen v **Azure Portal**. Tento typ katalogu dat nelze odstranit. Podobně nemáte oprávnění k přejmenování katalogu Data Catalog a nemůžete ho přesunout do jiné oblasti. 
+
+Uživatelům, kteří mají přiřazenou licenci Power BI Pro, mají automaticky přístup k datovému katalogu z důvodu licenční smlouvy, pokud se zaregistrovali k Office 365 E5 s licencí Power BI Pro. Tento typ uživatele má úplný přístup k prostředkům katalogu Data Catalog bez oprávnění správce. Tento druh uživatele *není součástí role* **uživatele katalogu** v Azure Data Catalog.
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Návody začít s Data Catalog?
 Nejlepším způsobem, jak začít, je [Začínáme s Data Catalog](data-catalog-get-started.md). Tento článek je ucelený přehled funkcí služby.

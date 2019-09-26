@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f418a78f80d65cbb784685804a4cc6790c28b99
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530921"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300909"
 ---
 # <a name="what-is-azure-scheduler"></a>Co je Azure Scheduler?
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) pomáhá vytvářet [úlohy](../scheduler/scheduler-concepts-terms.md) spouštěné v cloudu tím, že umožňuje deklarativně popisovat akce. Služba pak tyto akce automaticky plánuje a spouští. Můžete například volat služby v i mimo Azure, například koncové body HTTP nebo HTTPS, a také odesílat zprávy do front služby Azure Storage a front nebo témat služby Azure Service Bus. Úlohy můžete spouštět okamžitě nebo později. Scheduler bez problémů podporuje [komplexní plánování a pokročilé opakování](../scheduler/scheduler-advanced-complexity.md). Scheduler určuje, kdy se mají úlohy spouštět, uchovává historii výsledků úloh, kterou můžete procházet, a pak předvídatelně a spolehlivě plánuje úlohy, které se mají spustit.
 
@@ -30,13 +30,13 @@ Službu Scheduler používají na pozadí také další plánovací nástroje Az
 
 Tady je několik scénářů, ve kterých vám Scheduler může pomoct:
 
-* **Spouštět opakující se akce aplikace**: Třeba pravidelné shromažďování dat z Twitteru do informačního kanálu.
+* **Spustit opakující se akce aplikace**: Například pravidelně Shromážděte data z Twitteru do informačního kanálu.
 
-* **Provádění každodenní údržby**: Například každý den vyřazování protokolů, zálohování a další úlohy údržby. 
+* **Provést každodenní údržbu**: Například vyřazení protokolů denně, provádění záloh a další úlohy údržby. 
 
   Jako správce například můžete chtít každý den v 1:00 po dobu dalších devíti měsíců zálohovat databázi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Začínáme se službou Scheduler na webu Azure Portal](scheduler-get-started-portal.md)
 * Další informace o [plánech a fakturaci služby Azure Scheduler](scheduler-plans-billing.md)

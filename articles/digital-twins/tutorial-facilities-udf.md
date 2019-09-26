@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alinast
-ms.openlocfilehash: e483ac8e56ce39cbb05c5d00634c6327b497bab5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219909"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300057"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: Zajistěte, aby vaše stavební a monitorované pracovní podmínky byly ve verzi Preview Azure Digital Workers Preview
 
@@ -184,7 +184,7 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
 
 1. Z výstupu v příkazovém okně Zkopírujte hodnotu `ConnectionString` `Devices` v části do schránky. Tuto hodnotu budete potřebovat pro simulaci připojení zařízení v další části.
 
-    ![Ukázka zřizování](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![Zřídit ukázku](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva podobná operaci vstupně-výstupní operace byla přerušena z důvodu ukončení vlákna nebo žádosti o aplikaci (uprostřed zřizování), zkuste příkaz spustit znovu. K tomu může dojít, pokud u klienta HTTP vypršel časový limit problému se sítí.
@@ -245,7 +245,7 @@ Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijm
 
 Okno výstup ukazuje, jak uživatelsky definovaná funkce běží a zachycuje události z simulace zařízení. 
 
-   ![Výstup pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)
+   [![Výstup pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nastaví hodnotu prostoru s příslušnou zprávou, jak jsme viděli [dříve](#create-a-user-defined-function). `GetAvailableAndFreshSpaces` Funkce vytiskne zprávu v konzole nástroje.
 

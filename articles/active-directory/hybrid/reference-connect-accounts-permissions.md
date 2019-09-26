@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186296"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290974"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -48,10 +48,15 @@ Kromě těchto tří účtů, které se používají ke spouštění Azure AD Co
 
 - **Účet SQL SA (volitelné)** : používá se k vytvoření databáze AdSync při použití plné verze SQL Server.  Tento SQL Server může být pro Azure AD Connect instalaci místní nebo vzdálený.  Tento účet může být stejný jako účet správce podnikové sítě.  Zřizování databáze teď může provést vzdálená správa SQL a pak ji nainstalovat správce Azure AD Connect s právy k vlastnictví databáze.  Další informace najdete v tématu [instalace Azure AD Connect s použitím oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md) .
 
+<<<<<<< HEAD
+>[!IMPORTANT]
+> Od buildu 1.4. # # #. # už se nepodporuje použití účtu správce organizace ani účtu správce domény jako účtu služba AD DSového konektoru.  Pokud se pokusíte zadat účet, který je správcem podnikové sítě nebo správcem domény při zadání **použít existující účet**, zobrazí se chyba.
+=======
 > [!NOTE]
 > Správa účtů pro správu používaných v Azure AD Connect se podporuje z doménové struktury pro správu zvýšeným zabezpečením (taky se jedná o "červenou doménovou strukturu").
 > Vyhrazené doménové struktury pro správu umožňují organizacím hostovat účty pro správu, pracovní stanice a skupiny v prostředí, které má přísnější ovládací prvky zabezpečení než produkční prostředí.
 > Další informace o vyhrazených doménových strukturách pro správu najdete v tématu [přístup k návrhu doménové struktury zvýšeným zabezpečením](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) .
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Instaluje se služba Azure AD Connect.
 Průvodce instalací Azure AD Connect nabízí dvě různé cesty:
@@ -80,7 +85,7 @@ Tyto přihlašovací údaje se používají jenom během instalace a po dokonče
 
 | Oprávnění | Použití |
 | --- | --- |
-| <li>Replikovat změny adresáře</li><li>Replikovat všechny změny adresáře |Synchronizace hodnot hash hesel |
+| <li>Replikovat změny adresáře</li><li>Replikovat všechny změny adresáře |Synchronizace hodnoty hash hesla |
 | Číst/zapisovat všechny vlastnosti uživatele |Import a Exchange Hybrid |
 | Číst a zapisovat všechny vlastnosti iNetOrgPerson |Import a Exchange Hybrid |
 | Čtení a zápis – skupina všech vlastností |Import a Exchange Hybrid |
@@ -95,7 +100,7 @@ Následuje souhrn stránek průvodce expresní instalací, shromažďovaných p�
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
 | Připojení ke službě Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služba AD DS ve službě Active Directory a udělí mu oprávnění. Tento vytvořený účet se používá ke čtení a zápisu informací o adresáři během synchronizace.</li> |
 
@@ -112,7 +117,7 @@ Následuje souhrn stránek průvodce vlastní instalace, shromážděných pově
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
 | Instalace synchronizačních služeb, možnost účet služby |Přihlašovací údaje účtu služby AD nebo místního uživatele |Uživatel, oprávnění jsou udělována Průvodcem instalací |Pokud správce zadá účet, použije se tento účet jako účet služby pro synchronizační službu. |
 | Připojení ke službě Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení k adresářům |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená k Azure AD |Oprávnění závisí na tom, které funkce povolíte a najdete v části Vytvoření účtu služba AD DS Connectoru. |Tento účet slouží ke čtení a zápisu informací o adresáři během synchronizace. |
@@ -137,7 +142,7 @@ Požadovaná oprávnění závisí na volitelných funkcích, které povolíte. 
 | Funkce | Oprávnění |
 | --- | --- |
 | funkce MS-DS-ConsistencyGuid |Oprávnění k zápisu do atributu ms-DS-ConsistencyGuid dokumentovaného v [konceptech návrhu – použití MS-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Synchronizace hodnot hash hesel |<li>Replikovat změny adresáře</li>  <li>Replikovat všechny změny adresáře |
+| Synchronizace hodnoty hash hesla |<li>Replikovat změny adresáře</li>  <li>Replikovat všechny změny adresáře |
 | Hybridní nasazení systému Exchange |Oprávnění k zápisu pro atributy dokumentované v rámci [hybridního zpětného zápisu systému Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) pro uživatele, skupiny a kontakty. |
 | Veřejná složka pošty Exchange |Oprávnění ke čtení pro atributy dokumentované ve [veřejné složce Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) pro veřejné složky. | 
 | Zpětný zápis hesel |Oprávnění k zápisu do atributů popsaných v článku [Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |
@@ -193,7 +198,7 @@ Popisek
 - sMSA – [samostatný účet spravované služby](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA – [skupinový účet spravované služby](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Expresní | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
 | --- | --- | --- | --- |
 | **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
 | **počítač připojený k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
@@ -261,5 +266,5 @@ Pokud jste nečetli dokumentaci k [integraci místních identit s Azure Active D
 |Upgrade z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |Po instalaci | [Ověření instalace a přiřazení licencí](how-to-connect-post-installation.md)|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

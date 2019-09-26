@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650345"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309759"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -46,8 +46,6 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
 
 ### <a name="set-up-and-install"></a>Nastavení a instalace
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nastavte PowerShell následujícím způsobem:
 
@@ -512,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+#### <a name="delete-backup-data"></a>Odstranit data zálohy
 
 Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, stačí přidat příznak/RemoveRecoveryPoints nebo přepnout na [příkaz "Zakázat" ochranu](#retain-data).
 

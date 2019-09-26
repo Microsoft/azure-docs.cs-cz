@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6dcb7fd1ae2dc5ca3a950f5055e79d95f779b029
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910632"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300791"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Log Analytics také kopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -278,13 +278,13 @@ Můžete ručně nainstalovat agenta Log Analytics, aby Security Center mohl shr
 
    3. Naplnění config veřejné a privátní konfigurace s těmito hodnotami:
      
-           $PublicConf = '{
-               "workspaceId": "WorkspaceID value"
-           }' 
+           $PublicConf = @{
+               "workspaceId"= "<WorkspaceID value>"
+           }
  
-           $PrivateConf = '{
-               "workspaceKey": "<Primary key value>”
-           }' 
+           $PrivateConf = @{
+               "workspaceKey"= "<Primary key value>”
+           }
 
       - Při instalaci na virtuálním počítači s Windows:
         

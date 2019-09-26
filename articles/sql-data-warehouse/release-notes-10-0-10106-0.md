@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b9058313886484e84000b2b27986280eb1ff30eb
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145631"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300839"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Pomocí zjištěného data ověřte, která verze se použila pro Azure SQL DW.
 |**Privátní odkaz Azure (Preview)**|Pomocí [privátního odkazu Azure](https://azure.microsoft.com/blog/announcing-azure-private-link/)můžete v Virtual Network (VNET) vytvořit privátní koncový bod a namapovat ho na Azure SQL DW. Tyto prostředky jsou pak přístupné přes privátní IP adresu ve vaší virtuální síti a umožňují připojení z místního prostředí prostřednictvím privátního partnerského vztahu Azure ExpressRoute a/nebo VPN Gateway. To celkově zjednodušuje konfiguraci sítě tím, že nevyžaduje, abyste ji otevřeli na veřejné IP adresy. Tato možnost také umožňuje ochranu před riziky exfiltrace dat. Další podrobnosti najdete v tématu [Přehled](/azure/private-link/private-link-overview) a [dokumentace k SQL DW](/azure/sql-database/sql-database-private-endpoint-overview).|
 |**Klasifikace & Discovery dat (GA)**|Funkce [zjišťování a klasifikace dat](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json) je teď všeobecně dostupná. Tato funkce poskytuje pokročilé možnosti pro **zjišťování, klasifikaci a označování & ochraně** citlivých dat ve vašich databázích.|
 |**Integrace jedním kliknutím Azure Advisor**|SQL Data Warehouse se teď přímo integruje s Azure Advisor doporučeními v okně Přehled a zároveň nabízí prostředí s jedním kliknutím. V okně Přehled teď můžete místo přechodu do okna Azure Advisor vyhledat doporučení. Další informace o doporučeních najdete [tady](sql-data-warehouse-concept-recommendations.md).|
+|**Číst potvrzenou izolaci snímku (Preview)**|Pomocí příkazu ALTER DATABASE můžete povolit nebo zakázat izolaci snímků pro uživatelskou databázi.  Chcete-li se vyhnout vlivu na aktuální zatížení, můžete tuto možnost nastavit během okna údržby databáze nebo počkat, dokud neproběhne žádné jiné aktivní připojení k databázi. Další informace najdete v tématu [Změna možností sady databáze](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).|
 |**Spustit jako (Transact-SQL)**| [Spustit jako](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) Podpora T-SQL je teď dostupná v SQL Data Warehouse umožňuje zákazníkům nastavit kontext spuštění relace na zadaného uživatele.|
 |**Dodatečná podpora T-SQL**|Oblast jazyka T-SQL pro SQL Data Warehouse se rozšířila tak, aby zahrnovala podporu pro: </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys. user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 

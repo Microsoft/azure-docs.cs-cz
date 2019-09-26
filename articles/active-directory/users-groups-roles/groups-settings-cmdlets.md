@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883001"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315695"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 Tento článek obsahuje pokyny k vytvoření a aktualizaci skupin pomocí rutin prostředí PowerShell pro Azure Active Directory (Azure AD). Tento obsah platí jenom pro skupiny Office 365 (někdy označované jako sjednocené skupiny). 
@@ -123,7 +123,7 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Zadejte: Logická hodnota<li>Výchozí False | Logická hodnota označující, zda uživatel typu Host může být vlastníkem skupin. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Zadejte: Logická hodnota<li>Výchozí Pravda | Logická hodnota označující, jestli uživatel typu Host může mít přístup k obsahu skupin Office 365.  Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Zadejte: Řetězec<li>Výchozí: "" | Adresa URL odkazu na pokyny pro použití hostů |
-|  <ul><li>AllowToAddGuests<li>Zadejte: Logická hodnota<li>Výchozí Pravda | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře.|
+|  <ul><li>AllowAddGuests<li>Zadejte: Logická hodnota<li>Výchozí Pravda | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře.|
 |  <ul><li>ClassificationList<li>Zadejte: Řetězec<li>Výchozí: "" |Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Příklad: Konfigurace zásad hosta pro skupiny na úrovni adresáře
@@ -140,9 +140,9 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Pak aktualizujte nastavení AllowToAddGuests
+4. Pak aktualizujte nastavení AllowAddGuests
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. Pak použijte nastavení:
   
@@ -196,7 +196,7 @@ Tyto kroky načtou nastavení na úrovni adresáře, které platí pro všechny 
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ Tento krok odebere nastavení na úrovni adresáře, která platí pro všechny 
 
 4. Nastavte nastavení na požadovanou hodnotu:
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. Získejte ID skupiny, na kterou chcete toto nastavení použít:
    ```powershell
@@ -259,7 +259,7 @@ Tento krok odebere nastavení na úrovni adresáře, která platí pro všechny 
    ```
 3. Aktualizujte nastavení skupiny podle potřeby, např.
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. Pak Získejte ID nastavení pro tuto konkrétní skupinu:
    ```powershell

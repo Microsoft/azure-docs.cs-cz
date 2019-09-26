@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 584d3fa787fbd44ad47d21c51ea67f301c04436d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122299"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300322"
 ---
 # <a name="animated-character-detection-preview"></a>Animovaná detekce znaků (Preview)
 
@@ -91,12 +91,13 @@ Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit úč
     1. Po zadání nového názvu klikněte na ikonu zaškrtnutí vedle nového názvu. Tím se nový název uloží do modelu ve Video Indexer.
     1. Po dokončení úprav všech požadovaných názvů budete muset vyškolit model.
 
-        Otevřete stránku přizpůsobení a klikněte na kartu **animované znaky** . Pokud máte placený účet, můžete kliknout na odkaz **Správa modelů v zákaznických vizi** (viz níže). Pak budete přesměrováni na stránku modelu v Custom Vision. Kliknutím na tlačítko s **výukou** vytvoříte model. 
-        
+        Otevřete stránku přizpůsobení a klikněte na kartu **animované znaky** a potom klikněte na tlačítko **výuka** a prohlaste svůj model.
+         
+        Pokud máte placený účet, můžete kliknout na odkaz **Správa modelů v zákaznických vizi** (viz níže). Pak budete přesměrováni na stránku modelu v **Custom Vision**.
+ 
         ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-        Pokud máte zkušební účet, odkaz **Správa modelů v zákaznických vizi** nebude k dispozici. V takovém případě můžete na stránce **Přizpůsobení modelu obsahu** stisknout **vlak** přímo.
-    1. Po vyškolení budou všechny videozáznamy, které budou indexovány nebo přeindexovány pomocí tohoto modelu, rozpoznány jako vyškolené znaky. 
+     1. Po vyškolení budou všechny videozáznamy, které budou indexovány nebo přeindexovány pomocí tohoto modelu, rozpoznány jako vyškolené znaky. 
     Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
 1. Odstraní animovaný znak.

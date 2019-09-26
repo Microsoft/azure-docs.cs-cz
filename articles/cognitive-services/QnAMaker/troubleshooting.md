@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277487"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300239"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -42,13 +42,15 @@ Název hostitele služby QnA maker je užitečné pro účely ladění, když po
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Použití robota pro Help na portálu QnA Maker
 
-QnA Maker poskytuje na portálu QnA Maker robota **pomocníka** , která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
+QnA Maker poskytuje na portálu QnA maker robota pomocníka, která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
 
 ![! [QnA Maker k dispozici je znak * * Help * * robot v rámci portálu QnA Maker, který vám může pomáhat.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>Správa znalostní báze
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Odstranění části Moje QnA Maker, co mám dělat? 
+
+Neodstraňujte žádnou ze služeb Azure vytvořených společně s QnA Makerm prostředkem, jako je například Search nebo webová aplikace. To je nezbytné, aby QnA Maker fungovalo, pokud ho odstraníte, QnA Maker přestane fungovat správně.
 
 Všechny operace odstranění jsou trvalé, včetně páry otázek a odpovědí, souborů, adresy URL, vlastní otázky a odpovědi, znalostních bází nebo prostředky Azure. Ujistěte se, že exportujete ze znalostní báze **nastavení** stránky před odstraněním libovolné části znalostní báze. 
 
@@ -146,7 +148,7 @@ Místo na disku pro službu App Service může být plné. Postup opravy místa 
 1. Přejděte do _lokality/wwwroot/data/qnamakerem/_ Directory.
 1. Odeberte všechny složky, jejichž název začíná `rd`na. 
 
-    **Neodstraňujte** následující:
+    Neodstraňujte následující:
 
     * KbIdToRankerMappings. txt – soubor
     * Soubor EndpointSettings. JSON
