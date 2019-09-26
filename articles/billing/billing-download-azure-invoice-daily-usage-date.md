@@ -5,7 +5,7 @@ keywords: billing invoice,invoice download,azure invoice,azure usage
 services: billing
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c65696a37e33cd6ced93639677659e110a1db6d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057700"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121806"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení faktury za Azure a dat o denním využití
 
@@ -90,7 +90,7 @@ Můžete se přihlásit k zasílání a nakonfigurovat další příjemce, kteř
 
     ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
-2. Klikněte na **Přihlásit** a přijměte podmínky.
+2. Klikněte na *****Přihlásit** a přijměte podmínky.
 
     ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
 
@@ -114,7 +114,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu, můžete se přihlásit k zasíl
 1. Zvolte fakturační profil.
 1. V části **Nastavení** vyberte **Vlastnosti**.
 1. V části **Poslat fakturu e-mailem** vyberte **Aktualizovat předvolbu odesílání faktury e-mailem**.
-1. Zvolte **Přihlásit**.
+1. Zvolte *****Přihlásit**.
 1. Klikněte na **Aktualizovat**.
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Odhlášení ze zasílání faktur pro fakturační profil e-mailem

@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053164"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272422"
 ---
-# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Pomocí služby bot QnA Maker a LUIS distribuovat znalostní báze
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Použití robota s QnA Maker a LUIS k distribuci znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
 
 I když je jednoduché vytvářet více znalostních bází v nástroje QnA Maker, budete potřebovat nějaké logiky směrovat příchozí dotaz do odpovídající znalostní báze. Můžete to provést s využitím služby LUIS.
@@ -27,7 +27,7 @@ Tento článek používá sadu SDK v3 Bot Framework. Přečtěte si tento [Bot F
 
 ## <a name="architecture"></a>Architektura
 
-![Nástroj QnA Maker s architekturou Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![QnA Maker s architekturou Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dotaz z modelu LUIS a použije ji směrovat do znalostní báze správný nástroj QnA Maker.
 
@@ -51,7 +51,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
 
 ## <a name="web-app-bot"></a>Web app Bot
 
-1. [Vytváření robotů "Základní" webovou aplikaci](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) automaticky obsahující aplikaci LUIS. Vyberte 4.x SDK a C# programovací jazyk.
+1. [Vytvořte robot "základní" Web App](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) , který automaticky obsahuje aplikaci Luis. Vyberte C# programovací jazyk.
 
 1. Po vytvoření použijete web app bot, na webu Azure Portal, vyberte použijete web app bot.
 1. Vyberte **nastavení aplikace** v navigačním služby Web app bot, poté přejděte dolů k **nastavení aplikace** část dostupných nastaveních.
