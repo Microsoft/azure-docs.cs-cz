@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535183"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338879"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestav AWS a nákladů na využití
 
@@ -29,7 +29,7 @@ Použití sestavy náklady a využití je AWS způsobem doporučeným pro shroma
 
 Na stránce **sestavy využití & nákladů** a cost management v konzole AWS můžete vytvořit sestavu nákladů a využití pomocí následujících kroků:
 
-1. Přihlaste se ke konzole pro správu AWS a otevřete konzolu pro [fakturaci a cost management](https://console.aws.amazon.com/billing).
+1. Přihlaste se ke konzole pro správu AWS a otevřete [konzolu pro fakturaci a cost management](https://console.aws.amazon.com/billing).
 2. V navigačním podokně vyberte **náklady & sestavy využití**.
 3. Vyberte **vytvořit sestavu**.
 4. Jako **název sestavy**zadejte název sestavy.
@@ -42,7 +42,7 @@ Na stránce **sestavy využití & nákladů** a cost management v konzole AWS m�
     2. Zadejte název a oblast, kde chcete vytvořit nový kontejner, a klikněte na tlačítko **Další**.
 10. Vyberte možnost **potvrzuji, že je tato zásada správná**, a pak klikněte na **Uložit**.
 11. Volitelné V poli Předpona cesty k sestavě zadejte předponu cesty k sestavě, kterou chcete přidat k názvu vaší sestavy.
-Pokud nezadáte předponu, výchozí předpona je název, který jste zadali pro sestavu. Rozsah kalendářních dat má `/report-name/date-range/` formát.
+Pokud nezadáte předponu, výchozí předpona je název, který jste zadali pro sestavu. Rozsah kalendářních dat má formát `/report-name/date-range/`.
 12. V případě **časové jednotky**vyberte **každou hodinu**.
 13. Pro **správu verzí sestav**vyberte, zda chcete, aby každá verze sestavy přepsala předchozí verzi, nebo pokud chcete další nové sestavy.
 14. Pro **možnost povolit integraci dat pro**není žádný výběr nutný.
@@ -79,15 +79,15 @@ Použijte Průvodce vytvořením nové role:
 Konfigurovat oprávnění pro sestavu náklady a využití:
 
 1. Zadejte **náklady a sestavu využití**.
-2. Vyberte **úroveň** > přístupu**čtení** > **DescribeReportDefinitions**. Tento krok umožňuje Cost Management přečíst stejné sestavy, které jsou definovány, a určit, jestli se shodují se splněním požadavků definice sestavy.
+2. Vyberte **úroveň přístupu** > **číst** > **DescribeReportDefinitions**. Tento krok umožňuje Cost Management přečíst stejné sestavy, které jsou definovány, a určit, jestli se shodují se splněním požadavků definice sestavy.
 3. Vyberte **Přidat další oprávnění**.
 
 Konfigurovat oprávnění pro vaše bloky a objekty S3:
 
 1. Vyberte **možnost zvolit službu**.
 2. Zadejte **S3**.
-3. Vyberte**ListBucket** **seznamu** > úrovně > přístupu. Tato akce načte seznam objektů v intervalu S3.
-4. Vyberte **úroveň** > přístupu**číst** > **GetObject**. Tato akce umožňuje stažení fakturačních souborů.
+3. Vyberte **úroveň přístupu** > **seznam** > **ListBucket**. Tato akce načte seznam objektů v intervalu S3.
+4. Vyberte **úroveň přístupu** > **číst** > **GetObject**. Tato akce umožňuje stažení fakturačních souborů.
 5. Vyberte **prostředky**.
 6. Vyberte možnost **kontejner – přidat ARN**.
 7. Do pole **název**sady zadejte interval, ve kterém se mají ukládat stejné soubory.
@@ -100,13 +100,13 @@ Konfigurovat oprávnění pro Průzkumníka nákladů:
 
 1. Vyberte **možnost zvolit službu**.
 2. Zadejte **službu cost Explorer**.
-3. Vyberte **všechny akce služby cost Explorer (CE:\*)** . Tato akce ověří, zda je kolekce správná.
+3. Vyberte **všechny akce služby cost Explorer (CE: \*)** . Tato akce ověří, zda je kolekce správná.
 4. Vyberte **Přidat další oprávnění**.
 
 Přidání oprávnění pro organizace AWS:
 
 1. Zadejte **organizace**.
-2. Vyberte**ListAccounts** **seznamu** > úrovně > přístupu. Tato akce Získá názvy účtů.
+2. Vyberte **úroveň přístupu** > **seznam** > **ListAccounts**. Tato akce Získá názvy účtů.
 3. V části **zkontrolovat zásadu**zadejte název nové zásady. Zkontrolujte, zda jste zadali správné informace, a pak vyberte **vytvořit zásadu**.
 4. Vraťte se na předchozí kartu a aktualizujte webovou stránku prohlížeče. Na panelu hledání vyhledejte novou zásadu.
 5. Vyberte **další: Zkontrolujte**.
@@ -153,10 +153,10 @@ Pomocí následujících informací vytvořte konektor AWS a začněte monitorov
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejít na **cost management a fakturační** > **cost management**.
 3. V části **Nastavení**vyberte **cloudové konektory (Preview)** .  
-    ![Příklad znázorňující nastavení](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)cloudové konektory (Preview).
+    @no__t – 0Example zobrazuje nastavení cloudových konektorů (Preview) ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
 4. V horní části stránky vyberte **+ Přidat** a vytvořte konektor.
 5. Na stránce **Vytvoření konektoru AWS** zadejte do pole **Zobrazovaný název**název vašeho konektoru.  
-    ![Příklad stránky pro vytvoření konektoru AWS](./media/aws-integration-setup-configure/create-aws-connector01.png)
+    @no__t – 0Example stránky pro vytvoření konektoru AWS @ no__t-1
 6. Volitelně můžete vybrat výchozí skupinu pro správu. Budou se ukládat všechny zjištěné propojené účty. Můžete ho nastavit později.
 7. V části **fakturace** vyberte **automaticky účtovat 1% při obecné dostupnosti** , pokud chcete zajistit nepřetržitou operaci, když platnost vyprší. Pokud vyberete možnost automaticky, musíte vybrat fakturační předplatné.
 8. Do pole **role ARN**zadejte hodnotu, kterou jste použili při nastavení role v AWS.
@@ -172,13 +172,13 @@ Přiřazení oprávnění k konektoru uživatelům po zjištění, že dojde ke 
 
 ## <a name="take-additional-steps"></a>Provedení dalších kroků
 
-- [Nastavte skupiny pro správu](../governance/management-groups/index.md#initial-setup-of-management-groups), pokud jste to ještě neudělali.
+- [Nastavte skupiny pro správu](../governance/management-groups/overview.md#initial-setup-of-management-groups), pokud jste to ještě neudělali.
 - Ověřte, že se do výběru oboru přidaly nové obory. Kliknutím na **aktualizovat** zobrazíte nejnovější data.
 - Na stránce **cloudové konektory** vyberte svůj konektor a vyberte **Přejít k fakturačnímu účtu** , abyste přiřadili propojený účet ke skupinám pro správu.
 
 ## <a name="manage-cloud-connectors"></a>Správa cloudových konektorů
 
-Když vyberete konektor na stránce cloudové **konektory** , můžete:
+Když vyberete konektor na stránce **cloudové konektory** , můžete:
 
 - Výběrem možnosti **Přejít na fakturační účet** zobrazíte informace pro konsolidovaný účet AWS.
 - Vyberte **Access Control** pro správu přiřazení role pro konektor.
@@ -189,7 +189,7 @@ Když vyberete konektor na stránce cloudové **konektory** , můžete:
 
 ## <a name="set-up-azure-management-groups"></a>Nastavení skupin pro správu Azure
 
-Přiložte své předplatné Azure a propojené účty AWS ve stejné skupině pro správu, abyste vytvořili jedno místo, kde vidíte informace o poskytovateli mezi cloudy. Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/index.md#initial-setup-of-management-groups).
+Přiložte své předplatné Azure a propojené účty AWS ve stejné skupině pro správu, abyste vytvořili jedno místo, kde vidíte informace o poskytovateli mezi cloudy. Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
 Pokud chcete rozdělit náklady, můžete vytvořit skupinu pro správu, která obsahuje jenom AWS propojené účty.
 
@@ -227,7 +227,7 @@ Ve výchozím nastavení jsou oprávnění pro propojený účet AWS nastavena p
 
 Propojené účty AWS vždy dědí oprávnění ze skupiny pro správu, do které patří.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Teď, když jste nastavili a nakonfigurovali integraci sestav AWS a nákladů na používání, budete moct dál [Spravovat AWS náklady a využití](aws-integration-manage.md).
 - Pokud nejste obeznámeni s analýzou nákladů, přečtěte si téma [prozkoumat a analyzovat náklady pomocí rychlého startu analýzy nákladů](quick-acm-cost-analysis.md) .

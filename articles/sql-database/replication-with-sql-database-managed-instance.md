@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884083"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338742"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace v databázi spravované instance Azure SQL Database
 
@@ -41,7 +41,7 @@ Konfigurace spravované instance tak, aby fungovala jako Vydavatel nebo distribu
 - Zda je spravovaná instance vydavatele ve stejné virtuální síti jako distributor a předplatitel, nebo je mezi virtuálními sítěmi všech tří entit vytvořeno [partnerský vztah](../virtual-network/tutorial-connect-virtual-networks-powershell.md) virtuální sítě. 
 - Při připojování mezi účastníky replikace se používá ověřování SQL.
 - Sdílená složka účtu Azure Storage pro pracovní adresář replikace.
-- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure. 
+- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud se zobrazí chyba "připojení k Azure Storage \<storage název účtu > s chybou operačního systému 53", budete muset přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
 
 
  > [!NOTE]
@@ -50,7 +50,7 @@ Konfigurace spravované instance tak, aby fungovala jako Vydavatel nebo distribu
 
 ## <a name="features"></a>Funkce
 
-Podporuje:
+Podporovaných
 
 - Transakční a snímková replikace je kombinací SQL Server místních a spravovaných instancí v Azure SQL Database.
 - Předplatitelé můžou být v místních SQL Server databázích, izolovaných databázích nebo spravovaných instancích v Azure SQL Database nebo ve fondu databází v Azure SQL Database elastických fondech.
@@ -58,8 +58,8 @@ Podporuje:
 
 Ve spravované instanci nejsou v Azure SQL Database podporovány následující funkce:
 
-- Odběry, které je možné [aktualizovat](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)
-- [Aktivní geografická replikace](sql-database-active-geo-replication.md) s transakční replikací Místo aktivní geografické replikace používejte skupiny s automatickým převzetím [služeb při selhání](sql-database-auto-failover-group.md), ale Všimněte si, že po převzetí služeb při selhání se publikace musí [ručně odstranit](sql-database-managed-instance-transact-sql-information.md#replication) z primární spravované instance a znovu vytvořit v sekundární spravované instanci.  
+- [Odběry](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication), které je možné aktualizovat
+- [Aktivní geografická replikace](sql-database-active-geo-replication.md) s transakční replikací Místo aktivní geografické replikace používejte [skupiny s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md), ale Všimněte si, že po převzetí služeb při selhání se publikace musí [ručně odstranit](sql-database-managed-instance-transact-sql-information.md#replication) z primární spravované instance a znovu vytvořit v sekundární spravované instanci.  
  
 ## <a name="1---create-a-resource-group"></a>1\. Vytvoření skupiny prostředků
 
@@ -78,15 +78,15 @@ Také budete muset [nakonfigurovat virtuální počítač Azure pro připojení]
 
 [Vytvořte účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
 
-Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
+Zkopírujte cestu ke sdílené složce ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
 
-Zkopírujte přístupové klíče úložiště ve formátu:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Zkopírujte přístupové klíče úložiště ve formátu: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Další informace najdete v článku [Zobrazení a kopírování přístupového klíče k úložišti](../storage/common/storage-account-manage.md#access-keys). 
 
 ## <a name="4---create-a-publisher-database"></a>4\. vytvoření databáze vydavatele
 
-Připojte se ke `sql-mi-pub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód Transact-SQL (T-SQL) k vytvoření databáze vydavatele:
+Připojte se ke svojí spravované instanci `sql-mi-pub` pomocí SQL Server Management Studio a spusťte následující kód jazyka Transact-SQL (T-SQL) pro vytvoření databáze vydavatele:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5\. vytvoření databáze odběratele
 
-Připojte se ke `sql-mi-sub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření prázdné databáze odběratele:
+Připojte se ke svojí spravované instanci `sql-mi-sub` pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření prázdné databáze odběratele:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6\. konfigurace distribuce
 
-Připojte se ke `sql-mi-pub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL ke konfiguraci distribuční databáze. 
+Připojte se ke svojí spravované instanci `sql-mi-pub` pomocí SQL Server Management Studio a spusťte následující kód T-SQL pro konfiguraci distribuční databáze. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7\. konfigurace vydavatele pro použití distributora 
 
-Ve spravované instanci `sql-mi-pub`vydavatele změňte provedení dotazu na režim [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) a spuštěním následujícího kódu Zaregistrujte nového distributora s vaším vydavatelem. 
+Na spravované instanci vydavatele `sql-mi-pub` změňte provedení dotazu na režim [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) a spuštěním následujícího kódu Zaregistrujte nového distributora s vaším vydavatelem. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Prostředky Azure můžete vyčistit [odstraněním prostředků spravované instance ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a následným odstraněním skupiny `SQLMI-Repl`prostředků. 
+Prostředky Azure můžete vyčistit [odstraněním prostředků spravované instance ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a následným odstraněním skupiny prostředků `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Viz také

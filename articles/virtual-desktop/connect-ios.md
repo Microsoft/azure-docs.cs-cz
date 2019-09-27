@@ -1,20 +1,20 @@
 ---
 title: Připojení k virtuálnímu počítači s Windows z iOS – Azure
-description: Jak se připojit k virtuálnímu počítači s Windows z iOS
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí klienta iOS
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310318"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338692"
 ---
-# <a name="connect-from-ios"></a>Připojení z iOS
+# <a name="connect-with-the-ios-client"></a>Připojení s klientem iOS
 
 > Platí pro: iOS 8,0 nebo novější. Kompatibilní s iPhone, iPad a iPod touch.
 
@@ -52,6 +52,6 @@ V tomto případě by měl centrum připojení zobrazit vzdálené prostředky.
 
 Po přihlášení k odběru informačního kanálu se obsah informačního kanálu pravidelně aktualizuje automaticky. Prostředky je možné přidat, změnit nebo odebrat na základě změn provedených správcem.
 
-## <a name="client-documentation"></a>Dokumentace klienta
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak používat klienta iOS beta, najdete v dokumentaci [Začínáme s klientem iOS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .

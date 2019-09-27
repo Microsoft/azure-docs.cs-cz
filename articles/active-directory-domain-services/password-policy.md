@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617137"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320439"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
 
@@ -36,7 +36,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
   * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
   * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
-* Uživatelský účet, který je členem skupiny správců *řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
 ## <a name="fine-grained-password-policies-fgpp-overview"></a>Přehled zásad podrobné zásady (jemně odstupňovaných hesel)
 
@@ -63,7 +63,7 @@ Zásady se distribuují prostřednictvím přidružení skupiny ve spravované d
 Ve spravované doméně Azure služba AD DS jsou ve výchozím nastavení nakonfigurované následující zásady hesel a používají se pro všechny uživatele:
 
 * **Minimální délka hesla (ve znacích):** 7
-* **Maximální stáří hesla (doba života):** 90 dnů
+* **Maximální stáří hesla (doba života):** 90 dní
 * **Hesla musí splňovat požadavky na složitost.**
 
 Ve výchozím nastavení se pak konfigurují následující zásady uzamčení účtů:
@@ -90,6 +90,9 @@ Pokud chcete vytvořit podrobné zásady pro hesla, použijte nástroje pro spr�
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
 1. Chcete-li vytvořit a spravovat organizační jednotky, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
 1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *contoso.com*.
+1. Otevřete kontejner **systému** a pak kontejner **Nastavení hesel** .
+
+    Zobrazí se integrovaná podrobné zásady pro spravovanou doménu Azure služba AD DS. Tuto vestavěnou podrobné zásady nejde upravit. Místo toho vytvořte novou vlastní podrobné zásady a přepište výchozí podrobné zásady.
 1. Na panelu **úlohy** na pravé straně vyberte **nové nastavení > hesla**.
 1. V dialogovém okně **vytvořit nastavení hesla** zadejte název zásady, například *MyCustomFGPP*. Nastavte prioritu tak, aby bylo vhodné přepsat výchozí podrobné zásady (což je *200*), například *1*.
 
@@ -97,7 +100,7 @@ Pokud chcete vytvořit podrobné zásady pro hesla, použijte nástroje pro spr�
 
     ![Vytvořit vlastní jemně odstupňované zásady pro hesla](./media/how-to/custom-fgpp.png)
 
-1. Zruštekontrolu před náhodným odstraněním. Pokud je vybraná tato možnost, nemůžete uložit podrobné zásady.
+1. Zrušte kontrolu před **náhodným odstraněním**. Pokud je vybraná tato možnost, nemůžete uložit podrobné zásady.
 1. V části **přímo platí pro** vyberte tlačítko **Přidat** . V dialogovém okně **Vybrat uživatele nebo skupiny** klikněte na tlačítko **umístění** .
 
     ![Vyberte uživatele a skupiny, pro které chcete zásady hesel použít.](./media/how-to/fgpp-applies-to.png)
@@ -112,7 +115,7 @@ Pokud chcete vytvořit podrobné zásady pro hesla, použijte nástroje pro spr�
 
 1. S názvem skupiny, kterou jste vybrali, se teď zobrazí **přímo v části platí pro** , vyberte **OK** a uložte vlastní zásady hesel.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o podrobných zásadách pro hesla a o použití centra pro správu služby Active Directory najdete v následujících článcích:
 

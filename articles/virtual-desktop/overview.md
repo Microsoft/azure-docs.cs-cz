@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300997"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338588"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je verze Preview pro virtuální počítače s Windows? 
 
@@ -87,6 +87,17 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
+
+Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít odchozí přístup TCP 443 k následujícím adresám URL:
+* *. wvd.microsoft.com
+* *.blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Během veřejné verze Preview se můžou desktopy a aplikace nasadit na virtuální počítače v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA (USA – východ 2 oblasti). To může vést k přenosu dat do USA při testování služby během veřejné verze Preview. Začneme škálovat řešení pro správu a lokalizaci dat do všech oblastí Azure počínaje všeobecnou dostupností.
 

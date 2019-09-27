@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3740a032db6ca9fd0fb88ce348610684d9f895bc
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064880"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326333"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování v nativní klientské aplikaci pomocí Azure Active Directory B2C
 
@@ -37,20 +37,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="add-the-native-client-application"></a>Přidání nativní klientské aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikace**a pak vyberte **Přidat**.
-5. Zadejte název aplikace. Například *nativeapp1*.
-6. Pro **Zahrnout webovou aplikaci nebo webové rozhraní API**vyberte **ne**.
-7. V případě **Zahrnout nativního klienta**vyberte **Ano**.
-8. Pro **identifikátor URI přesměrování**zadejte platný identifikátor URI přesměrování s vlastním schématem. Pro výběr identifikátoru URI přesměrování existují dva důležité informace:
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-    - **Jedinečné** – schéma identifikátoru URI pro přesměrování by mělo být pro každou aplikaci jedinečné. V příkladu `com.onmicrosoft.contoso.appname://redirect/path` `com.onmicrosoft.contoso.appname` je schéma. Tento vzor by měl následovat. Pokud dvě aplikace sdílejí stejné schéma, uživateli je dána možnost zvolit aplikaci. Pokud uživatel vytvoří nesprávnou volbu, přihlášení se nezdařilo.
-    - **Dokončit** – identifikátor URI pro přesměrování musí mít schéma a cestu. Cesta musí po doméně obsahovat alespoň jedno lomítko. Například `//contoso/` funguje a `//contoso` neúspěch. Ujistěte se, že identifikátor URI pro přesměrování neobsahuje speciální znaky, například podtržítka.
-
-9. Klikněte na možnost **Vytvořit**.
-10. Na stránce Vlastnosti Poznamenejte ID aplikace, které použijete při konfiguraci ukázky.
+Poznamenejte si **ID aplikace** pro použití v pozdějším kroku.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
@@ -97,7 +86,7 @@ Teď se uživatel může přihlásit pomocí své e-mailové adresy a používat
 > [!NOTE]
 > Pokud klikněte na tlačítko **Call API** (Zavolat rozhraní API), zobrazí se chyba Neautorizováno. Tato chyba se zobrazí, protože se pokoušíte o přístup k prostředku z ukázkového tenanta. Vzhledem k tomu, že je váš přístupový token platný pouze pro vašeho tenanta Azure AD, je toto volání rozhraní API neautorizované. Pokračujte k dalšímu kurzu, kde pro svého tenanta vytvoříte chráněné webové rozhraní API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

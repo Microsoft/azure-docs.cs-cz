@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910126"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326885"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technické specifikace
 
 Hardwarové součásti Microsoft Azure Data Box Edge zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy. 
+
+## <a name="compute-memory-specifications"></a>Výpočetní prostředí, specifikace paměti
+
+Data Box Edge zařízení má následující specifikace pro výpočetní výkon a paměť:
+
+| Upřesněn           | Value                  |
+|-------------------------|----------------------------|
+| Procesor    | PROCESOR 2 X 10 Core                     |
+| Memory (Paměť)              | 128 GB RAM                  |
+
+
+## <a name="fpga-specifications"></a>Specifikace FPGA
+
+Pole programovatelné brány (FPGA) je součástí každé Data Box Edge zařízení, které umožňuje použití scénářů Machine Learning (ML). 
+
+| Upřesněn           | Value                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
@@ -55,7 +74,7 @@ V následujících tabulkách jsou uvedeny různé specifikace velikosti skřín
 
 V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcích.
 
-|     Skříně     |     Milimetrech     |     Cm     |
+|     Skříň     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
 |    Výška         |    44,45            |    1,75 "          |
 |    Šířka          |    434,1           |    17,09 "          |
@@ -73,7 +92,7 @@ V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetr
 
 Balíček zařízení má hmotnost 66 kg. a ke zpracování vyžaduje dvě osoby. Váha zařízení závisí na konfiguraci skříně.
 
-|     Skříně                                 |     Hmotnost          |
+|     Skříň                                 |     Hmotnost          |
 |-----------------------------------------------|---------------------|
 |    Celková váha včetně balení       |    61 kg          |
 |    Váha zařízení                       |    35 kg          |
@@ -84,14 +103,14 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 ### <a name="temperature-and-humidity"></a>Teplota a vlhkost
 
-|     Skříně         |     Rozsah okolních teplot     |     Relativní vlhkost okolí     |     Maximální bod Dew     |
+|     Skříň         |     Rozsah okolních teplot     |     Relativní vlhkost okolí     |     Maximální bod Dew     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
 |    Provozní        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
 |    Není funkční    |    -40 oC až 65 oC (-40 °F-149 °F)     |    5% až 95% nekondenzující.          |    33 OC (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Provozní flow, nadmořská, náraz, vibrace, orientace, bezpečnost a EMC
 
-|     Skříně                           |     Provozní specifikace                                                                                                                                                                                         |
+|     Skříň                           |     Provozní specifikace                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Tok dat                              |    Tok systému je zepředu zezadu. Systém musí být provozován s nízkým tlakem na zadní výfukovou instalaci. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maximální výška, provozní        |    3048 měřičů (10 000 metrů) s maximální provozní teplotou rozhodnocenou [specifikací pro stanovení provozní teploty](#operating-temperature-de-rating-specifications).                                                                                |
@@ -116,6 +135,6 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 |    40 oC až 45 °C (104 °F až 113 °F)           |    Maximální teplota se sníží o 1 °C/125 m (1 °F/228 ft) nad 950 m (3 117 ft).    |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Nasazení Azure Data Box Edge](data-box-edge-deploy-prep.md)

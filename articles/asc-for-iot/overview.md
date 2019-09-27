@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315919"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326727"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
@@ -30,7 +30,7 @@ Sjednocení správy zabezpečení a umožnění komplexní detekce a analýzy hr
 
 Můžete si vybrat z našeho bezproblémového řešení bez agentů nebo využít komplexní zabezpečení založené na agentech, Azure Security Center pro IoT zajišťuje prevenci a analýzu hrozeb pro každé zařízení, IoT Edge a IoT Hub v rámci vašich prostředků IoT.
 
-Až miliarda nových zařízení je připojená k Internetu a integrovaná do každodenního života a našich firem; vaše týmy pro operace zabezpečení musí zajistit, aby se jejich strategie zabezpečení rychle vyvinuly, aby pokryly tyto nové plochy útoku. Stejně jako jakýkoli jiný systém, zabezpečení řešení IoT potřebuje ochranu v každé fázi implementace. 
+Vzhledem k tomu, že miliarda nových zařízení je připojená k Internetu a integrovaná do každodenních životních a našich firem, musí vaše týmy zabezpečení provozu zajistit, aby se jejich strategie zabezpečení rychle vyvinuly, aby pokryly jednotlivé nové plochy pro útok. Stejně jako jakýkoli jiný systém, pro komplexní zabezpečení řešení IoT vyžaduje ochranu v každé fázi implementace. 
 
 Azure Security Center pro IoT zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, nabízí prevenci proti hrozbám a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních, místních i v Azure. Cloud. 
 

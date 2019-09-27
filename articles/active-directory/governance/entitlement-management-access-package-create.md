@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678198"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326345"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -79,7 +79,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
 Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup.  Uživatelé, kteří požadují a obdrží balíček pro přístup, obdrží všechny role prostředků v balíčku pro přístup.
 
-1. Klikněte na typ prostředku, který chcete přidat (**skupiny**, **aplikace**nebo **weby služby SharePoint**).
+1. Klikněte na typ prostředku, který chcete přidat (**skupiny a týmy**, **aplikace**nebo **weby SharePointu**).
 
 1. V zobrazeném podokně vyberte jeden nebo více prostředků ze seznamu.
 
@@ -123,7 +123,7 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
     Nový balíček pro přístup se zobrazí v seznamu balíčků přístupu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Úprava a správa existujících přístupových balíčků](entitlement-management-access-package-edit.md)
 - [Přidat vlastníka katalogu nebo správce balíčků přístupu](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)

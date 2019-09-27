@@ -1,19 +1,19 @@
 ---
 title: Místní instalace Jupyter a připojení ke Sparku v Azure HDInsight
 description: Přečtěte si, jak místně nainstalovat Poznámkový blok Jupyter na počítači a připojit ho ke clusteru Apache Spark.
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993764"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337655"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalace poznámkového bloku Jupyter na vašem počítači a připojení k Apache Spark v HDInsight
 
@@ -146,7 +146,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
 
     a. Vytvořte nový poznámkový blok. V pravém horním rohu vyberte **Nový**. Měli byste vidět výchozí jádro **Python 2** nebo **Python 3** a jádra, která jste nainstalovali. Skutečné hodnoty se mohou lišit v závislosti na možnostech instalace.  Vyberte **PySpark**.
 
-    ![Jádra v Jupyter poznámkovém bloku](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jádra v Jupyter poznámkovém bloku")
+    ![Dostupná jádra v jádrech poznámkových bloků Jupyter](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "v notebooku Jupyter")
 
     > [!IMPORTANT]  
     > Po výběru **nové** kontroly prostředí zkontrolujte případné chyby.  Pokud se zobrazí chyba `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , pravděpodobně došlo k známému problému s některými verzemi Tornado.  Pokud ano, zastavte jádro a pak downgrade instalace Tornado pomocí následujícího příkazu: `pip install tornado==4.5.3`.
@@ -175,7 +175,7 @@ Může existovat řada důvodů, proč můžete chtít nainstalovat Jupyter do p
 > [!WARNING]  
 > S Jupyter nainstalovaným v místním počítači může více uživatelů spustit stejný Poznámkový blok současně na stejném clusteru Spark. V takové situaci se vytvoří několik relací Livy. Pokud narazíte na problém a chcete ho ladit, bude to složitá úloha, která bude sledovat, která relace Livy patří uživateli.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
 * [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)

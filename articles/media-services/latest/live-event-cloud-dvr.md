@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services živá událost a zadvr cloudu | Microsoft Docs
+title: Použití Azure Media Servicesho posunu času a živého na VOD (video na vyžádání) | Microsoft Docs
 description: Tento článek vysvětluje, jaký je živý výstup a jak používat cloudový DVR.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231226"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338844"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>Použití cloudového záznamu digitálního videa (DVR)
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>Použití časových posunutí a VOD (video na vyžádání)
 
 V Azure Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](https://docs.microsoft.com/rest/api/media/assets) (kontejner je v účtu Azure Storage připojeném k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého streamu, například kolik dat v archivu je uchováváno (například kapacita záznamu v cloudu), a zda mohou čtenáři začít sledovat živý datový proud. Archiv na disku je kruhový archiv "Window", který uchovává pouze množství obsahu, které je zadáno ve vlastnosti **ArchiveWindowLength** živého výstupu. Obsah, který spadá mimo toto okno, se automaticky zahodí z kontejneru úložiště a nedá se obnovit. Hodnota archiveWindowLength představuje dobu trvání časového limitu ISO-8601 (například PTHH: MM: SS), která určuje kapacitu zápisu DVR a dá se nastavit z minimálně 3 minut na 25 hodin.
 
@@ -52,7 +52,7 @@ Další informace naleznete v tématu:
 > [!NOTE]
 > Když odstraníte živý výstup, neodstraníte základní Asset a obsah v assetu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vystřihnout vaše videa](subclip-video-rest-howto.md).
 * [Definujte filtry pro vaše prostředky](filters-dynamic-manifest-rest-howto.md).

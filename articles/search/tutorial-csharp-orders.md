@@ -1,60 +1,60 @@
 ---
-title: C#kurz předvádějící řazení výsledků – Azure Search
-description: Tento kurz vychází projektu "Výsledky hledání stránkování – Azure Search" Přidání řazení výsledků hledání. Další způsob řazení výsledků na vlastnost primárního a pro výsledky, které mají stejné vlastnosti primární způsob řazení výsledků u sekundární vlastnosti. Nakonec další způsob řazení výsledků podle bodovací profil.
+title: C#kurz pro řazení výsledků – Azure Search
+description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Search", aby se přidalo řazení výsledků hledání. Naučte se, jak seřadit výsledky u primární vlastnosti a pro výsledky, které mají stejnou primární vlastnost, jak seřadit výsledky u sekundární vlastnosti. Nakonec se dozvíte, jak seřadit výsledky na základě profilu vyhodnocování.
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466574"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327649"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#kurz: Řazení výsledků – Azure Search
+# <a name="c-tutorial-order-the-results---azure-search"></a>C#návodu Seřazení výsledků – Azure Search
 
-Až tento bod v našich sérii kurzů se výsledky vrátí a zobrazí ve výchozím nastavení pořadí. To může být pořadí, ve kterém se nachází data, případně výchozí _bodovací profil_ byla definována, který se používá, pokud nejsou zadány žádné parametry pořadí. V tomto kurzu jsme začnou způsob řazení výsledků na základě primární vlastnost a pak pro výsledky, které mají stejné vlastnosti primární způsob řazení výběr u sekundární vlastnosti. Jako alternativu k řazení na základě číselné hodnoty, poslední příklad ukazuje způsob řazení podle vlastní bodovací profil. Budeme se také podrobněji trochu zobrazení _komplexní typy_.
+Až do tohoto okamžiku v naší sérii kurzů se výsledky vrátí a zobrazí ve výchozím pořadí. Může to být pořadí, ve kterém jsou data umístěna, nebo pravděpodobně byl definován výchozí _profil vyhodnocování_ , který bude použit v případě, že nejsou zadány žádné parametry řazení. V tomto kurzu se naučíme, jak objednat výsledky založené na primární vlastnosti a potom pro výsledky, které mají stejnou primární vlastnost, jak tento výběr seřadit na sekundární vlastnost. Jako alternativu k řazení na základě numerických hodnot ukazuje konečný příklad, jak objednat na základě vlastního profilu vyhodnocování. Trochu provedeme také hlubší zobrazení _komplexních typů_.
 
-Abyste mohli snadno porovnat vrácené výsledky, tento projekt sestavení do nekonečné posuvné projekt vytvořený v [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) kurzu.
+Aby bylo možné snadno porovnat vracené výsledky, projekt se sestaví do nekonečného posunutí projektu vytvořeného v kurzu [C# : Stránkování výsledků hledání-Azure Search @ no__t-0 kurz.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Řazení výsledků podle jedné vlastnosti
-> * Řazení výsledků na základě více vlastností
-> * Filtrovat výsledky podle vzdálenost od zeměpisné bodu
-> * Řazení výsledků podle bodovací profil
+> * Seřazení výsledků na základě jedné vlastnosti
+> * Seřazení výsledků na základě více vlastností
+> * Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
+> * Seřazení výsledků na základě profilu vyhodnocování
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-Nekonečné posuvné verze [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) projektu rychle zprovoznit. Tento projekt může být vlastní verzi nebo nainstalovat z Githubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Posuňte se do nekonečného posouvání kurzu @no__tC# -0: Stránkování výsledků hledání-Azure Search @ no__t-0 Project up a Running. Tento projekt může být buď vlastní verze, nebo ho můžete nainstalovat z GitHubu: [Vytvořte první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="order-results-based-on-one-property"></a>Řazení výsledků podle jedné vlastnosti
+## <a name="order-results-based-on-one-property"></a>Seřazení výsledků na základě jedné vlastnosti
 
-Když jsme pořadí výsledky podle jedné vlastnosti, Dejme tomu, že hotelu hodnocení, chceme nejenom seřazených výsledků, chceme potvrzení, že pořadí je správná. Jinými slovy Pokud jsme uspořádat na hodnocení, můžeme zobrazit hodnocení v zobrazení.
+Když dodáte výsledky na základě jedné vlastnosti, říkáme hodnocení hotelového obsahu, nepotřebujeme také potvrzení, že je pořadí správné. Jinými slovy, v případě, že v pořadí podle hodnocení, je vhodné zobrazit hodnocení v zobrazení.
 
-V tomto kurzu jsme taky se přidá trochu více pro zobrazení výsledků, nejlevnější místnosti rychlost a nejdražší rychlost místnosti, pro každý hotelu. Jak jsme delve do řazení, budeme také přidávat hodnoty Ujistěte se, co jsme se na řazení se také zobrazí v zobrazení.
+V tomto kurzu také přidáme další informace k zobrazení výsledků, sazbě nejlevnější místností a nejdražším sazbám místností pro každý Hotel. Jak jsme se dosvědčili k řazení, přidáváme také hodnoty, abyste se ujistili, že se v zobrazení zobrazí také informace o tom, jak jsme řazení provedli.
 
-Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kontroler vyžadují aktualizovaná. Začněte tak, že otevřete domovskou kontroleru.
+Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Zobrazení a kontroler je potřeba aktualizovat. Začněte otevřením domovského kontroleru.
 
-### <a name="add-the-orderby-property-to-the-search-parameters"></a>Přidat vlastnost OrderBy parametry hledání
+### <a name="add-the-orderby-property-to-the-search-parameters"></a>Přidání vlastnosti OrderBy do parametrů hledání
 
-1. Vše, která je potřebná pro řazení výsledků podle jednu číselnou vlastnost je nastavena **OrderBy** parametr pro název vlastnosti. V **indexu (SearchData model)** metodu, přidejte následující řádek do parametrů hledání.
+1. Vše, co potřebuje k seřazení výsledků na základě jedné číselné vlastnosti, je nastavit parametr **OrderBy** na název vlastnosti. V metodě **index (model SearchData)** přidejte do parametrů hledání následující řádek.
 
     ```cs
         OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
-    > Výchozí pořadí je ascending, i když přidáte **asc** vlastnosti to jasně. Sestupném pořadí tak, že přidáte určena **desc**.
+    > Výchozí pořadí je vzestupné, ale k vlastnosti můžete přidat **ASC** , aby bylo jasné. Sestupné pořadí je určeno přidáním **DESC**.
 
-2. Nyní spusťte aplikaci a zadejte všechny běžné hledaný termín. Výsledky může nebo nemusí být ve správném pořadí, ani jako vývojář, nikoli uživatele, má všechny snadný způsob ověřování výsledky!
+2. Nyní spusťte aplikaci a zadejte libovolný běžný hledaný termín. Výsledky mohou nebo nemusí být ve správném pořadí, stejně jako vývojář, nikoli uživatel, ale mají snadný způsob ověření výsledků.
 
-3. Provedeme to jasné výsledky jsou seřazeny na hodnocení. Nejprve nahraďte **pole1** a **pole2** třídy v souboru hotels.css s následující třídy (tyto třídy jsou všechny nové potřebujeme pro účely tohoto kurzu).
+3. Pojďme to vymazat výsledky jsou seřazené na hodnocení. Nejdřív nahraďte třídy **box1** a **Box2** v souboru hotelů. CSS následujícími třídami (tyto třídy jsou všechny nové, které pro tento kurz potřebujeme).
 
     ```html
     textarea.box1A {
@@ -113,21 +113,21 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
     ```
 
     >[!Tip]
-    >Prohlížeče obvykle mezipaměti souborů css, a to může vést k používá starý soubor šablony stylů css a úpravy ignorovány. Dobrým způsobem zaokrouhlí Toto je přidat řetězec dotazu s parametrem verze na odkaz. Příklad:
+    >Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Příklad:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Aktualizujte číslo verze, pokud se domníváte, že váš prohlížeč používá starý soubor šablony stylů css.
+    >Pokud si myslíte, že váš prohlížeč používá starý soubor CSS, aktualizujte číslo verze.
 
-4. Přidat **hodnocení** vlastnost **vyberte** parametr v **indexu (SearchData model)** metody.
+4. Přidejte vlastnost **hodnocení** do parametru **Select** v metodě **index (SearchData model)** .
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Otevřete zobrazení (index.cshtml) a nahraďte smyčky vykreslování ( **&lt;! – zobrazit data hotelu.--&gt;** ) následujícím kódem.
+5. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování ( **&lt;!--Zobrazit hotelová data.--&gt;** ) s následujícím kódem.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -142,7 +142,7 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
                 }
     ```
 
-6. Hodnocení musí být k dispozici na první zobrazené stránce i na následujících stránkách, které jsou volány prostřednictvím nekonečné posuvníku. K tomu z těchto dvou případů, musíme aktualizovat i **Další** akce v kontroleru a **Posunul** funkce v zobrazení. Spouští se kontroler, změnit **Další** metodu v následujícím kódu. Tento kód vytvoří a komunikuje text hodnocení.
+6. Hodnocení musí být k dispozici na první zobrazené stránce a na dalších stránkách, které jsou volány pomocí nekonečné posouvání. Pro druhé z těchto dvou případů musíme aktualizovat **Další** akci v kontroleru a v zobrazení se zobrazí **posouvající** funkce. Od kontroleru změňte **Další** metodu na následující kód. Tento kód vytvoří a komunikuje text hodnocení.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -170,7 +170,7 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
         }
     ```
 
-7. Teď aktualizovat **Posunul** funkce v zobrazení, aby zobrazil text hodnocení.
+7. Teď aktualizujte **posunutou** funkci v zobrazení, aby se zobrazil text hodnocení.
 
     ```javascript
             <script>
@@ -192,17 +192,17 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
 
     ```
 
-8. Nyní spusťte aplikaci znovu. Vyhledat všechny běžné pojmem, jako například "Wi-Fi" a ověřte, že výsledky jsou řazeny podle sestupném pořadí podle hodnocení hotelu.
+8. Nyní spusťte aplikaci znovu. Vyhledejte všechny běžné podmínky, například "WiFi", a ověřte, že jsou výsledky seřazené podle sestupného pořadí podle hodnocení hotelu.
 
     ![Řazení podle hodnocení](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
-    Uvidíte, že několik hotels mít identické hodnocení a tak jejich výskytu v zobrazení opět pořadí, ve kterém se nachází data, která je volitelný.
+    Všimnete si, že několik hotelů má stejné hodnocení, takže jejich vzhled v zobrazení je znovu pořadí, ve kterém jsou data nalezena, což je libovolné.
 
-    Předtím, než se podíváme do přidává druhou úroveň řazení, přidejme nějaký kód k zobrazení rozsahu místnosti sazby. Tento kód přidáváme do obou zobrazit extrahování dat z _komplexní typ_, a také tak, že můžeme probrat řazení výsledků na základě ceny (nejlevnější první možná).
+    Než se podíváme na přidání druhé úrovně řazení, přidáme kód, který zobrazí rozsah sazeb za místnost. Tento kód přidáváme do obou jak zobrazit extrakci dat ze _komplexního typu_, a proto můžeme diskutovat o výsledcích řazení na základě ceny (nejlevnější je třeba).
 
-### <a name="add-the-range-of-room-rates-to-the-view"></a>Přidat řadu kurzů místnosti do zobrazení
+### <a name="add-the-range-of-room-rates-to-the-view"></a>Přidat rozsah místnostních sazeb do zobrazení
 
-1. Přidání vlastnosti obsahující míry nejlevnější a nejnákladnější místnosti Hotel.cs modelu.
+1. Přidejte vlastnosti obsahující nejlevnější a nejdražší pokojovou sazbu do modelu Hotel.cs.
 
     ```cs
         // Room rate range
@@ -210,7 +210,7 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
         public double expensive { get; set; }
     ```
 
-2. Výpočet plateb místnosti na konci **indexu (SearchData model)** akce v kontroleru home. Po uložení dočasných dat přidáte výpočty.
+2. V domovském kontroleru Vypočítejte sazby za místnost na konci akce **index (SearchData model)** . Po uložení dočasných dat přidejte výpočty.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -241,13 +241,13 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
                 }
     ```
 
-3. Přidat **místnosti** vlastnost **vyberte** parametr **indexu (SearchData model)** metody akce kontroleru.
+3. Přidejte vlastnost **místnosti** do parametru **Select** v metodě **index (SearchData model)** akce kontroleru.
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Změňte smyčky vykreslování v zobrazení tak, aby frekvence rozsahu pro první stránka výsledků.
+4. Změňte cyklus vykreslování v zobrazení tak, aby se zobrazil rozsah přenosů první stránky výsledků.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -264,7 +264,7 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
                 }
     ```
 
-5. Změnit **Další** metoda v domácí adaptér komunikaci rozsah rychlostí, pro další stránky výsledků.
+5. Změňte **Další** metodu v domovském řadiči, aby komunikovala rozsah přenosů pro následné stránky výsledků.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -294,7 +294,7 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
         }
     ```
 
-6. Aktualizace **Posunul** funkce v zobrazení pro zpracování místnosti sazby za text.
+6. Umožňuje aktualizovat **posunutou** funkci v zobrazení, aby se zpracoval text sazeb místností.
 
     ```javascript
             <script>
@@ -316,17 +316,17 @@ Není třeba upravovat žádné modely umožňující řazení. Zobrazení a kon
             </script>
     ```
 
-7. Spusťte aplikaci a ověřte, že se zobrazují rozsahy frekvence místnosti.
+7. Spusťte aplikaci a ověřte, že se zobrazují rozsahy kurzů místností.
 
-    ![Zobrazení rozsahů míra místnosti](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
+    ![Zobrazení rozsahů kurzů místností](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-**OrderBy** vlastnost parametry hledání nebude přijímat položku například **Rooms.BaseRate** poskytnout nejlevnější rychlost místnosti, i v případě, že místnosti bylo již seřazená podle frekvence (které nejsou). Zobrazíte hotely v ukázkové datové sadě, Objednáno míra místnosti, je třeba seřadit výsledky v domácí kontroleru a odesílat tyto výsledky k zobrazení do požadovaného pořadí.
+Vlastnost **OrderBy** parametrů hledání nepřijímá položku, jako je například **místnosts. BaseRate** , aby poskytovala tempo nejlevnější místností, a to i v případě, že místnosti již byly seřazené podle sazeb. V tomto případě nejsou místnosti seřazené podle sazeb. Aby bylo možné zobrazit hotely v ukázkové sadě dat seřazené podle sazby za místnost, je třeba seřadit výsledky v rámci svého domovského kontroleru a odeslat tyto výsledky do zobrazení v požadovaném pořadí.
 
-## <a name="order-results-based-on-multiple-values"></a>Řazení výsledků na základě několika hodnot
+## <a name="order-results-based-on-multiple-values"></a>Seřazení výsledků na základě více hodnot
 
-Nyní otázkou je postup rozlišovat mezi hotels pomocí stejné hodnocení. Jeden vhodný způsob může být pořadí na základě posledního renovovanou byl hotelu. Jinými slovy Čím nedávno hotelu byl renovovanou, tím větší hotelu se zobrazí ve výsledcích.
+Otázka teď rozlišuje mezi hotely a stejným hodnocením. Jedním dobrým způsobem je objednat na základě poslední doby, kdy byl Hotel renovated. Jinými slovy, čím déle bylo renovated, tím větší je Hotel, který se zobrazí ve výsledcích.
 
-1. Chcete-li přidat druhou úroveň řazení, změňte **OrderBy** a **vyberte** vlastnosti v **indexu (SearchData model)** tak, aby zahrnoval  **Části LastRenovationDate** vlastnost.
+1. Chcete-li přidat druhou úroveň řazení, změňte **OrderBy** a **Vyberte** vlastnosti v metodě **index (SearchData model)** , aby zahrnovaly vlastnost **části lastrenovationdate** .
 
     ```cs
     OrderBy = new[] { "Rating desc", "LastRenovationDate desc" },
@@ -334,9 +334,9 @@ Nyní otázkou je postup rozlišovat mezi hotels pomocí stejné hodnocení. Jed
     ```
 
     >[!Tip]
-    >Je možné zadat libovolný počet vlastností v **OrderBy** seznamu. Pokud hotels stejné hodnocení a renovace datum, může je třeba zadat třetí vlastnost k jejich rozlišení.
+    >V seznamu **OrderBy** lze zadat libovolný počet vlastností. Pokud má hotely stejné datum hodnocení a renovace, bylo možné zadat třetí vlastnost, která rozlišuje mezi nimi.
 
-2. Znovu musíme naleznete v tématu renovace data v zobrazení, stačí je potřeba mít jistotu, že pořadí je správný. Pro taková věc jako renovace pravděpodobně právě rok je povinný. Smyčka vykreslování v zobrazení změňte na následující kód.
+2. V zobrazení musíme znovu zobrazit datum renovace, ale stačí, abyste si vyjisti, že je řazení správné. Pro takovou věc jako renovaci je pravděpodobné, že je třeba jenom rok. Změňte smyčku vykreslování v zobrazení na následující kód.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -355,7 +355,7 @@ Nyní otázkou je postup rozlišovat mezi hotels pomocí stejné hodnocení. Jed
                 }
     ```
 
-3. Změnit **Další** metoda v domácí kontroleru, aby předával složku roku datum posledního renovace.
+3. Změňte **Další** metodu v rámci domovského kontroleru, aby se přeložila součást roku poslední datum renovace.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -387,7 +387,7 @@ Nyní otázkou je postup rozlišovat mezi hotels pomocí stejné hodnocení. Jed
         }
     ```
 
-4. Změnit **Posunul** funkce v zobrazení pro zobrazení potřebného textu renovace.
+4. Změnou **posunuté** funkce v zobrazení zobrazíte text renovace.
 
     ```javascript
             <script>
@@ -410,17 +410,17 @@ Nyní otázkou je postup rozlišovat mezi hotels pomocí stejné hodnocení. Jed
             </script>
     ```
 
-5. Spusťte aplikaci. Hledat na běžný pojem, jako je například "fond" nebo "Zobrazit" a ověřte, že hotels pomocí stejné hodnocení se teď zobrazují v sestupném pořadí podle renovace datum.
+5. Spusťte aplikaci. Vyhledejte běžný termín, například "fond" nebo "zobrazení", a ověřte, že se nyní zobrazují hotely se stejným hodnocením v sestupném pořadí podle data renovace.
 
-    ![Řazení renovace Date](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
+    ![Řazení pro datum renovace](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
-## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filtrovat výsledky podle vzdálenost od zeměpisné bodu
+## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
 
-Hodnocení, data a času renovace jsou příkladem vlastnosti, které se nejlíp zobrazí v sestupném pořadí. Abecední by příklad vhodné využít vzestupné pořadí (např. Pokud byl jen jeden **OrderBy** vlastnost a byla nastavena na **HotelName** pak bude zobrazen abecedním pořadí ). Pro ukázková data, by být vhodnější vzdálenost od zeměpisné bodu.
+Datum hodnocení a renovace jsou příklady vlastností, které se nejlépe zobrazují v sestupném pořadí. Abecední seznam by byl příkladem správného použití vzestupného pořadí (například pokud existovala pouze jedna vlastnost **OrderBy** a byla nastavena na hodnotu **hotelů** , bude zobrazen abecední objednávka). Pro naše ukázková data však bude vhodnější vzdálenost od zeměpisného bodu.
 
-Zobrazit výsledky podle zeměpisné vzdálenost, několik kroky jsou povinné.
+Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba několik kroků.
 
-1. Vyfiltrovat všechny hotely, které jsou mimo zadanou radius od dané chvíle zadáním filtru s longitude, latitude a parametry protokolu radius. Zeměpisná délka dostane první funkci bodu. RADIUS je v kilometrech.
+1. Vyfiltrujte všechny hotely, které jsou mimo zadaný poloměr od daného bodu, zadáním filtru s parametry Zeměpisná délka, zeměpisná šířka a poloměr. Zeměpisná délka je dána jako první funkce POINT. Poloměr je v kilometrech.
 
     ```cs
         // "Location" must match the field name in the Hotel class.
@@ -429,15 +429,15 @@ Zobrazit výsledky podle zeměpisné vzdálenost, několik kroky jsou povinné.
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. Výše uvedený filtr nemá _není_ řazení výsledků podle vzdálenost, stačí odebere odlehlé hodnoty. Řazení výsledků, zadejte **OrderBy** nastavení, která určuje metodu geoDistance.
+2. Výše uvedený filtr nezpůsobuje výsledky na základě vzdálenosti _, ale pouze_ odebírá odlehlé hodnoty. Chcete-li seřadit výsledky, zadejte nastavení **OrderBy** , které určuje metodu vzdálenosti.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Přestože výsledků vrácených rutinou Azure Search pomocí filtru vzdálenost, počítaných vzdálenost mezi daty a zadaným bodem je _není_ vrátila. Přepočítejte tuto hodnotu v zobrazení a kontroler, pokud chcete zobrazit ve výsledcích.
+3. I když byly výsledky vráceny Azure Search pomocí filtru vzdálenosti, vypočtená vzdálenost mezi daty a zadaným _bodem se nevrátí._ Přepočítejte tuto hodnotu v zobrazení, nebo v případě, že ji chcete zobrazit ve výsledcích.
 
-    Následující kód vypočítá vzdálenost mezi dvěma body lat/fyzický pevný disk.
+    Následující kód bude počítat vzdálenost mezi dvěma body tabulky LAT/Lon.
 
     ```cs
         const double EarthRadius = 6371;
@@ -458,22 +458,22 @@ Zobrazit výsledky podle zeměpisné vzdálenost, několik kroky jsou povinné.
         }
     ```
 
-4. Teď máte tyto souvislostí. Tyto fragmenty kódu jsou však jde v našem kurzu proběhne, sestavování, že aplikace na základě map se ponechané jako cvičení pro čtečku. Abyste mohli dál v tomto příkladu, vezměte v úvahu buď zadání názvu města s protokolem radius, nebo vyhledání bod na mapě a vyberete poloměr. Chcete-li prozkoumat tyto možnosti dále, naleznete v následujících zdrojích:
+4. Nyní je třeba tyto koncepce spojit dohromady. Tyto fragmenty kódu jsou nicméně až do našeho kurzu, takže sestavení aplikace založené na mapě je ponecháno jako cvičení pro čtenáře. Pokud chcete tento příklad dále použít, zvažte buď zadání názvu města s poloměrem, nebo vyhledání bodu na mapě a výběr poloměru. Další informace o těchto možnostech najdete v následujících zdrojích informací:
 
 * [Dokumentace k Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
-* [Najít adresu pomocí služby vyhledávání Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Najít adresu pomocí služby Azure Maps Search Service](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
-## <a name="order-results-based-on-a-scoring-profile"></a>Řazení výsledků podle bodovací profil
+## <a name="order-results-based-on-a-scoring-profile"></a>Seřazení výsledků na základě profilu vyhodnocování
 
-Uvedené příklady v tomto kurzu zatím ukazují, jak uspořádat na numerické hodnoty (hodnocení, renovace datum, geografické vzdálenosti), poskytování _přesné_ zpracovat řazení. Nicméně některé prohledávání a některá data neumožňují na tyto jednoduché porovnávání mezi dva datové prvky. Služba Azure Search zahrnuje koncept _vyhodnocování_. _Profily skórování_ je možné zadat pro sadu dat, který slouží k poskytování více kvalitativní a komplexní porovnání, které by měly být nejvíc hodí v situaci, kdy například porovnávání textová data se rozhodnout, který by měl být zobrazí první.
+V příkladech uvedených v tomto kurzu se dozvíte, jak seřadit číselné hodnoty (hodnocení, datum renovace, zeměpisná vzdálenost) a poskytnout _přesný_ proces řazení. Některá hledání a některá data ale neposkytují jednoduché porovnání mezi dvěma datovými prvky. Azure Search obsahuje koncept _bodování_. _Profily vyhodnocování_ je možné zadat pro sadu dat, která se dají použít k zajištění složitějších a kvalitativních porovnání, která by měla být nejdůležitější, když například porovnáme textová data a určíte, která z nich se má zobrazit jako první.
 
-Profily vyhodnocování nejsou definované uživatelem, ale obvykle správci datových sad. Několik profilů vyhodnocování již byly vytvořeny na datech hotels. Pojďme podívat, jak je definované bodovací profil a potom zkuste psaní kódu pro vyhledávání na ně.
+Profily vyhodnocování nejsou definované uživateli, ale obvykle se jedná o správce sady dat. V datech hotelů bylo nastaveno několik profilů vyhodnocování. Pojďme se podívat, jak je definovaný profil vyhodnocování, a pak zkuste napsat kód, který je bude hledat.
 
-### <a name="how-scoring-profiles-are-defined"></a>Jak bodovací profily jsou definovány.
+### <a name="how-scoring-profiles-are-defined"></a>Jak jsou definovány profily vyhodnocování
 
-Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každý _by měl_ vliv na výsledky pořadí. Jako vývojář aplikací nenapíšete těchto profilů, jsou zapsány pomocí Správce dat, ale jsou užitečné podívat se na syntaxi.
+Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu, jak _by měl_ mít každá z nich vliv na pořadí výsledků. Jako vývojář aplikace nepíšete tyto profily, které jsou zapsány správcem dat, ale je užitečné si prohlédnout syntaxi.
 
-1. Toto je výchozí pro datovou sadu hotels použít, pokud nezadáte žádné bodovací profil **OrderBy** nebo **ScoringProfile** parametru. Tento profil zvyšuje _skóre_ pro hotelu Pokud hledaný text je k dispozici v hotelu název, popis a seznam značek (zařízení). Všimněte si, jak váhy hodnocení upřednostnit určitá pole. Pokud hledaný text se zobrazí v jiném poli, není uveden níže, bude mít lepší zvolit váhu 1. Samozřejmě Čím skóre, dříve výsledek se zobrazí v zobrazení.
+1. Toto je výchozí profil vyhodnocování pro datovou sadu hotelů, který se používá v případě, že nezadáte parametr **OrderBy** nebo **ScoringProfile** . Tento profil zvyšuje _skóre_ pro Hotel, pokud se hledaný text nachází v názvu hotelu, v popisu nebo v seznamu značek (rekreační). Všimněte si, jak váhy bodování upřednostní určitá pole. Pokud se hledaný text objeví v jiném poli, které není uvedené níže, bude mít váhu 1. Čím vyšší je skóre, tím se v zobrazení objeví předchozí výsledek.
 
      ```cs
     {
@@ -490,7 +490,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
 
     ```
 
-2. Následující bodovací profil posiluje skóre výrazně, pokud zadaný parametr obsahuje nejméně jeden seznam značek (které voláme "zařízení"). Klíčovým bodem tento profil, který je parametr _musí_ zadat, která obsahuje text. Pokud tento parametr je prázdný nebo není zadán, bude vyvolána k chybě.
+2. Následující profil vyhodnocování zvyšuje skóre významně, pokud zadaný parametr obsahuje jeden nebo více seznamů značek (které zavoláme "" "). Klíčovým bodem tohoto profilu je, že je _nutné_ zadat parametr, který obsahuje text. Pokud je parametr prázdný nebo není zadán, bude vyvolána chyba.
  
     ```cs
             {
@@ -508,7 +508,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
         }
     ```
 
-3. V tomto příkladu třetí hodnocení poskytuje výrazné zvýšení výkonu na skóre. Datum posledního renovovanou bude také zvýšení skóre, ale pouze pokud tato data se vrátí do 730 dnů (2 roky) aktuálního data.
+3. V tomto třetím příkladu hodnocení přináší významné zvýšení skóre. Datum poslední renovated také zvýší skóre, ale pouze v případě, že tato data spadají do 730 dnů (2 let) aktuálního data.
 
     ```cs
             {
@@ -539,11 +539,11 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
 
     ```
 
-    Nyní dejte nám podívejte se, pokud se tyto profily fungovat podle myslíme si, že by měly.
+    Teď se podívejte, jestli tyto profily fungují, protože by se vám měly považovat za vhodné!
 
-### <a name="add-code-to-the-view-to-compare-profiles"></a>Přidejte kód do zobrazení a porovnání profily
+### <a name="add-code-to-the-view-to-compare-profiles"></a>Přidání kódu do zobrazení pro porovnání profilů
 
-1. Otevřete soubor index.cshtml a nahraďte &lt;tělo&gt; oddíl s následujícím kódem.
+1. Otevřete soubor index. cshtml a nahraďte část &lt;body @ no__t-1 následujícím kódem.
 
     ```cs
     <body>
@@ -651,7 +651,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
     </body>
     ```
 
-2. Otevřete soubor SearchData.cs a nahraďte **SearchData** třídy následujícím kódem.
+2. Otevřete soubor SearchData.cs a nahraďte třídu **SearchData** následujícím kódem.
 
     ```cs
     public class SearchData
@@ -690,7 +690,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
     }
     ```
 
-3. Otevřete soubor hotels.css a přidejte následující třídy HTML.
+3. Otevřete soubor hotely. CSS a přidejte následující třídy HTML.
 
     ```html
     .facetlist {
@@ -712,15 +712,15 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
     }
     ```
 
-### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Přidejte kód do kontroleru k určení bodovací profil
+### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Přidejte do kontroleru kód pro určení profilu vyhodnocování.
 
-1. Otevřete soubor domácí kontroleru. Přidejte následující **pomocí** – příkaz (pro usnadnění vytváření seznamů).
+1. Otevřete soubor domovského kontroleru. Přidejte následující příkaz **using** (pro pomoc s vytvářením seznamů).
 
     ```cs
     using System.Linq;
     ```
 
-2.  V tomto příkladu budeme potřebovat počáteční volání **Index** trochu více než jen vrátit počáteční zobrazení. Metoda teď hledá až 20 vymoženosti zobrazíte v zobrazení.
+2.  V tomto příkladu potřebujeme počáteční volání **indexu** , aby se provedlo trochu víc, než stačí vrátit počáteční zobrazení. Metoda teď vyhledá až 20 možností pro zobrazení v zobrazení.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -750,7 +750,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
         }
     ```
 
-3. Potřebujeme dva privátní metody omezující vlastnosti uložit do dočasného úložiště nebo můžete obnovit z dočasného úložiště a naplnit modelu.
+3. Potřebujeme dvě privátní metody pro uložení omezujících vlastností do dočasného úložiště a jejich obnovení z dočasného úložiště a naplnění modelu.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -788,7 +788,7 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
         }
     ```
 
-4. Musíme nastavit **OrderBy** a **ScoringProfile** parametry podle potřeby. Nahraďte existující **indexu (SearchData model)** metoda následujícím kódem.
+4. V případě potřeby je potřeba nastavit parametry **OrderBy** a **ScoringProfile** . Nahraďte existující metodu **indexu (SearchData model)** následujícím způsobem.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -937,40 +937,40 @@ Pojďme podívat se na tři příklady bodovací profily a zvažte, jak se každ
         }
     ```
 
-    Přečtěte si poznámky pro každou z **přepnout** výběry.
+    Přečtěte si komentáře pro jednotlivé výběry **přepínačů** .
 
-5. Jsme není nutné provádět žádné změny **Další** akce, pokud jste dokončili další kód pro předchozí části na pořadí na základě více vlastností.
+5. Pokud jste dokončili další kód pro předchozí oddíl řazení na základě více vlastností, nemusíme dělat žádné změny **Další** akce.
 
-### <a name="run-and-test-the-app"></a>Spuštění a testování aplikace
+### <a name="run-and-test-the-app"></a>Spuštění a otestování aplikace
 
-1. Spusťte aplikaci. Měli byste vidět kompletní sadu vymoženosti v zobrazení.
+1. Spusťte aplikaci. V zobrazení by se měla zobrazit celá sada rekreačních součástí.
 
-2. Pro řazení, vybrat "číselné hodnocení" vám poskytne číselné řazení, které jste implementovali již v tomto kurzu s datem renovace rozhodování mezi hotels rovná hodnocení.
+2. Pro řazení, výběr "podle číselného hodnocení" vám poskytne číselné řazení, které jste už v tomto kurzu implementovali, s datem renovace, který se při rozhodování mezi hotely stejného hodnocení používá.
 
-![Řazení "beach" na základě hodnocení](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+![Řazení "pláž" na základě hodnocení](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Teď zkuste profil "podle vymoženosti". Různé dle vymoženosti a ověřte, že jsou povýšeny hotely se tyto vymoženosti nahoru v seznamu výsledků.
+3. Teď Vyzkoušejte profil "podle vašeho rekreačního". Provedete nejrůznější výběry a ověřte, že Hotely s těmito ubytováními jsou povýšeny do seznamu výsledků.
 
-![Řazení "beach" na základě profilu](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+![Řazení "pláž" na základě profilu](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Zkuste "Podle Renovated datum a hodnocení profilu" Pokud chcete zobrazit, pokud se zobrazí, co očekáváte. Pouze nedávno renovovanou hotels poslán _aktuálnosti_ boost.
+4. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
 ### <a name="resources"></a>Zdroje a prostředky
 
-Další informace naleznete na následujícím [přidání profilů vyhodnocování do indexu Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Shrnutí
 
-Vezměte v úvahu následující takeaways z tohoto projektu:
+Vezměte v úvahu následující poznatky z tohoto projektu:
 
-* Uživatelé se očekávají, že výsledky hledání povolujeme, relevantní nejprve.
-* Data, třeba strukturována tak, aby pořadí je snadné. Nepovedlo se nám se budou řadit "nejlevnější" nejprve snadno, jak se data strukturovaná, aby mohl řazení provést bez dalšího kódu.
-* Může existovat mnoho úrovní rozlišovat mezi výsledky, které mají stejnou hodnotu na vyšší úrovni pořadí řazení.
-* Jsou přirozené pro některé výsledky povolujeme ve vzestupném pořadí (například vzdálenost od bodu) a některých v sestupném pořadí (například Host hodnocení).
-* Profily skórování lze definovat, když číselné porovnání nejsou k dispozici nebo není dostatečně inteligentní pro datovou sadu. Vyhodnocování každého výsledku pomoct pořadí a monetizace zobrazit výsledky.
+* Uživatelé budou očekávat, že výsledky hledání budou seřazené, nejdůležitější jako první.
+* Data musí být strukturovaná, aby bylo řazení snadné. Nedokázali jsme nejdřív seřadit "nejlevnější", protože data nejsou strukturovaná, aby bylo možné provádět řazení bez dalšího kódu.
+* Pro objednání může být k dispozici mnoho úrovní, aby bylo možné odlišit výsledky, které mají stejnou hodnotu na vyšší úrovni řazení.
+* U některých výsledků je přirozené řazení ve vzestupném pořadí (například vzdálenost od bodu) a některé v sestupném pořadí (například hodnocení hosta).
+* Profily vyhodnocování lze definovat, pokud nejsou k dispozici numerická porovnání nebo nejsou pro datovou sadu dostatečně inteligentní. Bodování každého výsledku vám pomůže s inteligentním seřazením a zobrazením výsledků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Dokončili jste tuto sérii C# výukových kurzů – které by měl získali cenné informace o rozhraní API služby Azure Search.
+Dokončili jste tuto sérii C# kurzů – měli byste mít k dispozici užitečné znalosti Azure Search API.
 
-Další referenční dokumentace a kurzy, zvažte možnost procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure), nebo další kurzy v [dokumentace ke službě Azure Search](https://docs.microsoft.com/azure/search/).
+Další informace a kurzy najdete v části o procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)nebo v dalších kurzech v [dokumentaci k Azure Search](https://docs.microsoft.com/azure/search/).

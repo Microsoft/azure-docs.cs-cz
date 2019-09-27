@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2019
 ms.author: sagupt
-ms.openlocfilehash: a67034752b4c43533a5735b857186ee83934717a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935635"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326619"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Vytváření upozornění Azure Advisor při nových doporučeních 
 
@@ -24,8 +24,8 @@ Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředk�
 
 Můžete také určit typy doporučení pomocí těchto vlastností:
 
-* Kategorie
-* Úroveň dopadu
+* Category
+* Míra dopadu
 * Typ doporučení
 
 Můžete taky nakonfigurovat akci, která se provede, když se aktivuje výstraha:  
@@ -33,7 +33,7 @@ Můžete taky nakonfigurovat akci, která se provede, když se aktivuje výstrah
 * Výběr existující skupiny akcí
 * Vytváří se nová skupina akcí.
 
-Další informace o skupinách akcí naleznete v tématu [vytvoření a Správa skupin akcí] (.. /azure-monitor/platform/action-groups.md.
+Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
 > [!NOTE] 
 > Výstrahy služby Advisor jsou momentálně dostupné jenom pro doporučení vysoké dostupnosti, výkonu a nákladů. Doporučení zabezpečení nejsou podporovaná. 

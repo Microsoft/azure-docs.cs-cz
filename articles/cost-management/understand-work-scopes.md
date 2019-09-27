@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479984"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338638"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -37,7 +37,7 @@ Cost Management funguje ve všech oborech nad prostředky, aby organizace mohly 
 
 Azure podporuje tři obory pro správu prostředků. Každý obor podporuje správu přístupu a zásad správného řízení, včetně neomezeného řízení nákladů.
 
-- [**Skupiny pro správu**](../governance/management-groups/index.md) – hierarchické kontejnery, až osm úrovní, pro uspořádání předplatných Azure.
+- [**Skupiny pro správu**](../governance/management-groups/overview.md) – hierarchické kontejnery, až osm úrovní, pro uspořádání předplatných Azure.
 
     Typ prostředku: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 
@@ -173,7 +173,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 3. Zkopírujte ID fakturačního účtu.
 4. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-### <a name="billing-profiles"></a>Profily fakturace
+### <a name="billing-profiles"></a>Fakturační profily
 
 1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
 2. V nabídce fakturační účet vyberte **profily fakturace** .
@@ -218,7 +218,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 
 ### <a name="subscription"></a>Subscription
 
-1. Otevřete Azure Portal a v seznamu služeb  přejděte na předplatná.
+1. Otevřete Azure Portal a v seznamu služeb přejděte na předplatná.
 2. Zkopírujte ID předplatného z tabulky.
 3. Váš rozsah je:`"/subscriptions/{id}"`
 
@@ -232,6 +232,6 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 
 Cost Management se aktuálně podporuje v [globálním](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net)Azure. Další informace o Azure Government najdete v tématu [koncové body Azure Global a oficiálních rozhraní API](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2019
+ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124145"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327463"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly v Azure Monitor
 
@@ -58,7 +58,7 @@ Průvodce vlastním protokolem se spouští v Azure Portal a umožňuje definova
 
 1. V Azure Portal vyberte **Log Analytics pracovní prostory** > > **Rozšířená nastavení**.
 2. Klikněte na**vlastní protokoly** **dat** > .
-3. Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho nastavení na *počítače se systémem Linux níže*v části konfigurace.
+3. Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů. Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.
 4. Kliknutím na tlačítko **Přidat +** otevřete Průvodce vlastním protokolem.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Nahrát a analyzovat ukázkový protokol
@@ -174,6 +174,6 @@ V případech, kdy vaše data nejde shromažďovat s vlastními protokoly, zvaž
 - Pomocí vlastního skriptu nebo jiné metody Zapište data do událostí nebo [syslog](data-sources-syslog.md) [systému Windows](data-sources-windows-events.md) , které jsou shromažďovány pomocí Azure monitor. 
 - Odešlete data přímo do Azure Monitor pomocí [rozhraní API kolekce dat http](data-collector-api.md). Příklad použití runbooků v Azure Automation je k dispozici ve [shromažďovat data protokolu v Azure monitor pomocí sady Azure Automation Runbook](runbook-datacollect.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

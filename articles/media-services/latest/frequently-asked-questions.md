@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501256"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338819"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -36,7 +36,7 @@ Podrobnosti najdete v tématu [škálování zpracování médií pomocí](media
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaká je doporučená metoda pro zpracování videí?
 
-Pomocí [transformací](https://docs.microsoft.com/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá **transformace** popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít transformaci  na dané vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní Media Services API nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
+Pomocí [transformací](https://docs.microsoft.com/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá **transformace** popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít transformaci na dané vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní Media Services API nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
 
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
@@ -65,6 +65,14 @@ Pro přepnutí zdrojového videa můžete použít [živý místní kodér](reco
 Zákazníci často zajímat, zda by měl používat šifrování AES nebo systému DRM. Hlavním rozdílem mezi těmito dvěma systémy je to, že při šifrování AES se klíč obsahu přenáší klientovi přes protokol TLS, aby se klíč zašifroval při přenosu, ale bez dalšího šifrování ("v jasném stavu"). V důsledku toho je klíč, který se používá k dešifrování obsahu, přístupný klientskému přehrávači a je možné ho zobrazit v trasování sítě na klientovi v prostém textu. Šifrování s nezašifrovaným klíčem AES-128 je vhodné pro případy použití, kde se jedná o důvěryhodnou osobu (například k šifrování firemních videí distribuovaných v rámci společnosti, která budou zaměstnanci prohlížet).
 
 Systémy DRM, jako je PlayReady, Widevine a FairPlay, poskytují další úroveň šifrování na klíč, který se používá k dešifrování obsahu v porovnání s jasným klíčem AES-128. Klíč obsahu je zašifrovaný na klíč chráněný modulem runtime DRM v dalších pro jakékoli šifrování na úrovni přenosu poskytované protokolem TLS. Kromě toho se v zabezpečeném prostředí na úrovni operačního systému, kde je obtížnější uživatel se zlými úmysly k útoku na zpracovává dešifrování. DRM se doporučuje pro případy použití, kdy prohlížeč pravděpodobně nebude důvěryhodná strana a vyžadujete nejvyšší úroveň zabezpečení.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Jak zobrazit video jenom uživatelům, kteří mají určité oprávnění, bez použití Azure AD?
+
+Nemusíte používat žádného konkrétního poskytovatele tokenu (například Azure AD). Pomocí asymetrického šifrování klíčů můžete vytvořit vlastního zprostředkovatele [JWT](https://jwt.io/) (tzv. STS, službu Secure token Service). Ve vlastní službě STS můžete přidat deklarace identity založené na obchodní logice.
+
+Zajistěte, aby Vystavitel, skupina a deklarace identity přesně odpovídaly přesně mezi tím, co je v tokenu JWT, a ContentKeyPolicyRestriction použitým v ContentKeyPolicy.
+
+Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md).
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Jak a kde se získat token JWT před jeho použitím žádosti o licenci nebo klíč?
 
@@ -127,6 +135,6 @@ Další informace najdete v tématu [migrace na Media Services V3](migrate-from-
 
 Doporučuje se použít šifrování úložiště na straně serveru (což je ve výchozím nastavení zapnuté). Další informace najdete v tématu [šifrování služby Azure Storage pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled Media Services V3](media-services-overview.md)

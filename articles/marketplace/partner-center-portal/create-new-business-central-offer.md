@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nové nabídky Business Central v Dynamics 365 na komerčním webu Marketplace
 description: Postup vytvoření nové nabídky podnikového centra Dynamics 365 pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) na portálu pro komerční tržiště v partnerském centru Microsoftu.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033267"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327642"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Business Central v Dynamics 365
 
@@ -22,7 +22,7 @@ Pokud chcete začít vytvářet aplikace Dynamics 365 Business Central, ujistět
 
 ![Řídicí panel komerčního tržiště v partnerském centru](./media/new-offer-overview.png)
 
-## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
+## <a name="create-a-new-offer"></a>Vytvořit novou nabídku
 
 Vyberte tlačítko **+ Nová nabídka** a pak vyberte položku nabídky **Business Central pro Dynamics 365** . Zobrazí se dialogové okno **Nová nabídka** .
 
@@ -88,11 +88,11 @@ Další informace najdete v tématu [Přehled správy potenciálních zákazník
 
 Před přechodem k další části si nezapomeňte **Uložit** .
 
-## <a name="properties"></a>Vlastnosti
+## <a name="properties"></a>properties
 
 Stránka **vlastností** vám umožní definovat kategorie a odvětví používané k seskupení vaší nabídky na webu Marketplace, ve vaší verzi aplikace a v právních smlouvách, které podporují vaši nabídku. Po dokončení této stránky vyberte **Uložit** .
 
-### <a name="category"></a>Kategorie
+### <a name="category"></a>Category
 
 Vyberte minimálně jednu a maximálně tři kategorie, které se použijí k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace. Nezapomeňte si vyžádat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
 
@@ -162,7 +162,7 @@ Pokud chcete zákazníkům sdělit, že vaše aplikace pracuje s konkrétními p
 
 V této části můžete zadat odkazy, které zákazníkům pomohou pochopit Další informace o vaší nabídce.
 
-#### <a name="help-link"></a>Odkaz na nápovědu
+#### <a name="help-link"></a>Odkaz na Help
 
 Zadejte adresu URL, kde se zákazníci mohou dozvědět více o vaší nabídce.
 
@@ -194,11 +194,11 @@ Obrázek Hero je nepovinný. Pokud zadáte jednu, musí změřit 815 x 290 pixel
 
 #### <a name="screenshots"></a>Snímky obrazovek
 
-Přidejte snímky obrazovky, které ukazují, jak vaše nabídka funguje. Vyžaduje se aspoň jeden snímek obrazovky a můžete přidat až pět. Všechny snímky obrazovky musí být 1280 × 720 pixelů.
+Přidejte snímky obrazovky, které ukazují, jak vaše nabídka funguje. Vyžadují se aspoň tři snímky obrazovky a můžete přidat až pět. Všechny snímky obrazovky musí být 1280 × 720 pixelů.
 
 #### <a name="videos"></a>Videa
 
-Volitelně můžete přidat až čtyři videa, která předvádí vaši nabídku. Tato videa by se měla hostovat na YouTube nebo Vimeo. U každého z nich zadejte název videa, jeho adresu URL a miniaturu obrázku (1280 x 720 pixelů).
+Volitelně můžete přidat až pět videí, která předvádí vaši nabídku. Tato videa by se měla hostovat na YouTube nebo Vimeo. U každého z nich zadejte název videa, jeho adresu URL a miniaturu obrázku (1280 x 720 pixelů).
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
@@ -252,7 +252,7 @@ Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou přípono
 
 #### <a name="dependency-package-file"></a>Soubor balíčku závislosti
 
-Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou příponou, která už je publikovaná na webu Marketplace. Pokud ano, nahrajte `.app` soubor `.zip` nebo sem.
+Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou příponou, která už je publikovaná na webu Marketplace. Pokud ano, nahrajte sem soubor `.app` nebo `.zip`.
 
 ### <a name="url-to-app-installation"></a>Adresa URL pro instalaci aplikace
 
@@ -281,7 +281,7 @@ K dispozici jsou následující typy testovacích jednotek, z nichž každá má
 
 **Horká**: Tento typ instance je nasazený a čeká na přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat k horkým instancím testovacích jednotek, ale nemusíte čekat na nasazení. Výměnou za to je, že tyto instance nepřetržitý provoz na vaše předplatné Azure, takže bude mít za následek větší dostupnost nákladů. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
 
-**Studené**: Tento typ instance představuje celkový počet instancí, které lze případně nasadit na oblast. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek, ale v předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
+**Studené**: Tento typ instance představuje celkový počet instancí, které lze případně nasadit na oblast. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek, ale v předplatném Azure *není vždycky* spuštěná jako s *horkou* instancí.
 
 - **Šablona testovacích jednotek Azure Resource Manager**: Nahrajte soubor. zip obsahující šablonu Azure Resource Manager.  Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
@@ -297,7 +297,7 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Adresa URL instance** (povinné): Adresa URL, na které zákazník zahájí svoji testovací jednotku. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například https://testdrive.crm.dynamics.com).
 
-- **Adresa URL webového rozhraní API instance** (povinné): Načtěte adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \&gt;. **Vlastní nastavení** \&gt; **Materiály pro vývojáře** \&gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL https://testdrive.crm.dynamics.com/api/data/v9.0) (například.
+- **Adresa URL webového rozhraní API instance** (povinné): Načtěte adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **nastavení** \&gt;. **Přizpůsobení** @no__t – 3gt; **Materiály pro vývojáře** @no__t – 5gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL (například https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Název role** (povinné): Zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365, která se uživateli přiřadí během své testovací jednotky (například Test-Drive-role).
 
@@ -366,7 +366,7 @@ Pokud vaše nabídka vyžaduje edici Premium z Microsoft Dynamics 365 Business C
 
 ### <a name="key-usage-scenario"></a>Scénář použití klíče
 
-Musíte odesílat `.pdf` soubor, ve kterém jsou uvedené klíčové scénáře použití vaší nabídky v dokumentu (formát PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
+Je nutné, abyste odesílat soubor `.pdf`, ve kterém jsou uvedené scénáře použití v dokumentu (ve formátu PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatizace testů aplikací
 
@@ -374,7 +374,7 @@ Volitelně můžete nahrát soubor **testů aplikace** sem (. app).
 
 ### <a name="test-accounts"></a>Testovací účty
 
-Pokud je potřeba testovací účet, aby mohl náš Certifikační tým správně zkontrolovat vaši nabídku, nahrajte soubor. PDF,. doc nebo. docx pomocí informací o testovacích **účtech** .
+Pokud je potřeba testovací účet, aby mohl náš Certifikační tým správně zkontrolovat vaši nabídku, nahrajte soubor. PDF,. doc nebo. docx pomocí informací o **testovacích účtech** .
 
 ## <a name="publish"></a>Publikování
 
@@ -391,6 +391,6 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném (nebo v případě soukromé nabídky pro soukromou cílovou skupinu).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

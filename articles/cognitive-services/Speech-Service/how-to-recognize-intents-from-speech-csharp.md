@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč pro jazyk C#'
+title: 'Kurz: Rozpoznávání záměrů z řeči pomocí sady Speech SDK proC#'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se naučíte rozpoznávat záměry z řeči pomocí sady Speech SDK pro C#.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 07/05/2019
+ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: d61141a0955f916b1d4bfeabb22454ec38415cea
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603244"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326840"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznávání záměrů z řeči pomocí sady Speech SDK proC#
 
-Sada [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) služeb Cognitive Services se integruje se službou [Language Understanding Service (LUIS)](https://www.luis.ai/home) a poskytuje **rozpoznávání záměrů**. Záměr je něco, co chce uživatel udělat: rezervovat si let, ověřit počasí nebo si zavolat. Uživatel může použít jakákoli slova, která mu připadají přirozená. Služba LUIS mapuje pomocí strojového učení žádosti uživatelů na vámi definované záměry.
+Sada Cognitive Services [Speech SDK](speech-sdk.md) se integruje se [službou Language Understanding (Luis)](https://www.luis.ai/home) , která poskytuje **rozpoznávání záměrů**. Záměr je něco, co chce uživatel udělat: rezervovat si let, ověřit počasí nebo si zavolat. Uživatel může použít jakákoli slova, která mu připadají přirozená. Pomocí strojového učení LUIS mapuje požadavky uživatelů na vámi definované záměry.
 
 > [!NOTE]
 > Aplikace LUIS definuje záměry a entity, které chcete rozpoznat. Je oddělená od aplikace C#, která používá službu Speech. V tomto článku budeme aplikaci služby LUIS označovat jako aplikaci LUIS a kód C# jako aplikaci.
@@ -28,7 +28,7 @@ V tomto kurzu použijete sadu Speech SDK k vývoji konzolové aplikace C#, kter�
 
 > [!div class="checklist"]
 > * Vytvořit projekt sady Visual Studio odkazující na balíček NuGet sady Speech SDK
-> * Vytvořit konfiguraci řeči a získat nástroj pro rozpoznávání záměru
+> * Vytvoření konfigurace řeči a získání nástroje pro rozpoznávání záměrů
 > * Získat model pro vaši aplikaci LUIS a přidat potřebné záměry
 > * Specifikovat jazyk pro rozpoznávání řeči
 > * Rozpoznávat řeč ze souboru
@@ -36,40 +36,42 @@ V tomto kurzu použijete sadu Speech SDK k vývoji konzolové aplikace C#, kter�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než zahájíte tento kurz, musíte mít následující položky.
+Než začnete s tímto kurzem, ujistěte se, že máte následující položky:
 
 * Účet služby LUIS. Můžete ho získat zdarma prostřednictvím [portálu LUIS](https://www.luis.ai/home).
-* Visual Studio 2017 (libovolná edice).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolná edice).
 
 ## <a name="luis-and-speech"></a>Služba LUIS a řeč
 
-Služba LUIS se integruje s hlasové služby rozpoznat záměry z řeči. Není nutné hlasové služby předplatného, stačí LUIS.
+LUIS se integruje se službami pro rozpoznávání řeči za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služeb Speech, stačí LUIS.
 
 Služba LUIS používá dva typy klíčů:
 
 |Typ klíče|Účel|
 |--------|-------|
-|vytváření obsahu|umožňuje vytvářet a upravovat aplikace LUIS prostřednictvím kódu programu|
-|endpoint |autorizuje přístup ke konkrétní aplikaci LUIS|
+|Vytváření obsahu|Umožňuje vytvářet a upravovat aplikace LUIS programově.|
+|Koncový bod |Autorizuje přístup ke konkrétní aplikaci LUIS.|
 
-Klíč koncového bodu je klíč služby LUIS, který potřebujete pro účely tohoto kurzu. Tento kurz používá ukázkovou aplikaci Home Automation služby LUIS, kterou můžete vytvořit pomocí postupu v článku o [použití předem připravené aplikace Home Automation](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app). Pokud jste si vytvořili vlastní aplikaci LUIS, můžete použít ji.
+Pro tento kurz potřebujete typ klíče koncového bodu. V tomto kurzu se používá ukázková aplikace LUIS pro automatizaci, kterou můžete vytvořit pomocí programu pro rychlý Start pro [domovskou automatizaci pomocí předdefinovaných aplikací](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
 
-Při vytváření aplikace LUIS se automaticky vygeneruje počáteční klíč, abyste aplikaci mohli otestovat pomocí textových dotazů. Tento klíč neumožňuje integrace hlasových služeb a nebude fungovat v tomto kurzu. Musíte vytvořit prostředek služby LUIS na řídicím panelu Azure a přiřadit ho aplikaci LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
+Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služeb Speech Services a nebude v tomto kurzu fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
 
-Jakmile prostředek služby LUIS na řídicím panelu Azure vytvoříte, přihlaste se k [portálu LUIS](https://www.luis.ai/home), vyberte svoji aplikaci na stránce My Apps (Moje aplikace), potom přepněte na stránku pro správu této aplikace. Nakonec na bočním panelu klikněte na **Keys and Endpoints** (Klíče a koncové body).
+Po vytvoření prostředku LUIS na řídicím panelu Azure se přihlaste k [portálu Luis](https://www.luis.ai/home), vyberte svou aplikaci na stránce **Moje aplikace** a pak přepněte na stránku **správy** aplikace. Nakonec na bočním panelu vyberte **klíče a koncové body** .
 
 ![Nastavení klíčů a koncových bodů portálu LUIS](media/sdk/luis-keys-endpoints-page.png)
 
-Na stránce nastavení klíčů a koncových bodů:
+Na stránce **klíče a nastavení koncového bodu** :
 
-1. Přejděte dolů do části Resources and Keys (Prostředky a klíče) a klikněte na **Assign resource** (Přiřadit prostředek).
-1. V dialogovém okně **Assign a key to your app** (Přiřadit klíč aplikaci) vyberte následující položky:
+1. Přejděte dolů k části **prostředky a klíče** a vyberte **přiřadit prostředek**.
+1. V dialogovém okně **přiřadit klíč k aplikaci** proveďte následující změny:
 
-    * Jako Tenanta zvolte Microsoft.
-    * V části Subscription Name (Název předplatného) vyberte předplatné Azure, které obsahuje prostředek služby LUIS, který chcete použít.
-    * V části Key (Klíč) vyberte prostředek služby LUIS, který chcete s aplikací používat.
+   * V části **tenant**klikněte na **Microsoft**.
+   * V části **název předplatného**vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
+   * V části **klíč**vyberte prostředek Luis, který chcete s aplikací používat.
 
-Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky. Kliknutím na ikonu vedle klíče ho zkopírujte do schránky. (Můžete použít kterýkoli z klíčů.)
+   Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky. 
+
+1. Vyberte ikonu vedle klíče a zkopírujte ji do schránky. (Můžete použít kterýkoli z klíčů.)
 
 ![Klíče předplatného aplikace LUIS](media/sdk/luis-keys-assigned.png)
 
@@ -79,71 +81,74 @@ Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky. K
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-Soubor `Program.cs` otevřete v projektu sady Visual Studio a blok příkazů `using` na začátku souboru nahraďte následujícími deklaracemi.
+Dále přidáte kód do projektu.
 
-[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
+1. Z **Průzkumník řešení**otevřete soubor **program.cs**.
 
-Do zadané metody `Main()` přidejte následující kód.
+1. Nahraďte blok příkazů `using` na začátku souboru následujícími deklaracemi:
 
-```csharp
-RecognizeIntentAsync().Wait();
-Console.WriteLine("Please press Enter to continue.");
-Console.ReadLine();
-```
+   [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-Vytvořte prázdnou asynchronní metodu `RecognizeIntentAsync()`, jak je znázorněno zde.
+1. Uvnitř poskytnuté metody `Main()` přidejte následující kód:
 
-```csharp
-static async Task RecognizeIntentAsync()
-{
-}
-```
+   ```csharp
+   RecognizeIntentAsync().Wait();
+   Console.WriteLine("Please press Enter to continue.");
+   Console.ReadLine();
+   ```
 
-Do textu této nové metody přidejte tento kód.
+1. Vytvořte prázdnou asynchronní metodu `RecognizeIntentAsync()`, jak je znázorněno zde:
 
-[!code-csharp[Intent recognition by using a microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
+   ```csharp
+   static async Task RecognizeIntentAsync()
+   {
+   }
+   ```
 
-Zástupné symboly v této metodě nahraďte klíčem předplatného služby LUIS, oblastí a ID aplikace následujícím způsobem.
+1. V těle této nové metody přidejte tento kód:
 
-|Zástupný symbol|Nahradit hodnotou|
-|-----------|------------|
-|`YourLanguageUnderstandingSubscriptionKey`|Klíčem koncového bodu služby LUIS. Jak už bylo zmíněno, musí se jednat o klíč získaný na řídicím panelu Azure, nikoli o počáteční klíč. Najdete ho na stránce Keys and Endpoints (Klíče a koncové body) vaší aplikace (v části Manage (Spravovat)) na [portálu LUIS](https://www.luis.ai/home).|
-|`YourLanguageUnderstandingServiceRegion`|Krátkým identifikátorem pro oblast předplatného služby LUIS, například `westus` pro oblast Západní USA. Viz [Oblasti](regions.md).|
-|`YourLanguageUnderstandingAppId`|ID aplikace LUIS. Najdete ho na stránce nastavení vaší aplikace na [portálu LUIS](https://www.luis.ai/home).|
+   [!code-csharp[Intent recognition by using a microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
 
-Po provedení těchto změn můžete sestavit (Control + Shift + B) a spustit (F5) aplikaci tohoto kurzu. Po zobrazení výzvy zkuste do mikrofonu říct „turn off the lights“ (vypnout světla). Výsledek se zobrazí v okně konzoly.
+1. Zástupné symboly v této metodě nahraďte klíčem předplatného služby LUIS, oblastí a ID aplikace následujícím způsobem.
+
+   |Zástupný symbol|Nahradit hodnotou|
+   |-----------|------------|
+   |`YourLanguageUnderstandingSubscriptionKey`|Klíčem koncového bodu služby LUIS. Znovu musíte získat tuto položku z řídicího panelu Azure, ne pomocí spouštěcího klíče. Můžete ji najít na stránce **s klíči a koncovými body** vaší aplikace (v části **Spravovat**) na [portálu Luis](https://www.luis.ai/home).|
+   |`YourLanguageUnderstandingServiceRegion`|Krátkým identifikátorem pro oblast předplatného služby LUIS, například `westus` pro oblast Západní USA. Viz [Oblasti](regions.md).|
+   |`YourLanguageUnderstandingAppId`|ID aplikace LUIS. Můžete ji najít na stránce **Nastavení** vaší aplikace na [portálu Luis](https://www.luis.ai/home).|
+
+Pomocí těchto změn můžete sestavit (**Control + Shift + B**) a spustit (**F5**) aplikaci kurzu. Po zobrazení výzvy se pokuste "vypnout světla" na mikrofon počítače. Aplikace zobrazí výsledek v okně konzoly.
 
 Následující části obsahují informace o kódu.
 
-
 ## <a name="create-an-intent-recognizer"></a>Vytvoření nástroje pro rozpoznávání záměru
 
-Prvním krokem při rozpoznávání záměrů v řeči je vytvoření konfigurace řeči z klíče koncového bodu a oblasti služby LUIS. Konfigurace řeči můžete použít k vytvoření nástrojů pro rozpoznávání s různými možnostmi sady Speech SDK. Konfigurace řeči zahrnuje několik způsobů, jak specifikovat předplatné, které chcete použít. My použijeme `FromSubscription`, který využije klíč a oblast předplatného.
+Nejdřív je potřeba vytvořit konfiguraci řeči z klíče a oblasti koncového bodu LUIS. Pomocí konfigurací pro rozpoznávání řeči můžete vytvářet nástroje pro rozpoznávání různých funkcí sady Speech SDK. Konfigurace řeči má několik způsobů, jak zadat předplatné, které chcete použít; zde používáme `FromSubscription`, který přebírá klíč a oblast předplatného.
 
 > [!NOTE]
-> Použijte klíč a oblasti vašeho předplatného služby LUIS, nikoli hlasové služby předplatného.
+> Použijte klíč a oblast předplatného LUIS, nikoli předplatné služby Speech Services.
 
-Potom pomocí `new IntentRecognizer(config)` vytvořte nástroj pro rozpoznávání záměru. Vzhledem k tomu, že konfigurace již ví, jaké předplatné použít, není při vytváření nástroje pro rozpoznávání nutné znovu zadávat klíč a koncový bod předplatného.
+Potom pomocí `new IntentRecognizer(config)` vytvořte nástroj pro rozpoznávání záměru. Vzhledem k tomu, že konfigurace už zná předplatné, které se má použít, nemusíte při vytváření nástroje pro rozpoznávání zadat klíč a koncový bod předplatného.
 
 ## <a name="import-a-luis-model-and-add-intents"></a>Import modelu LUIS a přidání záměrů
 
-Teď model z aplikace LUIS naimportujte pomocí `LanguageUnderstandingModel.FromAppId()` a přidejte záměry služby LUIS, které si přejete pomocí metody `AddIntent()` nástroje pro rozpoznávání rozpoznat. Tyto dva kroky vylepší přesnost rozpoznávání řeči indikováním slov, která uživatel ve svých žádostech pravděpodobně použije. Není nutné přidávat všechny záměry aplikace, pokud je ve své aplikaci nepotřebujete rozpoznávat.
+Teď model z aplikace LUIS naimportujte pomocí `LanguageUnderstandingModel.FromAppId()` a přidejte záměry služby LUIS, které si přejete pomocí metody `AddIntent()` nástroje pro rozpoznávání rozpoznat. Tyto dva kroky vylepší přesnost rozpoznávání řeči indikováním slov, která uživatel ve svých žádostech pravděpodobně použije. Není nutné přidávat všechny záměry aplikace, pokud je nepotřebujete v aplikaci rozpoznat vše.
 
-Přidání záměrů vyžaduje tři argumenty: LUIS model (který se vytvořil a názvem `model`), záměru název a identifikátor záměru. Rozdíl mezi ID a názvem je následující.
+Chcete-li přidat záměry, je nutné zadat tři argumenty: LUIS model (který byl vytvořen a má název `model`), název záměru a ID záměru. Rozdíl mezi ID a názvem je následující.
 
-|Argument `AddIntent()`|Účel|
+|`AddIntent()` @ no__t-1argument|Účel|
 |--------|-------|
-|intentName |Název záměru, jak je definovaný v aplikaci LUIS. Musí přesně odpovídat názvu záměru služby LUIS.|
-|intentID    |ID přiřazené rozpoznanému záměru sadou Speech SDK. Může být jakékoli. Nemusí odpovídat názvu záměru definovanému v aplikaci LUIS. Pokud třeba stejný kód zpracovává více záměrů, můžete pro ně použít stejné ID.|
+|intentName|Název záměru, jak je definovaný v aplikaci LUIS. Tato hodnota musí přesně odpovídat názvu záměru LUIS.|
+|intentID|ID přiřazené rozpoznanému záměru sadou Speech SDK. Tato hodnota může být libovolná? nemusí odpovídat názvu záměru definovanému v aplikaci LUIS. Pokud třeba stejný kód zpracovává více záměrů, můžete pro ně použít stejné ID.|
 
-Domů automatizace LUIS má dva příkazy: jeden pro zapnutí zařízení a druhý pro nestačí zařízení vypnout. Níže uvedené řádky přidají tyto záměry do nástroje pro rozpoznávání. Tyto tři řádky `AddIntent` v metodě `RecognizeIntentAsync()` nahraďte tímto kódem.
+Aplikace LUIS pro domácí automatizaci má dva záměry: jeden pro zapnutí zařízení a druhý pro vypnutí zařízení. Níže uvedené řádky přidají tyto záměry do nástroje pro rozpoznávání. Tyto tři řádky `AddIntent` v metodě `RecognizeIntentAsync()` nahraďte tímto kódem.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
 
-Nepřidávat jednotlivé příkazy můžete také použít `AddAllIntents` metodu pro přidání všech příkazů v modelu do rozlišovače.
+Místo přidání individuálních záměrů můžete také použít metodu `AddAllIntents` a přidat tak všechny záměry v modelu do nástroje pro rozpoznávání.
 
 ## <a name="start-recognition"></a>Zahájení rozpoznávání
 
@@ -152,38 +157,42 @@ Když máte vytvořený nástroj pro rozpoznávání a přidali jste záměry, m
 |Režim rozpoznávání|Volané metody|Výsledek|
 |----------------|-----------------|---------|
 |Jednorázový|`RecognizeOnceAsync()`|Vrací rozpoznaný záměr, pokud existuje, po jedné promluvě.|
-|Průběžný|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Rozpoznává více promluv. Když jsou výsledky k dispozici, vysílá události (například `IntermediateResultReceived`).|
+|Nepřetržité|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Rozpoznává více projevy; generuje události (například `IntermediateResultReceived`), pokud jsou k dispozici výsledky.|
 
-Aplikace kurzu používá jednorázový režim, a proto pro zahájení rozpoznávání volá metodu `RecognizeOnceAsync()`. Výsledkem je objekt `IntentRecognitionResult`, který obsahuje informace o rozpoznaném záměru. Odpověď služby LUIS ve formátu JSON je extrahována následujícím výrazem:
+Aplikace kurzu používá jednorázový režim, a proto pro zahájení rozpoznávání volá metodu `RecognizeOnceAsync()`. Výsledkem je objekt `IntentRecognitionResult`, který obsahuje informace o rozpoznaném záměru. LUIS odpověď JSON můžete extrahovat pomocí následujícího výrazu:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-Aplikace kurzu neanalyzuje výsledek JSON, pouze ho zobrazuje v okně konzoly.
+Aplikace kurz neanalyzuje výsledek JSON. V okně konzoly se zobrazí pouze text JSON.
 
-![Výsledky rozpoznávání služby LUIS](media/sdk/luis-results.png)
+![Výsledky rozpoznávání jednoduchých LUIS](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>Specifikace jazyka rozpoznávání
 
-Ve výchozím nastavení rozpoznává služba LUIS záměry v americké angličtině (`en-us`). Když přiřadíte kód národního prostředí vlastnosti `SpeechRecognitionLanguage` konfigurace řeči, můžete záměry rozpoznávat v jiných jazycích. Přidejte například `config.SpeechRecognitionLanguage = "de-de";` do aplikace našeho kurzu ještě před vytvořením nástroje pro rozpoznávání, abyste záměry mohli rozpoznávat v němčině. Viz [Podporované jazyky](language-support.md#speech-to-text).
+Ve výchozím nastavení rozpoznává služba LUIS záměry v americké angličtině (`en-us`). Když přiřadíte kód národního prostředí vlastnosti `SpeechRecognitionLanguage` konfigurace řeči, můžete záměry rozpoznávat v jiných jazycích. Přidejte například `config.SpeechRecognitionLanguage = "de-de";` do aplikace našeho kurzu ještě před vytvořením nástroje pro rozpoznávání, abyste záměry mohli rozpoznávat v němčině. Další informace najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Průběžné rozpoznávání ze souboru
 
-Následující kód představuje další dvě možnosti rozpoznávání záměru pomocí sady Speech SDK. První z nich už jsme zmínili, je to průběžné rozpoznávání, u kterého nástroj pro rozpoznávání vysílá události, když jsou výsledky k dispozici. Tyto události pak mohou být zpracovány vámi zadanými obslužnými rutinami událostí. U průběžného rozpoznávání voláte pro zahájení rozpoznávání metodu `StartContinuousRecognitionAsync()` nástroje pro rozpoznávání, nikoli metodu `RecognizeOnceAsync()`.
+Následující kód představuje další dvě možnosti rozpoznávání záměru pomocí sady Speech SDK. První z nich už jsme zmínili, je to průběžné rozpoznávání, u kterého nástroj pro rozpoznávání vysílá události, když jsou výsledky k dispozici. Tyto události pak mohou být zpracovány vámi zadanými obslužnými rutinami událostí. Při průběžném rozpoznávání zavoláte metodu `StartContinuousRecognitionAsync()` nástroje pro rozpoznávání ke spuštění rozpoznávání místo `RecognizeOnceAsync()`.
 
-Druhou možností je čtení zvuku obsahujícího řeč, která se má zpracovat, ze souboru WAV. Zahrnuje vytvoření zvukové konfigurace, kterou lze použít při vytváření nástroje pro rozpoznávání záměru. Soubor musí být jednokanálový (mono) a musí mít vzorkovací frekvenci 16 kHz.
+Druhou možností je čtení zvuku obsahujícího řeč, která se má zpracovat, ze souboru WAV. Implementace zahrnuje vytvoření konfigurace zvuku, která se dá použít při vytváření nástroje pro rozpoznávání záměrů. Soubor musí být jednokanálový (mono) a musí mít vzorkovací frekvenci 16 kHz.
 
-Pokud si chcete tyto funkce vyzkoušet, nahraďte text metody `RecognizeIntentAsync()` následujícím kódem.
+Chcete-li tyto funkce vyzkoušet, odstraňte nebo Odkomentujte tělo metody `RecognizeIntentAsync()` a přidejte následující kód na místo.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-Ověřte, že kód obsahuje klíč koncového bodu služby LUIS, oblast a ID aplikace a přidává záměry aplikace Home Automation. `whatstheweatherlike.wav` změňte na název zvukového souboru. Potom proveďte sestavení a spuštění.
+Ověřte, že kód obsahuje klíč koncového bodu služby LUIS, oblast a ID aplikace a přidává záměry aplikace Home Automation. Změňte `whatstheweatherlike.wav` na název zaznamenaného zvukového souboru. Pak Sestavte, zkopírujte zvukový soubor do adresáře sestavení a spusťte aplikaci.
+
+Například pokud jste řekli "vypnout světla", pozastavit a pak vyslovit "zapnout světla" v nahraném zvukovém souboru, může se zobrazit výstup konzoly podobný následujícímu:
+
+![Výsledky rozpoznávání LUIS zvukového souboru](media/sdk/luis-results-2.png)
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Kód z tohoto článku najdete ve složce samples/csharp/sharedcontent/console.
+Vyhledejte kód z tohoto článku ve složce **Samples/CSharp/sharedcontent/Console** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rozpoznávání řeči](how-to-recognize-speech-csharp.md)
+> [Rozpoznávání řeči](quickstart-csharp-dotnetcore-windows.md)

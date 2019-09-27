@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ef0001059026421584efde4c165e882197eda7a6
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266241"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326625"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 
@@ -22,7 +22,7 @@ ms.locfileid: "71266241"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [Šablona ARM](create-cluster-database-resource-manager.md)
 
 Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
 

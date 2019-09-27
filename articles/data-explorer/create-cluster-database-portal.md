@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381792"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326713"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru a databáze Azure Průzkumník dat
 
@@ -22,7 +22,7 @@ ms.locfileid: "70381792"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [Šablona ARM](create-cluster-database-resource-manager.md)
 
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databázi.
@@ -56,7 +56,7 @@ Vytvořte cluster Azure Průzkumník dat s definovanou sadou výpočetních pros
     | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a číslice. Musí obsahovat 4 až 22 znaků.
     | Oblast | *Západní USA* nebo *západní USA 2* | Pro tento rychlý Start vyberte *západní USA* nebo *západní USA 2* (Pokud používáte zóny dostupnosti). Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
     | Zóny dostupnosti | *1*, *2*a/nebo *3* | Instance clusteru umístěte do různých zón dostupnosti ve stejné oblasti (volitelné). [Zóny dostupnosti Azure](/azure/availability-zones/az-overview) jsou jedinečná fyzická umístění v rámci stejné oblasti Azure. Chrání cluster Azure Průzkumník dat a data z částečného selhání oblasti. Uzly clusteru se ve výchozím nastavení vytvoří ve stejném datovém centru. Výběrem několika zón dostupnosti můžete eliminovat jediný bod selhání a zajistit vysokou dostupnost. Nasazení do zón dostupnosti je možné jenom během vytváření clusteru a nedá se upravit později.
-    | Specifikace výpočetních prostředků | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
+    | Specifikace výpočtů | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
     | | | |
 
 1. Vyberte **zkontrolovat + vytvořit** a Prohlédněte si podrobnosti o clusteru a **vytvořte** si cluster zřídit. Zřizování obvykle trvá přibližně 10 minut.
@@ -120,7 +120,7 @@ Pokud plánujete postupovat podle dalších rychlých startů a kurzů, ponechte
 
 1. Pokud chcete odstranit celou skupinu prostředků, vyberte **Odstranit skupinu prostředků** . Pokud používáte existující skupinu prostředků, můžete se rozhodnout jenom odstranit cluster Průzkumník dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Ingestování dat z centra událostí do Azure Průzkumník dat](ingest-data-event-hub.md)

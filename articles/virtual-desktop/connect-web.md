@@ -1,29 +1,29 @@
 ---
-title: Připojení k virtuální ploše Preview Windows z webového prohlížeče – Azure
-description: Jak se připojit k verzi Preview virtuální plochy Windows z webového prohlížeče.
+title: Připojení k virtuálnímu počítači s Windows ve verzi Preview z webového prohlížeče – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí webového klienta.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620164"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338666"
 ---
-# <a name="connect-from-a-web-browser"></a>Připojení z webového prohlížeče
+# <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
 
-Webový klient umožňuje přístup k prostředkům Windows Preview virtuální plochy z webového prohlížeče bez zdlouhavé instalační proces.
+Webový klient umožňuje přístup k prostředkům virtuálního počítače s Windows z webového prohlížeče bez procesu instalace.
 
 >[!NOTE]
->Webový klient nemá aktuálně podporovat mobilní operační systém.
+>Webový klient nyní nepodporuje podporu pro mobilní operační systémy.
 
 ## <a name="supported-operating-systems-and-browsers"></a>Podporované operační systémy a prohlížeče
 
-Zatímco by mělo fungovat libovolný prohlížeč HTML5 umožňující oficiálně podporuje následující operační systémy a prohlížeče.
+I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiálně podporujeme následující operační systémy a prohlížeče.
 
 | Browser           | Podporovaný operační systém                     | Poznámky               |
 |-------------------|----------------------------------|---------------------|
@@ -31,13 +31,13 @@ Zatímco by mělo fungovat libovolný prohlížeč HTML5 umožňující oficiál
 | Internet Explorer | Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Verze 55 nebo novější |
-| Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
+| Google Chrome     | Windows, macOS, Linux, operační systém Chrome |                     |
 
-## <a name="access-remote-resources-feed"></a>Přístup k prostředkům vzdálené informačního kanálu
+## <a name="access-remote-resources-feed"></a>Přístup ke vzdáleným prostředkům kanálu
 
-V prohlížeči přejděte [virtuální plochy Windows webový klient](https://rdweb.wvd.microsoft.com/webclient) a přihlaste se pomocí uživatelského účtu.
+V prohlížeči přejděte do [webového klienta virtuální plochy Windows](https://rdweb.wvd.microsoft.com/webclient) a přihlaste se pomocí svého uživatelského účtu.
 
 >[!NOTE]
->Pokud už jste přihlášení pomocí jiného Azure Active Directory účtu než ten, který chcete použít pro virtuální plochy Windows, musí odhlásit nebo použít privátním okně prohlížeče.
+>Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.
 
-Po přihlášení, měli byste vidět seznam prostředků. Prostředky můžete spustit tak, že je vyberete jako normální aplikaci v **všechny prostředky** kartu.
+Po přihlášení by se teď měl zobrazit seznam prostředků. Prostředky můžete spustit tak, že je vyberete jako normální aplikaci na kartě **všechny prostředky** .

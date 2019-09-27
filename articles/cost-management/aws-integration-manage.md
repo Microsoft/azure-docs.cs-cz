@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019548"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338885"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Správa AWSch nákladů a využití v Azure
 
@@ -85,15 +85,15 @@ Následující tabulka popisuje dimenze, které jsou k dispozici pro seskupení 
 | Operace | lineItem/operace | Vše |   |
 | Resource | lineItem/ResourceId | Vše |   |
 | Typ prostředku | produkt/instanceType | Vše | Pokud má produkt/instanceType hodnotu null, použije se lineItem/položku UsageType. |
-| ResourceGuid | Není k dispozici | Vše | Identifikátor GUID měřiče Azure |
+| ResourceGuid | neuvedeno | Vše | Identifikátor GUID měřiče Azure |
 | Název služby | produkt/NázevVýrobku | Vše | Pokud je produkt/NázevVýrobku null, použije se lineItem/ProductCode. |
 | Úroveň služby |   |   |   |
 | ID předplatného | lineItem/UsageAccountId | Konsolidovaný účet a skupina pro správu |   |
-| Název předplatného | Není k dispozici | Konsolidovaný účet a skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
+| Název předplatného | neuvedeno | Konsolidovaný účet a skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
 | Značka | resourceTags/\* | Vše | _Uživatel:_ předpona je odebrána z uživatelsky definovaných značek, aby povolovala značky křížového cloudu. Předpona _AWS:_ je ponechána beze změny. |
 | ID fakturačního účtu | bill/PayerAccountId | Skupina pro správu |   |
-| Název fakturačního účtu | Není k dispozici | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
-| Poskytovatel | Není k dispozici | Skupina pro správu | Buď AWS nebo Azure. |
+| Název fakturačního účtu | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
+| Poskytovatel | neuvedeno | Skupina pro správu | Buď AWS nebo Azure. |
 
 ## <a name="set-budgets-on-aws-scopes"></a>Nastavení rozpočtů v oborech AWS
 
@@ -181,6 +181,6 @@ Tato chyba znamená, že Cost Management nemůže najít sestavu nákladů a vyu
 
 Tato chyba se týká definice AWS nákladů a sestavy o využití. pro tuto sestavu vyžadujeme konkrétní nastavení. Přečtěte si požadavky v tématu [Vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/index.md#initial-setup-of-management-groups).
+- Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/overview.md#initial-setup-of-management-groups).

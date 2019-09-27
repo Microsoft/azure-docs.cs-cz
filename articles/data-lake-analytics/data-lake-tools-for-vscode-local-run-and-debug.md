@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 2d78523f776c909845057aaf8660a7c6fba3ef6a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309887"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338251"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Spuštění U-SQL a místní ladění v Visual Studio Code
 Tento článek popisuje, jak spustit úlohy U-SQL na místním vývojovém počítači, abyste urychlili fáze počátečního kódování nebo mohli ladit kód místně v Visual Studio Code. Pokyny k nástroji Azure Data Lake Tool for Visual Studio Code najdete v tématu [použití kódu nástroje Azure Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -51,7 +51,7 @@ V případě prvního uživatele použijte **ADL: Pokud jste**nestavili [míst
 2. Pokud chcete licenční podmínky pro software společnosti Microsoft přijměte poprvé, vyberte **přijmout** . 
 
    ![Přijmout licenční podmínky pro software společnosti Microsoft](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Otevře se konzola cmd. Pro uživatele v prvním čase musíte zadat **3**a potom najít cestu k místní složce pro vstup a výstup dat. Pro jiné možnosti můžete použít výchozí hodnoty. 
+3. Otevře se konzola cmd. Pro uživatele v prvním čase musíte zadat **3**a potom najít cestu k místní složce pro vstup a výstup dat. Pokud nejste úspěšně definovali cestu pomocí zpětných lomítek, zkuste lomítko. Pro jiné možnosti můžete použít výchozí hodnoty.
 
    ![Data Lake nástroje pro Visual Studio Code místní spuštění cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. Stisknutím kombinace kláves CTRL + SHIFT + P otevřete paletu příkazů a **zadejte ADL: Odešlete**úlohu a pak vyberte **místní** a odešlete úlohu do místního účtu.

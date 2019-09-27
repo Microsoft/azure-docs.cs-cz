@@ -2,32 +2,44 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/05/2019
+ms.date: 08/30/2019
 ms.author: wolfma
-ms.openlocfilehash: 308ee2ef121648cb45152948926c5fd7fb934744
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362473"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327060"
 ---
+Chcete-li vytvořit projekt sady Visual Studio pro vývoj pro systém Windows, je nutné vytvořit projekt, nastavit aplikaci Visual Studio pro vývoj desktopových aplikací .NET, nainstalovat sadu Speech SDK a vybrat cílovou architekturu.
+
+### <a name="create-the-project-and-add-the-workload"></a>Vytvoření projektu a přidání úlohy
+
+Pokud chcete začít, vytvořte projekt v sadě Visual Studio a ujistěte se, že je sada Visual Studio nastavená pro vývoj desktopových aplikací pro .NET:
+
 1. Otevřete Visual Studio 2019.
 
 1. V okně Start vyberte **vytvořit nový projekt**. 
 
-1. Vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V okně **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. Do **název projektu**zadejte `helloworld`a pak vyberte **vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění**a pak vyberte **vytvořit**.
 
-1. Z panelu nabídek v aplikaci Visual Studio vyberte **nástroje** > **získat nástroje a funkce**a ověřte, zda je k dispozici úloha **vývoj pro desktopy .NET** . Pokud se úloha nenainstalovala, označte zaškrtávací políčko a kliknutím na tlačítko **změnit** spusťte instalaci. Stažení a instalace může trvat několik minut.
+1. V řádku nabídek sady Visual Studio vyberte **nástroje** > **získat nástroje a funkce**, které se otevřou instalační program pro Visual Studio a zobrazí dialogové okno **změny** .
 
-   Pokud je vybráno zaškrtávací políčko vedle funkce **vývoj desktopových** aplikací pro .NET, můžete nyní dialogové okno zavřít.
+1. Ověřte, zda je k dispozici úloha **vývoj desktopových** aplikací pro .NET. Pokud se úloha nenainstalovala, zaškrtněte políčko vedle ní a pak výběrem **změnit** spusťte instalaci. Stažení a instalace může trvat několik minut.
+
+   Pokud je zaškrtnuté políčko pro **vývoj desktopových** aplikací pro .NET je už vybrané, kliknutím na **Zavřít zavřete** dialogové okno.
 
    ![Povolení Vývoje desktopových aplikací pomocí .NET](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
+1. Zavřete Instalační program pro Visual Studio.
+
+### <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
+
 Dalším krokem je instalace [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget), abyste na něj mohli odkazovat v kódu.
 
-1. V Průzkumník řešení klikněte `helloworld`pravým tlačítkem myši a potom vyberte **Spravovat balíčky NuGet** , abyste zobrazili správce balíčků NuGet.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **HelloWorld** a pak výběrem **možnosti spravovat balíčky NuGet** Zobrazte správce balíčků NuGet.
 
    ![Správce balíčků NuGet](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
@@ -35,15 +47,17 @@ Dalším krokem je instalace [balíčku NuGet sady Speech SDK](https://aka.ms/cs
 
 1. V levém horním rohu vyberte **Procházet**.
 
-1. Do vyhledávacího pole zadejte `Microsoft.CognitiveServices.Speech` Package a stiskněte klávesu ENTER.
+1. Do vyhledávacího pole zadejte *Microsoft. cognitiveservices Account. Speech* a vyberte **ENTER**.
 
-1. Vyberte `Microsoft.CognitiveServices.Speech`a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
+1. Ve výsledcích hledání vyberte balíček **Microsoft. cognitiveservices Account. Speech** a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
 
    ![Nainstalovat balíček NuGet Microsoft. Cognitiveservices Account. Speech](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
 1. Přijetím všech smluv a licencí spusťte instalaci.
 
    Po instalaci balíčku se v okně **konzoly Správce balíčků** zobrazí potvrzení.
+
+### <a name="choose-the-target-architecture"></a>Výběr cílové architektury
 
 Chcete-li nyní sestavit a spustit konzolovou aplikaci, vytvořte konfiguraci platformy, která odpovídá architektuře vašeho počítače.
 

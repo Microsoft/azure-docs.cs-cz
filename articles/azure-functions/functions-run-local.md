@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207278"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336938"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -97,19 +97,37 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Ověřte, že na serveru Ubuntu běží jedna z odpovídajících verzí z následující tabulky. Chcete-li přidat zdroj apt, spusťte příkaz:
+1. Před provedením aktualizace APT nastavte zdrojový seznam vývoje .NET.
+
+   Chcete-li nastavit zdrojový seznam APT pro Ubuntu, spusťte tento příkaz:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
     ```
+
+   Chcete-li nastavit zdrojový seznam APT pro Debian, spusťte tento příkaz:
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+
+1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze systému Linux uvedených níže:
 
     | Linuxové distribuce | Version |
     | --------------- | ----------- |
+    | Debian 10 | `buster` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mentolová 18    | `xenial`  |
+
+1. Spusťte aktualizaci zdroje APT:
+
+    ```bash
+    sudo apt-get update
+    ```
 
 1. Nainstalujte balíček Core Tools:
 
@@ -297,7 +315,7 @@ npm start
 
 ### <a name="version-1x"></a>Verze 1. x
 
-Verze 1. x modulu runtime Functions vyžaduje `host` příkaz, jak je uvedeno v následujícím příkladu:
+Verze 1. x modulu runtime Functions vyžaduje příkaz `host`, jak je uvedeno v následujícím příkladu:
 
 ```command
 func host start
@@ -417,13 +435,13 @@ Složka projektu může obsahovat soubory a adresáře specifické pro konkrétn
 
 ### <a name="project-file-deployment"></a>Nasazení (soubory projektu)
 
-Pokud chcete publikovat místní kód do aplikace Function App v Azure, použijte `publish` příkaz:
+Pokud chcete publikovat místní kód do aplikace Function App v Azure, použijte příkaz `publish`:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, `--nozip` použijte možnost.
+Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>`, které v předplatném nejsou, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte možnost `--nozip`.
 
 >[!IMPORTANT]
 > Když vytváříte aplikaci funkcí v Azure Portal, používá ve výchozím nastavení verze 2. x modulu runtime funkce. Pokud chcete, aby aplikace Function App používala verzi 1. x modulu runtime, postupujte podle pokynů v části [Spustit ve verzi 1. x](functions-versions.md#creating-1x-apps).
@@ -491,7 +509,7 @@ Proud souborů protokolu generovaných funkcemi můžete zobrazit v relaci pří
 Tento typ protokolů streamování vyžaduje, abyste [povolili Application Insights integraci](#enable-application-insights-integration) aplikace Function App.   
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
 Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](https://github.com/azure/azure-functions-cli/issues).

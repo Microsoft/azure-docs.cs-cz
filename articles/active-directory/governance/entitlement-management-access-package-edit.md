@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291018"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326381"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a Správa stávajícího balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak upravit a spravovat existující balíčky přístu
 
 ## <a name="add-resource-roles"></a>Přidat role prostředků
 
-Role prostředku je kolekce oprávnění přidružených k prostředku. Způsob, jakým zpřístupníte prostředky uživatelům k vyžádání, je přidání rolí prostředků do balíčku pro přístup. Můžete přidat role prostředků pro skupiny, aplikace a weby služby SharePoint.
+Role prostředku je kolekce oprávnění přidružených k prostředku. Způsob, jakým zpřístupníte prostředky uživatelům k vyžádání, je přidání rolí prostředků do balíčku pro přístup. Můžete přidat role prostředků pro skupiny, týmy, aplikace a weby služby SharePoint.
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
@@ -50,38 +50,49 @@ Role prostředku je kolekce oprávnění přidružených k prostředku. Způsob,
 
     ![Přístup k balíčku – přidání rolí prostředků](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. V závislosti na tom, jestli chcete přidat skupinu, aplikaci nebo web služby SharePoint, proveďte kroky v jedné z následujících částí role prostředku.
+1. V závislosti na tom, zda chcete přidat skupinu, tým, aplikaci nebo web služby SharePoint, proveďte kroky v jedné z následujících částí role prostředku.
 
-### <a name="add-a-group-resource-role"></a>Přidat roli prostředku skupiny
+### <a name="add-a-group-or-team-resource-role"></a>Přidat skupinu nebo roli prostředku týmu
 
-Můžete mít správu nároků do skupiny automaticky přidávat uživatele, když se jim přiřadí balíček přístupu. 
+Můžete mít správu nároků, která umožňuje automaticky přidávat uživatele do skupiny nebo týmu Microsoftu, když se jim přiřadí balíček přístupu. 
 
-- Když je skupina součástí balíčku přístupu a uživatel je přiřazen k tomuto přístupovému balíčku, uživatel se přidá do této skupiny, pokud ještě není k dispozici.
-- Po vypršení platnosti přiřazení balíčku přístupu uživatele se ze skupiny odeberou, pokud aktuálně nemají přiřazení k jinému přístupovému balíčku, který obsahuje stejnou skupinu.
+- Když je skupina nebo tým součástí balíčku přístupu a uživatel je přiřazen k tomuto přístupovému balíčku, uživatel se přidá do této skupiny nebo týmu, pokud ještě není k dispozici.
+- Po vypršení platnosti přiřazení balíčku přístupu uživatele se ze skupiny nebo týmu odeberou, pokud aktuálně nemají přiřazení k jinému přístupovému balíčku, který obsahuje stejnou skupinu nebo tým.
 
-Můžete vybrat libovolnou skupinu Office 365 nebo skupinu zabezpečení Azure AD.  Správci můžou do katalogu přidat libovolnou skupinu. Vlastníci katalogu můžou přidat libovolnou skupinu do katalogu, pokud jsou vlastníkem skupiny. Při výběru skupiny mějte na paměti následující omezení Azure AD:
+Můžete vybrat libovolnou [skupinu zabezpečení Azure AD nebo skupinu Office 365](../fundamentals/active-directory-groups-create-azure-portal.md).  Správci můžou do katalogu přidat libovolnou skupinu. Vlastníci katalogu můžou přidat libovolnou skupinu do katalogu, pokud jsou vlastníkem skupiny. Při výběru skupiny mějte na paměti následující omezení Azure AD:
 
-- Když se uživatel, včetně hosta, přidá jako člen do skupiny, uvidí všichni ostatní členové této skupiny.
+- Když se uživatel, včetně hosta, přidá jako člen do skupiny nebo týmu, uvidí všichni ostatní členové této skupiny nebo týmu.
 - Azure AD nemůže změnit členství ve skupině, která byla synchronizovaná ze služby Windows Server Active Directory pomocí Azure AD Connect, nebo vytvořeného v systému Exchange Online jako distribuční skupinu.  
 - Členství dynamických skupin nelze aktualizovat přidáním nebo odebráním člena, takže dynamická členství ve skupině nejsou vhodná pro použití se správou nároků.
 
-1. Na stránce **Přidat role prostředků pro přístup k balíčku** kliknutím na **skupiny** otevřete podokno vybrat skupiny.
+Další informace najdete v tématu věnovaném [porovnání skupin](/office365/admin/create-groups/compare-groups) a [skupin Office 365 a Microsoft Teams](/microsoftteams/office-365-groups).
 
-1. Vyberte skupiny, které chcete zahrnout do balíčku pro přístup.
+1. Na stránce **Přidat role prostředků pro přístup k balíčku** kliknutím na **skupiny a týmy** otevřete podokno vybrat skupiny.
+
+1. Vyberte skupiny a týmy, které chcete zahrnout do balíčku pro přístup.
 
     ![Přístup k balíčku – přidání rolí prostředků – výběr skupin](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Klikněte na tlačítko **vyberte**.
 
+    Jakmile vyberete skupinu nebo tým, sloupec **Sub Type** zobrazí jeden z následujících podtypů:
+
+    |  |  |
+    | --- | --- |
+    | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
+    | Distribuce | Slouží k odesílání oznámení skupině lidí. |
+    | O365 | Skupina Office 365, která není povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
+    | Tým | Skupina Office 365, která je povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
+
 1. V seznamu **role** vyberte možnost **vlastník** nebo **člen**.
 
     Obvykle vyberete roli člena. Pokud vyberete roli vlastníka, která umožní uživatelům přidat nebo odebrat jiné členy nebo vlastníky.
 
-    ![Přístup k balíčku – přidání role prostředku pro skupinu](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Přístup k balíčku – přidání role prostředku pro skupinu nebo tým](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Klikněte na **Přidat**.
 
-    Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup se při přidání automaticky stanou členy této skupiny.
+    Všichni uživatelé s existujícími přiřazeními k balíčku přístupu se při přidání automaticky stanou členy této skupiny nebo týmu.
 
 ### <a name="add-an-application-resource-role"></a>Přidat roli prostředku aplikace
 

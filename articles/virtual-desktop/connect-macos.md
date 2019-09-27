@@ -1,20 +1,20 @@
 ---
 title: Připojení k virtuálnímu počítači s Windows z macOS – Azure
-description: Jak se připojit k virtuálnímu počítači s Windows z macOS.
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí klienta macOS.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: bf6bfb52bd763eabd88f23701c3d1f240cdf4844
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310188"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338704"
 ---
-# <a name="connect-from-macos"></a>Připojení z macOS
+# <a name="connect-with-the-macos-client"></a>Připojení s klientem macOS
 
 > Platí pro: macOS 10,12 nebo novější
 
@@ -44,6 +44,6 @@ Po přihlášení by se měl zobrazit seznam dostupných prostředků.
 
 Jakmile se přihlásíte k odběru informačního kanálu, obsah informačního kanálu se pravidelně aktualizuje v pravidelných intervalech. Prostředky je možné přidat, změnit nebo odebrat na základě změn provedených správcem.
 
-## <a name="client-documentation"></a>Dokumentace klienta
+## <a name="next-steps"></a>Další kroky
 
 Další informace o klientovi macOS najdete v dokumentaci ke [klientskému MacOS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) v části Začínáme.

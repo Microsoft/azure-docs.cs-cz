@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900071"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336864"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -42,11 +42,19 @@ Role můžou zahrnovat následující:
 
 - Esponsible **R**pro implementaci plánu a výsledku projektu 
 
-- Pproval plánu a výsledku projektu 
+- **Pproval plánu**a výsledku projektu 
 
 - Ontributor plánování a výsledek projektu **C** 
 
-- Nformed plán a výsledek projektu
+- **Nformed plán**a výsledek projektu
+
+
+## <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení
+Pilotní nasazení vám umožní testovat malou skupinu před zapnutím funkce pro každého. Ujistěte se, že jako součást testování je každý případ použití v rámci vaší organizace důkladně testován. Je vhodné cílit na konkrétní skupinu pilotních uživatelů, než to zavedete do vaší organizace jako celek.
+
+V první vlny, cílení na IT, použitelnost a další vhodné uživatele, kteří můžou testovat a poskytovat zpětnou vazbu. Tato zpětná vazba by se měla použít k dalšímu vývoji komunikace a pokynů, které odesíláte uživatelům, a k získání přehledu o typech problémů, které mohou pracovníci podpory vidět. 
+
+Rozšiřování zavedení na větší skupiny uživatelů by mělo být provedeno zvýšením rozsahu cílových skupin. To se dá udělat prostřednictvím [členství v dynamické skupině](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)nebo ručním přidáním uživatelů do cílových skupin.
 
 
 ## <a name="deploy-authentication"></a>Nasazení ověřování

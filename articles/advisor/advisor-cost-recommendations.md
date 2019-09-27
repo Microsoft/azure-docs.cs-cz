@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311911"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326584"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -21,15 +21,15 @@ Poradce vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, �
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace útraty virtuálních počítačů změnou velikosti nebo vypnutí nevyužitých instancí 
 
-I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Advisor monitoruje využití virtuálních počítačů po dobu 7 dní a pak identifikuje virtuální počítače s nízkým využitím. Virtuální počítače se považují za nízké využití, pokud jejich využití CPU je 5% nebo méně a jejich využití sítě je méně než 2%, nebo pokud je možné aktuální zatížení přizpůsobit menší velikosti virtuálního počítače.
+I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Advisor monitoruje využití virtuálních počítačů po dobu 7 dní a pak identifikuje virtuální počítače s nízkým využitím.  Virtuální počítače se považují za nízké využití, pokud jejich využití CPU je 5% nebo méně a jejich využití sítě je méně než 2% a má prahová čísla paměti nebo pokud je možné aktuální zatížení přizpůsobit menší velikosti virtuálního počítače.
 
-Advisor vám ukáže odhadované náklady na pokračování ve spouštění virtuálního počítače, takže se můžete rozhodnout ho vypnout nebo změnit jeho velikost.
+Doporučené akce mají stav Vypnuto nebo změnit velikost, které jsou specifické pro prostředek doporučený pro. Advisor vám ukáže Odhadované úspory nákladů pro doporučené akce – Změna velikosti nebo vypnutí. Pro doporučené změny velikosti doporučuje poradce poskytovat informace o aktuálním a cílovém SKU. 
 
 Pokud chcete mít více agresivní při identifikaci nevyužitých virtuálních počítačů, můžete upravit pravidlo využití CPU pro každé předplatné.
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním nezajištěných okruhů ExpressRoute
 
-Advisor identifikuje okruhy ExpressRoute, které byly ve stavu poskytovatele,  nezřízeny po dobu více než jednoho měsíce, a doporučuje odstranit okruh, pokud neplánujete zřídit okruh s poskytovatelem připojení.
+Advisor identifikuje okruhy ExpressRoute, které byly ve stavu poskytovatele, nezřízeny po dobu více než jednoho měsíce, a doporučuje odstranit okruh, pokud neplánujete zřídit okruh s poskytovatelem připojení.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Snížení nákladů odstraněním nebo změnou konfigurace nečinných bran virtuální sítě
 

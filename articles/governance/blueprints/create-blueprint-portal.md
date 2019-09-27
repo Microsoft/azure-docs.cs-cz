@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232968"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338198"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý start: Definování a přiřazení podrobného plánu na portálu
 
@@ -223,7 +223,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
    1. V rozevíracím seznamu vyberte dostupnou **nabídku** .
 
-   1. Pomocí tří teček vyberte [skupinu pro správu](../management-groups/index.md) , pro kterou bude předplatné podřízeno.
+   1. Pomocí tří teček vyberte [skupinu pro správu](../management-groups/overview.md) , pro kterou bude předplatné podřízeno.
 
    1. V dolní části stránky vyberte **vytvořit** .
 
@@ -247,7 +247,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. V části **spravovaná identita**ponechte výchozí hodnotu **přiřazenou systému**.
 
-1. Pro přiřazení **role na úrovni předplatného [název skupiny uživatelů nebo aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikaci nebo skupinu.
+1. Pro přiřazení role na úrovni předplatného  **[skupina uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikaci nebo skupinu.
 
 1. U přiřazení zásady na úrovni předplatného nastavte **název značky** na **CostCenter** a **hodnotu značky** na **ContosoIT**.
 
@@ -298,9 +298,9 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 > Odstraněním podrobného plánu v této metodě se odstraní také všechny publikované verze vybraného podrobného plánu.
 > Pokud chcete odstranit jednu verzi, otevřete plán, vyberte kartu **publikované verze** , vyberte verzi, kterou chcete odstranit, a pak vyberte **Odstranit tuto verzi**. Nemůžete také odstranit podrobný plán, dokud neodstraníte všechna přiřazení podrobného plánu této definice podrobného plánu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o [životním cyklu](./concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)

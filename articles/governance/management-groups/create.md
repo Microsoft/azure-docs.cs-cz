@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f34efbbca1616c75c13ee3a8bf73bbee1e66dc92
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241160"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337787"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
@@ -39,7 +39,7 @@ Skupinu pro správu můžete vytvořit pomocí portálu, PowerShellu nebo rozhra
 
 1. Vyplňte pole ID skupiny pro správu.
 
-   - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odesílání příkazů v této skupině pro správu. Tento identifikátor není po vytvoření upravitelný, protože se používá v rámci systému Azure k identifikaci této skupiny. [Kořenová skupina pro správu](index.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je Azure Active Directory ID. U všech ostatních skupin pro správu přiřaďte jedinečné ID.
+   - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odesílání příkazů v této skupině pro správu. Tento identifikátor není po vytvoření upravitelný, protože se používá v rámci systému Azure k identifikaci této skupiny. [Kořenová skupina pro správu](overview.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je Azure Active Directory ID. U všech ostatních skupin pro správu přiřaďte jedinečné ID.
    - Pole Zobrazovaný název je název, který se zobrazí v Azure Portal. Samostatné zobrazované jméno je volitelné pole při vytváření skupiny pro správu a může být kdykoli změněno.  
 
    ![Podokno možnosti pro vytvoření nové skupiny pro správu](./media/create_context_menu.png)  

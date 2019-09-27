@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013970"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336909"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak vytvořit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -119,7 +119,7 @@ function process(telemetry, executionContext) {
    - První část obsahuje požadovaná uživatelsky definovaná metadata funkce.
    - Druhá část obsahuje výpočetní logiku JavaScriptu.
 
-1. V části **USER_DEFINED_BOUNDARY** nahraďte hodnoty **spaceId** `YOUR_SPACE_IDENTIFIER`() a **matchs** (`YOUR_MATCHER_IDENTIFIER`).
+1. V části **USER_DEFINED_BOUNDARY** nahraďte hodnoty **spaceId** (`YOUR_SPACE_IDENTIFIER`) a **Matches** (`YOUR_MATCHER_IDENTIFIER`).
 1. Ověřte, zda je uživatelem definovaná funkce jazyka JavaScript dodávána `Content-Type: text/javascript`jako.
 
 ### <a name="example-functions"></a>Ukázkové funkce
@@ -197,7 +197,7 @@ Složitější ukázku kódu uživatelsky definované funkce naleznete v rychlé
 
 Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má spustit. Pokud pro uživatelsky definovanou funkci neexistuje žádné přiřazení role, nebude mít správná oprávnění k interakci s rozhraním API pro správu nebo musí mít přístup k provádění akcí v objektech grafu. Akce, které může uživatelsky definovaná funkce provádět, jsou určené a definované prostřednictvím řízení přístupu na základě role v rámci rozhraní API pro správu digitálních vláken Azure. Například uživatelsky definované funkce mohou být omezeny oborem zadáním určitých rolí nebo určitých cest řízení přístupu. Další informace najdete v dokumentaci [řízení přístupu na základě rolí](./security-role-based-access-control.md) .
 
-1. [Dotaz na systémové rozhraní API](./security-create-manage-role-assignments.md#all) pro všechny role, abyste získali ID role, kterou chcete přiřadit k uživatelsky definované funkci. Provedete to tak, že vytvoříte ověřený požadavek HTTP GET na:
+1. [Dotaz na systémové rozhraní API](./security-create-manage-role-assignments.md#retrieve-all-roles) pro všechny role, abyste získali ID role, kterou chcete přiřadit k uživatelsky definované funkci. Provedete to tak, že vytvoříte ověřený požadavek HTTP GET na:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
@@ -250,7 +250,7 @@ Senzor definovaný v grafu prostorové Intelligence posílá telemetrii. Telemet
 1. V závislosti na tom, které shody byly úspěšně vyhodnoceny, načtěte přidružené uživatelsky definované funkce.
 1. Spusťte každou uživatelsky definovanou funkci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [vytvářet koncové body digitálních vláken Azure](./how-to-egress-endpoints.md) pro odesílání událostí do.
 

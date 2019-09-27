@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 960ddcc2a082b247951b0f79d0c990acc5e557e1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210378"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337894"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -38,7 +38,7 @@ Přesun prostředků pro úložiště Recovery Services se podporuje v oblasti A
 - Možnosti přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Zásady zálohování definované pro trezor se uchovávají po přesunu trezoru mezi předplatnými nebo do nové skupiny prostředků.
 - Přesun trezoru se soubory Azure, Azure File Sync nebo SQL ve virtuálních počítačích IaaS napříč předplatnými a skupinami prostředků se nepodporuje.
-- Pokud přesunete trezor obsahující data záloh virtuálních počítačů v rámci předplatných, musíte virtuální počítače přesunout do stejného předplatného a použít stejnou cílovou skupinu prostředků pro pokračování v zálohování.<br>
+- Pokud přesunete trezor obsahující data záloh virtuálních počítačů v rámci předplatných, musíte virtuální počítače přesunout do stejného předplatného, a pokud chcete pokračovat v zálohování, použijte stejný název cílové skupiny prostředků virtuálního počítače (stejně jako ve starém předplatném).<br>
 
 > [!NOTE]
 >
@@ -143,7 +143,7 @@ Pokud chcete přesunout do nového předplatného, zadejte `--destination-subscr
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Mezi skupinami prostředků a předplatnými můžete přesunout mnoho různých typů prostředků.
 

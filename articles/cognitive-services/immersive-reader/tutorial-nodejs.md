@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 2a07e392170fb9e6993f4c560a4896a468d90820
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104993"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338507"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: Spuštění Asistivní čtečky (Node.js)
 
@@ -68,7 +68,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného.
+Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného. Nezahrnujte uvozovky nebo znaky "{" a "}".
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -85,44 +85,50 @@ V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následuj�
 require('dotenv').config();
 ```
 
-Otevřete soubor _routes\index.js_ a na začátek souboru přidejte následující kód:
+Otevřete soubor _routes\index.js_ a nahraďte jeho obsah následujícím kódem.
+
+Tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu. Také načte subdoménu. Pak vrátí objekt obsahující token a subdoménu.
 
 ```javascript
 var request = require('request');
-```
+var express = require('express');
+var router = express.Router();
 
-Dále přidejte následující kód přímo pod tento řádek. Tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu a potom tento token vrátí. Pro načtení subdomény je k dispozici také druhý koncový bod.
-
-```javascript
-router.get('/getimmersivereadertoken', function(req, res) {
-  request.post ({
-          headers: {
-              'content-type': 'application/x-www-form-urlencoded'
-          },
-          url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
-          form: {
-              grant_type: 'client_credentials',
-              client_id: process.env.CLIENT_ID,
-              client_secret: process.env.CLIENT_SECRET,
-              resource: 'https://cognitiveservices.azure.com/'
-          }
-      },
-      function(err, resp, token) {
-          if (err) {
-              return res.status(500).send('CogSvcs IssueToken error');
-          }
-
-          return res.send(JSON.parse(token).access_token);
-      }
+router.get('/getimmersivereaderlaunchparams', function(req, res) {
+    request.post ({
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
+                form: {
+                    grant_type: 'client_credentials',
+                    client_id: process.env.CLIENT_ID,
+                    client_secret: process.env.CLIENT_SECRET,
+                    resource: 'https://cognitiveservices.azure.com/'
+                }
+        },
+        function(err, resp, tokenResponse) {
+                if (err) {
+                    return res.status(500).send('CogSvcs IssueToken error');
+                }
+        
+                const token = JSON.parse(tokenResponse).access_token;
+                const subdomain = process.env.SUBDOMAIN;
+                return res.send({token: token, subdomain: subdomain});
+        }
   );
 });
-
-router.get('/subdomain', function (req, res) {
-    return res.send(process.env.SUBDOMAIN);
+ 
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
+
+module.exports = router;
+
 ```
 
-Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečený za určitou formou ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům ve získávání tokenů k použití proti vaší službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto kurzu.
+Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabezpečený za určitou formou ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům ve získávání tokenů k použití proti vaší službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto kurzu.
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
@@ -139,52 +145,42 @@ Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečen�
     extends layout
 
     block content
-      h2(id='title') Geography
-      p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
-      div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
-      script.
-
-        function getImmersiveReaderTokenAsync() {
-            return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: '/getimmersivereadertoken',
-                    type: 'GET',
-                    success: token => {
-                        resolve(token);
-                    },
-                    error: err => {
-                        console.log('Error in getting token!', err);
-                        reject(err);
-                    }
-                });
-            });
-        }
-
-        function getSubdomainAsync() {
-            return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: '/subdomain',
-                    type: 'GET',
-                    success: subdomain => { resolve(subdomain); },
-                    error: err => { reject(err); }
-                });
-            });
-        }
-
-        async function launchImmersiveReader() {
-            const content = {
-                title: document.getElementById('title').innerText,
-                chunks: [{
-                    content: document.getElementById('content').innerText + '\n\n',
-                    lang: 'en'
-                }]
-            };
-
-            const token = await getImmersiveReaderTokenAsync();
-            const subdomain = await getSubdomainAsync();
-
-            ImmersiveReader.launchAsync(token, subdomain, content);
-        }
+          h2(id='title') Geography
+          p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
+          div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
+          script.
+        
+            function getImmersiveReaderLaunchParamsAsync() {
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                                url: '/getimmersivereaderlaunchparams',
+                                type: 'GET',
+                                success: data => {
+                                        resolve(data);
+                                },
+                                error: err => {
+                                        console.log('Error in getting token and subdomain!', err);
+                                        reject(err);
+                                }
+                        });
+                    });
+            }
+        
+            async function launchImmersiveReader() {
+                    const content = {
+                            title: document.getElementById('title').innerText,
+                            chunks: [{
+                                    content: document.getElementById('content').innerText + '\n\n',
+                                    lang: 'en'
+                            }]
+                    };
+            
+                    const launchParams = await getImmersiveReaderLaunchParamsAsync();
+                    const token = launchParams.token;
+                    const subdomain = launchParams.subdomain;
+            
+                    ImmersiveReader.launchAsync(token, subdomain, content);
+            }
     ```
 
 3. Naše webová aplikace je teď připravená. Spusťte aplikaci spuštěním:
@@ -220,13 +216,13 @@ Moderní čtečka podporuje řadu různých jazyků. Jazyk vašeho obsahu může
 
 Standardně se jazyk moderního čtecího rozhraní shoduje s nastavením jazyka prohlížeče. Jazyk moderního čtecího rozhraní lze také určit pomocí následujícího kódu.
 
-1. V _views\index.pug_nahraďte volání `ImmersiveReader.launchAsync(token, content)` kódem níže.
+1. V _views\index.pug_nahraďte volání `ImmersiveReader.launchAsync(token, subdomain, content)` kódem níže.
 
     ```javascript
     const options = {
         uiLang: 'fr',
     }
-    ImmersiveReader.launchAsync(token, content, options);
+    ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
 2. Přejděte na _http://localhost:3000_ . Při spuštění moderního čtecího zařízení se rozhraní zobrazí ve francouzštině.

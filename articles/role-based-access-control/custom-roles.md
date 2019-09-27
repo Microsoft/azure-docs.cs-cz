@@ -1,6 +1,6 @@
 ---
-title: Vlastní role pro prostředky Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro správu prostředků Azure velice přesně kontrolovat přístup.
+title: Vlastní role pro prostředky Azure | Microsoft Docs
+description: Naučte se vytvářet vlastní role pomocí řízení přístupu na základě role (RBAC) pro detailní řízení přístupu k prostředkům Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b628086a67f1d76357fda4f753350b6411b8f15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: fbea0567ec125ce12acd8f757b32df723876fe09
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273712"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338576"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny nebo instanční objekty na předplatné, skupinu prostředků a prostředků obory.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role uživatelům, skupinám a instančním objektům v předplatném, skupině prostředků a oborech prostředků.
 
-Vlastní role jsou uloženy v adresáři služby Azure Active Directory (Azure AD) a je možné sdílet napříč předplatnými. Každý adresář můžete mít až do **5000** vlastní role. (V případě specializovaných cloudů, jako je Azure Government, Azure Germany a Azure China 21Vianet, platí omezení 2 000 vlastních rolí.) Můžete vytvořit vlastní role pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
+Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až **5000** vlastních rolí. (V případě specializovaných cloudů, jako je Azure Government, Azure Germany a Azure China 21Vianet, platí omezení 2 000 vlastních rolí.) Vlastní role se dají vytvořit pomocí Azure PowerShell, Azure CLI nebo REST API.
 
-## <a name="custom-role-example"></a>Příklad vlastní roli
+## <a name="custom-role-example"></a>Příklad vlastní role
 
-Následuje ukázka, jak vlastní roli vypadá jako je zobrazena ve formátu JSON. Tuto vlastní roli je možné pro sledování a restartování virtuálních počítačů.
+Následující text ukazuje, jak vlastní role vypadá jako zobrazený ve formátu JSON. Tato vlastní role se dá použít k monitorování a restartování virtuálních počítačů.
 
 ```json
 {
@@ -62,57 +62,57 @@ Následuje ukázka, jak vlastní roli vypadá jako je zobrazena ve formátu JSON
 }
 ```
 
-Když vytvoříte vlastní roli, se zobrazí na webu Azure Portal s ikona oranžové prostředků.
+Když vytvoříte vlastní roli, zobrazí se v Azure Portal s ikonou oranžového prostředku.
 
 ![Ikona vlastní role](./media/custom-roles/roles-custom-role-icon.png)
 
 ## <a name="steps-to-create-a-custom-role"></a>Postup vytvoření vlastní role
 
-1. Rozhodnutí o způsobu vytvoření vlastní role
+1. Rozhodněte, jak chcete vytvořit vlastní roli.
 
-    Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](custom-roles-powershell.md), [rozhraní příkazového řádku Azure](custom-roles-cli.md), nebo [rozhraní REST API](custom-roles-rest.md).
+    Vlastní role můžete vytvořit pomocí [Azure PowerShell](custom-roles-powershell.md), rozhraní příkazového [řádku Azure](custom-roles-cli.md)nebo [REST API](custom-roles-rest.md).
 
-1. Určit oprávnění, které potřebujete
+1. Určete potřebná oprávnění.
 
-    Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, najdete v článku [operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md). Operace, které přidáte `Actions` nebo `NotActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, které přidáte do `DataActions` nebo `NotDataActions` vlastnosti.
+    Při vytváření vlastní role potřebujete znát operace poskytovatele prostředků, které jsou k dispozici pro definování vašich oprávnění. Chcete-li zobrazit seznam operací, přečtěte si téma [operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md). Operace přidáte do `Actions` vlastností nebo `NotActions` v [definici role](role-definitions.md). Pokud máte datové operace, přidejte je do `DataActions` vlastností nebo. `NotDataActions`
 
-1. Vytvořit vlastní roli
+1. Vytvoření vlastní role
 
-    Obvykle začněte s existující předdefinovanou roli a upravit ji pro vaše potřeby. Použít [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) nebo [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create) příkazy k vytvoření vlastní role. Chcete-li vytvořit vlastní roli, musíte mít `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `AssignableScopes`, jako například [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+    Obvykle začínáte stávající integrovanou rolí a pak ji upravíte podle svých potřeb. Pak pomocí příkazu [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) nebo [AZ role definition Create](/cli/azure/role/definition#az-role-definition-create) vytvořte vlastní roli. Pokud chcete vytvořit vlastní `Microsoft.Authorization/roleDefinitions/write` roli, musíte mít oprávnění pro všechny `AssignableScopes`, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator).
 
-1. Testování vlastní roli
+1. Test vlastní role
 
-    Jakmile budete mít vlastní roli, musíte otestovat a ověřit, že funguje podle očekávání. Pokud je potřeba provést úpravy později, můžete aktualizovat vlastní roli.
+    Jakmile máte vlastní roli, musíte ji otestovat, abyste ověřili, že funguje podle očekávání. Pokud potřebujete provést úpravy později, můžete aktualizovat vlastní roli.
 
-Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurzu: Vytvoření vlastní role pomocí prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [kurzu: Vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md).
+Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role pomocí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [kurzu: Vytvořte vlastní roli pomocí Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Vlastnosti vlastní role
 
 Vlastní role má následující vlastnosti.
 
-| Vlastnost | Požaduje se | Typ | Popis |
+| Vlastnost | Požadováno | Typ | Popis |
 | --- | --- | --- | --- |
-| `Name` | Ano | String | Zobrazovaný název vlastní role. Definice role je prostředek úrovni předplatného, definice role je možné v rámci více předplatných, které sdílejí stejný adresář Azure AD. Toto zobrazované jméno musí být jedinečný v oboru v adresáři Azure AD. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 128. |
-| `Id` | Ano | String | Jedinečné ID vlastní roli. Pro prostředí Azure PowerShell a rozhraní příkazového řádku Azure je toto ID automaticky vygeneruje při vytvoření nové role. |
-| `IsCustom` | Ano | String | Označuje, zda se jedná o vlastní roli. Nastavte na `true` pro vlastní role. |
-| `Description` | Ano | String | Popis vlastní role. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
-| `Actions` | Ano | Řetězec] | Pole řetězců, která určuje, které role umožňuje provádět operace správy. Další informace najdete v tématu [akce](role-definitions.md#actions). |
-| `NotActions` | Ne | Řetězec] | Pole řetězců, které určuje operace správy, které jsou vyloučené z povolených `Actions`. Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
-| `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [DataActions](role-definitions.md#dataactions). |
-| `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `DataActions`. Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Pro vlastní role, aktuálně nelze nastavit `AssignableScopes` na kořenového oboru (`"/"`) nebo obor skupiny správy. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes) a [uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
+| `Name` | Ano | Řetězec | Zobrazované jméno vlastní role I když je definice role prostředkem na úrovni předplatného, dá se použít definice role ve více předplatných, která sdílejí stejný adresář služby Azure AD. Tento zobrazovaný název musí být jedinečný v oboru adresáře služby Azure AD. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 128. |
+| `Id` | Ano | Řetězec | Jedinečné ID vlastní role Pro Azure PowerShell a Azure CLI se toto ID automaticky vygeneruje při vytvoření nové role. |
+| `IsCustom` | Ano | Řetězec | Označuje, zda se jedná o vlastní roli. Nastavte na `true` pro vlastní role. |
+| `Description` | Ano | Řetězec | Popis vlastní role Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
+| `Actions` | Ano | Řetězec [] | Pole řetězců, které určuje operace správy, které může role provést. Další informace najdete v tématu [Akce](role-definitions.md#actions). |
+| `NotActions` | Ne | Řetězec [] | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions`. Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
+| `DataActions` | Ne | Řetězec [] | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. Další informace naleznete v tématu [Dataactions](role-definitions.md#dataactions). |
+| `NotDataActions` | Ne | Řetězec [] | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions`. Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
+| `AssignableScopes` | Ano | Řetězec [] | Pole řetězců, které určuje rozsahy, které jsou k dispozici pro přiřazení vlastní role. U vlastních rolí aktuálně nemůžete nastavit `AssignableScopes` do kořenového oboru (`"/"`) nebo do oboru skupiny pro správu. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes) a [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kdo může vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli
 
-Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je k dispozici pro přiřazení role obory. `AssignableScopes` Také určuje vlastnost, pro vlastní roli, můžete vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli.
+Stejně jako předdefinované role `AssignableScopes` určuje vlastnost obory, které je role k dispozici pro přiřazení. `AssignableScopes` Vlastnost vlastní role také určuje, kdo může vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli.
 
 | Úkol | Operace | Popis |
 | --- | --- | --- |
-| Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinitions/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
+| Vytvoření nebo odstranění vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kterým je tato operace udělena na všech `AssignableScopes` vlastních rolích, mohou vytvořit (nebo odstranit) vlastní role pro použití v těchto oborech. Například vlastníci [](built-in-roles.md#owner) a [Správci přístupu uživatelů](built-in-roles.md#user-access-administrator) k předplatným, skupinám prostředků a prostředkům. |
+| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kterým je tato operace udělena na všech `AssignableScopes` vlastních rolích, mohou aktualizovat vlastní role v těchto oborech. Například vlastníci [](built-in-roles.md#owner) a [Správci přístupu uživatelů](built-in-roles.md#user-access-administrator) k předplatným, skupinám prostředků a prostředkům. |
+| Zobrazení vlastní role | `Microsoft.Authorization/ roleDefinitions/read` | Uživatelé, kterým je tato operace udělená v oboru, můžou zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny předdefinované role umožňují, aby byly vlastní role k dispozici pro přiřazení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Vytváření vlastních rolí pro prostředky Azure pomocí Azure PowerShellu](custom-roles-powershell.md)
 - [Vytváření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)
 - [Pochopení definic rolí pro prostředky Azure](role-definitions.md)

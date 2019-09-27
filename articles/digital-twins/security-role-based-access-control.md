@@ -1,19 +1,19 @@
 ---
-title: Pochopení řízení přístupu na základě role u digitálních vláken Azure | Microsoft Docs
-description: Projděte si ověřování v digitálních seznamech s řízením přístupu na základě rolí.
+title: Pochopení řízení přístupu na základě rolí – digitální vlákna Azure | Microsoft Docs
+description: Přečtěte si o řízení přístupu na základě role a o správě oprávnění v digitálních prostředníkech Azure.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815564"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336737"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu na základě role v digitálních Vlákenách Azure
 
@@ -49,20 +49,20 @@ Vývojář může použít RBAC k těmto akcím:
 
 ### <a name="role-definitions"></a>Definice rolí
 
-Definice role je kolekce oprávnění a dalších atributů, které tvoří roli. Definice role obsahuje seznam povolených operací, které zahrnují *vytváření*, *čtení*, *aktualizaci*a *odstraňování* všech objektů s touto rolí, které mohou provádět. Určuje také, na které typy objektů se vztahují oprávnění.
+Definice role je kolekce oprávnění a dalších atributů, které tvoří roli. Definice role obsahuje seznam povolených operací, které zahrnují *vytváření*, *čtení*, *aktualizaci*a *odstraňování* všech objektů s touto rolí, které mohou provádět. Určuje také, na které typy objektů se oprávnění vztahují.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Chcete-li načíst úplné definice pro předchozí role, Dotazujte rozhraní API systému nebo rolí.
-> Další informace najdete v [tématu vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md#all).
+> Další informace najdete v [tématu vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md#retrieve-all-roles).
 
 ### <a name="object-identifier-types"></a>Typy identifikátorů objektů
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Přečtěte si, jak udělit oprávnění k instančnímu objektu tím, že si přečtete [vytváření a správu přiřazení rolí](./security-create-manage-role-assignments.md#grant).
+> Přečtěte si, jak udělit oprávnění k instančnímu objektu tím, že si přečtete [vytváření a správu přiřazení rolí](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal).
 
 V následujících tématech najdete popis těchto článků dokumentace:
 
@@ -81,6 +81,6 @@ Chcete-li udělit oprávnění příjemci, vytvořte přiřazení role. Chcete-l
 >[!IMPORTANT]
 > Další informace o přiřazení rolí najdete v [tématu vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete získat další informace o vytváření a správě přiřazení rolí digitálních vláken Azure, přečtěte si téma [Vytvoření a správa přiřazení rolí](./security-create-manage-role-assignments.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299232"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338093"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
 
@@ -122,7 +122,7 @@ Do souboru AI-Agent. xml přidejte následující:
 
 V ideálním případě se jedná o případ, kdy byly všechny služby aktualizovány na novější verzi sady SDK podporující protokol W3C. Důrazně doporučujeme přesunout na novější verzi sad SDK s podporou konsorcia W3C, jakmile to bude možné.
 
-Ujistěte se, že **konfigurace [příchozího](correlation.md#w3c-distributed-tracing) i odchozího (agentu)** jsou přesně stejné.
+Ujistěte se, že **konfigurace [příchozího](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) i odchozího (agentu)** jsou přesně stejné.
 
 ## <a name="view-the-data"></a>Zobrazení dat
 V prostředku Application Insights se na [dlaždici výkon][metrics]zobrazí agregovaná doba spuštění pro vzdálenou závislost a metodu.

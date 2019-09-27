@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260751"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326493"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -183,15 +183,16 @@ Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné �
 | Image | Popis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Obsahuje modul runtime ONNX. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Obsahuje součásti modulu runtime ONNX a CUDA. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Obsahuje modul runtime ONNX a TensorRT. |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Obsahuje modul runtime ONNX a CUDA pro GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Obsahuje ONNX runtime a TensorRT pro GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Obsahuje ONNX runtime a OpenVINO pro návrh<sup> </sup> akcelerátoru Intel Vision na základě Movidius<sup>TM</sup> MyriadX VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Obsahuje ONNX runtime a OpenVINO pro Intel<sup> </sup> Movidius<sup>TM</sup> USB Stick |
+
+Další informace o základních imagích modulu runtime ONNX naleznete v [části ONNX runtime souboru Dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) v úložišti GitHub.
 
 > [!TIP]
 > Vzhledem k tomu, že tyto image jsou veřejně dostupné, nemusíte při jejich používání zadávat adresu, uživatelské jméno ani heslo.
-
-> [!IMPORTANT]
-> Image Microsoft, které používají CUDA nebo TensorRT, se musí používat jenom pro Microsoft Azure služby.
 
 Další informace najdete v tématu [Azure Machine Learning Containers](https://github.com/Azure/AzureML-Containers).
 

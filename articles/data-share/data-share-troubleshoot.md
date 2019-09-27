@@ -3,16 +3,16 @@ title: Řešení potíží s Azure Data Share Preview
 description: Přečtěte si, jak řešit problémy s Azure Data Share Preview
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421461"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320296"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Řešení běžných problémů v Azure Data Share Preview
 
@@ -26,7 +26,7 @@ V některých případech platí, že když nový uživatel klikne na **přijmou
 
 Výše uvedená chyba je známý problém se službou a v tuto chvíli se řeší. Alternativním řešením je postupovat podle následujících kroků. 
 
-1. V Azure Portal přejděte na odběry  .
+1. V Azure Portal přejděte na **odběry** .
 1. Vyberte předplatné, které používáte pro sdílení dat Azure.
 1. Kliknout na **poskytovatelé prostředků**
 1. Hledání Microsoft. datashare
@@ -56,7 +56,7 @@ Pokud se při vytváření nebo přijímání nové sdílené datové složky zo
 1. Klikněte na **Přidat** .
 1. Přidejte sami sebe jako vlastníka.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
 

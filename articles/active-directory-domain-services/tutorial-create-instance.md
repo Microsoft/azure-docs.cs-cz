@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229527"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336847"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: Vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -42,7 +42,8 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Abyste mohli Azure služba AD DS povolit, potřebujete ve svém tenantovi Azure AD oprávnění *globálního správce* .
 * Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění *přispěvatele* v předplatném Azure.
-* [Pro Samoobslužné resetování hesla][configure-sspr]se musí nakonfigurovat tenant služby Azure AD.
+
+I když se pro Azure služba AD DS nevyžaduje, doporučuje se [nakonfigurovat Samoobslužné resetování hesla (SSPR)][configure-sspr] pro TENANTA Azure AD. Uživatelé si můžou změnit heslo bez SSPR, ale SSPR pomáhá, pokud si zapomene heslo a bude ho muset resetovat.
 
 > [!IMPORTANT]
 > Po vytvoření spravované domény Azure služba AD DS nemůžete instanci přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazování instance služby Azure služba AD DS je nutné vybrat nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.

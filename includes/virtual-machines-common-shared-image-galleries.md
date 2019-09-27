@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012078"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338343"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -53,14 +53,14 @@ Existují tři parametry pro každou definici obrázku, které jsou používány
 |Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
 |myImage1|Contoso|Finance|Back-end|
-|myImage2|Contoso|Finance|Front-end|
-|myImage3|Testování|Finance|Front-end|
+|myImage2|Contoso|Finance|Endy|
+|myImage3|Testování|Finance|Endy|
 
 Všechny tři z nich mají jedinečné sady hodnot. Formát je podobný jako při současném zadání vydavatele, nabídky a SKU pro [Azure Marketplace imagí](../articles/virtual-machines/windows/cli-ps-findimage.md) v Azure PowerShell získat nejnovější verzi image na webu Marketplace. Každá definice obrázku musí mít jedinečnou sadu těchto hodnot.
 
 Níže jsou uvedené další parametry, které je možné nastavit v definici image, abyste mohli snadněji sledovat své prostředky:
 
-* Stav operačního systému – stav operačního systému můžete nastavit na generalizované nebo specializované, ale v současné době se podporuje jenom zobecněné. Image se musí vytvořit z virtuálních počítačů, které se zobecněny pomocí nástroje Sysprep pro `waagent -deprovision` Windows nebo Linux.
+* Stav operačního systému – stav operačního systému můžete nastavit na generalizované nebo specializované, ale v současné době se podporuje jenom zobecněné. Image se musí vytvořit z virtuálních počítačů, které se zobecněny pomocí nástroje Sysprep pro Windows, nebo `waagent -deprovision` pro Linux.
 * Operační systém může být buď Windows, nebo Linux.
 * Popis – použijte popis k poskytnutí podrobnějších informací o tom, proč existuje definice obrázku. Můžete mít například definici image pro front-end Server, ve kterém je aplikace předem nainstalovaná.
 * Smlouva EULA – dá se použít k odkazování na licenční smlouvu s koncovým uživatelem, která je specifická pro definici image.
@@ -78,15 +78,15 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 
 | Zdrojové oblasti |
 |---------------------|-----------------|------------------|-----------------|
-| Austrálie – střed   | Střední USA – EUAP | Jižní Korea – střed    | Středozápadní USA |
+| Austrálie – střed   | Střední USA – EUAP | Jižní Korea – střed    | Západní střed USA |
 | Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Západní Evropa     |
-| Austrálie – východ      | East US         | Středoseverní USA | Indie – západ      |
+| Austrálie – východ      | East US         | Střed USA – sever | Indie – západ      |
 | Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | USA – západ         |
-| Brazílie – jih        | Východ USA 2 – EUAP  | Středojižní USA | USA – západ 2       |
-| Kanada – střed      | Francie – střed  | Jižní Indie      |                 |
-| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   |                 |
-| Střed Indie       | Japonsko – východ      | Velká Británie – jih         |                 |
-| Střední USA          | Japonsko – západ      | Spojené království – západ          |                 |
+| Brazílie – jih        | Východ USA 2 – EUAP  | Střed USA – jih | USA – západ 2       |
+| Kanada – střed      | Francie – střed  | Jižní Indie      | Čína – východ      |
+| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   | Čína – východ 2    |
+| Střed Indie       | Japonsko – východ      | Velká Británie – jih         | Čína – sever     |
+| Střed USA          | Japonsko – západ      | Spojené království – západ          | Čína – sever 2   |
 
 
 
@@ -106,8 +106,8 @@ Galerie sdílených imagí umožňuje zadat počet replik, které má Azure ucho
 
 Pomocí Galerie sdílených imagí teď můžete nasadit až 1 000 instancí virtuálních počítačů v rámci sady škálování virtuálních počítačů (od 600 do spravovaných imagí). Repliky imagí poskytují lepší výkon, spolehlivost a konzistenci nasazení.  V každé cílové oblasti můžete nastavit jiný počet replik, a to na základě rozsahu potřeb pro oblast. Vzhledem k tomu, že každá replika je hluboká kopie vaší image, pomáhá škálovat vaše nasazení lineárně pomocí každé další repliky. I když nerozumíme, že žádné dva obrázky nebo oblasti jsou stejné, tady je naše obecné pokyny k používání replik v oblasti:
 
-- Pro každé 20 virtuálních počítačů, které vytvoříte souběžně, doporučujeme, abyste zachovali jednu repliku. Pokud například vytváříte virtuální počítače 120 souběžně pomocí stejné image v oblasti, doporučujeme, abyste zachovali aspoň 6 replik vaší image. 
-- Pro každé nasazení sady škálování s až 600 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte 5 sad škálování souběžně, každý s 600 instancemi virtuálních počítačů pomocí stejné image v jedné oblasti, doporučujeme, abyste zachovali aspoň 5 replik vaší image. 
+- U nasazení VMSS (Virtual Machine Scale set) – pro každé 20 virtuálních počítačů, které vytvoříte souběžně, doporučujeme zachovat jednu repliku. Pokud například vytváříte virtuální počítače 120 souběžně pomocí stejné image v oblasti, doporučujeme, abyste zachovali aspoň 6 replik vaší image. 
+- Pro nasazení VMSS (Virtual Machine Scale set) – pro každé nasazení sady škálování s až 600 instancemi Doporučujeme zachovat aspoň jednu repliku. Pokud například vytváříte 5 sad škálování souběžně, každý s 600 instancemi virtuálních počítačů pomocí stejné image v jedné oblasti, doporučujeme, abyste zachovali aspoň 5 replik vaší image. 
 
 Vždycky doporučujeme, abyste převedli počet replik z důvodu faktorů, jako je velikost obrázku, obsah a typ operačního systému.
 
@@ -137,9 +137,9 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 
-| Sdíleno s uživatelem     | Galerie sdílených imagí | Definice image | Verze bitové kopie |
+| Sdíleno s uživatelem     | Shared Image Gallery | Definice image | Verze bitové kopie |
 |----------------------|----------------------|--------------|----------------------|
-| Galerie sdílených imagí | Ano                  | Ano          | Ano                  |
+| Shared Image Gallery | Ano                  | Ano          | Ano                  |
 | Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
@@ -242,7 +242,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 **Otázka:** Můžu sdílet verze imagí napříč klienty Azure AD? 
 
- A. Ano, můžete použít RBAC ke sdílení jednotlivců napříč klienty. Pokud ale chcete sdílet se škálováním, přečtěte si téma "sdílení imagí Galerie mezi klienty [](../articles/virtual-machines/windows/share-images-across-tenants.md) Azure" pomocí PowerShellu nebo rozhraní příkazového [řádku](../articles/virtual-machines/linux/share-images-across-tenants.md).
+ A. Ano, můžete použít RBAC ke sdílení jednotlivců napříč klienty. Pokud ale chcete sdílet se škálováním, přečtěte si téma "sdílení imagí Galerie mezi klienty Azure" pomocí [PowerShellu](../articles/virtual-machines/windows/share-images-across-tenants.md) nebo rozhraní příkazového [řádku](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 
 **Otázka:** Jak dlouho trvá replikace verzí imagí napříč cílovými oblastmi?

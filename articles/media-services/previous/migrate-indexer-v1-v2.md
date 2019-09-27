@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3f6f61523b8509f23ffc98b236daaf0e646a013a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310422"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338539"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrace z Media Indexer a Media Indexer 2 na Video Indexer
 
-Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Procesory médií [Azure Media Indexer indexer 2 (Preview)](media-services-process-content-with-indexer2.md) se vyřadí od 1. ledna 2020.  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Procesor médií [Azure Media Indexer v1](media-services-index-content.md) bude vyřazení od 1. října 2020. Od 1. ledna 2020 se vyřadí procesory médií [Azure Media Indexer V2 verze Preview](media-services-process-content-with-indexer2.md) .  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
 Azure Media Services Video Indexer je postavená na Azure Media Analytics Azure Search Cognitive Services (například Face API, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a Custom Speech Service). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru. Pokud chcete zjistit, jaké scénáře se Video Indexer můžou použít v, jaké funkce nabízí a jak začít, přečtěte si téma [video indexer video a zvukové modely](../video-indexer/video-indexer-overview.md). 
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640655"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327182"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Návodu Procházení databáze SQL Azure pomocí Azure Search indexerů
 
@@ -230,7 +230,7 @@ Váš kód je spuštěný místně v sadě Visual Studio a připojuje se k vaš�
 
 + Informace o připojení k databázi v souboru **appsettings.json**. Měl by to být připojovací řetězec ADO.NET získaný z portálu a upravený tak, aby obsahoval platné uživatelské jméno a heslo pro vaši databázi. Uživatelský účet musí mít oprávnění k načtení dat.
 
-+ Omezení prostředků. Vzpomeňte si, že pro sdílenou (bezplatnou) službu platí omezení na 3 indexy, indexery a zdroje dat. Služba, která dosáhne maximálního omezení, nemůže vytvářet nové objekty.
++ Omezení prostředků. Vyvoláte si, že úroveň Free má omezení 3 indexy, indexerů a zdrojů dat. Služba, která dosáhne maximálního omezení, nemůže vytvářet nové objekty.
 
 ## <a name="search-the-index"></a>Prohledání indexu 
 
@@ -254,7 +254,7 @@ Na webu Azure Portal na stránce Přehled vyhledávací služby klikněte v horn
 
 Všechny indexery, včetně toho, který jste právě vytvořili prostřednictvím kódu programu, jsou uvedené na portálu. Můžete otevřít definici indexeru a zobrazit jeho zdroj dat nebo nakonfigurovat plán aktualizace pro přebírání nových a změněných řádků.
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby klikněte na odkazy pro **indexy**, indexerya **zdroje dat**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby klikněte na odkazy pro **indexy**, **indexery**a **zdroje dat**.
 3. Vyberte jednotlivé objekty, které chcete zobrazit nebo upravit nastavení konfigurace.
 
    ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
@@ -263,7 +263,7 @@ Všechny indexery, včetně toho, který jste právě vytvořili prostřednictv�
 
 Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 K kanálu indexeru můžete připojit algoritmy obohacení AI. Jako další krok pokračujte následujícím kurzem.
 

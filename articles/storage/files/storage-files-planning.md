@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212004"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327674"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -96,6 +96,8 @@ V současné době nemůžete přímo převádět mezi standardní sdílenou slo
 
 > [!IMPORTANT]
 > Soubory úrovně Premium jsou dostupné ve většině oblastí, které nabízí účty úložiště a ZRS v menší podmnožině oblastí. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure. Pokud chcete zjistit, které oblasti podporují ZRS, přečtěte si téma [Podpora pokrytí a regionální dostupnost](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+>
+> Abychom vám pomohli upřednostnit nové oblasti a funkce úrovně Premium, vyplňte prosím tento [průzkum](https://aka.ms/pfsfeedback).
 
 #### <a name="provisioned-shares"></a>Zřízené sdílené složky
 

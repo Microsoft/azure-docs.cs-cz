@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b291e2392f0756cb2d3ec294db37206d32216959
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: af775a57356af304aa27453baffa518788d0f5e7
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315926"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326549"
 ---
 # <a name="send-security-messages-sdk"></a>Odeslat sadu SDK pro zprávy zabezpečení
 
@@ -99,7 +99,7 @@ Všechna data, která jsou odeslána, i když jsou označena správnou hlavičko
 
 ### <a name="send-security-message-api"></a>Poslat rozhraní API pro zprávy zabezpečení 
 
-Rozhraní API pro **odesílání zpráv zabezpečení** je aktuálně k dispozici C#v jazycích C a, Python, Node. js a Java.  
+Rozhraní API pro **posílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Python, Node. js a Java.  
 
 #### <a name="c-api"></a>C API
 

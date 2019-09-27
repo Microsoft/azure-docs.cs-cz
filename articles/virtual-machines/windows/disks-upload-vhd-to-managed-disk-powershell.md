@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 98c0316a3fa513f98031b79eefcedea5a1111539
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cd8c5b174d92edcf69801edaeabd0c0730985654
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266624"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326924"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure PowerShell
 
@@ -39,6 +39,8 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 - ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
 V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit až do `revoke-access` chvíle, kdy se zavolá na spravovaný disk, který je potřeba k připojení disku k virtuálnímu počítači.
+
+Před vytvořením prázdného standardního pevného disku pro nahrávání budete potřebovat velikost souboru v bajtech pro virtuální pevný disk, který chcete nahrát. Ukázkový kód vám poskytne za vás, ale k tomu můžete použít: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Tato hodnota se používá při zadání parametru **-UploadSizeInBytes** .
 
 Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Pak zavolejte [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) k vytvoření disku:
 

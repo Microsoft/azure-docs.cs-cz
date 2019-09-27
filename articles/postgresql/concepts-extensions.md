@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091144"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327128"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden server
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření seskupují více souvisejících objektů SQL společně v jednom balíčku, který se dá načíst nebo odebrat z databáze jediným příkazem. Po načtení do databáze nástroje rozšíření funguje jako předdefinované funkce.
@@ -62,6 +62,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Prostorové typy a funkce topologie PostGIS|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | obálka s cizími daty pro vzdálené servery PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | funkce, které pracují s celými tabulkami včetně křížového|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Umožňuje škálovatelné vkládání a složité dotazy pro data časových řad.|
 > |[odakcent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | slovník hledání textu, který odebere zvýraznění|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
 
@@ -206,7 +207,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 Rozšíření pg_stat_statements je předem načteno na každý Azure Database for PostgreSQL Server, který poskytuje prostředky pro sledování statistik provádění příkazů SQL.
 Nastavení `pg_stat_statements.track`, které řídí, které příkazy jsou počítány rozšířením, `top`výchozí hodnota, což znamená, že jsou sledovány všechny příkazy vydané přímo klienty. Tyto dvě úrovně sledování jsou `none` a. `all` Toto nastavení se dá nakonfigurovat jako parametr serveru prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-Existují kompromisy mezi informacemi o spuštění dotazu pg_stat_statements a vlivem na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements aktivně, doporučujeme nastavit `pg_stat_statements.track` na. `none` Upozorňujeme, že některé služby monitorování třetích stran můžou na pg_stat_statements spoléhat na poskytování přehledů výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
+Existují kompromisy mezi informacemi o spuštění dotazu pg_stat_statements a vlivem na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements aktivně, doporučujeme nastavit `pg_stat_statements.track` na `none`. Upozorňujeme, že některé služby monitorování třetích stran můžou na pg_stat_statements spoléhat na poskytování přehledů výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
 dblink a postgres_fdw vám umožňují připojit se z jednoho serveru PostgreSQL k jinému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud se tato rozšíření používají pro připojení mezi Azure Database for PostgreSQL servery, můžete to udělat nastavením možnosti "povolení přístupu ke službám Azure" na ZAPNUTo. To je také nutné v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení "povolení přístupu ke službám Azure" najdete na stránce Azure Portal pro server Postgres v části zabezpečení připojení. Zapnutím možnosti "povolení přístupu ke službám Azure" získáte všechny IP adresy Azure na seznamu povolených.
@@ -227,9 +228,6 @@ TimescaleDB je databáze časových řad, která je zabalená jako přípona pro
 
 ### <a name="installing-timescaledb"></a>Instalace TimescaleDB
 Chcete-li nainstalovat TimescaleDB, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Změna `shared_preload_libraries` parametru Postgres vyžaduje, aby se **restart serveru** projevil. Parametry můžete změnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](howto-configure-server-parameters-using-cli.md).
-
-> [!NOTE]
-> TimescaleDB je možné povolit na Azure Database for PostgreSQL verzích 9,6 a 10.
 
 Použití [Azure Portal](https://portal.azure.com/):
 

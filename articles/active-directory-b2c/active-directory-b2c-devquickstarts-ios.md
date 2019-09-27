@@ -1,5 +1,5 @@
 ---
-title: S použitím AppAuth do aplikace pro iOS v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Použití AppAuth v aplikaci iOS v Azure Active Directory B2C | Microsoft Docs
 description: V tomto článku se dozvíte, jak vytvořit aplikaci pro iOS, která používá AppAuth s Azure Active Directory B2C ke správě identit uživatelů a ověřování uživatelů.
 services: active-directory-b2c
 author: mmacy
@@ -10,90 +10,92 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f7c864102a4985aa1b2c66e12b42cbe3bc19bca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510087"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326607"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Přihlášení pomocí aplikace pro iOS
 
-Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Pomocí otevřeného protokolu nabízí více možností pro vývojáře, při výběru knihovnu integrovat s našimi službami. Líbí se na podporu vývojářů při psaní aplikace, které se připojují k platformě Microsoft Identity poskytujeme Tento názorný postup a další. Většinu knihoven, které implementují [specifikace RFC6749 oauth2](https://tools.ietf.org/html/rfc6749) se připojit k platformě Microsoft Identity.
+Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Použití otevřeného standardního protokolu nabízí při výběru knihovny pro integraci s našimi službami více možností vývojářů. Tento názorný postup a další uživatelé mají za to, aby mohli snadněji psát aplikace, které se připojují k platformě Microsoft identity. Většina knihoven, které implementují [specifikaci RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) , se může připojit k platformě Microsoft identity.
 
 > [!WARNING]
-> Společnost Microsoft neposkytuje oprav pro knihovny třetích stran a přezkoumání těchto knihoven, jako jednička. Tato ukázka používá knihovnu třetí strany s názvem AppAuth, který byl testován pro kompatibilitu s Azure AD B2C v základní scénáře. Problémy a žádosti o funkce směrovat do projektu open source knihovny. Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Microsoft neposkytuje opravy pro knihovny třetích stran a neprovádí revize těchto knihoven. Tato ukázka používá knihovnu třetí strany s názvem AppAuth, která byla testována z hlediska kompatibility v základních scénářích s Azure AD B2C. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny. Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 >
 >
 
-Pokud jste nepracovali s OAuth2 nebo OpenID Connect, velkou část tahle vzorová konfigurace možná moc smysl pro vás. Doporučujeme prohlédnout si stručný [přehled protokolu, který uvádíme tady](active-directory-b2c-reference-protocols.md).
+Pokud s OAuth2 nebo OpenID připojením začínáte, tato Ukázková konfigurace nemusí být pro vás velmi vhodná. Doporučujeme prohlédnout si stručný [přehled protokolu, který uvádíme tady](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
-## <a name="create-an-application"></a>Vytvoření aplikace
-Dále musíte vytvořit aplikaci v adresáři B2C. Registrace aplikací poskytuje Azure AD informace potřebné k bezpečné komunikaci s vaší aplikací. Při vytváření mobilních aplikací, postupujte podle [tyto pokyny](active-directory-b2c-app-registration.md). Ujistěte se, že:
+## <a name="create-an-application"></a>Vytvořit aplikaci
 
-* Zahrnout **nativního klienta** v aplikaci.
-* Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Budete potřebovat později tento identifikátor GUID.
-* Nastavení **identifikátor URI pro přesměrování** s vlastním schématem (například com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Budete později potřebovat pomocí tohoto identifikátoru URI.
+V dalším kroku zaregistrujete aplikaci do svého tenanta Azure AD B2C. To poskytuje službě Azure AD informace, které potřebuje pro bezpečnou komunikaci s vaší aplikací.
 
-## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
-V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Když vytvoříte tok uživatele, nezapomeňte na následující:
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-* V části **atributy registrace**, vyberte atribut **zobrazovaný název**.  Můžete vybrat i jiné atributy.
-* V části **deklarace identit aplikace**, vyberte deklarace identity **zobrazovaný název** a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
-* Kopírovat **název** každý toku uživatele. po jeho vytvoření. Vaše uživatelské jméno tok předchází `b2c_1_` když uložíte tok uživatele.  Název toku uživatele budete potřebovat později.
+Poznamenejte si **ID aplikace** pro použití v pozdějším kroku. V dalším kroku vyberte aplikaci v seznamu a zaznamenejte **vlastní identifikátor URI pro přesměrování**, který použijete v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-Po vytvoření toků uživatelů, budete připraveni k sestavení aplikace.
+## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
+V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje jedno prostředí identity: kombinované přihlášení a registrace. Při vytváření toku uživatele nezapomeňte:
 
-## <a name="download-the-sample-code"></a>Stáhněte si ukázkový kód
-Poskytujeme ukázku práci, která používá AppAuth s Azure AD B2C [na Githubu](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Můžete stáhnout kód a spustíme ji. Použití vašeho vlastního tenanta Azure AD B2C, postupujte podle pokynů [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
+* V části **atributy registrace**vyberte **Zobrazovaný název**atributu.  Můžete také vybrat jiné atributy.
+* V části **deklarace identity aplikace**vyberte **Zobrazovaný název** deklarací identity a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
+* Po vytvoření si zkopírujte **název** každého toku uživatele. Název uživatelského toku je předponou `b2c_1_` při ukládání toku uživatele.  Název toku uživatele budete potřebovat později.
 
-Tato ukázka byla vytvořena podle následujících pokynů README podle [iOS AppAuth projektu na Githubu](https://github.com/openid/AppAuth-iOS). Podrobné informace o fungování vzorku a knihovny odkaz README AppAuth na Githubu.
+Po vytvoření toků uživatelů budete připraveni k sestavení aplikace.
+
+## <a name="download-the-sample-code"></a>Stažení ukázkového kódu
+Poskytujeme pracovní ukázku, která používá AppAuth s Azure AD B2C [na GitHubu](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Můžete stáhnout kód a spustit ho. Pokud chcete použít vlastního tenanta Azure AD B2C, postupujte podle pokynů v [Readme.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
+
+Tuto ukázku vytvořil [projekt iOS AppAuth na GitHubu](https://github.com/openid/AppAuth-iOS)podle pokynů v souboru Readme. Další podrobnosti o tom, jak ukázka a knihovna fungují, najdete v souboru READme AppAuth na GitHubu.
 
 ## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Úprava aplikace pro použití Azure AD B2C s AppAuth
 
 > [!NOTE]
-> AppAuth podporuje iOS 7 a vyšší.  Ale pro podporu přihlašování přes sociální sítě na Googlu, je potřeba SFSafariViewController vyžadujícího iOS 9 nebo vyšší.
+> AppAuth podporuje iOS 7 a novější.  Aby ale podporovala sociální přihlášení na Google, je potřeba SFSafariViewController, který vyžaduje iOS 9 nebo vyšší.
 >
 
-### <a name="configuration"></a>Konfigurace
+### <a name="configuration"></a>Konfiguraci
 
-Je-li nakonfigurovat komunikaci s Azure AD B2C, zadáte koncový bod autorizace a koncový bod tokenu identifikátory URI.  Ke generování těchto identifikátorů URI, budete potřebovat následující informace:
-* ID tenanta (například contoso.onmicrosoft.com).
+Komunikaci s Azure AD B2C můžete nakonfigurovat zadáním identifikátoru URI koncového bodu autorizace i koncového bodu tokenu.  K vygenerování těchto identifikátorů URI potřebujete následující informace:
+* ID tenanta (například contoso.onmicrosoft.com)
 * Název toku uživatele (například B2C\_1\_SignUpIn)
 
-Koncový bod tokenu identifikátor URI je vygenerovat tak, že nahradíte Tenanta\_ID a zásad\_názvu v následující adrese URL:
+Identifikátor URI koncového bodu tokenu se dá vygenerovat\_tak, že nahradíte ID tenanta a název zásady\_v následující adrese URL:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Koncový bod autorizace identifikátoru URI je vygenerovat tak, že nahradíte Tenanta\_ID a zásad\_názvu v následující adrese URL:
+Identifikátor URI koncového bodu autorizace se dá vygenerovat tak\_, že nahradíte\_ID tenanta a název zásady v následující adrese URL:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
 ```
 
-Spusťte následující kód k vytvoření objektu AuthorizationServiceConfiguration:
+Spusťte následující kód pro vytvoření objektu AuthorizationServiceConfiguration:
 
 ```objc
-OIDServiceConfiguration *configuration = 
+OIDServiceConfiguration *configuration =
     [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint tokenEndpoint:tokenEndpoint];
 // now we are ready to perform the auth request...
 ```
 
-### <a name="authorizing"></a>Autorizace
+### <a name="authorizing"></a>Probíhá autorizace.
 
-Po konfiguraci nebo načítání konfigurace povolení služby, lze sestavit žádost o autorizaci. Pokud chcete vytvořit žádost, budete potřebovat následující informace:  
-* ID klienta (například 00000000-0000-0000-0000-000000000000)
-* Identifikátor URI přesměrování s vlastním schématem (například com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect)
+Jakmile nakonfigurujete nebo načtete konfiguraci autorizační služby, může být vytvořen požadavek na autorizaci. K vytvoření žádosti potřebujete následující informace:
 
-Obě položky by se uložily. Pokud byste byli [zaregistrujete aplikaci](#create-an-application).
+* ID klienta (ID aplikace), které jste si poznamenali dříve. Například, `00000000-0000-0000-0000-000000000000`.
+* Vlastní identifikátor URI pro přesměrování, který jste si poznamenali dříve. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+
+Obě položky by měly být uloženy při [registraci aplikace](#create-an-application).
 
 ```objc
-OIDAuthorizationRequest *request = 
+OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:kClientId
                                                     scopes:@[OIDScopeOpenID, OIDScopeProfile]
@@ -102,7 +104,7 @@ OIDAuthorizationRequest *request =
                                       additionalParameters:nil];
 
 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-appDelegate.currentAuthorizationFlow = 
+appDelegate.currentAuthorizationFlow =
     [OIDAuthState authStateByPresentingAuthorizationRequest:request
                                    presentingViewController:self
                                                    callback:^(OIDAuthState *_Nullable authState, NSError *_Nullable error) {
@@ -116,16 +118,16 @@ appDelegate.currentAuthorizationFlow =
     }];
 ```
 
-K nastavení aplikace pro zpracování přesměrování na identifikátor URI s vlastním schématem, je potřeba aktualizovat seznam "schémata adres URL v souboru Info.pList:
-* Otevřete soubor Info.pList.
-* Řádek kódu sady prostředků operačního systému typu ukazatel myši a klikněte na tlačítko \+ symbol.
-* Přejmenujte na novém řádku "Typy adres URL".
-* Klikněte na šipku nalevo od "typy adres URL' Chcete-li otevřít stromu.
-* Klikněte na šipku nalevo od "položky 0' otevřete stromu.
-* Přejmenujte první položky pod položku 0 "Schémata URL".
-* Klikněte na šipku nalevo od adresy URL schémata otevřete stromu.
-* Ve sloupci 'Value' je prázdné pole nalevo od "Položky 0" pod "Schémata URL".  Nastavte hodnotu na jedinečné schéma vaší aplikace.  Hodnota musí odpovídat používané v redirectURL při vytvoření objektu OIDAuthorizationRequest schéma.  V ukázce se používá schéma "com.onmicrosoft.fabrikamb2c.exampleapp".
+Chcete-li nastavit aplikaci tak, aby zpracovávala přesměrování na identifikátor URI s vlastním schématem, je třeba aktualizovat seznam schémat URL v souboru info. pList:
+* Otevřete info. pList.
+* Najeďte myší na řádek, jako je \+ například kód typu operačního systému sady, a klikněte na symbol.
+* Přejmenujte nový řádek ' typy URL '.
+* Kliknutím na šipku nalevo od ' typy URL ' otevřete stromovou strukturu.
+* Kliknutím na šipku nalevo od položky ' položka 0 ' otevřete strom.
+* Přejmenujte první položku pod položkou 0 na ' schémata URL '.
+* Kliknutím na šipku nalevo od ' schémata URL ' otevřete strom.
+* Ve sloupci Value (hodnota) se nachází prázdné pole nalevo od položky "položka 0" pod "schématy URL".  Nastavte hodnotu na jedinečné schéma vaší aplikace.  Hodnota se musí shodovat s schématem použitým v redirectURL při vytváření objektu OIDAuthorizationRequest.  V ukázce se používá schéma "com. fabrikamb2c. exampleapp".
 
-Odkazovat [AppAuth průvodce](https://openid.github.io/AppAuth-iOS/) o tom, k dokončení procesu. Pokud chcete rychle začít s funkční aplikaci, přečtěte si [vzorku](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Postupujte podle pokynů [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) zadat konfiguraci Azure AD B2C.
+Informace o tom, jak dokončit zbytek procesu, najdete v [příručce k AppAuth](https://openid.github.io/AppAuth-iOS/) . Pokud potřebujete rychle začít pracovat s pracovní aplikací, podívejte [se na ukázku](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Postupujte podle kroků v [Readme.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) a zadejte vlastní konfiguraci Azure AD B2C.
 
-Máme vždy otevřít na názory a návrhy! Pokud nemají nějaké problémy s tímto článkem, nebo máte doporučení k vylepšení tohoto obsahu, uvítáme vaše zpětná vazba v dolní části stránky. Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Vždycky jsme otevřeli názory a návrhy! Pokud máte v tomto článku nějaké potíže nebo máte doporučení pro zlepšení tohoto obsahu, Děkujeme za váš názor v dolní části stránky. V případě žádostí o funkce je přidejte do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).

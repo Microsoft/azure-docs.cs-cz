@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004033"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327225"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
@@ -50,6 +50,9 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku `tutorial
    Tato složka existuje v [účtu úložiště](concept-workspace.md#resources) pracovního prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Pokud odstraníte virtuální počítač poznámkového bloku, pořád budete mít veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
 
 1. Otevřete podadresář a pak `tutorials/tutorial-1st-experiment-sdk-train.ipynb`otevřete Poznámkový blok Jupyter, **nikoli** `.yml` soubor se stejným názvem. `samples-*` 
+
+> [!Warning]
+> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. Poznámkový blok `tutorials/tutorial-1st-experiment-sdk-train.ipynb` zahrnuje **veškerý kód a data potřebná** pro účely tohoto kurzu.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
@@ -219,7 +222,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující úlohy:
 

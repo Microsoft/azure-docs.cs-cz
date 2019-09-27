@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172784"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338912"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu pomocí materializovaná zobrazení 
 Vyhodnocená zobrazení v Azure SQL Data Warehouse poskytují nízkou metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
@@ -49,7 +49,7 @@ Správně navržené materializované zobrazení může poskytovat následujíc�
 
 - Optimalizátor v Azure SQL Data Warehouse může automaticky použít nasazená vyhodnocená zobrazení ke zlepšení plánů spouštění dotazů.  Tento proces je transparentní pro uživatele, kteří poskytují rychlejší výkon dotazů a nevyžadují dotazy, aby přímo odkazovaly na materializovaná zobrazení. 
 
-- Vyžaduje nízkou údržbu zobrazení.  Materializované zobrazení ukládá data na dvou místech, clusterovaný index columnstore pro počáteční data v čase vytvoření zobrazení a rozdílové úložiště pro přírůstkové změny dat.  Všechny změny dat ze základních tabulek jsou automaticky přidány do rozdílového úložiště synchronním způsobem.  Proces na pozadí (pracovní postup řazené kolekce členů) pravidelně přesouvá data z rozdílového úložiště do indexu columnstore zobrazení.  Tento návrh umožňuje dotazování na materializovaná zobrazení, aby vracela stejná data jako přímo dotaz na základní tabulky. 
+- Vyžaduje nízkou údržbu zobrazení.  Všechny přírůstkové změny dat ze základních tabulek se synchronním způsobem automaticky přidávají do materializovaná zobrazení.  Tento návrh umožňuje dotazování na materializovaná zobrazení, aby vracela stejná data jako přímo dotaz na základní tabulky. 
 - Data v materializované zobrazení je možné distribuovat jinak než základní tabulky.  
 - Data v materializovaná zobrazení mají stejné výhody vysoké dostupnosti a odolnosti jako data v běžných tabulkách.  
  
@@ -90,7 +90,7 @@ Uživatelé mohou pro vyhodnocená zobrazení doporučená nástrojem pro optima
 
 **Mějte na paměti kompromisy mezi rychlejšími dotazy a náklady** 
 
-Pro každé materializované zobrazení jsou k dispozici náklady na úložiště dat a náklady na údržbu zobrazení.  Při změně dat v základních tabulkách se zvyšuje velikost vyhodnoceného zobrazení a jeho fyzická struktura se také změní.  Aby se zabránilo snížení výkonu dotazů, jsou jednotlivé materializované zobrazení uchovávány samostatně modulem datového skladu, včetně přesunutí řádků z rozdílového úložiště do segmentů indexu columnstore a sloučení změn dat.  Úloha údržby získá vyšší hodnotu, když se zvýší počet materializovaná zobrazení a základní tabulka.   Uživatelé by měli zjistit, zda náklady vzniklé ze všech hodnocených zobrazení mohou být posunuty pomocí nárůstu výkonu dotazů.  
+Pro každé materializované zobrazení jsou k dispozici náklady na úložiště dat a náklady na údržbu zobrazení.  Při změně dat v základních tabulkách se zvyšuje velikost vyhodnoceného zobrazení a jeho fyzická struktura se také změní.  Aby se zabránilo snížení výkonu dotazů, jsou všechna materializovaná zobrazení spravovaná samostatně modulem datového skladu.  Úloha údržby získá vyšší hodnotu, když se zvýší počet materializovaná zobrazení a základní tabulka.   Uživatelé by měli zjistit, zda náklady vzniklé ze všech hodnocených zobrazení mohou být posunuty pomocí nárůstu výkonu dotazů.  
 
 Tento dotaz můžete spustit pro seznam materializované zobrazení v databázi: 
 
@@ -136,7 +136,7 @@ Optimalizátor datového skladu může automaticky využívat nasazená material
 
 **Monitorování materializovaná zobrazení** 
 
-Materializované zobrazení je uloženo v datovém skladu stejně jako tabulka s clusterovaným indexem columnstore (Ski).  Čtení dat z materializované zobrazení zahrnuje skenování indexu a použití změn z rozdílového úložiště.  Pokud je počet řádků ve rozdílovém úložišti příliš vysoký, řešení dotazu z materializované zobrazení může trvat déle než přímé dotazování na základní tabulky.  Aby se zabránilo snížení výkonu dotazů, je dobrým zvykem spuštění [příkazu DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) pro monitorování overhead_ratio (total_rows/base_view_row) zobrazení.  Pokud je overhead_ratio příliš vysoký, zvažte opětovné sestavení materializované zobrazení, aby všechny řádky v rozdílovém úložišti byly přesunuty do indexu columnstore.  
+Materializované zobrazení je uloženo v datovém skladu stejně jako tabulka s clusterovaným indexem columnstore (Ski).  Čtení dat z materializované zobrazení zahrnuje kontrolu segmentů indexu instrukce a použití přírůstkových změn ze základních tabulek. Pokud je počet přírůstkových změn příliš vysoký, řešení dotazu z materializované zobrazení může trvat déle než přímé dotazování na základní tabulky.  Aby se zabránilo snížení výkonu dotazů, je vhodné spustit [příkaz DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) a monitorovat overhead_ratio zobrazení (total_rows/Max (1, base_view_row)).  Uživatelé by měli znovu sestavit materializované zobrazení, pokud je jeho overhead_ratio příliš vysoký. 
 
 **Materializované zobrazení a ukládání sad výsledků do mezipaměti**
 

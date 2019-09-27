@@ -1,71 +1,69 @@
 ---
-title: Fungování služby application gateway
-description: Tento článek obsahuje informace o fungování služby application gateway
+title: Jak funguje Aplikační brána
+description: Tento článek poskytuje informace o tom, jak funguje brána Application Gateway.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cb7473b309e1aefe6237671fac73c042b33f2cf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702410"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326874"
 ---
-# <a name="how-an-application-gateway-works"></a>Fungování služby application gateway
+# <a name="how-an-application-gateway-works"></a>Jak funguje Aplikační brána
 
-Tento článek vysvětluje, jak službu application gateway přijímá příchozí požadavky a směruje je do back-endu.
+Tento článek vysvětluje, jak Aplikační brána přijímá příchozí požadavky a směruje je do back-endu.
 
-![Jak služby application gateway přijímá žádosti o](./media/how-application-gateway-works/how-application-gateway-works.png)
+![Jak Aplikační brána přijímá požadavek](./media/how-application-gateway-works/how-application-gateway-works.png)
 
-## <a name="how-an-application-gateway-accepts-a-request"></a>Jak služby application gateway přijímá žádosti o
+## <a name="how-an-application-gateway-accepts-a-request"></a>Jak Aplikační brána přijímá požadavek
 
-1. Předtím, než klient odešle požadavek do služby application gateway, překládá název domény služby application gateway s využitím serveru systému DNS (Domain Name). Azure určuje položku DNS, vzhledem k tomu, že jsou všechny brány application Gateway v doméně azure.com.
+1. Předtím, než klient pošle požadavek službě Application Gateway, vyřeší název domény aplikační brány pomocí serveru DNS (Domain Name System). Azure řídí položku DNS, protože všechny aplikační brány jsou v doméně azure.com.
 
-2. Azure DNS vrátí IP adresu klienta, což je IP adresa front-endu služby application gateway.
+2. Azure DNS vrátí IP adresu klientovi, což je IP adresa front-endu služby Application Gateway.
 
-3. Application gateway přijímá příchozí provoz na jeden nebo více naslouchacích procesů. Naslouchací proces je logická entita, která kontroluje pro žádosti o připojení. Má nakonfigurovanou IP adresu front-endu, protokol a číslo portu pro připojení klientů ke službě application gateway.
+3. Aplikační brána přijímá příchozí provoz na jednom nebo více posluchačích. Naslouchací proces je logická entita, která kontroluje požadavky na připojení. U připojení od klientů k aplikační bráně je nakonfigurována IP adresa front-end, protokol a číslo portu.
 
-4. Pokud firewall webových aplikací (WAF) se používá, application gateway kontroluje hlavičky požadavku a text, pokud jsou k dispozici pro pravidla firewallu webových aplikací. Tuto akci Určuje, zda je požadavek platným požadavkem nebo ohrožení zabezpečení. Pokud je požadavek platný, přesměruje ho na back-endu. Pokud daný požadavek není platný, je blokovaná jako bezpečnostní hrozbu.
+4. Pokud je brána firewall webových aplikací (WAF) používána, brána Application Gateway kontroluje hlavičky požadavků a text, pokud jsou k dispozici, proti pravidlům WAF. Tato akce určuje, jestli je požadavek platným požadavkem nebo bezpečnostní hrozbou. Pokud je požadavek platný, bude směrován do back-endu. Pokud je požadavek neplatný a WAF je v režimu prevence, je zablokovaná jako bezpečnostní hrozba. Pokud je v režimu detekce, požadavek se vyhodnocuje a protokoluje, ale pořád se přepošle na back-end Server.
 
-Azure Application Gateway je možné jako nástroj pro vyrovnávání zatížení interní aplikace nebo jako Vyrovnávání zatížení aplikace přístupem k Internetu. Službu application gateway přístupem k Internetu používá veřejné IP adresy. Název DNS služby application gateway přístupem k Internetu je veřejně přeložitelného jeho veřejné IP adresy. Internetové služby application Gateway v důsledku toho může směrovat požadavky klienta na Internetu.
+Službu Azure Application Gateway lze použít jako interní nástroj pro vyrovnávání zatížení aplikace nebo jako internetový nástroj pro vyrovnávání zatížení. Internetová služba brány používá veřejné IP adresy. Název DNS internetové brány s přístupem k Internetu je veřejně přístupný k veřejné IP adrese. V důsledku toho mohou internetové brány s přístupem k Internetu směrovat požadavky klientů na Internet.
 
-Interní aplikační brány použít pouze privátní IP adresy. Název DNS pro interní aplikační brány je veřejně přeložitelného na jeho privátní IP adresu. Interní Vyrovnávání zatížení proto pouze směrovat požadavky od klientů s přístupem k virtuální síti pro službu application gateway.
+Interní aplikační brány používají jenom soukromé IP adresy. Pokud používáte vlastní [zónu nebo privátní DNS](https://docs.microsoft.com/azure/dns/private-dns-overview), měl by být název domény interně přeložitelný na soukromou IP adresu Application Gateway. Interní nástroje pro vyrovnávání zatížení proto můžou směrovat požadavky od klientů jenom na přístup k virtuální síti pro službu Application Gateway.
 
-Internetové i interní aplikační brány směrovat požadavky do back-end serverů pomocí privátních IP adres. Back-end serverech není nutné veřejné IP adresy pro příjem požadavků z interní nebo služby application gateway přístupem k Internetu.
+## <a name="how-an-application-gateway-routes-a-request"></a>Jak Aplikační brána směruje požadavek
 
-## <a name="how-an-application-gateway-routes-a-request"></a>Jak směruje žádost o služby application gateway
+Pokud je požadavek platný a neblokuje ho služba WAF, služba Application Gateway vyhodnotí pravidlo směrování požadavků, které je přidružené k naslouchacímu procesu. Tato akce určuje, který back-end fond má směrovat požadavek.
 
-Pokud je požadavek platný, nebo brány WAF se používá, se vyhodnotí jako pravidlo směrování požadavku, který je spojen s naslouchací proces application gateway. Tuto akci Určuje, které back-endovém fondu směrovat žádosti.
+Na základě pravidla směrování požadavků určí brána Application Gateway, jestli má směrovat všechny požadavky na naslouchací proces do konkrétního back-endu, směrovat požadavky na různé back-endové fondy na základě cesty URL nebo přesměrovat požadavky na jiný port nebo externí Web.
+>[!NOTE]
+>Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu pro SKU verze V1. 
 
-Pravidla se zpracovávají v pořadí, ve kterém jsou uvedeny na portálu. Pravidlo směrování žádostí podle, application gateway Určuje, zda směrování všech žádostí na straně posluchače na konkrétní back-endový fond, směrování požadavků na různé back-endových fondů na základě cest URL nebo přesměrovat požadavky do jiný port nebo externí web.
+Když Aplikační brána vybere back-end fond, odešle požadavek na jeden ze serverů back-end ve fondu (y. y. y. y). Stav serveru je určen sondou stavu. Pokud back-end fond obsahuje několik serverů, používá Aplikační brána k směrování požadavků mezi zdravými servery algoritmus kruhového dotazování. Toto zatížení vyrovnává požadavky na serverech.
 
-Když službu application gateway vybere back-endový fond, odešle požadavek na jednu v dobrém stavu back-end serverů ve fondu (y.y.y.y). Stav serveru je určen podle sondu stavu. Pokud back-endový fond obsahuje několik serverů, application gateway používá algoritmus kruhové dotazování směrovat požadavky mezi servery v pořádku. Rozloží požadavky na serverech.
+Jakmile Aplikační brána určí back-end Server, otevře novou relaci TCP se back-end serverem na základě nastavení HTTP. Nastavení HTTP určuje protokol, port a další nastavení související s směrováním, která jsou nutná k navázání nové relace s back-end serverem.
 
-Po application gateway určuje back-end serveru, otevře se nová relace TCP s back-end serveru, na základě nastavení HTTP. Nastavení HTTP určují protokol, port a další nastavení související s směrování, které jsou nutné k vytvoření nové relace s back-end serveru.
+Port a protokol, který se používá v nastavení HTTP, určuje, jestli je přenos mezi aplikační bránou a back-end servery šifrovaný (takže se provádí kompletní šifrování SSL), nebo jestli není šifrovaný.
 
-Port a protokol použitý v nastavení HTTP určení, zda přenos dat mezi servery brány a back-endu aplikace zašifrují (tedy provádění-kompletního protokolu SSL), nebo nešifrovaná.
-
-Když službu application gateway odešle původní požadavek na back-end serveru, respektuje všechny vlastní konfigurace z nastavení HTTP související s přepsání název hostitele, cestu a protokolu. Tato akce udržuje spřažení relace na základě souborů cookie, připojení vyprázdnění, název hostitele výběr z back-end a tak dále.
-
-Interní aplikační brány se používá pouze privátní IP adresy. Název DNS pro interní aplikační brány je možné přeložit na jeho privátní IP adresu. Interní Vyrovnávání zatížení v důsledku toho může směrovat pouze požadavky od klientů s přístupem k virtuální síti pro službu application gateway.
+Když Aplikační brána pošle původní požadavek na back-end Server, dodrží veškerou vlastní konfiguraci vytvořenou v nastavení HTTP, které souvisí s přepsáním názvu hostitele, cesty a protokolu. Tato akce udržuje spřažení relace na základě souborů cookie, vyprazdňování připojení, výběr názvů hostitelů z back-endu a tak dále.
 
  >[!NOTE]
- >Obě brány přístupem k Internetu a interní aplikace směrovat požadavky do back-end serverů pomocí privátních IP adres. Tato akce se stane, když váš prostředek back-endový fond obsahuje privátní IP adresy, konfigurace síťové karty virtuálního počítače nebo interně přeložitelnou adresu. Pokud back-endového fondu:
-> - **Je veřejný koncový bod**, application gateway používá veřejnou IP adresu jeho front-endu k dosažení serveru. Pokud není k dispozici veřejnou IP adresu front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
-> - **Obsahuje interně přeložitelný plně kvalifikovaný název domény nebo privátní IP adresu**, aplikační brány s použitím jeho privátní IP adresy instance přesměruje požadavek na back-end serveru.
-> - **Obsahuje externí koncový bod nebo externě přeložitelný plně kvalifikovaný název domény**, aplikační brány s použitím jeho veřejné IP adresy front-endu přesměruje požadavek na back-end serveru. Překlad názvů DNS je založen na privátní zóny DNS nebo vlastního serveru DNS, pokud nakonfigurované nebo použije výchozí DNS poskytnutých platformou Azure. Pokud není k dispozici veřejnou IP adresu front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
+>Pokud back-end fond:
+> - **Je veřejný koncový bod**, používá služba Application Gateway svou veřejnou IP adresu front-end k dosažení serveru. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
+> - **Obsahuje interně přeložitelný plně kvalifikovaný název domény nebo soukromou IP adresu**, služba Application Gateway směruje požadavek na back-end Server pomocí privátních IP adres instance.
+> - **Obsahuje externí koncový bod nebo externě přeložitelný plně kvalifikovaný název domény**, protože služba Application Gateway směruje požadavek na back-end Server pomocí veřejné IP adresy front-endu. Překlad DNS je založený na soukromé zóně DNS nebo na vlastním serveru DNS, pokud je nakonfigurovaný, nebo používá výchozí DNS poskytovanou systémem Azure. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
 
-### <a name="modifications-to-the-request"></a>Úpravy na požadavek
+### <a name="modifications-to-the-request"></a>Úpravy žádosti
 
-Službu application gateway vloží čtyři dodatečné hlavičky pro všechny požadavky, předtím, než ji předá požadavek back-endu. Tyto hlavičky jsou x předané pro, x-forwarded-proto, x předané portu a x původního hostitele. Formát pro x předané – pro hlavičky je čárkou oddělený seznam IP: port.
+Aplikační brána vloží čtyři další hlavičky do všech požadavků předtím, než přepošle požadavky do back-endu. Tato záhlaví jsou předávána x-pro, x předávaného-za, x předávaných portů a x-Original-Host. Formát pro hlavičku s přesměrováním na ose x je čárkami oddělený seznam IP adres: port.
 
-Platné hodnoty pro x-forwarded-proto jsou HTTP nebo HTTPS. X předané portu Určuje port, který žádost-li dosáhnout application gateway. Hlavička X-původního hostitele obsahuje hlavičku původního hostitele, pomocí kterého Přišla žádost. Této hlavičky je užitečné v integrace webu Azure, ve kterém se upraví hlavičku hostitele příchozího před provoz směruje do back-endu. Pokud spřažení relace je povolená možnost, pak přidá do souboru cookie spravovaných bránou spřažení.
+Platné hodnoty pro předané x-a jsou proto HTTP nebo HTTPS. Port předaný přes X Určuje port, na který požadavek dostal Aplikační bránu. Hlavička X-originál-Host obsahuje původní hlavičku hostitele, se kterou byl požadavek přijat. Tato hlavička je užitečná v integraci webů Azure, kde se před směrováním provozu do back-endu změnila hlavička příchozího hostitele. Pokud je spřažení relace povolené jako možnost, přidá soubor cookie spřažení spravovaný bránou.
 
-Můžete nakonfigurovat aplikační brány pro úpravy hlaviček pomocí [hlavičky protokolu HTTP přepsat](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) nebo pro úpravu cesty identifikátoru URI pomocí nastavení specifikátor override cesty ke. Pokud je tak nakonfigurovaný, všechny příchozí požadavky ale směrovány přes proxy server back-endu.
+Aplikační bránu můžete nakonfigurovat tak, aby používala změny hlaviček, a to pomocí [hlaviček protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) přepisu nebo upravit cestu identifikátoru URI pomocí nastavení přepsání cesty. Pokud to ale není nakonfigurované, všechny příchozí požadavky se zaúčtují proxy serverem do back-endu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Další informace o součástech aplikace brány](application-gateway-components.md)
+[Další informace o součástech služby Application Gateway](application-gateway-components.md)

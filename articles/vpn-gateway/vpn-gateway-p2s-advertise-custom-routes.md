@@ -5,22 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 18a0effcf5157ec2797707db78f9614ef12a4669
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310240"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336294"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerovat vlastní trasy pro klienty VPN P2S
 
 Je možné, že budete chtít inzerovat vlastní trasy všem klientům VPN typu Point-to-site. Například pokud jste ve virtuální síti povolili koncové body úložiště a chcete, aby vzdálení uživatelé měli přístup k těmto účtům úložiště přes připojení VPN. IP adresu koncového bodu úložiště můžete inzerovat všem vzdáleným uživatelům, aby přenosy dat do účtu úložiště procházely přes tunelové připojení VPN, nikoli z veřejného Internetu.
 
+![Příklad propojení Multi-Site pomocí Azure VPN Gateway](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
+
 ## <a name="to-advertise-custom-routes"></a>Inzerování vlastních tras
 
-K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet`. Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště Conotoso](https://contoso.table.core.windows.net).
+K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet`. Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště contoso](https://contoso.table.core.windows.net).
 
 1. Proveďte test *contoso.Table.Core.Windows.NET* a poznamenejte si IP adresu. Příklad:
 
@@ -45,10 +47,10 @@ K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet`. N
 
 Pomocí následujícího příkladu můžete zobrazit vlastní trasy:
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
-    $gw.CustomRoutes | Format-List
-    ```
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  $gw.CustomRoutes | Format-List
+  ```
 
 ## <a name="next-steps"></a>Další kroky
 

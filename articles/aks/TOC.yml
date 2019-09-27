@@ -151,6 +151,8 @@
           href: azure-files-volume.md
         - name: Server systému souborů NFS – statické
           href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: Konfigurace sítí
       items:
         - name: Vytvoření nebo použití existující virtuální sítě

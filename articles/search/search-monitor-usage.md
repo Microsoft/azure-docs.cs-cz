@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640533"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327144"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorovat spotřebu prostředků a aktivity dotazů v Azure Search
 
@@ -63,7 +63,7 @@ V následující tabulce jsou porovnávány možnosti pro ukládání protokolů
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události se zaznamenávají do kontejneru objektů BLOB a ukládají se do souborů JSON. K zobrazení obsahu souboru použijte Editor JSON.|
 | [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazů na základě schémat popsaných v tomto článku. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
 
-Protokoly Azure Monitor a BLOB Storage jsou k dispozici jako bezplatná sdílená služba, takže ji můžete vyzkoušet bezplatně pro celou dobu životnosti předplatného Azure. Application Insights se zaregistrovat a použít, pokud je velikost dat aplikace za určitých mezí (podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) ).
+Protokoly Azure Monitor a BLOB Storage jsou k dispozici jako bezplatná služba, takže si ji můžete vyzkoušet bez poplatků za dobu života předplatného Azure. Application Insights se zaregistrovat a použít, pokud je velikost dat aplikace za určitých mezí (podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) ).
 
 V další části se seznámíte s postupem povolení a používání úložiště objektů BLOB v Azure ke shromažďování a přístupu k datům protokolu vytvořeným pomocí operací Azure Search.
 
@@ -175,6 +175,6 @@ REST API Azure Search a .NET SDK poskytují programový přístup k metrikám sl
 
 Pokud chcete povolit pomocí Powershellu nebo rozhraní příkazového řádku Azure, najdete v dokumentaci [tady](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat další informace o správě služby a [výkonu a optimalizaci](search-performance-optimization.md) pro pokyny k ladění, [Spravujte službu Search na Microsoft Azure](search-manage.md) .

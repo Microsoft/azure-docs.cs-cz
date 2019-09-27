@@ -16,15 +16,15 @@ ms.date: 04/05/2019
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6ef5dedb0779536cfbc1e6a3440e748ff78524
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862106"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326464"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Agent zřizování Azure AD Connect: Historie vydaných verzí
-V tomto článku jsou uvedené verze a funkce Azure AD Connect zřizovacího agenta, který byl vydán. Tým Azure AD pravidelně aktualizuje agenta zřizování o nové funkce a funkce. Agenti zřizování se aktualizují automaticky, když se uvolní nová verze. 
+V tomto článku jsou uvedené verze a funkce Azure Active Directory Connect zřizovacího agenta, který byl vydán. Tým Azure AD pravidelně aktualizuje agenta zřizování o nové funkce a funkce. Agent zřizování se aktualizuje automaticky, když se uvolní nová verze. 
 
 Pro vaše agenty doporučujeme povolit automatické aktualizace, abyste měli jistotu, že máte nejnovější funkce a opravy chyb. Microsoft poskytuje přímou podporu pro nejnovější verzi agenta a jednu verzi.
 
@@ -37,13 +37,13 @@ Pro vaše agenty doporučujeme povolit automatické aktualizace, abyste měli ji
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
 * Možnost konfigurovat další trasování a protokolování pro problémy s agentem zřizování ladění
-* Možnost načítat pouze ty atributy služby Active Directory, které jsou konfigurovány v mapování pro zlepšení výkonu synchronizace
+* Možnost načíst jenom ty atributy služby Azure AD, které jsou nakonfigurované v mapování, aby se zlepšil výkon synchronizace
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
-* Opravili jsme chybu, která v agentovi přešla do nereagující stav, pokud došlo k problémům se selháním připojení AD.
-* Opravili jsme chybu, která způsobila problémy při čtení binárních dat ze služby Active Directory.
-* Opravili jsme chybu, kdy v agentovi se nepovedlo obnovit vztah důvěryhodnosti se službou Cloud Hybrid identity.
+* Opravili jsme chybu, kterou agent přešel do nereagující na stav, pokud došlo k problémům s chybami připojení Azure AD.
+* Opravili jsme chybu, která způsobila problémy při čtení binárních dat z Azure Active Directory
+* Opravili jsme chybu, která agentovi selhala při obnovení vztahu důvěryhodnosti se službou Cloud Hybrid identity.
 
 ## <a name="11300"></a>1.1.30.0
 
@@ -53,7 +53,7 @@ Pro vaše agenty doporučujeme povolit automatické aktualizace, abyste měli ji
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-* Architektura přepracované zřizování agenta & pro lepší výkon, stabilitu a spolehlivost 
-* Zjednodušená konfigurace agenta zřizování pomocí Průvodce instalací založenou na uživatelském rozhraní 
+* Přepracované zřizovacího agenta a architektury konektoru pro zajištění lepšího výkonu, stability a spolehlivosti 
+* Zjednodušená konfigurace agenta zřizování pomocí Průvodce instalací na základě uživatelského rozhraní 
 * Přidání podpory pro automatické aktualizace agentů
 

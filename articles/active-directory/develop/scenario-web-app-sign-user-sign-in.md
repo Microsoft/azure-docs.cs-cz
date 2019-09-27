@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09b39cb9db2450b7d200ec725396141f72f1b2f1
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: d5c45005d6a54765458b463acb12c21a1f3b6d0c
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310034"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336767"
 ---
 # <a name="web-app-that-signs-in-users---sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele – Přihlaste se a odhlaste se.
 
@@ -106,7 +106,7 @@ def index():
 
 ---
 
-### <a name="login-action-of-the-controller"></a>`login()`akce kontroleru
+### <a name="login-action-of-the-controller"></a>`Login`akce kontroleru
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -320,7 +320,7 @@ V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Te
 
 ---
 
-### <a name="signout-action-of-the-controller"></a>`Signout()`akce kontroleru
+### <a name="signout-action-of-the-controller"></a>`Signout`akce kontroleru
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -375,13 +375,12 @@ V jazyce Java se odhlášení zpracovává voláním koncového bodu pro odhlá�
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Kód, který podepisuje uživatele, je v [App. py # L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L46-L52) 
+Kód, který podepisuje uživatele, je v [App. py # L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48)
 
 ```Python
 @app.route("/logout")
 def logout():
-    session["user"] = None  # Log out from this app from its session
-    # session.clear()  # If you prefer, this would nuke the user's token cache too
+    session.clear()  # Wipe out user and its token cache from session
     return redirect(  # Also need to logout from Microsoft Identity platform
         "https://login.microsoftonline.com/common/oauth2/v2.0/logout"
         "?post_logout_redirect_uri=" + url_for("index", _external=True))

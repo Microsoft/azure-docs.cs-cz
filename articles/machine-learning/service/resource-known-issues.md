@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275cf20329be04e86c2e7c2a613f657733e652df
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213448"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338758"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -214,3 +214,24 @@ kubectl get secret/azuremlfessl -o yaml
 
 >[!Note]
 >Kubernetes ukládá tajné klíče ve formátu kódování Base-64. Před poskytnutím těchto tajných kódů bude nutné `cert.pem` základní-64 dekódovat `key.pem`. `attach_config.enable_ssl` 
+
+## <a name="recommendations-for-error-fix"></a>Doporučení pro opravu chyb
+Na základě obecného sledování najdete tady doporučení Azure ML, kde můžete opravit některé běžné chyby v Azure ML.
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
+Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro vaše školení. 
+
+Pokud používáte [odhady](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí parametru `pip_packages` nebo `conda_packages` v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí příkazu `conda_dependencies_file`or seznam všech požadavků PIP v souboru txt pomocí parametru `pip_requirements_file`.
+
+Azure ML také poskytuje odhady specifickou architekturu pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se ujistěte, že se závislosti rozhraní instalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
+ 
+ Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
+Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skriptu sklearn](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+
+>[Poznámka!] Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
+ 
+ ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (název není definován), AttributeError (objekt nemá žádný atribut)
+Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` a podívat se na chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 
+
+### <a name="horovod-is-shutdown"></a>Horovod je vypnutý.
+Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů s příponou `_rank`, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a vyhledejte `Traceback` na konci souborů driver_log. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e7113508ff7fe5d3471b193bb8dadb7cdab5a7ca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: ff539311139d7e9823a2d7db2f5d8ee56f9231b6
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995281"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338651"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) pro prostředky Azure?
 
@@ -80,7 +80,7 @@ Azure obsahuje operace s daty, které umožňují udělit přístup k datům v r
 
 *Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 
-V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../governance/management-groups/index.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
+V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../governance/management-groups/overview.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
@@ -134,7 +134,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 [!INCLUDE [Azure AD free license](../../includes/active-directory-free-license.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Rychlé zprovoznění: Zobrazení přístupu uživatele k prostředkům Azure pomocí Azure Portal](check-access.md)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)

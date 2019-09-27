@@ -7,12 +7,12 @@ ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172475"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338382"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
@@ -122,7 +122,7 @@ Služba Azure Policy používá poskytovatele prostředků hosta konfigurace **c
 > [!NOTE]
 > Zásady **DeployIfNotExists** se vyžadují, aby zásady **AuditIfNotExists** vracely výsledky. Bez **DeployIfNotExists**se v zásadách **AuditIfNotExists** zobrazuje "0 z 0" prostředků jako stav.
 
-Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrovaná iniciativa s názvem *[Preview]: Auditování nastavení zabezpečení hesla v počítačích* se systémy Linux a Windows obsahuje 18 zásad. Obsahuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrovaná iniciativa s názvem  *[Preview]: Auditování nastavení zabezpečení hesla v počítačích* se systémy Linux a Windows obsahuje 18 zásad. Obsahuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
 
 ### <a name="multiple-assignments"></a>Více přiřazení
 
@@ -185,4 +185,4 @@ Ukázky konfigurace hosta zásad jsou k dispozici v následujících umístění
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
-- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/index.md).
+- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f9591b26891ab36ccbfa34126fb1ac1bdb9cf52
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164800"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338211"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -59,7 +59,7 @@ Pomocí Správce prostředků můžete:
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
-Azure poskytuje čtyři úrovně rozsahu: [skupiny pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
+Azure poskytuje čtyři úrovně rozsahu: [skupiny pro správu](../governance/management-groups/overview.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 

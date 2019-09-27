@@ -1,77 +1,60 @@
 ---
-title: Připojení k virtuální ploše Preview Windows z Windows 10 nebo Windows 7 – Azure
-description: Jak se připojit k verzi Preview virtuální plochy Windows z Windows 10 nebo Windows 7.
+title: Připojení k virtuálnímu počítači s Windows ve verzi Preview z Windows 10 nebo Windows 7 – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí desktopového klienta Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 49431f75fb801c683a167e1809724eeeef208561
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620116"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338456"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Připojení z Windows 10 nebo Windows 7
+# <a name="connect-with-the-windows-desktop-client"></a>Připojení pomocí desktopového klienta Windows
 
-> To platí pro: Windows 7 a Windows 10.
+> To platí pro: Windows 7 a Windows 10
 
-Je k dispozici ke stažení klienta, která poskytuje přístup k prostředkům Windows Virtual Desktop Preview ze zařízení s Windows 7 a Windows 10.
+K prostředkům virtuálních klientů Windows se můžete dostat na zařízeních se systémem Windows 7 nebo Windows 10 pomocí desktopového klienta Windows.
 
 > [!IMPORTANT]
-> Nepoužívejte **aplikacím RemoteApp a vzdálené ploše připojení (RADC)** nebo **připojení vzdálené plochy (MSTSC)** pro přístup k prostředkům virtuální plochy Windows, protože virtuální plochy Windows nepodporuje buď klienta.
+> Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
 
-## <a name="install-the-client"></a>Instalace klienta
+## <a name="install-the-windows-desktop-client"></a>Instalace klienta pro stolní počítače se systémem Windows
 
-[Stáhněte si](https://go.microsoft.com/fwlink/?linkid=2068602) a instalaci klienta do vašeho místního počítače. Instalace vyžaduje oprávnění správce.
+Jedná se o klienty, které si aktuálně můžete stáhnout:
 
-## <a name="subscribe-to-a-feed"></a>Přihlášení odběru informačního kanálu
+- [Windows 64 – bit](https://go.microsoft.com/fwlink/?linkid=2068602)
 
-Získání seznamu spravované prostředky, které jsou k dispozici pro vás prostřednictvím přihlášení odběru informačního kanálu zadané váš správce. Přihlášení k odběru zpřístupní prostředky ve vašem místním počítači.
+Tento seznam aktualizujeme, protože klient bude k dispozici pro další verze Windows.
 
-K odběru informačního kanálu:
+Klienta můžete nainstalovat pro aktuálního uživatele, který nevyžaduje oprávnění správce, nebo může správce nainstalovat a nakonfigurovat klienta tak, aby k němu měli přístup všichni uživatelé zařízení.
 
-1. Spuštění klienta z seznam všech aplikací, hledejte **vzdálené plochy**.
-1. Vyberte **přihlásit k odběru** na hlavní stránce pro připojení ke službě a načíst vaše prostředky.
-1. **Přihlaste se** s vaším uživatelským účtem po zobrazení výzvy.
+Po instalaci je možné klienta spustit z nabídky Start, a to tak, že vyhledáte **vzdálenou plochu**.
 
-Po úspěšném ověření, měli byste vidět seznam pro vás dostupné materiály.
+## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
 
-Prostředky můžete spustit pomocí jedné ze dvou způsobů.
+Získejte seznam spravovaných prostředků, které máte k dispozici po přihlášení k odběru informačního kanálu poskytnutého vaším správcem. Přihlášení k odběru zpřístupňuje prostředky na vašem místním počítači.
 
-- Na hlavní stránce klienta dvakrát klikněte na prostředek se ho spustit.
-- Spusťte prostředek běžným způsobem další aplikace v nabídce Start.
-  - Můžete také vyhledat aplikaci v panelu vyhledávání.
+Přihlášení k odběru informačního kanálu:
 
-Jakmile se předplatné služby informačního kanálu, obsah informačního kanálu se aktualizuje automaticky v pravidelných intervalech. Prostředky mohou přidávání, změny a odebírání na základě změn provedená správcem.
+1. Otevřete klienta Windows Desktop.
+2. Vyberte možnost **přihlásit k odběru** na hlavní stránce pro připojení ke službě a načtení prostředků.
+3. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
 
-## <a name="view-the-details-of-a-feed"></a>Zobrazit podrobnosti o informačního kanálu
+Po úspěšném přihlášení by se měl zobrazit seznam prostředků, ke kterým máte přístup.
 
-Po přihlášení k odběru, můžete zobrazit další informace o kanálu díky přístupu do panelu podrobností.
+Prostředky můžete spustit jedním ze dvou způsobů.
 
-1. Na hlavní stránce klienta, vyberte tři tečky ( **...** ) napravo od názvu informačního kanálu.
-1. Z rozevírací nabídky vyberte **podrobnosti**.
-1. Panel podrobností se zobrazí na pravé straně klienta.
+- Na hlavní stránce klienta dvakrát klikněte na prostředek a spusťte ho.
+- Prostředek se spustí stejným způsobem jako ostatní aplikace z nabídky Start.
+  - Aplikace můžete vyhledat také na panelu hledání.
 
-Panel podrobnosti obsahuje užitečné informace o informačního kanálu:
+Po přihlášení k odběru informačního kanálu se obsah informačního kanálu pravidelně aktualizuje v pravidelných intervalech. Prostředky je možné přidat, změnit nebo odebrat na základě změn provedených správcem.
 
-- Adresa URL a uživatelské jméno používané pro přihlášení odběru
-- Počet aplikací a stolní počítače
-- Datum a čas poslední aktualizace
-- Stav poslední aktualizace
+## <a name="next-steps"></a>Další kroky
 
-V případě potřeby můžete spustit ruční aktualizaci tak, že vyberete na **aktualizovat**.
-
-## <a name="unsubscribe-from-a-feed"></a>Odhlásit z informačního kanálu
-
-V této části se dozvíte, jak k odhlášení odběru z informačního kanálu. Může odhlásit odběr znovu s jiným účtem nebo odebrat zdroje ze systému.
-
-1. Na hlavní stránce klienta, vyberte tři tečky ( **...** ) napravo od názvu informačního kanálu.
-1. Z rozevírací nabídky vyberte **Unsubscribe**.
-1. Zkontrolujte a vyberte **pokračovat** z tohoto dialogového okna.
-
-## <a name="update-the-client"></a>Aktualizace klienta
-
-Pokud je dostupná nová verze klienta, budete upozorněni na klienta a Centrum akcí Windows. Vyberte oznámení k zahájení procesu aktualizace.
+Další informace o použití desktopového klienta Windows najdete v tématu [Začínáme s klientem Windows pro stolní počítače](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop).

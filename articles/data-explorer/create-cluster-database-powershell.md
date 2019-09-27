@@ -1,20 +1,20 @@
 ---
-title: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
-description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí prostředí PowerShell
+title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
+description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí prostředí PowerShell.
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 85c8cc81b3c61e2faf65bf8a06c69ca7f2b906c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497330"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326758"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cluster-database-portal.md)
@@ -22,9 +22,9 @@ ms.locfileid: "66497330"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [Šablona ARM](create-cluster-database-resource-manager.md)  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku se vytvoření clusteru a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](../cloud-shell/overview.md) s [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí prostředí PowerShell. Rutiny a skripty prostředí PowerShell můžete v systému Windows, Linux nebo v [Azure Cloud Shell](../cloud-shell/overview.md) spustit pomocí [AZ. Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) a vytvořit a nakonfigurovat clustery a databáze Azure Průzkumník dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,11 +34,11 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat Azure CLI místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurovat parametry
 
-Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azure Cloud Shell. Pokud používáte rozhraní příkazového řádku místně, postupujte podle kroků 1 a 2 pro přihlášení do Azure a nastavit aktuální předplatné:
+Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud Shell. Pokud používáte rozhraní příkazového řádku místně, přihlaste se k Azure a nastavte aktuální předplatné podle kroků 1 & 2:
 
 1. Spuštěním následujícího příkazu se přihlaste k Azure:
 
@@ -46,20 +46,20 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
     Connect-AzAccount
     ```
 
-1. Nastavte předplatné, ve kterém chcete vytvoření clusteru:
+1. Nastavte předplatné, ve kterém chcete vytvořit cluster:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-1. Při spuštění rozhraní příkazového řádku Azure, místně nebo ve službě Azure Cloud Shell, musíte nainstalovat modul Az.Kusto na vašem zařízení:
+1. Pokud používáte Azure CLI místně nebo v Azure Cloud Shell, musíte na svém zařízení nainstalovat modul AZ. Kusto:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
     ```
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Průzkumník dat Azure
+## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
 
-1. Vytvoření clusteru pomocí následujícího příkazu:
+1. Vytvořte cluster pomocí následujícího příkazu:
 
     ```azurepowershell-interactive
      New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
@@ -67,23 +67,23 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Název | *mykustocluster* | Požadovaný název vašeho clusteru.|
-   | Skladová jednotka (SKU) | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
-   | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
+   | Name | *mykustocluster* | Požadovaný název clusteru.|
+   | Skladová jednotka (SKU) | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
-    Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
+    Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
 
-1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
-Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru byl úspěšně vytvořen.
+Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v Průzkumníku dat Azure clusteru
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
-1. Vytvoření databáze pomocí následujícího příkazu:
+1. Vytvořte databázi pomocí následujícího příkazu:
 
     ```azurepowershell-interactive
     New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
@@ -91,13 +91,13 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Název clusteru | *mykustocluster* | Název clusteru s novou databází.|
-   | Název | *mykustodatabase* | Název databáze.|
-   | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
-   | SoftDeletePeriod | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
-   | HotCachePeriod | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
+   | ClusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
+   | Name | *mykustodatabase* | Název vaší databáze.|
+   | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
+   | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
+   | HotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |
 
-1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
+1. Spuštěním následujícího příkazu zobrazíte databázi, kterou jste vytvořili:
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
@@ -107,14 +107,14 @@ Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
-* Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
+* Pokud plánujete postupovat podle našich dalších článků, ponechejte prostředky, které jste vytvořili.
+* Pokud chcete vyčistit prostředky, odstraňte cluster. Když odstraníte cluster, odstraní se i všechny jeho databáze. Pomocí následujícího příkazu odstraňte cluster:
 
     ```azurepowershell-interactive
     Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Další příkazy Az.Kusto](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
-* [Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+* [Další příkazy AZ. Kusto](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
+* [Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)](net-standard-ingest-data.md)

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0b04ca5c4bea00221d5a823432b6fc1934badb1a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309325"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320515"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -58,7 +58,10 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
     **Předpona adresy**: 0.0.0.0/0<br>
     **Další segment směrování**: Internet
 
-* Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Jinak budete muset pokaždé, když změníte server DNS, restartovat také ISE, což je funkce, která je dostupná ve verzi Public Preview ISE.
+* Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Jinak budete muset pokaždé, když změníte server DNS, restartovat taky ISE.
+
+  > [!IMPORTANT]
+  > Pokud změníte nastavení serveru DNS po vytvoření ISE, ujistěte se, že jste restartovali ISE. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 <a name="ports"></a>
 

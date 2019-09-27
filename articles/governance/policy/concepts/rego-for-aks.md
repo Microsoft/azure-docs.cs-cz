@@ -1,55 +1,55 @@
 ---
-title: Pochopit, jak auditovat obsah virtuálního počítače
-description: Zjistěte, jak Azure Policy využívá Rego a otevřete agenta zásad ke správě clusterů ve službě Azure Kubernetes Service.
+title: Informace o tom, jak auditovat obsah virtuálního počítače
+description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů ve službě Azure Kubernetes.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: fdb392533e28df1d50e90c842d0117385afb254b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e16c40c6a4f3539aa286c4c2d0859459ca18a91c
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453902"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338371"
 ---
-# <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Principy Azure Policy pro službu Azure Kubernetes
+# <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Vysvětlení Azure Policy pro službu Azure Kubernetes
 
-Se integruje s Azure Policy [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) (AKS) pro použití enforcements ve velkém měřítku a bezpečnostní opatření na své clustery centralizované, konzistentním způsobem.
-Tím, že rozšíří použití [vrátný](https://github.com/open-policy-agent/gatekeeper), _jejich příchodu řadič webhooku_ pro [otevřete agenta zásad](https://www.openpolicyagent.org/) (NEPRŮ), služba Azure Policy umožňuje spravovat a tvorba sestav o dodržování předpisů stav vašich prostředků Azure a AKS clusterů na jednom místě.
+Azure Policy se integruje se [službou Azure Kubernetes](../../../aks/intro-kubernetes.md) (AKS), která se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem.
+Rozšířením použití [serveru gatekeeper](https://github.com/open-policy-agent/gatekeeper) _Webhook kontroleru pro přístup_ k [otevřenému agentu zásad](https://www.openpolicyagent.org/) (neprů) umožňuje Azure Policy spravovat a hlásit stav dodržování předpisů vašich prostředků Azure a clusterů AKS z jednoho místa.
 
 > [!NOTE]
-> Služba Azure Policy pro AKS je ve verzi Limited Preview a podporuje pouze integrované definice zásad.
+> Azure Policy pro AKS je ve verzi omezené verze Preview a podporuje jenom integrované definice zásad.
 
 ## <a name="overview"></a>Přehled
 
-K povolení a používání služby Azure Policy pro AKS s vaším clusterem AKS, postupujte takto:
+Pokud chcete povolit a používat Azure Policy pro AKS s clusterem AKS, proveďte následující akce:
 
-- [Vyjádřit výslovný souhlas pro funkce ve verzi preview](#opt-in-for-preview)
-- [Nainstalujte doplněk Azure Policy](#installation-steps)
+- [Výslovný souhlas pro funkce ve verzi Preview](#opt-in-for-preview)
+- [Instalace doplňku Azure Policy](#installation-steps)
 - [Přiřazení definice zásady pro AKS](#built-in-policies)
-- [Vyčkat, než ověření](#validation-and-reporting-frequency)
+- [Počkat na ověření](#validation-and-reporting-frequency)
 
-## <a name="opt-in-for-preview"></a>Vyjádřit výslovný souhlas pro verzi preview
+## <a name="opt-in-for-preview"></a>Výslovný souhlas pro verzi Preview
 
-Před instalací doplňku zásad Azure nebo některou z funkcí služby povolíte, musíte povolit předplatné **Microsoft.ContainerService** poskytovatele prostředků a **Microsoft.policyinsights do**poskytovatele prostředků, pak schválení pro verzi Preview. Získat verzi preview, nebo použijte následující postup na portálu Azure pomocí Azure CLI:
+Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. ContainerService** a poskytovatele prostředků **Microsoft. PolicyInsights** . pak bude schváleno. Připojte se k verzi Preview. Pokud se chcete připojit k verzi Preview, postupujte podle těchto kroků v Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI:
 
-- Azure portal:
+- Azure Portal:
 
-  1. Zaregistrujte **Microsoft.ContainerService** a **Microsoft.policyinsights do** poskytovatele prostředků. Pokyny najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
   1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-     ![Hledání zásad ve všech služeb](../media/rego-for-aks/search-policy.png)
+     ![Vyhledat zásady ve všech službách](../media/rego-for-aks/search-policy.png)
 
-  1. Vyberte **připojte se k verzi Preview** na levé straně na stránku služby Azure Policy.
+  1. Na levé straně stránky Azure Policy vyberte **Join Preview** .
 
-     ![Zásady pro AKS ve verzi preview pro připojení](../media/rego-for-aks/join-aks-preview.png)
+     ![Připojte se k zásadě pro AKS ve verzi Preview](../media/rego-for-aks/join-aks-preview.png)
 
-  1. Vyberte řádek odběru, který má být přidána do verze preview.
+  1. Vyberte řádek předplatného, které chcete přidat do verze Preview.
 
-  1. Vyberte **Opt-in** tlačítko v horní části seznamu předplatných.
+  1. V horní části seznamu předplatných vyberte tlačítko pro **výslovný souhlas** .
 
 - Azure CLI:
 
@@ -71,22 +71,22 @@ Před instalací doplňku zásad Azure nebo některou z funkcí služby povolít
 
 ## <a name="azure-policy-add-on"></a>Doplněk Azure Policy
 
-_Doplněk zásad Azure_ pro Kubernetes propojí službu Azure Policy ke kontroleru jejich příchodu vrátný. Doplněk, který je nainstalovaný do _zásad azure_ obor názvů, představuje následující funkce:
+_Doplněk Azure Policy_ pro Kubernetes připojuje službu Azure Policy k řadiči pro přístup k serveru gatekeeper. Doplněk, který je nainstalovaný v oboru názvů _zásad Azure_ , doplňuje následující funkce:
 
-- Kontroly službou Azure Policy pro přiřazení do clusteru AKS
-- Soubory ke stažení a ukládá do mezipaměti zásad podrobnosti, včetně _rego_ definice zásad, jako **configmaps**
-- Spustí kontrolu dodržování předpisů úplnou kontrolu v clusteru AKS
-- Sestavy auditování a podrobnosti o dodržování předpisů zpět do Azure Policy
+- Kontroluje Azure Policy přiřazení do clusteru AKS.
+- Podrobnosti o zásadách ke stažení a ukládání do mezipaměti, včetně definice zásad _Rego_ , jako **configmaps**
+- Spustí kontrolu dodržování předpisů s úplnou kontrolou v clusteru AKS.
+- Hlásí informace o auditování a dodržování předpisů zpátky na Azure Policy
 
 ### <a name="installing-the-add-on"></a>Instalace doplňku
 
 #### <a name="prerequisites"></a>Požadavky
 
-Před instalací doplňku ve vašem clusteru AKS, musí být nainstalována rozšíření ve verzi preview. Tento krok se provádí pomocí Azure CLI:
+Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Preview. Tento krok se provádí pomocí Azure CLI:
 
-1. Musí mít Azure CLI verze 2.0.62 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.62 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-1. AKS cluster, musí být verze _1.10_ nebo vyšší. K ověření vaší verze clusteru AKS pomocí následujícího skriptu:
+1. Cluster AKS musí mít verzi _1,10_ nebo vyšší. K ověření verze clusteru AKS použijte následující skript:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -95,7 +95,7 @@ Před instalací doplňku ve vašem clusteru AKS, musí být nainstalována roz�
    az aks list
    ```
 
-1. Nainstalovat verzi _0.4.0_ rozhraní příkazového řádku Azure rozšíření ve verzi preview pro AKS, `aks-preview`:
+1. Nainstalujte verzi _0.4.0_ rozšíření Azure CLI Preview pro AKS `aks-preview`:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -108,28 +108,28 @@ Před instalací doplňku ve vašem clusteru AKS, musí být nainstalována roz�
    ```
 
    > [!NOTE]
-   > Pokud jste dříve nainstalovali _aks ve verzi preview_ rozšíření, některé aktualizace, pomocí instalace `az extension update --name aks-preview` příkazu.
+   > Pokud jste dříve nainstalovali rozšíření _AKS-Preview_ , nainstalujte všechny aktualizace pomocí příkazu `az extension update --name aks-preview`.
 
-#### <a name="installation-steps"></a>Postup instalace
+#### <a name="installation-steps"></a>Instalační kroky
 
-Po dokončení požadavků, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
+Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
 - portál Azure
 
-  1. Spuštění služby AKS na portálu Azure portal kliknutím **všechny služby**, vyhledáte a vyberete **služby Kubernetes**.
+  1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
-  1. Vyberte jednu z vašich clusterů AKS.
+  1. Vyberte jeden z clusterů AKS.
 
-  1. Vyberte **zásady (preview)** na levé straně stránky služby Kubernetes.
+  1. Na levé straně stránky služby Kubernetes vyberte **zásady (Preview)** .
 
      ![Zásady z clusteru AKS](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
 
-  1. Na hlavní stránce vyberte **povolit doplněk** tlačítko.
+  1. Na hlavní stránce vyberte tlačítko **Povolit doplněk** .
 
-     ![Povolit Azure Policy pro doplněk AKS](../media/rego-for-aks/enable-policy-add-on.png)
+     ![Povolení Azure Policy pro doplněk AKS](../media/rego-for-aks/enable-policy-add-on.png)
 
      > [!NOTE]
-     > Pokud **povolit doplněk** tlačítko nejde aktivovat, předplatné ještě nejsou přidané do verze preview. Zobrazit [Opt-in pro aplikaci ve verzi preview](#opt-in-for-preview) pro požadované kroky.
+     > Pokud je tlačítko **Povolit doplněk** šedě zobrazené, předplatné ještě není přidané do verze Preview. Požadované kroky najdete v tématu [výslovný souhlas pro verzi Preview](#opt-in-for-preview) .
 
 - Azure CLI
 
@@ -139,48 +139,48 @@ Po dokončení požadavků, nainstalujte doplněk Azure Policy v clusteru AKS, k
   az aks enable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-### <a name="validation-and-reporting-frequency"></a>Ověření a četnost hlášení
+### <a name="validation-and-reporting-frequency"></a>Frekvence ověřování a generování sestav
 
-Doplněk ověří pomocí Azure Policy pro změny v přiřazení zásad každých 5 minut. Během tohoto cyklu aktualizace doplněk odebere všechny _configmaps_ v _zásad azure_ potom znovu vytvoří obor názvů _configmaps_ pro použití vrátný.
+Doplněk se vrátí se změnami Azure Policy pro změny v přiřazení zásad každých 5 minut. Během tohoto cyklu aktualizace doplněk odebere všechny _configmaps_ v oboru názvů _zásad Azure_ a pak znovu vytvoří _Configmaps_ pro použití pomocí serveru gatekeeper.
 
 > [!NOTE]
-> Zatímco _Správce clusteru_ může mít oprávnění k _zásad azure_ obor názvů, není vhodné nebo dělat změny do oboru názvů. Všechny ručně prováděné změny se ztratí během cyklu aktualizace.
+> I když _Správce clusteru_ může mít oprávnění k oboru názvů _Azure-Policy_ , nedoporučuje se ani není podporován, aby provedl změny v oboru názvů. Jakékoli ručně provedené změny budou ztraceny během aktualizačního cyklu.
 
-Každých 5 minut, doplněk vyžaduje úplnou kontrolu clusteru. Po shromáždění podrobností úplnou kontrolu a všechna hodnocení v reálném čase podle změn pokus o vrátný do clusteru, doplněk hlásí výsledky zpět ke službě Azure Policy pro zařazení [podrobnosti o dodržování předpisů](../how-to/get-compliance-data.md) všechny zásady Azure, jako jsou přiřazení. Během cyklu auditů se vrátí pouze výsledky pro aktivní zásada přiřazení.
+Každých 5 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění podrobností o úplné kontrole a všech vyhodnocení v reálném čase pomocí serveru GateKeeper na základě změn v clusteru hlásí doplněk výsledky zpět do Azure Policy pro zahrnutí v [podrobnostech o dodržování předpisů](../how-to/get-compliance-data.md) , jako je jakékoli přiřazení Azure Policy. Během cyklu auditu se vrátí jenom výsledky aktivních přiřazení zásad.
 
 ## <a name="policy-language"></a>Jazyk zásad
 
-Struktury jazyka Azure Policy pro správu AKS následně existujících zásad. Účinek _EnforceRegoPolicy_ slouží ke správě vašich clusterů AKS a trvá _podrobnosti_ vlastnosti specifické pro práci s NEPRŮ a vrátný. Podrobnosti a příklady najdete v tématu [EnforceRegoPolicy](effects.md#enforceregopolicy) vliv.
+Struktura Azure Policy jazyka pro správu AKS se řídí existujícími zásadami. Efekt _EnforceRegoPolicy_ se používá ke správě clusterů AKS a má _podrobné_ vlastnosti, které jsou specifické pro práci s neprů a gatekeeper. Podrobnosti a příklady najdete v [EnforceRegoPolicy](effects.md#enforceregopolicy) efektu.
 
-Jako součást _details.policy_ vlastnost v definici zásady Azure Policy předá URI zásady rego doplněk. Rego je jazyk, ve kterém NEPRŮ a vrátný podporu pro ověření nebo mutovat žádost do clusteru Kubernetes. Díky podpoře současných standardů pro řízení Kubernetes, Azure Policy umožňuje znovu použít existující pravidla a spárovat se službou Azure Policy pro dodržování předpisů jednotné cloudové prostředí pro vytváření sestav. Další informace najdete v tématu [novinky Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+Jako součást vlastnosti _Details. Policy_ v definici zásady Azure Policy předá do DOPLŇKU identifikátor URI zásady Rego. Rego je jazyk, který NEPRŮ a GateKeeper podporuje k ověření nebo splnění požadavku na cluster Kubernetes. Díky podpoře stávajícího standardu pro správu Kubernetes Azure Policy umožňuje znovu použít stávající pravidla a párovat je Azure Policy pro jednotné prostředí generování sestav dodržování předpisů cloudu. Další informace najdete v tématu [co je Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
 
 ## <a name="built-in-policies"></a>Předdefinované zásady
 
-Najít integrované zásady pro správu AKS pomocí webu Azure portal, postupujte podle těchto kroků:
+Pokud chcete najít předdefinované zásady pro správu AKS pomocí Azure Portal, postupujte podle těchto kroků:
 
-1. Spusťte službu Azure Policy na webu Azure Portal. Vyberte **všechny služby** v levém podokně a pak vyhledejte a vyberte **zásady**.
+1. Spusťte službu Azure Policy v Azure Portal. V levém podokně vyberte **všechny služby** a pak vyhledejte a vyberte **zásady**.
 
-1. V levém podokně na stránku služby Azure Policy vyberte **definice**.
+1. V levém podokně stránky Azure Policy vyberte **definice**.
 
-1. Z rozevíracího seznamu kategorií pomocí **Vybrat vše** vymažte filtr a potom vyberte **služby Kubernetes**.
+1. V rozevíracím seznamu kategorie použijte **možnost Vybrat vše** , pokud chcete filtr vymazat, a pak vyberte **Kubernetes Service**.
 
-1. Vyberte Definice zásad a potom **přiřadit** tlačítko.
+1. Vyberte definici zásady a pak klikněte na tlačítko **přiřadit** .
 
 > [!NOTE]
-> Při přiřazování zásady Azure pro definici AKS, **oboru** musí obsahovat prostředek clusteru AKS.
+> Při přiřazování Azure Policy pro definici AKS musí **obor** zahrnovat prostředek clusteru AKS.
 
-Nebo můžete použít [přiřazení zásad – portál](../assign-policy-portal.md) rychlý start k vyhledání a přiřaďte zásady AKS. Vyhledejte definici zásady Kubernetes místo vzorek 'audit virtuálních počítačů".
+Případně můžete k vyhledání a přiřazení zásad AKS použít rychlý Start [portálu zásad](../assign-policy-portal.md) . Místo ukázky "Auditovat virtuální počítače" vyhledejte definici zásady Kubernetes.
 
 ## <a name="logging"></a>Protokolování
 
-### <a name="azure-policy-add-on-logs"></a>Protokoly doplněk Azure zásad
+### <a name="azure-policy-add-on-logs"></a>Azure Policy protokoly doplňků
 
-Doplněk Azure Policy zajišťuje jako kontroler Kubernetes nebo kontejner, protokoly clusteru AKS. Protokoly jsou přístupné **Insights** stránky clusteru AKS. Další informace najdete v tématu [cluster AKS pochopit výkon díky Azure monitoru pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).
+Jako Kubernetes Controller nebo kontejner, Azure Policy doplněk udržuje protokoly v clusteru AKS. Protokoly se zveřejňují na stránce **Přehled** v clusteru AKS. Další informace najdete v tématu [vysvětlení výkonu clusteru AKS s Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).
 
-### <a name="gatekeeper-logs"></a>Protokoly serveru gateKeeper
+### <a name="gatekeeper-logs"></a>Protokoly GateKeeper
 
-Povolení protokolů vrátný pro nové žádosti o prostředek, postupujte podle kroků v [povolit a zkontrolovat Kubernetes ve službě AKS protokoly hlavní uzel](../../../aks/view-master-logs.md).
-Tady je příklad dotazu zobrazíte odepření události na nové požadavky prostředků:
+Pokud chcete povolit protokoly GateKeeper pro nové požadavky na prostředky, postupujte podle kroků v části [povolení a kontrola protokolů hlavního uzlu Kubernetes v AKS](../../../aks/view-master-logs.md).
+Tady je příklad dotazu pro zobrazení zamítnutých událostí pro nové požadavky na prostředky:
 
 ```kusto
 | where Category == "kube-audit"
@@ -188,25 +188,25 @@ Tady je příklad dotazu zobrazíte odepření události na nové požadavky pro
 | limit 100
 ```
 
-Chcete-li zobrazit protokoly z kontejnerů vrátný, postupujte podle kroků v [povolit a zkontrolovat Kubernetes ve službě AKS protokoly hlavní uzel](../../../aks/view-master-logs.md) a zkontrolujte _kube apiserver_ možnost **nastavení diagnostiky** podokně.
+Pokud chcete zobrazit protokoly z kontejnerů GateKeeper, postupujte podle kroků v části [povolení a kontrola protokolů hlavního uzlu Kubernetes v AKS](../../../aks/view-master-logs.md) a v podokně **nastavení diagnostiky** zaškrtněte možnost _Kube-apiserver_ .
 
-## <a name="remove-the-add-on"></a>Odebrat doplněk
+## <a name="remove-the-add-on"></a>Odebrání doplňku
 
-Odebrání clusteru AKS doplněk Azure Policy, použijte webu Azure portal nebo rozhraní příkazového řádku Azure:
+Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
 - portál Azure
 
-  1. Spuštění služby AKS na portálu Azure portal kliknutím **všechny služby**, vyhledáte a vyberete **služby Kubernetes**.
+  1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
-  1. Vyberte svůj cluster AKS, ve které chcete zakázat doplněk Azure Policy.
+  1. Vyberte cluster AKS, ve kterém chcete zakázat doplněk Azure Policy.
 
-  1. Vyberte **zásady (preview)** na levé straně stránky služby Kubernetes.
+  1. Na levé straně stránky služby Kubernetes vyberte **zásady (Preview)** .
 
      ![Zásady z clusteru AKS](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
 
-  1. Na hlavní stránce vyberte **zakázat doplněk** tlačítko.
+  1. Na hlavní stránce vyberte tlačítko **zakázat doplněk** .
 
-     ![Zakázat Azure Policy pro doplněk AKS](../media/rego-for-aks/disable-policy-add-on.png)
+     ![Zakázat doplněk Azure Policy pro AKS](../media/rego-for-aks/disable-policy-add-on.png)
 
 - Azure CLI
 
@@ -216,12 +216,12 @@ Odebrání clusteru AKS doplněk Azure Policy, použijte webu Azure portal nebo 
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic zásad](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
-- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md).
-- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
-- Zjistěte, jak [nápravě nekompatibilních prostředků](../how-to/remediate-resources.md).
-- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/index.md).
+- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
+- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

@@ -1,19 +1,19 @@
 ---
-title: Porozumění osvědčeným postupům zabezpečení Azure pro digitální vlákna | Microsoft Docs
-description: Osvědčené postupy zabezpečení v Azure jsou vyzdvojené.
+title: Porozumění osvědčeným postupům zabezpečení – digitální vlákna Azure | Microsoft Docs
+description: Seznamte se s osvědčenými postupy zabezpečení pro digitální vlákna Azure a Internet věcí.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 09/17/2019
 ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656527"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336692"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -46,7 +46,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 > [!div class="checklist"]
 > * Šifrování uložených, uložených nebo trvalých dat.
 > * Vyžadovat, aby hesla nebo klíče byly pravidelně měněny nebo aktualizovány.
-> * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#rbac) níže.
+> * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#role-based-access-control-best-practices) níže.
 > * Vezměte v úvahu dělenou topologii sítě, aby byla zařízení v každé síti izolovaná od ostatních.
 > * Používejte výkonné šifrování. Vyžadovat dlouhá hesla a používat zabezpečené protokoly a dvojúrovňové ověřování.
 
@@ -66,8 +66,6 @@ Digitální vlákna Azure používá Azure Active Directory k ověřování uži
 > * Ověřte, že doba platnosti tokenu je platná a zda token zůstává platný.
 > * Nastavte odpovídající délkové doby, pro které jsou tokeny platné.
 > * Aktualizujte tokeny, jejichž platnost vypršela.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy řízení přístupu založené na rolích
 

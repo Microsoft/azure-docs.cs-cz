@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124106"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338171"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -62,30 +62,41 @@ Při volání `GET /api/stock/value` externí služby potřebujete znát identit
 
 ## <a name="correlation-headers"></a>Hlavičky korelace
 
-Pracujeme na návrhu RFC pro [korelační protokol HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Tento návrh definuje dvě hlavičky:
-
-- `Request-Id`: Provede globálně jedinečné ID volání.
-- `Correlation-Context`: Přenese kolekce dvojic název-hodnota vlastností distribuované vektorizace.
-
-Standard také definuje dvě schémata pro `Request-Id` generování: ploché a hierarchické. U plochého schématu `Id` je `Correlation-Context` pro kolekci definován známý klíč.
-
-Application Insights definuje [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) protokolu HTTP korelace. Používá `Request-Context` páry název-hodnota ke šíření kolekce vlastností používaných přímým volajícím nebo volaným. Sada Application Insights SDK používá tuto hlavičku k nastavení `dependency.target` a `request.source` polí.
-
-### <a name="w3c-distributed-tracing"></a>Distribuované trasování W3C
-
-Převádíme na [Formát distribuované vektorizace W3C](https://w3c.github.io/trace-context/). Definuje:
+Převádíme se na [kontext trasování W3C](https://w3c.github.io/trace-context/) , který definuje:
 
 - `traceparent`: Provede globálně jedinečné ID operace a jedinečný identifikátor volání.
 - `tracestate`: Přináší trasování kontextu specifického pro systém.
 
-#### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Povolení podpory distribuovaného trasování W3C pro klasické aplikace ASP.NET
+Nejnovější verze Application Insights SDK podporují protokol kontextu trasování, ale může být nutné, abyste se mohli rozhodnout, že (bude zachována zpětná kompatibilita se starým korelačním protokolem, který ApplicationInsights sady SDK podporuje).
 
+[Korelační protokol HTTP se označuje jako požadavek-ID](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) v cestě pro zastaralost. Tento protokol definuje dvě hlavičky:
+
+- `Request-Id`: Provede globálně jedinečné ID volání.
+- `Correlation-Context`: Přenese kolekce dvojic název-hodnota vlastností distribuované vektorizace.
+
+Application Insights také definuje [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro protokol HTTP korelace. Používá `Request-Context` páry název-hodnota ke šíření kolekce vlastností používaných přímým volajícím nebo volaným. Sada Application Insights SDK používá tuto hlavičku k nastavení `dependency.target` a `request.source` polí.
+
+### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Povolení podpory distribuovaného trasování W3C pro klasické aplikace ASP.NET
+ 
+  > [!NOTE]
+  > Není nutná žádná konfigurace od `Microsoft.ApplicationInsights.Web` do `Microsoft.ApplicationInsights.DependencyCollector`. 
+
+Trasování W3C – podpora kontextu je prováděna zpětně kompatibilním způsobem a korelace se očekává, že bude fungovat s aplikacemi, které byly instrumentované s předchozími verzemi sady SDK (bez podpory W3C). 
+
+Pokud z nějakého důvodu chcete dál používat starší protokol `Request-Id`, můžete *Zakázat* trasování kontextu s následující konfigurací.
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+Pokud spouštíte starší verzi sady SDK, doporučujeme ji aktualizovat nebo použít následující konfiguraci pro povolení trasování kontextu.
 Tato funkce je k dispozici `Microsoft.ApplicationInsights.DependencyCollector` v `Microsoft.ApplicationInsights.Web` a balíčky počínaje verzí 2.8.0-Beta1.
 Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, `ApplicationInsights.config`změňte:
 
 - V `RequestTrackingTelemetryModule`části `EnableW3CHeadersExtraction` přidejte element s hodnotou nastavenou na `true`.
 - V `DependencyTrackingTelemetryModule`části `EnableW3CHeadersInjection` přidejte element s hodnotou nastavenou na `true`.
-- `W3COperationCorrelationTelemetryInitializer` Přidat`TelemetryInitializers` pod podobný 
+- Přidat `W3COperationCorrelationTelemetryInitializer` pod `TelemetryInitializers` podobně jako 
 
 ```xml
 <TelemetryInitializers>
@@ -94,7 +105,21 @@ Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, `ApplicationIns
 </TelemetryInitializers> 
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace ASP.NET Core
+### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace ASP.NET Core
+
+ > [!NOTE]
+  > Od verze `Microsoft.ApplicationInsights.AspNetCore` se nevyžaduje žádná konfigurace 2.8.0.
+ 
+Trasování W3C – podpora kontextu je prováděna zpětně kompatibilním způsobem a korelace se očekává, že bude fungovat s aplikacemi, které byly instrumentované s předchozími verzemi sady SDK (bez podpory W3C). 
+
+Pokud z nějakého důvodu chcete dál používat starší protokol `Request-Id`, můžete *Zakázat* trasování kontextu s následující konfigurací.
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+Pokud spouštíte starší verzi sady SDK, doporučujeme ji aktualizovat nebo použít následující konfiguraci pro povolení trasování kontextu.
 
 Tato funkce je ve `Microsoft.ApplicationInsights.AspNetCore` verzi 2.5.0-Beta1 a ve `Microsoft.ApplicationInsights.DependencyCollector` verzi 2.8.0-Beta1.
 Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` nastavte `true`na:
@@ -108,7 +133,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace Java
+### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace Java
 
 - **Příchozí konfigurace**
 
@@ -145,9 +170,9 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > Zajistěte, aby příchozí i odchozí konfigurace byly přesně stejné.
 
-#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Povolit podporu distribuovaného trasování W3C pro webové aplikace
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Povolit podporu distribuovaného trasování W3C pro webové aplikace
 
-Tato funkce je v `Microsoft.ApplicationInsights.JavaScript`systému. Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, `distributedTracingMode` použijte config. AI_AND_W3C je k dispozici pro zajištění zpětné kompatibility se staršími Application Insights instrumentované služby:
+Tato funkce je v `Microsoft.ApplicationInsights.JavaScript`. Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, použijte `distributedTracingMode` config. AI_AND_W3C je k dispozici pro zajištění zpětné kompatibility se staršími Application Insights instrumentované služby:
 
 - **Nastavení NPM (ignorovat při použití nastavení fragmentu)**
 
@@ -209,7 +234,7 @@ Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `D
 
 ASP.NET Core 2,0 podporuje extrakci hlaviček protokolu HTTP a spuštění nové aktivity.
 
-`System.Net.HttpClient`Počínaje verzí 4.1.0 podporuje automatické vkládání hlaviček protokolu HTTP korelace a sledování volání HTTP jako aktivity.
+`System.Net.Http.HttpClient`Počínaje verzí 4.1.0 podporuje automatické vkládání hlaviček protokolu HTTP korelace a sledování volání HTTP jako aktivity.
 
 Pro klasický ASP.NET je k dispozici nový modul HTTP, [Microsoft. ASPNET. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/). Tento modul implementuje korelaci telemetrie pomocí `DiagnosticSource`. Spustí aktivitu na základě hlaviček příchozích požadavků. Také koreluje telemetrie z různých fází zpracování požadavků, a to i v případě, že se každá fáze zpracování Internetová informační služba (IIS) spouští v jiném spravovaném vlákně.
 
@@ -255,7 +280,7 @@ V některých případech můžete chtít přizpůsobit způsob, jakým se názv
   telemetryClient.getContext().getCloud().setRole("My Component Name");
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zápis [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
 - Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .

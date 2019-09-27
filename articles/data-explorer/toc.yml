@@ -38,6 +38,8 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
+        - name: Šablona Azure Resource Manageru
+          href: create-cluster-database-resource-manager.md
     - name: Ingestace dat
       items:
         - name: Centrum událostí

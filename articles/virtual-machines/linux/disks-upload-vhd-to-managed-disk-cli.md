@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bd4d3b9b34f951896e838d5f6f50ca204d329568
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266598"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326822"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure CLI
 
@@ -40,6 +40,8 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 - ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
 V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit až do `revoke-access` chvíle, kdy se zavolá na spravovaný disk, který je potřeba k připojení disku k virtuálnímu počítači.
+
+Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete muset mít velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). To můžete provést buď pomocí `wc -c <yourFileName>.vhd`, nebo `ls -al <yourFileName>.vhd`. Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
 
 Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru-- **for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az-disk-create) :
 

@@ -3,7 +3,7 @@ title: Přihlaste se k virtuálnímu počítači se systémem Linux s přihlašo
 description: Naučte se vytvořit a nakonfigurovat virtuální počítač Linux pro přihlášení pomocí Azure Active Directory ověřování.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316763"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327100"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: Přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -88,7 +88,7 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Instalace rozšíření pro přihlášení k virtuálnímu počítači Azure AD
 
 > [!NOTE]
-> Pokud se tento exention nasazuje do dříve vytvořeného virtuálního počítače, zajistěte, aby měl počítač alespoň 1 GB přidělené paměti, jinak se rozšíření nepodaří nainstalovat.
+> Pokud toto rozšíření nasadíte do dříve vytvořeného virtuálního počítače, zajistěte, aby měl počítač alespoň 1 GB přidělené paměti, jinak se rozšíření nepodaří nainstalovat.
 
 Pokud se chcete přihlásit k virtuálnímu počítači se systémem Linux s přihlašovacími údaji služby Azure AD, nainstalujte Azure Active Directory rozšíření VM pro přihlášení. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) nainstalujete rozšíření *AADLoginForLinux* na virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* :
 

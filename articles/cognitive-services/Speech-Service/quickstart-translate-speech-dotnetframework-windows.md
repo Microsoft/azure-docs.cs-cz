@@ -1,27 +1,27 @@
 ---
 title: 'Rychlý start: Převod řeči, C# (.NET Framework Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte jednoduchou .NET Framework aplikaci pro zaznamenání uživatelského rozpoznávání řeči, překladu na jiný jazyk a výstup textu do příkazového řádku. Tato příručka je určená pro uživatele Windows.
+description: V tomto rychlém startu vytvoříte .NET Frameworkovou aplikaci pro zaznamenání uživatelského rozpoznávání řeči, překladu na jiný jazyk a výstup textu do příkazového řádku. Tato příručka je určená pro uživatele Windows.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e62756ab428135ca3d5d9107f37e61813097d21f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bb710a3e3adb13aa3999c13043c8bb93f6b885f1
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553471"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327349"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Rychlý start: Převod řeči pomocí sady Speech SDK pro .NET Framework
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Převod řeči pomocí sady Speech SDK pro .NET Framework (Windows)
 
-K dispozici jsou také rychlé starty pro [Převod řeči na text](quickstart-csharp-dotnet-windows.md) a [Převod textu na řeč](quickstart-text-to-speech-dotnet-windows.md).
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-csharp-dotnet-windows.md) a [funkce pro syntézu řeči](quickstart-text-to-speech-dotnet-windows.md).
 
-V tomto rychlém startu vytvoříte jednoduchou .NET Framework aplikaci, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je určená ke spuštění v 64 Windows a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto rychlém startu vytvoříte aplikaci .NET Framework, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace může běžet v 32 nebo 64 bitových oknech a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2019.
 
 Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
@@ -29,7 +29,7 @@ V tomto rychlém startu vytvoříte jednoduchou .NET Framework aplikaci, která 
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -38,31 +38,27 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Otevřete soubor `Program.cs` a veškerý kód nahraďte následujícím kódem.
+1. Otevřete **program.cs**a v něm nahraďte veškerý kód následujícím kódem.
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
+1. Vyhledejte řetězec `YourSubscriptionKey` a nahraďte ho klíčem předplatného.
 
-1. Také řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](regions.md) , která je přidružená k vašemu předplatnému. Pokud například používáte bezplatné zkušební předplatné, oblast je `westus`.
 
-1. Uložte změny do projektu.
+1. V řádku nabídek vyberte **soubor** > **Uložit vše**.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. Sestavte aplikaci. V řádku nabídek zvolte **Sestavení** > **Sestavit řešení**. Kód by se měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavení** **řešení**  >  pro sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
 
-    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Úspěšné sestavení")
+1. Zvolte možnost **ladění** > **Spustit ladění** (nebo vyberte **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Spusťte aplikaci. V řádku nabídek zvolte **Ladit** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+1. Přemluvte si anglickou frázi nebo větu do mikrofonu vašeho zařízení. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která překládá řeč na text v jiném jazyce (v tomto případě je to němčina). Služba Speech odesílá přeložený text zpátky do aplikace, která zobrazuje překlad v okně.
 
-    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spuštění aplikace s laděním")
+   ![Uživatelské rozhraní překladu řeči](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png)
 
-1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Rozpoznávání řeči se přenáší do služby Speech, přeložená a přepisu na text, který se zobrazí ve stejném okně.
-
-    ![Snímek obrazovky s výstupem konzoly po úspěšném překladu](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Výstup na konzole po úspěšném překladu")
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči ze zvukového souboru a výstup přeloženého textu jako syntetizované řeči.
 
@@ -71,5 +67,4 @@ Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči 
 
 ## <a name="see-also"></a>Viz také:
 
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [Výuka modelu pro Custom Speech](how-to-custom-speech-train-model.md)

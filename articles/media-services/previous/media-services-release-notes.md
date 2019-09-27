@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309231"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338554"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -50,9 +50,9 @@ Informace o historii verze REST API Media Services najdete v části [Odkaz na A
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2*. Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Procesory médií [Azure Media Indexer 2 (ve verzi Preview)](media-services-process-content-with-indexer2.md) se vyřadí od 1. ledna 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer v1* a *Azure Media Indexer v2 Preview*. Procesor médií [Azure Media Indexer v1](media-services-index-content.md) bude vyřazení od 1. října 2020. Od 1. ledna 2020 se vyřadí procesory médií [Azure Media Indexer V2 verze Preview](media-services-process-content-with-indexer2.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
-Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+Další informace najdete v tématu [migrace z Azure Media Indexer V1 a Azure Media Indexer v2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Srpen 2019
 

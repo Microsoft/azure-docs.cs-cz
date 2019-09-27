@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 95d133e07725f797ea3c1a903e315d5c7232e1de
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360753"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327626"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění pro objekty blob Azure Storage
 Azure Storage teď nabízí obnovitelné odstranění objektů blob, abyste mohli snadněji obnovit data, když je omylem změnil nebo odstranila aplikace nebo jiný uživatel účtu úložiště.
@@ -314,7 +314,7 @@ Ano, ale v objektu BLOB musíte nejdřív zavolat příkaz Undelete.
 Ano, obnovitelné odstranění je k dispozici pro objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky.
 
 **Je obnovitelné odstranění k dispozici pro disky virtuálních počítačů?**  
-Obnovitelné odstranění je k dispozici pro nespravované disky úrovně Premium i Standard. Obnovitelné odstranění vám pomůže jenom obnovit data odstraněná **odstraněním objektů BLOB**, **vložením objektů BLOB**,  vložením **seznamu blokovaných**objektů a **objektu BLOB pro kopírování**. Data přepsaná voláním **stránky Put** nelze obnovit.
+Obnovitelné odstranění je k dispozici pro nespravované disky úrovně Premium i Standard. Obnovitelné odstranění vám pomůže jenom obnovit data odstraněná **odstraněním objektů BLOB**, **vložením objektů BLOB**, **vložením seznamu blokovaných** **objektů a objektu BLOB pro kopírování**. Data přepsaná voláním **stránky Put** nelze obnovit.
 
 **Potřebuji změnit moje existující aplikace, aby používaly obnovitelné odstranění?**  
 Je možné využít obnovitelné odstranění bez ohledu na verzi rozhraní API, kterou používáte. Pokud ale chcete vypsat a obnovit obnovitelné odstraněné objekty BLOB a snímky objektů blob, budete muset použít REST API nebo novější verze 2017-07-29 [služby Storage](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) . Obecně doporučujeme vždy používat nejnovější verzi bez ohledu na to, jestli tuto funkci používáte.

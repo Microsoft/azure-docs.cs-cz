@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300663"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327162"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby v Azure Search
 Maximální limity úložiště, zatížení a množství indexů, dokumentů a dalších objektů závisí na tom, jestli jste zřídili [Azure Search](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage** s optimalizovaným úložištěm.
 
-+ **Zdarma** je sdílená služba s více klienty, která se dodává s vaším předplatným Azure.
++ **Zdarma** je sdílená služba s více klienty, která se dodává s vaším předplatným Azure. Požadavky na indexování a dotazy se spouštějí na replikách a oddílech, které používají jiní klienti.
 
-+ **Základní** poskytuje vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku.
++ **Základní** poskytuje vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku, ale sdílí určitou síťovou infrastrukturu s ostatními klienty.
 
 + **Standardní** běhy na vyhrazených počítačích s větší kapacitou úložiště a zpracování na všech úrovních. Úroveň Standard se nachází na čtyřech úrovních: S1, S2, S3 a S3 HD.
 

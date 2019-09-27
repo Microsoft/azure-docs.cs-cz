@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat a analyzovat zprávy Syslog ve službě Azure Monitor | Dokumentace Microsoftu
-description: Syslog je protokol protokolování událostí, které jsou společné pro Linux. Tento článek popisuje, jak nakonfigurovat kolekce zprávy Syslog v Log Analytics a podrobnosti o záznamy, které vytvářejí.
+title: Shromažďovat a analyzovat zprávy syslog v Azure Monitor | Microsoft Docs
+description: Syslog je protokol protokolování událostí, které jsou společné pro Linux. Tento článek popisuje, jak nakonfigurovat shromažďování zpráv syslog v Log Analytics a podrobnosti o záznamech, které vytvoří.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,55 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc3aa502dccdd4eb4e8bd1a82456656e5d389160
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240850"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327439"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Syslog zdroje dat ve službě Azure Monitor
-Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Při instalaci agenta Log Analytics pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi. Agent pak odešle zprávu do Azure monitoru, kde se vytvoří odpovídající záznam.  
+# <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat syslog v Azure Monitor
+Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
 
 > [!NOTE]
-> Azure Monitor podporuje sadu zpráv odeslaných rsyslog nebo syslog-ng, kde je rsyslog démona výchozí. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribuce [používá proces démona rsyslogu](http://rsyslog.com) by měla být nainstalovaná a nakonfigurovaná pro nahrazení sysklog.
+> Azure Monitor podporuje shromažďování zpráv odeslaných pomocí rsyslog nebo syslog-ng, kde rsyslog je výchozí démon. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribuce [používá proces démona rsyslogu](http://rsyslog.com) by měla být nainstalovaná a nakonfigurovaná pro nahrazení sysklog.
 >
 >
 
 ![Shromažďování Syslogu](media/data-sources-syslog/overview.png)
 
-Následující zařízení podporují s kolektorem Syslog:
+Kolekce syslog podporuje následující zařízení:
 
-* Prokládat
+* párů
 * uživatel
-* mail
-* daemon
-* ověřování
+* e-mailu
+* Proces
+* auth
 * syslog
-* lpr
-* Novinky
+* port
+* diskuz
 * uucp
 * cron
 * authpriv
 * ftp
-* local0 local7
+* local0-local7
 
-Pro další zařízení [konfigurace zdroje dat vlastní protokoly](data-sources-custom-logs.md) ve službě Azure Monitor.
+Pro jakékoli jiné zařízení [nakonfigurujte zdroj dat vlastních protokolů](data-sources-custom-logs.md) v Azure monitor.
  
 ## <a name="configuring-syslog"></a>Konfigurace Syslog
-Agenta Log Analytics pro Linux bude shromažďovat pouze události s zařízení a závažnosti, které jsou uvedeny v jeho konfiguraci. Syslog můžete nakonfigurovat prostřednictvím webu Azure portal nebo Správa konfiguračních souborů na agenty Linux.
+Agent Log Analytics pro Linux bude shromažďovat jenom události se zařízeními a závažnostmi, které jsou zadané v jeho konfiguraci. Syslog můžete nakonfigurovat prostřednictvím webu Azure portal nebo Správa konfiguračních souborů na agenty Linux.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurovat Syslog na webu Azure Portal
-Konfigurovat Syslog z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
+Nakonfigurujte syslog z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
 
 Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+** . Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat. Nelze zadat žádná další kritéria filtru zpráv.
 
 ![Konfigurovat Syslog](media/data-sources-syslog/configure.png)
 
-Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů. Pokud chcete ručně konfigurovat Syslog na každého agenta pro Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů*.
+Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů. Pokud chcete protokol syslog nakonfigurovat ručně u každého agenta pro Linux, zrušte jeho zrušení zaškrtněte v části *Konfigurace na moje počítače*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta pro Linux
-Když [agenta Log Analytics je nainstalován do klienta Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny. Můžete upravit tento soubor a změňte konfiguraci. Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
+Když [je agent Log Analytics nainstalovaný v klientském počítači se systémem Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor syslog, který definuje zařízení a závažnost shromažďovaných zpráv. Můžete upravit tento soubor a změňte konfiguraci. Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
 
 > [!NOTE]
 > Pokud upravíte konfiguraci syslogu, je nutné restartovat démon procesu syslog, aby se změny projevily.
@@ -154,7 +154,7 @@ Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Shromažďování dat z další porty Syslog
-Zprávy Syslog na místní klient na portu 25224 naslouchá agenta Log Analytics.  Při instalaci agenta je výchozí konfigurace syslog použít a najdete v následujícím umístění:
+Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 25224.  Při instalaci agenta je výchozí konfigurace syslog použít a najdete v následujícím umístění:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
@@ -196,7 +196,7 @@ Zprávy Syslog na místní klient na portu 25224 naslouchá agenta Log Analytics
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-Po dokončení změn se Syslog a Log Analytics, službu agenta je potřeba restartovat, aby se změny konfigurace projevily.   
+Po dokončení změn je nutné restartovat protokol syslog a službu Log Analytics agenta, aby se změny konfigurace projevily.   
 
 ## <a name="syslog-record-properties"></a>Vlastnosti záznamu Syslog
 Záznamy Syslogu mají typ **Syslog** a mít vlastnosti v následující tabulce.
@@ -222,7 +222,7 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | Syslog &#124; summarize AggregatedValue = count() podle počítače |Počet Syslog záznamy podle počítače. |
 | Syslog &#124; summarize AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle zařízení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o [protokolu dotazy](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
 * Použití [vlastní pole](../../azure-monitor/platform/custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
 * [Konfigurace agentů systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) ke shromažďování dalších typů dat.

@@ -1,17 +1,17 @@
 ---
-title: Přidání datových sad do existující sdílené složky v Azure Data Share Preview
+title: Přidání datových sad do existující verze Preview služby Azure Data Share
 description: Přidání datových sad do existující sdílené složky
-author: madams0013
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: 75ac837491927881fd8b7547b0f49a069c3f2d47
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bd8cd7af72c349060eb035dc32e9ddd1a7f9920e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257239"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327514"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Postup přidání datových sad do existující sdílené složky v Azure Data Share Preview
 
@@ -31,5 +31,5 @@ V panelu na pravé straně vyberte typ datové sady, který chcete přidat, a po
 
 Po kliknutí na možnost **přidat datové sady**budou datové sady přidány do sdílené složky. Poznámka: Aby bylo možné zobrazit nové datové sady, musí se snímek aktivovat vašimi příjemci. Pokud je nakonfigurované nastavení snímku, příjemci uvidí nové datové sady po dokončení dalšího naplánovaného snímku. Pokud není nakonfigurované nastavení snímku, příjemce musí ručně aktivovat úplnou nebo přírůstkovou kopii dat, aby mohla aktualizace přijímat. Další informace o snímcích najdete v tématu [snímky](terminology.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o tom, jak [Přidat příjemce do existující sdílené složky dat](how-to-add-recipients.md).

@@ -1,29 +1,32 @@
 ---
-title: Vysvětlení ověřování rozhraní API pro digitální vlákna Azure | Microsoft Docs
-description: Použití digitálních vláken Azure k připojení a ověřování v rozhraních API
+title: Pochopení ověřování rozhraní API pomocí digitálních vláken Azure | Microsoft Docs
+description: Naučte se, jak se pomocí digitálních vláken Azure připojit k rozhraním API a ověřit s nimi.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815553"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338611"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Připojení a ověřování v rozhraních API
+# <a name="connect-to-and-authenticate-with-apis"></a>Připojení k rozhraním API a ověřování pomocí nich
 
 Digitální vlákna Azure používá k ověřování uživatelů a ochraně aplikací Azure Active Directory (Azure AD). Azure AD podporuje ověřování pro nejrůznější moderní architektury. Všechny tyto protokoly jsou založené na standardních protokolech OAuth 2,0 nebo OpenID Connect. Kromě toho můžou vývojáři použít Azure AD k vytváření aplikací pro jednoho tenanta a obchodní aplikace (LOB). Vývojáři můžou k vývoji víceklientské aplikací použít taky Azure AD.
 
-Přehled služby Azure AD najdete na [stránce základy](https://docs.microsoft.com/azure/active-directory/fundamentals/index) , kde najdete podrobné návody, koncepty a rychlé starty.
+Přehled služby Azure AD najdete na [stránce základy](https://docs.microsoft.com/azure/active-directory/fundamentals/) , kde najdete podrobné návody, koncepty a rychlé starty.
 
-K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky najdete v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)startu.
+> [!TIP]
+> Postupujte podle [kurzu](tutorial-facilities-setup.md) a nastavte a spusťte ukázkovou aplikaci pro digitální vlákna Azure.
 
-Služba Azure AD podporuje [pět scénářů primárních aplikací](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) :
+K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky najdete v [tomto rychlém](../active-directory/develop/quickstart-register-app.md)startu.
+
+Služba Azure AD podporuje [pět scénářů primárních aplikací](../active-directory/develop/v2-app-types.md) :
 
 * Jednostránkové aplikace (SPA): Uživatel se musí přihlásit k jednostránkové aplikaci, která je zabezpečená službou Azure AD.
 * Webový prohlížeč do webové aplikace: Uživatel se musí přihlásit k webové aplikaci, která je zabezpečená službou Azure AD.
@@ -31,7 +34,7 @@ Služba Azure AD podporuje [pět scénářů primárních aplikací](https://doc
 * Webové aplikace do webového rozhraní API: Webová aplikace potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
 * Démon nebo serverová aplikace do webového rozhraní API: Aplikace démona nebo serverová aplikace bez webového uživatelského rozhraní potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
 
-Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat tokeny služby Active Directory. Podrobnosti o knihovně a ukázkách kódu najdete v [tomto článku](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat tokeny služby Active Directory. Podrobnosti o knihovně a ukázkách kódu najdete [na wikiwebu ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Volání digitálních vláken z webového rozhraní API střední vrstvy
 
@@ -45,7 +48,7 @@ Když vývojáři naprogramují řešení digitálních vláken, obvykle vytvoř
 
 Pokyny k orchestraci služby Flow najdete v tématu [tok OAuth 2,0 za](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)běhu. Můžete si také zobrazit ukázky kódu při [volání webového rozhraní API pro příjem dat](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete konfigurovat a testovat digitální vlákna Azure pomocí procesu implicitního grantu OAuth 2,0, přečtěte si téma [Configure post](./how-to-configure-postman.md).
 

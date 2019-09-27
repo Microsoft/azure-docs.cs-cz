@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241198"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338939"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -130,7 +130,7 @@ Můžete zobrazit jakoukoli skupinu pro správu, na které máte přímo nebo zd
 
 ### <a name="view-in-powershell"></a>Zobrazit v PowerShellu
 
-K načtení všech skupin použijte příkaz Get-AzManagementGroup.  Úplný seznam skupin pro správu získat příkazy prostředí PowerShell najdete v tématu [AZ. Resources](/powershell/module/az.resources/Get-AzManagementGroup) – moduly.  
+K načtení všech skupin použijte příkaz Get-AzManagementGroup.  Úplný seznam skupin pro správu získat příkazy prostředí PowerShell najdete v tématu [AZ.](/powershell/module/az.resources/Get-AzManagementGroup) Resources – moduly.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -142,7 +142,7 @@ Pro informace o jedné skupině pro správu použijte parametr-název_skupiny.
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-Pokud chcete vrátit konkrétní skupinu pro správu a všechny úrovně hierarchie pod ní, použijte parametry **-expand** a **-rekurze** .  
+Pokud chcete vrátit konkrétní skupinu pro správu a všechny úrovně hierarchie pod ní, použijte parametry **-expand** a **-** rekurze.  
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -191,7 +191,7 @@ Informace o jedné skupině pro správu získáte pomocí příkazu show.
 az account management-group show --name 'Contoso'
 ```
 
-Pokud chcete vrátit konkrétní skupinu pro správu a všechny úrovně hierarchie pod ní, použijte parametry **-expand** a **-rekurze** .
+Pokud chcete vrátit konkrétní skupinu pro správu a všechny úrovně hierarchie pod ní, použijte parametry **-expand** a **-** rekurze.
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso' -e -r
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Přesunutí skupin pro správu v hierarchii  
 
-Když přesunete nadřazenou skupinu pro správu, přesune se k ní hierarchie v této skupině. Přístup, který potřebujete k přesunutí skupin pro správu, najdete v tématu [přístup ke skupině pro správu](index.md#management-group-access).
+Když přesunete nadřazenou skupinu pro správu, přesune se k ní hierarchie v této skupině. Přístup, který potřebujete k přesunutí skupin pro správu, najdete v tématu [přístup ke skupině pro správu](overview.md#management-group-access).
 
 ### <a name="move-management-groups-in-the-portal"></a>Přesunutí skupin pro správu na portálu
 
@@ -345,7 +345,7 @@ Stejná cesta oboru se používá při načítání definice zásady ve skupině
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 

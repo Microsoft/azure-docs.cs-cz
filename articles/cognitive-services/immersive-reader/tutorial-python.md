@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 5e33108c9fc674abaf980a1272cca31aa21cffff
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991061"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326404"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Kurz: Spuštění moderního čtečky pomocí ukázkového projektu Pythonu
 
@@ -68,7 +68,7 @@ Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečen�
 
 ## <a name="create-a-python-web-app-on-windows"></a>Vytvoření webové aplikace v Pythonu ve Windows
 
-Vytvoření webové aplikace v Pythonu `flask` pomocí systému Windows.
+Vytvoření webové aplikace v Pythonu pomocí `flask` ve Windows.
 
 Nainstalujte [Git](https://git-scm.com/).
 
@@ -88,11 +88,11 @@ Přidejte volitelné funkce zaškrtnutím příslušných políček a potom klik
 
 ![Dialogové okno instalace systému Windows Python – krok 2](./media/pythoninstalltwo.jpg)
 
-Zvolte vlastní instalace a nastavte cestu instalace jako kořenovou složku, třeba `C:\Python37-32\` pak klikněte na tlačítko nainstalovat.
+Zvolte vlastní instalace a nastavte cestu instalace jako kořenovou složku, třeba `C:\Python37-32\` a pak klikněte na tlačítko nainstalovat.
 
 ![Dialog pro instalaci Windows v Pythonu – krok 3](./media/pythoninstallthree.jpg)
 
-Po dokončení instalace Pythonu otevřete příkazový řádek a `cd` složku Python Scripts.
+Po dokončení instalace Pythonu otevřete příkazový řádek a `cd` do složky Python Scripts.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -113,7 +113,7 @@ pip install jinja2
 Nainstalujte virtualenv. Nástroj pro vytváření izolovaných prostředí Pythonu
 
 ```cmd
-pip install pip install virtualenv
+pip install virtualenv
 ```
 
 Nainstalujte virtualenvwrapper-Win. Nápad za virtualenvwrapper je snadné použití virtualenv.
@@ -128,13 +128,19 @@ Nainstalujte modul požadavky. Požadavky jsou apache2 licencovaná knihovna HTT
 pip install requests
 ```
 
+Nainstalujte modul Python-dotenv. Tento modul přečte dvojici klíč-hodnota ze souboru. ENV a přidá je do proměnné prostředí.
+
+```cmd
+pip install python-dotenv
+```
+
 Vytvoření virtuálního prostředí
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-`cd`do ukázkové kořenové složky projektu.
+`cd` do kořenové složky projektu.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
@@ -152,7 +158,7 @@ Aktivujte virtuální prostředí.
 activate
 ```
 
-Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` něco podobného.
+Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí něco jako `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>`.
 
 Deaktivuje prostředí.
 
@@ -160,9 +166,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-`(advanced-python)` Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
+Prefix `(advanced-python)` by teď měl být pryč, protože prostředí je teď deaktivované.
 
-Chcete-li znovu aktivovat prostředí `workon advanced-python` , spusťte z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```cmd
 workon advanced-python
@@ -180,7 +186,7 @@ Otevřete prohlížeč a přejděte na _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Vytvoření webové aplikace v Pythonu v OSX
 
-Vytvoření webové aplikace v Pythonu `flask` pomocí OSX.
+Vytvoření webové aplikace v Pythonu pomocí `flask` v OSX.
 
 Nainstalujte [Git](https://git-scm.com/).
 
@@ -192,9 +198,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Nainstalovat [Python](https://www.python.org/downloads/).
 
-Kořenová složka `Python37-32` Pythonu by měla být nyní ve složce aplikace.
+Kořenová složka Pythonu, například `Python37-32`, by měla být nyní ve složce aplikace.
 
-Po dokončení instalace Pythonu otevřete terminál a `cd` složku Python Scripts.
+Po dokončení instalace Pythonu otevřete terminál a `cd` do složky Python Scripts.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -220,8 +226,8 @@ sudo nano /etc/paths
 - Přidejte cestu k instalaci PIP do proměnné PATH.
 - Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, např. `PATH=$PATH:/usr/local/bin`.
 - Stisknutím klávesy CTRL-x ukončíte.
-- Zadáním `Y` uložte upravenou vyrovnávací paměť.
-- A to je vše! Chcete-li ji otestovat, v okně nové okno terminálu `echo $PATH`zadejte:.
+- Pokud chcete upravenou vyrovnávací paměť uložit, zadejte `Y`.
+- A to je vše! Chcete-li ji otestovat, v okně nové okno terminálu zadejte: `echo $PATH`.
 
 Nainstalovat baňce.
 
@@ -253,13 +259,19 @@ Nainstalujte modul požadavky. Požadavky jsou apache2 licencovaná knihovna HTT
 pip install requests --user
 ```
 
+Nainstalujte modul Python-dotenv. Tento modul přečte dvojici klíč-hodnota ze souboru. ENV a přidá je do proměnné prostředí.
+
+```bash
+pip install python-dotenv --user
+```
+
 Vyberte složku, ve které chcete zachovat vaše virtuální prostředí, a spusťte tento příkaz.
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-`cd`do složky Ukázky aplikace pro moderní čtečku Python.
+`cd` do složky ukázek aplikací pro moderní čtečku Python.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -283,7 +295,7 @@ Aktivujte virtuální prostředí.
 activate
 ```
 
-Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` něco podobného.
+Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí něco jako `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>`.
 
 Deaktivuje prostředí.
 
@@ -291,9 +303,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-`(advanced-python)` Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
+Prefix `(advanced-python)` by teď měl být pryč, protože prostředí je teď deaktivované.
 
-Chcete-li znovu aktivovat prostředí `workon advanced-python` , spusťte z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```bash
 workon advanced-python
@@ -309,7 +321,7 @@ flask run
 
 Otevřete prohlížeč a přejděte na _http://localhost:5000_ .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
 * Zobrazit ukázky kódu na [GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)
