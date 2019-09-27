@@ -18,3 +18,4 @@ Pokud potřebujete pomoc, chcete nahlásit problém nebo chcete získat další 
 
 > [!div class="nextstepaction"]
 > [Nápověda a podpora pro vývojáře](../articles/active-directory/develop/developer-support-help-options.md)
+<!--aa-->
