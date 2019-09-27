@@ -25,3 +25,5 @@ ms.locfileid: "67175191"
 |---|
 | **Platí pro:**<br><ul><li>Koncový bod Azure AD verze 1.0<li>Azure Active Directory Authentication Library (ADAL)</ul> |
 |   |
+
+<!-- test -->
