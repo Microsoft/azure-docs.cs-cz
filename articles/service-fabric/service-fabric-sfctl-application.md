@@ -30,7 +30,7 @@ Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací.
 | create | Vytvoří Service Fabric aplikaci pomocí zadaného popisu. |
 | delete | Odstraní existující aplikaci Service Fabric. |
 | deployed | Získá informace o aplikaci nasazené na Service Fabric uzlu. |
-| nasazeno – stav | Získá informace o stavu aplikace nasazené na Service Fabric uzlu. |
+| deployed-health | Získá informace o stavu aplikace nasazené na Service Fabric uzlu. |
 | deployed-list | Načte seznam aplikací nasazených na Service Fabric uzlu. |
 | health | Získá stav aplikace Service Fabric. |
 | info | Načte informace o Service Fabric aplikaci. |
@@ -43,8 +43,8 @@ Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací.
 | type-list | Získá seznam typů aplikací v clusteru Service Fabric. |
 | unprovision | Odebere nebo zruší registraci typu Service Fabric aplikace z clusteru. |
 | upgrade | Spustí upgrade aplikace v clusteru Service Fabric. |
-| upgrade – obnovení | Obnoví upgrade aplikace v clusteru Service Fabric. |
-| upgrade – vrácení zpět | Spustí vracení zpět aktuálně probíhajícího upgradu aplikace v clusteru Service Fabric. |
+| upgrade-resume | Obnoví upgrade aplikace v clusteru Service Fabric. |
+| upgrade-rollback | Spustí vracení zpět aktuálně probíhajícího upgradu aplikace v clusteru Service Fabric. |
 | upgrade-status | Získá podrobnosti o nejnovějším upgradu provedeném v této aplikaci. |
 | upload | Zkopírujte balíček aplikace Service Fabric do úložiště imagí. |
 
