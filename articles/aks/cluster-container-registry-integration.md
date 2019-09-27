@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **ID prostředku ACR má následující formát:** 
 
-/Subscriptions/< předplatné-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/<předplatné-d>/resourceGroups/<Resource-Group-Name>/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Dokončení tohoto kroku může trvat několik minut.
 
