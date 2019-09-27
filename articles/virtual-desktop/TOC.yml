@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Připojení z webového prohlížeče
           href: connect-web.md
+        - name: Připojení s klientem macOS
+          href: connect-macos.md
+        - name: Připojení s klientem iOS
+          href: connect-ios.md
     - name: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
       href: create-host-pools-arm-template.md
     - name: Vytvoření fondu hostitelů pomocí PowerShellu

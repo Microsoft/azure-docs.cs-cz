@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 8f2dbc84fe09c825d8ef25aabafba7a672220192
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121712"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300289"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
+
+Tento článek se týká zákazníků s účtem v rámci programu Microsoft Online Service.
 
 Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, může vám přijít e-mail nebo se může v Centru účtů nebo na webu Azure Portal zobrazit upozornění.
 Pokud jste [správce účtu](billing-subscription-transfer.md#whoisaa), můžete nezaplacené poplatky uhradit na webu [Azure Portal](https://portal.azure.com). Pokud platíte pomocí faktury, zašlete svoji platbu na adresu uvedenou v dolní části faktury.
@@ -43,6 +45,13 @@ Pokud jste [správce účtu](billing-subscription-transfer.md#whoisaa), můžete
 1. Pokud jsou i u vybraného způsobu platby nezaplacené poplatky za služby Microsoftu, promítnou se do celkového nevyrovnaného zůstatku. Musíte uhradit i tyto nezaplacené poplatky.
 1. Klikněte na **Zaplatit**.
 
+## <a name="troubleshoot-declined-credit-card"></a>Řešení potíží se zamítnutou platební kartou
+
+Pokud je platba platební kartou zamítnutá vaší finanční institucí, spojte se se svou finanční institucí a problém vyřešte. Kontaktujte banku a ujistěte se, že:
+- Na kartě jsou povolené mezinárodní transakce.
+- Karta má dostatečný limit kreditu nebo finančních prostředky pro vyrovnání zůstatku.
+- Na kartě jsou povolené opakované platby.
+
 ## <a name="not-getting-billing-email-notifications"></a>Nepřicházejí vám e-mailová oznámení o fakturaci?
 
 Pokud jste správce účtu, [zkontrolujte, která e-mailová adresa je nastavená jako příjemce oznámení](billing-how-to-change-azure-account-profile.md). Doporučujeme použít e-mailovou adresu, kterou pravidelně kontrolujete. Pokud je e-mail správný, zkontrolujte složku s nevyžádanou poštou.
@@ -52,6 +61,7 @@ Pokud jste správce účtu, [zkontrolujte, která e-mailová adresa je nastaven�
 Služba se zruší a vaše prostředky už nebudou k dispozici. Vaše data v Azure se odstraní 90 dnů po ukončení služby. Další informace najdete v tématu [Centrum zabezpečení Microsoftu – Jak spravujeme vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 Pokud jste si jisti, že se vaše platba zpracovala, ale vaše předplatné je stále deaktivované, kontaktujte [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

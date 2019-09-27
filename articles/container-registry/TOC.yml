@@ -71,6 +71,8 @@
           items:
             - name: Odstranění dat image – CLI
               href: container-registry-delete.md
+            - name: Zásady uchovávání informací pro manifesty bez příznaku (Preview)
+              href: container-registry-retention-policy.md
             - name: Automatické vymazání značek a manifestů (Preview)
               href: container-registry-auto-purge.md
         - name: Upgrade registru Classic

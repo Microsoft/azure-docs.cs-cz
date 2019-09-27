@@ -58,6 +58,8 @@
         - name: Migrace z Azure Media Encoderu pro Windows
           href: migrate-windows-azure-media-encoder.md
           displayName: WAME
+        - name: Migrace ze Indexeru V1 a v2
+          href: migrate-indexer-v1-v2.md
     - name: Spravovat
       items:
         - name: Účty

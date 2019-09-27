@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Rezervované HSM Azure
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Dedicated HSM
+summary: Naučte se využívat službu Azure Dedicated HSM k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
 metadata:
-  title: 'Dokumentace ke službě Rezervované HSM Azure – kurzy, reference k rozhraní API | Microsoft Docs'
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Dokumentace ke službě Azure Dedicated HSM
+  description: Naučte se využívat službu Azure Dedicated HSM k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
   services: dedicated-hsm
-  author: msmbaldwin
-  manager: rkarlin
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
+  author: msmbaldwin
   ms.author: mbaldwin
-abstract:
-  description: 'Seznamte se s funkcemi rezervovaných HSM a zjistěte, jestli jsou použitelné pro vaše prostředí.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: '<p>Zjistěte, jaká je podstata rezervovaných HSM Azure.</p>'
-            image:
-              src: media/index/hsm.svg
-            title: Přehled služby Rezervované HSM Azure
-          - href: /azure/dedicated-hsm/faq
-            html: <p>Aspekty návrhu při používání služby Rezervované HSM</p>
-            image:
-              src: media/index/guide.svg
-            title: Rozhodování o architektuře nasazení
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Nejčastější dotazy
-            html: <p><a href="/azure/dedicated-hsm/faq/">Nejčastější dotazy</a></p>
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300105"
+landingContent:
+- title: Informace o Azure Dedicated HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Dedicated HSM?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Vysoká dostupnost
+      url: high-availability.md
+    - text: Fyzické zabezpečení
+      url: physical-security.md
+    - text: Sítě
+      url: networking.md
+    - text: Možnosti podpory
+      url: supportability.md
+    - text: Monitorování
+      url: monitoring.md
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Nasazení do virtuální sítě s využitím Azure CLI
+      url: tutorial-deploy-hsm-cli.md
+    - text: Nasazení do virtuální sítě s využitím PowerShellu
+      url: tutorial-deploy-hsm-powershell.md
+- title: Scénáře
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Architektura nasazení Azure Dedicated HSM
+      url: deployment-architecture.md

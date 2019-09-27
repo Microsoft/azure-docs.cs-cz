@@ -691,6 +691,8 @@
       items:
         - name: Povolení poznámkových bloků
           href: enable-notebooks.md
+        - name: Použití integrovaných příkazů poznámkového bloku
+          href: use-notebook-features-and-commands.md
     - name: Programování na straně serveru
       items:
         - name: 'Psaní uložených procedur, triggerů a funkcí UDF'

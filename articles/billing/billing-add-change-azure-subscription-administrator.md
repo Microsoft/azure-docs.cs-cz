@@ -1,47 +1,52 @@
 ---
-title: Přidání nebo změna správců předplatného Azure | Microsoft Docs
+title: Přidání nebo změna správců předplatného Azure
 description: Popisuje, jak přidat nebo změnit správce předplatného Azure s využitím řízení přístupu na základě role (RBAC).
-services: ''
-documentationcenter: ''
 author: genlin
-manager: adpick
-editor: ''
+manager: dcscontentpm
 tags: billing
-ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 09/24/2019
 ms.author: banders
-ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2054fbb7d0a9f450ad487fc0f03d0af920c6cc4b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "64922898"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260930"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidání nebo změna správců předplatného Azure
 
-Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Azure má systém autorizace označovaný jako řízení přístupu na základě role (RBAC) s několika předdefinovanými rolemi, které můžete použít. Tyto role můžete přiřadit v různých oborech, například v oboru skupiny pro správu, předplatného nebo skupiny prostředků.
 
-Microsoft doporučuje spravovat přístup k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure), budete muset použít klasického správce. 
+Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Azure má systém autorizace označovaný jako [řízení přístupu na základě role](../role-based-access-control/overview.md) (RBAC) s několika předdefinovanými rolemi, které můžete použít. Tyto role můžete přiřadit v různých oborech, například v oboru skupiny pro správu, předplatného nebo skupiny prostředků. Ve výchozím nastavení může osoba, která vytváří nové předplatné Azure, přiřazovat ostatním uživatelům přístup pro správu k předplatnému.
+
+Tento článek popisuje, jak pro uživatele přidat nebo změnit roli správce s využitím řízení přístupu na základě role (RBAC) v oboru předplatného.
+
+Microsoft doporučuje spravovat přístup k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure), budete muset použít klasického správce.
 
 > [!TIP]
 > Pokud ke správě klasických prostředků využíváte pouze Azure Portal, nebudete muset použít klasického správce.
 
 Další informace najdete v tématech [Modely nasazení Azure Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md) a [Klasičtí správci předplatných Azure](../role-based-access-control/classic-administrators.md).
 
-Tento článek popisuje, jak pro uživatele přidat nebo změnit roli správce s využitím řízení přístupu na základě role (RBAC) v oboru předplatného.
-
 <a name="add-an-admin-for-a-subscription"></a>
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Přiřazení uživatele jako správce předplatného
+## <a name="assign-a-subscription-administrator"></a>Přiřazení správce předplatného
 
-Pokud chcete z uživatele udělat správce předplatného Azure, přiřaďte mu roli [Vlastník](../role-based-access-control/built-in-roles.md#owner) (role RBAC) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně práva delegovat přístup na ostatní. Tento postup je stejný jako u jakéhokoli jiného přiřazení role.
+Pokud chcete z uživatele udělat správce předplatného Azure, stávající správce mu přiřadí roli [Vlastník](../role-based-access-control/built-in-roles.md#owner) (role RBAC) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně práva delegovat přístup na ostatní. Tento postup je stejný jako u jakéhokoli jiného přiřazení role.
 
-1. Na webu Azure Portal otevřete okno [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to následujícím postupem.
+
+1. Otevřete [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Vyberte předplatné, které chcete zkontrolovat, a pak se podívejte pod **Nastavení**.
+1. Vyberte **Vlastnosti**. Správce účtu předplatného se zobrazí v poli **Správce účtu**.
+
+### <a name="to-assign-a-user-as-an-administrator"></a>Přiřazení uživatele jako správce
+
+1. Přihlaste se k webu Azure Portal jako vlastník předplatného a otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
 1. Klikněte na předplatné, ke kterému chcete udělit přístup.
 

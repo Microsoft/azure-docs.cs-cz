@@ -476,6 +476,8 @@
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Změna velikosti disku
           href: expand-disks.md
+        - name: Použití Průzkumníku služby Storage ke správě disků
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Pořízení snímku disku
           href: snapshot-copy-managed-disk.md
         - name: Vytvoření přírůstkového snímku

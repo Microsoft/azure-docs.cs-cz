@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598092"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218077"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získání nákladů na rezervace a jejich využití u smlouvy Enterprise
 
@@ -57,18 +57,20 @@ Jiné informace dostupné v údajích o využití Azure byly změněny:
 - Term – 12 nebo 36 měsíců.
 - RINormalizationRatio – k dispozici v sekci AdditionalInfo. Jedná se o poměr, kdy je rezervace vztažena k záznamu o využití. Pokud je u rezervace povolena flexibilní velikost instance, může platit pro jiné velikosti. Tato hodnota udává poměr, kdy byla rezervace vztažena na záznam o využití.
 
+[Zobrazit definici polí](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Získání dat o spotřebě a využití rezervací Azure pomocí rozhraní API
 
 Tato data můžete získat přes rozhraní API nebo stáhnout z webu Azure Portal.
 
-Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list) verze &quot;2019-04-01-preview&quot;. Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](billing-understand-your-usage.md). Volajícím by měl být podnikový správce smlouvy Enterprise, který používá [portál EA](https://ea.azure.com). Tato data mohou získat také podnikoví správci s právy jen pro čtení.
+Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list). Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](billing-understand-your-usage.md). Volajícím by měl být podnikový správce smlouvy Enterprise, který používá [portál EA](https://ea.azure.com). Tato data mohou získat také podnikoví správci s právy jen pro čtení.
 
 Tato data nejsou dostupná v [rozhraních API pro vytváření sestav pro podnikové zákazníky – podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
 Zde je příklad volání rozhraní API:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 Další informace o {enrollmentId} a {billingPeriodId}, najdete v článku [Podrobnosti využití – rozhraní API seznamu](https://docs.microsoft.com/rest/api/consumption/usagedetails/list).

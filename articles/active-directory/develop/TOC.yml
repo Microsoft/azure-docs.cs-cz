@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: Rámec pro udělení souhlasu
               href: consent-framework.md
+            - name: Souhlas správce
+              href: v2-admin-consent.md
             - name: Prostředí udělení souhlasu pro aplikace
               href: application-consent-experience.md
         - name: Národní cloudy
