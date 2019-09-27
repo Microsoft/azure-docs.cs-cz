@@ -112,7 +112,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | publisher | Microsoft.Compute | řetězec |
 | type | CustomScriptExtension | řetězec |
 | typeHandlerVersion | 1.9 | int |
-| Identifikátory URI (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp (např.) | 123456789 | 32-bitové celé číslo |
 | commandToExecute (např.) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | řetězec |
 | storageAccountName (např.) | examplestorageacct | řetězec |
