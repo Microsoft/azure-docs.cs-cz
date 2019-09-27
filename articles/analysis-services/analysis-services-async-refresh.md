@@ -217,4 +217,4 @@ Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
-
+<!--test-->
