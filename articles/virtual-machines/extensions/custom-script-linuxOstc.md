@@ -124,7 +124,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | publisher | Microsoft. OSTCExtensions | řetězec |
 | type | CustomScriptForLinux | řetězec |
 | typeHandlerVersion | 1.5 | int |
-| Identifikátory URI (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (např.) | python MyPythonScript.py \<Moje param1\> | řetězec |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (např.) | examplestorageacct | řetězec |
