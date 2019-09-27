@@ -102,7 +102,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | řetězec |
 | type | DSC | řetězec |
-| typeHandlerVersion | 2,77 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Hodnoty vlastností nastavení
 
