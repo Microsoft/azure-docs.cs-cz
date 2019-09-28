@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 57249bd2fa4d3c8aefe19a85ec9a2b6b584b00d2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350898"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky Azure Storage pomocí .NET
 
@@ -22,7 +22,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 | **Scénář** | **Vzorový kód** |
 |--------------|-----------------|
-| Připojit objekt blob | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| Objekt blob připojení | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
 | Objekt blob bloku | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
 | Šifrování na straně klienta | [Ukázky šifrování objektů BLOB](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
 | Zkopírování objektu Blob | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
@@ -93,10 +93,11 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 * [Začínáme se službou Azure Table Service v .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Začínáme se službou Azure File Service v .NET](../storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o ukázkách pro jiné jazyky:
 
 * Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
+* JavaScript/Node. js: [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * Python: [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
 * Všechny ostatní jazyky: [Ukázky Azure Storage](../storage-samples.md)

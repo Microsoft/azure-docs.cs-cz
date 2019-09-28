@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 08/22/2019
-ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/26/2019
+ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904326"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350941"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -46,10 +46,10 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
-| Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md#managed-instance-database) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Spravovaná instance – není k dispozici  |
 | Obnovit databázi z bodu v čase | [Samostatná databáze](sql-database-recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Obnovení databáze z Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho jsou zálohy uchovávány
@@ -114,15 +114,19 @@ Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, 
 > [!NOTE]
 > Tato rozhraní API budou mít vliv jenom na dobu uchovávání PITR. Pokud jste nakonfigurovali LTR pro vaši databázi, nebude to mít vliv na. Další informace o tom, jak změnit dobu uchování LTR, najdete v tématu [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
-### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Změna doby uchovávání záloh PITR pomocí Azure Portal
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Změna doby uchovávání záloh PITR pomocí Azure Portal
 
 Pokud chcete změnit dobu uchovávání záloh PITR pomocí Azure Portal, přejděte na objekt serveru, jehož doba uchovávání dat chcete změnit na portálu, a pak vyberte vhodnou možnost podle toho, který objekt serveru upravujete.
 
-#### <a name="change-pitr-for-a-sql-database-server"></a>Změna PITR serveru pro SQL Database
+#### <a name="single-azure-sql-database"></a>Jeden Azure SQL Database
+
+Změna uchovávání PITR zálohování pro jednu databázi Azure SQL se provádí na úrovni serveru. Změny provedené na úrovni serveru se vztahují na databáze na tomto serveru. Chcete-li změnit PITR pro Azure SQL Database Server z Azure Portal, přejděte na okno Přehled serveru, klikněte na možnost spravovat zálohy v navigační nabídce a pak na navigačním panelu klikněte na možnost konfigurace uchovávání.
 
 ![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="change-pitr-for-a-managed-instance"></a>Změna PITR pro spravovanou instanci
+#### <a name="managed-instance-database"></a>Databáze spravované instance
+
+Změna uchovávání záloh PITR pro SQL Database spravovanou instanci se provádí na úrovni jednotlivých databází. Chcete-li změnit uchovávání záloh PITR pro databázi instance z Azure Portal, přejděte do okna Přehled individuální databáze a pak klikněte na možnost konfigurace uchovávání záloh na navigačním panelu.
 
 ![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
@@ -171,7 +175,7 @@ Stavový kód: 200
 
 Další informace najdete v tématu [REST API uchovávání záloh](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Další informace o dalších Azure SQL Database řešení pro provozní kontinuitu najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 - Obnovení k určitému bodu v čase pomocí Azure Portal najdete v tématu [obnovení databáze k určitému bodu v čase pomocí Azure Portal](sql-database-recovery-using-backups.md).

@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726546"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350299"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení Azure Storage
 
 Tento článek obsahuje přehled funkcí zabezpečení Azure, které můžete používat s Azure Storage. Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Azure Storage poskytuje komplexní sadu funkcí zabezpečení. Můžete:
 
 * Zabezpečte účet úložiště pomocí Access Control na základě rolí (RBAC) a Azure Active Directory.
-* Zabezpečte data při přenosu mezi aplikací a Azure pomocí šifrování na straně klienta, HTTPS nebo SMB 3,0.
+* Zabezpečit data při přenosu mezi aplikací a Azure pomocí šifrování na straně klienta, HTTPS nebo SMB 3.0.
 * Nastavení dat, která se mají automaticky šifrovat při zápisu do Azure Storage pomocí Šifrování služby Storage
 * Nastavte operační systém a datové disky používané virtuálními počítači k šifrování pomocí Azure Disk Encryption.
 * Udělte delegovaný přístup k datovým objektům v Azure Storage pomocí sdílených přístupových podpisů (SASs).
@@ -37,7 +37,7 @@ Podrobnější přehled o zabezpečení v Azure Storage najdete v [Průvodci zab
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
-Účet úložiště můžete zabezpečit pomocí Access Control na základě rolí. Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a minimálních principů zabezpečení [oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](/azure/role-based-access-control/built-in-roles), jako je Přispěvatel účtu úložiště.
+Účet úložiště můžete zabezpečit pomocí Access Control na základě rolí. Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](/azure/role-based-access-control/built-in-roles), jako je Přispěvatel účtu úložiště.
 
 Další informace:
 
@@ -65,7 +65,7 @@ Další informace:
 Další informace o šifrování na straně klienta:
 
 * [Šifrování na straně klienta pro Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Řady ovládacích prvků zabezpečení cloudu: Šifrování dat při přenosu](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* řady ovládacích prvků zabezpečení @no__t 0Cloud: Šifrování dat při přenosu @ no__t-0
 
 ## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
@@ -88,7 +88,7 @@ Azure Disk Encryption pro virtuální počítače pomáhá řešit požadavky or
 
 Víc se uč
 
-* [Azure Disk Encryption pro Windows a Linux IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Přehled Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>Brány firewall a virtuální sítě
 

@@ -1,66 +1,66 @@
 ---
-title: Azure Batch Rendering možnosti –
-description: Možnosti vykreslování konkrétní ve službě Azure Batch
+title: Možnosti vykreslování – Azure Batch
+description: Konkrétní možnosti vykreslování v Azure Batch
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118683"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350043"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
-Standardní možnosti služby Azure Batch se používají pro spouštění úloh vykreslování a aplikací. Batch také konkrétní funkce pro podporu úloh vykreslování.
+Pro spouštění úloh vykreslování a aplikací se používají standardní Azure Batch možnosti. Batch zahrnuje také konkrétní funkce pro podporu úloh vykreslování.
 
-Přehled koncepty služby Batch, včetně fondy, úlohy a úkoly, naleznete v tématu [v tomto článku](https://docs.microsoft.com/azure/batch/batch-api-basics).
+Přehled konceptů služby Batch, včetně fondů, úloh a úkolů, najdete v [tomto článku](https://docs.microsoft.com/azure/batch/batch-api-basics).
 
-## <a name="batch-pools"></a>Fondy služby batch
+## <a name="batch-pools"></a>Fondy Batch
 
-### <a name="rendering-application-installation"></a>Instalace aplikace vykreslování
+### <a name="rendering-application-installation"></a>Vykreslování instalace aplikace
 
-Image virtuálního počítače Azure Marketplace vykreslování lze zadat v konfiguraci fondu, pokud jen pro předem nainstalované aplikace je třeba použít.
+Image virtuálního počítače pro vykreslování Azure Marketplace se dá zadat v konfiguraci fondu, pokud je potřeba použít jenom předem nainstalované aplikace.
 
-Je Windows 2016 image a CentOS image.  V [Azure Marketplace](https://azuremarketplace.microsoft.com), Image virtuálních počítačů lze najít hledáním 'batch rendering'.
+K dispozici je bitová kopie systému Windows 2016 a bitová kopie CentOS.  V [Azure Marketplace](https://azuremarketplace.microsoft.com)se image virtuálních počítačů dají najít hledáním dávkového vykreslování.
 
-Příklad konfigurace fondu, najdete v článku [rozhraní příkazového řádku Azure vykreslování kurzu](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Webu Azure portal a Průzkumníka služby Batch nabízejí grafické uživatelské rozhraní nástroje pro výběr image virtuálního počítače s vykreslování při vytváření fondu.  Pokud používáte rozhraní API služby Batch, zadejte následující hodnoty vlastností pro [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) při vytváření fondu:
+Příklad konfigurace fondu najdete v [kurzu vykreslování Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure Portal a Batch Explorer poskytují nástroje grafického uživatelského rozhraní pro výběr image virtuálního počítače při vytváření fondu.  Pokud používáte rozhraní API služby Batch, zadejte pro [element imagereference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) při vytváření fondu následující hodnoty vlastností:
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) | Version |
 |---------|---------|---------|--------|
-| dávka | rendering-centos73 | vykreslování | nejnovější |
-| dávka | rendering-windows2016 | vykreslování | nejnovější |
+| dávka | rendering-centos73 | vykreslování | latest |
+| dávka | rendering-windows2016 | vykreslování | latest |
 
-Další možnosti jsou k dispozici, pokud jsou vyžadovány další aplikace ve fondu virtuálních počítačů:
+Další možnosti jsou k dispozici, pokud jsou na virtuálních počítačích fondu požadovány další aplikace:
 
-* Vlastní image na základě standardní image Marketplace:
-  * Pomocí této možnosti můžete na virtuálním počítači nakonfigurovat konkrétní aplikace a verze, které požadujete. Další informace najdete v tématu [použití vlastní image k vytvoření fondu virtuálních počítačů](https://docs.microsoft.com/azure/batch/batch-custom-images). Autodesk a Chaos Group byly upraveny Arnold a V-Ray, má vyhodnotit proti služby Azure Batch licencování služby. Ujistěte se, že máte verze těchto aplikací s touto podporou, jinak licencování platbami za použití nebude fungovat. Aktuální verze sady aplikací Maya a 3ds Max nevyžadují licenční server při bezobslužném spouštění (v batch nebo příkazového řádku režim). Pokud si nejste jistí, jak pokračovat dál s tímto parametrem, kontaktujte podporu Azure.
+* Vlastní image z Galerie sdílených imagí:
+  * Pomocí této možnosti můžete na virtuálním počítači nakonfigurovat konkrétní aplikace a verze, které požadujete. Další informace najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md). Skupina Autodesk a chaos upravila Arnold a V-Ray, aby se ověřila proti službě Azure Batch Licensing Service. Ujistěte se, že máte verze těchto aplikací s touto podporou, jinak licencování s platbami za použití nebude fungovat. Aktuální verze Maya nebo 3DS nevyžadují při spuštění bez periferního serveru licenční server (v režimu dávky nebo příkazového řádku). Pokud si nejste jistí, jak v této možnosti pokračovat, obraťte se na podporu Azure.
 * [Balíčky aplikací](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * Soubory aplikace pomocí jednoho nebo více souborů ZIP balíčku, odeslat prostřednictvím webu Azure portal a vyberte balíček v konfiguraci fondu. Po vytvoření fondu virtuálních počítačů jsou soubory ZIP jsou stažené a rozbalené soubory.
+  * Zabalit soubory aplikace pomocí jednoho nebo více souborů ZIP, nahrajte je přes Azure Portal a určete balíček v konfiguraci fondu. Při vytváření virtuálních počítačů fondu se stáhnou soubory ZIP a extrahované soubory.
 * Soubory prostředků:
-  * Soubory aplikace se nahrají do služby Azure blob storage a zadejte odkazy na soubory v [spouštěcí úkol fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). Při vytvoření fondu virtuálních počítačů, se stáhnou soubory prostředků na každém virtuálním počítači.
+  * Soubory aplikace se nahrají do úložiště objektů BLOB v Azure a v [úloze spuštění fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)se určí odkazy na soubory. Při vytváření virtuálních počítačů fondu se soubory prostředků stáhnou do každého virtuálního počítače.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Placené využití licencí pro předem nainstalované aplikace
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Licencování s platbami za použití pro předem nainstalované aplikace
 
-Aplikace, které se použije a máte licenční poplatek je potřeba zadat v konfiguraci fondu.
+V konfiguraci fondu je nutné zadat aplikace, které budou použity, a mít licenční poplatek.
 
-* Zadejte `applicationLicenses` vlastnost při [vytváření fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  Tyto hodnoty se dá nastavit jako pole řetězců - "vray", "arnold", "3dsmax", "maya".
-* Pokud chcete zadat jednu nebo více aplikací, náklady na tyto aplikace se přidá do náklady na virtuální počítače.  Aplikace ceny jsou uvedené na [stránce s cenami služby Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
+* Zadejte vlastnost při [vytváření fondu.](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) `applicationLicenses`  V poli řetězců lze zadat následující hodnoty: "Vray", "Arnold", "3dsmax", "Maya".
+* Když zadáte jednu nebo více aplikací, náklady na tyto aplikace se přidají do nákladů na virtuální počítače.  Ceny za aplikace jsou uvedené na [stránce s cenami Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Pokud místo toho připojit k licenčnímu serveru používat aplikace vykreslování, nezadávejte `applicationLicenses` vlastnost.
+> Pokud se místo toho připojíte k licenčnímu serveru, abyste mohli používat aplikace pro vykreslování, `applicationLicenses` nezadávejte vlastnost.
 
-Vyberte aplikace, a zobrazit ceny aplikace můžete použít Průzkumníka služby Batch na webu Azure portal.
+Pomocí Azure Portal nebo Batch Explorer můžete vybrat aplikace a zobrazit ceny aplikací.
 
-Pokud je proveden pokus o použití aplikace, ale nebyl zadán v aplikaci `applicationLicenses` vlastnost konfigurace fondu nebo nemá není dosah licenčního serveru a pak je spuštění aplikace nezdaří a zobrazí se chyba licencování a nenulový ukončovací kód.
+Pokud dojde k pokusu o použití aplikace, ale aplikace nebyla zadána ve `applicationLicenses` vlastnosti konfigurace fondu nebo nedorazila k licenčnímu serveru, spuštění aplikace se nezdaří s chybou licencování a nenulovým ukončovacím kódem.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Proměnné prostředí pro předem nainstalované aplikace
 
-Aby bylo možné vytvořit příkazového řádku pro úlohy vykreslování, musí zadat umístění instalace spustitelné soubory aplikace vykreslování.  Proměnné prostředí systému byly vytvořeny na Image virtuálního počítače Azure Marketplace, které je možné použít místo by bylo nutné určit skutečné cesty.  Tyto proměnné prostředí jsou kromě [standardní proměnné prostředí služby Batch](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) vytvořena pro každou úlohu.
+Aby bylo možné vytvořit příkazový řádek pro úlohy vykreslování, musí být zadáno umístění instalace spustitelných souborů aplikace.  Na imagích Azure Marketplace virtuálních počítačů se vytvořily systémové proměnné prostředí, které se dají použít místo určení skutečných cest.  Tyto proměnné prostředí jsou kromě [standardních proměnných prostředí služby Batch](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) vytvořených pro jednotlivé úlohy.
 
 |Aplikace|Spustitelný soubor aplikace|Proměnná prostředí|
 |---------|---------|---------|
@@ -68,31 +68,31 @@ Aby bylo možné vytvořit příkazového řádku pro úlohy vykreslování, mus
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
 |Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
 |Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray samostatné|vray.exe|VRAY_3.60.4_EXEC|
-Arnold 2017 příkazového řádku|kick.exe|ARNOLD_2017_EXEC|
-|Arnold 2018 příkazového řádku|kick.exe|ARNOLD_2018_EXEC|
+|Chaos Group V-ray Standalone|Vray. exe|VRAY_3.60.4_EXEC|
+Příkazový řádek Arnold 2017|kick.exe|ARNOLD_2017_EXEC|
+|Příkazový řádek Arnold 2018|kick.exe|ARNOLD_2018_EXEC|
 |Blenderu|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure rodiny virtuálních počítačů
+### <a name="azure-vm-families"></a>Rodiny virtuálních počítačů Azure
 
-Stejně jako u jiných úloh se požadavky na systém aplikace vykreslování se liší a požadavky na výkon se liší pro projekty a úlohy.  Širokou škálu řad virtuálních počítačů jsou dostupné v Azure podle vašich potřeb – nejnižší náklady, nejlepší poměr cena/výkon, nejlepší výkon a tak dále.
-Některé aplikace vykreslování, jako je například Arnold, jsou založené na procesoru; jiné například V-Ray a blenderu cyklů můžete použít CPU nebo GPU.
-Popis dostupných virtuálních počítačů řady a velikosti virtuálních počítačů [naleznete v tématu typy virtuálních počítačů a velikosti](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Stejně jako u jiných úloh se různé požadavky na vykreslování a požadavky na výkon pro úlohy a projekty liší.  V Azure je k dispozici velké množství rodin virtuálních počítačů v závislosti na vašich požadavcích – nejnižší náklady, Nejlepší cena/výkon, nejlepší výkon a tak dále.
+Některé aplikace pro vykreslování, jako je například Arnold, jsou založené na procesoru. ostatní, například cykly V-Ray a V Blendu, můžou používat procesory nebo GPU.
+Popis dostupných rodin virtuálních počítačů a velikostí virtuálních počítačů [najdete v tématu typy a velikosti virtuálních](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)počítačů.
 
 ### <a name="low-priority-vms"></a>Virtuální počítače s nízkou prioritou
 
-Stejně jako u jiných úloh můžete používat virtuální počítače s nízkou prioritou ve fondech služby Batch pro vykreslování.  Virtuální počítače s nízkou prioritou provést stejný jako regulární vyhrazených virtuálních počítačích, ale využívají nadbytečnou kapacitu Azure a jsou k dispozici pro velké slevy.  Kompromis pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být možné přidělit nebo může dojít ke zrušení v okamžiku, v závislosti na dostupné kapacity. Z tohoto důvodu nejsou virtuální počítače s nízkou prioritou má být vhodný pro všechny úlohy vykreslování. Například pokud bitové kopie trvat několik hodin k vykreslení, pak je pravděpodobné, vykreslování obrázků a odešle restartování z důvodu virtuální počítače se ke zrušení přidělením s nebude přijatelný.
+Stejně jako u jiných úloh je možné virtuální počítače s nízkou prioritou využít ve fondech služby Batch pro vykreslování.  Virtuální počítače s nízkou prioritou fungují stejně jako běžné vyhrazené virtuální počítače, ale využívají nadbytečné kapacity Azure a jsou dostupné pro velkou slevu.  Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu nebudou virtuální počítače s nízkou prioritou vhodné pro všechny úlohy vykreslování. Pokud například obrázky přestanou trvat mnoho hodin, je pravděpodobný, že se vykreslování těchto imagí přerušilo a restartuje kvůli tomu, že virtuální počítače nejsou v důsledku přerušení přijatelné.
 
-Další informace o vlastnostech virtuálních počítačů s nízkou prioritou a různé způsoby, jak se konfigurují pomocí služby Batch, najdete v článku [používejte virtuální počítače s nízkou prioritou pomocí služby Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
+Další informace o vlastnostech virtuálních počítačů s nízkou prioritou a různých způsobů jejich konfigurace pomocí služby Batch najdete v tématu [použití virtuálních počítačů s nízkou prioritou ve službě Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
 
-## <a name="jobs-and-tasks"></a>Úlohy a úkoly
+## <a name="jobs-and-tasks"></a>Úlohy a úlohy
 
-Žádná podpora vykreslování konkrétní je vyžadován pro úlohy a úkoly.  Hlavní konfigurační položky je příkazového řádku úkolu, který musí odkazovat na požadovanou aplikaci.
-Pokud se používá Image virtuálního počítače Azure Marketplace, osvědčeným postupem je použití proměnných prostředí a zadat cestu a spustitelný soubor aplikace.
+Pro úlohy a úlohy se nevyžaduje žádná podpora specifická pro vykreslování.  Hlavní položka konfigurace je příkazový řádek úkolu, který musí odkazovat na požadovanou aplikaci.
+Při použití imagí virtuálních počítačů Azure Marketplace pak osvědčeným postupem použít proměnné prostředí k určení cesty a spustitelného souboru aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pro příklady Batch rendering vyzkoušet dva kurzy:
+Příklady dávkového vykreslování si můžete vyzkoušet v těchto dvou kurzech:
 
 * [Vykreslování pomocí Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Použití Průzkumníka služby Batch Rendering](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Vykreslování pomocí Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

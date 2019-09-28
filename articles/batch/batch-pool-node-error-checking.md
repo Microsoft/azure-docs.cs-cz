@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012469"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350062"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -42,7 +42,7 @@ Mezi běžné příčiny chyb změny velikosti patří:
 - Nedostatek prostředků, pokud [je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
   - V rámci stejného předplatného jako účet Batch můžete vytvořit prostředky, jako jsou třeba nástroje pro vyrovnávání zatížení, veřejné IP adresy a skupiny zabezpečení sítě. Ověřte, jestli jsou pro tyto prostředky dostatečné kvóty předplatného.
 - Velké fondy s vlastními imagemi virtuálních počítačů
-  - U velkých fondů, které používají vlastní image virtuálních počítačů, může docházet k přidělení a změně velikosti časových limitů.  Doporučení týkající se omezení a konfigurace najdete v tématu [použití vlastní image k vytvoření fondu virtuálních počítačů](https://docs.microsoft.com/azure/batch/batch-custom-images) .
+  - U velkých fondů, které používají vlastní image virtuálních počítačů, může docházet k přidělení a změně velikosti časových limitů.  Doporučení týkající se omezení a konfigurace najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md) .
 
 ### <a name="automatic-scaling-failures"></a>Automatické škálování – chyby
 
@@ -84,17 +84,17 @@ Spouštěcí úlohy je nutné znovu vytvořit, protože je možné, že je spou�
 
 Můžete určit jeden nebo více balíčků aplikací pro fond. Batch stáhne zadané soubory balíčku do každého uzlu a dekomprimuje soubory po spuštění uzlu, ale před naplánováním úkolů. V kombinaci s balíčky aplikací je běžné použít příkazový řádek spouštěcího úkolu. Například ke zkopírování souborů do jiného umístění nebo ke spuštění instalačního programu.
 
-Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení a zrušení komprimace balíčku aplikace. stav uzlu je nastaven na nepoužitelné.
+Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení a zrušení komprimace balíčku aplikace. stav uzlu je nastaven na **nepoužitelné**.
 
 ### <a name="container-download-failure"></a>Selhání stahování kontejneru
 
-Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zadané kontejnery do každého uzlu. Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení kontejneru a nastaví stav uzlu na Nepoužito.
+Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zadané kontejnery do každého uzlu. Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení kontejneru a nastaví stav uzlu na **Nepoužito**.
 
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
 Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na nepoužitelné z mnoha důvodů. Když je stav uzlu nastavený nanepoužitelné, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
 
-Uzly v nepoužitelném stavu, ale bez [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch nemůže komunikovat s virtuálním počítačem. V takovém případě se dávka vždy pokusí o obnovení virtuálního počítače. Dávka se automaticky nepokusí obnovit virtuální počítače, které selhaly při instalaci balíčků nebo kontejnerů aplikací, i když jejich stav není **použitelný**.
+Uzly v **nepoužitelném** stavu, ale bez [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch nemůže komunikovat s virtuálním počítačem. V takovém případě se dávka vždy pokusí o obnovení virtuálního počítače. Dávka se automaticky nepokusí obnovit virtuální počítače, které selhaly při instalaci balíčků nebo kontejnerů aplikací, i když jejich stav není **použitelný**.
 
 Pokud Batch může určit příčinu, vlastnost [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlů ji ohlásí.
 

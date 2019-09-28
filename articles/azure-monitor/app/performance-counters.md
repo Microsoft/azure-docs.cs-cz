@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fa4e45416e83d933cd21fe482bcead14bfbcae22
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68360249"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349924"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -30,16 +30,16 @@ V podokně metriky se zobrazuje výchozí sada čítačů výkonu.
 ![Čítače výkonu hlášené v Application Insights](./media/performance-counters/performance-counters.png)
 
 Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďování pro webové aplikace ASP.NET/ASP.NET Core, jsou:
-- % Času\\procesoru procesu
-- % Času\\procesoru procesu – normalizace
-- Bajty\\dostupné paměti
+- % Process @ no__t-0Processor čas
+- % Process @ no__t-0Processor Time normalizován
+- Paměť @ no__t-0Available bajty
 - ASP.NET požadavky za sekundu
 - Vyvolané výjimky .NET CLR za sekundu
 - Doba spuštění ASP.NET ApplicationsRequest
-- Nesdílené bajty procesu\\
-- Vstupně\\-výstupní operace procesu – bajty/s
-- Žádosti aplikací\\ASP.NET ve frontě aplikací
-- Procesor (_Total)\\% času procesoru
+- Process @ no__t-0Private bajty
+- Process @ no__t-0IO data bajty/s
+- ASP.NET aplikace @ no__t-0Requests ve frontě aplikací
+- Procesor (_Total) \\% času procesoru
 
 ## <a name="add-counters"></a>Přidat čítače
 
@@ -66,7 +66,7 @@ Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete h
     ```
 
 > [!NOTE]
-> Aplikace ASP.NET Core neobsahují `ApplicationInsights.config`, takže výše uvedená metoda není platná pro ASP.NET Core aplikace.
+> Aplikace ASP.NET Core nemají `ApplicationInsights.config`, takže výše uvedená metoda není platná pro ASP.NET Core aplikace.
 
 Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes`je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold`je příkladem vlastního čítače, který může být implementován ve webové službě.
 
@@ -98,7 +98,7 @@ Můžete také provést stejnou věc s vlastními metrikami, které jste vytvoř
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>Shromažďování čítačů výkonu v kódu pro ASP.NET Core webové aplikace
 
-Upravte `ConfigureServices` metodu`Startup.cs` ve třídě tak, jak je uvedeno níže.
+Upravte metodu `ConfigureServices` ve vaší třídě `Startup.cs`, jak je uvedeno níže.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -148,11 +148,12 @@ Aplikace ASP.NET i ASP.NET Core nasazené do Azure Web Apps běžet ve speciáln
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu v aplikacích ASP.NET Core
 
-* [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.4.1 a vyšší shromažďuje čítače výkonu, pokud je aplikace spuštěná ve službě Azure Web App (Windows).
+Podpora čítačů výkonu v ASP.NET Core je omezená:
 
-* Sada SDK verze 2.7.0-beta3 a vyšší shromažďuje čítače výkonu, pokud aplikace běží ve Windows a cílí `NETSTANDARD2.0` na nebo vyšší.
-* Pro aplikace, které cílí na .NET Framework, jsou čítače výkonu podporovány ve všech verzích sady SDK.
-* Tento článek bude aktualizován, pokud je přidána podpora čítače výkonu v systému, který není systémem Windows.
+* [Sady SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.4.1 a novější shromažďují čítače výkonu, pokud aplikace běží v Azure Web Apps (Windows).
+* Verze sady SDK 2.7.1 a novější shromažďují čítače výkonu, pokud je aplikace spuštěná ve Windows `NETSTANDARD2.0` a cílících nebo novějších.
+* Pro aplikace cílené na .NET Framework všechny verze sady SDK podporují čítače výkonu.
+* Verze sady SDK 2.8.0 a novější podporují čítač procesorů a paměti v systému Linux. V systému Linux není podporován žádný jiný čítač. Doporučený způsob, jak získat systémové čítače v systémech Linux (a dalších prostředích mimo Windows), je použití [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Upozornění
 Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.

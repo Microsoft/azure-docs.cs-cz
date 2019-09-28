@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034828"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350549"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení s využitím úvodní stránky pracovního prostoru Azure Machine Learning (Preview).
 
@@ -32,12 +32,11 @@ ms.locfileid: "71034828"
 
 ## <a name="get-started"></a>Začínáme
 
-
 1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/workspaceportal/). 
 
 1. Vyberte své předplatné a pracovní prostor. 
 
-1. Přejděte do levého podokna. V části **vytváření obsahu** vyberte možnost **automatizovaná ml** .
+1. Přejděte do levého podokna. V části **Autor** vyberte **automatizovaná ml** .
 
 [![Azure Portal navigační podokno](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -57,9 +56,9 @@ V opačném případě uvidíte na **automatizovaném** řídicím panelu Machin
 
     Pole|Popis
     ---|---
-    Název výpočetních prostředků služby Machine Learning| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
+    Název Compute| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
-    Další nastavení| *Minimální uzel*: Zadejte minimální počet uzlů pro výpočetní výkon. Minimální počet uzlů pro výpočetní výkon AML je 0. Chcete-li povolit profilaci dat, je nutné mít nejméně jeden uzel. <br> *Maximální počet uzlů*: Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
+    Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
     
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
@@ -109,7 +108,7 @@ V opačném případě uvidíte na **automatizovaném** řídicím panelu Machin
     Pokročilá nastavení|Popis
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#explore-model-metrics).
-    Výstupní kritéria| Pokud je splněno kterékoli z těchto kritérií, úloha školení skončí před úplným dokončením. <br> *Doba úlohy školení (minuty)* : Doba, po kterou je možné spustit úlohu školení.  <br> *Maximální počet iterací*: Maximální počet kanálů (iterací), které se mají testovat v úloze školení Úloha nebude spouštět více než zadaný počet iterací. <br> *Prahová hodnota skóre metriky*:  Minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
+    Výstupní kritéria| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Doba úlohy školení (minuty)* : Doba, po kterou je možné spustit úlohu školení.  <br> *Maximální počet iterací*: Maximální počet kanálů (iterací), které se mají testovat v úloze školení Úloha nebude spouštět více než zadaný počet iterací. <br> *Prahová hodnota skóre metriky*:  Minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Předzpracování| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. [Přečtěte si další informace o předzpracování](#preprocess).
     Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
     Souběžnost| Vyberte omezení více jader, která chcete použít při použití COMPUTE s více jádry.
@@ -134,7 +133,7 @@ Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní �
 Maximum| Maximální hodnota sloupce 
 Count| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
-Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
+Kvantily| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 střední hodnotu| Aritmetický průměr nebo průměr sloupce
 Standardní odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
 Odchylka| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné hodnoty. 
@@ -208,7 +207,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
 Nyní máte provozní webovou službu, která generuje předpovědi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu v Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.

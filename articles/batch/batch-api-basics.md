@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390475"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350179"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -149,9 +149,9 @@ Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v z
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Vlastní image pro fondy virtuálních počítačů
 
-Pokud chcete použít vlastní image, budete ji muset připravit tím, že ji zobecníte. Informace o přípravě vlastních imagí Linuxu z virtuálních počítačů Azure najdete v tématu popisujícím [vytvoření image virtuálního počítače nebo virtuálního pevného disku](../virtual-machines/linux/capture-image.md). Informace o přípravě vlastních imagí Windows z virtuálních počítačů Azure najdete v tématu popisujícím [vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md). 
+Informace o tom, jak vytvořit fond s vlastními imagemi, najdete v tématu [použití Galerie sdílených imagí k vytvoření vlastního fondu](batch-sig-images.md).
 
-Podrobné požadavky a kroky najdete v tématu popisujícím [použití vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md).
+Případně můžete vytvořit vlastní fond virtuálních počítačů pomocí prostředku [spravované image](batch-custom-images.md) . Informace o přípravě vlastních imagí Linuxu z virtuálních počítačů Azure najdete v tématu popisujícím [vytvoření image virtuálního počítače nebo virtuálního pevného disku](../virtual-machines/linux/capture-image.md). Informace o přípravě vlastních imagí Windows z virtuálních počítačů Azure najdete v tématu popisujícím [vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Podpora kontejnerů ve fondech virtuálních počítačů
 
@@ -247,7 +247,7 @@ Plánování úloh mezi fondy je nezávislé. Mezi různými fondy není zaruče
 
 [Plány úloh][rest_job_schedules] umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úloh určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete určit dobu trvání plánu – na jak dlouho a kdy bude plán platný – a jak často se během tohoto naplánovaného období mají vytvářet úlohy.
 
-## <a name="task"></a>Úloha
+## <a name="task"></a>Úkol
 
 Úkol je jednotka výpočtu, která je přidružena k úloze. Běží na uzlu. Úkoly jsou přiřazeny k uzlu pro provádění nebo jsou zařazeny do fronty, dokud se uzel neuvolní. Jednoduše řečeno, úkol spustí na výpočetním uzlu jeden nebo více programů nebo skriptů k provedení potřebné práce.
 
@@ -519,25 +519,25 @@ Pokud potřebujete omezit nebo zakázat přístup k výpočetním uzlům pomocí
 
 V situacích, kdy některé úkoly selhávají, může klientská aplikace nebo služba Batch prozkoumat metadata neúspěšných úkolů, aby identifikovala uzel, který se chová nesprávně. Každý uzel ve fondu má přiřazeno jedinečné číslo ID a uzel, na kterém je spuštěn úkol, je zahrnut v metadatech úkolu. Po identifikaci problémového uzlu s ním můžete provést několik akcí:
 
-* **Restartovat uzel** ([REST][rest_reboot] | [.NET][net_reboot])
+* **Restartování uzlu** ([REST][rest_reboot] | [.NET][net_reboot])
 
     Restartování uzlu může někdy odstranit latentní problémy, jako jsou zablokované nebo zhroucené procesy. Pokud váš fond používá spouštěcí úkol nebo pokud úloha používá úkol přípravy úlohy, spustí se při restartování uzlu.
-* Obnovit **uzel z image** ([REST][rest_reimage] | [.NET][net_reimage])
+* Obnovení **uzlu z image** ([REST][rest_reimage] | [.NET][net_reimage])
 
     Tato možnost přeinstaluje operační systém na uzlu. Stejně jako u restartování uzlu jsou spouštěcí úkoly a úkoly přípravy úlohy znovu spuštěny poté, co uzel byl obnoven z image.
 * **Odebrat uzel z fondu** ([REST][rest_remove] | [.NET][net_remove])
 
     Někdy je nezbytné úplně odebrat uzel z fondu.
-* **Zakázat plánování úloh na uzlu** ([REST][rest_offline] | [.NET][net_offline])
+* **Zakázat plánování úloh na uzlu** ([REST][rest_offline]@no__t – 2[.NET][net_offline])
 
-    To efektivně převede uzel do režimu offline, aby se mu nepřiřazovaly žádné další úkoly, ale umožňuje, aby zůstal spuštěný a ve fondu. Díky tomu můžete provést další šetření příčin selhání bez ztráty dat neúspěšného úkolu, aniž by uzel způsobil selhání dalších úkolů. Můžete například zakázat plánování úloh na uzlu a pak se [přihlásit vzdáleně](#connecting-to-compute-nodes) a prohlédnout si protokoly událostí uzlu nebo provádět jiné řešení potíží. Jakmile dokončíte šetření, můžete převést uzel zpět do režimu online povolením plánování úkolů ([REST][rest_online] | [.NET][net_online]) nebo provést některou z dalších akcí popsaných výše.
+    To efektivně převede uzel do režimu offline, aby se mu nepřiřazovaly žádné další úkoly, ale umožňuje, aby zůstal spuštěný a ve fondu. Díky tomu můžete provést další šetření příčin selhání bez ztráty dat neúspěšného úkolu, aniž by uzel způsobil selhání dalších úkolů. Můžete například zakázat plánování úloh na uzlu a pak se [přihlásit vzdáleně](#connecting-to-compute-nodes) a prohlédnout si protokoly událostí uzlu nebo provádět jiné řešení potíží. Po dokončení šetření můžete převést uzel zpět do režimu online povolením plánování úkolů ([REST][rest_online] | [.NET][net_online]) nebo provést některou z dalších akcí popsaných výše.
 
 > [!IMPORTANT]
-> U každé akce uvedené v této části – restartování, obnovení z image, odebrání, zakázání plánování úkolů – můžete určit, jak se při provedení akce naloží s úkoly, které na uzlu aktuálně běží. Pokud například zakážete plánování úkolů na uzlu pomocí klientské knihovny Batch .NET, můžete zadat hodnotu výčtu [hodnotu disablecomputenodeschedulingoption][net_offline_option] , která určuje, zda mají být **ukončeny** spuštěné úlohy, znovu **zařadit do fronty** pro plánování na jiných uzlech nebo umožnění dokončení spuštěných úloh před provedením akce (**TaskCompletion**).
+> U každé akce uvedené v této části – restartování, obnovení z image, odebrání, zakázání plánování úkolů – můžete určit, jak se při provedení akce naloží s úkoly, které na uzlu aktuálně běží. Pokud například zakážete plánování úkolů na uzlu pomocí klientské knihovny Batch .NET, můžete zadat hodnotu výčtu [hodnotu disablecomputenodeschedulingoption][net_offline_option] , která určuje, zda mají být ukončeny spuštěné úlohy , znovu zařadit do **fronty** pro plánování na jiných uzlech nebo umožnění dokončení spuštěných úloh před provedením akce (**TaskCompletion**).
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 * Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](quick-run-dotnet.md) nebo [Pythonu](quick-run-python.md). Tyto rychlé starty vás provedou ukázkovou aplikací, která používá službu Batch ke spouštění úlohy na několika výpočetních uzlech, a představí vám použití služby Azure Storage k přípravě a načítání souborů úloh.

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999435"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350641"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení automatizovaných výsledků strojového učení
 
@@ -30,7 +30,7 @@ Další informace pro:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pomocí sady SDK můžete v Azure Portal nebo na cílové stránce pracovního prostoru (Preview) vytvořit automatizovaný experiment strojového učení.
+* Vytvořte experiment pro automatizované spuštění strojového učení, a to buď pomocí sady SDK, do Azure Portal nebo na úvodní stránce pracovního prostoru (Preview).
 
     * Použití sady SDK k sestavení [modelu klasifikace](how-to-auto-train-remote.md) nebo [regresního modelu](tutorial-auto-train-models.md)
     * Pomocí [Azure Portal nebo cílové stránky pracovního prostoru (Preview)](how-to-create-portal-experiments.md) vytvořte model klasifikace nebo regrese tím, že nahrajete příslušná data.
@@ -117,7 +117,7 @@ Termín přesnosti představuje tuto možnost pro třídění k označení všec
 
 Příklad 1: Klasifikační model s nízkou přesností a nízkým ![odvoláním modelu klasifikace s nízkou přesností a nízkým navrácením](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Příklad 2: Klasifikační model s ~ 100% Precision a ~ 100% Recall (ideální) ![klasifikační model s vysokou přesností a vrácením](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+Příklad 2: Klasifikační model s ~ 100% Precision a ~ 100% Recall (ideální) ![A klasifikační model s vysokou přesností a odvolání @ no__t-1
 
 ### <a name="roc"></a>ROC S VÍCE TŘÍDAMI
 

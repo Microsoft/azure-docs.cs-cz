@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259982"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350589"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -328,7 +328,7 @@ Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školen�
 
 Libovolný model vytvořený pomocí automatizovaného ML obsahuje následující kroky:
 + Automatizovaná technologie funkcí (Pokud předzpracování = true)
-+ Škálování/normalizace a algoritmy s hodnotami měřiče
++ Škálování/normalizace a algoritmy s použitím hodnot parametrů
 
 Pro získání těchto informací z výstupu fitted_model z automatizovaného ML je transparentní.
 
@@ -410,7 +410,7 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
    |EngineeringFeatureCount|Počet funkcí generovaných pomocí transformací technologie automatizovaného zpracování funkcí|
    |Transformace|Seznam transformací použitých u vstupních funkcí k vygenerování navržených funkcí|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Škálování/normalizace a algoritmy s hodnotami měřiče:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Škálování/normalizace a algoritmy pomocí hodnot parametrů:
 
 Chcete-li pochopit hodnoty škálování/normalizace a algoritmů a parametrů pro kanál, použijte fitted_model. Steps. [Další informace o škálování/normalizaci](concept-automated-ml.md#preprocess). Tady je ukázkový výstup:
 

@@ -1,64 +1,64 @@
 ---
-title: Operátor osvědčené postupy – izolace clusteru ve službě Azure Kubernetes služby (AKS)
-description: Podívejte se na clusteru – operátor osvědčené postupy pro izolaci ve službě Azure Kubernetes Service (AKS)
+title: Doporučené postupy pro obsluhu – izolace clusteru ve službě Azure Kubernetes Services (AKS)
+description: Seznamte se s osvědčenými postupy pro izolaci ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614917"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348787"
 ---
-# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění izolace clusteru ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro izolaci clusteru ve službě Azure Kubernetes (AKS)
 
-Jak budete spravovat clustery ve službě Azure Kubernetes Service (AKS), často potřebujete oddělit týmy a úlohy. AKS nabízí flexibilitu v tom, jak můžete spustit clustery s více tenanty a izolovat prostředky. Tyto funkce pro více tenantů a izolace by měl k maximalizaci vaší investice do Kubernetes, porozuměl jsem jim a implementovat.
+Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. AKS poskytuje flexibilitu v tom, jak můžete spouštět clustery s více klienty a izolovat prostředky. Chcete-li maximalizovat své investice do Kubernetes, je třeba pochopit a implementovat tyto funkce pro více tenantů a izolaci.
 
 Tento článek o osvědčených postupech se zaměřuje na izolaci pro operátory clusteru. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Plán pro clustery s více tenanty a oddělení prostředků
-> * Použijte fyzické nebo logické izolace v clusterech služby AKS
+> * Plánování clusterů s více klienty a oddělení prostředků
+> * Použití logické nebo fyzické izolace v clusterech AKS
 
-## <a name="design-clusters-for-multi-tenancy"></a>Clustery návrhu pro víceklientské architektury
+## <a name="design-clusters-for-multi-tenancy"></a>Návrh clusterů pro víceklientské prostředí
 
-Kubernetes poskytuje funkce, které logicky oddělit týmy a úlohy ve stejném clusteru. Cíl by měl být k poskytování nejmenší počet oprávnění, omezená na prostředky, každý tým potřebuje. A [Namespace][k8s-namespaces] v Kubernetes vytvoří hranici logickou izolaci. Kubernetes další funkce a požadavky na izolaci a víceklientská architektura zahrnovat tyto oblasti:
+Kubernetes poskytuje funkce, které umožňují logicky izolovat týmy a zatížení ve stejném clusteru. Cílem je poskytnout nejnižší počet oprávnění vymezených na prostředky, které každý tým potřebuje. [Obor názvů][k8s-namespaces] v Kubernetes vytvoří logickou izolaci hranice. Další funkce Kubernetes a požadavky pro izolaci a víceklientské architektury zahrnují následující oblasti:
 
-* **Plánování** zahrnuje základní funkce, jako je kvóty prostředků a rozpočet pod přerušení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro Plánovač základní funkce ve službě AKS][aks-best-practices-scheduler].
-  * Pokročilejší funkce plánovače zahrnovat poskvrnění a tolerations, uzel selektory a spřažení uzlu a pod nebo proti spřažení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro Plánovač pokročilé funkce ve službě AKS][aks-best-practices-advanced-scheduler].
-* **Sítě** zahrnuje použití zásad sítě k řízení toku provozu dovnitř a ven z pody.
-* **Ověřování a autorizace** zahrnovat uživatele řízení přístupu na základě role (RBAC) a integrace Azure Active Directory (AD), pod identity a tajné kódy ve službě Azure Key Vault. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro ověřování a autorizace ve službě AKS][aks-best-practices-identity].
-* **Kontejnery** patří pod zásady zabezpečení, pod kontextu zabezpečení, vyhledávání obrázků a moduly runtime ohrožení zabezpečení. Je také použít aplikaci Armor nebo Seccomp (výpočetní Secure) k omezení přístupu ke kontejneru na základní uzel.
+* **Plánování** zahrnuje použití základních funkcí, jako jsou kvóty prostředků nebo rozpočty přerušení provozu pod. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro základní funkce plánovače v AKS][aks-best-practices-scheduler].
+  * Pokročilejší funkce plánovače zahrnují příchuti a tolerovánost, selektory uzlů a spřažení uzlů nebo spřažení nebo proti spřažení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][aks-best-practices-advanced-scheduler].
+* **Sítě** zahrnují použití zásad sítě k řízení toku provozu v části a z lusků.
+* **Ověřování a autorizace** zahrnují uživatele řízení přístupu na základě role (RBAC) a Azure Active Directory (AD) Integration, identity pod a tajné klíče v Azure Key Vault. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
+* **Kontejnery** zahrnují zásady zabezpečení, pod kontexty zabezpečení, kontrolu imagí a běhových prostředí pro ohrožení zabezpečení. Zahrnuje také použití aplikace App obraně nebo Seccomp (Secure Computing) k omezení přístupu k kontejneru do podkladového uzlu.
 
-## <a name="logically-isolate-clusters"></a>Logicky izolování clusterů
+## <a name="logically-isolate-clusters"></a>Logicky izolujte clustery
 
-**Osvědčené postupy pro moduly** -použít k oddělení týmům a projektům logickou izolaci. Měli snažit minimalizovat počet fyzických clusterů AKS nasadíte do izolovat týmy nebo aplikace.
+**Doprovodné** materiály k osvědčeným postupům – k oddělení týmů a projektů použijte logickou izolaci. Pokuste se minimalizovat počet fyzických clusterů AKS, které jste nasadili k izolaci týmů nebo aplikací.
 
-Logické izolace jeden cluster AKS je možné pro více úloh, týmy nebo prostředí. Kubernetes [obory názvů][k8s-namespaces] tvoří logické oddělovací hranice pro úlohy a prostředky.
+Při logické izolaci je možné použít jeden AKS cluster pro více úloh, týmů nebo prostředí. [Obory názvů][k8s-namespaces] Kubernetes tvoří logickou izolaci hranice pro úlohy a prostředky.
 
-![Logické izolace cluster Kubernetes v AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
+![Logická izolace clusteru Kubernetes v AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
-Logické rozdělení clustery obvykle zajišťuje vyšší hustota pod než fyzicky izolované clustery. Doba nečinnosti v clusteru je méně nadbytečnou kapacitu výpočetních, který je umístěný. V kombinaci s automatického škálování clusteru Kubernetes, můžete škálovat počet uzlů nahoru nebo dolů musí splňovat požadavky. Tento doporučený postup ke automatického škálování vám umožní spustit pouze počet uzlů požadovaných a minimalizuje náklady.
+Logické oddělení clusterů obvykle poskytuje vyšší hustotu pod, než fyzicky izolované clustery. V clusteru je méně nadbytečná výpočetní kapacita, která se nachází v nečinnosti. V kombinaci s nástrojem pro automatické škálování clusteru Kubernetes můžete škálovat počet uzlů nahoru nebo dolů, aby splňovaly požadavky. Tento doporučený postup pro automatické škálování umožňuje spustit jenom požadovaný počet uzlů a minimalizuje náklady.
 
-Prostředí Kubernetes v AKS nebo jinde, nejsou zcela bezpečný pro použití v nehostinném prostředí více tenantů. Další bezpečnostní funkce, jako *zásady zabezpečení Pod* a další prvky velice přesně kontrolovat přístup na základě rolí (RBAC) pro uzly ztížit zneužití. True zabezpečení při spouštění úloh v nehostinném prostředí více tenantů, je hypervisor pouze úroveň zabezpečení, které byste měli věřit. Domény zabezpečení pro Kubernetes se změní celý cluster, nikoli jednotlivých uzlů. Pro tyto typy úloh nehostinném prostředí více tenantů měli byste použít fyzicky izolované clustery.
+Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. V prostředí s více klienty pracuje více tenantů na společné sdílené infrastruktuře. V důsledku toho, že všichni klienti nemůžou být důvěryhodní, musíte provést další plánování, aby se předešlo tomu, že jeden tenant bude mít vliv na zabezpečení a službu jiného. Další funkce zabezpečení, jako jsou *zásady zabezpečení* a pokročilejší řízení přístupu na základě role (RBAC) pro uzly, se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
 
-## <a name="physically-isolate-clusters"></a>Fyzicky izolování clusterů
+## <a name="physically-isolate-clusters"></a>Fyzicky izolovat clustery
 
-**Osvědčené postupy pro moduly** -minimalizovat použití fyzické izolace pro každý samostatný tým nebo nasazení aplikace. Místo toho použijte *logické* izolace, jak je popsáno v předchozí části.
+**Doprovodné** materiály k osvědčeným postupům – minimalizace použití fyzické izolace pro každý samostatný tým nebo nasazení aplikace. Místo toho použijte *logickou* izolaci, jak je popsáno v předchozí části.
 
-Běžným přístupem k izolaci clusteru je pomocí fyzicky oddělená clusteru AKS. V tomto modelu izolace úloh nebo týmy jsou přiřazeny vlastní clusteru AKS. Tento přístup se často vypadá jako nejjednodušší způsob, jak izolaci úloh nebo týmy, ale přidá další správa a finanční režijní náklady. Nyní nutné udržovat těchto více clusterů a mít jednotlivě poskytnout přístup a přiřadit oprávnění. Bude se vám účtovat také pro jednotlivé uzly.
+Běžným přístupem k izolaci clusteru je použití fyzicky oddělených clusterů AKS. V tomto modelu izolace mají týmy nebo úlohy přiřazený svůj vlastní cluster AKS. Tento přístup často vypadá jako nejjednodušší způsob, jak izolovat úlohy nebo týmy, ale přidává další správu a finanční režii. Nyní musíte spravovat několik clusterů a přiřazovat k nim individuální přístup a oprávnění. Účtují se i všechny jednotlivé uzly.
 
-![Clustery fyzické izolace jednotlivé platformy kubernetes v AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
+![Fyzická izolace jednotlivých Kubernetes clusterů v AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fyzicky oddělená clustery mají obvykle pod nízkou hustotu. Každý tým nebo úloha má své vlastní cluster AKS, je často over-pass-the zřízeny výpočetní prostředky clusteru. Malý počet podů, často je naplánovaná na těchto uzlech. Nevyužité kapacity u uzly nelze použít pro aplikace nebo služby ve vývoji jinými týmy. Tyto prostředky nadbytečné přispívat do dodatečné náklady ve fyzicky oddělených clusterech.
+Fyzicky oddělené clustery obvykle mají nízkou hustotu pod. Jelikož má každý tým nebo pracovní postup svůj vlastní cluster AKS, cluster se často zřídí s výpočetními prostředky. Často se na těchto uzlech plánuje malý počet lusků. Nevyužitou kapacitu uzlů nelze použít pro aplikace nebo služby ve vývoji jinými týmy. Tyto nadbytečné prostředky přispívají k dodatečným nákladům v fyzicky oddělených clusterech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřuje na clusteru izolace. Další informace o operacích clusteru ve službě AKS najdete v následující osvědčené postupy:
+Tento článek se zaměřuje na izolaci clusteru. Další informace o operacích clusteru v AKS najdete v následujících osvědčených postupech:
 
 * [Základní funkce plánovače Kubernetes][aks-best-practices-scheduler]
 * [Pokročilé funkce plánovače Kubernetes][aks-best-practices-advanced-scheduler]

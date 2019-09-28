@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743891"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350871"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -40,13 +40,7 @@ Pokud chcete prozkoumat ukázky Pythonu, Stáhněte si [klientskou knihovnu pro 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
 Chcete-li prozkoumat ukázky Node. js, Stáhněte si [klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node).
 
-* [Odeslání objektu BLOB](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [Nahrání a stažení objektu BLOB](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [Token pro pokračování](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [Zásady opakování](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Sdílený přístupový podpis](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [Snímek](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [Dotaz na tabulku](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [Ukázky Azure Storage pomocí JavaScriptu nebo Node. js](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++vzory
 Pokud chcete prozkoumat C++ ukázky, Stáhněte si z NuGet [ C++ knihovnu klienta úložiště](https://www.nuget.org/packages/wastorage/) .
@@ -65,10 +59,11 @@ Pokud chcete prozkoumat C++ ukázky, Stáhněte si z NuGet [ C++ knihovnu klient
 | Node.js | [Reference ke klientské knihovně Node. js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++Reference klientské knihovny](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód pro klientskou knihovnu C++ úložiště](https://github.com/Azure/azure-storage-cpp)|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující články indexují každou ze vzorků podle služby (objekt blob, soubor, fronta, tabulka).
 
 * [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
 * [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
+* [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)

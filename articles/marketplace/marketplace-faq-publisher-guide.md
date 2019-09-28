@@ -1,26 +1,26 @@
 ---
-title: Nejčastější dotazy k Azure Marketplace
-description: Odpovědi na nejčastější dotazy o Microsoft Azure Marketplace
+title: Microsoft Commercial Marketplace – Nejčastější dotazy
+description: Odpovědi na běžné dotazy týkající se Azure Marketplace a Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259945"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350385"
 ---
-# <a name="marketplace-faqs"></a>Nejčastější dotazy k Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy týkající se komerčního tržiště Microsoftu
 
-Odpovědi na běžné dotazy týkající se Microsoft Azure Marketplace.
+Odpovědi na běžné dotazy týkající se Azure Marketplace a Microsoft AppSource.
 
 ## <a name="faq-for-customers"></a>Nejčastější dotazy pro zákazníky
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co potřebujete vědět o Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co potřebujete znát o Azure Marketplace a Microsoft AppSource
 
 **Co je Azure Marketplace?**
 
@@ -253,9 +253,26 @@ Licence přidané do stávajícího předplatného se pro zbytek doby trvání p
 
 Licence, které se zruší, budou podléhat zásadám refundace, které se v těchto nejčastějších dotazech našly.  Všechny zrušené licence se okamžitě odeberou z vašeho účtu a už se nedají použít k jejich použití.
 
+**Podporují se refundace pro nabídky založené na spotřebě?**
+
+Jakékoli poplatky založené na spotřebě – bez ohledu na to, jestli se jedná o hodinové virtuální počítače nebo vlastní měřiče, se neúčtují prostřednictvím zrušení. Jakmile se spotřeba dokončí, poplatky se zpracují na základě Commerce platforme Microsoftu a veškeré spory služby, kde se požaduje refundace, se budou zpracovávat mimo systémy Microsoftu mezi vydavatelem a zákazníkem přímo. Nabídky, které podporují paušální sazbu a účtované náklady, se řídí standardními zásadami refundace za paušální sazby.
+
+**Je možné změnit plány na střední období?**
+
+Ne, přechod mezi měsíční a roční není možný.
+
+**Může zákazník koupit dva plány ze stejné nabídky?**
+
+Ano, zákazník může současně vlastnit dva plány ze stejné nabídky.
+
+**Liší se zásady vracení a naplánování změn podle prezentace?**
+
+Ne, obchodní zásady jsou konzistentní napříč Azure Marketplace a Microsoft AppSource. Pokud si je partner v cloudovém řešení poskytne programu, může partner pro své zákazníky vymáhat jiné zásady.
+
+
 ## <a name="faq-for-publishers"></a>Nejčastější dotazy pro vydavatele
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co potřebujete vědět o Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co potřebujete znát o Azure Marketplace a Microsoft AppSource
 
 **Co je Azure Marketplace?**
 

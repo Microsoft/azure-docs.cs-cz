@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147185"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348970"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -72,14 +72,30 @@ Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesor
 
 V AKS je image virtuálního počítače pro uzly v clusteru v současné době založená na Ubuntu Linux nebo Windows serveru 2019. Když vytvoříte cluster AKS nebo rozvedete horizontální navýšení počtu uzlů, platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace, kterou byste mohli provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky aplikují všechny slevy, které používáte pro velikost virtuálního počítače (včetně [rezervací Azure][reservation-discounts]).
 
-Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání `aks-engine` dat a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
+Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání `aks-engine` dat a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než Moby, můžete pomocí `aks-engine` nakonfigurovat a nasadit cluster Kubernetes, který splňuje vaše aktuální potřeby.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
-V každém uzlu nemusíte spravovat základní součásti Kubernetes, jako je *kubelet*, *Kube-proxy*a *Kube-DNS*, ale využívají některé z dostupných výpočetních prostředků. Pro zajištění výkonu a funkčnosti uzlu jsou na každém uzlu vyhrazené tyto výpočetní prostředky:
+Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. To může vytvořit discrepency mezi celkovými prostředky vašeho uzlu a prostředky ALLOCATABLE při použití v AKS. To je důležité si uvědomit při nastavování požadavků a omezení pro nasazené lusky.
 
-- **Procesor** – 60 MS
-- **Paměť** – 20% až 4 GiB
+Pokud chcete najít allocatableé prostředky uzlu, proveďte následující:
+```kubectl
+kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+
+```
+
+Aby bylo možné zachovat výkon a funkčnost uzlu, jsou na každém uzlu vyhrazené následující výpočetní prostředky. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
+
+>[!NOTE]
+> Použití doplňků, jako je OMS, spotřebuje další prostředky uzlu.
+
+- Typ uzlu závislý na **procesoru**
+
+| Jádra procesoru na hostiteli | 1 | 2 | 4 | 8 | 16 | 32|64|
+|---|---|---|---|---|---|---|---|
+|Kubelet (millicores)|60|100|140|180|260|420|740|
+
+- **Paměť** – 20% dostupné paměti, maximálně 4 GiB
 
 Tyto rezervace znamenají, že množství dostupného procesoru a paměti pro vaše aplikace může být menší, než obsahuje samotný uzel. Pokud jsou k dispozici omezení prostředků z důvodu počtu spuštěných aplikací, zajistí tato rezervace procesor a paměť pro základní součásti Kubernetes. Rezervace prostředků se nedají změnit.
 
@@ -226,7 +242,7 @@ Další informace najdete v tématu [Kubernetes DaemonSets][kubernetes-daemonset
 > [!NOTE]
 > Pokud se používá [doplněk virtuálních uzlů](virtual-nodes-cli.md#enable-virtual-nodes-addon), DaemonSets ve virtuálním uzlu nevytvoří lusky.
 
-## <a name="namespaces"></a>Názvové prostory
+## <a name="namespaces"></a>Obory názvů
 
 Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do *oboru názvů*. Tato seskupení poskytují způsob, jak logicky rozdělit cluster AKS a omezit přístup k vytváření, zobrazení nebo správě prostředků. Můžete například vytvořit obory názvů pro oddělení obchodních skupin. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
 
@@ -240,7 +256,7 @@ Při vytváření clusteru AKS jsou k dispozici následující obory názvů:
 
 Další informace najdete v tématu [obory názvů Kubernetes][kubernetes-namespaces].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek popisuje některé základní komponenty Kubernetes a jejich použití v clusterech AKS. Další informace o základních konceptech Kubernetes a AKS najdete v následujících článcích:
 

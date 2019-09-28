@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: atsenthi
-ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599251"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350291"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
 Spolehlivá souběžná fronta je asynchronní, transakční a replikovaná fronta, která poskytuje vysoké souběžnosti pro zařazování do fronty a operace odstranění fronty. Je navržená tak, aby poskytovala vysokou propustnost a nízkou latenci tím, že požadavků striktní [](https://msdn.microsoft.com/library/azure/dn971527.aspx) řazení FIFO poskytované spolehlivou frontou a místo toho poskytuje nejlepší řazení.
@@ -45,12 +45,19 @@ Vzorový případ použití pro ReliableConcurrentQueue je scénář [fronty zpr
 * Fronta nezaručuje striktní řazení FIFO.
 * Fronta nečte vlastní zápisy. Pokud je položka zařazena do fronty v rámci transakce, nebude viditelná pro odkládání v rámci stejné transakce.
 * Vyřazení z fronty nejsou od sebe vzájemně izolované. Pokud je položka *a* v *txnA*transakce Oddálená, i když *TxnA* není potvrzen, položka *A* nebude viditelná pro souběžnou transakční *txnB*.  Pokud *txnA* přeruší, bude se okamžitě zobrazovat jako *txnB* .
-* Chování *TryPeekAsync* se dá implementovat pomocí *TryDequeueAsync* a pak transakci přerušit. Příklad najdete v části vzory programování.
+* Chování *TryPeekAsync* se dá implementovat pomocí *TryDequeueAsync* a pak transakci přerušit. Příklad tohoto chování najdete v části programovací vzory.
 * Počet je jiný než transakční. Dá se použít k získání nápadu na počet prvků ve frontě, ale představuje bod v čase a nemůže se spoléhat na.
 * Nákladné zpracování položek odstraněných z fronty by nemělo být prováděno, pokud je transakce aktivní, aby nedocházelo k dlouhotrvajícím transakcím, které mohou mít vliv na výkon systému.
 
 ## <a name="code-snippets"></a>Fragmenty kódu
 Podíváme se na několik fragmentů kódu a jejich očekávané výstupy. Zpracování výjimek je v této části ignorováno.
+
+### <a name="instantiation"></a>Vytváření instancí
+Vytvoření instance spolehlivé souběžné fronty je podobné jako u všech ostatních spolehlivých kolekcí.
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
 
 ### <a name="enqueueasync"></a>EnqueueAsync
 Tady je několik fragmentů kódu pro použití EnqueueAsync následovaný jejich očekávanými výstupy.
@@ -144,7 +151,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Předpokládat, že úkoly byly úspěšně dokončeny a že úlohy běžely paralelně a že ve frontě nemění žádné další souběžné transakce. Vzhledem k tomu, že v pořadí položek ve frontě nelze vytvořit odvození, budou seznamy *dequeue1* a *dequeue2* obsahovat všechny dvě položky, a to v libovolném pořadí.
 
-Tato položka se v obou seznamech *nezobrazí.* Proto pokud má dequeue1 *10*, *30*, pak dequeue2 by měl *20*, *40*.
+Tato položka se v obou seznamech nezobrazí. Proto pokud má dequeue1 *10*, *30*, pak dequeue2 by měl *20*, *40*.
 
 - *Případ 3: Řazení řazení do fronty s přerušením transakce*
 
@@ -174,7 +181,7 @@ Totéž platí pro všechny případy, kdy transakce nebyla úspěšně potvrzen
 V této části se podíváme na několik programovacích vzorů, které můžou být užitečné při používání ReliableConcurrentQueue.
 
 ### <a name="batch-dequeues"></a>Batch – vyřadí z fronty
-Doporučeným programovacím modelem je, aby úkol pro uživatele mohl dávkovat své vyřazení z provozu, místo aby prováděl jednu odstínovou frontu současně. Uživatel se může rozhodnout omezit prodlevy mezi každou dávkou nebo velikostí dávky. Následující fragment kódu ukazuje tento programovací model.  Všimněte si, že v tomto příkladu je zpracování provedeno po potvrzení transakce, takže pokud došlo k chybě během zpracování, nezpracované položky budou ztraceny bez zpracování.  Případně lze zpracování provést v rámci oboru transakce, ale to může mít negativní dopad na výkon a vyžaduje zpracování položek, které již byly zpracovány.
+Doporučeným programovacím modelem je, aby úkol pro uživatele mohl dávkovat své vyřazení z provozu, místo aby prováděl jednu odstínovou frontu současně. Uživatel se může rozhodnout omezit prodlevy mezi každou dávkou nebo velikostí dávky. Následující fragment kódu ukazuje tento programovací model. Upozorňujeme, že v tomto příkladu je zpracování provedeno po potvrzení transakce, takže pokud došlo k chybě během zpracování, nezpracované položky budou ztraceny bez zpracování.  Případně lze zpracování provést v rámci oboru transakce, ale může mít negativní dopad na výkon a vyžaduje zpracování položek, které již byly zpracovány.
 
 ```
 int batchSize = 5;
@@ -270,7 +277,7 @@ while(!cancellationToken.IsCancellationRequested)
 ### <a name="best-effort-drain"></a>Vyprázdnit nejvyšší úsilí
 Vyprázdnit frontu nelze zaručit vzhledem k souběžné povaze struktury dat.  Je možné, že i když žádné operace uživatele ve frontě nejsou v letu, konkrétní volání TryDequeueAsync nemusí vracet položku, která byla dříve zařazená do fronty a potvrzena.  Je zaručeno, že se položka zařazená do fronty bude moci kdykoli zviditelnit, ale bez mechanismu vzdálené komunikace, nezávislí spotřebitelé nedokáže zjistit, že fronta dosáhla ustáleného stavu, i když všichni výrobci zastavili a ne. nové operace zařazování do fronty jsou povoleny. Proto je operace vyprázdnění nejvhodnější, jak je implementováno níže.
 
-Uživatel by měl zastavit všechny další úkoly na producenta a uživatele a počkat na potvrzení nebo zrušení jakýchkoli let, než se pokusí vyprázdnit frontu.  Pokud uživatel ví očekávaný počet položek ve frontě, může nastavit oznámení, které signalizuje, že všechny položky byly vyřazení z fronty.
+Uživatel by měl zastavit všechny další úkoly na producenta a uživatele a počkat na potvrzení nebo zrušení jakýchkoli let, než se pokusí vyprázdnit frontu.  Pokud uživatel ví očekávaný počet položek ve frontě, může nastavit oznámení, které signalizuje, že byly všechny položky vyřazení z fronty.
 
 ```
 int numItemsDequeued;
@@ -337,7 +344,7 @@ using (var txn = this.StateManager.CreateTransaction())
 ```
 
 ## <a name="must-read"></a>Musí číst
-* [Reliable Services rychlé zprovoznění](service-fabric-reliable-services-quick-start.md)
+* [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210189"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350857"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210189"
 | Oblasti na kapacitě | Západní střed USA | V tuto chvíli nemůžete v této oblasti vytvořit nový pracovní prostor, protože se jedná o dočasný limit kapacity. Toto omezení se plánuje až do konce října 2019. |
 | Export dat | Momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
 
-**Rychlost přijímání dat**
+**Frekvence přijímání dat**
 
-Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí prahová hodnota pro rychlost příjmu je nastavená na **500 MB/min** na pracovní prostor. Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
+
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí omezení přenosové rychlosti pro data odesílaná z prostředků Azure pomocí [nastavení diagnostiky](../articles/azure-monitor/platform/diagnostic-settings.md) je přibližně **6 GB za minutu** na jeden pracovní prostor. Jedná se o přibližnou hodnotu, protože skutečná velikost se může v závislosti na délce protokolu a kompresním poměru měnit mezi datovými typy. Toto omezení se nevztahuje na data odesílaná z agentů nebo [rozhraní API kolekce dat](../articles/azure-monitor/platform/data-collector-api.md).
+
+Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
  
 Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly.
 

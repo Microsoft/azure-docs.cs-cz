@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350669"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro typy triggerů a akcí v jazyce definice pracovního postupu pro Azure Logic Apps
 
@@ -156,8 +156,8 @@ Tato aktivační událost zkontroluje nebo provede *dotaz* na koncový bod pomoc
  
 | Prvek | type | Popis |
 |---------|------|-------------|
-| Záhlaví | Objekt JSON | Hlavičky z odpovědi |
-| hlavní část | Objekt JSON | Tělo odpovědi |
+| hlavičky | Objekt JSON | Hlavičky z odpovědi |
+| těles | Objekt JSON | Tělo odpovědi |
 | Stavový kód | Integer | Stavový kód z odpovědi |
 |||| 
 
@@ -329,8 +329,8 @@ Tato aktivační událost zkontroluje nebo provede dotazování zadaného koncov
 
 | Prvek | type | Popis |
 |---------|------|-------------| 
-| Záhlaví | Objekt JSON | Hlavičky z odpovědi | 
-| hlavní část | Objekt JSON | Tělo odpovědi | 
+| hlavičky | Objekt JSON | Hlavičky z odpovědi | 
+| těles | Objekt JSON | Tělo odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -340,14 +340,14 @@ Aby bylo možné dobře pracovat s aplikací logiky, musí koncový bod splňova
   
 | Odpověď | Požadováno | Popis | 
 |----------|----------|-------------| 
-| Kód stavu | Ano | Stavový kód "200 OK" spustí spuštění. Jakýkoli jiný stavový kód nespustí běh. | 
+| Stavový kód | Ano | Stavový kód "200 OK" spustí spuštění. Jakýkoli jiný stavový kód nespustí běh. | 
 | Záhlaví opakování – za | Ne | Počet sekund do opětovného dotazování koncového bodu aplikace logiky | 
 | Hlavička umístění | Ne | Adresa URL, která má být volána při dalším intervalu dotazování. Pokud není zadaný, použije se původní adresa URL. | 
 |||| 
 
 *Příklad chování pro různé požadavky*
 
-| Kód stavu | Opakovat po | Chování | 
+| Stavový kód | Opakovat po | Chování | 
 |-------------|-------------|----------|
 | 200 | nTato | Spusťte pracovní postup a pak znovu zkontrolujte další data po definovaném opakování. | 
 | 200 | 10 sekund | Spusťte pracovní postup a potom se znovu podívejte na další data po 10 sekundách. |  
@@ -424,8 +424,8 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro `"subscribe
 
 | Prvek | type | Popis |
 |---------|------|-------------| 
-| Záhlaví | Objekt JSON | Hlavičky z odpovědi | 
-| hlavní část | Objekt JSON | Tělo odpovědi | 
+| hlavičky | Objekt JSON | Hlavičky z odpovědi | 
+| těles | Objekt JSON | Tělo odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -656,7 +656,7 @@ Tato aktivační událost určuje, že příchozí požadavek musí použít met
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Aktivační podmínky
+## <a name="trigger-conditions"></a>Podmínky triggeru
 
 Pro všechny triggery a triggery můžete zahrnout pole obsahující jeden nebo více výrazů pro podmínky, které určují, jestli se má pracovní postup spustit. Chcete-li `conditions` přidat vlastnost do triggeru v pracovním postupu, otevřete aplikaci logiky v editoru zobrazení kódu.
 
@@ -1538,7 +1538,7 @@ Tato akce vytvoří pole s objekty JSON transformací položek z jiného pole na
 |-------|------|-------------| 
 | <*skupin*> | Array | Pole nebo výraz, který poskytuje zdrojové položky. Ujistěte se, že uzavřete výraz do dvojitých uvozovek. <p>**Poznámka:** Pokud je zdrojové pole prázdné, akce vytvoří prázdné pole. | 
 | <*název klíče*> | String | Název vlastnosti přiřazený výsledku z*výrazu* <> <p>Chcete-li přidat novou vlastnost napříč všemi objekty ve výstupním poli, zadejte < >*název klíče*pro tuto vlastnost a*výraz*< > pro hodnotu vlastnosti. <p>Chcete-li odebrat vlastnost ze všech objektů v poli, vynechejte > <*název klíče*pro tuto vlastnost. | 
-| <*vyjádření*> | String | Výraz, který transformuje položku ve zdrojovém poli a přiřadí výsledek do <ho*názvu klíče*> | 
+| <*vyjádření*> | Řetězec | Výraz, který transformuje položku ve zdrojovém poli a přiřadí výsledek do <ho*názvu klíče*> | 
 |||| 
 
 Akce **Select** vytvoří pole jako výstup, takže jakákoli akce, která chce použít tento výstup, musí buď přijmout pole, nebo musíte převést pole na typ, který přijímá akce příjemce. Chcete-li například převést výstupní pole na řetězec, můžete toto pole předat do akce **psaní** a pak odkazovat na výstup z akce **psaní** v dalších akcích.
@@ -2402,12 +2402,38 @@ Můžete změnit výchozí chování triggerů a akcí pomocí `operationOptions
 
 ### <a name="change-trigger-concurrency"></a>Změna souběžnosti triggeru
 
-Ve výchozím nastavení se instance aplikace logiky spouštějí současně, souběžně nebo paralelně s [výchozím limitem](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Proto se každá instance triggeru aktivuje předtím, než se dokončí předchozí instance pracovního postupu. Tento limit pomáhá řídit počet požadavků, které systém back-end obdrží. 
+Ve výchozím nastavení se instance aplikace logiky spouštějí současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Proto se každá instance triggeru aktivuje předtím, než se dokončí předchozí instance pracovního postupu. Tento limit pomáhá řídit počet požadavků, které systém back-end obdrží. 
 
-Chcete-li změnit výchozí limit, můžete použít buď editor zobrazení kódu, nebo návrháře Logic Apps, protože Změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje `runtimeConfiguration.concurrency.runs` vlastnost v základní definici triggeru a naopak. Tato vlastnost určuje maximální počet instancí pracovních postupů, které mohou běžet paralelně. 
+Chcete-li změnit výchozí limit, můžete použít buď editor zobrazení kódu, nebo návrháře Logic Apps, protože Změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje `runtimeConfiguration.concurrency.runs` vlastnost v základní definici triggeru a naopak. Tato vlastnost určuje maximální počet instancí pracovních postupů, které mohou běžet paralelně. Zde jsou některé předpoklady při použití řízení souběžnosti:
 
-> [!NOTE] 
-> Pokud nastavíte Trigger tak, aby běžel sekvenčně buď pomocí návrháře, nebo editoru zobrazení kódu, nenastavte `operationOptions` vlastnost triggeru na `SingleInstance` hodnotu v editoru zobrazení kódu. V opačném případě se zobrazí chyba ověřování. Další informace najdete v tématu [Postup při sekvenčním spuštění instancí](#sequential-trigger).
+* I když je souběžnost povolená, může dlouhodobá instance aplikace logiky způsobit, že nové instance aplikace logiky vstoupí do stavu čekání. Tento stav zabraňuje Azure Logic Apps vytváření nových instancí a probíhá i v případě, že počet souběžných spuštění je menší, než je stanovený maximální počet souběžných spuštění.
+
+  * Chcete-li tento stav přerušit, zrušte nejstarší instance, které jsou *stále spuštěny*.
+
+    1. V nabídce aplikace logiky zvolte **Přehled**.
+
+    1. V části **historie spuštění** vyberte nejstarší instanci, která je pořád spuštěná, třeba:
+
+       ![Vybrat nejstarší spuštěnou instanci](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Chcete-li zobrazit pouze instance, které jsou stále spuštěny, otevřete seznam **všechny** a vyberte možnost **spuštěno**.    
+
+    1. V části **spuštění aplikace logiky**vyberte **zrušit spuštění**.
+
+       ![Najít nejstarší spuštěnou instanci](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Tuto možnost můžete obejít tak, že přidáte časový limit k jakékoli akci, která by mohla obsahovat tyto běhy. Pokud pracujete v editoru kódu, přečtěte si téma [Změna asynchronního trvání](#asynchronous-limits). V opačném případě, pokud používáte návrháře, postupujte podle následujících kroků:
+
+    1. V aplikaci logiky na akci, kam chcete přidat časový limit, v pravém horním rohu vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
+
+       ![Otevřít nastavení akce](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. V části **časový limit**zadejte dobu trvání časového limitu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).
+
+       ![Zadat dobu trvání časového limitu](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Pokud chcete aplikaci logiky spustit postupně, můžete nastavit souběžnost triggeru na `1` buď pomocí editoru zobrazení kódu nebo návrháře. V editoru zobrazení kódu ale nenastavte také vlastnost triggeru `operationOptions` na `SingleInstance`. V opačném případě se zobrazí chyba ověřování. Další informace najdete v tématu [Postup při sekvenčním spuštění instancí](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Upravit v zobrazení kódu 
 
@@ -2768,6 +2794,6 @@ V tomto příkladu definice `authentication` akce http oddíl Určuje `ActiveDir
 > [!IMPORTANT]
 > Ujistěte se, že jste chránili všechny citlivé informace, které vaše definice pracovního postupu aplikace logiky zpracovává. V případě potřeby používejte zabezpečené parametry a zakódovat data. Další informace o zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [jazyku definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md)

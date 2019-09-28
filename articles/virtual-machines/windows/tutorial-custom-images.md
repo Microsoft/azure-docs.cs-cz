@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24a382680860890e57c8d5a380b8a1bb097baaa1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101693"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350852"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShell
 
@@ -57,7 +57,7 @@ Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních �
 
 
 1. Připojte se k virtuálnímu počítači.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na *%WINDIR%\system32\sysprep*a potom spusťte příkaz `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na *%WINDIR%\system32\sysprep*a potom spusťte `sysprep.exe`.
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 4. V části **Možnosti vypnutí** vyberte **Vypnout** a potom klikněte na **OK**.
 5. Po dokončení nástroj Sysprep vypne virtuální počítač. **Virtuální počítač nerestartujte**.
@@ -74,7 +74,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Nastavte stav virtuálního počítače na `-Generalized` použití [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
+Nastavte stav virtuálního počítače na `-Generalized` pomocí [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -133,6 +133,8 @@ New-AzVm `
     -OpenPorts 3389
 ```
 
+Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jedné image. Pokud plánujete rozsáhlé souběžné nasazení více než 20 virtuálních počítačů ze stejné vlastní image, měli byste použít [sdílenou galerii imagí](shared-image-galleries.md) s více replikami imagí. 
+
 ## <a name="image-management"></a>Správa imagí 
 
 Tady je několik příkladů běžných úloh se spravovanými imagemi a postup pro jejich provedení pomocí PowerShellu.
@@ -152,7 +154,7 @@ Remove-AzImage `
     -ResourceGroupName myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 

@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596710"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348915"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL transparentní šifrování dat s použitím klíčů spravovaných zákazníkem v Azure Key Vault: Podpora Bring Your Own Key
 
@@ -60,7 +60,7 @@ Když je TDE nejdřív nakonfigurovaný tak, aby používal ochranu TDE z Key Va
 - Zajistěte, aby se Azure Key Vault a Azure SQL Database/spravovaná instance načetly ve stejném tenantovi.  Trezor klíčů mezi klienty a interakce serveru nejsou **podporovány**.
 - Pokud plánujete přesun tenanta, bude nutné překonfigurovat TDE s integrace, přečtěte si další informace o [přesouvání prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Při konfiguraci TDE s Azure Key Vault je důležité zvážit zatížení, které je umístěno v trezoru klíčů, opakovanými operacemi zalamování nebo rozbalení. Například vzhledem k tomu, že všechny databáze přidružené k serveru SQL Database používají stejné ochrany TDE, převzetí služeb při selhání tohoto serveru se aktivuje jako mnoho klíčových operací s trezorem, protože jsou databáze na serveru. Na základě našeho prostředí a podokumentovaných [omezení služby trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)doporučujeme, abyste v jednom předplatném přidružujete minimálně 500 standardních/Pro obecné účely nebo 200 databází Premium/pro důležité obchodní informace s jedním Azure Key Vaultem, abyste zajistili nepřetržitou vysokou dostupnost dostupnost při přístupu k ochraně TDE v trezoru.
-- Doporučil Uchovávejte kopii ochrany TDE místně.  K tomu je potřeba, aby zařízení HSM vytvořilo místně ochranu TDE a v úschově systém klíčů pro ukládání místní kopie ochrany TDE.  Přečtěte si, [jak přenést klíč z místního modulu hardwarového zabezpečení do Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Doporučené: Uchovávejte kopii ochrany TDE místně.  K tomu je potřeba, aby zařízení HSM vytvořilo místně ochranu TDE a v úschově systém klíčů pro ukládání místní kopie ochrany TDE.  Přečtěte si, [jak přenést klíč z místního modulu hardwarového zabezpečení do Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Pokyny pro konfiguraci Azure Key Vault
@@ -149,7 +149,7 @@ V následující části najdete podrobnější informace o instalaci a konfigur
 - Vytvořte dvě trezory klíčů Azure ve dvou různých oblastech pomocí [PowerShellu, abyste povolili vlastnost "obnovitelné odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) v trezorech klíčů (Tato možnost není k dispozici na portálu integrace, ale vyžaduje SQL).
 - Trezory klíčů Azure musí být umístěny ve dvou oblastech, které jsou dostupné ve stejné geografické oblasti Azure, aby bylo možné zálohovat a obnovovat klíče.  Pokud potřebujete, aby se dva trezory klíčů nacházely v různých zeměpisných oblastech, aby splňovaly požadavky SQL geograficky-DR, postupujte podle [procesu BYOK](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) , který umožňuje import klíčů z místního modulu hardwarového zabezpečení (HSM).
 - V prvním trezoru klíčů vytvořte nový klíč:  
-  - Klíč RSA/RSA – HSA 2048
+  - Klíč RSA/RSA-HSM 2048
   - Žádná data vypršení platnosti
   - Klíč je povolený a má oprávnění k provádění operací získání, zabalení klíče a rozbalení klíčů.
 - Zálohujte primární klíč a obnovte klíč do druhého trezoru klíčů.  Viz [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) a [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).

@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259313"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350499"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -50,7 +50,7 @@ Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové kon
 
 ## <a name="create-and-run-the-experiment"></a>Vytvoření a spuštění experimentu
 
-Na úvodní stránce pracovního prostoru jste dokončili následující kroky experimentování a spouštění, což je konsolidované rozhraní, které zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností.
+Na úvodní stránce pracovního prostoru jste dokončili následující kroky experimentování a spouštění, což je konsolidované rozhraní, které zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností. Cílová stránka pracovního prostoru není podporována v prohlížečích aplikace Internet Explorer.
 
 1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/workspaceportal/).
 
@@ -58,7 +58,7 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
 
 1. Vyberte **Začínáme**.
 
-1. V levém podokně v části **vytváření obsahu** vyberte možnost **automatizovaná ml** .
+1. V levém podokně vyberte v části **Autor** možnost **automatizovaná ml** .
 
    Vzhledem k tomu, že se jedná o první automatizovaný experiment ML, uvidíte obrazovku Začínáme.
 
@@ -99,23 +99,21 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Hodnota pro kurz
-        ---|---
-        Formát souboru| Oddělené
-        Oddělovač| Čárka
-        Kódování| UTF-8
-        Záhlaví sloupců| Všechny soubory mají stejná záhlaví
-        Přeskočit řádky | Žádné
+        Pole|Popis| Hodnota pro kurz
+        ---|---|---
+        Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělené
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi @ no__t-0 samostatné, nezávislé oblasti v prostém textu nebo jinými datovými proudy. |Čárka
+        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
     
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Hotovo**, aby se dokončilo nahrávání souboru a vytváření datové sady pro váš experiment.
-
         ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Jako úkol předpovědi vyberte **klasifikace** .
 
 1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
 
-1. Rozbalte položku **Pokročilá nastavení** a vyplňte pole následujícím způsobem.
+1. Rozbalte položku **Pokročilá nastavení** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
    >[!NOTE]
    > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
@@ -138,10 +136,10 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
 
 ##  <a name="explore-iteration-results"></a>Prozkoumat výsledky iterace
 
-Jak experimenty probíhají, obrazovka aktualizuje **graf iterace** a **seznam iterací** s různými iteracemi (modely) vytvořenými podle jejich dokončení a řadí je podle skóre metriky. Ve výchozím nastavení je model, který vychází z nejvyšší úrovně na základě zvolené metriky **AUC_weighted** , v horní části seznamu.
+Jak experiment probíhá, obrazovka aktualizuje **graf iterace** a **seznam iterací** pomocí různých iterací (modelů) vytvořených, jak byly dokončeny. Ve výchozím nastavení jsou iterace seřazené podle skóre metriky. Pro účely tohoto kurzu je model, který vychází z nejvyšší úrovně na základě zvolené metriky **AUC_weighted** , v horní části seznamu.
 
 Při čekání na dokončení všech iterací experimentu vyberte **název** dokončené iterace a prozkoumejte její podrobnosti o výkonu. 
-   
+
 Následující příklad znázorňuje grafy a spouštění metrik vygenerovaných pro každou iteraci, jako je například křivka odvolání přesnosti, nejasná matice, hodnocení vážené přesnosti atd. 
 
 ![Podrobnosti spuštění iterace](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ V tomto kurzu automatizovaného strojového učení jste pomocí cílové strán
 + Přečtěte si další informace o [předzpracování](how-to-create-portal-experiments.md#preprocess).
 + Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
++ Další informace o metrikách a grafech klasifikace najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
 > Tato datová sada bank je dostupná v rámci [Creative navýšení (CCO: Veřejná doména)](https://creativecommons.org/publicdomain/zero/1.0/). Všechna práva k individuálnímu obsahu databáze jsou licencovaná v rámci [licence k obsahu databáze](https://creativecommons.org/publicdomain/zero/1.0/) a dostupná na [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Tato datová sada byla původně k dispozici v rámci [databáze UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

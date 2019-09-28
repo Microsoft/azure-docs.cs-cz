@@ -90,6 +90,8 @@
       items:
         - name: Power BI
           items:
+            - name: Osvědčené postupy
+              href: power-bi-best-practices.md
             - name: konektor
               href: power-bi-connector.md
             - name: importovaný dotaz

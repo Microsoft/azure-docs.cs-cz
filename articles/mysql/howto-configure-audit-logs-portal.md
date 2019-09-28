@@ -1,72 +1,72 @@
 ---
-title: Konfigurace a přístup k protokolům auditu pro službu Azure Database for MySQL na webu Azure portal
-description: Tento článek popisuje, jak nakonfigurovat a získat přístup k protokolům auditování ve službě Azure Database for MySQL z portálu Azure portal.
+title: Konfigurace a přístup k protokolům auditu – Azure Database for MySQL
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům auditu v Azure Database for MySQL z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: a2f44b52c6d34adb1bebf666ff8453b17f7778a5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2a2d2a697f0e41fb296c61c01909a814678f8277
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448487"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350407"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu na portálu Azure portal
+# <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu pro Azure Database for MySQL v Azure Portal
 
-Můžete nakonfigurovat [– Azure Database for MySQL – protokoly auditu](concepts-audit-logs.md) a nastavení diagnostiky na webu Azure Portal.
+Z Azure Portal můžete nakonfigurovat [protokoly auditu Azure Database for MySQL](concepts-audit-logs.md) a nastavení diagnostiky.
 
 > [!IMPORTANT]
-> Funkce protokolu auditu je aktuálně ve verzi preview.
+> Funkce protokolu auditu je momentálně ve verzi Preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro jednotlivé kroky v této příručce s postupy, musíte:
+Pokud chcete projít tento průvodce, budete potřebovat:
 
-- [Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
-Povolit a konfigurovat protokolování auditu.
+Povolte a nakonfigurujte protokolování auditu.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte váš server Azure Database for MySQL.
 
-1. V části **nastavení** části na bočním panelu, vyberte **parametry serveru**.
+1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
     ![Parametry serveru](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
-1. Aktualizace **audit_log_enabled** parametr ON.
-    ![Povolení protokolů auditu](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+1. Aktualizujte parametr **audit_log_enabled** na zapnuto.
+    @no__t – protokoly auditu 0Enable @ no__t-1
 
-1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) zaznamenávané aktualizací **audit_log_events** parametru.
-    ![Události protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) , které se mají protokolovat, pomocí aktualizace parametru **audit_log_events** .
+    @no__t – události protokolu 0Audit @ no__t-1
 
-1. Přidejte všechny uživatele MySQL, které se mají vyloučit z protokolování aktualizací **audit_log_exclude_users** parametru. Určení uživatelů tím, že poskytuje jejich uživatelskému jménu MySQL.
-    ![Vyloučit uživatele protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+1. Pomocí aktualizace parametru **audit_log_exclude_users** přidejte všechny uživatele MySQL, které se mají vyloučit z protokolování. Zadejte uživatele pomocí svého uživatelského jména MySQL.
+    @no__t – protokol 0Audit vyloučení uživatelů @ no__t-1
 
-1. Jakmile změníte parametry, můžete kliknout na **Uložit**. Nebo můžete **zahodit** provedené změny.
+1. Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
     ![Uložit](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
-1. V části **monitorování** části na bočním panelu, vyberte **nastavení diagnostiky**.
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
 
-1. Klikněte na "+ přidat nastavení diagnostiky" ![přidejte nastavení diagnostiky](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Klikněte na + Přidat nastavení diagnostiky ![Add nastavení diagnostiky @ no__t-1.
 
 1. Zadejte název nastavení diagnostiky.
 
-1. Určete, jaká data jímky k odeslání protokolů auditu (účet úložiště, Centrum událostí, a/nebo pracovní prostor Log Analytics).
+1. Určete, která datová jímka se mají Odeslat protokoly auditu (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
 
-1. Vyberte "MySqlAuditLogs" jako typ protokolu.
-![Konfigurace nastavení diagnostiky](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+1. Jako typ protokolu vyberte "MySqlAuditLogs".
+![Configure nastavení diagnostiky @ no__t-1
 
-1. Po konfiguraci datových jímek do kanálu protokoly auditu chcete, můžete kliknout na **Uložit**.
-![Uložit nastavení diagnostiky](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
+1. Po nakonfigurování datových umyvadel pro přesměrování protokolů auditu na můžete kliknout na **Uložit**.
+![Save nastavení diagnostiky @ no__t-1
 
-1. Přístup k protokolům auditu, ve kterých je v datové jímky, které jste nakonfigurovali. Může trvat až 10 minut na protokoly, kde se zobrazí.
+1. Přihlaste se k protokolům auditu jejich zkoumáním v datových jímkach, které jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [protokoly auditu](concepts-audit-logs.md) ve službě Azure Database for MySQL.
+- Přečtěte si další informace o [protokolech auditu](concepts-audit-logs.md) v Azure Database for MySQL.

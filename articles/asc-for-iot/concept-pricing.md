@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933792"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348521"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -34,20 +34,17 @@ Cenové modely Azure Security Center for IoT se skládají ze dvou částí a ú
 
 - Náklady podle zpráv – rozšířené možnosti zabezpečení na základě zpráv zabezpečení z IoT Edge nebo na listovém zařízení.
 
-  >[!Note]
-  > Zprávy o zabezpečení také účtují spotřebu kvóty na IoT Hub.
 
 Další informace najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Přidružené náklady
 
-Azure Security Center pro IoT má dva typy přidružených nákladů, které nejsou součástí přímých cen:
+Azure Security Center pro IoT má přidružené náklady, které nejsou součástí přímých cen:
 
-- Spotřeba IoT Hub kvóty
 
 - Náklady na úložiště Log Analytics
 
-Můžete snížit související náklady tím, že se odhlásíte od určitých funkcí, a to změnou nastavení.
+Můžete snížit související náklady tím, že se odhlásíte od určitých funkcí řešení. Odsouhlasit změnou nastavení.
 
 Postup změny nastavení:
 
@@ -59,10 +56,8 @@ Postup změny nastavení:
 
 Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jednotlivých možností.
 
-|     | Použití | Komentář |
+|     | Využití | Komentář |
 | --- | --- | --- |
-| **Spotřeba IoT Hub kvóty** |  |
-| Úloha [exportu zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (zdvojený export) | Jednou denně | Zakázat _kolekci zdvojených metadat_ |
 | **Log Analytics úložiště** |  |
 | Doporučení a výstrahy zařízení| Doporučení a výstrahy zabezpečení vygenerované službou | Nenepovinné |
 | Nezpracovaná data zabezpečení| Nezpracovaná data zabezpečení ze zařízení IoT shromažďovaných agenty zabezpečení | Zakázat _události zabezpečení úložiště nezpracovaného zařízení_ |

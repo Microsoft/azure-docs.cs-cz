@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597376"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348943"
 ---
 # <a name="application-gateway-components"></a>Komponenty aplikační brány
 
@@ -28,17 +28,17 @@ IP adresa front-end je IP adresa přidružená k aplikační bráně. Aplikačn�
 
 SKU Azure Application Gateway v2 je možné nakonfigurovat tak, aby podporovala buď statickou interní IP adresu, nebo statickou veřejnou IP adresu, nebo jenom statickou veřejnou IP adresu. Nedá se nakonfigurovat tak, aby podporovala pouze statickou interní IP adresu.
 
-SKU v1 je možné nakonfigurovat tak, aby podporovala statickou interní IP adresu a dynamickou veřejnou IP adresu, jenom statickou interní IP adresu nebo jenom dynamickou veřejnou IP adresu nebo dynamickou veřejnou IP adresu nebo dynamickou privátní IP adresu. Dynamická IP adresa Application Gateway se nemění na spuštěné bráně. Může se změnit jenom v případě, že bránu zastavíte nebo spustíte. Nemění se o selhání systému, aktualizacích, aktualizacích hostitelů Azure atd. 
+SKU v1 je možné nakonfigurovat tak, aby podporovala statickou nebo dynamickou interní IP adresu a dynamickou veřejnou IP adresu. Dynamická IP adresa Application Gateway se nemění na spuštěné bráně. Může se změnit jenom v případě, že bránu zastavíte nebo spustíte. Nemění se o selhání systému, aktualizacích, aktualizacích hostitelů Azure atd. 
 
 Název DNS přidružený k aplikační bráně se v průběhu životního cyklu brány nezmění. V důsledku toho byste měli použít alias CNAME a nasměrovat ho na adresu DNS služby Application Gateway.
 
 ## <a name="listeners"></a>Naslouchací procesy
 
-Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení. Naslouchací proces přijme požadavek, pokud se protokol, port, hostitel a IP adresa přidružené k žádosti shodují se stejnými prvky přidruženými ke konfiguraci naslouchacího procesu.
+Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení. Naslouchací proces přijme požadavek, pokud se protokol, port, název hostitele a IP adresa přidružené k žádosti shodují se stejnými prvky přidruženými ke konfiguraci naslouchacího procesu.
 
 Předtím, než použijete Aplikační bránu, je nutné přidat alespoň jeden naslouchací proces. K aplikační bráně je možné připojit několik posluchačů, které je možné použít pro stejný protokol.
 
-Jakmile naslouchací proces detekuje příchozí požadavky od klientů, služba Application Gateway tyto požadavky směruje na členy ve fondu back-endu. Aplikační brána používá pravidla směrování požadavků definovaná pro naslouchací proces, který obdržel příchozí požadavek.
+Jakmile naslouchací proces detekuje příchozí požadavky od klientů, služba Application Gateway tyto požadavky směruje na členy ve fondu back-end konfigurovaném v pravidle.
 
 Naslouchací procesy podporují následující porty a protokoly.
 
@@ -49,12 +49,13 @@ Port je místo, kde naslouchací proces naslouchá žádosti klienta. Pro SKU V1
 ### <a name="protocols"></a>Protokoly
 
 Application Gateway podporuje čtyři protokoly: HTTP, HTTPS, HTTP/2 a WebSocket:
+>[!NOTE]
+>Podpora protokolu HTTP/2 je dostupná pro klienty připojující se pouze ke službě Application Gateway Listeners. Komunikace s fondy back-end serveru je vždycky přes HTTP/1.1. Ve výchozím nastavení je podpora HTTP/2 zakázaná. Můžete ji povolit.
 
 - Zadejte mezi protokoly HTTP a HTTPS v konfiguraci naslouchacího procesu.
-- Podpora [protokolů WebSockets a HTTP/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) je poskytována nativně a [Podpora](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) protokolu WebSocket je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. Použijte objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
-- Podpora protokolu HTTP/2 je dostupná pro klienty připojující se pouze ke službě Application Gateway Listeners. Komunikace se fondy back-end serveru je přes protokol HTTP/1.1. Ve výchozím nastavení je podpora HTTP/2 zakázaná. Můžete ji povolit.
+- Podpora [protokolů WebSockets a HTTP/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) je poskytována nativně a [Podpora protokolu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. Použijte objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
 
-Pro ukončení SSL použijte naslouchací proces HTTPS. Naslouchací proces HTTPS přesměruje šifrování a dešifrovací práci na bránu aplikace, takže vaše webové servery nejsou zatíženy režijními náklady. Vaše aplikace se pak mohou soustředit na obchodní logiku.
+Pro ukončení SSL použijte naslouchací proces HTTPS. Naslouchací proces HTTPS přesměruje šifrování a dešifrovací práci do vaší aplikační brány, takže vaše webové servery nebudou režie zatíženy.
 
 ### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
@@ -125,7 +126,7 @@ Tato součást se používá také k těmto akcím:
 Back-end fond směruje požadavky na back-endové servery, které slouží k žádosti. Back-endové fondy můžou obsahovat:
 
 - Síťové karty
-- Škálovací sady virtuálních počítačů
+- Virtual Machine Scale Sets
 - Veřejné IP adresy
 - Interní IP adresy
 - PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY
@@ -147,7 +148,7 @@ Kromě používání výchozího monitorování sondy stavu můžete také přiz
 
 Další informace najdete v tématu [monitorování stavu služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvoření aplikační brány:
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848909"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350344"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování 
 
@@ -31,11 +31,16 @@ Když vytvoříte účet Media Services, vytvoří se **výchozí** koncový bod
 
 ## <a name="naming-convention"></a>Konvence pojmenování
 
-Pro výchozí koncový bod:`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Formát názvu hostitele adresy URL streamování je: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, kde `servicename` = název koncového bodu streamování nebo název živé události. 
 
-Pro všechny další koncové body:`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Pokud používáte výchozí koncový bod streamování, `servicename` se vynechá, takže adresa URL je: `{accountname}-{regionname}.streaming.azure.net`. 
 
-## <a name="types"></a>Druhy  
+### <a name="limitations"></a>Omezení
+
+* Název koncového bodu streamování má maximální hodnotu 24 znaků.
+* Název by měl postupovat podle tohoto vzoru [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+## <a name="types"></a>Typy  
 
 Existují dva typy **koncových bodů streamování**: **Standardní** (Preview) a **Premium**. Typ je definovaný počtem jednotek škálování (`scaleUnits`), které přidělíte pro koncový bod streamování. 
 
@@ -67,7 +72,7 @@ Doporučené použití |Doporučuje se pro velká většina scénářů streamov
 
 <sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>
 
-## <a name="properties"></a>Vlastnosti 
+## <a name="properties"></a>properties 
 
 V této části jsou uvedeny podrobnosti o některých vlastnostech koncového bodu streamování. Příklady, jak vytvořit nový koncový bod streamování a popisy všech vlastností, najdete v tématu [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
@@ -128,7 +133,7 @@ Ve většině případů byste měli mít povolenou síť CDN. Pokud však před
 
 ### <a name="considerations"></a>Požadavky
 
-* Koncový bod `hostname` streamování a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
+* Koncový bod streamování `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
 * Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, můžete vytvořit další koncový bod streamování, který není CDN povolený.
 
 ### <a name="detailed-explanation-of-how-caching-works"></a>Podrobné vysvětlení, jak funguje ukládání do mezipaměti

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094702"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350093"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -52,7 +52,7 @@ Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostřed
 | **Výpočetní uzly ve [fondu s povolenými komunikacemi mezi uzly](batch-mpi.md)**  ||
 | Režim přidělování fondů služby Batch | 100 |
 | Režim přidělování fondů předplatných dávky | 80 |
-| **Výpočetní uzly ve [fondu vytvořené pomocí vlastní image virtuálního počítače](batch-custom-images.md)**  <sup>1</sup> ||
+| **Výpočetní uzly ve [fondu vytvořené pomocí prostředku spravované image](batch-custom-images.md)** <sup>1</sup> ||
 | Vyhrazené uzly | 2000 |
 | Uzly s nízkou prioritou | 1000 |
 

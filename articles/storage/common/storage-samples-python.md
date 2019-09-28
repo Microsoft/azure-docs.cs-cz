@@ -7,22 +7,22 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70746038"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351158"
 ---
 # <a name="azure-storage-samples-using-python"></a>Ukázky Azure Storage pomocí Pythonu
 
-Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
+Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
 | **Scénář** | **Vzorový kód** |
 |--------------|-----------------|
-| Připojit objekt blob | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| Objekt blob připojení | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
 | Objekt blob bloku | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | Šifrování na straně klienta | [Správa klíčů účtu úložiště v hodnotě klíče Azure pomocí Pythonu](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Zkopírování objektu Blob | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
@@ -93,10 +93,11 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 * [Začínáme se službou Azure Table Service v Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
 * [Začínáme se službou Azure File Service v Pythonu](../files/storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o ukázkách pro jiné jazyky:
 
 * .NET: [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
 * Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
+* JavaScript/Node. js: [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * Všechny ostatní jazyky: [Ukázky Azure Storage](storage-samples.md)
