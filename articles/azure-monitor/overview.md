@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262214"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345291"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
-Azure Monitor maximalizuje dostupnost a výkon vašich aplikací tím, že poskytuje ucelené řešení pro shromažďování, analýzu a telemetrii z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
+Azure Monitor maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Jedním z příkladů toho, co můžete s Azure Monitor udělat, je:
+
+- Vyhledá a diagnostikuje problémy napříč aplikacemi a závislostmi pomocí [Application Insights](app/app-insights-overview.md).
+- Korelujte problémy infrastruktury s [Azure monitor pro virtuální počítače](insights/vminsights-overview.md) a [Azure monitor pro kontejnery](insights/container-insights-overview.md).
+- Přejděte k datům monitorování pomocí [Log Analytics](log-query/log-query-overview.md) pro řešení potíží a hloubkovou diagnostiku.
+- Podpora operací se škálováním pomocí [inteligentních výstrah](platform/alerts-smartgroups-overview.md) a [automatizovaných akcí](platform/alerts-action-rules.md).
+- Vytvářejte vizualizace pomocí [řídicích panelů](learn/tutorial-logs-dashboards.md) a [sešitů](app/usage-workbooks.md)Azure.
 
 ## <a name="overview"></a>Přehled
 Následující diagram obsahuje podrobný přehled Azure Monitor. Uprostřed diagramu jsou úložiště dat pro metriky a protokoly, které jsou dvěma základními typy dat, které používá Azure Monitor. Vlevo jsou [zdroje dat monitorování](platform/data-sources.md) , která naplňují tato [úložiště dat](platform/data-platform.md). Napravo jsou různé funkce, které Azure Monitor provádí s těmito shromážděnými daty, jako jsou například analýzy, upozorňování a streamování do externích systémů.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Přehled služby Azure Monitor](media/overview/overview.png)
 

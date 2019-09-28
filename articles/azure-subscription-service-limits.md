@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018517"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345551"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
@@ -94,6 +94,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
   * [Privátní odkaz](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
+  * [Virtuální síť WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [Skupina prostředků](#resource-group-limits)
 * [Řízení přístupu na základě rolí](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 #### <a name="expressroute-limits"></a>Omezení ExpressRoute
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Omezení virtuální sítě WAN
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Omezení Application Gateway
 

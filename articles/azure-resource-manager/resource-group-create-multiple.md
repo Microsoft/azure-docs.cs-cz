@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258900"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345426"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iterace prostředku, vlastnosti nebo proměnné v šablonách Azure Resource Manager
 
-V tomto článku se dozvíte, jak vytvořit v šabloně Azure Resource Manager více než jednu instanci prostředku, proměnné nebo vlastnosti. Chcete-li vytvořit více instancí, `copy` přidejte objekt do šablony.
+V tomto článku se dozvíte, jak vytvořit v šabloně Azure Resource Manager více než jednu instanci prostředku, proměnné nebo vlastnosti. Chcete-li vytvořit více instancí, přidejte objekt `copy` do šablony.
 
 Při použití s prostředkem má objekt kopírování následující formát:
 
@@ -49,7 +49,7 @@ Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínk
 
 Chcete-li zadat počet iterací, zadejte hodnotu pro vlastnost Count. Počet nemůže být větší než 800.
 
-Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novější nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze PowerShellu a REST API pro počet nepodporují nulu. V současné době Azure CLI nepodporuje pro tento počet nulu, ale tato podpora bude přidána v budoucí verzi.
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novějším, Azure CLI 2.0.74 nebo novějším nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
 
 Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
 
@@ -113,25 +113,25 @@ Vytvoří tyto názvy:
 Operace kopírování je užitečná při práci s poli, protože můžete iterovat přes každý prvek v poli. Použijte funkci v poli k určení počtu iterací a `copyIndex` k načtení aktuálního indexu v poli. `length` V následujícím příkladu:
 
 ```json
-"parameters": { 
-  "org": { 
-    "type": "array", 
-    "defaultValue": [ 
-      "contoso", 
-      "fabrikam", 
-      "coho" 
-    ] 
+"parameters": {
+  "org": {
+    "type": "array",
+    "defaultValue": [
+      "contoso",
+      "fabrikam",
+      "coho"
+    ]
   }
-}, 
-"resources": [ 
-  { 
-    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-    "copy": { 
-      "name": "storagecopy", 
-      "count": "[length(parameters('org'))]" 
-    }, 
+},
+"resources": [
+  {
+    "name": "[concat('storage', parameters('org')[copyIndex()])]",
+    "copy": {
+      "name": "storagecopy",
+      "count": "[length(parameters('org'))]"
+    },
     ...
-  } 
+  }
 ]
 ```
 
@@ -184,7 +184,7 @@ Chcete-li vytvořit více než jednu hodnotu pro vlastnost prostředku, přidejt
 
 * Název – název vlastnosti, pro kterou chcete vytvořit několik hodnot.
 * Count – počet hodnot, které se mají vytvořit.
-* Input – objekt, který obsahuje hodnoty, které chcete přiřadit vlastnosti.  
+* Input – objekt, který obsahuje hodnoty, které chcete přiřadit vlastnosti.
 
 Následující příklad ukazuje, jak použít `copy` vlastnost datadisks na virtuálním počítači:
 
@@ -450,9 +450,9 @@ Určíte, že prostředek bude nasazen po jiném prostředku pomocí `dependsOn`
       }
     },
     {
-      "apiVersion": "2015-06-15", 
-      "type": "Microsoft.Compute/virtualMachines", 
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
     }
@@ -488,7 +488,7 @@ Předpokládejme například, že obvykle definujete datovou sadu jako podříze
 
 Pokud chcete vytvořit více než jednu datovou sadu, přesuňte ji mimo datovou továrnu. Datová sada musí být na stejné úrovni jako objekt pro vytváření dat, ale je stále podřízeným prostředkem objektu pro vytváření dat. Můžete zachovat vztah mezi datovou sadou a datovou továrnou prostřednictvím vlastností typu a názvu. Vzhledem k tomu, že typ již nelze odvodit z jeho pozice v šabloně, je nutné zadat plně kvalifikovaný typ ve formátu: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Pokud chcete vytvořit relaci nadřazený-podřízený s instancí datové továrny, zadejte název datové sady, která zahrnuje název nadřazeného prostředku. Použijte formát: `{parent-resource-name}/{child-resource-name}`.  
+Pokud chcete vytvořit relaci nadřazený-podřízený s instancí datové továrny, zadejte název datové sady, která zahrnuje název nadřazeného prostředku. Použijte formát: `{parent-resource-name}/{child-resource-name}`.
 
 Následující příklad ukazuje implementaci:
 
@@ -526,7 +526,7 @@ Následující příklady znázorňují běžné scénáře pro vytvoření víc
 |[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
 |[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 

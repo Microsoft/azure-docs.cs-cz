@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265967"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345242"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Rychlý start: Přizpůsobení klientské knihovny pro Node. js
 
@@ -31,11 +31,21 @@ Začínáme s klientskou knihovnou pro přizpůsobování pro Node. js. Pomocí 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze [Node. js](https://nodejs.org).
+* Aktuální verze [Node. js](https://nodejs.org) a npm.
 
-## <a name="setting-up"></a>Nastavení
+## <a name="using-this-quickstart"></a>V tomto rychlém startu
 
-### <a name="create-a-personalizer-azure-resource"></a>Vytvoření prostředku Azure pro přizpůsobování
+
+V tomto rychlém startu se používá několik kroků:
+
+* V Azure Portal vytvořte prostředek pro přizpůsobení.
+* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Nastavení** četnost aktualizace modelu.
+* V editoru kódu vytvořte soubor kódu a upravte soubor s kódem.
+* V příkazovém řádku nebo terminálu nainstalujte sadu SDK z příkazového řádku.
+* V příkazovém řádku nebo terminálu spusťte soubor kódu.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Vytvoření prostředku Azure pro přizpůsobování
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro přizpůsobení pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na místním počítači. Můžete také:
 
@@ -50,7 +60,7 @@ Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
 
-### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
+## <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
 V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
@@ -64,7 +74,7 @@ mkdir myapp && cd myapp
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>Instalace knihovny Node. js pro přizpůsobování
+## <a name="install-the-nodejs-library-for-personalizer"></a>Instalace knihovny Node. js pro přizpůsobování
 
 Nainstalujte klientskou knihovnu pro přizpůsobování pro Node. js pomocí následujícího příkazu:
 
@@ -78,9 +88,9 @@ Nainstalujte zbývající balíčky NPM pro tento rychlý Start:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
+## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
-V prostředku přizpůsobeného nástroji v Azure Portal změňte **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
+V Azure Portal změňte v prostředku přizpůsobeném na stránce **Nastavení** **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
 
 ![Změna frekvence aktualizace modelu](./media/settings/configure-model-update-frequency-settings.png)
 

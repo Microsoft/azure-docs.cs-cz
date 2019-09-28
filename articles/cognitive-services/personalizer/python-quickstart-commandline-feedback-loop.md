@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266252"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345336"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Rychlý start: Přizpůsobení klientské knihovny pro Python
 
@@ -33,9 +33,19 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Nastavení
+## <a name="using-this-quickstart"></a>V tomto rychlém startu
 
-### <a name="create-a-personalizer-azure-resource"></a>Vytvoření prostředku Azure pro přizpůsobování
+
+V tomto rychlém startu se používá několik kroků:
+
+* V Azure Portal vytvořte prostředek pro přizpůsobení.
+* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Nastavení** četnost aktualizace modelu.
+* V editoru kódu vytvořte soubor kódu a upravte soubor s kódem.
+* V příkazovém řádku nebo terminálu nainstalujte sadu SDK z příkazového řádku.
+* V příkazovém řádku nebo terminálu spusťte soubor kódu.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Vytvoření prostředku Azure pro přizpůsobování
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro přizpůsobení pomocí [Azure Portal](https://portal.azure.com/) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na místním počítači. Další podrobnosti najdete [v tématu Postup vytvoření prostředku Cognitive Services pomocí Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Můžete také:
 
@@ -50,7 +60,7 @@ Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
 
-### <a name="install-the-python-library-for-personalizer"></a>Instalace knihovny Python pro přizpůsobování
+## <a name="install-the-python-library-for-personalizer"></a>Instalace knihovny Python pro přizpůsobování
 
 Nainstalujte klientskou knihovnu pro přizpůsobování pro Python pomocí následujícího příkazu:
 
@@ -60,9 +70,9 @@ pip install azure-cognitiveservices-personalizer
 
 Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
 
-### <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
+## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
-V prostředku přizpůsobeného nástroji v Azure Portal změňte **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
+V Azure Portal změňte v prostředku přizpůsobeném na stránce **Nastavení** **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
 
 ![Změna frekvence aktualizace modelu](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,7 +102,7 @@ Vytvořte novou aplikaci Python v preferovaném editoru nebo integrovaném vývo
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+V adresáři projektu otevřete soubor **Sample.py** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 

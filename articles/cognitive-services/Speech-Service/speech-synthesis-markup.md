@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624242"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350159"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -34,7 +34,7 @@ Další informace o standardních, neuronové a vlastních hlasů najdete v tém
 
 ## <a name="special-characters"></a>Speciální znaky
 
-Při použití SSML pro převod textu na syntetizované řeči Pamatujte na to, že stejně jako u formátu XML, speciální znaky, jako jsou uvozovky, apostrofy a závorky, musí být uvozeny řídicím znakem. Další informace najdete v tématu [jazyk XML (Extensible Markup Language) (XML) 1,0: Příloha D](https://www.w3.org/TR/xml/#sec-entexpand).
+Při použití SSML pro převod textu na syntetizované řeči Pamatujte na to, že stejně jako u formátu XML, speciální znaky, jako jsou uvozovky, apostrofy a závorky, musí být uvozeny řídicím znakem. Další informace najdete v tématu @no__t 0Extensible Markup Language (XML) 1,0: Příloha D @ no__t-0.
 
 ## <a name="supported-ssml-elements"></a>Podporované elementy SSML
 
@@ -185,7 +185,7 @@ Tento fragment SSML ukazuje, `<mstts:express-as>` jak se prvek používá ke zm�
 | obsahem | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádný</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silné</li><li>x – silné</li></ul> | volitelná, |
 | time | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou 2S a 500. | volitelná, |
 
-| Obsahem | Popis |
+| obsahem | Popis |
 |----------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 ms |
 | x – slabý | 250 ms |
@@ -290,10 +290,10 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| teče | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>nízká</li><li>středně silné</li><li>maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | volitelná, |
+| teče | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>nízká</li><li>středně silné</li><li>Maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | volitelná, |
 | nesmí | Pro hlasy neuronové se nepodporuje obrys. Obrys představuje změny v rozteči pro obsah mluveného slova jako pole cílů v zadaných časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | volitelná, |
 | oblasti  | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | volitelná, |
-| kmitočt  | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>středně silné</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | volitelná, |
+| Kmitočt  | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>středně silné</li><li>Světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | volitelná, |
 | duration  | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | volitelná, |
 | svazek  | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od Tichého po nahlasu. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>středně silné</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | volitelná, |
 
@@ -359,10 +359,62 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
     </voice>
 </speak>
 ```
+## <a name="say-as-element"></a>Říkám elementu  
+
+`say-as` je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči. 
+
+**Syntaxe**
+
+```XML
+<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+```
+
+**Atributy**
+
+| Atribut | Popis | Povinné / volitelné |
+|-----------|-------------|---------------------|
+| interpretovat jako | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Požadováno |
+| format | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | volitelná, |
+| Detaily | Určuje úroveň podrobností, které se mají vymluvené. Tento atribut například může vyžadovat, aby se v modulu Shrnutí řeči vyhodnotily interpunkční znaménka. Pro `detail` nejsou definovány žádné standardní hodnoty. | volitelná, |
+
+<!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
+
+Níže jsou podporované typy obsahu pro atributy `interpret-as` a `format`. Atribut `format` zahrňte pouze v případě, že je hodnota `interpret-as` nastavena na hodnotu datum a čas.
+
+| interpretovat jako | format | Výsledků |
+|--------------|--------|----------------|
+| adresa | | Text se používá jako adresa. Vysloví se modul Shrnutí řeči:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Jako "jsem jsem na 150thm soudu sever – východ Redmond – Washington." |
+| Cardinal, Number | | Text se hovoří jako číslo mohutnosti. Vysloví se modul Shrnutí řeči:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Stejně jako existují tři alternativy. |
+| znaky, zapsání | | Text se hovoří jako jednotlivá písmena (vypsaný). Vysloví se modul Shrnutí řeči:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Jako "T E S T". |
+| date  | DMY, mdy, YMD, není, YM, my, MD, DM, d, m, y | Text se hovoří jako datum. Atribut `format` určuje formát data (*d = den, m = month a y = Year*). Vysloví se modul Shrnutí řeči:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Jako "dnes je Nineteenth 2016. října" |
+| číslice, number_digit | | Text se hlasuje jako sekvence jednotlivých číslic. Vysloví se modul Shrnutí řeči:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Jako "1 2 3 4 5 6 7 8 9". |
+| frakcionac | | Text se hlasuje jako desetinné číslo. Vysloví se modul Shrnutí řeči:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Jako tři osmá palce. |
+| ordinal  | | Text se hlasuje jako ordinální číslo. Vysloví se modul Shrnutí řeči:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Jako vyberte třetí možnost. |
+| Link  | | Text se používá jako telefonní číslo. Atribut `format` může obsahovat číslice, které reprezentují kód země. Například "1" pro USA nebo "39" pro Itálii. Modul Shrnutí řeči může tyto informace využít k tomu, aby provedou svou výslovnost telefonního čísla. Telefonní číslo může zahrnovat i kód země, a pokud ano, má přednost před kódem země v `format`. Vysloví se modul Shrnutí řeči:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"Moje číslo je směrové číslo oblasti 8 8 8 5 5 5 1 2 1 2." |
+| time | hms12, hms24 | Text se používá jako čas. Atribut `format` určuje, zda je čas zadán pomocí 12 hodin (hms12) nebo 24 hodin (hms24). Použijte dvojtečku k oddělení čísel reprezentujících hodiny, minuty a sekundy. Následují příklady platných časů: 12:35, 1:14:32, 08:15 a 02:50:45. Vysloví se modul Shrnutí řeči:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"Vlak se odpodílí na čtyřech A M." |
+
+**Použití**
+
+Element `say-as` může obsahovat pouze text.
+
+**Příklad**
+
+Modul Shrnutí řeči připraví následující příklad jako "první požadavek byl v říjnu Nineteenth 20 10 s počátečním příchodem na 12 35 P M."
+ 
+```XML
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice  name="en-US-Jessa24kRUS">
+    <p>
+    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+    </p>
+</speak>
+```
+
 
 ## <a name="add-recorded-audio"></a>Přidat zaznamenaný zvuk
 
-`audio`je volitelný prvek, který umožňuje vložit zvuk MP3 do dokumentu SSML. Tělo zvukového prvku může obsahovat prostý text nebo SSML poznámky, které jsou mluvené, pokud je zvukový soubor nedostupný nebo nezobrazitelný. `audio` Kromě toho element může obsahovat text a následující prvky: `phoneme` `p` `audio`, `break`,, `s`,, `prosody` `say-as` ,`sub`a.
+`audio` je volitelný prvek, který umožňuje vložit do dokumentu SSML zvuk MP3. Tělo zvukového prvku může obsahovat prostý text nebo SSML poznámky, které jsou mluvené, pokud je zvukový soubor nedostupný nebo nezobrazitelný. Kromě toho element `audio` může obsahovat text a následující prvky: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as` a `sub`.
 
 Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 
@@ -400,11 +452,11 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 
 ## <a name="add-background-audio"></a>Přidat zvuk na pozadí
 
-`mstts:backgroundaudio` Element umožňuje přidat do dokumentů SSML zvuk na pozadí (nebo míchat zvukový soubor s převodem textu na řeč). Díky `mstts:backgroundaudio` tomu můžete na pozadí zacyklovat zvukový soubor, mizet na začátku převodu textu na řeč a zeslabit na konci převodu textu na řeč.
+Element `mstts:backgroundaudio` umožňuje přidat do dokumentů SSML zvuk na pozadí (nebo míchat zvukový soubor s převodem textu na řeč). U `mstts:backgroundaudio` můžete opakovat zvukový soubor na pozadí, mizet na začátku převodu textu na řeč a zeslabit na konci převodu textu na řeč.
 
 Pokud je zadaný zvuk na pozadí kratší než převod textu na řeč nebo zeslabit, smyčka se spustí. Pokud je delší než převod textu na řeč, zastaví se, až se rozzvolna dokončí.
 
-V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete `audio` však`voice` v rámci elementu doplnit značky přidáním dalšího zvuku do dokumentu SSML.
+V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Pokud ale chcete přidat další zvuk do dokumentu SSML, můžete značky `audio` v rámci elementu `voice`.
 
 **Syntaxe**
 
@@ -417,9 +469,9 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete `au
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
 | src | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
-| svazek | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` na `100` včetně Výchozí hodnota je `1`. | volitelná, |
-| fadein | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
-| zeslabení | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
+| svazek | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` do `100` včetně. Výchozí hodnota je `1`. | volitelná, |
+| fadein | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` do `10000` včetně.  | volitelná, |
+| zeslabení | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` do `10000` včetně.  | volitelná, |
 
 **Příklad**
 
@@ -432,6 +484,6 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete `au
 </speak>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Podpora jazyků: hlasy, národní prostředí, jazyky](language-support.md)

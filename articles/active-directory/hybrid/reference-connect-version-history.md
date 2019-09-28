@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314967"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345521"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -43,14 +43,14 @@ Stáhnout | [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?Li
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) získáte pomocí tohoto odkazu.
 
-## <a name="14x0"></a>1.4. X. 0
+## <a name="14180"></a>1.4.18.0
 
 >[!IMPORTANT]
 >V této verzi Azure AD Connect můžou někteří zákazníci vidět, že některá nebo všechna zařízení s Windows zmizí z Azure AD. Nejedná se o příčinu obav, protože tyto identity zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Další informace najdete v tématu [principy Azure AD Connect 1.4. xx. x disappearnce zařízení](reference-connect-device-disappearance.md) .
 
 
 ### <a name="release-status"></a>Stav verze
-9/10/2019: Vydaná jenom pro automatický upgrade
+9/25/2019: Vydaná pro automatický upgrade a stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 - Nové nástroje pro řešení potíží pomáhají při řešení potíží s scénáři "uživatel neprobíhá synchronizace", "seskupení není synchronizovaný" nebo "nesynchronizované členství ve skupině".
