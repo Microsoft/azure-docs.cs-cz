@@ -1,54 +1,58 @@
 ---
-title: Testování dotazů Azure Stream Analytics místně pomocí Visual Studio Code (Preview)
-description: Tento článek popisuje, jak testovat dotazy místně pomocí nástroje Azure Stream Analytics pro Visual Studio Code.
+title: Test Azure Stream Analytics dotazy místně pomocí Visual Studio Code (Preview)
+description: Tento článek popisuje, jak testovat dotazy místně pomocí Azure Stream Analyticsch nástrojů pro Visual Studio Code.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f477a0f99c3eaa82568d8188bfaae03818fb72dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827947"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673025"
 ---
-# <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Testování dotazů Stream Analytics místně pomocí Visual Studio Code
+# <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Test Stream Analytics dotazy místně pomocí Visual Studio Code
 
-Nástroje Azure Stream Analytics pro Visual Studio Code můžete použít k otestování vaší úlohy Stream Analytics místně s ukázkovými daty.
+Pomocí Azure Stream Analytics nástrojů pro Visual Studio Code můžete testovat úlohy Stream Analytics lokálně pomocí ukázkových dat.
 
-Použijte tento [rychlý Start](quick-create-vs-code.md) informace o vytvoření úlohy Stream Analytics pomocí sady Visual Studio Code.
+V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak pomocí Visual Studio Code vytvořit úlohu Stream Analytics.
 
-## <a name="run-queries-locally"></a>Spouštění dotazů místně
+## <a name="prerequisites"></a>Požadavky
+* Nainstalujte [sadu .NET Core SDK](https://dotnet.microsoft.com/download).
+* Restartujte Visual Studio Code.
+ 
+## <a name="run-queries-locally"></a>Spustit dotazy místně
 
-Rozšíření Azure Stream Analytics pro Visual Studio Code můžete použít k otestování vaší úlohy Stream Analytics místně s ukázkovými daty.
+Azure Stream Analytics rozšíření pro Visual Studio Code můžete použít k otestování Stream Analytics úloh místně s ukázkovými daty.
 
-1. Po vytvoření vaší úlohy Stream Analytics, použijte **Ctrl + Shift + P** otevřete paletu příkazů. Zadejte a vyberte **Azure Stream Analytics: Přidat vstup**.
+1. Po vytvoření úlohy Stream Analytics použijte **kombinaci kláves CTRL + SHIFT + P** a otevřete paletu příkazů. Pak zadejte a vyberte **ASA: Přidejte vstup @ no__t-0.
 
-    ![Přidat vstup Azure Stream Analytics ve Visual Studio code](./media/vscode-local-run/add-input.png)
+    ![Přidat vstup z ASA do Visual studia Code](./media/vscode-local-run/add-input.png)
 
 2. Vyberte **místní vstup**.
 
-    ![Přidat místní vstup Azure Stream Analytics ve Visual Studio code](./media/vscode-local-run/add-local-input.png)
+    ![Přidání místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-local-input.png)
 
 3. Vyberte **+ nový místní vstup**.
 
-    ![Přidat nové místní ASA vstup v aplikaci Visual Studio code](./media/vscode-local-run/add-new-local-input.png)
+    ![Přidání nového místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-new-local-input.png)
 
-4. Zadejte stejný vstupní alias, který jste použili v dotazu.
+4. Zadejte stejný alias vstupu, který jste použili v dotazu.
 
-    ![Přidejte nový místní vstupní alias Azure Stream Analytics](./media/vscode-local-run/new-local-input-alias.png)
+    ![Přidat nový alias místního vstupu pro ASA](./media/vscode-local-run/new-local-input-alias.png)
 
-5. V **LocalInput_DefaultLocalStream.json** soubor, zadejte cestu k souboru, kde se nachází vaše data z místního souboru.
+5. V souboru **LocalInput_DefaultLocalStream. JSON** zadejte cestu k souboru, kde se nachází váš místní datový soubor.
 
-    ![Zadejte cestu k místnímu souboru v sadě Visual Studio](./media/vscode-local-run/local-file-path.png)
+    ![Zadejte cestu k místnímu souboru v aplikaci Visual Studio](./media/vscode-local-run/local-file-path.png)
 
-6. Vraťte se do editoru dotazů a vyberte **místní spuštění**.
+6. Vraťte se do editoru dotazů a vyberte **spustit místně**.
 
-    ![Vyberte možnost spustit místně v editoru dotazů](./media/vscode-local-run/run-locally.png)
+    ![V editoru dotazů vyberte spustit místně.](./media/vscode-local-run/run-locally.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vytvořit úlohu Azure Stream Analytics cloudu ve Visual Studio Code (Preview)](quick-create-vs-code.md)
+* [Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)](quick-create-vs-code.md)
 
-* [Prozkoumejte úlohy Azure Stream Analytics pomocí Visual Studio Code (Preview)](vscode-explore-jobs.md)
+* [Prozkoumejte Azure Stream Analytics úlohy pomocí Visual Studio Code (Preview).](vscode-explore-jobs.md)

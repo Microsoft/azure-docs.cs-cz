@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348970"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672813"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -76,39 +76,34 @@ Pokud potřebujete použít jiný hostitelský operační systém, modul runtime
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
-Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. To může vytvořit discrepency mezi celkovými prostředky vašeho uzlu a prostředky ALLOCATABLE při použití v AKS. To je důležité si uvědomit při nastavování požadavků a omezení pro nasazené lusky.
+Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. To může vytvořit discrepency mezi celkovými prostředky vašeho uzlu a prostředky ALLOCATABLE při použití v AKS. To je důležité poznamenat si, že při nastavování požadavků a omezení pro uživatele nasazené lusky.
 
 Pokud chcete najít allocatableé prostředky uzlu, proveďte následující:
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-Aby bylo možné zachovat výkon a funkčnost uzlu, jsou na každém uzlu vyhrazené následující výpočetní prostředky. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
+Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány na jednotlivých uzlech pomocí AKS. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
 
 >[!NOTE]
 > Použití doplňků, jako je OMS, spotřebuje další prostředky uzlu.
 
-- Typ uzlu závislý na **procesoru**
+- PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
 
 | Jádra procesoru na hostiteli | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet (millicores)|60|100|140|180|260|420|740|
+|Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
-- **Paměť** – 20% dostupné paměti, maximálně 4 GiB
+- **Paměť** – rezervace paměti se řídí progresivní frekvencí.
+  - 25% prvních 4 GB paměti
+  - 20% z dalších 4 GB paměti (až 8 GB)
+  - 10% z dalších 8 GB paměti (až 16 GB)
+  - 6% z dalších 112 GB paměti (až 128 GB)
+  - 2% libovolné paměti nad 128 GB
 
 Tyto rezervace znamenají, že množství dostupného procesoru a paměti pro vaše aplikace může být menší, než obsahuje samotný uzel. Pokud jsou k dispozici omezení prostředků z důvodu počtu spuštěných aplikací, zajistí tato rezervace procesor a paměť pro základní součásti Kubernetes. Rezervace prostředků se nedají změnit.
 
-Příklad:
-
-- Velikost uzlu **Standard DS2 v2** obsahuje 2 vCPU a 7 GIB paměti.
-    - 20% z 7 GiB paměti = 1,4 GiB
-    - Pro uzel je k dispozici celkem *(7 – 1,4) = 5,6 GIB* paměť.
-    
-- Velikost uzlu **Standard E4s V3** obsahuje 4 vCPU a 32 GIB paměti.
-    - 20% z 32 GiB paměti = 6,4 GiB, ale AKS pouze vyhrazuje maximálně 4 GiB
-    - Celkový počet *(32 – 4) = 28 GIB* je pro uzel k dispozici.
-    
 Základní operační systém Node také vyžaduje určité množství prostředků procesoru a paměti, aby bylo možné dokončit své vlastní základní funkce.
 
 Související osvědčené postupy najdete v tématu [osvědčené postupy pro základní funkce nástroje Scheduler v AKS][operator-best-practices-scheduler].

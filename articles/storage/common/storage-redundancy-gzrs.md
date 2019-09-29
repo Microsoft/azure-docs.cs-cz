@@ -3,17 +3,17 @@ title: Vytváření vysoce dostupných Azure Storage aplikací s geograficky red
 description: Geograficky redundantní úložiště (GZRS) manželství vysoké dostupnosti zóny redundantního úložiště (ZRS) s ochranou z oblasti výpadků poskytované geograficky redundantním úložištěm (GRS). Data v účtu úložiště GZRS se replikují v rámci zón dostupnosti Azure v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních katastrof.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300652"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673073"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -55,7 +55,7 @@ Při vytváření účtu úložiště určíte, jak budou data v tomto účtu re
 
 Když pro svůj účet úložiště povolíte RA-GZRS, můžete data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je `myaccount.blob.core.windows.net`například primárním koncovým bodem pro BLOB Service, pak je `myaccount-secondary.blob.core.windows.net`sekundárním koncovým bodem. Přístupové klíče pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
-Pokud chcete využít výhod RA-GZRS v případě regionálního výpadku, musíte aplikaci navrhnout předem, abyste mohli tento scénář zpracovat. Vaše aplikace by měla číst a zapisovat do primárního koncového bodu, ale v případě, že primární oblast nebude k dispozici, přepnout na použití sekundárního koncového bodu. Pokyny k navrhování vysoké dostupnosti pomocí RA-GZRS najdete v tématu [navrhování vysoce dostupných aplikací pomocí RA-GZRS nebo RA-GRS](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Pokud chcete využít výhod RA-GZRS v případě regionálního výpadku, musíte aplikaci navrhnout předem, abyste mohli tento scénář zpracovat. Vaše aplikace by měla číst a zapisovat do primárního koncového bodu, ale v případě, že primární oblast nebude k dispozici, přepnout na použití sekundárního koncového bodu. Pokyny k navrhování vysoké dostupnosti pomocí RA-GZRS najdete v tématu [navrhování vysoce dostupných aplikací pomocí RA-GZRS nebo RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Vzhledem k tomu, že data jsou replikována do sekundární oblasti asynchronně, Sekundární oblast je často za primární oblastí. Chcete-li zjistit, které operace zápisu byly replikovány do sekundární oblasti, aplikace kontroluje čas poslední synchronizace účtu úložiště. Všechny operace zápisu zapsané do primární oblasti před poslední dobou synchronizace byly úspěšně replikovány do sekundární oblasti, což znamená, že je možné je načíst ze sekundárního umístění. Všechny operace zápisu zapsané do primární oblasti po poslední době synchronizace mohou nebo nemusí být replikovány do sekundární oblasti, což znamená, že nemusí být k dispozici pro operace čtení.
 
@@ -141,7 +141,7 @@ K vyžádání migrace za provozu použijte [Azure Portal](https://ms.portal.az
     - **Typ problému**: Vyberte **migrace dat**.
     - **Kategorie**:  **V oblasti vyberte migrovat do (RA-) GZRS**.
     - **Název**: Zadejte popisný název, například **(RA-) GZRS účet migrace**.
-    - **Podrobnosti**: V poli **podrobností** zadejte další podrobnosti, například "Chci migrovat na GZRS z [LRS, \_ \_ GRS] v oblasti". nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v \_ \_ oblasti"
+    - **Podrobnosti**: Zadejte další podrobnosti v **podrobnostech**@no__t – 1box, například "Chci MIGROVAT na GZRS z [LRS, GRS] v oblasti \_ @ no__t-3." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_ @ no__t-1."
 5. Vyberte **Další**.
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
 7. Vyberte **vytvořit**.

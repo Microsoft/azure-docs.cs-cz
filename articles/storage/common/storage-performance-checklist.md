@@ -4,16 +4,16 @@ description: Kontrolní seznam osvědčených postupů pro použití s Azure Sto
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e700cf04123bf02c1014aa418189221fbbb0b812
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985167"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670932"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 
@@ -30,7 +30,7 @@ Tento článek uspořádá osvědčené postupy do následujících skupin. Osv�
 * Tabulky
 * Fronty  
 
-| Hotovo | Oblast | Kategorie | Otázka |
+| Hotovo | Oblast | Category | Otázka |
 | --- | --- | --- | --- |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Je vaše aplikace navržená tak, aby se zabránilo přístupu k cílům škálovatelnosti?](#subheading1) |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Je vaše konvence vytváření názvů navržená tak, aby umožňovala lepší vyrovnávání zatížení?](#subheading47) |

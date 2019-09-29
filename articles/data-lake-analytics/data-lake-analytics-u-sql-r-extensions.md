@@ -1,6 +1,6 @@
 ---
-title: Rozšíření skriptů U-SQL s jazykem R ve službě Azure Data Lake Analytics
-description: Zjistěte, jak spustit kód jazyka R v skriptů U-SQL pomocí Azure Data Lake Analytics
+title: Rozšíří skripty U-SQL pomocí R v Azure Data Lake Analytics
+description: Naučte se spouštět kód R ve skriptech U-SQL pomocí Azure Data Lake Analytics. Vložení kódu jazyka R nebo odkazů ze souborů
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,24 +9,24 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5dd3f493e85afc925b639c142a293eed1e8cbd7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813742"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672686"
 ---
-# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL s kódem R ve službě Azure Data Lake Analytics
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíří se skripty U-SQL s kódem R v Azure Data Lake Analytics
 
-Následující příklad ukazuje základní kroky pro nasazování kódu R:
-* Použití `REFERENCE ASSEMBLY` příkaz umožňující rozšíření R skript U-SQL.
-* Použití `REDUCE` operace rozdělit vstupní data na klíč.
-* Rozšíření U-SQL R zahrnují integrované redukční funkci (`Extension.R.Reducer`), který spouští kód R na každý vrchol přiřazené redukční funkci. 
-* Využití vyhrazených s názvem datových rámců volá `inputFromUSQL` a `outputToUSQL` k předávání dat mezi U-SQL a R. vstupní a výstupní datový rámec názvy identifikátorů jsou pevné (to znamená, uživatelů není možné změnit názvy těchto předdefinovaných vstupu a výstupu datového rámce identifikátory).
+Následující příklad znázorňuje základní kroky pro nasazení kódu R:
+* `REFERENCE ASSEMBLY` Pomocí příkazu povolte pro skript U-SQL rozšíření R.
+* `REDUCE` Pomocí operace můžete rozdělit vstupní data na klíč.
+* Rozšíření R pro u-SQL obsahují vestavěný snižovalo (`Extension.R.Reducer`), které spouští R kód na každém vrcholu přiřazeném k tomuto nástroji. 
+* Použití vyhrazených pojmenovaných datových `inputFromUSQL` rámců `outputToUSQL` a k předávání dat mezi U-SQL a R. vstupní a výstupní názvy identifikátorů dataframe jsou pevné (to znamená, že uživatelé nemůžou změnit tyto předdefinované názvy vstupního a výstupního datového rámce. identifikátory).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>Vložení kódu R do skriptu U-SQL
 
-Můžete vložené R kód skriptu U-SQL s použitím parametru příkazu `Extension.R.Reducer`. Například můžete deklarovat skript jazyka R jako proměnnou s řetězcem a předáváme jako parametr do redukční funkci.
+Kód R můžete vložit do skriptu U-SQL pomocí parametru `Extension.R.Reducer`příkazu. Například můžete deklarovat skript jazyka R jako proměnnou řetězce a předat ji jako parametr pro redukci.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -42,16 +42,16 @@ Můžete vložené R kód skriptu U-SQL s použitím parametru příkazu `Extens
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Zachovat v samostatném souboru kódu jazyka R a na něj odkazovat skript U-SQL
+## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Ponechte kód R v samostatném souboru a odkazujte ho na skript U-SQL.
 
-Následující příklad ukazuje mnohem složitější využití. V tomto případě kód R se nasadí jako prostředek, který je skript U-SQL.
+Následující příklad znázorňuje komplexnější využití. V tomto případě je kód R nasazený jako prostředek, který je skript U-SQL.
 
 Uložte tento kód R jako samostatný soubor.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-Použijte skript U-SQL k nasazení tohoto skriptu jazyka R s příkazem nasazení prostředků.
+Pomocí skriptu U-SQL nasaďte tento skript R pomocí příkazu nasadit prostředek.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -88,28 +88,28 @@ Použijte skript U-SQL k nasazení tohoto skriptu jazyka R s příkazem nasazen�
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
         OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
 
-## <a name="how-r-integrates-with-u-sql"></a>Jak R integruje do U-SQL
+## <a name="how-r-integrates-with-u-sql"></a>Jak se R integruje s U-SQL
 
 ### <a name="datatypes"></a>Datové typy
-* Jako jsou převést řetězcové a číselné sloupce v U-SQL-mezi R DataFrame a jazykem U-SQL [podporované typy: `double`, `string`, `bool`, `integer`, `byte`].
-* `Factor` Není podporován v U-SQL.
-* `byte[]` musí být serializován jako kódování base64 `string`.
-* U-SQL řetězce lze převést na faktorech v kódu jazyka R, jakmile U-SQL vytvořit vstupní datový rámec R nebo tak, že nastavíte parametr redukční funkci `stringsAsFactors: true`.
+* Řetězcové a číselné sloupce z jazyka U-SQL jsou převáděny tak, jak jsou mezi R dataframe a U-SQL [podporované typy: `double`, `string`, `bool`, `integer`, `byte`].
+* `Factor` Datový typ není podporován v U-SQL.
+* `byte[]`musí být serializován jako kódovaný `string`v kódování Base64.
+* Řetězce u-SQL je možné převést na faktory v kódu R. po vytvoření vstupního datového rámce U-SQL vytvořte vstupní datový rámec R nebo nastavením parametru `stringsAsFactors: true`pro snížení.
 
 ### <a name="schemas"></a>Schémata
-* U-SQL datové sady nemůže mít duplicitní názvy sloupců.
-* Názvy sloupců datových sad U-SQL musí být řetězce.
-* Názvy sloupců musí být stejné v U-SQL a skripty jazyka R.
-* Sloupec jen pro čtení nemůže být součástí výstupu datového rámce. Protože je jen pro čtení sloupců se automaticky vloží zpět v tabulce U-SQL, pokud je součástí výstupní schéma UDO.
+* Datové sady U-SQL nemůžou mít duplicitní názvy sloupců.
+* Názvy sloupců U-SQL DataSets musí být řetězce.
+* Názvy sloupců musí být ve skriptech U-SQL a R stejné.
+* Sloupec jen pro čtení nemůže být součástí výstupního datového rámce. Vzhledem k tomu, že sloupce ReadOnly jsou automaticky vloženy zpět do tabulky U-SQL, pokud je součástí výstupního schématu UDO.
 
 ### <a name="functional-limitations"></a>Funkční omezení
-* Nelze vytvořit instanci R stroje dvakrát v rámci stejného procesu. 
-* U-SQL v současné době nepodporuje kombinační UDO pro předpověď na základě dělené modely vygenerované pomocí UDO redukční funkci. Uživatelé mohou deklarovat dělené modely jako zdroje a jejich použití v jejich skript jazyka R (ukázkový kód `ExtR_PredictUsingLMRawStringReducer.usql`)
+* Ve stejném procesu nejde vytvořit instanci modulu R dvakrát. 
+* V současné době U-SQL nepodporuje kombinaci Udo pro předpověď pomocí dělených modelů generovaných pomocí nástroje pro redukci Udo. Uživatelé mohou deklarovat rozdělené modely jako prostředek a použít je ve skriptu jazyka R (viz ukázkový kód `ExtR_PredictUsingLMRawStringReducer.usql`).
 
-### <a name="r-versions"></a>Verze jazyka R:
-Je podporován pouze R 3.2.2.
+### <a name="r-versions"></a>Verze R
+Podporuje se jenom R 3.2.2.
 
-### <a name="standard-r-modules"></a>Standardní modulů R
+### <a name="standard-r-modules"></a>Standardní moduly R
 
     base
     boot
@@ -159,15 +159,15 @@ Je podporován pouze R 3.2.2.
     utils
     XML
 
-### <a name="input-and-output-size-limitations"></a>Vstup a výstup omezení velikosti
-Každý vrchol má omezené množství paměti přidělené k němu. Protože vstupních a výstupních datových rámců musí existovat v paměti v kódu jazyka R, celková velikost pro vstup a výstup může mít maximálně 500 MB.
+### <a name="input-and-output-size-limitations"></a>Omezení velikosti vstupu a výstupu
+Ke každému vrcholu je přiřazena omezená velikost paměti. Vzhledem k tomu, že vstupní a výstupní datový rámec musí existovat v paměti v kódu R, celková velikost vstupu a výstupu nemůže být větší než 500 MB.
 
 ### <a name="sample-code"></a>Vzorový kód
-Další ukázkový kód je k dispozici v účtu Data Lake Store, po instalaci rozšíření U-SQL Advanced Analytics. Cesta pro další ukázkový kód je: `<your_account_address>/usqlext/samples/R`. 
+Další vzorový kód je dostupný v účtu Data Lake Store po instalaci rozšíření U-SQL Advanced Analytics. Cesta pro další vzorový kód je: `<your_account_address>/usqlext/samples/R`. 
 
-## <a name="deploying-custom-r-modules-with-u-sql"></a>Nasazení vlastní R moduly pomocí U-SQL
+## <a name="deploying-custom-r-modules-with-u-sql"></a>Nasazení vlastních modulů R pomocí U-SQL
 
-Nejdřív vytvořit vlastní modul R a zip ji a pak nahrajte soubor ZIP vlastní modul R s vaším úložištěm ADL. V tomto příkladu nahrajeme magittr_1.5.zip do kořenového účtu ADLS výchozí účet ADLA, který se používá. Jakmile nahrajete do úložiště ADL modulu, deklarujte ho jako ji dejte k dispozici ve skriptu U-SQL a volání pomocí prostředků nasazení `install.packages` k její instalaci.
+Nejdřív vytvořte vlastní modul R a nahrajte ho a potom do úložiště ADL nahrajte soubor vlastního modulu zip. V tomto příkladu odešleme magittr_ 1.5. zip do kořenového adresáře výchozího účtu ADLS pro účet ADLA, který používáme. Po nahrání modulu do úložiště ADL ho deklarujete jako prostředek použít nasazení, abyste ho mohli zpřístupnit ve skriptu U-SQL a zavolat `install.packages` ho k instalaci.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -209,4 +209,4 @@ Nejdřív vytvořit vlastní modul R a zip ji a pak nahrajte soubor ZIP vlastní
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Pomocí funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
+* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)

@@ -4,16 +4,16 @@ description: Naučte se, jak zpřístupnit kontejnery a objekty blob pro anonymn
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: e3d6312be0936f14ece5d30a2bbf3e4235031c0e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: d0e3121fe773a9725eb7cfd9e8b14d0ed86f3fbb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154066"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673297"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 

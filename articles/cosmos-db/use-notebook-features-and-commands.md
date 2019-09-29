@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310344"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672488"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Do nové buňky kódu vložte a spusťte následující kód, který nahraďte `
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Tento balíček bude k dispozici pro použití z libovolného poznámkového bloku v účtu Azure Cosmos. 
+Tento balíček bude k dispozici pro použití z libovolného poznámkového bloku v pracovním prostoru účet Azure Cosmos. 
+
+> [!TIP]
+> Pokud váš Poznámkový blok vyžaduje vlastní balíček, doporučujeme přidat do svého poznámkového bloku buňku pro instalaci balíčku, protože balíčky se odeberou, když [pracovní prostor resetujete](#reset-notebooks-workspace).  
 
 ## <a name="run-a-sql-query"></a>Spustit dotaz SQL
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > Proměnné prostředí ``COSMOS_KEY`` a se vztahují pouze na rozhraní SQL API. ``COSMOS_ENDPOINT`` V případě jiných rozhraní API Najděte koncový bod a klíč v okně **připojovací řetězce** nebo **klíče** v účtu Cosmos.  
+
+## <a name="reset-notebooks-workspace"></a>Resetovat pracovní prostor poznámkových bloků
+Pokud chcete resetovat pracovní prostor poznámkových bloků na výchozí nastavení, na panelu příkazů vyberte **resetovat pracovní prostor** . Tím se odeberou všechny vlastní nainstalované balíčky a restartuje se server Jupyter. Vaše poznámkové bloky, soubory a prostředky Cosmos nebudou ovlivněny.  
+
+![Resetovat pracovní prostor poznámkových bloků](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>Další kroky
 

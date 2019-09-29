@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210686"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673442"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapování zpracování JSON toku dat
 
@@ -22,11 +22,11 @@ ms.locfileid: "70210686"
 Přidání složitého sloupce do toku dat je snazší prostřednictvím odvozeného editoru výrazů pro sloupce. Po přidání nového sloupce a otevření editoru jsou k dispozici dvě možnosti: Ruční zadání struktury JSON nebo použití uživatelského rozhraní k interaktivnímu přidání podsloupců.
 
 #### <a name="interactive-ui-json-design"></a>Interaktivní návrh JSON uživatelského rozhraní
-V podokně výstup v rámci schématu lze nové podsloupce přidat pomocí `+` nabídky: ![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
+V podokně výstup na straně výstupu schématu lze přidat nové podsloupce pomocí nabídky `+`: ![Přidat]Podsloupec(media/data-flow/addsubcolumn.png "Přidat") Podsloupec
 
 Odtud lze stejným způsobem přidat nové sloupce a podsloupce. Pro každé nekomplikované pole lze přidat výraz do pravé části editoru výrazů.
 
-![Složitý sloupec](media/data-flow/complexcolumn.png "Složitý sloupec")
+Složitý sloupec(media/data-flow/complexcolumn.png "se složitým") ![sloupcem]
 
 #### <a name="manual-json-design"></a>Ruční návrh JSON
 Chcete-li ručně přidat strukturu JSON, přidejte nový sloupec a v editoru zadejte výraz. Výraz následuje po tomto obecném formátu:
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>Vyšší pořadí funkcí
+## <a name="higher-order-functions"></a>Vyšší pořadí funkcí
 ## <a name="filter"></a>filter
 Filtruje prvky z pole, které nesplňuje zadaný predikát. Filtr očekává odkaz na jeden prvek ve funkci predikátu jako #item.
 
@@ -173,7 +173,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>druhu
+## <a name="sort"></a>Druhu
 Seřadí pole pomocí zadané funkce predikátu. Řazení očekává odkaz na dva po sobě jdoucí prvky ve funkci Expression jako #item1 a #item2.
 
 ### <a name="examples"></a>Příklady
@@ -194,6 +194,6 @@ contains([1, 2, 3, 4], #item == 3) => true
 contains([1, 2, 3, 4], #item > 5) => false
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití transformace odvozeného sloupce k sestavení hierarchických struktur](data-flow-derived-column.md)

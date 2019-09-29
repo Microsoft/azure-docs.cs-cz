@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389706"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670755"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -200,9 +200,9 @@ Ano. Musíte připojit sadu škálování virtuálního počítače k virtuáln�
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Existuje úplný seznam služeb Azure, které můžu nasadit prostředky z do virtuální sítě?
 Ano, podrobnosti najdete v tématu [Integrace virtuální sítě pro služby Azure](virtual-network-for-azure-services.md).
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Které prostředky Azure PaaS můžu omezit přístup k z virtuální sítě?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Jak můžu omezit přístup k prostředkům Azure PaaS z virtuální sítě?
 
-Prostředky nasazené prostřednictvím některých služeb Azure PaaS (například Azure Storage a Azure SQL Database) můžou omezit síťový přístup jenom na prostředky ve virtuální síti prostřednictvím použití koncových bodů služby virtuální sítě. Podrobnosti najdete v tématu [Přehled koncových bodů služby virtuální sítě](virtual-network-service-endpoints-overview.md).
+Prostředky nasazené prostřednictvím některých služeb Azure PaaS (například Azure Storage a Azure SQL Database) můžou omezit síťový přístup k virtuální síti prostřednictvím použití koncových bodů služby virtuální sítě nebo privátního propojení Azure. Podrobnosti najdete v tématu [Přehled koncových bodů služby virtuální sítě](virtual-network-service-endpoints-overview.md), [Přehled privátních odkazů Azure](../private-link/private-link-overview.md) .
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Můžu přesunout služby z virtuální sítě a z něj?
 Ne. Nemůžete přesouvat služby z virtuální sítě a z ní. Pokud chcete přesunout prostředek do jiné virtuální sítě, musíte prostředek odstranit a znovu nasadit.
@@ -262,10 +262,10 @@ K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Můžu povolit partnerský vztah virtuálních sítí, pokud moje virtuální sítě patří k předplatným v rámci různých klientů Azure Active Directory?
 Ano. Je možné vytvořit partnerský vztah virtuální sítě (místní nebo globální), pokud vaše předplatná patří do různých klientů Azure Active Directory. Můžete to provést prostřednictvím PowerShellu nebo rozhraní příkazového řádku. Portál ještě není podporovaný.
 
-### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v *inicializovaném* stavu, proč se nemůžu připojit?
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v inicializovaném stavu, proč se nemůžu připojit?
 Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno*.
 
-### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v *odpojeném* stavu, proč nemůžu vytvořit připojení partnerského vztahu?
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v odpojeném stavu, proč nemůžu vytvořit připojení partnerského vztahu?
 Pokud je připojení partnerského vztahu virtuálních sítí v *odpojeném* stavu, znamená to, že se odstranila jedna z vytvořených odkazů. Aby bylo možné znovu vytvořit partnerské připojení, bude nutné odstranit odkaz a znovu ho vytvořit.
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Můžu na virtuální síť navázat partnerský virtuální síť v jiném předplatném?
@@ -281,7 +281,7 @@ Za vytvoření připojení partnerského vztahu virtuálních sítí se neúčtu
 Ne. Provoz mezi prostředky v virtuální sítě s partnerským vztahem je privátní a izolovaný. Zůstane v páteřním rámci společnosti Microsoft celá.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Proč je moje připojení partnerského vztahu v *odpojeném* stavu?
-Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do *odpojeného* stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.
+Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do odpojeného stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Pokud se mi partnerském peer-to-VNetB and I peer VNetB to sítí vnetc, znamená to, že se jedná o partnerský vztah partnerském a sítí vnetc?
 Ne. Přenosných partnerských vztahů se nepodporuje. Aby bylo možné provést tuto službu, je nutné, aby byly partnerské partnerském a sítí vnetc.
@@ -404,7 +404,7 @@ Celkový počet koncových bodů služby virtuální sítě ve virtuální síti
 |---|---|
 |Služba Azure| Omezení pravidel virtuální sítě|
 |Azure Storage| 100|
-|Azure SQL| 128|
+|SQL Azure| 128|
 |Azure SQL Data Warehouse|  128|
 |Trezor klíčů Azure|    127|
 |Azure Cosmos DB|   64|

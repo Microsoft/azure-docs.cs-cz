@@ -1,194 +1,29 @@
 ---
-title: Nástroje pro práci s Azure Storage
-description: Seznam nástrojů, které vám umožní zobrazit data Azure Storage a pracovat s nimi.
+title: Klientské nástroje Microsoftu pro práci s Azure Storage
+description: Seznam klientských nástrojů poskytovaných Microsoftem, které umožňují zobrazit data Azure Storage a pracovat s nimi.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 08/26/2019
+ms.topic: conceptual
+ms.date: 09/27/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 11838a50d70d1b9a0216505e9ef0958d3b18bdac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035268"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670934"
 ---
-# <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
-Uživatelé Azure Storage často chtějí pomocí Azure Storage klientského nástroje zobrazit data a pracovat s nimi. V níže uvedených tabulkách uvádíme několik nástrojů, které vám to umožňují. "X" vložte do každého bloku, pokud nabízí možnost výčtu a/nebo přístupu k abstrakci dat. Tabulka také ukazuje, jestli jsou nástroje bezplatné nebo ne. "Zkušební" znamená, že je k dispozici bezplatná zkušební verze, ale plný produkt není bezplatný. "Y/N" označuje, že je verze dostupná zdarma, ale k nákupu je k dispozici odlišná verze.
+# <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Klientské nástroje Microsoftu pro práci s Azure Storage
 
-Poskytli jsme jenom snímek dostupných Azure Storage klientských nástrojů. Tyto nástroje mohou nadále vyvíjet a rozšiřovat funkce. Pokud jsou k dispozici opravy nebo aktualizace, ponechejte prosím komentář a sdělte nám, jak nás zajímá. Totéž platí, pokud znáte nástroje, které by měly být zde – chceme je přidat.
+Microsoft poskytuje několik nástrojů grafického uživatelského rozhraní (GUI) pro práci s daty v Azure Storagem účtu. Všechny nástroje, které jsou uvedené v následující tabulce, jsou bezplatné.
 
-**Nástroje pro Microsoft Azure Storage klienta**
+| Nástroj klienta Azure Storage                 | Podporované platformy | Objekt blob bloku | Objekt blob stránky | Objekt blob připojení | Tabulky | Fronty | Soubory |
+|-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
+| [Azure Portal](https://portal.azure.com)                    | Web                 | Ano          | Ano         | Ano           | Ano      | Ano      | Ano     |
+| [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Ano          | Ano         | Ano           | Ano      | Ano      | Ano     |
+| [Průzkumník cloudu Microsoft Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Ano          | Ano         | Ano           | Ano      | Ano      | Ne      |
 
-<table>
-  <tr>
-    <th rowspan="2">Nástroj klienta Azure Storage</th>
-    <th rowspan="2">Objekt blob bloku</th>
-    <th rowspan="2">Objekt blob stránky</th>
-    <th rowspan="2">Připojit objekt blob</th>
-    <th rowspan="2">Tabulky</th>
-    <th rowspan="2">Fronty</th>
-    <th rowspan="2">Soubory</th>
-    <th rowspan="2">Zdarma</th>
-    <th colspan="4">Platforma</th>
-  </tr>
-  <tr>
-    <td>Web</td>
-    <td>Windows</td>
-    <td>OSX</td>
-    <td>Linux</td>
-  </tr>
-  <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Portál Microsoft Azure</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>Ano</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://storageexplorer.com/">Microsoft Azure Storage Explorer</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>Ano</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-  </tr>
-  <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Průzkumník serveru</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td>Ano</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-**Nástroje klienta Azure Storage třetích stran**
-
-Neověřili jsme funkčnost ani kvalitu, které požadovaly následující nástroje třetích stran, a jejich seznam neznamená potvrzení od Microsoftu.
-
-<table>
-  <tr>
-    <th rowspan="2">Nástroj klienta Azure Storage</th>
-    <th rowspan="2">Objekt blob bloku</th>
-    <th rowspan="2">Objekt blob stránky</th>
-    <th rowspan="2">Připojit objekt blob</th>
-    <th rowspan="2">Tabulky</th>
-    <th rowspan="2">Fronty</th>
-    <th rowspan="2">Soubory</th>
-    <th rowspan="2">Zdarma</th>
-    <th colspan="4">Platforma</th>
-  </tr>
-  <tr>
-    <td>Web</td>
-    <td>Windows</td>
-    <td>OSX</td>
-    <td>Linux</td>
-  </tr>
-  <tr>
-    <td><a href="https://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Azure Management Studio</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>Zkušební verze</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Web Azure Průzkumník služby Storage</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>Ano</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">CloudBerry Explorer</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>X</td>
-    <td>Ano / Ne</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.gapotchenko.com/cloudcombine">Cloud – kombinace</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td>Zkušební verze</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://clumsyleaf.com">ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>Ano</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>Zkušební verze</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+K dispozici je také řada nástrojů třetích stran pro práci s Azure Storagemi daty.

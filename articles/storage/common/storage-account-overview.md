@@ -4,16 +4,16 @@ description: Seznamte se s možnostmi pro vytvoření a použití účtu Azure S
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640112"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671312"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
 
@@ -183,7 +183,7 @@ Služba import/export se dá použít taky k přenosu dat z úložiště objekt�
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak vytvořit účet úložiště Azure pro obecné účely, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 * Informace o tom, jak vytvořit účet úložiště objektů blob bloku, najdete v tématu [Vytvoření účtu bloku BLOB Storage](../blobs/storage-blob-create-account-block-blob.md).

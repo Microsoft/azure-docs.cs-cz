@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909772"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673425"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidla členství nesmí překročit 2048 znaků.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
+## <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
 
 Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
 
@@ -86,14 +86,14 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 
 ### <a name="properties-of-type-boolean"></a>Vlastnosti typu Boolean
 
-| Vlastnosti | Povolené hodnoty | Použití |
+| properties | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | accountEnabled |true false |User. accountEnabled-EQ true |
 | dirSyncEnabled |true false |User. nastavení dirsyncenabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Vlastnosti typu String
 
-| Vlastnosti | Povolené hodnoty | Použití |
+| properties | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
 | Krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
@@ -124,7 +124,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
-| Vlastnosti | Povolené hodnoty | Použití |
+| properties | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | otherMails |libovolná hodnota řetězce |(User. otherMails-Contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
@@ -249,7 +249,7 @@ Pravidlo členství se může skládat ze složitých výrazů, kde vlastnosti, 
 
 Vlastnosti s více hodnotami jsou kolekce objektů stejného typu. Je možné je použít k vytvoření pravidel členství pomocí logických operátorů-any a-All.
 
-| Vlastnosti | Hodnoty | Použití |
+| properties | Hodnoty | Využití |
 | --- | --- | --- |
 | assignedPlans | Každý objekt v kolekci zpřístupňuje následující řetězcové vlastnosti: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-any (.-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-a assignedPlan. capabilityStatus-EQ "Enabled") |
 | proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -obsahuje "contoso")) |
@@ -386,7 +386,7 @@ Je možné použít následující atributy zařízení.
 > [!Note]  
 > Pro deviceOwnership při vytváření dynamických skupin pro zařízení musíte nastavit hodnotu rovnou "společnost". V Intune se vlastnictví zařízení prezentuje jako firemní. Další podrobnosti najdete v tématu [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto články poskytují další informace o skupinách v Azure Active Directory.
 

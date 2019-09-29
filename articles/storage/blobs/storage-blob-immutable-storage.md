@@ -4,17 +4,17 @@ description: Azure Storage nabízí pro úložiště objektů BLOB (Object) mož
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: fcc5c4008c0fdef3b77e436761d8958fe31458d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 633c5944f7d813b78f7a0c9b71266d4012fd72cf
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257375"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673383"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Ukládání důležitých podnikových dat do služby Azure Blob Storage immutably 
 

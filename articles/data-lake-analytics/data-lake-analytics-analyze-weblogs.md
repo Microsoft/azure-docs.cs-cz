@@ -1,6 +1,6 @@
 ---
 title: Analýza webových protokolů pomocí Azure Data Lake Analytics
-description: Zjistěte, jak analýza webových protokolů pomocí Data Lake Analytics.
+description: Naučte se analyzovat webové protokoly pomocí Azure Data Lake Analytics pro spouštění funkcí a dotazů U-SQL.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,57 +9,57 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04c6d4c74a82ccfbcbb0faecb0dca5ec495f6663
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334071"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672882"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
-Zjistěte, jak analýza webových protokolů pomocí Data Lake Analytics, zvláště na hledání, které odkazující servery nastaly chyby při pokusu o přejděte na webovou stránku.
+Naučte se analyzovat webové protokoly pomocí Data Lake Analytics, zejména v tématu zjištění, které odhlašovací servery při pokusu o návštěvě webu narazily na chyby.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2015 nebo Visual Studio 2013**.
 * **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)** .
 
-    Po instalaci nástrojů Data Lake pro Visual Studio se zobrazí **Data Lake** položky v **nástroje** nabídky v sadě Visual Studio:
+    Po nainstalování Data Lakech nástrojů pro Visual Studio se zobrazí položka **Data Lake** v nabídce **nástroje** v aplikaci Visual Studio:
 
     ![Nabídka U-SQL Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
-* **Základní znalosti o Data Lake Analytics a Data Lake Tools pro Visual Studio**. Abyste mohli začít, najdete v článku:
+* **Základní znalost Data Lake Analytics a data Lake nástrojů pro Visual Studio**. Informace o tom, jak začít, najdete v těchto tématech:
 
-  * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* **Účet Data Lake Analytics.**  Zobrazit [vytvoření účtu Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md).
-* **Nainstalujte ukázková data.** Na webu Azure Portal otevření účtu Data Lake Analytics a klikněte na tlačítko **ukázkové skripty** v nabídce vlevo klikněte **kopírovat ukázková Data**. 
+  * [Vývoj skriptu U-SQL pomocí data Lakech nástrojů pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+* **Účet Data Lake Analytics.**  Viz [Vytvoření účtu Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md).
+* **Nainstalujte ukázková data.** Na webu Azure Portal otevřete Data Lake Analytics účet a v levé nabídce klikněte na **ukázkové skripty** a pak klikněte na **Kopírovat ukázková data**. 
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
-Předtím, než můžete vytvářet a testovat skripty U-SQL, musíte nejdřív připojit k Azure.
+Než budete moct sestavit a otestovat skripty U-SQL, musíte se nejdřív připojit k Azure.
 
 **Postup připojení ke službě Data Lake Analytics**
 
 1. Otevřít Visual Studio.
-2. Klikněte na tlačítko **Data Lake > Možnosti a nastavení**.
-3. Klikněte na tlačítko **Sign In**, nebo **změnit uživatele** Pokud někdo přihlásil a postupujte podle pokynů.
-4. Klikněte na tlačítko **OK** zavřete dialogové okno Možnosti a nastavení.
+2. Klikněte na možnost **Data Lake > možnosti a nastavení**.
+3. Klikněte na **Přihlásit**, nebo **změňte uživatele** , pokud se někdo přihlásil, a postupujte podle pokynů.
+4. Kliknutím na tlačítko **OK** zavřete dialogové okno Možnosti a nastavení.
 
-**Procházet vaše účty Data Lake Analytics**
+**Procházení účtů Data Lake Analytics**
 
-1. Ze sady Visual Studio, otevřete **Průzkumníka serveru** podle stiskněte **CTRL + ALT + S**.
-2. V **Průzkumníku serveru** rozbalte položku **Azure** a pak rozbalte položku **Data Lake Analytics**. Zobrazí se seznam účtů Data Lake Analytics, pokud nějaké máte. Nelze vytvořit účty Data Lake Analytics ze sady studio. Pokud chcete vytvořit účet, informace najdete v tématu [Začínáme s Azure Data Lake Analytics pomocí Portálu Azure](data-lake-analytics-get-started-portal.md) nebo [Začínáme s Azure Data Lake Analytics pomocí Azure PowerShell](data-lake-analytics-get-started-powershell.md).
+1. V aplikaci Visual Studio otevřete **Průzkumník serveru** stisknutím **kombinace kláves CTRL + ALT + S**.
+2. V **Průzkumníku serveru** rozbalte položku **Azure** a pak rozbalte položku **Data Lake Analytics**. Zobrazí se seznam účtů Data Lake Analytics, pokud nějaké máte. Z studia nemůžete vytvářet účty Data Lake Analytics. Pokud chcete vytvořit účet, informace najdete v tématu [Začínáme s Azure Data Lake Analytics pomocí Portálu Azure](data-lake-analytics-get-started-portal.md) nebo [Začínáme s Azure Data Lake Analytics pomocí Azure PowerShell](data-lake-analytics-get-started-powershell.md).
 
-## <a name="develop-u-sql-application"></a>Vývoj aplikace v U-SQL
-Aplikace v jazyce U-SQL se především skript U-SQL. Další informace o U-SQL najdete v tématu [Začínáme s jazykem U-SQL](data-lake-analytics-u-sql-get-started.md).
+## <a name="develop-u-sql-application"></a>Vývoj aplikace U-SQL
+Aplikace U-SQL je většinou skript U-SQL. Další informace o U-SQL najdete v tématu [Začínáme s jazykem u-SQL](data-lake-analytics-u-sql-get-started.md).
 
-Uživatelem definované operátory sčítání můžete přidat do aplikace.  Další informace najdete v tématu [vývoj U-SQL uživatelem definované operátory pro úlohy Data Lake Analytics](data-lake-analytics-u-sql-develop-user-defined-operators.md).
+Do aplikace můžete přidat přidání uživatelem definovaných operátorů.  Další informace najdete v tématu [vývoj uživatelem definovaných operátorů u-SQL pro úlohy Data Lake Analytics](data-lake-analytics-u-sql-develop-user-defined-operators.md).
 
 **Postup vytvoření a odeslání úlohy Data Lake Analytics**
 
-1. Klikněte na tlačítko **soubor > Nový > projekt**.
-2. Vyberte typ projekt v U-SQL.
+1. Klikněte na **soubor > nový > projekt**.
+2. Vyberte typ projektu U-SQL.
 
     ![Nový projekt U-SQL Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. Klikněte na **OK**. Visual studio vytvoří řešení se souborem Script.usql.
-4. Zadejte následující skript do souboru Script.usql:
+3. Klikněte na **OK**. Visual Studio vytvoří řešení se souborem Script. usql.
+4. Do souboru Script. usql zadejte následující skript:
 
         // Create a database for easy reuse, so you don't need to read from a file every time.
         CREATE DATABASE IF NOT EXISTS SampleDBTutorials;
@@ -138,8 +138,8 @@ Uživatelem definované operátory sčítání můžete přidat do aplikace.  Da
                 cs_referer,
                 sc_status;
 
-    U-SQL najdete v tématu [Začínáme s jazykem Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).    
-5. Přidejte do projektu nový skript U-SQL a zadejte následující příkaz:
+    Další informace o U-SQL najdete v tématu [Začínáme s jazykem Data Lake Analytics u-SQL](data-lake-analytics-u-sql-get-started.md).    
+5. Přidejte do projektu nový skript U-SQL a zadejte následující:
 
         // Query the referrers that ran into errors
         @content =
@@ -150,25 +150,25 @@ Uživatelem definované operátory sčítání můžete přidat do aplikace.  Da
         OUTPUT @content
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
-6. Přepněte zpět na první skript U-SQL a vedle položky **odeslat** tlačítko, zadejte svůj účet Analytics.
-7. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na možnost **Sestavit skript**. Ověřte výsledek v podokně výstup.
+6. Přepněte zpátky na první skript U-SQL a vedle tlačítka **Odeslat** zadejte svůj účet Analytics.
+7. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na možnost **Sestavit skript**. Ověřte výsledky v podokně výstup.
 8. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na položku **Odeslat skript**.
-9. Ověřte, **účet Analytics** je ten, ve kterém chcete spustit úlohu a potom klikněte na tlačítko **odeslat**. Jakmile je odeslání hotové, v okně Výsledky nástrojů Data Lake pro Visual Studio jsou dostupné výsledky odeslání a odkaz na úlohu.
-10. Počkejte, dokud je úloha dokončena úspěšně.  Pokud úloha se nezdařila, pravděpodobně neobsahuje zdrojového souboru.  Podrobnosti naleznete v části požadavků tohoto kurzu. Další informace o odstraňování potíží, najdete v části [monitorování úloh Azure Data Lake Analytics a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
+9. Ověřte, že **účet Analytics** je ten, na kterém chcete úlohu spustit, a pak klikněte na **Odeslat**. Jakmile je odeslání hotové, v okně Výsledky nástrojů Data Lake pro Visual Studio jsou dostupné výsledky odeslání a odkaz na úlohu.
+10. Počkejte, až se úloha úspěšně dokončí.  Pokud se úloha nezdařila, pravděpodobně chybí zdrojový soubor.  Přečtěte si část požadavky v tomto kurzu. Další informace o řešení potíží najdete v tématu [monitorování a odstraňování potíží s Azure Data Lake Analytics úlohami](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
 
     Po dokončení úlohy se zobrazí následující obrazovka:
 
-    ![data lake analytics analyzovat webové protokoly webových protokolů](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
-11. Teď zopakujte kroky 7 až 10 pro **Script1.usql**.
+    ![Analýza webových protokolů v protokolech služby Data Lake Analytics](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
+11. Nyní zopakujte kroky 7-10 pro **Script1. usql**.
 
 **Postup zobrazení výstupu úlohy**
 
 1. V **Průzkumníku serveru** rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet Data Lake Analytics, rozbalte položku **Účty Storage**, klikněte pravým tlačítkem na výchozí účet Data Lake Storage a potom klikněte na položku **Explorer**.
-2. Dvakrát klikněte na panel **ukázky** otevřete složku a potom dvakrát klikněte na panel **výstupy**.
-3. Dvakrát klikněte na panel **UnsuccessfulResponses.log**.
-4. Můžete také dvakrát kliknout na výstupní soubor v zobrazení grafu úlohy aby bylo možné přejít přímo do výstupu.
+2. Dvojím kliknutím na **ukázky** otevřete složku a potom poklikejte na výstupy.
+3. Dvakrát klikněte na **UnsuccessfulResponses. log**.
+4. Můžete také dvakrát kliknout na výstupní soubor v zobrazení grafu úlohy, aby bylo možné přejít přímo na výstup.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 Pokud chcete začít s Data Lake Analytics pomocí různých nástrojů, projděte si témata:
 
 * [Začínáme se službou Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-get-started-portal.md)

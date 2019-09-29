@@ -4,18 +4,18 @@ description: V tomto rychlém startu najdete několik vzorových kódů Node.js,
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: ad022f6ac9cebbe92cdca3a4b368524d828a9cbb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5ad6fecc3cc06d2c4e2962640201ffcd6f96d87e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931559"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672498"
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Node. js k připojení a dotazování dat
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý start: Použití Node. js k připojení a dotazování dat v Azure Database for MySQL
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Node.js](https://nodejs.org/) z platforem Windows, Ubuntu Linux a Mac. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,7 +33,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
 ### <a name="windows"></a>**Windows**
 1. Přejděte na [stránku pro stažení Node.js](https://nodejs.org/en/download/) a vyberte požadovanou možnost Instalační služby systému Windows.
 2. Vytvořte místní složku projektu, například `nodejsmysql`. 
-3. Otevřete příkazový řádek a poté změňte adresář na složku projektu, například`cd c:\nodejsmysql\`
+3. Otevřete příkazový řádek a pak změňte adresář na složku projektu, například `cd c:\nodejsmysql\`.
 4. Spusťte nástroj NPM a nainstalujte knihovnu MySQL do složky projektu.
 
    ```cmd
@@ -90,7 +90,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
 1. Vložte kód jazyka JavaScript do textového souboru a ten uložte s příponou .js do složky projektu (například C:\nodejsmysql\createtable.js nebo /home/username/nodejsmysql/createtable.js).
-2. Otevřete příkazový řádek nebo prostředí bash a pak změňte adresář na složku `cd nodejsmysql`vašeho projektu.
+2. Otevřete příkazový řádek nebo prostředí bash a potom změňte adresář na složku vašeho projektu `cd nodejsmysql`.
 3. Chcete-li spustit aplikaci, zadejte příkaz Node následovaný názvem souboru, například `node createtable.js`.
 4. Pokud v systému Windows není aplikace Node ve vaší proměnné prostředí PATH, možná bude nutné ke spuštění aplikace Node použít úplnou cestu, například `"C:\Program Files\nodejs\node.exe" createtable.js`.
 
@@ -309,6 +309,6 @@ function deleteData(){
 };
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)

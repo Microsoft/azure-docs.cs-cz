@@ -4,16 +4,16 @@ description: Přečtěte si o různých způsobech ukládání a přístupu k da
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 702627a6307e1a6644dc41aeee947d33eb76522d
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 4b1a42e25a6d8c7b4a3c24dffcb858ffe63dd10b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501344"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671049"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodnutí o použití objektů blob Azure, souborů Azure nebo disků Azure
 
@@ -30,7 +30,7 @@ Následující tabulka porovnává soubory, objekty BLOB a disky a ukazuje pří
 | **Disky Azure** | Poskytuje klientské knihovny a [rozhraní REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku. | Chcete načítat a přesouvat aplikace, které používají rozhraní API nativního systému souborů ke čtení a zápisu dat na trvalé disky.<br/><br/>Chcete ukládat data, která se nevyžadují pro použití mimo virtuální počítač, ke kterému je disk připojený. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Při rozhodování o způsobu, jakým se data ukládají a jsou k nim přistupované, byste měli vzít v úvahu také příslušné náklady. Další informace najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
   

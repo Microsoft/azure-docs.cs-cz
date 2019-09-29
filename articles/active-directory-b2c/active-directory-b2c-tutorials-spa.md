@@ -10,14 +10,14 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 06bb71b27edf97f9b7e3333aef93af7bd0e0529e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064786"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672927"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování v jednostránkové aplikaci pomocí Azure Active Directory B2C
+# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Kurz: Povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C (Azure AD B2C)
 
 V tomto kurzu se dozvíte, jak používat Azure Active Directory B2C (Azure AD B2C) k přihlašování a registraci uživatelů v aplikaci s jednou stránkou (SPA). Azure AD B2C umožňuje vašim aplikacím ověřovat účty v sociálních sítích, podnikové účty a účty Azure Active Directory pomocí protokolů Open Standard.
 
@@ -143,7 +143,7 @@ Tato chyba se zobrazí, protože webová aplikace se pokouší o přístup k web
 
 Pokud chcete tuto chybu opravit, pokračujte k dalšímu kurzu v řadě (viz [Další kroky](#next-steps)) a vytvořte pro svůj adresář chráněné webové rozhraní API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak:
 

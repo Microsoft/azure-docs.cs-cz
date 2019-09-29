@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34d1ba13689eb820db754c5c0d9573dcdc235205
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350835"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672939"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -102,7 +102,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Vyhodnoťte a otestujte velikost vašich virtuálních počítačů Azure s ohledem na maximální propustnost úložiště a propustnost sítě u typů virtuálních počítačů, které jste zvolili během fáze plánování. Data můžete najít tady:
            -  [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
            -  [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
-   1. Storage.
+   2. Storage.
         - Minimálně použijte [úložiště Azure SSD úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd).
         - [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
@@ -111,11 +111,12 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Pro různé typy DBMS ověřte [dokumentaci k obecnému systému DBMS související s SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a dokumentaci ke konkrétnímu systému DBMS, na kterou se odkazuje obecný dokument.
         - Další informace o SAP HANA najdete v tématu [Konfigurace a operace SAP HANA infrastruktury v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
         - Nepřipojujte disky Azure data k virtuálnímu počítači Azure Linux pomocí ID zařízení. Místo toho použijte univerzálně jedinečný identifikátor (UUID). Buďte opatrní při použití grafických nástrojů k připojení datových disků Azure, například. Zkontrolujte položky v/etc/fstab a ujistěte se, že se k připojení disků používá UUID. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk).
-   1. Sítě.
+   3. Sítě.
         - Otestujte a vyhodnoťte infrastrukturu virtuální sítě a distribuci svých aplikací SAP napříč nebo v různých virtuálních sítích Azure.
-        -  Vyhodnoťte přístup k architektuře architektury virtuální sítě typu střed a paprsek nebo přístup k mikrosegmentaci v rámci jedné virtuální sítě Azure. Toto hodnocení založte na: – náklady na výměnu dat mezi [partnerskými virtuálními sítěmi Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Informace o cenách najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network/).
-                  – Výhody rychlého odpojení partnerského vztahu mezi virtuálními sítěmi Azure na rozdíl od změny skupiny zabezpečení sítě k izolaci podsítě v rámci virtuální sítě. Toto vyhodnocení platí pro případy, kdy se aplikace nebo virtuální počítače hostované v podsíti virtuální sítě staly bezpečnostním rizikem.
-                  – Centrální protokolování a auditování síťového provozu mezi místním prostředím, vnějším světem a virtuálním datovým centrem, které jste vytvořili v Azure.
+        -  Vyhodnoťte přístup k architektuře architektury virtuální sítě typu střed a paprsek nebo přístup k mikrosegmentaci v rámci jedné virtuální sítě Azure. Toto hodnocení založte na:
+               1. Náklady na výměnu dat mezi [partnerskými virtuálními sítěmi Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Informace o cenách najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network/).
+               2. Výhody rychlého odpojení partnerského vztahu mezi virtuálními sítěmi Azure na rozdíl od změny skupiny zabezpečení sítě k izolaci podsítě v rámci virtuální sítě. Toto vyhodnocení platí pro případy, kdy se aplikace nebo virtuální počítače hostované v podsíti virtuální sítě staly bezpečnostním rizikem.
+                3. Centrální protokolování a auditování síťového provozu mezi místním prostředím, vnějším světem a virtuálním datovým centrem, které jste vytvořili v Azure.
         - Vyhodnoťte a otestujte cestu k datům mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
             -  Umístění [virtuálních síťových zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) v komunikační cestě mezi aplikací SAP a vrstvou DBMS systémů SAP založených na SAP NetWeaver, Hybris nebo S/4HANA se nepodporuje.
             -  Umístění aplikační vrstvy SAP a SAP DBMS v různých virtuálních sítích Azure, které nejsou partnerské vztahy, se nepodporuje.
@@ -129,13 +130,13 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Ujistěte se, že nasazení interního nástroje jsou nastavená tak, aby používala přímé vrácení serveru. Toto nastavení omezí latenci při použití Azure ILBs pro konfigurace s vysokou dostupností na vrstvě DBMS.
         - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net. IPv4. TCP _timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
         - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
-   1. Nasazení s vysokou dostupností a zotavením po havárii.
+   4. Nasazení s vysokou dostupností a zotavením po havárii.
         - Pokud nasadíte vrstvu aplikace SAP bez definování konkrétní zóny dostupnosti Azure, ujistěte se, že všechny virtuální počítače, na kterých běží instance dialogových oken SAP nebo instance middlewaru s jedním systémem SAP, jsou nasazené ve [skupině dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
         - Pokud nepotřebujete vysokou dostupnost pro centrální služby SAP a DBMS, můžete tyto virtuální počítače nasadit do stejné skupiny dostupnosti jako aplikační vrstva SAP.
         - Pokud chráníte službu SAP Central Services a vrstvu DBMS pro zajištění vysoké dostupnosti pomocí pasivní replikace, umístěte tyto dva uzly pro centrální služby SAP v jedné samostatné skupině dostupnosti a dva uzly DBMS v jiné skupině dostupnosti.
         - Pokud nasadíte do Zóny dostupnosti Azure, nemůžete použít skupiny dostupnosti. Musíte ale mít jistotu, že nasadíte aktivní a pasivní uzly centrální služby do dvou různých Zóny dostupnosti. Použijte Zóny dostupnosti, které mají nejnižší latenci mezi nimi.
           Pamatujte, že je potřeba použít [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) pro případ použití pro vytváření clusterů s podporou převzetí služeb při selhání s Windows nebo Pacemaker pro vrstvu DBMS a službu SAP Central Services napříč zóny dostupnosti. [Základní Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nemůžete použít pro nasazení napříč oblastmi.
-   1. Nastavení časového limitu.
+   5. Nastavení časového limitu.
         - Zkontrolujte trasování instancí SAP v SAP NetWeaver, abyste se ujistili, že mezi serverem front a pracovními procesy SAP nedochází k přerušení připojení. Těmto přerušením připojení se můžete vyhnout nastavením těchto dvou parametrů registru:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Další informace naleznete v tématu [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000. Další informace naleznete v tématu [KeepAliveInterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)).
@@ -152,8 +153,8 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
    1. Změřte, jak dlouho trvá spuštění převzetí služeb při selhání. Pokud jsou časy příliš dlouhé, zvažte následující:
         - Pro urychlení převzetí služeb při selhání použijte pro SUSE Linux zařízení SBD namísto agenta Azure plot.
         - Pro SAP HANA, pokud je opětovné načtení dat trvat příliš dlouho, zvažte zřízení větší šířky pásma úložiště.
-   1. Otestujte sekvenci zálohování a obnovování a časování a v případě potřeby proveďte opravy. Ujistěte se, že jsou časy zálohování dostatečné. Také je nutné otestovat aktivity obnovení a doba obnovení. Ujistěte se, že časy obnovení jsou v rámci RTO SLA, kde RTO spoléhá na proces obnovení databáze nebo virtuálního počítače.
-   1. Testování funkcí a architektury DR mezi oblastmi
+   3. Otestujte sekvenci zálohování a obnovování a časování a v případě potřeby proveďte opravy. Ujistěte se, že jsou časy zálohování dostatečné. Také je nutné otestovat aktivity obnovení a doba obnovení. Ujistěte se, že časy obnovení jsou v rámci RTO SLA, kde RTO spoléhá na proces obnovení databáze nebo virtuálního počítače.
+   4. Testování funkcí a architektury DR mezi oblastmi
 1. Kontroly zabezpečení.
    1. Otestujte platnost vaší architektury řízení přístupu na základě role (RBAC) v Azure. Cílem je oddělení a omezení přístupu a oprávnění různých týmů. Například členové týmu SAP by měli být schopní nasadit virtuální počítače a přiřadit disky z Azure Storage do dané virtuální sítě Azure. Ale tým pro SAP by neměl mít možnost vytvářet vlastní virtuální sítě ani měnit nastavení stávajících virtuálních sítí. Členové síťového týmu by neměli moci nasadit virtuální počítače do virtuálních sítí, ve kterých jsou spuštěné aplikace SAP a virtuální počítače s DBMS. Ani by členové tohoto týmu nemohli měnit atributy virtuálních počítačů nebo dokonce odstraňovat virtuální počítače nebo disky.  
    1.  Ověřte, že [Skupina zabezpečení sítě a pravidla ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) pracují podle očekávání a chrání chráněné prostředky.
@@ -161,9 +162,9 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
    1.  Použijte [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) pro disky s operačním systémem, kde je to možné, z pohledu na operační systém – bod podpory.
    1.  Ujistěte se, že nepoužíváte příliš mnoho vrstev šifrování. V některých případech má smysl použít Azure Disk Encryption společně s jednou z transparentní šifrování datch metod DBMS.
 1. Testování výkonu. V SAP na základě trasování a měření SAP proveďte tato porovnání:
-   1. V případě potřeby Porovnejte prvních 10 online sestav s vaší aktuální implementací.
-   1. V případě potřeby Porovnejte prvních 10 dávkových úloh s aktuální implementací.
-   1. Porovnání přenosů dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraní, u kterých víte, že přenos probíhá mezi různými místy, jako je třeba z místního prostředí do Azure.
+   - V případě potřeby Porovnejte prvních 10 online sestav s vaší aktuální implementací.
+   - V případě potřeby Porovnejte prvních 10 dávkových úloh s aktuální implementací.
+   - Porovnání přenosů dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraní, u kterých víte, že přenos probíhá mezi různými místy, jako je třeba z místního prostředí do Azure.
 
 
 ## <a name="non-production-phase"></a>Fáze mimo produkční prostředí 

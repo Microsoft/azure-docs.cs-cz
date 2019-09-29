@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc1c6e4bf2e67d8945cf754aa47461b4ce8364a9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 81deaaffa301c4453842875f9cfd6b63bb6bbfd7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066828"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672987"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -120,7 +120,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 
 ## <a name="change-log"></a>Protokol změn
-- 09/17/2019: Změna v Průvodci plánováním a nasazením NetWeaver pro sjednocení podmínek kolem rozšíření virtuálního počítače pro SAP
+- 09/28/2019: Změna v [nastavení Red Hat Enterprise Linux Pacemaker v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) pro objasnění SBD, protože v CLUSTERech RHEL není podporován mechanismus pro oplocení  
+- 09/17/2019: Změna v Průvodci plánováním a nasazením NetWeaver pro sjednocení podmínek kolem rozšíření virtuálního počítače pro SAP  
 - 08/22/2019: Změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro aktualizaci adres URL pro vytvoření vlastní role  
 - 08/16/2019: Změny v [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , které budou zákazníkům připomenout, že budou aktualizovat akce v vlastní roli, pokud se aktualizuje na novou verzi agenta Azure plot  
 - 08/15/2019: Změny v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) tak, aby odrážely obecnou dostupnost Ultra disk (dřív SSD úrovně Ultra)

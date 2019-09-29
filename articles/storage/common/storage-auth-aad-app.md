@@ -4,16 +4,16 @@ description: Použijte Azure Active Directory k ověření v rámci klientské a
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986789"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673239"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory z klientské aplikace
 
@@ -297,7 +297,7 @@ Když ukázku spustíte, můžete zjistit, že je potřeba aktualizovat identifi
 
     ![Snímek obrazovky ukazující identifikátory URI přesměrování pro registraci aplikace](media/storage-auth-aad-app/redirect-uri.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o platformě Microsoft identity najdete v tématu [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/).
 - Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).

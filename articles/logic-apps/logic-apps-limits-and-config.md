@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 9d89bc2318049f068b2bab8c0345605458678b41
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 463cd350eb3c878a7d080cdfa7c8e0fabffd1a93
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350693"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672670"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -264,21 +264,27 @@ Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfigurace brány firewall: IP adresy
 
-Všechny Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte brány firewall se *všemi* [příchozími](#inbound) *a* [odchozími](#outbound) IP adresami, které používá Logic Apps služba založená na oblastech, ve kterých existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti.
+IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volání, závisí na oblasti, ve které vaše aplikace logiky existuje. *Všechny* aplikace logiky, které jsou ve stejné oblasti, používají stejné rozsahy IP adres.
 
-Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+> [!NOTE]
+> Některá Microsoft Flow volání, jako jsou požadavky **http** a **http + openapi** , procházejí přímo prostřednictvím služby Azure Logic Apps a pocházejí z IP adres, které jsou zde uvedeny. Další informace o IP adresách, které používá Microsoft Flow, najdete [v tématu omezení a konfigurace v Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
 
-Pro vlastní konektory, [Azure Government](../azure-government/documentation-government-overview.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)nejsou k dispozici pevné nebo rezervované IP adresy.
+* Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte bránu firewall pomocí všech [příchozích](#inbound) *a* [odchozích](#outbound) IP adres, které jsou používány Logic Apps služba založená na oblastech, ve kterých existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti.
+
+* Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. 
+
+* U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+
+* Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) a existují ve stejné oblasti. Logic Apps však mají přístup k účtům Azure Storage, které existují v jiné oblasti, protože pro komunikaci mezi oblastmi se používá veřejná IP adresa. Případně můžete použít kteroukoli z možností:
+
+  * Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
+
+  * Pokud již používáte API Management, můžete použít tuto službu pro tento scénář. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
+
+* Pro vlastní konektory, [Azure Government](../azure-government/documentation-government-overview.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)nejsou k dispozici pevné nebo rezervované IP adresy.
 
 > [!IMPORTANT]
->
-> Pokud máte existující konfigurace, aktualizujte je **co nejdříve do 1. září 2018** tak, aby obsahovaly a odpovídaly IP adresám v těchto seznamech pro oblasti, ve kterých existují aplikace logiky.
-
-Logic Apps nepodporuje přímé připojení k účtům úložiště Azure přes brány firewall. Pokud chcete získat přístup k těmto účtům úložiště, použijte jednu z možností:
-
-* Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
-
-* Pokud již používáte API Management, můžete použít tuto službu pro tento scénář. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
+> Pokud máte konfigurace brány firewall, které jste nastavili před 1. září 2018, ujistěte se, že odpovídají aktuálním IP adresám v těchto seznamech pro oblasti, ve kterých aplikace logiky existují.
 
 <a name="inbound"></a>
 

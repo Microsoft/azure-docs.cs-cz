@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe49a57e74822c0b4349b2919ea8aa89cbfb458d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622299"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672908"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí OpenID Connect pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "69622299"
 ## <a name="add-the-identity-provider"></a>Přidat zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na v horní nabídce na položku filtr **adresářů** a předplatných a vyberte adresář, který obsahuje vašeho tenanta.
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na v horní nabídce na položku filtr **adresářů a předplatných** a vyberte adresář, který obsahuje vašeho tenanta.
 1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
 
@@ -48,7 +48,6 @@ Obor definuje informace a oprávnění, které chcete shromáždit od vlastního
 Typ odpovědi popisuje, jaký druh informací se pošle zpátky při počátečním volání `authorization_endpoint` vlastního zprostředkovatele identity. Můžete použít následující typy odpovědí:
 
 * `code`: Dle [toku autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)se kód vrátí zpět na Azure AD B2C. Azure AD B2C pokračuje v `token_endpoint` volání metody pro výměnu kódu pro token.
-* `token`: Přístupový token se vrátí zpět do Azure AD B2C z vlastního zprostředkovatele identity.
 * `id_token`: Token ID se vrátí zpět do Azure AD B2C z vlastního zprostředkovatele identity.
 
 ## <a name="response-mode"></a>Režim odpovědi

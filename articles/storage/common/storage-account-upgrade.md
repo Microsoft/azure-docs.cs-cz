@@ -1,46 +1,46 @@
 ---
-title: Upgrade na účet úložiště pro obecné účely v2 – Azure Storage | Dokumentace Microsoftu
-description: Upgradovat na účty úložiště pro obecné účely v2.
+title: Upgrade na účet úložiště pro obecné účely v2 – Azure Storage | Microsoft Docs
+description: Upgradujte na účty úložiště pro obecné účely v2.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115616"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671146"
 ---
-# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
+# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
-Účty úložiště pro obecné účely v2 podporuje nejnovější funkce služby Azure Storage a zapracovali všechny funkce pro obecné účely v1 a účty Blob storage. Účty pro obecné účely v2 se doporučuje pro většinu scénářů úložiště. Účty pro obecné účely v2 doručování nejnižší podle sazby za gigabajt kapacity ceny pro Azure Storage, jakož i průmysl konkurenceschopných cen za transakce.
+Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů.
 
-Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure.
+Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné účely v1 nebo BLOB Storage je jednoduchý. Můžete upgradovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 > [!IMPORTANT]
-> Upgrade pro obecné účely v1 nebo účtu služby Blob storage pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
+> Upgrade účtu úložiště pro obecné účely v1 nebo blob na obecné účely je trvalý a nedá se vrátit zpátky.
 
-## <a name="upgrade-using-the-azure-portal"></a>Upgrade s využitím webu Azure portal
+## <a name="upgrade-using-the-azure-portal"></a>Upgrade pomocí Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
-3. V **nastavení** klikněte na tlačítko **konfigurace**.
+3. V části **Nastavení** klikněte na **Konfigurace**.
 4. V části **Druh účtu** klikněte na **Upgradovat**.
 5. V části **Potvrdit upgrade** zadejte název svého účtu.
-6. Klikněte na tlačítko **upgradovat** v dolní části okna.
+6. V dolní části okna klikněte na upgradovat.
 
-    ![Upgrade druh účtu](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    ![Upgradovat druh účtu](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>Upgrade pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Powershellu, nejprve aktualizujte PowerShell, které chcete používat nejnovější verzi **Az.Storage** modulu. Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí PowerShellu, nejdřív aktualizujte PowerShell tak, aby používal nejnovější verzi modulu **AZ. Storage** . Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Pak zavolejte následující příkaz pro upgrade účet, kde nahradíte název vaší skupiny prostředků a účet úložiště:
+V dalším kroku zavolejte následující příkaz pro upgrade účtu a nahraďte název vaší skupiny prostředků a účtu úložiště:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
@@ -48,60 +48,60 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Upgrade pomocí Azure CLI
 
-Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Azure CLI, nejprve nainstalujte nejnovější verzi Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí Azure CLI, nejdřív nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Pak zavolejte následující příkaz pro upgrade účet, kde nahradíte název vaší skupiny prostředků a účet úložiště:
+V dalším kroku zavolejte následující příkaz pro upgrade účtu a nahraďte název vaší skupiny prostředků a účtu úložiště:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
 
-## <a name="specify-an-access-tier-for-blob-data"></a>Zadat vrstvu přístupu k datům objektu blob
+## <a name="specify-an-access-tier-for-blob-data"></a>Zadejte úroveň přístupu pro data objektů BLOB.
 
-Účty pro obecné účely v2 podporují všechny služby Azure storage a datové objekty, ale jsou k dispozici pouze pro objekty BLOB bloku v úložišti objektů Blob úrovně přístupu. Při upgradu na účet úložiště pro obecné účely v2, můžete určit úroveň přístupu pro data objektů blob.
+Účty pro obecné účely v2 podporují všechny služby úložiště Azure a datové objekty, ale úrovně přístupu jsou dostupné jenom pro objekty blob bloku v úložišti objektů BLOB. Při upgradu na účet úložiště pro obecné účely v2 můžete určit úroveň přístupu pro data objektů BLOB.
 
-Vrstva přístupu umožňují zvolit cenově nejvýhodnější úložiště založené na vaše postupy očekávané využití. Objekty BLOB bloku mohou být uloženy ve vrstvě Hot, Cool nebo Archive. Další informace o úrovních přístupu najdete v části [úložiště objektů Blob v Azure: Horké, studené a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
+Úrovně přístupu vám umožňují zvolit nejúčinnější úložiště na základě předpokládaných způsobů použití. Objekty blob bloku se můžou ukládat na horkou, studenou nebo archivní úroveň. Další informace o úrovních přístupu najdete v tématu úložiště [objektů BLOB v Azure: Horké, studené a archivní úrovně](../blobs/storage-blob-storage-tiers.md)úložiště.
 
-Ve výchozím nastavení v horká vrstva přístupu je vytvořen nový účet úložiště a účet úložiště pro obecné účely v1 je upgradovat na horká vrstva přístupu. Pokud zkoumáte jaké úroveň přístupu pro vaše data po upgradu, zvažte možnost váš scénář. Existují dva běžné uživatelské scénáře pro migraci na účet pro obecné účely verze 2:
+Ve výchozím nastavení se v úrovni Hot Accessu vytvoří nový účet úložiště a účet úložiště pro obecné účely V1 se upgraduje na úroveň Hot Access. Pokud zkoumáte, která úroveň přístupu se má použít pro vaše data po upgradu, vezměte v úvahu svůj scénář. Existují dva typické scénáře uživatelů pro migraci na účet pro obecné účely v2:
 
-* Máte stávající účet úložiště pro obecné účely v1 a chcete vyhodnotit upgrade na účet úložiště pro obecné účely v2, se na úrovni přístupu úložiště pro data objektů blob.
-* Rozhodli jste se použít účet úložiště pro obecné účely verze 2 nebo již máte a chcete vyhodnotit, jestli byste měli použít pro data objektů blob v horké nebo studené úrovni přístupu úložiště.
+* Máte existující účet úložiště pro obecné účely V1 a chcete vyhodnotit upgrade na účet úložiště pro obecné účely v2 se správnou úrovní přístupu úložiště pro data objektů BLOB.
+* Rozhodli jste se použít účet úložiště pro obecné účely verze 2 nebo ho už mít a chcete vyhodnotit, jestli byste měli pro data BLOB použít horkou nebo studenou úroveň přístupu.
 
-V obou případech je hlavní prioritou odhad nákladů na ukládání, přístup k a provozování na datech uložených v účtu úložiště pro obecné účely v2 a jejich porovnání s aktuálními náklady.
+V obou případech má první priorita odhadnout náklady na ukládání, přístup a provoz na vašich datech uložených v účtu úložiště pro obecné účely v2 a porovnat je s vašimi aktuálními náklady.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Upgrade účtu storage v1 na účet pro obecné účely verze 2 je zdarma. Ale změna úrovně přístupu úložiště můžou způsobit změny na faktuře. 
+Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Změna úrovně přístupu k úložišti ale může mít za následek změny ve vaší faktuře. 
 
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
-* **Náklady na úložiště**: Kromě objemu uložených dat náklady na uložení dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
+* **Náklady na úložiště**: Kromě množství uložených dat se cena za ukládání dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
 
-* **Cena za přístup**: Přístup k datům za úroveň chladnější. Pro data ve studené a archivní úrovni přístupu úložiště bude se vám účtovat poplatek za GB dat přístup pro čtení.
+* **Náklady na přístup k datům**: Poplatky za přístup k datům se zvyšují, protože se úroveň nedostává. Pro data ve studené a archivní úrovni přístupového úložiště se účtují poplatky za přístup k datům za gigabajt.
 
-* **Cena za transakce**: Se účtuje poplatek za transakce pro všechny úrovně, které zvýší úroveň chladnější.
+* **Náklady transakce**: Pro všechny úrovně, které se zvyšují jako nenáročné, se účtuje poplatek za transakci.
 
-* **Cena za přenosy dat geografické replikace**: Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
+* **Náklady na přenos dat geografické replikace**: Tento poplatek se vztahuje jenom na účty s nakonfigurovanou geografickou replikací, včetně GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
-* **Cena za přenosy odchozích dat**: Přenosy odchozích dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné využití šířky pásma na základě sazby za gigabajt konzistentní s účty úložiště pro obecné účely.
+* **Náklady na přenos odchozích dat**: Přenosy odchozích dat (data přenesená mimo oblast Azure) účtují náklady na využití šířky pásma po gigabajtech, stejně jako v případě účtů úložiště pro obecné účely.
 
-* **Změna úrovně přístupu úložiště**: Změna úrovně přístupu účtu úložiště ze studené na horkou je zpoplatněna částkou, která odpovídá přečtení všech dat v aktuálním účtu úložiště. Ale změna úrovně přístupu účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
+* **Mění se úroveň přístupu úložiště**: Změna úrovně přístupu k úložišti účtů ze studené na horkou má poplatek, který se rovná čtení všech dat existujících v účtu úložiště. Změna úrovně přístupu k účtu z horké na studenou se ale účtuje za poplatek, který se rovná zápisu všech dat do studené úrovně (pouze účty GPv2).
 
 > [!NOTE]
 > Další informace o cenovém modelu pro účty úložišť najdete na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 
-### <a name="estimate-costs-for-your-current-usage-patterns"></a>Odhadnout náklady za současného využití
+### <a name="estimate-costs-for-your-current-usage-patterns"></a>Odhad nákladů na vaše aktuální vzory využití
 
-Pokud chcete zjistit přibližnou cenu za ukládání a přístup k datům objektu blob v účtu úložiště pro obecné účely v2 v konkrétní úroveň, vyhodnotit svůj aktuální vzor používání nebo přibližný stanovili. Celkově vzato potřebujete vědět:
+Chcete-li odhadnout náklady na ukládání a přístup k datům objektů BLOB v účtu úložiště pro obecné účely V2 v konkrétní úrovni, vyhodnoťte stávající vzor použití nebo zvažte očekávaný vzor využití. Celkově vzato potřebujete vědět:
 
-* Objekt Blob spotřebu úložiště, v gigabajtech, včetně:
+* Spotřeba úložiště objektů BLOB (v gigabajtech), včetně:
     - Kolik dat se v účtu úložiště ukládá?
     - Jak se mění objem dat měsíčně? Nahrazují nová data neustále stará data?
-* Vzor primární přístupový objekt Blob úložiště dat, včetně:
+* Základní vzor přístupu pro data služby Blob Storage, včetně:
     - Kolik dat se čte a zapisuje do účtu úložiště?
-    - Počet operací čtení a zápisu operace, ke kterým došlo u dat v účtu storage?
+    - Kolik operací čtení a operací zápisu dochází k datům v účtu úložiště?
 
-Při rozhodování o nejlepší úroveň přístupu pro vaše potřeby, může být užitečné určit kapacitu pro data objektů blob a jak tato data používá. To nejlepší lze zobrazením monitorovací metriky pro svůj účet.
+Abyste se rozhodli, jak úroveň přístupu vyhovuje vašim potřebám, může být užitečné určit kapacitu vašich dat objektů BLOB a způsob, jakým se data používají. To se dá nejlépe udělat tím, že si prohlížíte metriky monitorování pro váš účet.
 
 ### <a name="monitoring-existing-storage-accounts"></a>Monitorování existujících účtů úložiště
 
@@ -118,11 +118,11 @@ Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný úče
 Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k datům, je potřeba povolit hodinovou metriku transakcí z rozhraní API. Když povolíte hodinovou metriku transakcí, data o transakcích rozhraní API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
 > [!NOTE]
-> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty BLOB stránky a disky virtuálních počítačů nebo fronty, soubory, nebo tabulky, vedle bloku a doplňovacích data objektů blob, odhad tímto postupem není použitelné. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
+> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránky a disky virtuálních počítačů, případně fronty, soubory nebo tabulky, vedle dat objektů blob bloku a Append, tento proces odhadu se nedá použít. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
 
 Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 
-Podrobnosti o povolení, shromažďování a zobrazování dat metrik najdete v tématu [metrikách Storage analytics](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Podrobnosti o povolení, shromažďování a zobrazování dat metrik najdete v tématu metriky služby [Storage Analytics](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Uložení, zobrazování a stahování analyzovaných data se účtuje stejně jako běžná uživatelská data.
@@ -160,9 +160,9 @@ Pokud chcete pro účet Blob Storage odhadnout náklady za přístup k datům, j
 Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v případě účtu úložiště typu GRS nebo RA-GRS dá vypočítat pomocí toho, že odhadnete množství zapsaných dat.
 
 > [!NOTE]
-> Podrobnější příklad výpočtu ceny za využívání vybrat horkou nebo studenou úroveň přístupu, podívejte se na Kladenou *"co jsou úrovně přístupu Hot a Cool a jak určit, který se má použít?"* na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+> Podrobnější příklad výpočtu nákladů na používání horké nebo studené úrovně přístupu najdete v nejčastějších dotazech s podrobnostmi o tom, *co jsou horká a studená úroveň přístupu a jak určit, která z nich se má použít?* na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření účtu úložiště](storage-quickstart-create-account.md)
-- [Správa účtů služby Azure storage](storage-account-manage.md)
+- [Správa účtů služby Azure Storage](storage-account-manage.md)

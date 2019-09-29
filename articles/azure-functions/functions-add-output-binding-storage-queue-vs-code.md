@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: 40a912a94dc61342c04528e902bb0e084546904d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592798"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672605"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Připojení funkcí k Azure Storage pomocí Visual Studio Code
 
@@ -32,7 +32,7 @@ Než začnete tento článek, musíte splnit následující požadavky:
 * Nainstalovat [.NET Core CLI nástroje](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) (C# jenom projekty).
 * Proveďte kroky v [části 1 rychlého startu Visual Studio Code](functions-create-first-function-vs-code.md). 
 
-V tomto článku se předpokládá, že jste už přihlášení k předplatnému Azure z Visual Studio Code. Přihlášení můžete spustit `Azure: Sign In` z palety příkazů. 
+V tomto článku se předpokládá, že jste už přihlášení k předplatnému Azure z Visual Studio Code. Můžete se přihlásit spuštěním `Azure: Sign In` z palety příkazů. 
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
@@ -51,39 +51,39 @@ V [předchozím článku rychlý Start](functions-create-first-function-vs-code.
 
 Vzhledem k tomu, že používáte výstupní vazbu úložiště front, musíte mít nainstalované rozšíření úložiště vazeb před spuštěním projektu. 
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>Knihovna\# tříd jazyka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 S výjimkou aktivačních událostí protokolu HTTP a časovače jsou vazby implementovány jako balíčky rozšíření. Spusťte následující příkaz [dotnet přidat balíček](/dotnet/core/tools/dotnet-add-package) v okně terminálu a přidejte do projektu balíček rozšíření úložiště.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
-
+---
 Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V Functions každý typ vazby vyžaduje `direction`,, a jedinečný `name` , `type`který má být definován v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
+V případě funkcí vyžaduje každý typ vazby `direction`, `type` a jedinečné `name`, které budou definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Atributy vazby se definují přímo v souboru Function. JSON. V závislosti na typu vazby mohou být vyžadovány další vlastnosti. [Konfigurace výstupu fronty](functions-bindings-storage-queue.md#output---configuration) popisuje pole požadovaná pro vazbu fronty Azure Storage. Rozšíření usnadňuje přidávání vazeb do souboru Function. JSON. 
 
-Vazbu vytvoříte tak, že `function.json` kliknete pravým tlačítkem (CTRL + kliknete na MacOS) do souboru ve složce HttpTrigger a kliknete na **Přidat vazbu...** . Podle pokynů definujte následující vlastnosti vazby pro novou vazbu:
+Vazbu vytvoříte tak, @no__t že kliknete pravým tlačítkem (Ctrl + kliknutí na macOS) do složky HttpTrigger a kliknete na **Přidat vazbu...** . Podle pokynů definujte následující vlastnosti vazby pro novou vazbu:
 
-| Výzva | Hodnota | Popis |
+| Výzva | Value | Popis |
 | -------- | ----- | ----------- |
 | **Vybrat směr vazby** | `out` | Vazba je výstupní vazba. |
 | **Vyberte vazbu se směrováním...** | `Azure Queue Storage` | Vazba je vazba fronty Azure Storage. |
 | **Název, který slouží k identifikaci této vazby v kódu** | `msg` | Název, který identifikuje parametr vazby, na který se odkazuje v kódu. |
 | **Fronta, do které bude odeslána zpráva** | `outqueue` | Název fronty, do které vazba zapisuje. Pokud pole *Queue* neexistuje, vytvoří ho při prvním použití. |
-| **Vyberte nastavení z místní. nastavení. JSON.** | `AzureWebJobsStorage` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Toto `AzureWebJobsStorage` nastavení obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
+| **Vyberte nastavení z místní. nastavení. JSON.** | `AzureWebJobsStorage` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Nastavení `AzureWebJobsStorage` obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
 
-Vazba je přidána do `bindings` pole v souboru Function. JSON, který by teď měl vypadat jako v následujícím příkladu:
+Do pole `bindings` v souboru Function. JSON se přidá vazba, která by teď měla vypadat jako v následujícím příkladu:
 
 ```json
 {
@@ -116,17 +116,19 @@ Vazba je přidána do `bindings` pole v souboru Function. JSON, který by teď m
 }
 ```
 
-### <a name="c-class-library"></a>Knihovna\# tříd jazyka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
+---
+
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-Po definování vazby můžete použít `name` vazbu na k přístupu jako atributu v signatuře funkce. Pomocí výstupní vazby nemusíte pro ověřování používat kód Azure Storage SDK, získat odkaz na frontu nebo zapisovat data. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
+Po definování vazby můžete použít `name` vazby k přístupu jako atributu v signatuře funkce. Pomocí výstupní vazby nemusíte pro ověřování používat kód Azure Storage SDK, získat odkaz na frontu nebo zapisovat data. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Přidejte kód, který používá `msg` výstupní vazbu `context.bindings` objektu pro k vytvoření zprávy fronty. Vložte tento kód před příkaz `context.res`.
+Přidejte kód, který používá výstupní objekt vazby `msg` v `context.bindings` k vytvoření zprávy fronty. Vložte tento kód před příkaz `context.res`.
 
 ```javascript
 // Add a message to the Storage queue.
@@ -158,9 +160,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="c"></a>C\#
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+---
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -182,7 +186,7 @@ Po úspěšném přihlášení ke svému účtu uvidíte všechna předplatná A
 
 ### <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
-1. V Visual Studio Code stiskněte klávesu F1 a otevřete paletu příkazů, vyhledejte a spusťte příkaz `Azure Storage: Open in Storage Explorer` a zvolte název účtu úložiště. Váš účet úložiště se otevře v Průzkumník služby Azure Storage.  
+1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů, potom vyhledejte a spusťte příkaz `Azure Storage: Open in Storage Explorer` a zvolte název svého účtu úložiště. Váš účet úložiště se otevře v Průzkumník služby Azure Storage.  
 
 1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
@@ -200,7 +204,7 @@ Teď je čas na opětovné publikování aktualizované aplikace Function App do
 
 1. Vyberte aplikaci funkcí, kterou jste vytvořili v prvním článku. Vzhledem k tomu, že projekt znovu nasazujete do stejné aplikace, vyberte **nasadit** a zastavte tak upozornění týkající se přepsání souborů.
 
-1. Po dokončení nasazení můžete znovu použít kudrlinkou nebo prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív přidejte řetězec `&name=<yourname>` dotazu k adrese URL, jako v následujícím příkladu:
+1. Po dokončení nasazení můžete znovu použít kudrlinkou nebo prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív připojíte řetězec dotazu `&name=<yourname>` k adrese URL, jak je uvedeno v následujícím příkladu:
 
     ```bash
     curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -228,13 +232,13 @@ Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prost�
 
    Odstranění může trvat několik minut. Po jeho dokončení se na několik sekund zobrazí oznámení. K zobrazení tohoto oznámení můžete také vybrat ikonu zvonku v horní části stránky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji funkcí najdete v tématu [vývoj Azure Functions používání Visual Studio Code](functions-develop-vs-code.md).
 
 Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
-> [Povolit integraci Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

@@ -4,17 +4,17 @@ description: Azure Storage podporuje převzetí služeb při selhání účtu (P
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376448"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671083"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
@@ -113,11 +113,11 @@ Chcete-li se vyhnout zásadní ztrátě dat, před navrácením služeb po obnov
 
 ## <a name="initiate-an-account-failover"></a>Zahájení převzetí služeb při selhání účtu
 
-Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o [inicializaci převzetí služeb při selhání (Preview)](storage-initiate-account-failover.md).
+Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o inicializaci převzetí služeb při [selhání (Preview)](storage-initiate-account-failover.md).
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
-Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
+převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
 
 - USA – západ 2
 - USA – středozápad
@@ -143,7 +143,7 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 Další informace popsané v této části vám pomohou pochopit, jak můžou být vaše aplikace a služby ovlivněné při vynucení převzetí služeb při selhání během období Preview.
 
-#### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
+#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. 
 

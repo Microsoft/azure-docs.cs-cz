@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8fada27f82fea557d7d078f06b5c05e7d1db906d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861236"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671355"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Jak nahrávat, stahovat a vypisovat objekty BLOB pomocí klientské knihovny pro Node. js v2
+# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Nahrávání, stahování a výpis objektů BLOB pomocí klientské knihovny pro Node. js
 
 V této příručce se dozvíte, jak pomocí klientské knihovny pro Node. js v2 nahrávat, stahovat a vypisovat objekty BLOB pomocí služby Azure Blob Storage.
 
@@ -356,7 +356,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v Node.js s využitím
 - Další informace o klientské knihovně pro Node.js najdete v [referenčních informacích k rozhraní Node.js API](https://docs.microsoft.com/javascript/api/overview/azure/storage).
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) napsané s využitím klientské knihovny pro Node.js.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek ukazuje, jak nahrát soubor mezi místním diskem a úložištěm objektů BLOB v Azure pomocí Node. js. Další informace o práci s úložištěm objektů blob najdete v tématu věnovanému úložišti GitHub.
 

@@ -4,17 +4,17 @@ description: Pomocí Azure CLI můžete přiřadit přístup k kontejnerům a fr
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2e29dfde651addb58b767d04bd34e8e5441d54c8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986748"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673195"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udělení přístupu k datům služby Azure Blob a frontě pomocí služby RBAC pomocí rozhraní příkazového řádku Azure
 
@@ -135,7 +135,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 - [Udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC pomocí Azure PowerShell](storage-auth-aad-rbac-powershell.md)

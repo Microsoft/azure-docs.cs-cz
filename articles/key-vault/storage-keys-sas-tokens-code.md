@@ -7,18 +7,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: a20f5b16b90b9bac7e6bc3ff808cf443b252fb44
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204546"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673454"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Načíst tokeny sdíleného přístupového podpisu v kódu
+# <a name="fetch-shared-access-signature-tokens-in-code"></a>Načtení tokenů sdíleného přístupového podpisu v kódu
 
 V trezoru klíčů můžete spravovat svůj účet úložiště pomocí [tokenů sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) . Tento článek poskytuje příklady C# kódu, který NAČTE token SAS a provádí operace s ním.  Informace o tom, jak vytvářet a ukládat tokeny SAS, najdete v tématech [Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI](key-vault-ovw-storage-keys.md) nebo [Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell](key-vault-overview-storage-keys-powershell.md).
 
-# <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódů
 
 V tomto příkladu kód načte token SAS z vašeho trezoru klíčů, použije ho k vytvoření nového účtu úložiště a vytvoří nového klienta Blob service.  
 

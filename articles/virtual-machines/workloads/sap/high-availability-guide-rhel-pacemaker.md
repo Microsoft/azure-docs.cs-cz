@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 4e12ad64ef277396a101aab6d1bb8f3cc6079cf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099599"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673004"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -62,6 +62,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
   * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Zásady podpory pro RHEL clustery s vysokou dostupností – SBD a fence_sbd](https://access.redhat.com/articles/2800691)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
   * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
@@ -70,6 +71,10 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 ## <a name="cluster-installation"></a>Instalace clusteru
 
 ![Pacemaker on RHEL – přehled](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+
+> [!NOTE]
+> Red Hat nepodporuje sledovací zařízení emulované softwarem. Red Hat nepodporuje SBD na cloudových platformách. Podrobnosti najdete v tématu [zásady podpory pro RHEL clustery s vysokou dostupností – SBD a fence_sbd](https://access.redhat.com/articles/2800691).
+> Jediným podporovaným mechanismem pro Pacemaker Red Hat Enterprise Linux clusterů v Azure je agent Azure plot.  
 
 Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
@@ -269,7 +274,7 @@ K nakonfigurování ochranného zařízení použijte následující příkaz.
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

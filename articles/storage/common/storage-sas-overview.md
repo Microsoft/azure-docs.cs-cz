@@ -4,17 +4,17 @@ description: Přečtěte si o použití sdílených přístupových podpisů (SA
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4cf4f87e42508c60cd9195cb8d1e4127134f64aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034970"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670834"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -26,7 +26,7 @@ Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
 - **SAS delegování uživatele (Preview).** SAS delegování uživatele je zabezpečené pomocí přihlašovacích údajů pro Azure Active Directory (Azure AD) a také podle oprávnění zadaných pro SAS. SAS delegování uživatele se vztahuje pouze na úložiště objektů BLOB. Chcete-li vytvořit SAS delegování uživatele, je nutné nejprve vyžádat klíč pro delegování uživatele, který se používá k podepsání SAS. Další informace o SAS delegování uživatele najdete v tématu [Vytvoření SAS (REST API) delegování uživatele](/rest/api/storageservices/create-user-delegation-sas).
 - **SAS služby.** Podpis SAS služby je zabezpečený pomocí klíče účtu úložiště. SAS služby deleguje přístup k prostředku pouze v jedné z Azure Storage služeb: Úložiště objektů blob, úložiště front, úložiště tabulek nebo soubory Azure. Další informace o SAS služby najdete v tématu [Vytvoření SAS služby (REST API)](/rest/api/storageservices/create-service-sas).
-- **SAS účtu.** Podpis SAS účtu je zabezpečený pomocí klíče účtu úložiště. SAS účtu deleguje přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou k dispozici prostřednictvím SAS služby nebo delegování uživatele, jsou také k dispozici prostřednictvím SAS účtu. Kromě toho můžete pomocí SAS účtu delegovat přístup k operacím, které platí na úrovni služby, jako je například **získat nebo nastavit vlastnosti služby** a **získat operace statistiky služby** . Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. Další informace o SAS účtu získáte vytvořením [SAS (REST API) účtu](/rest/api/storageservices/create-account-sas).
+- **SAS účtu.** Podpis SAS účtu je zabezpečený pomocí klíče účtu úložiště. SAS účtu deleguje přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou k dispozici prostřednictvím SAS služby nebo delegování uživatele, jsou také k dispozici prostřednictvím SAS účtu. Kromě toho můžete pomocí SAS účtu delegovat přístup k operacím, které platí na úrovni služby, jako je například **získat nebo nastavit vlastnosti služby** a **získat operace statistiky služby** . Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. Další informace o SAS účtu získáte [vytvořením SAS (REST API) účtu](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné, a ne používat klíč účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte přidružení zabezpečení uživatele, pokud je to možné, pro zajištění nadřazeného zabezpečení.
@@ -34,7 +34,7 @@ Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 Sdílený přístupový podpis může mít jednu ze dvou forem:
 
 - **Ad hoc SAS:** Když vytvoříte ad hoc SAS, čas spuštění, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS (nebo mlčky předpokládaná, pokud je vynechaný počáteční čas). Jakýkoli typ SAS může být ad hoc SAS.
-- **SAS služby s uloženými zásadami přístupu:** Uložené zásady přístupu se definují v kontejneru prostředků, což může být kontejner objektů blob, tabulka, fronta nebo sdílená složka. Zásady uloženého přístupu se dají použít ke správě omezení pro jeden nebo víc podpisů sdíleného přístupu služby. Při přidružení SAS služby k uložené zásadě přístupu SAS zdědí omezení&mdash;pro čas spuštění, čas vypršení platnosti a oprávnění&mdash;definovaná pro zásady uloženého přístupu.
+- **SAS služby s uloženými zásadami přístupu:** Uložené zásady přístupu se definují v kontejneru prostředků, což může být kontejner objektů blob, tabulka, fronta nebo sdílená složka. Zásady uloženého přístupu se dají použít ke správě omezení pro jeden nebo víc podpisů sdíleného přístupu služby. Při přidružení SAS služby k uložené zásadě přístupu SAS zdědí omezení @ no__t-0the čas spuštění, čas vypršení platnosti a oprávnění @ no__t-1defined pro uložené zásady přístupu.
 
 > [!NOTE]
 > SAS uživatele nebo podpis účtu musí být SAS ad hoc. Uložené zásady přístupu se nepodporují pro SAS uživatelů s delegováním nebo pro podpis účtu.

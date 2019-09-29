@@ -1,7 +1,7 @@
 ---
-title: Požádat o omezení – Translator Text API
+title: Omezení požadavků – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Tento článek uvádí omezení požadavků pro rozhraní Translator Text API. Poplatky se účtují na základě počtu znaků, není požadavek četnost s maximálně 5 000 znaků na jednu žádost. Znak omezení platí pro odběr na základě s F0 omezená na 2 miliony znaků za hodinu.
+description: V tomto článku jsou uvedené limity požadavků pro Translator Text API. Poplatky se účtují na základě počtu znaků, nikoli frekvence požadavků s omezením 5 000 znaků na požadavek. Omezení znaků jsou založená na předplatném, s F0em omezeným na 2 000 000 znaků za hodinu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,76 +10,76 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226254"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671964"
 ---
-# <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
+# <a name="request-limits-for-translator-text"></a>Omezení požadavků pro Translator Text
 
-Tento článek obsahuje omezení pro rozhraní Translator Text API. Služby zahrnují překladu, přepis, detekce délka věty, detekce jazyka a alternativní překlady.
+Tento článek poskytuje omezení omezování pro Translator Text API. Služby zahrnují překlady, převádění, detekci délky vět, rozpoznávání jazyka a alternativní překlady.
 
-## <a name="character-and-array-limits-per-request"></a>Omezení znaků a pole každý požadavek
+## <a name="character-and-array-limits-per-request"></a>Omezení počtu znaků a polí na požadavek
 
-Každý požadavek přeložit je omezen na 5 000 znaků. Vám budou účtovány na znak, nikoli podle počtu požadavků. Doporučuje k odesílání požadavků kratší.
+Jednotlivé požadavky na překlad jsou omezené na 5 000 znaků. Účtují se vám poplatky za jednotlivé znaky, nikoli počet požadavků. Doporučuje se posílat kratší požadavky.
 
-Následující tabulky zobrazí pole elementu a znak omezení pro každou operaci rozhraní Translator Text API.
+Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci Translator Text API.
 
-| Operace | Maximální velikost prvku pole |   Maximální počet elementů pole |  Maximální velikost žádostí (ve znacích) |
+| Operace | Maximální velikost elementu pole |   Maximální počet prvků pole |  Maximální velikost požadavku (ve znacích) |
 |:----|:----|:----|:----|
 | Translate | 5,000 | 100   | 5,000 |
 | Transliterace | 5,000 | 10    | 5,000 |
 | Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 5,0000 |
+| BreakSentence | 10,000    | 100 | 50,000 |
 | Slovníkové vyhledávání| 100 |  10  | 1 000 |
-| Příklady slovníku | 100 pro text a 100 pro překlad (celkový počet 200)| 10|   2 000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
 
-## <a name="character-limits-per-hour"></a>Omezení znak za hodinu
+## <a name="character-limits-per-hour"></a>Omezení počtu znaků za hodinu
 
-Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. 
+Limit počtu znaků za hodinu vychází z vaší úrovně předplatného Translator Text. 
 
-Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Například na limit F0 vrstvy 2 miliony znaků za hodinu, znaky by měl být využity rychleji než zhruba 33,300 znaků na jednu minutu posuvné okno (2 miliony znaků dělený 60 minut).
+Hodinová kvóta by se měla v průběhu hodiny spotřebovat rovnoměrně. Například na úrovni F0, která je 2 000 000 znaků za hodinu, by měly být znaky spotřebovány rychleji než přibližně 33 300 znaků za minutu posuvných oken (2 000 000 znaků dělených 60 minutami).
 
-Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. Neplatí žádné limity u souběžných požadavků.
+Pokud tato omezení dosáhnete nebo překročíte nebo v krátké době zadáte příliš velkou část kvóty, pravděpodobně obdržíte odpověď na neplatnou kvótu. Neexistují žádná omezení souběžných žádostí.
 
-| Úroveň | Limit počtu znaků |
+| Vrstva | Omezení počtu znaků |
 |------|-----------------|
-| F0 | 2 miliony znaků za hodinu |
-| S1 | 40 milionů znaků za hodinu |
-| S2 / C2 | 40 milionů znaků za hodinu |
-| S3 / C3 | 120 milionů znaků za hodinu |
-| S4 / C4 | 200 milionů znaků za hodinu |
+| F0 | 2 000 000 znaků za hodinu |
+| S1 | 40 000 000 znaků za hodinu |
+| S2 / C2 | 40 000 000 znaků za hodinu |
+| S3 / C3 | 120 000 000 znaků za hodinu |
+| S4 / C4 | 200 000 000 znaků za hodinu |
 
-Omezení [víc služeb předplatná](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako pro úroveň S1.
+Limity pro [předplatné s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako u úrovně S1.
 
-Tato omezení jsou omezeny na standardní překladové modely od Microsoftu. Vlastní překladové modely, které používají vlastní Translator jsou omezené na 1 800 znaků za sekundu.
+Tato omezení se omezují na standardní modely překladu společnosti Microsoft. Vlastní modely překladu, které používají vlastní překladatele, jsou omezené na 1 800 znaků za sekundu.
 
 ## <a name="latency"></a>Latence
 
-Translator Text API má maximální latence 15 sekund pomocí standardní modelů. Překlad pomocí vlastních modelů má maximální latence 25 sekund. V tuto chvíli budete obdrželi jste výsledek nebo vypršení časového limitu odpovědi. Obvykle jsou odpovědi vrácené v milisekundách 150 do 300 milisekund. Doby odezvy bude lišit v závislosti na velikosti pár požadavků a jazyk. Pokud jste neobdrželi překlad nebo s [chybová odpověď](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v tomto časovém rámci, by měl zkontrolujte síťové připojení a zkuste to znovu.
+Translator Text API má maximální latenci 15 sekund pomocí standardních modelů. Překlad pomocí vlastních modelů má maximální latenci 25 sekund. V tuto chvíli obdržíte výsledek nebo odpověď na časový limit. Odpovědi jsou obvykle vraceny během 150 milisekund do 300 milisekund. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v rámci tohoto časového období, měli byste ověřit připojení k síti a zkusit to znovu.
 
-## <a name="sentence-length-limits"></a>Omezení délky větu
+## <a name="sentence-length-limits"></a>Omezení délky věty
 
-Při použití [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) funkci věty délka je omezená na 275 znaků. Existují výjimky pro tyto jazyky:
+Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) je délka věty omezená na 275 znaků. Existují výjimky pro tyto jazyky:
 
-| Jazyk | Kód | Limit počtu znaků |
+| Jazyk | Kód | Omezení počtu znaků |
 |----------|------|-----------------|
-| Čínština | zh | 132 |
+| Čínština | ZH | 132 |
 | Němčina | de | 290 |
 | italština | it | 280 |
 | Japonština | ja | 150 |
-| Portugalština | PT | 290 |
+| Portugalština | bodů | 290 |
 | Španělština | es | 280 |
 | italština | it | 280 |
-| Thajština | TH | 258 |
+| Thajština | Kolik | 258 |
 
 > [!NOTE]
-> Toto omezení neplatí pro překlady.
+> Toto omezení se nevztahuje na překlady.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionální dostupnost](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [referenční dokumentace rozhraní Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [V3 Translator Text API – referenční informace](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

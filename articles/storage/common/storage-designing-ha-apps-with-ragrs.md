@@ -4,17 +4,17 @@ description: Jak používat úložiště Azure RA-GZRS nebo RA-GRS k navržení 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036613"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673116"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení
 
@@ -235,7 +235,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí rozhraní příkazového řádku Azure, podívejte se na vlastnost **geoReplicationStats. lastSyncTime** účtu úložiště. Použijte parametr pro návrat hodnoty vlastností vnořených do geoReplicationStats. `--expand` Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí rozhraní příkazového řádku Azure, podívejte se na vlastnost **geoReplicationStats. lastSyncTime** účtu úložiště. Použijte parametr `--expand` pro návrat hodnot vlastností vnořených do **geoReplicationStats**. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \

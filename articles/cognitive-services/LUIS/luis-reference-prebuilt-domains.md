@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067596"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672779"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
 
 [Vlastní domény](luis-how-to-start-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
 
-# <a name="supported-domains-across-cultures"></a>Podporované domény napříč kulturami
+## <a name="supported-domains-across-cultures"></a>Podporované domény napříč kulturami
 
 Následující tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle více dokončena než jiné. 
 
@@ -47,7 +47,7 @@ Předem připravené domény nejsou v nástroji **podporované** :
 * Hindština
 * Španělština – Mexiko
 
-# <a name="description-for-luis-prebuilt-domains"></a>Popis pro předem sestavené domény LUIS
+## <a name="description-for-luis-prebuilt-domains"></a>Popis pro předem sestavené domény LUIS
 ## <a name="calendar"></a>**Kalendář**
 Kalendář je cokoli o osobních schůzkách a událostech, ne o veřejných událostech (například na světových plánech, kalendáři událostí v Seattlu) nebo v obecném kalendáři (například v dnešním dni).
 ### <a name="intents"></a>**Záměry**
@@ -129,7 +129,7 @@ Ignorovat | Ignorujte příchozí volání. | Není odpovědět <br>   Ignorovat
 IgnoreWithMessage | Ignorovat příchozí volání a místo toho odpovědět s textem. | Toto volání není odpovědět, ale místo odeslání zprávy. <br>   Ignorovat a odeslala textová zpráva zpět.
 Telefonické připojení | Telefonní hovor. | Jan volání <br>   Vytočte prosím 311.
 FindSpeedDial | Najdete číslo rychlé vytáčení, telefonní číslo je nastavena na a naopak. | Co je volání čísla 5? <br>   Je nutné rychlost vytáčení sady? <br>   Co je počet volání pro 941-5555-333?
-Předat dál | Přepošle e-mail | Tento e-mail pošlete do Greg.
+Přeposlat | Přepošle e-mail. | Tento e-mail pošlete do Greg.
 ReadAloud | Přečíst zprávu nebo e-mailu pro uživatele. | Přečtěte si text. <br>   Co uživatel Řekněme, že ve zprávě?
 PressKey | Na klávesnici stiskněte tlačítko nebo číslo. | Volání na hvězdičku. <br>   Stiskněte 1 2 3.
 QueryLastText | Dotaz na poslední text nebo zprávu | Koho jsem mne? <br>   Kdo mě v poslední době zobrazil?
@@ -149,9 +149,9 @@ TurnSpeakerOn | Zapněte telefon mluvčího. | Režim sluchátek s mikrofonem. <
 ### <a name="entities"></a>**Podnikům**
 Název entity | Typ entity | Popis | Příklady | Přihrádky
 ------|-------|----------|--------------|---------------
-Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
+Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | file <br> přípon
 AudioDeviceType | Pouh | Typ zvukového zařízení (mluvčí, sluchátka, mikrofon atd.) | Odpovězte **na používání bez praktických rukou**. <br> Vytočit znovu na **telefonu mluvčího**. | mluvčího <br> bez praktických rukou <br> protokolu
-Kategorie | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
+Category | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
 ContactAttribute | Pouh | Atribut kontaktu s dotazem na uživatele| O každý **narozeniny** příští měsíc mám vědět? | narozeniny <br> adresa <br> Telefonní číslo
 Jméno kontaktu | personName  | Jméno kontaktu nebo zprávy příjemce. | Poslat e-mail na **Stevens** | Stevens
 Date/Time | datetime | Datum a čas přijatého e-mailu | Čtení **dnešního**e-mailu <br> Komu se e-mail **dnes**? <br> Komu telefon je **7 hodin**? | dnes <br> zítra
@@ -186,7 +186,7 @@ SearchMessages | Vyhledávejte zprávy za určitých podmínek, včetně jména 
 Connectoru | Odeslání e-mailu. | E-mail na Jan: Mike, tato večeře minulý týden byla Splendid. <br> Poslat e-mail Bobovi
 ShowNext | Podívejte se na další položky v seznamu textových zpráv nebo e-mailů. <br> ***Upozornění**: Další ShowNext General projevy najdete v tématu doména **nástroje** . * | Zobrazit další příkaz. <br> Přejdete na další stránku.
 ShowPrevious | Zobrazí předchozí položky v seznamu textových zpráv nebo e-mailů. <br> ***Upozornění**: Další ShowPrevious General projevy najdete v tématu doména **nástroje** . * | Zobrazit předchozí. <br> Předchozí. <br> Přejdete na předchozí.
-Předat dál | Předejte e-mail. | Tento e-mail pošlete do Greg.
+Přeposlat | Předejte e-mail. | Tento e-mail pošlete do Greg.
 AddFlag | Přidejte příznak do e-mailu. | Označit tento e-mail <br> Přidejte k tomuto e-mailu příznak.
 QueryLastText | Dotaz na poslední e-mail | Komu se mi pošle e-mail? <br> Kdo mi nedávno e-mail?
 
@@ -194,7 +194,7 @@ QueryLastText | Dotaz na poslední e-mail | Komu se mi pošle e-mail? <br> Kdo m
 ### <a name="entities"></a>**Podnikům**
 Název entity | Typ entity | Popis | Příklady | Přihrádky
 ------|-------|----------|--------------|---------------
-Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | soubor <br> přípon
+Attachment | Pouh | Příloha, kterou chce uživatel odeslat pomocí textu nebo e-mailu | Odešlete **soubor** e-mailem z OneNotu. <br> Odeslat údržbu **doc** do Katie | file <br> přípon
 Jméno kontaktu | personName  | Jméno kontaktu nebo zprávy příjemce. | Poslat e-mail na **Stevens** | Stevens
 Date | datetime | Datum přijetí e-mailu | Čtení **dnešního**e-mailu <br> Komu se e-mail **dnes**? | dnes
 emailAddress | email | Uživatel e-mailové adresy chce odeslat nebo dotazovat. | Odeslat e-mail naMegan.Flynn@MKF.com<br> abc@outlook.com 
@@ -202,7 +202,7 @@ EmailSubject | jednoduchý vzor. Jakýmikoli | Text použitý jako řádek před
 SenderName | personName | Jméno odesílatele. | Přečíst e-mail od **David** <br> E-maily z Chanda | David <br> Chanda
 FromRelationshipName | Pouh | Název vztahu odesílatele. | Přečíst zprávu od **Dád**. <br> Můžete si přečíst všechny textové zprávy z **MOM**? | Dád <br> MOM 
 Message | jednoduchý vzor. Jakýmikoli |  Zpráva k odeslání e-mailu nebo text.  | Poslat e-mail s oznámením, že jsem**zaneprázdněn** | Zaneprázdněn
-Kategorie | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
+Category | Pouh | Kategorie zprávy nebo e-mailu musí mít v e-mailovém systému jasně definici, jako je například "Nepřečteno", "příznak". Popis bez jasné definice, například "nové" a "poslední", není kategorie. | Označit všechny e-maily jako **přečtené**  <br> Nový e-mail s **vysokou prioritou** pro Paul | Důležité <br> Vysoká priorita <br> číst
 OrderReference | Pouh | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. | Jaká byla **Poslední** odeslaná zpráva? <br> Přečtěte si **nejnovější** e-mail pro Nokia. <br> Přečtěte si **nové** textové zprávy. | Posledního <br> latest <br> používané <br> nejnovějších
 PositionReference | jednoduché – pořadové číslo | Ordinální nebo relativní umístění v seznamu, určení položek k načtení.| Jaká byla **první** odeslaná zpráva? <br> Druhý **třetí** .| První <br> jiného
 RelationshipName konstruktoru | Pouh | Název vztahu kontaktu nebo příjemce zprávy. | Poslat e-mail mému **manželovi** | manželka
@@ -213,7 +213,7 @@ Perokresba | Pouh | Uživatel řádku chce použít k odeslání e-mailu z. | P�
 ## <a name="homeautomation"></a>**HomeAutomation**
 Doména HomeAutomation poskytuje záměry a entity týkající se řízení inteligentních domácích zařízení. Podporujeme hlavně Řídicí příkazy související s kvadranty a klimatizačním modulem. Ale má některé možnosti generalizace na jiných zařízeních elektrického zařízení.
 ### <a name="supported-devices-and-properties"></a>**Podporovaná zařízení a vlastnosti**
-Zařízení | Vlastnosti
+Zařízení | properties
 -------|---------
 Senzor teploty | Teplota
 Lampa světla | Zapnuto, jas, barva
@@ -266,7 +266,7 @@ ChangeTitle | Změňte název poznámky. | Tato poznámka se nazývá "plánová
 Název entity | Typ entity | Popis | Příklady 
 ------- | ------- | ------- | -------
 Text | jednoduchý vzor. Jakýmikoli | Text poznámky nebo připomenutí. | roztažení před procházení <br> dlouho běžící zítra
-Název | jednoduchý vzor. Jakýmikoli | Název poznámky. | Nákup <br> uživatelům volání <br> úkol
+Titul | jednoduchý vzor. Jakýmikoli | Název poznámky. | Nákup <br> uživatelům volání <br> úkol
 CreationDate | datetimeV2 | Tato pozice je určena v případě, kdy uživatel žádá o poznámky vytvořené v určitém časovém intervalu. | 
 Kvantifikátor | List | Když se uživatel zeptá, že provede akci na všech položkách ' All ', ' všechny ' nebo ' Any ' nebo na veškerý text v poznámce. | all <br> Jakýmikoli <br> každé
 OrderReference | ordinal | Uživatel chce provádět akce s položkami First, Last, Next atd. | První <br> Posledního
@@ -403,7 +403,7 @@ Název záměru | Popis | Příklady
 LUIS – entita | Typ entity | Popis | Příklady
 ------------|-------------|-------------|---------
 Location | Geografické | Absolutní nebo implicitní umístění žádosti o počasí. | Palo Alto<br>Šanghaj<br>Seattle<br>Delvina<br>
-Date/Time   | datetime | Datum a čas nebo doba trvání dotazu na počasí | Listopad<br>po hodinách<br>označení<br>Tento víkend<br>10 dní<br>
+Date/Time   | datetime | Datum a čas nebo doba trvání dotazu na počasí | Listopad<br>každou hodinu<br>označení<br>Tento víkend<br>10 dní<br>
 AdditionalWeatherCondition | list | Další popis slova pro počasí, jako je například rychlost nebo směr větru. | direction<br>Rychlá<br>Takt
 Historické | Pouh | Popis slov historických povětrnostních podmínek, včetně průměrných vyberte joomlaých případů v minulém časovém období. | již<br>Historická/historická<br>sezón<br>Nejlepší čas<br>někdy zaznamenané
 PrecipitationUnit | Dimenze | Srážení pro sněhu nebo deště. | 5 palců<br>6 cm

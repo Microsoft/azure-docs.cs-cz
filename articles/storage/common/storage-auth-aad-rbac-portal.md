@@ -4,17 +4,17 @@ description: Pomocí řízení přístupu na základě role (RBAC) z Azure Porta
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4c558da6b0a9267c03b26ca1b5f57eb5e7444881
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ad88066ebf19bdcc9bcdb77309ce76828c09ce47
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515012"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671125"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Udělte přístup k datům služby Azure Blob a Queue data do fronty pomocí RBAC v Azure Portal
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků přiřaďte roli **Čtenář** , aby uživatel mohl získ
 > [!NOTE]
 > Přiřazení role čtenáře je nezbytné jenom pro uživatele, kteří potřebují přístup k objektům blob nebo frontám pomocí Azure Portal. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích RBAC pro prostředky úložiště najdete v tématu [ověření přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md). 
 - Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).

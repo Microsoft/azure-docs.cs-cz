@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c2066502a6a9d742c347e08d528a2490a390bb7e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71289597"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672648"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -186,8 +186,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Authorization/*/DELETE | Odstranění rolí, přiřazení zásad, definic zásad a sad zásad |
 > | Microsoft.Authorization/*/Write | Vytváření rolí, přiřazení rolí, přiřazování zásad, definic zásad a definic sad zásad |
 > | Microsoft. Authorization/elevateAccess/Action | Udělí volajícímu přístup správce přístupu v oboru tenanta. |
-> | Microsoft. detail/blueprintAssignments/Write | Vytvořit nebo aktualizovat všechny artefakty podrobného plánu |
-> | Microsoft. detail/blueprintAssignments/DELETE | Odstraní všechny artefakty podrobného plánu. |
+> | Microsoft. detail/blueprintAssignments/Write | Vytvořit nebo aktualizovat jakékoli přiřazení podrobného plánu |
+> | Microsoft. detail/blueprintAssignments/DELETE | Odstranit všechna přiřazení podrobného plánu |
 > | **Akce dataactions** |  |
 > | *nTato* |  |
 > | **NotDataActions** |  |

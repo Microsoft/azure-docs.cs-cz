@@ -2,18 +2,18 @@
 title: Sledování, metriky a upozorněními – Azure ExpressRoute | Dokumentace Microsoftu
 description: Tato stránka obsahuje informace o monitorování ExpressRoute
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154763"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672040"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -72,9 +72,41 @@ Můžete si prohlédnout dostupnost [protokolu ARP](https://docs.microsoft.com/a
 
 ![Dostupnost protokolu ARP na partnerský uzel](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
+## <a name="expressroute-direct-metrics"></a>ExpressRoute přímé metriky
+
+### <a name="admin-state---split-by-link"></a>Stav Správce – rozdělit podle odkazu
+Můžete zobrazit stav správce pro každý odkaz dvojice portů ExpressRoute Direct.
+
+![Stav Správce ER Direct](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+
+### <a name="bits-in-per-second---split-by-link"></a>Bity za sekundu – rozdělit podle propojení
+V obou propojeních dvojice portů ExpressRoute můžete zobrazit bity za sekundu. 
+
+![přímých bitů ER za sekundu](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+
+### <a name="bits-out-per-second---split-by-link"></a>Bity za sekundu – rozdělit podle propojení
+Můžete také zobrazit bity za sekundu v obou odkazech dvojice portů ExpressRoute Direct. 
+
+![ER – přímé bity za sekundu](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+
+### <a name="line-protocol---split-by-link"></a>Protokol řádku – rozdělit podle odkazu
+Protokol linky můžete zobrazit přes každý odkaz dvojice portů ExpressRoute Direct.
+
+![přímý spojnicový protokol ER](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+
+### <a name="rx-light-level---split-by-link"></a>Úroveň Light pro příjem – rozdělení podle propojení
+Můžete zobrazit úroveň indikátoru příjmu (úroveň světla, kterou port pro přímý přenos ExpressRoute **přijímá**) pro každý port. V pořádku jsou úrovně nízké úrovně příjmu obvykle v rozsahu od-10 do 0 dBm.
+
+![Úroveň nízké linky pro příjem na er](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+
+### <a name="tx-light-level---split-by-link"></a>Úroveň Light tx – rozdělení podle propojení
+Úroveň síla pro odesílání můžete zobrazit (úroveň světla, kterou port ExpressRoute Direct **odesílá) pro**každý port. Slabá úroveň nesprávného zpomalení v pořádku spadá do rozsahu od-10 do 0 dBm
+
+![Úroveň nízké linky pro příjem na er](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Připojení brány ExpressRoute v bitů/sekundách
 
-![připojení brány](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
+![připojení brány](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>Upozornění na připojení ExpressRoute gateway
 

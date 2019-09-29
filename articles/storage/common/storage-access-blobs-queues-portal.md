@@ -4,17 +4,17 @@ description: Při přístupu k datům objektů BLOB nebo front pomocí Azure Por
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3d5d5bd6400fdf09216124665b6b236b4da2583b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813371"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673280"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -81,7 +81,7 @@ Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvý
 
 ![Pokud účet Azure AD nepodporuje přístup, zobrazí se chyba.](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 
-Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup k klávesám** a znovu použijte přístupovou klávesu pro ověřování.
+Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup** k klávesám a znovu použijte přístupovou klávesu pro ověřování.
 
 ### <a name="azure-ad-account"></a>Účet Azure AD
 
@@ -95,7 +95,7 @@ Chcete-li přepnout na používání přístupového klíče účtu, klikněte n
 
 Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud nemáte přístup k klíčům účtu. Klikněte na odkaz **Přepnout na uživatelský účet Azure AD** , abyste mohli znovu použít účet Azure AD pro ověřování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Ověřování přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md)
 - [V Azure Portal udělte přístup k kontejnerům a frontám Azure pomocí RBAC.](storage-auth-aad-rbac-portal.md)

@@ -4,17 +4,17 @@ description: Naučte se vytvořit sdílený přístupový podpis (SAS) pomocí A
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164268"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673344"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí PowerShellu (Preview)
 
@@ -102,7 +102,7 @@ Když vytvoříte SAS uživatele při delegování pomocí Azure PowerShell, vyt
 
 Vzhledem k tomu, že maximální interval, po který je klíč delegování uživatele platný, je 7 dní od počátečního data, měli byste zadat čas vypršení platnosti pro SAS, který je do 7 dnů od času spuštění. Podpis SAS je po vypršení platnosti klíče pro delegování uživatele neplatný, takže platnost SAS s časem vypršení platnosti delší než 7 dní bude platit i pro 7 dní.
 
-Chcete-li vytvořit přidružení zabezpečení delegování uživatele pro kontejner nebo objekt BLOB s Azure PowerShell, nejprve vytvořte nový objekt kontextu Azure Storage a určete `-UseConnectedAccount` parametr. `-UseConnectedAccount` Parametr určuje, že příkaz vytvoří kontextový objekt pod účtem služby Azure AD, se kterým jste se přihlásili.
+Chcete-li vytvořit přidružení zabezpečení delegování uživatele pro kontejner nebo objekt BLOB s Azure PowerShell, nejprve vytvořte nový objekt kontextu Azure Storage a určete parametr `-UseConnectedAccount`. Parametr `-UseConnectedAccount` určuje, že příkaz vytvoří kontextový objekt pod účtem služby Azure AD, se kterým jste se přihlásili.
 
 Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -134,7 +134,7 @@ Vrácený token SAS pro delegování uživatelů bude vypadat přibližně takto
 
 Chcete-li vrátit token SAS pro delegování uživatele pro objekt blob, zavolejte příkaz [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) , který předává objekt kontextu Azure Storage, který jste vytvořili dříve.
 
-Následující syntaxe vrátí SAS delegování uživatele pro objekt BLOB. Příklad určuje `-FullUri` parametr, který vrátí identifikátor URI objektu BLOB s připojením tokenu SAS. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující syntaxe vrátí SAS delegování uživatele pro objekt BLOB. Příklad určuje parametr `-FullUri`, který vrátí identifikátor URI objektu BLOB s připojením tokenu SAS. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `
@@ -168,7 +168,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 > [!IMPORTANT]
 > Přiřazení klíče delegování uživatele i rolí RBAC ukládá do mezipaměti Azure Storage, takže může dojít ke zpoždění mezi tím, kdy zahájíte proces odvolání a stávající přidružení zabezpečení uživatele k delegování již není platné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)

@@ -4,17 +4,17 @@ description: Naučte se, jak vytvořit SAS delegování uživatelů pomocí Azur
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164331"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673325"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -30,7 +30,7 @@ Pokud chcete pomocí Azure CLI zabezpečit SAS pomocí přihlašovacích údajů
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Přihlášení pomocí přihlašovacích údajů Azure AD
 
-Přihlaste se k Azure CLI pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
+Přihlaste se k Azure CLI pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 
 ## <a name="assign-permissions-with-rbac"></a>Přiřazení oprávnění s RBAC
 
@@ -57,7 +57,7 @@ Když vytvoříte SAS delegování uživatelů pomocí Azure CLI, vytvoří se k
 
 Vzhledem k tomu, že maximální interval, po který je klíč delegování uživatele platný, je 7 dní od počátečního data, měli byste zadat čas vypršení platnosti pro SAS, který je do 7 dnů od času spuštění. Podpis SAS je po vypršení platnosti klíče pro delegování uživatele neplatný, takže platnost SAS s časem vypršení platnosti delší než 7 dní bude platit i pro 7 dní.
 
-Při vytváření SAS `--auth-mode login` delegování uživatele jsou vyžadovány a `--as-user parameters` . Zadejte *přihlašovací* údaje pro `--auth-mode` parametr, aby byly požadavky na Azure Storage autorizovány pomocí vašich přihlašovacích údajů Azure AD. `--as-user` Zadejte parametr, který označuje, že vrácený SAS by měl být SAS delegování uživatele.
+Při vytváření SAS delegování uživatele se vyžadují `--auth-mode login` a `--as-user parameters`. Zadejte *přihlašovací údaje* pro parametr `--auth-mode`, aby byly požadavky na Azure Storage autorizovány pomocí vašich přihlašovacích údajů Azure AD. Zadejte parametr `--as-user`, který označuje, že vrácený SAS by měl být SAS delegování uživatele.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Vytvoření SAS pro delegování uživatelů pro kontejner
 
@@ -89,7 +89,7 @@ K vytvoření SAS delegování uživatele pro objekt BLOB pomocí Azure CLI vole
 
 K dispozici jsou podporovaná oprávnění pro SAS uživatele v objektu blob, včetně přidat, vytvořit, odstranit, číst a zapisovat. Oprávnění lze zadat jednotlivě nebo v kombinaci. Další informace o těchto oprávněních najdete v tématu [Vytvoření SAS uživatele pro delegování](/rest/api/storageservices/create-user-delegation-sas).
 
-Následující syntaxe vrátí SAS delegování uživatele pro objekt BLOB. Příklad určuje `--full-uri` parametr, který vrátí identifikátor URI objektu BLOB s připojením tokenu SAS. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující syntaxe vrátí SAS delegování uživatele pro objekt BLOB. Příklad určuje parametr `--full-uri`, který vrátí identifikátor URI objektu BLOB s připojením tokenu SAS. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli-interactive
 az storage blob generate-sas \
@@ -128,7 +128,7 @@ az storage account revoke-delegation-keys \
 > [!IMPORTANT]
 > Přiřazení klíče delegování uživatele i rolí RBAC ukládá do mezipaměti Azure Storage, takže může dojít ke zpoždění mezi tím, kdy zahájíte proces odvolání a stávající přidružení zabezpečení uživatele k delegování již není platné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)

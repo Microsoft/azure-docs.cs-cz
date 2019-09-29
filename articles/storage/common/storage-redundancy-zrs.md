@@ -4,17 +4,17 @@ description: Zóna – redundantní úložiště (ZRS) nabízí jednoduchý způ
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036249"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673095"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
 
@@ -66,26 +66,26 @@ Migrace dat do ZRS vyžaduje jinou strategii. Migrace ZRS zahrnuje fyzické pře
 
 Existují dvě primární možnosti migrace na ZRS: 
 
-- Ručně zkopírujte nebo přesuňte data do nového účtu ZRS z existujícího účtu.
-- Požádejte o migraci za provozu.
+- Můžete ručně zkopírovat nebo přesunout data ze stávajícího účtu do nového účtu zónově redundantního úložiště.
+- Můžete požádat o migraci za chodu.
 
 > [!IMPORTANT]
 > Migrace za provozu není v současné době pro sdílené složky Premium podporována. V tuto chvíli se podporuje jenom ruční kopírování a přesouvání dat.
 
-Pokud potřebujete, aby migrace dokončila určité datum, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za provozu. Při ruční migraci budete řídit časování.
+Pokud potřebujete, aby se migrace dokončila do určitého data, zvažte provedení ruční migrace. Ruční migrace poskytuje větší flexibilitu než migrace za chodu. Při ruční migraci máte kontrolu nad načasováním.
 
 K provedení ruční migrace máte tyto možnosti:
 - Používejte existující nástroje, jako je AzCopy, jednu z Azure Storage klientských knihoven nebo spolehlivé nástroje třetích stran.
 - Pokud jste obeznámeni se systémem Hadoop nebo HDInsight, připojte zdrojový a cílový účet (ZRS) k vašemu clusteru. Pak paralelizovat proces kopírování dat pomocí nástroje, jako je DistCp.
 - Vytvářejte vlastní nástroje pomocí jedné z Azure Storage klientských knihoven.
 
-Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, nabízí Microsoft taky možnost migrace za provozu. Migrace za provozu je místní migrace bez výpadků. 
+Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžaduje vysokou dostupnost, Microsoft nabízí také možnost migrace za chodu. Migrace za chodu je místní migrace bez výpadku. 
 
-Během migrace za provozu můžete použít svůj účet úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým úložným razítkem. Během procesu migrace máte k dispozici stejnou úroveň platnosti smlouvy SLA a dostupnost.
+Během migrace za chodu můžete používat svůj účet úložiště, zatímco se vaše data migrují mezi razítky zdrojového a cílového úložiště. Během procesu migrace máte k dispozici stejnou úroveň odolnosti a smlouvu SLA o dostupnosti jako obvykle.
 
 Při migraci za provozu Pamatujte na následující omezení:
 
-- Přestože Microsoft zpracuje vaši žádost o migraci za chodu téměř okamžitě, neposkytuje žádné záruky ohledně toho, kdy se migrace za chodu dokončí. Pokud budete potřebovat data migrovat do ZRS do určitého data, společnost Microsoft doporučuje místo toho provést ruční migraci. Obecně platí, že čím více dat v účtu máte, dím déle trvá jejich migrace. 
+- Přestože Microsoft zpracuje vaši žádost o migraci za chodu téměř okamžitě, neposkytuje žádné záruky ohledně toho, kdy se migrace za chodu dokončí. Pokud potřebujete data migrovat do zónově redundantního úložiště do určitého data, Microsoft místo toho doporučuje provést ruční migraci. Obecně platí, že čím více dat v účtu máte, dím déle trvá jejich migrace. 
 - Migrace za provozu je podporovaná jenom pro účty úložiště, které používají replikaci LRS nebo GRS. Pokud váš účet používá RA-GRS, musíte nejdřív před pokračováním změnit typ replikace svého účtu na LRS nebo GRS. Tento zprostředkující krok odstraní sekundární koncový bod jen pro čtení, který poskytuje RA-GRS před migrací.
 - Váš účet musí obsahovat data.
 - Data můžete migrovat jenom v rámci stejné oblasti. Pokud chcete migrovat data do účtu ZRS umístěného v jiné oblasti, než je zdrojový účet, musíte provést ruční migraci.
@@ -103,7 +103,7 @@ Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azu
     - **Typ problému**: Vyberte **migrace dat**.
     - **Kategorie**: Vyberte **migrovat do ZRS**.
     - **Název**: Zadejte popisný název, například **migrace účtu ZRS**.
-    - **Podrobnosti**: V poli **podrobností** zadejte další podrobnosti, například přejete si migrovat na ZRS z [LRS, GRS] v \_ \_ oblasti. 
+    - **Podrobnosti**: V poli **podrobností** zadejte další podrobnosti, například chci MIGROVAT na ZRS z [LRS, GRS] v oblasti \_ @ no__t-2. 
 5. Vyberte **Další**.
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
 7. Vyberte **Vytvořit**.
@@ -114,11 +114,11 @@ Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou potřebuj
 
 **Mám během migrace naplánovat nějaké výpadky?**
 
-Migrace nepředstavuje žádný výpadek. Během migrace za provozu můžete pokračovat v používání účtu úložiště během migrace dat mezi zdrojovým a cílovým úložným razítkem. Během procesu migrace máte k dispozici stejnou úroveň platnosti smlouvy SLA a dostupnost.
+Migrace nepředstavuje žádný výpadek. Během migrace za provozu můžete pokračovat v používání účtu úložiště během migrace dat mezi zdrojovým a cílovým úložným razítkem. Během procesu migrace máte k dispozici stejnou úroveň odolnosti a smlouvu SLA o dostupnosti jako obvykle.
 
 **Je k migraci k dispozici nějaká ztráta dat?**
 
-K migraci není přidružena žádná ztráta dat. Během procesu migrace máte k dispozici stejnou úroveň platnosti smlouvy SLA a dostupnost.
+K migraci není přidružena žádná ztráta dat. Během procesu migrace máte k dispozici stejnou úroveň odolnosti a smlouvu SLA o dostupnosti jako obvykle.
 
 **Vyžadují aplikace po dokončení migrace nějaké aktualizace?**
 

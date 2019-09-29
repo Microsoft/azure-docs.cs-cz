@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232599"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672662"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -27,6 +27,26 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="september-2019"></a>Září 2019
+ 
+V daty IBC 2019 bylo oznámeno více předběžných.
+ 
+* Animované rozpoznávání znaků (Public Preview)
+
+    Možnost rozpoznávat znaky skupinových reklam v animovaném obsahu prostřednictvím integrace s vlastními vizemi. Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
+* Identifikace ve více jazycích (Public Preview)
+
+    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: Angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
+* Extrakce pojmenovaná entita pro lidi a umístění
+
+    Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
+* Klasifikace typu redakčního snímku
+
+    Označování snímků pomocí redakčních typů, jako je uzavření, střední záběr, dva snímky, interiér, venkovní atd. Další informace najdete v tématu [zjištění typu redakčního snímku](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* Inferencing vylepšení – teď pokrývání úrovně 2
+    
+    V tématu Inferencing model teď podporuje hlubší členitost taxonomie IPTC. Přečtěte si úplné podrobnosti [Azure Media Services nové inovace s podporou AI](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
 ## <a name="august-2019"></a>Srpen 2019
  

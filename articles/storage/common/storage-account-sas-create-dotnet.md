@@ -4,17 +4,17 @@ description: Naučte se vytvořit sdílený přístupový podpis (SAS) účtu po
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b8d627fd905741c76dd34eb4270f49d46b93abb1
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aa93ee292ab95c68034ad595d6cda608d1886c0a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036104"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673273"
 ---
 # <a name="create-an-account-sas-with-net"></a>Vytvoření SAS účtu pomocí .NET
 
@@ -94,7 +94,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md)
 - [Vytvoření SAS účtu](/rest/api/storageservices/create-account-sas)

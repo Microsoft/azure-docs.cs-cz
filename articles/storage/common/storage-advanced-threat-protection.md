@@ -4,16 +4,16 @@ description: Konfigurace rozšířené ochrany před internetovými útoky pro A
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 21204a7a2fb5a6907a8af9cb91fe8b018f7a4714
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076485"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673261"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Rozšířená ochrana před internetovými útoky pro Azure Storage
 
@@ -117,7 +117,7 @@ Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždic
 
 Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům úložiště nebo jejich zneužití. Seznam výstrah pro Azure Storage najdete v části **úložiště** v tématu [detekce hrozeb pro datové služby v Azure Security Center](../../security-center/security-center-alerts-data-services.md#azure-storage) výstrahy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
 * Další informace o [Azure Security Center](../../security-center/security-center-intro.md)
