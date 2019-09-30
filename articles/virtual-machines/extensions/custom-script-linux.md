@@ -112,7 +112,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | publisher | Microsoft. Compute. Extensions | řetězec |
 | type | CustomScript | řetězec |
 | typeHandlerVersion | 2.0 | int |
-| Identifikátory URI (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (např.) | Python MyPythonScript.py \<my-param1 > | řetězec |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | řetězec |
 | skipDos2Unix (např.) | false | boolean |
