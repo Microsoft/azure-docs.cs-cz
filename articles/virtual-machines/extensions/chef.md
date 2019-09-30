@@ -86,7 +86,7 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 | Name | Příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
 
 <!--
 ### Linux-specific settings
