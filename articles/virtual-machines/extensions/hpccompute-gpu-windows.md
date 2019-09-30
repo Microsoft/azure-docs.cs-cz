@@ -15,7 +15,7 @@ ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
 ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/20/2019
 ms.locfileid: "71173986"
