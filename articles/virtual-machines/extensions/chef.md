@@ -70,8 +70,8 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 | Name | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | řetězec |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | řetězec |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Nastavení
@@ -79,8 +79,8 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 | Name | Hodnota / příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Ano |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
-| settings/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
+| settings/runlist | `recipe[mycookbook::default]` | string | Ano |
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
