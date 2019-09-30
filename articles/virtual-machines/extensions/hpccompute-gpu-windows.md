@@ -74,7 +74,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 | Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. HpcCompute | string |
+| publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
@@ -166,7 +166,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | 100 | Operace není podporována nebo ji nelze dokončit. | Možné příčiny: Verze PowerShellu není podporovaná, velikost virtuálního počítače není virtuální počítač řady N-Series, při stahování dat došlo k chybě. Zkontrolujte soubory protokolu a určete příčinu chyby. |
 | 240, 840 | Časový limit operace. | Zkuste operaci zopakovat. |
 | -1 | Došlo k výjimce. | Zkontrolujte soubory protokolu a určete příčinu výjimky. |
-| – pětinásobné | Operace byla přerušena z důvodu nedokončeného restartování. | Restartujte virtuální počítač. Po restartování bude instalace pokračovat. Odinstalaci je třeba vyvolat ručně. |
+| –5x | Operace byla přerušena z důvodu nedokončeného restartování. | Restartujte virtuální počítač. Po restartování bude instalace pokračovat. Odinstalaci je třeba vyvolat ručně. |
 
 
 ### <a name="support"></a>Podpora
