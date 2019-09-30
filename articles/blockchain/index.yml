@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Dokumentace ke službě Azure Blockchain
+summary: Naučte se používat Azure Blockchain k vývoji, testování a nasazování zabezpečených blockchainových aplikací.
+brand: azure
+metadata:
+  title: Dokumentace ke službě Azure Blockchain
+  description: Naučte se používat Azure Blockchain k vývoji, testování a nasazování zabezpečených blockchainových aplikací.
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328620"
+productDirectory:
+  items:
+  - title: Služba Azure Blockchain
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Co je Azure Blockchain Service?
+    - url: ./service/index.yml
+      text: Zobrazit víc >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Co je Azure Blockchain Workbench?
+    - url: ./workbench/index.yml
+      text: Zobrazit víc >
+conceptualContent:
+  title: Začínáme
+  items:
+  - title: Sestavování a vývoj s využitím blockchainových sítí konsorcia
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Nasazení blockchainového člena služby Azure Blockchain Service
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: Postupování podle kurzu a vytvoření inteligentního kontraktu
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: Jak nasadit a konfigurovat vaši síť
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: Jak napsat inteligentní kontrakt s využitím editoru VS Code
+  - title: Vytvoření prototypu blockchainového řešení
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Nasazení služby Azure Blockchain Workbench
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: Postupování podle kurzu a sestavení aplikace Blockchain Workbenche
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: Integrace řešení s využitím služby Blockchain Workbench
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: Jak vytvořit první aplikaci
+  - title: Sestavení s využitím registru, který vyhovuje vašemu případu použití
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: Nasazení sítě PoA Ethereum konsorcia s více členy v Azure
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Nasazení sítě konsorcia Hyperledger Fabric v Azure
+additionalContent:
+  sections:
+  - title: Ukázky a nástroje pro vývojáře
+    summary: Ukázky kódu a nástroje pro vývoj blockchainových aplikací
+    items:
+    - title: Azure Blockchain Development Kit pro Ethereum
+      summary: Vývoj, nasazení ladění a správa řešení Azure Blockchain Service
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Blockchainový konektor Ethereum
+      summary: Využijte Azure Logic Apps, Microsoft Flow a Microsoft PowerApps k provádění akcí inteligentních kontraktů, jako je například odeslání transakcí, čtení stavu smlouvy a aktivace toků pro aktualizace kontraktů.
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: Ukázky kódů
+      summary: Úložiště GitHub s ukázkami kódu, které vám pomohou začít.
+      url: https://github.com/Azure-Samples/blockchain

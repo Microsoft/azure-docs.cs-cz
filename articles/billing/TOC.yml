@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Správa předplatného
   items:
+    - name: Stavy předplatných
+      href: billing-azure-subscription-states.md
     - name: Opětovná aktivace předplatného
       href: billing-subscription-become-disable.md
     - name: Převod vlastnictví

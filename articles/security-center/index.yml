@@ -1,88 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Security Center
+summary: Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.
 metadata:
-  title: 'Dokumentace ke službě Azure Security Center – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
+  title: Dokumentace ke službě Azure Security Center
+  description: Prostřednictvím našich rychlých zprovoznění a kurzů se dozvíte, jak začít se službou Security Center, jak zabezpečit vaše úlohy, jak omezit rizika a jak detekovat útoky a reagovat na ně.
   services: security-center
-  author: cmcclister
-  manager: carolz
   ms.service: security-center
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/18
-  ms.author: cmcclister
-abstract:
-  description: 'Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Prostřednictvím našich šablon Rychlý start a kurzů se dozvíte, jak začít se službou Security Center, jak používat zásady zabezpečení napříč vašimi úlohami, jak omezit vystavení hrozbám a jak detekovat útoky a reagovat na ně.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Naučíte se zapojit vaše počítače a virtuální počítače do služby Security Center a připojit řešení zabezpečení.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/common/i_subscription.svg
-            text: Zapojení předplatných Azure
-            href: /azure/security-center/security-center-get-started
-          - image:
-              src: /media/logos/logo_Windows.svg
-            text: Zapojení počítačů s Windows
-            href: /azure/security-center/quick-onboard-windows-computer
-          - image:
-              src: /media/logos/logo_linux.svg
-            text: Zapojení počítačů s Linuxem
-            href: /azure/security-center/quick-onboard-linux-computer
-          - image:
-              src: /media/common/i_multi-connect.svg
-            text: Připojení řešení zabezpečení
-            href: /azure/security-center/quick-security-solutions
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučíte se definovat zásady zabezpečení, chránit prostředky před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/security-center/tutorial-security-policy">Definování a vyhodnocení zásad zabezpečení</a>
-          - html: <a href="/azure/security-center/tutorial-protect-resources">Ochrana vašich prostředků</a>
-          - html: <a href="/azure/security-center/tutorial-security-incident">Reakce na incidenty zabezpečení</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_\_Úvod do zabezpečení v Azure"
-            href: /learn/modules/intro-to-security-in-azure/
-            image:
-              src: /learn/achievements/intro-to-security-in-azure.svg
-              href: /learn/modules/intro-to-security-in-azure/
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Další interaktivní výuka...</a>
-  - title: Bezplatné školicí video
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Zjednodušení ochrany cloudových prostředků s využitím služby Azure Security Center – Ignite 2018
-            href: 'https://youtu.be/0txX1Y0GXDc'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/0txX1Y0GXDc'
-          - title: Ochrana serverových úloh s využitím služby Azure Security Center – Ignite 2018
-            href: 'https://youtu.be/Kb_xeIJVROo'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/Kb_xeIJVROo'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://docs.microsoft.com/rest/api/securitycenter/">REST API – referenční informace</a>'
-          - html: '<a href="https://azure.microsoft.com/updates/?product=security-center">Aktualizace služeb</a>'
+  ms.collection: collection
+  author: memildin
+  ms.author: memildin
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 8574c69221d1f0f0528a0ab9b8d27df4ca9a0ef0
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71327606"
+landingContent:
+- title: Informace o službě Security Center
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Jaké jsou klíčové možnosti služby Security Center?
+      url: security-center-intro.md
+    - text: Které verze serverů systému Windows a Linux se podporují?
+      url: security-center-os-coverage.md
+- title: Začínáme
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Konfigurace zásad zabezpečení
+      url: tutorial-security-policy.md
+    - text: Úprava nastavení služby Security Center
+      url: security-center-policies-overview.md
+    - text: Vyhodnocení stavu zabezpečení
+      url: security-center-secure-score.md
+    - text: Upgrade na pokročilé zabezpečení
+      url: security-center-onboarding.md
+    - text: Integrace s ostatními produkty zabezpečení Azure
+      url: security-center-alerts-integration.md
+- title: Zlepšení skóre Secure Score
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Co je bezpečnostní skóre?
+      url: security-center-secure-score.md
+    - text: Doporučení pro nápravu zabezpečení
+      url: security-center-remediate-recommendations.md
+    - text: Přizpůsobení doporučení pro zabezpečení
+      url: tutorial-security-policy.md
+    - text: Použití doporučení k vylepšení zabezpečení
+      url: security-center-using-recommendations.md
+- title: Zmírnění hrozeb
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa přístupu za běhu
+      url: security-center-just-in-time.md
+    - text: Nastavení adaptivního řízení aplikací
+      url: security-center-adaptive-application.md
+    - text: Implementace adaptivní posilování zabezpečení sítě
+      url: security-center-adaptive-network-hardening.md

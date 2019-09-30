@@ -80,6 +80,8 @@
         - name: Konfigurace přístupu k výpočetním uzlům
           href: pool-endpoint-configuration.md
         - name: Vytvoření fondu s využitím Shared Image Gallery
+          href: batch-sig-images.md
+        - name: Vytvoření fondu s využitím prostředku spravované image
           href: batch-custom-images.md
         - name: Vytvoření fondu ve virtuální síti
           href: batch-virtual-network.md

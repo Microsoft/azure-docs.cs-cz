@@ -1,121 +1,162 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Functions
+summary: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Dokumentace ke službě Azure Functions – kurzy | Dokumentace Microsoftu
-  meta.description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
-  services: functions
-  author: georgewallace
-  manager: gwallace
+  title: Dokumentace ke službě Azure Functions
+  description: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
   ms.service: azure-functions
   ms.topic: landing-page
-  ms.date: 08/09/2018
-  ms.author: gwallace
-abstract:
-  description: 'Azure Functions je výpočetní služba <a href="https://azure.microsoft.com/solutions/serverless/">bez serveru</a> umožňující spouštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události. Naučte se používat službu Azure Functions prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-get-started.png
-      width: 250
-    title: 'Začínáme se službou Azure Functions. (2:39)'
-    href: 'https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se vytvářet funkce, které se provádějí na základě událostí vytvořených prostřednictvím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_http.svg'
-            text: HTTP
-            href: /azure/azure-functions/functions-create-first-azure-function
-          - image:
-              src: media/index/stopwatch.svg
-            text: Časovač
-            href: /azure/azure-functions/functions-create-scheduled-function
-          - image:
-              src: media/index/cosmosdb.svg
-            text: Azure Cosmos DB
-            href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
-          - image:
-              src: media/index/blob.svg
-            text: Objekt blob
-            href: /azure/azure-functions/functions-create-storage-blob-triggered-function
-          - image:
-              src: media/index/storage.svg
-            text: Fronta
-            href: /azure/azure-functions/functions-create-storage-queue-triggered-function
-      - type: paragraph
-        text: 'Naučte se vyvíjet a ladit v místním prostředí:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: /azure/azure-functions/functions-create-your-first-function-visual-studio
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: /azure/azure-functions/functions-create-first-function-vs-code
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se vytvářet a spravovat ve službě Azure Functions:'
-      - type: list
-        style: ordered
-        items:
-          - html: '<a href="/azure/azure-functions/functions-twitter-email">Vytvoření funkce, která se integruje s Azure Logic Apps</a>'
-          - html: <a href="/azure/azure-functions/functions-create-serverless-api">Vytvoření rozhraní API bez serveru pomocí služby Azure Functions</a>
-          - html: <a href="/azure/azure-functions/functions-openapi-definition">Vytvoření definice OpenAPI pro funkci</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid</a>
-          - html: '<a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">Vytvoření webové aplikace bez serveru pro ukládání obrázků s využitím metadat</a>'
-  - title: Ukázky
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
-          - html: <a href="/sandbox/functions-recipes/">Návody k Azure Functions</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Vytvoření bezserverové logiky s využitím Azure Functions
-            href: /learn/modules/create-serverless-logic-with-azure-functions/
-            image:
-              src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
-              href: /learn/modules/create-serverless-logic-with-azure-functions/
-          - title: Spuštění funkce Azure s využitím triggerů
-            href: /learn/modules/execute-azure-function-with-triggers/
-            image:
-              src: /learn/achievements/execute-azure-function-with-triggers.svg
-              href: /learn/modules/execute-azure-function-with-triggers/
-          - title: Zřetězení Azure Functions a dat dohromady s využitím vazeb vstupu a výstupu
-            href: /learn/modules/chain-azure-functions-data-using-bindings/
-            image:
-              src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
-              href: /learn/modules/chain-azure-functions-data-using-bindings/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-functions">Další interaktivní výuka...</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
-          - title: Vazby
-            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Centrum událostí</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP a webhooky</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">Služba SignalR</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Časovač</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Vazba výstupu z Twilia</a></p>
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 09/17/2019
+  ms.openlocfilehash: fe554b2e7a146ccb3c0b593ffc7e8bef66e55ef2
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71349904"
+landingContent:
+- title: Informace o službě Azure Functions
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Functions?
+      url: functions-overview.md
+    - text: Porovnání bezserverových možností
+      url: functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: Možnosti hostování
+      url: functions-scale.md
+  - linkListType: learn
+    links:
+    - text: Volba možnosti bezserverového výpočetního prostředí
+      url: /learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/index
+  - linkListType: video
+    links:
+    - text: Kde mám hostovat svůj kód?
+      url: https://azure.microsoft.com/resources/videos/build-2019-where-should-i-host-my-code-choosing-between-kubernetes-containers-and-serverless/
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření první funkce (C#)
+      url: functions-create-your-first-function-visual-studio.md
+    - text: Vytvoření první funkce (Java)
+      url: functions-create-first-java-maven.md
+    - text: Vytvoření první funkce (JavaScript)
+      url: functions-create-first-function-vs-code.md
+    - text: Vytvoření první funkce (PowerShell#)
+      url: functions-create-first-function-powershell.md
+    - text: Vytvoření první funkce (Python)
+      url: functions-create-first-function-python.md
+  - linkListType: learn
+    links:
+    - text: Vytvoření bezserverové logiky
+      url: /learn/modules/create-serverless-logic-with-azure-functions/
+  - linkListType: video
+    links:
+    - text: Jak začít
+      url: https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/
+- title: Vývoj funkcí
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Příručka pro vývojáře
+      url: functions-reference.md
+    - text: Podporované jazyky
+      url: supported-languages.md
+  - linkListType: how-to-guide
+    links:
+    - text: Místní vývoj
+      url: functions-develop-local.md
+    - text: Funkce pro testování
+      url: functions-test-a-function.md
+    - text: Zpracování chyb
+      url: functions-bindings-error-pages.md
+  - linkListType: learn
+    links:
+    - text: Vývoj, testování a nasazení s využitím sady Visual Studio
+      url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+  - linkListType: video
+    links:
+    - text: Vývoj s využitím editoru Visual Studio Code
+      url: https://azure.microsoft.com/resources/videos/build-nodejs-apis-using-serverless/
+- title: Připojení ke službám
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Triggery řízené událostmi
+      url: functions-triggers-bindings.md
+    - text: Možnosti sítí
+      url: functions-networking-options.md
+  - linkListType: tutorial
+    links:
+    - text: Integrace s Logic Apps
+      url: functions-twitter-email.md
+    - text: Využívání událostí služby Event Grid
+      url: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - linkListType: learn
+    links:
+    - text: Zřetězení funkcí s využitím vazeb
+      url: /learn/modules/chain-azure-functions-data-using-bindings/index
+    - text: Připojení k webhooku GitHubu
+      url: /learn/modules/monitor-github-events-with-a-function-triggered-by-a-webhook/index
+- title: Nasazení funkcí
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Možnosti nasazení
+      url: functions-deployment-technologies.md
+    - text: Nasazovací sloty
+      url: functions-deployment-slots.md
+    - text: Automatizace nasazení prostředků
+      url: functions-infrastructure-as-code.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení průběžného nasazování
+      url: functions-continuous-deployment.md
+    - text: Vývoj a nasazení pomocí Azure Pipelines
+      url: functions-how-to-azure-devops.md
+    - text: Nasazení s využitím modulu plug-in Jenkinse
+      url: /azure/jenkins/jenkins-azure-functions-deploy
+- title: Výkon a sledování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Monitorování funkcí
+      url: functions-monitoring.md
+    - text: Optimalizace výkonu
+      url: functions-best-practices.md
+    - text: Aspekty sítí
+      url: functions-networking-options.md
+  - linkListType: how-to-guide
+    links:
+    - text: Řešení potíží
+      url: functions-recover-storage-account.md
+- title: Dlouhodobě běžící funkce
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Plán hostování Premium
+      url: functions-premium-plan.md
+    - text: Odolná služba Functions
+      url: durable/durable-functions-overview.md
+  - linkListType: learn
+    links:
+    - text: Vytvoření dlouhotrvajícího bezserverového pracovního postupu
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/index
+- title: Ukázky
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Ukázky Azure Functions
+      url: /samples/browse/?products=azure-functions
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Šablony Azure Resource Manageru
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Ukázky Azure CLI
+      url: functions-cli-samples.md

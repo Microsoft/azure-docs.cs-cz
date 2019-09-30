@@ -24,10 +24,12 @@
   items:
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
-        - name: Připojení z Windows 10 nebo Windows 7
+        - name: Připojení s desktopovým klientem Windows
           href: connect-windows-7-and-10.md
-        - name: Připojení z webového prohlížeče
+        - name: Připojení k webovému klientovi
           href: connect-web.md
+        - name: Práce s klientem Android
+          href: connect-android.md
         - name: Připojení s klientem macOS
           href: connect-macos.md
         - name: Připojení s klientem iOS
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Nejčastější dotazy k Windows 10 Enterprise pro více relací
       href: windows-10-multisession-faq.md
+    - name: Umístění dat
+      href: data-locations.md
 - name: Řešení potíží
   items:
     - name: 'Přehled řešení potíží, zpětná vazba a podpora'

@@ -1,0 +1,16 @@
+- name: Dokumentace ke skupinám pro správu Azure
+  href: ./index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Správa Azure
+      href: ../azure-management.md
+    - name: Skupiny pro správu
+      href: ./overview.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Vytvoření skupin pro správu
+      href: ./create.md
+    - name: Správa vašich prostředků
+      href: ./manage.md

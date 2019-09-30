@@ -1,69 +1,80 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Container Instances
+summary: Spouštějte kontejnery Dockeru na vyžádání ve spravovaném bezserverovém prostředí Azure. Azure Container Instances je řešení pro libovolný scénář, který může fungovat na izolovaných kontejnerech bez orchestrace. Využijte možnost spouštět aplikace založené na událostech, rychle nasazovat z kanálů pro vývoj kontejnerů a spouštět úlohy pro sestavování a zpracování dat.
 metadata:
-  title: Dokumentace ke službě Azure Container Instances – kurzy | Dokumentace Microsoftu
-  description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob provozování kontejneru v Azure. Není přitom nutné zřizovat žádné virtuální počítače nebo využívat služby vyšší úrovně.
-  services: container-instances
-  author: georgewallace
-  manager: gwallace
+  title: Dokumentace ke službě Azure Container Instances – bezserverové kontejnery, na vyžádání
+  description: Spouštějte kontejnery Dockeru ve spravovaném bezserverovém prostředí Azure.
+  services: 
   ms.service: container-instances
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: 'Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob provozování kontejneru v Azure. Není přitom nutné zřizovat žádné virtuální počítače nebo využívat služby vyšší úrovně. Naučte se vytvářet a spravovat instance kontejnerů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.<p>Pokud vyžadujete kompletní řešení orchestrace kontejnerů, prohlédněte si <a href="/azure/aks/">dokumentaci ke službě Azure Kubernetes Service (AKS)</a>.</p>'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Naučte se nasazovat image kontejneru se službou Azure Container Instances.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/container-instances/container-instances-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-instances/container-instances-quickstart-powershell
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se zabalit kód do image kontejneru a spouštět ho ve službě Azure Container Instance.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Balení aplikace do image kontejneru</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Vytvoření služby Azure Container Registry a uložení image kontejneru</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Nasazení image do instance kontejneru Azure</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Spouštění kontejnerů Dockeru ve službě Azure Container Instances
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-instances">Další interaktivní výuka...</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-instances">Reference k rozhraní REST API</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Šablona Resource Manageru</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 09/25/2019
+  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326955"
+landingContent:
+- title: Služba Azure Container Instances
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Container Instances?
+      url: container-instances-overview.md
+    - text: Skupiny kontejnerů
+      url: container-instances-container-groups.md
+    - text: Nejčastější dotazy
+      url: container-instances-faq.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nasazení instance kontejneru – rozhraní příkazového řádku
+      url: container-instances-quickstart.md
+    - text: Nasazení instance kontejneru – portál
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Spouštění kontejnerů Dockeru s využitím služby Azure Container Instances
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: Vytváření skupin více kontejnerů
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení skupiny kontejnerů – YAML
+      url: container-instances-multi-container-yaml.md
+    - text: Nasazení skupiny kontejnerů – šablona
+      url: container-instances-multi-container-group.md
+- title: Scénáře nasazení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Připojení k virtuální síti
+      url: container-instances-vnet.md
+    - text: Konfigurace zásad restartování
+      url: container-instances-restart-policy.md
+    - text: Nastavení proměnných prostředí
+      url: container-instances-environment-variables.md
+- title: Správa aplikací kontejneru
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zastavení a spuštění kontejnerů
+      url: container-instances-stop-start.md
+    - text: Aktualizace spuštěných kontejnerů
+      url: container-instances-update.md
+    - text: Sdílení dat mezi kontejnery
+      url: container-instances-volume-emptydir.md
+- title: Integrace s Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení image ze služby Azure Container Registry
+      url: container-instances-using-azure-container-registry.md
+    - text: Použití spravované identity
+      url: container-instances-managed-identity.md
+    - text: Připojení sdílené složky Azure
+      url: container-instances-volume-azure-files.md

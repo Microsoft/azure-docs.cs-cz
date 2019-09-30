@@ -78,7 +78,7 @@
         - name: Authentication
           items:
             - name: Přehled
-              href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Přihlášení a uživatelé
@@ -92,7 +92,7 @@
             - name: Zabezpečení na úrovni sloupců
               href: column-level-security.md
             - name: Zabezpečení na úrovni řádku
-              href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc
+              href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Ochrana dat
           items:
             - name: Přehled transparentního šifrování dat (TDE)
@@ -155,7 +155,7 @@
               href: sql-data-warehouse-tables-data-types.md
             - name: Distribuované tabulky
               href: sql-data-warehouse-tables-distribute.md
-            - name: omezení tabulky
+            - name: Omezení tabulky
               href: sql-data-warehouse-table-constraints.md
             - name: Indexy
               href: sql-data-warehouse-tables-index.md
@@ -234,9 +234,9 @@
     - name: Zabezpečení
       items:
         - name: Konfigurace ověřování Azure AD
-          href: ../sql-database/sql-database-aad-authentication-configure.md??toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Podmíněný přístup
-          href: ../sql-database/sql-database-conditional-access.md??toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Pravidla virtuální sítě s využitím PowerShellu
           href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Povolení šifrování – portál
@@ -338,7 +338,7 @@
     - name: T-SQL
       items:
         - name: Úplný přehled
-          href: /sql/t-sql/language-reference
+          href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Elementy jazyka SQL DW
           href: sql-data-warehouse-reference-tsql-language-elements.md
         - name: Příkazy SQL DW

@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Propojení s Power BI
               href: knowledge-store-connect-power-bi.md
+        - name: Řešení potíží s rozšiřováním
+          href: cognitive-search-common-errors-warnings.md
     - name: Dotazování dokumentů
       items:
         - name: Sestavení a typy dotazů

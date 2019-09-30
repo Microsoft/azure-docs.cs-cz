@@ -89,6 +89,12 @@
       href: traffic-manager-powershell-arm.md
     - name: Nasměrování internetové domény na Traffic Manager
       href: traffic-manager-point-internet-domain.md
+    - name: Přepsání podsítě
+      items:
+        - name: Konfigurace přepsání podsítě – Azure CLI
+          href: traffic-manager-subnet-override-cli.md
+        - name: Konfigurace přepsání podsítě – PowerShell
+          href: traffic-manager-subnet-override-powershell.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží při sníženém výkonu Azure Traffic Manageru

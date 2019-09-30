@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Dokumentace ke skupinám pro správu Azure
+summary: Skupiny pro správu Azure pomáhají organizovat vaše prostředky a předplatná.
+metadata:
+  title: Dokumentace ke skupinám pro správu Azure
+  description: Skupiny pro správu Azure pomáhají organizovat vaše prostředky a předplatná.
+  ms.service: governance
+  ms.topic: landing-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71341041"
+landingContent:
+- title: Informace o zásadách správného řízení Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služeb pro správu v Azure
+      url: ../azure-management.md
+- title: Informace o skupinách pro správu Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Skupiny pro správu Azure
+      url: ./overview.md
+- title: Uspořádání prostředků
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření skupin pro správu
+      url: ./create.md
+    - text: Správa vašich prostředků
+      url: ./manage.md

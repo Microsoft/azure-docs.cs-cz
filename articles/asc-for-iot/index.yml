@@ -1,75 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Security Center pro IoT
+summary: Azure Security Center pro IoT je služba zabezpečení cloudu založená na Azure, která poskytuje komplexní ochranu zařízení IoT před hrozbami.
 metadata:
-  title: 'Dokumentace ke službě Azure Security Center pro IoT – kurzy, rychlá zprovoznění | Microsoft Doc'
-  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
-  services: asc-for-iot
-  author: mlottner
-  manager: rkarlin
+  title: Dokumentace ke službě Azure Security Center pro IoT
+  description: Azure Security Center pro IoT je služba zabezpečení cloudu založená na Azure, která poskytuje komplexní ochranu zařízení IoT před hrozbami.
+  services: service
   ms.service: asc-for-iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/23/19
-  ms.author: rkarlin
-abstract:
-  description: "Azure Security Center pro IoT využijte k rozšíření koncepce vašeho stávajícího kybernetického zabezpečení na celé řešení IoT. Získáte skutečně panoramatický přehled zabezpečení všech vašich prostředků souvisejících s Azure. Možnosti rychlého nasazení a kompletní integrace s dvojčaty modulu IoT Hub vám poskytnou širokou škálu možností přizpůsobení a snadnou integraci s vašimi aktuálními nástroji pro správu zařízení.\_"
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak Azure Security Center pro IoT povolit v IoT Hubu, nainstalovat agenty zabezpečení a získat přehled o potenciálních hrozbách.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Aktivace služby Azure Security Center pro IoT
-            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
-          - image:
-              src: media/index/get-started.svg
-            text: Začínáme se zabezpečením Azure pro IoT
-            href: /azure/asc-for-iot/getting-started
-  - title: Návody
-    items:
-      - type: paragraph
-        text: 'Naučíte se definovat zásady zabezpečení, chránit zařízení před škodlivými aktivitami a reagovat na incidenty a výstrahy zabezpečení.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Detekce hrozeb s využitím služby Azure Security Center pro IoT</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Úvod do zabezpečení v Azure
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-  - title: Videa ke službě Azure Security Center pro IoT
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Microsoft Azure Security Center pro IoT – přehled
-            href: 'https://youtu.be/pq5uSp9u_x0'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://youtu.be/pq5uSp9u_x0'
-          - title: Microsoft Azure Security Center pro IoT – řešení
-            href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">Aktualizace služeb</a>'
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/23/2019
+  ms.openlocfilehash: 5eb0d39d1dbe748b34dd8f5a72ae7796125eae44
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71348526"
+landingContent:
+- title: Informace o službě Azure Security Center pro IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Security Center pro IoT?
+      url: overview.md
+    - text: Plánování řešení
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: Principy architektury služby Azure Security Center pro IoT
+      url: architecture.md
+    - text: Agenti služby Azure Security Center pro IoT
+      url: security-agent-architecture.md
+    - text: Modul zabezpečení hraničních zařízení
+      url: security-edge-architecture.md
+- title: Onboarding služby Azure Security Center pro IoT do IoT Hubu
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Začínáme se službou Azure Security Center pro IoT
+      url: getting-started.md
+    - text: IoT Hub
+      url: iot-hub-integration.md
+    - text: Agenti zabezpečení
+      url: security-agents.md
+- title: Konfigurace vašeho řešení
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Povolení služby Azure Security Center pro IoT v IoT Hubu
+      url: quickstart-onboard-iot-hub.md
+    - text: Konfigurace vašeho řešení
+      url: quickstart-configure-your-solution.md
+    - text: Vytvoření dvojčete modulu služby Azure Security Center pro IoT
+      url: quickstart-create-security-twin.md
+    - text: Vytváření vlastních výstrah zabezpečení
+      url: quickstart-create-custom-alerts.md
+- title: Přizpůsobení vašeho řešení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Volba agenta
+      url: how-to-deploy-agent.md
+    - text: Nasazení agenta zabezpečení Azure Security Center pro IoT založeného na C# pro Windows
+      url: how-to-deploy-windows-cs.md
+    - text: Nasazení agenta zabezpečení Azure Security Center pro IoT založeného na C# pro Linux
+      url: how-to-deploy-linux-cs.md
+    - text: Nasazení agenta zabezpečení Azure Security Center pro IoT založeného na C pro Linux
+      url: how-to-deploy-linux-c.md
+    - text: Nasazení modulu zabezpečení hraničních zařízení
+      url: how-to-deploy-edge.md
+    - text: Konfigurace agentů zabezpečení
+      url: how-to-agent-configuration.md
+    - text: Odesílání vlastních zpráv zabezpečení
+      url: how-to-send-security-messages.md
+    - text: Přístup k nezpracovaným datům zabezpečení
+      url: how-to-security-data-access.md
+    - text: Prozkoumání zařízení
+      url: how-to-investigate-device.md
+- title: Řešení potíží s agentem zabezpečení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Průvodce odstraňováním potíží s agenty zabezpečení (Linux)
+      url: troubleshoot-agent.md
+    - text: Vysvětlení souboru LocalConfiguration.json – agent v jazyce C
+      url: azure-iot-security-local-configuration-c.md
+    - text: Vysvětlení místního konfiguračního souboru – agent v jazyce C#
+      url: azure-iot-security-local-configuration-csharp.md
+- title: Prostředky řešení Microsoft Azure Security Center pro IoT
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Co je služba Azure Security Center pro IoT?
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: Principy služby Azure Security Center pro IoT
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: Nejčastější dotazy
+      url: resources-frequently-asked-questions.md
+    - text: Ceny a související náklady
+      url: concept-pricing.md

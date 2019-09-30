@@ -1,68 +1,205 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Správa Azure – zásady správného řízení
+### YamlMime:Hub
+title: Dokumentace k zásadám správného řízení Azure
+summary: Získejte nejpokročilejší sadu možností zásad správného řízení v rámci všech hlavních poskytovatelů cloudu.
+brand: azure
 metadata:
-  title: Správa Azure – zásady správného řízení
-  description: 'Seznamte se s koncepty a službami Azure, které jsou k dispozici pro konzistentní správu vašeho prostředí, a to prostřednictvím explicitního návrhu a pravidel. Přečtěte si víc o postupu auditování dodržování předpisů.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Dokumentace k zásadám správného řízení Azure
+  description: Získejte nejpokročilejší sadu možností zásad správného řízení v rámci všech hlavních poskytovatelů cloudu.
   ms.service: governance
-  ms.topic: landing-page
-  ms.date: 05/07/2019
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 'Zásady správného řízení Azure jsou kolekcí konceptů a služeb, které umožňují správu různých prostředků Azure ve velkém měřítku. Tyto služby poskytují možnost logicky uspořádat a strukturovat vaše předplatná, vytvářet a nasazovat opakovaně použitelné balíčky prostředků nativní pro Azure, definovat, audit a opravovat vaše prostředky a nejenom to. Na této stránce se dozvíte víc o těchto konceptech a službách a také o tom, jak je povolit a využít ve vašem prostředí.'
-  aside:
-    image:
-      alt: null
-      height: 225
-      src: ./media/video.png
-      width: 250
-    title: 'Azure Governance vám poskytne rychlost a kontrolu nad prostředky (1:47)'
-    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
-    width: 250
-sections:
-  - title: Komponenty a služby
-  - items:
-      - type: list
-        style: cards
-        className: cardsD
-        columns: 2
-        items:
-          - href: ./management-groups/overview
-            html: '<p>Přečtěte si víc o seskupení a uspořádání vašich předplatných v logické hierarchii, která podporuje strukturované nasazení dalších služeb správného řízení.<br /></p>'
-            image:
-              alt: Skupiny pro správu
-              src: ./media/management-groups-illustration.svg
-            title: Skupiny pro správu
-          - href: ./resource-graph/
-            html: '<p>Výkonný nástroj pro příkazový řádek (podporuje Azure CLI a Azure PowerShell) vám umožní rychlé dotazy na složité podrobnosti jednotlivých prostředků Azure. Budete mít možnost najít a zveřejnit informace, které dřív pro zjištění příslušných prostředků ve velkém měřítku vyžadovaly složité a iterativní skripty.</p>'
-            image:
-              alt: Resource Graph
-              src: ./media/resource-graph-illustration.svg
-            title: Resource Graph
-          - href: ./policy/
-            html: '<p>Definujte a použijte standardy pro prostředky ve vašem prostředí. Zabraňte vytvoření nežádoucích prostředků, vylepšete nové prostředky o další elementy a auditujte a opravujte prostředky, které už ve vašem prostředí máte.</p>'
-            image:
-              alt: Zásada
-              src: ./media/policy-illustration.svg
-            title: Zásada
-          - href: ./blueprints/
-            html: '<p>Vytvořte si nativní balíček <i>artefaktů</i> Azure (skupiny prostředků, zásady, přiřazení rolí, šablony Resource Manageru atd.), který se dá dynamicky nasazovat do předplatných a vytvářet tak konzistentní opakovatelná prostředí.</p>'
-            image:
-              alt: Blueprint
-              src: ./media/blueprints-illustration.svg
-            title: Blueprint
-  - title: Architektura přechodu na cloud
-  - items:
-      - type: list
-        style: cards
-        className: cardsZ
-        columns: 3
-        items:
-          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
-            html: '<p>Architektura přechodu na cloud poskytuje technické pokyny pro Microsoft Azure. Vzhledem k tomu, že zákazníci mohou ještě vybírat dodavatele cloudu, tato architektura poskytuje pokyny nezávislé na konkrétním cloudu pro rozhodování na vyšší úrovni, kdykoli je to možné.</p>'
-            title: Přehled
-          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
-            html: '<p>U organizací, které již využívají zásady pro řízení místních prostředí IT, by zásady správného řízení cloudu měly tyto obchodní zásady doplňovat.<br /><br /></p>'
-            title: Přehled zásad správného řízení
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 07db40943ae0ff9978cedcef6a42ba0b83f5f2cc
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71337737"
+highlightedContent:
+  items:
+  - title: Přehled zásad správného řízení
+    itemType: overview
+    url: ./azure-management.md
+  - title: Kanál YouTube pro zásady správného řízení
+    itemType: video
+    url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+  - title: Zásady správného řízení v architektuře přechodu na cloud
+    itemType: architecture
+    url: /azure/architecture/cloud-adoption/governance
+  - title: Zavedení a monitorování standardů infrastruktury pomocí služby Azure Policy
+    itemType: learn
+    url: /learn/modules/intro-to-governance/
+productDirectory:
+  title: Komponenty a služby
+  items:
+  - title: Skupiny pro správu Azure
+    imageSrc: ./media/management-groups.svg
+    links:
+    - url: ./management-groups/overview.md
+      text: Přehled
+    - url: ./management-groups/index.yml
+      text: Zobrazit víc >
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    links:
+    - url: ./policy/overview.md
+      text: Přehled
+    - url: ./policy/how-to/get-compliance-data.md
+      text: Vyhodnocení dodržování předpisů
+    - url: ./policy/concepts/rego-for-aks.md
+      text: Správa konfigurace AKS
+    - url: ./policy/concepts/guest-configuration.md
+      text: Správa konfigurace virtuálního počítače
+    - url: ./policy/index.yml
+      text: Zobrazit víc >
+  - title: Azure Blueprint
+    imageSrc: ./media/azure-blueprints.svg
+    links:
+    - url: ./blueprints/overview.md
+      text: Přehled
+    - url: ./blueprints/tutorials/protect-new-resources.md
+      text: Ochrana prostředků
+    - url: ./blueprints/index.yml
+      text: Zobrazit víc >
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    links:
+    - url: ./resource-graph/overview.md
+      text: Přehled
+    - url: ./resource-graph/concepts/explore-resources.md
+      text: Procházení prostředků Azure
+    - url: ./resource-graph/how-to/get-resource-changes.md
+      text: Sledování změn
+    - url: ./resource-graph/index.yml
+      text: Zobrazit víc >
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    links:
+    - url: ../cost-management/overview-cost-mgt.md
+      text: Přehled
+    - url: ../cost-management/aws-integration-manage.md
+      text: Správa nákladů a využití AWS
+    - url: ../cost-management/index.yml
+      text: Zobrazit víc >
+tools:
+  title: Ukázky
+  summary: Definice zásad, podrobné plány dodržování předpisů, dotazy na prostředky a další
+  items:
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    url: ./policy/samples/index.md
+  - title: Azure Blueprint
+    imageSrc: ./media/azure-blueprints.svg
+    url: ./blueprints/samples/index.md
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    url: ./resource-graph/samples/starter.md
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    url: https://github.com/Azure-Samples/Cost-Management-Samples
+additionalContent:
+  sections:
+  - title: Materiály pro vývojáře
+    items:
+    - title: Skupiny pro správu
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/managementgroups/?view=azure-cli-latest
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#resources
+      - text: Sada Azure SDK pro .NET
+        url: /dotnet/api/overview/azure/managementgroups
+      - text: Azure SDK pro Node
+        url: /javascript/api/azure-arm-resource/managementgroups
+    - title: Azure Policy
+      links:
+      - text: Azure CLI
+        url: /cli/azure/policy
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#policies
+        note: (zásady)
+      - text: Azure PowerShell
+        url: /powershell/module/az.policyinsights#policy_insights
+        note: (Policy Insights)
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+        note: (konfigurace hosta)
+      - text: Sada Azure SDK pro .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (přiřazení)
+      - text: Sada Azure SDK pro .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (definice zásad)
+      - text: REST
+        url: /rest/api/policy-insights/
+        note: (Policy Insights)
+      - text: REST
+        url: /rest/api/resources/policyassignments
+        note: (přiřazení)
+      - text: REST
+        url: /rest/api/resources/policydefinitions
+        note: (definice)
+      - text: REST
+        url: /rest/api/resources/policysetdefinitions
+        note: (iniciativy)
+      - text: REST
+        url: /rest/api/guestconfiguration/
+        note: (konfigurace hosta)
+      - text: Šablony Resource Manageru
+        url: /azure/templates/microsoft.authorization
+    - title: Azure Blueprint
+      links:
+      - text: Funkce podrobného plánu
+        url: ./blueprints/reference/blueprint-functions.md
+      - text: Azure PowerShell
+        url: /powershell/module/az.blueprint/#blueprint
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.Blueprint
+        note: (modul PS Gallery)
+      - text: Sada Azure SDK pro .NET
+        url: /dotnet/api/overview/azure/blueprints/management
+      - text: REST
+        url: /rest/api/blueprints/
+    - title: Azure Resource Graph
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/resource-graph/graph
+      - text: Azure PowerShell
+        url: /powershell/module/az.resourcegraph/
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
+        note: (modul PS Gallery)
+      - text: Sada Azure SDK pro .NET
+        url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+      - text: Sada Azure SDK pro .NET
+        url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
+        note: (NuGet)
+      - text: Azure SDK for Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+      - text: Azure SDK pro Javu
+        url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+      - text: Azure SDK pro Javu
+        url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
+        note: (Maven)
+      - text: Azure SDK pro Node
+        url: /javascript/api/@azure/arm-resourcegraph
+      - text: Azure SDK pro Python
+        url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+      - text: Azure SDK pro Ruby
+        url: https://rubygems.org/gems/azure_mgmt_resourcegraph
+        note: (Gem)
+      - text: REST
+        url: /rest/api/azureresourcegraph/resources/resources
+    - title: Cost Management
+      links:
+      - text: REST
+        url: /rest/api/cost-management
+        note: (Cost Management)
+      - text: REST
+        url: /rest/api/consumption
+        note: (využití)
+      - text: Šablony Resource Manageru
+        url: /azure/templates/microsoft.consumption/budgets
+  footer: '[UserVoice](https://feedback.azure.com/forums/915958-azure-governance) | [Technická komunita Microsoftu – zásady správného řízení Azure](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Podpora Azure](https://azure.microsoft.com/support/create-ticket/)'

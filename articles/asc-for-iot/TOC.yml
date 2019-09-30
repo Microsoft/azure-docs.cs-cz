@@ -39,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Doporučení zabezpečení
       href: concept-recommendations.md
+    - name: Standardní hodnoty
+      href: concept-baseline.md
     - name: Agregace událostí
       href: event-aggregation.md
     - name: Ceny a související náklady
