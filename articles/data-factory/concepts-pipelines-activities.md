@@ -99,7 +99,7 @@ Značka | Popis | type | Požadováno
 --- | ----------- | ---- | --------
 name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Řetězec | Ano
 description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
-aktivity | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Array | Ano
+activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Array | Ano
 parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | List | Ne
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
