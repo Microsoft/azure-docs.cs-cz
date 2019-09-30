@@ -18,7 +18,7 @@ ms.locfileid: "69647860"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search
 
-Azure Search může indexovat dokumenty a pole JSON ve službě Azure Blob Storage [](search-indexer-overview.md) pomocí indexeru, který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
+Azure Search může indexovat dokumenty a pole JSON ve službě Azure Blob Storage pomocí [indexeru](search-indexer-overview.md), který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
 
 V tomto kurzu můžete pomocí [rozhraní REST api Azure Search](https://docs.microsoft.com/rest/api/searchservice/) a klienta REST provádět následující úlohy:
 
