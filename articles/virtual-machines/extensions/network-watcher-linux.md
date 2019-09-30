@@ -42,9 +42,9 @@ Rozšíření agenta Network Watcher lze nakonfigurovat pro následující distr
 | Red Hat | 6 a 7 |
 | Oracle Linux | 6.8+ a 7 |
 | SUSE Linux Enterprise Server | 11 a 12 |
-| OpenSUSE Leap | 42.3 + |
+| OpenSUSE Leap | 42.3+ |
 | CentOS | 6.5+ a 7 |
-| CoreOS | 899.17.0 + |
+| CoreOS | 899.17.0+ |
 
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
