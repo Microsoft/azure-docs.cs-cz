@@ -75,8 +75,8 @@ Následující JSON zobrazuje schéma pro rozšíření.
 | Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. HpcCompute | string |
-| type | NvidiaGpuDriverLinux | řetězec |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
@@ -86,7 +86,7 @@ Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat já
 | Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false | true, false | boolean |
-| driverVersion | STÁL Verze ovladače mřížky<br> NC/ND: Verze sady nástrojů CUDA Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | latest | MŘÍŽKY "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
+| driverVersion | STÁL Verze ovladače mřížky<br> NC/ND: Verze sady nástrojů CUDA Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | latest | MŘÍŽKY "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | boolean |
 
 
