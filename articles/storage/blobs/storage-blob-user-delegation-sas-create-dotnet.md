@@ -4,17 +4,17 @@ description: Naučte se, jak vytvořit SAS delegování uživatelů pomocí Azur
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900433"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671327"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET (Preview)
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-`az ad sp create-for-rbac` Příkaz vrátí seznam vlastností instančního objektu ve formátu JSON. Zkopírujte tyto hodnoty, abyste je mohli použít k vytvoření potřebných proměnných prostředí v dalším kroku.
+Příkaz `az ad sp create-for-rbac` vrátí seznam vlastností instančního objektu ve formátu JSON. Zkopírujte tyto hodnoty, abyste je mohli použít k vytvoření potřebných proměnných prostředí v dalším kroku.
 
 ```json
 {
@@ -87,7 +87,7 @@ Klientská knihovna Azure identity načítá při ověřování instančního ob
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-Přidejte následující `using` direktivy do kódu pro použití verze Preview klientských knihoven Azure identity a Azure Storage.
+Přidejte následující direktivy `using` do kódu pro použití verze Preview klientských knihoven Azure identity a Azure Storage.
 
 ```csharp
 using System;
@@ -102,7 +102,7 @@ using Azure.Storage.Blobs.Models;
 
 ## <a name="authenticate-the-service-principal"></a>Ověření instančního objektu
 
-Chcete-li ověřit instanční objekt, vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . `DefaultAzureCredential` Konstruktor přečte proměnné prostředí, které jste vytvořili dříve.
+Chcete-li ověřit instanční objekt, vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Konstruktor `DefaultAzureCredential` čte proměnné prostředí, které jste vytvořili dříve.
 
 Následující fragment kódu ukazuje, jak získat ověřené pověření a použít ho k vytvoření klienta služby pro úložiště objektů BLOB.
 
