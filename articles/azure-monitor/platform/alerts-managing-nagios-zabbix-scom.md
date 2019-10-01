@@ -1,35 +1,35 @@
 ---
-title: Správa výstrah z SCOM a ve službě Azure Monitor Nagios a Zabbix
-description: Správa výstrah z SCOM a ve službě Azure Monitor Nagios a Zabbix
+title: Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
+description: Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 48fb9d8eaf2003834a420b48d649c830c608fd6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6730402348069df7c2597aa0d73a4211669c2d66
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712973"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702833"
 ---
-# <a name="manage-alerts-from-scom-zabbix-and-nagios-in-azure-monitor"></a>Správa výstrah z SCOM a ve službě Azure Monitor Nagios a Zabbix
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
 
-Teď si můžete zobrazit výstrahy od Nagios a Zabbix, System Center Operations Manager v [Azure Monitor](https://aka.ms/azure-alerts-overview). Tyto výstrahy pocházejí z integrace s servery Nagios a Zabbix nebo System Center Operations Manager do Log Analytics. 
+Nyní můžete zobrazit výstrahy z Nagios, Zabbix a System Center Operations Manager v [Azure monitor](https://aka.ms/azure-alerts-overview). Tyto výstrahy přicházejí z integrace se servery Nagios/Zabbix nebo System Center Operations Manager do Log Analytics. 
 
-## <a name="prerequisites"></a>Požadavky
-Všechny záznamy v úložišti Log Analytics s typem upozornění budou importovány do služby Azure Monitor, proto je třeba provést konfiguraci, který je potřeba shromáždit tyto záznamy.
-1. Pro **Nagios** a **Zabbix** výstrahy, [konfiguraci těchto serverů](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) k [odesílání upozornění](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) ke službě Log Analytics.
-1. Pro **System Center Operations Manager** výstrahy, [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Při tomto postupu nasazení [Správa výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) řešení z řešení Azure marketplace. Až to bude hotové, všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.
+## <a name="prerequisites"></a>Předpoklady
+Všechny záznamy v úložišti Log Analytics s typem výstrahy se naimportují do Azure Monitor, takže musíte provést konfiguraci, která je potřeba ke shromáždění těchto záznamů.
+1. U upozornění **Nagios** a **Zabbix** [nakonfigurujte tyto servery](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) tak, aby [odesílaly výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) Log Analytics.
+1. Pro výstrahy **System Center Operations Manager** [Připojte skupinu pro správu Operations Manager k vašemu pracovnímu prostoru Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). V následujícím seznamu nasaďte řešení [Alert Management](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) z webu Azure Solutions Marketplace. Po dokončení se všechny výstrahy vytvořené v System Center Operations Manager importují do Log Analytics.
 
-## <a name="view-your-alert-instances"></a>Zobrazení výstrah instancí
-Po nakonfigurování importu do Log Analytics můžete začít zobrazovat výstrahy instancí z těchto služeb v monitorování [Azure Monitor](https://aka.ms/azure-alerts-overview). Poté, co jsou k dispozici ve službě Azure Monitor, můžete [Spravovat výstrahy instance](https://aka.ms/managing-alert-instances), [spravovat inteligentní skupiny vytvořené v těchto výstrahách](https://aka.ms/managing-smart-groups) a [změnit stav výstrahy a inteligentní skupiny](https://aka.ms/managing-alert-smart-group-states).
+## <a name="view-your-alert-instances"></a>Zobrazení instancí výstrah
+Jakmile nakonfigurujete import do Log Analytics, můžete začít zobrazovat instance výstrah z těchto monitorovacích služeb v [Azure monitor](https://aka.ms/azure-alerts-overview). Jakmile jsou v Azure Monitor, můžete [Spravovat instance výstrah](https://aka.ms/managing-alert-instances), [Spravovat pro ně inteligentní skupiny vytvořené pomocí těchto výstrah](https://aka.ms/managing-smart-groups) a [měnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
->  1. Toto řešení umožňuje zobrazit SCOM/Zabbix/Nagios aktivovaných instancí upozornění ve službě Azure Monitor. Konfigurace pravidla výstrahy může být pouze prohlížet a upravovat v příslušných nástrojů pro monitorování. 
->  1. Všechny instance aktivovaná upozornění bude k dispozici v nástroji Azure Monitor a Azure Log Analytics. V současné době neexistuje žádný způsob, jak zvolit dvě nebo přijímat pouze konkrétní vyvolané výstrahy.
->  1. Všechny výstrahy z nástroje SCOM a Nagios a Zabbix mít typ signálu "Neznámá", protože základní typ telemetrických dat není k dispozici.
->  1. Výstrahy Nagios nejsou stavové – například [monitorování stavu](https://aka.ms/azure-alerts-overview) výstrahy nebudou přejít z "Fired" na "Vyřešeno". Místo toho "Fired" i "Vyřešeno" se zobrazí jako samostatné výstrahy instance. 
+>  1. Toto řešení umožňuje zobrazit instance výstrah System Center Operations Manager/Zabbix/Nagios, které se vyvolaly v Azure Monitor. Konfiguraci pravidla výstrahy lze zobrazit nebo upravit pouze v příslušných nástrojích pro monitorování. 
+>  1. Všechny instance výstrah aktivovány budou k dispozici v Azure Monitor i v Azure Log Analytics. V současné době neexistuje žádný způsob, jak volit mezi dvěma nebo ingesty jenom specifických výstrah aktivované.
+>  1. Všechny výstrahy z System Center Operations Manager, Zabbix a Nagios, mají typ signálu "unknown", protože základní typ telemetrie není dostupný.
+>  1. Upozornění Nagios nejsou stavová – například [podmínka monitorování](https://aka.ms/azure-alerts-overview) výstrahy nebude pokračovat od "vyvoláno" na "Vyřešeno". Místo toho se jako samostatné instance výstrah zobrazují jak "Trigger", tak i vyřešené. 
 

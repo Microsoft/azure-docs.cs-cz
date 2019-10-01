@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/30/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231253"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694721"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -32,7 +32,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 
@@ -40,7 +40,7 @@ K přidání místní aplikace do služby Azure AD potřebujete:
 * Účet správce aplikace
 * Identity uživatelů se musí synchronizovat z místního adresáře nebo vytvářet přímo v klientech Azure AD. Synchronizace identity umožňuje službě Azure AD předem ověřit uživatele předtím, než jim udělí přístup k aplikacím publikovaným v proxy aplikaci, a bude mít potřebné informace o uživatelském identifikátoru k provedení jednotného přihlašování (SSO).
 
-### <a name="windows-server"></a>Windows server
+### <a name="windows-server"></a>Windows Server
 
 Pokud chcete použít proxy aplikace, potřebujete Windows Server se systémem Windows Server 2012 R2 nebo novějším. Nainstalujete konektor proxy aplikace na server. Tento server konektoru se musí připojit k aplikačním proxy službám v Azure a místním aplikacím, které plánujete publikovat.
 
@@ -51,11 +51,14 @@ Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme m�
 1. Fyzicky Najděte Server konektoru blízko aplikačním serverům, abyste mohli optimalizovat výkon mezi konektorem a aplikací. Další informace najdete v tématu [požadavky na topologii sítě](application-proxy-network-topology.md).
 1. Server konektoru a servery webových aplikací by měly patřit do stejné domény služby Active Directory nebo do rozsahu důvěřujících domén. Použití serverů ve stejné doméně nebo důvěřujících doménách je požadavek na použití jednotného přihlašování (SSO) s integrovaným ověřováním systému Windows (IWA) a vynuceným delegováním protokolu Kerberos (KCD). Pokud jsou servery konektoru a webové aplikace v různých doménách služby Active Directory, musíte pro jednotné přihlašování použít delegování založené na prostředcích. Další informace najdete v tématu [KCD pro jednotné přihlašování pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
+> [!WARNING]
+> Pokud jste nasadili proxy ochranu heslem služby Azure AD, neinstalujte do stejného počítače službu Azure Proxy aplikací služby AD ani proxy ochrany heslem služby Azure AD. Služba Azure Proxy aplikací služby AD a proxy ochrany heslem Azure AD instalují různé verze služby Azure AD Connect agenta pro aktualizace. Tyto různé verze jsou při instalaci společně na stejném počítači nekompatibilní.
+
 #### <a name="tls-requirements"></a>Požadavky TLS
 
 Než nainstalujete konektor proxy aplikace, musí mít server Windows Connector povolený protokol TLS 1,2.
 
-Povolení protokolu TLS 1.2:
+Povolení TLS 1,2:
 
 1. Nastavte následující klíče registru:
     
@@ -75,7 +78,7 @@ Povolení protokolu TLS 1.2:
 
 Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte své prostředí pro Azure Proxy aplikací služby AD. Pokud je v cestě brána firewall, ujistěte se, že je otevřená. Otevřená brána firewall umožňuje konektoru předávat žádosti pomocí protokolu HTTPS (TCP) na proxy aplikace.
 
-### <a name="open-ports"></a>Otevřít porty
+### <a name="open-ports"></a>Otevřené porty
 
 Otevřete následující porty pro **odchozí** provoz.
 
@@ -90,13 +93,13 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| @no__t – 0.msappproxy.net<br>@no__t – 0.servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure tyto adresy URL používá k ověření certifikátů. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>@no__t – 0.microsoftonline-p.com<br>@no__t – 0.msauth.net<br>@no__t – 0.msauthimages.net<br>@no__t – 0.msecnd.net<br>@no__t – 0.msftauth.net<br>@no__t – 0.msftauthimages.net<br>@no__t – 0.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
 
-Pokud vaše brána firewall nebo \*proxy server umožňuje \*konfigurovat seznamy povolených serverů DNS, můžete připojení k příponám. msappproxy.NET a. ServiceBus.Windows.NET dovolit. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
+Pokud vám brána firewall nebo proxy server umožní nakonfigurovat seznamy povolených serverů DNS, můžete jim dovolit připojení \*.msappproxy.net a \*.servicebus.windows.net. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
 
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 
@@ -104,7 +107,7 @@ Chcete-li použít proxy aplikace, nainstalujte konektor na každý server s Win
 
 Postup instalace konektoru:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce aplikace adresáře, který používá proxy aplikace. Pokud je například doména tenanta contoso.com, správce by měl být admin@contoso.com v této doméně nebo jiný alias správce.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce aplikace adresáře, který používá proxy aplikace. Pokud je například doména tenanta contoso.com, správce by měl být v této doméně admin@contoso.com nebo jiný alias správce.
 1. V pravém horním rohu vyberte své uživatelské jméno. Ověřte, že jste přihlášeni k adresáři, který používá proxy aplikace. Pokud potřebujete změnit adresáře, vyberte **Přepnout adresář** a zvolte adresář, který používá proxy aplikace.
 1. V levém navigačním panelu vyberte **Azure Active Directory**.
 1. V části **Spravovat**vyberte **proxy aplikace**.
@@ -119,7 +122,7 @@ Postup instalace konektoru:
 
 ### <a name="general-remarks"></a>Obecné poznámky
 
-Pokud jste dříve nainstalovali konektor, nainstalujte ho znovu, abyste získali nejnovější verzi. Informace o dříve vydaných verzích a o tom, jaké změny zahrnují [, najdete v tématu proxy aplikace: Historie](application-proxy-release-version-history.md)verzí.
+Pokud jste dříve nainstalovali konektor, nainstalujte ho znovu, abyste získali nejnovější verzi. Informace o dříve vydaných verzích a o tom, jaké změny zahrnují, najdete v tématu [proxy aplikace: historie](application-proxy-release-version-history.md)verzí.
 
 Pokud se rozhodnete, že budete mít více než jeden Windows Server pro místní aplikace, budete muset konektor nainstalovat a zaregistrovat na každém serveru. Konektory můžete uspořádat do skupin konektorů. Další informace najdete v tématu [skupiny konektorů](application-proxy-connector-groups.md).
 
@@ -154,7 +157,7 @@ Chcete-li ověřit, zda byl konektor nainstalován a správně zaregistrován:
 
      ![Služby konektoru proxy aplikace – snímek obrazovky](./media/application-proxy-enable/app_proxy_services.png)
 
-1. Pokud stav služeb není spuštěný,klikněte pravým tlačítkem myši a vyberte každou službu a zvolte **Spustit**.
+1. Pokud stav služeb není **spuštěný**, klikněte pravým tlačítkem myši a vyberte každou službu a zvolte **Spustit**.
 
 ## <a name="add-an-on-premises-app-to-azure-ad"></a>Přidání místní aplikace do Azure AD
 
@@ -163,13 +166,13 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 1. Přihlaste se jako správce v [Azure Portal](https://portal.azure.com/).
 1. V levém navigačním panelu vyberte **Azure Active Directory**.
 1. Vyberte **podnikové aplikace**a pak vyberte **Nová aplikace**.
-1. Vyberte **On-premises application**.  
+1. Vyberte **místní aplikaci**.  
 1. V části **Přidat vlastní místní aplikaci** zadejte následující informace o vaší aplikaci:
 
     | Pole | Popis |
     | :---- | :---------- |
     | **Název** | Název aplikace, který se zobrazí na přístupovém panelu a v Azure Portal. |
-    | **Interní adresa URL** | Adresa URL pro přístup k aplikaci zevnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé weby na stejném serveru jako různé aplikace a dát každému z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud je vaše aplikace například na https:\//yourapp/App a používá Image umístěné v protokolu https:\//yourapp/Media, měli byste jako cestu publikovat https:\//yourapp/. Tato interní adresa URL nemusí být cílovou stránkou, kterou uživatelé uvidí. Další informace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
+    | **Interní adresa URL** | Adresa URL pro přístup k aplikaci zevnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé weby na stejném serveru jako různé aplikace a dát každému z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud je vaše aplikace například v protokolu https: \//yourapp/App a používá obrázky umístěné v protokolu https: \//yourapp/Media, pak byste měli jako cestu publikovat https: \//yourapp/. Tato interní adresa URL nemusí být cílovou stránkou, kterou uživatelé uvidí. Další informace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
     | **Externí adresa URL** | Adresa pro uživatele, kteří budou mít přístup k aplikaci mimo vaši síť. Pokud nechcete používat výchozí doménu proxy aplikace, přečtěte si o [vlastních doménách v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).|
     | **Předběžné ověření** | Jak proxy aplikace ověřuje uživatele před tím, než jim poskytne přístup k vaší aplikaci.<br><br>**Azure Active Directory** – proxy aplikací přesměruje uživatele na přihlášení pomocí služby Azure AD, která ověřuje jejich oprávnění pro adresář a aplikaci. Tuto možnost doporučujeme ponechat jako výchozí, abyste mohli využívat funkce zabezpečení Azure AD, jako je podmíněný přístup a Multi-Factor Authentication. **Azure Active Directory** se vyžaduje pro monitorování aplikace s Microsoft Cloud zabezpečení aplikací.<br><br>**Passthrough** – uživatelé nemusejí pro přístup k aplikaci ověřovat přes Azure AD. Požadavky na ověřování můžete nastavit i pro back-end. |
     | **Skupina konektorů** | Konektory zpracovávají vzdálený přístup k vaší aplikaci a skupiny konektorů vám pomůžou organizovat konektory a aplikace podle oblastí, sítě nebo účelu. Pokud ještě nemáte vytvořené žádné skupiny konektorů, vaše aplikace se přiřadí **výchozímu**.<br><br>Pokud vaše aplikace používá k připojení objekty WebSockets, musí být všechny konektory ve skupině verze 1.5.612.0 nebo novější.|

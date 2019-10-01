@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076411"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710090"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Škálujte a Registrujte modely řetězení ve velkém měřítku pomocí Azure Machine Learning
 
@@ -33,21 +33,21 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
-    - Dokončete [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md) prostor pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného pomocí sady SDK a ukázkového úložiště.
-    - Ve složce s ukázkami hloubkového učení na serveru poznámkového bloku vyhledejte dokončený Poznámkový blok a soubory ve složce **How-to-the-AzureML/Training-with-hluboká/výuka** -The-chainer.  Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
+    - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
+    - Ve složce s ukázkami hloubkového učení na serveru poznámkového bloku vyhledejte dokončený Poznámkový blok a soubory ve složce **How-to->-azureml ml-framework > chainer >ho nasazení >** .  Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
 
 - Váš vlastní server Jupyter Notebook
 
     - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - Stáhněte si vzorový soubor skriptu [chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py).
-     - Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) tohoto průvodce můžete najít na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
+     - Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) tohoto průvodce můžete najít na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
 
 ## <a name="set-up-the-experiment"></a>Nastavení experimentu
 
 Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
-### <a name="import-packages"></a>Import balíčků
+### <a name="import-packages"></a>Importovat balíčky
 
 Nejprve importujte knihovnu aplikace AzureML. Core Python a zobrazte číslo verze.
 
@@ -60,9 +60,9 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK můžete získat přístup k artefaktům pracovního prostoru vytvořením objektu [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
 
-Vytvořte objekt pracovního prostoru načtením `config.json` souboru vytvořeného v [části požadavky](#prerequisites):
+Vytvořte objekt pracovního prostoru načtením souboru `config.json` vytvořeného v [části požadavky](#prerequisites):
 
 ```Python
 ws = Workspace.from_config()
@@ -82,9 +82,9 @@ os.makedirs(project_folder, exist_ok=True)
 
 V tomto kurzu jste si už pro vás poskytli školicí skript **chainer_mnist. py** . V praxi byste měli být schopni vzít libovolný vlastní školicí skript a spustit ho s Azure ML bez nutnosti upravovat kód.
 
-Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **chainer_mnist. py** ukazuje, jak protokolovat některé metriky do běhu Azure ml pomocí `Run` objektu ve skriptu.
+Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **chainer_mnist. py** ukazuje, jak zaznamenat některé metriky do běhu Azure ml pomocí objektu `Run` v rámci skriptu.
 
-Zadaný školicí skript používá ukázková data z `datasets.mnist.get_mnist` funkce chainer.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md) k zpřístupnění dat během školení.
+Zadaný školicí skript používá ukázková data z funkce chainer `datasets.mnist.get_mnist`.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md#data-upload) k zpřístupnění dat během školení.
 
 Zkopírujte školicí skript **chainer_mnist. py** do adresáře projektu.
 
@@ -142,7 +142,7 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 [Estimator zřetězení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) poskytuje jednoduchý způsob spouštění školicích úloh zřetězení pro výpočetní cíl.
 
-Estimator zřetězení je implementována prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
+Estimator zřetězení je implementována prostřednictvím obecné třídy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
 ```Python
 from azureml.train.dnn import Chainer
@@ -172,13 +172,13 @@ run.wait_for_completion(show_output=True)
 
 Po spuštění se spustí v následujících fázích:
 
-- **Připravuje**se: Obrázek Docker se vytvoří podle Estimator zřetězení. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
+- **Příprava**: obrázek Docker se vytvoří podle Estimator zřetězení. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
-- **Škálování:** Cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
+- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
-- **Spuštěno**: Všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a entry_script se spustí. Výstupy z stdout a složky./logs se streamují do historie spuštění a dají se použít k monitorování běhu.
+- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a entry_script se spustí. Výstupy z stdout a složky./logs se streamují do historie spuštění a dají se použít k monitorování běhu.
 
-- **Následné zpracování**: Složka s příponou./Outputs se zkopíruje do historie spuštění.
+- **Následné zpracování**: složka./Outputs se v běhu kopíruje do historie spuštění.
 
 ## <a name="save-and-register-the-model"></a>Uložení a registrace modelu
 
@@ -194,7 +194,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 > [!TIP]
 > Pokud se zobrazí chyba, že model nebyl nalezen, dejte mu minutu a akci opakujte.  Někdy existuje mírné prodleva mezi koncem školicího běhu a dostupností modelu v adresáři výstupy.
 
-Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `chainer_mnist.py`objekt spořiče uchovává model do místní složky (místní do výpočetního cíle). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
+Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `chainer_mnist.py`, objekt spořiče uchovává model do místní složky (místní k cíli výpočtů). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
 
 ```Python
 # Create a model folder in the current directory
@@ -207,12 +207,12 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí zřetězení na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 
-* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Ladit parametry](how-to-tune-hyperparameters.md)
 
-* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
 
 * [Podívejte se na naši referenční architekturu distribuovaného školení pro hloubkové učení v Azure.](/azure/architecture/reference-architectures/ai/training-deep-learning)

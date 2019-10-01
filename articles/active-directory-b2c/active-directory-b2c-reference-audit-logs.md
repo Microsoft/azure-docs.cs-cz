@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033826"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702810"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -33,12 +33,12 @@ Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 
 |Typ aktivity |Popis  |
 |---------|---------|
-|Authorization |Aktivity týkající se autorizace uživatele pro přístup k prostředkům B2C (například správce, který přistupuje k seznamu zásad B2C).         |
+|Autorizace |Aktivity týkající se autorizace uživatele pro přístup k prostředkům B2C (například správce, který přistupuje k seznamu zásad B2C).         |
 |Adresář |Aktivity týkající se atributů adresáře načtené, když se správce přihlásí pomocí Azure Portal. |
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
 |Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
-|Resource |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
+|Ověření |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 
@@ -50,14 +50,14 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Section|Pole|Popis|
+|Sekce|Pole|Popis|
 |-------|-----|-----------|
-| Aktivita | Name | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře vlastní přihlášení uživatele. |
-| Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
+| Aktivita | Name (Název) | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře vlastní přihlášení uživatele. |
+| Iniciované uživatelem (actor) | Objektu | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
-| Cíl (y) | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
+| Cíl (y) | Objektu | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | `PolicyId` | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Další podrobnosti | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
 | Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
@@ -90,40 +90,38 @@ Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azur
 Abyste povolili přístup k rozhraní API pro vytváření sestav Azure AD pomocí skriptu nebo aplikace, budete potřebovat aplikaci Azure Active Directory registrovanou v Azure AD B2C tenantovi s následujícími oprávněními API:
 
 * Microsoft Graph
-  * Aplikace: Číst všechna data protokolu auditu
+  * Aplikace: číst všechna data protokolu auditu
 
 Tato oprávnění můžete povolit pro existující registraci aplikace Azure Active Directory v rámci tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
 
-Pokud chcete vytvořit novou aplikaci, přiřaďte požadovaná oprávnění rozhraní API a vytvořte tajný klíč klienta, proveďte následující kroky:
+Postupujte podle těchto kroků, zaregistrujte aplikaci, udělte jí požadovaná oprávnění Microsoft Graph API a pak vytvořte tajný klíč klienta.
 
-1. Registrovat aplikaci v Azure Active Directory
-    1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do adresáře, který obsahuje vašeho tenanta Azure AD B2C.
-    1. V nabídce vlevo vyberte **Azure Active Directory** (*není* Azure AD B2C). Případně vyberte **všechny služby**a pak vyhledejte a vyberte **Azure Active Directory**.
-    1. V části **Spravovat** v levé nabídce vyberte **Registrace aplikací (starší verze)** .
-    1. Vybrat **registraci nové aplikace**
-    1. Zadejte název aplikace. Například *audit log aplikace*.
-    1. Do **přihlašovací adresy URL**zadejte libovolnou platnou adresu URL. Příklad: *https://localhost* . Tento koncový bod nemusí být dosažitelný, ale musí být platnou adresou URL.
-    1. Vyberte **Vytvořit**.
-    1. Poznamenejte si **ID aplikace** , které se zobrazí na stránce **registrovaná aplikace** . Tuto hodnotu budete potřebovat pro ověřování ve skriptech služby Automation, jako je například ukázkový skript PowerShellu, který je zobrazený v pozdější části.
-1. Přiřazení přístupových oprávnění k rozhraní API
-    1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
-    1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
-    1. Vyberte **Přidat**a pak **Vyberte rozhraní API**.
-    1. Vyberte **Microsoft Graph**a pak **Vyberte**.
-    1. V části **oprávnění aplikace**vyberte **číst všechna data protokolu auditu**.
-    1. Vyberte tlačítko **Vybrat** a potom vyberte **Hotovo**.
-    1. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
-1. Vytvořit tajný klíč klienta
-    1. V části **přístup k rozhraní API**vyberte **klíče**.
-    1. Do pole **Popis klíče** zadejte popis klíče. Například *klíč protokolu auditu*.
-    1. Vyberte **dobu**platnosti a pak vyberte **Uložit**.
-    1. Poznamenejte si **hodnotu**klíče. Tuto hodnotu budete potřebovat pro ověřování ve skriptech služby Automation, jako je například ukázkový skript PowerShellu, který je zobrazený v pozdější části.
+### <a name="register-application-in-azure-active-directory"></a>Registrovat aplikaci v Azure Active Directory
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>Přiřazení přístupových oprávnění k rozhraní API
+
+1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
+1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
+1. Vyberte **Přidat**a pak **Vyberte rozhraní API**.
+1. Vyberte **Microsoft Graph**a pak **Vyberte**.
+1. V části **oprávnění aplikace**vyberte **číst všechna data protokolu auditu**.
+1. Vyberte tlačítko **Vybrat** a potom vyberte **Hotovo**.
+1. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
+
+### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
+
+1. V části **přístup k rozhraní API**vyberte **klíče**.
+1. Do pole **Popis klíče** zadejte popis klíče. Například *klíč protokolu auditu*.
+1. Vyberte **dobu**platnosti a pak vyberte **Uložit**.
+1. Poznamenejte si **hodnotu**klíče. Tuto hodnotu budete potřebovat pro ověřování ve skriptech služby Automation, jako je například ukázkový skript PowerShellu, který je zobrazený v pozdější části.
 
 Nyní máte aplikaci s požadovaným přístupem k rozhraní API, ID aplikace a klíč, který můžete použít ve svých skriptech automatizace. Příklad toho, jak můžete získat události aktivity pomocí skriptu, najdete v části PowerShellový skript níže v tomto článku.
 
 ### <a name="access-the-api"></a>Přístup k rozhraní API
 
-Pokud chcete stáhnout Azure AD B2C události protokolu auditu přes rozhraní API, vyfiltrujte protokoly `B2C` v kategorii. Pokud chcete filtrovat podle kategorie, použijte `filter` parametr řetězce dotazu při volání koncového bodu rozhraní API pro vytváření sestav Azure AD.
+Pokud chcete stáhnout Azure AD B2C události protokolu auditu přes rozhraní API, vyfiltrujte protokoly v kategorii `B2C`. Pokud chcete filtrovat podle kategorie, použijte parametr řetězce dotazu `filter` při volání koncového bodu rozhraní API pro vytváření sestav Azure AD.
 
 ```HTTP
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
@@ -243,6 +241,6 @@ Tady je reprezentace JSON ukázkové události aktivity uvedené dříve v člá
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Můžete automatizovat další úlohy správy, například [Spravovat uživatele pomocí .NET](active-directory-b2c-devquickstarts-graph-dotnet.md).

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 69dce46052c18eec7c3f1fa2082907ed62b367d6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673442"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703345"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapování zpracování JSON toku dat
 
@@ -22,7 +22,7 @@ ms.locfileid: "71673442"
 Přidání složitého sloupce do toku dat je snazší prostřednictvím odvozeného editoru výrazů pro sloupce. Po přidání nového sloupce a otevření editoru jsou k dispozici dvě možnosti: Ruční zadání struktury JSON nebo použití uživatelského rozhraní k interaktivnímu přidání podsloupců.
 
 #### <a name="interactive-ui-json-design"></a>Interaktivní návrh JSON uživatelského rozhraní
-V podokně výstup na straně výstupu schématu lze přidat nové podsloupce pomocí nabídky `+`: ![Přidat]Podsloupec(media/data-flow/addsubcolumn.png "Přidat") Podsloupec
+V podokně výstup na straně výstupu schématu lze přidat nové podsloupce pomocí nabídky `+`: přidat Podsloupec ![](media/data-flow/addsubcolumn.png "Přidat") Podsloupec
 
 Odtud lze stejným způsobem přidat nové sloupce a podsloupce. Pro každé nekomplikované pole lze přidat výraz do pravé části editoru výrazů.
 
@@ -50,7 +50,7 @@ Pokud se tento výraz zadal pro sloupec s názvem "complexColumn", pak se do jí
 }
 ```
 
-#### <a name="sample-manual-dsl"></a>Ukázka ruční DSL
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Ukázka ručního skriptu pro kompletní hierarchickou definici
 ```
 @(
     title=Title,
@@ -145,7 +145,7 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Vyšší pořadí funkcí
-## <a name="filter"></a>filter
+## <a name="filter"></a>Filtrovací
 Filtruje prvky z pole, které nesplňuje zadaný predikát. Filtr očekává odkaz na jeden prvek ve funkci predikátu jako #item.
 
 ### <a name="examples"></a>Příklady
@@ -185,7 +185,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-## <a name="contains"></a>Obsahuje
+## <a name="contains"></a>zobrazí
 Vrátí hodnotu true, pokud je libovolný prvek v zadaném poli vyhodnocen jako true v zadaném predikátu. Obsahuje očekává odkaz na jeden prvek ve funkci predikátu jako #item.
 
 ### <a name="examples"></a>Příklady

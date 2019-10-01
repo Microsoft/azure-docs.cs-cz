@@ -1,80 +1,83 @@
 ---
-title: Azure Data Factory mapování datového toku Tvůrce
-description: Toky Tvůrce výrazů pro Azure Data Factory mapovacích dat
+title: Tvůrce výrazů pro tok dat mapování Azure Data Factory
+description: Tvůrce výrazů pro Azure Data Factory mapování datových toků
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269114"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703397"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Mapování Tvůrce výrazů toku dat
+# <a name="mapping-data-flow-expression-builder"></a>Tvůrce výrazů pro tok dat mapování
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-V Azure Data Factory mapování toku dat najdete pole výrazu, kde můžete zadat výrazy pro transformaci dat. Použít sloupce, pole, proměnné, parametry, funkce ze svého toku dat v těchto polích. Sestavit výraz, použijte Tvůrce, který se spustí po kliknutí do textového pole výraz uvnitř transformace. Také v některých případech uvidíte možnosti "Vypočítaného sloupce" při výběru sloupce pro transformaci. Po klepnutí na tlačítko, které, uvidíte také spustit Tvůrce výrazů.
+V Azure Data Factory mapování toku dat najdete pole výrazů, kde můžete zadat výrazy pro transformaci dat. V těchto polích můžete použít sloupce, pole, proměnné, parametry a funkce z datového toku. Chcete-li sestavit výraz, použijte Tvůrce výrazů, který je spuštěn, kliknutím do textového pole výraz uvnitř transformace. Při výběru sloupců pro transformaci se taky někdy zobrazí možnosti vypočítaného sloupce. Když na něj kliknete, uvidíte také, že se spustil Tvůrce výrazů.
 
-![Tvůrce výrazů](media/data-flow/expression.png "Tvůrce výrazů")
+(media/data-flow/xpb1.png "Tvůrce") výrazů ![Tvůrce výrazů]
 
-Nástroj Tvůrce výchozí možnosti textového editoru. funkce automatického dokončování čte z objektový model celý tok dat objekt pro vytváření dat Azure pomocí syntaxe kontrolu a zvýraznění.
+Nástroj Tvůrce výrazů je standardně nastaven na možnost textový editor. funkce automatického dokončování načte z celého modelu objektu Azure Data Factory toku dat pomocí kontroly syntaxe a zvýrazňování.
 
-![Tvůrce výrazů automatické dokončování](media/data-flow/expb1.png "Tvůrce automatického dokončování")
+Automatické dokončování(media/data-flow/expb1.png "Tvůrce výrazů") ![automatického dokončování Tvůrce výrazů]– automatické dokončování
 
-## <a name="currently-working-on-field"></a>Právě pracuje na pole
+## <a name="build-schemas-in-output-schema-pane"></a>Schémata sestavení v podokně výstupní schéma
 
-![Tvůrce výrazů](media/data-flow/exp3.png "aktuálně pracují")
+![Přidat složité sloupce](media/data-flow/complexcolumn.png "Přidat sloupce")
 
-V levém horním rohu rozhraní Tvůrce výrazů, zobrazí se pole s názvem "Aktuálně práce na" s názvem pole, které jste právě pracujete. Výraz, který vytvoříte v uživatelském rozhraní se použijí jenom k, které aktuálně pracovní pole. Pokud chcete transformovat jiné pole, uložit aktuální práci a pomocí rozevíracího seznamu vyberte jiné pole a sestavení výrazu pro ostatní pole.
+V podokně výstupní schéma na levé straně uvidíte sloupce, které upravujete, a přidáte je do schématu. Tady můžete interaktivně vytvářet jednoduché a komplexní datové struktury. Přidejte další pole pomocí příkazu přidat sloupec a hierarchie sestavení pomocí příkazu přidat Podsloupec.
+
+![Přidat]Podsloupec(media/data-flow/addsubcolumn.png "Přidat") Podsloupec
 
 ## <a name="data-preview-in-debug-mode"></a>Náhled dat v režimu ladění
 
-![Tvůrce výrazů](media/data-flow/exp4b.png "výraz dat ve verzi Preview")
+(media/data-flow/exp4b.png "Náhled dat výrazů") ![Tvůrce výrazů]
 
-Při práci na vaší výrazy, můžete volitelně přepnout na režim ladění z povrchu návrhu toku dat objekt pro vytváření dat Azure povolení živého náhledu v průběhu výsledky dat z výrazu, který vytváříte. Ladění v za provozu v reálném čase je povolená pro vaše výrazy.
+Při práci na výrazech toku dat přepněte na režim ladění z Azure Data Factory plochy pro návrh toku dat a v rámci výrazu, který sestavíte, umožníte živý náhled výsledků vašich dat. Živé ladění v reálném čase je pro vaše výrazy povolené.
 
-![Režim ladění](media/data-flow/debugbutton.png "ladění tlačítko")
+Ladicí ![režim]ladění –(media/data-flow/debugbutton.png "tlačítko")
 
+Kliknutím na tlačítko Aktualizovat aktualizujete výsledky výrazu na živý ukázkový zdroj v reálném čase.
 
-![Tvůrce výrazů](media/data-flow/exp5.png "výraz dat ve verzi Preview")
+(media/data-flow/exp5.png "Náhled dat výrazů") ![Tvůrce výrazů]
 
 ## <a name="comments"></a>Komentáře
 
-Přidání komentářů do vaší výrazů pomocí jeden řádek a víceřádkových komentářů syntaxe:
+Přidejte komentáře ke svým výrazům pomocí jedné řádky a syntaxe víceřádkového komentáře:
 
-![Komentáře](media/data-flow/comments.png "komentáře")
+(media/data-flow/comments.png "Komentáře") k ![komentářům]
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 
-Jazyk výrazů toku dat objekt pro vytváření dat Azure [úplnou referenční dokumentaci](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkce regulárního výrazu, Tvůrce výrazů pokusí interpretovat zpětné lomítko (\\) jako znak sekvence escape. Při použití zpětná lomítka v regulárním výrazu, uzavřete celý regulární výraz v taktech (\`) nebo použijte dvojité zpětné lomítko.
+Azure Data Factory jazyk pro datový tok toku dat, [Úplná Referenční dokumentace](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkcí regulárních výrazů se Tvůrce výrazů pokusí interpretovat zpětné lomítko (\\) jako řídicí znak sekvence. Při použití zpětných lomítek ve regulárním výrazu buď vložte celý regulární výraz do tiků (\`) nebo použijte dvojité zpětné lomítko.
 
-Příklad použití značky
+Příklad použití značek
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-nebo pomocí dvojité lomítka
+nebo používá dvojité lomítko
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Základní adresování indexy pole
+## <a name="addressing-array-indexes"></a>Indexy polí pro adresování
 
-U výrazu funkcí, které vrací pole k adresování specifickými indexy uvnitř objektu pole vrácené použijte hranaté závorky []. Pole je založená na ty.
+Pomocí funkcí výrazu, které vracejí pole, použijte hranaté závorky [] k adresování konkrétních indexů uvnitř tohoto objektu návratového pole. Pole je založené na.
 
-![Výraz pole Tvůrce](media/data-flow/expb2.png "výraz dat ve verzi Preview")
+(media/data-flow/expb2.png "Ukázková data výrazu") ![pole Tvůrce výrazů]– náhled
 
-## <a name="handling-names-with-special-characters"></a>Zpracování názvů s speciální znaky
+## <a name="handling-names-with-special-characters"></a>Zpracování názvů se speciálními znaky
 
-Až budete mít názvy sloupců, které obsahují speciální znaky ani mezery, uzavřete název pomocí složených závorek.
+Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, uzavřete název do složených závorek.
 * ```{[dbo].this_is my complex name$$$}```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Začít sestavovat výrazy transformace dat](data-flow-expression-functions.md)

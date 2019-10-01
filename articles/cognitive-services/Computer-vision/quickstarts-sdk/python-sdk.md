@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Počítačové zpracování obrazu klientskou knihovnu pro Python | Microsoft Docs'
+title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python | Microsoft Docs'
 description: Začněte s knihovnou klienta Počítačové zpracování obrazu pro Python.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
-ms.translationtype: MT
+ms.openlocfilehash: a9f49eb884de92fb00951a08cc2bc3079ab7b95d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967006"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695182"
 ---
-# <a name="quickstart-computer-vision-client-library-for-python"></a>Rychlý start: Klientská knihovna Počítačové zpracování obrazu pro Python
+# <a name="quickstart-computer-vision-client-library-for-python"></a>Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python
 
 Služba počítačového zpracování obrazu umožňuje vývojářům používat pokročilé algoritmy, které zpracovávají obrázky a vrací informace. Počítačové zpracování obrazu algoritmy analyzují obsah obrázku různými způsoby v závislosti na vizuálních funkcích, které vás zajímají.
 
@@ -28,12 +28,12 @@ Použití klientské knihovny Počítačové zpracování obrazu pro Python pro:
 > [!NOTE]
 > Scénáře v tomto rychlém startu používají adresy URL vzdálených imagí. Vzorový kód, který provádí stejné operace na místních obrázcích, najdete v kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) balíčku | [zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | knihovny Referenční dokumentace[(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)[ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)  | 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -44,11 +44,11 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
 
-Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu `COMPUTER_VISION_SUBSCRIPTION_KEY` s `COMPUTER_VISION_ENDPOINT`názvem a v uvedeném pořadí.
+Po získání klíče ze zkušebního předplatného nebo prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
  
 ### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte nový skript&mdash;Pythonu*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
+Vytvořte nový skript Pythonu @ no__t-0*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -64,14 +64,14 @@ Pak vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 Klientskou knihovnu můžete nainstalovat pomocí nástroje:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Computer Vision
+pip install --upgrade azure-cognitiveservices-computervision
 ```
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy a rozhraní se řídí některými hlavními funkcemi sady Počítačové zpracování obrazu Python SDK.
 
-|Name|Popis|
+|Name (Název)|Popis|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Tato třída přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. Implementuje **ComputerVisionClientOperationsMixin**.|
@@ -88,7 +88,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Poč
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro váš `COMPUTER_VISION_SUBSCRIPTION_KEY`počítačové zpracování obrazu klíč s názvem.
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro počítačové zpracování obrazu klíč s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY`.
 
 Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) .
 
@@ -162,7 +162,7 @@ Následující kód analyzuje data o zjištěných orientačních seznamech v ob
 
 ### <a name="get-the-image-type"></a>Získat typ obrázku
 
-Následující kód Vytiskne informace o typu obrázku&mdash;, ať už se jedná o Klipart nebo kreslení čáry.
+Následující kód Vytiskne informace o typu obrázku @ no__t-0whether je Klipart nebo kreslení čáry.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
@@ -184,7 +184,7 @@ Potom Získejte ID operace vrácené voláním **batch_read_file** a použijte j
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `python` příkazu v souboru rychlého startu.
+Spusťte aplikaci pomocí příkazu `python` v souboru rychlého startu.
 
 ```console
 python quickstart-file.py
@@ -198,7 +198,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak používat knihovnu Počítačové zpracování obrazu pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
@@ -207,4 +207,4 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu Počítačové zp
 >[Odkaz na rozhraní API pro počítačové zpracování obrazu (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
 * [Co je rozhraní API pro počítačové zpracování obrazu?](../Home.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

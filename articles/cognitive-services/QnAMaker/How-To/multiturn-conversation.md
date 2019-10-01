@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351294"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695149"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Vytvoření vícenásobného zapínání konverzace pomocí následných výzev
 
 Pomocí následných výzev a kontextu můžete spravovat vícenásobná zapínání _, která se označují jako u_robotů z jedné otázky do druhé.
 
@@ -55,23 +55,37 @@ Když vytvoříte znalostní bázi, v oddílu **naplnění** v rámci znalostní
 
 ![Zaškrtávací políčko pro povolení extrakce s vícenásobným zapnutím](../media/conversational-context/enable-multi-turn.png)
 
-Když vyberete tuto možnost pro importovaný dokument, může být vícenásobná konverzace odvozená od struktury dokumentu. Pokud tato struktura existuje, QnA Maker vytvoří následnou výzvu, která v rámci procesu importu spáruje otázky a odpovědi. 
+Když vyberete tuto možnost, může být vícenásobná konverzace odvozena od struktury dokumentu. Pokud tato struktura existuje, QnA Maker vytvoří následnou výzvu, která v rámci procesu importu spáruje otázky a odpovědi. 
 
 Strukturu vícenásobného navýšení můžete odvodit jenom z adres URL, souborů PDF nebo souborů DOCX. Příklad struktury najdete v obrazovém [souboru PDF Microsoft Surface User Manually](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Z důvodu velikosti tohoto souboru PDF vyžaduje QnA Maker prostředek na **cenové úrovni hledání** **B** (15 indexů) nebo vyšší. 
 
 ![! [Příklad struktury v uživatelské příručce] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Při importu dokumentu PDF QnA Maker určíte následné výzvy ze struktury k vytvoření toku konverzace. 
+### <a name="determine-multi-turn-structure-from-format"></a>Určení víceúrovňové struktury z formátu
 
-1. V QnA Maker vyberte **vytvořit znalostní bázi**.
-1. Vytvořte nebo použijte existující službu QnA Maker. V předchozím příkladu Microsoft Surface je soubor PDF moc velký pro menší úroveň, použijte službu QnA Maker s **vyhledávací službou** **B** (15 indexů) nebo vyšší.
-1. Zadejte název znalostní báze, jako je například **Ruční Ruční plocha**.
-1. Zaškrtněte políčko **Povolit vícenásobné extrakci z adres URL, soubory. PDF nebo. docx** . 
-1. Vyberte ruční adresu URL Surface **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
+QnA Maker určuje vícenásobné struktury z:
 
-1. Vyberte tlačítko **vytvořit znalostní báze** . 
+* Velikost písma záhlaví – Pokud použijete styl, barvu nebo nějaký jiný mechanismus k určení struktury v dokumentu, QnA Maker nebude extrahováno více výzev. 
 
-    Po vytvoření znalostní báze se zobrazí zobrazení párů otázek a odpovědí.
+Pravidla pro tyto položky:
+
+* Nekončit záhlavím otazníkem, `?`. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Přidat soubor s výzvou k vícenásobnému zapnutí
+
+Když přidáte dokument s vícenásobným načtením, QnA Maker určíte následné výzvy ze struktury pro vytvoření toku konverzace. 
+
+1. V QnA Maker vyberte existující znalostní bázi, která se vytvořila pomocí **Povolení extrakce z adres URL, souborů. PDF nebo. docx z více než** . umožněn. 
+1. Přejít na stránku **Nastavení** , vyberte soubor nebo adresu URL, které chcete přidat. 
+1. **Uložte a výuka** znalostní báze.
+
+> [!Caution]
+> Podpora pro použití exportovaného souboru. základní znalostní báze ve formátu TSV nebo XLS jako zdroj dat pro novou nebo prázdnou znalostní bázi není podporována. Tento typ souboru je potřeba **importovat** na stránce **nastavení** na portálu QnA maker, aby se do znalostní báze přidaly exportované výzvy s vícenásobným zapnutím.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Vytvoření znalostní báze s použitím s více zapnutími výzev pomocí rozhraní API pro vytvoření
+
+Můžete vytvořit znalostní případ s vícenásobnými výzvami, a to pomocí [QnA Maker vytvořit rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Výzvy se přidávají do pole `prompts` vlastnosti `context`. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Zobrazit otázky a odpovědi s použitím kontextu
 
@@ -99,7 +113,7 @@ Přidejte následnou výzvu na existující pár otázek a odpovědí, který ne
 1. V řádku pro **odhlášení**klikněte ve sloupci **odpověď** na **Přidat následnou výzvu**.
 1. Do polí v místním okně **výzvy pro zpracování (Preview)** zadejte následující hodnoty:
 
-    |Pole|Value|
+    |Pole|Hodnota|
     |--|--|
     |Zobrazit text|Zadejte **vypnout zařízení**. Toto je vlastní text, který se zobrazí v následném dotazu.|
     |Pouze kontext| Zaškrtněte toto políčko. Odpověď je vrácena pouze v případě, že otázka určuje kontext.|
@@ -127,29 +141,6 @@ Když se vytvoří následná výzva a jako **odkaz na odpověď**se zadá exist
 1. V horním navigačním panelu **uložte a prohlaste**.
 
 
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Přidání nového páru otázek a odpovědí jako následné výzvy
 
 Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá dvojice by měla být propojená s existující otázkou jako následná výzva.
@@ -159,7 +150,7 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
 1. Ve sloupci **odpověď** pro tuto otázku vyberte **Přidat následnou výzvu**. 
 1. V části **výzva k následnému zobrazení (Preview)** vytvořte novou následnou výzvu zadáním následujících hodnot: 
 
-    |Pole|Value|
+    |Pole|Hodnota|
     |--|--|
     |Zobrazit text|*Vytvořte účet systému Windows*. Vlastní text, který se má zobrazit v následných dotazech|
     |Pouze kontext|Zaškrtněte toto políčko. Tato odpověď se vrátí pouze v případě, že otázka určuje kontext.|
@@ -374,21 +365,13 @@ Přidali jste do znalostní báze výzvy a otestujete tok v podokně test. Nyní
 
 [Zobrazení textu a pořadí zobrazení](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)vrácené v odpovědi JSON je podporované pro úpravy pomocí [rozhraní Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Vytvoření znalostní báze s použitím s více zapnutími výzev pomocí rozhraní API pro vytvoření
-
-Můžete vytvořit znalostní bázi s více zapnutími, a to pomocí [QnA Maker vytvořit rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Výzvy se přidávají do pole `prompts` vlastnosti `context`. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Přidání nebo odstranění výzev s vícenásobným zahnutím pomocí aktualizačního rozhraní API
 
 Pomocí [rozhraní API pro QnA maker Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)můžete přidat nebo odstranit výzvy k vícenásobnému zapínání.  Výzvy se přidávají do pole `promptsToAdd` vlastnosti `context` a pole `promptsToDelete`. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Exportovat znalostní bázi pro správu verzí
+
+QnA Maker [podporuje správu verzí](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) na portálu QnA maker tím, že do exportovaného souboru zapínají kroky pro vícenásobné konverzace.
 
 ## <a name="next-steps"></a>Další kroky
 

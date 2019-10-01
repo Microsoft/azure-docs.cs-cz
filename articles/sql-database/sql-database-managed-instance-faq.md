@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676945"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710152"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -76,7 +76,7 @@ Důrazně doporučujeme, abyste před živým testováním výkonu skutečných 
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Můžu přepínat generování hardwaru spravované instance mezi Gen 4 a 1.5 online? 
 
-Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, kde je spravovaná vaše spravovaná instance zřízena. V tomto případě máte možnost v části s cenovou úrovní Azure Portal pro přepínání mezi generacemi hardwaru.
+Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, kde je spravovaná vaše spravovaná instance zřízena. V takovém případě můžete pomocí [skriptu z blogového příspěvku](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) vysvětlit, jak přepínat mezi generováním hardwaru.
 
 Tato operace je dlouhotrvající, protože nová spravovaná instance se zřídí na pozadí a databáze automaticky přenesené mezi starou a novou instancí s rychlým převzetím služeb při selhání na konci procesu. 
 

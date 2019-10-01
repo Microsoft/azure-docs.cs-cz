@@ -6,15 +6,15 @@ author: barclayn
 manager: rkarlin
 ms.service: key-vault
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 90965618b1d2cb126d56453d46a5bebc85319c0f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: deefbf049d5f8daa004db942f60ff5e31bda0fe8
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219642"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695417"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Doporučení zabezpečení pro Azure Key Vault
 
@@ -25,16 +25,31 @@ Některá doporučení obsažená v tomto článku můžete automaticky monitoro
 - Další informace o Azure Security Center doporučeních najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
 - Informace o Azure Security Center najdete v [Azure Security Center?](../security-center/security-center-intro.md)
 
-## <a name="recommendations"></a>Doporučení
+## <a name="data-protection"></a>Ochrana dat
 
-| Category | Doporučení | Komentáře | Security Center |
-|-|-|----|--|
-| Ochrana dat |Povolit obnovitelné odstranění | [Obnovitelné odstranění](key-vault-ovw-soft-delete.md) umožňuje obnovit odstraněné trezory a objekty trezoru. |  - |
-| Ochrana dat | Omezení přístupu k datům trezoru  | Sledujte princip nejnižších oprávnění a omezte, kteří členové vaší organizace mají přístup k datům trezoru. |  - |
-| Správa identit a přístupu | Omezte počet uživatelů s přístupem přispěvatele. | Pokud má uživatel oprávnění přispěvatele k rovině správy trezoru klíčů, může uživatel sami udělit přístup k rovině dat nastavením zásady přístupu Key Vault. Měli byste přesně řídit, kdo má roli přispěvatele přístup k vašim trezorům klíčů. Zajistěte, aby k trezorům mohli přistupovat a spravovat jenom uživatelé s potřebou přístupu oprávněným osobám. Můžete číst [zabezpečený přístup k trezoru klíčů](key-vault-secure-your-key-vault.md) . | - |
-| Monitorování | Měly by být povolené diagnostické protokoly v Key Vault. | Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. | [Ano](../security-center/security-center-identity-access.md) |
-| Monitorování | Omezit, kdo má přístup k protokolům trezoru klíčů Azure | [Protokoly Key Vault](key-vault-logging.md) ukládají informace o aktivitách provedených ve vašem trezoru, jako je vytváření nebo odstraňování trezorů, klíčů, tajných kódů a jejich použití při vyšetřování. |  - |
-| Sítě |Omezit vystavení sítě | Přístup k síti by měl být omezený na virtuální sítě používané řešeními, které vyžadují přístup k trezoru. Zkontrolujte informace o [koncových bodech služby virtuální sítě pro Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) | - |
+| Doporučení | Komentáře | Security Center |
+|-|----|--|
+|Povolit obnovitelné odstranění | [Obnovitelné odstranění](key-vault-ovw-soft-delete.md) umožňuje obnovit odstraněné trezory a objekty trezoru. |  - |
+| Omezení přístupu k datům trezoru  | Sledujte princip nejnižších oprávnění a omezte, kteří členové vaší organizace mají přístup k datům trezoru. |  - |
+
+## <a name="identity-and-access-management"></a>Správa identit a přístupu
+
+| Doporučení | Komentáře | Security Center |
+|-|----|--|
+| Omezte počet uživatelů s přístupem přispěvatele. | Pokud má uživatel oprávnění přispěvatele k rovině správy trezoru klíčů, může uživatel sami udělit přístup k rovině dat nastavením zásady přístupu Key Vault. Měli byste přesně řídit, kdo má roli přispěvatele přístup k vašim trezorům klíčů. Zajistěte, aby k trezorům mohli přistupovat a spravovat jenom uživatelé s potřebou přístupu oprávněným osobám. Můžete číst [zabezpečený přístup k trezoru klíčů](key-vault-secure-your-key-vault.md) . | - |
+
+## <a name="monitoring"></a>Sledování
+
+| Doporučení | Komentáře | Security Center |
+|-|----|--|
+ Měly by být povolené diagnostické protokoly v Key Vault. | Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. | [Ano](../security-center/security-center-identity-access.md) |
+| Omezit, kdo má přístup k protokolům trezoru klíčů Azure | [Protokoly Key Vault](key-vault-logging.md) ukládají informace o aktivitách provedených ve vašem trezoru, jako je vytváření nebo odstraňování trezorů, klíčů, tajných kódů a jejich použití při vyšetřování. |  - |
+
+## <a name="networking"></a>Sítě
+
+| Doporučení | Komentáře | Security Center |
+|-|----|--|
+|Omezit vystavení sítě | Přístup k síti by měl být omezený na virtuální sítě používané řešeními, které vyžadují přístup k trezoru. Zkontrolujte informace o [koncových bodech služby virtuální sítě pro Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) | - |
 
 ## <a name="next-steps"></a>Další kroky
 

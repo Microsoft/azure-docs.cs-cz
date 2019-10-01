@@ -1,66 +1,66 @@
 ---
 title: Inteligentní skupiny
-description: Inteligentní skupiny se, že agregace výstrah, které vám pomůžou omezily rušivé výstrahy
+description: Inteligentní skupiny jsou agregace výstrah, které vám pomůžou snížit šum výstrah.
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346314"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702859"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
-Běžné challenge čelí při práci s výstrahami je procházení šumu a zjistěte, co skutečně záleží – inteligentní skupin by měla být řešení tohoto problému.  
+Běžným problémem, se kterým čelíte při práci s výstrahami, je prokládání hluku, aby bylo možné zjistit, co skutečně záleží na tom, jaké má řešení k tomuto problému.  
 
-Inteligentní skupiny jsou automaticky vytvořené využitím algoritmů strojového učení kombinování souvisejících výstrah, které představují jeden problém.  Když se vytvoří výstrahu, algoritmus ji přidá do novou inteligentní skupinu nebo existující inteligentní skupinu na základě informací, jako je například historické vzory, podobně jako vlastnosti a podobné struktury. Například, pokud % využití procesoru na několika virtuálních počítačích v rámci předplatného současně špičky, což vede k více jednotlivých výstrah a pokud takové oznámení došlo k společně kdykoli v minulosti, budou tyto výstrahy pravděpodobně seskupeny do jedné skupiny Smart, navrhněte potenciální původní příčiny běžných. To znamená, že pro uživatele, řešení potíží s upozorněními, inteligentní skupiny nejen jim umožňuje snížení šumu pomocí správy souvisejících výstrah jako jeden celek agregované, také provede jejich směrem možný, které způsobí, že společný kořen pro výstrahy.
+Inteligentní skupiny se automaticky vytvoří pomocí algoritmů strojového učení ke kombinování souvisejících výstrah, které představují jediný problém.  Když se vytvoří výstraha, algoritmus ji přidá do nové inteligentní skupiny nebo do existující inteligentní skupiny na základě informací, jako jsou historické vzory, podobné vlastnosti a podobná struktura. Pokud je například% CPU na několika virtuálních počítačích v předplatném současně špičky, což vede k mnoha jednotlivým výstrahám, a pokud k takovým výstrahám došlo v minulosti v minulosti, tyto výstrahy budou pravděpodobně seskupeny do jedné inteligentní skupiny a navrhují se potenciální běžná hlavní příčina To znamená, že pro uživatele, kteří mají potíže s řešením potíží, můžou inteligentní skupiny nejen snížit šum tím, že spravují související výstrahy jako jednu agregovanou jednotku, ale také je předají k možným běžným hlavním důvodům pro jejich výstrahy.
 
-V současné době algoritmus uvažuje pouze výstrahy ze stejné služby monitorování v rámci předplatného. Inteligentní skupiny můžete snížit až 99 % rušivé výstrahy prostřednictvím tohoto sloučení. Můžete prohlédnout příčinu výstrahy byly součástí skupiny na stránce podrobností inteligentní skupinu.
+V současné době algoritmus v rámci předplatného zohledňuje jenom výstrahy ze stejné monitorovací služby. V rámci této konsolidace můžete pomocí inteligentních skupin snížit až 99% hluku výstrahy. Důvod zahrnutí výstrah do skupiny najdete na stránce s podrobnostmi inteligentní skupiny.
 
-Můžete zobrazit podrobnosti o inteligentní skupiny a nastavit stav podobně jako na tom, jak s výstrahami. Každá výstraha je členem skupiny inteligentní jeden a pouze jeden. 
+Můžete zobrazit podrobnosti inteligentních skupin a nastavit stav podobně jako u výstrah. Každá výstraha je členem jedné a pouze jedné inteligentní skupiny. 
 
 ## <a name="smart-group-state"></a>Stav inteligentní skupiny
-Stav inteligentní skupiny je podobný koncept na stav výstrahy, které vám umožní spravovat procesu překladu, který na úrovni inteligentní skupinu. Podobně jako stav výstrahy, když se vytvoří inteligentní skupinu, má **nový** stavu, které může být změněno buď **potvrzeno** nebo **uzavřeno**.
+Stav inteligentní skupiny je podobný koncept stavu výstrahy, který umožňuje správu procesu řešení na úrovni inteligentní skupiny. Podobně jako stav výstrahy, když je vytvořena inteligentní skupina, má **Nový** stav, který lze změnit na buď **potvrzeno** , nebo **Uzavřeno**.
 
-Jsou podporovány následující stavy inteligentní skupinu.
+Podporovány jsou následující stavy inteligentních skupin.
 
 | Stav | Popis |
 |:---|:---|
-| Nová | Problém právě byl zjištěn a není zatím Nezkontrolováno. |
-| Potvrzeno | Správce zkontroluje inteligentní skupinu a začnete pracovat na ní. |
-| Zavřeno | Tento problém byl vyřešen. Po zavření inteligentní skupiny můžete znovu otevřít tak, že změníte do jiného stavu. |
+| Novinka | Problém se právě zjistil a ještě není zkontrolovaný. |
+| Potvrzené | Správce zkontroloval tuto inteligentní skupinu a začal na ní pracovat. |
+| Ukončit | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
 
-[Zjistěte, jak změnit stav inteligentní skupinu.](https://aka.ms/managing-alert-smart-group-states)
+[Zjistěte, jak změnit stav vaší inteligentní skupiny.](https://aka.ms/managing-alert-smart-group-states)
 
 > [!NOTE]
->  Změna stavu inteligentní skupiny nezmění stav výstrahy jednotliví členové.
+>  Změna stavu inteligentní skupiny nemění stav výstrah jednotlivých členů.
 
-## <a name="smart-group-details-page"></a>Stránce s podrobnostmi o inteligentní skupiny
+## <a name="smart-group-details-page"></a>Stránka podrobností inteligentní skupiny
 
-Když vyberete inteligentní skupinu, zobrazí se stránka podrobností inteligentní skupinu. Poskytuje podrobnosti o inteligentní skupiny, včetně odůvodnění, která byla použita k vytvoření skupiny a umožňuje změnit její stav.
+Stránka s podrobnostmi inteligentní skupiny se zobrazí, když vyberete inteligentní skupinu. Poskytuje podrobnosti o inteligentní skupině, včetně důvodů, které bylo použito k vytvoření skupiny, a umožňuje změnit její stav.
  
-![Inteligentní skupiny podrobností](media/alerts-smartgroups-overview/smart-group-detail.png)
+![Podrobnosti inteligentní skupiny](media/alerts-smartgroups-overview/smart-group-detail.png)
 
 
-Stránka s podrobnostmi inteligentní skupiny obsahuje následující části.
+Stránka podrobností inteligentní skupiny obsahuje následující části.
 
 | Sekce | Popis |
 |:---|:---|
-| Výstrahy | Zobrazí seznam jednotlivých výstrah, které jsou součástí inteligentní skupinu. Vyberte výstrahu a otevřete její stránku podrobností výstrahy. |
-| Historie | Obsahuje všechny akce podniknuté inteligentní skupinou a změnách, které se provedly. Toto je aktuálně omezená na změny stavu a výstrahy členství. |
+| Výstrahy | Zobrazí seznam jednotlivých výstrah, které jsou zahrnuty v inteligentní skupině. Výběrem výstrahy otevřete stránku s podrobnostmi o výstrahách. |
+| Historie | Zobrazí všechny akce prováděné čipovou skupinou a veškeré změny, které jsou v něm provedeny. V současné době je omezen na změny stavu a změny členství v výstrahách. |
 
-## <a name="smart-group-taxonomy"></a>Inteligentní skupinu taxonomie
+## <a name="smart-group-taxonomy"></a>Taxonomie inteligentních skupin
 
-Název inteligentní skupiny je název své první výstraha. Nelze vytvořit ani přejmenovat inteligentní skupinu.
+Název inteligentní skupiny je název první výstrahy. Nemůžete vytvořit nebo přejmenovat inteligentní skupinu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Spravovat inteligentní skupiny](https://aka.ms/managing-smart-groups)
-- [Změna stavu výstrah a inteligentní skupinu](https://aka.ms/managing-alert-smart-group-states)
+- [Správa inteligentních skupin](https://aka.ms/managing-smart-groups)
+- [Změna upozornění a stavu inteligentní skupiny](https://aka.ms/managing-alert-smart-group-states)
 
 

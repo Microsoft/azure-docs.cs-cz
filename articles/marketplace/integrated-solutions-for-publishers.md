@@ -1,39 +1,39 @@
 ---
 title: Integrovaná řešení | Azure
-description: Integrovaná řešení v Azure Marketplace a AppSource
+description: Integrovaná řešení v Azure Marketplace a Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993688"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71706316"
 ---
-# <a name="publishing-integrated-solutions"></a>Publikování integrovaných řešení
+# <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
-Integrované řešení kombinuje více technologií řešení pro nezávislé výrobce softwaru, společně s nasazením a službami integrátoru systémů (SI), do jediné sady, která je uvedena na webu Marketplace, v rámci [nabídky služby v rámci konzultačních služeb](https://docs.microsoft.com/azure/marketplace/consulting-services).
+V rámci jedné sady prostředků nabízí integrované řešení v kombinaci s nasazením a podporou partnera služeb od dodavatelů softwaru technologii řešení typu Point-to-Solution. Partner služeb obsahuje nabídku Azure Marketplace nebo Microsoft AppSource jako [konzultační službu](https://docs.microsoft.com/azure/marketplace/consulting-services).
 
-Tato řešení jsou navržená tak, aby se vyrozuměla konkrétním zákaznickým potřebám nebo scénářům, který začíná pochopit otázky v oboru nebo složité. Dvě nebo více nejlepších technologií je pak integrováno v rámci, kde SI vytvoříme pro zákazníky sjednocené a opakované nasazení, abyste je mohli rychle začít používat. Integrátor systému také poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení a konzultace a podporuje řešení. Výsledkem je integrované řešení, včetně technologií a služeb.
+Integrovaná řešení mají za cíl řešit konkrétní potřeby zákazníků nebo jejich scénář. Zprostředkovatelé začínají tím, že porozumí oborový problém nebo složité body. Potom integrují dvě nebo více nejlepších technologií, aby mohli pro zákazníky vytvořit sjednocené a opakované prostředí pro nasazení. Poskytovatelé můžou rychle získat a spustit zákazníky. Nabízejí jeden kontaktní bod zákazníkům, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení. Výsledkem je integrované řešení, včetně technologií a služeb.
 
-Přehled [programu integrovaných řešení](https://aka.ms/AA5qos4)najdete v tomto videu.
+Přehled programu integrovaných řešení najdete v [tomto videu](https://aka.ms/AA5qos4).
 
-## <a name="key-benefits-to-integrated-solutions-in-the-marketplace"></a>Klíčové výhody pro integrovaná řešení na webu Marketplace
+## <a name="benefits-of-integrated-solutions-in-the-marketplace"></a>Výhody integrovaných řešení na webu Marketplace
 
-* Zákazníci můžou najít zabalená řešení, která řeší ucelené obchodní výzvy prostřednictvím webu Marketplace a vychází s urychlením času na hodnotu s integrovaným předním prostředím. Zákazníci se nemuseli zapojit samostatně s více aplikacemi ISV nasazenými způsobem.
-* Nezávislý výrobce softwaru má svá IP adresa zabalená společně s dalšími řešeními a službami, které zvyšují hodnotu jejich technologie, dodávané odborníkem na SIs.
-* SIs vytvoří předem definovaná a integrovaná řešení s využitím špičkové technologie pro škálování, pozemky a rozšiřování v dalších zákaznických účtech.
-* Společnost Microsoft může využít tato předem integrovaná řešení v oboru, aby je bylo možné snadněji prodávat zákazníkům, a to s cenami a podmínkami seřazení předem. 
+* Zákazníci můžou najít zabalená řešení, která řeší problémy komplexního podnikání prostřednictvím webu Marketplace. Získávají urychlenou hodnotu, protože je technologie integrovaná předem. Zákazníci se nemuseli zapojit samostatně s více aplikacemi nasazenými způsobem.
+* IP je zabalená společně s dalšími řešeními a službami, které zvyšují hodnotu technologie, která je poskytována odbornými partnery pro odborníky na služby.
+* Partneři služeb vytvářejí předdefinovaná a integrovaná řešení s využitím špičkové technologie pro škálování, pozemky a rozšiřování v dalších zákaznických účtech.
+* Společnost Microsoft může využít tato předintegrovaná řešení zarovnaná v oboru pro snazší spolupráci se zákazníky. Ceny a výrazy jsou seřazené předem. 
 
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
-* Všichni účastnící partneři musí mít ID MPN.
-* Účast v programu by měla být připravená pro spoluprodej
-* Zúčastnění výrobci softwaru by měli být společně prodávat IP 
+* Zúčastnění partneři musí mít ID MPN.
+* Poskytovatelé zúčastněných služeb by měli být připravení do společného prodeje.
+* Zúčastnění dodavatelé softwaru by měli být připravení na prodej IP. 
 * Aspoň jeden zúčastněný partner musí mít zlatou kompetenci v jedné z těchto oblastí:
 
     * Vývoj aplikací
@@ -41,57 +41,77 @@ Přehled [programu integrovaných řešení](https://aka.ms/AA5qos4)najdete v to
     * Správa životního cyklu aplikací
     * Cloudová platforma
     * Analýza dat
-    * Datové centrum
+    * Standard
     * Datová platforma
     * DevOps
 
 * Řešení musí zahrnovat aspoň dva partnerské organizace, které dohromady přinášejí IP a služby pro kompletní řešení a prostředí pro zákazníky.
-* Partnerská IP adresa musí být postavená na Azure, Dynamics 365 a/nebo Power Platform
-* IP adresa integrovaného řešení musí být odlišená od pouhého protokolu IP ISV + Basic a služeb.
-* Cílem napříč všemi partnery je vytvořit opakující se nabídku, která může být uvedená a nakonec v transakčním režimu, prostřednictvím Azure Marketplace nebo AppSource.
+* Partnerská IP adresa musí být postavená na Azure, Dynamics 365 nebo na platformě Power Platform.
+* IP adresa integrovaného řešení musí být odlišená od pouhého protokolu IP od dodavatele softwaru a nabídek poskytovatele základních služeb.
+* Všichni partneři sdílejí cíl vytvoření opakující se nabídky, kterou je možné uvést a následně provést v rámci Azure Marketplace, Microsoft AppSource nebo obojího.
 
-## <a name="nomination-process"></a>Proces jmenování
+## <a name="submit-a-nomination"></a>Odeslat jmenování
 
-Partneři, kteří se chtějí zúčastnit programu, by měli určit další partnery, se kterými chtějí pracovat, a dokončit formulář pro identifikaci [integrovaných řešení](https://aka.ms/AA5qicu) . Tým programu integrovaných řešení pak zkontroluje nominální hodnoty a během 10 pracovních dní provede schválení a další kroky. 
+Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://aka.ms/AA5qicu). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky. 
 
-## <a name="developing-your-integrated-solution"></a>Vývoj integrovaného řešení 
+## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení 
 
-Jakmile je jmenování schváleno, postupujte podle následujících kroků, které využívají prostředky propojeného programu, a vytvořte tak integrované řešení: 
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte podle těchto kroků: 
 
-1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení (rozsah, cílové zákazníky, umístění hodnoty, ceny, licence, podmínky a ujednání, přístup k podpoře, marketingové aktivity, prodejní proces a aktivity) a integrační přístup (integrační body, Architektura řešení, ověřování, uživatelské rozhraní, monitorování, mechanismus nasazení, rozhraní API a sjednocené úložiště dat). 
+1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup. 
 
-    K dispozici jsou následující zdroje, pomocí kterých mohou absolvovat partneři prostřednictvím tohoto procesu:
+    Vaše diskuze o řešení by měla zahrnovat tyto body:
+    * Rozsah
+    * Cílové zákazníky
+    * Pozice hodnoty
+    * Ceny
+    * Licencování
+    * Podmínky a ujednání
+    * Přístup k podpoře
+    * Marketingové aktivity
+    * Prodejní proces
+    * Aktivity
 
-    1. [Diskuzní příručka pro obchodní rozhodnutí dílny](https://aka.ms/AA5qicx)
-    1. [Diskuze o technickém rozhodnutí dílny](https://aka.ms/AA5qid1)
-    1. [Rychlé zprovoznění videa – obchodní a technické semináře](https://aka.ms/AA5qos9)
+    Vaše diskuze o přístupu k integraci by měla zahrnovat tyto body: 
+    * Body integrace
+    * Architektura řešení
+    * Ověřování
+    * Uživatelské rozhraní
+    * Sledovaný
+    * Mechanismus nasazení
+    * API
+    * Sjednocené úložiště dat
 
-1. Identifikujte správce projektu pro různé partnery, který bude řídit plán projektu a časovou osu z obchodních a technických seminářů.
+    Tyto prostředky použijte pro proces vývoje:
 
-1. Dokončete technickou integraci řešení.
+    * [Diskuzní příručka pro obchodní rozhodnutí dílny](https://aka.ms/AA5qicx)
+    * [Diskuze o technickém rozhodnutí dílny](https://aka.ms/AA5qid1)
+    * [Video o rychlém startu: obchodní a technické semináře](https://aka.ms/AA5qos9)
 
-1. Dokončete ceny řešení a rozhodněte se podle jednoho cenového bodu na Azure Marketplace nebo AppSource.
+1. Identifikujte správce projektu pro různé partnery, který bude řídit plán projektu a časovou osu, kterou jste vyvinuli v obchodních a technických konferencích.
 
-1. Dokončete marketingovou dokumentaci pro seznam Azure Marketplace nebo AppSource, včetně:
+1. Vyvíjíme kompletní technickou integraci tohoto řešení.
 
-    1. Název kombinovaného řešení
-    2. Seznam popisů integrovaného řešení ([Doporučené postupy pro seznam nabídek](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices))
-    1. Zákazník 1 – pager ([Šablona](https://aka.ms/AA5s08a))
-    1. Prezentace zákazníka ([Šablona](https://aka.ms/AA5s7ql))
-    1. Logo pro kombinované řešení 
+1. Určete ceny řešení a jeden cenový bod na plochu Azure Marketplace nebo Microsoft AppSource.
 
-## <a name="publishing-your-integrated-solution"></a>Publikování integrovaného řešení 
+1. Dokončete marketingovou dokumentaci pro Azure Marketplace nebo seznam Microsoft AppSource, včetně:
 
-Jakmile je technická integrace dokončena a marketingová dokumentace je připravená, přečtěte si příručku pro vydavatele pro [konzultační služby Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/consulting-services). Pomocí tohoto prostředku určete, jestli se má publikovat v Azure Marketplace nebo AppSource v závislosti na cílové skupině, kterou chcete oslovit, připravte své artefakty publikování a dokončete proces publikování.
+    * Název kombinovaného řešení.
+    * Seznam popisů integrovaného řešení. Dodržujte [Doporučené postupy pro výpis nabídky](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+    * Rozteč na jedné stránce pro zákazníky. Použijte [šablonu s jedním stránkováním](https://aka.ms/AA5s08a).
+    * Prezentace zákazníka. Použijte [šablonu prezentace](https://aka.ms/AA5s7ql).
+    * Logo pro kombinované řešení 
 
-I když je k dispozici pět typů služeb pro nabídky konzultačních služeb, integrované řešení musí být buď důkaz konceptu, nebo plná implementace.
+## <a name="publish-your-integrated-solution"></a>Publikování integrovaného řešení 
 
-## <a name="going-to-market-with-your-integrated-solution"></a>Přesměrovat na trh s integrovaným řešením 
+Až dokončíte technickou integraci a marketingovou dokumentaci, přečtěte si příručku pro vydavatele pro [konzultační služby Azure Marketplace a Microsoft AppSource](https://docs.microsoft.com/azure/marketplace/consulting-services). Pomocí tohoto prostředku určete, zda bude řešení Publikováno v Azure Marketplace nebo Microsoft AppSource. Použijte také průvodce pro přípravu vašich artefaktů publikování a dokončení procesu publikování.
 
-Jakmile je vaše řešení živé v Azure Marketplace nebo AppSource, budete chtít zvýšit povědomí a vyžádat si zatížení prostřednictvím marketingových aktivit. Projděte si aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc), včetně aktivit, které partneři můžou řídit v rámci svých týmů, a druhý. Pak můžete využívat [výhody pro uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) poskytované partnerům, kteří si publikovali na webu Marketplace. Všechny nabídky integrovaných řešení jsou způsobilé pro výhody na úrovni zkušební verze.
+I když pro konzultační nabídky služeb je k dispozici pět typů služeb, integrované řešení musí být buď důkaz konceptu, nebo plná implementace.
+
+## <a name="go-to-market-with-your-integrated-solution"></a>Přejít na trh s integrovaným řešením 
+
+Když je vaše řešení živé v Azure Marketplace nebo AppSource, budete chtít řídit povědomí a poptávku prostřednictvím marketingových aktivit. Zkontrolujte aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc). Tento prostředek zahrnuje aktivity, které partneři můžou řídit v rámci svých týmů, a druhý. Pak získáte přístup k [výhodám uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) pro partnery, kteří publikují na webu Marketplace. Všechny nabídky integrovaného řešení jsou způsobilé pro výhody na úrovni zkušební verze.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o nákupu integrovaného řešení na webu Marketplace najdete v tématu [integrovaná řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions) .
-
----
+Informace o nákupu integrovaného řešení na webu Marketplace najdete v tématu [integrovaná řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions).

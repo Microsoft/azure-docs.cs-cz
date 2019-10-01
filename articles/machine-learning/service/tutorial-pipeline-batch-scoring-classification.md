@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Kanály strojového učení pro dávkové vyhodnocování'
+title: 'Kurz: kanály ML pro dávkové vyhodnocování'
 titleSuffix: Azure Machine Learning
 description: Sestavte kanál strojového učení pro spuštění dávkového vyhodnocování pro model klasifikace obrázků v Azure Machine Learning. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na vaše odbornosti a strojové učení – místo na infrastruktuře a automatizaci.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 978cfa7926e7a035494aae11351c15a45c0251e4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350431"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695616"
 ---
-# <a name="use-a-machine-learning-pipeline-for-batch-scoring"></a>Použití kanálu strojového učení pro dávkové vyhodnocování
+# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Sestavení & použití kanálu Azure Machine Learning pro dávkové vyhodnocování
 
 V tomto kurzu použijete kanál v Azure Machine Learning ke spuštění úlohy dávkového vyhodnocování. V příkladu se používá [předem](https://arxiv.org/abs/1512.00567) vydaný model Tensorflow sítě konvoluční neuronové pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě.
 
@@ -35,12 +35,12 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .
 
-Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to-configure-environment.md#local), můžete získat přístup k kurzu na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` , abyste získali požadované balíčky.
+Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to-configure-environment.md#local), můžete získat přístup k kurzu na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Pokud chcete získat požadované balíčky, spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests`.
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>Konfigurace pracovního prostoru a vytvoření úložiště dat
 
@@ -81,7 +81,7 @@ Když vytvoříte kanál, objekt `DataReference` načte data z úložiště dat 
 >
 > 2. Použijte *výstupní objekt* `PipelineData` v předchozím kroku jako *vstupní objekt*. Opakujte postup pro následné kroky.
 
-V tomto scénáři vytvoříte objekty `DataReference`, které odpovídají adresářům úložiště dat pro vstupní image a popisky klasifikace (hodnoty y-test). Také vytvoříte `PipelineData` objekt pro výstupní data dávkového vyhodnocování.
+V tomto scénáři vytvoříte objekty `DataReference`, které odpovídají adresářům úložiště dat pro vstupní image a popisky klasifikace (hodnoty y-test). Pro výstupní data dávkového vyhodnocování můžete také vytvořit objekt `PipelineData`.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -121,7 +121,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Dále zaregistrujte model do svého pracovního prostoru, abyste ho mohli snadno načíst v procesu kanálu. `register()` Ve funkci`model_name` static je parametr klíč, který použijete k vyhledání modelu v rámci sady SDK.
+Dále zaregistrujte model do svého pracovního prostoru, abyste ho mohli snadno načíst v procesu kanálu. Ve statické funkci `register()` je parametrem `model_name` klíč, který použijete k vyhledání modelu v rámci sady SDK.
 
 ```python
 from azureml.core.model import Model
@@ -164,11 +164,11 @@ Chcete-li provést bodování, vytvořte skript vyhodnocování dávkového vyho
 
 Skript `batch_scoring.py` používá následující parametry, které jsou předány z kroku kanálu, který vytvoříte později v tomto kurzu:
 
-- `--model_name`: Název používaného modelu.
-- `--label_dir`: Adresář, který obsahuje soubor `labels.txt`.
-- `--dataset_path`: Adresář, který obsahuje vstupní obrázky.
-- `--output_dir`: Výstupní adresář pro soubor `results-label.txt` po spuštění skriptu spustí model pro data.
-- `--batch_size`: Velikost dávky použitá při spuštění modelu.
+- `--model_name`: název používaného modelu.
+- `--label_dir`: adresář, který obsahuje soubor `labels.txt`.
+- `--dataset_path`: adresář, který obsahuje vstupní image.
+- `--output_dir`: výstupní adresář pro soubor `results-label.txt` po spuštění skriptu spustí model pro data.
+- `--batch_size`: velikost dávky použitá při spuštění modelu.
 
 Infrastruktura kanálu používá třídu `ArgumentParser` k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name`, kterému je přiřazen identifikátor vlastnosti `model_name`. Ve funkci `main()` se pro přístup k této vlastnosti používá `Model.get_model_path(args.model_name)`.
 
@@ -321,7 +321,7 @@ from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
+### <a name="create-the-pipeline-step"></a>Vytvoření kroku kanálu
 
 Krok kanálu je objekt, který zapouzdřuje všechno, co potřebujete ke spuštění kanálu, včetně:
 
@@ -388,7 +388,7 @@ df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: pouze of-type {vertical-align: uprostřed;}
+<style scoped>. datový rámec tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -402,8 +402,8 @@ df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Název souboru</th>
-      <th>Předpověď</th>
+      <th>Bitmap</th>
+      <th>Předpovědi</th>
     </tr>
   </thead>
   <tbody>
@@ -413,7 +413,7 @@ df.head(10)
       <td>Rhodesian Ridgeback</td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>1\. místo</td>
       <td>ILSVRC2012_val_00000103. JPEG</td>
       <td>tripod</td>
     </tr>

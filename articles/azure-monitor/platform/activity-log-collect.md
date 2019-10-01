@@ -1,6 +1,6 @@
 ---
-title: Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics | Dokumentace Microsoftu
-description: Shromažďovat protokol aktivit Azure v Azure monitorování protokolů a řešení pro monitorování používat k analýze a hledání v protokolu aktivit Azure napříč všemi předplatnými Azure.
+title: Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics | Microsoft Docs
+description: Shromažďovat protokol aktivit Azure v Azure Monitor protokoly a používat řešení pro monitorování k analýze a hledání protokolu aktivit Azure napříč všemi předplatnými Azure.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,68 +11,71 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/30/2019
 ms.author: bwren
-ms.openlocfilehash: 5839fd40a128097e400f13acbe4fb6ef90c656b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: affefa96d6e38a88c994938115ddf44bcf8bd36d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248126"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695055"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics ve službě Azure Monitor
-[Protokolu aktivit Azure](activity-logs-overview.md) poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Tento článek popisuje, jak shromažďovat protokolu aktivit do pracovního prostoru Log Analytics a jak používat Activity Log Analytics [řešení pro monitorování](../insights/solutions.md), který poskytuje protokol dotazů a zobrazení pro analýzu těchto dat. 
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor
+[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Tento článek popisuje, jak shromažďovat protokol aktivit do pracovního prostoru Log Analytics a jak používat [řešení Activity Log Analytics monitoring](../insights/solutions.md), které poskytuje dotazy a zobrazení protokolů pro analýzu těchto dat. 
 
-Připojení protokolu aktivit do pracovního prostoru Log Analytics poskytuje následující výhody:
+Připojení protokolu aktivit k pracovnímu prostoru Log Analytics přináší následující výhody:
 
-- Konsolidace protokolu aktivit z více předplatných Azure na jednom místě pro účely analýzy.
-- Store položky protokolu aktivit déle než 90 dní.
-- Je možné korelujte data protokolu aktivit s dalšími daty monitorování shromážděná službou Azure Monitor.
-- Použití [protokolu dotazy](../log-query/log-query-overview.md) provádět komplexní analýzy a získat podrobný přehled u položek protokolu aktivit.
+- Konsolidujte protokol aktivit z více předplatných Azure do jednoho místa pro analýzu.
+- Ukládání záznamů protokolu aktivit po dobu delší než 90 dní.
+- Korelujte data protokolu aktivit s dalšími daty monitorování shromážděnými pomocí Azure Monitor.
+- Pomocí [dotazů protokolu](../log-query/log-query-overview.md) můžete provádět komplexní analýzy a získat podrobné přehledy o položkách protokolu aktivit.
 
 ## <a name="connect-to-log-analytics-workspace"></a>Připojení k pracovnímu prostoru Log Analytics
-Protokol aktivit může být připojena k pouze jednomu pracovnímu prostoru, ale jeden pracovní prostor může být připojen k protokolu aktivit pro více předplatných ve stejném tenantovi Azure. Shromažďování více tenantů, naleznete v tématu [shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč předplatnými v různých Azure Active Directory klienty](activity-log-collect-tenants.md).
+Protokol aktivit může být připojen pouze k jednomu pracovnímu prostoru, ale jeden pracovní prostor může být připojen k protokolu aktivit pro více předplatných ve stejném tenantovi Azure. Informace o shromažďování v rámci více tenantů najdete v tématu [shromáždění protokolů aktivit Azure do Log Analytics pracovního prostoru napříč předplatnými v různých klientech Azure Active Directory](activity-log-collect-tenants.md).
 
-Pomocí následujícího postupu připojení protokolu aktivit do pracovního prostoru Log Analytics:
+> [!IMPORTANT]
+> Pokud nejsou poskytovatelé prostředků Microsoft. OperationalInsights a Microsoft. OperationsManagement u vašeho předplatného zaregistrovaní, může se zobrazit chyba s následujícím postupem. Pokud chcete zaregistrovat tyto poskytovatele, přečtěte si téma [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md) .
 
-1. Z **pracovních prostorů Log Analytics** nabídky na webu Azure Portal, vyberte pracovní prostor ke shromažďování protokolů aktivit.
-1. V **zdroje dat pracovního prostoru** část nabídky pracovním prostoru, vyberte **protokol aktivit Azure**.
+K připojení protokolu aktivit k pracovnímu prostoru Log Analytics použijte následující postup:
+
+1. V nabídce **Log Analytics pracovní prostory** v Azure Portal vyberte pracovní prostor pro shromáždění protokolu aktivit.
+1. V části **zdroje dat pracovního prostoru** v nabídce pracovního prostoru vyberte **Protokol aktivit Azure**.
 1. Klikněte na předplatné, které chcete připojit.
 
     ![Pracovní prostory](media/activity-log-export/workspaces.png)
 
-1. Klikněte na tlačítko **připojit** pro připojení protokolu aktivit v rámci předplatného k vybranému pracovnímu prostoru. Pokud předplatné je již připojen k jiným pracovním prostorem, klikněte na tlačítko **odpojit** nejprve k jej odpojte.
+1. Kliknutím na **připojit** připojte protokol aktivit v předplatném k vybranému pracovnímu prostoru. Pokud je předplatné už připojené k jinému pracovnímu prostoru, odpojte ho kliknutím na **Odpojit** .
 
-    ![Připojení pracovních prostorů](media/activity-log-export/connect-workspace.png)
+    ![Připojit pracovní prostory](media/activity-log-export/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>Analýza v pracovním prostoru Log Analytics
-Protokol aktivit, které připojíte k pracovnímu prostoru Log Analytics, položky, se zapíšou do pracovního prostoru do tabulky nazvané **AzureActivity** , který lze načíst s [dotaz protokolu](../log-query/log-query-overview.md). Struktura v této tabulce se liší v závislosti na tom [kategorie Položka protokolu](activity-logs-overview.md#categories-in-the-activity-log). Zobrazit [schéma událostí protokolu aktivit Azure](activity-log-schema.md) popis jednotlivých kategorií.
+## <a name="analyze-in-log-analytics-workspace"></a>Analyzovat v pracovním prostoru Log Analytics
+Když připojíte Protokol aktivit k pracovnímu prostoru Log Analytics, položky se zapisují do pracovního prostoru do tabulky s názvem **AzureActivity** , kterou můžete načíst pomocí [dotazu protokolu](../log-query/log-query-overview.md). Struktura této tabulky se liší v závislosti na [kategorii položky protokolu](activity-logs-overview.md#categories-in-the-activity-log). Popis každé kategorie najdete v tématu [schéma událostí protokolu aktivit Azure](activity-log-schema.md) .
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>Monitorování řešení analýzy protokolů aktivit
-Řešení pro monitorování Azure Log Analytics zahrnuje několik dotazů na protokoly a zobrazení pro analýzu záznamů protokolu aktivit ve vašem pracovním prostoru Log Analytics.
+## <a name="activity-logs-analytics-monitoring-solution"></a>Řešení monitorování analýz protokolů aktivit
+Řešení Azure Log Analytics monitoring zahrnuje několik dotazů a zobrazení protokolů pro analýzu záznamů protokolu aktivit ve vašem pracovním prostoru Log Analytics.
 
 ### <a name="install-the-solution"></a>Instalace řešení
-Použijte postup uvedený v [nainstalovat řešení pro monitorování](../insights/solutions.md#install-a-monitoring-solution) k instalaci **Activity Log Analytics** řešení. Není nutná žádná další konfigurace.
+Pro instalaci řešení **Activity Log Analytics** použijte postup v části [instalace řešení monitorování](../insights/solutions.md#install-a-monitoring-solution) . Není vyžadována žádná další konfigurace.
 
 ### <a name="use-the-solution"></a>Použití řešení
-Řešení monitorování lze zobrazit **monitorování** nabídky na webu Azure Portal. Vyberte **Další** v **Insights** části pro otevření **přehled** stránky s dlaždicemi řešení. **Protokolů aktivit Azure** dlaždici se zobrazuje počet počet **AzureActivity** záznamy v pracovním prostoru.
+K monitorování řešení se dostanete z nabídky **monitor** v Azure Portal. V části **přehledy** vyberte **Další** a otevřete stránku **Přehled** s dlaždicemi řešení. Dlaždice **protokoly aktivit Azure** zobrazuje počet záznamů **AzureActivity** ve vašem pracovním prostoru.
 
 ![Dlaždice protokolů aktivit Azure](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-Klikněte na tlačítko **protokolů aktivit Azure** otevřete dlaždici **protokolů aktivit Azure** zobrazení. Zobrazení obsahuje části vizualizace v následující tabulce. Každá část uvádí až 10 položky kritériím této části pro zadaný časový rozsah. Můžete spustit dotaz protokolu, který vrátí všechny odpovídající záznamy kliknutím **zobrazit všechny** v dolní části.
+Kliknutím na dlaždici **protokoly aktivit Azure** otevřete zobrazení **protokolů aktivit Azure** . Zobrazení obsahuje části vizualizace v následující tabulce. Každá část obsahuje až 10 položek, které odpovídají kritériím této části pro zadaný časový rozsah. Kliknutím na **Zobrazit vše** v dolní části části můžete spustit dotaz protokolu, který vrátí všechny odpovídající záznamy.
 
 ![Řídicí panel protokolů aktivit Azure](media/collect-activity-logs/activity-log-dash.png)
 
-| Části vizualizace | Popis |
+| Součást vizualizace | Popis |
 | --- | --- |
-| Položky protokolu aktivit Azure | Ukazuje záznamu součty pro rozsah, který jste vybrali pruhový graf na horní položku protokolu aktivit Azure a seznam nejvyšší volající 10 aktivity. Klikněte na pruhový graf a spustíte hledání v protokolu pro `AzureActivity`. Klikněte na položku volající ke spuštění hledání v protokolu všech položek protokolu aktivit pro danou položku. |
-| Protokoly aktivit podle stavu | Ukazuje prstencový graf na stav ve vybraném rozsahu dat a seznam prvních deseti stav záznamů protokolu aktivit Azure. Klepněte na graf spuštění protokolu dotazu pro `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Klikněte na položku Stav spustit prohledávání protokolů vrácení všech položek protokolu aktivit u záznamu daného stavu. |
-| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků pomocí protokolů aktivit a uvádí top deseti prostředků pomocí záznamu počty pro jednotlivé prostředky. Klikněte na tlačítko spustíte hledání v protokolu pro oblasti celkový `AzureActivity | summarize AggregatedValue = count() by Resource`, který se zobrazí všechny prostředky Azure k dispozici pro řešení. Klikněte na prostředek pro spuštění protokolu dotazu vrátí všechny záznamy aktivit pro daný prostředek. |
-| Protokoly aktivit přes poskytovatele prostředků | Zobrazí celkový počet poskytovatelů prostředků, které vytvářejí protokoly aktivit a uvádí deset největších. Kliknutím na oblasti celkový počet spuštění protokolu dotazu pro `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, který zobrazuje všechny poskytovatele prostředků Azure. Klikněte na tlačítko zprostředkovatele prostředků ke spuštění protokolu dotazu vrátí všechny záznamy aktivit pro zprostředkovatele. |
+| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamu položky protokolu aktivit Azure pro vybraný rozsah dat a zobrazuje seznam prvních 10 volajících aktivit. Kliknutím na pruhový graf spustíte prohledávání protokolu `AzureActivity`. Kliknutím na položku volajícího spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro tuto položku. |
+| Protokoly aktivit podle stavu | Zobrazuje prstencový graf stavu protokolu aktivit Azure pro vybraný rozsah dat a seznam prvních deseti záznamů o stavu. Kliknutím na graf spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Kliknutím na položku stavu spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro daný záznam o stavu. |
+| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků s protokoly aktivit a seznam prvních deseti prostředků s počty záznamů pro jednotlivé prostředky. Kliknutím na oblast celkem spustíte prohledávání protokolu `AzureActivity | summarize AggregatedValue = count() by Resource`, ve kterém se zobrazí všechny prostředky Azure, které jsou k dispozici pro řešení. Kliknutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro daný prostředek. |
+| Protokoly aktivit podle poskytovatele prostředků | Zobrazuje celkový počet poskytovatelů prostředků, které vytváří protokoly aktivit, a seznam prvních deseti. Kliknutím na oblast celkem spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, který zobrazuje všechny poskytovatele prostředků Azure. Kliknutím na poskytovatele prostředků spusťte dotaz protokolu, který vrátí všechny záznamy aktivit pro daného zprostředkovatele. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [protokolu aktivit](activity-logs-overview.md).
-- Další informace o [datová Platforma Azure Monitor](data-platform.md).
-- Použití [protokolu dotazy](../log-query/log-query-overview.md) Chcete-li zobrazit podrobné informace z vašeho protokolu aktivit.
+- Přečtěte si další informace o [protokolu aktivit](activity-logs-overview.md).
+- Přečtěte si další informace o [Azure monitor datovou platformu](data-platform.md).
+- Pomocí [dotazů protokolu](../log-query/log-query-overview.md) můžete zobrazit podrobné informace z protokolu aktivit.

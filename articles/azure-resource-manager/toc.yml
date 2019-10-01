@@ -14,7 +14,7 @@
     - name: Vytváření šablon – VS Code
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: Vytváření šablon – Visual Studio
-      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
     - name: Vytváření šablon – IntelliJ IDEA
       href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Kurzy

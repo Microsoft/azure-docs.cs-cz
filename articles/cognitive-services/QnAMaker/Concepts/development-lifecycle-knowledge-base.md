@@ -1,41 +1,41 @@
 ---
-title: Životní cyklus znalostní báze – QnA Maker
+title: Životní cyklus znalostní báze Knowledge Base – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Nástroj QnA Maker se učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů.
+description: QnA Maker se nejlépe učí v iterativním koloběhu změn modelu, příkladů utterance, publikování a shromažďování dat z dotazů na koncové body.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955174"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695117"
 ---
-# <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze Knowledge base v nástroje QnA Maker
-Nástroj QnA Maker se učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů. 
+# <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze v QnA Maker
+QnA Maker se nejlépe učí v iterativním koloběhu změn modelu, příkladů utterance, publikování a shromažďování dat z dotazů na koncové body. 
 
 ![Cyklus vytváření](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
-## <a name="creating-a-qna-maker-knowledge-base"></a>Vytvoření znalostní báze QnA Maker
-Koncový bod znalostní báze knowledge base (KB) nástroje QnA Maker poskytuje nejlepší shody odpověď na dotaz uživatele na základě obsahu KB. Vytvoření znalostní báze se o jednorázovou akci pro nastavení úložiště obsahu otázky, odpovědi a přidružená metadata. Procházení existující obsah, například stránky – nejčastější dotazy, produktových příruček nebo strukturovaných Q A páry je možné vytvořit znalostní báze. Zjistěte, jak [vytvoření znalostní báze](../How-To/create-knowledge-base.md).
+## <a name="creating-a-qna-maker-knowledge-base"></a>Vytváření QnA Maker znalostní báze
+QnA Maker koncový bod znalostní báze (KB) poskytuje nejvhodnější odpověď na dotaz na uživatele na základě obsahu KB. Vytvoření znalostní báze je jednorázová akce pro nastavení úložiště obsahu otázek, odpovědí a přidružených metadat. Znalostní bázi se dá vytvořit procházením již existujícího obsahu, jako jsou nejčastější dotazy, příručky k produktům nebo strukturované páry Q-A. Přečtěte si, jak [vytvořit znalostní bázi](../How-To/create-knowledge-base.md).
 
-## <a name="testing-and-updating-the-knowledge-base"></a>Testování a aktualizují znalostní báze
+## <a name="testing-and-updating-the-knowledge-base"></a>Testování a aktualizace znalostní báze
 
-Znalostní báze připravený k testování, jakmile se vyplní s obsahem, buď pomocí redakčních úprav nebo Automatická extrakce. Interaktivní testování se dá provést na QnA Makerovém portálu prostřednictvím **testovacího** panelu tak, že zadáte běžné uživatelské dotazy a ověříte, že se v odpovědích vrátila správná odpověď a že máte dostatečné skóre spolehlivosti. 
+Znalostní báze je připravená na testování, jakmile se naplní obsahem, a to buď redakčním, nebo prostřednictvím automatické extrakce. Interaktivní testování se dá provést na QnA Makerovém portálu prostřednictvím **testovacího** panelu tak, že zadáte běžné uživatelské dotazy a ověříte, že se v odpovědích vrátila správná odpověď a že máte dostatečné skóre spolehlivosti. 
 
 * **Řešení výsledků s nízkou mírou spolehlivosti**: Přidejte alternativní otázky. 
 * **Když dotaz nesprávně vrátí [výchozí odpověď](confidence-score.md#change-default-answer)** : přidejte nové odpovědi na správnou otázku. 
 
-Tato těsné smyčce test aktualizace pokračuje, dokud budete spokojeni s výsledky. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
+Tato těsná smyčka test-Update pokračuje, dokud nebudete spokojeni s výsledky. Naučte se [testovat znalostní bázi](../How-To/test-knowledge-base.md).
 
-Pro velké aktualizací KB použijte automatizované testování pomocí [rozhraní generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) a `isTest` `test` vlastnost tělo, která se dotazuje znalostní báze místo publikované znalostní báze. 
+Pro velké aktualizací KB použijte automatizované testování pomocí [rozhraní generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) a vlastnost těla `isTest`, která se dotazuje znalostní báze `test` místo publikované znalostní báze. 
 
 ```json
 {
@@ -47,27 +47,35 @@ Pro velké aktualizací KB použijte automatizované testování pomocí [rozhra
 ```
 
 ## <a name="publish-the-knowledge-base"></a>Publikování znalostní báze
-Po dokončení testování ve znalostní bázi, můžete ji publikovat. Publikovat na nejnovější verzi otestované znalostní báze k vyhrazené Azure Search indexovat představující nabízených oznámení **publikované** znalostní báze knowledge base. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+Po dokončení testování znalostní báze ho můžete publikovat. Publikování nabídne nejnovější verzi testované znalostní báze do vyhrazeného Azure Search indexu představujícího **publikovanou** znalostní bázi. Vytvoří také koncový bod, který lze volat ve vaší aplikaci nebo robotovi chatu.
 
-Tímto způsobem veškerých změnách prováděných na testovací verzi znalostní báze nemají vliv publikovanou verzi, které můžou být naživo v produkčním prostředí aplikace.
+Všechny změny v testovací verzi znalostní báze tak nebudou mít vliv na publikovanou verzi, která může být v produkční aplikaci živá.
 
-Každá z těchto znalostních bází může služba je určená pro testování samostatně. Pomocí rozhraní API můžete cílit na testovací verzi znalostní báze s `isTest` vlastností body ve volání generateAnswer.
+Každý z těchto znalostní báze se dá cílit na samostatné testování. Pomocí rozhraní API můžete cílit na testovací verzi znalostní báze s vlastností těla `isTest` ve volání generateAnswer.
 
-Zjistěte, jak [publikovat znalostní báze](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+Naučte se [publikovat znalostní bázi](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="monitor-usage"></a>Monitorování využití
-Aby bylo možné protokol protokoly chatu vaší služby, je třeba, povolte Application Insights při vám [vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
+Aby bylo možné protokolovat protokoly chatu vaší služby, je nutné povolit Application Insights při [vytváření služby QnA maker](../How-To/set-up-qnamaker-service-azure.md).
 
-Můžete získat různé analýzy využití služeb. Další informace o tom, jak pomocí služby application insights získáte [analytics pro vaši službu QnA Maker](../How-To/get-analytics-knowledge-base.md).
+Můžete získat různé analýzy využití služeb. Přečtěte si další informace o tom, jak pomocí Application Insights získat [analýzy pro službu QnA maker](../How-To/get-analytics-knowledge-base.md).
 
-Podle další analýzy, provést příslušné [aktualizace do znalostní báze](../How-To/edit-knowledge-base.md).
+Na základě toho, co se seznámíte s analýzou, proveďte příslušné [aktualizace znalostní báze](../How-To/edit-knowledge-base.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="version-control-of-a-knowledge-base"></a>Správa verzí ve znalostní bázi
+
+Správa verzí není od QnA Maker k dispozici. Musíte vyexportovat znalostní bázi ze stránky **Nastavení** a použít vlastní metodologii a nástroje.
+
+Export znalostní báze do formátu TSV nebo XLS se dokončí na stránce **Nastavení** . 
+
+Pokud se potřebujete vrátit ke konkrétní verzi, budete muset tento soubor naimportovat z místního systému. Na stránce **Nastavení** IMPORTUJTE soubor TSV nebo XLS. Tato akce nahradí otázky a odpovědi aktuálně ve znalostní bázi obsahem importovaného souboru.   
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Skóre spolehlivosti](./confidence-score.md)
+> [Hodnocení spolehlivosti](./confidence-score.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
 [Znalostní báze](./knowledge-base.md)
-[přehled nástroje QnA Maker](../Overview/overview.md)
+[QnA maker přehled](../Overview/overview.md)

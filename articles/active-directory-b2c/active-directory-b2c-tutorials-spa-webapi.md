@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f940893a5328db65549b40269578399655f8539e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679273"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694591"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Konfigurace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
 * Visual Studio 2019 nebo novější nebo Visual Studio Code
@@ -42,24 +42,19 @@ V tomto kurzu se naučíte:
 
 ## <a name="configure-scopes"></a>Konfigurace oborů
 
-Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. K implementaci řízení přístupu na základě oboru používá webové rozhraní API obory. Někteří uživatelé například můžou mít přístup pro čtení i zápis, zatímco jiní uživatelé mohou mít oprávnění jen pro čtení. V tomto kurzu definujete pro webové rozhraní API oprávnění ke čtení i zápisu.
+Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Někteří uživatelé například můžou mít oprávnění ke čtení i zápisu, zatímco jiní uživatelé můžou mít oprávnění jen pro čtení. V tomto kurzu definujete pro webové rozhraní API oprávnění ke čtení i zápisu.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 Poznamenejte si **úplnou hodnotu oboru** `demo.read` pro použití v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://yourtenant.onmicrosoft.com/api/demo.read`.
 
-## <a name="grant-permissions"></a>Udělit oprávnění
+## <a name="grant-permissions"></a>Udělení oprávnění
 
 Chcete-li volat chráněné webové rozhraní API z jiné aplikace, je třeba udělit oprávnění aplikace webovému rozhraní API.
 
 V kurzu požadavků jste vytvořili webovou aplikaci s názvem *WebApp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *webapi1*.
 
-1. V Azure Portal přejděte do svého tenanta B2C
-1. Vyberte **aplikace**a pak vyberte *WebApp1*.
-1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
-1. V rozevíracím seznamu **Vyberte rozhraní API** vyberte možnost *webapi1*.
-1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
-1. Vyberte **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Webová aplikace s jednou stránkou je zaregistrovaná pro volání chráněného webového rozhraní API. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace získá udělení autorizace z Azure AD B2C pro přístup k chráněnému webovému rozhraní API.
 
@@ -89,11 +84,11 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
     },
     ```
 
-#### <a name="enable-cors"></a>Povolit CORS
+#### <a name="enable-cors"></a>Povolení CORS
 
 Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní API, je potřeba povolit [CORS](https://docs.microsoft.com/aspnet/core/security/cors) ve webovém rozhraní API.
 
-1. Do *Startup.cs*přidejte CORS do metody `ConfigureServices()`.
+1. V souboru *Startup.cs* přidejte CORS do metody `ConfigureServices()`.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -119,7 +114,7 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
     ```
 
 1. (Pouze Visual Studio) V části **vlastnosti** v Průzkumník řešení otevřete soubor *launchSettings. JSON* a vyhledejte blok `iisExpress`.
-1. (Pouze Visual Studio) Aktualizujte hodnotu `applicationURL` číslem portu, který jste zadali při registraci aplikace *webapi1* v předchozím kroku. Příklad:
+1. (Pouze Visual Studio) Aktualizujte hodnotu `applicationURL` číslem portu, který jste zadali při registraci aplikace *webapi1* v předchozím kroku. Například:
 
     ```json
     "iisExpress": {
@@ -163,7 +158,7 @@ V aplikaci Visual Studio stiskněte klávesu **F5** pro sestavení a ladění ř
 
 Pokud upřednostňujete použití rozhraní příkazového řádku `dotnet` místo sady Visual Studio:
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího soubor *@no__t -1. csproj* . Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího soubor *@no__t -1. csproj* . Například:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
@@ -179,9 +174,9 @@ Pokud upřednostňujete použití rozhraní příkazového řádku `dotnet` mís
     Application started. Press Ctrl+C to shut down.
     ```
 
-### <a name="run-the-single-page-app"></a>Spustit jednu stránku aplikace
+### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node. js. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node. js. Například:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 
@@ -209,7 +204,7 @@ Pokud upřednostňujete použití rozhraní příkazového řádku `dotnet` mís
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání aplikace webového rozhraní API

@@ -1,6 +1,6 @@
 ---
-title: Řešení alert managementu ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Řešení pro správu upozornění v Log Analytics pomáhá analyzovat všechny výstrahy ve vašem prostředí.  Kromě konsolidace výstrahy generované v Log Analytics importuje výstrahy z připojených skupin pro správu System Center Operations Manager do Log Analytics.
+title: Řešení Alert Management v Azure Log Analytics | Microsoft Docs
+description: Řešení Alert Management v Log Analytics pomáhá analyzovat všechny výstrahy ve vašem prostředí.  Kromě slučování výstrah vygenerovaných v rámci Log Analytics importuje aplikace do Log Analytics výstrahy z připojených skupin pro správu System Center Operations Manager.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741269"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702966"
 ---
-# <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení Alert Management v Azure Log Analytics
 
-![Ikona upozornění správy](media/alert-management-solution/icon.png)
+![Ikona Alert Management](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve](https://aka.ms/azure-alerts-overview)velkém měřítku, včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je SCOM, Zabbix nebo Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve velkém měřítku](https://aka.ms/azure-alerts-overview), včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je System Center Operations Manager, Zabbix nebo Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
-Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../../azure-monitor/platform/alerts-overview.md) nebo [naimportované z Nagios a Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
+Řešení Alert Management vám pomůže analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy můžou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořených Log Analytics](../../azure-monitor/platform/alerts-overview.md) nebo [importovaných z Nagios nebo Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy ze všech [připojených skupin pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
-## <a name="prerequisites"></a>Požadavky
-Toto řešení funguje se všechny záznamy v úložišti Log Analytics s typem **výstrah**, takže je nutné provést jakékoli konfigurace je nutná pro shromažďování těchto záznamů.
+## <a name="prerequisites"></a>Předpoklady
+Řešení funguje se všemi záznamy v úložišti Log Analytics s typem **výstrahy**, takže musíte provést jakoukoli konfiguraci, která je nutná ke shromáždění těchto záznamů.
 
-- Pro upozornění Log Analytics [vytvořit pravidla výstrah](../../azure-monitor/platform/alerts-overview.md) vytvořit záznamy upozornění přímo v úložišti.
-- Výstrahy Nagios a Zabbix [konfiguraci těchto serverů](../../azure-monitor/learn/quick-collect-linux-computer.md) k odesílání upozornění Log Analytics.
-- Pro System Center Operations Manageru výstrahy [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](../../azure-monitor/platform/om-agents.md).  Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.  
+- Pro výstrahy Log Analytics [vytvořte pravidla upozornění](../../azure-monitor/platform/alerts-overview.md) pro vytváření záznamů výstrah přímo v úložišti.
+- U upozornění Nagios a Zabbix [nakonfigurujte tyto servery](../../azure-monitor/learn/quick-collect-linux-computer.md) tak, aby odesílaly výstrahy Log Analytics.
+- Pro výstrahy System Center Operations Manager [Připojte skupinu pro správu Operations Manager k vašemu pracovnímu prostoru Log Analytics](../../azure-monitor/platform/om-agents.md).  Všechny výstrahy vytvořené v System Center Operations Manager jsou importovány do Log Analytics.  
 
 ## <a name="configuration"></a>Konfigurace
-Přidejte řešení pro správu výstrah do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../../azure-monitor/insights/solutions.md). Není nutná žádná další konfigurace.
+Přidejte Alert Management řešení do svého pracovního prostoru Log Analytics pomocí postupu popsaného v tématu [Přidání řešení](../../azure-monitor/insights/solutions.md). Není nutná žádná další konfigurace.
 
 ## <a name="management-packs"></a>Sady Management Pack
-Pokud vaší skupině pro správu System Center Operations Manageru je připojený k pracovnímu prostoru Log Analytics, jsou při přidání tohoto řešení následující sady management Pack nainstalované v nástroji System Center Operations Manager.  Neexistuje žádná konfigurace ani Údržba požadované sady management Pack.
+Pokud je vaše skupina pro správu System Center Operations Manager připojená k pracovnímu prostoru Log Analytics, po přidání tohoto řešení se do System Center Operations Manager nainstalují následující sady Management Pack.  Není nutná žádná konfigurace nebo údržba požadovaných sad Management Pack.
 
-* Microsoft System Center Advisor Správa výstrah (Microsoft.IntelligencePacks.AlertManagement)
+* Microsoft System Center Advisor Alert Management (Microsoft. IntelligencePacks. AlertManagement)
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
@@ -54,76 +54,76 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Popis |
 |:--- |:--- |:--- |
-| [Agenti systému Windows](agent-windows.md) | Ne |Přímí agenti Windows nejsou generovány výstrahy.  Upozornění log Analytics je možné vytvořit z události a data o výkonu shromáždí z Windows agentů. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne |Přímí agenti systému Linux negenerují výstrahy.  Upozornění log Analytics můžete vytvořit z události a údaje o výkonu shromážděná z agentů Linuxu.  Výstrahy Nagios a Zabbix se shromažďují z těchto serverů, které vyžadují agenta pro Linux. |
-| [Skupina pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Ano |Výstrahy, které jsou vytvořeny na agenty nástroje Operations Manager se doručí do skupiny pro správu a pak se předávají do Log Analytics.<br><br>Přímé připojení z agentů nástroje Operations Manager ke službě Log Analytics se nevyžaduje. Upozornění data se přesměrovávají ze skupiny pro správu do úložiště Log Analytics. |
+| [Agenti systému Windows](agent-windows.md) | Ne |Přímo agenti Windows negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Windows. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne |Přímo agenti Linux negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Linux.  Výstrahy Nagios a Zabbix se shromažďují z těch serverů, které vyžadují agenta pro Linux. |
+| [System Center Operations Manager skupina pro správu](../../azure-monitor/platform/om-agents.md) |Ano |Výstrahy, které jsou generovány v agentech Operations Manager, jsou doručeny do skupiny pro správu a poté předány do Log Analytics.<br><br>Přímé připojení od agentů Operations Manager k Log Analytics se nevyžaduje. Data výstrah se předávají ze skupiny pro správu do úložiště Log Analytics. |
 
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
-- Záznamy upozornění jsou k dispozici řešení, jako jsou uloženy v úložišti.
-- Oznámení se odešlou ze skupiny pro správu Operations Manageru ke službě Log Analytics každé 3 minuty.  
+- Záznamy výstrah jsou k dispozici pro řešení, jakmile jsou uloženy v úložišti.
+- Data výstrah se odesílají ze skupiny pro správu Operations Manager k Log Analytics každé tři minuty.  
 
 ## <a name="using-the-solution"></a>Použití řešení
-Když přidáte řešení pro správu výstrah do pracovního prostoru Log Analytics **Správa výstrah** se přidá dlaždice na řídicí panel.  Na této dlaždici se zobrazuje počet a grafická reprezentace počet aktuálně aktivních výstrah, které byly generovány během posledních 24 hodin.  Nelze změnit tomto časovém rozsahu.
+Když přidáte řešení Alert Management do pracovního prostoru Log Analytics, do řídicího panelu se přidá dlaždice **Alert Management** .  Tato dlaždice zobrazuje počet a grafické znázornění počtu aktuálně aktivních výstrah, které byly vygenerovány během posledních 24 hodin.  Tento časový rozsah nemůžete změnit.
 
-![Dlaždice výstrah správy](media/alert-management-solution/tile.png)
+![Dlaždice Alert Management](media/alert-management-solution/tile.png)
 
-Klikněte na **Správa výstrah** otevřete dlaždici **Správa výstrah** řídicího panelu.  Řídicí panel obsahuje sloupce v následující tabulce.  Každý sloupec uvádí hlavní 10 upozornění podle počtu odpovídajících kritériím tohoto sloupce pro zadaný obor a časový rozsah.  Můžete spustit prohledávání protokolu, který poskytuje úplný seznam kliknutím **zobrazit všechny** v dolní části sloupce nebo kliknutím na záhlaví sloupce.
+Kliknutím na dlaždici **Alert Management** otevřete řídicí panel **Alert Management** .  Řídicí panel obsahuje sloupce v následující tabulce.  V každém sloupci je uveden seznam prvních 10 výstrah podle počtu, který odpovídá kritériím daného sloupce pro zadaný obor a časový rozsah.  Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na **Zobrazit vše** v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Sloupec | Popis |
+| Column | Popis |
 |:--- |:--- |
-| Důležitá upozornění |Všechny výstrahy se závažností kritický seskupené podle názvu upozornění.  Klikněte na název výstrahy. ke spuštění hledání v protokolu všechny záznamy pro tuto výstrahu. |
-| Upozorňující výstrahy |Všechny výstrahy se závažností upozornění seskupené podle názvu upozornění.  Klikněte na název výstrahy. ke spuštění hledání v protokolu všechny záznamy pro tuto výstrahu. |
-| Aktivní výstrahy SCOM |Všechny výstrahy shromážděné z nástroje Operations Manager pomocí některému ze stavů, jiné než *uzavřeno* seskupených podle zdroje, které upozornění vygenerovalo. |
-| Všechny aktivní výstrahy |Všechny výstrahy s všechny závažnosti seskupené podle názvu upozornění. Zahrnuje výstrahy nástroje Operations Manager s některému ze stavů jenom jiné než *uzavřeno*. |
+| Důležitá upozornění |Všechny výstrahy se závažností kritické seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
+| Varovné výstrahy |Všechny výstrahy se závažností upozornění seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
+| Výstrahy Active System Center Operations Manager |Všechny výstrahy shromážděné z Operations Manager s jakýmkoli jiným stavem než *uzavřeným* seskupeným podle zdroje, který výstrahu vygeneroval. |
+| Všechny aktivní výstrahy |Všechny výstrahy s libovolnou závažností seskupené podle názvu výstrahy. Zahrnuje jenom Operations Manager výstrahy se stavem jiný než *Uzavřeno*. |
 
-Pokud se posunete doprava, řídicí panel obsahuje několik běžných dotazů, které můžete kliknout na provádět [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) pro data výstrah.
+Pokud se posunete napravo, řídicí panel obsahuje několik běžných dotazů, na které můžete kliknout a provést [prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) pro data výstrah.
 
-![Řídicí panel pro správu výstrah](media/alert-management-solution/dashboard.png)
+![Řídicí panel Alert Management](media/alert-management-solution/dashboard.png)
 
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Správa výstrah řešení analyzuje libovolný záznam s typem **výstrah**.  Výstrahy vytvořené službou Log Analytics nebo odebrané Nagios a Zabbix přímo neshromáždí řešení.
+Řešení Alert Management analyzuje libovolný záznam s typem **výstrahy**.  Výstrahy vytvořené Log Analytics nebo shromážděné z Nagios nebo Zabbix nejsou tímto řešením přímo shromažďovány.
 
-Řešení importovat výstrahy z nástroje System Center Operations Manager a vytvoří odpovídající záznam pro každý typ **výstrah** a jako SourceSystem **OpsManager**.  Tyto záznamy mají vlastnosti v následující tabulce:  
+Řešení importuje výstrahy z System Center Operations Manager a vytvoří odpovídající záznam pro každý s typem **výstrahy** a SourceSystem **OpsManager**.  Tyto záznamy mají vlastnosti v následující tabulce:  
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | `Type` |*Upozornění* |
 | `SourceSystem` |*OpsManager* |
-| `AlertContext` |Podrobnosti o datová položka, která způsobila výstrahu, kterou chcete vygenerovat ve formátu XML. |
-| `AlertDescription` |Podrobný popis výstrahy. |
-| `AlertId` |Identifikátor GUID výstrahy. |
-| `AlertName` |Název výstrahy. |
-| `AlertPriority` |Úroveň priority výstrahy. |
+| `AlertContext` |Podrobnosti položky dat, která způsobila generování výstrahy ve formátu XML. |
+| `AlertDescription` |Podrobný popis výstrahy |
+| `AlertId` |Identifikátor GUID výstrahy |
+| `AlertName` |Název výstrahy |
+| `AlertPriority` |Úroveň priority výstrahy |
 | `AlertSeverity` |Úroveň závažnosti výstrahy. |
-| `AlertState` |Nejnovější stav řešení výstrahy. |
-| `LastModifiedBy` |Jméno uživatele, kteří poslední změny výstrahy. |
-| `ManagementGroupName` |Název skupiny pro správu ve kterém byla výstraha vygenerována. |
-| `RepeatCount` |Počet pokusů, které je stejná výstraha generovaná pro dané monitorují objekt od přeloženy. |
-| `ResolvedBy` |Jméno uživatele, kteří vyřešené výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
-| `SourceDisplayName` |Zobrazovaný název objektu monitorování, které upozornění vygenerovalo. |
-| `SourceFullName` |Celý název objektu monitorování, které upozornění vygenerovalo. |
-| `TicketId` |ID lístku pro upozornění, pokud prostředí System Center Operations Manageru je integrovaná s procesem pro přidělování lístků pro výstrahy.  Prázdný žádné lístku ID je přiřazena. |
-| `TimeGenerated` |Datum a čas, který byla výstraha vytvořena. |
+| `AlertState` |Poslední stav řešení výstrahy |
+| `LastModifiedBy` |Jméno uživatele, který výstrahu naposledy změnil |
+| `ManagementGroupName` |Název skupiny pro správu, ve které byla výstraha vygenerována. |
+| `RepeatCount` |Počet vygenerovaných stejných výstrah pro stejný monitorovaný objekt, protože byl vyřešen. |
+| `ResolvedBy` |Jméno uživatele, který výstrahu vyřešil. Prázdné, pokud výstraha ještě není vyřešena. |
+| `SourceDisplayName` |Zobrazovaný název objektu monitorování, který výstrahu vygeneroval. |
+| `SourceFullName` |Úplný název objektu monitorování, který výstrahu vygeneroval. |
+| `TicketId` |ID lístku pro výstrahu, pokud je prostředí System Center Operations Manager integrováno do procesu pro přiřazování lístků pro výstrahy.  Není přiřazeno prázdné ID lístku. |
+| `TimeGenerated` |Datum a čas, kdy byla výstraha vytvořena. |
 | `TimeLastModified` |Datum a čas poslední změny výstrahy. |
-| `TimeRaised` |Datum a čas, který byla výstraha vygenerována. |
-| `TimeResolved` |Datum a čas vyřešení výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
+| `TimeRaised` |Datum a čas, kdy byla výstraha vygenerována. |
+| `TimeResolved` |Datum a čas, kdy byla výstraha vyřešena Prázdné, pokud výstraha ještě není vyřešena. |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
-V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy upozornění shromážděné tímto řešením: 
+V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy výstrah shromážděné tímto řešením: 
 
 | Dotaz | Popis |
 |:---|:---|
-| Upozornění &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) |Kritické výstrahy vyvolané během posledních 24 hodin |
-| Upozornění &#124; kde AlertSeverity == "varování" a TimeRaised > ago(24h) |Upozorňující výstrahy vyvolané během posledních 24 hodin |
-| Upozornění &#124; kde SourceSystem == "OpsManager" a AlertState! = "Uzavřeno" a TimeRaised > ago(24h) &#124; shrnout počet = count() by SourceDisplayName |Zdroje s aktivními výstrahami vyvolanými během posledních 24 hodin |
-| Upozornění &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) a AlertState! = "Uzavřeno" |Kritické výstrahy vyvolané během posledních 24 hodin, které jsou stále aktivní |
-| Upozornění &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(24h) a AlertState == "Uzavřený" |Výstrahy vyvolané během posledních 24 hodin, které už jsou uzavřené |
-| Upozornění &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; shrnout počet = count() by AlertSeverity |Výstrahy vyvolané za poslední 1 den seskupené podle závažnosti |
-| Upozornění &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; seřadit podle RepeatCount desc |Výstrahy vyvolané za poslední 1 den seřazené podle počtu opakování |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" and AlertSeverity = = "Error" a TimeRaised > před (24 hodin) |Kritické výstrahy vyvolané během posledních 24 hodin |
+| Výstraha &#124; , kde AlertSeverity = = "Warning" a TimeRaised > před (24 hodin) |Výstrahy upozornění vyvolané během posledních 24 hodin |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" and stav alertstate! = "Closed" and TimeRaised > před ( &#124; 24 hodin): Count = Count () by zdrojovýnázevzobrazení |Zdroje s aktivními výstrahami vyvolanými během posledních 24 hodin |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" and AlertSeverity = = "Error" a TimeRaised > před (24 hodin) a stav alertstate! = "uzavřeno" |Kritické výstrahy vyvolané během posledních 24 hodin, které jsou pořád aktivní |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" a TimeRaised > před (24 hodin) a stav alertstate = = "uzavřeno" |Výstrahy vyvolané během posledních 24 hodin, které jsou nyní uzavřeny |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" and TimeRaised > před ( &#124; 1d) hodnota sumarizace = Count () od AlertSeverity |Výstrahy vyvolané za poslední 1 den seskupené podle závažnosti |
+| Výstraha &#124; , kde SourceSystem = = "OpsManager" a TimeRaised > před ( &#124; 1d) seřadit podle RepeatCount DESC |Výstrahy vyvolané za poslední 1 den seřazené podle hodnoty počtu opakování |
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../../azure-monitor/platform/alerts-overview.md).

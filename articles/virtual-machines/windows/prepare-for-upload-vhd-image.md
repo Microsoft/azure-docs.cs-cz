@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200289"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695382"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
 
@@ -52,11 +52,11 @@ Pokud potřebujete převést virtuální disk na požadovaný formát pro Azure,
 Po převedení disku vytvořte virtuální počítač, který používá disk. Začněte tím, že se přihlásíte k virtuálnímu počítači a dokončíte přípravu k odeslání.
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Použití Správce technologie Hyper-V k převedení disku 
-1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **Akce** > **Upravit disk**.
+1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **akce** > **Upravit disk**.
 2. Na stránce **najít virtuální pevný disk** vyberte svůj virtuální disk.
 3. Na stránce **Zvolte akci** vyberte **převést** > **Další**.
-4. Pokud potřebujete převod z VHDX, vyberte VHD**Next**( **virtuální pevný disk** > ).
-5. Pokud potřebujete převod z dynamicky se zvětšující disk, vyberte v poli **Pevná velikost** > možnost**Další**.
+4. Pokud potřebujete převod z VHDX, vyberte **VHD** >  Next (**Další**).
+5. Pokud potřebujete převod z dynamicky se zvětšující disk, vyberte možnost **Pevná velikost** > **Další**.
 6. Vyhledejte a vyberte cestu, do které chcete uložit nový soubor VHD.
 7. Vyberte **Finish** (Dokončit).
 
@@ -72,7 +72,7 @@ Následující příklad příkazu převede disk z VHDX na VHD. Příkaz také p
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-V tomto příkazu nahraďte hodnotu pro `-Path` cestu k virtuálnímu pevnému disku, který chcete převést. Nahraďte hodnotu pro `-DestinationPath` novou cestou a názvem převedeného disku.
+V tomto příkazu nahraďte hodnotu pro `-Path` cestou k virtuálnímu pevnému disku, který chcete převést. Nahraďte hodnotu pro `-DestinationPath` novou cestou a názvem převedeného disku.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Převést z formátu disku VMDK VMware
 Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK](https://en.wikipedia.org/wiki/VMDK), převeďte ji pomocí [převaděče Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) na formát VHD. Další informace najdete v tématu [Postup převedení VMDK VMDK na VHD na virtuální pevný disk Hyper-V](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
@@ -83,8 +83,8 @@ Na virtuálním počítači, který plánujete odeslat do Azure, spusťte násle
 
 1. Odeberte všechny statické trvalé trasy ve směrovací tabulce:
    
-   * Chcete-li zobrazit směrovací tabulku, `route print` spusťte příkaz v příkazovém řádku.
-   * Podívejte se `Persistence Routes` na oddíly. Pokud je k dispozici trvalá trasa, `route delete` odeberte ji pomocí příkazu.
+   * Chcete-li zobrazit směrovací tabulku, spusťte na příkazovém řádku příkaz `route print`.
+   * Podívejte se na část `Persistence Routes`. Pokud je k dispozici trvalá trasa, odeberte ji pomocí příkazu `route delete`.
 2. Odeberte proxy server WinHTTP:
    
     ```PowerShell
@@ -100,7 +100,7 @@ Na virtuálním počítači, který plánujete odeslat do Azure, spusťte násle
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. Nastavte zásadu pro diskovou síť [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx)San na:
+3. Nastavte zásadu pro diskovou síť SAN na [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -112,7 +112,7 @@ Na virtuálním počítači, který plánujete odeslat do Azure, spusťte násle
     exit   
     ```
 
-4. Nastavte koordinovaný světový čas (UTC) pro Windows. Nastavte také typ spouštění služby Windows Time Service (`w32time`) na: `Automatic`
+4. Nastavte koordinovaný světový čas (UTC) pro Windows. Nastavte také typ spouštění služby Systémový čas (`w32time`) na `Automatic`:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
@@ -124,7 +124,7 @@ Na virtuálním počítači, který plánujete odeslat do Azure, spusťte násle
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. Zajistěte, aby `TEMP` byly `TMP` proměnné prostředí a nastaveny na výchozí hodnoty:
+6. Ujistěte se, že proměnné prostředí `TEMP` a `TMP` jsou nastaveny na výchozí hodnoty:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
@@ -153,7 +153,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná následující nastavení:
 
 >[!NOTE] 
->Při spuštění `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name <object name> -value <value>`aplikace se může zobrazit chybová zpráva. Tuto zprávu můžete bez obav ignorovat. Znamená to, že doména nenabízí tuto konfiguraci prostřednictvím objektu Zásady skupiny.
+>Při spuštění `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name <object name> -value <value>` se může zobrazit chybová zpráva. Tuto zprávu můžete bez obav ignorovat. Znamená to, že doména nenabízí tuto konfiguraci prostřednictvím objektu Zásady skupiny.
 
 1. Protokol RDP (Remote Desktop Protocol) (RDP) je povolený:
    
@@ -213,7 +213,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 9. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení nebudou obnovená. 
     
-    | Cíl                                     | Zásada                                                                                                                                                       | Value                                                                                    |
+    | Cíl                                     | Zásady                                                                                                                                                       | Hodnota                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Protokol RDP je povolený.                           | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.                                  |
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -247,7 +247,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
    ``` 
 5. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovená. 
 
-    | Cíl                                 | Zásada                                                                                                                                                  | Value                                   |
+    | Cíl                                 | Zásady                                                                                                                                                  | Hodnota                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -307,9 +307,9 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Pokud je úložiště poškozené, přečtěte [si téma WMI: Poškození úložiště nebo ne](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
+    Pokud je úložiště poškozené, přečtěte si téma [WMI: poškození úložiště nebo ne](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-5. Ujistěte se, že žádná jiná aplikace nepoužívá port 3389. Tento port se používá pro službu RDP v Azure. Chcete-li zjistit, které porty jsou na virtuálním `netstat -anob`počítači používány, spusťte příkaz:
+5. Ujistěte se, že žádná jiná aplikace nepoužívá port 3389. Tento port se používá pro službu RDP v Azure. Pokud chcete zjistit, které porty se na virtuálním počítači používají, spusťte `netstat -anob`:
 
     ```PowerShell
     netstat -anob
@@ -342,7 +342,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Operátoři zálohování
 
-   - Všichni
+   - Všemi
 
    - Uživatelé
 
@@ -355,38 +355,38 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 ### <a name="install-windows-updates"></a>Nainstalovat aktualizace Windows
 V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni opravy*. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
 
-| Komponenta               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Součást               | Tvaru         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
-|                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
-|                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | Classpnp.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Volsnap.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | partmgr.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 – KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | volmgr.sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
-|                         | Volmgrx.sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | Msiscsi.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Msdsm.sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
-|                         | Mpio.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
-|                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
-|                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Síť                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
-|                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| Vzdálená plocha | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
-|                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 – KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
-|                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-| Zabezpečení                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
+| Úložiště                 | disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+|                         | ovladač Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
+|                         | NTFS. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | IoLogMsg. dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | Classpnp. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Volsnap. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | PartMgr. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 – KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | volmgr. sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgrx. sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | Msiscsi. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | MSDSM. sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
+|                         | MPIO. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
+|                         | vmstorfl. sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
+|                         | Fveapi. dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Fveapibase. dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
+| Síť                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+|                         | Mrxsmb10. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | Mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | Mrxsmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | VMSwitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
+| Jádro                    | Ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Vzdálená plocha | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+|                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 – KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
+|                         | TermDD. sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | souborem     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Rdpdd. dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | Rdpwd. sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+| Zabezpečení                | MS17 – 010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
 |                         |                |                                           | KB4012217                                   |                                    | KB4013429                                               | KB4013429                  | -                                               | -                                               |
@@ -397,7 +397,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 
 Nástroj pro přípravu systému (Sysprep) je proces, který můžete použít k resetování instalace Windows. Nástroj Sysprep nabízí "nepoužívané" prostředí odebráním všech osobních údajů a obnovením několika součástí. 
 
-Pokud chcete vytvořit šablonu, ze které můžete nasadit několik dalších virtuálních počítačů, které mají specifickou konfiguraci, je obvykle třeba spustit nástroj Sysprep. Šablona se nazývá zobecněná *Image*.
+Pokud chcete vytvořit šablonu, ze které můžete nasadit několik dalších virtuálních počítačů, které mají specifickou konfiguraci, je obvykle třeba spustit nástroj Sysprep. Šablona se nazývá *zobecněná image*.
 
 Pokud chcete vytvořit jenom jeden virtuální počítač z jednoho disku, nemusíte používat nástroj Sysprep. Místo toho můžete vytvořit virtuální počítač z *specializované image*. Informace o tom, jak vytvořit virtuální počítač z specializovaného disku, najdete v těchto tématech:
 
@@ -427,7 +427,7 @@ Virtuální pevný disk je teď připravený k nahrání. Další informace o to
 
 
 >[!NOTE]
-> Vlastní soubor *Unattend. XML* není podporován. I když podporujeme `additionalUnattendContent` vlastnost, která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *Unattend. XML* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Vlastní soubor *Unattend. XML* není podporován. I když podporujeme vlastnost `additionalUnattendContent`, která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *Unattend. XML* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 
 ## <a name="complete-the-recommended-configurations"></a>Dokončete Doporučené konfigurace.
@@ -440,7 +440,8 @@ Následující nastavení neovlivní nahrávání VHD. Důrazně ale doporučuje
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
   Pokud je k virtuálnímu počítači připojený datový disk, je písmeno jednotky dočasné jednotky obvykle *D*. Toto označení může být odlišné v závislosti na nastavení a počtu dostupných jednotek.
-
+  * Doporučujeme zakázat blokování skriptů, které mohou být poskytovány antivirovým softwarem. Můžou rušit a blokovat spuštění skriptů agenta zřizování Windows, když nasadíte nový virtuální počítač z image.
+  
 ## <a name="next-steps"></a>Další kroky
 * [Nahrání image virtuálního počítače s Windows do Azure pro nasazení Správce prostředků](upload-generalized-managed.md)
 * [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](troubleshoot-activation-problems.md)

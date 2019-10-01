@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146602"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695042"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -29,7 +29,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 |Příznak/chybová zpráva| Možné příčiny|
 |--------|------|
 |Nejde vytvořit zabezpečený kanál SSL/TLS.  | Verze SSL. Podporují se jenom TLS 1,0, 1,1 a 1,2. **Protokolu SSLv3 se nepodporuje.**
-|Vrstva záznamu TLSv 1.2: Výstraha (úroveň: Závažná, popis: Chybný záznam MAC)| [Další informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)najdete v tématu věnovaném vláknu stackexchange.
+|Vrstva záznamu TLSv 1.2: výstraha (úroveň: závažná, popis: chybný záznam v počítači MAC)| [Další informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)najdete v tématu věnovaném vláknu stackexchange.
 |Neúspěšná adresa URL je CDN (Content Delivery Network) | To může být způsobeno chybnou konfigurací v síti CDN. |  
 
 ### <a name="possible-workaround"></a>Možná alternativní řešení
@@ -44,7 +44,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 |    |K opětovnému směrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu a Azure Express Route). 
 |    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Občasné selhání testu s chybou porušení protokolu
+## <a name="test-failure-with-a-protocol-violation-error"></a>Selhání testu s chybou porušení protokolu
 
 |Příznak/chybová zpráva| Možné příčiny| Možná řešení |
 |----|---------|-----|
@@ -124,12 +124,12 @@ Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat o
 
 * Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
 
-* Pro výstrahy týkající se selhání z umístění X z umístění Y, pokud je tato možnost zapnutá, posílá uživatelům s rolemi správce/spolusprávce možnost **Hromadná a skupinová** zaškrtávací políčka.  Oznámení budou dostávat v podstatě _Všichni_ správci předplatného.
+* Pro výstrahy týkající se selhání z umístění X z umístění Y, pokud je tato možnost zapnutá, posílá uživatelům s rolemi správce/spolusprávce možnost **Hromadná a skupinová** zaškrtávací políčka.  Oznámení budou dostávat v podstatě _Všichni_ správci _předplatného_ .
 
 * U upozornění na metriky dostupnosti je možnost **Hromadná a skupinová** zaškrtávací políčko, pokud je povolena, odesílá uživatelům s rolemi vlastník, přispěvatel nebo čtenář v předplatném. V důsledku toho budou mít _Všichni_ uživatelé s přístupem k předplatnému Application Insights prostředek v oboru a budou dostávat oznámení. 
 
 > [!NOTE]
-> Pokud v tuto chvíli používáte možnost hromadného a skupinového zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
+> Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
 
 Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 

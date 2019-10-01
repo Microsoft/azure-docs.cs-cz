@@ -1,80 +1,80 @@
 ---
-title: Společné schéma oznámení pro výstrahy monitorování Azure
-description: Principy společné schéma výstrah, proč byste měli používat a jak se dá povolit
+title: Běžné schéma výstrah pro výstrahy Azure monitoru
+description: Princip běžných schémat výstrah, proč byste ji měli používat a jak ji povolit
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594325"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702895"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
-Tento článek popisuje, co je ve společném schématu produktu výstrah, výhody a jak ji povolit.
+Tento článek popisuje, co je běžné schéma výstrah, výhody jeho používání a jak ho povolit.
 
-## <a name="what-is-the-common-alert-schema"></a>Co je ve společném schématu produktu upozornění?
+## <a name="what-is-the-common-alert-schema"></a>Jaké je běžné schéma výstrah?
 
-Ve společném schématu produktu výstrah standardizuje možnosti spotřeby oznámení výstrah v Azure ještě dnes. Tři typy výstrah v Azure ještě dnes (metrik, protokolů a protokolu aktivity) v minulosti, měli vlastní e-mailové šablony, schémata webhooku, atd. Ve společném schématu produktu výstrah můžete nyní získávat oznámení o výstrahách s konzistentní schéma.
+Běžné schéma výstrah standardizace prostředí spotřeby pro oznamování výstrah v Azure ještě dnes. V minulosti měly tři typy výstrah v Azure ještě dnes (metrika, protokol a protokol aktivit) vlastní e-mailové šablony, schémata webhooků atd. Pomocí společného schématu výstrah teď můžete dostávat oznámení o výstrahách s konzistentním schématem.
 
-Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **příčiny výstrahy**, a tyto instance jsou popsané ve společném schématu v následujících částech:
-* **Základy**: Sada **standardizované pole**běžného napříč všemi typy výstrah, které popisují **jaký prostředek** je výstrahy v společně s další běžné výstrah metadata (například závažnost nebo popis). 
-* **Kontext výstrahy**: Sadu polí, které popisují **způsobit, že výstrahy**, vložením polí, která se liší **podle typu výstrahy**. Upozornění na metriku by například mít pole, jako jsou název metriky a hodnota metriky v kontextu výstrahy, že upozornění protokolu aktivit, bude mít informace o události, které upozornění vygenerovalo. 
+Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a **příčinu výstrahy**. tyto instance jsou popsány v běžném schématu v následujících částech:
+* **Essentials**: sada **standardizovaných polí**společných pro všechny typy výstrah, které popisují, k **jakým prostředkům** se tato výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
+* **Kontext výstrahy**: sada polí, která popisují **příčinu výstrahy**, s poli, která se liší **v závislosti na typu výstrahy**. Například výstraha metriky by měla obsahovat pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit by měla obsahovat informace o události, která výstrahu vygenerovala. 
 
-Integrace typické scénáře, které jsme od zákazníků slyšeli zahrnují směrování instanci výstrahy založené na některé pivot (například skupinu prostředků), po jejímž uplynutí zodpovědná tým začne práce na něm obavy týmu. Se společným schématem výstrah můžete můžete mít standardizované logiku směrování mezi typy výstrah s využitím zásadní pole byste museli opustit kontext pole, stejně jako pro dotčené týmy dále prozkoumat.
+Typickými scénáři integrace, které uslyšíme od zákazníků, je směrování instance výstrahy danému týmu na základě nějakého kontingenčního programu (například skupiny prostředků), po kterém na něm příslušný tým začne pracovat. Společně s běžným schématem výstrah můžete mít standardizovanou logiku směrování napříč typy výstrah, a to využitím základních polí a ponechání kontextových polí tak, aby se pro příslušné týmy mohli lépe prozkoumat.
 
-To znamená, že je možné používat méně integrace, proces správy a údržby _většinu_ jednodušší úloh. Kromě toho obohacení budoucí datová část oznámení (například přizpůsobení, diagnostické rozšíření, atd.) bude pouze přinášet nahoru ve společném schématu.
+To znamená, že může být možné mít méně integrací, což je proces správy a udržování _mnohem_ jednodušších úkolů. Budoucí rozšiřování datových částí výstrah (například přizpůsobení, obohacení diagnostiky atd.) bude také ve společném schématu.
 
-## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Jaká vylepšení ve společném schématu produktu výstrah převést?
+## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Jaká vylepšení přináší běžné schéma výstrah?
 
-Ve společném schématu produktu výstrahy se primárně projevit v oznámení o výstrahách. Vylepšení, které se zobrazí jsou uvedeny níže:
+Společné schéma výstrah se primárně projeví v oznámeních výstrah. Níže jsou uvedená vylepšení, která se zobrazí:
 
-| Action | Vylepšení|
+| Akce | Prvky|
 |:---|:---|
-| SMS | Konzistentní SMS šablonu pro všechny typy výstrah. |
-| Email | Konzistentní vzhledem k aplikacím a podrobné e-mailovou šablonu, abyste mohli snadno diagnostikovat potíže vhodným způsobem zasáhnout. Vložený hloubkové odkazy na instanci výstrahy na portálu a daný prostředek Ujistěte se, že můžete rychle přejít do procesu nápravy. |
-| Webhooku/logika aplikace nebo Azure funkce/Automation Runbook | Konzistentní strukturu JSON pro všechny typy výstrah, které vám umožní snadno vytvářet integrace mezi různé typy výstrah. |
+| SMS | Konzistentní šablona serveru SMS pro všechny typy výstrah. |
+| E-mail | Jednotná a podrobná šablona e-mailu, která umožňuje snadnou diagnostikovat problémy na první pohled. Vložené hloubkové odkazy na instanci výstrahy na portálu a ovlivněný prostředek zajistí, že můžete rychle přejít do procesu nápravy. |
+| Webhook/aplikace logiky/Azure Functions/Automation Runbook | Konzistentní struktura JSON pro všechny typy výstrah, která umožňuje snadno sestavit integraci napříč různými typy výstrah. |
 
-Nové schéma také umožní pohodlnější a pestřejší prostředí upozornění využití napříč na webu Azure portal a mobilní aplikace Azure v blízké budoucnosti. 
+Nové schéma také umožní širší možnosti spotřeby výstrah napříč Azure Portal i Mobilní aplikace Azure v bezprostřední budoucnosti. 
 
-[Další informace o definici schématu pro Runbooky funkce/Automation, Webhooků/Logic Apps nebo Azure.](https://aka.ms/commonAlertSchemaDefinitions)
-
-> [!NOTE]
-> Tyto akce nepodporují ve společném schématu produktu výstrahy: Konektor ITSM.
-
-## <a name="how-do-i-enable-the-common-alert-schema"></a>Jak povolit ve společném schématu produktu upozornění?
-
-Můžete vyjádřit výslovný souhlas nebo odhlásit ve společném schématu výstrahy prostřednictvím skupin akcí na i na portálu a prostřednictvím rozhraní REST API. Přepínací tlačítko k přepnutí na nové schéma existuje na úrovni akce. Například můžete mít samostatně vyjádřit výslovný souhlas s e-mailové akce a akce webhooku.
+[Přečtěte si další informace o definicích schématu pro Webhooky/Runbooky Logic Apps/Azure Functions/Automation.](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> 1. Následující typy výstrah podporují ve společném schématu produktu ve výchozím nastavení (žádné optimalizované vyžadovat):
->     * Upozornění inteligentního zjišťování
-> 1. Následující typy výstrah aktuálně nepodporují ve společném schématu produktu:
->     * Výstrahy vygenerované [monitorování Azure pro virtuální počítače](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
->     * Výstrahy vygenerované [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
+> Následující akce nepodporují běžné schéma výstrah: konektor ITSM.
 
-### <a name="through-the-azure-portal"></a>Na webu Azure portal
+## <a name="how-do-i-enable-the-common-alert-schema"></a>Návody povolit společné schéma výstrah?
 
-![Společné schéma produktu výstrah vyjádřit výslovný souhlas](media/alerts-common-schema/portal-opt-in.png)
+Pomocí skupin akcí na portálu i REST API můžete použít společné schéma výstrah nebo se na něj rozhodnout. Přepínač pro přepnutí na nové schéma existuje na úrovni akce. Například je nutné samostatně vyjádřit akci e-mailu a akci Webhooku.
 
-1. Otevřete jakékoli existující nebo nové akce v skupiny akcí. 
-1. Vyberte 'Ano' pro přepínač, který povolí ve společném schématu produktu výstrah, jak je znázorněno.
+> [!NOTE]
+> 1. Následující typy výstrah podporují standardně společné schéma (není nutné žádné výslovné povinné):
+>     * Výstrahy inteligentní detekce
+> 1. Následující typy výstrah aktuálně nepodporují společné schéma:
+>     * Výstrahy generované [Azure monitor pro virtuální počítače](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
+>     * Výstrahy generované [Azure cost management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
 
-### <a name="through-the-action-groups-rest-api"></a>Prostřednictvím rozhraní REST API skupiny akcí
+### <a name="through-the-azure-portal"></a>Prostřednictvím Azure Portal
 
-Můžete také použít [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups) můžete vyjádřit výslovný souhlas ve společném schématu produktu výstrah. Při provádění [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) volání rozhraní REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (se vyjádřit výslovný souhlas) nebo "Nepravda" (výslovný souhlas) pro některý z následujících akcí - e-mailu nebo webhooku/logika aplikace nebo Azure funkce/automatizace sady runbook.
+![Obecná možnost výslovného souhlasu schématu výstrahy](media/alerts-common-schema/portal-opt-in.png)
 
-Například následující text provedené žádosti [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) rozhraní REST API se postupujte takto:
+1. Otevřete jakoukoli existující nebo novou akci ve skupině akcí. 
+1. Kliknutím na tlačítko Ano pro přepínač povolíte společné schéma výstrah, jak je znázorněno na obrázku.
 
-* Povolit ve společném schématu produktu upozornění e-mailové akce "John Doe e-mailu"
-* Zakázat ve společném schématu produktu upozornění e-mailové akce "Jan Macek e-mail"
-* Povolit ve společném schématu produktu oznámení pro akce webhooku "Ukázka webhooku"
+### <a name="through-the-action-groups-rest-api"></a>Prostřednictvím skupin akcí REST API
+
+Pomocí [rozhraní API skupin akcí](https://docs.microsoft.com/rest/api/monitor/actiongroups) můžete také vyjádřit výslovný souhlas s běžným schématem výstrah. Během volání funkce [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (pro výslovný souhlas) nebo "NEPRAVDA" (pro odhlášení) pro některou z následujících akcí: e-mail/Webhook/Logic App/Azure Function/Automation Runbook.
+
+Například následující text žádosti, který se v REST API pro [Vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) provede, provede následující:
+
+* Povolit společné schéma výstrah pro e-mailovou akci Jan Karásek
+* Zakázat běžné schéma výstrah pro e-mailovou akci Jana Novák
+* Povolit společné schéma výstrah pro akci Webhooku "Ukázkový Webhook"
 
 ```json
 {
@@ -122,10 +122,10 @@ Například následující text provedené žádosti [vytvořit nebo aktualizova
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Běžné definice upozornění schémat pro Webhooky a Logic Apps nebo Azure funkce/automatizace sady Runbook.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Zjistěte, jak vytvořit aplikaci logiky, které využívá připojení ve společném schématu produktu výstrah pro zpracování všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky.](https://aka.ms/commonAlertSchemaDefinitions)
+- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 
 
 

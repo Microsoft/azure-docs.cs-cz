@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981240"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703274"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 
@@ -24,7 +24,7 @@ ms.locfileid: "69981240"
 > Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Tento článek se nevztahuje na **Azure SQL Database spravovanou instanci**. Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci](sql-database-managed-instance-connect-app.md) .
+> Tento článek se *nevztahuje na* **Azure SQL Database spravovanou instanci**. Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci](sql-database-managed-instance-connect-app.md) .
 
 Když vytvoříte novou službu Azure SQL Server [z Azure Portal](sql-database-single-database-get-started.md), výsledkem je veřejný koncový bod ve formátu *yourservername.Database.Windows.NET*. V rámci návrhu je odepřen veškerý přístup k veřejnému koncovému bodu. Pak můžete pomocí následujících ovládacích prvků přístupu k síti selektivně dovolit přístup k databázi SQl prostřednictvím veřejného koncového bodu.
 - Povolení služeb Azure: – Pokud je nastavené na ZAPNUTo, další prostředky v rámci hranice Azure, například virtuální počítač Azure, mají přístup k SQL Database
@@ -66,29 +66,31 @@ V současnosti existují dva způsoby, jak povolit auditování na SQL Database.
 Azure SQL Database má funkci synchronizace dat, která se připojuje k vašim databázím pomocí Azure IP. Při použití koncových bodů služby vypnete možnost **Povolit službám Azure přístup k serveru** SQL Database serveru a přerušit funkci synchronizace dat.
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
-Brána firewall založená na protokolu IP je funkcí služby Azure SQL Server, která zabraňuje všem přístupům k databázovému serveru, dokud explicitně nepřidáte [IP adresy](sql-database-server-level-firewall-rule.md) klientských počítačů.
+Brána firewall založená na protokolu IP je funkcí služby Azure SQL Server, která zabraňuje všem přístupům k databázovému serveru, dokud explicitně [nepřidáte IP adresy](sql-database-server-level-firewall-rule.md) klientských počítačů.
 
 
 ## <a name="virtual-network-firewall-rules"></a>Virtual Network pravidla brány firewall
 
 Kromě pravidel protokolu IP vám brána firewall pro Azure SQL Server umožňuje definovat *pravidla virtuální sítě*.  
-Další informace najdete v tématu [Virtual Network koncových bodů a pravidel služby pro Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md).
+Další informace najdete v tématu [Virtual Network koncových bodů a pravidel služby pro Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md) nebo Sledujte toto video:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Terminologie sítí Azure  
 Při zkoumání Virtual Network pravidel brány firewall Pamatujte na následující síťové podmínky Azure.
 
 **Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure. 
 
-**Podsíť** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
 
 **Koncový bod služby Virtual Network:** [Virtual Network koncový bod služby] [VM-Virtual-Network-Service-Endpoints-Overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database.
 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server SQL Database je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru SQL Database. Aby byl v seznamu ACL pro váš SQL Database, podsíť musí obsahovat název typu **Microsoft. SQL** . Pravidlo virtuální sítě přikáže serveru SQL Database, aby přijímal komunikaci z každého uzlu, který je v podsíti.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP vs. Virtual Network pravidla brány firewall
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP a Virtual Network pravidla brány firewall
 
-Brána firewall pro Azure SQL Server umožňuje zadat rozsahy IP adres, ze kterých se SQL Database přijímá komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Virtuální počítače v privátní síti Azure ale mají nakonfigurovanou dynamickou IP adresu. Dynamické IP adresy se můžou změnit, když se virtuální počítač restartuje, a zase ověří pravidlo brány firewall založené na protokolu IP. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
+Brána firewall pro Azure SQL Server umožňuje zadat rozsahy IP adres, ze kterých se SQL Database přijímá komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Virtuální počítače v privátní síti Azure ale mají nakonfigurovanou *dynamickou* IP adresu. Dynamické IP adresy se můžou změnit, když se virtuální počítač restartuje, a zase ověří pravidlo brány firewall založené na protokolu IP. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
 
 Toto omezení můžete obejít tak, že získáte *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal] [VM-Configure-Private-IP-addresses-for-a-Virtual-Machine-using-the-Azure-Portal-321w]. Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. 
 
@@ -97,7 +99,7 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 > [!NOTE]
 > V podsíti ještě nemůžete mít SQL Database. Pokud váš server Azure SQL Database byl uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaší SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Rychlý Start k vytvoření pravidla brány firewall IP na úrovni serveru najdete v tématu [Vytvoření databáze SQL Azure](sql-database-single-database-get-started.md).
 
@@ -105,7 +107,7 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 
 - Nápovědu k připojení k databázi SQL Azure z Open Source nebo aplikací třetích stran najdete v tématu [ukázky kódu pro rychlý Start klienta k SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Informace o dalších portech, které možná budete muset otevřít, najdete **v SQL Database: Mimo oddíl vs** Inside [portů nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Informace o dalších portech, které možná budete muset otevřít, najdete v části **SQL Database: mimo rámec a v** části [porty nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 - Přehled připojení Azure SQL Database najdete v tématu [Architektura připojení k Azure SQL](sql-database-connectivity-architecture.md) .
 

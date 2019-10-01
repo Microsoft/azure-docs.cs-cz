@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299917"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709963"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Předpoklady pro Azure HPC cache (Preview)
 
@@ -57,15 +57,14 @@ Přečtěte si další informace o virtuálních sítích Azure a konfiguracích
 Než začnete vytvářet mezipaměť, ověřte tyto požadavky týkající se oprávnění.
 
 * Instance mezipaměti musí být schopná vytvářet rozhraní virtuální sítě (nic). Uživatel, který vytváří mezipaměť, musí mít v předplatném dostatečná oprávnění pro vytváření síťových adaptérů.
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * Pokud používáte službu BLOB Storage, mezipaměť prostředí Azure HPC potřebuje autorizaci pro přístup k vašemu účtu úložiště. Řízení přístupu na základě role (RBAC) můžete použít k poskytnutí přístupu k mezipaměti do úložiště objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště. Pokud chcete přidat role, postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) .
 
 ## <a name="storage-infrastructure"></a>Infrastruktura úložiště
 
-Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Můžete definovat cíle úložiště, když vytváříte mezipaměť, ale můžete také přidat úložiště později.
+Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Po vytvoření mezipaměti přidejte cíle úložiště.
 
-Každý typ úložiště má specifické požadavky. 
+Každý typ úložiště má specifické požadavky.
 
 ### <a name="nfs-storage-requirements"></a>Požadavky na úložiště NFS
 
@@ -81,10 +80,10 @@ Před pokusem o přidání účtu jako cíle úložiště vytvořte účet a kon
 
 Pokud chcete vytvořit kompatibilní účet úložiště, použijte Tato nastavení:
 
-* Předepsané **Standard**
-* Druh účtu: **StorageV2 (obecné účely v2)**
-* Umístění **Místně redundantní úložiště (LRS)**
-* Úroveň přístupu (výchozí): **za běhu**
+* Výkon: **Standard**
+* Druh účtu: **StorageV2 (pro obecné účely v2)**
+* Replikace: **místně redundantní úložiště (LRS)**
+* Úroveň přístupu (výchozí): **Hot**
 
 Je vhodné použít účet úložiště ve stejném umístění jako mezipaměť.
 <!-- need to clarify location - same region or same resource group or same virtual network? -->

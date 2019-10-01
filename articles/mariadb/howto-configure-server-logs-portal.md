@@ -1,68 +1,85 @@
 ---
-title: Konfigurace a přístup k protokoly serveru Azure Database pro MariaDB na webu Azure portal
-description: Tento článek popisuje, jak nakonfigurovat a získat přístup k protokolům serveru ve službě Azure Database pro MariaDB z portálu Azure portal.
-author: rachel-msft
-ms.author: raagyema
+title: Konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB v Azure Portal
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru v Azure Database for MariaDB z Azure Portal.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065642"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703497"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k serveru přihlášení na webu Azure portal
+# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům serveru v Azure Portal
 
-Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database pro MariaDB protokoly pomalých dotazů](concepts-server-logs.md) z portálu Azure portal.
+V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MariaDB](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Azure Database pro MariaDB server](quickstart-create-mariadb-server-database-using-azure-portal.md)
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete projít tento průvodce, budete potřebovat:
+- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="configure-logging"></a>Konfigurace protokolování
-Konfigurace přístupu k protokolu pomalých dotazů. 
+## <a name="configure-logging"></a>Konfigurovat protokolování
+Nakonfigurujte přístup k protokolu pomalých dotazů. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte váš server Azure Database for MariaDB.
+2. Vyberte server Azure Database for MariaDB.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. 
-   ![Vyberte protokolů serveru, klikněte na konfigurace](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
+   @no__t – protokoly serveru 0Select kliknutím nakonfigurujete @ no__t-1.
 
-4. Vyberte záhlaví **kliknutím sem můžete povolit protokoly a nakonfigurovat parametry protokolů** zobrazíte parametry serveru.
+4. Vyberte záhlaví **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu** pro zobrazení parametrů serveru.
 
-5. Změníte parametry, které je potřeba upravit, včetně zapnutí "slow_query_log" na "ON". Všechny změny provedené v této relaci jsou zvýrazněny znázorněný fialovou barvou. 
+5. Změňte parametry, které je potřeba upravit, včetně zapnutí "slow_query_log" na "ON". Všechny změny, které provedete v této relaci, jsou zvýrazněné fialově. 
 
-   Jakmile změníte parametry, můžete kliknout na **Uložit**. Nebo můžete **zahodit** provedené změny.
+   Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
 
-   ![Klikněte na Uložit nebo zahodit](./media/howto-configure-server-logs-portal/3-save-discard.png)
+   ![Klikněte na Uložit nebo zahodit.](./media/howto-configure-server-logs-portal/3-save-discard.png)
 
-6. Přejděte zpět na seznam protokolů po kliknutí **tlačítko Zavřít** (X ikonu) na **parametry serveru** stránky.
+6. Vraťte se do seznamu protokolů kliknutím na **tlačítko Zavřít** (ikona X) na stránce **parametry serveru** .
 
-## <a name="view-list-and-download-logs"></a>Zobrazení seznamu a stáhnout protokoly
-Po zahájení protokolování, můžete zobrazit seznam protokoly pomalých dotazů k dispozici a stažení jednotlivých souborů protokolu v podokně protokolů serveru. 
+## <a name="view-list-and-download-logs"></a>Zobrazit seznam a stáhnout protokoly
+Po zahájení protokolování můžete zobrazit seznam dostupných protokolů pomalých dotazů a stahovat jednotlivé soubory protokolů v podokně protokoly serveru. 
 
 1. Otevřete web Azure Portal.
 
-2. Vyberte váš server Azure Database for MariaDB.
+2. Vyberte server Azure Database for MariaDB.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. Na stránce se zobrazí seznam souborů protokolu, jak je znázorněno:
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka obsahuje seznam souborů protokolu, jak je znázorněno níže:
 
    ![Seznam protokolů](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Zásady vytváření názvů protokolu je **mysql - pomalé – < název serveru >-yyyymmddhh.log**. Datum a čas, použít v názvu souboru je čas je v případě protokolu byl vydán. Soubory protokolů jsou otočeny každých 24 hodin nebo 7.5 GB, co nastane dříve.
+   > Konvence pojmenování protokolu je **MySQL-pomalé – < názvu serveru >-yyyymmddhh. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolů se otočí každých 24 hodin nebo 7,5 GB, podle toho, co nastane dřív.
 
-4. V případě potřeby použijte **vyhledávacího pole** můžete rychle omezit na konkrétní protokol podle data a času. Hledání je na název protokolu.
+4. V případě potřeby pomocí **vyhledávacího pole** rychle upřesněte konkrétní protokol na základě data a času. Hledání je na názvu protokolu.
 
-5. Stáhněte si pomocí jednotlivých protokolových souborů **Stáhnout** tlačítko (ikona šipky pro sestupné) vedle každého souboru protokolu v řádku, jak je znázorněno:
+5. Jednotlivé soubory protokolu si můžete stáhnout pomocí tlačítka **Stáhnout** (ikona šipky dolů) vedle každého souboru protokolu v řádku tabulky, jak je znázorněno níže:
 
-   ![Klikněte na ikonu stažení](./media/howto-configure-server-logs-portal/5-download.png)
+   ![Klikněte na ikonu stáhnout.](./media/howto-configure-server-logs-portal/5-download.png)
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [zpomalit protokoly dotazů](concepts-server-logs.md) ve službě Azure Database pro MariaDB.
-- Další informace o definicemi parametrů a protokolování, najdete v dokumentaci MariaDB na [protokoly](https://mariadb.com/kb/en/library/slow-query-log-overview/).
+## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
-<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
+
+1. Klikněte na + Přidat nastavení diagnostiky ![Add nastavení diagnostiky @ no__t-1.
+
+1. Zadejte název nastavení diagnostiky.
+
+1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
+
+1. Jako typ protokolu vyberte "MySqlSlowLogs".
+![Configure nastavení diagnostiky @ no__t-1
+
+1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na můžete kliknout na **Uložit**.
+![Save nastavení diagnostiky @ no__t-1
+
+1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
+
+## <a name="next-steps"></a>Další kroky
+- Další informace o tom, jak programově stahovat protokoly pomalých dotazů, najdete [v tématu přístup k protokolům pomalým dotazů](howto-configure-server-logs-cli.md)
+- Přečtěte si další informace o [protokolech pomalých dotazů](concepts-server-logs.md) v Azure Database for MariaDB.
+- Další informace o definicích parametrů a protokolování najdete v dokumentaci k MariaDB v [protokolech](https://mariadb.com/kb/en/library/slow-query-log-overview/).

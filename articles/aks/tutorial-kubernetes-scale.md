@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 7dd0000d6797411d56143f8a977e4c478d551858
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965135"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694743"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a 
 
 V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
@@ -77,14 +77,14 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
+> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Pokud chcete nainstalovat, naklonujte úložiště GitHub `metrics-server` a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
 > 
 > ```console
 > git clone https://github.com/kubernetes-incubator/metrics-server.git
 > kubectl create -f metrics-server/deploy/1.8+/
 > ```
 
-Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. `azure-vote-front` V nasazení má front-end kontejner již požadavky 0,25 procesor s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
+Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. V nasazení `azure-vote-front` už front-end kontejner vyžádá 0,25 procesor s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
 
 ```yaml
 resources:
@@ -113,7 +113,7 @@ Po několika minutách se díky minimálnímu zatížení aplikace Azure Vote po
 
 ## <a name="manually-scale-aks-nodes"></a>Ruční škálování uzlů AKS
 
-Pokud jste cluster Kubernetes vytvořili pomocí příkazů v předchozím kurzu, má jeden uzel. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
+Pokud jste cluster Kubernetes vytvořili pomocí příkazů v předchozím kurzu, má dva uzly. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
 
 Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *myAKSCluster* na tři. Dokončení tohoto příkazu trvá několik minut.
 
@@ -139,7 +139,7 @@ Po úspěšném škálování clusteru se výstup podobá následujícímu pří
   }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se tyto postupy:
 

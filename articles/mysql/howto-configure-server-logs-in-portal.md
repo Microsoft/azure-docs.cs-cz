@@ -1,67 +1,85 @@
 ---
-title: Konfigurace a přístup k protokoly pomalých dotazů pro službu Azure Database for MySQL na webu Azure portal
-description: Tento článek popisuje, jak nakonfigurovat a přístup k pomalé protokolů ve službě Azure Database for MySQL z portálu Azure portal.
-author: rachel-msft
-ms.author: raagyema
+title: Konfigurace a přístup k protokolům pomalým dotazům pro Azure Database for MySQL v Azure Portal
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k pomalým protokolům v Azure Database for MySQL z Azure Portal.
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: b3986c19ec008437f3230b3674ce60d1dfba2024
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052713"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703441"
 ---
-# <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurace a protokoly pomalých dotazů přístup na webu Azure Portal
+# <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům v Azure Portal
 
-Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for MySQL – protokoly pomalých dotazů](concepts-server-logs.md) z portálu Azure portal.
+V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MySQL](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md)
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete projít tento průvodce, budete potřebovat:
+- [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="configure-logging"></a>Konfigurace protokolování
-Konfigurace přístupu k protokolu pomalých dotazů MySQL. 
+## <a name="configure-logging"></a>Konfigurovat protokolování
+Nakonfigurujte přístup k protokolu pomalého dotazu MySQL. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte váš server Azure Database for MySQL.
+2. Vyberte server Azure Database for MySQL.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. 
-   ![Vyberte protokolů serveru, klikněte na konfigurace](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
+   @no__t – protokoly serveru 0Select kliknutím nakonfigurujete @ no__t-1.
 
-4. Vyberte záhlaví **kliknutím sem můžete povolit protokoly a nakonfigurovat parametry protokolů** zobrazíte parametry serveru.
+4. Vyberte záhlaví **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu** pro zobrazení parametrů serveru.
 
-5. Změníte parametry, které je potřeba upravit. Všechny změny provedené v této relaci jsou zvýrazněny znázorněný fialovou barvou. 
+5. Změňte parametry, které je třeba upravit. Všechny změny, které provedete v této relaci, jsou zvýrazněné fialově. 
 
-   Jakmile změníte parametry, můžete kliknout na **Uložit**. Nebo můžete **zahodit** provedené změny.
+   Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
 
-   ![Klikněte na Uložit nebo zahodit](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![Klikněte na Uložit nebo zahodit.](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. Přejděte zpět na seznam protokolů po kliknutí **tlačítko Zavřít** (X ikonu) na **parametry serveru** stránky.
+6. Vraťte se do seznamu protokolů kliknutím na **tlačítko Zavřít** (ikona X) na stránce **parametry serveru** .
 
-## <a name="view-list-and-download-logs"></a>Zobrazení seznamu a stáhnout protokoly
-Po zahájení protokolování, můžete zobrazit seznam protokoly pomalých dotazů k dispozici a stažení jednotlivých souborů protokolu v podokně protokolů serveru.
+## <a name="view-list-and-download-logs"></a>Zobrazit seznam a stáhnout protokoly
+Po zahájení protokolování můžete zobrazit seznam dostupných protokolů pomalých dotazů a stahovat jednotlivé soubory protokolů v podokně protokoly serveru.
 
 1. Otevřete web Azure Portal.
 
-2. Vyberte váš server Azure Database for MySQL.
+2. Vyberte server Azure Database for MySQL.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. Na stránce se zobrazí seznam souborů protokolu, jak je znázorněno:
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka obsahuje seznam souborů protokolu, jak je znázorněno níže:
 
    ![Seznam protokolů](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Zásady vytváření názvů protokolu je **mysql - pomalé – < název serveru >-yyyymmddhh.log**. Datum a čas, použít v názvu souboru je čas je v případě protokolu byl vydán. Soubory protokolů jsou otočeny každých 24 hodin nebo 7.5 GB, co nastane dříve.
+   > Konvence pojmenování protokolu je **MySQL-pomalé – < názvu serveru >-yyyymmddhh. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolů se otočí každých 24 hodin nebo 7,5 GB, podle toho, co nastane dřív.
 
-4. V případě potřeby použijte **vyhledávacího pole** můžete rychle omezit na konkrétní protokol podle data a času. Hledání je na název protokolu.
+4. V případě potřeby pomocí **vyhledávacího pole** rychle upřesněte konkrétní protokol na základě data a času. Hledání je na názvu protokolu.
 
-5. Stáhněte si pomocí jednotlivých protokolových souborů **Stáhnout** tlačítko (ikona šipky pro sestupné) vedle každého souboru protokolu v řádku, jak je znázorněno:
+5. Jednotlivé soubory protokolu si můžete stáhnout pomocí tlačítka **Stáhnout** (ikona šipky dolů) vedle každého souboru protokolu v řádku tabulky, jak je znázorněno níže:
 
-   ![Klikněte na ikonu stažení](./media/howto-configure-server-logs-in-portal/5-download.png)
+   ![Klikněte na ikonu stáhnout.](./media/howto-configure-server-logs-in-portal/5-download.png)
 
-## <a name="next-steps"></a>Další postup
-- Zobrazit [protokoly pomalých dotazů přístup v rozhraní příkazového řádku](howto-configure-server-logs-in-cli.md) informace o stažení protokolů pomalých dotazů prostřednictvím kódu programu.
-- Další informace o [zpomalit protokoly dotazů](concepts-server-logs.md) ve službě Azure Database for MySQL.
-- Další informace o protokolování MySQL a definicemi parametrů najdete v dokumentaci MySQL na [protokoly](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
+## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
+
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
+
+1. Klikněte na + Přidat nastavení diagnostiky ![Add nastavení diagnostiky @ no__t-1.
+
+1. Zadejte název nastavení diagnostiky.
+
+1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
+
+1. Jako typ protokolu vyberte "MySqlSlowLogs".
+![Configure nastavení diagnostiky @ no__t-1
+
+1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na můžete kliknout na **Uložit**.
+![Save nastavení diagnostiky @ no__t-1
+
+1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
+
+## <a name="next-steps"></a>Další kroky
+- Další informace o tom, jak programově stahovat protokoly pomalých dotazů, najdete [v tématu přístup k protokolům pomalým dotazů](howto-configure-server-logs-in-cli.md)
+- Přečtěte si další informace o [protokolech pomalých dotazů](concepts-server-logs.md) v Azure Database for MySQL.
+- Další informace o definicích parametrů a protokolování MySQL najdete v dokumentaci k MySQL v [protokolech](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).

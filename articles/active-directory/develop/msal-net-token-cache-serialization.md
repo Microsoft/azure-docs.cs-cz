@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5334c17b4f918e128ac69569e8ab6deeebac2182
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f3e4a24e96b41955ca9e89f8307b693e7599b645
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103943"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709301"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializace mezipaměti tokenů v MSAL.NET
 Po [získání tokenu](msal-acquire-cache-tokens.md)je uložen do mezipaměti v rámci knihovny Microsoft Authentication Library (MSAL).  Kód aplikace by se měl pokusit získat token z mezipaměti před získáním tokenu jinou metodou.  Tento článek popisuje výchozí a vlastní serializaci mezipaměti tokenů v MSAL.NET.
@@ -34,7 +34,7 @@ Tento článek je určen pro MSAL.NET 3. x. Pokud vás zajímá MSAL.NET 2. x, p
 V MSAL.NET je ve výchozím nastavení poskytována mezipaměť tokenů v paměti. Ve výchozím nastavení je k dispozici serializace pro platformy, kde je k dispozici zabezpečené úložiště pro uživatele jako součást platformy. Jedná se o případ Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android.
 
 > [!Note]
-> Když migrujete projekt Xamarin. Android z MSAL.NET 1. x do MSAL.NET 3. x, můžete chtít přidat `android:allowBackup="false"` do projektu a vyhnout se tak starým tokenům uloženým v mezipaměti, když nasazení sady Visual Studio aktivují obnovení místního úložiště. Viz [#659 problému](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
+> Když migrujete projekt Xamarin. Android z MSAL.NET 1. x do MSAL.NET 3. x, možná budete chtít do svého projektu přidat `android:allowBackup="false"`, abyste předešli tomu, že se staré tokeny v mezipaměti nebudou vracet, když nasazení sady Visual Studio aktivuje obnovení místního úložiště. Viz [#659 problému](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Vlastní serializace pro desktopové aplikace pro Windows a webové aplikace/webová rozhraní API
 
@@ -42,18 +42,18 @@ Nezapomeňte, že vlastní serializace není k dispozici na mobilních platform�
 
 V serializaci mezipaměti tokenu se používají následující třídy a rozhraní:
 
-- `ITokenCache`, který definuje události pro přihlášení k odběru požadavků na serializaci mezipaměti tokenu a také metody pro serializaci nebo deserializaci mezipaměti v různých formátech (ADAL v 3.0, MSAL 2. x a MSAL 3. x = ADAL v 5.0).
-- `TokenCacheCallback`je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu `TokenCacheNotificationArgs`.
-- `TokenCacheNotificationArgs`poskytuje `ClientId` pouze aplikaci a odkaz na uživatele, pro který je token k dispozici.
+- `ITokenCache`, který definuje události pro přihlášení k odběru požadavků na serializaci mezipaměti tokenu a metody pro serializaci nebo deserializaci mezipaměti v různých formátech (ADAL v 3.0, MSAL 2. x a MSAL 3. x = ADAL v 5.0).
+- `TokenCacheCallback` je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu `TokenCacheNotificationArgs`.
+- `TokenCacheNotificationArgs` poskytuje pouze `ClientId` aplikace a odkaz na uživatele, pro který je token k dispozici.
 
   ![Diagram tříd](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET vytvoří mezipaměť tokenů za vás a poskytne `IToken` mezipaměť při volání vlastností `UserTokenCache` aplikace a `AppTokenCache` . Nechcete implementovat rozhraní sami. Vaše zodpovědnost při implementaci serializace mezipaměti vlastního tokenu je následující:
-> - Reagovat na `BeforeAccess` a `AfterAccess` "události" (nebo jejich asynchronní charakter). Delegát zodpovídá za deserializaci mezipaměti, `AfterAccess` zatímco jedna je zodpovědná za serializaci mezipaměti. `BeforeAccess`
+> MSAL.NET vytvoří mezipaměť tokenů za vás a poskytne mezipaměť `IToken` při volání vlastností `UserTokenCache` a `AppTokenCache` aplikace. Nechcete implementovat rozhraní sami. Vaše zodpovědnost při implementaci serializace mezipaměti vlastního tokenu je následující:
+> - Reagují na `BeforeAccess` a `AfterAccess` "události" (nebo jejich asynchronní charakter). Delegát `BeforeAccess` zodpovídá za deserializaci mezipaměti, zatímco `AfterAccess` 1 zodpovídá za serializaci mezipaměti.
 > - Součást těchto událostí ukládá nebo načítá objekty blob, které jsou předány argumentem události do libovolného úložiště, které chcete.
 
-Strategie se liší v závislosti na tom, jestli píšete serializaci mezipaměti tokenů pro [veřejnou klientskou aplikaci](msal-client-applications.md) (Desktop) nebo důvěrnou [klientskou aplikaci](msal-client-applications.md)(Web App/Web API, démon App).
+Strategie se liší v závislosti na tom, jestli píšete serializaci mezipaměti tokenů pro [veřejnou klientskou aplikaci](msal-client-applications.md) (Desktop) nebo [důvěrnou klientskou aplikaci](msal-client-applications.md)(Web App/Web API, démon App).
 
 ### <a name="token-cache-for-a-public-client"></a>Mezipaměť tokenů pro veřejného klienta 
 
@@ -68,7 +68,7 @@ Přizpůsobení serializace mezipaměti tokenů pro sdílení stavu jednotného 
 
 Níže je uveden příklad implementace Naive vlastní serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. V tomto případě je mezipaměť tokenu uživatele souborem ve stejné složce jako aplikace.
 
-Po sestavení aplikace povolte serializaci voláním `TokenCacheHelper.EnableSerialization()` metody a předáním aplikace. `UserTokenCache`
+Po sestavení aplikace povolte serializaci voláním metody `TokenCacheHelper.EnableSerialization()` a předáním aplikace `UserTokenCache`.
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -76,7 +76,7 @@ app = PublicClientApplicationBuilder.Create(ClientId)
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 ```
 
-`TokenCacheHelper` Pomocná třída je definována takto:
+Pomocná třída `TokenCacheHelper` je definována jako:
 
 ```csharp
 static class TokenCacheHelper
@@ -126,7 +126,7 @@ static class TokenCacheHelper
  }
 ```
 
-Náhled serializátoru založený na souboru mezipaměti s tokeny kvality produktu pro veřejné klientské aplikace (pro desktopové aplikace běžící v systémech Windows, Mac a Linux) je k dispozici v open source knihovně [Microsoft. identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . Můžete ho zahrnout do svých aplikací z následujícího balíčku NuGet: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Náhled serializátoru založený na souboru mezipaměti s tokeny kvality produktu pro veřejné klientské aplikace (pro desktopové aplikace běžící v systémech Windows, Mac a Linux) je k dispozici v open source knihovně [Microsoft. identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . Můžete ji zahrnout do svých aplikací z následujícího balíčku NuGet: [Microsoft. identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Serializace mezipaměti s duálním tokenem (MSAL Unified cache a ADAL V3)
 
@@ -277,12 +277,12 @@ V případě webových aplikací nebo webových rozhraní API může mezipaměť
 
 Ve webových aplikacích nebo webových rozhraních API ponechte jednu mezipaměť tokenů na účet.  Pro webové aplikace by měla být mezipaměť tokenů nastavená ID účtu.  Pro webová rozhraní API by měl být účet nastaven pomocí hash tokenu, který se používá k volání rozhraní API. MSAL.NET poskytuje serializaci mezipaměti vlastního tokenu v .NET Framework a podplatformách .NET Core. Události jsou vyvolány, když je mezipaměť k dispozici, aplikace mohou zvolit, zda má být mezipaměť serializována nebo deserializována. V tajných klientských aplikacích, které zpracovávají uživatele (webové aplikace, které přihlásily uživatele, volají webová rozhraní API a webová rozhraní API volající webová rozhraní API) může existovat mnoho uživatelů a uživatelé se zpracovávají paralelně. Z důvodu zabezpečení a výkonu doporučujeme, abyste měli v úmyslu serializovat jednu mezipaměť na uživatele. Události serializace počítají klíč mezipaměti na základě identity zpracovávaného uživatele a serializace/deserializace mezipaměti tokenu pro tohoto uživatele.
 
-Příklady použití mezipamětí tokenů pro webové aplikace a webová rozhraní API jsou k dispozici v [kurzu ASP.NET Core webové aplikace](https://ms-identity-aspnetcore-webapp-tutorial) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). U implementací se podívejte na následující složku [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) v knihovně [Microsoft-Authentication-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (ve složce [Microsoft. identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) . 
+Příklady použití mezipamětí tokenů pro webové aplikace a webová rozhraní API jsou k dispozici v [kurzu ASP.NET Core webové aplikace](https://ms-identity-aspnetcore-webapp-tutorial) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). U implementací se podívejte na složku [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) v knihovně [Microsoft-Authentication-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (ve složce [Microsoft. identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Následující ukázky ilustrují serializaci mezipaměti tokenů.
 
 | Ukázka | Platforma | Popis|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Plocha (WPF) | Aplikace Windows Desktop .NET (WPF), která volá rozhraní Microsoft Graph API. ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Plocha (konzola) | Sada řešení pro Visual Studio, která ilustruje migraci aplikací Azure AD v 1.0 (pomocí ADAL.NET) do aplikací Azure AD v 2.0, ale také pojmenovaných aplikací (pomocí MSAL.NET), konkrétně při [migraci mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Plocha (WPF) | Aplikace Windows Desktop .NET (WPF), která volá rozhraní Microsoft Graph API. ![Topologií](media/msal-net-token-cache-serialization/topology.png)|
+|[Active-Directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Plocha (konzola) | Sada řešení pro Visual Studio, která ilustruje migraci aplikací Azure AD v 1.0 (pomocí ADAL.NET) do aplikací Azure AD v 2.0, ale také pojmenovaných aplikací (pomocí MSAL.NET), konkrétně při [migraci mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

@@ -244,7 +244,7 @@
             - name: Vytvoření znalostní databáze na webu Azure Portal
               href: knowledge-store-create-portal.md
             - name: Vytvoření s využitím architektury REST a Postman
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Zobrazení s využitím Průzkumníka služby Storage
               href: knowledge-store-view-storage-explorer.md
             - name: Propojení s Power BI

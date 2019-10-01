@@ -8,12 +8,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: laobri
-ms.openlocfilehash: 50648d22a62199d27374a1cacf617858ce9e7d6a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329271"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703574"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Vytvoření Azure Search Knowledge Store pomocí REST
 
@@ -29,7 +29,7 @@ Po vytvoření znalostní báze můžete získat informace o přístupu k tomuto
 
 + [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Váš účet úložiště musí pro službu Azure Search používat stejné umístění (například USA – západ). *Druh účtu* musí být *StorageV2 (pro obecné účely v2)* (výchozí) nebo *Storage (pro obecné účely V1)* .
 
-+ Doporučené: [Aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků na Azure Search. REST API můžete použít s jakýmkoli nástrojem schopným pracovat s požadavky HTTP a odpověďmi. Pro prozkoumávání rozhraní REST je vhodná volba, která se používá v tomto článku. Kromě toho [zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tohoto článku obsahuje kolekci žádostí post. 
++ Doporučeno: [aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem schopným pracovat s požadavky HTTP a odpověďmi. Pro prozkoumávání rozhraní REST je vhodná volba, která se používá v tomto článku. Kromě toho [zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tohoto článku obsahuje kolekci žádostí post. 
 
 ## <a name="2---store-the-data"></a>2\. uložení dat
 
@@ -40,20 +40,20 @@ Načtěte soubor. CSV pro kontrolu hotelu do úložiště objektů BLOB v Azure,
 1. [Stáhněte si data kontroly hotelu uložená v souboru CSV (HotelReviews_Free. csv)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Tato data pocházejí z Kaggle.com a obsahují názory zákazníků na hotely.
 1. [Přihlaste se k Azure Portal](https://portal.azure.com)a přejděte k účtu služby Azure Storage.
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Pokud chcete vytvořit kontejner, klikněte v levém navigačním panelu pro svůj účet úložiště na **objekty blob**a pak na panelu příkazů klikněte na **+ kontejner** .
-1. Jako **název**nového kontejneru zadejte `hotel-reviews`.
+1. Pro nový **název**kontejneru zadejte `hotel-reviews`.
 1. Vyberte libovolnou **úroveň veřejného přístupu**. Použili jsme výchozí.
 1. Kliknutím na **OK** vytvořte kontejner objektů blob Azure.
-1. Otevřete nový `hotels-review` kontejner, klikněte na **Odeslat**a vyberte soubor **HotelReviews-Free. csv** , který jste stáhli v prvním kroku.
+1. Otevřete nový kontejner @no__t 0, klikněte na **nahrát**a vyberte soubor **HotelReviews-Free. csv** , který jste si stáhli v prvním kroku.
 
-    ![Nahrajte data](media/knowledge-store-create-portal/upload-command-bar.png "Nahrajte recenze hotelu") .
+    ![Nahrání dat]nahrání(media/knowledge-store-create-portal/upload-command-bar.png "pro posuzujecí Hotel")
 
 1. Kliknutím na **nahrát** IMPORTUJTE soubor CSV do Azure Blob Storage. Zobrazí se nový kontejner.
 
-    ![Vytvoření kontejneru objektů blob Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Vytvoření kontejneru objektů blob Azure")
+    ![Vytvoření kontejneru objektů BLOB v Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "vytvoření kontejneru objektů blob Azure")
 
 ## <a name="3---configure-postman"></a>3\. konfigurace pro post
 
-Stáhnout [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) importu a importovat ho do metody post pomocí **souboru, importovat...** . Přepněte na kartu **kolekce** a klikněte na tlačítko **...** a vyberte **Upravit**. 
+Stáhnout [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) importu a importovat ho do metody post pomocí **souboru, importovat...** . Přepněte na kartu **kolekce** a klikněte na tlačítko **...** a vyberte **Upravit**. 
 
 ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "navigovat do nabídky upravit v příspěvku")
 
@@ -61,7 +61,7 @@ V dialogovém okně výsledné Úpravy přejděte na kartu **proměnné** .
 
 Karta **proměnné** umožňuje přidat hodnoty, které provede, při každém jejich výskytu v rámci dvojitých složených závorek. Například metoda post nahradí symbol `{{admin-key}}` s aktuální hodnotou `admin-key`. Po nahrazení bude tato náhrada uvedena v adresách URL, hlavičkách, textu žádosti a tak dále. 
 
-Hodnotu pro `admin-key` najdete na kartě **klíče** Search Service. Budete muset změnit `search-service-name` a `storage-account-name` na hodnoty, které jste zvolili v [kroku 1](#1---create-services). Nastavte `storage-connection-string` z hodnoty na kartě **přístupové klíče** účtu úložiště. Ostatní hodnoty, které můžete ponechat beze změny.
+Hodnotu pro `admin-key` najdete na kartě **klíče** Search Service. Je potřeba změnit `search-service-name` a `storage-account-name` na hodnoty, které jste zvolili v [kroku 1](#1---create-services). Nastavte `storage-connection-string` z hodnoty na kartě **přístupové klíče** účtu úložiště. Ostatní hodnoty, které můžete ponechat beze změny.
 
 (media/knowledge-store-create-rest/postman-variables-window.png "Okno proměnné pro") vystavení ![záložky pro vystavení aplikace]
 
@@ -334,7 +334,7 @@ Po nastavení hlaviček `api-key` a `Content-type` a potvrzení, že tělo žád
 
 ## <a name="8---run-the-indexer"></a>8\. spuštění indexeru 
 
-V Azure Portal přejděte na **přehled** Search Service a vyberte kartu **indexery** . Klikněte na **hotely – recenze – IXR** , které jste vytvořili v předchozím kroku. Pokud indexer ještě není spuštěný, stiskněte tlačítko **Spustit** . Úloha indexování může vyvolávat upozornění týkající se rozpoznávání jazyka, protože data zahrnují některé recenze napsané v jazycích, které ještě nejsou podporované znalostmi rozpoznávání. 
+V Azure Portal přejděte na **přehled** Search Service a vyberte kartu **indexery** . klikněte na položku **hotely-recenze – IXR** , kterou jste vytvořili v předchozím kroku. Pokud indexer ještě není spuštěný, stiskněte tlačítko **Spustit** . Úloha indexování může vyvolávat upozornění týkající se rozpoznávání jazyka, protože data zahrnují některé recenze napsané v jazycích, které ještě nejsou podporované znalostmi rozpoznávání. 
 
 ## <a name="next-steps"></a>Další kroky
 

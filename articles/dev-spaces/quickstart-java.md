@@ -10,28 +10,32 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes pomocí kontejnerů, mikroslužeb a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 160787ba9766d27f9497b4fd6822fc5bc25cd4ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772662"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695519"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Ladění a iterace pomocí Visual Studio Code a Java v Kubernetes pomocí Azure Dev Spaces
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: ladění a iterace pomocí Visual Studio Code a Java v Kubernetes pomocí Azure Dev Spaces
 
-V tomto průvodci se naučíte:
+V této příručce se dozvíte, jak:
 
-- Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
+- Nastavte Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure.
 - Iterativní vývoj kódu v kontejnerech pomocí Visual Studio Code.
 - Ladit kód ve vývojovém prostoru z Visual Studio Code.
 
+Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
+- [Node. js a Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core a Visual Studio Code](quickstart-netcore.md)
+- [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
+- Předplatné Azure. Pokud ho nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
 - Ladicí program [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [Java pro rozšíření Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) pro Visual Studio Code nainstalován.
-- [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Nainstalovaná a nakonfigurovaná Maven](https://maven.apache.org).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
@@ -45,7 +49,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
-`use-dev-spaces` Pomocí příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
+Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -85,7 +89,7 @@ Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačí
 
 ![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code také vyzve k nakonfigurování základních imagí, vystaveného portu a veřejného koncového bodu `Azul Zulu OpenJDK for Azure (Free LTS)` , vyberte pro základní bitovou kopii, `8080` pro vystavený `Yes` port a pro povolení veřejného koncového bodu.
+Když Visual Studio Code také vyzve ke konfiguraci základních imagí, vystaveného portu a veřejného koncového bodu, pro základní bitovou kopii vyberte `Azul Zulu OpenJDK for Azure (Free LTS)`, `8080` pro vystavený port a `Yes` pro povolení veřejného koncového bodu.
 
 ![Vybrat základní image](media/get-started-java/select-base-image.png)
 
@@ -110,12 +114,12 @@ Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL.
 
 Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil.
 
-## <a name="update-code"></a>Aktualizace kódu
+## <a name="update-code"></a>Aktualizovat kód
 
 Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *program Java (AZDS)* . Příklad:
 
 1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
-1. Aktualizujte [řádek 19 `src/main/java/com/ms/sample/webfrontend/Application.java` v](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) :
+1. Aktualizujte [řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) na:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -136,7 +140,7 @@ V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zp
 
 Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 19 `src/main/java/com/ms/sample/webfrontend/Application.java` v a zapnete *F9*.
+Odstraňte zarážku tak, že umístíte kurzor na řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java` a zapnete *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
@@ -164,7 +168,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-java.md)
+> [Práce s více kontejnery a vývoj týmu](multi-service-java.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

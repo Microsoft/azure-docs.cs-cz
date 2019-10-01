@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242319"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695434"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
 
@@ -45,7 +45,7 @@ Po vyřešení počátečních problémů hlášených nástroji můžete nakonf
 
 Ve výchozím nastavení jsou úlohy a nástroje sestavení stále aktuální. Pokud je k dispozici aktualizovaná verze nástroje, nemusíte ji stahovat a instalovat. Rozšíření se za vás postará o aktualizaci.
 
-### <a name="under-the-hood"></a>Pohled pod kapotu
+### <a name="under-the-hood"></a>Pod kapotou
 
 Úlohy sestavení rozšíření skryjí složitosti:
   - Spouští se nástroje pro statickou analýzu zabezpečení.
@@ -73,7 +73,7 @@ Hesla a další tajné kódy uložené ve zdrojovém kódu jsou významné probl
 
 ### <a name="microsoft-security-risk-detection"></a>Zjišťování rizik zabezpečení společnosti Microsoft
 
-Zjišťování rizik společnosti Microsoft (MSRD) je cloudová služba pro účely přibližného testování. Identifikuje zneužití chyb zabezpečení v softwaru. Tato služba vyžaduje samostatný proces připojování. Další informace najdete v centru pro [vývojáře v MSRD](https://docs.microsoft.com/security-risk-detection/).
+Zjišťování rizik společnosti Microsoft (MSRD) je cloudová služba pro účely přibližného testování. Identifikuje zneužití chyb zabezpečení v softwaru. Tato služba vyžaduje samostatné předplatné a aktivaci. Další informace najdete v centru pro [vývojáře v MSRD](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Analyzátory Roslyn
 
@@ -108,7 +108,7 @@ Tuto úlohu můžete nakonfigurovat pro přerušení sestavení pro problémy na
 >[!NOTE]
 >Podle návrhu je každá úloha sestavení úspěšná, pokud se úloha úspěšně dokončí. To je pravdivé bez ohledu na to, zda nástroj najde problémy, aby bylo možné spustit sestavení pomocí povolení všech nástrojů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokyny, jak připojit a nainstalovat Microsoft Security Code Analysis, najdete v naší [příručce k registraci a instalaci](security-code-analysis-onboard.md).
 

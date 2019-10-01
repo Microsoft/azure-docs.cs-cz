@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309585"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703262"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytváření a správa objektů BLOB v úložišti objektů BLOB v Azure pomocí Azure Logic Apps
 
@@ -25,13 +25,14 @@ V tomto článku se dozvíte, jak můžete v rámci aplikace logiky pomocí kone
 Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. který funguje jako Trigger vaší aplikace logiky. Když k této události dojde, můžete aplikaci logiky aktualizovat nějaký soubor v kontejneru úložiště objektů blob, což je akce v aplikaci logiky.
 
 > [!NOTE]
-> Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Logic Apps však mají přístup k účtům Azure Storage, které existují v jiné oblasti, protože pro komunikaci mezi oblastmi se používá veřejná IP adresa. Případně můžete použít kteroukoli z možností:
+>
+> Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Logic Apps však mají přístup k účtům Azure Storage, které existují v jiné oblasti, protože pro komunikaci mezi oblastmi se používá veřejná IP adresa. Stačí se ujistit, že povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound). Nebo můžete použít pokročilejší možnosti zde:
 >
 > * Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
 >
-> * Pokud již používáte API Management, můžete použít tuto službu pro tento scénář. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
+> * Pokud pro API Management použijete vyhrazenou vrstvu, můžete rozhraní API úložiště před tím, že použijete API Management a povolíte jeho IP adresy prostřednictvím brány firewall. V podstatě přidejte virtuální síť Azure, kterou používá API Management, do nastavení brány firewall účtu úložiště. Pak můžete použít akci API Management nebo akci protokolu HTTP pro volání rozhraní API Azure Storage. Pokud však zvolíte tuto možnost, musíte proces ověřování zpracovat sami. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
 
-Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky. Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Blob Storage Connectoru](/connectors/azureblobconnector/).
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Blob Storage Connectoru](/connectors/azureblobconnector/).
 
 ## <a name="limits"></a>Omezení
 
@@ -43,7 +44,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
   * Postupujte podle triggeru s akcí Azure Blob Storage **získat obsah objektu BLOB** , který načte kompletní soubor a implicitně použije bloky dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -63,7 +64,7 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky s
 
 2. Do vyhledávacího pole zadejte jako filtr "Azure Blob". V seznamu triggery vyberte aktivační událost, kterou chcete.
 
-   Tento příklad používá tuto aktivační událost: **Při přidání nebo úpravě objektu BLOB (pouze vlastnosti)**
+   Tento příklad používá tuto aktivační událost: **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)**
 
    ![Vybrat aktivační událost](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -93,13 +94,13 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 2. V návrháři aplikace logiky pod triggerem nebo akcí vyberte **Nový krok**.
 
-   ![Přidat akci](./media/connectors-create-api-azureblobstorage/add-action.png) 
+   ![Přidání akce](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "Azure Blob". V seznamu akce vyberte akci, kterou chcete.
 
-   Tento příklad používá tuto akci: **Získat obsah objektu BLOB**
+   Tento příklad používá tuto akci: **získat obsah objektu BLOB**
 
    ![Vybrat akci](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 

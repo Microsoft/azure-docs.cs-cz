@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563197"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695133"
 ---
 # <a name="simple-entity"></a>Jednoduchá entita 
 
@@ -25,15 +25,17 @@ Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získá
 
 * Data nejsou konzistentně naformátovaná, ale označují stejnou věc. 
 
-![jednoduché entity](./media/luis-concept-entities/simple-entity.png)
+![jednoduchá entita](./media/luis-concept-entities/simple-entity.png)
 
-## <a name="example-json"></a>Ukázkový soubor JSON
+## <a name="example-json"></a>Ukázkový kód JSON
 
 `Bob Jones wants 3 meatball pho`
 
-V předchozím utterance `Bob Jones` je označena jako jednoduchý `Customer` entity.
+V předchozím utterance je `Bob Jones` označena jako jednoduchá entita `Customer`.
 
-Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utterance, umístění zjištěných textu a skóre:
+Data vrácená z koncového bodu zahrnují název entity, zjištěný text z utterance, umístění zjištěného textu a skóre:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -47,9 +49,48 @@ Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utte
 ]
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
+
+Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ]
+}```
+
+This is the JSON if `verbose=true` is set in the query string:
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ],
+    "$instance": {
+        "Customer": [
+            {
+                "type": "Customer",
+                "text": "Bob Jones",
+                "startIndex": 0,
+                "length": 9,
+                "score": 0.9339134,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
+
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
-|Jednoduché Entity|`Customer`|`bob jones`|
+|Jednoduchá entita|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Další kroky
 
