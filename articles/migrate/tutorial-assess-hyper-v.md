@@ -73,7 +73,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Při migraci virtuálních počítačů můžete vybrat jinou cílovou oblast Azure. Všechny oblasti Azure jsou podporovány pro cíl migrace.
 
 7. Klikněte na **Další**.
-8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment** > **Další.
+8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment** > **Další**.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
@@ -158,7 +158,7 @@ Nastavte zařízení poprvé.
 
 1. Ve Správci technologie Hyper-V > **Virtual Machines**klikněte pravým tlačítkem na virtuální počítač > **připojit**.
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: **název zařízení *https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
 1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
