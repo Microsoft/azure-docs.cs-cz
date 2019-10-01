@@ -101,7 +101,7 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pseudo TTY pro kontejner.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači. 
 
-K [](./face-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu. 
+K dispozici jsou `docker run` další [příklady](./face-resource-container-config.md#example-docker-run-commands) příkazu. 
 
 > [!IMPORTANT]
 > Aby bylo `Billing`možné spustit `ApiKey` kontejner ,nebosekontejnernespustí,musíbýtzadánymožnosti,a.`Eula` Další informace najdete v tématu [fakturace](#billing).
