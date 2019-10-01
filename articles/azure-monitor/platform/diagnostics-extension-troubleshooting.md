@@ -261,7 +261,7 @@ Agent monitorování shromažďuje protokoly a artefakty jako `.tsf` soubory. So
 Nový soubor s názvem `<relevantLogFile>.csv` se vytvoří ve stejné cestě jako odpovídající `.tsf` soubor.
 
 >[!NOTE]
-> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Doprovodné\*soubory (například PerformanceCountersTables_\*001. TSF, PerformanceCountersTables_\*\*002. TSF atd.) jsou automaticky zpracovány.
+> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Doprovodné soubory (například PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF atd.) jsou automaticky zpracovány.
 
 ### <a name="more-about-missing-trace-logs"></a>Další informace o chybějících protokolech trasování
 
@@ -298,5 +298,5 @@ Prostředí portálu ve virtuálních počítačích zobrazuje určité čítač
 
 - Určuje, jestli data v úložišti mají názvy čítačů v angličtině. Pokud názvy čítačů nejsou v angličtině, graf metriky portálu ho nedokáže rozpoznat. **Omezení rizik**: Změňte jazyk počítače na angličtinu pro systémové účty. Provedete to tak, že vyberete**oblast** >  **ovládacích panelů** > **nastavení kopírování** **pro správu** > . Pak zrušte výběr **uvítací obrazovky a systémových účtů** , aby se vlastní jazyk nepoužíval na účet System.
 
-- Pokud ve svém názvu čítače výkonu používáte\*zástupné znaky (), portál nebude moci korelovat nakonfigurovaný a shromážděný čítač, když jsou čítače výkonu odesílány do Azure Storage jímky. **Omezení rizik**: Abyste se ujistili, že můžete používat zástupné znaky a chcete,\*aby portál rozšířil (), směrujte čítače výkonu do [jímky "Azure monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
+- Pokud ve svém názvu čítače výkonu používáte\*zástupné znaky (), portál nebude moci korelovat nakonfigurovaný a shromážděný čítač, když jsou čítače výkonu odesílány do Azure Storage jímky. **Omezení rizik**: Abyste se ujistili, že můžete používat zástupné znaky a chcete,aby portál rozšířil (\*), směrujte čítače výkonu do [jímky "Azure monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
 

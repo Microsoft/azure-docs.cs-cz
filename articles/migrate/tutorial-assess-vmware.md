@@ -140,7 +140,7 @@ Zařízení nastavte pomocí následujících kroků.
 
 1. V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: **název zařízení *https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
 4. Ve webové aplikaci > **nastavení požadavků**postupujte takto:

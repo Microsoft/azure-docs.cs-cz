@@ -25,6 +25,8 @@
       items:
         - name: Jádro ASP.NET
           href: quickstart-feature-flag-aspnet-core.md
+        - name: Java Spring
+          href: quickstart-feature-flag-spring-boot.md
 - name: Kurzy
   items:
     - name: Povolení dynamické konfigurace v ASP.NET Core
@@ -33,6 +35,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: Použití příznaků funkcí v aplikaci .NET Core
       href: use-feature-flags-dotnet-core.md
+    - name: Použití příznaků funkcí v aplikaci Spring Boot
+      href: use-feature-flags-spring-boot.md
     - name: Správa příznaků funkcí
       href: manage-feature-flags.md
     - name: Integrace s kanálem CI/CD

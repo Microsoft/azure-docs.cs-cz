@@ -62,7 +62,7 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 1. Klikněte na existující podrobný plán, klikněte na **Upravit** podrobný plán nebo klikněte na **+ vytvořit podrobný plán** a vyplňte informace na kartě **základy** .
 
-1. Klikněte **na další: Artefakty nebo klikněte na kartu **artefakty.****
+1. Klikněte **na další: Artefakty** nebo klikněte na kartu **artefakty.**
 
 1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y** naplněné ve sloupci **Parameters** . Pro úpravu parametrů artefaktů klikněte na řádek artefaktu.
 
