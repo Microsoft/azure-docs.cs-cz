@@ -7,32 +7,32 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 811fdd0b177e3a255ca91145e39005de1d2328ad
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981099"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676453"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
+# <a name="tenant-and-host-pool-creation"></a>Vytvoření fondu tenanta a hostitele
 
 Tento článek popisuje problémy při počátečním nastavení tenanta virtuální plochy Windows a související infrastruktury fondu hostitelů relací.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-V současné době nepřijímáme případy podpory, ale virtuální počítač s Windows je ve verzi Preview. Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
+Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít image s více relacemi pro Windows 10 Enterprise, klikněte na Azure Marketplace. > vyberte Začínáme s**Microsoft Windows 10** > a [Windows 10 Enterprise pro Virtual desktops Preview verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít image s více relacemi pro Windows 10 Enterprise, přečtěte si Azure Marketplace **, vyberte začínáme** > **Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
-![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální klienty verze Preview verze 1809.](media/AzureMarketPlace.png)
+![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Vytváří se tenant virtuální plochy Windows.
 
 Tato část se věnuje potenciálním problémům při vytváření tenanta virtuálních klientů Windows.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Uživatel nemá oprávnění k dotazování na službu správy.
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
 
 ![Snímek obrazovky okna prostředí PowerShell, ve kterém uživatel nemá oprávnění pro dotaz na službu správy.](media/UserNotAuthorizedNewTenant.png)
 
@@ -51,9 +51,9 @@ Příklad nezpracované chyby:
        + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
 ```
 
-**Způsobit** Uživatel, který je přihlášený, nemá přiřazenou roli TenantCreator ve svých Azure Active Directory.
+**Příčina:** Uživatel, který je přihlášený, nemá přiřazenou roli TenantCreator ve svých Azure Active Directory.
 
-**Opravit** Postupujte podle pokynů v tématu [přiřazení role aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Po provedení těchto pokynů budete mít přiřazeného uživatele k roli TenantCreator.
+**Oprava:** Postupujte podle pokynů v tématu [přiřazení role aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Po provedení těchto pokynů budete mít přiřazeného uživatele k roli TenantCreator.
 
 ![Snímek obrazovky přiřazené role TenantCreator](media/TenantCreatorRoleAssigned.png)
 
@@ -65,7 +65,7 @@ Virtuální počítače hostitele relace je možné vytvořit několika způsoby
 
 Virtuální počítač s Windows – zřízení šablony fondu hostitelů je dostupné z Azure Marketplace.
 
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Chyba: Při použití odkazu z GitHubu se zobrazí zpráva "vytvořit bezplatný účet".
+### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Chyba: při použití odkazu z GitHubu se zobrazí zpráva "vytvořit bezplatný účet".
 
 ![Snímek obrazovky s vytvořením bezplatného účtu.](media/be615904ace9832754f0669de28abd94.png)
 
@@ -97,7 +97,7 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: Nasazení se nepovedlo..\<. název hostitele >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname >/JoinDomain
 
 ![Nasazování se nepovedlo snímek obrazovky.](media/e72df4d5c05d390620e07f0d7328d50f.png)
 
@@ -120,15 +120,15 @@ Příklad nezpracované chyby:
 **Oprava 2:** Přečtěte si, že chyba "název domény nejde přeložit" pro virtuální počítače nejsou připojené k doméně v [konfiguraci virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 
 
-### <a name="error-your-deployment-failedunauthorized"></a>Chyba: Nasazení selhalo. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Chyba: nasazení selhalo. ..\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
 ```
 
-**Způsobit** Předplatné, které používáte, je typ, který nemůže získat přístup k požadovaným funkcím v oblasti, kde se zákazník pokouší nasadit. Tato chyba se může zobrazit například v předplatných MSDN, Free nebo školství.
+**Příčina:** Předplatné, které používáte, je typ, který nemůže získat přístup k požadovaným funkcím v oblasti, kde se zákazník pokouší nasadit. Tato chyba se může zobrazit například v předplatných MSDN, Free nebo školství.
 
-**Opravit** Změňte typ nebo oblast předplatného na jednu, která má přístup k požadovaným funkcím.
+**Oprava:** Změňte typ nebo oblast předplatného na jednu, která má přístup k požadovaným funkcím.
 
 ### <a name="error-vmextensionprovisioningerror"></a>Chyba: VMExtensionProvisioningError
 
@@ -138,9 +138,9 @@ Příklad nezpracované chyby:
 
 **Příčina 2:** Přechodná chyba se spojením.
 
-**Opravit** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: Zadané uživatelské jméno správce není povolené.
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
 
 ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](media/f2b3d3700e9517463ef88fa41875bac9.png)
 
@@ -155,11 +155,11 @@ Příklad nezpracované chyby:
  /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
 ```
 
-**Způsobit** Zadané heslo obsahuje zakázané podřetězce (admin, Administrator, root).
+**Příčina:** Zadané heslo obsahuje zakázané podřetězce (admin, Administrator, root).
 
-**Opravit** Aktualizujte uživatelské jméno nebo použijte jiné uživatele.
+**Oprava:** Aktualizujte uživatelské jméno nebo použijte jiné uživatele.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: Virtuální počítač ohlásil selhání při zpracování rozšíření
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
 
 ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](media/49c4a1836a55d91cd65125cf227f411f.png)
 
@@ -167,7 +167,7 @@ Příklad nezpracované chyby:
 
 ```Error
 { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-hostpool4-preview-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
+ rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
  { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
@@ -181,11 +181,11 @@ Příklad nezpracované chyby:
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
 
-**Způsobit** Rozšíření PowerShell DSC nebylo schopné získat přístup správce na virtuálním počítači.
+**Příčina:** Rozšíření PowerShell DSC nebylo schopné získat přístup správce na virtuálním počítači.
 
-**Opravit** Ujistěte se, že uživatelské jméno a heslo mají na virtuálním počítači přístup správce a znovu spusťte šablonu Azure Resource Manager.
+**Oprava:** Ujistěte se, že uživatelské jméno a heslo mají na virtuálním počítači přístup správce a znovu spusťte šablonu Azure Resource Manager.
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Chyba: DeploymentFailed – konfigurace prostředí PowerShell DSC "FirstSessionHost" se dokončila s chybami:
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Chyba: DeploymentFailed – konfigurace prostředí PowerShell DSC ' FirstSessionHost ' se dokončila s chybami
 
 ![Snímek obrazovky s nasazením se nepovedl s konfigurací PowerShellu pro DSC FirstSessionHost se dokončil s chybami.](media/64870370bcbe1286906f34cf0a8646ab.png)
 
@@ -213,9 +213,9 @@ Příklad nezpracované chyby:
 
 ```
 
-**Způsobit** Rozšíření PowerShell DSC nebylo schopné získat přístup správce na virtuálním počítači.
+**Příčina:** Rozšíření PowerShell DSC nebylo schopné získat přístup správce na virtuálním počítači.
 
-**Opravit** Ověřte, že zadané uživatelské jméno a heslo mají na virtuálním počítači přístup správce a znovu spusťte šablonu Azure Resource Manager.
+**Oprava:** Ověřte, že zadané uživatelské jméno a heslo mají na virtuálním počítači přístup správce a znovu spusťte šablonu Azure Resource Manager.
 
 ### <a name="error-deploymentfailed--invalidresourcereference"></a>Chyba: DeploymentFailed – InvalidResourceReference
 
@@ -240,9 +240,9 @@ the referenced resource exists, and that both resources are in the same
 region.\\\",\\r\\n\\\"details\\\": []\\r\\n }\\r\\n}\"\r\n }\r\n ]\r\n }\r\n ]\r\n }\r\n}"}]}
 ```
 
-**Způsobit** Část názvu skupiny prostředků se používá pro některé prostředky, které šablona vytváří. Vzhledem k názvu, který odpovídá stávajícím prostředkům, může šablona vybrat existující prostředek z jiné skupiny.
+**Příčina:** Část názvu skupiny prostředků se používá pro některé prostředky, které šablona vytváří. Vzhledem k názvu, který odpovídá stávajícím prostředkům, může šablona vybrat existující prostředek z jiné skupiny.
 
-**Opravit** Když spouštíte šablonu Azure Resource Manager pro nasazení virtuálních počítačů hostitele relace, nastavte první dva znaky jako jedinečné pro název skupiny prostředků předplatného.
+**Oprava:** Když spouštíte šablonu Azure Resource Manager pro nasazení virtuálních počítačů hostitele relace, nastavte první dva znaky jako jedinečné pro název skupiny prostředků předplatného.
 
 ### <a name="error-deploymentfailed--invalidresourcereference"></a>Chyba: DeploymentFailed – InvalidResourceReference
 
@@ -267,30 +267,30 @@ resources are in the same region.\\\",\\r\\n \\\"details\\\": []\\r\\n }\\r\\n}\
 }\r\n ]\r\n }\r\n ]\r\n }\r\n\
 ```
 
-**Způsobit** Tato chyba je způsobená tím, že síťová karta vytvořená pomocí šablony Azure Resource Manager má stejný název jako jiná síťová karta, která už je ve virtuální síti.
+**Příčina:** Tato chyba je způsobená tím, že síťová karta vytvořená pomocí šablony Azure Resource Manager má stejný název jako jiná síťová karta, která už je ve virtuální síti.
 
-**Opravit** Použijte jinou předponu hostitele.
+**Oprava:** Použijte jinou předponu hostitele.
 
-### <a name="error-deploymentfailed--error-downloading"></a>Chyba: DeploymentFailed – Chyba při stahování
+### <a name="error-deploymentfailed--error-downloading"></a>Chyba: DeploymentFailed – stahování chyby
 
 Příklad nezpracované chyby:
 
 ```Error
 \\\"The DSC Extension failed to execute: Error downloading
-https://catalogartifact.azureedge.net/publicartifacts/rds.wvd-hostpool-3-preview-
-2dec7a4d-006c-4cc0-965a-02bbe438d6ff-private-preview-
-1/Artifacts/DSC/Configuration.zip after 29 attempts: The remote name could not be
+https://catalogartifact.azureedge.net/publicartifacts/rds.wvd-provision-host-pool-
+2dec7a4d-006c-4cc0-965a-02bbe438d6ff-prod
+/Artifacts/DSC/Configuration.zip after 29 attempts: The remote name could not be
 resolved: 'catalogartifact.azureedge.net'.\\nMore information about the failure can
 be found in the logs located under
 'C:\\\\WindowsAzure\\\\Logs\\\\Plugins\\\\Microsoft.Powershell.DSC\\\\2.77.0.0' on
 the VM.\\\"
 ```
 
-**Způsobit** Příčinou této chyby je statická trasa, pravidlo brány firewall nebo NSG blokující stažení souboru ZIP svázaného se šablonou Azure Resource Manager.
+**Příčina:** Příčinou této chyby je statická trasa, pravidlo brány firewall nebo NSG blokující stažení souboru ZIP svázaného se šablonou Azure Resource Manager.
 
-**Opravit** Odebere blokující statickou trasu, pravidlo brány firewall nebo NSG. Případně můžete otevřít soubor JSON šablony Azure Resource Manager v textovém editoru, vytvořit odkaz na soubor zip a stáhnout prostředek do povoleného umístění.
+**Oprava:** Odebere blokující statickou trasu, pravidlo brány firewall nebo NSG. Případně můžete otevřít soubor JSON šablony Azure Resource Manager v textovém editoru, vytvořit odkaz na soubor zip a stáhnout prostředek do povoleného umístění.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Uživatel nemá oprávnění k dotazování na službu správy.
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
 
 Příklad nezpracované chyby:
 
@@ -305,18 +305,18 @@ Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed 
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
-**Způsobit** Zadaný správce tenanta virtuálních počítačů s Windows nemá platné přiřazení role.
+**Příčina:** Zadaný správce tenanta virtuálních počítačů s Windows nemá platné přiřazení role.
 
-**Opravit** Uživatel, který vytvořil tenanta virtuálních klientů Windows, musí se přihlásit k prostředí PowerShell virtuální plochy Windows a přiřadit pokusy o přiřazení role uživateli. Pokud používáte parametry šablony Azure Resource Manager GitHubu, postupujte podle těchto pokynů pomocí příkazů PowerShellu:
+**Oprava:** Uživatel, který vytvořil tenanta virtuálních klientů Windows, musí se přihlásit k prostředí PowerShell virtuální plochy Windows a přiřadit pokusy o přiřazení role uživateli. Pokud používáte parametry šablony Azure Resource Manager GitHubu, postupujte podle těchto pokynů pomocí příkazů PowerShellu:
 
 ```PowerShell
 Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: Uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
 
-![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
+![Snímek obrazovky vašeho nasazení selhal kvůli nedostatku služby Multi-Factor Authentication (MFA).](media/MFARequiredError.png)
 
 Příklad nezpracované chyby:
 
@@ -324,31 +324,31 @@ Příklad nezpracované chyby:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Způsobit** Zadaný správce tenanta virtuálních počítačů s Windows vyžaduje přihlášení k Azure Multi-Factor Authentication (MFA).
+**Příčina:** Zadaný správce tenanta virtuálních počítačů s Windows vyžaduje přihlášení k Azure Multi-Factor Authentication (MFA).
 
-**Opravit** Pomocí kroků v [tomto kurzu vytvořte instanční objekt a přiřaďte mu roli pro vašeho tenanta virtuálních klientů Windows. Vytvořte instanční objekty a přiřazení rolí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Po ověření, že se můžete přihlásit k virtuální ploše Windows pomocí instančního objektu, spusťte znovu nabídku Azure Marketplace nebo šablonu GitHub Azure Resource Manager, podle toho, kterou metodu používáte. Podle následujících pokynů zadejte správné parametry pro vaši metodu.
+**Oprava:** Pomocí kroků v tomto kurzu vytvořte instanční objekt a přiřaďte mu roli pro vašeho tenanta virtuálních klientů Windows. v [PowerShellu vytvořte instanční objekty a přiřazení rolí](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Po ověření, že se můžete přihlásit k virtuální ploše Windows pomocí instančního objektu, spusťte znovu nabídku Azure Marketplace nebo šablonu GitHub Azure Resource Manager, podle toho, kterou metodu používáte. Podle následujících pokynů zadejte správné parametry pro vaši metodu.
 
 Pokud používáte nabídku Azure Marketplace, zadejte hodnoty pro následující parametry pro správné ověření pro virtuální plochu Windows:
 
-- Vlastník klienta vzdálené plochy Windows VM: Instanční objekt
-- ID aplikace: Identifikace aplikace nového instančního objektu, který jste vytvořili
-- Heslo/potvrzení hesla: Tajný kód pro heslo, který jste vygenerovali pro instanční objekt
-- ID tenanta Azure AD: ID tenanta služby Azure AD, které jste vytvořili.
+- Vlastník vzdálené plochy klienta Windows: instanční objekt
+- ID aplikace: Identifikace aplikace nového instančního objektu, který jste vytvořili.
+- Heslo/potvrzení hesla: tajný kód pro heslo, který jste vygenerovali pro instanční objekt.
+- ID tenanta Azure AD: ID tenanta služby Azure AD pro instanční objekt, který jste vytvořili
 
 Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro následující parametry pro správné ověření na virtuálním počítači s Windows:
 
-- Hlavní název uživatele (UPN) správce tenanta nebo ID aplikace: Identifikace aplikace nového instančního objektu, který jste vytvořili
-- Heslo správce klienta: Tajný kód pro heslo, který jste vygenerovali pro instanční objekt
+- Hlavní název uživatele (UPN) správce tenanta nebo ID aplikace: Identifikace aplikace nového instančního objektu, který jste vytvořili.
+- Heslo správce tenanta: tajný kód pro heslo, který jste vygenerovali pro instanční objekt.
 - IsServicePrincipal: **true**
-- AadTenantId: ID tenanta služby Azure AD, které jste vytvořili.
+- AadTenantId: ID tenanta Azure AD vytvořeného objektu služby
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 - Informace o řešení problémů s připojením klienta k virtuální ploše Windows najdete v tématu [připojení klientů vzdálené plochy](troubleshoot-client-connection.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Další informace o službě verze Preview najdete v tématu [prostředí verze Preview pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)šablon Správce prostředků.
+- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
 - Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

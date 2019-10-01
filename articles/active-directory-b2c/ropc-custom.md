@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063704"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678140"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -39,16 +39,9 @@ Následující toky nejsou podporovány:
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="register-an-application"></a>Zaregistrovat aplikaci
+## <a name="register-an-application"></a>Registrace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikace**a pak vyberte **Přidat**.
-5. Zadejte název aplikace, například *ROPC_Auth_app*.
-6. Pro **webovou aplikaci nebo webové rozhraní API**vyberte **ne** a pak pro nativního **klienta**vyberte **Ano** .
-7. Všechny ostatní hodnoty ponechte tak, jak jsou, a pak vyberte **vytvořit**.
-8. Vyberte novou aplikaci a poznamenejte si ID aplikace pro pozdější použití.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>Vytvoření zásady vlastníka prostředku
 
@@ -102,7 +95,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     </ClaimsTransformations>
     ```
 
-4. Vyhledejte element **ClaimsProvider** , který má **DisplayName** `Local Account SignIn` a přidejte následující technický profil:
+4. Vyhledejte element **ClaimsProvider** s **názvem DisplayName** `Local Account SignIn` a přidejte následující technický profil:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -235,7 +228,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 7. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
 8. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
-9. Klikněte na **Odeslat**.
+9. Klikněte na **nahrát**.
 
 ## <a name="create-a-relying-party-file"></a>Vytvoření souboru předávající strany
 
@@ -256,7 +249,7 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
 
 5. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
 6. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *ROPC_Auth. XML* .
-7. Klikněte na **Odeslat**.
+7. Klikněte na **nahrát**.
 
 ## <a name="test-the-policy"></a>Testování zásad
 
@@ -264,15 +257,15 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Klíč | Value |
+| Key | Hodnota |
 | --- | ----- |
-| username | `user-account` |
-| password | `password1` |
-| grant_type | password |
-| scope | OpenID `application-id` offline_access |
+| Jmen | `user-account` |
+| Zadáno | `password1` |
+| parametr grant_type | Zadáno |
+| rozsah | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | id_token tokenu |
 
@@ -309,19 +302,19 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Klíč | Value |
+| Key | Hodnota |
 | --- | ----- |
-| grant_type | refresh_token |
+| parametr grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| prostředek | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` ID aplikace z registrace *ROPC_Auth_app* .
-- Nahraďte parametrem `refresh-token` **refresh_token** , který byl zpětně odeslán v předchozí odpovědi.
+- Nahraďte `refresh-token` za hodnotu **refresh_token** , která byla vrácena zpět v předchozí odpovědi.
 
 Úspěšná odpověď vypadá jako v následujícím příkladu:
 
@@ -345,7 +338,7 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 
 Azure AD B2C splňuje předpisy OAuth 2,0 pro přihlašovací údaje k heslu veřejného klienta a měly by být kompatibilní s většinou klientských sad SDK. Nejnovější informace najdete v tématu [nativní sada App SDK pro OAuth 2,0 a OpenID Connect implementující moderní osvědčené postupy](https://appauth.io/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Úplný příklad tohoto scénáře najdete v [úvodní sadě Azure Active Directory B2C vlastní zásady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - Přečtěte si další informace o tokenech, které používá Azure Active Directory B2C v [odkazu na token](active-directory-b2c-reference-tokens.md).

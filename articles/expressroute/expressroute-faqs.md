@@ -1,6 +1,6 @@
 ---
-title: Časté otázky – Azure ExpressRoute | Dokumentace Microsoftu
-description: ExpressRoute – nejčastější dotazy, obsahuje informace o podporované služby Azure, náklady, Data a připojení, smlouvy SLA, poskytovatelé a umístění, šířky pásma a další technické podrobnosti.
+title: Nejčastější dotazy – Azure ExpressRoute | Microsoft Docs
+description: Nejčastější dotazy k ExpressRoute obsahují informace o podporovaných službách Azure, nákladech, datech a připojeních, smlouvě SLA, poskytovatelích a umístěních, šířce pásma a dalších technických podrobnostech.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 886dd9b0f3c72fc7649b1e2fc3927cfa87f65312
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316507"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686994"
 ---
-# <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
+# <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
 
 ## <a name="what-is-expressroute"></a>Co je ExpressRoute?
 
-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datacentry Microsoftu a infrastrukturou ve vlastních prostorách nebo v společně umístěného zařízení. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a rychlost s nižší latencí než Typická připojení přes Internet.
+ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí vyšší úroveň zabezpečení, spolehlivosti a rychlosti s nižší latencí než typická připojení přes Internet.
 
-### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Jaké jsou výhody použití ExpressRoute a připojení k privátní síti?
+### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Jaké jsou výhody používání ExpressRoute a privátních síťových připojení?
 
-Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízí vyšší zabezpečení, spolehlivost a rychlost, s konzistentní vzhledem k aplikacím a nižší latencí než Typická připojení přes Internet. V některých případech může používání připojení ExpressRoute k přenosu dat mezi místním zařízením a Azure přispět k výraznému snížení nákladů.
+Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízejí vyšší zabezpečení, spolehlivost a rychlost s nižší a konzistentní latencí než typická připojení přes Internet. V některých případech může použití připojení ExpressRoute k přenosu dat mezi místními zařízeními a Azure přinést významné cenové výhody.
 
-### <a name="where-is-the-service-available"></a>Pokud je daná služba dostupná?
+### <a name="where-is-the-service-available"></a>Kde je služba k dispozici?
 
-Umístění a dostupnost služby najdete na této stránce: [ExpressRoute partneři a umístění](expressroute-locations.md).
+Na této stránce najdete umístění a dostupnost služby: [ExpressRoute partneři a umístění](expressroute-locations.md).
 
-### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak můžou využít ExpressRoute a připojení k Microsoftu, když nemám partnerství s jedním z partnerů ExpressRoute dopravce?
+### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak se dá používat ExpressRoute pro připojení k Microsoftu, pokud nemám partnerství s některým z partnerů ExpressRoute-dopravce?
 
-Můžete vybrat místní dopravce a ŘIDICÍ ethernetová připojení k jednomu z podporovaných exchange umístění poskytovatele. Můžete navázat partnerský stav s Microsoftem v umístění poskytovatele. Zkontrolujte poslední část [ExpressRoute partneři a umístění](expressroute-locations.md) jestli váš poskytovatel služeb je k dispozici v žádném umístění serveru exchange. Pak si můžete objednat okruh ExpressRoute prostřednictvím poskytovatele služeb pro připojení k Azure.
+V jednom z podporovaných umístění poskytovatelů Exchange můžete vybrat připojení k síti Ethernet pro místní dopravce a pozemky. V umístění poskytovatele pak můžete vytvořit partnera s Microsoftem. Podívejte se na poslední část [partnerů a umístění ExpressRoute](expressroute-locations.md) , abyste viděli, jestli se poskytovatel služeb nachází v žádném umístění Exchange. Pak můžete objednat okruh ExpressRoute prostřednictvím poskytovatele služby pro připojení k Azure.
 
-### <a name="how-much-does-expressroute-cost"></a>Kolik stojí ExpressRoute?
+### <a name="how-much-does-expressroute-cost"></a>Kolik stojí ExpressRoute náklady?
 
-Zkontrolujte [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/expressroute/) informace o cenách.
+Podrobnosti o cenách najdete v [podrobnostech](https://azure.microsoft.com/pricing/details/expressroute/) o cenách.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Pokud budu platit pro okruh ExpressRoute danou šířku pásma, má připojení k síti VPN, které můžu zakoupit od svého poskytovatele síťových služeb do stejné rychlost?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, musí mít připojení k síti VPN, které zakoupíte od poskytovatele síťové služby, stejnou rychlost?
 
-Ne. Připojení k síti VPN libovolné rychlosti si můžete zakoupit od svého poskytovatele služeb. Připojení k Azure je však omezená na šířku pásma okruhu ExpressRoute můžete zakoupit.
+Ne. Připojení k síti VPN libovolné rychlosti můžete koupit od svého poskytovatele služeb. Připojení k Azure je ale omezené na šířku pásma okruhu ExpressRoute, kterou si koupíte.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Pokud budu platit pro okruh ExpressRoute danou šířku pásma, musím schopnost burst až vyšších rychlostí v případě potřeby?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám v případě potřeby možnost zvýšit zatížení na vyšší rychlost?
 
-Ano. Okruhy ExpressRoute jsou nakonfigurovány a umožňuje tak burst až dvakrát limit šířky pásma, kterou jste si opatřili bez jakýchkoli dalších nákladů. Obraťte se na svého poskytovatele služby, pokud podporuje tuto možnost. Nejedná se o trvalou dobu a není zaručena. 
+Ano. Okruhy ExpressRoute jsou nakonfigurované tak, aby vám umožnily nárůst limitu šířky pásma na více než dvě. Pokud chcete zjistit, jestli podporují tuto funkci, obraťte se na svého poskytovatele služeb. Nejedná se o trvalou dobu a není zaručena. 
 
-### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Můžu použít stejné připojení privátní sítě pomocí virtuální sítě a dalšími službami Azure současně?
+### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Můžu současně použít stejné privátní síťové připojení k virtuální síti a dalším službám Azure?
 
-Ano. Okruh ExpressRoute, jakmile je nastavená, umožňuje přístup k služby v rámci virtuální sítě a dalšími službami Azure současně. Připojení k virtuálním sítím přes cestou soukromého partnerského vztahu a k dalším službám přes cesta partnerského vztahu Microsoftu.
+Ano. Okruh ExpressRoute, po nastavení, umožňuje přístup ke službám v rámci virtuální sítě a dalších služeb Azure současně. Připojíte se k virtuálním sítím přes privátní cestu partnerského vztahu a dalším službám přes cestu partnerského vztahu Microsoftu.
 
-### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Nabízí ExpressRoute smlouva o úrovni služeb (SLA)?
+### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Nabízí ExpressRoute smlouva SLA (SLA)?
 
-Informace najdete v tématu [ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) stránky.
+Informace najdete na stránce věnované [smlouvě SLA pro ExpressRoute](https://azure.microsoft.com/support/legal/sla/) .
 
 ## <a name="supported-services"></a>Podporované služby
 
@@ -66,25 +66,25 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI – k dispozici prostřednictvím regionální komunity Azure, [najdete informace o](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) tom, jak zjistit oblast Power BI tenanta.
 * Azure Active Directory
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
-* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>**Tyto služby nejsou podporovány**:
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunita Azure Global Services)
+* Většina služeb Azure je podporovaná. Podívejte se prosím přímo na službu, kterou chcete použít k ověření podpory.<br><br>**Následující služby nejsou podporovány**:
     * CDN
     * Azure Front Door
-    * Multi-factor Authentication
+    * Multi-Factor Authentication Server (starší verze)
     * Traffic Manager
 
 ### <a name="public-peering"></a>Veřejný partnerský vztah
 
 >[!NOTE]
->Veřejný partnerský vztah se zakázalo na nové okruhy ExpressRoute. Služby Azure jsou k dispozici na partnerský vztah Microsoftu.
+>Veřejný partnerský vztah byl zakázán pro nové okruhy ExpressRoute. Služby Azure jsou dostupné v partnerském vztahu Microsoftu.
 >
 
 * Power BI
-* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>
-  **Tyto služby nejsou podporovány**:
+* Většina služeb Azure je podporovaná. Podívejte se prosím přímo na službu, kterou chcete použít k ověření podpory.<br><br>
+  **Následující služby nejsou podporovány**:
     * CDN
     * Azure Front Door
-    * Multi-factor Authentication
+    * Multi-Factor Authentication Server (starší verze)
     * Traffic Manager
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Je Dynamics 365 podporován na ExpressRoute?
@@ -94,41 +94,41 @@ Prostředí Dynamics 365 a Common Data Service (CD) jsou hostována v Azure, tak
 > [!NOTE]
 > [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) se **nevyžaduje** pro připojení Dynamics 365 přes Azure ExpressRoute.
 
-## <a name="data-and-connections"></a>Připojení a dat.
+## <a name="data-and-connections"></a>Data a připojení
 
-### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Je nějak omezený objem dat, který jsem se můžou přenášet přes ExpressRoute?
+### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Existují omezení množství dat, která lze přenést pomocí ExpressRoute?
 
-Objem přenosu dat jsme nenastavujte omezení. Odkazovat na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/expressroute/) o sazby za šířku pásma.
+Nenastavuje se limit pro objem přenosů dat. Informace o sazbách šířky pásma najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/expressroute/) .
 
-### <a name="what-connection-speeds-are-supported-by-expressroute"></a>ExpressRoute podporuje jaké rychlosti připojení?
+### <a name="what-connection-speeds-are-supported-by-expressroute"></a>Jaké rychlosti připojení podporuje ExpressRoute?
 
-Podporované šířky pásma nabídky:
+Podporované nabídky šířky pásma:
 
 50 Mb/s, 100 Mb/s, 200 Mb/s, 500 Mb/s, 1 Gb/s, 2 Gb/s, 5 Gb/s, 10 Gb/s
 
-### <a name="which-service-providers-are-available"></a>Které poskytovatelé služeb jsou k dispozici?
+### <a name="which-service-providers-are-available"></a>Kteří poskytovatelé služeb jsou k dispozici?
 
-Zobrazit [ExpressRoute partneři a umístění](expressroute-locations.md) seznam poskytovatelů služeb a umístění.
+Seznam poskytovatelů a umístění služeb najdete v tématu [ExpressRoute partneři a umístění](expressroute-locations.md) .
 
 ## <a name="technical-details"></a>Technické podrobnosti
 
-### <a name="what-are-the-technical-requirements-for-connecting-my-on-premises-location-to-azure"></a>Jaké jsou technické požadavky pro připojení k Azure v místním umístění?
+### <a name="what-are-the-technical-requirements-for-connecting-my-on-premises-location-to-azure"></a>Jaké jsou technické požadavky pro připojení k místnímu umístění do Azure?
 
-Zobrazit [stránku požadavků pro ExpressRoute](expressroute-prerequisites.md) pro požadavky.
+Požadavky najdete na [stránce s požadavky na ExpressRoute](expressroute-prerequisites.md) .
 
 ### <a name="are-connections-to-expressroute-redundant"></a>Jsou připojení k ExpressRoute redundantní?
 
-Ano. Každý okruh ExpressRoute má redundantní dvojici křížové připojení nakonfigurovaná k zajištění vysoké dostupnosti.
+Ano. Každý okruh ExpressRoute má redundantní dvojici vzájemného připojení, která je nakonfigurovaná tak, aby poskytovala vysokou dostupnost.
 
-### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Bude ztrátě připojení, pokud jeden z odkazů ExpressRoute?
+### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Ztratí se připojení v případě selhání některého z mých odkazů na ExpressRoute?
 
-Pokud jeden z křížové připojení selže, nedojde ke ztrátě připojení. Redundantní připojení je k dispozici pro podporu zatížení sítě a zajištění vysoké dostupnosti váš okruh ExpressRoute. Kromě toho můžete vytvořit okruhu v jiném umístění partnerského vztahu k dosažení okruh úroveň odolnosti.
+V případě, že jedno z vzájemných připojení selže, připojení k síti nebude ztraceno. K dispozici je redundantní připojení pro podporu zatížení vaší sítě a zajištění vysoké dostupnosti okruhu ExpressRoute. Můžete také vytvořit okruh v jiném umístění partnerského vztahu, abyste dosáhli odolnosti na úrovni okruhu.
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Návody implementovat redundanci s privátním partnerským vztahem?
 
 Více okruhů ExpressRoute z různých umístění partnerského vztahu může být připojeno ke stejné virtuální síti, aby bylo zajištěno vysoké dostupnosti v případě, že jeden okruh nebude k dispozici. Pak můžete [přiřadit vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) místnímu připojení a upřednostnit konkrétní okruh. Důrazně doporučujeme, aby si zákazníci nastavili aspoň dva okruhy ExpressRoute, aby se předešlo jednomu bodu selhání. 
 
-V tématu Navrhování pro zajištění vysoké [dostupnosti najdete tady](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) [, kde](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) najdete návrh pro zotavení po havárii.  
+V tématu Navrhování pro zajištění vysoké [dostupnosti najdete tady, kde najdete](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) [Návrh pro zotavení](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) po havárii.  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak implementovat redundanci v partnerském vztahu Microsoftu?
 
@@ -136,9 +136,9 @@ Důrazně doporučujeme, když zákazníci používají partnerské vztahy Micro
 
 Pro návrh pro zajištění vysoké dostupnosti se podívejte [sem](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) .
 
-### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak můžu zajistit vysokou dostupnost na virtuální síť připojená k ExpressRoute?
+### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Návody zajistěte vysokou dostupnost ve virtuální síti připojené k ExpressRoute?
 
-Dosáhněte vysoké dostupnosti pomocí připojení k vaší virtuální sítě okruhů ExpressRoute v různých umístění partnerského vztahu (například, Singapur, singapur2). Pokud jeden okruh ExpressRoute ocitne mimo provoz, přestane fungovat připojení prostřednictvím jiného okruhu ExpressRoute. Ve výchozím nastavení je směrování přenosů z vaší virtuální sítě založené na stejné náklady Multipath směrování ECMP (). Váhy připojení můžete použít k preferovali jeden okruh do jiného. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
+Vysokou dostupnost můžete dosáhnout propojením okruhů ExpressRoute v různých umístěních partnerských vztahů (například Singapur, Singapur2) do vaší virtuální sítě. Pokud dojde k výpadku jednoho okruhu ExpressRoute, připojení převezme služby při selhání jiným okruhem ExpressRoute. Provoz, který opouští vaši virtuální síť, se ve výchozím nastavení směruje na základě ECMP (EQUAL cost multi-Path Routing). Pomocí váhy připojení můžete upřednostnit jeden okruh na jiný. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Návody zajistěte, aby byl můj provoz určený pro veřejné služby Azure, jako je Azure Storage a Azure SQL v Microsoftu nebo veřejný partnerský vztah, upřednostňovaný na cestě ExpressRoute?
 
@@ -146,160 +146,160 @@ Ve směrovačích musíte implementovat atribut *místní předvolby* , aby se z
 
 Další podrobnosti najdete [na základě](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) výběru cest protokolu BGP a konfigurací běžných směrovačů. 
 
-### <a name="onep2plink"></a>Pokud nejsem společně umístěné v cloudové výměně a poskytovateli služeb nabízí připojení typu point-to-point, je nutné uspořádat dva fyzické připojení mezi Moje a místní sítí a Microsoftem?
+### <a name="onep2plink"></a>Pokud nemám společné umístění v cloudové výměně a poskytovatel mých služeb nabízí připojení typu Point-to-Point, musím objednat dvě fyzická připojení mezi místní sítí a Microsoftem?
 
-Pokud váš poskytovatel služeb můžete vytvořit dvě sítě Ethernet virtuálních okruhů přes fyzické připojení, vám stačí jedno fyzické připojení. Fyzické připojení (například optického vlákna) je ukončen ve vrstvě 1 (L1) zařízení (viz obrázek). Označená dva okruhy virtuální sítě Ethernet s různými ID sítě VLAN, jeden pro primární okruh a jeden pro sekundární. ID sítě VLAN jsou ve vnější 802.1Q Ethernet záhlaví. Vnitřní 802.1Q záhlaví Ethernet (není vidět) je namapovaný na konkrétní [domény směrování ExpressRoute](expressroute-circuit-peerings.md).
+Pokud poskytovatel služeb může navázat dva virtuální okruhy sítě Ethernet přes fyzické připojení, budete potřebovat jenom jedno fyzické připojení. Fyzické připojení (například optické vlákno) je ukončeno na zařízení vrstvy 1 (L1) (viz obrázek). Dva virtuální okruhy sítě Ethernet jsou označeny různými ID sítě VLAN, jeden pro primární okruh a druhý pro sekundární. Identifikátory sítě VLAN jsou v hlavičce vnějšího 802.1 Q Ethernet. Hlavička vnitřního 802.1 Q Ethernet (není zobrazená) je namapovaná na konkrétní [doménu směrování ExpressRoute](expressroute-circuit-peerings.md).
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
-### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Můžu prodloužit jeden z mé virtuální místní sítě do Azure pomocí ExpressRoute?
+### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Můžu do Azure roztáhnout jednu z těchto sítí VLAN pomocí ExpressRoute?
 
-Ne. Nepodporujeme rozšíření vrstvy 2 připojení do Azure.
+Ne. Do Azure nepodporujeme rozšíření pro připojení vrstvy 2.
 
-### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Může mít více než jeden okruh ExpressRoute ve svém předplatném?
+### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Můžu ve svém předplatném více než jeden okruh ExpressRoute?
 
-Ano. Můžete mít více než jeden okruh ExpressRoute v rámci vašeho předplatného. Výchozí limit je nastaven na 10. Microsoft Support o zvýšení limitu, můžete kontaktovat v případě potřeby.
+Ano. Ve vašem předplatném můžete mít více než jeden okruh ExpressRoute. Výchozí omezení je nastaveno na hodnotu 10. V případě potřeby můžete kontaktovat podpora Microsoftu pro zvýšení limitu.
 
-### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Může mít okruhy ExpressRoute od různých poskytovatelů služeb?
+### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Můžu mít ExpressRoute okruhy od různých poskytovatelů služeb?
 
-Ano. Okruhy ExpressRoute může mít s mnoho poskytovatelů služeb. Každý okruh ExpressRoute je přidružen pouze jeden poskytovatel. 
+Ano. Můžete mít okruhy ExpressRoute s mnoha poskytovateli služeb. Každý okruh ExpressRoute je přidružen pouze k jednomu poskytovateli služeb. 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Zobrazila se dvěma umístění partnerských vztahů ExpressRoute ve stejné metro, například Singapur a singapur2. Které umístění partnerského vztahu je nejvhodnější k vytvoření okruhu ExpressRoute?
-Pokud váš poskytovatel služeb nabízí ExpressRoute v obou lokalitách, můžete spolupracovat se svým poskytovatelem a vyberte buď server a nastavte ExpressRoute. 
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Zobrazuje se dvě umístění partnerských vztahů ExpressRoute ve stejné metrice, například Singapur a Singapur2. Které umístění partnerského vztahu mám zvolit pro vytvoření svého okruhu ExpressRoute?
+Pokud váš poskytovatel služeb nabízí ExpressRoute na obou lokalitách, můžete s vaším poskytovatelem spolupracovat a vybrat buď lokalitu, a nastavit ExpressRoute. 
 
-### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Může mít víc okruhů ExpressRoute ve stejné metro? Můžete propojit je ke stejné virtuální síti?
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Můžu ve stejné metrice více okruhů ExpressRoute? Můžu je propojit se stejnou virtuální sítí?
 
-Ano. Máte víc okruhů ExpressRoute s poskytovateli stejných nebo různých služeb. Pokud metro má více umístění partnerského vztahu ExpressRoute a obvody se vytvářejí na jiné umístění partnerského vztahu, můžete je propojit do stejné virtuální síti. Pokud jsou okruhy vytvořeny ve stejném umístění partnerského vztahu, můžete propojit až 4 okruhy se stejnou virtuální sítí.
+Ano. Můžete mít více okruhů ExpressRoute se stejným nebo jiným poskytovatelem služeb. Pokud má Metro více umístění partnerských vztahů ExpressRoute a okruhy se vytvářejí v různých umístěních partnerského vztahu, můžete je propojit se stejnou virtuální sítí. Pokud jsou okruhy vytvořeny ve stejném umístění partnerského vztahu, můžete propojit až 4 okruhy se stejnou virtuální sítí.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak připojit své virtuální sítě k okruhu ExpressRoute
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Návody připojení svých virtuálních sítí k okruhu ExpressRoute
 
-Toto jsou základní kroky:
+Základní kroky:
 
-* Vytvoření okruhu ExpressRoute a poskytovatele služeb, povolte ho.
-* Je, nebo poskytovatele, musíte nakonfigurovat protokol BGP partnerského vztahu (s).
-* Propojení virtuální sítě k okruhu ExpressRoute.
+* Navažte okruh ExpressRoute a umožněte mu poskytovatele služeb.
+* Vy nebo poskytovatel musíte nakonfigurovat partnerské vztahy protokolu BGP.
+* Připojte virtuální síť k okruhu ExpressRoute.
 
 Další informace najdete v tématu [pracovní postupy ExpressRoute pro zřizování okruhů a stavy okruhů](expressroute-workflows.md).
 
-### <a name="are-there-connectivity-boundaries-for-my-expressroute-circuit"></a>Existují hranice připojení v okruhu ExpressRoute?
+### <a name="are-there-connectivity-boundaries-for-my-expressroute-circuit"></a>Existují pro svůj okruh ExpressRoute hranice připojení?
 
-Ano. [ExpressRoute partneři a umístění](expressroute-locations.md) článek obsahuje základní informace o připojení hranice pro okruh ExpressRoute. Připojení pro okruh ExpressRoute je omezené na jeden geopolitické oblasti. Připojení lze rozšířit pro různé geopolitické oblasti tím, že funkce ExpressRoute premium.
+Ano. Článek o [partnerech a umístěních ExpressRoute](expressroute-locations.md) poskytuje přehled hranic připojení pro okruh ExpressRoute. Připojení okruhu ExpressRoute je omezené na jednu geopolitickou oblast. Připojení se dá rozšířit na průřezové oblasti tím, že povolíte funkci ExpressRoute Premium.
 
-### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Můžete propojit více než jedné virtuální sítě k okruhu ExpressRoute?
+### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Můžu se připojit k více než jedné virtuální síti okruhu ExpressRoute?
 
-Ano. Na můžete mít až 10 připojení virtuální sítě na standardní okruh ExpressRoute a až 100 [okruh ExpressRoute premium](#expressroute-premium). 
+Ano. Na standardním okruhu ExpressRoute můžete mít až 10 připojení k virtuálním sítím a až 100 na [okruhu Premium ExpressRoute](#expressroute-premium). 
 
-### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Mám několik předplatných Azure, které obsahují virtuální sítě. Můžete propojit virtuální sítě, které jsou v samostatné předplatné na jeden okruh ExpressRoute?
+### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Mám několik předplatných Azure, která obsahují virtuální sítě. Můžu propojit virtuální sítě, které jsou v samostatných předplatných pro jeden okruh ExpressRoute?
 
-Ano. Můžete propojit až 10 virtuálních sítí ve stejném předplatném, jako je okruh nebo různá předplatná, a to pomocí jednoho okruhu ExpressRoute. Tento limit můžete zvýšit tím, že funkce ExpressRoute premium.
+Ano. Můžete propojit až 10 virtuálních sítí ve stejném předplatném, jako je okruh nebo různá předplatná, a to pomocí jednoho okruhu ExpressRoute. Toto omezení se dá zvýšit povolením funkce ExpressRoute Premium.
 
-Další informace najdete v tématu [okruh ExpressRoute pro sdílení obsahu napříč několika předplatnými](expressroute-howto-linkvnet-arm.md).
+Další informace najdete v tématu [sdílení okruhu ExpressRoute napříč několika předplatnými](expressroute-howto-linkvnet-arm.md).
 
-### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Mám několik předplatných Azure, které jsou přidružené k jiné tenantů Azure Active Directory nebo registrace smlouvy Enterprise. Je možné připojit virtuální sítě, které jsou v samostatné tenanty a registrace na jeden okruh ExpressRoute není ve stejném tenantovi nebo registrace?
+### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Mám několik předplatných Azure přidružených k různým klientům Azure Active Directory nebo registraci smlouva Enterprise. Můžu propojit virtuální sítě, které jsou v samostatných klientech a registraci k jednomu okruhu ExpressRoute, který není ve stejném tenantovi nebo registraci?
 
-Ano. Autorizací do ExpressRoute může mít rozsah hranice předplatné klienta a registrace bez další nezbytné konfigurace. 
+Ano. ExpressRoute autorizace můžou zahrnovat hranice předplatného, tenanta a registrace bez nutnosti další konfigurace. 
 
-Další informace najdete v tématu [okruh ExpressRoute pro sdílení obsahu napříč několika předplatnými](expressroute-howto-linkvnet-arm.md).
+Další informace najdete v tématu [sdílení okruhu ExpressRoute napříč několika předplatnými](expressroute-howto-linkvnet-arm.md).
 
-### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Připojeni ke stejnému okruhu navzájem izolované virtuální sítě?
+### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Jsou virtuální sítě připojené ke stejnému okruhu izolované od sebe?
 
-Ne. Všechny virtuální sítě propojené ke stejnému okruhu ExpressRoute z hlediska směrování jsou součástí stejné domény směrování a nejsou vzájemně izolované. Pokud potřebujete izolaci trasy, musíte vytvořit samostatný okruh ExpressRoute.
+Ne. Z perspektivy směrování jsou všechny virtuální sítě propojené se stejným okruhem ExpressRoute součástí stejné domény směrování a nejsou od sebe vzájemně izolované. Pokud potřebujete izolaci tras, je nutné vytvořit samostatný okruh ExpressRoute.
 
-### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Může mít jednu virtuální sítě připojené k více než jeden okruh ExpressRoute?
+### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Můžu mít jednu virtuální síť připojenou k více než jednomu okruhu ExpressRoute?
 
 Ano. Jednu virtuální síť můžete propojit s až čtyřmi okruhy ExpressRoute ve stejném umístění nebo v různých umístěních partnerského vztahu. 
 
-### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Z mé virtuální sítě připojené k okruhy ExpressRoute, přístup k Internetu?
+### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Můžu získat přístup k Internetu z mých virtuálních sítí připojených k okruhům ExpressRoute?
 
-Ano. Pokud jste neinzerovali výchozí trasy (0.0.0.0/0) nebo předpony trasy Internet prostřednictvím relace protokolu BGP, můžete se připojit k Internetu z virtuální sítě propojené s okruhem ExpressRoute.
+Ano. Pokud jste v relaci protokolu BGP neinzerovali výchozí trasy (0.0.0.0/0) nebo předpony trasy k Internetu, můžete se připojit k Internetu z virtuální sítě propojené s okruhem ExpressRoute.
 
-### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Můžete blokovat připojení k Internetu k virtuálním sítím, které jsou připojené k okruhy ExpressRoute?
+### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Můžu blokovat připojení k Internetu virtuálním sítím, které jsou připojené k okruhům ExpressRoute?
 
-Ano. Můžete Inzerovat výchozí trasy (0.0.0.0/0) k blokování všech připojení k Internetu pro virtuální počítače nasazené v rámci virtuální sítě a směrování veškerého provozu si přes okruh ExpressRoute.
+Ano. Můžete inzerovat výchozí trasy (0.0.0.0/0) pro blokování veškerého připojení k Internetu virtuálním počítačům nasazeným ve virtuální síti a směrování všech přenosů přes okruh ExpressRoute.
 
-Pokud jste inzerování výchozích tras, jsme zpět do místního vynucení provozu ke službám nabízeným prostřednictvím partnerského vztahu (jako je například Azure storage a SQL DB) Microsoftu. Budete muset nakonfigurovat směrovače vrátit provoz do Azure prostřednictvím cesta partnerského vztahu Microsoftu nebo přes Internet. Pokud jste povolili koncový bod služby pro službu, není na místním vynutit provoz do služby. Provoz zůstává v páteřní síti Azure. Další informace o koncových bodech služeb najdete v tématu [koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+Pokud budete inzerovat výchozí trasy, vynutíme provoz na služby nabízené přes partnerský vztah Microsoftu (například Azure Storage a SQL DB) zpátky do svého místního prostředí. Budete muset nakonfigurovat směrovače tak, aby vracely provoz do Azure prostřednictvím cesty partnerského vztahu Microsoftu nebo přes Internet. Pokud jste povolili koncový bod služby pro danou službu, není přenos do služby vynucený pro vaše místní prostředí. Provoz zůstává v páteřní síti Azure. Další informace o koncových bodech služby najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json) .
 
-### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Můžete k sobě navzájem hovořit virtuální sítě propojené ke stejnému okruhu ExpressRoute?
+### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Můžou se virtuální sítě propojené se stejným okruhem ExpressRoute vzájemně mluvit?
 
-Ano. Virtuální počítače nasazené ve virtuálních sítích, které jsou připojené ke stejnému okruhu ExpressRoute může komunikovat mezi sebou.
+Ano. Virtuální počítače nasazené ve virtuálních sítích, které jsou připojené ke stejnému okruhu ExpressRoute, můžou vzájemně komunikovat.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Můžete použít připojení site-to-site pro virtuální sítě ve spojení s ExpressRoute?
+### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Můžu v kombinaci s ExpressRoute používat připojení Site-to-site pro virtuální sítě?
 
-Ano. Mohou existovat vedle sebe ExpressRoute s VPN typu site-to-site. Zobrazit [společně používaných připojení typu site-to-site a ExpressRoute nakonfigurovat](expressroute-howto-coexist-resource-manager.md).
+Ano. ExpressRoute může existovat společně s sítěmi VPN typu Site-to-site. Přečtěte si téma [Konfigurace ExpressRoute a připojení mezi lokalitami](expressroute-howto-coexist-resource-manager.md).
 
-### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč je veřejná IP adresa přidružená k bráně ExpressRoute ve virtuální síti?
+### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč je ve virtuální síti přidružená veřejná IP adresa k bráně ExpressRoute?
 
-Veřejná IP adresa se používá pouze interní správy a nepředstavuje bezpečnostní rizika vaší virtuální sítě.
+Veřejná IP adresa se používá jenom pro interní správu a nepředstavuje bezpečnostní riziko vaší virtuální sítě.
 
-### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>Je nějak omezený počet tras, které můžu můžete inzerovat?
+### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>Existují omezení počtu tras, jak můžu inzerovat?
 
-Ano. Přijímáme až 4000 předpon trasy pro soukromý partnerský vztah a 200 pro partnerský vztah Microsoftu. Můžete to zvýšit na 10 000 tras pro soukromý partnerský vztah, pokud povolíte funkci ExpressRoute premium.
+Ano. U privátního partnerského vztahu a 200 pro partnerský vztah Microsoftu přijímáme až 4000 předpony tras. Pokud povolíte funkci ExpressRoute Premium, můžete to zvýšit na trasy 10 000 pro privátní partnerské vztahy.
 
-### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Existují omezení týkající se rozsahy IP adres, které můžu můžete inzerovat přes relaci protokolu BGP?
+### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Existují omezení pro rozsahy IP adres, které mohu inzerovat přes relaci protokolu BGP?
 
-Pro relace partnerského vztahu protokolu BGP Microsoft nepřijímáme privátní předpony (definice RFC1918). U Microsoftu i privátního partnerského vztahu přijímáme libovolnou velikost předpon (až do/32).
+Pro relaci protokolu BGP partnerského vztahu Microsoftu nepřijímáme privátní předpony (RFC1918). U Microsoftu i privátního partnerského vztahu přijímáme libovolnou velikost předpon (až do/32).
 
-### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co se stane, když překročím protokol BGP omezuje?
+### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co se stane, když překročím limity protokolu BGP?
 
-Relace protokolu BGP se ukončí. Se obnoví po počet předponu klesne pod limit.
+Relace protokolu BGP budou vyřazeny. Budou obnoveny až po překročení počtu předpon.
 
-### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Co je doba uchování protokolu BGP ExpressRoute? Lze jej upravit?
+### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Jaká je doba blokování protokolu BGP ExpressRoute? Dá se upravit?
 
-Doba uchování je 180. Zprávy keep-alive odesílají každých 60 sekund. Tyto jsou pevně dané nastavení na straně Microsoftu, který se nedá změnit. Je možné, je možné nakonfigurovat jiné časovače a parametry relace protokolu BGP se vyjedná odpovídajícím způsobem.
+Doba blokování je 180. Zprávy Keep-Alive se odesílají každých 60 sekund. Jedná se o pevná nastavení na straně Microsoftu, která se nedají změnit. Je možné nakonfigurovat jiné časovače a parametry relace protokolu BGP budou odpovídajícím způsobem vyjednávat.
 
-### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Můžete změnit šířku pásma okruhu ExpressRoute?
+### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Můžu změnit šířku pásma okruhu ExpressRoute?
 
-Ano, zkuste zvětšit šířku pásma váš okruh ExpressRoute na webu Azure Portal nebo pomocí prostředí PowerShell. Pokud je kapacity k dispozici na fyzický port na kterém byl vytvořen váš okruh, proběhne úspěšně změny. 
+Ano, můžete se pokusit zvýšit šířku pásma okruhu ExpressRoute v Azure Portal nebo pomocí PowerShellu. Pokud je k dispozici kapacita na fyzickém portu, na kterém byl váš okruh vytvořen, vaše změna bude úspěšná. 
 
-Pokud změny selže, znamená to buď není dostatek kapacity na aktuální portu a je potřeba vytvořit nový okruh ExpressRoute s větší šířku pásma, nebo, který v tomto umístění není žádný další kapacitu, v takovém případě nebude možné zvýšit Šířka pásma. 
+Pokud se vaše změna nezdařila, znamená to, že na aktuálním portu není dostatek volné kapacity a potřebujete vytvořit nový okruh ExpressRoute s vyšší šířkou pásma nebo když v tomto umístění není žádná další kapacita. v takovém případě nebudete moci zvýšit připojení. 
 
-Budete také muset se na svého poskytovatele připojení ověřte, že aktualizují omezení v rámci svých sítí, podpořte zvýšení šířky pásma. Nejde, ale snížit šířku pásma váš okruh ExpressRoute. Budete muset vytvořit nový okruh ExpressRoute s menší šířkou pásma a odstranit staré okruh.
+Bude také nutné dodržet poskytovatele připojení, aby bylo zajištěno, že budou aktualizovat omezení v rámci jejich sítí, aby podporovaly zvýšení šířky pásma. Nemůžete ale omezit šířku pásma okruhu ExpressRoute. Musíte vytvořit nový okruh ExpressRoute s menší šířkou pásma a odstranit starý okruh.
 
-### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Jak změnit šířku pásma okruhu ExpressRoute?
+### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Návody změnit šířku pásma okruhu ExpressRoute?
 
-Můžete aktualizovat šířky pásma okruhu ExpressRoute pomocí rozhraní REST API nebo rutiny prostředí PowerShell.
+Šířku pásma okruhu ExpressRoute můžete aktualizovat pomocí rutiny REST API nebo PowerShellu.
 
-## <a name="expressroute-premium"></a>ExpressRoute premium
+## <a name="expressroute-premium"></a>ExpressRoute Premium
 
-### <a name="what-is-expressroute-premium"></a>Co je ExpressRoute premium?
+### <a name="what-is-expressroute-premium"></a>Co je ExpressRoute Premium?
 
-ExpressRoute premium je kolekce následující funkce:
+ExpressRoute Premium je kolekce následujících funkcí:
 
-* Zvýšená směrovací tabulky limit ze 4000 na 10 000 tras pro soukromý partnerský vztah.
-* Zvýšit počet virtuálních sítí a globální dosah ExpressRoute připojení, která se dá nastavit pro okruh ExpressRoute (výchozí hodnota je 10). Další informace najdete v tématu [limity pro ExpressRoute](#limits) tabulky.
+* Zvýšil se limit směrovací tabulky z 4000 tras na 10 000 tras pro privátní partnerské vztahy.
+* Vyšší počet virtuální sítě a Global REACH ExpressRoute připojení, která je možné povolit u okruhu ExpressRoute (výchozí hodnota je 10). Další informace najdete v tabulce [omezení ExpressRoute](#limits) .
 * Připojení k Office 365
-* Globální konektivita v základní síti Microsoft. Teď můžete propojit virtuální síť, která v geopolitické oblasti jeden okruh ExpressRoute v jiné oblasti.<br>
-    **Příklady:**
+* Globální konektivita přes Microsoft Core Network. Nyní můžete propojit virtuální síť v jedné geopolitické oblasti s okruhem ExpressRoute v jiné oblasti.<br>
+    **4.6**
 
-    *  Můžete propojit virtuální sítě vytvořené v oblasti Evropa – západ na okruh ExpressRoute vytvořený v Silicon Valley. 
-    *  Na partnerského vztahu Microsoftu byly inzerované předpony z jiných geopolitických oblastí, můžete z připojíte k, například SQL Azure v oblasti Evropa – západ okruh v Silicon Valley.
+    *  Virtuální síť vytvořená v Evropě se dá propojit s okruhem ExpressRoute vytvořeným v silikonovém sedlu. 
+    *  V partnerském vztahu Microsoftu se dá inzerovat předpony z dalších geopolitických oblastí, například SQL Azure v oblasti Evropa – západ od okruhu v Silicon sedlu.
 
 
-### <a name="limits"></a>Kolik připojení virtuální sítě a globální dosah ExpressRoute můžete povolit na okruh ExpressRoute pokud mám povolené ExpressRoute premium?
+### <a name="limits"></a>Kolik připojení virtuální sítě a ExpressRoute Global Reach můžu povolit u okruhu ExpressRoute, pokud jsem povolil ExpressRoute Premium?
 
-Následující tabulky popisují limity pro ExpressRoute a počet připojení virtuální sítě a ExpressRoute globální dosah jeden okruh ExpressRoute:
+V následujících tabulkách jsou uvedena omezení ExpressRoute a počet virtuální sítě a Global REACH ExpressRoute připojení na ExpressRoute okruh:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 
-### <a name="how-do-i-enable-expressroute-premium"></a>Jak povolím ExpressRoute premium?
+### <a name="how-do-i-enable-expressroute-premium"></a>Návody povolit ExpressRoute Premium?
 
-Funkce ExpressRoute premium je povolit, pokud je povolena funkce a může být vypnut stačí aktualizovat stav okruhu. Umožňuje v okamžiku vytvoření okruhu ExpressRoute premium, nebo může volat rozhraní REST API nebo powershellu.
+Pokud je funkce povolená, můžete povolit funkce ExpressRoute Premium a můžete je vypnout aktualizací stavu okruhu. V době vytváření okruhu můžete povolit ExpressRoute Premium nebo můžete volat rutinu REST API/PowerShellu.
 
-### <a name="how-do-i-disable-expressroute-premium"></a>Jak zakázat ExpressRoute premium?
+### <a name="how-do-i-disable-expressroute-premium"></a>Návody zakázat ExpressRoute Premium?
 
-ExpressRoute premium můžete zakázat pomocí volání rozhraní REST API nebo powershellu. Ujistěte se, že provedete škálování vašeho připojení musí splňovat výchozí omezení, než vypnete ExpressRoute premium. Pokud vaše využití škáluje nad výchozí omezení, požadavek na zákaz ExpressRoute premium se nezdaří.
+ExpressRoute Premium můžete zakázat voláním rutiny REST API nebo PowerShellu. Než zakážete ExpressRoute Premium, musíte se ujistit, že vaše připojení musí splňovat výchozí omezení. Pokud vaše využití škáluje více než výchozí omezení, požadavek na zakázání ExpressRoute Premium se nezdařil.
 
-### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Můžete mi zvolit funkce, které chci, aby ze sady funkcí úrovně premium?
+### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Můžu si vybrat požadované funkce ze sady funkcí Premium?
 
-Ne. Nelze vybrat funkce. Můžeme povolit všechny funkce, když zapnete ExpressRoute premium.
+Ne. Nemůžete si vybrat tyto funkce. Když zapnete ExpressRoute Premium, povolíme všechny funkce.
 
-### <a name="how-much-does-expressroute-premium-cost"></a>Kolik stojí ExpressRoute premium?
+### <a name="how-much-does-expressroute-premium-cost"></a>Kolik stojí ExpressRoute Premium?
 
-Odkazovat na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/expressroute/) náklady.
+Náklady najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/expressroute/) .
 
-### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Platí pro ExpressRoute premium kromě standardních poplatků za ExpressRoute?
+### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Platíte za ExpressRoute Premium navíc ke standardním ExpressRoute poplatkům?
 
-Ano. ExpressRoute premium poplatky nad rámec poplatků za okruhu ExpressRoute a poplatky, které musí poskytovatelem připojení.
+Ano. Poplatky za ExpressRoute Premium se vztahují na poplatky za okruhy ExpressRoute a poplatky, které vyžaduje poskytovatel připojení.
 
 ## <a name="expressroute-local"></a>ExpressRoute místní
 ### <a name="what-is-expressroute-local"></a>Co je ExpressRoute místní?
@@ -325,64 +325,64 @@ ExpressRoute Local je k dispozici v umístěních partnerských vztahů, kde jed
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Jak vytvořit okruh ExpressRoute pro připojení ke službám Office 365?
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Návody vytvořit okruh ExpressRoute pro připojení ke službám Office 365?
 
-1. Zkontrolujte [stránku požadavků pro ExpressRoute](expressroute-prerequisites.md) k Ujistěte se, že se splnily požadavky.
-2. Aby bylo zajištěno, že jsou splněny vaše potřeby připojení, projděte si seznam poskytovatelů služeb a umístění v [ExpressRoute partneři a umístění](expressroute-locations.md) článku.
-3. Plánování vašim požadavkům na kapacitu kontrolou [plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/).
-4. Postupujte podle kroků uvedených v pracovních postupech nastavit propojení [pracovní postupy ExpressRoute pro zřizování okruhů a stavy okruhů](expressroute-workflows.md).
+1. Přečtěte si [stránku předpoklady ExpressRoute](expressroute-prerequisites.md) a ujistěte se, že splňujete požadavky.
+2. Pokud chcete zajistit splnění požadavků na připojení, Projděte si seznam poskytovatelů služeb a umístění v článku [partneři a umístění ExpressRoute](expressroute-locations.md) .
+3. Naplánujte požadavky na kapacitu pomocí kontroly [Plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/).
+4. Postupujte podle kroků uvedených v pracovních postupech a nastavte možnosti připojení [ExpressRoute pracovní postupy pro zřizování okruhů a stavy okruhů](expressroute-workflows.md).
 
 > [!IMPORTANT]
-> Ujistěte se, že jste povolili doplněk ExpressRoute premium, při konfiguraci připojení ke službám Office 365.
+> Ujistěte se, že jste při konfiguraci připojení ke službám Office 365 povolili doplněk ExpressRoute Premium.
 > 
 > 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Můžou moje stávající okruhy ExpressRoute podporovat připojení ke službám Office 365?
 
-Ano. Stávající okruh ExpressRoute může být nakonfigurované pro podporu připojení ke službám Office 365. Ujistěte se, že máte dostatečnou kapacitu pro připojení ke službám Office 365 a že jste povolili doplněk premium. [Plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/) potřebuje vám pomůže s plánováním připojení. Viz také [vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
+Ano. Váš stávající okruh ExpressRoute je možné nakonfigurovat tak, aby podporoval připojení ke službám Office 365. Ujistěte se, že máte dostatečnou kapacitu pro připojení ke službám Office 365 a že máte povolený doplněk Premium. [Plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/) vám pomůžou plánovat potřeby připojení. Přečtěte si také článek [Vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
 
-### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Jaké Office 365 služby přístupné přes připojení ExpressRoute?
+### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>K jakým službám Office 365 se dá přistup přes připojení ExpressRoute?
 
-Odkazovat na [Office 365 – adresy URL a rozsahy IP adres](https://aka.ms/o365endpoints) stránky pro aktuální seznam služeb podporovaných přes ExpressRoute.
+Aktuální seznam služeb podporovaných přes ExpressRoute najdete na stránce [adresy URL a rozsahy IP adres sady Office 365](https://aka.ms/o365endpoints) .
 
-### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Jaká je ExpressRoute pro náklady na služby Office 365?
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Kolik stojí ExpressRoute služeb Office 365?
 
-Služby Office 365 vyžadují doplněk premium, aby byla povolená. Zobrazit [stránce s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/expressroute/) náklady.
+Služba Office 365 vyžaduje, aby byl povolen doplněk Premium. Náklady najdete na [stránce s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/expressroute/) .
 
-### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Jaké oblasti je ExpressRoute pro Office 365 podporuje?
+### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Které oblasti jsou ExpressRoute pro Office 365 podporované v?
 
-Zobrazit [ExpressRoute partneři a umístění](expressroute-locations.md) informace.
+Informace najdete v tématu [partneři a umístění ExpressRoute](expressroute-locations.md) .
 
-### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Můžete mi přístup k Office 365 přes Internet, i v případě ExpressRoute se nakonfigurovalo pro moji organizaci?
+### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Můžu získat přístup k Office 365 přes Internet, i když byl ExpressRoute nakonfigurovaný pro moji organizaci?
 
-Ano. Koncové body služeb Office 365 jsou dostupné prostřednictvím Internetu, i když byl nakonfigurován pro vaši síť ExpressRoute. Poraďte se síťovým týmem vaší organizace, pokud sítě v umístění nakonfigurovaná pro připojení ke službám Office 365 přes ExpressRoute.
+Ano. Koncové body služby Office 365 jsou dosažitelné přes Internet, i když ExpressRoute je pro vaši síť nakonfigurovaný. Pokud je síť ve vašem umístění nakonfigurovaná pro připojení ke službám Office 365 přes ExpressRoute, obraťte se prosím na tým sítě v organizaci.
 
-### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Jak se můžete naplánovat pro zajištění vysoké dostupnosti pro Office 365 síťový provoz na Azure ExpressRoute?
-Zobrazit doporučení pro [vysoké dostupnosti a převzetí služeb při selhání s využitím Azure ExpressRoute](https://aka.ms/erhighavailability)
+### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Jak mohu naplánovat vysokou dostupnost síťového provozu v Office 365 v Azure ExpressRoute?
+Přečtěte si doporučení k zajištění [vysoké dostupnosti a převzetí služeb při selhání pomocí Azure ExpressRoute](https://aka.ms/erhighavailability)
 
-### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Můžete přistupovat služeb Office 365 US Government Community (GCC) přes okruh Azure US Government ExpressRoute?
+### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Můžu získat přístup ke službám pro Office 365 USA státní komunity (RSZ) prostřednictvím okruhu ExpressRoute pro státní správu Azure USA?
 
-Ano. Koncové body služeb Office 365 GCC jsou dostupné prostřednictvím Azure US Government ExpressRoute. Ale nejprve musíte vytvořit lístek podpory na portálu Azure portal k poskytování předpony, které máte v úmyslu inzerovat Microsoftu. Připojení ke službám Office 365 GCC naváže se po vyřešení lístek podpory. 
+Ano. Koncové body služby Office 365 RSZ jsou dosažitelné prostřednictvím ExpressRoute pro státní správu Azure USA. Nejdřív ale musíte otevřít lístek podpory na Azure Portal a zadat tak předpony, které chcete inzerovat Microsoftu. Připojení ke službám Office 365 RSZ bude po vyřešení lístku podpory navázáno. 
 
-## <a name="route-filters-for-microsoft-peering"></a>Filtrů směrování pro partnerský vztah Microsoftu
+## <a name="route-filters-for-microsoft-peering"></a>Filtry tras pro partnerský vztah Microsoftu
 
-### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Můžu jsem zapnutí partnerský vztah Microsoftu poprvé, jaké trasy si můžu zobrazit?
+### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Při prvním zapnutí partnerského vztahu Microsoftu se tyto trasy zobrazí?
 
-Neuvidíte žádné trasy. Budete muset připojit filtr tras pro váš okruh spustit oznámení o inzerovaných programech předponu. Pokyny najdete v tématu [konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
+Nebudete se zobrazovat žádné trasy. Abyste mohli začít s předponami, musíte k tomuto okruhu připojit filtr směrování. Pokyny najdete v tématu [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
 
-### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Po zapnutí partnerský vztah Microsoftu a teď pokouším vyberte Exchange Online, ale se mi chyba, že mám mi oprávnění k tomu poskytuje.
+### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Vypnul (a) jsem partnerský vztah Microsoftu a teď se snažím vybrat Exchange Online, ale při tom se zobrazí chyba, že k tomu nemám autorizaci.
 
-Při použití filtrů tras, každý zákazník se může zapnout partnerský vztah Microsoftu. Ale určená pro služby Office 365, stále musíte získat autorizováno uživatelem služeb Office 365.
+Při použití filtrů směrování může libovolný zákazník zapnout partnerský vztah Microsoftu. Pro využívání služeb Office 365 ale pořád potřebujete oprávnění k autorizaci sadou Office 365.
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Můžu povolené partnerského vztahu před 1. srpna 2017, jak můžete využít výhod filtry tras Microsoftu?
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Jak mám povolit partnerské vztahy Microsoftu před 1. srpna 2017, jak mohu využít filtry tras?
 
-Váš stávající okruh bude pokračovat ve inzerci předpon pro Office 365. Pokud chcete přidat reklamy veřejné předpony Azure přes stejný partnerský vztah Microsoftu, můžete vytvořit filtr tras, vybrat služby, které potřebujete inzerovat (včetně služeb Office 365, které potřebujete), a připojit filtr k partnerskému vztahu Microsoftu. Pokyny najdete v tématu [konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
+Váš stávající okruh bude pokračovat ve inzerci předpon pro Office 365. Pokud chcete přidat reklamy veřejné předpony Azure přes stejný partnerský vztah Microsoftu, můžete vytvořit filtr tras, vybrat služby, které potřebujete inzerovat (včetně služeb Office 365, které potřebujete), a připojit filtr k partnerskému vztahu Microsoftu. Pokyny najdete v tématu [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
 
-### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Mám v jednom umístění partnerského vztahu Microsoftu, nyní pokouším předat ji povolit na jiném místě a mi nezobrazují všechny předpony.
+### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Partnerský vztah Microsoftu mám na jednom místě, teď se ho snažím povolit v jiném umístění a nezobrazuje se žádné předpony.
 
-* Partnerský vztah Microsoftu okruhů ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 budou mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras.
+* Partnerské vztahy Microsoftu okruhů ExpressRoute, které byly nakonfigurované před 1. srpna 2017, budou mít všechny předpony služby inzerované prostřednictvím partnerského vztahu Microsoftu, a to i v případě, že nejsou definované filtry směrování.
 
-* Partnerský vztah Microsoftu okruhů ExpressRoute, které jsou nakonfigurované 1. srpna 2017 nebo později nebude mít všechny předpony inzerované, dokud se filtr tras je připojen k okruhu. Ve výchozím nastavení se zobrazí bez předpony.
+* Partnerský vztah Microsoftu pro okruhy ExpressRoute, které jsou nakonfigurované na nebo od 1. srpna 2017, nebudou mít inzerované předpony, dokud není k okruhu připojen filtr tras. Ve výchozím nastavení se nezobrazí žádné předpony.
 
 ## <a name="expressRouteDirect"></a>ExpressRoute Direct
 

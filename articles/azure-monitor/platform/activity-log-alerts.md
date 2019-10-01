@@ -1,19 +1,19 @@
 ---
 title: Výstrahy protokolu aktivit v Azure Monitor
 description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalších akcí, když dojde k určitým událostem v protokolu aktivit.
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: vinagara
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 61b5b96636ea12b5c63da657e006bd3121c34756
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852615"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675217"
 ---
 # <a name="alerts-on-activity-log"></a>Výstrahy na protokol aktivit 
 
@@ -36,22 +36,22 @@ Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlas
 
 Výstrahy protokolu aktivit mají několik běžných možností:
 
-- **Kategorie**: Administrativní, Service Health, automatické škálování, zabezpečení, zásady a doporučení. 
-- **Rozsah**: Individuální prostředek nebo sada prostředků, pro které je definována výstraha protokolu aktivit. Rozsah upozornění protokolu aktivit lze definovat na různých úrovních:
-    - Úroveň prostředku: Například pro konkrétní virtuální počítač
-    - Úroveň skupiny prostředků: Například všechny virtuální počítače v určité skupině prostředků
-    - Úroveň předplatného: Například všechny virtuální počítače v předplatném (nebo) všechny prostředky v rámci předplatného
-- **Skupina prostředků**: Ve výchozím nastavení se pravidlo výstrahy ukládá do stejné skupiny prostředků, která je v cíli definovaná v oboru. Uživatel může také definovat skupinu prostředků, ve které se má pravidlo výstrahy ukládat.
+- **Kategorie**: administrativní, Service Health, automatické škálování, zabezpečení, zásady a doporučení. 
+- **Scope (obor**): jednotlivý prostředek nebo sada prostředků, pro které je definovaná výstraha protokolu aktivit. Rozsah upozornění protokolu aktivit lze definovat na různých úrovních:
+    - Úroveň prostředku: například pro konkrétní virtuální počítač
+    - Úroveň skupiny prostředků: třeba všechny virtuální počítače v určité skupině prostředků
+    - Úroveň předplatného: například všechny virtuální počítače v předplatném (nebo) všechny prostředky v rámci předplatného
+- **Skupina prostředků**: ve výchozím nastavení se pravidlo výstrahy uloží do stejné skupiny prostředků, která je v cíli definovaná v oboru. Uživatel může také definovat skupinu prostředků, ve které se má pravidlo výstrahy ukládat.
 - **Typ prostředku**: Správce prostředků definovaný obor názvů pro cíl výstrahy.
-- **Název operace**: Název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) využit pro Access Control založenou na rolích. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
-- **Úroveň**: Úroveň závažnosti události (verbose, informativní, varovná, chyba nebo kritická).
-- **Stav**: Stav události, obvykle spuštěno, selhalo nebo proběhlo úspěšně.
-- **Událost iniciovaná**: Označuje se také jako "volající". E-mailová adresa nebo Azure Active Directory identifikátor uživatele, který operaci provedl.
+- **Název operace**: název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) používá pro Access Control založenou na rolích. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
+- **Úroveň**: úroveň závažnosti události (podrobné, informativní, varovná, chyba nebo kritická).
+- **Stav**: stav události, obvykle spuštěno, selhalo nebo proběhlo úspěšně.
+- **Událost iniciovaná**: taky se označuje jako volající. E-mailová adresa nebo Azure Active Directory identifikátor uživatele, který operaci provedl.
 
 > [!NOTE]
 > V rámci předplatného můžete vytvořit pravidla výstrah až 100, a to buď na jeden prostředek, všechny prostředky ve skupině prostředků (nebo) na celé úrovni předplatného.
 
-Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžete:
+Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžeš:
 
 * V upozornění protokolu aktivit použijte existující skupinu akcí.
 * Vytvořte novou skupinu akcí.
@@ -64,4 +64,4 @@ Další informace o skupinách akcí naleznete v tématu [Create and Manage Acti
 - Získejte [Přehled výstrah](alerts-overview.md).
 - Přečtěte si o [vytváření a úpravách výstrah protokolu aktivit](alerts-activity-log.md).
 - Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](activity-log-alerts-webhook.md).
-- Přečtěte si o oznámeních o [stavu služby](service-notifications.md).
+- Přečtěte si o [oznámeních o stavu služby](service-notifications.md).

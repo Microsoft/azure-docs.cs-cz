@@ -1,19 +1,19 @@
 ---
 title: Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
 description: Přehled vyřazení klasických monitorovacích služeb a funkcí, které se dříve zobrazovaly v Azure Portal v části výstrahy (klasické). Monitorování klasického zobrazování výstrah & zahrnuje klasické výstrahy metrik pro prostředky Azure, klasické výstrahy metriky pro Application Insights, klasické výstrahy WebTest pro Application Insights, klasické výstrahy na základě vlastních metrik pro Application Insights a Classic. výstrahy pro Application Insights SmartDetection v1
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147337"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676899"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
 
@@ -59,7 +59,7 @@ Starší verze klasického monitorování a upozorňování se vyřadí do 31. s
 - Starší (Classic) platforma a vlastní metriky pro Application Insights a také výstrahy, jak jsou aktuálně dostupné prostřednictvím [části výstrahy (Classic)](../../azure-monitor/platform/alerts-classic.overview.md) Azure Portal a přístupné jako prostředek [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)
 - Starší (Classic) upozornění na anomálii v současnosti je aktuálně k dispozici jako [inteligentní zjišťování v rámci Application Insights](../../azure-monitor/app/proactive-diagnostics.md) Azure Portal; s nakonfigurovanými výstrahami zobrazenými v [části výstrahy (klasické)](../../azure-monitor/platform/alerts-classic.overview.md) Azure Portal
 
-Všechny klasické systémy monitorování a upozorňování, včetně [odpovídajících rozhraní API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShellu](../../azure-monitor/platform/alerts-classic-portal.md), rozhraní příkazového [řádku](../../azure-monitor/platform/alerts-classic-portal.md), [Azure Portal stránky](../../azure-monitor/platform/alerts-classic-portal.md)a [šablony prostředků](../../azure-monitor/platform/alerts-enable-template.md) , zůstanou použitelné až do konce srpna 2019. 
+Všechny klasické systémy monitorování a upozorňování, včetně odpovídajících [rozhraní API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShellu](../../azure-monitor/platform/alerts-classic-portal.md), rozhraní příkazového [řádku](../../azure-monitor/platform/alerts-classic-portal.md), [Azure Portal stránky](../../azure-monitor/platform/alerts-classic-portal.md)a [šablony prostředků](../../azure-monitor/platform/alerts-enable-template.md) , zůstanou použitelné až do konce srpna 2019. 
 
 Na konci srpna 2019 v Azure Monitor:
 

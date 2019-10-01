@@ -1,5 +1,5 @@
 ---
-title: Konfigurace metody vyrovnávání zatížení ve verzi Preview pro virtuální počítače s Windows – Azure
+title: Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows – Azure
 description: Jak nakonfigurovat metodu vyrovnávání zatížení pro prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163768"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676784"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení verze Preview pro virtuální počítače s Windows
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows
 
-Konfigurace metody vyrovnávání zatížení pro fond hostitelů vám umožní upravit prostředí Windows Virtual Desktop Preview tak, aby lépe vyhovovalo vašim potřebám.
+Konfigurace metody vyrovnávání zatížení pro fond hostitelů vám umožní upravit prostředí virtuálních počítačů s Windows, aby lépe vyhovovalo vašim potřebám.
 
 >[!NOTE]
 > To se nevztahuje na fond hostitelů trvalé plochy, protože uživatelé mají vždycky mapování 1:1 na hostitele relace v rámci fondu hostitelů.

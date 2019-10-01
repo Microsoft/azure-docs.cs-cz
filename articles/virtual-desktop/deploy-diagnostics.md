@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233254"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676658"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
+# <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
 
 Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Windows umožňuje:
 
@@ -98,13 +98,13 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
 3. V části **Nastavení** vyberte **Upřesnit nastavení**.
-4. Potom přejděte do části > **čítače výkonu data systému Windows** a přidejte následující čítače:
+4. Potom přejděte do části **Data** > **čítače výkonu Windows** a přidejte následující čítače:
 
-    -   Logický disk (\*)\|% volného místa
-    -   Logický disk (C:)\\prům. Délka fronty disku
-    -   Paměť (\*)\\dostupné v MB
-    -   Čas procesoru (\*)\\informace o procesoru
-    -   Zpoždění vstupu uživatele na relaci (\*)\\max. zpoždění vstupu
+    -   Logický disk (\*) \|% volného místa
+    -   Logický disk (C:) \\Avg. délka fronty disku
+    -   Paměť (\*) @no__t – 1Available MB
+    -   Informace o procesoru (\*) \\Processor čas
+    -   Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 1Max
 
 Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -131,14 +131,14 @@ Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfiguro
 
 1. V [Azure Portal](https://portal.azure.com/)můžete zkontrolovat nakonfigurované čítače výkonu systému Windows, přejít do **Log Analytics pracovních prostorů** .
 2. V části **Nastavení**vyberte **Upřesnit nastavení**.
-3. Pak přejdete na**čítače výkonu** **data** > Windows.
+3. Pak přejdete na **Data** > **čítače výkonu systému Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
-   - Logický disk (\*)\|% volné místo: Zobrazuje množství volného místa celkového použitelného místa na disku jako procenta.
-   - Logický disk (C:)\\prům. Délka fronty disku: Délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
-   - Paměť (\*)\\k dispozici v MB: Dostupná paměť systému v megabajtech.
-   - Procesor informace o\*procesoru\\() čas procesoru: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.
-   - Zpoždění vstupu uživatele na relaci (\*)\\max. zpoždění vstupu
+   - Logický disk (\*) \|% volného místa: zobrazuje množství volného místa celkového použitelného místa na disku jako procento.
+   - Logický disk (C:) \\Avg. délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
+   - Paměť (\*) \\Available MB: dostupná paměť systému v megabajtech.
+   - Informace o procesoru (\*) \\Processor Time: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.
+   - Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 1Max
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Připojení k virtuálním počítačům v pracovním prostoru Log Analytics
 
@@ -148,9 +148,9 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 2. Přejít do pracovního prostoru Log Analytics.
 3. Na levém panelu v části zdroje dat pracovního prostoru vyberte **virtuální počítače**.
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
-5. Vyberte **Connect** (Připojit).
+5. Vyberte **připojit**.
 
-## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
+## <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
@@ -159,7 +159,7 @@ Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
     -   ID klienta
     -   Tajný kód klienta
-    -   ID pracovního prostoru služby Log Analytics
+    -   ID pracovního prostoru Log Analytics
 
 3.  Až budou zadané vstupní parametry, přijměte podmínky a ujednání a pak vyberte **koupit**.
 
@@ -181,16 +181,16 @@ Nastavení identifikátoru URI přesměrování:
 
    ![Stránka s identifikátorem URI pro přesměrování](media/redirect-uri-page.png)
 
-8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace `contosoapp45`, který jste použili v šabloně, pak je <https://contosoapp45.azurewebsites.net>vaše přidružená adresa URL).
+8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud například název aplikace, který jste použili v šabloně, byl `contosoapp45`, je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net>).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
-10.   Vyberte **Přijmout**.
+10.   Vyberte **přijmout**.
 
 ## <a name="distribute-the-diagnostics-tool"></a>Distribuce nástroje pro diagnostiku
 
 Před zpřístupněním diagnostického nástroje pro uživatele se ujistěte, že mají následující oprávnění:
 
-- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
--  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup ve verzi Preview pro virtuální počítač s Windows](delegated-access-virtual-desktop.md).
+- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+-  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup na virtuálním počítači s Windows](delegated-access-virtual-desktop.md).
 
 Také musíte uživatelům poskytnout následující informace:
 
@@ -226,25 +226,25 @@ Můžete také interagovat s uživateli na hostiteli relace:
 
 ### <a name="windows-performance-counter-thresholds"></a>Prahové hodnoty čítače výkonu systému Windows
 
-- Logický disk (\*)\|% volné místo:
+- Logický disk (\*) \|% volného místa:
 
     - Zobrazí procentuální hodnotu celkového použitelného místa na logickém disku, který je zdarma.
-    - Mezí Méně než 20% je označeno jako chybné.
+    - Prahová hodnota: méně než 20% je označeno jako není v pořádku.
 
-- Logický disk (C:)\\prům. Délka fronty disku:
+- Logický disk (C:) \\Avg. délka fronty disku:
 
     - Představuje systémové podmínky úložiště.
-    - Mezí Vyšší než 5 je označeno jako není v pořádku.
+    - Prahová hodnota: vyšší než 5 je označeno jako není v pořádku.
 
-- Paměť (\*)\\k dispozici v MB:
+- Paměť (\*) \\Available MB:
 
     - Paměť, která je k dispozici pro systém.
-    - Mezí Méně než 500 MB označeno jako chybné.
+    - Prahová hodnota: méně než 500 MB označeno jako chybné.
 
-- Čas procesoru (\*)\\informace o procesoru:
+- Informace o procesoru (\*) \\Processor čas:
 
-    - Mezí Vyšší než 80% je označeno jako není v pořádku.
+    - Prahová hodnota: vyšší než 80% je označena jako stav není v pořádku.
 
-- [Zpoždění vstupu uživatele na relaci (\*)\\maximální prodleva vstupu](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 2Max](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Mezí Vyšší než 2000 MS je označeno jako není v pořádku.
+    - Prahová hodnota: vyšší než 2000 MS je označeno jako není v pořádku.

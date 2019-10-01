@@ -1,22 +1,22 @@
 ---
 title: Příprava a přizpůsobení image hlavního virtuálního pevného disku – Azure
-description: Příprava, přizpůsobení a nahrání hlavní image ve verzi Preview virtuálního klienta Windows do Azure
+description: Postup přípravy, přizpůsobení a nahrání hlavní image virtuálního počítače s Windows do Azure
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981077"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679544"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavního image virtuálního pevného disku
 
-V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny jsou určené pro konfiguraci pro virtuální počítače s Windows ve verzi Preview, která se dá použít spolu s existujícími procesy vaší organizace.
+V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -72,7 +72,7 @@ Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujem
 
 Zakázání automatických aktualizací prostřednictvím místních Zásady skupiny:
 
-1. Otevřete **Editor místních zásad skupiny\\šablony pro správu\\součásti\\systému Windows Web Windows Update**.
+1. Otevřete **Editor místních zásad skupiny @ no__t-1Administrative Templates @ no__t-2Windows Components @ no__t-3Windows Update**.
 2. Klikněte pravým tlačítkem na **Konfigurovat Automatické aktualizace** a nastavte ji na **zakázáno**.
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
@@ -109,7 +109,7 @@ Zásady vzdálené relace je možné vyhovět na úrovni Zásady skupiny, proto�
 
 Konfigurace zásad vzdálené relace:
 
-1. Přejděte na **šablony pro správu** > **součásti**systémuWindows > Vzdálená plocha hostitel relace vzdálené plochyčasový > **limit relace**. > 
+1. Přejděte na **Šablony pro správu** > **součásti systému Windows** > **služby vzdálené plochy** > **hostitel relace vzdálené plochy** > **omezení času relace**.
 2. Na panelu na pravé straně vyberte **nastavení časového limitu pro aktivní, ale nečinné zásady relací vzdálené plochy služby Vzdálená plocha** .
 3. Po zobrazení modálního okna změňte možnost zásady z **není nakonfigurovaná** na **povoleno** , aby se zásady aktivovaly.
 4. V rozevírací nabídce pod možností zásady nastavte hodnotu doba na **3 hodiny**.
@@ -134,7 +134,7 @@ Postup přesměrování časových pásem:
 1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
 2. Rozbalíte své domény a Zásady skupiny objekty.
 3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
-4. V **Editor pro správu zásad skupiny**přejděte na**zásady** >  > konfigurace počítače**šablony pro správu** > součástisystémuWindows >  .Služba > Vzdálená plocha**hostitel relace vzdálené plochy** > **přesměrování zařízení a prostředků**.
+4. V **Editor pro správu zásad skupiny**přejděte na**zásady** **konfigurace počítače** >   > **Šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha**@no__ t-10**Hostitel relace vzdálené plochy**2**přesměrování zařízení a prostředků**.
 5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
@@ -212,7 +212,7 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
     ![Snímek obrazovky okna hledání nástroje pro Průzkumník služby Microsoft Azure Storage Zaškrtávací políčko nahrát soubory. VHD nebo VHDX jako objekty blob stránky (doporučeno) je zaškrtnuté.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
-3. V dalším kroku přejdete do Azure Portal v prohlížeči a vyhledáte "image". Vaše hledání by vám mělo vést k **Vytvoření** stránky s obrázkem, jak je znázorněno na následujícím snímku obrazovky:
+3. V dalším kroku přejdete do Azure Portal v prohlížeči a vyhledáte "image". Vaše hledání by vám mělo vést k **Vytvoření stránky s obrázkem** , jak je znázorněno na následujícím snímku obrazovky:
 
     ![Snímek obrazovky se stránkou vytvořit obrázek v Azure Portal vyplněný příklady hodnot pro obrázek.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
@@ -220,7 +220,7 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
     ![Snímek obrazovky s oznámením o úspěšném vytvoření obrázku](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. Další informace o tom, jak vytvořit a aktualizovat fondy hostitelů, najdete v následujících článcích:
 

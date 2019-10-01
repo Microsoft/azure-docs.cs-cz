@@ -14,18 +14,18 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326475"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687025"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace pružiny v jazyce Java pomocí konfigurace aplikace Azure
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pružině Java, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -35,9 +35,9 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník** > konfigurace **+ vytvořit** a přidejte následující páry klíč-hodnota:
+6. Vyberte **Průzkumníka konfigurace** >  **+ vytvořit** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | /application/config.message | Dobrý den, |
 
@@ -45,9 +45,9 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
 ## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
 
-Pomocí jarního [Initializru](https://start.spring.io/) vytvoříte nový projekt pro spuštění pružiny.
+Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový projekt pro spuštění pružiny.
 
-1. Přejděte do <https://start.spring.io/>.
+1. Přejděte na <https://start.spring.io/>.
 
 2. Zadejte následující možnosti:
 
@@ -62,13 +62,13 @@ Pomocí jarního [Initializru](https://start.spring.io/) vytvoříte nový proje
 
 1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace pro spouštění pomocí pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte soubor *pom. XML* .
 
-2. V textovém editoru otevřete soubor *pom. XML* a přidejte jarní cloudovou konfiguraci Azure config Starter do seznamu `<dependencies>`:
+2. V textovém editoru otevřete soubor *pom. XML* a přidejte do seznamu `<dependencies>` jarní cloudová konfigurace Azure Configuration Starter:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M3</version>
+        <version>1.1.0.M4</version>
     </dependency>
     ```
 
@@ -107,7 +107,7 @@ Pomocí jarního [Initializru](https://start.spring.io/) vytvoříte nový proje
     }
     ```
 
-5. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` ho a povolte tuto funkci.
+5. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` pro povolení této funkce.
 
     ```java
     @SpringBootApplication
@@ -119,7 +119,7 @@ Pomocí jarního [Initializru](https://start.spring.io/) vytvoříte nový proje
     }
     ```
 
-6. Vytvořte nový soubor s názvem `bootstrap.properties` v adresáři Resources vaší aplikace a přidejte do souboru následující řádky. Nahraďte vzorové hodnoty odpovídajícími vlastnostmi úložiště konfigurace aplikace.
+6. V adresáři Resources vaší aplikace vytvořte nový soubor s názvem `bootstrap.properties` a do souboru přidejte následující řádky. Nahraďte vzorové hodnoty odpovídajícími vlastnostmi úložiště konfigurace aplikace.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]

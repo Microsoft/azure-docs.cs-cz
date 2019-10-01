@@ -1,7 +1,7 @@
 ---
 title: Předem vytvořená jednotka – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje teploty informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje informace o předem připravené entitě v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: ecdaec6dcade033bf99842dd384be095dd363a05
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0c16a60b0ddcde733cfbc7b9c90e07b697526015
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933404"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677390"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS
-Teplota extrahuje celou řadu typů teploty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující teploty do aplikace. Teplota entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
+Teplota extrahuje nejrůznější typy teplot. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy obsahující teplotu. V [mnoha jazykových verzích](luis-reference-prebuilt-entities.md)je podporována jednotka teploty. 
 
 ## <a name="types-of-temperature"></a>Typy teploty
 Teplota se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) v GitHubu.
 
-## <a name="resolution-for-prebuilt-temperature-entity"></a>Řešení pro teploty předem připravených entit
+## <a name="resolution-for-prebuilt-temperature-entity"></a>Řešení pro předem vytvořenou jednotku teploty
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.temperature** entity.
+Následující příklad ukazuje řešení entity **Builtin. teplota** .
 
 ```json
 {
@@ -58,9 +58,9 @@ Následující příklad ukazuje rozlišení **builtin.temperature** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -85,7 +85,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -122,6 +122,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [procento](luis-reference-prebuilt-percentage.md), [číslo](luis-reference-prebuilt-number.md), a [stáří](luis-reference-prebuilt-age.md) entity. 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [stáří](luis-reference-prebuilt-age.md) entit. 

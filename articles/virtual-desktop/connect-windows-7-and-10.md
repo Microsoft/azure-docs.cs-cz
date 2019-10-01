@@ -1,5 +1,5 @@
 ---
-title: Připojení k virtuálnímu počítači s Windows ve verzi Preview z Windows 10 nebo Windows 7 – Azure
+title: Připojení k virtuálnímu počítači s Windows z Windows 10 nebo Windows 7 – Azure
 description: Jak se připojit k virtuálnímu počítači s Windows pomocí desktopového klienta Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 49431f75fb801c683a167e1809724eeeef208561
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338456"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676744"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení pomocí desktopového klienta Windows
 
-> To platí pro: Windows 7 a Windows 10
+> Platí pro: Windows 7 a Windows 10
 
 K prostředkům virtuálních klientů Windows se můžete dostat na zařízeních se systémem Windows 7 nebo Windows 10 pomocí desktopového klienta Windows.
 

@@ -1,6 +1,6 @@
 ---
-title: Klepněte na Přehled služby Azure virtual network | Dokumentace Microsoftu
-description: Další informace o službě virtual network TAP. Virtuální síť TAP poskytuje hluboká kopie virtuálního počítače síťový provoz, který můžete Streamovat do kolekcí paketů.
+title: Virtuální síť Azure – Přehled klepněte na přehled | Microsoft Docs
+description: Přečtěte si informace o KLEPNUTÍch virtuální sítě. Klepnutím na virtuální síť získáte hloubkovou kopii provozu sítě virtuálních počítačů, která se dá streamovat do sběrače paketů.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,60 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593195"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676919"
 ---
-# <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
+# <a name="virtual-network-tap"></a>Klepnutí na virtuální síť
 
-Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průběžně stream vašeho virtuálního počítače síťový provoz do síťových paketů kolekcí nebo analytics nástroj. Nástroj kolekcí nebo analytics poskytuje [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) partnera. Seznam partnerských řešení, kteří jsou ověření pro práci s virtuální sítí TAP najdete v tématu [partnerská řešení](#virtual-network-tap-partner-solutions).
+KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) . Seznam partnerských řešení, která jsou ověřená pro práci s virtuální sítí, najdete v tématu [Partnerská řešení](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Virtuální síť TAP je aktuálně ve verzi preview ve všech oblastech Azure. Pokud chcete použít virtuální síť TAP, musíte se zaregistrovat ve verzi preview zasláním e-mailu <azurevnettap@microsoft.com> svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Nejste schopni používat funkci, kterou, až se zobrazí potvrzovací e-mail. V této verzi preview je k dispozici bez smlouvy o úrovni služeb a nemělo používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Zobrazit [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) podrobnosti.
+> Klepnutí na virtuální síť je v tuto chvíli ve všech oblastech Azure ve verzi Preview. Pokud chcete použít virtuální síť, musíte se zaregistrovat ve verzi Preview odesláním e-mailu na adresu @ no__t-0 s ID vašeho předplatného. Až se vaše předplatné zaregistruje, dostanete e-mail zpátky. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace o Microsoft Azure verzích Preview  for najdete v tématu s [doplňkovými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="virtual-network-tap-partner-solutions"></a>Virtuální síť TAP partnerských řešení
+## <a name="virtual-network-tap-partner-solutions"></a>Virtuální síť – klepněte na Partnerská řešení
 
 ### <a name="network-packet-brokers"></a>Zprostředkovatelé síťových paketů
 
-- [Velké objemy přepínač velké objemy monitorování prostředků infrastruktury](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Prostředky infrastruktury pro velké monitorování velkých přepínačů](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
-- [Pomocí Nubeva prismatu](https://www.nubeva.com/azurevtap)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
-### <a name="security-analytics-networkapplication-performance-management"></a>Analýzu zabezpečení, správy výkonu sítě/aplikací
+### <a name="security-analytics-networkapplication-performance-management"></a>Analýza zabezpečení, Správa výkonu sítě a aplikace
 
-- [Vzhůru zabezpečení](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Zabezpečení spánku](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cloud Cisco Stealthwatch](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
-- [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [ExtraHop se odhalí (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [Fidelis kyberbezpečnosti](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [RSA NetWitness® Platform](https://www.rsa.com/azure)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
+- [® Platforma RSA NetWitness](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-Následující obrázek ukazuje, jak virtuální sítě funguje TAP. Můžete přidat klepnutím na konfiguraci na [síťové rozhraní](virtual-network-network-interface.md) připojená k virtuálním počítači nasazeném ve virtuální síti. Cíl je IP adresa virtuální sítě ve stejné virtuální síti jako monitorovaných síťových rozhraní nebo [partnerské virtuální](virtual-network-peering-overview.md) sítě. Kolekce řešení pro virtuální síť TAP je možné nasadit za [Azure interního nástroje Load balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) pro zajištění vysoké dostupnosti. Můžete zhodnotit možnosti nasazení pro jednotlivá řešení, najdete v článku [partnerská řešení](#virtual-network-tap-partner-solutions).
+Následující obrázek ukazuje, jak funguje virtuální síť. Můžete přidat konfiguraci klepnutím na [síťové rozhraní](virtual-network-network-interface.md) , které je připojené k virtuálnímu počítači nasazenému ve vaší virtuální síti. Cíl je IP adresa virtuální sítě ve stejné virtuální síti jako monitorované síťové rozhraní nebo navázání [partnerské virtuální](virtual-network-peering-overview.md) sítě. Řešení kolektoru pro klepnutí na virtuální síť můžete nasadit za využití [interního nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) pro zajištění vysoké dostupnosti. Pokud chcete vyhodnotit možnosti nasazení pro jednotlivá řešení, přečtěte si téma [Partnerská řešení](#virtual-network-tap-partner-solutions).
 
-![Jak virtuální sítě funguje klepněte na](./media/virtual-network-tap/architecture.png)
+![Jak funguje na virtuální síti](./media/virtual-network-tap/architecture.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než vytvoříte virtuální síť TAP, musí obdržet e-mail s potvrzením, která jsou zaregistrovaná ve verzi preview a mít jeden nebo více virtuálních počítačů vytvořených pomocí [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) modelu nasazení a partnera řešení pro agregaci klepněte na provoz ve stejné oblasti azure. Pokud nemáte partnerského řešení ve vaší virtuální síti, najdete v článku [partnerská řešení](#virtual-network-tap-partner-solutions) chcete nasadit některé. Můžete použít stejné virtuální síti TAP prostředku k souhrnným přenosům z několika síťovými rozhraními v jednom nebo několika předplatných. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory. Kromě toho monitorovaných síťových rozhraní a cílový koncový bod pro agregaci TAP provozu může být v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení Ujistěte se, že [partnerský vztah virtuální sítě](virtual-network-peering-overview.md) před tím, než se konfigurace virtuálního síťového ODPOSLOUCHÁVÁNÍ.
+Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-mail, který jste zaregistrovali ve verzi Preview, a mít jeden nebo více virtuálních počítačů vytvořených pomocí modelu nasazení [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a partnerského řešení pro agregaci Klepněte na provoz ve stejné oblasti Azure. Pokud ve vaší virtuální síti nemáte Partnerské řešení, přečtěte si článek o [partnerských řešeních](#virtual-network-tap-partner-solutions) k nasazení. K agregaci provozu z více síťových rozhraní ve stejných nebo různých předplatných můžete použít stejnou virtuální síť. klepněte na prostředek. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, musí být odběry přidruženy ke stejnému Azure Active Directory tenantovi. Monitorovaná síťová rozhraní a cílový koncový bod pro agregaci přenosů po klepnutí se navíc můžou nacházet v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení, zajistěte, aby bylo povoleno vytváření [partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) před konfigurací klepnutí na virtuální síť.
 
 ## <a name="permissions"></a>Oprávnění
 
-Účty, můžete použít konfiguraci klepnutím na síťových rozhraních musí být přiřazená k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který je přiřazen nezbytné akce z následující tabulky:
+Účty, které použijete k použití konfigurace na síťových rozhraních, musí být přiřazeny roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
 | Akce | Name |
 |---|---|
-| Microsoft.Network/virtualNetworkTaps/* | Potřebný k vytvoření, aktualizaci, čtení a odstranění virtuální sítě resource klepněte na |
-| Microsoft.Network/networkInterfaces/read | Vyžadovaných k načtení prostředků rozhraní sítě, na které se nakonfigurují vzoru TAP |
-| Microsoft.Network/tapConfigurations/* | Potřebný k vytvoření, aktualizaci, čtení a odstranění konfigurace klepnutím na síťovém rozhraní |
+| Microsoft. Network/virtualNetworkTaps/* | Vyžaduje se pro vytvoření, aktualizaci, čtení a odstranění virtuální sítě klepnutím na prostředek. |
+| Microsoft. Network/networkInterfaces/Read | Vyžaduje se ke čtení prostředku síťového rozhraní, na kterém se bude konfigurovat klepnutím. |
+| Microsoft. Network/tapConfigurations/* | Vyžaduje se pro vytvoření, aktualizaci, čtení a odstranění konfigurace klepnutí na síťovém rozhraní. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [vytvoření virtuální sítě TAP](tutorial-tap-virtual-network-cli.md).
+- Přečtěte si, jak [vytvořit virtuální síť klepnutím](tutorial-tap-virtual-network-cli.md).

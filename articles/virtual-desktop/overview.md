@@ -1,22 +1,22 @@
 ---
-title: Co je verze Preview pro virtuální počítače s Windows?  – Azure
-description: Přehled služby Windows Virtual Desktop Preview
+title: Co je virtuální počítač s Windows?  – Azure
+description: Přehled virtuálního klienta Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338588"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676552"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Co je verze Preview pro virtuální počítače s Windows? 
+# <a name="what-is-windows-virtual-desktop"></a>Co je virtuální počítač s Windows? 
 
-Ve verzi Public Preview je nyní k dispozici služba Windows Virtual Desktop Preview je služba virtualizace plochy a aplikací, která běží v cloudu.
+Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v cloudu.
 
 Tady je seznam toho, co můžete udělat při spuštění virtuální plochy Windows v Azure:
 
@@ -64,10 +64,10 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|OS|Požadovaná licence|
+|JINÉHO|Požadovaná licence|
 |---|---|
-|Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
+|Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows Server 2012 R2, 2016, 2019|Licence CAL pro klientský přístup (CAL) se Software Assurance|
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
@@ -82,24 +82,25 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
   
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
-* [Standardní](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) [Služba AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)připojená k doméně nebo k ní připojená. Virtuální počítače nemůžou být připojené k Azure AD.
+* [Standardní](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) služba AD připojená k doméně nebo k ní [připojená](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůžou být připojené k Azure AD.
 * Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
 
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít odchozí přístup TCP 443 k následujícím adresám URL:
+
 * *. wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
+* *. blob.core.windows.net
+* *. core.windows.net
+* *. servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
 
 >[!NOTE]
 >Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
 
-Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Během veřejné verze Preview se můžou desktopy a aplikace nasadit na virtuální počítače v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA (USA – východ 2 oblasti). To může vést k přenosu dat do USA při testování služby během veřejné verze Preview. Začneme škálovat řešení pro správu a lokalizaci dat do všech oblastí Azure počínaje všeobecnou dostupností.
+Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA (USA – východ 2 oblasti). To může vést k přenosu dat do USA.
 
 Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala následující požadavky:
 
@@ -119,11 +120,28 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 Virtuální počítač s Windows podporuje následující image operačních systémů:
 
 * Více relací Windows 10 Enterprise
+* Windows 10 Enterprise
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce: 
+
+|Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|Aktualizace agenta virtuálního počítače s Windows|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|Automatické|
+|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automatické|
+|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automatické|
+|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automatické|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Zásah|
+|Windows Server 2019|Ano|Ano|Ne|Ne|Automatické|
+|Windows Server 2016|Ano|Ano|Ano|Ano|Automatické|
+|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automatické|
 
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
 
 > [!div class="nextstepaction"]
-> [Vytvoření tenanta ve verzi Preview pro virtuální počítač s Windows](tenant-setup-azure-active-directory.md)
+> [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md)

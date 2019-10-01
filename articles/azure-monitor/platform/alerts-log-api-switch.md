@@ -1,26 +1,26 @@
 ---
 title: Přepnutí ze starší verze rozhraní API upozornění Log Analytics do nového rozhraní API Azure Alerts
 description: Přehled starších Log Analytics elementu savedsearch a rozhraní API výstrah a procesu pro přepínání pravidel upozornění na nové rozhraní ScheduledQueryRules API s podrobnostmi adresování běžných otázek zákazníků.
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034789"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677791"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Přepnutí předvolby rozhraní API pro upozornění protokolu
+# <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvolby rozhraní API pro výstrahy protokolu
 
 > [!NOTE]
 > Obsah uvedený pro uživatele, kteří používají jenom veřejný cloud Azure, a **ne** pro Azure Government nebo Azure Čína Cloud.  
 
-Donedávna jste spravovali pravidla upozornění na portálu Microsoft Operations Management Suite. Nové prostředí výstrah bylo integrováno s různými službami v Microsoft Azure včetně Log Analytics a bylo požádáno o [prodloužení vašich pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Pro zajištění minimálního přerušení pro zákazníky ale proces nezměnil programové rozhraní pro své [rozhraní API pro Log Analytics výstrah](api-alerts.md) založené na elementu savedsearch.
+Až do poslední doby jste spravovali pravidla výstrahy na portálu Microsoft Operations Management Suite. Nové prostředí výstrah bylo integrováno s různými službami v Microsoft Azure včetně Log Analytics a bylo požádáno o [prodloužení vašich pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Pro zajištění minimálního přerušení pro zákazníky ale proces nezměnil programové rozhraní pro své [rozhraní API pro Log Analytics výstrah](api-alerts.md) založené na elementu savedsearch.
 
 Nyní ale oznamujete Log Analytics upozorňování uživatelů na skutečnou programovou alternativu Azure, [Azure monitor-ScheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), které se také odráží v [fakturaci Azure – výstrahy protokolu](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Další informace o tom, jak spravovat výstrahy protokolu pomocí rozhraní API, najdete v tématu [Správa upozornění protokolu pomocí šablony prostředků Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [Správa výstrah protokolu pomocí PowerShellu](alerts-log.md#managing-log-alerts-using-powershell).
 
@@ -44,7 +44,7 @@ Dopady přepínače preference na rozhraní API scheduledQueryRules jsou kompilo
 
 - Všechny interakce provedené pro správu upozornění protokolů prostřednictvím programových rozhraní se teď musí provádět pomocí [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) . Další informace najdete v tématu [Ukázka použití prostřednictvím šablony prostředků Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [ukázkové použití prostřednictvím PowerShellu](alerts-log.md#managing-log-alerts-using-powershell) .
 - Všechna nová pravidla upozornění protokolu vytvořená v Azure Portal budou vytvořena pouze pomocí [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a umožňují uživatelům používat [Další funkce nového rozhraní API](#benefits-of-switching-to-new-azure-api) prostřednictvím Azure Portal.
-- Závažnost pro pravidla upozornění protokolu se posune od: *Kritická, upozorňující & informativní*, na *hodnoty závažnosti 0, 1 & 2*. Společně s možností pro vytváření a aktualizaci pravidel upozornění se závažností 3 a 4 taky.
+- Závažnost pro pravidla upozornění protokolu se posune od: *kritická, upozorňující & informativní*, na *hodnoty závažnosti 0, 1 & 2*. Společně s možností pro vytváření a aktualizaci pravidel upozornění se závažností 3 a 4 taky.
 
 Proces přesunutí pravidel výstrah z [rozhraní API pro upozornění starší verze Log Analytics](api-alerts.md) nezahrnuje žádné změny definice upozornění, dotazování nebo konfigurace jakýmkoli způsobem. Vaše pravidla a monitorování nejsou nijak ovlivněna a výstrahy se v průběhu nebo po přepínači nezastaví nebo nebudou zastaveny. Jediná změna je změna v preference rozhraní API a přístup k vašim pravidlům prostřednictvím nového rozhraní API.
 
@@ -110,7 +110,7 @@ Jinak, pokud zadaný pracovní prostor analytického protokolu ještě není př
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [výstrahách Azure monitor-log](alerts-unified-log.md).
 - Naučte se vytvářet [výstrahy protokolu v upozorněních Azure](alerts-log.md).

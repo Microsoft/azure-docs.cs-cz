@@ -1,67 +1,67 @@
 ---
-title: Prostředí Preview virtuální plochy Windows – Azure
-description: Základní elementy prostředí Windows virtuální plochy, ve verzi Preview.
+title: Prostředí virtuálních počítačů s Windows – Azure
+description: Základní prvky prostředí virtuálních počítačů s Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142389"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676626"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Prostředí Preview virtuální plochy Windows
+# <a name="windows-virtual-desktop-environment"></a>Prostředí virtuálních počítačů s Windows
 
-Virtuální Desktop Preview Windows je služba, která poskytuje uživatelům snadný a bezpečný přístup k jejich virtualizované desktopy a aplikace RemoteApp. Toto téma vám sdělí něco o obecnou strukturu prostředí virtuálního klienta Windows.
+Virtuální plocha Windows je služba, která uživatelům poskytuje snadný a zabezpečený přístup ke svým virtualizovaným plochám a aplikacím RemoteApp. V tomto tématu se dozvíte další informace o obecné struktuře prostředí virtuálních počítačů s Windows.
 
-## <a name="tenants"></a>Tenanti
+## <a name="tenants"></a>tenantů
 
-Primární rozhraní pro správu prostředí virtuálního klienta Windows je tenant virtuální plochy Windows. Každý tenant virtuální plochy Windows musí být přidruženy s Azure Active Directory, který obsahuje uživatele, kteří se přihlásit k prostředí. Z klienta Windows virtuálního klienta můžete začít vytvářet fondy hostitel pro spouštění úloh vašich uživatelů.
+Tenant virtuálních klientů Windows je primárním rozhraním pro správu prostředí virtuálních počítačů s Windows. Každý tenant virtuálních klientů s Windows musí být přidružený k Azure Active Directory, která obsahuje uživatele, kteří se přihlásí k prostředí. Z tenanta virtuálních klientů Windows můžete začít vytvářet fondy hostitelů pro spouštění úloh vašich uživatelů.
 
-## <a name="host-pools"></a>Fondy hostitele
+## <a name="host-pools"></a>Fondy hostitelů
 
-Hostitel fond je kolekce virtuálních počítačů s Azure, které zaregistrujte se k virtuálnímu klientovi Windows jako hostitele relace při spuštění agenta virtuální plochy Windows. Všechny relace hostování virtuálních počítačů ve fondu hostitele by měl pocházet ze stejné image, konzistentní uživatelské prostředí.
+Fond hostitelů je kolekce virtuálních počítačů Azure, které se při spuštění agenta virtuálních počítačů s Windows zaregistrují na virtuální plochu Windows jako hostitelé relace. Všechny virtuální počítače hostitele relace ve fondu hostitelů by měly být ve stejném obrázku pro konzistentní uživatelské prostředí zdrojové.
 
-Fond hostitele může být jeden ze dvou typů:
+Fond hostitelů může být jeden ze dvou typů:
 
-- Osobní, kde je každý hostitel relace je přiřazena k jednotlivým uživatelům.
-- Ve fondu, ve kterém relace hostitele může přijímat připojení z každý uživatel oprávnění pro skupinu aplikací v rámci fondu hostitele.
+- Osobní, kde je každý hostitel relace přiřazen k jednotlivým uživatelům.
+- Ve fondu, kde můžou hostitelé relace přijímat připojení libovolného uživatele, který je v rámci fondu hostitelů autorizovaný, do skupiny aplikací.
 
-Nastavit další vlastnosti na hostitele fondu změnit chování Vyrovnávání zatížení, kolik relací může trvat každý hostitel relací, a co uživatel způsobů, jak relace hostitele v hostiteli fondu přihlášení relace jejich virtuální plochy Windows. Můžete řídit prostředky publikované aplikace skupinám uživatelů.
+Můžete nastavit další vlastnosti fondu hostitelů, abyste změnili jeho chování vyrovnávání zatížení, kolik relací může trvat a co může uživatel dělat pro hostitele relací ve fondu hostitelů v době, kdy se přihlásil k relacím virtuálních klientů Windows. Prostředky publikované uživatelům můžete řídit prostřednictvím skupin aplikací.
 
 ## <a name="app-groups"></a>Skupiny aplikací
 
-Skupinu aplikací je logické seskupení aplikace nainstalované na hostitelích relace ve fondu hostitele. Skupinu aplikací může být jeden ze dvou typů:
+Skupina aplikací je logické seskupení aplikací nainstalovaných v hostitelích relací ve fondu hostitelů. Skupina aplikací může být jedním ze dvou typů:
 
-- Vzdálená aplikace RemoteApp, kam uživatelé přístup aplikace RemoteApp jednotlivě vybrat a publikovat do skupiny aplikací
-- Desktop, kde uživatelé přístup k celé ploše
+- Vzdálená aplikace RemoteApp, kde uživatelé přistupují k aplikacím RemoteApp, které vyberete jednotlivě a publikujete do skupiny aplikací
+- Plocha, kde uživatelé přistupují k celé ploše
 
-Ve výchozím nastavení se skupina aplikace klasické pracovní plochy (s názvem "Desktop skupiny aplikací") vytvoří automaticky pokaždé, když vytváříte fond hostitele. Kdykoli lze odebrat tuto skupinu aplikací. Však nelze vytvořit jinou skupinu desktopovou aplikaci ve fondu hostitele existuje skupina aplikace klasické pracovní plochy. K publikování aplikace RemoteApp, musíte vytvořit skupinu aplikací RemoteApp. Můžete vytvořit více skupin aplikací RemoteApp scénářů jinému pracovnímu procesu. Různým skupinám aplikace RemoteApp může také obsahovat překrývající se aplikace RemoteApp.
+Ve výchozím nastavení se při každém vytvoření fondu hostitelů automaticky vytvoří skupina desktopových aplikací (s názvem "skupina desktopových aplikací"). Tuto skupinu aplikací můžete kdykoli odebrat. V rámci fondu hostitelů ale nemůžete vytvořit jinou skupinu desktopových aplikací, zatímco existuje skupina desktopových aplikací. Chcete-li publikovat vzdálené aplikace RemoteApp, je nutné vytvořit skupinu aplikací RemoteApp. Můžete vytvořit několik skupin aplikací RemoteApp, které budou vyhovovat různým pracovním scénářům. Různé skupiny aplikací RemoteApp můžou také obsahovat překrývající se vzdálené aplikace RemoteApp.
 
-K publikování materiálů pro uživatele, je nutné jim přiřadit do skupin aplikací. Při přiřazování uživatelů do skupiny aplikací, vezměte v úvahu následující věci:
+Pokud chcete publikovat prostředky uživatelům, musíte je přiřadit ke skupinám aplikací. Při přiřazování uživatelů ke skupinám aplikací Vezměte v úvahu následující věci:
 
-- Uživatele nelze přiřadit skupinu aplikace klasické pracovní plochy a aplikace skupiny Vzdálená aplikace RemoteApp ve stejném fondu hostitele.
-- Uživateli lze přiřadit k několika skupinám aplikace v rámci stejného hostitele fondu a jejich kanál bude nahromadění obě skupiny aplikací.
+- Uživatele nejde přiřadit ke skupině desktopové aplikace a skupině aplikací RemoteApp ve stejném fondu hostitelů.
+- Uživatel může být přiřazený k několika skupinám aplikací v rámci stejného fondu hostitelů a jejich informační kanál bude akumulací obou skupin aplikací.
 
-## <a name="tenant-groups"></a>Skupiny tenanta
+## <a name="tenant-groups"></a>Skupiny tenantů
 
-Virtuální plochy Windows je tenant virtuální plochy Windows, ve kterém se stane většinu nastavení a konfigurace. Tenant virtuální plochy Windows obsahuje fondy hostitele, skupiny aplikací a přiřazení uživatele skupiny aplikací. Může však být určitých situacích, kdy potřebujete ke správě více tenantů virtuální plochy Windows najednou, zejména v případě, že jste poskytovatel cloudových služeb (CSP) nebo partnerský server pro hostování. V těchto situacích můžete použít vlastní skupinu tenanta virtuální plochy Windows umístit jednotlivých tenantů zákazníků virtuální plochy Windows a centrálně spravujte přístup. Pokud spravujete pouze jednoho tenanta virtuální plochy Windows, ale neplatí koncepce skupiny tenanta a můžete pokračovat k provozování a správě vašeho tenanta, který existuje ve výchozí skupině tenanta.
+Ve virtuálním počítači s Windows je tenant virtuálních klientů Windows, kde se většina nastavení a konfigurace stane. Tenant virtuálních klientů Windows obsahuje fondy hostitelů, skupiny aplikací a přiřazení uživatelů skupiny aplikací. Mohou však nastat situace, kdy potřebujete spravovat více tenantů virtuálních klientů Windows najednou, zejména pokud jste poskytovatel cloudových služeb (CSP) nebo hostující partner. V těchto situacích můžete použít vlastní skupinu tenantů virtuálních počítačů s Windows k umístění každého tenanta virtuálních klientů Windows v zákaznících a centrálně spravovat přístup. Pokud ale jenom spravujete jediného tenanta virtuálních klientů s Windows, koncept skupiny tenantů se nepoužije a můžete dál provozovat a spravovat tenanta, který existuje ve výchozí skupině tenantů.
 
 ## <a name="end-users"></a>Koncoví uživatelé
 
-Po přiřazení uživatelů k jejich skupiny aplikací, můžete připojit k nasazení virtuální plochy Windows s některý z klientů virtuální plochy Windows.
+Po přiřazení uživatelů ke skupinám aplikací se mohou připojit k nasazení virtuálních klientů Windows pomocí libovolného klienta virtuálních klientů Windows.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Delegovaný přístup a přiřazení role u uživatelů v [Delegovaný přístup ve Windows Virtual Desktop Preview](delegated-access-virtual-desktop.md).
+Přečtěte si další informace o delegovaném přístupu a přiřazování rolí uživatelům při [delegovaném přístupu na virtuálním počítači s Windows](delegated-access-virtual-desktop.md).
 
-Informace o nastavení klientů Windows virtuální plochy najdete v tématu [vytvořit tenanta v náhledu virtuální plochy Windows](tenant-setup-azure-active-directory.md).
+Informace o tom, jak nastavit tenanta pro virtuální počítače s Windows, najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).
 
-Zjistěte, jak se připojit k virtuálnímu klientovi Windows, naleznete v následujících článcích:
+Informace o tom, jak se připojit k virtuálnímu počítači s Windows, najdete v jednom z následujících článků:
 
-- [Připojení z Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
-- [Připojte se z webového prohlížeče](connect-web.md)
+- [Připojení ze systému Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
+- [Připojení z webového prohlížeče](connect-web.md)

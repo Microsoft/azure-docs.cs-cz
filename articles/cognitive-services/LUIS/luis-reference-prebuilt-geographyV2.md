@@ -1,7 +1,7 @@
 ---
 title: Předdefinovaná entita geografie v2 – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje geographyV2 informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje geographyV2 předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,35 +9,35 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933541"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677612"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem vytvořenou entitu pro aplikaci LUIS
-GeographyV2 předem připravených entit rozpozná místech. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující GeographyV2 záměry aplikace. GeographyV2 entity se podporuje v angličtině [jazykovou verzi](luis-reference-prebuilt-entities.md).
+Předem vytvořená entita geographyV2 detekuje místa. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující GeographyV2. Entita GeographyV2 je podporována v anglické [jazykové verzi](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Podtypy
-Zeměpisné umístění mít podtypy:
+Zeměpisná umístění mají podtypy:
 
 |Podtyp|Účel|
 |--|--|
-|`poi`|bodu zájmu|
+|`poi`|bod zájmu|
 |`city`|název města|
-|`countryRegion`|Název země nebo oblasti|
-|`continent`|Název kontinent|
-|`state`|Název státu nebo provincie|
+|`countryRegion`|název země nebo oblasti|
+|`continent`|název kontinentu|
+|`state`|název státu nebo provincie|
 
 
 ## <a name="resolution-for-geographyv2-entity"></a>Řešení pro entitu GeographyV2
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
+Následující příklad ukazuje řešení entity **Builtin. geographyV2** .
 
 ```json
 {
@@ -93,9 +93,9 @@ Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -121,7 +121,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -191,6 +191,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [e-mailu](luis-reference-prebuilt-email.md), [číslo](luis-reference-prebuilt-number.md), a [ordinální](luis-reference-prebuilt-ordinal.md) entity. 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si informace o [e-mailu](luis-reference-prebuilt-email.md), [číslu](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách. 

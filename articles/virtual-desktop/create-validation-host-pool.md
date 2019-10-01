@@ -1,5 +1,5 @@
 ---
-title: Vytvoření fondu hostitelů ve verzi Preview pro virtuální počítače s Windows pro ověření aktualizací služby – Azure
+title: Vytvoření fondu hostitelů virtuálních počítačů s Windows pro ověření aktualizací služby – Azure
 description: Jak vytvořit fond ověřovacích hostitelů pro monitorování aktualizací služby před výstupem aktualizací do produkčního prostředí.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c294bb41afae1257add0c96a9f77adad3f871849
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163599"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676683"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služeb
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
 
-Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta ve verzi Preview virtuálních počítačů s Windows. Před nasazením fondů hostitelů do provozního prostředí důrazně doporučujeme vytvořit fond hostitelů ověřování. Aktualizace se používají jako první k ověření fondů hostitelů, takže můžete sledovat aktualizace služby, než je zavedete do produkčního prostředí. Bez hostitelského fondu pro ověřování nesmíte zjišťovat změny, které zavádějí chyby, což by mohlo vést k výpadkům uživatelů v produkčním prostředí.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Před nasazením fondů hostitelů do provozního prostředí důrazně doporučujeme vytvořit fond hostitelů ověřování. Aktualizace se používají jako první k ověření fondů hostitelů, takže můžete sledovat aktualizace služby, než je zavedete do produkčního prostředí. Bez hostitelského fondu pro ověřování nesmíte zjišťovat změny, které zavádějí chyby, což by mohlo vést k výpadkům uživatelů v produkčním prostředí.
 
 Pokud chcete zajistit, aby vaše aplikace pracovaly s nejnovějšími aktualizacemi, fond hostitelů ověření by měl být podobně jako fondy hostitelů ve vašem produkčním prostředí. Uživatelé by se měli často připojovat k fondu ověřování pro ověřování stejně jako k produkčnímu fondu hostitelů. Pokud máte ve fondu hostitelů automatizované testování, měli byste zahrnout automatizované testování do fondu ověřovacích hostitelů.
 
@@ -71,9 +71,9 @@ Výsledky rutiny by měly vypadat podobně jako tento výstup:
 
 ## <a name="update-schedule"></a>Aktualizovat plán
 
-Ve verzi Preview se aktualizace služby vyskytují přibližně měsíčně tempo. V případě závažných problémů budou důležité aktualizace k dispozici na častých tempo.
+Aktualizace služby nastávají měsíčně. Pokud dojde k zásadním problémům, budou důležité aktualizace k dispozici při častější rychlosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste vytvořili fond hostitelů pro ověření, si můžete přečíst, jak nasadit a připojit se k nástroji pro správu pro správu prostředků virtuálních ploch Microsoftu.
 

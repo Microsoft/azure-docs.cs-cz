@@ -206,6 +206,8 @@
       items:
         - name: 'Objekty blob, fronty a soubory (verze 12. x – Preview)'
           href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: 'Objekty blob, fronty a soubory (verze 8)'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
         - name: Poskytovatel prostředků úložiště
           href: /java/api/overview/azure/storage/management
     - name: Node.js
@@ -269,8 +271,8 @@
           href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
         - name: Azure Configuration Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
-        - name: Knihovna pro přesun dat v Azure Storage
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Knihovna poskytovatele prostředků úložiště
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: Zdrojový kód
       items:
         - name: .NET
@@ -284,11 +286,13 @@
             - name: Knihovna pro přesun dat
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Knihovna poskytovatele prostředků úložiště
-              href: /dotnet/api/overview/azure/storage/management
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
             - name: Klientská knihovna Azure Storage verze 12.x (Preview)
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: 'Objekty blob, fronty a soubory (verze 8)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
             - name: Klientská knihovna Azure Storage verze 8.x a starší
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

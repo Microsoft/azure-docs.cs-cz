@@ -1,6 +1,6 @@
 ---
-title: Přehled škálovacích sad virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Seznamte se se škálovacími sadami virtuálních počítačů Azure a způsobem automatického škálování aplikací.
+title: Přehled služby Azure Virtual Machine Scale Sets | Microsoft Docs
+description: Přečtěte si o službě Azure Virtual Machine Scale Sets a o tom, jak automaticky škálovat aplikace
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -14,57 +14,62 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/21/2018
+ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 98c183d65a18c186b515df8ec02ba26b8c2c4143
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258309"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679385"
 ---
-# <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
-Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.
+# <a name="what-are-virtual-machine-scale-sets"></a>Co jsou sady škálování virtuálních počítačů?
+Azure Virtual Machine Scale Sets umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvětšit nebo zmenšit v reakci na poptávku nebo podle definovaného plánu. Sady škálování poskytují vysokou dostupnost vašim aplikacím a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. Pomocí služby Virtual Machine Scale Sets můžete vytvářet rozsáhlé služby pro oblasti, jako jsou výpočetní prostředky, velké objemy dat a úlohy kontejnerů.
 
 
-## <a name="why-use-virtual-machine-scale-sets"></a>Proč používat škálovací sady virtuálních počítačů?
-Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle distribuují na více instancí. Zákazníci můžou k vaší aplikaci přistupovat přes nástroj pro vyrovnávání zatížení, který distribuuje požadavky na jednu z instancí aplikace. V případě, že potřebujete provést údržbu nebo aktualizaci instance aplikace, musí se vaši zákazníci distribuovat do jiné dostupné instance aplikace. Abyste udrželi krok s dalšími požadavky zákazníků, můžete zvýšit počet instancí aplikace, na kterých se vaše aplikace spouští.
+## <a name="why-use-virtual-machine-scale-sets"></a>Proč používat Virtual Machine Scale Sets?
+Pro zajištění redundance a zlepšení výkonu jsou aplikace obvykle distribuovány mezi více instancí. Zákazníci můžou k vaší aplikaci přistupovat prostřednictvím nástroje pro vyrovnávání zatížení, který distribuuje požadavky na jednu z instancí aplikace. Pokud potřebujete provést údržbu nebo aktualizaci instance aplikace, musí být vaši zákazníci distribuováni do jiné dostupné instance aplikace. Aby se zajistila další poptávka se zákazníky, možná budete muset zvýšit počet instancí aplikace, které spouštějí vaši aplikaci.
 
-Škálovací sady virtuálních počítačů Azure poskytují možnosti správy pro aplikace, které se spouštějí na více virtuálních počítačích, [automatické škálování prostředků](virtual-machine-scale-sets-autoscale-overview.md) a vyrovnávání zatížení provozu. Škálovací sady poskytují následující klíčové výhody:
+Azure Virtual Machine Scale Sets poskytují možnosti správy pro aplikace, které běží na mnoha virtuálních počítačích, [Automatické škálování prostředků](virtual-machine-scale-sets-autoscale-overview.md)a vyrovnávání zatížení provozu. Sady škálování poskytují následující klíčové výhody:
 
-- **Snadné vytváření a správa několika virtuálních počítačů**
-    - Pokud máte mnoho virtuálních počítačů, na kterých se vaše aplikace spouští, je důležité v celém prostředí udržovat konzistentní konfiguraci. Pro zajištění spolehlivého výkonu aplikace by všechny virtuální počítače měly mít stejnou velikost, konfiguraci disků a instalace aplikace.
-    - V případě škálovacích sad se všechny instance virtuálních počítačů vytvářejí s využitím stejné základní image operačního systému a konfigurace. Tento přístup umožňuje snadnou správu stovek virtuálních počítačů bez dalších úloh konfigurace nebo správy sítě.
-    - Škálovací sady podporují použití [nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md) pro účely základní distribuce provozu úrovně 4 a službu [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pro pokročilejší distribuci provozu úrovně 7 a ukončování protokolu SSL.
+- **Snadné vytváření a Správa více virtuálních počítačů**
+    - Pokud máte mnoho virtuálních počítačů, na kterých běží vaše aplikace, je důležité udržovat v celém prostředí konzistentní konfiguraci. Pro zajištění spolehlivého výkonu vaší aplikace by se měla shodovat velikost virtuálního počítače, konfigurace disku a instalace aplikací napříč všemi virtuálními počítači.
+    - Se sadami škálování jsou všechny instance virtuálních počítačů vytvořené ze stejné základní image operačního systému a konfigurace. Tento přístup umožňuje snadno spravovat stovky virtuálních počítačů bez dalších úloh konfigurace nebo správy sítě.
+    - Sady škálování podporují použití [Nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md) pro základní distribuci provozu vrstvy 4 a [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pro pokročilejší distribuci provozu vrstvy 7 a ukončení protokolu SSL.
 
-- **Zajištění vysoké dostupnosti a odolnosti aplikací**
-    - Škálovací sady slouží ke spouštění více instancí vaší aplikace. Pokud u jedné z těchto instancí virtuálních počítačů dojde k problému, zákazníci můžou pokračovat v přístupu k aplikaci přes některou z dalších instancí virtuálních počítačů, a to s minimálním přerušením.
-    - Pokud potřebujete větší dostupnost, můžete použít [zóny dostupnosti](../availability-zones/az-overview.md) k automatické distribuci instancí virtuálních počítačů ve škálovací sadě v rámci jednoho datacentra nebo do více datacenter.
+- **Poskytuje vysokou dostupnost a odolnost aplikací.**
+    - Sady škálování se používají ke spouštění více instancí aplikace. Pokud má jedna z těchto instancí virtuálních počítačů nějaký problém, zákazníci budou mít přístup k vaší aplikaci přes jednu z dalších instancí virtuálních počítačů s minimálním přerušením.
+    - Pro zajištění vyšší dostupnosti můžete použít [zóny dostupnosti](../availability-zones/az-overview.md) k automatické distribuci instancí virtuálních počítačů do sady škálování v rámci jednoho datového centra nebo napříč různými datacentry.
 
-- **Možnost automatického škálování aplikace s ohledem na měnící se požadavky na prostředky**
-    - Požadavky zákazníků na vaši aplikaci se v průběhu dne nebo týdne můžou měnit. S ohledem na požadavky zákazníků můžou škálovací sady automaticky zvýšit počet instancí virtuálních počítačů při nárůstu poptávky a při snížení poptávky pak počet instancí virtuálních počítačů snížit.
-    - Automatické škálování také minimalizuje počet nepotřebných instancí virtuálních počítačů s vaší aplikací při nízké poptávce, zatímco zákazníci mají stále k dispozici přijatelnou úroveň výkonu díky automatickému přidávání dalších instancí virtuálních počítačů, když se poptávka zvýší. Tato schopnost pomáhá snižovat náklady a efektivně vytvářet prostředky Azure podle potřeby.
+- **Umožňuje aplikaci automaticky škálovat změny požadavků na prostředky.**
+    - Zákaznická poptávka za vaše aplikace se může v průběhu dne nebo týdne změnit. Aby bylo možné odpovídat zákaznickým požadavkům, můžou sady škálování automaticky zvýšit počet instancí virtuálních počítačů, když se zvyšuje poptávka aplikací, a pak snížit počet instancí virtuálních počítačů, které se sníží.
+    - Automatické škálování také minimalizuje počet zbytečných instancí virtuálních počítačů, na kterých běží vaše aplikace, když je poptávka nízká, zatímco zákazníci dostanou přijatelnou úroveň výkonu při zvětšování poptávky a automaticky se přidávají další instance virtuálních počítačů. Tato možnost pomáhá snižovat náklady a efektivně vytvářet prostředky Azure podle potřeby.
 
-- **Práce ve velkém měřítku**
-    - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní Image virtuálního počítače, je limit 600 instancí virtuálních počítačů.
-    - Pro zajištění nejlepšího výkonu pro úlohy v produkčním prostředí, použijte [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
+- **Funguje ve velkém měřítku**
+    - Sady škálování podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní image virtuálních počítačů, tento limit je 600 instancí virtuálních počítačů.
+    - K dosažení nejlepšího výkonu u produkčních úloh použijte [Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md).
 
 
-## <a name="differences-between-virtual-machines-and-scale-sets"></a>Rozdíly mezi virtuálními počítači a škálovacími sadami
-Škálovací sady se sestavují z virtuálních počítačů. Škálovací sady poskytují vrstvy správy a automatizace pro spouštění a škálování aplikací. Místo toho můžete ručně vytvářet a spravovat jednotlivé virtuální počítače nebo integrovat stávající nástroje a vytvořit tak podobnou úroveň automatizace. Následující tabulka popisuje výhody škálovacích sad v porovnání s ruční správou několika instancí virtuálních počítačů.
+## <a name="differences-between-virtual-machines-and-scale-sets"></a>Rozdíly mezi virtuálními počítači a sadami škálování
+Sady škálování jsou sestavené z virtuálních počítačů. Pomocí sad škálování jsou k dispozici vrstvy správy a automatizace pro spouštění a škálování aplikací. Místo toho můžete ručně vytvořit a spravovat jednotlivé virtuální počítače nebo integrovat stávající nástroje a vytvořit podobnou úroveň automatizace. Následující tabulka popisuje výhody sad škálování v porovnání s ruční správou více instancí virtuálních počítačů.
 
-| Scénář                           | Ručně vytvořená skupina virtuálních počítačů                                                                    | Škálovací sada virtuálních počítačů |
+| Scénář                           | Ruční skupina virtuálních počítačů                                                                    | Sada škálování virtuálních počítačů |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
-| Přidání dalších instancí virtuálních počítačů        | Ruční proces vytvoření, konfigurace a zajištění dodržování předpisů                             | Automatické vytvoření s využitím centrální konfigurace |
-| Vyrovnávání a distribuce provozu | Ruční proces vytvoření a konfigurace nástroje pro vyrovnávání zatížení Azure nebo služby Application Gateway      | Možnost automatického vytvoření nástroje pro vyrovnávání zatížení Azure nebo služby Application Gateway a integrace s nimi |
-| Vysoká dostupnost a redundance   | Ruční vytvoření skupiny dostupnosti nebo distribuce a sledování virtuálních počítačů napříč zónami dostupnosti | Automatická distribuce instancí virtuálních počítačů napříč zónami dostupnosti nebo skupinami dostupnosti |
-| Škálování virtuálních počítačů                     | Ruční monitorování a služba Azure Automation                                                 | Automatické škálování na základě metrik hostitele, metrik hosta, Application Insights nebo plánu |
+| Přidání dalších instancí virtuálních počítačů        | Ruční proces vytvoření, konfigurace a zajištění dodržování předpisů                             | Automaticky vytvořit z centrální konfigurace |
+| Vyrovnávání zatížení a distribuce | Ruční proces vytvoření a konfigurace nástroje pro vyrovnávání zatížení Azure nebo Application Gateway      | Může automaticky vytvářet a integrovat se službou Azure Load Balancer nebo Application Gateway. |
+| Vysoká dostupnost a redundance   | Ruční vytvoření skupiny dostupnosti nebo distribuce a sledování virtuálních počítačů napříč Zóny dostupnosti | Automatická distribuce instancí virtuálních počítačů napříč Zóny dostupnosti nebo skupinami dostupnosti |
+| Škálování virtuálních počítačů                     | Ruční monitorování a Azure Automation                                                 | Automatické škálování na základě metrik hostitelů, metrik v hostu, Application Insights nebo plánu |
 
-Za použití škálovacích sad se neúčtují žádné další poplatky. Platíte pouze za základní výpočetní prostředky, jako jsou instance virtuálních počítačů, nástroj pro vyrovnávání zatížení nebo spravované diskové úložiště. Za funkce správy a automatizace, jako jsou automatické škálování a redundance, se neúčtují žádné další poplatky nad rámec použití virtuálních počítačů.
+Pro škálování sad se neúčtují žádné další náklady. Platíte jenom za základní výpočetní prostředky, jako jsou instance virtuálních počítačů, nástroj pro vyrovnávání zatížení nebo spravované diskové úložiště. Funkce správy a automatizace, jako je například automatické škálování a redundance, neúčtují za použití virtuálních počítačů žádné další poplatky.
 
+## <a name="how-to-monitor-your-scale-sets"></a>Jak monitorovat sady škálování
 
-## <a name="next-steps"></a>Další postup
-Začněte vytvořením své první škálovací sady virtuálních počítačů na webu Azure Portal.
+Použijte [Azure monitor pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md), který má jednoduchý proces připojování a bude automatizovat shromažďování důležitých ČÍTAČŮ výkonu procesoru, paměti, disku a sítě z virtuálních počítačů ve vaší sadě škálování. Obsahuje také další možnosti monitorování a předdefinované vizualizace, které vám pomůžou se zaměřit na dostupnost a výkon vašich sad škálování.
+
+Pokud chcete shromažďovat podrobné informace o vaší aplikaci, včetně zobrazení stránek, žádostí o aplikace a výjimek, povolte monitorování pro [aplikaci Virtual Machine Scale set](../azure-monitor/app/azure-vm-vmss-apps.md) s Application Insights. Dále ověřte dostupnost aplikace konfigurací [testu dostupnosti](../azure-monitor/app/monitor-web-app-availability.md) pro simulaci provozu uživatelů.
+
+## <a name="next-steps"></a>Další kroky
+Začněte tím, že na Azure Portal vytvoříte svou první sadu škálování virtuálního počítače.
 
 > [!div class="nextstepaction"]
-> [Vytvoření škálovací sady na webu Azure Portal](quick-create-portal.md)
+> [Vytvoření sady škálování v Azure Portal](quick-create-portal.md)

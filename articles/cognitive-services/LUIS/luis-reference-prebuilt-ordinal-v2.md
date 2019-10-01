@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 48dcbd51190e747859f0172473c94b0caa296071
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933489"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677555"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita pořadí v2 pro aplikaci pro LUIS
-Pořadové číslo v2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) , aby poskytoval relativní odkazy `next`, například, `last`a `previous`. Tyto nejsou extrahovány pomocí pořadí předem sestavené entity.
+Pořadové číslo v2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) , aby poskytoval relativní odkazy, například `next`, `last` a `previous`. Tyto nejsou extrahovány pomocí pořadí předem sestavené entity.
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Řešení pro předem sestavenou ordinální entitu v2
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
 Následující příklad ukazuje řešení entity **Builtin. ordinalV2** .
 
@@ -55,9 +55,9 @@ Následující příklad ukazuje řešení entity **Builtin. ordinalV2** .
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -82,7 +82,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -122,6 +122,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [](luis-reference-prebuilt-percentage.md)o procentech, [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a o [teplotních](luis-reference-prebuilt-temperature.md) entitách. 
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a o [teplotních](luis-reference-prebuilt-temperature.md) entitách. 

@@ -1,41 +1,41 @@
 ---
-title: Virtuální Desktop Preview Windows hostitele fondu metodách Vyrovnávání zatížení – Azure
-description: Hostitel fondu metodách Vyrovnávání zatížení pro prostředí Windows virtuální plochy, ve verzi Preview.
+title: Metody vyrovnávání zatížení fondu hostitelů virtuálních počítačů s Windows – Azure
+description: Metody vyrovnávání zatížení fondu hostitelů pro prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8b18224339654c067d8ab9b543fa49a9c7d55ddd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2e50593c31951b63601e75c51648a95e54c6959
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870519"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676577"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Metody vyrovnávání zatížení fondu hostitelů
 
-Virtuální Desktop Preview Windows podporuje dvě metody vyrovnávání zatížení. Každá metoda určuje hostitele relace, který bude hostitelem relace uživatele při připojení k prostředku v rámci fondu hostitele.
+Virtuální plocha Windows podporuje dvě metody vyrovnávání zatížení. Každá metoda určuje, který hostitel relace bude hostovat relaci uživatele, když se připojí k prostředku ve fondu hostitelů.
 
-Následující metody vyrovnávání zatížení jsou k dispozici v virtuální plochy Windows:
+Na virtuálním počítači s Windows jsou k dispozici následující metody vyrovnávání zatížení:
 
-- Šířka první zátěže umožňuje rovnoměrně distribuovat napříč hostiteli relace ve fondu hostitele uživatelských relací.
-- Hloubka první zátěže umožňuje saturate hostitele relace s uživatelských relací v rámci fondu hostitele. Po první relaci dosáhne prahové hodnoty omezení relace, přesměruje nástroje pro vyrovnávání zatížení nových uživatelských připojení na další hostitele relace ve fondu hostitele, dokud nedosáhne její omezení a tak dále.
+- Šířka – první vyrovnávání zatížení umožňuje rovnoměrně rozdělit uživatelské relace mezi hostitele relací v hostitelském fondu.
+- Špičkové vyrovnávání zatížení umožňuje naplnění hostitele relace pomocí uživatelských relací ve fondu hostitelů. Jakmile první relace dosáhne prahové hodnoty limitu relace, nástroj pro vyrovnávání zatížení směruje všechna nová připojení uživatelů k dalšímu hostiteli relace ve fondu hostitelů, dokud nedosáhne svého limitu, a tak dále.
 
-Každý fond hostitele lze konfigurovat pouze jeden typ Vyrovnávání zatížení pro ně specifická. Ale i Vyrovnávání zatížení metody sdílenou složku fond hostování následujících chování bez ohledu na to, které jsou v:
+Každý fond hostitelů může nakonfigurovat pouze jeden typ vyrovnávání zatížení, který je pro něj specifický. Obě metody vyrovnávání zatížení ale sdílejí následující chování bez ohledu na to, ve kterém fondu hostitelů jsou:
 
-- Pokud uživatel už má relaci ve fondu hostitele a se znovu připojuje k této relaci, nástroje pro vyrovnávání zatížení se úspěšně přesměruje je to hostitele relace s jejich stávajících relací. Toto chování platí i v případě, že tohoto hostitele relace AllowNewConnections je nastavena na hodnotu False.
-- Pokud uživatel ještě nemá relaci ve fondu hostitele, nástroj pro vyrovnávání zatížení se nezabývá relace hostitele, jehož vlastnost AllowNewConnections je nastavena na hodnotu False během vyrovnávání zatížení.
+- Pokud uživatel už má relaci ve fondu hostitelů a znovu se k této relaci připojuje, nástroj pro vyrovnávání zatížení je úspěšně přesměruje na hostitele relace s existující relací. Toto chování platí i v případě, že je vlastnost AllowNewConnections hostitele relace nastavena na hodnotu false.
+- Pokud uživatel ještě nemá relaci ve fondu hostitelů, pak Nástroj pro vyrovnávání zatížení nebere v úvahu, že při vyrovnávání zatížení je vlastnost AllowNewConnections nastavena na hodnotu false.
 
-## <a name="breadth-first-load-balancing-method"></a>Šířka první metodu Vyrovnávání zatížení
+## <a name="breadth-first-load-balancing-method"></a>Šířka – první metoda vyrovnávání zatížení
 
-Metoda Vyrovnávání zatížení šířka první umožňuje distribuci uživatelských připojení k optimalizaci pro tento scénář. Tato metoda je ideální pro organizace, které chtějí poskytnout nejlepší prostředí pro uživatele, připojení k jejich ve fondu prostředí virtuálního klienta.
+Metoda škálování na první vyrovnávání zatížení umožňuje distribuovat uživatelská připojení k optimalizaci pro tento scénář. Tato metoda je ideální pro organizace, které chtějí poskytovat nejlepší možnosti pro uživatele, kteří se připojují k prostředí virtuálních klientů ve fondu.
 
-Tato metoda šířka první nejprve dotazuje hostitele relace, které umožňují nové připojení. Metoda pak vybere hostitele relace s nejmenším počtem relací. Pokud existuje rovnosti, metoda vybere první hostitele relace v dotazu.
+Metoda geografického prvního dotazu nejprve dotazuje hostitele relací, kteří umožňují nová připojení. Metoda pak vybere hostitele relace s nejmenším počtem relací. Pokud je k dispozici, metoda vybere první hostitele relace v dotazu.
 
-## <a name="depth-first-load-balancing-method"></a>Hloubka první metodu Vyrovnávání zatížení
+## <a name="depth-first-load-balancing-method"></a>Metoda vyrovnávání zatížení první hloubky
 
-Metoda Vyrovnávání zatížení hloubky první umožňuje saturate jednoho hostitele relace současně optimalizovat pro tento scénář. Tato metoda je ideální pro organizace hledí na cenu, které chcete podrobnější řízení počtu virtuálních počítačů, které jste přiřadili fond hostitele.
+Metoda hloubkového vyrovnávání zatížení umožňuje naplnění jednoho hostitele relace v čase k optimalizaci pro tento scénář. Tato metoda je ideální pro organizace s důrazem na náklady, které mají podrobnější kontrolu nad počtem virtuálních počítačů, které jsou přiděleny pro fond hostitelů.
 
-Tato metoda hloubky první nejprve dotazuje hostitele relace, povolit nová připojení, jež nebyly pryč nedosáhli příslušného limitu maximální časový limit relace. Metoda pak vybere hostitele relace s nejvyšším počtem relací. Pokud existuje rovnosti, metoda vybere první hostitele relace v dotazu.
+První metoda se první dotazuje na hostitele relací, které povolují nová připojení a neprošly maximálním limitem relace. Metoda pak vybere hostitele relace s největším počtem relací. Pokud existuje, metoda vybere první hostitele relace v dotazu.

@@ -1,7 +1,7 @@
 ---
 title: Předem vytvořená entita person – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje personName informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a9da5089c9309ec06f29fd3e0868102cfa538049
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b5f4855c03c1c003df8f58b135cb809f1757e58f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933460"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677487"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>Předem sestavená entita person pro aplikaci LUIS
-PersonName předem připravených entit rozpozná jména lidí. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující personName k záměry aplikace. personName entity se podporuje v angličtině a čínština [jazykové verze](luis-reference-prebuilt-entities.md).
+Entita s předdefinovaným jménem detekuje osoby. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující jméno osoby. entita person je podporovaná v anglické a čínské [jazykové verzi](luis-reference-prebuilt-entities.md).
 
-## <a name="resolution-for-personname-entity"></a>Řešení pro entitu personName
+## <a name="resolution-for-personname-entity"></a>Překlad pro entitu Person
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.personName** entity.
+Následující příklad ukazuje řešení entity **Builtin. person** .
 
 ```json
 {
@@ -44,10 +44,10 @@ Následující příklad ukazuje rozlišení **builtin.personName** entity.
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -69,7 +69,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -103,6 +103,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [e-mailu](luis-reference-prebuilt-email.md), [číslo](luis-reference-prebuilt-number.md), a [ordinální](luis-reference-prebuilt-ordinal.md) entity. 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si informace o [e-mailu](luis-reference-prebuilt-email.md), [číslu](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách. 

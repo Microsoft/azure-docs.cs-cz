@@ -1,6 +1,6 @@
 ---
-title: Kurz – Řízení virtuálních počítačů Azure pomocí Azure CLI | Microsoft Docs
-description: V tomto kurzu zjistíte, jak pomocí Azure CLI spravovat virtuální počítače Azure s využitím řízení přístupu na základě role, zásad, zámků a značek.
+title: Kurz – řízení virtuálních počítačů Azure pomocí Azure CLI | Microsoft Docs
+description: V tomto kurzu se naučíte používat Azure CLI ke správě virtuálních počítačů Azure pomocí nastavení RBAC, policies, zámků a značek.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -10,53 +10,53 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 10/12/2018
+ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 7bd204789f99fa299300ff47003857e9ecc6085e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103603"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676508"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Kurz: Další informace o správě virtuálních počítačů se systémem Linux pomocí Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Kurz: Přečtěte si o správě virtuálních počítačů se systémem Linux pomocí Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete Azure CLI nainstalovat a používat místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.30 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="understand-scope"></a>Orientace v oborech
+## <a name="understand-scope"></a>Pochopení oboru
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
-V tomto kurzu se nastavení pro správu aplikují na skupinu prostředků, takže je po skončení můžete snadno odebrat.
+V tomto kurzu použijete všechna nastavení správy na skupinu prostředků, abyste mohli tato nastavení po dokončení snadno odebrat.
 
-Vytvoříme skupinu prostředků.
+Pojďme tuto skupinu prostředků vytvořit.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "East US"
 ```
 
-V tuto chvíli je skupina prostředků prázdná.
+V současné době je skupina prostředků prázdná.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Pomocí [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) můžete spravovat oprávnění uživatelů k provádění určitých akcí v daném oboru.
+Chcete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům udělit neomezený přístup, ale musíte také zajistit, aby mohli provádět své práce. [Řízení přístupu na základě rolí](../../role-based-access-control/overview.md) umožňuje spravovat uživatele, kteří mají oprávnění k provádění konkrétních akcí v oboru.
 
-K vytváření a odebírání přiřazení rolí musí mít uživatelé přístup `Microsoft.Authorization/roleAssignments/*`. Tento přístup se poskytuje prostřednictvím role vlastníka nebo správce uživatelských přístupů.
+Aby uživatelé mohli vytvořit a odebrat přiřazení rolí, musí mít přístup `Microsoft.Authorization/roleAssignments/*`. Tento přístup je udělen prostřednictvím rolí vlastník nebo správce přístupu uživatelů.
 
-Pro správu řešení virtuálních počítačů existují v závislosti na prostředcích tři role, které poskytují běžný přístup:
+Pro správu řešení virtuálních počítačů jsou k dispozici tři role specifické pro prostředky, které poskytují běžně potřebný přístup:
 
 * [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Přispěvatel sítě](../../role-based-access-control/built-in-roles.md#network-contributor)
-* [Přispěvatel účtů úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+* [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Místo přiřazování rolí jednotlivým uživatelům je často jednodušší použít skupinu Azure Active Directory obsahující uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro účely tohoto článku použijte buď existující skupinu pro správu virtuálního počítače, nebo pomocí portálu [vytvořte skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Místo přiřazování rolí jednotlivým uživatelům je často snazší použít Azure Active Directory skupinu s uživateli, kteří potřebují provést podobné akce. Pak tuto skupinu přiřaďte k příslušné roli. V tomto článku buď použijte existující skupinu pro správu virtuálního počítače, nebo [vytvořte skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)pomocí portálu.
 
-Po vytvoření nové skupiny nebo vyhledání existující skupiny pomocí příkazu [az role assignment create](/cli/azure/role/assignment) přiřaďte novou skupinu Azure Active Directory k roli Přispěvatel virtuálních počítačů v dané skupině prostředků.
+Po vytvoření nové skupiny nebo vyhledání existující skupiny použijte příkaz [AZ role Assignment Create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) a přiřaďte novou skupinu Azure Active Directory k roli Přispěvatel virtuálních počítačů pro skupinu prostředků.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -64,25 +64,25 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Pokud se zobrazí chyba oznamující, že **identifikátor \<GUID objektu zabezpečení > v adresáři neexistuje**, nová skupina se po celou Azure Active Directory nerozšířila. Zkuste příkaz znovu spustit.
+Pokud se zobrazí chyba oznamující, že **objekt zabezpečení \<guid > v adresáři neexistuje**, nová skupina se v celém Azure Active Directory nerozšíří. Zkuste znovu spustit příkaz.
 
-Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
+Obvykle tento proces zopakujete pro přispěvatele *sítě* a *přispěvatele účtu úložiště* , abyste se ujistili, že uživatelé mají přiřazenou správu nasazených prostředků. V tomto článku můžete tyto kroky přeskočit.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit definice dostupných zásad, použijte příkaz [az policy definition list](/cli/azure/policy/definition):
+[Azure Policy](../../governance/policy/overview.md) vám pomůže zajistit, že všechny prostředky v předplatném splňují podnikové standardy. Vaše předplatné už má několik definic zásad. Dostupné definice zásad zobrazíte pomocí příkazu [AZ Policy list list](https://docs.microsoft.com/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) :
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
 ```
 
-Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinované** nebo **Vlastní**. Najděte definice zásad popisující podmínku, kterou chcete přiřadit. V tomto článku můžete přiřadit zásady s těmito funkcemi:
+Zobrazí se existující definice zásad. Typ zásady je buď **Builtin** , nebo **vlastní**. Prohlédněte si definice pro ty, které popisují podmínku, kterou chcete přiřadit. V tomto článku přiřadíte zásady, které:
 
-* Omezení umístění pro všechny prostředky
-* Omezení SKU pro virtuální počítače
-* Audit virtuálních počítačů, které nepoužívají spravované disky
+* Omezte umístění pro všechny prostředky.
+* Omezte počet SKU pro virtuální počítače.
+* Auditujte virtuální počítače, které nepoužívají spravované disky.
 
-V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. K přiřazení těchto definic do skupiny prostředků můžete použít příkaz [az policy assignment create](/cli/azure/policy/assignment). U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
+V následujícím příkladu načtete tři definice zásad na základě zobrazovaného názvu. Pomocí příkazu [AZ Policy Assignment Create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) můžete přiřadit tyto definice ke skupině prostředků. U některých zásad poskytujete hodnoty parametrů pro určení povolených hodnot.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -122,7 +122,7 @@ az policy assignment create --name "Audit unmanaged disks" \
   --policy $auditDefinition
 ```
 
-V předchozím příkladu se předpokládá, že už parametry pro zásadu znáte. K zobrazení parametrů použijte následující příkaz:
+Předchozí příklad předpokládá, že už znáte parametry pro zásadu. Pokud potřebujete zobrazit parametry, použijte:
 
 ```azurecli-interactive
 az policy definition show --name $locationDefinition --query parameters
@@ -130,21 +130,21 @@ az policy definition show --name $locationDefinition --query parameters
 
 ## <a name="deploy-the-virtual-machine"></a>Nasazení virtuálního počítače
 
-Přiřadili jste role a zásady, takže jste připravení nasadit řešení. Výchozí velikost je Standard_DS1_v2, což je jedno z povolených SKU. Příkaz vytvoří klíče SSH, pokud neexistují ve výchozím umístění.
+Máte přiřazené role a zásady, takže jste připravení nasadit své řešení. Výchozí velikost je Standard_DS1_v2, což je jedna z vašich povolených SKU. Příkaz vytvoří klíče SSH, pokud neexistují ve výchozím umístění.
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-Po dokončení nasazování můžete použít další nastavení pro správu řešení.
+Po dokončení nasazení můžete v řešení použít další nastavení správy.
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
 
-[Zámky prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
+[Zámky prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabraňují uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Na rozdíl od řízení přístupu na základě rolí používají zámky prostředků omezení napříč všemi uživateli a rolemi. Úroveň zámku můžete nastavit na *CanNotDelete* nebo *jen pro čtení*.
 
-K vytvoření nebo odstranění zámků správy musíte mít přístup k akcím `Microsoft.Authorization/locks/*`. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
+Chcete-li vytvořit nebo odstranit zámky pro správu, je nutné mít přístup k akcím `Microsoft.Authorization/locks/*`. Z vestavěných rolí jsou tyto akce uděleny pouze **vlastník** a **Správce přístupu uživatelů** .
 
-Pokud chcete zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [az lock create](/cli/azure/lock):
+Chcete-li zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [AZ Lock Create](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) :
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -162,21 +162,21 @@ az lock create --name LockNSG \
   --resource-type Microsoft.Network/networkSecurityGroups
 ```
 
-Zámky otestujete pomocí následujícího příkazu:
+Chcete-li otestovat zámky, zkuste spustit následující příkaz:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku dokončit. Skupinu prostředků odstraníte, pouze pokud skutečně odeberete zámky. Tento krok najdete v části o [vyčištění prostředků](#clean-up-resources).
+Zobrazí se chyba oznamující, že operaci odstranění nelze dokončit z důvodu zámku. Skupinu prostředků lze odstranit pouze v případě, že zámky odstraníte výslovně. Tento krok se zobrazuje v [vyčištění prostředků](#clean-up-resources).
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-K logickému uspořádání prostředků Azure podle kategorií slouží [značky](../../azure-resource-manager/resource-group-using-tags.md). Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+[Značky](../../azure-resource-manager/resource-group-using-tags.md) můžete použít pro prostředky Azure, abyste je logicky uspořádali podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název "prostředí" a hodnotu "produkce" na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-K virtuálnímu počítači přidáte značky pomocí příkazu [az resource tag](/cli/azure/resource). Nezachovají se žádné existující značky prostředku.
+Chcete-li použít značky na virtuálním počítači, použijte příkaz [AZ Resource tag](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) . Všechny existující značky na prostředku nejsou zachovány.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -185,27 +185,27 @@ az resource tag -n myVM \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
+### <a name="find-resources-by-tag"></a>Najít prostředky podle značky
 
-K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [az resource list](/cli/azure/resource):
+Pokud chcete najít prostředky s názvem a hodnotou značky, použijte příkaz [AZ Resource list](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) :
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
 ```
 
-Vrácené hodnoty můžete použít pro úlohy správy, jako je zastavení všech virtuálních počítačů s určitou hodnotou značky.
+Můžete použít vrácené hodnoty pro úlohy správy, jako je například zastavení všech virtuálních počítačů s hodnotou značky.
 
 ```azurecli-interactive
 az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Microsoft.Compute/virtualMachines'].id" --output tsv)
 ```
 
-### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky
+### <a name="view-costs-by-tag-values"></a>Zobrazit náklady podle hodnot značek
 
 [!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Zámek odeberete načtením ID zámků a jejich zadáním do příkazu [az lock delete](/cli/azure/lock):
+Uzamčenou skupinu zabezpečení sítě nelze odstranit, dokud se zámek neodebere. Pokud chcete zámek odebrat, načtěte ID zámků a poskytněte je příkazem [AZ LOCK Delete](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) :
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -219,7 +219,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group). Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Ukončete relaci SSH k VIRTUÁLNÍmu počítači a pak tyto prostředky odstraňte následujícím způsobem:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -228,16 +228,16 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
+V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Zjistili jste, jak:
 
 > [!div class="checklist"]
-> * Přiřazení role uživateli
-> * Použití zásad, které vynucují standardy
-> * Ochrana důležitých prostředků pomocí zámků
+> * Přiřazení uživatelů k roli
+> * Použití zásad, které vynutily standardy
+> * Ochrana kritických prostředků pomocí zámků
 > * Označení prostředků pro fakturaci a správu
 
-Přejděte k dalšímu kurzu, kde se seznámíte s virtuálními počítači s vysokou dostupností.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači.
 
 > [!div class="nextstepaction"]
-> [Monitorování virtuálních počítačů](tutorial-monitoring.md)
+> [Správa virtuálních počítačů](tutorial-config-management.md)
 

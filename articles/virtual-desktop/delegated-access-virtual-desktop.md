@@ -1,69 +1,69 @@
 ---
-title: Delegovaný přístup ve Windows Virtual Desktop Preview – Azure
-description: Jak udělit oprávnění pro správu funkcí na Windows Virtual Desktop Preview nasazení, včetně příkladů.
+title: Delegovaný přístup na virtuálním počítači s Windows – Azure
+description: Jak delegovat možnosti správy pro nasazení virtuálních klientů s Windows, včetně příkladů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e8d1ba00043f43f626043d78ce0ab8953a0b3fbe
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272813"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679564"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegovaný přístup v náhledu virtuální plochy Windows
+# <a name="delegated-access-in-windows-virtual-desktop"></a>Delegovaný přístup ve virtuální ploše Windows
 
-Virtuální Desktop Preview Windows má model Delegovaný přístup, který umožňuje definovat takovou úroveň přístupu, které konkrétní uživatel může mít přiřazením role. Přiřazení role má tři komponenty: objekt zabezpečení, definice role a obor. Model Delegovaný přístup virtuálního klienta Windows je založen na modelu Azure RBAC. Další informace o přiřazení konkrétních rolí a jejich komponent, naleznete v tématu [Přehled řízení přístupu na základě rolí Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Virtuální klient Windows má delegovaný přístupový model, který umožňuje definovat množství přístupu, které může určitý uživatel přiřadit roli. Přiřazení role má tři součásti: objekt zabezpečení, definice role a obor. Model delegovaného přístupu k virtuálním plochám Windows je založený na modelu Azure RBAC. Další informace o konkrétních přiřazeních rolí a jejich součástech najdete v tématu [Přehled řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
-Virtuální Desktop Windows Delegovaný přístup podporuje následující hodnoty pro každý prvek přiřazení role:
+Delegovaný přístup k virtuálním plochám Windows podporuje následující hodnoty pro každý prvek přiřazení role:
 
 * Objekt zabezpečení
-    * Uživatelé
+    * mohou
     * Instanční objekty
 * Definice role
-    * Vestavěné role
-* Scope
-    * Skupiny tenanta
-    * Tenanti
-    * Fondy hostitele
+    * Předdefinované role
+* Rozsah
+    * Skupiny tenantů
+    * tenantů
+    * Fondy hostitelů
     * Skupiny aplikací
 
-## <a name="built-in-roles"></a>Vestavěné role
+## <a name="built-in-roles"></a>Předdefinované role
 
-Delegovaný přístup v virtuální plochy Windows má několik definic předdefinovaná role, které můžete přiřadit uživatele a instančních objektů.
+Delegovaný přístup na virtuálním počítači s Windows má několik předdefinovaných definic rolí, které můžete přiřadit uživatelům a instančním objektům.
 
-* Vlastník vzdálené plochy můžou spravovat všechno včetně přístupu k prostředkům.
-* Přispěvatel vzdálené plochy můžou spravovat všechno kromě přístupu k prostředkům.
-* Čtečku vzdálené plochy může vše zobrazit, ale nemůže provádět žádné změny.
-* Operátor vzdálenou plochu můžete zobrazit diagnostické aktivity.
+* Vlastník vzdálené plochy může spravovat všechno, včetně přístupu k prostředkům.
+* Přispěvatel RDS může spravovat všechno, ale přístup k prostředkům.
+* Čtenář služby Vzdálená plocha může zobrazit vše, ale nemůže provádět žádné změny.
+* Operátor vzdálené plochy může zobrazit diagnostické aktivity.
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny Powershellu pro přiřazení rolí
+## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny PowerShellu pro přiřazení rolí
 
-Spuštěním následující rutiny k vytvoření, zobrazení a odebrání přiřazení role:
+Chcete-li vytvořit, zobrazit a odebrat přiřazení rolí, můžete spustit následující rutiny:
 
 * **Get-RdsRoleAssignment** zobrazí seznam přiřazení rolí.
-* **Nové RdsRoleAssignment** vytvoří nové přiřazení role.
-* **Odebrat RdsRoleAssignment** Odstraní přiřazení rolí.
+* **New-RdsRoleAssignment** vytvoří nové přiřazení role.
+* **Remove-RdsRoleAssignment** odstraní přiřazení rolí.
 
-### <a name="accepted-parameters"></a>Parametry akceptované
+### <a name="accepted-parameters"></a>Přijaté parametry
 
-Můžete upravit základní tři rutiny s následujícími parametry:
+Základní tři rutiny můžete upravit následujícími parametry:
 
-* **AadTenantId**: Určuje ID tenanta Azure Active Directory, ze kterého instanční objekt se členem.
-* **AppGroupName**: názvem skupiny aplikaci Vzdálená plocha.
-* **Diagnostika**: Určuje obor, diagnostiky. (Musí být párována s buď **infrastruktury** nebo **Tenanta** parametry.)
-* **HostPoolName**: název hostitele fondu vzdálené plochy.
-* **Infrastruktura**: Určuje obor, infrastruktury.
-* **RoleDefinitionName**: název role řízení přístupu na základě role služby Vzdálená plocha přiřazené uživatele, skupinu nebo aplikaci. (Například vlastník služby vzdálené plochy, čtenář služby vzdálené plochy a atd.)
+* **AadTenantId**: Určuje ID tenanta Azure Active Directory, ze kterého je objekt služby členem.
+* **AppGroupName**: název skupiny aplikací vzdálené plochy.
+* **Diagnostika**: Určuje obor diagnostiky. (Musí být párována s parametry **infrastruktura** nebo **tenanta** .)
+* **HostPoolName**: název fondu hostitelů vzdálené plochy.
+* **Infrastruktura**: označuje rozsah infrastruktury.
+* **RoleDefinitionName**: název role řízení přístupu na základě role služby Vzdálená plocha přiřazená uživateli, skupině nebo aplikaci. (Například vlastník služby Vzdálená plocha, čtenář vzdálené plochy atd.)
 * **ServerPrincipleName**: název aplikace Azure Active Directory.
-* **SignInName**: e-mailovou adresu uživatele nebo hlavní název uživatele.
-* **TenantName**: název klienta vzdálené plochy.
+* **SignInName**: e-mailová adresa uživatele nebo hlavní název uživatele.
+* **Tenant**: název tenanta vzdálené plochy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Úplnější seznam rutin Powershellu pro každou roli můžete použít, najdete v článku [referenční informace prostředí PowerShell](/powershell/windows-virtual-desktop/overview).
+Podrobnější seznam rutin PowerShellu, které můžou jednotlivé role použít, najdete v [referenčních informacích k PowerShellu](/powershell/windows-virtual-desktop/overview).
 
-Pokyny, jak nastavit prostředí virtuálního klienta Windows, naleznete v tématu [prostředí Preview virtuální plochy Windows](environment-setup.md).
+Pokyny, jak nastavit prostředí virtuálních počítačů s Windows, najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).

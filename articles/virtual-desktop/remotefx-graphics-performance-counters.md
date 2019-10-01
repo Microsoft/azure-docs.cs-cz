@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816400"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676533"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
 
@@ -24,8 +24,8 @@ K identifikaci čítačů výkonu grafiky budete potřebovat název vzdálené r
 
 1. Z vzdálené relace otevřete příkazový řádek systému Windows.
 2. Spusťte příkaz **qwinsta** a vyhledejte název vaší relace.
-    - Pokud je vaše relace hostována ve virtuálním počítači s více relacemi (VM): Vaše instance každého počítadla má příponu stejným číslem, jako je přípona názvu relace, například RDP-TCP 37.
-    - Pokud je vaše relace hostovaná na virtuálním počítači, který podporuje jednotky vGPU (Virtual Graphics Processing): Vaše instance každého čítače je uložená na serveru místo na vašem VIRTUÁLNÍm počítači. Instance čítače obsahují název virtuálního počítače místo čísla v názvu relace, například "virtuální počítač Win8 Enterprise".
+    - Pokud je vaše relace hostovaná na virtuálním počítači s více relacemi (VM): vaše instance každého čítače má příponu stejným číslem, jako přípona názvu relace, například RDP-TCP 37.
+    - Pokud je vaše relace hostovaná na VIRTUÁLNÍm počítači, který podporuje jednotky vGPU (Virtual Graphics Processing Disks): vaše instance každého čítače je uložená na serveru místo na vašem VIRTUÁLNÍm počítači. Instance čítače obsahují název virtuálního počítače místo čísla v názvu relace, například "virtuální počítač Win8 Enterprise".
 
 >[!NOTE]
 > I když čítače mají v názvech RemoteFX, zahrnují také grafiku vzdálené plochy ve scénářích vGPU.
@@ -34,7 +34,7 @@ K identifikaci čítačů výkonu grafiky budete potřebovat název vzdálené r
 
 Po určení názvu vzdálené relace postupujte podle těchto pokynů a Shromážděte čítače výkonu grafiky RemoteFX pro vzdálenou relaci.
 
-1. Vyberte možnost **Spustit** > **monitorování výkonu** **nástrojů** > pro správu.
+1. Vyberte **Start** > **nástroje pro správu** > **Performance Monitor**.
 2. V dialogovém okně **sledování výkonu** rozbalte položku **Nástroje pro monitorování**, vyberte **sledování výkonu**a pak vyberte **Přidat**.
 3. V dialogovém okně **Přidat čítače** rozbalte v seznamu **Dostupné čítače** oddíl grafiky RemoteFX.
 4. Vyberte čítače, které chcete monitorovat.
@@ -77,7 +77,7 @@ Vzhledem k tomu, že protokol RDP podporuje průměrnou dobu kódování 33 MS, 
 
 Pomocí čítače kvality snímků Diagnostikujte problémy s kvalitou snímků. Tento čítač vyjadřuje kvalitu výstupního rámce jako procento kvality zdrojového rámce. Ztráta kvality může být způsobena funkcí RemoteFX nebo může být podstatná zdroji grafiky. Pokud RemoteFX způsobil ztrátu kvality, může se jednat o nedostatek síťových prostředků nebo prostředků serveru pro odeslání obsahu s vyšší věrností.
 
-## <a name="mitigation"></a>Omezení rizik
+## <a name="mitigation"></a>Zmírnění
 
 Pokud jsou příčinou kritických prostředků prostředky serveru, zkuste zvýšit výkon jedním z následujících přístupů:
 
@@ -99,8 +99,8 @@ Pokud prostředky klienta způsobují kritické body, vyzkoušejte jeden z násl
 > [!NOTE]
 > Momentálně nepodporujeme čítač zdrojové snímky/druhý. V současné době se v čítačích zdrojové rámce/sekunda vždy zobrazí 0.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Informace o vytvoření virtuálního počítače Azure optimalizovaného pro grafické PROCESORy najdete v tématu [Konfigurace akcelerace GPU (Graphics Processing Unit) pro prostředí Windows Virtual Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
+- Informace o vytvoření virtuálního počítače Azure optimalizovaného grafickým PROCESORem najdete v tématu [Konfigurace akcelerace GPU (Graphics Processing Unit) pro prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
 - Přehled postupů řešení potíží a eskalace najdete v tématu [řešení potíží – přehled, názory a podpora](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Další informace o službě verze Preview najdete v tématu [prostředí Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Další informace o této službě najdete v tématu [prostředí pro stolní počítače s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).

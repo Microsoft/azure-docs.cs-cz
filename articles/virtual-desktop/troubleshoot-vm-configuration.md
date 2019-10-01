@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d163bbf50193743b6602bc9ec3d330df4c14ebcc
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174121"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676426"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
+# <a name="tenant-and-host-pool-creation"></a>Vytvoření fondu tenanta a hostitele
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-V současné době nepřijímáme případy podpory, ale virtuální počítač s Windows je ve verzi Preview. Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
+Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>Virtuální počítače nejsou připojené k doméně.
 
@@ -30,35 +30,35 @@ Pokud máte problémy s připojením virtuálních počítačů k doméně, post
 - Zkuste na virtuálním počítači testovat název domény z příkazového řádku.
 - Projděte si seznam chybových zpráv připojení k doméně při [řešení potíží s chybovými zprávami k doméně](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
-### <a name="error-incorrect-credentials"></a>Chyba: Nesprávné přihlašovací údaje
+### <a name="error-incorrect-credentials"></a>Chyba: nesprávné přihlašovací údaje
 
-**Způsobit** Došlo k překlepu při zadání přihlašovacích údajů do opravy rozhraní Azure Resource Manager šablony.
+**Příčina:** Došlo k překlepu při zadání přihlašovacích údajů do opravy rozhraní Azure Resource Manager šablony.
 
-**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
+**Oprava:** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
 - Ručně přidejte virtuální počítače do domény.
 - Po potvrzení přihlašovacích údajů znovu nasaďte šablonu. Další informace najdete v tématu [Vytvoření fondu hostitelů pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 - Připojte virtuální počítače k doméně pomocí šablony s [připojením existujícímu virtuálnímu počítači s Windows k doméně AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
-### <a name="error-timeout-waiting-for-user-input"></a>Chyba: Časový limit čekání na vstup uživatele
+### <a name="error-timeout-waiting-for-user-input"></a>Chyba: časový limit čekání na vstup uživatele
 
-**Způsobit** Účet použitý k dokončení připojení k doméně může mít službu Multi-Factor Authentication (MFA).
+**Příčina:** Účet použitý k dokončení připojení k doméně může mít službu Multi-Factor Authentication (MFA).
 
-**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
+**Oprava:** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
 - Dočasně odeberte MFA pro účet.
 - Použijte účet služby.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Chyba: Účet použitý během zřizování nemá oprávnění k dokončení operace.
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Chyba: účet použitý během zřizování nemá oprávnění k dokončení operace.
 
-**Způsobit** Použitý účet nemá oprávnění k připojení virtuálních počítačů k doméně z důvodu dodržování předpisů a předpisů.
+**Příčina:** Použitý účet nemá oprávnění k připojení virtuálních počítačů k doméně z důvodu dodržování předpisů a předpisů.
 
-**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
+**Oprava:** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
 - Použijte účet, který je členem skupiny správců.
 - Udělte potřebná oprávnění k používanému účtu.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Chyba: Název domény nejde přeložit.
+### <a name="error-domain-name-doesnt-resolve"></a>Chyba: název domény nejde přeložit.
 
 **Příčina 1:** Virtuální počítače jsou ve virtuální síti, která není přidružená k virtuální síti (VNET), ve které se nachází doména.
 
@@ -80,11 +80,11 @@ Doporučený způsob, jak zřídit virtuální počítače, je pomocí Azure Res
 
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
-1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech** >  > programy programy**a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
+1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí **ovládacího panelu**programy  > **programy** > **programy a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
 2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\scriptlogs.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
 3. Pokud je soubor **C:\Windows\Temp\scriptlogs.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Chyba: Chybí agent virtuálního počítače Windows a spouštěcí zavaděč agenta virtuálního počítače s Windows. Chybí také C:\Windows\Temp\scriptlogs.log
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Chyba: chybí agent virtuálního počítače Windows a spouštěcí zavaděč agenta virtuálního počítače s Windows. Chybí také C:\Windows\Temp\scriptlogs.log
 
 **Příčina 1:** Přihlašovací údaje zadané během vstupu pro šablonu Azure Resource Manager byly nesprávné nebo mají dostatečná oprávnění.
 
@@ -98,11 +98,11 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 - Ověřte, že je název tenanta přesný a že tenant existuje ve virtuálním počítači Windows.
 - Potvrďte, že má účet alespoň oprávnění Přispěvatel VP.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Chyba: Ověřování se nezdařilo, chyba v C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Chyba: ověření se nezdařilo, chyba v C:\Windows\Temp\scriptlogs.log
 
-**Způsobit** Prostředí PowerShell DSC se podařilo spustit, ale nebylo možné se připojit k virtuálnímu počítači s Windows.
+**Příčina:** Prostředí PowerShell DSC se podařilo spustit, ale nebylo možné se připojit k virtuálnímu počítači s Windows.
 
-**Opravit** Potvrďte položky v následujícím seznamu.
+**Oprava:** Potvrďte položky v následujícím seznamu.
 
 - Ručně zaregistrujte virtuální počítače pomocí služby Virtual Desktop systému Windows.
 - Potvrzení, že účet použitý pro připojení k virtuálnímu počítači s Windows má oprávnění k vytváření fondů hostitelů v tenantovi.
@@ -112,13 +112,13 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 
 Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na virtuálních počítačích hostitele relace (buď ručně, nebo prostřednictvím šablony Azure Resource Manager a prostředí PowerShell DSC), poskytuje registrační token. Následující část popisuje problémy týkající se odstraňování potíží vztahujících se k agentovi virtuálních počítačů s Windows a k tokenu.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: Stav uložený v rutině Get-RdsSessionHost zobrazuje stav jako nedostupný.
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: stav uložený v rutině Get-RdsSessionHost zobrazuje stav jako nedostupný.
 
 ![Rutina Get-RdsSessionHost zobrazuje stav jako nedostupné.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Způsobit** Agent se nemůže sám aktualizovat na novou verzi.
+**Příčina:** Agent se nemůže sám aktualizovat na novou verzi.
 
-**Opravit** Pomocí těchto pokynů ručně aktualizujete agenta.
+**Oprava:** Pomocí těchto pokynů ručně aktualizujete agenta.
 
 1. Stáhněte si novou verzi agenta na virtuálním počítači hostitele relace.
 2. Spusťte Správce úloh a na kartě Služba zastavte službu RDAgentBootLoader.
@@ -127,11 +127,11 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 5. Dokončete Průvodce instalací nástroje.
 6. Otevřete Správce úloh a spusťte službu RDAgentBootLoader.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Chyba:  Položka registru agenta virtuálních počítačů s Windows je v registru zaregistrovaná. zobrazuje se hodnota 0.
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Chyba: položka registru agenta virtuálního počítače s Windows je v registru zaregistrovaná. zobrazuje se hodnota 0.
 
-**Způsobit** Registrační token vypršel nebo byl vygenerován s hodnotou vypršení platnosti 999999.
+**Příčina:** Registrační token vypršel nebo byl vygenerován s hodnotou vypršení platnosti 999999.
 
-**Opravit** Pomocí těchto pokynů opravíte chybu registru agenta.
+**Oprava:** Pomocí těchto pokynů opravíte chybu registru agenta.
 
 1. Pokud už existuje registrační token, odeberte ho pomocí Remove-RDSRegistrationInfo.
 2. Vygenerujte nový token pomocí RDS-NewRegistrationInfo.
@@ -203,9 +203,9 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 
 ![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Způsobit** Souběžná sada není nainstalovaná na virtuálním počítači hostitele relace.
+**Příčina:** Souběžná sada není nainstalovaná na virtuálním počítači hostitele relace.
 
-**Opravit** Při instalaci souběžného zásobníku na virtuálním počítači hostitele relace postupujte podle těchto pokynů.
+**Oprava:** Při instalaci souběžného zásobníku na virtuálním počítači hostitele relace postupujte podle těchto pokynů.
 
 1. Pomocí protokol RDP (Remote Desktop Protocol) (RDP) se přímo do virtuálního počítače hostitele relace dostanou jako místní správce.
 2. Pokud jste to ještě neudělali, Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, a pak spusťte tuto rutinu, abyste se mohli přihlásit ke svému účtu:
@@ -233,7 +233,7 @@ Virtuální počítač, který se používá ke spuštění nápravy, musí být
 Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle těchto pokynů:
 
 1. Připojte se pomocí protokolu RDP (Standard protokol RDP (Remote Desktop Protocol)) k virtuálnímu počítači, ze kterého se má oprava použít.
-2. Stáhněte si PsExec https://docs.microsoft.com/sysinternals/downloads/psexec z.
+2. Stáhněte si PsExec z https://docs.microsoft.com/sysinternals/downloads/psexec.
 3. Extrahování staženého souboru.
 4. Spusťte příkazový řádek jako místní správce.
 5. Přejděte do složky, kde byla PsExec extrahována.
@@ -329,13 +329,13 @@ Upgrade na Windows 10 verze 1903:
 1. Pokud jste to ještě neudělali, Stáhněte a nainstalujte [Windows 10 květen 2019 Update](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
 2. Přihlaste se k počítači pomocí účtu správce.
 3. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-4. V části Konfigurace počítače přejít na **šablony pro správu** >  > **součásti Windows Components** > **Vzdálená plocha** **hostitel relace vzdálené plochy** > **licencování** .
+4. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
 5. Vyberte **nastavit režim licencování vzdálené plochy**.
 6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro server Hostitel relace VP pro **jednotlivé uživatele**, jak je znázorněno na následujícím obrázku.
     
     ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Vyberte **Použít**.
+7. Vyberte **použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 
@@ -344,10 +344,10 @@ Postup opětovného nasazení fondu hostitelů s nejnovější imagí:
 1. Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure Marketplace,](create-host-pools-azure-marketplace.md) dokud nebudete vyzváni k výběru verze operačního systému imagí. Můžete zvolit jednu relaci Windows 10 Enterprise s více relacemi s nebo bez Office 365 ProPlus.
 2. Přihlaste se k počítači pomocí účtu správce.
 3. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-4. V části Konfigurace počítače přejít na **šablony pro správu** >  > **součásti Windows Components** > **Vzdálená plocha** **hostitel relace vzdálené plochy** > **licencování** .
+4. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
 5. Vyberte **nastavit režim licencování vzdálené plochy**.
 6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro hostitel relace VP server pro **jednotlivé uživatele**.
-7. Vyberte **Použít**.
+7. Vyberte **použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 
@@ -357,13 +357,13 @@ Pokud číslo vaší verze říká "1903", postupujte podle těchto pokynů:
 
 1. Přihlaste se k počítači pomocí účtu správce.
 2. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-3. V části Konfigurace počítače přejít na **šablony pro správu** >  > **součásti Windows Components** > **Vzdálená plocha** **hostitel relace vzdálené plochy** > **licencování** .
+3. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
 4. Vyberte **nastavit režim licencování vzdálené plochy**.
 6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro server Hostitel relace VP pro **jednotlivé uživatele**, jak je znázorněno na následujícím obrázku.
     
     ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Vyberte **Použít**.
+7. Vyberte **použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 
@@ -374,7 +374,7 @@ Pokud číslo vaší verze říká "1903", postupujte podle těchto pokynů:
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 - Informace o řešení problémů s připojením klienta k virtuální ploše Windows najdete v tématu [připojení klientů vzdálené plochy](troubleshoot-client-connection.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Další informace o službě verze Preview najdete v tématu [prostředí verze Preview pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)šablon Správce prostředků.
+- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
 - Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

@@ -1,7 +1,7 @@
 ---
 title: Počet předem sestavených entit – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o čísle předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje počet předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,24 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933508"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677579"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Počet předem sestavené entity pro aplikaci LUIS
-Existuje mnoho způsobů, ve kterých se používají číselných hodnot umožňuje vyčíslit, express a popisují informace. Tento článek se týká jenom některé z možných příkladů. Služba LUIS interpretuje kolísání uživatele projevy a vrátí konzistentní číselné hodnoty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující číslo k záměry aplikace. 
+Existuje mnoho způsobů, jak se číselné hodnoty používají k kvantifikaci, vyjádření a popisu částí informací. Tento článek se zabývá pouze některými možnými příklady. LUIS interpretuje variace v uživatelském projevy a vrátí konzistentní číselné hodnoty. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující číslo. 
 
-## <a name="types-of-number"></a>Typy číslo
+## <a name="types-of-number"></a>Typy čísel
 Číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) v GitHubu.
 
-## <a name="examples-of-number-resolution"></a>Příklady čísel řešení
+## <a name="examples-of-number-resolution"></a>Příklady rozlišení čísel
 
-| Promluva        | Entita   | Řešení |
+| Promluva        | Entita   | Rozlišení |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -38,14 +38,14 @@ Existuje mnoho způsobů, ve kterých se používají číselných hodnot umož�
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-Služba LUIS zahrnuje rozpoznaná hodnota **`builtin.number`** entity v `resolution` pole vrátí odpověď JSON.
+LUIS zahrnuje rozpoznanou hodnotu entity **`builtin.number`** v poli `resolution` odpovědi JSON, kterou vrátí.
 
-## <a name="resolution-for-prebuilt-number"></a>Řešení pro předem připravených číslo
+## <a name="resolution-for-prebuilt-number"></a>Řešení předem připraveného čísla
 
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje služby luis, odpověď ve formátu JSON, který obsahuje řešení hodnota 24, utterance "z dvou tuctů".
+Následující příklad ukazuje odpověď JSON z LUIS, která zahrnuje rozlišení hodnoty 24 pro utterance "2 desítky".
 
 ```json
 {
@@ -83,9 +83,9 @@ Následující příklad ukazuje služby luis, odpověď ve formátu JSON, kter�
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -107,7 +107,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -141,6 +141,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [měny](luis-reference-prebuilt-currency.md), [ordinální](luis-reference-prebuilt-ordinal.md), a [procento](luis-reference-prebuilt-percentage.md). 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si o [měně](luis-reference-prebuilt-currency.md), [ordinálním](luis-reference-prebuilt-ordinal.md)a [procentuálním podílu](luis-reference-prebuilt-percentage.md). 

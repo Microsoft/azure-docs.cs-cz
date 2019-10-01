@@ -1,7 +1,7 @@
 ---
 title: Ordinální předem sestavená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o pořadovém místě předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje pořadí předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933470"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677546"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Pořadí předem sestavené entity pro aplikaci LUIS
-Řadová číslovka je číselnou reprezentaci objektu uvnitř sady: `first`, `second`, `third`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující ordinální záměry aplikace. Ordinální entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
+Ordinální číslo je numerická reprezentace objektu uvnitř sady: `first`, `second`, `third`. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující ordinální číslo. V [mnoha kulturách](luis-reference-prebuilt-entities.md)je podporována ordinální entita. 
 
-## <a name="types-of-ordinal"></a>Typy pořadí
+## <a name="types-of-ordinal"></a>Typy pořadových čísel
 Ordinální číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) v GitHubu.
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem připravených entit podle pořadového čísla
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem sestavenou ordinální entitu
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.ordinal** entity.
+Následující příklad ukazuje řešení entity **Builtin. Ordinal** .
 
 ```json
 {
@@ -61,9 +61,9 @@ Následující příklad ukazuje rozlišení **builtin.ordinal** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -88,7 +88,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -128,6 +128,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
 Přečtěte si informace o [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a [teplotních](luis-reference-prebuilt-temperature.md) entitách. 

@@ -36,13 +36,15 @@
     - name: 10. Řízení virtuálních počítačů
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: 11. Monitorování a aktualizace virtuálních počítačů
-      href: tutorial-monitoring.md
-    - name: 12. Správa zabezpečení virtuálních počítačů
+    - name: 11. Sledování a aktualizace virtuálních počítačů
+      href: tutorial-config-management.md
+    - name: 12. Monitorování virtuálních počítačů
+      href: tutorial-monitor.md
+    - name: 13. Správa zabezpečení virtuálních počítačů
       href: tutorial-azure-security.md
-    - name: 13. Instalace zásobníku SQL\IIS\.NET
+    - name: 14. Instalace zásobníku SQL\IIS\.NET
       href: tutorial-iis-sql.md
-    - name: 14. Zabezpečení webového serveru pomocí SSL
+    - name: 15. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
 - name: Ukázky
   items:

@@ -1,7 +1,7 @@
 ---
 title: Předem vytvořená entita stáří – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje stáří informace předem připravených entit v Language Understanding (LUIS).
+description: V tomto článku najdete informace o předem připravené entitě v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d72af0c2126ef74f95697755a7ead354214f695c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932554"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677733"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Předem připravená entita pro aplikaci pro LUIS
-Stáří předem připravených entit zachycuje hodnotu stáří jak číselně a co se týče dnů, týdnů, měsíců a roků. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující stáří na záměry aplikace. Stáří entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
+Předem vytvořená věková entita zachycuje věkovou hodnotu číselně i ve dnech, týdnech, měsících a rocích. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující stáří. Věková entita je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md). 
 
-## <a name="types-of-age"></a>Typy věku
+## <a name="types-of-age"></a>Typy stáří
 Stáří je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) v GitHubu.
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Řešení pro stáří předem připravených entit
+## <a name="resolution-for-prebuilt-age-entity"></a>Řešení pro předem sestavenou entitu Age
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.age** entity.
+Následující příklad ukazuje řešení entity **Builtin. Age** .
 
 ```json
 {
@@ -52,9 +52,9 @@ Následující příklad ukazuje rozlišení **builtin.age** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -79,7 +79,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -116,6 +116,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [měny](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [dimenze](luis-reference-prebuilt-dimension.md) entity. 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Seznamte se s entitami [Currency](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)a [Dimension](luis-reference-prebuilt-dimension.md) . 

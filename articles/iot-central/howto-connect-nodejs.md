@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ccded68cfaa00e6e13e2bb32e114b81108742829
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066453"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686672"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení Obecné klientské aplikace k aplikaci Azure IoT Central (Node. js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "71066453"
 
 Tento článek popisuje, jak jako vývojář zařízení připojit obecnou aplikaci Node. js představující reálné zařízení k vaší aplikaci Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -36,11 +36,11 @@ V aplikaci Azure IoT Central budete potřebovat šablonu zařízení s následuj
 
 Přidejte na stránku **měření** následující telemetrii:
 
-| Zobrazovaný název | Název pole  | Jednotky | Minimum | Maximum | Desetinná místa |
+| Zobrazovaný název | Název pole  | Jednotky | Minimum | Max. | Desetinná místa |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Teplota  | teplota | pá     | 60  | 110 | 0              |
+| Teplota  | teplota | F     | 60  | 110 | 0              |
 | Vlhkost     | vlhkost    | %     | 0   | 100 | 0              |
-| Tlak     | pressure    | kPa   | 80  | 110 | 0              |
+| Citlivost     | tlak    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Datový typ měření telemetrie je číslo s plovoucí desetinnou čárkou.
@@ -53,7 +53,7 @@ Na stránce **měření** přidejte následující stav:
 
 | Zobrazovaný název | Název pole  | Hodnota 1 | Zobrazovaný název | Hodnota 2 | Zobrazovaný název |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Režim ventilátoru     | fanmode     | 1       | Spuštěno      | 0       | Zastaveno      |
+| Režim ventilátoru     | fanmode     | 1\. místo       | Spuštěno      | 0       | Zastaveno      |
 
 > [!NOTE]
 > Datový typ měření stavu je řetězec.
@@ -64,7 +64,7 @@ Zadejte názvy polí přesně tak, jak jsou uvedeny v tabulce, do šablony zař�
 
 Na stránce **měření** přidejte následující událost:
 
-| Zobrazovaný název | Název pole  | severity |
+| Zobrazovaný název | Název pole  | Závažnost |
 | ------------ | ----------- | -------- |
 | Přehřívání  | overheat    | Chyba    |
 
@@ -77,7 +77,7 @@ Na stránce **měření** přidejte následující měření umístění:
 
 | Zobrazovaný název | Název pole  |
 | ------------ | ----------- |
-| Location     | location    |
+| Umístění     | location    |
 
 Datový typ měření umístění se skládá ze dvou čísel s plovoucí desetinnou čárkou pro zeměpisnou šířku a zeměpisnou šířku a volitelné číslo s plovoucí desetinnou čárkou pro nadmořskou výšku.
 
@@ -87,10 +87,10 @@ Zadejte názvy polí přesně tak, jak jsou uvedeny v tabulce, do šablony zař�
 
 Na stránce **vlastnosti** přidejte následující vlastnosti zařízení:
 
-| Zobrazovaný název        | Název pole        | Datový typ |
+| Zobrazovaný název        | Název pole        | Data type |
 | ------------------- | ----------------- | --------- |
 | Sériové číslo       | serialNumber      | text      |
-| Výrobce zařízení | výrobce      | text      |
+| Výrobce zařízení | výrobců      | text      |
 
 Zadejte názvy polí přesně tak, jak je uvedeno v tabulce, do šablony zařízení. Pokud názvy polí neodpovídají názvům vlastností v odpovídajícím kódu zařízení, vlastnosti nelze zobrazit v aplikaci.
 
@@ -98,10 +98,10 @@ Zadejte názvy polí přesně tak, jak je uvedeno v tabulce, do šablony zaříz
 
 Na stránce **Nastavení** přidejte následující **číslo** nastavení:
 
-| Zobrazovaný název    | Název pole     | Jednotky | Desetinných míst | Minimum | Maximum  | Počáteční |
+| Zobrazovaný název    | Název pole     | Jednotky | Desetinných míst | Minimum | Max.  | Pořizovací |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Rychlost ventilátoru       | fanSpeed       | /min   | 0        | 0   | 3000 | 0       |
-| Nastavená teplota | setTemperature | pá     | 0        | 20  | 200  | 80      |
+| Nastavená teplota | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Zadejte název pole přesně tak, jak je uvedeno v tabulce v šabloně zařízení. Pokud názvy polí neodpovídají názvům vlastností v odpovídajícím kódu zařízení, zařízení nemůže přijmout hodnotu nastavení.
 
@@ -111,13 +111,13 @@ Na stránce **příkazy** přidejte následující příkaz:
 
 | Zobrazovaný název    | Název pole     | Výchozí časový limit | Typ dat |
 | --------------- | -------------- | --------------- | --------- |
-| Odpočítávání       | Odpočítávání      | 30              | number    |
+| Odpočítávání       | Odpočítávání      | 30              | číslo    |
 
 Do příkazu odpočítávání přidejte následující vstupní pole:
 
-| Zobrazovaný název    | Název pole     | Typ dat | Value |
+| Zobrazovaný název    | Název pole     | Typ dat | Hodnota |
 | --------------- | -------------- | --------- | ----- |
-| Počet z      | countFrom      | number    | 10    |
+| Počet z      | countFrom      | číslo    | 10    |
 
 Zadejte názvy polí přesně tak, jak jsou uvedeny v tabulkách do šablony zařízení. Pokud názvy polí neodpovídají názvům vlastností v odpovídajícím kódu zařízení, zařízení nemůže tento příkaz zpracovat.
 
@@ -142,9 +142,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Ve`connected-air-conditioner-adv` složce vytvořte soubor s názvem **connectedAirConditionerAdv. js** .
+1. Ve složce `connected-air-conditioner-adv` vytvořte soubor s názvem **connectedAirConditionerAdv. js** .
 
-1. Na začátek souboru `require` **connectedAirConditionerAdv. js** přidejte následující příkazy:
+1. Na začátek souboru **connectedAirConditionerAdv. js** přidejte následující příkazy `require`:
 
     ```javascript
     "use strict";
@@ -164,7 +164,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -174,7 +174,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     var locLat = 47.6740;
     ```
 
-    Aktualizujte zástupné `{your Device ID}`symboly `{your Scope ID}`, `{your Primary Key}` a s hodnotami, které jste si poznamenali dříve. V této ukázce se inicializujete `targetTemperature` na nulu, můžete použít aktuální čtení ze zařízení nebo hodnotu z vlákna zařízení.
+    Aktualizujte zástupné symboly `{your Scope ID}`, `{your Device ID}` a `{your Primary Key}` s hodnotami, které jste si poznamenali dříve. V této ukázce inicializujete `targetTemperature` na nulu, můžete použít aktuální čtení ze zařízení nebo hodnotu z vlákna zařízení.
 
 1. Pokud chcete do aplikace Azure IoT Central odeslat měření telemetrie, stavu, události a umístění, přidejte do souboru následující funkci:
 
@@ -382,6 +382,6 @@ Jako operátor ve vaší aplikaci Azure IoT Central můžete pro vaše reálné 
 
     ![Příkaz odpočítávání volání](media/howto-connect-nodejs/callcountdown.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se seznámili s tím, jak připojit obecného klienta Node. js k vaší aplikaci Azure IoT Central, je doporučený další krok, kde se dozvíte, jak [nastavit vlastní šablonu zařízení](howto-set-up-template.md) pro vlastní zařízení IoT.

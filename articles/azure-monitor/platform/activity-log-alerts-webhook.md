@@ -1,38 +1,38 @@
 ---
-title: Pochopení schématu webhooku v upozornění protokolu aktivit
-description: Další informace o schématu JSON, který se pošle na adresu URL webhooku po upozornění protokolu aktivit aktivuje.
-author: johnkemnetz
+title: Pochopení schématu Webhooku používaného v upozorněních protokolu aktivit
+description: Přečtěte si o schématu JSON, které se pošle na adresu URL Webhooku, když se aktivuje výstraha protokolu aktivit.
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/31/2017
-ms.author: johnkem
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: c91c1badaa4b1bc055859d700857cfd4d062babd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491501"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675221"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
-Jako součást definice skupiny akcí můžete nakonfigurovat webhooku koncových bodů pro příjem oznámení výstrah protokolu aktivit. Pomocí webhooků můžete směrovat tato oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Tento článek popisuje, jak vypadá datová část požadavku HTTP POST do webhooku.
+V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
 
-Další informace o upozornění protokolu aktivit najdete v tématu Jak [vytvoření upozornění protokolu aktivit Azure](activity-log-alerts.md).
+Další informace o výstrahách protokolů aktivit najdete v tématu [vytvoření výstrah protokolu aktivit Azure](activity-log-alerts.md).
 
-Informace o skupinách akcí najdete v tématu Jak [vytvoření skupiny akcí](../../azure-monitor/platform/action-groups.md).
+Informace o skupinách akcí najdete v tématu [Vytvoření skupin akcí](../../azure-monitor/platform/action-groups.md).
 
 > [!NOTE]
-> Můžete také použít [společné schéma produktu výstrah](https://aka.ms/commonAlertSchemaDocs), která nabízí výhodu v podobě jediného rozšiřitelné a sjednocené výstrah datová část mezi všechny výstrahy služby ve službě Azure Monitor pro vaše integrace webhooku. [Další informace o běžných výstrah schématu definice.](https://aka.ms/commonAlertSchemaDefinitions)
+> Můžete také použít [běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs), které poskytuje pro integraci Webhooku jedinou rozšiřitelnou a jednotnou datovou část napříč všemi službami výstrahy v Azure monitor. [Přečtěte si o běžných definicích schémat výstrah.](https://aka.ms/commonAlertSchemaDefinitions)
 
 
-## <a name="authenticate-the-webhook"></a>Ověření se webhook.
-Webhook můžete volitelně použít ověřování založené na tokenech pro ověřování. Webhook identifikátoru URI je uložen s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+## <a name="authenticate-the-webhook"></a>Ověření Webhooku
+Webhook může volitelně použít autorizaci založenou na tokenech pro ověřování. Identifikátor URI Webhooku je uložený s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
 
-## <a name="payload-schema"></a>Datová část schématu
-Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti na poli data.context.activityLog.eventSource datové části.
+## <a name="payload-schema"></a>Schéma datové části
+Datová část JSON obsažená v operaci POST se liší v závislosti na poli data datové části Context. activityLog. eventSource.
 
-### <a name="common"></a>Společné
+### <a name="common"></a>Obecný
 
 ```json
 {
@@ -61,7 +61,7 @@ Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti n
 }
 ```
 
-### <a name="administrative"></a>Správa
+### <a name="administrative"></a>Prav
 
 ```json
 {
@@ -132,7 +132,7 @@ Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti n
 }
 ```
 
-### <a name="recommendation"></a>Doporučení
+### <a name="recommendation"></a>Základě
 
 ```json
 {
@@ -218,7 +218,7 @@ Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti n
 }
 ```
 
-Podrobnosti o konkrétní schématu na upozornění protokolu aktivit oznámení stavu služby, najdete v části [služby oznámení o stavu](../../azure-monitor/platform/service-notifications.md). Také se dozvíte, jak [konfigurace webhooku oznámení o stavu služby se stávajícími řešeními správy problému](../../service-health/service-health-alert-webhook-guide.md).
+Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení o stavu služby najdete v tématu [Upozornění na stav služby](../../azure-monitor/platform/service-notifications.md). Kromě toho se dozvíte, jak [nakonfigurovat oznámení Webhooku služby Health Service pomocí stávajících řešení pro správu problémů](../../service-health/service-health-alert-webhook-guide.md).
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -260,40 +260,40 @@ Podrobnosti o konkrétní schématu na upozornění protokolu aktivit oznámení
 
 | Název elementu | Popis |
 | --- | --- |
-| status |Používá se pro upozornění na metriku. Vždy nastaven na "aktivované" pro upozornění protokolu aktivit. |
-| context |Kontext události. |
-| resourceProviderName |Poskytovatel prostředků ovlivněných prostředků. |
-| conditionType |Vždy "událost". |
+| stav |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
+| kontext |Kontext události |
+| resourceProviderName |Poskytovatel prostředků ovlivněného prostředku. |
+| conditionType |Vždy "Event" |
 | name |Název pravidla výstrahy. |
-| id |ID prostředku výstrahy. |
-| description |Popis výstrahy nastavit, pokud je výstraha vytvořena. |
+| id |ID prostředku výstrahy |
+| description |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
-| timestamp |Čas, kdy byla událost vygenerována podle služeb Azure, který požadavek zpracoval. |
-| resourceId |ID prostředku ovlivněných prostředků. |
-| resourceGroupName |Název skupiny prostředků pro ovlivněných prostředků. |
-| properties |Sada `<Key, Value>` páry (to znamená `Dictionary<String, String>`), který obsahuje podrobnosti o události. |
-| událost |Element, který obsahuje metadata o události. |
-| authorization |Řízení přístupu na základě Role vlastnosti události. Tyto vlastnosti se obvykle zahrnují akce, role a obor. |
-| category |Kategorie události. Mezi podporované hodnoty patří pro správu, oznámení, zabezpečení, ServiceHealth a doporučení. |
-| Volající |E-mailová adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. Nesmí být null u některých systémových volání. |
-| correlationId |Obvykle GUID ve formátu řetězce. Události s ID korelace patřit do stejné akce větší a obvykle sdílet ID korelace. |
-| eventDescription |Statický text popis události. |
-| eventDataId |Jedinečný identifikátor pro událost. |
-| eventSource |Název služby Azure nebo infrastruktury, které vygenerovalo událost. |
-| httpRequest |Požadavek obvykle zahrnuje ID žádosti klienta, clientIpAddress a metodou HTTP (například UMÍSTIT). |
-| level |Jeden z následujících hodnot: Kritické, chyba, upozornění a informativní. |
-| operationId |Obvykle GUID sdílen události odpovídá jedné operace. |
+| časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
+| Prostředku |ID prostředku ovlivněného prostředku |
+| ResourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
+| vlastnosti |Sada dvojic `<Key, Value>` (tj. `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
+| event |Prvek, který obsahuje metadata o události. |
+| autorizace |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
+| category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
+| Volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. Pro určitá systémová volání může mít hodnotu null. |
+| ID |Obvykle identifikátor GUID ve formátu řetězce. Události s ID korelace patří stejné větší akci a obvykle sdílejí ID korelace. |
+| eventDescription |Statický text popis události |
+| eventDataId |Jedinečný identifikátor události |
+| EventSource |Název služby nebo infrastruktury Azure, která událost vygenerovala. |
+| httpRequest |Požadavek obvykle zahrnuje metodu ID žádosti klienta, clientIpAddress a HTTP (například PUT). |
+| Obsah |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
+| operationId |Identifikátor GUID se obvykle sdílí mezi událostmi, které odpovídají jedné operaci. |
 | operationName |Název operace |
-| properties |Vlastnosti události. |
-| status |řetězec. Stav operace. Mezi běžné hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
-| Podřízený stav |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může taky obsahovat další řetězce, které popisují substatus. Běžné hodnoty substatus zahrnují OK (stavový kód HTTP: 200), vytvořit (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybná žádost (kód stavu HTTP: 400), nebyl nalezen (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), se interní chyba serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504). |
+| vlastnosti |Vlastnosti události |
+| stav |Řetezce. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
+| subStatus |Obvykle zahrnuje stavový kód HTTP odpovídajícího volání REST. Může také obsahovat další řetězce, které popisují dílčí stav. Mezi běžné hodnoty substavu patří OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu http: 400), nenalezen (Stavový kód http: 404), konflikt (kód stavu http: 409). ), Interní chyba serveru (kód stavu HTTP: 500), nedostupná služba (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504). |
 
-Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu aktivit najdete v tématu [přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).
+Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu aktivit najdete v tématu [Přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
-## <a name="next-steps"></a>Další postup
-* [Další informace o protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md).
-* [Spouštění skriptů Azure automation (Runbooky) na upozornění Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
-* [Pomocí aplikace logiky můžete poslat zprávu SMS přes Twilio z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
-* [Pomocí aplikace logiky můžete poslat zprávu Slack z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
-* [Použijte aplikace logiky pro odeslání zprávy do fronty služby Azure z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
+## <a name="next-steps"></a>Další kroky
+* [Přečtěte si další informace o protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md).
+* [Spouštění skriptů Azure Automation (runbooky) na výstrahách Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
+* [Pomocí aplikace logiky můžete poslat SMS přes Twilio z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
+* [Pomocí aplikace logiky odešlete zprávu o časové rezervě z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
+* [Použijte aplikaci logiky k odeslání zprávy do fronty Azure z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
 

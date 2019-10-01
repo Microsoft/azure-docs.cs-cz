@@ -1,19 +1,19 @@
 ---
 title: Akce Webhooku pro výstrahy protokolu v upozorněních Azure
 description: Tento článek popisuje, jak vytvořit pravidlo upozornění protokolu pomocí Log Analytics pracovní prostor nebo Application Insights, jak výstraha nahraje data jako Webhook HTTP, a podrobnosti o různých přizpůsobeních, která jsou možná.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226798"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677770"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolu
 Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) , aby se provedla jedna nebo více akcí. Tento článek popisuje různé akce Webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní Webhook založený na formátu JSON.
@@ -33,7 +33,7 @@ Akce Webhooku vyžadují vlastnosti v následující tabulce.
 | **Vlastní datová část JSON** |Vlastní datová část, která se má poslat pomocí Webhooku, když se vybere tato možnost během vytváření výstrahy. Další informace najdete v tématu [Správa upozornění protokolu](alerts-log.md).|
 
 > [!NOTE]
-> Tlačítko pro **zobrazení** Webhooku spolu s možností **zahrnout vlastní datovou část JSON pro Webhook** pro výstrahu protokolu zobrazuje ukázkovou datovou část Webhooku pro zadané přizpůsobení. Neobsahuje skutečná data, ale je reprezentativní pro schéma JSON, které se používá pro výstrahy protokolu. 
+> Tlačítko pro **zobrazení Webhooku** spolu s možností **zahrnout vlastní datovou část JSON pro Webhook** pro výstrahu protokolu zobrazuje ukázkovou datovou část Webhooku pro zadané přizpůsobení. Neobsahuje skutečná data, ale je reprezentativní pro schéma JSON, které se používá pro výstrahy protokolu. 
 
 Webhooky zahrnují adresu URL a datovou část formátovanou ve formátu JSON, kterou data odesílaná do externí služby. Ve výchozím nastavení datová část zahrnuje hodnoty v následující tabulce. Tuto datovou část si můžete nahradit vlastní vlastní. V takovém případě použijte proměnné v tabulce pro každý z parametrů k zahrnutí jejich hodnot do vlastní datové části.
 
@@ -124,7 +124,7 @@ Následující ukázková datová část je určena pro akci standardního Webho
  ```
 
 > [!NOTE]
-> Hodnota pole závažnost se může změnit, pokud jste přepnuli [Předvolby rozhraní API](alerts-log-api-switch.md) pro výstrahy protokolu na Log Analytics.
+> Hodnota pole závažnost se může změnit, pokud jste [přepnuli předvolby rozhraní API](alerts-log-api-switch.md) pro výstrahy protokolu na Log Analytics.
 
 
 #### <a name="log-alert-for-application-insights"></a>Výstraha protokolu pro Application Insights
@@ -205,7 +205,7 @@ Následující ukázková datová část je určena pro vlastní akci Webhooku p
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si informace o [upozorněních protokolu v Azure Alerts](alerts-unified-log.md).
 - Naučte se [Spravovat výstrahy protokolu v Azure](alerts-log.md).
 - Vytváření a Správa [skupin akcí v Azure](action-groups.md).

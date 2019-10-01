@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentace ke službě Windows Virtual Desktop verze Preview
+title: Dokumentace k Windows Virtual Desktop
 metadata:
-  title: 'Dokumentace ke službě Windows Virtual Desktop verze Preview – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs'
-  description: Windows Virtual Desktop verze Preview pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
+  title: 'Dokumentace k Windows Virtual Desktop – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs'
+  description: Windows Virtual Desktop pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -17,11 +17,11 @@ sections:
   - title: Přehled
     items:
       - type: paragraph
-        text: 'Další informace o službě Windows Virtual Desktop a jejím použití Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.'
+        text: 'Informace o Windows Virtual Desktop a jeho použití. Kurzy, postupy, referenční obsah a další položky vám ukážou, jak nastavit fondy hostitelů a klienty a přiřadit role uživatelům pro prostředí Windows Virtual Desktop.'
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop verze Preview?</a>
+          - html: <a href="/azure/virtual-desktop/overview">Co je Windows Virtual Desktop?</a>
   - title: Podrobné kurzy
     items:
       - type: paragraph

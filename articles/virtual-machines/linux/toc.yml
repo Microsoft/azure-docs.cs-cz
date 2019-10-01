@@ -35,21 +35,23 @@
       href: tutorial-backup-vms.md
     - name: 10. Řízení virtuálních počítačů
       href: tutorial-govern-resources.md
-    - name: 11. Monitorování a aktualizace virtuálních počítačů
-      href: tutorial-monitoring.md
-    - name: 12. Správa zabezpečení virtuálních počítačů
+    - name: 11. Sledování a aktualizace virtuálních počítačů
+      href: tutorial-config-management.md
+    - name: 12. Monitorování virtuálních počítačů
+      href: tutorial-monitor.md
+    - name: 13. Správa zabezpečení virtuálních počítačů
       href: tutorial-azure-security.md
-    - name: 13. Nasazení Jenkinse
+    - name: 14. Nasazení Jenkinse
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14. Průběžná integrace a doručování s využitím Azure Pipelines
+    - name: 15. Průběžná integrace a doručování s využitím Azure Pipelines
       href: tutorial-build-deploy-jenkins.md
-    - name: 15a. Vytvoření zásobníku LAMP
+    - name: 16a. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md
-    - name: 15b. Vytvoření zásobníku LEMP
+    - name: 16b. Vytvoření zásobníku LEMP
       href: tutorial-lemp-stack.md
-    - name: 15c. Vytvoření zásobníku MEAN
+    - name: 16c. Vytvoření zásobníku MEAN
       href: tutorial-mean-stack.md
-    - name: 16. Zabezpečení webového serveru pomocí SSL
+    - name: 17. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
 - name: Ukázky
   items:

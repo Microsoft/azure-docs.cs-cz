@@ -1,22 +1,22 @@
 ---
-title: Identifikujte problémy s funkcí diagnostiky ve verzi Preview virtuálních počítačů s Windows – Azure
-description: Popisuje funkci diagnostiky ve verzi Preview pro Windows Virtual Desktop a její použití.
+title: Identifikace problémů s funkcí diagnostiky virtuálních počítačů v systému Windows – Azure
+description: Popisuje funkci diagnostiky virtuálních klientských počítačů systému Windows a její použití.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163497"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676638"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů pomocí diagnostické funkce
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů s diagnostickou funkcí
 
-Virtuální počítač s Windows ve verzi Preview nabízí funkci diagnostiky, která umožňuje správcům identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
+Virtuální plocha Windows nabízí diagnostické funkce, které správci umožňují identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
 
 * Aktivity předplatného informačního kanálu: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k informačnímu kanálu prostřednictvím Vzdálená plocha Microsoftch aplikací.
 * Aktivity připojení: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k desktopu nebo k vzdálené aplikaci RemoteApp prostřednictvím aplikace Vzdálená plocha Microsoft.
@@ -136,7 +136,7 @@ Scénáře chyb jsou rozdělené do kategorií interní pro službu a externí p
 V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správci běžet.
 
 >[!NOTE]
->Tato verze Preview neobsahuje úplnou kategorizaci chyb a aktualizuje se pravidelně. Abyste měli jistotu, že máte nejaktuálnější informace, nezapomeňte se vrátit k tomuto článku aspoň jednou za měsíc.
+>Tento seznam obsahuje nejběžnější chyby a je aktualizovaný na pravidelných tempo. Abyste měli jistotu, že máte nejaktuálnější informace, nezapomeňte se vrátit k tomuto článku aspoň jednou za měsíc.
 
 ### <a name="external-management-error-codes"></a>Kódy chyb externí správy
 
@@ -168,14 +168,14 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |-2146233088|ConnectionFailedClientDisconnect|Pokud se tato chyba zobrazí často, ujistěte se, že je počítač uživatele připojený k síti.|
 |-2146233088|ConnectionFailedNoHealthyRdshAvailable|Relace, ke které se hostitelský uživatel pokusil připojit, není v pořádku. Ladit virtuální počítač.|
 |-2146233088|ConnectionFailedUserNotAuthorized|Uživatel nemá oprávnění pro přístup k publikované aplikaci nebo k ploše. Tato chyba se může zobrazit po odebrání publikovaných prostředků správcem. Požádejte uživatele, aby tento informační kanál aktualizoval v aplikaci Vzdálená plocha.|
-|2|FileNotFound|Aplikace, ke které se uživatel pokusil získat přístup, je buď nesprávně nainstalovaná, nebo nastavená na nesprávnou cestu.|
+|odst|FileNotFound|Aplikace, ke které se uživatel pokusil získat přístup, je buď nesprávně nainstalovaná, nebo nastavená na nesprávnou cestu.|
 |3|InvalidCredentials|Uživatelské jméno nebo heslo, které uživatel zadal, neodpovídá žádnému z existujících uživatelských jmen a hesel. Zkontrolujte přihlašovací údaje pro překlepy a zkuste to znovu.|
 |8|ConnectionBroken|Spojení mezi klientem a bránou nebo serverem bylo vyřazeno. Není nutná žádná akce, pokud dojde k neočekávanému chování.|
-|14|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
+|čtrnáct|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
 |24|ReverseConnectFailed|Hostitelský virtuální počítač nemá žádný přímý dohled, který by Brána VP. Zajistěte, aby se IP adresa brány mohla přeložit.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rolích v rámci virtuálních počítačů s Windows najdete v tématu [prostředí pro virtuální počítače s Windows ve verzi Preview](environment-setup.md).
+Další informace o rolích v rámci virtuálních počítačů s Windows najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
 
-Seznam dostupných rutin PowerShellu pro virtuální počítač s Windows najdete v referenčních informacích k [prostředí PowerShell](/powershell/windows-virtual-desktop/overview).
+Seznam dostupných rutin PowerShellu pro virtuální počítač s Windows najdete v [referenčních informacích k prostředí PowerShell](/powershell/windows-virtual-desktop/overview).

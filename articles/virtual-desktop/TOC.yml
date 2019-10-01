@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: Vytvoření fondu hostitelů pomocí PowerShellu
       href: create-host-pools-powershell.md
+    - name: Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
+      href: deploy-windows-7-virtual-machine.md
     - name: Použití licence Windows pro hostitele relací Windows Virtual Desktop
       href: apply-windows-license.md
     - name: Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfigurace virtuálního počítače hostitele relace
       href: troubleshoot-vm-configuration.md
+    - name: Řešení potíží s virtuálními počítači s Windows 7 ve Windows Virtual Desktopu
+      href: troubleshoot-windows-7-vm.md
     - name: Připojení klientů Vzdálené plochy
       href: troubleshoot-client-connection.md
     - name: PowerShell pro Windows Virtual Desktop

@@ -1,20 +1,20 @@
 ---
 title: Instalace Office na hlavní bitovou kopii VHD – Azure
-description: Postup instalace a přizpůsobení sady Office v hlavní imagi Windows Virtual Desktop Preview na Azure
+description: Postup instalace a přizpůsobení sady Office v hlavní imagi virtuálního počítače s Windows v Azure
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816441"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679523"
 ---
-# <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
+# <a name="install-office-on-a-master-vhd-image"></a>Instalace Office na hlavní bitovou kopii VHD
 
 V tomto článku se dozvíte, jak nainstalovat Office 365 ProPlus, OneDrive a další běžné aplikace na hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure. Pokud uživatelé potřebují přístup k určitým obchodním aplikacím (LOB), doporučujeme je nainstalovat po dokončení pokynů v tomto článku.
 
@@ -23,7 +23,7 @@ V tomto článku se předpokládá, že už jste vytvořili virtuální počíta
 Tento článek také předpokládá, že máte na virtuálním počítači vyšší oprávnění, ať už je zřízené v Azure nebo ve Správci technologie Hyper-V. Pokud ne, přečtěte si téma [zvýšení přístupu ke správě všech předplatných a skupin pro správu Azure](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
 
 >[!NOTE]
->Tyto pokyny jsou určené pro konfiguraci pro virtuální počítače s Windows ve verzi Preview, která se dá použít spolu s existujícími procesy vaší organizace.
+>Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Nainstalovat Office v režimu aktivace sdíleného počítače
 
@@ -45,7 +45,7 @@ Tato ukázka konfiguračního souboru XML provede následující akce:
 - Povolit aktivaci sdíleného počítače.
 
 >[!NOTE]
->Funkce hledání ve vzorníku v aplikaci Visio nefunguje během konfigurace verze Preview na virtuálním počítači s Windows.
+>Funkce hledání ve vzorníku Visia nemusí fungovat podle očekávání na virtuálním počítači s Windows.
 
 Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 
@@ -53,7 +53,7 @@ Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 - Nainstalujte OneDrive v režimu pro jednotlivé uživatele. Další informace najdete v tématu [instalace OneDrivu v režimu podle počítače](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách\\\\konfigurace počítačů\\šablony pro správu nastavení licencování systém Microsoft Office\\2016 (počítač)** .
+>Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **konfiguraci počítače @ no__t-1Policies @ no__t-2Administrative Templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing Settings**
 
 Nástroj pro nasazení Office obsahuje Setup. exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
 
@@ -130,11 +130,11 @@ OneDrive je obvykle nainstalovaný pro jednotlivé uživatele. V tomto prostřed
 
 Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
-1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo umístění\\[\\UNC] (File://UNC) je v pořádku.
+1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo [\\ @ no__t-1unc] (file://unc) je v pořádku.
 
-2. Stáhněte si OneDriveSetup. exe do připraveného umístění pomocí tohoto odkazu:<https://aka.ms/OneDriveWVD-Installer>
+2. Stáhněte OneDriveSetup. exe do připraveného umístění pomocí tohoto odkazu: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Pokud jste nainstalovali Office s OneDrivem tím, že vynecháte  **\<ExcludeApp ID = "\>OneDrive"/** , odinstalujte všechny existující instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
+3. Pokud jste nainstalovali Office s OneDrivem tak, že vynecháte **\<EXCLUDEAPP ID = "OneDrive"/\>** , odinstalujte všechny existující instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
@@ -174,6 +174,6 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
 Virtuální počítač s Windows nepodporuje Skype pro firmy a týmy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste přidali Office k imagi, můžete pokračovat v přizpůsobení hlavní image VHD. Viz [Příprava a přizpůsobení hlavní image virtuálního pevného disku](set-up-customize-master-image.md).

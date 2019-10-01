@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 22590a7ecc94efbfad5eefe27f284bdb191e876d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300709"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676403"
 ---
-# <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
+# <a name="remote-desktop-client-connections"></a>Připojení klientů vzdálené plochy
 
 Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-V současné době nepřijímáme případy podpory, ale virtuální počítač s Windows je ve verzi Preview. Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
+Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
 ## <a name="you-cant-open-a-web-client"></a>Nemůžete otevřít webového klienta.
 
@@ -34,38 +34,38 @@ nslookup rdweb.wvd.microsoft.com
 
 Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
 
-### <a name="error-opening-another-site-fails"></a>Chyba: Otevření jiného webového serveru se nezdařilo
+### <a name="error-opening-another-site-fails"></a>Chyba: otevření jiného webového serveru se nezdařilo
 
-**Způsobit** Problémy se sítí nebo výpadky.
+**Příčina:** Problémy se sítí nebo výpadky.
 
-**Opravit** Kontaktujte podporu sítě.
+**Oprava:** Kontaktujte podporu sítě.
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
 
-**Způsobit** Problémy se sítí nebo výpadky.
+**Příčina:** Problémy se sítí nebo výpadky.
 
-**Opravit** Kontaktovat podporu sítě
+**Oprava:** Kontaktovat podporu sítě
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Chyba: Nemůžete se připojit, ale ostatní klienti se mohou připojit.
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Chyba: nemůžete se připojit, ale ostatní klienti se mohou připojit.
 
-**Způsobit** Prohlížeč se nechová podle očekávání a přestal fungovat.
+**Příčina:** Prohlížeč se nechová podle očekávání a přestal fungovat.
 
-**Opravit** Při řešení potíží s prohlížečem postupujte podle těchto pokynů.
+**Oprava:** Při řešení potíží s prohlížečem postupujte podle těchto pokynů.
 
 1. Restartujte prohlížeč.
 2. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+3. Vymažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 4. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
 
 Zkuste se připojit pomocí jiného prohlížeče nebo klienta.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Chyba: Jiné prohlížeče a klienti také nefunguje správně nebo se nedaří otevřít
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Chyba: jiné prohlížeče a klienti jsou také nefunkční nebo se nedaří otevřít.
 
-**Způsobit** Problémy se sítí nebo operačním systémem nebo výpadky
+**Příčina:** Problémy se sítí nebo operačním systémem nebo výpadky
 
-**Opravit** Obraťte se na tým podpory.
+**Oprava:** Obraťte se na tým podpory.
 
 ## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient uchovává výzvy k zadání přihlašovacích údajů
 
@@ -74,7 +74,7 @@ Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, po
 1. Ověřte správnost adresy URL webového klienta.
 2. Potvrďte, že přihlašovací údaje jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
 3. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+4. Vymažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo ho nejde otevřít.
@@ -135,28 +135,28 @@ Použijte tyto obecné pokyny pro odstraňování potíží s kódy chyb připoj
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Chyba: O_ADD_USER_TO_GROUP_FAILED/nepovedlo se přidat uživatele = ≤ username ≥ to Group = Remote Desktop Users. Brání Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Chyba: O_ADD_USER_TO_GROUP_FAILED/nepovedlo se přidat uživatele = ≤ username ≥ to Group = Remote Desktop Users. Důvod: Win32. ERROR_NO_SUCH_MEMBER
 
-**Způsobit** Virtuální počítač není připojený k doméně, ve které je objekt uživatele.
+**Příčina:** Virtuální počítač není připojený k doméně, ve které je objekt uživatele.
 
-**Opravit** Přidejte virtuální počítač do správné domény. Viz [připojení virtuálního počítače s Windows serverem ke spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Oprava:** Přidejte virtuální počítač do správné domény. Viz [připojení virtuálního počítače s Windows serverem ke spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
 
-**Způsobit** Problémy se sítí nebo výpadky.
+**Příčina:** Problémy se sítí nebo výpadky.
 
-**Opravit** Kontaktovat podporu sítě
+**Oprava:** Kontaktovat podporu sítě
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>Chyba: ConnectionFailedClientProtocolError
 
-**Způsobit** Virtuální počítače, ke kterým se uživatel pokouší připojit, nejsou připojeni k doméně.
+**Příčina:** Virtuální počítače, ke kterým se uživatel pokouší připojit, nejsou připojeni k doméně.
 
-**Opravit** Připojte všechny virtuální počítače, které jsou součástí fondu hostitelů, do řadiče domény.
+**Oprava:** Připojte všechny virtuální počítače, které jsou součástí fondu hostitelů, do řadiče domény.
 
 ### <a name="error-connectionfailedusersidinformationmismatch"></a>Chyba: ConnectionFailedUserSIDInformationMismatch
-**Způsobit** Identifikátor SID z tokenu Azure Active Directory uživatele (AD) se neshoduje s identifikátorem SID vráceným řadičem domény při pokusu o povolení uživatele pro vzdálené přihlášení. K této chybě obvykle dochází při pokusu o přihlášení k prostředí Azure Active Directory Domain Servicesu (Azure služba AD DS) s uživatelem původně vytvořeným z Windows Server AD.
+**Příčina:** Identifikátor SID z tokenu Azure Active Directory uživatele (AD) se neshoduje s identifikátorem SID vráceným řadičem domény při pokusu o povolení uživatele pro vzdálené přihlášení. K této chybě obvykle dochází při pokusu o přihlášení k prostředí Azure Active Directory Domain Servicesu (Azure služba AD DS) s uživatelem původně vytvořeným z Windows Server AD.
 
-**Opravit** Tento scénář se v tuto chvíli nepodporuje. K virtuálním počítačům virtuálních počítačů s Windows připojeným k Azure služba AD DS se můžou přihlásit jenom uživatelé, kteří se nahlásili z Azure Active Directory.
+**Oprava:** Tento scénář se v tuto chvíli nepodporuje. K virtuálním počítačům virtuálních počítačů s Windows připojeným k Azure služba AD DS se můžou přihlásit jenom uživatelé, kteří se nahlásili z Azure Active Directory.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojuje, ale nic se nezobrazuje (bez kanálu).
 
@@ -178,7 +178,4 @@ Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádn
 - Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Další informace o službě verze Preview najdete v tématu [prostředí verze Preview pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
-- Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)šablon Správce prostředků.
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).

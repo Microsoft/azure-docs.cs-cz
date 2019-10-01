@@ -1,22 +1,22 @@
 ---
-title: Správa skupin aplikací pro Windows Virtual Desktop Preview – Azure
-description: Popisuje, jak nastavit klienty Windows Virtual Desktop Preview v Azure Active Directory.
+title: Správa skupin aplikací pro virtuální počítače s Windows – Azure
+description: Popisuje, jak nastavit klienty virtuálních klientů Windows v Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163252"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679458"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupin aplikací pro verzi Preview pro virtuální počítače s Windows
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Kurz: Správa skupin aplikací pro virtuální počítače s Windows
 
-Výchozí skupina aplikací vytvořená pro nový fond hostitelů ve verzi Preview virtuálních počítačů s Windows také publikuje celou plochu. Kromě toho můžete vytvořit jednu nebo více skupin aplikací RemoteApp pro fond hostitelů. Podle tohoto kurzu vytvořte skupinu aplikací RemoteApp a publikujte jednotlivé aplikace v nabídce **Start** .
+Výchozí skupina aplikací vytvořená pro nový fond hostitelů virtuálních počítačů s Windows taky publikuje celou plochu. Kromě toho můžete vytvořit jednu nebo více skupin aplikací RemoteApp pro fond hostitelů. Podle tohoto kurzu vytvořte skupinu aplikací RemoteApp a publikujte jednotlivé aplikace v nabídce **Start** .
 
 V tomto kurzu se dozvíte, jak:
 
@@ -50,7 +50,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias`. `AppAlias`se zobrazí, když spustíte výstup z kroku 3.
+4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias`. `AppAlias` se zobrazí, když spustíte výstup z kroku 3.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
@@ -75,7 +75,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak vytvořit skupinu aplikací, naplnit ji v aplikacích RemoteApp a přiřazovat uživatele do skupiny aplikací. Další informace o tom, jak vytvořit fond ověřovacích hostitelů, najdete v následujícím kurzu. Pomocí fondu hostitelů ověření můžete monitorovat aktualizace služby před jejich vrácením do produkčního prostředí.
 

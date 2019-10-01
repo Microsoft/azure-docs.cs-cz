@@ -1,26 +1,27 @@
 ---
-title: 'Rychlý start: Vytvoření DSVM s Windows'
-description: Konfigurace a vytvořit virtuální počítač pro datové vědy v Azure pro účely analýzy a strojového učení.
+title: 'Rychlý Start: vytvoření DSVM pro Windows'
+description: Nakonfigurujte a vytvořte Data Science Virtual Machine v Azure pro analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204077"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675115"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý start: Nastavení Data Science Virtual Machine pro Windows
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
 Začněte pracovat s Windows Data Science Virtual Machine.
 
-## <a name="prerequisite"></a>Požadavek
+## <a name="prerequisite"></a>Předpoklad
 
 Pokud chcete vytvořit Data Science Virtual Machine Windows, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
+Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálních počítačů s povoleným GPU.
 
 ## <a name="create-your-dsvm"></a>Vytvoření DSVM
 
@@ -33,24 +34,24 @@ Vytvoření instance DSVM:
 
 1. V dolní části vyberte tlačítko **vytvořit** .
 
-    [![](media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows-expanded.png#lightbox)(media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
-   ![Karta základy odpovídající virtuálnímu počítači s Windows](./media/provision-vm/review-create-windows.png)
+   karta ![Basics odpovídající virtuálnímu počítači s Windows @ no__t-1
 
 1. Vyplňte kartu **základy** :
-      * **Předplatné:** Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Pro toto předplatné musíte mít oprávnění pro vytváření prostředků.
       * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
-      * **Název virtuálního počítače**: Zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
-      * **Umístění**: Vyberte odpovídající datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Obrázek**: Nechte zadanou výchozí hodnotu.
-      * **Velikost**: To by mělo automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
-      * **Uživatelské jméno**: Zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
-      * **Heslo**: Zadejte heslo, které použijete k přihlášení k virtuálnímu počítači.    
-1. Vyberte **Zkontrolovat a vytvořit**.
+      * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
+      * **Umístění**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Obrázek**: ponechte výchozí hodnotu.
+      * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
+      * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
+      * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
+1. Vyberte **zkontrolovat + vytvořit**.
 1. **Zkontrolovat a vytvořit**
-   * Ověřte, zda všechny informace, které jste zadali správný. 
-   * Vyberte **Vytvořit**.
+   * Ověřte, zda jsou všechny informace, které jste zadali, správné. 
+   * Vyberte **vytvořit**.
 
 
 > [!NOTE]
@@ -74,7 +75,7 @@ K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jup
 * Přečtěte si o službě Azure Machine Learning, kterou si přečtete, [co je Azure Machine Learning služba?](../service/overview-what-is-azure-ml.md) a vyzkoušet si [kurzy](../index.yml).
 * V Průzkumníku souborů přejděte do složky C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts, kde najdete ukázky, které používají knihovnu RevoScaleR v jazyce R, která podporuje analýzu dat v podnikovém měřítku. 
 * Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
-* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).
-* Přejděte [galerii Azure AI](https://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
+* Naučte se systematicky sestavovat komplexní Analytická řešení pomocí [procesu vědeckého zpracování týmových dat](../team-data-science-process/index.yml).
+* Podívejte se na [Azure AI Gallery](https://gallery.cortanaintelligence.com) pro ukázkové strojové učení a analýzu dat, které používají Azure Machine Learning a související datové služby v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
 * Projděte si příslušnou [referenční dokumentaci](./reference-windows-vm.md) pro tento virtuální počítač.
 

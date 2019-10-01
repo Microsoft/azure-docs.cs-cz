@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390451"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686741"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití Key Vault odkazů pro App Service a Azure Functions (Preview)
 
@@ -36,20 +36,20 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
    > [!NOTE] 
    > Odkazy na Key Vault aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
+1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte nastavení "autorizované aplikace" nebo `applicationId`, protože to není kompatibilní se spravovanou identitou.
 
     > [!NOTE]
     > Odkazy na Key Vault nejsou v současné době schopné přeložit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/key-vault-overview-vnet-service-endpoints.md).
 
 ## <a name="reference-syntax"></a>Referenční syntaxe
 
-Odkaz na Key Vault je ve formátu `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` je nahrazen jednou z následujících možností:
+Odkaz na Key Vault má formát `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` se nahrazuje jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
 > | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, např. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
+> | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
+> | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
 > [!NOTE] 
 > V aktuální verzi Preview jsou vyžadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
@@ -60,7 +60,7 @@ Například kompletní odkaz by vypadal jako následující:
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
 
-Další možností:
+Jinou
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
@@ -78,7 +78,7 @@ Chcete-li použít odkaz Key Vault pro nastavení aplikace, nastavte odkaz jako 
 
 ### <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
 
-Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager může být nutné pořadí závislostí v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako vlastní prostředek, a ne použít `siteConfig` vlastnost v definici webu. Je to proto, že lokalita musí být definovaná jako první, aby se k ní vytvořila identita přiřazená systémem a mohla by se používat v zásadách přístupu.
+Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager může být nutné pořadí závislostí v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako vlastní prostředek, místo použití vlastnosti `siteConfig` v definici webu. Je to proto, že lokalita musí být definovaná jako první, aby se k ní vytvořila identita přiřazená systémem a mohla by se používat v zásadách přístupu.
 
 Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 
@@ -184,11 +184,11 @@ Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 ```
 
 > [!NOTE] 
-> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli `WEBSITE_ENABLE_SYNC_UPDATE_SITE` nastavení aplikace, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
+> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však obsahujeme nastavení aplikace `WEBSITE_ENABLE_SYNC_UPDATE_SITE`, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
 
 ## <a name="troubleshooting-key-vault-references"></a>Řešení potíží s Key Vaultmi odkazy
 
-Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má `@Microsoft.KeyVault(...)` syntaxi. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
+Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má syntaxi `@Microsoft.KeyVault(...)`. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
 
 Nejčastěji to je způsobeno neznámým nastavením [zásad přístupu Key Vault](#granting-your-app-access-to-key-vault). Může to ale také být způsobeno tím, že už existující tajný kód nebo Chyba syntaxe samotného odkazu.
 
@@ -197,7 +197,7 @@ Je-li syntaxe správná, můžete zobrazit další příčiny chyby kontrolou ak
 ### <a name="using-the-detector-for-app-service"></a>Použití detektoru pro App Service
 
 1. Na portálu přejděte do aplikace.
-2. Vyberte možnost **diagnostikovat a vyřešit prolems**.
+2. Vyberte možnost **diagnostikovat a vyřešit problémy**.
 3. Zvolte možnost **dostupnost a výkon** a vyberte možnost **Webová aplikace dolů.**
 4. Najděte **Key Vault Diagnostika nastavení aplikace** a klikněte na **Další informace**.
 
@@ -206,6 +206,6 @@ Je-li syntaxe správná, můžete zobrazit další příčiny chyby kontrolou ak
 
 1. Na portálu přejděte do aplikace.
 2. Přejděte k **funkcím platformy.**
-3. Vyberte možnost **diagnostikovat a vyřešit prolems**.
+3. Vyberte možnost **diagnostikovat a vyřešit problémy**.
 4. Zvolte možnost **dostupnost a výkon** a vyberte **funkce aplikace dolů nebo hlášení chyb.**
 5. Klikněte na **Key Vault Diagnostika nastavení aplikace.**

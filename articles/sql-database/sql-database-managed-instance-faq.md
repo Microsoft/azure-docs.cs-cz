@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032942"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676945"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -38,12 +38,19 @@ Dostupné úrovně služeb a jejich charakteristiky najdete v tématu [technick�
 
 Chyby a známé problémy najdete v tématu [známé problémy](sql-database-managed-instance-transact-sql-information.md#Issues).
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Kde můžu najít nejnovější funkce a funkce ve verzi Public Preview?
+
+Nové funkce a verze Preview najdete v [poznámkách k verzi](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?
+
+Očekávaná doba pro vytvoření nové spravované instance nebo změna úrovně služby (virtuální jádra, Storage) závisí na několika faktorech. Prohlédněte si [operace správy](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Může mít spravovaná instance stejný název jako místní SQL Server?
 
 Spravovaná instance musí mít název, který končí na *Database.Windows.NET*. Chcete-li použít jinou zónu DNS namísto výchozího, například **mi – jiný název**. contoso.com: 
 - Použijte CliConfig k definování aliasu. Tento nástroj je jenom obálkou nastavení registru, takže ho můžete udělat taky pomocí zásad skupiny nebo skriptu.
 - Použijte *CNAME* s možností *TrustServerCertificate = true* .
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Jak můžu přesunout databázi ze spravované instance zpátky do SQL Server nebo Azure SQL Database?
 
@@ -55,7 +62,7 @@ Nativní `COPY_ONLY` zálohy pořízené ze spravované instance nelze obnovit d
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Jak můžu migrovat databázi instance do jediného Azure SQL Database?
 
-Jednou z možností je [exportovat databázi do BacPac](sql-database-export.md) a pak [importovat soubor BacPac]( sql-database-import.md). 
+Jednou z možností je [exportovat databázi do BacPac](sql-database-export.md) a pak [importovat soubor BacPac](sql-database-import.md). 
 
 Toto je doporučený postup, pokud je databáze menší než 100 GB. Transakční replikaci je možné použít, pokud všechny tabulky v databázi mají primární klíče.
 
@@ -125,9 +132,10 @@ Pro zmírnění rizik sítě se doporučuje zákazníkům použít sadu nastaven
 Případové studie spravované instance:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Pro lepší porozumění výhodám, nákladům a rizikům spojeným s nasazením Azure SQL Database spravované instance je také studie Forrester: [Celkový ekonomický dopad na mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+Pro lepší porozumění výhodám, nákladům a rizikům spojeným s nasazením Azure SQL Database spravované instance je také studie Forrester: [celkový ekonomický dopad na mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
 ## <a name="can-i-do-dns-refresh"></a>Můžu aktualizovat DNS? 
@@ -161,7 +169,7 @@ Alternativní řešení zahrnují vytvoření nové spravované instance se spr�
 
 ## <a name="how-do-i-resolve-performance-issues-with-my-managed-instance"></a>Návody vyřešit problémy s výkonem pomocí mé spravované instance
 
-Pro porovnání výkonu mezi spravovanou instancí a SQL Server je dobrým výchozím bodem osvědčené [postupy pro porovnání výkonu mezi spravovanou instancí Azure SQL a SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) článkem.
+Pro porovnání výkonu mezi spravovanou instancí a SQL Server je dobrým výchozím bodem [osvědčené postupy pro porovnání výkonu mezi spravovanou instancí Azure SQL a SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) článkem.
 
 Načítání dat je často pomalejší na spravované instanci než v SQL Server z důvodu povinného modelu úplného obnovení a [omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) propustnosti zápisu protokolu transakcí. V některých případech to může být způsobeno tím, že se v databázi tempdb načítají přechodná data namísto uživatelské databáze nebo použije clusterované tabulky columnstore nebo paměťově optimalizované tabulky.
 

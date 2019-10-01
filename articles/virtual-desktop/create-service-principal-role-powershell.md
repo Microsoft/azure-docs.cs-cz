@@ -1,22 +1,22 @@
 ---
-title: Vytvoření instančních objektů a přiřazení rolí ve Windows Virtual desktopu pomocí PowerShellu – Azure
-description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve verzi Preview služby Windows Virtual Desktop.
+title: Vytvoření instančních objektů a přiřazení rolí Windows Virtual desktopu pomocí PowerShellu – Azure
+description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve virtuálním počítači s Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985010"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679620"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu
 
-Instanční objekty jsou identity, které můžete vytvořit v Azure Active Directory k přiřazení rolí a oprávnění pro konkrétní účel. Ve verzi Preview služby Windows Virtual Desktop můžete vytvořit instanční objekt pro:
+Instanční objekty jsou identity, které můžete vytvořit v Azure Active Directory k přiřazení rolí a oprávnění pro konkrétní účel. Na virtuálním počítači s Windows můžete vytvořit instanční objekt pro:
 
 - Automatizujte určité úlohy správy virtuálních počítačů s Windows.
 - Použijte jako přihlašovací údaje místo uživatelů MFA – povinné při spuštění libovolné šablony Azure Resource Manager pro virtuální počítač s Windows.
@@ -42,7 +42,7 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte ud�
 
 3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Proces nemusí fungovat, pokud ukončíte relaci PowerShellu tím, že okno zavřete a znovu otevřete později.
 
-## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu v Azure Active Directory
+## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu ve službě Azure Active Directory
 
 Po splnění požadavků v relaci PowerShellu spusťte následující rutiny PowerShellu pro vytvoření instančního objektu služby s více klienty v Azure.
 

@@ -1,7 +1,7 @@
 ---
 title: Referenční informace k e-mailu předdefinovaných entit LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje e-mailu předem připravených entit informace v Language Understanding (LUIS).
+description: Tento článek obsahuje předem vytvořené informace o entitě e-mailu v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 542173a8756b868603c606307c5b682c68d7db25
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a1bc9ae7ccf48b9dc8b47b57ea43b9259786d01
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933552"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677673"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita emailu pro aplikaci LUIS
-Extrakce e-mailu obsahuje celé e-mailovou adresu z utterance. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující e-mailu záměry aplikace. E-mailu entity se podporuje v `en-us` pouze jazykovou verzi. 
+Extrakce e-mailů zahrnuje celou e-mailovou adresu z utterance. Vzhledem k tomu, že je tato entita už vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující e-mail. E-mailová entita se podporuje jenom ve verzi `en-us`. 
 
-## <a name="resolution-for-prebuilt-email"></a>Řešení pro předem připravených e-mailu
+## <a name="resolution-for-prebuilt-email"></a>Řešení předem vytvořeného e-mailu
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.email** entity.
+Následující příklad ukazuje řešení entity **Builtin. email** .
 
 ```json
 {
-  "query": "please send the information to patti.owens@microsoft.com",
+  "query": "please send the information to patti@contoso.com",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.811592042
@@ -42,27 +42,27 @@ Následující příklad ukazuje rozlišení **builtin.email** entity.
   ],
   "entities": [
     {
-      "entity": "patti.owens@microsoft.com",
+      "entity": "patti@contoso.com",
       "type": "builtin.email",
       "startIndex": 31,
       "endIndex": 55,
       "resolution": {
-        "value": "patti.owens@microsoft.com"
+        "value": "patti@contoso.com"
       }
     }
   ]
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
-    "query": "please send the information to patti.owens@microsoft.com",
+    "query": "please send the information to patti@contoso.com",
     "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
+        "normalizedQuery": "please send the information to patti@contoso.com",
         "topIntent": "None",
         "intents": {
             "None": {
@@ -71,7 +71,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
         },
         "entities": {
             "email": [
-                "patti.owens@microsoft.com"
+                "patti@contoso.com"
             ]
         }
     }
@@ -79,13 +79,13 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 ```
 
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
-    "query": "please send the information to patti.owens@microsoft.com",
+    "query": "please send the information to patti@contoso.com",
     "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
+        "normalizedQuery": "please send the information to patti@contoso.com",
         "topIntent": "None",
         "intents": {
             "None": {
@@ -94,13 +94,13 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
         },
         "entities": {
             "email": [
-                "patti.owens@microsoft.com"
+                "patti@contoso.com"
             ],
             "$instance": {
                 "email": [
                     {
                         "type": "builtin.email",
-                        "text": "patti.owens@microsoft.com",
+                        "text": "patti@contoso.com",
                         "startIndex": 31,
                         "length": 25,
                         "modelTypeId": 2,
@@ -113,6 +113,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+* * * 
 
-Další informace o [číslo](luis-reference-prebuilt-number.md), [ordinální](luis-reference-prebuilt-ordinal.md), a [procento](luis-reference-prebuilt-percentage.md). 
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si [číslo](luis-reference-prebuilt-number.md), [pořadové](luis-reference-prebuilt-ordinal.md)číslo a [procento](luis-reference-prebuilt-percentage.md). 

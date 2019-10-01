@@ -1,22 +1,22 @@
 ---
-title: Vytvoření fondu hostitelů ve verzi Preview pro virtuální počítače s Windows pomocí šablony Azure Resource Manager – Azure
-description: Postup vytvoření fondu hostitelů ve verzi Preview ve Windows Virtual desktopu pomocí šablony Azure Resource Manager
+title: Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager – Azure
+description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí šablony Azure Resource Manager.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163747"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679617"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manager
 
-Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta ve verzi Preview virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 
 Postupujte podle pokynů v této části a vytvořte fond hostitelů pro tenanta virtuálních klientů Windows se šablonou Azure Resource Manager poskytnutou Microsoftem. V tomto článku se dozvíte, jak vytvořit fond hostitelů na virtuálním počítači s Windows, vytvořit skupinu prostředků s virtuálními počítači v předplatném Azure, připojit tyto virtuální počítače k doméně AD a zaregistrovat virtuální počítače s využitím virtuálního klienta Windows.
 
@@ -42,7 +42,7 @@ Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, 
 
 1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
 2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
-3. Hned za znakem "https://portal.azure.com/" a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. Hned za "https://portal.azure.com/" a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
 5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
@@ -66,7 +66,7 @@ Pak přidejte uživatele do skupiny desktopových aplikací pomocí této rutiny
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Hlavní název uživatele (UPN user1@contoso.com) by měl odpovídat identitě uživatele v Azure Active Directory (například). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
+Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele v Azure Active Directory (například user1@contoso.com). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
 
 Po dokončení těchto kroků se uživatelé přidaní do skupiny desktopových aplikací můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 

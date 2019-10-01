@@ -1,7 +1,7 @@
 ---
 title: Procento předem sestavené entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje procento informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje procentuální údaje předem připravené entity v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 06dada1633fcb90153358e0f1d048c5fa618db0b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0005d679819f7516e1ded6294030cd42813e085f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933431"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677522"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>Procentuální předem sestavená entita pro aplikaci pro LUIS
-Procento čísla můžete uvádět ve zlomcích, `3 1/2`, nebo jako procento, `2%`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující procento záměry aplikace. Procento entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
+Procentuální čísla se můžou vyskytovat jako zlomky, `3 1/2` nebo jako procento, `2%`. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující procento. Procentuální hodnota entity je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md). 
 
-## <a name="types-of-percentage"></a>Typy procenta
+## <a name="types-of-percentage"></a>Typy procent
 Procento je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) v GitHubu.
 
-## <a name="resolution-for-prebuilt-percentage-entity"></a>Řešení pro procento předem připravených entit
+## <a name="resolution-for-prebuilt-percentage-entity"></a>Řešení pro předem sestavenou entitu procent
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.percentage** entity.
+Následující příklad ukazuje řešení entity **Builtin. PERCENTAGE** .
 
 ```json
 {
@@ -57,9 +57,9 @@ Následující příklad ukazuje rozlišení **builtin.percentage** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
+Následující JSON má parametr `verbose` nastavený na `false`:
 
 ```json
 {
@@ -81,7 +81,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 }
 ```
 
-Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
+Následující JSON má parametr `verbose` nastavený na `true`:
 
 ```json
 {
@@ -115,6 +115,10 @@ Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [ordinální](luis-reference-prebuilt-ordinal.md), [číslo](luis-reference-prebuilt-number.md), a [teploty](luis-reference-prebuilt-temperature.md) entity. 
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si o [pořadí](luis-reference-prebuilt-ordinal.md), [čísle](luis-reference-prebuilt-number.md)a [teplotních](luis-reference-prebuilt-temperature.md) entitách. 

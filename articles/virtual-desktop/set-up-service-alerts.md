@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816378"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676452"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Kurz: Nastavení upozornění služeb
+# <a name="tutorial-set-up-service-alerts"></a>Kurz: nastavení výstrah služby
 
 Pomocí Azure Service Health můžete monitorovat problémy služby a Poradce pro stav pro virtuální počítače s Windows. Azure Service Health vás může informovat s různými typy výstrah (například e-mailem nebo SMS), pomůže vám pochopit dopad problému a průběžně ho aktualizovat, jakmile se problém vyřeší. Azure Service Health vám taky může pomáhat zmírnit výpadky a připravit se na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
 
@@ -27,8 +27,8 @@ Další informace o Azure Service Health najdete v dokumentaci ke [službě Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Kurz: Vytvoření tenanta ve verzi Preview pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Kurz: Vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
+- [Kurz: vytvoření tenanta ve virtuální ploše Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
+- [Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
 - [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
 
 ## <a name="create-service-alerts"></a>Vytvoření výstrah služby
@@ -48,11 +48,11 @@ Doporučujeme vytvořit výstrahy služby pro následující typy událostí sta
 
 Konfigurace výstrah služby:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Service Health.**
 3. Pomocí pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) nastavte výstrahy a oznámení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak nastavit a použít Azure Service Health k monitorování problémů služby a Poradce pro stav pro virtuální počítače s Windows. Další informace o tom, jak se přihlásit k virtuálnímu počítači s Windows, najdete v tématu připojení k virtuálnímu počítači s Windows.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064471"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679306"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
@@ -25,14 +25,14 @@ Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standar
 
 V Azure Active Directory B2C (Azure AD B2C) jsou podporovány následující možnosti:
 
-- **Nativní klient**: Interakce uživatele během ověřování probíhá, když je kód spuštěn na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android nebo spuštěná v prohlížeči, jako je například JavaScript.
-- **Tok veřejného klienta**: V volání rozhraní API se odešlou jenom uživatelská pověření shromážděná aplikací. Přihlašovací údaje aplikace se neodesílají.
-- **Přidat nové deklarace identity**: Obsah tokenu ID se dá změnit tak, aby se přidaly nové deklarace identity.
+- **Nativní klient**: během ověřování dojde k interakci uživatele, když se kód spouští na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android nebo spuštěná v prohlížeči, jako je například JavaScript.
+- **Veřejný klientský tok**: v volání rozhraní API se odešlou jenom přihlašovací údaje uživatele shromážděné aplikací. Přihlašovací údaje aplikace se neodesílají.
+- **Přidat nové deklarace identity**: obsah TOKENu ID se dá změnit tak, aby se přidaly nové deklarace identity.
 
 Následující toky nejsou podporovány:
 
-- **Server-to-server**: Systém Identity Protection potřebuje jako součást interakce spolehlivou IP adresu získanou od volajícího (nativního klienta). V případě volání rozhraní API na straně serveru se používá jenom IP adresa serveru. Pokud dojde k překročení dynamické prahové hodnoty neúspěšných ověření, může systém Identity Protection identifikovat opakovanou IP adresu jako útočníka.
-- **Tok důvěrného klienta**: ID klienta aplikace je ověřeno, ale tajný klíč aplikace není ověřen.
+- **Server-Server**: systém ochrany identit potřebuje spolehlivou IP adresu získanou od volajícího (nativního klienta) v rámci interakce. V případě volání rozhraní API na straně serveru se používá jenom IP adresa serveru. Pokud dojde k překročení dynamické prahové hodnoty neúspěšných ověření, může systém Identity Protection identifikovat opakovanou IP adresu jako útočníka.
+- **Důvěrný tok klienta**: ID klienta aplikace je ověřeno, ale tajný klíč aplikace není ověřen.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Vytvoření toku uživatele vlastníka prostředku
 
@@ -43,7 +43,7 @@ Následující toky nejsou podporovány:
 5. Zadejte název toku uživatele, například *ROPC_Auth*.
 6. V části **deklarace aplikací**klikněte na **Zobrazit více**.
 7. Vyberte deklarace identity aplikace, které potřebujete pro vaši aplikaci, například zobrazované jméno, e-mailovou adresu a poskytovatele identity.
-8. Vyberte **OK** a potom vyberte **Vytvořit**.
+8. Vyberte **OK**a pak vyberte **vytvořit**.
 9. Klikněte na **Spustit tok uživatele**.
 
    Pak uvidíte koncový bod, jako je například tento příklad:
@@ -51,30 +51,26 @@ Následující toky nejsou podporovány:
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Zaregistrovat aplikaci
+## <a name="register-an-application"></a>Registrace aplikace
 
-1. V nastavení B2C vyberte **aplikace**a pak vyberte **Přidat**.
-2. Zadejte název aplikace, například *ROPC_Auth_app*.
-3. Pro **webovou aplikaci nebo webové rozhraní API**vyberte **ne** a pak pro nativního **klienta**vyberte **Ano** .
-4. Všechny ostatní hodnoty ponechte tak, jak jsou, a pak vyberte **vytvořit**.
-5. Vyberte novou aplikaci a poznamenejte si ID aplikace pro pozdější použití.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
-- Nahraďte  *\<yourtenant... Microsoft. com >* názvem vašeho tenanta B2C.
-- *\<B2C_1A_ROPC_Auth >* nahraďte úplným názvem zásad pro přihlašovací údaje hesla vlastníka prostředku.
-- Nahraďte  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z vaší registrace.
+- Nahraďte *@no__t -1yourtenant... Microsoft. com >* názvem vašeho tenanta B2C.
+- Nahraďte *\<B2C_1A_ROPC_Auth >* úplným názvem zásad pro hesla vlastníka prostředku.
+- Nahraďte *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z vaší registrace.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Value |
+| Key | Hodnota |
 | --- | ----- |
-| username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
-| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| Jmen | leadiocl@outlook.com |
+| Zadáno | Passxword1 |
+| parametr grant_type | Zadáno |
+| rozsah | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | id_token tokenu |
 
 *Client_id* je hodnota, kterou jste dříve poznamenali jako ID aplikace. *Offline_access* je nepovinný, pokud chcete získat obnovovací token. Uživatelské jméno a heslo, které použijete, musí být přihlašovací údaje od stávajícího uživatele v Azure AD B2C tenantovi.
@@ -108,12 +104,12 @@ Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v n
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Value |
+| Key | Hodnota |
 | --- | ----- |
-| grant_type | refresh_token |
+| parametr grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* a *Resource* jsou hodnoty, které jste dříve poznamenali jako ID aplikace. *Refresh_token* je token, který jste dostali ve výše zmíněném ověřovacím volání.

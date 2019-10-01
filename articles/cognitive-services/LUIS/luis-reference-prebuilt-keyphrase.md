@@ -1,7 +1,7 @@
 ---
 title: Keyphrase předem vytvořená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje keyphrase informace předem připravených entit v Language Understanding (LUIS).
+description: Tento článek obsahuje keyphrase předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,23 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e33b5c766781bc49310dfcae55c3d390a032b522
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933526"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677597"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase předem vytvořenou entitu pro aplikaci LUIS
-keyPhrase extrahuje celou řadu klíčových frází z utterance. Nemusíte přidání projevů příklad obsahující keyPhrase do aplikace. keyPhrase entity se podporuje v [mnoha jazykových verzí](luis-language-support.md#languages-supported) jako součást [rozhraní text analytics](../text-analytics/overview.md) funkce. 
+Entita keyPhrase extrahuje různé klíčové fráze z utterance. Do aplikace nemusíte přidávat příklad projevy obsahující keyPhrase. Entita keyPhrase je v [mnoha jazykových verzích](luis-language-support.md#languages-supported) podporována jako součást funkcí pro [analýzu textu](../text-analytics/overview.md) . 
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro keyPhrase předem připravených entit
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro předem vytvořenou entitu keyPhrase
 
-### <a name="api-version-2x"></a>Rozhraní API verze 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **builtin.keyPhrase** entity.
+Následující příklad ukazuje řešení entity **Builtin. keyPhrase** .
 
 ```json
 {
@@ -50,7 +50,83 @@ Následující příklad ukazuje rozlišení **builtin.keyPhrase** entity.
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-## <a name="next-steps"></a>Další postup
+Následující JSON má parametr `verbose` nastavený na `false`:
 
-Další informace o [procento](luis-reference-prebuilt-percentage.md), [číslo](luis-reference-prebuilt-number.md), a [stáří](luis-reference-prebuilt-age.md) entity.
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ]
+        }
+    }
+}
+```
+
+Následující JSON má parametr `verbose` nastavený na `true`:
+
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ],
+            "$instance": {
+                "keyPhrase": [
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "educational requirements",
+                        "startIndex": 13,
+                        "length": 24,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    },
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "development",
+                        "startIndex": 51,
+                        "length": 11,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+* * * 
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [stáří](luis-reference-prebuilt-age.md) entit.

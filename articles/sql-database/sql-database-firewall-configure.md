@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744982"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686469"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP
 
@@ -38,7 +38,7 @@ Pokusy o připojení z Internetu a Azure musí projít přes bránu firewall, ab
 
 ### <a name="server-level-ip-firewall-rules"></a>Pravidla firewallu protokolu IP na úrovni serveru
 
-  Tato pravidla umožňují klientům přístup k celému serveru SQL Azure, to znamená všem databázím v rámci stejného serveru SQL Database. Pravidla jsou uložena v *Hlavní* databázi.
+  Tato pravidla umožňují klientům přístup k celému serveru SQL Azure, to znamená všem databázím v rámci stejného serveru SQL Database. Pravidla jsou uložena v *Hlavní* databázi. Pro SQL Server Azure můžete mít maximálně 128 pravidel brány firewall protokolu IP na úrovni serveru.
   
   Pravidla brány firewall protokolu IP na úrovni serveru můžete nakonfigurovat pomocí příkazů Azure Portal, PowerShellu nebo jazyka Transact-SQL.
   - Pokud chcete používat portál nebo PowerShell, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
@@ -128,11 +128,11 @@ Pokud chcete v Azure Portal nastavit pravidlo brány firewall na úrovni serveru
 
 1. Pokud chcete na stránce Přehled databáze nastavit pravidlo brány firewall protokolu IP na úrovni serveru, vyberte na panelu nástrojů možnost **nastavit bránu firewall serveru** , jak ukazuje následující obrázek. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
-      ![Pravidlo brány firewall protokolu IP serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
+      ![pravidlo brány firewall protokolu IP serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
-      ![Nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+      ![nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
 
 #### <a name="from-the-server-overview-page"></a>Na stránce Přehled serveru
 
@@ -144,7 +144,7 @@ Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovan�
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Správa pravidel brány firewall protokolu IP pomocí jazyka Transact-SQL
 
-| Zobrazení katalogu nebo uložená procedura | Level | Popis |
+| Zobrazení katalogu nebo uložená procedura | Úroveň | Popis |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
@@ -178,7 +178,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale pro modul AZ. SQL je teď k dispozici veškerý vývoj. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty příkazů v modulech AZ a AzureRm jsou v podstatě identické.
 
-| Rutiny | Level | Popis |
+| Rutina | Úroveň | Popis |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Vrátí aktuální pravidla brány firewall na úrovni serveru. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Vytvoří nové pravidlo brány firewall na úrovni serveru |
@@ -198,7 +198,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Použití rozhraní příkazového řádku ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| Rutiny | Level | Popis |
+| Rutina | Úroveň | Popis |
 | --- | --- | --- |
 |[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall protokolu IP serveru.|
 |[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Vypíše pravidla brány firewall protokolu IP na serveru.|
@@ -218,7 +218,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Použití REST API ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| rozhraní API | Level | Popis |
+| API | Úroveň | Popis |
 | --- | --- | --- |
 | [Vypsat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [Vytvořit nebo aktualizovat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
@@ -231,7 +231,7 @@ Pokud se přístup ke službě SQL Database nechová podle očekávání, vezmě
 
 - **Konfigurace místní brány firewall:**
 
-  Předtím, než počítač bude moci získat přístup k SQL Database, může být nutné vytvořit v počítači výjimku brány firewall pro port TCP 1433. Aby bylo možné připojit se k hranici cloudu Azure, možná budete muset otevřít další porty. Další informace najdete v části "SQL Database: Mimo oddíl vs Inside v části [porty nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Předtím, než počítač bude moci získat přístup k SQL Database, může být nutné vytvořit v počítači výjimku brány firewall pro port TCP 1433. Aby bylo možné připojit se k hranici cloudu Azure, možná budete muset otevřít další porty. Další informace najdete v části "SQL Database: mimo rámec vs Inside" v tématu [porty nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 - **Překlad síťových adres:**
 
@@ -255,12 +255,12 @@ Pokud se přístup ke službě SQL Database nechová podle očekávání, vezmě
   - Zeptejte se poskytovatele internetových služeb na rozsah IP adres, který je přiřazený k klientským počítačům, které přistupují k serveru SQL Database. Přidejte tento rozsah IP adres jako pravidlo brány firewall protokolu IP.
   - Místo toho Získejte místo klientských počítačů přidělování statických IP adres. Přidejte IP adresy jako pravidla brány firewall protokolu IP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Ověřte, že vaše podnikové síťové prostředí umožňuje příchozí komunikaci z rozsahů IP adres služby COMPUTE (včetně rozsahů SQL) používaných datacentry Azure. Tyto IP adresy možná budete muset přidat do seznamu povolených adres. Viz [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653).  
 - Rychlý Start o vytvoření pravidla brány firewall IP na úrovni serveru najdete v tématu [Vytvoření databáze SQL Azure](sql-database-single-database-get-started.md).
 - Nápovědu k připojení k databázi SQL Azure z open source aplikací nebo aplikací třetích stran najdete v tématu [ukázky kódu pro rychlý Start klienta SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- Informace o dalších portech, které možná budete muset otevřít, najdete v části SQL Database: Mimo oddíl vs Inside v [portech nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Informace o dalších portech, které možná budete muset otevřít, najdete v části "SQL Database: mimo rámec vs Inside" na [portech, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Přehled zabezpečení Azure SQL Database najdete v tématu [zabezpečení databáze](sql-database-security-overview.md).
 
 <!--Image references-->

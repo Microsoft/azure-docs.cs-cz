@@ -1,22 +1,22 @@
 ---
-title: Automatické škálování hostitelů relací ve verzi Preview virtuálních počítačů s Windows – Azure
-description: Popisuje, jak nastavit skript automatického škálování pro hostitele relací ve verzi Preview pro virtuální počítače s Windows.
+title: Automatické škálování hostitelů relací virtuálních počítačů s Windows – Azure
+description: Popisuje, jak nastavit skript automatického škálování pro hostitele relací virtuálních počítačů s Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163237"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676494"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relace
+# <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relací
 
-Pro mnoho nasazení ve verzi Preview virtuálních počítačů s Windows v Azure představuje náklady na virtuální počítač významnou část celkových nákladů na nasazení virtuálních počítačů s Windows. Aby se snížily náklady, je nejlepší vypnout a uvolnit virtuální počítače hostitele relace v době mimo špičku a pak je restartovat během špičky využití.
+Pro mnoho nasazení virtuálních klientských počítačů s Windows v Azure představuje náklady na virtuální počítač významnou část celkových nákladů na nasazení virtuálních počítačů s Windows. Aby se snížily náklady, je nejlepší vypnout a uvolnit virtuální počítače hostitele relace v době mimo špičku a pak je restartovat během špičky využití.
 
 V tomto článku se používá jednoduchý skript pro škálování pro automatické škálování virtuálních počítačů hostitele relací v prostředí virtuálních počítačů s Windows. Další informace o tom, jak skript škálování funguje, najdete v části [Jak funguje skript pro škálování](#how-the-scaling-script-works) .
 
@@ -49,7 +49,7 @@ Následující postupy vám posdělí, jak nasadit skript škálování.
 Nejprve Připravte prostředí pro skript škálování:
 
 1. Přihlaste se k virtuálnímu počítači (virtuální počítač pro horizontální navýšení kapacity), který spustí naplánovanou úlohu s účtem správce domény.
-2. Vytvořte složku na virtuálním počítači pro škálování, která bude obsahovat skript škálování a jeho konfiguraci (například **C\\: Scale-HostPool1**).
+2. Vytvořte složku na virtuálním počítači pro škálování, která bude obsahovat skript škálování a jeho konfiguraci (například **C: \\scaling-HostPool1**).
 3. Stažení souborů **basicScale. ps1**, **config. XML**a **Functions-PSStoredCredentials. ps1** a složky **PowershellModules** z [úložiště skriptu škálování](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a jejich zkopírování do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, jak soubory získat před jejich zkopírováním do virtuálního počítače se škálováním na více počítačů:
     - Naklonujte úložiště Git do místního počítače.
     - Zobrazte **nezpracované** verze každého souboru, zkopírujte a vložte obsah každého souboru do textového editoru a pak soubory uložte s odpovídajícím názvem souboru a typem souboru. 
@@ -72,9 +72,9 @@ V dalším kroku budete muset vytvořit bezpečně uložené přihlašovací úd
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Příklad **: set-Variable-Name cesta k nástroji – globální hodnota "c:\\škálování-HostPool1"**
-5. Spusťte rutinu **path New-StoredCredential- \$** Path. Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. XML**).
-    - Pokud používáte jiné instanční objekty nebo standardní účet, spusťte rutinu **New-StoredCredential- \$** path path jednou pro každý účet pro vytvoření místních uložených přihlašovacích údajů.
+    Příklad **: set-Variable-Name cesta k nástroji – globální hodnota "c: \\scaling-HostPool1"**
+5. Spusťte rutinu **New-StoredCredential-path \$KeyPath** . Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. XML**).
+    - Pokud používáte jiné instanční objekty nebo standardní účet, spusťte rutinu **New-StoredCredential-path \$KeyPath** pro každý účet pro vytvoření místních uložených přihlašovacích údajů.
 6. Spuštěním rutiny **Get-StoredCredential-list** potvrďte, že se přihlašovací údaje úspěšně vytvořily.
 
 ### <a name="configure-the-configxml-file"></a>Konfigurace souboru config. XML
@@ -89,8 +89,8 @@ Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastaven
 | currentAzureSubscriptionId    | ID předplatného Azure, ve kterém se spouštějí virtuální počítače hostitele relace                        |
 | tenantName                    | Název tenanta virtuálních klientů Windows                                                    |
 | hostPoolName                  | Název fondu hostitelů virtuálních počítačů s Windows                                                 |
-| RDBroker                      | Adresa URL služby WVD, výchozí hodnota https:\//rdbroker.WVD.Microsoft.com             |
-| Uživatelské jméno                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
+| RDBroker                      | Adresa URL služby WVD, výchozí hodnota https: \//rdbroker. WVD. Microsoft. com             |
+| Jmen                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
 | isServicePrincipal            | Přijaté hodnoty jsou **true** nebo **false**. Určuje, jestli druhá sada přihlašovacích údajů používá instanční objekt nebo standardní účet. |
 | BeginPeakTime                 | Čas zahájení špičky využití                                                            |
 | EndPeakTime                   | Doba špičky využití na konci                                                              |
@@ -109,9 +109,9 @@ Po konfiguraci souboru Configuration. XML bude nutné nakonfigurovat Plánovač 
 2. V okně **Plánovač úloh** vyberte **vytvořit úlohu...**
 3. V dialogovém okně **vytvořit úlohu** vyberte kartu **Obecné** , zadejte **název** (například "dynamický hostitel vzdálené relace"), vyberte možnost spustit bez **ohledu na to, zda je uživatel přihlášen nebo nikoli** a **Spusťte s nejvyššími oprávněními**.
 4. Otevřete kartu **triggery** a pak vyberte **nové...**
-5. V dialogovém okně **Nová aktivační událost** v **části Upřesnit nastavení**zaškrtněte políčko **Opakovat úlohu každých** a vyberte příslušné období a dobu trvání (například **15 minut** nebo neomezeně).
+5. V dialogovém **okně Nová aktivační událost** v **části Upřesnit nastavení**zaškrtněte políčko **Opakovat úlohu každých** a vyberte příslušné období a dobu trvání (například **15 minut** nebo **neomezeně**).
 6. Vyberte kartu **Akce** a **nové...**
-7. V dialogovém okně **Nová akce** zadejte do pole **program/skript** **PowerShell. exe** a **\\\\potom zadejte C: škálovat basicScale. ps1** do pole **Přidat argumenty (volitelné)** .
+7. V dialogovém okně **Nová akce** zadejte do pole **program/Script skript** **PowerShell. exe** a potom do pole **Přidat argumenty (volitelné)** zadejte **C: \\scaling @ no__t-5basicScale. ps1** .
 8. Otevřete karty **podmínky** a **Nastavení** a výběrem **OK** potvrďte výchozí nastavení pro každou z nich.
 9. Zadejte heslo pro účet správce, ve kterém chcete spustit skript škálování.
 
